@@ -7,6 +7,20 @@ admission design and all k267 classifications before reference-evidence-replay-k
 
 ## Context
 
+K328's review at c368357f9eb36c59efac03988dac9c313fda9d14 and k329's integration
+find k323 incomplete. Consume reference-evidence-checkpoint-recovery-k331 only after
+k330's actual recovery/About decisions, mandatory whole review k332 and every earned
+integration. The current report is application-reference-input-partition.md#k328-integration-and-required-replacement.
+Pre-tool current-anchor selection/actual-holder execution trust/fd handoff, original
+launcher EOF/reap/death publication, repeatable trust-output kinds/locators and every
+failed-tail checkpoint/trust-base must be decided in that replacement. Do not invent
+any of them from historical tables below. K323's membership remains historical; the
+integration-only candidate identifies saved current inputs and unresolved work, not
+accepted construction identities. Actual consumed edits require disarm/affected
+requalification. Original Goal/Done when and every downstream duty/hold remain.
+
+Historical k323 input inventory, reviewed as defective by k328:
+
 Consume the complete reference-evidence-practical-admission-k323 replacement only after
 mandatory whole-producer review and every earned integration. The current report is
 application-reference-input-partition.md#complete-k323-replacement and the new complete

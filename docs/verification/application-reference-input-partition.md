@@ -11,16 +11,17 @@ Those controls are currently specified, not executed.
 
 The single pass is unused.
 
-The complete reference-evidence-practical-admission-k323 replacement combines k324's
-composed Safari policy, k326's coupled lifecycle and k327's whole correspondence.
-The [whole replacement and original-duty comparison](#complete-k323-replacement)
-locates all eight k321 dispositions and the exact remaining actual work. Its new
-[documentary membership](reference-practical-admission-replacement-membership.json)
-identifies the final normative sources, whole companions/tables, historical bases,
-original duties and stable charter handles. It is an unconsumed candidate for mandatory
-whole-design review, not an accepted construction input, executable schema or proof.
-That review and every earned integration precede reference-evidence-construction-k269.
-K320 at 5fb818ab8125 and all earlier memberships remain immutable historical subjects.
+K328's whole review of k323 at f4d399f3caa2 identifies unresolved recovery, first-check,
+launcher-record, About-key and repeatable-trust-output defects. The
+[integration and required replacement](#k328-integration-and-required-replacement)
+classifies every finding and places k330's bounded human decisions, complete replacement
+producer k331, mandatory whole review k332 and every earned integration before k269.
+K269 must place already decided mechanisms; the reviewed k323 proposal is no construction
+handoff. Its [membership](reference-practical-admission-replacement-membership.json)
+retains historical bytes. The new
+[integration-only documentary candidate](reference-practical-admission-integration-membership.json)
+identifies current saved inputs and unresolved work; it supplies no repaired protocol,
+accepted input, executable schema or proof. All earlier memberships remain historical.
 
 No target-reading instrument, trusted comparison/display/holder/bootstrap entry, retained
 runtime/read/image chain, executable schema/control programme, qualified initialization,
@@ -32,7 +33,60 @@ k245 retains the one unused pass, k246 complete rewrite/helper/alias discriminat
 k247 whole-subject/family review or precise incomplete work. Full useful breadth,
 additive supported-VM/native duties, private ineligibility and both holds remain.
 
+## K328 integration and required replacement
+
+The review's original findings live at c368357f9eb36c59efac03988dac9c313fda9d14;
+k329 re-derives them against C/K/P/S and the actual prior answers. Coordinates in that
+review name bytes at f4d399f3caa2. No actual mechanism or native fact is inferred here.
+
+| Finding | Classification, reason and disposition |
+| --- | --- |
+| F1 failed-tail recovery | Valid and actionable. C makes a failed REANCHOR/current-anchor-validation tail unavailable, while later trust requires a current anchor; only initial bootstrap has a source-rooted alternative. Close/validation/disarm/eligible dispositions have no checkpoint host. K330 settles the proposed repeated-checkpoint and never-started-initialization choices; k331 defines every trust base, hosted act, immutable failed extent and successor DAG. No unplaced sixth ceremony, fallback or automatic initialization is authorized. |
+| F2 CP02–CP05 enabling trust | Valid and actionable. Deterministic current-anchor selection has no pre-tool owner, the actual holder copy is unchecked before execution, and holder-to-entry descriptor handoff is unspecified. K331 owns the inspected selection artifact/finite source-OS root, pre-execution holder comparison, closed fd/offset/lifetime handoff and independent changed-holder/selection/descriptor controls. Candidate self-checks or later refusal cannot supply the first check. |
+| F3 launcher observations | Valid and actionable. EOF/reap/death/failed extents are required originals, but no launcher writer/capability/closed kind/exact locator publishes them. K331 defines their original transcript publication, acknowledgments and later CP02/validation consumers without self/future bindings, including writer death. This is coupled protocol work, not a recorder silently added by k269. |
+| F4 About host/session key | Contract stated unclearly, requiring an actual workflow decision. S's provenance has no defined common independently matchable identity across preparation, AFK Q and later CP05; C nevertheless invalidates Q on host/session change. K330 offers explicit provenance-only versus a concretely enforceable continuity-window alternative, with reboot/logout/multi-day consequences and no extra observation authority. K331 applies the actual answer; neither interpretation is selected here. |
+| F5 repeatable trust outputs | Valid and actionable. CP02 lacks a closed acceptance kind, and revision/control/CP03/audit/About/entry/disposition outputs have no exact repeatable predecessor-bound slots. K331 defines kinds, locators, writers, immutable acknowledged finalization, failed-publication placement and first consumers together with F1–F3. No mutable overwrite, old acceptance reuse or self/future authorization. |
+| F6 publisher/glossary | Contract stated unclearly with an actionable glossary omission. C's two residual CP01 registrar clauses now name the already specified Reference Bootstrap Publisher and prohibit implied registrar bootstrap authority. CONTEXT defines holder/publisher/validator, anchor/validation/close generations, failure disposition and ROOT purposes, retaining unresolved recovery/continuity choices. This repairs wording without granting a capability or changing selected S/descriptor ADR. |
+
+K330 is one bounded requirements leaf for genuinely human choices, not a repeated
+contact/privilege/breadth interview. Recommend hosting ready failure dispositions in
+the next affected repeated checkpoint, source-rooted CP01 for an unavailable anchor,
+and allowing fresh one-time initialization only on independently established no-dispatch/
+no-provisioning state. Recommend treating host/session as explicit human provenance,
+with actual product/build/configuration and current per-invocation terminal/peer/channel
+comparisons retained. Both are proposals pending Antony's answer. Unknown/dispatched/
+partial/consumed authority remains unavailable; no recovery or observation is performed.
+
+The two schedule assertions that claimed no hidden/unplaced work and no known dependency
+conflict now state the existing completeness rule: unspecified first-consumer/trust-base/
+original-record work is no realizable or qualified schedule. This clarifies the contract
+without supplying any missing mechanism, recovery choice or additional checkpoint.
+
+K331 repairs the coupled protocol as a whole under those actual answers; k332 reviews
+the entire replacement, all original duties and clean/correction DAGs. Every earned
+integration precedes k269. Its current construction charter and root/k242/k244/k245/
+k246/k247/product/native/family/view summaries carry that placement. No partial repair
+or completed integration qualifies the instrument. All original B/R/register/read/
+phase/absence/provenance/exclusion duties and actual prior amendments remain, as do
+R3's composed Safari physical walk, required Q/P blockers and accepted contact unknowns.
+
+The integration candidate is frozen after final document/charter/view edits. It preserves
+all historical manifest bytes, original duty memberships and null required unacquired
+identities; k323's old clean/correction DAGs are explicitly historical defective design
+subjects. New replacement DAGs and accepted construction identities belong to k331.
+Actual normative/consumed-byte changes disarm and require affected requalification
+before consumption; unconsumed report observations alone grant no authority. This session
+has no implemented tool/schema, executed instrument/native control, provisioning or
+initialization, target/protected/topology/process/terminal probe or posture change.
+K244/k242/finite subject remain live, pass unused, full k246/k247/useful/additive supported-
+VM/native duties/private ineligibility/both holds retained. No parent closes.
+
 ## Complete k323 replacement
+
+Historical complete-design claim at f4d399f3caa2, reviewed as defective by k328. The
+[k328 integration](#k328-integration-and-required-replacement) above owns current repair
+placement. This section and its original membership describe that reviewed boundary;
+they supply no current construction eligibility, recovery authorization or owner command.
 
 This is the whole documentary design boundary, not a child-only handoff. Original k321
 at 4304ad5f46d7 reviewed k320 at 5fb818ab8125; k322 at 04a761d5 classifies every finding.
@@ -115,7 +169,7 @@ correspondence was measured.
 
 ## K321 integration and required replacement
 
-Historical contribution at that child/integration boundary; the [complete k323 replacement](#complete-k323-replacement) above is the current whole-design handoff. Its future-work wording describes that earlier boundary.
+Historical contribution at that child/integration boundary. K323's claimed complete boundary was reviewed as defective by k328; the [current integration](#k328-integration-and-required-replacement) above places the required replacement. Its future-work wording describes that earlier boundary.
 
 K322 grades the original k321 findings from 4304ad5f46d7 against their cited k320 source,
 not an integration-body restatement. Its running log records the full derivation. This
@@ -152,7 +206,7 @@ terminal probe. K316 retains its separate viewer defect.
 
 ## Composed Safari policy slice
 
-Historical contribution at that child/integration boundary; the [complete k323 replacement](#complete-k323-replacement) above is the current whole-design handoff. Its future-work wording describes that earlier boundary.
+Historical contribution at that child/integration boundary. K323's claimed complete boundary was reviewed as defective by k328; the [current integration](#k328-integration-and-required-replacement) above places the required replacement. Its future-work wording describes that earlier boundary.
 
 K323 is decomposed because the complete replacement exceeds one focused session.
 Reference-evidence-safari-composition-k324 completes only k321 R3's independently
@@ -188,7 +242,7 @@ is supplied; no target/native programme runs and the single pass remains unused.
 
 ## Coupled lifecycle contract slice
 
-Historical contribution at that child/integration boundary; the [complete k323 replacement](#complete-k323-replacement) above is the current whole-design handoff. Its future-work wording describes that earlier boundary.
+Historical contribution at that child/integration boundary. K323's claimed complete boundary was reviewed as defective by k328; the [current integration](#k328-integration-and-required-replacement) above places the required replacement. Its future-work wording describes that earlier boundary.
 
 Reference-evidence-lifecycle-contract-k326 is the first child of the decomposed
 reference-evidence-practical-admission-lifecycle-k325. It keeps R1/R2/R5/R7 together

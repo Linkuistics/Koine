@@ -1,32 +1,27 @@
 # reference-evidence-package-and-roles-k245
 
-## Complete k323 design boundary
+## K328 integration and required replacement
 
-Reference-evidence-practical-admission-k323 combines k324's composed Safari walk,
-k326's coupled R1/R2/R5/R7 contract and k327's complete original-duty correspondence.
-The current handoff is application-reference-input-partition.md#complete-k323-replacement
-and reference-practical-admission-replacement-membership.json, a new unconsumed
-whole documentary candidate. Mandatory whole-k323 review and every earned integration
-precede reference-evidence-construction-k269. K320 and all earlier manifests remain
-immutable historical subjects, never current construction identities.
+K328 reviews k323 at f4d399f3caa2 as defective; k329 verifies every finding and repairs
+the residual CP01 publisher wording, glossary and schedule-completeness wording. Current repair placement is
+application-reference-input-partition.md#k328-integration-and-required-replacement.
+Reference-evidence-recovery-and-provenance-k330 settles the new failure-recovery/
+never-started-initialization and About host/session choices with Antony. Complete
+replacement reference-evidence-checkpoint-recovery-k331 then specifies checkpoint trust,
+launcher originals, repeatable trust records and every recovery first consumer under
+those actual answers. Mandatory whole review reference-evidence-checkpoint-recovery-k332
+and every earned integration precede reference-evidence-construction-k269. No planner
+invents the unresolved mechanism or human workflow. K323 and all older memberships are
+historical; the new integration-only documentary candidate supplies no repaired protocol
+or accepted construction input. Normative/actually consumed edits disarm and require
+affected requalification before consumption.
 
-CP01's own-terminal SOURCE/ARTIFACTS/ROOT continues synchronously through initial
-disarm/anchor publication, separate earlier-output validation and one initializer
-with a separately owned co-running staged/final validator through actual returns.
-Original no-follow holder trust precedes cmp/candidate entry; append-only anchors,
-validation-events and closes retain failed extents outside sealed revisions. Manual
-About preparation/independent comparison/ARTIFACTS acceptance precedes Q06; CP05
-refreshes/accepts the original before APPOINT and fresh P comparison. Every later
-checkpoint first checks original-holder/current-anchor continuity. Full C/K/P records,
-locators, controls, first-consumer/correction order and original duties bind.
-
-Actual originals/tools/controls/read/images/UID/build/terminal/receipt/authority are
-still missing. K244/k242/finite subject remain live, k245's single pass unused, full
-k246/k247/useful breadth/additive VM/native duties/private ineligibility/both holds
-remain. After consumption correction is offline-only, never reset/re-eligibility/
-appointment/acquisition. The older promotion/slice accounts below are historical
-boundaries; their future-work wording does not reopen this documentary producer.
-
+R3's composed Safari walk and all actual prior answers/original duties/exclusions remain.
+Actual originals/tools/controls/read/images/UID/build/terminal/receipt/authority remain
+missing. K244/k242/finite subject stay live, k245's pass unused, full k246/k247/useful
+breadth/additive supported-VM/native/private/product duties and both holds retained.
+After consumption correction is offline-only, never reset/re-eligibility/appointment/
+acquisition. This integration closes no parent and supplies no instrument qualification.
 
 ## Goal
 
@@ -38,10 +33,11 @@ failed/unavailable boundary. Establish no recipe or native fit from acquisition 
 
 ## Context
 
-Require the complete k323 replacement after mandatory whole review/every earned integration,
+Require the complete k331 replacement under k330's actual answers after k332 whole review/every earned integration,
 then the reviewed k269 plan, under actual k270/k281/k290/k295/k314/k319. K321 at 4304ad5f46d7
-reviewed k320 at 5fb818ab8125 as defective; k322 records the direct repairs and k323 now supplies the complete
-publication/successor/composed-Safari/About/stream-holder design before planning.
+reviewed k320 at 5fb818ab8125 as defective; k322 records its direct repairs; k328 finds the subsequent k323 protocol
+incomplete. K331 owns the replacement of recovery, pre-tool trust, launcher records,
+repeatable trust outputs and About meaning before planning.
 K320's manifest retains historical snapshot bytes, not current construction identities.
 The schedule below retains the original obligations under that whole replacement. K315/k291 are defective historical
 comparison subjects, never current qualified handoffs. CP01 accepts actual independent
@@ -53,8 +49,8 @@ The complete S/I/L/LV/K/T/A grammar includes only the two checked Safari root ex
 no historical syntax supplies current identity, topology, TCC or version facts.
 K323's first child k324 specifies their complete nested composition, both root checks
 and immediate re-entries, saved app suffix and two expansions against one 32 budget.
-K326/k327 complete the coupled lifecycle and whole membership; mandatory whole-k323
-review/every earned integration stays required before construction or acquisition.
+K326/k327 are historical contributions reviewed by k328. K331's complete replacement,
+k332 whole review and every earned integration remain before construction or acquisition.
 
 Require actual k244 stable instrument qualification and distinct close, CP04 eligible basis,
 complete reviewed practical admission design and all earned integrations/planning first.

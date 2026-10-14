@@ -275,8 +275,8 @@ The [chartered acceptance route](docs/verification/application-reference-evidenc
 separates inspection-only review from Antony's own semantic acceptance/registration act,
 using independently authored controls and an independent original-result executor. The
 runner/producer/repairer cannot judge their own programme results; the distinct instrument
-closer remains separate. K323's complete replacement for k321's publication/successor/
-continuity findings requires whole review/every earned integration before construction.
+closer remains separate. K328 finds the k323 proposal incomplete; k330 decisions and complete k331/k332
+replacement/review/every earned integration precede construction.
 [Independent LIVE release](docs/verification/application-reference-evidence.md#independent-live-release-and-role-selection)
 keeps provisioning/requalification disarmed through accepted audit and distinct instrument
 close; only the commissioned supervisor originates one k245 LIVE invocation. Receipt/proof/
@@ -285,8 +285,9 @@ keeps changing observations in a separate unconsumed report; actual input change
 disarm and requalify. The [practical admission design](docs/verification/application-reference-input-partition.md#coherent-k320-replacement)
 is k320's historical proposal under actual k319, reviewed as defective by k321. The
 [review integration](docs/verification/application-reference-input-partition.md#k321-integration-and-required-replacement)
-places publication/successor/composed-Safari/About/stream-holder repair in k323, with
-mandatory whole review/every earned integration before k269 construction planning. The
+records k322's historical publication/successor/composed-Safari/About/stream-holder
+repair placement in k323. K328's current integration places k330/k331/k332 and every
+earned integration before k269 construction planning. The
 [historical k320 boundary](docs/verification/application-reference-input-partition.md#coherent-k320-replacement)
 records the complete original-duty comparison and precise missing work. Independent
 SCRATCH bootstrap/initializer-validator/close-publisher originals precede CP01 acceptance;
@@ -305,7 +306,7 @@ separate link/ancestor entries and the two exact checked held-root/immediate-pre
 The [composed Safari rule](docs/verification/application-reference-evidence.md#composed-safari-walk-and-q01-specimens)
 scopes each exception to its own operand, evaluates the admitted nested cryptex link,
 then resumes the saved app suffix with two expansions against the shared 32 budget.
-Every other outside step refuses. Whole-k323 design correspondence/membership is complete; mandatory whole review/every
+Every other outside step refuses. K328 finds k323 incomplete; k330 decisions and complete k331/k332 repair/review/every
 earned integration remains before k269. Historical syntax proves no current link/TCC/presence
 fact. Complete H/R exceptions with E default replace
 individual fragments/report-driven refresh. Whole actual consumed-byte/original/basis/
@@ -314,19 +315,63 @@ stay null with exact work before consumers. K295's required build/peer/terminal 
 remain Q/P work; source-child facts first belong to A. A required refusal stays incomplete,
 never useful loss, finite-subject credit or private eligibility; both holds remain.
 
-The [complete k323 replacement](docs/verification/application-reference-input-partition.md#complete-k323-replacement)
-reconciles all eight original findings and original duties, with a new complete unconsumed
-[documentary membership](docs/verification/reference-practical-admission-replacement-membership.json).
-K324's composed Safari walk and k326's same-invocation bootstrap, original holder,
-append-only anchors/closes and manual About/fresh-P order now have whole correspondence.
-Mandatory whole-k323 review/every earned integration precedes k269; no actual original,
-control, authority, instrument/native qualification or finite subject is supplied.
-K244/k242 stay live, pass unused and all useful/generated/VM/private/product duties remain.
+The [k328 integration and required replacement](docs/verification/application-reference-input-partition.md#k328-integration-and-required-replacement)
+records every grounded finding against k323 at f4d399f3caa2. K330 settles the two new
+recovery/About choices; complete checkpoint-recovery design k331, mandatory whole review
+k332 and every earned integration precede k269. CP01 publisher wording and the glossary
+are repaired; recovery placement, pre-tool selection/holder/fd trust, original launcher
+records and repeatable trust slots remain design work. The
+[integration-only documentary candidate](docs/verification/reference-practical-admission-integration-membership.json)
+records saved inputs and unresolved duties; k323's membership is historical. No accepted
+construction input, original, control, authority, qualification or finite subject follows.
+Normative/actually consumed edits disarm and require affected requalification. K244/k242
+stay live, pass unused and all useful/generated/supported-VM/native/private/product duties remain.
 
 The application spec owns its transition protocol. Terminal guard evaluation is
 pre-reserved; failed cleanup prevents successful publication. Instrumented receipts
 qualify their image, with reviewed matched ordinary/disabled/enabled correspondence
 and independent ordinary-image outcomes required for release.
+
+**Reference Stream Holder**: The independently authored and reviewed retained original
+that supplies the inspected source/OS trust method's exact no-follow original/copy
+streams, checks their identities before comparison and holds descriptors through true
+return. Its later-checkpoint selection, executable trust and entry handoff need the
+replacement design identified in the current review integration.
+
+**Reference Bootstrap Publisher**: The separately accepted bootstrap-only publisher
+of CP01's earlier direct trust acts and supplied originals, under ROOT's same-invocation
+authorization. It makes no semantic acceptance decision and grants no LIVE, receipt,
+close or appointment authority. Antony's trust registrar has no implied bootstrap capability.
+
+**Reference Publication Validator**: The separately owned factual validator that
+checks completed earlier bootstrap publication. It may also perform accepted ancestry
+and staged/final receipt checks where the ownership exclusions hold; it cannot accept
+its own results, produce the receipt or exercise human trust authority.
+
+**Reference anchor generation**: One immutable predecessor-bound `anchors/n` slot
+for a proposed independent trust-original set and its CP01 binding. Use requires
+completed publication, separate validation and acceptance; a partial/unaccepted tail
+forbids fallback to an older anchor.
+
+**Reference validation generation**: One immutable predecessor-bound `validation-events/n`
+slot for exactly one permitted factual bootstrap-publication, staged-receipt or final-
+receipt validation kind. It does not replace issuance or authorize initialization.
+
+**Reference close generation**: One immutable predecessor-bound `closes/n` slot for
+the distinct closer's acknowledged original-obligation close on the exact current
+anchor/revision/disarm/CP03 basis, outside sealed revisions. An old close cannot answer
+a new qualification or partial successor.
+
+**Reference failure disposition**: Independently accepted immutable failed-tail
+evidence preserving original extents, unknowns and unperformed work. It leaves DISARMED,
+certifies no failed record's success and restores no permit. Its checkpoint/trust-base
+placement remains required replacement work.
+
+**Reference ROOT purpose**: `INITIALIZE_ONCE` authorizes only the named one-time
+initialization from independently established never-initialized state in the live ROOT
+continuation; `REANCHOR_ONLY` authorizes a successor anchor and affected validation/
+qualification suffix without initialization. Unknown or partial permission state
+refuses. Recovery before any initializer dispatch remains a separate human decision.
 
 **Reference operation stage**: Q is earlier instrument qualification; P is fresh
 invocation-specific validation before intent/consumption; A is evidence first obtained

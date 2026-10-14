@@ -47,22 +47,25 @@ with independent original authors/executors and producer/repairer/runner exclusi
 [LIVE release](application-reference-evidence.md#independent-live-release-and-role-selection)
 stays disarmed through accepted final requalification/audit/distinct k244 close; only its
 freshly human-appointed foreground supervisor originates one k245 invocation. Receipt/proof/release
-possession and copied review/run/commit supply no authority. K323's complete replacement for k321's findings requires whole review/every integration before k269. This design supplies no finite subject or native/private eligibility.
+possession and copied review/run/commit supply no authority. K328 finds k323 incomplete; k330 decisions and complete k331/k332 replacement/review/every integration precede k269. This design supplies no finite subject or native/private eligibility.
 
-The [complete k323 replacement](application-reference-input-partition.md#complete-k323-replacement)
-reconciles all eight original findings and original duties, with a new complete unconsumed
-[documentary membership](reference-practical-admission-replacement-membership.json).
-K324's composed Safari walk and k326's same-invocation bootstrap, original holder,
-append-only anchors/closes and manual About/fresh-P order now have whole correspondence.
-Mandatory whole-k323 review/every earned integration precedes k269; no actual original,
-control, authority, instrument/native qualification or finite subject is supplied.
-K244/k242 stay live, pass unused and all useful/generated/VM/private/product duties remain.
+The [k328 integration and required replacement](application-reference-input-partition.md#k328-integration-and-required-replacement)
+records every grounded finding against k323 at f4d399f3caa2. K330 settles the two new
+recovery/About choices; complete checkpoint-recovery design k331, mandatory whole review
+k332 and every earned integration precede k269. CP01 publisher wording and the glossary
+are repaired; recovery placement, pre-tool selection/holder/fd trust, original launcher
+records and repeatable trust slots remain design work. The
+[integration-only documentary candidate](reference-practical-admission-integration-membership.json)
+records saved inputs and unresolved duties; k323's membership is historical. No accepted
+construction input, original, control, authority, qualification or finite subject follows.
+Normative/actually consumed edits disarm and require affected requalification. K244/k242
+stay live, pass unused and all useful/generated/supported-VM/native/private/product duties remain.
 
 The [practical admission design](application-reference-input-partition.md#coherent-k320-replacement)
 is k320's proposal under actual k319, reviewed as defective by k321. K322's
 integration places the complete bootstrap/publication/successor/composed-Safari/About/
-stream-holder repair in k323; mandatory whole-k323 review/every earned integration precedes
-k269. The linked k320 schedule is historical proposal evidence, not a construction identity. The [historical k320 boundary](application-reference-input-partition.md#coherent-k320-replacement)
+stream-holder repair in historical k323. K328 finds the protocol incomplete;
+k330 decisions, k331 replacement and k332 whole review/every earned integration precede k269. The linked k320 schedule is historical proposal evidence, not a construction identity. The [historical k320 boundary](application-reference-input-partition.md#coherent-k320-replacement)
 compares original duties and precise missing work. Independent SCRATCH bootstrap/tool/
 initializer-validator/close-publisher originals are ready before CP01; ARTIFACTS accepts
 actual mechanics, ROOT authorizes one initialization and CP02 accepts actual outputs.
@@ -83,7 +86,7 @@ search-only ancestors. Only the two exact Safari positions may take the checked 
 search-only transition in its own link operand. The [composed Q01 slice](application-reference-evidence.md#composed-safari-walk-and-q01-specimens)
 evaluates the separately admitted nested link, resumes the saved app suffix, checks both
 held roots and charges two expansions to one 32 budget; all other outside steps refuse.
-Whole-k323 design correspondence/membership is complete; mandatory whole review/every earned integration remains before k269. Finite LV version alternatives
+K328 finds k323 incomplete; k330 decisions and complete k331/k332 repair/review/every earned integration remains before k269. Finite LV version alternatives
 retain exact vendor/structural prefixes and explicit residual refused-copy duties. Complete H/R
 exceptions with E default replace fragments/report-driven refresh; full actual consumed
 bytes/original/basis/read/phase/absence and original R retained duties remain. Historical

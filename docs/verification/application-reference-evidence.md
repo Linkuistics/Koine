@@ -11,8 +11,8 @@ and product/native qualification remain separate evidence obligations.
 ## Review integration and required decisions
 
 Original reviews, actual answers, their dispositions and current construction/delivery
-observations are in the separate [practical admission report](application-reference-input-partition.md#complete-k323-replacement),
-including the [review integration and required replacement](application-reference-input-partition.md#k321-integration-and-required-replacement).
+observations are in the separate [practical admission report](application-reference-input-partition.md#k328-integration-and-required-replacement),
+including the current whole-review classifications and required replacement placement.
 The canonical [exact amendment comparison](application-population-metadata-shape.md#line-by-line-original-obligation-comparison)
 and selected sections below own the rules; this reporting locator is never a measured input.
 
@@ -1076,9 +1076,10 @@ CP01-ARTIFACTS uses the trusted original short entry's full ready manifest and o
 byte/member/control comparison results, not a result computed by the still-unaccepted
 engine. The original direct confirmation bytes/reasons are retained in this foreground
 invocation's declared output/context stream; they give no authority to an unaccepted
-publisher. After ARTIFACTS accepts the registrar mechanics, its accepted publication
-procedure may bind those earlier exact direct acts, and ROOT authorizes their exclusive
-bootstrap publication. It cannot substitute an act or approve a future result. ROOT
+publisher. After ARTIFACTS accepts the Reference Bootstrap Publisher's mechanics, that
+publisher may bind those earlier exact direct acts, and ROOT authorizes their exclusive
+bootstrap publication. Antony's trust registrar gains no bootstrap capability by implication.
+The publisher cannot substitute an act or approve a future result. ROOT
 and CP02–CP05 use the now-accepted engine's full ready manifests. Each confirmation
 binds its complete earlier manifest without reciting every byte; no first-use engine
 result or future registrar record supplies either earlier trust act. The nonce is fresh under the qualified entropy
@@ -1223,8 +1224,10 @@ The controls test this order with otherwise valid scratch operands: unaccepted m
 future CP02 substituted as initialization authority, missing CP01-ROOT, failed bootstrap
 acknowledgement and attempted second initialization must refuse before the respective act.
 CP01 contains several direct ready-object judgments, as CP05 contains ACCEPT/APPOINT;
-five checkpoints does not mean five confirmations. No hidden sixth ceremony, cross-session
-appointment or unspecified concurrent owner execution is required by this placement.
+five checkpoints does not mean five confirmations. A route with an unplaced failure
+acceptance or unspecified predecessor trust/record is incomplete. Before use its exact
+selected checkpoint placement must be explicit, with no hidden sixth ceremony,
+cross-session appointment or unspecified concurrent owner execution.
 Actual required originals/feasibility still need independent qualification; a missing
 boundary names its exact work and trade-off before use, never a claimed passing schedule.
 
@@ -1240,9 +1243,10 @@ use that suffix to recreate permission and needs Antony's concrete separate auth
 decision. Scope/privilege/attempt changes likewise remain separate decisions. If a newly
 required independent original cannot be ready at its first consumer under this ordering,
 state that exact dependency conflict and bounded trade-off before use; do not add a sixth
-ceremony or approve a future object. No such conflict is known from the specified dependency
-conjunction; actual required evidence remains unacquired, so realizability is a design
-placement claim for whole review, not a qualification result.
+ceremony or approve a future object. An authored schedule establishes no realizability
+or qualification when a required first-consumer, trust base or original record is
+unspecified; the complete repaired mechanism and selected human workflow must earn
+whole review before construction consumes that schedule.
 
 #### Manual About originals and fresh-P correspondence
 
@@ -1729,7 +1733,9 @@ executor, separate from that author and checked producer/repairer, runs the exac
 checker/verifier/launcher under the SCRATCH-only bootstrap origin and acquires original
 response bytes, intended reached checks and actual named process/contact results. Antony
 adjudicates and accepts/refuses those ready originals at CP01 using the independent entry;
-his accepted registrar publishes only his direct trust act. Inspection-only review and
+the accepted Reference Bootstrap Publisher publishes those CP01 direct trust acts only,
+under the separately accepted bootstrap capability and ROOT continuation. Antony's trust
+registrar gains no bootstrap capability by implication. Inspection-only review and
 every earned integration precede it. The compatibility table governs all owners, not a
 second adjudicator/executor or delegated acceptance model. Terminal checker requires the
 accepted exact inventory/artifacts/original results. Candidate PASS/copied output supplies
@@ -2546,9 +2552,9 @@ coordinate mappings. Original SHA-256 equality is deliberately not that oracle.
 
 Construction consumes the complete practical admission design only after its mandatory
 whole review/every earned integration. The current work and evidence report is
-[separate](application-reference-input-partition.md#complete-k323-replacement).
-The [review integration and required replacement](application-reference-input-partition.md#k321-integration-and-required-replacement)
-retains the historical triage; the complete replacement above locates current actual work.
+[separate](application-reference-input-partition.md#k328-integration-and-required-replacement).
+The current integration places the bounded human decisions and mandatory whole
+replacement/review before k269; historical k323 claims are no construction handoff.
 The normative [compatibility/five checkpoints](#compatible-ownership-and-bounded-sequential-schedule),
 [Q/P/C/D map](application-reference-contact-boundary.md#closed-required-blockers-and-accepted-unknowns)
 and [original R retained duties](#historical-and-reporting-exceptions) govern placement.
@@ -2559,7 +2565,8 @@ The [whole k323 comparison](application-reference-input-partition.md#every-k321-
 compares all eight k321 findings; the [original-obligation handoff](application-reference-input-partition.md#whole-original-duties-and-first-consumers)
 retains all original k273/k244/k242/k282/k291 duties under actual amendments.
 The [subsequent review integration](application-reference-input-partition.md#k321-integration-and-required-replacement)
-records k321's original dispositions; the complete boundary above records their replacement. Historical comparisons are locally
+records k321's original dispositions; the [current k328 integration](application-reference-input-partition.md#k328-integration-and-required-replacement)
+records the defects in that replacement and its required new producer. Historical comparisons are locally
 labelled in that unconsumed report; none supplies current construction eligibility.
 
 ### Construction responsibility and stability handoff

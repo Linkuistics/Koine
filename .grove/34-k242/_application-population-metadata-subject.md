@@ -1,32 +1,27 @@
 # application-population-metadata-subject-k242 — brief
 
-## Complete k323 design boundary
+## K328 integration and required replacement
 
-Reference-evidence-practical-admission-k323 combines k324's composed Safari walk,
-k326's coupled R1/R2/R5/R7 contract and k327's complete original-duty correspondence.
-The current handoff is application-reference-input-partition.md#complete-k323-replacement
-and reference-practical-admission-replacement-membership.json, a new unconsumed
-whole documentary candidate. Mandatory whole-k323 review and every earned integration
-precede reference-evidence-construction-k269. K320 and all earlier manifests remain
-immutable historical subjects, never current construction identities.
+K328 reviews k323 at f4d399f3caa2 as defective; k329 verifies every finding and repairs
+the residual CP01 publisher wording, glossary and schedule-completeness wording. Current repair placement is
+application-reference-input-partition.md#k328-integration-and-required-replacement.
+Reference-evidence-recovery-and-provenance-k330 settles the new failure-recovery/
+never-started-initialization and About host/session choices with Antony. Complete
+replacement reference-evidence-checkpoint-recovery-k331 then specifies checkpoint trust,
+launcher originals, repeatable trust records and every recovery first consumer under
+those actual answers. Mandatory whole review reference-evidence-checkpoint-recovery-k332
+and every earned integration precede reference-evidence-construction-k269. No planner
+invents the unresolved mechanism or human workflow. K323 and all older memberships are
+historical; the new integration-only documentary candidate supplies no repaired protocol
+or accepted construction input. Normative/actually consumed edits disarm and require
+affected requalification before consumption.
 
-CP01's own-terminal SOURCE/ARTIFACTS/ROOT continues synchronously through initial
-disarm/anchor publication, separate earlier-output validation and one initializer
-with a separately owned co-running staged/final validator through actual returns.
-Original no-follow holder trust precedes cmp/candidate entry; append-only anchors,
-validation-events and closes retain failed extents outside sealed revisions. Manual
-About preparation/independent comparison/ARTIFACTS acceptance precedes Q06; CP05
-refreshes/accepts the original before APPOINT and fresh P comparison. Every later
-checkpoint first checks original-holder/current-anchor continuity. Full C/K/P records,
-locators, controls, first-consumer/correction order and original duties bind.
-
-Actual originals/tools/controls/read/images/UID/build/terminal/receipt/authority are
-still missing. K244/k242/finite subject remain live, k245's single pass unused, full
-k246/k247/useful breadth/additive VM/native duties/private ineligibility/both holds
-remain. After consumption correction is offline-only, never reset/re-eligibility/
-appointment/acquisition. The older promotion/slice accounts below are historical
-boundaries; their future-work wording does not reopen this documentary producer.
-
+R3's composed Safari walk and all actual prior answers/original duties/exclusions remain.
+Actual originals/tools/controls/read/images/UID/build/terminal/receipt/authority remain
+missing. K244/k242/finite subject stay live, k245's pass unused, full k246/k247/useful
+breadth/additive supported-VM/native/private/product duties and both holds retained.
+After consumption correction is offline-only, never reset/re-eligibility/appointment/
+acquisition. This integration closes no parent and supplies no instrument qualification.
 
 ## Historical k322 integration and child decomposition
 
