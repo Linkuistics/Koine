@@ -8,27 +8,29 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-Open [the admission review discussion](index.html#discussion). K321 found eight defects
-in the k320 proposal under actual k319. K322 repairs amendment/H-default concordance,
-current pointers and stale owner wording; k323 owns the complete publication/successor/
-composed-Safari/About/stream-holder replacement, mandatory whole review and every earned
-integration before k269 planning. The [integration boundary](../../verification/application-reference-input-partition.md#k321-integration-and-required-replacement)
-locates every disposition and exact work. The [historical k320 boundary](../../verification/application-reference-input-partition.md#coherent-k320-replacement)
-retains its original comparison and unchanged membership snapshot. The diagrams show that
-proposal's intended dependencies pending the whole repair. Independent SCRATCH bootstrap/tool/
-initializer-validator originals are ready before CP01; ROOT authorizes one initialization
-and CP02 accepts actual outputs. Every CP02–CP05 starts with independent retained-original
-full-byte/member entry/engine/display/runtime/read continuity. Distinct close uses its
-accepted close-only publisher/channel after CP03 and before CP04. CP05 accepts exact
-entry then freshly appoints coexisting supervisor/checker/acquirer through true return.
+Open [the Safari composition discussion](index.html#discussion). K323 now has a focused
+first child, k324, for k321 R3's traversal slice. The [composed policy slice](../../verification/application-reference-input-partition.md#composed-safari-policy-slice)
+locates its contract and authored specimens. The app link's root check immediately
+re-enters System/Cryptexes; its nested App link uses its own cryptex entry and root check,
+immediately enters System/Volumes/Preboot/Cryptexes/App, then resumes the saved
+System/Applications/Safari.app suffix. Two expansions charge one unchanged 32 budget.
+The exact non-entry nested-link, second-app-root-step and OS-position cryptex negatives
+and both independent wrong-root checks are authored expectations, not executed controls.
 
-- [Approval → Anchor requirements before accepting proofs](index.html#diagram-native-reference-proof) — Moves independent SCRATCH mechanics before CP01, names ROOT one-init authority, shows continuity at CP02–CP05 and the close-only publisher before CP04.
-- [Admission → Bind one permission to one durable start](index.html#diagram-native-reference-admission) — Places accepted mechanics before initialization, actual outputs at CP02 and independently acknowledged close before eligibility.
-- [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact) — Adds finite Library version alternatives and the two exact checked Safari root/immediate-prefix entries while retaining every other refusal.
-- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Adds independent checkpoint continuity and close-only publication to the retained Q/P/A route.
-- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Names independent retained-original continuity and separates Safari root/LV policy from actual native evidence.
-- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Shows ready bootstrap/initializer-validator originals before CP01 and actual single-init outputs before final Q.
-- [Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Keeps the k323 replacement/review prerequisite visible while retaining every generated/useful/VM duty.
+- [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact) — Adds the composed physical order, both root checks/re-entries, suffix resumption, shared budget and isolating refusals.
+- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Makes the held adapter's nested-entry/saved-suffix and two-expansion obligation explicit.
+
+The unchanged [approval](index.html#diagram-native-reference-proof),
+[admission](index.html#diagram-native-reference-admission),
+[packaging](index.html#diagram-native-reference-packaging),
+[evidence](index.html#diagram-native-reference-evidence) and
+[population](index.html#diagram-native-population-metadata-shape) views remain discussion
+context. Their historical k320 checkpoint/publication proposal remains under k323's
+complete replacement hold. Coupled R1/R2/R5/R7 trust/publication/maintenance/observation,
+whole correspondence and final membership remain live; the closing child must cut
+mandatory whole-k323 review before k269, with every earned integration also before it.
+The [integration boundary](../../verification/application-reference-input-partition.md#k321-integration-and-required-replacement)
+retains every original finding and k322 repair. No partial child is a construction handoff.
 
 Finite Library versions keep exact vendor/structural prefixes. Only two exact Safari
 positions may take a search-only physical parent equal to held A1 root followed immediately

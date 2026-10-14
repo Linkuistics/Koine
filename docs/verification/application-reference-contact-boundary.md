@@ -185,7 +185,7 @@ materializes coordinates and originals; it cannot select which of these duties t
 
 | Required Q blocker | Exact obligation and independent applicability basis |
 | --- | --- |
-| Q01 / B1–B2 / O09/O16–O20 | Entire S/I/L/LV/K/H/nested/T/A grammar, both separately based Safari root-step/held-A1/immediate-prefix positives and wrong-root/extra-step/wrong-position/protected/unlisted/depth negatives, complete historical parents/copy ordinals and finite version positives/refusals, per-operation authorization and actual scratch held `openat`/`fstatat`/`fstat`/`readlinkat`/named inventory/fixed-file/read/closure controls, with protected/unlisted/out-and-back/link/type/name-versus-held failures. Canonical pre-lookup rule and descriptor ADR independently require them. |
+| Q01 / B1–B2 / O09/O16–O20 | Entire S/I/L/LV/K/H/nested/T/A grammar; both standalone Safari operands **and** the [composed two-link positive](application-reference-evidence.md#composed-safari-walk-and-q01-specimens), each root identity/immediate-prefix check, saved-suffix resumption and two expansions against one 32 budget. Separate negatives cover a nested link without its entry, a second root step within the app operand, cryptex root text at OS, each wrong-root check, extra step/wrong position/protected/unlisted/depth. Complete historical parents/copy ordinals and finite version positives/refusals, per-operation authorization and actual scratch held `openat`/`fstatat`/`fstat`/`readlinkat`/named inventory/fixed-file/read/closure controls, with protected/unlisted/out-and-back/link/type/name-versus-held failures, remain. Canonical pre-lookup rule and descriptor ADR independently require them. |
 | Q02 / B3 / O15/O17/O22 | Actual emitter spawn, both pipe drains, NUL framing/empty/repeated/raw slots, descriptor transfer/duplication/reuse/short reads/EOF/normal reap/true return and complete source-to-root/alias comparisons. Source/envelope contract defines the expected bytes and terminal order independently. |
 | Q03 / B4 / O21/O24 | Independently authored byte/tree/type/format/duplicate/candidate/flag/table/LocProvenance/tail/helper/alias and offline derivative positives/intended negatives, plus source review of every declared image/mapping operation. Original and generated oracles retain their distinct duties; no memory-load event is claimed. |
 | Q04 / B5–B6 / O01/O03/O04/O07/O15 | Actual retained export parser→Task→script→CLI path, fixed query intent→scratch emitter mapping, exact channel framing/nonce/domain/known-peer/fd-3 and constructed service/transfer/proxy refusal pairs. Extra edge, argument, selector, known endpoint or unmapped request must reach its intended refusal. The closed entry/operation map requires these independently of any real service inventory. |
@@ -341,9 +341,19 @@ For an admitted link whose text expands through `/Users/u` and then back into
 only A1's held search-only common ancestors and its two exact Safari root-step entries.
 For those entries only, checked physical parent identity equals the already held root and
 the next operation immediately re-enters an admitted prefix. Every other outside step
-refuses **before its first lookup/open**, not after reaching the final in-scope name. Test both separately recorded relative Safari operands/positions with held-root equality
-and immediate-prefix positives; wrong root, extra outside step/sibling, wrong position,
-protected/unlisted/deeper expansion and all other absolute/relative outside steps refuse.
+refuses **before its first lookup/open**, not after reaching the final in-scope name.
+Test both separately recorded relative Safari operands/positions and their
+[single composed walk](application-reference-evidence.md#composed-safari-walk-and-q01-specimens).
+The app operand's checked root step immediately enters `System/Cryptexes`; at its exact
+`App` link, suspend `System/Applications/Safari.app`. The separate cryptex operand takes
+its in-System parent then its own checked root step, immediately enters
+`System/Volumes/Preboot/Cryptexes/App`, then resumes that saved suffix. Each root check
+independently equals the already held A1 root; charge two expansions to the same unchanged
+32 budget. Single-step/no-other-outside limits apply to each operand; an outer entry
+cannot admit a nested link or another root step in its own text. Freeze the contract's
+exact non-entry nested-link, second-app-root-step and OS-position cryptex negatives and
+their first refused operations, alongside wrong-root/extra-step/sibling/protected/unlisted/
+deeper and all other absolute/relative outside refusals.
 Include lexical simplification that would erase the
 outside step. B1/B2/B3/B5/B6's required named scratch controls reject listing/read/proxy/
 identity/descriptor requests around those refusals; success cannot prove unobserved native

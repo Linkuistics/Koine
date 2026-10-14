@@ -301,8 +301,13 @@ CP04 eligible basis, and CP05 accepts exact entry then freshly appoints coexisti
 supervisor/checker/acquirer through true return. Terminal metadata is cooperative context,
 not human authentication. Durable disarm precedes changes/Q; records/images appoint nobody.
 Finite System framework/version/helper/nested and Preboot cryptex productions retain
-separate link/ancestor entries and the two exact checked held-root/immediate-prefix exceptions; every other outside step refuses. Historical syntax
-proves no current link/TCC/presence fact. Complete H/R exceptions with E default replace
+separate link/ancestor entries and the two exact checked held-root/immediate-prefix exceptions.
+The [composed Safari rule](docs/verification/application-reference-evidence.md#composed-safari-walk-and-q01-specimens)
+scopes each exception to its own operand, evaluates the admitted nested cryptex link,
+then resumes the saved app suffix with two expansions against the shared 32 budget.
+Every other outside step refuses. Whole-k323 lifecycle/correspondence/membership/review
+remains due before construction. Historical syntax proves no current link/TCC/presence
+fact. Complete H/R exceptions with E default replace
 individual fragments/report-driven refresh. Whole actual consumed-byte/original/basis/
 read/phase/absence and retained original R duties remain; required missing actual identities
 stay null with exact work before consumers. K295's required build/peer/terminal originals

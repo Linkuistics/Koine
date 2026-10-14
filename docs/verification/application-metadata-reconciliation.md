@@ -71,7 +71,10 @@ cooperative context, not human authentication. Durable disarm precedes changes/Q
 Closed Q/P/C/D and exact T/A rules include finite System framework/version/helper/nested
 and Preboot cryptex productions with separate app-position/cryptex-component links and
 search-only ancestors. Only the two exact Safari positions may take the checked held-A1-root/immediate-prefix
-search-only transition; all other outside steps refuse. Finite LV version alternatives
+search-only transition in its own link operand. The [composed Q01 slice](application-reference-evidence.md#composed-safari-walk-and-q01-specimens)
+evaluates the separately admitted nested link, resumes the saved app suffix, checks both
+held roots and charges two expansions to one 32 budget; all other outside steps refuse.
+Whole-k323 lifecycle/correspondence/membership/review remains due. Finite LV version alternatives
 retain exact vendor/structural prefixes and explicit residual refused-copy duties. Complete H/R
 exceptions with E default replace fragments/report-driven refresh; full actual consumed
 bytes/original/basis/read/phase/absence and original R retained duties remain. Historical

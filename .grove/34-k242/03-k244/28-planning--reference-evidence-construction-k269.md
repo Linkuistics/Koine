@@ -7,6 +7,13 @@ admission design and all k267 classifications before reference-evidence-replay-k
 
 ## Context
 
+K323 is a node. Its first child reference-evidence-safari-composition-k324 specifies
+R3's composed physical walk and Q01 positive/negatives, not a construction handoff.
+Each operand keeps its own root-step limit; the nested admitted cryptex entry resumes
+the saved app suffix, with both held-A1 checks/immediate re-entries and two shared-budget
+expansions. Require the complete later coupled lifecycle/correspondence/membership and
+whole-k323 review/every earned integration before this planner.
+
 Consume the complete reference-evidence-practical-admission-k323 replacement after its
 mandatory whole-producer review and every earned integration. K321's original review at
 4304ad5f46d7 finds k320 at 5fb818ab8125 defective; k322 records three direct concordance/

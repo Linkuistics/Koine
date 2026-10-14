@@ -23,6 +23,10 @@ Distinct close publishes through its accepted close-only channel after CP03/befo
 Only CP05's fresh own-terminal ACCEPT/APPOINT and complete Q/P can precede the single A.
 The complete S/I/L/LV/K/T/A grammar includes only the two checked Safari root exceptions;
 no historical syntax supplies current identity, topology, TCC or version facts.
+K323's first child k324 specifies their complete nested composition, both root checks
+and immediate re-entries, saved app suffix and two expansions against one 32 budget.
+Its remaining coupled lifecycle/final membership/whole review stays required; the
+traversal slice alone is no construction or acquisition handoff.
 
 Consume the whole reviewed k323 practical replacement and actual k244/CP01–CP04 qualifications,
 CP05/P/A frozen original and independently verified k245 derivatives/roles, or their precise

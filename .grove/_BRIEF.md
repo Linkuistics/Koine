@@ -244,6 +244,12 @@ construction identities. Required actual originals/tools/controls/read/images/UI
 terminal/receipt/authority remain missing. K244/k242 stay live, one pass unused, full
 k246/k247/useful breadth/additive VM/native placement/private ineligibility/both holds remain.
 
+K323 is now a design node. Its first child reference-evidence-safari-composition-k324
+specifies R3's complete composed Q01 walk: each admitted operand's own root limit,
+both held-A1 checks/immediate re-entries, nested-link suffix resumption and two shared-
+budget expansions with isolating refusals. Shared R1/R2/R5/R7 lifetimes and the full
+closing correspondence/membership/review remain live; no partial child permits k269.
+
 ## Historical k320 proposal reviewed as defective by k321
 
 Reference-evidence-practical-admission-k320 replaces the defective k315 proposal at

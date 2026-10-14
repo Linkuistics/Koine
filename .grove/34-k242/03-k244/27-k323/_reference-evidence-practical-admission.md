@@ -1,4 +1,4 @@
-# reference-evidence-practical-admission-k323
+# reference-evidence-practical-admission-k323 — brief
 
 
 ## Goal
@@ -110,3 +110,28 @@ source-and-image/action/compatibility/native duties remain. Private eligibility 
 and both product holds remain. Actual consumed changes disarm/requalify; unconsumed report
 edits do not regenerate fragments or grant authority. Post-consumption corrections remain
 offline re-derivation/independent verification, never reset/re-eligibility/another pass.
+
+## Decisions (running log)
+
+The whole replacement exceeds one focused design session. Its current C/K/P/report
+surface alone spans more than five thousand lines, with the selected permission,
+original registers, tables, immutable historical subjects and seven views also binding.
+Decompose without weakening any Goal, Required coherent repair or Done when above.
+The first child completes R3's composed Safari walk through the contract, authored
+controls and presentation, an independently checkable policy slice. A later child keeps
+R1/R2/R5/R7 together across first trust, publication, maintenance and human observation;
+it owns the remaining full correspondence, final replacement membership and whole-node
+review handoff. No partial child is a construction input, accepted current membership,
+qualified instrument or closed finite subject. The closing child must cut mandatory
+review-design of reference-evidence-practical-admission-k323 before k269 and supply
+only its own Creator evidence. Every earned integration also precedes k269.
+
+## Decomposition
+
+Reference-evidence-safari-composition-k324 owns the complete composed traversal slice
+and its relevant contract/Q01/summary/presentation correspondence. The later
+reference-evidence-practical-admission-lifecycle-k325 keeps R1/R2/R5/R7 together and
+owns complete final correspondence/membership plus whole-k323 review before k269.
+The original closing conditions above bind this whole node; no child-only design,
+membership, review or unavailable-proof statement satisfies them. No implementation
+leaves are cut here and k244/k242/finite-subject closure remains separate actual work.

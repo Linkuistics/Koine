@@ -1910,9 +1910,9 @@ App-position and cryptex-component links have **distinct** entries:
 | Link entry | Parent/component and permitted expansion; A1 operation |
 | --- | --- |
 | I/S/L app-position link | At an emitted app position, no-follow type then separately admitted readlinkat at its held parent; absolute expansion matches complete S/I/L/K/T4/T5 and uses held A1 root. Relative steps stay in prefixes except the separate exact Safari entry below. Directory-positive grants no link operation. |
-| Exact `/Applications/Safari.app` app-position root-step entry | Historical text `../System/Cryptexes/App/System/Applications/Safari.app` from k94 (26.6.2 syntax only). From held `/Applications`, admit exactly one search-only physical parent operation; its returned held identity must equal already held A1 `/`. The immediately next component is `System` under its admitted complete K production; no other outside step/lookup/listing. Wrong held root or entry/position refuses before re-entry. |
+| Exact `/Applications/Safari.app` app-position root-step entry | Historical text `../System/Cryptexes/App/System/Applications/Safari.app` from k94 (26.6.2 syntax only). From held `/Applications`, admit exactly one search-only physical parent operation in this link operand; its returned held identity must equal already held A1 `/`. The immediately next component is `System` under its admitted complete K production; this operand permits no other outside step/lookup/listing. A nested independently admitted link uses its own entry and then resumes this operand's saved suffix, as below. Wrong held root or entry/position refuses before re-entry. |
 | K App/OS cryptex-component link | At exact `/System/Cryptexes/(App|OS)` or `/System/Volumes/Preboot/Cryptexes/(App|OS)`, no-follow type then separate readlinkat. Expansion/suffix matches K/S; absolute reset or physical in-/System relative steps, except the separate exact App entry below. UUID/private/preboot/protected/unlisted/outside-then-back still refuse. |
-| Exact `/System/Cryptexes/App` cryptex-component root-step entry | Historical text `../../System/Volumes/Preboot/Cryptexes/App` from k110 (26.6.2 syntax only). First physical parent from held Cryptexes stays in System; second is the one reviewed search-only root step, whose held result must equal A1 root. Immediately enter `System/Volumes/Preboot/Cryptexes/App` with the remaining suffix matching K-Preboot. No analogous OS/other-position exception. |
+| Exact `/System/Cryptexes/App` cryptex-component root-step entry | Historical text `../../System/Volumes/Preboot/Cryptexes/App` from k110 (26.6.2 syntax only). First physical parent from held Cryptexes stays in System; second is this operand's one reviewed search-only root step, whose held result must equal A1 root. Immediately enter `System/Volumes/Preboot/Cryptexes/App`; then resume the suspended caller's suffix matching K-Preboot. No analogous OS/other-position exception. |
 
 The complete historical packet baseline[137] records literal `/Applications/Safari.app`
 and resolved `/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app`.
@@ -1923,6 +1923,59 @@ positions, physical intermediate identities/operations and immediate re-entry ch
 Actual link text and actual held-root equality first occur in A; historical syntax cannot
 supply either. A different current expansion must pass its own already frozen finite
 entry or retain truthful refused/incomplete evidence. No target probe is added.
+
+#### Composed Safari walk and Q01 specimens
+
+Each exact Safari entry's single-root-step/no-other-outside rule is scoped to **its own raw link
+operand**. Evaluate physical components in order, retaining the held parent and the
+unconsumed suffix for each suspended operand. When a component is itself a link, its
+separate position-specific no-follow/readlink/expansion entry must already be admitted;
+the outer entry grants it no operations. Suspend the outer suffix, evaluate the nested
+operand relative to that link's own held parent, then resume the saved suffix from the
+nested result. Returning to the outer operand grants no second root step in that
+operand. Immediate prefix re-entry applies after each entry's own checked root step,
+before any other component operation. No lexical cancellation, generic ancestor-link
+permission or new root open follows from composition.
+
+The independent Q01 author freezes the following **single composed positive** in
+addition to the two standalone operand positives. Its expected identities are authored
+scratch/simulated values, never historical values substituted for current A facts. The
+policy owner admits only the listed next operation; the held adapter performs that
+operation and records the raw text, identity and performed/unperformed prefix.
+
+| Order | Active operand and physical operation | Required result before continuing |
+| --- | --- | --- |
+| 1 | From already held A1 `/`, enter `Applications` search-only; at `Safari.app`, use its separate no-follow type and admitted `readlinkat` entry. Read app operand `../System/Cryptexes/App/System/Applications/Safari.app`. | Complete raw operand passes its exact entry; expansion 1 of the shared 32 budget. |
+| 2 | App operand: obtain physical parent `..` from held `/Applications`. | Held `fstat` identity equals the already held A1 `/`; a wrong/unknown result refuses before re-entry. No root listing/read/sibling lookup. |
+| 3 | App operand: immediately enter `System`, then `Cryptexes`, using the admitted A1 search-only sequence. At `App`, its separate no-follow type identifies the nested link. | No outside component intervenes. Save the app operand's unconsumed `System/Applications/Safari.app` suffix; do not open `App` as an ordinary directory or read its contents. |
+| 4 | Nested cryptex operand: at exact `/System/Cryptexes/App`, use its own admitted `readlinkat` entry. Read `../../System/Volumes/Preboot/Cryptexes/App`. | Complete raw operand passes its separate exact entry; expansion 2 of the same shared 32 budget. |
+| 5 | Cryptex operand: first physical `..` from held `/System/Cryptexes` reaches held `/System`; second physical `..` is its permitted root transition. | First step remains in-prefix; second held `fstat` identity independently equals already held A1 `/`. A wrong/unknown second result refuses before re-entry even if order 2 passed. |
+| 6 | Cryptex operand: immediately enter `System`, then `Volumes/Preboot/Cryptexes/App`, each under its admitted K-Preboot/A1 operation entry. | No sibling/dot/outside operation; the nested operand is fully consumed at its checked result. |
+| 7 | Resume the app operand's exact saved `System/Applications/Safari.app` suffix from that nested result. | Final walk spelling is `/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app`, matching the separate historical baseline[137] spelling basis; checked directory identity is still an actual scratch/A outcome. |
+
+The composed positive consumes **two link expansions**, with one monotonically shared
+counter for the whole walk. Neither operand suspension, nested return nor checked root
+transition resets/refunds it. Existing 31/32/over-budget and other link/type/race/refusal
+controls remain; a further link requires its own already admitted entry and remaining
+budget. These seven rows assume the authored specimen has exactly the two links, not
+that the current installation has them. Each parent hold and prefix component retains
+the ADR/A1 no-follow search-only flags, held/named identity checks and lifetime rules.
+
+Author these isolating negatives with exact raw bytes and the first refused operation:
+
+| Refusal specimen | Expected boundary |
+| --- | --- |
+| After the composed fixture resumes its saved suffix, nested `System` at `/System/Volumes/Preboot/Cryptexes/App/System` is a link with fixture text `../../../../../System/Volumes/Preboot/Cryptexes/App/System`, but has no separate link entry. | Preserve the admitted no-follow link-type result and refuse **before readlinkat** at this unlisted position. The known fixture text grants no read or root operation; the outer Safari entry cannot lend its exception. |
+| App operand is `../System/../System/Cryptexes/App/System/Applications/Safari.app`. | Whole-observed-operand classification rejects its second root step within the same app operand before any expansion operation. The first valid-looking root/re-entry does not authorize the second; do not simplify it away. |
+| The admitted generic `/System/Cryptexes/OS` link supplies the cryptex App operand `../../System/Volumes/Preboot/Cryptexes/App`. | Preserve its separately permitted readlink result, then reject the root-step expansion before any expansion operation: OS has no App-position root-step exception. |
+| In the otherwise positive composed specimen, independently replace the returned root identity at order 2 or order 5 with a different/unknown identity. | Each test refuses immediately after its performed parent hold and before that entry's `System` re-entry; one successful root comparison never covers the other. |
+
+Root sibling/extra dot/non-immediate re-entry, protected/unlisted/deeper components,
+unadmitted nested links, type/identity races and all other outside steps retain their
+existing refusals. Classification of the entire observed operand precedes its next
+operation; an already visible forbidden step is not partly executed to demonstrate
+failure. No specimen executes a target lookup, establishes current Safari topology or
+adds a control result: original independently executed Q01 outcomes remain required.
 
 The root-step operation is a physical `..` from the held directory, using the ADR's
 search-only parent hold and fstat identity comparison, never lexical cancellation or a
@@ -1955,7 +2008,7 @@ separate result/adjudication binding. They are authored expectations, not execut
 | Unversioned framework root and each exact Contents/Helpers/Resources/Support/SharedSupport/Agents suffix; top and one nested framework with independent optional versions | Version containing slash/NUL/dot, extra arbitrary support descendants or a third framework level; refusal before its lookup. |
 | Saved ApplicationServices/ATS and SpeechSynthesis parent shapes; nested app `Contents/(Applications|Helpers|XPCServices)` and framework resource/helper suffixes | Lost nested-app association, directory-positive used as link permission, unlisted XPC/support form or descendant-file/localization link. |
 | Direct K-short and K-Preboot App/OS paths, including Safari baseline[137]'s complete resolved spelling; independent A1 search-only ancestor sequences | UUID/arbitrary Preboot child, `/private/preboot`, Data/private, Data/Users or protected component; no ancestor listing/read-mode handle. |
-| Two separately authored historical relative Safari texts: exact app-position and exact cryptex-component entries; controlled held physical root equality then immediate K/Preboot re-entry | Wrong-root returned identity; extra outside component/dot or root sibling; swapped/wrong entry/position (including OS); missing A1; protected/unlisted/extra-depth expansion. Refuse before the affected re-entry/lookup; retain original raw text/physical prefix. |
+| Both standalone historical Safari operands and the complete composed two-link Q01 specimen above: app root check/re-entry, nested cryptex root check/re-entry, saved `System/Applications/Safari.app` resumption, two shared-budget expansions | Each root check fails independently; nested link without its own entry; second root step within the app operand; cryptex App root text at OS; extra outside component/dot/sibling, missing A1 and protected/unlisted/deeper expansion. Refuse at the exact authored boundary above; retain original raw text/physical prefix. |
 | Relative steps inside prefixes; absolute reset through held A1; only the two exact accepted Safari root-step positives | Every other relative root escape or absolute outside-then-back, extra step/sibling, nonmatching prefix and lexical cancellation refuses before its first unadmitted operation. |
 | Each LV recorded version plus changed-version positives (Google 157.1.9000.2; WaveDNA 2.0.1.PJBS0020 and 2.0.1.SMOKE018; framework B and Python 3.10) under its unchanged exact prefix | Empty/dot/slash/NUL/protected c; malformed nv/wv, wrong vendor/framework/build tag, extra depth, version link without its entry or outside/protected link expansion. Unchanged totals/reassigned ordinals do not pass whole correspondence. |
 
