@@ -1,4 +1,4 @@
-# reference-evidence-publication-completion-k338
+# reference-evidence-publication-completion-k338 — brief
 
 
 ## Goal
@@ -57,3 +57,32 @@ additive supported-VM/native/private/product duties and both holds remain. Exist
 k332/every earned integration precedes k269; no duplicate review and no Creator on k332
 until actual closing k336. Decompose further at useful complete boundaries if needed,
 retaining every original obligation rather than claiming a prefix complete.
+
+## Decisions (running log)
+
+The last-writer obligation exposes a requirements boundary before any further kind or
+locator can become usable. Under the literal requirement that every publication writer's
+last acknowledgment and terminal return must themselves be retained by another publication
+writer, no finite closed set can finish. The existing non-recursive semantic acceptance
+rule does not explicitly exempt the final recorder's terminal evidence. Complete a bounded
+causal analysis and concrete trust-boundary choice first; leave the whole original Goal/
+Done when above on this node, unchanged. A requirements child must obtain the actual
+choice before the remaining publication design, then k335 and closing k336. This is not
+an initialization route, a waiver, a complete original-publication design or a whole
+replacement membership. No new record kind, capability or observation is admitted here.
+
+The initial jj change was empty. Tier 2 graph generation 2026-09-29T10:36:20Z excludes
+docs and reports changed/untracked documentary metadata. Direct current and original
+review reads are the evidence; no structural code claim is made. Whole k332 is already
+scheduled, so no in-session reviewer or duplicate review is materialized. The finite
+last-event argument needs no native experiment or model implementation: its conditional
+premises, counterexamples and reversal condition will be explicit in the report.
+
+The child order is reference-evidence-final-writer-boundary-k339 (conditional conflict
+and concrete choice) → reference-evidence-final-writer-trust-k340 (actual requirements
+answer) → reference-evidence-publication-completion-k341 (all remaining original terminal/
+CP02/repeatable-trust design and full k338/k334 closure comparison). K339 selects no
+exception and completes no publication route. K340 must obtain a concrete disposition
+if the proposed finite boundary is rejected without another mechanism; no repeated
+identical recorder-chain impasse is useful. Every original Goal/Done when above remains
+the closing check; k335/k336/existing whole k332 retain their separate original duties.

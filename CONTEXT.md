@@ -326,6 +326,11 @@ k332 and every earned integration precede k269. CP01 publisher wording and the g
 are repaired; k333 specifies the pre-tool selection/holder/fd path and k337 the first
 publisher-terminal original. Complete last-writer/terminal/trust publication and hosted
 recovery remain live design work under k334/k331. The
+[final-writer dependency boundary](docs/verification/application-reference-input-partition.md#final-transcript-writer-dependency-boundary)
+identifies why a finite publication set cannot retain its own final writer's later
+acknowledgment/return without an explicit stopping boundary. The bounded terminal-tail
+proposal remains unselected; a requirements decision precedes complete publication design.
+No required fact has become an accepted unknown or usable partial route. The
 [integration-only documentary candidate](docs/verification/reference-practical-admission-integration-membership.json)
 records k329's saved boundary and unresolved duties; later selected edits need k331's new membership. K323's membership is historical. No accepted
 construction input, original, control, authority, qualification or finite subject follows.

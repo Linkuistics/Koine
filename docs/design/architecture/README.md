@@ -18,15 +18,18 @@ logout alone do not invalidate Q06 or force CP01; labels do not prove host subst
 absent. K331 replaces the coupled protocol, and k332 whole review/every earned integration precedes
 k269. K331 is decomposed: k333 supplies the proposed pre-tool selection/holder/fd path;
 K337 supplies only the publisher-terminal original prefix under k334; k338 retains full
-initializer/validator/last-writer terminal closure and repeatable trust records. Hosted
+initializer/validator/last-writer terminal closure and repeatable trust records. Its first
+child k339 isolates a conditional last-publication conflict; k340 must obtain the actual
+terminal-evidence boundary choice before k341 completes the publication design. No
+proposed limit is selected. Hosted
 recovery and whole reconciliation remain live. No partial child or planner supplies
 the complete mechanism.
 The [integration-only candidate](../../verification/reference-practical-admission-integration-membership.json)
 records saved current inputs and unresolved duties; k323/older memberships stay historical.
 Normative/actually consumed changes disarm and require affected requalification.
 
-All seven D2 sources, regenerated exports, captions and discussion markers show this
-replacement order. Their remaining traversal/lifecycle paths are reviewed proposals;
+The admission view shows this current decision boundary; the other six sources/exports
+remain unchanged context for the surrounding replacement order. Their traversal/lifecycle paths are reviewed proposals;
 R3's composed Safari rule and every original duty remain. No actual tool, original,
 control, receipt, authority, instrument/native qualification or finite subject is supplied.
 K244/k242 remain live, pass unused, full k246/k247/useful/additive supported-VM/native/
@@ -34,20 +37,31 @@ private/product duties and both holds retained. Render/source checks establish n
 pass. K326's narrow-layout and unverified dark/Safari limits and k316's separate viewer
 defect remain live with their actual owners.
 
-## Launcher original publication discussion
+## Final transcript boundary discussion
 
-Open [Admission → Publish launcher originals before validation](index.html#diagram-native-reference-admission).
-The publisher returns before the launcher can publish an original of that return.
-The recorder's actual write/flush acknowledgments belong to a later frame, consumed by
-the separate bootstrap validator. The diagram keeps these facts in physical order and
-shows recorder/validator-death boundaries. This is k337's first k334 design slice only;
-the remaining terminal/finalization/CP02/trust protocol in k338 is required before use.
-K335 hosts recovery, k336 reconciles the whole artifact/membership, then existing k332
-whole review/every integration precedes k269. No actual original or authority follows.
+Open [Admission → Decide the final transcript boundary](index.html#diagram-native-reference-admission).
+If every writer's final acknowledgment/return must be retained by another publication,
+the last publication needs a later one. The diagram exposes this conditional contradiction
+and the concrete choice before completion. K340 must obtain Antony's answer: explicitly
+bound the final-recorder/outer-receiver terminal evidence, accepting an unarchived-tail
+risk, or preserve the requirement with the route unavailable pending a concrete different
+root/workstream decision. Neither is selected. The proposed receiver uses no new API or
+manual terminal-observation exception. Later content equality does not prove omitted
+past flush/reap. Existing non-recursive semantic acceptance supplies no terminal original.
 
-- [Admission → Publish launcher originals before validation](index.html#diagram-native-reference-admission) — Replaces the broad historical admission path with the exact original/acknowledgment/validator prefix and the still-live completion boundary.
-- [Launcher original before bootstrap validation](../../verification/application-reference-evidence.md#launcher-original-before-bootstrap-validation) — Defines the recorder capability, exact predecessor-bound record/frame/locator and independent first-consumer/death controls.
-- [Launcher original publication slice](../../verification/application-reference-input-partition.md#launcher-original-publication-slice) — Names the precise remaining terminal/trust/recovery and whole-review handoff.
+K337's earlier publisher-terminal prefix remains documented in its exact contract;
+this view now focuses on the unresolved final boundary. K338/k334 retain every original
+duty. K341 must finish terminal/finalization/CP02/repeatable trust contracts after the
+answer; k335 hosts recovery and k336 reconciles the whole artifact/membership before
+existing k332 whole review/every integration and k269. No usable partial route follows.
+
+- [Admission → Decide the final transcript boundary](index.html#diagram-native-reference-admission) — Replaces the prefix focus with the conditional last-event conflict, unselected alternatives and remaining consumer order.
+- [Final transcript writer dependency boundary](../../verification/application-reference-input-partition.md#final-transcript-writer-dependency-boundary) — States the exact premise, recommended evidence limit, residual failure risk and preserved missing duties.
+- [Koine language](../../../CONTEXT.md#language) — Links the unresolved final-writer boundary without granting a new accepted unknown or partial route.
+
+Unchanged contract context: [Launcher original before bootstrap validation](../../verification/application-reference-evidence.md#launcher-original-before-bootstrap-validation),
+[source-rooted selection](../../verification/application-reference-evidence.md#closed-pre-tool-reads-and-deterministic-selection)
+and [five checkpoints](../../verification/application-reference-evidence.md#compatible-ownership-and-bounded-sequential-schedule).
 
 Regenerate with `task design:application-population-metadata-shape-render` (D2 0.9.0,
 Dagre, themes 0/200). Only the admission source/export/caption is marked changed in this

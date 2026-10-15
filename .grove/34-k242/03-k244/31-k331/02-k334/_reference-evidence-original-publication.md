@@ -78,3 +78,12 @@ acknowledged finalization, exact CP02/repeatable trust outputs and whole k334 re
 before hosted recovery k335. K337's prefix alone authorizes no initialization, final
 selection, construction or recovery. No required original has been dropped or supplied;
 every original Done when above remains the node's closing check.
+
+K338 in turn decomposes at the final-transcript evidence endpoint. K339 isolates the
+conditional finite-closure conflict and concrete unselected bounded-tail/strict choices;
+k340 obtains the actual requirements decision, then k341 completes every original
+publication obligation. Another recorder alone cannot retain its own later terminal
+evidence. No original requirement is silently waived and no partial route is usable.
+This node's complete original Goal/Done when remains unchanged; k335 receives exact
+ready/failure facts only after the full design, and closing k336 retains whole replacement/
+membership/seven-view reconciliation and Creator on existing k332. No new review is cut.

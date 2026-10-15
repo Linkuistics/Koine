@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
   "discussion": {
-    "title": "Publish the launcher original before bootstrap validation",
-    "status": "k337 publisher-terminal design prefix; complete k334/k331 remain live",
-    "summary": "The accepted launcher has a separate transcript-only recorder capability. After actual publisher frames, EOF and reap, it writes predecessor-bound launcher-events intent/record members. A later frame carries actual publication returns to the independent bootstrap validator. No record binds its own future acknowledgment. The initializer/final-validator/last-writer terminal join and CP02/repeatable trust outputs remain k338 work before this prefix can be used. K335 hosts failed-tail recovery; k336 reconciles the whole design and new membership. Existing whole k332 and every earned integration precede k269. Actual originals, controls, authority and finite subject remain absent; pass unused and both holds retained.",
+    "title": "Decide where final transcript evidence stops",
+    "status": "k339 conditional dependency analysis; k340 choice remains unselected",
+    "summary": "Requiring a retained original of every writer's final acknowledgment and terminal return has no finite last publication: another recorder creates a later writer. K339 isolates that exact premise. K340 must obtain Antony's actual choice between an explicit final-recorder/outer-receiver evidence limit, with unarchived terminal-tail risk, and preserving the requirement with this route unavailable. Neither proposal is selected. K338 retains every original duty; k341 completes all terminal, CP02 and repeatable trust contracts after the answer. K335 hosts failure acceptance; k336 reconciles the whole replacement and membership before existing k332 review/every integration and k269. No new kind, authority, initialization or usable partial path follows; pass unused, both holds retained.",
     "diagramIds": [
       "native-reference-admission",
       "native-reference-proof",
@@ -14,7 +14,7 @@
     "updatedDiagrams": [
       {
         "id": "native-reference-admission",
-        "summary": "Focuses on the publisher-terminal original, later post-write acknowledgment, independent first-consumer validation and exact recorder/validator-death boundaries; labels all remaining publication work live."
+        "summary": "Shows the conditional last-publication contradiction, explicit unselected terminal-tail limit, unavailable all-originals alternative and complete remaining consumer order."
       }
     ]
   },
@@ -110,11 +110,11 @@
     {
       "id": "native-reference-admission",
       "group": "native-sources",
-      "title": "Admission → Publish launcher originals before validation",
+      "title": "Admission → Decide the final transcript boundary",
       "renderer": "svg",
       "source": "native-reference-admission.d2",
       "rendered": "native-reference-admission.svg",
-      "caption": "K337 is only the first publisher-terminal slice of k334, not a complete initialization or admission route. Start with ready independently authored/executed originals and CP01-ARTIFACTS recorder-mechanics acceptance. Actual publisher return precedes its original observation record; actual recorder write/flush returns precede the separate acknowledgment frame; separate factual validation consumes those ready inputs. A record never predicts its own acknowledgment or death. Failure arrows retain exact prefixes and unavailable work, never no-dispatch proof, fallback or authority. K338 still owes every initializer/validator/last-writer terminal original, finite finalization and exact CP02/repeatable trust record. K335 hosts dispositions and k336 completes whole C/S/K/P/original-duty/seven-view/new-membership reconciliation before k332 whole review/every earned integration and k269. K330 answers and all original duties remain; actual originals/tools/controls/identities/authority are unacquired, one pass unused, both holds retained. The other six views are unchanged context. This source/render update alone supplies no browser/native/instrument qualification; earlier k316/k326 viewer limits remain with their owners."
+      "caption": "K339 identifies a conditional evidence-closure conflict, not impossibility of finite logging with an accepted trust root. If every writer's final acknowledgment/return requires another retained publication, the last publication always needs a later one. Existing non-recursive human acceptance does not itself archive the final recorder's later terminal facts. K340 must obtain the actual bounded decision: an explicit final-recorder/outer-receiver evidence limit with unarchived-tail risk, or keep the requirement and this route unavailable. Neither is selected; the proposed receiver adds no observation API or manual terminal-observation exception. A later full-byte read establishes content only, not omitted past flush/reap. K338/k334 remain live with every original duty; k341 completes all terminal/CP02/repeatable trust contracts, k335 hosts failures and k336 owns whole C/S/K/P/original-duty/seven-view/new-membership closure before existing k332 whole review/every integration and k269. No new record kind, capability, initialization route, original, control or qualified tool follows. Actual identities remain unacquired, one pass unused, both holds retained. The other six views are unchanged context; earlier k316/k326 viewer limits remain."
     },
     {
       "id": "native-reference-proof",

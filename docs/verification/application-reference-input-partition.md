@@ -22,7 +22,10 @@ K331 is now a design node. Its first child k333 specifies the
 F2 has a complete proposed enabling path and independent control specification; actual
 originals/controls/identities remain unacquired. K337 now specifies the
 [publisher-terminal original prefix](#launcher-original-publication-slice) under k334;
-k338 retains complete invocation/last-writer finalization and trust outputs. Hosted
+k338 retains complete invocation/last-writer finalization and trust outputs. Its
+[final-writer analysis](#final-transcript-writer-dependency-boundary) exposes a precise
+evidence-closure conflict: k340 must obtain a bounded trust decision before k341 designs
+the whole remaining publication protocol. Neither option is selected by this analysis. Hosted
 failed-tail recovery and whole replacement reconciliation remain live children before
 k332. A partial child supplies no construction handoff or new whole membership. Only
 the actual closing child names its provider evidence on that existing whole review.
@@ -44,6 +47,132 @@ waive no named required failure and establish no no-contact fact. K244/k242 rema
 k245 retains the one unused pass, k246 complete rewrite/helper/alias discrimination and
 k247 whole-subject/family review or precise incomplete work. Full useful breadth,
 additive supported-VM/native duties, private ineligibility and both holds remain.
+
+## Final transcript writer dependency boundary
+
+**The publication design remains incomplete.** K338 retains its entire original
+Goal/Done when and is now a node. Its first child k339 isolates the last-writer
+dependency; requirements k340 must obtain an actual bounded trust decision before
+completion design k341, hosted recovery k335 and closing reconciliation k336. The
+choice below is proposed, not selected. No new capability, kind, frame, locator,
+CP02 acceptance, usable partial chain or observation authority is admitted.
+
+### Exact conflict and its scope
+
+The [publisher-terminal contract](application-reference-evidence.md#launcher-original-before-bootstrap-validation)
+already distinguishes a frozen record from its later write/flush acknowledgment.
+The [continuation](application-reference-evidence.md#synchronous-bootstrap-publication-and-validation)
+requires actual initializer and separate staged/final-validator EOF/reap before return.
+The [generation contract](application-reference-evidence.md#append-only-anchor-and-close-generations)
+requires retained originals of publication and terminal facts, including failed extents.
+K338 expressly extends completion to the final transcript writer. K328 F3's original
+review at c368357f9eb36c59efac03988dac9c313fda9d14 requires durable originals rather
+than launcher memory. These duties cannot be discharged merely by naming another slot.
+
+The following argument is conditional on requiring **every writer's final publication
+acknowledgment and terminal return to have a retained, separately published original
+before the completed set is usable**. It does not prove that all finite logging
+protocols are impossible, or that an independently selected finite trust root could not
+work. It identifies precisely the requirement that needs a boundary:
+
+1. A writer freezes its last original's bytes before its final write, required flush
+   return and terminal return. Those later events cannot truthfully occur in that
+   frozen original. A partial write, failed flush, missing EOF or unknown reap cannot
+   be replaced with a predicted success.
+2. Another participant can observe those events and retain an original only after
+   they happen. Retaining it entails a later publication, with its own final write,
+   flush acknowledgment and terminal boundary. Changing owner, filename, generation
+   or checkpoint does not remove these events.
+3. In any finite nonempty completed publication set, choose the last publication
+   operation, including any repair/append. Its subsequent required acknowledgment/
+   terminal evidence would need a still later publication in the same usable set.
+   Either there is another publication, contradicting the choice of last operation,
+   or that evidence is absent. A cycle instead puts a future event in an earlier
+   record. An indefinitely running chain never reaches a finite first consumer.
+
+This is a causal argument about the stated evidence closure, not a measurement of
+storage or native feasibility. It needs neither a topology probe nor a protocol
+implementation. An omitted terminal requirement would falsify its universal premise;
+an explicitly accepted nonpublishing trust boundary would change that premise. No
+such exception is selected by the current last-writer charter. The
+[non-recursive acceptance rule](application-reference-evidence.md#chartered-independent-acceptance)
+already avoids asking Antony to accept every new output's future bytes. It does not
+itself retain a final recorder's actual later flush/reap or expressly waive that duty.
+
+The exact first-consumer cut is the attempted join after the last required writer's
+actual completion and before current-chain selection/CP02 acceptance credits the
+complete invocation. Earlier bootstrap validation and staged receipt binding remain
+separate live gates in their own order; this analysis authorizes none of them. The
+same issue recurs when a repeatable human trust record's final publication or failed
+disposition must itself acquire a retained final-terminal original. A later CP02,
+CP03, CP04 or CP05 record moves the cut; none closes it by its name.
+
+### Proposed bounded choice before completion
+
+Recommend putting the following explicit limit to Antony in k340. It is a change to
+the required evidence boundary, not an implementation detail or an already accepted
+opaque-contact unknown:
+
+| Choice | Exact consequence and cost |
+| --- | --- |
+| **Permit one finite terminal-evidence boundary per completed publication invocation** (recommended proposal) | Keep original received frames, actual initializer/publisher/validator writes/flushes/EOF/reaps and failure extents through one designated final durable recorder. An independently accepted, nonpublishing outer receiver observes that recorder's final acknowledgment/frame/EOF/reap under the already permitted channel/wait mechanics. Its own final return and the durable archival of those last-recorder terminal observations terminate at an explicit source/OS/cooperative trust limit. They are not claimed to have another retained original. Later independent full-byte/member/identity reads establish the retained content only; they cannot establish the omitted past flush/terminal events. This accepts the risk that a final-receiver failure or lost volatile observation leaves an unprovable terminal tail even when retained bytes look complete. The completion criteria and exact loss/refusal/recovery rules must be redesigned under that limit before use. No unknown tail becomes a no-dispatch certificate. |
+| **Retain durable originals for every writer, including the final recorder and any publisher of its terminal evidence** | Preserve the current requirement and keep this publication route unavailable. Another ordinary recorder, later checkpoint or sixth ceremony does not resolve it. A genuinely different independently accepted trust primitive would need its concrete mechanism, permitted authority and stopping boundary established first; none is selected here. If Antony does not accept a finite boundary or supply such a mechanism, obtain his concrete workstream disposition rather than grow another identical recorder chain. |
+
+The first proposal changes the evidence endpoint and would use only the existing
+channel/wait operations. Its exact receiver artifact, owner and capability still need
+complete design and independent acceptance. It requests no new observation API,
+PID/terminal scan, privileged service, signing/helper/consent posture, storage guarantee,
+human ceremony, initialization count or acquisition attempt. In particular no independent
+manual terminal observation is silently added to k295's selected About exception.
+Any necessary additional human acceptance must fit an existing named checkpoint after
+ready inputs and before its first consumer, or return as a separately explained conflict.
+The independently authored/executed control and producer/repairer/validator/Antony
+exclusions remain. Human semantic acceptance, factual validation, bootstrap publication,
+transcript observation and distinct instrument close retain their separate capabilities.
+
+Selection of the first proposal would require an exact canonical amendment and
+line-by-line comparison naming the final-recorder/outer-receiver exception. Required
+native/image/read/identity/control failures elsewhere remain blockers; the existing
+B1–B8/U1–U6 contact unknowns cannot absorb this new limit. Refusal or no answer selects
+no exception. C/K/P/S and their closed read/write/kind/locator tables therefore remain
+unchanged at this analysis boundary. Historical memberships retain their exact bytes.
+
+### Ready and unavailable handoff
+
+The following are **documentary ready inputs**, not accepted runtime originals: k330's
+actual selected answers; k333's pre-tool design; k337's publisher-terminal prefix;
+the conditional argument and two concrete alternatives above. Their source objects
+precede the next requirements/design reader. No launcher, publisher, initializer,
+validator or final recorder original/control/tool/schema/identity/authority has been
+acquired. Their actual identity/member sets remain null, not empty successful sets.
+
+| Consumer | Exact missing work before it can proceed |
+| --- | --- |
+| K340 requirements | Obtain Antony's actual choice on the explicit final-recorder/outer-receiver evidence limit or concrete stronger mechanism/workstream disposition. Do not re-interview settled five-checkpoint, contact, Safari, About, useful-breadth or one-attempt choices. |
+| K341 publication completion | Consume the actual answer, then satisfy every original k338/k334 duty: all launcher/initializer/staged-final-validator/recorder terminal and partial originals under the selected boundary; exact CP02/revision/control/CP03-results/audit/About/entry/disposition/trust.continuity kinds, members, writers, predecessors, immutable acknowledgments and selection; full C/K/P/prelude/locator/frame/descriptor/lock/offset/lifetime reconciliation before first reads. No planner invents these contracts. |
+| K335 hosted recovery | Receive exact ready/failure original sets and first consumers only after the publication boundary is decided and designed. Include final-recorder/receiver loss at every reservation/write/flush/frame/EOF/reap, and human trust-output/disposition failure. Use k330's repeated CP01 source/OS trust for unavailable-anchor recovery and a checked intact anchor only where applicable; no disposition is assumed accepted at an unspecified time. |
+| K336 closing reconciliation | Compare every original duty and finding, reconcile whole C/S/K/P/glossary/charters/seven views, freeze new whole replacement membership with unacquired identities null and historical manifests unchanged, then name its own Creator on the existing k332. This partial child supplies none of that closing evidence. |
+
+The first-consumer order is argument/choice presentation → actual k340 answer → complete
+k341 publication design → k335 hosted recovery → k336 whole replacement → mandatory
+k332 whole review/every earned integration → k269. This order contains no usable
+initialization path. Required future independent controls still include clean/partial/
+death/successor cases for **every** writer and the selected terminal boundary, plus
+lost/extra/replayed/wrong-owner/nonce/member/predecessor/identity, source-root/stream/
+generation/offset/lock/true-return failures. A chart or acyclic documentary order does
+not qualify any such control. The exact unchanged original duties remain on k338/k334.
+
+K338/k334/k331/k244/k242 stay live; k245's one pass remains unused, k246/k247 retain
+complete generated/helper/alias/whole-subject obligations, and full useful breadth,
+additive supported-VM/native/private/product duties and both holds remain. Normative
+or actually consumed edits still disarm and require affected requalification. No
+instrument/native control, authority/provisioning/initialization act, target/protected/
+topology/process/terminal probe or posture change occurs in this documentary slice.
+
+- [Admission → Decide the final transcript boundary](../design/architecture/index.html#diagram-native-reference-admission) — Shows the final-publication dependency and proposed stopping boundary before any completion consumer.
+- [Exact conflict and its scope](#exact-conflict-and-its-scope) — Separates the conditional last-event argument from a claim that all finite evidence protocols are impossible.
+- [Proposed bounded choice before completion](#proposed-bounded-choice-before-completion) — States the exact unarchived tail, accepted risk and unavailable stronger alternative for k340.
+- [Ready and unavailable handoff](#ready-and-unavailable-handoff) — Retains every original publication/recovery/reconciliation duty and names its next consumer.
 
 ## Launcher original publication slice
 
