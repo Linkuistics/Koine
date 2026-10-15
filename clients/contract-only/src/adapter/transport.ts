@@ -38,6 +38,10 @@ export interface SendResult {
   /** True when a mutation may have run even though no result was read back. */
   readonly outcomeUnknown: boolean;
   readonly data: Record<string, unknown> | null;
+  /** `Date.now()` immediately before the request was handed to the HTTP stack. Null when none was. */
+  readonly sentMs: number | null;
+  /** `Date.now()` immediately after the response body was complete. Null when it never was. */
+  readonly receivedMs: number | null;
 }
 
 const DEFAULT_TIMEOUT_MS = 20_000;
@@ -85,6 +89,8 @@ function unavailable(endpoint: Endpoint | null, transport: string): SendResult {
     transport,
     outcomeUnknown: false,
     data: null,
+    sentMs: null,
+    receivedMs: null,
   };
 }
 
@@ -106,6 +112,7 @@ async function attempt(endpoint: Endpoint, options: SendOptions): Promise<SendRe
   const where = { url: endpoint.url, instanceId: endpoint.descriptor.instanceId };
 
   let response: Response;
+  const sentMs = Date.now();
   try {
     response = await fetch(endpoint.url, {
       method: 'POST',
@@ -127,14 +134,22 @@ async function attempt(endpoint: Endpoint, options: SendOptions): Promise<SendRe
         transport: `${code} after the request was written; the mutation may have run`,
         outcomeUnknown: true,
         data: null,
+        sentMs,
+        receivedMs: null,
       };
     }
-    return { ...unavailable(endpoint, `${code} contacting ${endpoint.url}`), endpoint: where };
+    return {
+      ...unavailable(endpoint, `${code} contacting ${endpoint.url}`),
+      endpoint: where,
+      sentMs: sent ? sentMs : null,
+    };
   }
 
   let text: string;
+  let receivedMs: number;
   try {
     text = await response.text();
+    receivedMs = Date.now();
   } catch (cause) {
     const code = causeCode(cause);
     return {
@@ -146,6 +161,8 @@ async function attempt(endpoint: Endpoint, options: SendOptions): Promise<SendRe
       transport: `${code} while reading the response body`,
       outcomeUnknown: options.kind === 'mutation',
       data: null,
+      sentMs,
+      receivedMs: null,
     };
   }
 
@@ -192,6 +209,8 @@ async function attempt(endpoint: Endpoint, options: SendOptions): Promise<SendRe
     // and "Neither says whether a requested action ran."
     outcomeUnknown: options.kind === 'mutation' && classification === 'failed',
     data,
+    sentMs,
+    receivedMs,
   };
 }
 

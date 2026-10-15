@@ -1,0 +1,31 @@
+# Native-image components in one resident process; details in caption/spec.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+Start: "Start here · Client\nSelect a named operation" {class: start}
+Host: "Disclosure-capable host\nFeature gate + preflight + live grant"
+Principal: "Workspace principal\nGuarded routing + snapshot"
+Reads: "Discovery image\nLocations + applications\nPrivate fixed-file / direct-locale reader"
+Actions: "Actions image\nFour existing actions"
+Settings: "Settings image\nPublic read / prepare / reveal seams"
+UI: "Koine local explaining UI\nPrivate consent seam; no bearer route"
+Frozen: "Frozen values\nPopulation / lazy / index uncertainty"
+Guard: "Source AND image guards\nReject forbidden routes"
+Acceptance: "Finite G / N / V\nNative verdicts pending"
+Useful: "P1024 / V12 / L1500\nIndependent useful-choice witnesses"
+Start -> Host: "1 · request"
+Host -> Principal: "2 · admit"
+Principal -> Reads: "3 · read"
+Principal -> Actions: "3 · both controls"
+Principal -> Settings: "3 · exact grants"
+UI -> Settings: "explicit human setup only"
+Principal -> Guard: "routing / injection guard"
+Reads -> Frozen: "4 · observations"
+Settings -> Frozen: "4 · read values"
+Frozen -> Host: "5 · publication"
+Actions -> Guard: "action guard"
+Settings -> Guard: "seam allowlists"
+Reads -> Guard: "no effects"
+Guard -> Acceptance: "6 · failing controls"
+Acceptance -> Useful: "7 · actual qualification"

@@ -1,0 +1,35 @@
+{
+  "name": "extension-host core alone: a refused shipped provider and the providers that depend on it",
+  "design": "../core-schema-extension-host.graphql",
+  "management": "extended",
+  "comment": [
+    "Held by scripts/verify-selection-failures.py (`task selection:failures`) against a signed purpose-built host,",
+    "not by `task conformance`. fixturesh stands for the desktop provider, refused before publication because its",
+    "SDL does not parse; a fixturesk update that additionally requires fixturesh's read capability stands for the",
+    "workspace provider; an ordinary fixtureod that requires fixturesk's stands for the third provider. The fixed-point",
+    "removal leaves nothing published: the core alone is served, and every provider is an explicit rejected row.",
+    "A row that is missing or extra fails the profile, so neither an omission nor an extra provider blurs it."
+  ],
+  "providers": [
+    {
+      "provider": "fixturesh", "version": "2.0.0", "schemaVersion": "1.1.0", "state": "REJECTED",
+      "origin": "PER_USER", "selection": "SELECTED", "reason": "invalid-sdl"
+    },
+    {
+      "provider": "fixturesh", "version": "1.0.0", "schemaVersion": "1.1.0", "state": "REJECTED",
+      "origin": "BUNDLED", "selection": "NOT_SELECTED", "reason": "superseded-candidate"
+    },
+    {
+      "provider": "fixturesk", "version": "1.1.0", "schemaVersion": "1.0.0", "state": "REJECTED",
+      "origin": "PER_USER", "selection": "SELECTED", "reason": "missing-capability-owner"
+    },
+    {
+      "provider": "fixturesk", "version": "1.0.0", "schemaVersion": "1.0.0", "state": "REJECTED",
+      "origin": "BUNDLED", "selection": "NOT_SELECTED", "reason": "superseded-candidate"
+    },
+    {
+      "provider": "fixtureod", "version": "1.0.0", "schemaVersion": "1.0.0", "state": "REJECTED",
+      "origin": "PER_USER", "selection": "SELECTED", "reason": "missing-capability-owner"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+@startuml workspace-open
+skinparam backgroundColor #F8FAFC
+skinparam defaultFontName Helvetica
+skinparam defaultFontSize 17
+skinparam shadowing false
+hide footbox
+title Workspace launch/open — designed, acceptance pending
+participant Client
+participant "Machine core" as Core
+participant Workspace
+participant "macOS / app" as Native
+Client -> Core: launch app / open web URL / open path
+Core -> Core: preflight every root action\nlive admission: both control grants
+Core -> Workspace: admitted action
+Workspace -> Native: inspect admitted prerequisites\nonly established prompt-free calls
+note over Workspace,Native
+First-use metadata route measured prompt-free on three protected roots.
+Designed 1.0.1 (v1): Koine resolves the target, then the application,
+component by component; only that resolution establishes absence. A spelling
+of PATH_MAX (1,024) bytes or more, NUL not counted, is failed before any
+request; within it the route is unchanged.
+Selected app URL is registered spelling of the constrained native identity.
+Document file-URL handler lookup prompts: protected default opening
+remains pending a human decision; do not attempt it as a readiness read.
+end note
+alt missing prerequisite before submission
+  Workspace --> Client: DEPENDENCY_UNAVAILABLE\nreason + guidance; no value
+else uncertain inspection / link budget / hand-off limit
+  Workspace --> Client: failed, not inferred absence\nincludes the v1 hand-off limit refusal
+else ready
+  Workspace -> Native: submit launch/open; request activation\nreuse running copy unless path-constrained
+  alt native acknowledgment within wait bound
+    Native --> Workspace: accepted application
+    Workspace --> Client: AVAILABLE + receipt\noptional observed PID / kernel start only
+  else native error, 3 s wait expiry or cancellation
+    Workspace --> Client: failed; effect may have begun\nno replay or alternate handler
+  end
+end
+opt receipt includes process and client has desktop:read
+  Client -> Core: desktopApplication(process: PID + start)
+  Core --> Client: desktop state / absent / classified error
+end
+note over Client,Native
+Installed identity is not a held process or file identity.
+Window behavior belongs to the app; later exit remains possible.
+Acknowledgment alone does not pass activation acceptance.
+Core request deadline may answer first; late results are ignored.
+Publication errors can suppress the selected result branch.
+Reveal is a separate operation with Finder acknowledgment.
+Neither control grant implies read or OS consent.
+end note
+@enduml

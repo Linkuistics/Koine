@@ -58,6 +58,9 @@ struct CoreFields: Sendable {
                     "grants": try readStore { try store.grants() }.map(object),
                     "providers": await providerStatuses().map(object),
                     "osPermissions": osPermissions().map(object),
+                    "capabilityDisclosures": CapabilityDisclosures.all.map {
+                        ["capability": $0.capability, "disclosure": $0.disclosure] as Object
+                    },
                 ] as Object
             },
             "Mutation.koineRevokeGrant": FieldRegistration(
@@ -76,11 +79,16 @@ struct CoreFields: Sendable {
             ("KoineGrantRequestReceipt", ["requestId", "comparisonCode"], .anonymousEnrollment),
             ("KoineGrantRequest", ["requestId", "clientLabel", "comparisonCode",
                                    "requestedCapabilities", "state", "grant"], .requestStatus),
-            ("KoineManagement", ["requests", "grants", "providers", "osPermissions"],
+            ("KoineManagement",
+             ["requests", "grants", "providers", "osPermissions", "capabilityDisclosures"],
              .capability(CoreCapability.manage)),
-            ("KoineProviderStatus", ["provider", "version", "schemaVersion", "state", "diagnostic"],
+            ("KoineProviderStatus",
+             ["provider", "version", "schemaVersion", "state", "diagnostic", "candidateId", "origin",
+              "selection", "selectedCandidateId", "reason"],
              .capability(CoreCapability.manage)),
             ("KoineOSPermission", ["permission", "owner", "granted"],
+             .capability(CoreCapability.manage)),
+            ("KoineCapabilityDisclosure", ["capability", "disclosure"],
              .capability(CoreCapability.manage)),
         ]
         for (type, names, authority) in outputs {
@@ -208,6 +216,11 @@ struct CoreFields: Sendable {
             "schemaVersion": status.schemaVersion,
             "state": status.state.rawValue,
             "diagnostic": status.diagnostic,
+            "candidateId": status.candidateId,
+            "origin": status.origin?.rawValue,
+            "selection": status.selection?.rawValue,
+            "selectedCandidateId": status.selectedCandidateId,
+            "reason": status.reason,
         ]
     }
 

@@ -1,0 +1,94 @@
+ProductName:		macOS
+ProductVersion:		26.5
+BuildVersion:		25F71
+Darwin Manageds-Virtual-Machine.local 25.5.0 Darwin Kernel Version 25.5.0: Mon Apr 27 20:39:32 PDT 2026; root:xnu-12377.121.6~2/RELEASE_ARM64_VMAPPLE arm64
+VirtualMac2,1
+arm64
+   Device Identifier:         disk3s1s1
+   Device Node:               /dev/disk3s1s1
+   Whole:                     No
+   Part of Whole:             disk3
+
+   Volume Name:               Macintosh HD
+   Mounted:                   Yes
+   Mount Point:               /
+
+   Partition Type:            41504653-0000-11AA-AA11-00306543ECAC
+   File System Personality:   APFS
+   Type (Bundle):             apfs
+   Name (User Visible):       APFS
+   Owners:                    Enabled
+
+   OS Can Be Installed:       No
+   Booter Disk:               disk3s2
+   Recovery Disk:             disk3s3
+   Media Type:                
+   Protocol:                  
+   SMART Status:              Not Supported
+   Volume UUID:               9D9EAE53-A76C-431A-8A16-FC862603E7A9
+   Disk / Partition UUID:     9D9EAE53-A76C-431A-8A16-FC862603E7A9
+
+   Disk Size:                 44.1 GB (44107001856 Bytes) (exactly 86146488 512-Byte-Units)
+   Device Block Size:         4096 Bytes
+
+   Volume Used Space:         12.6 GB (12569915392 Bytes) (exactly 24550616 512-Byte-Units)
+   Container Total Space:     44.1 GB (44107001856 Bytes) (exactly 86146488 512-Byte-Units)
+   Container Free Space:      16.2 GB (16176033792 Bytes) (exactly 31593816 512-Byte-Units)
+   Allocation Block Size:     4096 Bytes
+
+   Media OS Use Only:         No
+   Media Read-Only:           Yes
+   Volume Read-Only:          Yes (read-only mount flag set)
+
+   Device Location:           Internal
+   Removable Media:           Fixed
+
+   Solid State:               Yes
+
+   This disk is an APFS Volume Snapshot.  APFS Information:
+   APFS Snapshot Name:        com.apple.os.update-DEDECEC55622993FB7EF1CB6A97E976433E7F84ECCE5514C9C380AF59534732D
+   APFS Snapshot UUID:        9D9EAE53-A76C-431A-8A16-FC862603E7A9
+   APFS Container:            disk3
+   APFS Physical Store:       disk0s2
+   APFS Volume Group:         F4C066A9-8DF2-44AA-9B00-36E0117AFFB8
+   EFI Driver In macOS:       2811120014000001
+   Encrypted:                 No
+   FileVault:                 No
+   Sealed:                    Yes
+   Locked:                    No
+
+   APFS Snapshots are defined upon this APFS Volume.  Snapshot list:
+   Snapshot UUID:             9D9EAE53-A76C-431A-8A16-FC862603E7A9
+   Name:                      com.apple.os.update-DEDECEC55622993FB7EF1CB6A97E976433E7F84ECCE5514C9C380AF59534732D
+   XID:                       378
+
+Executable=/private/tmp/k152-bundle/K152Probe.app/Contents/MacOS/K152Probe
+Identifier=dev.antony.Koine.K152Probe
+Format=app bundle with Mach-O thin (arm64)
+CodeDirectory v=20500 size=518 flags=0x10000(runtime) hashes=5+7 location=embedded
+Signature size=8977
+Authority=Developer ID Application: Antony Blakey (TA43A4RUP3)
+Authority=Developer ID Certification Authority
+Authority=Apple Root CA
+Timestamp=Oct 5, 2026 at 11:54:17 AM
+Info.plist entries=5
+TeamIdentifier=TA43A4RUP3
+Runtime Version=27.0.0
+Sealed Resources version=2 rules=13 files=0
+Internal requirements count=1 size=188
+[Dict]
+4f64daac0bdb680d485af1fb528bc4d27916e5917d2bf9ef982b4c39af950aaf  /tmp/k152-bundle/K152Probe.app/Contents/MacOS/K152Probe
+Executable=/Applications/Zed.app/Contents/MacOS/zed
+Identifier=dev.zed.Zed
+Format=app bundle with Mach-O thin (arm64)
+CodeDirectory v=20500 size=2016343 flags=0x10000(runtime) hashes=63000+7 location=embedded
+Signature size=9059
+Authority=Developer ID Application: Zed Industries, Inc. (MQ55VZLNZQ)
+Authority=Developer ID Certification Authority
+Authority=Apple Root CA
+Timestamp=Sep 30, 2026 at 3:03:33 PM
+Info.plist entries=30
+TeamIdentifier=MQ55VZLNZQ
+Runtime Version=15.0.0
+Sealed Resources version=2 rules=13 files=5
+Internal requirements count=1 size=172

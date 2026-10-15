@@ -1,0 +1,203 @@
+{
+  "purpose": "Current selected reader/admission contract; historical certificates are counterexamples, not useful fit",
+  "readerSemantics": "../verification/application-metadata-reader-plan.md",
+  "operationLedger": "../verification/application-metadata-operation-ledger.md",
+  "accountingDecision": "../adr/application-metadata-accounting-covers-explicit-work.md",
+  "acceptanceDecision": "../adr/application-metadata-qualification-precedes-analytic-fit.md",
+  "runtimeAdmission": "../specs/application-metadata-runtime-admission.md",
+  "privateQualification": "../specs/application-metadata-private-qualification.md",
+  "composition": "application-metadata-composition.json",
+  "wire": "application-metadata-wire.json",
+  "reader": {
+    "layoutPriority": [
+      "Contents",
+      "Support Files",
+      "Resources",
+      "."
+    ],
+    "informationBases": [
+      "Contents",
+      "Support Files",
+      "Resources",
+      "."
+    ],
+    "resourceBases": [
+      "Contents/Resources",
+      "Support Files/Resources",
+      "Resources",
+      "."
+    ],
+    "informationFiles": [
+      "Info-macos.plist",
+      "Info.plist"
+    ],
+    "nameFiles": [
+      "InfoPlist-macos.strings",
+      "InfoPlist.strings",
+      "InfoPlist-macos.loctable",
+      "InfoPlist.loctable"
+    ],
+    "priority": "BASE_FIRST_GLOBAL_THEN_EXACT_DIRECT_PLAN",
+    "advanceLayoutOrInformation": "CHECKED_ABSENCE_ONLY",
+    "advanceName": "CHECKED_ABSENCE_OR_HEALTHY_NO_NAME_ONLY",
+    "nameKeyPriority": [
+      "CFBundleDisplayName",
+      "CFBundleName"
+    ],
+    "inventories": "INDEPENDENT_COMPLETE_DIRECT_AND_EACH_TABLE",
+    "reservedTableKey": "LocProvenance",
+    "reservedTableKeyIsLanguage": false,
+    "selector": "EXPLICIT_PREFERENCES_EXACT_DEVELOPMENT_FIRST_THEN_BYTE_SORTED",
+    "selectorReturns": "ALL_RAW_SLOTS_EXACT_MAP_THEN_ORDERED_DEDUPLICATION",
+    "backstops": [
+      "EXACT_OBSERVED_BASE",
+      "EXACT_OBSERVED_DEVELOPMENT"
+    ],
+    "wholePathCalls": [
+      "URL.resourceValues(isApplicationKey)"
+    ],
+    "lastOrdinaryRootBytes": 1023,
+    "firstIndexedRootBytes": 1024,
+    "descendants": "HELD_DIRECTORY_LITERAL_COMPONENT_NOFOLLOW_PARENT_NAME_MAX",
+    "foreignBundleLookup": false,
+    "recursiveResourceTraversal": false,
+    "crossCopyMetadata": false,
+    "regularFileBytes": 131072,
+    "dictionaryKeys": 4096,
+    "fileReads": "EXACT_SIZE_AND_EOF_NO_RETRY",
+    "oversize": "PER_OBJECT_AFFECTED_FACT_REFUSAL_RETAIN_CHOICE",
+    "refusedNameFallback": "STOP_ALL_LATER_OR_UNLOCALIZED_RESCUE"
+  },
+  "admission": {
+    "rawURLObservations": 8192,
+    "distinctSpellings": 2048,
+    "runningObjects": 2048,
+    "identifierGroups": 2050,
+    "retainedChoices": 2048,
+    "indexedTypeValues": 65536,
+    "metadataPlanEntries": 65536,
+    "grossBytes": 20971520,
+    "explicitAttempts": 4194304,
+    "coreResponseBytes": 8388608,
+    "readDeadlineSeconds": 3,
+    "coreDeadlineSeconds": 5,
+    "sharedTrueReturnSlots": 4,
+    "refund": false,
+    "sharedExhaustion": "FAILED_NULL_ITEMS",
+    "diagnosticSaturation": "CONTINUE_WITH_FIXED_SOURCE_REASON_SUMMARIES",
+    "numericScope": "CONTROLLED_RAW_REQUESTS_WRITES_AND_EXPLICIT_OPERATIONS",
+    "publicationOwner": "PROVIDER",
+    "runtimeInternalsExcluded": true,
+    "unknownExplicitOperandsExcluded": false,
+    "totalHeapOrPeakGuarantee": false,
+    "settingsAndLocationGatesChanged": false
+  },
+  "qualification": {
+    "readerSemanticsEstablished": true,
+    "usefulFiniteCertificateEstablished": false,
+    "acceptanceOrder": "GUARDED_PRIVATE_QUALIFICATION_BEFORE_ANALYTIC_FIT",
+    "analyticFitRequiredBeforePrivateImplementation": false,
+    "privateImplementationScope": "EXISTING_N5_N8_V11_V13_QUALIFICATION",
+    "privateQualificationDesignEstablished": true,
+    "privateImplementationEligibleNow": false,
+    "privateImplementationRequiresWholeReviewAndIntegration": true,
+    "advertisementHold": true,
+    "releaseRequiresFullUsefulQualification": true,
+    "failedRefusedOrMissingRequiredUsefulCasePasses": false,
+    "constructionOutcome": "GROUPED_CONTROLLED_SUBENCLOSURE_EXCEEDS_GATE_FULL_NATIVE_AND_WIRE_CONDITIONAL",
+    "consumptionHold": true,
+    "producer": "application-localized-metadata-k215",
+    "mandatoryWholeProducerReview": true,
+    "nativeVerdict": "PENDING",
+    "supportFloor": "macOS 26+ Apple Silicon",
+    "historicalCensusOS": "macOS 26.6.2",
+    "historicalCensusQualifiesMacOS27": false,
+    "outsideQueryObservations": 149,
+    "systemSeedGroups": 2,
+    "nameByteWitness": 129,
+    "usefulWitnesses": [
+      "Find My English",
+      "Voice Memos English",
+      "German loctable"
+    ],
+    "requiredSeams": [
+      "PUBLIC_GRAPHQL",
+      "ACTUAL_PROVIDER_HOST_BINARIES",
+      "ISOLATED_SIGNED_SUPPORTED_MACOS_VMS"
+    ],
+    "sourceLocaleOrUsefulCategoryLoss": false
+  },
+  "groupedCandidate": "application-metadata-grouped-storage.json",
+  "privateGuard": {
+    "reserveFailureEnvelope": true,
+    "reserveRawCleanupWrites": true,
+    "guardBookkeepingCharged": true,
+    "unknownExplicitOperand": "REFUSE_BEFORE_OPTIONAL_INVOCATION",
+    "snapshotCountsBeforeDedup": true,
+    "pendingSlotEnds": "TRUE_RETURN_AFTER_BORROWERS_AND_CLEANUP",
+    "prerequisiteDesignRequiresUsefulQualification": false,
+    "planningOwner": "REVIEWED_QUALIFICATION_PLAN",
+    "ordinaryConsumptionBeforeQualification": false,
+    "prerequisites": [
+      "DESIGN",
+      "WHOLE_REVIEW_INTEGRATION",
+      "SOURCE_ACCESS_REVIEW",
+      "REVIEWED_FINITE_SUBJECT",
+      "OWNERSHIP_IMAGE_REVIEW",
+      "NORMALIZATION_REVIEW",
+      "WHOLE_DISCOVERY_DESIGN_REVIEW",
+      "QUALIFICATION_PLAN"
+    ],
+    "completedPrerequisites": [
+      "DESIGN"
+    ],
+    "episodeTapes": [
+      "expanded_first_walk_and_transfer",
+      "root_resource_or_indexed_projection",
+      "reader_records_owners_and_selector_returns",
+      "expanded_second_walk",
+      "identity_merge_and_final_scalar_publication"
+    ],
+    "jobTapes": [
+      "preferences_source_snapshots_type_trees_and_raw_slots",
+      "once_per_identifier_registration_and_two_system_seeds",
+      "seed_ordered_domain_map_growth_comparisons_and_field_updates",
+      "outside_path_outcomes_diagnostics_coverage_permissions_and_errors"
+    ],
+    "releaseEvidence": [
+      "subjects",
+      "nine_tapes",
+      "full_response",
+      "useful_witnesses",
+      "serviceability",
+      "read_policy",
+      "authority_images_disclosures_compatibility",
+      "gates_deadlines_slots",
+      "population_shape",
+      "release_image_correspondence",
+      "cleanup_outcomes"
+    ],
+    "nativeEvidenceComplete": false,
+    "reserveTerminalGuardEvaluation": true,
+    "terminalGuard": "RETAIN_ON_ADMIT_SPEND_ON_FIRST_REFUSAL_OR_FINAL_RETURN",
+    "cleanupFailure": "FAILED_NULL_INSPECTION_FAILED_OR_SUPPRESSED",
+    "applicationProtocolOwner": "PRIVATE_QUALIFICATION_SPEC",
+    "usefulExhaustionRoute": "ONCE_TO_HUMAN_COVERAGE_DECISION",
+    "populationShapeDesignEstablished": false,
+    "releaseImageRule": "MATCHED_ORDINARY_DISABLED_ENABLED_AND_REVIEWED_RECIPE_CORRESPONDENCE"
+  },
+  "metadataShapeEvidenceBoundary": {
+    "report": "../verification/application-population-metadata-shape.md",
+    "packet": "application-population-metadata-shape.json",
+    "outcome": "CORPUS_INSUFFICIENT",
+    "selectedDistribution": null,
+    "qualificationShapeEstablished": false,
+    "privateEligibilitySupplied": false,
+    "referencePopulation": null,
+    "templateCohorts": null,
+    "usefulClassificationSource": null,
+    "multiplicityAssignment": null,
+    "controlScope": "PACKET_INTEGRITY_NOT_GENERATED_SUBJECT_SHAPE",
+    "subjectDiscriminationControls": "UNBUILT"
+  }
+}

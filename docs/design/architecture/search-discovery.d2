@@ -1,0 +1,19 @@
+# Agreed requirements boundary; native API/mechanisms designed; review/acceptance pending.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+Start: "Start here · Agreed v1 scope\nmacOS 26+" {class: start}
+Koine: "Koine native discovery\nPrompt-free reads; honest source limits"
+Locations: "Special locations\nOS-known starting points; no listing or access grant"
+Catalogues: "Named native catalogues\nApplications + modern System Settings"
+Client: "Client\nRaw traversal, permissions, filtering and ranking"
+Actions: "Existing explicit actions\nAppropriate authority + action-time checks"
+Design: "Native contract + mandatory review\nSelected sources + API; G/N/V acceptance pending"
+Start -> Koine: "1 · requirements"
+Koine -> Locations: "2 · starting values"
+Koine -> Catalogues: "2 · metadata observations"
+Locations -> Client: "3 · client chooses where to search"
+Catalogues -> Client: "3 · client derives choices"
+Client -> Actions: "4 · explicit selection"
+Start -> Design: "prerequisite · before implementation"

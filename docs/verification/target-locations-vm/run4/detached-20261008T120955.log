@@ -1,0 +1,252 @@
+Subjects of this run:
+3463a6fcd46914b30e0f0181dc462314b01f3962235527149ad58b0529e0c2a5  scripts/vm-verify-target-locations.sh
+6fa6e524775ec99556c16be93bd745343565b9ca3e223f6d48f49a9ac02ee9dd  scripts/vm-long-location-fixtures.py
+d81df2c654fd3ee853537e745e39effced8a8d2009a4a0cdf88412fb15890cf2  scripts/vm-reveal-observe.applescript
+822358ded1e5b9852d2c8b138f48b97e1439b6618352a6bd70df11f0b23040d1  docs/verification/target-locations-vm/handler-lookup.swift
+67af1a2873368e1f1d627dbbedf99a0121322c3af293df81890f94c8fde390fa  docs/verification/target-locations-vm/submit.swift
+ea1f9726a86748f6e930a4413d33f6153562d028e775df12ad5a78dcac69b2bf  docs/verification/target-locations-vm/submitter-info.plist
+3a9d8c701bb0b0c31975be54f6ae2a0ed299913da8ab4546691ee469807face8  scripts/vm-verify-witness-lib.sh
+e8f9fcd6c45981d335d3f36841528a0f7f77dab73f5163634666588c29febe5d  scripts/vm-verify-contract-client-lib.sh
+be4629ebf9d75591f9d3aa385b04f245a544243346f2a9b8d15cf886643eb54a  scripts/vm-verify-launch-lib.sh
+10f1a9a9bc8d1b9342180543ebd61738f2ebc1a410572aabe4739a6f910e08c5  scripts/vm-launchers-lib.sh
+75510337b7a8cc6bb23bfed590ca9e4f8ba22e2252c21ad49378527a57c0ea1b  .build/long-action-route.zip
+e0f7285429fdbcd47cf4c848e4cab5ac0c903a74cc6cab42f32273751fa0d187  .build/descriptor-walk-prompt.zip
+ccf011001496fda8b4740c0298a0618090f0a48cad8f38ff27e113add2358e80  clients/contract-only/dist/koine-client.mjs
+64f81afb00dda0a7757a5bf851e013104741437f1310dc7728a8047489d8c9dc  .build/app/Koine.app/Contents/MacOS/Koine
+da73f1a02115558850ec7d36064b57b52a136d985dccf770034d7d76515e7e47  .build/app/Koine.app/Contents/PlugIns/Workspace.koineprovider/manifest.json
+node-v24.21.0-darwin-arm64.tar.xz: 6239d4cf92d864487ec8cd3615038f7b67e7f58b77b21cd2f09ea9fbd68065fe matches its published digest
+
+== Start a clean VM (koine-verify-23210)
+Setting guest display resolution to 1920x1080 px...
+  set-display-mode: switched main display to 1920x1080 pt @ 1x (1920x1080 px, modeID 10)
+ProductName:		macOS
+ProductVersion:		26.5
+BuildVersion:		25F71
+arm64
+Gatekeeper: assessments enabled
+Gatekeeper in the clone: assessments enabled;developer id enabled;
+
+== Install the signed bundle (ditto zip, testanyware file upload, ditto -x)
+Quarantine attribute: xattr: /Applications/Koine.app: No such xattr: com.apple.quarantine
+--prepared:/Applications/Koine.app/Contents/PlugIns/Workspace.koineprovider
+--validated:/Applications/Koine.app/Contents/PlugIns/Workspace.koineprovider
+--prepared:/Applications/Koine.app/Contents/PlugIns/Desktop.koineprovider
+--prepared:/Applications/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+--validated:/Applications/Koine.app/Contents/PlugIns/Desktop.koineprovider
+--validated:/Applications/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+/Applications/Koine.app: valid on disk
+/Applications/Koine.app: satisfies its Designated Requirement
+Identifier=dev.antony.Koine
+CodeDirectory v=20500 size=36956 flags=0x10000(runtime) hashes=1144+7 location=embedded
+Authority=Developer ID Application: Antony Blakey (TA43A4RUP3)
+Authority=Developer ID Certification Authority
+TeamIdentifier=TA43A4RUP3
+/Applications/Koine.app: rejected
+source=Unnotarized Developer ID
+origin=Developer ID Application: Antony Blakey (TA43A4RUP3)
+(spctl assessment did not accept the bundle; recorded, not a failure of this stage)
+
+== Carry the client, the Node runtime, the witnesses, the observer, the fixture builder and the probes into the guest
+v24.21.0
+
+== The K134 witness application: a document handler for .k134w that records the exact bytes it is handed
+installed
+The witness is the default handler of .k134w: it recorded a short document.
+
+== The subjects, built component by component in the guest (no whole-path call addresses a long location)
+{"id": "c1023-txt-d", "bytes": 1023} {"id": "c1023-txt-z", "bytes": 1023} {"id": "c1023-wit", "bytes": 1023} {"id": "c1023-dir-d", "bytes": 1023} {"id": "c1023-dir-z", "bytes": 1023} {"id": "c1023-rev
+-txt", "bytes": 1023} {"id": "c1023-rev-dir", "bytes": 1023} {"id": "k1023-txt-d", "bytes": 1023} {"id": "k1023-txt-z", "bytes": 1023} {"id": "k1023-wit", "bytes": 1023} {"id": "k1023-dir-d", "bytes":
+ 1023} {"id": "k1023-dir-z", "bytes": 1023} {"id": "k1023-rev-txt", "bytes": 1023} {"id": "k1023-rev-dir", "bytes": 1023} {"id": "r1024-txt", "bytes": 1024} {"id": "r1024-wit", "bytes": 1024} {"id": "
+r1024-dir", "bytes": 1024} {"id": "r1500-txt", "bytes": 1500} {"id": "r1500-wit", "bytes": 1500} {"id": "r1500-dir", "bytes": 1500} {"id": "m1023", "bytes": 1023} {"id": "m1500", "bytes": 1500} {"id":
+ "w10", "bytes": 27} {"id": "w11", "bytes": 27} {"id": "w31", "bytes": 27} {"id": "w32", "bytes": 27} {"id": "closed", "bytes": 27} {"id": "two-dir", "bytes": 33} {"id": "dot", "bytes": 43} {"id": "mb
+300", "bytes": 333} {"id": "comb", "bytes": 99} {"id": "emoji", "bytes": 37} {"id": "impossible", "bytes": 323} 
+Subject c1023-txt-d: 1023 bytes
+Subject k1023-dir-d: 1023 bytes
+Subject r1024-txt: 1024 bytes
+Subject r1024-dir: 1024 bytes
+Subject r1500-wit: 1500 bytes
+Subject m1023: 1023 bytes
+
+== The guest's own account of every subject, by descriptors alone: present, absent or an impossible name
+c1023-txt-d 1023 present | c1023-txt-z 1023 present | c1023-wit 1023 present | c1023-dir-d 1023 present | c1023-dir-z 1023 present | c1023-rev-txt 1023 present | c1023-rev-dir 1023 present | k1023-txt
+-d 1023 present | k1023-txt-z 1023 present | k1023-wit 1023 present | k1023-dir-d 1023 present | k1023-dir-z 1023 present | k1023-rev-txt 1023 present | k1023-rev-dir 1023 present | r1024-txt 1024 pre
+sent | r1024-wit 1024 present | r1024-dir 1024 present | r1500-txt 1500 present | r1500-wit 1500 present | r1500-dir 1500 present | m1023 1023 absent | m1500 1500 absent | w10 27 present | w11 27 pres
+ent | w31 27 present | w32 27 present | closed 27 present | two-dir 33 present | dot 43 present | mb300 333 present | comb 99 present | emoji 37 present | impossible 323 impossible | 
+
+== The observer: Finder's own account of its windows and selection, read by a process that is not Koine
+The observer's own consent dialog: “testanyware-agent” wants access to control “Finder”. Allowing control will provide access to documents and data in “Finder”, and to perform actions within that app. / 
+Observer consent: asked and allowed. Finder's account with no window open: {"windows":0,"target":null,"title":null,"selected":[]}
+
+== The window server, the witness and the front application: the observers' baseline
+Windows: []
+Only the prompt section is wanted: its own positive control (a standalone probe's prompt) stands in for the 1,023-byte controls.
+Observations of nothing will watch for 60 s after the last request.
+
+== Launch Koine; a manager grant in the window, then the contract-only client enrols its own grants
+grant-label at y=411.0 moved to y=311.0 under --dy -10; towards the end is --dy -10
+-rw-------  1 admin  staff  43 Oct  8 01:13 /Users/admin/koine-secret-manager
+Observation: Koine's own account (osPermissions): accessibility granted is false.
+{"command":"enrol","ok":true,"classification":"ok","credential":{"path":"/Users/admin/koine-secret-both","mode":"600","created":true},"label":"target-locations-client-both","requestedCapabilities":["workspace:control","desktop:control"],"requestId":"9e075e75-513f-4244-a275-14d2057d5aed","comparisonCode":"GRBT-BDTA","endpoint":{"url":"http://127.0.0.1:49152/graphql","instanceId":"624b37f4-ef6a-48d6-8abb-bf131f68d788"},"http":{"status":200,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"data":{"koineRequestGrant":{"requestId":"9e075e75-513f-4244-a275-14d2057d5aed","comparisonCode":"GRBT-BDTA"}}},"errors":[],"transport":null,"outcomeUnknown":false}
+{"command":"poll","ok":true,"classification":"ok","credential":{"path":"/Users/admin/koine-secret-both","mode":"600","created":false},"requestState":"PENDING","grant":null,"endpoint":{"url":"http://127.0.0.1:49152/graphql","instanceId":"624b37f4-ef6a-48d6-8abb-bf131f68d788"},"http":{"status":200,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"data":{"koineGrantRequest":{"state":"PENDING","grant":null}}},"errors":[],"transport":null,"outcomeUnknown":false}
+Window shows: label target-locations-client-both  code GRBT-BDTA
+{"command":"poll","ok":true,"classification":"ok","credential":{"path":"/Users/admin/koine-secret-both","mode":"600","created":false},"requestState":"APPROVED","grant":{"grantId":"e908344a-c9bb-4983-84cb-9e7524759df0","capabilities":["desktop:control","workspace:control"],"state":"ACTIVE"},"endpoint":{"url":"http://127.0.0.1:49152/graphql","instanceId":"624b37f4-ef6a-48d6-8abb-bf131f68d788"},"http":{"status":200,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"data":{"koineGrantRequest":{"state":"APPROVED","grant":{"grantId":"e908344a-c9bb-4983-84cb-9e7524759df0","capabilities":["desktop:control","workspace:control"],"state":"ACTIVE"}}}},"errors":[],"transport":null,"outcomeUnknown":false}
+Approved: request 9e075e75-513f-4244-a275-14d2057d5aed, comparison code GRBT-BDTA, capabilities ["desktop:control","workspace:control"]
+{"command":"enrol","ok":true,"classification":"ok","credential":{"path":"/Users/admin/koine-secret-workspace","mode":"600","created":false},"label":"target-locations-client-workspace","requestedCapabilities":["workspace:control"],"requestId":"f070ce5a-65d2-457c-ab76-c49d4116aaf6","comparisonCode":"VHFM-72DP","endpoint":{"url":"http://127.0.0.1:49152/graphql","instanceId":"624b37f4-ef6a-48d6-8abb-bf131f68d788"},"http":{"status":200,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"data":{"koineRequestGrant":{"requestId":"f070ce5a-65d2-457c-ab76-c49d4116aaf6","comparisonCode":"VHFM-72DP"}}},"errors":[],"transport":null,"outcomeUnknown":false}
+{"command":"poll","ok":true,"classification":"ok","credential":{"path":"/Users/admin/koine-secret-workspace","mode":"600","created":false},"requestState":"PENDING","grant":null,"endpoint":{"url":"http://127.0.0.1:49152/graphql","instanceId":"624b37f4-ef6a-48d6-8abb-bf131f68d788"},"http":{"status":200,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"data":{"koineGrantRequest":{"state":"PENDING","grant":null}}},"errors":[],"transport":null,"outcomeUnknown":false}
+Window shows: label target-locations-client-workspace  code VHFM-72DP
+{"command":"poll","ok":true,"classification":"ok","credential":{"path":"/Users/admin/koine-secret-workspace","mode":"600","created":false},"requestState":"APPROVED","grant":{"grantId":"bd56c50f-3149-4e3b-8d25-b2cdb7be68ee","capabilities":["workspace:control"],"state":"ACTIVE"},"endpoint":{"url":"http://127.0.0.1:49152/graphql","instanceId":"624b37f4-ef6a-48d6-8abb-bf131f68d788"},"http":{"status":200,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"data":{"koineGrantRequest":{"state":"APPROVED","grant":{"grantId":"bd56c50f-3149-4e3b-8d25-b2cdb7be68ee","capabilities":["workspace:control"],"state":"ACTIVE"}}}},"errors":[],"transport":null,"outcomeUnknown":false}
+Approved: request f070ce5a-65d2-457c-ab76-c49d4116aaf6, comparison code VHFM-72DP, capabilities ["workspace:control"]
+Accessibility is not granted to Koine in this image: every request below is by workspace:control and desktop:control alone.
+
+== prompt: first-use resolution in Desktop, Documents and Downloads
+made
+prot-dir-Desktop.txt
+prot-dir-Documents.txt
+prot-dir-Downloads.txt
+prot-doc-Desktop.txt
+prot-doc-Documents.txt
+prot-doc-Downloads.txt
+
+== prompt: the positive control, a standalone probe's content read in Documents (must prompt)
+Successfully reset All approval status for dev.antony.Koine.K174Probe
+Successfully reset All approval status for dev.antony.Koine.K174Probe
+The control's dialog: “KoineK174Probe” would like to access files in your Documents folder. / 
+
+== prompt: Desktop: reveal-doc
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen: none
+Result: prompt: Desktop reveal-doc: passed
+
+== prompt: Desktop: reveal-dir
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen: none
+Result: prompt: Desktop reveal-dir: passed
+
+== prompt: Desktop: open-dir-finder
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen and allowed: “Koine” would like to access files in your Desktop folder. /  | 
+Koine's rows after allowing: kTCCServiceSystemPolicyDesktopFolder|dev.antony.Koine|2
+Finder's window 0 s after the second answer: ["koine-prot-Desktop"]
+Result: prompt: Desktop open-dir-finder: passed — Koine's request was allowed; the first request completed after the allowance (Finder: ["koine-prot-Desktop"]); 
+
+== prompt: Desktop: open-dir
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen and allowed: “Koine” would like to access files in your Desktop folder. /  | 
+Koine's rows after allowing: kTCCServiceSystemPolicyDesktopFolder|dev.antony.Koine|2
+Finder's window 0 s after the second answer: ["koine-prot-Desktop"]
+Result: prompt: Desktop open-dir: passed — Koine's request was allowed; the first request completed after the allowance (Finder: ["koine-prot-Desktop"]); 
+
+== prompt: Desktop: open-doc-zed
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen and allowed: “Koine” would like to access files in your Desktop folder. /  | 
+Koine's rows after allowing: kTCCServiceSystemPolicyDesktopFolder|dev.antony.Koine|2
+Zed's window 0 s after the second answer: ["koine-prot-doc-Desktop.txt — koine-prot-doc-Desktop.txt"]
+Result: prompt: Desktop open-doc-zed: passed — Koine's request was allowed; the first request completed after the allowance (Zed: ["koine-prot-doc-Desktop.txt — koine-prot-doc-Desktop.txt"]); 
+
+== prompt: Documents: reveal-doc
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen: none
+Result: prompt: Documents reveal-doc: passed
+
+== prompt: Documents: reveal-dir
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen: none
+Result: prompt: Documents reveal-dir: passed
+
+== prompt: Documents: open-dir-finder
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen and allowed: “Koine” would like to access files in your Documents folder. /  | 
+Koine's rows after allowing: kTCCServiceSystemPolicyDocumentsFolder|dev.antony.Koine|2
+Finder's window 0 s after the second answer: ["koine-prot-Documents"]
+Result: prompt: Documents open-dir-finder: passed — Koine's request was allowed; the first request completed after the allowance (Finder: ["koine-prot-Documents"]); 
+
+== prompt: Documents: open-dir
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen and allowed: “Koine” would like to access files in your Documents folder. /  | 
+Koine's rows after allowing: kTCCServiceSystemPolicyDocumentsFolder|dev.antony.Koine|2
+Finder's window 0 s after the second answer: ["koine-prot-Documents"]
+Result: prompt: Documents open-dir: passed — Koine's request was allowed; the first request completed after the allowance (Finder: ["koine-prot-Documents"]); 
+
+== prompt: Documents: open-doc-zed
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen and allowed: “Koine” would like to access files in your Documents folder. /  | 
+Koine's rows after allowing: kTCCServiceSystemPolicyDocumentsFolder|dev.antony.Koine|2
+Zed's window 0 s after the second answer: ["koine-prot-doc-Desktop.txt — koine-prot-doc-Documents.txt"]
+Result: prompt: Documents open-doc-zed: passed — Koine's request was allowed; the first request completed after the allowance (Zed: ["koine-prot-doc-Desktop.txt — koine-prot-doc-Documents.txt"]); 
+
+== prompt: Downloads: reveal-doc
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen: none
+Result: prompt: Downloads reveal-doc: passed
+
+== prompt: Downloads: reveal-dir
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen: none
+Result: prompt: Downloads reveal-dir: passed
+
+== prompt: Downloads: open-dir-finder
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen and allowed: “Koine” would like to access files in your Downloads folder. /  | 
+Koine's rows after allowing: kTCCServiceSystemPolicyDownloadsFolder|dev.antony.Koine|2
+Finder's window 0 s after the second answer: ["koine-prot-Downloads"]
+Result: prompt: Downloads open-dir-finder: passed — Koine's request was allowed; the first request completed after the allowance (Finder: ["koine-prot-Downloads"]); 
+
+== prompt: Downloads: open-dir
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen and allowed: “Koine” would like to access files in your Downloads folder. /  | 
+Koine's rows after allowing: kTCCServiceSystemPolicyDownloadsFolder|dev.antony.Koine|2
+Finder's window 0 s after the second answer: ["koine-prot-Downloads"]
+Result: prompt: Downloads open-dir: passed — Koine's request was allowed; the first request completed after the allowance (Finder: ["koine-prot-Downloads"]); 
+
+== prompt: Downloads: open-doc-zed
+Successfully reset All approval status for dev.antony.Koine
+Koine's rows in the consent databases before the request: none
+Requests seen and allowed: “Koine” would like to access files in your Downloads folder. /  | 
+Koine's rows after allowing: kTCCServiceSystemPolicyDownloadsFolder|dev.antony.Koine|2
+Zed's window 0 s after the second answer: ["koine-prot-doc-Desktop.txt — koine-prot-doc-Downloads.txt"]
+Result: prompt: Downloads open-doc-zed: passed — Koine's request was allowed; the first request completed after the allowance (Zed: ["koine-prot-doc-Desktop.txt — koine-prot-doc-Downloads.txt"]); 
+
+== Accessibility was absent throughout, and no consent dialog is on screen
+Observation: Koine's own account (osPermissions): accessibility granted is false.
+no consent dialog on screen (after every request); universalAccessAuthWarn: running
+
+== The subjects of the run are as they were at its start
+Unchanged: 15 files, digested before and after.
+
+== Results
+prompt: positive control: a standalone probe prompts in Documents : passed
+prompt: Desktop: reveal-doc : passed
+prompt: Desktop: reveal-dir : passed
+prompt: Desktop: open-dir-finder : passed
+prompt: Desktop: open-dir : passed
+prompt: Desktop: open-doc-zed : passed
+prompt: Documents: reveal-doc : passed
+prompt: Documents: reveal-dir : passed
+prompt: Documents: open-dir-finder : passed
+prompt: Documents: open-dir : passed
+prompt: Documents: open-doc-zed : passed
+prompt: Downloads: reveal-doc : passed
+prompt: Downloads: reveal-dir : passed
+prompt: Downloads: open-dir-finder : passed
+prompt: Downloads: open-dir : passed
+prompt: Downloads: open-doc-zed : passed
+-: accessibility absent throughout : passed
+Written: .build/target-locations-vm/results.json
+
+== Quit Koine
+
+== PASSED — transcript in .build/vm-verify/target-locations-vm-20261008T120956.log

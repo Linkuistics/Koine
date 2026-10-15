@@ -1,0 +1,9 @@
+{
+ "/Users/antony/Development/Koine.add-plugins-for-modaliser-requirements/scripts/vm-probe-item-array.py": "f31073e07c0710770624b00bb70cc87df8a7022e2b4ae749647167434118f60b",
+ "docs/verification/item-array-submission/probe.m": "c8ad4ed8460848fbc1b1a3de32bdc261f9bc37d097505d55723df3439924a4f6",
+ "docs/verification/item-array-submission/recorder.m": "3ea3851b44d1fc6290b9b6271be2a4d8e4f9755f4fcc78b721ac6da965af52ce",
+ "scripts/build-item-array-probe.sh": "ced6d2257827f2fea3724878e3462fb04b4bf995a29054880b568194b2a52422",
+ "App/Info.plist": "431300765533dd93c89b85d479c3127d92cfd9a8468048b7cf84cd3e2dde7157",
+ "App/Koine.entitlements": "ac7918e500e8ab1e8818b3b4c0a44525a5fbc0e3415739ee85f5944fc9dcf7a3",
+ ".build/item-array-submission.zip": "743a0e8a2b7411fd7387bd6186204333ae3d00c93fbae82d2f147580872688ed"
+}

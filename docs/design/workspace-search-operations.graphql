@@ -1,0 +1,91 @@
+# Native discovery proposals: introspect the actually served schema before use.
+fragment DiscoveryCoverage on WorkspaceDiscoveryCoverage {
+  source declaredDomain availability observations category examined
+  diagnostics {
+    source reason subject affectsCoverage guidance
+    permission { permission target event consent }
+  }
+}
+query NativeStartingLocations($requests: [WorkspaceLocationRequest!]) {
+  locations: workspaceSpecialLocations(requests: $requests) {
+    status
+    items { kind domain accountIdentifier location contentsAvailability sources }
+    sources { ...DiscoveryCoverage }
+    resultsTruncated
+  }
+}
+query NativeApplications {
+  apps: workspaceApplications {
+    status
+    items { name applicationPath bundleIdentifier metadataSource installationState uiElement backgroundOnly runningActivationPolicies sources }
+    sources { ...DiscoveryCoverage }
+    resultsTruncated
+  }
+}
+# Positive Settings choices may be PARTIAL with lazy completeness UNKNOWN.
+# Inspect source diagnostics; null anchors are not a known empty destination set.
+query NativeSettings {
+  settings: workspaceSettings {
+    status
+    items { paneId name availability anchors { name availability } sources }
+    sources { ...DiscoveryCoverage }
+    resultsTruncated
+  }
+}
+# No items selection: FAILED can be inspected without generated items errors.
+query InspectNativeSources {
+  apps: workspaceApplications { status sources { ...DiscoveryCoverage } resultsTruncated }
+  settings: workspaceSettings { status sources { ...DiscoveryCoverage } resultsTruncated }
+}
+# Nested aliases read ONE frozen root result. Root aliases own separate observations.
+# Absent independent execution errors: FAILED => failed at [apps, first] and
+# [apps, second]; BLOCKED/UNAVAILABLE/UNKNOWN => ordinary null at both, no
+# generated error. Publication/lifecycle errors can suppress any selected field.
+query InspectAliasedNativeItems {
+  apps: workspaceApplications {
+    status
+    first: items { applicationPath installationState }
+    second: items { applicationPath installationState }
+    sources { ...DiscoveryCoverage }
+  }
+  settings: workspaceSettings {
+    status
+    first: items { paneId anchors { name } }
+    second: items { paneId anchors { name } }
+    sources { ...DiscoveryCoverage }
+  }
+}
+# Explicit client choice, workspace:control only; no pane data or read grant.
+mutation PrepareSettingsInBackground {
+  workspacePrepareSettings {
+    status
+    receipt { launchRequested readiness process { pid startedAt } }
+    dependency { reason guidance }
+    diagnostics { source reason guidance }
+  }
+}
+# Automation setup is an explicit human action in Koine's local explaining UI.
+# No GraphQL operation, including a management operation, can initiate it.
+# Explicit selected pane or anchor; both controls, no implicit read grant.
+mutation RevealChosenSetting($selection: WorkspaceSettingSelection!) {
+  workspaceRevealSetting(selection: $selection) {
+    status
+    receipt { paneId anchorName revealAcknowledged activationRequested process { pid startedAt } }
+    dependency { reason guidance }
+    diagnostics { source reason guidance permission { permission target event consent } }
+  }
+}
+# Filter/rank on the client. An INSTALLED app's selected identifier AND location
+# feed the existing workspaceLaunchApplication, under both controls. UNKNOWN/
+# UNREGISTERED identified apps stay reveal/copy choices. Reads never register apps.
+# Keep locations lossless: the existing 1024-byte handoff refusal still applies.
+# BUNDLE_RESOURCE is root type + explicit fixed-file/localization metadata through
+# 1023-byte roots; 1004..1023 installation state stays UNKNOWN under action rules.
+# INDEXED_ITEM at >=1024 reports source metadata, not current plist/launch eligibility.
+# Its state stays UNKNOWN and flags null; keep copy available. Explicit selected
+# actions keep identifier AND path; never retry unconstrained on a long refusal.
+# Settings keys are opaque exact selectors, never custom URLs or script text.
+# Application population overflow is FAILED/null, never an arbitrary prefix.
+# Filter agent/background/runtime-policy facts on the client; null flags are
+# unknown and an empty policy set means no associated running observation.
+# All Query roots and reachable fields require workspace:read, independently of controls.

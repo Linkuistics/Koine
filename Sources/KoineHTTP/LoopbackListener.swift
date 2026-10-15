@@ -26,6 +26,18 @@ public struct HTTPResponse: Sendable {
     }
 }
 
+/// Where a test can hold the listener to force an order, as the engine's
+/// `OrderingPoint` does for the grant paths. Production passes a hook that does
+/// nothing.
+enum ListenerPoint: Sendable, Equatable {
+    /// The handler has answered and the response is about to be written.
+    case responseReady
+    /// `stop()` has closed every connection that holds no request.
+    case idleClosed
+}
+
+typealias ListenerHook = @Sendable (ListenerPoint) async -> Void
+
 /// An HTTP/1.1 listener bound to IPv4 loopback on an OS-assigned port. It knows
 /// nothing of GraphQL: each complete request goes to `handler`.
 public final class LoopbackListener: Sendable {
@@ -37,11 +49,17 @@ public final class LoopbackListener: Sendable {
     private let serverChannel: NIOAsyncChannel<Connection, Never>
     private let acceptLoop: Task<Void, Never>
     private let connections = Connections()
+    private let reached: ListenerHook
 
     /// Binds and starts accepting. The listener is ready when this returns. A
     /// request whose body exceeds `maximumBodyBytes` is answered 413 and its
     /// connection closed; it never reaches `handler`.
-    public init(maximumBodyBytes: Int, handler: @escaping Handler) async throws {
+    public convenience init(maximumBodyBytes: Int, handler: @escaping Handler) async throws {
+        try await self.init(maximumBodyBytes: maximumBodyBytes, handler: handler) { _ in }
+    }
+
+    init(maximumBodyBytes: Int, handler: @escaping Handler, reached: @escaping ListenerHook) async throws {
+        self.reached = reached
         // Async bootstrap as in swift-nio's Sources/NIOWebSocketServer/Server.swift:
         // https://github.com/apple/swift-nio/blob/2.103.0/Sources/NIOWebSocketServer/Server.swift
         let channel = try await ServerBootstrap(group: MultiThreadedEventLoopGroup.singleton)
@@ -63,7 +81,7 @@ public final class LoopbackListener: Sendable {
                     connections.serve(connection.channel) { id in
                         try? await Self.serve(
                             connection, id: id, in: connections, authority: "\(Self.host):\(port)",
-                            maximumBodyBytes: maximumBodyBytes, handler: handler
+                            maximumBodyBytes: maximumBodyBytes, handler: handler, reached: reached
                         )
                     }
                 }
@@ -72,17 +90,20 @@ public final class LoopbackListener: Sendable {
     }
 
     /// Stops accepting and closes the listening socket. A request already
-    /// received is answered first, on a connection that then closes; a
-    /// connection between requests is closed at once.
+    /// received (its handler entered) is answered first, on a connection that
+    /// then closes; a connection between requests is closed at once, which
+    /// includes one whose request has been read but not yet handed on.
     public func stop() async {
         try? await serverChannel.channel.close()
         await acceptLoop.value
-        await connections.drain()
+        let open = connections.closeIdle()
+        await reached(.idleClosed)
+        for connection in open { await connection.value }
     }
 
     private static func serve(
         _ connection: Connection, id: Int, in connections: Connections, authority: String,
-        maximumBodyBytes: Int, handler: @escaping Handler
+        maximumBodyBytes: Int, handler: @escaping Handler, reached: @escaping ListenerHook
     ) async throws {
         try await connection.executeThenClose { inbound, outbound in
             var head: HTTPRequestHead?
@@ -120,9 +141,16 @@ public final class LoopbackListener: Sendable {
                             headers: headers, body: body, boundAuthority: authority
                         )
                     )
-                    let keepAlive = connections.endRequest(id) && requestHead.isKeepAlive
+                    // The request stays in hand (busy) until its response is
+                    // written, so a stop beginning after the handler returned
+                    // does not close the connection under the response. The
+                    // response promises keep-alive only if no stop has begun; one
+                    // beginning during the write still ends the connection after
+                    // it, as between any two requests.
+                    await reached(.responseReady)
+                    let keepAlive = !connections.isStopping && requestHead.isKeepAlive
                     try await write(response, keepAlive: keepAlive, to: outbound)
-                    if !keepAlive { return }
+                    if !connections.endRequest(id) || !keepAlive { return }
                 }
             }
         }
@@ -185,7 +213,10 @@ private final class Connections: Sendable {
         }
     }
 
-    /// False once stop has begun: the response is the connection's last.
+    var isStopping: Bool { state.withLockedValue { $0.stopping } }
+
+    /// The response has been written. False once stop has begun: the response was
+    /// the connection's last.
     func endRequest(_ id: Int) -> Bool {
         state.withLockedValue { state in
             state.open[id]?.busy = false
@@ -193,15 +224,17 @@ private final class Connections: Sendable {
         }
     }
 
-    /// Closes every connection with no request in hand and waits for the rest
-    /// to write their responses.
-    func drain() async {
+    /// Begins stopping: closes every connection with no request in hand and
+    /// returns the tasks of all of them, for the caller to wait on. A connection
+    /// with a request in hand is closed by its own task once the response is
+    /// written, since `busy` holds until then.
+    func closeIdle() -> [Task<Void, Never>] {
         let open = state.withLockedValue { state in
             state.stopping = true
             return Array(state.open.values)
         }
         for connection in open where !connection.busy { connection.channel.close(promise: nil) }
-        for connection in open { await connection.task.value }
+        return open.map(\.task)
     }
 }
 

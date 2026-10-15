@@ -11,8 +11,9 @@ collisions, architecture, dependency closure, staging) stay in
 ## Procedure
 
 ```sh
-task compat                         # compat:build, then compat:verify, in debug
+task compat                         # compat:build, compat:verify, then compat:workspace-subjects, in debug
 CONFIGURATION=release task compat   # the same in release
+task compat:baseline                # only the released side: the pre-extension host, framework, fixtures and desktop provider
 ```
 
 It needs the signing identity of `scripts/signing-env.sh`, `rsync` and
@@ -20,49 +21,93 @@ It needs the signing identity of `scripts/signing-env.sh`, `rsync` and
 `~/Library/Application Support/Koine`: each case runs a headless host over a
 temporary data directory.
 
-`scripts/build-compat-pairs.sh` copies the sources into two trees under
-`.build/compat/<configuration>/`, each with its own build directory, and builds
-each as `task test` builds the repository:
+`scripts/build-compat-pairs.sh` builds two independent revisions under
+`.build/compat/<configuration>/`, each in a tree of its own with its own build
+directory, by the same `scripts/build-compat-tree.sh` that runs the tree's own
+scripts as `task test` does:
 
 | Tree | Framework | What it builds |
 |---|---|---|
-| `baseline` | 1.0: the sources as they are | `KoineCompatibilityHost`, the staged framework, the fixture and the loader's variants |
-| `newer` | 1.1: `Fixtures/CompatibilityPairs/Minor1.swift` added, the requirement `describeInstance()` added to `Provider` with a default, `HostCompatibility.frameworkMinor` 1, framework version 1.1.0 | the same |
-| `later` | — | later revisions of the fixture, from the newer tree's source: `revision2` compiled against the 1.0 framework; `revision2-built-against-newer`, the same source and manifest compiled against 1.1; `minor1`, which uses the 1.1 declarations and declares minimum minor 1 |
+| `baseline` | 1.0: the **released** revision, tag `v0.1.0` (`KOINE_BASELINE_REVISION` names another), extracted from the repository by `scripts/build-baseline-host.sh`, never this tree with edits | that release's `KoineCompatibilityHost`, staged framework, fixture, loader variants and sealed desktop provider |
+| `newer` | 1.1: this working tree, which serves `additional-capabilities-v1` | the same, from these sources, and the `KoineConformance` tool |
+| `later` | — | later revisions of the fixture, from the newer tree's source, each compiled against the framework its name says (below) |
+| `workspace-1.0.0` | 1.1: the pinned revision of [the retained workspace 1.0.0 bundle](retained-workspace-baseline.md), extracted by `scripts/build-retained-workspace.sh` (`task compat:workspace-baseline`), never this tree with edits | that revision's host, framework, fixtures and sealed desktop and workspace providers, kept apart in `bundled/` |
 
-Framework 1.1 exists only to make this evidence and is never part of the shipped
-framework. Its textual interface differs from 1.0's by the added requirement,
-its default and one new function, and by nothing else. The overlay asserts each
-line it replaces, so a source change cannot make it silently miss.
+The workspace provider is a pair of its own, built beside these: this tree's 1.0.1 (and the same source stating
+`first-party-selection-v1`, as an earlier host requires of a per-user update) against the retained 1.0.0 in
+its revision's host. They are checked by the same driver, in its workspace cases, and
+recorded in [workspace-compatibility.md](workspace-compatibility.md).
+
+The `later` fixtures are one source under compile flags and manifest edits:
+
+| Case | Compiled against | Manifest | Descriptor |
+|---|---|---|---|
+| `revision2` | 1.0 | minor 0, no feature | no feature |
+| `revision2-built-against-newer` | 1.1 | minor 0, no feature | no feature |
+| `additional` | 1.1, uses `additionalRequirements` | minor 1, the feature | the feature |
+| `additional-feature-only` | 1.1, as `additional` | minor 0, the feature | the feature |
+| `additional-undeclared` | 1.1, as `additional` | minor 1, no feature | no feature |
+| `additional-manifest-omits` | 1.1, as `additional` | minor 1, no feature | the feature |
+
+The `additional` variants also carry one field the plain fixture lacks,
+`fixtureRenameItemChecked`, a control action that additionally requires
+`fixture:read` (`Fixtures/FixtureProvider/additional.graphql`). The released
+tree's build is reusable on its own: any check that needs the pre-extension host
+runs `task compat:baseline` and finds it under
+`.build/compat/<configuration>/baseline/products`.
 
 `scripts/verify-compat-pairs.py` makes a pair only at run time: it copies one
 tree's bundle and approval record into the per-user provider root of a fresh
 data directory and starts the *other* tree's host over it, one host process per
-case. It drives the host as a client does, over loopback HTTP with a grant. The
+case. The desktop case also gives the new host a second directory standing in
+for `Contents/PlugIns`, holding the released tree's desktop bundle and its
+approval record, so `desktop` loads as the bundled provider it is reserved to be.
+It drives the host as a client does, over loopback HTTP with a grant. The
 host's ready line lists the `KoineProviderAPI` images dyld mapped into it; the
 fixture's initializer log shows whether any of the bundle's code ran. It digests
-every host, framework and provider binary before and after the run and fails if
-one moved, and writes every observation to `results.json` beside the trees.
+every host, framework, provider and conformance-tool binary before and after the
+run and fails if one moved, and writes every observation to `results.json` beside
+the trees.
 
 ## Observed
 
-Run on 2026-09-21, debug, with every host and framework image at `minos 26.0`
-and the fixture providers at `minos 13.0`: 19 cases, no failed check, and the
-results below.
-
-Run on 2026-09-19, with hosts and framework images built for `minos 13.0`: macOS 26.6.2 (25G83), arm64; Apple Swift 6.4
-(swiftlang-6.4.0.34.1), Xcode 27.0 (27A266a); Task 3.53.1; bundles signed by
-Developer ID Application, Team ID TA43A4RUP3. Debug and release, 19 cases each,
-no failed check, no binary changed during a run. The debug pairs were also run
-three more times with the same result.
+Run on 2026-09-30, debug, on macOS 26.6.2 (25G83), arm64, Apple Swift 6.4
+(swiftlang-6.4.0.34.1), Xcode 27.0 (27A266a), Task 3.53.1, bundles signed by
+Developer ID Application, Team ID TA43A4RUP3, every host and framework image at
+`minos 26.0` and the fixture providers at `minos 13.0`: 24 cases, no failed check,
+no binary changed during the run. The baseline was built from `v0.1.0`
+(commit `ee4716130bbc`). The same recipe in release (`CONFIGURATION=release`) ran
+24 cases with no failed check. The workspace pairs added later, 8 further cases, are recorded in [workspace-compatibility.md](workspace-compatibility.md#run-record).
 
 | Pair | Result |
 |---|---|
-| **Old plugin, newer host.** The baseline fixture, compiled against 1.0, in the 1.1 host | `ACTIVE`; every check below |
-| **Newer plugin, old host.** `revision2`, compiled against 1.0, declaring 1.0, in the 1.0 host | `ACTIVE`, serving revision 2's greeting; every check below |
-| **Newer declaration, old host.** `minor1` in the 1.0 host | `INCOMPATIBLE`: "The provider requires provider framework 1.1 or later; this Koine supplies 1.0."; initializer log empty |
-| Control: `minor1` in the 1.1 host | `ACTIVE`, serving the greeting the 1.1 function returns; every check below |
+| **Old plugin, newer host.** The released fixture, compiled against 1.0, in the 1.1 host | `ACTIVE`; every check below |
+| **Newer plugin, old host.** `revision2`, compiled against 1.0, declaring 1.0, in the released host | `ACTIVE`, serving revision 2's greeting; every check below |
 | Control: `revision2` in the 1.1 host | `ACTIVE`; every check below |
+| **Compiled against 1.1, declaring 1.0, old host.** `revision2-built-against-newer` in the released host | `ACTIVE`; every check below. See the section after these tables |
+| Control: the same in the 1.1 host | `ACTIVE`; every check below |
+| **The feature, working.** `additional` in the 1.1 host | `ACTIVE`; every check below, and the four below them |
+| **The feature, old host.** `additional` in the released host | `INCOMPATIBLE`: "The provider requires provider framework 1.1 or later; this Koine supplies 1.0."; initializer log empty |
+| **The feature alone, old host.** `additional-feature-only`, minimum minor 0, in the released host | `INCOMPATIBLE`: "The provider requires host features this Koine lacks: additional-capabilities-v1."; initializer log empty |
+| **Undeclared use, new host.** `additional-undeclared` in the 1.1 host | `REJECTED`: "A field requires additional capabilities, and the descriptor does not declare additional-capabilities-v1."; the bundle was loaded (its initializer ran), no field of it is in the schema, no `fixture:` capability is offered |
+| **The feature under a minimum minor that cannot carry it.** `additional-feature-only`, minimum minor 0, in the 1.1 host | `REJECTED` before any code loads: "The manifest requires additional-capabilities-v1 but declares framework minimum minor 0; the feature needs 1.1."; initializer log empty |
+| **A descriptor declaring what its manifest does not.** `additional-manifest-omits` in the 1.1 host | `REJECTED`: "The provider's runtime descriptor disagrees with its manifest about its identifier, prefix or required features."; loaded, nothing served |
+| **The existing desktop, new host.** The desktop provider built and sealed from the released sources against framework 1.0, bundled, in the 1.1 host | `ACTIVE`; both its capabilities offered; an absent process is an ordinary null without an error; the served schema equals `docs/design/desktop-schema-extension-host.graphql` with the served digest, and the one row served is the profile's pin (`desktop` 1.0.0, `BUNDLED`, `SELECTED`, no reason, naming itself), by the release's own `KoineConformance --profile` check, which the same run shows red against a design text with one description changed and against a profile pinning another release |
+
+The four checks of the feature working, made in the `additional` pair, each
+against grants created over HTTP by the host's own all-capability grant:
+
+- **The set is enforced.** `fixtureRenameItemChecked` under a grant holding
+  `fixture:control` alone is refused before any action, with HTTP 403 at the
+  action's own alias path, `requiredCapability: fixture:read` and
+  `requiredCapabilities: [fixture:control, fixture:read]` at `phase:
+  authorization`, and the fixture's `renameItem` call count did not move.
+- **A registration without the set is unchanged.** `fixtureRenameItem` under a read-only grant is
+  refused with exactly the keys `kind`, `permissionClass`, `phase` and
+  `requiredCapability`, and no `requiredCapabilities`.
+- **With the whole set the action runs**, once.
+- **No mocks.** These are the compiled fixture binary's registrations, read by the
+  compiled host.
 
 The checks of a working pair, each made in the pair:
 
@@ -87,9 +132,32 @@ The checks of a working pair, each made in the pair:
 - **Control.** The initializer log holds the staged image's path, so the same
   instrument that reads empty for a refusal is seen to read non-empty.
 
-Refused in the paired setting, baseline variants in the 1.1 host and newer-tree
-variants in the 1.0 host alike, each with an empty initializer log, only the
-host's own framework image mapped, and no schema contribution:
+**The feature checks were watched to fail.** A copy of the new host's tree with
+the registration's additional set replaced by an empty one, rebuilt and run
+through the same recipe, failed all three enforcement checks (the refusal came
+back HTTP 200, the resolver was called, and the action ran under a grant that
+lacked the set). The unit and public-GraphQL cases in `AdditionalCapabilityTests`
+were watched to fail the same way, and the copy was restored before the run above.
+
+**The `stop` check was intermittent, and the released host still is.** The check asks
+that a caller held in the plugin be answered before the host exits. It failed in
+roughly one run in five of `task compat:verify` (`RemoteDisconnected('Remote end
+closed connection without response')` on the held call, the host exiting 0 in 0
+ms). The listener cleared a connection's `busy` flag after the handler returned
+and before the response was written, and `stop()` closes every connection that is
+not `busy`; with the held resolve cancelled, the handler returns at once and the
+close landed in that gap. The current host keeps `busy` until the write completes,
+and `ListenerStopOrderingTests` forces the order (it fails with the old order
+restored). 25 consecutive `task compat:verify` runs passed all 100 `stop` checks
+of the current host. The **released v0.1.0 host has the same ordering and still
+has the defect**: in those 25 runs the `stop` check failed once, against the
+baseline host and with the identical symptom, so a run of `compat:verify` can
+still fail on the released side of a pair. That is a limit of the released
+binary, not a regression.
+
+Refused in the paired setting, released-tree variants in the 1.1 host and
+newer-tree variants in the released host alike, each with an empty initializer
+log, only the host's own framework image mapped, and no schema contribution:
 
 | Case | State and diagnostic |
 |---|---|
@@ -102,17 +170,27 @@ host's own framework image mapped, and no schema contribution:
 
 ### A plugin is compiled against the oldest minor it declares
 
-`revision2-built-against-newer` is `revision2`'s source and manifest compiled
-against 1.1. Its source uses nothing 1.1 added, yet its binary imports the
-default implementation and the method descriptor of `Provider.describeInstance()`:
-a conformance compiled against a protocol records the default of every
-requirement it does not implement. In the 1.0 host it is `REJECTED` by the
-dynamic loader ("Symbol not found … describeInstance"), with no initializer
-run; in the 1.1 host it is `ACTIVE`. The spec's rule already speaks of the
-binary's symbols, not the source's, so this narrows nothing; the spec and the
-README say how to satisfy it. The manifest cannot be checked for this before
-`dlopen`, and the refusal stays the explicit one the spec requires when a
-manifest lies.
+The rule, in `docs/specs/machine.md`, is that a plugin built for an older host is
+compiled against the oldest framework minor it declares, not merely written
+without newer declarations: a conformance compiled against a protocol records the
+default implementation and method descriptor of every requirement a newer minor
+added, and an older host's dynamic loader then refuses the binary with "Symbol not
+found". The hazard is real, and this repository saw it: an earlier revision of
+this evidence simulated a minor 1 with an overlay that added a defaulted
+`describeInstance()` requirement to `Provider`, and a provider compiled against
+that overlay was `REJECTED` by the 1.0 host with no initializer run
+(observed 2026-09-21).
+
+That overlay is gone. The real minor 1 adds **no protocol requirement**: it adds a
+type, an initializer beside the retained one and a feature name. So
+`revision2-built-against-newer`, `revision2`'s source and manifest compiled
+against 1.1, needs nothing 1.1 added and the released 1.0 host runs it, `ACTIVE`,
+as the table above records. That is a fact about this minor, not a retirement of
+the rule: it binds any release that adds a protocol requirement, and the old
+overlay case cannot be reproduced against a framework that does not have one. The
+initializer is the reason a plugin using `additionalRequirements` gets a manifest
+minimum minor of 1: it calls a symbol 1.0 lacks, which the manifest states and the
+loader checks before `dlopen`.
 
 ## Supported binary baseline
 
@@ -122,7 +200,7 @@ manifest lies.
 | Minimum OS | macOS 26.0 | `LC_BUILD_VERSION minos 26.0` in both revisions' hosts and framework images, from `platforms: [.macOS(.v26)]` in both packages; the fixture providers are built for 13.0, as test material (below). The supported matrix is macOS 26 on arm64: [latency-and-support-matrix.md](latency-and-support-matrix.md). |
 | Swift runtime | The OS's own, at `/usr/lib/swift` | `otool -L`: framework and providers link `libswiftCore` and `libswift_Concurrency` from `/usr/lib/swift` and embed no runtime. Every macOS 26 runtime is newer than the manifests' `minimumSwiftRuntime`, 5.7. |
 | Compiler | Swift 6.4, language mode 6 | The `swift-compiler-version` line of the emitted `.swiftinterface`; both revisions and every provider were built by it. |
-| Framework | major 1, minor 0, no host features | `HostCompatibility` and `koineHostFeatures`. |
+| Framework | major 1, minors 0 (released, 0.1.0) and 1 (this tree); the one host feature `additional-capabilities-v1` since minor 1 | `HostCompatibility` and `koineHostFeatures`; the pairs above. |
 
 ## Scope of this evidence
 
@@ -156,10 +234,13 @@ here, not merely untested.
   of scope, not established. The resilient framework
   (`docs/adr/resilient-provider-framework.md`) is the mechanism meant to make it
   work; promising it would need a pair built by two toolchains.
-- **Distribution of older framework minors.** 0.1.0 ships framework 1.0, its only
-  minor, so there is no older minor to distribute. The rule in "A plugin is
+- **Distribution of older framework minors.** Each release ships one framework.
+  0.1.0 shipped 1.0, and this tree's is 1.1; both are built and paired above, but
+  the pairs are between a released and an unreleased tree, on unsigned hosts.
+  Nothing distributes 1.0 to a plugin author alongside 1.1, and no run is made
+  under the signed application across the two minors. The rule in "A plugin is
   compiled against the oldest minor it declares" stands, and binds any release
-  that raises the minor.
+  that adds a protocol requirement.
 
 **Shown elsewhere:**
 
@@ -180,3 +261,12 @@ here, not merely untested.
   kernel does with a foreign-team image "is not exercised, by design". Koine's
   own approval check refuses such a bundle before `dlopen`, which is what the
   cases above show; the kernel's refusal behind it is unobserved.
+
+## Native discovery applicability
+
+Retained action-only and framework captures keep their exact subjects. The
+[native discovery identities and posture](native-discovery-acceptance.md#exact-identities-and-posture)
+define workspace 1.2.0/schema 1.1.0 and update 1.3.0/schema 1.1.0, independent
+of action-only update 1.1.0/schema 1.0.1. New actual multi-image provider/host
+loading, source/binary authority and GraphQL profiles remain pending; no older
+capture or design SDL validation passes those subjects.

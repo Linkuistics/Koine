@@ -1,0 +1,24 @@
+{
+ "case": "reveal-short",
+ "rows": [
+  {
+   "finishedAt": "1791090808.841",
+   "id": "reveal-short",
+   "mode": "reveal",
+   "pid": 2598,
+   "result": {
+    "accepted": true,
+    "submittedLength": 34
+   },
+   "startedAt": 1791090808.725748
+  }
+ ],
+ "logs": {
+  "witness": [],
+  "self": []
+ },
+ "windows": "\"Notification Center\" (systemDialog) 1920x1080 app:\"Notification Center\"\n\"Featured\" (standard) 360x180 app:\"Notification Center\"\n\"Forecast\" (standard) 180x180 app:\"Notification Center\"\n\"Month\" (standard) 180x180 app:\"Notification Center\"\n\"short\" (standard) 920x436 [focused] app:\"Finder\"\n",
+ "finderWindows": [
+  "\"short\" (standard) 920x436 [focused] app:\"Finder\""
+ ]
+}

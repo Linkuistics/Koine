@@ -1,0 +1,17 @@
+{
+  "agent": {
+    "host": "192.168.64.3",
+    "port": 8648
+  },
+  "base": "koine-launchers-prepared",
+  "id": "koine-k164",
+  "meta_path": "/Users/antony/.local/state/testanyware/vms/koine-k164.meta.json",
+  "ok": true,
+  "platform": "macos",
+  "schema_version": "1.0",
+  "spec_path": "/Users/antony/.local/state/testanyware/vms/koine-k164.json",
+  "vnc": {
+    "host": "127.0.0.1",
+    "port": 58422
+  }
+}

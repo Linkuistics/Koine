@@ -1,0 +1,168 @@
+{
+  "complete": false,
+  "builds": 1,
+  "collections": 1,
+  "repairs": 0,
+  "subjects": [
+    {
+      "name": "file-900",
+      "control": "passed"
+    },
+    {
+      "name": "directory-900",
+      "control": "passed"
+    },
+    {
+      "name": "file-1500",
+      "control": "passed"
+    },
+    {
+      "name": "directory-1500",
+      "control": "passed"
+    }
+  ],
+  "requests": [
+    {
+      "name": "file-900-default",
+      "baselineFixtureNamesAbsent": true,
+      "native": [
+        {
+          "selectedApp": "/System/Applications/TextEdit.app",
+          "mode": "default",
+          "event": "callback",
+          "bundleURL": "file:///System/Applications/TextEdit.app/",
+          "seconds": 0.12486004166666476,
+          "error": {},
+          "pid": 807
+        },
+        {
+          "callbackWithinThreeSeconds": true,
+          "cancellation": "not required",
+          "event": "request",
+          "mode": "default"
+        }
+      ],
+      "receiver": "requires independent UI grading; delivery opaque"
+    },
+    {
+      "name": "file-900-named",
+      "baselineFixtureNamesAbsent": true,
+      "native": [
+        {
+          "selectedApp": "/Applications/Zed.app",
+          "mode": "named",
+          "event": "callback",
+          "bundleURL": "file:///Applications/Zed.app/",
+          "seconds": 0.06807375000000349,
+          "error": {},
+          "pid": 840
+        },
+        {
+          "callbackWithinThreeSeconds": true,
+          "cancellation": "not required",
+          "event": "request",
+          "mode": "named"
+        }
+      ],
+      "receiver": "requires independent UI grading; delivery opaque"
+    },
+    {
+      "name": "file-900-reveal",
+      "baselineFixtureNamesAbsent": true,
+      "native": [
+        {
+          "typedCause": "BOOL primitive supplies no NSError",
+          "accepted": true,
+          "event": "request",
+          "mode": "reveal",
+          "seconds": 0.004765208333324722
+        }
+      ],
+      "receiver": "requires independent UI grading; delivery opaque"
+    },
+    {
+      "name": "directory-900-default",
+      "baselineFixtureNamesAbsent": true,
+      "native": [
+        {
+          "selectedApp": "/System/Library/CoreServices/Finder.app",
+          "mode": "default",
+          "event": "callback",
+          "bundleURL": "file:///System/Library/CoreServices/Finder.app/",
+          "seconds": 0.0064774166666694555,
+          "error": {},
+          "pid": 345
+        },
+        {
+          "callbackWithinThreeSeconds": true,
+          "cancellation": "not required",
+          "event": "request",
+          "mode": "default"
+        }
+      ],
+      "receiver": "requires independent UI grading; delivery opaque"
+    },
+    {
+      "name": "directory-900-named",
+      "baselineFixtureNamesAbsent": true,
+      "native": [
+        {
+          "selectedApp": "/Applications/Zed.app",
+          "mode": "named",
+          "event": "callback",
+          "bundleURL": "file:///Applications/Zed.app/",
+          "seconds": 0.057675666666654024,
+          "error": {},
+          "pid": 944
+        },
+        {
+          "callbackWithinThreeSeconds": true,
+          "cancellation": "not required",
+          "event": "request",
+          "mode": "named"
+        }
+      ],
+      "receiver": "requires independent UI grading; delivery opaque"
+    },
+    {
+      "name": "directory-900-reveal",
+      "baselineFixtureNamesAbsent": true,
+      "native": [
+        {
+          "typedCause": "BOOL primitive supplies no NSError",
+          "accepted": true,
+          "event": "request",
+          "mode": "reveal",
+          "seconds": 0.004777500000002988
+        }
+      ],
+      "receiver": "requires independent UI grading; delivery opaque"
+    },
+    {
+      "name": "file-1500-default",
+      "baselineFixtureNamesAbsent": true,
+      "native": [
+        {
+          "selectedApp": "/System/Applications/TextEdit.app",
+          "mode": "default",
+          "event": "callback",
+          "bundleURL": "file:///System/Applications/TextEdit.app/",
+          "seconds": 0.040350083333336784,
+          "error": {},
+          "pid": 990
+        },
+        {
+          "callbackWithinThreeSeconds": true,
+          "cancellation": "not required",
+          "event": "request",
+          "mode": "default"
+        }
+      ],
+      "receiver": "requires independent UI grading; delivery opaque"
+    }
+  ],
+  "teardownExit": 0,
+  "elapsedSeconds": 91.58,
+  "withinAggregateCap": true,
+  "subjectsUnchanged": true
+}

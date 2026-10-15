@@ -1,0 +1,195 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "windows": [
+    {
+      "appName": "Notification Center",
+      "elements": [
+        {
+          "actions": [],
+          "childCount": 1,
+          "children": [
+            {
+              "actions": [
+                "AXShowMenu"
+              ],
+              "childCount": 2,
+              "children": [
+                {
+                  "actions": [],
+                  "childCount": 0,
+                  "description": "image",
+                  "enabled": true,
+                  "focused": false,
+                  "label": "ContentUnavailablePhotosIcon",
+                  "platformRole": "AXImage",
+                  "positionX": 156.0,
+                  "positionY": 261.0,
+                  "role": "image",
+                  "sizeHeight": 64.0,
+                  "sizeWidth": 64.0
+                },
+                {
+                  "actions": [],
+                  "childCount": 0,
+                  "description": "text",
+                  "enabled": true,
+                  "focused": false,
+                  "platformRole": "AXStaticText",
+                  "positionX": 83.0,
+                  "positionY": 329.0,
+                  "role": "text",
+                  "sizeHeight": 26.0,
+                  "sizeWidth": 211.0,
+                  "value": "Photos will appear here when they are finished processing"
+                }
+              ],
+              "description": "widget",
+              "enabled": true,
+              "focused": false,
+              "id": "widget-local:com.apple.Photos:com.apple.Photos.PhotosReliveWidget:com.apple.Photos.PhotosReliveWidget",
+              "label": "Photos",
+              "platformRole": "AXGroup",
+              "positionX": 16.0,
+              "positionY": 226.0,
+              "role": "group",
+              "sizeHeight": 164.0,
+              "sizeWidth": 344.0
+            }
+          ],
+          "description": "group",
+          "enabled": false,
+          "focused": false,
+          "platformRole": "AXGroup",
+          "positionX": 8.0,
+          "positionY": 218.0,
+          "role": "group",
+          "sizeHeight": 180.0,
+          "sizeWidth": 360.0
+        }
+      ],
+      "focused": false,
+      "positionX": 8.0,
+      "positionY": 218.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 360.0,
+      "title": "Featured",
+      "windowType": "standard"
+    },
+    {
+      "appName": "Notification Center",
+      "elements": [
+        {
+          "actions": [],
+          "childCount": 1,
+          "children": [
+            {
+              "actions": [],
+              "childCount": 1,
+              "children": [
+                {
+                  "actions": [],
+                  "childCount": 0,
+                  "enabled": true,
+                  "focused": false,
+                  "label": "Sydney, 64° Fahrenheit, Windy, High of 65° Fahrenheit, Low of 57° Fahrenheit",
+                  "platformRole": "AXUnknown",
+                  "positionX": 214.0,
+                  "positionY": 64.0,
+                  "role": "unknown",
+                  "sizeHeight": 128.0,
+                  "sizeWidth": 74.0
+                }
+              ],
+              "description": "widget",
+              "enabled": true,
+              "focused": false,
+              "id": "widget-local:com.apple.weather:com.apple.weather.widget:com.apple.weather",
+              "label": "Weather",
+              "platformRole": "AXGroup",
+              "positionX": 196.0,
+              "positionY": 46.0,
+              "role": "group",
+              "sizeHeight": 164.0,
+              "sizeWidth": 164.0
+            }
+          ],
+          "description": "group",
+          "enabled": false,
+          "focused": false,
+          "platformRole": "AXGroup",
+          "positionX": 188.0,
+          "positionY": 38.0,
+          "role": "group",
+          "sizeHeight": 180.0,
+          "sizeWidth": 180.0
+        }
+      ],
+      "focused": false,
+      "positionX": 188.0,
+      "positionY": 38.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 180.0,
+      "title": "Forecast",
+      "windowType": "standard"
+    },
+    {
+      "appName": "Notification Center",
+      "elements": [
+        {
+          "actions": [],
+          "childCount": 1,
+          "children": [
+            {
+              "actions": [],
+              "childCount": 1,
+              "children": [
+                {
+                  "actions": [],
+                  "childCount": 0,
+                  "enabled": true,
+                  "focused": false,
+                  "id": "month-view-current-date",
+                  "label": "WEDNESDAY, OCTOBER 07",
+                  "platformRole": "AXUnknown",
+                  "positionX": 29.0,
+                  "positionY": 64.0,
+                  "role": "unknown",
+                  "sizeHeight": 128.0,
+                  "sizeWidth": 138.0
+                }
+              ],
+              "description": "widget",
+              "enabled": true,
+              "focused": false,
+              "id": "widget-local:com.apple.iCal:com.apple.iCal.CalendarWidgetExtension:com.apple.CalendarWidget.CalendarMonthWidget",
+              "label": "Calendar",
+              "platformRole": "AXGroup",
+              "positionX": 16.0,
+              "positionY": 46.0,
+              "role": "group",
+              "sizeHeight": 164.0,
+              "sizeWidth": 164.0
+            }
+          ],
+          "description": "group",
+          "enabled": false,
+          "focused": false,
+          "platformRole": "AXGroup",
+          "positionX": 8.0,
+          "positionY": 38.0,
+          "role": "group",
+          "sizeHeight": 180.0,
+          "sizeWidth": 180.0
+        }
+      ],
+      "focused": false,
+      "positionX": 8.0,
+      "positionY": 38.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 180.0,
+      "title": "Month",
+      "windowType": "standard"
+    }
+  ]
+}

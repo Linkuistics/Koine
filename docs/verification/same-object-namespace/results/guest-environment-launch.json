@@ -1,0 +1,9 @@
+{
+  "command": "(sw_vers; uname -a; sysctl -n hw.model hw.machine; diskutil info /; codesign --verify --strict /tmp/k152-bundle/K152Probe.app; codesign -dvv --entitlements - /tmp/k152-bundle/K152Probe.app 2>&1; shasum -a 256 /tmp/k152-bundle/K152Probe.app/Contents/MacOS/K152Probe; codesign -dvv /Applications/Zed.app 2>&1) >/tmp/k149-cmd-2.out 2>/tmp/k149-cmd-2.err; echo $? >/tmp/k149-cmd-2.tmp; mv /tmp/k149-cmd-2.tmp /tmp/k149-cmd-2.code",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "",
+  "timed_out": false
+}

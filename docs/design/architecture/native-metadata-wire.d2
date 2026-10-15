@@ -1,0 +1,25 @@
+direction: down
+start: "Start here\nComplete public selection" {
+  style.fill: "#16324f"
+  style.font-color: white
+  style.bold: true
+}
+expand: "Merge equal response keys\nRepeat distinct aliases"
+values: "Final ordinary / indexed scalars\nCoverage / diagnostics / errors"
+count: "Count every encoded byte\nEscapes / keys / punctuation"
+encode: "Core materializes full body\nNo pre-encoding peak bound"
+guard: "Finished body <= 8 MiB?" { shape: diamond }
+publish: "Publish complete selected body"
+replace: "data null + failed error\n174-byte replacement"
+pending: "Whole owned composition remains live\nFinal values / source / bridge / copies" {
+  style.fill: "#fff4d6"
+  style.stroke: "#9b6a18"
+}
+start -> expand: "1. Include fragments / directives"
+expand -> values: "2. Root aliases observe separately"
+values -> count: "3. Unknown input keeps total unknown"
+count -> encode: "4. Compare pure declared fixtures"
+encode -> guard: "5. Existing core policy"
+guard -> publish: "6a. Within cap"
+guard -> replace: "6b. Above cap; never trim fields"
+count -> pending: "Conditional uppers establish no useful fit"

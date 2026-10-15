@@ -1,0 +1,5271 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Pure parametric source/root operation grammar; examples are toy observations",
+  "inputHashes": {
+    "docs/design/application-metadata-subject.json": "dd2f05d84477aa9bc97b03771100006d587636145c9a16d5e94fbd71573a3d1a",
+    "docs/design/application-metadata-episode-certificate.json": "0c05829135ee647b47183764e0f89b6631d60b79e7383f39b8ba0ec3eb92ca9d",
+    "scripts/application_metadata_source_root.py": "10060b1a5a7c88158d900e8d5255cd4094062390036c6091c4c7b6f5085f85c9",
+    "scripts/application_metadata_source_root_certificate.py": "5e9ddb1e133c7682683c8cc581b84d3d6c7ff24b9a3c5b937ee1076ac4742d5a",
+    "scripts/test_application_metadata_source_root.py": "475b333596452a8599e3d6b1e9406ef7a53b1e4a7f4ddb20300e131fbcb01792",
+    "scripts/check_application_metadata_source_root_mutations.py": "2b5b088d69cad016c4f83042e03b1dd9302c9304619b6863e093e50830bd82a6",
+    "scripts/application_metadata_episode_certificate.py": "d967ad71edc52a8a09c4e195d2b04ab8eb2c3d4568fa418649e8d3893148268c",
+    "scripts/application_metadata_operation_ledger.py": "369f2c29edc469d908175dba7748cfcb7df563b038ef7fb4285a8caf9bba8989",
+    "scripts/application_metadata_reader_plan.py": "571e6100db3f16a9a67d462eadc02a2ff53ebae49fb6b93e2c77f3e1aa113f4a",
+    "Providers/WorkspaceProvider/Logic/LocationWalk.swift": "70a99016f24ca5c33f9b8f241f4609515d6fe7754c1681aa87f390c721d9a633",
+    "Taskfile.yml": "38a9c7a8d1dfeaeca1bf3f71685a1143df8e5cb4bafed7ea12b8305315f9fd6b"
+  },
+  "nativeVerdict": "PENDING",
+  "usefulSubjectCertificateEstablished": false,
+  "sourceRootGrossBytes": null,
+  "sourceRootAttempts": null,
+  "sourceRootOwnedStorage": null,
+  "wholeJobGrossBytes": null,
+  "wholeJobAttempts": null,
+  "responseBytes": null,
+  "controlledPathOnly": {
+    "rawURLSlots": 7862,
+    "runningSlots": 128,
+    "identifierGroupsIncludingSystemReserve": 1873,
+    "perSource": {
+      "indexed": {
+        "slots": 2043,
+        "literalPathBytesIncludingNul": 222022
+      },
+      "running": {
+        "slots": 128,
+        "literalPathBytesIncludingNul": 16384
+      },
+      "registrationCF": {
+        "slots": 1910,
+        "literalPathBytesIncludingNul": 205378
+      },
+      "registrationAppKit": {
+        "slots": 1910,
+        "literalPathBytesIncludingNul": 205378
+      },
+      "preferred": {
+        "slots": 1871,
+        "literalPathBytesIncludingNul": 201809
+      }
+    }
+  },
+  "outsideCensusPaths": [
+    {
+      "path": "/Library/Application Support/Kilohearts/installer.old",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "DIRECTORY"
+    },
+    {
+      "path": "/Library/Image Capture/TWAIN Data Sources/P215II.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "DIRECTORY"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/blit_fast_clear_gen2_1.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/blit_fast_clear_gen2_16.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/blit_fast_clear_gen2_2.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/blit_fast_clear_gen2_4.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/blit_fast_clear_gen2_5.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/blit_fast_clear_gen2_8.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/blit_fast_clear_gen2_meta.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/blit_fast_clear_gen2_meta_copy.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/blit_vertex_fast_clear_gen2_1.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/blit_vertex_fast_clear_gen2_16.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/blit_vertex_fast_clear_gen2_2.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/blit_vertex_fast_clear_gen2_4.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/blit_vertex_fast_clear_gen2_5.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/blit_vertex_fast_clear_gen2_8.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/blit_vertex_fast_clear_gen2_meta.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/compute_control_flow_predicate_g13.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/compute_control_flow_predicate_g15c_a0.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/eot_fast_clear_meta.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/get_counters.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/late_latched_vrr_g13.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/late_latched_vrr_hal300.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/on_demand_mapping.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/on_demand_mapping_42.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/reset_counters.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/setup_indirect_update_mapping.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/setup_indirect_update_mapping_42.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/setup_indirect_update_mapping_legacy.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/tensor_blit.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/update_mapping.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/update_mapping_42.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/PrivateFrameworks/AGXCompilerCore.framework/ds/update_placement_mapping.ds",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "REGULAR"
+    },
+    {
+      "path": "/System/Library/Services/AppleSpell.service",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "DIRECTORY"
+    },
+    {
+      "path": "/System/Library/Services/OpenSpell.service",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "DIRECTORY"
+    },
+    {
+      "path": "/System/Library/Services/SpeechService.service",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "DIRECTORY"
+    },
+    {
+      "path": "/System/Library/Services/Spotlight.service",
+      "reason": "NOT_CHECKED_APP_DIRECTORY",
+      "kind": "DIRECTORY"
+    },
+    {
+      "path": "/Users/Shared/Plugin Boutique/Scaler2/ScalerSettings.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/Autodesk Fusion Service Utility.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/Autodesk Fusion.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/CLion Nova.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/CLion.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/Chrome Apps.localized/Docs.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/Chrome Apps.localized/Gmail.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/Chrome Apps.localized/Postman.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/Chrome Apps.localized/Sheets.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/Chrome Apps.localized/Slides.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/Chrome Apps.localized/YouTube.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/Chrome Canary Apps.localized/Postman.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/Claude Code URL Handler.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/DataGrip.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/DataSpell.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/Gateway.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/GoLand.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/IntelliJ IDEA Ultimate.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/MPS.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/PyCharm Professional Edition.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/Remove Autodesk Fusion.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/Rider.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/RubyMine.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/RustRover.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Applications/WebStorm.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Development/APIAnyware.add-ocaml-target/targets/chez/app-implementations/macos/ui-controls-gallery/build/UIControlsGallery-chez.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Development/APIAnyware.add-ocaml-target/targets/gerbil/app-implementations/macos/hello-window/build/HelloWindow-gerbil.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Development/APIAnyware.add-ocaml-target/targets/gerbil/app-implementations/macos/ui-controls-gallery/build/UIControlsGallery-gerbil.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Development/APIAnyware.add-ocaml-target/targets/ocaml/app-implementations/macos/drawing-canvas/build/DrawingCanvas-ocaml.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Development/APIAnyware.add-ocaml-target/targets/ocaml/app-implementations/macos/hello-window/build/HelloWindow-ocaml.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Development/APIAnyware.add-ocaml-target/targets/ocaml/app-implementations/macos/mini-browser/build/MiniBrowser-ocaml.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Development/APIAnyware.add-ocaml-target/targets/ocaml/app-implementations/macos/note-editor/build/NoteEditor-ocaml.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Development/APIAnyware.add-ocaml-target/targets/ocaml/app-implementations/macos/pdfkit-viewer/build/PDFKitViewer-ocaml.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Development/APIAnyware.add-ocaml-target/targets/ocaml/app-implementations/macos/scenekit-viewer/build/SceneKitViewer-ocaml.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Development/APIAnyware.add-ocaml-target/targets/ocaml/app-implementations/macos/swift-native-probe/build/SwiftNativeProbe-ocaml.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Development/APIAnyware.add-ocaml-target/targets/ocaml/app-implementations/macos/ui-controls-gallery-module/build/UIControlsGalleryModule-ocaml.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Development/APIAnyware.add-ocaml-target/targets/ocaml/app-implementations/macos/ui-controls-gallery/build/UIControlsGallery-ocaml.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Development/APIAnyware.add-ocaml-target/targets/racket/app-implementations/macos/ui-controls-gallery/build/UIControlsGallery-racket.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Development/APIAnyware.add-ocaml-target/targets/sbcl/app-implementations/macos/ui-controls-gallery/build/UIControlsGallery-sbcl.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Development/APIAnyware.add-ocaml-target/targets/typescript/app-implementations/macos/ui-controls-gallery/build/UI Controls Gallery.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Development/Legacy/Soops/sapient/example/services/1.service",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Development/Legacy/Soops/sapient/example/services/2.service",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Development/ModalAnyware/build/ModalAnyware.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Development/UIAnyware/apps/demo/build/go/UIAnywareDemo-go.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Development/UIAnyware/apps/demo/build/racket/UIAnywareDemo-racket.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Documents/Pharo/vms/130-x64/Pharo.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Documents/Pharo/vms/140-x64/Pharo.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Scripts/com.microsoft.openxml.excel.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Scripts/group.is.workflow.my.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/Autodesk/ADPSDK/bin/ADPClientService.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/Autodesk/ADPSDK/bin/AdpSDKUtil.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/Autodesk/webdeploy/production/1fac2465f22d60cdc75f85dff06ce672bf989559/Autodesk Fusion 360.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/Autodesk/webdeploy/production/64eb450be114396220a9acd378dd6a70b01268bc/Autodesk Fusion 360.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/Autodesk/webdeploy/production/b46c2ceb80d2de2a59bf68f3f85799dd8cccac2e/Autodesk Fusion 360.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/Autodesk/webdeploy/production/ba559ff8dcd36132ff7536db7476ebf75121d655/Autodesk Fusion 360.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/Autodesk/webdeploy/production/c69d156874abaccf0af3e6014767d3e067489924/Autodesk Fusion 360.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/Autodesk/webdeploy/production/d9dced6391fc49773aa41404df9622b342dfda4c/Autodesk Fusion 360.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/Autodesk/webdeploy/production/ddb9705f35e9d21e3d75f778d3bdf51f5477fcde/Autodesk Fusion 360.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/Claude/claude-code/2.1.209/claude.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/Dropbox/DropboxUpdater/136.0.7068.224/DropboxUpdater.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/Electron Fiddle/electron-bin/13.1.7/Electron.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/Figma/FigmaAgent.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/Firefox/Profiles/39gicdhe.default-release/storage/default/https+++hydrogen-js.netlify.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/Firefox/Profiles/39gicdhe.default-release/storage/default/https+++linear.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/Firefox/Profiles/39gicdhe.default-release/storage/default/https+++rainbowbridge.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/Firefox/Profiles/39gicdhe.default-release/storage/default/https+++tauri.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/JetBrains/Toolbox/apps/Toolbox/self/2.1.0.18144/JetBrains Toolbox.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/Toontrack/Product Manager/Installers/SDXI_2.1.1_46527/Sound Installer.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/Toontrack/Product Manager/Installers/SDXU_2.1.1_46528/Sound Updater.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/Toontrack/Product Manager/Installers/TTSI_2.1.4_46525/Installer.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/Toontrack/Product Manager/Installers/TTSU_2.1.1_46526/Uninstaller.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/WebEx Folder/Add-ons/Cisco WebEx Start.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/WebEx Folder/T33_64TC/Training Center.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/WebEx Folder/T33_64UMC_41.11.5.8/Meeting Center.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/WebEx Folder/T33_64UMC_41.11.5.8/WebexAppLauncher.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/com.cmuxterm.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/com.docker.install/in_progress/Docker.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/com.gitbutler.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/com.mdhero.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/com.raycast.macos/Updates/1.104.18-9496212b810f3b80871ab37d157217c3f9c8e378/Raycast.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/sh.voicebox.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/zoom.us/Plugins/Frameworks/ZoomAutoUpdater.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/zoom.us/Plugins/Frameworks/ZoomClips.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Application Support/zoom.us/Plugins/Frameworks/zCCIMeetingHost.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Dropbox/DropboxMacUpdate.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/HTTPStorages/com.FluidApp.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/HTTPStorages/com.adobe.adobedigitaleditions.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/HTTPStorages/com.apple.ctcategories.service",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/HTTPStorages/com.cmuxterm.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/HTTPStorages/fr.madrau.switchresx.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/HTTPStorages/im.riot.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Logs/com.gitbutler.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Racket/8.15/Racket Documentation.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/Scaler Music/Scaler 3/PluginScanner.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/WebKit/com.cmuxterm.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/WebKit/com.gitbutler.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/WebKit/com.mdhero.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/WebKit/dev.marky.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Users/antony/Library/WebKit/sh.voicebox.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Volumes/Glass/Audio - Offline/Software/Boss/KatanaUSBDriver/Uninstaller.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Volumes/Glass/Book Conversion/Conversion Workflow/PDFToPNG.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Volumes/Glass/Book Conversion/Conversion Workflow/PNGToPDF.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Volumes/Glass/Education/Music/Composition/Songwriting/Groove3 - Songwriting Theory Explained/gPlayer-Mac.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Volumes/Glass/Education/Music/Performance/Drums & Percussion/Groove3 - Drumming Explained/gPlayer-Mac.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Volumes/Glass/Education/Music/Production/Beatmaking & Electronic/Groove3 - Omnisphere Explained/gPlayer-Mac.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Volumes/Glass/Education/Music/Production/Beatmaking & Electronic/Groove3 - Producing House with Live - Bass & Synths/gPlayer-Mac.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Volumes/Glass/Education/Music/Production/Beatmaking & Electronic/Groove3 - Producing House with Live - Drums/gPlayer-Mac.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Volumes/Glass/Education/Music/Production/Mixing & Recording/Groove3 - Producing Hard Rock with Logic/gPlayer-Mac.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Volumes/Glass/Education/Music/Theory/Harmony/Jazz/Groove3 - Jazz Theory Explained/gPlayer-Mac.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/Volumes/Glass/Education/Music/Theory/Orchestration/Groove3 - MIDI Orchestration Explained/gPlayer-Mac.app",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/usr/local/share/dotnet/shared/Microsoft.AspNetCore.App",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    },
+    {
+      "path": "/usr/local/share/dotnet/shared/Microsoft.NETCore.App",
+      "reason": "OUTSIDE_DECLARED_CONTENTS_SCOPE"
+    }
+  ],
+  "actualNativeDimensions": {
+    "indexedTuplesAndTypeTrees": null,
+    "sourceEventAndBranchCounts": null,
+    "runningAndRegistrationTuples": null,
+    "preferenceSnapshot": null,
+    "expandedWalksAndIdentityOutcomes": null,
+    "rootResourceOutcomes": null,
+    "outsideCensusContentsAndWalks": null
+  },
+  "remainingDesignWorkForK225": [
+    "Bound allocation capacities, headers/alignment/growth and local record-field writes",
+    "Choose source/scalar/arena/vector/map representations; trace every bridge/COW copy",
+    "Partition walker, two immutable file inputs, EOF, conversion and selector scratch",
+    "Compose reader/source/root/final receipts without counting a capacity or read twice",
+    "Derive final scalar and complete selected-response escaping/multiplicity terms"
+  ],
+  "pendingNativeEvidenceIsNotNewDesignWork": [
+    "Actual fixed query, running, registration and one-job preferences observations",
+    "Actual expanded per-spelling walks, root resource and long indexed tuples",
+    "The retained 149 outside census paths and supported signed VM G/N/V acceptance"
+  ],
+  "toyBranchExamples": {
+    "job.type-ids": {
+      "result": null,
+      "attemptsIncludingLocalAndCleanup": 6,
+      "operations": {
+        "CFArrayGetTypeID": 1,
+        "CFBooleanGetTypeID": 1,
+        "CFDictionaryGetTypeID": 1,
+        "CFErrorGetTypeID": 1,
+        "CFStringGetTypeID": 1,
+        "CFURLGetTypeID": 1
+      },
+      "knownWriteBytes": 0,
+      "grossBytes": 0,
+      "unresolvedOwnedTerms": [],
+      "receipts": [],
+      "slotReturned": true
+    },
+    "preferences.empty": {
+      "result": true,
+      "attemptsIncludingLocalAndCleanup": 11,
+      "operations": {
+        "CFArrayCreate.preferences": 1,
+        "CFRelease.preference-array": 1,
+        "Locale.preferredLanguages": 1,
+        "autoreleasepool.drain": 1,
+        "autoreleasepool.push.preferences": 1,
+        "owned.allocate.preferences.cf-pointer-vector": 1,
+        "owned.allocate.preferences.swift-snapshot": 1,
+        "owned.free": 2,
+        "owned.write.preferences.swift-snapshot.population": 1,
+        "preferences.count-and-bridge": 1
+      },
+      "knownWriteBytes": 0,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "preferences.swift-snapshot.capacity",
+        "preferences.cf-pointer-vector.capacity"
+      ],
+      "receipts": [
+        [
+          "preferences-pool.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "preferences.swift-snapshot.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "preferences.swift-snapshot.population",
+          "write",
+          0
+        ],
+        [
+          "preferences.cf-pointer-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "preference-array.native-footprint",
+          "opaque",
+          null
+        ]
+      ],
+      "slotReturned": true
+    },
+    "preferences.two": {
+      "result": true,
+      "attemptsIncludingLocalAndCleanup": 41,
+      "operations": {
+        "CFArrayCreate.preferences": 1,
+        "CFGetTypeID.preference": 2,
+        "CFRelease.preference": 2,
+        "CFRelease.preference-array": 1,
+        "CFStringCreateWithBytes.preference": 2,
+        "CFStringGetBytes.preference": 2,
+        "CFStringGetLength.preference": 2,
+        "CFStringGetMaximumSizeForEncoding.preference": 2,
+        "Locale.preferredLanguages": 1,
+        "autoreleasepool.drain": 1,
+        "autoreleasepool.push.preferences": 1,
+        "owned.allocate.preference.projection": 2,
+        "owned.allocate.preference.utf8-scratch": 2,
+        "owned.allocate.preferences.cf-pointer-vector": 1,
+        "owned.allocate.preferences.swift-snapshot": 1,
+        "owned.free": 6,
+        "owned.write.preference.projection": 2,
+        "owned.write.preference.utf8-prefix": 2,
+        "owned.write.preferences.cf-pointer-slot": 2,
+        "owned.write.preferences.swift-snapshot.population": 1,
+        "preferences.count-and-bridge": 1,
+        "preferences.raw-access": 2,
+        "preferences.raw-bridge": 2
+      },
+      "knownWriteBytes": 48,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "preferences.swift-snapshot.capacity",
+        "preferences.cf-pointer-vector.capacity",
+        "preference.utf8-scratch.capacity",
+        "preference.projection.capacity",
+        "preference.utf8-scratch.capacity",
+        "preference.projection.capacity"
+      ],
+      "receipts": [
+        [
+          "preferences-pool.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "preferences.swift-snapshot.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "preferences.swift-snapshot.population",
+          "write",
+          16
+        ],
+        [
+          "preferences.cf-pointer-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "preference.utf8-scratch.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "preference.utf8-prefix",
+          "write",
+          5
+        ],
+        [
+          "preference.projection.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "preference.projection",
+          "write",
+          6
+        ],
+        [
+          "preference-0.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "preferences.cf-pointer-slot",
+          "write",
+          8
+        ],
+        [
+          "preference.utf8-scratch.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "preference.utf8-prefix",
+          "write",
+          2
+        ],
+        [
+          "preference.projection.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "preference.projection",
+          "write",
+          3
+        ],
+        [
+          "preference-1.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "preferences.cf-pointer-slot",
+          "write",
+          8
+        ],
+        [
+          "preference-array.native-footprint",
+          "opaque",
+          null
+        ]
+      ],
+      "slotReturned": true
+    },
+    "preferences.nil-string": {
+      "result": false,
+      "attemptsIncludingLocalAndCleanup": 37,
+      "operations": {
+        "CFGetTypeID.preference": 2,
+        "CFRelease.preference": 1,
+        "CFStringCreateWithBytes.preference": 2,
+        "CFStringGetBytes.preference": 2,
+        "CFStringGetLength.preference": 2,
+        "CFStringGetMaximumSizeForEncoding.preference": 2,
+        "Locale.preferredLanguages": 1,
+        "autoreleasepool.drain": 1,
+        "autoreleasepool.push.preferences": 1,
+        "owned.allocate.preference.projection": 2,
+        "owned.allocate.preference.utf8-scratch": 2,
+        "owned.allocate.preferences.cf-pointer-vector": 1,
+        "owned.allocate.preferences.swift-snapshot": 1,
+        "owned.free": 6,
+        "owned.write.preference.projection": 2,
+        "owned.write.preference.utf8-prefix": 2,
+        "owned.write.preferences.cf-pointer-slot": 1,
+        "owned.write.preferences.swift-snapshot.population": 1,
+        "preferences.count-and-bridge": 1,
+        "preferences.raw-access": 2,
+        "preferences.raw-bridge": 2
+      },
+      "knownWriteBytes": 40,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "preferences.swift-snapshot.capacity",
+        "preferences.cf-pointer-vector.capacity",
+        "preference.utf8-scratch.capacity",
+        "preference.projection.capacity",
+        "preference.utf8-scratch.capacity",
+        "preference.projection.capacity"
+      ],
+      "receipts": [
+        [
+          "preferences-pool.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "preferences.swift-snapshot.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "preferences.swift-snapshot.population",
+          "write",
+          16
+        ],
+        [
+          "preferences.cf-pointer-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "preference.utf8-scratch.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "preference.utf8-prefix",
+          "write",
+          5
+        ],
+        [
+          "preference.projection.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "preference.projection",
+          "write",
+          6
+        ],
+        [
+          "preference-0.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "preferences.cf-pointer-slot",
+          "write",
+          8
+        ],
+        [
+          "preference.utf8-scratch.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "preference.utf8-prefix",
+          "write",
+          2
+        ],
+        [
+          "preference.projection.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "preference.projection",
+          "write",
+          3
+        ]
+      ],
+      "slotReturned": true
+    },
+    "query.INIT_NIL": {
+      "result": null,
+      "attemptsIncludingLocalAndCleanup": 12,
+      "operations": {
+        "ARC.release.predicate": 1,
+        "ARC.retain-projection.predicate": 1,
+        "NSMetadataQuery.alloc.init": 1,
+        "NSPredicate.construct.fixed": 1,
+        "autoreleasepool.drain": 1,
+        "autoreleasepool.push.query": 1,
+        "owned.allocate.query.fixed-predicate": 1,
+        "owned.allocate.query.scope-vector": 1,
+        "owned.free": 2,
+        "owned.write.query.fixed-predicate": 1,
+        "owned.write.query.scope-vector.population": 1
+      },
+      "knownWriteBytes": 62,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "query.fixed-predicate.capacity",
+        "query.scope-vector.capacity"
+      ],
+      "receipts": [
+        [
+          "query-pool.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "query.fixed-predicate.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "query.fixed-predicate",
+          "write",
+          54
+        ],
+        [
+          "query.scope-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "query.scope-vector.population",
+          "write",
+          8
+        ],
+        [
+          "predicate.native-footprint",
+          "opaque",
+          null
+        ]
+      ],
+      "slotReturned": true
+    },
+    "query.START_FALSE": {
+      "result": null,
+      "attemptsIncludingLocalAndCleanup": 20,
+      "operations": {
+        "ARC.release.predicate": 1,
+        "ARC.release.query": 1,
+        "ARC.retain-projection.predicate": 1,
+        "ARC.retain-projection.query": 1,
+        "NSMetadataQuery.alloc.init": 1,
+        "NSMetadataQuery.setPredicate": 1,
+        "NSMetadataQuery.setSearchScopes.IndexedLocalComputer": 1,
+        "NSMetadataQuery.start": 1,
+        "NSPredicate.construct.fixed": 1,
+        "NotificationCenter.addObserver.didFinishGathering": 1,
+        "NotificationCenter.default": 1,
+        "NotificationCenter.removeObserver": 1,
+        "autoreleasepool.drain": 1,
+        "autoreleasepool.push.query": 1,
+        "owned.allocate.query.fixed-predicate": 1,
+        "owned.allocate.query.scope-vector": 1,
+        "owned.free": 2,
+        "owned.write.query.fixed-predicate": 1,
+        "owned.write.query.scope-vector.population": 1
+      },
+      "knownWriteBytes": 62,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "query.fixed-predicate.capacity",
+        "query.scope-vector.capacity"
+      ],
+      "receipts": [
+        [
+          "query-pool.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "query.fixed-predicate.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "query.fixed-predicate",
+          "write",
+          54
+        ],
+        [
+          "query.scope-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "query.scope-vector.population",
+          "write",
+          8
+        ],
+        [
+          "predicate.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "query.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "observer.native-footprint",
+          "opaque",
+          null
+        ]
+      ],
+      "slotReturned": true
+    },
+    "query.ERROR": {
+      "result": null,
+      "attemptsIncludingLocalAndCleanup": 23,
+      "operations": {
+        "ARC.release.predicate": 1,
+        "ARC.release.query": 1,
+        "ARC.retain-projection.predicate": 1,
+        "ARC.retain-projection.query": 1,
+        "NSMetadataQuery.alloc.init": 1,
+        "NSMetadataQuery.setPredicate": 1,
+        "NSMetadataQuery.setSearchScopes.IndexedLocalComputer": 1,
+        "NSMetadataQuery.start": 1,
+        "NSMetadataQuery.stop": 1,
+        "NSPredicate.construct.fixed": 1,
+        "NotificationCenter.addObserver.didFinishGathering": 1,
+        "NotificationCenter.default": 1,
+        "NotificationCenter.removeObserver": 1,
+        "autoreleasepool.drain": 1,
+        "autoreleasepool.push.query": 1,
+        "notification.object.type-and-query-identity": 1,
+        "owned.allocate.query.fixed-predicate": 1,
+        "owned.allocate.query.scope-vector": 1,
+        "owned.free": 2,
+        "owned.write.query.fixed-predicate": 1,
+        "owned.write.query.scope-vector.population": 1,
+        "owner-runloop.wait-event": 1
+      },
+      "knownWriteBytes": 62,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "query.fixed-predicate.capacity",
+        "query.scope-vector.capacity"
+      ],
+      "receipts": [
+        [
+          "query-pool.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "query.fixed-predicate.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "query.fixed-predicate",
+          "write",
+          54
+        ],
+        [
+          "query.scope-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "query.scope-vector.population",
+          "write",
+          8
+        ],
+        [
+          "predicate.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "query.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "observer.native-footprint",
+          "opaque",
+          null
+        ]
+      ],
+      "slotReturned": true
+    },
+    "query.INCOMPLETE": {
+      "result": null,
+      "attemptsIncludingLocalAndCleanup": 23,
+      "operations": {
+        "ARC.release.predicate": 1,
+        "ARC.release.query": 1,
+        "ARC.retain-projection.predicate": 1,
+        "ARC.retain-projection.query": 1,
+        "NSMetadataQuery.alloc.init": 1,
+        "NSMetadataQuery.setPredicate": 1,
+        "NSMetadataQuery.setSearchScopes.IndexedLocalComputer": 1,
+        "NSMetadataQuery.start": 1,
+        "NSMetadataQuery.stop": 1,
+        "NSPredicate.construct.fixed": 1,
+        "NotificationCenter.addObserver.didFinishGathering": 1,
+        "NotificationCenter.default": 1,
+        "NotificationCenter.removeObserver": 1,
+        "autoreleasepool.drain": 1,
+        "autoreleasepool.push.query": 1,
+        "notification.object.type-and-query-identity": 1,
+        "owned.allocate.query.fixed-predicate": 1,
+        "owned.allocate.query.scope-vector": 1,
+        "owned.free": 2,
+        "owned.write.query.fixed-predicate": 1,
+        "owned.write.query.scope-vector.population": 1,
+        "owner-runloop.wait-event": 1
+      },
+      "knownWriteBytes": 62,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "query.fixed-predicate.capacity",
+        "query.scope-vector.capacity"
+      ],
+      "receipts": [
+        [
+          "query-pool.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "query.fixed-predicate.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "query.fixed-predicate",
+          "write",
+          54
+        ],
+        [
+          "query.scope-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "query.scope-vector.population",
+          "write",
+          8
+        ],
+        [
+          "predicate.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "query.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "observer.native-footprint",
+          "opaque",
+          null
+        ]
+      ],
+      "slotReturned": true
+    },
+    "query.EMPTY": {
+      "result": null,
+      "attemptsIncludingLocalAndCleanup": 26,
+      "operations": {
+        "ARC.release.predicate": 1,
+        "ARC.release.query": 1,
+        "ARC.retain-projection.predicate": 1,
+        "ARC.retain-projection.query": 1,
+        "NSMetadataQuery.alloc.init": 1,
+        "NSMetadataQuery.disableUpdates": 1,
+        "NSMetadataQuery.resultCount": 1,
+        "NSMetadataQuery.setPredicate": 1,
+        "NSMetadataQuery.setSearchScopes.IndexedLocalComputer": 1,
+        "NSMetadataQuery.start": 1,
+        "NSMetadataQuery.stop": 1,
+        "NSPredicate.construct.fixed": 1,
+        "NotificationCenter.addObserver.didFinishGathering": 1,
+        "NotificationCenter.default": 1,
+        "NotificationCenter.removeObserver": 1,
+        "autoreleasepool.drain": 1,
+        "autoreleasepool.push.query": 1,
+        "notification.object.type-and-query-identity": 1,
+        "owned.allocate.query.fixed-predicate": 1,
+        "owned.allocate.query.scope-vector": 1,
+        "owned.free": 2,
+        "owned.write.query.fixed-predicate": 1,
+        "owned.write.query.scope-vector.population": 1,
+        "owner-runloop.wait-event": 1,
+        "raw.indexed.count-admit": 1
+      },
+      "knownWriteBytes": 62,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "query.fixed-predicate.capacity",
+        "query.scope-vector.capacity"
+      ],
+      "receipts": [
+        [
+          "query-pool.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "query.fixed-predicate.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "query.fixed-predicate",
+          "write",
+          54
+        ],
+        [
+          "query.scope-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "query.scope-vector.population",
+          "write",
+          8
+        ],
+        [
+          "predicate.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "query.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "observer.native-footprint",
+          "opaque",
+          null
+        ]
+      ],
+      "slotReturned": true
+    },
+    "query.POSITIVE": {
+      "result": null,
+      "attemptsIncludingLocalAndCleanup": 26,
+      "operations": {
+        "ARC.release.predicate": 1,
+        "ARC.release.query": 1,
+        "ARC.retain-projection.predicate": 1,
+        "ARC.retain-projection.query": 1,
+        "NSMetadataQuery.alloc.init": 1,
+        "NSMetadataQuery.disableUpdates": 1,
+        "NSMetadataQuery.resultCount": 1,
+        "NSMetadataQuery.setPredicate": 1,
+        "NSMetadataQuery.setSearchScopes.IndexedLocalComputer": 1,
+        "NSMetadataQuery.start": 1,
+        "NSMetadataQuery.stop": 1,
+        "NSPredicate.construct.fixed": 1,
+        "NotificationCenter.addObserver.didFinishGathering": 1,
+        "NotificationCenter.default": 1,
+        "NotificationCenter.removeObserver": 1,
+        "autoreleasepool.drain": 1,
+        "autoreleasepool.push.query": 1,
+        "notification.object.type-and-query-identity": 1,
+        "owned.allocate.query.fixed-predicate": 1,
+        "owned.allocate.query.scope-vector": 1,
+        "owned.free": 2,
+        "owned.write.query.fixed-predicate": 1,
+        "owned.write.query.scope-vector.population": 1,
+        "owner-runloop.wait-event": 1,
+        "raw.indexed.count-admit": 1
+      },
+      "knownWriteBytes": 62,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "query.fixed-predicate.capacity",
+        "query.scope-vector.capacity"
+      ],
+      "receipts": [
+        [
+          "query-pool.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "query.fixed-predicate.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "query.fixed-predicate",
+          "write",
+          54
+        ],
+        [
+          "query.scope-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "query.scope-vector.population",
+          "write",
+          8
+        ],
+        [
+          "predicate.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "query.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "observer.native-footprint",
+          "opaque",
+          null
+        ]
+      ],
+      "slotReturned": true
+    },
+    "query.toy-tuple": {
+      "result": null,
+      "attemptsIncludingLocalAndCleanup": 82,
+      "operations": {
+        "ARC.release.predicate": 1,
+        "ARC.release.query": 1,
+        "ARC.retain-projection.predicate": 1,
+        "ARC.retain-projection.query": 1,
+        "CFArrayGetCount.type-tree": 1,
+        "CFArrayGetValueAtIndex.type-tree": 1,
+        "CFGetTypeID.indexed-identifier": 1,
+        "CFGetTypeID.indexed-name": 1,
+        "CFGetTypeID.indexed-path": 1,
+        "CFGetTypeID.type-tree": 1,
+        "CFGetTypeID.type-tree-member": 1,
+        "CFStringGetBytes.indexed-identifier": 1,
+        "CFStringGetBytes.indexed-name": 1,
+        "CFStringGetBytes.indexed-path": 1,
+        "CFStringGetBytes.type-tree-member": 1,
+        "CFStringGetLength.indexed-identifier": 1,
+        "CFStringGetLength.indexed-name": 1,
+        "CFStringGetLength.indexed-path": 1,
+        "CFStringGetLength.type-tree-member": 1,
+        "CFStringGetMaximumSizeForEncoding.indexed-identifier": 1,
+        "CFStringGetMaximumSizeForEncoding.indexed-name": 1,
+        "CFStringGetMaximumSizeForEncoding.indexed-path": 1,
+        "CFStringGetMaximumSizeForEncoding.type-tree-member": 1,
+        "NSMetadataItem.valueForAttribute.kMDItemCFBundleIdentifier": 1,
+        "NSMetadataItem.valueForAttribute.kMDItemContentTypeTree": 1,
+        "NSMetadataItem.valueForAttribute.kMDItemDisplayName": 1,
+        "NSMetadataItem.valueForAttribute.kMDItemPath": 1,
+        "NSMetadataQuery.alloc.init": 1,
+        "NSMetadataQuery.disableUpdates": 1,
+        "NSMetadataQuery.resultAtIndex": 1,
+        "NSMetadataQuery.resultCount": 1,
+        "NSMetadataQuery.setPredicate": 1,
+        "NSMetadataQuery.setSearchScopes.IndexedLocalComputer": 1,
+        "NSMetadataQuery.start": 1,
+        "NSMetadataQuery.stop": 1,
+        "NSPredicate.construct.fixed": 1,
+        "NotificationCenter.addObserver.didFinishGathering": 1,
+        "NotificationCenter.default": 1,
+        "NotificationCenter.removeObserver": 1,
+        "autoreleasepool.drain": 2,
+        "autoreleasepool.push.item": 1,
+        "autoreleasepool.push.query": 1,
+        "indexed.exact-tree-membership-and-tuple-classification": 1,
+        "notification.object.type-and-query-identity": 1,
+        "owned.allocate.indexed-identifier.projection": 1,
+        "owned.allocate.indexed-identifier.utf8-scratch": 1,
+        "owned.allocate.indexed-name.projection": 1,
+        "owned.allocate.indexed-name.utf8-scratch": 1,
+        "owned.allocate.indexed-path.projection": 1,
+        "owned.allocate.indexed-path.utf8-scratch": 1,
+        "owned.allocate.indexed.tuple-record": 1,
+        "owned.allocate.query.fixed-predicate": 1,
+        "owned.allocate.query.scope-vector": 1,
+        "owned.allocate.type-tree-member.projection": 1,
+        "owned.allocate.type-tree-member.utf8-scratch": 1,
+        "owned.free": 11,
+        "owned.write.indexed-identifier.projection": 1,
+        "owned.write.indexed-identifier.utf8-prefix": 1,
+        "owned.write.indexed-name.projection": 1,
+        "owned.write.indexed-name.utf8-prefix": 1,
+        "owned.write.indexed-path.projection": 1,
+        "owned.write.indexed-path.utf8-prefix": 1,
+        "owned.write.indexed.tuple-record.field-values": 1,
+        "owned.write.query.fixed-predicate": 1,
+        "owned.write.query.scope-vector.population": 1,
+        "owned.write.type-tree-member.projection": 1,
+        "owned.write.type-tree-member.utf8-prefix": 1,
+        "owner-runloop.wait-event": 1,
+        "raw.indexed.count-admit": 1,
+        "raw.item.bridge-and-class-check": 1,
+        "raw.url.admit": 1
+      },
+      "knownWriteBytes": 146,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "query.fixed-predicate.capacity",
+        "query.scope-vector.capacity",
+        "type-tree-member.utf8-scratch.capacity",
+        "type-tree-member.projection.capacity",
+        "indexed-path.utf8-scratch.capacity",
+        "indexed-path.projection.capacity",
+        "indexed-identifier.utf8-scratch.capacity",
+        "indexed-identifier.projection.capacity",
+        "indexed-name.utf8-scratch.capacity",
+        "indexed-name.projection.capacity",
+        "indexed.tuple-record.capacity",
+        "indexed.tuple-record.field-values"
+      ],
+      "receipts": [
+        [
+          "query-pool.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "query.fixed-predicate.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "query.fixed-predicate",
+          "write",
+          54
+        ],
+        [
+          "query.scope-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "query.scope-vector.population",
+          "write",
+          8
+        ],
+        [
+          "predicate.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "query.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "observer.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "item-pool.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "type-tree-member.utf8-scratch.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "type-tree-member.utf8-prefix",
+          "write",
+          28
+        ],
+        [
+          "type-tree-member.projection.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "type-tree-member.projection",
+          "write",
+          29
+        ],
+        [
+          "indexed-path.utf8-scratch.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "indexed-path.utf8-prefix",
+          "write",
+          6
+        ],
+        [
+          "indexed-path.projection.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "indexed-path.projection",
+          "write",
+          7
+        ],
+        [
+          "indexed-identifier.utf8-scratch.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "indexed-identifier.utf8-prefix",
+          "write",
+          5
+        ],
+        [
+          "indexed-identifier.projection.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "indexed-identifier.projection",
+          "write",
+          6
+        ],
+        [
+          "indexed-name.utf8-scratch.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "indexed-name.utf8-prefix",
+          "write",
+          1
+        ],
+        [
+          "indexed-name.projection.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "indexed-name.projection",
+          "write",
+          2
+        ],
+        [
+          "indexed.tuple-record.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "indexed.tuple-record.field-values",
+          "write",
+          null
+        ]
+      ],
+      "slotReturned": true
+    },
+    "running.toy-tuple": {
+      "result": null,
+      "attemptsIncludingLocalAndCleanup": 47,
+      "operations": {
+        "ARC.release.running-batch": 1,
+        "ARC.retain-projection.running-batch": 1,
+        "CFGetTypeID.running-identifier": 1,
+        "CFGetTypeID.running-path": 1,
+        "CFGetTypeID.url": 1,
+        "CFRelease.url-path": 1,
+        "CFStringGetBytes.running-identifier": 1,
+        "CFStringGetBytes.running-path": 1,
+        "CFStringGetLength.running-identifier": 1,
+        "CFStringGetLength.running-path": 1,
+        "CFStringGetMaximumSizeForEncoding.running-identifier": 1,
+        "CFStringGetMaximumSizeForEncoding.running-path": 1,
+        "CFURLCopyFileSystemPath": 1,
+        "NSRunningApplication.activationPolicy": 1,
+        "NSRunningApplication.bundleIdentifier": 1,
+        "NSRunningApplication.bundleURL": 1,
+        "NSURL.isFileURL": 1,
+        "NSWorkspace.runningApplications": 1,
+        "NSWorkspace.shared": 1,
+        "autoreleasepool.drain": 1,
+        "autoreleasepool.push.running": 1,
+        "owned.allocate.running-identifier.projection": 1,
+        "owned.allocate.running-identifier.utf8-scratch": 1,
+        "owned.allocate.running-path.observation-record": 1,
+        "owned.allocate.running-path.projection": 1,
+        "owned.allocate.running-path.utf8-scratch": 1,
+        "owned.allocate.running.policy-record": 1,
+        "owned.allocate.running.swift-vector": 1,
+        "owned.free": 7,
+        "owned.write.running-identifier.projection": 1,
+        "owned.write.running-identifier.utf8-prefix": 1,
+        "owned.write.running-path.observation-record.field-values": 1,
+        "owned.write.running-path.projection": 1,
+        "owned.write.running-path.utf8-prefix": 1,
+        "owned.write.running.policy-record.field-values": 1,
+        "owned.write.running.swift-vector.population": 1,
+        "raw.running.access": 1,
+        "raw.running.bridge-and-class-check": 1,
+        "raw.running.count-admit": 1,
+        "raw.url.admit": 1,
+        "raw.url.bridge-check": 1
+      },
+      "knownWriteBytes": 32,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "running.swift-vector.capacity",
+        "running-path.utf8-scratch.capacity",
+        "running-path.projection.capacity",
+        "running-path.observation-record.capacity",
+        "running-path.observation-record.field-values",
+        "running-identifier.utf8-scratch.capacity",
+        "running-identifier.projection.capacity",
+        "running.policy-record.capacity",
+        "running.policy-record.field-values"
+      ],
+      "receipts": [
+        [
+          "running-pool.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "running-batch.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "running.swift-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "running.swift-vector.population",
+          "write",
+          8
+        ],
+        [
+          "url-path.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "running-path.utf8-scratch.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "running-path.utf8-prefix",
+          "write",
+          6
+        ],
+        [
+          "running-path.projection.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "running-path.projection",
+          "write",
+          7
+        ],
+        [
+          "running-path.observation-record.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "running-path.observation-record.field-values",
+          "write",
+          null
+        ],
+        [
+          "running-identifier.utf8-scratch.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "running-identifier.utf8-prefix",
+          "write",
+          5
+        ],
+        [
+          "running-identifier.projection.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "running-identifier.projection",
+          "write",
+          6
+        ],
+        [
+          "running.policy-record.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "running.policy-record.field-values",
+          "write",
+          null
+        ]
+      ],
+      "slotReturned": true
+    },
+    "registration.POSITIVE": {
+      "result": "COMPLETE",
+      "attemptsIncludingLocalAndCleanup": 43,
+      "operations": {
+        "ARC.release.appkit-list": 1,
+        "ARC.retain-projection.appkit-list": 1,
+        "CFArrayGetCount.registration-list": 1,
+        "CFArrayGetValueAtIndex.registration-list": 1,
+        "CFGetTypeID.registration-cf-path": 1,
+        "CFGetTypeID.registration-list": 1,
+        "CFGetTypeID.url": 1,
+        "CFRelease.registration-list": 1,
+        "CFRelease.seed": 1,
+        "CFRelease.url-path": 1,
+        "CFStringCreateWithBytes.seed": 1,
+        "CFStringGetBytes.registration-cf-path": 1,
+        "CFStringGetLength.registration-cf-path": 1,
+        "CFStringGetMaximumSizeForEncoding.registration-cf-path": 1,
+        "CFURLCopyFileSystemPath": 1,
+        "LSCopyApplicationURLsForBundleIdentifier": 1,
+        "NSURL.isFileURL": 1,
+        "NSWorkspace.urlForApplication": 1,
+        "NSWorkspace.urlsForApplications": 1,
+        "appkit-list.count-and-bridge": 1,
+        "autoreleasepool.drain": 1,
+        "autoreleasepool.push.registration": 1,
+        "owned.allocate.registration-cf-path.observation-record": 1,
+        "owned.allocate.registration-cf-path.projection": 1,
+        "owned.allocate.registration-cf-path.utf8-scratch": 1,
+        "owned.allocate.registration.appkit-swift-vector": 1,
+        "owned.allocate.registration.ordered-domain": 1,
+        "owned.allocate.registration.seed": 1,
+        "owned.free": 6,
+        "owned.write.registration-cf-path.observation-record.field-values": 1,
+        "owned.write.registration-cf-path.projection": 1,
+        "owned.write.registration-cf-path.utf8-prefix": 1,
+        "owned.write.registration.appkit-swift-vector.population": 1,
+        "owned.write.registration.ordered-domain.population": 1,
+        "owned.write.registration.seed": 1,
+        "raw.registration.count-admit": 1,
+        "raw.url.admit": 1,
+        "raw.url.bridge-check": 1
+      },
+      "knownWriteBytes": 19,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "registration.seed.capacity",
+        "registration-cf-path.utf8-scratch.capacity",
+        "registration-cf-path.projection.capacity",
+        "registration-cf-path.observation-record.capacity",
+        "registration-cf-path.observation-record.field-values",
+        "registration.appkit-swift-vector.capacity",
+        "registration.ordered-domain.capacity"
+      ],
+      "receipts": [
+        [
+          "registration.seed.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.seed",
+          "write",
+          6
+        ],
+        [
+          "seed.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "registration-pool.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "cf-list.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "url-path.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "registration-cf-path.utf8-scratch.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration-cf-path.utf8-prefix",
+          "write",
+          6
+        ],
+        [
+          "registration-cf-path.projection.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration-cf-path.projection",
+          "write",
+          7
+        ],
+        [
+          "registration-cf-path.observation-record.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration-cf-path.observation-record.field-values",
+          "write",
+          null
+        ],
+        [
+          "appkit-list.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "registration.appkit-swift-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.appkit-swift-vector.population",
+          "write",
+          0
+        ],
+        [
+          "registration.ordered-domain.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.ordered-domain.population",
+          "write",
+          0
+        ]
+      ],
+      "slotReturned": true
+    },
+    "registration.EMPTY": {
+      "result": "UNKNOWN",
+      "attemptsIncludingLocalAndCleanup": 23,
+      "operations": {
+        "ARC.release.appkit-list": 1,
+        "ARC.retain-projection.appkit-list": 1,
+        "CFArrayGetCount.registration-list": 1,
+        "CFGetTypeID.registration-list": 1,
+        "CFRelease.registration-list": 1,
+        "CFRelease.seed": 1,
+        "CFStringCreateWithBytes.seed": 1,
+        "LSCopyApplicationURLsForBundleIdentifier": 1,
+        "NSWorkspace.urlForApplication": 1,
+        "NSWorkspace.urlsForApplications": 1,
+        "appkit-list.count-and-bridge": 1,
+        "autoreleasepool.drain": 1,
+        "autoreleasepool.push.registration": 1,
+        "owned.allocate.registration.appkit-swift-vector": 1,
+        "owned.allocate.registration.ordered-domain": 1,
+        "owned.allocate.registration.seed": 1,
+        "owned.free": 3,
+        "owned.write.registration.appkit-swift-vector.population": 1,
+        "owned.write.registration.ordered-domain.population": 1,
+        "owned.write.registration.seed": 1,
+        "raw.registration.count-admit": 1
+      },
+      "knownWriteBytes": 6,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "registration.seed.capacity",
+        "registration.appkit-swift-vector.capacity",
+        "registration.ordered-domain.capacity"
+      ],
+      "receipts": [
+        [
+          "registration.seed.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.seed",
+          "write",
+          6
+        ],
+        [
+          "seed.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "registration-pool.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "cf-list.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "appkit-list.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "registration.appkit-swift-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.appkit-swift-vector.population",
+          "write",
+          0
+        ],
+        [
+          "registration.ordered-domain.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.ordered-domain.population",
+          "write",
+          0
+        ]
+      ],
+      "slotReturned": true
+    },
+    "registration.NOT_FOUND": {
+      "result": "CHECKED_NOT_FOUND",
+      "attemptsIncludingLocalAndCleanup": 23,
+      "operations": {
+        "ARC.release.appkit-list": 1,
+        "ARC.retain-projection.appkit-list": 1,
+        "CFErrorGetCode": 1,
+        "CFErrorGetDomain": 1,
+        "CFGetTypeID.registration-error": 1,
+        "CFRelease.registration-error": 1,
+        "CFRelease.seed": 1,
+        "CFStringCreateWithBytes.seed": 1,
+        "LSCopyApplicationURLsForBundleIdentifier": 1,
+        "NSWorkspace.urlForApplication": 1,
+        "NSWorkspace.urlsForApplications": 1,
+        "appkit-list.count-and-bridge": 1,
+        "autoreleasepool.drain": 1,
+        "autoreleasepool.push.registration": 1,
+        "owned.allocate.registration.appkit-swift-vector": 1,
+        "owned.allocate.registration.ordered-domain": 1,
+        "owned.allocate.registration.seed": 1,
+        "owned.free": 3,
+        "owned.write.registration.appkit-swift-vector.population": 1,
+        "owned.write.registration.ordered-domain.population": 1,
+        "owned.write.registration.seed": 1
+      },
+      "knownWriteBytes": 6,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "registration.seed.capacity",
+        "registration.appkit-swift-vector.capacity",
+        "registration.ordered-domain.capacity"
+      ],
+      "receipts": [
+        [
+          "registration.seed.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.seed",
+          "write",
+          6
+        ],
+        [
+          "seed.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "registration-pool.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "cf-error.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "appkit-list.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "registration.appkit-swift-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.appkit-swift-vector.population",
+          "write",
+          0
+        ],
+        [
+          "registration.ordered-domain.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.ordered-domain.population",
+          "write",
+          0
+        ]
+      ],
+      "slotReturned": true
+    },
+    "registration.ERROR": {
+      "result": "UNKNOWN",
+      "attemptsIncludingLocalAndCleanup": 23,
+      "operations": {
+        "ARC.release.appkit-list": 1,
+        "ARC.retain-projection.appkit-list": 1,
+        "CFErrorGetCode": 1,
+        "CFErrorGetDomain": 1,
+        "CFGetTypeID.registration-error": 1,
+        "CFRelease.registration-error": 1,
+        "CFRelease.seed": 1,
+        "CFStringCreateWithBytes.seed": 1,
+        "LSCopyApplicationURLsForBundleIdentifier": 1,
+        "NSWorkspace.urlForApplication": 1,
+        "NSWorkspace.urlsForApplications": 1,
+        "appkit-list.count-and-bridge": 1,
+        "autoreleasepool.drain": 1,
+        "autoreleasepool.push.registration": 1,
+        "owned.allocate.registration.appkit-swift-vector": 1,
+        "owned.allocate.registration.ordered-domain": 1,
+        "owned.allocate.registration.seed": 1,
+        "owned.free": 3,
+        "owned.write.registration.appkit-swift-vector.population": 1,
+        "owned.write.registration.ordered-domain.population": 1,
+        "owned.write.registration.seed": 1
+      },
+      "knownWriteBytes": 6,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "registration.seed.capacity",
+        "registration.appkit-swift-vector.capacity",
+        "registration.ordered-domain.capacity"
+      ],
+      "receipts": [
+        [
+          "registration.seed.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.seed",
+          "write",
+          6
+        ],
+        [
+          "seed.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "registration-pool.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "cf-error.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "appkit-list.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "registration.appkit-swift-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.appkit-swift-vector.population",
+          "write",
+          0
+        ],
+        [
+          "registration.ordered-domain.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.ordered-domain.population",
+          "write",
+          0
+        ]
+      ],
+      "slotReturned": true
+    },
+    "registration.BOTH": {
+      "result": "UNKNOWN",
+      "attemptsIncludingLocalAndCleanup": 47,
+      "operations": {
+        "ARC.release.appkit-list": 1,
+        "ARC.retain-projection.appkit-list": 1,
+        "CFArrayGetCount.registration-list": 1,
+        "CFArrayGetValueAtIndex.registration-list": 1,
+        "CFErrorGetCode": 1,
+        "CFErrorGetDomain": 1,
+        "CFGetTypeID.registration-cf-path": 1,
+        "CFGetTypeID.registration-error": 1,
+        "CFGetTypeID.registration-list": 1,
+        "CFGetTypeID.url": 1,
+        "CFRelease.registration-error": 1,
+        "CFRelease.registration-list": 1,
+        "CFRelease.seed": 1,
+        "CFRelease.url-path": 1,
+        "CFStringCreateWithBytes.seed": 1,
+        "CFStringGetBytes.registration-cf-path": 1,
+        "CFStringGetLength.registration-cf-path": 1,
+        "CFStringGetMaximumSizeForEncoding.registration-cf-path": 1,
+        "CFURLCopyFileSystemPath": 1,
+        "LSCopyApplicationURLsForBundleIdentifier": 1,
+        "NSURL.isFileURL": 1,
+        "NSWorkspace.urlForApplication": 1,
+        "NSWorkspace.urlsForApplications": 1,
+        "appkit-list.count-and-bridge": 1,
+        "autoreleasepool.drain": 1,
+        "autoreleasepool.push.registration": 1,
+        "owned.allocate.registration-cf-path.observation-record": 1,
+        "owned.allocate.registration-cf-path.projection": 1,
+        "owned.allocate.registration-cf-path.utf8-scratch": 1,
+        "owned.allocate.registration.appkit-swift-vector": 1,
+        "owned.allocate.registration.ordered-domain": 1,
+        "owned.allocate.registration.seed": 1,
+        "owned.free": 6,
+        "owned.write.registration-cf-path.observation-record.field-values": 1,
+        "owned.write.registration-cf-path.projection": 1,
+        "owned.write.registration-cf-path.utf8-prefix": 1,
+        "owned.write.registration.appkit-swift-vector.population": 1,
+        "owned.write.registration.ordered-domain.population": 1,
+        "owned.write.registration.seed": 1,
+        "raw.registration.count-admit": 1,
+        "raw.url.admit": 1,
+        "raw.url.bridge-check": 1
+      },
+      "knownWriteBytes": 19,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "registration.seed.capacity",
+        "registration-cf-path.utf8-scratch.capacity",
+        "registration-cf-path.projection.capacity",
+        "registration-cf-path.observation-record.capacity",
+        "registration-cf-path.observation-record.field-values",
+        "registration.appkit-swift-vector.capacity",
+        "registration.ordered-domain.capacity"
+      ],
+      "receipts": [
+        [
+          "registration.seed.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.seed",
+          "write",
+          6
+        ],
+        [
+          "seed.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "registration-pool.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "cf-list.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "url-path.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "registration-cf-path.utf8-scratch.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration-cf-path.utf8-prefix",
+          "write",
+          6
+        ],
+        [
+          "registration-cf-path.projection.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration-cf-path.projection",
+          "write",
+          7
+        ],
+        [
+          "registration-cf-path.observation-record.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration-cf-path.observation-record.field-values",
+          "write",
+          null
+        ],
+        [
+          "cf-error.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "appkit-list.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "registration.appkit-swift-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.appkit-swift-vector.population",
+          "write",
+          0
+        ],
+        [
+          "registration.ordered-domain.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.ordered-domain.population",
+          "write",
+          0
+        ]
+      ],
+      "slotReturned": true
+    },
+    "registration.NIL": {
+      "result": "UNKNOWN",
+      "attemptsIncludingLocalAndCleanup": 19,
+      "operations": {
+        "ARC.release.appkit-list": 1,
+        "ARC.retain-projection.appkit-list": 1,
+        "CFRelease.seed": 1,
+        "CFStringCreateWithBytes.seed": 1,
+        "LSCopyApplicationURLsForBundleIdentifier": 1,
+        "NSWorkspace.urlForApplication": 1,
+        "NSWorkspace.urlsForApplications": 1,
+        "appkit-list.count-and-bridge": 1,
+        "autoreleasepool.drain": 1,
+        "autoreleasepool.push.registration": 1,
+        "owned.allocate.registration.appkit-swift-vector": 1,
+        "owned.allocate.registration.ordered-domain": 1,
+        "owned.allocate.registration.seed": 1,
+        "owned.free": 3,
+        "owned.write.registration.appkit-swift-vector.population": 1,
+        "owned.write.registration.ordered-domain.population": 1,
+        "owned.write.registration.seed": 1
+      },
+      "knownWriteBytes": 6,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "registration.seed.capacity",
+        "registration.appkit-swift-vector.capacity",
+        "registration.ordered-domain.capacity"
+      ],
+      "receipts": [
+        [
+          "registration.seed.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.seed",
+          "write",
+          6
+        ],
+        [
+          "seed.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "registration-pool.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "appkit-list.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "registration.appkit-swift-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.appkit-swift-vector.population",
+          "write",
+          0
+        ],
+        [
+          "registration.ordered-domain.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.ordered-domain.population",
+          "write",
+          0
+        ]
+      ],
+      "slotReturned": true
+    },
+    "registration.WRONG_TYPE": {
+      "result": "UNKNOWN",
+      "attemptsIncludingLocalAndCleanup": 21,
+      "operations": {
+        "ARC.release.appkit-list": 1,
+        "ARC.retain-projection.appkit-list": 1,
+        "CFGetTypeID.registration-list": 1,
+        "CFRelease.registration-list": 1,
+        "CFRelease.seed": 1,
+        "CFStringCreateWithBytes.seed": 1,
+        "LSCopyApplicationURLsForBundleIdentifier": 1,
+        "NSWorkspace.urlForApplication": 1,
+        "NSWorkspace.urlsForApplications": 1,
+        "appkit-list.count-and-bridge": 1,
+        "autoreleasepool.drain": 1,
+        "autoreleasepool.push.registration": 1,
+        "owned.allocate.registration.appkit-swift-vector": 1,
+        "owned.allocate.registration.ordered-domain": 1,
+        "owned.allocate.registration.seed": 1,
+        "owned.free": 3,
+        "owned.write.registration.appkit-swift-vector.population": 1,
+        "owned.write.registration.ordered-domain.population": 1,
+        "owned.write.registration.seed": 1
+      },
+      "knownWriteBytes": 6,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "registration.seed.capacity",
+        "registration.appkit-swift-vector.capacity",
+        "registration.ordered-domain.capacity"
+      ],
+      "receipts": [
+        [
+          "registration.seed.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.seed",
+          "write",
+          6
+        ],
+        [
+          "seed.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "registration-pool.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "cf-list.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "appkit-list.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "registration.appkit-swift-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.appkit-swift-vector.population",
+          "write",
+          0
+        ],
+        [
+          "registration.ordered-domain.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.ordered-domain.population",
+          "write",
+          0
+        ]
+      ],
+      "slotReturned": true
+    },
+    "registration.INCOMPLETE": {
+      "result": "UNKNOWN",
+      "attemptsIncludingLocalAndCleanup": 43,
+      "operations": {
+        "ARC.release.appkit-list": 1,
+        "ARC.retain-projection.appkit-list": 1,
+        "CFArrayGetCount.registration-list": 1,
+        "CFArrayGetValueAtIndex.registration-list": 1,
+        "CFGetTypeID.registration-cf-path": 1,
+        "CFGetTypeID.registration-list": 1,
+        "CFGetTypeID.url": 1,
+        "CFRelease.registration-list": 1,
+        "CFRelease.seed": 1,
+        "CFRelease.url-path": 1,
+        "CFStringCreateWithBytes.seed": 1,
+        "CFStringGetBytes.registration-cf-path": 1,
+        "CFStringGetLength.registration-cf-path": 1,
+        "CFStringGetMaximumSizeForEncoding.registration-cf-path": 1,
+        "CFURLCopyFileSystemPath": 1,
+        "LSCopyApplicationURLsForBundleIdentifier": 1,
+        "NSURL.isFileURL": 1,
+        "NSWorkspace.urlForApplication": 1,
+        "NSWorkspace.urlsForApplications": 1,
+        "appkit-list.count-and-bridge": 1,
+        "autoreleasepool.drain": 1,
+        "autoreleasepool.push.registration": 1,
+        "owned.allocate.registration-cf-path.observation-record": 1,
+        "owned.allocate.registration-cf-path.projection": 1,
+        "owned.allocate.registration-cf-path.utf8-scratch": 1,
+        "owned.allocate.registration.appkit-swift-vector": 1,
+        "owned.allocate.registration.ordered-domain": 1,
+        "owned.allocate.registration.seed": 1,
+        "owned.free": 6,
+        "owned.write.registration-cf-path.observation-record.field-values": 1,
+        "owned.write.registration-cf-path.projection": 1,
+        "owned.write.registration-cf-path.utf8-prefix": 1,
+        "owned.write.registration.appkit-swift-vector.population": 1,
+        "owned.write.registration.ordered-domain.population": 1,
+        "owned.write.registration.seed": 1,
+        "raw.registration.count-admit": 1,
+        "raw.url.admit": 1,
+        "raw.url.bridge-check": 1
+      },
+      "knownWriteBytes": 19,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "registration.seed.capacity",
+        "registration-cf-path.utf8-scratch.capacity",
+        "registration-cf-path.projection.capacity",
+        "registration-cf-path.observation-record.capacity",
+        "registration-cf-path.observation-record.field-values",
+        "registration.appkit-swift-vector.capacity",
+        "registration.ordered-domain.capacity"
+      ],
+      "receipts": [
+        [
+          "registration.seed.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.seed",
+          "write",
+          6
+        ],
+        [
+          "seed.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "registration-pool.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "cf-list.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "url-path.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "registration-cf-path.utf8-scratch.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration-cf-path.utf8-prefix",
+          "write",
+          6
+        ],
+        [
+          "registration-cf-path.projection.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration-cf-path.projection",
+          "write",
+          7
+        ],
+        [
+          "registration-cf-path.observation-record.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration-cf-path.observation-record.field-values",
+          "write",
+          null
+        ],
+        [
+          "appkit-list.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "registration.appkit-swift-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.appkit-swift-vector.population",
+          "write",
+          0
+        ],
+        [
+          "registration.ordered-domain.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.ordered-domain.population",
+          "write",
+          0
+        ]
+      ],
+      "slotReturned": true
+    },
+    "root.terminal.OK": {
+      "result": "ORDINARY",
+      "attemptsIncludingLocalAndCleanup": 89,
+      "operations": {
+        "ARC.release.root-url": 1,
+        "ARC.release.root-values": 1,
+        "ARC.retain-projection.root-url": 1,
+        "URL.construct.root": 1,
+        "URL.resourceValues.isApplication": 1,
+        "close": 3,
+        "fstat.terminal": 1,
+        "fstatat.before": 2,
+        "fstatat.terminal-after": 1,
+        "metadata.reader-contract-boundary": 1,
+        "openat.root": 2,
+        "openat.terminal": 1,
+        "owned.allocate.root-resource.finalized-path": 1,
+        "owned.allocate.root-resource.swift-projection": 1,
+        "owned.allocate.walk.component": 2,
+        "owned.allocate.walk.component-c-string.map-cchar": 2,
+        "owned.allocate.walk.component-c-string.with-nul": 2,
+        "owned.allocate.walk.final-component-vector": 2,
+        "owned.allocate.walk.joined-resolved-without-leading-slash": 2,
+        "owned.allocate.walk.literal": 2,
+        "owned.allocate.walk.resolved": 2,
+        "owned.allocate.walk.spelling-and-expansion-records": 2,
+        "owned.allocate.walk.state": 2,
+        "owned.allocate.walk.terminal-open-c-string.map-cchar": 1,
+        "owned.allocate.walk.terminal-open-c-string.with-nul": 1,
+        "owned.allocate.walk.terminal-recheck-c-string.map-cchar": 1,
+        "owned.allocate.walk.terminal-recheck-c-string.with-nul": 1,
+        "owned.free": 24,
+        "owned.write.root-resource.finalized-path": 1,
+        "owned.write.root-resource.swift-projection.field-values": 1,
+        "owned.write.walk.component": 2,
+        "owned.write.walk.component-c-string.map-cchar": 2,
+        "owned.write.walk.component-c-string.with-nul": 2,
+        "owned.write.walk.final-component-vector.population": 2,
+        "owned.write.walk.joined-resolved-without-leading-slash": 2,
+        "owned.write.walk.literal": 2,
+        "owned.write.walk.resolved": 2,
+        "owned.write.walk.spelling-and-expansion-records.population": 2,
+        "owned.write.walk.state.field-values": 2,
+        "owned.write.walk.terminal-open-c-string.map-cchar": 1,
+        "owned.write.walk.terminal-open-c-string.with-nul": 1,
+        "owned.write.walk.terminal-recheck-c-string.map-cchar": 1,
+        "owned.write.walk.terminal-recheck-c-string.with-nul": 1,
+        "root-resource.optional-boolean-type-and-value": 1
+      },
+      "knownWriteBytes": 143,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "walk.literal.capacity",
+        "walk.state.capacity",
+        "walk.state.field-values",
+        "walk.component.capacity",
+        "walk.component-c-string.map-cchar.capacity",
+        "walk.component-c-string.with-nul.capacity",
+        "walk.terminal-open-c-string.map-cchar.capacity",
+        "walk.terminal-open-c-string.with-nul.capacity",
+        "walk.terminal-recheck-c-string.map-cchar.capacity",
+        "walk.terminal-recheck-c-string.with-nul.capacity",
+        "walk.final-component-vector.capacity",
+        "walk.joined-resolved-without-leading-slash.capacity",
+        "walk.resolved.capacity",
+        "walk.spelling-and-expansion-records.capacity",
+        "root-resource.finalized-path.capacity",
+        "root-resource.swift-projection.capacity",
+        "root-resource.swift-projection.field-values",
+        "walk.literal.capacity",
+        "walk.state.capacity",
+        "walk.state.field-values",
+        "walk.component.capacity",
+        "walk.component-c-string.map-cchar.capacity",
+        "walk.component-c-string.with-nul.capacity",
+        "walk.final-component-vector.capacity",
+        "walk.joined-resolved-without-leading-slash.capacity",
+        "walk.resolved.capacity",
+        "walk.spelling-and-expansion-records.capacity"
+      ],
+      "receipts": [
+        [
+          "walk.literal.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.literal",
+          "write",
+          6
+        ],
+        [
+          "walk.state.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.state.field-values",
+          "write",
+          null
+        ],
+        [
+          "current.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "walk.component.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component",
+          "write",
+          5
+        ],
+        [
+          "walk.component-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.map-cchar",
+          "write",
+          5
+        ],
+        [
+          "walk.component-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.with-nul",
+          "write",
+          6
+        ],
+        [
+          "walk.terminal-open-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-open-c-string.map-cchar",
+          "write",
+          5
+        ],
+        [
+          "walk.terminal-open-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-open-c-string.with-nul",
+          "write",
+          6
+        ],
+        [
+          "terminal.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "walk.terminal-recheck-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-recheck-c-string.map-cchar",
+          "write",
+          5
+        ],
+        [
+          "walk.terminal-recheck-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-recheck-c-string.with-nul",
+          "write",
+          6
+        ],
+        [
+          "walk.final-component-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.final-component-vector.population",
+          "write",
+          8
+        ],
+        [
+          "walk.joined-resolved-without-leading-slash.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.joined-resolved-without-leading-slash",
+          "write",
+          5
+        ],
+        [
+          "walk.resolved.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.resolved",
+          "write",
+          6
+        ],
+        [
+          "walk.spelling-and-expansion-records.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.spelling-and-expansion-records.population",
+          "write",
+          16
+        ],
+        [
+          "root-resource.finalized-path.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "root-resource.finalized-path",
+          "write",
+          7
+        ],
+        [
+          "root-url.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "root-values.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "root-resource.swift-projection.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "root-resource.swift-projection.field-values",
+          "write",
+          null
+        ],
+        [
+          "walk.literal.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.literal",
+          "write",
+          6
+        ],
+        [
+          "walk.state.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.state.field-values",
+          "write",
+          null
+        ],
+        [
+          "current.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "walk.component.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component",
+          "write",
+          5
+        ],
+        [
+          "walk.component-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.map-cchar",
+          "write",
+          5
+        ],
+        [
+          "walk.component-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.with-nul",
+          "write",
+          6
+        ],
+        [
+          "walk.final-component-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.final-component-vector.population",
+          "write",
+          8
+        ],
+        [
+          "walk.joined-resolved-without-leading-slash.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.joined-resolved-without-leading-slash",
+          "write",
+          5
+        ],
+        [
+          "walk.resolved.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.resolved",
+          "write",
+          6
+        ],
+        [
+          "walk.spelling-and-expansion-records.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.spelling-and-expansion-records.population",
+          "write",
+          16
+        ]
+      ],
+      "slotReturned": true
+    },
+    "root.terminal.OPEN": {
+      "result": "REFUSED",
+      "attemptsIncludingLocalAndCleanup": 25,
+      "operations": {
+        "close": 1,
+        "fstatat.before": 1,
+        "openat.root": 1,
+        "openat.terminal": 1,
+        "owned.allocate.walk.component": 1,
+        "owned.allocate.walk.component-c-string.map-cchar": 1,
+        "owned.allocate.walk.component-c-string.with-nul": 1,
+        "owned.allocate.walk.literal": 1,
+        "owned.allocate.walk.state": 1,
+        "owned.allocate.walk.terminal-open-c-string.map-cchar": 1,
+        "owned.allocate.walk.terminal-open-c-string.with-nul": 1,
+        "owned.free": 7,
+        "owned.write.walk.component": 1,
+        "owned.write.walk.component-c-string.map-cchar": 1,
+        "owned.write.walk.component-c-string.with-nul": 1,
+        "owned.write.walk.literal": 1,
+        "owned.write.walk.state.field-values": 1,
+        "owned.write.walk.terminal-open-c-string.map-cchar": 1,
+        "owned.write.walk.terminal-open-c-string.with-nul": 1
+      },
+      "knownWriteBytes": 33,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "walk.literal.capacity",
+        "walk.state.capacity",
+        "walk.state.field-values",
+        "walk.component.capacity",
+        "walk.component-c-string.map-cchar.capacity",
+        "walk.component-c-string.with-nul.capacity",
+        "walk.terminal-open-c-string.map-cchar.capacity",
+        "walk.terminal-open-c-string.with-nul.capacity"
+      ],
+      "receipts": [
+        [
+          "walk.literal.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.literal",
+          "write",
+          6
+        ],
+        [
+          "walk.state.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.state.field-values",
+          "write",
+          null
+        ],
+        [
+          "current.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "walk.component.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component",
+          "write",
+          5
+        ],
+        [
+          "walk.component-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.map-cchar",
+          "write",
+          5
+        ],
+        [
+          "walk.component-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.with-nul",
+          "write",
+          6
+        ],
+        [
+          "walk.terminal-open-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-open-c-string.map-cchar",
+          "write",
+          5
+        ],
+        [
+          "walk.terminal-open-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-open-c-string.with-nul",
+          "write",
+          6
+        ]
+      ],
+      "slotReturned": true
+    },
+    "root.terminal.HELD": {
+      "result": "REFUSED",
+      "attemptsIncludingLocalAndCleanup": 27,
+      "operations": {
+        "close": 2,
+        "fstat.terminal": 1,
+        "fstatat.before": 1,
+        "openat.root": 1,
+        "openat.terminal": 1,
+        "owned.allocate.walk.component": 1,
+        "owned.allocate.walk.component-c-string.map-cchar": 1,
+        "owned.allocate.walk.component-c-string.with-nul": 1,
+        "owned.allocate.walk.literal": 1,
+        "owned.allocate.walk.state": 1,
+        "owned.allocate.walk.terminal-open-c-string.map-cchar": 1,
+        "owned.allocate.walk.terminal-open-c-string.with-nul": 1,
+        "owned.free": 7,
+        "owned.write.walk.component": 1,
+        "owned.write.walk.component-c-string.map-cchar": 1,
+        "owned.write.walk.component-c-string.with-nul": 1,
+        "owned.write.walk.literal": 1,
+        "owned.write.walk.state.field-values": 1,
+        "owned.write.walk.terminal-open-c-string.map-cchar": 1,
+        "owned.write.walk.terminal-open-c-string.with-nul": 1
+      },
+      "knownWriteBytes": 33,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "walk.literal.capacity",
+        "walk.state.capacity",
+        "walk.state.field-values",
+        "walk.component.capacity",
+        "walk.component-c-string.map-cchar.capacity",
+        "walk.component-c-string.with-nul.capacity",
+        "walk.terminal-open-c-string.map-cchar.capacity",
+        "walk.terminal-open-c-string.with-nul.capacity"
+      ],
+      "receipts": [
+        [
+          "walk.literal.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.literal",
+          "write",
+          6
+        ],
+        [
+          "walk.state.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.state.field-values",
+          "write",
+          null
+        ],
+        [
+          "current.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "walk.component.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component",
+          "write",
+          5
+        ],
+        [
+          "walk.component-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.map-cchar",
+          "write",
+          5
+        ],
+        [
+          "walk.component-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.with-nul",
+          "write",
+          6
+        ],
+        [
+          "walk.terminal-open-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-open-c-string.map-cchar",
+          "write",
+          5
+        ],
+        [
+          "walk.terminal-open-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-open-c-string.with-nul",
+          "write",
+          6
+        ],
+        [
+          "terminal.native-footprint",
+          "opaque",
+          null
+        ]
+      ],
+      "slotReturned": true
+    },
+    "root.terminal.CHANGED": {
+      "result": "REFUSED",
+      "attemptsIncludingLocalAndCleanup": 34,
+      "operations": {
+        "close": 2,
+        "fstat.terminal": 1,
+        "fstatat.before": 1,
+        "fstatat.terminal-after": 1,
+        "openat.root": 1,
+        "openat.terminal": 1,
+        "owned.allocate.walk.component": 1,
+        "owned.allocate.walk.component-c-string.map-cchar": 1,
+        "owned.allocate.walk.component-c-string.with-nul": 1,
+        "owned.allocate.walk.literal": 1,
+        "owned.allocate.walk.state": 1,
+        "owned.allocate.walk.terminal-open-c-string.map-cchar": 1,
+        "owned.allocate.walk.terminal-open-c-string.with-nul": 1,
+        "owned.allocate.walk.terminal-recheck-c-string.map-cchar": 1,
+        "owned.allocate.walk.terminal-recheck-c-string.with-nul": 1,
+        "owned.free": 9,
+        "owned.write.walk.component": 1,
+        "owned.write.walk.component-c-string.map-cchar": 1,
+        "owned.write.walk.component-c-string.with-nul": 1,
+        "owned.write.walk.literal": 1,
+        "owned.write.walk.state.field-values": 1,
+        "owned.write.walk.terminal-open-c-string.map-cchar": 1,
+        "owned.write.walk.terminal-open-c-string.with-nul": 1,
+        "owned.write.walk.terminal-recheck-c-string.map-cchar": 1,
+        "owned.write.walk.terminal-recheck-c-string.with-nul": 1
+      },
+      "knownWriteBytes": 44,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "walk.literal.capacity",
+        "walk.state.capacity",
+        "walk.state.field-values",
+        "walk.component.capacity",
+        "walk.component-c-string.map-cchar.capacity",
+        "walk.component-c-string.with-nul.capacity",
+        "walk.terminal-open-c-string.map-cchar.capacity",
+        "walk.terminal-open-c-string.with-nul.capacity",
+        "walk.terminal-recheck-c-string.map-cchar.capacity",
+        "walk.terminal-recheck-c-string.with-nul.capacity"
+      ],
+      "receipts": [
+        [
+          "walk.literal.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.literal",
+          "write",
+          6
+        ],
+        [
+          "walk.state.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.state.field-values",
+          "write",
+          null
+        ],
+        [
+          "current.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "walk.component.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component",
+          "write",
+          5
+        ],
+        [
+          "walk.component-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.map-cchar",
+          "write",
+          5
+        ],
+        [
+          "walk.component-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.with-nul",
+          "write",
+          6
+        ],
+        [
+          "walk.terminal-open-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-open-c-string.map-cchar",
+          "write",
+          5
+        ],
+        [
+          "walk.terminal-open-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-open-c-string.with-nul",
+          "write",
+          6
+        ],
+        [
+          "terminal.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "walk.terminal-recheck-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-recheck-c-string.map-cchar",
+          "write",
+          5
+        ],
+        [
+          "walk.terminal-recheck-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-recheck-c-string.with-nul",
+          "write",
+          6
+        ]
+      ],
+      "slotReturned": true
+    },
+    "registration.malformed-error": {
+      "result": "UNKNOWN",
+      "attemptsIncludingLocalAndCleanup": 21,
+      "operations": {
+        "ARC.release.appkit-list": 1,
+        "ARC.retain-projection.appkit-list": 1,
+        "CFGetTypeID.registration-error": 1,
+        "CFRelease.registration-error": 1,
+        "CFRelease.seed": 1,
+        "CFStringCreateWithBytes.seed": 1,
+        "LSCopyApplicationURLsForBundleIdentifier": 1,
+        "NSWorkspace.urlForApplication": 1,
+        "NSWorkspace.urlsForApplications": 1,
+        "appkit-list.count-and-bridge": 1,
+        "autoreleasepool.drain": 1,
+        "autoreleasepool.push.registration": 1,
+        "owned.allocate.registration.appkit-swift-vector": 1,
+        "owned.allocate.registration.ordered-domain": 1,
+        "owned.allocate.registration.seed": 1,
+        "owned.free": 3,
+        "owned.write.registration.appkit-swift-vector.population": 1,
+        "owned.write.registration.ordered-domain.population": 1,
+        "owned.write.registration.seed": 1
+      },
+      "knownWriteBytes": 6,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "registration.seed.capacity",
+        "registration.appkit-swift-vector.capacity",
+        "registration.ordered-domain.capacity"
+      ],
+      "receipts": [
+        [
+          "registration.seed.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.seed",
+          "write",
+          6
+        ],
+        [
+          "seed.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "registration-pool.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "cf-error.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "appkit-list.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "registration.appkit-swift-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.appkit-swift-vector.population",
+          "write",
+          0
+        ],
+        [
+          "registration.ordered-domain.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "registration.ordered-domain.population",
+          "write",
+          0
+        ]
+      ],
+      "slotReturned": true
+    },
+    "root.expanded": {
+      "result": "ORDINARY",
+      "attemptsIncludingLocalAndCleanup": 281,
+      "operations": {
+        "ARC.release.root-url": 1,
+        "ARC.release.root-values": 1,
+        "ARC.retain-projection.root-url": 1,
+        "URL.construct.root": 1,
+        "URL.resourceValues.isApplication": 1,
+        "close": 7,
+        "fstat.containing": 2,
+        "fstat.terminal": 1,
+        "fstatat.before": 8,
+        "fstatat.terminal-after": 1,
+        "metadata.reader-contract-boundary": 1,
+        "openat.directory": 4,
+        "openat.root": 2,
+        "openat.terminal": 1,
+        "owned.allocate.root-resource.finalized-path": 1,
+        "owned.allocate.root-resource.swift-projection": 1,
+        "owned.allocate.walk.collapsed-suffix": 2,
+        "owned.allocate.walk.component": 8,
+        "owned.allocate.walk.component-c-string.map-cchar": 8,
+        "owned.allocate.walk.component-c-string.with-nul": 8,
+        "owned.allocate.walk.cycle-key-record": 2,
+        "owned.allocate.walk.cycle-key-suffix": 2,
+        "owned.allocate.walk.cycle-key-text": 2,
+        "owned.allocate.walk.directory-open-c-string.map-cchar": 4,
+        "owned.allocate.walk.directory-open-c-string.with-nul": 4,
+        "owned.allocate.walk.expansion": 2,
+        "owned.allocate.walk.expansion-vector-append": 2,
+        "owned.allocate.walk.final-component-vector": 2,
+        "owned.allocate.walk.joined-resolved-without-leading-slash": 2,
+        "owned.allocate.walk.link-read-buffer-zeroing": 2,
+        "owned.allocate.walk.link-read-c-string.map-cchar": 2,
+        "owned.allocate.walk.link-read-c-string.with-nul": 2,
+        "owned.allocate.walk.link-text-map-entry": 2,
+        "owned.allocate.walk.link-text-map-value": 2,
+        "owned.allocate.walk.link-text-prefix-copy": 2,
+        "owned.allocate.walk.literal": 2,
+        "owned.allocate.walk.resolved": 2,
+        "owned.allocate.walk.spelling-and-expansion-records": 2,
+        "owned.allocate.walk.stack-append": 4,
+        "owned.allocate.walk.state": 2,
+        "owned.allocate.walk.suffix-array": 2,
+        "owned.allocate.walk.terminal-open-c-string.map-cchar": 1,
+        "owned.allocate.walk.terminal-open-c-string.with-nul": 1,
+        "owned.allocate.walk.terminal-recheck-c-string.map-cchar": 1,
+        "owned.allocate.walk.terminal-recheck-c-string.with-nul": 1,
+        "owned.cycle-key-lookup": 2,
+        "owned.free": 80,
+        "owned.pending-share-and-reset": 2,
+        "owned.write.root-resource.finalized-path": 1,
+        "owned.write.root-resource.swift-projection.field-values": 1,
+        "owned.write.walk.collapsed-suffix": 2,
+        "owned.write.walk.component": 8,
+        "owned.write.walk.component-c-string.map-cchar": 8,
+        "owned.write.walk.component-c-string.with-nul": 8,
+        "owned.write.walk.cycle-key-record.population": 2,
+        "owned.write.walk.cycle-key-suffix": 2,
+        "owned.write.walk.cycle-key-text": 2,
+        "owned.write.walk.directory-open-c-string.map-cchar": 4,
+        "owned.write.walk.directory-open-c-string.with-nul": 4,
+        "owned.write.walk.expansion": 2,
+        "owned.write.walk.expansion-vector-append.population": 2,
+        "owned.write.walk.final-component-vector.population": 2,
+        "owned.write.walk.joined-resolved-without-leading-slash": 2,
+        "owned.write.walk.link-read-buffer-zeroing": 2,
+        "owned.write.walk.link-read-c-string.map-cchar": 2,
+        "owned.write.walk.link-read-c-string.with-nul": 2,
+        "owned.write.walk.link-read-prefix": 2,
+        "owned.write.walk.link-text-map-entry.population": 2,
+        "owned.write.walk.link-text-map-value": 2,
+        "owned.write.walk.link-text-prefix-copy": 2,
+        "owned.write.walk.literal": 2,
+        "owned.write.walk.resolved": 2,
+        "owned.write.walk.spelling-and-expansion-records.population": 2,
+        "owned.write.walk.stack-append.population": 4,
+        "owned.write.walk.state.field-values": 2,
+        "owned.write.walk.suffix-array": 2,
+        "owned.write.walk.terminal-open-c-string.map-cchar": 1,
+        "owned.write.walk.terminal-open-c-string.with-nul": 1,
+        "owned.write.walk.terminal-recheck-c-string.map-cchar": 1,
+        "owned.write.walk.terminal-recheck-c-string.with-nul": 1,
+        "readlinkat": 2,
+        "root-resource.optional-boolean-type-and-value": 1
+      },
+      "knownWriteBytes": 2513,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "walk.literal.capacity",
+        "walk.state.capacity",
+        "walk.state.field-values",
+        "walk.component.capacity",
+        "walk.component-c-string.map-cchar.capacity",
+        "walk.component-c-string.with-nul.capacity",
+        "walk.link-read-buffer-zeroing.capacity",
+        "walk.link-read-c-string.map-cchar.capacity",
+        "walk.link-read-c-string.with-nul.capacity",
+        "walk.link-text-prefix-copy.capacity",
+        "walk.link-text-map-entry.capacity",
+        "walk.link-text-map-value.capacity",
+        "walk.collapsed-suffix.capacity",
+        "walk.cycle-key-record.capacity",
+        "walk.cycle-key-text.capacity",
+        "walk.cycle-key-suffix.capacity",
+        "walk.suffix-array.capacity",
+        "walk.expansion.capacity",
+        "walk.expansion-vector-append.capacity",
+        "walk.component.capacity",
+        "walk.component-c-string.map-cchar.capacity",
+        "walk.component-c-string.with-nul.capacity",
+        "walk.directory-open-c-string.map-cchar.capacity",
+        "walk.directory-open-c-string.with-nul.capacity",
+        "walk.stack-append.capacity",
+        "walk.component.capacity",
+        "walk.component-c-string.map-cchar.capacity",
+        "walk.component-c-string.with-nul.capacity",
+        "walk.directory-open-c-string.map-cchar.capacity",
+        "walk.directory-open-c-string.with-nul.capacity",
+        "walk.stack-append.capacity",
+        "walk.component.capacity",
+        "walk.component-c-string.map-cchar.capacity",
+        "walk.component-c-string.with-nul.capacity",
+        "walk.terminal-open-c-string.map-cchar.capacity",
+        "walk.terminal-open-c-string.with-nul.capacity",
+        "walk.terminal-recheck-c-string.map-cchar.capacity",
+        "walk.terminal-recheck-c-string.with-nul.capacity",
+        "walk.final-component-vector.capacity",
+        "walk.joined-resolved-without-leading-slash.capacity",
+        "walk.resolved.capacity",
+        "walk.spelling-and-expansion-records.capacity",
+        "root-resource.finalized-path.capacity",
+        "root-resource.swift-projection.capacity",
+        "root-resource.swift-projection.field-values",
+        "walk.literal.capacity",
+        "walk.state.capacity",
+        "walk.state.field-values",
+        "walk.component.capacity",
+        "walk.component-c-string.map-cchar.capacity",
+        "walk.component-c-string.with-nul.capacity",
+        "walk.link-read-buffer-zeroing.capacity",
+        "walk.link-read-c-string.map-cchar.capacity",
+        "walk.link-read-c-string.with-nul.capacity",
+        "walk.link-text-prefix-copy.capacity",
+        "walk.link-text-map-entry.capacity",
+        "walk.link-text-map-value.capacity",
+        "walk.collapsed-suffix.capacity",
+        "walk.cycle-key-record.capacity",
+        "walk.cycle-key-text.capacity",
+        "walk.cycle-key-suffix.capacity",
+        "walk.suffix-array.capacity",
+        "walk.expansion.capacity",
+        "walk.expansion-vector-append.capacity",
+        "walk.component.capacity",
+        "walk.component-c-string.map-cchar.capacity",
+        "walk.component-c-string.with-nul.capacity",
+        "walk.directory-open-c-string.map-cchar.capacity",
+        "walk.directory-open-c-string.with-nul.capacity",
+        "walk.stack-append.capacity",
+        "walk.component.capacity",
+        "walk.component-c-string.map-cchar.capacity",
+        "walk.component-c-string.with-nul.capacity",
+        "walk.directory-open-c-string.map-cchar.capacity",
+        "walk.directory-open-c-string.with-nul.capacity",
+        "walk.stack-append.capacity",
+        "walk.component.capacity",
+        "walk.component-c-string.map-cchar.capacity",
+        "walk.component-c-string.with-nul.capacity",
+        "walk.final-component-vector.capacity",
+        "walk.joined-resolved-without-leading-slash.capacity",
+        "walk.resolved.capacity",
+        "walk.spelling-and-expansion-records.capacity"
+      ],
+      "receipts": [
+        [
+          "walk.literal.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.literal",
+          "write",
+          12
+        ],
+        [
+          "walk.state.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.state.field-values",
+          "write",
+          null
+        ],
+        [
+          "current.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "walk.component.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component",
+          "write",
+          5
+        ],
+        [
+          "walk.component-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.map-cchar",
+          "write",
+          5
+        ],
+        [
+          "walk.component-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.with-nul",
+          "write",
+          6
+        ],
+        [
+          "walk.link-read-buffer-zeroing.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.link-read-buffer-zeroing",
+          "write",
+          1025
+        ],
+        [
+          "walk.link-read-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.link-read-c-string.map-cchar",
+          "write",
+          5
+        ],
+        [
+          "walk.link-read-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.link-read-c-string.with-nul",
+          "write",
+          6
+        ],
+        [
+          "walk.link-read-prefix",
+          "write",
+          3
+        ],
+        [
+          "walk.link-text-prefix-copy.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.link-text-prefix-copy",
+          "write",
+          3
+        ],
+        [
+          "walk.link-text-map-entry.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.link-text-map-entry.population",
+          "write",
+          8
+        ],
+        [
+          "walk.link-text-map-value.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.link-text-map-value",
+          "write",
+          3
+        ],
+        [
+          "walk.collapsed-suffix.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.collapsed-suffix",
+          "write",
+          6
+        ],
+        [
+          "walk.cycle-key-record.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.cycle-key-record.population",
+          "write",
+          8
+        ],
+        [
+          "walk.cycle-key-text.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.cycle-key-text",
+          "write",
+          3
+        ],
+        [
+          "walk.cycle-key-suffix.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.cycle-key-suffix",
+          "write",
+          6
+        ],
+        [
+          "walk.suffix-array.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.suffix-array",
+          "write",
+          6
+        ],
+        [
+          "walk.expansion.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.expansion",
+          "write",
+          9
+        ],
+        [
+          "walk.expansion-vector-append.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.expansion-vector-append.population",
+          "write",
+          8
+        ],
+        [
+          "walk.component.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component",
+          "write",
+          1
+        ],
+        [
+          "walk.component-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.map-cchar",
+          "write",
+          1
+        ],
+        [
+          "walk.component-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.with-nul",
+          "write",
+          2
+        ],
+        [
+          "walk.directory-open-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.directory-open-c-string.map-cchar",
+          "write",
+          1
+        ],
+        [
+          "walk.directory-open-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.directory-open-c-string.with-nul",
+          "write",
+          2
+        ],
+        [
+          "next.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "walk.stack-append.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.stack-append.population",
+          "write",
+          8
+        ],
+        [
+          "walk.component.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component",
+          "write",
+          1
+        ],
+        [
+          "walk.component-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.map-cchar",
+          "write",
+          1
+        ],
+        [
+          "walk.component-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.with-nul",
+          "write",
+          2
+        ],
+        [
+          "walk.directory-open-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.directory-open-c-string.map-cchar",
+          "write",
+          1
+        ],
+        [
+          "walk.directory-open-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.directory-open-c-string.with-nul",
+          "write",
+          2
+        ],
+        [
+          "next.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "walk.stack-append.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.stack-append.population",
+          "write",
+          8
+        ],
+        [
+          "walk.component.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component",
+          "write",
+          5
+        ],
+        [
+          "walk.component-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.map-cchar",
+          "write",
+          5
+        ],
+        [
+          "walk.component-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.with-nul",
+          "write",
+          6
+        ],
+        [
+          "walk.terminal-open-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-open-c-string.map-cchar",
+          "write",
+          5
+        ],
+        [
+          "walk.terminal-open-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-open-c-string.with-nul",
+          "write",
+          6
+        ],
+        [
+          "terminal.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "walk.terminal-recheck-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-recheck-c-string.map-cchar",
+          "write",
+          5
+        ],
+        [
+          "walk.terminal-recheck-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-recheck-c-string.with-nul",
+          "write",
+          6
+        ],
+        [
+          "walk.final-component-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.final-component-vector.population",
+          "write",
+          24
+        ],
+        [
+          "walk.joined-resolved-without-leading-slash.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.joined-resolved-without-leading-slash",
+          "write",
+          9
+        ],
+        [
+          "walk.resolved.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.resolved",
+          "write",
+          10
+        ],
+        [
+          "walk.spelling-and-expansion-records.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.spelling-and-expansion-records.population",
+          "write",
+          24
+        ],
+        [
+          "root-resource.finalized-path.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "root-resource.finalized-path",
+          "write",
+          11
+        ],
+        [
+          "root-url.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "root-values.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "root-resource.swift-projection.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "root-resource.swift-projection.field-values",
+          "write",
+          null
+        ],
+        [
+          "walk.literal.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.literal",
+          "write",
+          12
+        ],
+        [
+          "walk.state.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.state.field-values",
+          "write",
+          null
+        ],
+        [
+          "current.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "walk.component.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component",
+          "write",
+          5
+        ],
+        [
+          "walk.component-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.map-cchar",
+          "write",
+          5
+        ],
+        [
+          "walk.component-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.with-nul",
+          "write",
+          6
+        ],
+        [
+          "walk.link-read-buffer-zeroing.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.link-read-buffer-zeroing",
+          "write",
+          1025
+        ],
+        [
+          "walk.link-read-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.link-read-c-string.map-cchar",
+          "write",
+          5
+        ],
+        [
+          "walk.link-read-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.link-read-c-string.with-nul",
+          "write",
+          6
+        ],
+        [
+          "walk.link-read-prefix",
+          "write",
+          3
+        ],
+        [
+          "walk.link-text-prefix-copy.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.link-text-prefix-copy",
+          "write",
+          3
+        ],
+        [
+          "walk.link-text-map-entry.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.link-text-map-entry.population",
+          "write",
+          8
+        ],
+        [
+          "walk.link-text-map-value.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.link-text-map-value",
+          "write",
+          3
+        ],
+        [
+          "walk.collapsed-suffix.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.collapsed-suffix",
+          "write",
+          6
+        ],
+        [
+          "walk.cycle-key-record.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.cycle-key-record.population",
+          "write",
+          8
+        ],
+        [
+          "walk.cycle-key-text.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.cycle-key-text",
+          "write",
+          3
+        ],
+        [
+          "walk.cycle-key-suffix.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.cycle-key-suffix",
+          "write",
+          6
+        ],
+        [
+          "walk.suffix-array.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.suffix-array",
+          "write",
+          6
+        ],
+        [
+          "walk.expansion.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.expansion",
+          "write",
+          9
+        ],
+        [
+          "walk.expansion-vector-append.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.expansion-vector-append.population",
+          "write",
+          8
+        ],
+        [
+          "walk.component.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component",
+          "write",
+          1
+        ],
+        [
+          "walk.component-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.map-cchar",
+          "write",
+          1
+        ],
+        [
+          "walk.component-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.with-nul",
+          "write",
+          2
+        ],
+        [
+          "walk.directory-open-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.directory-open-c-string.map-cchar",
+          "write",
+          1
+        ],
+        [
+          "walk.directory-open-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.directory-open-c-string.with-nul",
+          "write",
+          2
+        ],
+        [
+          "next.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "walk.stack-append.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.stack-append.population",
+          "write",
+          8
+        ],
+        [
+          "walk.component.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component",
+          "write",
+          1
+        ],
+        [
+          "walk.component-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.map-cchar",
+          "write",
+          1
+        ],
+        [
+          "walk.component-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.with-nul",
+          "write",
+          2
+        ],
+        [
+          "walk.directory-open-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.directory-open-c-string.map-cchar",
+          "write",
+          1
+        ],
+        [
+          "walk.directory-open-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.directory-open-c-string.with-nul",
+          "write",
+          2
+        ],
+        [
+          "next.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "walk.stack-append.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.stack-append.population",
+          "write",
+          8
+        ],
+        [
+          "walk.component.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component",
+          "write",
+          5
+        ],
+        [
+          "walk.component-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.map-cchar",
+          "write",
+          5
+        ],
+        [
+          "walk.component-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.with-nul",
+          "write",
+          6
+        ],
+        [
+          "walk.final-component-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.final-component-vector.population",
+          "write",
+          24
+        ],
+        [
+          "walk.joined-resolved-without-leading-slash.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.joined-resolved-without-leading-slash",
+          "write",
+          9
+        ],
+        [
+          "walk.resolved.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.resolved",
+          "write",
+          10
+        ],
+        [
+          "walk.spelling-and-expansion-records.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.spelling-and-expansion-records.population",
+          "write",
+          24
+        ]
+      ],
+      "slotReturned": true
+    },
+    "root.long-indexed-required": {
+      "result": "INDEXED_REQUIRED",
+      "attemptsIncludingLocalAndCleanup": 76,
+      "operations": {
+        "close": 3,
+        "fstat.terminal": 1,
+        "fstatat.before": 2,
+        "fstatat.terminal-after": 1,
+        "openat.root": 2,
+        "openat.terminal": 1,
+        "owned.allocate.walk.component": 2,
+        "owned.allocate.walk.component-c-string.map-cchar": 2,
+        "owned.allocate.walk.component-c-string.with-nul": 2,
+        "owned.allocate.walk.final-component-vector": 2,
+        "owned.allocate.walk.joined-resolved-without-leading-slash": 2,
+        "owned.allocate.walk.literal": 2,
+        "owned.allocate.walk.resolved": 2,
+        "owned.allocate.walk.spelling-and-expansion-records": 2,
+        "owned.allocate.walk.state": 2,
+        "owned.allocate.walk.terminal-open-c-string.map-cchar": 1,
+        "owned.allocate.walk.terminal-open-c-string.with-nul": 1,
+        "owned.allocate.walk.terminal-recheck-c-string.map-cchar": 1,
+        "owned.allocate.walk.terminal-recheck-c-string.with-nul": 1,
+        "owned.free": 22,
+        "owned.write.walk.component": 2,
+        "owned.write.walk.component-c-string.map-cchar": 2,
+        "owned.write.walk.component-c-string.with-nul": 2,
+        "owned.write.walk.final-component-vector.population": 2,
+        "owned.write.walk.joined-resolved-without-leading-slash": 2,
+        "owned.write.walk.literal": 2,
+        "owned.write.walk.resolved": 2,
+        "owned.write.walk.spelling-and-expansion-records.population": 2,
+        "owned.write.walk.state.field-values": 2,
+        "owned.write.walk.terminal-open-c-string.map-cchar": 1,
+        "owned.write.walk.terminal-open-c-string.with-nul": 1,
+        "owned.write.walk.terminal-recheck-c-string.map-cchar": 1,
+        "owned.write.walk.terminal-recheck-c-string.with-nul": 1
+      },
+      "knownWriteBytes": 16424,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "walk.literal.capacity",
+        "walk.state.capacity",
+        "walk.state.field-values",
+        "walk.component.capacity",
+        "walk.component-c-string.map-cchar.capacity",
+        "walk.component-c-string.with-nul.capacity",
+        "walk.terminal-open-c-string.map-cchar.capacity",
+        "walk.terminal-open-c-string.with-nul.capacity",
+        "walk.terminal-recheck-c-string.map-cchar.capacity",
+        "walk.terminal-recheck-c-string.with-nul.capacity",
+        "walk.final-component-vector.capacity",
+        "walk.joined-resolved-without-leading-slash.capacity",
+        "walk.resolved.capacity",
+        "walk.spelling-and-expansion-records.capacity",
+        "walk.literal.capacity",
+        "walk.state.capacity",
+        "walk.state.field-values",
+        "walk.component.capacity",
+        "walk.component-c-string.map-cchar.capacity",
+        "walk.component-c-string.with-nul.capacity",
+        "walk.final-component-vector.capacity",
+        "walk.joined-resolved-without-leading-slash.capacity",
+        "walk.resolved.capacity",
+        "walk.spelling-and-expansion-records.capacity"
+      ],
+      "receipts": [
+        [
+          "walk.literal.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.literal",
+          "write",
+          1024
+        ],
+        [
+          "walk.state.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.state.field-values",
+          "write",
+          null
+        ],
+        [
+          "current.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "walk.component.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component",
+          "write",
+          1023
+        ],
+        [
+          "walk.component-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.map-cchar",
+          "write",
+          1023
+        ],
+        [
+          "walk.component-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.with-nul",
+          "write",
+          1024
+        ],
+        [
+          "walk.terminal-open-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-open-c-string.map-cchar",
+          "write",
+          1023
+        ],
+        [
+          "walk.terminal-open-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-open-c-string.with-nul",
+          "write",
+          1024
+        ],
+        [
+          "terminal.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "walk.terminal-recheck-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-recheck-c-string.map-cchar",
+          "write",
+          1023
+        ],
+        [
+          "walk.terminal-recheck-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-recheck-c-string.with-nul",
+          "write",
+          1024
+        ],
+        [
+          "walk.final-component-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.final-component-vector.population",
+          "write",
+          8
+        ],
+        [
+          "walk.joined-resolved-without-leading-slash.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.joined-resolved-without-leading-slash",
+          "write",
+          1023
+        ],
+        [
+          "walk.resolved.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.resolved",
+          "write",
+          1024
+        ],
+        [
+          "walk.spelling-and-expansion-records.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.spelling-and-expansion-records.population",
+          "write",
+          16
+        ],
+        [
+          "walk.literal.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.literal",
+          "write",
+          1024
+        ],
+        [
+          "walk.state.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.state.field-values",
+          "write",
+          null
+        ],
+        [
+          "current.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "walk.component.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component",
+          "write",
+          1023
+        ],
+        [
+          "walk.component-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.map-cchar",
+          "write",
+          1023
+        ],
+        [
+          "walk.component-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.with-nul",
+          "write",
+          1024
+        ],
+        [
+          "walk.final-component-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.final-component-vector.population",
+          "write",
+          8
+        ],
+        [
+          "walk.joined-resolved-without-leading-slash.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.joined-resolved-without-leading-slash",
+          "write",
+          1023
+        ],
+        [
+          "walk.resolved.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.resolved",
+          "write",
+          1024
+        ],
+        [
+          "walk.spelling-and-expansion-records.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.spelling-and-expansion-records.population",
+          "write",
+          16
+        ]
+      ],
+      "slotReturned": true
+    },
+    "root.current./": {
+      "result": true,
+      "attemptsIncludingLocalAndCleanup": 21,
+      "operations": {
+        "close": 1,
+        "fstat.current": 1,
+        "openat.root": 1,
+        "owned.allocate.walk.final-component-vector": 1,
+        "owned.allocate.walk.joined-resolved-without-leading-slash": 1,
+        "owned.allocate.walk.literal": 1,
+        "owned.allocate.walk.resolved": 1,
+        "owned.allocate.walk.spelling-and-expansion-records": 1,
+        "owned.allocate.walk.state": 1,
+        "owned.free": 6,
+        "owned.write.walk.final-component-vector.population": 1,
+        "owned.write.walk.joined-resolved-without-leading-slash": 1,
+        "owned.write.walk.literal": 1,
+        "owned.write.walk.resolved": 1,
+        "owned.write.walk.spelling-and-expansion-records.population": 1,
+        "owned.write.walk.state.field-values": 1
+      },
+      "knownWriteBytes": 18,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "walk.literal.capacity",
+        "walk.state.capacity",
+        "walk.state.field-values",
+        "walk.final-component-vector.capacity",
+        "walk.joined-resolved-without-leading-slash.capacity",
+        "walk.resolved.capacity",
+        "walk.spelling-and-expansion-records.capacity"
+      ],
+      "receipts": [
+        [
+          "walk.literal.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.literal",
+          "write",
+          1
+        ],
+        [
+          "walk.state.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.state.field-values",
+          "write",
+          null
+        ],
+        [
+          "current.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "walk.final-component-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.final-component-vector.population",
+          "write",
+          0
+        ],
+        [
+          "walk.joined-resolved-without-leading-slash.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.joined-resolved-without-leading-slash",
+          "write",
+          0
+        ],
+        [
+          "walk.resolved.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.resolved",
+          "write",
+          1
+        ],
+        [
+          "walk.spelling-and-expansion-records.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.spelling-and-expansion-records.population",
+          "write",
+          16
+        ]
+      ],
+      "slotReturned": true
+    },
+    "root.current./.": {
+      "result": true,
+      "attemptsIncludingLocalAndCleanup": 24,
+      "operations": {
+        "close": 1,
+        "fstat.current": 1,
+        "openat.root": 1,
+        "owned.allocate.walk.component": 1,
+        "owned.allocate.walk.final-component-vector": 1,
+        "owned.allocate.walk.joined-resolved-without-leading-slash": 1,
+        "owned.allocate.walk.literal": 1,
+        "owned.allocate.walk.resolved": 1,
+        "owned.allocate.walk.spelling-and-expansion-records": 1,
+        "owned.allocate.walk.state": 1,
+        "owned.free": 7,
+        "owned.write.walk.component": 1,
+        "owned.write.walk.final-component-vector.population": 1,
+        "owned.write.walk.joined-resolved-without-leading-slash": 1,
+        "owned.write.walk.literal": 1,
+        "owned.write.walk.resolved": 1,
+        "owned.write.walk.spelling-and-expansion-records.population": 1,
+        "owned.write.walk.state.field-values": 1
+      },
+      "knownWriteBytes": 20,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "walk.literal.capacity",
+        "walk.state.capacity",
+        "walk.state.field-values",
+        "walk.component.capacity",
+        "walk.final-component-vector.capacity",
+        "walk.joined-resolved-without-leading-slash.capacity",
+        "walk.resolved.capacity",
+        "walk.spelling-and-expansion-records.capacity"
+      ],
+      "receipts": [
+        [
+          "walk.literal.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.literal",
+          "write",
+          2
+        ],
+        [
+          "walk.state.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.state.field-values",
+          "write",
+          null
+        ],
+        [
+          "current.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "walk.component.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component",
+          "write",
+          1
+        ],
+        [
+          "walk.final-component-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.final-component-vector.population",
+          "write",
+          0
+        ],
+        [
+          "walk.joined-resolved-without-leading-slash.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.joined-resolved-without-leading-slash",
+          "write",
+          0
+        ],
+        [
+          "walk.resolved.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.resolved",
+          "write",
+          1
+        ],
+        [
+          "walk.spelling-and-expansion-records.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.spelling-and-expansion-records.population",
+          "write",
+          16
+        ]
+      ],
+      "slotReturned": true
+    },
+    "root.current./..": {
+      "result": true,
+      "attemptsIncludingLocalAndCleanup": 47,
+      "operations": {
+        "close": 2,
+        "fstat.terminal": 1,
+        "fstatat.before": 1,
+        "fstatat.terminal-after": 1,
+        "openat.root": 1,
+        "openat.terminal": 1,
+        "owned.allocate.walk.component": 1,
+        "owned.allocate.walk.component-c-string.map-cchar": 1,
+        "owned.allocate.walk.component-c-string.with-nul": 1,
+        "owned.allocate.walk.final-component-vector": 1,
+        "owned.allocate.walk.joined-resolved-without-leading-slash": 1,
+        "owned.allocate.walk.literal": 1,
+        "owned.allocate.walk.resolved": 1,
+        "owned.allocate.walk.spelling-and-expansion-records": 1,
+        "owned.allocate.walk.state": 1,
+        "owned.allocate.walk.terminal-open-c-string.map-cchar": 1,
+        "owned.allocate.walk.terminal-open-c-string.with-nul": 1,
+        "owned.allocate.walk.terminal-recheck-c-string.map-cchar": 1,
+        "owned.allocate.walk.terminal-recheck-c-string.with-nul": 1,
+        "owned.free": 13,
+        "owned.stack-pop": 1,
+        "owned.write.walk.component": 1,
+        "owned.write.walk.component-c-string.map-cchar": 1,
+        "owned.write.walk.component-c-string.with-nul": 1,
+        "owned.write.walk.final-component-vector.population": 1,
+        "owned.write.walk.joined-resolved-without-leading-slash": 1,
+        "owned.write.walk.literal": 1,
+        "owned.write.walk.resolved": 1,
+        "owned.write.walk.spelling-and-expansion-records.population": 1,
+        "owned.write.walk.state.field-values": 1,
+        "owned.write.walk.terminal-open-c-string.map-cchar": 1,
+        "owned.write.walk.terminal-open-c-string.with-nul": 1,
+        "owned.write.walk.terminal-recheck-c-string.map-cchar": 1,
+        "owned.write.walk.terminal-recheck-c-string.with-nul": 1
+      },
+      "knownWriteBytes": 37,
+      "grossBytes": null,
+      "unresolvedOwnedTerms": [
+        "walk.literal.capacity",
+        "walk.state.capacity",
+        "walk.state.field-values",
+        "walk.component.capacity",
+        "walk.component-c-string.map-cchar.capacity",
+        "walk.component-c-string.with-nul.capacity",
+        "walk.terminal-open-c-string.map-cchar.capacity",
+        "walk.terminal-open-c-string.with-nul.capacity",
+        "walk.terminal-recheck-c-string.map-cchar.capacity",
+        "walk.terminal-recheck-c-string.with-nul.capacity",
+        "walk.final-component-vector.capacity",
+        "walk.joined-resolved-without-leading-slash.capacity",
+        "walk.resolved.capacity",
+        "walk.spelling-and-expansion-records.capacity"
+      ],
+      "receipts": [
+        [
+          "walk.literal.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.literal",
+          "write",
+          3
+        ],
+        [
+          "walk.state.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.state.field-values",
+          "write",
+          null
+        ],
+        [
+          "current.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "walk.component.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component",
+          "write",
+          2
+        ],
+        [
+          "walk.component-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.map-cchar",
+          "write",
+          2
+        ],
+        [
+          "walk.component-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.component-c-string.with-nul",
+          "write",
+          3
+        ],
+        [
+          "walk.terminal-open-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-open-c-string.map-cchar",
+          "write",
+          2
+        ],
+        [
+          "walk.terminal-open-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-open-c-string.with-nul",
+          "write",
+          3
+        ],
+        [
+          "terminal.native-footprint",
+          "opaque",
+          null
+        ],
+        [
+          "walk.terminal-recheck-c-string.map-cchar.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-recheck-c-string.map-cchar",
+          "write",
+          2
+        ],
+        [
+          "walk.terminal-recheck-c-string.with-nul.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.terminal-recheck-c-string.with-nul",
+          "write",
+          3
+        ],
+        [
+          "walk.final-component-vector.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.final-component-vector.population",
+          "write",
+          0
+        ],
+        [
+          "walk.joined-resolved-without-leading-slash.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.joined-resolved-without-leading-slash",
+          "write",
+          0
+        ],
+        [
+          "walk.resolved.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.resolved",
+          "write",
+          1
+        ],
+        [
+          "walk.spelling-and-expansion-records.capacity",
+          "allocate",
+          null
+        ],
+        [
+          "walk.spelling-and-expansion-records.population",
+          "write",
+          16
+        ]
+      ],
+      "slotReturned": true
+    }
+  }
+}

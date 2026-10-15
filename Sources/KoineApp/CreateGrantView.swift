@@ -55,6 +55,7 @@ final class CreateGrantModel: ObservableObject {
 
 struct CreateGrantView: View {
     @ObservedObject var model: CreateGrantModel
+    @ObservedObject var disclosures: DisclosureModel
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -68,7 +69,11 @@ struct CreateGrantView: View {
             ForEach(model.available, id: \.self) { capability in
                 Toggle(capability, isOn: binding(for: capability))
                     .accessibilityIdentifier("capability-\(capability)")
+                if let text = disclosures.disclosure(for: capability) {
+                    CapabilityDisclosureText(text: text, identifier: "disclosure-\(capability)")
+                }
             }
+            DisclosureProblemText(model: disclosures)
             if model.selected.contains("koine:manage") {
                 Label(
                     "koine:manage lets the holder of this credential create and revoke "

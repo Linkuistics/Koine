@@ -1,6 +1,189 @@
 version: '3'
 
 tasks:
+  fixture:local-url-naming:
+    desc: Build/sign k161 local-only helper; execute only in the authorized disposable guest
+    cmds:
+      - bash scripts/build-local-url-name-probe.sh
+
+  fixture:local-url-naming-vm:
+    desc: One approved k161 eight-case collection; requires live terminal supervision, never repeat without new permission
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-local-url-name.py --output {{.OUTPUT | shellQuote}}
+
+  fixture:local-url-naming-check:
+    desc: Check k161 instrumentation and local input/disposal guards without allocating a guest
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/vm-probe-local-url-name.py docs/verification/local-url-naming/test_supervisor.py
+      - python3 -m py_compile scripts/vm-probe-local-url-name.py
+      - shellcheck -x scripts/build-local-url-name-probe.sh
+      - shfmt -d -i 2 -ci scripts/build-local-url-name-probe.sh
+      - pytest -q docs/verification/local-url-naming/test_supervisor.py
+
+  fixture:separated-local-url-naming:
+    desc: Build/sign k164 separated-control local-only helper; execute only in the authorized disposable guest
+    cmds:
+      - bash scripts/build-separated-local-url-name-probe.sh
+
+  fixture:separated-local-url-naming-vm:
+    desc: One authorized k164 separated eight-case collection; requires live terminal supervision, never repeat without new permission
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-separated-local-url-name.py --output {{.OUTPUT | shellQuote}}
+
+  fixture:separated-local-url-naming-check:
+    desc: Check k164 instrumentation and local input/disposal guards without allocating a guest
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/vm-probe-separated-local-url-name.py docs/verification/separated-local-url-naming/test_supervisor.py
+      - python3 -m py_compile scripts/vm-probe-separated-local-url-name.py
+      - shellcheck -x scripts/build-separated-local-url-name-probe.sh
+      - shfmt -d -i 2 -ci scripts/build-separated-local-url-name-probe.sh
+      - pytest -q docs/verification/separated-local-url-naming/test_supervisor.py
+
+  fixture:search-evidence:
+    desc: Build signed Koine with diagnostic workspace startup instrumentation; run only in an isolated VM
+    deps: [app]
+    cmds:
+      - bash scripts/build-search-evidence.sh
+
+  fixture:search-evidence-vm:
+    desc: Measure discovery and its permission/index limits in a prepared disposable VM; exit zero is not acceptance
+    requires:
+      vars: [VM, OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-search.py --vm {{.VM | shellQuote}} --output {{.OUTPUT | shellQuote}}
+
+  fixture:protected-path-metadata:
+    desc: Build and sign the disposable path-metadata probe (launch only in an isolated TestAnyware VM)
+    cmds:
+      - scripts/build-protected-path-probe.sh
+
+  fixture:protected-path-metadata-vm:
+    desc: Measure individual path calls in an already prepared disposable VM; exit 0 is not a prompt-free verdict
+    requires:
+      vars: [VM, OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-protected-path.py --vm {{.VM | shellQuote}} --output {{.OUTPUT | shellQuote}}
+
+  fixture:descriptor-walk-prompt:
+    desc: Build and sign the disposable k174 descriptor-walk prompt probe (launch only in an isolated TestAnyware VM)
+    cmds:
+      - bash scripts/build-descriptor-walk-probe.sh
+
+  fixture:descriptor-walk-prompt-vm:
+    desc: Measure the walk's calls on first-use Desktop, Documents and Downloads in a prepared disposable VM; exit 0 is not a prompt-free verdict
+    requires:
+      vars: [VM, OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-descriptor-walk.py --vm {{.VM | shellQuote}} --output {{.OUTPUT | shellQuote}}
+
+  fixture:descriptor-walk-prompt-check:
+    desc: Check the k174 probe driver and build script without allocating a guest
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/vm-probe-descriptor-walk.py
+      - python3 -m py_compile scripts/vm-probe-descriptor-walk.py
+      - shellcheck -x scripts/build-descriptor-walk-probe.sh
+      - shfmt -d -i 2 -ci scripts/build-descriptor-walk-probe.sh
+
+  check:location-walk:
+    desc: Build the signed providers and verify location resolution, target planners and linear-cost regressions
+    cmds:
+      - swift build --build-tests
+      - task: bundled-providers
+      - swift test --skip-build --filter 'LocationWalkTests|RevealLocationTests|OpenLocationTests|WorkspaceLongLocationTests'
+
+  check:location-walk-mutations:
+    desc: Show the location-walk, planner and signed-bundle tests go red against one deliberately broken decision of the walk at a time, in a copy of the tree under .build/location-walk-mutations (first run builds the copy; later runs are incremental)
+    cmds:
+      - python3 scripts/check-location-walk-mutations.py {{.CLI_ARGS}}
+
+  fixture:long-action-route:
+    desc: Build and sign the disposable long-location prototype bundles (k134; launch only in an isolated TestAnyware VM)
+    cmds:
+      - scripts/build-long-action-probe.sh
+
+  fixture:long-action-route-vm:
+    desc: Run the long-location prototype phases in an already prepared clone of the launchers image; exit 0 means phases finished, never that a route passed
+    requires:
+      vars: [VM, OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-long-action.py --vm {{.VM | shellQuote}} --output {{.OUTPUT | shellQuote}} install fixtures acquire register thresholds submit_docs launch reveal prompts
+
+  fixture:native-reference-acquisition:
+    desc: Build and sign the disposable native-reference acquisition helper (k143; launch only in an isolated TestAnyware VM)
+    cmds:
+      - scripts/build-native-reference-probe.sh
+
+  fixture:native-reference-acquisition-vm:
+    desc: Run the k143 diagnostic in a fresh clone; OUTPUT is a new directory; exit 0 means the run finished, never that a route passed
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-native-reference.py --output {{.OUTPUT | shellQuote}}
+
+  fixture:item-array-submission:
+    desc: Build and sign the disposable item-array helper and short recording app (k146; launch only in an isolated TestAnyware VM)
+    cmds:
+      - scripts/build-item-array-probe.sh
+
+  fixture:item-array-submission-vm:
+    desc: Run the k146 diagnostic in a fresh clone; OUTPUT is a new directory; exit 0 means the run finished, never that delivery passed
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-item-array.py --output {{.OUTPUT | shellQuote}}
+
+  fixture:file-reference-url-acquisition:
+    desc: Build and sign the k149 throwaway URL helper; execute only in the authorized isolated VM
+    cmds:
+      - scripts/build-file-reference-url-probe.sh
+
+  fixture:file-reference-url-acquisition-vm:
+    desc: Run the fixed k149 eight-case diagnostic in one fresh clone; completion is not route acceptance
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-file-reference-url.py --output {{.OUTPUT | shellQuote}}
+
+  fixture:same-object-namespace:
+    desc: Build/sign the authorized k152 throwaway helper; execute only in its disposable guest
+    cmds:
+      - scripts/build-same-object-probe.sh
+
+  fixture:same-object-namespace-vm:
+    desc: Run the one k152 collection; incomplete outcomes are evidence, never route acceptance
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-same-object.py --output {{.OUTPUT | shellQuote}}
+
+  fixture:focused-zed-receiver:
+    desc: Build/sign k155 throwaway helper; its finite authorization is not repeat permission
+    cmds:
+      - bash scripts/build-focused-zed-probe.sh
+
+  fixture:focused-zed-receiver-vm:
+    desc: One supervised k155 two-request collection; never rerun after its allowance is spent
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-focused-zed.py --output {{.OUTPUT | shellQuote}}
+
+  fixture:bookmark-name-resolution:
+    desc: Build/sign k158 throwaway Foundation helper; execute only in its authorized disposable guest
+    cmds:
+      - bash scripts/build-bookmark-name-probe.sh
+
+  fixture:bookmark-name-resolution-vm:
+    desc: One supervised k158 four-case collection; finite authorization is not repeat permission
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-bookmark-name.py --output {{.OUTPUT | shellQuote}}
+
   fixture:private-ax:
     desc: Build and sign the private AX PID-recycling diagnostic (execute only in a TestAnyware VM)
     cmds:
@@ -52,7 +235,9 @@ tasks:
     cmds:
       - swift build --build-tests
       - task: fixture:variants
-      - task: desktop-provider
+      - task: fixture:selection
+      - task: bundled-providers
+      - task: fixture:receipt-identity-probe
       - swift test --skip-build
 
   fixture:
@@ -70,13 +255,31 @@ tasks:
         PRODUCTS="$(swift build --show-bin-path)"
         Fixtures/FixtureProvider/build-variants.sh "${PRODUCTS}/PackageFrameworks" "${PRODUCTS}/FixtureProviders" "${PRODUCTS}/FixtureVariants"
 
-  desktop-provider:
-    desc: Build the desktop provider by its own build definition against the staged framework, then sign and approve it as an installed provider for the loader tests
+  fixture:selection:
+    desc: Build, sign and keep apart the bundles the first-party selection tests choose between (decision cases, and an independently compiled baseline and update for the one real load)
+    deps: [fixture]
+    cmds:
+      - |
+        PRODUCTS="$(swift build --show-bin-path)"
+        Fixtures/FixtureProvider/build-selection.sh "${PRODUCTS}/PackageFrameworks" "${PRODUCTS}/FixtureSelection"
+
+  bundled-providers:
+    desc: Build the bundled providers (desktop, workspace) by their own build definitions against the staged framework into one root, as Contents/PlugIns holds them, then sign each and approve it as an installed provider for the loader tests
     cmds:
       - |
         FRAMEWORK="$(scripts/stage-provider-framework.sh debug)"
-        BUNDLE="$(Providers/DesktopProvider/build.sh "$(dirname "${FRAMEWORK}")" "$(dirname "${FRAMEWORK}")/../DesktopProviders")"
-        Fixtures/FixtureProvider/seal.sh "${BUNDLE}"
+        ROOT="$(dirname "${FRAMEWORK}")/../BundledProviders"
+        for provider in DesktopProvider WorkspaceProvider; do
+          BUNDLE="$(Providers/${provider}/build.sh "$(dirname "${FRAMEWORK}")" "${ROOT}")"
+          Fixtures/FixtureProvider/seal.sh "${BUNDLE}"
+        done
+
+  fixture:receipt-identity-probe:
+    desc: Build the receipt-identity probe - the workspace provider's own Logic and Sources compiled as its build definition compiles them, with a small entry point, so `task test` can run the shipped adapter's two executable identities (the live process's and the retained object's) against the real kernel and a process the test starts, with no launch on the host
+    cmds:
+      - |
+        FRAMEWORK="$(scripts/stage-provider-framework.sh debug)"
+        Fixtures/ReceiptIdentityProbe/build.sh "$(dirname "${FRAMEWORK}")" "$(dirname "${FRAMEWORK}")/../ReceiptIdentityProbe"
 
   app:
     desc: Assemble and sign .build/app/Koine.app (Developer ID; KOINE_SIGNING_IDENTITY overrides)
@@ -98,10 +301,1002 @@ tasks:
     cmds:
       - scripts/check-minimum-os.sh
 
+  check:provider-catalogue:
+    desc: Compare the sealed provider catalogue (App/ProviderCatalogue.json) with the SIGNED packaged bundles it designates - each enabled entry's signing identifier read from the bundle's signature, its release and schema from its manifest, nothing else in Contents/PlugIns, no reserved-only claim - with a self-test that each mutation is seen to fail. Run `task app` first
+    cmds:
+      - scripts/check-provider-catalogue.py --self-test {{.CLI_ARGS}}
+
   check:docs:
     desc: Check every relative link and #anchor in the documentation outside .grove/ resolves (--unlinked lists evidence documents nothing living cites)
     cmds:
       - scripts/check-doc-links.py {{.CLI_ARGS}}
+
+  design:workflow-render:
+    desc: Render the workflow provider architecture views (D2 0.9.0 and PlantUML 1.2026.8)
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/workflow-providers.d2 docs/design/architecture/workflow-providers.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/workflow-authority.d2 docs/design/architecture/workflow-authority.svg
+      - plantuml -tsvg docs/design/architecture/workflow-targets.puml
+
+  design:search-render:
+    desc: Render the v1 ownership sketch and eight prior raw-search comparison views (D2 0.9.0; existing layouts; no native acceptance)
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/search-discovery.d2 docs/design/architecture/search-discovery.svg
+      - d2 --layout=elk --theme=0 --dark-theme=200 docs/design/architecture/search-preopen.d2 docs/design/architecture/search-preopen.svg
+      - d2 --layout=elk --theme=0 --dark-theme=200 docs/design/architecture/search-canonical.d2 docs/design/architecture/search-canonical.svg
+      - d2 --layout=elk --theme=0 --dark-theme=200 docs/design/architecture/search-resources.d2 docs/design/architecture/search-resources.svg
+      - d2 --layout=elk --theme=0 --dark-theme=200 docs/design/architecture/search-inspection.d2 docs/design/architecture/search-inspection.svg
+      - d2 --layout=elk --theme=0 --dark-theme=200 docs/design/architecture/search-serviceability.d2 docs/design/architecture/search-serviceability.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/search-traversal.d2 docs/design/architecture/search-traversal.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/search-coverage.d2 docs/design/architecture/search-coverage.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/search-handoff.d2 docs/design/architecture/search-handoff.svg
+
+  design:native-discovery-render:
+    desc: Render native sources, authority/ownership, settings effects and true-retirement contract (D2 0.9.0; native acceptance pending)
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-subject.d2 docs/design/architecture/native-metadata-subject.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-discovery-sources.d2 docs/design/architecture/native-discovery-sources.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-application-population.d2 docs/design/architecture/native-application-population.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-long-applications.d2 docs/design/architecture/native-long-applications.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-localized-decision.d2 docs/design/architecture/native-localized-decision.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-settings-decision.d2 docs/design/architecture/native-settings-decision.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-discovery-contract.d2 docs/design/architecture/native-discovery-contract.svg
+      - d2 --layout=elk --theme=0 --dark-theme=200 docs/design/architecture/native-settings-flow.d2 docs/design/architecture/native-settings-flow.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-settings-readiness.d2 docs/design/architecture/native-settings-readiness.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-discovery-lifecycle.d2 docs/design/architecture/native-discovery-lifecycle.svg
+
+  design:search-compose:
+    desc: Generate the complete native discovery design SDL from the retained repair host schema plus the native extension; no runtime/native acceptance
+    dir: clients/contract-only
+    cmds:
+      - npm ci --ignore-scripts --no-audit --no-fund
+      - |
+        node --input-type=module <<'JS'
+        import { readFileSync, writeFileSync } from 'node:fs';
+        import { buildSchema, extendSchema, parse, printSchema } from 'graphql';
+        const root = '../../docs/design/';
+        const complete = extendSchema(buildSchema(readFileSync(root + 'desktop-workspace-repair-schema-extension-host.graphql', 'utf8')),
+          parse(readFileSync(root + 'workspace-search-schema.graphql', 'utf8')));
+        writeFileSync(root + 'desktop-workspace-native-schema-extension-host.graphql', printSchema(complete) + '\n');
+        console.log('Composed native design SDL; no served-schema or binary claim.');
+        JS
+
+  design:search-check:
+    desc: Validate native discovery SDL/examples, complete composition/profiles and retained action examples; meaningful schema controls, no runtime/native acceptance
+    dir: clients/contract-only
+    cmds:
+      - npm ci --ignore-scripts --no-audit --no-fund
+      - |
+        node --input-type=module <<'JS'
+        import { readFileSync } from 'node:fs';
+        import { buildSchema, extendSchema, getNamedType, isObjectType, parse, printSchema, validate, validateSchema } from 'graphql';
+        const read = name => readFileSync(`../../docs/design/${name}`, 'utf8');
+        const native = parse(read('workspace-search-schema.graphql'));
+        const independent = extendSchema(buildSchema('type Query { placeholder: Boolean } type Mutation { placeholder: Boolean }'), native);
+        const actions = buildSchema(read('desktop-workspace-repair-schema-extension-host.graphql'));
+        const complete = extendSchema(actions, native);
+        const examples = parse(read('workspace-search-operations.graphql'));
+        const population = JSON.parse(read('application-population.json'));
+        const verifyPopulation = subject => {
+          if (subject.usefulSubjectCertificateEstablished !== false ||
+            subject.consumptionRequires !== 'application-localized-metadata-k215' ||
+            subject.baselineCounterexample !== 'application-localized-baseline.json') {
+            throw new Error('Refuted useful-subject certificate cannot become implementation input');
+          }
+          const l = subject.limits, r = subject.recipe, s = subject.shallowCertificate, p = subject.populousVM;
+          for (const values of [l, s]) for (const value of Object.values(values)) {
+            if (!Number.isSafeInteger(value) || value <= 0) throw new Error('Invalid population certificate integer');
+          }
+          if (l.identifierGroups < l.distinctSpellings + 2 || l.retainedChoices < l.distinctSpellings ||
+            l.indexedTypeValues !== 8 * l.rawURLObservations || r.attemptsPerURLObservation !== 16 ||
+            r.fixedAttempts !== 40 || r.attemptsPerRunningObject !== 5 || r.attemptsPerIdentifier !== 12 ||
+            r.attemptsPerWalkVisit !== 6 || r.fixedAttemptsPerWalk !== 4 ||
+            l.nativeAttempts !== 4194304 || r.metadataAttemptsPerSpelling !== 32 || r.attemptsPerMetadataPlanEntry !== 8 ||
+            r.attemptsPerMetadataFileProbe !== 48 || r.metadataFileProbesPerSpelling !== 4 ||
+            r.metadataFileProbesPerSelectedLocalization !== 2 || r.foreignBundleLookup !== false ||
+            r.recursiveResourceTraversal !== false || l.metadataPlanEntries !== 65536 ||
+            l.metadataFileBytes !== 65536 || l.metadataDictionaryKeys !== 4096 ||
+            s.localizationRecordBytes !== 64 || s.ownedLocalizationComponentCopies !== 2 ||
+            s.metadataPlanEntries !== 65536 || s.localizationRecords !== 4096 ||
+            s.localizationComponentBytes !== 32 || s.metadataInputBytes !== 1000000 ||
+            s.preferenceRecords !== 32 || s.preferencePayloadBytes !== 4096 || s.indexedFactRecordBytes !== 64 || s.ownedIndexedPayloadCopies !== 2 ||
+            r.walksPerSpelling !== 2 || r.recursiveIdentifierExpansion !== false ||
+            r.providerFiltersAgentsOrHelpers !== false || r.overflowPublication !== 'FAILED_NULL_ITEMS') {
+            throw new Error('Population admission, identifier coverage or shared-work contract changed');
+          }
+          if (r.diagnosticOverflowPublication !== 'CONTINUE_WITH_BOUNDED_GUIDANCE' ||
+            r.coverageIndependentOfDiagnosticDetails !== true || r.publishSaturationReasonSummary !== true ||
+            r.saturationSummaryRendering !== 'ONCE_AT_FREEZE' ||
+            l.diagnostics !== 64 || s.coverageSummaryBytes !== 128) {
+            throw new Error('Diagnostic saturation must preserve independently classified population outcomes');
+          }
+          const fileProbes = r.metadataFileProbesPerSpelling * l.distinctSpellings +
+            r.metadataFileProbesPerSelectedLocalization * s.localizationRecords;
+          const calls = r.fixedAttempts + r.attemptsPerURLObservation * l.rawURLObservations +
+            r.attemptsPerRunningObject * l.runningObjects + r.attemptsPerIdentifier * l.identifierGroups +
+            r.metadataAttemptsPerSpelling * l.distinctSpellings +
+            r.attemptsPerMetadataPlanEntry * s.metadataPlanEntries + r.attemptsPerMetadataFileProbe * fileProbes + r.walksPerSpelling * l.distinctSpellings *
+            (r.attemptsPerWalkVisit * s.componentVisitsPerWalk + r.fixedAttemptsPerWalk);
+          const copies = (s.spellingRecordBytes + s.choiceRecordBytes + s.indexedFactRecordBytes) * l.distinctSpellings +
+            s.observationRecordBytes * l.rawURLObservations + s.identifierRecordBytes * l.identifierGroups +
+            s.runningRecordBytes * l.runningObjects + s.ownedPathCopies * l.distinctSpellings * s.pathBytes +
+            s.ownedNameIdentifierCopies * l.distinctSpellings * (s.nameBytes + s.identifierBytes) +
+            s.ownedIndexedPayloadCopies * l.distinctSpellings * (s.nameBytes + s.identifierBytes) +
+            l.diagnostics * s.diagnosticRecordAndPayloadBytes + s.coverageSummaryBytes + s.walkScratchBytes +
+            s.metadataInputBytes + s.localizationRecords * (s.localizationRecordBytes +
+            s.ownedLocalizationComponentCopies * s.localizationComponentBytes);
+          const wire = l.retainedChoices * (s.wireEscapingMultiplier *
+            (s.pathBytes + s.nameBytes + s.identifierBytes) + s.wireChoiceFixedBytes) +
+            l.diagnostics * s.wireDiagnosticBytes + s.wireRootAndCoverageBytes;
+          if (calls > l.nativeAttempts || copies > l.ownedCopyBytes || wire > l.responseBytes ||
+            l.ownedCopyBytes !== 8388608 || l.responseBytes !== 8388608) {
+            throw new Error('Population certificate exceeds its owned/host gates');
+          }
+          if (p.usefulDistinctIdentifiers <= 256 || p.controlledAdditionalUsefulApps +
+            p.configuredAndSystemWitnessesIncluded !== p.usefulDistinctIdentifiers ||
+            p.usefulDistinctIdentifiers + p.controlledAgentBackgroundHelperCopies + p.controlledAliasSpellings +
+            p.baselineDistinctSpellingAllowance > l.distinctSpellings ||
+            !p.requireActualAllUsefulChoices || !p.requireIndependentManifestAndObservers ||
+            !p.requireMeasuredMetadataInputAndLocalizationDimensions || p.nativeVerdict !== 'PENDING') {
+            throw new Error('Populous subject lost its useful/baseline/independent pending obligation');
+          }
+          return { calls, copies, wire, fileProbes };
+        };
+        const certificate = verifyPopulation(population);
+        for (const [label, mutate] of [
+          ['refuted baseline credited as useful certificate', p => { p.usefulSubjectCertificateEstablished = true; }],
+          ['old 256-ID quota', p => { p.limits.identifierGroups = 256; }],
+          ['old 16384-call ceiling', p => { p.limits.nativeAttempts = 16384; }],
+          ['native-order partial prefix', p => { p.recipe.overflowPublication = 'PARTIAL_PREFIX'; }],
+          ['catalogue discarded on diagnostic saturation', p => { p.recipe.diagnosticOverflowPublication = 'FAILED_NULL_ITEMS'; }],
+          ['status inferred from truncated detail records', p => { p.recipe.coverageIndependentOfDiagnosticDetails = false; }],
+          ['failure reason hidden after saturation', p => { p.recipe.publishSaturationReasonSummary = false; }],
+          ['repeated unbudgeted summary copies', p => { p.recipe.saturationSummaryRendering = 'PER_OBSERVATION'; }],
+          ['omitted fixed coverage summary charge', p => { p.shallowCertificate.coverageSummaryBytes = 0; }],
+          ['per-choice registration re-walk', p => { p.recipe.walksPerSpelling = p.limits.retainedChoices; }],
+          ['omitted indexed projection calls', p => { p.recipe.attemptsPerURLObservation = 2; }],
+          ['old reader attempt allowance', p => { p.recipe.metadataAttemptsPerSpelling = 10; }],
+          ['opaque Bundle fallback', p => { p.recipe.foreignBundleLookup = true; }],
+          ['omitted metadata input copies', p => { p.shallowCertificate.metadataInputBytes = 0; }],
+          ['omitted localization component copies', p => { p.shallowCertificate.ownedLocalizationComponentCopies = 0; }],
+          ['oversized measured input', p => { p.shallowCertificate.metadataInputBytes = p.limits.ownedCopyBytes; }],
+          ['omitted indexed payload charges', p => { p.shallowCertificate.ownedIndexedPayloadCopies = 0; }],
+          ['broken owned-copy certificate', p => { p.shallowCertificate.walkScratchBytes = p.limits.ownedCopyBytes; }],
+          ['broken response certificate', p => { p.shallowCertificate.pathBytes = 8192; }],
+          ['agent/helper suppression', p => { p.recipe.providerFiltersAgentsOrHelpers = true; }],
+          ['sparse native subject', p => { p.populousVM.usefulDistinctIdentifiers = 14; }],
+        ]) {
+          const broken = structuredClone(population); mutate(broken);
+          let rejected = false;
+          try { verifyPopulation(broken); } catch { rejected = true; }
+          if (!rejected) throw new Error(`Control did not reject ${label}`);
+        }
+        console.log('Conditional application arithmetic and deliberate broken controls:', certificate, '; useful-subject construction REFUTED, k215 redesign required; native qualification PENDING.');
+        const reasonNames = complete.getType('WorkspaceDiscoveryReason').getValues().map(value => value.name);
+        const saturationGuidance = 'Additional details omitted. ' + ['INDEXED_APPS', 'RUNNING_APPS', 'REGISTRATION']
+          .map(source => `${source}:${reasonNames.join(',')}`).join(';');
+        const checkGuidance = capacity => {
+          if (Buffer.byteLength(saturationGuidance) > capacity) throw new Error('Saturation reason projection exceeds guidance capacity');
+        };
+        checkGuidance(1024);
+        let smallGuidanceRefused = false;
+        try { checkGuidance(Buffer.byteLength(saturationGuidance) - 1); } catch { smallGuidanceRefused = true; }
+        if (!smallGuidanceRefused) throw new Error('Control accepted undersized reason-summary guidance');
+        console.log('All source/reason tokens remain visible after saturation; maximum guidance bytes:', Buffer.byteLength(saturationGuidance));
+        const errors = [...validateSchema(independent), ...validateSchema(complete),
+          ...validate(independent, examples), ...validate(complete, examples),
+          ...validate(complete, parse(read('workspace-operations.graphql')))];
+        if (errors.length) throw new Error(errors.map(error => error.message).join('\n'));
+        const missingFacts = buildSchema(printSchema(complete).replace('uiElement: Boolean', 'removedUIFact: Boolean'));
+        if (!validate(missingFacts, examples).some(error => error.message.includes('uiElement'))) {
+          throw new Error('Control did not reject missing application presentation fact');
+        }
+        const missingProvenance = buildSchema(printSchema(complete).replace('metadataSource: WorkspaceApplicationMetadataSource!', 'removedMetadataSource: WorkspaceApplicationMetadataSource!'));
+        if (!validate(missingProvenance, examples).some(error => error.message.includes('metadataSource'))) {
+          throw new Error('Control did not reject missing indexed metadata provenance');
+        }
+        if (read('desktop-workspace-native-schema-extension-host.graphql') !== printSchema(complete) + '\n') {
+          throw new Error('Complete native SDL is stale; run task design:search-compose before freezing checks');
+        }
+        const removed = { ...native, definitions: native.definitions.map(definition =>
+          definition.kind === 'ObjectTypeExtension' ? { ...definition,
+            fields: definition.fields.filter(field => field.name.value !== 'workspaceApplications') } : definition) };
+        if (!validate(extendSchema(actions, removed), examples).some(error => error.message.includes('workspaceApplications'))) {
+          throw new Error('Control did not reject removed application catalogue');
+        }
+        const invalid = parse('query { workspaceSpecialLocations(requests: "wrong") { impossibleField } }');
+        if (validate(complete, invalid).length < 2) throw new Error('Controls did not reject wrong input and unknown output');
+        let refused = false;
+        try { extendSchema(independent, parse('extend type Query { workspaceWrong: DesktopApplication }')); }
+        catch (error) { refused = error.message.includes('DesktopApplication'); }
+        if (!refused) throw new Error('Control did not reject foreign provider type');
+        for (const name of ['WorkspaceSpecialLocationsResult', 'WorkspaceApplicationsResult', 'WorkspaceSettingsResult']) {
+          if (String(complete.getType(name).getFields().items.type).endsWith('!')) throw new Error('Diagnostic items must be nullable');
+        }
+        const authorityGroups = [
+          [complete.getQueryType(), ['workspaceSpecialLocations', 'workspaceApplications', 'workspaceSettings']],
+          [complete.getMutationType(), ['workspacePrepareSettings']],
+          [complete.getMutationType(), ['workspaceRevealSetting', 'workspaceLaunchApplication', 'workspaceOpenURL', 'workspaceOpenPath', 'workspaceRevealPath']],
+        ];
+        const objectNames = (schema, root, names) => {
+          const seen = new Set();
+          const pending = names.map(name => getNamedType(root.getFields()[name].type));
+          while (pending.length) {
+            const type = pending.pop();
+            if (!isObjectType(type) || seen.has(type.name)) continue;
+            seen.add(type.name);
+            pending.push(...Object.values(type.getFields()).map(field => getNamedType(field.type)));
+          }
+          return seen;
+        };
+        const assertAuthorityObjects = schema => {
+          const groups = authorityGroups.map(([root, names]) => objectNames(schema,
+            root.name === 'Query' ? schema.getQueryType() : schema.getMutationType(), names));
+          for (let i = 0; i < groups.length; i++) for (let j = i + 1; j < groups.length; j++) {
+            for (const name of groups[i]) if (groups[j].has(name)) throw new Error(`Authority groups share object ${name}`);
+          }
+        };
+        assertAuthorityObjects(complete);
+        const sharedProcess = buildSchema(printSchema(complete).replace(
+          'process: WorkspaceSettingsRevealProcess', 'process: WorkspaceSettingsPreparationProcess'));
+        let authorityRefused = false;
+        try { assertAuthorityObjects(sharedProcess); } catch (error) { authorityRefused = error.message.includes('WorkspaceSettingsPreparationProcess'); }
+        if (!authorityRefused) throw new Error('Control did not reject shared objects across authority sets');
+        if (complete.getType('WorkspaceSettingsAutomationResult') || complete.getType('WorkspaceSettingsAutomationOutcome')) {
+          throw new Error('Local consent outcomes leaked into the public schema');
+        }
+        const remoteSetup = parse('mutation { workspaceRequestSettingsAutomation(event: READ) { outcome requestMade } }');
+        if (!validate(complete, remoteSetup).some(error => error.message.includes('workspaceRequestSettingsAutomation'))) {
+          throw new Error('Control did not reject remote consent initiation');
+        }
+        const nativeFeatures = ['additional-capabilities-v1', 'first-party-selection-v1', 'workspace-native-disclosures-v1'];
+        const sameFeatures = (actual, expected) => Array.isArray(actual) &&
+          actual.length === expected.length && new Set(actual).size === expected.length &&
+          expected.every(feature => actual.includes(feature));
+        const assertNativeFeatures = profile => {
+          if (!sameFeatures(profile.nativeRequiredFeatures, nativeFeatures) ||
+            !sameFeatures(profile.hostFeatures, nativeFeatures)) throw new Error('Native disclosure feature gate missing');
+        };
+        for (const name of ['core-desktop-workspace-native-extension-host.json', 'core-desktop-workspace-native-update-extension-host.json']) {
+          const profile = JSON.parse(read(`profiles/${name}`));
+          assertNativeFeatures(profile);
+          if (profile.design !== '../desktop-workspace-native-schema-extension-host.graphql') throw new Error('Wrong complete profile SDL');
+          const selected = profile.providers.find(row => row.provider === 'workspace' && row.selection === 'SELECTED');
+          if (selected.schemaVersion !== '1.1.0' || selected.version !== (name.includes('update') ? '1.3.0' : '1.2.0')) {
+            throw new Error('Native profile reused an action-only identity');
+          }
+        }
+        const refusal = JSON.parse(read('profiles/core-desktop-workspace-native-update-refused-extension-host.json'));
+        const bad = refusal.providers.find(row => row.origin === 'PER_USER');
+        const fallback = refusal.providers.find(row => row.provider === 'workspace' && row.selection === 'SELECTED');
+        if (refusal.design !== '../desktop-workspace-repair-schema-extension-host.graphql' ||
+          !sameFeatures(refusal.hostFeatures, nativeFeatures) ||
+          !sameFeatures(refusal.nativeRequiredFeatures, nativeFeatures.filter(feature => feature !== 'first-party-selection-v1')) ||
+          bad.version !== '1.3.0' || bad.schemaVersion !== '1.1.0' || bad.state !== 'INCOMPATIBLE' || bad.reason !== 'selection-feature-required' ||
+          fallback.version !== '1.0.1' || fallback.schemaVersion !== '1.0.1' || fallback.reason !== 'selected-with-refusals') {
+          throw new Error('Native refusal profile changed action-only fallback or refusal identity');
+        }
+        const priorHost = JSON.parse(read('profiles/core-desktop-workspace-native-disclosure-refused-extension-host.json'));
+        const assertDisclosureRefusal = profile => {
+          const bad = profile.providers.find(row => row.origin === 'PER_USER');
+          const fallback = profile.providers.find(row => row.provider === 'workspace' && row.selection === 'SELECTED');
+          if (!sameFeatures(profile.hostFeatures, nativeFeatures.slice(0, 2)) ||
+            !sameFeatures(profile.nativeRequiredFeatures, nativeFeatures) ||
+            profile.design !== '../desktop-workspace-repair-schema-extension-host.graphql' ||
+            profile.management !== 'extended' || profile.providers.length !== 3 ||
+            bad.version !== '1.3.0' || bad.schemaVersion !== '1.1.0' || bad.state !== 'INCOMPATIBLE' ||
+            bad.selection !== 'NOT_SELECTED' || bad.reason !== 'unsupported-feature' ||
+            fallback.version !== '1.0.1' || fallback.schemaVersion !== '1.0.1' || fallback.state !== 'ACTIVE' ||
+            fallback.origin !== 'BUNDLED' || fallback.reason !== 'selected-with-refusals') {
+            throw new Error('Prior-host disclosure refusal or action-only fallback changed');
+          }
+        };
+        assertDisclosureRefusal(priorHost);
+        const disclosureClause = 'including fixed application information/name files and direct localization names';
+        const disclosure = readFileSync('../../docs/specs/workspace-search.md', 'utf8');
+        const verifyReadReach = text => {
+          if (!text.replace(/\s+/g, ' ').includes(disclosureClause)) {
+            throw new Error('Workspace read disclosure omits approved contents/listing reach');
+          }
+        };
+        verifyReadReach(disclosure);
+        verifyReadReach(readFileSync('../../docs/adr/native-workspace-requires-disclosure-capable-host.md', 'utf8'));
+        for (const row of ['G9', 'V10']) {
+          const text = readFileSync('../../docs/verification/native-discovery-acceptance.md', 'utf8')
+            .split('\n').find(line => line.startsWith(`| ${row} |`));
+          verifyReadReach(text ?? '');
+        }
+        const requireRejection = (subject, check, label) => {
+          let rejected = false;
+          try { check(subject); } catch { rejected = true; }
+          if (!rejected) throw new Error(`Control did not reject ${label}`);
+        };
+        requireRejection(disclosure.replace(/including fixed application\s+information\/name files and direct localization names/, ''),
+          verifyReadReach, 'fixed-file/direct-localization disclosure clause removed');
+        const missingDisclosure = JSON.parse(read('profiles/core-desktop-workspace-native-extension-host.json'));
+        missingDisclosure.nativeRequiredFeatures = nativeFeatures.slice(0, 2);
+        requireRejection(missingDisclosure, assertNativeFeatures, 'missing native disclosure requirement');
+        const loadedOnPrior = structuredClone(priorHost);
+        Object.assign(loadedOnPrior.providers.find(row => row.origin === 'PER_USER'),
+          { state: 'ACTIVE', selection: 'SELECTED', reason: null });
+        requireRejection(loadedOnPrior, assertDisclosureRefusal, 'native update active on prior disclosure host');
+        console.log('Native SDL/examples/composition/four profiles and retained actions valid; removed-root, wrong-input/output, foreign-type, shared-authority, remote-consent, missing-disclosure-feature and prior-host-load controls rejected. Runtime/native G/N/V remains pending.');
+        JS
+
+  design:application-population-metadata-shape:
+    desc: Write a saved per-copy projection audit; no targets, fixtures or native qualification
+    cmds:
+      - python3 scripts/application_population_metadata_shape.py --write
+
+  design:application-population-metadata-shape-check:
+    desc: Check packet integrity and enumerated projection losses; subject discrimination unbuilt, native pending
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/application_population_metadata_shape.py scripts/test_application_population_metadata_shape.py
+      - python3 scripts/application_population_metadata_shape.py --check
+      - uv run --with pytest==9.1.1 pytest -q scripts/test_application_population_metadata_shape.py
+      - uv run --with pytest==9.1.1 --with pyright==1.1.414 pyright scripts/application_population_metadata_shape.py scripts/test_application_population_metadata_shape.py
+
+  design:application-population-metadata-shape-render:
+    desc: Render the corpus, evidence, admission/proof, contact, packaging and instrument design views; no target reads
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-population-metadata-shape.d2 docs/design/architecture/native-population-metadata-shape.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-reference-evidence.d2 docs/design/architecture/native-reference-evidence.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-reference-instrument.d2 docs/design/architecture/native-reference-instrument.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-reference-admission.d2 docs/design/architecture/native-reference-admission.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-reference-proof.d2 docs/design/architecture/native-reference-proof.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-reference-contact.d2 docs/design/architecture/native-reference-contact.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-reference-packaging.d2 docs/design/architecture/native-reference-packaging.svg
+
+  design:application-metadata-subject:
+    desc: Legacy lossy capture/thin fixtures; not authorized by current-reference permission; no Koine/native qualification
+    cmds:
+      - python3 scripts/application_metadata_subject.py --capture
+
+  design:application-metadata-subject-check:
+    desc: Check saved per-item metadata census and original-defect controls; no target reads or native pass
+    cmds:
+      - python3 scripts/application_metadata_subject.py --check
+      - uv run --with pytest==9.1.1 pytest -q scripts/test_application_metadata_subject.py
+
+  design:application-metadata-reader-plan-check:
+    desc: Check pure reader policy and every saved direct/table selector plan; no native or cost-certificate pass
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/application_metadata_reader_plan.py scripts/test_application_metadata_reader_plan.py
+      - uv run --with pytest==9.1.1 pytest -q scripts/test_application_metadata_reader_plan.py
+      - uv run --with pytest==9.1.1 --with pyright==1.1.414 pyright scripts/application_metadata_reader_plan.py scripts/test_application_metadata_reader_plan.py
+
+  design:application-metadata-reader-plan-render:
+    desc: Render the selected reader policy and finite-evidence boundary views
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-reader-plan.d2 docs/design/architecture/native-metadata-reader-plan.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-subject.d2 docs/design/architecture/native-metadata-subject.svg
+
+  design:application-metadata-operation-ledger-check:
+    desc: Check pure operation/ownership traces and isolated omission mutations; no aggregate fit or native pass
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/application_metadata_operation_ledger.py scripts/test_application_metadata_operation_ledger.py scripts/check_application_metadata_ledger_mutations.py
+      - uv run --with pytest==9.1.1 pytest -q scripts/test_application_metadata_operation_ledger.py
+      - uv run --with pytest==9.1.1 python scripts/check_application_metadata_ledger_mutations.py
+      - uv run --with pytest==9.1.1 --with pyright==1.1.414 pyright scripts/application_metadata_operation_ledger.py scripts/test_application_metadata_operation_ledger.py scripts/check_application_metadata_ledger_mutations.py
+
+  design:application-metadata-operation-ledger-render:
+    desc: Render the cleanup-first reader operation accounting boundary
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-operation-ledger.d2 docs/design/architecture/native-metadata-operation-ledger.svg
+
+  design:application-metadata-episode-certificate:
+    desc: Derive saved per-episode dimensions and conditional explicit calls; no target reads or full fit
+    cmds:
+      - python3 scripts/application_metadata_episode_certificate.py --write
+
+  design:application-metadata-episode-certificate-check:
+    desc: Reproduce every episode and reject charge/call/branch omissions; full source/storage/wire hold remains
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/application_metadata_episode_certificate.py scripts/test_application_metadata_episode_certificate.py scripts/check_application_metadata_episode_mutations.py
+      - python3 scripts/application_metadata_episode_certificate.py --check
+      - uv run --with pytest==9.1.1 pytest -q scripts/test_application_metadata_episode_certificate.py
+      - uv run --with pytest==9.1.1 python scripts/check_application_metadata_episode_mutations.py
+      - uv run --with pytest==9.1.1 --with pyright==1.1.414 pyright scripts/application_metadata_episode_certificate.py scripts/test_application_metadata_episode_certificate.py scripts/check_application_metadata_episode_mutations.py
+
+  design:application-metadata-episode-certificate-render:
+    desc: Render exact saved dimensions and unresolved full-certificate dependencies
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-episode-certificate.d2 docs/design/architecture/native-metadata-episode-certificate.svg
+
+  design:application-metadata-source-root-certificate:
+    desc: Derive symbolic source/root receipts and saved path counts; no native query or numeric fit
+    cmds:
+      - python3 scripts/application_metadata_source_root_certificate.py --write
+
+  design:application-metadata-source-root-check:
+    desc: Verify source/root branches, cleanup and omission controls; whole-job and native hold remains
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/application_metadata_source_root.py scripts/application_metadata_source_root_certificate.py scripts/test_application_metadata_source_root.py scripts/check_application_metadata_source_root_mutations.py
+      - python3 scripts/application_metadata_source_root_certificate.py --check
+      - uv run --with pytest==9.1.1 pytest -q scripts/test_application_metadata_source_root.py
+      - uv run --with pytest==9.1.1 python scripts/check_application_metadata_source_root_mutations.py
+      - uv run --with pytest==9.1.1 --with pyright==1.1.414 pyright scripts/application_metadata_source_root.py scripts/application_metadata_source_root_certificate.py scripts/test_application_metadata_source_root.py scripts/check_application_metadata_source_root_mutations.py
+
+  design:application-metadata-source-root-render:
+    desc: Render the source/root receipt and independent two-walk ownership contract
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-source-root.d2 docs/design/architecture/native-metadata-source-root.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-two-walks.d2 docs/design/architecture/native-metadata-two-walks.svg
+
+  design:application-metadata-owned-storage:
+    desc: Derive known owned local subterms for every saved episode; no whole-job or native fit
+    cmds:
+      - python3 scripts/application_metadata_owned_storage.py --write
+
+  design:application-metadata-owned-storage-check:
+    desc: Check explicit capacities, immutable overlap and charge controls; full composition remains live
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/application_metadata_owned_storage.py scripts/test_application_metadata_owned_storage.py scripts/check_application_metadata_owned_storage_mutations.py
+      - python3 scripts/application_metadata_owned_storage.py --check
+      - uv run --with pytest==9.1.1 pytest -q scripts/test_application_metadata_owned_storage.py
+      - uv run --with pytest==9.1.1 python scripts/check_application_metadata_owned_storage_mutations.py
+      - uv run --with pytest==9.1.1 --with pyright==1.1.414 pyright scripts/application_metadata_owned_storage.py scripts/test_application_metadata_owned_storage.py scripts/check_application_metadata_owned_storage_mutations.py
+
+  design:application-metadata-owned-storage-render:
+    desc: Render explicit owned capacity/write/overlap and full-composition boundary
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-owned-storage.d2 docs/design/architecture/native-metadata-owned-storage.svg
+
+  design:application-metadata-composition:
+    desc: Derive scoped explicit-work expressions and preserve strict comparison; no useful or native fit
+    cmds:
+      - python3 scripts/application_metadata_composition.py --write
+
+  design:application-metadata-composition-check:
+    desc: Check every scoped row, explicit calls/writes/cleanup and mutations; native operands stay conditional
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/application_metadata_composition.py scripts/test_application_metadata_composition.py scripts/check_application_metadata_composition_mutations.py
+      - python3 scripts/application_metadata_composition.py --check
+      - uv run --with pytest==9.1.1 pytest -q scripts/test_application_metadata_composition.py
+      - uv run --with pytest==9.1.1 python scripts/check_application_metadata_composition_mutations.py
+      - uv run --with pytest==9.1.1 --with pyright==1.1.414 pyright scripts/application_metadata_composition.py scripts/test_application_metadata_composition.py scripts/check_application_metadata_composition_mutations.py
+
+  design:application-metadata-composition-render:
+    desc: Render the selected scoped accounting and conditional composition with independent wire
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-composition.d2 docs/design/architecture/native-metadata-composition.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-runtime-admission.d2 docs/design/architecture/native-metadata-runtime-admission.svg
+
+  design:application-metadata-wire:
+    desc: Derive conditional complete selected-wire terms for both saved runs; actual/native fit remains unknown
+    cmds:
+      - node scripts/application_metadata_wire.mjs --write
+
+  design:application-metadata-wire-check:
+    desc: Check full fields, aliases, JSON escapes, failure/cap behavior and frozen per-item wire controls
+    cmds:
+      - node --check scripts/application_metadata_wire.mjs
+      - node --check scripts/test_application_metadata_wire.mjs
+      - node --check scripts/check_application_metadata_wire_mutations.mjs
+      - node scripts/application_metadata_wire.mjs --check
+      - node --test scripts/test_application_metadata_wire.mjs
+      - node scripts/check_application_metadata_wire_mutations.mjs
+
+  design:application-metadata-reconciliation-regenerate:
+    desc: Reconcile SDL/views and refresh saved certificate hashes in dependency order; no native capture
+    cmds:
+      - task design:search-compose
+      - task design:native-discovery-render
+      - task design:application-metadata-reader-plan-render
+      - task design:application-metadata-operation-ledger-render
+      - task design:application-metadata-source-root-render
+      - task design:application-metadata-owned-storage-render
+      - task design:application-metadata-composition-render
+      - task design:application-metadata-grouped-render
+      - task design:application-metadata-qualification-render
+      - task design:application-population-metadata-shape-render
+      - task design:application-metadata-episode-certificate
+      - task design:application-metadata-source-root-certificate
+      - task design:application-metadata-owned-storage
+      - task design:application-metadata-wire
+      - task design:application-metadata-composition
+      - task design:application-metadata-grouped-storage
+      - task design:application-population-metadata-shape
+
+  design:application-metadata-qualification-render:
+    desc: Render the private eligibility sequence and cleanup-reserved admission protocol
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-qualification.d2 docs/design/architecture/native-metadata-qualification.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-qualification-admission.d2 docs/design/architecture/native-metadata-qualification-admission.svg
+
+  design:application-metadata-grouped-render:
+    desc: Render grouped ownership and the precise failed controlled enclosure
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-grouped-storage.d2 docs/design/architecture/native-metadata-grouped-storage.svg
+
+  design:application-metadata-grouped-storage:
+    desc: Compose saved grouped key receipts without native observations or fit claims
+    cmds:
+      - python3 scripts/application_metadata_grouped_storage.py --write
+
+  design:application-metadata-grouped-check:
+    desc: Check grouped growth, every failure prefix, borrowers, receipts and associations
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/application_metadata_grouped_storage.py scripts/test_application_metadata_grouped_storage.py scripts/check_application_metadata_grouped_mutations.py
+      - python3 scripts/application_metadata_grouped_storage.py --check
+      - uv run --with pytest==9.1.1 pytest -q scripts/test_application_metadata_grouped_storage.py
+      - uv run --with pytest==9.1.1 python scripts/check_application_metadata_grouped_mutations.py
+      - uv run --with pytest==9.1.1 --with pyright==1.1.414 pyright scripts/application_metadata_grouped_storage.py scripts/test_application_metadata_grouped_storage.py scripts/check_application_metadata_grouped_mutations.py
+
+  design:application-metadata-reconciliation-check:
+    desc: Reject contract/qualification-order drift and run inherited frozen checks; native pending
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/check_application_metadata_reconciliation.py
+      - uv run --with pyright==1.1.414 pyright scripts/check_application_metadata_reconciliation.py
+      - python3 scripts/check_application_metadata_reconciliation.py --suite
+
+  design:application-metadata-qualification-check:
+    desc: Exercise private admission, cleanup, eligibility and release holds without native credit
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/check_application_metadata_reconciliation.py scripts/test_application_metadata_qualification.py scripts/check_application_metadata_qualification_mutations.py
+      - uv run --with pytest==9.1.1 pytest -q scripts/test_application_metadata_qualification.py
+      - uv run --with pytest==9.1.1 python scripts/check_application_metadata_qualification_mutations.py
+      - uv run --with pytest==9.1.1 --with pyright==1.1.414 pyright scripts/check_application_metadata_reconciliation.py scripts/test_application_metadata_qualification.py scripts/check_application_metadata_qualification_mutations.py
+
+  design:application-metadata-wire-render:
+    desc: Render the independent selected-wire and post-encoding guard boundary
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/native-metadata-wire.d2 docs/design/architecture/native-metadata-wire.svg
+
+  design:localized-boundary-check:
+    desc: Check explicit pathname/layout/precedence repairs and refuted baseline/file-set controls; no native pass
+    cmds:
+      - |
+        node --input-type=module <<'JS'
+        import { strict as assert } from 'node:assert';
+        import { readFileSync } from 'node:fs';
+        const subject = JSON.parse(readFileSync('docs/design/application-localized-admission.json', 'utf8'));
+        const longSubject = JSON.parse(readFileSync('docs/design/long-application-metadata.json', 'utf8'));
+        const population = JSON.parse(readFileSync('docs/design/application-population.json', 'utf8'));
+        const baseline = JSON.parse(readFileSync('docs/design/application-localized-baseline.json', 'utf8'));
+        const byteLength = value => Buffer.byteLength(value, 'utf8');
+        const verify = value => {
+          const r = value.reader, q = value.qualification;
+          assert.equal(value.wholePathBytesIncludingNul, 1024);
+          assert.equal(value.completeReaderPathSetEstablished, false);
+          assert.equal(value.consumptionRequires, 'application-localized-metadata-k215');
+          assert.equal(value.baselineCounterexample, 'application-localized-baseline.json');
+          assert.equal(value.ordinaryLocalizedControlEstablished, true);
+          assert.equal(value.historicalBundleClosureEstablished, false);
+          assert.equal(value.nativeVerdict, 'PENDING');
+          assert.deepEqual(r.wholePathCalls, ['URL.resourceValues(isApplicationKey)']);
+          assert.equal(r.wholePathTarget, 'RESOLVED_BUNDLE_ROOT_ONLY');
+          assert.equal(r.lastOrdinaryRootBytes + 1, value.wholePathBytesIncludingNul);
+          assert.equal(r.firstIndexedRootBytes, value.wholePathBytesIncludingNul);
+          assert.equal(r.descendantAddressing, 'HELD_DIRECTORY_LITERAL_COMPONENT');
+          assert.equal(r.foreignBundleLookup, false);
+          assert.deepEqual(r.layoutPriority, ['Contents', 'Support Files', 'Resources', '.']);
+          assert.deepEqual(r.resourceBases, ['Contents/Resources', 'Support Files/Resources', 'Resources', '.']);
+          assert.deepEqual(r.informationBases, ['Contents', 'Support Files', 'Resources', '.']);
+          assert.deepEqual(r.informationFiles, ['Info-macos.plist', 'Info.plist']);
+          assert.deepEqual(r.nameFiles, ['InfoPlist-macos.strings', 'InfoPlist.strings']);
+          assert.equal(r.directoryListing, 'ONE_SELECTED_RESOURCE_DIRECTORY_DIRECT_ENTRIES_ONLY');
+          assert.equal(r.localizationSelection, 'EXPLICIT_PREFERENCES_CF_FUNCTION_DEVELOPMENT_FIRST_INPUT_THEN_BASE_THEN_DEVELOPMENT');
+          assert.equal(r.selectorInputOrder, 'EXACT_OBSERVED_DEVELOPMENT_THEN_BYTE_SORTED_REMAINDER');
+          assert.equal(r.unmatchedPreferenceBackstop, 'OBSERVED_DEVELOPMENT_ELSE_BYTE_FIRST');
+          assert.equal(r.namePrecedence, 'FIRST_USABLE_CANDIDATE_DISPLAY_THEN_NAME_WITHIN_DICTIONARY');
+          assert.equal(r.variableComponents, 'ACTUAL_PARENT_FPATHCONF_NAME_MAX_AND_LOSSLESS_UTF8');
+          assert.equal(r.descendantSymlinks, 'REFUSE_NOFOLLOW');
+          assert(!r.crossCopyMetadata && !r.recursiveResourceTraversal);
+          assert.equal(r.missingTupleOutcome, 'UNMET_NATIVE_SUPPORT');
+          assert.deepEqual(value.examples.map(example => example.suffix), [
+            '/Contents/Info.plist', '/Contents/Info-macos.plist',
+            '/Contents/Resources/en.lproj/InfoPlist.strings',
+            '/Contents/Resources/Base.lproj/InfoPlist.strings',
+            '/Contents/Resources/English.lproj/InfoPlist.strings',
+          ]);
+          assert.equal(value.examples[1].evidence, 'HISTORICAL_APPLE_SOURCE_ONLY');
+          const fits = (bundleBytes, suffix) => bundleBytes + byteLength(suffix) + 1 <= value.wholePathBytesIncludingNul;
+          for (const example of [...value.examples, value.variableComponentExample]) {
+            assert.equal(example.bytes, byteLength(example.suffix));
+            assert.equal(example.lastFittingBundleBytes, value.wholePathBytesIncludingNul - 1 - example.bytes);
+            assert(fits(example.lastFittingBundleBytes, example.suffix));
+            assert(!fits(example.lastFittingBundleBytes + 1, example.suffix));
+          }
+          assert.equal(value.variableComponentExample.suffix, `/Contents/Resources/${value.variableComponentExample.component}/InfoPlist.strings`);
+          assert.notEqual(value.variableComponentExample.component.length, byteLength(value.variableComponentExample.component));
+          const counterexample = value.knownPlistGuardCounterexample;
+          assert.equal(counterexample.bundleBytes, 1003);
+          assert.equal(counterexample.localizedSuffix, value.examples[2].suffix);
+          assert.equal(counterexample.addressedBytesExcludingNul, 1049);
+          assert(fits(counterexample.bundleBytes, value.examples[0].suffix));
+          assert(!fits(counterexample.bundleBytes, counterexample.localizedSuffix));
+          assert.equal(q.ordinaryControlBundleBytes, 977);
+          assert.equal(q.missedBandBundleBytes, 978);
+          assert.equal(q.fixedResourceSuffix, value.examples[2].suffix);
+          assert.equal(q.localizedComponent, 'en.lproj');
+          assert(q.localizedNameDistinctFromPlainInfo && q.metadataFilesDescriptorRelative);
+          assert.deepEqual(q.ordinaryWholeRootCallBytesIncludingNul, [978, 979]);
+          assert(fits(q.ordinaryControlBundleBytes, q.fixedResourceSuffix));
+          assert(!fits(q.missedBandBundleBytes, q.fixedResourceSuffix));
+          assert(q.missedBandBundleBytes + 1 <= value.wholePathBytesIncludingNul);
+          assert.equal(q.nativeVerdict, 'PENDING');
+          assert.equal(longSubject.source.ordinaryReaderBoundary, 'ROOT_RESOURCE_TYPE_1024_DESCRIPTOR_RELATIVE_FIXED_METADATA');
+          assert.equal(longSubject.qualification.ordinaryReaderControlEstablished, true);
+          assert.equal(population.recipe.foreignBundleLookup, false);
+          assert.equal(population.recipe.metadataFileProbesPerSpelling, 2 * r.informationFiles.length);
+          assert.equal(population.recipe.metadataFileProbesPerSelectedLocalization, r.nameFiles.length);
+          assert.equal(longSubject.ordinaryReaderConsumptionRequires, value.consumptionRequires);
+          // Construct every declared relative candidate for explicit finite localization names.
+          const paths = r.resourceBases.flatMap(base => [null, 'en.lproj', 'Base.lproj', 'English.lproj', 'français.lproj']
+            .flatMap(locale => r.nameFiles.map(file => [base, locale, file].filter(part => part && part !== '.').join('/'))));
+          const informationPaths = r.informationBases.flatMap(base => r.informationFiles
+            .map(file => [base, file].filter(part => part !== '.').join('/')));
+          assert.deepEqual(informationPaths, ['Contents/Info-macos.plist', 'Contents/Info.plist',
+            'Support Files/Info-macos.plist', 'Support Files/Info.plist',
+            'Resources/Info-macos.plist', 'Resources/Info.plist', 'Info-macos.plist', 'Info.plist']);
+          paths.push(...informationPaths);
+          for (const path of paths) assert(path.split('/').every(part => part && !part.includes('\0') && part !== '..'));
+          return { lastOrdinaryRootBytes: r.lastOrdinaryRootBytes, firstIndexedRootBytes: r.firstIndexedRootBytes, relativeCandidates: paths.length };
+        };
+        for (const [label, mutate] of [
+          ['omitted loctable credited as complete closure', v => { v.completeReaderPathSetEstablished = true; }],
+          ['undefined Resources information base', v => { v.reader.informationBases[2] = '.'; }],
+          ['byte-order language before development backstop', v => { v.reader.selectorInputOrder = 'BYTE_SORT_ONLY'; }],
+          ['later display overriding earlier localized name', v => { v.reader.namePrecedence = 'ALL_DISPLAY_NAMES_BEFORE_ALL_BUNDLE_NAMES'; }],
+          ['Info.plist-only closure', v => { v.reader.nameFiles = []; }],
+          ['whole descendant call', v => { v.reader.wholePathCalls.push('Bundle.localizedInfoDictionary'); }],
+          ['guessed locale bound', v => { v.reader.variableComponents = 'EN_BASE_ENGLISH_ONLY'; }],
+          ['post-call admission', v => { v.reader.descendantAddressing = 'WHOLE_PATH_THEN_CHECK'; }],
+          ['cross-copy rescue', v => { v.reader.crossCopyMetadata = true; }],
+          ['recursive listing', v => { v.reader.recursiveResourceTraversal = true; }],
+          ['missing band control', v => { v.qualification.missedBandBundleBytes = 1004; }],
+          ['unlocalized substitute', v => { v.qualification.localizedNameDistinctFromPlainInfo = false; }],
+          ['incorrect localized suffix', v => { v.examples[2].bytes = 20; }],
+          ['off-by-one NUL admission', v => { v.examples[2].lastFittingBundleBytes++; }],
+          ['character count for UTF-8', v => { v.variableComponentExample.bytes = v.variableComponentExample.suffix.length; }],
+          ['historical source as current proof', v => { v.historicalBundleClosureEstablished = true; }],
+          ['invented native pass', v => { v.nativeVerdict = 'PASSED'; }],
+        ]) {
+          const broken = structuredClone(subject); mutate(broken);
+          assert.throws(() => verify(broken), `Control accepted ${label}`);
+        }
+        const summary = baseline.summary;
+        assert(baseline.unchangedBeforeAfter);
+        assert.equal(summary.systemBundles, baseline.system.length);
+        assert.equal(summary.informationInputBytesLowerBound, baseline.system.reduce((n, row) => n + (row.information?.bytes ?? 0), 0));
+        assert.equal(summary.localizationRecords, baseline.system.reduce((n, row) => n + row.localizationsCount, 0));
+        assert.equal(summary.rawDirectoryEntries, baseline.system.reduce((n, row) => n + row.rawDirectEntriesCount, 0));
+        const tables = baseline.system.filter(row => row.loctable);
+        assert.equal(summary.loctableBundles, tables.length);
+        assert.equal(summary.loctableMaximumBytes, Math.max(...tables.map(row => row.loctable.bytes)));
+        assert.equal(summary.loctableAbove65536, tables.filter(row => row.loctable.bytes > population.limits.metadataFileBytes).length);
+        for (const row of baseline.system) for (const file of [row.information, row.loctable].filter(Boolean)) {
+          assert.match(file.sha256, /^[a-f0-9]{64}$/);
+        }
+        const oldFullEnvelopeBase = 6816128;
+        const substituted = oldFullEnvelopeBase + summary.informationInputBytesLowerBound +
+          summary.localizationRecords * (population.shallowCertificate.localizationRecordBytes +
+          population.shallowCertificate.ownedLocalizationComponentCopies * population.shallowCertificate.localizationComponentBytes);
+        assert.equal(substituted, summary.certificateSubtotalAtOldEnvelopeWithSystemDimensions);
+        assert(substituted > population.limits.ownedCopyBytes);
+        const admitFile = bytes => assert(bytes <= population.limits.metadataFileBytes, 'file exceeds proposed gate');
+        assert.throws(() => admitFile(baseline.unarchiver.information.bytes), /file exceeds proposed gate/);
+        assert.throws(() => admitFile(summary.loctableMaximumBytes), /file exceeds proposed gate/);
+        assert.throws(() => assert(summary.localizationRecords <= population.shallowCertificate.localizationRecords), 'baseline inventory must refute old assumption');
+        const informationWithWitness = summary.informationInputBytesLowerBound + baseline.unarchiver.information.bytes;
+        assert.throws(() => assert(informationWithWitness <= population.shallowCertificate.metadataInputBytes), 'system plus named useful witness must refute old input assumption');
+        const localizedWitnesses = tables.filter(row => !row.stringsFiles.length &&
+          Object.values(row.localizedNames).some(name => name && name !== row.plainName));
+        assert(localizedWitnesses.some(row => row.plainName === 'FindMy' && row.localizedNames.en === 'Find My'));
+        const requireNameFileCoverage = files => assert(files.includes('InfoPlist.loctable') || !localizedWitnesses.length,
+          'required shipped localized names omitted');
+        assert.throws(() => requireNameFileCoverage(subject.reader.nameFiles), /required shipped localized names omitted/);
+        // Positive and seen-to-fail controls for each independent instrument.
+        admitFile(1024);
+        assert(summary.localizationRecords <= 65536);
+        requireNameFileCoverage([...subject.reader.nameFiles, 'InfoPlist.loctable']); // control only, no admitted format
+        const order = (names, development) => {
+          const sorted = [...names].sort((a, b) => Buffer.compare(Buffer.from(a), Buffer.from(b)));
+          return sorted.includes(development) ? [development, ...sorted.filter(name => name !== development)] : sorted;
+        };
+        const [old, backstop, matching] = baseline.selectorControls;
+        assert.deepEqual(order(old.possible, 'it'), backstop.possible);
+        assert.deepEqual(old.selected, ['ar']);
+        assert.deepEqual(backstop.selected, ['it']);
+        assert.deepEqual(matching.selected, ['de']);
+        assert.deepEqual(order(['ja', 'fr'], 'absent'), ['fr', 'ja']);
+        const firstName = dictionaries => dictionaries.map(dictionary => dictionary.CFBundleDisplayName || dictionary.CFBundleName).find(Boolean);
+        assert.equal(firstName([{ CFBundleName: 'earlier localized name' }, { CFBundleDisplayName: 'later display' }]), 'earlier localized name');
+        assert.equal(firstName([{ CFBundleDisplayName: 'display', CFBundleName: 'name' }]), 'display');
+        console.log(JSON.stringify(verify(subject)));
+        console.log('Path/layout/precedence repairs checked; oversize, baseline inventory/copy and omitted-loctable counterexamples reproduced. Useful reader closure REFUTED, k215 required; native G11/N8/V13 PENDING.');
+        JS
+
+  design:long-applications-check:
+    desc: Check long indexed metadata declarations and constructive finite fixture lengths with failing controls; no native source/action pass
+    cmds:
+      - |
+        node --input-type=module <<'JS'
+        import { strict as assert } from 'node:assert';
+        import { readFileSync } from 'node:fs';
+        const subject = JSON.parse(readFileSync('docs/design/long-application-metadata.json', 'utf8'));
+        const population = JSON.parse(readFileSync('docs/design/application-population.json', 'utf8'));
+        const verify = value => {
+          const { source: s, limits: l, qualification: q } = value;
+          assert.equal(s.queryScope, 'NSMetadataQueryIndexedLocalComputerScope');
+          assert.equal(s.predicate, 'kMDItemContentTypeTree = com.apple.application-bundle');
+          assert.deepEqual(s.attributes, ['kMDItemPath', 'kMDItemContentTypeTree', 'kMDItemCFBundleIdentifier', 'kMDItemDisplayName']);
+          assert.equal(s.itemOrigin, 'ACTUAL_QUERY_RESULT');
+          assert.equal(s.typeEvidence, 'EXACT_NATIVE_APPLICATION_BUNDLE_TREE_MEMBER');
+          assert.equal(s.identity, 'BEFORE_AFTER_DIRECTORY_DEVICE_INODE');
+          assert.equal(s.indexToInodeBinding, 'UNESTABLISHED');
+          assert.equal(s.metadataSource, 'INDEXED_ITEM');
+          assert.equal(s.installationState, 'UNKNOWN');
+          assert.equal(s.bundleFlags, 'NULL');
+          assert(!s.wholePathFallback && !s.crossCopyMetadata && !s.extraAccessOrConsent);
+          assert.equal(l.handoffBytesIncludingNul, 1024);
+          assert.equal(l.knownPlistSuffixBytes, Buffer.byteLength('/Contents/Info.plist'));
+          assert.equal(s.ordinaryReaderBoundary, 'ROOT_RESOURCE_TYPE_1024_DESCRIPTOR_RELATIVE_FIXED_METADATA');
+          assert.equal(q.ordinaryReaderControlEstablished, true);
+          assert.equal(q.ordinaryControlBundleBytes, 977);
+          assert.equal(q.missedBandBundleBytes, 978);
+          assert.equal(q.localizedComponent, 'en.lproj');
+          assert(q.requireLocalizedNameDistinctFromPlainInfo && q.requireActualBoundaryIndexedTuples);
+          assert.equal(l.rawIndexedTypeValues, 8 * population.limits.rawURLObservations);
+          assert.equal(l.rawIndexedTypeValues, population.limits.indexedTypeValues);
+          assert.equal(q.name, 'L1500');
+          assert.deepEqual(q.boundaryBundleBytes, [977, 978, 1003, 1004, 1023, 1024, 1500]);
+          assert.equal(q.shortSameIdentifierCompetitors, 2);
+          assert.equal(q.explicitShortParentReindexAttempts, 1);
+          assert.deepEqual(q.indexObservationCheckpointsSeconds, [10, 30, 60]);
+          assert(q.requireActualLongIndexedTuple && q.requireIndependentManifestAndObservers &&
+            q.requireNameAndIdentifierForSubject && q.requireUnchangedSelectedLaunchAndNamedOpenRefusal);
+          assert(!q.registeredLongPrecondition && !q.diskOrClientProvenancePasses);
+          assert.equal(q.missingTupleOutcome, 'UNMET_NATIVE_SUPPORT');
+          assert.equal(q.nativeVerdict, 'PENDING');
+          const fixtures = q.boundaryBundleBytes.map(bytes => {
+            const root = `${q.fixtureRoot}/b${bytes}`;
+            let remaining = bytes - Buffer.byteLength(root) - 1 - Buffer.byteLength(q.leaf);
+            const components = [];
+            while (remaining > l.maximumFixtureComponentBytes + 1) {
+              const n = remaining === l.maximumFixtureComponentBytes + 2 ? l.maximumFixtureComponentBytes - 1 : l.maximumFixtureComponentBytes;
+              components.push('a'.repeat(n)); remaining -= n + 1;
+            }
+            assert(remaining >= 2);
+            components.push('a'.repeat(remaining - 1));
+            assert(components.every(part => part.length > 0 && part.length <= 200));
+            const path = `${root}/${components.join('/')}/${q.leaf}`;
+            assert.equal(Buffer.byteLength(path), bytes);
+            const visits = path.split('/').filter(Boolean).length;
+            assert(visits <= l.maximumFixtureComponentVisits);
+            return { bytes, visits, ordinaryReader: bytes < l.handoffBytesIncludingNul,
+              actionPlistUnsupported: bytes + l.knownPlistSuffixBytes >= l.handoffBytesIncludingNul,
+              handoffRefused: bytes >= l.handoffBytesIncludingNul };
+          });
+          return fixtures;
+        };
+        const controls = [
+          ['source', 'attributes', ['kMDItemPath']], ['source', 'itemOrigin', 'CLIENT_FOUND_FILE'],
+          ['source', 'typeEvidence', 'FILENAME_SUFFIX'], ['source', 'indexToInodeBinding', 'CURRENT_PLIST_PROVED'],
+          ['source', 'installationState', 'INSTALLED'], ['source', 'bundleFlags', 'FALSE'],
+          ['source', 'wholePathFallback', true], ['source', 'crossCopyMetadata', true],
+          ['source', 'extraAccessOrConsent', true], ['limits', 'knownPlistSuffixBytes', 0],
+          ['source', 'ordinaryReaderBoundary', 'KNOWN_PLIST_IS_SUFFICIENT'],
+          ['qualification', 'ordinaryReaderControlEstablished', false],
+          ['qualification', 'missedBandBundleBytes', 1004],
+          ['qualification', 'requireLocalizedNameDistinctFromPlainInfo', false],
+          ['qualification', 'requireActualBoundaryIndexedTuples', false],
+          ['limits', 'rawIndexedTypeValues', 256], ['qualification', 'registeredLongPrecondition', true],
+          ['qualification', 'requireActualLongIndexedTuple', false], ['qualification', 'diskOrClientProvenancePasses', true],
+          ['qualification', 'missingTupleOutcome', 'PASS'], ['qualification', 'nativeVerdict', 'PASSED']
+        ];
+        for (const [group, field, bad] of controls) {
+          const changed = structuredClone(subject); changed[group][field] = bad;
+          assert.throws(() => verify(changed), `Control accepted ${group}.${field}`);
+        }
+        console.log(JSON.stringify(verify(subject)));
+        console.log('Broken projection/identity/provenance/access/action/fixture declarations rejected; ordinary fixed-file root boundary checked, native G11/N8/V13 PENDING.');
+        JS
+
+  design:settings-check:
+    desc: Check logical two-sweep Settings call/copy certificates and finite qualification declarations with broken controls; no native readiness/usefulness pass
+    cmds:
+      - |
+        node --input-type=module <<'JS'
+        import { strict as assert } from 'node:assert';
+        import { readFileSync } from 'node:fs';
+        const subject = JSON.parse(readFileSync('docs/design/settings-readiness.json', 'utf8'));
+        const verify = value => {
+          const { limits: l, recipe: r, contract: c, nativeQualification: q } = value;
+          for (const n of [...Object.values(l), ...Object.values(r)]) assert(Number.isSafeInteger(n) && n > 0);
+          assert.equal(l.sweeps, 2);
+          assert(l.anchorsPerPane <= l.anchorsPerSweep && l.recordKeys <= 16);
+          assert.equal(l.minimumGapMs, 100);
+          assert.equal(l.jobWaitMs, 3000);
+          assert(l.minimumGapMs < l.jobWaitMs);
+          assert.equal(c.paneForm, 'ALL_PANE_PROPERTIES_PALL');
+          assert.equal(c.anchorAssociation, 'CONTAINER_PANE_ID');
+          assert.equal(c.comparison, 'FULL_ID_NAME_ANCHOR_MAP');
+          assert.equal(c.lazyCompleteness, 'UNKNOWN');
+          assert.equal(c.positiveStatus, 'PARTIAL');
+          assert.equal(c.emptyPanes, 'UNKNOWN_NULL_ITEMS');
+          assert.equal(c.emptyAnchors, 'NULL');
+          assert.equal(c.overflow, 'FAILED_NULL_ITEMS');
+          assert.equal(c.diagnosticOverflow, 'CONTINUE_WITH_BOUNDED_GUIDANCE');
+          assert.equal(c.coverageIndependentOfDiagnosticDetails, true);
+          assert.equal(c.publishSaturationReasonSummary, true);
+          assert.equal(c.saturationSummaryRendering, 'ONCE_AT_FREEZE');
+          assert.equal(c.incompleteFirstSweepDeadline, 'FAILED_NULL_ITEMS');
+          assert.equal(c.confirmationDeadline, 'PARTIAL_UNCONTRADICTED_FIRST_MAP');
+          assert.equal(c.lazyRevealNoSuchObject, 'FAILED_UNESTABLISHED_SELECTION');
+          assert.equal(r.diagnosticBytes, 64 * 2048);
+          assert.equal(r.coverageSummaryBytes, 4 * 32);
+          assert.equal(c.readLoadsPane, false);
+          assert.equal(c.automaticFallback, false);
+          assert.equal(q.coldRepetitions, 3);
+          assert.equal(q.maximumVisitPasses, 2);
+          assert.deepEqual(q.postVisitCheckpointsSeconds, [1, 3, 10]);
+          assert(q.coldBeforeAnyVisit && q.independentScalarInventory && q.requireEveryExposedChoiceColdAndWarm);
+          assert(q.coldRevealInSeparateIncarnation && q.coldRevealSelectionFromPriorIncarnation);
+          assert.equal(q.nativeVerdict, 'PENDING');
+          const events = l.sweeps * (l.panesPerSweep + 1);
+          const calls = r.fixedAttempts + r.attemptsPerEvent * events +
+            r.attemptsPerPaneRecord * l.sweeps * l.panesPerSweep + r.attemptsPerAnchor * l.sweeps * l.anchorsPerSweep;
+          const copies = l.sweeps * (l.panesPerSweep * (r.idBytes + r.labelBytes + r.paneRecordBytes) +
+            l.anchorsPerSweep * (r.anchorBytes + r.anchorRecordBytes)) +
+            l.sweeps * l.panesPerSweep * r.idBytes + r.diagnosticBytes + r.coverageSummaryBytes + r.scratchBytes;
+          assert(calls <= l.nativeAttempts);
+          assert(copies <= l.ownedCopyBytes);
+          return { events, calls, copies };
+        };
+        const controls = [
+          ['limits', 'nativeAttempts', 16384], ['limits', 'ownedCopyBytes', 6094975],
+          ['limits', 'sweeps', 3], ['contract', 'comparison', 'ID_SET_ONLY'],
+          ['contract', 'anchorAssociation', 'POSITIONAL_ZIP'], ['contract', 'lazyCompleteness', 'COMPLETE'],
+          ['contract', 'emptyAnchors', 'EMPTY_LIST'], ['contract', 'overflow', 'PARTIAL_PREFIX'],
+          ['contract', 'diagnosticOverflow', 'FAILED_NULL_ITEMS'],
+          ['contract', 'coverageIndependentOfDiagnosticDetails', false], ['recipe', 'coverageSummaryBytes', 0],
+          ['contract', 'publishSaturationReasonSummary', false],
+          ['contract', 'saturationSummaryRendering', 'PER_OBSERVATION'],
+          ['contract', 'incompleteFirstSweepDeadline', 'PARTIAL_PREFIX'],
+          ['contract', 'confirmationDeadline', 'FAILED_NULL_ITEMS'],
+          ['contract', 'lazyRevealNoSuchObject', 'SELECTION_UNAVAILABLE'],
+          ['nativeQualification', 'coldRevealInSeparateIncarnation', false],
+          ['nativeQualification', 'coldRevealSelectionFromPriorIncarnation', false],
+          ['contract', 'readLoadsPane', true], ['nativeQualification', 'coldBeforeAnyVisit', false],
+          ['nativeQualification', 'requireEveryExposedChoiceColdAndWarm', false]
+        ];
+        for (const [group, field, bad] of controls) {
+          const changed = structuredClone(subject);
+          changed[group][field] = bad;
+          assert.throws(() => verify(changed), `Control accepted ${group}.${field}`);
+        }
+        console.log(JSON.stringify(verify(subject)));
+        console.log('Broken Settings budget/association/health/empty/loading/cold-usefulness declarations rejected; design only, native G/N/V pending.');
+        JS
+
+  design:serve:
+    desc: Serve only the architecture presentation on loopback (PORT overrides 8765)
+    cmds:
+      - python3 -m http.server {{.PORT | default "8765"}} --bind 127.0.0.1 --directory docs/design/architecture
+
+  design:workspace-render:
+    desc: Render workspace launch/open views (D2 0.9.0, long-location view ELK, outcomes Dagre; PlantUML 1.2026.8)
+    cmds:
+      - plantuml -tsvg docs/design/architecture/workspace-open.puml
+      - plantuml -tsvg docs/design/architecture/workspace-inspection.puml
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/workspace-outcomes.d2 docs/design/architecture/workspace-outcomes.svg
+      - d2 --layout=elk --theme=0 --dark-theme=200 docs/design/architecture/workspace-long-locations.d2 docs/design/architecture/workspace-long-locations.svg
+
+  design:workspace-check:
+    desc: Validate the workspace SDL independently, its composition with the documented baseline, and its five example operations (design check, not runtime conformance)
+    dir: clients/contract-only
+    cmds:
+      - npm ci --ignore-scripts --no-audit --no-fund
+      - |
+        node --input-type=module <<'JS'
+        import { readFileSync } from 'node:fs';
+        import { buildSchema, extendSchema, parse, validate, validateSchema } from 'graphql';
+        const read = name => readFileSync(`../../docs/design/${name}`, 'utf8');
+        const contribution = parse(read('workspace-schema.graphql'));
+        const core = buildSchema('type Query { placeholder: Boolean } type Mutation { placeholder: Boolean }');
+        const independent = extendSchema(core, contribution);
+        const complete = extendSchema(buildSchema(read('desktop-schema.graphql')), contribution);
+        const examples = parse(read('workspace-operations.graphql'));
+        const errors = [...validateSchema(independent), ...validateSchema(complete), ...validate(complete, examples)];
+        if (errors.length) throw new Error(errors.map(error => error.message).join('\n'));
+        const brokenQuery = parse('mutation { workspaceOpenURL(url: "https://example.com") { impossibleField } }');
+        if (!validate(complete, brokenQuery).some(error => error.message.includes('impossibleField'))) {
+          throw new Error('Negative control did not reject an unknown field');
+        }
+        let refusedForeignType = false;
+        try { extendSchema(core, parse('extend type Mutation { workspaceWrong: DesktopApplication }')); }
+        catch (error) { refusedForeignType = error.message.includes('DesktopApplication'); }
+        if (!refusedForeignType) throw new Error('Negative control did not reject a foreign provider type');
+        console.log('Workspace SDL, independent composition, baseline composition and five operations valid; both negative controls rejected. Runtime acceptance remains pending.');
+        JS
+
+  design:long-action-api-check:
+    desc: Compile/link public long-action mechanism candidates without running them; declarations are not native acceptance
+    cmds:
+      - mkdir -p .build/long-action-native-boundary
+      - xcrun --sdk macosx --show-sdk-version
+      - xcrun clang --version
+      - xcrun clang -arch arm64 -mmacosx-version-min=26.0 -Wall -Wextra -Werror -Wno-deprecated-declarations docs/verification/long-action-native-boundary/api-check.c -framework CoreServices -framework CoreFoundation -o .build/long-action-native-boundary/api-check
+      - xcrun nm -u .build/long-action-native-boundary/api-check > .build/long-action-native-boundary/imports.txt
+      - |
+        node --input-type=module <<'JS'
+        import { readFileSync } from 'node:fs';
+        const imports = new Set(readFileSync('.build/long-action-native-boundary/imports.txt', 'utf8').trim().split(/\s+/));
+        const required = ['_openat', '_fstatat', '_readlinkat', '_fsgetpath', '_FSMakeFSRefUnicode',
+          '_FSCompareFSRefs', '_LSCopyItemInfoForRef', '_LSCopyItemAttribute', '_CFURLCreateFromFSRef',
+          '_fpathconf', '_FSPathMakeRef', '_FSGetCatalogInfo', '_LSGetApplicationForItem',
+          '_CFBundleCopyInfoDictionaryForURL', '_proc_pidpath'];
+        const check = symbols => {
+          const missing = required.filter(symbol => !symbols.has(symbol));
+          if (missing.length) throw new Error('Missing probe imports: ' + missing.join(', '));
+        };
+        check(imports);
+        const removed = new Set(imports);
+        removed.delete('_fsgetpath');
+        let rejected = false;
+        try { check(removed); } catch (error) { rejected = error.message.includes('_fsgetpath'); }
+        if (!rejected) throw new Error('Control did not reject a missing intended import');
+        console.log('All intended imports present; missing-import control rejected. SDK stub link check only; probe not executed and guest availability untested.');
+        JS
+
+  design:action-repair-check:
+    desc: Validate the 1.0.1 action description delta, unchanged shapes/examples and distinct same-printer composition (design check; what the signed host serves is held by `task conformance`)
+    deps: [design:workspace-check]
+    dir: clients/contract-only
+    cmds:
+      - |
+        node --input-type=module <<'JS'
+        import { readFileSync } from 'node:fs';
+        import { buildSchema, extendSchema, parse, print, printSchema, validate, validateSchema, visit } from 'graphql';
+        const read = name => readFileSync(`../../docs/design/${name}`, 'utf8');
+        const baseline = parse(read('workspace-schema.graphql'), { noLocation: true });
+        const repair = parse(read('workspace-action-repair-schema.graphql'), { noLocation: true });
+        const shape = ast => print(visit(ast, { enter: node => node.description ? { ...node, description: undefined } : undefined }));
+        if (shape(baseline) !== shape(repair)) throw new Error('Repair changed the retained action shape');
+        const descriptions = ast => {
+          const result = new Map();
+          visit(ast, { enter(node, key, parent, path) {
+            if (node.description) result.set(path.join('.'), node.description.value);
+          } });
+          return result;
+        };
+        const oldDescriptions = descriptions(baseline);
+        const expected = new Set(['workspaceLaunchApplication', 'workspaceOpenPath', 'workspaceRevealPath']);
+        const assertDelta = ast => {
+          const next = descriptions(ast);
+          const changed = [...next].filter(([path, value]) => oldDescriptions.get(path) !== value);
+          const mutation = ast.definitions.find(definition => definition.name?.value === 'Mutation');
+          const fields = mutation.fields.filter(field => expected.has(field.name.value));
+          if (changed.length !== expected.size || oldDescriptions.size !== next.size || fields.length !== expected.size) {
+            throw new Error('Wrong description delta');
+          }
+          const oldMutation = baseline.definitions.find(definition => definition.name?.value === 'Mutation');
+          for (const field of fields) {
+            const old = oldMutation.fields.find(candidate => candidate.name.value === field.name.value).description.value;
+            if (!field.description.value.startsWith(old + ' ')) throw new Error('Repair did not append the agreed description');
+          }
+        };
+        assertDelta(repair);
+        let rejected = false;
+        try { assertDelta(baseline); } catch { rejected = true; }
+        if (!rejected) throw new Error('Control credited an unchanged baseline as a repair delta');
+        const host = buildSchema(read('desktop-schema.graphql'));
+        const old = extendSchema(host, baseline);
+        const next = extendSchema(host, repair);
+        const independent = extendSchema(buildSchema('type Query { placeholder: Boolean } type Mutation { placeholder: Boolean }'), repair);
+        const errors = [...validateSchema(independent), ...validateSchema(next), ...validate(next, parse(read('workspace-operations.graphql')))];
+        if (errors.length) throw new Error(errors.map(error => error.message).join('\n'));
+        if (printSchema(old) === printSchema(next)) throw new Error('Description changes disappeared from canonical composition');
+        console.log('Repair has three appended descriptions, unchanged action shape and valid examples; unchanged-baseline control rejected. Same-printer SDL differs; the served digest and candidates are held by task conformance, runtime outcomes by the V leaves.');
+        JS
+
+  design:selection-render:
+    desc: Render first-party selection and publication views (D2 0.9.0 and PlantUML 1.2026.8)
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/provider-selection.d2 docs/design/architecture/provider-selection.svg
+      - plantuml -tsvg docs/design/architecture/provider-publication.puml
 
   version:
     desc: Print the one version the bundle, the release tag, the release artifact and the cask all take from App/Info.plist
@@ -139,6 +1334,11 @@ tasks:
     desc: Release acceptance, grant-workflow half, in ONE Gatekeeper-ENFORCING TestAnyware macOS session on the notarized, stapled, quarantined bundle - a grant created in the window and handed to a script, a client enrolled and approved in the window with nothing typed, pasted or shown, a pending requester that reads its own request and neither approves itself nor enumerates nor reaches a provider operation, an already-decided refusal composed into the window's own sentence with both lists re-read, sixteen requests pending together with the window scrolled to reach and deny one, HTTP 429 with Retry-After past the enrollment rate limit and pending-request-limit past the pending cap, and an enrolled grant revoked in the window whose credential is then refused 401 on the very connection it was served on and again after a restart
     cmds:
       - scripts/vm-verify-grant-workflows.sh
+
+  app:vm-verify-disclosure:
+    desc: Verify in a clean TestAnyware macOS VM that the signed bundle's window discloses workspace control's reach in the create-grant view for a new grant, the request view for a pending request and the grant list for existing grants, each observed on screen and equal to the text a koine:manage client reads over HTTP, that koine:manage and desktop capabilities show none, that a revoked grant discloses nothing and that a restart changes no grant
+    cmds:
+      - scripts/vm-verify-disclosure.sh
 
   app:vm-verify:
     desc: Verify the signed bundle in a clean TestAnyware macOS VM (install, login launch, grant, revoke, quit)
@@ -181,6 +1381,22 @@ tasks:
     cmds:
       - scripts/vm-verify-enrollment.sh
 
+  check:launch-call-path:
+    desc: Enumerate the workspace provider's launch, URL, path and reveal calls - its one NSWorkspace launch request, its one Finder selection request in its two documented forms, its one open request shared by URLs and paths, the ten parameters they set, its two handler lookups (a scheme, and the item opened), the item inspection's three resource keys with no directory listing or content read, every application it discovers itself resolved by the descriptor walk and limited before its bundle is read, with no whole-path inspection of a registered location left, the receipt's two executable identities (the live process's and the retained object's) each acquired by that walk as one device-and-inode representation with no length limit, and every import of the built bundle - and check them against the authority trace - no activation, hiding, raising, accessibility, event-posting, scripting or process call beside them (each pattern is first seen to match a control)
+    deps: [app]
+    cmds:
+      - scripts/check-launch-call-path.sh
+
+  check:launch-call-path-mutations:
+    desc: Show the receipt-identity part of `task check:launch-call-path` goes red against one deliberately broken decision of the receipt's two executable identities at a time (a symlink-resolving or resource-identifier call, a path decoded to text, a hand-off limit, an identity not acquired by the walk, a second representation), in a throwaway copy of what the check reads; the unmutated copy must pass first
+    cmds:
+      - python3 scripts/check-launch-call-path-mutations.py
+
+  app:vm-verify-launch:
+    desc: Verify in a clean TestAnyware macOS VM that the signed bundle's workspaceLaunchApplication, under workspace:control AND desktop:control and no read capability, launches Notes while it is stopped and reactivates it while it runs, each with TextEdit in front and Koine inactive, as an independent witness sees activation, one instance and the kernel's identity for the returned process; that either control alone, desktop:read alone and a revoked grant launch nothing and move no focus; and that launch works and raises no consent prompt with Accessibility absent and again after it is revoked, with the client's recovery, a desktop read plus an explicit focus, exercised separately
+    cmds:
+      - scripts/vm-verify-launch.sh
+
   client:
     desc: Generate the contract-only client's TypeScript from the introspection response it was captured against, validating the five operations of docs/design/desktop-operations.graphql against that schema, then typecheck, bundle to one dependency-free file and run its adapter checks
     dir: clients/contract-only
@@ -188,28 +1404,282 @@ tasks:
       - npm ci
       - npm run build
 
+  client:capture:
+    desc: Re-capture what the contract-only client is generated against from the signed Koine.app's own served schema - runs `task conformance:vm` (the signed bundle in a clean TestAnyware macOS VM, introspected as a code generator would) and copies its introspection response and the Koine.schemaDigest read in the same session into clients/contract-only/capture/. Run `task client` afterwards; it fails if an operation it uses no longer validates
+    cmds:
+      - task: conformance:vm
+      - cp .build/conformance/workspace/introspection.json clients/contract-only/capture/introspection.json
+      - |
+        jq -n --arg digest "$(cat .build/conformance/workspace/digest)" \
+          '{note: "Metadata read over the same connection, in the same session, as introspection.json. Both were captured from the signed Koine.app serving core + desktop + workspace (scripts/vm-verify-conformance.sh); `task client:capture` rewrites both.", contractVersion: "koine-desktop/1", schemaDigest: $digest}' \
+          > clients/contract-only/capture/capture.json
+
   app:vm-verify-contract-client:
     desc: Verify in a clean TestAnyware macOS VM that a client written from the documented contract alone obtains a grant through the window, introspects the schema it was generated against, resolves a running application, lists its windows and focuses a chosen one with the reference returned unchanged, telling a capability denial, an OS-permission refusal, an absent process, a gone window and a stopped service apart
     cmds:
       - scripts/vm-verify-contract-client.sh
 
+  app:vm-verify-launch-contract-client:
+    desc: Verify in a clean TestAnyware macOS VM that the contract-only client, regenerated from the schema the signed bundle serves and written from the documented contract alone, obtains its grants through the window, introspects that schema, and launches Notes through workspaceLaunchApplication while it is stopped and reactivates it while it runs, each with TextEdit in front and Koine inactive as an independent witness sees activation; telling apart a dependency that is unavailable, a capability denial with its complete required set, a launch that failed and an absent process; and hands the receipt's process to a desktop read unchanged
+    deps: [client]
+    cmds:
+      - scripts/vm-verify-launch-contract-client.sh
+
   conformance:
-    desc: Check the schema the notarized Koine.app serves in a TestAnyware VM, composed with its bundled desktop provider, against docs/design/desktop-schema.graphql by type, field, argument, nullability, default, deprecation and description, and its digest against the one Koine served; the run first proves the check red against four mutated copies of the contract
+    desc: Hold three profiles (docs/design/profiles/; the third is the 1.0.1 workspace repair) to the schemas their hosts serve, each by type, field, argument, nullability, default, deprecation and description, its digest against the one Koine served, and its provider candidates against the pin kept apart from both - old-host core + desktop (the released host), extension-host core + desktop (this tree's headless host) and core + desktop + workspace (the signed Koine.app in a TestAnyware VM); each check first proves itself red against mutated copies of the contract and of the pins
+    cmds:
+      - scripts/conformance.sh
+
+  conformance:headless:
+    desc: Only the two profiles a headless host serves, old-host and extension-host core + desktop; no VM
+    cmds:
+      - KOINE_CONFORMANCE_SKIP_VM=1 scripts/conformance.sh
+
+  conformance:vm:
+    desc: Only core + desktop + workspace, served by the signed Koine.app in a clean TestAnyware macOS VM (the application is built by `task app`; notarization is recorded, not required)
     cmds:
       - scripts/vm-verify-conformance.sh
 
   compat:
-    desc: Build and run the binary compatibility pairs (independently built old/new hosts and providers)
+    desc: Build and run the binary compatibility pairs (independently built old/new hosts and providers, the workspace 1.0.0 and 1.0.1 pairs among them) and repeat the retained workspace subjects against 1.0.1
     cmds:
       - task: compat:build
       - task: compat:verify
+      - task: compat:workspace-subjects
+
+  compat:baseline:
+    desc: Build the pre-extension host, framework, fixtures and desktop provider from the RELEASED revision (KOINE_BASELINE_REVISION, default v0.1.0) in a tree of its own under .build/compat; the old side of every old/new check (CONFIGURATION=debug|release)
+    cmds:
+      - scripts/build-baseline-host.sh {{.CONFIGURATION | default "debug"}}
 
   compat:build:
-    desc: Build the baseline and newer-minor revisions in separate trees under .build/compat, and the later fixtures (CONFIGURATION=debug|release)
+    desc: Build the retained workspace 1.0.0 (compat:workspace-baseline) and the released baseline (compat:baseline), then this tree's newer revision in a separate tree under .build/compat - its host, fixtures, workspace 1.0.1 as shipped and the same source stating first-party-selection-v1 as a per-user update - and the later fixtures (CONFIGURATION=debug|release)
     cmds:
+      - task: compat:workspace-baseline
       - scripts/build-compat-pairs.sh {{.CONFIGURATION | default "debug"}}
 
   compat:verify:
-    desc: Pair each revision's provider with the other revision's headless host and check every case over loopback HTTP
+    desc: Pair each revision's provider with the other revision's headless host and check every case over loopback HTTP - the fixture pairs, and the workspace pairs - the retained 1.0.0 and this tree's 1.0.1 each under both hosts, and the approved per-user 1.0.1 variant over the bundled 1.0.0 in both - with the same locations probed through every one and the two releases compared (CONFIGURATION=debug|release; needs compat:build)
     cmds:
       - scripts/verify-compat-pairs.py {{.CONFIGURATION | default "debug"}}
+
+  compat:workspace-subjects:
+    desc: Run the RETAINED workspace 1.0.0 revision's own short-path subjects (N, over the signed bundle) and composition suites (G), unedited, against this tree's workspace 1.0.1 bundle in a copy of that revision's tree; the instrument is first seen red against a 1.0.1 provider with the missing-path rule broken, and only the one assertion that names release 1.0.0 may fail (CONFIGURATION=debug|release; needs compat:build)
+    cmds:
+      - scripts/verify-repair-subjects.sh {{.CONFIGURATION | default "debug"}}
+
+  compat:workspace-baseline:
+    desc: Build the RETAINED workspace 1.0.0 provider from the revision scripts/retained-workspace-1.0.0.json pins (jj tag workspace-1.0.0-baseline), never from this working tree, in a tree of its own under .build/compat/<configuration>/workspace-1.0.0 - that revision's host, framework and desktop provider, and its sealed, approved Desktop and Workspace bundles kept apart in bundled/ with a record of their digests; the old side of every workspace old/new pair (CONFIGURATION=debug|release)
+    cmds:
+      - scripts/build-retained-workspace.sh {{.CONFIGURATION | default "debug"}}
+
+  compat:workspace-baseline-verify:
+    desc: Hold the retained workspace 1.0.0 bundle to what it shipped with - its pinned identity and SDL, the 1.0.0 profile served by that revision's own host bundling it, and that revision's workspace suites (logic, composition, installations, schema and catalogue conformance, and the short-path N subjects loading the bundle) - each first seen red against a mutated copy (CONFIGURATION=debug|release; needs compat:workspace-baseline)
+    cmds:
+      - scripts/verify-retained-workspace.sh {{.CONFIGURATION | default "debug"}}
+
+  selection:fixtures:
+    desc: Build, sign and keep apart the provider bundles the selection acceptance installs - fixtures (an old baseline and an update per slot, ordinary providers, claimants, one refusal per trust check), each writing initializer, factory and start markers, and the REAL first-party providers (the released desktop, this tree's desktop and workspace, and newer releases of both that state first-party-selection-v1); output .build/selection-acceptance/fixtures
+    deps: [compat:baseline]
+    cmds:
+      - swift build --product KoineSelectionHost
+      - |
+        FRAMEWORK="$(scripts/stage-provider-framework.sh debug)"
+        Fixtures/FixtureProvider/build-decisions.sh "$(dirname "${FRAMEWORK}")" .build/selection-acceptance/fixtures
+        scripts/build-selection-real.sh "$(dirname "${FRAMEWORK}")" .build/selection-acceptance/fixtures
+
+  selection:hosts:
+    desc: Assemble and sign the purpose-built headless hosts of the selection acceptance, each with its own test catalogue and in-application bundles sealed BEFORE its signature (Fixtures/SelectionHost/hosts.json); output .build/selection-acceptance/hosts. Optionally name hosts (CLI_ARGS)
+    deps: [selection:fixtures]
+    cmds:
+      - |
+        FRAMEWORK="$(scripts/stage-provider-framework.sh debug)"
+        scripts/build-selection-hosts.py "$(swift build --show-bin-path)" "${FRAMEWORK}" \
+          .build/selection-acceptance/fixtures .build/selection-acceptance/hosts {{.CLI_ARGS}}
+
+  selection:decisions:
+    desc: Run the selection decision rows (N and G) - every scenario and each alternative order in its own signed host process with a fresh marker log, over loopback HTTP - and write .build/selection-acceptance/decisions.json. `--only <text>` (CLI_ARGS) runs a subset, which cannot close the control pairing
+    deps: [selection:hosts]
+    cmds:
+      - scripts/verify-selection-decisions.py .build/selection-acceptance/hosts .build/selection-acceptance/fixtures .build/selection-acceptance/decisions.json {{.CLI_ARGS}}
+
+  selection:failures:
+    desc: Run the selection failure-boundary rows (N and G) - a frozen update failing after its choice with healthy alternatives, recovery by repair or removal and restart, principal conflicts among frozen selections, ordinary duplicates and their refused rivals, the capability-owner cascade held to its exact absent/rejected conformance profile, a shipped provider that fails its start, the schema digest across roots, changed SDL, an extra provider and a catalogue's order (each held to the design SDL written out in the asserted start order), the management fields' authority, and restart after a removal, a changed baseline, an injected assessment verdict and an unreadable root, each scenario, alternative order and phase in its own signed host process with a fresh marker log - and write .build/selection-acceptance/failures.json. `--only <text>` (CLI_ARGS) runs a subset, which cannot close the control pairing
+    deps: [selection:hosts]
+    cmds:
+      - swift build --product KoineConformance
+      - scripts/verify-selection-failures.py .build/selection-acceptance/hosts .build/selection-acceptance/fixtures .build/selection-acceptance/failures.json --conformance "$(swift build --show-bin-path)/KoineConformance" {{.CLI_ARGS}}
+
+  selection:updates:
+    desc: Run the selection update rows (N and G) - an old host with an old desktop provider and a selection-aware host over an independently compiled old designated baseline (existing operations, errors and grants answered identically, core + desktop profiles held), separately approved newer desktop and workspace updates that are the one image per slot, a host that predates first-party-selection-v1 given newly published updates with the principal class kept and renamed, every trust refusal a per-user update can meet with its fall-back and the stage and quarantine recoveries, a provider claiming a reserved pair under a fixture signing identifier, equal bytes and names in both roots staged in both orders and a legacy staging entry, and mixed releases of the real desktop and workspace built from reused helper source with their image inventory - each scenario, alternative order and restart in its own signed host process - and write .build/selection-acceptance/updates.json. `--only <text>` (CLI_ARGS) runs a subset, which cannot close the control pairing
+    deps: [selection:hosts]
+    cmds:
+      - swift build --product KoineConformance
+      - scripts/verify-selection-updates.py .build/selection-acceptance/hosts .build/selection-acceptance/fixtures .build/selection-acceptance/updates.json --conformance "$(swift build --show-bin-path)/KoineConformance" {{.CLI_ARGS}}
+
+  selection:mutation:
+    desc: Make each instrument of the selection decisions come back RED against a loader with one decision deliberately broken (text version order, first-copy tie break, no signing-identifier check, reserved claims unrefused, equal release taking over, unselected candidates loading, a team given to an ad-hoc host; and for the failure boundary two shipped principal conflicts not both refused, an ordinary claimant not refused, a host class not counted, descriptor features not compared, alternatives loaded after a failure; and for the duplicates, cascade and start failure a refused rival contesting, eligible duplicates not refused, the capability-owner removal never run, run for one round or given no cycle, a failed start still answering, alternatives loaded after a failed start; and for the digest and restart rows composition without the shipped group first or in reverse identifier order, a digest over type names alone, every grant holding koine:manage, the assessment verdict never asked or a refusal remembered, an unreadable root read as empty; and for the update rows an approval's Team ID not compared or no approval required, signatures not verified, a location outside the root accepted, the quarantine assessment skipped, staging names shared across origins, the selection feature not required, the signing identifier not compared, compatibility not checked, every eligible candidate loaded), each in a copy of the tree under .build/selection-mutations; the working tree is never edited. Names may follow (CLI_ARGS)
+    deps: [selection:fixtures]
+    cmds:
+      - scripts/check-selection-mutations.py .build/selection-acceptance/fixtures .build/selection-acceptance/mutations {{.CLI_ARGS}}
+
+  selection:vm-check:
+    desc: Check that concurrent or completed guest-launch retries keep one selection V result writer and preserve its exit status; lint the VM recipe without starting a guest
+    cmds:
+      - python3 scripts/check-selection-vm-launch.py
+      - bash -n scripts/vm-verify-selection.sh
+      - shellcheck -x scripts/vm-verify-selection.sh
+
+  selection:vm-hosts:
+    desc: Build, sign and NOTARIZE the purpose-built hosts of the selection acceptance's V seam, from the same catalogues and bundles as N and G - the cases sealed inside a host, and the real desktop and workspace updates, re-sealed with a secure timestamp and the hardened runtime, every host submitted to Apple's notary service and stapled, each update bundle notarized on its own - into .build/selection-vm. `--unnotarized` (CLI_ARGS) signs only, for developing the drivers where no notary credential is stored; the run's record then says it cannot close a row that needs an intact notarized host
+    deps: [selection:fixtures]
+    cmds:
+      - |
+        FRAMEWORK="$(scripts/stage-provider-framework.sh debug)"
+        python3 scripts/build-selection-vm-hosts.py {{.CLI_ARGS}} "$(swift build --show-bin-path)" "${FRAMEWORK}" \
+          .build/selection-acceptance/fixtures .build/selection-vm
+
+  selection:vm:
+    desc: The V seam of the selection acceptance in ONE Gatekeeper-ENFORCING TestAnyware macOS session - the RELEASED notarized Koine downloaded in the guest, quarantined and first-run as a user has it, given newly published updates (normal and renamed principal) and compared with a selection-aware host over the same old desktop baseline; the purpose-built hosts as downloads; real newer desktop and workspace updates and mixed releases; the fixture signing identifier refused; every trust refusal of a genuinely quarantined download with no dialog on screen; a quarantine refusal recovered as its diagnostic says; equal bytes in both roots and a legacy staging entry across restarts, with Gatekeeper's own verdict and the loaded paths recorded. Needs `task selection:vm-hosts`. KOINE_SELECTION_V_ONLY=<text> runs a subset
+    deps: [app, selection:vm-check]
+    cmds:
+      - scripts/vm-verify-selection.sh
+
+  launchers:prepare:
+    desc: Prepare a reusable TestAnyware macOS image (tart image koine-launchers-prepared, from the platform golden) with Gatekeeper ENFORCING and the twelve named launchers - Dia, ChatGPT, Claude, Zed, Visual Studio Code, Jump Desktop, Kimi, iTerm, Mail, Notes, Obsidian and Zotero - installed from their normal distribution (Jump Desktop from the vendor, as the cask's build aborts on macOS 26), each launched once past Gatekeeper and first-run UI without signing in, a pristine quarantined copy of one archived apart, Dia made the alternate default browser and Safari restored, and an inventory of the actual bundle identifiers, versions, paths and signatures written to .build/launcher-apps/inventory.json. Takes about half an hour and replaces the image. KOINE_LAUNCHERS_IMAGE and KOINE_LAUNCHERS_OUTPUT override the names
+    cmds:
+      - scripts/vm-prepare-launchers.sh prepare
+
+  launchers:verify:
+    desc: Check the image launchers:prepare kept - a fresh clone is inventoried again and compared with the recorded inventory, the archived quarantined copy extracts still quarantined and unopened, and every launcher opens with Gatekeeper enforcing and not one dialog to answer
+    cmds:
+      - scripts/vm-prepare-launchers.sh verify
+
+  launchers:vm:
+    desc: Accept the twelve named launchers in a clone of the prepared image (task launchers:prepare) with the signed Koine, through the contract-only client under workspace:control AND desktop:control and no read capability - Dia, ChatGPT, Claude, Zed, Visual Studio Code, Jump Desktop, Kimi, iTerm, Mail, Notes, Obsidian and Zotero each launched cold and reactivated while running with TextEdit in front and Koine inactive, an independent witness observing activation, the one instance and the kernel's identity for the returned process, and callback and activation latency recorded beside each version; a not-installed and a deleted application reporting APPLICATION_NOT_INSTALLED; and the quarantined Obsidian copy's Gatekeeper dialog held past the three-second bound (failed, no replay, nothing published after it is declined or accepted). Exits 3 when the only failures are controls-only activations, which stay pending for Antony. KOINE_LAUNCHERS_ONLY=<name,...> runs a subset, KOINE_LAUNCHERS_SKIP_EXTRA=1 skips the not-installed and Gatekeeper cases
+    deps: [app, client]
+    cmds:
+      - scripts/vm-verify-launchers.sh
+
+  open-url:vm:
+    desc: Accept workspaceOpenURL in a clone of the prepared image (task launchers:prepare) with the signed Koine, through the contract-only client under workspace:control AND desktop:control and no read capability, with Accessibility never granted - with Safari the default browser, then a test browser (Fixtures/UrlBrowser, which records the exact string it is handed) and Dia made the alternate default (Safari restored at the end) - as a page server in the guest and an independent witness see it - an encoded path, query and fragment byte for byte (cold browser, then running), an ASCII IDNA host, a universal-link candidate received by the browser first, and the client's search flow with a suggestion source that refuses the connection and one that never answers still opening the typed-query URL; then, with Safari, 18 refused inputs (invalid escapes, raw Unicode, whitespace, backslashes, credentials, other schemes) with nothing repaired or opened, either control alone and a revoked grant refused, the default Google template's URL opened, and every network system call Koine made read from the system (no outbound connect, with a control). Dia shows no page in the image (its first run stops at an account gate), so for Dia the delivery is observed and the page load is recorded as pending (exit 3, as when an acknowledged open is not seen activating). KOINE_OPEN_URL_ONLY=Safari,UrlBrowser,Dia,refus runs the named sections
+    deps: [app, client]
+    cmds:
+      - scripts/vm-verify-open-url.sh
+
+  open-path:vm:
+    desc: Accept workspaceOpenPath in a clone of the prepared image (task launchers:prepare) with the signed Koine, through the contract-only client under workspace:control AND desktop:control and no read capability, with Accessibility never granted - disposable fixtures in the guest (a temporary text file under /tmp, a directory, a document package, links, source scripts with and without executable bits, programs and Finder alias files, a configuration directory) opened in their default handler and with Zed named, the handler's own window read from the window server and the receipt's process compared with the kernel's; literal spaces, punctuation, decomposed Unicode and symlinks; refused inputs and payloads, every dependency, a denied inspection (failed) and either control alone or a revoked grant, all with nothing opening; the disclosed reactions of Terminal, iTerm, Safari and Finder to scripts and location documents, recorded and not prevented; and that no default-handler setting changed. Exits 3 when the only open outcome left is an acknowledged open not seen activating its handler. KOINE_OPEN_PATH_ONLY=default,zed,literal,source,refus,react runs the named sections
+    deps: [app, client]
+    cmds:
+      - scripts/vm-verify-open-path.sh
+
+  reveal-path:vm:
+    desc: Accept workspaceRevealPath in a clone of the prepared image (task launchers:prepare) with the signed Koine, through the contract-only client under workspace:control AND desktop:control and no read capability, with Accessibility never granted - disposable fixtures in the guest (a directory of siblings with a file, a folder, a Finder alias file, a literal-punctuation file and a symlink) and the real Zed bundle - each revealed from a Finder with no window open, and what Finder then shows read by an independent observer (Finder's own account of its front window's folder and selected item by AppleScript run from the test agent, not Koine, whose own Automation consent is given once before Koine starts) with a screenshot of each - a file, a folder (also with a trailing slash), an application bundle (selected and never launched), a Finder alias file (itself, not resolved), the filesystem root as a root view, literal spaces and punctuation and a symlink; the receipt is only Finder's acknowledgment and echoes the path; then refused inputs, missing paths and either control alone or a revoked grant, with nothing revealed or activated and Finder still showing no window. KOINE_REVEAL_ONLY=reveal,refus runs the named sections
+    deps: [app, client]
+    cmds:
+      - scripts/vm-verify-reveal-path.sh
+
+  target-locations:vm:
+    desc: Accept the long-location target stage (workspace 1.0.1) at V, in a clone of the prepared image (task launchers:prepare), with the signed Koine through the contract-only client and Accessibility never granted - first the observers controlled at the admitted length (1,023-byte documents, a witness document that records its exact bytes, and directories opened and revealed by an independent non-Koine route and seen by the handler's window, the witness application and Finder's own account), then Koine's own opens and reveals at 1,023 bytes (default handler, Zed, Finder), the 1,024-byte and about 1,500-byte refusals (`failed` with guidance, nothing delivered or selected over a window longer than the control needed), a missing long path (PATH_NOT_FOUND), the present walk outcomes only an effect shows (31- and 32-link chains, a mode-0600 final directory, one link inode in two directories, a finite dot-link, multibyte and combining names, the 300-byte ASCII impossible component), the root and a link to it, and first use in Desktop, Documents and Downloads after a positive prompt control (a reveal prompt-free; an open's one prompt allowed in the clone, then completing). Exits 3 when an observer could not see its control (every observation pending) and 4 when a reveal raised a prompt. An open's first-use prompt in a protected folder is allowed in the disposable clone (Antony's decision), after which the open must complete and a second request be prompt-free. KOINE_TARGET_ONLY=reach,refus,walk,root,prompt runs the named sections after the controls. It takes hours; use target-locations:vm-detached
+    deps: [app, client]
+    cmds:
+      - scripts/vm-verify-target-locations.sh
+
+  target-locations:vm-detached:
+    desc: Run target-locations:vm detached (nohup, its own session), print the transcript path and the pid, and return at once - the run outlasts any single command. Read the transcript with tail -f, or wait for .build/target-locations-vm/done
+    deps: [app, client]
+    cmds:
+      - |
+        mkdir -p .build/target-locations-vm
+        rm -f .build/target-locations-vm/done
+        log=".build/target-locations-vm/detached-$(date +%Y%m%dT%H%M%S).log"
+        nohup bash -c 'scripts/vm-verify-target-locations.sh; echo "$?" > .build/target-locations-vm/done' >"${log}" 2>&1 &
+        echo "pid $! ; detached output ${log} ; the run's own transcript is .build/vm-verify/target-locations-vm-*.log ; exit status in .build/target-locations-vm/done"
+
+  target-locations:fixtures-check:
+    desc: Lint the target-location V recipe without a guest - shellcheck the recipe and compile the fixture builder
+    cmds:
+      - shellcheck -x scripts/vm-verify-target-locations.sh
+      - python3 -m py_compile scripts/vm-long-location-fixtures.py
+      - ruff check --select E,F,I --line-length 110 scripts/vm-long-location-fixtures.py
+
+  reveal-path:probe-notification:
+    desc: A bounded probe in a clone of the prepared image with the signed Koine - after a baseline with none, does a refused workspaceOpenPath of a third-party application (inspection only), a workspaceRevealPath of Notes, of TextEdit and of Zed (twice) make macOS post "Koine was prevented from modifying apps on your Mac"? Read from the screen's own text, with a screenshot of each step. One sample each; it does not say which operation the system refused
+    deps: [app, client]
+    cmds:
+      - scripts/vm-probe-reveal-notification.sh
+
+  installations:vm:
+    desc: Accept the Multiple copies and installation row for workspaceLaunchApplication and for workspaceOpenPath with a named application, in a clone of the prepared image (task launchers:prepare) with the signed Koine, through the contract-only client under workspace:control AND desktop:control and no read capability, with Accessibility never granted - Fixtures/InstallationFixture installed at two locations under one bundle identifier by scripts/vm-installation-fixtures.sh and registered with Launch Services, each copy logging which copy it is and what it was handed, with an independent witness reading the kernel's identity of the process the receipt names - an unconstrained launch and an unconstrained named open reusing the running copy at the other location, an installation path addressing exactly the chosen copy while the other runs and when both do, a symlink to the folder, a symlink to the bundle and composed and decomposed Unicode spellings compared by file identity, a missing copy, an unregistered copy, a deleted copy, a registration that outlived its Info.plist and an identifier mismatch each reporting its dependency with nothing launched or substituted, a registered copy moved into the Trash (how long Launch Services keeps its registration, measured, and what each form then reports), an unreadable folder and a bundle with unreadable contents reporting failed, a program that is not a bundle having no selector route and a default handler that declares no identifier still receiving a document. KOINE_INSTALLATIONS_ONLY=reuse,spelling,absent,trash,denied,bundle runs the named sections
+    deps: [app, client]
+    cmds:
+      - scripts/vm-verify-installations.sh
+
+  application-locations:vm:
+    desc: Measure application-stage V subjects with workspace 1.0.1 in a disposable launcher clone - component-created 1024/1500-byte copies, native registration attempts, constrained refusals cold and beside a running short copy, short constrained and preferred workflows with kernel receipts, and Finder selection controlled at 1023 bytes. Exit 3 keeps unconstructible registered-long and preferred-long subjects pending; disk-only success never passes them
+    deps: [app, client]
+    cmds:
+      - task: application-locations:vm-packaged
+
+  application-locations:vm-packaged:
+    desc: Repeat application-location V measurements against already built app/client artifacts; checks their existence and hashes every packaged app file before and after the run
+    env:
+      KOINE_APPLICATION_LOCATIONS: '1'
+    cmds:
+      - scripts/vm-verify-installations.sh
+
+  application-locations:vm-detached:
+    desc: Start application-locations:vm-packaged in its own session against already built artifacts; transcript in .build/application-locations-vm/detached.log and exit status in done (3 means pending subjects)
+    cmds:
+      - python3 scripts/detach-vm-task.py application-locations:vm-packaged .build/application-locations-vm
+
+  application-locations:fixtures-check:
+    desc: Lint the application-location VM recipe and its shared observers without a guest
+    cmds:
+      - shellcheck -x scripts/vm-verify-installations.sh scripts/vm-application-locations-lib.sh scripts/vm-finder-observer-lib.sh scripts/vm-verify-target-locations.sh scripts/check-application-location-observations.sh scripts/reevaluate-application-locations.sh
+      - python3 -m py_compile scripts/vm-long-application-fixtures.py scripts/vm-installation-request.py scripts/detach-vm-task.py
+      - ruff check --select E,F,I --line-length 110 scripts/vm-long-application-fixtures.py scripts/detach-vm-task.py
+      - bash scripts/check-application-location-observations.sh
+
+  application-locations:reevaluate:
+    desc: Re-evaluate each immutable application-location VM observation and digest the input/output; exits 3 for native registration subjects still pending
+    cmds:
+      - bash scripts/reevaluate-application-locations.sh
+
+  prefix-registration:vm-packaged:
+    desc: One prefix-link route per physical 1024/1500-byte application; twelve public registration-order states with native identity snapshots and only actually admitted V subjects. Exit 3 preserves unavailable subjects
+    env:
+      KOINE_APPLICATION_LOCATIONS: '1'
+      KOINE_PREFIX_REGISTRATION: '1'
+    cmds:
+      - scripts/vm-verify-installations.sh
+
+  prefix-registration:vm-detached:
+    desc: Measure prefix registration in an isolated guest against packaged artifacts; transcript and exact completion status in .build/prefix-registration-vm
+    cmds:
+      - python3 scripts/detach-vm-task.py prefix-registration:vm-packaged .build/prefix-registration-vm
+
+  prefix-registration:fixtures-check:
+    desc: Check prefix construction/identity controls, native-precondition predicates and recipe lint without a GUI
+    cmds:
+      - shellcheck -x scripts/vm-verify-installations.sh scripts/vm-prefix-registration-lib.sh scripts/check-prefix-observations.sh
+      - python3 -m py_compile scripts/vm-prefix-registration.py scripts/vm-long-application-fixtures.py scripts/vm-installation-request.py scripts/check-prefix-evidence.py
+      - ruff check --select E,F,I --line-length 110 scripts/vm-prefix-registration.py scripts/check-prefix-registration.py scripts/vm-long-application-fixtures.py scripts/check-prefix-evidence.py
+      - python3 scripts/check-prefix-registration.py
+      - bash scripts/check-prefix-observations.sh
+
+  prefix-registration:evidence-check:
+    desc: Verify each retained prefix-route identity and all twelve native registration states, without a VM; exits 3 because native preconditions remain pending
+    cmds:
+      - python3 scripts/check-prefix-evidence.py
+
+  open-url:network:
+    desc: Show, in a clone of the prepared image, that Koine itself puts no packet on a network while it opens URLs and runs the client's default-engine search (Google) - every packet the system carries is captured with the process it was carried for (tcpdump over PKTAP), the capture is first shown to attribute a curl and a Swift program named Koine (URLSession and Network.framework) on a non-loopback interface, and then Koine's packets are required to be on loopback only (and some), the lookups of the engine to be made for Safari and not Koine, and Safari's own processes to carry the external traffic
+    deps: [app, client]
+    cmds:
+      - scripts/vm-verify-network.sh
+
+  launchers:inventory:
+    desc: Read the prepared launcher image again in a fresh clone and rewrite .build/launcher-apps/inventory.json (every application's actual bundle identifier, version, path, signature, Gatekeeper verdict and quarantine state, the default browser, the archived quarantined copy), keeping the first-run record launchers:prepare made. Later increments that reuse the twelve applications start from this document
+    cmds:
+      - scripts/vm-prepare-launchers.sh inventory

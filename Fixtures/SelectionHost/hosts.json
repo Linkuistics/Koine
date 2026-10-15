@@ -1,0 +1,170 @@
+{
+  "comment": [
+    "The purpose-built hosts of the selection acceptance (scripts/build-selection-hosts.py).",
+    "Each host is a real application: its catalogue and its in-application bundles are put in",
+    "before it is signed, so a defect is content that was wrong when the seal was made and",
+    "the seal itself is never altered. `signing` is developer-id (Koine's identity), or",
+    "ad-hoc, whose host verifies no Team ID: an unsigned arm64 executable does not run.",
+    "A plugin is a case of Fixtures/FixtureProvider/build-decisions.sh, installed under `as`",
+    "(default: the bundle's own name). Fixture signing identifiers are distinct from every",
+    "production provider's and are admitted here alone. The catalogue may be an object, or",
+    "text for a catalogue that is not JSON at all. A `production` host carries App/ProviderCatalogue.json",
+    "(whole, or with the named identities reserved-only) around the REAL first-party bundles (cases current-*",
+    "and released-*); a `productionNames` host gives a fixture the shipped provider's identifier and prefix",
+    "under a signing identifier that is not a production one (scripts/build-selection-hosts.py)."
+  ],
+  "identities": {
+    "sh": {
+      "providerId": "fixturesh", "graphQLPrefix": "FixtureSh", "bundle": "FixtureSh.koineprovider",
+      "release": "1.0.0", "schema": "1.1.0", "signingIdentifier": "dev.antony.Koine.provider.fixturesh"
+    },
+    "sk": {
+      "providerId": "fixturesk", "graphQLPrefix": "FixtureSk", "bundle": "FixtureSk.koineprovider",
+      "release": "1.0.0", "schema": "1.0.0", "signingIdentifier": "dev.antony.Koine.provider.fixturesk"
+    },
+    "sh-1.7": {
+      "providerId": "fixturesh", "graphQLPrefix": "FixtureSh", "bundle": "FixtureSh.koineprovider",
+      "release": "1.7.0", "schema": "1.1.0", "signingIdentifier": "dev.antony.Koine.provider.fixturesh"
+    },
+    "sh-1.5": {
+      "providerId": "fixturesh", "graphQLPrefix": "FixtureSh", "bundle": "FixtureSh.koineprovider",
+      "release": "1.5.0", "schema": "1.1.0", "signingIdentifier": "dev.antony.Koine.provider.fixturesh"
+    },
+    "sh-impostor-id": {
+      "providerId": "fixturesh", "graphQLPrefix": "FixtureSh", "bundle": "FixtureSh.koineprovider",
+      "release": "1.0.0", "schema": "1.1.0", "signingIdentifier": "dev.antony.Koine.provider.fixturesh.impostor"
+    },
+    "desktop-impostor": {
+      "providerId": "desktop", "graphQLPrefix": "Desktop", "bundle": "Desktop.koineprovider",
+      "release": "1.0.0", "schema": "1.0.0", "signingIdentifier": "dev.antony.Koine.provider.desktop.impostor"
+    },
+    "workspace-impostor": {
+      "providerId": "workspace", "graphQLPrefix": "Workspace", "bundle": "Workspace.koineprovider",
+      "release": "1.0.1", "schema": "1.0.1", "signingIdentifier": "dev.antony.Koine.provider.workspace.impostor"
+    },
+    "input": { "providerId": "fixtureinput", "graphQLPrefix": "FixtureInput" }
+  },
+  "hosts": {
+    "slot": {
+      "purpose": "One enabled slot with its designated baseline, and a reserved-only identity.",
+      "signing": "developer-id", "identities": ["sh", "input"], "plugins": [{ "case": "baseline" }]
+    },
+    "slot-no-bundle": {
+      "purpose": "The same catalogue with the designated bundle missing from the application.",
+      "signing": "developer-id", "identities": ["sh", "input"], "plugins": []
+    },
+    "slot-bundle-release-mismatch": {
+      "purpose": "The designated bundle carries release 1.0.1; the catalogue says 1.0.0.",
+      "signing": "developer-id", "identities": ["sh", "input"],
+      "plugins": [{ "case": "baseline-release-mismatch" }]
+    },
+    "slot-bundle-other-identifier": {
+      "purpose": "The designated bundle is signed under an identifier the catalogue does not name.",
+      "signing": "developer-id", "identities": ["sh", "input"],
+      "plugins": [{ "case": "baseline-other-identifier" }]
+    },
+    "slot-bundle-adhoc": {
+      "purpose": "The designated bundle is signed ad hoc, inside a properly signed application.",
+      "signing": "developer-id", "identities": ["sh", "input"], "plugins": [{ "case": "baseline-adhoc" }]
+    },
+    "slot-bundle-framework-future": {
+      "purpose": "The designated bundle requires a framework minor this host does not have.",
+      "signing": "developer-id", "identities": ["sh", "input"],
+      "plugins": [{ "case": "baseline-framework-future" }]
+    },
+    "slot-unexpected-bundle": {
+      "purpose": "The designated bundle, and beside it a bundle claiming the reserved pair at release 9.0.0 and an ordinary provider.",
+      "signing": "developer-id", "identities": ["sh", "input"],
+      "plugins": [
+        { "case": "baseline" },
+        { "case": "r9.0.0", "as": "Unexpected.koineprovider" },
+        { "case": "ordinary", "as": "Ordinary.koineprovider" }
+      ]
+    },
+    "slot-missing-with-unexpected": {
+      "purpose": "The designated bundle is missing and only a bundle claiming the reserved pair at release 9.0.0 is inside the application.",
+      "signing": "developer-id", "identities": ["sh", "input"],
+      "plugins": [{ "case": "r9.0.0", "as": "Unexpected.koineprovider" }]
+    },
+    "two-slots": {
+      "purpose": "Two enabled slots listed in an order that is not their identifier order (fixturesk, then fixturesh).",
+      "signing": "developer-id", "identities": ["sk", "sh", "input"],
+      "plugins": [{ "case": "baseline" }, { "case": "sk-baseline" }]
+    },
+    "two-slots-sorted": {
+      "purpose": "The same two slots listed in their identifier order (fixturesh, then fixturesk): only the catalogue's order differs from two-slots.",
+      "signing": "developer-id", "identities": ["sh", "sk", "input"],
+      "plugins": [{ "case": "baseline" }, { "case": "sk-baseline" }]
+    },
+    "slot-baseline-1.7.0": {
+      "purpose": "The slot's host shipped later: its designated baseline is release 1.7.0, so the data directory of a 1.0.0 host is restarted under a changed baseline.",
+      "signing": "developer-id", "identities": ["sh-1.7", "input"], "plugins": [{ "case": "baseline-r1.7.0" }]
+    },
+    "adhoc-host": {
+      "purpose": "The same application signed ad hoc: no verified Team ID, so no shipped candidate is admitted.",
+      "signing": "ad-hoc", "identities": ["sh", "input"], "plugins": [{ "case": "baseline" }]
+    },
+    "slot-caught-up": {
+      "purpose": "The host a later release ships: its designated baseline is release 1.5.0, byte for byte and by bundle name the update an earlier host had installed per user (one directory, copied into both roots).",
+      "signing": "developer-id", "identities": ["sh-1.5", "input"], "plugins": [{ "case": "r1.5.0" }]
+    },
+    "slot-impostor-admitted": {
+      "purpose": "A test catalogue that admits the distinct signing identifier `...fixturesh.impostor` for the slot, with a designated bundle signed under it.",
+      "signing": "developer-id", "identities": ["sh-impostor-id", "input"], "plugins": [{ "case": "baseline-other-identifier" }]
+    },
+    "desktop-old": {
+      "purpose": "The shipped catalogue around the RELEASED desktop provider as the designated baseline (workspace reserved-only): a selection-aware host over an independently compiled old baseline.",
+      "signing": "developer-id", "production": { "reservedOnly": ["workspace"] }, "plugins": [{ "case": "released-desktop" }]
+    },
+    "production": {
+      "purpose": "The shipped catalogue, whole, around this tree's real desktop and workspace providers as the designated baselines: the host the signed application is, headless.",
+      "signing": "developer-id", "production": {},
+      "plugins": [{ "case": "current-desktop" }, { "case": "current-workspace" }]
+    },
+    "impostor-host": {
+      "purpose": "The shipped identifiers and prefixes of desktop and workspace, admitting fixture signing identifiers that are not the production ones, around fixtures that are those designated baselines: the control that the binaries a production host refuses really load.",
+      "signing": "developer-id", "productionNames": true, "identities": ["desktop-impostor", "workspace-impostor", "input"],
+      "plugins": [{ "case": "desktop-impostor-baseline" }, { "case": "workspace-impostor-baseline" }]
+    },
+    "catalogue-malformed": {
+      "purpose": "A catalogue with a key it does not know.",
+      "signing": "developer-id", "plugins": [{ "case": "baseline" }],
+      "catalogue": {
+        "identities": [
+          {
+            "providerId": "fixturesh", "graphQLPrefix": "FixtureSh", "bundle": "FixtureSh.koineprovider",
+            "release": "1.0.0", "schema": "1.1.0", "signingIdentifier": "dev.antony.Koine.provider.fixturesh",
+            "minimumRelease": "1.0.0"
+          }
+        ]
+      }
+    },
+    "catalogue-conflicting": {
+      "purpose": "A catalogue whose two entries overlap on an identifier and a prefix.",
+      "signing": "developer-id", "plugins": [{ "case": "baseline" }],
+      "catalogue": {
+        "identities": [
+          {
+            "providerId": "fixturesh", "graphQLPrefix": "FixtureSh", "bundle": "FixtureSh.koineprovider",
+            "release": "1.0.0", "schema": "1.1.0", "signingIdentifier": "dev.antony.Koine.provider.fixturesh"
+          },
+          { "providerId": "fixtureshx", "graphQLPrefix": "FixtureShTools" }
+        ]
+      }
+    },
+    "catalogue-partial-baseline": {
+      "purpose": "An enabled entry that states only part of its baseline.",
+      "signing": "developer-id", "plugins": [{ "case": "baseline" }],
+      "catalogue": {
+        "identities": [
+          { "providerId": "fixturesh", "graphQLPrefix": "FixtureSh", "bundle": "FixtureSh.koineprovider", "release": "1.0.0" }
+        ]
+      }
+    },
+    "catalogue-truncated": {
+      "purpose": "A catalogue cut off in the middle, so that it is not JSON.",
+      "signing": "developer-id", "plugins": [{ "case": "baseline" }],
+      "catalogue": "{ \"identities\": [ { \"providerId\": \"fixturesh\", "
+    }
+  }
+}

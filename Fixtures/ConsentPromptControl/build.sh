@@ -14,7 +14,7 @@ mkdir -p "$1"
 BUNDLE="$(cd "$1" && pwd)/ConsentPromptControl.app"
 rm -rf "${BUNDLE}"
 mkdir -p "${BUNDLE}/Contents/MacOS"
-swiftc -O -swift-version 5 -target "$(uname -m)-apple-macos13.0" \
+swiftc -O -swift-version 5 -target "$(uname -m)-apple-macos${MINIMUM_OS}" \
     -o "${BUNDLE}/Contents/MacOS/ConsentPromptControl" "${HERE}/main.swift"
 cat >"${BUNDLE}/Contents/Info.plist" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?>

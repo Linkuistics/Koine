@@ -1,7 +1,81 @@
 {
-  "title": "Koine desktop contract",
-  "intro": "Koine is a resident application with a shared resilient Swift provider framework and live bearer grants. The served desktop contract identifies a process by PID and kernel start instant and uses public Accessibility, accepting the reuse races the spec lists.",
+  "title": "Koine provider architecture",
+  "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
+  "discussion": {
+    "title": "Selection within an open bracket",
+    "status": "Specified by k350; reviewed by k351 and integrated by k352 (documentary); batch-association design k353 and review k354 precede k269",
+    "summary": "Every correction needs a fresh disarm, so several provisional batches can sit between two checkpoints. K350 defines the bracket on the shared publication-events chain: the base is the latest checkpoint batch and the open bracket every later inter-checkpoint batch. Each checkpoint batch's publication.intent records that visit's E1 identities and the classification of the batches it closed; a visit that writes nothing leaves the bracket open. Every prelude selects in a fixed order, choosing the anchor from anchors and bootstrap validation only. Between checkpoints earlier batches are BRACKET_OPEN, admitted only as chain predecessors or a disarm basis: disarm after any batch, revalidation after disarms, close only first. At the next checkpoint a root break makes the whole bracket one CP01 cut; otherwise the first failing batch and every later batch form one cut, hosted once at the earliest kind host, so no host waits on another. K351's review found four defects. K352 repaired three: between checkpoints only the cross-checkpoint root comparison is deferred, so the full E4–E8 gate still runs; recovery runs the host's act before any disposition write; and the membership's bracket host route is the one-cut earliest-host rule. The fourth, which batch the pre-intent seed, hosted dispositions and partial slots belong to, needs design: C states it as an owned gap for k353 and its review k354 before k269. S is byte-identical; nothing is added that needs Antony. The integration membership binds the current bytes; k344's, k349's and k350's stay historical. Actual originals, controls and authority remain absent; pass unused and both holds remain.",
+    "diagramIds": [
+      "native-reference-proof",
+      "native-reference-admission",
+      "native-reference-evidence",
+      "native-reference-instrument",
+      "native-reference-contact",
+      "native-reference-packaging",
+      "native-population-metadata-shape"
+    ],
+    "updatedDiagrams": [
+      {
+        "id": "native-reference-proof",
+        "summary": "K352: no root compare between checkpoints, the host act before the carrier prefix, and status naming k353/k354; k350 drew the order, admission, record and one host."
+      },
+      {
+        "id": "native-reference-admission",
+        "summary": "Status node and caption: a failed bracket cut is hosted once, at the earliest kind host."
+      },
+      {
+        "id": "native-reference-evidence",
+        "summary": "Status line and caption name k350's open-bracket selection and k351 before k269."
+      },
+      {
+        "id": "native-reference-instrument",
+        "summary": "Status line and caption name k350's open-bracket selection and k351 before k269."
+      },
+      {
+        "id": "native-reference-contact",
+        "summary": "Status line and caption name k350's open-bracket selection and k351 before k269."
+      },
+      {
+        "id": "native-reference-packaging",
+        "summary": "Status line and caption name k350's open-bracket selection and k351 before k269."
+      },
+      {
+        "id": "native-population-metadata-shape",
+        "summary": "Status line and caption name k350's open-bracket selection and k351 before k269."
+      }
+    ]
+  },
   "groups": [
+    {
+      "id": "native-contract",
+      "title": "Native discovery contract",
+      "description": "Composition, complete settings effect authority and bounded native ownership; native source/binary/VM verdicts remain pending."
+    },
+    {
+      "id": "native-sources",
+      "title": "Native discovery sources · analysis and requirements",
+      "description": "Source/SDK provenance and agreed settings source direction. The native contract selects these interfaces; actual exact-event/read safety/usefulness remains pending."
+    },
+    {
+      "id": "search",
+      "title": "Native discovery and client-owned search · requirements",
+      "description": "Current v1 ownership plus eight labelled raw-search comparison views. Their backend/accounts are not current product promises."
+    },
+    {
+      "id": "workspace",
+      "title": "Launch and open · served action-only contract",
+      "description": "Existing workspace 1.0.1 launch/open/reveal and independently retained evidence. New native catalogue-result provenance remains pending; action acknowledgment does not certify rendered contents."
+    },
+    {
+      "id": "provider-selection",
+      "title": "First-party selection · designed, not yet served",
+      "description": "One startup choice per shipped identity, with visible refusals and no retry after selection. The Machine spec holds the complete decision table and acceptance cases."
+    },
+    {
+      "id": "workflow-extension",
+      "title": "Workflow extension · designed, not yet served",
+      "description": "Authority ownership, target capture and mixed-effect dispatch. The spec owns the detailed allocation and acceptance trace."
+    },
     {
       "id": "overview",
       "title": "Overview",
@@ -24,6 +98,366 @@
     }
   ],
   "diagrams": [
+    {
+      "id": "native-reference-packaging",
+      "group": "native-sources",
+      "title": "Packaging → Rehearse the retained entry in a bound domain",
+      "renderer": "svg",
+      "source": "native-reference-packaging.d2",
+      "rendered": "native-reference-packaging.svg",
+      "caption": "Manual About host/session labels mean Antony's identified machine and observation work context, with exact human sources; they are provenance only, not a cross-checkpoint terminal/login/boot key or proof against host substitution. Compare only permitted product/build originals, the two named raw sysctl buffers and qualified configuration. Days/reboot/logout/label changes alone do not invalidate Q06 or force CP01. Actual changed required basis/authority/correspondence still disarms/affected-requalifies; fresh current peer/image/terminal/channel facts remain required. CP01 preparation/comparison/ARTIFACTS precedes Q06; fresh CP05 About acceptance precedes APPOINT and actual P comparison afterward before intent. K348 specifies the Antony-selected bracketed inter-checkpoint entry for disarm, distinct close and receipt revalidation. K344 closed k336/k331 and k349 integrated k332's review. K350 specifies selection within an open bracket and froze the current membership; whole review k351 and every earned integration precede k269. Historical manifests retain exact bytes; no closure supplies construction eligibility, and the closing launch carried no provider evidence for a Creator. All earlier-original duties and the selected final-recorder/nonpublishing-receiver endpoint remain; unknown tail proves neither completion nor no dispatch/provisioning. Actual originals/controls/authority remain missing, the pass is unused and both holds remain. K316/k326 viewer limits remain with their owners; rendering is no semantic, feasibility or native proof."
+    },
+    {
+      "id": "native-reference-contact",
+      "group": "native-sources",
+      "title": "Contact → Establish coverage before releasing a pure subject",
+      "renderer": "svg",
+      "source": "native-reference-contact.d2",
+      "rendered": "native-reference-contact.svg",
+      "caption": "Required actual Q/P identity, control, read, image, terminal, channel and freeze facts remain blockers, distinct from accepted opaque contact gaps. Human About labels are provenance only. R3 retains separate k94/k110 operands, both held-A1 checks and immediate prefix re-entries, nested-link suffix resumption and two expansions charged to one 32 budget. No current topology, TCC, complete contact or native fact follows. K348 specifies the Antony-selected bracketed inter-checkpoint entry for disarm, distinct close and receipt revalidation. K344 closed k336/k331 and k349 integrated k332's review. K350 specifies selection within an open bracket and froze the current membership; whole review k351 and every earned integration precede k269. Historical manifests retain exact bytes; no closure supplies construction eligibility, and the closing launch carried no provider evidence for a Creator. All earlier-original duties and the selected final-recorder/nonpublishing-receiver endpoint remain; unknown tail proves neither completion nor no dispatch/provisioning. Actual originals/controls/authority remain missing, the pass is unused and both holds remain. K316/k326 viewer limits remain with their owners; rendering is no semantic, feasibility or native proof."
+    },
+    {
+      "id": "native-reference-evidence",
+      "group": "native-sources",
+      "title": "Evidence → Qualify the instrument before the one target pass",
+      "renderer": "svg",
+      "source": "native-reference-evidence.d2",
+      "rendered": "native-reference-evidence.svg",
+      "caption": "The pre-tool/holder/descriptor, complete publication/trust-record and hosted-recovery mechanisms are specified together in C under only actual human amendments. This source/view reconciliation supplies no executable tool, original, control, authority or finite subject. Required actual originals remain absent; one initialization/one unused pass and the full k246/k247/useful/additive supported-VM/native duties remain. K348 specifies the Antony-selected bracketed inter-checkpoint entry for disarm, distinct close and receipt revalidation. K344 closed k336/k331 and k349 integrated k332's review. K350 specifies selection within an open bracket and froze the current membership; whole review k351 and every earned integration precede k269. Historical manifests retain exact bytes; no closure supplies construction eligibility, and the closing launch carried no provider evidence for a Creator. All earlier-original duties and the selected final-recorder/nonpublishing-receiver endpoint remain; unknown tail proves neither completion nor no dispatch/provisioning. Actual originals/controls/authority remain missing, the pass is unused and both holds remain. K316/k326 viewer limits remain with their owners; rendering is no semantic, feasibility or native proof."
+    },
+    {
+      "id": "native-reference-instrument",
+      "group": "native-sources",
+      "title": "Components → Preserve original evidence and independent witnesses",
+      "renderer": "svg",
+      "source": "native-reference-instrument.d2",
+      "rendered": "native-reference-instrument.svg",
+      "caption": "Source-rooted prelude selection and holder-copy comparison precede holder launch, serial paired entry checks/ENTRY_SEAL precede engine effects, and held streams/offsets/generations/leases survive true return. Required executing-image and negative-read facts remain separate blockers. The process/component view introduces no role authority, source invocation, current image identity or qualified mechanism. K348 specifies the Antony-selected bracketed inter-checkpoint entry for disarm, distinct close and receipt revalidation. K344 closed k336/k331 and k349 integrated k332's review. K350 specifies selection within an open bracket and froze the current membership; whole review k351 and every earned integration precede k269. Historical manifests retain exact bytes; no closure supplies construction eligibility, and the closing launch carried no provider evidence for a Creator. All earlier-original duties and the selected final-recorder/nonpublishing-receiver endpoint remain; unknown tail proves neither completion nor no dispatch/provisioning. Actual originals/controls/authority remain missing, the pass is unused and both holds remain. K316/k326 viewer limits remain with their owners; rendering is no semantic, feasibility or native proof."
+    },
+    {
+      "id": "native-reference-admission",
+      "group": "native-sources",
+      "title": "Recovery → Host the disposition before its successor",
+      "renderer": "svg",
+      "source": "native-reference-admission.d2",
+      "rendered": "native-reference-admission.svg",
+      "caption": "K346's scoped publication/recovery concordance. The prelude reads all eight chains, including closes, before ordinary selection. Source/anchor/bootstrap-validation loss first repeats CP01 SOURCE/ARTIFACTS; other affected hosts require an independently checked intact anchor. A frozen damaged-carrier prefix permits only the already observed publication/launcher tail dispositions before carrier intent. Actual writer/comparison/EOF/reap originals remain in bounded same-owner memory; immediate carriers archive them before any external successor. All other dispositions use the ordinary intent-first envelope. Disposition/prefix/archival failure, including known loss of that batch's receiver tail, has no admitted successor or recursive repair. Only the final-recorder terminal tail and nonpublishing receiver return are unarchived under actual k340; content equality proves no historical completion or never-started predicate. Fresh initialization needs independent original no-dispatch AND no-provisioning proof; all exclusions, k330 About provenance and k345 entry/CP05 gates remain. K348's bracketed entry makes disarm, distinct-close and revalidation output provisional; the first batch failing next-checkpoint bracket verification starts one cut with every later batch, hosted once at the earliest kind host, with CP01 re-entry first. K344 closed whole k336/k331 and k349 integrated k332; k350 specified selection within an open bracket and froze the current membership, and whole review k351 with every earned integration precede k269, with no Creator from a launch lacking provider evidence. No actual original/control/authority/qualification; pass unused and both holds remain."
+    },
+    {
+      "id": "native-reference-proof",
+      "group": "native-sources",
+      "title": "Select and check before candidate tools",
+      "renderer": "svg",
+      "source": "native-reference-proof.d2",
+      "rendered": "native-reference-proof.svg",
+      "caption": "Scoped k345 concordance of original k321 R7/k328 F2, not whole k343/k331 acceptance. A source/OS-trusted original prelude selects closed chains and compares the actual holder copy before launch. Each spawned holder/entry/consumer receives enabling input only after required independent current peer/image facts. Serial fd pairs, complete EOF/reap/generation/offset results and ENTRY_SEAL precede consumers; originals survive the whole foreground true return. CP05's reverse exclusive release/shared reacquisition is non-atomic: exact finalized successors, complete chains, held inputs and same peers/endpoint must revalidate before Task; remaining fresh P checks precede intent. The explicit C/P control isolates a changed gap with all earlier gates valid. K347's whole concordance names every CP02–CP05 trust/publication anchor member checked before its first run. Antony selected k348's bracketed entry for the three inter-checkpoint publications (disarm, distinct close, receipt revalidation). The operator runs the source/OS method's mechanical identity check (E1i) without a trust judgment, then the same gate with an anchored writer. The batch stays provisional until the next checkpoint's E3b finds the root unchanged across the bracket; a wrong executable between checkpoints costs liveness only. K344 closed whole k336/k331 and froze the new membership, naming each batch's kind, E1i observation and E8 result in C's closed publication.intent row and the root identities in cp01.source/trust.continuity; k332 reviewed it and k349 integrated both findings. K350 specifies selection within an open bracket: batches are ordered on the shared publication chain; each checkpoint batch's publication.intent keeps that visit's E1 identities and classifications; selection runs in a fixed order with the anchor chosen from anchors and bootstrap validation only; earlier batches are BRACKET_OPEN for admitted uses only; and at the next checkpoint the first failing batch and every later one form one cut with one host. Whole review k351 found four defects; k352 integrated three: between checkpoints only the cross-checkpoint root comparison is deferred while the full E4–E8 gate runs, and recovery runs the host's act before the carrier prefix. Batch association for the pre-intent seed, hosted dispositions and partial slots is an owned gap for design k353 and review k354 before k269. All actual originals/controls remain unacquired; no equality, absence or graph supplies history, authority or qualification. Selected k330/k340 limits, unused pass, downstream duties and both holds remain."
+    },
+    {
+      "id": "native-population-metadata-shape",
+      "group": "native-sources",
+      "title": "Preserve joint facts before choosing a population",
+      "renderer": "svg",
+      "source": "native-population-metadata-shape.d2",
+      "rendered": "native-population-metadata-shape.svg",
+      "caption": "Historical packet integrity preserves saved associations but recovers no omitted payload or typed fact. The specified admission mechanisms precede the one unused current-reference pass; only independently acquired evidence/roles can feed full useful/helper/alias rewrite discrimination and the additive actual supported-VM baseline. Neither source/render checks nor documentary closure supplies useful fit, a finite subject, private eligibility or native qualification. K348 specifies the Antony-selected bracketed inter-checkpoint entry for disarm, distinct close and receipt revalidation. K344 closed k336/k331 and k349 integrated k332's review. K350 specifies selection within an open bracket and froze the current membership; whole review k351 and every earned integration precede k269. Historical manifests retain exact bytes; no closure supplies construction eligibility, and the closing launch carried no provider evidence for a Creator. All earlier-original duties and the selected final-recorder/nonpublishing-receiver endpoint remain; unknown tail proves neither completion nor no dispatch/provisioning. Actual originals/controls/authority remain missing, the pass is unused and both holds remain. K316/k326 viewer limits remain with their owners; rendering is no semantic, feasibility or native proof."
+    },
+    {
+      "id": "native-metadata-composition",
+      "group": "native-contract",
+      "title": "Owned composition → Preserve explicit work across every episode",
+      "renderer": "svg",
+      "source": "native-metadata-composition.d2",
+      "rendered": "native-metadata-composition.svg",
+      "caption": "Private construction requires the complete eligibility predicate in application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence, including the reviewed finite metadata-shape subject. Cardinality-only P1024 remains insufficient; private eligibility, advertisement and consumption stay held. Adopted grouped local/source/two-walk gross is 23,238,610/23,412,717; independent-block figures are comparison. Full useful evidence, matched release-image correspondence and independent ordinary-image outcomes remain required. Native G/N/V stays pending."
+    },
+    {
+      "id": "native-metadata-two-walks",
+      "group": "native-contract",
+      "title": "Root ownership → Transfer once and recheck independently",
+      "renderer": "svg",
+      "source": "native-metadata-two-walks.d2",
+      "rendered": "native-metadata-two-walks.svg",
+      "caption": "Activity view: metadata is omitted here and uses the existing reader ledger. Current/parent terminal endings share the first-root transfer contract. Failed transfer performs no metadata; ordinary refusal still reaches the second identity check."
+    },
+    {
+      "id": "native-metadata-source-root",
+      "group": "native-contract",
+      "title": "Source accounting → Preserve raw-slot and payload receipts",
+      "renderer": "svg",
+      "source": "native-metadata-source-root.d2",
+      "rendered": "native-metadata-source-root.svg",
+      "caption": "Clarified in the caption that current raw recipes are supplied while actual native operands and final wire remain conditional. Current runtime admission and complete composition bind explicit controlled raw requests/writes/calls/cleanup and real provider-owned publication. Native tuples, expanded visits, preferences, regional returns, final values and selected wire remain conditional. No useful fit, heap/RSS/peak or native G/N/V pass; the k215 hold and mandatory whole review remain."
+    },
+    {
+      "id": "native-metadata-operation-ledger",
+      "group": "native-sources",
+      "title": "Reserve cleanup before acquisition",
+      "renderer": "svg",
+      "source": "native-metadata-operation-ledger.d2",
+      "rendered": "native-metadata-operation-ledger.svg",
+      "caption": "Linked the ledger boundary to current scoped composition while retaining pending useful and native qualification. Current runtime admission and complete composition bind explicit controlled raw requests/writes/calls/cleanup and real provider-owned publication. Native tuples, expanded visits, preferences, regional returns, final values and selected wire remain conditional. No useful fit, heap/RSS/peak or native G/N/V pass; the k215 hold and mandatory whole review remain."
+    },
+    {
+      "id": "native-metadata-episode-certificate",
+      "group": "native-sources",
+      "title": "Keep unknown terms out of the sum",
+      "renderer": "svg",
+      "source": "native-metadata-episode-certificate.d2",
+      "rendered": "native-metadata-episode-certificate.svg",
+      "caption": "Evidence dependency view. All distinct saved alias episodes count; measured dimensions and conditional reader API calls cannot replace missing source, expanded root-walk, owned storage/projection or selected wire terms. Unknown costs remain null. No useful fit or native peak/G/N/V pass follows; k215 hold and whole-producer review bind."
+    },
+    {
+      "id": "native-metadata-reader-plan",
+      "group": "native-sources",
+      "title": "Select independent inventories and stop refused fallback",
+      "renderer": "svg",
+      "source": "native-metadata-reader-plan.d2",
+      "rendered": "native-metadata-reader-plan.svg",
+      "caption": "Selected semantic construction. Base-first global/direct traversal uses all four strings/loctable families; each table owns its non-reserved inventory and LocProvenance inspection. Exact regional returns/backstops are preserved. Individual refusal retains admitted copies and unknown affected facts; shared exhaustion fails the population. Current scoped expressions are specified, but the candidate supplies no useful fit. The hold, whole review and every native G/N/V remain."
+    },
+    {
+      "id": "native-metadata-subject",
+      "group": "native-sources",
+      "title": "Freeze the finite metadata subject before selecting the budget",
+      "renderer": "svg",
+      "source": "native-metadata-subject.d2",
+      "rendered": "native-metadata-subject.svg",
+      "caption": "Historical bounded census and thin disk fixtures are comparison only. The canonical joint evidence report records the selected current macOS 27 reference, independent documented/human-confirmed role source and whole-template assignment policy. Byte-complete packaging, actual per-copy roles, exact rewritten recipes and subject discrimination remain unbuilt. Actual supported-VM baseline pressure is additive. Private eligibility remains held; no native pass follows."
+    },
+    {
+      "id": "native-localized-decision",
+      "group": "native-sources",
+      "title": "Admit root type and read a closed metadata plan",
+      "renderer": "svg",
+      "source": "native-localized-decision.d2",
+      "rendered": "native-localized-decision.svg",
+      "caption": "Selected activity view. Antony approved target-local fixed metadata reads and direct localization listing. Only root resource type uses a whole target path through 1,023 bytes; descendants use literal held-directory components. Exact file/layout and explicit preference/global/selected/Base/development selection are contracted; no opaque Bundle or unlocalized rescue. Native internal work/races/parser peaks remain unproved. L1500 has a 977 localized control and 978 old-band copy; mandatory review before k7 and G11/N8/V13 remain pending. Action handoff stays 1,024; ordinary 1,004…1,023 state stays UNKNOWN. Selected strings/loctable semantics and scoped 20 MiB admission are specified; useful fit is unestablished. The failed conservative candidate retains the k215 consumption hold and mandatory whole-producer review; native operands/final wire remain conditional. No native verdict follows."
+    },
+    {
+      "id": "native-long-applications",
+      "group": "native-sources",
+      "title": "Preserve long indexed choices and the independent action refusal",
+      "renderer": "svg",
+      "source": "native-long-applications.d2",
+      "rendered": "native-long-applications.svg",
+      "caption": "Ordinary roots through 1,023 use resource type and the explicit descriptor-relative fixed-file/localization plan; larger roots use actual indexed tuples, UNKNOWN state and null flags. Directory identity does not bind stale index facts to current contents. L1500 requires 977/978 localized controls and actual boundary tuples/current identities/same-ID competitors; unchanged selected-action refusals and all native outcomes remain pending. Ordinary 1,004…1,023 metadata does not qualify action plist support. Selected strings/loctable semantics and scoped 20 MiB admission are specified; useful fit is unestablished. The failed conservative candidate retains the k215 consumption hold and mandatory whole-producer review; native operands/final wire remain conditional. No native verdict follows."
+    },
+    {
+      "id": "native-discovery-contract",
+      "group": "native-contract",
+      "title": "Own sources and freeze publication",
+      "renderer": "svg",
+      "source": "native-discovery-contract.d2",
+      "rendered": "native-discovery-contract.svg",
+      "caption": "Component view within one resident process. The discovery image privately owns the explicit fixed-file/direct-localization reader; action and shared lookup modules acquire no contents code. Static authority, principal/action image guards, frozen publication and true-return ownership remain binding. Settings k211 deadline/lazy-reveal repairs and diagnostic saturation are preserved. Mandatory review, actual P1024/V12/L1500 and all native verdicts remain pending. Selected strings/loctable semantics and scoped 20 MiB admission are specified; useful fit is unestablished. The failed conservative candidate retains the k215 consumption hold and mandatory whole-producer review; native operands/final wire remain conditional. No native verdict follows."
+    },
+    {
+      "id": "native-settings-flow",
+      "group": "native-contract",
+      "title": "Choose read, prepare or reveal; consent stays in Koine’s UI",
+      "renderer": "svg",
+      "source": "native-settings-flow.d2",
+      "rendered": "native-settings-flow.svg",
+      "caption": "Three explicit public operations and separate human local-UI consent. RUNNING is process-only. Two ID-associated sweeps leave lazy completeness UNKNOWN and positives PARTIAL; confirmation timeout can retain uncontradicted complete-first-map choices. Lazy reveal no-such-object certifies no absence and starts no effect; V12 tests a known selection in a separate fresh unvisited incarnation. Local UI-only target-wide consent and true-return ownership bind. Reveal uses fixed-bundle openApplication; exit can relaunch. No read/prepare/reveal requests consent."
+    },
+    {
+      "id": "native-settings-readiness",
+      "group": "native-contract",
+      "title": "Separate process readiness, response quiescence and useful cold/warm choices",
+      "renderer": "svg",
+      "source": "native-settings-readiness.d2",
+      "rendered": "native-settings-readiness.svg",
+      "caption": "Equality of full maps detects changes, not lazy health. Empty panes UNKNOWN/null; empty anchors null; positives PARTIAL/UNKNOWN. Count/call/copy overflow and incomplete-first-map timeout fail closed. Confirmation timeout retains only uncontradicted first-map positives with TIME_LIMIT/UNKNOWN and normal true-return ownership. Diagnostic saturation omits details while bounded guidance projects all reason tokens; it never loses choices or precedence. V12 still requires both complete sweeps, every exposed destination and separate unvisited-incarnation reveal; all native verdicts pending."
+    },
+    {
+      "id": "native-discovery-lifecycle",
+      "group": "native-contract",
+      "title": "Retain capacity until native work really returns",
+      "renderer": "svg",
+      "source": "native-discovery-lifecycle.d2",
+      "rendered": "native-discovery-lifecycle.svg",
+      "caption": "Freeze closes publication/admission, not a blocking native call. Four shared slots can remain occupied indefinitely; independent serviceability and native-peak limits remain finite acceptance duties. Local UI setup shares bounded native ownership but has its own 30-second UI wait, without the GraphQL cutoff; the prompt token stays held until true return."
+    },
+    {
+      "id": "native-discovery-sources",
+      "group": "native-sources",
+      "title": "What each source can establish",
+      "renderer": "svg",
+      "source": "native-discovery-sources.d2",
+      "rendered": "native-discovery-sources.svg",
+      "caption": "Fixed Foundation, indexed/running/per-ID application and app-supplied Settings sources. Ordinary application roots use the explicit fixed-file/direct-localization exception; larger roots use actual indexed tuples without current-plist binding. Global overflow fails the population, detail saturation never loses choices. Settings process-only preparation, lazy UNKNOWN completeness and retained-first-map confirmation timeout rules remain binding. Review and all P1024/V12/L1500 native verdicts remain pending. Selected strings/loctable semantics and scoped 20 MiB admission are specified; useful fit is unestablished. The failed conservative candidate retains the k215 consumption hold and mandatory whole-producer review; native operands/final wire remain conditional. No native verdict follows."
+    },
+    {
+      "id": "native-application-population",
+      "group": "native-sources",
+      "title": "Stage every bounded application choice before publication",
+      "renderer": "svg",
+      "source": "native-application-population.d2",
+      "rendered": "native-application-population.svg",
+      "caption": "Complete staging and selected semantics remain binding. The original independent-block arithmetic is comparison; the grouped local/source/two-walk enclosure is 23,238,610/23,412,717, above 20,971,520 before other terms. No useful fit, runtime lower bound or native pass follows. The k215 hold, whole review and pending useful/native obligations remain."
+    },
+    {
+      "id": "native-settings-decision",
+      "group": "native-sources",
+      "title": "Agreed source and permission boundary",
+      "renderer": "svg",
+      "source": "native-settings-decision.d2",
+      "rendered": "native-settings-decision.svg",
+      "caption": "Agreed requirements retained as unchanged context: app-supplied scripting, unchanged signing posture first, conditional explicit setup and background preparation. Ordinary reads remain effect-free. The native contract defines exact fields/effects; runtime usefulness/foreground/consent remains pending."
+    },
+    {
+      "id": "search-preopen",
+      "group": "search",
+      "title": "Previous proposal · Decide child use and protected-target access",
+      "renderer": "svg",
+      "source": "search-preopen.d2",
+      "rendered": "search-preopen.svg",
+      "caption": "Previous raw-search permission interview. The ownership revision supersedes its raw ordering/backend questions; native reads still require prompt-free/no-hydration qualification."
+    },
+    {
+      "id": "search-serviceability",
+      "group": "search",
+      "title": "Previous proposal · Verify finite outcomes with independent controls",
+      "renderer": "svg",
+      "source": "search-serviceability.d2",
+      "rendered": "search-serviceability.svg",
+      "caption": "Previous raw-backend instruments. Retain independent serviceability and dialog/hydration controls for actual native mechanisms; prior events supply no new acceptance."
+    },
+    {
+      "id": "search-resources",
+      "group": "search",
+      "title": "Previous proposal · Own pipes and reap before releasing capacity",
+      "renderer": "svg",
+      "source": "search-resources.d2",
+      "rendered": "search-resources.svg",
+      "caption": "Previous find-child lifecycle proposal. No child is selected for v1 native discovery; its actual mechanisms need their own source and binary authority checks."
+    },
+    {
+      "id": "search-inspection",
+      "group": "search",
+      "title": "Previous proposal · Keep native facts separate from source inventory",
+      "renderer": "svg",
+      "source": "search-inspection.d2",
+      "rendered": "search-inspection.svg",
+      "caption": "Previous root/seed inspection proposal. Native source availability, useful application discovery and finite resource ownership remain design obligations, without an invented exhaustive inventory."
+    },
+    {
+      "id": "search-canonical",
+      "group": "search",
+      "title": "Previous proposal · Preserve file bytes and checked application targets",
+      "renderer": "svg",
+      "source": "search-canonical.d2",
+      "rendered": "search-canonical.svg",
+      "caption": "Historical raw-result identity proposal. The native contract preserves per-copy application identity and action-time checks, with actual metadata/alias qualification still pending."
+    },
+    {
+      "id": "search-traversal",
+      "group": "search",
+      "title": "Previous proposal · Delegate traversal and schedule bounded sources",
+      "renderer": "svg",
+      "source": "search-traversal.d2",
+      "rendered": "search-traversal.svg",
+      "caption": "Previous raw DFS/source scheduling proposal. Clients now own traversal, ordering and budgets; these mechanics are not Koine v1 requirements."
+    },
+    {
+      "id": "search-coverage",
+      "group": "search",
+      "title": "Previous proposal · Report source completeness without invented counts",
+      "renderer": "svg",
+      "source": "search-coverage.d2",
+      "rendered": "search-coverage.svg",
+      "caption": "Historical raw-source coverage payload only. The current native contract now defines its own source availability/completeness and frozen nullable-item semantics; no raw count/marker supplies a native pass."
+    },
+    {
+      "id": "search-handoff",
+      "group": "search",
+      "title": "Previous proposal · Choose a location and use existing actions",
+      "renderer": "svg",
+      "source": "search-handoff.d2",
+      "rendered": "search-handoff.svg",
+      "caption": "Previous raw-result handoff proposal. Existing launch/open/reveal contracts, authority and 1.0.1 action compatibility remain independent; native catalogue provenance awaits acceptance."
+    },
+    {
+      "id": "search-discovery",
+      "group": "search",
+      "title": "Keep raw search in clients; return native starting points and catalogues",
+      "renderer": "svg",
+      "source": "search-discovery.d2",
+      "rendered": "search-discovery.svg",
+      "caption": "Current ownership: clients search raw files; Koine provides named native values/catalogues and separate explicit actions. API/source design exists; review and native acceptance remain pending."
+    },
+    {
+      "id": "workspace-inspection",
+      "group": "workspace",
+      "title": "First-use metadata and default-handler prompt boundary",
+      "renderer": "svg",
+      "source": "workspace-inspection.puml",
+      "rendered": "workspace-inspection.svg",
+      "caption": "Measured macOS 26.5/25F71 on a Developer ID hardened GUI probe matching Koine’s empty entitlements and usage keys. Each case resets consent. Metadata and registered-app inspection did not prompt; file-URL handler lookup for text and alias documents did. A TextEdit URL after denial does not establish permission or safe inspection. Protected default opening remains pending a human consent/semantics decision. Removable/network volumes were unavailable. Other workspace operation acceptance remains pending."
+    },
+    {
+      "id": "workspace-open",
+      "group": "workspace",
+      "title": "Launch or open, then capture desktop state",
+      "renderer": "svg",
+      "source": "workspace-open.puml",
+      "rendered": "workspace-open.svg",
+      "caption": "Existing action contract. All four mutations and their result fields require workspace:control AND desktop:control; neither read is implicit. Unconstrained selection allows running-copy reuse; a path constrains the installation. The receipt carries only optional observed PID/kernel start, for a separately authorized desktop read/focus. The three-second acknowledgment wait can end before Gatekeeper or launch completes, and the core deadline may answer first. An acknowledgment alone does not pass activation acceptance. Reveal returns Finder acknowledgment without a process. App reactions and process/file races remain acceptance limits. The v1 long-location boundary (implemented in workspace 1.0.1, with its finite VM coverage limits) resolves the target, then the application, component by component and refuses an extant location whose spelling is PATH_MAX (1,024) bytes or more, not counting its NUL, with failed before any request. Earlier short-path acceptance supplies no long-location pass."
+    },
+    {
+      "id": "workspace-outcomes",
+      "group": "workspace",
+      "title": "Keep dependency absence before the submission boundary",
+      "renderer": "svg",
+      "source": "workspace-outcomes.d2",
+      "rendered": "workspace-outcomes.svg",
+      "caption": "Existing action outcomes after whole-mutation preflight and live admission. Input, capability and inspection failures stay separate; no new OS consent is allocated. Dependency absence certifies only that this action submitted no domain request. After submission a timeout or failure is not a safe retry signal; late acknowledgment is ignored. Without errors at or below the result, AVAILABLE has a receipt and DEPENDENCY_UNAVAILABLE has reason/guidance, never both. Publication errors may suppress the selected branch without changing a published status. Native acknowledgment does not prove browser content, activation or Finder selection. The v1 long-location boundary (implemented in workspace 1.0.1, with its finite VM coverage limits) resolves locations component by component and refuses an extant location whose spelling is PATH_MAX (1,024) bytes or more, not counting its NUL, with failed before any request. Earlier short-path acceptance supplies no long-location pass."
+    },
+    {
+      "id": "provider-selection",
+      "group": "provider-selection",
+      "title": "Reserve identities and choose before loading",
+      "renderer": "svg",
+      "source": "provider-selection.d2",
+      "rendered": "provider-selection.svg",
+      "caption": "Designed startup calculation for each enabled shipped slot, deterministic for fixed verification verdicts. Approval also requires the catalogue's release signing identifier; fixtures use separate test identities. Reserved-only slots cannot load; unrelated claimants cannot evict an absent owner. A highest tie refuses that release group and repeats with remaining eligible copies, reaching the bundle if needed. Every refusal and missing bundle stays visible. Candidate-specific staging preserves quarantine provenance. Ordinary collisions and host/root failures are detailed in the spec. This view is not native verification."
+    },
+    {
+      "id": "provider-publication",
+      "group": "provider-selection",
+      "title": "Keep selection frozen through publication and start",
+      "renderer": "svg",
+      "source": "provider-publication.puml",
+      "rendered": "provider-publication.svg",
+      "caption": "Designed lifecycle after selection. Principal conflicts between shipped selections refuse both without fallback; descriptor/schema rejection can leave images mapped but publishes no contribution and can remove authority dependents. Startup failure retains schema and capabilities. No frozen choice is retried. Core management survives provider failure; root/core startup failure can prevent listening. Acceptance uses a fresh host process per native scenario, public GraphQL, and assigned signed VM cases; all remain pending."
+    },
+    {
+      "id": "workflow-providers",
+      "group": "workflow-extension",
+      "title": "Six providers and their authority boundaries",
+      "renderer": "svg",
+      "source": "workflow-providers.d2",
+      "rendered": "workflow-providers.svg",
+      "caption": "Proposed component composition, not separate deployment containers. Existing desktop grants expand to geometry, pointer and system media; workspace discovery/open, input and menus need distinct grants. All five new bundles use one native loader and the catalogue's release signing identities. Tool operations add any focus/input/menu authority their native effects require. The host association and interaction cleanup algorithms remain downstream design work."
+    },
+    {
+      "id": "workflow-targets",
+      "group": "workflow-extension",
+      "title": "Capture input or menu targets without desktop control",
+      "renderer": "svg",
+      "source": "workflow-targets.puml",
+      "rendered": "workflow-targets.svg",
+      "caption": "Designed sequence for independently grantable application input or menu actions. Fresh discovery needs that provider's read grant; a previously obtained target can be used with control and a control-authorized receipt. Protected targets are refused again before effects. Bounded system Space switching is a separate operation requiring input and desktop control. References remain provider-local; this view proves no stronger native identity or menu validation."
+    },
+    {
+      "id": "workflow-authority",
+      "group": "workflow-extension",
+      "title": "Check every effect before dispatching any action",
+      "renderer": "svg",
+      "source": "workflow-authority.d2",
+      "rendered": "workflow-authority.svg",
+      "caption": "Designed host behavior under additional-capabilities-v1. For example, workspace launch/open/reveal requires workspace:control AND desktop:control. Cleanup authority is fixed when an interaction is admitted. An unavailable dependency result certifies no effects by that action, not earlier actions. Protected/stale targets, permission refusal and ambiguous failures remain distinct. The feature needs a compatible framework minor and old/new binary acceptance."
+    },
     {
       "id": "packages",
       "group": "overview",
@@ -86,6 +520,71 @@
       "source": "sdk-contributions.d2",
       "rendered": "sdk-contributions.svg",
       "caption": "The shared Swift framework as the loader applies it. Verify signed manifests and required framework versions before loading, then resolve the named principal class and require ProviderFactory conformance. Validate schema and authority metadata before starting the Provider. Requests/results use owned Swift values and async protocol methods. Independently built old/new binaries are verified through the native plugin seam (docs/verification/binary-compatibility.md); native trust is distinct from client capabilities."
+    },
+    {
+      "id": "workspace-long-locations",
+      "group": "workspace",
+      "title": "Resolve the location, then check the application hand-off limit",
+      "renderer": "svg",
+      "source": "workspace-long-locations.d2",
+      "rendered": "workspace-long-locations.svg",
+      "caption": "Implemented action-only workspace 1.0.1 contract; native registered-long/preferred-long outcomes retain their explicitly bounded VM coverage limit. This supplies no catalogue acceptance. Koine resolves the target first, then a supplied or discovered application, from search-only handles, so absence (missing or dangling, and for a target a cycle or impossible ASCII component) is established at any length and later platform nil/ENOENT/ENAMETOOLONG is never absence. Each stage applies the limit before any pathname call on its location, a discovered application's after the discovery read that found it: an extant spelling of PATH_MAX (1,024) bytes or more, not counting its NUL, is refused with failed before any request; application support for such locations is deferred past v1 (Koine#1). Registered candidates are resolved only for device/inode comparison and are never gated. Within the limit the accepted short-path metadata, handler, submission and receipt route is unchanged. First-use prompt behaviour of search-only resolution in Desktop, Documents and Downloads is an acceptance obligation; a prompt goes to Antony."
+    },
+    {
+      "id": "native-metadata-owned-storage",
+      "group": "native-contract",
+      "title": "Owned storage → Separate capacity, writes and overlap",
+      "renderer": "svg",
+      "source": "native-metadata-owned-storage.d2",
+      "rendered": "native-metadata-owned-storage.svg",
+      "caption": "Clarified in the caption that local pre-amendment receipts are comparison inputs to current scoped composition, not a whole-job certificate. Current runtime admission and complete composition bind explicit controlled raw requests/writes/calls/cleanup and real provider-owned publication. Native tuples, expanded visits, preferences, regional returns, final values and selected wire remain conditional. No useful fit, heap/RSS/peak or native G/N/V pass; the k215 hold and mandatory whole review remain."
+    },
+    {
+      "id": "native-metadata-wire",
+      "group": "native-contract",
+      "title": "Selected wire → Expand selection before counting bytes",
+      "renderer": "svg",
+      "source": "native-metadata-wire.d2",
+      "rendered": "native-metadata-wire.svg",
+      "caption": "Activity/accounting view of a pure finite GraphQL design subject. Actual final scalars and errors remain unknown; conditional byte uppers are no useful fit. Core replacement occurs only after complete encoding, with no trimming or owned/native peak guarantee. Full owned composition, k215 hold, mandatory whole review and all native G/N/V remain."
+    },
+    {
+      "id": "native-metadata-runtime-admission",
+      "group": "native-contract",
+      "title": "Runtime admission → Account explicit work through real publication",
+      "renderer": "svg",
+      "source": "native-metadata-runtime-admission.d2",
+      "rendered": "native-metadata-runtime-admission.svg",
+      "caption": "Private construction requires the complete eligibility predicate in application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence, including the reviewed finite metadata-shape subject. Cardinality-only P1024 remains insufficient; private eligibility, advertisement and consumption stay held. Adopted grouped local/source/two-walk gross is 23,238,610/23,412,717; independent-block figures are comparison. Full useful evidence, matched release-image correspondence and independent ordinary-image outcomes remain required. Native G/N/V stays pending."
+    },
+    {
+      "id": "native-metadata-grouped-storage",
+      "group": "native-contract",
+      "title": "Grouped ownership → Preserve literal keys through slab growth",
+      "renderer": "svg",
+      "source": "native-metadata-grouped-storage.d2",
+      "rendered": "native-metadata-grouped-storage.svg",
+      "caption": "Private construction requires the complete eligibility predicate in application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence, including the reviewed finite metadata-shape subject. Cardinality-only P1024 remains insufficient; private eligibility, advertisement and consumption stay held. Adopted grouped local/source/two-walk gross is 23,238,610/23,412,717; independent-block figures are comparison. Full useful evidence, matched release-image correspondence and independent ordinary-image outcomes remain required. Native G/N/V stays pending."
+    },
+    {
+      "id": "native-metadata-qualification",
+      "group": "native-contract",
+      "topic": "Private qualification",
+      "title": "Review, qualify, then release",
+      "renderer": "svg",
+      "source": "native-metadata-qualification.d2",
+      "rendered": "native-metadata-qualification.svg",
+      "caption": "Private construction requires the complete eligibility predicate in application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence, including the reviewed finite metadata-shape subject. Cardinality-only P1024 remains insufficient; private eligibility, advertisement and consumption stay held. Adopted grouped local/source/two-walk gross is 23,238,610/23,412,717; independent-block figures are comparison. Full useful evidence, matched release-image correspondence and independent ordinary-image outcomes remain required. Native G/N/V stays pending."
+    },
+    {
+      "id": "native-metadata-qualification-admission",
+      "group": "native-contract",
+      "topic": "Private qualification",
+      "title": "Reserve each transition through true return",
+      "renderer": "svg",
+      "source": "native-metadata-qualification-admission.d2",
+      "rendered": "native-metadata-qualification-admission.svg",
+      "caption": "Application admission is owned by the private qualification spec. Reserve spent work, live/possible cleanup, full failure publication and one complete terminal guard evaluation. Admitted checks retain that credit; first refusal or final return consumes it. Sticky freeze keeps borrowers/slots until true return. Failed cleanup publishes FAILED/null with INSPECTION_FAILED only while authorized; lifecycle/core loss suppresses delivery. Core encoding remains independent."
     }
   ]
 }

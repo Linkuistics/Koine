@@ -1,0 +1,8 @@
+{
+  "/Users/antony/Development/Koine.add-plugins-for-modaliser-requirements/scripts/vm-probe-descriptor-walk.py": "62b336e79eaf2e1ba26634169cce0bd778b937c8a0a11b9249fe54505ada051c",
+  "docs/verification/descriptor-walk-prompt/probe.swift": "218c19e8bd92a15520692a47d994dd08ab9182a14032094169b5dcd26a5cc6d1",
+  "scripts/build-descriptor-walk-probe.sh": "28377955b7b497fb2ede6b93f451618e487681485d4d996dc4772097d15a459f",
+  "App/Info.plist": "431300765533dd93c89b85d479c3127d92cfd9a8468048b7cf84cd3e2dde7157",
+  "App/Koine.entitlements": "ac7918e500e8ab1e8818b3b4c0a44525a5fbc0e3415739ee85f5944fc9dcf7a3",
+  ".build/descriptor-walk-prompt.zip": "e0f7285429fdbcd47cf4c848e4cab5ac0c903a74cc6cab42f32273751fa0d187"
+}

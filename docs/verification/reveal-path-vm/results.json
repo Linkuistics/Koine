@@ -1,0 +1,444 @@
+[
+  {
+    "section": "reveal",
+    "case": "a file",
+    "path": "/Users/admin/reveal-fx/dir/note.txt",
+    "status": "passed",
+    "answerMs": 171,
+    "finderActivationMs": null,
+    "finder": {
+      "windows": 1,
+      "target": "/Users/admin/reveal-fx/dir/",
+      "title": "dir",
+      "selected": [
+        {
+          "path": "/Users/admin/reveal-fx/dir/note.txt",
+          "kind": "Plain Text Document",
+          "name": "note.txt"
+        }
+      ]
+    },
+    "screenshot": "file.png",
+    "notes": ""
+  },
+  {
+    "section": "reveal",
+    "case": "a folder, selected in its parent",
+    "path": "/Users/admin/reveal-fx/dir/sub folder",
+    "status": "passed",
+    "answerMs": 212,
+    "finderActivationMs": null,
+    "finder": {
+      "windows": 1,
+      "target": "/Users/admin/reveal-fx/dir/",
+      "title": "dir",
+      "selected": [
+        {
+          "path": "/Users/admin/reveal-fx/dir/sub folder/",
+          "kind": "Folder",
+          "name": "sub folder"
+        }
+      ]
+    },
+    "screenshot": "folder.png",
+    "notes": ""
+  },
+  {
+    "section": "reveal",
+    "case": "a folder addressed with a trailing slash",
+    "path": "/Users/admin/reveal-fx/dir/sub folder/",
+    "status": "passed",
+    "answerMs": 133,
+    "finderActivationMs": null,
+    "finder": {
+      "windows": 1,
+      "target": "/Users/admin/reveal-fx/dir/",
+      "title": "dir",
+      "selected": [
+        {
+          "path": "/Users/admin/reveal-fx/dir/sub folder/",
+          "kind": "Folder",
+          "name": "sub folder"
+        }
+      ]
+    },
+    "screenshot": "folder-slash.png",
+    "notes": ""
+  },
+  {
+    "section": "reveal",
+    "case": "an application bundle, selected and not opened",
+    "path": "/Applications/Zed.app",
+    "status": "passed",
+    "answerMs": 165,
+    "finderActivationMs": null,
+    "finder": {
+      "windows": 1,
+      "target": "/Applications/",
+      "title": "Applications",
+      "selected": [
+        {
+          "path": "/Applications/Zed.app/",
+          "kind": "Application",
+          "name": "Zed.app"
+        }
+      ]
+    },
+    "screenshot": "app.png",
+    "notes": ""
+  },
+  {
+    "section": "reveal",
+    "case": "a Finder alias file, selected itself and not resolved",
+    "path": "/Users/admin/reveal-fx/dir/Alias to note",
+    "status": "passed",
+    "answerMs": 121,
+    "finderActivationMs": null,
+    "finder": {
+      "windows": 1,
+      "target": "/Users/admin/reveal-fx/dir/",
+      "title": "dir",
+      "selected": [
+        {
+          "path": "/Users/admin/reveal-fx/dir/Alias to note",
+          "kind": "Alias",
+          "name": "Alias to note"
+        }
+      ]
+    },
+    "screenshot": "alias.png",
+    "notes": ""
+  },
+  {
+    "section": "reveal",
+    "case": "the filesystem root, a root view",
+    "path": "/",
+    "status": "passed",
+    "answerMs": 50,
+    "finderActivationMs": 29,
+    "finder": {
+      "windows": 1,
+      "target": "/",
+      "title": "Macintosh HD",
+      "selected": []
+    },
+    "screenshot": "root.png",
+    "notes": ""
+  },
+  {
+    "section": "reveal",
+    "case": "the filesystem root spelled with two slashes, still the root view",
+    "path": "//",
+    "status": "passed",
+    "answerMs": 52,
+    "finderActivationMs": 47,
+    "finder": {
+      "windows": 1,
+      "target": "/",
+      "title": "Macintosh HD",
+      "selected": []
+    },
+    "screenshot": "root-slashes.png",
+    "notes": ""
+  },
+  {
+    "section": "reveal",
+    "case": "a path with a .. through a symlink (/var is /private/var), recorded as Finder reads it",
+    "path": "/var/..",
+    "status": "passed",
+    "answerMs": 120,
+    "finderActivationMs": null,
+    "finder": {
+      "windows": 1,
+      "target": "/",
+      "title": "Macintosh HD",
+      "selected": [
+        {
+          "path": "/private/var/",
+          "kind": "Alias",
+          "name": "var"
+        }
+      ]
+    },
+    "screenshot": "dotdot-through-link.png",
+    "notes": ""
+  },
+  {
+    "section": "reveal",
+    "case": "spaces and shell punctuation",
+    "path": "/Users/admin/reveal-fx/dir/lit $HOME ~ * ? [x] ; & ' \" # % ! (1).txt",
+    "status": "passed",
+    "answerMs": 153,
+    "finderActivationMs": null,
+    "finder": {
+      "windows": 1,
+      "target": "/Users/admin/reveal-fx/dir/",
+      "title": "dir",
+      "selected": [
+        {
+          "path": "/Users/admin/reveal-fx/dir/lit $HOME ~ * ? [x] ; & ' \" # % ! (1).txt",
+          "kind": "Plain Text Document",
+          "name": "lit $HOME ~ * ? [x] ; & ' \" # % ! (1).txt"
+        }
+      ]
+    },
+    "screenshot": "literal.png",
+    "notes": ""
+  },
+  {
+    "section": "reveal",
+    "case": "a symlink, selected as the link",
+    "path": "/Users/admin/reveal-fx/dir/link-to-note.txt",
+    "status": "passed",
+    "answerMs": 144,
+    "finderActivationMs": null,
+    "finder": {
+      "windows": 1,
+      "target": "/Users/admin/reveal-fx/dir/",
+      "title": "dir",
+      "selected": [
+        {
+          "path": "/Users/admin/reveal-fx/dir/note.txt",
+          "kind": "Alias",
+          "name": "link-to-note.txt"
+        }
+      ]
+    },
+    "screenshot": "symlink.png",
+    "notes": ""
+  },
+  {
+    "case": "an application bundle is selected, never launched",
+    "status": "passed"
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "empty",
+    "status": "passed",
+    "answer": {
+      "classification": "input-error",
+      "status": null,
+      "dependency": null,
+      "errors": [
+        {
+          "classification": "input-error",
+          "message": "path must not be empty.",
+          "path": [
+            "workspaceRevealPath"
+          ],
+          "kind": null,
+          "permissionClass": null,
+          "requiredCapability": null,
+          "requiredCapabilities": null,
+          "phase": null,
+          "osPermission": null,
+          "permissionOwner": null,
+          "reason": null,
+          "requestState": null
+        }
+      ]
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "relative",
+    "status": "passed",
+    "answer": {
+      "classification": "input-error",
+      "status": null,
+      "dependency": null,
+      "errors": [
+        {
+          "classification": "input-error",
+          "message": "path must be an absolute path.",
+          "path": [
+            "workspaceRevealPath"
+          ],
+          "kind": null,
+          "permissionClass": null,
+          "requiredCapability": null,
+          "requiredCapabilities": null,
+          "phase": null,
+          "osPermission": null,
+          "permissionOwner": null,
+          "reason": null,
+          "requestState": null
+        }
+      ]
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "tilde",
+    "status": "passed",
+    "answer": {
+      "classification": "input-error",
+      "status": null,
+      "dependency": null,
+      "errors": [
+        {
+          "classification": "input-error",
+          "message": "path must be an absolute path.",
+          "path": [
+            "workspaceRevealPath"
+          ],
+          "kind": null,
+          "permissionClass": null,
+          "requiredCapability": null,
+          "requiredCapabilities": null,
+          "phase": null,
+          "osPermission": null,
+          "permissionOwner": null,
+          "reason": null,
+          "requestState": null
+        }
+      ]
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "file-url",
+    "status": "passed",
+    "answer": {
+      "classification": "input-error",
+      "status": null,
+      "dependency": null,
+      "errors": [
+        {
+          "classification": "input-error",
+          "message": "path must be an absolute path.",
+          "path": [
+            "workspaceRevealPath"
+          ],
+          "kind": null,
+          "permissionClass": null,
+          "requiredCapability": null,
+          "requiredCapabilities": null,
+          "phase": null,
+          "osPermission": null,
+          "permissionOwner": null,
+          "reason": null,
+          "requestState": null
+        }
+      ]
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "nul",
+    "status": "passed",
+    "answer": {
+      "classification": "input-error",
+      "status": null,
+      "dependency": null,
+      "errors": [
+        {
+          "classification": "input-error",
+          "message": "path must not contain a NUL character.",
+          "path": [
+            "workspaceRevealPath"
+          ],
+          "kind": null,
+          "permissionClass": null,
+          "requiredCapability": null,
+          "requiredCapabilities": null,
+          "phase": null,
+          "osPermission": null,
+          "permissionOwner": null,
+          "reason": null,
+          "requestState": null
+        }
+      ]
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "missing-file",
+    "status": "passed",
+    "answer": {
+      "classification": "dependency-unavailable",
+      "status": "DEPENDENCY_UNAVAILABLE",
+      "dependency": {
+        "reason": "PATH_NOT_FOUND",
+        "guidance": "Nothing exists at the requested path, or it is a link to something that does not, so nothing was revealed. Check the path, then try again."
+      },
+      "errors": []
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "missing-parent",
+    "status": "passed",
+    "answer": {
+      "classification": "dependency-unavailable",
+      "status": "DEPENDENCY_UNAVAILABLE",
+      "dependency": {
+        "reason": "PATH_NOT_FOUND",
+        "guidance": "Nothing exists at the requested path, or it is a link to something that does not, so nothing was revealed. Check the path, then try again."
+      },
+      "errors": []
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "dangling-link",
+    "status": "passed",
+    "answer": {
+      "classification": "dependency-unavailable",
+      "status": "DEPENDENCY_UNAVAILABLE",
+      "dependency": {
+        "reason": "PATH_NOT_FOUND",
+        "guidance": "Nothing exists at the requested path, or it is a link to something that does not, so nothing was revealed. Check the path, then try again."
+      },
+      "errors": []
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "below-a-file",
+    "status": "passed",
+    "answer": {
+      "classification": "dependency-unavailable",
+      "status": "DEPENDENCY_UNAVAILABLE",
+      "dependency": {
+        "reason": "PATH_NOT_FOUND",
+        "guidance": "Nothing exists at the requested path, or it is a link to something that does not, so nothing was revealed. Check the path, then try again."
+      },
+      "errors": []
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "trailing-slash-on-a-file",
+    "status": "passed",
+    "answer": {
+      "classification": "dependency-unavailable",
+      "status": "DEPENDENCY_UNAVAILABLE",
+      "dependency": {
+        "reason": "PATH_NOT_FOUND",
+        "guidance": "Nothing exists at the requested path, or it is a link to something that does not, so nothing was revealed. Check the path, then try again."
+      },
+      "errors": []
+    }
+  },
+  {
+    "case": "authority: workspace:control alone",
+    "status": "passed"
+  },
+  {
+    "case": "authority: desktop:control alone",
+    "status": "passed"
+  },
+  {
+    "case": "authority: revoked grant",
+    "status": "passed"
+  },
+  {
+    "case": "authority: denial precedes inspection",
+    "status": "passed"
+  },
+  {
+    "case": "accessibility absent throughout",
+    "status": "passed"
+  }
+]

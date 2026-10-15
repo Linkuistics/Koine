@@ -1,0 +1,2 @@
+task: [fixture:bookmark-name-resolution] bash scripts/build-bookmark-name-probe.sh
+.build/bookmark-name-resolution/K158Probe.app: replacing existing signature

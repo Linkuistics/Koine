@@ -1,0 +1,117 @@
+[
+  {
+    "section": "prompt",
+    "case": "positive control: a standalone probe prompts in Documents",
+    "status": "passed",
+    "dialog": "“KoineK174Probe” would like to access files in your Documents folder. / "
+  },
+  {
+    "section": "prompt",
+    "case": "Desktop: reveal-doc",
+    "status": "passed",
+    "answers": "{\"classification\":\"ok\",\"status\":\"AVAILABLE\",\"dependency\":null,\"errors\":[]}",
+    "notes": ""
+  },
+  {
+    "section": "prompt",
+    "case": "Desktop: reveal-dir",
+    "status": "passed",
+    "answers": "{\"classification\":\"ok\",\"status\":\"AVAILABLE\",\"dependency\":null,\"errors\":[]}",
+    "notes": ""
+  },
+  {
+    "section": "prompt",
+    "case": "Desktop: open-dir-finder",
+    "status": "passed",
+    "answers": "{\"classification\":\"failed\",\"status\":null,\"dependency\":null,\"errors\":[{\"message\":\"The system did not acknowledge the open request within 3 seconds. It may still complete; the request was not repeated.\",\"kind\":\"failed\"}]} | second {\"classification\":\"ok\",\"status\":\"AVAILABLE\",\"dependency\":null,\"errors\":[]}",
+    "notes": "Koine's request was allowed; the first request completed after the allowance (Finder: [\"koine-prot-Desktop\"]); "
+  },
+  {
+    "section": "prompt",
+    "case": "Desktop: open-dir",
+    "status": "passed",
+    "answers": "{\"classification\":\"failed\",\"status\":null,\"dependency\":null,\"errors\":[{\"message\":\"The system did not acknowledge the open request within 3 seconds. It may still complete; the request was not repeated.\",\"kind\":\"failed\"}]} | second {\"classification\":\"ok\",\"status\":\"AVAILABLE\",\"dependency\":null,\"errors\":[]}",
+    "notes": "Koine's request was allowed; the first request completed after the allowance (Finder: [\"koine-prot-Desktop\"]); "
+  },
+  {
+    "section": "prompt",
+    "case": "Desktop: open-doc-zed",
+    "status": "passed",
+    "answers": "{\"classification\":\"failed\",\"status\":null,\"dependency\":null,\"errors\":[{\"message\":\"The system did not acknowledge the open request within 3 seconds. It may still complete; the request was not repeated.\",\"kind\":\"failed\"}]} | second {\"classification\":\"ok\",\"status\":\"AVAILABLE\",\"dependency\":null,\"errors\":[]}",
+    "notes": "Koine's request was allowed; the first request completed after the allowance (Zed: [\"koine-prot-doc-Desktop.txt — koine-prot-doc-Desktop.txt\"]); "
+  },
+  {
+    "section": "prompt",
+    "case": "Documents: reveal-doc",
+    "status": "passed",
+    "answers": "{\"classification\":\"ok\",\"status\":\"AVAILABLE\",\"dependency\":null,\"errors\":[]}",
+    "notes": ""
+  },
+  {
+    "section": "prompt",
+    "case": "Documents: reveal-dir",
+    "status": "passed",
+    "answers": "{\"classification\":\"ok\",\"status\":\"AVAILABLE\",\"dependency\":null,\"errors\":[]}",
+    "notes": ""
+  },
+  {
+    "section": "prompt",
+    "case": "Documents: open-dir-finder",
+    "status": "passed",
+    "answers": "{\"classification\":\"failed\",\"status\":null,\"dependency\":null,\"errors\":[{\"message\":\"The system did not acknowledge the open request within 3 seconds. It may still complete; the request was not repeated.\",\"kind\":\"failed\"}]} | second {\"classification\":\"ok\",\"status\":\"AVAILABLE\",\"dependency\":null,\"errors\":[]}",
+    "notes": "Koine's request was allowed; the first request completed after the allowance (Finder: [\"koine-prot-Documents\"]); "
+  },
+  {
+    "section": "prompt",
+    "case": "Documents: open-dir",
+    "status": "passed",
+    "answers": "{\"classification\":\"failed\",\"status\":null,\"dependency\":null,\"errors\":[{\"message\":\"The system did not acknowledge the open request within 3 seconds. It may still complete; the request was not repeated.\",\"kind\":\"failed\"}]} | second {\"classification\":\"ok\",\"status\":\"AVAILABLE\",\"dependency\":null,\"errors\":[]}",
+    "notes": "Koine's request was allowed; the first request completed after the allowance (Finder: [\"koine-prot-Documents\"]); "
+  },
+  {
+    "section": "prompt",
+    "case": "Documents: open-doc-zed",
+    "status": "passed",
+    "answers": "{\"classification\":\"failed\",\"status\":null,\"dependency\":null,\"errors\":[{\"message\":\"The system did not acknowledge the open request within 3 seconds. It may still complete; the request was not repeated.\",\"kind\":\"failed\"}]} | second {\"classification\":\"ok\",\"status\":\"AVAILABLE\",\"dependency\":null,\"errors\":[]}",
+    "notes": "Koine's request was allowed; the first request completed after the allowance (Zed: [\"koine-prot-doc-Desktop.txt — koine-prot-doc-Documents.txt\"]); "
+  },
+  {
+    "section": "prompt",
+    "case": "Downloads: reveal-doc",
+    "status": "passed",
+    "answers": "{\"classification\":\"ok\",\"status\":\"AVAILABLE\",\"dependency\":null,\"errors\":[]}",
+    "notes": ""
+  },
+  {
+    "section": "prompt",
+    "case": "Downloads: reveal-dir",
+    "status": "passed",
+    "answers": "{\"classification\":\"ok\",\"status\":\"AVAILABLE\",\"dependency\":null,\"errors\":[]}",
+    "notes": ""
+  },
+  {
+    "section": "prompt",
+    "case": "Downloads: open-dir-finder",
+    "status": "passed",
+    "answers": "{\"classification\":\"failed\",\"status\":null,\"dependency\":null,\"errors\":[{\"message\":\"The system did not acknowledge the open request within 3 seconds. It may still complete; the request was not repeated.\",\"kind\":\"failed\"}]} | second {\"classification\":\"ok\",\"status\":\"AVAILABLE\",\"dependency\":null,\"errors\":[]}",
+    "notes": "Koine's request was allowed; the first request completed after the allowance (Finder: [\"koine-prot-Downloads\"]); "
+  },
+  {
+    "section": "prompt",
+    "case": "Downloads: open-dir",
+    "status": "passed",
+    "answers": "{\"classification\":\"failed\",\"status\":null,\"dependency\":null,\"errors\":[{\"message\":\"The system did not acknowledge the open request within 3 seconds. It may still complete; the request was not repeated.\",\"kind\":\"failed\"}]} | second {\"classification\":\"ok\",\"status\":\"AVAILABLE\",\"dependency\":null,\"errors\":[]}",
+    "notes": "Koine's request was allowed; the first request completed after the allowance (Finder: [\"koine-prot-Downloads\"]); "
+  },
+  {
+    "section": "prompt",
+    "case": "Downloads: open-doc-zed",
+    "status": "passed",
+    "answers": "{\"classification\":\"failed\",\"status\":null,\"dependency\":null,\"errors\":[{\"message\":\"The system did not acknowledge the open request within 3 seconds. It may still complete; the request was not repeated.\",\"kind\":\"failed\"}]} | second {\"classification\":\"ok\",\"status\":\"AVAILABLE\",\"dependency\":null,\"errors\":[]}",
+    "notes": "Koine's request was allowed; the first request completed after the allowance (Zed: [\"koine-prot-doc-Desktop.txt — koine-prot-doc-Downloads.txt\"]); "
+  },
+  {
+    "case": "accessibility absent throughout",
+    "status": "passed"
+  }
+]

@@ -1,0 +1,208 @@
+[
+ {
+  "mode": "control-defaulthandler-short",
+  "prompts": [
+   "{\"appName\": \"UserNotificationCenter\", \"elements\": [{\"actions\": [\"AXShowMenu\"], \"childCount\": 0, \"description\": \"text\", \"enabled\": true, \"focused\": false, \"id\": \"_NS:74\", \"platformRole\": \"AXStaticText\", \"positionX\": 851.0, \"positionY\": 290.0, \"role\": \"text\", \"sizeHeight\": 50.0, \"sizeWidth\": 218.0, \"value\": \"\u201cKoineK134Probe\u201d would like to access files in your Documents folder.\"}, {\"actions\": [\"AXSho"
+  ],
+  "rows": [
+   {
+    "finishedAt": "1791091012.966",
+    "id": "control-defaulthandler-short",
+    "mode": "defaulthandler",
+    "pid": 2702,
+    "result": {
+     "handler": "L1N5c3RlbS9BcHBsaWNhdGlvbnMvVGV4dEVkaXQuYXBw"
+    },
+    "startedAt": 1791091012.132687
+   }
+  ]
+ },
+ {
+  "mode": "control-acquire-short",
+  "prompts": [
+   "{\"appName\": \"UserNotificationCenter\", \"elements\": [{\"actions\": [\"AXShowMenu\"], \"childCount\": 0, \"description\": \"text\", \"enabled\": true, \"focused\": false, \"id\": \"_NS:74\", \"platformRole\": \"AXStaticText\", \"positionX\": 851.0, \"positionY\": 290.0, \"role\": \"text\", \"sizeHeight\": 50.0, \"sizeWidth\": 218.0, \"value\": \"\u201cKoineK134Probe\u201d would like to access files in your Documents folder.\"}, {\"actions\": [\"AXSho"
+  ],
+  "rows": [
+   {
+    "finishedAt": "1791091014.679",
+    "id": "control-acquire-short",
+    "mode": "acquire",
+    "pid": 2712,
+    "result": {
+     "pathLength": 44,
+     "resolve": {
+      "componentIndex": 3,
+      "errno": 1,
+      "final": {
+       "dev": 16777231,
+       "ino": 36109,
+       "isDir": 1,
+       "isLink": 0,
+       "mode": 16872
+      },
+      "finalIsLinkNotFollowed": 0,
+      "impossibleComponentEstablished": false,
+      "links": 0,
+      "nameLength": 0,
+      "nameMax": 0,
+      "status": "error"
+     },
+     "wholePathControls": {
+      "CFBundleInfoDictionaryKeys": null,
+      "FSPathMakeRef": 0,
+      "NSBundleIdentifier": null,
+      "realpath": {
+       "length": 44
+      },
+      "stat": {
+       "ino": 314481,
+       "ok": true
+      },
+      "URLisApplication": false
+     }
+    },
+    "startedAt": 1791091013.8379889
+   }
+  ]
+ },
+ {
+  "mode": "acquire",
+  "prompts": [
+   "{\"appName\": \"UserNotificationCenter\", \"elements\": [{\"actions\": [\"AXShowMenu\"], \"childCount\": 0, \"description\": \"text\", \"enabled\": true, \"focused\": false, \"id\": \"_NS:74\", \"platformRole\": \"AXStaticText\", \"positionX\": 851.0, \"positionY\": 290.0, \"role\": \"text\", \"sizeHeight\": 50.0, \"sizeWidth\": 218.0, \"value\": \"\u201cKoineK134Probe\u201d would like to access files in your Documents folder.\"}, {\"actions\": [\"AXSho"
+  ],
+  "rows": [
+   {
+    "finishedAt": "1791091016.423",
+    "id": "acquire",
+    "mode": "acquire",
+    "pid": 2723,
+    "result": {
+     "pathLength": 1500,
+     "resolve": {
+      "componentIndex": 3,
+      "errno": 1,
+      "final": {
+       "dev": 16777231,
+       "ino": 36109,
+       "isDir": 1,
+       "isLink": 0,
+       "mode": 16872
+      },
+      "finalIsLinkNotFollowed": 0,
+      "impossibleComponentEstablished": false,
+      "links": 0,
+      "nameLength": 0,
+      "nameMax": 0,
+      "status": "error"
+     },
+     "wholePathControls": {
+      "CFBundleInfoDictionaryKeys": null,
+      "FSPathMakeRef": -43,
+      "NSBundleIdentifier": null,
+      "realpath": {
+       "errno": 63,
+       "message": "File name too long"
+      },
+      "stat": {
+       "errno": 63,
+       "message": "File name too long"
+      },
+      "URLisApplication": {
+       "error": "The item couldn\u2019t be opened because the file name \u201csample.txt\u201d is invalid."
+      }
+     }
+    },
+    "startedAt": 1791091015.570328
+   }
+  ]
+ },
+ {
+  "mode": "lsbind",
+  "prompts": [
+   "{\"appName\": \"UserNotificationCenter\", \"elements\": [{\"actions\": [\"AXShowMenu\"], \"childCount\": 0, \"description\": \"text\", \"enabled\": true, \"focused\": false, \"id\": \"_NS:74\", \"platformRole\": \"AXStaticText\", \"positionX\": 851.0, \"positionY\": 290.0, \"role\": \"text\", \"sizeHeight\": 50.0, \"sizeWidth\": 218.0, \"value\": \"\u201cKoineK134Probe\u201d would like to access files in your Documents folder.\"}, {\"actions\": [\"AXSho"
+  ],
+  "rows": [
+   {
+    "finishedAt": "1791091018.159",
+    "id": "lsbind",
+    "mode": "lsbind",
+    "pid": 2733,
+    "result": {
+     "appURL": "L1N5c3RlbS9MaWJyYXJ5L0NvcmVTZXJ2aWNlcy9GaW5kZXIuYXBw",
+     "refChain": {
+      "steps": 2
+     },
+     "status": 0
+    },
+    "startedAt": 1791091017.310575
+   }
+  ]
+ },
+ {
+  "mode": "defaulthandler",
+  "prompts": [],
+  "rows": [
+   {
+    "finishedAt": "1791091019.146",
+    "id": "defaulthandler",
+    "mode": "defaulthandler",
+    "pid": 2743,
+    "result": {
+     "handler": null
+    },
+    "startedAt": 1791091019.145093
+   }
+  ]
+ },
+ {
+  "mode": "acquire-after",
+  "prompts": [
+   "{\"appName\": \"UserNotificationCenter\", \"elements\": [{\"actions\": [\"AXShowMenu\"], \"childCount\": 0, \"description\": \"text\", \"enabled\": true, \"focused\": false, \"id\": \"_NS:74\", \"platformRole\": \"AXStaticText\", \"positionX\": 851.0, \"positionY\": 290.0, \"role\": \"text\", \"sizeHeight\": 50.0, \"sizeWidth\": 218.0, \"value\": \"\u201cKoineK134Probe\u201d would like to access files in your Documents folder.\"}, {\"actions\": [\"AXSho"
+  ],
+  "rows": [
+   {
+    "finishedAt": "1791091021.204",
+    "id": "acquire-after",
+    "mode": "acquire",
+    "pid": 2753,
+    "result": {
+     "pathLength": 1500,
+     "resolve": {
+      "componentIndex": 3,
+      "errno": 1,
+      "final": {
+       "dev": 16777231,
+       "ino": 36109,
+       "isDir": 1,
+       "isLink": 0,
+       "mode": 16872
+      },
+      "finalIsLinkNotFollowed": 0,
+      "impossibleComponentEstablished": false,
+      "links": 0,
+      "nameLength": 0,
+      "nameMax": 0,
+      "status": "error"
+     },
+     "wholePathControls": {
+      "CFBundleInfoDictionaryKeys": null,
+      "FSPathMakeRef": -43,
+      "NSBundleIdentifier": null,
+      "realpath": {
+       "errno": 63,
+       "message": "File name too long"
+      },
+      "stat": {
+       "errno": 63,
+       "message": "File name too long"
+      },
+      "URLisApplication": {
+       "error": "The item couldn\u2019t be opened because the file name \u201csample.txt\u201d is invalid."
+      }
+     }
+    },
+    "startedAt": 1791091020.356601
+   }
+  ]
+ }
+]

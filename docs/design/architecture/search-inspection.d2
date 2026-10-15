@@ -1,0 +1,17 @@
+# Previous raw-search proposal only; not the current v1 API or backend.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+Start: "Previous proposal · Default app sources" {class: start}
+Roots: "Conventional application roots\nSystem names, checked Bundle metadata"
+Seeds: "OS-reported seeds\nRunning URLs + discovered identifiers"
+Inspect: "k123 candidate filter + finite native-call admission\nCheck present bundle identity / preferred URL"
+Positive: "INSTALLED / checked UNREGISTERED\nReported facts, not service-health proof"
+Unknown: "Unknown / incomplete / refused\nOS coverage never exhaustive"
+Start -> Roots: "1 · roots"
+Start -> Seeds: "1 · OS seeds"
+Roots -> Inspect: "2 · candidates"
+Seeds -> Inspect: "2 · targets"
+Inspect -> Positive: "3 · exact checked branches"
+Inspect -> Unknown: "3 · nil / stale / conflict / limit"

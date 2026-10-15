@@ -1,0 +1,8 @@
+task: [fixture:separated-local-url-naming-check] ruff check --select E,F,I --line-length 100 scripts/vm-probe-separated-local-url-name.py docs/verification/separated-local-url-naming/test_supervisor.py
+All checks passed!
+task: [fixture:separated-local-url-naming-check] python3 -m py_compile scripts/vm-probe-separated-local-url-name.py
+task: [fixture:separated-local-url-naming-check] shellcheck -x scripts/build-separated-local-url-name-probe.sh
+task: [fixture:separated-local-url-naming-check] shfmt -d -i 2 -ci scripts/build-separated-local-url-name-probe.sh
+task: [fixture:separated-local-url-naming-check] pytest -q docs/verification/separated-local-url-naming/test_supervisor.py
+.....                                                                    [100%]
+5 passed in 0.16s

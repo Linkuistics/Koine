@@ -1,0 +1,5 @@
+{"fileOK":true,"volumeOK":true,"volume":"{length = 8, bytes = 0x6745640000000000}","volumeError":{},"event":"nativeExecutableIdentity","file":"{length = 16, bytes = 0x41600300000000006745640000000000}","fileError":{},"path":"\/Applications\/Zed.app"}
+{"fileOK":true,"volumeOK":true,"volume":"{length = 8, bytes = 0x6745640000000000}","volumeError":{},"event":"nativeExecutableIdentity","file":"{length = 16, bytes = 0x41600300000000006745640000000000}","fileError":{},"path":"\/Applications\/Zed.app"}
+{"known":"\/Applications\/Zed.app","registeredIdentity":{"inode":221249,"device":16777230,"mode":16877},"event":"zed","registered":"\/Applications\/Zed.app","exact":1,"version":"1.22.0","registeredURLs":["\/Applications\/Zed.app"],"knownIdentity":{"inode":221249,"device":16777230,"mode":16877}}
+{"status":0,"errno":0,"capabilities":[26963679,28274631,0,0],"event":"volume","valid":[134217727,33554431,0,0]}
+{"event":"done"}

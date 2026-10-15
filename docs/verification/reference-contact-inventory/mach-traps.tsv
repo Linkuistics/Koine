@@ -1,0 +1,131 @@
+number	source_line	declared_name	conditional_branch	disposition
+0	106	kern_invalid	unconditional	published-placeholder
+1	107	kern_invalid	unconditional	published-placeholder
+2	108	kern_invalid	unconditional	published-placeholder
+3	109	kern_invalid	unconditional	published-placeholder
+4	110	kern_invalid	unconditional	published-placeholder
+5	111	kern_invalid	unconditional	published-placeholder
+6	112	kern_invalid	unconditional	published-placeholder
+7	113	kern_invalid	unconditional	published-placeholder
+8	114	kern_invalid	unconditional	published-placeholder
+9	115	kern_invalid	unconditional	published-placeholder
+10	116	_kernelrpc_mach_vm_allocate_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+11	117	_kernelrpc_mach_vm_purgable_control_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+12	118	_kernelrpc_mach_vm_deallocate_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+13	119	task_dyld_process_info_notify_get_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+14	120	_kernelrpc_mach_vm_protect_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+15	121	_kernelrpc_mach_vm_map_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+16	122	_kernelrpc_mach_port_allocate_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+17	123	kern_invalid	unconditional	published-placeholder
+18	124	_kernelrpc_mach_port_deallocate_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+19	125	_kernelrpc_mach_port_mod_refs_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+20	126	_kernelrpc_mach_port_move_member_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+21	127	_kernelrpc_mach_port_insert_right_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+22	128	_kernelrpc_mach_port_insert_member_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+23	129	_kernelrpc_mach_port_extract_member_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+24	130	_kernelrpc_mach_port_construct_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+25	131	_kernelrpc_mach_port_destruct_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+26	132	mach_reply_port	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+27	133	thread_self_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+28	134	task_self_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+29	135	host_self_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+30	136	kern_invalid	unconditional	published-placeholder
+31	137	mach_msg_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+32	138	mach_msg_overwrite_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+33	139	semaphore_signal_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+34	140	semaphore_signal_all_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+35	141	semaphore_signal_thread_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+36	142	semaphore_wait_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+37	143	semaphore_wait_signal_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+38	144	semaphore_timedwait_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+39	145	semaphore_timedwait_signal_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+40	146	_kernelrpc_mach_port_get_attributes_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+41	147	_kernelrpc_mach_port_guard_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+42	148	_kernelrpc_mach_port_unguard_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+43	149	mach_generate_activity_id	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+44	150	task_name_for_pid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+45	151	task_for_pid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+46	152	pid_for_task	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+47	154	mach_msg2_trap	#if defined(__LP64__) || defined(__arm64__)	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+47	156	kern_invalid	#if defined(__LP64__) || defined(__arm64__) -> #else	published-placeholder
+48	158	macx_swapon	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+49	159	macx_swapoff	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+50	160	thread_get_special_reply_port	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+51	161	macx_triggers	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+52	162	macx_backing_store_suspend	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+53	163	macx_backing_store_recovery	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+54	164	kern_invalid	unconditional	published-placeholder
+55	165	kern_invalid	unconditional	published-placeholder
+56	166	kern_invalid	unconditional	published-placeholder
+57	167	kern_invalid	unconditional	published-placeholder
+58	168	pfz_exit	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+59	169	swtch_pri	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+60	170	swtch	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+61	171	thread_switch	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+62	172	clock_sleep_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+63	174	mach_vm_reclaim_update_kernel_accounting_trap	#if __LP64__	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+63	176	kern_invalid	#if __LP64__ -> #else	published-placeholder
+64	178	kern_invalid	unconditional	published-placeholder
+65	179	kern_invalid	unconditional	published-placeholder
+66	180	kern_invalid	unconditional	published-placeholder
+67	181	kern_invalid	unconditional	published-placeholder
+68	182	kern_invalid	unconditional	published-placeholder
+69	183	kern_invalid	unconditional	published-placeholder
+70	184	host_create_mach_voucher_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+71	185	kern_invalid	unconditional	published-placeholder
+72	186	mach_voucher_extract_attr_recipe_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+73	187	kern_invalid	unconditional	published-placeholder
+74	188	kern_invalid	unconditional	published-placeholder
+75	189	kern_invalid	unconditional	published-placeholder
+76	190	_kernelrpc_mach_port_type_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+77	191	_kernelrpc_mach_port_request_notification_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+78	192	kern_invalid	unconditional	published-placeholder
+79	193	kern_invalid	unconditional	published-placeholder
+80	194	kern_invalid	unconditional	published-placeholder
+81	195	kern_invalid	unconditional	published-placeholder
+82	196	kern_invalid	unconditional	published-placeholder
+83	197	kern_invalid	unconditional	published-placeholder
+84	198	kern_invalid	unconditional	published-placeholder
+85	199	kern_invalid	unconditional	published-placeholder
+86	200	kern_invalid	unconditional	published-placeholder
+87	201	kern_invalid	unconditional	published-placeholder
+88	202	_exclaves_ctl_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+89	203	mach_timebase_info_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+90	204	mach_wait_until_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+91	205	mk_timer_create_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+92	206	mk_timer_destroy_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+93	207	mk_timer_arm_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+94	208	mk_timer_cancel_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+95	209	mk_timer_arm_leeway_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+96	210	debug_control_port_for_pid	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+97	211	kern_invalid	unconditional	published-placeholder
+98	212	kern_invalid	unconditional	published-placeholder
+99	213	kern_invalid	unconditional	published-placeholder
+100	215	iokit_user_client_trap	unconditional	documentary-candidate; named-claim-review-required; unobserved-current-correspondence-accepted-unknown
+101	216	kern_invalid	unconditional	published-placeholder
+102	217	kern_invalid	unconditional	published-placeholder
+103	218	kern_invalid	unconditional	published-placeholder
+104	219	kern_invalid	unconditional	published-placeholder
+105	220	kern_invalid	unconditional	published-placeholder
+106	221	kern_invalid	unconditional	published-placeholder
+107	222	kern_invalid	unconditional	published-placeholder
+108	223	kern_invalid	unconditional	published-placeholder
+109	225	kern_invalid	unconditional	published-placeholder
+110	226	kern_invalid	unconditional	published-placeholder
+111	227	kern_invalid	unconditional	published-placeholder
+112	228	kern_invalid	unconditional	published-placeholder
+113	229	kern_invalid	unconditional	published-placeholder
+114	230	kern_invalid	unconditional	published-placeholder
+115	231	kern_invalid	unconditional	published-placeholder
+116	232	kern_invalid	unconditional	published-placeholder
+117	233	kern_invalid	unconditional	published-placeholder
+118	234	kern_invalid	unconditional	published-placeholder
+119	235	kern_invalid	unconditional	published-placeholder
+120	236	kern_invalid	unconditional	published-placeholder
+121	237	kern_invalid	unconditional	published-placeholder
+122	238	kern_invalid	unconditional	published-placeholder
+123	239	kern_invalid	unconditional	published-placeholder
+124	240	kern_invalid	unconditional	published-placeholder
+125	241	kern_invalid	unconditional	published-placeholder
+126	242	kern_invalid	unconditional	published-placeholder
+127	243	kern_invalid	unconditional	published-placeholder

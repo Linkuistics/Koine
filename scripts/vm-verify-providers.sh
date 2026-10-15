@@ -81,12 +81,14 @@ echo "bundled frameworks: $(find "${APPROVED_ROOT}/Fixture.koineprovider" -name 
 step "An approved same-team fixture in the per-user root"
 install_root "${APPROVED_ROOT}"
 launch
-click '.id=="grant-label"'
+# The form is longer than the window (a capability's disclosure sits under it).
+calibrate_window_scroll
+reveal_click '.id=="grant-label"'
 testanyware input type "${GRANT_LABEL}" >/dev/null
 sleep 1
-click '.id=="capability-koine:manage"'
-click '.id=="capability-fixture:read"'
-click '.role=="button" and .label=="Create Grant"'
+reveal_click '.id=="capability-koine:manage"'
+reveal_click '.id=="capability-fixture:read"'
+reveal_click '.role=="button" and .label=="Create Grant"'
 [ -n "$(value_of '.id=="grant-credential"')" ] || fail "the credential sheet did not appear"
 click '.role=="button" and .label=="Copy"'
 guest "umask 077; pbpaste > \"${CREDENTIAL_FILE}\"; ls -l \"${CREDENTIAL_FILE}\""

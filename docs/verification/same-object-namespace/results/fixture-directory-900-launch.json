@@ -1,0 +1,9 @@
+{
+  "command": "(/tmp/k152-bundle/K152Probe.app/Contents/MacOS/K152Probe fixture /tmp/k152-fixture-directory-900.json & probe_pid=$!; (sleep 15; kill -TERM \"$probe_pid\" 2>/dev/null; sleep 3; kill -KILL \"$probe_pid\" 2>/dev/null) & guard_pid=$!; wait \"$probe_pid\"; probe_status=$?; kill \"$guard_pid\" 2>/dev/null; wait \"$guard_pid\" 2>/dev/null; exit \"$probe_status\") >/tmp/k149-cmd-6.out 2>/tmp/k149-cmd-6.err; echo $? >/tmp/k149-cmd-6.tmp; mv /tmp/k149-cmd-6.tmp /tmp/k149-cmd-6.code",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "",
+  "timed_out": false
+}

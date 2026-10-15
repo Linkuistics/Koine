@@ -1,0 +1,285 @@
+{
+  "control": {
+    "by": {
+      "(none)": {
+        "external": 90,
+        "loopback": 34
+      },
+      "CategoriesServi": {
+        "external": 4,
+        "loopback": 0
+      },
+      "CategoriesServic": {
+        "external": 43,
+        "loopback": 0
+      },
+      "Koine": {
+        "external": 96,
+        "loopback": 0
+      },
+      "Spotlight": {
+        "external": 61,
+        "loopback": 0
+      },
+      "StocksKitService": {
+        "external": 53,
+        "loopback": 0
+      },
+      "accessoryupdater": {
+        "external": 31,
+        "loopback": 0
+      },
+      "adprivacyd": {
+        "external": 126,
+        "loopback": 0
+      },
+      "akd": {
+        "external": 14,
+        "loopback": 0
+      },
+      "amsaccountsd": {
+        "external": 20,
+        "loopback": 0
+      },
+      "amsengagementd": {
+        "external": 9,
+        "loopback": 0
+      },
+      "amsondevicestor": {
+        "external": 2,
+        "loopback": 0
+      },
+      "amsondevicestora": {
+        "external": 39,
+        "loopback": 0
+      },
+      "appleaccountd": {
+        "external": 18,
+        "loopback": 0
+      },
+      "appstoreagent": {
+        "external": 55,
+        "loopback": 0
+      },
+      "apsd": {
+        "external": 4,
+        "loopback": 0
+      },
+      "askpermissiond": {
+        "external": 94,
+        "loopback": 0
+      },
+      "assistantd": {
+        "external": 9,
+        "loopback": 0
+      },
+      "cloudd": {
+        "external": 228,
+        "loopback": 0
+      },
+      "codesign": {
+        "external": 7,
+        "loopback": 0
+      },
+      "com.apple.Safar": {
+        "external": 7,
+        "loopback": 0
+      },
+      "com.apple.Safari": {
+        "external": 241,
+        "loopback": 0
+      },
+      "com.apple.geod": {
+        "external": 21,
+        "loopback": 0
+      },
+      "curl": {
+        "external": 31,
+        "loopback": 0
+      },
+      "itunescloudd": {
+        "external": 8,
+        "loopback": 0
+      },
+      "kernel_task": {
+        "external": 49,
+        "loopback": 0
+      },
+      "mDNSResponder": {
+        "external": 173,
+        "loopback": 16
+      },
+      "managedappdistri": {
+        "external": 82,
+        "loopback": 0
+      },
+      "mobileassetd": {
+        "external": 177,
+        "loopback": 0
+      },
+      "networkservicep": {
+        "external": 1,
+        "loopback": 0
+      },
+      "networkservicepr": {
+        "external": 153,
+        "loopback": 0
+      },
+      "nsurlsessiond": {
+        "external": 110,
+        "loopback": 0
+      },
+      "parsec-fbf": {
+        "external": 322,
+        "loopback": 0
+      },
+      "parsecd": {
+        "external": 15,
+        "loopback": 0
+      },
+      "promotedcontent": {
+        "external": 4,
+        "loopback": 0
+      },
+      "promotedcontentd": {
+        "external": 77,
+        "loopback": 0
+      },
+      "softwareupdated": {
+        "external": 548,
+        "loopback": 0
+      },
+      "syslogd": {
+        "external": 0,
+        "loopback": 80
+      },
+      "syspolicyd": {
+        "external": 17,
+        "loopback": 0
+      },
+      "testanyware-age": {
+        "external": 38,
+        "loopback": 0
+      },
+      "testanyware-agen": {
+        "external": 101,
+        "loopback": 0
+      },
+      "tipsd": {
+        "external": 203,
+        "loopback": 0
+      },
+      "trustd": {
+        "external": 196,
+        "loopback": 0
+      }
+    },
+    "lines": 3233,
+    "lookups": {
+      "example.com": {
+        "Koine": 2,
+        "curl": 2
+      }
+    },
+    "unparsed": 199
+  },
+  "koine": {
+    "by": {
+      "(none)": {
+        "external": 25,
+        "loopback": 15
+      },
+      "Koine": {
+        "external": 0,
+        "loopback": 22
+      },
+      "Safari": {
+        "external": 5515,
+        "loopback": 0
+      },
+      "apsd": {
+        "external": 6,
+        "loopback": 0
+      },
+      "com.apple.Safar": {
+        "external": 2,
+        "loopback": 0
+      },
+      "com.apple.Safari": {
+        "external": 79,
+        "loopback": 0
+      },
+      "com.apple.WebKit": {
+        "external": 5326,
+        "loopback": 0
+      },
+      "kernel_task": {
+        "external": 40,
+        "loopback": 0
+      },
+      "mDNSResponder": {
+        "external": 185,
+        "loopback": 8
+      },
+      "mobileassetd": {
+        "external": 53,
+        "loopback": 0
+      },
+      "node": {
+        "external": 0,
+        "loopback": 20
+      },
+      "nsurlsessiond": {
+        "external": 63,
+        "loopback": 0
+      },
+      "parsecd": {
+        "external": 77,
+        "loopback": 0
+      },
+      "passd": {
+        "external": 294,
+        "loopback": 0
+      },
+      "softwareupdated": {
+        "external": 7,
+        "loopback": 0
+      },
+      "swtransparencyd": {
+        "external": 3,
+        "loopback": 0
+      },
+      "syslogd": {
+        "external": 0,
+        "loopback": 23
+      },
+      "testanyware-age": {
+        "external": 44,
+        "loopback": 0
+      },
+      "testanyware-agen": {
+        "external": 67,
+        "loopback": 0
+      },
+      "translationd": {
+        "external": 63,
+        "loopback": 0
+      },
+      "trustd": {
+        "external": 111,
+        "loopback": 0
+      },
+      "webprivacyd": {
+        "external": 268,
+        "loopback": 0
+      }
+    },
+    "lines": 6685,
+    "lookups": {
+      "google": {
+        "Safari": 30
+      }
+    },
+    "unparsed": 64
+  }
+}

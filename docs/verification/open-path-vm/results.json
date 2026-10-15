@@ -1,0 +1,948 @@
+[
+  {
+    "section": "default handler",
+    "case": "a temporary text file under /tmp (itself a symlink)",
+    "path": "/tmp/koine-open-path/plain note.txt",
+    "application": "default",
+    "handler": "com.apple.TextEdit",
+    "windows": [
+      "plain note.txt"
+    ],
+    "status": "passed",
+    "answerMs": 150,
+    "activationMs": 128,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "default handler",
+    "case": "a directory",
+    "path": "/Users/admin/open-path-fx/A Folder",
+    "application": "default",
+    "handler": "com.apple.finder",
+    "windows": [
+      "A Folder"
+    ],
+    "status": "passed",
+    "answerMs": 54,
+    "activationMs": 40,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "default handler",
+    "case": "a document package",
+    "path": "/Users/admin/open-path-fx/Package Doc.rtfd",
+    "application": "default",
+    "handler": "com.apple.TextEdit",
+    "windows": [
+      "Package Doc.rtfd"
+    ],
+    "status": "passed",
+    "answerMs": 53,
+    "activationMs": 43,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "Zed named",
+    "case": "the temporary text file",
+    "path": "/tmp/koine-open-path/plain note.txt",
+    "application": "zed",
+    "handler": "dev.zed.Zed",
+    "windows": [
+      "plain note.txt — plain note.txt"
+    ],
+    "status": "passed",
+    "answerMs": 175,
+    "activationMs": 166,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "Zed named",
+    "case": "the directory",
+    "path": "/Users/admin/open-path-fx/A Folder",
+    "application": "zed",
+    "handler": "dev.zed.Zed",
+    "windows": [
+      "A Folder"
+    ],
+    "status": "passed",
+    "answerMs": 57,
+    "activationMs": 29,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "Zed named",
+    "case": "the document package",
+    "path": "/Users/admin/open-path-fx/Package Doc.rtfd",
+    "application": "zed",
+    "handler": "dev.zed.Zed",
+    "windows": [
+      "Package Doc.rtfd"
+    ],
+    "status": "passed",
+    "answerMs": 50,
+    "activationMs": 41,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "Zed named",
+    "case": "the configuration directory (Client settings)",
+    "path": "/Users/admin/.config/modaliser",
+    "application": "zed",
+    "handler": "dev.zed.Zed",
+    "windows": [
+      "modaliser"
+    ],
+    "status": "passed",
+    "answerMs": 71,
+    "activationMs": 56,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "literal paths",
+    "case": "spaces and shell punctuation, default handler",
+    "path": "/Users/admin/open-path-fx/lit $HOME ~ * ? [x] ; & ' \" # % ! (1).txt",
+    "application": "default",
+    "handler": "com.apple.TextEdit",
+    "windows": [
+      "lit $HOME ~ * ? [x] ; & ' \" # % ! (1).txt"
+    ],
+    "status": "passed",
+    "answerMs": 73,
+    "activationMs": 49,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "literal paths",
+    "case": "decomposed Unicode, default handler",
+    "path": "/Users/admin/open-path-fx/café 日本.txt",
+    "application": "default",
+    "handler": "com.apple.TextEdit",
+    "windows": [
+      "café 日本.txt"
+    ],
+    "status": "passed",
+    "answerMs": 54,
+    "activationMs": 26,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "literal paths",
+    "case": "a symlink to a file, default handler",
+    "path": "/Users/admin/open-path-fx/link-to-note.txt",
+    "application": "default",
+    "handler": "com.apple.TextEdit",
+    "windows": [
+      "real-note.txt"
+    ],
+    "status": "passed",
+    "answerMs": 57,
+    "activationMs": 29,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "literal paths",
+    "case": "a symlink to a directory, default handler",
+    "path": "/Users/admin/open-path-fx/link-to-folder",
+    "application": "default",
+    "handler": "com.apple.finder",
+    "windows": [
+      "Link Target"
+    ],
+    "status": "passed",
+    "answerMs": 48,
+    "activationMs": 19,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "literal paths",
+    "case": "a file through a symlinked parent, Zed named",
+    "path": "/Users/admin/open-path-fx/link-to-dir/inner note.txt",
+    "application": "zed",
+    "handler": "dev.zed.Zed",
+    "windows": [
+      "A Folder — inner note.txt"
+    ],
+    "status": "passed",
+    "answerMs": 41,
+    "activationMs": 34,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "source scripts",
+    "case": "Swift source with its executable bit, default editor",
+    "path": "/Users/admin/open-path-fx/src-exec.swift",
+    "application": "default",
+    "handler": "com.microsoft.VSCode",
+    "windows": [
+      "src-exec.swift"
+    ],
+    "status": "passed",
+    "answerMs": 259,
+    "activationMs": 354,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "source scripts",
+    "case": "Swift source without it, default editor",
+    "path": "/Users/admin/open-path-fx/src-plain.swift",
+    "application": "default",
+    "handler": "com.microsoft.VSCode",
+    "windows": [
+      "src-plain.swift"
+    ],
+    "status": "passed",
+    "answerMs": 61,
+    "activationMs": 47,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "source scripts",
+    "case": "Python source with its executable bit, default editor (Zed in this image)",
+    "path": "/Users/admin/open-path-fx/src-exec.py",
+    "application": "default",
+    "handler": "dev.zed.Zed",
+    "windows": [
+      "A Folder — src-exec.py"
+    ],
+    "status": "passed",
+    "answerMs": 52,
+    "activationMs": 17,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "source scripts",
+    "case": "Python source without it, default editor (Zed in this image)",
+    "path": "/Users/admin/open-path-fx/src-plain.py",
+    "application": "default",
+    "handler": "dev.zed.Zed",
+    "windows": [
+      "A Folder — src-plain.py"
+    ],
+    "status": "passed",
+    "answerMs": 39,
+    "activationMs": 17,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "source scripts",
+    "case": "JavaScript with its executable bit, Zed named",
+    "path": "/Users/admin/open-path-fx/src-exec.js",
+    "application": "zed",
+    "handler": "dev.zed.Zed",
+    "windows": [
+      "A Folder — src-exec.js"
+    ],
+    "status": "passed",
+    "answerMs": 46,
+    "activationMs": 19,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "source scripts",
+    "case": "JavaScript without it, Zed named",
+    "path": "/Users/admin/open-path-fx/src-plain.js",
+    "application": "zed",
+    "handler": "dev.zed.Zed",
+    "windows": [
+      "A Folder — src-plain.js"
+    ],
+    "status": "passed",
+    "answerMs": 46,
+    "activationMs": 26,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "source scripts",
+    "case": "Swift source with its executable bit, Zed named",
+    "path": "/Users/admin/open-path-fx/src-exec.swift",
+    "application": "zed",
+    "handler": "dev.zed.Zed",
+    "windows": [
+      "A Folder — src-exec.swift"
+    ],
+    "status": "passed",
+    "answerMs": 30,
+    "activationMs": 18,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "section": "source scripts",
+    "case": "Swift source without it, Zed named",
+    "path": "/Users/admin/open-path-fx/src-plain.swift",
+    "application": "zed",
+    "handler": "dev.zed.Zed",
+    "windows": [
+      "A Folder — src-plain.swift"
+    ],
+    "status": "passed",
+    "answerMs": 32,
+    "activationMs": 28,
+    "receiptIsKernelIdentity": "true",
+    "notes": ""
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "empty",
+    "status": "passed",
+    "answer": {
+      "classification": "input-error",
+      "status": null,
+      "dependency": null,
+      "errors": [
+        {
+          "classification": "input-error",
+          "message": "path must not be empty.",
+          "path": [
+            "workspaceOpenPath"
+          ],
+          "kind": null,
+          "permissionClass": null,
+          "requiredCapability": null,
+          "requiredCapabilities": null,
+          "phase": null,
+          "osPermission": null,
+          "permissionOwner": null,
+          "reason": null,
+          "requestState": null
+        }
+      ]
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "relative",
+    "status": "passed",
+    "answer": {
+      "classification": "input-error",
+      "status": null,
+      "dependency": null,
+      "errors": [
+        {
+          "classification": "input-error",
+          "message": "path must be an absolute path.",
+          "path": [
+            "workspaceOpenPath"
+          ],
+          "kind": null,
+          "permissionClass": null,
+          "requiredCapability": null,
+          "requiredCapabilities": null,
+          "phase": null,
+          "osPermission": null,
+          "permissionOwner": null,
+          "reason": null,
+          "requestState": null
+        }
+      ]
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "tilde",
+    "status": "passed",
+    "answer": {
+      "classification": "input-error",
+      "status": null,
+      "dependency": null,
+      "errors": [
+        {
+          "classification": "input-error",
+          "message": "path must be an absolute path.",
+          "path": [
+            "workspaceOpenPath"
+          ],
+          "kind": null,
+          "permissionClass": null,
+          "requiredCapability": null,
+          "requiredCapabilities": null,
+          "phase": null,
+          "osPermission": null,
+          "permissionOwner": null,
+          "reason": null,
+          "requestState": null
+        }
+      ]
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "file-url",
+    "status": "passed",
+    "answer": {
+      "classification": "input-error",
+      "status": null,
+      "dependency": null,
+      "errors": [
+        {
+          "classification": "input-error",
+          "message": "path must be an absolute path.",
+          "path": [
+            "workspaceOpenPath"
+          ],
+          "kind": null,
+          "permissionClass": null,
+          "requiredCapability": null,
+          "requiredCapabilities": null,
+          "phase": null,
+          "osPermission": null,
+          "permissionOwner": null,
+          "reason": null,
+          "requestState": null
+        }
+      ]
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "nul",
+    "status": "passed",
+    "answer": {
+      "classification": "input-error",
+      "status": null,
+      "dependency": null,
+      "errors": [
+        {
+          "classification": "input-error",
+          "message": "path must not contain a NUL character.",
+          "path": [
+            "workspaceOpenPath"
+          ],
+          "kind": null,
+          "permissionClass": null,
+          "requiredCapability": null,
+          "requiredCapabilities": null,
+          "phase": null,
+          "osPermission": null,
+          "permissionOwner": null,
+          "reason": null,
+          "requestState": null
+        }
+      ]
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "blank-application",
+    "status": "passed",
+    "answer": {
+      "classification": "input-error",
+      "status": null,
+      "dependency": null,
+      "errors": [
+        {
+          "classification": "input-error",
+          "message": "application.bundleIdentifier must not be blank.",
+          "path": [
+            "workspaceOpenPath"
+          ],
+          "kind": null,
+          "permissionClass": null,
+          "requiredCapability": null,
+          "requiredCapabilities": null,
+          "phase": null,
+          "osPermission": null,
+          "permissionOwner": null,
+          "reason": null,
+          "requestState": null
+        }
+      ]
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "app-bundle",
+    "status": "passed",
+    "answer": {
+      "classification": "input-error",
+      "status": null,
+      "dependency": null,
+      "errors": [
+        {
+          "classification": "input-error",
+          "message": "The path is an application bundle, which this operation does not open.",
+          "path": [
+            "workspaceOpenPath"
+          ],
+          "kind": null,
+          "permissionClass": null,
+          "requiredCapability": null,
+          "requiredCapabilities": null,
+          "phase": null,
+          "osPermission": null,
+          "permissionOwner": null,
+          "reason": null,
+          "requestState": null
+        }
+      ]
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "app-bundle-zed-named",
+    "status": "passed",
+    "answer": {
+      "classification": "input-error",
+      "status": null,
+      "dependency": null,
+      "errors": [
+        {
+          "classification": "input-error",
+          "message": "The path is an application bundle, which this operation does not open.",
+          "path": [
+            "workspaceOpenPath"
+          ],
+          "kind": null,
+          "permissionClass": null,
+          "requiredCapability": null,
+          "requiredCapabilities": null,
+          "phase": null,
+          "osPermission": null,
+          "permissionOwner": null,
+          "reason": null,
+          "requestState": null
+        }
+      ]
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "link-to-app",
+    "status": "passed",
+    "answer": {
+      "classification": "input-error",
+      "status": null,
+      "dependency": null,
+      "errors": [
+        {
+          "classification": "input-error",
+          "message": "The path is an application bundle, which this operation does not open.",
+          "path": [
+            "workspaceOpenPath"
+          ],
+          "kind": null,
+          "permissionClass": null,
+          "requiredCapability": null,
+          "requiredCapabilities": null,
+          "phase": null,
+          "osPermission": null,
+          "permissionOwner": null,
+          "reason": null,
+          "requestState": null
+        }
+      ]
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "alias-to-note",
+    "status": "passed",
+    "answer": {
+      "classification": "input-error",
+      "status": null,
+      "dependency": null,
+      "errors": [
+        {
+          "classification": "input-error",
+          "message": "The path is a Finder alias, which this operation does not open or resolve.",
+          "path": [
+            "workspaceOpenPath"
+          ],
+          "kind": null,
+          "permissionClass": null,
+          "requiredCapability": null,
+          "requiredCapabilities": null,
+          "phase": null,
+          "osPermission": null,
+          "permissionOwner": null,
+          "reason": null,
+          "requestState": null
+        }
+      ]
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "alias-to-note-zed-named",
+    "status": "passed",
+    "answer": {
+      "classification": "input-error",
+      "status": null,
+      "dependency": null,
+      "errors": [
+        {
+          "classification": "input-error",
+          "message": "The path is a Finder alias, which this operation does not open or resolve.",
+          "path": [
+            "workspaceOpenPath"
+          ],
+          "kind": null,
+          "permissionClass": null,
+          "requiredCapability": null,
+          "requiredCapabilities": null,
+          "phase": null,
+          "osPermission": null,
+          "permissionOwner": null,
+          "reason": null,
+          "requestState": null
+        }
+      ]
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "alias-to-folder",
+    "status": "passed",
+    "answer": {
+      "classification": "input-error",
+      "status": null,
+      "dependency": null,
+      "errors": [
+        {
+          "classification": "input-error",
+          "message": "The path is a Finder alias, which this operation does not open or resolve.",
+          "path": [
+            "workspaceOpenPath"
+          ],
+          "kind": null,
+          "permissionClass": null,
+          "requiredCapability": null,
+          "requiredCapabilities": null,
+          "phase": null,
+          "osPermission": null,
+          "permissionOwner": null,
+          "reason": null,
+          "requestState": null
+        }
+      ]
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "alias-to-app",
+    "status": "passed",
+    "answer": {
+      "classification": "input-error",
+      "status": null,
+      "dependency": null,
+      "errors": [
+        {
+          "classification": "input-error",
+          "message": "The path is a Finder alias, which this operation does not open or resolve.",
+          "path": [
+            "workspaceOpenPath"
+          ],
+          "kind": null,
+          "permissionClass": null,
+          "requiredCapability": null,
+          "requiredCapabilities": null,
+          "phase": null,
+          "osPermission": null,
+          "permissionOwner": null,
+          "reason": null,
+          "requestState": null
+        }
+      ]
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "program",
+    "status": "passed",
+    "answer": {
+      "classification": "input-error",
+      "status": null,
+      "dependency": null,
+      "errors": [
+        {
+          "classification": "input-error",
+          "message": "The path is an executable program, which this operation does not open.",
+          "path": [
+            "workspaceOpenPath"
+          ],
+          "kind": null,
+          "permissionClass": null,
+          "requiredCapability": null,
+          "requiredCapabilities": null,
+          "phase": null,
+          "osPermission": null,
+          "permissionOwner": null,
+          "reason": null,
+          "requestState": null
+        }
+      ]
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "windows-executable",
+    "status": "passed",
+    "answer": {
+      "classification": "input-error",
+      "status": null,
+      "dependency": null,
+      "errors": [
+        {
+          "classification": "input-error",
+          "message": "The path is an executable program, which this operation does not open.",
+          "path": [
+            "workspaceOpenPath"
+          ],
+          "kind": null,
+          "permissionClass": null,
+          "requiredCapability": null,
+          "requiredCapabilities": null,
+          "phase": null,
+          "osPermission": null,
+          "permissionOwner": null,
+          "reason": null,
+          "requestState": null
+        }
+      ]
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "missing-file",
+    "status": "passed",
+    "answer": {
+      "classification": "dependency-unavailable",
+      "status": "DEPENDENCY_UNAVAILABLE",
+      "dependency": {
+        "reason": "PATH_NOT_FOUND",
+        "guidance": "Nothing exists at the requested path, or it is a link to something that does not, so nothing was opened. Check the path, then try again."
+      },
+      "errors": []
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "missing-parent",
+    "status": "passed",
+    "answer": {
+      "classification": "dependency-unavailable",
+      "status": "DEPENDENCY_UNAVAILABLE",
+      "dependency": {
+        "reason": "PATH_NOT_FOUND",
+        "guidance": "Nothing exists at the requested path, or it is a link to something that does not, so nothing was opened. Check the path, then try again."
+      },
+      "errors": []
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "dangling-link",
+    "status": "passed",
+    "answer": {
+      "classification": "dependency-unavailable",
+      "status": "DEPENDENCY_UNAVAILABLE",
+      "dependency": {
+        "reason": "PATH_NOT_FOUND",
+        "guidance": "Nothing exists at the requested path, or it is a link to something that does not, so nothing was opened. Check the path, then try again."
+      },
+      "errors": []
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "below-a-file",
+    "status": "passed",
+    "answer": {
+      "classification": "dependency-unavailable",
+      "status": "DEPENDENCY_UNAVAILABLE",
+      "dependency": {
+        "reason": "PATH_NOT_FOUND",
+        "guidance": "Nothing exists at the requested path, or it is a link to something that does not, so nothing was opened. Check the path, then try again."
+      },
+      "errors": []
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "trailing-slash-on-a-file",
+    "status": "passed",
+    "answer": {
+      "classification": "dependency-unavailable",
+      "status": "DEPENDENCY_UNAVAILABLE",
+      "dependency": {
+        "reason": "PATH_NOT_FOUND",
+        "guidance": "Nothing exists at the requested path, or it is a link to something that does not, so nothing was opened. Check the path, then try again."
+      },
+      "errors": []
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "missing-file-and-missing-application",
+    "status": "passed",
+    "answer": {
+      "classification": "dependency-unavailable",
+      "status": "DEPENDENCY_UNAVAILABLE",
+      "dependency": {
+        "reason": "PATH_NOT_FOUND",
+        "guidance": "Nothing exists at the requested path, or it is a link to something that does not, so nothing was opened. Check the path, then try again."
+      },
+      "errors": []
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "missing-application",
+    "status": "passed",
+    "answer": {
+      "classification": "dependency-unavailable",
+      "status": "DEPENDENCY_UNAVAILABLE",
+      "dependency": {
+        "reason": "APPLICATION_NOT_INSTALLED",
+        "guidance": "No installed application with bundle identifier com.example.koine.nothere is registered on this Mac. Install it, then try again."
+      },
+      "errors": []
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "missing-application-for-a-folder",
+    "status": "passed",
+    "answer": {
+      "classification": "dependency-unavailable",
+      "status": "DEPENDENCY_UNAVAILABLE",
+      "dependency": {
+        "reason": "APPLICATION_NOT_INSTALLED",
+        "guidance": "No installed application with bundle identifier com.example.koine.nothere is registered on this Mac. Install it, then try again."
+      },
+      "errors": []
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "no-default-handler",
+    "status": "passed",
+    "answer": {
+      "classification": "dependency-unavailable",
+      "status": "DEPENDENCY_UNAVAILABLE",
+      "dependency": {
+        "reason": "NO_DEFAULT_HANDLER",
+        "guidance": "No application is registered on this Mac to open this item, so it was not opened. Choose an application to open it with, or set a default for this kind of item in Finder."
+      },
+      "errors": []
+    }
+  },
+  {
+    "case": "refused or unavailable",
+    "input": "inspection-denied",
+    "status": "passed",
+    "answer": {
+      "classification": "failed",
+      "status": null,
+      "dependency": null,
+      "errors": [
+        {
+          "classification": "failed",
+          "message": "The path could not be inspected: Permission denied.",
+          "path": [
+            "workspaceOpenPath"
+          ],
+          "kind": "failed",
+          "permissionClass": null,
+          "requiredCapability": null,
+          "requiredCapabilities": null,
+          "phase": null,
+          "osPermission": null,
+          "permissionOwner": null,
+          "reason": null,
+          "requestState": null
+        }
+      ]
+    }
+  },
+  {
+    "case": "authority: workspace:control alone",
+    "status": "passed"
+  },
+  {
+    "case": "authority: desktop:control alone",
+    "status": "passed"
+  },
+  {
+    "case": "authority: revoked grant",
+    "status": "passed"
+  },
+  {
+    "case": "authority: denial precedes inspection",
+    "status": "passed"
+  },
+  {
+    "case": "disclosed reaction: a .command script with its executable bit, default handler (Terminal)",
+    "handler": "Terminal",
+    "status": "recorded",
+    "reactionObserved": true,
+    "reaction": "term-command",
+    "notes": "Terminal was handed the document; reaction observed: true (term-command)"
+  },
+  {
+    "case": "disclosed reaction: a .command script without it, default handler (Terminal)",
+    "handler": "Terminal",
+    "status": "recorded",
+    "reactionObserved": false,
+    "reaction": "",
+    "notes": "Terminal was handed the document; reaction observed: false ()"
+  },
+  {
+    "case": "disclosed reaction: a .sh script with its executable bit, default handler (iTerm in this image)",
+    "handler": "iTerm",
+    "status": "recorded",
+    "reactionObserved": false,
+    "reaction": "",
+    "notes": "iTerm was handed the document; reaction observed: false ()"
+  },
+  {
+    "case": "disclosed reaction: a .sh script without it, default handler (iTerm in this image)",
+    "handler": "iTerm",
+    "status": "recorded",
+    "reactionObserved": false,
+    "reaction": "",
+    "notes": "iTerm was handed the document; reaction observed: false ()"
+  },
+  {
+    "case": "disclosed reaction: a .webloc document naming an HTTP page, default handler (Safari)",
+    "handler": "Safari",
+    "status": "recorded",
+    "reactionObserved": true,
+    "reaction": "[{\"target\":\"/from-webloc\",\"host\":\"koine-url.test:8765\"}]",
+    "notes": "Safari was handed the document; reaction observed: true ([{\"target\":\"/from-webloc\",\"host\":\"koine-url.test:8765\"}])"
+  },
+  {
+    "case": "disclosed reaction: a .fileloc document naming a local file, default handler (TextEdit in this image)",
+    "handler": "TextEdit",
+    "status": "recorded",
+    "reactionObserved": true,
+    "reaction": "[{\"app\":\"TextEdit\",\"title\":\"fileloc target.txt\"}]",
+    "notes": "TextEdit was handed the document; reaction observed: true ([{\"app\":\"TextEdit\",\"title\":\"fileloc target.txt\"}])"
+  },
+  {
+    "case": "no handler setting changed",
+    "status": "passed"
+  },
+  {
+    "case": "accessibility absent throughout",
+    "status": "passed"
+  }
+]

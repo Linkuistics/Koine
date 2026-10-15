@@ -19,6 +19,9 @@ export const CLASSIFICATIONS = [
   'rate-limited',
   'service-unavailable',
   'unknown-outcome',
+  // Added for the workspace launch path; see the README's classification section.
+  'dependency-unavailable',
+  'input-error',
 ] as const;
 
 export type Classification = (typeof CLASSIFICATIONS)[number];
@@ -38,8 +41,10 @@ const SEVERITY: readonly Classification[] = [
   'unknown-provider',
   'unavailable',
   'failed',
+  'input-error',
   'unknown-outcome',
   'service-unavailable',
+  'dependency-unavailable',
   'absent',
   'ok',
 ];
@@ -74,7 +79,16 @@ export interface ClassifiedError {
   readonly path: readonly (string | number)[] | null;
   readonly kind: string | null;
   readonly permissionClass: string | null;
+  /** The first unmet member of the field's ordered requirement set. */
   readonly requiredCapability: string | null;
+  /**
+   * The complete ordered set the failing field requires, as the server sent it
+   * (never sorted, never reduced to the unmet members), or null when the error
+   * carries none or carries something that is not a list of strings.
+   */
+  readonly requiredCapabilities: readonly string[] | null;
+  /** `authorization` (preflight refused the whole operation) or `execution`. */
+  readonly phase: string | null;
   readonly osPermission: string | null;
   readonly permissionOwner: string | null;
   /** Additive per the spec's management-outcome table; absent from other errors. */
@@ -84,6 +98,11 @@ export interface ClassifiedError {
 
 function str(value: unknown): string | null {
   return typeof value === 'string' ? value : null;
+}
+
+function strList(value: unknown): readonly string[] | null {
+  if (!Array.isArray(value)) return null;
+  return value.every((v) => typeof v === 'string') ? (value as string[]) : null;
 }
 
 /** Maps one execution error's `extensions` onto the client vocabulary. */
@@ -107,10 +126,16 @@ export function classifyExecutionError(error: GraphQLErrorShape): ClassifiedErro
     case 'failed':
       classification = 'failed';
       break;
+    case null:
+      // "An error with a non-empty `path` and no `kind` is an input error a
+      // provider found in an argument ... and nothing was attempted." With an
+      // empty path and no kind the client guide says `failed`.
+      classification =
+        Array.isArray(error.path) && error.path.length > 0 ? 'input-error' : 'failed';
+      break;
     default:
-      // No `kind` at all is a request error the server decided before
-      // execution (syntax, validation, variable coercion), which the spec
-      // returns with HTTP 400 and no `data`.
+      // "A `kind` outside these four is not served by this contract; a client
+      // that meets one ... classifies it as `failed`".
       classification = 'failed';
   }
 
@@ -121,6 +146,8 @@ export function classifyExecutionError(error: GraphQLErrorShape): ClassifiedErro
     kind,
     permissionClass,
     requiredCapability: str(ext['requiredCapability']),
+    requiredCapabilities: strList(ext['requiredCapabilities']),
+    phase: str(ext['phase']),
     osPermission: str(ext['osPermission']),
     permissionOwner: str(ext['permissionOwner']),
     reason: str(ext['reason']),

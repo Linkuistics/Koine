@@ -1,0 +1,9 @@
+{
+  "/Users/antony/Development/Koine.add-plugins-for-modaliser-requirements/scripts/vm-probe-protected-path.py": "d9c1d9e5f71190ba7e3767cd9bb248f121094bf9e869f20c0d982abb185be227",
+  "docs/verification/protected-path-metadata/probe.swift": "295f24d483ccdc3511135529cd10c44d85a816da23f74c98be18de2f835a742b",
+  "docs/verification/protected-path-metadata/make-alias.swift": "5e058954f388fd782883246072ad9c8d89a255870f806c933ee16aa905c379d3",
+  "scripts/build-protected-path-probe.sh": "fa011db82cc6b57680c239d6b0d6d44077b6ad3c9c173180095c24d55b2263f4",
+  "App/Info.plist": "431300765533dd93c89b85d479c3127d92cfd9a8468048b7cf84cd3e2dde7157",
+  "App/Koine.entitlements": "ac7918e500e8ab1e8818b3b4c0a44525a5fbc0e3415739ee85f5944fc9dcf7a3",
+  ".build/protected-path-metadata.zip": "63d4562a04e6b2836cf40bb4fd6f991f36c2f851e360667d89797c3aba32adaf"
+}

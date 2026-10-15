@@ -1,0 +1,2 @@
+task: [fixture:separated-local-url-naming] bash scripts/build-separated-local-url-name-probe.sh
+.build/separated-local-url-naming/K164Probe.app: replacing existing signature

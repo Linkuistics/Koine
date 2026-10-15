@@ -1,0 +1,48 @@
+{
+ "case": "doc-short-default-control",
+ "rows": [
+  {
+   "finishedAt": "1791091096.759",
+   "id": "doc-short-default-control",
+   "mode": "open",
+   "pid": 2804,
+   "result": {
+    "callback": {
+     "app": {
+      "bundleIdentifier": "com.apple.TextEdit",
+      "bundleURL": "L1N5c3RlbS9BcHBsaWNhdGlvbnMvVGV4dEVkaXQuYXBw",
+      "executableURL": {
+       "b64": "L1N5c3RlbS9BcHBsaWNhdGlvbnMvVGV4dEVkaXQuYXBwL0NvbnRlbnRzL01hY09TL1RleHRFZGl0",
+       "length": 57
+      },
+      "pid": 2805,
+      "proc_pidpath": {
+       "b64": "L1N5c3RlbS9BcHBsaWNhdGlvbnMvVGV4dEVkaXQuYXBwL0NvbnRlbnRzL01hY09TL1RleHRFZGl0",
+       "length": 57
+      }
+     },
+     "elapsedMs": 49.807071685791016
+    },
+    "defaultHandler": "L1N5c3RlbS9BcHBsaWNhdGlvbnMvVGV4dEVkaXQuYXBw",
+    "submittedApp": {
+     "b64": "L1N5c3RlbS9BcHBsaWNhdGlvbnMvVGV4dEVkaXQuYXBw",
+     "length": 33
+    },
+    "submittedDoc": {
+     "b64": "L1VzZXJzL2FkbWluL2sxMzQvc2hvcnQvc2FtcGxlLnR4dA==",
+     "length": 34
+    }
+   },
+   "startedAt": 1791091096.708509
+  }
+ ],
+ "logs": {
+  "witness": [],
+  "self": []
+ },
+ "windows": "\"Notification Center\" (systemDialog) 1920x1080 app:\"Notification Center\"\n\"Featured\" (standard) 360x180 app:\"Notification Center\"\n\"Forecast\" (standard) 180x180 app:\"Notification Center\"\n\"Month\" (standard) 180x180 app:\"Notification Center\"\n\"sample.txt\" (standard) 656x422 [focused] app:\"TextEdit\"\n",
+ "observer": {
+  "pid": 2805,
+  "lsof_ps": "p2805\nftxt\nn/System/Applications/TextEdit.app/Contents/MacOS/TextEdit\nftxt\n 2805 /System/Applications/TextEdit.app/Contents/MacOS/TextEdit\n"
+ }
+}

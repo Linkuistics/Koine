@@ -1,0 +1,865 @@
+version: '3'
+
+tasks:
+  fixture:local-url-naming:
+    desc: Build/sign k161 local-only helper; execute only in the authorized disposable guest
+    cmds:
+      - bash scripts/build-local-url-name-probe.sh
+
+  fixture:local-url-naming-vm:
+    desc: One approved k161 eight-case collection; requires live terminal supervision, never repeat without new permission
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-local-url-name.py --output {{.OUTPUT | shellQuote}}
+
+  fixture:local-url-naming-check:
+    desc: Check k161 instrumentation and local input/disposal guards without allocating a guest
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/vm-probe-local-url-name.py docs/verification/local-url-naming/test_supervisor.py
+      - python3 -m py_compile scripts/vm-probe-local-url-name.py
+      - shellcheck -x scripts/build-local-url-name-probe.sh
+      - shfmt -d -i 2 -ci scripts/build-local-url-name-probe.sh
+      - pytest -q docs/verification/local-url-naming/test_supervisor.py
+
+  fixture:separated-local-url-naming:
+    desc: Build/sign k164 separated-control local-only helper; execute only in the authorized disposable guest
+    cmds:
+      - bash scripts/build-separated-local-url-name-probe.sh
+
+  fixture:separated-local-url-naming-vm:
+    desc: One authorized k164 separated eight-case collection; requires live terminal supervision, never repeat without new permission
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-separated-local-url-name.py --output {{.OUTPUT | shellQuote}}
+
+  fixture:separated-local-url-naming-check:
+    desc: Check k164 instrumentation and local input/disposal guards without allocating a guest
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/vm-probe-separated-local-url-name.py docs/verification/separated-local-url-naming/test_supervisor.py
+      - python3 -m py_compile scripts/vm-probe-separated-local-url-name.py
+      - shellcheck -x scripts/build-separated-local-url-name-probe.sh
+      - shfmt -d -i 2 -ci scripts/build-separated-local-url-name-probe.sh
+      - pytest -q docs/verification/separated-local-url-naming/test_supervisor.py
+
+  fixture:search-evidence:
+    desc: Build signed Koine with diagnostic workspace startup instrumentation; run only in an isolated VM
+    deps: [app]
+    cmds:
+      - bash scripts/build-search-evidence.sh
+
+  fixture:search-evidence-vm:
+    desc: Measure discovery and its permission/index limits in a prepared disposable VM; exit zero is not acceptance
+    requires:
+      vars: [VM, OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-search.py --vm {{.VM | shellQuote}} --output {{.OUTPUT | shellQuote}}
+
+  fixture:protected-path-metadata:
+    desc: Build and sign the disposable path-metadata probe (launch only in an isolated TestAnyware VM)
+    cmds:
+      - scripts/build-protected-path-probe.sh
+
+  fixture:protected-path-metadata-vm:
+    desc: Measure individual path calls in an already prepared disposable VM; exit 0 is not a prompt-free verdict
+    requires:
+      vars: [VM, OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-protected-path.py --vm {{.VM | shellQuote}} --output {{.OUTPUT | shellQuote}}
+
+  fixture:descriptor-walk-prompt:
+    desc: Build and sign the disposable k174 descriptor-walk prompt probe (launch only in an isolated TestAnyware VM)
+    cmds:
+      - bash scripts/build-descriptor-walk-probe.sh
+
+  fixture:descriptor-walk-prompt-vm:
+    desc: Measure the walk's calls on first-use Desktop, Documents and Downloads in a prepared disposable VM; exit 0 is not a prompt-free verdict
+    requires:
+      vars: [VM, OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-descriptor-walk.py --vm {{.VM | shellQuote}} --output {{.OUTPUT | shellQuote}}
+
+  fixture:descriptor-walk-prompt-check:
+    desc: Check the k174 probe driver and build script without allocating a guest
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/vm-probe-descriptor-walk.py
+      - python3 -m py_compile scripts/vm-probe-descriptor-walk.py
+      - shellcheck -x scripts/build-descriptor-walk-probe.sh
+      - shfmt -d -i 2 -ci scripts/build-descriptor-walk-probe.sh
+
+  check:location-walk-mutations:
+    desc: Show the location-walk, planner and signed-bundle tests go red against one deliberately broken decision of the walk at a time, in a copy of the tree under .build/location-walk-mutations (first run builds the copy; later runs are incremental)
+    cmds:
+      - python3 scripts/check-location-walk-mutations.py {{.CLI_ARGS}}
+
+  fixture:long-action-route:
+    desc: Build and sign the disposable long-location prototype bundles (k134; launch only in an isolated TestAnyware VM)
+    cmds:
+      - scripts/build-long-action-probe.sh
+
+  fixture:long-action-route-vm:
+    desc: Run the long-location prototype phases in an already prepared clone of the launchers image; exit 0 means phases finished, never that a route passed
+    requires:
+      vars: [VM, OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-long-action.py --vm {{.VM | shellQuote}} --output {{.OUTPUT | shellQuote}} install fixtures acquire register thresholds submit_docs launch reveal prompts
+
+  fixture:native-reference-acquisition:
+    desc: Build and sign the disposable native-reference acquisition helper (k143; launch only in an isolated TestAnyware VM)
+    cmds:
+      - scripts/build-native-reference-probe.sh
+
+  fixture:native-reference-acquisition-vm:
+    desc: Run the k143 diagnostic in a fresh clone; OUTPUT is a new directory; exit 0 means the run finished, never that a route passed
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-native-reference.py --output {{.OUTPUT | shellQuote}}
+
+  fixture:item-array-submission:
+    desc: Build and sign the disposable item-array helper and short recording app (k146; launch only in an isolated TestAnyware VM)
+    cmds:
+      - scripts/build-item-array-probe.sh
+
+  fixture:item-array-submission-vm:
+    desc: Run the k146 diagnostic in a fresh clone; OUTPUT is a new directory; exit 0 means the run finished, never that delivery passed
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-item-array.py --output {{.OUTPUT | shellQuote}}
+
+  fixture:file-reference-url-acquisition:
+    desc: Build and sign the k149 throwaway URL helper; execute only in the authorized isolated VM
+    cmds:
+      - scripts/build-file-reference-url-probe.sh
+
+  fixture:file-reference-url-acquisition-vm:
+    desc: Run the fixed k149 eight-case diagnostic in one fresh clone; completion is not route acceptance
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-file-reference-url.py --output {{.OUTPUT | shellQuote}}
+
+  fixture:same-object-namespace:
+    desc: Build/sign the authorized k152 throwaway helper; execute only in its disposable guest
+    cmds:
+      - scripts/build-same-object-probe.sh
+
+  fixture:same-object-namespace-vm:
+    desc: Run the one k152 collection; incomplete outcomes are evidence, never route acceptance
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-same-object.py --output {{.OUTPUT | shellQuote}}
+
+  fixture:focused-zed-receiver:
+    desc: Build/sign k155 throwaway helper; its finite authorization is not repeat permission
+    cmds:
+      - bash scripts/build-focused-zed-probe.sh
+
+  fixture:focused-zed-receiver-vm:
+    desc: One supervised k155 two-request collection; never rerun after its allowance is spent
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-focused-zed.py --output {{.OUTPUT | shellQuote}}
+
+  fixture:bookmark-name-resolution:
+    desc: Build/sign k158 throwaway Foundation helper; execute only in its authorized disposable guest
+    cmds:
+      - bash scripts/build-bookmark-name-probe.sh
+
+  fixture:bookmark-name-resolution-vm:
+    desc: One supervised k158 four-case collection; finite authorization is not repeat permission
+    requires:
+      vars: [OUTPUT]
+    cmds:
+      - python3 scripts/vm-probe-bookmark-name.py --output {{.OUTPUT | shellQuote}}
+
+  fixture:private-ax:
+    desc: Build and sign the private AX PID-recycling diagnostic (execute only in a TestAnyware VM)
+    cmds:
+      - mkdir -p .build/private-ax/K56PrivateBinding.app/Contents/MacOS
+      - sed 's/K54Binding/K56PrivateBinding/g; s/k54-binding/k56-private-binding/g' docs/verification/retained-ax-binding/Info.plist > .build/private-ax/K56PrivateBinding.app/Contents/Info.plist
+      - xcrun clang -fobjc-arc -Wall -Wextra -mmacosx-version-min=26.0 docs/verification/retained-ax-binding/private-probe.m -framework Cocoa -framework ApplicationServices -o .build/private-ax/K56PrivateBinding.app/Contents/MacOS/K56PrivateBinding
+      - >-
+        codesign --force --options runtime --timestamp --sign 'Developer ID Application: Antony Blakey (TA43A4RUP3)' .build/private-ax/K56PrivateBinding.app
+      - codesign --verify --strict --verbose=2 .build/private-ax/K56PrivateBinding.app
+      - /usr/bin/ditto -c -k .build/private-ax .build/private-ax.zip
+
+  fixture:retained-ax:
+    desc: Build the retained-AX PID-recycling diagnostic without launching it (run only in a TestAnyware VM)
+    cmds:
+      - mkdir -p .build/retained-ax/K54Binding.app/Contents/MacOS
+      - cp docs/verification/retained-ax-binding/Info.plist .build/retained-ax/K54Binding.app/Contents/Info.plist
+      - xcrun clang -fobjc-arc -Wall -Wextra -mmacosx-version-min=26.0 docs/verification/retained-ax-binding/probe.m -framework Cocoa -framework ApplicationServices -o .build/retained-ax/K54Binding.app/Contents/MacOS/K54Binding
+      - /usr/bin/ditto -c -k .build/retained-ax .build/retained-ax.zip
+
+  fixture:receive-budget:
+    desc: Build the bounded local receive diagnostic (run only in a TestAnyware VM)
+    cmds:
+      - mkdir -p .build/native-observation
+      - xcrun clang -std=c11 -Wall -Wextra -Werror -mmacosx-version-min=26.0 docs/verification/native-observation/receive-budget.c -o .build/native-observation/receive-budget
+
+  fixture:process-serial:
+    desc: Build and package the diagnostic process-serial probes without launching them (run only in a TestAnyware VM)
+    cmds:
+      - mkdir -p .build/process-serial/K51AutoTerm.app/Contents/MacOS
+      - cp docs/verification/process-serial-lifetime/Info.plist .build/process-serial/K51AutoTerm.app/Contents/Info.plist
+      - xcrun clang -Wall -Wextra -Wno-deprecated-declarations docs/verification/process-serial-lifetime/lookup.c -framework ApplicationServices -lbsm -o .build/process-serial/koine-k51-psn-probe
+      - xcrun clang -fobjc-arc -Wall -Wextra -Wno-unused-parameter -Wno-deprecated-declarations docs/verification/process-serial-lifetime/AutoTerm.m -framework Cocoa -framework ApplicationServices -framework IOKit -o .build/process-serial/K51AutoTerm.app/Contents/MacOS/K51AutoTerm
+      - /usr/bin/ditto -c -k .build/process-serial .build/process-serial.zip
+
+  default:
+    desc: Build and test
+    cmds:
+      - task: build
+      - task: test
+
+  build:
+    desc: Build all targets
+    cmds:
+      - swift build
+      - scripts/stage-provider-framework.sh debug
+
+  test:
+    desc: Run the public-seam and native-seam suites over real loopback HTTP
+    cmds:
+      - swift build --build-tests
+      - task: fixture:variants
+      - task: fixture:selection
+      - task: bundled-providers
+      - task: fixture:receipt-identity-probe
+      - swift test --skip-build
+
+  fixture:
+    desc: Stage KoineProviderAPI.framework, build the fixture provider against it outside the package, sign and approve it
+    cmds:
+      - |
+        FRAMEWORK="$(scripts/stage-provider-framework.sh debug)"
+        Fixtures/FixtureProvider/build.sh "$(dirname "${FRAMEWORK}")" "$(dirname "${FRAMEWORK}")/../FixtureProviders"
+
+  fixture:variants:
+    desc: Build, sign and approve the deliberately bad (and the few good) fixture bundles the native loader tests refuse or load
+    deps: [fixture]
+    cmds:
+      - |
+        PRODUCTS="$(swift build --show-bin-path)"
+        Fixtures/FixtureProvider/build-variants.sh "${PRODUCTS}/PackageFrameworks" "${PRODUCTS}/FixtureProviders" "${PRODUCTS}/FixtureVariants"
+
+  fixture:selection:
+    desc: Build, sign and keep apart the bundles the first-party selection tests choose between (decision cases, and an independently compiled baseline and update for the one real load)
+    deps: [fixture]
+    cmds:
+      - |
+        PRODUCTS="$(swift build --show-bin-path)"
+        Fixtures/FixtureProvider/build-selection.sh "${PRODUCTS}/PackageFrameworks" "${PRODUCTS}/FixtureSelection"
+
+  bundled-providers:
+    desc: Build the bundled providers (desktop, workspace) by their own build definitions against the staged framework into one root, as Contents/PlugIns holds them, then sign each and approve it as an installed provider for the loader tests
+    cmds:
+      - |
+        FRAMEWORK="$(scripts/stage-provider-framework.sh debug)"
+        ROOT="$(dirname "${FRAMEWORK}")/../BundledProviders"
+        for provider in DesktopProvider WorkspaceProvider; do
+          BUNDLE="$(Providers/${provider}/build.sh "$(dirname "${FRAMEWORK}")" "${ROOT}")"
+          Fixtures/FixtureProvider/seal.sh "${BUNDLE}"
+        done
+
+  fixture:receipt-identity-probe:
+    desc: Build the receipt-identity probe - the workspace provider's own Logic and Sources compiled as its build definition compiles them, with a small entry point, so `task test` can run the shipped adapter's two executable identities (the live process's and the retained object's) against the real kernel and a process the test starts, with no launch on the host
+    cmds:
+      - |
+        FRAMEWORK="$(scripts/stage-provider-framework.sh debug)"
+        Fixtures/ReceiptIdentityProbe/build.sh "$(dirname "${FRAMEWORK}")" "$(dirname "${FRAMEWORK}")/../ReceiptIdentityProbe"
+
+  app:
+    desc: Assemble and sign .build/app/Koine.app (Developer ID; KOINE_SIGNING_IDENTITY overrides)
+    cmds:
+      - scripts/build-app.sh
+
+  app:notarize:
+    desc: Submit the built bundle to Apple's notary service, wait, staple the ticket and zip the release artifact (KOINE_NOTARY_PROFILE names the stored credential; default koine-notary)
+    cmds:
+      - scripts/notarize-app.sh
+
+  app:verify:
+    desc: Verify the bundle's version, signature, hardened runtime, designated requirement and stapled notarization ticket, and that Gatekeeper accepts it as a notarized Developer ID build
+    cmds:
+      - scripts/verify-app.sh
+
+  check:minimum-os:
+    desc: Check that every place stating Koine's macOS floor - Package.swift, the desktop provider's manifest, the spec, the README and the assembled bundle's Info.plist and Mach-O minos - agrees with App/Info.plist's LSMinimumSystemVersion
+    cmds:
+      - scripts/check-minimum-os.sh
+
+  check:provider-catalogue:
+    desc: Compare the sealed provider catalogue (App/ProviderCatalogue.json) with the SIGNED packaged bundles it designates - each enabled entry's signing identifier read from the bundle's signature, its release and schema from its manifest, nothing else in Contents/PlugIns, no reserved-only claim - with a self-test that each mutation is seen to fail. Run `task app` first
+    cmds:
+      - scripts/check-provider-catalogue.py --self-test {{.CLI_ARGS}}
+
+  check:docs:
+    desc: Check every relative link and #anchor in the documentation outside .grove/ resolves (--unlinked lists evidence documents nothing living cites)
+    cmds:
+      - scripts/check-doc-links.py {{.CLI_ARGS}}
+
+  design:workflow-render:
+    desc: Render the workflow provider architecture views (D2 0.9.0 and PlantUML 1.2026.8)
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/workflow-providers.d2 docs/design/architecture/workflow-providers.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/workflow-authority.d2 docs/design/architecture/workflow-authority.svg
+      - plantuml -tsvg docs/design/architecture/workflow-targets.puml
+
+  design:search-render:
+    desc: Render eight search views (D2 0.9.0; canonical/resource/inspection/serviceability ELK, remaining Dagre)
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/search-discovery.d2 docs/design/architecture/search-discovery.svg
+      - d2 --layout=elk --theme=0 --dark-theme=200 docs/design/architecture/search-canonical.d2 docs/design/architecture/search-canonical.svg
+      - d2 --layout=elk --theme=0 --dark-theme=200 docs/design/architecture/search-resources.d2 docs/design/architecture/search-resources.svg
+      - d2 --layout=elk --theme=0 --dark-theme=200 docs/design/architecture/search-inspection.d2 docs/design/architecture/search-inspection.svg
+      - d2 --layout=elk --theme=0 --dark-theme=200 docs/design/architecture/search-serviceability.d2 docs/design/architecture/search-serviceability.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/search-traversal.d2 docs/design/architecture/search-traversal.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/search-coverage.d2 docs/design/architecture/search-coverage.svg
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/search-handoff.d2 docs/design/architecture/search-handoff.svg
+
+  design:search-check:
+    desc: Validate additive search SDL and examples independently and with desktop/workspace, preserving action examples; design only, not runtime acceptance
+    dir: clients/contract-only
+    cmds:
+      - npm ci --ignore-scripts --no-audit --no-fund
+      - |
+        node --input-type=module <<'JS'
+        import { readFileSync } from 'node:fs';
+        import { buildSchema, extendSchema, parse, validate, validateSchema } from 'graphql';
+        const read = name => readFileSync(`../../docs/design/${name}`, 'utf8');
+        const search = parse(read('workspace-search-schema.graphql'));
+        const independent = extendSchema(buildSchema('type Query { placeholder: Boolean }'), search);
+        const actions = extendSchema(buildSchema(read('desktop-schema.graphql')), parse(read('workspace-schema.graphql')));
+        const repairedActions = extendSchema(buildSchema(read('desktop-schema.graphql')), parse(read('workspace-action-repair-schema.graphql')));
+        const complete = extendSchema(repairedActions, search);
+        const examples = parse(read('workspace-search-operations.graphql'));
+        const errors = [...validateSchema(independent), ...validateSchema(complete),
+          ...validate(independent, examples), ...validate(complete, examples),
+          ...validate(complete, parse(read('workspace-operations.graphql')))];
+        if (errors.length) throw new Error(errors.map(error => error.message).join('\n'));
+        const removed = { ...search, definitions: search.definitions.map(definition =>
+          definition.kind === 'ObjectTypeExtension' ? { ...definition,
+            fields: definition.fields.filter(field => field.name.value !== 'workspaceSearchFiles') } : definition) };
+        if (!validate(extendSchema(actions, removed), examples).some(error => error.message.includes('workspaceSearchFiles'))) {
+          throw new Error('Control did not reject removed file search');
+        }
+        const invalid = parse('query { workspaceSearchFiles(query: "x", limit: "wrong") { impossibleField } }');
+        if (validate(complete, invalid).length < 2) throw new Error('Controls did not reject wrong input and unknown output');
+        const foreign = parse('extend type Query { workspaceWrong: DesktopApplication }');
+        let refused = false;
+        try { extendSchema(independent, foreign); } catch (error) { refused = error.message.includes('DesktopApplication'); }
+        if (!refused) throw new Error('Control did not reject foreign provider type');
+        for (const name of ['WorkspaceApplicationSearchResult', 'WorkspaceFileSearchResult']) {
+          if (String(complete.getType(name).getFields().matches.type).endsWith('!')) {
+            throw new Error('All-blocked matches must be nullable to preserve coverage');
+          }
+        }
+        console.log('Search SDL and all examples valid independently and composed; existing action examples valid; removed-root, input/output and foreign-type controls rejected. Runtime and branch-invariant acceptance remain pending.');
+        JS
+
+  design:serve:
+    desc: Serve only the architecture presentation on loopback (PORT overrides 8765)
+    cmds:
+      - python3 -m http.server {{.PORT | default "8765"}} --bind 127.0.0.1 --directory docs/design/architecture
+
+  design:workspace-render:
+    desc: Render workspace launch/open views (D2 0.9.0, long-location view ELK, outcomes Dagre; PlantUML 1.2026.8)
+    cmds:
+      - plantuml -tsvg docs/design/architecture/workspace-open.puml
+      - plantuml -tsvg docs/design/architecture/workspace-inspection.puml
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/workspace-outcomes.d2 docs/design/architecture/workspace-outcomes.svg
+      - d2 --layout=elk --theme=0 --dark-theme=200 docs/design/architecture/workspace-long-locations.d2 docs/design/architecture/workspace-long-locations.svg
+
+  design:workspace-check:
+    desc: Validate the workspace SDL independently, its composition with the documented baseline, and its five example operations (design check, not runtime conformance)
+    dir: clients/contract-only
+    cmds:
+      - npm ci --ignore-scripts --no-audit --no-fund
+      - |
+        node --input-type=module <<'JS'
+        import { readFileSync } from 'node:fs';
+        import { buildSchema, extendSchema, parse, validate, validateSchema } from 'graphql';
+        const read = name => readFileSync(`../../docs/design/${name}`, 'utf8');
+        const contribution = parse(read('workspace-schema.graphql'));
+        const core = buildSchema('type Query { placeholder: Boolean } type Mutation { placeholder: Boolean }');
+        const independent = extendSchema(core, contribution);
+        const complete = extendSchema(buildSchema(read('desktop-schema.graphql')), contribution);
+        const examples = parse(read('workspace-operations.graphql'));
+        const errors = [...validateSchema(independent), ...validateSchema(complete), ...validate(complete, examples)];
+        if (errors.length) throw new Error(errors.map(error => error.message).join('\n'));
+        const brokenQuery = parse('mutation { workspaceOpenURL(url: "https://example.com") { impossibleField } }');
+        if (!validate(complete, brokenQuery).some(error => error.message.includes('impossibleField'))) {
+          throw new Error('Negative control did not reject an unknown field');
+        }
+        let refusedForeignType = false;
+        try { extendSchema(core, parse('extend type Mutation { workspaceWrong: DesktopApplication }')); }
+        catch (error) { refusedForeignType = error.message.includes('DesktopApplication'); }
+        if (!refusedForeignType) throw new Error('Negative control did not reject a foreign provider type');
+        console.log('Workspace SDL, independent composition, baseline composition and five operations valid; both negative controls rejected. Runtime acceptance remains pending.');
+        JS
+
+  design:long-action-api-check:
+    desc: Compile/link public long-action mechanism candidates without running them; declarations are not native acceptance
+    cmds:
+      - mkdir -p .build/long-action-native-boundary
+      - xcrun --sdk macosx --show-sdk-version
+      - xcrun clang --version
+      - xcrun clang -arch arm64 -mmacosx-version-min=26.0 -Wall -Wextra -Werror -Wno-deprecated-declarations docs/verification/long-action-native-boundary/api-check.c -framework CoreServices -framework CoreFoundation -o .build/long-action-native-boundary/api-check
+      - xcrun nm -u .build/long-action-native-boundary/api-check > .build/long-action-native-boundary/imports.txt
+      - |
+        node --input-type=module <<'JS'
+        import { readFileSync } from 'node:fs';
+        const imports = new Set(readFileSync('.build/long-action-native-boundary/imports.txt', 'utf8').trim().split(/\s+/));
+        const required = ['_openat', '_fstatat', '_readlinkat', '_fsgetpath', '_FSMakeFSRefUnicode',
+          '_FSCompareFSRefs', '_LSCopyItemInfoForRef', '_LSCopyItemAttribute', '_CFURLCreateFromFSRef',
+          '_fpathconf', '_FSPathMakeRef', '_FSGetCatalogInfo', '_LSGetApplicationForItem',
+          '_CFBundleCopyInfoDictionaryForURL', '_proc_pidpath'];
+        const check = symbols => {
+          const missing = required.filter(symbol => !symbols.has(symbol));
+          if (missing.length) throw new Error('Missing probe imports: ' + missing.join(', '));
+        };
+        check(imports);
+        const removed = new Set(imports);
+        removed.delete('_fsgetpath');
+        let rejected = false;
+        try { check(removed); } catch (error) { rejected = error.message.includes('_fsgetpath'); }
+        if (!rejected) throw new Error('Control did not reject a missing intended import');
+        console.log('All intended imports present; missing-import control rejected. SDK stub link check only; probe not executed and guest availability untested.');
+        JS
+
+  design:action-repair-check:
+    desc: Validate the 1.0.1 action description delta, unchanged shapes/examples and distinct same-printer composition (design check; what the signed host serves is held by `task conformance`)
+    deps: [design:workspace-check]
+    dir: clients/contract-only
+    cmds:
+      - |
+        node --input-type=module <<'JS'
+        import { readFileSync } from 'node:fs';
+        import { buildSchema, extendSchema, parse, print, printSchema, validate, validateSchema, visit } from 'graphql';
+        const read = name => readFileSync(`../../docs/design/${name}`, 'utf8');
+        const baseline = parse(read('workspace-schema.graphql'), { noLocation: true });
+        const repair = parse(read('workspace-action-repair-schema.graphql'), { noLocation: true });
+        const shape = ast => print(visit(ast, { enter: node => node.description ? { ...node, description: undefined } : undefined }));
+        if (shape(baseline) !== shape(repair)) throw new Error('Repair changed the retained action shape');
+        const descriptions = ast => {
+          const result = new Map();
+          visit(ast, { enter(node, key, parent, path) {
+            if (node.description) result.set(path.join('.'), node.description.value);
+          } });
+          return result;
+        };
+        const oldDescriptions = descriptions(baseline);
+        const expected = new Set(['workspaceLaunchApplication', 'workspaceOpenPath', 'workspaceRevealPath']);
+        const assertDelta = ast => {
+          const next = descriptions(ast);
+          const changed = [...next].filter(([path, value]) => oldDescriptions.get(path) !== value);
+          const mutation = ast.definitions.find(definition => definition.name?.value === 'Mutation');
+          const fields = mutation.fields.filter(field => expected.has(field.name.value));
+          if (changed.length !== expected.size || oldDescriptions.size !== next.size || fields.length !== expected.size) {
+            throw new Error('Wrong description delta');
+          }
+          const oldMutation = baseline.definitions.find(definition => definition.name?.value === 'Mutation');
+          for (const field of fields) {
+            const old = oldMutation.fields.find(candidate => candidate.name.value === field.name.value).description.value;
+            if (!field.description.value.startsWith(old + ' ')) throw new Error('Repair did not append the agreed description');
+          }
+        };
+        assertDelta(repair);
+        let rejected = false;
+        try { assertDelta(baseline); } catch { rejected = true; }
+        if (!rejected) throw new Error('Control credited an unchanged baseline as a repair delta');
+        const host = buildSchema(read('desktop-schema.graphql'));
+        const old = extendSchema(host, baseline);
+        const next = extendSchema(host, repair);
+        const independent = extendSchema(buildSchema('type Query { placeholder: Boolean } type Mutation { placeholder: Boolean }'), repair);
+        const errors = [...validateSchema(independent), ...validateSchema(next), ...validate(next, parse(read('workspace-operations.graphql')))];
+        if (errors.length) throw new Error(errors.map(error => error.message).join('\n'));
+        if (printSchema(old) === printSchema(next)) throw new Error('Description changes disappeared from canonical composition');
+        console.log('Repair has three appended descriptions, unchanged action shape and valid examples; unchanged-baseline control rejected. Same-printer SDL differs; the served digest and candidates are held by task conformance, runtime outcomes by the V leaves.');
+        JS
+
+  design:selection-render:
+    desc: Render first-party selection and publication views (D2 0.9.0 and PlantUML 1.2026.8)
+    cmds:
+      - d2 --layout=dagre --theme=0 --dark-theme=200 docs/design/architecture/provider-selection.d2 docs/design/architecture/provider-selection.svg
+      - plantuml -tsvg docs/design/architecture/provider-publication.puml
+
+  version:
+    desc: Print the one version the bundle, the release tag, the release artifact and the cask all take from App/Info.plist
+    cmds:
+      # bash, not Task's own shell: signing-env.sh finds the repository through
+      # BASH_SOURCE, which Task's interpreter leaves empty.
+      - |
+        bash -c 'source scripts/signing-env.sh && printf "version %s\ntag     %s\nartifact %s\n" "${MARKETING_VERSION}" "${RELEASE_TAG}" "${RELEASE_ARTIFACT}"'
+
+  fixture:notarized:
+    desc: Make a notarized copy of the fixture provider (secure timestamp, hardened runtime, submitted and Accepted; not stapleable, as no provider bundle is), approved in a root of its own, for the Gatekeeper check to accept
+    deps: [fixture]
+    cmds:
+      - |
+        PRODUCTS="$(swift build --show-bin-path)"
+        Fixtures/FixtureProvider/notarize.sh "${PRODUCTS}/FixtureProviders" "${PRODUCTS}/NotarizedFixtureProviders"
+
+  app:vm-verify-notarized:
+    desc: Verify on a Gatekeeper-ENFORCING TestAnyware macOS clone that a quarantined copy of the notarized, stapled bundle launches at first run with no right-click-Open, is assessed as source=Notarized Developer ID, names Koine in the Accessibility consent dialog, loads its bundled desktop provider, refuses a quarantined un-notarized per-user provider before dlopen with no system dialog, and loads a quarantined notarized one
+    deps: [fixture:variants, fixture:notarized]
+    cmds:
+      - scripts/vm-verify-notarized.sh
+
+  app:vm-verify-homebrew:
+    desc: Verify the PUBLISHED cask on a Gatekeeper-ENFORCING TestAnyware macOS clone - brew install --cask linkuistics/taps/koine downloads the tagged release, the quarantined bundle is accepted as notarized with nothing stripped, Koine launches, and uninstall and --zap are measured against what Koine left in ~/Library and Background Task Management
+    cmds:
+      - scripts/vm-verify-homebrew.sh
+
+  app:vm-verify-release:
+    desc: Release acceptance, platform half, in ONE Gatekeeper-ENFORCING TestAnyware macOS session on the notarized, stapled, quarantined bundle - the hardened runtime with the empty entitlements file read in the guest, Accessibility consent absent, requested twice in one run of Koine and again in a later one, given and revoked with the prompt and the System Settings entry naming Koine, the os-permission error at the original response path told apart from a missing capability with no dialog raised by a read, same-titled windows under distinct stable references, a live PID claimed at another start instant, window closure and what a Koine restart does to each kind of reference, the management window closed with the listener and the provider still serving, and login launch across a VM restart with no client installed
+    cmds:
+      - scripts/vm-verify-release.sh
+
+  app:vm-verify-grant-workflows:
+    desc: Release acceptance, grant-workflow half, in ONE Gatekeeper-ENFORCING TestAnyware macOS session on the notarized, stapled, quarantined bundle - a grant created in the window and handed to a script, a client enrolled and approved in the window with nothing typed, pasted or shown, a pending requester that reads its own request and neither approves itself nor enumerates nor reaches a provider operation, an already-decided refusal composed into the window's own sentence with both lists re-read, sixteen requests pending together with the window scrolled to reach and deny one, HTTP 429 with Retry-After past the enrollment rate limit and pending-request-limit past the pending cap, and an enrolled grant revoked in the window whose credential is then refused 401 on the very connection it was served on and again after a restart
+    cmds:
+      - scripts/vm-verify-grant-workflows.sh
+
+  app:vm-verify-disclosure:
+    desc: Verify in a clean TestAnyware macOS VM that the signed bundle's window discloses workspace control's reach in the create-grant view for a new grant, the request view for a pending request and the grant list for existing grants, each observed on screen and equal to the text a koine:manage client reads over HTTP, that koine:manage and desktop capabilities show none, that a revoked grant discloses nothing and that a restart changes no grant
+    cmds:
+      - scripts/vm-verify-disclosure.sh
+
+  app:vm-verify:
+    desc: Verify the signed bundle in a clean TestAnyware macOS VM (install, login launch, grant, revoke, quit)
+    cmds:
+      - scripts/vm-verify.sh
+
+  app:vm-verify-providers:
+    desc: Verify in a clean TestAnyware macOS VM that the signed, hardened bundle loads an approved same-team fixture provider and refuses an ad-hoc signed or incompatible one
+    deps: [fixture:variants]
+    cmds:
+      - scripts/vm-verify-providers.sh
+
+  app:vm-verify-desktop:
+    desc: Verify in a clean TestAnyware macOS VM that the signed bundle's desktop provider is ACTIVE, resolves a real application by pid and startedAt, lists same-titled windows under distinct references, refuses a grant without desktop:read, reports stale, wrong-kind and malformed references as unavailable, and reports absent or revoked Accessibility consent as an os-permission error without a consent dialog
+    cmds:
+      - scripts/vm-verify-desktop.sh
+
+  app:vm-verify-desktop-focus:
+    desc: Verify in a clean TestAnyware macOS VM that the signed bundle's desktopFocusWindow, under desktop:control alone, focuses exactly the chosen one of two same-titled windows, a background application's, a minimised and an other-Space window, as an independent native witness sees it, and that a closed, quit, restarted or unresolvable target and revoked consent are errors that move no focus
+    cmds:
+      - scripts/vm-verify-desktop-focus.sh
+
+  app:vm-verify-desktop-remembered:
+    desc: Verify in a clean TestAnyware macOS VM that the signed bundle's desktop provider lists a window left on another Space as REMEMBERED under the reference it had while CURRENT, revalidates and focuses it on selection, drops a closed window and a terminated application, as an independent native witness sees the destruction reported, and keeps observing with the management window closed
+    cmds:
+      - scripts/vm-verify-desktop-remembered.sh
+
+  app:vm-verify-latency:
+    desc: Measure, in a clean TestAnyware macOS VM on the signed bundle, warm query-to-choices and selection-to-focus latency in the keyboard workflow - a rotation of switches between two same-titled Finder windows and a TextEdit document, each starting from an asserted window and following real keystrokes in it - and print the observed distribution as a report, never a target
+    cmds:
+      - scripts/vm-verify-latency.sh
+
+  app:vm-verify-accessibility:
+    desc: Verify in a clean TestAnyware macOS VM that the signed bundle's window shows Accessibility guidance, provider and service status, that koineManagement.osPermissions reports the same consent to koine:manage alone without prompting, that the window's request makes macOS name Koine in its dialog and in System Settings, and that both follow consent given and removed without a restart
+    cmds:
+      - scripts/vm-verify-accessibility.sh
+
+  app:vm-verify-enrollment:
+    desc: Verify in a clean TestAnyware macOS VM that a guest client with a secret of its own requests koine:manage and the desktop capabilities, that the signed bundle's window shows its label, code, exact capability set and the koine:manage warning, that a subset approved there deliberately makes the unchanged secret the first manager's, which approves a second client over GraphQL, that a third is denied in the window, and that grants and decisions survive a restart, with no credential typed, pasted or shown
+    cmds:
+      - scripts/vm-verify-enrollment.sh
+
+  check:launch-call-path:
+    desc: Enumerate the workspace provider's launch, URL, path and reveal calls - its one NSWorkspace launch request, its one Finder selection request in its two documented forms, its one open request shared by URLs and paths, the ten parameters they set, its two handler lookups (a scheme, and the item opened), the item inspection's three resource keys with no directory listing or content read, every application it discovers itself resolved by the descriptor walk and limited before its bundle is read, with no whole-path inspection of a registered location left, the receipt's two executable identities (the live process's and the retained object's) each acquired by that walk as one device-and-inode representation with no length limit, and every import of the built bundle - and check them against the authority trace - no activation, hiding, raising, accessibility, event-posting, scripting or process call beside them (each pattern is first seen to match a control)
+    deps: [app]
+    cmds:
+      - scripts/check-launch-call-path.sh
+
+  check:launch-call-path-mutations:
+    desc: Show the receipt-identity part of `task check:launch-call-path` goes red against one deliberately broken decision of the receipt's two executable identities at a time (a symlink-resolving or resource-identifier call, a path decoded to text, a hand-off limit, an identity not acquired by the walk, a second representation), in a throwaway copy of what the check reads; the unmutated copy must pass first
+    cmds:
+      - python3 scripts/check-launch-call-path-mutations.py
+
+  app:vm-verify-launch:
+    desc: Verify in a clean TestAnyware macOS VM that the signed bundle's workspaceLaunchApplication, under workspace:control AND desktop:control and no read capability, launches Notes while it is stopped and reactivates it while it runs, each with TextEdit in front and Koine inactive, as an independent witness sees activation, one instance and the kernel's identity for the returned process; that either control alone, desktop:read alone and a revoked grant launch nothing and move no focus; and that launch works and raises no consent prompt with Accessibility absent and again after it is revoked, with the client's recovery, a desktop read plus an explicit focus, exercised separately
+    cmds:
+      - scripts/vm-verify-launch.sh
+
+  client:
+    desc: Generate the contract-only client's TypeScript from the introspection response it was captured against, validating the five operations of docs/design/desktop-operations.graphql against that schema, then typecheck, bundle to one dependency-free file and run its adapter checks
+    dir: clients/contract-only
+    cmds:
+      - npm ci
+      - npm run build
+
+  client:capture:
+    desc: Re-capture what the contract-only client is generated against from the signed Koine.app's own served schema - runs `task conformance:vm` (the signed bundle in a clean TestAnyware macOS VM, introspected as a code generator would) and copies its introspection response and the Koine.schemaDigest read in the same session into clients/contract-only/capture/. Run `task client` afterwards; it fails if an operation it uses no longer validates
+    cmds:
+      - task: conformance:vm
+      - cp .build/conformance/workspace/introspection.json clients/contract-only/capture/introspection.json
+      - |
+        jq -n --arg digest "$(cat .build/conformance/workspace/digest)" \
+          '{note: "Metadata read over the same connection, in the same session, as introspection.json. Both were captured from the signed Koine.app serving core + desktop + workspace (scripts/vm-verify-conformance.sh); `task client:capture` rewrites both.", contractVersion: "koine-desktop/1", schemaDigest: $digest}' \
+          > clients/contract-only/capture/capture.json
+
+  app:vm-verify-contract-client:
+    desc: Verify in a clean TestAnyware macOS VM that a client written from the documented contract alone obtains a grant through the window, introspects the schema it was generated against, resolves a running application, lists its windows and focuses a chosen one with the reference returned unchanged, telling a capability denial, an OS-permission refusal, an absent process, a gone window and a stopped service apart
+    cmds:
+      - scripts/vm-verify-contract-client.sh
+
+  app:vm-verify-launch-contract-client:
+    desc: Verify in a clean TestAnyware macOS VM that the contract-only client, regenerated from the schema the signed bundle serves and written from the documented contract alone, obtains its grants through the window, introspects that schema, and launches Notes through workspaceLaunchApplication while it is stopped and reactivates it while it runs, each with TextEdit in front and Koine inactive as an independent witness sees activation; telling apart a dependency that is unavailable, a capability denial with its complete required set, a launch that failed and an absent process; and hands the receipt's process to a desktop read unchanged
+    deps: [client]
+    cmds:
+      - scripts/vm-verify-launch-contract-client.sh
+
+  conformance:
+    desc: Hold three profiles (docs/design/profiles/; the third is the 1.0.1 workspace repair) to the schemas their hosts serve, each by type, field, argument, nullability, default, deprecation and description, its digest against the one Koine served, and its provider candidates against the pin kept apart from both - old-host core + desktop (the released host), extension-host core + desktop (this tree's headless host) and core + desktop + workspace (the signed Koine.app in a TestAnyware VM); each check first proves itself red against mutated copies of the contract and of the pins
+    cmds:
+      - scripts/conformance.sh
+
+  conformance:headless:
+    desc: Only the two profiles a headless host serves, old-host and extension-host core + desktop; no VM
+    cmds:
+      - KOINE_CONFORMANCE_SKIP_VM=1 scripts/conformance.sh
+
+  conformance:vm:
+    desc: Only core + desktop + workspace, served by the signed Koine.app in a clean TestAnyware macOS VM (the application is built by `task app`; notarization is recorded, not required)
+    cmds:
+      - scripts/vm-verify-conformance.sh
+
+  compat:
+    desc: Build and run the binary compatibility pairs (independently built old/new hosts and providers, the workspace 1.0.0 and 1.0.1 pairs among them) and repeat the retained workspace subjects against 1.0.1
+    cmds:
+      - task: compat:build
+      - task: compat:verify
+      - task: compat:workspace-subjects
+
+  compat:baseline:
+    desc: Build the pre-extension host, framework, fixtures and desktop provider from the RELEASED revision (KOINE_BASELINE_REVISION, default v0.1.0) in a tree of its own under .build/compat; the old side of every old/new check (CONFIGURATION=debug|release)
+    cmds:
+      - scripts/build-baseline-host.sh {{.CONFIGURATION | default "debug"}}
+
+  compat:build:
+    desc: Build the retained workspace 1.0.0 (compat:workspace-baseline) and the released baseline (compat:baseline), then this tree's newer revision in a separate tree under .build/compat - its host, fixtures, workspace 1.0.1 as shipped and the same source stating first-party-selection-v1 as a per-user update - and the later fixtures (CONFIGURATION=debug|release)
+    cmds:
+      - task: compat:workspace-baseline
+      - scripts/build-compat-pairs.sh {{.CONFIGURATION | default "debug"}}
+
+  compat:verify:
+    desc: Pair each revision's provider with the other revision's headless host and check every case over loopback HTTP - the fixture pairs, and the workspace pairs - the retained 1.0.0 and this tree's 1.0.1 each under both hosts, and the approved per-user 1.0.1 variant over the bundled 1.0.0 in both - with the same locations probed through every one and the two releases compared (CONFIGURATION=debug|release; needs compat:build)
+    cmds:
+      - scripts/verify-compat-pairs.py {{.CONFIGURATION | default "debug"}}
+
+  compat:workspace-subjects:
+    desc: Run the RETAINED workspace 1.0.0 revision's own short-path subjects (N, over the signed bundle) and composition suites (G), unedited, against this tree's workspace 1.0.1 bundle in a copy of that revision's tree; the instrument is first seen red against a 1.0.1 provider with the missing-path rule broken, and only the one assertion that names release 1.0.0 may fail (CONFIGURATION=debug|release; needs compat:build)
+    cmds:
+      - scripts/verify-repair-subjects.sh {{.CONFIGURATION | default "debug"}}
+
+  compat:workspace-baseline:
+    desc: Build the RETAINED workspace 1.0.0 provider from the revision scripts/retained-workspace-1.0.0.json pins (jj tag workspace-1.0.0-baseline), never from this working tree, in a tree of its own under .build/compat/<configuration>/workspace-1.0.0 - that revision's host, framework and desktop provider, and its sealed, approved Desktop and Workspace bundles kept apart in bundled/ with a record of their digests; the old side of every workspace old/new pair (CONFIGURATION=debug|release)
+    cmds:
+      - scripts/build-retained-workspace.sh {{.CONFIGURATION | default "debug"}}
+
+  compat:workspace-baseline-verify:
+    desc: Hold the retained workspace 1.0.0 bundle to what it shipped with - its pinned identity and SDL, the 1.0.0 profile served by that revision's own host bundling it, and that revision's workspace suites (logic, composition, installations, schema and catalogue conformance, and the short-path N subjects loading the bundle) - each first seen red against a mutated copy (CONFIGURATION=debug|release; needs compat:workspace-baseline)
+    cmds:
+      - scripts/verify-retained-workspace.sh {{.CONFIGURATION | default "debug"}}
+
+  selection:fixtures:
+    desc: Build, sign and keep apart the provider bundles the selection acceptance installs - fixtures (an old baseline and an update per slot, ordinary providers, claimants, one refusal per trust check), each writing initializer, factory and start markers, and the REAL first-party providers (the released desktop, this tree's desktop and workspace, and newer releases of both that state first-party-selection-v1); output .build/selection-acceptance/fixtures
+    deps: [compat:baseline]
+    cmds:
+      - swift build --product KoineSelectionHost
+      - |
+        FRAMEWORK="$(scripts/stage-provider-framework.sh debug)"
+        Fixtures/FixtureProvider/build-decisions.sh "$(dirname "${FRAMEWORK}")" .build/selection-acceptance/fixtures
+        scripts/build-selection-real.sh "$(dirname "${FRAMEWORK}")" .build/selection-acceptance/fixtures
+
+  selection:hosts:
+    desc: Assemble and sign the purpose-built headless hosts of the selection acceptance, each with its own test catalogue and in-application bundles sealed BEFORE its signature (Fixtures/SelectionHost/hosts.json); output .build/selection-acceptance/hosts. Optionally name hosts (CLI_ARGS)
+    deps: [selection:fixtures]
+    cmds:
+      - |
+        FRAMEWORK="$(scripts/stage-provider-framework.sh debug)"
+        scripts/build-selection-hosts.py "$(swift build --show-bin-path)" "${FRAMEWORK}" \
+          .build/selection-acceptance/fixtures .build/selection-acceptance/hosts {{.CLI_ARGS}}
+
+  selection:decisions:
+    desc: Run the selection decision rows (N and G) - every scenario and each alternative order in its own signed host process with a fresh marker log, over loopback HTTP - and write .build/selection-acceptance/decisions.json. `--only <text>` (CLI_ARGS) runs a subset, which cannot close the control pairing
+    deps: [selection:hosts]
+    cmds:
+      - scripts/verify-selection-decisions.py .build/selection-acceptance/hosts .build/selection-acceptance/fixtures .build/selection-acceptance/decisions.json {{.CLI_ARGS}}
+
+  selection:failures:
+    desc: Run the selection failure-boundary rows (N and G) - a frozen update failing after its choice with healthy alternatives, recovery by repair or removal and restart, principal conflicts among frozen selections, ordinary duplicates and their refused rivals, the capability-owner cascade held to its exact absent/rejected conformance profile, a shipped provider that fails its start, the schema digest across roots, changed SDL, an extra provider and a catalogue's order (each held to the design SDL written out in the asserted start order), the management fields' authority, and restart after a removal, a changed baseline, an injected assessment verdict and an unreadable root, each scenario, alternative order and phase in its own signed host process with a fresh marker log - and write .build/selection-acceptance/failures.json. `--only <text>` (CLI_ARGS) runs a subset, which cannot close the control pairing
+    deps: [selection:hosts]
+    cmds:
+      - swift build --product KoineConformance
+      - scripts/verify-selection-failures.py .build/selection-acceptance/hosts .build/selection-acceptance/fixtures .build/selection-acceptance/failures.json --conformance "$(swift build --show-bin-path)/KoineConformance" {{.CLI_ARGS}}
+
+  selection:updates:
+    desc: Run the selection update rows (N and G) - an old host with an old desktop provider and a selection-aware host over an independently compiled old designated baseline (existing operations, errors and grants answered identically, core + desktop profiles held), separately approved newer desktop and workspace updates that are the one image per slot, a host that predates first-party-selection-v1 given newly published updates with the principal class kept and renamed, every trust refusal a per-user update can meet with its fall-back and the stage and quarantine recoveries, a provider claiming a reserved pair under a fixture signing identifier, equal bytes and names in both roots staged in both orders and a legacy staging entry, and mixed releases of the real desktop and workspace built from reused helper source with their image inventory - each scenario, alternative order and restart in its own signed host process - and write .build/selection-acceptance/updates.json. `--only <text>` (CLI_ARGS) runs a subset, which cannot close the control pairing
+    deps: [selection:hosts]
+    cmds:
+      - swift build --product KoineConformance
+      - scripts/verify-selection-updates.py .build/selection-acceptance/hosts .build/selection-acceptance/fixtures .build/selection-acceptance/updates.json --conformance "$(swift build --show-bin-path)/KoineConformance" {{.CLI_ARGS}}
+
+  selection:mutation:
+    desc: Make each instrument of the selection decisions come back RED against a loader with one decision deliberately broken (text version order, first-copy tie break, no signing-identifier check, reserved claims unrefused, equal release taking over, unselected candidates loading, a team given to an ad-hoc host; and for the failure boundary two shipped principal conflicts not both refused, an ordinary claimant not refused, a host class not counted, descriptor features not compared, alternatives loaded after a failure; and for the duplicates, cascade and start failure a refused rival contesting, eligible duplicates not refused, the capability-owner removal never run, run for one round or given no cycle, a failed start still answering, alternatives loaded after a failed start; and for the digest and restart rows composition without the shipped group first or in reverse identifier order, a digest over type names alone, every grant holding koine:manage, the assessment verdict never asked or a refusal remembered, an unreadable root read as empty; and for the update rows an approval's Team ID not compared or no approval required, signatures not verified, a location outside the root accepted, the quarantine assessment skipped, staging names shared across origins, the selection feature not required, the signing identifier not compared, compatibility not checked, every eligible candidate loaded), each in a copy of the tree under .build/selection-mutations; the working tree is never edited. Names may follow (CLI_ARGS)
+    deps: [selection:fixtures]
+    cmds:
+      - scripts/check-selection-mutations.py .build/selection-acceptance/fixtures .build/selection-acceptance/mutations {{.CLI_ARGS}}
+
+  selection:vm-hosts:
+    desc: Build, sign and NOTARIZE the purpose-built hosts of the selection acceptance's V seam, from the same catalogues and bundles as N and G - the cases sealed inside a host, and the real desktop and workspace updates, re-sealed with a secure timestamp and the hardened runtime, every host submitted to Apple's notary service and stapled, each update bundle notarized on its own - into .build/selection-vm. `--unnotarized` (CLI_ARGS) signs only, for developing the drivers where no notary credential is stored; the run's record then says it cannot close a row that needs an intact notarized host
+    deps: [selection:fixtures]
+    cmds:
+      - |
+        FRAMEWORK="$(scripts/stage-provider-framework.sh debug)"
+        python3 scripts/build-selection-vm-hosts.py {{.CLI_ARGS}} "$(swift build --show-bin-path)" "${FRAMEWORK}" \
+          .build/selection-acceptance/fixtures .build/selection-vm
+
+  selection:vm:
+    desc: The V seam of the selection acceptance in ONE Gatekeeper-ENFORCING TestAnyware macOS session - the RELEASED notarized Koine downloaded in the guest, quarantined and first-run as a user has it, given newly published updates (normal and renamed principal) and compared with a selection-aware host over the same old desktop baseline; the purpose-built hosts as downloads; real newer desktop and workspace updates and mixed releases; the fixture signing identifier refused; every trust refusal of a genuinely quarantined download with no dialog on screen; a quarantine refusal recovered as its diagnostic says; equal bytes in both roots and a legacy staging entry across restarts, with Gatekeeper's own verdict and the loaded paths recorded. Needs `task selection:vm-hosts`. KOINE_SELECTION_V_ONLY=<text> runs a subset
+    deps: [app]
+    cmds:
+      - scripts/vm-verify-selection.sh
+
+  launchers:prepare:
+    desc: Prepare a reusable TestAnyware macOS image (tart image koine-launchers-prepared, from the platform golden) with Gatekeeper ENFORCING and the twelve named launchers - Dia, ChatGPT, Claude, Zed, Visual Studio Code, Jump Desktop, Kimi, iTerm, Mail, Notes, Obsidian and Zotero - installed from their normal distribution (Jump Desktop from the vendor, as the cask's build aborts on macOS 26), each launched once past Gatekeeper and first-run UI without signing in, a pristine quarantined copy of one archived apart, Dia made the alternate default browser and Safari restored, and an inventory of the actual bundle identifiers, versions, paths and signatures written to .build/launcher-apps/inventory.json. Takes about half an hour and replaces the image. KOINE_LAUNCHERS_IMAGE and KOINE_LAUNCHERS_OUTPUT override the names
+    cmds:
+      - scripts/vm-prepare-launchers.sh prepare
+
+  launchers:verify:
+    desc: Check the image launchers:prepare kept - a fresh clone is inventoried again and compared with the recorded inventory, the archived quarantined copy extracts still quarantined and unopened, and every launcher opens with Gatekeeper enforcing and not one dialog to answer
+    cmds:
+      - scripts/vm-prepare-launchers.sh verify
+
+  launchers:vm:
+    desc: Accept the twelve named launchers in a clone of the prepared image (task launchers:prepare) with the signed Koine, through the contract-only client under workspace:control AND desktop:control and no read capability - Dia, ChatGPT, Claude, Zed, Visual Studio Code, Jump Desktop, Kimi, iTerm, Mail, Notes, Obsidian and Zotero each launched cold and reactivated while running with TextEdit in front and Koine inactive, an independent witness observing activation, the one instance and the kernel's identity for the returned process, and callback and activation latency recorded beside each version; a not-installed and a deleted application reporting APPLICATION_NOT_INSTALLED; and the quarantined Obsidian copy's Gatekeeper dialog held past the three-second bound (failed, no replay, nothing published after it is declined or accepted). Exits 3 when the only failures are controls-only activations, which stay pending for Antony. KOINE_LAUNCHERS_ONLY=<name,...> runs a subset, KOINE_LAUNCHERS_SKIP_EXTRA=1 skips the not-installed and Gatekeeper cases
+    deps: [app, client]
+    cmds:
+      - scripts/vm-verify-launchers.sh
+
+  open-url:vm:
+    desc: Accept workspaceOpenURL in a clone of the prepared image (task launchers:prepare) with the signed Koine, through the contract-only client under workspace:control AND desktop:control and no read capability, with Accessibility never granted - with Safari the default browser, then a test browser (Fixtures/UrlBrowser, which records the exact string it is handed) and Dia made the alternate default (Safari restored at the end) - as a page server in the guest and an independent witness see it - an encoded path, query and fragment byte for byte (cold browser, then running), an ASCII IDNA host, a universal-link candidate received by the browser first, and the client's search flow with a suggestion source that refuses the connection and one that never answers still opening the typed-query URL; then, with Safari, 18 refused inputs (invalid escapes, raw Unicode, whitespace, backslashes, credentials, other schemes) with nothing repaired or opened, either control alone and a revoked grant refused, the default Google template's URL opened, and every network system call Koine made read from the system (no outbound connect, with a control). Dia shows no page in the image (its first run stops at an account gate), so for Dia the delivery is observed and the page load is recorded as pending (exit 3, as when an acknowledged open is not seen activating). KOINE_OPEN_URL_ONLY=Safari,UrlBrowser,Dia,refus runs the named sections
+    deps: [app, client]
+    cmds:
+      - scripts/vm-verify-open-url.sh
+
+  open-path:vm:
+    desc: Accept workspaceOpenPath in a clone of the prepared image (task launchers:prepare) with the signed Koine, through the contract-only client under workspace:control AND desktop:control and no read capability, with Accessibility never granted - disposable fixtures in the guest (a temporary text file under /tmp, a directory, a document package, links, source scripts with and without executable bits, programs and Finder alias files, a configuration directory) opened in their default handler and with Zed named, the handler's own window read from the window server and the receipt's process compared with the kernel's; literal spaces, punctuation, decomposed Unicode and symlinks; refused inputs and payloads, every dependency, a denied inspection (failed) and either control alone or a revoked grant, all with nothing opening; the disclosed reactions of Terminal, iTerm, Safari and Finder to scripts and location documents, recorded and not prevented; and that no default-handler setting changed. Exits 3 when the only open outcome left is an acknowledged open not seen activating its handler. KOINE_OPEN_PATH_ONLY=default,zed,literal,source,refus,react runs the named sections
+    deps: [app, client]
+    cmds:
+      - scripts/vm-verify-open-path.sh
+
+  reveal-path:vm:
+    desc: Accept workspaceRevealPath in a clone of the prepared image (task launchers:prepare) with the signed Koine, through the contract-only client under workspace:control AND desktop:control and no read capability, with Accessibility never granted - disposable fixtures in the guest (a directory of siblings with a file, a folder, a Finder alias file, a literal-punctuation file and a symlink) and the real Zed bundle - each revealed from a Finder with no window open, and what Finder then shows read by an independent observer (Finder's own account of its front window's folder and selected item by AppleScript run from the test agent, not Koine, whose own Automation consent is given once before Koine starts) with a screenshot of each - a file, a folder (also with a trailing slash), an application bundle (selected and never launched), a Finder alias file (itself, not resolved), the filesystem root as a root view, literal spaces and punctuation and a symlink; the receipt is only Finder's acknowledgment and echoes the path; then refused inputs, missing paths and either control alone or a revoked grant, with nothing revealed or activated and Finder still showing no window. KOINE_REVEAL_ONLY=reveal,refus runs the named sections
+    deps: [app, client]
+    cmds:
+      - scripts/vm-verify-reveal-path.sh
+
+  target-locations:vm:
+    desc: Accept the long-location target stage (workspace 1.0.1) at V, in a clone of the prepared image (task launchers:prepare), with the signed Koine through the contract-only client and Accessibility never granted - first the observers controlled at the admitted length (1,023-byte documents, a witness document that records its exact bytes, and directories opened and revealed by an independent non-Koine route and seen by the handler's window, the witness application and Finder's own account), then Koine's own opens and reveals at 1,023 bytes (default handler, Zed, Finder), the 1,024-byte and about 1,500-byte refusals (`failed` with guidance, nothing delivered or selected over a window longer than the control needed), a missing long path (PATH_NOT_FOUND), the present walk outcomes only an effect shows (31- and 32-link chains, a mode-0600 final directory, one link inode in two directories, a finite dot-link, multibyte and combining names, the 300-byte ASCII impossible component), the root and a link to it, and first use in Desktop, Documents and Downloads after a positive prompt control (a reveal prompt-free; an open's one prompt allowed in the clone, then completing). Exits 3 when an observer could not see its control (every observation pending) and 4 when a reveal raised a prompt. An open's first-use prompt in a protected folder is allowed in the disposable clone (Antony's decision), after which the open must complete and a second request be prompt-free. KOINE_TARGET_ONLY=reach,refus,walk,root,prompt runs the named sections after the controls. It takes hours; use target-locations:vm-detached
+    deps: [app, client]
+    cmds:
+      - scripts/vm-verify-target-locations.sh
+
+  target-locations:vm-detached:
+    desc: Run target-locations:vm detached (nohup, its own session), print the transcript path and the pid, and return at once - the run outlasts any single command. Read the transcript with tail -f, or wait for .build/target-locations-vm/done
+    deps: [app, client]
+    cmds:
+      - |
+        mkdir -p .build/target-locations-vm
+        rm -f .build/target-locations-vm/done
+        log=".build/target-locations-vm/detached-$(date +%Y%m%dT%H%M%S).log"
+        nohup bash -c 'scripts/vm-verify-target-locations.sh; echo "$?" > .build/target-locations-vm/done' >"${log}" 2>&1 &
+        echo "pid $! ; detached output ${log} ; the run's own transcript is .build/vm-verify/target-locations-vm-*.log ; exit status in .build/target-locations-vm/done"
+
+  target-locations:fixtures-check:
+    desc: Lint the target-location V recipe without a guest - shellcheck the recipe and compile the fixture builder
+    cmds:
+      - shellcheck -x scripts/vm-verify-target-locations.sh
+      - python3 -m py_compile scripts/vm-long-location-fixtures.py
+      - ruff check --select E,F,I --line-length 110 scripts/vm-long-location-fixtures.py
+
+  reveal-path:probe-notification:
+    desc: A bounded probe in a clone of the prepared image with the signed Koine - after a baseline with none, does a refused workspaceOpenPath of a third-party application (inspection only), a workspaceRevealPath of Notes, of TextEdit and of Zed (twice) make macOS post "Koine was prevented from modifying apps on your Mac"? Read from the screen's own text, with a screenshot of each step. One sample each; it does not say which operation the system refused
+    deps: [app, client]
+    cmds:
+      - scripts/vm-probe-reveal-notification.sh
+
+  installations:vm:
+    desc: Accept the Multiple copies and installation row for workspaceLaunchApplication and for workspaceOpenPath with a named application, in a clone of the prepared image (task launchers:prepare) with the signed Koine, through the contract-only client under workspace:control AND desktop:control and no read capability, with Accessibility never granted - Fixtures/InstallationFixture installed at two locations under one bundle identifier by scripts/vm-installation-fixtures.sh and registered with Launch Services, each copy logging which copy it is and what it was handed, with an independent witness reading the kernel's identity of the process the receipt names - an unconstrained launch and an unconstrained named open reusing the running copy at the other location, an installation path addressing exactly the chosen copy while the other runs and when both do, a symlink to the folder, a symlink to the bundle and composed and decomposed Unicode spellings compared by file identity, a missing copy, an unregistered copy, a deleted copy, a registration that outlived its Info.plist and an identifier mismatch each reporting its dependency with nothing launched or substituted, a registered copy moved into the Trash (how long Launch Services keeps its registration, measured, and what each form then reports), an unreadable folder and a bundle with unreadable contents reporting failed, a program that is not a bundle having no selector route and a default handler that declares no identifier still receiving a document. KOINE_INSTALLATIONS_ONLY=reuse,spelling,absent,trash,denied,bundle runs the named sections
+    deps: [app, client]
+    cmds:
+      - scripts/vm-verify-installations.sh
+
+  application-locations:vm:
+    desc: Measure application-stage V subjects with workspace 1.0.1 in a disposable launcher clone - component-created 1024/1500-byte copies, native registration attempts, constrained refusals cold and beside a running short copy, short constrained and preferred workflows with kernel receipts, and Finder selection controlled at 1023 bytes. Exit 3 keeps unconstructible registered-long and preferred-long subjects pending; disk-only success never passes them
+    deps: [app, client]
+    cmds:
+      - task: application-locations:vm-packaged
+
+  application-locations:vm-packaged:
+    desc: Repeat application-location V measurements against already built app/client artifacts; checks their existence and hashes every packaged app file before and after the run
+    env:
+      KOINE_APPLICATION_LOCATIONS: '1'
+    cmds:
+      - scripts/vm-verify-installations.sh
+
+  application-locations:vm-detached:
+    desc: Start application-locations:vm-packaged in its own session against already built artifacts; transcript in .build/application-locations-vm/detached.log and exit status in done (3 means pending subjects)
+    cmds:
+      - python3 scripts/detach-vm-task.py application-locations:vm-packaged .build/application-locations-vm
+
+  application-locations:fixtures-check:
+    desc: Lint the application-location VM recipe and its shared observers without a guest
+    cmds:
+      - shellcheck -x scripts/vm-verify-installations.sh scripts/vm-application-locations-lib.sh scripts/vm-finder-observer-lib.sh scripts/vm-verify-target-locations.sh scripts/check-application-location-observations.sh scripts/reevaluate-application-locations.sh
+      - python3 -m py_compile scripts/vm-long-application-fixtures.py scripts/vm-installation-request.py scripts/detach-vm-task.py
+      - ruff check --select E,F,I --line-length 110 scripts/vm-long-application-fixtures.py scripts/detach-vm-task.py
+      - bash scripts/check-application-location-observations.sh
+
+  application-locations:reevaluate:
+    desc: Re-evaluate each immutable application-location VM observation and digest the input/output; exits 3 for native registration subjects still pending
+    cmds:
+      - bash scripts/reevaluate-application-locations.sh
+
+  prefix-registration:vm-packaged:
+    desc: One prefix-link route per physical 1024/1500-byte application; twelve public registration-order states with native identity snapshots and only actually admitted V subjects. Exit 3 preserves unavailable subjects
+    env:
+      KOINE_APPLICATION_LOCATIONS: '1'
+      KOINE_PREFIX_REGISTRATION: '1'
+    cmds:
+      - scripts/vm-verify-installations.sh
+
+  prefix-registration:vm-detached:
+    desc: Measure prefix registration in an isolated guest against packaged artifacts; transcript and exact completion status in .build/prefix-registration-vm
+    cmds:
+      - python3 scripts/detach-vm-task.py prefix-registration:vm-packaged .build/prefix-registration-vm
+
+  prefix-registration:fixtures-check:
+    desc: Check prefix construction/identity controls, native-precondition predicates and recipe lint without a GUI
+    cmds:
+      - shellcheck -x scripts/vm-verify-installations.sh scripts/vm-prefix-registration-lib.sh scripts/check-prefix-observations.sh
+      - python3 -m py_compile scripts/vm-prefix-registration.py scripts/vm-long-application-fixtures.py scripts/vm-installation-request.py
+      - ruff check --select E,F,I --line-length 110 scripts/vm-prefix-registration.py scripts/check-prefix-registration.py scripts/vm-long-application-fixtures.py
+      - python3 scripts/check-prefix-registration.py
+      - bash scripts/check-prefix-observations.sh
+
+  open-url:network:
+    desc: Show, in a clone of the prepared image, that Koine itself puts no packet on a network while it opens URLs and runs the client's default-engine search (Google) - every packet the system carries is captured with the process it was carried for (tcpdump over PKTAP), the capture is first shown to attribute a curl and a Swift program named Koine (URLSession and Network.framework) on a non-loopback interface, and then Koine's packets are required to be on loopback only (and some), the lookups of the engine to be made for Safari and not Koine, and Safari's own processes to carry the external traffic
+    deps: [app, client]
+    cmds:
+      - scripts/vm-verify-network.sh
+
+  launchers:inventory:
+    desc: Read the prepared launcher image again in a fresh clone and rewrite .build/launcher-apps/inventory.json (every application's actual bundle identifier, version, path, signature, Gatekeeper verdict and quarantine state, the default browser, the archived quarantined copy), keeping the first-run record launchers:prepare made. Later increments that reuse the twelve applications start from this document
+    cmds:
+      - scripts/vm-prepare-launchers.sh inventory

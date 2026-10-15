@@ -1,0 +1,17 @@
+# Previous raw-search proposal only; not the current v1 API or backend.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+Start: "Previous proposal · Candidate source" {class: start}
+File: "File record\nLossless pathname; merge / prefix by exact UTF-8 bytes"
+App: "Application candidate\nIndividually approved native inspection"
+Identity: "Established bundle identity + target spelling\nMerge direct / link / OS routes while retained"
+Unknown: "Unestablished / refused metadata\nUnknown fields or diagnosed omitted app"
+Location: "Location observation\nNo pin; no unique file canonical spelling"
+Start -> File: "1 · files"
+Start -> App: "1 · apps"
+App -> Identity: "2 · established"
+App -> Unknown: "2 · unknown"
+File -> Location: "3 · bytes"
+Identity -> Location: "3 · target spelling"

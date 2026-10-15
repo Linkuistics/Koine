@@ -61,7 +61,8 @@ let package = Package(
             dependencies: ["KoineCore", "KoineServer", "KoineManagementClient", "KoineProviderLoader"]
         ),
         // The conformance check (task conformance, scripts/vm-verify-conformance.sh):
-        // the schema a running Koine serves, against docs/design/desktop-schema.graphql.
+        // the schema a running Koine serves, against a profile's design SDL
+        // (docs/design/profiles/), and the candidates it runs against the profile's pin.
         // It prints the served schema through KoineCore's own canonical printer;
         // GraphQL is a dependency here for the structural comparison alone. The
         // library is where the tests reach it; scripts/build-app.sh ships neither.
@@ -80,14 +81,39 @@ let package = Package(
         // Test material: the headless host of the binary compatibility pairs
         // (scripts/build-compat-pairs.sh). scripts/build-app.sh does not ship it.
         .executableTarget(
-            name: "KoineCompatibilityHost", dependencies: ["KoineServer"],
+            name: "KoineCompatibilityHost", dependencies: ["KoineServer", "KoineProviderLoader"],
             path: "Fixtures/CompatibilityHost"
+        ),
+        // Test material: the headless host of the selection acceptance
+        // (scripts/build-selection-hosts.sh), a real signed application in everything
+        // selection reads. scripts/build-app.sh does not ship it.
+        .executableTarget(
+            name: "KoineSelectionHost", dependencies: ["KoineServer", "KoineProviderLoader"],
+            path: "Fixtures/SelectionHost", exclude: ["hosts.json"]
         ),
         // The desktop provider's pure files, named here only so `swift test`
         // reaches them. The provider itself is built by its own build definition
         // (Providers/DesktopProvider/build.sh) and is no product of this package.
         .target(name: "DesktopProviderLogic", path: "Providers/DesktopProvider/Logic"),
         .testTarget(name: "DesktopProviderLogicTests", dependencies: ["DesktopProviderLogic"]),
+        // The same for the workspace provider, whose Logic is the provider itself,
+        // built against a native adapter a test substitutes. Its kernel start-instant
+        // helper is the desktop provider's, linked in by symlink as source.
+        .target(
+            name: "WorkspaceProviderLogic",
+            dependencies: [.product(name: "KoineProviderAPI", package: "ProviderAPI")],
+            path: "Providers/WorkspaceProvider/Logic"
+        ),
+        // Fixture-building support shared by the workspace walk's own tests and the signed-bundle tests: a
+        // directory tree built component by component, so no whole-path call ever addresses a long location.
+        .target(name: "WorkspaceTestSupport", path: "Tests/WorkspaceTestSupport"),
+        .testTarget(
+            name: "WorkspaceProviderLogicTests",
+            dependencies: [
+                "WorkspaceProviderLogic", "WorkspaceTestSupport",
+                .product(name: "KoineProviderAPI", package: "ProviderAPI"),
+            ]
+        ),
         .testTarget(
             name: "KoineManagementClientTests",
             dependencies: ["KoineManagementClient", "KoineServer", "KoineCore"]
@@ -96,7 +122,9 @@ let package = Package(
             name: "KoineServerTests",
             dependencies: [
                 "KoineServer", "KoineCore", "KoineSQLiteStore", "KoineProviderLoader",
-                "KoineConformanceCheck",
+                "KoineHTTP", "KoineConformanceCheck", "WorkspaceTestSupport",
+                // The workspace provider's own Logic, for its real descriptor at the composition point.
+                "WorkspaceProviderLogic",
                 // For in-test descriptors; the fixture bundle is built elsewhere.
                 .product(name: "KoineProviderAPI", package: "ProviderAPI"),
             ]

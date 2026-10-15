@@ -1,0 +1,32 @@
+{"event": "clone-start-request", "utcEpoch": 1791266542.794058, "elapsed": 0.0}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791266560.286239, "elapsed": 17.49, "name": "preparation", "choices": ["READY", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791266572.0604181, "elapsed": 29.27, "name": "preparation", "answer": "READY"}
+{"event": "helper-completed", "utcEpoch": 1791266572.623785, "elapsed": 29.83, "name": "native-environment", "mode": "environment"}
+{"event": "helper-completed", "utcEpoch": 1791266572.9217541, "elapsed": 30.13, "name": "fixture-900", "mode": "fixture"}
+{"event": "helper-completed", "utcEpoch": 1791266573.2194922, "elapsed": 30.42, "name": "inspect-900", "mode": "inspect"}
+{"event": "helper-completed", "utcEpoch": 1791266573.520181, "elapsed": 30.73, "name": "fixture-1500", "mode": "fixture"}
+{"event": "helper-completed", "utcEpoch": 1791266573.818183, "elapsed": 31.02, "name": "inspect-1500", "mode": "inspect"}
+{"event": "helper-completed", "utcEpoch": 1791266574.139029, "elapsed": 31.34, "name": "reset-900", "mode": "reset"}
+{"event": "helper-completed", "utcEpoch": 1791266575.441391, "elapsed": 32.65, "name": "absent-process-900", "mode": "running"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791266575.582935, "elapsed": 32.79, "name": "before-900", "choices": ["READY", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791266596.537927, "elapsed": 53.74, "name": "before-900", "answer": "READY"}
+{"event": "helper-completed", "utcEpoch": 1791266598.709505, "elapsed": 55.91, "name": "request-900", "mode": "named"}
+{"event": "helper-completed", "utcEpoch": 1791266600.016115, "elapsed": 57.22, "name": "incarnation-before-ui-900", "mode": "incarnation"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791266600.236002, "elapsed": 57.44, "name": "after-request-900", "choices": ["RESTRICT", "PASS", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791266626.476793, "elapsed": 83.68, "name": "after-request-900", "answer": "RESTRICT 994 398"}
+{"event": "helper-completed", "utcEpoch": 1791266627.8253179, "elapsed": 85.03, "name": "incarnation-after-choice-900", "mode": "incarnation"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791266627.962039, "elapsed": 85.17, "name": "after-choice-900", "choices": ["PASS", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791266642.940916, "elapsed": 100.14, "name": "after-choice-900", "answer": "PASS"}
+{"event": "helper-completed", "utcEpoch": 1791266643.2401652, "elapsed": 100.44, "name": "after-identity-900", "mode": "inspect"}
+{"event": "helper-completed", "utcEpoch": 1791266643.5408242, "elapsed": 100.74, "name": "reset-1500", "mode": "reset"}
+{"event": "helper-completed", "utcEpoch": 1791266644.8529952, "elapsed": 102.06, "name": "absent-process-1500", "mode": "running"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791266644.98308, "elapsed": 102.19, "name": "before-1500", "choices": ["READY", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791266658.0054138, "elapsed": 115.21, "name": "before-1500", "answer": "READY"}
+{"event": "helper-completed", "utcEpoch": 1791266658.317515, "elapsed": 115.52, "name": "request-1500", "mode": "named"}
+{"event": "helper-completed", "utcEpoch": 1791266659.638742, "elapsed": 116.84, "name": "incarnation-before-ui-1500", "mode": "incarnation"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791266659.8446279, "elapsed": 117.05, "name": "after-request-1500", "choices": ["RESTRICT", "PASS", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791266677.962086, "elapsed": 135.16, "name": "after-request-1500", "answer": "RESTRICT 994 398"}
+{"event": "helper-completed", "utcEpoch": 1791266679.305548, "elapsed": 136.51, "name": "incarnation-after-choice-1500", "mode": "incarnation"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791266679.440059, "elapsed": 136.64, "name": "after-choice-1500", "choices": ["PASS", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791266693.704791, "elapsed": 150.91, "name": "after-choice-1500", "answer": "PASS"}
+{"event": "helper-completed", "utcEpoch": 1791266694.047793, "elapsed": 151.25, "name": "after-identity-1500", "mode": "inspect"}

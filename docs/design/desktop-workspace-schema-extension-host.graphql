@@ -1,0 +1,257 @@
+"""
+The koine-desktop/1 schema as composed from the core and the two bundled providers,
+desktop and workspace, on an extension host. `task conformance` holds a running
+Koine to it. The workspace part is the workspace design SDL
+(`workspace-schema.graphql`) restricted to the roots implemented so far and the
+types they reach, verbatim; a coordinate that is not implemented is not declared
+here, and a later root lands by adding its own coordinates to this file, never by
+relaxing the check. Root fields are declared in composition order: the core's own,
+then desktop's, then workspace's, because the schema digest is taken over a
+canonical text that keeps declared order.
+"""
+schema { query: Query mutation: Mutation }
+
+"Opaque koine:// URI string. Pass it unchanged; only its provider interprets the remainder."
+scalar Reference
+
+"UTC instant with exactly six fractional second digits, captured from the process start time."
+scalar DesktopProcessStart
+
+input DesktopProcessIdentity {
+  pid: Int!
+  startedAt: DesktopProcessStart!
+}
+
+type Query {
+  "Authenticated caller metadata. No provider capability required."
+  koine: Koine!
+  "Proof of the submitted secret, or its resulting active grant; own request only."
+  koineGrantRequest: KoineGrantRequest
+  "koine:manage. Never returns bearer credentials."
+  koineManagement: KoineManagement
+  "desktop:read. An absent process is ordinary null."
+  desktopApplication(process: DesktopProcessIdentity!): DesktopApplication
+  "desktop:read. A stale or wrong-kind reference raises unavailable."
+  desktopApplicationByReference(ref: Reference!): DesktopApplication
+  "desktop:read. A stale or wrong-kind reference raises unavailable."
+  desktopWindow(ref: Reference!): DesktopWindow
+}
+
+type Mutation {
+  "Anonymous enrollment only; cannot be mixed with other root actions."
+  koineRequestGrant(input: KoineRequestGrantInput!): KoineGrantRequestReceipt
+  "koine:manage. Approves only a subset of the immutable requested capabilities."
+  koineApproveGrantRequest(requestId: ID!, capabilities: [String!]!): KoineGrant
+  "koine:manage. Denies a pending request."
+  koineDenyGrantRequest(requestId: ID!): KoineGrantRequest
+  "koine:manage. Credential is returned once after durable creation."
+  koineCreateGrant(input: KoineCreateGrantInput!): KoineCreatedGrant
+  "koine:manage. Idempotent for an already revoked grant; never grants authority."
+  koineRevokeGrant(grantId: ID!): KoineGrant
+  "desktop:control. Focuses exactly this window or reports why it did not; never a substitute."
+  desktopFocusWindow(ref: Reference!): DesktopFocusReceipt
+  """Requires workspace:control AND desktop:control. Launch or request reactivation of any registered installed app, not only configured shortcuts. Do not force a new instance; reuse a running copy unless applicationPath constrains the installation. Native acknowledgment is not a window-focus guarantee. Missing app is typed dependency absence; acknowledgment wait ends after three seconds or earlier cancellation, possibly after effects begin, with failed and no replay. The core request deadline may answer first."""
+  workspaceLaunchApplication(application: WorkspaceApplicationInput!): WorkspaceOpenResult
+  """Requires workspace:control AND desktop:control. Accept the ASCII RFC 3986 section 3 URI grammar, including optional query/fragment, with HTTP(S) scheme, host, valid percent escapes and no credentials/whitespace/backslashes/control characters; Unicode requires caller encoding and IDNA host labels. Preserve bytes without repair. Resolve by scheme alone and address that default browser explicitly; no universal-link app dispatch or suggestions proxy. The browser may act on the page. Missing handler is typed dependency absence; wait ends after three seconds or earlier cancellation, possibly after effects begin, with failed and no replay. The core deadline may answer first."""
+  workspaceOpenURL(url: String!): WorkspaceOpenResult
+  """Requires workspace:control AND desktop:control. Open one literal absolute document/directory path in its default or named installed app. Refuse native application-bundle, Unix/Windows executable and Finder-alias metadata after symlink resolution; no content sandbox or race-free classification. Script/source documents can use default editors. A handler can execute scripts or follow location documents to other schemes/targets. No executable selector, argv, environment or shell expansion. Missing path/app/default handler is typed dependency absence; wait ends after three seconds or earlier cancellation, possibly after effects begin, with failed and no replay. The core deadline may answer first."""
+  workspaceOpenPath(path: String!, application: WorkspaceApplicationInput): WorkspaceOpenResult
+  """Requires workspace:control AND desktop:control. Reveal one literal absolute path in Finder without opening its contents. Native acknowledgment is not observed selection. Missing path/Finder is typed dependency absence; false acknowledgment or ambiguous failure is failed, never automatic replay. Wait ends after three seconds or earlier cancellation, ignoring late acknowledgment; the core deadline may answer first."""
+  workspaceRevealPath(path: String!): WorkspaceRevealResult
+}
+
+"All fields require desktop:read."
+type DesktopApplication {
+  ref: Reference!
+  name: String!
+  bundleIdentifier: String
+  windows: [DesktopWindow!]!
+}
+
+"All fields require desktop:read."
+type DesktopWindow {
+  ref: Reference!
+  title: String!
+  observation: DesktopObservation!
+}
+
+enum DesktopObservation { CURRENT REMEMBERED }
+
+"Control-authorized output; it does not expose read-protected window state."
+type DesktopFocusReceipt {
+  "The submitted target, under the mutation's control authority."
+  ref: Reference!
+}
+
+"""A registered application bundle present at inspection, even if in the Trash. Requires a bundle identifier; bundle-less programs have no named-selector route. No executable, argv, environment or shell input."""
+input WorkspaceApplicationInput {
+  """Nonblank native bundle identifier, not a display name or process identity."""
+  bundleIdentifier: String!
+  """Optional absolute path constraining selection to a registered bundle with this identifier, compared by native file identity after symlink resolution. Never substitute another copy when supplied; otherwise running-copy substitution is allowed."""
+  applicationPath: String
+}
+
+"""AVAILABLE is native acknowledgment; DEPENDENCY_UNAVAILABLE certifies this action submitted no domain request. Neither status overrides publication errors."""
+enum WorkspaceOperationStatus {
+  AVAILABLE
+  DEPENDENCY_UNAVAILABLE
+}
+
+"""Pre-submission prerequisite failure; no successful value accompanies it."""
+enum WorkspaceDependencyReason {
+  APPLICATION_NOT_INSTALLED
+  APPLICATION_IDENTITY_MISMATCH
+  PATH_NOT_FOUND
+  NO_DEFAULT_HANDLER
+}
+
+"""A failed prerequisite, under workspace:control AND desktop:control. Not a stale issued reference or execution error."""
+type WorkspaceDependencyUnavailable {
+  """Requires workspace:control AND desktop:control. Closed reason for not submitting this action."""
+  reason: WorkspaceDependencyReason!
+  """Requires workspace:control AND desktop:control. Human explanation and recovery; never a shell command to execute automatically."""
+  guidance: String!
+}
+
+"""Observed process incarnation for this action, under workspace:control AND desktop:control. May exit immediately; not a desktop reference."""
+type WorkspaceProcessIdentity {
+  """Requires workspace:control AND desktop:control. Positive process identifier; use only with startedAt."""
+  pid: Int!
+  """Requires workspace:control AND desktop:control. Exact kernel process start instant, YYYY-MM-DDTHH:MM:SS.ffffffZ; copy with pid into the desktop process input under desktop:read."""
+  startedAt: String!
+}
+
+"""Native launch/open acknowledgment under workspace:control AND desktop:control, not proof of rendered content or foreground state. No installed path, bundle identifier or default-handler metadata is disclosed."""
+type WorkspaceOpenReceipt {
+  """Requires workspace:control AND desktop:control. Optional observation of the completion callback's application: stable positive PID, matching kernel start reads and executable file identity, equal native application object, non-terminated at the checks. Any unavailable value or mismatch yields null. Not atomic effect binding; never a PID-only, launch-date or foreground fallback."""
+  process: WorkspaceProcessIdentity
+}
+
+"""Finder acknowledgment under workspace:control AND desktop:control; selection is not independently observed."""
+type WorkspaceRevealReceipt {
+  """Requires workspace:control AND desktop:control. Submitted absolute path; a directory is selected in its parent, and root is shown as a root view."""
+  path: String!
+}
+
+"""Requires workspace:control AND desktop:control throughout. Absent an error at or below this result, AVAILABLE has value only and DEPENDENCY_UNAVAILABLE has dependency only. A published status still describes the action when an error suppresses its branch; inspect data and error paths."""
+type WorkspaceOpenResult {
+  """Requires workspace:control AND desktop:control. Selects the outcome; publication errors may suppress the selected branch or propagate through this result."""
+  status: WorkspaceOperationStatus!
+  """Requires workspace:control AND desktop:control. Non-null exactly for AVAILABLE absent an error at or below this result."""
+  value: WorkspaceOpenReceipt
+  """Requires workspace:control AND desktop:control. Non-null exactly for DEPENDENCY_UNAVAILABLE absent an error at or below this result; this action submitted no domain request."""
+  dependency: WorkspaceDependencyUnavailable
+}
+
+"""Requires workspace:control AND desktop:control throughout. Absent an error at or below this result, AVAILABLE has value only and DEPENDENCY_UNAVAILABLE has dependency only. A published status still describes the action when an error suppresses its branch; inspect data and error paths."""
+type WorkspaceRevealResult {
+  """Requires workspace:control AND desktop:control. Selects the outcome; publication errors may suppress the selected branch or propagate through this result."""
+  status: WorkspaceOperationStatus!
+  """Requires workspace:control AND desktop:control. Non-null exactly for AVAILABLE absent an error at or below this result."""
+  value: WorkspaceRevealReceipt
+  """Requires workspace:control AND desktop:control. Non-null exactly for DEPENDENCY_UNAVAILABLE absent an error at or below this result; this action submitted no domain request."""
+  dependency: WorkspaceDependencyUnavailable
+}
+
+type Koine {
+  contractVersion: String!
+  instanceId: String!
+  "Equality token for the served schema; compare, do not interpret."
+  schemaDigest: String!
+  "Caller only; null only for the non-exportable in-process console principal."
+  ownGrant: KoineGrant
+  "Names available to request. Listing them supplies no authority."
+  availableCapabilities: [String!]!
+}
+
+input KoineRequestGrantInput {
+  clientLabel: String!
+  "Canonical lower-case SHA-256 hex digest of a 32-byte random bearer secret."
+  credentialDigest: String!
+  capabilities: [String!]!
+}
+
+input KoineCreateGrantInput {
+  clientLabel: String!
+  capabilities: [String!]!
+}
+
+type KoineGrantRequestReceipt {
+  requestId: ID!
+  comparisonCode: String!
+}
+
+type KoineGrantRequest {
+  requestId: ID!
+  clientLabel: String!
+  comparisonCode: String!
+  requestedCapabilities: [String!]!
+  state: KoineGrantRequestState!
+  "Present only after approval; scoped to this request."
+  grant: KoineGrant
+}
+
+enum KoineGrantRequestState { PENDING APPROVED DENIED EXPIRED }
+
+type KoineGrant {
+  grantId: ID!
+  clientLabel: String!
+  capabilities: [String!]!
+  state: KoineGrantState!
+}
+
+enum KoineGrantState { ACTIVE REVOKED }
+
+type KoineCreatedGrant {
+  grant: KoineGrant!
+  "One-time 32-byte random bearer secret encoded as unpadded base64url."
+  credential: String!
+}
+
+"All fields require koine:manage."
+type KoineManagement {
+  requests: [KoineGrantRequest!]!
+  grants: [KoineGrant!]!
+  providers: [KoineProviderStatus!]!
+  "Read on each request. Reading never asks the user for consent."
+  osPermissions: [KoineOSPermission!]!
+  "What a person must be told about each capability's reach wherever it is granted or reviewed, one entry per capability that has a disclosure and whether or not its provider is active. Show it beside the capability in grant creation, request approval and the grant list. Serving it supplies no authority."
+  capabilityDisclosures: [KoineCapabilityDisclosure!]!
+}
+
+type KoineProviderStatus {
+  provider: String!
+  version: String!
+  schemaVersion: String!
+  state: KoineProviderState!
+  diagnostic: String
+  "Opaque identity of origin plus canonical installed bundle location, unique within this startup. Null only for a synthetic row. Not a resource reference."
+  candidateId: String
+  "Where the bundle is physically installed. Null for a synthetic row; never inferred from composition position."
+  origin: KoineProviderOrigin
+  "Whether this candidate is the frozen choice for its provider identity. Synthetic rows are UNAVAILABLE."
+  selection: KoineProviderSelection
+  "The frozen choice for the same provider identity, or null if there is none. A selected row points to itself, even after a later failure."
+  selectedCandidateId: String
+  "Stable, open diagnostic code for a refusal or selection explanation. Null for a healthy selected row with nothing competing or missing."
+  reason: String
+}
+
+enum KoineProviderState { ACTIVE INCOMPATIBLE REJECTED FAILED }
+
+enum KoineProviderOrigin { BUNDLED PER_USER }
+
+enum KoineProviderSelection { SELECTED NOT_SELECTED UNAVAILABLE }
+
+type KoineOSPermission {
+  permission: String!
+  owner: String!
+  granted: Boolean!
+}
+
+type KoineCapabilityDisclosure {
+  "The capability name, as listed in availableCapabilities and held by grants."
+  capability: String!
+  "Plain text stating the capability's reach, including any other capability it needs."
+  disclosure: String!
+}

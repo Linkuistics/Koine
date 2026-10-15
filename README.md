@@ -20,9 +20,15 @@ through the same GraphQL API, under the `koine:manage` capability.
 
 Providers are native Swift extensions that contribute to the GraphQL schema.
 A shared resilient Swift framework lets compatible providers and the server
-be upgraded independently. Its published Swift contract is the stable binary
+be upgraded independently where the host's loading policy admits the identity.
+Its published Swift contract is the stable binary
 interface; a TypeScript hosting layer is not required. The desktop provider is
 bundled.
+
+The designed workflow extension adds
+[selection of independently updated first-party providers](docs/specs/machine.md#first-party-provider-selection).
+That policy is pending implementation and acceptance; Koine 0.1.0's binary
+compatibility does not imply support for replacing its bundled desktop provider.
 
 Koine 0.1.0 is notarized and verified in Gatekeeper-enforcing VMs on macOS 26
 on Apple Silicon, the one supported platform. The spec's "Acceptance status"
@@ -38,10 +44,14 @@ skill set.
   checks it, and what a client needs from each part of the contract
 - [Desktop contract](docs/specs/machine.md): GraphQL, native providers,
   grants, service availability, acceptance status
-- [GraphQL schema](docs/design/desktop-schema.graphql) and
+- [Configured workflow requirements](docs/requirements/modaliser-workflows.md):
+  agreed requirements for planned provider extensions and application-menu access
+- GraphQL schema: [extension host](docs/design/desktop-schema-extension-host.graphql),
+  [original](docs/design/desktop-schema.graphql), and the [profiles](docs/design/profiles/); and
   [client operations](docs/design/desktop-operations.graphql)
 - Decisions: [references as URIs](docs/adr/machine-references-as-uris.md),
   [the server and native providers](docs/adr/koine-server-and-native-providers.md),
+  [first-party update selection](docs/adr/first-party-provider-selection.md),
   [the resilient provider framework](docs/adr/resilient-provider-framework.md),
   [bearer grants and live revocation](docs/adr/bearer-grants-and-live-revocation.md),
   [window identity](docs/adr/desktop-window-identity-is-a-held-element.md),
@@ -70,6 +80,43 @@ can name, and, if login launch was on, its Background Task Management entry,
 which stays enabled and still names `/Applications/Koine.app`. The install,
 uninstall and `--zap` were measured on a clean Gatekeeper-enforcing VM:
 [`docs/verification/homebrew-install-vm.md`](docs/verification/homebrew-install-vm.md).
+
+## Reference evidence design
+
+The [practical admission design](docs/verification/application-reference-input-partition.md#practical-admission-design)
+is ready for mandatory whole-k315 review and every earned integration before k269
+construction replanning. It repairs k312 R1–R7 under Antony's actual k314 choice; design
+and documentary identities supply no qualified tool, authority or target evidence.
+
+An independently authored/reviewed [comparison and display tool with short bootstrap entry](docs/verification/application-reference-evidence.md#independent-computation-and-short-bootstrap-entry)
+computes full byte/member equality, complete required-result audit and eligible basis.
+Antony makes semantic accept/refuse judgments in [five named checkpoints](docs/verification/application-reference-evidence.md#compatible-ownership-and-bounded-sequential-schedule)
+in his own terminal outside agent harnesses. The separate initializer/receipt validator,
+original author/executor/adjudicator exclusions and distinct instrument closing owner
+remain. CP03 follows final Q; distinct close then CP04 precedes CP05's exact-entry acceptance
+and fresh coexisting supervisor/checker/acquirer appointment through true return.
+No image/task/receipt/proof/eligible record supplies appointment. Disarm-only maintenance
+retains durable intent before changes or Q; crash/lock release/successful Q cannot re-arm.
+
+The [closed contact/blocker map](docs/verification/application-reference-contact-boundary.md#closed-required-blockers-and-accepted-unknowns)
+and [exact grammar](docs/verification/application-reference-evidence.md#closed-pre-lookup-entries-and-operation-order)
+retain required Q/P evidence and scope/refusal limits. Preboot cryptex and finite System
+framework/version/helper/nested shapes have separate link/ancestor entries; physical
+outside-then-back expansion still refuses. Historical spellings prove no current presence,
+link text, topology or TCC. Only named opaque contact gaps stay accepted unknown.
+
+[H/R exceptions with E default](docs/verification/application-reference-evidence.md#historical-and-reporting-exceptions)
+replace historical fragments and reporting-driven reconstruction. Full consumed bytes,
+independent original/basis/read membership, phase/absence and original R duties remain.
+Actual consumed changes disarm/requalify; unconsumed reports supply no qualification.
+[Q/P/A stages](docs/verification/application-reference-packaging-runtime.md#operation-and-credit-map)
+remain separate from E/M/U operation credit and documentary E/H/R interpretation.
+Missing required identities/controls block their stage; source-child facts first belong to A.
+
+K244/k242 retain actual instrument/subject duties. K245's single pass is unused; k246
+keeps full generated useful/helper/alias discrimination and k247 whole-subject/family
+review or exact incomplete work. Full useful breadth/additive supported-VM baseline/native
+placement, private ineligibility and both product holds remain.
 
 ## Client-requested grants
 
@@ -169,12 +216,16 @@ never run at: docs/verification/latency-and-support-matrix.md.
 ```sh
 task           # build, then test (needs https://taskfile.dev)
 task build     # swift build, then stage KoineProviderAPI.framework
-task test      # build, stage, build the fixture provider, its variants and the desktop provider, then the suites over real loopback HTTP
+task test      # build, stage, build the fixture provider, its variants and the bundled providers, then the suites over real loopback HTTP
 task fixture   # stage the framework, build the fixture provider outside the package, sign and approve it
 task fixture:variants  # build, sign and approve the bundles the native loader must refuse, and the few good ones
-task desktop-provider  # build the desktop provider by its own build definition, sign and approve it for the loader tests
+task fixture:selection  # build, sign and keep apart the bundles the first-party selection tests choose between
+task bundled-providers  # build the desktop and workspace providers by their own build definitions, sign and approve them for the loader tests
 task compat    # build and run the binary compatibility pairs; compat:build and compat:verify are its halves
-task conformance  # the schema the notarized bundle serves, in a VM, against docs/design/desktop-schema.graphql
+task compat:baseline  # build only the pre-extension host, framework, fixtures and desktop provider, from the released v0.1.0 sources
+task conformance  # three profiles of docs/design/profiles/ against the schemas and candidates their hosts serve: the released host, this tree's headless host, and the signed bundle in a VM
+task conformance:headless  # only the two profiles a headless host serves; no VM
+task conformance:vm  # only core + desktop + workspace, served by the signed bundle in a VM
 task app       # assemble and sign .build/app/Koine.app
 task app:notarize  # notarize, staple and zip it (KOINE_NOTARY_PROFILE, default koine-notary)
 task app:verify  # version, signature, hardened runtime, designated requirement, stapled ticket, Gatekeeper
@@ -209,13 +260,24 @@ The tests embed the server over a temporary data directory; they never touch
 
 ### Schema conformance
 
-`task conformance` is the whole-contract check: it launches the **notarized**
-bundle in a clean TestAnyware clone, captures the introspection response a
-standard code generator would ask for, and compares the schema that describes
-with [`docs/design/desktop-schema.graphql`](docs/design/desktop-schema.graphql)
-by type, field, argument, nullability, default, deprecation and description. The
-comparison itself is host-side (`Tools/Conformance`), so nothing is launched
-here. Evidence:
+`task conformance` is the whole-contract check, for each of three
+[profiles](docs/design/profiles/), every one against the schema a host actually
+serves. A profile names a design SDL and, separately from it, the exact provider
+candidates the host runs, because an identical schema and digest cannot say which
+binary ran:
+
+| Profile | Design SDL | Served by |
+|---|---|---|
+| `core-desktop-old-host` | [`desktop-schema.graphql`](docs/design/desktop-schema.graphql), the released contract, unchanged | the **released** v0.1.0 host, built from its own sources, with its own desktop provider bundled |
+| `core-desktop-extension-host` | [`desktop-schema-extension-host.graphql`](docs/design/desktop-schema-extension-host.graphql) | this tree's headless host with desktop as its only bundled provider |
+| `core-desktop-workspace-extension-host` | [`desktop-workspace-schema-extension-host.graphql`](docs/design/desktop-workspace-schema-extension-host.graphql): the workspace design restricted to the implemented roots and the types they reach, verbatim | the **signed** `Koine.app` with desktop and workspace bundled, in a clean TestAnyware clone |
+| `core-desktop-workspace-repair-extension-host` | [`desktop-workspace-repair-schema-extension-host.graphql`](docs/design/desktop-workspace-repair-schema-extension-host.graphql): the same composition with the action-only repair's three description changes (workspace 1.0.1), verbatim | the **signed** `Koine.app` as shipped, in a clean TestAnyware clone; `task conformance` holds this one. The row above is the retained workspace 1.0.0, held to its own bundle by `task compat:workspace-baseline-verify` |
+
+The first two are served by headless hosts over loopback HTTP; the workspace ones launch
+the signed bundle in a VM and captures the introspection response a standard code
+generator would ask for. The comparison itself is host-side (`Tools/Conformance`),
+so nothing is launched on this Mac. Each profile is compared by type, field,
+argument, nullability, default, deprecation and description. Evidence:
 [`docs/verification/schema-conformance-vm.md`](docs/verification/schema-conformance-vm.md).
 
 A green run is two claims, and neither alone would do:
@@ -228,17 +290,24 @@ A green run is two claims, and neither alone would do:
 - the **difference report** against the introspected schema is empty, which says
   the same thing from the public seam and says *where* when it is not.
 
-Before believing either, the run mutates four copies of the contract — a
+Before believing either, every profile's run mutates copies of the contract — a
 description, a nullability marker, an argument default, two transposed root
-fields — and requires the check to go red on each, naming which half caught it.
-The transposed pair is caught by the digest alone: declared order is exactly
-what the introspected text cannot carry (see the spec's "Public GraphQL
+fields, and for the workspace profile the launch root removed, a workspace
+description changed and its field moved before desktop's — and of the pin — a
+different release, a required provider that is not served, a served row the
+profile did not expect — and requires the check to go red on each, naming what
+caught it. The transposed pair is caught by the digest alone: declared order is
+exactly what the introspected text cannot carry (see the spec's "Public GraphQL
 contract" for the three limits of that seam).
 
 `DesignContractConformanceTests` makes the same comparison in process, against a
-composition that contributes `Providers/DesktopProvider/schema.graphql` as the
-bundled provider does, so drift fails `task test` in seconds rather than a VM
-run later. It is the fast guard, not the authority: it cannot see a shipped
+composition that contributes `Providers/DesktopProvider/schema.graphql` and
+`Providers/WorkspaceProvider/schema.graphql` as the bundled providers do, so drift
+fails `task test` in seconds rather than a VM run later. It also holds the
+workspace profile's design file to the complete workspace design: the only
+differences allowed are the roots not yet implemented and the types only they
+reach, so a root that lands is added to the profile verbatim, and no description
+is ever reworded. It is the fast guard, not the authority: it cannot see a shipped
 bundle whose SDL differs from the file in the tree.
 
 Revocation ordering and store failure are tested on an `Engine` over a scripted
@@ -301,9 +370,10 @@ that carries the promise. Three things follow from SwiftPM's rules:
 Swift dylib, `manifest.json`, `schema.graphql` and an `Info.plist` whose
 `CFBundleExecutable` names the dylib. That makes the directory a shallow
 code-signing bundle, so `codesign` seals all of it with one signature.
-`KoineServer(dataDirectory:policy:providerRoots:providerStaging:)` considers
-every bundle directly inside each given `ProviderRoot` at construction and composes the SDL and field
-registrations of those it loads into the schema; nothing else is searched. A
+`KoineServer(dataDirectory:policy:providerRoots:providerCatalogue:providerStaging:)`
+selects among the bundles directly inside each given `ProviderRoot` at
+construction, under the sealed catalogue (below), and composes the SDL and field
+registrations of those it selects into the schema; nothing else is searched. A
 provider's fields require `<providerId>:read` or `<providerId>:control`, which
 also appear in `koine.availableCapabilities`.
 
@@ -311,16 +381,21 @@ Every manifest field is required (`Fixtures/FixtureProvider/manifest.json` is an
 example): `providerId`, `graphQLPrefix`, `version`, `schemaVersion`,
 `architectures`, `minimumOS`, `minimumSwiftRuntime`, `framework` (`major`,
 `minimumMinor`), `requiredFeatures`, `principalClass` and `library`. The host
-states what it supplies: framework 1.0 (`HostCompatibility`, held equal to
-`ProviderAPI/Info.plist` by a test) and its feature set (`koineHostFeatures`,
-empty in version 1).
+states what it supplies: framework 1.1 (`HostCompatibility`, held equal to
+`ProviderAPI/Info.plist` by a test) and its feature set (`koineHostFeatures`:
+`additional-capabilities-v1`, which a field's additional read or control
+requirements need, docs/specs/machine.md, "Additional capability requirements";
+and `first-party-selection-v1`, which every newly published update of a shipped
+identity declares so that an earlier host refuses it before `dlopen`).
 
 **The native loader** (`KoineProviderLoader`) refuses a bundle before any of its
 code runs wherever it can, since dylib initializers run inside `dlopen`. Trust
 comes first: the bundle's canonical location must lie inside its root; the
-bundle is copied to a read-only directory named by its content under
-`ProviderStaging` in the data directory, and everything after is checked of,
-and loaded from, that copy (`ProviderStaging.swift`); the manifest's provider
+bundle is copied to a read-only directory under `ProviderStaging` in the data
+directory, named by the bundle's name and a digest of its physical origin, its
+canonical location and its content, so no two candidates ever share a copy, and
+everything after is checked of, and loaded from, that copy
+(`ProviderStaging.swift`); the manifest's provider
 must have an approval record; and the copy must carry a valid signature by the
 approved Team ID (`ProviderTrust.swift`, the Security framework's static
 validation, strict, with the requirement `anchor apple generic and certificate
@@ -335,9 +410,32 @@ dependency and run path is the framework's install name, under `/usr/lib/` or
 `/System/Library/`, or a recursively validated `@loader_path` file inside the
 bundle, each such image signed by the approved identity itself; for a per-user
 provider, that Gatekeeper accepts every such image that is quarantined (below);
-and that no other image has registered the principal class name. After
+and, once every candidate has been through all of this and one has been chosen
+per identity, that no other image has registered the principal class name (the
+selected names are checked together, before the first `dlopen`). After
 `dlopen` the principal class must originate in that image, conform to
 `ProviderFactory`, and produce a descriptor that agrees with the manifest.
+
+**Selection** (`ProviderSelection.swift`, docs/specs/machine.md, "First-party
+provider selection"). One call, `ProviderLoader.selectAndLoad`, takes both roots
+and the sealed catalogue: `Contents/Resources/ProviderCatalogue.json`, from
+`App/ProviderCatalogue.json`, which reserves `desktop`, `workspace`, `input`,
+`menus`, `iterm` and `herdr`, and enables `desktop` and `workspace`, at the versions
+and code-signing identifiers `task check:provider-catalogue` holds to the signed
+`Desktop.koineprovider` and `Workspace.koineprovider`. Every candidate is discovered, staged, verified and
+reported before any provider code loads; the calculation over their verdicts
+(`ProviderSelection.plan`) is pure, so the tests substitute candidate sets,
+orders and verdicts through a package-private seam without a public test API. For
+a shipped identity the bundled copy is the floor, and a per-user copy replaces it
+only with all of: an approval record naming the host's own Team ID; a signature
+whose code-signing identifier is the catalogue's release identifier, read from
+the staged bundle; `first-party-selection-v1` declared; a numerically greater
+release (`major.minor.patch`, so `1.10.0` beats `1.9.0`); and the same schema
+major with a schema version at least the baseline's. A tie among the greatest
+releases is refused whole and the calculation repeats; the choice then freezes,
+and nothing is retried after a later failure in that process. The Team ID is the
+running host's own, read from its verified signature: an unsigned or ad-hoc host
+(as `swift test` is) has none and admits no shipped candidate.
 
 An honest bundle this host cannot run is `INCOMPATIBLE`; an unapproved,
 unsigned, ad-hoc or differently signed one, one changed after sealing, a
@@ -393,22 +491,22 @@ two ways out:
   step 4.
 
 Clearing it after a refusal is not enough on its own. The staged copy is named by
-content, which an extended attribute does not change, so Koine reuses the copy
-it already made and that copy keeps the attribute; with Koine stopped, delete
-that bundle's `<Name>-<digest>` directory under `ProviderStaging` as well — the
+origin, location and content, none of which an extended attribute changes, so Koine
+reuses the copy it already made and that copy keeps the attribute; with Koine stopped, delete
+that candidate's `<Name>-<digest>` directory under `ProviderStaging` as well — the
 diagnostic gives the exact command. Koine itself never clears the attribute. The
-bundled desktop provider is not assessed and is unaffected: the application's
+bundled providers are not assessed and are unaffected: the application's
 notarization ticket covers `Contents/PlugIns`, so it loads from a quarantined,
 downloaded `Koine.app`. Evidence:
 [`docs/verification/provider-quarantine-precheck-vm.md`](docs/verification/provider-quarantine-precheck-vm.md),
 and for the platform's own refusal without this check,
 [`docs/verification/notarized-release-vm.md`](docs/verification/notarized-release-vm.md).
 
-`Koine.app` passes two roots: `Contents/PlugIns` inside the bundle, whose
-approvals are built in (the shipped provider IDs with the Team ID of the
-application's own signature) and which holds the desktop provider, and the
-per-user root. A provider's origin is its root's: the `desktop` identifier and
-prefix are reserved to the in-application root.
+`Koine.app` passes two roots: `Contents/PlugIns` inside the bundle, which holds
+the bundles the catalogue designates (the desktop and workspace providers) and nothing else,
+approved for the application's own Team ID and never by a file, and the per-user
+root. A reserved identity belongs to the exact identifier/prefix pair as a shipped
+provider, from either root; any other claimant of its names is refused alone.
 
 **Lifecycle** (`KoineCore/ProviderLifecycle.swift`): providers start after
 composition; every resolve goes through the provider's lifecycle, which
@@ -450,32 +548,64 @@ identity, so no second certificate is needed. The tests construct servers off
 the Swift concurrency pool and share one staging directory, so dyld maps each
 fixture once per process.
 
+`Fixtures/FixtureProvider/build-selection.sh` builds the bundles
+`ProviderSelectionTests` chooses between, under `FixtureSelection/<case>/`: sealed
+copies of the fixture that differ in what the selection decision reads (release,
+schema, declared features, identity claims, signing identifier). The tests run the
+real staging, verification and selection over copies of them in a throwaway pair
+of roots, around the loader's package-private seam, which records which frozen
+selections would load instead of loading them; so no principal class of the `Sl`
+family is ever registered in the test process. One test loads an independently
+compiled baseline and update (`Sm`) for real and asks the update's binary a
+question over loopback HTTP; its initializer log shows the bundle never ran. A
+catalogue that lists a fixture identifier is the test's own: nothing here is ever
+signed under a production provider's release identifier. Fresh host processes,
+marker controls and purpose-built signed hosts are `selection-acceptance`'s.
+
+`task check:provider-catalogue` (after `task app`) holds the sealed catalogue to
+the signed packaged bundle: the identifier read from its signature, the release and
+schema from its manifest, nothing else in `Contents/PlugIns`. Its `--self-test`
+mutates the catalogue and requires each mutation to be reported.
+
 ### Binary compatibility pairs
 
 `task compat` is the repeatable recipe behind
 `docs/verification/binary-compatibility.md`. `scripts/build-compat-pairs.sh`
-copies the sources into two trees under `.build/compat/<configuration>/`, each
-with its own build directory: `baseline`, as the sources are, and `newer`, the
-same sources with an evidence-only framework minor 1 applied
-(`Fixtures/CompatibilityPairs/Minor1.swift`, a defaulted `Provider` requirement,
-and a host that supplies 1.1). That minor is never part of the shipped
-framework. Each tree builds its framework, its fixture and variants, and
-`KoineCompatibilityHost` (`Fixtures/CompatibilityHost`), a headless host that
-serves one data directory's per-user provider root until its standard input
+builds two independent revisions under `.build/compat/<configuration>/`, each in
+a tree of its own with its own build directory: `baseline`, extracted from the
+**released** revision (the tag `v0.1.0`; `KOINE_BASELINE_REVISION` names another),
+and `newer`, a copy of this working tree. The baseline is built by
+`scripts/build-baseline-host.sh`, also `task compat:baseline`, so any check that
+needs the pre-extension host reuses the same build; it is never this tree with
+edits. Each tree builds its framework, its fixture and variants, its desktop
+provider and `KoineCompatibilityHost` (`Fixtures/CompatibilityHost`), a headless
+host that serves one data directory's per-user provider root, and an optional
+second directory standing in for `Contents/PlugIns`, until its standard input
 ends. It is test material: `scripts/build-app.sh` does not ship it and it adds
-no API. `later/` holds later revisions of the fixture, each compiled against a
-named revision's framework. `CONFIGURATION=release task compat` does the same in
-release.
+no API. `later/` holds later revisions of the fixture, from the newer tree's
+source, each compiled against a named revision's framework;
+`FIXTURE_ADDITIONAL` (`Fixtures/FixtureProvider/build.sh`) is the one that uses
+the additional-capabilities feature. `CONFIGURATION=release task compat` does the
+same in release.
 
 `scripts/verify-compat-pairs.py` makes each pair at run time, by installing one
 tree's bundle and approval record under the other tree's host, one host process
 per case, and drives it over loopback HTTP with a grant. It digests every binary
 before and after, and writes `results.json` beside the trees.
 
+The workspace has pairs of its own ([record](docs/verification/workspace-compatibility.md)): the
+retained 1.0.0 bundle (`task compat:workspace-baseline`) and this tree's 1.0.1 each under both
+hosts, and the same 1.0.1 source stating `first-party-selection-v1`, approved per user, over the
+bundled 1.0.0, with the same locations probed through every pair and the two releases compared.
+`task compat:workspace-subjects` runs the retained revision's own short-path suites, unedited,
+against the 1.0.1 bundle.
+
 A provider for an older Koine is compiled against that Koine's framework minor,
 not only written without newer declarations: a conformance compiled against a
 newer minor records the defaults of the requirements that minor added, and an
-older host's dynamic loader refuses it.
+older host's dynamic loader refuses it. Framework 1.1 adds no protocol
+requirement, so a provider compiled against it that uses nothing new still runs
+on a 1.0 host; the pairs show that, and it is a fact about this minor.
 
 ## Desktop provider
 
@@ -808,8 +938,6 @@ memory. All support macOS 10.15 or later and Linux.
 
 `KoineCore` is not built or tested on Linux; its imports are Foundation, GraphQL
 and Crypto only.
-
-Work is driven as a grove task tree under `.grove/`.
 
 ## License
 

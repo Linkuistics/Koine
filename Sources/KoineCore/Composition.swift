@@ -17,6 +17,13 @@ public struct ProviderDiagnostic: Sendable, Equatable {
         case unknownCoordinate
         case actionOutsideMutation
         case unsupportedFeature
+        /// The descriptor uses additional capability requirements without
+        /// declaring the feature that carries them.
+        case undeclaredFeature
+        /// A field requires a capability of a provider that is not admitted, or
+        /// names an authority no provider field may require.
+        case invalidCapabilityRequirement
+        case missingCapabilityOwner
         case introspectionLimit
         /// An active provider did not recognise a registered resolver.
         case resolverMismatch
@@ -33,8 +40,35 @@ public struct ProviderDiagnostic: Sendable, Equatable {
     }
 }
 
-/// Host features a provider may require. Version 1 defines none.
-public let koineHostFeatures: Set<String> = []
+/// The host feature every newly published first-party update declares, so that
+/// an earlier host refuses it before `dlopen`. It is a host selection feature,
+/// not a framework declaration (docs/specs/machine.md, "Eligibility and
+/// precedence"); the native loader states the same name.
+public let firstPartySelectionFeature = "first-party-selection-v1"
+
+/// Host features a provider may require: `additional-capabilities-v1`, carried by
+/// framework minor 1 (docs/specs/machine.md, "Additional capability requirements"),
+/// and `first-party-selection-v1`, which needs no framework minor.
+public let koineHostFeatures: Set<String> = [
+    ProviderDescriptor.additionalCapabilitiesFeature, firstPartySelectionFeature,
+]
+
+/// An identifier and prefix reserved to a shipped provider. Names beneath a
+/// reserved identity belong to that shipped provider alone, whether or not it
+/// is present, admitted or started (docs/specs/machine.md, "Reserved identities").
+public struct ReservedIdentity: Sendable, Equatable {
+    public let providerId: String
+    public let graphQLPrefix: String
+
+    public init(providerId: String, graphQLPrefix: String) {
+        self.providerId = providerId
+        self.graphQLPrefix = graphQLPrefix
+    }
+
+    /// Before a host states its catalogue, the desktop provider's identity is
+    /// the one reservation a composition makes.
+    public static let desktopOnly = [ReservedIdentity(providerId: "desktop", graphQLPrefix: "Desktop")]
+}
 
 /// Composes provider contributions onto the core schema
 /// (docs/specs/machine.md, "Composition and operation placement"). A provider is
@@ -50,7 +84,7 @@ struct Composition {
     /// whose addition it rejects is refused.
     init(
         core: GraphQLSchema, providers: [ActiveProvider], policy: RequestPolicy,
-        admits: (GraphQLSchema) -> Bool
+        reserved: [ReservedIdentity] = ReservedIdentity.desktopOnly, admits: (GraphQLSchema) -> Bool
     ) {
         var diagnostics: [ProviderDiagnostic] = []
         var candidates: [Candidate] = []
@@ -58,7 +92,9 @@ struct Composition {
         for (index, active) in providers.enumerated() {
             do {
                 candidates.append(
-                    try Candidate(index: index, active: active, core: core, policy: policy)
+                    try Candidate(
+                        index: index, active: active, core: core, policy: policy, reserved: reserved
+                    )
                 )
             } catch let refusal as Refusal {
                 diagnostics.append(refusal.diagnostic(for: active))
@@ -114,30 +150,71 @@ struct Composition {
             ($0.active.origin == .bundled ? 0 : 1, $0.active.descriptor.providerId)
                 < ($1.active.origin == .bundled ? 0 : 1, $1.active.descriptor.providerId)
         }
-        var schema = core
-        var accepted: [ProviderContribution] = []
-        for candidate in candidates {
-            do {
-                let extended = try extendSchema(schema: schema, documentAST: candidate.document)
-                if let invalid = validateSchema(schema: extended).first { throw invalid }
-                guard admits(extended) else {
-                    throw Refusal(
-                        .introspectionLimit,
-                        "Full introspection of the schema with this contribution would exceed the request policy."
+        /// Extends the core with each candidate in order; one that does not
+        /// fit is refused whole and the rest go on.
+        func compose(
+            _ list: [Candidate], admits: (GraphQLSchema) -> Bool
+        ) -> (schema: GraphQLSchema, admitted: [Candidate]) {
+            var schema = core
+            var admitted: [Candidate] = []
+            for candidate in list {
+                do {
+                    let extended = try extendSchema(schema: schema, documentAST: candidate.document)
+                    if let invalid = validateSchema(schema: extended).first { throw invalid }
+                    guard admits(extended) else {
+                        throw Refusal(
+                            .introspectionLimit,
+                            "Full introspection of the schema with this contribution would exceed the request policy."
+                        )
+                    }
+                    schema = extended
+                    admitted.append(candidate)
+                } catch let refusal as Refusal {
+                    diagnostics.append(refusal.diagnostic(for: candidate.active))
+                } catch {
+                    diagnostics.append(
+                        Refusal(.invalidSDL, sdlMessage(error)).diagnostic(for: candidate.active)
                     )
                 }
-                schema = extended
-                accepted.append(ProviderContribution(active: candidate.active))
-            } catch let refusal as Refusal {
-                diagnostics.append(refusal.diagnostic(for: candidate.active))
-            } catch {
+            }
+            return (schema, admitted)
+        }
+        var composed = compose(candidates, admits: admits)
+
+        // Additional capability requirements are the one dependency between
+        // contributions, and it is checked only after every ordinary refusal:
+        // an owner that is not admitted removes each contribution naming it, and
+        // that removal can leave another without its owner. Removal repeats until
+        // the admitted set stops changing. It only removes: a contribution
+        // refused above is not reconsidered, and one that merely failed to start
+        // is not here at all. A dependency cycle among admitted providers is
+        // satisfied, since a name is not a call.
+        var removed = false
+        while true {
+            let present = Set(composed.admitted.map(\.providerId))
+            let stranded = composed.admitted.filter { !$0.additionalOwners.isSubset(of: present) }
+            guard !stranded.isEmpty else { break }
+            removed = true
+            for candidate in stranded {
+                let missing = candidate.additionalOwners.subtracting(present).sorted()
                 diagnostics.append(
-                    Refusal(.invalidSDL, sdlMessage(error)).diagnostic(for: candidate.active)
+                    Refusal(
+                        .missingCapabilityOwner,
+                        "A field requires a capability of \(missing.joined(separator: ", ")), which is not an admitted provider."
+                    ).diagnostic(for: candidate.active)
                 )
             }
+            composed.admitted.removeAll { candidate in
+                stranded.contains { $0.index == candidate.index }
+            }
         }
-        self.schema = schema
-        self.accepted = accepted
+        if removed {
+            // The schema is rebuilt from what survives; a subset of a schema
+            // that was admitted needs no second admission.
+            composed = compose(composed.admitted) { _ in true }
+        }
+        self.schema = composed.schema
+        self.accepted = composed.admitted.map { ProviderContribution(active: $0.active) }
         self.diagnostics = diagnostics
     }
 }
@@ -170,6 +247,10 @@ private struct Candidate {
     let document: Document
     /// Type names, `Query.`/`Mutation.` root coordinates and `@directive` names.
     let claimedNames: Set<String>
+    /// The other providers whose capabilities its fields additionally require.
+    let additionalOwners: Set<String>
+
+    var providerId: String { active.descriptor.providerId }
 
     private static let rootTypes: Set = ["Query", "Mutation"]
     private static let reservedTypeNames: Set = [
@@ -177,7 +258,10 @@ private struct Candidate {
         "String", "Int", "Float", "Boolean", "ID",
     ]
 
-    init(index: Int, active: ActiveProvider, core: GraphQLSchema, policy: RequestPolicy) throws {
+    init(
+        index: Int, active: ActiveProvider, core: GraphQLSchema, policy: RequestPolicy,
+        reserved: [ReservedIdentity]
+    ) throws {
         self.index = index
         self.active = active
         let descriptor = active.descriptor
@@ -191,7 +275,10 @@ private struct Candidate {
             )
         }
         for claimed in [descriptor.providerId, prefix]
-        where Self.owner(of: claimed, bundled: active.origin == .bundled) != nil {
+        where Self.owner(
+            of: claimed, provider: descriptor.providerId, shipped: active.origin == .bundled,
+            reserved: reserved
+        ) != nil {
             var refusal = Refusal(.reservedName, "\(claimed) is reserved.")
             refusal.reservedIdentity = true
             throw refusal
@@ -201,6 +288,17 @@ private struct Candidate {
             throw Refusal(
                 .unsupportedFeature,
                 "This host lacks required features: \(missing.sorted().joined(separator: ", "))."
+            )
+        }
+        // Silently ignoring a set the provider did not declare the feature for
+        // is never a fallback: the declaration is what an old host refuses on.
+        guard
+            descriptor.requiredFeatures.contains(ProviderDescriptor.additionalCapabilitiesFeature)
+                || descriptor.fields.allSatisfy({ $0.additionalRequirements.isEmpty })
+        else {
+            throw Refusal(
+                .undeclaredFeature,
+                "A field requires additional capabilities, and the descriptor does not declare \(ProviderDescriptor.additionalCapabilitiesFeature)."
             )
         }
 
@@ -215,12 +313,14 @@ private struct Candidate {
             throw Refusal(.invalidSDL, sdlMessage(error))
         }
         let lowerPrefix = prefix.prefix(1).lowercased() + prefix.dropFirst()
-        let bundled = active.origin == .bundled
+        let shipped = active.origin == .bundled
         func checkName(_ name: String, _ what: String, prefix required: String) throws {
             if Self.reservedTypeNames.contains(name) || name.hasPrefix("__") {
                 throw Refusal(.reservedName, "\(what) \(name) is reserved.")
             }
-            if let owner = Self.owner(of: name, bundled: bundled) {
+            if let owner = Self.owner(
+                of: name, provider: descriptor.providerId, shipped: shipped, reserved: reserved
+            ) {
                 throw Refusal(.reservedName, "\(what) \(name) uses the \(owner) prefix.")
             }
             guard name.hasPrefix(required) else {
@@ -245,6 +345,16 @@ private struct Candidate {
                     throw Refusal(
                         .invalidSDL,
                         "\(input.name.value) has an input-object default value, which this version does not accept."
+                    )
+                }
+                // A default the scalar cannot serve would fail introspection for
+                // every client, whatever grant it holds.
+                if namedType(input.type) == referenceScalarName, let value = input.defaultValue,
+                    !isReferenceLiteral(value)
+                {
+                    throw Refusal(
+                        .invalidSDL,
+                        "\(input.name.value) has a default that is not a Reference."
                     )
                 }
             }
@@ -380,7 +490,41 @@ private struct Candidate {
             @unknown default:
                 throw Refusal(.unclassifiedField, "\(coordinate) has no known authority requirement.")
             }
+            for requirement in registration.additionalRequirements {
+                // Core enrollment and management authority are the core's alone:
+                // a provider names provider capabilities, never `koine:*`.
+                // `koine` is the core's, and every identifier under its prefix is
+                // reserved to it, so no provider can hold one: refused here, not
+                // admitted and removed later for a missing owner.
+                guard isProviderIdentifier(requirement.providerId),
+                    !requirement.providerId.hasPrefix("koine")
+                else {
+                    throw Refusal(
+                        .invalidCapabilityRequirement,
+                        "\(coordinate) requires a capability of \(requirement.providerId), which no provider can be."
+                    )
+                }
+                switch requirement.kind {
+                case .read: break
+                case .control:
+                    // Only a root Mutation field, or what one alone returns, acts.
+                    guard !queryReachable.contains(type) else {
+                        throw Refusal(
+                            .invalidCapabilityRequirement,
+                            "\(coordinate) additionally requires \(requirement.providerId):control, but a query can reach it; a field a query can reach may add reads only."
+                        )
+                    }
+                @unknown default:
+                    throw Refusal(
+                        .invalidCapabilityRequirement,
+                        "\(coordinate) has an additional requirement of an unknown kind."
+                    )
+                }
+            }
         }
+        additionalOwners = Set(
+            descriptor.fields.flatMap(\.additionalRequirements).map(\.providerId)
+        ).subtracting([descriptor.providerId])
 
         // Against the core alone: a contribution cannot lean on another's types.
         do {
@@ -405,12 +549,29 @@ private struct Candidate {
     }
 
     /// The owner whose prefix `name` falls under, when this provider is not it.
-    /// The core owns `koine`/`Koine`; the bundled provider owns `desktop`/`Desktop`.
-    private static func owner(of name: String, bundled: Bool) -> String? {
+    /// The core owns `koine`/`Koine`; each reserved identity belongs to the
+    /// shipped provider selected for it, and to no other claimant.
+    private static func owner(
+        of name: String, provider: String, shipped: Bool, reserved: [ReservedIdentity]
+    ) -> String? {
         let lower = name.lowercased()
         if lower.hasPrefix("koine") { return "koine" }
-        if lower.hasPrefix("desktop"), !bundled { return "desktop" }
+        for identity in reserved
+        where lower.hasPrefix(identity.providerId) || lower.hasPrefix(identity.graphQLPrefix.lowercased()) {
+            if shipped, identity.providerId == provider { continue }
+            return identity.providerId
+        }
         return nil
+    }
+}
+
+/// A `Reference` default: a null, a well-formed reference, or a list of them.
+private func isReferenceLiteral(_ value: any Value) -> Bool {
+    switch value {
+    case is NullValue: true
+    case let text as StringValue: ReferenceEnvelope(text.value) != nil
+    case let list as ListValue: list.values.allSatisfy(isReferenceLiteral)
+    default: false
     }
 }
 

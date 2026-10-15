@@ -1,0 +1,66 @@
+{
+ "case": "thr-open-1000",
+ "rows": [
+  {
+   "finishedAt": "1791090748.960",
+   "id": "thr-open-1000",
+   "mode": "open",
+   "pid": 2456,
+   "result": {
+    "callback": {
+     "app": {
+      "bundleIdentifier": "dev.antony.Koine.K134Witness",
+      "bundleURL": "L0FwcGxpY2F0aW9ucy9Lb2luZUsxMzRXaXRuZXNzLmFwcA==",
+      "executableURL": {
+       "b64": "L0FwcGxpY2F0aW9ucy9Lb2luZUsxMzRXaXRuZXNzLmFwcC9Db250ZW50cy9NYWNPUy9Lb2luZQ==",
+       "length": 55
+      },
+      "pid": 2457,
+      "proc_pidpath": {
+       "b64": "L0FwcGxpY2F0aW9ucy9Lb2luZUsxMzRXaXRuZXNzLmFwcC9Db250ZW50cy9NYWNPUy9Lb2luZQ==",
+       "length": 55
+      }
+     },
+     "elapsedMs": 50.9190559387207
+    },
+    "submittedApp": {
+     "b64": "L0FwcGxpY2F0aW9ucy9Lb2luZUsxMzRXaXRuZXNzLmFwcA==",
+     "length": 34
+    },
+    "submittedDoc": {
+     "b64": "L1VzZXJzL2FkbWluL2sxMzQvdDEwMDAvTDFfYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmIvTDJfY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2MvTDNfZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGQvTDRfZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlL3NhbXBsZS5rMTM0dw==",
+     "length": 1000
+    }
+   },
+   "startedAt": 1791090748.90885
+  }
+ ],
+ "logs": {
+  "witness": [
+   {
+    "at": "1791090748.986",
+    "deliveredB64": "L1VzZXJzL2FkbWluL2sxMzQvdDEwMDAvTDFfYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmIvTDJfY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2MvTDNfZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGQvTDRfZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlL3NhbXBsZS5rMTM0dw==",
+    "deliveredLength": 1000,
+    "id": "dev.antony.Koine.K134Witness",
+    "pid": 2457
+   }
+  ],
+  "self": [
+   {
+    "_NSGetExecutablePathLength": 55,
+    "at": "1791090748.986",
+    "bundleB64": "L0FwcGxpY2F0aW9ucy9Lb2luZUsxMzRXaXRuZXNzLmFwcA==",
+    "exeB64": "L0FwcGxpY2F0aW9ucy9Lb2luZUsxMzRXaXRuZXNzLmFwcC9Db250ZW50cy9NYWNPUy9Lb2luZQ==",
+    "id": "dev.antony.Koine.K134Witness",
+    "pid": 2457,
+    "proc_pidpathB64": "L0FwcGxpY2F0aW9ucy9Lb2luZUsxMzRXaXRuZXNzLmFwcC9Db250ZW50cy9NYWNPUy9Lb2luZQ==",
+    "proc_pidpathLength": 55
+   }
+  ]
+ },
+ "windows": "\"Notification Center\" (systemDialog) 1920x1080 app:\"Notification Center\"\n\"Featured\" (standard) 360x180 app:\"Notification Center\"\n\"Forecast\" (standard) 180x180 app:\"Notification Center\"\n\"Month\" (standard) 180x180 app:\"Notification Center\"\n\"short\" (standard) 920x436 [focused] app:\"Finder\"\n",
+ "observer": {
+  "pid": 2457,
+  "lsof_ps": "p2457\nftxt\nn/Applications/KoineK134Witness.app/Contents/MacOS/Koine\nftxt\n 2457 /Applications/KoineK134Witness.app/Contents/MacOS/Koine\n"
+ }
+}

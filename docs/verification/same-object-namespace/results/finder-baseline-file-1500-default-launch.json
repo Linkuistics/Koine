@@ -1,0 +1,9 @@
+{
+  "command": "(open -a Finder) >/tmp/k149-cmd-32.out 2>/tmp/k149-cmd-32.err; echo $? >/tmp/k149-cmd-32.tmp; mv /tmp/k149-cmd-32.tmp /tmp/k149-cmd-32.code",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "",
+  "timed_out": false
+}

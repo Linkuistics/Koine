@@ -1,0 +1,68 @@
+# Examples consume only the documented schema. Query/chooser/clipboard policy
+# stays in the client. Mutations need workspace:control AND desktop:control.
+# Supply literal variables, never a command string. Do not replay failed opens.
+# Inspect errors at/below each result: they may suppress a branch without changing
+# a published status. No installed path or default-handler metadata is in a receipt.
+# Encode Unicode URL data and IDNA host labels before supplying an HTTP(S) URI.
+# Search-to-action variables preserve every returned path byte and the selected
+# application's identifier AND applicationPath. Never omit the constraint after
+# failure. Long-result native inspection/submission remains pending; a valid
+# operation against this retained action-only SDL is not actionability evidence.
+# The same operation shapes validate against the designed 1.0.1 repair SDL.
+# Launch/named open may submit a registered application spelling of the same
+# native identity; record it separately from the supplied installation constraint.
+# Action fixtures close in launch-and-open; actual-search provenance closes later
+# in app-and-file-search acceptance. Receipt null is no long-process evidence.
+#
+# This file lists every designed workspace operation, and every root has landed
+# (LaunchInstalledApplication, OpenSearchURL, OpenDocumentOrDirectory and RevealPath). The
+# file still holds one operation that is not a workspace root (CaptureOpenedApplication, a
+# desktop read), so generate the operations you use, by name, with the fragments they
+# spread, against the introspection of the Koine you generate from, and let generation fail
+# if one does not validate there. A Koine older than this one serves fewer roots.
+
+fragment WorkspaceOpenOutcome on WorkspaceOpenResult {
+  status
+  value {
+    process { pid startedAt }
+  }
+  dependency { reason guidance }
+}
+
+mutation LaunchInstalledApplication($application: WorkspaceApplicationInput!) {
+  workspaceLaunchApplication(application: $application) {
+    ...WorkspaceOpenOutcome
+  }
+}
+
+# Opens any absolute HTTP(S) URL in the default browser; the name is the search flow's use of it.
+mutation OpenSearchURL($url: String!) {
+  workspaceOpenURL(url: $url) { ...WorkspaceOpenOutcome }
+}
+
+mutation OpenDocumentOrDirectory($path: String!, $application: WorkspaceApplicationInput) {
+  workspaceOpenPath(path: $path, application: $application) {
+    ...WorkspaceOpenOutcome
+  }
+}
+
+mutation RevealPath($path: String!) {
+  workspaceRevealPath(path: $path) {
+    status
+    value { path }
+    dependency { reason guidance }
+  }
+}
+
+# This is DesktopChoices from desktop-operations.graphql under another name; a client
+# may send either. A separate request, only when the preceding receipt has a process
+# and the caller has desktop:read. Copy the two values; do not convert reference URIs.
+# Any explicit focus uses returned window references in desktopFocusWindow under
+# desktop:control and the desktop consent contract; no automatic open replay.
+query CaptureOpenedApplication($process: DesktopProcessIdentity!) {
+  desktopApplication(process: $process) {
+    ref
+    name
+    windows { ref title observation }
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "instrument": "recorded-observation reevaluation; raw results preserved",
+  "results": [
+    {
+      "case": "launch: 1024-byte constrained application, cold; no substitution",
+      "originalStatus": "failed",
+      "status": "passed",
+      "basis": "exact literal selector, canonical stage/kind/count guidance, no receipt/dependency/delivery/process change"
+    },
+    {
+      "case": "launch: 1024-byte constrained application, running; no substitution",
+      "originalStatus": "failed",
+      "status": "passed",
+      "basis": "exact literal selector, canonical stage/kind/count guidance, no receipt/dependency/delivery/process change"
+    },
+    {
+      "case": "open: 1024-byte constrained application, cold; no substitution",
+      "originalStatus": "failed",
+      "status": "passed",
+      "basis": "exact literal selector, canonical stage/kind/count guidance, no receipt/dependency/delivery/process change"
+    },
+    {
+      "case": "open: 1024-byte constrained application, running; no substitution",
+      "originalStatus": "failed",
+      "status": "passed",
+      "basis": "exact literal selector, canonical stage/kind/count guidance, no receipt/dependency/delivery/process change"
+    },
+    {
+      "case": "launch: 1500-byte constrained application, cold; no substitution",
+      "originalStatus": "failed",
+      "status": "passed",
+      "basis": "exact literal selector, canonical stage/kind/count guidance, no receipt/dependency/delivery/process change"
+    },
+    {
+      "case": "launch: 1500-byte constrained application, running; no substitution",
+      "originalStatus": "failed",
+      "status": "passed",
+      "basis": "exact literal selector, canonical stage/kind/count guidance, no receipt/dependency/delivery/process change"
+    },
+    {
+      "case": "open: 1500-byte constrained application, cold; no substitution",
+      "originalStatus": "failed",
+      "status": "passed",
+      "basis": "exact literal selector, canonical stage/kind/count guidance, no receipt/dependency/delivery/process change"
+    },
+    {
+      "case": "open: 1500-byte constrained application, running; no substitution",
+      "originalStatus": "failed",
+      "status": "passed",
+      "basis": "exact literal selector, canonical stage/kind/count guidance, no receipt/dependency/delivery/process change"
+    },
+    {
+      "case": "launch: constrained short A beside long copies on disk",
+      "originalStatus": "passed",
+      "status": "passed",
+      "basis": "exact physical bundle and document, non-null receipt matches kernel PID/start"
+    },
+    {
+      "case": "open: constrained short A beside long copies on disk",
+      "originalStatus": "passed",
+      "status": "passed",
+      "basis": "exact physical bundle and document, non-null receipt matches kernel PID/start"
+    },
+    {
+      "case": "launch: constrained short B beside long copies on disk",
+      "originalStatus": "passed",
+      "status": "passed",
+      "basis": "exact physical bundle and document, non-null receipt matches kernel PID/start"
+    },
+    {
+      "case": "open: constrained short B beside long copies on disk",
+      "originalStatus": "passed",
+      "status": "passed",
+      "basis": "exact physical bundle and document, non-null receipt matches kernel PID/start"
+    },
+    {
+      "case": "launch: unconstrained short preferred A beside long copies on disk",
+      "originalStatus": "passed",
+      "status": "passed",
+      "basis": "actual preferred A, exact bundle/document and kernel-backed receipt"
+    },
+    {
+      "case": "open: unconstrained short preferred A beside long copies on disk",
+      "originalStatus": "passed",
+      "status": "passed",
+      "basis": "actual preferred A, exact bundle/document and kernel-backed receipt"
+    },
+    {
+      "case": "independent 1023-byte document delivery",
+      "originalStatus": "passed",
+      "status": "passed",
+      "basis": "retained independent delivery within 20 seconds; live exact-path assertion and rejected wrong-path control"
+    },
+    {
+      "case": "independent 1023-byte Finder selection",
+      "originalStatus": "passed",
+      "status": "passed",
+      "basis": "retained exact independently delivered 1023-byte control path selected by Finder"
+    },
+    {
+      "case": "short reveal finds Finder beside long copies",
+      "originalStatus": "passed",
+      "status": "passed",
+      "basis": "retained exact Finder selection and full atomic request acknowledgement"
+    },
+    {
+      "case": "no system dialog after the section",
+      "originalStatus": "passed",
+      "status": "passed",
+      "basis": "retained live permission/dialog assertion in unchanged measurement recipe"
+    },
+    {
+      "case": "accessibility absent throughout",
+      "originalStatus": "passed",
+      "status": "passed",
+      "basis": "retained live permission/dialog assertion in unchanged measurement recipe"
+    },
+    {
+      "case": "preferred long copy refusal, cold and with a short copy running",
+      "originalStatus": "pending",
+      "status": "pending",
+      "basis": "The measured native preferred copy is short. Selected-short successes cannot pass this subject."
+    },
+    {
+      "case": "short selected beside registered long copy in both enumeration orders",
+      "originalStatus": "pending",
+      "status": "pending",
+      "basis": "None of six bounded attempts made NSWorkspace report the long spelling. Disk-only short successes do not pass registered-long subjects."
+    }
+  ],
+  "counts": [
+    {
+      "status": "passed",
+      "count": 19
+    },
+    {
+      "status": "pending",
+      "count": 2
+    }
+  ]
+}

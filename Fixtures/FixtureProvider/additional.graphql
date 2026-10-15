@@ -1,0 +1,4 @@
+extend type Mutation {
+  "fixture:control and, additionally, fixture:read. Renames exactly this item or reports failure."
+  fixtureRenameItemChecked(ref: Reference!, name: String!): FixtureRenameReceipt
+}

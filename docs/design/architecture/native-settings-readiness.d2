@@ -1,0 +1,42 @@
+# Activity view: process readiness, finite response quiescence and useful qualification differ.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+Start: "Start here · Explicit settings read\nworkspace:read" {class: start}
+Target: "Validate running incarnation\nStopped → UNAVAILABLE"
+First: "Sweep 1 · pALL pane records\nEach ID owns its anchor read"
+Gap: "Minimum 100 ms gap\nSame three-second job budget"
+Second: "Sweep 2 · full ID-keyed map\nNames + pane-scoped anchors"
+Compare: "Compare exact maps\nOrder is irrelevant" {shape: diamond}
+Changed: "Changed map · valid positives?\nPARTIAL; otherwise FAILED / null"
+Positive: "Positive map → PARTIAL\nLazy observations UNKNOWN"
+Empty: "Empty panes → UNKNOWN / null\nEmpty anchors → null"
+Freeze: "Freeze snapshot + exact keys\nNo catalogue-ready signal"
+Budget: "Count/call/copy or incomplete-first deadline\nFAILED / null; no prefix"
+Checkpoint: "Confirmation timeout\nUncontradicted first-map positives\nPARTIAL / TIME_LIMIT / UNKNOWN"
+Diagnostic: "63 details + DIAGNOSTIC_LIMIT\nFixed summaries; never drop choices"
+Prepare: "Start here · Explicit prepare\nRUNNING is process-only" {class: start}
+Qualification: "Independent finite cold + warm subject\nEvery exposed choice; V12"
+Limit: "Native usefulness pending\nEquality proves no lazy health"
+Start -> Target: "1 · validate"
+Target -> First: "2 · exact no-prompt core/getd"
+First -> Gap: "3 · full sweep done"
+Gap -> Second: "4 · revalidate before admission"
+Second -> Compare: "5 · decode bounded records"
+Compare -> Changed: "6 · unequal / CHANGED"
+Compare -> Positive: "6 · equal + positive"
+Compare -> Empty: "6 · equal + empty"
+Changed -> Freeze: "7 · valid second-sweep choices"
+Positive -> Freeze: "7 · exact keys + uncertainty"
+Empty -> Freeze: "7 · no invented empty catalogue"
+First -> Budget: "Any global exhaustion"
+Second -> Budget: "Count/call/copy overflow"
+Gap -> Checkpoint: "Deadline after complete first map"
+Second -> Checkpoint: "Deadline; discard partial confirmation"
+Checkpoint -> Freeze: "Retain only uncontradicted entries"
+First -> Diagnostic: "Detail saturation; continue"
+Second -> Diagnostic: "Detail saturation; continue"
+Prepare -> Qualification: "Separate authorized cold read"
+Freeze -> Qualification: "Separate V12 test · inventory + visits"
+Qualification -> Limit: "Finite witness; no production health upgrade"

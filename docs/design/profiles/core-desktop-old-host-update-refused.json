@@ -1,0 +1,19 @@
+{
+  "name": "old-host core + desktop, a newly published desktop update refused",
+  "design": "../desktop-schema.graphql",
+  "management": "baseline",
+  "comment": [
+    "Held by scripts/verify-selection-updates.py (`task selection:updates`) against the RELEASED headless host (v0.1.0) running",
+    "the released desktop provider as its bundled provider, with a newly published desktop update installed per user. The",
+    "update states first-party-selection-v1, which that host does not supply, so it is refused INCOMPATIBLE before it loads:",
+    "the contract is the original core + desktop one, unchanged, and the bundled desktop provider is the row that runs."
+  ],
+  "providers": [
+    {
+      "provider": "desktop", "version": "1.0.0", "schemaVersion": "1.0.0", "state": "ACTIVE"
+    },
+    {
+      "provider": "desktop", "version": "1.1.0", "schemaVersion": "1.0.0", "state": "INCOMPATIBLE"
+    }
+  ]
+}

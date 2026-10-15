@@ -1,15 +1,26 @@
 # Koine desktop contract
 
-**The desktop contract Koine implements.** Koine 0.1.0 implements this design:
+**The shared Machine and desktop contract.** Koine 0.1.0 implements the baseline:
 the shared resilient Swift framework, one resident Koine application and bearer
 credentials with live revocation. The
-served schema matches [the design schema](../design/desktop-schema.graphql)
-under a repeatable check, and the platform behavior is verified on the notarized
+served schema matches [the design schema](../design/desktop-schema-extension-host.graphql)
+(and, for hosts that predate the candidate diagnostics, the
+[original](../design/desktop-schema.graphql)) under a repeatable check, and the platform behavior is verified on the notarized
 build in Gatekeeper-enforcing VMs. "Test seams and acceptance" says, case by
 case, what is established and by which evidence, and what is open. Process
 identity is a PID plus its kernel start instant; the races public Accessibility
 leaves open are accepted and listed in "Native targeting discussion". Client authors start at the
 [client guide](../client-guide.md).
+
+The [workflow-provider extension](workflow-providers.md) adds agreed launch,
+native location/catalogue discovery, input, menu and tool workflows. Its pending
+native discovery targets macOS 26+ and named application/System Settings categories;
+clients own raw filesystem search. The
+[ownership decision](../adr/raw-filesystem-search-belongs-to-clients.md) governs
+that boundary. Sections explicitly marked **extension** below are obligations for
+that work, not claims about 0.1.0 or its acceptance. The [native discovery design](workspace-search.md) now defines its API, selected
+sources and exact new profiles. Mandatory review and G/N/V acceptance remain
+pending; earlier raw-search and action-only captures supply no catalogue pass.
 
 ## Purpose and ownership
 
@@ -176,10 +187,11 @@ code or to undo actions.
 ## Public GraphQL contract
 
 `koine-desktop/1` names the public contract, separately from plugin ABI
-versions. The [schema](../design/desktop-schema.graphql) states exact
-types and nullability; the [client operations](../design/desktop-operations.graphql)
+versions. The [schema](../design/desktop-schema-extension-host.graphql) states exact
+types and nullability (the [original schema](../design/desktop-schema.graphql)
+is the old-host profile, kept as released, see "Conformance profiles"); the [client operations](../design/desktop-operations.graphql)
 show the handoff's requests. The schema Koine serves matches the schema file,
-checked by `task conformance` against the notarized build
+checked by `task conformance`, for each profile against the host that serves it
 ([schema-conformance-vm.md](../verification/schema-conformance-vm.md)), and the
 five operations run unmodified from a client generated only from the documented
 contract ([contract-only-client.md](../verification/contract-only-client.md)).
@@ -225,7 +237,10 @@ The instant is the kernel's record of the process's start, as
 `pbi_start_tvusec` (`sysctl` `KERN_PROC_PID` reports the same record as
 `kp_proc.p_starttime`), written exactly as `YYYY-MM-DDTHH:MM:SS.ffffffZ` and
 compared exactly; any other form is an input error. Locating the process is the
-client's: Koine offers no lookup by name or bundle identifier.
+client's in the served baseline: desktop offers no lookup by name or bundle
+identifier. The designed [workspace launch/open extension](workspace-launch-and-open.md)
+can return an observed process incarnation after an explicit action; it does
+not change desktop's lookup input or reference contract.
 
 This identity is the `koine-desktop/1` contract. The
 [capture decision](../adr/desktop-capture-preserves-the-process-incarnation.md)
@@ -291,8 +306,8 @@ A second printer would make its own disagreements look like schema drift.
 Evidence: [schema-conformance-vm.md](../verification/schema-conformance-vm.md).
 
 The digest is an equality token. It is identical across restarts of one Koine
-build with one set of active provider contributions, whatever order they were composed
-in, and differs when any served type, field, argument, nullability, default,
+build with one set of active provider contributions in the canonical composition
+order, and differs when any served type, field, argument, nullability, default,
 deprecation or description differs. Clients compare it with the digest they generated against to learn that they
 should introspect again; they do not recompute it. A Koine upgrade may change
 the digest of an unchanged schema if its printer changes; that costs a client one
@@ -308,17 +323,27 @@ field. Each custom type, input, enum and directive has its provider prefix.
 Root query and mutation names start with the lower-case prefix. Reject
 collisions, reserved names, duplicate ownership, missing resolvers, invalid
 SDL and unclassified fields before publishing any contribution from that
-plugin. Reject both competing external providers for a duplicate identifier;
-never select an arbitrary winner. An external plugin cannot replace `desktop`.
+plugin. In the served baseline, reject both competing external providers for a
+duplicate identifier; an external plugin cannot replace `desktop`. The designed
+extension replaces that rule for reserved first-party identities with
+[first-party provider selection](#first-party-provider-selection). Other duplicate
+claims still refuse both; directory order never selects a winner.
 
 A provider identifier is a lower-case letter followed by lower-case letters and
 digits; it is also the reference authority and the prefix of the provider's
-capabilities. A prefix is a capitalised alphanumeric GraphQL name. Two prefixes
-may overlap (`Git`, `GitHub`); a name two providers both define refuses both.
+capabilities. A prefix is a capitalised alphanumeric GraphQL name. Two non-reserved
+prefixes may overlap (`Git`, `GitHub`); a name two providers both define refuses both.
 Each contribution is validated against the core schema alone, so it cannot use
-another provider's types, and its refusal never depends on which other providers
-loaded. Accepted contributions are composed in a canonical order, the bundled
-provider first and then by identifier. A refused provider is not started.
+another provider's types, and its SDL validity does not depend on which other
+providers loaded. The extension below adds explicit capability dependencies
+after that validation. Accepted contributions are composed in a canonical
+order: bundled providers first, then per-user providers, each group sorted by
+identifier. In the extension this first group is the selected shipped identities,
+including approved replacements physically installed in the per-user root.
+Other accepted per-user providers follow, sorted by identifier. Sorting uses
+Unicode code points. Desktop is the only bundled contribution in the baseline.
+A refused provider is not started. Physical origin remains visible in diagnostics;
+selection never pretends a per-user bundle was sealed inside the application.
 
 Version 1 narrows what a contribution may hold. It uses only its own types, the
 built-in scalars and `Reference`; an extension of `Query` or `Mutation` adds
@@ -356,6 +381,100 @@ reference whose authority is unregistered has no owner to check and is
 provider cannot mark its fields public or mint management authority. Provider
 metadata can require its own read/control capabilities; only core registrations
 can designate public enrollment or management authority.
+
+#### Additional capability requirements
+
+**Extension — implemented in framework minor 1; the bundled workspace provider
+is its first shipped user.** A field may add an immutable set of provider read/control capabilities to
+its existing own-class requirement. "Acceptance status" records what has been
+shown and what has not.
+The [effect-authority decision](../adr/provider-authority-follows-effects.md)
+explains why this is necessary. It does not replace the foreign-reference rule
+or let a provider make a field public. Root mutation fields still require their
+own control; query-reachable fields still require their own read. Additional
+requirements on query-reachable fields may only be reads. A control-authorized
+mutation receipt may carry the action's additional control requirements without
+exposing read-protected resource data. The workspace launch/open receipt's one
+observation allowance is an optional PID plus exact kernel start instant for
+the application returned by that action's native acknowledgment, following the
+workspace matching rule. It permits a later independently authorized desktop
+lookup, not application discovery: installed paths, bundle identifiers and
+default-handler metadata remain workspace read data. This does not authorize
+other resource state in control receipts.
+
+Every additional capability names a provider identifier and `read` or `control`.
+Core enrollment/management authority is forbidden. The set is unconditional:
+all native paths and fallback mechanisms of one field must fit it. Conditional
+effects use the conservative union or separate public fields, never an
+authorization decision made after native resolution. Field descriptions state
+the complete declared set, and documentation also states the unchanged dynamic
+reference-owner rule. Passing a reference as an ordinary string to escape that
+rule is not a valid provider contract.
+
+For extension fields using this feature, order requirements with the field's own
+capability first, additional capabilities in lexical Unicode-code-point order,
+then argument-owner capabilities in that order, omitting duplicates. `requiredCapability` names
+the first unmet member in that order. Add `extensions.requiredCapabilities` as
+the complete ordered set for the failing field and its coerced arguments, so a
+client can request one adequate grant instead of discovering members one denial
+at a time. Preflight errors retain each denied action's original response path;
+the list describes that action, not successful earlier effects or unrelated
+actions. This additive diagnostic does not change baseline registrations' error
+order or promise a machine-readable authorization catalogue in introspection.
+Descriptions supply the static field set; reference-owner additions still depend
+on arguments. Revocation and publication use the same set as preflight.
+
+Old registrations mean an empty additional set. The host computes the union of
+the ordinary field requirement, additional requirements and argument-reference
+owner requirements. It uses that same union in whole-mutation preflight, live
+dispatch admission, and read authorization/publication. The serialized
+grant/dispatch admission checks the complete set before provider code starts;
+providers never receive a credential or perform these grant checks themselves.
+Aliases, fragments, argument defaults, nested reference inputs and skip/include
+semantics remain those of the existing contract. No new client action follows
+revocation; cleanup of an already admitted interaction follows the separate
+workflow lifecycle contract.
+
+Provider SDL is still validated against core alone. Additional capability
+dependencies introduce one explicit composition dependency after independent
+validation: every named owner must be an admitted provider in the final schema.
+After ordinary loader/schema rejection, remove contributions with missing
+capability owners and repeat until the admitted set stops changing, in canonical
+order. Report the missing owner in management diagnostics; do not weaken a field
+or publish a partially protected contribution. Cycles of otherwise valid
+capability dependencies are allowed; they are authority names, not initialization
+calls: the check is membership of the admitted set, never a walk of the
+dependency graph. Providers must not use them to require an order for calling one
+another's start methods. A provider failing startup keeps its published schema and
+capability names under the existing lifecycle policy, while its own resolvers
+report `unavailable`. Naming its authority does not call it or establish a readiness
+dependency. Rejection removes its contribution and triggers the missing-owner
+cascade; startup failure alone does not. The native seam must cover both cases.
+
+This adds field metadata semantics through a compatible major-1 framework
+minor and required feature `additional-capabilities-v1`. Both manifest and
+descriptor declare the feature; the manifest declares the implementing minimum
+minor, which is 1. Framework 1.1 is the first to advertise the feature; Koine
+0.1.0 advertises framework 1.0 and no feature. The new declarations are
+`ProviderCapabilityRequirement` (a provider identifier and `read` or `control`),
+a `ProviderFieldRegistration` initializer that takes the set, and the feature's
+name, `ProviderDescriptor.additionalCapabilitiesFeature`. The set is empty for
+every registration made with the old initializer, which is retained with its
+behavior. An old host must refuse the new provider before loading. A new host
+must reject a descriptor that uses additional requirements without the feature
+declaration: `REJECTED`, not `INCOMPATIBLE`, since the descriptor is at fault and
+the host lacks nothing. It likewise refuses, whole, a contribution whose set
+names an identifier no provider can have (`koine` and everything under its
+prefix), adds control to a field a query can reach, or gives a `Reference`
+argument or input field a default that is not a reference. A manifest that names
+the feature under a minimum minor lower than the one that carries it is refused
+before any code loads. Silently ignoring the set is never a compatibility fallback.
+Independent old/new binary pairs verify these semantics before release.
+
+Composition does not check that a field's description states its declared set.
+Prose cannot be verified faithfully, so that stays a publication rule: a provider
+that ships a set tests its own descriptions, and a client that needs the set reads
+`extensions.requiredCapabilities`, which is the mechanical statement of it.
 
 ### Mutation preflight and revocation
 
@@ -395,32 +514,95 @@ output reads still use ordinary read authorization and GraphQL propagation;
 a denied output field is not evidence that the preceding action did not occur.
 The desktop receipt avoids that ambiguity for the common control-only call.
 
+The two places an action can be refused are told apart by path. A capability error
+with `phase: execution` **at a root action's own path** means dispatch admission
+refused that action: it did not start, because an admitted action is reported and
+never re-checked. A denial that follows an action's acknowledgment can only appear
+**below** the action's result, at a nested field, and leaves the action's own
+outcome as its published status says.
+
 ### Errors and partial data
 
 Execution errors carry `message`, standard response `path` (including aliases
 and list positions), and `extensions.kind`. Permission errors add
 `extensions.permissionClass`, either `capability` or `os-permission`.
 Capability errors identify the required capability in
-`extensions.requiredCapability`, without revealing protected resource existence. OS errors identify `accessibility` and Koine as the
-permission owner, in `extensions.osPermission` and `extensions.permissionOwner`
-(`koine`). Capability errors also carry `extensions.phase`: `authorization`
+`extensions.requiredCapability`, without revealing protected resource existence.
+OS errors carry the provider's consent string and Koine as permission owner in
+`extensions.osPermission` and `extensions.permissionOwner` (`koine`). Served
+desktop operations report `accessibility`; generic handling preserves the
+[legacy failure mapping](#provider-failure-compatibility), including nil mapped
+to an empty string and blank strings unchanged. Capability errors also carry
+`extensions.phase`: `authorization`
 when preflight refused the operation before any action, `execution` when a field
 was refused as it ran — a read, or a mutation action whose grant was revoked
 after preflight. An unavailable error may echo a reference the caller supplied,
 not disclose an otherwise unauthorized resource. Never expose tokens or native
 stack traces. Every propagated error retains the original failure path.
 
+**Workflow extension — consent identifiers, pending implementation.** Baseline desktop operations
+retain `osPermission: accessibility` and `permissionOwner: koine`. New provider
+operations may report other documented consent identifiers in `osPermission`,
+still owned by `koine`. The existing framework carries no error-extension
+`permissionTarget` or permission reason. Search's target/reason belongs only to
+its typed coverage payload. A future generic failure target/reason transport
+requires a separately specified compatible framework minor/required feature,
+pre-load refusal and validation/legacy-mapping matrix before any operation
+relies on it. Consent identifier strings are extensible on the
+new operations, not new `kind` or `permissionClass` values. A client of them must
+retain an unfamiliar consent as `os-permission`, show its guidance and direct
+the user to Koine; it must not relabel every consent as Accessibility. Owners
+must document exact identifiers and scope meaning before adding a consent.
+This does not add enum values to existing management permission types or alter
+what existing desktop clients receive. Any incompatible change to those types,
+or a new consent/entitlement, still requires Antony's decision.
+
+**Native discovery extension — designed, native acceptance pending.**
+The [native contract](workspace-search.md#coverage-and-frozen-publication) uses
+ordinary ProviderValue objects for status, source provenance, observation/category
+completeness, nullable items and bounded diagnostics. Aliases share a frozen
+parent; all read fields require workspace:read. No new diagnostic ABI/failure
+accessor or reinterpretation of nil/blank consent is introduced. Explicit
+preparation carries workspace:control; selected reveal carries both workspace
+and desktop control. Conditional Automation setup is an explicit human action
+only in Koine's local explaining UI, through a private local-console seam that
+GraphQL and bearer management authority cannot reach. It is limited by the recorded
+[settings decision](../adr/settings-discovery-uses-app-supplied-objects.md), not
+implied by a read or an earlier raw-search permission. Existing live-grant,
+lifecycle and publication errors retain their original paths. No global
+materialization policy is selected.
+
+All extension reads are prompt-free, including prerequisite and protected-folder
+checks. A probe that would prompt is not a permitted read mechanism; report
+unknown/blocked readiness or coverage instead. App-side API enablement is a
+dependency prerequisite, distinct from OS consent. Protected UI targets use
+`unavailable` with `reason: protected-target`.
+
+**Additional capability errors — implemented in framework minor 1.** Every
+capability error on a field that has additional requirements, at either phase and
+at any nested path below it, carries `extensions.requiredCapabilities`, the
+complete ordered set described under additional capability requirements, beside
+`requiredCapability`, the first unmet member of that order. The order is the
+field's own capability first, so the set is not alphabetical: for
+`workspaceLaunchApplication` it is `["workspace:control", "desktop:control"]`, and a
+grant holding `desktop:control` alone has `workspace:control` as the first unmet
+member, one holding `workspace:control` alone has `desktop:control`. A client never
+sorts or filters the list.
+
 `extensions.kind` takes exactly four values in `koine-desktop/1`: `permission`,
 `unavailable`, `unknown-provider` and `failed`. The set is closed for this
 contract version; it is stated here rather than as a schema enum because
 extensions are not part of a GraphQL schema. An execution error with a non-empty
-`path` and no `kind` is an argument a provider found invalid, reported as input coercion;
-nothing was attempted.
+`path` and no `kind` is an argument a provider found invalid; nothing was attempted.
+It is an execution error like any other: the response keeps the original path and
+the root field is null when its type allows, and only what the schema's scalars and
+non-null types reject is variable coercion, HTTP 400 with no `data`. A blank string
+is empty or whitespace alone.
 
 | Condition | Classification |
 |---|---|
 | Malformed GraphQL, unknown fields or arguments | GraphQL request validation; no domain execution |
-| Malformed URI scalar or process identity | GraphQL input coercion; no action |
+| Malformed process identity or another custom-scalar value (version 1 serves no URI scalar: a URL is a `String` the provider checks) | GraphQL input coercion; no action |
 | Well-formed reference names an unregistered provider | `unknown-provider`, after applicable capability checks |
 | Known authority, wrong resource kind, malformed provider remainder, or gone target | `unavailable` |
 | Missing client read/control/management authority | `permission`, `capability` |
@@ -433,6 +615,19 @@ kinds classified, and such a request is never mapped to `unavailable`. ABI resol
 registration mismatches are host/plugin defects and become `failed`, with a
 separate management diagnostic. Transport unavailability and an unknown mutation
 outcome are client transport states, not invented successful GraphQL results.
+
+**Extension — dependency availability.** New workflow fields distinguish absent
+applications/handlers/integrations through provider-prefixed schema result
+objects, as specified in
+[dependency results](workflow-providers.md#dependency-results-and-failure-classification).
+They do not add a fifth error kind or overload `unavailable`. An available empty
+list is success; a dependency-unavailable branch has no successful value and,
+for a mutation, certifies only that this action attempted no domain effect.
+Stale issued targets retain `unavailable`; grant and native-consent refusals
+retain `permission`; a timeout or ambiguous partially attempted action remains
+`failed`. Readiness never replaces checking the dependency on the action path.
+These schema-level objects require no new ProviderFailure case or ABI feature.
+Existing desktop fields keep their null/error behavior.
 
 A root lookup that is null with no error is absence; one that is null with an
 error is that error, whatever deeper path the error carries.
@@ -566,6 +761,14 @@ with the installed Koine UI supplies the initial trust; an incoming request
 cannot impersonate a button click. A single native app means no privileged
 helper credential has to be exported for bootstrap. Recovery from lost manager
 credentials uses this UI, not an unauthenticated reset endpoint.
+
+The workflow extension preserves that direct boundary by refusing Koine's own
+process as a target of input, menu and other UI-driving operations, including
+preparation and session-directed paths. It also refuses recognized consent and
+security UI. These are provider obligations checked before effects, not a claim
+that arbitrary application control is a sandbox against same-user software or
+that public native APIs eliminate every targeting race. The workflow spec owns
+the refusal classification and acceptance cases.
 
 Ordinary loopback HTTP management still requires an explicitly approved
 `koine:manage` grant. Approval of that capability is shown prominently because
@@ -740,6 +943,42 @@ the provider's report of a registration mismatch, or `invalidInput`, for an
 argument that is no value of a provider-owned type; the host reports that one as
 input coercion, with a response path and no domain classification.
 
+### Provider failure compatibility
+
+Native discovery must preserve the following existing baseline failure mapping.
+The [native discovery contract](workspace-search.md) specifies typed success
+values and exact compatibility subjects without inventing failure accessors.
+Historical raw-search fields/profiles are not a catalogue ABI. Public failure construction already permits nil and arbitrary strings;
+clients/providers must not infer that a semantically incomplete value was
+unconstructible. Nil/blank consent is not a prompt-risk sentinel.
+
+| Existing failure kind | permission nil | permission blank (empty or whitespace-only) | permission named/nonblank |
+| --- | --- | --- | --- |
+| osPermission | Existing permission/os-permission error, owner koine, osPermission empty string | Same error with the supplied string unchanged, without trimming | Same error with the supplied consent unchanged |
+| unavailable | unavailable error; permission ignored | Same | Same |
+| failed | failed error; permission ignored | Same | Same |
+| invalidInput | Input coercion error with path and no domain kind; permission ignored | Same | Same |
+| unknownResolver | failed error and existing resolverMismatch provider diagnostic; permission ignored | Same | Same |
+
+The first row's nil/blank values lack a useful consent identifier; they are
+legacy malformed semantic values, not evidence of prompt risk or permission
+to change their wire behavior. A client can show the supplied guidance and an
+unspecified-consent failure, never synthesize Accessibility or UNKNOWN consent
+data from them. No new malformed-provider diagnostic is introduced for those
+values. A future unknown kind retains the existing failed fallback; malformed
+success trees retain the existing failed malformed-value handling. The host
+continues supplying original GraphQL paths and permissionOwner koine.
+
+Native catalogue diagnostics live in their typed frozen success payload;
+they cannot be attached to ProviderFailure through invented accessors. Existing
+loader feature/version checks and retained action-only compatibility remain
+binding. The [native acceptance contract](../verification/native-discovery-acceptance.md#exact-identities-and-posture)
+pins workspace 1.2.0/schema 1.1.0, update 1.3.0/schema 1.1.0 and required features
+without reusing action-only 1.1.0/schema 1.0.1. Every new native outcome stays
+pending independently of retained 1.0.0/1.0.1 evidence.
+
+### Resolution and lifecycle
+
 Resolvers use Swift async functions and framework-owned result values.
 Arguments and results are ordinary owned Swift values under ARC, not borrowed
 buffers with foreign release callbacks. Parent values contain scalars, opaque
@@ -844,13 +1083,20 @@ partial contributions; a plugin that has already run initializers stays mapped
 until process exit even if activation fails.
 
 Version 1 keeps the hardened runtime with no exceptions, so library validation
-admits only providers signed by Koine's own Team ID, bundled or per-user;
-first-party providers upgrade independently of the host. Independently signed
+admits only providers signed by Koine's own Team ID, bundled or per-user.
+Independent first-party updates additionally depend on the host's loading policy
+for that identity. Independently signed
 third-party providers do not load: Koine's approval check
 refuses one before `dlopen`, and the OS would refuse it after. Loading one needs
 the narrowly scoped disable-library-validation entitlement and an install and
 approval UI, and Koine has neither. Apple documents this
 [third-party plugin requirement](https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.security.cs.disable-library-validation).
+
+The designed extension's [selection policy](#first-party-provider-selection)
+implements independent upgrades for identities also shipped inside the application.
+It does not relax any trust check above. Koine 0.1.0 retains the baseline duplicate
+and desktop-replacement refusals; selection support must ship before the second
+bundled provider. Same-team signing alone never authorizes a per-user copy.
 
 The per-user root carries a platform constraint, and the loader checks it
 before `dlopen` rather than meeting it there. A bundle that arrives
@@ -891,6 +1137,505 @@ reports incompatible providers; their schema contributions are absent. Failure
 of the required desktop provider leaves management available but the desktop
 path unavailable, clearly reported in provider status. No PluginAnyware hosting
 or APIAnyware integration is part of this design.
+
+With the extension, a provider rejected before schema publication also removes
+every contribution whose additional-capability owners become unavailable, to a
+fixed point. A rejected desktop provider can therefore remove workspace and
+other dependent contributions while management remains available. This differs
+from a provider that fails startup after publication, as described above.
+
+### First-party provider selection
+
+**Extension — the loader's selection is implemented (`provider-selection`) and
+its management fields and window grouping are published (`selection-diagnostics`);
+its acceptance is under way: every row assigned to the native loader and public
+GraphQL is established, but for the parts that need a second real Developer ID
+team's certificate, and the rows assigned to signed isolated VMs are established
+on notarized hosts with workspace 1.0.1/schema 1.0.1 as the baseline and
+workspace 1.1.0/schema 1.0.1 as its update, except the same second-team parts
+(see "Selection acceptance").** The
+[selection decision](../adr/first-party-provider-selection.md) owns the trade-off.
+The [selection flow](../design/architecture/index.html#diagram-provider-selection)
+and [failure boundary](../design/architecture/index.html#diagram-provider-publication)
+show this contract. Selection is a startup calculation over one discovered set;
+there is no live installation, approval UI, new install root or second loader.
+
+#### Reserved identities
+
+The application seals a host-owned catalogue containing `desktop` / `Desktop`,
+`workspace` / `Workspace`, `input` / `Input`, `menus` / `Menus`, `iterm` / `Iterm`
+and `herdr` / `Herdr`. Core ownership of `koine` / `Koine` is unchanged.
+Reservation never depends on a discovered manifest, successful load, published
+schema or successful start. Each catalogue entry is either reserved-only or
+enabled. An enabled entry names its one designated bundled bundle, exact bundled
+release and schema versions, and a stable release code-signing identifier. Its
+approval Team ID is derived from the verified
+running host signature, not a hard-coded publisher: a separately signed host
+uses its own team. An unsigned or ad-hoc development host has no team and admits
+no shipped candidate (`host-team-unavailable`), while reservations and core
+management remain. Test hosts must supply real signed identities for trust
+acceptance. A reserved-only entry cannot
+load from either root; it is enabled by a host release when that provider ships.
+The first extension host enables desktop and workspace and reserves the rest.
+
+Only the exact identifier/prefix pair can claim a shipped slot. A different
+identifier claiming its prefix, a shipped identifier claiming another prefix,
+or a non-shipped prefix overlapping a reserved prefix in either direction is
+refused alone. Root-field prefix checks use the corresponding lower-case form.
+For example, claimants using `Desk` or `DesktopTools` are refused alone because
+they overlap `Desktop`.
+Apply this namespace exclusion to declarative SDL names as well as manifest
+prefixes; a rejected claimant cannot enter the collision set and evict the
+reserved owner. It holds when the owner is absent, rejected or reserved-only.
+An exact-pair per-user candidate is considered only under that slot's update
+rules, never as an ordinary competing external provider.
+
+The designated bundled candidate must match its catalogue entry, including
+release/schema versions (`catalogue-bundle-mismatch` on disagreement). Unexpected
+bundles inside the sealed root are refused (`unexpected-bundled-candidate`);
+they cannot replace the designated bundle. A missing or refused bundle leaves
+the catalogue's baseline intact. An eligible per-user update can still fill that
+enabled slot. If neither can, the slot is unavailable and remains reserved.
+A malformed or internally conflicting host catalogue is a packaging failure:
+publish core management alone with a catalogue diagnostic and admit no provider,
+rather than inventing reservations from discovered bundles.
+
+The catalogue is sealed with the application as
+`Contents/Resources/ProviderCatalogue.json` (source `App/ProviderCatalogue.json`):
+an object whose `identities` array holds `providerId` and `graphQLPrefix` for
+every entry and, for an enabled one, `bundle` (the designated bundle's name in
+`Contents/PlugIns`), `release`, `schema` and `signingIdentifier`. An unknown key,
+a partial baseline, a malformed version, two entries that overlap on an
+identifier or prefix in either direction, or a claim on `koine` is a conflicting
+catalogue. `task check:provider-catalogue` holds an enabled entry to the signed
+packaged bundle's own signature and manifest.
+
+#### Eligibility and precedence
+
+Per-user approval is still the existing provider-ID/Team-ID record. For shipped
+identities it authorizes compatible updates subject to the catalogue's release signing
+identifier, not a particular path or binary hash. Verify that identifier from
+the staged bundle's code signature, not a manifest claim, for both bundled and
+per-user shipped candidates; disagreement is `REJECTED` /
+`signing-identifier-mismatch`. The catalogue value is a host-owned publication
+identity, stable across that provider's compatible releases. Nested private
+dependencies retain their own signing identifiers and the existing per-image
+team/signature checks; do not require them all to share the provider's identifier.
+This explicitly narrows team-wide approval to the intended release identity,
+without restricting certificate class or adding entitlements. Apple's
+[requirement language](https://developer.apple.com/documentation/technotes/tn3127-inside-code-signing-requirements)
+supports the identifier check alongside the existing Apple anchor/Team-ID check.
+
+Selection fixtures use distinct code-signing identifiers admitted only by
+purpose-built test catalogues. Never sign a fixture under a production provider's
+release identifier. A production catalogue must reject such a fixture even when
+its manifest claims the reserved pair and a high release and its Team ID is
+approved. This prevents accidental fixture admission, not a trusted publisher
+deliberately signing other code under the release identifier. Release signing
+remains a trusted operation.
+
+Built-in approval never substitutes for a per-user approval record. Verify the staged signature and every
+private image against that record and the host's Team ID. Location, staging,
+dependency closure, architecture, OS/runtime, framework, feature and quarantine
+checks remain mandatory. Claimed metadata on an untrusted bundle cannot affect
+another candidate's eligibility or precedence. This also applies to ordinary
+non-reserved providers: candidates refused by these pre-load checks do not
+contest manifest identifier/prefix collisions.
+
+Every newly published first-party update declares `first-party-selection-v1`
+in both manifest and descriptor. A selection-aware host supplies this feature;
+a pre-extension host refuses the unsupported feature as `INCOMPATIBLE` before
+`dlopen`, even when the update renames its principal class. An extension host
+refuses a per-user shipped-identity candidate missing that declaration as
+`INCOMPATIBLE` with `selection-feature-required`. Its designated, exact bundled
+baseline may be an independently compiled old provider without the feature.
+This is a host selection feature, not a new factory witness or a substitute for
+`additional-capabilities-v1` where operations require that feature. Previously
+published feature-free binaries do not gain a pre-load refusal guarantee on old
+hosts retroactively; those hosts can execute their factories before rejecting
+external desktop composition.
+
+For reserved identities, release and schema versions are three decimal components
+`major.minor.patch`, each in `0...2147483647`, with no leading zero except `0`,
+no sign, suffix or build metadata. Compare numerically, component by component;
+`1.10.0` exceeds `1.9.0`. This is a first-party publication rule, not a new parser
+restriction on existing non-reserved providers. A per-user update must have a
+release strictly greater than the sealed bundled baseline, the same schema major,
+and a schema version at least that baseline. Release majors do not imply schema
+or framework majors. Schema compatibility and every declared runtime/framework
+requirement must independently hold. Malformed versions are `REJECTED`; honest
+unsupported schema/framework/runtime requirements are `INCOMPATIBLE`.
+
+For each enabled slot, form the eligible per-user set using those checks:
+
+| Eligible candidates | Selected candidate |
+| --- | --- |
+| No eligible newer per-user copy | The designated bundled copy if it passes verification; otherwise none. |
+| One greatest per-user release | That update, even if the bundled copy is absent or refused. |
+| Several copies at the greatest eligible per-user release | Refuse that whole release group as `ambiguous-update`, remove it from eligibility, and repeat this calculation. A unique lower update or the verified bundle may be selected with visible refusals. Identical bytes in two installed directories are still an ambiguous installation. |
+
+Do not break a tie by path, discovery order, modification time, schema version
+or content hash. Directory aliases resolving to the same canonical bundle are
+one discovered candidate; distinct canonical directories remain distinct.
+Equal-to-baseline and older copies never override the bundle, even when it is
+missing or broken. Multiple lower copies cannot contest a unique higher copy.
+Non-reserved providers retain the ordinary duplicate-identifier/prefix/name
+refusals; this is not a general multiple-version package resolver.
+
+A pre-load refusal excludes only that candidate. The initial calculation may
+therefore select a lower eligible release or the bundled baseline when a newer
+copy is incompatible, unapproved, malformed or otherwise refused. This must be
+visible both on the refused candidate and in the selected candidate's diagnostic,
+with the known refused version and reason; unverifiable version claims are labelled
+as claims. It is not a successful update. A malformed unidentified bundle stays
+visible as a bundle-level refusal without being assigned authority over a slot.
+
+Once the choice is frozen, **never retry a different version in that process**,
+including on load, descriptor, schema, dependency-cascade or startup failure.
+Recovery is an operator changing the installed set or fixing approval and
+restarting; ambiguity requires removing the extra copy. There is no persistent
+highest-seen-version store: removing an update or changing the host may lower the
+next startup's selected release, and management reports the newly selected version.
+The sealed host baseline is the floor, not an anti-rollback guarantee across host
+releases. Client grants remain tied to the provider identity and are not reissued
+or widened by selecting a different binary.
+
+Determinism means the same candidate set and verification verdicts give the same
+choice. Online quarantine assessment can fail or time out on another restart,
+changing the eligible set and chosen release. Discovery, staging and verification
+cost grow with installed copies, even superseded ones; the per-image assessment
+bound is not a total startup deadline. These are accepted startup limits.
+
+#### Selection before execution
+
+The resident composition supplies both roots and the sealed catalogue in one
+invocation. The loader owns discovery, immutable staging, verification and
+selection; it returns candidate reports and only the selected native providers.
+The loader checks manifest identity/prefix and selected principal collisions;
+the Machine core independently validates descriptors, SDL and authority, handles
+their remaining collisions, and owns the missing-owner fixed point, schema
+publication and lifecycle. Callers
+do not reconstruct selection by loading each root separately or by changing a
+candidate's physical origin flag. Keep this calculation separate from loading
+effects so the existing native seam can substitute candidate sets and observe
+initializer/factory/start markers without exposing a public test API.
+
+Each immutable staged copy belongs to one physical origin and canonical installed
+location as well as its content digest. Equal bytes or basenames in different
+candidates must never share a staged copy, and old shared staging entries must
+not be reused under this policy. Preserve extended attributes; assess and load
+the same copy. Per-user quarantine cannot be inherited by the bundled copy, nor
+can a bundled copy suppress a per-user assessment. Aliases of one canonical
+candidate still share its identity. The existing same-candidate quarantine
+recovery procedure remains applicable.
+
+Before **any** provider `dlopen`, finish discovery and all declarative checks
+needed for selection across both roots. Exclude pre-load refusals and reserved
+namespace claimants; check ordinary manifest identifier/prefix collisions among
+the remaining eligible candidates, then freeze the choices. Non-selected
+copies never reach principal-class lookup, factory construction or start. Check
+the selected manifests' principal names as a batch: names must be mutually unique
+and free in the already loaded host. A conflicting non-reserved candidate is
+refused alone when it contests a shipped candidate; conflicts among shipped
+selections, among non-reserved selections, or with an existing host class refuse
+the affected selections, with no candidate retry. In particular, a shipped update
+and another shipped identity's bundled selection are equal slot owners: both are
+refused on a principal conflict, regardless of physical origin. Their dependent
+contributions may also disappear. This availability cost is explicit; preferring
+the bundled side would make origin decide authority after selection froze.
+Unselected alternatives do not
+contest principal names. A private image or dependency must not pull an unselected
+provider image into the process; bundles may depend on the host framework and
+their verified private dependencies, not other provider bundles.
+
+First-party publication must keep Swift module names and Objective-C runtime
+class names disjoint across provider identities and from the host, including
+private dependencies and explicitly named Objective-C classes. Shared helper
+source is compiled under provider-unique module/class names, or supplied once
+by a host-owned shared framework under its compatibility contract. Independently
+updated bundles must not each embed versions of the same shared module. Release
+checks inspect private images and exercise mixed provider releases. The loader's
+principal check is not a complete runtime-name inventory; native code outside
+that declaration remains trusted, not sandboxed. Launch-and-open owns the first
+mixed-release acceptance and the bounded platform confirmation.
+
+Load frozen selections in canonical composition order. Runtime factory class
+origin, shared-framework conformance and descriptor agreement are checked after
+loading, then SDL and registration/authority validity before publication. A
+descriptor may not change the selected identity or prefix. Where a contribution
+attempts another identity's reserved names after loading, reject only that
+claimant, then perform ordinary collision checks among the remaining non-reserved
+contributions. Other
+genuine collisions retain the both-refused rule. Missing additional-capability
+owners then remove dependents to a fixed point. Neither a late claimant nor a
+missing owner reopens selection.
+
+A selected image can run initializers before descriptor/schema refusal; that
+image and loaded dependencies remain mapped until exit, though they contribute
+no schema and are never started. A dynamic-loader failure may also have mapped
+dependencies: do not claim rejection implies no native code ran once `dlopen` was
+attempted. Successful publication precedes start. A start failure retains the
+published schema/capabilities and reports `FAILED`; its own resolutions are
+`unavailable`, and authority dependents are not removed merely because it failed
+to start. A pre-publication rejection removes the provider and its dependent
+contributions. Core management remains available in either case. Root-enumeration
+or core startup failures still fail server startup; there is no partial discovery
+presented as a complete candidate set.
+
+#### Candidate diagnostics and schema identity
+
+Extend `KoineManagement.providers` in place, keeping every existing field and
+`KoineProviderState` value. It reports each discovered canonical candidate,
+including all refused and non-selected copies. An enabled slot whose designated
+bundle is missing always has a synthetic `missing-bundled` row, even when an
+update fills it; it points to that update through `selectedCandidateId`. Otherwise
+an enabled slot with no frozen choice has one synthetic `no-eligible-candidate`
+row. Do not add both synthetic rows for the same slot. A frozen selection later
+refused remains its actual candidate row and does not create a synthetic row.
+Reserved-only entries need no status row unless a bundle claims them.
+A catalogue failure has one synthetic
+`provider: (unknown)` row with unknown versions, `REJECTED`, `selection: UNAVAILABLE` and
+`reason: catalogue-invalid`; it names no provider authority. Existing `provider`,
+`version` and `schemaVersion` describe that row's manifest claims. Unidentified
+provider claims use `(unknown)`, which is not a valid provider identifier;
+unknown versions still use `unknown`. The valid provider ID `unknown` remains
+available. Synthetic missing-slot rows name the catalogue's provider identity,
+with unknown actual versions; diagnostics give the expected baseline. Only a selected,
+published candidate can become `ACTIVE` or `FAILED`.
+
+Add nullable fields on `KoineProviderStatus`; these are additive metadata and
+introduce no new provider-framework requirement or error kind:
+
+| Field / GraphQL type | Meaning |
+| --- | --- |
+| `candidateId: String` | Opaque identity of origin plus canonical installed bundle location, unique within this startup; null only for a synthetic row. Not a resource reference. |
+| `origin: KoineProviderOrigin` | New enum: `BUNDLED` or `PER_USER`; null for a synthetic row. Never inferred from composition position. |
+| `selection: KoineProviderSelection` | New enum: `SELECTED`, `NOT_SELECTED` or `UNAVAILABLE`. A frozen choice remains `SELECTED` even if later rejected or startup-failed. Synthetic rows are `UNAVAILABLE`. |
+| `selectedCandidateId: String` | The frozen choice for the same provider identity, or null if there is none. A selected row points to itself, even on later failure. |
+| `reason: String` | Stable, open diagnostic code for a refusal or selection explanation; null for a healthy selected row with no competing refusal or missing-bundle diagnostic. |
+
+Version/prefix claims never determine `candidateId`. Keep one report per candidate
+through all phases; do not merge reports by provider ID or attach one candidate's
+failure to another copy. Reports sort by provider, origin and candidate ID in
+Unicode order, with synthetic rows last for that provider. These fields are filled
+on extension-host reports wherever their meaning is known; nullable types preserve
+older callers and represent unidentified/synthetic cases. Management authority
+continues to protect the entire surface, including locations in human diagnostics.
+
+### Capability disclosures
+
+Grant creation, request approval and the grant list must tell a person a
+capability's reach wherever it is granted or held, and a `koine:manage` client
+must be able to show the same words. The provider framework carries no
+description, and an ordinary provider has no disclosure channel, so the core owns
+a small catalogue keyed by capability name. Management serves it as additive
+metadata, with no new provider-framework requirement, capability or error kind:
+
+| Field / GraphQL type | Meaning |
+| --- | --- |
+| `KoineManagement.capabilityDisclosures: [KoineCapabilityDisclosure!]!` | One entry per capability that has a disclosure, in capability order, served whether or not its provider is active, because a grant may hold a capability whose provider failed to load. Requires `koine:manage`; serving it supplies no authority. |
+| `KoineCapabilityDisclosure { capability: String!, disclosure: String! }` | The capability name as listed in `availableCapabilities` and held by grants, and plain text stating its reach, including any other capability it needs. |
+
+The extension-host design files carry the field; `desktop-schema.graphql` and the
+`core-desktop-old-host` profile do not, because a released host never served it.
+A client of an older host gets a GraphQL error for the field and must show its own
+fallback rather than treat the absence as "nothing to disclose". The native window
+shows each disclosure beside its capability in all three places and shows nothing
+for a revoked grant, which holds nothing. `workspace:control` is the first entry;
+[workspace disclosure](../verification/workspace-disclosure-vm.md) records the text
+and its acceptance. Each later increment that owes a disclosure
+([workflow spec](workflow-providers.md#authority-allocation)) adds its capability
+here, so the window and every manager change together.
+
+The native workspace release requires corrected core disclosures before the host
+advertises `workspace-native-disclosures-v1`. All three native grant views and
+management use the same entries:
+
+| Capability | Required native-surface disclosure |
+| --- | --- |
+| `workspace:read` | Read Koine-account special-location values and native application/System Settings metadata, including fixed application information/name files and direct localization names. Returned locations grant no access to their contents or to the client's filesystem. |
+| `workspace:control` | Prepare System Settings in the background without desktop control. Launch applications, open URLs/files and reveal files or selected Settings destinations only with desktop control. Any registered installed application may be launched; a handler can execute scripts or follow location documents to other schemes and targets. Metadata refusal is not a content sandbox. |
+
+The action-only shipped wording and its recorded VM acceptance remain historical
+evidence; they do not disclose this native surface. App-and-file-search owns the
+actual core catalogue/UI/management implementation and independent acceptance
+before that release. OS Automation setup is outside bearer capability reach and
+explains consent for the Koine-host/System Settings pair in Koine's UI. The
+[host-feature decision](../adr/native-workspace-requires-disclosure-capable-host.md)
+refuses native providers on prior hosts before loading, rather than relying on
+provider text to correct core-owned surfaces.
+
+Non-selected valid copies use `REJECTED` with a precise reason: `older-than-bundled`,
+`equal-to-bundled` or `superseded-candidate`; it means their contribution was refused,
+not that their signature failed. Other required reasons include `reserved-identity`,
+`reserved-only`, `ambiguous-update`, `invalid-version`, `schema-incompatible`,
+`missing-bundled`, `catalogue-bundle-mismatch`, `unexpected-bundled-candidate`,
+`catalogue-invalid`, `host-team-unavailable`, `signing-identifier-mismatch`,
+`selection-feature-required`,
+`no-eligible-candidate`, `manifest-collision`, `principal-collision`,
+`missing-capability-owner` and `selected-with-refusals`.
+Existing trust/compatibility failures retain their
+classification and gain a stable reason at implementation:
+`location-outside-root`, `staging-failed`, `manifest-invalid`, `not-approved`,
+`approval-team-mismatch`, `signature-refused`, `framework-incompatible`,
+`feature-unavailable`, `architecture-incompatible`, `os-incompatible`,
+`runtime-incompatible`, `image-invalid`, `quarantine-refused`, `load-failed`,
+`principal-class-missing`, `principal-class-invalid`, `descriptor-mismatch` and
+`check-failed`. A refusal the core makes after loading carries the
+kebab-case form of its diagnostic (`invalid-sdl`, `name-collision`,
+`reserved-identity` for a reserved name claimed by a loaded descriptor, and so
+on), and a selected provider whose start fails carries `start-failed`. `diagnostic` supplies
+the concrete failure, compared versions, affected owner and recovery action.
+The native UI groups copies by identity, identifies physical origin and selection,
+and shows ignored/refused updates alongside the running version. No success banner
+may conceal a refused update. A missing slot is `REJECTED`; an incompatible actual
+candidate retains `INCOMPATIBLE`. Multiple causes remain in the human diagnostic.
+
+The same selection values apply to ordinary providers: an eligible unique choice
+is `SELECTED`; pre-load refusals and both sides of ordinary manifest collisions
+are `NOT_SELECTED`, with no frozen choice for the contested identity. Ordinary
+manifest collisions use `manifest-collision`. Later principal or core refusals
+retain `SELECTED` and the relevant failure reason. All copies in an ambiguous
+release group are `NOT_SELECTED` / `ambiguous-update`; a lower frozen choice is
+`SELECTED` / `selected-with-refusals`. Other eligible lower copies are
+`NOT_SELECTED` / `superseded-candidate`, including the bundled copy when an update
+wins. A refused bundled copy keeps its actual refusal reason. A healthy choice
+with any same-identity refused candidate or missing-bundle row uses
+`selected-with-refusals`; if it later fails, its own failure takes the reason
+field and the earlier refusals remain in its diagnostic and their own rows.
+The missing-slot synthetic diagnostic enumerates the causes and recovery even
+when its stable reason is `missing-bundled` or `no-eligible-candidate`.
+
+Publish only the admitted selected contributions: core first, shipped identities
+sorted by identifier, then ordinary per-user identities sorted by identifier.
+Catalogue listing order is not composition order. Missing slots leave no
+placeholder fields.
+Candidate paths, release numbers and status values do not enter canonical SDL;
+an identical contribution selected from another root has the same digest on the
+same host/printer. Changed SDL, including these additive management fields, changes
+the digest. Conformance profiles identify the exact expected candidate versions
+and contributions separately from SDL equality: an identical digest cannot prove
+which binary ran. Preserve the original core + desktop profile for old hosts and
+add extension-host profiles with the expanded management schema. An omitted required
+provider fails the profile instead of shrinking its expected schema.
+
+#### Conformance profiles
+
+A profile is a design SDL plus, separately, the exact provider candidates the host
+runs. Profiles live in [`docs/design/profiles/`](../design/profiles/) and
+`task conformance` holds the host to one; the check
+(`Tools/Conformance --profile … --providers …`) has two halves that neither
+substitute for the other, because an identical digest cannot prove which binary ran.
+
+| Profile | Design SDL | Candidates pinned |
+| --- | --- | --- |
+| `core-desktop-old-host` | [`desktop-schema.graphql`](../design/desktop-schema.graphql), unchanged since 0.1.0 | `desktop` 1.0.0 / schema 1.0.0, `ACTIVE`, over the original five management fields |
+| `core-desktop-extension-host` | [`desktop-schema-extension-host.graphql`](../design/desktop-schema-extension-host.graphql) | `desktop` 1.0.0 / schema 1.0.0, `ACTIVE`, `BUNDLED`, `SELECTED`, no reason |
+| `core-desktop-workspace-extension-host` | [`desktop-workspace-schema-extension-host.graphql`](../design/desktop-workspace-schema-extension-host.graphql): the workspace design restricted to the implemented roots and the types they reach, verbatim | `desktop` and `workspace`, each 1.0.0 / schema 1.0.0, `ACTIVE`, `BUNDLED`, `SELECTED`, no reason |
+| `core-desktop-workspace-repair-extension-host` | [`desktop-workspace-repair-schema-extension-host.graphql`](../design/desktop-workspace-repair-schema-extension-host.graphql): the row above with the action-only repair's three appended descriptions (workspace 1.0.1), so its digest differs on the same host and printer | `desktop` 1.0.0 / schema 1.0.0 and `workspace` 1.0.1 / schema 1.0.1, each `ACTIVE`, `BUNDLED`, `SELECTED`, no reason; the signed application as shipped is held to this one, and the row above to the retained 1.0.0 bundle |
+
+The extension-host SDL is the old one plus exactly the five nullable
+`KoineProviderStatus` fields and the `KoineProviderOrigin` and
+`KoineProviderSelection` enums; a test compares them and names any other
+difference. The set of rows is explicit. A required provider that is not served
+fails the profile, and so does a served row the profile does not list, so
+neither an omission nor an extra provider can shrink or blur what is expected. An
+extension-host profile also requires the candidate fields on every row, and every
+`SELECTED` row to name itself. Each profile is checked against the schema a host
+serves, and only after its design and pin controls have been seen red: the
+old-host profile against the released host running its own desktop provider, the
+extension-host profile against this tree's headless host, and the core + desktop +
+workspace profile against the signed application in a VM
+([schema-conformance-vm.md](../verification/schema-conformance-vm.md),
+[launch-contract.md](../verification/launch-contract.md)). The workspace design
+file never rewords the workspace design: a test holds it to the complete workspace
+design, so that the only differences are the roots not yet implemented and the
+types only they reach, and a root that lands is added to the profile verbatim. An
+explicit absent/rejected profile is held in the same way:
+
+| Profile | Design SDL | Candidates pinned |
+| --- | --- | --- |
+| `selection-cascade-extension-host` | [`core-schema-extension-host.graphql`](../design/core-schema-extension-host.graphql): the extension-host core with no provider contribution, which a test holds to `desktop-schema-extension-host.graphql` less exactly the desktop coordinates | five `REJECTED` rows and no `ACTIVE` one: the refused shipped provider (`SELECTED`, `invalid-sdl`) and its superseded bundled baseline, the shipped update removed for a missing capability owner (`SELECTED`, `missing-capability-owner`) and its superseded baseline, and the ordinary provider removed the same way |
+
+It is served by a signed purpose-built host and checked by `task selection:failures`, not
+`task conformance`, because it is a failure profile: the fixture providers stand in for the desktop,
+workspace and third providers so that nothing in the production catalogue is refused
+([selection-failures.md](../verification/selection-failures.md#desktop-rejected-before-publication)).
+Its design half is seen red against the wrong design and a mutated copy, and its pin half against a
+wrong reason, a wrong selection, a row left out and a provider that is not served. The profiles with
+selected updates, and the explicit rejected ones for an update a host refuses, are beside these:
+
+| Profile | Design SDL | Candidates pinned |
+| --- | --- | --- |
+| `core-desktop-update-extension-host` | [`desktop-schema-extension-host.graphql`](../design/desktop-schema-extension-host.graphql) | desktop 1.1.0 `PER_USER` `SELECTED` and `ACTIVE`; the bundled 1.0.0, the desktop provider of the released revision compiled independently, `superseded-candidate` |
+| `core-desktop-workspace-desktop-update-extension-host` | [`desktop-workspace-repair-schema-extension-host.graphql`](../design/desktop-workspace-repair-schema-extension-host.graphql), the workspace 1.0.1 composition | a mixed release: desktop 1.1.0 selected over its superseded 1.0.0, workspace 1.0.1 / schema 1.0.1 bundled and selected |
+| `core-desktop-workspace-workspace-update-extension-host` | the same | the other mixed release: desktop 1.0.0 bundled and selected, workspace 1.1.0 / schema 1.0.1 selected over its superseded bundled 1.0.1 |
+| `core-desktop-workspace-update-extension-host` | the same | both updated, each over its superseded bundled release |
+| `core-desktop-workspace-update-refused-extension-host` | the same | each 1.1.0 update `INCOMPATIBLE` / `selection-feature-required` and `NOT_SELECTED`, each bundled release (desktop 1.0.0, workspace 1.0.1) `ACTIVE` and `SELECTED` with `selected-with-refusals` |
+| `core-desktop-workspace-repair-per-user-extension-host` | the same | the retained workspace 1.0.0 bundled, and the repair's 1.0.1 / schema 1.0.1 approved per user stating `first-party-selection-v1`: 1.0.1 `PER_USER` and `SELECTED`, the bundled 1.0.0 `NOT_SELECTED` as `superseded-candidate`; served by the retained revision's host and this tree's, not by `task selection:updates` ([workspace-compatibility.md](../verification/workspace-compatibility.md)) |
+| `core-desktop-old-host-update-refused` | [`desktop-schema.graphql`](../design/desktop-schema.graphql), the original core + desktop contract | served by the released host (`management: baseline`): desktop 1.0.0 `ACTIVE`, and a newly published desktop 1.1.0 `INCOMPATIBLE` before it loads |
+
+They are served by signed purpose-built hosts, headless, around the real providers and checked by
+`task selection:updates`, not `task conformance`; each is held with its own controls, red against the wrong
+design and against the same four mutated pins, and against each workspace row pinned at the retained 1.0.0
+([selection-updates.md](../verification/selection-updates.md#conformance-profiles)).
+
+#### Selection acceptance
+
+Launch-and-open owns implementation and acceptance of this entire contract before
+shipping workspace. The Evidence column links each row's record; a row without a
+link remains **pending**. The seam column assigns the
+required evidence: **N** = native loader with real independently built binaries;
+**G** = public GraphQL management/introspection/operations; **V** = signed isolated
+TestAnyware macOS VM. N uses a fresh host subprocess and fresh initializer/factory/
+start log for each scenario, including each alternative selection or order.
+Process reuse cannot establish that an image never loaded. A refused-marker
+assertion needs a successful-load control proving that binary writes its marker.
+Use desktop/workspace pairs sharing the normal principal names across releases,
+and a renamed-principal variant where specified.
+
+N can substitute discovered candidate order at the existing private seam, while
+still exercising the real verifier and loader; no public test API is added.
+For missing, mismatched or unexpected in-app bundles and malformed catalogues,
+build purpose-specific test hosts with that content **before** signing them.
+Do not modify a notarized app and call the resulting broken seal a catalogue
+test. V quarantine cases use an intact notarized host and genuinely quarantined
+downloads; where a purpose-built V host is required, sign and notarize that
+variant first. Invalid-signature fixtures are intentionally altered only in
+the signature-refusal cases. An in-process descriptor substitute cannot close
+native loading, signing or V observations.
+
+| Case | Seams | Required observation | Evidence |
+| --- | --- | --- | --- |
+| Old host + old desktop; new host + independently compiled old designated baseline | N, G, V | Existing desktop operations/errors/grants work; preserve old and extension-host core + desktop profiles (see "Conformance profiles"). Catalogue matches the packaged baseline; no new factory witness. | **Established** at N and G: [old host and new host](../verification/selection-updates.md#old-host-and-new-host-over-an-old-baseline). **V established** on notarized hosts ([selection-vm.md](../verification/selection-vm.md#workspace-101-rerun)) |
+| Selection-aware host + compatible newer desktop/workspace update | N, G, V | Separate correct approval; exactly one chosen image/factory/start marker per slot; unselected bundle never loads. Management names the update and real operations work without rebuilding the host. | **Established** at N and G: [compatible newer updates](../verification/selection-updates.md#compatible-newer-updates). **V established** on notarized hosts with workspace 1.0.1/schema 1.0.1 as the bundled baseline and workspace 1.1.0/schema 1.0.1 as its update ([selection-vm.md](../verification/selection-vm.md#workspace-101-rerun)) |
+| Pre-extension host + newly published desktop/workspace update, both normal and renamed principal | N, G, V | `first-party-selection-v1` is refused as `INCOMPATIBLE` before load; no update initializer/factory marker. Existing bundled desktop remains usable. On the extension host, a per-user update missing this feature is refused as `selection-feature-required`. | **Established** at N and G: [a host that predates the feature](../verification/selection-updates.md#a-host-that-predates-the-feature). **V established** on notarized hosts ([selection-vm.md](../verification/selection-vm.md#workspace-101-rerun)) |
+| Retained workspace 1.0.0 host or bundle + the action-only repair, workspace 1.0.1 (bundled, and approved per user) | N, G | Independently built old and new providers each in each host (the retained revision's own and this tree's), with the exact candidate rows, the profile of the release served and the binary that ran: the retained 1.0.0 stays independent and is not relabelled; the approved per-user 1.0.1 variant is `SELECTED` / `PER_USER` over the bundled 1.0.0 `NOT_SELECTED`; the shipped 1.0.1 without the selection feature is refused and 1.0.0 keeps the slot. The same short and impossible locations give the same outcome in both releases, and the retained revision's own short-path suites pass against 1.0.1. | **Established** at N and G: [workspace-compatibility.md](../verification/workspace-compatibility.md). Not run at V |
+| Missing approval, wrong Team ID, unsigned/ad-hoc/tampered seal, escaping location, incompatible framework/feature/OS/architecture, failed quarantine assessment | N, G, V | Each refusal has no initializer marker; eligible lower/bundled selection has visible refusal diagnostics. Real second-team signing stays pending if no certificate is available; mocks cannot close it. Stage/quarantine recovery is exercised. | **Established** at N and G except a bundle signed by a second team, **pending** in `alternate-team-signing`: [trust refusals](../verification/selection-updates.md#trust-refusals). **V established** on notarized hosts, again except a bundle signed by a second team, **pending** in `alternate-team-signing`: ([selection-vm.md](../verification/selection-vm.md#workspace-101-rerun)) |
+| Approved same-team fixture claiming a reserved pair/high release under a different signing identifier | N, G, V | Production catalogue refuses it before load as `signing-identifier-mismatch`; valid release candidate remains selected. A purpose-built test catalogue admits its distinct fixture identifier. Correctly identified compatible release needs no new hash approval. Never generate this negative fixture under the production signing identifier. | **Established** at N and G: [a fixture under another signing identifier](../verification/selection-updates.md#a-fixture-under-another-signing-identifier). **V established** on notarized hosts with workspace 1.0.1/schema 1.0.1 as the real baseline and designated test bundle ([selection-vm.md](../verification/selection-vm.md#workspace-101-rerun)) |
+| Releases 1.9.0 and 1.10.0; malformed triple; equal/older baseline; schema-major mismatch/regression | N, G | Numeric winner and exact refusal classes; no older/equal takeover; visible fallback when a higher release is ineligible. Reverse candidate discovery order at N with fixed verdicts and preserve the outcome. | **Established** at N and G: [version rows](../verification/selection-decisions.md#version-rows) |
+| Greatest tie, successive tied groups, lower duplicates, canonical-directory alias | N, G | Refuse tied highest groups and choose a unique lower update or verified bundle; if neither exists, report the missing slot. Tied candidates never load. Lower duplicates do not contest a unique higher winner. Aliases count once; path renaming and discovery reversal do not change outcomes. | **Established** at N and G: [tie rows](../verification/selection-decisions.md#tie-rows) |
+| Reserved identity/prefix/SDL claimant; owner absent/rejected or reserved-only | N, G | Refuse claimant alone; never evict an owner or enable a reserved-only slot. Exercise both pre-load claims and post-load descriptor/SDL mismatch. | **Established** at N and G: [reserved claimants](../verification/selection-decisions.md#reserved-claimants) |
+| Missing/refused/mismatched designated bundle, valid newer update, unexpected in-app claimant | N, G | Purpose-built signed hosts retain catalogue floor/reservations. Newer update can fill the slot; equal/older cannot. Missing bundle remains a synthetic diagnostic even with an active update. Exact mismatch/unexpected reasons; never substitute the unexpected bundle. | **Established** at N and G: [designated bundle](../verification/selection-decisions.md#designated-bundle) |
+| Equal bytes and basename in both roots; quarantined per-user copy; legacy shared staging entry | N, G, V | Stage in both orders and restart after host catches up to the update. Copies remain candidate-specific; bundled loading never inherits per-user quarantine and per-user assessment is never skipped by cache reuse. No unexpected dialog; record actual assessment and loaded paths. | **Established** at N and G: [equal bytes in both roots](../verification/selection-updates.md#equal-bytes-in-both-roots). **V established** on notarized hosts ([selection-vm.md](../verification/selection-vm.md#workspace-101-rerun)) |
+| Frozen update fails principal check, dlopen, descriptor or schema with healthy alternatives | N, G | No alternative loaded/started; choice stays identifiable. Principal refusal precedes load; post-load refusal can leave images mapped. Repair/remove and restart to recover. | **Established** at N and G: [frozen update fails later](../verification/selection-failures.md#frozen-update-fails-later) |
+| Shipped update principal conflicts with another shipped bundle; ordinary candidate conflicts with shipped selection or host class | N, G | Both shipped selections refused symmetrically; ordinary claimant alone refused against shipped owner; host-class conflicts refused. No retry. Diagnostics/capability-owner cascade agree. | **Established** at N and G: [principal conflicts](../verification/selection-failures.md#principal-conflicts), and the capability-owner cascade's agreement with them: [the cascade](../verification/selection-failures.md#desktop-rejected-before-publication) |
+| Ordinary duplicate identities/prefixes, with unapproved/incompatible rivals | N, G | Only pre-load-eligible rivals contest. Eligible duplicates both refused as `manifest-collision` / `NOT_SELECTED`; a refused untrusted rival cannot evict a valid provider. | **Established** at N and G: [ordinary duplicates](../verification/selection-failures.md#ordinary-duplicates) |
+| Desktop rejected before publication; workspace depends on desktop; third provider on workspace | N, G | Fixed-point removal agrees with exact absent/rejected profile, capabilities and diagnostics; management usable. Valid dependency cycle survives. | **Established** at N and G: [desktop rejected before publication](../verification/selection-failures.md#desktop-rejected-before-publication) |
+| Desktop published but start fails | N, G | Schema/authority retained; its fields unavailable; workspace not removed solely for this failure; no bundled retry. | **Established** at N and G: [desktop published but start fails](../verification/selection-failures.md#desktop-published-but-start-fails) |
+| Same SDL across roots, changed SDL in newer copy, extra ordinary provider | N, G | Same-content replacement preserves digest and identifier-sorted shipped position; changed SDL changes digest. Pin candidate versions separately. Deny management fields without `koine:manage`. Include later enabled identities in purpose-built catalogue to distinguish identifier order from catalogue order. | **Established** at N and G: [same SDL, changed SDL, extra provider](../verification/selection-failures.md#same-sdl-across-roots-changed-sdl-in-a-newer-copy-extra-ordinary-provider) |
+| Mixed desktop/workspace releases and reused helper source | N, G, V | Private-image module/runtime-class inventory is disjoint across identities and host except the single host-owned shared framework; each selected provider executes its own expected implementation. Record native observations without claiming loader sandboxing. | **Established** at N and G, with the workspace baseline re-pinned to the repair's 1.0.1: [mixed releases](../verification/selection-updates.md#mixed-releases), [re-pinned](../verification/selection-updates.md#re-pinned-to-workspace-101). **V established** on notarized hosts with workspace 1.0.1/schema 1.0.1 as the bundled baseline and workspace 1.1.0/schema 1.0.1 as its update ([selection-vm.md](../verification/selection-vm.md#workspace-101-rerun)) |
+| Restart after update removal or changed baseline; changed assessment verdict; unreadable root | N, G | Recompute without granting authority; no anti-rollback or cross-restart verdict guarantee. Inject verdict changes at N. Root enumeration failure stops startup instead of using a partial set. | **Established** at N and G: [restart](../verification/selection-failures.md#restart) |
+| Malformed/conflicting sealed catalogue; unsigned/ad-hoc host; differently team-signed host | N, G; V for alternate team | Purpose-built malformed catalogue runs no provider and reports `catalogue-invalid`. No host team admits no shipped provider with `host-team-unavailable`. Valid alternate-team host derives its own team; certificate-dependent V evidence stays pending until available. | **Established** at N and G except the alternate-team host, **pending** in `alternate-team-signing`: [catalogue and host team](../verification/selection-decisions.md#catalogue-and-host-team) |
+| Diagnostic completeness, including a real provider named `unknown` and an unidentified bundle | N, G | Assert every candidate/synthetic row, enum, selection pointer and stable reason; real `unknown` differs from `(unknown)`. Later failure retains frozen identity and competing refusal details. | **Established**: the pre-load rows, [diagnostic completeness](../verification/selection-decisions.md#diagnostic-completeness); the later-failure part: [diagnostic completeness, the later-failure half](../verification/selection-failures.md#diagnostic-completeness-the-later-failure-half) |
+
+Compatibility of a first-party schema is a publisher obligation, not something a
+version comparison proves. Old generated desktop operations and native binary
+pairs guard that promise; signing attests origin, not behavior. No formal model
+is claimed here: the bounded startup decision table is reviewed design, while
+actual loading/trust is tested at the native
+and VM seams. Revisit a model if persistent rollback history or live replacement
+introduces transitions this one-startup contract deliberately avoids.
 
 ## Client handoff
 
@@ -972,7 +1717,10 @@ which.
 | Revoked credentials fail on an existing keep-alive connection and after restart | **Established.** `GrantManagementTests`, `GrantDecisionTests`; on the very connection a credential was served on, [grant-workflow-acceptance-vm.md](../verification/grant-workflow-acceptance-vm.md). |
 | Store/commit failure never reports a durable approval or revocation | **Established** at the public seam over a scripted store: `RevocationOrderingTests`, `GrantDecisionTests`. Not induced in a VM, which cannot make the store fail on demand. |
 | Lost manual-secret delivery requires revoke and recreate | **Established.** `GrantManagementTests` finds no credential or digest in any management response; the window's accessibility tree likewise, [grant-workflow-acceptance-vm.md](../verification/grant-workflow-acceptance-vm.md). |
-| An old provider on an upgraded host and framework; an old host with an upgraded provider built for its baseline; framework identity, factory casts, ARC, async resolution, cancellation, observation startup | **Established** for independently built pairs on unsigned hosts, [binary-compatibility.md](../verification/binary-compatibility.md), with `NativeProviderTests` and `ProviderLifecycleTests`. The signed, hardened application loads independently built same-team providers, [signed-app-provider-vm.md](../verification/signed-app-provider-vm.md), and its bundled provider from a quarantined notarized bundle, [notarized-release-vm.md](../verification/notarized-release-vm.md). **Open**: a pair across two framework minors under the signed application. |
+| Additional capability requirements: one ordered set for whole-mutation preflight, live dispatch admission and read publication; `requiredCapability` names the first unmet member and `extensions.requiredCapabilities` the whole set; a contribution whose capability owner is missing is removed to a fixed point; a descriptor using the set without the feature is refused | **Established** at the public seam over in-test contributions: `AdditionalCapabilityTests` (aliases, fragments, argument defaults, nested reference inputs, `@skip`/`@include`, multi-action preflight with zero action calls, revocation between actions, read republication, cycles, a refused owner, a removal that readmits nothing, a provider that fails startup after publication and is not removed), each watched to fail against a registration that ignores the set. Also in independently built binaries, [binary-compatibility.md](../verification/binary-compatibility.md): the released host refuses a provider requiring the feature before any of its code loads, a provider built against framework 1.0 and the released desktop provider run unchanged on the new host, and the new host refuses an undeclared use and enforces the set. Preflight reads each action's arguments as execution will, so a reference that
+arrives by an operation variable's default, as a lone value for a list, or as an
+input field's default names its owner before any action. The bundled workspace provider now declares the set (`desktop:control` on the launch root and every field it reaches), and its real descriptor is composed at the public seam and its real signed bundle is loaded by the selection-aware loader beside desktop: `WorkspaceCompositionTests`, `WorkspaceProviderTests`. **Open**: the pair across two framework minors under the signed, hardened application. |
+| An old provider on an upgraded host and framework; an old host with an upgraded provider built for its baseline; framework identity, factory casts, ARC, async resolution, cancellation, observation startup | **Established** for independently built pairs on unsigned hosts, [binary-compatibility.md](../verification/binary-compatibility.md), with `NativeProviderTests` and `ProviderLifecycleTests`. The old side is built from the released 0.1.0 sources (`task compat:baseline`), so the pair is across two real framework minors, 1.0 and 1.1. The signed, hardened application loads independently built same-team providers, [signed-app-provider-vm.md](../verification/signed-app-provider-vm.md), and its bundled provider from a quarantined notarized bundle, [notarized-release-vm.md](../verification/notarized-release-vm.md). **Open**: a pair across two framework minors under the signed application. |
 | Unsupported majors, minors and features, and bundled duplicate frameworks, refused before loading; schema and ownership collisions refused before activation | **Established.** `ProviderLoaderTests`, `CompositionTests`; [signed-app-provider-vm.md](../verification/signed-app-provider-vm.md). |
 | Mismatched signing identities refused before code is loaded | **Established** for another Team ID in the approval record, an ad-hoc signature and none: `ProviderLoaderTests`, [signed-app-provider-vm.md](../verification/signed-app-provider-vm.md). **Open**: a bundle signed by a second real Developer ID team, which needs a second certificate, and what the kernel does with one behind Koine's check. |
 | Signed installation and login launch without a client | **Established.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [resident-app-vm.md](../verification/resident-app-vm.md); a quarantined first launch, [notarized-release-vm.md](../verification/notarized-release-vm.md); installed, uninstalled and zapped through the published Homebrew cask, [homebrew-install-vm.md](../verification/homebrew-install-vm.md). **Open**: login-item approval waiting on the user (`requiresApproval`) has never been observed; registration went straight to enabled in every run. |
@@ -1003,21 +1751,42 @@ which.
 
 ## Scope
 
-Out of scope: non-running applications, broad installation/configuration discovery,
-LLM skills, remote networking, cross-language plugin authoring, live plugin
-replacement, subscriptions, automatic retry and rollback, and cross-provider
-identity or atomic snapshots. Open-source licensing and distribution do not
+The designed [workflow extension](workflow-providers.md) admits non-running
+application discovery/launch, special native locations, named application and
+modern System Settings catalogues, file/URL opening, Finder reveal and bounded
+integration-prerequisite discovery and explicit setup. Raw filesystem search
+belongs to clients; a special-location value is no filesystem proxy or consent.
+V1 includes no general OS metadata-query API.
+The existing desktop process lookup still resolves
+only the captured running incarnation; it does not become a name/bundle lookup.
+Other broad installation/configuration discovery remains out of scope, as do
+a public arbitrary-shell-execution operation, LLM skills, remote networking,
+cross-language plugin authoring, live plugin replacement, subscriptions,
+automatic retry and rollback,
+general cross-provider identity and atomic snapshots. A scoped, revalidated
+iTerm/herdr host association is permitted under the workflow spec's constraints;
+it supplies neither shared references nor a universal identity service.
+The API exclusion is not a limit on what an authorized application can do:
+input to a terminal can execute commands as the user, and menu authority can
+invoke destructive application actions. Workspace can launch any registered
+installed app; document handlers can execute scripts or follow location files
+to other schemes and targets. Its metadata checks are not a content sandbox.
+Grant disclosure must state that reach before each surface ships.
+Open-source licensing and distribution do not
 change this desktop design: Koine is published under Apache-2.0 and
 installed from a Homebrew cask carrying the notarized bundle
 ([open-source release and distribution](../adr/open-source-release-and-distribution.md)).
 
-The served contract is implemented: a shared resilient Swift
+The baseline served contract is implemented: a shared resilient Swift
 framework, one resident application with in-process native management,
 transferable bearer credentials with live revocation, the precise
 revocation/admission boundary, GraphQL desktop identity, the client-owned adapter
 and the operational policies described here. Platform behavior and native binary
 compatibility are established by the evidence in "Acceptance status", which also
 lists what is open.
+The workflow extension and additional-capability feature are design obligations
+until their own conformance, binary and VM evidence is recorded; the baseline's
+established rows do not establish these additions.
 
 ## Native targeting discussion
 
@@ -1048,3 +1817,92 @@ close, the race with process or window reuse:
 
 Koine does not fall back to a private AX endpoint or to window-qualified
 activation to narrow these limits.
+
+## Native discovery conformance profiles
+
+**Design only; actual native captures pending.** The additive native API keeps
+koine-desktop/1 and the existing ProviderValue/failure ABI. The
+[exact acceptance identities](../verification/native-discovery-acceptance.md#exact-identities-and-posture)
+separate provider release/schema, complete SDL/digest, selection origin and
+host signing posture; identical schemas do not establish identical binaries.
+
+| Profile | Complete SDL and candidate pins | Evidence |
+| --- | --- | --- |
+| [Bundled native](../design/profiles/core-desktop-workspace-native-extension-host.json) | Extended core management + desktop 1.0.0/1.0.0 + workspace 1.2.0/1.1.0, both BUNDLED/SELECTED/ACTIVE; complete native SDL. | Pending N/G/V. |
+| [Native update](../design/profiles/core-desktop-workspace-native-update-extension-host.json) | Same SDL; PER_USER workspace 1.3.0/1.1.0 selected, BUNDLED 1.2.0/1.1.0 REJECTED/NOT_SELECTED/superseded-candidate; desktop baseline remains active. | Pending N/G/V. |
+| [Native update refused](../design/profiles/core-desktop-workspace-native-update-refused-extension-host.json) | Repair action SDL; 1.3.0/1.1.0 per-user update missing first-party-selection-v1 INCOMPATIBLE/NOT_SELECTED/selection-feature-required; bundled action-only 1.0.1 selected-with-refusals. | Pending N/G/V, no load/start marker. |
+| [Prior disclosure host refuses native update](../design/profiles/core-desktop-workspace-native-disclosure-refused-extension-host.json) | Prior selection-aware host lacks workspace-native-disclosures-v1; native 1.3.0/1.1.0 PER_USER INCOMPATIBLE/NOT_SELECTED/unsupported-feature; retained BUNDLED action-only 1.0.1 ACTIVE/SELECTED/selected-with-refusals. Complete repair action SDL. | Pending N/G/V, no native load/start marker. |
+
+Native 1.2.0/1.3.0 manifests require additional-capabilities-v1,
+first-party-selection-v1 and workspace-native-disclosures-v1. The latter is
+advertised only after the corrected disclosures above are served everywhere.
+Conditional Automation signing posture does not establish that feature.
+
+The complete native SDL also includes explicit nullable application agent/background
+declarations and associated running-policy observations under workspace:read.
+Application population overflow yields FAILED/null items; it does not publish an
+arbitrary source-order sample. G10/N5/V11 accept the real populous catalogue and
+call/copy/response accounting. Application admission uses 20 MiB scoped cumulative controlled raw gross and
+4,194,304 explicit operations under the [accounting ADR](../adr/application-metadata-accounting-covers-explicit-work.md), without refund.
+Settings/location owned-copy gates and the independent core response cap remain
+8 MiB; nested aliases charge host completion/encoding, independent roots own jobs. This application
+slice awaits complete-producer review. Long metadata has a fixed native indexed
+projection, public metadataSource, UNKNOWN installation state and null unsupported
+bundle flags; G11/N8/V13 require real L1500 source tuples, identity and unchanged
+selected-action refusal. Indexed facts do not bind current inode/bundle contents.
+The long indexed projection adds no access/consent/signing or core limit policy;
+the separately approved ordinary metadata exception is described below. Settings now
+uses two ID-associated pALL/anchor sweeps with a minimum 100 ms gap within three
+seconds. RUNNING is process-only; stable positive choices remain PARTIAL with
+UNKNOWN lazy completeness, empty panes UNKNOWN/null and empty anchors null.
+G4/N4/N5/V12 qualify exact event construction, cost and independent cold/warm
+usefulness; all exposed choices remain required. No current native conformance
+pass follows. The complete design requires mandatory whole-producer review and
+any earned reconciliation before becoming implementation input.
+
+Diagnostic detail saturation does not invalidate a catalogue: 63 detail records
+plus DIAGNOSTIC_LIMIT and fixed per-source reason summaries preserve all outcomes
+without item loss. The old application arithmetic is historical counterexample evidence. Current
+grouped local/source/two-walk conservative enclosures 23,238,610/23,412,717
+exceed 20,971,520 before other terms; they prove no useful fit, inevitable native
+overflow or impossibility of tighter construction. Full native operands/final
+wire stay conditional, so the consumption hold remains. Settings remains 6,094,976 bytes under its unchanged 8 MiB gate. Settings confirmation timeout retains only
+uncontradicted complete-first-map positives as PARTIAL/TIME_LIMIT/UNKNOWN;
+incomplete-first-map timeout and count/call/copy overflow still give FAILED/null.
+Lazy no-such-object at reveal re-resolution is failed/unestablished selection,
+never an absence dependency; V12 includes separate unvisited-incarnation reveal.
+The selected complete strings/loctable reader uses 131,072-byte regular files and
+per-object affected-fact refusal; shared exhaustion remains FAILED/null. The
+[complete scoped composition](../verification/application-metadata-composition.md)
+supplies conditional expressions, without a useful finite fit. The k215 hold and
+mandatory review/earned integration precede k7. Its pathname mechanism is: root resource type through 1,023 bytes, held-directory fixed metadata
+files and a bounded direct localization plan. Larger roots use actual indexed
+items. The 977 localized control and 978 old-band copy supplement L1500; review
+and G11/N8/V13 remain pending. Every explicit operation and controlled raw write/cleanup requires admission;
+runtime internals are excluded and real ProviderValue publication stays provider-owned.
+No total heap/RSS/peak, host response increase or foreign Bundle fallback follows.
+Ordinary 1,004…1,023 metadata does not qualify the action's whole-path plist reader.
+
+Independently retained 1.0.0/1.0.1 and already-used action-only update 1.1.0/1.0.1
+profiles/captures are unchanged subjects. New native multi-image guards/loading,
+normalization, exact settings event/posture and serviceability checks require
+actual new binaries, fresh hosts and declared supported OS subjects. Design
+SDL/example validation proves no native call, useful choice or compatibility pass.
+
+## Grouped refinement and retained hold
+
+The [grouped inventory/key refinement](../verification/application-metadata-grouped-storage.md) replaces complete retained key
+partitions with independent linked-slab owners, while preserving the selected
+reader semantics, scoped gates, every saved association and the full wire. Its
+controlled local/source/two-walk enclosure still exceeds 20 MiB before other
+terms; it establishes no useful fit or native pass. Earlier independent-block
+numbers remain reproducible comparison. The amended private design boundary is complete; whole-producer review and the
+advertisement/consumption holds remain. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md) selects ordering only.
+Private construction requires the complete [eligibility conjunction](application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence);
+that predicate, rather than an abbreviated ordering summary, governs builds. Advertisement/downstream consumption remain held until full useful
+native operands, actual complete selected responses, required witnesses and
+independent serviceability qualify. Failed/refused/unknown required useful cases
+and unavailable subjects keep those holds and affected acceptance work live.
+Existing whole-producer review, all native G/N/V, actual full operands/response,
+useful breadth and independent authority/action/Settings/disclosure/compatibility
+duties remain. No repeated strict/scoped selection or new capture leaf follows.

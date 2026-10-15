@@ -1,0 +1,13 @@
+{
+  "providerId": "workspace",
+  "graphQLPrefix": "Workspace",
+  "version": "1.0.1",
+  "schemaVersion": "1.0.1",
+  "architectures": ["@ARCH@"],
+  "minimumOS": "@MINIMUM_OS@",
+  "minimumSwiftRuntime": "5.7",
+  "framework": { "major": 1, "minimumMinor": 1 },
+  "requiredFeatures": ["additional-capabilities-v1"],
+  "principalClass": "KoineWorkspaceProviderFactory",
+  "library": "libWorkspaceProvider.dylib"
+}

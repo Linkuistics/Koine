@@ -41,6 +41,40 @@ import Testing
         return try #require(management["grants"] as? [[String: Any]])
     }
 
+    // MARK: Capability disclosures
+
+    static let disclosures =
+        "{ koineManagement { capabilityDisclosures { capability disclosure } } }"
+
+    @Test func aManagerReadsTheWorkspaceControlDisclosure() async throws {
+        let (harness, manager, _) = try await managed()
+        let reply = try await harness.post(Self.disclosures, authorization: "Bearer \(manager)")
+        #expect(reply.errors.isEmpty)
+        let management = try #require(reply.data?["koineManagement"] as? [String: Any])
+        let entries = try #require(management["capabilityDisclosures"] as? [[String: String]])
+        #expect(entries.map { $0["capability"] } == ["workspace:control"])
+        let text = try #require(entries.first?["disclosure"])
+        // The three things the workspace spec requires disclosed.
+        #expect(text.contains("any application registered"))
+        #expect(text.contains("run a script or follow a location document"))
+        #expect(text.contains("desktop:control"))
+        // Served whether or not the workspace provider is loaded: this harness has none.
+        #expect(!(try await harness.post(Harness.koine, authorization: "Bearer \(manager)")
+            .data.map { String(describing: $0) } ?? "").contains("workspace:control"))
+        await harness.stop()
+    }
+
+    @Test func disclosuresNeedManageAndNothingElseDoes() async throws {
+        let (harness, manager, _) = try await managed()
+        let reader = try await create(harness, as: manager, label: "reader")
+        let reply = try await harness.post(Self.disclosures, authorization: "Bearer \(reader.credential)")
+        let extensions = try #require(reply.errors.first?["extensions"] as? [String: Any])
+        #expect(extensions["kind"] as? String == "permission")
+        #expect(extensions["requiredCapability"] as? String == "koine:manage")
+        #expect(reply.data?["koineManagement"] is NSNull)
+        await harness.stop()
+    }
+
     // MARK: Listing
 
     @Test func aManagerListsEveryGrantWithoutSecrets() async throws {
@@ -250,7 +284,7 @@ import Testing
     // MARK: Schema
 
     /// Serve only what is implemented: management is requests, grants, provider
-    /// status and OS permissions; denial is not served yet.
+    /// status, OS permissions and capability disclosures; denial is not served yet.
     @Test func theServedManagementSchemaIsOnlyWhatIsImplemented() async throws {
         let (harness, manager, _) = try await managed()
         let reply = try await harness.post(
@@ -264,7 +298,7 @@ import Testing
             let fields = (reply.data?[key] as? [String: Any])?["fields"] as? [[String: Any]] ?? []
             return fields.compactMap { $0["name"] as? String }.sorted()
         }
-        #expect(names("management") == ["grants", "osPermissions", "providers", "requests"])
+        #expect(names("management") == ["capabilityDisclosures", "grants", "osPermissions", "providers", "requests"])
         #expect(
             names("mutation") == [
                 "koineApproveGrantRequest", "koineCreateGrant", "koineDenyGrantRequest",

@@ -1,0 +1,9 @@
+{
+  "command": "(/tmp/k155-bundle/K155Probe.app/Contents/MacOS/K155Probe incarnation /tmp/k155-incarnation-before-ui-1500.json & probe_pid=$!; (sleep 10; kill -TERM \"$probe_pid\" 2>/dev/null; sleep 3; kill -KILL \"$probe_pid\" 2>/dev/null) & guard_pid=$!; wait \"$probe_pid\"; probe_status=$?; kill \"$guard_pid\" 2>/dev/null; wait \"$guard_pid\" 2>/dev/null; exit \"$probe_status\") >/tmp/k149-cmd-17.out 2>/tmp/k149-cmd-17.err; echo $? >/tmp/k149-cmd-17.tmp; mv /tmp/k149-cmd-17.tmp /tmp/k149-cmd-17.code",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "",
+  "timed_out": false
+}

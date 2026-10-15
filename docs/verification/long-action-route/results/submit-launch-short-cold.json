@@ -1,0 +1,55 @@
+{
+ "case": "launch-short-cold",
+ "rows": [
+  {
+   "finishedAt": "1791090789.305",
+   "id": "launch-short-cold",
+   "mode": "launch",
+   "pid": 2546,
+   "result": {
+    "callback": {
+     "app": {
+      "bundleIdentifier": "dev.antony.Koine.K134Fixture",
+      "bundleURL": "L0FwcGxpY2F0aW9ucy9Lb2luZUsxMzRGaXh0dXJlLmFwcA==",
+      "executableURL": {
+       "b64": "L0FwcGxpY2F0aW9ucy9Lb2luZUsxMzRGaXh0dXJlLmFwcC9Db250ZW50cy9NYWNPUy9Lb2luZQ==",
+       "length": 55
+      },
+      "pid": 2547,
+      "proc_pidpath": {
+       "b64": "L0FwcGxpY2F0aW9ucy9Lb2luZUsxMzRGaXh0dXJlLmFwcC9Db250ZW50cy9NYWNPUy9Lb2luZQ==",
+       "length": 55
+      }
+     },
+     "elapsedMs": 405.60293197631836
+    },
+    "submittedApp": {
+     "b64": "L0FwcGxpY2F0aW9ucy9Lb2luZUsxMzRGaXh0dXJlLmFwcA==",
+     "length": 34
+    },
+    "submittedDoc": null
+   },
+   "startedAt": 1791090788.89931
+  }
+ ],
+ "logs": {
+  "witness": [],
+  "self": [
+   {
+    "_NSGetExecutablePathLength": 55,
+    "at": "1791090789.324",
+    "bundleB64": "L0FwcGxpY2F0aW9ucy9Lb2luZUsxMzRGaXh0dXJlLmFwcA==",
+    "exeB64": "L0FwcGxpY2F0aW9ucy9Lb2luZUsxMzRGaXh0dXJlLmFwcC9Db250ZW50cy9NYWNPUy9Lb2luZQ==",
+    "id": "dev.antony.Koine.K134Fixture",
+    "pid": 2547,
+    "proc_pidpathB64": "L0FwcGxpY2F0aW9ucy9Lb2luZUsxMzRGaXh0dXJlLmFwcC9Db250ZW50cy9NYWNPUy9Lb2luZQ==",
+    "proc_pidpathLength": 55
+   }
+  ]
+ },
+ "windows": "\"Notification Center\" (systemDialog) 1920x1080 app:\"Notification Center\"\n\"Featured\" (standard) 360x180 app:\"Notification Center\"\n\"Forecast\" (standard) 180x180 app:\"Notification Center\"\n\"Month\" (standard) 180x180 app:\"Notification Center\"\n\"short\" (standard) 920x436 [focused] app:\"Finder\"\n",
+ "observer": {
+  "pid": 2547,
+  "lsof_ps": "p2547\nftxt\nn/Applications/KoineK134Fixture.app/Contents/MacOS/Koine\nftxt\n 2547 /Applications/KoineK134Fixture.app/Contents/MacOS/Koine\n"
+ }
+}

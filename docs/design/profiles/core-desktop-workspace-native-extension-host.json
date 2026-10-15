@@ -1,0 +1,44 @@
+{
+  "name": "Native discovery bundled composition",
+  "design": "../desktop-workspace-native-schema-extension-host.graphql",
+  "management": "extended",
+  "comment": [
+    "Design only; actual native binary, introspected digest and G/N/V acceptance pending.",
+    "Framework major 1/minor 1; host and native manifest require additional-capabilities-v1, first-party-selection-v1 and workspace-native-disclosures-v1.",
+    "Unchanged host posture first; any earned conditional Automation host has a separate signature/posture record, the same schema.",
+    "Retained 1.0.0/1.0.1 and action-only update 1.1.0/schema 1.0.1 remain independent evidence.",
+    "Native disclosure feature pins are design metadata; corrected core UI/management and native loader acceptance remain pending.",
+    "Selected strings/loctable reader semantics, 128 KiB regular files and scoped 20 MiB explicit-work admission are specified; useful finite fit is unestablished. The k215 consumption hold and mandatory whole-producer review remain; every native G/N/V is pending."
+  ],
+  "providers": [
+    {
+      "provider": "desktop",
+      "version": "1.0.0",
+      "schemaVersion": "1.0.0",
+      "state": "ACTIVE",
+      "origin": "BUNDLED",
+      "selection": "SELECTED",
+      "reason": null
+    },
+    {
+      "provider": "workspace",
+      "version": "1.2.0",
+      "schemaVersion": "1.1.0",
+      "state": "ACTIVE",
+      "origin": "BUNDLED",
+      "selection": "SELECTED",
+      "reason": null
+    }
+  ],
+  "hostFeatures": [
+    "additional-capabilities-v1",
+    "first-party-selection-v1",
+    "workspace-native-disclosures-v1"
+  ],
+  "nativeRequiredFeatures": [
+    "additional-capabilities-v1",
+    "first-party-selection-v1",
+    "workspace-native-disclosures-v1"
+  ],
+  "applicationMetadataContract": "../application-metadata-contract.json"
+}

@@ -1,0 +1,3 @@
+{"errno":0,"label":"name","bytes":24,"b64":"SzE2MV9PUklHSU5BTF8xNTAwX09OTFkK","event":"controlMarker","exact":true}
+{"errno":0,"label":"decoy","bytes":21,"b64":"SzE2MV9ERUNPWV8xNTAwX09OTFkK","event":"controlMarker","exact":true}
+{"event":"incomplete","stage":"bareParentControlOpen","errno":63}

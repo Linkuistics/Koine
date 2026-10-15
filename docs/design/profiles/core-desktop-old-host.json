@@ -1,0 +1,8 @@
+{
+  "name": "old-host core + desktop",
+  "design": "../desktop-schema.graphql",
+  "management": "baseline",
+  "providers": [
+    { "provider": "desktop", "version": "1.0.0", "schemaVersion": "1.0.0", "state": "ACTIVE" }
+  ]
+}

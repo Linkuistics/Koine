@@ -30,7 +30,7 @@ source "${HERE}/../../scripts/signing-env.sh"
 API_SOURCES="${HERE}/../../ProviderAPI/Sources/KoineProviderAPI"
 HOST_ARCH="$(uname -m)"
 if [ "${HOST_ARCH}" = arm64 ]; then OTHER_ARCH=x86_64; else OTHER_ARCH=arm64; fi
-TARGET="${HOST_ARCH}-apple-macos13.0"
+TARGET="${HOST_ARCH}-apple-macos${MINIMUM_OS}"
 WORK="$(mktemp -d)"
 trap 'rm -rf "${WORK}"' EXIT
 
@@ -128,6 +128,10 @@ swiftc -emit-library -parse-as-library -enable-library-evolution -wmo \
     -o "${WORK}/newer/libKoineProviderAPI.dylib" "${API_SOURCES}"/*.swift "${WORK}/newer/Future.swift"
 FIXTURE_FRAMEWORK="-I ${WORK}/newer -L${WORK}/newer -lKoineProviderAPI" \
     FIXTURE_SWIFTC="-D FIXTURE_NEEDS_NEWER_FRAMEWORK" compiled newer-framework Nf >/dev/null
+
+# Good, and designated by a purpose-built catalogue: what the in-application
+# root loads, under the running host's own team.
+compiled bundled-designated Bd >/dev/null
 
 BUNDLE="$(compiled missing-principal Mp)"
 edit_manifest "${BUNDLE}" 'm["principalClass"] = "KoineFixtureMpAbsentFactory"'

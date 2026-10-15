@@ -1,0 +1,334 @@
+{
+  "scope": "Whole packaging/runtime companion only; S/D/C partition is k300; whole bases/actual reads/merged reconciliation stay k298 work.",
+  "original_revision": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+  "sources": [
+    {
+      "path": "docs/verification/application-reference-packaging-runtime.md",
+      "original_sha256": "ad72fd9bb815336af62b94a74d235cc376f9566ebbf1d7a2c2b3ab71777983c2",
+      "current_sha256": "7e8e76a35a991b4325d7537adb9cada603550b7803961a5b4f7dd67189dc1ea1",
+      "whole_byte_binding": true
+    }
+  ],
+  "inventory": {
+    "path": "docs/verification/reference-packaging-partition.tsv",
+    "sha256": "faed12fd7614bbbc6e99435900dc3c9ae45a3ceff99442853736bf951e805d2a"
+  },
+  "historical_ranges": [
+    {
+      "text": "The URLs above identify XNU's immutable revision;",
+      "start_byte": 46251,
+      "end_byte": 46300,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Fixed documentary URL/revision association."
+    },
+    {
+      "text": "The pinned public [kern_sysctl.c](https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/bsd/kern/kern_sysctl.c)\ndeclares osversion and osproductversion, including compatibility branches in the latter.",
+      "start_byte": 51620,
+      "end_byte": 51859,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Published-source declaration/branch report only; no current kernel match."
+    },
+    {
+      "text": "Its macosproductversion/macosversion declarations are bridge-conditional",
+      "start_byte": 51860,
+      "end_byte": 51932,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Fixed published conditional-declaration report; replacement selection stays E."
+    },
+    {
+      "text": "Its retrieved whole-file SHA-256 is\n`e9afd60d06752d2eaa7fada1316f293c342c3666f54d3c7e94d82d5ab55c851a`.",
+      "start_byte": 52215,
+      "end_byte": 52318,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Historical whole-source retrieval pin; original object independently required."
+    },
+    {
+      "text": "The selected documentary [Task configuration](https://taskfile.dev/docs/reference/config) and\n[schema](https://taskfile.dev/docs/reference/schema) describe configuration discovery,\nenvironment, includes and dotenv.",
+      "start_byte": 62619,
+      "end_byte": 62833,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Fixed documentary content report; actual retained version/read evidence stays E."
+    },
+    {
+      "text": "Apple's guide describes debugging tags,",
+      "start_byte": 64956,
+      "end_byte": 64995,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Historical guide-description report, not future parser behavior."
+    },
+    {
+      "text": "Historical implementation-derived marker/reference/offset structure",
+      "start_byte": 65466,
+      "end_byte": 65533,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Historical implementation content, not normative complete binary grammar."
+    },
+    {
+      "text": "Documented string/data/array/dictionary examples",
+      "start_byte": 66116,
+      "end_byte": 66164,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Fixed archived guide examples."
+    },
+    {
+      "text": "historical implementation-derived comment/escape/parse rules;",
+      "start_byte": 66169,
+      "end_byte": 66230,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Fixed historical parser-content report."
+    },
+    {
+      "text": "Documented quoted key/value assignment/encoding examples, historical dictionary-without-braces dispatch",
+      "start_byte": 66737,
+      "end_byte": 66840,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Fixed archived guide/parser-content reports; authored byte positions stay E."
+    },
+    {
+      "text": "The CF tag resolves to commit `dc54c6bb1c1e5e0b9486c1d26dd5bef110b20bf3`.\nRetrieved complete source SHA-256 values are CFBinaryPList.c\n`8b8c72427ba60e7918f3ffa088d9f25859456eb75a0081ff5cdb7277ff62c384`,\nCFOldStylePList.c `9c0635f05e28b5780321a5ae1be23ab08136f51cc3d7d79bbcd58fe80bb0a4b1`,\nand CFPropertyList.c `ced92800b4651fc47e9a1f53626170c7c7324db50bf6740541fd56844b7bead3`.",
+      "start_byte": 68117,
+      "end_byte": 68494,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Fixed tag/revision and individual retrieved-object digest reports; no current CF facts."
+    },
+    {
+      "text": " bsd/kern/proc_info.c at ac9718fb1af618d5ce8678d0dc6e8a58f252216f ",
+      "start_byte": 46555,
+      "end_byte": 46621,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Fixed historical whole-basis name/revision/retrieval pin; original object separately required."
+    },
+    {
+      "text": " dc99b9a8105fc1376ba0b7d14de1aa6e065c7b13899ac9ede2fb1dccab649178 ",
+      "start_byte": 46622,
+      "end_byte": 46688,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Fixed historical whole-basis name/revision/retrieval pin; original object separately required."
+    },
+    {
+      "text": " bsd/sys/proc_info.h at that same revision ",
+      "start_byte": 46691,
+      "end_byte": 46734,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Fixed historical whole-basis name/revision/retrieval pin; original object separately required."
+    },
+    {
+      "text": " a4eb26cdfd3721b111f9979455d80a854625b0ef96ba4de1a4e7705f462e0f84 ",
+      "start_byte": 46735,
+      "end_byte": 46801,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Fixed historical whole-basis name/revision/retrieval pin; original object separately required."
+    },
+    {
+      "text": " bsd/sys/codesign.h at that same revision ",
+      "start_byte": 46804,
+      "end_byte": 46846,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Fixed historical whole-basis name/revision/retrieval pin; original object separately required."
+    },
+    {
+      "text": " 2f416bff50c43b88e5d964316c0eee050f095d582c998b4c8c7c3d6278c51cd3 ",
+      "start_byte": 46847,
+      "end_byte": 46913,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Fixed historical whole-basis name/revision/retrieval pin; original object separately required."
+    },
+    {
+      "text": " Whole archived Bundle Structures HTML at the topology contract's exact URL ",
+      "start_byte": 46916,
+      "end_byte": 46992,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Fixed historical whole-basis name/revision/retrieval pin; original object separately required."
+    },
+    {
+      "text": " 2d7a34a6b1cb40842fa74ba68f696d5e9c990c72d779516f91014ed448f4cbc6 ",
+      "start_byte": 46993,
+      "end_byte": 47059,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Fixed historical whole-basis name/revision/retrieval pin; original object separately required."
+    },
+    {
+      "text": " Whole archived Accessing Contents HTML at that exact URL ",
+      "start_byte": 47062,
+      "end_byte": 47120,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Fixed historical whole-basis name/revision/retrieval pin; original object separately required."
+    },
+    {
+      "text": " 8cb1d5892bd82a1b0cb9e68ebff3ff5f58a4fb851e8b64aa82836d0d0d89d298 ",
+      "start_byte": 47121,
+      "end_byte": 47187,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Fixed historical whole-basis name/revision/retrieval pin; original object separately required."
+    },
+    {
+      "text": " [XML 1.0 Fifth Edition, 26 November 2008](https://www.w3.org/TR/2008/REC-xml-20081126/), Apple's historical [PropertyList.dtd](https://github.com/apple-oss-distributions/CF/blob/dc54c6bb1c1e5e0b9486c1d26dd5bef110b20bf3/PropertyList.dtd) and [XML tag guide](https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFPropertyLists/Articles/XMLTags.html) ",
+      "start_byte": 64492,
+      "end_byte": 64873,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Fixed named historical edition/source/guide association; complete originals separately required."
+    },
+    {
+      "text": " Apple's historical CF-1153.18 [CFBinaryPList.c](https://github.com/apple-oss-distributions/CF/blob/dc54c6bb1c1e5e0b9486c1d26dd5bef110b20bf3/CFBinaryPList.c), object-format/offset/trailer description and parser checks ",
+      "start_byte": 65246,
+      "end_byte": 65464,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Fixed named historical edition/source/guide association; complete originals separately required."
+    },
+    {
+      "text": " Apple's archived [old-style ASCII guide](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/PropertyLists/OldStylePlists/OldStylePLists.html), historical [CFOldStylePList.c](https://github.com/apple-oss-distributions/CF/blob/dc54c6bb1c1e5e0b9486c1d26dd5bef110b20bf3/CFOldStylePList.c) ",
+      "start_byte": 65804,
+      "end_byte": 66114,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Fixed named historical edition/source/guide association; complete originals separately required."
+    },
+    {
+      "text": " Apple's archived [String Resources](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/LoadingResources/Strings/Strings.html), plus the same historical old-style parser and [CFPropertyList.c](https://github.com/apple-oss-distributions/CF/blob/dc54c6bb1c1e5e0b9486c1d26dd5bef110b20bf3/CFPropertyList.c) dispatch ",
+      "start_byte": 66399,
+      "end_byte": 66735,
+      "snapshot": "ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa",
+      "claim_limit": "Fixed named historical edition/source/guide association; complete originals separately required."
+    }
+  ],
+  "original_relocations": [
+    {
+      "text": "K285's separate independent\nrelease and chartered acceptance order governs the repaired k282 conjunction;",
+      "retained_rule": "Use the enduring independent release/acceptance contract and whole admission conjunction."
+    },
+    {
+      "text": "Required executing slice/cache/subcache/backing/consumed-image identities remain unavailable where not independently obtainable.",
+      "retained_rule": "Require original independent named-image evidence before Q/P credit; missing evidence blocks."
+    },
+    {
+      "text": "Actual local terminal/foreground/session/peer provenance still needs qualification;",
+      "retained_rule": "Require qualified original terminal/foreground/session/peer facts before Q08/P03."
+    },
+    {
+      "text": "Required actual terminal/process/image facts remain unavailable until that work precedes P03.",
+      "retained_rule": "Require independently qualified terminal/process/image originals; missing evidence blocks the stage."
+    },
+    {
+      "text": "No independent public normative loctable grammar is established here.",
+      "retained_rule": "Select no independent public normative loctable grammar; retain authored contracts and original parser/role evidence."
+    },
+    {
+      "text": "K287 reconciles the complete contract/extract set, README/summary/view layers, authority/\nanchor terminology and these obligations before mandatory whole-k282 review/integration.",
+      "retained_rule": "Whole admission-design reconciliation and mandatory whole-producer review/every earned integration precede planning."
+    },
+    {
+      "text": "P actual authority/build/UID/channel/export facts stay unavailable until their own evidence\nexists.",
+      "retained_rule": "Require original qualified actual P evidence before credit; unavailable results remain explicit unconsumed reports."
+    },
+    {
+      "text": "Current official [Task configuration](https://taskfile.dev/docs/reference/config) and\n[schema](https://taskfile.dev/docs/reference/schema) describe configuration discovery,\nenvironment, includes and dotenv.",
+      "retained_rule": "Pin the documentary content report to its immutable historical snapshot; retain full actual configuration/runtime-read duties."
+    }
+  ],
+  "changes": [
+    {
+      "original_first_line": 27,
+      "original_end_line_exclusive": 27,
+      "current_first_line": 27,
+      "current_end_line_exclusive": 35,
+      "old": "",
+      "new": "\nHistorical documentary observations below are fixed to the design snapshot\n`ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa`: each source declaration, edition, branch,\nretrieval digest and tag/revision association records that snapshot's documentary claim.\nIt establishes no current retrieval, SDK/kernel/runtime correspondence or acquired original\nbasis object. Every claimed documentary correspondence still requires the complete original\nobject and independent acceptance before its consumer; a locator or historical pin is\ninsufficient. These fixed facts remain whole-byte inputs alongside the enduring rules.\n"
+    },
+    {
+      "original_first_line": 95,
+      "original_end_line_exclusive": 96,
+      "current_first_line": 103,
+      "current_end_line_exclusive": 104,
+      "old": "and independent release must settle before a new supervised k245 invocation. Missing,\n",
+      "new": "and independent release must settle before a new supervised acquisition invocation. Missing,\n"
+    },
+    {
+      "original_first_line": 249,
+      "original_end_line_exclusive": 251,
+      "current_first_line": 257,
+      "current_end_line_exclusive": 261,
+      "old": "and fresh P checks answer the required facts without that role. K285's separate independent\nrelease and chartered acceptance order governs the repaired k282 conjunction; no operation-credit result,\n",
+      "new": "and fresh P checks answer the required facts without that role. The contract's\n[independent release](application-reference-evidence.md#independent-live-release-and-role-selection)\nand [chartered acceptance order](application-reference-evidence.md#chartered-independent-acceptance)\ngovern the whole admission conjunction; no operation-credit result,\n"
+    },
+    {
+      "original_first_line": 265,
+      "original_end_line_exclusive": 266,
+      "current_first_line": 275,
+      "current_end_line_exclusive": 276,
+      "old": "| Build API mechanics / O06 | Independent native programme performs only the two `sysctlbyname` size/value reads of `kern.osproductversion` and `kern.osversion`, with `newp == NULL`, original names/lengths/return/errno/NUL/full byte buffers, separately compiled retained observer and candidate SDK/platform/compatibility/configuration identities. | Current successful API returns are E for those calls only. Independent expected API/compatibility rules retain the whole pinned kern_sysctl.c and actual current SDK/loader configuration; historic declarations are no current kernel match. Short/change/error/NUL/wrong-name/config controls remain R. |\n",
+      "new": "| Build API mechanics / O06 | Independent native programme performs only the two `sysctlbyname` size/value reads of `kern.osproductversion` and `kern.osversion`, with `newp == NULL`, original names/lengths/return/errno/NUL/full byte buffers, separately compiled retained observer and candidate SDK/platform/compatibility/configuration identities. | Current successful API returns are E for those calls only. Independent expected API/compatibility rules retain the whole pinned kern_sysctl.c and actual current SDK/loader configuration; historic declarations are no current kernel match. Short/change/error/NUL/wrong-name/config controls are required. |\n"
+    },
+    {
+      "original_first_line": 268,
+      "original_end_line_exclusive": 271,
+      "current_first_line": 278,
+      "current_end_line_exclusive": 281,
+      "old": "| Known runtime/backing correspondence / O21/O23/O25 | Independent CF programme on authored bytes and selected public loader observations preserve the actual returned image names/header/slide/UUID/configuration facts, with held declared runtime-object byte/identity comparisons where obtainable. | Loader self-report and disk UUID/digest are bounded observations, not an independent process-to-mapping proof. Required executing slice/cache/subcache/backing/consumed-image identities remain unavailable where not independently obtainable. Complete unknown maps stay AU, but a named required image cannot. |\n| Human confirmation / O02/O08 | Independently authored exact confirmation/nonce/membership/role/exclusion/EOF values, same retained registrar/selector SCRATCH entry and constructed channel/rendezvous control pairs exercise the chosen logic. Earlier human commissioning/acceptance obtains original ready-object judgments under the canonical ceremony. The selected inherited-fd/foreground-group metadata route below requires original independently accepted results. | This is Q logic/entry evidence only. Actual local terminal/foreground/session/peer provenance still needs qualification; the answer text is no terminal authentication. Required actual terminal/process/image facts remain unavailable until that work precedes P03. Pure same-image+ELIGIBLE refusal must not be relabelled actual LIVE confirmation. |\n| A2/A3 storage and disarm / O08\u2013O14/O23 | Actual scratch `fstatat`/`openat`/`fstat`/read/write/`mkdirat`/`flock`/`renameatx_np(RENAME_EXCL)`/parent `fsync`/same-device `F_FULLFSYNC` and fixed event-slot/intent/result controls; qualified separate provisioning/validator obtains actual fixed A2 facts, requested fresh accepted A3 entry has actual P ancestry/reservation acknowledgements. | Event policy establishes no actual object/device support. Q09's kills/partial/result/lock-release pairs remain R. Failed/unknown acknowledgements, ancestry/type/UID/equality or unspent state block their phase; no storage scan, new initialize/retry or OS-crash certificate. |\n",
+      "new": "| Known runtime/backing correspondence / O21/O23/O25 | Independent CF programme on authored bytes and selected public loader observations preserve the actual returned image names/header/slide/UUID/configuration facts, with held declared runtime-object byte/identity comparisons where obtainable. | Loader self-report and disk UUID/digest are bounded observations, not an independent process-to-mapping proof. Required executing slice/cache/subcache/backing/consumed-image identities need independently obtained original evidence before their Q/P credit; missing evidence blocks its named claim. Complete unknown maps stay AU, but a named required image cannot. |\n| Human confirmation / O02/O08 | Independently authored exact confirmation/nonce/membership/role/exclusion/EOF values, same retained registrar/selector SCRATCH entry and constructed channel/rendezvous control pairs exercise the chosen logic. Earlier human commissioning/acceptance obtains original ready-object judgments under the canonical ceremony. The selected inherited-fd/foreground-group metadata route below requires original independently accepted results. | This is Q logic/entry evidence only. Actual local terminal/foreground/session/peer provenance and required terminal/process/image originals must qualify before their Q08 credit and P03 use; missing evidence blocks that stage. The answer text is no terminal authentication. Pure same-image+ELIGIBLE refusal must not be relabelled actual LIVE confirmation. |\n| A2/A3 storage and disarm / O08\u2013O14/O23 | Actual scratch `fstatat`/`openat`/`fstat`/read/write/`mkdirat`/`flock`/`renameatx_np(RENAME_EXCL)`/parent `fsync`/same-device `F_FULLFSYNC` and fixed event-slot/intent/result controls; qualified separate provisioning/validator obtains actual fixed A2 facts, requested fresh accepted A3 entry has actual P ancestry/reservation acknowledgements. | Event policy establishes no actual object/device support. Q09's kills/partial/result/lock-release pairs are required. Failed/unknown acknowledgements, ancestry/type/UID/equality or unspent state block their phase; no storage scan, new initialize/retry or OS-crash certificate. |\n"
+    },
+    {
+      "original_first_line": 284,
+      "original_end_line_exclusive": 285,
+      "current_first_line": 294,
+      "current_end_line_exclusive": 295,
+      "old": "   app inventory, network or installation activity is part of the recommendation.\n",
+      "new": "   app inventory, network or installation activity is part of the selected authority.\n"
+    },
+    {
+      "original_first_line": 498,
+      "original_end_line_exclusive": 499,
+      "current_first_line": 508,
+      "current_end_line_exclusive": 509,
+      "old": "Current official [Task configuration](https://taskfile.dev/docs/reference/config) and\n",
+      "new": "The selected documentary [Task configuration](https://taskfile.dev/docs/reference/config) and\n"
+    },
+    {
+      "original_first_line": 510,
+      "original_end_line_exclusive": 511,
+      "current_first_line": 520,
+      "current_end_line_exclusive": 523,
+      "old": "extractor identity are semantic inputs under k275. Any other reporting read binds whole\n",
+      "new": "extractor identity are semantic inputs under the\n[normative extraction contract](application-reference-evidence.md#normative-extraction-and-field-concordance).\nAny other reporting read binds whole\n"
+    },
+    {
+      "original_first_line": 528,
+      "original_end_line_exclusive": 529,
+      "current_first_line": 540,
+      "current_end_line_exclusive": 541,
+      "old": "| `.loctable` | Canonical evidence requirements plus the [evidence contract's complete table/LocProvenance record obligations](application-reference-evidence.md#original-bytes-and-complete-typed-witnesses); underlying bytes use the applicable XML/binary/OpenStep basis above | Contract-defined authored tree/association expectations, not an Apple loctable grammar or claim about installed language-selection semantics. No independent public normative loctable grammar is established here. Actual parser acceptance/types of each pure representation must be observed; current installed tables/purposes remain k245 evidence. |\n",
+      "new": "| `.loctable` | Canonical evidence requirements plus the [evidence contract's complete table/LocProvenance record obligations](application-reference-evidence.md#original-bytes-and-complete-typed-witnesses); underlying bytes use the applicable XML/binary/OpenStep basis above | Contract-defined authored tree/association expectations, not an Apple loctable grammar or claim about installed language-selection semantics. This contract selects no independent public normative loctable grammar. Actual parser acceptance/types of each pure representation require independent originals; per-copy installed tables/purposes require acquisition-stage evidence and independent role classification. |\n"
+    },
+    {
+      "original_first_line": 558,
+      "original_end_line_exclusive": 560,
+      "current_first_line": 570,
+      "current_end_line_exclusive": 573,
+      "old": "K287 reconciles the complete contract/extract set, README/summary/view layers, authority/\nanchor terminology and these obligations before mandatory whole-k282 review/integration.\n",
+      "new": "Complete admission-design reconciliation covers the complete contract/extract set,\nREADME/summary/view layers, authority/anchor terminology and these obligations before\nmandatory whole-producer review and every earned integration.\n"
+    },
+    {
+      "original_first_line": 562,
+      "original_end_line_exclusive": 564,
+      "current_first_line": 575,
+      "current_end_line_exclusive": 578,
+      "old": "K269 consumes only the whole reviewed conjunction and assigns the following live owners\nand placements, without converting this design into implementation leaves:\n",
+      "new": "Construction planning consumes only the whole reviewed conjunction and assigns the\nfollowing live responsibilities and placements, without converting this design into\nimplementation leaves:\n"
+    },
+    {
+      "original_first_line": 576,
+      "original_end_line_exclusive": 578,
+      "current_first_line": 590,
+      "current_end_line_exclusive": 596,
+      "old": "An explicit owner survives any earlier leaf's retirement through k245 admission. A measured\nedit, newly observed dependency, changed accepted revision/runtime/receipt binding or\n",
+      "new": "Construction planning retains explicit live responsibility for affected requalification,\nindependent acceptance/audit, distinct instrument close and release through acquisition\nadmission, even after an earlier producer's retirement. Each actual trust act has its own\ndirect foreground appointment; only the acquisition ceremony requires the supervisor,\nchecker and child to coexist through true return. No process must survive between Grove\nsessions. A measured edit, newly observed dependency, changed accepted revision/runtime/receipt binding or\n"
+    },
+    {
+      "original_first_line": 589,
+      "original_end_line_exclusive": 592,
+      "current_first_line": 607,
+      "current_end_line_exclusive": 611,
+      "old": "P actual authority/build/UID/channel/export facts stay unavailable until their own evidence\nexists. A target outcomes are unperformed before the selected attempt, never its qualification\nor wiring calibration. Complete read/no-contact claims cannot follow from bounded observations.\n",
+      "new": "P actual authority/build/UID/channel/export facts require their own original qualified\nevidence before credit. A target outcomes are unperformed before the selected attempt,\nnever its qualification or wiring calibration. Complete read/no-contact claims cannot\nfollow from bounded observations.\n"
+    }
+  ],
+  "classification_limits": "Author classifications follow whole-source reading; exact fragments/context hashes locate each clause/list member/cell. Fine fragments are never independent permissions. Byte coverage is not semantic proof, original-object correspondence or instrument Q/P evidence. H reports only fixed documentary claims at the original immutable design snapshot; complete original basis objects remain independently required. Inventories/reports are unconsumed outputs, not section exceptions for this whole companion."
+}

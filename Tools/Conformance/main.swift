@@ -31,10 +31,12 @@ import KoineCore
 
 struct Options {
     var introspection: String?
-    var design = "docs/design/desktop-schema.graphql"
+    var design = "docs/design/desktop-schema-extension-host.graphql"
     var servedDigest: String?
     var sdlOut: String?
     var expectDifferences: Int?
+    var profile: String?
+    var providers: String?
 }
 
 func usage() -> Never {
@@ -47,7 +49,10 @@ func usage() -> Never {
 
         Options:
           --introspection <file>   the introspection response, as the server answered it
-          --design <file>          the design SDL (default docs/design/desktop-schema.graphql)
+          --design <file>          the design SDL (default docs/design/desktop-schema-extension-host.graphql)
+          --profile <file>         a conformance profile (docs/design/profiles/): its design SDL
+                                   replaces --design, and --providers is then required
+          --providers <file>       the koineManagement.providers response the profile pins
           --served-digest <hex>    Koine.schemaDigest read in the same session; checked
           --sdl-out <file>         write the canonical served SDL here
           --expect-differences <n> exit 0 only when exactly n differences are found
@@ -76,6 +81,8 @@ while let flag = arguments.first {
     switch flag {
     case "--introspection": options.introspection = value()
     case "--design": options.design = value()
+    case "--profile": options.profile = value()
+    case "--providers": options.providers = value()
     case "--served-digest": options.servedDigest = value()
     case "--sdl-out": options.sdlOut = value()
     case "--expect-differences":
@@ -90,6 +97,26 @@ while let flag = arguments.first {
 }
 
 guard let introspectionPath = options.introspection else { usage() }
+
+// A profile names the design SDL, so it is resolved before the design is read.
+var profile: ConformanceProfile?
+var servedProviders: [[String: String?]] = []
+if let path = options.profile {
+    guard let providersPath = options.providers else {
+        fail("--profile pins candidate versions, so it needs --providers <file>.")
+    }
+    do {
+        let loaded = try ConformanceProfile.load(from: URL(fileURLWithPath: path))
+        profile = loaded.profile
+        options.design = loaded.design.path
+        servedProviders = try ConformanceProfile.servedRows(
+            fromJSON: Data(contentsOf: URL(fileURLWithPath: providersPath)))
+    } catch {
+        fail("cannot read the profile \(path) or the providers \(providersPath): \(error)")
+    }
+} else if options.providers != nil {
+    fail("--providers is read against a profile; name one with --profile.")
+}
 
 let introspectionData: Data
 do {
@@ -165,6 +192,20 @@ if differences.isEmpty {
     for difference in differences { print(difference.report) }
 }
 
+// The candidates are pinned apart from the schema: an identical digest cannot
+// prove which binary ran.
+var profileProblems: [String] = []
+if let profile {
+    profileProblems = profile.problems(inServed: servedProviders)
+    print("")
+    if profileProblems.isEmpty {
+        print("The providers served match the profile \"\(profile.name)\": \(profile.providers.count) candidate(s), pinned.")
+    } else {
+        print("\(profileProblems.count) profile problem(s) for \"\(profile.name)\":")
+        for problem in profileProblems { print("  \(problem)") }
+    }
+}
+
 if let expected = options.expectDifferences {
     print("")
     guard differences.count == expected else {
@@ -177,9 +218,12 @@ if let expected = options.expectDifferences {
 }
 
 print("")
-if differences.isEmpty, digestAgrees {
-    print("CONFORMANT: the schema Koine serves is \(options.design).")
+if differences.isEmpty, digestAgrees, profileProblems.isEmpty {
+    print("CONFORMANT: the schema Koine serves is \(options.design)\(profile.map { ", as profile \"\($0.name)\"" } ?? "").")
     exit(0)
+}
+if differences.isEmpty, digestAgrees, !profileProblems.isEmpty {
+    print("NOT CONFORMANT: the schema is the design SDL, but the candidates served are not the profile's.")
 }
 // Order is the one difference only the digest can see, so say so rather than
 // letting a digest-only failure read as an unexplained one.

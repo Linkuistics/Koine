@@ -8,6 +8,20 @@ import {
   type ProcessIdentity,
 } from './adapter/process-identity.js';
 import {
+  interpretLaunch,
+  interpretOpenPath,
+  interpretOpenURL,
+  type WorkspaceOpenFacts,
+} from './adapter/workspace-open.js';
+import { interpretReveal, type WorkspaceRevealFacts } from './adapter/workspace-reveal.js';
+import {
+  askSuggestions,
+  DEFAULT_ENGINE_TEMPLATE,
+  fillTemplate,
+  splitTemplate,
+  type SuggestionReport,
+} from './adapter/search.js';
+import {
   GENERATED_AGAINST_CONTRACT_VERSION,
   GENERATED_AGAINST_SCHEMA_DIGEST,
   INTROSPECTION_QUERY,
@@ -16,10 +30,14 @@ import {
   DesktopChoicesDocument,
   FocusDesktopWindowDocument,
   InspectOwnConnectionDocument,
+  LaunchInstalledApplicationDocument,
+  OpenDocumentOrDirectoryDocument,
+  OpenSearchUrlDocument,
   PollOwnGrantRequestDocument,
   RequestDesktopGrantDocument,
+  RevealPathDocument,
 } from './generated/graphql.js';
-import { writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 
 type Json = Record<string, unknown>;
 
@@ -33,6 +51,14 @@ const USAGE = `koine-client <command> [options]
   choices    --secret <path> --application <name>
   choices    --secret <path> --pid <n> --started-at <instant>
   focus      --secret <path> --ref <reference>
+  launch     --secret <path> --bundle-identifier <id> [--application-path <absolute path>]
+  open-url   --secret <path> (--url <text> | --url-file <path>)
+  open-path  --secret <path> (--path <text> | --path-file <file>) [--bundle-identifier <id>] [--application-path <absolute path>]
+  reveal-path --secret <path> (--path <text> | --path-file <file>)
+  search     --secret <path> --query <text> [--engine-template <url with one %s>] [--suggestions-url <url with one %s>]
+
+Any --name value may also be written --name=value, which is the only way to give a
+value that itself begins with "--".
 `;
 
 interface Args {
@@ -50,14 +76,24 @@ function parseArgs(argv: readonly string[]): Args {
     if (flag === undefined || !flag.startsWith('--')) {
       throw new UsageError(`unexpected argument ${JSON.stringify(flag ?? '')}`);
     }
-    const value = argv[i + 1];
-    if (value === undefined || value.startsWith('--')) {
-      throw new UsageError(`option ${flag} needs a value`);
+    // `--name=value` carries its value in the same argument, so a value that begins
+    // with `--` (a query, a URL under test) can still be given.
+    const equals = flag.indexOf('=');
+    let name = flag;
+    let value: string | undefined;
+    if (equals > 2) {
+      name = flag.slice(0, equals);
+      value = flag.slice(equals + 1);
+    } else {
+      value = argv[i + 1];
+      if (value === undefined || value.startsWith('--')) {
+        throw new UsageError(`option ${flag} needs a value`);
+      }
+      i += 1;
     }
-    i += 1;
-    if (flag === '--capability') capabilities.push(value);
-    else if (single.has(flag.slice(2))) throw new UsageError(`option ${flag} given twice`);
-    else single.set(flag.slice(2), value);
+    if (name === '--capability') capabilities.push(value);
+    else if (single.has(name.slice(2))) throw new UsageError(`option ${name} given twice`);
+    else single.set(name.slice(2), value);
   }
   return { command, single, capabilities };
 }
@@ -396,6 +432,262 @@ async function commandFocus(args: Args): Promise<Json> {
   };
 }
 
+async function commandLaunch(args: Args): Promise<Json> {
+  const secretPath = require_(args, 'secret');
+  const bundleIdentifier = require_(args, 'bundle-identifier');
+  const applicationPath = args.single.get('application-path');
+  const credential = await loadOrCreateCredential(secretPath);
+
+  // Sent exactly once, whatever happens: a launch is not safe to repeat, and a
+  // lost answer is `unknown-outcome`. Values go in as literal variables; nothing
+  // is checked client-side, so an input the provider refuses is refused by the
+  // provider, at the original path, where this client can report it.
+  const application: Json = {
+    bundleIdentifier,
+    ...(applicationPath === undefined ? {} : { applicationPath }),
+  };
+  const result = await send({
+    document: LaunchInstalledApplicationDocument.toString(),
+    operationName: 'LaunchInstalledApplication',
+    kind: 'mutation',
+    secret: credential.secret,
+    variables: { application },
+  });
+
+  const facts = interpretLaunch(result);
+  return {
+    classification: facts.classification,
+    credential: credentialFacts(credential, secretPath),
+    application,
+    sentMs: result.sentMs,
+    receivedMs: result.receivedMs,
+    status: facts.status,
+    actionEffect: facts.actionEffect,
+    receipt: facts.receipt,
+    process: facts.process,
+    processState: facts.processState,
+    choicesArguments: facts.choicesArguments,
+    dependency: facts.dependency,
+    requiredCapability: facts.requiredCapability,
+    requiredCapabilities: facts.requiredCapabilities,
+    phase: facts.phase,
+    branchSuppressed: facts.branchSuppressed,
+    resultErrorPaths: facts.resultErrorPaths,
+    contractViolation: facts.contractViolation,
+    ...wire(result),
+    // After `wire`: the launch reading of "unknown" is stricter than the generic one.
+    outcomeUnknown: facts.outcomeUnknown,
+  };
+}
+
+/**
+ * The facts every `workspaceOpenURL` command prints. `url` is the exact text that
+ * went into the variable. Sent exactly once, whatever happens: a URL open is not
+ * safe to repeat, and a lost answer is `unknown-outcome`. Nothing is checked,
+ * trimmed, normalised or encoded here, so a URL the provider refuses (raw Unicode,
+ * whitespace, a backslash) is refused by the provider, at the original path, where
+ * this client can report it.
+ */
+async function openUrl(secretPath: string, credential: Credential, url: string): Promise<Json> {
+  const result = await send({
+    document: OpenSearchUrlDocument.toString(),
+    operationName: 'OpenSearchURL',
+    kind: 'mutation',
+    secret: credential.secret,
+    variables: { url },
+  });
+  const facts: WorkspaceOpenFacts = interpretOpenURL(result);
+  return {
+    classification: facts.classification,
+    credential: credentialFacts(credential, secretPath),
+    url,
+    sentMs: result.sentMs,
+    receivedMs: result.receivedMs,
+    status: facts.status,
+    actionEffect: facts.actionEffect,
+    receipt: facts.receipt,
+    process: facts.process,
+    processState: facts.processState,
+    choicesArguments: facts.choicesArguments,
+    dependency: facts.dependency,
+    requiredCapability: facts.requiredCapability,
+    requiredCapabilities: facts.requiredCapabilities,
+    phase: facts.phase,
+    branchSuppressed: facts.branchSuppressed,
+    resultErrorPaths: facts.resultErrorPaths,
+    contractViolation: facts.contractViolation,
+    ...wire(result),
+    // After `wire`: the workspace reading of "unknown" is stricter than the generic one.
+    outcomeUnknown: facts.outcomeUnknown,
+  };
+}
+
+/**
+ * A file's bytes as UTF-8 text, exactly: no trailing-newline stripping, no BOM
+ * removal, no trimming. Bytes that are not UTF-8 cannot be a GraphQL string, so they
+ * are a client error, not something to repair with U+FFFD.
+ */
+async function readExactUtf8(file: string): Promise<string> {
+  const bytes = await readFile(file);
+  try {
+    return new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(bytes);
+  } catch {
+    throw new Error(`${file} is not valid UTF-8; nothing was sent`);
+  }
+}
+
+async function commandOpenUrl(args: Args): Promise<Json> {
+  const secretPath = require_(args, 'secret');
+  const literal = args.single.get('url');
+  const file = args.single.get('url-file');
+  if (literal === undefined && file === undefined) throw new UsageError('--url or --url-file is required');
+  if (literal !== undefined && file !== undefined) throw new UsageError('--url and --url-file cannot be combined');
+
+  const url = literal !== undefined ? literal : await readExactUtf8(file as string);
+
+  const credential = await loadOrCreateCredential(secretPath);
+  return openUrl(secretPath, credential, url);
+}
+
+/**
+ * `workspaceOpenPath`, published as `OpenDocumentOrDirectory`. The path is the exact
+ * text given (a literal, or a file's bytes read as UTF-8 and nothing else). It is not
+ * checked, trimmed, expanded, resolved, encoded or made absolute here: the provider
+ * refuses what it refuses, at the root field's path, and this client reports that.
+ * `application` is left out of the variables for the default handler and is
+ * `{bundleIdentifier, applicationPath?}` when one is named. Sent exactly once,
+ * whatever happens: an open is not safe to repeat, and a lost answer is
+ * `unknown-outcome`.
+ */
+async function commandOpenPath(args: Args): Promise<Json> {
+  const secretPath = require_(args, 'secret');
+  const literal = args.single.get('path');
+  const file = args.single.get('path-file');
+  const bundleIdentifier = args.single.get('bundle-identifier');
+  const applicationPath = args.single.get('application-path');
+  if (literal === undefined && file === undefined) throw new UsageError('--path or --path-file is required');
+  if (literal !== undefined && file !== undefined) throw new UsageError('--path and --path-file cannot be combined');
+  // `WorkspaceApplicationInput.bundleIdentifier` is `String!`: there is no way to say
+  // "this copy, whatever its identifier", so a path constraint alone has no wire form.
+  if (applicationPath !== undefined && bundleIdentifier === undefined) {
+    throw new UsageError('--application-path needs --bundle-identifier (the input type requires an identifier)');
+  }
+
+  const path = literal !== undefined ? literal : await readExactUtf8(file as string);
+  const application: Json | null =
+    bundleIdentifier === undefined
+      ? null
+      : { bundleIdentifier, ...(applicationPath === undefined ? {} : { applicationPath }) };
+  const credential = await loadOrCreateCredential(secretPath);
+
+  const result = await send({
+    document: OpenDocumentOrDirectoryDocument.toString(),
+    operationName: 'OpenDocumentOrDirectory',
+    kind: 'mutation',
+    secret: credential.secret,
+    variables: application === null ? { path } : { path, application },
+  });
+  const facts: WorkspaceOpenFacts = interpretOpenPath(result);
+  return {
+    classification: facts.classification,
+    credential: credentialFacts(credential, secretPath),
+    path,
+    application,
+    sentMs: result.sentMs,
+    receivedMs: result.receivedMs,
+    status: facts.status,
+    actionEffect: facts.actionEffect,
+    receipt: facts.receipt,
+    process: facts.process,
+    processState: facts.processState,
+    choicesArguments: facts.choicesArguments,
+    dependency: facts.dependency,
+    requiredCapability: facts.requiredCapability,
+    requiredCapabilities: facts.requiredCapabilities,
+    phase: facts.phase,
+    branchSuppressed: facts.branchSuppressed,
+    resultErrorPaths: facts.resultErrorPaths,
+    contractViolation: facts.contractViolation,
+    ...wire(result),
+    // After `wire`: the workspace reading of "unknown" is stricter than the generic one.
+    outcomeUnknown: facts.outcomeUnknown,
+  };
+}
+
+/**
+ * `workspaceRevealPath`, published as `RevealPath`. The path is the exact text given, as for
+ * `open-path`: not checked, trimmed, expanded, resolved or made absolute here. There is no
+ * application argument and no process in the receipt, which is `{ path }`. Sent exactly once,
+ * whatever happens: a reveal is not safe to repeat, and a lost answer is `unknown-outcome`.
+ * The answer carries `selectionObserved: false` always, because Finder's acknowledgment is the
+ * whole of what the contract offers.
+ */
+async function commandRevealPath(args: Args): Promise<Json> {
+  const secretPath = require_(args, 'secret');
+  const literal = args.single.get('path');
+  const file = args.single.get('path-file');
+  if (literal === undefined && file === undefined) throw new UsageError('--path or --path-file is required');
+  if (literal !== undefined && file !== undefined) throw new UsageError('--path and --path-file cannot be combined');
+
+  const path = literal !== undefined ? literal : await readExactUtf8(file as string);
+  const credential = await loadOrCreateCredential(secretPath);
+
+  const result = await send({
+    document: RevealPathDocument.toString(),
+    operationName: 'RevealPath',
+    kind: 'mutation',
+    secret: credential.secret,
+    variables: { path },
+  });
+  const facts: WorkspaceRevealFacts = interpretReveal(result);
+  return {
+    classification: facts.classification,
+    credential: credentialFacts(credential, secretPath),
+    path,
+    sentMs: result.sentMs,
+    receivedMs: result.receivedMs,
+    status: facts.status,
+    actionEffect: facts.actionEffect,
+    receipt: facts.receipt,
+    selectionObserved: facts.selectionObserved,
+    dependency: facts.dependency,
+    requiredCapability: facts.requiredCapability,
+    requiredCapabilities: facts.requiredCapabilities,
+    phase: facts.phase,
+    branchSuppressed: facts.branchSuppressed,
+    resultErrorPaths: facts.resultErrorPaths,
+    contractViolation: facts.contractViolation,
+    ...wire(result),
+    // After `wire`: the workspace reading of "unknown" is stricter than the generic one.
+    outcomeUnknown: facts.outcomeUnknown,
+  };
+}
+
+async function commandSearch(args: Args): Promise<Json> {
+  const secretPath = require_(args, 'secret');
+  const query = require_(args, 'query');
+  const engineTemplate = args.single.get('engine-template') ?? DEFAULT_ENGINE_TEMPLATE;
+  const suggestionsUrl = args.single.get('suggestions-url');
+  const engineParts = splitTemplate(engineTemplate);
+  if (typeof engineParts === 'string') throw new UsageError(`--engine-template is unusable: ${engineParts}`);
+  if (suggestionsUrl !== undefined) {
+    const parts = splitTemplate(suggestionsUrl);
+    if (typeof parts === 'string') throw new UsageError(`--suggestions-url is unusable: ${parts}`);
+  }
+  const credential = await loadOrCreateCredential(secretPath);
+
+  // (a) Ask the suggestion source, if one was given. It is never fatal and never
+  // decides anything: this command has no chooser, so whatever it answers or fails
+  // to answer, (b) the typed query is what is opened. The search engine itself is
+  // never contacted from here: the template is only text that goes to Koine.
+  const suggestions: SuggestionReport = await askSuggestions(suggestionsUrl, query);
+
+  // (b) The typed-query URL, then exactly one open.
+  const urlBuilt = fillTemplate(engineTemplate, query);
+  const opened = await openUrl(secretPath, credential, urlBuilt);
+  return { ...opened, search: { query, engineTemplate, urlBuilt, suggestions } };
+}
+
 function redact(payload: Json, secrets: readonly string[]): string {
   let text = JSON.stringify(payload);
   for (const secret of secrets) {
@@ -446,6 +738,21 @@ async function main(): Promise<void> {
         break;
       case 'focus':
         payload = await commandFocus(args);
+        break;
+      case 'launch':
+        payload = await commandLaunch(args);
+        break;
+      case 'open-url':
+        payload = await commandOpenUrl(args);
+        break;
+      case 'open-path':
+        payload = await commandOpenPath(args);
+        break;
+      case 'reveal-path':
+        payload = await commandRevealPath(args);
+        break;
+      case 'search':
+        payload = await commandSearch(args);
         break;
       default:
         throw new UsageError(`unknown command ${JSON.stringify(command)}`);

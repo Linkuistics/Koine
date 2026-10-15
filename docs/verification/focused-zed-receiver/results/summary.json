@@ -1,0 +1,89 @@
+{
+  "version": "k155-1",
+  "complete": true,
+  "builds": 2,
+  "collections": 1,
+  "repairs": 0,
+  "attemptedRequests": 2,
+  "requests": [
+    {
+      "bytes": 900,
+      "receiver": "supervisor-confirmed fresh exact target marker",
+      "receipt": {
+        "callbackExecutable": "/Applications/Zed.app/Contents/MacOS/zed",
+        "exact": true,
+        "startMicros": 555987,
+        "startSeconds": 1791266596,
+        "freshLookupEqualsRetained": true,
+        "liveIdentity": {
+          "inode": 221258,
+          "device": 16777230,
+          "mode": 33261
+        },
+        "selectedIdentity": {
+          "inode": 221258,
+          "device": 16777230,
+          "mode": 33261
+        },
+        "event": "receipt",
+        "pathErrno": 0,
+        "selectedExecutable": "/Applications/Zed.app/Contents/MacOS/zed",
+        "liveExecutable": "/Applications/Zed.app/Contents/MacOS/zed",
+        "stable": true,
+        "retainedAlive": true,
+        "pid": 766,
+        "callbackIdentity": {
+          "inode": 221258,
+          "device": 16777230,
+          "mode": 33261
+        },
+        "pathResult": 40,
+        "nativeIdentityEqual": true
+      },
+      "restrictedChoice": true,
+      "delivery": "opaque"
+    },
+    {
+      "bytes": 1500,
+      "receiver": "supervisor-confirmed fresh exact target marker",
+      "receipt": {
+        "callbackExecutable": "/Applications/Zed.app/Contents/MacOS/zed",
+        "exact": true,
+        "startMicros": 993023,
+        "startSeconds": 1791266657,
+        "freshLookupEqualsRetained": true,
+        "liveIdentity": {
+          "inode": 221258,
+          "device": 16777230,
+          "mode": 33261
+        },
+        "selectedIdentity": {
+          "inode": 221258,
+          "device": 16777230,
+          "mode": 33261
+        },
+        "event": "receipt",
+        "pathErrno": 0,
+        "selectedExecutable": "/Applications/Zed.app/Contents/MacOS/zed",
+        "liveExecutable": "/Applications/Zed.app/Contents/MacOS/zed",
+        "stable": true,
+        "retainedAlive": true,
+        "pid": 915,
+        "callbackIdentity": {
+          "inode": 221258,
+          "device": 16777230,
+          "mode": 33261
+        },
+        "pathResult": 40,
+        "nativeIdentityEqual": true
+      },
+      "restrictedChoice": true,
+      "delivery": "opaque"
+    }
+  ],
+  "remaining": [],
+  "teardownExit": 0,
+  "elapsedSeconds": 152.15,
+  "withinAggregateCap": true,
+  "subjectsUnchanged": true
+}

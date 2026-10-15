@@ -1,0 +1,163 @@
+{
+ "complete": true,
+ "calls": [
+  {
+   "name": "submit-LSOpenItemsWithRole-900",
+   "size": 900,
+   "api": "LSOpenItemsWithRole",
+   "state": "done",
+   "status": 0,
+   "seconds": 0.0342940092086792,
+   "firstFailedStage": null,
+   "reader": {
+    "expectedBytes": 900,
+    "observedItems": [
+     {
+      "seq": 1,
+      "via": "coerced-file-url",
+      "itemType": "bmrk",
+      "rawBytes": 2848,
+      "urlBytes": 907,
+      "decodedBytes": 900,
+      "exact": true,
+      "isDecoy": false,
+      "resolveError": null
+     }
+    ],
+    "odocEvents": 1,
+    "verdict": "exact-delivery"
+   },
+   "recorderEvents": [
+    "launched",
+    "aevt/odoc"
+   ]
+  },
+  {
+   "name": "submit-LSOpenFromRefSpec-900",
+   "size": 900,
+   "api": "LSOpenFromRefSpec",
+   "state": "done",
+   "status": 0,
+   "seconds": 0.026988983154296875,
+   "firstFailedStage": null,
+   "reader": {
+    "expectedBytes": 900,
+    "observedItems": [
+     {
+      "seq": 1,
+      "via": "coerced-file-url",
+      "itemType": "bmrk",
+      "rawBytes": 2848,
+      "urlBytes": 907,
+      "decodedBytes": 900,
+      "exact": true,
+      "isDecoy": false,
+      "resolveError": null
+     }
+    ],
+    "odocEvents": 1,
+    "verdict": "exact-delivery"
+   },
+   "recorderEvents": [
+    "launched",
+    "aevt/odoc"
+   ]
+  },
+  {
+   "name": "submit-LSOpenItemsWithRole-1023",
+   "size": 1023,
+   "api": "LSOpenItemsWithRole",
+   "state": "done",
+   "status": 0,
+   "seconds": 0.025771021842956543,
+   "firstFailedStage": null,
+   "reader": {
+    "expectedBytes": 1023,
+    "observedItems": [
+     {
+      "seq": 1,
+      "via": "bookmark-stored-path",
+      "itemType": "bmrk",
+      "rawBytes": 3128,
+      "urlBytes": null,
+      "decodedBytes": 1023,
+      "exact": true,
+      "isDecoy": false,
+      "resolveError": null
+     }
+    ],
+    "odocEvents": 1,
+    "verdict": "exact-delivery"
+   },
+   "recorderEvents": [
+    "launched",
+    "aevt/odoc"
+   ]
+  },
+  {
+   "name": "submit-LSOpenFromRefSpec-1023",
+   "size": 1023,
+   "api": "LSOpenFromRefSpec",
+   "state": "done",
+   "status": 0,
+   "seconds": 0.02783501148223877,
+   "firstFailedStage": null,
+   "reader": {
+    "expectedBytes": 1023,
+    "observedItems": [
+     {
+      "seq": 1,
+      "via": "bookmark-stored-path",
+      "itemType": "bmrk",
+      "rawBytes": 3128,
+      "urlBytes": null,
+      "decodedBytes": 1023,
+      "exact": true,
+      "isDecoy": false,
+      "resolveError": null
+     }
+    ],
+    "odocEvents": 1,
+    "verdict": "exact-delivery"
+   },
+   "recorderEvents": [
+    "launched",
+    "aevt/odoc"
+   ]
+  },
+  {
+   "name": "submit-LSOpenItemsWithRole-1024",
+   "size": 1024,
+   "api": "LSOpenItemsWithRole",
+   "state": "done",
+   "status": -41,
+   "seconds": 2.205371856689453e-05,
+   "firstFailedStage": null,
+   "reader": {
+    "expectedBytes": 1024,
+    "observedItems": [],
+    "odocEvents": 0,
+    "verdict": "no-delivery-observed"
+   },
+   "recorderEvents": []
+  },
+  {
+   "name": "submit-LSOpenFromRefSpec-1024",
+   "size": 1024,
+   "api": "LSOpenFromRefSpec",
+   "state": "done",
+   "status": -41,
+   "seconds": 5.4001808166503906e-05,
+   "firstFailedStage": null,
+   "reader": {
+    "expectedBytes": 1024,
+    "observedItems": [],
+    "odocEvents": 0,
+    "verdict": "no-delivery-observed"
+   },
+   "recorderEvents": []
+  }
+ ],
+ "controlsOk": true,
+ "elapsedSeconds": 92.6
+}

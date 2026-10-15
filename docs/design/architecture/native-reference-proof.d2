@@ -1,0 +1,78 @@
+# K350 open-bracket selection; k351 reviewed, k352 integrated; k353/k354 precede k269.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+Entry: {
+  label: "Checkpoint entry · E0–E5"
+  direction: down
+  Start: "Start here · Source / OS original\nReady independent controls\nEach CP01–CP05" {class: start}
+  Prelude: "Source-trusted prelude\nInitial: supplied member plan\nLater: locked closed-chain reads"
+  Select: "Current accepted anchor\nValidation + absent-next facts\nNo old-anchor fallback"
+  Gate: "Compare actual holder copy\nFull original / runtime members\nBefore holder launch"
+  Image: "Spawn with plan withheld\nIndependent current peer / image\nThen release exact plan"
+  Start -> Prelude: "1 · finite trust root"
+  Prelude -> Select: "2 · later checkpoints"
+  Select -> Gate: "3 · exact originals"
+  Prelude -> Gate: "initial CP01 plan only"
+  Gate -> Image: "4 · checked copy"
+}
+Compare: {
+  label: "Held comparison · E6–E8"
+  direction: down
+  Holder: "Holder opens anchored no-follow pairs\nEntry · engine · display · registrar\nRecorders · receiver · validator\nEach checked before its first run"
+  Pairs: "Serial children · fd 3 / 4\nEntry plan 5 / result 6\nCmp: no application frame"
+  Join: "Each spawn: image then input\nComplete bytes / EOF / zero reap\nReset offsets; exact generation"
+  Seal: "ENTRY_SEAL\nExact member / direction vector\nNo paths or authority fds"
+  Holder -> Pairs: "5 · full frozen set"
+  Pairs -> Join: "6 · every direction"
+  Join -> Seal: "7 · all pair results"
+}
+Consume: {
+  label: "Consumer gates · E9–E12"
+  direction: down
+  Ready: "CP01: render then accept\nLater: acknowledged continuity\nThen gated engine / consumer"
+  Transition: "CP05: reverse exclusive release\nShared release then register\nSame peers / endpoint"
+  Recheck: "Full post-gap revalidation\nExact CP05 successors + inputs\nBefore Task; fresh P before intent"
+  Return: "Retain through foreground return\nEvery descendant's actual reap\nFinal unchanged-input freeze"
+  Ready -> Transition: "8 · CP05 publication complete"
+  Transition -> Recheck: "9 · no atomic conversion"
+  Recheck -> Return: "10 · actual reached suffix"
+  Ready -> Return: "other checkpoints"
+}
+Unavailable: "Refuse before affected consumer\nRoot / anchor loss: CP01 re-entry\nOther failed tail: recovery context only\nNo history / authority inferred"
+Between: {
+  label: "Inter-checkpoint entry · E1i · selected by Antony (k348)"
+  direction: down
+  Invoke: "Disarm · distinct close · revalidation\nOperator, never Antony\nExclusive leases; refuse during LIVE"
+  Mech: "E1i · same literal source / OS method\nMechanical identity check only\nNo trust judgment"
+  Order: "Same prelude · no E3b\nE3.1 traverse · E3.2 partition\nE3.4 anchor: anchors and\nbootstrap validation only"
+  Open: "Earlier batches: BRACKET_OPEN\nStructural · no root compare\nDisarm after any · revalidation\nafter disarms · close only first"
+  Batch: "U0–U7 batch binds E8 and\nthe identity observation\nOutput stays provisional"
+  Invoke -> Mech: "a · literal original"
+  Mech -> Order: "b · identity matches"
+  Order -> Open: "c · fixed order"
+  Open -> Batch: "d · admitted kind"
+}
+Bracket: {
+  label: "Next checkpoint · E3b (k350)"
+  direction: down
+  Base: "Bracket record\nBase checkpoint batch's\npublication.intent: E1\nidentities + classifications"
+  Verify: "E3.3 root vs base and\nevery batch's observation\nE3.5 each batch in order\nagainst the E3.4 anchor"
+  Cut: "First failure + every later batch\n= one cut · one host:\nearliest kind host\nHost act, then carrier prefix\nfor both tails"
+  Base -> Verify: "f · compare"
+  Verify -> Cut: "g · failure"
+}
+Remaining: "k331 closed by k344 · k332 reviewed · k349 integrated\nk350 open-bracket selection specified\nk351 reviewed · k352 integrated\nk353 batch association · k354 → k269\nAccidental wrong run: liveness cost only\nActual originals / controls absent"
+Entry.Image -> Compare.Holder: "plan / image gate"
+Compare.Seal -> Consume.Ready: "complete comparison"
+Entry.Select -> Unavailable: "chain / absence failure"
+Entry.Image -> Unavailable: "copy / image gap"
+Compare.Join -> Unavailable: "fd / offset / return failure"
+Consume.Recheck -> Unavailable: "gap mutation / lease / peer loss"
+Consume.Return -> Remaining: "documentary boundary only"
+Entry.Start -> Between.Invoke: "base batch opens bracket"
+Between.Batch -> Bracket.Verify: "e · verify before trust use"
+Bracket.Cut -> Unavailable: "root break: CP01 · else one host"
+Bracket.Verify -> Remaining: "documentary boundary only"
+Bracket.Verify -> Consume.Ready: "h · all verified: kind consumer"

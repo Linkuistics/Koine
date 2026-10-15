@@ -1,0 +1,18 @@
+# Control flow, not a state machine or model-checking result.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+Admit: "Start here · Admitted action\nworkspace + desktop control" {class: start}
+Inspect: "Validate input; resolve, then inspect prerequisites\nAbsence only from Koine's own resolution\nv1: spelling of 1,024+ bytes (NUL not counted) is failed"
+Missing: "DEPENDENCY_UNAVAILABLE\nNo request submitted by this action"
+Refuse: "Input / permission / failed\nPreserve the actual cause"
+Submit: "Submit one native request\nActivation requested; 3 s acknowledgment wait"
+Accepted: "AVAILABLE + receipt\nNative acknowledgment, not verified UI\nPublication errors may suppress fields"
+Failed: "failed / unknown transport outcome\nEffects may have begun; do not replay"
+Admit -> Inspect: "1"
+Inspect -> Missing: "2 · known missing prerequisite"
+Inspect -> Refuse: "2 · invalid / denied / uncertain"
+Inspect -> Submit: "2 · ready"
+Submit -> Accepted: "3 · acknowledged within wait"
+Submit -> Failed: "3 · error / wait expiry / cancellation\nor earlier core deadline"

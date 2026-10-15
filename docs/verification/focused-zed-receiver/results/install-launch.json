@@ -1,0 +1,9 @@
+{
+  "command": "(ditto -x -k /tmp/k155.zip /tmp/k155-bundle; ditto -x -k /tmp/k155-zed.zip /Applications; mkdir -p /Users/admin/k155; /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -f /Applications/Zed.app) >/tmp/k149-cmd-1.out 2>/tmp/k149-cmd-1.err; echo $? >/tmp/k149-cmd-1.tmp; mv /tmp/k149-cmd-1.tmp /tmp/k149-cmd-1.code",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "",
+  "timed_out": false
+}

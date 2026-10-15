@@ -30,10 +30,12 @@ PROVIDER_FRAMEWORK="$(scripts/stage-provider-framework.sh release)"
 rm -rf "${APP_BUNDLE}"
 mkdir -p "${APP_BUNDLE}/Contents/MacOS" "${APP_BUNDLE}/Contents/Resources" \
     "${APP_BUNDLE}/Contents/Frameworks" "${APP_BUNDLE}/Contents/PlugIns"
-# Contents/PlugIns is the in-application provider root. The desktop provider is
+# Contents/PlugIns is the in-application provider root. Each bundled provider is
 # built by its own build definition against the staged framework's interface,
 # placed here, and signed before the bundle that seals it.
-Providers/DesktopProvider/build.sh "$(dirname "${PROVIDER_FRAMEWORK}")" "${APP_BUNDLE}/Contents/PlugIns" >/dev/null
+for provider in DesktopProvider WorkspaceProvider; do
+    Providers/${provider}/build.sh "$(dirname "${PROVIDER_FRAMEWORK}")" "${APP_BUNDLE}/Contents/PlugIns" >/dev/null
+done
 cp "${BIN_DIR}/KoineApp" "${APP_BUNDLE}/Contents/MacOS/${APP_NAME}"
 # The one framework image the host and every provider link. Its module
 # interface is for building providers, not for the shipped application.
@@ -52,6 +54,10 @@ otool -l "${EXECUTABLE}" | awk '/LC_RPATH/ { getline; getline; print $2 }' | whi
 done
 install_name_tool -add_rpath "@executable_path/../Frameworks" "${EXECUTABLE}"
 cp App/Info.plist "${APP_BUNDLE}/Contents/Info.plist"
+# The sealed provider catalogue: the identities Koine reserves, and for each
+# enabled one the bundle, versions and signing identifier `task
+# check:provider-catalogue` holds to the signed bundle it designates.
+cp App/ProviderCatalogue.json "${APP_BUNDLE}/Contents/Resources/ProviderCatalogue.json"
 
 if [ "$(plist_string CFBundleIdentifier "${APP_BUNDLE}/Contents/Info.plist")" != "${BUNDLE_ID}" ]; then
     echo "Error: App/Info.plist CFBundleIdentifier is not ${BUNDLE_ID} (scripts/signing-env.sh)." >&2

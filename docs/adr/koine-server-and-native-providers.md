@@ -9,8 +9,10 @@ types and operations to that schema. ModalAnyware is a client; no Koine
 provider lives in ModalAnyware.
 
 Providers are authored in Swift and have a stable binary interface
-so compatible plugin and server releases can be upgraded independently,
-without rebuilding the other side. Native Swift dylibs use a
+so compatible plugin and server releases can be upgraded independently where
+the host's loading policy supports that identity. Replacing a shipped identity
+requires the extension's [first-party selection policy](first-party-provider-selection.md);
+the served baseline still refuses external desktop replacement. Native Swift dylibs use a
 [shared resilient provider framework](resilient-provider-framework.md), whose
 published Swift contract is evolved compatibly across supported versions.
 There is no required TypeScript wrapper or assumed PluginAnyware dependency.
@@ -37,8 +39,17 @@ depends on a working server. Independent native upgrades also require an
 explicit compatibility and loading policy; they give up the simplicity of
 rebuilding all extensions together.
 
-Koine provides the desktop path ModalAnyware needs. Broader discovery and an
-LLM skill set are out of scope.
+Koine provides the desktop path and the agreed native workflow support
+ModalAnyware needs. Installed-application search, file search, launch/activate,
+file and URL opening, reveal, and bounded prerequisite discovery/explicit setup
+are in scope, as specified in [workflow providers](../specs/workflow-providers.md).
+These reusable operations do not move client key maps, choosers, labels,
+confirmation, MRU ordering or settings lifecycle into the server. Broader
+installation/configuration discovery, a public arbitrary-shell-execution operation
+and an LLM skill set remain out of scope. The
+[provider authority decision](provider-authority-follows-effects.md) keeps
+application input, menu invocation and desktop-window focus independently
+grantable while assigning mixed effects their complete authority.
 
 One resident process preserves desktop observation and a single OS-permission
 owner without a privileged UI-to-service bootstrap connection. It also makes
@@ -46,7 +57,7 @@ native UI and providers share the server's failure domain; independently
 restarting the management UI requires a different process design.
 
 One loader means the product itself exercises the native seam on every launch,
-and a first-party provider can be upgraded without the host. The cost is that
+and selection-aware hosts can admit independent first-party updates. The cost is that
 the desktop path depends on the loader, run path and signing being right in the
 signed build.
 

@@ -1,0 +1,46 @@
+{"event": "preflight", "utcEpoch": 1791348117.905498, "elapsed": 9.16, "stdinIsTTY": true, "stdoutIsTTY": true, "ttyName": "/dev/ttys000", "term": "xterm-256color", "prompt": "TRANSPORT CHECK: reply PREFLIGHT-64402290378fea05 within 60 seconds; no guest allocated.", "token": "PREFLIGHT-64402290378fea05", "received": "PREFLIGHT-64402290378fea05", "elapsedSeconds": 9.15971462498419, "success": true}
+{"event": "clone-start-request", "utcEpoch": 1791348117.9056242, "elapsed": 0.0, "base": "koine-launchers-prepared"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791348133.907493, "elapsed": 16.0, "name": "preparation", "choices": ["READY", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791348147.375278, "elapsed": 29.47, "name": "preparation", "answer": "READY"}
+{"event": "helper-completed", "utcEpoch": 1791348147.938844, "elapsed": 30.03, "name": "fixture-900", "mode": "fixture"}
+{"event": "helper-completed", "utcEpoch": 1791348147.975944, "elapsed": 30.07, "name": "fixture-1500", "mode": "fixture"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791348148.118578, "elapsed": 30.21, "name": "before-original-900", "choices": ["READY", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791348157.602527, "elapsed": 39.7, "name": "before-original-900", "answer": "READY"}
+{"event": "helper-completed", "utcEpoch": 1791348157.9047801, "elapsed": 40.0, "name": "original-900", "mode": "original"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791348158.059114, "elapsed": 40.15, "name": "after-original-900", "choices": ["READY", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791348166.933185, "elapsed": 49.03, "name": "after-original-900", "answer": "READY"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791348167.066632, "elapsed": 49.16, "name": "before-bare-900", "choices": ["READY", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791348175.9284549, "elapsed": 58.02, "name": "before-bare-900", "answer": "READY"}
+{"event": "helper-completed", "utcEpoch": 1791348176.2272708, "elapsed": 58.32, "name": "bare-900", "mode": "bare"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791348176.36071, "elapsed": 58.45, "name": "after-bare-900", "choices": ["READY", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791348185.083905, "elapsed": 67.18, "name": "after-bare-900", "answer": "READY"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791348185.211114, "elapsed": 67.3, "name": "before-original-1500", "choices": ["READY", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791348194.254675, "elapsed": 76.35, "name": "before-original-1500", "answer": "READY"}
+{"event": "helper-completed", "utcEpoch": 1791348194.555338, "elapsed": 76.65, "name": "original-1500", "mode": "original"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791348194.681343, "elapsed": 76.78, "name": "after-original-1500", "choices": ["READY", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791348204.063061, "elapsed": 86.16, "name": "after-original-1500", "answer": "READY"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791348204.207267, "elapsed": 86.3, "name": "before-bare-1500", "choices": ["READY", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791348213.869202, "elapsed": 95.96, "name": "before-bare-1500", "answer": "READY"}
+{"event": "helper-completed", "utcEpoch": 1791348214.188538, "elapsed": 96.28, "name": "bare-1500", "mode": "bare"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791348214.3213198, "elapsed": 96.42, "name": "after-bare-1500", "choices": ["READY", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791348223.367598, "elapsed": 105.46, "name": "after-bare-1500", "answer": "READY"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791348223.493091, "elapsed": 105.59, "name": "before-parent-public-900", "choices": ["READY", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791348232.763602, "elapsed": 114.86, "name": "before-parent-public-900", "answer": "READY"}
+{"event": "helper-completed", "utcEpoch": 1791348233.073107, "elapsed": 115.17, "name": "parent-public-900", "mode": "parent-public"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791348233.1978319, "elapsed": 115.29, "name": "after-parent-public-900", "choices": ["READY", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791348241.934178, "elapsed": 124.03, "name": "after-parent-public-900", "answer": "READY"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791348242.070813, "elapsed": 124.17, "name": "before-parent-bare-900", "choices": ["READY", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791348251.653853, "elapsed": 133.75, "name": "before-parent-bare-900", "answer": "READY"}
+{"event": "helper-completed", "utcEpoch": 1791348251.9575438, "elapsed": 134.05, "name": "parent-bare-900", "mode": "parent-bare"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791348252.0846589, "elapsed": 134.18, "name": "after-parent-bare-900", "choices": ["READY", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791348261.3951738, "elapsed": 143.49, "name": "after-parent-bare-900", "answer": "READY"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791348261.5277839, "elapsed": 143.62, "name": "before-parent-public-1500", "choices": ["READY", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791348270.924644, "elapsed": 153.02, "name": "before-parent-public-1500", "answer": "READY"}
+{"event": "helper-completed", "utcEpoch": 1791348271.22106, "elapsed": 153.32, "name": "parent-public-1500", "mode": "parent-public"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791348271.3604648, "elapsed": 153.46, "name": "after-parent-public-1500", "choices": ["READY", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791348280.539936, "elapsed": 162.63, "name": "after-parent-public-1500", "answer": "READY"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791348280.665827, "elapsed": 162.76, "name": "before-parent-bare-1500", "choices": ["READY", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791348290.406369, "elapsed": 172.5, "name": "before-parent-bare-1500", "answer": "READY"}
+{"event": "helper-completed", "utcEpoch": 1791348290.442646, "elapsed": 172.54, "name": "parent-bare-1500", "mode": "parent-bare"}
+{"event": "supervisor-checkpoint", "utcEpoch": 1791348290.566682, "elapsed": 172.66, "name": "after-parent-bare-1500", "choices": ["READY", "STOP"]}
+{"event": "supervisor-response", "utcEpoch": 1791348300.361116, "elapsed": 182.46, "name": "after-parent-bare-1500", "answer": "READY"}

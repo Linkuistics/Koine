@@ -1,0 +1,2716 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "windows": [
+    {
+      "appName": "TextEdit",
+      "elements": [
+        {
+          "actions": [],
+          "childCount": 0,
+          "children": [],
+          "description": "image",
+          "enabled": true,
+          "focused": false,
+          "id": "_NS:35",
+          "label": "TextEdit critical alert",
+          "platformRole": "AXImage",
+          "positionX": 849.0,
+          "positionY": 240.0,
+          "role": "image",
+          "sizeHeight": 66.0,
+          "sizeWidth": 66.0
+        },
+        {
+          "actions": [
+            "AXShowMenu"
+          ],
+          "childCount": 0,
+          "children": [],
+          "description": "text",
+          "enabled": true,
+          "focused": false,
+          "id": "_NS:74",
+          "platformRole": "AXStaticText",
+          "positionX": 851.0,
+          "positionY": 320.0,
+          "role": "text",
+          "sizeHeight": 50.0,
+          "sizeWidth": 218.0,
+          "value": "The document “target-file-1500.txt” could not be opened. "
+        },
+        {
+          "actions": [
+            "AXShowMenu"
+          ],
+          "childCount": 0,
+          "children": [],
+          "description": "text",
+          "enabled": true,
+          "focused": false,
+          "id": "_NS:58",
+          "platformRole": "AXStaticText",
+          "positionX": 851.0,
+          "positionY": 240.0,
+          "role": "text",
+          "sizeHeight": 18.0,
+          "sizeWidth": 2.0,
+          "value": ""
+        },
+        {
+          "actions": [
+            "AXPress"
+          ],
+          "childCount": 0,
+          "children": [],
+          "description": "button",
+          "enabled": true,
+          "focused": false,
+          "id": "_NS:8",
+          "label": "OK",
+          "platformRole": "AXButton",
+          "positionX": 845.0,
+          "positionY": 384.0,
+          "role": "button",
+          "sizeHeight": 30.0,
+          "sizeWidth": 230.0
+        }
+      ],
+      "focused": false,
+      "positionX": 830.0,
+      "positionY": 221.0,
+      "sizeHeight": 208.0,
+      "sizeWidth": 260.0,
+      "title": "alert",
+      "windowType": "dialog"
+    },
+    {
+      "appName": "Notification Center",
+      "elements": [
+        {
+          "actions": [],
+          "childCount": 1,
+          "children": [
+            {
+              "actions": [
+                "AXShowMenu"
+              ],
+              "childCount": 2,
+              "children": [
+                {
+                  "actions": [],
+                  "childCount": 0,
+                  "description": "image",
+                  "enabled": true,
+                  "focused": false,
+                  "label": "ContentUnavailablePhotosIcon",
+                  "platformRole": "AXImage",
+                  "positionX": 156.0,
+                  "positionY": 261.0,
+                  "role": "image",
+                  "sizeHeight": 64.0,
+                  "sizeWidth": 64.0
+                },
+                {
+                  "actions": [],
+                  "childCount": 0,
+                  "description": "text",
+                  "enabled": true,
+                  "focused": false,
+                  "platformRole": "AXStaticText",
+                  "positionX": 83.0,
+                  "positionY": 329.0,
+                  "role": "text",
+                  "sizeHeight": 26.0,
+                  "sizeWidth": 211.0,
+                  "value": "Photos will appear here when they are finished processing"
+                }
+              ],
+              "description": "widget",
+              "enabled": true,
+              "focused": false,
+              "id": "widget-local:com.apple.Photos:com.apple.Photos.PhotosReliveWidget:com.apple.Photos.PhotosReliveWidget",
+              "label": "Photos",
+              "platformRole": "AXGroup",
+              "positionX": 16.0,
+              "positionY": 226.0,
+              "role": "group",
+              "sizeHeight": 164.0,
+              "sizeWidth": 344.0
+            }
+          ],
+          "description": "group",
+          "enabled": false,
+          "focused": false,
+          "platformRole": "AXGroup",
+          "positionX": 8.0,
+          "positionY": 218.0,
+          "role": "group",
+          "sizeHeight": 180.0,
+          "sizeWidth": 360.0
+        }
+      ],
+      "focused": false,
+      "positionX": 8.0,
+      "positionY": 218.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 360.0,
+      "title": "Featured",
+      "windowType": "standard"
+    },
+    {
+      "appName": "Notification Center",
+      "elements": [
+        {
+          "actions": [],
+          "childCount": 1,
+          "children": [
+            {
+              "actions": [
+                "AXShowMenu"
+              ],
+              "childCount": 4,
+              "children": [
+                {
+                  "actions": [],
+                  "childCount": 0,
+                  "description": "text",
+                  "enabled": true,
+                  "focused": false,
+                  "platformRole": "AXStaticText",
+                  "positionX": 214.0,
+                  "positionY": 64.0,
+                  "role": "text",
+                  "sizeHeight": 19.0,
+                  "sizeWidth": 53.0,
+                  "value": "Sydney"
+                },
+                {
+                  "actions": [],
+                  "childCount": 0,
+                  "description": "image",
+                  "enabled": true,
+                  "focused": false,
+                  "label": "Rainy Night",
+                  "platformRole": "AXImage",
+                  "positionX": 324.0,
+                  "positionY": 64.0,
+                  "role": "image",
+                  "sizeHeight": 18.0,
+                  "sizeWidth": 18.0
+                },
+                {
+                  "actions": [],
+                  "childCount": 0,
+                  "description": "text",
+                  "enabled": true,
+                  "focused": false,
+                  "platformRole": "AXStaticText",
+                  "positionX": 214.0,
+                  "positionY": 90.0,
+                  "role": "text",
+                  "sizeHeight": 32.0,
+                  "sizeWidth": 107.0,
+                  "value": "Light rain for the next hour"
+                },
+                {
+                  "actions": [],
+                  "childCount": 3,
+                  "description": "group",
+                  "enabled": true,
+                  "focused": false,
+                  "platformRole": "AXGroup",
+                  "positionX": 214.0,
+                  "positionY": 131.0,
+                  "role": "group",
+                  "sizeHeight": 61.0,
+                  "sizeWidth": 128.0
+                }
+              ],
+              "description": "widget",
+              "enabled": true,
+              "focused": false,
+              "id": "widget-local:com.apple.weather:com.apple.weather.widget:com.apple.weather",
+              "label": "Weather",
+              "platformRole": "AXGroup",
+              "positionX": 196.0,
+              "positionY": 46.0,
+              "role": "group",
+              "sizeHeight": 164.0,
+              "sizeWidth": 164.0
+            }
+          ],
+          "description": "group",
+          "enabled": false,
+          "focused": false,
+          "platformRole": "AXGroup",
+          "positionX": 188.0,
+          "positionY": 38.0,
+          "role": "group",
+          "sizeHeight": 180.0,
+          "sizeWidth": 180.0
+        }
+      ],
+      "focused": false,
+      "positionX": 188.0,
+      "positionY": 38.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 180.0,
+      "title": "Forecast",
+      "windowType": "standard"
+    },
+    {
+      "appName": "Notification Center",
+      "elements": [
+        {
+          "actions": [],
+          "childCount": 1,
+          "children": [
+            {
+              "actions": [
+                "AXShowMenu"
+              ],
+              "childCount": 1,
+              "children": [
+                {
+                  "actions": [],
+                  "childCount": 0,
+                  "enabled": true,
+                  "focused": false,
+                  "id": "month-view-current-date",
+                  "label": "MONDAY, OCTOBER 05",
+                  "platformRole": "AXUnknown",
+                  "positionX": 29.0,
+                  "positionY": 64.0,
+                  "role": "unknown",
+                  "sizeHeight": 128.0,
+                  "sizeWidth": 138.0
+                }
+              ],
+              "description": "widget",
+              "enabled": true,
+              "focused": false,
+              "id": "widget-local:com.apple.iCal:com.apple.iCal.CalendarWidgetExtension:com.apple.CalendarWidget.CalendarMonthWidget",
+              "label": "Calendar",
+              "platformRole": "AXGroup",
+              "positionX": 16.0,
+              "positionY": 46.0,
+              "role": "group",
+              "sizeHeight": 164.0,
+              "sizeWidth": 164.0
+            }
+          ],
+          "description": "group",
+          "enabled": false,
+          "focused": false,
+          "platformRole": "AXGroup",
+          "positionX": 8.0,
+          "positionY": 38.0,
+          "role": "group",
+          "sizeHeight": 180.0,
+          "sizeWidth": 180.0
+        }
+      ],
+      "focused": false,
+      "positionX": 8.0,
+      "positionY": 38.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 180.0,
+      "title": "Month",
+      "windowType": "standard"
+    },
+    {
+      "appName": "TextEdit",
+      "elements": [
+        {
+          "actions": [
+            "AXCancel",
+            "AXPress",
+            "AXPick"
+          ],
+          "childCount": 1,
+          "children": [
+            {
+              "actions": [
+                "AXCancel"
+              ],
+              "childCount": 21,
+              "children": [
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_aboutThisMacRequested:",
+                  "label": "About This Mac",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_systemInformationRequested:",
+                  "label": "System Information",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_systemSettingsRequested:",
+                  "label": "System Settings…",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_appStoreRequested:",
+                  "label": "App Store",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 1,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_recentsRequested:",
+                  "label": "Recent Items",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_forceQuitPanelRequested:",
+                  "label": "Force Quit…",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_forceQuitRequested:",
+                  "label": "Force Quit TextEdit",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_sleepRequested:",
+                  "label": "Sleep",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_restartRequested:",
+                  "label": "Restart…",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_restartNowRequested:",
+                  "label": "Restart",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_shutDownRequested:",
+                  "label": "Shut Down…",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_shutDownNowRequested:",
+                  "label": "Shut Down",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_lockScreenRequested:",
+                  "label": "Lock Screen",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_logOutRequested:",
+                  "label": "Log Out Managed via Tart…",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_logOutNowRequested:",
+                  "label": "Log Out Managed via Tart",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                }
+              ],
+              "description": "menu",
+              "enabled": true,
+              "focused": false,
+              "platformRole": "AXMenu",
+              "positionX": 0.0,
+              "positionY": 1080.0,
+              "role": "menu",
+              "sizeHeight": 0.0,
+              "sizeWidth": 0.0
+            }
+          ],
+          "description": "menu bar item",
+          "enabled": true,
+          "focused": false,
+          "label": "Apple",
+          "platformRole": "AXMenuBarItem",
+          "positionX": 10.0,
+          "positionY": 0.0,
+          "role": "menu-item",
+          "sizeHeight": 30.0,
+          "sizeWidth": 34.0
+        },
+        {
+          "actions": [
+            "AXCancel",
+            "AXPress",
+            "AXPick"
+          ],
+          "childCount": 1,
+          "children": [
+            {
+              "actions": [
+                "AXCancel"
+              ],
+              "childCount": 12,
+              "children": [
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:211",
+                  "label": "About TextEdit",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:846",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:508",
+                  "label": "Settings…",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:847",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 1,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_NS:848",
+                  "label": "Services",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:857",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_NS:515",
+                  "label": "Hide TextEdit",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_NS:529",
+                  "label": "Hide Others",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:535",
+                  "label": "Show All",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:858",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:522",
+                  "label": "Quit TextEdit",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "NSAlternateQuitMenuItem",
+                  "label": "Quit and Keep Windows",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                }
+              ],
+              "description": "menu",
+              "enabled": true,
+              "focused": false,
+              "id": "_NS:842",
+              "platformRole": "AXMenu",
+              "positionX": 0.0,
+              "positionY": 1080.0,
+              "role": "menu",
+              "sizeHeight": 0.0,
+              "sizeWidth": 0.0
+            }
+          ],
+          "description": "menu bar item",
+          "enabled": true,
+          "focused": false,
+          "id": "_NS:838",
+          "label": "TextEdit",
+          "platformRole": "AXMenuBarItem",
+          "positionX": 44.0,
+          "positionY": 0.0,
+          "role": "menu-item",
+          "sizeHeight": 30.0,
+          "sizeWidth": 73.0
+        },
+        {
+          "actions": [
+            "AXCancel",
+            "AXPress",
+            "AXPick"
+          ],
+          "childCount": 1,
+          "children": [
+            {
+              "actions": [
+                "AXCancel"
+              ],
+              "childCount": 22,
+              "children": [
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:344",
+                  "label": "New",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:331",
+                  "label": "Open…",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 1,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_NS:868",
+                  "label": "Open Recent",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:877",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:430",
+                  "label": "Close",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "closeAll:",
+                  "label": "Close All",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:358",
+                  "label": "Save",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:351",
+                  "label": "Save As…",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "duplicateDocument:",
+                  "label": "Duplicate",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "renameDocument:",
+                  "label": "Rename…",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "moveDocument:",
+                  "label": "Move To…",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:365",
+                  "label": "Save All",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 1,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "label": "Revert To",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:878",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 1,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "NSMenuItemImportFromDeviceIdentifier",
+                  "label": "<<Import From Device - unlocalized>>",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:704",
+                  "label": "Export as PDF…",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 1,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "label": "Share",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:884",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:588",
+                  "label": "Show Properties",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:885",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:423",
+                  "label": "Page Setup…",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:416",
+                  "label": "Print…",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                }
+              ],
+              "description": "menu",
+              "enabled": true,
+              "focused": false,
+              "id": "_NS:864",
+              "platformRole": "AXMenu",
+              "positionX": 0.0,
+              "positionY": 1080.0,
+              "role": "menu",
+              "sizeHeight": 0.0,
+              "sizeWidth": 0.0
+            }
+          ],
+          "description": "menu bar item",
+          "enabled": true,
+          "focused": false,
+          "id": "_NS:860",
+          "label": "File",
+          "platformRole": "AXMenuBarItem",
+          "positionX": 117.0,
+          "positionY": 0.0,
+          "role": "menu-item",
+          "sizeHeight": 30.0,
+          "sizeWidth": 42.0
+        },
+        {
+          "actions": [
+            "AXCancel",
+            "AXPress",
+            "AXPick"
+          ],
+          "childCount": 1,
+          "children": [
+            {
+              "actions": [
+                "AXCancel"
+              ],
+              "childCount": 24,
+              "children": [
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:449",
+                  "label": "Undo",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:456",
+                  "label": "Redo",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:893",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:243",
+                  "label": "Cut",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:237",
+                  "label": "Copy",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:231",
+                  "label": "Paste",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:581",
+                  "label": "Paste and Match Style",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:571",
+                  "label": "Delete",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:224",
+                  "label": "Complete",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:217",
+                  "label": "Select All",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:894",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 1,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_NS:895",
+                  "label": "Insert",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:785",
+                  "label": "Attach Files…",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:623",
+                  "label": "Link…",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:902",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 1,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_NS:903",
+                  "label": "Find",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 1,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_NS:911",
+                  "label": "Spelling and Grammar",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 1,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_NS:920",
+                  "label": "Substitutions",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 1,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_NS:929",
+                  "label": "Transformations",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 1,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_NS:937",
+                  "label": "Speech",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 1,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_NSMenuItemAutoFillIdentifier",
+                  "label": "AutoFill",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "startDictation:",
+                  "label": "Start Dictation…",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "orderFrontCharacterPalette:",
+                  "label": "Emoji & Symbols",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                }
+              ],
+              "description": "menu",
+              "enabled": true,
+              "focused": false,
+              "id": "_NS:889",
+              "platformRole": "AXMenu",
+              "positionX": 0.0,
+              "positionY": 1080.0,
+              "role": "menu",
+              "sizeHeight": 0.0,
+              "sizeWidth": 0.0
+            }
+          ],
+          "description": "menu bar item",
+          "enabled": true,
+          "focused": false,
+          "id": "_NS:886",
+          "label": "Edit",
+          "platformRole": "AXMenuBarItem",
+          "positionX": 159.0,
+          "positionY": 0.0,
+          "role": "menu-item",
+          "sizeHeight": 30.0,
+          "sizeWidth": 44.0
+        },
+        {
+          "actions": [
+            "AXCancel",
+            "AXPress",
+            "AXPick"
+          ],
+          "childCount": 1,
+          "children": [
+            {
+              "actions": [
+                "AXCancel"
+              ],
+              "childCount": 11,
+              "children": [
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 1,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_NS:953",
+                  "label": "Font",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 1,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_NS:956",
+                  "label": "Text",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:976",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:273",
+                  "label": "Make Rich Text",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:550",
+                  "label": "Prevent Editing",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:409",
+                  "label": "Wrap to Page",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:437",
+                  "label": "Allow Hyphenation",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:766",
+                  "label": "Make Vertical Layout",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:977",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:710",
+                  "label": "List…",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:716",
+                  "label": "Table…",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                }
+              ],
+              "description": "menu",
+              "enabled": true,
+              "focused": false,
+              "id": "_NS:949",
+              "platformRole": "AXMenu",
+              "positionX": 0.0,
+              "positionY": 1080.0,
+              "role": "menu",
+              "sizeHeight": 0.0,
+              "sizeWidth": 0.0
+            }
+          ],
+          "description": "menu bar item",
+          "enabled": true,
+          "focused": false,
+          "id": "_NS:945",
+          "label": "Format",
+          "platformRole": "AXMenuBarItem",
+          "positionX": 203.0,
+          "positionY": 0.0,
+          "role": "menu-item",
+          "sizeHeight": 30.0,
+          "sizeWidth": 63.0
+        },
+        {
+          "actions": [
+            "AXCancel",
+            "AXPress",
+            "AXPick"
+          ],
+          "childCount": 1,
+          "children": [
+            {
+              "actions": [
+                "AXCancel"
+              ],
+              "childCount": 6,
+              "children": [
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:986",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:803",
+                  "label": "Actual Size",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:772",
+                  "label": "Zoom In",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:779",
+                  "label": "Zoom Out",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:987",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:797",
+                  "label": "Enter Full Screen",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                }
+              ],
+              "description": "menu",
+              "enabled": true,
+              "focused": false,
+              "id": "_NS:982",
+              "platformRole": "AXMenu",
+              "positionX": 0.0,
+              "positionY": 1080.0,
+              "role": "menu",
+              "sizeHeight": 0.0,
+              "sizeWidth": 0.0
+            }
+          ],
+          "description": "menu bar item",
+          "enabled": true,
+          "focused": false,
+          "id": "_NS:978",
+          "label": "View",
+          "platformRole": "AXMenuBarItem",
+          "positionX": 266.0,
+          "positionY": 0.0,
+          "role": "menu-item",
+          "sizeHeight": 30.0,
+          "sizeWidth": 50.0
+        },
+        {
+          "actions": [
+            "AXCancel",
+            "AXPress",
+            "AXPick"
+          ],
+          "childCount": 1,
+          "children": [
+            {
+              "actions": [
+                "AXCancel"
+              ],
+              "childCount": 14,
+              "children": [
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:475",
+                  "label": "Minimize",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "miniaturizeAll:",
+                  "label": "Minimize All",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:482",
+                  "label": "Zoom",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "zoomAll:",
+                  "label": "Zoom All",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_zoomFill:",
+                  "label": "Fill",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_zoomCenter:",
+                  "label": "Center",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 1,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "label": "Move & Resize",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "label": "Full Screen Tile",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_removeWindowFromStageManagerSet:",
+                  "label": "Remove Window from Set",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:996",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "_NS:469",
+                  "label": "Bring All to Front",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                },
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": false,
+                  "focused": false,
+                  "id": "alternateArrangeInFront:",
+                  "label": "Arrange in Front",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                }
+              ],
+              "description": "menu",
+              "enabled": true,
+              "focused": false,
+              "id": "_NS:992",
+              "platformRole": "AXMenu",
+              "positionX": 0.0,
+              "positionY": 1080.0,
+              "role": "menu",
+              "sizeHeight": 0.0,
+              "sizeWidth": 0.0
+            }
+          ],
+          "description": "menu bar item",
+          "enabled": true,
+          "focused": false,
+          "id": "_NS:988",
+          "label": "Window",
+          "platformRole": "AXMenuBarItem",
+          "positionX": 316.0,
+          "positionY": 0.0,
+          "role": "menu-item",
+          "sizeHeight": 30.0,
+          "sizeWidth": 69.0
+        },
+        {
+          "actions": [
+            "AXCancel",
+            "AXPress",
+            "AXPick"
+          ],
+          "childCount": 1,
+          "children": [
+            {
+              "actions": [
+                "AXCancel"
+              ],
+              "childCount": 1,
+              "children": [
+                {
+                  "actions": [
+                    "AXCancel",
+                    "AXPress",
+                    "AXPick"
+                  ],
+                  "childCount": 0,
+                  "description": "menu item",
+                  "enabled": true,
+                  "focused": false,
+                  "id": "_NS:541",
+                  "label": "TextEdit Help",
+                  "platformRole": "AXMenuItem",
+                  "positionX": 0.0,
+                  "positionY": 1080.0,
+                  "role": "menu-item",
+                  "sizeHeight": 0.0,
+                  "sizeWidth": 0.0
+                }
+              ],
+              "description": "menu",
+              "enabled": true,
+              "focused": false,
+              "id": "_NS:1002",
+              "platformRole": "AXMenu",
+              "positionX": 0.0,
+              "positionY": 1080.0,
+              "role": "menu",
+              "sizeHeight": 0.0,
+              "sizeWidth": 0.0
+            }
+          ],
+          "description": "menu bar item",
+          "enabled": true,
+          "focused": false,
+          "id": "_NS:998",
+          "label": "Help",
+          "platformRole": "AXMenuBarItem",
+          "positionX": 385.0,
+          "positionY": 0.0,
+          "role": "menu-item",
+          "sizeHeight": 30.0,
+          "sizeWidth": 48.0
+        }
+      ],
+      "focused": false,
+      "positionX": 0.0,
+      "positionY": 0.0,
+      "sizeHeight": 30.0,
+      "sizeWidth": 1920.0,
+      "title": "Menu Bar",
+      "windowType": "menuBar"
+    }
+  ]
+}

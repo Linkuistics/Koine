@@ -1,0 +1,90 @@
+{
+  "purpose": "Unconsumed historical-basis documentary partition; no qualification",
+  "scope": "Whole saved historical packet and exact historical-parent table only",
+  "inventory": "reference-historical-partition.tsv.gz",
+  "inventory_sha256": "b6dc5c9feca006990d184799a163b11b0557cbffdba29a1f3fef55cb963b12cf",
+  "dialect": {
+    "compression": "gzip, mtime=0",
+    "encoding": "UTF-8",
+    "delimiter": "TAB",
+    "quotechar": "double quote",
+    "doublequote": true,
+    "escapechar": null,
+    "lineterminator": "LF",
+    "header": [
+      "source",
+      "coordinate",
+      "kind",
+      "classification",
+      "start_byte",
+      "end_byte",
+      "sha256",
+      "context_start_byte",
+      "context_end_byte",
+      "first_line",
+      "last_line"
+    ]
+  },
+  "coordinates": "Zero-based UTF-8 byte offsets, start inclusive/end exclusive; one-based source lines. J uses escaped JSON Pointer plus kind; T row zero is header. Whole context preserves negative scope. Fragment bytes are recovered from source, not normalized decoded text.",
+  "classification": {
+    "J": "Every serialized key/scalar/empty-container is individually H: the fixed historical packet assertion, including pending/freeze/hash/recipe/measurement/native assertions; no current claim.",
+    "T": "Header E; exact base64 parent/class/ordinal/digest cells and each individual listed baseline ordinal H; each bounded claim limit E. No R relocation/source edit."
+  },
+  "sources": [
+    {
+      "alias": "J",
+      "path": "docs/design/application-metadata-subject.json",
+      "revision": "c87194529af7fdf6bb6c1b1f769f7016dca7b8bf",
+      "sha256": "dd2f05d84477aa9bc97b03771100006d587636145c9a16d5e94fbd71573a3d1a",
+      "bytes": 7990160,
+      "binding": "whole object, no extraction",
+      "stage": "Earlier documentary basis input to Q authoring/acceptance; no Q/P/A current result or authority credit"
+    },
+    {
+      "alias": "T",
+      "path": "docs/verification/reference-target-parents.tsv",
+      "revision": "6329cc0c352f7ea0998305b8dd380c1000ecc660",
+      "sha256": "5e898035798be3bb74afeb224cd3f1fc390834eac15911542f6ac5fb32d1f4ad",
+      "bytes": 43306,
+      "binding": "whole object, no extraction",
+      "stage": "Earlier documentary basis input to Q authoring/acceptance; no Q/P/A current result or authority credit"
+    }
+  ],
+  "counts": {
+    "property-key": 177016,
+    "scalar": 293579,
+    "empty-container": 2394,
+    "header": 5,
+    "table-cell": 752,
+    "baseline-ordinal": 640,
+    "claim-limit": 1128
+  },
+  "classifications": {
+    "H": 474381,
+    "E": 1133
+  },
+  "correspondence": {
+    "parent_rows": 188,
+    "baseline_ordinals": 640,
+    "classes": {
+      "T2": 43,
+      "T3": 84,
+      "T1": 61
+    },
+    "comparison": "Exact raw UTF-8 lexical parent, class, complete ordered ordinal list; no filesystem lookup or current fact."
+  },
+  "named_generation_subjects": {
+    "/Users/antony/Development/Koine.add-plugins-for-modaliser-requirements/docs/design/application-metadata-subject.json": "dd2f05d84477aa9bc97b03771100006d587636145c9a16d5e94fbd71573a3d1a",
+    "/Users/antony/Development/Koine.add-plugins-for-modaliser-requirements/docs/verification/reference-target-parents.tsv": "5e898035798be3bb74afeb224cd3f1fc390834eac15911542f6ac5fb32d1f4ad",
+    "/tmp/koine-k301-original-J": "dd2f05d84477aa9bc97b03771100006d587636145c9a16d5e94fbd71573a3d1a",
+    "/tmp/koine-k301-original-T": "5e898035798be3bb74afeb224cd3f1fc390834eac15911542f6ac5fb32d1f4ad",
+    "/tmp/koine-k301-partition.py": "f7f2f74fb0f9cefcf59a5d1165f46efdbaecf66308f925e3499f35392521e353",
+    "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/bin/python3.15": "1955899cb535256cfa477d926d016819e52e747984722c44f76e39a4950fee0e",
+    "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/lib/python3.15/json/__init__.py": "4cc35eb04b789ce4890cffa944829c946e4c5dd032aaa6dc01f53449b250985a",
+    "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/lib/python3.15/csv.py": "7588c062d28be62a6430a6e5e45b0bcfc5dcadb6b0f7557f4366f3af716438d4",
+    "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/lib/python3.15/gzip.py": "fbd336643ae4083035fe61ebbe367b784314c19456d02bd72d5088e8cddec2c5",
+    "/opt/homebrew/Cellar/python@3.15/3.15.0/Frameworks/Python.framework/Versions/3.15/lib/python3.15/re/__init__.py": "4884aa60c267974b51e372b547bf13dc0315d7d75fe1f2a9ebd01ddfed24a14b"
+  },
+  "freeze": "Every named subject unchanged before/after, item by item; not an opaque runtime/read/image closure claim",
+  "remaining": "Other whole primary/authored/actual task/runtime/configuration/image/charter bases and absent-object work: k302; merged complete E/H/R/original-conjunction/seven-view/consumer review: k303. No current installed build/purpose/identity/ancestry/TCC/byte-complete package, instrument proof, acceptance/receipt/release or native qualification."
+}

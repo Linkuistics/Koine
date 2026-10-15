@@ -1,0 +1,88 @@
+# Workspace release/schema 1.0.1 contribution, as served (the action-only long-location repair).
+# Retained 1.0.0 is workspace-schema.graphql with independent binaries/profiles.
+# Exact delta: the v1 long-location text appended to the launch, open-path and reveal descriptions.
+# Shapes and other descriptions are unchanged. Search 1.1.0 incorporates this delta.
+# All output fields are mutation-only, with workspace:control AND desktop:control.
+# Exact composition/digest includes core and every admitted provider contribution.
+# Composed with desktop's contribution by desktop-workspace-repair-schema-extension-host.graphql.
+
+"""A registered application bundle present at inspection, even if in the Trash. Requires a bundle identifier; bundle-less programs have no named-selector route. No executable, argv, environment or shell input."""
+input WorkspaceApplicationInput {
+  """Nonblank native bundle identifier, not a display name or process identity."""
+  bundleIdentifier: String!
+  """Optional absolute path constraining selection to a registered bundle with this identifier, compared by native file identity after symlink resolution. Never substitute another copy when supplied; otherwise running-copy substitution is allowed."""
+  applicationPath: String
+}
+
+"""AVAILABLE is native acknowledgment; DEPENDENCY_UNAVAILABLE certifies this action submitted no domain request. Neither status overrides publication errors."""
+enum WorkspaceOperationStatus {
+  AVAILABLE
+  DEPENDENCY_UNAVAILABLE
+}
+
+"""Pre-submission prerequisite failure; no successful value accompanies it."""
+enum WorkspaceDependencyReason {
+  APPLICATION_NOT_INSTALLED
+  APPLICATION_IDENTITY_MISMATCH
+  PATH_NOT_FOUND
+  NO_DEFAULT_HANDLER
+}
+
+"""A failed prerequisite, under workspace:control AND desktop:control. Not a stale issued reference or execution error."""
+type WorkspaceDependencyUnavailable {
+  """Requires workspace:control AND desktop:control. Closed reason for not submitting this action."""
+  reason: WorkspaceDependencyReason!
+  """Requires workspace:control AND desktop:control. Human explanation and recovery; never a shell command to execute automatically."""
+  guidance: String!
+}
+
+"""Observed process incarnation for this action, under workspace:control AND desktop:control. May exit immediately; not a desktop reference."""
+type WorkspaceProcessIdentity {
+  """Requires workspace:control AND desktop:control. Positive process identifier; use only with startedAt."""
+  pid: Int!
+  """Requires workspace:control AND desktop:control. Exact kernel process start instant, YYYY-MM-DDTHH:MM:SS.ffffffZ; copy with pid into the desktop process input under desktop:read."""
+  startedAt: String!
+}
+
+"""Native launch/open acknowledgment under workspace:control AND desktop:control, not proof of rendered content or foreground state. No installed path, bundle identifier or default-handler metadata is disclosed."""
+type WorkspaceOpenReceipt {
+  """Requires workspace:control AND desktop:control. Optional observation of the completion callback's application: stable positive PID, matching kernel start reads and executable file identity, equal native application object, non-terminated at the checks. Any unavailable value or mismatch yields null. Not atomic effect binding; never a PID-only, launch-date or foreground fallback."""
+  process: WorkspaceProcessIdentity
+}
+
+"""Finder acknowledgment under workspace:control AND desktop:control; selection is not independently observed."""
+type WorkspaceRevealReceipt {
+  """Requires workspace:control AND desktop:control. Submitted absolute path; a directory is selected in its parent, and root is shown as a root view."""
+  path: String!
+}
+
+"""Requires workspace:control AND desktop:control throughout. Absent an error at or below this result, AVAILABLE has value only and DEPENDENCY_UNAVAILABLE has dependency only. A published status still describes the action when an error suppresses its branch; inspect data and error paths."""
+type WorkspaceOpenResult {
+  """Requires workspace:control AND desktop:control. Selects the outcome; publication errors may suppress the selected branch or propagate through this result."""
+  status: WorkspaceOperationStatus!
+  """Requires workspace:control AND desktop:control. Non-null exactly for AVAILABLE absent an error at or below this result."""
+  value: WorkspaceOpenReceipt
+  """Requires workspace:control AND desktop:control. Non-null exactly for DEPENDENCY_UNAVAILABLE absent an error at or below this result; this action submitted no domain request."""
+  dependency: WorkspaceDependencyUnavailable
+}
+
+"""Requires workspace:control AND desktop:control throughout. Absent an error at or below this result, AVAILABLE has value only and DEPENDENCY_UNAVAILABLE has dependency only. A published status still describes the action when an error suppresses its branch; inspect data and error paths."""
+type WorkspaceRevealResult {
+  """Requires workspace:control AND desktop:control. Selects the outcome; publication errors may suppress the selected branch or propagate through this result."""
+  status: WorkspaceOperationStatus!
+  """Requires workspace:control AND desktop:control. Non-null exactly for AVAILABLE absent an error at or below this result."""
+  value: WorkspaceRevealReceipt
+  """Requires workspace:control AND desktop:control. Non-null exactly for DEPENDENCY_UNAVAILABLE absent an error at or below this result; this action submitted no domain request."""
+  dependency: WorkspaceDependencyUnavailable
+}
+
+extend type Mutation {
+  """Requires workspace:control AND desktop:control. Launch or request reactivation of any registered installed app, not only configured shortcuts. Do not force a new instance; reuse a running copy unless applicationPath constrains the installation. Native acknowledgment is not a window-focus guarantee. Missing app is typed dependency absence; acknowledgment wait ends after three seconds or earlier cancellation, possibly after effects begin, with failed and no replay. The core request deadline may answer first. Koine resolves applicationPath and every registered copy it compares component by component, and copies compare by the device and inode that resolution finds. APPLICATION_NOT_INSTALLED keeps its meaning: no registration for the identifier, an applicationPath or unconstrained registered location that resolution finds missing, a present non-application, or a present constrained copy that is not registered; a whole-path ELOOP, ENAMETOOLONG or nil never establishes it, and a cycle or impossible name at an application location is failed. A constrained launch compares registered copies in order until one matches: one found missing or different is skipped; one whose resolution fails before the match is failed. A chosen or selected application location whose literal, link-expanded or resolved spelling is PATH_MAX (1,024) bytes or more, not counting its NUL, is failed before its metadata or any request: v1 does not hand such locations to applications. Link-budget exhaustion and unacquired native facts are failed. Established no-identifier remains mismatch for a named selector."""
+  workspaceLaunchApplication(application: WorkspaceApplicationInput!): WorkspaceOpenResult
+  """Requires workspace:control AND desktop:control. Accept the ASCII RFC 3986 section 3 URI grammar, including optional query/fragment, with HTTP(S) scheme, host, valid percent escapes and no credentials/whitespace/backslashes/control characters; Unicode requires caller encoding and IDNA host labels. Preserve bytes without repair. Resolve by scheme alone and address that default browser explicitly; no universal-link app dispatch or suggestions proxy. The browser may act on the page. Missing handler is typed dependency absence; wait ends after three seconds or earlier cancellation, possibly after effects begin, with failed and no replay. The core deadline may answer first."""
+  workspaceOpenURL(url: String!): WorkspaceOpenResult
+  """Requires workspace:control AND desktop:control. Open one literal absolute document/directory path in its default or named installed app. Refuse native application-bundle, Unix/Windows executable and Finder-alias metadata after symlink resolution; no content sandbox or race-free classification. Script/source documents can use default editors. A handler can execute scripts or follow location documents to other schemes/targets. No executable selector, argv, environment or shell expansion. Missing path/app/default handler is typed dependency absence; wait ends after three seconds or earlier cancellation, possibly after effects begin, with failed and no replay. The core deadline may answer first. Koine resolves the path first, then any applicationPath or discovered application, component by component. For the path, missing components, dangling links, established cycles and established impossible components are PATH_NOT_FOUND; an application location keeps APPLICATION_NOT_INSTALLED as for launch, and a stale default handler NO_DEFAULT_HANDLER. Link-budget exhaustion and other resolution errors are failed. An extant target, applicationPath or selected application whose literal, link-expanded or resolved spelling is PATH_MAX (1,024) bytes or more, not counting its NUL, is failed before any request: v1 does not hand such locations to applications. Each is refused at its own stage: a target before its metadata or handler lookup; an applicationPath before its metadata or registration lookup; a selected application (the matching registration, preferred copy or default handler) after the registration or handler lookup that found it, before its metadata. Below that limit, a nil default handler for a resolved target is NO_DEFAULT_HANDLER and a completed no-type report is not a refusal. Preserve target bytes and selected application identity."""
+  workspaceOpenPath(path: String!, application: WorkspaceApplicationInput): WorkspaceOpenResult
+  """Requires workspace:control AND desktop:control. Reveal one literal absolute path in Finder without opening its contents. Native acknowledgment is not observed selection. Missing path/Finder is typed dependency absence; false acknowledgment or ambiguous failure is failed, never automatic replay. Wait ends after three seconds or earlier cancellation, ignoring late acknowledgment; the core deadline may answer first. Koine resolves the path component by component: missing components, dangling links, established cycles and established impossible components are PATH_NOT_FOUND; link-budget exhaustion and other resolution errors are failed. An extant location, or Finder's own, whose literal, link-expanded or resolved spelling is PATH_MAX (1,024) bytes or more, not counting its NUL, is failed before any Finder request. A link to the root, without a trailing slash, is selected as the link. Preserve submitted target bytes."""
+  workspaceRevealPath(path: String!): WorkspaceRevealResult
+}

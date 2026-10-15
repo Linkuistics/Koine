@@ -1,0 +1,247 @@
+task: [application-locations:vm-packaged] scripts/vm-verify-installations.sh
+node-v24.21.0-darwin-arm64.tar.xz: 6239d4cf92d864487ec8cd3615038f7b67e7f58b77b21cd2f09ea9fbd68065fe matches its published digest
+Subjects of this run:
+c5f3c529c4e7a001765381e7e40bb25105134bd67de2b4303a8dcda90114a3d1  scripts/vm-verify-installations.sh
+8f65da8874c76316a43e9674e37126362d8d5b2b40e9ad48307eb8368f507ac0  scripts/vm-installation-fixtures.sh
+86a8d323f00121dcf5ccc10c91dd532dd129ff5da5ab0d11092fa5711b4696d7  scripts/vm-installation-request.py
+27402802aa8c5b314a3c498394e99323a98a77abfcc7b5ff56cd1fc714ca54bf  scripts/vm-installation-trash-window.py
+f6bcdd93abd9c610296ee34400f64226f4bff6e1f25490fbce7d4a4290fc72c4  scripts/vm-registration-lookup.swift
+2d10d17d7ff8680b219ccd8ac23a8a4f5fae9d9b0c575d5de3c69b97cf5980d3  Fixtures/InstallationFixture/main.swift
+3a9d8c701bb0b0c31975be54f6ae2a0ed299913da8ab4546691ee469807face8  scripts/vm-verify-witness-lib.sh
+e8f9fcd6c45981d335d3f36841528a0f7f77dab73f5163634666588c29febe5d  scripts/vm-verify-contract-client-lib.sh
+be4629ebf9d75591f9d3aa385b04f245a544243346f2a9b8d15cf886643eb54a  scripts/vm-verify-launch-lib.sh
+10f1a9a9bc8d1b9342180543ebd61738f2ebc1a410572aabe4739a6f910e08c5  scripts/vm-launchers-lib.sh
+ccf011001496fda8b4740c0298a0618090f0a48cad8f38ff27e113add2358e80  clients/contract-only/dist/koine-client.mjs
+32bc399ace5dd4aa8067bf36711e53eb4e44499c4d8d7898caa28491c7884d99  .build/app/Koine.app/Contents/MacOS/Koine
+df7614f8032870123c2a58c5f71e8dee1487d20d26830ddb64d3c8872614c2f6  scripts/vm-finder-observer-lib.sh
+f5a0859943bb5ced3a178fbf484cd219ff0edecc099f0707a4d9215ac978b608  scripts/vm-application-locations-lib.sh
+3e7fde434d50300c9c3980626df28425cded119432c2a5ed89a15620db969c7b  scripts/vm-long-application-fixtures.py
+6fa6e524775ec99556c16be93bd745343565b9ca3e223f6d48f49a9ac02ee9dd  scripts/vm-long-location-fixtures.py
+d81df2c654fd3ee853537e745e39effced8a8d2009a4a0cdf88412fb15890cf2  scripts/vm-reveal-observe.applescript
+288e07e65bb641550f281b09e32d824a7cc1d0130c932b425fadfa109df3d3bf  scripts/vm-verify-lib.sh
+8a469c5d5ea662fe825cf2c6ec19fb6edb01d362713be21a2257fc22b705a7e3  scripts/vm-verify-desktop-lib.sh
+bdc96ddde8964a1f386b77d33de1385b55a47e95a42b09d4627405d1e0fa6a52  scripts/signing-env.sh
+dcf439c68c1577c31250104828eb8b97006a0f7c872213e2d97d7e4cbfdb9620  scripts/vm-verify-client.sh
+6a43bdeab2a121841bab2eebe32ce106b2d5a1d1a4b5d81cbc3cfa0ecf108e23  scripts/application-location-observations.jq
+6bd106203a02e282ba8360cadabd7c04672c68bb0f3b7a2f93820b00d5cd4bcc  scripts/vm-verify-contract-client-trim.py
+75b4a0fa7aa03175f34fabb7c037c9fba94feed9cb5b4152994b577c114337ed  scripts/vm-verify-launch-client.py
+1d42fbaab10799de4b543222b7ca796fbc5fbd1b8d6ef68114cd657b7526271f  Fixtures/LaunchWitness/main.swift
+cc3071616f4d519055daae5f7e886f80799aa95d6701ced653ad14704ec7f69b  Fixtures/LaunchWitness/build.sh
+886f35a5115b7ca7a9fee21115c4a2fdede425cd560d0b679336e456cd530c0f  scripts/stage-node-runtime.sh
+1af7cdff10fff175426e72903e7c374e3a2389f14f95614ed9b7e9661f5d7e12  scripts/detach-vm-task.py
+51d7cf98ce14072d6873bc6c2ceb1cabac94b3e5a0b2645302aabfbff855d768  Taskfile.yml
+431300765533dd93c89b85d479c3127d92cfd9a8468048b7cf84cd3e2dde7157  App/Info.plist
+6239d4cf92d864487ec8cd3615038f7b67e7f58b77b21cd2f09ea9fbd68065fe  .build/node/node-v24.21.0-darwin-arm64.tar.xz
+36b7fa424585d6ed2713df3c3fe5387c9ffccc76c0083b2f31b996867c10af9a  /Users/antony/Development/Koine.add-plugins-for-modaliser-requirements/.build/witness/LaunchWitness
+aabbed0769b36fb85a8ce3757556454e42a81ae60bcd486fddb23435b2d967e6  .build/app/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/A/KoineProviderAPI
+41b27cb37da14107451c22cab41524a2f439218c7ca3a776e853ccdfdd004621  .build/app/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/A/Resources/Info.plist
+7f57754c0849b70945355f3eae9acb30ddd1eef9860bfb964f6b7e83160ebc38  .build/app/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/A/_CodeSignature/CodeResources
+431300765533dd93c89b85d479c3127d92cfd9a8468048b7cf84cd3e2dde7157  .build/app/Koine.app/Contents/Info.plist
+32bc399ace5dd4aa8067bf36711e53eb4e44499c4d8d7898caa28491c7884d99  .build/app/Koine.app/Contents/MacOS/Koine
+4f0ae19489ee20f3a0d709e978a7ddf23f41e4d6dc6a86de7eff73c03e1e1174  .build/app/Koine.app/Contents/PlugIns/Desktop.koineprovider/Info.plist
+d7efacc2f138e1405acbf89acd10296fcb79c313b7d5e4775be91938c9928649  .build/app/Koine.app/Contents/PlugIns/Desktop.koineprovider/_CodeSignature/CodeResources
+fa2ee86a5439ab296233edd9b3313b660ffdca9decbea13234e96c8325b0c199  .build/app/Koine.app/Contents/PlugIns/Desktop.koineprovider/libDesktopProvider.dylib
+3c5197da7324a1c8b4c1e381b69f6902627f48607a79820746df8bdd0282a3ad  .build/app/Koine.app/Contents/PlugIns/Desktop.koineprovider/manifest.json
+d78d1f49ff3c3968c7a3fd3ba7dad69797f89acbdaa24dd633cd210a865c765e  .build/app/Koine.app/Contents/PlugIns/Desktop.koineprovider/schema.graphql
+6bb5154d0fd08c30d46c638426e02e58bfc424826c99a8819d9bafaeb63b7027  .build/app/Koine.app/Contents/PlugIns/Workspace.koineprovider/Info.plist
+056b2408d65bdd4797ea4fc3fc767faf32872be9fe32b2aaea2a734564308d96  .build/app/Koine.app/Contents/PlugIns/Workspace.koineprovider/_CodeSignature/CodeResources
+0da3b53e5b10cc24fe3d9b67da0a1eaad239a1423fe333b9dfed352b69fce42c  .build/app/Koine.app/Contents/PlugIns/Workspace.koineprovider/libWorkspaceProvider.dylib
+da73f1a02115558850ec7d36064b57b52a136d985dccf770034d7d76515e7e47  .build/app/Koine.app/Contents/PlugIns/Workspace.koineprovider/manifest.json
+2bcfbbf06cb1d77acd8553898612c2c64272e8ef39fc12570a3674f24fd138a7  .build/app/Koine.app/Contents/PlugIns/Workspace.koineprovider/schema.graphql
+7cb6c788c4f2ac12f52a081a23c0501523edc0552fbdd83d5f39776d95b64e31  .build/app/Koine.app/Contents/Resources/ProviderCatalogue.json
+5ee17e062723ccdb61738b9560f29166dbf6456da5214c672b302a83fe50ea57  .build/app/Koine.app/Contents/_CodeSignature/CodeResources
+
+== Start a clean VM (koine-verify-86962)
+Setting guest display resolution to 1920x1080 px...
+  set-display-mode: switched main display to 1920x1080 pt @ 1x (1920x1080 px, modeID 10)
+ProductName:		macOS
+ProductVersion:		26.5
+BuildVersion:		25F71
+arm64
+Gatekeeper: assessments enabled
+Gatekeeper in the clone: assessments enabled;developer id enabled;
+
+== Install the signed bundle (ditto zip, testanyware file upload, ditto -x)
+Quarantine attribute: xattr: /Applications/Koine.app: No such xattr: com.apple.quarantine
+--prepared:/Applications/Koine.app/Contents/PlugIns/Workspace.koineprovider
+--validated:/Applications/Koine.app/Contents/PlugIns/Workspace.koineprovider
+--prepared:/Applications/Koine.app/Contents/PlugIns/Desktop.koineprovider
+--prepared:/Applications/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+--validated:/Applications/Koine.app/Contents/PlugIns/Desktop.koineprovider
+--validated:/Applications/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+/Applications/Koine.app: valid on disk
+/Applications/Koine.app: satisfies its Designated Requirement
+Identifier=dev.antony.Koine
+CodeDirectory v=20500 size=36956 flags=0x10000(runtime) hashes=1144+7 location=embedded
+Authority=Developer ID Application: Antony Blakey (TA43A4RUP3)
+Authority=Developer ID Certification Authority
+TeamIdentifier=TA43A4RUP3
+/Applications/Koine.app: rejected
+source=Unnotarized Developer ID
+origin=Developer ID Application: Antony Blakey (TA43A4RUP3)
+(spctl assessment did not accept the bundle; recorded, not a failure of this stage)
+
+== Carry the client, the Node runtime, the witness, the fixture and the path files into the guest
+      27
+v24.21.0
+
+== The fixture: one application installed at several locations, registered under one identifier
+failed to scan /Users/admin/install-fx/unregistered/Fixture.app: -10814
+ from spotlightfixtures ready under /Users/admin/install-fx
+Fixture copies in the guest:
+/Users/admin/install-fx/A/Fixture.app
+/Users/admin/install-fx/B/Fixture.app
+/Users/admin/install-fx/Café ñ/Fixture.app
+/Users/admin/install-fx/Café/Fixture.app
+/Users/admin/install-fx/anon/Anonymous.app
+/Users/admin/install-fx/bare/program
+/Users/admin/install-fx/link-to-B
+/Users/admin/install-fx/link-to-B-app
+/Users/admin/install-fx/locked/Fixture.app
+/Users/admin/install-fx/noplist/Fixture.app
+/Users/admin/install-fx/unregistered/Fixture.app
+signed
+
+== What Launch Services says about each identifier before any request
+dev.koine.test.InstallationFixture	/Users/admin/install-fx/A/Fixture.app	/Users/admin/install-fx/A/Fixture.app|/Users/admin/install-fx/B/Fixture.app
+dev.koine.test.InstallationFixture.Composed	/Users/admin/install-fx/Café/Fixture.app	/Users/admin/install-fx/Café/Fixture.app
+dev.koine.test.InstallationFixture.Decomposed	/Users/admin/install-fx/Café ñ/Fixture.app	/Users/admin/install-fx/Café ñ/Fixture.app
+dev.koine.test.InstallationFixture.Stale	none	none
+dev.koine.test.InstallationFixture.NoPlist	/Users/admin/install-fx/noplist/Fixture.app	/Users/admin/install-fx/noplist/Fixture.app
+dev.koine.test.InstallationFixture.Trashed	none	none
+dev.koine.test.InstallationFixture.Unregistered	/Users/admin/install-fx/unregistered/Fixture.app	/Users/admin/install-fx/unregistered/Fixture.app
+dev.koine.test.InstallationFixture.Locked	/Users/admin/install-fx/locked/Fixture.app	/Users/admin/install-fx/locked/Fixture.app
+/Users/admin/install-fx/docs/default-anon.koineanon	/Users/admin/install-fx/anon/Anonymous.app	none
+Launch Services chooses copy A for dev.koine.test.InstallationFixture; the other, B, is the one a running copy stands in for.
+
+== Launch Koine; a manager grant in the window, then the contract-only client enrols its own grant
+grant-label at y=411.0 moved to y=311.0 under --dy -10; towards the end is --dy -10
+-rw-------  1 admin  staff  43 Oct  8 03:09 /Users/admin/koine-secret-manager
+Observation: Koine's own account (osPermissions): accessibility granted is false.
+{"command":"enrol","ok":true,"classification":"ok","credential":{"path":"/Users/admin/koine-secret-both","mode":"600","created":true},"label":"installations-client-both","requestedCapabilities":["workspace:control","desktop:control"],"requestId":"90b83a50-939e-47b7-9c8a-fb09be919c63","comparisonCode":"ZHWY-C274","endpoint":{"url":"http://127.0.0.1:49152/graphql","instanceId":"b215de91-e823-410d-80e1-1685446fc0c0"},"http":{"status":200,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"data":{"koineRequestGrant":{"requestId":"90b83a50-939e-47b7-9c8a-fb09be919c63","comparisonCode":"ZHWY-C274"}}},"errors":[],"transport":null,"outcomeUnknown":false}
+{"command":"poll","ok":true,"classification":"ok","credential":{"path":"/Users/admin/koine-secret-both","mode":"600","created":false},"requestState":"PENDING","grant":null,"endpoint":{"url":"http://127.0.0.1:49152/graphql","instanceId":"b215de91-e823-410d-80e1-1685446fc0c0"},"http":{"status":200,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"data":{"koineGrantRequest":{"state":"PENDING","grant":null}}},"errors":[],"transport":null,"outcomeUnknown":false}
+Window shows: label installations-client-both  code ZHWY-C274
+{"command":"poll","ok":true,"classification":"ok","credential":{"path":"/Users/admin/koine-secret-both","mode":"600","created":false},"requestState":"APPROVED","grant":{"grantId":"28e2d9a4-2cc8-4fba-88b2-81f41343215a","capabilities":["desktop:control","workspace:control"],"state":"ACTIVE"},"endpoint":{"url":"http://127.0.0.1:49152/graphql","instanceId":"b215de91-e823-410d-80e1-1685446fc0c0"},"http":{"status":200,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"data":{"koineGrantRequest":{"state":"APPROVED","grant":{"grantId":"28e2d9a4-2cc8-4fba-88b2-81f41343215a","capabilities":["desktop:control","workspace:control"],"state":"ACTIVE"}}}},"errors":[],"transport":null,"outcomeUnknown":false}
+Approved: request 90b83a50-939e-47b7-9c8a-fb09be919c63, comparison code ZHWY-C274, capabilities ["desktop:control","workspace:control"]
+Accessibility is not granted to Koine in this image: every request below is by workspace:control and desktop:control alone.
+
+== Build long copies by components; measure bounded native registration attempts
+Native registration attempts: [{"bytes":1024,"method":"absolute","registration":{"exit":0,"stdout":"","stderr":""},"lookup":{"exit":0,"stdout":"dev.koine.test.InstallationFixture\t/Users/admin/install-fx/A/Fixture.app\t/Users/admin/install-fx/A/Fixture.app|/Users/admin/install-fx/B/Fixture.app\n","stderr":""}},{"bytes":1024,"method":"relative-cwd","registration":{"exit":0,"stdout":"","stderr":""},"lookup":{"exit":0,"stdout":"dev.koine.test.InstallationFixture\t/Users/admin/install-fx/A/Fixture.app\t/Users/admin/install-fx/A/Fixture.app|/Users/admin/install-fx/B/Fixture.app\n","stderr":""}},{"bytes":1024,"method":"short-link","registration":{"exit":null,"phase":"short-link-construction","errno":63,"stdout":"","stderr":"[Errno 63] File name too long: '/Users/admin/install-fx/long-1024/d00-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d01-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d02-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d03-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d04-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/Fixture.app' -> '/Users/admin/install-fx/registration-1024.app'"},"lookup":{"exit":0,"stdout":"dev.koine.test.InstallationFixture\t/Users/admin/install-fx/A/Fixture.app\t/Users/admin/install-fx/A/Fixture.app|/Users/admin/install-fx/B/Fixture.app\n","stderr":""}},{"bytes":1500,"method":"absolute","registration":{"exit":0,"stdout":"","stderr":""},"lookup":{"exit":0,"stdout":"dev.koine.test.InstallationFixture\t/Users/admin/install-fx/A/Fixture.app\t/Users/admin/install-fx/A/Fixture.app|/Users/admin/install-fx/B/Fixture.app\n","stderr":""}},{"bytes":1500,"method":"relative-cwd","registration":{"exit":1,"stdout":"","stderr":"2026-10-08 03:11:12.553 lsregister[1147:10706] CFURLCopyResourcePropertyForKey failed because it was passed a URL which has no scheme\nfailed to scan Fixture.app: -50\n from spotlight"},"lookup":{"exit":0,"stdout":"dev.koine.test.InstallationFixture\t/Users/admin/install-fx/A/Fixture.app\t/Users/admin/install-fx/A/Fixture.app|/Users/admin/install-fx/B/Fixture.app\n","stderr":""}},{"bytes":1500,"method":"short-link","registration":{"exit":null,"phase":"short-link-construction","errno":63,"stdout":"","stderr":"[Errno 63] File name too long: '/Users/admin/install-fx/long-1500/d00-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d01-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d02-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d03-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d04-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d05-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d06-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/d07-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/Fixture.app' -> '/Users/admin/install-fx/registration-1500.app'"},"lookup":{"exit":0,"stdout":"dev.koine.test.InstallationFixture\t/Users/admin/install-fx/A/Fixture.app\t/Users/admin/install-fx/A/Fixture.app|/Users/admin/install-fx/B/Fixture.app\n","stderr":""}}]
+
+== Independent delivery control: the fixture receives the exact 1,023-byte document
+
+== launch: 1024-byte constrained application, cold; no substitution
+Observation: {"classification":"failed","status":null,"reason":null,"process":null,"errors":["The application hand-off was refused: the application path as written is 1024 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was launched."],"log":[],"instancesBefore":0,"instancesAfter":[],"witness":null}
+CHECK FAILED: guidance does not name the stage, long spelling, byte count and no request
+Result: application-locations: launch: 1024-byte constrained application, cold; no substitution: failed — guidance does not name the stage, long spelling, byte count and no request; 
+Observation: {"classification":"ok","status":"AVAILABLE","reason":null,"process":{"pid":1638,"startedAt":"2026-10-08T03:19:06.809216Z"},"errors":[],"log":[{"event":"launched","label":"A","pid":1638,"path":null}],"instancesBefore":0,"instancesAfter":[{"pid":1638,"bundle":"/Users/admin/install-fx/A/Fixture.app"}],"witness":{"pid":1638,"startedAt":"2026-10-08T03:19:06.809216Z","bundle":"/Users/admin/install-fx/A/Fixture.app"}}
+
+== launch: 1024-byte constrained application, running; no substitution
+Observation: {"classification":"failed","status":null,"reason":null,"process":null,"errors":["The application hand-off was refused: the application path as written is 1024 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was launched."],"log":[],"instancesBefore":1,"instancesAfter":[{"pid":1638,"bundle":"/Users/admin/install-fx/A/Fixture.app"}],"witness":null}
+CHECK FAILED: guidance does not name the stage, long spelling, byte count and no request
+Result: application-locations: launch: 1024-byte constrained application, running; no substitution: failed — guidance does not name the stage, long spelling, byte count and no request; 
+
+== open: 1024-byte constrained application, cold; no substitution
+Observation: {"classification":"failed","status":null,"reason":null,"process":null,"errors":["The application hand-off was refused: the application path as written is 1024 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was opened."],"log":[],"instancesBefore":0,"instancesAfter":[],"witness":null}
+CHECK FAILED: guidance does not name the stage, long spelling, byte count and no request
+Result: application-locations: open: 1024-byte constrained application, cold; no substitution: failed — guidance does not name the stage, long spelling, byte count and no request; 
+Observation: {"classification":"ok","status":"AVAILABLE","reason":null,"process":{"pid":1834,"startedAt":"2026-10-08T03:26:25.152899Z"},"errors":[],"log":[{"event":"launched","label":"A","pid":1834,"path":null}],"instancesBefore":0,"instancesAfter":[{"pid":1834,"bundle":"/Users/admin/install-fx/A/Fixture.app"}],"witness":{"pid":1834,"startedAt":"2026-10-08T03:26:25.152899Z","bundle":"/Users/admin/install-fx/A/Fixture.app"}}
+
+== open: 1024-byte constrained application, running; no substitution
+Observation: {"classification":"failed","status":null,"reason":null,"process":null,"errors":["The application hand-off was refused: the application path as written is 1024 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was opened."],"log":[],"instancesBefore":1,"instancesAfter":[{"pid":1834,"bundle":"/Users/admin/install-fx/A/Fixture.app"}],"witness":null}
+CHECK FAILED: guidance does not name the stage, long spelling, byte count and no request
+Result: application-locations: open: 1024-byte constrained application, running; no substitution: failed — guidance does not name the stage, long spelling, byte count and no request; 
+
+== launch: 1500-byte constrained application, cold; no substitution
+Observation: {"classification":"failed","status":null,"reason":null,"process":null,"errors":["The application hand-off was refused: the application path as written is 1500 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was launched."],"log":[],"instancesBefore":0,"instancesAfter":[],"witness":null}
+CHECK FAILED: guidance does not name the stage, long spelling, byte count and no request
+Result: application-locations: launch: 1500-byte constrained application, cold; no substitution: failed — guidance does not name the stage, long spelling, byte count and no request; 
+Observation: {"classification":"ok","status":"AVAILABLE","reason":null,"process":{"pid":2096,"startedAt":"2026-10-08T03:34:50.703565Z"},"errors":[],"log":[{"event":"launched","label":"A","pid":2096,"path":null}],"instancesBefore":0,"instancesAfter":[{"pid":2096,"bundle":"/Users/admin/install-fx/A/Fixture.app"}],"witness":{"pid":2096,"startedAt":"2026-10-08T03:34:50.703565Z","bundle":"/Users/admin/install-fx/A/Fixture.app"}}
+
+== launch: 1500-byte constrained application, running; no substitution
+Observation: {"classification":"failed","status":null,"reason":null,"process":null,"errors":["The application hand-off was refused: the application path as written is 1500 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was launched."],"log":[],"instancesBefore":1,"instancesAfter":[{"pid":2096,"bundle":"/Users/admin/install-fx/A/Fixture.app"}],"witness":null}
+CHECK FAILED: guidance does not name the stage, long spelling, byte count and no request
+Result: application-locations: launch: 1500-byte constrained application, running; no substitution: failed — guidance does not name the stage, long spelling, byte count and no request; 
+
+== open: 1500-byte constrained application, cold; no substitution
+Observation: {"classification":"failed","status":null,"reason":null,"process":null,"errors":["The application hand-off was refused: the application path as written is 1500 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was opened."],"log":[],"instancesBefore":0,"instancesAfter":[],"witness":null}
+CHECK FAILED: guidance does not name the stage, long spelling, byte count and no request
+Result: application-locations: open: 1500-byte constrained application, cold; no substitution: failed — guidance does not name the stage, long spelling, byte count and no request; 
+Observation: {"classification":"ok","status":"AVAILABLE","reason":null,"process":{"pid":2275,"startedAt":"2026-10-08T03:38:21.657503Z"},"errors":[],"log":[{"event":"launched","label":"A","pid":2275,"path":null}],"instancesBefore":0,"instancesAfter":[{"pid":2275,"bundle":"/Users/admin/install-fx/A/Fixture.app"}],"witness":{"pid":2275,"startedAt":"2026-10-08T03:38:21.657503Z","bundle":"/Users/admin/install-fx/A/Fixture.app"}}
+
+== open: 1500-byte constrained application, running; no substitution
+Observation: {"classification":"failed","status":null,"reason":null,"process":null,"errors":["The application hand-off was refused: the application path as written is 1500 bytes, and a path of 1024 bytes or more cannot be handed to an application (1023 is the most, not counting the terminating NUL). No request was made, so nothing was opened."],"log":[],"instancesBefore":1,"instancesAfter":[{"pid":2275,"bundle":"/Users/admin/install-fx/A/Fixture.app"}],"witness":null}
+CHECK FAILED: guidance does not name the stage, long spelling, byte count and no request
+Result: application-locations: open: 1500-byte constrained application, running; no substitution: failed — guidance does not name the stage, long spelling, byte count and no request; 
+
+== Short workflows beside the long copies, with actual registration recorded
+Current native registration: dev.koine.test.InstallationFixture	/Users/admin/install-fx/A/Fixture.app	/Users/admin/install-fx/A/Fixture.app|/Users/admin/install-fx/B/Fixture.app
+
+== launch: constrained short A beside long copies on disk
+Observation: {"classification":"ok","status":"AVAILABLE","reason":null,"process":{"pid":2436,"startedAt":"2026-10-08T03:42:15.624917Z"},"errors":[],"log":[{"event":"launched","label":"A","pid":2436,"path":null}],"instancesBefore":0,"instancesAfter":[{"pid":2436,"bundle":"/Users/admin/install-fx/A/Fixture.app"}],"witness":{"pid":2436,"startedAt":"2026-10-08T03:42:15.624917Z","bundle":"/Users/admin/install-fx/A/Fixture.app"}}
+Result: application-locations: launch: constrained short A beside long copies on disk: passed
+
+== open: constrained short A beside long copies on disk
+Observation: {"classification":"ok","status":"AVAILABLE","reason":null,"process":{"pid":2509,"startedAt":"2026-10-08T03:44:10.154495Z"},"errors":[],"log":[{"event":"open","label":"A","pid":2509,"path":"/Users/admin/install-fx/docs/note-1.koineinstall"},{"event":"launched","label":"A","pid":2509,"path":null}],"instancesBefore":0,"instancesAfter":[{"pid":2509,"bundle":"/Users/admin/install-fx/A/Fixture.app"}],"witness":{"pid":2509,"startedAt":"2026-10-08T03:44:10.154495Z","bundle":"/Users/admin/install-fx/A/Fixture.app"}}
+Result: application-locations: open: constrained short A beside long copies on disk: passed
+
+== launch: constrained short B beside long copies on disk
+Observation: {"classification":"ok","status":"AVAILABLE","reason":null,"process":{"pid":2542,"startedAt":"2026-10-08T03:44:19.706521Z"},"errors":[],"log":[{"event":"launched","label":"B","pid":2542,"path":null}],"instancesBefore":0,"instancesAfter":[{"pid":2542,"bundle":"/Users/admin/install-fx/B/Fixture.app"}],"witness":{"pid":2542,"startedAt":"2026-10-08T03:44:19.706521Z","bundle":"/Users/admin/install-fx/B/Fixture.app"}}
+Result: application-locations: launch: constrained short B beside long copies on disk: passed
+
+== open: constrained short B beside long copies on disk
+Observation: {"classification":"ok","status":"AVAILABLE","reason":null,"process":{"pid":2575,"startedAt":"2026-10-08T03:44:51.049909Z"},"errors":[],"log":[{"event":"open","label":"B","pid":2575,"path":"/Users/admin/install-fx/docs/note-1.koineinstall"},{"event":"launched","label":"B","pid":2575,"path":null}],"instancesBefore":0,"instancesAfter":[{"pid":2575,"bundle":"/Users/admin/install-fx/B/Fixture.app"}],"witness":{"pid":2575,"startedAt":"2026-10-08T03:44:51.049909Z","bundle":"/Users/admin/install-fx/B/Fixture.app"}}
+Result: application-locations: open: constrained short B beside long copies on disk: passed
+
+== launch: unconstrained short preferred A beside long copies on disk
+Observation: {"classification":"ok","status":"AVAILABLE","reason":null,"process":{"pid":2641,"startedAt":"2026-10-08T03:47:41.629368Z"},"errors":[],"log":[{"event":"launched","label":"A","pid":2641,"path":null}],"instancesBefore":0,"instancesAfter":[{"pid":2641,"bundle":"/Users/admin/install-fx/A/Fixture.app"}],"witness":{"pid":2641,"startedAt":"2026-10-08T03:47:41.629368Z","bundle":"/Users/admin/install-fx/A/Fixture.app"}}
+Result: application-locations: launch: unconstrained short preferred A beside long copies on disk: passed
+
+== open: unconstrained short preferred A beside long copies on disk
+Observation: {"classification":"ok","status":"AVAILABLE","reason":null,"process":{"pid":2696,"startedAt":"2026-10-08T03:48:47.103926Z"},"errors":[],"log":[{"event":"open","label":"A","pid":2696,"path":"/Users/admin/install-fx/docs/note-1.koineinstall"},{"event":"launched","label":"A","pid":2696,"path":null}],"instancesBefore":0,"instancesAfter":[{"pid":2696,"bundle":"/Users/admin/install-fx/A/Fixture.app"}],"witness":{"pid":2696,"startedAt":"2026-10-08T03:48:47.103926Z","bundle":"/Users/admin/install-fx/A/Fixture.app"}}
+Result: application-locations: open: unconstrained short preferred A beside long copies on disk: passed
+
+== Finder selection control at 1,023 bytes, then a short reveal beside long copies
+The observer's own consent dialog: “testanyware-agent” wants access to control “Finder”. Allowing control will provide access to documents and data in “Finder”, and to perform actions within that app. / 
+Observer consent: asked and allowed. Finder's account with no window open: {"windows":0,"target":null,"title":null,"selected":[]}
+{"atMs":1791431402041,"instances":[{"bundle":"\/Applications\/Koine.app","bundleIdentifier":"dev.antony.Koine","executable":"\/Applications\/Koine.app\/Contents\/MacOS\/Koine","isActive":false,"isTerminated":false,"name":"Koine","pid":1031,"startedAt":"2026-10-08T03:09:10.557031Z"}]}
+Precondition: Calculator is in front and Koine is inactive.
+Observation: {"classification":"ok","status":"AVAILABLE","reason":null,"process":null,"errors":[],"log":[],"instancesBefore":0,"instancesAfter":[],"witness":null}
+Dialogs on screen after application-locations: none
+
+== Accessibility was absent throughout, and no consent dialog is on screen
+Observation: Koine's own account (osPermissions): accessibility granted is false.
+no consent dialog on screen (after every request); universalAccessAuthWarn: running
+
+== The subjects of the run are as they were at its start
+Unchanged: 32 files, digested before and after.
+
+== Results
+registration: what Launch Services says before any request: recorded
+registration: component-created long copies and native registration attempts: recorded
+control: independent 1023-byte document delivery: passed
+application-locations: launch: 1024-byte constrained application, cold; no substitution: failed
+application-locations: launch: 1024-byte constrained application, running; no substitution: failed
+application-locations: open: 1024-byte constrained application, cold; no substitution: failed
+application-locations: open: 1024-byte constrained application, running; no substitution: failed
+application-locations: launch: 1500-byte constrained application, cold; no substitution: failed
+application-locations: launch: 1500-byte constrained application, running; no substitution: failed
+application-locations: open: 1500-byte constrained application, cold; no substitution: failed
+application-locations: open: 1500-byte constrained application, running; no substitution: failed
+application-locations: launch: constrained short A beside long copies on disk: passed
+application-locations: open: constrained short A beside long copies on disk: passed
+application-locations: launch: constrained short B beside long copies on disk: passed
+application-locations: open: constrained short B beside long copies on disk: passed
+application-locations: launch: unconstrained short preferred A beside long copies on disk: passed
+application-locations: open: unconstrained short preferred A beside long copies on disk: passed
+registration: preferred long copy refusal, cold and with a short copy running: pending
+registration: short selected beside registered long copy in both enumeration orders: pending
+control: independent 1023-byte Finder selection: passed
+application-locations: short reveal finds Finder beside long copies: passed
+application-locations: no system dialog after the section: passed
+-: accessibility absent throughout: passed
+Written: .build/application-locations-vm/results.json
+
+== Quit Koine
+FAILED: 8 case(s) failed — transcript in .build/vm-verify/installations-vm-20261008T140637.log
+task: Failed to run task "application-locations:vm-packaged": exit status 1

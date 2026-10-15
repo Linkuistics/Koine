@@ -1,0 +1,20 @@
+# Previous raw-search proposal only; not the current v1 API or backend.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+Start: "Previous proposal · Frozen source observations" {class: start}
+FS: "Filesystem source\nDirectory marker + qualified non-withheld completion"
+OS: "OS-reported app source\nAlways UNKNOWN inventory completeness"
+Progress: "Some candidate / healthy empty\nAVAILABLE list + affecting coverage"
+NoProgress: "No progress\nDefined reason producers: failure → risk → unavailable"
+Client: "Client inspects data AND errors\nCount truncation differs from unfinished work"
+Assess: "Assess source evidence\nCandidate / healthy empty / failure / risk?"
+Start -> FS: "1 · filesystem"
+Start -> OS: "1 · native seeds"
+FS -> Assess: "2 · observed"
+OS -> Assess: "2 · observed"
+Assess -> Progress: "3 · progress"
+Assess -> NoProgress: "3 · no progress"
+Progress -> Client: "4 · list + coverage"
+NoProgress -> Client: "4 · status + errors"

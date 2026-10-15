@@ -1,12 +1,27 @@
 import Foundation
 import KoineProviderAPI
 
+// The image's own marker (initializer.c): which phase of this image ran, to the
+// log KOINE_FIXTURE_MARKER_LOG names. It resolves within the same image.
+@_silgen_name("koine_image_marker")
+private func koineFixtureMarker(_ phase: UnsafePointer<CChar>)
+
 // Test material: the independently built provider the native seam is exercised
 // with. build.sh generates `fixtureSchemaSDL` from schema.graphql.
 
-@objc(KoineFixtureProviderFactory)
+// FIXTURE_RENAMED_PRINCIPAL: an update that names another principal class than the release
+// before it, which the selection acceptance installs beside a host that predates the
+// `first-party-selection-v1` feature (docs/verification/selection-updates.md).
+#if FIXTURE_RENAMED_PRINCIPAL
+    @objc(KoineFixtureProviderFactoryRenamed)
+#else
+    @objc(KoineFixtureProviderFactory)
+#endif
 final class FixtureProviderFactory: NSObject, ProviderFactory {
-    override required init() { super.init() }
+    override required init() {
+        super.init()
+        koineFixtureMarker("factory")
+    }
 
     var descriptor: ProviderDescriptor {
         let read = [
@@ -51,10 +66,55 @@ final class FixtureProviderFactory: NSObject, ProviderFactory {
                 authority: .control
             ),
         ]
-        return ProviderDescriptor(
-            providerId: "fixture", graphQLPrefix: "Fixture", schemaSDL: fixtureSchemaSDL,
-            fields: fields, requiredFeatures: []
-        )
+        #if FIXTURE_ADDITIONAL
+            // Framework minor 1: one action that also requires `fixture:read`,
+            // so a grant holding control alone is refused, with the whole set.
+            #if FIXTURE_NEEDS_SH
+                // The capability owner is another provider's identity, for the
+                // selection acceptance's cascade (docs/verification/selection-failures.md).
+                // The build tags every "fixture" literal that is not split like this.
+                let owner = "fix" + "turesh"
+            #elseif FIXTURE_NEEDS_SK
+                let owner = "fix" + "turesk"
+            #else
+                let owner = "fixture"
+            #endif
+            fields += [
+                ProviderFieldRegistration(
+                    coordinate: "Mutation.fixtureRenameItemChecked", resolverId: "renameItem",
+                    authority: .control,
+                    additionalRequirements: [
+                        ProviderCapabilityRequirement(providerId: owner, kind: .read)
+                    ]
+                )
+            ]
+            #if FIXTURE_UNDECLARED
+                var features: [String] = []
+            #else
+                var features = [ProviderDescriptor.additionalCapabilitiesFeature]
+            #endif
+        #else
+            var features: [String] = []
+        #endif
+        #if FIXTURE_SELECTION
+            // A newly published first-party update states the host feature that
+            // lets an earlier host refuse it before dlopen. It is a plain string:
+            // it needs no framework declaration.
+            features.append("first-party-selection-v1")
+        #endif
+        #if FIXTURE_DESCRIBES_SLOT
+            // A runtime descriptor that names a shipped slot's identity under a manifest
+            // that does not. The build tags every "fixture" literal, so the names are split.
+            return ProviderDescriptor(
+                providerId: "fix" + "turesh", graphQLPrefix: "Fix" + "tureSh", schemaSDL: fixtureSchemaSDL,
+                fields: fields, requiredFeatures: features
+            )
+        #else
+            return ProviderDescriptor(
+                providerId: "fixture", graphQLPrefix: "Fixture", schemaSDL: fixtureSchemaSDL,
+                fields: fields, requiredFeatures: features
+            )
+        #endif
     }
 
     func makeProvider() -> any Provider { FixtureProvider() }
@@ -84,6 +144,7 @@ final class FixtureProvider: Provider, @unchecked Sendable {
     private var held: [CheckedContinuation<Void, Never>] = []
 
     func start() async throws {
+        koineFixtureMarker("start")
         #if FIXTURE_FAILS_START
             throw FixtureStartFailure()
         #endif
@@ -96,11 +157,15 @@ final class FixtureProvider: Provider, @unchecked Sendable {
 
     // scripts/build-compat-pairs.sh builds the later revisions of this provider
     // for the binary compatibility pairs: FIXTURE_REVISION_2 is newer source
-    // that uses only the baseline framework, and FIXTURE_USES_MINOR_1 also
-    // uses the declarations its evidence-only framework minor 1 adds.
+    // that uses only the baseline framework, and FIXTURE_ADDITIONAL also uses
+    // the declarations framework minor 1 added (docs/specs/machine.md,
+    // "Additional capability requirements"). FIXTURE_UNDECLARED, with it, omits
+    // the feature from the descriptor: the use a host must refuse. FIXTURE_SELECTION
+    // declares `first-party-selection-v1`, as a newly published first-party
+    // update does (scripts/build-selection-fixtures.sh).
     private static var greeting: String {
-        #if FIXTURE_USES_MINOR_1
-            koineProviderMinor1Greeting(revision: 2)
+        #if FIXTURE_ADDITIONAL
+            "hello from the fixture provider, revision 2, using additional capabilities"
         #elseif FIXTURE_REVISION_2
             "hello from the fixture provider, revision 2"
         #else
@@ -108,9 +173,6 @@ final class FixtureProvider: Provider, @unchecked Sendable {
         #endif
     }
 
-    #if FIXTURE_USES_MINOR_1
-        func describeInstance() -> String { "the fixture provider, revision 2" }
-    #endif
     func stop() async {}
 
     func resolve(_ request: ResolutionRequest) async -> ResolutionResult {

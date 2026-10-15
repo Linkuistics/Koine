@@ -1,0 +1,9 @@
+{
+  "command": "(open -a /Applications/Zed.app) >/tmp/k149-cmd-3.out 2>/tmp/k149-cmd-3.err; echo $? >/tmp/k149-cmd-3.tmp; mv /tmp/k149-cmd-3.tmp /tmp/k149-cmd-3.code",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "",
+  "timed_out": false
+}

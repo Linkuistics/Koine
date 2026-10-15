@@ -1,0 +1,11 @@
+{
+  "name": "extension-host core + desktop",
+  "design": "../desktop-schema-extension-host.graphql",
+  "management": "extended",
+  "providers": [
+    {
+      "provider": "desktop", "version": "1.0.0", "schemaVersion": "1.0.0", "state": "ACTIVE",
+      "origin": "BUNDLED", "selection": "SELECTED", "reason": null
+    }
+  ]
+}

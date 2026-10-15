@@ -1,0 +1,29 @@
+{"event": "clone-start-request", "utcEpoch": 1791201280.464898, "elapsed": 0.0}
+{"event": "vm-started", "utcEpoch": 1791201295.712822, "elapsed": 15.25, "vm": "koine-k152"}
+{"event": "preparation-checkpoint", "utcEpoch": 1791201301.58784, "elapsed": 21.12, "vm": "koine-k152"}
+{"event": "helper-completed", "utcEpoch": 1791201335.8967612, "elapsed": 55.42, "name": "native-environment", "mode": "environment"}
+{"event": "helper-completed", "utcEpoch": 1791201336.1998458, "elapsed": 55.72, "name": "fixture-file-900", "mode": "fixture"}
+{"event": "helper-completed", "utcEpoch": 1791201336.500878, "elapsed": 56.02, "name": "fixture-directory-900", "mode": "fixture"}
+{"event": "helper-completed", "utcEpoch": 1791201336.80413, "elapsed": 56.33, "name": "fixture-file-1500", "mode": "fixture"}
+{"event": "helper-completed", "utcEpoch": 1791201337.100961, "elapsed": 56.62, "name": "fixture-directory-1500", "mode": "fixture"}
+{"event": "helper-completed", "utcEpoch": 1791201337.402147, "elapsed": 56.92, "name": "inspect-file-900", "mode": "inspect"}
+{"event": "helper-completed", "utcEpoch": 1791201337.699754, "elapsed": 57.22, "name": "inspect-directory-900", "mode": "inspect"}
+{"event": "helper-completed", "utcEpoch": 1791201338.001958, "elapsed": 57.52, "name": "inspect-file-1500", "mode": "inspect"}
+{"event": "helper-completed", "utcEpoch": 1791201338.309143, "elapsed": 57.83, "name": "inspect-directory-1500", "mode": "inspect"}
+{"event": "helper-completed", "utcEpoch": 1791201338.611073, "elapsed": 58.13, "name": "reset-file-900-default", "mode": "reset"}
+{"event": "helper-completed", "utcEpoch": 1791201340.4818811, "elapsed": 60.0, "name": "request-file-900-default", "mode": "default"}
+{"event": "helper-completed", "utcEpoch": 1791201342.9579258, "elapsed": 62.48, "name": "reset-file-900-named", "mode": "reset"}
+{"event": "helper-completed", "utcEpoch": 1791201344.817173, "elapsed": 64.34, "name": "request-file-900-named", "mode": "named"}
+{"event": "helper-completed", "utcEpoch": 1791201347.3051982, "elapsed": 66.83, "name": "reset-file-900-reveal", "mode": "reset"}
+{"event": "helper-completed", "utcEpoch": 1791201349.1784692, "elapsed": 68.7, "name": "request-file-900-reveal", "mode": "reveal"}
+{"event": "helper-completed", "utcEpoch": 1791201351.622922, "elapsed": 71.14, "name": "reset-directory-900-default", "mode": "reset"}
+{"event": "helper-completed", "utcEpoch": 1791201353.4882932, "elapsed": 73.01, "name": "request-directory-900-default", "mode": "default"}
+{"event": "helper-completed", "utcEpoch": 1791201355.981802, "elapsed": 75.5, "name": "reset-directory-900-named", "mode": "reset"}
+{"event": "helper-completed", "utcEpoch": 1791201357.831407, "elapsed": 77.35, "name": "request-directory-900-named", "mode": "named"}
+{"event": "helper-completed", "utcEpoch": 1791201360.33229, "elapsed": 79.85, "name": "reset-directory-900-reveal", "mode": "reset"}
+{"event": "helper-completed", "utcEpoch": 1791201362.187566, "elapsed": 81.71, "name": "request-directory-900-reveal", "mode": "reveal"}
+{"event": "helper-completed", "utcEpoch": 1791201364.368259, "elapsed": 83.89, "name": "reset-file-1500-default", "mode": "reset"}
+{"event": "helper-completed", "utcEpoch": 1791201366.23571, "elapsed": 85.76, "name": "request-file-1500-default", "mode": "default"}
+{"event": "helper-completed", "utcEpoch": 1791201368.682506, "elapsed": 88.2, "name": "reset-file-1500-named", "mode": "reset"}
+{"event": "helper-completed", "utcEpoch": 1791201370.575773, "elapsed": 90.1, "name": "request-file-1500-named", "mode": "named"}
+{"event": "teardown", "utcEpoch": 1791201372.056303, "elapsed": 91.58, "rc": 0}

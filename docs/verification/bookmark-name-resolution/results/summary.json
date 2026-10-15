@@ -1,0 +1,22 @@
+{
+  "version": "k158-1",
+  "complete": false,
+  "builds": 1,
+  "collections": 1,
+  "repairs": 0,
+  "externalRequests": 0,
+  "cases": [],
+  "attemptedCases": 0,
+  "firstFailure": null,
+  "remaining": [
+    "original-900",
+    "bare-900",
+    "original-1500",
+    "bare-1500"
+  ],
+  "stop": "supervisor stop at preparation: ",
+  "teardownExit": 0,
+  "elapsedSeconds": 19.22,
+  "withinAggregateCap": true,
+  "subjectsUnchanged": true
+}

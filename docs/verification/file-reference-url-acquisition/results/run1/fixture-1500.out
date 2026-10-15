@@ -1,0 +1,3 @@
+{"different":1,"event":"independentIdentity","target":{"inode":222532,"device":16777234,"mode":33152},"decoy":{"inode":222533,"device":16777234,"mode":33152}}
+{"event":"fixture","pathBytes":1500,"ok":true}
+{"event":"done"}

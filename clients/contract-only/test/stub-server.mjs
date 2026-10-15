@@ -22,12 +22,18 @@ export async function startStub(behaviour) {
       const request = body.length > 0 ? JSON.parse(body) : {};
       const auth = req.headers['authorization'] ?? null;
       const answer = behaviour({ request, auth, headers: req.headers });
-      res.writeHead(answer.status, {
-        'Content-Type': 'application/graphql-response+json',
-        'Cache-Control': 'no-store',
-        ...(answer.headers ?? {}),
-      });
-      res.end(answer.body === undefined ? '' : JSON.stringify(answer.body));
+      const respond = () => {
+        res.writeHead(answer.status, {
+          'Content-Type': 'application/graphql-response+json',
+          'Cache-Control': 'no-store',
+          ...(answer.headers ?? {}),
+        });
+        res.end(answer.body === undefined ? '' : JSON.stringify(answer.body));
+      };
+      // `delayMs` lets a test hold an answer back, so that a request's sent and
+      // received instants are visibly apart.
+      if (answer.delayMs) setTimeout(respond, answer.delayMs);
+      else respond();
     });
   });
   await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));

@@ -31,17 +31,31 @@ import Testing
         return root
     }
 
+    /// The staged copy's name for `bundle`, as the loader names it: by the
+    /// bundle's name and a digest of its origin, its canonical installed location
+    /// and its content.
+    static func stagedName(
+        of bundle: URL, origin: ProviderCandidateReport.Origin = .perUser
+    ) throws -> String {
+        let canonical = String(cString: try #require(realpath(bundle.path, nil)))
+        return try ProviderStaging.stagedName(
+            of: URL(fileURLWithPath: canonical), from: canonical, origin: origin
+        )
+    }
+
     /// Whether any image of a bundle in `root` ran its initializers in this
     /// process. A bundle loads from its staged copy, which is named by its
-    /// content; build-variants.sh makes every variant's content its own.
-    static func initializersRan(under root: URL) throws -> Bool {
+    /// origin, location and content; build-variants.sh makes every variant's
+    /// content its own.
+    static func initializersRan(
+        under root: URL, origin: ProviderCandidateReport.Origin = .perUser
+    ) throws -> Bool {
         let log = (try? String(contentsOf: initializerLog, encoding: .utf8)) ?? ""
         let bundles = try FileManager.default.contentsOfDirectory(at: root, includingPropertiesForKeys: nil)
             .filter { $0.pathExtension == ProviderLoader.bundleExtension }
         try #require(!bundles.isEmpty)
         return try bundles.contains { bundle in
-            let installed = bundle.resolvingSymlinksInPath()
-            let staged = try ProviderStaging.stagedName(of: installed, from: installed.path)
+            let staged = try stagedName(of: bundle, origin: origin)
             return log.split(separator: "\n").contains { $0.contains("/\(staged)/") }
         }
     }
@@ -107,7 +121,7 @@ import Testing
     static let refusedBeforeLoading: [Refusal] = [
         Refusal(
             variant: "malformed-manifest", state: "REJECTED", diagnostic: "framework is missing",
-            provider: "Fixture", version: "unknown"
+            provider: "(unknown)", version: "unknown"
         ),
         Refusal(variant: "unsupported-major", state: "INCOMPATIBLE", diagnostic: "framework major 2"),
         Refusal(variant: "unavailable-minor", state: "INCOMPATIBLE", diagnostic: "1.99 or later"),
@@ -115,7 +129,7 @@ import Testing
         Refusal(variant: "foreign-architecture", state: "INCOMPATIBLE", diagnostic: "is built for"),
         Refusal(variant: "newer-os", state: "INCOMPATIBLE", diagnostic: "requires macOS 99.0"),
         Refusal(variant: "newer-runtime", state: "INCOMPATIBLE", diagnostic: "Swift runtime 99.0"),
-        Refusal(variant: "understated-os", state: "REJECTED", diagnostic: "was built for macOS 13.0"),
+        Refusal(variant: "understated-os", state: "REJECTED", diagnostic: "was built for macOS 26.0"),
         Refusal(variant: "principal-collision", state: "REJECTED", diagnostic: "already registered"),
         Refusal(variant: "library-outside-bundle", state: "REJECTED", diagnostic: "outside the bundle"),
         Refusal(variant: "architecture-mismatch", state: "REJECTED", diagnostic: "but libFixtureProvider.dylib holds"),
@@ -133,7 +147,7 @@ import Testing
         // approved it.
         Refusal(
             variant: "escapes-root", state: "REJECTED", diagnostic: "outside its provider root",
-            provider: "Fixture", version: "unknown"
+            provider: "(unknown)", version: "unknown"
         ),
         Refusal(variant: "unapproved", state: "REJECTED", diagnostic: "no fixture.approval.json"),
         Refusal(variant: "unsigned", state: "REJECTED", diagnostic: "it is not signed"),
@@ -302,24 +316,72 @@ import Testing
         return try JSONDecoder().decode(ProviderApproval.self, from: Data(contentsOf: record))
     }
 
-    @Test func theBundledRootTakesItsApprovalsFromTheHostNotFromAFile() async throws {
-        // The root holds a good bundle and a record approving it, as a file.
-        let root = try Self.variantRoot("bundled-unapproved")
-        let unapproved = try await Harness(bundledRoots: [.bundled(root, approvals: [])])
-        let status = try #require(try await Self.statuses(unapproved).first)
-        #expect(status.state == "REJECTED")
-        #expect(status.diagnostic?.contains("no built-in approval") == true)
-        #expect(try !Self.initializersRan(under: root))
-        await unapproved.stop()
-
-        let approved = try await Harness(bundledRoots: [
-            .bundled(try Self.variantRoot("private-dependency"), approvals: [
-                ProviderApproval(
-                    providerId: "fixturepd", teamIdentifier: try Self.fixtureApproval().teamIdentifier
+    /// The catalogue that designates the `bundled-designated` variant, the way the
+    /// application's designates its own bundles.
+    static func designatingBundledVariant() throws -> ProviderCatalogue {
+        try ProviderCatalogue(entries: [
+            ProviderCatalogue.Entry(
+                providerId: "fixturebd", graphQLPrefix: "FixtureBd",
+                baseline: ProviderCatalogue.Baseline(
+                    bundleName: "FixtureBd.koineprovider", release: ProviderVersion("1.0.0")!,
+                    schema: ProviderVersion("1.0.0")!,
+                    signingIdentifier: "dev.antony.Koine.provider.fixturebd"
                 )
-            ])
+            )
         ])
-        #expect(try await Self.statuses(approved).map(\.state) == ["ACTIVE"])
+    }
+
+    /// The in-application root approves only what the sealed catalogue designates,
+    /// and for the running host's own Team ID, never for a file: an approval
+    /// record beside a bundle there approves nothing. Each refusal comes first,
+    /// with no code run; the same bundle then loads, as the control.
+    @Test func theBundledRootTakesItsApprovalFromTheHostNotFromAFile() async throws {
+        let team = try Self.fixtureApproval().teamIdentifier
+        // A good bundle with an approval record beside it, that no catalogue designates.
+        let unexpected = try Self.variantRoot("bundled-unapproved")
+        let undesignated = try await Harness(
+            bundledRoots: [.bundled(unexpected)], catalogue: .success(Harness.reservedDesktop),
+            hostTeam: team
+        )
+        let refused = try #require(try await Self.statuses(undesignated).first)
+        #expect(refused.state == "REJECTED")
+        #expect(refused.diagnostic?.contains("is not a bundle this Koine's catalogue designates") == true)
+        #expect(try !Self.initializersRan(under: unexpected, origin: .bundled))
+        await undesignated.stop()
+
+        let root = try Self.variantRoot("bundled-designated")
+        let catalogue = try Self.designatingBundledVariant()
+        // Designated, but this host has no team: no shipped candidate is admitted.
+        let unsigned = try await Harness(
+            bundledRoots: [.bundled(root)], catalogue: .success(catalogue), hostTeam: nil
+        )
+        let noTeam = try #require(try await Self.statuses(unsigned).first)
+        #expect(noTeam.state == "REJECTED")
+        #expect(noTeam.diagnostic?.contains("no Team ID and admits no shipped provider") == true)
+        #expect(try !Self.initializersRan(under: root, origin: .bundled))
+        await unsigned.stop()
+
+        // Designated, with a host team the signature does not carry.
+        let wrongTeam = try await Harness(
+            bundledRoots: [.bundled(root)], catalogue: .success(catalogue), hostTeam: "ZZZZZZZZZZ"
+        )
+        let mismatch = try #require(try await Self.statuses(wrongTeam).first)
+        #expect(mismatch.diagnostic?.contains("not by the approved identity, Team ID ZZZZZZZZZZ") == true)
+        #expect(try !Self.initializersRan(under: root, origin: .bundled))
+        await wrongTeam.stop()
+
+        let approved = try await Harness(
+            bundledRoots: [.bundled(root)], catalogue: .success(catalogue), hostTeam: team
+        )
+        #expect(
+            try await Self.statuses(approved) == [
+                Status(
+                    provider: "fixturebd", version: "1.0.0", schemaVersion: "1.0.0", state: "ACTIVE",
+                    diagnostic: nil
+                )
+            ]
+        )
+        #expect(try Self.initializersRan(under: root, origin: .bundled))
         await approved.stop()
     }
 
@@ -338,7 +400,7 @@ import Testing
         let installed = root.appendingPathComponent("FixturePd.koineprovider")
         let harness = try await Harness(providerRoots: [root])
         let staged = Harness.providerStaging.appendingPathComponent(
-            try ProviderStaging.stagedName(of: installed, from: installed.path)
+            try Self.stagedName(of: installed)
         )
 
         let log = try String(contentsOf: Self.initializerLog, encoding: .utf8)
@@ -365,7 +427,7 @@ import Testing
         ])
 
         let statuses = try await Self.statuses(harness)
-        #expect(statuses.map(\.provider) == ["Fixture", "fixture", "fixture"])
+        #expect(statuses.map(\.provider) == ["(unknown)", "fixture", "fixture"])
         #expect(Set(statuses.map(\.state)) == ["REJECTED", "ACTIVE", "INCOMPATIBLE"])
         let active = try #require(statuses.first { $0.state == "ACTIVE" })
         #expect(active.version == "1.0.0" && active.schemaVersion == "1.0.0")

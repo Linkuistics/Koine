@@ -1,0 +1,13 @@
+{"different":1,"event":"independentIdentity","target":{"inode":222194,"device":16777230,"mode":33152},"decoy":{"inode":222195,"device":16777230,"mode":33152}}
+{"reference":1,"hasBase":0,"base":"","event":"url","nonNull":1,"originalBytes":39,"error":{},"stage":"shortReference","url":"file:\/\/\/.file\/id=6571367.222197"}
+{"event":"consumerOpen","success":1,"error":{}}
+{"status":0,"errno":0,"observed":{"inode":222194,"device":16777230,"mode":33152},"matchesTarget":1,"event":"consumerIdentity","matchesDecoy":0}
+{"bytes":17,"event":"consumerRead","markerExact":1,"error":{}}
+{"event":"consumerClose","success":true,"error":{}}
+{"reference":0,"hasBase":0,"base":"","event":"url","nonNull":1,"originalBytes":39,"error":{},"stage":"pathConversion","url":"file:\/\/\/Users\/admin\/k149\/f1024\/same-object.txt"}
+{"bytes":39,"exact":true,"event":"conversionBytes","pathB64":"L1VzZXJzL2FkbWluL2sxNDkvZjEwMjQvc2FtZS1vYmplY3QudHh0"}
+{"event":"shortControl","ok":true}
+{"reference":0,"hasBase":0,"base":"","event":"url","nonNull":1,"originalBytes":1024,"error":{},"stage":"directInput","url":"file:\/\/\/Users\/admin\/k149\/f1024\/ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\/ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\/ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\/ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\/ddddd\/target.txt"}
+{"reference":0,"hasBase":0,"base":"","event":"url","nonNull":0,"originalBytes":1024,"error":{"domain":"NSCocoaErrorDomain","underlying":{"code":63,"domain":"NSPOSIXErrorDomain"},"code":258},"stage":"directReference","url":""}
+{"pattern":"direct","localReadExact":false,"event":"caseResult","acquired":false}
+{"event":"done"}

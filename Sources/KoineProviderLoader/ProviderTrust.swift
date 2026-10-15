@@ -41,30 +41,33 @@ public struct ProviderApproval: Sendable, Equatable, Decodable {
 /// A Koine-owned installation root, supplied by the host, and where its
 /// approval records come from.
 public struct ProviderRoot: Sendable {
-    enum Approvals: Sendable {
-        case builtIn([ProviderApproval])
-        case recordsInRoot
+    enum Kind: Sendable {
+        case bundled
+        case installed
     }
 
     public let location: URL
-    let approvals: Approvals
+    let kind: Kind
 
-    /// The root sealed inside the application bundle. Its approval records are
-    /// the host's own, sealed by the application signature with the rest of it.
-    public static func bundled(_ location: URL, approvals: [ProviderApproval]) -> ProviderRoot {
-        ProviderRoot(location: location, approvals: .builtIn(approvals))
+    /// The root sealed inside the application bundle. It holds only the bundles
+    /// the sealed catalogue designates, and their approval is the host's own:
+    /// the Team ID of the verified running signature, never a file
+    /// (docs/specs/machine.md, "Reserved identities").
+    public static func bundled(_ location: URL) -> ProviderRoot {
+        ProviderRoot(location: location, kind: .bundled)
     }
 
     /// The per-user installed root. Its approval records are files the user
     /// places beside the bundles; Koine writes none.
     public static func installed(_ location: URL) -> ProviderRoot {
-        ProviderRoot(location: location, approvals: .recordsInRoot)
+        ProviderRoot(location: location, kind: .installed)
     }
 
-    /// Whether this is the in-application root, whose providers are Koine's own.
-    public var isBundled: Bool {
-        if case .builtIn = approvals { true } else { false }
-    }
+    /// Whether this is the in-application root, whose bundles are Koine's own.
+    public var isBundled: Bool { kind == .bundled }
+
+    /// The physical origin of every candidate found in this root.
+    var origin: ProviderCandidateReport.Origin { kind == .bundled ? .bundled : .perUser }
 
     public static func approvalRecordName(for providerId: String) -> String {
         "\(providerId).approval.json"
@@ -74,39 +77,30 @@ public struct ProviderRoot: Sendable {
         let reason: String
     }
 
-    func approval(for providerId: String) throws -> ProviderApproval {
-        let found: ProviderApproval
-        switch approvals {
-        case .builtIn(let records):
-            guard let record = records.first(where: { $0.providerId == providerId }) else {
-                throw Unapproved(reason: "This Koine has no built-in approval for provider \(providerId).")
-            }
-            found = record
-        case .recordsInRoot:
-            let name = Self.approvalRecordName(for: providerId)
-            // The identifier names a file: it must not name a path.
-            guard !providerId.contains("/"), !providerId.hasPrefix("."),
-                let data = try? Data(contentsOf: location.appendingPathComponent(name))
-            else {
-                throw Unapproved(
-                    reason: "Provider \(providerId) is not approved: there is no \(name) in the provider root."
-                )
-            }
-            guard let record = try? JSONDecoder().decode(ProviderApproval.self, from: data),
-                record.providerId == providerId
-            else {
-                throw Unapproved(
-                    reason: "\(name) is not an approval record for provider \(providerId)."
-                )
-            }
-            found = record
+    /// The approval record `<providerId>.approval.json` in this per-user root.
+    /// A record is never read from the in-application root: its approval is the
+    /// host's, and a file there approves nothing.
+    func approvalRecord(for providerId: String) throws -> ProviderApproval {
+        let name = Self.approvalRecordName(for: providerId)
+        // The identifier names a file: it must not name a path.
+        guard kind == .installed, !providerId.contains("/"), !providerId.hasPrefix("."),
+            let data = try? Data(contentsOf: location.appendingPathComponent(name))
+        else {
+            throw Unapproved(
+                reason: "Provider \(providerId) is not approved: there is no \(name) in the provider root."
+            )
         }
-        guard found.hasWellFormedTeamIdentifier else {
+        guard let record = try? JSONDecoder().decode(ProviderApproval.self, from: data),
+            record.providerId == providerId
+        else {
+            throw Unapproved(reason: "\(name) is not an approval record for provider \(providerId).")
+        }
+        guard record.hasWellFormedTeamIdentifier else {
             throw Unapproved(
                 reason: "The approval record for provider \(providerId) does not name a Team ID."
             )
         }
-        return found
+        return record
     }
 }
 
@@ -143,6 +137,18 @@ enum CodeSignature {
             let message = SecCopyErrorMessageString(status, nil) as String? ?? "error \(status)"
             return "its signature is not valid: \(message)."
         }
+    }
+
+    /// The code-signing identifier the signature at `path` carries. It is read
+    /// from the signature, never the manifest, and is believed only of code
+    /// whose signature `refusal(of:approvedBy:)` has already accepted.
+    static func identifier(of path: String) -> String? {
+        var code: SecStaticCode?
+        guard
+            SecStaticCodeCreateWithPath(URL(fileURLWithPath: path) as CFURL, [], &code) == errSecSuccess,
+            let code
+        else { return nil }
+        return information(of: code)?[kSecCodeInfoIdentifier as String] as? String
     }
 
     static func information(of code: SecStaticCode) -> [String: Any]? {

@@ -1,0 +1,41 @@
+# Three public choices and one human local-UI action; none invokes another.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+Start: "Start here · Client choice\nNever automatic replay" {class: start}
+Read: "Read catalogue\nworkspace:read"
+Prepare: "Prepare background\nworkspace:control"
+UI: "Start here · Human in Koine UI\nPrivate local-console seam" {class: start}
+Setup: "Request Automation if needed\nNo GraphQL / bearer route"
+Reveal: "Reveal selection\nBoth controls"
+Running: "Validate running target\nStopped = unavailable"
+NoPrompt: "core/getd\nNo-prompt preflight/send"
+Values: "Positive panes/anchors · PARTIAL\nLazy observations = unknown"
+Launch: "Stopped: activates=false\nRunning: no launch/event"
+Receipt: "RUNNING receipt\nNo catalogue data"
+Ask: "Running fixed target only\nExplicit ask=true if needed"
+Permission: "Closed outcomes + reasons\nHost/target-wide OS consent"
+Pending: "UI wait · 30 seconds\nRetain owner/token until true return"
+Remedy: "Denial · Manual Automation guidance\nNo already-denied reveal route"
+Select: "Re-resolve exact keys\nNo-prompt misc/mvis"
+Unestablished: "Lazy no-such-object → failed\nNo absence proof; no effect"
+Activation: "Fixed-bundle open · activates=true\nExit race can relaunch target"
+Acknowledgment: "Control receipt\nVisible result unproved"
+Start -> Read: "1 · inspect"
+Read -> Running: "2 · validate"
+Running -> NoPrompt: "3 · allowed"
+NoPrompt -> Values: "4 · freeze"
+Start -> Prepare: "1 · prepare"
+Prepare -> Launch: "2 · admit"
+Launch -> Receipt: "3 · revalidate"
+UI -> Setup: "1 · explicit human action"
+Setup -> Ask: "2 · exact event"
+Ask -> Permission: "3 · exact preflight / request"
+Ask -> Pending: "3 · wait expired"
+Permission -> Remedy: "4 · denial"
+Start -> Reveal: "1 · select"
+Reveal -> Select: "2 · both controls"
+Select -> Activation: "3 · checked reply"
+Select -> Unestablished: "3 · unestablished selection"
+Activation -> Acknowledgment: "4 · receipt"

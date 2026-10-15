@@ -1,0 +1,11 @@
+{
+  "stdinIsTTY": true,
+  "stdoutIsTTY": true,
+  "ttyName": "/dev/ttys000",
+  "term": "xterm-256color",
+  "prompt": "TRANSPORT CHECK: reply PREFLIGHT-60a633a3ead1869e within 60 seconds; no guest allocated.",
+  "token": "PREFLIGHT-60a633a3ead1869e",
+  "received": "PREFLIGHT-60a633a3ead1869e",
+  "elapsedSeconds": 4.331606207997538,
+  "success": true
+}

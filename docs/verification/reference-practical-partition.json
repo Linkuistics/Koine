@@ -1,0 +1,4476 @@
+{
+  "representation": "Practical admission documentary identity/membership candidate; not executable schema/tool or accepted input",
+  "producer": "reference-evidence-practical-admission-k315",
+  "actual_answers": [
+    "k270 you decide",
+    "k281 yes / yes. / yes",
+    "k290 agree / ayes",
+    "k295 approve",
+    "k314 Use the smaller reviewed workflow (Recommended)"
+  ],
+  "normative_exception_default": {
+    "source": "docs/verification/application-reference-evidence.md",
+    "heading": "#### Historical and reporting exceptions",
+    "start_byte": 106790,
+    "end_byte": 118125,
+    "bytes": 11335,
+    "sha256": "6ae4e6a78f436e999f5eb461ef16de996fb65842d0dfb4975612fe61af108546",
+    "source_sha256": "4e5b81572a4054b0437ba8bbd43408d3d431f336832d32dbd1eec3109bc0ea92",
+    "binding": "exact UTF-8 heading-delimited payload; no new slicing"
+  },
+  "current_sources": [
+    {
+      "path": "docs/verification/application-population-metadata-shape.md",
+      "bytes": 60978,
+      "sha256": "96721641d8b625cd52365aad05eeac0a5bcefbe468f4719419418895775bf1a1",
+      "meaning": "current documentary candidate; no acceptance/qualification"
+    },
+    {
+      "path": "docs/adr/filesystem-access-is-descriptor-relative.md",
+      "bytes": 4172,
+      "sha256": "0cce90ed3e160d174d9267a00cb0097cd7158ee0ee1069c51748fac5744a5962",
+      "meaning": "current documentary candidate; no acceptance/qualification"
+    },
+    {
+      "path": "docs/verification/application-reference-evidence.md",
+      "bytes": 213723,
+      "sha256": "4e5b81572a4054b0437ba8bbd43408d3d431f336832d32dbd1eec3109bc0ea92",
+      "meaning": "current documentary candidate; no acceptance/qualification"
+    },
+    {
+      "path": "docs/verification/application-reference-contact-boundary.md",
+      "bytes": 46961,
+      "sha256": "619d344baf93c1b57e5fe19013e4d0cfbfa872ee5ac37428ab25b506dc5c911f",
+      "meaning": "current documentary candidate; no acceptance/qualification"
+    },
+    {
+      "path": "docs/verification/application-reference-packaging-runtime.md",
+      "bytes": 75839,
+      "sha256": "86d25063e480153d07349d68e53b02d90b51e8e7b848cfd152559f2cb972a97b",
+      "meaning": "current documentary candidate; no acceptance/qualification"
+    },
+    {
+      "path": "docs/verification/reference-contact-inventory/api-basis.tsv",
+      "bytes": 2680,
+      "sha256": "e8400683b8d4bc360f82749fabc97350133581d74cbe2d1dbaa2f9e44e94496e",
+      "meaning": "current documentary candidate; no acceptance/qualification"
+    },
+    {
+      "path": "docs/verification/reference-contact-inventory/bsd-declarations.tsv",
+      "bytes": 74221,
+      "sha256": "2a5f386425214d54d6dc60d29bf19738bbf57bcbde5b532e382fe3d088c3a0a5",
+      "meaning": "current documentary candidate; no acceptance/qualification"
+    },
+    {
+      "path": "docs/verification/reference-contact-inventory/mach-traps.tsv",
+      "bytes": 13265,
+      "sha256": "42de9ccff9fd75046e204ecbc3c16eaaa5021c21e1adfbdcfe88e33d59d529d3",
+      "meaning": "current documentary candidate; no acceptance/qualification"
+    },
+    {
+      "path": "docs/verification/reference-contact-inventory/mig-routines.tsv",
+      "bytes": 42437,
+      "sha256": "1156336abe2a02c7e297f75bff65dc624a701fbb72d5b8b7568d6ea1111424d0",
+      "meaning": "current documentary candidate; no acceptance/qualification"
+    },
+    {
+      "path": "docs/verification/reference-contact-inventory/source-pins.tsv",
+      "bytes": 2264,
+      "sha256": "4b578b9544d4abb879a63bd1e52f3208ded86af58c03b13da718a9d7eb9fae33",
+      "meaning": "current documentary candidate; no acceptance/qualification"
+    },
+    {
+      "path": "docs/design/application-metadata-subject.json",
+      "bytes": 7990160,
+      "sha256": "dd2f05d84477aa9bc97b03771100006d587636145c9a16d5e94fbd71573a3d1a",
+      "meaning": "current documentary candidate; no acceptance/qualification"
+    },
+    {
+      "path": "docs/verification/reference-target-parents.tsv",
+      "bytes": 43306,
+      "sha256": "5e898035798be3bb74afeb224cd3f1fc390834eac15911542f6ac5fb32d1f4ad",
+      "meaning": "current documentary candidate; no acceptance/qualification"
+    }
+  ],
+  "normative_payloads": [
+    {
+      "source": "docs/verification/application-population-metadata-shape.md",
+      "heading": "## Selected reference and evidence requirements",
+      "start_byte": 13451,
+      "end_byte": 41909,
+      "bytes": 28458,
+      "sha256": "610ff2074d9f35f7e46eb7bfed9037acf1ea137c60c956a9c8151d8e287e1433",
+      "source_sha256": "96721641d8b625cd52365aad05eeac0a5bcefbe468f4719419418895775bf1a1",
+      "binding": "exact UTF-8 heading-delimited payload; no new slicing"
+    },
+    {
+      "source": "docs/adr/filesystem-access-is-descriptor-relative.md",
+      "heading": "# Filesystem access is descriptor-relative",
+      "start_byte": 0,
+      "end_byte": 4172,
+      "bytes": 4172,
+      "sha256": "0cce90ed3e160d174d9267a00cb0097cd7158ee0ee1069c51748fac5744a5962",
+      "source_sha256": "0cce90ed3e160d174d9267a00cb0097cd7158ee0ee1069c51748fac5744a5962",
+      "binding": "exact UTF-8 heading-delimited payload; no new slicing"
+    },
+    {
+      "source": "docs/verification/application-reference-evidence.md",
+      "heading": "## Ownership and alternatives",
+      "start_byte": 1233,
+      "end_byte": 3853,
+      "bytes": 2620,
+      "sha256": "9f39d667ce14cc73cd681f060c118c0bb16b0e8ac8b536c60b2777a3b04df424",
+      "source_sha256": "4e5b81572a4054b0437ba8bbd43408d3d431f336832d32dbd1eec3109bc0ea92",
+      "binding": "exact UTF-8 heading-delimited payload; no new slicing"
+    },
+    {
+      "source": "docs/verification/application-reference-evidence.md",
+      "heading": "## Selected instrument architecture",
+      "start_byte": 3853,
+      "end_byte": 16862,
+      "bytes": 13009,
+      "sha256": "5caf0d14511eba883117c7710b20e87e57ad393a7b1cd25c53825e9745e60911",
+      "source_sha256": "4e5b81572a4054b0437ba8bbd43408d3d431f336832d32dbd1eec3109bc0ea92",
+      "binding": "exact UTF-8 heading-delimited payload; no new slicing"
+    },
+    {
+      "source": "docs/verification/application-reference-evidence.md",
+      "heading": "## Proposed envelope version and verification interface",
+      "start_byte": 16862,
+      "end_byte": 21596,
+      "bytes": 4734,
+      "sha256": "51044d139fcc998e5c1c0c0cb7d9fb9417526dc2cccdeb7407e09955f6f2b2db",
+      "source_sha256": "4e5b81572a4054b0437ba8bbd43408d3d431f336832d32dbd1eec3109bc0ea92",
+      "binding": "exact UTF-8 heading-delimited payload; no new slicing"
+    },
+    {
+      "source": "docs/verification/application-reference-evidence.md",
+      "heading": "## Permission inputs and reporting outputs",
+      "start_byte": 21596,
+      "end_byte": 30467,
+      "bytes": 8871,
+      "sha256": "e54ac3c8ab4cfc42d8c64c8a0928f494bee939a30a90ef22191f1e995c7b0f09",
+      "source_sha256": "4e5b81572a4054b0437ba8bbd43408d3d431f336832d32dbd1eec3109bc0ea92",
+      "binding": "exact UTF-8 heading-delimited payload; no new slicing"
+    },
+    {
+      "source": "docs/verification/application-reference-evidence.md",
+      "heading": "## Authoritative attempt evidence",
+      "start_byte": 30467,
+      "end_byte": 52611,
+      "bytes": 22144,
+      "sha256": "28b7936d1cd5157c766274c05a0e21436ce2e97150f9616a1cd019c5335b1e1a",
+      "source_sha256": "4e5b81572a4054b0437ba8bbd43408d3d431f336832d32dbd1eec3109bc0ea92",
+      "binding": "exact UTF-8 heading-delimited payload; no new slicing"
+    },
+    {
+      "source": "docs/verification/application-reference-evidence.md",
+      "heading": "## Independent approval root",
+      "start_byte": 52611,
+      "end_byte": 130335,
+      "bytes": 77724,
+      "sha256": "815518bbbcbd006be653e3997b2dd338166538bb4cfc699776641a148ee47dff",
+      "source_sha256": "4e5b81572a4054b0437ba8bbd43408d3d431f336832d32dbd1eec3109bc0ea92",
+      "binding": "exact UTF-8 heading-delimited payload; no new slicing"
+    },
+    {
+      "source": "docs/verification/application-reference-evidence.md",
+      "heading": "## Closed qualification proof and required inventory",
+      "start_byte": 130335,
+      "end_byte": 136366,
+      "bytes": 6031,
+      "sha256": "98698eebefec31514db5fc279fdd904015d2ef019cba8f70255e7209afc157ed",
+      "source_sha256": "4e5b81572a4054b0437ba8bbd43408d3d431f336832d32dbd1eec3109bc0ea92",
+      "binding": "exact UTF-8 heading-delimited payload; no new slicing"
+    },
+    {
+      "source": "docs/verification/application-reference-evidence.md",
+      "heading": "## Contact observation outside the producer",
+      "start_byte": 136366,
+      "end_byte": 143249,
+      "bytes": 6883,
+      "sha256": "fca1fcf842d142731c32447c32e9f781fc8723577f09a0a08fa5e95ccb38f28a",
+      "source_sha256": "4e5b81572a4054b0437ba8bbd43408d3d431f336832d32dbd1eec3109bc0ea92",
+      "binding": "exact UTF-8 heading-delimited payload; no new slicing"
+    },
+    {
+      "source": "docs/verification/application-reference-evidence.md",
+      "heading": "## Fixed composition without target contact",
+      "start_byte": 143249,
+      "end_byte": 147166,
+      "bytes": 3917,
+      "sha256": "26b0876405005c5623f61cff7dc8e10d96b310c4665869751319bf34d43fccc1",
+      "source_sha256": "4e5b81572a4054b0437ba8bbd43408d3d431f336832d32dbd1eec3109bc0ea92",
+      "binding": "exact UTF-8 heading-delimited payload; no new slicing"
+    },
+    {
+      "source": "docs/verification/application-reference-evidence.md",
+      "heading": "## Independent decoder expectation classes",
+      "start_byte": 147166,
+      "end_byte": 150661,
+      "bytes": 3495,
+      "sha256": "5577701efdb4655fdb212d1584f97c83ddf9a1f329716435c988dafb3255da58",
+      "source_sha256": "4e5b81572a4054b0437ba8bbd43408d3d431f336832d32dbd1eec3109bc0ea92",
+      "binding": "exact UTF-8 heading-delimited payload; no new slicing"
+    },
+    {
+      "source": "docs/verification/application-reference-evidence.md",
+      "heading": "## Topology and the inherited component rule",
+      "start_byte": 150661,
+      "end_byte": 183893,
+      "bytes": 33232,
+      "sha256": "dc5fdebb8712df425e9ab9a843e3b736fcd8f32e8a0aa111512416b979d32f08",
+      "source_sha256": "4e5b81572a4054b0437ba8bbd43408d3d431f336832d32dbd1eec3109bc0ea92",
+      "binding": "exact UTF-8 heading-delimited payload; no new slicing"
+    },
+    {
+      "source": "docs/verification/application-reference-evidence.md",
+      "heading": "## Attempt durability and per-control proof",
+      "start_byte": 183893,
+      "end_byte": 188001,
+      "bytes": 4108,
+      "sha256": "b1db0580cf31283c8f5d07f2b8f132ec64e11f855eb784f60ac261eee1ce6b0b",
+      "source_sha256": "4e5b81572a4054b0437ba8bbd43408d3d431f336832d32dbd1eec3109bc0ea92",
+      "binding": "exact UTF-8 heading-delimited payload; no new slicing"
+    },
+    {
+      "source": "docs/verification/application-reference-evidence.md",
+      "heading": "## One-pass acquisition and closure",
+      "start_byte": 189324,
+      "end_byte": 194700,
+      "bytes": 5376,
+      "sha256": "cce14852aa566c06fea9d3905ddb0a92d5ac697113cc5478efb4bbef20bef58d",
+      "source_sha256": "4e5b81572a4054b0437ba8bbd43408d3d431f336832d32dbd1eec3109bc0ea92",
+      "binding": "exact UTF-8 heading-delimited payload; no new slicing"
+    },
+    {
+      "source": "docs/verification/application-reference-evidence.md",
+      "heading": "## Evidence records and association keys",
+      "start_byte": 194700,
+      "end_byte": 198289,
+      "bytes": 3589,
+      "sha256": "0d9c6c97b8af5eac717ed656f59f5b004caf88b0b2d54d67e09768de3b0b1f80",
+      "source_sha256": "4e5b81572a4054b0437ba8bbd43408d3d431f336832d32dbd1eec3109bc0ea92",
+      "binding": "exact UTF-8 heading-delimited payload; no new slicing"
+    },
+    {
+      "source": "docs/verification/application-reference-evidence.md",
+      "heading": "## Original bytes and complete typed witnesses",
+      "start_byte": 198289,
+      "end_byte": 201646,
+      "bytes": 3357,
+      "sha256": "a3bca5931a7c9c547cc2bc87a8bba3ccffe839813b3073ca74341bafe158dd43",
+      "source_sha256": "4e5b81572a4054b0437ba8bbd43408d3d431f336832d32dbd1eec3109bc0ea92",
+      "binding": "exact UTF-8 heading-delimited payload; no new slicing"
+    },
+    {
+      "source": "docs/verification/application-reference-evidence.md",
+      "heading": "## Freeze and replay limits",
+      "start_byte": 201646,
+      "end_byte": 203319,
+      "bytes": 1673,
+      "sha256": "746d4797f6c3aa04d81cef66122ff05a3fda29fdf8a257e440088be064f00c1f",
+      "source_sha256": "4e5b81572a4054b0437ba8bbd43408d3d431f336832d32dbd1eec3109bc0ea92",
+      "binding": "exact UTF-8 heading-delimited payload; no new slicing"
+    },
+    {
+      "source": "docs/verification/application-reference-evidence.md",
+      "heading": "## Independent controls required before target acquisition",
+      "start_byte": 203319,
+      "end_byte": 213373,
+      "bytes": 10054,
+      "sha256": "65b9a74f33a6293445516cf88460999c99d6d3e771904ce36edfab0383bce091",
+      "source_sha256": "4e5b81572a4054b0437ba8bbd43408d3d431f336832d32dbd1eec3109bc0ea92",
+      "binding": "exact UTF-8 heading-delimited payload; no new slicing"
+    }
+  ],
+  "whole_byte_inputs": [
+    "docs/verification/application-reference-contact-boundary.md",
+    "docs/verification/application-reference-packaging-runtime.md",
+    "docs/verification/reference-contact-inventory/api-basis.tsv",
+    "docs/verification/reference-contact-inventory/bsd-declarations.tsv",
+    "docs/verification/reference-contact-inventory/mach-traps.tsv",
+    "docs/verification/reference-contact-inventory/mig-routines.tsv",
+    "docs/verification/reference-contact-inventory/source-pins.tsv"
+  ],
+  "whole_historical_bases": [
+    "docs/design/application-metadata-subject.json",
+    "docs/verification/reference-target-parents.tsv"
+  ],
+  "historical_only": [
+    {
+      "path": "docs/verification/reference-contact-partition.tsv",
+      "bytes": 3795560,
+      "sha256": "408547f785327c407a7b02c881cea19345cdd08c1b802a79fd7926d429ccab49",
+      "meaning": "unchanged historical defective k291 review subject, not refreshed current identity",
+      "revision": "a05e643f8352"
+    },
+    {
+      "path": "docs/verification/reference-contact-partition.json",
+      "bytes": 9736,
+      "sha256": "ffc326a664600575f4048de2d50391b08c2c7e1b1905fa3085569c21793870de",
+      "meaning": "unchanged historical defective k291 review subject, not refreshed current identity",
+      "revision": "a05e643f8352"
+    },
+    {
+      "path": "docs/verification/reference-packaging-partition.tsv",
+      "bytes": 878299,
+      "sha256": "faed12fd7614bbbc6e99435900dc3c9ae45a3ceff99442853736bf951e805d2a",
+      "meaning": "unchanged historical defective k291 review subject, not refreshed current identity",
+      "revision": "a05e643f8352"
+    },
+    {
+      "path": "docs/verification/reference-packaging-partition.json",
+      "bytes": 26592,
+      "sha256": "ce24c6e15afdf31b6c7b2619e41445b3cfbde854fbcf46156427f0497cd39e8e",
+      "meaning": "unchanged historical defective k291 review subject, not refreshed current identity",
+      "revision": "a05e643f8352"
+    },
+    {
+      "path": "docs/verification/reference-selected-partition.tsv",
+      "bytes": 3365504,
+      "sha256": "4db1bd353b4d065025bee88d91a8d7107b06fccd05cc8268b00fe94149a34576",
+      "meaning": "unchanged historical defective k291 review subject, not refreshed current identity",
+      "revision": "a05e643f8352"
+    },
+    {
+      "path": "docs/verification/reference-selected-partition.json",
+      "bytes": 139590,
+      "sha256": "701fddb56a9f5f3034a9c7fe1493337c0a7d3373a943338cc1dc34ab0cbb1217",
+      "meaning": "unchanged historical defective k291 review subject, not refreshed current identity",
+      "revision": "a05e643f8352"
+    },
+    {
+      "path": "docs/verification/reference-historical-partition.tsv.gz",
+      "bytes": 10454837,
+      "sha256": "b6dc5c9feca006990d184799a163b11b0557cbffdba29a1f3fef55cb963b12cf",
+      "meaning": "unchanged historical defective k291 review subject, not refreshed current identity",
+      "revision": "a05e643f8352"
+    },
+    {
+      "path": "docs/verification/reference-historical-partition.json",
+      "bytes": 4981,
+      "sha256": "dd336ad43eb70995a40d0c8a6a8960ed0bda2aa47317d1d2a47d4703d24f673b",
+      "meaning": "unchanged historical defective k291 review subject, not refreshed current identity",
+      "revision": "a05e643f8352"
+    },
+    {
+      "path": "docs/verification/reference-documentary-basis-membership.tsv",
+      "bytes": 24776,
+      "sha256": "efc65d52802ff6b207b37d91e84bed6eaf4d0f01ed0b258a310afef4e60a5b60",
+      "meaning": "unchanged historical defective k291 review subject, not refreshed current identity",
+      "revision": "a05e643f8352"
+    },
+    {
+      "path": "docs/verification/reference-documentary-basis-membership.json",
+      "bytes": 288380,
+      "sha256": "effadcdac736fed69ba1eefa877155379d2e2d79634f1c9cf24dd14d6618973f",
+      "meaning": "unchanged historical defective k291 review subject, not refreshed current identity",
+      "revision": "a05e643f8352"
+    },
+    {
+      "path": "docs/verification/reference-actual-read-membership.tsv",
+      "bytes": 1070586,
+      "sha256": "62254b32db42353665368de6da7e63ca966e7854870da92655fd2c4b053dff7e",
+      "meaning": "unchanged historical defective k291 review subject, not refreshed current identity",
+      "revision": "a05e643f8352"
+    },
+    {
+      "path": "docs/verification/reference-basis-read-membership.json",
+      "bytes": 1882059,
+      "sha256": "f0d5384a65ec17c4c93174213afe9a5dc5debe75df8c160cd47a79abb3455206",
+      "meaning": "unchanged historical defective k291 review subject, not refreshed current identity",
+      "revision": "a05e643f8352"
+    },
+    {
+      "path": "docs/verification/reference-input-partition.tsv",
+      "bytes": 2924,
+      "sha256": "08cadc9c23fc7ddc95cc4b31acf0ce28c4b4e4207131efa4699c36bb1e1c719f",
+      "meaning": "unchanged historical defective k291 review subject, not refreshed current identity",
+      "revision": "a05e643f8352"
+    },
+    {
+      "path": "docs/verification/reference-input-partition.json",
+      "bytes": 232225,
+      "sha256": "c6fba7104c71995c268455bf004462aff06e40c2d18bbef2744da36c64406572",
+      "meaning": "unchanged historical defective k291 review subject, not refreshed current identity",
+      "revision": "a05e643f8352"
+    }
+  ],
+  "earlier_defective_all_E_index": {
+    "revision": "04bd81cfb299bc83422e7a61e4d1d0b1c8d76e0b",
+    "path": "docs/verification/reference-input-partition.tsv",
+    "meaning": "immutable defective historical classification, not current rule"
+  },
+  "documentary_whole_original_requirements": [
+    {
+      "id": "B001",
+      "url": "https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/fsync.2.html",
+      "family": "Persistence/locking documentary operation basis",
+      "required_coordinates": "Q05/Q09/Q10; separately validated actual P03/P04/P05 and post-intent A acknowledgements",
+      "expected_original_sha256": null,
+      "pin_provenance": [],
+      "provenance": "Selected named documentary edition/locator; no accepted retrieved whole-object identity supplied.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B002",
+      "url": "https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/fcntl.2.html",
+      "family": "Persistence/locking documentary operation basis",
+      "required_coordinates": "Q05/Q09/Q10; separately validated actual P03/P04/P05 and post-intent A acknowledgements",
+      "expected_original_sha256": null,
+      "pin_provenance": [],
+      "provenance": "Selected named documentary edition/locator; no accepted retrieved whole-object identity supplied.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B003",
+      "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/bsd/dev/dtrace/systrace.c",
+      "family": "Bounded-contact documentary inventory/candidate basis",
+      "required_coordinates": "Q10 and independently selected B1–B8/Q01–Q09 claims; complete current-service/native/proxy coverage remains accepted unknown",
+      "expected_original_sha256": "be8c6f8fca90cf95d97bd653056b2ad1c6b1c7a19ca36ba95eac5c848ac4efdd",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/reference-contact-inventory/source-pins.tsv",
+          "start_byte": 1576,
+          "end_byte": 1640,
+          "sha256": "2cee72bce465a2bb8a8386c540049bc20b9bde8cc2e4cb2d82eaa86f279def50"
+        }
+      ],
+      "provenance": "Immutable published source revision; exact whole-original pin.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B004",
+      "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/bsd/kern/syscalls.master",
+      "family": "Bounded-contact documentary inventory/candidate basis",
+      "required_coordinates": "Q10 and independently selected B1–B8/Q01–Q09 claims; complete current-service/native/proxy coverage remains accepted unknown",
+      "expected_original_sha256": "7e866891439ad5b3464777d2cacc3b82fc2e7f439fb5a8686c3e6f160d5aeab5",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/reference-contact-inventory/source-pins.tsv",
+          "start_byte": 93,
+          "end_byte": 157,
+          "sha256": "e25a70a80fe605a4e57b4d599fb620e6ffd3a62801103d23375022dc69f292ee"
+        }
+      ],
+      "provenance": "Immutable published source revision; exact whole-original pin.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B005",
+      "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/osfmk/kern/syscall_sw.c",
+      "family": "Bounded-contact documentary inventory/candidate basis",
+      "required_coordinates": "Q10 and independently selected B1–B8/Q01–Q09 claims; complete current-service/native/proxy coverage remains accepted unknown",
+      "expected_original_sha256": "9c84c9ea109067bbdac35c4ddcb3de872c228a7cfff51b72a6d5a109fc431820",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/reference-contact-inventory/source-pins.tsv",
+          "start_byte": 341,
+          "end_byte": 405,
+          "sha256": "eb56e0788df0eed09b6163819b0a34ee1f188f4e83a99ac7dde79ba6b1da8e12"
+        }
+      ],
+      "provenance": "Immutable published source revision; exact whole-original pin.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B006",
+      "url": "https://developer.apple.com/tutorials/data/documentation/foundation/nsmetadataquery.json",
+      "family": "Bounded-contact documentary inventory/candidate basis",
+      "required_coordinates": "Q10 and independently selected B1–B8/Q01–Q09 claims; complete current-service/native/proxy coverage remains accepted unknown",
+      "expected_original_sha256": "b36d9c2b3e4fae89fb6e5c6b14394b86eee3eb30b99db5c0b1c17c93c523bef5",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/reference-contact-inventory/api-basis.tsv",
+          "start_byte": 1526,
+          "end_byte": 1590,
+          "sha256": "afa2720c5b281940842a81573ce2fcf72761b9599052cfb66e85071bf47efd17"
+        }
+      ],
+      "provenance": "Fixed historical retrieval pin; mutable endpoint requires exact match or independent correction.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B007",
+      "url": "https://developer.apple.com/tutorials/data/documentation/foundation/nsfilecoordinator.json",
+      "family": "Bounded-contact documentary inventory/candidate basis",
+      "required_coordinates": "Q10 and independently selected B1–B8/Q01–Q09 claims; complete current-service/native/proxy coverage remains accepted unknown",
+      "expected_original_sha256": "4428eda23bdcc4183f7c0a45d2b83dd3c00b39eb822dbe7b543f97c944b24ecb",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/reference-contact-inventory/api-basis.tsv",
+          "start_byte": 1148,
+          "end_byte": 1212,
+          "sha256": "83f4d1a4143beb6c42f1913305a70fd01902e4c0505044f893942f1d69b26c9f"
+        }
+      ],
+      "provenance": "Fixed historical retrieval pin; mutable endpoint requires exact match or independent correction.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B008",
+      "url": "https://developer.apple.com/tutorials/data/documentation/xpc/xpc_connection_create_mach_service(_:_:_:).json",
+      "family": "Bounded-contact documentary inventory/candidate basis",
+      "required_coordinates": "Q10 and independently selected B1–B8/Q01–Q09 claims; complete current-service/native/proxy coverage remains accepted unknown",
+      "expected_original_sha256": "f9b50cf73b44af2eb5d424216babb2bdda2c27f6f2d9025bd3572fccf5b27d88",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/reference-contact-inventory/api-basis.tsv",
+          "start_byte": 2268,
+          "end_byte": 2332,
+          "sha256": "802baefbb2ac716cacf074be687d73b8273c9018a84ccd09805f5a7ca4198162"
+        }
+      ],
+      "provenance": "Fixed historical retrieval pin; mutable endpoint requires exact match or independent correction.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B009",
+      "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/bsd/dev/dtrace/dtrace_glue.c",
+      "family": "Bounded-contact documentary inventory/candidate basis",
+      "required_coordinates": "Q10 and independently selected B1–B8/Q01–Q09 claims; complete current-service/native/proxy coverage remains accepted unknown",
+      "expected_original_sha256": "d135d8a7534d0e75e7766373ac74b8012e684906bbaa40d951058e84356b0011",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/reference-contact-inventory/source-pins.tsv",
+          "start_byte": 2077,
+          "end_byte": 2141,
+          "sha256": "f9d4d3dee56f537736c2ca8b26614ce0f12cce47c61a45421242a332b72fe9b9"
+        }
+      ],
+      "provenance": "Immutable published source revision; exact whole-original pin.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B010",
+      "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/bsd/dev/dtrace/dtrace.c",
+      "family": "Bounded-contact documentary inventory/candidate basis",
+      "required_coordinates": "Q10 and independently selected B1–B8/Q01–Q09 claims; complete current-service/native/proxy coverage remains accepted unknown",
+      "expected_original_sha256": "0a66d7d2372b8968db9e03658484254d1b903ba2417620d4fc5f6980302e7e90",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/reference-contact-inventory/source-pins.tsv",
+          "start_byte": 1825,
+          "end_byte": 1889,
+          "sha256": "0b122b597d223495780c550f46cb500d75121dbbd57ac48f56da28343a51001a"
+        }
+      ],
+      "provenance": "Immutable published source revision; exact whole-original pin.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B011",
+      "url": "https://developer.apple.com/tutorials/data/documentation/endpointsecurity/es_new_client_result_err_not_privileged.json",
+      "family": "Bounded-contact documentary inventory/candidate basis",
+      "required_coordinates": "Q10 and independently selected B1–B8/Q01–Q09 claims; complete current-service/native/proxy coverage remains accepted unknown",
+      "expected_original_sha256": "36592e535245394b748a4a7754f3785f86036efd72308344d79a6db107c88845",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/reference-contact-inventory/api-basis.tsv",
+          "start_byte": 690,
+          "end_byte": 754,
+          "sha256": "ef52cc89e094b225e3e41dd3cdc8a230472841e306de9121574821df2301e61e"
+        }
+      ],
+      "provenance": "Fixed historical retrieval pin; mutable endpoint requires exact match or independent correction.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B012",
+      "url": "https://developer.apple.com/tutorials/data/documentation/bundleresources/entitlements/com.apple.developer.endpoint-security.client.json",
+      "family": "Bounded-contact documentary inventory/candidate basis",
+      "required_coordinates": "Q10 and independently selected B1–B8/Q01–Q09 claims; complete current-service/native/proxy coverage remains accepted unknown",
+      "expected_original_sha256": "1b348a09411238bbb2ed27aab39934d8ae93fd980d9857415e4ff8a8ee39da0c",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/reference-contact-inventory/api-basis.tsv",
+          "start_byte": 165,
+          "end_byte": 229,
+          "sha256": "07404ba80d42ade16ecde316a84e394ba7bd454b3c5ea83d3e20728d496a97ad"
+        }
+      ],
+      "provenance": "Fixed historical retrieval pin; mutable endpoint requires exact match or independent correction.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B013",
+      "url": "https://developer.apple.com/tutorials/data/documentation/security/app-sandbox.json",
+      "family": "Bounded-contact documentary inventory/candidate basis",
+      "required_coordinates": "Q10 and independently selected B1–B8/Q01–Q09 claims; complete current-service/native/proxy coverage remains accepted unknown",
+      "expected_original_sha256": "f471b5e1b721b0c3036a11da38117b361a7ed2e3e06df833ceaa05829d899d24",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/reference-contact-inventory/api-basis.tsv",
+          "start_byte": 1892,
+          "end_byte": 1956,
+          "sha256": "c656248f5f96c34aab59696bb936f862c98c75fc5e46e2c7b1e22158e92418b7"
+        }
+      ],
+      "provenance": "Fixed historical retrieval pin; mutable endpoint requires exact match or independent correction.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B014",
+      "url": "https://developer.apple.com/documentation/corefoundation/cfpropertylistcreatewithdata(_:_:_:_:_:)",
+      "family": "Format/type/encoding documentary expectation basis",
+      "required_coordinates": "Q03/Q06/Q10 before independently authored decoder comparison; installed file outcomes first in A",
+      "expected_original_sha256": null,
+      "pin_provenance": [],
+      "provenance": "Selected named documentary edition/locator; no accepted retrieved whole-object identity supplied.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B015",
+      "url": "https://developer.apple.com/documentation/corefoundation/cfpropertylistformat",
+      "family": "Format/type/encoding documentary expectation basis",
+      "required_coordinates": "Q03/Q06/Q10 before independently authored decoder comparison; installed file outcomes first in A",
+      "expected_original_sha256": null,
+      "pin_provenance": [],
+      "provenance": "Selected named documentary edition/locator; no accepted retrieved whole-object identity supplied.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B016",
+      "url": "https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFPropertyLists/Articles/Numbers.html",
+      "family": "Format/type/encoding documentary expectation basis",
+      "required_coordinates": "Q03/Q06/Q10 before independently authored decoder comparison; installed file outcomes first in A",
+      "expected_original_sha256": null,
+      "pin_provenance": [],
+      "provenance": "Selected named documentary edition/locator; no accepted retrieved whole-object identity supplied.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B017",
+      "url": "https://github.com/apple-oss-distributions/xnu/blob/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/bsd/man/man2/rename.2",
+      "family": "Persistence/locking documentary operation basis",
+      "required_coordinates": "Q05/Q09/Q10; separately validated actual P03/P04/P05 and post-intent A acknowledgements",
+      "expected_original_sha256": null,
+      "pin_provenance": [],
+      "provenance": "Immutable published source revision; retrieved whole-object identity still unestablished.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B018",
+      "url": "https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/flock.2.html",
+      "family": "Persistence/locking documentary operation basis",
+      "required_coordinates": "Q05/Q09/Q10; separately validated actual P03/P04/P05 and post-intent A acknowledgements",
+      "expected_original_sha256": null,
+      "pin_provenance": [],
+      "provenance": "Selected named documentary edition/locator; no accepted retrieved whole-object identity supplied.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B019",
+      "url": "https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/socketpair.2.html",
+      "family": "Channel and entropy documentary operation basis",
+      "required_coordinates": "Q04/Q06/Q07/Q10; actual finite channel/image facts P01/P02/P05",
+      "expected_original_sha256": null,
+      "pin_provenance": [],
+      "provenance": "Selected named documentary edition/locator; no accepted retrieved whole-object identity supplied.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B020",
+      "url": "https://developer.apple.com/documentation/security/secrandomcopybytes(_:_:_:)",
+      "family": "Channel and entropy documentary operation basis",
+      "required_coordinates": "Q04/Q06/Q07/Q10; actual finite channel/image facts P01/P02/P05",
+      "expected_original_sha256": null,
+      "pin_provenance": [],
+      "provenance": "Selected named documentary edition/locator; no accepted retrieved whole-object identity supplied.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B021",
+      "url": "https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFBundles/BundleTypes/BundleTypes.html",
+      "family": "Bundle and volume documentary topology candidates",
+      "required_coordinates": "Q01/Q10; T/A grammar authoring before selected P/A use; no current path/ancestry/TCC proof",
+      "expected_original_sha256": "2d7a34a6b1cb40842fa74ba68f696d5e9c990c72d779516f91014ed448f4cbc6",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/application-reference-packaging-runtime.md",
+          "start_byte": 46994,
+          "end_byte": 47058,
+          "sha256": "bf67267eae53c59a8917e8d7c4f18715af522c877d242ee85f40f3a16c49f50b"
+        }
+      ],
+      "provenance": "Fixed historical retrieval pin; mutable endpoint requires exact match or independent correction.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B022",
+      "url": "https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFBundles/AccessingaBundlesContents/AccessingaBundlesContents.html",
+      "family": "Bundle and volume documentary topology candidates",
+      "required_coordinates": "Q01/Q10; T/A grammar authoring before selected P/A use; no current path/ancestry/TCC proof",
+      "expected_original_sha256": "8cb1d5892bd82a1b0cb9e68ebff3ff5f58a4fb851e8b64aa82836d0d0d89d298",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/application-reference-packaging-runtime.md",
+          "start_byte": 47122,
+          "end_byte": 47186,
+          "sha256": "fb7b5a64f99d4997fc1ee8533f4b5124efa9a7ca66dbed0d49b8d5262864715a"
+        }
+      ],
+      "provenance": "Fixed historical retrieval pin; mutable endpoint requires exact match or independent correction.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B023",
+      "url": "https://support.apple.com/en-euro/guide/security/secd698747c9/web",
+      "family": "Bundle and volume documentary topology candidates",
+      "required_coordinates": "Q01/Q10; T/A grammar authoring before selected P/A use; no current path/ancestry/TCC proof",
+      "expected_original_sha256": null,
+      "pin_provenance": [],
+      "provenance": "Selected named documentary edition/locator; no accepted retrieved whole-object identity supplied.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B024",
+      "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/bsd/sys/proc_info.h",
+      "family": "Finite peer/process-image documentary candidates",
+      "required_coordinates": "Q06/Q07/Q08/Q10; P01/P03/P05; fixed source-child correspondence only in A",
+      "expected_original_sha256": "a4eb26cdfd3721b111f9979455d80a854625b0ef96ba4de1a4e7705f462e0f84",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/application-reference-packaging-runtime.md",
+          "start_byte": 46736,
+          "end_byte": 46800,
+          "sha256": "31640e7d622e5f217e29838e8d4f9edaae221e7841677a785c3211a586804f80"
+        }
+      ],
+      "provenance": "Immutable published source revision; exact whole-original pin.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B025",
+      "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/bsd/kern/proc_info.c",
+      "family": "Finite peer/process-image documentary candidates",
+      "required_coordinates": "Q06/Q07/Q08/Q10; P01/P03/P05; fixed source-child correspondence only in A",
+      "expected_original_sha256": "dc99b9a8105fc1376ba0b7d14de1aa6e065c7b13899ac9ede2fb1dccab649178",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/application-reference-packaging-runtime.md",
+          "start_byte": 46623,
+          "end_byte": 46687,
+          "sha256": "9fe57c6a7c7039aec2103f506f914f82bc38139340e47aca907e51e7a6878970"
+        }
+      ],
+      "provenance": "Immutable published source revision; exact whole-original pin.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B026",
+      "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/bsd/sys/codesign.h",
+      "family": "Finite peer/process-image documentary candidates",
+      "required_coordinates": "Q06/Q07/Q08/Q10; P01/P03/P05; fixed source-child correspondence only in A",
+      "expected_original_sha256": "2f416bff50c43b88e5d964316c0eee050f095d582c998b4c8c7c3d6278c51cd3",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/application-reference-packaging-runtime.md",
+          "start_byte": 46848,
+          "end_byte": 46912,
+          "sha256": "c319ccedcbbe5295647eaa3d6f28ee368ff2609b5ab52aaf81be3b9ee8d0dd58"
+        }
+      ],
+      "provenance": "Immutable published source revision; exact whole-original pin.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B027",
+      "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/bsd/kern/kern_sysctl.c",
+      "family": "Build API documentary compatibility basis",
+      "required_coordinates": "Q06/Q10; P01/P05; no current build or kernel proof",
+      "expected_original_sha256": "e9afd60d06752d2eaa7fada1316f293c342c3666f54d3c7e94d82d5ab55c851a",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/application-reference-packaging-runtime.md",
+          "start_byte": 52252,
+          "end_byte": 52316,
+          "sha256": "cd595544223653c75f0d12cebe5a92e92f0adb7059997a22cfe4ec1a9d4df648"
+        }
+      ],
+      "provenance": "Immutable published source revision; exact whole-original pin.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B028",
+      "url": "https://taskfile.dev/docs/reference/config",
+      "family": "Task configuration and schema documentary basis",
+      "required_coordinates": "Q04/Q07/Q10; exact retained entry/configuration P02/P05",
+      "expected_original_sha256": null,
+      "pin_provenance": [],
+      "provenance": "Selected named documentary edition/locator; no accepted retrieved whole-object identity supplied.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B029",
+      "url": "https://taskfile.dev/docs/reference/schema",
+      "family": "Task configuration and schema documentary basis",
+      "required_coordinates": "Q04/Q07/Q10; exact retained entry/configuration P02/P05",
+      "expected_original_sha256": null,
+      "pin_provenance": [],
+      "provenance": "Selected named documentary edition/locator; no accepted retrieved whole-object identity supplied.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B030",
+      "url": "https://www.w3.org/TR/2008/REC-xml-20081126/",
+      "family": "Format/type/encoding documentary expectation basis",
+      "required_coordinates": "Q03/Q06/Q10 before independently authored decoder comparison; installed file outcomes first in A",
+      "expected_original_sha256": null,
+      "pin_provenance": [],
+      "provenance": "Selected named documentary edition/locator; no accepted retrieved whole-object identity supplied.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B031",
+      "url": "https://github.com/apple-oss-distributions/CF/blob/dc54c6bb1c1e5e0b9486c1d26dd5bef110b20bf3/PropertyList.dtd",
+      "family": "Format/type/encoding documentary expectation basis",
+      "required_coordinates": "Q03/Q06/Q10 before independently authored decoder comparison; installed file outcomes first in A",
+      "expected_original_sha256": null,
+      "pin_provenance": [],
+      "provenance": "Immutable published source revision; retrieved whole-object identity still unestablished.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B032",
+      "url": "https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFPropertyLists/Articles/XMLTags.html",
+      "family": "Format/type/encoding documentary expectation basis",
+      "required_coordinates": "Q03/Q06/Q10 before independently authored decoder comparison; installed file outcomes first in A",
+      "expected_original_sha256": null,
+      "pin_provenance": [],
+      "provenance": "Selected named documentary edition/locator; no accepted retrieved whole-object identity supplied.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B033",
+      "url": "https://github.com/apple-oss-distributions/CF/blob/dc54c6bb1c1e5e0b9486c1d26dd5bef110b20bf3/CFBinaryPList.c",
+      "family": "Format/type/encoding documentary expectation basis",
+      "required_coordinates": "Q03/Q06/Q10 before independently authored decoder comparison; installed file outcomes first in A",
+      "expected_original_sha256": "8b8c72427ba60e7918f3ffa088d9f25859456eb75a0081ff5cdb7277ff62c384",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/application-reference-packaging-runtime.md",
+          "start_byte": 68253,
+          "end_byte": 68317,
+          "sha256": "8597fea22c4a8815dbfcb58daa773f3af040e0fbd5f24692db27950f3b1a73bf"
+        }
+      ],
+      "provenance": "Immutable published source revision; exact whole-original pin.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B034",
+      "url": "https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/PropertyLists/OldStylePlists/OldStylePLists.html",
+      "family": "Format/type/encoding documentary expectation basis",
+      "required_coordinates": "Q03/Q06/Q10 before independently authored decoder comparison; installed file outcomes first in A",
+      "expected_original_sha256": null,
+      "pin_provenance": [],
+      "provenance": "Selected named documentary edition/locator; no accepted retrieved whole-object identity supplied.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B035",
+      "url": "https://github.com/apple-oss-distributions/CF/blob/dc54c6bb1c1e5e0b9486c1d26dd5bef110b20bf3/CFOldStylePList.c",
+      "family": "Format/type/encoding documentary expectation basis",
+      "required_coordinates": "Q03/Q06/Q10 before independently authored decoder comparison; installed file outcomes first in A",
+      "expected_original_sha256": "9c0635f05e28b5780321a5ae1be23ab08136f51cc3d7d79bbcd58fe80bb0a4b1",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/application-reference-packaging-runtime.md",
+          "start_byte": 68339,
+          "end_byte": 68403,
+          "sha256": "b88552be23b1295e4ab94d76e8dfdf348e737dba3ccc04e998e452e59ea73e0a"
+        }
+      ],
+      "provenance": "Immutable published source revision; exact whole-original pin.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B036",
+      "url": "https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/LoadingResources/Strings/Strings.html",
+      "family": "Format/type/encoding documentary expectation basis",
+      "required_coordinates": "Q03/Q06/Q10 before independently authored decoder comparison; installed file outcomes first in A",
+      "expected_original_sha256": null,
+      "pin_provenance": [],
+      "provenance": "Selected named documentary edition/locator; no accepted retrieved whole-object identity supplied.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B037",
+      "url": "https://github.com/apple-oss-distributions/CF/blob/dc54c6bb1c1e5e0b9486c1d26dd5bef110b20bf3/CFPropertyList.c",
+      "family": "Format/type/encoding documentary expectation basis",
+      "required_coordinates": "Q03/Q06/Q10 before independently authored decoder comparison; installed file outcomes first in A",
+      "expected_original_sha256": "ced92800b4651fc47e9a1f53626170c7c7324db50bf6740541fd56844b7bead3",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/application-reference-packaging-runtime.md",
+          "start_byte": 68428,
+          "end_byte": 68492,
+          "sha256": "2032aaf9e5665c3cb93f688bf946792d88ed04e40e38508e58fd5cc4370d4cc0"
+        }
+      ],
+      "provenance": "Immutable published source revision; exact whole-original pin.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B038",
+      "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/osfmk/mach/mach_traps.h",
+      "family": "Bounded-contact documentary inventory/candidate basis",
+      "required_coordinates": "Q10 and independently selected B1–B8/Q01–Q09 claims; complete current-service/native/proxy coverage remains accepted unknown",
+      "expected_original_sha256": "4aa22252a52de6cbbe53d4925ab2b833a739acdcf38d22315cc171e479eca415",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/reference-contact-inventory/source-pins.tsv",
+          "start_byte": 588,
+          "end_byte": 652,
+          "sha256": "bfefc257259748f25111dcdc019a69bf9aff4be1f407b17a2a8e14d621e6ec34"
+        }
+      ],
+      "provenance": "Immutable published source revision; exact whole-original pin.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B039",
+      "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/osfmk/mach/mach_vm.defs",
+      "family": "Bounded-contact documentary inventory/candidate basis",
+      "required_coordinates": "Q10 and independently selected B1–B8/Q01–Q09 claims; complete current-service/native/proxy coverage remains accepted unknown",
+      "expected_original_sha256": "74c55e3c884f08bb3bfb29bd2bf5c952f235954af6fb65ce310e916b46de6728",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/reference-contact-inventory/source-pins.tsv",
+          "start_byte": 835,
+          "end_byte": 899,
+          "sha256": "e958f750ebaba0ac389267173cf3766eb2daf02249f5400136d9d66a140ac528"
+        }
+      ],
+      "provenance": "Immutable published source revision; exact whole-original pin.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B040",
+      "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/osfmk/mach/mach_port.defs",
+      "family": "Bounded-contact documentary inventory/candidate basis",
+      "required_coordinates": "Q10 and independently selected B1–B8/Q01–Q09 claims; complete current-service/native/proxy coverage remains accepted unknown",
+      "expected_original_sha256": "f0a51838fbec52fe636068bf909f32edb5b5ffd3e2cc7fda2686220cd63d07f9",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/reference-contact-inventory/source-pins.tsv",
+          "start_byte": 1084,
+          "end_byte": 1148,
+          "sha256": "b85070ea6103ddd762cb66f0371217d597180ad8cde8283948958741c240931d"
+        }
+      ],
+      "provenance": "Immutable published source revision; exact whole-original pin.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    },
+    {
+      "id": "B041",
+      "url": "https://github.com/apple-oss-distributions/xnu/blob/ac9718fb1af618d5ce8678d0dc6e8a58f252216f/osfmk/mach/task.defs",
+      "family": "Bounded-contact documentary inventory/candidate basis",
+      "required_coordinates": "Q10 and independently selected B1–B8/Q01–Q09 claims; complete current-service/native/proxy coverage remains accepted unknown",
+      "expected_original_sha256": "f5c7269165d61c377164ee322da38a56493cdfc165bd16b1dc0706b9aff16ad7",
+      "pin_provenance": [
+        {
+          "source": "docs/verification/reference-contact-inventory/source-pins.tsv",
+          "start_byte": 1330,
+          "end_byte": 1394,
+          "sha256": "1503f70b367dfd34ae077a5dc8632620438883757bf8847c7928a2cdfd6e36a9"
+        }
+      ],
+      "provenance": "Immutable published source revision; exact whole-original pin.",
+      "stage": "Before independent documentary expectation/inventory acceptance and affected Q credit; later actual P/A consumption binds the finalized whole object again.",
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "availability": "required original not established by this design; no global absence claim",
+      "before_consumer": "independent complete-original acquisition/provenance/correspondence/acceptance and full object/member binding; historical reference is not possession"
+    }
+  ],
+  "authored_read_authority_original_duties": [
+    {
+      "family": "specimen",
+      "historical_whole_context": "Named expectation bases and bounded runtime claims",
+      "phase_consumer": "Q03/Q06/Q10 before decoder comparison; installed-file outcomes only A",
+      "original_duty_ids": [
+        "R0001",
+        "R0002",
+        "R0003",
+        "R0004",
+        "R0005",
+        "R0006",
+        "R0007",
+        "R0008",
+        "R0009",
+        "R0010",
+        "R0011",
+        "R0012",
+        "R0013",
+        "R0014",
+        "R0015",
+        "R0016",
+        "R0017",
+        "R0018",
+        "R0019",
+        "R0020",
+        "R0021",
+        "R0022",
+        "R0023",
+        "R0024",
+        "R0025",
+        "R0026",
+        "R0027",
+        "R0028",
+        "R0029",
+        "R0030",
+        "R0031",
+        "R0032",
+        "R0033",
+        "R0034",
+        "R0035",
+        "R0036",
+        "R0037",
+        "R0038",
+        "R0039",
+        "R0040",
+        "R0041",
+        "R0042",
+        "R0043",
+        "R0044",
+        "R0045",
+        "R0046",
+        "R0047",
+        "R0048",
+        "R0049",
+        "R0050",
+        "R0051",
+        "R0052",
+        "R0053",
+        "R0054",
+        "R0055",
+        "R0056",
+        "R0057",
+        "R0058",
+        "R0059",
+        "R0060",
+        "R0061",
+        "R0062",
+        "R0063",
+        "R0064",
+        "R0065",
+        "R0066",
+        "R0067",
+        "R0068",
+        "R0069",
+        "R0070",
+        "R0071",
+        "R0072",
+        "R0073",
+        "R0074",
+        "R0075",
+        "R0076",
+        "R0077",
+        "R0078",
+        "R0079",
+        "R0080",
+        "R0081",
+        "R0082",
+        "R0083",
+        "R0084"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "typed-expectation",
+      "historical_whole_context": "Native typed decoder and fidelity limits",
+      "phase_consumer": "Q03/Q06 before typed credit",
+      "original_duty_ids": [
+        "R0085",
+        "R0086",
+        "R0087",
+        "R0088",
+        "R0089",
+        "R0090",
+        "R0091",
+        "R0092",
+        "R0093",
+        "R0094",
+        "R0095"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "candidate-expectation",
+      "historical_whole_context": "Original bytes and complete typed witnesses",
+      "phase_consumer": "Q03 before typed/branch credit; exact installed values A",
+      "original_duty_ids": [
+        "R0096",
+        "R0097",
+        "R0098",
+        "R0099",
+        "R0100",
+        "R0101",
+        "R0102",
+        "R0103",
+        "R0104",
+        "R0105",
+        "R0106",
+        "R0107"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "association-expectation",
+      "historical_whole_context": "Original bytes and complete typed witnesses",
+      "phase_consumer": "Q03; source/role originals A and k245; generated recalculation k246",
+      "original_duty_ids": [
+        "R0108",
+        "R0109",
+        "R0110",
+        "R0111",
+        "R0112",
+        "R0113",
+        "R0114",
+        "R0115",
+        "R0116",
+        "R0117",
+        "R0118",
+        "R0119",
+        "R0120",
+        "R0121",
+        "R0122"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "layout-expectation",
+      "historical_whole_context": "Held roots and the closed acquisition plan",
+      "phase_consumer": "Q01/Q03 before adapter credit; actual layout A",
+      "original_duty_ids": [
+        "R0123",
+        "R0124",
+        "R0125",
+        "R0126",
+        "R0127"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "fixed-file-expectation",
+      "historical_whole_context": "Held roots and the closed acquisition plan",
+      "phase_consumer": "Q01/Q03 before file credit; complete actual per-copy files A",
+      "original_duty_ids": [
+        "R0128",
+        "R0129",
+        "R0130",
+        "R0131",
+        "R0132",
+        "R0133",
+        "R0134",
+        "R0135",
+        "R0136",
+        "R0137",
+        "R0138",
+        "R0139"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "file-state-expectation",
+      "historical_whole_context": "Original bytes and complete typed witnesses",
+      "phase_consumer": "Q01/Q03/Q10 before evidence credit",
+      "original_duty_ids": [
+        "R0140",
+        "R0141",
+        "R0142",
+        "R0143",
+        "R0144",
+        "R0145",
+        "R0146",
+        "R0147",
+        "R0148",
+        "R0149"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "control",
+      "historical_whole_context": "Independent controls required before target acquisition",
+      "phase_consumer": "Required Q before credit; fresh P before intent; A publication as applicable under row context",
+      "original_duty_ids": [
+        "R0150",
+        "R0151",
+        "R0152",
+        "R0153",
+        "R0154",
+        "R0155",
+        "R0156",
+        "R0157",
+        "R0160",
+        "R0161",
+        "R0162",
+        "R0163",
+        "R0164",
+        "R0165",
+        "R0166",
+        "R0167",
+        "R0168",
+        "R0169",
+        "R0170",
+        "R0171",
+        "R0172",
+        "R0173",
+        "R0174",
+        "R0175",
+        "R0176",
+        "R0177",
+        "R0178",
+        "R0179",
+        "R0180",
+        "R0181",
+        "R0182",
+        "R0183"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "control",
+      "historical_whole_context": "Independent controls required before target acquisition",
+      "phase_consumer": "k246 generated-shape discrimination after k245 source evidence",
+      "original_duty_ids": [
+        "R0158",
+        "R0159"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "control",
+      "historical_whole_context": "Extraction and whole-object mutation controls",
+      "phase_consumer": "Required Q before credit; fresh P before intent; A publication as applicable under row context",
+      "original_duty_ids": [
+        "R0184",
+        "R0185",
+        "R0186",
+        "R0187",
+        "R0188",
+        "R0189"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "control",
+      "historical_whole_context": "Durable disarm and release events",
+      "phase_consumer": "Required Q before credit; fresh P before intent; A publication as applicable under row context",
+      "original_duty_ids": [
+        "R0190",
+        "R0191",
+        "R0192",
+        "R0193",
+        "R0194",
+        "R0195",
+        "R0196",
+        "R0197"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "control",
+      "historical_whole_context": "Release and acceptance controls",
+      "phase_consumer": "Required Q before credit; fresh P before intent; A publication as applicable under row context",
+      "original_duty_ids": [
+        "R0198",
+        "R0199",
+        "R0200",
+        "R0201",
+        "R0202",
+        "R0203",
+        "R0204",
+        "R0205",
+        "R0206",
+        "R0207",
+        "R0208",
+        "R0209",
+        "R0210"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "control",
+      "historical_whole_context": "Closed required blockers and accepted unknowns",
+      "phase_consumer": "Required Q before credit; fresh P before intent; A publication as applicable under row context",
+      "original_duty_ids": [
+        "R0211",
+        "R0212",
+        "R0213",
+        "R0214",
+        "R0215",
+        "R0216",
+        "R0217",
+        "R0218",
+        "R0219",
+        "R0220",
+        "R0221",
+        "R0222",
+        "R0223",
+        "R0224",
+        "R0225"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "control",
+      "historical_whole_context": "Per-family independent controls",
+      "phase_consumer": "Required Q before credit; fresh P before intent; A publication as applicable under row context",
+      "original_duty_ids": [
+        "R0226",
+        "R0227",
+        "R0228",
+        "R0229",
+        "R0230",
+        "R0231",
+        "R0232",
+        "R0233",
+        "R0234",
+        "R0235",
+        "R0236",
+        "R0237",
+        "R0238",
+        "R0239"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "programme",
+      "historical_whole_context": "First-attempt outcomes and required counterexamples",
+      "phase_consumer": "Q permitted mechanics; P fresh original facts; source-child and first target outcomes A only",
+      "original_duty_ids": [
+        "R0240"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "programme",
+      "historical_whole_context": "Non-consuming qualification routes",
+      "phase_consumer": "Q permitted mechanics; P fresh original facts; source-child and first target outcomes A only",
+      "original_duty_ids": [
+        "R0241"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "programme",
+      "historical_whole_context": "Independent correspondence and precise authority boundary",
+      "phase_consumer": "Q permitted mechanics; P fresh original facts; source-child and first target outcomes A only",
+      "original_duty_ids": [
+        "R0242"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "programme",
+      "historical_whole_context": "Closed qualification proof and required inventory",
+      "phase_consumer": "Before first construction-stage/qualification/admission consumer",
+      "original_duty_ids": [
+        "R0243",
+        "R0244",
+        "R0245",
+        "R0246",
+        "R0247",
+        "R0248",
+        "R0249",
+        "R0250",
+        "R0251",
+        "R0252",
+        "R0253"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "actual-read",
+      "historical_whole_context": "Independently discovered task and runtime inputs",
+      "phase_consumer": "Earlier bootstrap/Q retained closure; fresh P01/P02/P05 equality; later actual consumers bind full finalized object",
+      "original_duty_ids": [
+        "R0254",
+        "R0255",
+        "R0256",
+        "R0257",
+        "R0258",
+        "R0259",
+        "R0260",
+        "R0261",
+        "R0262",
+        "R0263",
+        "R0264",
+        "R0265",
+        "R0266",
+        "R0267",
+        "R0268",
+        "R0269",
+        "R0270",
+        "R0271",
+        "R0272",
+        "R0273",
+        "R0274",
+        "R0275",
+        "R0276",
+        "R0277",
+        "R0278",
+        "R0279",
+        "R0280",
+        "R0281",
+        "R0282",
+        "R0283",
+        "R0284",
+        "R0285",
+        "R0286",
+        "R0287",
+        "R0288",
+        "R0289",
+        "R0290",
+        "R0291",
+        "R0292",
+        "R0293",
+        "R0294",
+        "R0295",
+        "R0296",
+        "R0297",
+        "R0298",
+        "R0299",
+        "R0300",
+        "R0301",
+        "R0302",
+        "R0303",
+        "R0304",
+        "R0305",
+        "R0306",
+        "R0307",
+        "R0308",
+        "R0309",
+        "R0310",
+        "R0311",
+        "R0312",
+        "R0313",
+        "R0314",
+        "R0315",
+        "R0316",
+        "R0317",
+        "R0318",
+        "R0319",
+        "R0320",
+        "R0321",
+        "R0322",
+        "R0323",
+        "R0324",
+        "R0325",
+        "R0326",
+        "R0327",
+        "R0328",
+        "R0329",
+        "R0330",
+        "R0331",
+        "R0332",
+        "R0333",
+        "R0334",
+        "R0335",
+        "R0336"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "initial-known-state",
+      "historical_whole_context": "Read partition and initial capability state",
+      "phase_consumer": "Q04/Q07/Q10 before startup credit; fresh P; source-child state only A",
+      "original_duty_ids": [
+        "R0337",
+        "R0338",
+        "R0339",
+        "R0340",
+        "R0341",
+        "R0342",
+        "R0343",
+        "R0344",
+        "R0345",
+        "R0346",
+        "R0347",
+        "R0348"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "accepted-unknown",
+      "historical_whole_context": "Read partition and initial capability state",
+      "phase_consumer": "Accepted opaque remainder only; known required identities/controls remain blockers",
+      "original_duty_ids": [
+        "R0349",
+        "R0350",
+        "R0351",
+        "R0352",
+        "R0353",
+        "R0354"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "accepted-unknown",
+      "historical_whole_context": "Owners, stability and exact unavailable handoff",
+      "phase_consumer": "Accepted opaque remainder only; known required identities/controls remain blockers",
+      "original_duty_ids": [
+        "R0355"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "control",
+      "historical_whole_context": "Required anchor controls and handoff",
+      "phase_consumer": "Required Q before anchor/admission credit",
+      "original_duty_ids": [
+        "R0356",
+        "R0357",
+        "R0358",
+        "R0359",
+        "R0360",
+        "R0361",
+        "R0362",
+        "R0363",
+        "R0364",
+        "R0365",
+        "R0366",
+        "R0367",
+        "R0368"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "control",
+      "historical_whole_context": "First-attempt outcomes and required counterexamples",
+      "phase_consumer": "Q programme on scratch; actual fresh P and first-target A remain pending",
+      "original_duty_ids": [
+        "R0369",
+        "R0370",
+        "R0371",
+        "R0372",
+        "R0373",
+        "R0374",
+        "R0375",
+        "R0376"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "operation-claim",
+      "historical_whole_context": "Operation and credit map",
+      "phase_consumer": "Exact Q/P/A and E/M/U split in full original row; no prior target sample",
+      "original_duty_ids": [
+        "R0377",
+        "R0378",
+        "R0379",
+        "R0380",
+        "R0381",
+        "R0382",
+        "R0383",
+        "R0384",
+        "R0385",
+        "R0386",
+        "R0387",
+        "R0388",
+        "R0389",
+        "R0390",
+        "R0391",
+        "R0392",
+        "R0393",
+        "R0394",
+        "R0395",
+        "R0396",
+        "R0397",
+        "R0398",
+        "R0399",
+        "R0400",
+        "R0401"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "policy-association-expectation",
+      "historical_whole_context": "Topology and the inherited component rule",
+      "phase_consumer": "Independent authored Q01/Q03/Q10 policy/control original before lookup credit; exact P entries before their consumers",
+      "original_duty_ids": [
+        "R0402",
+        "R0403",
+        "R0404",
+        "R0405",
+        "R0406",
+        "R0407",
+        "R0408",
+        "R0411",
+        "R0412",
+        "R0413"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "policy-association-expectation",
+      "historical_whole_context": "Attempt durability and per-control proof",
+      "phase_consumer": "Independent authored Q01/Q03/Q10 policy/control original before lookup credit; exact P entries before their consumers",
+      "original_duty_ids": [
+        "R0409",
+        "R0410",
+        "R0414",
+        "R0415"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "actual-original-result",
+      "historical_whole_context": "Independent correspondence and precise authority boundary",
+      "phase_consumer": "Independent permitted Q06-Q08 mechanics/expectations before credit; fresh P01-P03/P05 originals; fixed mdfind peer only A",
+      "original_duty_ids": [
+        "R0416",
+        "R0417",
+        "R0418",
+        "R0419",
+        "R0420",
+        "R0421",
+        "R0422",
+        "R0423",
+        "R0424",
+        "R0425",
+        "R0426",
+        "R0427",
+        "R0428",
+        "R0429",
+        "R0430",
+        "R0431",
+        "R0432",
+        "R0433",
+        "R0434",
+        "R0435",
+        "R0436",
+        "R0437",
+        "R0438",
+        "R0439",
+        "R0440",
+        "R0441",
+        "R0442",
+        "R0443"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "control-original",
+      "historical_whole_context": "Independent controls required before target acquisition",
+      "phase_consumer": "Required Q before credit; fresh P before intent; A publication as applicable under row context",
+      "original_duty_ids": [
+        "R0444",
+        "R0445",
+        "R0446",
+        "R0447",
+        "R0448",
+        "R0449",
+        "R0450",
+        "R0451",
+        "R0452",
+        "R0453",
+        "R0454",
+        "R0455",
+        "R0456",
+        "R0457",
+        "R0458",
+        "R0459",
+        "R0460",
+        "R0461",
+        "R0462",
+        "R0463",
+        "R0464",
+        "R0465",
+        "R0466",
+        "R0467",
+        "R0468",
+        "R0469",
+        "R0470",
+        "R0471",
+        "R0472",
+        "R0473",
+        "R0474",
+        "R0475",
+        "R0476",
+        "R0477",
+        "R0478",
+        "R0479",
+        "R0480",
+        "R0481",
+        "R0482",
+        "R0483",
+        "R0494",
+        "R0495",
+        "R0496",
+        "R0497",
+        "R0498",
+        "R0499",
+        "R0500",
+        "R0501",
+        "R0502",
+        "R0503",
+        "R0504",
+        "R0505",
+        "R0506",
+        "R0507",
+        "R0508",
+        "R0509",
+        "R0510",
+        "R0511",
+        "R0512",
+        "R0513",
+        "R0514",
+        "R0515",
+        "R0516",
+        "R0517",
+        "R0518",
+        "R0519",
+        "R0520",
+        "R0521",
+        "R0522",
+        "R0523",
+        "R0524",
+        "R0525",
+        "R0526",
+        "R0527",
+        "R0528",
+        "R0529",
+        "R0530",
+        "R0531",
+        "R0532",
+        "R0533",
+        "R0534",
+        "R0535",
+        "R0536",
+        "R0537",
+        "R0538",
+        "R0539",
+        "R0540",
+        "R0541",
+        "R0542",
+        "R0543",
+        "R0544",
+        "R0545",
+        "R0546",
+        "R0547",
+        "R0548",
+        "R0549",
+        "R0550",
+        "R0551",
+        "R0552",
+        "R0553",
+        "R0554",
+        "R0555",
+        "R0556",
+        "R0557",
+        "R0558",
+        "R0559",
+        "R0560",
+        "R0561",
+        "R0562",
+        "R0563",
+        "R0564",
+        "R0565",
+        "R0566",
+        "R0567",
+        "R0568",
+        "R0569",
+        "R0570",
+        "R0571",
+        "R0572",
+        "R0573",
+        "R0574",
+        "R0575",
+        "R0576",
+        "R0577",
+        "R0578",
+        "R0579",
+        "R0580",
+        "R0581",
+        "R0582",
+        "R0583",
+        "R0584",
+        "R0585",
+        "R0586",
+        "R0587",
+        "R0588",
+        "R0589",
+        "R0590",
+        "R0591",
+        "R0592",
+        "R0593",
+        "R0594",
+        "R0595",
+        "R0596",
+        "R0597",
+        "R0598",
+        "R0599",
+        "R0600",
+        "R0601",
+        "R0602",
+        "R0603",
+        "R0604",
+        "R0605",
+        "R0606",
+        "R0607",
+        "R0608",
+        "R0609",
+        "R0610",
+        "R0611",
+        "R0612",
+        "R0613"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "control-original",
+      "historical_whole_context": "Independent controls required before target acquisition",
+      "phase_consumer": "k246 generated-shape discrimination after k245 source evidence",
+      "original_duty_ids": [
+        "R0484",
+        "R0485",
+        "R0486",
+        "R0487",
+        "R0488",
+        "R0489",
+        "R0490",
+        "R0491",
+        "R0492",
+        "R0493"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "control-original",
+      "historical_whole_context": "Extraction and whole-object mutation controls",
+      "phase_consumer": "Required Q before credit; fresh P before intent; A publication as applicable under row context",
+      "original_duty_ids": [
+        "R0614",
+        "R0615",
+        "R0616",
+        "R0617",
+        "R0618",
+        "R0619",
+        "R0620",
+        "R0621",
+        "R0622",
+        "R0623",
+        "R0624",
+        "R0625",
+        "R0626",
+        "R0627",
+        "R0628",
+        "R0629",
+        "R0630",
+        "R0631",
+        "R0632",
+        "R0633",
+        "R0634",
+        "R0635",
+        "R0636",
+        "R0637",
+        "R0638",
+        "R0639",
+        "R0640",
+        "R0641",
+        "R0642",
+        "R0643"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "control-original",
+      "historical_whole_context": "Durable disarm and release events",
+      "phase_consumer": "Required Q before credit; fresh P before intent; A publication as applicable under row context",
+      "original_duty_ids": [
+        "R0644",
+        "R0645",
+        "R0646",
+        "R0647",
+        "R0648",
+        "R0649",
+        "R0650",
+        "R0651",
+        "R0652",
+        "R0653",
+        "R0654",
+        "R0655",
+        "R0656",
+        "R0657",
+        "R0658",
+        "R0659",
+        "R0660",
+        "R0661",
+        "R0662",
+        "R0663",
+        "R0664",
+        "R0665",
+        "R0666",
+        "R0667",
+        "R0668",
+        "R0669",
+        "R0670",
+        "R0671",
+        "R0672",
+        "R0673",
+        "R0674",
+        "R0675",
+        "R0676",
+        "R0677",
+        "R0678",
+        "R0679",
+        "R0680",
+        "R0681",
+        "R0682",
+        "R0683"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "control-original",
+      "historical_whole_context": "Release and acceptance controls",
+      "phase_consumer": "Required Q before credit; fresh P before intent; A publication as applicable under row context",
+      "original_duty_ids": [
+        "R0684",
+        "R0685",
+        "R0686",
+        "R0687",
+        "R0688",
+        "R0689",
+        "R0690",
+        "R0691",
+        "R0692",
+        "R0693",
+        "R0694",
+        "R0695",
+        "R0696",
+        "R0697",
+        "R0698",
+        "R0699",
+        "R0700",
+        "R0701",
+        "R0702",
+        "R0703",
+        "R0704",
+        "R0705",
+        "R0706",
+        "R0707",
+        "R0708",
+        "R0709",
+        "R0710",
+        "R0711",
+        "R0712",
+        "R0713",
+        "R0714",
+        "R0715",
+        "R0716",
+        "R0717",
+        "R0718",
+        "R0719",
+        "R0720",
+        "R0721",
+        "R0722",
+        "R0723",
+        "R0724",
+        "R0725",
+        "R0726",
+        "R0727",
+        "R0728",
+        "R0729",
+        "R0730",
+        "R0731",
+        "R0732",
+        "R0733",
+        "R0734",
+        "R0735",
+        "R0736",
+        "R0737",
+        "R0738",
+        "R0739",
+        "R0740",
+        "R0741",
+        "R0742",
+        "R0743",
+        "R0744",
+        "R0745",
+        "R0746",
+        "R0747",
+        "R0748"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "control-original",
+      "historical_whole_context": "Closed required blockers and accepted unknowns",
+      "phase_consumer": "Required Q before credit; fresh P before intent; A publication as applicable under row context",
+      "original_duty_ids": [
+        "R0749",
+        "R0750",
+        "R0751",
+        "R0752",
+        "R0753",
+        "R0754",
+        "R0755",
+        "R0756",
+        "R0757",
+        "R0758",
+        "R0759",
+        "R0760",
+        "R0761",
+        "R0762",
+        "R0763",
+        "R0764",
+        "R0765",
+        "R0766",
+        "R0767",
+        "R0768",
+        "R0769",
+        "R0770",
+        "R0771",
+        "R0772",
+        "R0773",
+        "R0774",
+        "R0775",
+        "R0776",
+        "R0777",
+        "R0778",
+        "R0779",
+        "R0780",
+        "R0781",
+        "R0782",
+        "R0783",
+        "R0784",
+        "R0785",
+        "R0786",
+        "R0787",
+        "R0788",
+        "R0789",
+        "R0790",
+        "R0791",
+        "R0792",
+        "R0793",
+        "R0794",
+        "R0795",
+        "R0796",
+        "R0797",
+        "R0798",
+        "R0799",
+        "R0800",
+        "R0801",
+        "R0802",
+        "R0803",
+        "R0804",
+        "R0805",
+        "R0806",
+        "R0807",
+        "R0808",
+        "R0809",
+        "R0810",
+        "R0811",
+        "R0812",
+        "R0813",
+        "R0814",
+        "R0815",
+        "R0816",
+        "R0817",
+        "R0818",
+        "R0819",
+        "R0820",
+        "R0821",
+        "R0822",
+        "R0823"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "control-original",
+      "historical_whole_context": "Per-family independent controls",
+      "phase_consumer": "Required Q before credit; fresh P before intent; A publication as applicable under row context",
+      "original_duty_ids": [
+        "R0824",
+        "R0825",
+        "R0826",
+        "R0827",
+        "R0828",
+        "R0829",
+        "R0830",
+        "R0831",
+        "R0832",
+        "R0833",
+        "R0834",
+        "R0835",
+        "R0836",
+        "R0837",
+        "R0838",
+        "R0839",
+        "R0840",
+        "R0841",
+        "R0842",
+        "R0843",
+        "R0844",
+        "R0845",
+        "R0846",
+        "R0847",
+        "R0848",
+        "R0849",
+        "R0850",
+        "R0851",
+        "R0852",
+        "R0853",
+        "R0854",
+        "R0855",
+        "R0856",
+        "R0857",
+        "R0858",
+        "R0859",
+        "R0860",
+        "R0861",
+        "R0862",
+        "R0863",
+        "R0864",
+        "R0865",
+        "R0866",
+        "R0867",
+        "R0868",
+        "R0869",
+        "R0870",
+        "R0871",
+        "R0872",
+        "R0873",
+        "R0874",
+        "R0875",
+        "R0876",
+        "R0877",
+        "R0878",
+        "R0879",
+        "R0880",
+        "R0881",
+        "R0882",
+        "R0883",
+        "R0884",
+        "R0885",
+        "R0886",
+        "R0887",
+        "R0888",
+        "R0889",
+        "R0890",
+        "R0891",
+        "R0892",
+        "R0893"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "control-original",
+      "historical_whole_context": "Required anchor controls and handoff",
+      "phase_consumer": "Required Q before anchor/admission credit",
+      "original_duty_ids": [
+        "R0894",
+        "R0895",
+        "R0896",
+        "R0897",
+        "R0898",
+        "R0899",
+        "R0900",
+        "R0901",
+        "R0902",
+        "R0903",
+        "R0904",
+        "R0905",
+        "R0906",
+        "R0907",
+        "R0908",
+        "R0909",
+        "R0910",
+        "R0911",
+        "R0912",
+        "R0913",
+        "R0914",
+        "R0915",
+        "R0916",
+        "R0917",
+        "R0918",
+        "R0919",
+        "R0920",
+        "R0921",
+        "R0922",
+        "R0923",
+        "R0924",
+        "R0925",
+        "R0926",
+        "R0927",
+        "R0928",
+        "R0929",
+        "R0930",
+        "R0931",
+        "R0932",
+        "R0933",
+        "R0934",
+        "R0935",
+        "R0936",
+        "R0937",
+        "R0938",
+        "R0939",
+        "R0940",
+        "R0941",
+        "R0942",
+        "R0943",
+        "R0944",
+        "R0945",
+        "R0946",
+        "R0947",
+        "R0948",
+        "R0949",
+        "R0950",
+        "R0951",
+        "R0952",
+        "R0953",
+        "R0954",
+        "R0955",
+        "R0956",
+        "R0957",
+        "R0958"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "control-original",
+      "historical_whole_context": "First-attempt outcomes and required counterexamples",
+      "phase_consumer": "Q programme on scratch; actual fresh P and first-target A remain pending",
+      "original_duty_ids": [
+        "R0959",
+        "R0960",
+        "R0961",
+        "R0962",
+        "R0963",
+        "R0964",
+        "R0965",
+        "R0966",
+        "R0967",
+        "R0968",
+        "R0969",
+        "R0970",
+        "R0971",
+        "R0972",
+        "R0973",
+        "R0974",
+        "R0975",
+        "R0976",
+        "R0977",
+        "R0978",
+        "R0979",
+        "R0980",
+        "R0981",
+        "R0982",
+        "R0983",
+        "R0984",
+        "R0985",
+        "R0986",
+        "R0987",
+        "R0988",
+        "R0989",
+        "R0990",
+        "R0991",
+        "R0992",
+        "R0993",
+        "R0994",
+        "R0995",
+        "R0996",
+        "R0997",
+        "R0998"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "later-subject-original",
+      "historical_whole_context": "Independent controls required before target acquisition",
+      "phase_consumer": "k245 actual independent roles/evidence; k246 generated-shape controls; k247 whole subject review; existing N5/N8/V11/V13 native acceptance",
+      "original_duty_ids": [
+        "R0999",
+        "R1000",
+        "R1001",
+        "R1002",
+        "R1003",
+        "R1004",
+        "R1005",
+        "R1006",
+        "R1007"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "phase-object",
+      "historical_whole_context": "Enduring inputs and phase-specific reports",
+      "phase_consumer": "Before terminal commissioning",
+      "original_duty_ids": [
+        "R1008"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "phase-object",
+      "historical_whole_context": "Enduring inputs and phase-specific reports",
+      "phase_consumer": "Before own acceptance, clean and findings paths",
+      "original_duty_ids": [
+        "R1009"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "phase-object",
+      "historical_whole_context": "Closed payloads and acyclic receipt bindings",
+      "phase_consumer": "Terminal human commissioning; later registrar/checker input",
+      "original_duty_ids": [
+        "R1010"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "phase-object",
+      "historical_whole_context": "Closed payloads and acyclic receipt bindings",
+      "phase_consumer": "Earlier finalized Q/authority/read/charter basis; successor not self-bound",
+      "original_duty_ids": [
+        "R1011"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "phase-object",
+      "historical_whole_context": "Closed payloads and acyclic receipt bindings",
+      "phase_consumer": "Own foreground trust act before consumers",
+      "original_duty_ids": [
+        "R1012"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "phase-object",
+      "historical_whole_context": "Closed payloads and acyclic receipt bindings",
+      "phase_consumer": "Earlier original controls separately adjudicated before candidate admission",
+      "original_duty_ids": [
+        "R1013"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "phase-object",
+      "historical_whole_context": "Closed payloads and acyclic receipt bindings",
+      "phase_consumer": "Qualified one-time provisioning after scratch mechanics; no initialization retry",
+      "original_duty_ids": [
+        "R1014"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "phase-object",
+      "historical_whole_context": "Closed payloads and acyclic receipt bindings",
+      "phase_consumer": "Independent binding before unspent publication",
+      "original_duty_ids": [
+        "R1015"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "phase-object",
+      "historical_whole_context": "Closed payloads and acyclic receipt bindings",
+      "phase_consumer": "Independent named/held final validation; later actual P input",
+      "original_duty_ids": [
+        "R1016"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "phase-object",
+      "historical_whole_context": "Closed payloads and acyclic receipt bindings",
+      "phase_consumer": "Earlier issuance/current bridge plus observed state; independently accepted new revision/control suffix; disarmed before mutation",
+      "original_duty_ids": [
+        "R1017"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "phase-object",
+      "historical_whole_context": "Closed payloads and acyclic receipt bindings",
+      "phase_consumer": "Reserve durable disarm-only successor before every mutation/provisioning/Q; result remains disarmed",
+      "original_duty_ids": [
+        "R1018"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "phase-object",
+      "historical_whole_context": "Closed payloads and acyclic receipt bindings",
+      "phase_consumer": "After last edit; earlier facts only; P/A values pending",
+      "original_duty_ids": [
+        "R1019"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "phase-object",
+      "historical_whole_context": "Closed payloads and acyclic receipt bindings",
+      "phase_consumer": "Own human judgment after original results exist",
+      "original_duty_ids": [
+        "R1020"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "phase-object",
+      "historical_whole_context": "Closed payloads and acyclic receipt bindings",
+      "phase_consumer": "Complete per-coordinate original-duty/input audit; before distinct close",
+      "original_duty_ids": [
+        "R1021"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "phase-object",
+      "historical_whole_context": "Closed payloads and acyclic receipt bindings",
+      "phase_consumer": "Distinct nonproducer/nonrunner/nonhuman-auditor closing owner; before eligible release",
+      "original_duty_ids": [
+        "R1022"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "phase-object",
+      "historical_whole_context": "Closed payloads and acyclic receipt bindings",
+      "phase_consumer": "Human release acceptance; P evidence never Q input/bearer/appointment",
+      "original_duty_ids": [
+        "R1023"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "phase-object",
+      "historical_whole_context": "Closed payloads and acyclic receipt bindings",
+      "phase_consumer": "Independent exact raw A3 request/ancestry/operation/basis plan before its first lookup; future reservation excluded",
+      "original_duty_ids": [
+        "R1024"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "phase-object",
+      "historical_whole_context": "Closed payloads and acyclic receipt bindings",
+      "phase_consumer": "Fresh human APPOINT/request/nonce/role; coexisting supervisor/checker/acquirer and one-use endpoint",
+      "original_duty_ids": [
+        "R1025"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "phase-object",
+      "historical_whole_context": "Enduring inputs and phase-specific reports",
+      "phase_consumer": "Fresh native/identity/channel/export/state/input equality before intent",
+      "original_duty_ids": [
+        "R1026"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "phase-object",
+      "historical_whole_context": "Enduring inputs and phase-specific reports",
+      "phase_consumer": "A after irreversible authorized consumption; no retry/refund or Q calibration",
+      "original_duty_ids": [
+        "R1027"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "phase-object",
+      "historical_whole_context": "Enduring inputs and phase-specific reports",
+      "phase_consumer": "After frozen original; constructor and independent association verifier separate",
+      "original_duty_ids": [
+        "R1028"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    },
+    {
+      "family": "charter-basis",
+      "historical_whole_context": "Enduring inputs and phase-specific reports",
+      "phase_consumer": "Freeze independently reviewed whole basis before bootstrap/Q/audit/close consumer; actual live-task read binds complete bytes",
+      "original_duty_ids": [
+        "R1029",
+        "R1030",
+        "R1031",
+        "R1032",
+        "R1033",
+        "R1034",
+        "R1035"
+      ],
+      "actual_original_sha256": null,
+      "actual_original_bytes": null,
+      "actual_original_members": null,
+      "before_consumer": "retain every original duty under exact canonical amendments; independently author/acquire/verify/accept complete actual objects/read members; current full C/K/P controls and compatibility govern placement"
+    }
+  ],
+  "original_R_register_members": {
+    "K": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "P": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "selected_C_S": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42
+    ],
+    "current_E_mapping": {
+      "source": "docs/verification/application-reference-evidence.md",
+      "heading": "#### Historical and reporting exceptions",
+      "start_byte": 106790,
+      "end_byte": 118125,
+      "bytes": 11335,
+      "sha256": "6ae4e6a78f436e999f5eb461ef16de996fb65842d0dfb4975612fe61af108546",
+      "source_sha256": "4e5b81572a4054b0437ba8bbd43408d3d431f336832d32dbd1eec3109bc0ea92",
+      "binding": "exact UTF-8 heading-delimited payload; no new slicing"
+    },
+    "meaning": "complete immutable relocation registers and normative retained duties, no fragment refresh"
+  },
+  "historical_parent_correspondence": [
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucw==",
+      "target_class": "T2",
+      "baseline_ordinals": "0,1,2,3,4,6,7,8,13,17,22,23,24,26,27,28,29,30,31,32,33,34,35,36,37,38,40,41,42,44,45,46,47,48,49,50,51,52,53,54,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,91,92,93,94,96,97,98,99,100,101,102,114,115,116,117,118,119,120,121,122,123,124,125,126,127,135,136,137,138,139,140,141,142,143,147,148,151,152,153,154,155,156,157,158,165,166,167,168,169,170,172,186,187,188,189,193,194,195,196,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9BZG9iZSBBY3JvYmF0IERD",
+      "target_class": "T2",
+      "baseline_ordinals": "5",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9BbXBsZSBTb3VuZA==",
+      "target_class": "T2",
+      "baseline_ordinals": "9,10,12",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9BbXBsZSBTb3VuZC9BY3RpdmF0aW9uTWFuYWdlcjMubG9jYWxpemVk",
+      "target_class": "T2",
+      "baseline_ordinals": "11",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9BcnR1cmlh",
+      "target_class": "T2",
+      "baseline_ordinals": "14,15,16",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9CT1NTL0tBVEFOQSBCQVNT",
+      "target_class": "T2",
+      "baseline_ordinals": "18",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9CT1NTL0tBVEFOQSBEcml2ZXI=",
+      "target_class": "T2",
+      "baseline_ordinals": "19,20",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9CT1NTL0tBVEFOQSBNa0lJ",
+      "target_class": "T2",
+      "baseline_ordinals": "21",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9Ccm90aGVyL1ByaW50ZXIgU2V0dGluZyBUb29s",
+      "target_class": "T2",
+      "baseline_ordinals": "25",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9Eb3JpY28gNC5hcHAvQ29udGVudHMvQXBwbGljYXRpb25z",
+      "target_class": "T2",
+      "baseline_ordinals": "39",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9FdmVudGlkZS9Vbmluc3RhbGxlcnM=",
+      "target_class": "T2",
+      "baseline_ordinals": "43",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9Hb29nbGUgRHJpdmUuYXBwL0NvbnRlbnRzL0FwcGxpY2F0aW9ucw==",
+      "target_class": "T2",
+      "baseline_ordinals": "55",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9NZWxvZHluZSA1",
+      "target_class": "T2",
+      "baseline_ordinals": "89,90",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9NaWNyb3NvZnQgVGVhbXMubG9jYWxpemVk",
+      "target_class": "T2",
+      "baseline_ordinals": "95",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9OYXRpdmUgSW5zdHJ1bWVudHMvQWJzeW50aCA1",
+      "target_class": "T2",
+      "baseline_ordinals": "103",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9OYXRpdmUgSW5zdHJ1bWVudHMvQmF0dGVyeSA0",
+      "target_class": "T2",
+      "baseline_ordinals": "104",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9OYXRpdmUgSW5zdHJ1bWVudHMvQ29udHJvbGxlciBFZGl0b3I=",
+      "target_class": "T2",
+      "baseline_ordinals": "105",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9OYXRpdmUgSW5zdHJ1bWVudHMvQ3JlYXRvciBUb29scw==",
+      "target_class": "T2",
+      "baseline_ordinals": "106",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9OYXRpdmUgSW5zdHJ1bWVudHMvRk04",
+      "target_class": "T2",
+      "baseline_ordinals": "107",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9OYXRpdmUgSW5zdHJ1bWVudHMvR3VpdGFyIFJpZyA2",
+      "target_class": "T2",
+      "baseline_ordinals": "108",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9OYXRpdmUgSW5zdHJ1bWVudHMvS29tcGxldGUgS29udHJvbA==",
+      "target_class": "T2",
+      "baseline_ordinals": "109",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9OYXRpdmUgSW5zdHJ1bWVudHMvS29udGFrdCA3",
+      "target_class": "T2",
+      "baseline_ordinals": "110",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9OYXRpdmUgSW5zdHJ1bWVudHMvS29udGFrdCA4",
+      "target_class": "T2",
+      "baseline_ordinals": "111",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9OYXRpdmUgSW5zdHJ1bWVudHMvTWFzc2l2ZQ==",
+      "target_class": "T2",
+      "baseline_ordinals": "112",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9OYXRpdmUgSW5zdHJ1bWVudHMvUmVha3RvciA2",
+      "target_class": "T2",
+      "baseline_ordinals": "113",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9QaWFub3RlcSA5",
+      "target_class": "T2",
+      "baseline_ordinals": "128,129",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9SYWNrZXQgdjkuMw==",
+      "target_class": "T2",
+      "baseline_ordinals": "130,131,132",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9SYWNrZXQgdjkuMy9saWI=",
+      "target_class": "T2",
+      "baseline_ordinals": "133,134",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9Tb25pYyBDaGFyZ2U=",
+      "target_class": "T2",
+      "baseline_ordinals": "144,145",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9Tb25pYyBDaGFyZ2UvVW5pbnN0YWxsZXJz",
+      "target_class": "T2",
+      "baseline_ordinals": "146",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9TdGVpbmJlcmcgRG93bmxvYWQgQXNzaXN0YW50",
+      "target_class": "T2",
+      "baseline_ordinals": "149,150",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9Ub25hbGlj",
+      "target_class": "T2",
+      "baseline_ordinals": "159,160",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9Ub29udHJhY2s=",
+      "target_class": "T2",
+      "baseline_ordinals": "161,162,163,164",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9VdGlsaXRpZXM=",
+      "target_class": "T2",
+      "baseline_ordinals": "171",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9WaWVubmEgQXNzaXN0YW50",
+      "target_class": "T2",
+      "baseline_ordinals": "173,174",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9WaWVubmEgRW5zZW1ibGU=",
+      "target_class": "T2",
+      "baseline_ordinals": "175,176,177",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9WaWVubmEgSW5zdHJ1bWVudHMgUHJv",
+      "target_class": "T2",
+      "baseline_ordinals": "178,179,180,181",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9WaWVubmEgU3luY2hyb24gUGlhbm9z",
+      "target_class": "T2",
+      "baseline_ordinals": "182,183",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9WaWVubmEgU3luY2hyb24gUGxheWVy",
+      "target_class": "T2",
+      "baseline_ordinals": "184,185",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9XYXZlcy9BcHBsaWNhdGlvbnMgVjE3",
+      "target_class": "T2",
+      "baseline_ordinals": "190",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9XYXZlcy9DT1NNT1M=",
+      "target_class": "T2",
+      "baseline_ordinals": "191",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9XYXZlcy9XYXZlU2hlbGxzIFYxNw==",
+      "target_class": "T2",
+      "baseline_ordinals": "192",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0FwcGxpY2F0aW9ucy9YY29kZS5hcHAvQ29udGVudHMvQXBwbGljYXRpb25z",
+      "target_class": "T2",
+      "baseline_ordinals": "197,198,199,200,201,202",
+      "production": "I/H2-or-nested",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGUvU3lzdGVtL0xpYnJhcnkvQ29yZVNlcnZpY2Vz",
+      "target_class": "T3",
+      "baseline_ordinals": "220,221",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGUvU3lzdGVtL0xpYnJhcnkvUHJpdmF0ZUZyYW1ld29ya3MvTW9iaWxlRGV2aWNlLmZyYW1ld29yay9WZXJzaW9ucy9B",
+      "target_class": "T3",
+      "baseline_ordinals": "222,223",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGUvU3lzdGVtL0xpYnJhcnkvUHJpdmF0ZUZyYW1ld29ya3MvTW9iaWxlRGV2aWNlLmZyYW1ld29yay9WZXJzaW9ucy9BL1Jlc291cmNlcw==",
+      "target_class": "T3",
+      "baseline_ordinals": "224",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9BZG9iZS9BUk1EQy9BcHBsaWNhdGlvbg==",
+      "target_class": "T3",
+      "baseline_ordinals": "225,226",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9BZG9iZS9XZWJFeHRuVXRpbHM=",
+      "target_class": "T3",
+      "baseline_ordinals": "229",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9BZG9iZS9XZWJFeHRuVXRpbHMvREM=",
+      "target_class": "T3",
+      "baseline_ordinals": "227",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9BZG9iZS9XZWJFeHRuVXRpbHMvRENfUmVhZGVy",
+      "target_class": "T3",
+      "baseline_ordinals": "228",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9CRkQgRHJ1bXMvQkZEMw==",
+      "target_class": "T3",
+      "baseline_ordinals": "230",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9CRkQgRHJ1bXMvQkZESW5zdGFsbFN5c3RlbS9CRkQgRGFuIEZvb3JkIFBvbHlyaHl0aG1pYyBNZXRhbA==",
+      "target_class": "T3",
+      "baseline_ordinals": "231",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9CRkQgRHJ1bXMvQkZESW5zdGFsbFN5c3RlbS9CRkQgSmF6eiAmIEZ1bms=",
+      "target_class": "T3",
+      "baseline_ordinals": "232",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9CRkQgRHJ1bXMvQkZESW5zdGFsbFN5c3RlbS9CRkQgSmF6eiBOb2ly",
+      "target_class": "T3",
+      "baseline_ordinals": "233",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9CRkQgRHJ1bXMvQkZESW5zdGFsbFN5c3RlbS9CRkQgVmlydHVhbGx5IEVyc2tpbmU=",
+      "target_class": "T3",
+      "baseline_ordinals": "234",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9CRkQgRHJ1bXMvQkZESW5zdGFsbFN5c3RlbS9CRkQz",
+      "target_class": "T3",
+      "baseline_ordinals": "236",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9CRkQgRHJ1bXMvQkZESW5zdGFsbFN5c3RlbS9CRkQzIENvcmUgTGlicmFyeQ==",
+      "target_class": "T3",
+      "baseline_ordinals": "235",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9CRkQgRHJ1bXMvQkZETEFDVG9vbA==",
+      "target_class": "T3",
+      "baseline_ordinals": "237",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9GWHBhbnNpb24vQkZEMw==",
+      "target_class": "T3",
+      "baseline_ordinals": "238",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9GWHBhbnNpb24vQkZETEFDVG9vbA==",
+      "target_class": "T3",
+      "baseline_ordinals": "239",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9Hb29nbGUvR29vZ2xlVXBkYXRlci8xNTYuMC44MDY3LjA=",
+      "target_class": "T3",
+      "baseline_ordinals": "240",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9LaWxvaGVhcnRz",
+      "target_class": "T3",
+      "baseline_ordinals": "241",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9NaWNyb3NvZnQvTUFVMi4w",
+      "target_class": "T3",
+      "baseline_ordinals": "242",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9OYXRpdmUgSW5zdHJ1bWVudHMvSGFyZHdhcmU=",
+      "target_class": "T3",
+      "baseline_ordinals": "243,244",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9OYXRpdmUgSW5zdHJ1bWVudHMvS29tcGxldGUgS29udHJvbA==",
+      "target_class": "T3",
+      "baseline_ordinals": "245",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9OYXRpdmUgSW5zdHJ1bWVudHMvS29udGFrdCA3L2t4bQ==",
+      "target_class": "T3",
+      "baseline_ordinals": "246",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9OYXRpdmUgSW5zdHJ1bWVudHMvTlRL",
+      "target_class": "T3",
+      "baseline_ordinals": "247",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9TY3JpcHQgRWRpdG9yL1RlbXBsYXRlcw==",
+      "target_class": "T3",
+      "baseline_ordinals": "248",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9TY3JpcHQgRWRpdG9yL1RlbXBsYXRlcy9Ecm9wbGV0cw==",
+      "target_class": "T3",
+      "baseline_ordinals": "249,250,251",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9TdGVpbmJlcmcvQWN0aXZhdGlvbiBNYW5hZ2Vy",
+      "target_class": "T3",
+      "baseline_ordinals": "252",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9TdGVpbmJlcmcvRG93bmxvYWQgQXNzaXN0YW50",
+      "target_class": "T3",
+      "baseline_ordinals": "253",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9TdGVpbmJlcmcvSW5zdGFsbCBBc3Npc3RhbnQ=",
+      "target_class": "T3",
+      "baseline_ordinals": "254",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9TdGVpbmJlcmcvTWVkaWFCYXk=",
+      "target_class": "T3",
+      "baseline_ordinals": "255",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9WU0wvVlNMSGVscGVy",
+      "target_class": "T3",
+      "baseline_ordinals": "256",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9XYXZlRE5BL0xpcXVpZFJoeXRobS8xLjcuMC5QSkJTMDAxMi9ydW50aW1lL2NhY2hl",
+      "target_class": "T3",
+      "baseline_ordinals": "257",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9XYXZlRE5BL0xpcXVpZFJoeXRobS8xLjcuMC5TTU9LRTAxNy9ydW50aW1lL2NhY2hl",
+      "target_class": "T3",
+      "baseline_ordinals": "258",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9lTGljZW5zZXIvcG9z",
+      "target_class": "T3",
+      "baseline_ordinals": "259",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL0FsbG95IDI=",
+      "target_class": "T3",
+      "baseline_ordinals": "261",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL0FsbG95IDIvQXV0aEFzc2lzdGFudHMvTWFpbg==",
+      "target_class": "T3",
+      "baseline_ordinals": "260",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL0JyZWFrVHdlYWtlcg==",
+      "target_class": "T3",
+      "baseline_ordinals": "263,264,265,266,267,268",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL0JyZWFrVHdlYWtlci9BdXRoQXNzaXN0YW50cy9NYWlu",
+      "target_class": "T3",
+      "baseline_ordinals": "262",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL0NyYXNoIFJlcG9ydGVy",
+      "target_class": "T3",
+      "baseline_ordinals": "269",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL0RETFk=",
+      "target_class": "T3",
+      "baseline_ordinals": "271",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL0RETFkvQXV0aEFzc2lzdGFudA==",
+      "target_class": "T3",
+      "baseline_ordinals": "270",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL0luc2lnaHQgMg==",
+      "target_class": "T3",
+      "baseline_ordinals": "272",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL0lyaXMgMg==",
+      "target_class": "T3",
+      "baseline_ordinals": "274,275,276,277,278,279,280,281,282,283,284,285",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL0lyaXMgMi9BdXRoQXNzaXN0YW50cy9NYWlu",
+      "target_class": "T3",
+      "baseline_ordinals": "273",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL05lY3RhciAz",
+      "target_class": "T3",
+      "baseline_ordinals": "286",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL05lb3ZlcmI=",
+      "target_class": "T3",
+      "baseline_ordinals": "287",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL05ldXRyb24gMw==",
+      "target_class": "T3",
+      "baseline_ordinals": "288",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL05ldXRyb24gUHJv",
+      "target_class": "T3",
+      "baseline_ordinals": "289",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL096b25lIEltYWdlcg==",
+      "target_class": "T3",
+      "baseline_ordinals": "290",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL096b25lIFBybw==",
+      "target_class": "T3",
+      "baseline_ordinals": "291",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL1Byb2R1Y3QgUG9ydGFs",
+      "target_class": "T3",
+      "baseline_ordinals": "292",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL1JYIDcgQnJlYXRoIENvbnRyb2w=",
+      "target_class": "T3",
+      "baseline_ordinals": "293",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL1JYIDggQnJlYXRoIENvbnRyb2w=",
+      "target_class": "T3",
+      "baseline_ordinals": "294",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL1JYIFBybyBBdWRpbyBFZGl0b3I=",
+      "target_class": "T3",
+      "baseline_ordinals": "295",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL1JYIFBybyBCcmVhdGggQ29udHJvbA==",
+      "target_class": "T3",
+      "baseline_ordinals": "296",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL1JlbGF5",
+      "target_class": "T3",
+      "baseline_ordinals": "297",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL1N0dXR0ZXIgRWRpdA==",
+      "target_class": "T3",
+      "baseline_ordinals": "299,300,301",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL1N0dXR0ZXIgRWRpdCAy",
+      "target_class": "T3",
+      "baseline_ordinals": "298",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL1RvbmFsIEJhbGFuY2UgQ29udHJvbA==",
+      "target_class": "T3",
+      "baseline_ordinals": "303",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL1RvbmFsIEJhbGFuY2UgQ29udHJvbCAy",
+      "target_class": "T3",
+      "baseline_ordinals": "302",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL1RyYXNoIDI=",
+      "target_class": "T3",
+      "baseline_ordinals": "305,306,307",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL1RyYXNoIDIvQXV0aEFzc2lzdGFudHMvTWFpbg==",
+      "target_class": "T3",
+      "baseline_ordinals": "304",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL1VwZGF0ZXI=",
+      "target_class": "T3",
+      "baseline_ordinals": "308,309,310,311",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL1Zpbnls",
+      "target_class": "T3",
+      "baseline_ordinals": "312",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9pWm90b3BlL1ZvY2FsU3ludGggMg==",
+      "target_class": "T3",
+      "baseline_ordinals": "313",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9vcmcucHFycy9LYXJhYmluZXItRHJpdmVyS2l0LVZpcnR1YWxISUREZXZpY2UvQXBwbGljYXRpb25z",
+      "target_class": "T3",
+      "baseline_ordinals": "314",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXBwbGljYXRpb24gU3VwcG9ydC9vcmcucHFycy9LYXJhYmluZXItRWxlbWVudHM=",
+      "target_class": "T3",
+      "baseline_ordinals": "315,316,317,318,319,320",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvQXJ0dXJpYVNDL0FydHVyaWEgU29mdHdhcmUgQ2VudGVyL3RlbXA=",
+      "target_class": "T3",
+      "baseline_ordinals": "321",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvRGV2ZWxvcGVyL0NvbW1hbmRMaW5lVG9vbHMvTGlicmFyeS9GcmFtZXdvcmtzL1B5dGhvbjMuZnJhbWV3b3JrL1ZlcnNpb25zLzMuOS9SZXNvdXJjZXM=",
+      "target_class": "T3",
+      "baseline_ordinals": "322",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvSW1hZ2UgQ2FwdHVyZS9EZXZpY2Vz",
+      "target_class": "T3",
+      "baseline_ordinals": "323,324,325,326,327",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvSW1hZ2UgQ2FwdHVyZS9TdXBwb3J0L0VQU09OL0Vwc29uIFNjYW4gMi9Db3JlL0Vwc29uU2NhbjIuZnJhbWV3b3JrL1ZlcnNpb25zL0EvUmVzb3VyY2Vz",
+      "target_class": "T3",
+      "baseline_ordinals": "328",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvSW1hZ2UgQ2FwdHVyZS9TdXBwb3J0L0xlZ2FjeURldmljZURpc2NvdmVyeUhlbHBlcnM=",
+      "target_class": "T3",
+      "baseline_ordinals": "329",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvUHJpbnRlcnMvQ2Fub24vQkpQcmludGVyL1V0aWxpdGllcw==",
+      "target_class": "T3",
+      "baseline_ordinals": "330,331",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvUHJpbnRlcnMvRVBTT04vRmF4L0F1dG9TZXR1cFRvb2w=",
+      "target_class": "T3",
+      "baseline_ordinals": "332",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvUHJpbnRlcnMvRVBTT04vRmF4L0ZheElPU3VwcG9ydA==",
+      "target_class": "T3",
+      "baseline_ordinals": "333",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvUHJpbnRlcnMvRVBTT04vRmF4L0ZpbHRlcg==",
+      "target_class": "T3",
+      "baseline_ordinals": "334,335",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvUHJpbnRlcnMvRVBTT04vRmF4L1V0aWxpdHk=",
+      "target_class": "T3",
+      "baseline_ordinals": "336,337",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvUHJpbnRlcnMvRVBTT04vSW5ramV0UHJpbnRlcjIvQXV0b1NldHVwVG9vbA==",
+      "target_class": "T3",
+      "baseline_ordinals": "338,339",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvUHJpbnRlcnMvRVBTT04vSW5ramV0UHJpbnRlcjIvQmFja2VuZA==",
+      "target_class": "T3",
+      "baseline_ordinals": "340",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvUHJpbnRlcnMvRVBTT04vSW5ramV0UHJpbnRlcjIvRmlsdGVy",
+      "target_class": "T3",
+      "baseline_ordinals": "341,342,343,344",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvUHJpbnRlcnMvRVBTT04vSW5ramV0UHJpbnRlcjIvVXRpbGl0eS9SZW1vdGVQcmludA==",
+      "target_class": "T3",
+      "baseline_ordinals": "345",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvUHJpbnRlcnMvRVBTT04vSW5ramV0UHJpbnRlcjIvVXRpbGl0eS9VVDQ=",
+      "target_class": "T3",
+      "baseline_ordinals": "346",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvUHJpbnRlcnMvRVBTT04vSW5ramV0UHJpbnRlcjIvVXRpbGl0eS9VVEw=",
+      "target_class": "T3",
+      "baseline_ordinals": "347",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L0xpYnJhcnkvUHJpdmlsZWdlZEhlbHBlclRvb2xz",
+      "target_class": "T3",
+      "baseline_ordinals": "348,349",
+      "production": "L/H3-or-library",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9BcHBsaWNhdGlvbnM=",
+      "target_class": "T1",
+      "baseline_ordinals": "350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,412,413,414",
+      "production": "S/H1-or-service",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9BcHBsaWNhdGlvbnMvVXRpbGl0aWVz",
+      "target_class": "T1",
+      "baseline_ordinals": "393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411",
+      "production": "S/H1-or-service",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L0NsYXNzcm9vbQ==",
+      "target_class": "T1",
+      "baseline_ordinals": "415",
+      "production": "S/H1-or-service",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L0NvbG9yU3luYy9DYWxpYnJhdG9ycw==",
+      "target_class": "T1",
+      "baseline_ordinals": "416",
+      "production": "S/H1-or-service",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L0NvcmVTZXJ2aWNlcw==",
+      "target_class": "T1",
+      "baseline_ordinals": "417,418,419,420,421,422,423,424,425,426,439,440,441,442,443,444,445,446,447,448,449,450,451,452,453,454,455,456,457,458,459,460,461,462,463,464,465,471,472,473,474,475,476,477,478,479,480,481,482,483,484,485,486,487,488,489,490,491,492,493,494,495,496,497,498,499,500,501,502,503,504,505,506,507,508,509,510,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554",
+      "production": "S/H1-or-service",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L0NvcmVTZXJ2aWNlcy9BcHBsaWNhdGlvbnM=",
+      "target_class": "T1",
+      "baseline_ordinals": "427,428,429,430,431,432,433,434,435,436,437,438",
+      "production": "S/H1-or-service",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L0NvcmVTZXJ2aWNlcy9GaW5kZXIuYXBwL0NvbnRlbnRzL0FwcGxpY2F0aW9ucw==",
+      "target_class": "T1",
+      "baseline_ordinals": "466,467,468,469,470",
+      "production": "S/H1-or-service",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L0NvcmVTZXJ2aWNlcy9SZW1vdGVNYW5hZ2VtZW50",
+      "target_class": "T1",
+      "baseline_ordinals": "511,512,513",
+      "production": "S/H1-or-service",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L0NvcmVTZXJ2aWNlcy9UaW1lTWFjaGluZQ==",
+      "target_class": "T1",
+      "baseline_ordinals": "534",
+      "production": "S/H1-or-service",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L0ZyYW1ld29ya3MvQWRkcmVzc0Jvb2suZnJhbWV3b3JrL0hlbHBlcnM=",
+      "target_class": "T1",
+      "baseline_ordinals": "555",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L0ZyYW1ld29ya3MvQWRkcmVzc0Jvb2suZnJhbWV3b3JrL1ZlcnNpb25zL0EvSGVscGVycw==",
+      "target_class": "T1",
+      "baseline_ordinals": "556,557,558",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L0ZyYW1ld29ya3MvQXBwbGljYXRpb25TZXJ2aWNlcy5mcmFtZXdvcmsvVmVyc2lvbnMvQS9GcmFtZXdvcmtzL0FUUy5mcmFtZXdvcmsvVmVyc2lvbnMvQS9TdXBwb3J0",
+      "target_class": "T1",
+      "baseline_ordinals": "559",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L0ZyYW1ld29ya3MvQXBwbGljYXRpb25TZXJ2aWNlcy5mcmFtZXdvcmsvVmVyc2lvbnMvQS9GcmFtZXdvcmtzL1NwZWVjaFN5bnRoZXNpcy5mcmFtZXdvcmsvVmVyc2lvbnMvQQ==",
+      "target_class": "T1",
+      "baseline_ordinals": "560",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L0ZyYW1ld29ya3MvQ29yZU1lZGlhSU8uZnJhbWV3b3JrL1ZlcnNpb25zL0EvUmVzb3VyY2Vz",
+      "target_class": "T1",
+      "baseline_ordinals": "561,562",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L0ZyYW1ld29ya3MvQ3J5cHRvVG9rZW5LaXQuZnJhbWV3b3Jr",
+      "target_class": "T1",
+      "baseline_ordinals": "563",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L0ZyYW1ld29ya3MvUGFwZXJLaXQuZnJhbWV3b3JrL0NvbnRlbnRz",
+      "target_class": "T1",
+      "baseline_ordinals": "564",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L0ZyYW1ld29ya3MvUXVpY2tMb29rLmZyYW1ld29yay9WZXJzaW9ucy9BL1Jlc291cmNlcw==",
+      "target_class": "T1",
+      "baseline_ordinals": "565,566",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L0ZyYW1ld29ya3MvUXVpY2tMb29rVUkuZnJhbWV3b3JrL1ZlcnNpb25zL0EvUmVzb3VyY2Vz",
+      "target_class": "T1",
+      "baseline_ordinals": "567,568",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L0ZyYW1ld29ya3MvU3luY1NlcnZpY2VzLmZyYW1ld29yay9WZXJzaW9ucy9BL1Jlc291cmNlcw==",
+      "target_class": "T1",
+      "baseline_ordinals": "569",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L0ZyYW1ld29ya3MvVGsuZnJhbWV3b3JrL1ZlcnNpb25zLzguNS9SZXNvdXJjZXM=",
+      "target_class": "T1",
+      "baseline_ordinals": "570",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L0ltYWdlIENhcHR1cmUvQXV0b21hdGljIFRhc2tz",
+      "target_class": "T1",
+      "baseline_ordinals": "571,572",
+      "production": "S/H1-or-service",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L0ltYWdlIENhcHR1cmUvRGV2aWNlcw==",
+      "target_class": "T1",
+      "baseline_ordinals": "573",
+      "production": "S/H1-or-service",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L0lucHV0IE1ldGhvZHM=",
+      "target_class": "T1",
+      "baseline_ordinals": "574,575,576,577,578,579,580,581,582,583,584,585,586,587,588,589,590,591",
+      "production": "S/H1-or-service",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0FPU0FjY291bnRzLmZyYW1ld29yay9WZXJzaW9ucy9BL1Jlc291cmNlcw==",
+      "target_class": "T1",
+      "baseline_ordinals": "592",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0FPU0tpdC5mcmFtZXdvcmsvVmVyc2lvbnMvQS9IZWxwZXJz",
+      "target_class": "T1",
+      "baseline_ordinals": "593,594,595",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0FjY2Vzc2liaWxpdHlTaGFyZWRTdXBwb3J0LmZyYW1ld29yay9WZXJzaW9ucy9BL1Jlc291cmNlcw==",
+      "target_class": "T1",
+      "baseline_ordinals": "596,597",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0FjY2Vzc2liaWxpdHlTdXBwb3J0LmZyYW1ld29yay9WZXJzaW9ucy9BL1Jlc291cmNlcw==",
+      "target_class": "T1",
+      "baseline_ordinals": "598",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0FtYmllbnREaXNwbGF5LmZyYW1ld29yay9WZXJzaW9ucy9BL1Jlc291cmNlcw==",
+      "target_class": "T1",
+      "baseline_ordinals": "599",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0FwcFNTTy5mcmFtZXdvcmsvU3VwcG9ydA==",
+      "target_class": "T1",
+      "baseline_ordinals": "600",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0FwcFNTT0tlcmJlcm9zLmZyYW1ld29yay9TdXBwb3J0",
+      "target_class": "T1",
+      "baseline_ordinals": "601",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0FwcGxlTWVkaWFTZXJ2aWNlc1VJLmZyYW1ld29yay9WZXJzaW9ucy9BL1Jlc291cmNlcw==",
+      "target_class": "T1",
+      "baseline_ordinals": "602",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0Fza1Blcm1pc3Npb24uZnJhbWV3b3JrL1ZlcnNpb25zL0EvUmVzb3VyY2Vz",
+      "target_class": "T1",
+      "baseline_ordinals": "603",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0F1dG9GaWxsVUkuZnJhbWV3b3JrL0NvbnRlbnRz",
+      "target_class": "T1",
+      "baseline_ordinals": "604",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0F1dG9tYXRpb25Nb2RlLmZyYW1ld29yaw==",
+      "target_class": "T1",
+      "baseline_ordinals": "605",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0JhY2tncm91bmRUYXNrTWFuYWdlbWVudC5mcmFtZXdvcmsvU3VwcG9ydA==",
+      "target_class": "T1",
+      "baseline_ordinals": "606",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0NvbW1lcmNlS2l0LmZyYW1ld29yay9WZXJzaW9ucy9BL1Jlc291cmNlcw==",
+      "target_class": "T1",
+      "baseline_ordinals": "607",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0NvcmVDaGluZXNlRW5naW5lLmZyYW1ld29yay9WZXJzaW9ucy9BL1NoYXJlZFN1cHBvcnQ=",
+      "target_class": "T1",
+      "baseline_ordinals": "608",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0NvcmVGb2xsb3dVcC5mcmFtZXdvcmsvVmVyc2lvbnMvQS9SZXNvdXJjZXM=",
+      "target_class": "T1",
+      "baseline_ordinals": "609",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0Rpc2tJbWFnZXMuZnJhbWV3b3JrL1ZlcnNpb25zL0EvUmVzb3VyY2Vz",
+      "target_class": "T1",
+      "baseline_ordinals": "610",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0VBUDgwMjFYLmZyYW1ld29yay9TdXBwb3J0",
+      "target_class": "T1",
+      "baseline_ordinals": "611",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0ZhbWlseUNvbnRyb2xzLmZyYW1ld29yay9WZXJzaW9ucy9BL1Jlc291cmNlcw==",
+      "target_class": "T1",
+      "baseline_ordinals": "612",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0ZlZWRiYWNrU2VydmljZS5mcmFtZXdvcmsvVmVyc2lvbnMvQS9TdXBwb3J0",
+      "target_class": "T1",
+      "baseline_ordinals": "613",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0ZpbmRNeU1hYy5mcmFtZXdvcmsvVmVyc2lvbnMvQS9SZXNvdXJjZXM=",
+      "target_class": "T1",
+      "baseline_ordinals": "614",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0lEUy5mcmFtZXdvcms=",
+      "target_class": "T1",
+      "baseline_ordinals": "615",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0lEU0ZvdW5kYXRpb24uZnJhbWV3b3Jr",
+      "target_class": "T1",
+      "baseline_ordinals": "616",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0lNQ29yZS5mcmFtZXdvcms=",
+      "target_class": "T1",
+      "baseline_ordinals": "617",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0lNRFBlcnNpc3RlbmNlLmZyYW1ld29yaw==",
+      "target_class": "T1",
+      "baseline_ordinals": "618",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL0lNVHJhbnNmZXJTZXJ2aWNlcy5mcmFtZXdvcms=",
+      "target_class": "T1",
+      "baseline_ordinals": "619",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL05vdGljZWJvYXJkLmZyYW1ld29yay9WZXJzaW9ucy9BL1Jlc291cmNlcw==",
+      "target_class": "T1",
+      "baseline_ordinals": "620",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL1ByaXZhdGVDbG91ZENvbXB1dGUuZnJhbWV3b3Jr",
+      "target_class": "T1",
+      "baseline_ordinals": "621",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL1NjcmVlblJlYWRlci5mcmFtZXdvcmsvVmVyc2lvbnMvQS9SZXNvdXJjZXM=",
+      "target_class": "T1",
+      "baseline_ordinals": "622,623",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL1NreUxpZ2h0LmZyYW1ld29yay9WZXJzaW9ucy9BL1Jlc291cmNlcw==",
+      "target_class": "T1",
+      "baseline_ordinals": "624",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL1NvY2lhbExheWVyLmZyYW1ld29yaw==",
+      "target_class": "T1",
+      "baseline_ordinals": "625",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL1NvZnR3YXJlVXBkYXRlLmZyYW1ld29yay9WZXJzaW9ucy9BL1Jlc291cmNlcw==",
+      "target_class": "T1",
+      "baseline_ordinals": "626",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL1NwZWVjaE9iamVjdHMuZnJhbWV3b3JrL1ZlcnNpb25zL0E=",
+      "target_class": "T1",
+      "baseline_ordinals": "627,628",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL1N0b3JhZ2VNYW5hZ2VtZW50LmZyYW1ld29yay9WZXJzaW9ucy9BL1Jlc291cmNlcw==",
+      "target_class": "T1",
+      "baseline_ordinals": "629",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL1N5bmNTZXJ2aWNlc1VJLmZyYW1ld29yay9WZXJzaW9ucy9BL1Jlc291cmNlcw==",
+      "target_class": "T1",
+      "baseline_ordinals": "630,631",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL1VuaXZlcnNhbEFjY2Vzcy5mcmFtZXdvcmsvVmVyc2lvbnMvQS9SZXNvdXJjZXM=",
+      "target_class": "T1",
+      "baseline_ordinals": "632,633,634,635",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL1VzZXJBY3Rpdml0eS5mcmFtZXdvcmsvQWdlbnRz",
+      "target_class": "T1",
+      "baseline_ordinals": "636",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1ByaXZhdGVGcmFtZXdvcmtzL2lDbG91ZERyaXZlQ29yZS5mcmFtZXdvcmsvVmVyc2lvbnMvQS9SZXNvdXJjZXM=",
+      "target_class": "T1",
+      "baseline_ordinals": "637",
+      "production": "S/system-framework-sf-support",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    },
+    {
+      "parent_base64": "L1N5c3RlbS9MaWJyYXJ5L1NlcnZpY2Vz",
+      "target_class": "T1",
+      "baseline_ordinals": "638,639",
+      "production": "S/H1-or-service",
+      "claim": "historical syntax only; no current lookup/link/TCC/purpose"
+    }
+  ],
+  "Safari_baseline_137": {
+    "literal": "/Applications/Safari.app",
+    "resolved": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app",
+    "link_text": null,
+    "current_identity": null,
+    "meaning": "historical syntax only; distinct app-position/K-component entries; relative outside prefix still refuses"
+  },
+  "phase_nodes": [
+    "original_rules_expectations",
+    "artifact_review_dispositions",
+    "CP01_short_entry_trust_scratch_appointment",
+    "independent_bootstrap_control_originals",
+    "CP01_ready_artifact_acceptance",
+    "separate_bootstrap_validation",
+    "CP01_ready_root_revision_control_acceptance",
+    "disarmed_scratch_mechanics",
+    "separate_initialization_staged_final_validation",
+    "CP02_receipt_acceptance",
+    "durable_disarm_before_final_Q",
+    "final_Q_original_results",
+    "CP03_result_acceptance_audit",
+    "distinct_instrument_close",
+    "computed_eligible_basis",
+    "CP04_eligible_successor_acceptance",
+    "independent_exact_A3_entry",
+    "CP05_ready_entry_acceptance",
+    "CP05_fresh_foreground_appointment",
+    "fresh_P_before_intent",
+    "irreversible_intent_start",
+    "declared_A_initial_closure",
+    "frozen_original_offline_derivative",
+    "independent_association_verification",
+    "k246_generated_discrimination",
+    "k247_whole_subject_review"
+  ],
+  "phase_edges": [
+    {
+      "earlier": "original_rules_expectations",
+      "later": "artifact_review_dispositions"
+    },
+    {
+      "earlier": "artifact_review_dispositions",
+      "later": "CP01_short_entry_trust_scratch_appointment"
+    },
+    {
+      "earlier": "CP01_short_entry_trust_scratch_appointment",
+      "later": "independent_bootstrap_control_originals"
+    },
+    {
+      "earlier": "independent_bootstrap_control_originals",
+      "later": "CP01_ready_artifact_acceptance"
+    },
+    {
+      "earlier": "CP01_ready_artifact_acceptance",
+      "later": "separate_bootstrap_validation"
+    },
+    {
+      "earlier": "separate_bootstrap_validation",
+      "later": "CP01_ready_root_revision_control_acceptance"
+    },
+    {
+      "earlier": "CP01_ready_root_revision_control_acceptance",
+      "later": "disarmed_scratch_mechanics"
+    },
+    {
+      "earlier": "disarmed_scratch_mechanics",
+      "later": "separate_initialization_staged_final_validation"
+    },
+    {
+      "earlier": "separate_initialization_staged_final_validation",
+      "later": "CP02_receipt_acceptance"
+    },
+    {
+      "earlier": "CP02_receipt_acceptance",
+      "later": "durable_disarm_before_final_Q"
+    },
+    {
+      "earlier": "durable_disarm_before_final_Q",
+      "later": "final_Q_original_results"
+    },
+    {
+      "earlier": "final_Q_original_results",
+      "later": "CP03_result_acceptance_audit"
+    },
+    {
+      "earlier": "CP03_result_acceptance_audit",
+      "later": "distinct_instrument_close"
+    },
+    {
+      "earlier": "distinct_instrument_close",
+      "later": "computed_eligible_basis"
+    },
+    {
+      "earlier": "computed_eligible_basis",
+      "later": "CP04_eligible_successor_acceptance"
+    },
+    {
+      "earlier": "CP04_eligible_successor_acceptance",
+      "later": "independent_exact_A3_entry"
+    },
+    {
+      "earlier": "independent_exact_A3_entry",
+      "later": "CP05_ready_entry_acceptance"
+    },
+    {
+      "earlier": "CP05_ready_entry_acceptance",
+      "later": "CP05_fresh_foreground_appointment"
+    },
+    {
+      "earlier": "CP05_fresh_foreground_appointment",
+      "later": "fresh_P_before_intent"
+    },
+    {
+      "earlier": "fresh_P_before_intent",
+      "later": "irreversible_intent_start"
+    },
+    {
+      "earlier": "irreversible_intent_start",
+      "later": "declared_A_initial_closure"
+    },
+    {
+      "earlier": "declared_A_initial_closure",
+      "later": "frozen_original_offline_derivative"
+    },
+    {
+      "earlier": "frozen_original_offline_derivative",
+      "later": "independent_association_verification"
+    },
+    {
+      "earlier": "independent_association_verification",
+      "later": "k246_generated_discrimination"
+    },
+    {
+      "earlier": "k246_generated_discrimination",
+      "later": "k247_whole_subject_review"
+    }
+  ],
+  "phase_actual_records": null,
+  "charter_candidates": [
+    {
+      "bytes": 40711,
+      "sha256": "462ccdbeb3ae5b9e4958a8bbb57f7aff970d251ea3547885e16571ce21aef4cb",
+      "meaning": "whole current documentary charter candidate, not accepted runtime/closing authority; resolve stable handle after insertion/retirement",
+      "handle": "root",
+      "path_at_snapshot": ".grove/_BRIEF.md"
+    },
+    {
+      "bytes": 21028,
+      "sha256": "6c8b275b967e84ab8757692fb931755238ba98a88ac930fdc66833ba89855287",
+      "meaning": "whole current documentary charter candidate, not accepted runtime/closing authority; resolve stable handle after insertion/retirement",
+      "handle": "application-population-metadata-subject-k242",
+      "path_at_snapshot": ".grove/34-k242/_application-population-metadata-subject.md"
+    },
+    {
+      "bytes": 27784,
+      "sha256": "d40f4f5d3c2bc2d294cc8138e79e2a08684549bb55d7be6e0ae4300f3ffb6657",
+      "meaning": "whole current documentary charter candidate, not accepted runtime/closing authority; resolve stable handle after insertion/retirement",
+      "handle": "reference-evidence-instrument-k244",
+      "path_at_snapshot": ".grove/34-k242/03-k244/_reference-evidence-instrument.md"
+    },
+    {
+      "bytes": 5241,
+      "sha256": "428289818756c54d69b8abf23f6ed66389cd66fa4a067063d83ce29f5883b87e",
+      "meaning": "whole current documentary charter candidate, not accepted runtime/closing authority; resolve stable handle after insertion/retirement",
+      "handle": "reference-evidence-package-and-roles-k245",
+      "path_at_snapshot": ".grove/34-k242/04-design--reference-evidence-package-and-roles-k245.md"
+    },
+    {
+      "bytes": 3796,
+      "sha256": "a894e6d46319202bd3d047b3e82ed9ae936b3fc0bbedb5b2f2f0cd5d56be5b76",
+      "meaning": "whole current documentary charter candidate, not accepted runtime/closing authority; resolve stable handle after insertion/retirement",
+      "handle": "population-joint-recipes-k246",
+      "path_at_snapshot": ".grove/34-k242/05-design--population-joint-recipes-k246.md"
+    },
+    {
+      "bytes": 4024,
+      "sha256": "dbd407520a7b5a96a9f24c79b8de26e4956312f45c9505a42f3cbad3988eb076",
+      "meaning": "whole current documentary charter candidate, not accepted runtime/closing authority; resolve stable handle after insertion/retirement",
+      "handle": "application-population-metadata-subject-k247",
+      "path_at_snapshot": ".grove/34-k242/06-design--application-population-metadata-subject-k247.md"
+    },
+    {
+      "bytes": 10988,
+      "sha256": "72e9f5ee1622e7b4613e9749106846074a583e79636ed8568997110fe3c60389",
+      "meaning": "whole current documentary charter candidate, not accepted runtime/closing authority; resolve stable handle after insertion/retirement",
+      "handle": "reference-evidence-construction-k269",
+      "path_at_snapshot": ".grove/34-k242/03-k244/21-planning--reference-evidence-construction-k269.md"
+    }
+  ],
+  "full_read_rule": "Every actually declared/independently observed consumed member, whole bytes/negative lookup/image/held identity and phase/provenance is bound. Named families/source pins do not enumerate the unbuilt transitive retained closure. Missing members are null, never empty. Only explicit accepted opaque contact remainder is AU.",
+  "reporting_rule": "R report, diagrams, this documentary manifest and live summaries are unconsumed: no report-driven reconstruction or qualification. Actual reads bind all bytes and changes disarm/requalify. This output does not hash itself/reports; output omissions give no consumer omission permission.",
+  "current_execution_qualification": "Not established. Required actual originals/identities/controls/tools/authority remain before consumers. K244/k242 live; k245 unused pass; all generated/whole-subject/useful breadth/additive VM/native/private/holds remain."
+}

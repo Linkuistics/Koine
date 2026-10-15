@@ -1,0 +1,9 @@
+{
+  "/Users/antony/Development/Koine.add-plugins-for-modaliser-requirements/scripts/vm-probe-search.py": "af9366ce85cd65a7875e7d9a1cbec63fdf96aa999e7d3b9c78b89d6e0fc7a7fe",
+  "scripts/vm-probe-protected-path.py": "d9c1d9e5f71190ba7e3767cd9bb248f121094bf9e869f20c0d982abb185be227",
+  "scripts/build-search-evidence.sh": "f736790969eeaba45e80079f819f48d6b551d46d754849e315ea890b4a33e6c9",
+  "docs/verification/search-discovery/probe.swift": "c12eb5d12e7b38319b9e03139a3641b5052ddcdc5baac6cf7d4814ebf01a0826",
+  "App/Info.plist": "431300765533dd93c89b85d479c3127d92cfd9a8468048b7cf84cd3e2dde7157",
+  "App/Koine.entitlements": "ac7918e500e8ab1e8818b3b4c0a44525a5fbc0e3415739ee85f5944fc9dcf7a3",
+  ".build/search-evidence/Koine.zip": "3b8d0f8b093272ee17dff106adf7603e3f0bed4ecd5a00f57510664723f7d4c5"
+}

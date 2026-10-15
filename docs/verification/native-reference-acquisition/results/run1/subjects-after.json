@@ -1,0 +1,8 @@
+{
+ "/Users/antony/Development/Koine.add-plugins-for-modaliser-requirements/scripts/vm-probe-native-reference.py": "3d6749f037e0e48f611a94e4831dec15bd36ec88ceb92797cc07d93f88367e4d",
+ "docs/verification/native-reference-acquisition/probe.m": "b84cac3c7b5eb9ac2db23a4f5617920112527df5bed290a4259fcd10b08c97b1",
+ "scripts/build-native-reference-probe.sh": "680541dd37031534ce480fb2038021dc79f08423e14b3165309f646393157272",
+ "App/Info.plist": "431300765533dd93c89b85d479c3127d92cfd9a8468048b7cf84cd3e2dde7157",
+ "App/Koine.entitlements": "ac7918e500e8ab1e8818b3b4c0a44525a5fbc0e3415739ee85f5944fc9dcf7a3",
+ ".build/native-reference-acquisition.zip": "7bdaa0adab93808fcdf789a75429976273fc2351dac74fd4aa776ca5ffd79ab9"
+}

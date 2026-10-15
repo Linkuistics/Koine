@@ -1,0 +1,8 @@
+bdcc7db11798ff4d2463adbbd1ef76a495ed83a7c2df0fa1d46d4680b6330329  /Applications/KoineK174Probe.app/Contents/MacOS/Koine
+f1b996412edaba033d9eafeae5e87b9503ef4bd108dacb4f9bdd0dd5fecad369  /Applications/KoineK174Probe.app/Contents/Info.plist
+f30923e4ebae0eca28e816b98f3f8d5f50ad36a7c0a1c2feb2fca9394c55028d  /Users/admin/Desktop/k174/sample.txt
+f30923e4ebae0eca28e816b98f3f8d5f50ad36a7c0a1c2feb2fca9394c55028d  /Users/admin/Desktop/k174/dir/inner.txt
+f30923e4ebae0eca28e816b98f3f8d5f50ad36a7c0a1c2feb2fca9394c55028d  /Users/admin/Documents/k174/sample.txt
+f30923e4ebae0eca28e816b98f3f8d5f50ad36a7c0a1c2feb2fca9394c55028d  /Users/admin/Documents/k174/dir/inner.txt
+f30923e4ebae0eca28e816b98f3f8d5f50ad36a7c0a1c2feb2fca9394c55028d  /Users/admin/Downloads/k174/sample.txt
+f30923e4ebae0eca28e816b98f3f8d5f50ad36a7c0a1c2feb2fca9394c55028d  /Users/admin/Downloads/k174/dir/inner.txt

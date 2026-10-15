@@ -1,0 +1,59 @@
+{
+  "purpose": "Logical design certificates and finite native qualification; no runtime behavior or health proof",
+  "limits": {
+    "panesPerSweep": 256,
+    "anchorsPerPane": 128,
+    "anchorsPerSweep": 4096,
+    "recordKeys": 16,
+    "sweeps": 2,
+    "minimumGapMs": 100,
+    "jobWaitMs": 3000,
+    "nativeAttempts": 131072,
+    "ownedCopyBytes": 8388608
+  },
+  "recipe": {
+    "fixedAttempts": 64,
+    "attemptsPerEvent": 64,
+    "attemptsPerPaneRecord": 48,
+    "attemptsPerAnchor": 4,
+    "idBytes": 512,
+    "labelBytes": 1024,
+    "paneRecordBytes": 128,
+    "anchorBytes": 512,
+    "anchorRecordBytes": 64,
+    "diagnosticBytes": 131072,
+    "coverageSummaryBytes": 128,
+    "scratchBytes": 131072
+  },
+  "contract": {
+    "paneForm": "ALL_PANE_PROPERTIES_PALL",
+    "anchorAssociation": "CONTAINER_PANE_ID",
+    "comparison": "FULL_ID_NAME_ANCHOR_MAP",
+    "lazyCompleteness": "UNKNOWN",
+    "positiveStatus": "PARTIAL",
+    "emptyPanes": "UNKNOWN_NULL_ITEMS",
+    "emptyAnchors": "NULL",
+    "overflow": "FAILED_NULL_ITEMS",
+    "diagnosticOverflow": "CONTINUE_WITH_BOUNDED_GUIDANCE",
+    "coverageIndependentOfDiagnosticDetails": true,
+    "publishSaturationReasonSummary": true,
+    "saturationSummaryRendering": "ONCE_AT_FREEZE",
+    "incompleteFirstSweepDeadline": "FAILED_NULL_ITEMS",
+    "confirmationDeadline": "PARTIAL_UNCONTRADICTED_FIRST_MAP",
+    "lazyRevealNoSuchObject": "FAILED_UNESTABLISHED_SELECTION",
+    "readLoadsPane": false,
+    "automaticFallback": false
+  },
+  "nativeQualification": {
+    "subject": "V12",
+    "coldRepetitions": 3,
+    "coldBeforeAnyVisit": true,
+    "coldRevealInSeparateIncarnation": true,
+    "coldRevealSelectionFromPriorIncarnation": true,
+    "independentScalarInventory": true,
+    "maximumVisitPasses": 2,
+    "postVisitCheckpointsSeconds": [1, 3, 10],
+    "requireEveryExposedChoiceColdAndWarm": true,
+    "nativeVerdict": "PENDING"
+  }
+}

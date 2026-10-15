@@ -1,0 +1,19 @@
+# Previous raw-search proposal only; not the current v1 API or backend.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+Start: "Previous proposal · Search choices + coverage\nClient chooser / ranking / MRU" {class: start}
+App: "INSTALLED app\nKnown identifier AND selected path"
+File: "File / folder\nUnchanged observed path"
+Action: "Existing launch / open / reveal\nworkspace:control AND desktop:control"
+Resolve: "Action-time location resolution\nRevalidate existence / classification / copy"
+Outcome: "Existing action outcome\nExtant >=1024-byte spelling: failed\nMissing remains missing"
+Copy: "Client clipboard\nUnknown/unregistered and long locations stay useful"
+Start -> App: "1 · explicit launch selection"
+Start -> File: "1 · explicit open / reveal"
+Start -> Copy: "1 · explicit local copy"
+App -> Action: "2 · retain installation constraint"
+File -> Action: "2 · no search identity pin"
+Action -> Resolve: "3 · unchanged action contract"
+Resolve -> Outcome: "4 · no alternate-copy retry"

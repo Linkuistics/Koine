@@ -28,6 +28,12 @@ public final class KoineServer: Sendable {
     /// Refusals and provider defects, until management serves provider status.
     var providerDiagnostics: [ProviderDiagnostic] { engine.providerDiagnostics }
 
+    /// Every provider status, with the candidate fields the loader fills, as the
+    /// selection tests read them ahead of management serving them.
+    package var providerStatuses: [ProviderStatus] {
+        get async { await engine.providerStatuses }
+    }
+
     private let dataDirectory: URL
     private let engine: Engine
     private let policy: RequestPolicy
@@ -39,12 +45,20 @@ public final class KoineServer: Sendable {
     /// when another instance holds the lock. A store that cannot be opened
     /// throws; the server does not start over a replacement.
     ///
-    /// Providers are loaded from `providerRoots` and composed into the schema
-    /// here, once; nothing else is searched. A bundle that is refused is
-    /// reported as provider status and contributes nothing; a root that cannot
-    /// be read throws. Verifying a signature blocks on work the Security
-    /// framework dispatches: construct on the main thread or a thread of your
-    /// own, not on many Swift concurrency threads at once. Each bundle is staged under `providerStaging`, by
+    /// Providers are selected from `providerRoots` under the sealed
+    /// `providerCatalogue` and composed into the schema here, once; nothing else
+    /// is searched. One invocation discovers, stages, verifies and selects at
+    /// most one candidate per reserved identity before any provider code loads
+    /// (docs/specs/machine.md, "First-party provider selection"). A bundle that
+    /// is refused is reported as provider status and contributes nothing; a root
+    /// that cannot be read throws. A catalogue that is malformed or conflicts with
+    /// itself admits no provider: the schema is the core alone, with one
+    /// diagnostic. The default catalogue reserves `desktop` and designates no
+    /// bundle, so no per-user bundle can take the desktop identity and an
+    /// in-application root under it admits none. Verifying a
+    /// signature blocks on work the Security framework dispatches: construct on
+    /// the main thread or a thread of your own, not on many Swift concurrency
+    /// threads at once. Each bundle is staged under `providerStaging`, by
     /// default `ProviderStaging` in the data directory, and loaded from there.
     ///
     /// `osPermissions` is the host's read of the OS permissions it owns, served
@@ -56,13 +70,15 @@ public final class KoineServer: Sendable {
     /// or the environment supplies reaches it.
     public convenience init(
         dataDirectory: URL, policy: RequestPolicy = .version1, providerRoots: [ProviderRoot] = [],
+        providerCatalogue: Result<ProviderCatalogue, ProviderCatalogue.Invalid> = .success(.reservingDesktop),
         providerStaging: URL? = nil, osPermissions: @escaping OSPermissionSource = { [] },
         now: @escaping TimeSource = { Date() }
     ) throws {
         try self.init(
             dataDirectory: dataDirectory, policy: policy, providerRoots: providerRoots,
-            providerStaging: providerStaging, osPermissions: osPermissions, now: now,
-            additionalProviders: []
+            providerCatalogue: providerCatalogue, providerStaging: providerStaging,
+            osPermissions: osPermissions, now: now, additionalProviders: [],
+            loaderSeam: ProviderLoader.Seam()
         )
     }
 
@@ -72,13 +88,16 @@ public final class KoineServer: Sendable {
         .installed(dataDirectory.appendingPathComponent("Providers", isDirectory: true))
     }
 
-    /// `additionalProviders` are composed with the loaded ones. It is internal:
-    /// tests reach it with `@testable` to contribute a descriptor without a
-    /// bundle; nothing public carries it.
-    init(
+    /// `additionalProviders` are composed with the loaded ones, and `loaderSeam`
+    /// substitutes what a test controls while the real verifier and loader run.
+    /// Both have package access: the package's tests and test hosts reach them;
+    /// nothing public carries either.
+    package init(
         dataDirectory: URL, policy: RequestPolicy, providerRoots: [ProviderRoot],
+        providerCatalogue: Result<ProviderCatalogue, ProviderCatalogue.Invalid>,
         providerStaging: URL? = nil, osPermissions: @escaping OSPermissionSource = { [] },
-        now: @escaping TimeSource = { Date() }, additionalProviders: [ActiveProvider]
+        now: @escaping TimeSource = { Date() }, additionalProviders: [ActiveProvider],
+        loaderSeam: ProviderLoader.Seam
     ) throws {
         self.dataDirectory = dataDirectory
         self.policy = policy
@@ -96,47 +115,86 @@ public final class KoineServer: Sendable {
         let store = try SQLiteGrantStore(
             path: dataDirectory.appendingPathComponent("grants.sqlite").path
         )
-        var loaded: [ActiveProvider] = []
-        var unloaded: [ProviderStatus] = []
         let host = HostCompatibility(features: koineHostFeatures)
         let staging =
             providerStaging
             ?? dataDirectory.appendingPathComponent("ProviderStaging", isDirectory: true)
-        // A provider's origin is its root's: only the in-application root may
-        // supply the identifiers reserved to Koine's own providers.
-        let reports = try providerRoots.flatMap { root in
-            try ProviderLoader.loadProviders(in: root, staging: staging, host: host)
-                .map { (report: $0, origin: root.isBundled ? ActiveProvider.Origin.bundled : .external) }
-        }
-        for (report, origin) in reports {
+        // One invocation over both roots and the sealed catalogue: the loader
+        // owns discovery, staging, verification and selection, and returns a
+        // report for every candidate and only the selected providers.
+        let selection = try ProviderLoader.selectAndLoad(
+            roots: providerRoots, catalogue: providerCatalogue, staging: staging, host: host,
+            seam: loaderSeam
+        )
+        var unloaded: [ProviderStatus] = []
+        for report in selection.reports {
             let state: ProviderStatus.State
             let diagnostic: String
             switch report.outcome {
-            case .loaded(let provider):
-                loaded.append(
-                    ActiveProvider(
-                        descriptor: provider.descriptor, provider: provider.provider,
-                        origin: origin, version: report.version, schemaVersion: report.schemaVersion
-                    )
-                )
-                continue
+            case .loaded: continue
             case .incompatible(let reason): (state, diagnostic) = (.incompatible, reason)
             case .rejected(let reason): (state, diagnostic) = (.rejected, reason)
             }
+            // A frozen choice that fails while loading keeps the earlier refusals
+            // that led to it in its diagnostic.
+            let explained = report.note.map { "\(diagnostic) \($0)" } ?? diagnostic
             unloaded.append(
                 ProviderStatus(
                     provider: report.provider, version: report.version,
-                    schemaVersion: report.schemaVersion, state: state, diagnostic: diagnostic
+                    schemaVersion: report.schemaVersion, state: state, diagnostic: explained,
+                    candidateId: report.candidateId, origin: report.origin.map(Self.origin),
+                    selection: Self.selection(report.selection),
+                    selectedCandidateId: report.selectedCandidateId, reason: report.reason
                 )
             )
+        }
+        // Published in canonical order: shipped identities by identifier, then
+        // ordinary per-user ones. A shipped selection of either origin is the
+        // identity's owner; physical origin decides no authority.
+        let loaded: [ActiveProvider] = selection.publication.compactMap { report in
+            guard case .loaded(let provider) = report.outcome, let candidateId = report.candidateId,
+                let origin = report.origin
+            else { return nil }
+            return ActiveProvider(
+                descriptor: provider.descriptor, provider: provider.provider,
+                origin: report.isShipped ? .bundled : .external, version: report.version,
+                schemaVersion: report.schemaVersion,
+                candidate: ActiveProvider.Candidate(
+                    candidateId: candidateId, origin: Self.origin(origin), reason: report.reason,
+                    note: report.note
+                )
+            )
+        }
+        var reserved: [ReservedIdentity] = []
+        if case .success(let catalogue) = providerCatalogue {
+            reserved = catalogue.entries.map {
+                ReservedIdentity(providerId: $0.providerId, graphQLPrefix: $0.graphQLPrefix)
+            }
         }
         let engine = try Engine(
             store: store, instanceId: instanceId, policy: policy,
             providers: loaded + additionalProviders, unloadedProviders: unloaded,
-            osPermissions: osPermissions, now: now
+            reservedIdentities: reserved, osPermissions: osPermissions, now: now
         )
         self.engine = engine
         console = LocalConsole(engine: engine)
+    }
+
+    private static func origin(_ origin: ProviderCandidateReport.Origin) -> ProviderStatus.Origin {
+        switch origin {
+        case .bundled: .bundled
+        case .perUser: .perUser
+        }
+    }
+
+    private static func selection(
+        _ selection: ProviderCandidateReport.Selection
+    ) -> ProviderStatus.Selection {
+        switch selection {
+        case .selected: .selected
+        case .notSelected: .notSelected
+        case .unavailable: .unavailable
+        }
     }
 
     /// Binds loopback and, once the listener is ready, publishes the descriptor.

@@ -6,7 +6,9 @@
 # KOINE_VM_LOG_PREFIX names the transcript. The TestAnyware workarounds here are
 # explained in docs/verification/resident-app-vm.md.
 
-if [ ! -d "${APP_BUNDLE}" ]; then
+# KOINE_VM_NO_APP=1 is for the runs that prepare or inspect a guest and install no
+# Koine (vm-prepare-launchers.sh): they need the clone and the helpers, not the build.
+if [ "${KOINE_VM_NO_APP:-0}" != 1 ] && [ ! -d "${APP_BUNDLE}" ]; then
     echo "Error: ${APP_BUNDLE} does not exist. Run: task app" >&2
     exit 1
 fi
@@ -23,7 +25,7 @@ mkdir -p "${LOG_DIR}"
 LOG="${LOG_DIR}/${KOINE_VM_LOG_PREFIX:-}$(date +%Y%m%dT%H%M%S).log"
 exec > >(tee "${LOG}") 2>&1
 
-VM_ID="koine-verify-$$"
+VM_ID="${KOINE_VM_ID:-koine-verify-$$}"
 export TESTANYWARE_VM_ID="${VM_ID}"
 INSTALLED="/Applications/${APP_NAME}.app"
 DATA='$HOME/Library/Application Support/Koine'
@@ -61,6 +63,37 @@ guest() {
     echo "guest exec kept timing out: $1" >&2
     [ -z "${out}" ] || echo "${out}" >&2
     return 255
+}
+
+# guest_text <command>: for a read whose output the caller parses. The agent's
+# false "timed out" report (scripts/vm-verify-lib.sh, guest) can follow a complete
+# answer, and after twelve tries `guest` gives up with the answer in hand: keep the
+# answer, drop the report, and let the caller's parsing prove it whole.
+guest_text() {
+    local out
+    out="$(guest "$1" 2>&1)" || true
+    grep -v -e '^Process timed out after' -e '^guest exec kept timing out' -e '^\[Process timed out' <<<"${out}" || true
+}
+# guest_long <name> <local script>: runs a script that outlasts the agent's 30s
+# exec window — a Homebrew install, a cask download — detached in the guest, and
+# polls for its exit status. Its transcript is echoed into this run's log, and
+# its status is returned. guest() silently retries an exec that falsely times
+# out, and these scripts can not be repeated: one run's reinstall was launched
+# twice, and the second `brew install` truncated the log to "Not upgrading
+# koine". So the launch takes a guard directory, and a retried launch that finds
+# it already taken starts nothing.
+guest_long() {
+    local name="$1" script="$2" status
+    testanyware file upload "${script}" "/Users/admin/${name}.sh" >/dev/null
+    guest "mkdir \$HOME/${name}.started 2>/dev/null || exit 0; nohup bash -c 'bash \$HOME/${name}.sh > \$HOME/${name}.log 2>&1; echo \$? > \$HOME/${name}.exit' >/dev/null 2>&1 &"
+    for _ in $(seq 1 180); do
+        if guest "[ -e \$HOME/${name}.exit ]" >/dev/null 2>&1; then break; fi
+        sleep 5
+    done
+    guest "cat \$HOME/${name}.log" | sed 's/^/  | /'
+    status="$(guest "cat \$HOME/${name}.exit" 2>/dev/null | tr -d '[:space:]')"
+    [ -n "${status}" ] || fail "${name} did not finish within 15 minutes"
+    return "${status}"
 }
 
 cleanup() {
@@ -104,6 +137,70 @@ await_element() {
     fail "window element $1 was not $2"
 }
 text_of() { element "$1" | jq -r '[.. | strings] | join(" ")'; }
+# The window is a fixed 480x680 frame around scrolling content (the grant form's
+# disclosures make it longer than the frame), so an element is on screen, and
+# clickable, only when its frame lies inside the window's. The accessibility tree
+# reports an element that is scrolled out of view as well, so what a person can
+# see is decided by geometry, not by the tree's membership.
+TITLE_BAR=30
+read_frame() {
+    local entry
+    entry="$(testanyware agent windows --json |
+        jq -c --arg name "${APP_NAME}" '[.windows[] | select(((.title // .name // "")) | test($name))][0]')"
+    read -r FRAME_X FRAME_Y FRAME_W FRAME_H <<<"$(jq -r \
+        '[(.positionX // .x // .bounds.x), (.positionY // .y // .bounds.y),
+          (.sizeWidth // .width // .bounds.width), (.sizeHeight // .bounds.height // .height)]
+         | map(if type == "number" then floor else . end) | join(" ")' <<<"${entry}")"
+    case "${FRAME_H}" in '' | null) fail "the window's frame could not be read from the agent: ${entry}" ;; esac
+    BOTTOM=$((FRAME_Y + FRAME_H))
+}
+# on_screen <jq condition>: the element exists and lies wholly inside the window.
+on_screen() {
+    local e
+    e="$(element "$1")"
+    [ "${e}" != null ] || return 1
+    jq -e --argjson top "$((FRAME_Y + TITLE_BAR))" --argjson bottom "${BOTTOM}" \
+        '.positionY >= $top and (.positionY + .sizeHeight) <= $bottom' >/dev/null <<<"${e}"
+}
+# Which sign of --dy moves content towards the end. Natural scrolling makes this
+# a setting, so it is measured on an element rather than assumed.
+SCROLL_END=-10
+scroll_by() {
+    testanyware input scroll $((FRAME_X + FRAME_W / 2)) $((FRAME_Y + FRAME_H / 2)) "--dy=$1" >/dev/null
+    sleep 1
+}
+calibrate_window_scroll() {
+    local before after
+    read_frame
+    before="$(element '.id=="grant-label"' | jq -r '.positionY')"
+    scroll_by -10
+    after="$(element '.id=="grant-label"' | jq -r '.positionY')"
+    if [ "$(jq -n "${after} < ${before}")" = true ]; then SCROLL_END=-10; else SCROLL_END=10; fi
+    echo "grant-label at y=${before} moved to y=${after} under --dy -10; towards the end is --dy ${SCROLL_END}"
+    for _ in $(seq 1 30); do scroll_by $((-SCROLL_END)); done
+}
+# reveal <jq condition>: scroll until the element is wholly on screen.
+reveal() {
+    local e y
+    read_frame
+    for _ in $(seq 1 60); do
+        if on_screen "$1"; then return 0; fi
+        e="$(element "$1")"
+        [ "${e}" != null ] || fail "no UI element matches: $1"
+        y="$(jq -r '.positionY' <<<"${e}")"
+        if [ "$(jq -n "${y} > ${FRAME_Y} + ${FRAME_H} / 2")" = true ]; then
+            scroll_by "${SCROLL_END}"
+        else
+            scroll_by $((-SCROLL_END))
+        fi
+    done
+    fail "scrolling did not bring $1 on screen"
+}
+# reveal_click <jq condition>: scroll the element on screen, then click it.
+reveal_click() {
+    reveal "$1"
+    click "$1"
+}
 # Notification banners ("Login Item Added") cover the top-right of the screen
 # and swallow clicks; keep the window at the top-left.
 place_window() {
@@ -157,7 +254,9 @@ start_vm() {
     # KOINE_VM_DISPLAY overrides the guest's resolution. Only the notarized run
     # needs it, to put a control far below the fold of a System Settings pane on
     # screen at all; every other run takes testanyware's default.
+    # KOINE_VM_BASE clones a prepared tart image instead of the platform's golden.
     testanyware vm start --platform macos --id "${VM_ID}" \
+        ${KOINE_VM_BASE:+--base "${KOINE_VM_BASE}"} \
         ${KOINE_VM_DISPLAY:+--display "${KOINE_VM_DISPLAY}"} >/dev/null
     guest 'sw_vers; uname -m'
     echo "Gatekeeper: $(guest 'spctl --status' 2>&1 || true)"

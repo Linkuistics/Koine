@@ -1,0 +1,9 @@
+{
+  "command": "(sw_vers; uname -a; diskutil info /System/Volumes/Data; spctl --status; codesign --verify --strict /tmp/k158-bundle/K158Probe.app; codesign -dvv --entitlements - /tmp/k158-bundle/K158Probe.app 2>&1; shasum -a 256 /tmp/k158-bundle/K158Probe.app/Contents/MacOS/K158Probe) >/tmp/k149-cmd-2.out 2>/tmp/k149-cmd-2.err; echo $? >/tmp/k149-cmd-2.tmp; mv /tmp/k149-cmd-2.tmp /tmp/k149-cmd-2.code",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "",
+  "timed_out": false
+}

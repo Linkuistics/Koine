@@ -71,13 +71,14 @@ public final class Engine: Sendable {
     public convenience init(
         store: any GrantStore, instanceId: String, policy: RequestPolicy = .version1,
         providers: [ActiveProvider] = [], unloadedProviders: [ProviderStatus] = [],
+        reservedIdentities: [ReservedIdentity] = ReservedIdentity.desktopOnly,
         osPermissions: @escaping OSPermissionSource = { [] },
         now: @escaping TimeSource = { Date() }
     ) throws {
         try self.init(
             store: store, instanceId: instanceId, policy: policy, providers: providers,
-            unloadedProviders: unloadedProviders, osPermissions: osPermissions, now: now,
-            reached: { _ in }
+            unloadedProviders: unloadedProviders, reservedIdentities: reservedIdentities,
+            osPermissions: osPermissions, now: now, reached: { _ in }
         )
     }
 
@@ -86,6 +87,7 @@ public final class Engine: Sendable {
     init(
         store: any GrantStore, instanceId: String, policy: RequestPolicy,
         providers: [ActiveProvider] = [], unloadedProviders: [ProviderStatus] = [],
+        reservedIdentities: [ReservedIdentity] = ReservedIdentity.desktopOnly,
         osPermissions: @escaping OSPermissionSource = { [] },
         now: @escaping TimeSource = { Date() }, reached: @escaping OrderingHook
     ) throws {
@@ -105,7 +107,9 @@ public final class Engine: Sendable {
         )
         let schemaDescription = coreDocument.definitions
             .compactMap { ($0 as? SchemaDefinition)?.description?.value }.first
-        let composition = Composition(core: core, providers: providers, policy: policy) {
+        let composition = Composition(
+            core: core, providers: providers, policy: policy, reserved: reservedIdentities
+        ) {
             IntrospectionSize.bytes(of: $0, schemaDescription: schemaDescription)
                 <= policy.maximumResponseBytes
         }
@@ -229,7 +233,10 @@ public final class Engine: Sendable {
             return respond(.invalidRequest, errors: validationErrors)
         }
 
-        let denied = preflightDenials(of: actions, request: request, principal: principal)
+        let denied = preflightDenials(
+            of: actions, request: request,
+            variables: effectiveVariables(in: document, request: request), principal: principal
+        )
         guard denied.isEmpty else { return respond(.forbidden, errors: denied) }
         await reached(.preflightPassed)
 
@@ -319,7 +326,8 @@ public final class Engine: Sendable {
     /// Checks every selected root mutation action against the principal's
     /// current authority before any action begins. No resolver runs here.
     private func preflightDenials(
-        of actions: [Field], request: EngineRequest, principal: Principal
+        of actions: [Field], request: EngineRequest, variables: [String: Map],
+        principal: Principal
     ) -> [GraphQLError] {
         actions.compactMap { action in
             guard let registration = registrations["Mutation.\(action.name.value)"] else {
@@ -334,21 +342,44 @@ public final class Engine: Sendable {
                 let given = action.arguments.first { $0.name.value == name }
                 arguments[name] =
                     given.flatMap {
-                        try? valueFromASTUntyped(valueAST: $0.value, variables: request.variables)
+                        try? valueFromASTUntyped(valueAST: $0.value, variables: variables)
                     } ?? definition.defaultValue ?? .undefined
             }
+            let required = registration.requirements(for: arguments)
             do {
-                let required =
-                    [registration.authority] + registration.argumentAuthorities(arguments)
-                for requirement in required { try authority.check(requirement, for: principal) }
+                try authority.check(required, for: principal)
                 return nil
             } catch {
                 let alias = action.alias?.value ?? action.name.value
                 return Engine.graphQLError(
-                    error, nodes: [action], path: [alias], phase: "authorization"
+                    registration.annotating(error, required: required), nodes: [action],
+                    path: [alias], phase: "authorization"
                 )
             }
         }
+    }
+
+    /// The operation's variables as execution will see them: what the request
+    /// supplied, and a declared default for each one it did not. Preflight reads
+    /// the argument of an action through these, so a reference that arrives by a
+    /// variable's default names its owner before any action, exactly as it does
+    /// when the action is dispatched. An explicit null is a value, not an absence.
+    private func effectiveVariables(
+        in document: Document, request: EngineRequest
+    ) -> [String: Map] {
+        var variables = request.variables
+        guard let operation = selectedOperation(in: document, request: request) else {
+            return variables
+        }
+        for definition in operation.variableDefinitions {
+            let name = definition.variable.name.value
+            guard (variables[name] ?? .undefined) == .undefined,
+                let fallback = definition.defaultValue,
+                let value = try? valueFromASTUntyped(valueAST: fallback)
+            else { continue }
+            variables[name] = value
+        }
+        return variables
     }
 
     /// The root fields of the selected operation when it is a mutation.
@@ -472,17 +503,15 @@ public final class Engine: Sendable {
                 }
                 unused.remove(coordinate)
                 field.resolve = { source, arguments, context, info in
+                    var required: [FieldAuthority] = []
                     do {
                         guard let scope = context as? ExecutionScope else {
                             throw DomainError.failed("No principal.")
                         }
                         try scope.admitResolver()
                         let principal = scope.principal
-                        let required =
-                            [registration.authority] + registration.argumentAuthorities(arguments)
-                        for requirement in required {
-                            try authority.check(requirement, for: principal)
-                        }
+                        required = registration.requirements(for: arguments)
+                        try authority.check(required, for: principal)
                         await reached(.admitted(coordinate))
                         let result = try await registration.resolve(
                             ResolverInput(
@@ -495,14 +524,13 @@ public final class Engine: Sendable {
                         // not publish the result.
                         if typeName != mutationTypeName {
                             await reached(.resolved(coordinate))
-                            for requirement in required {
-                                try authority.check(requirement, for: principal)
-                            }
+                            try authority.check(required, for: principal)
                         }
                         return result
                     } catch {
                         throw graphQLError(
-                            error, nodes: info.fieldASTs, path: info.path, phase: "execution"
+                            registration.annotating(error, required: required),
+                            nodes: info.fieldASTs, path: info.path, phase: "execution"
                         )
                     }
                 }
@@ -533,6 +561,9 @@ public final class Engine: Sendable {
             extensions["phase"] = .string(phase)
             if let capability = domain.requiredCapability {
                 extensions["requiredCapability"] = .string(capability)
+            }
+            if let capabilities = domain.requiredCapabilities {
+                extensions["requiredCapabilities"] = .array(capabilities.map { .string($0) })
             }
         }
         if let reason = domain.reason { extensions["reason"] = .string(reason.rawValue) }
@@ -624,9 +655,44 @@ final class ProviderDiagnostics: @unchecked Sendable {
 
 struct FieldRegistration: Sendable {
     let authority: FieldAuthority
+    /// The provider capabilities the field requires beside its own, already in
+    /// Unicode code-point order. Empty for every registration that predates the
+    /// additional-capabilities feature, which therefore keeps its exact meaning.
+    var additionalCapabilities: [String] = []
     /// What the field's arguments require besides: the owner of each reference
     /// among them. It reads the arguments and schema metadata, nothing else, so
     /// preflight can ask it before any resolver runs.
     var argumentAuthorities: @Sendable (Map) -> [FieldAuthority] = { _ in [] }
     let resolve: @Sendable (ResolverInput) async throws -> (any Sendable)?
+
+    /// The one ordered requirement set: the field's own, then the additional
+    /// capabilities, then the owners of the references among the arguments, with
+    /// a repeated capability kept where it first appears. Whole-mutation
+    /// preflight, dispatch admission and read authorization and publication all
+    /// take it from here, so none can disagree with another.
+    func requirements(for arguments: Map) -> [FieldAuthority] {
+        var seen: Set<String> = []
+        var ordered: [FieldAuthority] = []
+        let all =
+            [authority] + additionalCapabilities.map(FieldAuthority.capability)
+            + argumentAuthorities(arguments)
+        for requirement in all {
+            if case .capability(let name) = requirement, !seen.insert(name).inserted { continue }
+            ordered.append(requirement)
+        }
+        return ordered
+    }
+
+    /// A capability refusal of a field that declares additional requirements
+    /// also names the complete set. A field that does not keeps its baseline
+    /// error exactly.
+    func annotating(_ error: any Error, required: [FieldAuthority]) -> any Error {
+        guard !additionalCapabilities.isEmpty, var denial = error as? DomainError,
+            denial.kind == .permission, denial.requiredCapability != nil
+        else { return error }
+        denial.requiredCapabilities = required.compactMap {
+            if case .capability(let name) = $0 { name } else { nil }
+        }
+        return denial
+    }
 }

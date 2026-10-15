@@ -1,0 +1,43 @@
+ProductName:		macOS
+ProductVersion:		26.5
+BuildVersion:		25F71
+Darwin Manageds-Virtual-Machine.local 25.5.0 Darwin Kernel Version 25.5.0: Mon Apr 27 20:39:32 PDT 2026; root:xnu-12377.121.6~2/RELEASE_ARM64_VMAPPLE arm64
+VirtualMac2,1
+arm64
+   Volume Name:               Macintosh HD
+   File System Personality:   APFS
+/dev/disk3s1s1 on / (apfs, sealed, local, read-only, journaled)
+devfs on /dev (devfs, local, nobrowse)
+/dev/disk3s6 on /System/Volumes/VM (apfs, local, noexec, journaled, noatime, nobrowse)
+Identifier=dev.antony.Koine.K146Probe
+Format=app bundle with Mach-O thin (arm64)
+CodeDirectory v=20500 size=550 flags=0x10000(runtime) hashes=6+7 location=embedded
+Signature size=8977
+Authority=Developer ID Application: Antony Blakey (TA43A4RUP3)
+Authority=Developer ID Certification Authority
+Authority=Apple Root CA
+Timestamp=Oct 4, 2026 at 2:52:19 PM
+Info.plist entries=12
+TeamIdentifier=TA43A4RUP3
+Runtime Version=27.0.0
+Sealed Resources version=2 rules=13 files=0
+Internal requirements count=1 size=188
+[Dict]
+0e15f7eff0aa9e746dbe5c491282dd64b73aefaaae084781e8e487289a489a76  /Applications/K146Probe.app/Contents/MacOS/K146Probe
+Identifier=dev.antony.Koine.K146Rec
+Format=app bundle with Mach-O thin (arm64)
+CodeDirectory v=20500 size=484 flags=0x10000(runtime) hashes=4+7 location=embedded
+Signature size=8976
+Authority=Developer ID Application: Antony Blakey (TA43A4RUP3)
+Authority=Developer ID Certification Authority
+Authority=Apple Root CA
+Timestamp=Oct 4, 2026 at 2:52:19 PM
+Info.plist entries=12
+TeamIdentifier=TA43A4RUP3
+Runtime Version=27.0.0
+Sealed Resources version=2 rules=13 files=0
+Internal requirements count=1 size=184
+[Dict]
+ed5754b4d90a3dce1a068736951b0c6a4931d04be579f0a61b5973b2f517d0aa  /Applications/K146Rec.app/Contents/MacOS/K146Rec
+assessments disabled
+arm64

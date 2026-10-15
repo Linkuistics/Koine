@@ -1,0 +1,66 @@
+{
+ "case": "thr-open-900",
+ "rows": [
+  {
+   "finishedAt": "1791090742.385",
+   "id": "thr-open-900",
+   "mode": "open",
+   "pid": 2435,
+   "result": {
+    "callback": {
+     "app": {
+      "bundleIdentifier": "dev.antony.Koine.K134Witness",
+      "bundleURL": "L0FwcGxpY2F0aW9ucy9Lb2luZUsxMzRXaXRuZXNzLmFwcA==",
+      "executableURL": {
+       "b64": "L0FwcGxpY2F0aW9ucy9Lb2luZUsxMzRXaXRuZXNzLmFwcC9Db250ZW50cy9NYWNPUy9Lb2luZQ==",
+       "length": 55
+      },
+      "pid": 2436,
+      "proc_pidpath": {
+       "b64": "L0FwcGxpY2F0aW9ucy9Lb2luZUsxMzRXaXRuZXNzLmFwcC9Db250ZW50cy9NYWNPUy9Lb2luZQ==",
+       "length": 55
+      }
+     },
+     "elapsedMs": 376.0552406311035
+    },
+    "submittedApp": {
+     "b64": "L0FwcGxpY2F0aW9ucy9Lb2luZUsxMzRXaXRuZXNzLmFwcA==",
+     "length": 34
+    },
+    "submittedDoc": {
+     "b64": "L1VzZXJzL2FkbWluL2sxMzQvdDkwMC9MMV9iYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYi9MMl9jY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjYy9MM19kZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZC9MNF9lZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWUvc2FtcGxlLmsxMzR3",
+     "length": 900
+    }
+   },
+   "startedAt": 1791090742.008202
+  }
+ ],
+ "logs": {
+  "witness": [
+   {
+    "at": "1791090742.421",
+    "deliveredB64": "L1VzZXJzL2FkbWluL2sxMzQvdDkwMC9MMV9iYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYi9MMl9jY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjYy9MM19kZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZC9MNF9lZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWVlZWUvc2FtcGxlLmsxMzR3",
+    "deliveredLength": 900,
+    "id": "dev.antony.Koine.K134Witness",
+    "pid": 2436
+   }
+  ],
+  "self": [
+   {
+    "_NSGetExecutablePathLength": 55,
+    "at": "1791090742.421",
+    "bundleB64": "L0FwcGxpY2F0aW9ucy9Lb2luZUsxMzRXaXRuZXNzLmFwcA==",
+    "exeB64": "L0FwcGxpY2F0aW9ucy9Lb2luZUsxMzRXaXRuZXNzLmFwcC9Db250ZW50cy9NYWNPUy9Lb2luZQ==",
+    "id": "dev.antony.Koine.K134Witness",
+    "pid": 2436,
+    "proc_pidpathB64": "L0FwcGxpY2F0aW9ucy9Lb2luZUsxMzRXaXRuZXNzLmFwcC9Db250ZW50cy9NYWNPUy9Lb2luZQ==",
+    "proc_pidpathLength": 55
+   }
+  ]
+ },
+ "windows": "\"Notification Center\" (systemDialog) 1920x1080 app:\"Notification Center\"\n\"Featured\" (standard) 360x180 app:\"Notification Center\"\n\"Forecast\" (standard) 180x180 app:\"Notification Center\"\n\"Month\" (standard) 180x180 app:\"Notification Center\"\n\"short\" (standard) 920x436 [focused] app:\"Finder\"\n",
+ "observer": {
+  "pid": 2436,
+  "lsof_ps": "p2436\nftxt\nn/Applications/KoineK134Witness.app/Contents/MacOS/Koine\nftxt\n 2436 /Applications/KoineK134Witness.app/Contents/MacOS/Koine\n"
+ }
+}

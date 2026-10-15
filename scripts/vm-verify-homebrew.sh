@@ -35,28 +35,6 @@ source scripts/vm-verify-gatekeeper-lib.sh
 CASK="linkuistics/taps/koine"
 BREW="/opt/homebrew/bin/brew"
 
-# guest_long <name> <local script>: runs a script that outlasts the agent's 30s
-# exec window — a Homebrew install, a cask download — detached in the guest, and
-# polls for its exit status. Its transcript is echoed into this run's log, and
-# its status is returned. guest() silently retries an exec that falsely times
-# out, and these scripts can not be repeated: one run's reinstall was launched
-# twice, and the second `brew install` truncated the log to "Not upgrading
-# koine". So the launch takes a guard directory, and a retried launch that finds
-# it already taken starts nothing.
-guest_long() {
-    local name="$1" script="$2" status
-    testanyware file upload "${script}" "/Users/admin/${name}.sh" >/dev/null
-    guest "mkdir \$HOME/${name}.started 2>/dev/null || exit 0; nohup bash -c 'bash \$HOME/${name}.sh > \$HOME/${name}.log 2>&1; echo \$? > \$HOME/${name}.exit' >/dev/null 2>&1 &"
-    for _ in $(seq 1 180); do
-        if guest "[ -e \$HOME/${name}.exit ]" >/dev/null 2>&1; then break; fi
-        sleep 5
-    done
-    guest "cat \$HOME/${name}.log" | sed 's/^/  | /'
-    status="$(guest "cat \$HOME/${name}.exit" 2>/dev/null | tr -d '[:space:]')"
-    [ -n "${status}" ] || fail "${name} did not finish within 15 minutes"
-    return "${status}"
-}
-
 # footprint <when>: every path under the account's Library that names Koine,
 # enumerated rather than checked against the zap list, so a file the cask does
 # not know about is found rather than missed.

@@ -1,0 +1,28 @@
+# Ownership flow; freezing publication is not native completion.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+Start: "Start here · Authorized request\nProcess-wide admission" {class: start}
+Slot: "Reserve one of four slots\nNo unbounded queue"
+Refuse: "No slot available\nCAPACITY_LIMIT"
+Call: "Reserve call/copy budgets\nOne pending operation/job"
+Active: "Owned native work\nQuery / CF / AE / callback"
+Freeze: "Cancel / revoke / stop / deadline\nClose admission + publication"
+Retire: "Request owned cleanup\nLate return only retires"
+Release: "True return + cleanup\nRelease slot exactly once"
+Publish: "Frozen valid values\nCheck live authority"
+Blocked: "No return yet\nRetain slot across restart"
+Limits: "Native peaks/health unproved\nIndependent serviceability"
+Start -> Slot: "1 · available"
+Start -> Refuse: "1 · exhausted"
+Slot -> Call: "2 · reserve"
+Call -> Active: "3 · admit"
+Active -> Publish: "4 · finite result"
+Active -> Freeze: "4 · interrupted"
+Freeze -> Retire: "5 · stop query"
+Retire -> Release: "6 · true completion"
+Retire -> Blocked: "6 · still owned"
+Publish -> Release: "5 · true retirement"
+Blocked -> Limits: "finite evidence"
+Release -> Limits: "finite evidence"

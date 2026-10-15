@@ -1,0 +1,165 @@
+{
+  "scope": "Whole contact companion and five documentary tables only; remaining text, original bases and actual reads stay live under k297/k298.",
+  "original_revision": "0cbb519e",
+  "sources": [
+    {
+      "path": "docs/verification/application-reference-contact-boundary.md",
+      "original_sha256": "f205de25754629d95b5e2fbbbaac2cc4b03a5e22a500f22cce9e26d24b622f55",
+      "current_sha256": "3481971460ad7f67e8665c98ecd70d7b90283f2a1ab93b86cff4014998177357",
+      "whole_byte_binding": true
+    },
+    {
+      "path": "docs/verification/reference-contact-inventory/api-basis.tsv",
+      "original_sha256": "e8400683b8d4bc360f82749fabc97350133581d74cbe2d1dbaa2f9e44e94496e",
+      "current_sha256": "e8400683b8d4bc360f82749fabc97350133581d74cbe2d1dbaa2f9e44e94496e",
+      "whole_byte_binding": true
+    },
+    {
+      "path": "docs/verification/reference-contact-inventory/bsd-declarations.tsv",
+      "original_sha256": "2a5f386425214d54d6dc60d29bf19738bbf57bcbde5b532e382fe3d088c3a0a5",
+      "current_sha256": "2a5f386425214d54d6dc60d29bf19738bbf57bcbde5b532e382fe3d088c3a0a5",
+      "whole_byte_binding": true
+    },
+    {
+      "path": "docs/verification/reference-contact-inventory/mach-traps.tsv",
+      "original_sha256": "42de9ccff9fd75046e204ecbc3c16eaaa5021c21e1adfbdcfe88e33d59d529d3",
+      "current_sha256": "42de9ccff9fd75046e204ecbc3c16eaaa5021c21e1adfbdcfe88e33d59d529d3",
+      "whole_byte_binding": true
+    },
+    {
+      "path": "docs/verification/reference-contact-inventory/mig-routines.tsv",
+      "original_sha256": "1156336abe2a02c7e297f75bff65dc624a701fbb72d5b8b7568d6ea1111424d0",
+      "current_sha256": "1156336abe2a02c7e297f75bff65dc624a701fbb72d5b8b7568d6ea1111424d0",
+      "whole_byte_binding": true
+    },
+    {
+      "path": "docs/verification/reference-contact-inventory/source-pins.tsv",
+      "original_sha256": "4b578b9544d4abb879a63bd1e52f3208ded86af58c03b13da718a9d7eb9fae33",
+      "current_sha256": "4b578b9544d4abb879a63bd1e52f3208ded86af58c03b13da718a9d7eb9fae33",
+      "whole_byte_binding": true
+    }
+  ],
+  "inventory": {
+    "path": "docs/verification/reference-contact-partition.tsv",
+    "sha256": "408547f785327c407a7b02c881cea19345cdd08c1b802a79fd7926d429ccab49"
+  },
+  "original_relocations": [
+    "Compiled message IDs/configuration applicability remain unestablished.",
+    "Current framework/service/protocol inventories are missing.",
+    "Exact current\ntransport, protocol, endpoint and delegated-effect coverage remains unavailable;",
+    "The required correspondence boundary below remains work before credit.",
+    "but none is specified/qualified here for this actual runtime, inherited capabilities, proxies and all C1\u2013C8 effects.",
+    "None is adopted or commissioned.",
+    "no complete arrangement is established",
+    "Full unprivileged C1\u2013C8 prevention/observation is unestablished",
+    "K287 reconciles this whole boundary with every original obligation and schedules the\nmandatory whole-k282 review/integration before k269 consumes it."
+  ],
+  "changes": [
+    {
+      "old": "It was selected independently of the\ninstrument's operations.",
+      "new": "The historical k276 design\n(`11664f1e1f14dd1792c84dfa61591e72e26903b0`) selected it independently of the\ninstrument's operations.",
+      "kind": "H",
+      "reason": "Pin the prior selection to its immutable design coordinate.",
+      "occurrences": 1
+    },
+    {
+      "old": "Compiled message IDs/configuration applicability remain unestablished.",
+      "new": "Published declarations establish no compiled message IDs or current configuration applicability.",
+      "kind": "R",
+      "reason": "Retain the documentary claim limit without a changing coverage assertion.",
+      "occurrences": 1
+    },
+    {
+      "old": "Current framework/service/protocol inventories are missing.",
+      "new": "Published API candidates supply no current framework/service/protocol inventory.",
+      "kind": "R",
+      "reason": "Retain the source-versus-current-evidence limit; report actual inventory availability separately.",
+      "occurrences": 1
+    },
+    {
+      "old": "Exact current\ntransport, protocol, endpoint and delegated-effect coverage remains unavailable;\nwe do not infer those implementations from API names.",
+      "new": "Exact current\ntransport, protocol, endpoint and delegated-effect claims require independently acquired\ncorrespondence; API names supply no such implementation facts.",
+      "kind": "R",
+      "reason": "Retain the conditional independent-correspondence duty and accepted unknowns.",
+      "occurrences": 1
+    },
+    {
+      "old": "The required correspondence boundary below remains work before credit.",
+      "new": "Required correspondence evidence precedes credit.",
+      "kind": "R",
+      "reason": "Retain the Q06 prerequisite independently of current work status.",
+      "occurrences": 1
+    },
+    {
+      "old": "K292's enduring event contract requires them even for unchanged-input Q.",
+      "new": "The [durable event contract](application-reference-evidence.md#durable-disarm-and-release-events) requires them even for unchanged-input Q.",
+      "kind": "E",
+      "reason": "Cite the enduring rule rather than assigning work to a retired producer.",
+      "occurrences": 1
+    },
+    {
+      "old": "No initialization was tried.",
+      "new": "The historical k276 design (`11664f1e1f14dd1792c84dfa61591e72e26903b0`) performed no initialization.",
+      "kind": "H",
+      "reason": "Keep the fixed design-session non-execution as an individual historical fact.",
+      "occurrences": 1
+    },
+    {
+      "old": "A concrete, independently enforceable scratch-only launch could be useful, but none is specified/qualified here for this actual runtime, inherited capabilities, proxies and all C1\u2013C8 effects.",
+      "new": "A concrete, independently enforceable scratch-only launch could be useful; any claimed enforcement requires its own selected and qualified runtime, inherited-capability, proxy and C1\u2013C8 boundary.",
+      "kind": "R",
+      "reason": "Retain the stronger-candidate qualification duty, without a live not-built assertion.",
+      "occurrences": 1
+    },
+    {
+      "old": "None is adopted or commissioned.",
+      "new": "Adoption or commissioning requires an explicit authority decision before use.",
+      "kind": "R",
+      "reason": "Retain the unselected-alternative authority boundary.",
+      "occurrences": 1
+    },
+    {
+      "old": "The conclusion is bounded: **no complete arrangement is established or selected for\nimplementation under the current authority**. This is not a theorem that none can exist.",
+      "new": "The selected boundary credits B1\u2013B8's named evidence and explicitly accepts the U1\u2013U4\nunknown remainder; it selects no complete C1\u2013C8 mechanism. This is not a theorem that\nnone can exist.",
+      "kind": "R",
+      "reason": "Retain the selected bounded-evidence policy and report actual establishment separately.",
+      "occurrences": 1
+    },
+    {
+      "old": "| Unavailable coordinate |",
+      "new": "| Coverage coordinate |",
+      "kind": "E",
+      "reason": "A stable classification heading covers both required blockers and accepted unknowns.",
+      "occurrences": 1
+    },
+    {
+      "old": "Full unprivileged C1\u2013C8 prevention/observation is unestablished and explicitly accepted unknown; no complete no-contact proof.",
+      "new": "Complete unprivileged C1\u2013C8 prevention/observation is explicitly accepted unknown under the selected boundary; named evidence supplies no complete no-contact proof.",
+      "kind": "R",
+      "reason": "Retain U2 accepted-unknown scope without a changing establishment assertion.",
+      "occurrences": 1
+    },
+    {
+      "old": "After whole-k282 review/integration, k269 assigns",
+      "new": "After complete admission-design whole review/every earned integration, construction planning assigns",
+      "kind": "E",
+      "reason": "Keep whole-producer review order; a retired design is not the current handoff.",
+      "occurrences": 1
+    },
+    {
+      "old": "K269 assigns",
+      "new": "Construction planning assigns",
+      "kind": "E",
+      "reason": "Use the stable planning responsibility rather than a mutable execution owner.",
+      "occurrences": 4
+    },
+    {
+      "old": "K287 reconciles this whole boundary with every original obligation and schedules the\nmandatory whole-k282 review/integration before k269 consumes it.\nK269 must represent these exact owners as live work ahead of their first execution/credit\nconsumer, retain a distinct final requalification/closing owner, and preserve every original\nk244 obligation.",
+      "new": "Complete admission-design reconciliation compares this whole boundary with every\noriginal obligation; its mandatory whole-producer review and every earned integration\nprecede construction planning. Construction planning must represent the exact\nresponsibilities as live work ahead of their first execution/credit consumer, retain\ndistinct final affected requalification and instrument-closing duties, and preserve\nevery original instrument obligation.",
+      "kind": "R",
+      "reason": "Retain reconciliation/review-before-planning and live responsibility placement; remove the changing k287 handoff assertion.",
+      "occurrences": 1
+    }
+  ],
+  "classification_limits": "Author classification follows whole-source reading. Fine byte fragments and whole-context hashes locate individual clauses/list members; byte coverage is not semantic proof or executed instrument credit. Historical source observations bind only their original documentary objects. Original objects remain separately required."
+}
