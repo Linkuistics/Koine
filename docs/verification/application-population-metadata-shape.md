@@ -701,9 +701,9 @@ never replacement proof. The selected Documentary proportionality clause owns th
 
 The original k244/k242 Done when texts remain as the historical obligation inventory;
 the explicitly identified k281 contact/pre-lookup, k290 operator/owner/status, k295
-bounded correspondence-authority, k314 acceptance/documentary, k319 narrow root-step
-and k330 never-started recovery/About provenance amendments above control their
-interpretation. K314 changes k291 F6's per-fragment enumeration and reporting-driven
+bounded correspondence-authority, k314 acceptance/documentary, k319 narrow root-step,
+k330 never-started recovery/About provenance and k340 finite terminal-evidence endpoint
+amendments above control their interpretation. K314 changes k291 F6's per-fragment enumeration and reporting-driven
 composite reconstruction only as compared; every other original obligation remains.
 K331 now owns the complete contract/companion/operation-map/representation reconciliation
 under those actual answers, with mandatory whole review k332 and every earned integration
@@ -717,9 +717,10 @@ Use the selected [complete evidence contract](application-reference-evidence.md)
 both whole-byte companions and all five whole tables. Complete actual consumed-byte,
 original/basis/read/phase/absence and original R retained duties remain. Actual acquired
 objects need their complete members; missing originals keep null actual identities.
-The [practical report](application-reference-input-partition.md#whole-original-duties-and-first-consumers)
-locates the whole original-obligation comparison; its [review integration and required replacement](application-reference-input-partition.md#k321-integration-and-required-replacement)
-name the exact missing work before consumers.
+The report's [whole original-obligation concordance](application-reference-input-partition.md#whole-original-obligation-concordance)
+locates the current comparison and exact missing work before consumers; its
+[k328 integration and required replacement](application-reference-input-partition.md#k328-integration-and-required-replacement)
+places the replacement and review. Earlier k321/k323 comparisons there are historical.
 
 ## Reproducible boundary checks
 
@@ -732,8 +733,11 @@ helper/alias discriminator. The detailed [saved check report](application-refere
 records its historical controls and evidence limits; old fragment/composite regeneration
 instructions there are not a current handoff. The Taskfile recipe remains current.
 
-Document/link/render checks validate only the saved design. Exact replacement documentary
-identity and historical-parent/Safari comparisons are reported with their bounded scope
-[separately](application-reference-input-partition.md#replacement-membership-and-verification-scope).
+Document/link/render checks validate only the saved design. Current historical-parent/
+Safari and original-duty comparisons are reported with their bounded scope in the
+[whole concordance](application-reference-input-partition.md#whole-original-obligation-concordance);
+the new whole replacement membership remains due. The k323
+[replacement membership](application-reference-input-partition.md#replacement-membership-and-verification-scope)
+is historical.
 No check supplies authority, instrument/control qualification, current target bytes or
 private/product/native eligibility. Actual consumed changes still disarm/requalify.

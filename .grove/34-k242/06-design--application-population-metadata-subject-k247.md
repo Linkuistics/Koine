@@ -28,11 +28,16 @@ affected requalification before consumption.
 K333's pre-tool/holder/descriptor path, k341's complete publication/trust records and
 k335's exact hosted recovery are specified in C; actual originals/controls remain absent.
 K336 is now a reconciliation node: k342 repairs provenance/current summaries/seven views;
-k343 owns whole original-duty/failure-DAG concordance; k344 owns final new membership and
-the complete original k336/k331 closure check. Only that actual closing child supplies
+k343's whole concordance (k347) leaves inter-checkpoint disarm/close publication entry to
+design k348; k344 then owns final new membership and the complete original k336/k331
+closure check. Only that actual closing child supplies
 its own Creator on existing k332. No partial child/new slice supplies construction input.
 
 R3's composed Safari walk and all actual prior answers/original duties/exclusions remain.
+K340 records Antony's "Accept the bounded endpoint (Recommended)": only the final-recorder/
+nonpublishing-outer-receiver terminal tail lacks a further durable original, at the explicit
+source/OS/cooperative limit. Every earlier writer original remains required; an unknown
+tail proves neither completion nor no dispatch/provisioning and restores no authority.
 Actual originals/tools/controls/read/images/UID/build/terminal/receipt/authority remain
 missing. K244/k242/finite subject stay live, k245's pass unused, full k246/k247/useful
 breadth/additive supported-VM/native/private/product duties and both holds retained.
@@ -51,7 +56,7 @@ unavailable evidence boundary. This child is the producer's closing session.
 ## Context
 
 Require the complete k331 replacement under k330's actual answers after k332 whole review/every earned integration,
-then the reviewed k269 plan, under actual k270/k281/k290/k295/k314/k319. K321 at 4304ad5f46d7
+then the reviewed k269 plan, under actual k270/k281/k290/k295/k314/k319/k330/k340. K321 at 4304ad5f46d7
 reviewed k320 at 5fb818ab8125 as defective; k322 records its direct repairs; k328 finds the subsequent k323 protocol
 incomplete. K331 owns the replacement of recovery, pre-tool trust, launcher records,
 repeatable trust outputs and About meaning before planning.
@@ -72,7 +77,7 @@ k332 whole review and every earned integration remain before construction or acq
 Consume the complete reviewed checkpoint-recovery producer k331 and all actual k244
 qualification/CP01–CP04/original-duty close, k245 CP05/P/A frozen originals/independently
 verified derivatives/purposes, k246 recipes/generated discriminator, or exact retained
-failed/incomplete work. Compare all canonical actual k270/k281/k290/k295/k314/k319 amendments
+failed/incomplete work. Compare all canonical actual k270/k281/k290/k295/k314/k319/k330/k340 amendments
 and original k242 Done when, never historical design/fragment identities or retired-leaf counts.
 
 Reconcile all current source/subject/family/runtime/private/acceptance evidence and complete

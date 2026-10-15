@@ -31,14 +31,15 @@ including all earlier terminal originals, exact repeatable trust/CP02 locations 
 independent writer/receiver controls. K335 specifies [hosted recovery](#hosted-recovery-design),
 including carrier-prefix ordering and exact unavailable boundaries. Whole replacement
 reconciliation remains live under k336 before k332. K342 reconciles provenance/current
-layers and seven views; k343 owns whole original-duty/failure-DAG concordance; k344 owns
-final whole membership and the complete original k336/k331 closure check. A partial
+layers and seven views; k347 closes k343's [whole concordance](#whole-original-obligation-concordance);
+design k348 owns the inter-checkpoint disarm/close publication entry it found unspecified;
+k344 owns final whole membership and the complete original k336/k331 closure check. A partial
 child supplies no construction handoff or new whole membership. Only
 the actual closing child names its provider evidence on that existing whole review.
 K343 now decomposes into k345's [pre-tool consumer concordance](#pre-tool-consumer-concordance),
 k346's complete publication/recovery concordance and k347's closing whole-original-duty/
-Safari/table/basis/read comparison. This preserves every original k343 condition; k344
-alone freezes the new whole membership after k343 actually closes.
+Safari/table/basis/read comparison. K347 checks every original k343 condition and closes
+k343; k344 alone freezes the new whole membership after k348.
 K269 must place already decided mechanisms; the reviewed k323 proposal is no construction
 handoff. Its [membership](reference-practical-admission-replacement-membership.json)
 retains historical bytes. The new
@@ -57,6 +58,183 @@ waive no named required failure and establish no no-contact fact. K244/k242 rema
 k245 retains the one unused pass, k246 complete rewrite/helper/alias discrimination and
 k247 whole-subject/family review or precise incomplete work. Full useful breadth,
 additive supported-VM/native duties, private ineligibility and both holds remain.
+
+## Whole original-obligation concordance
+
+K347 is k343's closing child. It composes k345's [pre-tool concordance](#pre-tool-consumer-concordance)
+and k346's [publication/recovery concordance](#publication-and-recovery-consumer-concordance)
+with every remaining original finding and condition, the physical Safari walk and the
+preserved tables, bases, reads and manifests. This is unconsumed reporting: it freezes no
+membership, accepts no mechanism and supplies no construction input.
+
+The current documentary conjunction retains every original k321 R1–R8 and k328 F1–F6
+correction and every original k242/k244/k245/k246/k247/k269/k331/k336/k343 condition under
+only the actual k270/k281/k290/k295/k314/k319/k330/k340 amendments. Six exact documentary
+defects are repaired below. One enabling point is still unspecified: the trust entry for
+publication invocations outside CP01–CP05. Design leaf
+reference-evidence-intercheckpoint-publication-entry-k348 owns it before k344's final
+freeze and existing review k332. Neither scoped child's checks nor this report is whole
+k331 acceptance; k344 alone freezes new whole membership and checks complete k336/k331.
+
+### Every original finding against the composed conjunction
+
+Original k321 is 4304ad5f46d7 against k320 at 5fb818ab8125; original k328 is
+c368357f9eb36c59efac03988dac9c313fda9d14 against k323 at f4d399f3caa2. Both review files
+remain byte-identical to those commits. Rows cite where the scoped comparison lives;
+"composed" states what this whole read adds.
+
+| Original finding | Composed result |
+| --- | --- |
+| R1 ROOT → CP02 route/capabilities | k346 row holds. Composed: the publication tree that carries every later trust record is now an explicit anchored member set (see junction J1); no saved ROOT or future acknowledgment returns. |
+| R2 repeatable locators | k346 row holds. Close/anchor/trust chains, partial-tail dispositions and immediate successors compose with E3 selection; no sealed-revision write, overwrite or fallback. |
+| R3 composed Safari walk | Re-derived below from the separate operands; holds. |
+| R4 amendment lists / H-default | **Recurred** for the later actual answers. C's enduring-input rule omitted k330/k340; its H row for S's authority section omitted k330 and the retired k331 assignment; k340's selected section had no H row; S's interpretation sentence omitted k340; the k245/k246/k247 contexts listed "only" amendments through k319 and k245/k246/k247/k269/k332 never mentioned k340. Repaired. |
+| R5 About placement | k346 row holds under k330's exact provenance meaning; unchanged here. |
+| R6 current pointers | **Recurred**: C's Whole-producer obligation comparison and S's reproduction contract presented k323/k321 comparisons as current. Retargeted to this section; historical links keep their labels. CONTEXT, README and summary pointers to k320/k321/k324 are already labelled historical. |
+| R7 no-follow opener | k345 row holds. Composed: the holder/entry comparison now covers every anchored trust/publication member before its first run. |
+| R8 stale owner command | Holds. The root/k242/k244 k287 roll-ups carry the "Historical k287 promotion" label; C has no "currently supervised release" row. |
+| F1 disposition placement | k346 row holds: every failed cut is hosted at an existing affected checkpoint. Failed close and failed disarm are hosted at repeated CP03. The *clean* disarm/close publications themselves are junction J2. |
+| F2 pre-tool selection/holder/handoff | k345 row holds for CP01–CP05. The same class remains open for publication outside checkpoints (J2 → k348). |
+| F3, F5 launcher/trust records | k346 rows hold; every closed trust kind has a graph/host entry. |
+| F4 host/session key | k346 row holds under k330. |
+| F6 publisher wording/glossary | k346 row holds. Composed: C's normative compatibility table now names the final recorder and outer receiver, whose exclusions C already stated. |
+
+### Physical Safari walk from the separate operands
+
+The two operands are read separately from their own records. k94
+(`.grove/36-k7/01-k19/03-DONE-review-design--app-and-file-search-k94.md:136-137`) records
+`/Applications/Safari.app` → `../System/Cryptexes/App/System/Applications/Safari.app`.
+k110 (`.grove/36-k7/01-k19/19-DONE-review-design--search-canonical-paths-k110.md:135-136`)
+records `/System/Cryptexes/App` → `../../System/Volumes/Preboot/Cryptexes/App`. Baseline[137]
+in the historical packet is the third, separate spelling basis.
+
+In physical order: the app operand's `..` from held `/Applications` is its one root step
+and must equal the already held A1 root (check 1); it immediately re-enters `System` and
+`Cryptexes`. `App` is itself a link, so the app operand's unconsumed
+`System/Applications/Safari.app` is saved. The nested operand takes an in-System `..` to
+`/System`, then its own root step (check 2, independent of check 1), and immediately
+re-enters `System/Volumes/Preboot/Cryptexes/App`. The saved suffix then resumes, giving
+`/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app`, which equals
+baseline[137]'s spelling. Two expansions are charged to one 32-link budget.
+
+C's [composed walk](application-reference-evidence.md#composed-safari-walk-and-q01-specimens),
+K's Q01 row and S's narrow root-step clause state exactly this order with the four isolating
+negatives. C's topology, held-root, closed pre-lookup, byte-production, composed-walk and
+descendant-operation sections are byte-identical to k328's reviewed subject f4d399f3caa2,
+where k328 verified R3 and k321 had decoded all 84 Library parents (130 copies) and the
+finite version positions. C's separate authority/invocation entries differ only by the
+approval-subject chains that k333/k334/k341 added; no target entry changed. The historical
+syntax claims no current 26A434 link, topology, TCC or presence fact.
+
+### Original conditions and actual amendments
+
+Each section was compared byte for byte with the commit that created the charter.
+
+| Original charter (creating commit) | Comparison and current retention |
+| --- | --- |
+| k242 Goal/Context/Done when (531cd04aa734) | Identical. Its five Done when duties stay live with their consumers: qualified instrument and one pass (k244→k245), independent roles (k245), whole-template coverage and recipes (k246), generated discrimination (k246), whole-subject review (k247). |
+| k244 Goal/Context/Done when (a09b2a8e3154) | Identical. The k331 replacement specifies admission/qualification protocol only; construction, executed controls, recipes and distinct close stay k269-planned work; the one pass stays unused. |
+| k245 Goal (a09b2a8e3154) | Identical. |
+| k245 Done when (a09b2a8e3154) | **Strengthened, not reduced.** K272's integration (8077ff988ffc) turned "Use a new immutable destination" into a new immutable *derivative* destination under the reviewed export order and added the authoritative subject, one-time authority consumption before contact, independent export verification and original-to-export naming; k270's actual answers then selected the separate evidence namespace. Every original preservation duty remains; the creating-commit text is the comparison base. |
+| k246, k247 Goal/Done when (a09b2a8e3154) | Identical. Contexts now name k330/k340 and the bounded endpoint. |
+| k269 Goal (bfcc4f56c8e8) | "reviewed admission design" became "reviewed practical admission design" at k315 (ad181f1fbfd8) under k314's actual practical selection. The obligation is unchanged. |
+| k269 Done when (bfcc4f56c8e8) | Identical. J2 is exactly an enabling point k269 could not own without inventing a mechanism, so k348 precedes k344, k332 and k269. |
+| k331 Goal/Context/Required coherent replacement/Done when/Notes (e9fc85ddba97) | Identical. Bullets 1, 3, 4: k335/k341/k346. Bullet 2 (pre-tool): k333/k345 plus J1 here; non-checkpoint entry → k348. Bullet 5 (About): k342/k346. Bullet 6 (reconcile/compare): k342 and this section. Bullet 7 (whole membership/DAGs): k344. |
+| k332 Goal/Review focus/Done when (e9fc85ddba97) | Identical; its Context now also points to k340 and this concordance. |
+| k336 (fc9f63d42010), k343 and k344 (0b06bef7b014), k347 (94c49eff96d6) | Identical. |
+
+B and R registers, full-read, runtime, charter, phase, absence, provenance and independence
+duties remain in C's enduring inputs, H/E exceptions and both whole companions, changed
+only by the enumerations repaired below. The integration-only candidate keeps every
+unacquired original null (111 actual-original triplets plus every actual record/control/
+native/answer field); its empty `pin_provenance` lists record that no pins were supplied,
+not possessed originals. The five quote-aware tables, packet, parent table, every historical
+manifest and the descriptor ADR — 26 files — are byte-identical to k329's integration commit
+and, apart from the integration-only candidate k329 created, to k328's reviewed subject.
+
+### Composition junctions
+
+| Junction | Result |
+| --- | --- |
+| Initial CP01: E2 supplied plan → E4–E8 → E9 static render → ARTIFACTS → U1 tree → factual A2/ROOT → U2 | Consistent. No anchor is assumed; ROOT stays in memory; the first publication waits for publication.ready. |
+| J1 — CP02–CP05: E0–E8 → U0/U1 → E9 copy through U2–U4 → E10 consumers | The graphs require the receiver, final recorder, launcher recorder, registrar and validator to pass E7/E8 before they run, but C's anchor set and trust output named only holder, entry, engine, display and runtime objects. **Repaired**: those five trust/publication artifacts are explicit anchor members compared before first run, and CP01-ARTIFACTS names the final recorder and outer receiver. Acquisition images stay under Q/P's P01–P05 controls. |
+| Hosted recovery: E3 SOURCE_REENTRY_REQUIRED / INTACT_ANCHOR_RECOVERY_ONLY ↔ H0 | Consistent: source/anchor loss takes CP01 precedence; intact-anchor context is recovery-only; HX has no edge back into E or H. |
+| CP05: E11 shared reacquisition ↔ reserved transcript outputs | Consistent: only the same live invocation's reserved members may finish; E12 retains originals through true return. |
+| Never-started and k340 limits | Consistent: E's absence observations and U7's retained-content checks never prove either never-started predicate; only U6's receiver tail is unarchived. |
+| **J2 — disarm maintenance and distinct close** | **Unspecified.** Both run the U0–U7 publication envelope outside CP01–CP05. C defines the source/OS root (E1) only "at CP01-SOURCE and at the existing continuity start of each CP02–CP05"; P's maintenance supervisors and C's "distinct closer's own retained entry" name no chain selection, holder/member gate or E-graph. An agent cannot be the human source root, and the closer is deliberately not Antony. Clean and correction edges cannot be written without choosing a mechanism. C now states these invocations are blocked until specified; k348 owns the design or the trade-off for Antony. |
+
+### Repairs in this session
+
+- [Enduring inputs](application-reference-evidence.md#enduring-inputs-and-phase-specific-reports) — Adds the k330 and k340 amendments to the excepted actual amendments.
+- [Historical and reporting exceptions](application-reference-evidence.md#historical-and-reporting-exceptions) — Adds k330 and the retired k331 assignment to S's authority row, and an H row for k340's selected section.
+- [CP01 artifacts](application-reference-evidence.md#independent-computation-and-short-bootstrap-entry) — Names the final recorder and outer receiver among ARTIFACTS inputs.
+- [Continuity anchor](application-reference-evidence.md#closed-pre-tool-reads-and-deterministic-selection) — Lists the later-executed trust/publication members and blocks non-checkpoint publication until specified; the trust-output row binds that set.
+- [Compatibility table](application-reference-evidence.md#compatible-ownership-and-bounded-sequential-schedule) — Adds final-recorder and outer-receiver rows from C's existing exclusions.
+- [Whole-producer obligation comparison](application-reference-evidence.md#whole-producer-obligation-comparison) — Points to this section and labels k321/k323 comparisons historical.
+- [S comparison](application-population-metadata-shape.md#line-by-line-original-obligation-comparison) and [reproduction contract](application-population-metadata-shape.md#required-reproduction-contract-after-the-decision) — Add k340 to the interpretation sentence and retarget current pointers. Both lie outside S's selected section.
+- Consumer charters and roll-ups — k245/k246/k247 Contexts list k330/k340 and state k340's endpoint; k269/k332/k344 Contexts and the root/k242/k244/k245/k246/k247 roll-ups name k347's result and k348.
+- [Seven views](../design/architecture/index.html#discussion) — Show the anchored members, the blocked inter-checkpoint publication and the remaining k348/k344/k332 boundary.
+
+No selected clause, mechanism, authority, checkpoint, control result or historical manifest
+changes. These are reversible pre-provisioning documentary corrections; nothing has been
+consumed, so no requalification is triggered.
+
+### Final-freeze inputs for k344
+
+K344 may freeze the new whole membership only after k348 lands its mechanism (or Antony's
+answer) and its reconciliation. Its ready documentary inputs are: whole C/K/P; S's selected
+section (byte-identical through this session) and comparison; the descriptor ADR; the five
+tables, packet, parent table and every historical manifest named above; the k345/k346/k347
+and k348 report sections; and every charter and view at their final bytes. The membership
+must bind each E0–E12, U0–U7 and H0–HX occurrence and k348's new boundaries with its null
+required original, role and first consumer. K344 still checks every original k336/k331
+Goal/Done when, reconciles final summaries/views and alone names its own Creator on existing
+k332. Existing k332 and every earned integration precede k269.
+
+K244/k242 remain live, k245's pass is unused, full k246/k247/useful/helper/alias/additive
+supported-VM/native/private/product duties and both holds remain. Actual consumed edits
+disarm and require affected requalification; post-consumption correction is offline-only.
+
+### Concordance documentary verification and retirement
+
+After every normative, charter, report and view edit, the seven-view render task and
+`task check:docs` exited 0 inside a frozen documentary audit that recorded 2,186 passing
+checks. It measured 2,123 subjects before and after, item by item, with byte length and
+SHA-256: every tracked file, the audit script, its baseline and the resolved task, D2,
+Python, jj and grove-llm executables. All stayed stable. The baseline was taken before the
+first edit. The changed set is exactly the 29 files listed in this section's repairs plus
+the renamed k344 charter and new k348 leaf; every other tracked file is byte-identical.
+
+Reversing each listed edit restores the parent commit's exact bytes for C, S, this report
+(including k345/k346 sections), the root/k242/k244/k245/k246/k247/k269/k332 charters and
+k344. K and P are unchanged; S's selected section is byte-identical. Original sections
+equal their creating commits as tabulated above, and the recorded k245/k269 strengthenings
+equal their amending commits. The 26 table/manifest/packet/ADR subjects equal k329's
+commit; C's topology through descendant-operation sections equal k328's subject; the k321
+and k328 review files equal their committed subjects. The viewer changes only the discussion
+and seven captions; each SVG parses and contains every source label line.
+
+Each control was seen to fail on a deliberately wrong subject: an unrelated byte mutation,
+an omitted changed path, C's reversal missing one edit, a one-byte selected-section change,
+an altered original Done when, the R4/R6/J1 checks run on the parent bytes, a report missing
+one finding row, an unrendered label, a graph backedge and a missing link anchor. Two
+instrument bugs were corrected before the final run: a reversal boundary that consumed one
+blank line, and a label extractor that read a class fill colour as a label. No document
+changed to obtain a pass.
+
+Playwright Chromium at 1,440 px loaded the stable proof deep link with its Current/Updated
+markers, the anchored-member holder node, the blocked inter-checkpoint publication node and
+the remaining-work boundary, all legible. Only a favicon 404 from the ad hoc server was
+logged. No mobile, dark, Safari or native-size pass is claimed; k316/k326's viewer limits
+remain. These checks establish documentary preservation and correspondence only, not graph
+meaning, executable feasibility, original possession, control results or authority.
+
+K343's four Done when conditions are met: every original finding and condition is compared;
+clean and correction dependencies are defined for every specified boundary, with the one
+unspecified enabling point externalized as k348 before its consumer; the Safari order is
+re-derived; defects are repaired and final-freeze inputs recorded. K347 retires and k343
+closes. K336 stays open with k348 and k344 live, so no Creator is written; no review names
+k343 or k347. This paragraph and the task outcome are appended after measurement.
 
 ## Publication and recovery consumer concordance
 

@@ -744,8 +744,8 @@ interaction, with ready control originals and no Grove-session wait:
    which checks the entry's executable copy against its independently retained original;
    a checkout candidate selects none of these originals.
 2. **CP01-ARTIFACTS:** that entry compares the complete actual ready entry/engine/display,
-   prelude/registrar/checker/launcher/bootstrap-publisher/initializer/validator/stream-holder/close-publisher
-   artifacts and runtime/read members with independently supplied frozen originals,
+   prelude/registrar/checker/launcher/final-recorder/outer-receiver/bootstrap-publisher/initializer/validator/
+   stream-holder/close-publisher artifacts and runtime/read members with independently supplied frozen originals,
    including the launcher's separate transcript-only role and exact publication/frame plan. Antony accepts or
    refuses this now-ready set and the complete original bootstrap and initializer/validator
    mechanics outcomes. Only after ACCEPT may the engine/display/registrar or accepted
@@ -1896,9 +1896,17 @@ a parser, finding a file, guessing an ordinal or repairing publication.
 
 **Independent continuity anchor.** CP01 retains an exclusive no-follow frozen original
 set outside checkout/proofs/exports at the fixed approval branch's
-`anchors/n/trust-originals`. It includes the accepted holder, short entry, engine,
-display, invocation/runtime objects, complete declared/observed read/member closure,
-original source/build/review/control provenance and CP01 binding. The register binds
+`anchors/n/trust-originals`. It includes the accepted holder, short entry, engine and
+display, plus each accepted trust/publication artifact that a CP02–CP05 invocation or its
+hosted recovery executes: trust registrar, launcher recorder, final recorder, outer
+receiver and publication/receipt validator. Every member carries its invocation/runtime
+objects, complete declared/observed read/member closure, original source/build/review/
+control provenance and CP01 binding. The holder/entry comparison covers each member before
+its first execution in that invocation; an artifact outside this closed plan cannot run.
+Foreground supervisor/checker/acquirer images remain under Q/P's retained-entry and
+P01–P05 controls. Disarm-only maintenance and distinct-close publication occur outside
+CP01–CP05; their source root, selection and pre-execution gate are not yet specified and
+block those invocations until a reviewed design supplies them. The register binds
 actual held identities and full ordered bytes/lengths/membership. It also binds the
 independently supplied prelude/source-root identity as an earlier input, without making
 the anchor's copy a runnable source root. No later possibly changed candidate is copied
@@ -2260,7 +2268,7 @@ valid digest over a weakened set are required independently authored refusal con
 | Comparison result | For every expected and observed member/coordinate: exact equality or missing/extra/duplicate/changed/unavailable/refused outcome, independent original provenance, reached comparison and reason. Retain both directions and full original results; no aggregate-only audit. |
 | Full ready manifest | One immutable UTF-8 record in the already accepted strict record encoding, with version, checkpoint/substep, permitted next consumer/effects, nonce, exact ordered object/kind/owner/length/digest/held-identity members and earlier evidence/phase bindings. Reject unknown/duplicate fields and noncanonical encoding/order. Retain actual complete bytes separately; digest is an equality binding, never a substitute for stream comparison. |
 | Short display binding | Checkpoint/substep, fresh nonce and full 64-hex SHA-256 over the complete finalized ready-manifest bytes. This displayed binding is a separate value; the full manifest contains no digest of itself or later confirmation. Screen omissions/reassignment must fail independent display controls. |
-| Trust output | Antony's direct ACCEPT/REFUSE reasons and exact earlier full-manifest/result bindings, explicit CP01 accepted entry/engine/display/runtime/read original set and this checkpoint's complete trust.continuity comparison, published by the accepted registrar with actual acknowledgement/context originals. A read-only comparison supplies no trust/appointment; confirmation accepts no future object. Eligible calculation cites only finalized predecessors and emits its separate proposed basis. |
+| Trust output | Antony's direct ACCEPT/REFUSE reasons and exact earlier full-manifest/result bindings, the explicit CP01-anchored entry/engine/display and trust/publication artifact runtime/read original set and this checkpoint's complete trust.continuity comparison, published by the accepted registrar with actual acknowledgement/context originals. A read-only comparison supplies no trust/appointment; confirmation accepts no future object. Eligible calculation cites only finalized predecessors and emits its separate proposed basis. |
 
 The confirmation grammar is the exact uppercase act (ACCEPT or REFUSE), checkpoint
 identifier (CP01-SOURCE, CP01-ARTIFACTS, CP01-ROOT or CP02 through CP05), fresh nonce and complete manifest binding, without extra/duplicate fields.
@@ -2387,6 +2395,8 @@ compatible preparation duties; no image/task/receipt assigns a trust role.
 | Qualified one-time initializer | Candidate provisioning mechanics, authorized disarm-only maintenance, qualification running if independently authored expectations remain separate | Separate from both staged and final receipt validator and from trust acceptor/distinct closer for its outputs. Packaging/pure selector cannot initialize the live permit. Prior qualified/accepted mechanics precede real initialization. |
 | Qualified bootstrap/trust-originals publisher | May share initializer/disarm-maintenance operator under their exclusions; exact original/trust publication from this CP01's direct ready acts | Accepted bootstrap-only capability and artifact/runtime/read/control originals precede ROOT. Separate from its factual validator and semantic acceptance. No implicit human-registrar extension, permit production under this capability, close, eligibility or appointment. |
 | Reference Launcher Recorder | Accepted launcher's separately commissioned transcript-only publication of earlier publisher/terminal originals | Independent original-result executor may own it only when separate from the producer/repairer of the checked publisher/facts, expected-result author, factual validator and Antony adjudication. No other publisher/initializer/validator/registrar capability implies this role. The complete publication join and independently qualified controls are required before use. |
+| Reference Final Recorder | Transcript-only `publication-events` intent/record of earlier peer/launcher originals and actual launcher reap under the [complete publication contract](#complete-publication-and-terminal-join) | Separate from the launcher recorder and from producers/repairers and factual validators of the facts it records. No human act, validation, initialization, close, permit, release or appointment authority. Operating it supplies no independence for its own artifact or reported storage facts. |
+| Reference Outer Receiver | Nonpublishing foreground parent that compares the final record and observes its child's existing channel/wait terminal facts | Separate from the final recorder and its producer/repairer. No authority-record write, archival sidecar or further durable terminal original; its own return is the selected k340 endpoint. It makes no semantic decision. |
 | Independent read-only checkpoint prelude | Original source/OS trust root, exact pre-tool chain traversal/selection and actual holder executable/runtime comparison | Independently supplied outside the selected anchor; no candidate-derived root, authority write, disposition, initialization or semantic acceptance. Separate producer/repairer, original author, executor and Antony adjudication exclusions apply. Required original/runtime/read/image facts precede first use. |
 | Independent pre-entry stream holder | Supplies only the prelude-checked fixed plan's exact no-follow paired streams and retained descriptor lifetime | Actual executing copy is compared before launch by the prelude; independent source/build/runtime/read/image/control closure precedes SOURCE/first opens. Closed fd/offset/generation/EOF/reap handoff and required peer/image checks precede entry/candidate effects. It cannot select/accept an anchor or certify its own original/results. |
 | Separate staged/final receipt validator | One validator may validate the staged binding and final named/held receipt, compare initializer originals and retain acknowledgements | Separate from initializer, receipt producer/repairer and acceptance owner for those facts. Must not validate its own staged receipt or synchronization result; actual validation acquires evidence, CP2 accepts it. |
@@ -2768,8 +2778,9 @@ interview's non-execution, not later acquisition. Its unestablished-fit/private/
 hold clauses remain prerequisite gates until the existing qualifying evidence satisfies
 them. Preserve their bytes and all other canonical clauses except the exact compared
 k281 contact/lookup/control-status, k290 human-ownership/foreground/pass-status,
-k295 bounded correspondence-observation, k314 acceptance/documentary and k319 narrow
-Safari root-step amendments actually approved by Antony. Publish later
+k295 bounded correspondence-observation, k314 acceptance/documentary, k319 narrow
+Safari root-step, k330 never-started recovery/About provenance and k340 finite
+publication terminal-evidence amendments actually approved by Antony. Publish later
 outcomes separately without editing the historical fact into a current success. The
 descriptor ADR's historical measurements and pinned source/API facts likewise keep their
 original reference and bounded interpretation. Changed bases/dispositions are input changes.
@@ -2814,7 +2825,8 @@ review of its full context and complete H/R exceptions before acceptance.
 | Exception / exact whole-object or section context | H/R meaning and enduring remainder |
 | --- | --- |
 | S, Selected reference and evidence requirements: introduction and One bounded reference-packaging pass | H: original 25G83 packet counts/identity, Antony's permission and this requirements session's non-acquisition statements. E: exact selected build/cohorts/source/layout/files/one-pass evidence duties; no current package is inferred. |
-| S, Authority and admission choices | H: the recorded k270 delegation, k281/k290/k295/k314/k319 answers, original assignments to k273/k282/k315/k320, requirements-session non-execution and cited archived persistence descriptions. E: all selected choices, exclusions, five checkpoints, amendment limits, risks and before-consumer duties. A retired assignment names the historical requirement, not a live owner. |
+| S, Authority and admission choices | H: the recorded k270 delegation, k281/k290/k295/k314/k319/k330 answers, original assignments to k273/k282/k315/k320/k331, requirements-session non-execution and cited archived persistence descriptions. E: all selected choices, exclusions, five checkpoints, amendment limits, risks and before-consumer duties. A retired assignment names the historical requirement, not a live owner. |
+| S, Finite publication terminal-evidence boundary | H: Antony's recorded k340 answer and the stated non-selection of the every-writer-originals/unavailable alternative. E: the one finite final-recorder/outer-receiver endpoint, every earlier writer original, receiver-loss/unknown-tail limits, required mechanics/controls, five-checkpoint fit and every prohibition. |
 | S, Independent classification and whole-template assignment; Test seams and required handoff | H: requirements-session unestablished recipes/useful fit, false private eligibility, holds and pending native verdicts. E: all purpose/whole-template/rewrite/helper/alias/VM/native/eligibility requirements; later satisfaction needs its original qualifying evidence and is reported only in R. |
 | D, whole Filesystem access is descriptor-relative | H: the earlier whole-path error, k134 measurement, survey's failure reports, 25F71 search-only measurement, prior queued/system-find proposals and reported service PATH_MAX limitation, in their complete surrounding paragraphs. E: held/search-only/kernel/32-link/prompt/action rules, platform limits and qualification/revisit duties. No 26A434 certificate follows. |
 | C, Ownership and alternatives; Permission inputs and reporting outputs; Authoritative attempt evidence | H: named earlier design snapshots, this design's no-task act and product zap lifecycle description. E: selected independent representations, exact profile/concordance, full source/read/authority and lifecycle obligations; no design publication is an actual qualified tool. |
@@ -3798,13 +3810,17 @@ and [original R retained duties](#historical-and-reporting-exceptions) govern pl
 
 ### Whole-producer obligation comparison
 
-The [whole k323 comparison](application-reference-input-partition.md#every-k321-finding-against-the-whole-replacement)
-compares all eight k321 findings; the [original-obligation handoff](application-reference-input-partition.md#whole-original-duties-and-first-consumers)
-retains all original k273/k244/k242/k282/k291 duties under actual amendments.
-The [subsequent review integration](application-reference-input-partition.md#k321-integration-and-required-replacement)
-records k321's original dispositions; the [current k328 integration](application-reference-input-partition.md#k328-integration-and-required-replacement)
-records the defects in that replacement and its required new producer. Historical comparisons are locally
-labelled in that unconsumed report; none supplies current construction eligibility.
+The current [whole original-obligation concordance](application-reference-input-partition.md#whole-original-obligation-concordance)
+compares every original k321 R1–R8 and k328 F1–F6 finding and every original
+k242/k244/k245/k246/k247/k269/k331/k336/k343 condition with the k331 replacement under
+only actual amendments, and names its exact remaining work. The
+[current k328 integration](application-reference-input-partition.md#k328-integration-and-required-replacement)
+records the defects in k323 and the required new producer. The historical
+[k323 comparison](application-reference-input-partition.md#every-k321-finding-against-the-whole-replacement),
+[its original-obligation handoff](application-reference-input-partition.md#whole-original-duties-and-first-consumers)
+and [k321 integration](application-reference-input-partition.md#k321-integration-and-required-replacement)
+are reviewed defective snapshots. Every comparison lives in that unconsumed report; none
+supplies current construction eligibility.
 
 ### Construction responsibility and stability handoff
 

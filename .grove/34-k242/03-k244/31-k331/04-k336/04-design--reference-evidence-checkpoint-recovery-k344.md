@@ -16,6 +16,9 @@ parents, all child results and all current source/consumer/view layers. Read k34
 as scoped evidence, not substitutes for the full original closure check or actual originals.
 Existing mandatory whole review is reference-evidence-checkpoint-recovery-k332 before k269.
 
+Also consume k347's whole concordance and k348's inter-checkpoint publication entry result
+(or its exact human trade-off) before freezing membership.
+
 ## Done when
 
 - Independently check every original k336/k331 Goal/Done when against the complete final

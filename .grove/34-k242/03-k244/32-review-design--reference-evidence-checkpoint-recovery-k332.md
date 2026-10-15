@@ -22,6 +22,11 @@ root/k242/k244/k245/k246/k247/k269 charters and seven source/export/presentation
 Older memberships are historical subjects, never current proof. Source/hash/render
 checks establish no independent acceptance, possession, authority or native result.
 
+Also read k340's later actual "Accept the bounded endpoint (Recommended)" clause and its
+exact comparison in canonical S: only the final-recorder/outer-receiver terminal tail lacks
+a further durable original. K343's whole concordance (k347) leaves the inter-checkpoint
+disarm/close publication entry to design k348, before k344 closes the producer reviewed here.
+
 ## Review focus
 
 Try failed REANCHOR/publication-validation and missing current anchor at the first

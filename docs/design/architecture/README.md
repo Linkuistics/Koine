@@ -8,23 +8,28 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-Open [the publication/recovery discussion](index.html#discussion) or
-[Recovery → Host the disposition before its successor](index.html#diagram-native-reference-admission).
-K346 expands the capable writers, exact records and first consumers into clean and stopped
-edges. The damaged-carrier prefix names only the frozen failed publication/launcher tails;
-actual returned writer/comparison originals stay in bounded live memory until immediate
-carrier successors archive them. External use waits for that complete association. Loss
-of the disposition/prefix/archival join admits no successor or recursive recovery.
+Open [the whole-concordance discussion](index.html#discussion) or
+[Checkpoint continuity → Select and check before candidate tools](index.html#diagram-native-reference-proof).
+K347 closes k343 by composing k345's pre-tool graph and k346's publication/recovery graph
+with every original k321/k328 finding, all original charter conditions, the physical
+Safari walk and the preserved tables, bases and manifests. Every original condition is
+retained under only actual amendments. One enabling point is still open: disarm
+maintenance and the distinct close publish outside CP01–CP05, where C specifies no source
+root, chain selection or pre-execution gate. Design leaf k348 must specify it, or bring
+Antony the trade-off, before k344 freezes the new whole membership.
 
-- [Recovery → Host the disposition before its successor](index.html#diagram-native-reference-admission) — Names exact carrier tails, separates memory-stage readiness from durable archival and shows the terminal no-successor branch.
-- [Publication and recovery consumer concordance](../../verification/application-reference-input-partition.md#publication-and-recovery-consumer-concordance) — Maps original R1/R2/R5 and F1/F3/F4/F5/F6 to every output/failed-cut host, exact dependency expansion and independent first-consumer controls.
-- [Publication and recovery dependency expansion](../../verification/application-reference-evidence.md#publication-and-recovery-dependency-expansion) — Makes close reads explicit, closes the pre-intent slot list and preserves ordinary continuity and CP05 gates.
+- [Checkpoint continuity → Select and check before candidate tools](index.html#diagram-native-reference-proof) — Names the anchored CP02–CP05 trust/publication members and adds the blocked inter-checkpoint publication node.
+- [Recovery → Host the disposition before its successor](index.html#diagram-native-reference-admission) — Replaces the pending concordance boundary with k348 entry, k344 membership and k332 review.
+- [Evidence](index.html#diagram-native-reference-evidence), [Packaging](index.html#diagram-native-reference-packaging), [Contact](index.html#diagram-native-reference-contact), [Components](index.html#diagram-native-reference-instrument) and [Population](index.html#diagram-native-population-metadata-shape) — Update only their status lines to the same remaining boundary.
+- [Whole original-obligation concordance](../../verification/application-reference-input-partition.md#whole-original-obligation-concordance) — Records every finding/condition comparison, the composition junctions, six documentary repairs and k344's final-freeze inputs.
+- [Closed pre-tool reads and deterministic selection](../../verification/application-reference-evidence.md#closed-pre-tool-reads-and-deterministic-selection) — Lists the anchor's later-executed trust/publication members and blocks non-checkpoint publication until specified.
+- [Compatible ownership and bounded sequential schedule](../../verification/application-reference-evidence.md#compatible-ownership-and-bounded-sequential-schedule) — Adds the final-recorder and outer-receiver rows from C's existing exclusions.
+- [Enduring inputs and phase-specific reports](../../verification/application-reference-evidence.md#enduring-inputs-and-phase-specific-reports) and [historical and reporting exceptions](../../verification/application-reference-evidence.md#historical-and-reporting-exceptions) — Add the actual k330/k340 amendments and an H row for k340's selected section.
 
-Continuity and packaging views are unchanged context. K345's pre-tool/descriptor/true-return
-and CP05 post-gap checks remain. K347 owns whole all-finding/original-duty/Safari/table/basis/
-read concordance; k344 alone freezes whole membership/checks complete k336/k331 closure.
-Existing k332/every earned integration precede k269. No partial membership, actual original/
-control, Creator or construction handoff follows; pass unused and both holds remain.
+K344 alone freezes whole membership, checks complete k336/k331 and supplies its own
+Creator on existing k332. Existing k332/every earned integration precede k269. No partial
+membership, actual original/control, Creator or construction handoff follows; pass unused
+and both holds remain.
 
 ## Reconciled provenance context
 
@@ -63,8 +68,8 @@ Related unchanged normative context: [manual About order](../../verification/app
 [source-rooted selection](../../verification/application-reference-evidence.md#closed-pre-tool-reads-and-deterministic-selection),
 [complete publication join](../../verification/application-reference-evidence.md#complete-publication-and-terminal-join)
 and [hosted recovery](../../verification/application-reference-evidence.md#hosted-failed-tail-recovery).
-K343 must re-derive the whole original-duty/failure-DAG conjunction. K344 must then
-freeze new whole membership, check every original k336/k331 condition and name its own
+K343's whole original-duty/failure-DAG concordance is closed; k348 must first specify
+inter-checkpoint publication entry. K344 must then freeze new whole membership, check every original k336/k331 condition and name its own
 provider evidence on existing k332 only when that whole producer actually closes.
 Whole k332/every earned integration precedes k269. No slice supplies construction input.
 Historical manifests, selected S/comparison, descriptor ADR, five tables and original
@@ -74,7 +79,7 @@ Actual consumed edits disarm/requalify; post-consumption correction stays offlin
 
 Regenerate all seven source/export pairs with
 `task design:application-population-metadata-shape-render` (D2 0.9.0, Dagre, themes 0/200).
-Only the admission source/export/caption and discussion marker change in k346. Browser delivery is checked
+K347 changes all seven sources/exports, the affected captions and the discussion marker. Browser delivery is checked
 only in the explicitly reported viewer/appearance; k316/k326's other limits remain.
 Render/link/hash checks supply no semantic, executable-feasibility or native proof.
 

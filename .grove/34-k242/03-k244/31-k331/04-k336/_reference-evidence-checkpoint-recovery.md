@@ -123,3 +123,18 @@ reference-evidence-whole-obligation-concordance-k347 owns the ALL-original-duty/
 table/basis/read conjunction and complete original k343 check. These precede k344, which
 still owns every original final-freeze/whole-k336/k331 closure condition above. K345's
 scoped verification is neither whole acceptance nor new membership or construction input.
+
+## Whole concordance input from k347/k343
+
+K347 closes k343 at application-reference-input-partition.md#whole-original-obligation-concordance.
+Every original k321 R1–R8/k328 F1–F6 correction and k242/k244/k245/k246/k247/k269/k331/
+k336/k343 condition holds under only actual k270–k340 amendments; original charter sections
+equal their creating commits, with k245's strengthened Done when and k269's practical Goal
+wording recorded against those bases. R3's physical Safari walk re-derives from the separate
+k94/k110 operands. R4/R6-class drift for k330/k340 and stale k321/k323 pointers is repaired.
+C now names every CP02–CP05 trust/publication anchor member and the final-recorder/outer-
+receiver compatibility rows. Disarm-only maintenance and distinct-close publication run
+outside CP01–CP05 with no specified source root, selection or pre-execution gate; C blocks
+them, and design k348 must specify that entry or bring Antony its trade-off before k344.
+K344 alone freezes new whole membership after k348, checks complete k336/k331 and names
+its own Creator on existing k332. No partial membership, control result or authority follows.
