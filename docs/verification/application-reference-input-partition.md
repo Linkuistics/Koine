@@ -35,6 +35,10 @@ layers and seven views; k343 owns whole original-duty/failure-DAG concordance; k
 final whole membership and the complete original k336/k331 closure check. A partial
 child supplies no construction handoff or new whole membership. Only
 the actual closing child names its provider evidence on that existing whole review.
+K343 now decomposes into k345's [pre-tool consumer concordance](#pre-tool-consumer-concordance),
+k346's complete publication/recovery concordance and k347's closing whole-original-duty/
+Safari/table/basis/read comparison. This preserves every original k343 condition; k344
+alone freezes the new whole membership after k343 actually closes.
 K269 must place already decided mechanisms; the reviewed k323 proposal is no construction
 handoff. Its [membership](reference-practical-admission-replacement-membership.json)
 retains historical bytes. The new
@@ -53,6 +57,158 @@ waive no named required failure and establish no no-contact fact. K244/k242 rema
 k245 retains the one unused pass, k246 complete rewrite/helper/alias discrimination and
 k247 whole-subject/family review or precise incomplete work. Full useful breadth,
 additive supported-VM/native duties, private ineligibility and both holds remain.
+
+## Pre-tool consumer concordance
+
+K345 is the first bounded child of k343. It compares original k321 R7 at 4304ad5f46d7
+and k328 F2 at c368357f9eb36c59efac03988dac9c313fda9d14 with k333's complete pre-tool
+interface and its current publication/recovery connections. It supplies **scoped
+documentary concordance**, not whole-k343/k331 acceptance or new membership. K346 owns
+complete publication/recovery concordance; k347 owns the closing all-finding/all-original-
+duty conjunction; k344 alone freezes the new whole membership and checks complete
+k336/k331 closure before existing k332. No earlier child's provider evidence substitutes
+for that actual closing run's Creator. All old memberships remain exact historical inputs.
+
+### Original entry findings and first consumers
+
+| Original condition | Current contract, first consumer and precise retained boundary |
+| --- | --- |
+| R7: no named no-follow descriptor opener; shell redirection can follow a substituted original | C's [holder interface](application-reference-evidence.md#holder-execution-and-closed-descriptor-handoff) assigns original-then-copy `openat`/`fstat`/named `fstatat`, no-follow, single-link/type/UID/mode/identity/length checks to the prelude/holder. C's independent controls and P's prelude/holder pairs require link/type/parent substitutions to refuse at that opener before cmp or entry use. The production descriptor ADR is unchanged. |
+| F2: no owner of current-anchor selection before candidate tools | C's [source-rooted prelude](application-reference-evidence.md#source-rooted-prelude-before-selection) owns strict read-only chain/absence/member decoding under a separately supplied source/OS original. Its [closed read plan](application-reference-evidence.md#closed-pre-tool-reads-and-deterministic-selection) includes anchors, validation, release, launcher, publication, trust, revision and close chains plus only schema-admitted earlier inputs. Omission/extra sets, predecessor and absent-next evidence precede holder launch. An unsupported kind or failed reachable tail cannot be delegated to a candidate engine. |
+| F2: unchecked executable holder copy can certify later comparisons | Prelude compares actual executable copy and complete runtime/read closure against independent originals in both directions before launch. Actual post-spawn peer/image correspondence precedes release of the holder plan. No executable anchor-mode change, descriptor-exec primitive or atomic pathname-to-inode guarantee is claimed. Missing required image evidence blocks even with equal bytes; accidental detected replacement is distinct from the cooperative mutate/restore/OS limit. |
+| F2: checked streams have no closed handoff to entry | C's fd table fixes serial read-only 3/4, entry role/nonce/member/generation on 5 and entry/holder result on 6; cmp has only 3/4 and no application frame. The holder's own plan is fd 3 with 4 closed. ENTRY_SEAL receives separate frozen expected/vector pipes. Complete input/EOF/result/reap and actual peer facts precede result use. No pathname reopen, ambient fd, authority or operator channel enters comparison children. |
+| Original required read/image/negative/lock/freeze and true-return duties | C's controls, K Q05/Q07–Q10 and P's [release/acceptance pairs](application-reference-packaging-runtime.md#release-and-acceptance-controls) independently require them. Full actual task/runtime/charter/report reads bind full bytes at their phase; a known label or authored empty set supplies no original. Parent originals/parents/generations survive every descendant's true return, including a timed-out child that has not returned. |
+| CP05 lease transition's existing revalidation obligation | An explicit pair is now in C's independent pre-tool controls and P's release/acceptance controls, with K's corresponding blocker. Keep every earlier gate valid; independently introduce mutation/new tail/failed reacquisition/wrong lock order/lost peer or endpoint only in the unlocked interval. The actual revalidation gate must refuse before Task/intent. This isolates the existing duty; it adds no new mechanism, authority or checkpoint. |
+
+The independent original author supplies each known-answer and isolated bad operand; a
+separate executor obtains actual SCRATCH calls/frames/identities/refusal extents. Neither
+checked producer/repairer nor fact's author/executor/validator accepts its own result.
+Antony adjudicates ready originals only. These are required future instrument controls;
+none was executed by this documentary session. C's entire pre-tool interface and controls,
+K's whole blocker conjunction and P's whole entry/control/read contracts remain binding.
+
+### Exact pre-tool dependency definitions
+
+These node names are **report notation**, not executable phases, new record kinds or
+membership IDs. An edge means the source's actual successful completion is required
+before the destination's enabling action. All listed predecessors are conjunctive.
+Unroll each finite independently frozen member vector and each child invocation; do not
+use an unbounded loop, a hash or topological sorting as evidence of a real outcome.
+
+| Node | Sole responsible role, required result and next consumer |
+| --- | --- |
+| E0 | Independent suppliers/authors/executors provide the complete ready source/OS/prelude/observer/primitive/decoder/control originals and bounded read plan outside checkout/selected anchors. Required identities/outcomes are currently null/unacquired. |
+| E1 | Antony's existing checkpoint SOURCE/continuity start directly trusts E0's original source/OS method before prelude execution. This is the explicit finite root, not a self-certifying candidate check or stored authority. |
+| E2 | Source-trusted prelude checks existing held ancestry/locks and acquires nonblocking exclusive release-before-register checkpoint leases. At initial CP01 only the independently supplied original/member plan is read; nonexistent chains/locks are not assumed. |
+| E3 | Later prelude traverses every reachable closed chain and earlier dependency, complete member sets and actual terminal absent-next facts under E2. It checks all cross-chain associations before selecting the current accepted independently validated anchor, or returns the exact source-reentry/intact-anchor-recovery/unavailable result. |
+| E4 | Prelude opens original holder/copy/runtime pairs no-follow; for each direction it sets/checks zero offsets, spawns the fixed cmp with only 3/4, observes actual return/reap and rechecks bytes/lengths/named-held facts before resetting. All pairs must succeed before holder spawn. |
+| E5 | Prelude spawns exactly that checked holder copy with its frozen input withheld. The independently source-trusted factual observer obtains required actual current peer/image correspondence. Only its successful returned facts release the complete length-framed plan; death/gap closes input and freezes, never sends an empty default. |
+| E6 | Holder opens the complete independently frozen original/copy/parent set, checks entry/runtime with fixed cmp before entry execution, and retains every actual identity/generation. It does not select an anchor or inherit an authority-writing capability. |
+| E7(i) | For each member/direction in the frozen order, holder resets/rechecks offsets, spawns the entry with only the exact 3/4/5/6 role plan, withholds enabling input until independent current peer/image facts exist, and concurrently writes input/drains result. Entry consumes complete declared lengths through EOF. Parent joins the exact result/EOF/actual zero reap/generation/identity, then rechecks/restores offsets before the next child. Every length, empty member, reverse direction and error is explicit. |
+| E8 | One separately gated ENTRY_SEAL consumes the frozen expected manifest/control binding and complete ordered E7 vector on separate pipes. Exact set/count/order/directions/bindings plus actual result/EOF/reap precede the complete comparison result. Comparison children have closed 0–2, no discretionary path and no authority/lease/operator descriptor. |
+| E9 | At first CP01 the source-trusted prelude's escaped static renderer shows E8 plus original controls before ARTIFACTS judgment; engine/display execution waits for acceptance. At CP02–CP05 the accepted registrar copies E8's factual result as trust.continuity using the exact existing publication mechanism; its acknowledgment precedes the ordinary engine/display/ready-act consumer. No comparison awaits its own future trust record. |
+| E10 | Each already accepted engine/display/registrar or later consumer gets only its own frozen enabling input after actual current peer/image checks. Held original bytes/lengths/named identities are rechecked before and after each consumer, with serial offsets or qualified explicit pread; new reads/roles require reviewed disarm/requalification. |
+| E11 | At CP05, after exact accepted entry/About/appointment publication, release register then release lock; reacquire shared release then register. With the same coexisting supervisor/checker/acquirer/endpoint, re-traverse/recompare every finalized chain, expected CP05 successor and held earlier input. This gate precedes Task release; remaining actual P01–P05 checks still precede intent at their own retained entry boundaries. Earlier comparisons cannot cross this gap as credit. |
+| E12 | Prelude/holder retain originals/parents and actual descendant lifetime through the entire foreground checkpoint's true return and final freeze. An early engine result, timeout or closed child fd does not release that obligation. Actual original extents remain distinct from later archival copies. |
+
+Clean edge set: E0→E1→E2; at initial CP01 E2's supplied-plan branch→E4, while later
+checkpoints require E2→E3→E4; E4→E5→E6; E6→E7(first), each E7(i)→E7(next),
+all E7→E8→E9→E10. Each newly spawned comparison/SEAL/consumer includes its own
+spawn→independent-image-facts→input-release→complete-input/EOF→result/EOF/reap→postcheck
+edges; no future process fact is a pre-spawn input. At CP05 E10's exact ready publication
+outputs→E11→Task release→retained Task/script/CLI channel/identity and remaining fresh P
+rechecks→intent. Every reached child/consumer→E12; E12's
+final successful freeze requires every reached descendant's actual return/reap. E2's
+checkpoint leases remain held through comparison and authorized publication until the
+specified E11 transition; comparison children inherit none. CP01 ROOT/publication and
+other checkpoint semantics remain in their existing contracts, not invented E nodes.
+
+### Correction edges, original retention and blocking consumers
+
+| Failed cut | Exact correction dependency and first blocked consumer; independent refusal location |
+| --- | --- |
+| E0/E1 source-root/original/runtime/image/control unavailable | Stop before prelude execution. Newly ready independent originals→repeated CP01 SOURCE→ARTIFACTS; no saved source acceptance, candidate reconstruction or old-anchor fallback. C's source-root substitution pair and P's prelude pair isolate it; required original remains null until actually supplied. |
+| E2 ancestry/lease or E3 anchor/bootstrap-validation/absence/kind/predecessor failure | Stop before holder launch; preserve exact failed bytes/identities/negative result/lease extents and select no anchor. New independent SOURCE/ARTIFACTS→hosted CP01 comparison/disposition/authorized successor path. A gap/unknown absence cannot mean never provisioned or never dispatched. C's chain/tail/absence pair is the first control. |
+| E3 intact validated anchor with a separately failed non-anchor tail | Return only INTACT_ANCHOR_RECOVERY_ONLY. The exact hosted checkpoint compares failed originals and accepts non-success disposition before its allowed successor; ordinary trust/receipt/eligibility use remains blocked. C's intact-versus-failed-anchor pair isolates this classification; k346 must join every failed-chain/capability/archival dependency. |
+| E4 changed holder/copy/member or E5 missing actual peer/image | Refuse before holder launch, or freeze after spawn before plan release/entry effects respectively. Retain reached comparison/spawn/withheld-input/return facts; replacement tool needs independent review/original controls and affected CP01/qualification suffix. C's changed-holder and post-spawn-image pairs isolate these distinct gates. Path equality supplies no executing-image fact. |
+| E6/E7/E8 missing/extra/member/fd/role/generation/offset/frame/EOF/reap/SEAL | Refuse at actual opener, child-input or result/SEAL gate before aggregate equality/engine use. Retain both complete and partial bytes/frames, actual child facts and unperformed suffix. Restore no eligibility; live unreturned children retain E12 obligations. C's serial ABI and parent-lifetime pairs and P's holder pair isolate each fault with earlier gates valid. |
+| E9 factual copy/publication failure | E8 remains an earlier actual result, not its own publication acknowledgment. Repeat the exact checkpoint under new source trust and an independently checked intact anchor before ordinary engine/ready-act use; failed root takes CP01 instead. Exact in-slot disposition/carrier prefix/acknowledged successor and final archival acceptance belong to k346's full join. Its own disposition/prefix/archival failure has no admitted successor. |
+| E10 changed bytes/read closure/parent/lease or early holder return | Freeze before the affected next consumer/result. Keep reached original/unknown/return extents; disarm before changed work and affected independent repair/review/qualification/acceptance suffix. No pathname reopen, old continuity or timeout grants a fresh consumer. C's parent-lifetime and P's repeated-continuity pairs are the first controls. |
+| E11 gap mutation/failed shared reacquisition/changed successor/peer | The new explicit C/P transition pair starts with all E0–E10 gates valid and changes only this boundary. Refuse at post-reacquisition revalidation before Task/intent. Retain actual lock attempts, full traversed records/absence/held bytes/identities and current peer facts through E12; no appointment transfer or within-call retry. Any later permissible CP05 repeat needs independently established lifecycle state and a fresh direct appointment. Unknown intent/dispatch is never cleared. |
+| E12 unproved descendant return, lost original or failed freeze | No successful checkpoint outcome or later ordinary consumer. Preserve exact known/dead/unknown intervals; timeout and currently matching files prove no omitted historical return. The hosted recovery contract owns any actual failed publication, with source re-entry taking precedence if required roots fail. After consumption all correction is offline-only. |
+
+These correction graphs are finite unrollings: each failed cut/actual returned extent→
+independently ready comparison→named hosted repeat→direct ready disposition→permitted
+fully acknowledged successor→its own later ready consumer. If a required source/original/
+return cannot be ready, the edge stops unavailable. No successful graph traversal grants
+authority; positive original no-dispatch AND no-provisioning predicates remain separate
+conditions before any fresh INITIALIZE_ONCE. K346 must challenge E9's complete writer/
+receiver/current-stage/final archival join and every own-failure stop; k347 must compose
+this slice with all original duties, Safari, whole tables/bases/reads and every other
+finding. Neither the DAG nor content equality supplies the missing original history.
+
+### Scoped ready input and remaining whole work
+
+The ready documentary input is the current C/K/P interface/control addition, the tables
+above and the [focused continuity view](../design/architecture/index.html#diagram-native-reference-proof).
+For **each** E0–E12 occurrence the required source/build/control/operation/byte/member/
+runtime/image/UID/descriptor/negative/lock/terminal/read/freeze original is still
+null/unacquired as applicable, with the role and first consumer specified above. This
+is no runtime inventory populated with empty sets. Actual construction owners and exact
+original identities remain k269's placement work after complete reviewed design.
+
+No selected S/comparison, production descriptor ADR, historical table/packet/parent/basis/
+read membership, existing manifest or original parent Goal/Done when is changed by this
+slice. No new partial membership is created. K346 and k347 remain live before k344's
+new whole membership/complete closure; existing k332 and every earned integration remain
+before k269. K244/k242 stay live, pass unused, full k246/k247/useful/helper/alias/additive
+supported-VM/native/private/product duties and both holds retained. Actual consumed edits
+disarm and require affected requalification before consumption. Documentary verification
+and browser observations are recorded after the final frozen check; neither is an
+executed instrument control, original acquisition, authority or semantic acceptance.
+
+### Pre-tool documentary verification and scoped retirement
+
+After the interface/control/report/view edits, the existing `task check:docs` and
+`task design:application-population-metadata-shape-render` both exited 0. The bounded
+verifier `/tmp/koine-k345-verify.py` records 150 passing checks and exact command outputs
+in `/tmp/koine-k345-verification.json`, with equal per-item before/after byte lengths and
+SHA-256 identities for 2,126 named subjects. Subjects include all current jj-tracked files,
+every checker-enumerated document/link-anchor input, the verifier, the two exact committed
+review copies, positive/negative link fixtures and resolved jj/task/D2/Grove/Python
+executables. Tracked subject membership stayed stable. This measures documentary bytes,
+not complete transitive measurement-tool runtime closure or original/native identities.
+
+The audit confirms the exact authored file set; C/P change only by the explicit transition
+control row, K only by its exact corresponding blocker paragraph. Original k343/k336
+Goal/Context/Done when/Notes, whole canonical S/comparison, descriptor ADR, glossary,
+Taskfile/checker, each existing reference JSON/TSV/compressed table and six unchanged
+context source/export pairs remain exact against the preceding commit. The viewer keeps
+every unrelated field/diagram entry and the proof's stable locator/source/export; only
+proof is marked changed. Every source node-label line occurs in the parsed proof SVG.
+The scoped E0–E12 inventory, exclusions/null-original/first-consumer boundaries and live
+k346/k347/k344 handoff were checked as documentary correspondence only.
+
+Witnessed isolating controls reject an omitted actual change, an unexpected implementation
+path, a missing transition row, an altered original condition, a one-byte canonical
+mutation, an omitted changed marker and a missing exported label. The retained link
+checker accepts a known heading and rejects a known missing heading for that exact
+missing-anchor reason in separate scratch fixtures. These are documentary controls;
+none executes the evidence instrument, a live ceremony or an installed/native probe.
+
+Chrome light displayed a fresh proof deep link with its intended heading and Current/
+Updated markers, then the revised entry/comparison/consumer gates and CP05 post-gap
+branch after reload/scroll. The first horizontal export was too small to read at the
+current window width; the final vertical export made its labels and branches readable
+in the normal scrolling document. No mobile/dark/Safari/native-size pass is claimed;
+k316/k326's existing viewer limits remain. These outcome paragraphs follow measurement;
+no earlier frozen identity is represented as covering this later report append.
+
+Only k345's bounded design conditions are complete. K346/k347 remain live under k343,
+so k343/k336/k331 and all instrument/subject ancestors stay open. No Creator is written
+for that unfinished producer, no review is added and no membership is frozen. Existing
+k332/every earned integration still precede k269; all actual originals/controls/authority,
+unused-pass/full downstream duties and both holds retain their earlier boundaries.
 
 ## Provenance and current-surface reconciliation
 

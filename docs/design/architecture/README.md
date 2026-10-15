@@ -8,8 +8,27 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-Open [the provenance discussion](index.html#discussion) or
-[Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging).
+Open [the pre-tool consumer discussion](index.html#discussion) or
+[Checkpoint continuity → Select and check before candidate tools](index.html#diagram-native-reference-proof).
+K345 compares original k321 R7/k328 F2 with the existing pre-tool interface, records exact
+clean/correction dependencies and adds the explicit CP05 post-gap revalidation control.
+Independent source/OS trust, actual holder-copy comparison and post-spawn peer/image/input
+gates precede serial entry/SEAL and ordinary consumers. CP05 must revalidate complete
+finalized chains, expected successors, held inputs and the same peers/endpoint after shared
+lease reacquisition, before Task; remaining fresh P checks precede intent. Every reached
+descendant must actually return before retained originals are released.
+
+- [Checkpoint continuity → Select and check before candidate tools](index.html#diagram-native-reference-proof) — Separates copy checks, post-spawn image/input gates, serial pair/SEAL and CP05's post-gap revalidation with original retention through true return.
+- [Pre-tool consumer concordance](../../verification/application-reference-input-partition.md#pre-tool-consumer-concordance) — Maps original R7/F2 to exact owners, clean/correction edges, independent controls, null originals and first consumers.
+
+Instrument and recovery views are unchanged context. K346 owns complete publication/
+recovery concordance and k347 the whole all-finding/original-duty/Safari conjunction;
+k344 alone freezes new whole membership and checks complete k336/k331 closure. Existing
+k332/every earned integration still precede k269. No partial membership, actual original/
+control, Creator or construction handoff is supplied. Pass unused; both holds remain.
+
+## Reconciled provenance context
+
 K342 reconciles current source/consumer/view layers under actual k330/k340 answers;
 it changes no admission mechanism. Host is Antony's manually identified machine and
 session his label for that About observation's work context, each with exact meaning
@@ -56,7 +75,7 @@ Actual consumed edits disarm/requalify; post-consumption correction stays offlin
 
 Regenerate all seven source/export pairs with
 `task design:application-population-metadata-shape-render` (D2 0.9.0, Dagre, themes 0/200).
-All seven captions/discussion markers are revised together. Browser delivery is checked
+Only the proof caption/discussion marker changes in k345. Browser delivery is checked
 only in the explicitly reported viewer/appearance; k316/k326's other limits remain.
 Render/link/hash checks supply no semantic, executable-feasibility or native proof.
 
@@ -78,8 +97,9 @@ and [descriptor handoff](../../verification/application-reference-evidence.md#ho
 This is a documentary design slice. Complete publication and hosted recovery are
 specified beside it; whole original-duty/new-membership reconciliation and k332 whole
 review/every earned integration remain ahead of construction. K330's selected provenance/recovery limits,
-all original duties, unused pass and both holds remain. The current update changes this
-proof view's closing boundary only; its pre-tool selection and descriptor mechanism is unchanged.
+all original duties, unused pass and both holds remain. The current proof update expands
+the existing enabling and consumer gates; it adds no source trust, descriptor operation,
+authority, checkpoint or selected endpoint.
 
 ## Retained Safari composition context
 

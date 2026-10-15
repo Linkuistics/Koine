@@ -295,6 +295,11 @@ The complete publication/trust-record and hosted-recovery contracts specify the 
 mechanisms beside this pre-tool path. Whole original-duty/failure-DAG concordance and
 final membership/closure remain under k336 before k332 and construction; no original
 control or current fact is supplied by these documentary specifications.
+The CP05 lease-transition pair in C's independent pre-tool controls and P's release/
+acceptance controls isolates gap mutation, failed shared reacquisition, changed successor
+or lost peer/endpoint with earlier checks valid. Its first refusal is the actual
+post-reacquisition revalidation gate before Task/intent, within Q05/Q07/Q08/Q09/Q10 and
+fresh P01/P02/P05 duties. A prior valid comparison supplies no post-gap credit.
 The [launcher publisher-terminal slice](application-reference-evidence.md#launcher-original-before-bootstrap-validation)
 adds required Q05/Q07/Q08/Q09/Q10 originals: CP01-ARTIFACTS accepts the separate
 transcript-only recorder mechanics before ROOT; `launcher-events/n` intent/record and

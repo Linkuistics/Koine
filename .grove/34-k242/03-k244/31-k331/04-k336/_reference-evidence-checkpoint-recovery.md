@@ -111,3 +111,14 @@ the new whole membership, checks every original k336/k331 condition and closes o
 actually complete boundary. It names its own provider evidence on existing k332 for k331;
 no partial child, earlier receipt or invented node identity is substituted. K332 and every
 earned integration still precede k269. Add no duplicate review or implementation leaf.
+
+K343 has decomposed without changing any of its original conditions. Its first child
+reference-evidence-pretool-consumer-concordance-k345 supplies scoped original R7/F2,
+entry/descriptor/true-return consumer concordance and the explicit CP05 post-gap control
+at application-reference-input-partition.md#pre-tool-consumer-concordance. Live
+reference-evidence-publication-recovery-concordance-k346 owns complete publication/
+recovery/final archival dependencies; closing
+reference-evidence-whole-obligation-concordance-k347 owns the ALL-original-duty/Safari/
+table/basis/read conjunction and complete original k343 check. These precede k344, which
+still owns every original final-freeze/whole-k336/k331 closure condition above. K345's
+scoped verification is neither whole acceptance nor new membership or construction input.

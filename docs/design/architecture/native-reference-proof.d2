@@ -1,26 +1,51 @@
-# Specified pre-tool path; whole k331 concordance/membership and k332 review precede use.
+# Scoped pre-tool consumer concordance; publication/recovery and whole closure stay live.
 direction: down
 classes: {
   start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
 }
-Start: "Start here · Source / OS trust\nIndependent prelude original\nEach CP01–CP05; no extra checkpoint" {class: start}
-Prelude: "Prelude · Read-only\nCP01: supplied original plan only\nLater: exact locked chain reads"
-Select: "Select current anchor\nAccepted + independently validated\nAbsent-next fact; no fallback"
-Gate: "Holder gate before launch\nFull original / copy bytes + identity\nRequired image evidence separate"
-Holder: "Checked holder opens fixed plan\nRetain every original / copy / parent\nCheck entry before execution"
-Pairs: "Serial read-only pairs on fd 3 / 4\nEntry: plan 5; result 6; EOF / reap\nCmp: only 3 / 4; no result frame"
-Seal: "Short entry · ENTRY_SEAL\nExact set / directions / pair results\nReset offsets; no pathname reopen"
-Ready: "Then engine / display / consumer\nHeld inputs + checks through return\nNo authority fd in comparison child"
-Unavailable: "Refuse before affected consumer\nFailed root / anchor: CP01 re-entry\nNo recovery or authority inferred"
-Live: "Publication / hosted recovery specified\nWhole concordance / final membership still due\nThen k332 + integrations → k269\nActual originals / controls remain absent"
-Start -> Prelude: "1 · finite original / OS trust"
-Prelude -> Select: "2 · no scan / repair / writes"
-Select -> Gate: "3 · exact original set"
-Gate -> Holder: "4 · checked executable only"
-Holder -> Pairs: "5 · complete held set"
-Pairs -> Seal: "6 · one pair per child"
-Seal -> Ready: "7 · exact membership"
-Select -> Unavailable: "chain / absence gap"
-Gate -> Unavailable: "copy / image gap"
-Pairs -> Unavailable: "fd / offset / return failure"
-Ready -> Live: "8 · no construction handoff"
+Entry: {
+  label: "Checkpoint entry · E0–E5"
+  direction: down
+  Start: "Start here · Source / OS original\nReady independent controls\nEach CP01–CP05" {class: start}
+  Prelude: "Source-trusted prelude\nInitial: supplied member plan\nLater: locked closed-chain reads"
+  Select: "Current accepted anchor\nValidation + absent-next facts\nNo old-anchor fallback"
+  Gate: "Compare actual holder copy\nFull original / runtime members\nBefore holder launch"
+  Image: "Spawn with plan withheld\nIndependent current peer / image\nThen release exact plan"
+  Start -> Prelude: "1 · finite trust root"
+  Prelude -> Select: "2 · later checkpoints"
+  Select -> Gate: "3 · exact originals"
+  Prelude -> Gate: "initial CP01 plan only"
+  Gate -> Image: "4 · checked copy"
+}
+Compare: {
+  label: "Held comparison · E6–E8"
+  direction: down
+  Holder: "Holder opens no-follow pairs\nCheck entry before execution\nRetain originals / copies / parents"
+  Pairs: "Serial children · fd 3 / 4\nEntry plan 5 / result 6\nCmp: no application frame"
+  Join: "Each spawn: image then input\nComplete bytes / EOF / zero reap\nReset offsets; exact generation"
+  Seal: "ENTRY_SEAL\nExact member / direction vector\nNo paths or authority fds"
+  Holder -> Pairs: "5 · full frozen set"
+  Pairs -> Join: "6 · every direction"
+  Join -> Seal: "7 · all pair results"
+}
+Consume: {
+  label: "Consumer gates · E9–E12"
+  direction: down
+  Ready: "CP01: render then accept\nLater: acknowledged continuity\nThen gated engine / consumer"
+  Transition: "CP05: reverse exclusive release\nShared release then register\nSame peers / endpoint"
+  Recheck: "Full post-gap revalidation\nExact CP05 successors + inputs\nBefore Task; fresh P before intent"
+  Return: "Retain through foreground return\nEvery descendant's actual reap\nFinal unchanged-input freeze"
+  Ready -> Transition: "8 · CP05 publication complete"
+  Transition -> Recheck: "9 · no atomic conversion"
+  Recheck -> Return: "10 · actual reached suffix"
+  Ready -> Return: "other checkpoints"
+}
+Unavailable: "Refuse before affected consumer\nRoot / anchor loss: CP01 re-entry\nOther failed tail: recovery context only\nNo history / authority inferred"
+Remaining: "Scoped R7 / F2 concordance\nPublication + whole duties remain\nK344 freeze → k332 review → k269\nActual originals / controls absent"
+Entry.Image -> Compare.Holder: "plan / image gate"
+Compare.Seal -> Consume.Ready: "complete comparison"
+Entry.Select -> Unavailable: "chain / absence failure"
+Entry.Image -> Unavailable: "copy / image gap"
+Compare.Join -> Unavailable: "fd / offset / return failure"
+Consume.Recheck -> Unavailable: "gap mutation / lease / peer loss"
+Consume.Return -> Remaining: "documentary boundary only"

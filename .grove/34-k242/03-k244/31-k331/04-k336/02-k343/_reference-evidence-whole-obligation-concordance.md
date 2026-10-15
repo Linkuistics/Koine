@@ -1,4 +1,4 @@
-# reference-evidence-whole-obligation-concordance-k343
+# reference-evidence-whole-obligation-concordance-k343 — brief
 
 
 ## Goal
@@ -46,3 +46,34 @@ probe, provisioning/initialization, authority or pass. K344 still checks the com
 original k336/k331 boundary, reconciles final seven views/charters, freezes new whole
 membership and alone names its own Creator on existing k332 when k331 closes. No duplicate
 review/in-session reviewer; k332/every earned integration precede k269.
+
+## Decisions (running log)
+
+The original whole-conjunction audit exceeds one focused session. Separate three
+independently checkable design obligations: pre-tool selection/holder/descriptor consumer
+concordance; complete publication/trust-output/hosted-recovery concordance; and closing
+whole-original-duty/Safari/table/basis/read concordance. Preserve every original Goal,
+Context, Done when and prohibition above verbatim. This session completes only the first
+child. Later children must read and reconcile the complete conjunction, not treat a scoped
+child's checks as whole acceptance. No child freezes partial membership; k344 alone freezes
+the new whole membership after k343 actually closes. Existing k332 owns review, so no
+in-session reviewer or duplicate review is added. The initial jj change is empty. Tier 2
+index status is ready, but docs/scripts are excluded; direct exact document and committed
+subject reads are the evidence, with no claimed graph completeness or actual originals.
+
+## Decomposition
+
+reference-evidence-pretool-consumer-concordance-k345 owns original k321 R7/k328 F2,
+source-root/selection/holder/descriptor/lock/read/true-return first-consumer concordance
+and exact clean/correction definitions for that path. It completes only this session's
+slice. reference-evidence-publication-recovery-concordance-k346 owns the complete writer/
+receiver/trust-output/hosted-failure DAG and every current-stage/final archival join,
+source re-entry and positive never-started gate. Closing
+reference-evidence-whole-obligation-concordance-k347 re-derives ALL original findings and
+parent duties, Safari and whole table/basis/read associations against their conjunction,
+repairs exact supported defects, checks every original k343 condition and hands ready
+whole-freeze inputs to k344. Earlier scoped evidence supplies no whole acceptance.
+
+K344 alone performs the final new whole membership and complete k336/k331 close check;
+only its actually complete closing run names its own Creator on existing k332. These
+children add no review, implementation, partial membership, authority or qualification.
