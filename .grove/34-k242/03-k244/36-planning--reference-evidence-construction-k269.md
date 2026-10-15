@@ -37,6 +37,11 @@ inter-checkpoint disarm/close/revalidation entry under Antony's actual answer. K
 complete original k336/k331 boundary and froze the new whole
 reference-checkpoint-recovery-membership.json; existing k332 reviews it next. Consume only
 that whole result after review/every earned integration, never a slice.
+K332's review found two defects. K349 added k348 to the downstream amendment lists and made
+C say E3b runs only at a checkpoint; selection while a bracket already holds a batch is an
+owned gap. Design reference-evidence-open-bracket-selection-k350, its whole review k351 and
+every earned integration close it before this planner consumes the result. Do not plan
+successive or mixed inter-checkpoint batches from k349's text.
 
 K340 subsequently records Antony's "Accept the bounded endpoint (Recommended)": only the final-recorder/
 nonpublishing-outer-receiver terminal tail lacks a further durable original, at the explicit

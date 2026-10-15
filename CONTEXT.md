@@ -451,7 +451,8 @@ publications written outside CP01–CP05: disarm maintenance, distinct close and
 revalidation. The operator runs the source/OS method's mechanical identity checks without
 a trust judgment, then the same prelude gate with an anchored writer. The outputs stay
 provisional until the next checkpoint's source-rooted prelude verifies the root unchanged
-across the bracket. A wrong executable between checkpoints is caught only afterwards, at
+across the bracket. Selection while a bracket already holds a batch is not yet specified;
+design k350 owns it. A wrong executable between checkpoints is caught only afterwards, at
 a liveness cost; it never yields consumption, eligibility or LIVE. The
 [entry contract](docs/verification/application-reference-evidence.md#inter-checkpoint-publication-entry)
 owns its mechanics.

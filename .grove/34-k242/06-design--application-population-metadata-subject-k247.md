@@ -33,6 +33,13 @@ C's closed rows and froze the new whole reference-checkpoint-recovery-membership
 launch carried no provider evidence, so no Creator is written on existing k332. No closure
 or partial child supplies construction input.
 
+K332 reviewed the whole replacement; k349 integrates both findings. C now says E3b runs
+only at a checkpoint and marks selection while a bracket already holds a batch as an owned
+gap: design reference-evidence-open-bracket-selection-k350 and its whole review k351, with
+every earned integration, precede k269. The k245/k246/k247 amendment lists now include
+k348. The integration-only reference-checkpoint-recovery-integration-membership.json binds
+the current bytes; k344's membership stays historical. Nothing is qualified.
+
 R3's composed Safari walk and all actual prior answers/original duties/exclusions remain.
 K340 records Antony's "Accept the bounded endpoint (Recommended)": only the final-recorder/
 nonpublishing-outer-receiver terminal tail lacks a further durable original, at the explicit
@@ -56,7 +63,7 @@ unavailable evidence boundary. This child is the producer's closing session.
 ## Context
 
 Require the complete k331 replacement under k330's actual answers after k332 whole review/every earned integration,
-then the reviewed k269 plan, under actual k270/k281/k290/k295/k314/k319/k330/k340. K321 at 4304ad5f46d7
+then the reviewed k269 plan, under actual k270/k281/k290/k295/k314/k319/k330/k340/k348. K321 at 4304ad5f46d7
 reviewed k320 at 5fb818ab8125 as defective; k322 records its direct repairs; k328 finds the subsequent k323 protocol
 incomplete. K331 owns the replacement of recovery, pre-tool trust, launcher records,
 repeatable trust outputs and About meaning before planning.
@@ -77,7 +84,7 @@ k332 whole review and every earned integration remain before construction or acq
 Consume the complete reviewed checkpoint-recovery producer k331 and all actual k244
 qualification/CP01–CP04/original-duty close, k245 CP05/P/A frozen originals/independently
 verified derivatives/purposes, k246 recipes/generated discriminator, or exact retained
-failed/incomplete work. Compare all canonical actual k270/k281/k290/k295/k314/k319/k330/k340 amendments
+failed/incomplete work. Compare all canonical actual k270/k281/k290/k295/k314/k319/k330/k340/k348 amendments
 and original k242 Done when, never historical design/fragment identities or retired-leaf counts.
 
 Reconcile all current source/subject/family/runtime/private/acceptance evidence and complete

@@ -22,7 +22,11 @@ The source-rooted prelude/holder/descriptor path, complete publication/terminal 
 repeatable trust records and hosted recovery below specify the replacement mechanisms.
 K344 closes k336 and k331 at this complete documentary boundary and freezes the new whole
 [checkpoint-recovery membership](reference-checkpoint-recovery-membership.json); existing
-whole review k332 and every earned integration precede construction. These
+whole review k332 and every earned integration precede construction. K349's
+[integration of k332](application-reference-input-partition.md#k332-integration-and-open-bracket-repair)
+leaves selection within an already occupied bracket as an
+[owned gap](#inter-checkpoint-publication-entry) for design k350 and review k351 before
+construction. These
 specifications supply no executable mechanism, actual original or accepted construction identity.
 
 ## Ownership and alternatives
@@ -1935,7 +1939,7 @@ evidence precedes use; an absent/linked/replaced lock refuses rather than being 
 | Prelude anchor traversal | At `anchors/0`, then the exact immediate next unsigned-64 ordinal, read only `anchor.intent`, `bootstrap.accepted`, `anchor.result` and any conditional `failure.disposition` admitted by that slot's closed schema. No `trust-originals` child is opened until its exact earlier member plan is validated. Preserve complete original bytes/lengths/identities and predecessor equality. Present malformed/unfinalized/wrong-kind/torn/conflicting/unaccepted tail or ordinal exhaustion refuses; no wrap, argument-selected ordinal or old success fallback. |
 | Prelude supporting predecessors | From `validation-events/0` and `release-events/0`, follow only exact immediate successors and their closed intent/result/disposition members. Check each exact full predecessor, completed result, required earlier acknowledgment provenance and applicability. Cross-references must point backward to completed reachable outputs, except the separate later bootstrap validation of an earlier anchor result; verify that pair after reading both chains, without making either authorize its own production. Required revision/control/acceptance inputs are only exact earlier locators admitted by the selected schema and independent read plan, never arbitrary record-supplied paths. The complete-publication and repeatable-trust tables below are part of this closed read plan; an unsupported kind blocks. |
 | Prelude close traversal | From `closes/0` through every exact immediate successor, read only `close.intent`, `instrument.close`, `close.result` and conditional `failure.disposition`. Check the distinct close-only writer/capability, complete original CP03/audit/disarm/anchor/revision basis and actual publication/terminal join before CP04/P02. A failed/pending/stale close refuses; no generic earlier-locator rule, sealed-revision write or older close substitutes. |
-| Prelude selection | An immediate absent next slot is an actual admitted no-follow absence observation, not a list/scan. Retain its raw result and held parent. A reference beyond a gap refuses. Before ordinary selection, E3b classifies every inter-checkpoint batch since the previous checkpoint from its publication.intent/publication.terminal bindings, against this E1's held source-root identities and those retained in the previous checkpoint's cp01.source or trust.continuity; a batch that is not `BRACKET_VERIFIED` yields `SOURCE_REENTRY_REQUIRED` or a failed cut exactly as the [inter-checkpoint entry](#inter-checkpoint-publication-entry) directs, never ordinary use of its output. Select only the last reachable complete CP01-accepted anchor with its separate completed independent bootstrap-publication validation and applicable current durable disarm/correction basis. Any failed/unaccepted/unchecked reachable anchor tail leaves **no current anchor**. A later receipt/close failure is reported separately; selection does not manufacture a usable receipt/close/eligible basis. |
+| Prelude selection | An immediate absent next slot is an actual admitted no-follow absence observation, not a list/scan. Retain its raw result and held parent. A reference beyond a gap refuses. At a checkpoint, after Antony's own E1 and before ordinary selection, E3b classifies every inter-checkpoint batch since the previous checkpoint from its publication.intent/publication.terminal bindings, against this E1's held source-root identities and those retained in the previous checkpoint's cp01.source or trust.continuity; a batch that is not `BRACKET_VERIFIED` yields `SOURCE_REENTRY_REQUIRED` or a failed cut exactly as the [inter-checkpoint entry](#inter-checkpoint-publication-entry) directs, never ordinary use of its output. Between checkpoints E3b never runs; selection while the bracket already holds a batch is the entry's owned gap. Select only the last reachable complete CP01-accepted anchor with its separate completed independent bootstrap-publication validation and applicable current durable disarm/correction basis. Any failed/unaccepted/unchecked reachable anchor tail leaves **no current anchor**. A later receipt/close failure is reported separately; selection does not manufacture a usable receipt/close/eligible basis. |
 | Prelude publication/trust/revision traversal | Also read `publication-events/n/{publication.intent,publication.record,failure.disposition}`, `trust-events/n/{trust.intent,trust.record,failure.disposition}` and `revisions/n/{revision.intent,revision.payload,failure.disposition}` from 0 through exact immediate successors. Decode only the complete-publication/repeatable-trust closed kinds, full predecessor/owner/member/phase/terminal-origin joins and actual absent-next results. Current retained-content validation supplies no omitted past final-recorder terminal fact. Known failed/partial/unaccepted tails block affected use; only exact intact-anchor recovery context survives where allowed. No new path, scan, parser or historical-terminal inference. |
 | Prelude holder gate | From that exact anchor's closed `trust-originals` plan, open the independent original holder and actual executable copy plus every required holder runtime/read member, original first then copy. Check the complete member set, approved parent/component identities and full byte/length equality in both directions using the fixed retained `/usr/bin/cmp` primitive described below. Recheck named/held identities and required original artifact/runtime evidence before holder launch. After spawn, independently obtain that actual peer's required current image facts before releasing its plan/first opens; do not pretend its future process was observed before it existed. No engine, holder copy or candidate entry runs to certify this gate. |
 | Holder then short entry | Only after the gate succeeds, launch the exact checked holder copy with the closed read-only descriptor plan. It checks entry/runtime original/copy pairs before entry execution and opens the remaining ready artifact/runtime/read pairs. The entry receives checked streams, compares complete members/bytes/lengths and exposes only a ready comparison result. Engine/display/registrar execution waits for these checks and required independent current peer/image correspondence. |
@@ -2172,6 +2176,22 @@ or a failed/partial/unaccepted reachable tail refuses before any write. Kind sel
   newer than that generation, a finalized closes tail and an absent next slot;
 - revalidation needs the finalized CP02 recovery disposition, the complete initializer
   terminal/staged/exposure originals and the unchanged issuance that disposition names.
+
+This E3 is ordinary selection without E3b, which needs Antony's E1 and runs only at the
+next checkpoint.
+
+**Not yet specified: a bracket that already holds a batch.** How this gate treats an
+earlier batch of the same open bracket is unspecified. The durable-disarm rule requires a
+fresh disarm for every correction, so successive batches are needed, yet that earlier
+batch is provisional and unaccepted, and only the next checkpoint's E3b may classify it.
+Predecessor admissibility (including disposed slots), chain identity and kind interleaving
+across the shared publication-events chain, cut extent and one host per cut, the record
+that keeps each checkpoint visit's root identity and classifications when it writes neither
+cp01.source nor trust.continuity, and a non-circular selection order are owned by design
+reference-evidence-open-bracket-selection-k350 and its whole review k351, both before k269.
+Until then, construction implements neither admission nor refusal of such an invocation.
+The [k332 integration](application-reference-input-partition.md#k332-integration-and-open-bracket-repair)
+records why.
 
 E4–E8 then run unchanged. The anchored member set includes each kind's writer, so it is
 compared before its first run. No engine, display or registrar runs. With no human act,

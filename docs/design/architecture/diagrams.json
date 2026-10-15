@@ -2,46 +2,16 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
   "discussion": {
-    "title": "Whole checkpoint-recovery closure",
-    "status": "Closed by k344 (documentary); whole review k332 next",
-    "summary": "K344 closes k336 and k331: the checkpoint-recovery replacement (pre-tool selection and holder trust, launcher/publication originals, repeatable trust records, hosted recovery and k348's bracketed inter-checkpoint entry) is one complete documentary design under only Antony's actual amendments. The closure check found one precise gap: k348 said each inter-checkpoint batch binds its kind, the operator's E1i identity observation and the E8 result, and that E3b compares root identities retained by cp01.source or trust.continuity, but C's closed record rows named none of these. C now names them in publication.intent, cp01.source, trust.continuity and the prelude selection row; no mechanism, kind family, authority or checkpoint is added. The new whole checkpoint-recovery membership binds every E0–E12/E1i/E3b, U0–U7 and H0–H3/HX node, closed record kind, failed-cut route and null original. Existing whole review k332 and every earned integration precede k269. The closing launch carried no provider evidence, so no Creator is written. Actual originals, controls and authority remain absent; pass unused and both holds remain.",
+    "title": "K332 review integration",
+    "status": "Integrated by k349 (documentary); design k350 and review k351 before k269",
+    "summary": "K332 reviewed the whole k331 checkpoint-recovery replacement and found two defects. G1 is real: k344's closure placed E3b, which exists only after Antony's E1 at a checkpoint, before every ordinary selection, while the inter-checkpoint gate reuses that selection. Every correction needs a fresh disarm, so successive batches between checkpoints are required, but their selection was contradictory. K349 drafted an open-bracket repair; its one adversarial check found seven defects, including the shared publication-events chain, disposed predecessors, hosting a mixed-kind cut and the starting record at a repeated CP01. That is redesign, so C now says only that E3b runs at a checkpoint, never between, and marks selection within an already occupied bracket as an owned gap. Design k350 and its whole review k351, with every earned integration, precede k269. G2 is repaired: the k245/k246/k247 amendment lists now include k348. The integration-only membership candidate binds the current bytes; k344's membership stays historical. Actual originals, controls and authority remain absent; pass unused and both holds remain.",
     "diagramIds": [
-      "native-reference-proof",
-      "native-reference-admission",
-      "native-reference-evidence",
-      "native-reference-packaging",
-      "native-reference-contact",
-      "native-reference-instrument",
-      "native-population-metadata-shape"
+      "native-reference-proof"
     ],
     "updatedDiagrams": [
       {
         "id": "native-reference-proof",
-        "summary": "Shows E3b reading each batch's intent kind, E1i observation and E8 result, and replaces the pending freeze with the closed k331 boundary before k332."
-      },
-      {
-        "id": "native-reference-admission",
-        "summary": "Updates the boundary node: k344 froze the membership and closed k331."
-      },
-      {
-        "id": "native-reference-evidence",
-        "summary": "Updates the status line to the closed k331 boundary and frozen membership."
-      },
-      {
-        "id": "native-reference-packaging",
-        "summary": "Updates the start and final status lines to the frozen membership before k332."
-      },
-      {
-        "id": "native-reference-contact",
-        "summary": "Updates the status line; R3's composed Safari order is unchanged."
-      },
-      {
-        "id": "native-reference-instrument",
-        "summary": "Updates the start status line to the closed k331 boundary."
-      },
-      {
-        "id": "native-population-metadata-shape",
-        "summary": "Updates the contract status line to the closed k331 boundary."
+        "summary": "Marks the gate as running no E3b, shows the occupied-bracket owned gap and the k350 → k351 → k269 order."
       }
     ]
   },
@@ -150,7 +120,7 @@
       "renderer": "svg",
       "source": "native-reference-proof.d2",
       "rendered": "native-reference-proof.svg",
-      "caption": "Scoped k345 concordance of original k321 R7/k328 F2, not whole k343/k331 acceptance. A source/OS-trusted original prelude selects closed chains and compares the actual holder copy before launch. Each spawned holder/entry/consumer receives enabling input only after required independent current peer/image facts. Serial fd pairs, complete EOF/reap/generation/offset results and ENTRY_SEAL precede consumers; originals survive the whole foreground true return. CP05's reverse exclusive release/shared reacquisition is non-atomic: exact finalized successors, complete chains, held inputs and same peers/endpoint must revalidate before Task; remaining fresh P checks precede intent. The explicit C/P control isolates a changed gap with all earlier gates valid. K347's whole concordance names every CP02–CP05 trust/publication anchor member checked before its first run. Antony selected k348's bracketed entry for the three inter-checkpoint publications (disarm, distinct close, receipt revalidation). The operator runs the source/OS method's mechanical identity check (E1i) without a trust judgment, then the same gate with an anchored writer. The batch stays provisional until the next checkpoint's E3b finds the root unchanged across the bracket; a wrong executable between checkpoints costs liveness only. K344 closed whole k336/k331 and froze the new membership, naming each batch's kind, E1i observation and E8 result in C's closed publication.intent row and the root identities in cp01.source/trust.continuity; existing k332/every integration precede k269. All actual originals/controls remain unacquired; no equality, absence or graph supplies history, authority or qualification. Selected k330/k340 limits, unused pass, downstream duties and both holds remain."
+      "caption": "Scoped k345 concordance of original k321 R7/k328 F2, not whole k343/k331 acceptance. A source/OS-trusted original prelude selects closed chains and compares the actual holder copy before launch. Each spawned holder/entry/consumer receives enabling input only after required independent current peer/image facts. Serial fd pairs, complete EOF/reap/generation/offset results and ENTRY_SEAL precede consumers; originals survive the whole foreground true return. CP05's reverse exclusive release/shared reacquisition is non-atomic: exact finalized successors, complete chains, held inputs and same peers/endpoint must revalidate before Task; remaining fresh P checks precede intent. The explicit C/P control isolates a changed gap with all earlier gates valid. K347's whole concordance names every CP02–CP05 trust/publication anchor member checked before its first run. Antony selected k348's bracketed entry for the three inter-checkpoint publications (disarm, distinct close, receipt revalidation). The operator runs the source/OS method's mechanical identity check (E1i) without a trust judgment, then the same gate with an anchored writer. The batch stays provisional until the next checkpoint's E3b finds the root unchanged across the bracket; a wrong executable between checkpoints costs liveness only. K344 closed whole k336/k331 and froze the new membership, naming each batch's kind, E1i observation and E8 result in C's closed publication.intent row and the root identities in cp01.source/trust.continuity; k332 reviewed it and k349 integrated both findings: E3b runs only at a checkpoint, and selection while a bracket already holds a batch is an owned gap for design k350 and whole review k351, which with every earned integration precede k269. All actual originals/controls remain unacquired; no equality, absence or graph supplies history, authority or qualification. Selected k330/k340 limits, unused pass, downstream duties and both holds remain."
     },
     {
       "id": "native-population-metadata-shape",

@@ -33,6 +33,13 @@ C's closed rows and froze the new whole reference-checkpoint-recovery-membership
 launch carried no provider evidence, so no Creator is written on existing k332. No closure
 or partial child supplies construction input.
 
+K332 reviewed the whole replacement; k349 integrates both findings. C now says E3b runs
+only at a checkpoint and marks selection while a bracket already holds a batch as an owned
+gap: design reference-evidence-open-bracket-selection-k350 and its whole review k351, with
+every earned integration, precede k269. The k245/k246/k247 amendment lists now include
+k348. The integration-only reference-checkpoint-recovery-integration-membership.json binds
+the current bytes; k344's membership stays historical. Nothing is qualified.
+
 R3's composed Safari walk and all actual prior answers/original duties/exclusions remain.
 K340 subsequently records Antony's "Accept the bounded endpoint (Recommended)": only
 the final-recorder/nonpublishing-outer-receiver terminal tail stops without a further

@@ -17,8 +17,9 @@ launcher-record, About-key and repeatable-trust-output defects. The
 classifies every finding. K330's two bounded human decisions are recorded below.
 Replacement producer k331 is now closed. K344's [whole checkpoint-recovery closure](#whole-checkpoint-recovery-closure)
 checks every original k331/k336/k344 condition against the complete artifact and freezes
-the new [whole membership](reference-checkpoint-recovery-membership.json). Mandatory whole
-review k332 and every earned integration remain required before k269.
+the new [whole membership](reference-checkpoint-recovery-membership.json). Whole review
+k332 found two defects; [k349's integration](#k332-integration-and-open-bracket-repair)
+repairs one and places the other's redesign in k350 with whole review k351, both before k269.
 K333 specifies the
 [source-rooted prelude, holder gate and descriptor handoff](application-reference-evidence.md#independent-stream-holder-and-continuity-anchor).
 K337 specifies the [publisher-terminal original prefix](#launcher-original-publication-slice);
@@ -49,6 +50,83 @@ waive no named required failure and establish no no-contact fact. K244/k242 rema
 k245 retains the one unused pass, k246 complete rewrite/helper/alias discrimination and
 k247 whole-subject/family review or precise incomplete work. Full useful breadth,
 additive supported-VM/native duties, private ineligibility and both holds remain.
+
+## K332 integration and open-bracket repair
+
+K332 reviewed the whole k331 replacement at 2d927a83725e and recorded two findings in its
+own commit e398d7df2b0a. K349 re-derived both against the unchanged sources. This is
+unconsumed reporting: the rules live in C, K, P and S, and nothing here is an original,
+an executed control, authority or construction input.
+
+### Findings and classification
+
+| Finding | Classification and disposition |
+| --- | --- |
+| G1: successive provisional publications have no consistent selection contract | **Real, and it needs redesign rather than repair.** K344's closure placed E3b, which exists only after Antony's E1 at a checkpoint, before every ordinary selection, while the inter-checkpoint gate reuses ordinary selection and refuses any unaccepted reachable tail. C's durable-disarm rule requires a fresh successor disarm before every change, correction or unchanged-input requalification, so more than one maintenance batch between two checkpoints is the ordinary correction path. C now says only what is unambiguous: E3b never runs between checkpoints. An explicit owned gap replaces the contradiction, and design k350 with whole review k351 own the redesign before k269. |
+| G2: k245/k246/k247 amendment lists exclude k348 | **Real, repaired.** Six current Context list occurrences, two per charter, said "only" k270…k340 while S's comparison includes k348. Each now includes k348. Lists ending at k340 inside this report's k347, k342 and k335 session sections were written before k348 existed; they and k336's closed brief stay as historical records. |
+
+### Why G1 left this integration
+
+K349 first drafted a repair. Between checkpoints, an open-bracket check within E3 admitted
+each earlier finalized, completely joined batch bound to the same anchor and revision as
+`BRACKET_OPEN`, with no root comparison, record or acceptance. Only disarm could take such a
+predecessor, close and revalidation ran once per bracket, and the next checkpoint's E3b
+verified batches in chain order. This leaf's one narrow adversarial check of that draft found
+seven defects. Each was re-derived against C:
+
+| Check finding | Classification |
+| --- | --- |
+| F1 — the predecessor rule had no case for a slot a checkpoint already disposed of, so a fresh disarm after a hosted disposition could never verify | Valid |
+| F2 — every batch also appends to the shared publication-events chain, so "same-chain" was undefined and a bracket mixing kinds had no cut extent or host; hosting each kind separately can deadlock (CP02 waiting on CP03) | Valid; decisive |
+| F3 — a repeated CP01 visit without ROOT writes neither cp01.source nor trust.continuity, so the bracket's starting root identity has no record | Valid; it predates k349 |
+| F4 — C's accepted limit says a substituted executable's writes are refused at the next checkpoint, but a deliberately forging same-UID substitute passes E3b, which S keeps as the cooperative limit | A contract stated unclearly; it predates k349, and any change to S's sentence is Antony's |
+| F5 — validation-events holds both bootstrap validation and revalidation batches, so anchor selection and a check against the selected anchor were circular | Valid |
+| F6 — a "no identity comparison between checkpoints" rule contradicted E1i itself | Valid; wording |
+| F7 — no host rule for a multi-batch cut | Valid; coupled to F2 |
+
+Together they show that G1 is real but that the bracket's multi-batch semantics need to be
+designed: predecessor admissibility, chain identity and interleaving, cut extent and
+hosting, the starting record and selection order. That is redesign. Grove forbids leaving an
+unreviewed, known-incomplete redesign in the normative contract under an integration leaf.
+The draft was therefore withdrawn, and its re-review need became the mandatory whole
+review k351. K350's charter carries the draft and every finding as specific doubts.
+
+No ADR is warranted: the clarification and G2 are reversible pre-provisioning documentary
+repairs that fail the hard-to-reverse AND surprising AND real-trade-off test.
+
+### Original duties
+
+K349's charter is met at its integration boundary. Both findings are classified, G2 is
+repaired, and the G1 redesign is externalized with its whole review before k269. No unchanged
+duty or selected amendment changes. S's selected sections and comparison and the descriptor
+ADR are byte-identical. Every original Goal and Done when is unchanged, and no historical
+manifest, packet or table changes. Every required original stays null: R3's physical Safari
+walk, k330 About provenance, k340's endpoint, the never-started predicates, distinct-close
+ownership, offline-only post-consumption correction, the unused pass, full k246/k247 and both
+holds.
+
+### Changes in this integration
+
+- C's [prelude selection row](application-reference-evidence.md#closed-pre-tool-reads-and-deterministic-selection), [inter-checkpoint entry](application-reference-evidence.md#inter-checkpoint-publication-entry) and [review integration](application-reference-evidence.md#review-integration-and-required-decisions) — E3b only at a checkpoint, the owned gap and a pointer here.
+- The root, k242, k244, k245, k246, k247 and k269 charters — The outcome, and G2's six amendment-list occurrences.
+- CONTEXT's Reference inter-checkpoint entry — Notes the owned gap and its owner.
+- New design reference-evidence-open-bracket-selection-k350 and its whole review k351, before k269.
+- The [checkpoint continuity view](../design/architecture/index.html#diagram-native-reference-proof), its caption, the discussion and README — The owned gap and the new order.
+- The integration-only [membership candidate](reference-checkpoint-recovery-integration-membership.json).
+
+These are reversible pre-provisioning documentary changes. Nothing has been consumed, so
+no requalification is triggered.
+
+### Integration membership
+
+[reference-checkpoint-recovery-integration-membership.json](reference-checkpoint-recovery-integration-membership.json)
+is frozen after every edit above. It keeps k344's structure and preserved sets, recomputes
+each current identity, and adds k344's [whole membership](reference-checkpoint-recovery-membership.json)
+to the historical memberships with its exact bytes. It also records the G1/G2 dispositions,
+the owned gap and the new live order. Like k329's candidate, it identifies saved current
+inputs only and accepts nothing; k350's closure freezes the next whole membership. It binds
+this report at final bytes, so the measured outcome is recorded in k349's running log and
+commit message, not here.
 
 ## Whole checkpoint-recovery closure
 

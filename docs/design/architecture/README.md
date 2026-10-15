@@ -8,27 +8,25 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-Open [the whole-closure discussion](index.html#discussion) or
+Open [the integration discussion](index.html#discussion) or
 [Checkpoint continuity → Select and check before candidate tools](index.html#diagram-native-reference-proof).
-K344 closes k336 and k331: the checkpoint-recovery replacement is one complete documentary
-design under only Antony's actual amendments. Its closure check found one precise gap.
-K348's bracketed entry said each inter-checkpoint batch binds its kind, the operator's
-identity observation and the comparison result, and that the next checkpoint compares root
-identities retained by cp01.source or trust.continuity, but C's closed record rows named
-none of these. C now names them, adding no mechanism, authority or checkpoint. The new whole
-[checkpoint-recovery membership](../../verification/reference-checkpoint-recovery-membership.json)
-binds every node, closed record kind, failed-cut route and null original.
+K332 reviewed the whole k331 checkpoint-recovery replacement and found two defects; k349
+integrated both. G1 is real: k344's closure placed E3b, which exists only after Antony's E1
+at a checkpoint, before every ordinary selection, while the inter-checkpoint gate reuses
+that selection. Every correction needs a fresh disarm, so successive batches between
+checkpoints are required. K349's drafted open-bracket repair failed its adversarial check
+on seven counts, including the shared publication-events chain, disposed predecessors,
+hosting a mixed-kind cut and the starting record at a repeated CP01. That is redesign, so C
+now says only that E3b runs at a checkpoint and marks selection within an already occupied
+bracket as an owned gap. G2 is repaired: the k245/k246/k247 amendment lists include k348.
 
-- [Checkpoint continuity → Select and check before candidate tools](index.html#diagram-native-reference-proof) — Shows E3b reading each batch's intent kind, E1i observation and E8 result, and the closed boundary before k332.
-- [Recovery → Host the disposition before its successor](index.html#diagram-native-reference-admission) — Updates the boundary node: k344 froze the membership and closed k331.
-- [Evidence](index.html#diagram-native-reference-evidence), [Packaging](index.html#diagram-native-reference-packaging), [Contact](index.html#diagram-native-reference-contact), [Components](index.html#diagram-native-reference-instrument) and [Population](index.html#diagram-native-population-metadata-shape) — Update only their status lines to the closed boundary.
-- [Whole checkpoint-recovery closure (report)](../../verification/application-reference-input-partition.md#whole-checkpoint-recovery-closure) — Checks every original k331/k336/k344 condition, records the repair and describes the membership.
-- [Complete publication and terminal join (C)](../../verification/application-reference-evidence.md#complete-publication-and-terminal-join) — Names the inter-checkpoint kind, E1i observation and E8 result in publication.intent's closed payload.
-- [Repeatable trust records and selection (C)](../../verification/application-reference-evidence.md#repeatable-trust-records-and-selection) — Names the held source-root identities in cp01.source and trust.continuity, and the E3b classifications in trust.continuity.
-- [Closed pre-tool reads and deterministic selection (C)](../../verification/application-reference-evidence.md#closed-pre-tool-reads-and-deterministic-selection) — Places E3b classification before ordinary selection.
+- [Checkpoint continuity → Select and check before candidate tools](index.html#diagram-native-reference-proof) — Marks the gate as running no E3b, shows the owned gap and the k350 → k351 → k269 order.
+- [K332 integration and open-bracket repair (report)](../../verification/application-reference-input-partition.md#k332-integration-and-open-bracket-repair) — Classifies both findings and all seven check findings, and lists every change.
+- [Inter-checkpoint publication entry (C)](../../verification/application-reference-evidence.md#inter-checkpoint-publication-entry) — States the owned gap and its owners.
 
-Existing whole review k332 and every earned integration precede k269. The closing launch
-carried no provider evidence, so no Creator line is written on k332. No actual original,
+Design k350 and its whole review k351, with every earned integration, precede k269. The
+integration-only [membership candidate](../../verification/reference-checkpoint-recovery-integration-membership.json)
+binds the current bytes and k344's whole membership stays historical. No actual original,
 control, authority or construction handoff follows; pass unused and both holds remain.
 
 ## Inter-checkpoint entry context
