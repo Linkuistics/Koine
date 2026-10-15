@@ -20,8 +20,9 @@ checks every original k331/k336/k344 condition against the complete artifact and
 the new [whole membership](reference-checkpoint-recovery-membership.json). Whole review
 k332 found two defects; [k349's integration](#k332-integration-and-open-bracket-repair)
 repaired one and placed the other's redesign in k350. K350 specifies
-[open-bracket selection](#open-bracket-selection) and freezes its whole membership; whole
-review k351 and every earned integration precede k269.
+[open-bracket selection](#open-bracket-selection) and freezes its whole membership. Whole
+review k351 found four defects; [k352's integration](#k351-integration-and-open-bracket-repairs)
+repairs three and places batch association in design k353 and whole review k354, before k269.
 K333 specifies the
 [source-rooted prelude, holder gate and descriptor handoff](application-reference-evidence.md#independent-stream-holder-and-continuity-anchor).
 K337 specifies the [publisher-terminal original prefix](#launcher-original-publication-slice);
@@ -52,6 +53,88 @@ waive no named required failure and establish no no-contact fact. K244/k242 rema
 k245 retains the one unused pass, k246 complete rewrite/helper/alias discrimination and
 k247 whole-subject/family review or precise incomplete work. Full useful breadth,
 additive supported-VM/native duties, private ineligibility and both holds remain.
+
+## K351 integration and open-bracket repairs
+
+K351 reviewed k350's open-bracket design at 0150fea96112 and recorded four findings in its
+own commit a42632d07c4e. K352 re-derived each against the unchanged sources. This is
+unconsumed reporting: the rules live in C, K, P and S, and nothing here is an original, an
+executed control, authority or construction input.
+
+### K351 findings and classification
+
+| Finding | Classification and disposition |
+| --- | --- |
+| G1: the slot-based batch partition does not cover pre-intent publication | **Real, and it needs design rather than repair.** The seed `release-events/0` is finalized before any publication.intent exists, yet it is the first maintenance disarm's release predecessor. A hosted disposition is written by a checkpoint batch into a slot whose immutable intent binds the failed batch, and the carrier prefix writes it before the host's own intent. "Slots whose intents bind the publication.intent" covers neither, so "disposed inside a checkpoint batch" has no association to read. C now states this as an explicit owned gap; design k353 with whole review k354 own it before k269. |
+| G2: the identity-comparison prohibition also rejects the required entry gate | **A contract stated unclearly; repaired.** E4–E8 run unchanged between checkpoints and compare original/copy, named/held, predecessor and current peer/image identities. C, K, P, this report and the membership now forbid only the deferred cross-checkpoint source-root comparison and any E3b verdict, and keep the gate's own comparisons. |
+| G3: the new recovery routes put disposition writes before their human act | **Real; repaired.** H1 is Antony's direct act and H2 is the disposition, ordinary or carrier prefix; C starts the prefix only after the host's act. The [correction table](#bracket-graph-definitions) and the membership's routes now read H0 → H1 → H2 (prefix for both tails, ordinary envelope, complete archival join) → H3. |
+| G4: the whole membership still carries the superseded single-batch host route | **Real; repaired in the new membership.** The `host_bracket` route described the per-kind host and single-batch cut that C's host table no longer states. The integration membership carries the one-cut, earliest-host rule with its CP01 source override; k350's membership keeps its reviewed bytes. |
+
+### Why k351's G1 left this integration
+
+K352 first drafted a repair: a slot's immutable origin batch (the batch whose
+publication.intent its intent binds, with the seed in the batch at publication-events/0)
+versus a disposition's disposing batch (the hosted checkpoint batch whose intent names it).
+This leaf's one narrow adversarial check of that draft found seven defects, each re-derived
+against C:
+
+| Check finding | Classification |
+| --- | --- |
+| R1 — when the first publication.intent fails, the repeated-CP01 host's intent lands at /1 and binds the seed, so batch 0 is no checkpoint batch | Valid |
+| R2 — reserved, empty or partial slots bind nothing and escape the cut; a batch whose own publication.intent is partial has no rule for its cut or host | Valid; decisive |
+| R3 — a batch's own publication slot binds the previous slot, so its origin is ambiguous and breaks first-successor admissibility | Valid |
+| R4 — a later disposition is counted in two batches, and "the terminal retains exactly those" over-claims | Valid |
+| R5 — the association used a failed-cut manifest the publication.intent row lacks and conflated ready-act and invocation nonces | Valid |
+| R6 — "the cut always ends at both tails" over-claims when a batch failed before its launcher slot | Valid; it predates k352 |
+| R7 — other pre-intent reservations have no stated batch association | Valid |
+
+Together they show that batch membership needs to be designed: partial and reserved slots,
+unfinalized intents and their host, pre-intent reservations, member and terminal-retention
+rules and the exact disposition association. A corrected draft would need a second review,
+which this integration cannot spend, and Grove forbids leaving an unreviewed, known-incomplete
+redesign in the normative contract under an integration leaf. The draft was withdrawn;
+k353's charter carries it and every check finding as specific doubts.
+
+No ADR is warranted: these reversible pre-provisioning documentary repairs fail the
+hard-to-reverse AND surprising AND real-trade-off test.
+
+### K352 original duties
+
+K352's charter is met at its integration boundary. Every finding is classified with
+source-grounded reasons; G2–G4 are repaired and their normative, consumer, report and view
+layers agree; G1's substantive redesign is externalized with its whole review before k269.
+S's selected sections and comparison and the descriptor ADR are byte-identical. Every
+original Goal and Done when is unchanged, and no historical membership, manifest, packet or
+table changes. Every required original stays null: R3's physical Safari walk, k330 About
+provenance, k340's endpoint, the never-started predicates, distinct-close ownership,
+offline-only post-consumption correction, the unused pass, full k246/k247 and both holds.
+
+### Changes in k352
+
+- [C, Selection within an open bracket](application-reference-evidence.md#selection-within-an-open-bracket) — The owned batch-association gap, the scoped between-checkpoint comparison and its control pair.
+- C's [review integration](application-reference-evidence.md#review-integration-and-required-decisions) — Status.
+- [K, Inter-checkpoint entry controls](application-reference-contact-boundary.md#inter-checkpoint-entry-controls-before-trust-use) and [P's open-bracket row](application-reference-packaging-runtime.md#release-and-acceptance-controls) — The scoped comparison.
+- This report — This section, the status paragraph, F6 and the two corrected routes in [Open-bracket selection](#open-bracket-selection).
+- CONTEXT — The current membership pointer and the owned gap.
+- New design reference-evidence-batch-association-k353 and its whole review k354, before k269.
+- The root, k242, k244, k245, k246, k247 and k269 charters — The outcome.
+- The [checkpoint continuity view](../design/architecture/index.html#diagram-native-reference-proof), its caption, the discussion and README — The scoped comparison, the host-act order, the gap and status.
+- The [integration membership](reference-open-bracket-selection-integration-membership.json).
+
+These are reversible pre-provisioning documentary changes. Nothing has been consumed, so no
+requalification is triggered.
+
+### K352 integration membership
+
+[reference-open-bracket-selection-integration-membership.json](reference-open-bracket-selection-integration-membership.json)
+is frozen after every edit above. It keeps k350's structure and preserved sets, recomputes
+each current identity and extract, and adds k350's
+[whole membership](reference-open-bracket-selection-membership.json) to the historical
+memberships with its exact bytes. It records the G1–G4 dispositions, the owned gap, the
+scoped comparison, the corrected `host_bracket`, root-break and first-failure routes and the
+new live order. It identifies saved current inputs only and accepts nothing; k353's closure
+freezes the next whole membership. It binds this report at final bytes, so the measured
+outcome is recorded in k352's running log and commit message, not here.
 
 ## Open-bracket selection
 
@@ -93,7 +176,7 @@ its adversarial check found seven defects. The design answers them with five rul
 | F3 — the bracket's starting record | **Valid; predates k349.** Neither cp01.source nor trust.continuity exists at every visit, and cp01.source never carried classifications. The checkpoint batch's own publication.intent does, since every write at a visit is inside a publication invocation. cp01.source and trust.continuity remain copies that must equal it. |
 | F4 — accepted-limit wording | **A contract stated unclearly in C.** S's selected text already scopes "refused at the next checkpoint" to wrong or substituted executables and keeps deliberate same-UID bypass and mutate/restore as the cooperative limit. C now says an accidental wrong run fails E3b while a forging same-UID run or a mutate/restore can pass. S is byte-identical and nothing goes to Antony. |
 | F5 — selection order | **Valid.** Anchor selection reads only anchors and bootstrap-validation slots, and checks anchor applicability against the anchor's own bound basis outside the open bracket. A revalidation never enters it, and E3b's binding check follows it. |
-| F6 — E1i wording | **Valid; wording.** Between checkpoints the only identity comparison is E1i's own check against the supplier's independent record. No step compares with the base intent, cp01.source, trust.continuity or another batch, and none produces a classification. |
+| F6 — E1i wording | **Valid; wording.** The forbidden comparison is the deferred cross-checkpoint source-root comparison: no step between checkpoints compares an E1i observation or E8 result with the base intent, cp01.source, trust.continuity or another batch, and none produces an E3b verdict. Source-root originals are checked only by E1i; the gate's own E4–E8 and predecessor comparisons run unchanged, as k352 repaired. |
 | F7 — no host rule for a multi-batch cut | **Valid; coupled to F2.** One host, the earliest kind host, disposes the whole cut. The reason is below. |
 
 S's "since the previous checkpoint" is read as the previous visit that retained its
@@ -151,8 +234,8 @@ Clean edges for a bracket of n batches:
 | --- | --- |
 | Predecessor partial, undisposed after a recorded failure, or used outside the table | Refuse before any write; the condition is resolved at its host, then a new invocation. C's predecessor pair; P's open-bracket row. |
 | Kind not admitted at its position | Refuse before any write. C's interleaving pair. A batch that bypassed it fails E3b at its position. |
-| Root break | Whole open bracket → repeated CP01 SOURCE/ARTIFACTS → carrier prefix for the two tails → H1 → H2 → H3 → fresh successors under the new anchor. C's root-change pair; K's entry controls. |
-| First failing batch with intact root | That batch and every later one → earliest kind host → carrier prefix and ordinary envelope → H1 → H2 → H3. Earlier batches stay verified; trust consumers stay put. C's suffix and mixed-cut pairs. |
+| Root break | Whole open bracket → repeated CP01 SOURCE/ARTIFACTS → H0 complete ready cut and comparison → H1 → H2: carrier prefix for the two tails, ordinary envelope for every other cut slot, complete archival join → H3 → fresh successors under the new anchor. C's root-change pair; K's entry controls. |
+| First failing batch with intact root | That batch and every later one → earliest kind host → H0 complete ready cut and comparison → H1 → H2: carrier prefix for the two tails, ordinary envelope for every other cut slot, complete archival join → H3. Earlier batches stay verified; trust consumers stay put. C's suffix and mixed-cut pairs. |
 | Visit that is not the host | Refuse before any write; the bracket stays open. C's mixed-cut pair. |
 | Host batch's dispositions incomplete | The recorded cut binds every later visit until disposed; a failed disposition reaches HX. C's host table. |
 | Missing or differing BR, or a comparison against a copy | Failed join at E3b. C's record pair. |

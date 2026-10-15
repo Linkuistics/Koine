@@ -38,9 +38,14 @@ k245/k246/k247 amendment lists and externalized the occupied-bracket redesign. K
 specifies selection within an open bracket in C: batches ordered on the shared publication
 chain, a bracket record in each checkpoint batch's publication.intent, a fixed non-circular
 order, an admission table, and one suffix cut with one host. Its whole review
-reference-evidence-open-bracket-selection-k351, with every earned integration, precedes
-k269. reference-open-bracket-selection-membership.json binds the current bytes; k344's and
-k349's memberships stay historical. Nothing is qualified.
+reference-evidence-open-bracket-selection-k351 found four defects. Integration k352 defers
+only the cross-checkpoint root comparison between checkpoints, runs recovery routes host act
+before disposition and keeps one cut with one earliest host;
+reference-open-bracket-selection-integration-membership.json binds the current bytes and
+k344's, k349's and k350's memberships stay historical. Batch association for the pre-intent
+seed, hosted dispositions and partial slots is an owned gap in C: design
+reference-evidence-batch-association-k353 and its whole review k354 precede k269. Nothing is
+qualified.
 
 R3's composed Safari walk and all actual prior answers/original duties/exclusions remain.
 K340 subsequently records Antony's "Accept the bounded endpoint (Recommended)": only

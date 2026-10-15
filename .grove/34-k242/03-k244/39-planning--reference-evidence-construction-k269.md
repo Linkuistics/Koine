@@ -42,8 +42,14 @@ C say E3b runs only at a checkpoint. Design reference-evidence-open-bracket-sele
 specified selection within an open bracket in C (shared-chain batches, the bracket record in
 each checkpoint batch's publication.intent, fixed selection order, admission table, one
 suffix cut with one host) and froze reference-open-bracket-selection-membership.json. Its
-whole review k351 and every earned integration precede this planner. Plan successive or
-mixed inter-checkpoint batches only from that reviewed contract, never from k349's text.
+whole review k351 found four defects; integration k352 repaired three (the scoped
+between-checkpoint comparison, host-act-first routes and the whole-cut host route), froze
+reference-open-bracket-selection-integration-membership.json and left batch association for
+the pre-intent seed, hosted dispositions and partial slots as an owned gap in C. Design
+reference-evidence-batch-association-k353 and its whole review k354, with every earned
+integration, precede this planner. Plan successive or mixed inter-checkpoint batches only
+from that reviewed contract, never from k349's text, k352's withdrawn draft or k350's
+unintegrated membership.
 
 K340 subsequently records Antony's "Accept the bounded endpoint (Recommended)": only the final-recorder/
 nonpublishing-outer-receiver terminal tail lacks a further durable original, at the explicit

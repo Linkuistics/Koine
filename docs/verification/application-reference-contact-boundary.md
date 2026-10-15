@@ -146,8 +146,9 @@ trust.continuity, refuses at E3b. Anchor selection must ignore an open revalidat
 failed earlier batch carries every later batch into one cut; a verified later batch, a
 partial disposal or a second host refuses. A mixed disarm/revalidation cut is hosted once
 at repeated CP02 while the disarm's acceptance stays at CP03, and a root change across
-several batches makes them one CP01 cut. Between checkpoints, any identity comparison
-beyond E1i's own, or any written classification, refuses.
+several batches makes them one CP01 cut. Between checkpoints the full E4–E8 gate runs with
+its own comparisons; comparing an E1i observation or E8 result with the base intent,
+cp01.source, trust.continuity or another batch, or writing any E3b verdict, refuses.
 
 ## Independent source baseline
 

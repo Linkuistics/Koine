@@ -26,8 +26,13 @@ whole review k332 and every earned integration precede construction. K349's
 [integration of k332](application-reference-input-partition.md#k332-integration-and-open-bracket-repair)
 left selection within an already occupied bracket to design k350, which now specifies
 [selection within an open bracket](#selection-within-an-open-bracket) and freezes the
-[open-bracket membership](reference-open-bracket-selection-membership.json); its whole
-review k351 and every earned integration precede construction. These
+[open-bracket membership](reference-open-bracket-selection-membership.json). Whole review
+k351 found four defects. K352's
+[integration](application-reference-input-partition.md#k351-integration-and-open-bracket-repairs)
+scopes the between-checkpoint comparison, corrects the host routes and freezes the
+[integration membership](reference-open-bracket-selection-integration-membership.json). It
+leaves batch association for pre-intent and disposition writes to design k353 and its whole
+review k354; all precede construction. These
 specifications supply no executable mechanism, actual original or accepted construction identity.
 
 ## Ownership and alternatives
@@ -2262,6 +2267,22 @@ finalized predecessors. The **bracket base** is the latest checkpoint batch whos
 publication.intent is finalized. The **open bracket** is every inter-checkpoint batch after
 it, in ordinal order; it may be empty.
 
+**Not yet specified: batch association beyond intent-bound slots.** The membership rule above
+assigns a slot only through an intent that binds a publication.intent. It does not yet say
+which batch the disarm seed `release-events/0` belongs to, finalized before any
+publication.intent exists, including after a failed first intent; which batch owns a hosted
+failure.disposition, written into a slot whose intent binds the failed batch and, under the
+[carrier prefix](#finite-publication-when-the-carrier-is-damaged), before the host's own
+intent; how reserved, empty or partial slots, a batch whose own publication.intent is partial,
+and other pre-intent reservations enter a batch, the cut and its one host; or what step 2 below
+reads to establish each association and what the terminal must retain. The predecessor rule's
+"written or disposed inside a checkpoint batch" therefore has no specified association source
+for those writes. Design reference-evidence-batch-association-k353 and its whole review
+reference-evidence-batch-association-k354 own it, both before k269. Until then construction
+implements no batch association for those writes and no admission that depends on one. The
+[k351 integration](application-reference-input-partition.md#k351-integration-and-open-bracket-repairs)
+records why.
+
 **The record each checkpoint visit keeps.** Every checkpoint batch's publication.intent
 binds that visit's E1 held source-root original identities (prelude, factual observer, cmp,
 runtime) and the classification of each inter-checkpoint batch between the previous
@@ -2298,12 +2319,15 @@ order, and no step reads a later step's result:
 under `UNARCHIVED_BY_RULE`, no member carries a disposition, it binds the same anchor and
 revision as step 4, it is the immediate successor of the base or of the previous open batch,
 and its kind was admitted under the table below at its position. Anything else is a failed
-or partial tail and refuses before any write. This is a structural check only. Between
-checkpoints the one identity comparison is E1i's own check of the source-root originals
-against the supplier's independent identity record. No step compares an identity
-observation or E8 result with the base intent's root identities, cp01.source,
-trust.continuity or another batch's observation, and none produces `BRACKET_VERIFIED`,
-`SOURCE_REENTRY_REQUIRED` or a failed cut.
+or partial tail and refuses before any write. This is a structural check only. What is
+deferred between checkpoints is the **cross-checkpoint source-root comparison**: no step
+compares an E1i identity observation or E8 result with the base intent's root identities,
+cp01.source, trust.continuity or another batch's observation, and none produces or writes
+`BRACKET_VERIFIED`, `SOURCE_REENTRY_REQUIRED`, a failed cut or any other E3b verdict. The
+source-root originals are checked only by E1i, against the supplier's independent identity
+record. The gate's own current comparisons run unchanged: chain/slot predecessor equality,
+E4–E8's anchored-member, original/copy, named/held and executing-image checks, and the
+current peer/image facts before E10.
 
 | New invocation | Admission while the open bracket holds earlier batches |
 | --- | --- |
@@ -2363,7 +2387,7 @@ invocations after the host's batch.
 | A failed earlier batch carries every later batch into one cut; earlier batches stay verified | Verify a later batch, dispose part of the cut, or leave one cut slot on any chain undisposed after the host's batch: refuse at E3b or at the host's ready-manifest gate. |
 | A mixed cut (failed disarm, carried revalidation) is hosted once at repeated CP02, which disposes both; the disarm's later acceptance stays at CP03 | Host it at CP03 first, host each kind separately, or let a non-host visit write: refuse before that write. Move the disarm's later acceptance to CP02: refuse at that consumer. |
 | A root change across a multi-batch bracket makes every batch one cut at repeated CP01 | Verify the batches before the change, or host any of them at its kind host: refuse at E3b. |
-| Between checkpoints the only identity comparison is E1i's | A gate compares an observation with the base intent, cp01.source, trust.continuity or another batch, or writes any classification: refuse at that step. |
+| Between checkpoints the full E4–E8 gate runs, with its original/copy, named/held, predecessor and current peer/image comparisons, while the source-root originals are checked only by E1i | Change only the cross-checkpoint step, so a gate compares an E1i observation or E8 result with the base intent, cp01.source, trust.continuity or another batch, or writes any E3b verdict: refuse at that step. Skip a required E4–E8 comparison to avoid it instead: a documentary control failure, because the same gate runs unchanged. |
 
 These are further required Q07/Q08/Q10 and relevant Q05/Q09 controls under the same
 exclusions. Required originals/identities remain unacquired.

@@ -350,9 +350,12 @@ fact remains blocking; no accepted contact unknown or usable partial route follo
 [integration-only documentary candidate](docs/verification/reference-practical-admission-integration-membership.json)
 records k329's saved boundary and unresolved duties. K350's
 [open-bracket membership](docs/verification/reference-open-bracket-selection-membership.json)
-is now the current documentary identity set, after it specified selection within an open
-bracket; its whole review k351 and every earned integration precede k269. K344's and k349's
-memberships and k323's are historical. No accepted
+was frozen after it specified selection within an open bracket. Whole review k351 found four
+defects; k352's integration repairs three and freezes the
+[integration membership](docs/verification/reference-open-bracket-selection-integration-membership.json),
+now the current documentary identity set. Batch association for pre-intent and disposition
+writes is an owned gap of design k353 and whole review k354, both before k269. K350's, k344's
+and k349's memberships and k323's are historical. No accepted
 construction input, original, control, authority, qualification or finite subject follows.
 Normative/actually consumed edits disarm and require affected requalification. K244/k242
 stay live, pass unused and all useful/generated/supported-VM/native/private/product duties remain.

@@ -17,17 +17,22 @@ Each checkpoint batch's publication.intent records that visit's E1 identities an
 classification of the batches it closed. Every prelude selects in a fixed order, choosing
 the anchor from anchors and bootstrap validation only. Between checkpoints, earlier batches
 are `BRACKET_OPEN` for admitted uses only. At the next checkpoint the first failing batch
-and every later batch form one cut, hosted once at the earliest kind host.
+and every later batch form one cut, hosted once at the earliest kind host. Whole review k351
+found four defects. K352 repaired three: between checkpoints only the cross-checkpoint root
+comparison is deferred, and recovery runs the host's act before the carrier prefix. Which
+batch the pre-intent seed, hosted dispositions and partial slots belong to is an owned gap
+for design k353 and review k354.
 
-- [Checkpoint continuity → Select and check before candidate tools](index.html#diagram-native-reference-proof) — Replaces the owned gap with the fixed selection order, `BRACKET_OPEN` admission, the bracket record and one cut with one host.
+- [Checkpoint continuity → Select and check before candidate tools](index.html#diagram-native-reference-proof) — K352: no root compare between checkpoints, the host act before the carrier prefix, and status naming k353/k354; k350 drew the order, admission, record and one host.
 - [Recovery → Host the disposition before its successor](index.html#diagram-native-reference-admission) — Status node and caption: a failed bracket cut is hosted once, at the earliest kind host.
 - [Evidence](index.html#diagram-native-reference-evidence), [instrument](index.html#diagram-native-reference-instrument), [contact](index.html#diagram-native-reference-contact), [packaging](index.html#diagram-native-reference-packaging) and [metadata shape](index.html#diagram-native-population-metadata-shape) views — Status lines and captions name k350 and k351 before k269.
 - [Selection within an open bracket (C)](../../verification/application-reference-evidence.md#selection-within-an-open-bracket) — The normative rules and their controls.
 - [Open-bracket selection (report)](../../verification/application-reference-input-partition.md#open-bracket-selection) — Classifies every doubt and lists every change.
+- [K351 integration (report)](../../verification/application-reference-input-partition.md#k351-integration-and-open-bracket-repairs) — Classifies the four review findings and records why G1 left the integration.
 
-Whole review k351, with every earned integration, precedes k269. The
-[open-bracket membership](../../verification/reference-open-bracket-selection-membership.json)
-binds the current bytes; k344's and k349's memberships stay historical. No actual original,
+K352 integrates k351; design k353 and review k354 precede k269. The
+[integration membership](../../verification/reference-open-bracket-selection-integration-membership.json)
+binds the current bytes; k344's, k349's and k350's memberships stay historical. No actual original,
 control, authority or construction handoff follows; pass unused and both holds remain.
 
 ## Inter-checkpoint entry context
