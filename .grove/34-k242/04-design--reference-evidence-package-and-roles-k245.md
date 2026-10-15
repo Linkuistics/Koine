@@ -25,13 +25,13 @@ historical; the new integration-only documentary candidate supplies no repaired 
 or accepted construction input. Normative/actually consumed edits disarm and require
 affected requalification before consumption.
 
-K333's pre-tool/holder/descriptor path, k341's complete publication/trust records and
-k335's exact hosted recovery are specified in C; actual originals/controls remain absent.
-K336 is now a reconciliation node: k342 repairs provenance/current summaries/seven views;
-k343's whole concordance (k347) is closed; k348 specifies the bracketed inter-checkpoint
-disarm/close/revalidation entry under Antony's actual answer; k344 then owns final new membership and the complete original k336/k331
-closure check. Only that actual closing child supplies
-its own Creator on existing k332. No partial child/new slice supplies construction input.
+K333's pre-tool/holder/descriptor path, k341's complete publication/trust records,
+k335's exact hosted recovery and k348's bracketed inter-checkpoint entry are specified in C;
+actual originals/controls remain absent. K344 closed k336 and k331: after k342's provenance
+reconciliation and k347's whole concordance it named the inter-checkpoint record bindings in
+C's closed rows and froze the new whole reference-checkpoint-recovery-membership.json. Its
+launch carried no provider evidence, so no Creator is written on existing k332. No closure
+or partial child supplies construction input.
 
 R3's composed Safari walk and all actual prior answers/original duties/exclusions remain.
 K340 records Antony's "Accept the bounded endpoint (Recommended)": only the final-recorder/

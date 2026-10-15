@@ -27,7 +27,10 @@ exact comparison in canonical S: only the final-recorder/outer-receiver terminal
 a further durable original. K343's whole concordance (k347) is closed. Also read k348's
 selected "Bracketed entry (Recommended)" clause in S and C's inter-checkpoint publication
 entry: disarm, close and revalidation publish provisionally between checkpoints, and the
-next checkpoint verifies the bracket before trust use. K344 then closes the producer reviewed here.
+next checkpoint verifies the bracket before trust use. K344 closes the producer reviewed here:
+its report section "Whole checkpoint-recovery closure" checks every original k331/k336/k344
+condition, and reference-checkpoint-recovery-membership.json is the complete new membership.
+That closing launch carried no provider evidence, so no Creator line sits under Reviews.
 
 ## Review focus
 

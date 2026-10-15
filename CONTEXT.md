@@ -326,11 +326,12 @@ k332 and every earned integration precede k269. CP01 publisher wording and the g
 are repaired; k333 specifies the pre-tool selection/holder/fd path and k337 the first
 publisher-terminal original. K341 specifies the complete last-writer/terminal/trust publication design under k334;
 the [hosted recovery design](docs/verification/application-reference-evidence.md#hosted-failed-tail-recovery)
-places exact repeated-checkpoint dispositions and the finite carrier prefix; whole
-replacement remains live under k336: provenance/current-surface reconciliation, whole
-original-duty/failure-DAG concordance, then final membership/whole closure. Only its
-actual final closing child supplies its own evidence on existing k332; no slice closes
-the whole protocol or grants construction eligibility. The
+places exact repeated-checkpoint dispositions and the finite carrier prefix. K336's
+provenance/current-surface reconciliation, whole original-duty/failure-DAG concordance
+and k348's bracketed inter-checkpoint entry are closed; k344 freezes the new whole
+[checkpoint-recovery membership](docs/verification/reference-checkpoint-recovery-membership.json)
+and closes k331. Mandatory whole review k332 and every earned integration precede k269;
+no closure grants construction eligibility. The
 [final-writer dependency boundary](docs/verification/application-reference-input-partition.md#final-transcript-writer-dependency-boundary)
 identifies why a finite publication set cannot retain its own final writer's later
 acknowledgment/return without an explicit stopping boundary. Antony accepted the
@@ -347,7 +348,7 @@ records and failure controls. Hosted recovery fixes every first consumer and una
 boundary; whole replacement/review remains required before use. Every other required
 fact remains blocking; no accepted contact unknown or usable partial route follows. The
 [integration-only documentary candidate](docs/verification/reference-practical-admission-integration-membership.json)
-records k329's saved boundary and unresolved duties; later selected edits need k331's new membership. K323's membership is historical. No accepted
+records k329's saved boundary and unresolved duties; k331's new whole membership is now the current documentary identity set. K323's membership is historical. No accepted
 construction input, original, control, authority, qualification or finite subject follows.
 Normative/actually consumed edits disarm and require affected requalification. K244/k242
 stay live, pass unused and all useful/generated/supported-VM/native/private/product duties remain.
@@ -363,8 +364,8 @@ the current complete validated anchor through exact predecessor-bound reads, com
 the actual holder executable before launch and retains the selection/freeze inputs.
 It creates no authority, acceptance or initialization. Between checkpoints its execution
 is bracketed rather than directly trusted (**Reference inter-checkpoint entry**). Its actual originals, required
-identity/read/runtime evidence and controls remain unacquired; k331's whole replacement
-and k332 review/every earned integration still precede construction.
+identity/read/runtime evidence and controls remain unacquired; k331's closed whole replacement
+still needs k332 review/every earned integration before construction.
 
 **Reference Stream Holder**: The independently authored and reviewed retained original
 whose executing copy the **Reference Checkpoint Prelude** compares before launch. It

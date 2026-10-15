@@ -8,8 +8,31 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-Open [the inter-checkpoint entry discussion](index.html#discussion) or
+Open [the whole-closure discussion](index.html#discussion) or
 [Checkpoint continuity → Select and check before candidate tools](index.html#diagram-native-reference-proof).
+K344 closes k336 and k331: the checkpoint-recovery replacement is one complete documentary
+design under only Antony's actual amendments. Its closure check found one precise gap.
+K348's bracketed entry said each inter-checkpoint batch binds its kind, the operator's
+identity observation and the comparison result, and that the next checkpoint compares root
+identities retained by cp01.source or trust.continuity, but C's closed record rows named
+none of these. C now names them, adding no mechanism, authority or checkpoint. The new whole
+[checkpoint-recovery membership](../../verification/reference-checkpoint-recovery-membership.json)
+binds every node, closed record kind, failed-cut route and null original.
+
+- [Checkpoint continuity → Select and check before candidate tools](index.html#diagram-native-reference-proof) — Shows E3b reading each batch's intent kind, E1i observation and E8 result, and the closed boundary before k332.
+- [Recovery → Host the disposition before its successor](index.html#diagram-native-reference-admission) — Updates the boundary node: k344 froze the membership and closed k331.
+- [Evidence](index.html#diagram-native-reference-evidence), [Packaging](index.html#diagram-native-reference-packaging), [Contact](index.html#diagram-native-reference-contact), [Components](index.html#diagram-native-reference-instrument) and [Population](index.html#diagram-native-population-metadata-shape) — Update only their status lines to the closed boundary.
+- [Whole checkpoint-recovery closure (report)](../../verification/application-reference-input-partition.md#whole-checkpoint-recovery-closure) — Checks every original k331/k336/k344 condition, records the repair and describes the membership.
+- [Complete publication and terminal join (C)](../../verification/application-reference-evidence.md#complete-publication-and-terminal-join) — Names the inter-checkpoint kind, E1i observation and E8 result in publication.intent's closed payload.
+- [Repeatable trust records and selection (C)](../../verification/application-reference-evidence.md#repeatable-trust-records-and-selection) — Names the held source-root identities in cp01.source and trust.continuity, and the E3b classifications in trust.continuity.
+- [Closed pre-tool reads and deterministic selection (C)](../../verification/application-reference-evidence.md#closed-pre-tool-reads-and-deterministic-selection) — Places E3b classification before ordinary selection.
+
+Existing whole review k332 and every earned integration precede k269. The closing launch
+carried no provider evidence, so no Creator line is written on k332. No actual original,
+control, authority or construction handoff follows; pass unused and both holds remain.
+
+## Inter-checkpoint entry context
+
 Three publications are written outside CP01–CP05 by operators who are not Antony:
 disarm-only maintenance, the distinct close and factual receipt revalidation. Antony
 selected k348's bracketed entry. The operator runs the source/OS method's mechanical
@@ -17,19 +40,10 @@ identity check without a trust judgment, then the same prelude gate with the wri
 anchored member. The publication batch stays provisional until the next checkpoint's
 source-rooted prelude verifies the root unchanged across the bracket. Accepted residual:
 a wrong executable between checkpoints is caught only afterwards, at a liveness cost.
-
-- [Checkpoint continuity → Select and check before candidate tools](index.html#diagram-native-reference-proof) — Replaces the blocked inter-checkpoint node with the selected entry: E1i mechanical check, same gate, provisional batch and E3b verification.
-- [Recovery → Host the disposition before its successor](index.html#diagram-native-reference-admission) — Updates the boundary node: the k348 entry is specified and its outputs are provisional.
-- [Evidence](index.html#diagram-native-reference-evidence), [Packaging](index.html#diagram-native-reference-packaging), [Contact](index.html#diagram-native-reference-contact), [Components](index.html#diagram-native-reference-instrument) and [Population](index.html#diagram-native-population-metadata-shape) — Update only their status lines to the specified k348 entry.
-- [Inter-checkpoint publication entry (report)](../../verification/application-reference-input-partition.md#inter-checkpoint-publication-entry) — Records the three invocations, the offered options and answer, E1i/E3b clean and correction edges, and k344's added freeze inputs.
-- [Inter-checkpoint publication entry (C)](../../verification/application-reference-evidence.md#inter-checkpoint-publication-entry) — Specifies the closed kinds, mechanical step, same gate, provisional publication, bracket verification, accepted limit and controls.
-- [Inter-checkpoint publication entry (S)](../../verification/application-population-metadata-shape.md#inter-checkpoint-publication-entry) — Records Antony's selected clause and its comparison row.
-- [Closed pre-tool reads and deterministic selection](../../verification/application-reference-evidence.md#closed-pre-tool-reads-and-deterministic-selection) — Removes the "not yet specified" block and anchors the disarm writer, close-only publisher and closer's entry.
-
-K344 alone freezes whole membership, checks complete k336/k331 and supplies its own
-Creator on existing k332. Existing k332/every earned integration precede k269. No partial
-membership, actual original/control, Creator or construction handoff follows; pass unused
-and both holds remain.
+The [report](../../verification/application-reference-input-partition.md#inter-checkpoint-publication-entry),
+[C](../../verification/application-reference-evidence.md#inter-checkpoint-publication-entry)
+and [S](../../verification/application-population-metadata-shape.md#inter-checkpoint-publication-entry)
+record the options, Antony's answer and the specified entry.
 
 ## Reconciled provenance context
 
@@ -68,10 +82,9 @@ Related unchanged normative context: [manual About order](../../verification/app
 [source-rooted selection](../../verification/application-reference-evidence.md#closed-pre-tool-reads-and-deterministic-selection),
 [complete publication join](../../verification/application-reference-evidence.md#complete-publication-and-terminal-join)
 and [hosted recovery](../../verification/application-reference-evidence.md#hosted-failed-tail-recovery).
-K343's whole original-duty/failure-DAG concordance is closed and k348 specifies the
-bracketed inter-checkpoint publication entry. K344 must then freeze new whole membership, check every original k336/k331 condition and name its own
-provider evidence on existing k332 only when that whole producer actually closes.
-Whole k332/every earned integration precedes k269. No slice supplies construction input.
+K343's whole original-duty/failure-DAG concordance is closed, k348 specifies the
+bracketed inter-checkpoint publication entry, and k344 closed k336/k331 with new whole
+membership. Whole k332/every earned integration precedes k269. No slice supplies construction input.
 Historical manifests, selected S/comparison, descriptor ADR, five tables and original
 charter conditions retain their bytes. Actual originals/tools/controls/identities/authority
 remain unacquired; k244/k242 live, pass unused, full downstream duties/both holds remain.
@@ -79,7 +92,7 @@ Actual consumed edits disarm/requalify; post-consumption correction stays offlin
 
 Regenerate all seven source/export pairs with
 `task design:application-population-metadata-shape-render` (D2 0.9.0, Dagre, themes 0/200).
-K348 changes all seven sources/exports, their captions and the discussion marker. Browser delivery is checked
+K344 changes all seven sources/exports, their captions and the discussion marker. Browser delivery is checked
 only in the explicitly reported viewer/appearance; k316/k326's other limits remain.
 Render/link/hash checks supply no semantic, executable-feasibility or native proof.
 
@@ -99,8 +112,8 @@ Supporting unchanged context is the [source-rooted prelude](../../verification/a
 and [descriptor handoff](../../verification/application-reference-evidence.md#holder-execution-and-closed-descriptor-handoff).
 
 This is a documentary design slice. Complete publication and hosted recovery are
-specified beside it; whole original-duty/new-membership reconciliation and k332 whole
-review/every earned integration remain ahead of construction. K330's selected provenance/recovery limits,
+specified beside it; k344 closed whole original-duty/new-membership reconciliation, and
+k332 whole review/every earned integration remain ahead of construction. K330's selected provenance/recovery limits,
 all original duties, unused pass and both holds remain. The current proof update expands
 the existing enabling and consumer gates; it adds no source trust, descriptor operation,
 authority, checkpoint or selected endpoint.

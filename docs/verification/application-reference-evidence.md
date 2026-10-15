@@ -20,8 +20,9 @@ proposal. The [hosted recovery contract](#hosted-failed-tail-recovery) places fa
 carrier-prefix ordering and exact unavailable boundaries before their consumers.
 The source-rooted prelude/holder/descriptor path, complete publication/terminal join,
 repeatable trust records and hosted recovery below specify the replacement mechanisms.
-K336 still owns whole original-duty/failure-DAG concordance, current-layer reconciliation
-and final whole membership/closure before k332/every integration and construction. These
+K344 closes k336 and k331 at this complete documentary boundary and freezes the new whole
+[checkpoint-recovery membership](reference-checkpoint-recovery-membership.json); existing
+whole review k332 and every earned integration precede construction. These
 specifications supply no executable mechanism, actual original or accepted construction identity.
 
 ## Ownership and alternatives
@@ -1045,7 +1046,7 @@ producer/repairer/validator/Antony exclusions all apply. These are required Q05/
 Q09/Q10 originals, not executed controls, optional opaque-contact evidence or source-only
 qualification. The complete publication, repeatable-trust and independent-control contracts below close
 the terminal/CP02 publication and causal DAGs. The hosted recovery contract below and
-whole k336 reconciliation remain binding before construction use.
+the closed whole k331 replacement under review k332 remain binding before construction use.
 
 #### Complete publication and terminal join
 
@@ -1106,7 +1107,7 @@ not recreated. No name is caller-selected and no write enters a sealed revision.
 
 | Record | Complete closed payload groups, all under the approval strict encoding |
 | --- | --- |
-| `publication.intent` | Version/kind, fixed permission/register and actual held ancestor/container/slot identities; chain/ordinal; full finalized predecessor bytes/identity or none at 0; current seed/disarm, anchor/revision when present, checkpoint/substep/ROOT purpose, fresh invocation nonce; complete accepted exact writer/owner/artifact/runtime/read/endpoint plan; expected launcher/trust/validation/close/release member and terminal-event sets; finite byte/frame/time bounds and intended first consumers. No future observation, own digest or final result. |
+| `publication.intent` | Version/kind, fixed permission/register and actual held ancestor/container/slot identities; chain/ordinal; full finalized predecessor bytes/identity or none at 0; current seed/disarm, anchor/revision when present, checkpoint/substep/ROOT purpose or, between checkpoints, the closed inter-checkpoint kind with the operator's raw E1i identity observation and the complete earlier E8 comparison result; fresh invocation nonce; complete accepted exact writer/owner/artifact/runtime/read/endpoint plan; expected launcher/trust/validation/close/release member and terminal-event sets; finite byte/frame/time bounds and intended first consumers. No future observation, own digest or final result. |
 | `publication.terminal` | Complete earlier intent and its actual publication returns; complete ordered raw launcher frames and received originals; every earlier peer/launcher intent/result/member byte stream, length and named/held identity; original direct acts and exact manifests; actual launcher frame/read/EOF/wait/reap/signal/timeout observations; all received peer write/flush/order/error facts and launcher terminal facts; final before/after input/member/identity/absence/lease comparisons; explicit per-coordinate reached/failed/unknown/unperformed outcomes and claim origin. It contains neither its own publication returns nor its future frame/EOF/reap nor the outer receiver's return. |
 
 The expected-set plan includes every earlier writer, including publication-validator,
@@ -1322,7 +1323,7 @@ an accepted payload, even if faithfully recorded and acknowledged.
 
 | Exact `trust.record` kind | Sole capable writer; ready inputs, act and first consumer |
 | --- | --- |
-| `cp01.source` | Bootstrap publisher copies earlier SOURCE direct act/static original manifest/source-OS reasons after ROOT; it cannot execute or accept that earlier act. First bootstrap validation then CP02 compare it. |
+| `cp01.source` | Bootstrap publisher copies earlier SOURCE direct act/static original manifest/source-OS reasons and the held source-root original identities (prelude, factual observer, cmp, runtime) after ROOT; it cannot execute or accept that earlier act. First bootstrap validation then CP02 compare it; the next checkpoint's E3b compares those identities. |
 | `cp01.artifacts` | Bootstrap publisher copies earlier ARTIFACTS direct act/short-entry seal, all complete artifact/control/original/runtime/read comparisons and exclusions. First bootstrap validator/CP02; mechanics acceptance precedes its actual bootstrap writer use in memory. |
 | `cp01.root` | Bootstrap publisher copies earlier exact ROOT direct act/factual A2 plan, purpose, nonce and accepted peer/capability/member plan. Publication is evidence only; initialization authority remains that single live continuation. |
 | `revision.acceptance` | Bootstrap publisher for initial CP01 only, trust registrar for later repeated CP01. Earlier full reviewed/final payload, complete clean review or every finding/integration/disposition, field/clause comparison, direct ready ACCEPT/REFUSE and exclusions. Highest current revision selection requires finalized acceptance of exact payload. |
@@ -1335,7 +1336,7 @@ an accepted payload, even if faithfully recorded and acknowledged.
 | `about.acceptance` | Same initial/later split, ARTIFACTS or CP05. Original About bytes and independent ready comparison at ARTIFACTS; at CP05 acceptance is of the original, not its future P comparison. First Q06 credit or APPOINT/fresh P01 respectively. Human labels prove no cross-session identity. |
 | `entry.original` | Trust registrar copies the separately authored complete exact A3 request/ancestor/operation/basis/refusal entry, immutable issuance/current rule and author provenance before its ready CP05 acceptance. No lookup/reservation is predicted. |
 | `entry.acceptance` | Trust registrar at CP05 over earlier entry.original/current eligible basis, request/nonce, independently ready comparison and direct ACCEPT/REFUSE. First fresh appointment then P output lookup; no reservation identity or future A result. |
-| `trust.continuity` | Trust registrar copies the source-rooted prelude/holder/ENTRY_SEAL's already completed current comparison and exact selected anchor/member/read/runtime/descriptor-generation/absence/freeze facts at CP02–CP05. First current engine/display/ready-act consumer uses the actual successful comparison and its post-write acknowledgment; recording supplies no self-check or human acceptance. CP01 initial comparison is in cp01.artifacts instead. |
+| `trust.continuity` | Trust registrar copies the source-rooted prelude/holder/ENTRY_SEAL's already completed current comparison, that E1's held source-root original identities, every E3b inter-checkpoint batch classification and exact selected anchor/member/read/runtime/descriptor-generation/absence/freeze facts at CP02–CP05. First current engine/display/ready-act consumer uses the actual successful comparison and its post-write acknowledgment; recording supplies no self-check or human acceptance. CP01 initial comparison is in cp01.artifacts instead. The next checkpoint's E3b compares its root identities. |
 | `basis.acceptance` | Trust registrar at CP04 over the earlier complete distinct-close/final-Q/audit/receipt/current/issuance/disarm basis and direct ready judgment. First eligible-event writer, then CP05. Not a future appointment or Q input. |
 | `foreground.appointment` | Foreground supervisor under its separately accepted appointment-record capability, only after exact CP05 entry/About/basis acceptance. Original fresh direct APPOINT bytes/request/role/nonce and actual coexisting supervisor/checker/acquirer/endpoint facts. Launcher/final recorder retain its publication. The record opens no later LIVE endpoint; only the same live supervisor's one-use endpoint has that role. |
 
@@ -1454,7 +1455,7 @@ originals stay null, not absence proof. A failed disposition or loss preventing 
 required comparison stops before successor with exact missing work; no recursion or
 automatic new initialization follows. The hosted recovery contract below maps each
 failed cut to its existing checkpoint, including the finite carrier prefix and failed-
-disposition stop; no unspecified host or disposition time is presumed. K336 compares the whole replacement and freezes its
+disposition stop; no unspecified host or disposition time is presumed. K344's whole closure compares the replacement and freezes its
 whole documentary membership before existing whole review/every integration and k269.
 
 #### Hosted failed-tail recovery
@@ -1709,7 +1710,7 @@ writes and parent-owned waits; source prose, digests, a DAG or mapped return can
 actual-call evidence. No control runs LIVE, drives Antony's terminal or probes installed/
 protected/topology targets. Required Q05/Q07/Q08/Q09/Q10 and fresh P facts remain blockers;
 accepted contact unknowns waive none. Whole companions/tables/bases and actual task/runtime/
-charter reads retain full-byte binding. K336 reconciles the whole mechanism and freezes
+charter reads retain full-byte binding. K344 reconciled the whole mechanism and froze
 new whole membership; existing k332/every earned integration precedes k269. This design
 supplies no original, accepted act, authority, qualified instrument or finite subject.
 
@@ -1934,7 +1935,7 @@ evidence precedes use; an absent/linked/replaced lock refuses rather than being 
 | Prelude anchor traversal | At `anchors/0`, then the exact immediate next unsigned-64 ordinal, read only `anchor.intent`, `bootstrap.accepted`, `anchor.result` and any conditional `failure.disposition` admitted by that slot's closed schema. No `trust-originals` child is opened until its exact earlier member plan is validated. Preserve complete original bytes/lengths/identities and predecessor equality. Present malformed/unfinalized/wrong-kind/torn/conflicting/unaccepted tail or ordinal exhaustion refuses; no wrap, argument-selected ordinal or old success fallback. |
 | Prelude supporting predecessors | From `validation-events/0` and `release-events/0`, follow only exact immediate successors and their closed intent/result/disposition members. Check each exact full predecessor, completed result, required earlier acknowledgment provenance and applicability. Cross-references must point backward to completed reachable outputs, except the separate later bootstrap validation of an earlier anchor result; verify that pair after reading both chains, without making either authorize its own production. Required revision/control/acceptance inputs are only exact earlier locators admitted by the selected schema and independent read plan, never arbitrary record-supplied paths. The complete-publication and repeatable-trust tables below are part of this closed read plan; an unsupported kind blocks. |
 | Prelude close traversal | From `closes/0` through every exact immediate successor, read only `close.intent`, `instrument.close`, `close.result` and conditional `failure.disposition`. Check the distinct close-only writer/capability, complete original CP03/audit/disarm/anchor/revision basis and actual publication/terminal join before CP04/P02. A failed/pending/stale close refuses; no generic earlier-locator rule, sealed-revision write or older close substitutes. |
-| Prelude selection | An immediate absent next slot is an actual admitted no-follow absence observation, not a list/scan. Retain its raw result and held parent. A reference beyond a gap refuses. Select only the last reachable complete CP01-accepted anchor with its separate completed independent bootstrap-publication validation and applicable current durable disarm/correction basis. Any failed/unaccepted/unchecked reachable anchor tail leaves **no current anchor**. A later receipt/close failure is reported separately; selection does not manufacture a usable receipt/close/eligible basis. |
+| Prelude selection | An immediate absent next slot is an actual admitted no-follow absence observation, not a list/scan. Retain its raw result and held parent. A reference beyond a gap refuses. Before ordinary selection, E3b classifies every inter-checkpoint batch since the previous checkpoint from its publication.intent/publication.terminal bindings, against this E1's held source-root identities and those retained in the previous checkpoint's cp01.source or trust.continuity; a batch that is not `BRACKET_VERIFIED` yields `SOURCE_REENTRY_REQUIRED` or a failed cut exactly as the [inter-checkpoint entry](#inter-checkpoint-publication-entry) directs, never ordinary use of its output. Select only the last reachable complete CP01-accepted anchor with its separate completed independent bootstrap-publication validation and applicable current durable disarm/correction basis. Any failed/unaccepted/unchecked reachable anchor tail leaves **no current anchor**. A later receipt/close failure is reported separately; selection does not manufacture a usable receipt/close/eligible basis. |
 | Prelude publication/trust/revision traversal | Also read `publication-events/n/{publication.intent,publication.record,failure.disposition}`, `trust-events/n/{trust.intent,trust.record,failure.disposition}` and `revisions/n/{revision.intent,revision.payload,failure.disposition}` from 0 through exact immediate successors. Decode only the complete-publication/repeatable-trust closed kinds, full predecessor/owner/member/phase/terminal-origin joins and actual absent-next results. Current retained-content validation supplies no omitted past final-recorder terminal fact. Known failed/partial/unaccepted tails block affected use; only exact intact-anchor recovery context survives where allowed. No new path, scan, parser or historical-terminal inference. |
 | Prelude holder gate | From that exact anchor's closed `trust-originals` plan, open the independent original holder and actual executable copy plus every required holder runtime/read member, original first then copy. Check the complete member set, approved parent/component identities and full byte/length equality in both directions using the fixed retained `/usr/bin/cmp` primitive described below. Recheck named/held identities and required original artifact/runtime evidence before holder launch. After spawn, independently obtain that actual peer's required current image facts before releasing its plan/first opens; do not pretend its future process was observed before it existed. No engine, holder copy or candidate entry runs to certify this gate. |
 | Holder then short entry | Only after the gate succeeds, launch the exact checked holder copy with the closed read-only descriptor plan. It checks entry/runtime original/copy pairs before entry execution and opens the remaining ready artifact/runtime/read pairs. The entry receives checked streams, compares complete members/bytes/lengths and exposes only a ready comparison result. Engine/display/registrar execution waits for these checks and required independent current peer/image correspondence. |
@@ -2083,7 +2084,7 @@ transfer. The same coexisting supervisor/checker/acquirer and original endpoint 
 the prelude/holder keep originals through their true return. No comparison child inherits
 leases, and no lock upgrade/downgrade is assumed atomic. The complete publication and
 hosted recovery tables fix the exact kinds, pending-output exception and failed-tail
-hosts before this transition. Whole k331 reconciliation/review still precedes use;
+hosts before this transition. Whole k331 review k332 and every earned integration still precede use;
 no constructor may invent an omitted kind, carrier prefix or consumer.
 
 After entry equality, engine/display receive a separately frozen read-only result/input
@@ -2127,7 +2128,7 @@ This is an earlier computation result, never an acceptance, ROOT bearer or appoi
 Its later writer/immutable acknowledgment and failed-publication slot are fixed by the
 repeatable trust table and hosted recovery contract, including the exact carrier-prefix
 association before external use. No arbitrary locator is admitted. Whole k331
-reconciliation/review remains required before this proposal can be consumed. All required actual originals/controls/identities remain unacquired.
+review k332 and every earned integration remain required before this proposal can be consumed. All required actual originals/controls/identities remain unacquired.
 
 ##### Inter-checkpoint publication entry
 
@@ -2179,7 +2180,7 @@ input only after current peer/image facts. No within-call retry follows a refusa
 
 **Provisional publication.** The U0–U7 batch runs under the held leases. Its
 publication.intent binds the kind, the E1i identity observation, the complete E8 result
-and the selected anchor/chain basis with its existing fields. Its publication.terminal
+and the selected anchor/chain basis in the fields its closed payload row names. Its publication.terminal
 retains them with every writer original, and the writer's intent binds that
 publication.intent. Every output is **provisional**. Provisional outputs may serve only:
 
@@ -3936,7 +3937,8 @@ compares every original k321 R1–R8 and k328 F1–F6 finding and every original
 k242/k244/k245/k246/k247/k269/k331/k336/k343 condition with the k331 replacement under
 only actual amendments, and names its exact remaining work. Its one open enabling point
 is now specified by the [inter-checkpoint entry design](application-reference-input-partition.md#inter-checkpoint-publication-entry)
-under Antony's k348 answer. The
+under Antony's k348 answer. The [whole checkpoint-recovery closure](application-reference-input-partition.md#whole-checkpoint-recovery-closure)
+checks every original k331/k336/k344 condition against the complete artifact. The
 [current k328 integration](application-reference-input-partition.md#k328-integration-and-required-replacement)
 records the defects in k323 and the required new producer. The historical
 [k323 comparison](application-reference-input-partition.md#every-k321-finding-against-the-whole-replacement),

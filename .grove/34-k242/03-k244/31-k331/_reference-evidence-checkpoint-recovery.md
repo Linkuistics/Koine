@@ -209,3 +209,17 @@ every prefix original and exact stopping boundary in clean/correction DAGs. No a
 original/control/tool/authority is supplied. This is the scoped handoff, not new whole
 membership or construction eligibility. Only k336 reconciles the whole producer and
 names its own evidence on existing k332; no earlier child closes k331 or cuts a review.
+
+## Whole closure from k336/k344
+
+K344 checks every original Goal/Context/Required coherent replacement/Done when above, with
+k336's and its own, against the complete artifact in the report's Whole checkpoint-recovery
+closure. It names the inter-checkpoint record bindings in C's closed publication.intent,
+cp01.source, trust.continuity and prelude-selection rows from k348's existing text, adding
+no mechanism. It reconciles summaries, charters and seven views, then freezes the new whole
+reference-checkpoint-recovery-membership.json with every E0–E12/E1i/E3b, U0–U7 and
+H0–H3/HX node, closed record kind, failed-cut route and null original. K336 and this node
+close. Existing whole review k332 and every earned integration precede k269. The closing
+launch carried no provider evidence, so no Creator is written on k332. Actual originals,
+controls and authority stay null; k244/k242 stay live, k245's pass is unused, and full
+k246/k247/useful/additive supported-VM/native/private/product duties and both holds remain.

@@ -25,13 +25,13 @@ historical; the new integration-only documentary candidate supplies no repaired 
 or accepted construction input. Normative/actually consumed edits disarm and require
 affected requalification before consumption.
 
-K333's pre-tool/holder/descriptor path, k341's complete publication/trust records and
-k335's exact hosted recovery are specified in C; actual originals/controls remain absent.
-K336 is now a reconciliation node: k342 repairs provenance/current summaries/seven views;
-k343's whole concordance (k347) is closed; k348 specifies the bracketed inter-checkpoint
-disarm/close/revalidation entry under Antony's actual answer; k344 then owns final new membership and the complete original k336/k331
-closure check. Only that actual closing child supplies
-its own Creator on existing k332. No partial child/new slice supplies construction input.
+K333's pre-tool/holder/descriptor path, k341's complete publication/trust records,
+k335's exact hosted recovery and k348's bracketed inter-checkpoint entry are specified in C;
+actual originals/controls remain absent. K344 closed k336 and k331: after k342's provenance
+reconciliation and k347's whole concordance it named the inter-checkpoint record bindings in
+C's closed rows and froze the new whole reference-checkpoint-recovery-membership.json. Its
+launch carried no provider evidence, so no Creator is written on existing k332. No closure
+or partial child supplies construction input.
 
 R3's composed Safari walk and all actual prior answers/original duties/exclusions remain.
 K340 subsequently records Antony's "Accept the bounded endpoint (Recommended)": only
@@ -41,8 +41,8 @@ remain required; receiver loss can leave an unprovable tail, and unknown tail pr
 neither completion nor no dispatch/provisioning and restores no authority. Canonical
 S/comparison and C/K/P carry the exact exception. K341 specifies complete publication under it in C's Complete publication and terminal
 join / Repeatable trust records and selection, with exact originals/controls handed to
-k335. Hosted k335 recovery, closing k336 and existing whole k332/every integration still
-precede k269; no publication slice supplies construction eligibility.
+k335. K335's hosted recovery and k336/k331's closure are complete; existing whole k332/every
+integration still precede k269, and no publication slice supplies construction eligibility.
 Actual originals/tools/controls/read/images/UID/build/terminal/receipt/authority remain
 missing. K244/k242/finite subject stay live, k245's pass unused, full k246/k247/useful
 breadth/additive supported-VM/native/private/product duties and both holds retained.

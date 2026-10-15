@@ -15,40 +15,30 @@ K328's whole review of k323 at f4d399f3caa2 identifies unresolved recovery, firs
 launcher-record, About-key and repeatable-trust-output defects. The
 [integration and required replacement](#k328-integration-and-required-replacement)
 classifies every finding. K330's two bounded human decisions are recorded below.
-Complete replacement producer k331, mandatory whole review k332 and every earned
-integration remain required before k269.
-K331 is now a design node. Its first child k333 specifies the
+Replacement producer k331 is now closed. K344's [whole checkpoint-recovery closure](#whole-checkpoint-recovery-closure)
+checks every original k331/k336/k344 condition against the complete artifact and freezes
+the new [whole membership](reference-checkpoint-recovery-membership.json). Mandatory whole
+review k332 and every earned integration remain required before k269.
+K333 specifies the
 [source-rooted prelude, holder gate and descriptor handoff](application-reference-evidence.md#independent-stream-holder-and-continuity-anchor).
-F2 has a complete proposed enabling path and independent control specification; actual
-originals/controls/identities remain unacquired. K337 now specifies the
-[publisher-terminal original prefix](#launcher-original-publication-slice) under k334;
-k338 retains complete invocation/last-writer finalization and trust outputs. Its
-[final-writer analysis](#final-transcript-writer-dependency-boundary) exposes a precise
-evidence-closure conflict. Antony answered "Accept the bounded endpoint (Recommended)"
-in k340; the selected canonical exception and exact obligation comparison now bound the
-final-recorder/nonpublishing-receiver tail. K341 now specifies the [complete publication design](#complete-publication-design),
+K337 specifies the [publisher-terminal original prefix](#launcher-original-publication-slice);
+its [final-writer analysis](#final-transcript-writer-dependency-boundary) exposed the
+evidence-closure conflict that Antony settled in k340 with "Accept the bounded endpoint
+(Recommended)". K341 specifies the [complete publication design](#complete-publication-design),
 including all earlier terminal originals, exact repeatable trust/CP02 locations and
 independent writer/receiver controls. K335 specifies [hosted recovery](#hosted-recovery-design),
-including carrier-prefix ordering and exact unavailable boundaries. Whole replacement
-reconciliation remains live under k336 before k332. K342 reconciles provenance/current
-layers and seven views; k347 closes k343's [whole concordance](#whole-original-obligation-concordance);
-design k348 specifies the [inter-checkpoint publication entry](#inter-checkpoint-publication-entry)
-it found unspecified, under Antony's actual "Bracketed entry (Recommended)" answer;
-k344 owns final whole membership and the complete original k336/k331 closure check. A partial
-child supplies no construction handoff or new whole membership. Only
-the actual closing child names its provider evidence on that existing whole review.
-K343 now decomposes into k345's [pre-tool consumer concordance](#pre-tool-consumer-concordance),
-k346's complete publication/recovery concordance and k347's closing whole-original-duty/
-Safari/table/basis/read comparison. K347 checks every original k343 condition and closes
-k343; k344 alone freezes the new whole membership after k348.
+including carrier-prefix ordering and exact unavailable boundaries. K342 reconciles
+provenance/current layers and seven views. K343's [whole concordance](#whole-original-obligation-concordance)
+composes k345's [pre-tool consumer concordance](#pre-tool-consumer-concordance) and k346's
+[publication/recovery concordance](#publication-and-recovery-consumer-concordance) with every
+original finding and duty. K348 specifies the [inter-checkpoint publication entry](#inter-checkpoint-publication-entry)
+under Antony's actual "Bracketed entry (Recommended)" answer. These remain specified
+designs without actual originals or controls.
 K269 must place already decided mechanisms; the reviewed k323 proposal is no construction
-handoff. Its [membership](reference-practical-admission-replacement-membership.json)
-retains historical bytes. The new
-[integration-only documentary candidate](reference-practical-admission-integration-membership.json)
-identifies k329's saved boundary and unresolved work; it supplies no repaired protocol,
-accepted input, executable schema or proof. All earlier memberships remain historical.
-K330 changes selected requirements after that snapshot; k331 must freeze new whole
-membership after its complete replacement, without changing any historical manifest.
+handoff. Its [membership](reference-practical-admission-replacement-membership.json) and
+k329's [integration-only documentary candidate](reference-practical-admission-integration-membership.json)
+retain their historical bytes; neither supplies a repaired protocol, accepted input,
+executable schema or proof.
 
 No target-reading instrument, trusted comparison/display/holder/bootstrap entry, retained
 runtime/read/image chain, executable schema/control programme, qualified initialization,
@@ -59,6 +49,146 @@ waive no named required failure and establish no no-contact fact. K244/k242 rema
 k245 retains the one unused pass, k246 complete rewrite/helper/alias discrimination and
 k247 whole-subject/family review or precise incomplete work. Full useful breadth,
 additive supported-VM/native duties, private ineligibility and both holds remain.
+
+## Whole checkpoint-recovery closure
+
+K344 is k336's closing child and, through k336, closes the complete k331 replacement.
+This is unconsumed reporting. The rules live in S, C, K and P; the new
+[whole membership](reference-checkpoint-recovery-membership.json) freezes documentary
+identities only. Nothing here is an acquired original, an executed control, authority or
+construction input. Existing whole review k332 and every earned integration precede k269.
+
+### Original conditions against the complete artifact
+
+The original k331 Goal, Context, Required coherent replacement, Done when and Notes equal
+their creating commit e9fc85ddba97. K336's Goal, Context, Done when and Notes equal
+fc9f63d42010. K344's Goal, Done when and Notes equal 0b06bef7b014; its Context differs
+only by the consumption paragraph k348 added. Each row names where the condition is met.
+"Here" marks work done in this closing session.
+
+| Original condition | Result and location |
+| --- | --- |
+| k331 replacement 1: every failure-disposition acceptance placed in the selected schedule with its trust base, ready inputs and first consumer; seed, bootstrap anchor and validation, REANCHOR, receipt validation, close, disarm/eligible and trust-output failures; source re-entry when the anchor is unavailable; k330's exact initialization answer | Met. C's [failed-boundary host table](application-reference-evidence.md#failed-boundaries-and-their-exact-checkpoint-hosts) hosts each class at an existing CP01–CP05 repeat, with source re-entry taking precedence. [Positive proof](application-reference-evidence.md#positive-proof-before-fresh-initialization) admits fresh INITIALIZE_ONCE only on independent original PROVEN_NO for both never-dispatched and never-provisioned. K335 specified it; k346 compared it; k348 added the bracket-failure row. |
+| k331 replacement 2: deterministic pre-tool selection under an explicit finite source/OS root; holder trusted before it runs at every CP02–CP05, including accidental replacement; closed descriptor handoff; isolating controls | Met at CP01–CP05 by k333's prelude, holder and descriptor contract (k345), with every later-executed trust/publication artifact an anchored member (k347). Between checkpoints, k348's bracketed entry applies under Antony's answer. Here, its record bindings are named in C's closed rows (next subsection). |
+| k331 replacement 3: launcher original publication with closed kinds, predecessor-bound locator, capability and writer, frames, EOF/reap/timeout/death extents, no self or future binding, retained writer death | Met by the launcher-events kinds and the final recorder/outer receiver join (k337, k341), with k340's sole bounded endpoint. K346 compared them with the original findings. |
+| k331 replacement 4: CP02 acceptance and every repeatable trust output with kind, generation, locator, writer, immutable finalization and selection, composed with the failure placement | Met by C's [repeatable trust table](application-reference-evidence.md#repeatable-trust-records-and-selection) and generation contract (k341), hosted by k335 and expanded by k346. |
+| k331 replacement 5: k330's exact host/session provenance answer | Met in C's manual About contract, P's controls and S's selected clause (k342, k346). |
+| k331 replacement 6: reconcile C/S/K/P, glossary, summaries, charters and seven views; compare every k321 and k328 finding and original duty; keep R3's Safari order | Met by k342's provenance layers, k347's whole concordance and Safari re-derivation, and k348's entry. Here, every current layer is moved to the closed state. |
+| k331 replacement 7: after final edits, freeze new whole membership with clean and correction DAGs and item-by-item checks, preserving old manifests and null originals | Here; see [New whole membership](#new-whole-membership). |
+| k331 Done when: one coherent reviewed-ready replacement; every duty retained with its first consumer; k332 immediately before k269; the closing child names its own provider evidence on k332; no duplicate review | Met. K332 is the live sibling immediately before k269 and no review is added. The provider-evidence duty is applied under Grove's rule in [Closure, review and remaining work](#closure-review-and-remaining-work). |
+| k336 Done when 1: re-derive k321 R1–R8 and k328 F1–F6; compare k242/k244/k245/k246/k247/k269 under only actual amendments | Met by k347's whole concordance. |
+| k336 Done when 2: pre-tool controls compose with launcher and trust-output records, true-return extents and hosted dispositions; closed kind/locator/lock/consumer read plan; clean and correction DAGs | Met by k345, k346 and k347. Here, the one remaining read-plan gap, the inter-checkpoint bindings, is closed, and every DAG is frozen in the membership. |
+| k336 Done when 3: k330 About meaning everywhere; no continuity window, extra observation or LIVE calibration | Met by k342; no About text changes here. |
+| k336 Done when 4: R3's physical Safari order and every protected/pre-lookup boundary; no current topology or contact claim | Met by k347's re-derivation. The membership's Safari entry equals both earlier manifests'. |
+| k336 Done when 5: reconcile C/S/K/P, glossary, root/k242/k244/k245/k246/k247/k269 and every summary, consumer charter and seven views | Here, for the closed state; see [Changes in this session](#changes-in-this-closing-session). |
+| k336 Done when 6: after final normative edits, freeze new whole membership, preserve older manifests, check every per-item identity and preserved set against frozen subjects and witnessed controls, digest inputs before and after | Here; see [New whole membership](#new-whole-membership) and [Verification](#closure-verification-and-where-its-outcome-is-recorded). |
+| k336 Done when 7: check k331's entire Done when; name this session's own provider evidence on k332; retire only on the complete boundary | Met by this table and the closure subsection below. |
+| k344 Done when 1–4 | This section, the membership, the frozen audit and the retirement record. |
+
+### Inter-checkpoint record bindings named at closure
+
+K348's [entry](application-reference-evidence.md#inter-checkpoint-publication-entry) said
+each inter-checkpoint batch's publication.intent "binds the kind, the E1i identity
+observation, the complete E8 result and the selected anchor/chain basis with its existing
+fields". It also said E3b compares the root identity "retained by the previous
+checkpoint's cp01.source or trust.continuity". C's closed rows named none of these:
+publication.intent's payload listed only a checkpoint/substep/ROOT purpose; cp01.source
+and trust.continuity named no held source-root identities or E3b classifications; and the
+prelude's selection row did not place E3b. A constructor would have had to invent where
+those facts live, which k331's charter forbids. This session names them:
+
+- [publication.intent](application-reference-evidence.md#complete-publication-and-terminal-join)
+  carries, between checkpoints, the closed inter-checkpoint kind, the operator's raw E1i
+  identity observation and the complete earlier E8 comparison result.
+- [cp01.source and trust.continuity](application-reference-evidence.md#repeatable-trust-records-and-selection)
+  carry the held source-root original identities (prelude, factual observer, cmp,
+  runtime); trust.continuity also carries every E3b batch classification.
+- The [prelude selection row](application-reference-evidence.md#closed-pre-tool-reads-and-deterministic-selection)
+  runs E3b before ordinary selection, from those bindings.
+- The entry's "existing fields" now points to the closed payload row.
+
+No record kind, chain, writer, checkpoint, authority or observation API is added. K348's
+selected design already required these facts. This is a reversible pre-provisioning
+documentary correction; nothing has been consumed, so no requalification is triggered.
+
+### New whole membership
+
+[reference-checkpoint-recovery-membership.json](reference-checkpoint-recovery-membership.json)
+is frozen after every normative, summary, charter, promotion and view edit. It keeps the
+structure of the two earlier manifests and adds k331's graphs:
+
+- **Identities.** Current S, descriptor ADR, C, K, P, contact tables, subject and parent
+  table; the same heading-delimited normative payloads as before plus S's line-by-line
+  comparison; whole K, P and table bytes; the E-default exception extract; every current
+  documentary surface and view; charters by stable handle; the closing leaf's original
+  sections; and each finished child result.
+- **Preserved sets.** The B requirements, R duty families, original R register indices,
+  historical parent correspondence and composed Safari entry are copied unchanged, so
+  they can be compared item by item with both earlier manifests.
+- **Historical manifests.** Every earlier historical identity is kept with its creating
+  revision, plus the k329 integration-only candidate. No earlier manifest byte changes.
+- **Graphs.** E0–E12, E1i and E3b (k345, k348), U0–U7 (k346) and H0–H3/HX each record
+  role, required result, first consumer, normative and report locators, the required
+  originals, and null actual originals. For each of the three inter-checkpoint kinds,
+  separate E1i and E3b occurrences record the null operator identity observation, method
+  line, writer member and bracket identities.
+- **Closed record chains.** The eight approval chains plus launcher-events, with every
+  member, closed kind, sole writer and first consumer.
+- **Clean and correction order.** Clean edges for the entry, publication, hosted-recovery
+  and inter-checkpoint graphs and the complete initial phase path. One failed-cut route
+  per row of C's host table, k345's E correction table and k348's entry correction table,
+  each with its host, trust root, ordered correction nodes, first blocked consumer,
+  control locations and null actual records. A disposition-failure route ends at HX with
+  no successor.
+- **Provider evidence.** Null, with the reason given below.
+
+Hashes, rendering and acyclicity prove documentary identity and order only. They supply no
+meaning, original possession, executable feasibility, authority, instrument or native
+result, or finite subject.
+
+### Closure verification and where its outcome is recorded
+
+After the freeze, a frozen documentary audit measures every tracked file, the audit, its
+baseline and the resolved task, D2, Python, jj and grove-llm executables before and after,
+by byte length and SHA-256. Inside that freeze it runs `task check:docs` and the seven-view
+render. It recomputes every membership identity and extract and compares the preserved
+sets item by item with both earlier manifests. It checks every historical manifest against
+its creating revision and original charter sections against their creating commits. It
+checks graph coverage, edge endpoints, acyclicity and null originals, and runs mutation
+controls that must be seen to fail. A browser opens the discussion and the changed deep
+links.
+
+The membership binds this report, the charters and the views at their final bytes, so the
+measured outcome cannot be appended here without invalidating those identities. The
+closing leaf's running log and the commit message record it after measurement.
+
+### Closure, review and remaining work
+
+With the conditions above met, k344 retires and k336 and k331 close. K244 keeps live work,
+so the cascade stops there. Existing whole review k332 reads the complete artifact, all
+children and the new membership; every earned integration precedes k269.
+
+This closing launch carried no `GROVE_PROVIDER_EVIDENCE` receipt and no legacy run
+identity. Grove's retirement rule therefore writes no Creator line on k332, and forbids
+substituting an earlier child's receipt or an invented node identity. If review policy
+needs a provider, the owner declares it.
+
+Every actual original, tool, control, read, image, UID, build, terminal, receipt and
+authority fact remains null. K244/k242 stay live and k245's pass is unused. Full k246/k247,
+useful-breadth, additive supported-VM, native, private and product duties and both holds
+remain. Actual consumed edits disarm and require affected requalification;
+post-consumption correction is offline-only.
+
+### Changes in this closing session
+
+- [C, closed publication, trust and selection rows](application-reference-evidence.md#complete-publication-and-terminal-join) — Name the inter-checkpoint kind, E1i observation, E8 result, held source-root identities and E3b classifications, as above.
+- C, [review integration](application-reference-evidence.md#review-integration-and-required-decisions), [hosted recovery](application-reference-evidence.md#hosted-failed-tail-recovery), [dependencies](application-reference-evidence.md#clean-and-correction-dependencies-and-independent-controls), [descriptor handoff](application-reference-evidence.md#holder-execution-and-closed-descriptor-handoff) and [whole-producer comparison](application-reference-evidence.md#whole-producer-obligation-comparison) — Move status sentences to the closed boundary and point to this section.
+- [K](application-reference-contact-boundary.md#closed-required-blockers-and-accepted-unknowns) and [P](application-reference-packaging-runtime.md#release-and-acceptance-controls) — One status clause each.
+- S's [comparison reporting](application-population-metadata-shape.md#reference-evidence-decision-comparison-and-reporting), [reproduction contract](application-population-metadata-shape.md#required-reproduction-contract-after-the-decision) and [boundary checks](application-population-metadata-shape.md#reproducible-boundary-checks) — Status and pointers only; the selected section is byte-identical.
+- CONTEXT, the private qualification spec, the reconciliation report and native acceptance — Status paragraphs name k348's entry and k344's closure and membership.
+- Root, k242, k244, k245, k246, k247, k269 and k332 charters, and k331's promoted closure note — Closure state and the new membership.
+- [Seven views](../design/architecture/index.html#discussion), captions, discussion and README — Closed status lines; the continuity view's E3b node shows the named bindings.
+- [The new whole membership](reference-checkpoint-recovery-membership.json).
 
 ## Inter-checkpoint publication entry
 

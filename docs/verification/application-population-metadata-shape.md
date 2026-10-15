@@ -673,8 +673,9 @@ exception above and compared below. Every earlier selected clause remains byte-i
 complete publication, hosted recovery and whole replacement/review remain required.
 The k348 before state is a4fbe7ad: Antony's actual "Bracketed entry (Recommended)"
 authorizes only the inter-checkpoint publication entry above and compared below. Every
-earlier selected clause remains byte-identical; k344's whole freeze/closure, existing
-whole review k332 and every earned integration remain required before k269.
+earlier selected clause remains byte-identical. K344 has since closed the whole replacement
+and frozen its membership; existing whole review k332 and every earned integration remain
+required before k269.
 
 ### Status outside the measured permission
 
@@ -736,9 +737,9 @@ bounded correspondence-authority, k314 acceptance/documentary, k319 narrow root-
 k330 never-started recovery/About provenance, k340 finite terminal-evidence endpoint and
 k348 bracketed inter-checkpoint entry amendments above control their interpretation. K314 changes k291 F6's per-fragment enumeration and reporting-driven
 composite reconstruction only as compared; every other original obligation remains.
-K331 now owns the complete contract/companion/operation-map/representation reconciliation
-under those actual answers, with mandatory whole review k332 and every earned integration
-before k269 consumption. K320/k323 and their memberships are historical defective
+K331's complete contract/companion/operation-map/representation reconciliation under
+those actual answers is closed by k344, with mandatory whole review k332 and every earned
+integration before k269 consumption. K320/k323 and their memberships are historical defective
 proposals; no partial requirements amendment repairs or qualifies their mechanisms.
 
 ## Required reproduction contract after the decision
@@ -752,6 +753,9 @@ The report's [whole original-obligation concordance](application-reference-input
 locates the current comparison and exact missing work before consumers; its
 [k328 integration and required replacement](application-reference-input-partition.md#k328-integration-and-required-replacement)
 places the replacement and review. Earlier k321/k323 comparisons there are historical.
+Its [whole checkpoint-recovery closure](application-reference-input-partition.md#whole-checkpoint-recovery-closure)
+checks every original k331/k336/k344 condition, and the
+[new whole membership](reference-checkpoint-recovery-membership.json) freezes its documentary identities.
 
 ## Reproducible boundary checks
 
@@ -767,7 +771,8 @@ instructions there are not a current handoff. The Taskfile recipe remains curren
 Document/link/render checks validate only the saved design. Current historical-parent/
 Safari and original-duty comparisons are reported with their bounded scope in the
 [whole concordance](application-reference-input-partition.md#whole-original-obligation-concordance);
-the new whole replacement membership remains due. The k323
+k344 freezes the new whole [checkpoint-recovery membership](reference-checkpoint-recovery-membership.json)
+and records its [closure](application-reference-input-partition.md#whole-checkpoint-recovery-closure). The k323
 [replacement membership](application-reference-input-partition.md#replacement-membership-and-verification-scope)
 is historical.
 No check supplies authority, instrument/control qualification, current target bytes or

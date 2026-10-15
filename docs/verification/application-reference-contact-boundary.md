@@ -320,7 +320,7 @@ bootstrap-validation tails require source-rooted CP01 re-entry, never an older a
 Still-intact-anchor recovery context grants no disposition/initialization/eligible authority.
 The complete publication/trust-record and hosted-recovery contracts specify the remaining
 mechanisms beside this pre-tool path. Whole original-duty/failure-DAG concordance and
-final membership/closure remain under k336 before k332 and construction; no original
+final membership/closure are closed by k344; whole review k332 precedes construction; no original
 control or current fact is supplied by these documentary specifications.
 The CP05 lease-transition pair in C's independent pre-tool controls and P's release/
 acceptance controls isolates gap mutation, failed shared reacquisition, changed successor

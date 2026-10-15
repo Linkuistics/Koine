@@ -123,13 +123,14 @@ requalification and every current per-invocation fact remain. No extra initializ
 attempt, checkpoint or observation authority follows. Complete k331, mandatory whole review
 k332 and every earned integration precede k269. CP01 publisher wording and the glossary
 are repaired. The source-rooted prelude/holder/fd path, complete publication/terminal join,
-repeatable trust records and hosted recovery are specified in the
+repeatable trust records, hosted recovery and k348's bracketed inter-checkpoint entry are specified in the
 [reference contract](application-reference-evidence.md#review-integration-and-required-decisions);
-their actual originals and controls remain unacquired. Whole original-duty/failure-DAG concordance and final
-membership/closure remain under k336, then k332 and every earned integration before k269.
-K342 reconciles provenance/current summaries/views only; it supplies no whole closure. The
+their actual originals and controls remain unacquired. K344 closes k336 and k331 after the whole
+original-duty/failure-DAG concordance and freezes the new whole
+[checkpoint-recovery membership](reference-checkpoint-recovery-membership.json); k332 and every
+earned integration precede k269, and no closure supplies construction eligibility. The
 [integration-only documentary candidate](reference-practical-admission-integration-membership.json)
-records k329's saved boundary and unresolved duties; later selected edits need k331's new membership. K323's membership is historical. No accepted
+records k329's saved boundary and unresolved duties and is now historical, like K323's membership. No accepted
 construction input, original, control, authority, qualification or finite subject follows.
 Normative/actually consumed edits disarm and require affected requalification. K244/k242
 stay live, pass unused and all useful/generated/supported-VM/native/private/product duties remain.
