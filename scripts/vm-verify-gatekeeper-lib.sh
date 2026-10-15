@@ -67,18 +67,29 @@ enable_developer_id() {
     sleep 8
     testanyware agent window-move --window "${SNAPSHOT_WINDOW}" --x 0 --y 0 >/dev/null || true
     testanyware agent window-resize --window "${SNAPSHOT_WINDOW}" --width 1400 --height 2100 >/dev/null || true
-    testanyware agent window-focus --window "${SNAPSHOT_WINDOW}" >/dev/null || true
-    sleep 3
 
-    click '.platformRole=="AXPopUpButton"'
-    sleep 1
-    local item
-    item="$(testanyware agent snapshot --mode full --depth 26 --json |
-        jq -c '[.windows[] | .elements[]? | .. | objects
-               | select(has("platformRole"))
-               | select(.platformRole == "AXMenuItem" and .sizeWidth > 0)
-               | select((.label // "") | test("Known Developers"))][0]')"
-    [ "${item}" != null ] && [ -n "${item}" ] ||
+    # The golden image's first login launches Reminders (launchd, some seconds
+    # after login), and its welcome window takes focus and closes the popup's
+    # menu as it opens. Its launch is not ordered against anything here, so each
+    # attempt quits it, refocuses the pane and opens the menu again.
+    local item="" attempt
+    for attempt in 1 2 3; do
+        guest 'osascript -e "if application \"Reminders\" is running then quit application \"Reminders\""' >/dev/null 2>&1 || true
+        testanyware agent window-focus --window "${SNAPSHOT_WINDOW}" >/dev/null || true
+        sleep 3
+        click '.platformRole=="AXPopUpButton"'
+        sleep 1
+        item="$(testanyware agent snapshot --mode full --depth 26 --json |
+            jq -c '[.windows[] | .elements[]? | .. | objects
+                   | select(has("platformRole"))
+                   | select(.platformRole == "AXMenuItem" and .sizeWidth > 0)
+                   | select((.label // "") | test("Known Developers"))][0]')"
+        [ "${item}" != null ] && [ -n "${item}" ] && break
+        echo "  attempt ${attempt}: the menu did not open in front; retrying"
+        testanyware input key escape >/dev/null || true
+        item=""
+    done
+    [ -n "${item}" ] ||
         fail "the Allow-applications menu offers no \"App Store & Known Developers\""
     # shellcheck disable=SC2046
     testanyware input click $(jq -r '"\(.positionX + .sizeWidth / 2 | floor) \(.positionY + .sizeHeight / 2 | floor)"' <<<"${item}") >/dev/null
