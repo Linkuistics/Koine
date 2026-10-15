@@ -16,8 +16,9 @@ never-dispatched/no-provisioning bootstrap recovery and human-only About labels;
 canonical clauses retain every failure/nonce/authority/correspondence limit. Days/reboot/
 logout alone do not invalidate Q06 or force CP01; labels do not prove host substitution
 absent. K331 replaces the coupled protocol, and k332 whole review/every earned integration precedes
-k269. Recovery placement, pre-tool selection/holder/fd trust, original launcher records and
-repeatable trust slots remain required design work. No planner invents their mechanism.
+k269. K331 is decomposed: k333 supplies the proposed pre-tool selection/holder/fd path;
+original launcher records, repeatable trust slots, hosted recovery and whole reconciliation
+remain live design work. No partial child or planner supplies the complete mechanism.
 The [integration-only candidate](../../verification/reference-practical-admission-integration-membership.json)
 records saved current inputs and unresolved duties; k323/older memberships stay historical.
 Normative/actually consumed changes disarm and require affected requalification.
@@ -30,6 +31,29 @@ K244/k242 remain live, pass unused, full k246/k247/useful/additive supported-VM/
 private/product duties and both holds retained. Render/source checks establish no browser
 pass. K326's narrow-layout and unverified dark/Safari limits and k316's separate viewer
 defect remain live with their actual owners.
+
+## Checkpoint continuity discussion
+
+Open [Checkpoint continuity → Select and check before candidate tools](index.html#diagram-native-reference-proof).
+This view now focuses on k333's F2 enabling path: an independently supplied read-only
+prelude under explicit finite source/OS trust owns exact chain/absence selection and
+the actual holder executable gate before launch. The holder passes serial read-only
+pairs to the short entry; ENTRY_SEAL checks full membership before engine effects.
+Required independent executing-image evidence remains separate from file equality.
+Originals remain held through true return. Unavailable source root/anchor requires
+source-rooted CP01 re-entry; no older-anchor fallback or new authority is supplied.
+
+- [Checkpoint continuity → Select and check before candidate tools](index.html#diagram-native-reference-proof) — Replaces the broad clean-path sketch with the prelude/selection/holder/descriptor/first-consumer view and explicit live k331 remainder.
+- [Source-rooted prelude before selection](../../verification/application-reference-evidence.md#source-rooted-prelude-before-selection) — Defines the finite original source/OS trust root outside the anchor being selected.
+- [Closed pre-tool reads and deterministic selection](../../verification/application-reference-evidence.md#closed-pre-tool-reads-and-deterministic-selection) — Assigns exact chain reads, absent-next facts, cross-chain checks and unavailable-anchor refusal to the prelude.
+- [Holder execution and closed descriptor handoff](../../verification/application-reference-evidence.md#holder-execution-and-closed-descriptor-handoff) — Fixes actual executable comparison, serial descriptor roles/offsets/generations, ENTRY_SEAL, qualified lease transitions and retained lifetime.
+
+This is a documentary design slice. F3/F5 publication records, F1 hosted recovery,
+whole original-duty/new-membership reconciliation and k332 whole review/every earned
+integration remain ahead of construction. K330's selected provenance/recovery limits,
+all original duties, unused pass and both holds remain. The seven-view renderer is
+`task design:application-population-metadata-shape-render`; only this proof view changes
+in the current discussion. Other views are unchanged context, not changed markers.
 
 ## Retained Safari composition context
 

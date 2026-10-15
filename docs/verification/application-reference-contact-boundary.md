@@ -209,8 +209,16 @@ CP01; product/build/configuration comparisons and required current per-invocatio
 terminal/peer/image/channel facts remain. Actual changed required basis, lost/replaced
 authority or missing required correspondence still disarm/repeat the affected suffix;
 the human labels do not prove host substitution absent. No extra observation is admitted.
-Q07/Q08/Q10 include holder-first original/copy link/type/single-link/identity/descriptor/
-image/negative-lookup refusal and complete current validated anchor continuity. P01 uses
+Q07/Q08/Q10 include the [source-rooted prelude/holder/entry path](application-reference-evidence.md#independent-stream-holder-and-continuity-anchor):
+independent original prelude/source-OS trust before its execution, closed deterministic
+pre-tool chain/absence selection and holder executable/runtime comparison before holder
+launch, then exact serial fd pairs/ENTRY_SEAL membership/offset/generation/closure/true-return
+checks before candidate effects. Required peer/image/negative-lookup facts remain separate
+blockers; no file hash certifies the executing image. Partial/failed/unaccepted anchor or
+bootstrap-validation tails require source-rooted CP01 re-entry, never an older anchor.
+Still-intact-anchor recovery context grants no disposition/initialization/eligible authority.
+This k333 design slice leaves k331 launcher/trust-record/failure-hosting/whole reconciliation
+live before k332 and construction; no original controls or current fact are supplied. P01 uses
 CP05's freshly accepted About original with actual fresh buffer comparison; P02 selects
 the exact current anchor and acknowledged fresh close for its disarm/CP03 basis, outside
 sealed revisions, never an older record under a partial/failed successor. These expand

@@ -701,10 +701,10 @@ returns exact equality per member, every required coordinate's outcome and a cal
 eligible basis or readable refusal. The display cannot change those results or register
 acceptance; the registrar writes only after Antony's direct judgment.
 
-The bootstrap entry is one inspectable source page. Its only duties are to read explicitly
-named no-follow retained files, compare their full byte streams and lengths in both
+The bootstrap entry is one inspectable source page. Its only duties are to consume explicitly
+named, already checked retained-file descriptors, compare their full byte streams and lengths in both
 directions against independently supplied frozen originals, verify exact object membership,
-and display a manifest binding and the independently supplied bootstrap-control outcomes.
+and return a manifest binding and the independently supplied bootstrap-control outcomes.
 It executes/imports no candidate checker, engine, display or registrar, discovers no path,
 resolves no dependency and has no authority-writing operation. Its exact source, fixed
 invocation and declared OS/runtime assumptions are part of the independent artifact review.
@@ -735,10 +735,12 @@ interaction, with ready control originals and no Grove-session wait:
 1. **CP01-SOURCE:** Antony inspects the independently retained one-page entry, fixed
    invocation, original review/dispositions, OS primitive/runtime assumptions and ready
    original controls. His source/OS judgment is the finite initial trust anchor. It
-   appoints no LIVE process and accepts no future result. The entry is read/executed
-   from its independently retained original, never selected by a checkout candidate.
+   appoints no LIVE process and accepts no future result. The source/OS method directly
+   trusts the independently supplied original prelude. It checks the holder executable,
+   which checks the entry's executable copy against its independently retained original;
+   a checkout candidate selects none of these originals.
 2. **CP01-ARTIFACTS:** that entry compares the complete actual ready entry/engine/display,
-   registrar/checker/launcher/bootstrap-publisher/initializer/validator/stream-holder/close-publisher artifacts and their
+   prelude/registrar/checker/launcher/bootstrap-publisher/initializer/validator/stream-holder/close-publisher artifacts and their
    runtime/read members with independently supplied frozen originals. Antony accepts or
    refuses this now-ready set and the complete original bootstrap and initializer/validator
    mechanics outcomes. Only after ACCEPT may the engine/display/registrar or accepted
@@ -891,82 +893,276 @@ this authored route supplies no implementation, actual original, authority or qu
 
 #### Independent stream holder and continuity anchor
 
-**Reference Stream Holder** is a separately authored/reviewed retained original, named
-in CP01-SOURCE's one-page source/OS trust method. The inspected source, exact original
-executable/build correspondence, declared OS primitive and complete required runtime/read/
-image facts and independent original controls precede its first execution. SOURCE trusts
-that finite independently supplied original on those explicit grounds; it does not ask
-a candidate holder/entry/engine to certify its own original or executing image. Unknown
-required holder/cmp image, source-to-artifact correspondence or negative-lookup evidence
-refuses before this method starts. No compilation, dependency resolution, PATH lookup
-or candidate-selected holder runs inside the ceremony. The holder joins the accepted
-artifact set at ARTIFACTS and every later anchor; source/OS trust remains explicit, not
-a claimed recursively verified OS or hostile-user authentication mechanism.
+The [checkpoint continuity view](../design/architecture/index.html#diagram-native-reference-proof)
+separates the finite source/OS trust root from the selected anchor. The following is
+k333's F2 design slice under the still-live k331 producer. Launcher originals, repeatable
+trust-output publication and hosted failed-tail recovery remain live replacement work;
+this slice is no construction handoff, qualification or accepted current record.
 
-The original holder accepts only the complete CP01-inspected fixed member-pair plan:
-each member names an independently supplied original and executable copy by exact
-approved retained parent identity and literal component sequence. For each pair it
-walks only the named search-only no-follow ancestors, performs no listing/link follow,
-opens original then copy using `openat(O_RDONLY | O_NOFOLLOW | O_CLOEXEC)` and checks
-`fstat` regular-file type, one link, exact approved UID/mode/device/inode/available stamps
-and length, plus named `fstatat(..., AT_SYMLINK_NOFOLLOW)` equality. OS-object ownership/
-modes come from their separate approved observations, never a blanket user/0600 rule.
-Every required member has a held descriptor before cmp or candidate entry execution.
-Missing, linked, substituted, unknown, changed or lost descriptors refuse at this first
-step; a matching string/digest or shell pathname redirection cannot substitute for it.
+##### Source-rooted prelude before selection
 
-The holder passes duplicates of only the two checked streams to the retained `/usr/bin/cmp`
-child as fd 3/4, with exactly `-s /dev/fd/3 /dev/fd/4`. It invokes the reverse pair as well,
-checks complete results/EOF/normal zero reap, restores/checks regular-stream offsets
-before the next consumer and compares the complete member set in both directions.
-Other capabilities stay close-on-exec/uninherited. It rechecks named/held identities and
-full before/after bytes/lengths around comparison. Only then does the inspected original
-short entry compare the remaining ready artifact/runtime/read members. Checked streams
-remain held by the original holder through the entire foreground trust invocation's
-actual return, including entry comparison and each consumer's freeze; the entry does
-not reopen a pathname after cmp. Loss/identity change freezes that consumer. This
-observes cooperative races; it cannot certify absence of an unobserved mutate/restore
-interval or eliminate shared-OS/undetectable whole-anchor-forgery limits.
+**Reference Checkpoint Prelude** owns the pre-tool enabling point. It is a separately
+authored, reviewed, read-only native artifact supplied with independent original source,
+build correspondence, complete required runtime/read/image facts and original controls.
+It is separate from the acquisition/admission/registrar candidates and their producers/
+repairers. Its expected answers have a separate original author and executor; Antony
+does not produce/repair it or execute the control programme he adjudicates. The short
+entry remains one comparison-only source page; neither it nor the engine selects an
+anchor. The holder acquires no selection or authority-writing capability. Read-only
+means no mutation of retained inputs, register or authority; private unnamed-pipe plan/
+result output is permitted under the closed descriptor protocol, never filesystem staging.
 
-Independent controls place original-link substitution, copy-link substitution, ancestor
-link, wrong type/extra hard link, pre-open replacement, between-open/compare replacement,
-named-versus-held mismatch, unknown holder/cmp image, omitted required negative lookup,
-descriptor closure/reuse and changed byte/length at **this holder step**, with otherwise
-valid later specimens. Refusal precedes cmp/entry/engine; later tool refusal is no credit
-for the missing first check. No required identity becomes an accepted contact unknown.
+The one-page **source/OS method** fixes the prelude's exact independently retained
+executable original, original source/build/control evidence, literal invocation and
+finite OS/runtime assumptions. That original is supplied independently **before CP01**,
+outside checkout/proofs/exports and outside every anchor/revision being selected. It is
+not selected by a register pointer, argument, environment, PATH, candidate manifest or
+an old `trust.continuity`. Its exact ancestor/component/identity/read plan belongs to the
+independent retained-input inventory, with no listing, resolver or discretionary read.
+Required actual locators/identities remain unacquired until independently supplied and
+accepted; a documentary name or digest grants no access or original possession.
+
+At CP01-SOURCE and at the existing continuity start of **each CP02–CP05**, Antony uses
+that original source/OS method before invoking the original prelude. He explicitly trusts
+the independently supplied original and the named OS primitives on their source/build/
+original-control grounds; this is the finite human/OS trust root, **not** an automated
+proof of its own execution. No executing prelude, holder or candidate may certify that
+first trust judgment. A stored register copy is never the prelude's root. The retained
+native executable original has its separately approved executable mode; the 0600 rule
+still applies to authority records and anchor originals. No unchecked executable copy,
+interpreter substitution, compilation or dependency resolution occurs at this step.
+Required current image/read correspondence stays independently required before its
+claimed consumer/credit; source trust waives no Q/P fact and claims no recursive OS proof.
+
+Missing, changed, substituted, uninspectable or unestablished source-root originals,
+required runtime/image evidence or original controls make this checkpoint unavailable
+**before prelude execution**. They do not permit a candidate to reconstruct the root.
+The original supplier's independent original/byte/identity and source/build checks must
+detect accidental root replacement; matching a label or a candidate-generated hash is
+insufficient. Undetectable wholesale original/OS forgery and mutate/restore races retain
+the existing cooperative limit, distinct from detected accidental replacement. Re-entry
+uses newly ready independent source/OS originals at repeated CP01 SOURCE/ARTIFACTS;
+no new checkpoint, saved ROOT authority, old-anchor fallback or initialization follows.
+
+##### Closed pre-tool reads and deterministic selection
+
+After that source trust, the prelude performs the following read-only programme under
+the fixed release-before-register lock order. A later checkpoint's source-rooted prelude
+holds the qualified nonblocking exclusive checkpoint leases during selection and
+comparison; comparison children get no lock/authority descriptor. It cannot create a
+missing lock or register. Initial CP01 uses only the independently supplied fixed
+original/member plan before the register exists, with no register traversal or assumed
+register lock. Its actual A2 factual peer and ROOT publication remain later operations.
+Its strict record decoder and membership/length limits are frozen reviewed prelude inputs,
+not an engine import. Unknown required schema/kind/read/extent refuses rather than loading
+a parser, finding a file, guessing an ordinal or repairing publication.
 
 **Independent continuity anchor.** CP01 retains an exclusive no-follow frozen original
-set outside checkout/proofs/exports, under the fixed approvals branch's exact
-`anchors/n/trust-originals` operation plan. It contains the accepted holder, short entry, engine, display,
-anchor invocation/runtime objects and complete declared/observed read/member closure,
+set outside checkout/proofs/exports at the fixed approval branch's
+`anchors/n/trust-originals`. It includes the accepted holder, short entry, engine,
+display, invocation/runtime objects, complete declared/observed read/member closure,
 original source/build/review/control provenance and CP01 binding. The register binds
-that set's actual held identities and full ordered bytes/length/member inventory.
-These are independent originals supplied before comparison, not originals copied from a
-possibly changed candidate at a later checkpoint. Missing, substituted or changed anchor
-originals refuse; no scan, resolver, checkout restore or automatic re-baseline exists.
+actual held identities and full ordered bytes/lengths/membership. It also binds the
+independently supplied prelude/source-root identity as an earlier input, without making
+the anchor's copy a runnable source root. No later possibly changed candidate is copied
+into an original set. Missing/substituted/changed originals refuse; no checkout restore,
+scan, resolver or automatic re-baseline exists. Earlier original sets/revisions stay sealed.
 
-At **every CP02–CP05**, before executing/importing engine/display/registrar, Antony starts
-from the deterministic current accepted anchor's original holder/entry and CP01 source/OS
-trust method. The fixed
-independent OS primitive is retained `/usr/bin/cmp`, invoked with exactly `-s` and
-`/dev/fd/3`, `/dev/fd/4` for the two already held no-follow original/copy streams, no
-PATH or arbitrary pathname. Its exact executable, runtime/read closure and source/OS
-assumptions are CP01 anchor inputs; original required image facts precede credit. This
-OS primitive and original source inspection are the explicit trust base, not output
-from a candidate engine/display/entry or a claim to verify the OS from itself. It first compares
-any executable copy of the entry and its anchor runtime/member closure against those
-retained originals in both directions; source inspection identifies that primitive and
-its fixed invocation, rather than asking the candidate entry to attest to itself. Only
-then the original short entry compares all engine/display/registrar/runtime/read members
-and actual held byte streams with the accepted CP01 originals. No changed tool runs to
-certify that check. Required image/peer/negative-lookup identities join their separately
-qualified comparisons; an unavailable required identity blocks. Preserve the comparison
-as `trust.continuity` in the ready manifest, every trust output and later consumed record,
-with CP01 anchor, checkpoint, exact members, actual reached result and before/after freeze.
-The published bootstrap/receipt/close records bind this accepted tool set and its original
-control provenance explicitly. This retains the cooperative same-UID/OS trust assumption;
-whole-anchor forgery/undetectable rollback remains outside protection. It is not human
-or hostile-user authentication and does not claim complete opaque runtime coverage.
+The two exact approval lock members are `release.lock` then `register.lock` under the
+fixed approval subject. Initial fail-closed bootstrap reservation includes both in the
+already accepted seed/lock-container plan, before any anchor or permission work. Later
+preludes only open/check/lock these existing single-link records; they create neither.
+This assigns a literal name to the existing register-lock role, with no new writer or
+filesystem authority. Qualified nonblocking lock/ownership/no-follow/held-identity
+evidence precedes use; an absent/linked/replaced lock refuses rather than being recreated.
+
+| Step / sole owner | Exact allowed reads and result; first consumer |
+| --- | --- |
+| Prelude root/lock check | Only the independent retained-input plan and fixed A2 approval ancestry, exact existing `release.lock` then `register.lock`, search-only no-follow ancestors and named/held checks. Verify actual UID/type/mode/device/inode/available stamps and qualified locks. Missing/linked/risky/unknown or unsupported locking refuses before chain reads. No permission-subject, target, export or directory inventory. |
+| Prelude anchor traversal | At `anchors/0`, then the exact immediate next unsigned-64 ordinal, read only `anchor.intent`, `bootstrap.accepted`, `anchor.result` and any conditional `failure.disposition` admitted by that slot's closed schema. No `trust-originals` child is opened until its exact earlier member plan is validated. Preserve complete original bytes/lengths/identities and predecessor equality. Present malformed/unfinalized/wrong-kind/torn/conflicting/unaccepted tail or ordinal exhaustion refuses; no wrap, argument-selected ordinal or old success fallback. |
+| Prelude supporting predecessors | From `validation-events/0` and `release-events/0`, follow only exact immediate successors and their closed intent/result/disposition members. Check each exact full predecessor, completed result, required earlier acknowledgment provenance and applicability. Cross-references must point backward to completed reachable outputs, except the separate later bootstrap validation of an earlier anchor result; verify that pair after reading both chains, without making either authorize its own production. Required revision/control/acceptance inputs are only exact earlier locators admitted by the selected schema and independent read plan, never arbitrary record-supplied paths. New k331 kinds/locators must be reconciled here before consumption; an unsupported kind blocks. |
+| Prelude selection | An immediate absent next slot is an actual admitted no-follow absence observation, not a list/scan. Retain its raw result and held parent. A reference beyond a gap refuses. Select only the last reachable complete CP01-accepted anchor with its separate completed independent bootstrap-publication validation and applicable current durable disarm/correction basis. Any failed/unaccepted/unchecked reachable anchor tail leaves **no current anchor**. A later receipt/close failure is reported separately; selection does not manufacture a usable receipt/close/eligible basis. |
+| Prelude holder gate | From that exact anchor's closed `trust-originals` plan, open the independent original holder and actual executable copy plus every required holder runtime/read member, original first then copy. Check the complete member set, approved parent/component identities and full byte/length equality in both directions using the fixed retained `/usr/bin/cmp` primitive described below. Recheck named/held identities and required original artifact/runtime evidence before holder launch. After spawn, independently obtain that actual peer's required current image facts before releasing its plan/first opens; do not pretend its future process was observed before it existed. No engine, holder copy or candidate entry runs to certify this gate. |
+| Holder then short entry | Only after the gate succeeds, launch the exact checked holder copy with the closed read-only descriptor plan. It checks entry/runtime original/copy pairs before entry execution and opens the remaining ready artifact/runtime/read pairs. The entry receives checked streams, compares complete members/bytes/lengths and exposes only a ready comparison result. Engine/display/registrar execution waits for these checks and required independent current peer/image correspondence. |
+
+Traversal validates each reachable chain in full; no later unaccepted ordinal is ignored
+merely because the checkpoint does not intend to consume it. A partial non-anchor chain
+does not turn a complete independently validated anchor into initialization or eligibility
+authority. It can supply that intact anchor solely for the precisely hosted recovery act
+once the later k331 recovery contract permits it. If bootstrap validation itself is in
+the failed validation tail, the anchor is unavailable. An unavailable anchor returns
+`SOURCE_REENTRY_REQUIRED`, with exact failed/unknown coordinates and no selected original
+set; only repeated CP01 SOURCE/ARTIFACTS may supply its independent trust base. The
+later recovery design must place disposition/acceptance before any successor consumer;
+the prelude cannot finalize a failed tail, publish a disposition or silently continue.
+
+The prelude's current-anchor result is a value, never a current-pointer file or authority.
+It binds exact held roots/locks, all traversed full records and cross-chain associations,
+the terminal absence observations, checkpoint/invocation nonce, selected original set,
+required image/read facts and actual refusal/result. Both omission and extra-membership
+checks use independently frozen expected sets, not the candidate's enumeration. Retain
+these inputs through the checkpoint freeze. A fresh later checkpoint repeats traversal;
+a copied result or ordinal is no shortcut. Concurrent publication is excluded by qualified
+locks; lost lock/root/descriptor or changed bytes/identity freezes before the next consumer.
+
+##### Holder execution and closed descriptor handoff
+
+**Reference Stream Holder** retains the exact original/copy streams and their namespace
+identity checks. Its original remains a single-link 0600 regular anchor record; its
+separate executable copy has its own exact approved mode/identity. For every planned pair,
+the responsible prelude/holder walks only the named search-only no-follow ancestors,
+opens original then copy with `openat(O_RDONLY | O_NOFOLLOW | O_CLOEXEC)`, checks `fstat`
+regular type, one link, approved UID/mode/device/inode/stamps/length and named
+`fstatat(..., AT_SYMLINK_NOFOLLOW)` equality. OS-object modes/ownership use their separately
+approved facts. No pathname shell redirection or matching digest replaces these checks.
+
+The prelude first compares the **executing holder copy**, not just the entry, against
+its independent original and required runtime/read closure. A rebuild, even with the same
+label and same source, is refused on changed bytes/identity/closure before holder launch.
+It launches only that literal approved executable location with the accepted explicit
+spawn/descriptor actions. This design claims no descriptor-exec primitive or atomic
+binding of pathname launch to the held inode. Independent current finite peer/image/
+incarnation/backing checks, named/held checks and before/after bytes remain required;
+substitution between comparison and execution freezes before entry/engine effects. The
+selected k295 observations may be unavailable and share race/OS/cache limits. A pre-exec
+file hash, reported pathname or PID alone never supplies executing-image correspondence.
+The independently retained factual observer and its original source/build/runtime/control
+closure are earlier source/OS-method inputs, not an anchor-selected candidate. It uses
+only the already selected finite declared same-UID peer metadata; no new scan/API/PID
+scope is authorized. The parent withholds the holder's fd-3 plan while that observer
+checks the newly spawned holder. The holder waits at that read before its planned file
+opens or child execution. Missing/wrong/changed image/peer facts close the plan pipe,
+freeze and retain true-return/death extents; they never release an empty default plan.
+The same withheld-input rendezvous applies before each newly executing entry/consumer's
+planned effects. This bounds the declared programme's enabling point; it does not undo
+loader/constructor effects or establish complete pre-effect no-contact coverage.
+
+All comparison children use retained `/usr/bin/cmp` with exactly
+`-s /dev/fd/3 /dev/fd/4`; the exact cmp executable/source/OS/runtime/read assumptions and
+required image facts are independent prelude inputs. Compare original/copy, then the
+reverse order, with otherwise identical closed arguments, no PATH or pathname reopen.
+Normal zero status and actual zero reap are required. Unmodified cmp emits no application
+result frame: do not invent a cmp status-channel acknowledgment. Its stream-read/EOF
+evidence comes from the qualified operation observations and entry's complete reads.
+A cmp process has no application authority or input paths beyond these two
+already held streams and its exact runtime plan. The prelude checks the holder; the
+holder checks the entry; the checked entry compares the remaining checked streams.
+
+The fixed handoff is **one pair per sequential read-only child**, avoiding a dynamic
+inherited descriptor range. Complete member ordering is the independently frozen opaque
+member-ID vector. Its exact set/count/length bounds and all required actual descriptors
+must be ready before the first candidate comparison; exceeding a qualified limit refuses,
+never drops members or opens them lazily after candidate execution.
+
+| Descriptor / owner | Direction, contents and lifetime |
+| --- | --- |
+| Parent-only originals | Prelude retains source-root, lock, chain/absence-parent, holder executable/runtime and selected-manifest descriptors. Holder retains every checked artifact original/copy/parent descriptor. All are CLOEXEC. Originals/parents remain held until all descendants' actual return/reap and final freeze. Checkpoint leases use the explicit transition rule below; no comparison child receives them. |
+| Child fd 3 / fd 4 | Read-only duplicate of the current checked original/copy, then reversed for the reverse comparison. Explicit spawn actions map only this pair. Entry/cmp uses no pathname open, `/dev/fd` enumeration, fd transfer or ambient lookup. A holder launch itself receives only its checked frozen plan pipe on fd 3, with fd 4 closed, not authority or an open directory. It independently opens only that plan's exact named pairs after the prelude gate and independently checked current-image rendezvous; those later opens do not reopen the already compared holder executable as evidence. |
+| Entry fd 5 | Read end of a private unnamed pipe carrying one frozen pair descriptor: version, role `ENTRY_COMPARE`, checkpoint/fresh nonce, selected anchor and full manifest binding, opaque member ID, original/copy identities/lengths and descriptor-generation tokens. No paths or executable/authority selector. The entry accepts exactly one pair and emits exactly that pair's comparison. After all pair children return, one `ENTRY_SEAL` invocation instead receives the full frozen original expected manifest/control-binding input on a private read pipe at fd 3 and the holder's complete ordered pair-result vector on a separate private read pipe at fd 4; fd 5 declares the SEAL role and exact input lengths/bindings. It verifies exact set/order/directions and every pair binding before returning the single complete manifest/control binding. Neither role imports/executes candidates or opens paths; all lengths/schema bounds are prequalified. Cmp receives no fd 5. |
+| Entry/holder fd 6 | One-way private result pipe to its parent, version/kind/member/nonce/generation-bound and bounded by the accepted frame plan. One terminal result then EOF; duplicate, trailing, missing, out-of-order or wrong-peer frame refuses. Parent joins result with actual child reap and independent peer/image facts; child self-report supplies none of them. Holder's own parent-result channel uses fd 6 under the separate `HOLDER_RESULT` role. Cmp has no fd 6 or application result protocol. |
+| Child fd 0–2 and every other fd | Entry/cmp has no operator input: 0/1/2 are explicitly closed, results use fd 6 only. Holder has no human acceptance channel. Close every unrelated inherited descriptor/endpoint, including all lock/authority/registrar/ROOT/LIVE/export descriptors. OS/runtime-required extra inputs, if any, need exact independent read/operation qualification before this closed ABI can be used; there is no silent ambient-fd exception. |
+
+Holder's plan on fd 3 and each role/aggregate/engine input above use **unnamed one-way
+pipes**, not newly created temporary files, pathname sockets or transferred directory
+handles. Parent freezes the complete bounded input in memory before spawn, owns the sole
+writer and drains fd 6 concurrently while streaming the exact length-framed input. Close
+the input writer only after its full reached write sequence; child requires exact frame
+length/kind/nonce/membership then EOF before accepting it. Parent requires the one result,
+EOF and actual reap. Partial input/output, pipe error or either peer's death freezes at
+that boundary with its original extents. No success waits for a future trust publication.
+There is no single-thread write-then-read pipe-capacity assumption; actual independent
+short-write/backpressure/drain/death controls must qualify this finite concurrent route.
+
+Before the engine/display is accepted at CP01, the source-trusted prelude presents the
+ENTRY_SEAL result and independently supplied original control bindings through its own
+already inherited own-terminal output. The source/OS page fixes this bounded literal
+renderer and exact escaping of untrusted bytes; no terminal control, hidden field or
+candidate display may alter the manifest. Independent omission/substitution/misdisplay
+controls qualify it before SOURCE. It reads no human answer, opens no extra tty and
+registers no acceptance; Antony's ready judgment and later authorized publication remain
+separate acts. Comparison children still have closed 0/1/2 and no operator channel.
+
+`dup` shares an open-file-description offset. Comparisons therefore run **serially**;
+no peer reads or seeks a shared stream while another consumer uses it. Parent checks/
+sets both offsets to zero before each spawn, waits for EOF and actual reap, then
+checks/restores zero before the reverse comparison, entry or next consumer. Entry reads
+both complete declared lengths through EOF, including explicit zero-length pairs, and
+reports consumed lengths. Failed seek, extra/truncated byte, read error, missing EOF,
+unexpected offset or unreturned child freezes; timeout does not authorize fd closure/
+reuse while a child can still access it. Separate qualified cleanup follows true return.
+No consumer reopens a file merely to obtain an independent offset. This seek/reset rule
+applies to the regular original/copy streams, not plan/result/SEAL pipes: those are
+single-use length/EOF-checked streams and are never sought, reused or replayed.
+
+Each held stream gets an invocation-local generation token tied to actual `fstat` and
+named-parent identity, role and acquisition sequence; descriptor numbers alone are not
+identity. The parent rejects missing/wrong generations and rechecks actual objects before
+handoff and after return. A token is an association check, not a kernel capability or
+proof against a malicious peer. Read-only duplicates still share offsets and can be
+closed by their child; parent originals must remain open and their identity unchanged.
+Descriptor loss/reuse or required original replacement prevents the next spawn/result
+consumer. No saved fd number/result crosses checkpoints.
+
+The prelude retains exclusive checkpoint leases through the read/comparison phase and
+any exact accepted checkpoint publication; the accepted publisher uses the already held
+serial critical section, never attempts a second independent lock acquisition. The
+read-only prelude authorizes no write: the human act and separately accepted publisher
+capability still precede it. A write changes only its predeclared successor output and
+must recheck all earlier basis bytes/identities and absent-next observations immediately
+before reservation under those leases. Unexpected mutation or a new tail refuses.
+No output is retroactively included in the earlier comparison manifest. At CP05, only
+after accepted entry/appointment publication and before any LIVE request, release register
+then release leases in reverse order and reacquire the existing shared LIVE leases in
+release-before-register order. Re-traverse/recompare the complete now-finalized chains,
+exact expected CP05 successors and every held required input under those shared leases
+before release of Task/intent; any intervening change refuses without retry or appointment
+transfer. The same coexisting supervisor/checker/acquirer and original endpoint remain;
+the prelude/holder keep originals through their true return. No comparison child inherits
+leases, and no lock upgrade/downgrade is assumed atomic. Actual record/publication kinds
+and failed-tail hosting remain the later k331 children's work before this transition
+can be consumed; no constructor may invent them.
+
+After entry equality, engine/display receive a separately frozen read-only result/input
+vector from the holder, with only their already accepted explicit per-role descriptors.
+They consume the retained bytes through the same serial offset discipline (or explicit
+qualified `pread` ranges that do not change offsets), never by reopening compared paths.
+Before a consumer starts and after it truly returns, the holder rechecks full bytes/
+lengths and named/held identities. Only the separately accepted registrar receives its
+later trust-only channel from the checkpoint supervisor; no comparison child gets it.
+Any required new I/O/role is an independently reviewed plan change requiring disarm and
+affected qualification before use. Prelude and holder survive through **the entire
+foreground checkpoint's** actual return/freeze, including all entry/consumer descendants;
+neither an engine result nor a timeout releases their retained streams early.
+
+##### Independent controls and first-consumer boundary
+
+The original author supplies positive and isolated negative scratch subjects; a distinct
+executor runs the actual retained prelude→holder→entry path and retains original calls,
+descriptors/generations/offsets, frames, identities, negative lookups and return/freeze
+facts. Antony adjudicates only the already acquired results. No actual authority/target
+or LIVE calibration is part of these controls. Later engine rejection is no credit for
+a missing earlier gate. The following are mandatory Q07/Q08/Q10 and relevant Q05/Q09
+controls, with actual fresh P01/P02 correspondence still required at its own consumer.
+
+| Independent positive | Isolated negative / first required refusal |
+| --- | --- |
+| Original prelude and its source/build/runtime/original-control plan are independently ready before CP01 | Replace prelude original, root plan, executable mode/identity or required runtime; omit required image/read/negative evidence. Source/OS method refuses before prelude execution; candidate self-check cannot rescue it. |
+| 0 and multi-generation anchor chains, complete earlier validation/disarm associations, exact terminal absent-next observation | Skip/overflow/reassign ordinal, forge predecessor/kind/acceptance/validation, substitute chain root, partial/unaccepted/failed tail, supplied unreachable slot or omit required absent-next evidence. Prelude refuses before holder launch; no scan/older anchor. |
+| Still-intact validated anchor with separately failed receipt/close yields only intact-anchor recovery context | Failed anchor/bootstrap-validation tail or failed source root disguised as an unrelated tail. Prelude yields no anchor, requiring CP01 source-rooted re-entry. No recovery/eligibility/initialization is inferred. |
+| Unchanged actual holder executable and complete runtime/read members pass both byte/length directions | Rebuild/replace holder between CP02 and CP03 with identical labels, omit/add a member, replace original/copy/parent with a link, extra hard link, wrong type/UID/mode or named/held mismatch. Prelude refuses before holder launch. |
+| Checked holder spawn has independently established current peer/image correspondence | Replace the executable after comparison, wrong incarnation/slice/backing/peer, lost required observation or early death. Freeze before entry execution; no pre-exec hash/PID-only credit. |
+| Complete serial pair ABI, including empty files, reverse direction, final EOF/zero reap and restored zero offsets | Wrong/extra fd, authority/lock/channel leak, writeable stream, stale generation, close/reuse, consumed offset, concurrent reader/seek, short/extra/read-error stream, duplicate/out-of-order frame or missing EOF/nonzero/dead/timed-out child. Refuse at the prelude/holder/entry's actual first boundary before aggregate equality or engine/registrar execution. |
+| Parents retain checked streams and freeze through every consumer's true return | Replace/mutate source/chain/member after comparison, lose lock/parent/original, reopen a pathname, return holder early or reuse descriptors after timeout. Freeze before the affected next consumer/result; retain exact reached extents. |
+
+Publish the factual comparison as `trust.continuity` in each ready manifest and later
+trust output/consumed record, binding source-root/prelude identity and trust method,
+checkpoint/nonce, full selected chain/absence/cross-reference inputs, original/member
+vector, holder gate and actual descriptor/image/read/offset/EOF/reap/freeze results.
+This is an earlier computation result, never an acceptance, ROOT bearer or appointment.
+Its later writer/immutable acknowledgment and failed-publication slot belong to the live
+k331 repeatable-record design; no arbitrary locator is admitted by this slice. Until
+those records and hosted recovery routes are specified, this remains an unconsumable
+partial producer. All required actual originals/controls/identities remain unacquired.
 
 #### Append-only anchor and close generations
 
@@ -1202,7 +1398,8 @@ compatible preparation duties; no image/task/receipt assigns a trust role.
 | Bootstrap-control adjudicator and trust acceptor | Antony's original-control adjudication, commissioning, ready payload/correction/entry acceptance, final original-result acceptance/audit, eligible-basis acceptance and fresh appointment | Antony did not produce/repair the candidate, run the qualification/control programme or author its expected answers that he adjudicates. His explicitly selected manual About source observation remains permitted; it is separately compared with independently acquired programme results, not self-audit of a candidate/control programme. He uses the independently bootstrapped tool and original dispositions for his own semantic decision. Reviewer writes no authority; runner/acquirer gets no trust role. |
 | Qualified one-time initializer | Candidate provisioning mechanics, authorized disarm-only maintenance, qualification running if independently authored expectations remain separate | Separate from both staged and final receipt validator and from trust acceptor/distinct closer for its outputs. Packaging/pure selector cannot initialize the live permit. Prior qualified/accepted mechanics precede real initialization. |
 | Qualified bootstrap/trust-originals publisher | May share initializer/disarm-maintenance operator under their exclusions; exact original/trust publication from this CP01's direct ready acts | Accepted bootstrap-only capability and artifact/runtime/read/control originals precede ROOT. Separate from its factual validator and semantic acceptance. No implicit human-registrar extension, permit production under this capability, close, eligibility or appointment. |
-| Independent pre-entry stream holder | Supplies only the inspected original method's exact no-follow paired streams and retained descriptor lifetime | Independently authored/reviewed original source/build/runtime/read/image/control closure precedes SOURCE/first opens. Candidate holder/entry cannot certify it; no independent acceptance of its own manufactured original/results. |
+| Independent read-only checkpoint prelude | Original source/OS trust root, exact pre-tool chain traversal/selection and actual holder executable/runtime comparison | Independently supplied outside the selected anchor; no candidate-derived root, authority write, disposition, initialization or semantic acceptance. Separate producer/repairer, original author, executor and Antony adjudication exclusions apply. Required original/runtime/read/image facts precede first use. |
+| Independent pre-entry stream holder | Supplies only the prelude-checked fixed plan's exact no-follow paired streams and retained descriptor lifetime | Actual executing copy is compared before launch by the prelude; independent source/build/runtime/read/image/control closure precedes SOURCE/first opens. Closed fd/offset/generation/EOF/reap handoff and required peer/image checks precede entry/candidate effects. It cannot select/accept an anchor or certify its own original/results. |
 | Separate staged/final receipt validator | One validator may validate the staged binding and final named/held receipt, compare initializer originals and retain acknowledgements | Separate from initializer, receipt producer/repairer and acceptance owner for those facts. Must not validate its own staged receipt or synchronization result; actual validation acquires evidence, CP2 accepts it. |
 | Distinct instrument closing owner and step | Complete original-obligation comparison/promotion after final accepted Q results/audit; own accepted close-only publisher | Separate from producers/repairers, original expected-result author or executor whose fact it closes, control/qualification runner, initializer/validator whose facts it closes and Antony's trust/audit/release group. It cannot accept its own capability/controls or publish human trust/eligibility/appointment. Missing evidence cannot close in prose. |
 | Foreground acquisition / offline derivation | Appointed child and offline derivative constructor after original freeze | No trust/appointment/reset power. Independent association verifier is separate from the producer/deriver for the checked facts. Antony appoints the retained supervisor/checker/child together; only that invocation carries LIVE. |
@@ -2423,7 +2620,7 @@ grant no discretionary filesystem scope.
 Original object child names are exact content-digest encodings under the held attempt,
 never raw target components interpreted as output paths. Package entry cannot initialize.
 
-At the approval subject, fixed `anchors`, `validation-events`, `closes`, `release.lock`,
+At the approval subject, fixed `anchors`, `validation-events`, `closes`, `release.lock`, `register.lock`,
 `release-events` and numbered revision records permit only the approval contract's held read/compare/lock
 and accepted publisher's exclusive write/synchronization operations. Ordinal components
 use the same checked unsigned-64, no-leading-zero ASCII decimal grammar as release events;

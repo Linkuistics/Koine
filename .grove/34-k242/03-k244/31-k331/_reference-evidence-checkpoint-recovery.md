@@ -1,4 +1,4 @@
-# reference-evidence-checkpoint-recovery-k331
+# reference-evidence-checkpoint-recovery-k331 — brief
 
 
 ## Goal
@@ -115,3 +115,36 @@ Design only; no instrument/schema/task implementation, executed controls, provis
 initialization/authority act, installed query/contents, target/protected/topology/process/
 terminal probe or posture change. K244/k242 remain live, k245 pass unused, full k246/k247/
 useful breadth/additive supported-VM/native duties/private ineligibility/both holds remain.
+
+## Decomposition
+
+The checkpoint entry, publication originals and hosted recovery mechanisms are separately
+checkable design obligations and exceed one focused session. This node retains every
+original Goal/Done when and required coherent replacement above. Only its actual closing
+child reconciles the whole C/S/K/P, all original duties, summaries/charters and seven views,
+freezes the new whole documentary membership, and names its own provider evidence on the
+existing mandatory whole review reference-evidence-checkpoint-recovery-k332. No partial
+child supplies a construction handoff or finishes this node. No duplicate review is cut.
+
+The first child, reference-evidence-pretool-continuity-k333, owns the complete F2 enabling
+path: independently trusted pre-tool selection, pre-execution holder trust, exact closed
+descriptor handoff and isolating controls. It changes no authority or checkpoint count.
+reference-evidence-original-publication-k334 owns the launcher-observation and repeatable
+trust-output records (F3/F5); reference-evidence-hosted-recovery-k335 owns their complete
+hosted failed-tail/never-started recovery under k330 (F1); closing
+reference-evidence-checkpoint-recovery-k336 owns whole-artifact/original-duty
+reconciliation (including F4/F6 and all k321 findings).
+They are design work before k332 and k269, not implementation leaves. Each later child
+must retain the exact original record/extents and first-consumer obligations in this brief.
+
+## Decisions (running log)
+
+K328's F2 exposes a pre-tool enabling point distinct from the coupled publication and
+recovery work: no owner selects the anchor before candidate tools, the holder executable
+copy is unchecked, and checked streams have no entry handoff. Decompose this producer;
+complete only that first vertical design slice this session. The immutable historical
+memberships remain historical; the closing child alone freezes the whole replacement.
+K330's actual answers, all original duties, existing agreed seams, unused pass and holds
+remain. The initial jj change was empty. Tier 2 index status is ready; docs/scripts are
+excluded, so exact current/committed document reads supply the evidence. No reviewer is
+spent because k332 already owns whole-producer review.

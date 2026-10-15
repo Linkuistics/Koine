@@ -336,11 +336,21 @@ pre-reserved; failed cleanup prevents successful publication. Instrumented recei
 qualify their image, with reviewed matched ordinary/disabled/enabled correspondence
 and independent ordinary-image outcomes required for release.
 
+**Reference Checkpoint Prelude**: The independently supplied read-only original trusted
+directly by the inspected finite source/OS method before candidate tools. It selects
+the current complete validated anchor through exact predecessor-bound reads, compares
+the actual holder executable before launch and retains the selection/freeze inputs.
+It creates no authority, acceptance or initialization. Its actual originals, required
+identity/read/runtime evidence and controls remain unacquired; k331's whole replacement
+and k332 review/every earned integration still precede construction.
+
 **Reference Stream Holder**: The independently authored and reviewed retained original
-that supplies the inspected source/OS trust method's exact no-follow original/copy
-streams, checks their identities before comparison and holds descriptors through true
-return. Its later-checkpoint selection, executable trust and entry handoff need the
-replacement design identified in the current review integration.
+whose executing copy the **Reference Checkpoint Prelude** compares before launch. It
+opens only the fixed no-follow original/copy plan, checks identities, supplies serial
+read-only descriptor pairs to the short entry and retains originals through true return.
+The [continuity contract](docs/verification/application-reference-evidence.md#holder-execution-and-closed-descriptor-handoff)
+fixes fd roles, offsets, generations and closure. A held file comparison is no atomic
+executing-image proof; required independent correspondence still blocks its consumer.
 
 **Reference Bootstrap Publisher**: The separately accepted bootstrap-only publisher
 of CP01's earlier direct trust acts and supplied originals, under ROOT's same-invocation
