@@ -15,6 +15,10 @@ observations are in the separate [practical admission report](application-refere
 including the current whole-review classifications and required replacement placement.
 The canonical [exact amendment comparison](application-population-metadata-shape.md#line-by-line-original-obligation-comparison)
 and selected sections below own the rules; this reporting locator is never a measured input.
+K330's selected never-started recovery and human-only About provenance constrain this
+proposal. K331 must still replace the complete defective checkpoint/publication protocol
+and earn whole review k332/every integration before construction; recording those
+requirements supplies no working recovery mechanism or accepted construction identity.
 
 ## Ownership and alternatives
 
@@ -838,9 +842,13 @@ The ordered continuation after ROOT is:
 
 For bootstrap reacceptance, step 3 is absent: a `REANCHOR_ONLY` ROOT purpose authorizes
 the next anchor and affected validation/qualification suffix, not a new initialization
-nonce. `INITIALIZE_ONCE` is valid only for the independently established never-initialized
-state and original ROOT nonce. Existing, partial or uncertain permission state cannot
-be reclassified by a later anchor. Post-consumption operation remains offline-only.
+nonce. `INITIALIZE_ONCE` remains limited to one initialization. K330 permits a fresh
+CP01 successor/nonce plan only on independent original proof that no initializer was
+ever dispatched and no permission-subject provisioning occurred, retaining every failed
+original/extent. K331 must specify the complete reviewed mechanism before this route
+can be used. Existing, partial, uncertain, dispatched or consumed permission remains
+unavailable without new explicit authority; a later anchor cannot reclassify it.
+Post-consumption operation remains offline-only.
 
 | Accepted capability | Exact writes and prohibited substitutions |
 | --- | --- |
@@ -1014,11 +1022,18 @@ the slot remains unavailable, with precise live work/authority decision before u
 No recursive automatic disposition, cleanup, deletion, overwrite, scan or fallback is
 selected. Only a finalized disposition can precede a new ordinal and fresh disarm basis.
 
-For a first bootstrap failure before a valid anchor exists, source/OS trust and newly
-ready independent originals must again precede any proposed disposition. The same
-source/holder/short-entry method compares retained earlier failed extents; no absent
+For an anchor or anchor-validation failure, repeated CP01 SOURCE/ARTIFACTS source/OS
+trust and newly ready independent originals must precede any proposed disposition:
+the failed tail supplies no usable current anchor. Other failure dispositions require
+the independently checked still-intact anchor at their precisely hosted repeated
+checkpoint. K331 must specify every ready original, exclusion and first consumer inside
+the existing five-checkpoint/affected-suffix schedule; these design requirements
+supply no implemented recovery or sixth ceremony. The same source/holder/short-entry
+method compares retained earlier failed extents; no absent
 register is inferred valid and no changed tool accepts itself. Exact ancestor/seed
-identities and never-initialized state must be independently established. Unknown
+identities must be independently established. Only fresh `INITIALIZE_ONCE` additionally
+requires independent original proof of no initializer dispatch and no permission-subject
+provisioning; a `REANCHOR_ONLY` disposition never authorizes initialization. Unknown
 authority/initialization cannot be disposed into permission and needs Antony's separate
 decision. The disposition route writes only its accepted exact locator and no permit.
 
@@ -1265,19 +1280,26 @@ fresh manual About original with the current host/session/time provenance. He ac
 the now-existing original; the already qualified independent P observer compares fresh
 raw named sysctl buffers afterward, before P01 credit or intent. CP05 does not approve
 that future comparison result: it authorizes only the appointed invocation under the
-already accepted comparison/refusal contract. Wrong selected build, stale/unknown
-provenance, host/session change or unordered observation/API intervals refuses. No
+already accepted comparison/refusal contract. Host is Antony's manually identified
+machine; session is his label for this observation's work context. Record each label's
+exact meaning and human source. They are human provenance only, not an independently
+matchable terminal/login/boot identity across CP01, AFK Q and CP05. Wrong selected build,
+missing required original provenance or unordered observation/API intervals refuses. No
 scripted UI, plist, sw_vers, alternate sysctl or trial LIVE calibration is admitted.
 
 A changed observation time is a fresh phase-specific P fact, not a change to the
-qualified rule/tool/runtime or permission. Changed host/session/build/configuration or
+qualified rule/tool/runtime or permission. Days, reboot, logout or changed human labels
+alone do not invalidate Q06 or force CP01. Actual changed build/configuration/tool or
 actual consumed dependency invalidates the affected correspondence basis: disarm before
 dependent work, acquire independent originals and repeat affected Q/acceptance/close/
 eligibility suffix (CP01/CP02 also when their bound trust/receipt facts change), without
 reinitializing or substituting a current reference. Fresh About alone cannot repair that
-change or arm LIVE. If Q prepared on one host/session cannot be independently matched
-to the direct CP01 or later CP05 context, it remains unavailable with exact work before
-use; no sixth ceremony or newly authorized observation is inferred. Changed time with
+change or arm LIVE. Lost/replaced authority or missing required correspondence also
+disarms and requires the affected suffix. Required current direct-terminal/peer/image/
+channel observations remain per-invocation facts; no common cross-checkpoint terminal,
+login or boot identity or no-reboot/no-logout window is selected. Human labels do not
+prove host substitution absent; the shared-OS/cooperative provenance limit is explicit.
+No sixth ceremony or newly authorized observation is inferred. Changed time with
 otherwise independently unchanged required basis uses CP05's fresh original and fresh
 P comparisons only. Missing/changed required facts block, rather than becoming accepted
 opaque contact unknowns. The authored observation/compare/acceptance order supplies no

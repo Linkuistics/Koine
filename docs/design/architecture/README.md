@@ -11,8 +11,11 @@ editable; regenerate exports rather than hand-editing them.
 Open [the admission discussion](index.html#discussion). The
 [k328 integration](../../verification/application-reference-input-partition.md#k328-integration-and-required-replacement)
 records every finding against the reviewed k323 proposal. K329 repairs the residual CP01 publisher wording,
-glossary and schedule-completeness wording; k330 settles the two bounded recovery/About choices,
-k331 replaces the coupled protocol, and k332 whole review/every earned integration precedes
+glossary and schedule-completeness wording. K330 records Antony's approval of proven
+never-dispatched/no-provisioning bootstrap recovery and human-only About labels; the
+canonical clauses retain every failure/nonce/authority/correspondence limit. Days/reboot/
+logout alone do not invalidate Q06 or force CP01; labels do not prove host substitution
+absent. K331 replaces the coupled protocol, and k332 whole review/every earned integration precedes
 k269. Recovery placement, pre-tool selection/holder/fd trust, original launcher records and
 repeatable trust slots remain required design work. No planner invents their mechanism.
 The [integration-only candidate](../../verification/reference-practical-admission-integration-membership.json)

@@ -344,13 +344,17 @@ supervisor/checker/acquirer for k245. Receipt, proof, release-record or copied-r
 possession supplies no authority or finite subject. K328 finds k323 incomplete; k330 decisions and complete k331/k332 replacement/review/every earned integration precede k269.
 
 The [k328 integration and required replacement](../verification/application-reference-input-partition.md#k328-integration-and-required-replacement)
-records every grounded finding against k323 at f4d399f3caa2. K330 settles the two new
-recovery/About choices; complete checkpoint-recovery design k331, mandatory whole review
+records every grounded finding against k323 at f4d399f3caa2. K330 records Antony's
+approval of proven never-dispatched/no-provisioning bootstrap recovery and human-only
+About host/session labels with explicit shared-OS/cooperative provenance limits.
+Days/reboot/logout alone do not invalidate Q06 or force CP01; required changed-basis
+requalification and every current per-invocation fact remain. No extra initialization,
+attempt, checkpoint or observation authority follows. Complete k331, mandatory whole review
 k332 and every earned integration precede k269. CP01 publisher wording and the glossary
 are repaired; recovery placement, pre-tool selection/holder/fd trust, original launcher
 records and repeatable trust slots remain design work. The
 [integration-only documentary candidate](../verification/reference-practical-admission-integration-membership.json)
-records saved inputs and unresolved duties; k323's membership is historical. No accepted
+records k329's saved boundary and unresolved duties; later selected edits need k331's new membership. K323's membership is historical. No accepted
 construction input, original, control, authority, qualification or finite subject follows.
 Normative/actually consumed edits disarm and require affected requalification. K244/k242
 stay live, pass unused and all useful/generated/supported-VM/native/private/product duties remain.

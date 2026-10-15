@@ -316,13 +316,17 @@ remain Q/P work; source-child facts first belong to A. A required refusal stays 
 never useful loss, finite-subject credit or private eligibility; both holds remain.
 
 The [k328 integration and required replacement](docs/verification/application-reference-input-partition.md#k328-integration-and-required-replacement)
-records every grounded finding against k323 at f4d399f3caa2. K330 settles the two new
-recovery/About choices; complete checkpoint-recovery design k331, mandatory whole review
+records every grounded finding against k323 at f4d399f3caa2. K330 records Antony's
+approval of proven never-dispatched/no-provisioning bootstrap recovery and human-only
+About host/session labels with explicit shared-OS/cooperative provenance limits.
+Days/reboot/logout alone do not invalidate Q06 or force CP01; required changed-basis
+requalification and every current per-invocation fact remain. No extra initialization,
+attempt, checkpoint or observation authority follows. Complete k331, mandatory whole review
 k332 and every earned integration precede k269. CP01 publisher wording and the glossary
 are repaired; recovery placement, pre-tool selection/holder/fd trust, original launcher
 records and repeatable trust slots remain design work. The
 [integration-only documentary candidate](docs/verification/reference-practical-admission-integration-membership.json)
-records saved inputs and unresolved duties; k323's membership is historical. No accepted
+records k329's saved boundary and unresolved duties; later selected edits need k331's new membership. K323's membership is historical. No accepted
 construction input, original, control, authority, qualification or finite subject follows.
 Normative/actually consumed edits disarm and require affected requalification. K244/k242
 stay live, pass unused and all useful/generated/supported-VM/native/private/product duties remain.
@@ -369,9 +373,16 @@ placement remains required replacement work.
 
 **Reference ROOT purpose**: `INITIALIZE_ONCE` authorizes only the named one-time
 initialization from independently established never-initialized state in the live ROOT
-continuation; `REANCHOR_ONLY` authorizes a successor anchor and affected validation/
-qualification suffix without initialization. Unknown or partial permission state
-refuses. Recovery before any initializer dispatch remains a separate human decision.
+continuation, including fresh bootstrap recovery only on independent original proof of
+no initializer dispatch and no permission-subject provisioning. `REANCHOR_ONLY` authorizes
+a successor anchor and affected validation/qualification suffix without initialization;
+existing, partial, uncertain, dispatched or consumed permission remains unavailable for
+initialization without new explicit authority.
+
+**Reference About provenance**: Host is the machine Antony identifies manually and
+session is his label for an About observation's work context, with each label's exact
+meaning and human source recorded. These are human provenance, not independently
+matchable terminal/login/boot identities or proof that host substitution is absent.
 
 **Reference operation stage**: Q is earlier instrument qualification; P is fresh
 invocation-specific validation before intent/consumption; A is evidence first obtained

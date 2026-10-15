@@ -14,14 +14,17 @@ The single pass is unused.
 K328's whole review of k323 at f4d399f3caa2 identifies unresolved recovery, first-check,
 launcher-record, About-key and repeatable-trust-output defects. The
 [integration and required replacement](#k328-integration-and-required-replacement)
-classifies every finding and places k330's bounded human decisions, complete replacement
-producer k331, mandatory whole review k332 and every earned integration before k269.
+classifies every finding. K330's two bounded human decisions are recorded below.
+Complete replacement producer k331, mandatory whole review k332 and every earned
+integration remain required before k269.
 K269 must place already decided mechanisms; the reviewed k323 proposal is no construction
 handoff. Its [membership](reference-practical-admission-replacement-membership.json)
 retains historical bytes. The new
 [integration-only documentary candidate](reference-practical-admission-integration-membership.json)
-identifies current saved inputs and unresolved work; it supplies no repaired protocol,
+identifies k329's saved boundary and unresolved work; it supplies no repaired protocol,
 accepted input, executable schema or proof. All earlier memberships remain historical.
+K330 changes selected requirements after that snapshot; k331 must freeze new whole
+membership after its complete replacement, without changing any historical manifest.
 
 No target-reading instrument, trusted comparison/display/holder/bootstrap entry, retained
 runtime/read/image chain, executable schema/control programme, qualified initialization,
@@ -33,6 +36,43 @@ k245 retains the one unused pass, k246 complete rewrite/helper/alias discriminat
 k247 whole-subject/family review or precise incomplete work. Full useful breadth,
 additive supported-VM/native duties, private ineligibility and both holds remain.
 
+## K330 selected recovery and provenance requirements
+
+Antony answered "yes" to the fresh CP01 never-started route and "Use human provenance
+labels (Recommended)" to the About choice. The [canonical selected requirements and
+exact comparison](application-population-metadata-shape.md#authority-and-admission-choices)
+record the rules. Independent originals must prove no initializer was ever dispatched
+and no permission-subject provisioning occurred; retain all failed originals/extents
+and require a fresh accepted successor/nonce plan. Existing, partial, uncertain,
+dispatched or consumed permission remains unavailable without new explicit authority.
+Unknown state is not cleared by an answer, missing record or disposition. Five baseline
+checkpoints and affected repeats remain; source-rooted CP01 SOURCE/ARTIFACTS must precede
+anchor/anchor-validation recovery, while other precisely hosted repeated checkpoints
+need an independently checked still-intact anchor. K331 must specify every mechanism,
+ready original, exclusion and first consumer, or name the concrete ceremony conflict.
+
+Host is the machine Antony identifies manually and session is his label for that About
+observation's work context, with exact meaning/human source recorded. These are human
+provenance only, not independent terminal/login/boot identities across CP01/AFK Q/CP05.
+Days/reboot/logout/label change alone do not invalidate Q06 or force CP01. Product/build
+originals still compare with the two raw named sysctl buffers and qualified configuration;
+current per-invocation direct-terminal/peer/image/channel facts remain. Actual changed
+build/configuration/tool/consumed inputs, lost/replaced authority or required correspondence
+failure still disarm/repeat the affected suffix. Handwritten labels do not prove host
+substitution absent; retain the shared-OS/cooperative provenance limit. Neither the
+separate-authority-for-every-failure alternative nor the continuity-window alternative
+was selected. No extra initialization, attempt, checkpoint or observation authority,
+actual original, qualification, commissioning or LIVE follows.
+
+K331 owns the complete replacement under these answers, mandatory whole review k332
+and every earned integration before k269. K323 and k329 membership snapshots retain
+historical bytes and are no current construction proof after these selected edits.
+Actual normative/consumed edits disarm and require affected requalification before use.
+This requirements amendment implements no recovery mechanism, runs no instrument/native
+control and supplies no finite subject. All original duties, the existing agreed seams,
+k244/k242 live obligations, unused pass, k246/k247/full useful/additive supported-VM/native
+placement, private ineligibility and both holds remain.
+
 ## K328 integration and required replacement
 
 The review's original findings live at c368357f9eb36c59efac03988dac9c313fda9d14;
@@ -41,21 +81,17 @@ review name bytes at f4d399f3caa2. No actual mechanism or native fact is inferre
 
 | Finding | Classification, reason and disposition |
 | --- | --- |
-| F1 failed-tail recovery | Valid and actionable. C makes a failed REANCHOR/current-anchor-validation tail unavailable, while later trust requires a current anchor; only initial bootstrap has a source-rooted alternative. Close/validation/disarm/eligible dispositions have no checkpoint host. K330 settles the proposed repeated-checkpoint and never-started-initialization choices; k331 defines every trust base, hosted act, immutable failed extent and successor DAG. No unplaced sixth ceremony, fallback or automatic initialization is authorized. |
+| F1 failed-tail recovery | Valid and actionable. C's reviewed proposal removes the current anchor on a failed REANCHOR/anchor-validation tail and leaves other dispositions unplaced. K330 retains the five-checkpoint/affected-repeat schedule, requires source-rooted CP01 SOURCE/ARTIFACTS for unavailable-anchor recovery, and records Antony's approval of fresh initialization only on independent proof of no dispatch/no provisioning, with failed originals and a fresh accepted successor/nonce plan. K331 must still define every trust base, hosted act, immutable failed extent and successor DAG. No extra initialization, sixth ceremony, fallback or automatic recovery follows. |
 | F2 CP02–CP05 enabling trust | Valid and actionable. Deterministic current-anchor selection has no pre-tool owner, the actual holder copy is unchecked before execution, and holder-to-entry descriptor handoff is unspecified. K331 owns the inspected selection artifact/finite source-OS root, pre-execution holder comparison, closed fd/offset/lifetime handoff and independent changed-holder/selection/descriptor controls. Candidate self-checks or later refusal cannot supply the first check. |
 | F3 launcher observations | Valid and actionable. EOF/reap/death/failed extents are required originals, but no launcher writer/capability/closed kind/exact locator publishes them. K331 defines their original transcript publication, acknowledgments and later CP02/validation consumers without self/future bindings, including writer death. This is coupled protocol work, not a recorder silently added by k269. |
-| F4 About host/session key | Contract stated unclearly, requiring an actual workflow decision. S's provenance has no defined common independently matchable identity across preparation, AFK Q and later CP05; C nevertheless invalidates Q on host/session change. K330 offers explicit provenance-only versus a concretely enforceable continuity-window alternative, with reboot/logout/multi-day consequences and no extra observation authority. K331 applies the actual answer; neither interpretation is selected here. |
+| F4 About host/session key | Contract stated unclearly, requiring an actual workflow decision now recorded by k330. Antony selected human-only provenance labels with exact meaning/source, not cross-checkpoint terminal/login/boot identity. Days/reboot/logout/label change alone do not invalidate Q06 or force CP01; required product/build/configuration comparisons, current per-invocation facts and actual required-basis/authority/correspondence disarm/affected repeats remain. Handwritten labels do not prove host substitution absent. K331 reconciles the complete protocol under this answer without a continuity window or extra observation authority. |
 | F5 repeatable trust outputs | Valid and actionable. CP02 lacks a closed acceptance kind, and revision/control/CP03/audit/About/entry/disposition outputs have no exact repeatable predecessor-bound slots. K331 defines kinds, locators, writers, immutable acknowledged finalization, failed-publication placement and first consumers together with F1–F3. No mutable overwrite, old acceptance reuse or self/future authorization. |
 | F6 publisher/glossary | Contract stated unclearly with an actionable glossary omission. C's two residual CP01 registrar clauses now name the already specified Reference Bootstrap Publisher and prohibit implied registrar bootstrap authority. CONTEXT defines holder/publisher/validator, anchor/validation/close generations, failure disposition and ROOT purposes, retaining unresolved recovery/continuity choices. This repairs wording without granting a capability or changing selected S/descriptor ADR. |
 
-K330 is one bounded requirements leaf for genuinely human choices, not a repeated
-contact/privilege/breadth interview. Recommend hosting ready failure dispositions in
-the next affected repeated checkpoint, source-rooted CP01 for an unavailable anchor,
-and allowing fresh one-time initialization only on independently established no-dispatch/
-no-provisioning state. Recommend treating host/session as explicit human provenance,
-with actual product/build/configuration and current per-invocation terminal/peer/channel
-comparisons retained. Both are proposals pending Antony's answer. Unknown/dispatched/
-partial/consumed authority remains unavailable; no recovery or observation is performed.
+K330 records the two actual answers above without repeating settled contact/privilege/
+breadth or seam choices. Only the selected narrow recovery and human provenance limits
+are rules; the offered alternatives confer none. Unknown/dispatched/partial/consumed
+authority remains unavailable; no recovery or observation is performed.
 
 The two schedule assertions that claimed no hidden/unplaced work and no known dependency
 conflict now state the existing completeness rule: unspecified first-consumer/trust-base/
@@ -70,10 +106,11 @@ or completed integration qualifies the instrument. All original B/R/register/rea
 phase/absence/provenance/exclusion duties and actual prior amendments remain, as do
 R3's composed Safari physical walk, required Q/P blockers and accepted contact unknowns.
 
-The integration candidate is frozen after final document/charter/view edits. It preserves
+K329 froze the integration candidate after its final document/charter/view edits. It preserves
 all historical manifest bytes, original duty memberships and null required unacquired
 identities; k323's old clean/correction DAGs are explicitly historical defective design
-subjects. New replacement DAGs and accepted construction identities belong to k331.
+subjects. The later k330 amendments are not covered by that snapshot. New replacement
+DAGs and accepted construction identities belong to k331.
 Actual normative/consumed-byte changes disarm and require affected requalification
 before consumption; unconsumed report observations alone grant no authority. This session
 has no implemented tool/schema, executed instrument/native control, provisioning or

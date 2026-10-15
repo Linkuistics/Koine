@@ -202,6 +202,13 @@ stream-holder pairs. Q08 requires the separately accepted bootstrap-publisher/va
 capabilities and exact frames/phase/EOF/reap order; Q05/Q09 require the initial disarm
 seed before permit work and append-only partial/death/successor/unchanged-input controls.
 Q06 includes earlier independently compared/accepted About provenance before credit.
+Under k330, About host/session labels record Antony's manually identified machine and
+observation work context, with exact meaning/human source, not a shared terminal/login/
+boot identity. Days/reboot/logout/label change alone do not invalidate Q06 or force
+CP01; product/build/configuration comparisons and required current per-invocation
+terminal/peer/image/channel facts remain. Actual changed required basis, lost/replaced
+authority or missing required correspondence still disarm/repeat the affected suffix;
+the human labels do not prove host substitution absent. No extra observation is admitted.
 Q07/Q08/Q10 include holder-first original/copy link/type/single-link/identity/descriptor/
 image/negative-lookup refusal and complete current validated anchor continuity. P01 uses
 CP05's freshly accepted About original with actual fresh buffer comparison; P02 selects

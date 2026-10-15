@@ -209,9 +209,9 @@ cannot stand in for byte-complete packaging or overwrite the historical packets.
 ### Authority and admission choices
 
 Antony delegated reference-evidence-authority-k270's choices with "you decide".
-The following conservative selections use that delegation within the existing unused
-one-pass permission. They are the selected requirements, not an initialized authority,
-passing qualification or permission for another pass.
+Those conservative selections and the subsequent actual answers recorded below bind
+the existing one-pass permission. They are the selected requirements, not an initialized
+authority, passing qualification or permission for another pass.
 
 **One-time authority and lifecycle.** Select one explicit initialization of
 `koine.reference-evidence.macos-27.0.1-26A434.1` at
@@ -224,9 +224,21 @@ authority from its absence. After the explicit initialization, absent, moved, re
 unreadable or uncertain authority refuses without scan/reset/recreation. Authority must
 be consumed before target contact; ordinary attempt/export deletion or movement, cleanup
 and lock release never replenish it. Recovery or a further attempt requires new explicit
-human authority. Accept cooperative local enforcement: deliberate whole-authority forgery
+human authority except for the proven never-started bootstrap route below. Accept
+cooperative local enforcement: deliberate whole-authority forgery
 or undetectable rollback by the user/admin is outside its protection. No secure monotonic
 or cross-machine store is selected.
+
+**Never-started bootstrap recovery.** Antony answered "yes" in k330 to a fresh CP01
+`INITIALIZE_ONCE` only when independent original evidence establishes that no initializer
+was ever dispatched and no permission-subject provisioning occurred. Retain every failed
+original/extent and require a fresh accepted successor/nonce plan. This permits the
+one selected initialization still to begin; it grants no second initialization or
+additional attempt. Existing, partial, uncertain, dispatched or consumed permission
+remains unavailable without new explicit authority. Neither missing records nor a
+failure disposition can turn unknown dispatch/state into permission. K331 must specify
+and earn whole review of the exact independent evidence, successors and enabling points
+before use; this answer supplies no original fact, provisioning or LIVE authority.
 
 **Independent approval and corrections.** Antony retains authority over scope, privilege
 and new attempts. Within these requirements, the existing independent whole-design
@@ -301,6 +313,16 @@ the bounded trade-off; do not silently add ceremonies, approve future records or
 a realizable five-step path. Producer/repairer/runner/acquirer exclusions, independently
 authored originals and the distinct closing owner/step remain binding.
 
+Ready failure-disposition acceptance must also fit inside the existing schedule's
+affected repeated checkpoints, after its inputs exist and before its first consumer.
+An anchor or anchor-validation failure first repeats CP01 SOURCE/ARTIFACTS under
+independently established source/OS trust, because the failed tail removes the current
+anchor. Other failures use an independently checked still-intact anchor at their
+precisely hosted repeated checkpoint. K331 must specify every placement, trust base,
+ready original, exclusion and failure boundary; these are design obligations, not
+executed recovery. An exact conflict requiring another ceremony returns as a concrete
+bounded trade-off, never an assumed sixth checkpoint or automatic recovery.
+
 **Documentary proportionality.** Replace k291 F6's per-fragment enumeration with a
 reviewed complete list of historical/reporting exceptions and an explicit enduring-rule
 default for everything else. Each exception identifies its whole object or exact section
@@ -323,12 +345,28 @@ accepted current input.
 **Independent build, process-image and terminal correspondence.** Permit the following
 bounded read-only arrangement for independently authored and accepted correspondence
 evidence. Antony manually opens the local OS About display and records its product/build
-values, host, session, time and his own observation. Compare those originals with the
-already permitted fresh `kern.osproductversion`/`kern.osversion` buffers and qualified
-SDK/API/compatibility configuration. This is an explicit exception for that human UI
+values, host, session, time and his own observation. Antony selected "Use human provenance
+labels (Recommended)" in k330: host is the machine he identifies manually; session is his
+label for that observation's work context. Record each label's exact meaning and human
+source. These labels are provenance only, not independently observed terminal, login
+or boot identities to match across CP01, AFK Q and CP05. Compare only the permitted
+original product/build values with the already permitted fresh
+`kern.osproductversion`/`kern.osversion` raw buffers and qualified SDK/API/compatibility
+configuration. This is an explicit exception for that human UI
 observation to the evidence permission's no-launch rule. It admits no scripted UI,
 `sw_vers`, plist, subprocess or alternative-sysctl fallback, app inventory, network or
 installation operation.
+
+Days, reboot, logout or a provenance-label change alone do not invalidate Q06 or force
+CP01. Retain required current direct-terminal/peer/image/channel observations at each
+invocation. Actual changed build/configuration/tool/consumed inputs, lost or replaced
+authority, or missing required correspondence still disarm and require the affected
+qualification/acceptance/close/eligibility suffix, including CP01/CP02 when their bound
+facts change. A fresh About original or human label repairs none of those failures.
+Handwritten provenance does not prove host substitution absent; the shared-OS/cooperative
+provenance limitation remains explicit. No continuity window restricting reboots/logouts
+or new observation authority is selected. Original CP01 preparation/ready acceptance before Q06 and fresh
+CP05 About acceptance before appointment/later actual P comparison remain required.
 
 A separately authored unprivileged observer may inspect only the finite same-UID
 commissioned foreground supervisor/checker and declared retained Task/interpreter/
@@ -552,7 +590,7 @@ first. No amount, accounting, ABI, posture or useful-category change follows.
 ## Reference-evidence decision comparison and reporting
 
 The selected clauses above and exact comparison below record only the actual k270/k281/
-k290/k295/k314/k319 amendments. Changing design/construction/qualification/pass observations
+k290/k295/k314/k319/k330 amendments. Changing design/construction/qualification/pass observations
 live in the [unconsumed report](application-reference-input-partition.md#current-construction-and-evidence-report).
 The k314 before state is 47875236: its two selected clauses were inserted before Independent
 build, process-image and terminal correspondence; all earlier selected clause bytes were
@@ -561,6 +599,12 @@ The k319 before state is k318's retirement commit cafb8e88: only the protected
 prefix-continuity sentence and out-and-back table expectation are amended, and the
 **Narrow Safari root step** clause is added. All other earlier selected clause bytes
 are retained. K320 owns the complete design reconciliation under that actual answer.
+The k330 before state is e9fc85dd: its actual "yes" and "Use human provenance labels
+(Recommended)" answers authorize only the never-started recovery and About meaning
+amendments compared below. Five baseline checkpoints/affected repeats and every other
+prior selection remain. K331 owns the complete replacement and mandatory whole review
+k332/every earned integration before k269; the defective k323 protocol and older
+membership candidates supply no accepted implementation or construction input.
 
 ### Status outside the measured permission
 
@@ -573,6 +617,9 @@ never replacement proof. The selected Documentary proportionality clause owns th
 
 | Original clause or condition | Selected disposition |
 | --- | --- |
+| K270 lifecycle: "Recovery or a further attempt requires new explicit human authority"; k323 `INITIALIZE_ONCE` requires "never-initialized state and original ROOT nonce", while first-bootstrap failure leaves fresh initialization undecided | K330's actual "yes" admits only a fresh CP01 `INITIALIZE_ONCE` on independent original evidence that no initializer was ever dispatched and no permission-subject provisioning occurred, with all failed originals/extents retained and a fresh accepted successor/nonce plan. The one selected initialization and one attempt remain; existing/partial/uncertain/dispatched/consumed state still needs new explicit authority. Unknown state, missing records and a disposition grant no permission. K331 must supply the independently reviewed mechanism before use. |
+| K314 five baseline checkpoints, ready-input/first-consumer/exclusion rules and affected correction suffix; k328 F1 finds failed-tail dispositions unplaced and anchor failure removes later trust's starting anchor | Retained and made explicit: place ready dispositions within the affected repeated checkpoints, using repeated CP01 SOURCE/ARTIFACTS independent source/OS trust for anchor/anchor-validation failure and a checked still-intact anchor at each precisely hosted other repeated checkpoint. K331 must resolve every first consumer and failure boundary. No sixth ceremony, old-anchor fallback, automatic recovery, future-object acceptance or executed mechanism follows. A concrete conflict still needs its bounded human trade-off. |
+| K295 About records "product/build values, host, session, time" without defining host/session; k323 Manual About requires changed-host/session refusal and independent host/session matching between CP01, AFK Q and CP05 | K330's actual "Use human provenance labels (Recommended)" defines host as Antony's manually identified machine and session as his label for the observation's work context, each with exact meaning and human source. They are provenance only; compare the permitted original product/build values with the two raw named sysctl buffers and qualified configuration. Days/reboot/logout/label change alone do not invalidate Q06 or force CP01. Required current direct-terminal/peer/image/channel facts and actual build/configuration/tool/input/authority/correspondence disarm/affected suffix remain. Labels do not prove host substitution absent; retain the shared-OS/cooperative limitation. No continuity window, independently matchable cross-session identity or new observation authority is selected. |
 | Observer privilege: "A realizable independent full contact observer/containment boundary remains required" and "Until it is independently qualified, admission remains unavailable" | Replaced by **Observer privilege and bounded contact evidence**: qualify only named evidenced claims, report current-service/proxy/initial-right/mapping coverage unknown, accept the stated accidental-contact risk, and retain all other controls and authority checks. No blanket full-coverage gate for k244 closure/k245 admission remains. |
 | Agreed seams: "actual unprivileged scratch adapters with independently qualified complete contact observation/containment" | Replaced by the accepted controlled-input, independent offline/admission, exact task/parser/domain and actual scratch-adapter seams under the bounded contact rule. Any bounded observation supports only its named scope. |
 | Protected clause: known/unsettled consent risk refuses "before contents handles/listing" | Strengthened to refusal **before lookup/open**. Independently reviewed exact path/component-class entries fixed before the pass are required in addition to the three literal/walk-resolved prefixes. |
@@ -609,16 +656,18 @@ never replacement proof. The selected Documentary proportionality clause owns th
 | K242 Done when 5: whole family/spec/acceptance/eligibility/charter/view reconciliation, all nine tapes/real publication and resource/authority/action/compatibility duties | Retained in full. The accepted contact risk changes no product/native qualification gate. |
 | K242 closing condition: complete coherent subject-design boundary and mandatory whole-producer review/integration before private construction/k7, including exact unavailable/failed work | Retained in full. An incomplete package permits only the truthful failed/unavailable design handoff, never finite-subject credit or closure of missing native obligations. |
 | K244/admission C1–C8/U1–U6 blanket prerequisites: complete current universe, mechanism, initial capabilities and proxy/map coverage before any adapter/entry/read credit, node close or k245 admission | Superseded only as universal no-contact prerequisites. Preserve the documentary inventory and each missing class as an explicit limit; k282 must map the accepted bounded claims, their actual required proofs and exact remaining blockers throughout the contract/companions/profile/controls/views. Unrelated UID/build/receipt/image/entry/decoder/freeze/refusal proofs cannot be waived as unknown. |
-| Exact target permission, one attempt, authority lifecycle/independent approval, no new consent/privilege/posture, useful breadth, product holds/private ineligibility and native pending obligations | Retained under only the explicitly compared amendments. K314 changes acceptance computation/checkpoints and documentary mechanics, without adding target or observation authority. K319 changes only the two checked search-only Safari root transitions above. Neither this answer nor future scratch controls initialize live authority, select LIVE, authorize an application-target/protected/topology probe beyond the selected evidence scope, consume another pass or qualify a product/native outcome. Reported peer paths add no target lookup/contents or executable acquisition. |
+| Exact target permission, one attempt, authority lifecycle/independent approval, no new consent/privilege/posture, useful breadth, product holds/private ineligibility and native pending obligations | Retained under only the explicitly compared amendments. K314 changes acceptance computation/checkpoints and documentary mechanics, without adding target or observation authority. K319 changes only the two checked search-only Safari root transitions above. K330 admits only independently proven never-started setup recovery and defines About provenance; it adds no initialization count, attempt, checkpoint or observation authority. Neither an answer nor future scratch controls initialize live authority, select LIVE, authorize an application-target/protected/topology probe beyond the selected evidence scope, consume another pass or qualify a product/native outcome. Reported peer paths add no target lookup/contents or executable acquisition. |
 
 The original k244/k242 Done when texts remain as the historical obligation inventory;
 the explicitly identified k281 contact/pre-lookup, k290 operator/owner/status, k295
-bounded correspondence-authority, k314 acceptance/documentary and k319 narrow root-step
-amendments above control
-their interpretation. K314 changes k291 F6's per-fragment enumeration and reporting-driven
+bounded correspondence-authority, k314 acceptance/documentary, k319 narrow root-step
+and k330 never-started recovery/About provenance amendments above control their
+interpretation. K314 changes k291 F6's per-fragment enumeration and reporting-driven
 composite reconstruction only as compared; every other original obligation remains.
-K320 owns the complete contract/companion/operation-map/representation reconciliation,
-and its mandatory whole review/every earned integration must precede k269 consumption.
+K331 now owns the complete contract/companion/operation-map/representation reconciliation
+under those actual answers, with mandatory whole review k332 and every earned integration
+before k269 consumption. K320/k323 and their memberships are historical defective
+proposals; no partial requirements amendment repairs or qualifies their mechanisms.
 
 ## Required reproduction contract after the decision
 

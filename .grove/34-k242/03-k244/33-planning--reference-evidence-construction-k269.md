@@ -19,6 +19,16 @@ integration-only candidate identifies saved current inputs and unresolved work, 
 accepted construction identities. Actual consumed edits require disarm/affected
 requalification. Original Goal/Done when and every downstream duty/hold remain.
 
+K330's actual answers now admit only independently proven never-dispatched/no-provisioning
+bootstrap recovery, retaining failed originals and requiring a fresh accepted successor/
+nonce plan, and define About host/session as Antony's human provenance labels. Days,
+reboot or logout alone do not invalidate Q06 or force CP01. Required changed-basis
+requalification, per-invocation correspondence and the explicit shared-OS/cooperative
+host-provenance limit remain. No extra initialization/attempt/checkpoint/observation
+authority follows. Consume the canonical exact comparison and complete reviewed k331;
+the older tables below cannot impose cross-checkpoint host/session identity equality
+or supply a recovery mechanism that k331 has not specified.
+
 Historical k323 input inventory, reviewed as defective by k328:
 
 Consume the complete reference-evidence-practical-admission-k323 replacement only after

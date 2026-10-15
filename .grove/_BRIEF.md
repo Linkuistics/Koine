@@ -5,8 +5,12 @@
 K328 reviews k323 at f4d399f3caa2 as defective; k329 verifies every finding and repairs
 the residual CP01 publisher wording, glossary and schedule-completeness wording. Current repair placement is
 application-reference-input-partition.md#k328-integration-and-required-replacement.
-Reference-evidence-recovery-and-provenance-k330 settles the new failure-recovery/
-never-started-initialization and About host/session choices with Antony. Complete
+Reference-evidence-recovery-and-provenance-k330 records Antony's actual approval of
+independently proven never-dispatched/no-provisioning bootstrap recovery and human
+About host/session provenance. The canonical selected clauses and exact comparison
+carry every limit: retained failed originals/fresh accepted successor/nonce, no extra
+initialization/attempt/checkpoint/observation authority and required changed-basis
+requalification. Days/reboot/logout alone do not invalidate Q06 or force CP01. Complete
 replacement reference-evidence-checkpoint-recovery-k331 then specifies checkpoint trust,
 launcher originals, repeatable trust records and every recovery first consumer under
 those actual answers. Mandatory whole review reference-evidence-checkpoint-recovery-k332

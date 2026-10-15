@@ -22,6 +22,34 @@ historical packets/parent associations and separate k94/k110 Safari operands. Al
 original k242/k244/k245/k246/k247/k269 Goal/Done when, B and R duties, full actual
 read/runtime/charter/phase/absence/provenance duties and actual prior answers bind.
 
+## Selected k330 answers
+
+Antony answered "yes" to fresh CP01 `INITIALIZE_ONCE` only on independent original
+proof that no initializer was ever dispatched and no permission-subject provisioning
+occurred. Retain every failed original/extent and require a fresh accepted successor/
+nonce plan. Existing, partial, uncertain, dispatched or consumed permission remains
+unavailable without new explicit authority. No missing record or disposition resolves
+unknown state. Fit ready dispositions into the existing five-checkpoint/affected-repeat
+schedule: unavailable-anchor/anchor-validation recovery first repeats CP01 SOURCE/
+ARTIFACTS source/OS trust; other hosted repeated checkpoints require an independently
+checked still-intact anchor. Specify every first consumer/exclusion and failed boundary,
+or name the exact conflict before seeking any extra ceremony. The answer itself proves
+no state and initializes nothing; no second initialization or attempt is authorized.
+
+Antony selected "Use human provenance labels (Recommended)": host is the machine he
+identifies manually, session is his label for the About observation's work context,
+each with exact meaning and human source. They are provenance only, not independently
+matchable terminal/login/boot identities across CP01/AFK Q/CP05. Compare permitted
+original product/build values with the two raw sysctl buffers and qualified SDK/API/
+compatibility configuration. Days/reboot/logout/label change alone do not invalidate
+Q06 or force CP01; actual changed build/configuration/tool/consumed inputs, lost/replaced
+authority or required correspondence failures still disarm/repeat the affected suffix.
+Current per-invocation direct-terminal/peer/image/channel facts remain required. Human
+labels do not prove host substitution absent: state the shared-OS/cooperative provenance
+limit. No continuity window or new observation authority was selected. Consume the
+canonical selected clauses and exact line-by-line comparison; both alternatives were
+not selected and confer no rule or authority. Preserve the existing agreed test seams.
+
 ## Required coherent replacement
 
 - Place every failure-disposition acceptance within the actual selected checkpoint
