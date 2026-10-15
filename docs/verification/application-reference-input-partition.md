@@ -20,7 +20,9 @@ integration remain required before k269.
 K331 is now a design node. Its first child k333 specifies the
 [source-rooted prelude, holder gate and descriptor handoff](application-reference-evidence.md#independent-stream-holder-and-continuity-anchor).
 F2 has a complete proposed enabling path and independent control specification; actual
-originals/controls/identities remain unacquired. Launcher/trust-output originals, hosted
+originals/controls/identities remain unacquired. K337 now specifies the
+[publisher-terminal original prefix](#launcher-original-publication-slice) under k334;
+k338 retains complete invocation/last-writer finalization and trust outputs. Hosted
 failed-tail recovery and whole replacement reconciliation remain live children before
 k332. A partial child supplies no construction handoff or new whole membership. Only
 the actual closing child names its provider evidence on that existing whole review.
@@ -42,6 +44,61 @@ waive no named required failure and establish no no-contact fact. K244/k242 rema
 k245 retains the one unused pass, k246 complete rewrite/helper/alias discrimination and
 k247 whole-subject/family review or precise incomplete work. Full useful breadth,
 additive supported-VM/native duties, private ineligibility and both holds remain.
+
+## Launcher original publication slice
+
+K334 is decomposed because the publisher-terminal original and the complete invocation/
+last-writer/repeatable-trust publication have different ready-input and failure boundaries.
+Its first child, reference-evidence-launcher-originals-k337, specifies only the earlier
+publisher-terminal original required by separate bootstrap validation. The exact
+[launcher publication contract](application-reference-evidence.md#launcher-original-before-bootstrap-validation)
+assigns the accepted foreground launcher a separately accepted transcript-only capability,
+with `launcher-events/n/observation.intent` and `observation.record`, closed kinds
+`launcher.observation-intent` and `launcher.publisher-terminal`, exact predecessor/ROOT/
+nonce/member/context/identity bindings and a separate post-write `launcher.observation`
+frame. CP01-ARTIFACTS must accept the ready independent mechanics before ROOT. This is
+design only: no actual original, executable schema/tool, accepted capability or control
+result has been acquired.
+
+The finite first-consumer prefix is ready independent author/executor originals →
+CP01-ARTIFACTS recorder mechanics acceptance → current ROOT plan/acknowledged initial
+disarm → publisher outputs/actual EOF and reap → recorder intent/record → actual recorder
+write/flush returns → recorder's acknowledgment frame → separate bootstrap-validator
+comparison and its factual validation. Anchor/result cannot consume its own publisher's
+later terminal original. A separate validation joins those earlier records instead.
+Received storage reports, directly observed terminal facts and independently compared
+file/identity facts are explicit different provenance. A record never certifies its own
+future acknowledgment, the validator's later return or the launcher's own death.
+
+Recorder death before reservation means no durable original; partial writes/messages
+leave exact prefixes and unavailable work. Death after publication cannot be relabelled
+as a finalized successful chain or proof of no initializer dispatch. Independent controls
+must isolate the actual recorder's write/flush/message boundaries and its separate
+validator's comparison/result/reply/EOF/reap boundaries, plus wrong owner/kind/nonce/
+member/predecessor/identity, missing facts, future-input and descriptor/offset/lock faults.
+The original executor retains the actual reached first refusal, with other operands
+unchanged. These are specified controls, not executions or an instrument/native pass.
+
+Reference-evidence-publication-completion-k338 owns every remaining k334 original
+Done when: initializer/staged-final-validator/last-transcript-writer actual terminal/
+acknowledged finalization, exact CP02 and revision/control/CP03-results/audit/About/entry/
+disposition/trust.continuity records, complete prelude read/selection/partial-validation
+reconciliation and independent clean/death/partial/successor first-consumer DAGs. The
+prefix leaves the initialization gate unusable until those later originals and finite
+joins are completely specified. K335 must host every ready disposition in the selected
+checkpoint schedule; none is assumed accepted at an unspecified time. Closing k336
+alone reconciles whole C/S/K/P/original duties/seven views and freezes the new whole
+replacement membership, preserving every historical manifest's exact bytes. Existing
+whole k332 and every earned integration still precede k269; no duplicate review or
+partial-child Creator is supplied. K334/k331/k244/k242 remain live, pass unused and all
+useful/generated/additive supported-VM/native/private/product duties and both holds remain.
+Actual consumed/normative edits still disarm and require affected requalification.
+
+- [Admission → Publish launcher originals before validation](../design/architecture/index.html#diagram-native-reference-admission) — Focuses the view on publisher return, immutable observation, later acknowledgment and separate validation, with explicit partial/death and live completion boundaries.
+- [Launcher original before bootstrap validation](application-reference-evidence.md#launcher-original-before-bootstrap-validation) — Adds the closed recorder capability, original record/frame/locator, retention and first-consumer control contract.
+- [Closed required blockers and accepted unknowns](application-reference-contact-boundary.md#closed-required-blockers-and-accepted-unknowns) — Adds these required Q05/Q07/Q08/Q09/Q10 originals without expanding observation authority or accepted unknowns.
+- [Release and acceptance controls](application-reference-packaging-runtime.md#release-and-acceptance-controls) — Requires independent writer/validator-death controls and keeps full terminal/trust/recovery work live before use.
+- [Koine language](../../CONTEXT.md#language) — Defines Reference Launcher Recorder and its observation generation without implying acceptance or initialization authority.
 
 ## K330 selected recovery and provenance requirements
 

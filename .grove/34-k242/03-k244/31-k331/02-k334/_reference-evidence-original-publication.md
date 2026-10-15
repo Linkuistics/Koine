@@ -1,4 +1,4 @@
-# reference-evidence-original-publication-k334
+# reference-evidence-original-publication-k334 — brief
 
 
 ## Goal
@@ -54,3 +54,27 @@ process/terminal probe or posture change. No actual original, authority, finite 
 qualified tool follows. K244/k242 stay live, pass unused, full k246/k247/useful/additive
 supported-VM/native/private/product duties and both holds remain. Decompose if needed;
 only the actual closing child names its own provider evidence on k332.
+
+## Decisions (running log)
+
+The launcher-observation protocol and repeatable human trust-output publication have
+different writers, ready-input sets and failure boundaries. They exceed one focused
+design session. Decompose this leaf, completing only the launcher-original vertical
+slice now; the next child owns exact CP02/revision/control/results/audit/About/entry/
+disposition trust records and the complete publication reconciliation before k335.
+All original Goal/Done when remain on this node. No partial child finishes k334 or
+k331, supplies construction eligibility, freezes whole replacement membership or names
+Creator on the existing whole review k332. That remains closing k336's duty.
+The initial jj change was empty. Tier 2 index is ready, with docs/scripts excluded;
+direct current and committed document reads are the evidence. No in-session reviewer
+is spent because whole k332 is already scheduled.
+
+The first child is reference-evidence-launcher-originals-k337. Its complete vertical
+boundary is the publisher-terminal original → post-write acknowledgment frame → separate
+bootstrap validation. The record cannot precede the publisher's actual return; it cannot
+contain its own future acknowledgment. Reference-evidence-publication-completion-k338
+retains every remaining initializer/validator/last-transcript-writer original, finite
+acknowledged finalization, exact CP02/repeatable trust outputs and whole k334 reconciliation
+before hosted recovery k335. K337's prefix alone authorizes no initialization, final
+selection, construction or recovery. No required original has been dropped or supplied;
+every original Done when above remains the node's closing check.

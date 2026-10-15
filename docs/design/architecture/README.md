@@ -17,8 +17,10 @@ canonical clauses retain every failure/nonce/authority/correspondence limit. Day
 logout alone do not invalidate Q06 or force CP01; labels do not prove host substitution
 absent. K331 replaces the coupled protocol, and k332 whole review/every earned integration precedes
 k269. K331 is decomposed: k333 supplies the proposed pre-tool selection/holder/fd path;
-original launcher records, repeatable trust slots, hosted recovery and whole reconciliation
-remain live design work. No partial child or planner supplies the complete mechanism.
+K337 supplies only the publisher-terminal original prefix under k334; k338 retains full
+initializer/validator/last-writer terminal closure and repeatable trust records. Hosted
+recovery and whole reconciliation remain live. No partial child or planner supplies
+the complete mechanism.
 The [integration-only candidate](../../verification/reference-practical-admission-integration-membership.json)
 records saved current inputs and unresolved duties; k323/older memberships stay historical.
 Normative/actually consumed changes disarm and require affected requalification.
@@ -32,7 +34,27 @@ private/product duties and both holds retained. Render/source checks establish n
 pass. K326's narrow-layout and unverified dark/Safari limits and k316's separate viewer
 defect remain live with their actual owners.
 
-## Checkpoint continuity discussion
+## Launcher original publication discussion
+
+Open [Admission → Publish launcher originals before validation](index.html#diagram-native-reference-admission).
+The publisher returns before the launcher can publish an original of that return.
+The recorder's actual write/flush acknowledgments belong to a later frame, consumed by
+the separate bootstrap validator. The diagram keeps these facts in physical order and
+shows recorder/validator-death boundaries. This is k337's first k334 design slice only;
+the remaining terminal/finalization/CP02/trust protocol in k338 is required before use.
+K335 hosts recovery, k336 reconciles the whole artifact/membership, then existing k332
+whole review/every integration precedes k269. No actual original or authority follows.
+
+- [Admission → Publish launcher originals before validation](index.html#diagram-native-reference-admission) — Replaces the broad historical admission path with the exact original/acknowledgment/validator prefix and the still-live completion boundary.
+- [Launcher original before bootstrap validation](../../verification/application-reference-evidence.md#launcher-original-before-bootstrap-validation) — Defines the recorder capability, exact predecessor-bound record/frame/locator and independent first-consumer/death controls.
+- [Launcher original publication slice](../../verification/application-reference-input-partition.md#launcher-original-publication-slice) — Names the precise remaining terminal/trust/recovery and whole-review handoff.
+
+Regenerate with `task design:application-population-metadata-shape-render` (D2 0.9.0,
+Dagre, themes 0/200). Only the admission source/export/caption is marked changed in this
+discussion; all six other views are unchanged context. Source/render checks are not
+browser delivery, instrument controls or native qualification.
+
+## Checkpoint continuity context
 
 Open [Checkpoint continuity → Select and check before candidate tools](index.html#diagram-native-reference-proof).
 This view now focuses on k333's F2 enabling path: an independently supplied read-only
@@ -43,17 +65,15 @@ Required independent executing-image evidence remains separate from file equalit
 Originals remain held through true return. Unavailable source root/anchor requires
 source-rooted CP01 re-entry; no older-anchor fallback or new authority is supplied.
 
-- [Checkpoint continuity → Select and check before candidate tools](index.html#diagram-native-reference-proof) — Replaces the broad clean-path sketch with the prelude/selection/holder/descriptor/first-consumer view and explicit live k331 remainder.
-- [Source-rooted prelude before selection](../../verification/application-reference-evidence.md#source-rooted-prelude-before-selection) — Defines the finite original source/OS trust root outside the anchor being selected.
-- [Closed pre-tool reads and deterministic selection](../../verification/application-reference-evidence.md#closed-pre-tool-reads-and-deterministic-selection) — Assigns exact chain reads, absent-next facts, cross-chain checks and unavailable-anchor refusal to the prelude.
-- [Holder execution and closed descriptor handoff](../../verification/application-reference-evidence.md#holder-execution-and-closed-descriptor-handoff) — Fixes actual executable comparison, serial descriptor roles/offsets/generations, ENTRY_SEAL, qualified lease transitions and retained lifetime.
+Supporting unchanged context is the [source-rooted prelude](../../verification/application-reference-evidence.md#source-rooted-prelude-before-selection),
+[closed selection reads](../../verification/application-reference-evidence.md#closed-pre-tool-reads-and-deterministic-selection)
+and [descriptor handoff](../../verification/application-reference-evidence.md#holder-execution-and-closed-descriptor-handoff).
 
 This is a documentary design slice. F3/F5 publication records, F1 hosted recovery,
 whole original-duty/new-membership reconciliation and k332 whole review/every earned
 integration remain ahead of construction. K330's selected provenance/recovery limits,
-all original duties, unused pass and both holds remain. The seven-view renderer is
-`task design:application-population-metadata-shape-render`; only this proof view changes
-in the current discussion. Other views are unchanged context, not changed markers.
+all original duties, unused pass and both holds remain. This proof view is unchanged
+context in the current publication discussion, not a changed marker.
 
 ## Retained Safari composition context
 

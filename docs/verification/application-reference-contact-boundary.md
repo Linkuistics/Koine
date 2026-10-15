@@ -218,7 +218,21 @@ blockers; no file hash certifies the executing image. Partial/failed/unaccepted 
 bootstrap-validation tails require source-rooted CP01 re-entry, never an older anchor.
 Still-intact-anchor recovery context grants no disposition/initialization/eligible authority.
 This k333 design slice leaves k331 launcher/trust-record/failure-hosting/whole reconciliation
-live before k332 and construction; no original controls or current fact are supplied. P01 uses
+live before k332 and construction; no original controls or current fact are supplied.
+The [launcher publisher-terminal slice](application-reference-evidence.md#launcher-original-before-bootstrap-validation)
+adds required Q05/Q07/Q08/Q09/Q10 originals: CP01-ARTIFACTS accepts the separate
+transcript-only recorder mechanics before ROOT; `launcher-events/n` intent/record and
+post-write `launcher.observation` frame precede separate bootstrap-publication validation.
+Independently authored/executed positives and isolating writer/validator-death, partial/
+wrong-frame/nonce/member/predecessor/identity/offset/leaked-role/future-ack controls must
+refuse at that first consumer. A peer's reported storage return is distinguished from
+launcher-observed EOF/reap and independently compared file facts. Recorder death with
+no durable record leaves exact unavailable work, never a successful or never-dispatched
+original. The initializer/final-validator/last-writer terminal join, repeatable trust
+outputs, CP02 and hosted recovery remain live k334/k335 work; this prefix is not a usable
+initialization route. Required terminal/image/read/absence facts remain blockers, with no
+new observation/API/contact authority or optional-unknown substitution.
+P01 uses
 CP05's freshly accepted About original with actual fresh buffer comparison; P02 selects
 the exact current anchor and acknowledged fresh close for its disarm/CP03 basis, outside
 sealed revisions, never an older record under a partial/failed successor. These expand

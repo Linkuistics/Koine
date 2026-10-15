@@ -167,6 +167,17 @@ credit. This is the agreed scratch seam, not a new live-preflight/calibration ro
 | Scope-preserving correction binds full issuance/current profiles and stays disarmed through affected requalification/acceptance/audit/close | Change authority/file/cohort/effect/attempt fields, restore spent/unspent state, or let correction/provisioning auto-arm. Refuse and return broader authority to Antony; no second permit. |
 
 For each pair retain original bytes/observed frames, actual process/image/endpoint and
+the [launcher publisher-terminal originals](application-reference-evidence.md#launcher-original-before-bootstrap-validation)
+where applicable. That first k334 slice gives the accepted launcher a separate
+transcript-only capability and exact predecessor-bound `launcher-events/n` intent/record;
+its post-write `launcher.observation` frame is an earlier input to the separate
+bootstrap-publication validator. The recorder and validator never validate their own
+publication or accept their own facts. Controls must kill the actual recorder before/
+after reservation, each write/flush and frame, then independently kill its validator
+at comparison/result/reply/EOF/reap, retaining exact extents and refusing before credit.
+Unknown recorder originals cannot prove no initialization dispatch. Full later terminal,
+CP02/repeatable trust and hosted recovery protocols remain live before use; no partial
+prefix authorizes initialization, construction or a new checkpoint. Also retain the
 operation/edge evidence, before/after full input digests, intended check reached, unchanged
 context and scope/accepted-unknown limitations. Run final measurement only after the last
 edit, with separate original-result acceptance and audit. Do not multiply equivalent tests

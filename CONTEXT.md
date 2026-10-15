@@ -323,8 +323,9 @@ Days/reboot/logout alone do not invalidate Q06 or force CP01; required changed-b
 requalification and every current per-invocation fact remain. No extra initialization,
 attempt, checkpoint or observation authority follows. Complete k331, mandatory whole review
 k332 and every earned integration precede k269. CP01 publisher wording and the glossary
-are repaired; recovery placement, pre-tool selection/holder/fd trust, original launcher
-records and repeatable trust slots remain design work. The
+are repaired; k333 specifies the pre-tool selection/holder/fd path and k337 the first
+publisher-terminal original. Complete last-writer/terminal/trust publication and hosted
+recovery remain live design work under k334/k331. The
 [integration-only documentary candidate](docs/verification/reference-practical-admission-integration-membership.json)
 records k329's saved boundary and unresolved duties; later selected edits need k331's new membership. K323's membership is historical. No accepted
 construction input, original, control, authority, qualification or finite subject follows.
@@ -361,6 +362,17 @@ close or appointment authority. Antony's trust registrar has no implied bootstra
 checks completed earlier bootstrap publication. It may also perform accepted ancestry
 and staged/final receipt checks where the ownership exclusions hold; it cannot accept
 its own results, produce the receipt or exercise human trust authority.
+
+**Reference Launcher Recorder**: The accepted foreground launcher's separately accepted
+transcript-only role for original received peer frames and directly observed terminal
+facts. Its publisher-terminal original precedes separate factual validation; it grants
+no bootstrap, receipt, human acceptance, close, eligibility or appointment authority.
+
+**Reference launcher observation generation**: One predecessor-bound `launcher-events/n`
+slot for exact earlier launcher observations and their original publication provenance.
+A record alone supplies no finalized terminal chain, successful initialization or
+never-dispatched proof; independent validation and every required later original remain
+separate predecessors of use.
 
 **Reference anchor generation**: One immutable predecessor-bound `anchors/n` slot
 for a proposed independent trust-original set and its CP01 binding. Use requires

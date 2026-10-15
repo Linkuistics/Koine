@@ -740,8 +740,9 @@ interaction, with ready control originals and no Grove-session wait:
    which checks the entry's executable copy against its independently retained original;
    a checkout candidate selects none of these originals.
 2. **CP01-ARTIFACTS:** that entry compares the complete actual ready entry/engine/display,
-   prelude/registrar/checker/launcher/bootstrap-publisher/initializer/validator/stream-holder/close-publisher artifacts and their
-   runtime/read members with independently supplied frozen originals. Antony accepts or
+   prelude/registrar/checker/launcher/bootstrap-publisher/initializer/validator/stream-holder/close-publisher
+   artifacts and runtime/read members with independently supplied frozen originals,
+   including the launcher's separate transcript-only role and exact publication/frame plan. Antony accepts or
    refuses this now-ready set and the complete original bootstrap and initializer/validator
    mechanics outcomes. Only after ACCEPT may the engine/display/registrar or accepted
    factual validator execute for the live bootstrap. Control execution is already over;
@@ -822,6 +823,7 @@ The ordered continuation after ROOT is:
    Bootstrap acceptance names the earlier original acts and accepted mechanics only.
    It contains neither its own publication acknowledgment nor a later validation result.
 2. The separate validator compares these **completed earlier outputs**, exact membership,
+   the [earlier publisher-terminal original and post-write frame](#launcher-original-before-bootstrap-validation),
    held identities and publisher acknowledgements under its accepted factual capability.
    It publishes `bootstrap.publication-validation` in the next exact validation phase
    slot. Only that completed independently checked record and true-returned publisher
@@ -854,9 +856,10 @@ Post-consumption operation remains offline-only.
 
 | Accepted capability | Exact writes and prohibited substitutions |
 | --- | --- |
-| Bootstrap-only publisher | Initial disarm seed, exact `anchors/n/anchor.intent`, supplied `trust-originals` members, `bootstrap.accepted` and `anchor.result`; exact accepted initial revision/control/trust records in their separate phase slots. Full member/locator/owner plan precedes ROOT. No receipt production, factual validation, close, ELIGIBLE or APPOINT under this capability. |
+| Bootstrap-only publisher | Initial disarm seed, exact `anchors/n/anchor.intent`, supplied `trust-originals` members, `bootstrap.accepted` and `anchor.result`; exact accepted initial revision/control/trust records in their separate phase slots. Also reserves the exact ROOT-plan `launcher-events` container after acknowledged seed, never writes recorder members. Full member/locator/owner plan precedes ROOT. No receipt production, factual validation, close, ELIGIBLE or APPOINT under this capability. |
 | Publication/receipt validator | At `validation-events/n`, exactly `validation.intent` and `validation.result`, whose closed kind is `bootstrap.publication-validation`, `receipt.binding` or `receipt.final-validation`. Each binds only completed earlier outputs and independently acquired comparisons. No trust acceptance, input rewrite, permit exposure, close, eligibility or appointment. |
 | One-time initializer | Only the fixed permission ancestry/subject, staged receipt and exclusive same-inode unspent publication plus their original acknowledgment/terminal reports. Its live authority is this in-memory ROOT continuation; no record bearer or second invocation. |
+| Transcript-only launcher recorder | Only its accepted `launcher-events/n/observation.intent` and `observation.record`, closed kinds and post-write `launcher.observation` frame under the [publisher-terminal contract](#launcher-original-before-bootstrap-validation). It records earlier received/observed facts; no bootstrap/receipt/validation/trust/close/eligible/appointment authority. This first slice does not supply the later complete terminal protocol. |
 
 The seed writer's accepted bootstrap capability also covers that exact initial
 disarmed event.result; later disarm-only maintenance cannot publish trust/eligible acts.
@@ -872,7 +875,11 @@ are `bootstrap.publish`, `bootstrap.published`, `bootstrap.validate`,
 `bootstrap.validated`, `receipt.staged`, `receipt.bound`, `receipt.published`,
 `initializer.terminal` and `receipt.validated`. Each has exactly one sender and expected
 phase; no extra/trailing/duplicate/future frame, environment role or pathname socket.
-Only the launcher sends initializer.terminal after actual reap. A publication response
+Only the launcher sends initializer.terminal after actual reap. The separate
+`launcher.observation` frame is admitted only at the publisher-terminal boundary
+specified below, with the launcher recorder as sole sender and the separate publication
+validator as sole receiver; it is not a new peer-selected phase or authority.
+A publication response
 includes original checked-write counts/extents, held/named identity checks, every flush
 return/errno/order and the complete published bytes. A peer closes its write direction
 after its final expected frame; readers require EOF and the launcher's normal zero reap
@@ -890,6 +897,138 @@ initializer waiting for its own final record, publisher/validator substitution a
 before/after every write/flush/reply/EOF/reap. Each retains the actual reached refusal
 and acknowledged/failed extent. Missing required native/runtime/read facts still block;
 this authored route supplies no implementation, actual original, authority or qualification.
+
+#### Launcher original before bootstrap validation
+
+This is the first k334 publication slice: the **publisher-terminal original** needed by
+the separate bootstrap-publication validator. It does not complete the initializer/
+validator terminal originals, transcript-writer final-return boundary, repeatable trust
+records or hosted recovery. Those remain explicit later k334/k335 work before any
+initialization or construction consumer. The [publication report](application-reference-input-partition.md#launcher-original-publication-slice)
+locates that boundary. The proposal below is a record/operation contract, not an
+implemented schema, actual original or accepted authority.
+
+**Reference Launcher Recorder** is the accepted CP01 launcher acting under a separate
+transcript-only capability. It records only facts it actually receives or observes in
+this synchronous invocation. Its source/build/runtime/read/channel/operation closure and
+original SCRATCH controls are ready CP01-ARTIFACTS inputs, including the recorder itself.
+The independent original-result executor may own this role only when separate from
+the producer/repairer of the publisher and facts it records, the expected-result author,
+its factual validator and Antony's semantic adjudication. A bootstrap-publisher,
+initializer, validator or registrar capability does not imply recorder authority.
+Recording a received peer report identifies it as that peer's report; it is not an
+independent certification that the reported storage operation happened.
+
+The accepted ROOT plan includes the exact new `launcher-events` container under the
+fixed approval subject, its owner/held identity and bounded complete membership. Its
+reservation belongs to bootstrap publication after the initial disarm seed is
+acknowledged. Before that reservation the launcher has only its in-memory observations;
+failure there leaves the durable original unavailable. It cannot create a second root,
+write in a sealed revision, use a proof/export/checkout as a substitute, or infer success
+from an absent record. The launcher retains the initial-seed and publisher observations
+until this declared slot is ready; no original is backdated to before its acquisition.
+
+| Closed kind / exact member | Earlier binding and sole writer |
+| --- | --- |
+| `launcher.observation-intent` at `launcher-events/n/observation.intent` | Recorder alone. Fixed permission/register and actual held chain/slot identity; unsigned-64 ordinal; predecessor's full finalized observation/validation or accepted failure-disposition bytes and identities (none at 0); current seed/disarm, exact anchor/revision, CP01 SOURCE/ARTIFACTS/ROOT bindings, ROOT purpose and fresh 256-bit invocation nonce; recorder/publisher/validator owners, accepted artifacts and endpoint roles; exact proposed observation kind/member set, finite frame/byte/time bounds and permitted first consumer. No later result or self-digest. |
+| `launcher.publisher-terminal` at `launcher-events/n/observation.record` | Recorder alone, after publisher terminal observation. Complete earlier intent bytes/identity; all actually received publisher frames in order with raw framing bytes, declared kind/sequence/member/nonce/owner/context and actual peer/incarnation/image/endpoint evidence; initial-seed, trust-original, bootstrap and anchor member bytes/lengths/held/named identities and reported write/short-write/flush/namespace/full-flush returns/errno/order; actual launcher read/error/EOF observations and raw wait/reap result, signal/timeout/death intervals; exact reached, failed, unknown and unperformed work. Every claim names whether it is received, directly observed or independently compared. A success outcome requires complete expected frames, EOF and normal zero publisher reap; timeout/nonzero/unknown cannot become success. No acknowledgment of this record's own publication, future validator result, initialization or launcher death. |
+
+Both members use the approval contract's strict encoding and exclusive no-follow,
+single-link regular-file publication and qualified checked-write/synchronization rules.
+Complete canonical bytes/lengths are frozen before each member's first write. All
+recorded events precede that freeze. A partial record retains its reached bytes and
+identity; no appended repair, rewrite or completed-success label is permitted. An
+otherwise fully formed failure original remains a failure, not permission to initialize.
+Unknown/missing/duplicate fields, sequence, member or causal provenance refuse. Runtime
+qualification must supply the finite bounds and complete independently authored schema
+before use; exceeding a bound stops and retains the exact prefix, never clips an event.
+
+**Separate post-write acknowledgment, then factual validation.** After the recorder's
+actual record writes, namespace checks and required flush returns, it sends exactly one
+new length-framed `launcher.observation` message to the separate publication validator
+on their newly created, accepted launcher→validator endpoint. This message binds the
+complete earlier intent/record bytes, exact member/ordinal/held identities, received
+publisher-frame vector, and the recorder's now-existing original write/flush returns.
+It carries the same invocation nonce/purpose/anchor/disarm and its own monotone phase
+sequence. No extra path, ordinal, role, peer or member can be selected by the message.
+The message does not assert its own delivery, EOF or the validator's future return.
+The recorder streams/drains concurrently under the accepted finite channel plan; pipe
+capacity, complete writes and a future reply are not assumed.
+
+The validator is the first consumer. Its earlier accepted `bootstrap.validate` request
+names this exact expected observation slot and frame as required inputs alongside the
+completed publisher outputs; the recorder sends `launcher.observation` before the
+validator may publish `bootstrap.publication-validation`. The validator retains the
+complete received message as an original input and independently opens/checks the
+declared intent/record under the held A2 plan. It compares full bytes/lengths/member
+sets and actual named/held identities, checks the earlier publisher acknowledgments and
+launcher terminal evidence against the independently authored phase/peer expectations,
+and rejects gaps or self/future claims. No record-supplied discretionary path or scan
+is permitted. Its separate `validation.result` binds those completed earlier inputs,
+the original received recorder acknowledgments and its actual comparisons. It cannot
+validate its own publication, manufacture an unobserved reap, accept the human trust
+act, or borrow the recorder's write capability.
+
+This is a finite boundary: the observation record contains peer facts; the later
+message contains its actual publication returns; the independent validation contains
+the received message and completed comparisons. None contains its own future
+acknowledgment. The validator's own result/flush/EOF/reap and the launcher's actual
+post-validation/initializer/final-return originals need the remaining k334 terminal
+protocol before the initialization gate is usable. They are not silently supplied by
+`launcher.publisher-terminal`, an in-memory success bit or CP02's future acceptance.
+In particular this slice does **not** declare the last transcript writer's return or
+the complete CP01 invocation acknowledged. No recursive finalization is implied.
+
+**Selection and lifetime.** The recorder reserves only the immediate next slot under
+the existing release-before-register serial critical section. Initial ROOT's accepted
+bootstrap plan owns first reservation; later invocations require their exact earlier
+accepted plan and finalized predecessor. There is no caller ordinal or mutable pointer.
+Partial/failed/unvalidated reachable tails block a successor and affected use; no older
+record is substituted. At a successful slot, later selection joins the full intent/
+record with the separate applicable `bootstrap.publication-validation` and the remaining
+required terminal/acknowledgment originals. The record alone is never a finalized anchor,
+receipt, trust act, no-dispatch certificate, ELIGIBLE basis or initialization authority.
+The later k334 protocol must close that join before selection can credit it.
+
+Prelude's closed read plan now includes `launcher-events/0`, exact immediate successors,
+and only `observation.intent`, `observation.record` and a conditionally accepted
+`failure.disposition`. It decodes exactly the two kinds above, preserves complete held
+bytes and actual absent-next observations, and checks the exact backward references and
+separate validation association. A required missing terminal kind or unsupported new
+kind remains unavailable, not an empty successful set. Anchor/result production never
+depends on this later observation: the publisher must return before it exists. Anchor
+result binds only already completed earlier acknowledgments; the separate validation
+joins its later original publication/terminal facts. No earlier sealed record is edited.
+
+Recorder holds all required earlier streams/parents and the publication slot through
+the validator's actual consumption and true return; originals remain held through the
+foreground invocation's final freeze. Prelude/holder/entry and validator use the existing
+serial descriptor-generation/offset/EOF protocol, including zero reset or qualified
+explicit pread, without a pathname reopen after comparison. The validator receives only
+its exact read-only input roles and own previously accepted validation write role;
+recorder/ROOT/operator/permit/close/LIVE authority is never inherited. Nonblocking locks
+and bounded concurrent input/result drains retain the existing timeouts and true-return
+obligations. Timeout freezes before the next consumer; it does not cancel native work or
+release/reuse an outstanding descriptor.
+
+| Isolating independent control | Exact first refusal / retained work |
+| --- | --- |
+| Complete SCRATCH publisher returns all actual original frames, then EOF/normal zero reap; recorder writes exact intent/record, sends post-write acknowledgment and separate validator compares it | Separate validation may credit only those earlier publisher/recorder facts. Initialization remains blocked until the complete later terminal protocol exists. No LIVE/permission subject is used. |
+| Publisher reports zero, but launcher actually observes signal/nonzero/missing EOF or reap | Observation is failure/unknown; validator refuses before bootstrap-validation credit. Retain raw frame and contradictory actual terminal evidence. |
+| Replace one actual frame/member/nonce/owner/peer/context, omit a flush result or change independently expected bytes/identity | Refuse at recorder framing or validator full-byte/member/identity/provenance check, before its successful result. The other ready inputs stay unchanged. |
+| Kill recorder before reservation, during intent/record short write, after file flush but before message, or during message | Retain exactly reached slot/bytes/frame prefix and available peer facts. Before reservation no durable original exists; after reservation no finalized tail exists without the full later validation/terminal join. Publisher success cannot substitute for recorder death. No initialization, successor, missing-as-no-dispatch or automatic disposition. |
+| Kill validator before read, during comparison/result write or after result flush before reply/EOF/reap | Preserve record plus actual reached validation/frame extents; no inferred validator return or usable initialization gate. Later k334 must retain the terminal original; k335 must host any accepted disposition before a successor. |
+| Attempt to put post-write acknowledgment in its own record, read future CP02, or have publisher/recorder validate its own fact | Refuse the backward-input/owner check before successful factual validation. Use otherwise valid operands so another failure cannot mask the causal/independence defect. |
+| Skip/overflow/replay ordinal, use stale predecessor/anchor/disarm, substitute slot/parent, lose stream/lock/generation, share offset or leak another role's endpoint | Refuse before reservation, first affected read or first next consumer, respectively; retain held/absence/freeze/true-return evidence. No listing, older-success fallback or reset. |
+
+Independent authors freeze these actual record/frame/operation/first-consumer expectations;
+a separate executor runs the retained SCRATCH recorder and validator with kill points at
+each reached write/flush/send/read/EOF/reap boundary. The actual transcript writer is a
+subject of those controls, not their oracle or semantic acceptor. Author/executor/
+producer/repairer/validator/Antony exclusions all apply. These are required Q05/Q07/Q08/
+Q09/Q10 originals, not executed controls, optional opaque-contact evidence or source-only
+qualification. Hosted initial-seed/record/validator failures, full terminal publication,
+CP02/trust outputs and final first-consumer DAGs remain with later k334/k335/k336 work.
 
 #### Independent stream holder and continuity anchor
 
@@ -995,6 +1134,10 @@ the failed validation tail, the anchor is unavailable. An unavailable anchor ret
 set; only repeated CP01 SOURCE/ARTIFACTS may supply its independent trust base. The
 later recovery design must place disposition/acceptance before any successor consumer;
 the prelude cannot finalize a failed tail, publish a disposition or silently continue.
+
+Supporting-input traversal also requires the [closed launcher-event reads](#launcher-original-before-bootstrap-validation),
+including each required separate validation/terminal join. The table's validation/release
+rows do not exempt that new chain; an unresolved terminal kind still blocks selection.
 
 The prelude's current-anchor result is a value, never a current-pointer file or authority.
 It binds exact held roots/locks, all traversed full records and cross-chain associations,
@@ -1178,6 +1321,12 @@ Only the exact immediate successor of the retained predecessor may be addressed.
 | `anchors/n`: `anchor.intent`, `trust-originals`, `bootstrap.accepted`, `anchor.result`, conditional `failure.disposition` | Intent binds preceding finalized result/disposition (none at 0), current durable disarm, reviewed correction/unchanged-input basis, direct CP01 purpose/nonce and complete proposed original/member/owner plan. Completed result binds earlier published trust-originals/bootstrap acceptance and their original acknowledgment transcripts. Separate bootstrap.publication-validation checks those completed outputs before use. Later reacceptance uses REANCHOR_ONLY; immutable issuance receipt/nonce stay unchanged. |
 | `validation-events/n`: `validation.intent`, `validation.result`, conditional `failure.disposition` | Intent binds preceding finalized result/disposition, exact anchor/revision/disarm and one permitted factual validation kind. Result binds only earlier completed publisher/initializer outputs, exact comparison/held facts and original earlier acknowledgments. Staged binding precedes unspent exposure; final validation follows initializer EOF/normal zero reap. Subsequent revalidation names the same issuance receipt; it neither replaces issuance nor recreates permission. |
 | `closes/n`: `close.intent`, `instrument.close`, `close.result`, conditional `failure.disposition` | Intent binds preceding finalized close/disposition, current durable disarm/correction basis, exact accepted current anchor/revision, fresh CP03 results/audit and distinct owner's accepted capability. Close.result binds earlier complete instrument.close bytes/identity and original publication acknowledgments. CP04 checks exact completed record/channel/EOF/reap/freeze closure, never an older close or intent alone. |
+
+The additional `launcher-events/n` chain has exactly `observation.intent`,
+`observation.record` and a conditional accepted `failure.disposition`, with the
+[recorder contract](#launcher-original-before-bootstrap-validation)'s kinds, earlier
+input/validation join, retained partial rule and blocking unresolved terminal boundary.
+It uses this same ordinal/locking/predecessor grammar; no new default filename is implied.
 
 Every intent/result/disposition includes chain/ordinal/kind, exact held slot identity,
 predecessor full bytes/identity, basis/phase/nonce/owner/member bindings and earlier
@@ -1398,6 +1547,7 @@ compatible preparation duties; no image/task/receipt assigns a trust role.
 | Bootstrap-control adjudicator and trust acceptor | Antony's original-control adjudication, commissioning, ready payload/correction/entry acceptance, final original-result acceptance/audit, eligible-basis acceptance and fresh appointment | Antony did not produce/repair the candidate, run the qualification/control programme or author its expected answers that he adjudicates. His explicitly selected manual About source observation remains permitted; it is separately compared with independently acquired programme results, not self-audit of a candidate/control programme. He uses the independently bootstrapped tool and original dispositions for his own semantic decision. Reviewer writes no authority; runner/acquirer gets no trust role. |
 | Qualified one-time initializer | Candidate provisioning mechanics, authorized disarm-only maintenance, qualification running if independently authored expectations remain separate | Separate from both staged and final receipt validator and from trust acceptor/distinct closer for its outputs. Packaging/pure selector cannot initialize the live permit. Prior qualified/accepted mechanics precede real initialization. |
 | Qualified bootstrap/trust-originals publisher | May share initializer/disarm-maintenance operator under their exclusions; exact original/trust publication from this CP01's direct ready acts | Accepted bootstrap-only capability and artifact/runtime/read/control originals precede ROOT. Separate from its factual validator and semantic acceptance. No implicit human-registrar extension, permit production under this capability, close, eligibility or appointment. |
+| Reference Launcher Recorder | Accepted launcher's separately commissioned transcript-only publication of earlier publisher/terminal originals | Independent original-result executor may own it only when separate from the producer/repairer of the checked publisher/facts, expected-result author, factual validator and Antony adjudication. No other publisher/initializer/validator/registrar capability implies this role. Full later terminal protocol is still required before use. |
 | Independent read-only checkpoint prelude | Original source/OS trust root, exact pre-tool chain traversal/selection and actual holder executable/runtime comparison | Independently supplied outside the selected anchor; no candidate-derived root, authority write, disposition, initialization or semantic acceptance. Separate producer/repairer, original author, executor and Antony adjudication exclusions apply. Required original/runtime/read/image facts precede first use. |
 | Independent pre-entry stream holder | Supplies only the prelude-checked fixed plan's exact no-follow paired streams and retained descriptor lifetime | Actual executing copy is compared before launch by the prelude; independent source/build/runtime/read/image/control closure precedes SOURCE/first opens. Closed fd/offset/generation/EOF/reap handoff and required peer/image checks precede entry/candidate effects. It cannot select/accept an anchor or certify its own original/results. |
 | Separate staged/final receipt validator | One validator may validate the staged binding and final named/held receipt, compare initializer originals and retain acknowledgements | Separate from initializer, receipt producer/repairer and acceptance owner for those facts. Must not validate its own staged receipt or synchronization result; actual validation acquires evidence, CP2 accepts it. |
@@ -1615,7 +1765,8 @@ complete bytes and exact lengths/digests; counts and aggregate verdicts replace 
 | --- | --- |
 | Bootstrap acceptance | At anchors/n/bootstrap.accepted: stable permission/register/anchor/disarm identity; actual earlier held UID/ancestors/register; complete supplied original holder/short-entry/engine/display/runtime/read/member bytes and controls; publisher/checker/registrar/initializer/validator/close-publisher identities; earlier SOURCE/ARTIFACTS/ROOT ready acts and exact INITIALIZE_ONCE or REANCHOR_ONLY purpose/nonce. No self-publication acknowledgment or future validation. |
 | Anchor intent/result and failure disposition | Separate anchors/n chain; exact predecessor/disarm/correction basis and accepted complete original plan. Result binds earlier trust-originals/bootstrap acceptance and original earlier publication acknowledgments. Separate bootstrap.publication-validation checks it; a failed-tail disposition preserves all extents and cannot create a successful anchor or initialization. |
-| Bootstrap publication validation | In validation-events/n/validation.result, kind bootstrap.publication-validation: completed earlier anchor/trust/bootstrap outputs, their exact byte/member/held/publication comparisons, publisher EOF/zero reap and independent validator origin/capability. Precedes initialization; acceptance at CP02 follows actual output. |
+| Launcher publisher-terminal intent/original | Exactly `launcher-events/n/observation.intent` kind `launcher.observation-intent` and `observation.record` kind `launcher.publisher-terminal`; recorder-only earlier publisher/actual terminal evidence, predecessor/ROOT/nonce/context/member/identity bindings and separate post-write `launcher.observation` frame. Independent bootstrap validation consumes these earlier originals; no self/future acknowledgment. Full terminal/CP02/trust publication remains live k334 work. |
+| Bootstrap publication validation | In validation-events/n/validation.result, kind bootstrap.publication-validation: completed earlier anchor/trust/bootstrap outputs and exact launcher-events intent/record plus received launcher.observation frame; their exact byte/member/held/publication/provenance comparisons, publisher EOF/zero reap and independent validator origin/capability. Precedes initialization; acceptance at CP02 follows actual output. Complete later validator/launcher terminal publication remains required, not inferred from this result. |
 | Revision payload | Ordinal and predecessor acceptance digest (none for first); stable permission; all normative extracts/locators, expected profile/concordance, complete applicability inventory/reasons, envelope/proof/approval/channel schemas, independent fixtures/expectations/bases, verifier/launcher/coordinator/gate/observer identities, actual task/runtime/read closure and scratch/live domain rules |
 | Revision acceptance | Exact earlier reviewed/final payload bytes/digest/held identity; predecessor; original inspection review and every earned integration finding/disposition; chartered independent owner's own judgment, producer/repairer separation, original appointment/channel context and acknowledgements |
 | Verifier-control acceptance | Earlier accepted revision and exact checker/verifier/launcher/runtime identities; separately authored bootstrap-control inventory and original results; independent adjudication, actual frozen inputs/process/channel/contact evidence and unavailable coordinates |
@@ -2621,7 +2772,7 @@ Original object child names are exact content-digest encodings under the held at
 never raw target components interpreted as output paths. Package entry cannot initialize.
 
 At the approval subject, fixed `anchors`, `validation-events`, `closes`, `release.lock`, `register.lock`,
-`release-events` and numbered revision records permit only the approval contract's held read/compare/lock
+`release-events`, `launcher-events` and numbered revision records permit only the approval contract's held read/compare/lock
 and accepted publisher's exclusive write/synchronization operations. Ordinal components
 use the same checked unsigned-64, no-leading-zero ASCII decimal grammar as release events;
 only the deterministic immediate successor is addressed, never listing/scan/fallback.
@@ -2631,7 +2782,14 @@ members are admitted under their separate publisher/validator/registrar capabili
 Trust-original children require the earlier accepted exact closed member plan, not
 arbitrary directory contents. First seed reservation and later ordinal creation also
 require those capabilities and acknowledgment order. No write enters a sealed revision.
-Other original approval record kinds require their independently accepted exact locator,
+The new launcher chain is closed here: at `launcher-events/n` only
+`observation.intent`, `observation.record` and a conditionally accepted `failure.disposition`
+are admitted. Their kinds, recorder/validator read-write separation, predecessor/nonce/
+identity/member bindings and exclusive publication follow the
+[publisher-terminal contract](#launcher-original-before-bootstrap-validation).
+An unresolved finalization/terminal/CP02 kind remains a blocker, not a discretionary
+sibling or permission to use the partial route. Other original approval record kinds
+require their independently accepted exact locator,
 kind/phase/member bytes and permitted publisher/consumer operation before access. No
 unbound sibling is admitted. Later outputs never mutate the finalized revision payload
 or earlier Q basis; they retain the existing separate acyclic phase-record contract.
