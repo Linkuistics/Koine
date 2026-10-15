@@ -19,7 +19,9 @@ Replacement producer k331 is now closed. K344's [whole checkpoint-recovery closu
 checks every original k331/k336/k344 condition against the complete artifact and freezes
 the new [whole membership](reference-checkpoint-recovery-membership.json). Whole review
 k332 found two defects; [k349's integration](#k332-integration-and-open-bracket-repair)
-repairs one and places the other's redesign in k350 with whole review k351, both before k269.
+repaired one and placed the other's redesign in k350. K350 specifies
+[open-bracket selection](#open-bracket-selection) and freezes its whole membership; whole
+review k351 and every earned integration precede k269.
 K333 specifies the
 [source-rooted prelude, holder gate and descriptor handoff](application-reference-evidence.md#independent-stream-holder-and-continuity-anchor).
 K337 specifies the [publisher-terminal original prefix](#launcher-original-publication-slice);
@@ -50,6 +52,160 @@ waive no named required failure and establish no no-contact fact. K244/k242 rema
 k245 retains the one unused pass, k246 complete rewrite/helper/alias discrimination and
 k247 whole-subject/family review or precise incomplete work. Full useful breadth,
 additive supported-VM/native duties, private ineligibility and both holds remain.
+
+## Open-bracket selection
+
+K350 designs selection within an open bracket, inside Antony's k348 "Bracketed entry
+(Recommended)" answer. The normative design is C's
+[selection within an open bracket](application-reference-evidence.md#selection-within-an-open-bracket),
+with its rows in C's closed payload, selection, host and dependency tables and in K and P.
+This is unconsumed reporting: it supplies no original, executed control, authority or
+construction input. Whole review k351 and every earned integration precede k269.
+
+### The problem and the design
+
+C's durable-disarm rule needs a fresh disarm before every correction, so several
+provisional batches can sit between two checkpoints. K349 found that the gate had no
+consistent way to select while earlier batches were unverified, and withdrew a repair after
+its adversarial check found seven defects. The design answers them with five rules:
+
+- **Batches on the shared chain.** Every publication invocation writes exactly one
+  publication-events slot, so batches are totally ordered there. The bracket base is the
+  latest checkpoint batch; the open bracket is every inter-checkpoint batch after it.
+- **A record at every writing visit.** Each checkpoint batch's publication.intent binds its
+  visit's E1 identities and the classification of the batches it closed. A visit that
+  writes nothing leaves the bracket open.
+- **A fixed order.** Traversal, partition, root comparison (checkpoints only), anchor
+  selection from anchors and bootstrap-validation slots only, classification, then kind
+  selection.
+- **Admission.** Between checkpoints earlier batches are `BRACKET_OPEN`, admitted only as
+  chain predecessors or a disarm basis under a three-row table.
+- **One suffix cut, one host.** At the next checkpoint the first failing batch and every
+  later batch form one cut, hosted once at the earliest of their kind hosts.
+
+### Every doubt classified
+
+| Doubt in k350's charter | Classification and resolution |
+| --- | --- |
+| K349's withdrawn candidate | **Kept in part.** Its structural `BRACKET_OPEN` status, disarm-only own-kind chaining, one close and one revalidation per bracket and chain-order verification survive. Its undefined "same chain", per-kind hosting, missing base record and circular order are replaced. |
+| F1 — disposed predecessors | **Valid.** Admissibility now depends on who finalized the slot: a checkpoint batch (including a hosted disposition), a closing record's `BRACKET_VERIFIED`, or `BRACKET_OPEN` within the admitted uses. A recorded failure is admissible only through its disposition, so a fresh disarm after a hosted disposition proceeds and an undisposed failed batch refuses. |
+| F2 — which chain | **Valid; decisive.** The bracket is defined on publication-events, which every batch appends to. A batch's members are the slots whose intents bind its publication.intent. Kinds may interleave only as the admission table says, and the cut is a suffix on every chain. |
+| F3 — the bracket's starting record | **Valid; predates k349.** Neither cp01.source nor trust.continuity exists at every visit, and cp01.source never carried classifications. The checkpoint batch's own publication.intent does, since every write at a visit is inside a publication invocation. cp01.source and trust.continuity remain copies that must equal it. |
+| F4 — accepted-limit wording | **A contract stated unclearly in C.** S's selected text already scopes "refused at the next checkpoint" to wrong or substituted executables and keeps deliberate same-UID bypass and mutate/restore as the cooperative limit. C now says an accidental wrong run fails E3b while a forging same-UID run or a mutate/restore can pass. S is byte-identical and nothing goes to Antony. |
+| F5 — selection order | **Valid.** Anchor selection reads only anchors and bootstrap-validation slots, and checks anchor applicability against the anchor's own bound basis outside the open bracket. A revalidation never enters it, and E3b's binding check follows it. |
+| F6 — E1i wording | **Valid; wording.** Between checkpoints the only identity comparison is E1i's own check against the supplier's independent record. No step compares with the base intent, cp01.source, trust.continuity or another batch, and none produces a classification. |
+| F7 — no host rule for a multi-batch cut | **Valid; coupled to F2.** One host, the earliest kind host, disposes the whole cut. The reason is below. |
+
+S's "since the previous checkpoint" is read as the previous visit that retained its
+identities. A visit that wrote nothing retained none, consumed nothing and has nothing to
+compare, so this is the only consistent reading, not a change to S.
+
+### Why the cut is a suffix with one host
+
+Every batch's publication.intent binds the previous publication-events slot as its
+finalized predecessor. A failed batch therefore taints every later batch, which bound its
+slot and may have bound its disarm as basis; batches before it are untouched. The cut always
+ends at the publication-events and launcher-events tails, so any visit that wants to write
+must first dispose those tails, which needs the carrier prefix under a recovery host. If
+each kind were hosted at its own checkpoint, a repeated CP02 hosting a revalidation would
+wait for CP03 to dispose an earlier disarm still sitting in the shared chain, while CP03
+could not write past the revalidation: a deadlock. One host for the whole cut, the earliest
+of its kind hosts, removes the wait. This is C's existing "whole cut at its earliest
+required host" rule for one invocation, applied to one bracket. Each kind's later trust
+acceptance still happens at its own checkpoint, and a visit that is not the host refuses
+before any write.
+
+| Example bracket at the next checkpoint | Outcome |
+| --- | --- |
+| Disarm D1, disarm D2, all bindings valid, root unchanged | Both `BRACKET_VERIFIED`; CP03 accepts Q under D2's generation. |
+| D1 mis-bound, D2 valid | One cut {D1, D2} at CP03, or CP01 if D1's scope alters trust/rules; a fresh disarm follows. |
+| Disarm D, then revalidation V binding D; D mis-bound | One cut {D, V} hosted at repeated CP02; D's later acceptance stays at CP03. |
+| Revalidation V, then disarm D; D mis-bound | V verified; cut {D} hosted at CP03. A CP02 visit before that cannot write past D and refuses. |
+| Close C, then disarm D, all valid | Both verified; CP04 refuses C as older than D, through its existing rule. |
+| Root changed after the second of three batches | `SOURCE_REENTRY_REQUIRED`: all three are one cut at repeated CP01. |
+
+### Bracket graph definitions
+
+These report names refine k345's E3 for this purpose only. They are not executable phases;
+E0–E2, E4–E12, E1i, U0–U7 and H0–HX keep their earlier meanings.
+
+| Node | Required actual result and owner |
+| --- | --- |
+| E3.1 | Prelude: closed traversal of all eight chains, unchanged. |
+| E3.2 | Prelude: batch partition into base, open bracket and each slot's batch, from closed purposes, kinds and intent bindings. |
+| E3.3 | Checkpoint prelude after Antony's E1: root comparison with the base intent's identities and every open batch's bound observation. |
+| E3.4 | Prelude: anchor selection from anchors and bootstrap-validation slots, with applicability from the anchor's own bound basis. |
+| E3.5 | Checkpoint: E3b, batch by batch in ordinal order, giving `BRACKET_VERIFIED`, `SOURCE_REENTRY_REQUIRED` or a failed cut with its one host. Between checkpoints: `BRACKET_OPEN` or refusal. |
+| E3.6 | Prelude: kind and ordinary selection under the recorded and current classifications. |
+| BR | The bracket record: the checkpoint batch's publication.intent fields written by the final recorder in U2. |
+
+Clean edges for a bracket of n batches:
+
+1. The base visit's E1 → E3.1–E3.6 → U2 writes its BR.
+2. For batch i: E1i → E2 → E3.1 → E3.2 → E3.4 → E3.5 `BRACKET_OPEN` for batches 1…i−1 →
+   E3.6 under the admission table → E4–E8 → U0–U7, provisional.
+3. Next checkpoint: E0 → E1 → E2 → E3.1 → E3.2 → E3.3 → E3.4 → E3.5 for batches 1…n in order
+   → E3.6 → U2 writes the next BR → each kind's trust consumer.
+
+| Failed cut | Correction dependency, first blocked consumer and isolating control |
+| --- | --- |
+| Predecessor partial, undisposed after a recorded failure, or used outside the table | Refuse before any write; the condition is resolved at its host, then a new invocation. C's predecessor pair; P's open-bracket row. |
+| Kind not admitted at its position | Refuse before any write. C's interleaving pair. A batch that bypassed it fails E3b at its position. |
+| Root break | Whole open bracket → repeated CP01 SOURCE/ARTIFACTS → carrier prefix for the two tails → H1 → H2 → H3 → fresh successors under the new anchor. C's root-change pair; K's entry controls. |
+| First failing batch with intact root | That batch and every later one → earliest kind host → carrier prefix and ordinary envelope → H1 → H2 → H3. Earlier batches stay verified; trust consumers stay put. C's suffix and mixed-cut pairs. |
+| Visit that is not the host | Refuse before any write; the bracket stays open. C's mixed-cut pair. |
+| Host batch's dispositions incomplete | The recorded cut binds every later visit until disposed; a failed disposition reaches HX. C's host table. |
+| Missing or differing BR, or a comparison against a copy | Failed join at E3b. C's record pair. |
+
+### Original duties met
+
+| Original condition | Result |
+| --- | --- |
+| K350 Done when 1: one coherent specification in C's entry and closed rows covering later selection, predecessors, chain and interleaving, order/cut/host, the per-visit record and a non-circular order; remove k349's block only when specified | C's subsection and its payload, selection, host and dependency rows. The owned-gap block is replaced. |
+| K350 Done when 2: an independently authored positive and isolating negative in C/K/P for every rule, including the five named cases | C's nine-row table, K's paragraph and P's row. |
+| K350 Done when 3: no checkpoint, ceremony, human act, observation API, authority, initialization, attempt, record kind or LIVE; S byte-identical | Held. The one addition is a field set in an existing record, like k344's naming. S's selected sections are byte-identical. |
+| K350 Done when 4: R classifies every doubt and the k348/k331 duties; CONTEXT, roll-ups and views consistent; new whole membership; frozen audit | This section, [Changes](#changes-in-k350), the [membership](#open-bracket-membership) and the audit recorded in k350's log. |
+| K350 Done when 5: provider evidence on k351 | This launch carried none, so no Creator line is written. |
+| K348 Done when 1 and k331 replacement 2: each invocation's root, holder, selection, gate, lease order and true-return retention; deterministic pre-tool selection under a finite root | Selection is now deterministic with earlier batches present. Root, holder, gate, leases and retention are unchanged. |
+| K348 Done when 2: roles and exclusions kept; nothing added | Held. |
+| K331 Required coherent replacement / k336: clean and correction DAGs with first consumers for every failure | The definitions above add the multi-batch edges and routes. |
+
+All other original duties are unchanged and every required original stays null, including
+R3's physical Safari walk, k330 About provenance, k340's endpoint, the never-started
+predicates, distinct-close ownership, offline-only post-consumption correction, the unused
+pass, k246/k247 and both holds. No ADR is warranted: this is a reversible pre-provisioning
+documentary design inside a selected clause, failing the hard-to-reverse AND surprising
+AND real-trade-off test.
+
+### Changes in k350
+
+- [C, Selection within an open bracket](application-reference-evidence.md#selection-within-an-open-bracket) — New: batches, bracket record, order, admission table, predecessor rule, verification, cut and host, and nine control pairs.
+- [C, Inter-checkpoint publication entry](application-reference-evidence.md#inter-checkpoint-publication-entry) — Replaces the owned-gap block; widens provisional use to a disarm basis; points E3b at the subsection; rewords the accepted limit and adds its control pair.
+- [C, Closed pre-tool reads](application-reference-evidence.md#closed-pre-tool-reads-and-deterministic-selection) — The selection row follows the fixed order.
+- C, [publication.intent payload](application-reference-evidence.md#complete-publication-and-terminal-join), [cp01.source and trust.continuity](application-reference-evidence.md#repeatable-trust-records-and-selection) — The intent binds the bracket record; the two copies must equal it.
+- C, [host table](application-reference-evidence.md#failed-boundaries-and-their-exact-checkpoint-hosts), [dependency expansion](application-reference-evidence.md#publication-and-recovery-dependency-expansion), [schedule](application-reference-evidence.md#compatible-ownership-and-bounded-sequential-schedule), [durable disarm](application-reference-evidence.md#durable-disarm-and-release-events) and [review integration](application-reference-evidence.md#review-integration-and-required-decisions) — One suffix cut with one host, admission in the expansion rows, and status.
+- [K, Inter-checkpoint entry controls](application-reference-contact-boundary.md#inter-checkpoint-entry-controls-before-trust-use) and [P's phase table](application-reference-packaging-runtime.md#exact-publication-inputs-before-their-consumers)/[control pairs](application-reference-packaging-runtime.md#release-and-acceptance-controls) — The new controls and the one-host wording.
+- CONTEXT — Revises the inter-checkpoint entry and adds Reference open bracket and Reference bracket record.
+- Root, k242, k244, k245, k246, k247 and k269 charters — The outcome and the order k351 → k269.
+- This report — This section, the current status paragraph and a pointer in k348's section.
+- [Checkpoint continuity view](../design/architecture/index.html#diagram-native-reference-proof), the six other captions, the discussion and README — Show the open bracket, order, record and one host.
+- [The new whole membership](reference-open-bracket-selection-membership.json).
+
+These are reversible pre-provisioning documentary changes; nothing has been consumed, so
+no requalification is triggered.
+
+### Open-bracket membership
+
+[reference-open-bracket-selection-membership.json](reference-open-bracket-selection-membership.json)
+is frozen after every edit above. It keeps k349's structure and preserved sets, recomputes
+every current identity and extract, and adds k349's
+[integration membership](reference-checkpoint-recovery-integration-membership.json) to the
+historical memberships with its exact bytes; k344's stays there unchanged. It adds the E3.1–E3.6
+and BR nodes, the multi-batch clean edges, a route per row of the correction table above,
+the admission table, closes k349's owned gap with its normative locator, and records null
+actual originals throughout. It identifies saved current inputs only and accepts nothing.
+Because it binds this report at final bytes, the measured outcome is recorded in k350's
+running log and commit message, not here.
 
 ## K332 integration and open-bracket repair
 
@@ -276,7 +432,9 @@ written into the approval register outside CP01–CP05. The normative design is 
 under S's new [selected clause](application-population-metadata-shape.md#inter-checkpoint-publication-entry).
 This is unconsumed reporting. It freezes no membership and supplies no original, control,
 authority or construction input. K344 still freezes whole membership and checks complete
-k336/k331, before existing k332 and every earned integration precede k269.
+k336/k331, before existing k332 and every earned integration precede k269. K350's
+[open-bracket selection](#open-bracket-selection) later refines the E3b rows below for
+brackets of several batches: one suffix cut with one host, against the bracket record.
 
 ### Which invocations, and why a human choice was needed
 

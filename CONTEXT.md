@@ -348,7 +348,11 @@ records and failure controls. Hosted recovery fixes every first consumer and una
 boundary; whole replacement/review remains required before use. Every other required
 fact remains blocking; no accepted contact unknown or usable partial route follows. The
 [integration-only documentary candidate](docs/verification/reference-practical-admission-integration-membership.json)
-records k329's saved boundary and unresolved duties; k331's new whole membership is now the current documentary identity set. K323's membership is historical. No accepted
+records k329's saved boundary and unresolved duties. K350's
+[open-bracket membership](docs/verification/reference-open-bracket-selection-membership.json)
+is now the current documentary identity set, after it specified selection within an open
+bracket; its whole review k351 and every earned integration precede k269. K344's and k349's
+memberships and k323's are historical. No accepted
 construction input, original, control, authority, qualification or finite subject follows.
 Normative/actually consumed edits disarm and require affected requalification. K244/k242
 stay live, pass unused and all useful/generated/supported-VM/native/private/product duties remain.
@@ -451,11 +455,26 @@ publications written outside CP01–CP05: disarm maintenance, distinct close and
 revalidation. The operator runs the source/OS method's mechanical identity checks without
 a trust judgment, then the same prelude gate with an anchored writer. The outputs stay
 provisional until the next checkpoint's source-rooted prelude verifies the root unchanged
-across the bracket. Selection while a bracket already holds a batch is not yet specified;
-design k350 owns it. A wrong executable between checkpoints is caught only afterwards, at
-a liveness cost; it never yields consumption, eligibility or LIVE. The
+across the bracket. Several batches may share one **Reference open bracket**. An
+accidental wrong executable between checkpoints is caught only afterwards, at a liveness
+cost; a deliberate forging same-UID run stays the cooperative limit. Neither yields
+consumption, eligibility or LIVE. The
 [entry contract](docs/verification/application-reference-evidence.md#inter-checkpoint-publication-entry)
 owns its mechanics.
+
+**Reference open bracket**: The inter-checkpoint batches written after the **bracket
+base**, the latest checkpoint batch on the shared publication-events chain. Between
+checkpoints each is `BRACKET_OPEN`: a structural status that admits it only as a chain
+predecessor or a disarm basis, never as a trust input. The next checkpoint verifies them in
+order; the first failure and every later batch form one cut with one host. The
+[open-bracket rule](docs/verification/application-reference-evidence.md#selection-within-an-open-bracket)
+owns the admission table, order and hosting.
+_Avoid_: same-chain bracket, per-kind bracket
+
+**Reference bracket record**: The fields of a checkpoint batch's publication.intent that
+keep that visit's E1 source-root identities and the classification of every batch it
+closed. It exists at every visit that writes anything; a visit that writes nothing leaves
+the bracket open. cp01.source and trust.continuity hold copies, never the base.
 
 **Reference carrier-recovery prefix**: The exact accepted finite ordering exception for
 listed existing-slot dispositions before a damaged transcript carrier's intent. Actual

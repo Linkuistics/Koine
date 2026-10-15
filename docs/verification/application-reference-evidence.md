@@ -24,9 +24,10 @@ K344 closes k336 and k331 at this complete documentary boundary and freezes the 
 [checkpoint-recovery membership](reference-checkpoint-recovery-membership.json); existing
 whole review k332 and every earned integration precede construction. K349's
 [integration of k332](application-reference-input-partition.md#k332-integration-and-open-bracket-repair)
-leaves selection within an already occupied bracket as an
-[owned gap](#inter-checkpoint-publication-entry) for design k350 and review k351 before
-construction. These
+left selection within an already occupied bracket to design k350, which now specifies
+[selection within an open bracket](#selection-within-an-open-bracket) and freezes the
+[open-bracket membership](reference-open-bracket-selection-membership.json); its whole
+review k351 and every earned integration precede construction. These
 specifications supply no executable mechanism, actual original or accepted construction identity.
 
 ## Ownership and alternatives
@@ -1111,7 +1112,7 @@ not recreated. No name is caller-selected and no write enters a sealed revision.
 
 | Record | Complete closed payload groups, all under the approval strict encoding |
 | --- | --- |
-| `publication.intent` | Version/kind, fixed permission/register and actual held ancestor/container/slot identities; chain/ordinal; full finalized predecessor bytes/identity or none at 0; current seed/disarm, anchor/revision when present, checkpoint/substep/ROOT purpose or, between checkpoints, the closed inter-checkpoint kind with the operator's raw E1i identity observation and the complete earlier E8 comparison result; fresh invocation nonce; complete accepted exact writer/owner/artifact/runtime/read/endpoint plan; expected launcher/trust/validation/close/release member and terminal-event sets; finite byte/frame/time bounds and intended first consumers. No future observation, own digest or final result. |
+| `publication.intent` | Version/kind, fixed permission/register and actual held ancestor/container/slot identities; chain/ordinal; full finalized predecessor bytes/identity or none at 0; current seed/disarm, anchor/revision when present, checkpoint/substep/ROOT purpose with that visit's E1 held source-root original identities and the classification vector of the inter-checkpoint batches since the previous checkpoint batch (the [bracket record](#selection-within-an-open-bracket); empty at initial CP01) or, between checkpoints, the closed inter-checkpoint kind with the operator's raw E1i identity observation and the complete earlier E8 comparison result; fresh invocation nonce; complete accepted exact writer/owner/artifact/runtime/read/endpoint plan; expected launcher/trust/validation/close/release member and terminal-event sets; finite byte/frame/time bounds and intended first consumers. No future observation, own digest or final result. |
 | `publication.terminal` | Complete earlier intent and its actual publication returns; complete ordered raw launcher frames and received originals; every earlier peer/launcher intent/result/member byte stream, length and named/held identity; original direct acts and exact manifests; actual launcher frame/read/EOF/wait/reap/signal/timeout observations; all received peer write/flush/order/error facts and launcher terminal facts; final before/after input/member/identity/absence/lease comparisons; explicit per-coordinate reached/failed/unknown/unperformed outcomes and claim origin. It contains neither its own publication returns nor its future frame/EOF/reap nor the outer receiver's return. |
 
 The expected-set plan includes every earlier writer, including publication-validator,
@@ -1327,7 +1328,7 @@ an accepted payload, even if faithfully recorded and acknowledged.
 
 | Exact `trust.record` kind | Sole capable writer; ready inputs, act and first consumer |
 | --- | --- |
-| `cp01.source` | Bootstrap publisher copies earlier SOURCE direct act/static original manifest/source-OS reasons and the held source-root original identities (prelude, factual observer, cmp, runtime) after ROOT; it cannot execute or accept that earlier act. First bootstrap validation then CP02 compare it; the next checkpoint's E3b compares those identities. |
+| `cp01.source` | Bootstrap publisher copies earlier SOURCE direct act/static original manifest/source-OS reasons and the held source-root original identities (prelude, factual observer, cmp, runtime) after ROOT; it cannot execute or accept that earlier act. First bootstrap validation then CP02 compare it. Its batch's publication.intent binds the same identities as the bracket record E3b uses; a differing copy is a failed join. |
 | `cp01.artifacts` | Bootstrap publisher copies earlier ARTIFACTS direct act/short-entry seal, all complete artifact/control/original/runtime/read comparisons and exclusions. First bootstrap validator/CP02; mechanics acceptance precedes its actual bootstrap writer use in memory. |
 | `cp01.root` | Bootstrap publisher copies earlier exact ROOT direct act/factual A2 plan, purpose, nonce and accepted peer/capability/member plan. Publication is evidence only; initialization authority remains that single live continuation. |
 | `revision.acceptance` | Bootstrap publisher for initial CP01 only, trust registrar for later repeated CP01. Earlier full reviewed/final payload, complete clean review or every finding/integration/disposition, field/clause comparison, direct ready ACCEPT/REFUSE and exclusions. Highest current revision selection requires finalized acceptance of exact payload. |
@@ -1340,7 +1341,7 @@ an accepted payload, even if faithfully recorded and acknowledged.
 | `about.acceptance` | Same initial/later split, ARTIFACTS or CP05. Original About bytes and independent ready comparison at ARTIFACTS; at CP05 acceptance is of the original, not its future P comparison. First Q06 credit or APPOINT/fresh P01 respectively. Human labels prove no cross-session identity. |
 | `entry.original` | Trust registrar copies the separately authored complete exact A3 request/ancestor/operation/basis/refusal entry, immutable issuance/current rule and author provenance before its ready CP05 acceptance. No lookup/reservation is predicted. |
 | `entry.acceptance` | Trust registrar at CP05 over earlier entry.original/current eligible basis, request/nonce, independently ready comparison and direct ACCEPT/REFUSE. First fresh appointment then P output lookup; no reservation identity or future A result. |
-| `trust.continuity` | Trust registrar copies the source-rooted prelude/holder/ENTRY_SEAL's already completed current comparison, that E1's held source-root original identities, every E3b inter-checkpoint batch classification and exact selected anchor/member/read/runtime/descriptor-generation/absence/freeze facts at CP02–CP05. First current engine/display/ready-act consumer uses the actual successful comparison and its post-write acknowledgment; recording supplies no self-check or human acceptance. CP01 initial comparison is in cp01.artifacts instead. The next checkpoint's E3b compares its root identities. |
+| `trust.continuity` | Trust registrar copies the source-rooted prelude/holder/ENTRY_SEAL's already completed current comparison, that E1's held source-root original identities, every E3b inter-checkpoint batch classification and exact selected anchor/member/read/runtime/descriptor-generation/absence/freeze facts at CP02–CP05. First current engine/display/ready-act consumer uses the actual successful comparison and its post-write acknowledgment; recording supplies no self-check or human acceptance. CP01 initial comparison is in cp01.artifacts instead. Its identities and classifications equal its batch's publication.intent, which is the bracket record E3b uses; a differing copy is a failed join. |
 | `basis.acceptance` | Trust registrar at CP04 over the earlier complete distinct-close/final-Q/audit/receipt/current/issuance/disarm basis and direct ready judgment. First eligible-event writer, then CP05. Not a future appointment or Q input. |
 | `foreground.appointment` | Foreground supervisor under its separately accepted appointment-record capability, only after exact CP05 entry/About/basis acceptance. Original fresh direct APPOINT bytes/request/role/nonce and actual coexisting supervisor/checker/acquirer/endpoint facts. Launcher/final recorder retain its publication. The record opens no later LIVE endpoint; only the same live supervisor's one-use endpoint has that role. |
 
@@ -1605,7 +1606,8 @@ disposition route below; it never reconstructs the old terminal event.
 Every row includes the ready-original and exclusion rules above and the complete retained
 set in [the publication handoff](application-reference-input-partition.md#exact-ready-and-failed-originals-for-hosted-recovery).
 These are required inputs, not a claim of possession. If several failures belong to one
-invocation, compare their whole finite cut together at its earliest required host. A
+invocation, or to one inter-checkpoint bracket cut, compare their whole finite cut together
+at its earliest required host. A
 source/anchor failure takes precedence over a later host, but it does not move CP02/CP03/
 CP04/CP05's later semantic acceptance to CP01. Return through each affected checkpoint only
 after its own ready inputs exist. No publication/recovery work is hidden between hosts.
@@ -1628,7 +1630,7 @@ after its own ready inputs exist. No publication/recovery work is hidden between
 | CP05 About/entry original or acceptance; foreground.appointment | Repeated CP05 recovery preface under intact anchor, after actual return of the previous declared peers or exact unavailable lifetime boundary. Exact manual/entry/direct-act/endpoint/writer originals precede disposition. A fresh compliant entry/About acceptance and **new direct** appointment are possible only with independently established unspent/no-intent/no-attempt/no-uncertainty state and unchanged qualified basis. Unknown dispatch/intent cannot be cleared. No same-call retry, saved appointment or transfer; post-consumption is offline-only. |
 | trust.continuity publication at CP02/CP03/CP04/CP05 | Repeat that exact checkpoint under a freshly source-trusted prelude and independently checked intact anchor, before its ordinary engine/ready-act consumer. Actual earlier comparison exists before its copy; compare failed copy/terminal extents independently. New copy/acknowledgment follows disposition, without using itself as its own trust input. If comparison/root/tool facts fail, repeat CP01 SOURCE/ARTIFACTS first. |
 | Launcher recorder, publication.intent/final recorder or outer receiver loss in any other batch | Host at the checkpoint of that batch's first blocked ordinary consumer: CP01 for bootstrap/anchor/rule/control, CP02 for receipt, CP03 for disarm/Q-trust/close, CP04 for basis/eligible, CP05 for entry/appointment. Source/anchor failure overrides as above. Compare every exact reached earlier original and current retained content; known receiver loss remains an unprovable past tail. Accept non-success in-slot disposition before carrier successor, using the finite prefix only when necessary; repeat that phase's ordinary factual validation/semantic acceptance before use. Missing required earlier originals cannot be supplied by content equality. |
-| Inter-checkpoint batch not `BRACKET_VERIFIED` at the next checkpoint | Changed source-root identity: `SOURCE_REENTRY_REQUIRED`, so repeated CP01 SOURCE/ARTIFACTS hosts every intervening disarm/close/revalidation batch as one failed cut before any later host. Intact root with a wrong binding or incomplete join: host at the kind's existing row above (disarm at CP03 or CP01; close at repeated CP03; revalidation at repeated CP02). The provisional output never reaches a trust consumer; its fresh successor uses a new inter-checkpoint invocation after disposition. |
+| Inter-checkpoint batch not `BRACKET_VERIFIED` at the next checkpoint | Changed source-root identity: `SOURCE_REENTRY_REQUIRED`, so repeated CP01 SOURCE/ARTIFACTS hosts every open disarm/close/revalidation batch as one failed cut before any later host. Intact root with a wrong binding, admission or incomplete join: the first failing batch and every later batch of the bracket form [one cut](#selection-within-an-open-bracket), hosted once at the earliest of their kind hosts above (disarm at CP03, or CP01 when its bound scope alters trust/rules; close at repeated CP03; revalidation at repeated CP02). The carrier prefix disposes the cut's publication-events and launcher-events tails, the ordinary envelope every other cut slot. A visit that is not the host refuses before any write. The provisional output never reaches a trust consumer; each kind's fresh successor uses a new inter-checkpoint invocation after disposition, and its trust consumer stays at its own checkpoint. |
 | failure.disposition itself, its prefix recorder/launcher/comparison or archival join | The same host remains the named recovery boundary, but a partial/unknown disposition or missing required prefix original has **no admitted successor**. Retain exact failed member/plan/frame/return extents. Only independently ready offline inspection is allowed; before any further authority use the precise missing permitted mechanism or separate concrete authority disposition is required. No recursive disposition, new ordinal/store, overwrite/delete/scan/rebaseline, automatic retry or restored permit. |
 
 An unchanged-input failure needs no invented changed-input qualification. It still needs
@@ -1779,8 +1781,8 @@ all earlier writer/comparison/launcher returns and acknowledgments remain requir
 | about.original/about.acceptance | CP01 preparation manual original → independent build-buffer comparison → ARTIFACTS acceptance → Q06 credit; CP05 fresh original → ready acceptance → APPOINT → actual P01 buffer comparison → credit/intent. Labels retain exact k330 provenance-only meaning. |
 | entry.original/entry.acceptance then foreground.appointment | Independently authored exact A3 entry/current basis → CP05 acceptance → fresh direct APPOINT and coexisting peers → appointment publication/WRITER_RETAINED → k345's post-gap revalidation → Task and remaining fresh P → intent. The supervisor's future return is a later output. |
 | trust.continuity | Actual completed prelude/holder/entry comparison precedes its factual copy and acknowledgment; only then ordinary engine/ready-act use. Recovery-only comparison uses that actual current comparison and the exact independently accepted recovery plan, not its own future copy or a damaged continuity record. Before ordinary use, the affected checkpoint still needs its new acknowledged continuity output. |
-| Later disarm | Mechanical E1i and the same E2–E10 gate → exact accepted disarm-only capability and current basis → reserved slot/intent acknowledgments → changed work or Q → event.result leaving DISARMED, provisional until the next checkpoint's E3b. A result or Q success supplies no eligibility. |
-| Distinct close and receipt revalidation between checkpoints | Mechanical E1i and the same gate with the kind's exact predecessors → writer expansion and final join → provisional output → next checkpoint E1 → E3b `BRACKET_VERIFIED` → CP04 basis or later CP02 receipt.acceptance. No trust consumer reads the output before E3b. |
+| Later disarm | Mechanical E1i and the same E2–E10 gate, admitting any earlier open batch and an open disarm as its release predecessor → exact accepted disarm-only capability and current basis → reserved slot/intent acknowledgments → changed work or Q → event.result leaving DISARMED, provisional until the next checkpoint's E3b. A result or Q success supplies no eligibility. |
+| Distinct close and receipt revalidation between checkpoints | Mechanical E1i and the same gate with the kind's exact predecessors and [open-bracket admission](#selection-within-an-open-bracket) (close only as its bracket's first batch; revalidation after open disarms only) → writer expansion and final join → provisional output → next checkpoint E1 → E3b `BRACKET_VERIFIED` for it and every earlier batch of its bracket → CP04 basis or later CP02 receipt.acceptance. No trust consumer reads the output before E3b. |
 
 **Closed carrier prefix.** Freeze the failed cut before the host's act. Its pre-intent
 disposition list contains only the already observed reachable failed publication-events
@@ -1939,7 +1941,7 @@ evidence precedes use; an absent/linked/replaced lock refuses rather than being 
 | Prelude anchor traversal | At `anchors/0`, then the exact immediate next unsigned-64 ordinal, read only `anchor.intent`, `bootstrap.accepted`, `anchor.result` and any conditional `failure.disposition` admitted by that slot's closed schema. No `trust-originals` child is opened until its exact earlier member plan is validated. Preserve complete original bytes/lengths/identities and predecessor equality. Present malformed/unfinalized/wrong-kind/torn/conflicting/unaccepted tail or ordinal exhaustion refuses; no wrap, argument-selected ordinal or old success fallback. |
 | Prelude supporting predecessors | From `validation-events/0` and `release-events/0`, follow only exact immediate successors and their closed intent/result/disposition members. Check each exact full predecessor, completed result, required earlier acknowledgment provenance and applicability. Cross-references must point backward to completed reachable outputs, except the separate later bootstrap validation of an earlier anchor result; verify that pair after reading both chains, without making either authorize its own production. Required revision/control/acceptance inputs are only exact earlier locators admitted by the selected schema and independent read plan, never arbitrary record-supplied paths. The complete-publication and repeatable-trust tables below are part of this closed read plan; an unsupported kind blocks. |
 | Prelude close traversal | From `closes/0` through every exact immediate successor, read only `close.intent`, `instrument.close`, `close.result` and conditional `failure.disposition`. Check the distinct close-only writer/capability, complete original CP03/audit/disarm/anchor/revision basis and actual publication/terminal join before CP04/P02. A failed/pending/stale close refuses; no generic earlier-locator rule, sealed-revision write or older close substitutes. |
-| Prelude selection | An immediate absent next slot is an actual admitted no-follow absence observation, not a list/scan. Retain its raw result and held parent. A reference beyond a gap refuses. At a checkpoint, after Antony's own E1 and before ordinary selection, E3b classifies every inter-checkpoint batch since the previous checkpoint from its publication.intent/publication.terminal bindings, against this E1's held source-root identities and those retained in the previous checkpoint's cp01.source or trust.continuity; a batch that is not `BRACKET_VERIFIED` yields `SOURCE_REENTRY_REQUIRED` or a failed cut exactly as the [inter-checkpoint entry](#inter-checkpoint-publication-entry) directs, never ordinary use of its output. Between checkpoints E3b never runs; selection while the bracket already holds a batch is the entry's owned gap. Select only the last reachable complete CP01-accepted anchor with its separate completed independent bootstrap-publication validation and applicable current durable disarm/correction basis. Any failed/unaccepted/unchecked reachable anchor tail leaves **no current anchor**. A later receipt/close failure is reported separately; selection does not manufacture a usable receipt/close/eligible basis. |
+| Prelude selection | An immediate absent next slot is an actual admitted no-follow absence observation, not a list/scan. Retain its raw result and held parent. A reference beyond a gap refuses. Selection follows the entry's fixed [selection order](#selection-within-an-open-bracket): traversal; batch partition on publication-events; at a checkpoint only, the root comparison of this E1 against the bracket base's publication.intent and each open batch's bound observation; anchor selection from anchors and bootstrap-validation slots only; then classification of the open bracket, E3b after Antony's own E1 at a checkpoint and `BRACKET_OPEN` between checkpoints. A batch that is not `BRACKET_VERIFIED` at a checkpoint yields `SOURCE_REENTRY_REQUIRED` or a failed cut with its one host, never ordinary use of its output. Select only the last reachable complete CP01-accepted anchor with its separate completed independent bootstrap-publication validation and applicable current durable disarm/correction basis. Any failed/unaccepted/unchecked reachable anchor tail leaves **no current anchor**. A later receipt/close failure is reported separately; selection does not manufacture a usable receipt/close/eligible basis. |
 | Prelude publication/trust/revision traversal | Also read `publication-events/n/{publication.intent,publication.record,failure.disposition}`, `trust-events/n/{trust.intent,trust.record,failure.disposition}` and `revisions/n/{revision.intent,revision.payload,failure.disposition}` from 0 through exact immediate successors. Decode only the complete-publication/repeatable-trust closed kinds, full predecessor/owner/member/phase/terminal-origin joins and actual absent-next results. Current retained-content validation supplies no omitted past final-recorder terminal fact. Known failed/partial/unaccepted tails block affected use; only exact intact-anchor recovery context survives where allowed. No new path, scan, parser or historical-terminal inference. |
 | Prelude holder gate | From that exact anchor's closed `trust-originals` plan, open the independent original holder and actual executable copy plus every required holder runtime/read member, original first then copy. Check the complete member set, approved parent/component identities and full byte/length equality in both directions using the fixed retained `/usr/bin/cmp` primitive described below. Recheck named/held identities and required original artifact/runtime evidence before holder launch. After spawn, independently obtain that actual peer's required current image facts before releasing its plan/first opens; do not pretend its future process was observed before it existed. No engine, holder copy or candidate entry runs to certify this gate. |
 | Holder then short entry | Only after the gate succeeds, launch the exact checked holder copy with the closed read-only descriptor plan. It checks entry/runtime original/copy pairs before entry execution and opens the remaining ready artifact/runtime/read pairs. The entry receives checked streams, compares complete members/bytes/lengths and exposes only a ready comparison result. Engine/display/registrar execution waits for these checks and required independent current peer/image correspondence. |
@@ -2168,7 +2170,9 @@ method's IPI lines are independently supplied originals before CP01, like its ch
 **Same gate (E2–E10).** The prelude acquires the exclusive release-before-register leases,
 nonblocking; a busy LIVE or checkpoint lease refuses. It traverses all eight chains and
 requires an ordinary current anchor. `SOURCE_REENTRY_REQUIRED`, `INTACT_ANCHOR_RECOVERY_ONLY`,
-or a failed/partial/unaccepted reachable tail refuses before any write. Kind selection is exact:
+or a failed/partial/unaccepted reachable tail refuses before any write. Earlier complete
+batches of the same open bracket are not such a tail: [selection within an open bracket](#selection-within-an-open-bracket)
+classifies them `BRACKET_OPEN` and admits only the uses it lists. Kind selection is exact:
 
 - disarm needs a finalized immediate release predecessor (result or accepted disposition)
   and an absent next slot;
@@ -2177,21 +2181,8 @@ or a failed/partial/unaccepted reachable tail refuses before any write. Kind sel
 - revalidation needs the finalized CP02 recovery disposition, the complete initializer
   terminal/staged/exposure originals and the unchanged issuance that disposition names.
 
-This E3 is ordinary selection without E3b, which needs Antony's E1 and runs only at the
-next checkpoint.
-
-**Not yet specified: a bracket that already holds a batch.** How this gate treats an
-earlier batch of the same open bracket is unspecified. The durable-disarm rule requires a
-fresh disarm for every correction, so successive batches are needed, yet that earlier
-batch is provisional and unaccepted, and only the next checkpoint's E3b may classify it.
-Predecessor admissibility (including disposed slots), chain identity and kind interleaving
-across the shared publication-events chain, cut extent and one host per cut, the record
-that keeps each checkpoint visit's root identity and classifications when it writes neither
-cp01.source nor trust.continuity, and a non-circular selection order are owned by design
-reference-evidence-open-bracket-selection-k350 and its whole review k351, both before k269.
-Until then, construction implements neither admission nor refusal of such an invocation.
-The [k332 integration](application-reference-input-partition.md#k332-integration-and-open-bracket-repair)
-records why.
+Every predecessor must also be admissible under the open-bracket rule. This E3 has no E3b,
+which needs Antony's E1 and runs only at the next checkpoint.
 
 E4–E8 then run unchanged. The anchored member set includes each kind's writer, so it is
 compared before its first run. No engine, display or registrar runs. With no human act,
@@ -2204,7 +2195,9 @@ and the selected anchor/chain basis in the fields its closed payload row names. 
 retains them with every writer original, and the writer's intent binds that
 publication.intent. Every output is **provisional**. Provisional outputs may serve only:
 
-- another provisional record of the same chain as its predecessor;
+- a later open batch's immediate predecessor on a chain that batch appends to, as the
+  open-bracket admission table permits;
+- the current disarm generation that a later open batch binds as its basis;
 - changed work or Q after a provisional disarm, because Q's original results are
   themselves accepted later.
 
@@ -2215,32 +2208,26 @@ streams and parents through every descendant's actual return and final freeze (E
 then release register before release.
 
 **Bracket verification (E3b).** After Antony's E1 at the next checkpoint, its prelude
-classifies every inter-checkpoint batch since the previous checkpoint before ordinary
-selection. A batch is `BRACKET_VERIFIED` only when:
-
-- the source-root held identity established at this E1 equals, byte- and stamp-for-stamp,
-  the identity retained by the previous checkpoint's cp01.source or trust.continuity
-  and every intervening identity observation;
-- each batch's bound anchor, member/image/runtime/read vector and writer identities equal
-  that anchor's trust-originals and accepted capability plan;
-- its complete U-graph join holds under `UNARCHIVED_BY_RULE`.
-
-A broken root identity returns `SOURCE_REENTRY_REQUIRED`: every intervening batch is a
-failed cut hosted after repeated CP01 SOURCE/ARTIFACTS. A failed binding or join with an
-intact root is a failed cut at its existing host. That host is CP03 for disarm, or CP01
-when the change altered trust/rules; repeated CP03 before a new close; repeated CP02 for
-revalidation. Verification is a read join, never a write or an acceptance. The consuming
-checkpoint's own act remains the acceptance. An identity observation is never a source
-root for any later invocation.
+classifies every batch of the open bracket before ordinary selection, in the order and with
+the cut and host rules of [selection within an open bracket](#selection-within-an-open-bracket).
+A broken root identity returns `SOURCE_REENTRY_REQUIRED` for the whole open bracket, hosted
+at repeated CP01 SOURCE/ARTIFACTS. With an intact root, a failed binding, admission or join
+starts one cut at its earliest host. Verification is a read join, never a write or an
+acceptance. The consuming checkpoint's own act remains the acceptance. An identity
+observation is never a source root for any later invocation.
 
 **Accepted limit.** Each inter-checkpoint execution precedes any human source judgment
 of it. Accidental replacement is detected before E1i by the operator's mechanical check,
 or across the bracket by the next E1. An operator invoking a non-original executable or
 skipping E1i, or a mutate/restore between observations, is not stopped before effects.
-That is the selected cooperative limit. Such a run's register writes are refused at the
-next checkpoint. The damage can cost liveness, including authority that becomes unavailable
-and needs Antony's separate decision. It cannot cost consumption, eligibility, appointment
-or LIVE, because only CP04/CP05 human acts produce those.
+An accidental wrong prelude, writer or skipped E1i leaves an identity observation, E8
+vector or writer identity that fails E3b's root or binding comparison, so that run's
+register writes are refused at the next checkpoint. A deliberate same-UID substitute that
+forges the observation and E8 vector and leaves every original unchanged, or a
+mutate/restore between observations, can pass E3b: that is the selected cooperative limit
+in S, not a detection claim. The damage can cost liveness, including authority that becomes
+unavailable and needs Antony's separate decision. It cannot cost consumption, eligibility,
+appointment or LIVE, because only CP04/CP05 human acts produce those.
 
 | Independent positive | Isolating negative and first refusal |
 | --- | --- |
@@ -2249,12 +2236,137 @@ or LIVE, because only CP04/CP05 human acts produce those.
 | Ordinary current anchor and exact kind predecessors | Recovery-only or source-reentry selection, failed tail, stale CP03 generation for close, missing initializer originals for revalidation: refuse before any write. |
 | Exclusive leases held through E12 | Busy LIVE/checkpoint lease, lost lease/owner/parent or early release: refuse before the batch, or freeze before the next write. |
 | Provisional output reaches its consumer only after `BRACKET_VERIFIED` | CP03 accepts an unverified disarm, CP04 uses an unverified close, CP02 accepts unverified revalidation, a close uses a post-CP03 disarm, or an identity observation is offered as a root: refuse at that consumer. |
-| Batch binds the identity observation, E8 result and anchor basis | Omit or alter one, or bind a vector that differs from the anchor: failed cut at the kind's host; no later checkpoint repairs it in place. |
+| Batch binds the identity observation, E8 result and anchor basis | Omit or alter one, or bind a vector that differs from the anchor: that batch starts a failed cut at its one host; no later checkpoint repairs it in place. |
+| An accidental wrong writer or prelude run without E1i leaves a binding that E3b refuses | Treat a forging same-UID run that passes E3b as detected, or claim refusal of a mutate/restore: a documentary control failure, because S keeps both as the cooperative limit. |
 
 These are required Q07/Q08/Q10 and relevant Q05/Q09 controls. The original author,
 separate executor, factual validator and Antony's adjudication keep their exclusions.
 No control runs LIVE, drives Antony's terminal or adds an observation API, checkpoint,
 authority, initialization or attempt. Required originals/identities remain unacquired.
+
+###### Selection within an open bracket
+
+Every correction needs a fresh disarm, so several batches can run between two checkpoints.
+This subsection fixes how a later invocation and the next checkpoint treat them. It adds
+no record kind, writer, checkpoint, human act, observation API or authority; the one new
+binding is a field set in an existing record.
+
+**Batches on the shared chain.** Every publication invocation appends exactly one
+`publication-events` slot. Its finalized publication.intent names either a checkpoint
+purpose, making a **checkpoint batch**, or one of the three closed kinds above, making an
+**inter-checkpoint batch**. A batch's members are its publication slot and every slot on
+any chain whose intent binds that publication.intent; its publication.terminal lists
+exactly those. Batches are therefore totally ordered by publication ordinal, and each later
+batch binds the earlier batch's publication-events and launcher-events slots as its
+finalized predecessors. The **bracket base** is the latest checkpoint batch whose
+publication.intent is finalized. The **open bracket** is every inter-checkpoint batch after
+it, in ordinal order; it may be empty.
+
+**The record each checkpoint visit keeps.** Every checkpoint batch's publication.intent
+binds that visit's E1 held source-root original identities (prelude, factual observer, cmp,
+runtime) and the classification of each inter-checkpoint batch between the previous
+checkpoint batch and itself: ordinal, kind, result and, for a failed cut, its one host.
+The vector is empty when there is no such batch, always so at initial CP01. Every write at
+a checkpoint happens inside such a batch, including a repeated CP01 visit without ROOT, a
+recovery-only host and a carrier-prefix host, so every visit that writes anything keeps
+this record. A visit that writes nothing keeps nothing: its E1 is no base, it consumes
+nothing and the bracket stays open for the next visit, which compares against the base. A
+finalized intent remains the record of its visit's read even when a later writer of that
+batch fails and is disposed. cp01.source and trust.continuity copy the same identities, and
+trust.continuity the same vector; a copy that differs from its batch's intent is a failed
+join.
+
+**Selection order.** Every prelude, at a checkpoint or between checkpoints, selects in this
+order, and no step reads a later step's result:
+
+1. The closed traversal of all eight chains, unchanged.
+2. Batch partition: base, open bracket and each slot's batch, from closed purposes, kinds
+   and intent bindings alone.
+3. At a checkpoint only, root comparison: this E1's held identities against the base
+   intent's identities and each open batch's bound E1i observation.
+4. Anchor selection from `anchors` and bootstrap-validation slots only. Anchor applicability
+   uses the anchor's own bound disarm/correction basis against slots outside the open
+   bracket. No revalidation slot, open-bracket slot or classification is an input, so a
+   revalidation of any status neither selects nor blocks the anchor.
+5. Classification of each open batch against that anchor: E3b at a checkpoint,
+   `BRACKET_OPEN` between checkpoints.
+6. Kind and ordinary selection, using the recorded classifications of closed brackets and
+   step 5's classification of the open one. The current disarm generation for a consumer is
+   chosen only here.
+
+**Between checkpoints.** An open batch is `BRACKET_OPEN` when its U-graph join is complete
+under `UNARCHIVED_BY_RULE`, no member carries a disposition, it binds the same anchor and
+revision as step 4, it is the immediate successor of the base or of the previous open batch,
+and its kind was admitted under the table below at its position. Anything else is a failed
+or partial tail and refuses before any write. This is a structural check only. Between
+checkpoints the one identity comparison is E1i's own check of the source-root originals
+against the supplier's independent identity record. No step compares an identity
+observation or E8 result with the base intent's root identities, cp01.source,
+trust.continuity or another batch's observation, and none produces `BRACKET_VERIFIED`,
+`SOURCE_REENTRY_REQUIRED` or a failed cut.
+
+| New invocation | Admission while the open bracket holds earlier batches |
+| --- | --- |
+| `DISARM_MAINTENANCE` | Admitted after any open batch. After an open disarm, that slot is its release predecessor, so successive corrections chain. After an open close, the close is stale for CP04, which already refuses a close older than the newest disarm. After an open revalidation, it binds the unchanged accepted receipt basis, which that revalidation does not alter. |
+| `RECEIPT_REVALIDATION` | Admitted after open disarms only; its validation.intent binds the latest as its current disarm. Refused after an open revalidation (one per bracket, for one CP02 acceptance) or an open close (a close binds an accepted receipt basis; a revalidation exists only for one in CP02 recovery). |
+| `DISTINCT_CLOSE` | Admitted only as the first batch of its bracket. An open disarm is newer than its CP03 generation, an open revalidation leaves its receipt basis awaiting CP02, and a second close would supersede the first before CP04. |
+
+Shared chains always take the immediate predecessor; that binding is chain order, not use
+of the earlier output.
+
+**Predecessor admissibility.** A kind-chain or shared-chain predecessor is admissible only
+when it is finalized and is one of:
+
+- a slot written or disposed inside a checkpoint batch, including a hosted failure.disposition;
+- an inter-checkpoint result that its closing checkpoint batch recorded as `BRACKET_VERIFIED`;
+- a `BRACKET_OPEN` slot, for exactly the uses the table admits.
+
+A batch recorded as not verified is admissible only through its finalized in-slot
+disposition; its undisposed result, a partial slot or a failed disposition refuses. A fresh
+disarm after a hosted disposition therefore takes the disposed slot as its predecessor.
+
+**Verification at the next checkpoint.** Step 3 compares the root. Any byte or stamp
+inequality with the base intent's identities or any open batch's bound observation returns
+`SOURCE_REENTRY_REQUIRED` for the whole open bracket. With an intact root, step 5 checks
+batches in ordinal order. A batch is `BRACKET_VERIFIED` when its bound anchor,
+member/image/runtime/read vector and writer identities equal that anchor's trust-originals
+and accepted capability plan, its kind and predecessors satisfy the rules above at its
+position, and its complete U-graph join holds under `UNARCHIVED_BY_RULE`. A later checkpoint
+reads a verified result from its closing batch's record; it never re-verifies a closed
+bracket.
+
+**Cut extent and its one host.** A root break makes the whole open bracket one cut,
+hosted at repeated CP01 SOURCE/ARTIFACTS. Otherwise batches before the first failure stay
+verified, and the first failing batch and every later batch form one cut: every slot of
+those batches on every chain, a suffix of each chain's bracket slots. A later batch is
+carried because it bound the earlier batch's shared-chain slots, and possibly its disarm
+as its basis. The cut has exactly one host: the earliest, in CP01, CP02, CP03 order, of
+its batches' kind hosts (disarm at CP03, or CP01 when its bound disarm.intent scope alters
+trust/rules; close at repeated CP03; revalidation at repeated CP02). This applies the host
+table's whole-cut rule to a bracket. The cut always ends at the publication-events and
+launcher-events tails, so the host uses the
+[finite carrier prefix](#finite-publication-when-the-carrier-is-damaged) for those two
+tails and the ordinary envelope for every other cut slot. A visit that is not the host
+cannot write, so it refuses before any write and the bracket stays open. A cut recorded by
+a host batch whose dispositions did not all finish binds every later visit until each
+member is disposed, under the failed-disposition stop where it applies. Each kind's trust
+consumer stays at its own checkpoint, and fresh successors run as new inter-checkpoint
+invocations after the host's batch.
+
+| Independent positive | Isolating negative and first refusal |
+| --- | --- |
+| Two successive disarms in one bracket: the second takes the first's open slot as its release predecessor, and both are `BRACKET_VERIFIED` at the next checkpoint | The second takes a partial slot, skips the open disarm for an older slot, or takes a slot recorded as a failed cut without its disposition: refuse before any write. |
+| A fresh disarm after a hosted disposition takes the disposed slot as its predecessor | The disposition is absent or partial, or the undisposed failed result is offered instead: refuse before any write. |
+| Admitted interleavings, each `BRACKET_OPEN` and later verified: disarm then revalidation binding it; revalidation then disarm; close then disarm, with CP04 refusing the stale close | Close after any open batch, a second revalidation, or revalidation after a close: refuse before any write. A batch that bypassed that refusal fails E3b at its position. |
+| Every checkpoint batch's intent binds its E1 identities and classification vector, including repeated CP01 without ROOT and a recovery-only host; a visit that writes nothing leaves the bracket open | Omit or alter the identities or vector, let a cp01.source or trust.continuity copy differ, compare against those copies instead of the base intent, or treat a write-nothing visit's E1 as a base: failed join, refused at E3b. |
+| Anchor selected from checkpoint slots while an open revalidation exists; its classification follows | Let an open revalidation's status select or block the anchor, or classify a batch before the anchor exists: refuse at that step. |
+| A failed earlier batch carries every later batch into one cut; earlier batches stay verified | Verify a later batch, dispose part of the cut, or leave one cut slot on any chain undisposed after the host's batch: refuse at E3b or at the host's ready-manifest gate. |
+| A mixed cut (failed disarm, carried revalidation) is hosted once at repeated CP02, which disposes both; the disarm's later acceptance stays at CP03 | Host it at CP03 first, host each kind separately, or let a non-host visit write: refuse before that write. Move the disarm's later acceptance to CP02: refuse at that consumer. |
+| A root change across a multi-batch bracket makes every batch one cut at repeated CP01 | Verify the batches before the change, or host any of them at its kind host: refuse at E3b. |
+| Between checkpoints the only identity comparison is E1i's | A gate compares an observation with the base intent, cp01.source, trust.continuity or another batch, or writes any classification: refuse at that step. |
+
+These are further required Q07/Q08/Q10 and relevant Q05/Q09 controls under the same
+exclusions. Required originals/identities remain unacquired.
 
 #### Append-only anchor and close generations
 
@@ -2564,8 +2676,10 @@ SOURCE/ARTIFACTS independently. A disarm disposition may be ready at CP03 before
 its ordinary result/audit acceptance happens on a later affected CP03 visit after Q.
 A failed close is disposed in a repeated CP03 **before** the separately owned closing
 step, never at an unplaced act between close and CP04. The same ready-before-consumption
-rule applies to factual revalidation outputs and their later CP02 acceptance. The finite
-carrier prefix is internal publication under that earlier direct host act, not another
+rule applies to factual revalidation outputs and their later CP02 acceptance. A failed
+inter-checkpoint bracket cut has [one host](#selection-within-an-open-bracket), the earliest
+of its batches' kind hosts, and later trust acceptance stays at each kind's own checkpoint.
+The finite carrier prefix is internal publication under that earlier direct host act, not another
 human checkpoint. Its own failure stops; no recursive disposition or future acceptance.
 
 The first-consumer graph begins with independent authored expectations → SCRATCH original
@@ -2666,7 +2780,9 @@ mutation or qualification/read of the changed subject. Bypassing this enabling p
 a required control failure. Pre-existing proofs cannot authorize the work early. The
 supervisor publishes through the [bracketed inter-checkpoint entry](#inter-checkpoint-publication-entry):
 its disarm remains provisional until the next checkpoint verifies the bracket, and no
-trust consumer uses it before then. Slot existence alone already disarms.
+trust consumer uses it before then. A further disarm before that checkpoint takes the open
+one as its predecessor under [selection within an open bracket](#selection-within-an-open-bracket).
+Slot existence alone already disarms.
 
 Release events form one fixed, append-only, contiguous ordinal chain. The initial seed
 precedes the first anchor under the direct ROOT plan as specified in the synchronous

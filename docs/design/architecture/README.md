@@ -8,25 +8,26 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-Open [the integration discussion](index.html#discussion) or
+Open [the open-bracket discussion](index.html#discussion) or
 [Checkpoint continuity → Select and check before candidate tools](index.html#diagram-native-reference-proof).
-K332 reviewed the whole k331 checkpoint-recovery replacement and found two defects; k349
-integrated both. G1 is real: k344's closure placed E3b, which exists only after Antony's E1
-at a checkpoint, before every ordinary selection, while the inter-checkpoint gate reuses
-that selection. Every correction needs a fresh disarm, so successive batches between
-checkpoints are required. K349's drafted open-bracket repair failed its adversarial check
-on seven counts, including the shared publication-events chain, disposed predecessors,
-hosting a mixed-kind cut and the starting record at a repeated CP01. That is redesign, so C
-now says only that E3b runs at a checkpoint and marks selection within an already occupied
-bracket as an owned gap. G2 is repaired: the k245/k246/k247 amendment lists include k348.
+Every correction needs a fresh disarm, so several provisional batches can sit between two
+checkpoints. K350 defines the bracket on the shared publication-events chain: the base is
+the latest checkpoint batch, and the open bracket is every later inter-checkpoint batch.
+Each checkpoint batch's publication.intent records that visit's E1 identities and the
+classification of the batches it closed. Every prelude selects in a fixed order, choosing
+the anchor from anchors and bootstrap validation only. Between checkpoints, earlier batches
+are `BRACKET_OPEN` for admitted uses only. At the next checkpoint the first failing batch
+and every later batch form one cut, hosted once at the earliest kind host.
 
-- [Checkpoint continuity → Select and check before candidate tools](index.html#diagram-native-reference-proof) — Marks the gate as running no E3b, shows the owned gap and the k350 → k351 → k269 order.
-- [K332 integration and open-bracket repair (report)](../../verification/application-reference-input-partition.md#k332-integration-and-open-bracket-repair) — Classifies both findings and all seven check findings, and lists every change.
-- [Inter-checkpoint publication entry (C)](../../verification/application-reference-evidence.md#inter-checkpoint-publication-entry) — States the owned gap and its owners.
+- [Checkpoint continuity → Select and check before candidate tools](index.html#diagram-native-reference-proof) — Replaces the owned gap with the fixed selection order, `BRACKET_OPEN` admission, the bracket record and one cut with one host.
+- [Recovery → Host the disposition before its successor](index.html#diagram-native-reference-admission) — Status node and caption: a failed bracket cut is hosted once, at the earliest kind host.
+- [Evidence](index.html#diagram-native-reference-evidence), [instrument](index.html#diagram-native-reference-instrument), [contact](index.html#diagram-native-reference-contact), [packaging](index.html#diagram-native-reference-packaging) and [metadata shape](index.html#diagram-native-population-metadata-shape) views — Status lines and captions name k350 and k351 before k269.
+- [Selection within an open bracket (C)](../../verification/application-reference-evidence.md#selection-within-an-open-bracket) — The normative rules and their controls.
+- [Open-bracket selection (report)](../../verification/application-reference-input-partition.md#open-bracket-selection) — Classifies every doubt and lists every change.
 
-Design k350 and its whole review k351, with every earned integration, precede k269. The
-integration-only [membership candidate](../../verification/reference-checkpoint-recovery-integration-membership.json)
-binds the current bytes and k344's whole membership stays historical. No actual original,
+Whole review k351, with every earned integration, precedes k269. The
+[open-bracket membership](../../verification/reference-open-bracket-selection-membership.json)
+binds the current bytes; k344's and k349's memberships stay historical. No actual original,
 control, authority or construction handoff follows; pass unused and both holds remain.
 
 ## Inter-checkpoint entry context
@@ -37,7 +38,8 @@ selected k348's bracketed entry. The operator runs the source/OS method's mechan
 identity check without a trust judgment, then the same prelude gate with the writer as an
 anchored member. The publication batch stays provisional until the next checkpoint's
 source-rooted prelude verifies the root unchanged across the bracket. Accepted residual:
-a wrong executable between checkpoints is caught only afterwards, at a liveness cost.
+an accidental wrong executable between checkpoints is caught only afterwards, at a
+liveness cost; a deliberate forging same-UID run stays the cooperative limit.
 The [report](../../verification/application-reference-input-partition.md#inter-checkpoint-publication-entry),
 [C](../../verification/application-reference-evidence.md#inter-checkpoint-publication-entry)
 and [S](../../verification/application-population-metadata-shape.md#inter-checkpoint-publication-entry)

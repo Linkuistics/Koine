@@ -125,11 +125,29 @@ show the operator's mechanical identity check refusing a replaced prelude/observ
 runtime original before the prelude runs, and the same E2–E10 gate refusing an unanchored
 or rebuilt writer. They must show recovery-only or failed-tail selection and a busy lease
 refusing before any write. At the next checkpoint, E3b must classify a changed root
-identity as `SOURCE_REENTRY_REQUIRED`, and a wrong binding or incomplete join as a failed
-cut at the kind's host. A provisional output offered to any trust consumer before E3b
-must be refused. These are required Q/P facts. The selected cooperative residual is
-neither a contact unknown nor a waiver: an operator running a wrong executable between
-checkpoints, with liveness-only cost. No observation API, checkpoint or authority follows.
+identity as `SOURCE_REENTRY_REQUIRED` for the whole open bracket, and a wrong binding,
+admission or incomplete join as the start of one failed cut at its one host. A provisional
+output offered to any trust consumer before E3b must be refused. These are required Q/P
+facts. The selected cooperative residual is neither a contact unknown nor a waiver: an
+operator running a wrong executable between checkpoints, with liveness-only cost, where a
+deliberate forging same-UID run or a mutate/restore can pass E3b. No observation API,
+checkpoint or authority follows.
+
+[Selection within an open bracket](application-reference-evidence.md#selection-within-an-open-bracket)
+adds controls with otherwise valid operands, each refusing at its first gate. Two successive
+disarms chain through the open slot and both verify; a partial, skipped or undisposed failed
+predecessor refuses. A fresh disarm takes a hosted disposition's slot; an absent or partial
+disposition refuses. Disarm then revalidation, revalidation then disarm, and close then
+disarm are admitted; close after any open batch, a second revalidation and revalidation
+after a close refuse. Every checkpoint batch's publication.intent binds its E1 identities
+and classification vector, and a write-nothing visit leaves the bracket open; an omitted,
+altered or differently copied record, or a comparison against cp01.source or
+trust.continuity, refuses at E3b. Anchor selection must ignore an open revalidation. A
+failed earlier batch carries every later batch into one cut; a verified later batch, a
+partial disposal or a second host refuses. A mixed disarm/revalidation cut is hosted once
+at repeated CP02 while the disarm's acceptance stays at CP03, and a root change across
+several batches makes them one CP01 cut. Between checkpoints, any identity comparison
+beyond E1i's own, or any written classification, refuses.
 
 ## Independent source baseline
 
