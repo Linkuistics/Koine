@@ -21,6 +21,13 @@ or accepted construction input. Normative/actually consumed edits disarm and req
 affected requalification before consumption.
 
 R3's composed Safari walk and all actual prior answers/original duties/exclusions remain.
+K340 subsequently records Antony's "Accept the bounded endpoint (Recommended)": only
+the final-recorder/nonpublishing-outer-receiver terminal tail stops without a further
+durable original at the explicit source/OS/cooperative limit. All earlier originals
+remain required; receiver loss can leave an unprovable tail, and unknown tail proves
+neither completion nor no dispatch/provisioning and restores no authority. Canonical
+S/comparison and C/K/P carry the exact exception. K341 must complete publication under
+it, then k335/k336 and existing whole k332/every integration still precede k269.
 Actual originals/tools/controls/read/images/UID/build/terminal/receipt/authority remain
 missing. K244/k242/finite subject stay live, k245's pass unused, full k246/k247/useful
 breadth/additive supported-VM/native/private/product duties and both holds retained.

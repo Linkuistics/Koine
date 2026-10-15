@@ -25,6 +25,17 @@ preserve every other selected clause. Changing construction/evidence observation
 in the separate [current report](application-reference-input-partition.md#current-construction-and-evidence-report),
 which the measured chain must not consume. This companion binds its whole bytes.
 
+The selected [finite publication terminal-evidence boundary](application-population-metadata-shape.md#finite-publication-terminal-evidence-boundary)
+is a distinct final-recorder/outer-receiver archival limit, not a C1–C8/B1–B8/U1–U6
+contact unknown or new observation authority. All earlier writers' originals remain
+required. Final-recorder terminal observations have no further durable original, and
+the nonpublishing receiver's own return ends at the source/OS/cooperative trust limit.
+Lost receiver observations can leave an unprovable tail; later content equality proves
+no past flush/reap. Unknown tail cannot prove no dispatch/provisioning, restore authority
+or excuse another required identity/control/read/freeze failure. Exact independently
+controlled completion/refusal/recovery mechanics must precede use within the existing
+five-checkpoint schedule; no record kind, capability or partial usable route follows.
+
 [Contact → Establish coverage before releasing a pure subject](../design/architecture/index.html#diagram-native-reference-contact)
 shows the reading order. Graphs enter at the dark Start here node. The independent
 approval register must accept the required inventory before construction can credit it;

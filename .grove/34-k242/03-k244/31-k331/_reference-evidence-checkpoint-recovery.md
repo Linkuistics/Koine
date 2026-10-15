@@ -50,6 +50,23 @@ limit. No continuity window or new observation authority was selected. Consume t
 canonical selected clauses and exact line-by-line comparison; both alternatives were
 not selected and confer no rule or authority. Preserve the existing agreed test seams.
 
+## Selected k340 terminal-evidence endpoint
+
+Antony answered "Accept the bounded endpoint (Recommended)". Canonical S's finite
+publication terminal-evidence clause and exact original-obligation comparison own the
+only exception: all earlier writers' durable originals reach a designated final recorder;
+its independently accepted nonpublishing outer receiver observes final acknowledgment/
+frames/EOF/reap using existing permitted channel/wait mechanics, without another durable
+original of those terminal observations or its own final return. State the source/OS/
+cooperative limit and receiver-loss/unprovable-tail risk. Later independent content checks
+prove no omitted past terminal event. Unknown tail proves neither completion nor no
+dispatch/provisioning and restores no authority. Every other original/identity/control/
+read/freeze duty remains. K341 must supply complete publication and independent failure
+controls, k335 exact hosted recovery within the existing five checkpoints, and k336 whole
+replacement/review handoff. This answer adds no observation API/manual exception, role
+appointment, checkpoint, initialization, attempt, LIVE or posture change; no partial
+protocol is usable and no actual original or qualified mechanic is supplied.
+
 ## Required coherent replacement
 
 - Place every failure-disposition acceptance within the actual selected checkpoint

@@ -86,3 +86,18 @@ exception and completes no publication route. K340 must obtain a concrete dispos
 if the proposed finite boundary is rejected without another mechanism; no repeated
 identical recorder-chain impasse is useful. Every original Goal/Done when above remains
 the closing check; k335/k336/existing whole k332 retain their separate original duties.
+
+K340 now records Antony's actual "Accept the bounded endpoint (Recommended)". Consume
+canonical S's finite publication terminal-evidence boundary and exact comparison, not
+k339's formerly unselected recommendation. All earlier publisher/initializer/staged-final-
+validator/recorder originals remain required through a designated final durable recorder;
+an independently accepted nonpublishing outer receiver observes its final acknowledgment/
+frames/EOF/reap under existing permitted channel/wait mechanics without another durable
+original of those observations or its own final return. The explicit source/OS/cooperative
+limit accepts receiver-loss/unprovable-tail risk, not a content-to-past-terminal inference.
+Unknown tail proves neither completion nor no dispatch/provisioning and restores no
+authority. K341 must still satisfy this node's whole original Goal/Done when under only
+that exact exception, including exact completion/refusal/loss/recovery rules and independent
+controls. K335/k336, all other duties/exclusions/seams/five checkpoints and existing k332/
+every integration before k269 remain. No complete protocol, actual original, new kind/
+capability/observation, initialization, attempt, appointment, LIVE or posture follows.

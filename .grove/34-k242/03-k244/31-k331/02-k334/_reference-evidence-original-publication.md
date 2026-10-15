@@ -87,3 +87,14 @@ evidence. No original requirement is silently waived and no partial route is usa
 This node's complete original Goal/Done when remains unchanged; k335 receives exact
 ready/failure facts only after the full design, and closing k336 retains whole replacement/
 membership/seven-view reconciliation and Creator on existing k332. No new review is cut.
+
+K340 now records Antony's actual "Accept the bounded endpoint (Recommended)". Only the
+canonical S/comparison final-recorder/nonpublishing-receiver terminal-evidence exception
+amends the retained original charter. Every earlier writer's original remains; the final
+terminal observations and receiver return have no further durable original at the stated
+source/OS/cooperative limit. Receiver loss can leave an unprovable tail despite intact
+content; later equality proves no past terminal event. Unknown tail proves neither
+completion nor no dispatch/provisioning and restores no authority. K341 still owes the
+complete publication protocol, exact roles/records/locators/selection/completion/refusal/
+loss criteria and independent controls before k335's hosted recovery. All other original
+duties, five checkpoints/exclusions/seams, unused pass, holds and existing k332 remain.

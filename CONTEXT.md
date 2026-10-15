@@ -328,9 +328,17 @@ publisher-terminal original. Complete last-writer/terminal/trust publication and
 recovery remain live design work under k334/k331. The
 [final-writer dependency boundary](docs/verification/application-reference-input-partition.md#final-transcript-writer-dependency-boundary)
 identifies why a finite publication set cannot retain its own final writer's later
-acknowledgment/return without an explicit stopping boundary. The bounded terminal-tail
-proposal remains unselected; a requirements decision precedes complete publication design.
-No required fact has become an accepted unknown or usable partial route. The
+acknowledgment/return without an explicit stopping boundary. Antony accepted the
+[finite publication terminal-evidence boundary](docs/verification/application-population-metadata-shape.md#finite-publication-terminal-evidence-boundary)
+in k340: earlier writers retain durable originals through a designated final recorder;
+an independently accepted nonpublishing outer receiver observes its final acknowledgment/
+frames/EOF/reap using existing channel/wait mechanics. Those last terminal observations
+have no further durable original, and the receiver's own return ends at the source/OS/
+cooperative trust limit. Receiver loss can leave an unprovable tail despite complete-
+looking files; later content equality proves no past terminal event. Unknown tail proves
+neither completion nor no dispatch/provisioning and restores no authority. Exact complete
+publication/refusal/recovery design remains required before use. Every other required
+fact remains blocking; no accepted contact unknown or usable partial route follows. The
 [integration-only documentary candidate](docs/verification/reference-practical-admission-integration-membership.json)
 records k329's saved boundary and unresolved duties; later selected edits need k331's new membership. K323's membership is historical. No accepted
 construction input, original, control, authority, qualification or finite subject follows.
@@ -378,6 +386,14 @@ slot for exact earlier launcher observations and their original publication prov
 A record alone supplies no finalized terminal chain, successful initialization or
 never-dispatched proof; independent validation and every required later original remain
 separate predecessors of use.
+
+**Reference final transcript endpoint**: The selected finite evidence limit for each
+completed publication invocation. All earlier writers' durable originals reach a final
+recorder; its independent nonpublishing outer receiver observes the final terminal tail
+under existing channel/wait mechanics without a further durable original. The receiver's
+own return stops at the explicit source/OS/cooperative limit. Loss may leave an unprovable
+tail, even with intact saved content. This boundary grants no completion, no-dispatch/
+no-provisioning proof, restored authority or waiver of any other required evidence.
 
 **Reference anchor generation**: One immutable predecessor-bound `anchors/n` slot
 for a proposed independent trust-original set and its CP01 binding. Use requires

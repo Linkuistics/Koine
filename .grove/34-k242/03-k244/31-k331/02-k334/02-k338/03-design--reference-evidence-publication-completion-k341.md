@@ -14,6 +14,21 @@ triage; whole C/K/P, selected S/comparison, descriptor ADR and original k321 R1/
 K337 is only the publisher-terminal prefix. K339 selected no exception, new kind/locator/
 authority or usable route. Do not substitute its recommendation for k340's actual answer.
 
+K340's actual answer is "Accept the bounded endpoint (Recommended)". Read canonical S's
+Finite publication terminal-evidence boundary and line-by-line comparison plus the exact
+running answer on k340. All earlier writers' originals remain required through a designated
+final durable recorder. Its independently accepted nonpublishing outer receiver observes
+the final acknowledgment/frames/EOF/reap with existing permitted channel/wait mechanics;
+those terminal observations have no further durable original, and the receiver's own
+return stops at the explicit source/OS/cooperative limit. Receiver loss can leave an
+unprovable tail despite complete-looking files. Later independent full-byte/member/identity
+checks establish retained content only, not omitted past terminal events. Unknown tail
+proves neither completion nor no dispatch/provisioning and restores no authority. Design
+the exact accepted roles/exclusions, completion/refusal/loss/partial/recovery and independent
+writer/receiver controls before use within the existing five-checkpoint schedule; add no
+new observation API/manual exception, ceremony, attempt, initialization, appointment, LIVE
+or posture by implication. Every other original duty, required fact and agreed seam remains.
+
 ## Done when
 
 - Satisfy every original k338/k334 Done when under only actual authorized amendments.

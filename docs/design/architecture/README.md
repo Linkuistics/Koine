@@ -19,9 +19,11 @@ absent. K331 replaces the coupled protocol, and k332 whole review/every earned i
 k269. K331 is decomposed: k333 supplies the proposed pre-tool selection/holder/fd path;
 K337 supplies only the publisher-terminal original prefix under k334; k338 retains full
 initializer/validator/last-writer terminal closure and repeatable trust records. Its first
-child k339 isolates a conditional last-publication conflict; k340 must obtain the actual
-terminal-evidence boundary choice before k341 completes the publication design. No
-proposed limit is selected. Hosted
+child k339 isolates a conditional last-publication conflict. In k340 Antony selected
+"Accept the bounded endpoint (Recommended)": only the final-recorder/nonpublishing-
+receiver terminal tail ends without another durable original at the explicit source/OS/
+cooperative trust limit. Every earlier writer's original remains. K341 must complete
+publication under that answer. Hosted
 recovery and whole reconciliation remain live. No partial child or planner supplies
 the complete mechanism.
 The [integration-only candidate](../../verification/reference-practical-admission-integration-membership.json)
@@ -39,27 +41,33 @@ defect remain live with their actual owners.
 
 ## Final transcript boundary discussion
 
-Open [Admission → Decide the final transcript boundary](index.html#diagram-native-reference-admission).
+Open [Admission → Apply the accepted transcript boundary](index.html#diagram-native-reference-admission).
 If every writer's final acknowledgment/return must be retained by another publication,
 the last publication needs a later one. The diagram exposes this conditional contradiction
-and the concrete choice before completion. K340 must obtain Antony's answer: explicitly
-bound the final-recorder/outer-receiver terminal evidence, accepting an unarchived-tail
-risk, or preserve the requirement with the route unavailable pending a concrete different
-root/workstream decision. Neither is selected. The proposed receiver uses no new API or
-manual terminal-observation exception. Later content equality does not prove omitted
-past flush/reap. Existing non-recursive semantic acceptance supplies no terminal original.
+and the selected finite endpoint. Antony accepted the final-recorder/nonpublishing-outer-
+receiver terminal-evidence limit in k340. All earlier writer originals remain durable;
+the receiver observes final acknowledgment/frames/EOF/reap under existing permitted
+channel/wait mechanics, without another durable original of that terminal tail or its
+own return. Receiver loss may leave an unprovable tail despite complete-looking files.
+Later independent full-byte/member/identity checks establish retained content only, not
+omitted past flush/reap. Unknown tail proves neither completion nor no dispatch/provisioning
+and restores no authority. The stronger every-writer-originals alternative was not selected.
+No new API or manual terminal-observation exception follows. Existing non-recursive
+semantic acceptance alone supplies no terminal original or completed publication.
 
 K337's earlier publisher-terminal prefix remains documented in its exact contract;
-this view now focuses on the unresolved final boundary. K338/k334 retain every original
-duty. K341 must finish terminal/finalization/CP02/repeatable trust contracts after the
-answer; k335 hosts recovery and k336 reconciles the whole artifact/membership before
+this view now focuses on the selected final boundary. K338/k334 retain every original
+duty under only that exception. K341 must finish exact terminal/finalization/CP02/repeatable
+trust and independent writer/receiver controls, including completion/refusal/loss criteria;
+k335 hosts recovery within existing checkpoints and k336 reconciles the whole artifact/membership before
 existing k332 whole review/every integration and k269. No usable partial route follows.
 
-- [Admission → Decide the final transcript boundary](index.html#diagram-native-reference-admission) — Replaces the prefix focus with the conditional last-event conflict, unselected alternatives and remaining consumer order.
-- [Final transcript writer dependency boundary](../../verification/application-reference-input-partition.md#final-transcript-writer-dependency-boundary) — States the exact premise, recommended evidence limit, residual failure risk and preserved missing duties.
-- [Koine language](../../../CONTEXT.md#language) — Links the unresolved final-writer boundary without granting a new accepted unknown or partial route.
+- [Admission → Apply the accepted transcript boundary](index.html#diagram-native-reference-admission) — Shows the conditional last-event conflict, selected evidence endpoint and remaining consumer order.
+- [Final transcript writer dependency boundary](../../verification/application-reference-input-partition.md#final-transcript-writer-dependency-boundary) — Records the actual answer, exact evidence limit, residual failure risk and preserved missing duties.
+- [Canonical finite terminal-evidence boundary](../../verification/application-population-metadata-shape.md#finite-publication-terminal-evidence-boundary) — Owns the selected rule; the report and diagram supply no complete protocol.
+- [Koine language](../../../CONTEXT.md#language) — Defines the selected endpoint without granting an unrelated accepted unknown or usable partial route.
 
-Unchanged contract context: [Launcher original before bootstrap validation](../../verification/application-reference-evidence.md#launcher-original-before-bootstrap-validation),
+Related contract context: [Launcher original before bootstrap validation](../../verification/application-reference-evidence.md#launcher-original-before-bootstrap-validation),
 [source-rooted selection](../../verification/application-reference-evidence.md#closed-pre-tool-reads-and-deterministic-selection)
 and [five checkpoints](../../verification/application-reference-evidence.md#compatible-ownership-and-bounded-sequential-schedule).
 

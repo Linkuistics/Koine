@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
   "discussion": {
-    "title": "Decide where final transcript evidence stops",
-    "status": "k339 conditional dependency analysis; k340 choice remains unselected",
-    "summary": "Requiring a retained original of every writer's final acknowledgment and terminal return has no finite last publication: another recorder creates a later writer. K339 isolates that exact premise. K340 must obtain Antony's actual choice between an explicit final-recorder/outer-receiver evidence limit, with unarchived terminal-tail risk, and preserving the requirement with this route unavailable. Neither proposal is selected. K338 retains every original duty; k341 completes all terminal, CP02 and repeatable trust contracts after the answer. K335 hosts failure acceptance; k336 reconciles the whole replacement and membership before existing k332 review/every integration and k269. No new kind, authority, initialization or usable partial path follows; pass unused, both holds retained.",
+    "title": "Apply the accepted final transcript evidence boundary",
+    "status": "k340 bounded endpoint accepted; complete publication and recovery design still required",
+    "summary": "Antony selected the bounded endpoint in k340. All earlier publisher, initializer, staged/final-validator and recorder originals remain durable through a designated final recorder. An independently accepted nonpublishing outer receiver observes its final acknowledgment/frames/EOF/reap using existing permitted channel/wait mechanics; that terminal tail and the receiver's own return have no further durable original at the explicit source/OS/cooperative trust limit. Receiver loss may leave an unprovable tail despite complete-looking files. Later independent content checks prove no omitted past terminal event; unknown tail supplies no completion/no-dispatch/no-provisioning proof or renewed authority. The stronger every-writer-originals alternative was not selected. K341 must complete every remaining publication/CP02/trust and independent failure-control duty; k335 hosts recovery within existing checkpoints, and k336 reconciles the whole replacement/membership before existing k332 review/every integration and k269. No new kind, observation authority, initialization or usable partial path follows; pass unused, both holds retained.",
     "diagramIds": [
       "native-reference-admission",
       "native-reference-proof",
@@ -14,7 +14,7 @@
     "updatedDiagrams": [
       {
         "id": "native-reference-admission",
-        "summary": "Shows the conditional last-publication contradiction, explicit unselected terminal-tail limit, unavailable all-originals alternative and complete remaining consumer order."
+        "summary": "Shows the conditional last-publication contradiction, Antony's selected terminal-evidence endpoint, accepted receiver-loss risk, unselected stronger alternative and remaining complete-design consumers."
       }
     ]
   },
@@ -110,11 +110,11 @@
     {
       "id": "native-reference-admission",
       "group": "native-sources",
-      "title": "Admission → Decide the final transcript boundary",
+      "title": "Admission → Apply the accepted transcript boundary",
       "renderer": "svg",
       "source": "native-reference-admission.d2",
       "rendered": "native-reference-admission.svg",
-      "caption": "K339 identifies a conditional evidence-closure conflict, not impossibility of finite logging with an accepted trust root. If every writer's final acknowledgment/return requires another retained publication, the last publication always needs a later one. Existing non-recursive human acceptance does not itself archive the final recorder's later terminal facts. K340 must obtain the actual bounded decision: an explicit final-recorder/outer-receiver evidence limit with unarchived-tail risk, or keep the requirement and this route unavailable. Neither is selected; the proposed receiver adds no observation API or manual terminal-observation exception. A later full-byte read establishes content only, not omitted past flush/reap. K338/k334 remain live with every original duty; k341 completes all terminal/CP02/repeatable trust contracts, k335 hosts failures and k336 owns whole C/S/K/P/original-duty/seven-view/new-membership closure before existing k332 whole review/every integration and k269. No new record kind, capability, initialization route, original, control or qualified tool follows. Actual identities remain unacquired, one pass unused, both holds retained. The other six views are unchanged context; earlier k316/k326 viewer limits remain."
+      "caption": "K339 identifies why a universal retained terminal-original duty has no finite last publication. Antony accepted the bounded endpoint in k340: all earlier publisher/initializer/staged-final-validator/recorder originals reach a designated final durable recorder. An independently accepted nonpublishing outer receiver observes its final acknowledgment/frames/EOF/reap with existing permitted channel/wait mechanics; those terminal observations and its own final return have no further durable original at the explicit source/OS/cooperative limit. Receiver loss may leave an unprovable tail despite complete-looking files. Later independent full-byte/member/identity checks establish content only, not omitted past terminal events; unknown tail supplies no completion/no-dispatch/no-provisioning proof or renewed authority. The stronger every-writer-originals alternative was not selected. K341 must design exact completion/refusal/loss rules, all terminal/CP02/repeatable trust outputs and independent controls; k335 hosts recovery within existing checkpoints, and k336 owns whole C/S/K/P/original-duty/seven-view/new-membership closure before existing k332 whole review/every integration and k269. Every other original duty remains. No new record kind, capability, observation/manual exception, initialization route, actual original, control or qualified tool follows. Actual identities remain unacquired, one pass unused, both holds retained. The other six views are unchanged context; earlier k316/k326 viewer limits remain."
     },
     {
       "id": "native-reference-proof",

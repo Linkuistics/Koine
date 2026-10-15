@@ -1,22 +1,24 @@
-# k339 conditional final-writer conflict; k340 choice unselected; no usable route.
+# k340 selected terminal endpoint; full publication/recovery design still required.
 direction: down
 classes: {
   start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
 }
-Start: "Start here · Current last-writer duty\nEvery writer needs retained terminal originals\nFinite completed set required before use" {class: start}
+Start: "Start here · Why an evidence endpoint is needed\nIf every writer needs retained terminal originals\nThe last publication always needs a later writer" {class: start}
 Earlier: "Earlier publisher / initializer / validator\nActual frames, writes, flushes, EOF and reap\nTheir original evidence precedes its reader"
 Last: "Choose the last durable publication\nFrozen bytes describe only earlier events\nIts final acknowledgment / return happen later"
 Observer: "Another observer can retain those later facts\nIts publication is now later than the chosen last\nSame requirement applies again"
 Conflict: "STOP · No finite closure under this premise\nNo self / future fact; no older-chain fallback\nAnother recorder moves the boundary"
-Choice: "k340 · Actual human trust-boundary decision\nProposals only · No exception selected\nExisting five checkpoints and exclusions remain"
-Limit: "Proposed finite terminal-evidence limit\nFinal receiver observes; no further durable original\nLost terminal tail stays an explicit risk"
-Strict: "Keep every terminal-original requirement\nRoute remains unavailable\nDifferent concrete root or workstream decision needed"
+Choice: "k340 · Antony accepted the bounded endpoint\nOnly final-recorder / nonpublishing-receiver tail\nExisting five checkpoints and exclusions remain"
+Limit: "Selected finite terminal-evidence limit\nReceiver observes final ack / frames / EOF / reap\nNo further durable original · Source / OS trust limit"
+Loss: "Receiver loss can leave an unprovable tail\nLater content equality proves no past terminal event\nUnknown tail cannot prove completion / never-started"
+Strict: "Not selected · Every writer needs an original\nWould leave this route unavailable\nAnother recorder cannot terminate that duty"
 Next: "k341 completes all publication / CP02 / trust duties\nk335 hosts failures; k336 reconciles whole replacement\nk332 review + integrations precede k269"
 Start -> Earlier: "1 · retain original earlier facts"
 Earlier -> Last: "2 · consider final recorder too"
 Last -> Observer: "3 · required terminal fact is later"
 Observer -> Conflict: "4 · later publication contradicts last"
-Conflict -> Choice: "5 · decide before completion consumer"
-Choice -> Limit: "recommended proposal · unselected"
-Choice -> Strict: "preserved requirement · unavailable"
-Limit -> Next: "only after actual answer + complete design"
+Conflict -> Choice: "5 · actual requirements answer recorded"
+Choice -> Limit: "selected · all earlier originals remain"
+Choice -> Strict: "unselected alternative"
+Limit -> Loss: "accepted residual risk · no renewed authority"
+Loss -> Next: "complete loss / refusal / recovery rules before use"

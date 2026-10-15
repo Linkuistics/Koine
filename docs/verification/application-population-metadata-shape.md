@@ -524,6 +524,42 @@ remain. No installed-target positive, authority provisioning, collector probe or
 capture occurs in this requirements leaf. Both product holds,
 private ineligibility and every native PENDING outcome remain.
 
+### Finite publication terminal-evidence boundary
+
+Antony answered "Accept the bounded endpoint (Recommended)" in k340. Permit one finite
+terminal-evidence boundary per completed publication invocation. Retain durable originals
+of all publisher, initializer, staged/final-validator and earlier recorder received
+frames, actual write/flush returns, EOF/reap and failure extents through a designated
+final durable recorder. An independently accepted, nonpublishing outer receiver observes
+that recorder's final acknowledgment, frames, EOF and process completion using only
+the already permitted channel/wait mechanics.
+
+The final recorder's terminal observations have no further durable original, and the
+outer receiver's own final return stops at an explicit source/OS/cooperative trust
+limit. Do not claim those omitted tails have another retained original. This is the
+sole exception to requiring retained terminal evidence from every publication writer;
+it waives no earlier writer's original, retained payload or other required fact. Accept
+the risk that receiver loss or a lost volatile observation leaves an unprovable terminal
+tail even when saved files appear complete. Later independent full-byte/member/identity
+checks establish retained content only, never the omitted past flush/terminal events.
+
+An unknown tail cannot supply successful completion, prove no initializer dispatch or
+no permission-subject provisioning, replenish authority or clear another required
+identity/control/read/freeze failure. Before any use, the complete publication design
+must specify exact receiver/writer roles and exclusions, accepted mechanics, completion,
+loss/refusal/partial/recovery criteria and independent clean/death/partial/successor
+controls at each boundary. Ready acceptance and hosted recovery must fit the existing
+five-checkpoint/affected-repeat schedule, after actual inputs exist and before their
+first consumers. Human semantic acceptance, factual validation, bootstrap publication,
+transcript observation and distinct instrument close retain their separate capabilities.
+
+The stronger every-writer-originals/unavailable alternative was not selected. This
+decision adds no observation API, manual terminal-observation exception, checkpoint,
+initialization, attempt, appointment, LIVE or service/privilege/helper/signing/consent
+change. A necessary mechanism outside existing authority requires a separate concrete
+decision before consumption. Every other original duty and agreed seam remains;
+accepted contact unknowns cannot absorb a required failure outside this exact exception.
+
 ### Independent classification and whole-template assignment
 
 Freeze a separate per-copy role manifest based on named Apple/vendor documentation
@@ -590,7 +626,7 @@ first. No amount, accounting, ABI, posture or useful-category change follows.
 ## Reference-evidence decision comparison and reporting
 
 The selected clauses above and exact comparison below record only the actual k270/k281/
-k290/k295/k314/k319/k330 amendments. Changing design/construction/qualification/pass observations
+k290/k295/k314/k319/k330/k340 amendments. Changing design/construction/qualification/pass observations
 live in the [unconsumed report](application-reference-input-partition.md#current-construction-and-evidence-report).
 The k314 before state is 47875236: its two selected clauses were inserted before Independent
 build, process-image and terminal correspondence; all earlier selected clause bytes were
@@ -605,6 +641,10 @@ amendments compared below. Five baseline checkpoints/affected repeats and every 
 prior selection remain. K331 owns the complete replacement and mandatory whole review
 k332/every earned integration before k269; the defective k323 protocol and older
 membership candidates supply no accepted implementation or construction input.
+The k340 before state is bb0a2123: Antony's actual "Accept the bounded endpoint
+(Recommended)" authorizes only the final-recorder/outer-receiver terminal-evidence
+exception above and compared below. Every earlier selected clause remains byte-identical;
+complete publication, hosted recovery and whole replacement/review remain required.
 
 ### Status outside the measured permission
 
@@ -617,6 +657,7 @@ never replacement proof. The selected Documentary proportionality clause owns th
 
 | Original clause or condition | Selected disposition |
 | --- | --- |
+| K328 F3 requires durable launcher-observed EOF/reap/death originals; C's append-only generations bind actual writes/flush/EOF/reap after they happen; k338/k334 extend finite acknowledged finalization to the final transcript writer | K340's actual "Accept the bounded endpoint (Recommended)" permits only one finite endpoint per completed publication invocation: retain all earlier publisher/initializer/staged-final-validator/recorder frames, write/flush/EOF/reap/failure originals through a designated final durable recorder; an independently accepted nonpublishing outer receiver observes its final acknowledgment/frames/EOF/reap using existing permitted channel/wait mechanics. Those final-recorder terminal observations have no further durable original; the receiver's own final return stops at the explicit source/OS/cooperative limit. Receiver loss may leave an unprovable tail despite complete-looking files. Later independent full-byte/member/identity checks prove retained content only, not omitted past terminal events. Unknown tails supply no completion, no-dispatch/no-provisioning proof or renewed authority. Exact completion/refusal/loss/recovery and independent controls remain required before use inside the existing five checkpoints; no new observation/manual exception, ceremony, initialization, attempt, appointment, LIVE or posture is authorized. All other original duties remain. |
 | K270 lifecycle: "Recovery or a further attempt requires new explicit human authority"; k323 `INITIALIZE_ONCE` requires "never-initialized state and original ROOT nonce", while first-bootstrap failure leaves fresh initialization undecided | K330's actual "yes" admits only a fresh CP01 `INITIALIZE_ONCE` on independent original evidence that no initializer was ever dispatched and no permission-subject provisioning occurred, with all failed originals/extents retained and a fresh accepted successor/nonce plan. The one selected initialization and one attempt remain; existing/partial/uncertain/dispatched/consumed state still needs new explicit authority. Unknown state, missing records and a disposition grant no permission. K331 must supply the independently reviewed mechanism before use. |
 | K314 five baseline checkpoints, ready-input/first-consumer/exclusion rules and affected correction suffix; k328 F1 finds failed-tail dispositions unplaced and anchor failure removes later trust's starting anchor | Retained and made explicit: place ready dispositions within the affected repeated checkpoints, using repeated CP01 SOURCE/ARTIFACTS independent source/OS trust for anchor/anchor-validation failure and a checked still-intact anchor at each precisely hosted other repeated checkpoint. K331 must resolve every first consumer and failure boundary. No sixth ceremony, old-anchor fallback, automatic recovery, future-object acceptance or executed mechanism follows. A concrete conflict still needs its bounded human trade-off. |
 | K295 About records "product/build values, host, session, time" without defining host/session; k323 Manual About requires changed-host/session refusal and independent host/session matching between CP01, AFK Q and CP05 | K330's actual "Use human provenance labels (Recommended)" defines host as Antony's manually identified machine and session as his label for the observation's work context, each with exact meaning and human source. They are provenance only; compare the permitted original product/build values with the two raw named sysctl buffers and qualified configuration. Days/reboot/logout/label change alone do not invalidate Q06 or force CP01. Required current direct-terminal/peer/image/channel facts and actual build/configuration/tool/input/authority/correspondence disarm/affected suffix remain. Labels do not prove host substitution absent; retain the shared-OS/cooperative limitation. No continuity window, independently matchable cross-session identity or new observation authority is selected. |
@@ -638,7 +679,7 @@ never replacement proof. The selected Documentary proportionality clause owns th
 | Canonical Human-owned acceptance: "accepting or refusing each before its first consumer" and "be batched when their required inputs already exist" | Retained under five baseline checkpoints: bootstrap/artifacts; qualified receipt; final original Q results/audit; eligible basis after distinct close; acquisition-boundary exact entries/fresh appointment. K315 must place every clean first-consumer dependency and name each human step, including k245, by compatible ready-object batching. Corrections repeat only the affected suffix. An exact original-duty conflict requires its bounded trade-off, never a silently added ceremony or approval of future records. |
 | K291 F6: "enumerate every individual enduring/historical/changing statement and subordinate clause across all selected extracts, whole companions/tables/bases and actual task/runtime reads" | Replaced by the reviewed complete historical/reporting exception list with exact whole-object/section context and an explicit enduring-rule default. This is the selected amendment to exhaustive individual-fragment classification, not a claim that old generic E labels discriminate or that the defective k291 representation is accepted. Original R retained duties remain in the consumed rule set. |
 | K291 F6: "Refresh the complete TSV/report and bind exact byte ranges/digests; record H statements individually"; canonical reporting: "all affected current members/associations are reconstructed against the preserved extracts and historical originals" after a reporting edit | Replaced only for unconsumed reporting changes: move changing observations out of normative S/C; do not regenerate the per-fragment apparatus or whole-source composite solely for that report edit. The complete reviewed exception/default representation replaces those mechanics. Actual consumed sources/whole objects still bind complete current bytes and members, and their changes disarm and require affected requalification. Historical original identities remain historical. |
-| K291 F6 and k282 R6: whole consumed-byte equality, independent original-source/basis/actual-read membership, phase/absence duties and original R retained obligations | Retained in full. No exception slices a whole companion/table/basis or actual task/runtime/charter read, no reporting label waives a consumed object, and no reference row/hash supplies missing original possession. Required missing originals/identities remain null with exact work before their consumers. Only the compared fragment classification and reporting-driven reconstruction mechanics change. |
+| K291 F6 and k282 R6: whole consumed-byte equality, independent original-source/basis/actual-read membership, phase/absence duties and original R retained obligations | Retained, subject only to k340's exact final-recorder/outer-receiver terminal-evidence exception compared above. No exception slices a whole companion/table/basis or actual task/runtime/charter read, no reporting label waives a consumed object, and no reference row/hash supplies missing original possession. Required missing originals/identities outside that exact exception remain null with exact work before their consumers. The fragment classification/reporting amendments and bounded terminal endpoint change no other original retention duty. |
 | Evidence permission's no-launch rule and no independent installed-build display route | Amended only for Antony's manual local OS About product/build observation with original host/session/time provenance. Compare with the two already permitted fresh sysctl buffers and qualified configuration; scripted UI, sw_vers, plist, subprocess/alternative-sysctl fallback and every other launch/inventory/network/installation effect remain excluded. This changes observation authority, not the expected 27.0.1/26A434 bytes or actual current-build evidence. |
 | Permitted O05–O07 mechanics lack an independently observed executing-peer/image route | Add only the separately authored unprivileged finite same-UID commissioned supervisor/checker and declared retained Task/interpreter/verifier/CLI/control metadata operations named in the selected clause. Retain original results/errors/lengths and independently checked incarnation/slice/signature/UUID/held-backing associations; no unrelated PID/daemon/target, all-system inventory, task-memory bytes or new privilege/posture. Spawn, child/loader self-report and pre-exec hashes remain insufficient by themselves. |
 | O15's fixed source artifact/argv checks precede intent; actual spawned-source facts first occur in A | Retained. Approve the same bounded metadata route for the already selected fixed mdfind child only after consumption inside A. It adds no spawn, earlier source sample, LIVE calibration, extra attempt or success prerequisite. Missing required A image/source facts prevent complete evidence; source P checks remain. |

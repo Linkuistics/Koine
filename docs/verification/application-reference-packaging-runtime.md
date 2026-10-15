@@ -25,6 +25,20 @@ observations belong in the separate
 [current report](application-reference-input-partition.md#current-construction-and-evidence-report),
 never a reporting slice in this companion. The measured chain must not consume that report.
 
+Apply the selected [finite publication terminal-evidence boundary](application-population-metadata-shape.md#finite-publication-terminal-evidence-boundary)
+only to the designated final recorder's terminal observations and its nonpublishing outer
+receiver's own return. All earlier publisher/initializer/staged-final-validator/recorder
+originals remain required through that final durable recorder. The independently accepted
+receiver uses existing permitted channel/wait mechanics; those last terminal observations
+have no further durable original and its own return stops at the source/OS/cooperative
+limit. Receiver loss may leave an unprovable tail despite complete-looking files. Later
+independent full-byte/member/identity checks establish retained content, not omitted past
+flush/terminal events. Unknown tail supplies no completion/no-dispatch/no-provisioning
+proof or restored authority. Complete publication/recovery design and independent writer/
+receiver failure controls must precede use inside the existing five checkpoints. This
+exception changes no named contact unknown, other required Q/P identity/control/read/freeze
+duty, closed kind/locator/capability, attempt, appointment or LIVE authority.
+
 Historical documentary observations below are fixed to the design snapshot
 `ab4b7e380e0d40ae0a5918ba239d0dee2fff6aaa`: each source declaration, edition, branch,
 retrieval digest and tag/revision association records that snapshot's documentary claim.
@@ -175,7 +189,10 @@ bootstrap-publication validator. The recorder and validator never validate their
 publication or accept their own facts. Controls must kill the actual recorder before/
 after reservation, each write/flush and frame, then independently kill its validator
 at comparison/result/reply/EOF/reap, retaining exact extents and refusing before credit.
-Unknown recorder originals cannot prove no initialization dispatch. Full later terminal,
+Unknown recorder originals cannot prove no initialization dispatch. Include the selected
+final-recorder/nonpublishing-receiver boundary in the independently authored clean,
+death, partial and successor controls: lost final observations cannot be inferred from
+complete-looking files or later byte/member/identity equality. Full later terminal,
 CP02/repeatable trust and hosted recovery protocols remain live before use; no partial
 prefix authorizes initialization, construction or a new checkpoint. Also retain the
 operation/edge evidence, before/after full input digests, intended check reached, unchanged

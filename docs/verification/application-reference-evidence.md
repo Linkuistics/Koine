@@ -908,6 +908,12 @@ initialization or construction consumer. The [publication report](application-re
 locates that boundary. The proposal below is a record/operation contract, not an
 implemented schema, actual original or accepted authority.
 
+The selected [finite publication terminal-evidence boundary](application-population-metadata-shape.md#finite-publication-terminal-evidence-boundary)
+limits only the final-recorder/outer-receiver tail. It does not finish the remaining
+terminal join, admit a new kind/locator/capability or make this prefix usable. Complete
+publication design must supply every earlier original and exact completion/refusal/
+recovery criteria under that boundary before its first consumer.
+
 **Reference Launcher Recorder** is the accepted CP01 launcher acting under a separate
 transcript-only capability. It records only facts it actually receives or observes in
 this synchronous invocation. Its source/build/runtime/read/channel/operation closure and
@@ -1337,6 +1343,23 @@ reserved namespace nor an authored result supplies an acknowledged successful ac
 Complete trust-original member names are the accepted fixed manifest's closed opaque
 component encodings; duplicate/unlisted/path-like names refuse before opening.
 
+**Finite terminal-evidence endpoint.** Apply only the selected
+[final-recorder/outer-receiver exception](application-population-metadata-shape.md#finite-publication-terminal-evidence-boundary)
+to the preceding universal terminal-retention duty. Every earlier publisher, initializer,
+staged/final validator and recorder frame/write/flush/EOF/reap/failure original remains
+required through a designated final durable recorder. Its independently accepted
+nonpublishing outer receiver uses existing permitted channel/wait mechanics to observe
+the final acknowledgment/frames/EOF/reap. Those final-recorder terminal observations
+have no further durable original; the receiver's own final return ends at the explicit
+source/OS/cooperative trust limit. Later independent full-byte/member/identity checks
+establish retained content only, not omitted past terminal events. Receiver loss or a
+lost volatile observation leaves an unprovable tail even with complete-looking files;
+unknown tail proves neither completion nor no dispatch/provisioning and restores no
+authority. Complete publication and hosted-recovery design must define the exact roles,
+exclusions, finite completion/refusal/loss/partial rules and independent controls before
+use within the existing five checkpoints. This requirements amendment supplies no new
+record kind, frame, locator, write capability, accepted original or usable protocol.
+
 **Selection is deterministic, not search.** From the actual fixed held chain root,
 check slot 0 and then each exact next ordinal/predecessor until the immediate next
 slot is absent. Traverse only this explicitly bound chain. Any present unfinalized,
@@ -1479,6 +1502,11 @@ only to later consumers, never hashed into their producer's subject. Newly creat
 under already accepted mechanics do not require a recursive acceptance of their own bytes:
 the direct act and independently qualified acknowledgement/held-identity checks bind them.
 That distinction is essential to finite bootstrap and preserves exact later whole-byte reads.
+The separate selected [terminal-evidence endpoint](application-population-metadata-shape.md#finite-publication-terminal-evidence-boundary)
+limits archival of the final recorder's later terminal observations and the receiver's
+own return; the non-recursive semantic-acceptance rule alone supplies neither those
+originals nor completed publication. All earlier acknowledgements and required independent
+acceptance remain, with exact final-tail loss/refusal/recovery criteria due before use.
 The registrar creates a private descriptor channel for the accepted act and holds it through
 publication/true return; no reusable bearer file or public socket supplies a later act.
 
