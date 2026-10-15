@@ -8,47 +8,54 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-Open [the publication discussion](index.html#discussion), or
-[Admission → Retain originals through the final recorder](index.html#diagram-native-reference-admission).
-K341 specifies the remaining k338/k334 publication design under Antony's actual k340
-bounded endpoint. Parent-owned existing channels/waits retain all earlier writer and
-launcher originals through a final durable recorder. Its nonpublishing outer receiver
-observes final frame/EOF/reap, without another durable original of those observations
-or its own return at the explicit source/OS/cooperative limit. Receiver loss can leave
-an unprovable tail. Later current full-byte/member/identity checks establish retained
-content only, never omitted past terminal events, no dispatch/provisioning or new authority.
+Open [the recovery discussion](index.html#discussion), or
+[Recovery → Host the disposition before its successor](index.html#diagram-native-reference-admission).
+K335 specifies hosted failed-tail recovery under the actual k330/k340 answers. Every
+ready disposition is placed before its first successor inside an affected repeat of the
+five existing checkpoints. Source/anchor/bootstrap-validation loss first repeats CP01
+SOURCE/ARTIFACTS from newly ready independent originals. Other hosts independently check
+the intact anchor for recovery context only. No failed tail selects an older anchor.
 
-The view includes the repeatable trust-events/revisions and exact CP02 outputs, plus the
-failed-tail handoff. Staged binding and CP05 appointment use reached originals while their
-live roles coexist; final terminal evidence follows true return. The detailed exact
-[publication contract](../../verification/application-reference-evidence.md#complete-publication-and-terminal-join)
-and [trust table](../../verification/application-reference-evidence.md#repeatable-trust-records-and-selection)
-keep writer/validator/registrar/bootstrap/close capabilities separate.
-K335 still must host every failed cut inside the existing affected repeated checkpoints;
-k336 owns whole C/S/K/P/original-duty/seven-view/replacement-membership reconciliation and
-Creator on existing k332. Whole k332 and every earned integration still precede k269.
-No partial child supplies construction eligibility.
+The [hosted contract](../../verification/application-reference-evidence.md#hosted-failed-tail-recovery)
+fixes exact failed originals/null unknowns, ready acts, independent exclusions and first
+consumers. A damaged transcript carrier uses a finite existing-slot disposition prefix
+before its intent; actual writer/comparison/terminal originals are then archived by the
+immediate carrier successors before any external use. The prefix grants no ordinary
+successor/permit/LIVE effect. Its own publication loss stops with exact missing work,
+without recursive repair or another store. Fresh INITIALIZE_ONCE requires positive
+independent original evidence of both no initializer ever dispatched and no permission-
+subject provisioning; missing records, current absence and unknown tails prove neither.
 
-- [Admission → Retain originals through the final recorder](index.html#diagram-native-reference-admission) — Replaces the former conditional-conflict sketch with the finite terminal join, repeatable trust records and exact failure/recovery handoff.
-- [Select and check before candidate tools](index.html#diagram-native-reference-proof) — Updates the caption to join the unchanged continuity proposal with the publication contract; its source/export are unchanged.
-- [Complete publication design](../../verification/application-reference-input-partition.md#complete-publication-design) — Compares every original k338/k334 publication duty and gives k335 exact ready/failed original sets, with actual identities still unacquired.
-- [Koine language](../../../CONTEXT.md#language) — Defines final recorder, nonpublishing receiver and repeatable trust generation without claiming terminal evidence beyond the selected endpoint.
+Failed maintenance disarm can need CP03 recovery before Q and CP03 acceptance afterward.
+Failed close is disposed at repeated CP03 before the separately owned close, then CP04
+waits for that new acknowledged output. Revalidation precedes its later ready CP02 act.
+The final-recorder/nonpublishing-receiver endpoint, all earlier-original duties and
+source/holder/descriptor/read/lease/true-return rules remain. This is no model-checking,
+executable-feasibility, actual authority or qualified result.
 
-Related unchanged context: [canonical finite endpoint](../../verification/application-population-metadata-shape.md#finite-publication-terminal-evidence-boundary),
+- [Recovery → Host the disposition before its successor](index.html#diagram-native-reference-admission) — Replaces the publication overview with exact checkpoint hosts, source-root/intact-anchor branches, finite carrier prefix, two never-started predicates and failed-disposition stop.
+- [Hosted recovery design](../../verification/application-reference-input-partition.md#hosted-recovery-design) — Compares every original k335 obligation, makes the carrier-order change explicit and retains exact missing actual evidence and whole-closing work.
+- [Koine language](../../../CONTEXT.md#language) — Defines recovery context and carrier prefix beside the failed-disposition meaning.
+
+Related unchanged context: [finite publication endpoint](../../verification/application-population-metadata-shape.md#finite-publication-terminal-evidence-boundary),
 [source-rooted selection](../../verification/application-reference-evidence.md#closed-pre-tool-reads-and-deterministic-selection),
-[five checkpoints](../../verification/application-reference-evidence.md#compatible-ownership-and-bounded-sequential-schedule)
-and [k328 findings](../../verification/application-reference-input-partition.md#k328-integration-and-required-replacement).
-Historical memberships retain their original bytes; only k336 freezes the whole replacement.
-Actual consumed changes disarm and require affected requalification. No actual tool,
-original, control, receipt, authority, qualification or finite subject is supplied.
-K244/k242 remain live, pass unused, full k246/k247/useful/additive supported-VM/native/
-private/product duties and both holds retained. K316's separate viewer defect and k326's
-narrow-layout/dark/Safari limits remain with their owners.
+[complete publication join](../../verification/application-reference-evidence.md#complete-publication-and-terminal-join),
+[continuity view](index.html#diagram-native-reference-proof),
+[packaging view](index.html#diagram-native-reference-packaging) and
+[contact view](index.html#diagram-native-reference-contact).
+K336 owns whole C/S/K/P/original-duty/summary/seven-view/new-membership reconciliation and
+Creator on existing k332. Whole k332/every earned integration precedes k269. Only that
+whole boundary supplies a review subject; no partial child grants construction eligibility.
+Historical manifests, selected S/comparison, descriptor ADR and five tables retain their
+bytes. Actual originals/tools/controls/identities/authority remain unacquired, k244/k242
+live, pass unused and full k246/k247/useful/additive supported-VM/native/private/product
+duties and both holds retained. Actual consumed edits disarm/requalify. K316/k326's
+separate viewer limits remain with their owners.
 
 Regenerate with `task design:application-population-metadata-shape-render` (D2 0.9.0,
-Dagre, themes 0/200). Only the admission source/export and the continuity caption change
-in this discussion; the six other source/export pairs remain unchanged context. Render
-and link checks establish documentary delivery only, never instrument/native qualification.
+Dagre, themes 0/200). Only the admission source/export and its discussion/caption change;
+the other six source/export pairs and captions are unchanged context. Render/link/browser
+checks establish only their documentary delivery, never instrument/native qualification.
 
 ## Checkpoint continuity context
 
@@ -65,9 +72,9 @@ Supporting unchanged context is the [source-rooted prelude](../../verification/a
 [closed selection reads](../../verification/application-reference-evidence.md#closed-pre-tool-reads-and-deterministic-selection)
 and [descriptor handoff](../../verification/application-reference-evidence.md#holder-execution-and-closed-descriptor-handoff).
 
-This is a documentary design slice. F3/F5 publication records, F1 hosted recovery,
-whole original-duty/new-membership reconciliation and k332 whole review/every earned
-integration remain ahead of construction. K330's selected provenance/recovery limits,
+This is a documentary design slice. Complete publication and hosted recovery are
+specified beside it; whole original-duty/new-membership reconciliation and k332 whole
+review/every earned integration remain ahead of construction. K330's selected provenance/recovery limits,
 all original duties, unused pass and both holds remain. This proof view is unchanged
 context in the current publication discussion, not a changed marker.
 

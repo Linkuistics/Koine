@@ -80,6 +80,41 @@ clears unknown initialization/dispatch/provisioning state, supplies a new appoin
 restores authority. Actual role/read/image/frame/EOF/reap/freeze originals and independent
 writer/receiver controls are required Q/P work outside that sole selected exception.
 
+### Hosted failure phases and the carrier prefix
+
+Before any failed-cut consumer, apply the [exact host table](application-reference-evidence.md#failed-boundaries-and-their-exact-checkpoint-hosts)
+and [finite carrier prefix](application-reference-evidence.md#finite-publication-when-the-carrier-is-damaged).
+The host is an affected repeat of CP01/CP02/CP03/CP04/CP05, before its ordinary act:
+seed/anchor/bootstrap-validation/rule/control at CP01; receipt/revalidation at CP02;
+disarm/Q-trust/close at CP03; basis/eligible at CP04; About/entry/appointment at CP05.
+Each transcript/continuity failure inherits its phase. Source/anchor loss requires newly
+ready independent SOURCE/ARTIFACTS originals first, not old-anchor recovery context.
+Other hosts independently verify the intact anchor before the recovery comparison.
+Factual outputs acquired after disposition return to the same checkpoint for later
+ready acceptance; failed disarm can require CP03 recovery before Q and CP03 acceptance
+after Q. Failed close is disposed at repeated CP03 before the distinct close step.
+
+O08/O12/O23 and the prelude's closed A2 reader bind every failed member/frame/return/
+identity/negative observation and null unavailable original. With a damaged transcript
+carrier the accepted finite plan permits only the existing-slot disposition registrar
+to write before carrier intent. Existing channels retain the actual writer/comparison
+returns and publication.stage WRITER_RETAINED explicitly as MEMORY_RETAINED, then the
+immediate publication/launcher successors retain all earlier originals before external
+use. This ordering exception grants no Task, permit, ordinary successor or LIVE effect.
+The final terminal endpoint is unchanged. Prefix/disposition publication loss stops;
+no recursive carrier, alternate namespace, self-validation, missing-as-never-started
+or saved ROOT continuation is allowed. Exact source/holder/fd/offset/generation/lease/
+true-return/read/image duties precede each first consumer; no new observation is inferred.
+
+Only independent originals proving both no initializer ever dispatched and no permission-
+subject provisioning, plus all other required facts, permit a fresh CP01 successor/nonce
+plan for the one initialization still to begin. Uncertain/dispatched/partial/consumed
+state never permits another initialization. A qualified new factual validation of an
+unchanged already completed issuance is separate from initialization and never exposes
+or repairs a staged receipt. After consumption every correction is offline-only; no
+eligible successor/appointment/acquisition follows. Required isolating SCRATCH positives/
+refusals and original independent acceptance precede credit; this is no implemented entry.
+
 ## Retained entry and domain channel
 
 The commissioned checker owns launch policy and the live register lock, as specified in
@@ -226,8 +261,9 @@ Unknown recorder originals cannot prove no initialization dispatch. Include the 
 final-recorder/nonpublishing-receiver boundary in the independently authored clean,
 death, partial and successor controls: lost final observations cannot be inferred from
 complete-looking files or later byte/member/identity equality. Full later terminal,
-CP02/repeatable trust and hosted recovery protocols remain live before use; no partial
-prefix authorizes initialization, construction or a new checkpoint. Also retain the
+CP02/repeatable trust and hosted recovery protocols bind the whole design before use;
+no isolated publisher-terminal prefix authorizes initialization, construction or a new
+checkpoint. Whole reconciliation/review remains required. Also retain the
 operation/edge evidence, before/after full input digests, intended check reached, unchanged
 context and scope/accepted-unknown limitations. Run final measurement only after the last
 edit, with separate original-result acceptance and audit. Do not multiply equivalent tests

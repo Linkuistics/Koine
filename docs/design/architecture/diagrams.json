@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
   "discussion": {
-    "title": "Retain earlier originals and stop at the accepted endpoint",
-    "status": "Publication design specified; hosted recovery, whole reconciliation and review remain",
-    "summary": "K341 specifies final-recorder/launcher/peer ownership, exact terminal originals, repeatable trust/CP02 locations and independent writer/receiver controls under Antony's actual k340 answer. Only final-recorder terminal observations and nonpublishing outer return are unarchived at the source/OS/cooperative limit. Later current content checks prove no omitted past terminal event; receiver loss can leave an unprovable tail and restores no authority. Stage consumers use reached facts while live roles coexist; final terminal evidence follows true return. K335 must host every failed cut inside existing affected repeated checkpoints; k336 owns whole original-duty/seven-view/replacement-membership closure and Creator on existing k332 before every integration and k269. Actual originals/tools/controls/identities remain unacquired, pass unused, both holds retained.",
+    "title": "Host failed-tail recovery before the first successor",
+    "status": "Recovery design specified; whole reconciliation and review remain",
+    "summary": "K335 places every failed cut inside an affected repeat of the existing five checkpoints. Source or anchor loss repeats CP01 SOURCE/ARTIFACTS with newly ready independent originals; other hosts independently check the intact anchor. A finite existing-slot carrier prefix retains every earlier original before external use. Failed disposition/prefix publication stops without recursive repair. Fresh INITIALIZE_ONCE requires separate positive original proof of no dispatch ever and no permission provisioning. Distinct close stays separate. K336 owns whole reconciliation/seven-view/new-membership closure and Creator on existing k332; whole review/integrations precede k269. Actual originals/controls/authority remain unacquired, pass unused and both holds retained.",
     "diagramIds": [
       "native-reference-admission",
       "native-reference-proof",
@@ -14,11 +14,7 @@
     "updatedDiagrams": [
       {
         "id": "native-reference-admission",
-        "summary": "Replaced the conditional-conflict view with the finite writer/launcher/final-recorder/outer-receiver join, repeatable trust chain and precise loss/recovery handoff."
-      },
-      {
-        "id": "native-reference-proof",
-        "summary": "Updated the caption to locate the completed publication contract beside the unchanged source-root/holder/descriptor proposal; hosted recovery and whole review remain."
+        "summary": "Shows exact hosted repeats, source-root versus intact-anchor recovery, finite carrier-prefix order, the two never-started predicates and failed-disposition stopping boundary."
       }
     ]
   },
@@ -114,11 +110,11 @@
     {
       "id": "native-reference-admission",
       "group": "native-sources",
-      "title": "Admission → Retain originals through the final recorder",
+      "title": "Recovery → Host the disposition before its successor",
       "renderer": "svg",
       "source": "native-reference-admission.d2",
       "rendered": "native-reference-admission.svg",
-      "caption": "The publication design uses parent-owned existing wait/channel mechanics: outer receiver → final recorder → launcher recorder → separately capable peers. All earlier writer/launcher originals reach publication.record; only its final acknowledgment/EOF/reap observations and the nonpublishing receiver's own return have no further durable original under actual k340. Later full-byte/member/identity checks establish current content only, never past terminal completion or no-dispatch/no-provisioning. Receiver loss can leave an unprovable tail despite intact files. Exact trust-events/revisions carry CP02 and repeatable trust outputs; direct failed-slot dispositions avoid a prior acceptance cycle. Stage consumers use already reached facts while initializer or appointed supervisor/checker/acquirer remain alive; terminal closure follows true return. K335 owns hosted affected-repeat recovery, k336 whole replacement/original-duty/membership/seven-view closure and Creator on existing k332; whole review/every integration still precede k269. Actual originals/schemas/tools/controls/identity/authority remain unacquired; pass unused and both holds retained. This is design, not qualified execution. Other source views remain unchanged context; prior k316/k326 viewer limits remain."
+      "caption": "Proposed hosted recovery under actual k330/k340. Source/anchor/bootstrap-validation loss starts repeated CP01 SOURCE/ARTIFACTS from newly ready independent originals; otherwise the prelude independently checks the intact anchor for recovery context only. Named CP02–CP05 prefaces place direct ready acts before in-slot disposition and successor. A damaged carrier uses only an accepted finite existing-slot prefix, actual writer/comparison/terminal originals, then immediate carrier successors and complete retention before external use. Prefix/disposition loss stops without recursive repair. Fresh INITIALIZE_ONCE needs independent positive originals of BOTH no initializer ever dispatched and no permission-subject provisioning; unknown state restores nothing. Revalidation/results precede later ready acceptance; distinct close follows CP03 before CP04. Final-recorder/outer terminal limit, no earlier-original waiver, no extra checkpoint/API/initialization/attempt, and offline-only post-consumption correction remain. K336 whole reconciliation/membership and k332 whole review/every integration precede k269. Actual originals/tools/controls/authority remain missing; pass unused and both holds retained. This is no model-checking, executable-feasibility or native result. Other views remain unchanged context; prior k316/k326 viewer limits remain."
     },
     {
       "id": "native-reference-proof",

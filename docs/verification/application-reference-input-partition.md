@@ -28,9 +28,9 @@ evidence-closure conflict. Antony answered "Accept the bounded endpoint (Recomme
 in k340; the selected canonical exception and exact obligation comparison now bound the
 final-recorder/nonpublishing-receiver tail. K341 now specifies the [complete publication design](#complete-publication-design),
 including all earlier terminal originals, exact repeatable trust/CP02 locations and
-independent writer/receiver controls. Hosted
-failed-tail recovery and whole replacement reconciliation remain live children before
-k332. A partial child supplies no construction handoff or new whole membership. Only
+independent writer/receiver controls. K335 specifies [hosted recovery](#hosted-recovery-design),
+including carrier-prefix ordering and exact unavailable boundaries. Whole replacement
+reconciliation remains live under k336 before k332. A partial child supplies no construction handoff or new whole membership. Only
 the actual closing child names its provider evidence on that existing whole review.
 K269 must place already decided mechanisms; the reviewed k323 proposal is no construction
 handoff. Its [membership](reference-practical-admission-replacement-membership.json)
@@ -51,7 +51,123 @@ k245 retains the one unused pass, k246 complete rewrite/helper/alias discriminat
 k247 whole-subject/family review or precise incomplete work. Full useful breadth,
 additive supported-VM/native duties, private ineligibility and both holds remain.
 
+## Hosted recovery design
+
+K335 specifies the [hosted failed-tail contract](application-reference-evidence.md#hosted-failed-tail-recovery)
+under the actual k330/k340 answers and k333/k341's source/publication mechanics.
+Its [exact host table](application-reference-evidence.md#failed-boundaries-and-their-exact-checkpoint-hosts)
+places every handed-off failed cut before its first successor in the existing affected
+repeated checkpoints. Source/anchor/bootstrap-validation failure re-enters CP01 SOURCE/
+ARTIFACTS from newly ready independent originals. Other failures require freshly checked
+intact-anchor recovery context; failed tails supply no ordinary authority or older-anchor
+fallback. No actual ready original, accepted act or executable qualification is supplied.
+
+The design explicitly revises the ordinary intent-before-writer order for one closed
+[carrier-recovery prefix](application-reference-evidence.md#finite-publication-when-the-carrier-is-damaged).
+A damaged publication/launcher predecessor cannot require its own successor transcript
+as an input to its disposition. The existing-slot disposition-only registrar writes the
+earlier direct ready act; actual writer/comparison/EOF/reap originals are retained in
+bounded memory, then the immediate carrier successors archive them before any external
+consumer. The earlier disposition's current-stage finalization and later complete durable
+join are distinct. No earlier-original retention, new location/capability, human checkpoint,
+initialization or attempt is waived/added. Prefix or disposition-publication loss stops;
+no recursive disposition, alternate carrier, overwrite, deletion, scan, retry or lost
+extent is hidden by this rule. This is a proposed mechanism for whole review, not a
+qualified exception that a constructor may assume from this report.
+
+The host placement exposes repeated visits explicitly. Failed maintenance disarm may
+have a ready recovery judgment at CP03 before Q, followed by ordinary CP03 acceptance
+after Q. Failed close is disposed inside a repeated CP03 before the separately owned
+close; CP04 waits for its new acknowledged output. Receipt factual revalidation follows
+its disposition and returns to CP02 for ready acceptance. No future object is approved,
+no extra human act is hidden between CP03/close/CP04, and no role persists across sessions.
+
+[Fresh INITIALIZE_ONCE](application-reference-evidence.md#positive-proof-before-fresh-initialization)
+requires independent original execution evidence of both no initializer ever dispatched
+and no permission-subject provisioning, over complete required intervals, plus permitted
+current A2 checks and all other required facts. Missing records/current absence/new nonce/
+old ROOT/disposition/unknown tail prove neither negative. An initializer dispatch that
+produced nothing still forbids this route. Existing/partial/uncertain/dispatched/consumed
+permission remains unavailable for initialization without separate explicit authority.
+Revalidation of a fully established unchanged completed issuance creates no receipt and
+cannot repair partial initialization. All post-consumption correction stays offline-only.
+
+### Whole hosted-recovery obligation comparison
+
+The original k335 Goal/Done when remain its obligation inventory. This table records
+the scoped design boundary; k336 retains the whole original-duty/finding/membership audit.
+
+| Entire original k335 condition | Design supplied / exact retained boundary |
+| --- | --- |
+| Goal and first Done when: every seed/anchor/validation/REANCHOR/receipt/close/disarm/eligible/human/transcript failed cut, exact host/trust/ready originals/exclusions/consumer, disposition's own failure | Hosted table covers every cut from k341's exact handoff, includes phase-inherited continuity/transcript cuts and precedence for source/anchor loss. Full failed manifests/null unknowns and fact-specific exclusions precede the direct in-slot act. Carrier-prefix ordering is explicit; failed disposition or archival join has no admitted successor and retains its exact missing work. |
+| Second Done when: unavailable anchor begins repeated SOURCE/ARTIFACTS with newly ready independent originals; intact-anchor checks otherwise; no fallback/ceremony | Separate SOURCE_REENTRY_REQUIRED and INTACT_ANCHOR_RECOVERY_ONLY entry values, independent original supplier/author/executor/factual validator before host, no candidate-selected source root/old original set. CP01 recovery read plan and prelude/holder/descriptor gates are reconciled. |
+| Third Done when: only independently proven never-dispatched/no-provisioning fresh INITIALIZE_ONCE, retained extents/fresh successor/nonce, no uncertain-state reset | Two separately evidenced predicates and independent full-interval execution/namespace comparisons precede current A2 checks and fresh CP01 ROOT. Current absent names alone establish no history. Any unknown/YES or missing required original stops initialization; reanchoring/revalidation/content equality restore no authority. |
+| Fourth Done when: clean/correction DAGs, exact records/locators/capabilities/prelude/checkpoint first consumers, ready acts, distinct close, exact conflict if schedule fails | C's clean/recovery DAGs and host table place each act and later output, including explicit repeated CP02/CP03 visits and distinct close. Existing kinds/locations and separate writer capabilities are retained. Ordinary intent gate and WRITER_RETAINED frame are explicitly reconciled with the finite prefix; every prefix original is archived before external use. No asserted executable feasibility; a missing actual required fact/return or failed disposition leaves its precise unavailable route for a concrete decision before use. |
+| Fifth Done when and Notes: isolating controls at actual boundaries; immutability/no scan/rebaseline/retry/offline-only; affected views and documentary verification; coherent whole handoff without membership/construction | C/K/P require independent host/prefix/writer/receiver/negative-predicate/receipt/distinct-close/lifecycle controls at their first refusal. Only documentary checks/render/browser delivery occur here. K336 receives this complete scoped mechanism and explicit stops, retaining all whole reconciliation/new-membership duties. No partial child names Creator on k332 or supplies construction eligibility. |
+| Inherited original-publication and k328 F1/F3/F5 duties | Every k341 ready/failed original remains required at its host, including exact publisher/validator/initializer/launcher/final-record extents and null unavailable identities. Only k340's selected terminal endpoint is unarchived. No in-slot disposition needs an earlier acceptance of itself; no future final record acknowledges its own production. F1 hosting is specified for whole review; F3/F5's complete publication contracts remain, with the narrow carrier-prefix order change made explicit. |
+
+### Recovery alternatives and remaining work
+
+Keeping the ordinary intent-before-writer rule at a damaged carrier would leave that
+recovery unavailable: its new intent needs the very disposition whose originals it must
+record. Adding a separate recovery store/observer would increase authority and introduce
+another failed publisher and terminal boundary. The selected finite prefix keeps the
+existing locations, separate capabilities and all earlier originals, at the cost of an
+explicit bounded in-memory pre-intent phase and conservative refusal on its loss. A sixth
+human checkpoint alone solves neither dependency. Independently qualify the exact prefix
+and all first consumers under the unchanged original duties; an unavailable required
+mechanic calls for the precise concrete trade-off before use. Reversible pre-provisioning
+ordering has no new production ADR; canonical S, its exact amendment comparison and the
+descriptor ADR remain unchanged.
+
+K336 still owns whole C/S/K/P/original B/R/register/full-read/phase/absence/charter/
+summary/seven-view/new-membership reconciliation and its own provider evidence on existing
+k332. Whole k332/every earned integration precedes k269. Historical manifests retain
+their bytes, actual identities/originals/controls/authority remain unacquired, k244/k242
+remain live and k245's pass unused. Full k246/k247/useful/additive supported-VM/native/
+private/product duties and both holds remain. No target/protected/topology/process/
+terminal probe, initialization, authority act, instrument control or native capture occurs.
+
+### Recovery documentary verification and scoped handoff
+
+After the final normative/presentation edits, the existing
+`task design:application-population-metadata-shape-render` and `task check:docs` both
+exited 0; D2 reports v0.9.0. The bounded verifier is
+`/tmp/koine-k335-verify.py`, with per-command output and per-subject before/after byte/
+length digests in `/tmp/koine-k335-verification.json`. It measures all current tracked
+files, its own source and the resolved task/D2/Python/jj executables; every measured
+subject was stable during the final run. It checks the exact changed-file set, original
+changed-charter Goal/Done when sections, whole unchanged canonical S/comparison and
+production ADRs, historical memberships/five quote-aware tables, C's original acquisition/
+source/decoder/Safari spans and the other six view source/export pairs and manifest
+entries. Controls reject an unexpected implementation edit, omitted actual changed path,
+one-byte canonical mutation, diagram backedge and a known missing anchor; the same link
+instrument passes its valid-anchor fixture. The initial link run found a new heading's
+underscore-derived anchor mismatch; the descriptive initialization heading/link were
+corrected before the final frozen audit. No control above executes the instrument.
+
+Chrome light displayed the deep-linked revised recovery view after reload, with readable
+host branches, explicit ordinary/prefix order, separate stop/successor branches, dark
+Start here entry and matching Current/Updated marker. Only the admission view is marked
+changed; continuity/contact/packaging are relevant unchanged context. No mobile/dark/
+Safari delivery is claimed; k316/k326's separate viewer limits remain with their owners.
+Browser/render/link/hash/DAG checks establish documentary delivery and scoped preservation,
+not semantic acceptance, original possession, prefix feasibility, native calls, authority,
+executed instrument controls or qualification.
+
+K335's complete scoped design and explicit unavailable stops now pass to the still-live
+k336 whole closure. This retires no original k244/k242 qualification or finite-subject duty,
+freezes no new whole membership, closes no parent and supplies no Creator for unfinished
+k331 on k332. Existing whole review/every earned integration still precedes k269. The
+single pass remains unused, all full k246/k247/useful/additive VM/native obligations and
+private/product holds remain, and consumed changes retain affected disarmed requalification.
+
 ## Complete publication design
+
+This section records k341's completed publication slice and its then-future k335 handoff.
+The [hosted recovery design](#hosted-recovery-design) above now supplies those placements
+and explicitly reconciles the carrier-prefix order; historical handoff statements below
+are not competing current instructions or accepted originals.
 
 K341 specifies the remaining k338/k334 publication design under Antony's actual k340
 answer. The normative contracts are [Complete publication and terminal join](application-reference-evidence.md#complete-publication-and-terminal-join),

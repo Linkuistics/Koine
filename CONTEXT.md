@@ -325,7 +325,9 @@ attempt, checkpoint or observation authority follows. Complete k331, mandatory w
 k332 and every earned integration precede k269. CP01 publisher wording and the glossary
 are repaired; k333 specifies the pre-tool selection/holder/fd path and k337 the first
 publisher-terminal original. K341 specifies the complete last-writer/terminal/trust publication design under k334;
-hosted recovery and whole replacement remain live work under k331. The
+the [hosted recovery design](docs/verification/application-reference-evidence.md#hosted-failed-tail-recovery)
+places exact repeated-checkpoint dispositions and the finite carrier prefix; whole
+replacement remains live under k336. The
 [final-writer dependency boundary](docs/verification/application-reference-input-partition.md#final-transcript-writer-dependency-boundary)
 identifies why a finite publication set cannot retain its own final writer's later
 acknowledgment/return without an explicit stopping boundary. Antony accepted the
@@ -338,8 +340,8 @@ cooperative trust limit. Receiver loss can leave an unprovable tail despite comp
 looking files; later content equality proves no past terminal event. Unknown tail proves
 neither completion nor no dispatch/provisioning and restores no authority. The [complete publication design](docs/verification/application-reference-evidence.md#complete-publication-and-terminal-join)
 fixes exact earlier terminal originals, final recorder/receiver roles, repeatable trust
-records and failure controls. Hosted recovery and whole replacement/review remain
-required before use. Every other required
+records and failure controls. Hosted recovery fixes every first consumer and unavailable
+boundary; whole replacement/review remains required before use. Every other required
 fact remains blocking; no accepted contact unknown or usable partial route follows. The
 [integration-only documentary candidate](docs/verification/reference-practical-admission-integration-membership.json)
 records k329's saved boundary and unresolved duties; later selected edits need k331's new membership. K323's membership is historical. No accepted
@@ -429,8 +431,21 @@ a new qualification or partial successor.
 
 **Reference failure disposition**: Independently accepted immutable failed-tail
 evidence preserving original extents, unknowns and unperformed work. It leaves DISARMED,
-certifies no failed record's success and restores no permit. Its checkpoint/trust-base
-placement remains required replacement work.
+certifies no failed record's success and restores no permit. The
+[hosted recovery contract](docs/verification/application-reference-evidence.md#hosted-failed-tail-recovery)
+places its ready act before successor in an affected repeated checkpoint. Failed
+disposition publication retains its exact unavailable boundary, without recursive repair.
+
+**Reference recovery context**: A freshly source-trusted prelude's independent check of
+an intact anchor while other exact failed tails block ordinary use. It permits only the
+named hosted recovery comparison. Source/anchor/bootstrap-validation loss instead requires
+repeated CP01 SOURCE/ARTIFACTS with newly ready independent originals; no old-anchor fallback.
+
+**Reference carrier-recovery prefix**: The exact accepted finite ordering exception for
+listed existing-slot dispositions before a damaged transcript carrier's intent. Actual
+writer/comparison/terminal originals stay in bounded memory, then immediate carrier
+successors retain them before external use. Its own publication loss stops; no new store,
+recursive prefix, restored permit or waived earlier original follows.
 
 **Reference ROOT purpose**: `INITIALIZE_ONCE` authorizes only the named one-time
 initialization from independently established never-initialized state in the live ROOT

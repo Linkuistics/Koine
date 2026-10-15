@@ -16,7 +16,9 @@ including the current whole-review classifications and required replacement plac
 The canonical [exact amendment comparison](application-population-metadata-shape.md#line-by-line-original-obligation-comparison)
 and selected sections below own the rules; this reporting locator is never a measured input.
 K330's selected never-started recovery and human-only About provenance constrain this
-proposal. K331 must still replace the complete defective checkpoint/publication protocol
+proposal. The [hosted recovery contract](#hosted-failed-tail-recovery) places failed cuts,
+carrier-prefix ordering and exact unavailable boundaries before their consumers.
+K331 must still reconcile the complete replacement checkpoint/publication protocol
 and earn whole review k332/every integration before construction; recording those
 requirements supplies no working recovery mechanism or accepted construction identity.
 
@@ -1029,7 +1031,7 @@ release/reuse an outstanding descriptor.
 | Publisher reports zero, but launcher actually observes signal/nonzero/missing EOF or reap | Observation is failure/unknown; validator refuses before bootstrap-validation credit. Retain raw frame and contradictory actual terminal evidence. |
 | Replace one actual frame/member/nonce/owner/peer/context, omit a flush result or change independently expected bytes/identity | Refuse at recorder framing or validator full-byte/member/identity/provenance check, before its successful result. The other ready inputs stay unchanged. |
 | Kill recorder before reservation, during intent/record short write, after file flush but before message, or during message | Retain exactly reached slot/bytes/frame prefix and available peer facts. Before reservation no durable original exists; after reservation no finalized tail exists without the full later validation/terminal join. Publisher success cannot substitute for recorder death. No initialization, successor, missing-as-no-dispatch or automatic disposition. |
-| Kill validator before read, during comparison/result write or after result flush before reply/EOF/reap | Preserve record plus actual reached validation/frame extents; no inferred validator return or usable initialization gate. The complete publication join retains the terminal original; k335 must host any accepted disposition before a successor. |
+| Kill validator before read, during comparison/result write or after result flush before reply/EOF/reap | Preserve record plus actual reached validation/frame extents; no inferred validator return or usable initialization gate. The complete publication join retains the terminal original; the hosted table places accepted disposition before its successor. |
 | Attempt to put post-write acknowledgment in its own record, read future CP02, or have publisher/recorder validate its own fact | Refuse the backward-input/owner check before successful factual validation. Use otherwise valid operands so another failure cannot mask the causal/independence defect. |
 | Skip/overflow/replay ordinal, use stale predecessor/anchor/disarm, substitute slot/parent, lose stream/lock/generation, share offset or leak another role's endpoint | Refuse before reservation, first affected read or first next consumer, respectively; retain held/absence/freeze/true-return evidence. No listing, older-success fallback or reset. |
 
@@ -1041,7 +1043,7 @@ producer/repairer/validator/Antony exclusions all apply. These are required Q05/
 Q09/Q10 originals, not executed controls, optional opaque-contact evidence or source-only
 qualification. The complete publication, repeatable-trust and independent-control contracts below close
 the terminal/CP02 publication and causal DAGs. Hosted failed-tail recovery and whole
-replacement reconciliation remain k335/k336 work before construction use.
+hosted recovery contract below and whole k336 reconciliation remain binding before construction use.
 
 #### Complete publication and terminal join
 
@@ -1134,7 +1136,7 @@ success. Missing required current peer/image or read evidence blocks release at 
 | `launcher.finished` / launcher → final recorder | Complete earlier stage/member/event vector and launcher observations, including all actual child EOF/reaps and its own earlier observation-record writes/flushes. It asserts neither its own EOF/reap nor final-recorder publication. |
 | `revision.published` / accepted revision-payload publisher → launcher | Exact earlier revision.intent/revision.payload bytes, ordinal/predecessor/owner/identity and actual write/flush returns; no acceptance of that payload. Stage acknowledgment precedes an internal next slot; external selection needs later exact revision.acceptance and the final join. |
 | `appointment.published` / foreground supervisor → launcher | Exact already direct CP05 act and immutable appointment bytes/identity/actual publication returns. Publication.stage acknowledgment precedes this same supervisor's Task/intent release; its own future terminal event is not predicted. |
-| `publication.stage` / final recorder → launcher | Only BOOTSTRAP_CHECKED, INITIALIZER_TERMINAL_RETAINED or WRITER_RETAINED; exact earlier event/member/frame binding and actual reached stage. One-use internal acknowledgment, never a completed final invocation or role selector. |
+| `publication.stage` / final recorder → launcher | Only BOOTSTRAP_CHECKED, INITIALIZER_TERMINAL_RETAINED or WRITER_RETAINED; exact earlier event/member/frame binding and actual reached stage. One-use internal acknowledgment, never a completed final invocation or role selector. The hosted recovery prefix permits only WRITER_RETAINED before intent, explicitly MEMORY_RETAINED with the accepted exact failed cut/plan/nonce; no future slot identity or durable-completion claim. |
 | `publication.finished` / final recorder → outer receiver | Complete earlier intent/terminal-record bytes/identity and the final recorder's now-actual write/flush/namespace returns; exact per-coordinate outcome and final freeze. One terminal frame, then write EOF and actual final-recorder return. It asserts no own delivery, EOF/reap or outer return. |
 
 `bootstrap.*`, `receipt.*`, `initializer.terminal`, `instrument.close` and existing
@@ -1153,7 +1155,10 @@ returns `publication.ready`. Only then does the publisher continue anchor/trust/
 publication. Seed or container failure stops before initialization; there may be no durable
 transcript location. The exact unavailable original is named, never invented elsewhere.
 Later invocations reserve/acknowledge the next publication intent before their writer
-dispatch under the existing serial leases and earlier accepted plan.
+dispatch under the existing serial leases and earlier accepted plan, except for the
+[finite hosted carrier-recovery prefix](#finite-publication-when-the-carrier-is-damaged).
+That exception permits only listed existing-slot disposition writes, retaining all
+earlier originals before external use; it permits no ordinary successor work early.
 
 **Actual terminal originals before their readers.** Extend `launcher-events/n`'s closed
 `observation.record` discriminant to exactly the following kinds. Each uses the existing
@@ -1212,6 +1217,9 @@ The same accepted publisher may still be alive; its eventual EOF/reap is a later
 output. This is current-stage finalization, not overall terminal completion. A consumer
 outside that live batch requires the complete final-recorder content join and independent
 phase checks. No failed current predecessor or later invocation borrows this rule.
+Hosted recovery's explicit prefix separately supplies current-stage finalization of
+listed failed-slot dispositions before the carrier intent, with complete durable
+retention before external use.
 
 For CP05 the launcher supervises the distinct declared foreground supervisor, which
 coexists with its checker/acquirer. The supervisor alone writes foreground.appointment
@@ -1258,8 +1266,9 @@ by the phase occurs and all other chain/identity/control rules hold. They cannot
 a missing earlier original, attest past flush/EOF/reap outside the exception or infer
 no dispatch/provisioning. A known receiver loss, contradictory terminal evidence or an
 incomplete final record is a failed/unknown tail, not this clean retained-content case;
-it cannot be advanced as successful publication. K335 must host any fresh content-only
-validation/acceptance needed for that failed case before a successor or authority use.
+it cannot be advanced as successful publication. The [failed-boundary host table](#failed-boundaries-and-their-exact-checkpoint-hosts)
+places fresh content-only comparison and non-success disposition before a successor
+or authority use; loss of a disposition's own batch stops as specified.
 Neither fresh acceptance nor later readable files can turn that tail into proof of a
 former completion or never-started initialization. Undetected receiver loss with intact
 content is exactly the accepted risk, not a promised detection capability.
@@ -1356,10 +1365,11 @@ comparison, inside the affected repeated checkpoint specified by hosted recovery
 anchor/anchor-validation failure requires repeated SOURCE/ARTIFACTS independent root;
 other hosted acts require an independently checked intact anchor. A partial/unknown
 disposition's own exclusive member cannot be overwritten, automatically disposed again
-or bypassed by another chain/ordinal. It remains an exact unavailable boundary for k335:
-retained-content inspection/offline work only until a concrete independently accepted
-permitted route or separate authority disposition exists. This clause adds no ceremony,
-write location or authority for that case. Mere intact files cannot prove never-started.
+or bypassed by another chain/ordinal. The hosted recovery contract fixes that exact
+unavailable boundary: retained-content inspection/offline work only until a concrete
+independently accepted permitted route or separate authority disposition exists. No
+ceremony, write location or authority for that failed-disposition case is supplied.
+Mere intact files cannot prove never-started.
 
 **Finalization and deterministic selection.** Prelude's independent strict reader admits
 these exact chains/members/kinds and every earlier cross-reference before any first read.
@@ -1437,10 +1447,263 @@ in-slot disposition plus its finite publication join → fresh accepted successo
 and required disarm → affected independent qualification/acceptance suffix. Missing
 originals stay null, not absence proof. A failed disposition or loss preventing the
 required comparison stops before successor with exact missing work; no recursion or
-automatic new initialization follows. K335 must map each actual failed cut to its
-existing checkpoint before use; this publication contract assumes no unspecified host
-or disposition time. K336 subsequently compares the whole replacement and freezes its
+automatic new initialization follows. The hosted recovery contract below maps each
+failed cut to its existing checkpoint, including the finite carrier prefix and failed-
+disposition stop; no unspecified host or disposition time is presumed. K336 compares the whole replacement and freezes its
 whole documentary membership before existing whole review/every integration and k269.
+
+#### Hosted failed-tail recovery
+
+[Recovery → Host the disposition before its successor](../design/architecture/index.html#diagram-native-reference-admission)
+shows this design's entry and stopping points. It places the original-publication
+contract's failed cuts inside the existing five checkpoints under k330 and k340. It
+changes no selected permission clause. A host below is an **affected repeat** of the
+named checkpoint, in Antony's own terminal outside agent harnesses; it is not an
+automatic continuation, extra ceremony, actual accepted act or construction handoff.
+
+##### Trust and ready originals at recovery entry
+
+There are two entry results. `SOURCE_REENTRY_REQUIRED` selects no anchor. Initial seed,
+anchor, bootstrap-publication-validation or required source-root/tool failure repeats
+CP01-SOURCE then CP01-ARTIFACTS from **newly ready independent source/OS originals**.
+The supplier, independent expected-result author, executor and separate factual validator
+finish their affected original/source/build/runtime/read/image/control work before this
+repeat. SOURCE uses the independently authored static manifest; ARTIFACTS uses the
+source-trusted prelude/holder/short-entry comparison. Neither uses an old anchor, candidate
+engine result or damaged trust.continuity to establish its first trust. The earlier
+ROOT and old source acceptance are evidence, never authority for this invocation.
+
+`INTACT_ANCHOR_RECOVERY_ONLY` requires the newly source-trusted prelude to traverse **all**
+reachable chains, independently validate the current anchor and its complete earlier
+bootstrap validation/original set, and report exact other failed tails. Its result permits
+only that host's recovery comparison. It is neither ordinary current-chain acceptance nor
+receipt, eligibility or initialization authority. Bootstrap validation hidden in a failed
+validation tail, a damaged required anchor original or an unknown supporting association
+instead yields SOURCE_REENTRY_REQUIRED. No earlier successful anchor is selected under
+a failed/unaccepted successor. Tool/root replacement always takes the CP01 route before
+the affected tool runs, even when the failed record would otherwise be hosted later.
+
+Every ready recovery manifest contains the **exact** fixed chain/ordinal/member coordinates,
+held ancestor/slot/member identities, complete retained intent/result/disposition bytes
+and lengths, raw frames and their prefixes, actual write/short-write/flush/error returns,
+the earlier peer/launcher/final-record originals and all actually available EOF/reap/death
+facts. Each unavailable original is null with its interval, owner and reason. Record
+received reports, independent comparisons and directly observed returns separately.
+Preserve every old nonce, plan, direct act, failed extent and negative-next observation;
+an absent member or matching total proves no unperformed operation. A current independent
+extent comparison establishes only what is retained now. It does not recreate a lost past
+event. The sole final-recorder/outer-receiver exception retains UNARCHIVED_BY_RULE, never
+a historical completion verdict or no-dispatch/no-provisioning proof. A clean archival
+omission by that rule is distinct from a known failed/unknown tail; only complete earlier
+independent originals can support a separate history claim, never the omission itself.
+
+The ready plan also binds the earlier review/findings/integrations, complete independently
+authored control expectations and original results, all required source/OS/tool/runtime/
+read/image/descriptor/lease facts, direct-context observations, accepted writer capabilities
+and fact-specific exclusions. Freeze it before the direct act. Output **roles and exact
+next names** can be authorized by the plan; future inode identities, validation results
+or acknowledgments cannot be accepted as already observed. They become later originals.
+
+Antony judges this ready failed-object comparison and confirms its manifest/nonce at the
+host below. His already accepted disposition-only registrar alone writes trust.disposition
+as failure.disposition **at each exact failed slot**. Its complete payload additionally
+names the hosted checkpoint/substep, entry result/source-root or intact-anchor binding,
+original failed-cut manifest, every null/unknown coordinate, requested non-success successor
+purpose and required remaining suffix. The original failed writer/producer/repairer,
+expected author, executor and factual validator cannot adjudicate their own facts. The
+registrar copies Antony's direct act; it performs no factual acquisition or validation
+of its own output. Separate independent comparison/validation, launcher/final-recorder
+ownership and the distinct closer retain their existing exclusions and capabilities.
+Accepting failure leaves DISARMED and establishes neither completion nor permission state.
+
+##### Finite publication when the carrier is damaged
+
+Ordinary recovery uses the accepted publication.intent-before-writer envelope. There is
+one explicit **ordering exception**, needed when launcher-events or publication-events
+itself has a failed reachable tail, or when first-seed/container failure leaves their
+initial carrier unready. Requiring its successor intent before disposition would require
+the finalized disposition as that intent's own earlier predecessor. Moving the act to
+a sixth checkpoint would not break this dependency. Use the following bounded prefix
+inside the same hosted repeat; no earlier-original retention duty is relaxed.
+
+1. Before any recovery write, independently prepare/review/control and accept the exact
+   receiver/final-recorder/launcher/registrar/independent-comparison mechanics and **finite
+   closed list** of already observed failed slots. Each conditional disposition member
+   must be independently established absent under its held parent, with the expected
+   original extent/identity intact. The prelude freezes the entire cut, names the host
+   and prohibits ordinary reads/effects, new initialization, successor work and skipped
+   ordinals. No chain scan, guessed slot or recursively discovered cut is admitted.
+2. After the host's direct ready act, start the accepted receiver → final recorder →
+   launcher → disposition-writer tree. Until the carrier is ready, the final recorder
+   and launcher retain actual events in bounded memory, as at first seed reservation.
+   Only the disposition-only registrar may publish the listed **existing-slot**
+   failure.disposition members; it creates no new ordinal, permit, payload or record
+   elsewhere. Use release-before-register leases, independently checked identities and
+   actual write/flush acknowledgments. If the first seed/locks were never reserved,
+   CP01's fresh exact A2/ROOT plan must first authorize only their exclusive missing
+   reservations; existing objects are checked, never recreated or repaired in place.
+3. For each prefix disposition retain the earlier direct act, disposition.published,
+   full actual bytes/held identity/write/flush returns, independent current comparison,
+   and launcher's actual writer EOF/normal zero reap. The accepted independent factual
+   comparison uses the existing held-stream/engine interface; its original results and
+   returns are also retained. No validator writes into a damaged validation chain merely
+   to authorize this prefix. Launcher.event conveys these reached originals to the final
+   recorder. Its publication.stage WRITER_RETAINED may acknowledge **only this declared
+   recovery prefix before publication.intent**. The frame states that the evidence is
+   memory-retained, with its exact cut/plan/nonce, and promises no future durable record.
+4. That is current-stage finalization **within this one live recovery batch**, after the
+   disposition writer's actual return. Only now reserve the immediate publication-events
+   successor (or first exact slot) with its predecessor disposition's full bytes/identity,
+   prefix events and the original direct plan as earlier inputs. Publish/acknowledge
+   publication.intent and publication.ready. Then reserve the immediate launcher-events
+   successor and record the complete earlier prefix there. If release-events also failed,
+   its accepted prefix disposition remains DISARMED; a new fully acknowledged disarm
+   successor precedes all ordinary changed work or Q. No old eligible event is usable.
+5. The same batch completes every remaining listed disposition through the ordinary
+   envelope, retains every prefix/writer/comparison/launcher original in its final record,
+   and reaches the unchanged final-recorder/outer endpoint. Before **any external successor
+   or ordinary checkpoint consumer**, independently check the complete current byte/member/
+   identity/provenance join and each disposition. In-memory stage finalization is never
+   a transferable predecessor, a saved continuation or credit at a later checkpoint.
+
+No earlier record names that future final record. Its new intent names already reached
+prefix facts; its terminal record later retains their actual originals and launcher reap.
+This is an explicit extension of the first-reservation/current-stage ordering rule, using
+the existing closed kinds, channels and write locations. It gives the final recorder no
+disposition authority and the registrar no transcript/close/initialization authority.
+Independent prefix bounds, frames, strict reader and the source-rooted recovery plan must
+qualify together before use. Overflow, missing required prefix original, failed comparison,
+unknown held identity, lost lease/owner/endpoint or nonzero/missing return stops before the
+next enabling point. No timeout cancels an issued operation or releases its ownership.
+
+**The prefix has no recovery prefix of its own.** If its disposition or archival join
+fails, preserve all reached members/frames and null missing originals and stop before
+successor. A present partial/unknown disposition is neither overwritten nor disposed
+again, skipped by another chain/ordinal or copied to an alternate store. Even complete
+disposition bytes cannot supply a missing earlier acknowledgment/reap. If only this
+disposition batch's final receiver observation is known lost, current content may be
+inspected offline, but this design does not advance that unknown disposition batch.
+Its exact unavailable boundary and the trade-off between retaining refusal and separately
+authorizing a concrete recovery mechanism return to Antony **before** any such consumer.
+No new ceremony or authority for that unresolved actual case is presumed. An ordinary
+record's known receiver loss, with no failed disposition yet, uses the hosted in-slot
+disposition route below; it never reconstructs the old terminal event.
+
+##### Failed boundaries and their exact checkpoint hosts
+
+Every row includes the ready-original and exclusion rules above and the complete retained
+set in [the publication handoff](application-reference-input-partition.md#exact-ready-and-failed-originals-for-hosted-recovery).
+These are required inputs, not a claim of possession. If several failures belong to one
+invocation, compare their whole finite cut together at its earliest required host. A
+source/anchor failure takes precedence over a later host, but it does not move CP02/CP03/
+CP04/CP05's later semantic acceptance to CP01. Return through each affected checkpoint only
+after its own ready inputs exist. No publication/recovery work is hidden between hosts.
+
+| Failed boundary | Hosted direct act, trust root and first blocked consumer / successor |
+| --- | --- |
+| First seed, initial A2/lock/container reservation or publication.intent before an anchor exists | Repeated CP01 SOURCE/ARTIFACTS; fresh factual A2 comparison then ROOT accepts the exact non-success reservation/disposition/successor plan. Retain original seed/direct-act/container/prefix extents. If no exact writable failed slot/held parent or required original exists, stop; missing storage proves no first use. Any admitted remaining missing container reservation uses ROOT's exact bootstrap capability. Only acknowledged disarm and completed archival join may precede new payload/anchor work. |
+| Initial bootstrap anchor/trust-original/bootstrap-publisher failure | Repeated CP01 SOURCE/ARTIFACTS, then ROOT. Compare the whole failed anchor, original direct acts, publisher frames/EOF/reap and launcher/final-record extents; source root supplies tools, never old trust-original fallback. Accepted disposition precedes the fresh anchor successor and its independent publication validation. Initialization still needs the separate never-started gate below. |
+| Initial bootstrap-publication validator or its launcher terminal original | Same repeated CP01 source-root host before ROOT successor plan. Required publisher/validator/result/frame/actual-wait extents remain exact. Failed/unknown validation removes the anchor; a new bootstrap-validation alone cannot revive that failed anchor. New anchor plus separate bootstrap validation precedes any initializer gate; no saved ROOT continuation. |
+| REANCHOR anchor or REANCHOR bootstrap-validation failure | Repeated CP01 SOURCE/ARTIFACTS and ROOT REANCHOR_ONLY. Compare all retained old and failed successor inputs without selecting the old anchor. Dispose failed anchor and any associated validation/transcript tails, then fresh anchor and validation successors. Existing issuance identity/nonce are unchanged. CP02 repeats only when its actual receipt/bridge basis is affected, before Q. No initializer is dispatched. |
+| Initializer dispatch, staged receipt, staged validator or exposure/synchronization failure | CP02 recovery preface under intact-anchor context; if the failed cut invalidates bootstrap validation, CP01 source re-entry first. Compare exact dispatch/staged/binding/exposure/initializer/validator originals. Publication disposition authorizes no initializer rerun, staged repair, new receipt or permission recreation. Partial/uncertain provisioning remains unavailable for acquisition without separate explicit authority. CP02 can retain that failed boundary; it cannot accept a nonexistent usable receipt. |
+| Initializer completed, but final receipt-validation/revalidation publication failed | Repeated CP02 under intact anchor. Require complete original initializer terminal/staged/exposure/acknowledgment evidence and independently establish the exact unchanged already valid receipt/namespace, with no partial initialization or uncertainty. After disposition a separately owned validator may publish a new factual revalidation of that same issuance, then actual CP02 receipt.acceptance follows. If these required facts cannot be established, stop; no revalidation manufactures them or exposes a staged receipt. |
+| receipt.acceptance or correction.acceptance writer | Repeated CP02 for receipt/bridge facts; repeated CP01 ARTIFACTS for an affected rule/tool/revision acceptance, followed by CP02 where needed. Compare exact original direct act, ready issuance/current/validation/control basis and failed writer/terminal extents. New acknowledged acceptance first feeds final Q/P; the failed act is no substitute. |
+| Revision payload, revision.acceptance or control.acceptance, including CP01 direct-act copies | Repeated CP01 SOURCE/ARTIFACTS, then ROOT REANCHOR_ONLY when an anchor must change. Independently ready reviewed full payload/control originals, old/failed direct acts and writer extents precede disposition. New payload/acceptance/anchor successors keep old bytes sealed. Changed qualification inputs disarm/requalify before Q credit. |
+| Q-result/proof.acceptance or audit.acceptance trust writer | Repeated CP03 recovery preface under intact anchor; repeat affected Q first only if its inputs/results were invalidated, with acknowledged disarm before Q. Ready original Q, complete independent audit and exact failed trust/terminal extents precede disposition and fresh proof/audit acceptance. The distinct closer is the first ordinary consumer; Q never consumes these later outputs. |
+| Distinct close publisher/result/launcher or final-record loss in the close batch | Repeated CP03 recovery preface under intact anchor accepts the exact failed-close/CP03/audit/capability extents. This is CP03's affected repeat **before** its distinct closing step, not a disposition inserted between CP03 and CP04. Original Q bytes/epoch never change: independently compare whether their exact original dependencies remain applicable. A changed bound disarm/phase/input requires actual affected Q and new CP03 acceptance/audit first; no relabelling or rebinding of old results. Only after acknowledged disposition does the separately owned closer publish the next close on the exact current basis. CP04 waits for that ready close. Antony/registrar never writes it. |
+| Maintenance disarm intent/result before changes/Q | Repeated CP03 recovery preface under intact anchor, with only failure disposition ready; final Q acceptance is deferred until Q exists. Original old basis, attempted disarm and complete failed extents precede disposition; new acknowledged disarm is the first successor before any changed work/Q. If planned changes alter trust/rules, host at repeated CP01 first instead. Later ready Q returns to CP03; two visits to the same affected checkpoint are explicit repeats, not approval of future results. |
+| basis.acceptance, eligible intent/result or their publication | Repeated CP04 recovery preface under intact anchor; exact old/current close/Q/audit/receipt/disarm/failed-basis originals precede disposition. A fresh disarm/independent basis comparison and fresh basis acceptance/eligible successor follow; no old eligible fallback. If the close/Q basis changed, the affected Q/CP03/distinct-close suffix precedes ordinary CP04 acceptance. CP05 cannot consume a pending event. |
+| CP01 preparation About original/comparison/acceptance | Repeated CP01 SOURCE/ARTIFACTS with newly ready permitted manual original and separately acquired comparison/control originals. A failed published trust slot needs disposition; an unready manual observation with no reserved slot creates no fictitious disposition. Q06 remains blocked before credit. Human labels alone trigger no repeat. |
+| CP05 About/entry original or acceptance; foreground.appointment | Repeated CP05 recovery preface under intact anchor, after actual return of the previous declared peers or exact unavailable lifetime boundary. Exact manual/entry/direct-act/endpoint/writer originals precede disposition. A fresh compliant entry/About acceptance and **new direct** appointment are possible only with independently established unspent/no-intent/no-attempt/no-uncertainty state and unchanged qualified basis. Unknown dispatch/intent cannot be cleared. No same-call retry, saved appointment or transfer; post-consumption is offline-only. |
+| trust.continuity publication at CP02/CP03/CP04/CP05 | Repeat that exact checkpoint under a freshly source-trusted prelude and independently checked intact anchor, before its ordinary engine/ready-act consumer. Actual earlier comparison exists before its copy; compare failed copy/terminal extents independently. New copy/acknowledgment follows disposition, without using itself as its own trust input. If comparison/root/tool facts fail, repeat CP01 SOURCE/ARTIFACTS first. |
+| Launcher recorder, publication.intent/final recorder or outer receiver loss in any other batch | Host at the checkpoint of that batch's first blocked ordinary consumer: CP01 for bootstrap/anchor/rule/control, CP02 for receipt, CP03 for disarm/Q-trust/close, CP04 for basis/eligible, CP05 for entry/appointment. Source/anchor failure overrides as above. Compare every exact reached earlier original and current retained content; known receiver loss remains an unprovable past tail. Accept non-success in-slot disposition before carrier successor, using the finite prefix only when necessary; repeat that phase's ordinary factual validation/semantic acceptance before use. Missing required earlier originals cannot be supplied by content equality. |
+| failure.disposition itself, its prefix recorder/launcher/comparison or archival join | The same host remains the named recovery boundary, but a partial/unknown disposition or missing required prefix original has **no admitted successor**. Retain exact failed member/plan/frame/return extents. Only independently ready offline inspection is allowed; before any further authority use the precise missing permitted mechanism or separate concrete authority disposition is required. No recursive disposition, new ordinal/store, overwrite/delete/scan/rebaseline, automatic retry or restored permit. |
+
+An unchanged-input failure needs no invented changed-input qualification. It still needs
+fresh disarm where required, exact recovery predecessor and fresh downstream acceptance/
+close/eligibility/appointment for that basis. Required factual revalidation is acquired
+after the preceding disposition is fully retained, then accepted at another affected
+visit to its **same** checkpoint if necessary. This explicitly places both acts; no
+human waits across Grove sessions and no role survives as an authority bridge. If a
+required original/return cannot be ready under those orders, the route is unavailable
+with that exact dependency, not a claimed realizable or qualified success.
+
+##### Positive proof before fresh initialization
+
+The recovery comparison returns three independent classifications: `initializerEverDispatched`
+and `permissionSubjectEverProvisioned` are each PROVEN_NO, YES or UNKNOWN, and consumption/
+intent/attempt state retains its separate exact lifecycle result. PROVEN_NO needs complete
+independently validated **original execution evidence**, not a current absence test.
+Bind every earlier admitted invocation since the independently established never-started
+origin, all original ROOT nonces/constructor/peer plans, actual finite launcher dispatch
+and gate intervals from invocation entry through freeze/true return, complete original
+frame/child/terminal vectors, the reached refusal **before** the initializer-dispatch
+gate, and original separate A2 provisioning/namespace-operation evidence. Independently
+compare them with the already qualified closed constructor/operation/control expectations.
+The ordinary clean UNARCHIVED_BY_RULE endpoint adds no historical evidence and waives
+none of this earlier set; it does not by itself invalidate an independently complete
+earlier history. A known lost/failed/unknown tail cannot be used to fill a history gap
+or select the never-started route.
+Required recording must have been ready for the claimed interval; an observation that
+began later, one missing event, parent loss, unproved true return, unknown prefix or
+unknown final tail cannot prove the negative. Shared-OS/cooperative limits remain;
+this is no all-system history scan or new observation programme.
+
+Separately validate the current exact fixed A2 state using only its already permitted
+operations and independent originals. Current absent receipt/subject names corroborate
+that state only; they prove no history. A failed initialization dispatch counts YES even
+if it produced nothing. Permission-subject ancestor/subject/staged provisioning counts
+YES even without an exposed receipt. Existing, partial, uncertain, dispatched or consumed
+state cannot select INITIALIZE_ONCE. A disposition, saved ROOT, missing files, permission
+requirements, k330's answer or new nonce changes neither classification.
+
+Only PROVEN_NO for **both**, with every other required original/state/identity/control
+fact ready and all failed extents retained, permits a fresh repeated CP01 SOURCE/ARTIFACTS
+then factual A2/ROOT to accept a fresh successor/nonce plan for the one initialization
+still to begin. Complete recovery archival/disarm, new anchor and separate bootstrap
+validation precede the newly authorized same-invocation dispatch. No old ROOT is replayed.
+If the first failure occurred before a durable original could exist, that missing evidence
+normally leaves UNKNOWN and the route stops. Reanchoring, content-only validation and
+factual revalidation of an already completed receipt never authorize initialization.
+After consumption every correction/recovery remains offline-only: no eligible successor,
+appointment, target reacquisition, permit reset or further attempt.
+
+##### Clean and correction dependencies and independent controls
+
+The clean DAG is unchanged: ready originals → CP01 SOURCE/ARTIFACTS → factual A2/ROOT →
+acknowledged seed/carrier intent → anchor/publication validation → single initializer/
+separate staged-final validator → complete originals → CP02 → disarmed Q → CP03/audit →
+distinct close → CP04 → CP05 → fresh P → intent/A. The finite recovery DAG is failed cut/
+true-return facts → independently ready originals → **named hosted repeat/root comparison**
+→ direct non-success disposition act → optional bounded carrier prefix → full disposition
+publication/current-content check → acknowledged disarm/allowed immediate successors →
+required factual outputs/affected Q → their own later ready acceptance/close/release suffix.
+No edge runs from a future acceptance/final transcript to its earlier producer. These
+are documentary dependency arguments, not a model-checking or executable-feasibility result.
+
+| Independently authored positive at the actual boundary | Isolating refusal, with other inputs valid; exact first blocked consumer |
+| --- | --- |
+| Each row's failed cut, exact source-root or intact-anchor comparison and ready act at its named repeated checkpoint | Move disposition after its successor, outside the named checkpoint, before failed originals exist, or substitute a failed anchor/old source acceptance. Refuse at host/ready-manifest gate before registrar or successor. |
+| Damaged anchor and separately damaged bootstrap validation use new independent SOURCE/ARTIFACTS originals | Supply intact older anchor, candidate-selected source/holder, missing read/image/negative evidence or source root that checks itself. Refuse before candidate execution/ROOT; no initializer. |
+| Complete closed carrier prefix, actual disposition writer/comparison returns, immediate publication/launcher successors and later durable originals | Demand a future transcript as prefix input, skip intent without the exact accepted prefix plan, add one slot/write/role, leak authority, omit one real return/flush/frame, or lose prefix/lease/owner. Refuse before the affected write/successor; retain the real prefix. Test each chain damaged alone and together. |
+| Every failed seed/publisher/validator/initializer/revalidation/trust/disarm/close/eligible/recorder boundary retains its actual extents | Independently kill each writer at reservation, every short/zero/error write, each flush/send/read/EOF/reap/return boundary. Check the exact host and named first consumer, not only eventual failure. No another writer's earlier refusal masks it. |
+| Ordinary known receiver loss with complete earlier originals gets only fresh content comparison and hosted non-success disposition | Claim old terminal completion or PROVEN_NO, omit an earlier writer original, use stale content acceptance, or known loss of a disposition's own batch. Refuse before authority/successor; no second observer or manufactured terminal file. |
+| Complete independent original evidence of no dispatch **and** no provisioning permits only the fresh CP01 successor plan | Mutate either predicate alone: attempted dispatch with no files; provisioning with no dispatch; missing interval/event/true return; absent record; unknown final tail; existing/partial/consumed state; saved ROOT/new nonce/disposition offered as proof. Refuse INITIALIZE_ONCE before dispatch while the other predicate remains valid. |
+| Independently validated unchanged completed receipt gets CP02 factual revalidation without initializer work | Missing initializer terminal/exposure/binding original, uncertain staged state, new receipt identity/nonce, producer validates itself, or revalidation exposes/repairs a receipt. Refuse revalidation/CP02 credit; no permit recreation. |
+| Failed close is disposed at CP03 repeat, then the distinct owner emits a fresh close before CP04 | Registrar borrows close-only authority, use stale CP03/disarm/close, accept future Q/close or insert hidden judgment after CP03. Refuse close/CP04; unchanged-input Q still needs its actual affected suffix. |
+| Disposition succeeds with complete original join, then exact successor; failed disposition stops | Kill disposition writer or prefix/final recorder at every boundary, including full-looking member before acknowledgment. Attempt recursive disposition, overwrite/delete/scan/alternate carrier/skipped ordinal or old-success fallback. Stop before **any** successor and preserve exact missing originals. |
+| Pre-intent CP05 repeat has independent unspent/no-intent/no-attempt evidence and a new direct appointment | Unknown dispatch/consumption, old role/endpoint or within-call retry; after consumption attempt eligibility, appointment or reacquisition. Refuse at lifecycle/appointment gate, retaining offline-only evidence. |
+
+Apply existing independent author/executor/producer/repairer/validator/Antony exclusions,
+actual SCRATCH adapters, complete pre/post byte/member/image/identity/absence freezes and
+intended-boundary controls. Qualification must exercise real controlled prefix channels,
+writes and parent-owned waits; source prose, digests, a DAG or mapped return cannot supply
+actual-call evidence. No control runs LIVE, drives Antony's terminal or probes installed/
+protected/topology targets. Required Q05/Q07/Q08/Q09/Q10 and fresh P facts remain blockers;
+accepted contact unknowns waive none. Whole companions/tables/bases and actual task/runtime/
+charter reads retain full-byte binding. K336 reconciles the whole mechanism and freezes
+new whole membership; existing k332/every earned integration precedes k269. This design
+supplies no original, accepted act, authority, qualified instrument or finite subject.
 
 #### Independent stream holder and continuity anchor
 
@@ -1502,7 +1765,12 @@ holds the qualified nonblocking exclusive checkpoint leases during selection and
 comparison; comparison children get no lock/authority descriptor. It cannot create a
 missing lock or register. Initial CP01 uses only the independently supplied fixed
 original/member plan before the register exists, with no register traversal or assumed
-register lock. Its actual A2 factual peer and ROOT publication remain later operations.
+register lock. Source-rooted recovery CP01 also compares the exact already retained
+failed cut under the independently supplied A2 read plan, before any write or successor;
+no original/tool is selected from that cut. Existing roots/locks must be independently
+checked; missing initial objects require the fresh factual A2/ROOT reservation plan,
+never an assumed lease or reconstructed namespace. Its actual A2 factual peer and ROOT
+publication remain later operations.
 Its strict record decoder and membership/length limits are frozen reviewed prelude inputs,
 not an engine import. Unknown required schema/kind/read/extent refuses rather than loading
 a parser, finding a file, guessing an ordinal or repairing publication.
@@ -1540,16 +1808,20 @@ Traversal validates each reachable chain in full; no later unaccepted ordinal is
 merely because the checkpoint does not intend to consume it. A partial non-anchor chain
 does not turn a complete independently validated anchor into initialization or eligibility
 authority. It can supply that intact anchor solely for the precisely hosted recovery act
-once the later k331 recovery contract permits it. If bootstrap validation itself is in
+only within the [hosted recovery contract](#hosted-failed-tail-recovery). If bootstrap validation itself is in
 the failed validation tail, the anchor is unavailable. An unavailable anchor returns
 `SOURCE_REENTRY_REQUIRED`, with exact failed/unknown coordinates and no selected original
 set; only repeated CP01 SOURCE/ARTIFACTS may supply its independent trust base. The
-later recovery design must place disposition/acceptance before any successor consumer;
+hosted failed-boundary table places disposition/acceptance before each successor consumer;
 the prelude cannot finalize a failed tail, publish a disposition or silently continue.
 
 Supporting-input traversal also requires the [closed launcher-event reads](#launcher-original-before-bootstrap-validation),
 including each required separate validation/terminal join and the closed publication/
-trust/revision chains above. The table's validation/release rows exempt none of them;
+trust/revision chains above. The closed reader also checks the hosted prefix's earlier
+plan/cut/nonce, MEMORY_RETAINED stage origin, actual writer/comparison/reap originals and
+subsequent complete carrier association. A missing prefix original or unreturned owner
+blocks before selection, never an empty successful carrier. The table's validation/release
+rows exempt none of them;
 an unsupported kind still blocks selection.
 
 The prelude's current-anchor result is a value, never a current-pointer file or authority.
@@ -1674,9 +1946,10 @@ exact expected CP05 successors and every held required input under those shared 
 before release of Task/intent; any intervening change refuses without retry or appointment
 transfer. The same coexisting supervisor/checker/acquirer and original endpoint remain;
 the prelude/holder keep originals through their true return. No comparison child inherits
-leases, and no lock upgrade/downgrade is assumed atomic. Actual record/publication kinds
-and failed-tail hosting remain the later k331 children's work before this transition
-can be consumed; no constructor may invent them.
+leases, and no lock upgrade/downgrade is assumed atomic. The complete publication and
+hosted recovery tables fix the exact kinds, pending-output exception and failed-tail
+hosts before this transition. Whole k331 reconciliation/review still precedes use;
+no constructor may invent an omitted kind, carrier prefix or consumer.
 
 After entry equality, engine/display receive a separately frozen read-only result/input
 vector from the holder, with only their already accepted explicit per-role descriptors.
@@ -1715,10 +1988,10 @@ trust output/consumed record, binding source-root/prelude identity and trust met
 checkpoint/nonce, full selected chain/absence/cross-reference inputs, original/member
 vector, holder gate and actual descriptor/image/read/offset/EOF/reap/freeze results.
 This is an earlier computation result, never an acceptance, ROOT bearer or appointment.
-Its later writer/immutable acknowledgment and failed-publication slot belong to the live
-k331 repeatable-record design; no arbitrary locator is admitted by this slice. Until
-those records and hosted recovery routes are specified, this remains an unconsumable
-partial producer. All required actual originals/controls/identities remain unacquired.
+Its later writer/immutable acknowledgment and failed-publication slot are fixed by the
+repeatable trust table and hosted recovery contract, including the exact carrier-prefix
+association before external use. No arbitrary locator is admitted. Whole k331
+reconciliation/review remains required before this proposal can be consumed. All required actual originals/controls/identities remain unacquired.
 
 #### Append-only anchor and close generations
 
@@ -1800,13 +2073,19 @@ The disposition is exclusive and immutable; if its own publication is partial/un
 the slot remains unavailable, with precise live work/authority decision before use.
 No recursive automatic disposition, cleanup, deletion, overwrite, scan or fallback is
 selected. Only a finalized disposition can precede a new ordinal and fresh disarm basis.
+For the explicit same-live-batch carrier prefix alone, current-stage finalization has
+its exact original writer/comparison/EOF/reap evidence in memory before carrier ordinal
+reservation; the complete later durable join is mandatory before any external use.
+This is no finalized predecessor at another checkpoint or after prefix loss.
 
 For an anchor or anchor-validation failure, repeated CP01 SOURCE/ARTIFACTS source/OS
 trust and newly ready independent originals must precede any proposed disposition:
 the failed tail supplies no usable current anchor. Other failure dispositions require
 the independently checked still-intact anchor at their precisely hosted repeated
-checkpoint. K331 must specify every ready original, exclusion and first consumer inside
-the existing five-checkpoint/affected-suffix schedule; these design requirements
+checkpoint. The hosted recovery table specifies the ready originals, exclusions and
+first consumers inside the existing five-checkpoint/affected-suffix schedule. Its
+finite carrier prefix retains every earlier original before external use; failed
+disposition archival stops. These design rules
 supply no implemented recovery or sixth ceremony. The same source/holder/short-entry
 method compares retained earlier failed extents; no absent
 register is inferred valid and no changed tool accepts itself. Exact ancestor/seed
@@ -2011,6 +2290,19 @@ it for him. This design appoints nobody and creates no implementation/HITL leaf.
 | CP04 — Eligible basis after distinct close | Independent entry/runtime continuity first. Tool computes the complete finalized issuance/current/receipt/Q/acceptance/audit/acknowledged-close/event basis. Antony accepts that ready basis and registrar publishes acknowledged eligible successor. No future A3/appointment/A result is its input; first consumer is CP05. |
 | CP05 — Exact entry acceptance and fresh appointment | Independent holder/entry/runtime continuity first. Antony refreshes the permitted original manual About observation/provenance, ACCEPTs that ready original and the independently authored exact A3 entry/current eligible basis, then APPOINTs this request/nonce and starts the foreground supervisor/checker/acquirer together. Independently qualified P01 compares fresh sysctl buffers with that accepted original before credit/intent. P01–P05's actual UID/build/images/terminal/channel/authority/export/input facts precede intent/start/A; all coexist through true return. |
 
+**Hosted affected repeats precede the ordinary act in these same rows.** The
+[failed-boundary table](#failed-boundaries-and-their-exact-checkpoint-hosts) places seed/
+anchor/bootstrap-validation/rule/control recovery at CP01, receipt/revalidation at CP02,
+disarm/Q-trust/close at CP03, basis/eligible at CP04 and entry/About/appointment at CP05;
+continuity/transcript failures inherit their named phase. Source/anchor loss first repeats
+SOURCE/ARTIFACTS independently. A disarm disposition may be ready at CP03 before Q;
+its ordinary result/audit acceptance happens on a later affected CP03 visit after Q.
+A failed close is disposed in a repeated CP03 **before** the separately owned closing
+step, never at an unplaced act between close and CP04. The same ready-before-consumption
+rule applies to factual revalidation outputs and their later CP02 acceptance. The finite
+carrier prefix is internal publication under that earlier direct host act, not another
+human checkpoint. Its own failure stops; no recursive disposition or future acceptance.
+
 The first-consumer graph begins with independent authored expectations → SCRATCH original
 control execution/validation (with earlier original About observation) → CP01 actual
 mechanics/artifact/About-comparison acceptance → current bootstrap factual validation →
@@ -2203,7 +2495,7 @@ complete bytes and exact lengths/digests; counts and aggregate verdicts replace 
 | Record | Closed binding and independent origin |
 | --- | --- |
 | Bootstrap acceptance | At anchors/n/bootstrap.accepted: stable permission/register/anchor/disarm identity; actual earlier held UID/ancestors/register; complete supplied original holder/short-entry/engine/display/runtime/read/member bytes and controls; publisher/checker/registrar/initializer/validator/close-publisher identities; earlier SOURCE/ARTIFACTS/ROOT ready acts and exact INITIALIZE_ONCE or REANCHOR_ONLY purpose/nonce. No self-publication acknowledgment or future validation. |
-| Anchor intent/result and failure disposition | Separate anchors/n chain; exact predecessor/disarm/correction basis and accepted complete original plan. Result binds earlier trust-originals/bootstrap acceptance and original earlier publication acknowledgments. Separate bootstrap.publication-validation checks it; a failed-tail disposition preserves all extents and cannot create a successful anchor or initialization. |
+| Anchor intent/result and failure disposition | Separate anchors/n chain; exact predecessor/disarm/correction basis and accepted complete original plan. Result binds earlier trust-originals/bootstrap acceptance and original earlier publication acknowledgments. Separate bootstrap.publication-validation checks it; a failed-tail disposition preserves all extents and cannot create a successful anchor or initialization. Every trust.disposition also binds the hosted checkpoint/root/failed-cut manifest/null unknowns/exclusions/non-success successor purpose. Only the exact carrier prefix may use in-memory current-stage finalization before its carrier intent; complete durable originals precede external use. |
 | Launcher publisher-terminal intent/original | Exactly `launcher-events/n/observation.intent` kind `launcher.observation-intent` and `observation.record` kind `launcher.publisher-terminal`; recorder-only earlier publisher/actual terminal evidence, predecessor/ROOT/nonce/context/member/identity bindings and separate post-write `launcher.observation` frame. Independent bootstrap validation consumes these earlier originals; no self/future acknowledgment. Complete terminal and repeatable-trust publication follows the exact contracts below; this prefix alone is insufficient. |
 | Complete publication intent/terminal | Exact publication-events generation and final-recorder-only members; all earlier peer/launcher bytes, acknowledgments and actual terminal extents, with the sole unarchived final-recorder/outer-receiver boundary. See Complete publication and terminal join for every field group/frame/consumer. |
 | Repeatable trust intent/original | Exact trust-events generation and one closed table kind: CP01 direct acts, revision/control/correction/receipt/proof/audit/About/entry/continuity/basis/appointment. Each retains exact ready predecessors, distinct writer capability, direct act or supplied factual origin and later publication join. Disposition is directly at the failed slot, not a recursive prior trust event. |
@@ -3230,7 +3522,12 @@ identity/member bindings and exclusive publication follow the
 [publisher-terminal contract](#launcher-original-before-bootstrap-validation).
 The complete publication/terminal join and repeatable-trust tables close those kinds,
 including exact final-recorder, CP02 and disposition members. Unsupported kinds remain
-blockers, never discretionary siblings or permission to use a partial route. Other original approval record kinds
+blockers, never discretionary siblings or permission to use a partial route. The
+hosted carrier prefix adds no member/path/operation: only the accepted disposition-only
+registrar may publish conditional failure.disposition at each listed existing failed
+slot before the immediate transcript successors. No generic prefix bypass or extra write
+is admitted; external selection requires every original in the complete later join.
+Other original approval record kinds
 require their independently accepted exact locator,
 kind/phase/member bytes and permitted publisher/consumer operation before access. No
 unbound sibling is admitted. Later outputs never mutate the finalized revision payload

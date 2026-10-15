@@ -64,3 +64,19 @@ controls, provisioning/initialization/authority act, installed/target/protected/
 process/terminal probe or posture change. K244/k242 stay live, pass unused, full k246/k247/
 useful breadth/additive supported-VM/native duties/private ineligibility/both holds remain.
 Actual consumed edits disarm and require affected requalification before consumption.
+
+## Hosted recovery input from k335
+
+Read C's whole Hosted failed-tail recovery and the report's Whole hosted-recovery
+obligation comparison. Preserve the explicit ordinary intent-order exception for the
+finite existing-slot carrier prefix: independently ready plan/host act, actual returned
+disposition/comparison originals in memory, immediate carrier successors, complete durable
+join before any external use. No earlier-original duty is waived. Verify its closed
+frame/locator/prelude/lease/owner/first-consumer correspondence against the complete
+publication mechanism, including failure of its own disposition or archival join: that
+boundary has no admitted successor and cannot recurse, skip, rebaseline or restore state.
+Retain positive independent original history for each never-started predicate, not absent
+files or unknown tails. CP03 recovery before Q and later ready CP03 acceptance, failed
+close disposition at repeated CP03 before distinct close, and receipt revalidation before
+later CP02 acceptance are explicit affected repeats. Reconcile every summary/view and
+all exact DAGs in the new whole membership; this child alone names Creator on k332.

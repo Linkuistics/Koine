@@ -72,6 +72,38 @@ storage acknowledgments supplies no device/power-loss certificate. Hosted recove
 requires the affected existing checkpoint and independent trust base before a successor;
 no new ceremony, observation API, initialization, attempt, appointment or LIVE follows.
 
+### Hosted recovery controls before their first consumers
+
+The [hosted recovery contract](application-reference-evidence.md#hosted-failed-tail-recovery)
+is part of required Q05/Q07/Q08/Q09/Q10 and B3/B6/B7/B8. Independent control originals
+must cover each failed-boundary host and actual first refusal: CP01 source-rooted
+seed/anchor/bootstrap-validation, CP02 receipt, CP03 disarm/Q-trust/close, CP04 basis/
+eligible and CP05 About/entry/appointment. Continuity and transcript cuts inherit their
+phase; loss of anchor/source trust takes CP01 precedence. Ready failed extents and the
+direct act precede disposition and successor. Test the two explicit CP03 visits for a
+failed pre-Q disarm, and failed-close disposition before the separately owned close.
+
+The exact carrier-prefix exception is a required finite SCRATCH operation/control plan:
+existing-slot disposition-only writes before a damaged carrier's intent, actual earlier
+writer/comparison frames/flush/EOF/reap retained in memory, current-stage acknowledgment,
+then immediate carrier successors and complete durable originals before external use.
+Controls isolate missing prefix approval, an extra write/slot/role, prefix overflow/loss,
+each writer/comparison/recorder death, missing real return/identity/lease, future-record
+dependency and early successor credit. A failed disposition or its archival join stops;
+no recursive prefix, alternate store, overwrite, skip, scan, fallback or retry qualifies.
+These are required earlier originals, not the accepted final terminal-evidence gap.
+
+Prove each never-started predicate separately using independent complete original
+execution/namespace evidence over its claimed interval. A reached refusal before dispatch
+and full qualified finite-operation history are required; missing files, a later absence
+test, disposition, new nonce or unknown final tail proves neither negative. Isolate
+attempted dispatch without files and provisioning without dispatch while the other
+predicate is valid. Neither permits INITIALIZE_ONCE. Current permitted A2 checks add no
+history/scan/observation authority. Known terminal loss can have fresh content-only
+comparison at its hosted repeat, never reconstructed past completion. Distinct close,
+all role exclusions, full read/phase/absence/freeze evidence and offline-only correction
+after consumption remain. No required failure is relabelled as an accepted contact unknown.
+
 ## Independent source baseline
 
 The public basis is Apple's **xnu-12377.121.6**, commit
@@ -271,8 +303,9 @@ refuse at that first consumer. A peer's reported storage return is distinguished
 launcher-observed EOF/reap and independently compared file facts. Recorder death with
 no durable record leaves exact unavailable work, never a successful or never-dispatched
 original. The initializer/final-validator/last-writer terminal join, repeatable trust
-outputs, CP02 and hosted recovery remain live k334/k335 work; this prefix is not a usable
-initialization route. Required terminal/image/read/absence facts remain blockers, with no
+outputs and CP02 are fixed by the complete publication contract; the hosted recovery
+table places every failure before its consumer, including the finite carrier prefix.
+This earlier publisher-terminal prefix alone is not a usable initialization route. Required terminal/image/read/absence facts remain blockers, with no
 new observation/API/contact authority or optional-unknown substitution.
 P01 uses
 CP05's freshly accepted About original with actual fresh buffer comparison; P02 selects

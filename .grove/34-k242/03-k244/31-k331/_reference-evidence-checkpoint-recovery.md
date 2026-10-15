@@ -180,7 +180,7 @@ proves no completion, no dispatch/provisioning absence or new authority. K330's 
 never-started rule and About provenance remain exact; original source/holder/descriptor/
 lock/read/phase/absence/freeze/exclusion and distinct-close duties remain.
 
-This node stays live with k335/k336. K336 alone closes the whole conjunction, compares all
+This node stays live through k336. K336 alone closes the whole conjunction, compares all
 original obligations/findings, reconciles seven views/consumer layers, freezes new whole
 membership without changing historical manifests and names its own Creator on existing
 k332. Existing whole review/every earned integration still precede k269. Documentary
@@ -188,3 +188,24 @@ checks and Chrome light presentation supply no actual schema/tool/original/contr
 identity/authority/qualification or finite subject. K244/k242 remain live, k245 pass unused,
 full k246/k247/useful/generated/additive supported-VM/native/private/product duties and
 both holds retained; post-consumption correction remains offline-only.
+
+## Hosted recovery design for whole closure
+
+K335 supplies C's Hosted failed-tail recovery: exact failed cuts, ready originals/null
+unknowns, source-rooted CP01 versus intact-anchor recovery context, repeated CP01–CP05
+hosts and first consumers, and independent controls. Its finite carrier prefix explicitly
+permits listed existing-slot dispositions before a damaged carrier intent, using actual
+memory-retained writer/comparison/terminal originals and immediate carrier successors
+before external use. It changes ordinary ordering, not any earlier-original retention
+or selected authority. Prefix/disposition archival failure stops without recursion or
+fallback. Fresh INITIALIZE_ONCE requires independent positive original proof of both
+no initializer ever dispatched and no permission-subject provisioning; all uncertainty
+retains refusal. Distinct close stays after CP03 and before CP04; post-consumption remains
+offline-only. C/K/P/glossary/report and the focused admission view carry this design.
+
+K336 must challenge this prefix's current-stage/final archival distinction and complete
+host table against every original publication/read/phase/absence/exclusion duty; preserve
+every prefix original and exact stopping boundary in clean/correction DAGs. No actual
+original/control/tool/authority is supplied. This is the scoped handoff, not new whole
+membership or construction eligibility. Only k336 reconciles the whole producer and
+names its own evidence on existing k332; no earlier child closes k331 or cuts a review.
