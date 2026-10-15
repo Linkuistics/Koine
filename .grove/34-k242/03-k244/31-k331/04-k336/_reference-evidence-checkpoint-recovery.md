@@ -115,9 +115,10 @@ earned integration still precede k269. Add no duplicate review or implementation
 K343 has decomposed without changing any of its original conditions. Its first child
 reference-evidence-pretool-consumer-concordance-k345 supplies scoped original R7/F2,
 entry/descriptor/true-return consumer concordance and the explicit CP05 post-gap control
-at application-reference-input-partition.md#pre-tool-consumer-concordance. Live
-reference-evidence-publication-recovery-concordance-k346 owns complete publication/
-recovery/final archival dependencies; closing
+at application-reference-input-partition.md#pre-tool-consumer-concordance.
+Reference-evidence-publication-recovery-concordance-k346 supplies scoped publication/
+recovery/final archival dependencies and exact stopped-edge/host expansions at
+application-reference-input-partition.md#publication-and-recovery-consumer-concordance; closing
 reference-evidence-whole-obligation-concordance-k347 owns the ALL-original-duty/Safari/
 table/basis/read conjunction and complete original k343 check. These precede k344, which
 still owns every original final-freeze/whole-k336/k331 closure condition above. K345's

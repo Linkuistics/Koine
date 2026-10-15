@@ -93,6 +93,18 @@ dependency and early successor credit. A failed disposition or its archival join
 no recursive prefix, alternate store, overwrite, skip, scan, fallback or retry qualifies.
 These are required earlier originals, not the accepted final terminal-evidence gap.
 
+The [dependency expansion](application-reference-evidence.md#publication-and-recovery-dependency-expansion)
+binds this inventory to every exact output and stopped edge, including explicit close-chain
+reads and recovery-only comparison versus ordinary trust.continuity use. The pre-intent
+prefix contains only the frozen failed publication/launcher carrier tails, at most one
+each. All other dispositions wait for the ordinary envelope. Independently isolate either
+carrier and both together, extra prefix writes/slots, incomplete bounded-memory retention,
+missing returned comparison/writer EOF/reap, omitted archival association and the prefix's
+own loss. Refuse before its next write or external successor, with no recursive repair.
+No control treats current-stage memory as a transferable finalized predecessor. Original
+own-result exclusions and k345's full CP05 post-gap gate remain; these are required Q/P
+facts, not accepted contact unknowns or the final-recorder endpoint exception.
+
 Prove each never-started predicate separately using independent complete original
 execution/namespace evidence over its claimed interval. A reached refusal before dispatch
 and full qualified finite-operation history are required; missing files, a later absence

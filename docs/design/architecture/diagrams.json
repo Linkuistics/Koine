@@ -2,18 +2,18 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
   "discussion": {
-    "title": "Pre-tool consumer concordance and CP05 revalidation",
+    "title": "Publication and hosted-recovery consumer concordance",
     "status": "Scoped design concordance; whole replacement remains live",
-    "summary": "K345 compares original k321 R7 and k328 F2 against the prelude/holder/entry contract. The view now separates pre-execution copy checks, post-spawn image/input gates, serial pair and SEAL results, and CP05's post-gap revalidation before Task. An explicit independent control isolates gap mutation, failed shared reacquisition or lost peer with earlier checks valid. Publication/recovery concordance remains k346; all-original-duty/Safari/whole conjunction remains k347; k344 alone freezes whole membership and checks complete k336/k331 closure. No actual control, original, authority or construction handoff follows. Existing k332/every earned integration precede k269; pass unused and both holds remain.",
+    "summary": "K346 expands exact writer/terminal/phase dependencies and every failed cut. The carrier prefix names only the frozen failed publication/launcher tails, retains actual returned originals in bounded memory, and archives them before external use. Its own disposition or archival loss stops without a successor. Close-chain reads are explicit; recovery-only comparison cannot consume its own future continuity copy. K345's entry and CP05 post-gap/P gates remain. K347 retains whole original-duty/Safari/table/basis/read concordance; k344 alone freezes whole membership and closes complete k336/k331. Existing k332/every earned integration precede k269. No actual original, control, authority or construction handoff; pass unused and both holds remain.",
     "diagramIds": [
+      "native-reference-admission",
       "native-reference-proof",
-      "native-reference-instrument",
-      "native-reference-admission"
+      "native-reference-packaging"
     ],
     "updatedDiagrams": [
       {
-        "id": "native-reference-proof",
-        "summary": "Separates copy checking from post-spawn image/input gates, serial result/SEAL and CP05 post-gap revalidation; retains originals through every true return."
+        "id": "native-reference-admission",
+        "summary": "Names the two permitted carrier tails, separates live memory retention from final archival/consumer gates, and shows the no-successor stop for disposition or archival loss."
       }
     ]
   },
@@ -113,7 +113,7 @@
       "renderer": "svg",
       "source": "native-reference-admission.d2",
       "rendered": "native-reference-admission.svg",
-      "caption": "Source/anchor/bootstrap-validation loss repeats CP01 SOURCE/ARTIFACTS with newly ready independent originals; other hosts check an intact anchor for recovery only. A finite existing-slot carrier prefix retains actual originals in memory, then immediate carrier successors archive every earlier original before external use. Prefix/disposition or archival-join loss stops without recursion, fallback or restored permit. Fresh INITIALIZE_ONCE needs separate positive original proof of both no initializer ever dispatched and no permission-subject provisioning. Distinct close remains after CP03 and before CP04; post-consumption correction is offline-only. Whole original-duty/failure-DAG concordance and final membership/complete k336/k331 closure remain before k332 whole review/every earned integration and k269. Historical manifests retain exact bytes; no partial slice supplies construction eligibility or Creator for unfinished k331. All earlier-original duties and the selected final-recorder/nonpublishing-receiver endpoint remain; unknown tail proves neither completion nor no dispatch/provisioning. Actual originals/controls/authority remain missing, the pass is unused and both holds remain. K316/k326 viewer limits remain with their owners; rendering is no semantic, feasibility or native proof."
+      "caption": "K346's scoped publication/recovery concordance. The prelude reads all eight chains, including closes, before ordinary selection. Source/anchor/bootstrap-validation loss first repeats CP01 SOURCE/ARTIFACTS; other affected hosts require an independently checked intact anchor. A frozen damaged-carrier prefix permits only the already observed publication/launcher tail dispositions before carrier intent. Actual writer/comparison/EOF/reap originals remain in bounded same-owner memory; immediate carriers archive them before any external successor. All other dispositions use the ordinary intent-first envelope. Disposition/prefix/archival failure, including known loss of that batch's receiver tail, has no admitted successor or recursive repair. Only the final-recorder terminal tail and nonpublishing receiver return are unarchived under actual k340; content equality proves no historical completion or never-started predicate. Fresh initialization needs independent original no-dispatch AND no-provisioning proof; all exclusions, k330 About provenance and k345 entry/CP05 gates remain. K347 owns whole concordance; k344 alone freezes membership/closes whole k336/k331 and supplies its own Creator on existing k332 before k269. No actual original/control/authority/qualification; pass unused and both holds remain."
     },
     {
       "id": "native-reference-proof",

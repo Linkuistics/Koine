@@ -106,6 +106,21 @@ no recursive carrier, alternate namespace, self-validation, missing-as-never-sta
 or saved ROOT continuation is allowed. Exact source/holder/fd/offset/generation/lease/
 true-return/read/image duties precede each first consumer; no new observation is inferred.
 
+Use the [publication/recovery dependency expansion](application-reference-evidence.md#publication-and-recovery-dependency-expansion)
+for every output's actual first consumer and every stopped edge. Prelude explicitly reads
+all eight chains, including closes and each complete publication/trust/revision association.
+The prefix's only pre-intent dispositions are the frozen failed publication/launcher tails;
+all other failed slots use the ordinary envelope. Exact returned writer/comparison originals
+and bounded memory/owner/lease lifetimes precede immediate carrier successors; complete
+durable association precedes external use. A failed disposition/prefix/archival join admits
+no successor. Recovery-only comparison consumes the actual earlier entry comparison and
+accepted recovery plan, never its own future trust.continuity. A new acknowledged continuity
+copy still precedes ordinary consumers. CP05 still reserves only exact pending transcript
+outputs, revalidates after shared reacquisition before Task and retains all actual P gates.
+The inventory must isolate omitted close reads, premature continuity/CP05 use, each carrier
+alone/together, extra prefix write/slot and missing original/return/archival association.
+Every intended refusal is before that row's first consumer with all earlier gates valid.
+
 Only independent originals proving both no initializer ever dispatched and no permission-
 subject provisioning, plus all other required facts, permit a fresh CP01 successor/nonce
 plan for the one initialization still to begin. Uncertain/dispatched/partial/consumed

@@ -77,3 +77,15 @@ whole-freeze inputs to k344. Earlier scoped evidence supplies no whole acceptanc
 K344 alone performs the final new whole membership and complete k336/k331 close check;
 only its actually complete closing run names its own Creator on existing k332. These
 children add no review, implementation, partial membership, authority or qualification.
+
+## Publication/recovery concordance input from k346
+
+C's Publication and recovery dependency expansion and the report's Publication and
+recovery consumer concordance supply scoped original R1/R2/R5/F1/F3/F4/F5/F6 comparisons,
+every output/stopped-edge/host expansion, explicit close-chain traversal and the closed
+carrier-prefix memory/archival/no-successor distinction. K345's E0–E12 and CP05 gates
+remain. K347 must compare their entire conjunction with ALL remaining original duties,
+Safari, tables/bases/reads and null originals; neither scoped report is whole acceptance.
+K344 alone freezes new whole membership/closes complete k336/k331 and supplies its own
+Creator on existing k332. Historical manifests/selected S/descriptor ADR remain exact;
+no control, authority, qualification, construction handoff or target pass follows.

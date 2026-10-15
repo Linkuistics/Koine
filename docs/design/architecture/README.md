@@ -8,24 +8,23 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-Open [the pre-tool consumer discussion](index.html#discussion) or
-[Checkpoint continuity → Select and check before candidate tools](index.html#diagram-native-reference-proof).
-K345 compares original k321 R7/k328 F2 with the existing pre-tool interface, records exact
-clean/correction dependencies and adds the explicit CP05 post-gap revalidation control.
-Independent source/OS trust, actual holder-copy comparison and post-spawn peer/image/input
-gates precede serial entry/SEAL and ordinary consumers. CP05 must revalidate complete
-finalized chains, expected successors, held inputs and the same peers/endpoint after shared
-lease reacquisition, before Task; remaining fresh P checks precede intent. Every reached
-descendant must actually return before retained originals are released.
+Open [the publication/recovery discussion](index.html#discussion) or
+[Recovery → Host the disposition before its successor](index.html#diagram-native-reference-admission).
+K346 expands the capable writers, exact records and first consumers into clean and stopped
+edges. The damaged-carrier prefix names only the frozen failed publication/launcher tails;
+actual returned writer/comparison originals stay in bounded live memory until immediate
+carrier successors archive them. External use waits for that complete association. Loss
+of the disposition/prefix/archival join admits no successor or recursive recovery.
 
-- [Checkpoint continuity → Select and check before candidate tools](index.html#diagram-native-reference-proof) — Separates copy checks, post-spawn image/input gates, serial pair/SEAL and CP05's post-gap revalidation with original retention through true return.
-- [Pre-tool consumer concordance](../../verification/application-reference-input-partition.md#pre-tool-consumer-concordance) — Maps original R7/F2 to exact owners, clean/correction edges, independent controls, null originals and first consumers.
+- [Recovery → Host the disposition before its successor](index.html#diagram-native-reference-admission) — Names exact carrier tails, separates memory-stage readiness from durable archival and shows the terminal no-successor branch.
+- [Publication and recovery consumer concordance](../../verification/application-reference-input-partition.md#publication-and-recovery-consumer-concordance) — Maps original R1/R2/R5 and F1/F3/F4/F5/F6 to every output/failed-cut host, exact dependency expansion and independent first-consumer controls.
+- [Publication and recovery dependency expansion](../../verification/application-reference-evidence.md#publication-and-recovery-dependency-expansion) — Makes close reads explicit, closes the pre-intent slot list and preserves ordinary continuity and CP05 gates.
 
-Instrument and recovery views are unchanged context. K346 owns complete publication/
-recovery concordance and k347 the whole all-finding/original-duty/Safari conjunction;
-k344 alone freezes new whole membership and checks complete k336/k331 closure. Existing
-k332/every earned integration still precede k269. No partial membership, actual original/
-control, Creator or construction handoff is supplied. Pass unused; both holds remain.
+Continuity and packaging views are unchanged context. K345's pre-tool/descriptor/true-return
+and CP05 post-gap checks remain. K347 owns whole all-finding/original-duty/Safari/table/basis/
+read concordance; k344 alone freezes whole membership/checks complete k336/k331 closure.
+Existing k332/every earned integration precede k269. No partial membership, actual original/
+control, Creator or construction handoff follows; pass unused and both holds remain.
 
 ## Reconciled provenance context
 
@@ -75,7 +74,7 @@ Actual consumed edits disarm/requalify; post-consumption correction stays offlin
 
 Regenerate all seven source/export pairs with
 `task design:application-population-metadata-shape-render` (D2 0.9.0, Dagre, themes 0/200).
-Only the proof caption/discussion marker changes in k345. Browser delivery is checked
+Only the admission source/export/caption and discussion marker change in k346. Browser delivery is checked
 only in the explicitly reported viewer/appearance; k316/k326's other limits remain.
 Render/link/hash checks supply no semantic, executable-feasibility or native proof.
 

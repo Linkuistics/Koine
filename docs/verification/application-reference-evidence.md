@@ -1530,7 +1530,8 @@ inside the same hosted repeat; no earlier-original retention duty is relaxed.
 
 1. Before any recovery write, independently prepare/review/control and accept the exact
    receiver/final-recorder/launcher/registrar/independent-comparison mechanics and **finite
-   closed list** of already observed failed slots. Each conditional disposition member
+   closed list** of pre-intent carrier dispositions from already observed failed
+   publication/launcher tails, separately from the complete failed cut. Each disposition member
    must be independently established absent under its held parent, with the expected
    original extent/identity intact. The prelude freezes the entire cut, names the host
    and prohibits ordinary reads/effects, new initialization, successor work and skipped
@@ -1541,7 +1542,7 @@ inside the same hosted repeat; no earlier-original retention duty is relaxed.
    Only the disposition-only registrar may publish the listed **existing-slot**
    failure.disposition members; it creates no new ordinal, permit, payload or record
    elsewhere. Use release-before-register leases, independently checked identities and
-   actual write/flush acknowledgments. If the first seed/locks were never reserved,
+   actual write/flush acknowledgments. If the first seed/locks/containers were never reserved,
    CP01's fresh exact A2/ROOT plan must first authorize only their exclusive missing
    reservations; existing objects are checked, never recreated or repaired in place.
 3. For each prefix disposition retain the earlier direct act, disposition.published,
@@ -1559,9 +1560,9 @@ inside the same hosted repeat; no earlier-original retention duty is relaxed.
    prefix events and the original direct plan as earlier inputs. Publish/acknowledge
    publication.intent and publication.ready. Then reserve the immediate launcher-events
    successor and record the complete earlier prefix there. If release-events also failed,
-   its accepted prefix disposition remains DISARMED; a new fully acknowledged disarm
+   its disposition uses the now-ready ordinary envelope and remains DISARMED; a new fully acknowledged disarm
    successor precedes all ordinary changed work or Q. No old eligible event is usable.
-5. The same batch completes every remaining listed disposition through the ordinary
+5. The same batch completes every other disposition in the frozen complete cut through the ordinary
    envelope, retains every prefix/writer/comparison/launcher original in its final record,
    and reaches the unchanged final-recorder/outer endpoint. Before **any external successor
    or ordinary checkpoint consumer**, independently check the complete current byte/member/
@@ -1707,6 +1708,121 @@ charter reads retain full-byte binding. K336 reconciles the whole mechanism and 
 new whole membership; existing k332/every earned integration precedes k269. This design
 supplies no original, accepted act, authority, qualified instrument or finite subject.
 
+##### Publication and recovery dependency expansion
+
+The following closes the consumer/read interpretation of the existing contracts. It is
+design notation, not a new schema, record kind, permission or executable proof. Expand
+each finite accepted member/role vector in its frozen order. Every arrow requires the
+actual earlier result; all incoming edges are conjunctive. A later reader's association
+of two completed records is a **read join**, never an input to either record's production.
+No topological order, matching content or missing name proves original history.
+
+**Closed read closure.** Once the register exists, the prelude traverses all eight chains from 0 through exact
+immediate successors and preserves every admitted absent-next observation. The generation,
+launcher, publication, repeatable-trust and release tables supply their exact members and
+closed discriminants. In particular `closes/n/{close.intent,instrument.close,close.result,
+failure.disposition}` is an explicit supporting-predecessor read, with the conditional
+disposition and close-only writer rules intact; it is not an arbitrary earlier locator.
+The other chains are anchors, validation-events, launcher-events, publication-events,
+trust-events, revisions and release-events. Trust-original children require the already
+checked exact manifest. Read joins include the later separate bootstrap validation,
+each writer's launcher original and complete final-recorder content, exact revision and
+trust acceptance, and current disarm/CP03/close/eligible applicability. Initial CP01 instead
+uses only the independently supplied original/member plan, with no assumed register or lock.
+No existing reachable chain is omitted because its output is not the checkpoint's intended
+ordinary consumer. Unsupported kind,
+missing association, extra/missing member, failed tail or unknown required absence refuses
+ordinary selection. Source re-entry and intact-anchor recovery retain their exact limited
+results; they supply no older-success fallback.
+
+**One writer expansion.** For each already accepted capable writer W, the ordinary
+publication dependencies are: current pre-tool/artifact/image/lease checks and ready plan
+→ exact publication.intent writes/acknowledgments → publication.ready → W's exact
+intent/member writes/namespace/full-flush results → its original response → applicable
+launcher observation and actual stage acknowledgment → the named internal consumer.
+Actual W EOF/reap is also a predecessor wherever that consumer requires W's return.
+A staged reply or live appointment instead has its explicitly pending terminal output;
+it cannot claim a future return. Successive slots within that same batch require complete
+earlier bytes/returns and WRITER_RETAINED, never an unreturned failed predecessor.
+
+For an external consumer, additionally join every reached peer's actual terminal facts
+→ launcher.invocation-terminal and launcher.finished → actual launcher EOF/reap → frozen
+publication.record bytes/writes (kind publication.terminal) → publication.finished → the outer receiver's live
+EOF/normal-zero-reap/freeze check. A later invocation independently validates complete
+retained content and its own required phase facts, with pastFinalTerminal explicitly
+UNARCHIVED_BY_RULE. It inherits no live-outcome assertion. Only the final recorder's
+terminal observations and the outer receiver's own return lack another durable original;
+all earlier writer/comparison/launcher returns and acknowledgments remain required.
+
+| Output / additional earlier edges | First allowed consumer after the writer expansion |
+| --- | --- |
+| Initial seed/container reservation | Same live ROOT and exact bootstrap-only reservation; acknowledge DISARMED before any trust/payload/permission work. Its initial carrier exception cannot certify unavailable history. |
+| Anchor/trust-original/bootstrap acceptance | Earlier SOURCE/ARTIFACTS/ROOT originals and acknowledged disarm; publisher EOF/zero reap → launcher.publisher-terminal plus post-write frame → separate bootstrap.publication-validation. |
+| Bootstrap validation | Earlier publisher original/full comparison → validation result/response → actual validator EOF/zero reap → launcher.bootstrap-validation-terminal → BOOTSTRAP_CHECKED; only then the same live ROOT may dispatch its one initializer. |
+| Staged receipt and receipt.binding | Actual staged bytes/identity/initializer report → separate validator's binding/response → initializer checks it → exclusive same-inode unspent exposure and synchronization. Initializer remains live at this internal gate. |
+| Initializer terminal and receipt.final-validation/revalidation | Actual initializer final report/EOF/zero reap → launcher.initializer-terminal/acknowledgment → INITIALIZER_TERMINAL_RETAINED → separate final validation. Revalidation requires independently proven unchanged completed issuance and the earlier hosted disposition, never staged repair or initialization. |
+| Revision payload and revision/control/correction acceptance | Earlier reviewed full payload/control/equivalence originals and exact direct act → capable writer; payload acknowledgment precedes its later acceptance; finalized acceptance and required affected qualification precede ordinary revised-basis use. |
+| receipt.acceptance | Complete earlier bootstrap/initializer/staged/final/terminal content and current comparison → CP02 direct act/publication → final Q/P receipt use. Future CP02 never enables initialization. |
+| proof.acceptance then audit.acceptance | Earlier completed final Q and full original-duty audit → ready CP03 acts/publications in that order → distinct closer. Q consumes neither later record. |
+| close.intent/instrument.close/close.result | Exact current disarm/anchor/revision and fresh finalized CP03 proof/audit, plus distinct owner/capability → close-only publication/terminal join → CP04. Unchanged revision never selects an older close. |
+| basis.acceptance then eligible event | Complete earlier current receipt/Q/audit/close/disarm basis → CP04 ready act → basis publication → eligible writer/result → CP05. No future appointment/export is an input. |
+| about.original/about.acceptance | CP01 preparation manual original → independent build-buffer comparison → ARTIFACTS acceptance → Q06 credit; CP05 fresh original → ready acceptance → APPOINT → actual P01 buffer comparison → credit/intent. Labels retain exact k330 provenance-only meaning. |
+| entry.original/entry.acceptance then foreground.appointment | Independently authored exact A3 entry/current basis → CP05 acceptance → fresh direct APPOINT and coexisting peers → appointment publication/WRITER_RETAINED → k345's post-gap revalidation → Task and remaining fresh P → intent. The supervisor's future return is a later output. |
+| trust.continuity | Actual completed prelude/holder/entry comparison precedes its factual copy and acknowledgment; only then ordinary engine/ready-act use. Recovery-only comparison uses that actual current comparison and the exact independently accepted recovery plan, not its own future copy or a damaged continuity record. Before ordinary use, the affected checkpoint still needs its new acknowledged continuity output. |
+| Later disarm | Exact accepted disarm-only capability and current basis → reserved slot/intent acknowledgments → changed work or Q → event.result leaving DISARMED. A result or Q success supplies no eligibility. |
+
+**Closed carrier prefix.** Freeze the failed cut before the host's act. Its pre-intent
+disposition list contains only the already observed reachable failed publication-events
+tail and/or launcher-events tail that block the chosen carrier route, at most one per
+chain; each exact ordinal/parent/member identity and absent failure.disposition is bound.
+Other failed slots remain in the complete cut but wait for publication.ready and the
+ordinary envelope. A failed release tail already blocks eligibility; dispose it and
+acknowledge its new disarm before ordinary changed work/Q, not as an extra pre-intent
+write. First missing seed/lock/container reservations remain only the explicit CP01 ROOT
+bootstrap exception and its separate capable writer; missing failed slots cannot be invented.
+
+Prefix edges are: ready cut/current independent comparison/hosted act → listed exclusive
+disposition writes/flushes/responses → actual writer EOF/zero reap and independently
+returned full comparison → launcher.event → MEMORY_RETAINED WRITER_RETAINED → immediate
+publication successor intent/ready → immediate launcher successor → complete archival
+join of every prefix original → independent current-content/phase comparison → external
+successor. If only one carrier failed, check the other carrier's unchanged finalized
+predecessor; neither scan nor add a placeholder disposition. If both failed, retain both
+listed dispositions before their respective successor. Intent contains only already
+reached prefix facts and exact future output roles, never future inode/terminal facts.
+
+The same live receiver/recorder/launcher owners and nonce hold bounded prefix memory,
+original descriptors/parents and release-before-register leases through the archive and
+every descendant's actual return/final freeze. Bounds cover full worst-case accepted
+records, frames and comparison results before dispatch; overflow refuses before the next
+write, with no clipping, unplanned spill store or later reconstructed original. No memory
+or stage binding survives owner/lease/endpoint loss. The exact prefix comparison is a
+returned factual original, not registrar self-validation or a write to damaged validation.
+Every external consumer requires the final durable association, even if the prefix's
+bytes matched earlier. The CP05 post-gap control and reserved-output-only shared-lease
+rule remain mandatory; prefix work occurs under exclusive hosted recovery ownership.
+
+**Every failed cut uses the same stopped-edge rule.** At each reservation, intent/member
+write (including short/zero/error), namespace/file/full flush, frame/read, comparison,
+EOF/reap, stage, freeze and true-return boundary, retain the reached originals and null
+unknowns, and remove the failed edge to its consumer. Use the exact host table's source
+re-entry or intact-anchor comparison → ready direct non-success act → in-slot disposition
+and required publication join → allowed immediate successor and affected suffix. A failed
+comparison/ownership/absence prerequisite stops before its write. Failure of disposition,
+prefix or its archival join has no outgoing successor edge, including known loss of that
+batch's receiver tail. Neither repeated checkpoint nor another chain/store repairs it.
+An ordinary batch's known receiver loss can only use the hosted non-success route; later
+content alone cannot erase the loss or prove either never-started predicate.
+
+Independent Q05/Q07/Q08/Q09/Q10 controls expand every output row and stopped edge with
+otherwise valid earlier inputs. Isolate each carrier alone and both together; extra prefix
+slot/role/write, omitted close-chain read, premature continuity/CP05 use, memory loss,
+unreturned comparison, missing writer acknowledgment, or an omitted archival original
+must refuse at its first consumer. Pair both positive original no-dispatch/no-provisioning
+histories with each predicate independently false/unknown. The existing publication and
+host tables retain all their controls and exclusions. This is a finite documentary
+definition for qualification, not actual controls, executable feasibility or permission.
+
 #### Independent stream holder and continuity anchor
 
 The [checkpoint continuity view](../design/architecture/index.html#diagram-native-reference-proof)
@@ -1802,6 +1918,7 @@ evidence precedes use; an absent/linked/replaced lock refuses rather than being 
 | Prelude root/lock check | Only the independent retained-input plan and fixed A2 approval ancestry, exact existing `release.lock` then `register.lock`, search-only no-follow ancestors and named/held checks. Verify actual UID/type/mode/device/inode/available stamps and qualified locks. Missing/linked/risky/unknown or unsupported locking refuses before chain reads. No permission-subject, target, export or directory inventory. |
 | Prelude anchor traversal | At `anchors/0`, then the exact immediate next unsigned-64 ordinal, read only `anchor.intent`, `bootstrap.accepted`, `anchor.result` and any conditional `failure.disposition` admitted by that slot's closed schema. No `trust-originals` child is opened until its exact earlier member plan is validated. Preserve complete original bytes/lengths/identities and predecessor equality. Present malformed/unfinalized/wrong-kind/torn/conflicting/unaccepted tail or ordinal exhaustion refuses; no wrap, argument-selected ordinal or old success fallback. |
 | Prelude supporting predecessors | From `validation-events/0` and `release-events/0`, follow only exact immediate successors and their closed intent/result/disposition members. Check each exact full predecessor, completed result, required earlier acknowledgment provenance and applicability. Cross-references must point backward to completed reachable outputs, except the separate later bootstrap validation of an earlier anchor result; verify that pair after reading both chains, without making either authorize its own production. Required revision/control/acceptance inputs are only exact earlier locators admitted by the selected schema and independent read plan, never arbitrary record-supplied paths. The complete-publication and repeatable-trust tables below are part of this closed read plan; an unsupported kind blocks. |
+| Prelude close traversal | From `closes/0` through every exact immediate successor, read only `close.intent`, `instrument.close`, `close.result` and conditional `failure.disposition`. Check the distinct close-only writer/capability, complete original CP03/audit/disarm/anchor/revision basis and actual publication/terminal join before CP04/P02. A failed/pending/stale close refuses; no generic earlier-locator rule, sealed-revision write or older close substitutes. |
 | Prelude selection | An immediate absent next slot is an actual admitted no-follow absence observation, not a list/scan. Retain its raw result and held parent. A reference beyond a gap refuses. Select only the last reachable complete CP01-accepted anchor with its separate completed independent bootstrap-publication validation and applicable current durable disarm/correction basis. Any failed/unaccepted/unchecked reachable anchor tail leaves **no current anchor**. A later receipt/close failure is reported separately; selection does not manufacture a usable receipt/close/eligible basis. |
 | Prelude publication/trust/revision traversal | Also read `publication-events/n/{publication.intent,publication.record,failure.disposition}`, `trust-events/n/{trust.intent,trust.record,failure.disposition}` and `revisions/n/{revision.intent,revision.payload,failure.disposition}` from 0 through exact immediate successors. Decode only the complete-publication/repeatable-trust closed kinds, full predecessor/owner/member/phase/terminal-origin joins and actual absent-next results. Current retained-content validation supplies no omitted past final-recorder terminal fact. Known failed/partial/unaccepted tails block affected use; only exact intact-anchor recovery context survives where allowed. No new path, scan, parser or historical-terminal inference. |
 | Prelude holder gate | From that exact anchor's closed `trust-originals` plan, open the independent original holder and actual executable copy plus every required holder runtime/read member, original first then copy. Check the complete member set, approved parent/component identities and full byte/length equality in both directions using the fixed retained `/usr/bin/cmp` primitive described below. Recheck named/held identities and required original artifact/runtime evidence before holder launch. After spawn, independently obtain that actual peer's required current image facts before releasing its plan/first opens; do not pretend its future process was observed before it existed. No engine, holder copy or candidate entry runs to certify this gate. |
