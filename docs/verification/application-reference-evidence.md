@@ -1071,7 +1071,10 @@ prelude and short-entry method. After ARTIFACTS accepts these publication mechan
 before ROOT, that same foreground interaction starts the accepted receiver/recorder/
 launcher tree with the exact already existing SOURCE/ARTIFACTS originals. ROOT is then
 read directly in this still-live continuation. No saved ROOT or future CP02 is authority.
-Later invocations first pass the independently source-rooted continuity gates.
+Later checkpoint invocations first pass the independently source-rooted continuity gates.
+Disarm, distinct-close and revalidation invocations between checkpoints use the
+[bracketed inter-checkpoint entry](#inter-checkpoint-publication-entry); their outputs
+stay provisional until the next checkpoint verifies the bracket.
 
 The final recorder has only transcript publication authority. It cannot initialize,
 validate a receipt, accept a human act, dispatch acquisition, publish eligibility or
@@ -1620,13 +1623,15 @@ after its own ready inputs exist. No publication/recovery work is hidden between
 | CP05 About/entry original or acceptance; foreground.appointment | Repeated CP05 recovery preface under intact anchor, after actual return of the previous declared peers or exact unavailable lifetime boundary. Exact manual/entry/direct-act/endpoint/writer originals precede disposition. A fresh compliant entry/About acceptance and **new direct** appointment are possible only with independently established unspent/no-intent/no-attempt/no-uncertainty state and unchanged qualified basis. Unknown dispatch/intent cannot be cleared. No same-call retry, saved appointment or transfer; post-consumption is offline-only. |
 | trust.continuity publication at CP02/CP03/CP04/CP05 | Repeat that exact checkpoint under a freshly source-trusted prelude and independently checked intact anchor, before its ordinary engine/ready-act consumer. Actual earlier comparison exists before its copy; compare failed copy/terminal extents independently. New copy/acknowledgment follows disposition, without using itself as its own trust input. If comparison/root/tool facts fail, repeat CP01 SOURCE/ARTIFACTS first. |
 | Launcher recorder, publication.intent/final recorder or outer receiver loss in any other batch | Host at the checkpoint of that batch's first blocked ordinary consumer: CP01 for bootstrap/anchor/rule/control, CP02 for receipt, CP03 for disarm/Q-trust/close, CP04 for basis/eligible, CP05 for entry/appointment. Source/anchor failure overrides as above. Compare every exact reached earlier original and current retained content; known receiver loss remains an unprovable past tail. Accept non-success in-slot disposition before carrier successor, using the finite prefix only when necessary; repeat that phase's ordinary factual validation/semantic acceptance before use. Missing required earlier originals cannot be supplied by content equality. |
+| Inter-checkpoint batch not `BRACKET_VERIFIED` at the next checkpoint | Changed source-root identity: `SOURCE_REENTRY_REQUIRED`, so repeated CP01 SOURCE/ARTIFACTS hosts every intervening disarm/close/revalidation batch as one failed cut before any later host. Intact root with a wrong binding or incomplete join: host at the kind's existing row above (disarm at CP03 or CP01; close at repeated CP03; revalidation at repeated CP02). The provisional output never reaches a trust consumer; its fresh successor uses a new inter-checkpoint invocation after disposition. |
 | failure.disposition itself, its prefix recorder/launcher/comparison or archival join | The same host remains the named recovery boundary, but a partial/unknown disposition or missing required prefix original has **no admitted successor**. Retain exact failed member/plan/frame/return extents. Only independently ready offline inspection is allowed; before any further authority use the precise missing permitted mechanism or separate concrete authority disposition is required. No recursive disposition, new ordinal/store, overwrite/delete/scan/rebaseline, automatic retry or restored permit. |
 
 An unchanged-input failure needs no invented changed-input qualification. It still needs
 fresh disarm where required, exact recovery predecessor and fresh downstream acceptance/
 close/eligibility/appointment for that basis. Required factual revalidation is acquired
-after the preceding disposition is fully retained, then accepted at another affected
-visit to its **same** checkpoint if necessary. This explicitly places both acts; no
+after the preceding disposition is fully retained, through the bracketed
+[inter-checkpoint entry](#inter-checkpoint-publication-entry), then accepted at another
+affected visit to its **same** checkpoint after bracket verification. This explicitly places both acts; no
 human waits across Grove sessions and no role survives as an authority bridge. If a
 required original/return cannot be ready under those orders, the route is unavailable
 with that exact dependency, not a claimed realizable or qualified success.
@@ -1769,7 +1774,8 @@ all earlier writer/comparison/launcher returns and acknowledgments remain requir
 | about.original/about.acceptance | CP01 preparation manual original → independent build-buffer comparison → ARTIFACTS acceptance → Q06 credit; CP05 fresh original → ready acceptance → APPOINT → actual P01 buffer comparison → credit/intent. Labels retain exact k330 provenance-only meaning. |
 | entry.original/entry.acceptance then foreground.appointment | Independently authored exact A3 entry/current basis → CP05 acceptance → fresh direct APPOINT and coexisting peers → appointment publication/WRITER_RETAINED → k345's post-gap revalidation → Task and remaining fresh P → intent. The supervisor's future return is a later output. |
 | trust.continuity | Actual completed prelude/holder/entry comparison precedes its factual copy and acknowledgment; only then ordinary engine/ready-act use. Recovery-only comparison uses that actual current comparison and the exact independently accepted recovery plan, not its own future copy or a damaged continuity record. Before ordinary use, the affected checkpoint still needs its new acknowledged continuity output. |
-| Later disarm | Exact accepted disarm-only capability and current basis → reserved slot/intent acknowledgments → changed work or Q → event.result leaving DISARMED. A result or Q success supplies no eligibility. |
+| Later disarm | Mechanical E1i and the same E2–E10 gate → exact accepted disarm-only capability and current basis → reserved slot/intent acknowledgments → changed work or Q → event.result leaving DISARMED, provisional until the next checkpoint's E3b. A result or Q success supplies no eligibility. |
+| Distinct close and receipt revalidation between checkpoints | Mechanical E1i and the same gate with the kind's exact predecessors → writer expansion and final join → provisional output → next checkpoint E1 → E3b `BRACKET_VERIFIED` → CP04 basis or later CP02 receipt.acceptance. No trust consumer reads the output before E3b. |
 
 **Closed carrier prefix.** Freeze the failed cut before the host's act. Its pre-intent
 disposition list contains only the already observed reachable failed publication-events
@@ -1904,9 +1910,10 @@ objects, complete declared/observed read/member closure, original source/build/r
 control provenance and CP01 binding. The holder/entry comparison covers each member before
 its first execution in that invocation; an artifact outside this closed plan cannot run.
 Foreground supervisor/checker/acquirer images remain under Q/P's retained-entry and
-P01–P05 controls. Disarm-only maintenance and distinct-close publication occur outside
-CP01–CP05; their source root, selection and pre-execution gate are not yet specified and
-block those invocations until a reviewed design supplies them. The register binds
+P01–P05 controls. The set also includes each writer that runs only between checkpoints:
+the disarm-only maintenance writer, the close-only publisher and the distinct closer's
+retained entry, all already accepted at CP01-ARTIFACTS. Those invocations use the
+[bracketed inter-checkpoint entry](#inter-checkpoint-publication-entry). The register binds
 actual held identities and full ordered bytes/lengths/membership. It also binds the
 independently supplied prelude/source-root identity as an earlier input, without making
 the anchor's copy a runnable source root. No later possibly changed candidate is copied
@@ -2121,6 +2128,112 @@ Its later writer/immutable acknowledgment and failed-publication slot are fixed 
 repeatable trust table and hosted recovery contract, including the exact carrier-prefix
 association before external use. No arbitrary locator is admitted. Whole k331
 reconciliation/review remains required before this proposal can be consumed. All required actual originals/controls/identities remain unacquired.
+
+##### Inter-checkpoint publication entry
+
+Antony answered "Bracketed entry (Recommended)" in k348; the selected
+[inter-checkpoint clause](application-population-metadata-shape.md#inter-checkpoint-publication-entry)
+owns its accepted limit. Exactly three specified publication invocations run outside
+CP01–CP05. Each is run by an operator who is not Antony, under a writer capability
+CP01-ARTIFACTS already accepted:
+
+| Invocation kind | Operator / writer; chain; first trust consumer |
+| --- | --- |
+| `DISARM_MAINTENANCE` | Approved maintenance supervisor; disarm-only writer; `release-events` disarm.intent/event.result before changed work, provisioning, corrections, newly consumed dependencies or Q, including the fresh disarm after a hosted disposition. First trust consumer: the next checkpoint (CP03 for a final-Q generation; repeated CP01/CP02 when the change is hosted there). |
+| `DISTINCT_CLOSE` | Distinct closing owner; its retained entry and close-only publisher; `closes/n` after CP03 and the current disarm/correction basis. First trust consumer: CP04. |
+| `RECEIPT_REVALIDATION` | Separately owned receipt validator; `validation-events/n` factual revalidation of the unchanged completed issuance, after a CP02 recovery disposition is completely retained. First trust consumer: the later CP02 receipt.acceptance visit. |
+
+Later revision-payload publication is not one of them: it is the in-batch predecessor
+of repeated CP01's revision.acceptance and runs only inside that continuation. Q results,
+offline derivation and reports write no approval chain. The kind set is closed; any other
+approval-register write outside a checkpoint refuses at the operator step.
+
+**Mechanical source/OS step (E1i).** The operator invokes the same independently supplied
+prelude original through the exact literal line the one-page source/OS method fixes for
+that kind. Before execution it performs that method's mechanical original/byte/held-identity
+checks for the prelude, factual observer, cmp and required runtime originals, using only
+the method's named no-follow opens, `fstat`/named `fstatat` checks and fixed `/usr/bin/cmp`
+comparisons against the supplier's independent identity record. It retains their raw
+results as the **identity observation**. A mismatched, missing or uninspectable fact refuses
+before the prelude runs. The operator makes no trust judgment; neither the observation nor
+the prelude certifies this execution. Its trust is deferred to the bracket below. The kind
+is a closed role argument within the fixed original, not a selector of the original; the
+method's IPI lines are independently supplied originals before CP01, like its checkpoint lines.
+
+**Same gate (E2–E10).** The prelude acquires the exclusive release-before-register leases,
+nonblocking; a busy LIVE or checkpoint lease refuses. It traverses all eight chains and
+requires an ordinary current anchor. `SOURCE_REENTRY_REQUIRED`, `INTACT_ANCHOR_RECOVERY_ONLY`,
+or a failed/partial/unaccepted reachable tail refuses before any write. Kind selection is exact:
+
+- disarm needs a finalized immediate release predecessor (result or accepted disposition)
+  and an absent next slot;
+- close needs the finalized CP03 proof/audit for the current disarm generation, no disarm
+  newer than that generation, a finalized closes tail and an absent next slot;
+- revalidation needs the finalized CP02 recovery disposition, the complete initializer
+  terminal/staged/exposure originals and the unchanged issuance that disposition names.
+
+E4–E8 then run unchanged. The anchored member set includes each kind's writer, so it is
+compared before its first run. No engine, display or registrar runs. With no human act,
+no `trust.continuity` record is written. E10 releases the outer receiver tree's enabling
+input only after current peer/image facts. No within-call retry follows a refusal.
+
+**Provisional publication.** The U0–U7 batch runs under the held leases. Its
+publication.intent binds the kind, the E1i identity observation, the complete E8 result
+and the selected anchor/chain basis with its existing fields. Its publication.terminal
+retains them with every writer original, and the writer's intent binds that
+publication.intent. Every output is **provisional**. Provisional outputs may serve only:
+
+- another provisional record of the same chain as its predecessor;
+- changed work or Q after a provisional disarm, because Q's original results are
+  themselves accepted later.
+
+No trust consumer uses a provisional output: not CP02 receipt.acceptance, CP03 proof/audit,
+CP04 basis/eligible, CP05, or the distinct close's CP03/disarm inputs. Each close input
+must already be bracket-verified at CP03. Prelude and holder retain leases, original
+streams and parents through every descendant's actual return and final freeze (E12),
+then release register before release.
+
+**Bracket verification (E3b).** After Antony's E1 at the next checkpoint, its prelude
+classifies every inter-checkpoint batch since the previous checkpoint before ordinary
+selection. A batch is `BRACKET_VERIFIED` only when:
+
+- the source-root held identity established at this E1 equals, byte- and stamp-for-stamp,
+  the identity retained by the previous checkpoint's cp01.source or trust.continuity
+  and every intervening identity observation;
+- each batch's bound anchor, member/image/runtime/read vector and writer identities equal
+  that anchor's trust-originals and accepted capability plan;
+- its complete U-graph join holds under `UNARCHIVED_BY_RULE`.
+
+A broken root identity returns `SOURCE_REENTRY_REQUIRED`: every intervening batch is a
+failed cut hosted after repeated CP01 SOURCE/ARTIFACTS. A failed binding or join with an
+intact root is a failed cut at its existing host. That host is CP03 for disarm, or CP01
+when the change altered trust/rules; repeated CP03 before a new close; repeated CP02 for
+revalidation. Verification is a read join, never a write or an acceptance. The consuming
+checkpoint's own act remains the acceptance. An identity observation is never a source
+root for any later invocation.
+
+**Accepted limit.** Each inter-checkpoint execution precedes any human source judgment
+of it. Accidental replacement is detected before E1i by the operator's mechanical check,
+or across the bracket by the next E1. An operator invoking a non-original executable or
+skipping E1i, or a mutate/restore between observations, is not stopped before effects.
+That is the selected cooperative limit. Such a run's register writes are refused at the
+next checkpoint. The damage can cost liveness, including authority that becomes unavailable
+and needs Antony's separate decision. It cannot cost consumption, eligibility, appointment
+or LIVE, because only CP04/CP05 human acts produce those.
+
+| Independent positive | Isolating negative and first refusal |
+| --- | --- |
+| Each kind with valid E1i, ordinary anchor, anchored writer and complete batch, then `BRACKET_VERIFIED` at the next checkpoint | Replace the prelude/observer/cmp/runtime original before E1i, or use an unlisted kind/literal line: refuse before the prelude runs. Change one byte or stamp between the batch and the next E1: `SOURCE_REENTRY_REQUIRED`, with the batch a failed cut at repeated CP01. |
+| Writer compared as an anchored member before its first run | Unanchored, rebuilt or wrong-capability writer, or a writer swapped after comparison: refuse at E4/E7 or at the post-spawn image gate, before the writer's effects. |
+| Ordinary current anchor and exact kind predecessors | Recovery-only or source-reentry selection, failed tail, stale CP03 generation for close, missing initializer originals for revalidation: refuse before any write. |
+| Exclusive leases held through E12 | Busy LIVE/checkpoint lease, lost lease/owner/parent or early release: refuse before the batch, or freeze before the next write. |
+| Provisional output reaches its consumer only after `BRACKET_VERIFIED` | CP03 accepts an unverified disarm, CP04 uses an unverified close, CP02 accepts unverified revalidation, a close uses a post-CP03 disarm, or an identity observation is offered as a root: refuse at that consumer. |
+| Batch binds the identity observation, E8 result and anchor basis | Omit or alter one, or bind a vector that differs from the anchor: failed cut at the kind's host; no later checkpoint repairs it in place. |
+
+These are required Q07/Q08/Q10 and relevant Q05/Q09 controls. The original author,
+separate executor, factual validator and Antony's adjudication keep their exclusions.
+No control runs LIVE, drives Antony's terminal or adds an observation API, checkpoint,
+authority, initialization or attempt. Required originals/identities remain unacquired.
 
 #### Append-only anchor and close generations
 
@@ -2397,7 +2510,7 @@ compatible preparation duties; no image/task/receipt assigns a trust role.
 | Reference Launcher Recorder | Accepted launcher's separately commissioned transcript-only publication of earlier publisher/terminal originals | Independent original-result executor may own it only when separate from the producer/repairer of the checked publisher/facts, expected-result author, factual validator and Antony adjudication. No other publisher/initializer/validator/registrar capability implies this role. The complete publication join and independently qualified controls are required before use. |
 | Reference Final Recorder | Transcript-only `publication-events` intent/record of earlier peer/launcher originals and actual launcher reap under the [complete publication contract](#complete-publication-and-terminal-join) | Separate from the launcher recorder and from producers/repairers and factual validators of the facts it records. No human act, validation, initialization, close, permit, release or appointment authority. Operating it supplies no independence for its own artifact or reported storage facts. |
 | Reference Outer Receiver | Nonpublishing foreground parent that compares the final record and observes its child's existing channel/wait terminal facts | Separate from the final recorder and its producer/repairer. No authority-record write, archival sidecar or further durable terminal original; its own return is the selected k340 endpoint. It makes no semantic decision. |
-| Independent read-only checkpoint prelude | Original source/OS trust root, exact pre-tool chain traversal/selection and actual holder executable/runtime comparison | Independently supplied outside the selected anchor; no candidate-derived root, authority write, disposition, initialization or semantic acceptance. Separate producer/repairer, original author, executor and Antony adjudication exclusions apply. Required original/runtime/read/image facts precede first use. |
+| Independent read-only checkpoint prelude | Original source/OS trust root at checkpoints, exact pre-tool chain traversal/selection, actual holder executable/runtime comparison, mechanical-only inter-checkpoint entry and next-checkpoint bracket verification | Independently supplied outside the selected anchor; no candidate-derived root, authority write, disposition, initialization or semantic acceptance. Separate producer/repairer, original author, executor and Antony adjudication exclusions apply. Required original/runtime/read/image facts precede first use. |
 | Independent pre-entry stream holder | Supplies only the prelude-checked fixed plan's exact no-follow paired streams and retained descriptor lifetime | Actual executing copy is compared before launch by the prelude; independent source/build/runtime/read/image/control closure precedes SOURCE/first opens. Closed fd/offset/generation/EOF/reap handoff and required peer/image checks precede entry/candidate effects. It cannot select/accept an anchor or certify its own original/results. |
 | Separate staged/final receipt validator | One validator may validate the staged binding and final named/held receipt, compare initializer originals and retain acknowledgements | Separate from initializer, receipt producer/repairer and acceptance owner for those facts. Must not validate its own staged receipt or synchronization result; actual validation acquires evidence, CP2 accepts it. |
 | Distinct instrument closing owner and step | Complete original-obligation comparison/promotion after final accepted Q results/audit; own accepted close-only publisher | Separate from producers/repairers, original expected-result author or executor whose fact it closes, control/qualification runner, initializer/validator whose facts it closes and Antony's trust/audit/release group. It cannot accept its own capability/controls or publish human trust/eligibility/appointment. Missing evidence cannot close in prose. |
@@ -2415,9 +2528,9 @@ it for him. This design appoints nobody and creates no implementation/HITL leaf.
 | CP01 — Bootstrap and artifact acceptance | SOURCE inspects original holder/entry/OS trust. ARTIFACTS accepts the complete ready artifacts, control/mechanics originals and About/build comparison/provenance before Q06 credit. The factual peer returns current exact A2 ancestry/UID facts; ROOT accepts that ready plan and authorizes the disarmed same-invocation continuation and exactly one named initialization. No control acquisition or Grove-session wait occurs inside this checkpoint. Explicit bootstrap-publisher/validator/holder/close-only/maintenance capabilities are in its ready plan. |
 | CP01 continuation after ROOT, before CP02 | The same own-terminal launcher first retains/acknowledges the initial disarm seed, publishes the anchor/trust originals, reaps the publisher and obtains separate bootstrap.publication-validation of those earlier outputs. It then runs the initializer once with its separately owned co-running staged/final validator; staged binding precedes unspent exposure, final validation follows actual initializer EOF/zero reap, then validator EOF/zero reap. Return only with retained original outputs or precise failed extents. No saved ROOT bearer, cross-session wait, new judgment, target sample or second initialization. |
 | CP02 — Qualified receipt acceptance | Independent entry/runtime continuity first. Antony accepts actual original bootstrap-publication, initialization, staged/final-validation, immutable issuance receipt and required bridge facts after they exist. Mechanics were already accepted at CP01; CP02 is not their first trust act. Ready actual objects first feed final Q/P. Failed/uncertain publication/initialization stops and cannot repeat initialization. |
-| Between CP02 and CP03 | After last edits/review repair/provisioning, accepted maintenance reserves/flushed durable disarm intent before final affected Q. Q01–Q10 consume only earlier accepted rules/originals/receipt facts and emit original results; scratch acceptance/audit/close mechanics require no future final-Q acceptance/audit/close. |
+| Between CP02 and CP03 | After last edits/review repair/provisioning, accepted maintenance reserves/flushed durable disarm intent through the bracketed inter-checkpoint entry before final affected Q. Q01–Q10 consume only earlier accepted rules/originals/receipt facts and emit original results; scratch acceptance/audit/close mechanics require no future final-Q acceptance/audit/close. CP03 verifies the disarm's bracket before accepting results. |
 | CP03 — Final original Q results and audit | Independent entry/runtime continuity first. Tool compares every original Q result and required input/authority/obligation coordinate; Antony accepts/refuses ready original results and complete audit with original dispositions/reasons. Those finalized records first feed the distinct closer. |
-| Distinct close between CP03 and CP04 | Independent closing owner checks every original k244 duty, CP03 acceptance/audit and stable input/receipt/current basis. Its previously accepted close-only publisher emits the exact independently acknowledged close record, or retains precise live repair. It is a separate owner/step, not a sixth human checkpoint; Antony's registrar cannot supply its capability. |
+| Distinct close between CP03 and CP04 | Independent closing owner enters through the bracketed inter-checkpoint entry, then checks every original k244 duty, CP03 acceptance/audit and stable input/receipt/current basis. Its previously accepted close-only publisher emits the exact independently acknowledged close record, or retains precise live repair. The close stays provisional until CP04 verifies its bracket. It is a separate owner/step, not a sixth human checkpoint; Antony's registrar cannot supply its capability. |
 | CP04 — Eligible basis after distinct close | Independent entry/runtime continuity first. Tool computes the complete finalized issuance/current/receipt/Q/acceptance/audit/acknowledged-close/event basis. Antony accepts that ready basis and registrar publishes acknowledged eligible successor. No future A3/appointment/A result is its input; first consumer is CP05. |
 | CP05 — Exact entry acceptance and fresh appointment | Independent holder/entry/runtime continuity first. Antony refreshes the permitted original manual About observation/provenance, ACCEPTs that ready original and the independently authored exact A3 entry/current eligible basis, then APPOINTs this request/nonce and starts the foreground supervisor/checker/acquirer together. Independently qualified P01 compares fresh sysctl buffers with that accepted original before credit/intent. P01–P05's actual UID/build/images/terminal/channel/authority/export/input facts precede intent/start/A; all coexist through true return. |
 
@@ -2529,7 +2642,10 @@ can remove eligibility, never accept a payload, appoint LIVE, restore a permit o
 ELIGIBLE. Every such entry, including changed/newly consumed dependencies and requalification
 with unchanged input bytes, must reserve a durable successor disarm event **before** any
 mutation or qualification/read of the changed subject. Bypassing this enabling point is
-a required control failure. Pre-existing proofs cannot authorize the work early.
+a required control failure. Pre-existing proofs cannot authorize the work early. The
+supervisor publishes through the [bracketed inter-checkpoint entry](#inter-checkpoint-publication-entry):
+its disarm remains provisional until the next checkpoint verifies the bracket, and no
+trust consumer uses it before then. Slot existence alone already disarms.
 
 Release events form one fixed, append-only, contiguous ordinal chain. The initial seed
 precedes the first anchor under the direct ROOT plan as specified in the synchronous
@@ -2779,8 +2895,9 @@ hold clauses remain prerequisite gates until the existing qualifying evidence sa
 them. Preserve their bytes and all other canonical clauses except the exact compared
 k281 contact/lookup/control-status, k290 human-ownership/foreground/pass-status,
 k295 bounded correspondence-observation, k314 acceptance/documentary, k319 narrow
-Safari root-step, k330 never-started recovery/About provenance and k340 finite
-publication terminal-evidence amendments actually approved by Antony. Publish later
+Safari root-step, k330 never-started recovery/About provenance, k340 finite
+publication terminal-evidence and k348 bracketed inter-checkpoint entry amendments
+actually approved by Antony. Publish later
 outcomes separately without editing the historical fact into a current success. The
 descriptor ADR's historical measurements and pinned source/API facts likewise keep their
 original reference and bounded interpretation. Changed bases/dispositions are input changes.
@@ -2827,6 +2944,7 @@ review of its full context and complete H/R exceptions before acceptance.
 | S, Selected reference and evidence requirements: introduction and One bounded reference-packaging pass | H: original 25G83 packet counts/identity, Antony's permission and this requirements session's non-acquisition statements. E: exact selected build/cohorts/source/layout/files/one-pass evidence duties; no current package is inferred. |
 | S, Authority and admission choices | H: the recorded k270 delegation, k281/k290/k295/k314/k319/k330 answers, original assignments to k273/k282/k315/k320/k331, requirements-session non-execution and cited archived persistence descriptions. E: all selected choices, exclusions, five checkpoints, amendment limits, risks and before-consumer duties. A retired assignment names the historical requirement, not a live owner. |
 | S, Finite publication terminal-evidence boundary | H: Antony's recorded k340 answer and the stated non-selection of the every-writer-originals/unavailable alternative. E: the one finite final-recorder/outer-receiver endpoint, every earlier writer original, receiver-loss/unknown-tail limits, required mechanics/controls, five-checkpoint fit and every prohibition. |
+| S, Inter-checkpoint publication entry | H: Antony's recorded k348 answer and the stated non-selection of a human source/OS act before every inter-checkpoint invocation and of moving close/revalidation into CP04/CP02. E: the three closed invocation kinds, mechanical-only source/OS step, same prelude gate, provisional outputs, next-checkpoint bracket verification before every trust consumer, accepted liveness-only residual and every prohibition. |
 | S, Independent classification and whole-template assignment; Test seams and required handoff | H: requirements-session unestablished recipes/useful fit, false private eligibility, holds and pending native verdicts. E: all purpose/whole-template/rewrite/helper/alias/VM/native/eligibility requirements; later satisfaction needs its original qualifying evidence and is reported only in R. |
 | D, whole Filesystem access is descriptor-relative | H: the earlier whole-path error, k134 measurement, survey's failure reports, 25F71 search-only measurement, prior queued/system-find proposals and reported service PATH_MAX limitation, in their complete surrounding paragraphs. E: held/search-only/kernel/32-link/prompt/action rules, platform limits and qualification/revisit duties. No 26A434 certificate follows. |
 | C, Ownership and alternatives; Permission inputs and reporting outputs; Authoritative attempt evidence | H: named earlier design snapshots, this design's no-task act and product zap lifecycle description. E: selected independent representations, exact profile/concordance, full source/read/authority and lifecycle obligations; no design publication is an actual qualified tool. |
@@ -2991,7 +3109,9 @@ adjudicated or accepted by the closing owner for its own capability fact. K269 p
 those independent owners before CP01. Antony's registrar remains limited to his trust
 acts and cannot publish a closer's record under an assumed extension of that capability.
 
-After CP03 and the current durable disarm/correction basis, the distinct closer's own retained entry checks its accepted capability,
+After CP03 and the current durable disarm/correction basis, the distinct closer passes the
+[bracketed inter-checkpoint entry](#inter-checkpoint-publication-entry). Its own retained
+entry, compared there as an anchored member, then checks its accepted capability,
 complete original-obligation/input/receipt/revision/event evidence and finalized human
 acceptance/audit. It creates a fresh private unnamed socketpair endpoint to the accepted
 close-only publisher, with independently checked owner/process/image/incarnation and
@@ -3004,8 +3124,9 @@ under the qualified register-lock/no-follow/single-link/0600/write/namespace/ful
 rules. It returns original exact bytes, held identity and every acknowledgement over the
 same invocation's private reverse channel; require complete frame/EOF and normal zero
 publisher-child reap. No public socket, reusable bearer, environment flag or saved close
-can supply a new invocation. CP04 checks those originals, complete closure and their
-accepted capability binding before computing eligibility. The capability can neither
+can supply a new invocation. CP04 checks those originals, complete closure, their
+accepted capability binding and the close batch's `BRACKET_VERIFIED` classification
+before computing eligibility. The capability can neither
 accept a payload/result, publish ELIGIBLE/APPOINT, initialize/reset a permit nor close
 missing work. A failed/partial/unacknowledged close stays unavailable, with exact live
 repair before CP04; no fallback older close or prose promotion. The independently
@@ -3813,7 +3934,9 @@ and [original R retained duties](#historical-and-reporting-exceptions) govern pl
 The current [whole original-obligation concordance](application-reference-input-partition.md#whole-original-obligation-concordance)
 compares every original k321 R1–R8 and k328 F1–F6 finding and every original
 k242/k244/k245/k246/k247/k269/k331/k336/k343 condition with the k331 replacement under
-only actual amendments, and names its exact remaining work. The
+only actual amendments, and names its exact remaining work. Its one open enabling point
+is now specified by the [inter-checkpoint entry design](application-reference-input-partition.md#inter-checkpoint-publication-entry)
+under Antony's k348 answer. The
 [current k328 integration](application-reference-input-partition.md#k328-integration-and-required-replacement)
 records the defects in k323 and the required new producer. The historical
 [k323 comparison](application-reference-input-partition.md#every-k321-finding-against-the-whole-replacement),

@@ -28,8 +28,8 @@ affected requalification before consumption.
 K333's pre-tool/holder/descriptor path, k341's complete publication/trust records and
 k335's exact hosted recovery are specified in C; actual originals/controls remain absent.
 K336 is now a reconciliation node: k342 repairs provenance/current summaries/seven views;
-k343's whole concordance (k347) leaves inter-checkpoint disarm/close publication entry to
-design k348; k344 then owns final new membership and the complete original k336/k331
+k343's whole concordance (k347) is closed; k348 specifies the bracketed inter-checkpoint
+disarm/close/revalidation entry under Antony's actual answer; k344 then owns final new membership and the complete original k336/k331
 closure check. Only that actual closing child supplies
 its own Creator on existing k332. No partial child/new slice supplies construction input.
 

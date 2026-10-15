@@ -32,8 +32,8 @@ or supply a recovery mechanism that k331 has not specified.
 K333's pre-tool/holder/descriptor path, k341's publication/trust records and k335's
 hosted recovery are now specified together in C. They remain proposed mechanisms without
 actual originals/tools/controls/identities. K336's k342 reconciles provenance/current
-layers/seven views; k343's whole concordance (k347) leaves inter-checkpoint disarm/close publication entry
-to design k348, and k344 must freeze
+layers/seven views; k343's whole concordance (k347) is closed, and k348 specifies the bracketed
+inter-checkpoint disarm/close/revalidation entry under Antony's actual answer. K344 must freeze
 the new whole membership and close the complete original k336/k331 boundary before k332.
 The final closing child alone supplies its own provider evidence on existing k332.
 Consume only that whole result after review/every earned integration, never a slice.

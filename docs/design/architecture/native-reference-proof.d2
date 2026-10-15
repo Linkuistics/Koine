@@ -1,4 +1,4 @@
-# Whole k343 concordance: anchored CP02–CP05 members; inter-checkpoint entry (k348) still due.
+# K348: Antony-selected bracketed inter-checkpoint publication entry.
 direction: down
 classes: {
   start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
@@ -41,8 +41,19 @@ Consume: {
   Ready -> Return: "other checkpoints"
 }
 Unavailable: "Refuse before affected consumer\nRoot / anchor loss: CP01 re-entry\nOther failed tail: recovery context only\nNo history / authority inferred"
-Outside: "Disarm maintenance · distinct close\nPublish outside CP01–CP05\nNo specified root / selection / gate\nBlocked until k348 design"
-Remaining: "Whole k343 concordance closed\nk348 inter-checkpoint entry due\nK344 freeze → k332 review → k269\nActual originals / controls absent"
+Between: {
+  label: "Inter-checkpoint entry · E1i · selected by Antony (k348)"
+  direction: down
+  Invoke: "Disarm · distinct close · revalidation\nOperator, never Antony\nExclusive leases; refuse during LIVE"
+  Mech: "E1i · same literal source / OS method\nMechanical identity check only\nNo trust judgment"
+  Gate: "Same prelude E2–E10\nOrdinary current anchor only\nWriter is an anchored member"
+  Batch: "U0–U7 batch binds E8 and\nthe identity observation\nOutput stays provisional"
+  Invoke -> Mech: "a · literal original"
+  Mech -> Gate: "b · identity matches"
+  Gate -> Batch: "c · checked writer"
+}
+Bracket: "E3b · next checkpoint after E1\nRoot identity unchanged since\nprevious E1 and each observation\nThen CP02 / CP03 / CP04 use"
+Remaining: "k348 bracketed entry specified\nWrong executable: liveness cost only\nK344 freeze → k332 review → k269\nActual originals / controls absent"
 Entry.Image -> Compare.Holder: "plan / image gate"
 Compare.Seal -> Consume.Ready: "complete comparison"
 Entry.Select -> Unavailable: "chain / absence failure"
@@ -50,5 +61,7 @@ Entry.Image -> Unavailable: "copy / image gap"
 Compare.Join -> Unavailable: "fd / offset / return failure"
 Consume.Recheck -> Unavailable: "gap mutation / lease / peer loss"
 Consume.Return -> Remaining: "documentary boundary only"
-Entry.Start -> Outside: "root defined only at checkpoints"
-Outside -> Remaining: "precise missing work"
+Entry.Start -> Between.Invoke: "previous E1 opens bracket"
+Between.Batch -> Bracket: "d · verify before trust use"
+Bracket -> Unavailable: "bracket broken: CP01 re-entry"
+Bracket -> Remaining: "documentary boundary only"

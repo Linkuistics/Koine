@@ -116,6 +116,21 @@ comparison at its hosted repeat, never reconstructed past completion. Distinct c
 all role exclusions, full read/phase/absence/freeze evidence and offline-only correction
 after consumption remain. No required failure is relabelled as an accepted contact unknown.
 
+### Inter-checkpoint entry controls before trust use
+
+The [bracketed inter-checkpoint entry](application-reference-evidence.md#inter-checkpoint-publication-entry)
+is part of required Q05/Q07/Q08/Q09/Q10 and B3/B6/B7/B8 for its three closed kinds:
+disarm maintenance, distinct close and receipt revalidation. Independent controls must
+show the operator's mechanical identity check refusing a replaced prelude/observer/cmp/
+runtime original before the prelude runs, and the same E2–E10 gate refusing an unanchored
+or rebuilt writer. They must show recovery-only or failed-tail selection and a busy lease
+refusing before any write. At the next checkpoint, E3b must classify a changed root
+identity as `SOURCE_REENTRY_REQUIRED`, and a wrong binding or incomplete join as a failed
+cut at the kind's host. A provisional output offered to any trust consumer before E3b
+must be refused. These are required Q/P facts. The selected cooperative residual is
+neither a contact unknown nor a waiver: an operator running a wrong executable between
+checkpoints, with liveness-only cost. No observation API, checkpoint or authority follows.
+
 ## Independent source baseline
 
 The public basis is Apple's **xnu-12377.121.6**, commit

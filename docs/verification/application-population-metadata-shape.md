@@ -560,6 +560,32 @@ change. A necessary mechanism outside existing authority requires a separate con
 decision before consumption. Every other original duty and agreed seam remains;
 accepted contact unknowns cannot absorb a required failure outside this exact exception.
 
+### Inter-checkpoint publication entry
+
+Antony answered "Bracketed entry (Recommended)" in k348. Three publications are written
+outside the five checkpoints by operators who are not Antony: disarm-only maintenance,
+the distinct close, and factual receipt revalidation between CP02 visits. Each uses the
+same independently supplied source/OS method and prelude gate as a checkpoint. Its
+operator performs only the method's mechanical identity checks, with no trust judgment.
+Its outputs remain provisional. No trust consumer may use them until the next checkpoint's
+source-rooted prelude, after Antony's own source/OS act, verifies two things. First, the
+source root is unchanged across the bracket since the previous checkpoint. Second, each
+batch's bound members match the accepted anchor. A broken bracket is a failed cut under
+the existing hosted recovery, with CP01 source re-entry first.
+
+Accept the residual risk that an operator's wrong or substituted executable between
+checkpoints is not stopped before it runs. Its register writes are refused at the next
+checkpoint. The damage can cost liveness, including authority that becomes unavailable
+and needs a separate human decision. It cannot cost consumption, eligibility, appointment
+or LIVE. Mutate/restore between observations and deliberate same-UID bypass remain the
+existing cooperative limit.
+
+Two alternatives were not selected: Antony's own source/OS act before every such
+invocation, and moving the close into CP04's continuation and revalidation into a CP02
+visit. This decision adds no checkpoint, ceremony, observation API, authority,
+initialization, attempt, appointment or LIVE. Exact mechanics, controls and first
+consumers must be specified and reviewed before use; every other original duty remains.
+
 ### Independent classification and whole-template assignment
 
 Freeze a separate per-copy role manifest based on named Apple/vendor documentation
@@ -626,7 +652,7 @@ first. No amount, accounting, ABI, posture or useful-category change follows.
 ## Reference-evidence decision comparison and reporting
 
 The selected clauses above and exact comparison below record only the actual k270/k281/
-k290/k295/k314/k319/k330/k340 amendments. Changing design/construction/qualification/pass observations
+k290/k295/k314/k319/k330/k340/k348 amendments. Changing design/construction/qualification/pass observations
 live in the [unconsumed report](application-reference-input-partition.md#current-construction-and-evidence-report).
 The k314 before state is 47875236: its two selected clauses were inserted before Independent
 build, process-image and terminal correspondence; all earlier selected clause bytes were
@@ -645,6 +671,10 @@ The k340 before state is bb0a2123: Antony's actual "Accept the bounded endpoint
 (Recommended)" authorizes only the final-recorder/outer-receiver terminal-evidence
 exception above and compared below. Every earlier selected clause remains byte-identical;
 complete publication, hosted recovery and whole replacement/review remain required.
+The k348 before state is a4fbe7ad: Antony's actual "Bracketed entry (Recommended)"
+authorizes only the inter-checkpoint publication entry above and compared below. Every
+earlier selected clause remains byte-identical; k344's whole freeze/closure, existing
+whole review k332 and every earned integration remain required before k269.
 
 ### Status outside the measured permission
 
@@ -658,6 +688,7 @@ never replacement proof. The selected Documentary proportionality clause owns th
 | Original clause or condition | Selected disposition |
 | --- | --- |
 | K328 F3 requires durable launcher-observed EOF/reap/death originals; C's append-only generations bind actual writes/flush/EOF/reap after they happen; k338/k334 extend finite acknowledged finalization to the final transcript writer | K340's actual "Accept the bounded endpoint (Recommended)" permits only one finite endpoint per completed publication invocation: retain all earlier publisher/initializer/staged-final-validator/recorder frames, write/flush/EOF/reap/failure originals through a designated final durable recorder; an independently accepted nonpublishing outer receiver observes its final acknowledgment/frames/EOF/reap using existing permitted channel/wait mechanics. Those final-recorder terminal observations have no further durable original; the receiver's own final return stops at the explicit source/OS/cooperative limit. Receiver loss may leave an unprovable tail despite complete-looking files. Later independent full-byte/member/identity checks prove retained content only, not omitted past terminal events. Unknown tails supply no completion, no-dispatch/no-provisioning proof or renewed authority. Exact completion/refusal/loss/recovery and independent controls remain required before use inside the existing five checkpoints; no new observation/manual exception, ceremony, initialization, attempt, appointment, LIVE or posture is authorized. All other original duties remain. |
+| K328 F2 and k331: "an explicit finite source/OS trust root"; C's source/OS act occurs "at CP01-SOURCE and at the existing continuity start of each CP02–CP05"; k347's junction J2 finds disarm maintenance and distinct-close publication outside CP01–CP05 with no root, selection or pre-execution gate | K348's actual "Bracketed entry (Recommended)" covers the three inter-checkpoint publications: disarm maintenance, distinct close and factual receipt revalidation. Each runs the same source/OS method mechanically, without a trust judgment, and the same prelude gate with its writer as an anchored member. Outputs stay provisional until the next checkpoint's source-rooted prelude verifies the unchanged root across the bracket and the anchored bindings, before any trust consumer. The finite root is the pair of adjacent human source/OS acts. A wrong executable between checkpoints is not stopped before it runs; its writes are refused at the next checkpoint, at a liveness cost only, never consumption, eligibility or LIVE. Each checkpoint's own root, all exclusions and the five checkpoints remain; nothing is added. |
 | K270 lifecycle: "Recovery or a further attempt requires new explicit human authority"; k323 `INITIALIZE_ONCE` requires "never-initialized state and original ROOT nonce", while first-bootstrap failure leaves fresh initialization undecided | K330's actual "yes" admits only a fresh CP01 `INITIALIZE_ONCE` on independent original evidence that no initializer was ever dispatched and no permission-subject provisioning occurred, with all failed originals/extents retained and a fresh accepted successor/nonce plan. The one selected initialization and one attempt remain; existing/partial/uncertain/dispatched/consumed state still needs new explicit authority. Unknown state, missing records and a disposition grant no permission. K331 must supply the independently reviewed mechanism before use. |
 | K314 five baseline checkpoints, ready-input/first-consumer/exclusion rules and affected correction suffix; k328 F1 finds failed-tail dispositions unplaced and anchor failure removes later trust's starting anchor | Retained and made explicit: place ready dispositions within the affected repeated checkpoints, using repeated CP01 SOURCE/ARTIFACTS independent source/OS trust for anchor/anchor-validation failure and a checked still-intact anchor at each precisely hosted other repeated checkpoint. K331 must resolve every first consumer and failure boundary. No sixth ceremony, old-anchor fallback, automatic recovery, future-object acceptance or executed mechanism follows. A concrete conflict still needs its bounded human trade-off. |
 | K295 About records "product/build values, host, session, time" without defining host/session; k323 Manual About requires changed-host/session refusal and independent host/session matching between CP01, AFK Q and CP05 | K330's actual "Use human provenance labels (Recommended)" defines host as Antony's manually identified machine and session as his label for the observation's work context, each with exact meaning and human source. They are provenance only; compare the permitted original product/build values with the two raw named sysctl buffers and qualified configuration. Days/reboot/logout/label change alone do not invalidate Q06 or force CP01. Required current direct-terminal/peer/image/channel facts and actual build/configuration/tool/input/authority/correspondence disarm/affected suffix remain. Labels do not prove host substitution absent; retain the shared-OS/cooperative limitation. No continuity window, independently matchable cross-session identity or new observation authority is selected. |
@@ -697,13 +728,13 @@ never replacement proof. The selected Documentary proportionality clause owns th
 | K242 Done when 5: whole family/spec/acceptance/eligibility/charter/view reconciliation, all nine tapes/real publication and resource/authority/action/compatibility duties | Retained in full. The accepted contact risk changes no product/native qualification gate. |
 | K242 closing condition: complete coherent subject-design boundary and mandatory whole-producer review/integration before private construction/k7, including exact unavailable/failed work | Retained in full. An incomplete package permits only the truthful failed/unavailable design handoff, never finite-subject credit or closure of missing native obligations. |
 | K244/admission C1–C8/U1–U6 blanket prerequisites: complete current universe, mechanism, initial capabilities and proxy/map coverage before any adapter/entry/read credit, node close or k245 admission | Superseded only as universal no-contact prerequisites. Preserve the documentary inventory and each missing class as an explicit limit; k282 must map the accepted bounded claims, their actual required proofs and exact remaining blockers throughout the contract/companions/profile/controls/views. Unrelated UID/build/receipt/image/entry/decoder/freeze/refusal proofs cannot be waived as unknown. |
-| Exact target permission, one attempt, authority lifecycle/independent approval, no new consent/privilege/posture, useful breadth, product holds/private ineligibility and native pending obligations | Retained under only the explicitly compared amendments. K314 changes acceptance computation/checkpoints and documentary mechanics, without adding target or observation authority. K319 changes only the two checked search-only Safari root transitions above. K330 admits only independently proven never-started setup recovery and defines About provenance; it adds no initialization count, attempt, checkpoint or observation authority. Neither an answer nor future scratch controls initialize live authority, select LIVE, authorize an application-target/protected/topology probe beyond the selected evidence scope, consume another pass or qualify a product/native outcome. Reported peer paths add no target lookup/contents or executable acquisition. |
+| Exact target permission, one attempt, authority lifecycle/independent approval, no new consent/privilege/posture, useful breadth, product holds/private ineligibility and native pending obligations | Retained under only the explicitly compared amendments. K314 changes acceptance computation/checkpoints and documentary mechanics, without adding target or observation authority. K319 changes only the two checked search-only Safari root transitions above. K330 admits only independently proven never-started setup recovery and defines About provenance; it adds no initialization count, attempt, checkpoint or observation authority. K348 adds only the bracketed inter-checkpoint publication entry, with no checkpoint, ceremony, observation or authority. Neither an answer nor future scratch controls initialize live authority, select LIVE, authorize an application-target/protected/topology probe beyond the selected evidence scope, consume another pass or qualify a product/native outcome. Reported peer paths add no target lookup/contents or executable acquisition. |
 
 The original k244/k242 Done when texts remain as the historical obligation inventory;
 the explicitly identified k281 contact/pre-lookup, k290 operator/owner/status, k295
 bounded correspondence-authority, k314 acceptance/documentary, k319 narrow root-step,
-k330 never-started recovery/About provenance and k340 finite terminal-evidence endpoint
-amendments above control their interpretation. K314 changes k291 F6's per-fragment enumeration and reporting-driven
+k330 never-started recovery/About provenance, k340 finite terminal-evidence endpoint and
+k348 bracketed inter-checkpoint entry amendments above control their interpretation. K314 changes k291 F6's per-fragment enumeration and reporting-driven
 composite reconstruction only as compared; every other original obligation remains.
 K331 now owns the complete contract/companion/operation-map/representation reconciliation
 under those actual answers, with mandatory whole review k332 and every earned integration

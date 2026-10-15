@@ -17,7 +17,9 @@ as scoped evidence, not substitutes for the full original closure check or actua
 Existing mandatory whole review is reference-evidence-checkpoint-recovery-k332 before k269.
 
 Also consume k347's whole concordance and k348's inter-checkpoint publication entry result
-(or its exact human trade-off) before freezing membership.
+before freezing membership. Antony selected "Bracketed entry (Recommended)"; S, C/K/P and
+the report's Inter-checkpoint publication entry section carry the three closed kinds,
+E1i/E3b nodes and their null originals, which the membership must bind.
 
 ## Done when
 

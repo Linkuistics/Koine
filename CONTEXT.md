@@ -361,7 +361,8 @@ and independent ordinary-image outcomes required for release.
 directly by the inspected finite source/OS method before candidate tools. It selects
 the current complete validated anchor through exact predecessor-bound reads, compares
 the actual holder executable before launch and retains the selection/freeze inputs.
-It creates no authority, acceptance or initialization. Its actual originals, required
+It creates no authority, acceptance or initialization. Between checkpoints its execution
+is bracketed rather than directly trusted (**Reference inter-checkpoint entry**). Its actual originals, required
 identity/read/runtime evidence and controls remain unacquired; k331's whole replacement
 and k332 review/every earned integration still precede construction.
 
@@ -443,6 +444,16 @@ disposition publication retains its exact unavailable boundary, without recursiv
 an intact anchor while other exact failed tails block ordinary use. It permits only the
 named hosted recovery comparison. Source/anchor/bootstrap-validation loss instead requires
 repeated CP01 SOURCE/ARTIFACTS with newly ready independent originals; no old-anchor fallback.
+
+**Reference inter-checkpoint entry**: The selected bracketed trust entry for the three
+publications written outside CP01–CP05: disarm maintenance, distinct close and receipt
+revalidation. The operator runs the source/OS method's mechanical identity checks without
+a trust judgment, then the same prelude gate with an anchored writer. The outputs stay
+provisional until the next checkpoint's source-rooted prelude verifies the root unchanged
+across the bracket. A wrong executable between checkpoints is caught only afterwards, at
+a liveness cost; it never yields consumption, eligibility or LIVE. The
+[entry contract](docs/verification/application-reference-evidence.md#inter-checkpoint-publication-entry)
+owns its mechanics.
 
 **Reference carrier-recovery prefix**: The exact accepted finite ordering exception for
 listed existing-slot dispositions before a damaged transcript carrier's intent. Actual

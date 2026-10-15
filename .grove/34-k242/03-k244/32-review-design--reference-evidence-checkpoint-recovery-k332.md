@@ -24,8 +24,10 @@ checks establish no independent acceptance, possession, authority or native resu
 
 Also read k340's later actual "Accept the bounded endpoint (Recommended)" clause and its
 exact comparison in canonical S: only the final-recorder/outer-receiver terminal tail lacks
-a further durable original. K343's whole concordance (k347) leaves the inter-checkpoint
-disarm/close publication entry to design k348, before k344 closes the producer reviewed here.
+a further durable original. K343's whole concordance (k347) is closed. Also read k348's
+selected "Bracketed entry (Recommended)" clause in S and C's inter-checkpoint publication
+entry: disarm, close and revalidation publish provisionally between checkpoints, and the
+next checkpoint verifies the bracket before trust use. K344 then closes the producer reviewed here.
 
 ## Review focus
 

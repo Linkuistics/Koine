@@ -138,3 +138,19 @@ outside CP01–CP05 with no specified source root, selection or pre-execution ga
 them, and design k348 must specify that entry or bring Antony its trade-off before k344.
 K344 alone freezes new whole membership after k348, checks complete k336/k331 and names
 its own Creator on existing k332. No partial membership, control result or authority follows.
+
+## Inter-checkpoint entry from k348
+
+K348 found three publications written outside CP01–CP05: disarm maintenance, distinct
+close and factual receipt revalidation (k347 had named two). Antony answered "Bracketed
+entry (Recommended)". S's new selected clause and comparison row record it. C's
+Inter-checkpoint publication entry specifies the closed kinds and the mechanical-only
+E1i source/OS step. It also specifies the same E2–E10 gate with each writer an anchored
+member, exclusive leases through E12, provisional U0–U7 outputs and the next checkpoint's
+E3b bracket verification before any trust consumer. C's block sentence is removed; K/P
+carry the controls; the report's section holds E1i/E3b clean/correction edges. Accepted
+residual: a wrong executable between checkpoints is refused only at the next checkpoint,
+at a liveness cost, never consumption/eligibility/LIVE. No checkpoint, ceremony,
+observation API, authority, initialization or attempt is added. K344 must bind every
+E1i/E3b occurrence with its null original, role and first consumer when it freezes whole
+membership and checks complete k336/k331; it alone names its Creator on existing k332.

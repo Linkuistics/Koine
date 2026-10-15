@@ -32,7 +32,8 @@ independent writer/receiver controls. K335 specifies [hosted recovery](#hosted-r
 including carrier-prefix ordering and exact unavailable boundaries. Whole replacement
 reconciliation remains live under k336 before k332. K342 reconciles provenance/current
 layers and seven views; k347 closes k343's [whole concordance](#whole-original-obligation-concordance);
-design k348 owns the inter-checkpoint disarm/close publication entry it found unspecified;
+design k348 specifies the [inter-checkpoint publication entry](#inter-checkpoint-publication-entry)
+it found unspecified, under Antony's actual "Bracketed entry (Recommended)" answer;
 k344 owns final whole membership and the complete original k336/k331 closure check. A partial
 child supplies no construction handoff or new whole membership. Only
 the actual closing child names its provider evidence on that existing whole review.
@@ -59,6 +60,177 @@ k245 retains the one unused pass, k246 complete rewrite/helper/alias discriminat
 k247 whole-subject/family review or precise incomplete work. Full useful breadth,
 additive supported-VM/native duties, private ineligibility and both holds remain.
 
+## Inter-checkpoint publication entry
+
+K348 designs the one enabling point k347 left open: the trust entry for publications
+written into the approval register outside CP01–CP05. The normative design is C's
+[inter-checkpoint publication entry](application-reference-evidence.md#inter-checkpoint-publication-entry)
+under S's new [selected clause](application-population-metadata-shape.md#inter-checkpoint-publication-entry).
+This is unconsumed reporting. It freezes no membership and supplies no original, control,
+authority or construction input. K344 still freezes whole membership and checks complete
+k336/k331, before existing k332 and every earned integration precede k269.
+
+### Which invocations, and why a human choice was needed
+
+C's complete publication contract applies to bootstrap, validation, initialization,
+human-trust, disarm and distinct-close invocations. Reading each placement, three are
+actually specified outside a checkpoint. K347's J2 named the first two:
+
+- **Disarm-only maintenance** — before changed work, provisioning, corrections or Q, and
+  as the fresh disarm after a hosted disposition (C, durable disarm; P's maintenance text).
+- **Distinct close** — after CP03, before CP04 (C, distinct close-only publication).
+- **Factual receipt revalidation** — "acquired after the preceding disposition is fully
+  retained, then accepted at another affected visit to its same checkpoint" (C, hosted
+  recovery), so it runs between two CP02 visits.
+
+Later revision-payload publication is only the in-batch predecessor of repeated CP01's
+revision.acceptance, so CP01 hosts it. Q, offline derivation and reports write no
+approval chain.
+
+Every mechanical part of these invocations' entry was already determined: the same prelude
+selection, holder and member gate, exclusive leases, publication envelope and true-return
+retention. The one undeterminable part was E1. C makes Antony's source/OS judgment the only
+finite root, and forbids any executing tool from certifying it. These operators are
+deliberately not Antony. So the remaining choice was which trust arrangement to accept, a
+choice with a residual of the same class as k340's endpoint. It was put to Antony with three
+options:
+
+| Option | Strength and cost |
+| --- | --- |
+| **Bracketed entry (recommended, selected)** | Operator runs the method mechanically and the full gate; outputs stay provisional until the next checkpoint verifies the root unchanged across the bracket. No new ceremony, checkpoint, authority or API, and it matches how unattended Q already produces originals CP03 accepts later. Residual: a wrong executable run between checkpoints is not stopped before it runs; it costs liveness, never consumption or LIVE. |
+| Antony roots each invocation | His own-terminal source/OS act before every disarm, close and revalidation. Strongest pre-execution guarantee, but a human act outside CP01–CP05 for every change cycle. C had rejected release-owner-only invalidation because the owner is absent during maintenance. |
+| Relocate close and revalidation | Close inside CP04's continuation and revalidation inside the CP02 visit, both under his root. It changes schedule placement, puts the closer's publication inside his ceremony, and disarm still needs the bracket. |
+
+Antony answered "Bracketed entry (Recommended)". S records the answer and its comparison row.
+
+### Entry and bracket graph definitions
+
+These are report names extending k345's E notation; they are not executable phases or
+membership IDs. E0, E2–E10 and E12 keep their exact k345 meanings. U0–U7 and H0–HX keep
+k346's.
+
+| Node | Required actual result and owner |
+| --- | --- |
+| E1i | The inter-checkpoint operator invokes the independently supplied prelude through the source/OS method's exact literal line for its closed kind. It first performs only that method's mechanical original/byte/held-identity checks for the prelude, observer, cmp and runtime originals, and retains the raw identity observation. No trust judgment; any mismatch or missing fact stops before the prelude runs. |
+| E3b | At the next checkpoint, after Antony's E1, the prelude classifies every inter-checkpoint batch since the previous checkpoint. Root held identity must equal the previous checkpoint's retained identity and every intervening observation, byte- and stamp-for-stamp. Bindings must equal the anchor's trust-originals and capability plan, and the U-graph join must be complete. Result: `BRACKET_VERIFIED`, `SOURCE_REENTRY_REQUIRED` or a failed cut. It is part of that checkpoint's U7 read join and accepts nothing itself. |
+
+Clean edges for one inter-checkpoint batch:
+
+1. The previous checkpoint's E1→…→E12 retains its source-root identity.
+2. E1i → E2 (exclusive leases) → E3 (ordinary current anchor, exact kind predecessors).
+3. E4 → E5 → E6 → E7(i) → E8, with the kind's writer an anchored member.
+4. E10 releases the outer-receiver tree → U1 → U2 → U3(W) → U4(W) → U5 → U6. The output
+   is provisional, and every reached descendant → E12.
+5. The next checkpoint E0 → E1 → E2 → E3b `BRACKET_VERIFIED` → ordinary E3 selection
+   → the kind's trust consumer.
+
+The trust consumer is CP03 proof/audit for a final-Q disarm, CP04 basis for a close, or
+the later CP02 receipt.acceptance for revalidation. Before E3b a provisional output may be
+only:
+
+- another provisional record's same-chain predecessor;
+- for disarm, the enabling point of changed work or Q.
+
+No edge runs from a provisional output to a trust consumer, and no identity observation
+feeds any later E1.
+
+| Failed cut | Correction dependency, first blocked consumer and isolating control |
+| --- | --- |
+| E1i mismatch, missing original or unlisted kind | Stop before the prelude runs; no write. A replaced original needs newly ready independent originals → repeated CP01 SOURCE/ARTIFACTS before any later inter-checkpoint invocation. C's E1i pair; P's inter-checkpoint row. |
+| E2/E3: busy or lost lease, recovery-only or source-reentry selection, failed tail, stale CP03 generation, missing revalidation predecessors | Refuse before any write. The blocking condition is resolved at its existing host; a new invocation follows, never a within-call retry. C's selection pair. |
+| E4–E8: unanchored, rebuilt or swapped writer, or fd/offset/frame/return failure | Refuse before the writer's effects. A changed writer needs review/original controls → CP01 REANCHOR_ONLY → new anchor. k345's E4–E8 rows and C's writer pair. |
+| U2–U6 writer/recorder/receiver failure | Failed cut → H0 at the kind's host (disarm CP03 or CP01; close repeated CP03; revalidation repeated CP02) → H1 → H2 → H3. Its successor is a new inter-checkpoint invocation after disposition. C's host table; K's hosted controls. |
+| E3b changed root identity | `SOURCE_REENTRY_REQUIRED`: repeated CP01 SOURCE/ARTIFACTS hosts every intervening batch as one cut → H1 → H2 → H3, then fresh inter-checkpoint successors under the new anchor. C's bracket pair; K's entry controls. |
+| E3b wrong binding or incomplete join, with an intact root | Failed cut at the kind's existing host, as for U2–U6. No in-place repair or relabelling. |
+| Provisional output offered early to a trust consumer | Refuse at that consumer before its act. C's provisional pair; P's inter-checkpoint row. |
+
+### Original duties under the actual answer
+
+| Original condition | Result |
+| --- | --- |
+| K328 F2 / k331 bullet 2: explicit finite source/OS root; holder trusted before it runs, including accidental replacement; candidates cannot certify the first check | Holds under k348. The finite root for an inter-checkpoint batch is the pair of adjacent human E1 acts. The prelude still compares the holder and every member, including the writer, before each runs. Accidental replacement is caught before E1i or across the bracket at E3b. No candidate or prelude certifies itself. The pre-execution human judgment of that particular execution is the amended part, as S's comparison row records. |
+| K331 Required coherent replacement and k336 Done when: every failure boundary has clean and correction DAGs with first consumers | The tables above add E1i/E3b to the E/U/H graphs. Every failed cut lands at an existing host before any trust consumer. |
+| K347 J2 / k348 Done when 1: each invocation's root and holder, selection, gate, lease order and true-return retention | C's section states all of these for each closed kind. Leases are exclusive release-before-register, held through E12 and released in reverse order. |
+| K348 Done when 2: keep roles and exclusions; add no checkpoint, ceremony, observation API, authority, initialization or attempt; otherwise ask Antony | No role, exclusion, checkpoint or authority changes. E1i uses only the method's existing primitives. The residual trust choice went to Antony before k344, as required. |
+| K348 Done when 3: remove C's block only once specified; reconcile C/K/P, report and views; preserve historical manifests and original Goal/Done when | C's block sentence is replaced. Reconciliation is listed below. No manifest, table, packet or original charter section changes. |
+
+All other original duties are unchanged, and every required original stays null. That
+includes R3's physical Safari walk, k330 About provenance, k340's endpoint, never-started
+predicates, distinct-close ownership, offline-only post-consumption correction, the
+unused pass, k246/k247 and both holds.
+
+### Changes in this session
+
+- [S, Inter-checkpoint publication entry](application-population-metadata-shape.md#inter-checkpoint-publication-entry) — Records Antony's k348 answer, the residual and the unselected alternatives. Also adds its comparison row and before-state, and k348 to S's amendment enumerations.
+- [C, Inter-checkpoint publication entry](application-reference-evidence.md#inter-checkpoint-publication-entry) — Specifies the three closed kinds, E1i, the same gate, provisional publication, E3b, the accepted limit and controls.
+- [C, Closed pre-tool reads](application-reference-evidence.md#closed-pre-tool-reads-and-deterministic-selection) — Replaces the "not yet specified" block. The anchored set now names the disarm writer, close-only publisher and closer's entry.
+- C, [publication join](application-reference-evidence.md#complete-publication-and-terminal-join), [schedule](application-reference-evidence.md#compatible-ownership-and-bounded-sequential-schedule), [disarm](application-reference-evidence.md#durable-disarm-and-release-events), [close](application-reference-evidence.md#distinct-close-only-publication), [host table](application-reference-evidence.md#failed-boundaries-and-their-exact-checkpoint-hosts) and [dependency expansion](application-reference-evidence.md#publication-and-recovery-dependency-expansion) — These route the three invocations through the entry. They add the bracket-failure host row and the CP04 bracket check.
+- C, [enduring inputs](application-reference-evidence.md#enduring-inputs-and-phase-specific-reports), [H exceptions](application-reference-evidence.md#historical-and-reporting-exceptions) and [whole-producer comparison](application-reference-evidence.md#whole-producer-obligation-comparison) — Add k348 to the amendment list, an H row and a current pointer.
+- [K, Inter-checkpoint entry controls](application-reference-contact-boundary.md#inter-checkpoint-entry-controls-before-trust-use) and P's [phase table](application-reference-packaging-runtime.md#exact-publication-inputs-before-their-consumers)/[control pair](application-reference-packaging-runtime.md#release-and-acceptance-controls) — Add the required controls and first consumers.
+- CONTEXT, charters and [seven views](../design/architecture/index.html#discussion) — Add the glossary term, update roll-ups and k344's input, and show the selected entry in the continuity view.
+
+These are reversible pre-provisioning documentary changes; nothing has been consumed, so
+no requalification is triggered.
+
+### Final-freeze inputs for k344
+
+K344's membership must also bind each E1i and E3b occurrence for all three kinds. For
+each one it records the null required original (operator identity observation, method
+line, writer member, bracket identities), its role and its first consumer. Ready inputs:
+whole C/K/P, S including the new clause and comparison row, this section and k345–k347's,
+and every charter and view at final bytes. K344 alone freezes and checks complete k336/k331
+and names its own Creator on existing k332.
+
+### Entry documentary verification and retirement
+
+All normative, charter, report and view edits were finished before measurement. Then a
+frozen audit (`k348_audit.py` in the session scratchpad, output `k348-verification.json`)
+measured 2,122 subjects before and after, item by item, with byte length and SHA-256. The
+subjects were every tracked file, the audit script and the resolved task, D2, Python, jj
+and grove-llm executables. All stayed stable, and tracked membership was unchanged. Inside
+that freeze, `task check:docs` and the seven-view render task exited 0, and 33 checks
+passed:
+
+- The changed set equals exactly the 33 expected paths.
+- In every changed document and charter, the changed, added and removed sections equal
+  a list written before the run.
+- Every original Goal/Done when stays byte-identical. S's earlier selected sections are
+  byte-identical to a4fbe7ad.
+- Only the two expected glossary entries change. Only the discussion and seven captions
+  change in the viewer manifest.
+- Every SVG parses and contains each of its 41–94 source label lines.
+- A full copy of the tracked documentation passes the link checker.
+
+Seven controls were seen to fail on deliberately wrong subjects:
+
+- an expected path omitted;
+- a one-line mutation in an unaffected C section;
+- a mutated unrelated glossary entry;
+- an unrelated manifest field;
+- an unrendered label;
+- a fixture with one new anchor broken, rejected for that missing anchor;
+- a one-byte change to S's k340 section. This last control only exercises string
+  comparison, so the S identity claim rests on the section audit.
+
+One instrument bug was corrected before the final run: the section splitter counted the
+blank separator before an appended heading as content of the preceding section. The
+actual diffs show only that separator line there. No document changed to obtain a pass.
+
+Playwright Chromium at 1,440 px loaded the discussion panel with its selected status and
+change list. A fresh deep link reached the continuity view with the new entry cluster,
+caption and Updated markers. Only a favicon 404 from the loopback server was logged. No
+mobile, dark, Safari or native-size pass is claimed, and k316/k326's viewer limits remain.
+
+These checks establish documentary correspondence only. They are not executed instrument
+controls, original possession, feasibility or authority. K348's Done when holds: each
+inter-checkpoint invocation's root/holder, selection, gate, lease order and true-return
+retention are specified, with clean and correction edges, first consumers and control
+locations. The one trust choice went to Antony before k344, and C's block is removed only
+now that the mechanism is specified. C/K/P, report and views are reconciled, with
+manifests and original Goal/Done when preserved. K348 retires. K336 stays open with k344
+live, so no Creator is written and no review names k348. This subsection is appended after
+measurement and is not among the frozen identities.
+
 ## Whole original-obligation concordance
 
 K347 is k343's closing child. It composes k345's [pre-tool concordance](#pre-tool-consumer-concordance)
@@ -75,6 +247,8 @@ publication invocations outside CP01–CP05. Design leaf
 reference-evidence-intercheckpoint-publication-entry-k348 owns it before k344's final
 freeze and existing review k332. Neither scoped child's checks nor this report is whole
 k331 acceptance; k344 alone freezes new whole membership and checks complete k336/k331.
+K348 has since specified that entry under Antony's actual answer; see
+[Inter-checkpoint publication entry](#inter-checkpoint-publication-entry).
 
 ### Every original finding against the composed conjunction
 
@@ -161,7 +335,7 @@ and, apart from the integration-only candidate k329 created, to k328's reviewed 
 | Hosted recovery: E3 SOURCE_REENTRY_REQUIRED / INTACT_ANCHOR_RECOVERY_ONLY ↔ H0 | Consistent: source/anchor loss takes CP01 precedence; intact-anchor context is recovery-only; HX has no edge back into E or H. |
 | CP05: E11 shared reacquisition ↔ reserved transcript outputs | Consistent: only the same live invocation's reserved members may finish; E12 retains originals through true return. |
 | Never-started and k340 limits | Consistent: E's absence observations and U7's retained-content checks never prove either never-started predicate; only U6's receiver tail is unarchived. |
-| **J2 — disarm maintenance and distinct close** | **Unspecified.** Both run the U0–U7 publication envelope outside CP01–CP05. C defines the source/OS root (E1) only "at CP01-SOURCE and at the existing continuity start of each CP02–CP05"; P's maintenance supervisors and C's "distinct closer's own retained entry" name no chain selection, holder/member gate or E-graph. An agent cannot be the human source root, and the closer is deliberately not Antony. Clean and correction edges cannot be written without choosing a mechanism. C now states these invocations are blocked until specified; k348 owns the design or the trade-off for Antony. |
+| **J2 — disarm maintenance and distinct close** | **Unspecified.** Both run the U0–U7 publication envelope outside CP01–CP05. C defines the source/OS root (E1) only "at CP01-SOURCE and at the existing continuity start of each CP02–CP05"; P's maintenance supervisors and C's "distinct closer's own retained entry" name no chain selection, holder/member gate or E-graph. An agent cannot be the human source root, and the closer is deliberately not Antony. Clean and correction edges cannot be written without choosing a mechanism. C now states these invocations are blocked until specified; k348 owns the design or the trade-off for Antony. *Now specified by k348's [bracketed entry](#inter-checkpoint-publication-entry), which also adds receipt revalidation as a third such invocation.* |
 
 ### Repairs in this session
 
