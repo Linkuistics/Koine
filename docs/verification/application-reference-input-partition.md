@@ -30,7 +30,10 @@ final-recorder/nonpublishing-receiver tail. K341 now specifies the [complete pub
 including all earlier terminal originals, exact repeatable trust/CP02 locations and
 independent writer/receiver controls. K335 specifies [hosted recovery](#hosted-recovery-design),
 including carrier-prefix ordering and exact unavailable boundaries. Whole replacement
-reconciliation remains live under k336 before k332. A partial child supplies no construction handoff or new whole membership. Only
+reconciliation remains live under k336 before k332. K342 reconciles provenance/current
+layers and seven views; k343 owns whole original-duty/failure-DAG concordance; k344 owns
+final whole membership and the complete original k336/k331 closure check. A partial
+child supplies no construction handoff or new whole membership. Only
 the actual closing child names its provider evidence on that existing whole review.
 K269 must place already decided mechanisms; the reviewed k323 proposal is no construction
 handoff. Its [membership](reference-practical-admission-replacement-membership.json)
@@ -50,6 +53,119 @@ waive no named required failure and establish no no-contact fact. K244/k242 rema
 k245 retains the one unused pass, k246 complete rewrite/helper/alias discrimination and
 k247 whole-subject/family review or precise incomplete work. Full useful breadth,
 additive supported-VM/native duties, private ineligibility and both holds remain.
+
+## Provenance and current-surface reconciliation
+
+K342 applies actual k330/k340 meanings to the current source/consumer/presentation
+layers. It is a scoped documentary slice of still-live k336/k331, not the whole closing
+concordance or a new membership. The canonical selected S/comparison, C's
+[manual About order](application-reference-evidence.md#manual-about-originals-and-fresh-p-correspondence),
+complete pre-tool/publication/hosted-recovery mechanisms and descriptor ADR remain
+the normative basis; no new human answer, observation API or mechanism is selected.
+
+Host is Antony's manually identified machine; session is his label for that About
+observation's work context. Record exact meaning and human source for each. These labels
+are human provenance only, not independently matchable terminal/login/boot identities
+across CP01/AFK Q/CP05 or proof against host substitution. Compare permitted original
+product/build values with the two named raw sysctl buffers and qualified configuration.
+Days/reboot/logout/label changes alone do not invalidate Q06 or force CP01. Actual
+changed build/configuration/tool/consumed basis, lost/replaced authority or missing
+required correspondence still disarms and repeats the affected suffix. Current
+direct-terminal/peer/image/channel facts remain required; fresh About alone repairs none.
+CP01 preparation/comparison/ARTIFACTS still precedes Q06, and fresh CP05 original
+acceptance precedes APPOINT and actual independent P comparison afterward before intent.
+All own-result, producer/repairer/runner and distinct-close exclusions remain.
+
+The concrete stale consumer was k269's CP05 row: it still grouped changed host/session
+labels with changed qualified basis, despite its newer context saying otherwise. That
+row now uses k330's exact distinction. Current root/k242/k244/k245/k246/k247 summaries and
+glossary now carry the manual label meanings/current-fact distinction. Private/family/
+native summaries and C/K/P's current roll-ups now distinguish **specified** pre-tool,
+complete publication/trust records and hosted recovery from **unacquired** actual tools,
+originals/controls and **unfinished** whole concordance/membership/closure. The older
+reviewed proposals and every historical membership remain historical, not new input.
+
+| Current layer | Scoped reconciliation / retained boundary |
+| --- | --- |
+| Source C/K/P and selected S | Correct stale current completion wording only. No About, prelude/selection/holder/fd/lock/true-return, closed kind/locator/frame/consumer, complete publication or hosted-recovery mechanism changes. All earlier originals remain; only k340's final-recorder/nonpublishing-receiver terminal tail is unarchived. Unknown tail proves neither completion nor no dispatch/provisioning or restored authority. |
+| Root, glossary and k242/k244/k245/k246/k247/k269 consumers | Record exact human provenance meanings and compare-only facts; retain all original Goal/Done when, null unacquired identities, required current blockers, independent authors/executors and distinct close. The planning row's provenance-only repeat condition is removed under actual k330, not a new waiver. |
+| Private qualification, family reconciliation and native acceptance | Replace stale claims that already specified mechanisms remain to be designed. Whole k336/k331 closure, k332/every integration and actual qualification are still required before their consumers. No finite subject, useful fit, private eligibility or native credit follows. |
+| Seven editable D2/export/caption/discussion/README views | Show the current specified-versus-unfinished boundary. Packaging separates About provenance from product/build/configuration comparison. Evidence/instrument/proof show the prelude and holder-copy gate before candidate tools. Contact preserves R3's two separate operands/root checks/immediate re-entries/saved suffix/two-of-32 budget and all required blockers. Recovery explicitly sends archival-join failure to the existing unavailable stop. No diagram proves executable feasibility or completeness of the full clean/correction DAG set. |
+
+The finite damaged-carrier prefix remains the existing-slot ordering exception: actual
+writer/comparison/terminal originals are held in memory, then immediate carrier successors
+archive every earlier original before external use. Prefix/disposition or archival-join
+loss stops without recursion, alternate store, fallback, missing-as-never-started proof
+or restored permit. Fresh INITIALIZE_ONCE still needs independent positive original proof
+of both no initializer ever dispatched and no permission-subject provisioning. Distinct
+close stays after CP03 and before CP04; post-consumption correction stays offline-only.
+This slice supplies none of those actual facts and claims no current Safari topology,
+TCC behavior, complete contact coverage, instrument/native qualification or finite subject.
+
+K343 must read the complete conjunction and re-derive every original k321 R1–R8/k328
+F1–F6, full k242/k244/k245/k246/k247/k269 obligations and all B/R/register/basis/read/
+runtime/charter/phase/absence/provenance/independence duties. It owns exact clean/correction
+DAGs for every new boundary, first consumer, carrier current-stage/final archival join
+and failed-disposition stop. K344 then reconciles final layers, freezes one **new whole**
+membership without changing older bytes, compares actual per-item identities/all original
+sets with frozen inputs/isolating controls, and checks every original k336/k331 condition.
+Only that actual closing child names its own provider evidence on existing k332 when
+the whole producer actually closes. No duplicate review or partial-chain handoff follows.
+
+The [current discussion](../design/architecture/index.html#discussion) and its seven
+linked views identify actual changes. Documentary verification and browser delivery
+observations are appended only after final measurement. Required actual originals,
+controls/read/images/UID/build/terminal/receipt/authority remain null/unacquired. K244/k242
+stay live, k245's pass unused, full k246/k247/useful/helper/alias/additive supported-VM/
+native/private/product duties and both holds remain. Actually consumed edits still disarm
+and require affected requalification before consumption; no result is inferred from hashes.
+
+### Provenance verification and scoped handoff
+
+After all normative/presentation edits, the existing seven-view render task succeeded
+with D2 v0.9.0 and `task check:docs` passed. The final bounded verifier
+`/tmp/koine-k342-verify.py` records 53 passing checks, exact command outcomes and per-item
+before/after identities in `/tmp/koine-k342-verification.json`. Its 2,120 named subjects
+include all current jj-tracked files, every checker-enumerated document/link-anchor
+input, the verifier, positive/negative link fixtures and resolved task/D2/Python/jj
+executables. Every subject and the tracked subject membership stayed stable during the
+run. This is no claim of complete transitive measurement-tool runtime closure.
+
+The check compares whole canonical S/comparison with 6d6e6246, every original Goal/Done
+when of affected existing charters, and original k336 Goal/Context/Done when/Notes after
+decomposition. Whole C is exact outside three identified current-summary/typo spans;
+K/P have only their identified current-summary replacements. Historical memberships,
+five raw quote-aware tables, packets/parent bases, production ADRs, Taskfile, checker and
+implementation remain outside the exact authored changed-file set. All seven parsed
+SVGs contain every source node-label line, their locators stay stable, and unrelated
+manifest entries/groups/intro remain exact. These comparisons test documentary
+preservation and correspondence, not the truth/completeness of any native contract.
+
+Isolating controls were seen to reject an unexpected implementation edit, an omitted
+actual changed file, a one-byte canonical mutation, an omitted original condition,
+an unrelated C rule change, a missing changed-view marker and an omitted exported
+label. The same retained link checker accepts a known heading and rejects the missing
+heading for its missing-anchor reason. Initial inspection also caught empty scaffold
+Notes headings and capitalized new stable handles; those were corrected before the
+final frozen run. No control here executes the evidence instrument or supplies authority.
+
+Chrome light displayed the revised discussion, packaging, recovery and evidence views;
+the refreshed recovery export shows both prefix/disposition and archival-join failure
+at the unavailable stop. A fresh continuity deep link reached its intended heading/
+rendered view after load, with Current/Updated markers. Dense packaging labels remain
+small at fit width; no full seven-view/mobile/dark/Safari/native-size layout pass is
+claimed. K316/k326's separate viewer limits remain with their owners. Render/link/hash
+and browser observations supply no whole semantic/DAG, executable-feasibility, original-
+possession, instrument/native qualification, finite-subject or authority proof.
+
+This outcome section and retirement reporting are appended after measurement; they
+are not a frozen whole replacement membership. K342 meets its scoped source/consumer/
+view reconciliation conditions and retires alone. K343/k344 remain live beneath k336,
+so k336/k331 and all ancestors remain open. Existing k332 stays before k269 and only
+the actual final closing child supplies its own evidence there. No duplicate review,
+earlier receipt substitution or partial construction handoff follows. Actual required
+identities/originals/controls remain null; pass unused, full downstream duties and both
+holds retained, with disarmed affected requalification for actual consumed changes.
 
 ## Hosted recovery design
 

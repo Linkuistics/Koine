@@ -8,54 +8,57 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-Open [the recovery discussion](index.html#discussion), or
-[Recovery → Host the disposition before its successor](index.html#diagram-native-reference-admission).
-K335 specifies hosted failed-tail recovery under the actual k330/k340 answers. Every
-ready disposition is placed before its first successor inside an affected repeat of the
-five existing checkpoints. Source/anchor/bootstrap-validation loss first repeats CP01
-SOURCE/ARTIFACTS from newly ready independent originals. Other hosts independently check
-the intact anchor for recovery context only. No failed tail selects an older anchor.
+Open [the provenance discussion](index.html#discussion) or
+[Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging).
+K342 reconciles current source/consumer/view layers under actual k330/k340 answers;
+it changes no admission mechanism. Host is Antony's manually identified machine and
+session his label for that About observation's work context, each with exact meaning
+and human source. These are human provenance, not a shared terminal/login/boot key or
+proof against host substitution. Compare permitted product/build originals with the two
+named raw sysctl buffers and qualified configuration. Days/reboot/logout/label changes
+alone do not invalidate Q06 or force CP01. Actual changed required basis/authority/
+correspondence still disarms and repeats the affected suffix. Current direct-terminal/
+peer/image/channel facts remain required blockers; fresh About alone repairs none.
 
-The [hosted contract](../../verification/application-reference-evidence.md#hosted-failed-tail-recovery)
-fixes exact failed originals/null unknowns, ready acts, independent exclusions and first
-consumers. A damaged transcript carrier uses a finite existing-slot disposition prefix
-before its intent; actual writer/comparison/terminal originals are then archived by the
-immediate carrier successors before any external use. The prefix grants no ordinary
-successor/permit/LIVE effect. Its own publication loss stops with exact missing work,
-without recursive repair or another store. Fresh INITIALIZE_ONCE requires positive
-independent original evidence of both no initializer ever dispatched and no permission-
-subject provisioning; missing records, current absence and unknown tails prove neither.
+The pre-tool/holder/descriptor path, complete publication/trust records and hosted
+recovery are specified in C. Every earlier writer's original remains required through
+the final recorder. Only its final terminal observations and the nonpublishing receiver's
+own return lack another durable original under the selected source/OS/cooperative limit.
+Unknown tail proves neither completion nor no dispatch/provisioning and restores no
+authority. The damaged-carrier prefix uses only its exact existing slots and actual
+memory-retained originals; immediate carrier successors must archive them before
+external use. Prefix/disposition or archival-join loss stops without recursion or fallback.
+Distinct close, independent positive proof of both never-started predicates and all
+original first-consumer/exclusion/read/phase/absence duties remain.
 
-Failed maintenance disarm can need CP03 recovery before Q and CP03 acceptance afterward.
-Failed close is disposed at repeated CP03 before the separately owned close, then CP04
-waits for that new acknowledged output. Revalidation precedes its later ready CP02 act.
-The final-recorder/nonpublishing-receiver endpoint, all earlier-original duties and
-source/holder/descriptor/read/lease/true-return rules remain. This is no model-checking,
-executable-feasibility, actual authority or qualified result.
+- [Packaging → Rehearse the retained entry in a bound domain](index.html#diagram-native-reference-packaging) — Separates manual provenance from product/build/configuration comparison and preserves required current facts.
+- [Contact → Establish coverage before releasing a pure subject](index.html#diagram-native-reference-contact) — Identifies labels as provenance while retaining the full composed Safari order and required Q/P blockers.
+- [Evidence → Qualify the instrument before the one target pass](index.html#diagram-native-reference-evidence) — Shows prelude/holder/entry order and distinguishes specified mechanisms from outstanding whole closure.
+- [Components → Preserve original evidence and independent witnesses](index.html#diagram-native-reference-instrument) — Places the holder-copy gate and paired entry/seal before engine/display use with retained inputs through return.
+- [Recovery → Host the disposition before its successor](index.html#diagram-native-reference-admission) — Adds the explicit unavailable branch for archival-join failure beside prefix/disposition loss.
+- [Checkpoint continuity → Select and check before candidate tools](index.html#diagram-native-reference-proof) — Updates the closing boundary to show publication/recovery specified and whole concordance/membership still due.
+- [Population → Preserve joint facts before choosing a population](index.html#diagram-native-population-metadata-shape) — Places specified mechanisms before whole review without implying a package or useful subject.
+- [Provenance and current-surface reconciliation](../../verification/application-reference-input-partition.md#provenance-and-current-surface-reconciliation) — Records this scoped correction, unchanged selected mechanisms and exact remaining whole-close work.
 
-- [Recovery → Host the disposition before its successor](index.html#diagram-native-reference-admission) — Replaces the publication overview with exact checkpoint hosts, source-root/intact-anchor branches, finite carrier prefix, two never-started predicates and failed-disposition stop.
-- [Hosted recovery design](../../verification/application-reference-input-partition.md#hosted-recovery-design) — Compares every original k335 obligation, makes the carrier-order change explicit and retains exact missing actual evidence and whole-closing work.
-- [Koine language](../../../CONTEXT.md#language) — Defines recovery context and carrier prefix beside the failed-disposition meaning.
-
-Related unchanged context: [finite publication endpoint](../../verification/application-population-metadata-shape.md#finite-publication-terminal-evidence-boundary),
+Related unchanged normative context: [manual About order](../../verification/application-reference-evidence.md#manual-about-originals-and-fresh-p-correspondence),
+[finite terminal endpoint](../../verification/application-population-metadata-shape.md#finite-publication-terminal-evidence-boundary),
 [source-rooted selection](../../verification/application-reference-evidence.md#closed-pre-tool-reads-and-deterministic-selection),
-[complete publication join](../../verification/application-reference-evidence.md#complete-publication-and-terminal-join),
-[continuity view](index.html#diagram-native-reference-proof),
-[packaging view](index.html#diagram-native-reference-packaging) and
-[contact view](index.html#diagram-native-reference-contact).
-K336 owns whole C/S/K/P/original-duty/summary/seven-view/new-membership reconciliation and
-Creator on existing k332. Whole k332/every earned integration precedes k269. Only that
-whole boundary supplies a review subject; no partial child grants construction eligibility.
-Historical manifests, selected S/comparison, descriptor ADR and five tables retain their
-bytes. Actual originals/tools/controls/identities/authority remain unacquired, k244/k242
-live, pass unused and full k246/k247/useful/additive supported-VM/native/private/product
-duties and both holds retained. Actual consumed edits disarm/requalify. K316/k326's
-separate viewer limits remain with their owners.
+[complete publication join](../../verification/application-reference-evidence.md#complete-publication-and-terminal-join)
+and [hosted recovery](../../verification/application-reference-evidence.md#hosted-failed-tail-recovery).
+K343 must re-derive the whole original-duty/failure-DAG conjunction. K344 must then
+freeze new whole membership, check every original k336/k331 condition and name its own
+provider evidence on existing k332 only when that whole producer actually closes.
+Whole k332/every earned integration precedes k269. No slice supplies construction input.
+Historical manifests, selected S/comparison, descriptor ADR, five tables and original
+charter conditions retain their bytes. Actual originals/tools/controls/identities/authority
+remain unacquired; k244/k242 live, pass unused, full downstream duties/both holds remain.
+Actual consumed edits disarm/requalify; post-consumption correction stays offline-only.
 
-Regenerate with `task design:application-population-metadata-shape-render` (D2 0.9.0,
-Dagre, themes 0/200). Only the admission source/export and its discussion/caption change;
-the other six source/export pairs and captions are unchanged context. Render/link/browser
-checks establish only their documentary delivery, never instrument/native qualification.
+Regenerate all seven source/export pairs with
+`task design:application-population-metadata-shape-render` (D2 0.9.0, Dagre, themes 0/200).
+All seven captions/discussion markers are revised together. Browser delivery is checked
+only in the explicitly reported viewer/appearance; k316/k326's other limits remain.
+Render/link/hash checks supply no semantic, executable-feasibility or native proof.
 
 ## Checkpoint continuity context
 
@@ -75,8 +78,8 @@ and [descriptor handoff](../../verification/application-reference-evidence.md#ho
 This is a documentary design slice. Complete publication and hosted recovery are
 specified beside it; whole original-duty/new-membership reconciliation and k332 whole
 review/every earned integration remain ahead of construction. K330's selected provenance/recovery limits,
-all original duties, unused pass and both holds remain. This proof view is unchanged
-context in the current publication discussion, not a changed marker.
+all original duties, unused pass and both holds remain. The current update changes this
+proof view's closing boundary only; its pre-tool selection and descriptor mechanism is unchanged.
 
 ## Retained Safari composition context
 

@@ -18,9 +18,11 @@ and selected sections below own the rules; this reporting locator is never a mea
 K330's selected never-started recovery and human-only About provenance constrain this
 proposal. The [hosted recovery contract](#hosted-failed-tail-recovery) places failed cuts,
 carrier-prefix ordering and exact unavailable boundaries before their consumers.
-K331 must still reconcile the complete replacement checkpoint/publication protocol
-and earn whole review k332/every integration before construction; recording those
-requirements supplies no working recovery mechanism or accepted construction identity.
+The source-rooted prelude/holder/descriptor path, complete publication/terminal join,
+repeatable trust records and hosted recovery below specify the replacement mechanisms.
+K336 still owns whole original-duty/failure-DAG concordance, current-layer reconciliation
+and final whole membership/closure before k332/every integration and construction. These
+specifications supply no executable mechanism, actual original or accepted construction identity.
 
 ## Ownership and alternatives
 
@@ -1042,8 +1044,8 @@ subject of those controls, not their oracle or semantic acceptor. Author/executo
 producer/repairer/validator/Antony exclusions all apply. These are required Q05/Q07/Q08/
 Q09/Q10 originals, not executed controls, optional opaque-contact evidence or source-only
 qualification. The complete publication, repeatable-trust and independent-control contracts below close
-the terminal/CP02 publication and causal DAGs. Hosted failed-tail recovery and whole
-hosted recovery contract below and whole k336 reconciliation remain binding before construction use.
+the terminal/CP02 publication and causal DAGs. The hosted recovery contract below and
+whole k336 reconciliation remain binding before construction use.
 
 #### Complete publication and terminal join
 
@@ -1709,8 +1711,9 @@ supplies no original, accepted act, authority, qualified instrument or finite su
 
 The [checkpoint continuity view](../design/architecture/index.html#diagram-native-reference-proof)
 separates the finite source/OS trust root from the selected anchor. The source-rooted path below composes with the complete publication and repeatable-trust
-contracts above. Hosted failed-tail recovery and whole replacement reconciliation remain
-required before construction; no partial slice is qualification or an accepted current record.
+contracts above and the hosted failed-tail recovery contract. Whole replacement
+concordance, membership and review remain required before construction; no partial
+slice is qualification or an accepted current record.
 
 ##### Source-rooted prelude before selection
 

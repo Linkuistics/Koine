@@ -291,8 +291,10 @@ checks before candidate effects. Required peer/image/negative-lookup facts remai
 blockers; no file hash certifies the executing image. Partial/failed/unaccepted anchor or
 bootstrap-validation tails require source-rooted CP01 re-entry, never an older anchor.
 Still-intact-anchor recovery context grants no disposition/initialization/eligible authority.
-This k333 design slice leaves k331 launcher/trust-record/failure-hosting/whole reconciliation
-live before k332 and construction; no original controls or current fact are supplied.
+The complete publication/trust-record and hosted-recovery contracts specify the remaining
+mechanisms beside this pre-tool path. Whole original-duty/failure-DAG concordance and
+final membership/closure remain under k336 before k332 and construction; no original
+control or current fact is supplied by these documentary specifications.
 The [launcher publisher-terminal slice](application-reference-evidence.md#launcher-original-before-bootstrap-validation)
 adds required Q05/Q07/Q08/Q09/Q10 originals: CP01-ARTIFACTS accepts the separate
 transcript-only recorder mechanics before ROOT; `launcher-events/n` intent/record and

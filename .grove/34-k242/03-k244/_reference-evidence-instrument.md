@@ -7,10 +7,15 @@ the residual CP01 publisher wording, glossary and schedule-completeness wording.
 application-reference-input-partition.md#k328-integration-and-required-replacement.
 Reference-evidence-recovery-and-provenance-k330 records Antony's actual approval of
 independently proven never-dispatched/no-provisioning bootstrap recovery and human
-About host/session provenance. The canonical selected clauses and exact comparison
-carry every limit: retained failed originals/fresh accepted successor/nonce, no extra
+About provenance: host is Antony's manually identified machine; session is his label
+for that observation's work context, each with exact meaning and human source. These
+labels are not cross-checkpoint terminal/login/boot identities or proof against host
+substitution. Compare permitted product/build originals, the two named raw sysctl buffers
+and qualified configuration. Current direct-terminal/peer/image/channel facts remain
+required. The canonical selected clauses and exact comparison carry every limit:
+retained failed originals/fresh accepted successor/nonce, no extra
 initialization/attempt/checkpoint/observation authority and required changed-basis
-requalification. Days/reboot/logout alone do not invalidate Q06 or force CP01. Complete
+requalification. Days/reboot/logout/label changes alone do not invalidate Q06 or force CP01. Complete
 replacement reference-evidence-checkpoint-recovery-k331 then specifies checkpoint trust,
 launcher originals, repeatable trust records and every recovery first consumer under
 those actual answers. Mandatory whole review reference-evidence-checkpoint-recovery-k332
@@ -19,6 +24,13 @@ invents the unresolved mechanism or human workflow. K323 and all older membershi
 historical; the new integration-only documentary candidate supplies no repaired protocol
 or accepted construction input. Normative/actually consumed edits disarm and require
 affected requalification before consumption.
+
+K333's pre-tool/holder/descriptor path, k341's complete publication/trust records and
+k335's exact hosted recovery are specified in C; actual originals/controls remain absent.
+K336 is now a reconciliation node: k342 repairs provenance/current summaries/seven views;
+k343 owns whole original-duty/failure-DAG concordance; k344 owns final new membership and
+the complete original k336/k331 closure check. Only that actual closing child supplies
+its own Creator on existing k332. No partial child/new slice supplies construction input.
 
 R3's composed Safari walk and all actual prior answers/original duties/exclusions remain.
 K340 subsequently records Antony's "Accept the bounded endpoint (Recommended)": only

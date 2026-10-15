@@ -1,4 +1,4 @@
-# reference-evidence-checkpoint-recovery-k336
+# reference-evidence-checkpoint-recovery-k336 — brief
 
 
 ## Goal
@@ -65,6 +65,20 @@ process/terminal probe or posture change. K244/k242 stay live, pass unused, full
 useful breadth/additive supported-VM/native duties/private ineligibility/both holds remain.
 Actual consumed edits disarm and require affected requalification before consumption.
 
+## Decisions (running log)
+
+The whole closing obligation exceeds one focused session: the current source/consumer/
+view reconciliation and the full original-duty/failure-DAG/membership audit are separate
+independently checkable obligations. Decompose without weakening any original Goal/Done
+when above. This session completes only provenance and current-surface reconciliation;
+later children re-derive the full conjunction and then freeze/close the whole replacement.
+The final closing child alone compares the complete original k336/k331 obligations and
+names its own provider evidence on existing k332. No partial child supplies construction
+eligibility, new whole membership, an extra review, actual originals or authority. The
+initial jj change is empty. Tier 2 graph status is ready; docs/scripts are excluded,
+so direct exact document reads supply evidence. Existing k332 owns whole review; no
+in-session reviewer is spent.
+
 ## Hosted recovery input from k335
 
 Read C's whole Hosted failed-tail recovery and the report's Whole hosted-recovery
@@ -79,4 +93,21 @@ Retain positive independent original history for each never-started predicate, n
 files or unknown tails. CP03 recovery before Q and later ready CP03 acceptance, failed
 close disposition at repeated CP03 before distinct close, and receipt revalidation before
 later CP02 acceptance are explicit affected repeats. Reconcile every summary/view and
-all exact DAGs in the new whole membership; this child alone names Creator on k332.
+all exact DAGs in the new whole membership; this node's actual closing child alone names
+its own Creator on k332 when it closes the complete k336/k331 conjunction.
+
+## Decomposition
+
+The original Goal/Done when above remain verbatim and binding. Provenance/current-surface
+reconciliation, whole original-duty/failure-DAG concordance, and final membership/closure
+are separately checkable design obligations; none alone supplies a construction handoff.
+reference-evidence-provenance-reconciliation-k342 applies only actual k330/k340 meanings
+to current summaries/charters and all seven view sources/exports/captions/README/discussion,
+with scoped evidence and no new membership. reference-evidence-whole-obligation-concordance-k343
+re-derives every k321/k328 finding and all original duties against the complete conjunction,
+including every failure DAG and first consumer, repairing exact defects before final freeze.
+reference-evidence-checkpoint-recovery-k344 alone reconciles their final results, freezes
+the new whole membership, checks every original k336/k331 condition and closes only the
+actually complete boundary. It names its own provider evidence on existing k332 for k331;
+no partial child, earlier receipt or invented node identity is substituted. K332 and every
+earned integration still precede k269. Add no duplicate review or implementation leaf.

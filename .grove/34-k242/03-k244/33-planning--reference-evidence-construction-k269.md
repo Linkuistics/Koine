@@ -29,6 +29,14 @@ authority follows. Consume the canonical exact comparison and complete reviewed 
 the older tables below cannot impose cross-checkpoint host/session identity equality
 or supply a recovery mechanism that k331 has not specified.
 
+K333's pre-tool/holder/descriptor path, k341's publication/trust records and k335's
+hosted recovery are now specified together in C. They remain proposed mechanisms without
+actual originals/tools/controls/identities. K336's k342 reconciles provenance/current
+layers/seven views; k343 must verify every original duty/failure DAG, and k344 must freeze
+the new whole membership and close the complete original k336/k331 boundary before k332.
+The final closing child alone supplies its own provider evidence on existing k332.
+Consume only that whole result after review/every earned integration, never a slice.
+
 Historical k323 input inventory, reviewed as defective by k328:
 
 Consume the complete reference-evidence-practical-admission-k323 replacement only after
@@ -127,7 +135,7 @@ exact first-consumer conflict and concrete bounded trade-off before use.
 | CP02 qualified receipt | Current original-holder/anchor/tool/runtime continuity first. Accept actual completed bootstrap-publication/initialization/staged-final/receipt/bridge outputs. Their accepted mechanics precede initialization; these outputs precede final Q/P. Missing/uncertain output blocks without retry. |
 | CP03 final original Q results/audit | After last edits/review/provisioning and new durable disarm, affected Q emits originals. Current-holder/anchor continuity precedes tool-computed complete original-result/input/authority/duty audit; Antony accepts ready results/audit. No future acceptance/close is a Q input. |
 | CP04 eligible basis | Distinct excluded closing owner/accepted close-only publisher appends acknowledged closes/n intent/close/result after CP03, outside sealed revisions, bound to current anchor/revision/disarm/CP03. After continuity Antony accepts computed finalized eligible basis; no appointment. Partial tail needs retained independently accepted disposition then fresh successor, never old-close fallback. |
-| CP05 k245 acquisition boundary | Current-holder/anchor/tool continuity first. Refresh/accept manual About original and independently authored ready exact A3 entry/current eligible basis, then freshly APPOINT coexisting foreground supervisor/checker/acquirer through true return. Qualified P01 compares fresh build buffers afterward; all fresh P/ancestry/reservation/authority facts precede intent. Changed host/session/build/consumed basis uses disarm/affected Q/acceptance/close suffix, not fresh-About-only repair. |
+| CP05 k245 acquisition boundary | Source-trusted prelude selects the current anchor and checks the holder executable before the retained-stream tool/runtime comparison. Refresh/accept manual About original and independently authored ready exact A3 entry/current eligible basis, then freshly APPOINT coexisting foreground supervisor/checker/acquirer through true return. Qualified P01 compares the two named fresh build buffers and qualified configuration afterward; all fresh P/ancestry/reservation/authority facts precede intent. Host is Antony's manually identified machine and session his observation-work-context label, with exact meaning/human source; neither is a cross-checkpoint terminal/login/boot identity or proof against host substitution. Days/reboot/logout/label changes alone do not invalidate Q06 or force CP01. Actual changed build/configuration/tool/consumed basis, lost/replaced authority or missing required correspondence disarms/repeats the affected suffix; fresh About alone repairs none. Current direct-terminal/peer/image/channel facts remain required. |
 
 
 Place independently acquired/validated SCRATCH mechanics originals before CP01 and accept

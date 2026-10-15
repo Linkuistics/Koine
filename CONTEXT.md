@@ -327,7 +327,10 @@ are repaired; k333 specifies the pre-tool selection/holder/fd path and k337 the 
 publisher-terminal original. K341 specifies the complete last-writer/terminal/trust publication design under k334;
 the [hosted recovery design](docs/verification/application-reference-evidence.md#hosted-failed-tail-recovery)
 places exact repeated-checkpoint dispositions and the finite carrier prefix; whole
-replacement remains live under k336. The
+replacement remains live under k336: provenance/current-surface reconciliation, whole
+original-duty/failure-DAG concordance, then final membership/whole closure. Only its
+actual final closing child supplies its own evidence on existing k332; no slice closes
+the whole protocol or grants construction eligibility. The
 [final-writer dependency boundary](docs/verification/application-reference-input-partition.md#final-transcript-writer-dependency-boundary)
 identifies why a finite publication set cannot retain its own final writer's later
 acknowledgment/return without an explicit stopping boundary. Antony accepted the
@@ -457,8 +460,12 @@ initialization without new explicit authority.
 
 **Reference About provenance**: Host is the machine Antony identifies manually and
 session is his label for an About observation's work context, with each label's exact
-meaning and human source recorded. These are human provenance, not independently
+meaning and human source recorded. Compare permitted product/build originals with the
+two named raw sysctl buffers and qualified configuration. Days/reboot/logout/label changes
+alone do not invalidate Q06 or force CP01. These are human provenance, not independently
 matchable terminal/login/boot identities or proof that host substitution is absent.
+Actual changed required basis/authority/correspondence still disarms and repeats the
+affected suffix; current direct-terminal/peer/image/channel facts remain required.
 
 **Reference operation stage**: Q is earlier instrument qualification; P is fresh
 invocation-specific validation before intent/consumption; A is evidence first obtained
