@@ -165,3 +165,26 @@ K330's actual answers, all original duties, existing agreed seams, unused pass a
 remain. The initial jj change was empty. Tier 2 index status is ready; docs/scripts are
 excluded, so exact current/committed document reads supply the evidence. No reviewer is
 spent because k332 already owns whole-producer review.
+
+## Publication design promoted from k338/k334
+
+K341 closes both publication nodes after comparing their entire original Goal/Done when,
+with k337's prefix retained and only k340's actual endpoint amendment. Consume C's Complete
+publication and terminal join / Repeatable trust records and selection / Independent
+publication controls and first consumers together with K/P's exact required-control/phase
+reconciliation. The report's Complete publication design and Exact ready and failed
+originals for hosted recovery locate all inherited publication duties and precise missing
+actual originals. K335 must host each failed cut, including recorder/receiver/disposition
+loss, inside existing affected repeated checkpoints before any successor. Unknown tail
+proves no completion, no dispatch/provisioning absence or new authority. K330's actual
+never-started rule and About provenance remain exact; original source/holder/descriptor/
+lock/read/phase/absence/freeze/exclusion and distinct-close duties remain.
+
+This node stays live with k335/k336. K336 alone closes the whole conjunction, compares all
+original obligations/findings, reconciles seven views/consumer layers, freezes new whole
+membership without changing historical manifests and names its own Creator on existing
+k332. Existing whole review/every earned integration still precede k269. Documentary
+checks and Chrome light presentation supply no actual schema/tool/original/control/
+identity/authority/qualification or finite subject. K244/k242 remain live, k245 pass unused,
+full k246/k247/useful/generated/additive supported-VM/native/private/product duties and
+both holds retained; post-consumption correction remains offline-only.

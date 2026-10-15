@@ -98,3 +98,16 @@ completion nor no dispatch/provisioning and restores no authority. K341 still ow
 complete publication protocol, exact roles/records/locators/selection/completion/refusal/
 loss criteria and independent controls before k335's hosted recovery. All other original
 duties, five checkpoints/exclusions/seams, unused pass, holds and existing k332 remain.
+
+K341 completes k338 and, with k337's retained publisher-terminal prefix, this node's whole
+original publication Goal/Done when under only actual k340. Durable C's complete terminal/
+trust/control contracts and the report's Whole publication obligation comparison cover
+every original bullet, including the final writer/receiver endpoint, CP02, every repeatable
+trust/disposition record, exact first-consumer read/selection/lifetime rules and independent
+writer/receiver clean/death/partial/successor controls. Documentary rendering/link/frozen-
+identity/charter checks and Chrome light delivery are recorded separately from unacquired
+actual originals and controls. All children become terminal on k341 retirement; promote
+this complete scoped design and exact ready/failed handoff to surviving k331. Hosted k335
+recovery, closing k336 whole reconciliation/membership/seven views/Creator and existing
+whole k332/every integration still precede k269. No duplicate review, construction handoff,
+actual authority/qualification/finite subject, used pass or lifted hold follows.

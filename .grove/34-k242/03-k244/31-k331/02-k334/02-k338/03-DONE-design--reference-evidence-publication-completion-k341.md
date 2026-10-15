@@ -62,3 +62,53 @@ executed instrument/native control, authority/provisioning/initialization, insta
 protected/topology/process/terminal probe or posture change. Actual originals/tools/
 schemas/controls/identities remain unacquired. K244/k242 stay live, pass unused, full
 k246/k247/useful/additive supported-VM/native/private/product duties and both holds remain.
+
+## Decisions (running log)
+
+Use k340's actual bounded endpoint, without another requirements choice. The proposed
+publication process tree is nonpublishing outer receiver → final durable recorder →
+launcher recorder → separately capable publication peers. Parent-owned existing wait
+mechanics retain every earlier writer's actual terminal facts; only the final recorder's
+last acknowledgment/EOF/reap and outer return stop without another durable original.
+Content validation and observed invocation completion remain distinct: later bytes cannot
+prove an omitted past terminal event or establish never-dispatched/no-provisioning state.
+
+Give repeatable trust outputs one closed predecessor-bound trust-events chain, immutable
+revision payloads their exact revisions chain, and final recorder originals a separate
+publication-events chain. Direct failure-disposition acceptance is recorded at the failed
+slot, avoiding a new trust-output predecessor cycle. The separate factual validator,
+bootstrap publisher, human registrar, recorder and distinct closer keep their own write
+capabilities. K335 still owns every hosted repeated-checkpoint recovery before use; k336
+owns whole replacement membership, seven-view reconciliation and Creator on existing k332.
+No partial child hands construction to k269.
+
+Initial jj change was empty. Tier 2 coverage generation 2026-09-29T10:36:20Z excludes
+docs/scripts and reports changed root metadata, so exact current/committed documentary
+source reads supply evidence. No structural code claim or instrument/native experiment
+is needed. Existing whole k332 owns review, so no in-session reviewer is materialized.
+Keep the existing Taskfile/render/link-check entry points; no executable task/schema/tool
+or new product ADR is introduced by this reversible pre-provisioning design.
+
+Stage consumers must not wait for their own future terminal join. Staged binding and
+CP05 appointment use only already reached originals/acknowledgments while their live
+roles coexist; final EOF/reap originals follow true return. Before CP05's shared-lease
+transition reserve its exact evidence-only transcript outputs, recheck them as pending
+outputs rather than completed inputs, and permit only that same live accepted plan to
+finish them. Unexpected or later-session pending tails still refuse. This avoids both
+a future-terminal dependency cycle and an implicit write under another role's authority.
+
+Final documentary verification after all normative edits passed: the existing seven-view
+render task and task check:docs exited 0; /tmp/koine-k341-verification.json records exact
+subjects/commands, stable before/after identities, original-charter comparisons, preserved
+canonical/historical/code/task/ADR bytes and witnessed altered/omitted/heading controls.
+Chrome light verified the rendered fresh admission deep link at port 18341; mobile/dark/
+Safari/native-size limits remain. These checks supply no instrument/native/authority proof.
+The report's Whole publication obligation comparison covers every original k341/k338/k334
+duty under only actual k340. Publication design, precise failure/unknown originals and
+controls are complete for this scope; actual originals/tools/schemas/controls/identities
+remain unacquired. Retire k341; all k338 children then become terminal, and the whole
+k338/k334 Done when comparisons permit both publication nodes to close. Promote the
+exact handoff to surviving k331; k335/k336 and existing whole k332/every integration still
+precede k269. No review names k341/k338/k334 and no Creator is written on unfinished k331's
+k332. No new membership, native result, initialization, appointment or LIVE is supplied.
+K244/k242 stay live, pass unused, full downstream duties and both holds remain.

@@ -47,6 +47,39 @@ basis object. Every claimed documentary correspondence still requires the comple
 object and independent acceptance before its consumer; a locator or historical pin is
 insufficient. These fixed facts remain whole-byte inputs alongside the enduring rules.
 
+## Exact publication inputs before their consumers
+
+The [complete publication join](application-reference-evidence.md#complete-publication-and-terminal-join)
+fixes the final recorder/launcher/peer process ownership and exact closed frames;
+the [repeatable trust table](application-reference-evidence.md#repeatable-trust-records-and-selection)
+fixes all new member/kind/writer/predecessor/selection contracts. Those tables are part
+of this companion's O08/O12/O23, entry/continuity and complete input obligations before
+first use, not constructor-selected additions. A2 admits exactly publication-events,
+trust-events and revisions with their specified members, alongside the existing chains.
+Prelude's strict reader consumes them through held no-follow originals and immediate
+successors under the existing locks/offset/generation/true-return protocol. Task's fd-3
+domain channel and the short entry/cmp descriptor ABI remain separate and unchanged.
+
+| Phase | Exact new earlier content and first consumer |
+| --- | --- |
+| CP01 continuation | Initial direct acts/revision/control originals, launcher.publisher-terminal, bootstrap validation then launcher.bootstrap-validation-terminal and publication.stage acknowledgment before the initializer. Staged binding precedes exposure; actual initializer original/EOF/reap precedes final validation; launcher.validation-terminal and final-recorder content precede CP02. |
+| CP02 | Current independent full-content/member/identity comparison, trust.continuity, immutable issuance/staged/final validation and complete earlier peer/launcher originals; receipt.acceptance is published before final Q/P consumes accepted receipt facts. Future CP02 never enables initialization. |
+| CP03 and distinct close | Final Q completes before proof.acceptance/audit.acceptance. Their finalized exact generation joins precede the distinct close-only owner/publisher. Close publication uses the same terminal envelope, without transferring its capability to the registrar. |
+| CP04 | Current trust.continuity, exact earlier final-Q/audit/acknowledged-close/disarm/issuance/current basis; basis.acceptance precedes eligible publication. Neither predicts a future entry or appointment. |
+| CP05 | Current trust.continuity, fresh about.original/about.acceptance, independently authored entry.original/entry.acceptance and exact earlier eligible basis precede foreground.appointment. Its record is evidence only; the same live appointed supervisor originates the one-use LIVE endpoint. All fresh P checks still precede intent/start/A. |
+| Failed publication | Exact reached frozen members/frames/returns/unknowns, independent comparison and the applicable hosted repeated-checkpoint act precede direct in-slot trust.disposition and a fresh successor. A partial disposition or unavailable earlier original blocks, never automatic repair, older-success fallback or proof of never-dispatched state. |
+
+The final durable recorder retains every earlier writer's terminal facts and then returns
+one final frame to its nonpublishing outer receiver, which observes EOF/reap under existing
+mechanics. Those final observations and receiver return have no further durable original.
+Current full-byte/member/identity validation can establish retained content only and
+reports that archival limit explicitly; no later content equality proves old terminal
+completion. Known receiver loss or a missing earlier original remains failed/unknown and
+requires the exact hosted fresh validation/acceptance before any successor. Nothing
+clears unknown initialization/dispatch/provisioning state, supplies a new appointment or
+restores authority. Actual role/read/image/frame/EOF/reap/freeze originals and independent
+writer/receiver controls are required Q/P work outside that sole selected exception.
+
 ## Retained entry and domain channel
 
 The commissioned checker owns launch policy and the live register lock, as specified in

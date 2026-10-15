@@ -8,73 +8,47 @@ editable; regenerate exports rather than hand-editing them.
 
 ## Current discovery discussion
 
-Open [the admission discussion](index.html#discussion). The
-[k328 integration](../../verification/application-reference-input-partition.md#k328-integration-and-required-replacement)
-records every finding against the reviewed k323 proposal. K329 repairs the residual CP01 publisher wording,
-glossary and schedule-completeness wording. K330 records Antony's approval of proven
-never-dispatched/no-provisioning bootstrap recovery and human-only About labels; the
-canonical clauses retain every failure/nonce/authority/correspondence limit. Days/reboot/
-logout alone do not invalidate Q06 or force CP01; labels do not prove host substitution
-absent. K331 replaces the coupled protocol, and k332 whole review/every earned integration precedes
-k269. K331 is decomposed: k333 supplies the proposed pre-tool selection/holder/fd path;
-K337 supplies only the publisher-terminal original prefix under k334; k338 retains full
-initializer/validator/last-writer terminal closure and repeatable trust records. Its first
-child k339 isolates a conditional last-publication conflict. In k340 Antony selected
-"Accept the bounded endpoint (Recommended)": only the final-recorder/nonpublishing-
-receiver terminal tail ends without another durable original at the explicit source/OS/
-cooperative trust limit. Every earlier writer's original remains. K341 must complete
-publication under that answer. Hosted
-recovery and whole reconciliation remain live. No partial child or planner supplies
-the complete mechanism.
-The [integration-only candidate](../../verification/reference-practical-admission-integration-membership.json)
-records saved current inputs and unresolved duties; k323/older memberships stay historical.
-Normative/actually consumed changes disarm and require affected requalification.
+Open [the publication discussion](index.html#discussion), or
+[Admission → Retain originals through the final recorder](index.html#diagram-native-reference-admission).
+K341 specifies the remaining k338/k334 publication design under Antony's actual k340
+bounded endpoint. Parent-owned existing channels/waits retain all earlier writer and
+launcher originals through a final durable recorder. Its nonpublishing outer receiver
+observes final frame/EOF/reap, without another durable original of those observations
+or its own return at the explicit source/OS/cooperative limit. Receiver loss can leave
+an unprovable tail. Later current full-byte/member/identity checks establish retained
+content only, never omitted past terminal events, no dispatch/provisioning or new authority.
 
-The admission view shows this current decision boundary; the other six sources/exports
-remain unchanged context for the surrounding replacement order. Their traversal/lifecycle paths are reviewed proposals;
-R3's composed Safari rule and every original duty remain. No actual tool, original,
-control, receipt, authority, instrument/native qualification or finite subject is supplied.
+The view includes the repeatable trust-events/revisions and exact CP02 outputs, plus the
+failed-tail handoff. Staged binding and CP05 appointment use reached originals while their
+live roles coexist; final terminal evidence follows true return. The detailed exact
+[publication contract](../../verification/application-reference-evidence.md#complete-publication-and-terminal-join)
+and [trust table](../../verification/application-reference-evidence.md#repeatable-trust-records-and-selection)
+keep writer/validator/registrar/bootstrap/close capabilities separate.
+K335 still must host every failed cut inside the existing affected repeated checkpoints;
+k336 owns whole C/S/K/P/original-duty/seven-view/replacement-membership reconciliation and
+Creator on existing k332. Whole k332 and every earned integration still precede k269.
+No partial child supplies construction eligibility.
+
+- [Admission → Retain originals through the final recorder](index.html#diagram-native-reference-admission) — Replaces the former conditional-conflict sketch with the finite terminal join, repeatable trust records and exact failure/recovery handoff.
+- [Select and check before candidate tools](index.html#diagram-native-reference-proof) — Updates the caption to join the unchanged continuity proposal with the publication contract; its source/export are unchanged.
+- [Complete publication design](../../verification/application-reference-input-partition.md#complete-publication-design) — Compares every original k338/k334 publication duty and gives k335 exact ready/failed original sets, with actual identities still unacquired.
+- [Koine language](../../../CONTEXT.md#language) — Defines final recorder, nonpublishing receiver and repeatable trust generation without claiming terminal evidence beyond the selected endpoint.
+
+Related unchanged context: [canonical finite endpoint](../../verification/application-population-metadata-shape.md#finite-publication-terminal-evidence-boundary),
+[source-rooted selection](../../verification/application-reference-evidence.md#closed-pre-tool-reads-and-deterministic-selection),
+[five checkpoints](../../verification/application-reference-evidence.md#compatible-ownership-and-bounded-sequential-schedule)
+and [k328 findings](../../verification/application-reference-input-partition.md#k328-integration-and-required-replacement).
+Historical memberships retain their original bytes; only k336 freezes the whole replacement.
+Actual consumed changes disarm and require affected requalification. No actual tool,
+original, control, receipt, authority, qualification or finite subject is supplied.
 K244/k242 remain live, pass unused, full k246/k247/useful/additive supported-VM/native/
-private/product duties and both holds retained. Render/source checks establish no browser
-pass. K326's narrow-layout and unverified dark/Safari limits and k316's separate viewer
-defect remain live with their actual owners.
-
-## Final transcript boundary discussion
-
-Open [Admission → Apply the accepted transcript boundary](index.html#diagram-native-reference-admission).
-If every writer's final acknowledgment/return must be retained by another publication,
-the last publication needs a later one. The diagram exposes this conditional contradiction
-and the selected finite endpoint. Antony accepted the final-recorder/nonpublishing-outer-
-receiver terminal-evidence limit in k340. All earlier writer originals remain durable;
-the receiver observes final acknowledgment/frames/EOF/reap under existing permitted
-channel/wait mechanics, without another durable original of that terminal tail or its
-own return. Receiver loss may leave an unprovable tail despite complete-looking files.
-Later independent full-byte/member/identity checks establish retained content only, not
-omitted past flush/reap. Unknown tail proves neither completion nor no dispatch/provisioning
-and restores no authority. The stronger every-writer-originals alternative was not selected.
-No new API or manual terminal-observation exception follows. Existing non-recursive
-semantic acceptance alone supplies no terminal original or completed publication.
-
-K337's earlier publisher-terminal prefix remains documented in its exact contract;
-this view now focuses on the selected final boundary. K338/k334 retain every original
-duty under only that exception. K341 must finish exact terminal/finalization/CP02/repeatable
-trust and independent writer/receiver controls, including completion/refusal/loss criteria;
-k335 hosts recovery within existing checkpoints and k336 reconciles the whole artifact/membership before
-existing k332 whole review/every integration and k269. No usable partial route follows.
-
-- [Admission → Apply the accepted transcript boundary](index.html#diagram-native-reference-admission) — Shows the conditional last-event conflict, selected evidence endpoint and remaining consumer order.
-- [Final transcript writer dependency boundary](../../verification/application-reference-input-partition.md#final-transcript-writer-dependency-boundary) — Records the actual answer, exact evidence limit, residual failure risk and preserved missing duties.
-- [Canonical finite terminal-evidence boundary](../../verification/application-population-metadata-shape.md#finite-publication-terminal-evidence-boundary) — Owns the selected rule; the report and diagram supply no complete protocol.
-- [Koine language](../../../CONTEXT.md#language) — Defines the selected endpoint without granting an unrelated accepted unknown or usable partial route.
-
-Related contract context: [Launcher original before bootstrap validation](../../verification/application-reference-evidence.md#launcher-original-before-bootstrap-validation),
-[source-rooted selection](../../verification/application-reference-evidence.md#closed-pre-tool-reads-and-deterministic-selection)
-and [five checkpoints](../../verification/application-reference-evidence.md#compatible-ownership-and-bounded-sequential-schedule).
+private/product duties and both holds retained. K316's separate viewer defect and k326's
+narrow-layout/dark/Safari limits remain with their owners.
 
 Regenerate with `task design:application-population-metadata-shape-render` (D2 0.9.0,
-Dagre, themes 0/200). Only the admission source/export/caption is marked changed in this
-discussion; all six other views are unchanged context. Source/render checks are not
-browser delivery, instrument controls or native qualification.
+Dagre, themes 0/200). Only the admission source/export and the continuity caption change
+in this discussion; the six other source/export pairs remain unchanged context. Render
+and link checks establish documentary delivery only, never instrument/native qualification.
 
 ## Checkpoint continuity context
 

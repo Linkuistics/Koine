@@ -26,8 +26,9 @@ k338 retains complete invocation/last-writer finalization and trust outputs. Its
 [final-writer analysis](#final-transcript-writer-dependency-boundary) exposes a precise
 evidence-closure conflict. Antony answered "Accept the bounded endpoint (Recommended)"
 in k340; the selected canonical exception and exact obligation comparison now bound the
-final-recorder/nonpublishing-receiver tail. K341 must design the whole remaining
-publication protocol under that answer. Hosted
+final-recorder/nonpublishing-receiver tail. K341 now specifies the [complete publication design](#complete-publication-design),
+including all earlier terminal originals, exact repeatable trust/CP02 locations and
+independent writer/receiver controls. Hosted
 failed-tail recovery and whole replacement reconciliation remain live children before
 k332. A partial child supplies no construction handoff or new whole membership. Only
 the actual closing child names its provider evidence on that existing whole review.
@@ -50,9 +51,160 @@ k245 retains the one unused pass, k246 complete rewrite/helper/alias discriminat
 k247 whole-subject/family review or precise incomplete work. Full useful breadth,
 additive supported-VM/native duties, private ineligibility and both holds remain.
 
+## Complete publication design
+
+K341 specifies the remaining k338/k334 publication design under Antony's actual k340
+answer. The normative contracts are [Complete publication and terminal join](application-reference-evidence.md#complete-publication-and-terminal-join),
+[Repeatable trust records and selection](application-reference-evidence.md#repeatable-trust-records-and-selection)
+and [Independent publication controls and first consumers](application-reference-evidence.md#independent-publication-controls-and-first-consumers).
+This report records the scoped handoff; it adds no rule to those measured inputs.
+K335 still owns every hosted recovery route, and k336 owns whole replacement/original-duty/
+seven-view/membership reconciliation and Creator on existing k332. Whole k332 and every
+earned integration remain before k269. No completed publication design is an actual
+published original, qualified mechanism or accepted construction input.
+
+The process tree is a nonpublishing outer receiver, final durable recorder, launcher
+recorder and separately capable peers. Actual parent-owned waits avoid invented reap
+events. Every earlier writer original reaches the final record; its own last terminal
+observations and the receiver's return stop at the sole selected source/OS/cooperative
+limit. Exact current retained-content validation is separate from a past terminal verdict.
+Known loss/contradiction/missing earlier originals remains failed/unknown. Undetected
+receiver loss despite intact content remains the accepted risk, never a promised
+detection capability, proof of no dispatch/provisioning or restored authority.
+
+The recorder envelope serves each publication batch. Stage consumers use only already
+reached facts: staged receipt binding occurs while initializer lives, and CP05 consumes
+the direct actual appointment and acknowledged immutable record while supervisor/checker/
+acquirer coexist. Final terminal records follow those roles' true return. The exact active
+transcript outputs are reserved before CP05's lease transition and checked as pending
+outputs, never future successful inputs. Only that still-live accepted plan may finish
+them under shared leases; later/foreign pending tails refuse. No observation API, terminal
+manual exception, sixth checkpoint, new initialization, attempt, appointment or LIVE is
+authorized by the design.
+
+### Exact ready and failed originals for hosted recovery
+
+Every actual object/member/owner/runtime/read/control identity below is still unacquired;
+its actual byte/member identity remains null, not an empty successful set. “Ready” names
+the required earlier set, not present possession. K335 must place each ready comparison/
+act/disposition before its first successor inside the existing affected repeated
+checkpoint, using SOURCE/ARTIFACTS when no anchor is usable and independently checked
+intact-anchor context otherwise. This table deliberately supplies no disposition time
+or host that k335 has not designed.
+
+| Failed cut handed to k335 | Exact earlier retained set or unavailable boundary; first blocked consumer |
+| --- | --- |
+| Initial seed / container / publication-intent reservation | Original SOURCE/ARTIFACTS/ROOT acts and ready plan, actual seed/container identities/writes/flushes/frames and reached launcher/final-recorder extents. Before a durable slot exists the original is explicitly unavailable; an absent slot proves nothing. Anchor/provisioning is blocked. |
+| Bootstrap publisher / launcher publisher original | Complete exact initial trust/revision/anchor/seed members and actual publisher frames/write/flush/EOF/reap; observation.intent/launcher.publisher-terminal and its later frame. Separate publication validation and initializer are blocked on any missing fact. |
+| Bootstrap validator / REANCHOR validator | Exact previous publisher original, completed/partial validation slot/frame and launcher.bootstrap-validation-terminal with actual validator wait; final-recorder reached extents. No anchor selection or initializer gate from an unchecked/failed anchor or older success. |
+| Initializer dispatch / staged receipt | Actual launcher dispatch original, held staged bytes/identity/namespace/flush reports, receipt.binding and all reached initializer/validator frames. Unknown dispatch/provisioning stays unknown; no missing-as-never-started or fresh initialization. |
+| Unspent exposure / initializer terminal | Complete earlier staged binding; actual same-inode exposure/name/flush facts, launcher.initializer-terminal, its post-write acknowledgment and actual initializer EOF/reap. Final validation cannot assume an unobserved terminal event. |
+| Staged/final/revalidation writer | Every earlier binding/receipt/initializer original, exact partial/completed validation members, launcher.validation-terminal, received frames and actual EOF/reap. CP02/current receipt use blocked until actual required validation/acceptance is ready; no second initialization. |
+| Each revision/control/receipt/proof/audit/About/entry/continuity/basis/appointment trust writer | Exact earlier ready manifest and original direct act or supplied factual original, trust.intent/trust.record bytes/extents/kind/owner/predecessor/nonce, all writer acknowledgments/EOF/reap available through launcher/final record. Respective revision/final-Q/closer/eligible/appointment/Task consumer blocked; REFUSE is never acceptance. |
+| Disarm / eligible / distinct-close publisher | Exact prior basis/capability/slot/intent/result and earlier CP03/audit/close as applicable, actual writes/frames/EOF/reap plus launcher.writer-terminal/final-record extents. Changed work or eligibility/CP05 blocked at its phase; registrar borrows no close capability. |
+| Launcher recorder at any observation / final return | Every earlier peer/member/event original actually received, exact observation prefix and later frame extents; final recorder's actual launcher EOF/reap/timeout/death. Missing launcher facts remain missing. No future record supplies them retroactively. |
+| Final durable recorder | Exact earlier launcher originals, publication.intent, reached publication.record/frame bytes/identities and available raw returns. Last terminal observations are only at the outer receiver and have no durable original under k340. Failure is not successful recording or overall completion. |
+| Outer receiver / lost volatile terminal observation | Retained final/earlier content if present and its exact independent current byte/member/identity results; omitted final terminal events remain unprovable. Fresh hosted content-only validation/acceptance cannot prove those events, no dispatch/provisioning or new authority. |
+| Failure-disposition publication itself | Original ready direct judgment/failed-slot manifest, every failed intent/member/frame extent and partial trust.disposition at that exact slot. No prior trust-event acceptance is required of itself. Partial exclusive disposition is unavailable, cannot be overwritten/skipped/automatically disposed again; exact missing permitted route or concrete authority disposition must precede successor. |
+
+For proven never-started recovery k335 must independently establish **both** no initializer
+ever dispatched and no permission-subject provisioning, from actual originals and allowed
+independent facts, not totals, missing files, a disposition or later content equality.
+Only then can the existing selected fresh CP01 plan/nonce route authorize the single
+initialization still to begin. Dispatched/partial/uncertain/consumed state stays unavailable
+without new explicit authority. Source-root/holder/read/identity and every factual original
+outside the exact endpoint exception remains required; after consumption correction is
+offline-only. Nothing here supplies an actual host label, terminal/process fact or API
+result. K335 must also handle each failed disposition's own first consumer explicitly;
+the finite failure DAG stops when a required original or allowed route is unavailable.
+
+### Whole publication obligation comparison
+
+The original Goal/Done when texts remain verbatim on k338/k334/k341. Their only amended
+interpretation is k340's exact terminal endpoint; the original canonical comparison and
+all other selected requirements remain intact. This scoped comparison does not replace
+k336's whole k331/k242/k244/k245/k246/k247/k269 comparison or original B/R registers.
+
+| Entire original publication duty | Delivered design / retained later work |
+| --- | --- |
+| K334 Goal and first Done when: launcher/accepted peer capability, closed original kind, predecessor locator, ready mechanics before ROOT, actual frame/identity/write/flush/EOF/reap/death extents, no self/future original | Existing publisher-terminal prefix plus complete publication roles/process order, exact launcher observation kinds, publication-events members/payloads, channel/stage/final frames and phase-relative gates. Every earlier writer is in the final record; only the selected final-recorder/outer tail is unarchived. Actual mechanics/originals remain construction/qualification work. |
+| K334 second Done when: CP02 and every repeatable revision/control/results/audit/About/entry/disposition output, exact generation/writer/predecessor/ready inputs/selection and partial rules; independent acceptance/validation/bootstrap/close | Complete repeatable-trust table includes receipt.acceptance and every named original, revisions chain and direct in-slot trust.disposition without a recursive acceptance cycle. Separate capable writers, immutable publication joins and current-basis selection are explicit. Distinct close remains its own capability. |
+| K334 third Done when: entire C/K/P payload/capability/frame/locator/CP02/partial/prelude reconciliation and original stream/source/OS limits before readers | C's capability/generation/payload/prelude/A2 tables include the new closed contracts; K's named Q/B controls and P's phase/entry/CP02 table bind them before use. Source-root, descriptor/offset/generation/lease/negative lookup/read/true-return rules remain, including the exact CP05 active-output transition. No new observation primitive or pathname scope. |
+| K334 fourth Done when: independent isolating clean/death/partial/successor controls, every writer including transcript writer, finite DAGs, exact ready/failed facts before recovery, no unspecified disposition host | Independent publication-control table covers every writer and outer receiver boundary, all trust kinds and successor/partial-disposition stopping rule. Clean and finite failure DAGs specify causal first consumers; the table above hands k335 exact originals/unknowns. K335 must host each within affected repeats before use; this slice assumes no unplaced acceptance. |
+| K334 fifth Done when: affected glossary/report/source/render/caption/README and frozen documentary identities, old manifests preserved, no whole membership/Creator/qualification from a partial child | Current glossary/report/admission source/export/caption/README carry this scope. Documentary verification is reported below after measurement; all historical manifests remain historical. K336 alone freezes whole replacement membership, reconciles all seven views/original duties and names Creator on existing k332. |
+| K338 first Done when and entire inherited k334 scope: all initializer/staged-final-validator/last-writer terminal originals and finite final acknowledgment, no extra judgment/observation/attempt | Complete publication join supplies every event after it occurs and fixes the exact final-recorder/outer stopping semantics, source/OS/cooperative/storage limit and receiver-loss risk from actual k340. Stage consumers never depend on their future terminal result. No extra ceremony, initialization or observation authority is inferred. |
+| K338 second/third Done when: exact CP02/repeatable trust.continuity/kind/member/writer/exclusion/finalization/selection and entire capability/read/phase/absence reconciliation | Repeatable trust and disposition tables, closed decoder/prelude traversal and P phase map cover every named kind. Future acceptance is never an earlier Q/bootstrap input; current content validation proves no omitted past terminal event. Missing required identity/control/read/freeze remains a blocker. |
+| K338 fourth/fifth Done when: independent writer/final-boundary failure controls and k335 ready/failed handoff, affected documentary verification and scoped parent close | Same complete writer/receiver controls and exact handoff above. Only k338/k334 publication scope is eligible for close after verification. K331/k244/k242 remain live; k335/k336/whole k332/every integration still precede k269. |
+| K341 entire original Done when | Synthesizes actual k340, complete terminal/trust publication, C/K/P/prelude/A2/CP02/partial reconciliation, independent controls/DAGs and exact recovery handoff, affected presentation and original-duty comparison. Retirement requires the documentary checks and original-charter comparison, not this assertion alone. Actual originals/tools/schemas/controls/identities remain unacquired. |
+| Original k321 R1/R2/R5/R7 and k328 F1–F6 within this slice | R1's synchronous ROOT route now has all earlier terminal originals and exact publication capability joins; R2/F5 get repeatable predecessor-bound trust/CP02 locations; R5/F4 keep actual About placement/provenance and fresh P comparison; R7/F2 retain k333's source-root/holder/fd gates. F3's launcher/last-recorder originals are fully specified; F1 remains k335's hosted recovery and F6/whole summaries/membership remain k336's full conjunction audit. No finding vanishes on publication-child retirement. |
+
+### Publication alternatives and remaining evidence
+
+Retaining an original for the final recorder's own final return would reintroduce the
+last-event dependency rejected by the actual k340 choice. A self-acknowledging final file
+would assert future facts. Putting the entire protocol in the human registrar would
+entangle factual validation, transcript ownership, bootstrap publication and distinct
+close, violating their exclusions. Separate explicit writers plus one bounded final
+recorder/receiver localize that knowledge at the cost of more accepted artifacts and
+required independent channel/death controls. The reversal condition is an actual required
+mechanic/identity that cannot qualify under the selected authority: name its exact work
+and concrete trade-off before use, rather than adding an observer/API/ceremony silently.
+The pre-provisioning design is reversible and does not meet all three production-ADR
+criteria; no new product ADR is needed.
+
+Every actual original/schema/executable/control/runtime/read/image/owner/UID/build/terminal/
+authority/receipt identity remains unacquired. The permitted independent pure/scratch/
+offline/admission seams and GraphQL/actual binary/signed supported-VM product seams remain
+selected. No instrument control or native experiment is executed by documentary checks.
+K245's pass is unused, k246/k247 retain their complete generated/whole-subject/helper/alias/
+rewrite/additive-VM duties, K244/k242 remain live, and both product/private holds remain.
+
+### Publication documentary verification and scoped close
+
+After final normative/presentation edits, `task design:application-population-metadata-shape-render`
+and `task check:docs` both exited 0. D2 reports version 0.9.0. The bounded audit is
+`/tmp/koine-k341-verification.json`, produced by the separately retained documentary
+verifier `/tmp/koine-k341-verify.py`. It records each command/result and every subject's
+before/after bytes/length digest; all 2,055 non-SVG tracked subjects were stable during
+that run. It also binds the verifier's before/after bytes. These figures describe the
+saved run, not a required protocol count or an instrument proof.
+
+The preservation comparison checks all tracked subjects outside the exact edited-file
+allowlist, including whole canonical S and its line-by-line comparison, every historical
+reference JSON/TSV/gzip manifest/table, descriptor/production ADRs, Taskfile/checker and
+implementation files. It rejects an altered canonical subject and an omitted subject.
+All 14 scoped root/ancestor/downstream charters retain exact original Goal/Done when
+sections at 6abc937d. The complete new trust table has its independently listed kind
+membership and the frame table its listed sender-kind membership; this is documentary
+set checking, not a materialized executable schema. Seven SVGs parse, the changed export
+contains the new final-recorder view, and the other six source/export pairs retain their
+baseline bytes. The link checker accepts the known new heading and rejects deliberately
+missing/changed headings. Nothing here proves semantic completeness, realizability,
+original possession, independent instrument controls or native qualification.
+
+Chrome light opened the fresh deep link at
+`http://127.0.0.1:18341/#diagram-native-reference-admission`. After the image finished
+loading, the title, Current/Updated markers, full legible terminal/loss paths and caption
+matched the source. The current-discussion outline and descriptive change links identify
+the same view. No mobile/dark/Safari/native-size pass is claimed; earlier k316/k326 limits
+remain. Port 18339 was unavailable to Chrome, so this checked presentation uses 18341.
+Only documentary rendering/link/identity work and loopback presentation ran; no installed
+query, instrument/native control, authority, initialization or terminal/process probe ran.
+This outcome and task retirement/promotions are recorded after the frozen run.
+
+The scoped original-duty comparison supports retiring k341 and closing publication nodes
+k338/k334 at their complete design boundary under only actual k340. Promote their exact
+ready/failed handoff to still-live k331: hosted recovery k335 then whole reconciliation
+k336, existing k332/every earned integration before k269. This closes neither k331 nor
+k244/k242 and names no Creator on k332. No new whole membership is frozen here. Every
+actual original/control/tool/schema/identity remains unacquired; k245's pass is unused,
+full k246/k247/useful/generated/additive supported-VM/native/private/product duties and
+both holds remain. Consumed changes still disarm/affected-requalify; after consumption
+correction remains offline-only.
+
 ## Final transcript writer dependency boundary
 
-**The publication design remains incomplete.** K338 retains its entire original
+**Historical analysis before the complete publication design above.** K338 retains its entire original
 Goal/Done when and is now a node. Its first child k339 isolates the last-writer
 dependency; requirements k340 records Antony's actual "Accept the bounded endpoint
 (Recommended)" answer. Complete design k341, hosted recovery k335 and closing

@@ -324,8 +324,8 @@ requalification and every current per-invocation fact remain. No extra initializ
 attempt, checkpoint or observation authority follows. Complete k331, mandatory whole review
 k332 and every earned integration precede k269. CP01 publisher wording and the glossary
 are repaired; k333 specifies the pre-tool selection/holder/fd path and k337 the first
-publisher-terminal original. Complete last-writer/terminal/trust publication and hosted
-recovery remain live design work under k334/k331. The
+publisher-terminal original. K341 specifies the complete last-writer/terminal/trust publication design under k334;
+hosted recovery and whole replacement remain live work under k331. The
 [final-writer dependency boundary](docs/verification/application-reference-input-partition.md#final-transcript-writer-dependency-boundary)
 identifies why a finite publication set cannot retain its own final writer's later
 acknowledgment/return without an explicit stopping boundary. Antony accepted the
@@ -336,8 +336,10 @@ frames/EOF/reap using existing channel/wait mechanics. Those last terminal obser
 have no further durable original, and the receiver's own return ends at the source/OS/
 cooperative trust limit. Receiver loss can leave an unprovable tail despite complete-
 looking files; later content equality proves no past terminal event. Unknown tail proves
-neither completion nor no dispatch/provisioning and restores no authority. Exact complete
-publication/refusal/recovery design remains required before use. Every other required
+neither completion nor no dispatch/provisioning and restores no authority. The [complete publication design](docs/verification/application-reference-evidence.md#complete-publication-and-terminal-join)
+fixes exact earlier terminal originals, final recorder/receiver roles, repeatable trust
+records and failure controls. Hosted recovery and whole replacement/review remain
+required before use. Every other required
 fact remains blocking; no accepted contact unknown or usable partial route follows. The
 [integration-only documentary candidate](docs/verification/reference-practical-admission-integration-membership.json)
 records k329's saved boundary and unresolved duties; later selected edits need k331's new membership. K323's membership is historical. No accepted
@@ -394,6 +396,22 @@ under existing channel/wait mechanics without a further durable original. The re
 own return stops at the explicit source/OS/cooperative limit. Loss may leave an unprovable
 tail, even with intact saved content. This boundary grants no completion, no-dispatch/
 no-provisioning proof, restored authority or waiver of any other required evidence.
+
+**Reference Final Recorder**: The separately accepted transcript-only parent of the
+launcher recorder. It writes the exact publication-events intent and final record only
+after earlier peer/launcher facts occur. Its later final frame/EOF/reap belongs solely
+to the nonpublishing outer receiver's observations under the selected endpoint.
+
+**Reference Outer Receiver**: The independently accepted nonpublishing foreground parent
+of the final recorder. It observes that child's final frame/EOF/reap through existing
+permitted channels/waits. Those observations and its own return have no further durable
+original; later retained content proves no omitted terminal event or restored authority.
+
+**Reference trust generation**: One predecessor-bound trust-events slot for exactly one
+closed ready trust act or supplied factual original, including CP02 receipt acceptance
+and current trust.continuity. Its frozen bytes, later writer acknowledgment and terminal
+originals remain distinct. Direct failure-disposition acceptance is at the failed slot,
+without requiring a prior trust event to accept itself.
 
 **Reference anchor generation**: One immutable predecessor-bound `anchors/n` slot
 for a proposed independent trust-original set and its CP01 binding. Use requires

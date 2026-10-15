@@ -101,3 +101,17 @@ that exact exception, including exact completion/refusal/loss/recovery rules and
 controls. K335/k336, all other duties/exclusions/seams/five checkpoints and existing k332/
 every integration before k269 remain. No complete protocol, actual original, new kind/
 capability/observation, initialization, attempt, appointment, LIVE or posture follows.
+
+K341 supplies the complete remaining publication design under actual k340 in C's Complete
+publication and terminal join, Repeatable trust records and selection, and Independent
+publication controls and first consumers. The report's Whole publication obligation
+comparison checks every original Goal/Done when above under only that exact amendment.
+All earlier writer/initializer/staged-final-validator/launcher originals, final recorder/
+nonpublishing receiver stopping semantics, immutable CP02/repeatable trust locations,
+prelude/A2/payload/frame/selection/partial contracts, independent controls and causal DAGs
+are specified. Exact ready/failed/unknown sets go to k335; no host or disposition time is
+assumed. Frozen documentary checks and Chrome light delivery pass at their stated scope.
+After k341 retirement this node has no live child and its original publication-design
+Done when is met. Promote that whole result through k334 to k331; no k331/qualification
+close, whole membership or Creator on k332 follows. All actual original/tool/control/
+identity work, existing whole review/integrations, unused pass and holds remain.

@@ -2,9 +2,9 @@
   "title": "Koine provider architecture",
   "intro": "Native discovery design for macOS 26+ Apple Silicon. Selected strings/loctable semantics, 128 KiB files and scoped 20 MiB/4,194,304 explicit-work gates remain. Private construction follows the complete durable eligibility predicate: a reviewed independent metadata-shape subject is still missing, so cardinality-only P1024 does not qualify it. Admission reserves terminal guard evaluation and failed cleanup prevents useful publication. Release needs matched release-image correspondence, complete useful outcomes and independent obligations. Both holds remain; every native G/N/V is pending. Graphs begin at the dark Start here node; source is editable.",
   "discussion": {
-    "title": "Apply the accepted final transcript evidence boundary",
-    "status": "k340 bounded endpoint accepted; complete publication and recovery design still required",
-    "summary": "Antony selected the bounded endpoint in k340. All earlier publisher, initializer, staged/final-validator and recorder originals remain durable through a designated final recorder. An independently accepted nonpublishing outer receiver observes its final acknowledgment/frames/EOF/reap using existing permitted channel/wait mechanics; that terminal tail and the receiver's own return have no further durable original at the explicit source/OS/cooperative trust limit. Receiver loss may leave an unprovable tail despite complete-looking files. Later independent content checks prove no omitted past terminal event; unknown tail supplies no completion/no-dispatch/no-provisioning proof or renewed authority. The stronger every-writer-originals alternative was not selected. K341 must complete every remaining publication/CP02/trust and independent failure-control duty; k335 hosts recovery within existing checkpoints, and k336 reconciles the whole replacement/membership before existing k332 review/every integration and k269. No new kind, observation authority, initialization or usable partial path follows; pass unused, both holds retained.",
+    "title": "Retain earlier originals and stop at the accepted endpoint",
+    "status": "Publication design specified; hosted recovery, whole reconciliation and review remain",
+    "summary": "K341 specifies final-recorder/launcher/peer ownership, exact terminal originals, repeatable trust/CP02 locations and independent writer/receiver controls under Antony's actual k340 answer. Only final-recorder terminal observations and nonpublishing outer return are unarchived at the source/OS/cooperative limit. Later current content checks prove no omitted past terminal event; receiver loss can leave an unprovable tail and restores no authority. Stage consumers use reached facts while live roles coexist; final terminal evidence follows true return. K335 must host every failed cut inside existing affected repeated checkpoints; k336 owns whole original-duty/seven-view/replacement-membership closure and Creator on existing k332 before every integration and k269. Actual originals/tools/controls/identities remain unacquired, pass unused, both holds retained.",
     "diagramIds": [
       "native-reference-admission",
       "native-reference-proof",
@@ -14,7 +14,11 @@
     "updatedDiagrams": [
       {
         "id": "native-reference-admission",
-        "summary": "Shows the conditional last-publication contradiction, Antony's selected terminal-evidence endpoint, accepted receiver-loss risk, unselected stronger alternative and remaining complete-design consumers."
+        "summary": "Replaced the conditional-conflict view with the finite writer/launcher/final-recorder/outer-receiver join, repeatable trust chain and precise loss/recovery handoff."
+      },
+      {
+        "id": "native-reference-proof",
+        "summary": "Updated the caption to locate the completed publication contract beside the unchanged source-root/holder/descriptor proposal; hosted recovery and whole review remain."
       }
     ]
   },
@@ -110,11 +114,11 @@
     {
       "id": "native-reference-admission",
       "group": "native-sources",
-      "title": "Admission → Apply the accepted transcript boundary",
+      "title": "Admission → Retain originals through the final recorder",
       "renderer": "svg",
       "source": "native-reference-admission.d2",
       "rendered": "native-reference-admission.svg",
-      "caption": "K339 identifies why a universal retained terminal-original duty has no finite last publication. Antony accepted the bounded endpoint in k340: all earlier publisher/initializer/staged-final-validator/recorder originals reach a designated final durable recorder. An independently accepted nonpublishing outer receiver observes its final acknowledgment/frames/EOF/reap with existing permitted channel/wait mechanics; those terminal observations and its own final return have no further durable original at the explicit source/OS/cooperative limit. Receiver loss may leave an unprovable tail despite complete-looking files. Later independent full-byte/member/identity checks establish content only, not omitted past terminal events; unknown tail supplies no completion/no-dispatch/no-provisioning proof or renewed authority. The stronger every-writer-originals alternative was not selected. K341 must design exact completion/refusal/loss rules, all terminal/CP02/repeatable trust outputs and independent controls; k335 hosts recovery within existing checkpoints, and k336 owns whole C/S/K/P/original-duty/seven-view/new-membership closure before existing k332 whole review/every integration and k269. Every other original duty remains. No new record kind, capability, observation/manual exception, initialization route, actual original, control or qualified tool follows. Actual identities remain unacquired, one pass unused, both holds retained. The other six views are unchanged context; earlier k316/k326 viewer limits remain."
+      "caption": "The publication design uses parent-owned existing wait/channel mechanics: outer receiver → final recorder → launcher recorder → separately capable peers. All earlier writer/launcher originals reach publication.record; only its final acknowledgment/EOF/reap observations and the nonpublishing receiver's own return have no further durable original under actual k340. Later full-byte/member/identity checks establish current content only, never past terminal completion or no-dispatch/no-provisioning. Receiver loss can leave an unprovable tail despite intact files. Exact trust-events/revisions carry CP02 and repeatable trust outputs; direct failed-slot dispositions avoid a prior acceptance cycle. Stage consumers use already reached facts while initializer or appointed supervisor/checker/acquirer remain alive; terminal closure follows true return. K335 owns hosted affected-repeat recovery, k336 whole replacement/original-duty/membership/seven-view closure and Creator on existing k332; whole review/every integration still precede k269. Actual originals/schemas/tools/controls/identity/authority remain unacquired; pass unused and both holds retained. This is design, not qualified execution. Other source views remain unchanged context; prior k316/k326 viewer limits remain."
     },
     {
       "id": "native-reference-proof",
@@ -123,7 +127,7 @@
       "renderer": "svg",
       "source": "native-reference-proof.d2",
       "rendered": "native-reference-proof.svg",
-      "caption": "K333 specifies k328 F2’s pre-tool enabling path under k330’s actual answers. Start at the dark source/OS root: the original prelude is independent of the anchor it selects. Holder equality precedes holder launch; executing-image correspondence remains independently required. Serial descriptor pairs and ENTRY_SEAL precede engine effects, with retained streams through true return. Failure arrows identify the affected first consumer; they grant no recovery or authority. Launcher/trust-record publication, hosted failed-tail recovery and whole reconciliation remain live under k331 before k332 whole review, earned integrations and k269. All actual originals/controls/identities remain unacquired, one pass unused and both holds retained. Other diagrams are unchanged reviewed context. Browser checks describe only their stated viewer; k316’s separate Safari fragment defect and k326’s dense-view limits remain."
+      "caption": "K333 specifies k328 F2’s pre-tool enabling path under k330’s actual answers. Start at the dark source/OS root: the original prelude is independent of the anchor it selects. Holder equality precedes holder launch; executing-image correspondence remains independently required. Serial descriptor pairs and ENTRY_SEAL precede engine effects, with retained streams through true return. Failure arrows identify the affected first consumer; they grant no recovery or authority. K341 specifies launcher/final-recorder and repeatable-trust publication; hosted failed-tail recovery and whole reconciliation remain live under k331 before k332 whole review, earned integrations and k269. All actual originals/controls/identities remain unacquired, one pass unused and both holds retained. Other diagrams are unchanged reviewed context. Browser checks describe only their stated viewer; k316’s separate Safari fragment defect and k326’s dense-view limits remain."
     },
     {
       "id": "native-population-metadata-shape",

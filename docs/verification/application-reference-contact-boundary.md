@@ -41,6 +41,37 @@ shows the reading order. Graphs enter at the dark Start here node. The independe
 approval register must accept the required inventory before construction can credit it;
 these documentary tables are not that acceptance or an executable proof schema.
 
+## Publication evidence within the required boundary
+
+The [complete publication join](application-reference-evidence.md#complete-publication-and-terminal-join)
+and [repeatable trust records](application-reference-evidence.md#repeatable-trust-records-and-selection)
+are required parts of Q05/Q07/Q08/Q09/Q10, O08/O12/O23 and B3/B6/B7/B8. The
+nonpublishing outer receiver → final durable recorder → launcher recorder → capable peers
+order uses only already permitted unnamed channels and parent-owned waits. Every earlier
+writer's actual frames/returns/EOF/reap/failed extents reaches the final record; only its
+own last terminal observations and the receiver's return stop without another durable
+original under the canonical selected endpoint. Later current content checks report
+UNARCHIVED_BY_RULE for those omitted events and establish no past terminal completion.
+Known loss/contradiction/partial earlier originals remain refusal/recovery facts, never
+no-dispatch/no-provisioning evidence or authority restoration.
+
+The required independent inventory includes each exact bootstrap publisher, initializer,
+staged/final/publication validator, trust/revision/disarm/close/disposition writer, launcher,
+final recorder and outer receiver at every applicable reservation/write/short-write/flush/
+frame/read/EOF/reap/timeout/death/true-return boundary. Each positive has an isolating
+intended failure with otherwise valid inputs and exact first-consumer refusal. Include
+every trust kind, CP02 receipt acceptance, ordinal/predecessor/member/owner/phase/nonce,
+current-content-versus-past-terminal distinction and failed-disposition stopping rule.
+Independent author/executor/producer/repairer/validator/Antony exclusions remain required.
+These are named original controls, not optional collector observations or AU contact gaps.
+
+Prelude reads only the exact declared launcher/publication/trust/revision chains and
+their admitted members. Entire original read/basis/runtime/charter/phase/absence/freeze
+duties remain. Missing required original/control/identity blocks its stage; observing
+storage acknowledgments supplies no device/power-loss certificate. Hosted recovery
+requires the affected existing checkpoint and independent trust base before a successor;
+no new ceremony, observation API, initialization, attempt, appointment or LIVE follows.
+
 ## Independent source baseline
 
 The public basis is Apple's **xnu-12377.121.6**, commit

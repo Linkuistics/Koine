@@ -1,24 +1,26 @@
-# k340 selected terminal endpoint; full publication/recovery design still required.
+# Publication design under k340; hosted recovery and whole review still required.
 direction: down
 classes: {
   start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
 }
-Start: "Start here · Why an evidence endpoint is needed\nIf every writer needs retained terminal originals\nThe last publication always needs a later writer" {class: start}
-Earlier: "Earlier publisher / initializer / validator\nActual frames, writes, flushes, EOF and reap\nTheir original evidence precedes its reader"
-Last: "Choose the last durable publication\nFrozen bytes describe only earlier events\nIts final acknowledgment / return happen later"
-Observer: "Another observer can retain those later facts\nIts publication is now later than the chosen last\nSame requirement applies again"
-Conflict: "STOP · No finite closure under this premise\nNo self / future fact; no older-chain fallback\nAnother recorder moves the boundary"
-Choice: "k340 · Antony accepted the bounded endpoint\nOnly final-recorder / nonpublishing-receiver tail\nExisting five checkpoints and exclusions remain"
-Limit: "Selected finite terminal-evidence limit\nReceiver observes final ack / frames / EOF / reap\nNo further durable original · Source / OS trust limit"
-Loss: "Receiver loss can leave an unprovable tail\nLater content equality proves no past terminal event\nUnknown tail cannot prove completion / never-started"
-Strict: "Not selected · Every writer needs an original\nWould leave this route unavailable\nAnother recorder cannot terminate that duty"
-Next: "k341 completes all publication / CP02 / trust duties\nk335 hosts failures; k336 reconciles whole replacement\nk332 review + integrations precede k269"
-Start -> Earlier: "1 · retain original earlier facts"
-Earlier -> Last: "2 · consider final recorder too"
-Last -> Observer: "3 · required terminal fact is later"
-Observer -> Conflict: "4 · later publication contradicts last"
-Conflict -> Choice: "5 · actual requirements answer recorded"
-Choice -> Limit: "selected · all earlier originals remain"
-Choice -> Strict: "unselected alternative"
-Limit -> Loss: "accepted residual risk · no renewed authority"
-Loss -> Next: "complete loss / refusal / recovery rules before use"
+Start: "Start here · Accepted mechanics before ROOT\nIndependent originals, review and SCRATCH controls\nDistinct writer capabilities · Five checkpoints" {class: start}
+Stages: "Earlier publisher / initializer / validator / trust writers\nFrozen bytes first; actual acknowledgment afterward\nStaged binding and appointment use reached facts only"
+Launcher: "Launcher recorder · Parent of actual peers\nExact observations, frames, EOF and reap originals\nThen launcher finishes and truly returns"
+Final: "Final durable recorder · Parent of launcher\nRetains every earlier original and launcher reap\nWrites publication.record; sends final acknowledgment"
+Outer: "Nonpublishing outer receiver · Parent of final recorder\nObserves complete final frame, EOF and actual reap\nThose observations and own return have no durable original"
+Content: "Later independent full-byte / member / identity checks\nRetained content only · No past terminal verdict\nAll current acceptance and authority facts still required"
+Trust: "Repeatable exact trust-events and revisions\nCP02 receipt; revision / controls; CP03 results / audit\nAbout / entry / continuity / basis / appointment"
+Loss: "Loss / partial / timeout · Stop next effect\nPreserve exact reached bytes and unknown events\nNo completion / never-started proof / restored authority"
+Recovery: "k335 hosts every failed cut in affected repeated checkpoints\nReady independent originals before direct in-slot disposition\nPartial disposition stops; no automatic recursion"
+Next: "k336 closes whole replacement / membership / seven views\nk332 whole review and every integration before k269\nActual originals and qualification remain missing"
+Start -> Stages: "1 · source-root / holder / exact input gates"
+Stages -> Launcher: "2 · each writer keeps its own capability"
+Trust -> Stages: "closed kinds / predecessor slots / direct acts"
+Launcher -> Final: "3 · final record follows actual launcher return"
+Final -> Outer: "4 · final write / flush precede terminal frame"
+Outer -> Content: "5 · accepted finite evidence boundary"
+Content -> Next: "6 · no partial construction handoff"
+Launcher -> Loss: "any missing required event"
+Final -> Loss: "writer / receiver loss can leave unknown tail"
+Loss -> Recovery: "no older-success fallback"
+Recovery -> Next: "whole original duties remain"
