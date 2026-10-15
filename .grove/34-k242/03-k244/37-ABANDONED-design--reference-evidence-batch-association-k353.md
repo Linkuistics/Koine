@@ -95,3 +95,31 @@ required originals/tools/controls/identities remain unacquired. K244/k242 stay l
 is unused; full k246/k247/useful/additive supported-VM/native/private/product duties and both
 holds remain. Post-consumption correction stays offline-only, never renewed eligibility,
 appointment, acquisition or a permit reset. A documentary repair qualifies no instrument.
+
+## Decisions (running log)
+
+Bootstrap: the mandate resolves to this live leaf; the brief chain, the task file, k350/k351/k352,
+the review leaf k354 and C's open-bracket, seed/first-reservation, publication payload, repeatable
+trust, disposition, hosted-recovery, carrier-prefix, host-table, prelude and durable-disarm
+contracts were read. No document was edited.
+
+Antony stopped this design mid-session (2026-10-15): a week of work has not completed app search
+or reached window layout, and he wants iterative delivery — a happy-path first cut per feature,
+shipped, with GitHub issues steadily improving features and test coverage. Asked to choose, he
+selected "Small groves": file the deferred hardening as GitHub issues, prune the parked chains,
+finish this grove, then start a fresh grove per feature, beginning with an app-search first cut.
+He selected "GH issues + prune" for the reference-evidence (k242 subtree) and native-discovery
+(k7 prerequisite design) work, with issue drafts shown to him before filing. This leaf's batch
+association is therefore not specified; it is deferred hardening, not delivered work.
+
+Antony approved the drafts and confirmed "File and prune". Filed on Linkuistics/Koine: #2 deferred
+private metadata-reader qualification and reference evidence (this node k242, including this leaf);
+#3 deferred native-discovery hardening (k7's k191/k193/k127/k123/k120/k30 and k93); #4 flaky
+denial tests (k87); #5 protected-folder open decision (k89); #6 app-bundle reveal notice decision
+(k90); #7 Dia page load (k88); #8 alternate-team signing (k80); #9 viewer fragment navigation
+(k316); #10 app and file search first cut (the next grove); #11 roadmap of the remaining feature
+increments k8–k16 and k17, each to be its own small grove. Every live leaf is now covered by an
+issue, so each is pruned as no longer this grove's work ("not ours any more → issue, then prune").
+Nothing in docs/ changes. None of this workspace's work is on origin/main yet (main@origin is
+197c10eb, 2026-09-29), so promoting launch-and-open 1.0.1 and the rest is the finish session's
+first question for Antony.

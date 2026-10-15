@@ -1,5 +1,17 @@
 # Koine.add-plugins-for-modaliser-requirements — brief
 
+## Switch to iterative delivery (2026-10-15)
+
+Antony stopped this grove's approach: a week of design had not completed app search or
+reached window layout. He chose iterative delivery: a happy-path first cut per feature,
+shipped, with GitHub issues steadily improving features and test coverage, and one small
+grove per feature. Every live leaf was pruned into Linkuistics/Koine issues #2–#11:
+deferred hardening #2 (metadata reader and reference evidence, k242) and #3 (native
+discovery, k7); standalone items #4–#9; the app-search first cut #10, the next grove; and
+the feature roadmap #11. docs/ is unchanged. None of this workspace is on origin/main
+(main@origin is 197c10eb, 2026-09-29), so the finish session first asks Antony what to
+promote, starting with the accepted launch-and-open 1.0.1 work.
+
 ## K328 integration and required replacement
 
 K328 reviews k323 at f4d399f3caa2 as defective; k329 verifies every finding and repairs
