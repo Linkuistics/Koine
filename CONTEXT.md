@@ -27,6 +27,11 @@ operations. Its native management UI and **providers** run in the same process.
 No project includes the server; ModalAnyware is one of its
 **clients**.
 
+**Settings window**: Koine's one native window, opened from its menu bar item,
+where the user completes setup, reviews client grant requests and manages
+**grants**. Closing it leaves the **Machine server** running.
+_Avoid_: management window, Koine's window
+
 **Client**: A program that reaches the **Machine server** over its transport
 with a capability of its own: ModalAnyware through its Machine client module,
 a third-party application, a script or an LLM agent.
