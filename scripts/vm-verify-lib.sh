@@ -118,6 +118,11 @@ element() {
 value_of() { element "$1" | jq -r '.value // empty'; }
 click() {
     local e
+    # Koine's window is a fixed frame around content that outgrows it, and the
+    # tree reports scrolled-out elements too; a click at one's centre lands on
+    # the title bar or the wallpaper. So an element of Koine's window is first
+    # scrolled wholly on screen. Another application's window is clicked as read.
+    [ -n "${SNAPSHOT_WINDOW:-}" ] || reveal "$1"
     e="$(element "$1")"
     [ "${e}" != null ] || fail "no UI element matches: $1"
     # shellcheck disable=SC2046

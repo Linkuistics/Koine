@@ -242,6 +242,9 @@ tasks:
 
   fixture:
     desc: Stage KoineProviderAPI.framework, build the fixture provider against it outside the package, sign and approve it
+    # Several fixture tasks depend on this one and Task runs deps in parallel; two
+    # concurrent stagings race on the framework's symlinks.
+    run: once
     cmds:
       - |
         FRAMEWORK="$(scripts/stage-provider-framework.sh debug)"

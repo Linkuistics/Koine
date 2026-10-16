@@ -22,9 +22,7 @@ step "Start Koine and enable login launch in the UI"
 guest "open ${INSTALLED}"
 place_window
 echo "Before: $(value_of '.id=="login-launch-status"')"
-# The window's content outgrows its frame, so the toggle can lie below it.
-calibrate_window_scroll
-reveal_click '.id=="login-launch"'
+click '.id=="login-launch"'
 echo "After:  $(value_of '.id=="login-launch-status"')"
 [ "$(value_of '.id=="login-launch"')" = 1 ] || fail "the login-launch toggle did not turn on"
 [ "$(value_of '.id=="login-launch-status"')" = "Koine will start when you log in." ] ||
