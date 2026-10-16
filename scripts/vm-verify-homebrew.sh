@@ -123,7 +123,9 @@ guest "cat \"${DATA}/endpoint.json\"; echo"
 
 step "Enable login launch in the window, so uninstall has a registration to leave or take"
 echo "Before: $(value_of '.id=="login-launch-status"')"
-click '.id=="login-launch"'
+# The window's content outgrows its frame, so the toggle can lie below it.
+calibrate_window_scroll
+reveal_click '.id=="login-launch"'
 [ "$(value_of '.id=="login-launch"')" = 1 ] || fail "the login-launch toggle did not turn on"
 echo "After:  $(value_of '.id=="login-launch-status"')"
 login_item "installed, running, login launch on"

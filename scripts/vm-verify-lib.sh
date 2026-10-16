@@ -97,6 +97,7 @@ guest_long() {
 }
 
 cleanup() {
+    [ -z "${VNC_KEEPALIVE_PID:-}" ] || kill "${VNC_KEEPALIVE_PID}" 2>/dev/null || true
     rm -rf "${WORK}"
     if [ "${KOINE_VM_KEEP:-0}" = 1 ]; then
         echo "VM ${VM_ID} left running. Stop it with: testanyware vm stop ${VM_ID}"
@@ -258,6 +259,17 @@ start_vm() {
     testanyware vm start --platform macos --id "${VM_ID}" \
         ${KOINE_VM_BASE:+--base "${KOINE_VM_BASE}"} \
         ${KOINE_VM_DISPLAY:+--display "${KOINE_VM_DISPLAY}"} >/dev/null
+    # On a macOS 27 host, Virtualization.framework's VNC server (which tart serves
+    # the guest's screen through) hits an assertion in
+    # -[_VZVirtualMachineAccessor addAccessorObserver:] when a client connects
+    # after about 60s with none, and takes tart and the guest down with it. A run
+    # waits that long whenever it polls a cask install over the agent alone, so a
+    # background capture keeps the server from going idle until cleanup stops it.
+    ( while sleep 20; do
+        testanyware screen capture -o "${WORK}/keepalive.png" >/dev/null 2>&1 || true
+    done ) >/dev/null 2>&1 &
+    VNC_KEEPALIVE_PID=$!
+    disown "${VNC_KEEPALIVE_PID}"
     guest 'sw_vers; uname -m'
     echo "Gatekeeper: $(guest 'spctl --status' 2>&1 || true)"
 }

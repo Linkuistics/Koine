@@ -535,7 +535,9 @@ echo "Observation, the open question closed: with Koine already listed in System
 step "Login launch: enable it in the window, quit Koine, and restart the VM with no client installed"
 place_window
 echo "Before: $(value_of '.id=="login-launch-status"')"
-click '.id=="login-launch"'
+# The window's content outgrows its frame, so the toggle can lie below it.
+calibrate_window_scroll
+reveal_click '.id=="login-launch"'
 [ "$(value_of '.id=="login-launch"')" = 1 ] || fail "the login-launch toggle did not turn on"
 [ "$(value_of '.id=="login-launch-status"')" = "Koine will start when you log in." ] ||
     fail "login launch is not reported enabled"
