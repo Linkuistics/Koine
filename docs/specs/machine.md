@@ -18,7 +18,13 @@ native discovery targets macOS 26+ and named application/System Settings categor
 clients own raw filesystem search. The
 [ownership decision](../adr/raw-filesystem-search-belongs-to-clients.md) governs
 that boundary. Sections explicitly marked **extension** below are obligations for
-that work, not claims about 0.1.0 or its acceptance. The [native discovery design](workspace-search.md) now defines its API, selected
+that work, and each states its own status. Koine 0.2.0 ships three parts:
+[additional capability requirements](#additional-capability-requirements), the
+bundled workspace provider 1.0.1 that is their first user, with
+[launch and open](workspace-launch-and-open.md), and
+[first-party provider selection](#first-party-provider-selection). The rest,
+including consent identifiers, native discovery and the input, menu and tool
+workflows, are not claims about 0.2.0 or its acceptance. The [native discovery design](workspace-search.md) now defines its API, selected
 sources and exact new profiles. Mandatory review and G/N/V acceptance remain
 pending; earlier raw-search and action-only captures supply no catalogue pass.
 

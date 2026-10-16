@@ -39,7 +39,7 @@ every other case needs, so it is last.
 
 | Step | How | Expectation checked | Other document |
 |---|---|---|---|
-| Entitlements and hardened runtime | `codesign -d --entitlements - --xml` and `codesign -dvv`, **in the guest, on the installed copy** | the entitlement dictionary is empty, and the flags word is exactly `flags=0x10000(runtime)` — for the application *and* its bundled provider | only here: no other run reads these from a release build |
+| Entitlements and hardened runtime | `codesign -d --entitlements - --xml` and `codesign -dvv`, **in the guest, on the installed copy** | the entitlement dictionary is empty, and the flags word is exactly `flags=0x10000(runtime)` — for the application *and* every provider in its `Contents/PlugIns`, of which there must be at least the bundled desktop and workspace | only here: no other run reads these from a release build |
 | First launch | plain `open` of the quarantined copy, and the dialog's **Open** | a first-run dialog appeared and is not a refusal; the attribute survives the launch | **repeats** [notarized-release-vm.md](notarized-release-vm.md), which owns the discrimination between the notarized dialog and the two refusals |
 | Consent absent | `desktopApplication` with `desktop:read`; the same with a grant that has only `desktop:control`; `koineManagement.osPermissions` | an `os-permission` error at `["desktopApplication","windows"]`, the application's consent-free fields still resolving, a **capability** refusal naming `desktop:read` for the other grant, `granted: false`, and no dialog on screen | **supersedes** [desktop-references-and-permission-vm.md](desktop-references-and-permission-vm.md) and [accessibility-status-and-consent-vm.md](accessibility-status-and-consent-vm.md) on the release build |
 | Prompt attribution | the window's Request Accessibility Access, read from the screen | macOS's dialog names **Koine** | **repeats** [notarized-release-vm.md](notarized-release-vm.md) |
@@ -223,9 +223,17 @@ far longer than Koine does: a guest exec that runs to completion and is then
 reported as "Process timed out after 30s" costs a real thirty seconds. Latency is
 measured with an instrument built for it, in [latency-and-support-matrix.md](latency-and-support-matrix.md).
 
-**The hardened-runtime step reads the desktop provider only.** The bundle also
-carries `Workspace.koineprovider`, which `scripts/build-app.sh` signs with the
-same `--options runtime`; this run does not read its flags.
+**Every bundled provider is hardened.** In this run the step named the desktop
+provider alone. It now reads every provider in the installed bundle's
+`Contents/PlugIns`, and a later run on the same bundle,
+`release-20261016T140829.log`, passed every expectation with it:
+
+```
+Entitlements: {}
+/Applications/Koine.app: flags=0x10000(runtime)
+/Applications/Koine.app/Contents/PlugIns/Desktop.koineprovider: flags=0x10000(runtime)
+/Applications/Koine.app/Contents/PlugIns/Workspace.koineprovider: flags=0x10000(runtime)
+```
 
 No behaviour of the release build differed from the spec in this run.
 

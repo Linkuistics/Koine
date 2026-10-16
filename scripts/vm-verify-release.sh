@@ -301,7 +301,15 @@ step "The release artifact's hardened runtime and empty entitlements, read from 
 ENTITLEMENTS="$(guest "codesign -d --entitlements - --xml ${INSTALLED} 2>/dev/null | plutil -convert json -o - -")"
 echo "Entitlements: ${ENTITLEMENTS}"
 [ "${ENTITLEMENTS}" = "{}" ] || fail "the release bundle carries entitlements: ${ENTITLEMENTS}"
-for code in "${INSTALLED}" "${INSTALLED}/Contents/PlugIns/Desktop.koineprovider"; do
+# The application and every provider it carries are each read as the guest has
+# them, rather than the ones this script happens to name. The list is read into
+# an array first: guest() runs testanyware, which must not consume a loop's stdin.
+PROVIDERS=()
+while IFS= read -r line; do PROVIDERS+=("${line}"); done < <(
+    guest_text "ls -d ${INSTALLED}/Contents/PlugIns/*.koineprovider" | grep '\.koineprovider$' || true)
+[ "${#PROVIDERS[@]}" -ge 2 ] ||
+    fail "Contents/PlugIns does not hold the bundled desktop and workspace providers: ${PROVIDERS[*]:-none}"
+for code in "${INSTALLED}" "${PROVIDERS[@]}"; do
     FLAGS="$(guest "codesign -dvv ${code} 2>&1 | sed -n 's/^CodeDirectory.*\(flags=[^ ]*\).*/\1/p'")"
     echo "${code}: ${FLAGS}"
     [ "${FLAGS}" = "flags=0x10000(runtime)" ] || fail "${code} is not hardened-runtime-and-nothing-else: ${FLAGS}"
