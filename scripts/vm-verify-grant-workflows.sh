@@ -134,7 +134,7 @@ pending_rows() {
 read_frame() {
     local entry
     entry="$(testanyware agent windows --json |
-        jq -c --arg name "${APP_NAME}" '[.windows[] | select(((.title // .name // "")) | test($name))][0]')"
+        jq -c --arg title "${WINDOW_TITLE}" '[.windows[] | select((.title // .name // "") == $title)][0]')"
     echo "Koine's window: ${entry}"
     # Floored: these become shell arithmetic below, where a fractional point
     # coordinate is a syntax error rather than a rounding question.

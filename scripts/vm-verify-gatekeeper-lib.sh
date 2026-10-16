@@ -138,7 +138,7 @@ install_app_quarantined() {
 }
 
 # await_service: waits for the endpoint descriptor, dismissing any Gatekeeper
-# plugin refusal that stands in the way, then waits for the management window.
+# plugin refusal that stands in the way, then waits for the settings window.
 #
 # Since quarantined-provider-precheck-k49 the loader asks Gatekeeper before
 # dlopen and refuses such a plugin itself, so no dialog is expected; the
@@ -155,9 +155,9 @@ BLOCKED_STARTUP=""
 await_service() {
     # The service first, the window second, and with more patience than the library's
     # launch(): a quarantined first launch goes through Gatekeeper's approval path
-    # and was measured taking longer than place_window's own 30s, so calling that
-    # first reports "the management window did not appear" for an application that
-    # was merely still starting.
+    # and was measured taking longer than the library's usual wait, so calling that
+    # first reports a missing window for an application that was merely still
+    # starting.
     # The refused plugin does not merely fail to load: it BLOCKS KOINE'S STARTUP.
     # Measured directly — Koine's process running, its dialog on screen, and no
     # endpoint.json in its data directory minutes later. The dlopen of a provider
@@ -222,13 +222,6 @@ await_service() {
     KOINE_PID="$(guest "pgrep -f ${INSTALLED}/Contents/MacOS" 2>&1 | grep -E '^[0-9]+$' | tail -1)"
     echo "Koine pid: ${KOINE_PID}"
     [ -n "${KOINE_PID}" ] || fail "Koine is not running after the launch"
-    # More patience than place_window's own 30s: on this path the window comes up
-    # well after the descriptor, and a run was failed with "the management window
-    # did not appear" whose failure screenshot showed it present and rendered.
-    for _ in $(seq 1 45); do
-        element '.id=="grant-label"' 2>/dev/null | grep -q '^{' && break
-        sleep 2
-    done
     place_window
 }
 

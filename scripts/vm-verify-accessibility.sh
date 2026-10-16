@@ -63,6 +63,7 @@ follow() {
     done
     echo "Observation: osPermissions reported granted: $1 within $(($(date +%s) - since))s, Koine pid $(koine_pid)."
     expect_permission "$1"
+    show_window
     testanyware agent window-focus --window "${APP_NAME}" >/dev/null
     sleep 3
     echo "Window: $(value_of '.id=="accessibility-status"')"

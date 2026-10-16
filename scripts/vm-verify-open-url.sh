@@ -702,14 +702,7 @@ PENDING="$(jq '[.[] | select(.status == "pending-activation")] | length' "${OUT_
 PENDING_ACCOUNT="$(jq '[.[] | select(.status == "pending-account")] | length' "${OUT_DIR}/results.json")"
 
 step "Quit Koine"
-for _ in 1 2 3; do
-    testanyware agent window-focus --window "${APP_NAME}" >/dev/null 2>&1 || true
-    sleep 1
-    testanyware input key q --modifiers cmd >/dev/null || true
-    sleep 3
-    guest "! pgrep -f ${INSTALLED}" >/dev/null 2>&1 && break
-done
-guest "! pgrep -f ${INSTALLED}" >/dev/null 2>&1 || { echo "Koine did not quit on Command-Q three times; terminated (recorded, not an acceptance case)."; guest "pkill -f ${INSTALLED}" || true; }
+quit_koine_or_terminate
 
 if [ "${FAILED}" != 0 ]; then
     echo "FAILED: ${FAILED} case(s) failed, ${PENDING} pending — transcript in ${LOG}" >&2

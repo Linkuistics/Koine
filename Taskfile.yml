@@ -1329,7 +1329,7 @@ tasks:
       - scripts/vm-verify-homebrew.sh
 
   app:vm-verify-release:
-    desc: Release acceptance, platform half, in ONE Gatekeeper-ENFORCING TestAnyware macOS session on the notarized, stapled, quarantined bundle - the hardened runtime with the empty entitlements file read in the guest, Accessibility consent absent, requested twice in one run of Koine and again in a later one, given and revoked with the prompt and the System Settings entry naming Koine, the os-permission error at the original response path told apart from a missing capability with no dialog raised by a read, same-titled windows under distinct stable references, a live PID claimed at another start instant, window closure and what a Koine restart does to each kind of reference, the management window closed with the listener and the provider still serving, and login launch across a VM restart with no client installed
+    desc: Release acceptance, platform half, in ONE Gatekeeper-ENFORCING TestAnyware macOS session on the notarized, stapled, quarantined bundle - the hardened runtime with the empty entitlements file read in the guest, Accessibility consent absent, requested twice in one run of Koine and again in a later one, given and revoked with the prompt and the System Settings entry naming Koine, the os-permission error at the original response path told apart from a missing capability with no dialog raised by a read, same-titled windows under distinct stable references, a live PID claimed at another start instant, window closure and what a Koine restart does to each kind of reference, the settings window closed with the listener and the provider still serving, and login launch across a VM restart with no client installed
     cmds:
       - scripts/vm-verify-release.sh
 
@@ -1370,7 +1370,7 @@ tasks:
       - scripts/vm-verify-desktop-focus.sh
 
   app:vm-verify-desktop-remembered:
-    desc: Verify in a clean TestAnyware macOS VM that the signed bundle's desktop provider lists a window left on another Space as REMEMBERED under the reference it had while CURRENT, revalidates and focuses it on selection, drops a closed window and a terminated application, as an independent native witness sees the destruction reported, and keeps observing with the management window closed
+    desc: Verify in a clean TestAnyware macOS VM that the signed bundle's desktop provider lists a window left on another Space as REMEMBERED under the reference it had while CURRENT, revalidates and focuses it on selection, drops a closed window and a terminated application, as an independent native witness sees the destruction reported, and keeps observing with the settings window closed
     cmds:
       - scripts/vm-verify-desktop-remembered.sh
 

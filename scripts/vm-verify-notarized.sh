@@ -102,15 +102,8 @@ KOINE_PID="$(guest "pgrep -f ${INSTALLED}/Contents/MacOS" 2>&1 | grep -E '^[0-9]
 echo "Koine pid: ${KOINE_PID}"
 [ -n "${KOINE_PID}" ] || fail "Koine is not running after the first launch"
 
-# Only now, with any Gatekeeper dialog cleared off the screen — and with more
-# patience than place_window's own 30s. On this path the window came up well
-# after the endpoint descriptor did, when the service was held at a refused
-# dlopen, and a run was failed with "the management window did not appear" whose
-# failure screenshot showed the window present and fully rendered.
-for _ in $(seq 1 45); do
-    element '.id=="grant-label"' 2>/dev/null | grep -q '^{' && break
-    sleep 2
-done
+# Only now, with any Gatekeeper dialog cleared off the screen. Accessibility is
+# not granted in this clone, so the launch rule opens the window.
 place_window
 
 step "Nothing was stripped: the attribute is still on the launched bundle"

@@ -1,7 +1,8 @@
 #!/bin/bash
 # Verifies the signed Koine.app in a clean TestAnyware macOS VM: installation
 # and signature, login launch with no client, the manual grant workflow and
-# revocation through the real UI, window close, and Quit. Nothing here runs the
+# revocation through the real UI, closing the settings window and reopening it, and
+# Quit. Nothing here runs the
 # application on the host. The procedure and its recorded evidence:
 # docs/verification/resident-app-vm.md
 #
@@ -19,6 +20,7 @@ start_vm
 install_app
 
 step "Start Koine and enable login launch in the UI"
+# Accessibility is not granted in this clone, so the launch rule opens the window.
 guest "open ${INSTALLED}"
 place_window
 echo "Before: $(value_of '.id=="login-launch-status"')"
@@ -29,9 +31,7 @@ echo "After:  $(value_of '.id=="login-launch-status"')"
     fail "login launch is not reported enabled"
 
 step "Quit Koine, then restart the VM: only the login item can start it again"
-testanyware input key q --modifiers cmd >/dev/null
-sleep 3
-guest "! pgrep -f ${INSTALLED}" >/dev/null || fail "Koine still runs after Quit"
+quit_koine
 guest "[ ! -e \"${DATA}/endpoint.json\" ]" || fail "the descriptor survived Quit"
 BOOT_BEFORE="$(guest 'sysctl -n kern.boottime')"
 # Not through guest(): a restart must never be repeated by a retry.
@@ -57,6 +57,7 @@ echo "Listener without a credential: HTTP ${UNAUTHENTICATED}"
 [ "${UNAUTHENTICATED}" = 401 ] || fail "the listener did not answer 401 to an unauthenticated request"
 
 step "Create a grant through the UI and deliver its credential to a script"
+# Accessibility is still not granted, so the login launch opened the window.
 place_window
 # The form is longer than the window (a capability's disclosure sits under it).
 calibrate_window_scroll
@@ -74,14 +75,13 @@ click '.role=="button" and .label=="Done"'
 expect_status 200
 client | grep -q "\"clientLabel\":\"${GRANT_LABEL}\"" || fail "Query.koine did not report the grant created in the UI"
 
-step "Close the management window; the service still answers"
-testanyware agent window-close --window "${APP_NAME}" >/dev/null
+step "Close the settings window; the service still answers"
+testanyware agent window-close --window "${WINDOW_TITLE}" >/dev/null
 sleep 2
-WINDOWS="$(testanyware agent windows --json | jq "[.windows[] | select(.appName == \"${APP_NAME}\" and .title == \"${APP_NAME}\")] | length")"
-[ "${WINDOWS}" = 0 ] || fail "the management window is still open"
+[ "$(koine_windows)" = 0 ] || fail "the settings window is still open"
 expect_status 200
 
-step "Reopen the window and revoke the grant through the UI"
+step "Reopen the window (opening the running application shows it) and revoke the grant through the UI"
 guest "open ${INSTALLED}"
 place_window
 click '(.id // "") | startswith("revoke-")'
@@ -92,12 +92,8 @@ grep -q '"Revoked"' <<<"${ROW}" || fail "the grant row does not show Revoked"
 expect_status 401
 
 step "Quit Koine"
-testanyware agent window-focus --window "${APP_NAME}" >/dev/null
-sleep 1
 PORT="$(guest "jq -r .port \"${DATA}/endpoint.json\"")"
-testanyware input key q --modifiers cmd >/dev/null
-sleep 3
-guest "! pgrep -f ${INSTALLED}" >/dev/null || fail "Koine still runs after Quit"
+quit_koine
 guest "ls \"${DATA}\""
 guest "[ ! -e \"${DATA}/endpoint.json\" ]" || fail "the descriptor survived Quit"
 client

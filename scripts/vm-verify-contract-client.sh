@@ -12,7 +12,7 @@
 # operations file, the bearer-grant ADR and one introspection response, and no
 # access to this repository; nothing here may teach it anything it did not learn
 # from those. This script is the harness, not the client: it drives the VM, the
-# management window and System Settings, and it checks the client's answers
+# settings window and System Settings, and it checks the client's answers
 # against an independent witness of what the system actually did
 # (Fixtures/WindowIdentityProbe).
 #

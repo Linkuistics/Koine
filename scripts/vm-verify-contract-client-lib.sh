@@ -36,7 +36,9 @@ approve_in_window() {
     # The clicks below go to screen coordinates, and by this point in the run
     # real application windows cover Koine's. A snapshot reads through them — the
     # label and code check out — so the only symptom of a covered window is the
-    # click landing in TextEdit. Raise Koine first, every time.
+    # click landing in TextEdit. Raise Koine first, every time, and show its window
+    # first when setup left it closed.
+    show_window
     testanyware agent window-focus --window "${APP_NAME}" >/dev/null
     sleep 1
     await_element ".id==\"request-${id}\"" present

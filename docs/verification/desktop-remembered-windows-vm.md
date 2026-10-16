@@ -172,5 +172,5 @@ across them. `task compat` was not run on this build, which changes nothing in
 - ⌃⌘F toggles: inside a full-screen Space it leaves full screen. Know which Space
   the run is on before pressing it; `open -F` keeps a relaunched application from
   restoring one.
-- `testanyware agent window-close --window Koine` answers HTTP 400 when Koine's
-  window is on another Space than the current one.
+- `testanyware agent window-close --window "Koine Settings"` answers HTTP 400 when
+  Koine's window is on another Space than the current one.

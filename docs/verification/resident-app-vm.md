@@ -28,12 +28,12 @@ the transcript to `.build/vm-verify/<timestamp>.log`.
 | Step | How | Expectation checked |
 |---|---|---|
 | Install | `ditto -c -k --keepParent` on the host, `testanyware file upload`, `ditto -x -k` into `/Applications` | `codesign --verify --strict --deep` passes in the VM; identifier, team and hardened runtime are printed; `spctl -a -vv` and the quarantine attribute are recorded |
-| Enable login launch | `open` the bundle; click "Start Koine at login" | the status text reads "Koine will start when you log in." |
-| Login with no client | ⌘Q first, so nothing but the login item can bring Koine back (no process, no descriptor); then `shutdown -r now`; the golden logs in automatically | after the restart a Koine process, `endpoint.json`, and HTTP 401 to an unauthenticated request — a listener answers |
+| Enable login launch | `open` the bundle, on a clone where Accessibility is not granted, so the launch rule opens the settings window; click "Start Koine at login" | the status text reads "Koine will start when you log in." |
+| Login with no client | ⌘Q from the window first, so nothing but the login item can bring Koine back (no process, no descriptor); then `shutdown -r now`; the golden logs in automatically | after the restart a Koine process, `endpoint.json`, and HTTP 401 to an unauthenticated request — a listener answers |
 | Manual grant | type a label, "Create Grant", the sheet's "Copy" button, `pbpaste` into a mode-600 file in the VM | `scripts/vm-verify-client.sh`, which knows only the descriptor and that file, gets HTTP 200 and `ownGrant.clientLabel` as typed; "Done" removes the credential from the UI |
-| Window closed | close the settings window | no Koine window; the same script still gets 200 |
-| Revoke | `open` the bundle again (the reopen path), "Revoke", confirm | the row reads "Revoked"; the same script gets 401 |
-| Quit | ⌘Q | no process, no `endpoint.json`, connection refused on the old port |
+| Window closed | close the settings window ("Koine Settings") | no Koine window; the same script still gets 200 |
+| Revoke | `open` the bundle again (the reopen path, which shows the window), "Revoke", confirm | the row reads "Revoked"; the same script gets 401 |
+| Quit | ⌘Q from the window | no process, no `endpoint.json`, connection refused on the old port |
 
 The credential never leaves the VM and is never printed: it travels from the
 sheet's Copy button through the VM's clipboard to the protected file.
@@ -64,6 +64,20 @@ sheet's Copy button through the VM's clipboard to the protected file.
   --mode full --depth 12 --json` by accessibility identifier, role and label,
   and clicks their centre over VNC, re-reading positions each time. The default
   snapshot depth stops above a grant row's children.
+- The settings window is not open at every launch: the launch rule opens it only
+  while Accessibility is not granted or login launch is not enabled. A check that
+  needs the window asks for it (`show_window` in `scripts/vm-verify-lib.sh`), and
+  `open` of the running bundle is what shows it, which is also how a user gets it
+  back from Finder or Spotlight. `launch` shows and places it, `place_window` does
+  the same, and `quit_koine` shows it before ⌘Q. Quit from the menu bar item's menu
+  needs System Events, which [menu-bar-vm.md](menu-bar-vm.md) sets up and covers.
+  The base run's clone has no Accessibility, so its launches open the window
+  by rule.
+- `agent window-focus --window Koine` (the application's name) is what makes the
+  settings window the one a click reaches. Naming the window by its full title,
+  "Koine Settings", raised it but left Finder the active application, and a click
+  on a button in it then went to the wallpaper and hid every window. Window moves
+  and closes take the title.
 - A notification banner ("Login Item Added") covers the top-right of the screen
   and swallows clicks — one opened System Settings. The script keeps the window
   at the top-left.
@@ -77,13 +91,13 @@ sheet's Copy button through the VM's clipboard to the protected file.
 
 ## Evidence
 
-Run of 2026-09-19 against the bundle built from `9991ac9` plus this
-procedure, signed `Developer ID Application: Antony Blakey (TA43A4RUP3)`,
-un-notarized. VM: clone of `testanyware-golden-macos-tahoe`, macOS 26.5
-(25F71), arm64, on an Apple-silicon host. Result: **passed**, every expectation
-above, about two minutes. Another complete run the same day also passed;
-the runs that failed that day failed on the tooling matters noted above, not
-Koine.
+Run of 2026-10-16 against the bundle built from `ce42c55` plus the shared-helper
+migration to the menu bar application, signed `Developer ID Application: Antony
+Blakey (TA43A4RUP3)`, un-notarized. VM: clone of `testanyware-golden-macos-tahoe`,
+macOS 26.5 (25F71), arm64, on an Apple-silicon host. Result: **passed**, every
+expectation above. Accessibility is not granted in the clone, so both launches that
+needed the window (the first, and the one after the restart) found it opened by the
+launch rule, and the reopen step brought it back with `open` of the running bundle.
 
 ```
 == Install the signed bundle (ditto zip, testanyware file upload, ditto -x)
@@ -91,7 +105,7 @@ Quarantine attribute: xattr: /Applications/Koine.app: No such xattr: com.apple.q
 /Applications/Koine.app: valid on disk
 /Applications/Koine.app: satisfies its Designated Requirement
 Identifier=dev.antony.Koine
-CodeDirectory v=20500 size=33884 flags=0x10000(runtime) hashes=1048+7 location=embedded
+CodeDirectory v=20500 size=37148 flags=0x10000(runtime) hashes=1150+7 location=embedded
 Authority=Developer ID Application: Antony Blakey (TA43A4RUP3)
 TeamIdentifier=TA43A4RUP3
 /Applications/Koine.app: accepted
@@ -103,19 +117,19 @@ Before: Koine is not registered to start at login. Clients find the service unav
 After:  Koine will start when you log in.
 
 == After login, with nothing having launched Koine
-417 /Applications/Koine.app/Contents/MacOS/Koine
-{"contractVersion":"koine-desktop\/1","descriptorVersion":1,"instanceId":"d65f16ec-…","path":"\/graphql","pid":417,"port":49152}
+473 /Applications/Koine.app/Contents/MacOS/Koine
+{"contractVersion":"koine-desktop\/1","descriptorVersion":1,"instanceId":"848911d3-…","path":"\/graphql","pid":473,"port":49152}
 Listener without a credential: HTTP 401
 
 == Create a grant through the UI and deliver its credential to a script
--rw-------  1 admin  staff  43 Sep 19 08:23 /Users/admin/koine-credential
+-rw-------  1 admin  staff  43 Oct 16 08:58 /Users/admin/koine-credential
 {"data":{"koine":{"contractVersion":"koine-desktop\/1","ownGrant":{"clientLabel":"vm-script","capabilities":[],"state":"ACTIVE"}}}}
 HTTP 200
 
-== Close the management window; the service still answers
+== Close the settings window; the service still answers
 HTTP 200
 
-== Reopen the window and revoke the grant through the UI
+== Reopen the window (opening the running application shows it) and revoke the grant through the UI
 Grant row: ["vm-script","No capabilities","Revoked","Revoke"]
 HTTP 401
 
@@ -125,5 +139,3 @@ instance.lock
 no descriptor
 curl to the old port 49152: exit 7
 ```
-
-No behaviour of the signed build differed from the spec in this run.

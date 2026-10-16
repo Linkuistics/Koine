@@ -151,13 +151,6 @@ jq -n --argjson control "$(guest_json "python3 \$HOME/vm-network-summary.py \$HO
 echo "Written: ${OUT_DIR}/summary.json"
 
 step "Quit Koine"
-for _ in 1 2 3; do
-    testanyware agent window-focus --window "${APP_NAME}" >/dev/null 2>&1 || true
-    sleep 1
-    testanyware input key q --modifiers cmd >/dev/null || true
-    sleep 3
-    guest "! pgrep -f ${INSTALLED}" >/dev/null 2>&1 && break
-done
-guest "! pgrep -f ${INSTALLED}" >/dev/null 2>&1 || guest "pkill -f ${INSTALLED}" || true
+quit_koine_or_terminate
 
 step "PASSED — transcript in ${LOG}"

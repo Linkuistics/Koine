@@ -14,7 +14,7 @@
 # capability, with no dialog raised by a read; same-titled windows under distinct
 # stable references, a live PID claimed at another start instant, an absent
 # process, a malformed start instant, window closure, and what a Koine restart
-# does to each kind of reference; the management window closed with the listener
+# does to each kind of reference; the settings window closed with the listener
 # and the provider still serving; and login launch through a VM restart with no
 # client installed. Which window Koine is talking about is never asked of Koine:
 # Fixtures/WindowIdentityProbe reads it from the system.
@@ -470,11 +470,10 @@ desktop "${READER_FILE}" Finder exact
 expect "(.response.data.desktopApplication.windows | length) == $((KOINE_BASELINE - 1))" \
     "Koine's listing did not lose exactly the closed window"
 
-step "The management window closed: the listener answers and the desktop provider still serves"
-testanyware agent window-close --window "${APP_NAME}" >/dev/null
+step "The settings window closed: the listener answers and the desktop provider still serves"
+testanyware agent window-close --window "${WINDOW_TITLE}" >/dev/null
 sleep 2
-OPEN_WINDOWS="$(testanyware agent windows --json | jq "[.windows[] | select(.appName == \"${APP_NAME}\" and .title == \"${APP_NAME}\")] | length")"
-[ "${OPEN_WINDOWS}" = 0 ] || fail "the management window is still open"
+[ "$(koine_windows)" = 0 ] || fail "the settings window is still open"
 expect_status 200
 # A state change made while there is no window, and served after it: the provider
 # is still reading the desktop, not replaying what the window had seen.
@@ -485,10 +484,10 @@ sleep 3
 listed "${FINDER_PID}" "(${SYSTEM_WINDOWS} | length) == ${PROBE_BASELINE}"
 desktop "${READER_FILE}" Finder exact
 expect "(.response.data.desktopApplication.windows | length) == ${KOINE_BASELINE}" \
-    "the provider did not serve the window opened while the management window was closed"
+    "the provider did not serve the window opened while the settings window was closed"
 NEW_REFS="$(jq -r '.response.data.desktopApplication.windows[].ref' <<<"${ANSWER}")"
 [ -n "$(comm -13 <(sort <<<"${WINDOW_REFS}") <(sort <<<"${NEW_REFS}"))" ] ||
-    fail "no new window reference appeared for the window opened with no management window"
+    fail "no new window reference appeared for the window opened with no settings window"
 LIVE_WINDOW="$(head -1 <<<"${NEW_REFS}")"
 
 step "Across a Koine restart: an application reference resolves again, a window reference does not"

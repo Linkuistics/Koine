@@ -8,7 +8,7 @@
 # closed while observable leaves no row and is unavailable, and the system's
 # notification of its destruction is seen by an independent native witness,
 # Fixtures/WindowIdentityProbe; a terminated application leaves nothing, under
-# its own incarnation or its successor's; and with the management window closed a
+# its own incarnation or its successor's; and with the settings window closed a
 # window opened and moved afterwards is still remembered. Quit stays prompt with
 # observation running. Nothing here runs the application on the host. The
 # procedure and its recorded evidence: docs/verification/desktop-remembered-windows-vm.md
@@ -149,8 +149,8 @@ expect_unavailable desktopWindow "the closed window"
 guest 'open -a Finder' || true
 refused "${A}" "the closed window"
 
-step "Close the management window: everything from here runs without it"
-testanyware agent window-close --window "${APP_NAME}" >/dev/null
+step "Close the settings window: everything from here runs without it"
+testanyware agent window-close --window "${WINDOW_TITLE}" >/dev/null
 sleep 2
 
 step "A terminated application leaves nothing, under its own incarnation or its successor's"
@@ -181,7 +181,7 @@ expect "[.response.data.desktopApplication.windows[] | select(.observation != \"
 expect '.response.data.desktopApplication.ref != "'"${TEXTEDIT_REF}"'"' "the successor has the earlier incarnation's reference"
 echo "Observation: the successor lists $(jq -c '[.response.data.desktopApplication.windows[].title]' <<<"${ANSWER}")."
 
-step "With the management window closed, a window opened and moved afterwards is still remembered"
+step "With the settings window closed, a window opened and moved afterwards is still remembered"
 # shellcheck disable=SC2016  # guest-side $HOME
 guest 'echo d > $HOME/remembered-d.txt; open -a TextEdit $HOME/remembered-d.txt' || true
 sleep 5

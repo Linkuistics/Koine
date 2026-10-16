@@ -28,6 +28,8 @@ exec > >(tee "${LOG}") 2>&1
 VM_ID="${KOINE_VM_ID:-koine-verify-$$}"
 export TESTANYWARE_VM_ID="${VM_ID}"
 INSTALLED="/Applications/${APP_NAME}.app"
+# The settings window's title, which is also what the agent matches --window against.
+WINDOW_TITLE="${APP_NAME} Settings"
 DATA='$HOME/Library/Application Support/Koine'
 CREDENTIAL_FILE='$HOME/koine-credential'
 GRANT_LABEL="vm-script"
@@ -118,7 +120,7 @@ element() {
 value_of() { element "$1" | jq -r '.value // empty'; }
 click() {
     local e
-    # Koine's window is a fixed frame around content that outgrows it, and the
+    # Koine's window is a frame around content that outgrows it, and the
     # tree reports scrolled-out elements too; a click at one's centre lands on
     # the title bar or the wallpaper. So an element of Koine's window is first
     # scrolled wholly on screen. Another application's window is clicked as read.
@@ -143,16 +145,17 @@ await_element() {
     fail "window element $1 was not $2"
 }
 text_of() { element "$1" | jq -r '[.. | strings] | join(" ")'; }
-# The window is a fixed 480x680 frame around scrolling content (the grant form's
-# disclosures make it longer than the frame), so an element is on screen, and
-# clickable, only when its frame lies inside the window's. The accessibility tree
-# reports an element that is scrolled out of view as well, so what a person can
-# see is decided by geometry, not by the tree's membership.
+# The settings window opens at 480x680 around scrolling content (the grant form's
+# disclosures make it longer than the frame), and no check resizes it except
+# vm-verify-menu-bar.sh, so an element is on screen, and clickable, only when its
+# frame lies inside the window's. The accessibility tree reports an element that
+# is scrolled out of view as well, so what a person can see is decided by
+# geometry, not by the tree's membership.
 TITLE_BAR=30
 read_frame() {
     local entry
     entry="$(testanyware agent windows --json |
-        jq -c --arg name "${APP_NAME}" '[.windows[] | select(((.title // .name // "")) | test($name))][0]')"
+        jq -c --arg title "${WINDOW_TITLE}" '[.windows[] | select((.title // .name // "") == $title)][0]')"
     read -r FRAME_X FRAME_Y FRAME_W FRAME_H <<<"$(jq -r \
         '[(.positionX // .x // .bounds.x), (.positionY // .y // .bounds.y),
           (.sizeWidth // .width // .bounds.width), (.sizeHeight // .bounds.height // .height)]
@@ -207,16 +210,35 @@ reveal_click() {
     reveal "$1"
     click "$1"
 }
+# show_window: the settings window is on screen, however Koine was launched. A
+# launch finding setup complete opens none (the launch rule), and `open` of the
+# running bundle is a reopen, which shows it, so a check that needs the window
+# asks for it here instead of waiting for one. The window can come up late after
+# a first launch, so the reopen is repeated rather than awaited once.
+show_window() {
+    local windows
+    for _ in $(seq 1 12); do
+        windows="$(koine_windows 2>/dev/null || true)"
+        if [[ "${windows}" =~ ^[1-9] ]]; then return 0; fi
+        guest "open ${INSTALLED}" || true
+        sleep 5
+    done
+    fail "the settings window did not appear"
+}
 # Notification banners ("Login Item Added") cover the top-right of the screen
 # and swallow clicks; keep the window at the top-left.
 place_window() {
     local tries=0
+    show_window
+    # More patience than a launch usually needs: after a quarantined first launch
+    # the window came up well after the endpoint descriptor, and a run was failed
+    # for a window whose failure screenshot showed it present and rendered.
     until element '.id=="grant-label"' 2>/dev/null | grep -q '^{'; do
         tries=$((tries + 1))
-        [ "${tries}" -lt 15 ] || fail "the management window did not appear"
+        [ "${tries}" -lt 45 ] || fail "the settings window did not show its controls"
         sleep 2
     done
-    testanyware agent window-move --window "${APP_NAME}" --x 40 --y 40 >/dev/null
+    testanyware agent window-move --window "${WINDOW_TITLE}" --x 40 --y 40 >/dev/null
     testanyware agent window-focus --window "${APP_NAME}" >/dev/null
     sleep 1
 }
@@ -229,13 +251,17 @@ expect_status() {
     grep -qx "HTTP $1" <<<"${out}" || fail "the client script expected HTTP $1"
 }
 
+# launch: starts Koine, waits for its endpoint descriptor, and leaves the settings
+# window shown and placed, as every check that drives it expects.
 launch() {
     # The agent's false timeout comes in bursts that can outlast guest's retries.
-    # What follows proves the launch: the window, then the endpoint descriptor.
+    # What follows proves the launch: the endpoint descriptor, then the window.
     guest "open ${INSTALLED}" || true
-    place_window
     for _ in $(seq 1 12); do
-        if guest "[ -e \"${DATA}/endpoint.json\" ]" >/dev/null 2>&1; then return; fi
+        if guest "[ -e \"${DATA}/endpoint.json\" ]" >/dev/null 2>&1; then
+            place_window
+            return
+        fi
         sleep 2
     done
     fail "no endpoint descriptor after launch"
@@ -247,12 +273,29 @@ ask() {
     grep -qx "HTTP 200" <<<"${RESPONSE}" || fail "expected HTTP 200 for: $1"
 }
 
+# quit_koine: ⌘Q from the settings window, which is shown first when setup left
+# it closed. Quit Koine in the menu bar item's menu is choose_menu_item.
 quit_koine() {
+    show_window
     testanyware agent window-focus --window "${APP_NAME}" >/dev/null
     sleep 1
     testanyware input key q --modifiers cmd >/dev/null
     sleep 3
     guest "! pgrep -f ${INSTALLED}" >/dev/null || fail "Koine still runs after Quit"
+}
+# quit_koine_or_terminate: the end of a run that records rather than fails: ⌘Q from
+# the window up to three times, then the process is terminated and that is said.
+quit_koine_or_terminate() {
+    for _ in 1 2 3; do
+        show_window
+        testanyware agent window-focus --window "${APP_NAME}" >/dev/null 2>&1 || true
+        sleep 1
+        testanyware input key q --modifiers cmd >/dev/null || true
+        sleep 3
+        guest "! pgrep -f ${INSTALLED}" >/dev/null 2>&1 && return
+    done
+    echo "Koine did not quit on Command-Q three times; terminated (recorded, not an acceptance case)."
+    guest "pkill -f ${INSTALLED}" || true
 }
 
 start_vm() {
@@ -417,7 +460,7 @@ koine_in_front() {
 # a drag is.
 drag_window_corner() {
     local frame x y w h
-    frame="$(testanyware agent windows --json | jq -r --arg title "${3:-${APP_NAME} Settings}" \
+    frame="$(testanyware agent windows --json | jq -r --arg title "${3:-${WINDOW_TITLE}}" \
         '[.windows[] | select(.title == $title)][0] | "\(.positionX | floor) \(.positionY | floor) \(.sizeWidth | floor) \(.sizeHeight | floor)"')"
     read -r x y w h <<<"${frame}"
     testanyware input move $((x + w - 1)) $((y + h - 1)) >/dev/null
