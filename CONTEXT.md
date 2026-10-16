@@ -23,7 +23,7 @@ query/execute payload.
 **Machine server**: The separate resident application that exposes the **Machine
 abstraction** through a fully introspectable GraphQL API with a capability
 model, hosts native **providers**, holds the OS permissions for their
-operations. Its native management UI and **providers** run in the same process.
+operations. Its menu bar item, **settings window** and **providers** run in the same process.
 No project includes the server; ModalAnyware is one of its
 **clients**.
 

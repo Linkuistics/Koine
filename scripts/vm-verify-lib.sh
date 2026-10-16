@@ -293,3 +293,141 @@ install_app() {
     guest "codesign --display --verbose=2 ${INSTALLED} 2>&1 | grep -E '^(Identifier|TeamIdentifier|Authority=Developer|CodeDirectory)'"
     guest "spctl -a -vv ${INSTALLED} 2>&1" || echo "(spctl assessment did not accept the bundle; recorded, not a failure of this stage)"
 }
+
+# The menu bar item and the settings window of the agent application. TestAnyware's
+# agent lists windows but not status items, so the item is read and its menu opened
+# through System Events (osascript in the guest), and chosen the way a user does:
+# the mouse over VNC. System Events asks, once per clone, whether the agent may
+# control it; grant_system_events_automation answers that prompt.
+KOINE_ITEM='menu bar item 1 of menu bar 2 of process "Koine"'
+# sysevents <AppleScript expression>: its value, as osascript prints it. An empty
+# answer is "no such element" as often as "nothing", so callers that need to tell
+# them apart poll.
+sysevents() {
+    local script="tell application \"System Events\" to $1"
+    guest_text "osascript -e '${script}'" | tr -d '\r'
+}
+# The first System Events call of a clone raises a macOS Automation prompt naming
+# "testanyware-agent" and blocks until it is answered. It is started in the
+# background and the prompt's Allow button is clicked, as a user would.
+grant_system_events_automation() {
+    guest "nohup osascript -e 'tell application \"System Events\" to get name of every process' >/dev/null 2>&1 &" || true
+    local found
+    found="$(testanyware screen find-text "Allow" --timeout 30 --json 2>/dev/null |
+        jq -c '[.detections[] | select(.text == "Allow")][0]')" || true
+    [ -n "${found}" ] && [ "${found}" != null ] || fail "the Automation prompt for System Events did not appear"
+    # shellcheck disable=SC2046
+    testanyware input click $(jq -r '"\(.x + .width / 2 | floor) \(.y + .height / 2 | floor)"' <<<"${found}") >/dev/null
+    sleep 2
+    [ -n "$(sysevents 'get name of every process')" ] || fail "System Events still refuses the agent"
+}
+# click_at <x> <y>: a menu tracks the pointer, and a click with no movement before
+# it chooses nothing, so the pointer is brought onto the target first.
+click_at() {
+    testanyware input move $(($1 - 12)) $(($2 - 8)) >/dev/null
+    sleep 0.3
+    testanyware input move "$1" "$2" >/dev/null
+    sleep 0.3
+    testanyware input click "$1" "$2" >/dev/null
+    sleep 1
+}
+# click_centre <"x, y, w, h" as System Events prints position then size>
+click_centre() {
+    local x y w h
+    IFS=', ' read -r x y w h <<<"$(tr -s ', ' ' ' <<<"$1")"
+    [[ "${x}${y}${w}${h}" =~ ^[0-9]+$ ]] || fail "not a frame: $1"
+    click_at $((x + w / 2)) $((y + h / 2))
+}
+# menu_item_count: how many items Koine has in the menu bar. One, always.
+menu_item_count() { sysevents "get count of menu bar items of menu bar 2 of process \"Koine\""; }
+# menu_item_label: the item's accessibility description, which is what VoiceOver
+# reads and what states the mark.
+menu_item_label() { sysevents "get description of ${KOINE_ITEM}"; }
+await_menu_item_label() {
+    local got=""
+    for _ in $(seq 1 15); do
+        got="$(menu_item_label)"
+        [ "${got}" != "$1" ] || return 0
+        sleep 2
+    done
+    fail "the menu bar item's label is \"${got}\", not \"$1\""
+}
+# open_menu: click the item; the menu stays open until a choice or escape.
+open_menu() {
+    local frame="" tries=0
+    until [[ "${frame}" =~ ^[0-9] ]]; do
+        tries=$((tries + 1))
+        [ "${tries}" -lt 6 ] || fail "Koine's menu bar item has no position"
+        frame="$(sysevents "get {position, size} of ${KOINE_ITEM}")"
+        [[ "${frame}" =~ ^[0-9] ]] || sleep 2
+    done
+    click_centre "${frame}"
+}
+# menu_titles: the titles of the open menu's items, separators as empty ones.
+menu_titles() { sysevents "get title of every menu item of menu 1 of ${KOINE_ITEM}"; }
+# read_menu: the menu's titles, read open and closed again.
+read_menu() {
+    open_menu
+    MENU="$(menu_titles)"
+    echo "Menu: ${MENU}"
+    testanyware input key escape >/dev/null
+    sleep 1
+}
+# choose_menu_item <title>: open the menu and click the item.
+choose_menu_item() {
+    open_menu
+    local frame=""
+    for _ in $(seq 1 5); do
+        frame="$(sysevents "get {position, size} of menu item \"$1\" of menu 1 of ${KOINE_ITEM}")"
+        [[ "${frame}" =~ ^[0-9] ]] && break
+        sleep 1
+    done
+    [[ "${frame}" =~ ^[0-9] ]] || fail "the menu has no item \"$1\""
+    click_centre "${frame}"
+    sleep 2
+}
+# koine_windows: the number of Koine windows on screen.
+koine_windows() {
+    testanyware agent windows --json |
+        jq --arg app "${APP_NAME}" '[.windows[] | select(.appName == $app)] | length'
+}
+await_windows() {
+    local got=""
+    for _ in $(seq 1 10); do
+        got="$(koine_windows)"
+        [ "${got}" != "$1" ] || return 0
+        sleep 2
+    done
+    fail "Koine has ${got} windows, not $1"
+}
+# front_windows: the windows front to back, as the agent lists them, without the
+# widgets and banners Notification Center keeps on screen (a "Login Item Added"
+# banner is a window of its own, and in front of everything while it shows).
+front_windows() {
+    testanyware agent windows --json |
+        jq -c '[.windows[] | select(.appName != "Notification Center") | [.appName, .title, .focused]]'
+}
+# koine_in_front: Koine's window is the front window and the key one.
+koine_in_front() {
+    front_windows | jq -e --arg app "${APP_NAME}" '.[0] | .[0] == $app and .[2] == true' >/dev/null
+}
+# drag_window_corner <x> <y> [title]: a user's resize, the pointer taking the
+# window's bottom-right corner to that point. `agent window-resize` is not that: it
+# sets the frame by accessibility and is not held to the window's least size, which
+# a drag is.
+drag_window_corner() {
+    local frame x y w h
+    frame="$(testanyware agent windows --json | jq -r --arg title "${3:-${APP_NAME} Settings}" \
+        '[.windows[] | select(.title == $title)][0] | "\(.positionX | floor) \(.positionY | floor) \(.sizeWidth | floor) \(.sizeHeight | floor)"')"
+    read -r x y w h <<<"${frame}"
+    testanyware input move $((x + w - 1)) $((y + h - 1)) >/dev/null
+    sleep 0.5
+    testanyware input mouse-down $((x + w - 1)) $((y + h - 1)) >/dev/null
+    testanyware input mouse-up "$1" "$2" >/dev/null
+    sleep 1
+}
+# guest_once <command>: a command that must run exactly once. `open` of a running
+# Koine is a reopen, which shows the settings window, so a launch that must stay
+# silent cannot be repeated by guest()'s retry of the agent's false timeout; what
+# follows the launch (await_koine) proves it happened.
+guest_once() { testanyware file exec "$1" >/dev/null 2>&1 || true; }

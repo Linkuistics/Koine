@@ -85,7 +85,7 @@ Every observation of what the system did is an independent witness's
 
 | Step | What the client is asked | Observed |
 |---|---|---|
-| Discovery and grants | `probe`; then `enrol` four times, each approved in Koine's window | `service-unavailable` before launch; the endpoint read from the descriptor alone; grants for both controls, `workspace:control` alone, `desktop:control` alone and `desktop:read` alone, each PENDING → APPROVED |
+| Discovery and grants | `probe`; then `enrol` four times, each approved in the settings window | `service-unavailable` before launch; the endpoint read from the descriptor alone; grants for both controls, `workspace:control` alone, `desktop:control` alone and `desktop:read` alone, each PENDING → APPROVED |
 | Schema | `introspect` | `schemaDigestsEqual: true`: the digest served now is the one the client was generated against |
 | **Dependency unavailable** | `launch` of `dev.koine.test.NotInstalled` under both controls | `dependency-unavailable`, `status: DEPENDENCY_UNAVAILABLE`, `APPLICATION_NOT_INSTALLED` with the guidance, no error; nothing launched, activated or moved |
 | **Capability denial, complete set** | `launch` under `workspace:control` alone; under `desktop:control` alone | HTTP 403, `capability-denied`, `phase: authorization`; first unmet `desktop:control`, then `workspace:control`; in both the complete set `["workspace:control","desktop:control"]`; nothing launched, activated or moved |

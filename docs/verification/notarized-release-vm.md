@@ -197,7 +197,7 @@ happens inside the wait. A dismissal attempted once and latched leaves the dialo
 standing for the whole bound when the click lands early, so it is attempted on
 every iteration while the dialog stands. Unsetting `SNAPSHOT_DEPTH` instead of
 restoring it aborts under `set -u` inside `element`'s subshell, which surfaces
-from a retry loop as "the management window did not appear" while a screenshot
+from a retry loop as "the settings window did not appear" while a screenshot
 shows the window present and fully rendered. And `testanyware vm list` can report
 `Running clones: (none)` for a clone `tart list` reports as `running` and whose
 agent answers every call, so a liveness guard uses `tart`'s state column, as the

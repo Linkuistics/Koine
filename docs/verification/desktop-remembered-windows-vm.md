@@ -46,7 +46,7 @@ task app                               # build and sign .build/app/Koine.app
 task app:vm-verify-desktop-remembered  # scripts/vm-verify-desktop-remembered.sh
 ```
 
-Two grants are created in Koine's window: a reader (`koine:manage`,
+Two grants are created in the settings window: a reader (`koine:manage`,
 `desktop:read`) and a controller with `desktop:control` alone. Listings are
 `DesktopChoices` and focuses `FocusDesktopWindow`, as
 `docs/design/desktop-operations.graphql` has them. `Fixtures/WindowIdentityProbe`
@@ -64,8 +64,8 @@ what it was told, with its times.
 | Returned | ⌃⌘F leaves full screen; list | both `CURRENT`, same references |
 | Closed while observable | the probe observes TextEdit; focus A, ⌘W; list; `desktopWindow` and focus A | the probe was told of the destruction of A's id alone; one row, B; A is `unavailable` by both routes and focus does not move |
 | Terminated | B left on another Space and listed `REMEMBERED`; `killall TextEdit`; `desktopWindow` B, the application's reference; TextEdit opened again; list | both `unavailable`; the successor has another reference and lists nothing `REMEMBERED` and neither A nor B |
-| Management window closed | Koine's window closed; *then* `remembered-d.txt` opened, listed, focused, ⌃⌘F, ⌃←; the probe sees it not enumerated; list; focus it | `CURRENT`, then `REMEMBERED` under the same reference; the receipt, and the probe reads its id focused |
-| Quit | Koine's window shown again, ⌘Q | no Koine process three seconds later, with observers registered |
+| Settings window closed | The settings window closed; *then* `remembered-d.txt` opened, listed, focused, ⌃⌘F, ⌃←; the probe sees it not enumerated; list; focus it | `CURRENT`, then `REMEMBERED` under the same reference; the receipt, and the probe reads its id focused |
+| Quit | The settings window shown again, ⌘Q | no Koine process three seconds later, with observers registered |
 
 The host suite holds what needs no window: `HeldWindowsTests` for the
 bookkeeping (each window once and under its token, titles refreshed, the four
@@ -99,7 +99,7 @@ references are written `<token>` within session `51f495eb080e8bcc`.
   else, in that same second. Koine listed one row, 1 `CURRENT`. Reference 2:
   `unavailable`, "The window is no longer open.", by `desktopWindow` and by
   focus, with Finder 115 focused before and after.
-- The management window was closed here; nothing after this had one.
+- The settings window was closed here; nothing after this had one.
 - Terminated: B focused, made full screen and left; listed as the one row, 1
   `REMEMBERED`. After `killall TextEdit`: reference 1 `unavailable`, "The window
   is no longer open."; the application's reference `unavailable`, "The
@@ -110,7 +110,7 @@ references are written `<token>` within session `51f495eb080e8bcc`.
   focused (143), made full screen and left; the probe saw TextEdit enumerate 140
   alone; Koine listed 3 `CURRENT` and 4 `REMEMBERED`; focusing 4 returned its
   receipt and the probe read 143 focused.
-- Quit: Koine's window shown again, ⌘Q, and no Koine process three seconds later.
+- Quit: the settings window shown again, ⌘Q, and no Koine process three seconds later.
 
 Four other runs are not the evidence. One ran a build with the `stop()` fault
 below and ended at the closure step, where the probe reported no destruction:

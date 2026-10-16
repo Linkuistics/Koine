@@ -106,7 +106,7 @@ redirects; Koine sends none.
 A client obtains a credential in one of two ways, and presents it as
 `Authorization: Bearer <credential>` on every request afterwards.
 
-**The user creates it** in Koine's window and gives it to the client, which is
+**The user creates it** in Koine's settings window (Settings… in its menu bar item) and gives it to the client, which is
 simplest for a script. Koine shows it once.
 
 **The client requests it** ("Client-requested grant" in the spec, and README's
@@ -126,7 +126,7 @@ simplest for a script. Koine shows it once.
    operation is 400, and every anonymous enrollment spends the rate budget
    before it is validated, so over budget even a malformed one is 429.
 3. Show the user the returned comparison code, so they can compare it with what
-   Koine's window shows. Treat it as an opaque string.
+   Koine's settings window shows. Treat it as an opaque string.
 4. Poll `koineGrantRequest` **with** the credential as the bearer. Before the
    user decides, after a denial and after expiry, the credential authenticates
    for that one query and nothing else: every other operation is refused, and that is not a

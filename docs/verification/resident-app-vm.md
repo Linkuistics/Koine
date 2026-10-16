@@ -2,7 +2,7 @@
 
 The "Isolated TestAnyware macOS VMs" seam of `docs/specs/machine.md`, limited to
 signed installation, login launch with no client, the manual grant workflow and
-revocation through the real UI, the management window closed with the service
+revocation through the real UI, the settings window closed with the service
 still answering, and Quit. Accessibility attribution
 ([accessibility-status-and-consent-vm.md](accessibility-status-and-consent-vm.md)),
 the request/approval workflow
@@ -31,7 +31,7 @@ the transcript to `.build/vm-verify/<timestamp>.log`.
 | Enable login launch | `open` the bundle; click "Start Koine at login" | the status text reads "Koine will start when you log in." |
 | Login with no client | ⌘Q first, so nothing but the login item can bring Koine back (no process, no descriptor); then `shutdown -r now`; the golden logs in automatically | after the restart a Koine process, `endpoint.json`, and HTTP 401 to an unauthenticated request — a listener answers |
 | Manual grant | type a label, "Create Grant", the sheet's "Copy" button, `pbpaste` into a mode-600 file in the VM | `scripts/vm-verify-client.sh`, which knows only the descriptor and that file, gets HTTP 200 and `ownGrant.clientLabel` as typed; "Done" removes the credential from the UI |
-| Window closed | close the management window | no Koine window; the same script still gets 200 |
+| Window closed | close the settings window | no Koine window; the same script still gets 200 |
 | Revoke | `open` the bundle again (the reopen path), "Revoke", confirm | the row reads "Revoked"; the same script gets 401 |
 | Quit | ⌘Q | no process, no `endpoint.json`, connection refused on the old port |
 

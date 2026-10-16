@@ -1,15 +1,15 @@
 import AppKit
 
 /// A programmatic application has no menu bar until it builds one; without it
-/// there is no Quit, no ⌘W and no copy/paste in text fields.
+/// there is no Quit, no ⌘W and no copy/paste in text fields. Koine is an agent
+/// application, so this menu is never drawn: it is kept for its key equivalents
+/// while the settings window is key.
 @MainActor
 enum MainMenu {
     static func make() -> NSMenu {
         let main = NSMenu()
 
         let app = NSMenu()
-        app.addItem(withTitle: "Hide Koine", action: #selector(NSApplication.hide(_:)), keyEquivalent: "h")
-        app.addItem(.separator())
         app.addItem(withTitle: "Quit Koine", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
         add(app, to: main)
 

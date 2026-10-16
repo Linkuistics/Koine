@@ -48,7 +48,7 @@ every other case needs, so it is last.
 | Duplicate titles | two Finder windows, listed twice | same title, distinct references, and the second listing returns the same references | **supersedes** [desktop-application-and-windows-vm.md](desktop-application-and-windows-vm.md) on the release build |
 | PID reuse, as far as it is observable | the live PID at another `startedAt`; an absent PID; a malformed instant | ordinary `null` with **no error** for the first two, an input error for the third | **supersedes** [desktop-application-and-windows-vm.md](desktop-application-and-windows-vm.md) |
 | Window closure | ⌘W, with `WindowIdentityProbe` reading the system **before** Koine is asked | the system has one window fewer, exactly one reference is `unavailable`, its same-titled siblings still resolve, and Koine's listing loses exactly one row | **supersedes** [desktop-references-and-permission-vm.md](desktop-references-and-permission-vm.md) |
-| Management window closed | `agent window-close`, then a window opened with no management window | the listener answers `200`, the system's count returns to the baseline, and Koine serves the new window under a reference it had not issued before | **supersedes** [resident-app-vm.md](resident-app-vm.md) and the observation half of [desktop-remembered-windows-vm.md](desktop-remembered-windows-vm.md) |
+| Settings window closed | `agent window-close`, then a window opened with no settings window | the listener answers `200`, the system's count returns to the baseline, and Koine serves the new window under a reference it had not issued before | **supersedes** [resident-app-vm.md](resident-app-vm.md) and the observation half of [desktop-remembered-windows-vm.md](desktop-remembered-windows-vm.md) |
 | Koine restart | quit and relaunch | the **application** reference resolves to the same application, field for field; the **window** reference is `unavailable`; the open windows are listed under the new run's own references | **supersedes** [desktop-references-and-permission-vm.md](desktop-references-and-permission-vm.md) |
 | Consent revoked | Koine's switch in System Settings, while Koine runs — driven until the switch itself reports the change | an `os-permission` error at `["desktopApplication","windows"]` and at `["desktopWindow"]`; the consent-free fields still resolving; a missing capability still reported as the capability class; no dialog | **supersedes** [desktop-references-and-permission-vm.md](desktop-references-and-permission-vm.md) |
 | A request in a **later** run of Koine | quit, relaunch, request again | recorded, not asserted | **closes** the second half of the same item |
@@ -110,7 +110,7 @@ not interchangeable, and a run that revokes should grant by Add.
   here exists to be the grant **without** `desktop:read`, not to focus anything.
 - **Spaces and `REMEMBERED` rows are not exercised.**
   [desktop-remembered-windows-vm.md](desktop-remembered-windows-vm.md) owns them;
-  what this run takes from that document is the management window closed with the
+  what this run takes from that document is the settings window closed with the
   provider still serving.
 - **The grant workflows are not exercised here.** Grants are made in the window
   because the desktop cases need credentials; both workflows end to end on the

@@ -35,7 +35,7 @@ A launch request runs **once**: the recipe's agent wrapper retries the agent's f
 "timed out" answer, which for a launch would turn the cold launch into a
 reactivation. The answer goes to a file that is read back.
 
-Grants: the first (`koine:manage`, `desktop:read`) is made in Koine's window; the
+Grants: the first (`koine:manage`, `desktop:read`) is made in the settings window; the
 rest are made by it through `koineCreateGrant` (the window's grant form scrolls out
 of reach once several grants are listed). One is revoked through `koineRevokeGrant`
 after being seen to work.

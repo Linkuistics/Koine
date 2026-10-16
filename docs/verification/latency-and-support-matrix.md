@@ -73,7 +73,7 @@ task app:vm-verify-latency  # scripts/vm-verify-latency.sh; KOINE_LATENCY_CYCLES
 ```
 
 The run installs the signed bundle in a clean clone, creates **one** grant in
-Koine's window with `desktop:read` and `desktop:control` — what a real switcher
+The settings window with `desktop:read` and `desktop:control` — what a real switcher
 client holds — opens two Finder windows with the same title and a TextEdit
 document, and gives Koine Accessibility consent in System Settings.
 

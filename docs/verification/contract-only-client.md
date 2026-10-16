@@ -51,7 +51,7 @@ on the host to one dependency-free `.mjs`, so nothing is installed in the guest.
 |---|---|---|
 | No service | `probe`, before Koine is launched | `service-unavailable` — an absent descriptor is unavailability, not denial |
 | Discovery | `probe`, after launch | the descriptor is read, `contractVersion` is `koine-desktop/1`, `path` is `/graphql`, and the client builds the literal loopback URL itself |
-| Enrolment | `enrol`, then the user's decision in Koine's window | the window shows the client's own label and comparison code; the client's own poll goes `PENDING` → `APPROVED`; no credential is typed, pasted or shown |
+| Enrolment | `enrol`, then the user's decision in the settings window | the window shows the client's own label and comparison code; the client's own poll goes `PENDING` → `APPROVED`; no credential is typed, pasted or shown |
 | `InspectOwnConnection` | under the reading grant | contract version, instance id, served digest, and the caller's own active grant |
 | Introspection | `introspect` | a standard `getIntrospectionQuery` answer, and **the client's own comparison** of the digest served now with the digest it generated against |
 | `DesktopChoices`, no consent | before Accessibility is given | `os-permission-denied`, at `["desktopApplication","windows"]`, naming `accessibility` and `koine`, with no consent dialog on screen |

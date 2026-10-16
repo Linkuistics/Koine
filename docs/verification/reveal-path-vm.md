@@ -47,7 +47,7 @@ the script, its fixtures and observer, the three libraries, the alias maker, the
 Koine's executable), unchanged.
 
 **Every request is made by the contract-only client** ([README](../../clients/contract-only/README.md)),
-which enrols its own grants through Koine's window, five of them: a manager grant that only reads
+which enrols its own grants through the settings window, five of them: a manager grant that only reads
 Koine's own account of Accessibility, one with both controls, one with `workspace:control` alone,
 one with `desktop:control` alone, and one that is created and then revoked. The paths travel in files, read in the
 guest with `--path-file`, so that no shell or exec channel can repair what is sent. **`reveal-path`

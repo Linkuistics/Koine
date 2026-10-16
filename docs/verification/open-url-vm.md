@@ -43,7 +43,7 @@ activate).
 
 **Every request is made by the contract-only client** ([launch-contract.md](launch-contract.md),
 [open-url-contract-client-findings.md](open-url-contract-client-findings.md)), which
-enrols its own grants through Koine's window and was regenerated from the schema the
+enrols its own grants through the settings window and was regenerated from the schema the
 signed build serves (digest `1815b52f078ff4a1c7ca08d284ccfd50c03422d47055c8b926500391a1569d19`,
 introspected by `task conformance:vm`, below). Four grants are enrolled: both controls, each
 control alone, and a fourth for both controls that a `koine:manage` grant, made in the

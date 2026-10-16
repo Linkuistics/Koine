@@ -296,6 +296,36 @@ import Testing
     }
 }
 
+/// The menu bar model over the status an embedded server serves.
+extension ManagementClientTests {
+    @Test func theMenuFollowsTheServedStatus() async throws {
+        let directory = FileManager.default.temporaryDirectory
+            .appendingPathComponent("koine-client-tests-\(UUID().uuidString)", isDirectory: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let granted = Flag()
+        let server = try KoineServer(
+            dataDirectory: directory,
+            osPermissions: {
+                [OSPermissionStatus(permission: "accessibility", owner: "koine", granted: granted.value)]
+            }
+        )
+        let port = try await server.start()
+        let client = ManagementClient(console: server.console)
+
+        var menu = MenuBarModel(status: try await client.status(), loginLaunch: .enabled)
+        #expect(menu.statusLines.map(\.title) == ["Accessibility Not Granted…"])
+        #expect(menu.opensWindowAtLaunch)
+
+        granted.value = true
+        _ = try await Self.enrol("editor", ["koine:manage"], port: port)
+        menu = MenuBarModel(status: try await client.status(), loginLaunch: .enabled)
+        #expect(menu.statusLines.map(\.title) == ["Review 1 Grant Request…"])
+        #expect(menu.accessibilityLabel == "Koine, 1 grant request waiting")
+        #expect(!menu.opensWindowAtLaunch)
+        await server.stop()
+    }
+}
+
 private final class Clock: @unchecked Sendable {
     private let lock = NSLock()
     private var instant = Date(timeIntervalSince1970: 1_800_000_000)

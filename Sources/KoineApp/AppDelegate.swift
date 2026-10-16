@@ -9,9 +9,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var server: KoineServer?
     private var window: NSWindow?
     private var port: Int?
+    private let navigation = SettingsNavigation()
+    private var menuBar: MenuBarController?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.mainMenu = MainMenu.make()
+        // The item exists from launch to Quit, before the server is up; it
+        // shows no status until there is one.
+        menuBar = MenuBarController { [weak self] section in self?.showSettingsWindow(at: section) }
         do {
             let data = KoineServer.userDataDirectory
             let server = try KoineServer(
@@ -24,7 +29,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             Task {
                 do {
                     port = try await server.start()
-                    showManagementWindow()
+                    await finishLaunching(server)
                 } catch {
                     fail("Koine could not start its service.", detail: error.localizedDescription)
                 }
@@ -37,6 +42,19 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         } catch {
             fail("Koine could not open its data.", detail: error.localizedDescription)
         }
+    }
+
+    /// The window opens at launch only while setup needs the user: Accessibility
+    /// not granted, or login launch not enabled. A login launch is not told from
+    /// a launch by hand; both read the same state. A client's grant request never
+    /// opens it, because anonymous enrollment is open to every local process.
+    private func finishLaunching(_ server: KoineServer) async {
+        let client = ManagementClient(console: server.console)
+        let status = try? await client.status()
+        menuBar?.update(status: status)
+        let launch = MenuBarModel(status: status, loginLaunch: .current)
+        if launch.opensWindowAtLaunch { showSettingsWindow(at: nil) }
+        Task { await menuBar?.follow(client) }
     }
 
     /// `Contents/PlugIns`, the root sealed inside the application bundle. It holds
@@ -68,7 +86,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     // document architecture there is no default window to make, so show ours and
     // return false: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/applicationshouldhandlereopen(_:hasvisiblewindows:)
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows: Bool) -> Bool {
-        if server != nil { showManagementWindow() }
+        if server != nil { showSettingsWindow(at: nil) }
         return false
     }
 
@@ -84,20 +102,32 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         return .terminateLater
     }
 
-    private func showManagementWindow() {
+    /// Shows the settings window, comes to the front and, for a status line,
+    /// scrolls to the section it names. An agent application is never active
+    /// until it activates itself:
+    /// https://developer.apple.com/documentation/appkit/nsapplication/activate()
+    private func showSettingsWindow(at section: SettingsSection?) {
         guard let server, let port else { return }
         if window == nil {
-            let view = ManagementView(client: ManagementClient(console: server.console), port: port)
+            let view = ManagementView(
+                client: ManagementClient(console: server.console), port: port, navigation: navigation
+            )
+            // The hosting controller takes the window's least size from the view's
+            // minimum, and its first size would be that too: open at the default.
             let window = NSWindow(contentViewController: NSHostingController(rootView: view))
-            window.title = "Koine"
-            window.styleMask = [.titled, .closable, .miniaturizable]
+            window.title = "Koine Settings"
+            window.styleMask = [.titled, .closable, .miniaturizable, .resizable]
+            window.setContentSize(ManagementView.defaultSize)
             // The delegate keeps the window; closing only orders it out.
             window.isReleasedWhenClosed = false
+            // Opened from the menu bar, it comes to the Space the user is on.
+            window.collectionBehavior.insert(.moveToActiveSpace)
             window.center()
             self.window = window
         }
+        if let section { navigation.show(section) }
         window?.makeKeyAndOrderFront(nil)
-        NSApp.activate(ignoringOtherApps: true)
+        NSApp.activate()
     }
 
     private func fail(_ message: String, detail: String) {
@@ -106,7 +136,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         alert.alertStyle = .critical
         alert.messageText = message
         alert.informativeText = detail
-        NSApp.activate(ignoringOtherApps: true)
+        NSApp.activate()
         alert.runModal()
         NSApp.terminate(nil)
     }

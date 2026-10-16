@@ -7,13 +7,13 @@ GraphQL API. Local clients connect over loopback HTTP using capabilities
 granted by Koine.
 
 Koine is one resident, per-user macOS application. It holds the OS
-permissions, and contains the server, its providers and a native management
-window. A local client finds it through an endpoint descriptor, presents a bearer
+permissions, and contains the server, its providers and a native settings
+window behind a menu bar item. A local client finds it through an endpoint descriptor, presents a bearer
 credential backed by a live grant, and uses the GraphQL API to resolve a running
 application, list its windows (those it has seen on other Spaces included) and
 focus exactly the one chosen. Grants last until explicitly revoked, and a
 revoked credential is refused on its next request, keep-alive or not. A client
-gets one of two ways: the user creates it in Koine's window, or the client
+gets one of two ways: the user creates it in the settings window, or the client
 requests one and the user approves it there, with no credential typed, pasted or
 shown. Management — grants, requests, provider and permission status — is served
 through the same GraphQL API, under the `koine:manage` capability.
@@ -122,7 +122,7 @@ placement, private ineligibility and both product holds remain.
 ## Client-requested grants
 
 A client with no credential enrols itself over the public API, and the user
-decides in Koine's window ("Request review" under "Resident application"
+decides in the settings window ("Request review" under "Resident application"
 below), or a `koine:manage` client decides over GraphQL. This is how the first
 management client comes to exist without a credential being typed, pasted or
 shown.
@@ -195,7 +195,7 @@ front of the user and cannot make the store or the per-request credential scan
 grow faster than 10 rows a minute. Every local process shares `127.0.0.1`, so
 the rate is one budget for the server, not one per peer. It is spent only by
 operations admitted as anonymous enrollment, so a client with a grant, a
-status-only poll and the management window are served while it is exhausted;
+status-only poll and the settings window are served while it is exhausted;
 it is held in memory and a restart refills it.
 
 Expiry is not written: `EXPIRED` is what a stored pending request is once
@@ -234,12 +234,13 @@ task check:minimum-os  # every place stating the macOS floor agrees with App/Inf
 task version   # the one version the bundle, tag, artifact and cask take
 task client    # generate, typecheck and bundle the contract-only client from the published contract
 task app:vm-verify  # the installed workflow in a clean TestAnyware macOS VM
+task app:vm-verify-menu-bar  # the menu bar application: no Dock icon, the item, its menu, mark and label, the settings window's launch, reopening, resizing and shortcuts, login launch and Quit, in a VM
 task app:vm-verify-providers  # the signed, hardened bundle loads an approved fixture provider and refuses the others, in a VM
 task app:vm-verify-desktop  # the bundled desktop provider resolves a real application, lists its windows, re-resolves references and reports absent or revoked consent, in a VM
 task app:vm-verify-desktop-remembered  # a window left on another Space is REMEMBERED, revalidated on selection, and dropped when it or its application ends, in a VM
-task app:vm-verify-accessibility  # the window's Accessibility guidance and consent request, provider and service status, and koineManagement.osPermissions following consent given and removed, in a VM
+task app:vm-verify-accessibility  # the settings window's Accessibility guidance and consent request, provider and service status, and koineManagement.osPermissions following consent given and removed, in a VM
 task app:vm-verify-desktop-focus  # desktopFocusWindow focuses exactly the chosen window of real applications, or reports why not and moves nothing, in a VM
-task app:vm-verify-enrollment  # a guest client enrols itself, the window shows and decides its request, and the first manager it makes approves another over GraphQL, in a VM
+task app:vm-verify-enrollment  # a guest client enrols itself, the settings window shows and decides its request, and the first manager it makes approves another over GraphQL, in a VM
 task fixture:notarized  # a notarized copy of the fixture provider, for the Gatekeeper check to accept
 task app:vm-verify-notarized  # quarantined first launch, attribution and quarantined providers, on a Gatekeeper-enforcing clone
 task app:vm-verify-release  # release acceptance, platform half, on the notarized bundle in a Gatekeeper-enforcing clone
@@ -673,7 +674,7 @@ for every window it has listed, through one `AXObserver` per application on the
 main run loop, and `NSWorkspace.didTerminateApplicationNotification`, which needs
 no consent. Both only ever remove. This is private provider state, reachable
 through the provider's resolution alone; the engine still caches nothing. Closing
-the management window changes none of it, and `stop()` removes the observers
+the settings window changes none of it, and `stop()` removes the observers
 without waiting on any other process.
 
 **Accessibility consent.** `DesktopApplication.ref`, `name` and
@@ -750,7 +751,7 @@ consent, none of which moves focus. Evidence:
 
 `task app:vm-verify-desktop` (`scripts/vm-verify-desktop.sh`), after `task app`,
 proves the reads on the signed bundle in a clean VM over loopback GraphQL with grants
-created in Koine's window: the provider is `ACTIVE`, Finder resolves by `pid` and
+created in the settings window: the provider is `ACTIVE`, Finder resolves by `pid` and
 `startedAt`, its same-titled windows carry distinct and stable references, a
 mismatched `startedAt` and an absent process are null, a malformed one is an
 input error, and a grant without `desktop:read` is refused. It gives Koine
@@ -805,36 +806,96 @@ the built bundle with the stored notary credential, staples the ticket and zips
 the release artifact; it fails rather than produce an unnotarized one.
 
 **UI framework: AppKit lifecycle, SwiftUI content.** An `NSApplicationDelegate`
-owns the process and one `NSWindow` hosting SwiftUI views. It is a regular Dock
-application (the [default activation policy](https://developer.apple.com/documentation/appkit/nsapplication/activationpolicy-swift.enum/regular)
-for a bundled app), not an accessory. The lifecycle the contract needs rests on
-documented delegate behaviour rather than SwiftUI scene behaviour:
+owns the process, one menu bar item and one `NSWindow` hosting SwiftUI views.
+Koine is a menu bar application, an agent: `LSUIElement` in `App/Info.plist`
+([Information Property List: Application is an agent](https://developer.apple.com/documentation/bundleresources/information-property-list/lsuielement)),
+so it runs with the `accessory` activation policy from the first instant of
+launch to Quit: no Dock icon, no Cmd-Tab entry and no menu bar of its own, even
+while the settings window is open. The plist key rather than
+`NSApp.setActivationPolicy(.accessory)` in code is chosen because it is in force
+before any of Koine's code runs, so there is no moment in which a launch shows a
+Dock icon. The lifecycle the contract needs rests on documented delegate
+behaviour rather than SwiftUI scene behaviour:
 
 - [`applicationShouldTerminateAfterLastWindowClosed`](https://developer.apple.com/documentation/appkit/nsapplicationdelegate/applicationshouldterminateafterlastwindowclosed(_:))
   returns `false`: "control returns to the main event loop and the application
   is not terminated", so the listener keeps answering with no window.
 - [`applicationShouldHandleReopen`](https://developer.apple.com/documentation/appkit/nsapplicationdelegate/applicationshouldhandlereopen(_:hasvisiblewindows:))
   is sent "whenever the Finder reactivates an already running application
-  because someone double-clicked it again or used the dock to activate it"; it
-  re-shows the window.
+  because someone double-clicked it again or used the dock to activate it"; an
+  agent application has no Dock icon, and the same event arrives when Finder,
+  Spotlight or `open` opens the running Koine again. It shows the settings
+  window.
 - `applicationShouldTerminate` answers `.terminateLater`, awaits
   `KoineServer.stop()` (descriptor withdrawn, listener closed, lock released) and
-  then replies, so Quit never leaves a descriptor to be found stale.
+  then replies, so Quit never leaves a descriptor to be found stale. Quit Koine
+  in the menu and ⌘Q in the settings window are the same path.
+
+**Menu bar item.** One `NSStatusItem` exists from launch to Quit, created before
+the server starts, and cannot be dragged off the menu bar (`behavior = []`): it
+is the only way back to the settings window. Its icon is the SF Symbol
+`character.bubble` as a template image, which the menu bar tints. A small dot,
+knocked out of the bubble by a ring, marks it while anything waits on the user,
+and the item's accessibility label states the same thing: "Koine", or "Koine, 1
+grant request waiting", "Koine, 2 grant requests waiting", "Koine, Accessibility
+not granted", joined by commas when more than one holds. VoiceOver and the VM
+check read the label, not the pixels. The menu is, in order:
+
+- one line for each condition that holds, absent otherwise: "Review 1 Grant
+  Request…" or "Review N Grant Requests…" while client grant requests are
+  pending, and "Accessibility Not Granted…" while Koine lacks Accessibility
+  consent. Choosing one opens the settings window scrolled to the section that
+  resolves it: Requests, or Accessibility;
+- a separator, when there is a line above it;
+- Settings… (⌘,), which opens the settings window as it was;
+- Quit Koine (⌘Q).
+
+What the item shows is `MenuBarModel`, in `KoineManagementClient`, which is
+Foundation-only: it takes the status the console serves
+(`ManagementClient.status()`: the pending requests and the `accessibility`
+permission from the host's `OSPermissionSource`) and, for the launch rule, the
+login-launch state, and gives the lines with their wording and counts, the mark,
+the label and whether the settings window opens at launch. `MenuBarController` in
+`KoineApp` only renders it. The item re-reads the status every two seconds for as
+long as Koine runs, whether or not the settings window is open: one in-process
+console operation, the same one the settings window's own poll makes while it is shown.
+
+**Settings window.** "Koine Settings" opens, and comes to the front, from
+Settings… or a status line however many times it has been closed, and from
+reopening the running application. Coming to the front is
+[`NSApp.activate()`](https://developer.apple.com/documentation/appkit/nsapplication/activate())
+and `makeKeyAndOrderFront`, which an agent application must do for itself; the
+window's `moveToActiveSpace` behaviour brings it to the Space the user is on.
+It is resizable. Its content scrolls, it opens at 480×680 and it cannot be made
+smaller than 440×320, below which a control would be unreachable. Its shortcuts,
+⌘C, ⌘V, ⌘X and ⌘A in its fields, ⌘W and ⌘Q, are the key equivalents of the main
+menu `MainMenu` builds, which is never drawn: observed in a VM, an `accessory`
+application keeps the main menu it sets for key equivalents.
+
+**Launch.** At any launch, by login item or by hand, the settings window opens
+only while setup needs the user: Accessibility is not granted, or login launch is
+not enabled (`SMAppService.mainApp.status` other than `enabled`, so
+`requiresApproval` counts as not enabled). Otherwise Koine starts silently in the
+menu bar. A login launch is not told from a launch by hand, which `SMAppService`
+items do not reliably report; the rule uses the two facts Koine already reads. A
+client's grant request never brings the settings window forward by itself, because
+anonymous enrollment is open to every local process: it shows as the mark and a
+line.
 
 A second instance over the same data directory meets
 `KoineServerError.alreadyRunning`, says so in an alert and exits without
-listening. The window executes `koineManagement.grants`, `koineCreateGrant` and
+listening. The settings window executes `koineManagement.grants`, `koineCreateGrant` and
 `koineRevokeGrant` through `KoineManagementClient`; its capability choices are
 whatever `Query.koine.availableCapabilities` serves. The list is re-read after
 every create and revoke and whenever Koine becomes active, so a row shows only
 a state the server reported. Revoking asks for confirmation naming the grant; a
 failure is shown beside the list. The credential lives only in the sheet that
 shows it and is dropped when the sheet is dismissed; nothing re-reads one, and
-the window says that a lost credential is handled by revoking and creating
+the settings window says that a lost credential is handled by revoking and creating
 again.
 
-**Request review.** The window's Requests section lists the pending enrollment
-requests, which arrive with the status the window already polls every two
+**Request review.** The settings window's Requests section lists the pending enrollment
+requests, which arrive with the status the settings window already polls every two
 seconds (`ManagementClient.status()`, one operation), so a request appears in an
 open window without the user doing anything. Each shows the client's label, its
 comparison code, to be compared by eye with what the client shows, and a tick
@@ -851,7 +912,7 @@ shown beside the list, `already-decided` as the state the request is already in
 re-read after every decision, whatever its outcome. The client's secret never
 reaches Koine, so there is nothing here to show or copy.
 
-**Login launch.** The window's Setup section registers and unregisters
+**Login launch.** The settings window's Setup section registers and unregisters
 [`SMAppService.mainApp`](https://developer.apple.com/documentation/servicemanagement/smappservice/mainapp).
 Apple documents that [`register()`](https://developer.apple.com/documentation/servicemanagement/smappservice/register())
 makes the main application launch "on subsequent logins" and throws when the
@@ -862,8 +923,8 @@ consent is withdrawn. So the model keeps no enabled flag of its own: after every
 call, and whenever Koine becomes active, it reads `status` back and shows that,
 with a button to Login Items Settings when approval is required. Observed in a
 macOS 26.5 VM: a signed bundle that has never registered reads `notFound`, not
-`notRegistered`, and registration from there succeeds, so the window words
-`notFound` as "not registered" and leaves real failures to the error
+`notRegistered`, and registration from there succeeds, so the settings window
+words `notFound` as "not registered" and leaves real failures to the error
 `register()` throws.
 
 **Accessibility, provider and service status.** Koine owns its one OS
@@ -876,10 +937,10 @@ application's source is [`AXIsProcessTrusted`](https://developer.apple.com/docum
 which takes no options and so cannot prompt; a host that supplies none serves an
 empty list.
 
-The window's status comes from one operation, `ManagementClient.status()`
+The settings window's status comes from one operation, `ManagementClient.status()`
 (contract version, instance, providers, OS permissions), re-read every two
-seconds while the window's view lives, because nothing announces a consent
-change. So the window and a managing client cannot disagree, and the status
+seconds while the settings window's view lives, because nothing announces a consent
+change. So the settings window and a managing client cannot disagree, and the status
 follows System Settings without a restart. The port is the one fact taken from
 the host; the schema has no field for it. Without consent the first section
 names Koine as the application that needs it and offers two controls, the only
@@ -905,10 +966,14 @@ curl -s "http://127.0.0.1:$(jq -r .port "$D/endpoint.json")/graphql" \
 Run the application in a TestAnyware VM, not on a machine in use: it takes
 focus and owns the account's real data directory.
 
-**VM verification.** `task app:vm-verify` (`scripts/vm-verify.sh`) clones the
+**VM verification.** `task app:vm-verify-menu-bar` (`scripts/vm-verify-menu-bar.sh`)
+proves the menu bar application on the signed bundle in a clean VM; its
+procedure and recorded evidence are in
+[docs/verification/menu-bar-vm.md](docs/verification/menu-bar-vm.md).
+`task app:vm-verify` (`scripts/vm-verify.sh`) clones the
 TestAnyware macOS golden, installs the signed bundle, and drives the real UI:
 login launch across a restart with no client, a grant created and its
-credential handed to a script, the window closed, the grant revoked (401), and
+credential handed to a script, the settings window closed, the grant revoked (401), and
 Quit (descriptor gone). It needs `testanyware` and `jq`, and leaves its
 transcript in `.build/vm-verify/`. The procedure, what the route does and does
 not show about Gatekeeper, and the recorded evidence are in

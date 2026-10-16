@@ -33,7 +33,7 @@ against an unnotarized build the quarantined first launch would be refused, and
 the run would say nothing about either workflow. The guest is started at
 `1920x2160` only so the Gatekeeper policy control is on screen
 ([notarized-release-vm.md](notarized-release-vm.md) explains why that is the
-mechanism); Koine's own window is a fixed frame whose content area is 480x680
+mechanism); Koine's own window opens with a content area of 480x680
 and does not grow with the screen, which is what makes the scrolling case real.
 
 **No credential reaches the host.** The manual workflow's delivery is the

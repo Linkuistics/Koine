@@ -15,7 +15,7 @@ task app                          # build and sign .build/app/Koine.app
 task app:vm-verify-desktop-focus  # scripts/vm-verify-desktop-focus.sh
 ```
 
-Two grants are created in Koine's window: a reader (`koine:manage`,
+Two grants are created in the settings window: a reader (`koine:manage`,
 `desktop:read`) that lists, and a controller with `desktop:control` **alone** that
 focuses. The guest client sends `DesktopChoices` and `FocusDesktopWindow` with the
 text `docs/design/desktop-operations.graphql` has for them, unchanged, each sent

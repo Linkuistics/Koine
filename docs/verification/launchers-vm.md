@@ -25,7 +25,7 @@ failures are controls-only activations, which are **pending** and go to Antony.
 
 **Every request is made by the contract-only client** ([launch-contract.md](launch-contract.md)),
 which enrols its own grant (`workspace:control` and `desktop:control`, no read
-capability) through Koine's window and is regenerated from the schema the signed build
+capability) through the settings window and is regenerated from the schema the signed build
 serves. Koine has no Accessibility consent in the clone, so activation below is by the
 two controls alone. **Activation is never inferred from the acknowledgment**:
 `Fixtures/LaunchWitness` (see [launch-vm.md](launch-vm.md#procedure)) reports who is in

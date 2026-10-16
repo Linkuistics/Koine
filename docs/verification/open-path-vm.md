@@ -56,7 +56,7 @@ to answer, is the 30 to 394 ms below; the rest was not measured.
 
 **Every request is made by the contract-only client** ([launch-contract.md](launch-contract.md),
 [open-path-contract-client-findings.md](open-path-contract-client-findings.md)), which enrols its
-own grants through Koine's window and was regenerated from the schema the signed build serves
+own grants through the settings window and was regenerated from the schema the signed build serves
 (digest `f98a3862c3bb77417c38eef9fe4edccd16e0bf76b6f4b8fc7bdf6708190be32d`, introspected by
 `task conformance:vm`, below). Four grants are enrolled: both controls, each control alone, and a
 fourth for both controls that a `koine:manage` grant, made in the window first, then revokes. Every

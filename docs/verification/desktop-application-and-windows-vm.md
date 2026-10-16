@@ -29,7 +29,7 @@ the identity as a variable.
 | Step | How | Expectation checked |
 |---|---|---|
 | Bundle | `find`, `codesign --verify --strict` and `-dvv` on `Contents/PlugIns/Desktop.koineprovider`, in the VM | recorded: the bundle's content, a valid signature by `TA43A4RUP3` with the hardened runtime |
-| Grants | two grants created in Koine's window: `koine:manage` + `desktop:read`, and `desktop:control` alone; each credential by Copy and `pbpaste` | both credential files exist |
+| Grants | two grants created in the settings window: `koine:manage` + `desktop:read`, and `desktop:control` alone; each credential by Copy and `pbpaste` | both credential files exist |
 | Provider status | `{ koineManagement { providers { … } } koine { availableCapabilities } }` | `desktop` is `ACTIVE`; `desktop:read` and `desktop:control` are available |
 | Real windows | `open -a Finder`, ⌘N twice | — |
 | Before consent | the query for Finder | recorded, and an error is required: `permission` / `os-permission` naming `accessibility`, at the path `desktopApplication.windows`. `windows` is non-null, so the error discards the enclosing application and `desktopApplication` is null. Its classification is asserted in [desktop-references-and-permission-vm.md](desktop-references-and-permission-vm.md). |

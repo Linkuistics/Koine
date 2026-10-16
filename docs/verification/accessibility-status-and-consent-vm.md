@@ -40,7 +40,7 @@ task app                           # build and sign .build/app/Koine.app
 task app:vm-verify-accessibility   # scripts/vm-verify-accessibility.sh
 ```
 
-Two grants are created in Koine's window: a manager (`koine:manage`,
+Two grants are created in the settings window: a manager (`koine:manage`,
 `desktop:read`) and a stranger with `desktop:read` alone. The script then checks,
 in order:
 

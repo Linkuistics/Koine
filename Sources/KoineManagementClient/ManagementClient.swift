@@ -121,6 +121,12 @@ public struct ManagedOSPermission: Sendable, Equatable, Decodable {
     public let permission: String
     public let owner: String
     public let granted: Bool
+
+    public init(permission: String, owner: String, granted: Bool) {
+        self.permission = permission
+        self.owner = owner
+        self.granted = granted
+    }
 }
 
 /// A client's enrollment request as `koineManagement.requests` reports it. The
@@ -153,6 +159,17 @@ public struct ManagementStatus: Sendable, Equatable {
     public let requests: [ManagedGrantRequest]
     public let providers: [ManagedProvider]
     public let osPermissions: [ManagedOSPermission]
+
+    public init(
+        contractVersion: String, instanceId: String, requests: [ManagedGrantRequest] = [],
+        providers: [ManagedProvider] = [], osPermissions: [ManagedOSPermission] = []
+    ) {
+        self.contractVersion = contractVersion
+        self.instanceId = instanceId
+        self.requests = requests
+        self.providers = providers
+        self.osPermissions = osPermissions
+    }
 }
 
 public enum ManagementError: Error, Equatable, LocalizedError {

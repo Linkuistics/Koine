@@ -38,8 +38,8 @@ task app:vm-verify-disclosure    # scripts/vm-verify-disclosure.sh
 ```
 
 The guest clients are `scripts/vm-verify-enrollment-client.py`'s, which make their
-own secrets into `0600` files and print neither. Koine's window is a fixed
-480x680 frame around scrolling content, so each element is scrolled on screen and
+own secrets into `0600` files and print neither. The settings window opens at
+480x680 around scrolling content, so each element is scrolled on screen and
 accepted only when its frame lies wholly inside the window's: the accessibility
 tree reports elements that are scrolled out of view as well.
 
@@ -88,7 +88,7 @@ profile, which a released host serves, is untouched
 ([schema-conformance-vm.md](schema-conformance-vm.md)). That run also exercised
 `create_grant` through the scrolling helpers described next.
 
-The grant form is now longer than the window's fixed frame, so the VM scripts'
+The grant form is now longer than the settings window's default size, so the VM scripts'
 shared `create_grant` and the two scripts that clicked Create Grant directly
 (`vm-verify.sh`, `vm-verify-providers.sh`) scroll each control on screen first
 (`reveal_click` in `scripts/vm-verify-lib.sh`). Of the scripts that create a grant

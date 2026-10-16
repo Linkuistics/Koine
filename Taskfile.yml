@@ -1343,6 +1343,11 @@ tasks:
     cmds:
       - scripts/vm-verify-disclosure.sh
 
+  app:vm-verify-menu-bar:
+    desc: Verify the signed bundle as a menu bar application in a clean TestAnyware macOS VM (no Dock icon; the one menu bar item, its menu, mark and label as consent and client requests come and go; the settings window at first launch, not once setup is complete, reopened from the menu over another window, resizable, with its shortcuts; login launch; Quit from the menu)
+    cmds:
+      - scripts/vm-verify-menu-bar.sh
+
   app:vm-verify:
     desc: Verify the signed bundle in a clean TestAnyware macOS VM (install, login launch, grant, revoke, quit)
     cmds:

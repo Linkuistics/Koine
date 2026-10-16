@@ -465,7 +465,7 @@
       "renderer": "svg",
       "source": "desktop-composition.d2",
       "rendered": "desktop-composition.svg",
-      "caption": "Runtime responsibility view: one resident Koine application contains the native UI, server and providers. Closing its management window leaves the listener and observation running. The native UI keeps management authority in process; HTTP clients present bearer credentials backed by live grants. Providers share that process and its OS permissions."
+      "caption": "Runtime responsibility view: one resident Koine application contains the native UI, server and providers. Closing its settings window leaves the listener and observation running. The native UI keeps management authority in process; HTTP clients present bearer credentials backed by live grants. Providers share that process and its OS permissions."
     },
     {
       "id": "source-packages",

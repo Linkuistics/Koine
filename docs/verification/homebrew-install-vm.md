@@ -71,7 +71,7 @@ largest footprint any user's setting produces.
   Koine's signing identity (`dev.antony.Koine`, team `TA43A4RUP3`) to that UUID.
   The UUID belongs to the machine, so a `zap trash:` path cannot name it, and it
   survives both uninstall and `--zap`. With window restoration on, it holds
-  `data.data` and `windows.plist` for the management window. With the
+  `data.data` and `windows.plist` for the settings window. With the
   setting at its macOS default (restoration off), a hand probe on another clone
   of the same golden found the directory present but empty.
 - **The login-launch registration outlives the application.** Koine registers
@@ -223,6 +223,6 @@ shared VM libraries:
   opens the menu again, up to three times; the transcript's "attempt 1" line is
   this.
 - **Koine's controls are scrolled into view before they are clicked.** The
-  management window is a fixed frame around content that outgrows it, and the
+  settings window opens at a size its content outgrows, and the
   accessibility tree reports scrolled-out controls at positions outside it, so
-  `click` reveals an element of Koine's window first.
+  `click` reveals an element of the settings window first.

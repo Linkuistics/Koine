@@ -4,7 +4,7 @@ import KoineCore
 
 /// Koine's one OS permission, and the only two things done about it: reading
 /// it, which the server does on each request, and asking for it, which only the
-/// management window does.
+/// settings window does.
 enum AccessibilityPermission {
     static let name = "accessibility"
 
