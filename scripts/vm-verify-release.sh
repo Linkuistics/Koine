@@ -112,9 +112,18 @@ request_consent() {
     [ "$(element '.id=="request-accessibility"')" != null ] ||
         fail "the window offers no Accessibility request control ($1)"
     click '.id=="request-accessibility"'
+    # macOS draws its dialog some seconds after the request, and a single read at a
+    # fixed delay once reported its absence with the dialog visible in the capture
+    # taken right after, so the screen is read until it shows or the wait ends.
+    local found tries=0
     sleep 3
-    local found
-    found="$(testanyware screen find-text "${DIALOG_TEXT}" --json)" || fail "the screen could not be read"
+    while :; do
+        found="$(testanyware screen find-text "${DIALOG_TEXT}" --json)" || fail "the screen could not be read"
+        jq -e '.total > 0' >/dev/null <<<"${found}" && break
+        tries=$((tries + 1))
+        [ "${tries}" -lt 5 ] || break
+        sleep 3
+    done
     if jq -e '.total > 0' >/dev/null <<<"${found}"; then
         CONSENT_DIALOG=yes
         jq -c '[.detections[].text]' <<<"${found}"

@@ -406,6 +406,9 @@ while read -r candidate; do
     break
 done < <(comm -13 <(sort <<<"${TOP_VISIBLE}") <(printf '%s\n' "${REACHED}"))
 [ -n "${TARGET}" ] || fail "no row of this run's bulk clients needed scrolling to reach"
+# The sweep above stops wherever it last looked, which may be past the target, so
+# the walk to the chosen row starts again from the top.
+scroll_to_top
 for _ in $(seq 1 40); do
     grep -qx "${TARGET}" <<<"$(visible_rows)" && break
     scroll_window "${SCROLL_TOWARDS_END}"
