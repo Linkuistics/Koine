@@ -118,7 +118,7 @@ not interchangeable, and a run that revokes should grant by Add.
 - **No per-user provider is installed.** The quarantined-plugin rule is the spec's
   ([loading and trust](../specs/machine.md#loading-and-trust)), verified in
   [notarized-release-vm.md](notarized-release-vm.md) and
-  [provider-quarantine-precheck-vm.md](provider-quarantine-precheck-vm.md); this run loads only the provider sealed in
+  [provider-quarantine-precheck-vm.md](provider-quarantine-precheck-vm.md); this run loads only the providers sealed in
   the bundle, which the application's own ticket covers.
 - **Login-item approval is not observed**, as in
   [resident-app-vm.md](resident-app-vm.md): registration goes straight to
@@ -126,12 +126,11 @@ not interchangeable, and a run that revokes should grant by Add.
 
 ## Evidence
 
-Run of 2026-09-21, transcript `release-20260921T002221.log`, against the
-**notarized, stapled 0.1.0** bundle built from the working copy at `85d5fd6`,
-signed `Developer ID Application: Antony Blakey (TA43A4RUP3)`. The nine files
-the run reads — the script, the three libraries it sources, the two guest
-clients, the probe's source, the published operations and Koine's own executable
-— were digested before and after and did not change. VM: clone of
+Run of 2026-10-16, transcript `release-20261016T130531.log`, against the
+**notarized, stapled 0.2.0** bundle built from `92c92c7` (tag `v0.2.0`), signed
+`Developer ID Application: Antony Blakey (TA43A4RUP3)` and notarized as
+submission `7f649943-d581-43da-90e1-ebfc2548a0a2`. Host: Mac16,5 on macOS 27.0.1
+(26A434), testanyware 2.1.0, tart 2.40.1. VM: clone of
 `testanyware-golden-macos-tahoe`, macOS 26.5 (25F71), arm64, guest display
 1920×2160. Result: **passed**, every expectation in the table above.
 
@@ -140,6 +139,7 @@ clients, the probe's source, the published operations and Koine's own executable
 Before: assessments disabled;
 After:  assessments enabled;developer id disabled;
 The clone is App Store-only; setting the default posture in System Settings.
+  attempt 1: the menu did not open in front; retrying
 After System Settings: assessments enabled;developer id enabled;
 
 == The release artifact's hardened runtime and empty entitlements, read from the installed copy in the guest
@@ -149,11 +149,11 @@ Entitlements: {}
 
 == First launch of the quarantined copy: plain open, no right-click-Open
   "Koine" is an app downloaded from the Internet. Are you sure you want to open it?
-  Safari downloaded this file today at 2:24 PM. Apple checked it for malicious software and none was detected.
+  Safari downloaded this file today at 2:06 AM. Apple checked it for malicious software and none was detected.
 
 == Nothing was stripped: the attribute is still on the launched bundle
-Quarantine before launch: 0181;6aafec86;Safari;36D4BB18-5070-4180-8137-BF391557770C
-Quarantine after launch:  01c1;6aafec86;Safari;36D4BB18-5070-4180-8137-BF391557770C
+Quarantine before launch: 0181;6ad186a3;Safari;B0D2A314-7D46-4BEE-88A0-13FBC6FB03CE
+Quarantine after launch:  01c1;6ad186a3;Safari;B0D2A314-7D46-4BEE-88A0-13FBC6FB03CE
 
 == Real windows: two Finder windows with the same title, seen natively before Koine is asked anything
 The system says Finder has 3 windows, all titled "Recents".
@@ -175,28 +175,29 @@ Observation: the request (a second request in the same run of Koine) showed macO
 Koine lists 3 windows where the system says 3.
 
 == PID reuse as far as it can be observed: the same live PID at another start instant is another process
-{"case": "later",     "pid": 362, "startedAt": "…397177Z", "response": {"data": {"desktopApplication": null}}}
-{"case": "absent",    "pid": 1000000,                       "response": {"data": {"desktopApplication": null}}}
-{"case": "malformed", "pid": 362, "startedAt": "2026-09-20T14:22:32Z" -> "process.startedAt must be the process start instant as UTC with six fractional second digits…"
+{"case": "later",     "pid": 391, "startedAt": "…254534Z", "response": {"data": {"desktopApplication": null}}}
+{"case": "absent",    "pid": 1000000,                     "response": {"data": {"desktopApplication": null}}}
+{"case": "malformed", "pid": 391, "startedAt": "2026-10-16T02:05:45Z" -> "process.startedAt must be the process start instant as UTC with six fractional second digits…"
 
 == A closed window is unavailable; the same-titled windows beside it still resolve
-…/69a6aea17a79266a/1 -> "The window is no longer open." (kind: unavailable);  /2 and /3 still resolve
+…/95fe5f81e2b944e3/1 -> "The window is no longer open." (kind: unavailable);  /2 and /3 still resolve
 
 == Consent revoked while Koine runs: an os-permission error at the original path, and nothing prompts
 Route: agent press on the switch   ->  error: HTTP 400 Bad Request
 Route: VNC click at the switch's centre  ->  ["…","Modify Settings","Cancel",…]
 Observation: the switch moved to 0 by click.
 Observation: the first read to report revoked consent completed 0s after the password was entered.
+Observation: osPermissions reported granted: false within 0s.
 
 == A request in a LATER run of Koine: whatever macOS does is recorded
 Observation: the request (the first request of a later run of Koine, after consent was given and removed) showed macOS's consent dialog, naming Koine.
 
 == After login, with nothing having launched Koine and no client installed
-473 /Applications/Koine.app/Contents/MacOS/Koine
-{"contractVersion":"koine-desktop/1","descriptorVersion":1,"instanceId":"46590697-…","path":"/graphql","pid":473,"port":49152}
+506 /Applications/Koine.app/Contents/MacOS/Koine
+{"contractVersion":"koine-desktop/1","descriptorVersion":1,"instanceId":"d93e92ac-…","path":"/graphql","pid":506,"port":49152}
 Processing: /Applications/Koine.app
 The validate action worked!
-Quarantine after the restart: 01c1;6aafec86;Safari;36D4BB18-5070-4180-8137-BF391557770C
+Quarantine after the restart: 01c1;6ad186a3;Safari;B0D2A314-7D46-4BEE-88A0-13FBC6FB03CE
 {"data":{"koine":{…,"ownGrant":{"clientLabel":"vm-release-reader","capabilities":["desktop:read","koine:manage"],"state":"ACTIVE"}}}}
 HTTP 200
 Listener without a credential: HTTP 401
@@ -209,20 +210,22 @@ first of a later run made after consent had been given and taken away.
 on the release build.
 
 **References, before and after the Koine restart.** The application reference
-`koine://desktop/application/362/1789914152397176` resolved to the same
+`koine://desktop/application/391/1792116345254533` resolved to the same
 application, field for field, in both runs of Koine. Its windows were listed
-under `…/69a6aea17a79266a/{1,2,3}` in the first run and `…/d4be979346154e2b/{1,…}`
+under `…/95fe5f81e2b944e3/{1,2,3}` in the first run and `…/5f57270a64dbe86e/{1,…}`
 in the second, and a window reference from the first was `unavailable` in the
 second. The application reference is the process; the window reference is the
 run's.
 
-**Two numbers in the transcript are not latency.** *"Within 0s"* means the first
-read after the action already reported the change. The 93 s that `osPermissions`
-took to report `granted: false` is elapsed time through the TestAnyware agent's
-retries — a guest exec that runs to completion and is then reported as
-"Process timed out after 30s" costs a real thirty seconds, and the same
-revocation was visible to a desktop read at 0 s. Latency is
+**"Within 0s" is not latency.** It means the first read after the action
+already reported the change. A read through the TestAnyware agent can also take
+far longer than Koine does: a guest exec that runs to completion and is then
+reported as "Process timed out after 30s" costs a real thirty seconds. Latency is
 measured with an instrument built for it, in [latency-and-support-matrix.md](latency-and-support-matrix.md).
+
+**The hardened-runtime step reads the desktop provider only.** The bundle also
+carries `Workspace.koineprovider`, which `scripts/build-app.sh` signs with the
+same `--options runtime`; this run does not read its flags.
 
 No behaviour of the release build differed from the spec in this run.
 

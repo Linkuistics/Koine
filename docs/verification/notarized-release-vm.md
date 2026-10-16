@@ -57,7 +57,7 @@ host. Two things are specific to this run:
 | Assessment | `spctl -a -t execute -vv` in the VM | `accepted`, `source=Notarized Developer ID`, and **no** `override=` line |
 | First launch | plain `open`, never right-click-Open | the first-run dialog is the notarized one — it reports that Apple checked the app and found nothing — and offers **Open**, which is clicked |
 | Nothing stripped | `xattr -p` before and after | the attribute survives the launch (its flags field changes, `0181` → `01c1`, as LaunchServices records the approval) |
-| Bundled provider | `koineManagement.providers`, and `lsof` on the hardened process | `desktop` `ACTIVE`; its image is mapped from a `Desktop-<digest>` staging copy, and `Contents/PlugIns` holds exactly `Desktop.koineprovider` |
+| Bundled provider | `koineManagement.providers`, and `lsof` on the hardened process | `desktop` `ACTIVE`; its image is mapped from a `Desktop-<digest>` staging copy, and `Contents/PlugIns` holds `Desktop.koineprovider` and `Workspace.koineprovider` |
 | Quarantined per-user provider | same-team fixture + approval record, given `com.apple.quarantine` explicitly | `REJECTED` with the loader's diagnostic; **and Koine cannot finish starting** until the refusal dialog is dismissed |
 | Quarantine cleared on the installed copy | `xattr -d -r` on the bundle in `~/Library/Application Support/Koine/Providers` | still `REJECTED` — the staged copy is reused and still carries the attribute |
 | Staged copy invalidated | the `Fixture-<digest>` staging directory removed, nothing else changed | `ACTIVE`; `{ fixtureInfo { greeting } }` is served; the image is mapped from the re-staged copy, which carries no attribute |

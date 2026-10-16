@@ -95,11 +95,11 @@ largest footprint any user's setting produces.
 
 ## Evidence
 
-Run of 2026-09-29, transcript `homebrew-20260929T195105.log`. The host was a
-Mac16,5 (Apple M4 Max) on macOS 26.6.2 (25G83), running testanyware 2.1.0 and
-tart 2.32.1. The cask was `Casks/koine.rb` in `Linkuistics/homebrew-taps`
-at `7dd12d88`, installing release `v0.1.0` (`Koine-0.1.0-aarch64-apple-darwin.zip`,
-SHA-256 `26b091d54af3095d4360c95efddb87eb8fdec2c43bd76af7f3cb78d4651603fb`).
+Run of 2026-10-16, transcript `homebrew-20261016T132751.log`. The host was a
+Mac16,5 (Apple M4 Max) on macOS 27.0.1 (26A434), running testanyware 2.1.0 and
+tart 2.40.1. The cask was `Casks/koine.rb` in `Linkuistics/homebrew-taps`
+at `b17e40e`, installing release `v0.2.0` (`Koine-0.2.0-aarch64-apple-darwin.zip`,
+SHA-256 `971e74f8f31e298b1512cfa01d1666cb046b07de0247d28099e5143925eeb4c7`).
 The VM was a clone of `testanyware-golden-macos-tahoe`: macOS 26.5 (25F71),
 arm64, Homebrew 6.0.3 from the golden, display 1920x2160, with Gatekeeper
 assessments **enabled** and developer id **enabled**. Result: **passed**, every
@@ -110,6 +110,7 @@ expectation above.
 Before: assessments disabled;
 After:  assessments enabled;developer id disabled;
 The clone is App Store-only; setting the default posture in System Settings.
+  attempt 1: the menu did not open in front; retrying
 After System Settings: assessments enabled;developer id enabled;
 
 == Homebrew in the guest
@@ -119,13 +120,13 @@ Homebrew 6.0.3
   | ==> Tapping linkuistics/taps
   | Warning: Skipping linkuistics/taps because it is not trusted. Run `brew trust linkuistics/taps` to trust it.
   | ==> Trusted cask linkuistics/taps/koine
-  | ✔︎ Cask koine (0.1.0)
+  | ✔︎ Cask koine (0.2.0)
   | ==> Moving App 'Koine.app' to '/Applications/Koine.app'
   | 🍺  koine was successfully installed!
-Installed version: 0.1.0
+Installed version: 0.2.0
 
 == Homebrew quarantined the download, and nothing stripped it
-Quarantine on the bundle: 0181;6abb8a7c;Homebrew\x20Cask;6D6E030A-3C70-4D5C-A133-8623B1121782
+Quarantine on the bundle: 0181;6ad18c03;Homebrew\x20Cask;494EED16-6A30-4265-B40B-137500E6CF3A
 
 == Gatekeeper's verdict on the installed bundle
 /Applications/Koine.app: accepted
@@ -135,9 +136,9 @@ The validate action worked!
 
 == First launch of the quarantined copy: plain open, no right-click-Open
   “Koine” is an app downloaded from the Internet. Are you sure you want to open it?
-  Homebrew Cask downloaded this file today at 9:53 AM. Apple checked it for malicious software and none was detected.
-Koine pid: 1791
-{"contractVersion":"koine-desktop\/1","descriptorVersion":1,…,"path":"\/graphql","pid":1791,"port":49160}
+  Homebrew Cask downloaded this file today at 2:29 AM. Apple checked it for malicious software and none was detected.
+Koine pid: 1736
+{"contractVersion":"koine-desktop\/1","descriptorVersion":1,…,"path":"\/graphql","pid":1736,"port":49160}
 
 == Enable login launch in the window, so uninstall has a registration to leave or take
 Before: Koine is not registered to start at login. Clients find the service unavailable until you open Koine.
@@ -151,7 +152,7 @@ After:  Koine will start when you log in.
 == What Koine leaves in ~/Library: installed and running
 /Users/admin/Library/Application Support/Koine
 Defaults domain: (none)
-Saved window state: /Users/admin/Library/Daemon Containers/13C3DBF7-…/Data/Library/Saved Application State/45981392-FB2C-4A1F-BA32-5DD95D09D7DB.savedState
+Saved window state: /Users/admin/Library/Daemon Containers/13C3DBF7-…/Data/Library/Saved Application State/E41E13BA-A97F-49F1-8A64-B291FD3302CA.savedState
   data.data
   windows.plist
 
@@ -164,7 +165,7 @@ Koine quit and /Applications/Koine.app removed.
 == What Koine leaves in ~/Library: after a plain uninstall
 /Users/admin/Library/Application Support/Koine
 Defaults domain: (none)
-Saved window state: …/45981392-FB2C-4A1F-BA32-5DD95D09D7DB.savedState
+Saved window state: …/E41E13BA-A97F-49F1-8A64-B291FD3302CA.savedState
   data.data
   windows.plist
 
@@ -177,11 +178,13 @@ Saved window state: …/45981392-FB2C-4A1F-BA32-5DD95D09D7DB.savedState
   | 🍺  koine was successfully installed!
   | ==> Removing App '/Applications/Koine.app'
   | ==> Dispatching zap stanza
+  | ==> Trashing files:
+  | ~/Library/Application Support/Koine
 
 == What Koine leaves in ~/Library: after --zap
   (nothing)
 Defaults domain: (none)
-Saved window state: …/45981392-FB2C-4A1F-BA32-5DD95D09D7DB.savedState
+Saved window state: …/E41E13BA-A97F-49F1-8A64-B291FD3302CA.savedState
   data.data
   windows.plist
 
@@ -190,10 +193,8 @@ Saved window state: …/45981392-FB2C-4A1F-BA32-5DD95D09D7DB.savedState
                   URL: file:///Applications/Koine.app/
 ```
 
-The cask at `7dd12d88` still declared the preferences plist and the old
-saved-state path. The measured result is the same with or without them,
-because neither path exists on macOS 26. The screenshot beside the transcript,
-`-first-launch.png`, is the first-run dialog.
+The screenshot beside the transcript, `-first-launch.png`, is the first-run
+dialog.
 
 ## Tooling note
 
@@ -204,3 +205,24 @@ The second install then prints "Not upgrading koine, the latest version is
 already installed", truncates the shared log, and can finish first. So
 `guest_long` takes a `mkdir` guard before it detaches a script, and the run
 asserts that the reinstall put the application back before it runs `--zap`.
+
+Three more workarounds hold for every Gatekeeper-enforcing run here, in the
+shared VM libraries:
+
+- **tart's VNC server is kept busy.** On a macOS 27 host,
+  Virtualization.framework's VNC server hits an assertion
+  (`-[_VZVirtualMachineAccessor addAccessorObserver:]`) when a client connects
+  after about 60 seconds with none, and tart and the guest go down with it; the
+  next testanyware call reports `I/O error: early eof`. A cask install is polled
+  over the agent alone for longer than that, so `start_vm` keeps a background
+  screen capture running every 20 seconds until cleanup
+  ([Linkuistics/TestAnyware#2](https://github.com/Linkuistics/TestAnyware/issues/2)).
+- **The Allow-applications popup is retried.** The golden's first login
+  launches Reminders some seconds in, and its welcome window takes focus and
+  closes the popup's menu as it opens. `enable_developer_id` quits Reminders and
+  opens the menu again, up to three times; the transcript's "attempt 1" line is
+  this.
+- **Koine's controls are scrolled into view before they are clicked.** The
+  management window is a fixed frame around content that outgrows it, and the
+  accessibility tree reports scrolled-out controls at positions outside it, so
+  `click` reveals an element of Koine's window first.

@@ -142,9 +142,8 @@ echo "${IMAGES}"
 # rather than from the root it was found in — the behaviour signed-app-provider-vm.md
 # already records for the per-user root, and it holds for the bundled one too.
 # So the witness that the BUNDLED provider loaded is a Desktop- staging entry,
-# together with Contents/PlugIns holding the bundled providers in the guest (desktop
-# and, since workspace shipped, Workspace.koineprovider; this script has not been
-# rerun against a build that includes it).
+# together with Contents/PlugIns holding the bundled providers in the guest,
+# Desktop.koineprovider and Workspace.koineprovider.
 grep 'DesktopProvider' <<<"${IMAGES}" | grep -qF "/ProviderStaging/Desktop-" ||
     fail "the desktop provider's image was not mapped from a Desktop- staging copy"
 for bundle in Desktop.koineprovider Workspace.koineprovider; do

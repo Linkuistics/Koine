@@ -22,15 +22,16 @@ Providers are native Swift extensions that contribute to the GraphQL schema.
 A shared resilient Swift framework lets compatible providers and the server
 be upgraded independently where the host's loading policy admits the identity.
 Its published Swift contract is the stable binary
-interface; a TypeScript hosting layer is not required. The desktop provider is
-bundled.
+interface; a TypeScript hosting layer is not required. The desktop and
+workspace providers are bundled.
 
-The designed workflow extension adds
-[selection of independently updated first-party providers](docs/specs/machine.md#first-party-provider-selection).
-That policy is pending implementation and acceptance; Koine 0.1.0's binary
-compatibility does not imply support for replacing its bundled desktop provider.
+Koine 0.2.0 implements the workflow extension's
+[selection of independently updated first-party providers](docs/specs/machine.md#first-party-provider-selection):
+at startup it chooses one compatible bundle per provider identity, bundled or
+approved per user. Its acceptance is established except for the parts that need
+a second Developer ID team's certificate.
 
-Koine 0.1.0 is notarized and verified in Gatekeeper-enforcing VMs on macOS 26
+Koine 0.2.0 is notarized and verified in Gatekeeper-enforcing VMs on macOS 26
 on Apple Silicon, the one supported platform. The spec's "Acceptance status"
 lists what is established, with its evidence, and what is still open. A client
 names a process by PID and kernel start instant. Koine uses

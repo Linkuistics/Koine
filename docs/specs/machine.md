@@ -1,6 +1,6 @@
 # Koine desktop contract
 
-**The shared Machine and desktop contract.** Koine 0.1.0 implements the baseline:
+**The shared Machine and desktop contract.** Koine 0.2.0 implements the baseline:
 the shared resilient Swift framework, one resident Koine application and bearer
 credentials with live revocation. The
 served schema matches [the design schema](../design/desktop-schema-extension-host.graphql)
@@ -1700,8 +1700,8 @@ Every obligation above, each marked **established**, with the evidence that
 establishes it, or **open**. Test suites named here are in
 `Tests/KoineServerTests` and run under `task test`; documents are under
 `docs/verification/`. Each VM run used either the Developer ID signed bundle or
-the notarized 0.1.0 bundle on a Gatekeeper-enforcing clone; each document says
-which.
+a notarized release bundle (0.1.0 or 0.2.0) on a Gatekeeper-enforcing clone;
+each document says which.
 
 | Obligation | Status and evidence |
 |---|---|
@@ -1731,7 +1731,7 @@ input field's default names its owner before any action. The bundled workspace p
 | Closure, duplicate titles and restart behavior | **Established for served behavior.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [desktop-focus-vm.md](../verification/desktop-focus-vm.md). Platform-reported withdrawal is permanent but may be mistaken ([accepted limits](#native-targeting-discussion)). |
 | PID reuse | **Established** for rejecting a mismatched timestamp input in [release-acceptance-vm.md](../verification/release-acceptance-vm.md). An [actual PID-recycling diagnostic](../verification/retained-ax-binding.md) showed a held AX window acting on the replacement process. This is platform evidence, not a Koine acceptance pass. Wrong-target data and effects in that race are an [accepted limit](#native-targeting-discussion). |
 | Closing management windows leaves service and observation running | **Established.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [desktop-remembered-windows-vm.md](../verification/desktop-remembered-windows-vm.md). |
-| Warm latency reported in the real keyboard workflow | **Established** as a report: [latency-and-support-matrix.md](../verification/latency-and-support-matrix.md), measured on the Developer ID signed build at the macOS 26 floor, not on the notarized bundle. **Open**: that the notarized 0.1.0 bundle carries the image digests that document records. |
+| Warm latency reported in the real keyboard workflow | **Established** as a report: [latency-and-support-matrix.md](../verification/latency-and-support-matrix.md), measured on the Developer ID signed build at the macOS 26 floor, not on the notarized bundle. **Open**: that a notarized release bundle carries the image digests that document records. |
 | The signed release build's entitlements and permission behavior | **Established.** [release-acceptance-vm.md](../verification/release-acceptance-vm.md), [notarized-release-vm.md](../verification/notarized-release-vm.md). |
 | The native identity guarantee | **Established** only for the served design's within-process and ordinary-restart cases in [desktop-window-identity.md](../verification/desktop-window-identity.md). Held AX objects can retarget after actual PID reuse, as [the diagnostic](../verification/retained-ax-binding.md) and [current decision record](../adr/desktop-window-identity-is-a-held-element.md) explain. Across PID reuse this is an [accepted limit](#native-targeting-discussion), not an open obligation. |
 

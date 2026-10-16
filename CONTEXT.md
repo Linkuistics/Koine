@@ -59,11 +59,11 @@ _Avoid_: schema version
 
 **Provider**: A native Swift **Machine server** plugin contributing an
 application's or the desktop's GraphQL schema and the implementation of its
-state and commands; the desktop provider is bundled with Koine. Providers and the
-server binaries can be upgraded independently through the **provider framework**
-where the host's loading policy admits the provider identity. Replacing a shipped
-provider requires a selection-aware host; Koine 0.1.0 refuses external desktop
-replacement.
+state and commands; the desktop and workspace providers are bundled with Koine.
+Providers and the server binaries can be upgraded independently through the
+**provider framework** where the host's loading policy admits the provider
+identity. Replacing a shipped provider requires a selection-aware host, as Koine
+0.2.0 is; Koine 0.1.0 refuses external desktop replacement.
 
 **Provider candidate**: One discovered native bundle offered for a **provider**
 identity, with its physical installation origin and verification outcome. Several
