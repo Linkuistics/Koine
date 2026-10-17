@@ -82,34 +82,63 @@ with a screenshot beside the transcript, and writes the transcript to
 
 ## Evidence
 
-Run of 2026-10-16 against the bundle built from `32ff91c` plus this change,
-signed `Developer ID Application: Antony Blakey (TA43A4RUP3)`, un-notarized. VM:
-clone of `testanyware-golden-macos-tahoe`, macOS 26.5 (25F71), arm64, 1920×1080,
-on an Apple-silicon host. Result: **passed**, every expectation above.
+Run of 2026-10-17 against the **notarized, stapled 0.3.0** bundle (tag `v0.3.0`,
+submission `a216930f-6424-4106-a4fb-31659ba17d9c`), signed `Developer ID
+Application: Antony Blakey (TA43A4RUP3)`. VM: clone of
+`testanyware-golden-macos-tahoe`, macOS 26.5 (25F71), arm64, 1920×1080, on an
+Apple-silicon host. Installed by `ditto`, so it carries no quarantine attribute
+and the golden's Gatekeeper assessments are off (`override=security disabled`);
+the quarantined, enforcing case is
+[notarized-release-vm.md](notarized-release-vm.md)'s. Result: **passed**, every
+expectation above.
 
 ```
+== Start a clean VM (koine-verify-19511)
+Gatekeeper: assessments disabled
+
+== Install the signed bundle (ditto zip, testanyware file upload, ditto -x)
+Quarantine attribute: xattr: /Applications/Koine.app: No such xattr: com.apple.quarantine
+/Applications/Koine.app: valid on disk
+/Applications/Koine.app: satisfies its Designated Requirement
+Identifier=dev.antony.Koine
+CodeDirectory v=20500 size=37148 flags=0x10000(runtime) hashes=1150+7 location=embedded
+Authority=Developer ID Application: Antony Blakey (TA43A4RUP3)
+Authority=Developer ID Certification Authority
+TeamIdentifier=TA43A4RUP3
+/Applications/Koine.app: accepted
+source=Notarized Developer ID
+override=security disabled
+origin=Developer ID Application: Antony Blakey (TA43A4RUP3)
+
 == First launch: no Dock icon, one menu bar item, and the settings window because setup needs the user
 Windows: ["Koine Settings"]
 Default frame: 720 95 480 712
 Background only (an agent application): true
-Dock: Finder, Apps, Safari, Messages, Mail, Maps, Photos, FaceTime, Phone, Calendar, Contacts, Reminders, Notes, TV, Music, Games, App Store, iPhone Mirroring, System Settings, missing value, Terminal, missing value, Downloads, Trash
+Dock: Finder, Apps, Safari, Messages, Mail, Maps, Photos, FaceTime, Phone, Calendar, Contacts, Reminders, Notes, TV, Music, Games, App Store …
 Item: Koine, Accessibility not granted
 Menu: Accessibility Not Granted…, , Settings…, Quit Koine
 
 == No visible menu bar, even with the window open: the menu bar stays the previous application's
 Front application: TextEdit
 
+== Close the window; Settings… brings it back over TextEdit's, to the front
+
 == The window resizes: larger, then no smaller than its least size, where its content scrolls
 Larger: 40 40 701 901
 Smaller: 40 40 440 352
+grant-label at y=437.0 moved to y=337.0 under --dy -10; towards the end is --dy -10
+
+== Shortcuts, with no visible menu bar: ⌘A, ⌘C, ⌘X, ⌘V in a field, ⌘W
 
 == A client's request shows the mark and a line within a poll, and never opens the window
 Menu: Review 1 Grant Request…, Accessibility Not Granted…, , Settings…, Quit Koine
 Menu: Review 2 Grant Requests…, Accessibility Not Granted…, , Settings…, Quit Koine
 
 == The line opens the window at Requests, scrolled there from the least size
-Requests on screen: ["request-label-54c67b18-6cc7-4d9e-9bd1-39816ec28c9e","vm-editor"]
+Requests on screen: ["request-label-567fcc05-a8a2-455d-a69f-6118204c6577","vm-editor"]
 Menu: Accessibility Not Granted…, , Settings…, Quit Koine
+
+== The Accessibility line opens the window at Accessibility, scrolled there from below
 
 == Consent given in System Settings: the mark and the line go within a poll
 Menu: Settings…, Quit Koine
@@ -117,15 +146,21 @@ Menu: Settings…, Quit Koine
 == Setup complete: enable login launch, Quit from the menu, and a launch by hand starts silently
 Item: Koine; windows: 0
 
+== Opening Koine again while it runs shows the window
+
+== Quit with ⌘Q from the window, then restart the VM: only the login item can start Koine
+
 == After login, with nothing having launched Koine: the item, and no window
-474 /Applications/Koine.app/Contents/MacOS/Koine
+489 /Applications/Koine.app/Contents/MacOS/Koine
 Item after login launch: Koine; windows: 0
 
 == Quit Koine from the menu: the server stops as it always has
 curl to the old port 49152: exit 7
+
+== PASSED — transcript in .build/vm-verify/menu-bar-20261017T122935.log
 ```
 
-Earlier runs the same day failed on the matters noted above (a retried `open`
+Earlier runs failed on the matters noted above (a retried `open`
 reopening the window; a Notification Center banner counted as the front window;
 TextEdit's first launch), and on the resize being tried with an accessibility
 resize that the window does not hold to its least size. None of them was Koine

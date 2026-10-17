@@ -64,53 +64,75 @@ largest footprint any user's setting produces.
   domain exists at any stage, on disk or in cfprefsd. A plain uninstall leaves
   the data directory, and `--zap` removes it. The cask's `zap trash:` names that
   path and nothing else.
-- **macOS keeps Koine's saved window state where no cask can name it.** On
+- **Koine 0.3.0 leaves no saved window state, with window restoration on.**
+  The helper finds none at any of the three stages, on macOS 26.5 or 27.0.1.
+  Where macOS does keep an application's window state, no cask can name it: on
   macOS 26, AppKit does not write `~/Library/Saved Application State/<bundle
   id>.savedState`. It writes `<uuid>.savedState` in talagent's container under
   `~/Library/Daemon Containers`, and `ApplicationMapping.plist` beside it maps
-  Koine's signing identity (`dev.antony.Koine`, team `TA43A4RUP3`) to that UUID.
-  The UUID belongs to the machine, so a `zap trash:` path cannot name it, and it
-  survives both uninstall and `--zap`. With window restoration on, it holds
-  `data.data` and `windows.plist` for the settings window. With the
-  setting at its macOS default (restoration off), a hand probe on another clone
-  of the same golden found the directory present but empty.
+  the signing identity (`dev.antony.Koine`, team `TA43A4RUP3`) to that UUID,
+  which belongs to the machine and survives uninstall and `--zap`. A run of
+  Koine 0.2.0 on macOS 26.5 (transcript `homebrew-20261016T132751.log`) found
+  `data.data` and `windows.plist` there for the settings window. The helper
+  reports none in the 0.3.0 runs.
 - **The login-launch registration outlives the application.** Koine registers
   through `SMAppService.mainApp`, so its entry is Background Task Management's,
   not a System Events login item, and the cask's `uninstall` has no stanza that
   reaches it. After a plain uninstall and after `--zap`, the entry is unchanged:
   `Disposition: [enabled, allowed, notified]`, still naming
-  `file:///Applications/Koine.app/`.
+  `/Applications/Koine.app` (the dump prints `file:///Applications/Koine.app/`
+  on macOS 26.5 and the bare path on 27.0.1).
 - **Homebrew's "Trashing files:" line lists what the cask declares, not what
   existed.** Homebrew 6.0.3's `uninstall_trash` prints each declared path whether
   or not a file was found there. The enumeration above is the evidence of what
   was removed. Homebrew's listing is not.
-- **Tap trust does not stop an install by full name.** Homebrew 6 warns that
-  `linkuistics/taps` is not trusted. It then trusts the one cask named in
+- **Tap trust does not stop an install by full name.** Homebrew 6.0.3 warns
+  that `linkuistics/taps` is not trusted. It then trusts the one cask named in
   `brew install --cask linkuistics/taps/koine` and installs it, with no prompt.
+  Homebrew 7.0.9 does the same without the warning.
 - **This does not show** what the leftover login-launch entry does at the next
   login with the application gone, whether turning login launch off before
   uninstalling removes the entry, or whether a reinstall finds login launch
-  already on. It is one OS build on one architecture, which is the whole of the
-  supported matrix: [latency-and-support-matrix.md](latency-and-support-matrix.md).
+  already on. It is two guest OS builds on one architecture; the supported
+  claim is macOS 26: [latency-and-support-matrix.md](latency-and-support-matrix.md).
 
 ## Evidence
 
-Run of 2026-10-16, transcript `homebrew-20261016T132751.log`. The host was a
-Mac16,5 (Apple M4 Max) on macOS 27.0.1 (26A434), running testanyware 2.1.0 and
-tart 2.40.1. The cask was `Casks/koine.rb` in `Linkuistics/homebrew-taps`
-at `b17e40e`, installing release `v0.2.0` (`Koine-0.2.0-aarch64-apple-darwin.zip`,
-SHA-256 `971e74f8f31e298b1512cfa01d1666cb046b07de0247d28099e5143925eeb4c7`).
-The VM was a clone of `testanyware-golden-macos-tahoe`: macOS 26.5 (25F71),
-arm64, Homebrew 6.0.3 from the golden, display 1920x2160, with Gatekeeper
-assessments **enabled** and developer id **enabled**. Result: **passed**, every
-expectation above.
+Two runs of 2026-10-19, both passing every expectation above. The host was a
+Mac16,5 (Apple M4 Max) on macOS 27.0.1 (26A434), running testanyware 2.3.0 and
+tart 2.40.1. The cask was `Casks/koine.rb` in `Linkuistics/homebrew-taps` at
+`0e349da`, installing release `v0.3.0` (`Koine-0.3.0-aarch64-apple-darwin.zip`,
+SHA-256 `b6b6f085cd8ff7da61bf5616e07d54714511039f85cfea7085010bc34e930200`).
+Display 1920x2160, Gatekeeper assessments **enabled** and developer id
+**enabled** in both.
+
+- **macOS 26.5 (25F71)**, a clone of `testanyware-golden-macos-tahoe`, arm64,
+  Homebrew 6.0.3 from the golden; transcript `homebrew-20261019T213453.log`,
+  excerpted below. This is the supported floor.
+- **macOS 27.0.1 (26A434)**, a clone of `testanyware-golden-macos-27`, the
+  default macOS golden of testanyware 2.3.0, Homebrew 7.0.9 from the golden;
+  transcript `homebrew-20261019T211908.log`. Homebrew 7.0.9 printed no
+  untrusted-tap warning. Its saved-window-state and Background Task Management
+  results match the 26.5 run, except that the dump prints the application's URL
+  without the `file://` scheme.
+
+Both ran from Terminal, which holds the Local Network permission that
+testanyware needs to reach the guest's agent.
 
 ```
+== Start a clean VM (koine-verify-33713)
+Setting guest display resolution to 1920x2160 px...
+  set-display-mode: switched main display to 1920x2160 pt @ 1x (1920x2160 px, modeID 11)
+ProductName:		macOS
+ProductVersion:		26.5
+BuildVersion:		25F71
+arm64
+Gatekeeper: assessments disabled
+
 == Put the clone into a Gatekeeper-enforcing state
 Before: assessments disabled;
 After:  assessments enabled;developer id disabled;
 The clone is App Store-only; setting the default posture in System Settings.
-  attempt 1: the menu did not open in front; retrying
 After System Settings: assessments enabled;developer id enabled;
 
 == Homebrew in the guest
@@ -119,14 +141,17 @@ Homebrew 6.0.3
 == brew install --cask linkuistics/taps/koine
   | ==> Tapping linkuistics/taps
   | Warning: Skipping linkuistics/taps because it is not trusted. Run `brew trust linkuistics/taps` to trust it.
+  | Warning: Skipping linkuistics/taps because it is not trusted. Run `brew trust linkuistics/taps` to trust it.
   | ==> Trusted cask linkuistics/taps/koine
-  | ✔︎ Cask koine (0.2.0)
+  | ==> Fetching downloads for: linkuistics/taps/koine
+  | ✔︎ Cask koine (0.3.0)
+  | ==> Installing Cask koine
   | ==> Moving App 'Koine.app' to '/Applications/Koine.app'
   | 🍺  koine was successfully installed!
-Installed version: 0.2.0
+Installed version: 0.3.0
 
 == Homebrew quarantined the download, and nothing stripped it
-Quarantine on the bundle: 0181;6ad18c03;Homebrew\x20Cask;494EED16-6A30-4265-B40B-137500E6CF3A
+Quarantine on the bundle: 0181;6ad5f2c1;Homebrew\x20Cask;E30A2F73-EF7B-4F1A-A7C8-416143D23C9A
 
 == Gatekeeper's verdict on the installed bundle
 /Applications/Koine.app: accepted
@@ -136,9 +161,9 @@ The validate action worked!
 
 == First launch of the quarantined copy: plain open, no right-click-Open
   “Koine” is an app downloaded from the Internet. Are you sure you want to open it?
-  Homebrew Cask downloaded this file today at 2:29 AM. Apple checked it for malicious software and none was detected.
-Koine pid: 1736
-{"contractVersion":"koine-desktop\/1","descriptorVersion":1,…,"path":"\/graphql","pid":1736,"port":49160}
+  Homebrew Cask downloaded this file today at 10:36 AM. Apple checked it for malicious software and none was detected.
+Koine pid: 1680
+{"contractVersion":"koine-desktop\/1","descriptorVersion":1,"path":"\/graphql","pid":1680,"port":49160}
 
 == Enable login launch in the window, so uninstall has a registration to leave or take
 Before: Koine is not registered to start at login. Clients find the service unavailable until you open Koine.
@@ -152,44 +177,49 @@ After:  Koine will start when you log in.
 == What Koine leaves in ~/Library: installed and running
 /Users/admin/Library/Application Support/Koine
 Defaults domain: (none)
-Saved window state: /Users/admin/Library/Daemon Containers/13C3DBF7-…/Data/Library/Saved Application State/E41E13BA-A97F-49F1-8A64-B291FD3302CA.savedState
-  data.data
-  windows.plist
+Saved window state: (none)
 
 == brew uninstall --cask koine, with Koine running
+  | ==> Uninstalling Cask koine
   | ==> Quitting application 'dev.antony.Koine'...
   | Application 'dev.antony.Koine' quit successfully.
+  | ==> Backing App 'Koine.app' up to '/opt/homebrew/Caskroom/koine/0.3.0/Koine.app'
   | ==> Removing App '/Applications/Koine.app'
+  | ==> Purging files for version 0.3.0 of Cask koine
 Koine quit and /Applications/Koine.app removed.
 
 == What Koine leaves in ~/Library: after a plain uninstall
 /Users/admin/Library/Application Support/Koine
 Defaults domain: (none)
-Saved window state: …/E41E13BA-A97F-49F1-8A64-B291FD3302CA.savedState
-  data.data
-  windows.plist
+Saved window state: (none)
 
 == Koine's Background Task Management entry: after a plain uninstall
           Disposition: [enabled, allowed, notified] (0xb)
+           Identifier: 2.dev.antony.Koine
                   URL: file:///Applications/Koine.app/
 
 == Reinstall, then brew uninstall --zap --cask koine
+  | ==> Trusted cask linkuistics/taps/koine
+  | ==> Fetching downloads for: linkuistics/taps/koine
+  | ✔︎ Cask koine (0.3.0)
+  | ==> Installing Cask koine
   | ==> Moving App 'Koine.app' to '/Applications/Koine.app'
   | 🍺  koine was successfully installed!
+  | ==> Backing App 'Koine.app' up to '/opt/homebrew/Caskroom/koine/0.3.0/Koine.app'
   | ==> Removing App '/Applications/Koine.app'
   | ==> Dispatching zap stanza
   | ==> Trashing files:
   | ~/Library/Application Support/Koine
+  | ==> Removing all staged versions of Cask 'koine'
 
 == What Koine leaves in ~/Library: after --zap
   (nothing)
 Defaults domain: (none)
-Saved window state: …/E41E13BA-A97F-49F1-8A64-B291FD3302CA.savedState
-  data.data
-  windows.plist
+Saved window state: (none)
 
 == Koine's Background Task Management entry: after --zap
           Disposition: [enabled, allowed, notified] (0xb)
+           Identifier: 2.dev.antony.Koine
                   URL: file:///Applications/Koine.app/
 ```
 

@@ -184,6 +184,14 @@ Shown by: 883 universalAccess
 == PASSED
 ```
 
+The same script, as it now stands, also passes on the notarized, stapled
+**0.3.0** bundle (submission `a216930f-6424-4106-a4fb-31659ba17d9c`): run of
+2026-10-17, transcript `notarized-20261017T121006.log`, same clone and posture.
+It asserts the loader's refusal before `dlopen` that
+[provider-quarantine-precheck-vm.md](provider-quarantine-precheck-vm.md)
+records, and grants through the settings window. The 0.1.0 transcript above is
+the one the table and the discussion below describe step for step.
+
 Screenshots beside the transcript: `-first-launch.png` (the notarized first-run
 dialog), `-plugin-refused.png` (the loader refusal) and `-consent-dialog.png`
 (the Accessibility prompt naming Koine).

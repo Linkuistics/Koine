@@ -25,13 +25,13 @@ Its published Swift contract is the stable binary
 interface; a TypeScript hosting layer is not required. The desktop and
 workspace providers are bundled.
 
-Koine 0.2.0 implements the workflow extension's
+Koine 0.3.0 implements the workflow extension's
 [selection of independently updated first-party providers](docs/specs/machine.md#first-party-provider-selection):
 at startup it chooses one compatible bundle per provider identity, bundled or
-approved per user. Its acceptance is established except for the parts that need
-a second Developer ID team's certificate.
+approved per user. Its acceptance, recorded before 0.3.0, is established except
+for the parts that need a second Developer ID team's certificate.
 
-Koine 0.2.0 is notarized and verified in Gatekeeper-enforcing VMs on macOS 26
+Koine 0.3.0 is notarized and verified in Gatekeeper-enforcing VMs on macOS 26
 on Apple Silicon, the one supported platform. The spec's "Acceptance status"
 lists what is established, with its evidence, and what is still open. A client
 names a process by PID and kernel start instant. Koine uses
@@ -75,11 +75,11 @@ The cask installs the notarized, stapled bundle from the
 `/Applications`; Gatekeeper accepts it as downloaded, with nothing stripped.
 `brew uninstall --cask koine` quits and removes the application and leaves its
 data; `--zap` also removes `~/Library/Application Support/Koine`, the only files
-Koine writes. Neither removes two things macOS keeps for the application: its
-saved window state, which macOS 26 files under a per-machine identifier no cask
-can name, and, if login launch was on, its Background Task Management entry,
-which stays enabled and still names `/Applications/Koine.app`. The install,
-uninstall and `--zap` were measured on a clean Gatekeeper-enforcing VM:
+Koine writes. Neither removes the one thing macOS keeps for the application, if login launch
+was on: its Background Task Management entry, which stays enabled and still
+names `/Applications/Koine.app`. Koine 0.3.0 leaves no saved window state. The
+install, uninstall and `--zap` were measured on clean Gatekeeper-enforcing VMs
+running macOS 26.5 and 27.0.1:
 [`docs/verification/homebrew-install-vm.md`](docs/verification/homebrew-install-vm.md).
 
 ## Reference evidence design
