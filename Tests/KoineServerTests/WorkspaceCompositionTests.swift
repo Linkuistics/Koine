@@ -245,30 +245,58 @@ import Testing
         #expect(bench.script.log.isEmpty, "denial precedes inspection: the provider is never entered")
     }
 
-    @Test func everyServedFieldRequiresTheSameSet() throws {
+    static let actionCoordinates: Set<String> = [
+        "Mutation.workspaceLaunchApplication", "Mutation.workspaceOpenURL", "Mutation.workspaceOpenPath",
+        "Mutation.workspaceRevealPath",
+        "WorkspaceRevealResult.status", "WorkspaceRevealResult.value", "WorkspaceRevealResult.dependency",
+        "WorkspaceRevealReceipt.path",
+        "WorkspaceOpenResult.status", "WorkspaceOpenResult.value", "WorkspaceOpenResult.dependency",
+        "WorkspaceOpenReceipt.process",
+        "WorkspaceProcessIdentity.pid", "WorkspaceProcessIdentity.startedAt",
+        "WorkspaceDependencyUnavailable.reason", "WorkspaceDependencyUnavailable.guidance",
+    ]
+
+    static let readCoordinates: Set<String> = [
+        "Query.workspaceSpecialLocations",
+        "WorkspaceSpecialLocationsResult.status", "WorkspaceSpecialLocationsResult.items",
+        "WorkspaceSpecialLocationsResult.sources", "WorkspaceSpecialLocationsResult.resultsTruncated",
+        "WorkspaceSpecialLocation.kind", "WorkspaceSpecialLocation.domain",
+        "WorkspaceSpecialLocation.accountIdentifier", "WorkspaceSpecialLocation.location",
+        "WorkspaceSpecialLocation.contentsAvailability", "WorkspaceSpecialLocation.sources",
+        "WorkspaceDiscoveryCoverage.source", "WorkspaceDiscoveryCoverage.declaredDomain",
+        "WorkspaceDiscoveryCoverage.availability", "WorkspaceDiscoveryCoverage.observations",
+        "WorkspaceDiscoveryCoverage.category", "WorkspaceDiscoveryCoverage.examined",
+        "WorkspaceDiscoveryCoverage.diagnostics",
+        "WorkspaceDiscoveryDiagnostic.source", "WorkspaceDiscoveryDiagnostic.reason",
+        "WorkspaceDiscoveryDiagnostic.subject", "WorkspaceDiscoveryDiagnostic.affectsCoverage",
+        "WorkspaceDiscoveryDiagnostic.guidance", "WorkspaceDiscoveryDiagnostic.permission",
+        "WorkspaceDiscoveryPermissionHint.permission", "WorkspaceDiscoveryPermissionHint.target",
+        "WorkspaceDiscoveryPermissionHint.event", "WorkspaceDiscoveryPermissionHint.consent",
+    ]
+
+    /// Every action field needs both controls and nothing else. Every field the query reaches needs
+    /// workspace:read and nothing else: the two sets share no object, because permissions attach to field
+    /// coordinates and not to the root that reached them.
+    @Test func everyServedFieldRequiresItsOwnCompleteSet() throws {
         let descriptor = workspaceDescriptor(schemaSDL: try Self.schemaSDL())
-        #expect(descriptor.requiredFeatures == [ProviderDescriptor.additionalCapabilitiesFeature])
-        let served = Set(descriptor.fields.map(\.coordinate))
         #expect(
-            served == [
-                "Mutation.workspaceLaunchApplication", "Mutation.workspaceOpenURL", "Mutation.workspaceOpenPath",
-                "Mutation.workspaceRevealPath",
-                "WorkspaceRevealResult.status", "WorkspaceRevealResult.value", "WorkspaceRevealResult.dependency",
-                "WorkspaceRevealReceipt.path",
-                "WorkspaceOpenResult.status", "WorkspaceOpenResult.value", "WorkspaceOpenResult.dependency",
-                "WorkspaceOpenReceipt.process",
-                "WorkspaceProcessIdentity.pid", "WorkspaceProcessIdentity.startedAt",
-                "WorkspaceDependencyUnavailable.reason", "WorkspaceDependencyUnavailable.guidance",
+            descriptor.requiredFeatures == [
+                ProviderDescriptor.additionalCapabilitiesFeature, "workspace-native-disclosures-v1",
             ])
-        for field in descriptor.fields {
+        let served = Set(descriptor.fields.map(\.coordinate))
+        #expect(served == Self.actionCoordinates.union(Self.readCoordinates))
+        #expect(descriptor.fields.count == served.count, "no coordinate is registered twice")
+        for field in descriptor.fields where Self.actionCoordinates.contains(field.coordinate) {
             #expect(field.authority == .control, "\(field.coordinate)")
             #expect(
                 field.additionalRequirements == [ProviderCapabilityRequirement(providerId: "desktop", kind: .control)],
                 "\(field.coordinate)")
         }
+        for field in descriptor.fields where Self.readCoordinates.contains(field.coordinate) {
+            #expect(field.authority == .read, "\(field.coordinate)")
+            #expect(field.additionalRequirements.isEmpty, "\(field.coordinate) needs read alone")
+        }
     }
-
-    // MARK: Result branches
 
     @Test func aDependencyResultHasItsDependencyOnly() async throws {
         let bench = try await Bench()
@@ -754,6 +782,8 @@ import Testing
             lock.withLock { revealed.append(path) }
             completion(.acknowledged(nil))
         }
+        func specialLocationValues(_ pair: LocationPair) -> [String] { [] }
+        func accountIdentifier() -> String { "501" }
         func processStart(of pid: Int32) -> ProcessLookup { .absent }
         func liveExecutableIdentity(of pid: Int32) -> ObjectIdentity? { nil }
     }

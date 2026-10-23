@@ -157,8 +157,9 @@ import Testing
         #expect(desktop.signingIdentifier == "dev.antony.Koine.provider.desktop")
         let workspace = try #require(catalogue.entry(for: "workspace")?.baseline)
         #expect(workspace.bundleName == "Workspace.koineprovider")
-        // 1.0.1 is the action-only long-location repair; the retained 1.0.0 is a separate artifact.
-        #expect(workspace.release == ProviderVersion("1.0.1") && workspace.schema == ProviderVersion("1.0.1"))
+        // 1.0.2 adds the first cut of native discovery to the 1.0.1 action-only repair; the retained 1.0.0 and 1.0.1
+        // are separate artifacts.
+        #expect(workspace.release == ProviderVersion("1.0.2") && workspace.schema == ProviderVersion("1.0.2"))
         #expect(workspace.signingIdentifier == "dev.antony.Koine.provider.workspace")
         for reserved in ["input", "menus", "iterm", "herdr"] {
             #expect(catalogue.entry(for: reserved)?.baseline == nil, "\(reserved) must not be enabled yet")
@@ -195,6 +196,8 @@ import Testing
         #expect(koineHostFeatures.contains(ProviderLoader.firstPartySelectionFeature))
         #expect(ProviderLoader.firstPartySelectionFeature == "first-party-selection-v1")
         #expect(koineHostFeatures.contains(ProviderDescriptor.additionalCapabilitiesFeature))
+        #expect(koineHostFeatures.contains("workspace-native-disclosures-v1"))
+        #expect(workspaceNativeDisclosuresFeature == "workspace-native-disclosures-v1")
     }
 
     // MARK: What the core reserves

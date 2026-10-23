@@ -51,6 +51,8 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     private var registrationLog: [String] = []
     private var bundleReadLog: [String] = []
     private var startReads: [Int32: Int] = [:]
+    private var specialValues: [LocationPair: [String]] = [:]
+    private var specialLookups: [LocationPair] = []
     /// What a submission (a launch or a URL open) does at once, if anything; the default
     /// holds the callback for the test.
     var onLaunch: (@Sendable (@escaping @Sendable (LaunchCompletion) -> Void) -> Void)?
@@ -327,6 +329,23 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
         }
         onLaunch?(completion)
     }
+
+    /// What Foundation gives for a named location; an unarranged one gives nothing.
+    func locationValues(_ pair: LocationPair, _ values: [String]) {
+        lock.withLock { specialValues[pair] = values }
+    }
+
+    /// The locations asked for, in order: a lookup is the only thing a special-locations query does.
+    var specialLocationLog: [LocationPair] { lock.withLock { specialLookups } }
+
+    func specialLocationValues(_ pair: LocationPair) -> [String] {
+        lock.withLock {
+            specialLookups.append(pair)
+            return specialValues[pair] ?? []
+        }
+    }
+
+    func accountIdentifier() -> String { "501" }
 
     func processStart(of pid: Int32) -> ProcessLookup {
         lock.withLock {

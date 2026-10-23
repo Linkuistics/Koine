@@ -1,6 +1,6 @@
-# Workspace 1.0.1 contribution as served: all four roots and every type they reach, verbatim from
-# docs/design/workspace-action-repair-schema.graphql (everything after its header comment). The design file is the
-# contract; this file is not reworded.
+# Workspace 1.0.2 contribution as served: the four action roots and the first cut of native discovery,
+# verbatim from docs/design/workspace-special-locations-schema.graphql (everything after its header comment).
+# The design file is the contract; this file is not reworded.
 
 """A registered application bundle present at inspection, even if in the Trash. Requires a bundle identifier; bundle-less programs have no named-selector route. No executable, argv, environment or shell input."""
 input WorkspaceApplicationInput {
@@ -81,4 +81,85 @@ extend type Mutation {
   workspaceOpenPath(path: String!, application: WorkspaceApplicationInput): WorkspaceOpenResult
   """Requires workspace:control AND desktop:control. Reveal one literal absolute path in Finder without opening its contents. Native acknowledgment is not observed selection. Missing path/Finder is typed dependency absence; false acknowledgment or ambiguous failure is failed, never automatic replay. Wait ends after three seconds or earlier cancellation, ignoring late acknowledgment; the core deadline may answer first. Koine resolves the path component by component: missing components, dangling links, established cycles and established impossible components are PATH_NOT_FOUND; link-budget exhaustion and other resolution errors are failed. An extant location, or Finder's own, whose literal, link-expanded or resolved spelling is PATH_MAX (1,024) bytes or more, not counting its NUL, is failed before any Finder request. A link to the root, without a trailing slash, is selected as the link. Preserve submitted target bytes."""
   workspaceRevealPath(path: String!): WorkspaceRevealResult
+}
+
+"""Inspect sources, uncertainty and independent GraphQL errors together."""
+enum WorkspaceDiscoveryStatus { AVAILABLE PARTIAL UNKNOWN BLOCKED UNAVAILABLE FAILED }
+
+enum WorkspaceDiscoveryAvailability { AVAILABLE BLOCKED UNAVAILABLE UNKNOWN }
+
+enum WorkspaceDiscoveryCompleteness { COMPLETE PARTIAL UNKNOWN }
+
+enum WorkspaceDiscoverySource { FOUNDATION_LOCATIONS INDEXED_APPS RUNNING_APPS REGISTRATION SETTINGS_RUNTIME }
+
+enum WorkspaceDiscoveryReason {
+  NO_NATIVE_VALUE PROMPT_RISK TARGET_NOT_RUNNING TARGET_CHANGED SOURCE_UNAVAILABLE
+  SETUP_UNSUPPORTED INSPECTION_FAILED CHANGED_DURING_DISCOVERY UNREPRESENTABLE_VALUE
+  METADATA_UNKNOWN ENTRY_LIMIT CALL_LIMIT VALUE_LIMIT DIAGNOSTIC_LIMIT TIME_LIMIT CAPACITY_LIMIT
+}
+
+enum WorkspaceDiscoveryConsent { UNKNOWN }
+
+enum WorkspaceDiscoveryPermission { AUTOMATION PROMPT_RISK }
+
+enum WorkspaceSettingsEvent { READ REVEAL }
+
+type WorkspaceDiscoveryPermissionHint {
+  permission: WorkspaceDiscoveryPermission!
+  """Fixed target com.apple.systempreferences for Automation; established target or declared source otherwise."""
+  target: String!
+  event: WorkspaceSettingsEvent
+  consent: WorkspaceDiscoveryConsent!
+}
+
+type WorkspaceDiscoveryDiagnostic {
+  source: WorkspaceDiscoverySource!
+  reason: WorkspaceDiscoveryReason!
+  """Only an independently identified location/pane; never parsed from error text."""
+  subject: String
+  affectsCoverage: Boolean!
+  guidance: String!
+  permission: WorkspaceDiscoveryPermissionHint
+}
+
+type WorkspaceDiscoveryCoverage {
+  source: WorkspaceDiscoverySource!
+  declaredDomain: String!
+  availability: WorkspaceDiscoveryAvailability!
+  """Completeness of checked finite observations, not atomicity or internal health."""
+  observations: WorkspaceDiscoveryCompleteness!
+  """UNKNOWN for app/settings inventory and filesystem contents of starting values."""
+  category: WorkspaceDiscoveryCompleteness!
+  examined: Int!
+  diagnostics: [WorkspaceDiscoveryDiagnostic!]!
+}
+
+enum WorkspaceLocationKind { HOME DESKTOP DOCUMENTS DOWNLOADS MOVIES MUSIC PICTURES APPLICATIONS }
+
+enum WorkspaceLocationDomain { USER LOCAL SYSTEM }
+
+input WorkspaceLocationRequest { kind: WorkspaceLocationKind! domain: WorkspaceLocationDomain! }
+
+type WorkspaceSpecialLocation {
+  kind: WorkspaceLocationKind!
+  domain: WorkspaceLocationDomain!
+  """UID of Koine's account, not the client's account."""
+  accountIdentifier: String!
+  """OS-known absolute local value; no existence, access, listing or consent guarantee."""
+  location: String!
+  contentsAvailability: WorkspaceDiscoveryAvailability!
+  sources: [WorkspaceDiscoverySource!]!
+}
+
+type WorkspaceSpecialLocationsResult {
+  status: WorkspaceDiscoveryStatus!
+  """Frozen list for AVAILABLE/PARTIAL; otherwise null. FAILED raises failed at each selected items alias; BLOCKED/UNAVAILABLE/UNKNOWN give ordinary null."""
+  items: [WorkspaceSpecialLocation!]
+  sources: [WorkspaceDiscoveryCoverage!]!
+  resultsTruncated: Boolean!
+}
+
+extend type Query {
+  """Value-only Foundation lookup; null/omitted defaults to ten named pairs. Explicit nonempty unique requests <=10; HOME/Desktop/Documents/Downloads/Movies/Music/Pictures USER only; APPLICATIONS USER/LOCAL/SYSTEM. Never lists or inspects contents. All reachable fields require workspace:read."""
+  workspaceSpecialLocations(requests: [WorkspaceLocationRequest!]): WorkspaceSpecialLocationsResult
 }

@@ -263,6 +263,34 @@ struct NativeWorkspace: WorkspaceNative {
         }
     }
 
+    /// HOME is `NSHomeDirectory()` and each other name is `FileManager.urls(for:in:)`, which reports the
+    /// system's value without creating, resolving or opening anything (it is not the create-enabled
+    /// `url(for:in:appropriateFor:create:)`). No official page was fetched for this: the ten pairs were observed
+    /// on macOS 27 returning values without creating anything, and the discovery acceptance run checks them again.
+    /// https://developer.apple.com/documentation/foundation/filemanager/urls(for:in:)
+    func specialLocationValues(_ pair: LocationPair) -> [String] {
+        let directory: FileManager.SearchPathDirectory
+        switch pair.kind {
+        case .home: return [NSHomeDirectory()]
+        case .desktop: directory = .desktopDirectory
+        case .documents: directory = .documentDirectory
+        case .downloads: directory = .downloadsDirectory
+        case .movies: directory = .moviesDirectory
+        case .music: directory = .musicDirectory
+        case .pictures: directory = .picturesDirectory
+        case .applications: directory = .applicationDirectory
+        }
+        let domain: FileManager.SearchPathDomainMask
+        switch pair.domain {
+        case .user: domain = .userDomainMask
+        case .local: domain = .localDomainMask
+        case .system: domain = .systemDomainMask
+        }
+        return FileManager.default.urls(for: directory, in: domain).map(\.path)
+    }
+
+    func accountIdentifier() -> String { String(getuid()) }
+
     func processStart(of pid: Int32) -> ProcessLookup { readKernelProcessStart(of: pid) }
 
     /// The executable the live process runs: the kernel's own path for it (`proc_pidpath`, whose buffer the

@@ -51,6 +51,6 @@ tree() {
 # requires the feature beside the one it already requires.
 state_feature_in_workspace() {
     substitute "$1/Providers/WorkspaceProvider/Logic/WorkspaceProvider.swift" \
-        'requiredFeatures: [ProviderDescriptor.additionalCapabilitiesFeature]' \
-        "requiredFeatures: [ProviderDescriptor.additionalCapabilitiesFeature, \"${FEATURE}\"]"
+        'requiredFeatures: [ProviderDescriptor.additionalCapabilitiesFeature, workspaceNativeDisclosuresFeature]' \
+        "requiredFeatures: [ProviderDescriptor.additionalCapabilitiesFeature, workspaceNativeDisclosuresFeature, \"${FEATURE}\"]"
 }

@@ -62,8 +62,8 @@ import Testing
             #expect(row["state"] as? String == "ACTIVE", "\(identity)")
             #expect(row["origin"] as? String == "BUNDLED", "\(identity)")
             #expect(row["selection"] as? String == "SELECTED", "\(identity)")
-            // The workspace bundle is the 1.0.1 action-only repair; the desktop provider is still 1.0.0.
-            let expected = identity == "workspace" ? "1.0.1" : "1.0.0"
+            // The workspace bundle is 1.0.2, the first cut of native discovery; the desktop provider is still 1.0.0.
+            let expected = identity == "workspace" ? "1.0.2" : "1.0.0"
             #expect(row["version"] as? String == expected && row["schemaVersion"] as? String == expected, "\(identity)")
             #expect(row["reason"] is NSNull, "a healthy shipped row carries no reason")
         }
@@ -86,21 +86,29 @@ import Testing
 
     // MARK: The served contribution
 
-    /// The bundle serves the complete workspace design: everything after the two files' header
+    /// The bundle serves the complete design of the cut: everything after the two files' header
     /// comments is identical, so every definition is a block of the design file, verbatim, and no
-    /// root is missing or reworded.
+    /// root is missing or reworded. The four action roots and the types they reach are the repair design's,
+    /// unchanged.
     @Test func theServedSDLIsTheCompleteWorkspaceDesignVerbatim() throws {
         let served = try WorkspaceCompositionTests.schemaSDL()
-        let design = try String(
-            contentsOf: Self.repository.appending(path: "docs/design/workspace-action-repair-schema.graphql"), encoding: .utf8)
+        func read(_ name: String) throws -> String {
+            try String(contentsOf: Self.repository.appending(path: "docs/design/\(name)"), encoding: .utf8)
+        }
+        let design = try read("workspace-special-locations-schema.graphql")
+        let repair = try read("workspace-action-repair-schema.graphql")
         func body(_ text: String) -> String {
             text.components(separatedBy: "\n\n").dropFirst().joined(separator: "\n\n")
         }
         #expect(body(served) == body(design), "the served contribution is not the design file's body")
         let blocks = served.components(separatedBy: "\n\n").filter { $0.contains("\"\"\"") }
-        #expect(blocks.count == 10)
-        for block in blocks where !block.hasPrefix("extend type Mutation") {
+        #expect(blocks.count == 10 + 7, "ten action blocks, and the seven described blocks of the query and its types")
+        for block in blocks where !block.hasPrefix("extend type") {
             #expect(design.contains(block), "not verbatim from the design file: \(block.prefix(60))")
+        }
+        // The action part is the repair design's, block for block.
+        for block in body(repair).components(separatedBy: "\n\n") {
+            #expect(served.contains(block), "an action block changed: \(block.prefix(60))")
         }
         // The roots are a documentation line and a field line each, in the design's order.
         let lines = try #require(blocks.first { $0.hasPrefix("extend type Mutation") })
@@ -114,7 +122,18 @@ import Testing
             roots[1].hasPrefix("  workspaceLaunchApplication(") && roots[3].hasPrefix("  workspaceOpenURL(")
                 && roots[5].hasPrefix("  workspaceOpenPath(") && roots[7].hasPrefix("  workspaceRevealPath("))
         for reached in ["WorkspaceRevealResult", "WorkspaceRevealReceipt"] {
-            #expect(served.contains("type \(reached) {"), "\(reached) is reached by the last root")
+            #expect(served.contains("type \(reached) {"), "\(reached) is reached by the last action root")
+        }
+        // The one query root, and only it, is declared on Query, and its types are the search design's.
+        let query = try #require(blocks.first { $0.hasPrefix("extend type Query") })
+        #expect(
+            query.components(separatedBy: "\n").filter { $0.hasPrefix("  workspace") }
+                == ["  workspaceSpecialLocations(requests: [WorkspaceLocationRequest!]): WorkspaceSpecialLocationsResult"])
+        let search = try read("workspace-search-schema.graphql")
+        for name in ["WorkspaceSpecialLocationsResult", "WorkspaceSpecialLocation", "WorkspaceDiscoveryCoverage"] {
+            let type = try #require(served.range(of: "type \(name) {")).lowerBound
+            let definition = String(served[type...].prefix(through: try #require(served[type...].range(of: "\n}")).upperBound))
+            #expect(search.contains(definition), "\(name) is not the search design's")
         }
     }
 

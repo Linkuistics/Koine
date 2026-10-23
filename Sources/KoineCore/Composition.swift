@@ -46,11 +46,18 @@ public struct ProviderDiagnostic: Sendable, Equatable {
 /// precedence"); the native loader states the same name.
 public let firstPartySelectionFeature = "first-party-selection-v1"
 
+/// The host feature that says this host's native grant creation, approval and review views, and its
+/// management disclosure catalogue, state the actual reach of `workspace:read` as well as of
+/// `workspace:control` (`CapabilityDisclosures`; docs/adr/native-workspace-requires-disclosure-capable-host.md).
+/// A native workspace provider requires it, so a host that lacks it refuses that provider before it loads
+/// rather than show a grant with less than its reach. It widens only with a new version of the feature.
+public let workspaceNativeDisclosuresFeature = "workspace-native-disclosures-v1"
+
 /// Host features a provider may require: `additional-capabilities-v1`, carried by
 /// framework minor 1 (docs/specs/machine.md, "Additional capability requirements"),
-/// and `first-party-selection-v1`, which needs no framework minor.
+/// `first-party-selection-v1` and `workspace-native-disclosures-v1`, which need no framework minor.
 public let koineHostFeatures: Set<String> = [
-    ProviderDescriptor.additionalCapabilitiesFeature, firstPartySelectionFeature,
+    ProviderDescriptor.additionalCapabilitiesFeature, firstPartySelectionFeature, workspaceNativeDisclosuresFeature,
 ]
 
 /// An identifier and prefix reserved to a shipped provider. Names beneath a

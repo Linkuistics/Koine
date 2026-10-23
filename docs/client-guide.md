@@ -366,9 +366,31 @@ nothing".
 
 ## Searching for applications and files
 
-Raw filesystem search belongs to the client. The client chooses its traversal engine, permissions, filtering, ordering and budgets. The [native discovery design](specs/workspace-search.md) supplies special locations and named catalogues of applications and System Settings on macOS 26+ Apple Silicon. **Designed, not served or native-accepted yet.** Introspect the actual schema before you use the [operations](design/workspace-search-operations.graphql). Koine has no generic predicate, root or query API and no raw-search fallback.
+Raw filesystem search belongs to the client. The client chooses its traversal engine, permissions, filtering, ordering and budgets. The [native discovery design](specs/workspace-search.md) supplies special locations. It also supplies named catalogues of applications and System Settings on macOS 26+ Apple Silicon. **Koine 0.4.0 serves `workspaceSpecialLocations` and nothing else of that design.** The rest of this section describes queries that Koine does not serve yet.
 
-Use workspaceSpecialLocations under workspace:read for HOME, Desktop, Documents, Downloads, Movies, Music, Pictures and the application domains. Read its account UID and its domain. These values belong to the account of Koine. They grant no client access, no listing of contents and no consent. They can name a nonexistent directory.
+Introspect the actual schema before you use the [operations](design/workspace-search-operations.graphql). Koine has no generic predicate, root or query API and no raw-search fallback.
+
+Call `workspaceSpecialLocations` under `workspace:read`. A grant of `workspace:control` and `desktop:control` alone cannot call it. Omit `requests` for the ten default pairs. They are HOME, Desktop, Documents, Downloads, Movies, Music and Pictures for the user. They also include the applications folder of the user, of the local domain and of the system domain.
+
+To ask for fewer, pass one to ten distinct pairs of kind and domain. The seven account folders admit USER only. APPLICATIONS admits USER, LOCAL and SYSTEM. A refused request is an `invalidInput` error, and Koine looks nothing up.
+
+```graphql
+query StartingLocations($requests: [WorkspaceLocationRequest!]) {
+  locations: workspaceSpecialLocations(requests: $requests) {
+    status
+    items { kind domain accountIdentifier location contentsAvailability }
+    sources { source declaredDomain examined diagnostics { reason guidance } }
+  }
+}
+```
+
+Read each item as a fact about the account of Koine, not about your account.
+
+The accountIdentifier is the UID of that account. A location can name a directory that does not exist. It grants no access, no listing and no consent. The contentsAvailability is always UNKNOWN. A pair can give more than one item. The system applications folder gives two.
+
+Read the status before the items.
+
+AVAILABLE means that every pair gave a usable value. PARTIAL means that some pair gave none or gave a value that Koine withheld. The diagnostics name NO_NATIVE_VALUE or UNREPRESENTABLE_VALUE. UNKNOWN means that no pair gave a value, and items is null. FAILED means that every value was withheld. Each selected items then raises `failed`, so omit items to read the status and the diagnostics.
 
 <!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 

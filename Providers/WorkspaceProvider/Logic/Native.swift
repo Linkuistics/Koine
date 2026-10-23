@@ -127,6 +127,14 @@ protocol WorkspaceNative: Sendable {
     /// `launchApplication`: it may run once, on any thread, at any time, or never.
     func revealPath(_ path: String, filesystemRoot: Bool, completion: @escaping @Sendable (LaunchCompletion) -> Void)
 
+    /// Foundation's values for one named location, in the order Foundation gives them, and no more: no value
+    /// is resolved, listed, opened or inspected, and a lookup that creates a directory is never used
+    /// (`SpecialLocations`). Empty when the system gives none.
+    func specialLocationValues(_ pair: LocationPair) -> [String]
+
+    /// The numeric user identifier of Koine's own account, which every special location describes.
+    func accountIdentifier() -> String
+
     /// The kernel's record of the process.
     func processStart(of pid: Int32) -> ProcessLookup
     /// The device and inode of the executable the live process `pid` is running, by the kernel's path for it

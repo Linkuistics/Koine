@@ -108,7 +108,7 @@ PY
             "s.replace('Closed reason for not submitting this action.', 'Closed reason for not submitting this action!', 1)"
         control "the workspace launch field moved before desktop's" \
             "__import__('re').sub(r'(  \"desktop:control\\. Focuses exactly[^\n]*\n  desktopFocusWindow[^\n]*\n)(  \"\"\"Requires workspace:control AND desktop:control\\. Launch or request[^\n]*\"\"\"\n  workspaceLaunchApplication[^\n]*\n)', r'\\2\\1', s, count=1)"
-        if jq -e '.providers[] | select(.provider == "workspace" and .schemaVersion == "1.0.1")' "${profile}" >/dev/null; then
+        if jq -e '.providers[] | select(.provider == "workspace" and (.schemaVersion == "1.0.1" or .schemaVersion == "1.0.2"))' "${profile}" >/dev/null; then
             # The action-only repair is the three appended descriptions and nothing else, so the
             # contract is held to each of them separately: a served schema that kept the retained
             # 1.0.0 text for one action must be red, naming that action's description.
@@ -119,6 +119,19 @@ PY
             done
             control "all three retained 1.0.0 descriptions restored (the repair undone)" \
                 "__import__('functools').reduce(lambda t, p: t.replace(p[1], p[0]), [(a, b) for a, b in zip(open('docs/design/workspace-schema.graphql').read().split('\n\n', 1)[1].split('\n'), open('docs/design/workspace-action-repair-schema.graphql').read().split('\n\n', 1)[1].split('\n')) if a != b], s)"
+        fi
+        if jq -e '.providers[] | select(.provider == "workspace" and .schemaVersion == "1.0.2")' "${profile}" >/dev/null; then
+            # The first cut of discovery is one query root and the types it reaches; each is held on its own.
+            control "the special-locations root removed" \
+                "__import__('re').sub(r'  \"Value-only Foundation lookup[^\n]*\"\n  workspaceSpecialLocations[^\n]*\n', '', s, count=1)"
+            control "the special-locations root's description changed" \
+                "s.replace('Never lists or inspects contents.', 'Lists contents.', 1)"
+            control "a special-location type's description changed" \
+                "s.replace('UID of Koine', 'UID of the client', 1)"
+            control "a special-location field made nullable" \
+                "s.replace('location: String!', 'location: String', 1)"
+            control "a discovery source value removed" \
+                "s.replace('FOUNDATION_LOCATIONS INDEXED_APPS', 'INDEXED_APPS', 1)"
         fi
     fi
     rm -f "${work}/control.graphql" "${work}/control.log"
@@ -151,7 +164,14 @@ PY
             '.providers |= map(select(.provider != "workspace"))' 'unexpected row workspace'
         profile_control "another workspace release pinned" \
             '.providers |= map(if .provider == "workspace" then .version = "9.9.9" else . end)' 'is not served as expected'
-        if jq -e '.providers[] | select(.provider == "workspace" and .schemaVersion == "1.0.1")' "${profile}" >/dev/null; then
+        if jq -e '.providers[] | select(.provider == "workspace" and .schemaVersion == "1.0.2")' "${profile}" >/dev/null; then
+            # The repair serves the same actions under the earlier numbers, so the pins say that this cut ran.
+            profile_control "the repair's workspace release 1.0.1 pinned for the first cut" \
+                '.providers |= map(if .provider == "workspace" then .version = "1.0.1" else . end)' 'is not served as expected'
+            profile_control "the repair's workspace schema 1.0.1 pinned for the first cut" \
+                '.providers |= map(if .provider == "workspace" then .schemaVersion = "1.0.1" else . end)' 'is not served as expected'
+        fi
+        if jq -e '.providers[] | select(.provider == "workspace" and (.schemaVersion == "1.0.1" or .schemaVersion == "1.0.2"))' "${profile}" >/dev/null; then
             # The retained binary serves the same shapes under the earlier numbers, so these pins are
             # what say that the repaired bundle ran, and neither number can stand in for the other.
             profile_control "the retained workspace release 1.0.0 pinned for the repair" \

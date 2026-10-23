@@ -23,8 +23,18 @@ public enum CapabilityDisclosures {
         activation is an allowed effect; neither capability works without the other.
         """
 
+    /// Workspace read: the reach of the one query it admits today,
+    /// `Query.workspaceSpecialLocations`. A later cut that widens the reach widens this text and
+    /// advertises a new host feature (`docs/adr/native-workspace-requires-disclosure-capable-host.md`).
+    public static let workspaceRead = """
+        Reads the special locations that macOS names for Koine's own account, such as \
+        the home, Documents and Applications folders. It reads no file contents and \
+        lists no folder. A returned location gives no access to it. Launching or \
+        opening an application still needs workspace:control and desktop:control.
+        """
+
     /// Every capability with a disclosure, in capability order.
     public static var all: [(capability: String, disclosure: String)] {
-        [("workspace:control", workspaceControl)]
+        [("workspace:control", workspaceControl), ("workspace:read", workspaceRead)]
     }
 }

@@ -46,18 +46,24 @@ import Testing
     static let disclosures =
         "{ koineManagement { capabilityDisclosures { capability disclosure } } }"
 
-    @Test func aManagerReadsTheWorkspaceControlDisclosure() async throws {
+    @Test func aManagerReadsTheWorkspaceDisclosures() async throws {
         let (harness, manager, _) = try await managed()
         let reply = try await harness.post(Self.disclosures, authorization: "Bearer \(manager)")
         #expect(reply.errors.isEmpty)
         let management = try #require(reply.data?["koineManagement"] as? [String: Any])
         let entries = try #require(management["capabilityDisclosures"] as? [[String: String]])
-        #expect(entries.map { $0["capability"] } == ["workspace:control"])
+        #expect(entries.map { $0["capability"] } == ["workspace:control", "workspace:read"])
         let text = try #require(entries.first?["disclosure"])
         // The three things the workspace spec requires disclosed.
         #expect(text.contains("any application registered"))
         #expect(text.contains("run a script or follow a location document"))
         #expect(text.contains("desktop:control"))
+        // Read states the reach of the one query it admits, and the limits that make that reach small.
+        let read = try #require(entries.last?["disclosure"])
+        #expect(read.contains("special locations that macOS names for Koine's own account"))
+        #expect(read.contains("reads no file contents and lists no folder"))
+        #expect(read.contains("gives no access to it"))
+        #expect(read.contains("workspace:control and desktop:control"))
         // Served whether or not the workspace provider is loaded: this harness has none.
         #expect(!(try await harness.post(Harness.koine, authorization: "Bearer \(manager)")
             .data.map { String(describing: $0) } ?? "").contains("workspace:control"))

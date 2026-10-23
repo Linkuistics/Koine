@@ -1,14 +1,16 @@
 import Foundation
 import KoineProviderAPI
 
-// The contribution: the launch, URL, path and reveal roots and every type they reach, under
-// workspace:control AND desktop:control. Later roots extend this list with their
-// own leaves; the SDL (schema.graphql) is served verbatim from the design file.
+// The contribution: the launch, URL, path and reveal roots, and the special-locations query, with every type
+// they reach. The SDL (schema.graphql) is served verbatim from the design file.
 
-/// The provider's whole authority, for every field it serves: control of its own
-/// class, and additionally control of desktop, since bringing an application
-/// forward is an allowed effect. The set is unconditional and neither read
-/// capability is part of it.
+/// The host feature that says the host's grant views and management catalogue state the reach of
+/// `workspace:read` (docs/adr/native-workspace-requires-disclosure-capable-host.md). A host without it
+/// refuses the provider before it loads, so no grant is shown with less than its reach.
+let workspaceNativeDisclosuresFeature = "workspace-native-disclosures-v1"
+
+/// The authority of every action field: control of its own class, and additionally control of desktop, since
+/// bringing an application forward is an allowed effect. Neither read capability is part of it.
 let workspaceAdditionalRequirements = [ProviderCapabilityRequirement(providerId: "desktop", kind: .control)]
 
 func workspaceDescriptor(schemaSDL: String) -> ProviderDescriptor {
@@ -41,15 +43,37 @@ func workspaceDescriptor(schemaSDL: String) -> ProviderDescriptor {
             )
         }
     }
+    // The read surface: workspace:read and nothing else, on the root and on every field it reaches. Objects
+    // never cross the two sets, so no control grant reads, and no read grant acts.
+    let discovery = [
+        "WorkspaceSpecialLocationsResult": ["status", "items", "sources", "resultsTruncated"],
+        "WorkspaceSpecialLocation": ["kind", "domain", "accountIdentifier", "location", "contentsAvailability", "sources"],
+        "WorkspaceDiscoveryCoverage": [
+            "source", "declaredDomain", "availability", "observations", "category", "examined", "diagnostics",
+        ],
+        "WorkspaceDiscoveryDiagnostic": ["source", "reason", "subject", "affectsCoverage", "guidance", "permission"],
+        "WorkspaceDiscoveryPermissionHint": ["permission", "target", "event", "consent"],
+    ]
+    fields.append(
+        ProviderFieldRegistration(
+            coordinate: "Query.workspaceSpecialLocations", resolverId: "specialLocations", authority: .read))
+    for (type, names) in discovery.sorted(by: { $0.key < $1.key }) {
+        fields += names.map {
+            // A failed lookup raises at `items`, so that one field has a resolver of its own.
+            let resolverId = type == "WorkspaceSpecialLocationsResult" && $0 == "items" ? "frozen.items" : "parent.\($0)"
+            return ProviderFieldRegistration(
+                coordinate: "\(type).\($0)", resolverId: resolverId, authority: .read)
+        }
+    }
     return ProviderDescriptor(
         providerId: "workspace", graphQLPrefix: "Workspace", schemaSDL: schemaSDL, fields: fields,
-        requiredFeatures: [ProviderDescriptor.additionalCapabilitiesFeature]
+        requiredFeatures: [ProviderDescriptor.additionalCapabilitiesFeature, workspaceNativeDisclosuresFeature]
     )
 }
 
 /// Launches or reactivates an installed application by bundle identity, opens a web URL in
 /// the default browser, opens a document or directory in its default or a named
-/// application, and asks Finder to reveal a path. Nothing is cached between calls: the installation is inspected on every action, and
+/// application, asks Finder to reveal a path, and reports the system's special locations. Nothing is cached between calls: the installation is inspected on every action, and
 /// the one thing held is the bound on native submissions still outstanding.
 final class WorkspaceProvider: Provider, @unchecked Sendable {
     /// Below the core's five-second request ceiling, which can still win first.
@@ -90,6 +114,8 @@ final class WorkspaceProvider: Provider, @unchecked Sendable {
             return .success(value)
         }
         switch request.resolverId {
+        case "specialLocations": return await specialLocations(request.arguments["requests"])
+        case "frozen.items": return frozenItems(of: request.parent)
         case "launchApplication": return await launch(request.arguments["application"])
         case "openURL": return await openWebURL(request.arguments["url"])
         case "openPath": return await openPath(request.arguments["path"], application: request.arguments["application"])
@@ -102,6 +128,36 @@ final class WorkspaceProvider: Provider, @unchecked Sendable {
         await withCheckedContinuation { continuation in
             queue.async { continuation.resume(returning: work()) }
         }
+    }
+
+    // MARK: Special locations
+
+    /// Foundation's value for each requested pair and nothing else. The request is validated first, so a
+    /// refused request asks the system nothing.
+    private func specialLocations(_ argument: ProviderValue?) async -> ResolutionResult {
+        let pairs: [LocationPair]
+        switch LocationPair.validated(argument) {
+        case .success(let validated): pairs = validated
+        case .failure(let error): return .failure(invalid(error.message))
+        }
+        let explicit: Bool
+        switch argument {
+        case nil, .null?: explicit = false
+        default: explicit = true
+        }
+        let native = native
+        return .success(await onQueue { specialLocationsResult(for: pairs, explicit: explicit, native: native) })
+    }
+
+    /// The frozen list, or the failure a FAILED lookup raises at each selected `items`: the list is null for the
+    /// other statuses that have none.
+    private func frozenItems(of parent: ProviderValue?) -> ResolutionResult {
+        guard case .object(let fields)? = parent, case .string(let status)? = fields["status"], let items = fields["items"]
+        else { return failed("No parent value.") }
+        if status == "FAILED" {
+            return failed("The system gave special-location values that cannot be reported, and none that can.")
+        }
+        return .success(items)
     }
 
     // MARK: Launch

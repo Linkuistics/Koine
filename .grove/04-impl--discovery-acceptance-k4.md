@@ -49,3 +49,20 @@ One happy-path TestAnyware VM run passes.
   per-item record rather than the totals.
 - The release checks on the notarised build are the release leaf's work, not
   this one's.
+- **What `special-locations-k2` left for the N seam.** The workspace provider
+  is now release 1.0.2, schema 1.0.2, and it requires
+  `additional-capabilities-v1` and `workspace-native-disclosures-v1`. Several
+  scripts still treat this tree's workspace as release 1.0.1:
+  `scripts/verify-compat-pairs.py` (`REPAIR_PROFILE`, `W101`),
+  `scripts/verify-selection-updates.py`, `scripts/build-selection-real.sh`,
+  `scripts/verify-repair-subjects.sh` and `scripts/selection_harness.py`. Re-pin
+  them to the new profile
+  `docs/design/profiles/core-desktop-workspace-special-locations-extension-host.json`.
+  Keep the 1.0.1 repair profile for the retained 1.0.1 pair. `task
+  conformance:headless` and `scripts/vm-verify-conformance.sh` already use the
+  new profile. The per-user variant that `scripts/first-party-update-lib.sh`
+  builds now adds `first-party-selection-v1` to the two features above.
+- `swift test` has one failure that does not come from this grove:
+  `aBundleWithinTheLimitWhoseInfoPlistIsTooLongForThePlatformIsFailedNamingTheCause`
+  at length 1023. On macOS 27 the platform words that refusal differently
+  ("the file name … is invalid") from the macOS 26.5 text that the test expects.

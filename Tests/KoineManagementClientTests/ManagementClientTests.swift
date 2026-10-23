@@ -61,8 +61,9 @@ import Testing
 
     @Test func disclosuresAreTheServedOnesKeyedByCapability() async throws {
         let served = try await withServer { _, client in try await client.capabilityDisclosures() }
-        #expect(Set(served.keys) == ["workspace:control"])
+        #expect(Set(served.keys) == ["workspace:control", "workspace:read"])
         #expect(served["workspace:control"] == CapabilityDisclosures.workspaceControl)
+        #expect(served["workspace:read"] == CapabilityDisclosures.workspaceRead)
     }
 
     @Test func aCreatedGrantsCredentialAuthenticatesOverHTTP() async throws {

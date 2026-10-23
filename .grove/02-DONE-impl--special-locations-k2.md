@@ -75,3 +75,33 @@ feature refuses the new provider.
 - Update the example client operations in
   `docs/design/workspace-search-operations.graphql` for the served query, as the
   workflow spec asks of each increment.
+
+## Decisions (running log)
+
+- **Version.** Workspace release 1.0.2 with schema 1.0.2. Release 1.1.0 is the
+  selection fixture's, and release 1.2.0 with schema 1.1.0 is the full
+  catalogue design's, so neither is free.
+- **Features.** The bundled manifest and descriptor require
+  `additional-capabilities-v1` and `workspace-native-disclosures-v1`. They do not
+  repeat `first-party-selection-v1`, which every host that advertises the new
+  feature already advertises. The loader still demands it of a per-user update.
+  The ADR says so.
+- **Design files.** The served SDL is the new design file
+  `docs/design/workspace-special-locations-schema.graphql`: the 1.0.1 action text
+  unchanged, plus the types the query reaches, word for word from the search
+  design. The composed host file and a new profile sit beside the 1.0.0 and
+  1.0.1 ones. `task design:special-locations-check` holds the three together.
+- **Result rules.** One item per Foundation value. An absent pair is
+  `NO_NATIVE_VALUE`. A value that is not an absolute path of 1 to 8,192 bytes
+  without a NUL is withheld with `UNREPRESENTABLE_VALUE`. Items and absences give
+  `PARTIAL`. Absences alone give `UNKNOWN`. Withheld values alone give `FAILED`,
+  and then `items` raises `failed`. `declaredDomain` is `default special
+  locations` or `requested special locations`.
+- **Query denial.** A query is denied field by field at execution, with
+  `requiredCapability` `workspace:read`. A mutation is denied at preflight with
+  its complete set. The G test asserts each of these.
+- **ADRs.** Both ADRs gained a "what binds now" part and lost nothing. The
+  `design:search-check` task no longer demands the full-design read clause in the
+  host ADR, because that ADR now states this cut's reach.
+- **Not spent.** The leaf-wide reviewer allowance. The next leaf cuts the
+  `review-impl` for the read surface.

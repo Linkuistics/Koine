@@ -1,5 +1,9 @@
 # Native discovery and client-owned search
 
+**First cut served. The rest is design.** Koine 0.4.0 serves `Query.workspaceSpecialLocations(requests:)` in workspace release 1.0.2, schema 1.0.2. See ["Special locations"](#special-locations) for its exact coordinates and its evidence. The application catalogue is the next cut, and System Settings follows it. 
+
+Every other section describes the full design of those later cuts. The full design stays at workspace 1.2.0 and schema 1.1.0, which no release serves yet. The status line below describes that full design.
+
 <!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
 **Designed; mandatory review, implementation and native acceptance pending.**
@@ -153,6 +157,32 @@ For each requested pair, return all representable values. Give each value its ki
 To return a value, do none of these: resolve, stat, list, create, follow links, read resources, mount, open bookmarks, or inspect account and cloud containers. A nonexistent or inaccessible location can still be a valid starting value.
 
 An absent native value is UNKNOWN with NO_NATIVE_VALUE. It does not certify absence or a healthy empty filesystem. COMPLETE means that every requested value lookup supplied checked values. It never means that a search covered the contents of any directory. Enumeration of temporary, container, network and iCloud locations is outside this set.
+
+### Served in Koine 0.4.0
+
+The workspace provider serves one root, `Query.workspaceSpecialLocations(requests:)`, with the types of the [design SDL](../design/workspace-special-locations-schema.graphql). That file equals the types of the full [search SDL](../design/workspace-search-schema.graphql) that the root reaches, word for word. The served coordinates are the root and the fields of `WorkspaceSpecialLocationsResult`, `WorkspaceSpecialLocation`, `WorkspaceDiscoveryCoverage`, `WorkspaceDiscoveryDiagnostic` and `WorkspaceDiscoveryPermissionHint`. Every one of them needs `workspace:read` and nothing else. The four action roots keep `workspace:control` AND `desktop:control`, and their SDL is the text of release 1.0.1.
+
+The provider answers a request in these steps:
+
+1. Reject a bad request before any lookup. An omitted or null request names the ten default pairs. An explicit list must hold one to ten distinct supported pairs. An empty list, more than ten entries, a duplicate pair and an unsupported pair are `invalidInput`. The count rule applies first.
+2. Ask Foundation for each pair, in the order requested. The adapter calls `NSHomeDirectory()` for HOME and `FileManager.urls(for:in:)` for the others.
+3. Return one item for each value that Foundation gives. A pair can give more than one value, and the system applications folder gives two. Withhold a value that is not an absolute path of 1 to 8,192 UTF-8 bytes without a NUL. Never shorten or repair it.
+4. Set the status. All pairs gave usable values: `AVAILABLE`. Some values are absent or withheld: `PARTIAL`. No usable value, and an absent value only: `UNKNOWN`, with null items. No usable value, and a withheld value: `FAILED`, with null items. A selected `items` raises `failed` in the `FAILED` case.
+
+The result has one coverage source, `FOUNDATION_LOCATIONS`. Its `declaredDomain` is `default special locations` or `requested special locations`. Its `examined` is the number of pairs. Its `category` is always `UNKNOWN`, because the provider never searches directory contents.
+
+Each absent pair adds a `NO_NATIVE_VALUE` diagnostic, and each pair with a withheld value adds an `UNREPRESENTABLE_VALUE` diagnostic. Both have a null subject and `affectsCoverage` true. A request names at most ten pairs, so the diagnostics cannot reach the limit of 63 records. `resultsTruncated` is always false.
+
+The read disclosure of Koine 0.4.0 states the reach of this root alone. The host feature `workspace-native-disclosures-v1` carries it, and the workspace manifest and descriptor require it. Koine 0.3.0 does not advertise the feature, so it refuses this provider before it loads.
+
+Evidence so far:
+
+- The L tests in `Tests/WorkspaceProviderLogicTests/SpecialLocationsTests.swift` substitute the native adapter. They cover the ten default pairs, each refused request, an absent value and a withheld value.
+- The G tests in `Tests/KoineServerTests/WorkspaceSpecialLocationsTests.swift` cover the authority of every field, the served disclosure and the refusal on a host without the feature. Tests in `SchemaConformanceTests` and `WorkspaceProviderTests` hold the served SDL to its design file.
+- `task design:special-locations-check` holds the design files to each other.
+- The real adapter returned a value for each of the ten pairs on the macOS 27 build host. Every location existed there, so the run does not show that a missing directory stays uncreated. That run is not acceptance.
+- The N check and the V run on the signed bundle are pending. They belong to the discovery acceptance leaf.
+
 
 <!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
@@ -1136,7 +1166,21 @@ requests cleanup but cannot promise native return. Abrupt host death has no
 selected Koine child/orphan protocol; an admitted native launch/setup/reveal may
 outlive it. No parent-death helper or supervision service is introduced.
 
+<!-- tc: on -->
+
 ## Source and binary authority boundary
+
+### What binds in Koine 0.4.0
+
+The split into four images binds when System Settings scripting or the private application metadata reader arrives. Neither is in Koine 0.4.0. Until then, the discovery code shares the workspace image with the four actions. The [image decision](../adr/workspace-native-images-preserve-action-authority.md) records the three rules that keep the action authority.
+
+- Every discovery field needs `workspace:read` alone. Every action field keeps `workspace:control` AND `desktop:control`.
+- Discovery and actions call the same private adapter, and a discovery lookup calls no action method, whether it opens, reveals or activates.
+- The provider requires `workspace-native-disclosures-v1`, as the [host decision](../adr/native-workspace-requires-disclosure-capable-host.md) states.
+
+The text below describes the split that binds later.
+
+<!-- tc: pending because this section has not been converted; it converts when an edit touches it -->
 
 Preserve the four-action source and whole-image guard in an independently linked
 WorkspaceActions native image containing only the existing action logic/adapter

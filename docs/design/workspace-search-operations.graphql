@@ -1,4 +1,7 @@
 # Native discovery proposals: introspect the actually served schema before use.
+# Served by Koine 0.4.0 (workspace 1.0.2): NativeStartingLocations and the DiscoveryCoverage fragment, nothing else here.
+# Omit $requests for the ten default pairs; pass [{kind: APPLICATIONS, domain: LOCAL}] for one. The other
+# operations wait for the cut that serves their roots, and `task design:special-locations-check` holds the split.
 fragment DiscoveryCoverage on WorkspaceDiscoveryCoverage {
   source declaredDomain availability observations category examined
   diagnostics {
