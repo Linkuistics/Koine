@@ -1215,8 +1215,8 @@ tasks:
         console.log('Workspace SDL, independent composition, baseline composition and five operations valid; both negative controls rejected. Runtime acceptance remains pending.');
         JS
 
-  design:special-locations-check:
-    desc: Validate the first cut's workspace SDL (1.0.2) alone and composed with desktop, that its action part is the 1.0.1 repair's and its discovery part the search design's verbatim, that the composed host design adds exactly the served query, and that the served operations validate while the unserved roots are rejected (design check, not runtime conformance)
+  design:workspace-discovery-check:
+    desc: Validate the first cut's workspace SDL (1.0.2) alone and composed with desktop, that its action part is the 1.0.1 repair's and its discovery part the search design's (verbatim, but for the fields and descriptions of the application choice and the application query), that the composed host design adds exactly the two served queries, and that the served operations validate while the unserved roots and fields are rejected (design check, not runtime conformance)
     dir: clients/contract-only
     cmds:
       - npm ci --ignore-scripts --no-audit --no-fund
@@ -1238,21 +1238,32 @@ tasks:
           for (const [key, text] of definitions(parse(repair, { noLocation: true }))) {
             if (cutDefinitions.get(key) !== text) throw new Error(`Action definition changed: ${key}`);
           }
-          // The discovery part: every other definition is the search design's, and the Query extension adds
-          // only workspaceSpecialLocations, with its description unchanged.
+          // The discovery part: every other definition is the search design's, word for word, but for two. The
+          // application choice serves only fields that the index fills, each with the design's name and type and
+          // a description of this release, and the Query extension adds exactly the two served queries.
           const searchDefinitions = definitions(parse(search, { noLocation: true }));
           const repairKeys = new Set(definitions(parse(repair, { noLocation: true })).keys());
           const added = [...cutDefinitions].filter(([key]) => !repairKeys.has(key));
+          const fieldTypes = ast => new Map(ast.fields.map(f => [f.name.value, print(f.type)]));
+          const objectNamed = (ast, name) => ast.definitions.find(d => d.kind === Kind.OBJECT_TYPE_DEFINITION && d.name.value === name);
           for (const [key, text] of added) {
-            if (key.startsWith('ObjectTypeExtension:Query')) continue;
+            if (key.startsWith('ObjectTypeExtension:Query') || key === 'ObjectTypeDefinition:WorkspaceApplicationChoice') continue;
             if (searchDefinitions.get(key) !== text) throw new Error(`Discovery definition is not the search design's: ${key}`);
           }
-          const queryField = ast => ast.definitions.filter(d => d.kind === Kind.OBJECT_TYPE_EXTENSION && d.name.value === 'Query')
-            .flatMap(d => d.fields).filter(f => f.name.value === 'workspaceSpecialLocations').map(print);
-          const served = queryField(cut), designed = queryField(parse(search, { noLocation: true }));
-          const extension = cut.definitions.find(d => d.kind === Kind.OBJECT_TYPE_EXTENSION && d.name.value === 'Query');
-          if (served.length !== 1 || served[0] !== designed[0] || extension.fields.length !== 1) {
-            throw new Error('The Query extension is not exactly the designed workspaceSpecialLocations');
+          const servedChoice = fieldTypes(objectNamed(cut, 'WorkspaceApplicationChoice')), designedChoice = fieldTypes(objectNamed(parse(search, { noLocation: true }), 'WorkspaceApplicationChoice'));
+          if (servedChoice.size !== 4 || [...servedChoice].some(([name, type]) => designedChoice.get(name) !== type)) {
+            throw new Error('The application choice serves a field that the design does not have, or with another type');
+          }
+          const queryFields = ast => new Map(ast.definitions.filter(d => d.kind === Kind.OBJECT_TYPE_EXTENSION && d.name.value === 'Query')
+            .flatMap(d => d.fields).map(f => [f.name.value, f]));
+          const served = queryFields(cut), designed = queryFields(parse(search, { noLocation: true }));
+          if ([...served.keys()].join() !== 'workspaceSpecialLocations,workspaceApplications') {
+            throw new Error('The Query extension is not exactly the two served queries');
+          }
+          const withoutDescription = f => print({ ...f, description: undefined });
+          if (print(served.get('workspaceSpecialLocations')) !== print(designed.get('workspaceSpecialLocations'))
+            || withoutDescription(served.get('workspaceApplications')) !== withoutDescription(designed.get('workspaceApplications'))) {
+            throw new Error('A served query is not the designed one');
           }
           // The composed host design is the desktop composition plus the cut: the same types, field for field.
           const fromFile = buildSchema(hostFile);
@@ -1264,26 +1275,29 @@ tasks:
           for (const name of new Set([...Object.keys(expected), ...Object.keys(actual)])) {
             if (expected[name] !== actual[name]) throw new Error(`The composed host design differs at ${name}`);
           }
-          // The served operations validate; the roots this cut does not serve are rejected by it.
+          // The served operations validate; the roots and fields this cut does not serve are rejected by it.
           const ops = parse(operations);
           const fragments = ops.definitions.filter(d => d.kind === Kind.FRAGMENT_DEFINITION);
-          const servedOperations = ops.definitions.filter(d => d.kind === Kind.OPERATION_DEFINITION && d.name?.value === 'NativeStartingLocations');
-          if (servedOperations.length !== 1) throw new Error('The served operation is missing');
+          const named = name => ops.definitions.filter(d => d.kind === Kind.OPERATION_DEFINITION && d.name?.value === name);
+          const servedOperations = [...named('NativeStartingLocations'), ...named('NativeApplications')];
+          if (servedOperations.length !== 2) throw new Error('A served operation is missing');
           const mine = { kind: Kind.DOCUMENT, definitions: [...servedOperations, ...fragments.filter(f => f.name.value === 'DiscoveryCoverage')] };
           const operationErrors = validate(complete, mine);
           if (operationErrors.length) throw new Error(operationErrors.map(error => error.message).join('\n'));
-          const unserved = ops.definitions.filter(d => d.kind === Kind.OPERATION_DEFINITION && d.name?.value === 'NativeApplications');
-          if (unserved.length !== 1 || !validate(complete, { kind: Kind.DOCUMENT, definitions: [...unserved, ...fragments] })
-            .some(error => error.message.includes('workspaceApplications'))) {
-            throw new Error('An unserved root was not rejected');
+          for (const [operation, member] of [['NativeSettings', 'workspaceSettings'], ['NativeApplicationsFullDesign', 'metadataSource'], ['InspectAliasedNativeItems', 'installationState']]) {
+            const unserved = named(operation);
+            if (unserved.length !== 1 || !validate(complete, { kind: Kind.DOCUMENT, definitions: [...unserved, ...fragments] })
+              .some(error => error.message.includes(member))) {
+              throw new Error(`An unserved ${member} was not rejected`);
+            }
           }
           return { types: added.length };
         };
         const subject = {
-          contribution: read('workspace-special-locations-schema.graphql'),
+          contribution: read('workspace-discovery-schema.graphql'),
           repair: read('workspace-action-repair-schema.graphql'),
           search: read('workspace-search-schema.graphql'),
-          hostFile: read('desktop-workspace-special-locations-schema-extension-host.graphql'),
+          hostFile: read('desktop-workspace-discovery-schema-extension-host.graphql'),
           desktopHost: read('desktop-schema-extension-host.graphql'),
           operations: read('workspace-search-operations.graphql'),
         };
@@ -1293,15 +1307,20 @@ tasks:
           ['a discovery description reworded', s => ({ ...s, contribution: s.contribution.replace('UID of Koine', 'UID of the client') })],
           ['a discovery field made nullable', s => ({ ...s, contribution: s.contribution.replace('location: String!', 'location: String') })],
           ['the query description reworded', s => ({ ...s, contribution: s.contribution.replace('Never lists or inspects contents.', 'Lists contents.') })],
-          ['a second query root added', s => ({ ...s, contribution: s.contribution.replace('  workspaceSpecialLocations(', '  workspaceSettings: WorkspaceSpecialLocationsResult\n  workspaceSpecialLocations(') })],
+          ['a third query root added', s => ({ ...s, contribution: s.contribution.replace('  workspaceApplications:', '  workspaceSettings: WorkspaceSpecialLocationsResult\n  workspaceApplications:') })],
+          ['the application choice serving a field of another type', s => ({ ...s, contribution: s.contribution.replace('  name: String\n', '  name: String!\n') })],
+          ['the application choice serving a field the design lacks', s => ({ ...s, contribution: s.contribution.replace('  bundleIdentifier: String\n', '  bundleIdentifier: String\n  installedAt: String\n') })],
+          ['the application result reworded', s => ({ ...s, contribution: s.contribution.replace('type WorkspaceApplicationsResult {\n  status: WorkspaceDiscoveryStatus!', 'type WorkspaceApplicationsResult {\n  status: WorkspaceDiscoveryStatus') })],
+          ['the application query served with another type', s => ({ ...s, contribution: s.contribution.replace('workspaceApplications: WorkspaceApplicationsResult', 'workspaceApplications: WorkspaceSpecialLocationsResult') })],
           ['the host design missing the query', s => ({ ...s, hostFile: s.hostFile.replace(/  "Value-only Foundation[^\n]*\n  workspaceSpecialLocations[^\n]*\n/, '') })],
+          ['the host design missing the application query', s => ({ ...s, hostFile: s.hostFile.replace(/  "Applications that the Spotlight[^\n]*\n  workspaceApplications[^\n]*\n/, '') })],
           ['the host design with a changed enum', s => ({ ...s, hostFile: s.hostFile.replace('enum WorkspaceLocationDomain { USER LOCAL SYSTEM }', 'enum WorkspaceLocationDomain { USER LOCAL }') })],
         ]) {
           let rejected = false;
           try { verify(mutate(subject)); } catch { rejected = true; }
           if (!rejected) throw new Error(`Control accepted ${label}`);
         }
-        console.log(`First-cut SDL valid alone and composed; ${result.types} added definitions are the repair's or the search design's verbatim; the served operation validates and the unserved root is rejected; seven mutated subjects rejected. Design only, runtime held by swift test and task conformance.`);
+        console.log(`First-cut SDL valid alone and composed; ${result.types} added definitions are the repair's or the search design's, but for the application choice and the application query; the two served operations validate and the unserved roots and fields are rejected; twelve mutated subjects rejected. Design only, runtime held by swift test and task conformance.`);
         JS
 
   design:long-action-api-check:

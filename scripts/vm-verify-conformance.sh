@@ -36,7 +36,7 @@ cd "$(dirname "$0")/.."
 # shellcheck source=scripts/signing-env.sh
 source scripts/signing-env.sh
 
-PROFILE="docs/design/profiles/core-desktop-workspace-special-locations-extension-host.json"
+PROFILE="docs/design/profiles/core-desktop-workspace-discovery-extension-host.json"
 OUT=".build/conformance/workspace"
 mkdir -p "${OUT}"
 CAPTURE="${OUT}/introspection.json"

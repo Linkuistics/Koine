@@ -57,7 +57,7 @@ One happy-path TestAnyware VM run passes.
   `scripts/verify-selection-updates.py`, `scripts/build-selection-real.sh`,
   `scripts/verify-repair-subjects.sh` and `scripts/selection_harness.py`. Re-pin
   them to the new profile
-  `docs/design/profiles/core-desktop-workspace-special-locations-extension-host.json`.
+  `docs/design/profiles/core-desktop-workspace-discovery-extension-host.json`.
   Keep the 1.0.1 repair profile for the retained 1.0.1 pair. `task
   conformance:headless` and `scripts/vm-verify-conformance.sh` already use the
   new profile. The per-user variant that `scripts/first-party-update-lib.sh`

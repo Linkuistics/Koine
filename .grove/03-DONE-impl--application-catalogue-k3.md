@@ -67,3 +67,53 @@ reader.
 - The index may report several copies of one application. Keep each copy as
   its own choice, as `application-search-uses-bundle-identity` requires. Do not
   merge copies by identifier.
+
+## Decisions (running log)
+
+- **Version.** The workspace stays at release 1.0.2 with schema 1.0.2. Release
+  1.0.2 has never shipped, so this leaf widens it in place. The host feature stays
+  `workspace-native-disclosures-v1`: one version states the reach of both queries,
+  and the released 0.3.0 host refuses the bundle either way.
+- **Design file names.** The files said "special locations", and they now carry the
+  catalogue as well. The design SDL is `workspace-discovery-schema.graphql`, the
+  composed host file is `desktop-workspace-discovery-schema-extension-host.graphql`
+  and the profile is `core-desktop-workspace-discovery-extension-host.json`. The
+  Taskfile check is `design:workspace-discovery-check`. The retained k2 task file
+  keeps the old names, as history. The k4 task file has the new profile name.
+- **Served choice.** `WorkspaceApplicationChoice` serves `applicationPath`, `name`,
+  `bundleIdentifier` and `sources`. It has the design's name and type for each
+  field and a description of this release. `metadataSource` waits too: it could
+  only ever say `INDEXED_ITEM`, so it adds nothing yet. The Taskfile check holds
+  the served choice to a subset of the design's fields with equal types. It holds
+  the other served types to the search design word for word.
+- **Result rules.** The table in the search spec, "Application catalogue served in
+  Koine 0.4.0", is the rule. An empty finished gathering is `UNKNOWN`. An
+  unfinished one is `FAILED` with `TIME_LIMIT`, and more than 2,048 items is
+  `FAILED` with `ENTRY_LIMIT`. The spec's population rule says the same: it never
+  reports a prefix.
+- **Diagnostics.** One diagnostic for each reason, with the count in the guidance
+  and a null subject, so the 63-record sink cannot fill. The spec's per-item
+  subject is not built. A client does not need it to tell the cases apart.
+- **Type tree.** The adapter reads `kMDItemContentTypeTree`, as the fixed
+  projection says. An item whose tree is present and lacks the application-bundle
+  type is withheld with `METADATA_UNKNOWN`. An item with no tree is kept, because
+  the predicate already selected it.
+- **Threading.** The query lives on its own serial `OperationQueue`. The SDK header
+  (NSMetadata.h) says `startQuery` "must be called from the receiver's
+  operationQueue or on the main thread". The real adapter has not run on this
+  host, as the root brief requires: the V run in `discovery-acceptance-k4` is its
+  first real run. A hang there would show as `FAILED` with `TIME_LIMIT`.
+- **Wait.** Three seconds, the same as the acknowledgment bound, and a provider
+  initialiser parameter so tests can shorten it.
+- **Hold scope.** The ADR now says the hold covers the private reader only, and
+  that GitHub issue 2 holds it. The other cited documents say "advertisement/consumption
+  holds remain" in the context of that reader. They agree and stay as they are.
+  The glossary entry **Explicit application metadata reader** and the search spec
+  say the scope out loud.
+- **Failures that are not from this leaf.** `swift test` has the one macOS 27
+  wording failure that k2 recorded. `task design:application-metadata-reconciliation-check`
+  fails with "expected one live consumer charter" for seven old leaf keys: they
+  name task files that no longer exist in this grove's `.grove/`. Neither touches
+  this leaf's files.
+- **Not spent.** The leaf-wide reviewer allowance. The review leaf below is the
+  scheduled review.

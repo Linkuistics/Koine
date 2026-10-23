@@ -53,6 +53,8 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
     private var startReads: [Int32: Int] = [:]
     private var specialValues: [LocationPair: [String]] = [:]
     private var specialLookups: [LocationPair] = []
+    private var indexRead: IndexedApplicationsRead = .gathered([])
+    private var indexQueries: [(limit: Int, wait: Duration)] = []
     /// What a submission (a launch or a URL open) does at once, if anything; the default
     /// holds the callback for the test.
     var onLaunch: (@Sendable (@escaping @Sendable (LaunchCompletion) -> Void) -> Void)?
@@ -342,6 +344,20 @@ final class FakeNative: WorkspaceNative, @unchecked Sendable {
         lock.withLock {
             specialLookups.append(pair)
             return specialValues[pair] ?? []
+        }
+    }
+
+    /// What the fixed application query comes to; an unarranged one gathers nothing.
+    func index(_ read: IndexedApplicationsRead) { lock.withLock { indexRead = read } }
+
+    /// The limit and wait of every run of the application query, in order. The query has no other parameter,
+    /// which is what makes it the one fixed query.
+    var indexedQueries: [(limit: Int, wait: Duration)] { lock.withLock { indexQueries } }
+
+    func indexedApplications(limit: Int, wait: Duration) -> IndexedApplicationsRead {
+        lock.withLock {
+            indexQueries.append((limit, wait))
+            return indexRead
         }
     }
 

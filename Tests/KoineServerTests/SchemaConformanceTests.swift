@@ -399,7 +399,7 @@ import Testing
     /// repaired actions; the retained 1.0.0 and 1.0.1 compositions are held to their retained bundles
     /// (`task compat:workspace-baseline-verify`).
     @Test func theServedCoreDesktopWorkspaceSchemaIsItsDesignContract() async throws {
-        let design = try Self.repositoryFile("docs/design/desktop-workspace-special-locations-schema-extension-host.graphql")
+        let design = try Self.repositoryFile("docs/design/desktop-workspace-discovery-schema-extension-host.graphql")
         let (canonical, digest) = try await composed([Self.desktopStub().active, Self.workspaceProvider()])
         let found = SchemaComparison(
             served: try parse(source: canonical),
@@ -409,10 +409,11 @@ import Testing
         #expect(try CanonicalSchemaText.digest(ofSDL: design) == digest)
     }
 
-    /// The coordinates the first cut of discovery adds to the workspace contribution: the one query root and
-    /// every type it reaches.
+    /// The coordinates the first cut of discovery adds to the workspace contribution: the two query roots and
+    /// every type they reach.
     static let specialLocationCoordinates: Set<String> = [
-        "Query.workspaceSpecialLocations", "WorkspaceDiscoveryStatus", "WorkspaceDiscoveryAvailability",
+        "Query.workspaceSpecialLocations", "Query.workspaceApplications", "WorkspaceApplicationChoice",
+        "WorkspaceApplicationsResult", "WorkspaceDiscoveryStatus", "WorkspaceDiscoveryAvailability",
         "WorkspaceDiscoveryCompleteness", "WorkspaceDiscoverySource", "WorkspaceDiscoveryReason",
         "WorkspaceDiscoveryConsent", "WorkspaceDiscoveryPermission", "WorkspaceSettingsEvent",
         "WorkspaceDiscoveryPermissionHint", "WorkspaceDiscoveryDiagnostic", "WorkspaceDiscoveryCoverage",
@@ -421,9 +422,9 @@ import Testing
     ]
 
     /// The cut is visible to the one thing a client compares: the schema the 1.0.2 bundle serves differs from the
-    /// 1.0.1 repair composition in exactly the query root and its types, and so in digest. Neither claim alone
+    /// 1.0.1 repair composition in exactly the two query roots and their types, and so in digest. Neither claim alone
     /// would do: the digest differs for any change at all.
-    @Test func theFirstCutAddsExactlyTheSpecialLocationsQueryToTheRepairComposition() async throws {
+    @Test func theFirstCutAddsExactlyTheTwoDiscoveryQueriesToTheRepairComposition() async throws {
         let repair = try Self.repositoryFile("docs/design/desktop-workspace-repair-schema-extension-host.graphql")
         let (canonical, digest) = try await composed([Self.desktopStub().active, Self.workspaceProvider()])
         let found = SchemaComparison(
@@ -483,9 +484,9 @@ import Testing
     /// The 1.0.2 composition is the first cut's design restricted the same way: every workspace coordinate of the
     /// profile is the contribution design's, text and all, so the shipped contribution is never reworded.
     @Test func theFirstCutProfileIsItsDesignRestrictedVerbatim() throws {
-        let profile = try Self.repositoryFile("docs/design/desktop-workspace-special-locations-schema-extension-host.graphql")
+        let profile = try Self.repositoryFile("docs/design/desktop-workspace-discovery-schema-extension-host.graphql")
         let complete = try Self.repositoryFile("docs/design/desktop-schema-extension-host.graphql")
-            + "\n" + (try Self.repositoryFile("docs/design/workspace-special-locations-schema.graphql"))
+            + "\n" + (try Self.repositoryFile("docs/design/workspace-discovery-schema.graphql"))
         let found = SchemaComparison(
             served: try parse(source: try CanonicalSchemaText.canonicalText(ofSDL: profile)),
             design: try parse(source: try CanonicalSchemaText.canonicalText(ofSDL: complete))

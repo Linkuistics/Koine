@@ -1,6 +1,6 @@
 # Native discovery and client-owned search
 
-**First cut served. The rest is design.** Koine 0.4.0 serves `Query.workspaceSpecialLocations(requests:)` in workspace release 1.0.2, schema 1.0.2. See ["Special locations"](#special-locations) for its exact coordinates and its evidence. The application catalogue is the next cut, and System Settings follows it. 
+**First cut served. The rest is design.** Koine 0.4.0 serves `Query.workspaceSpecialLocations(requests:)` and `Query.workspaceApplications` in workspace release 1.0.2, schema 1.0.2. See ["Special locations"](#special-locations) and ["Application catalogue served in Koine 0.4.0"](#application-catalogue-served-in-koine-040) for their exact coordinates and their evidence. System Settings is the next cut.
 
 Every other section describes the full design of those later cuts. The full design stays at workspace 1.2.0 and schema 1.1.0, which no release serves yet. The status line below describes that full design.
 
@@ -160,7 +160,7 @@ An absent native value is UNKNOWN with NO_NATIVE_VALUE. It does not certify abse
 
 ### Served in Koine 0.4.0
 
-The workspace provider serves one root, `Query.workspaceSpecialLocations(requests:)`, with the types of the [design SDL](../design/workspace-special-locations-schema.graphql). That file equals the types of the full [search SDL](../design/workspace-search-schema.graphql) that the root reaches, word for word. The served coordinates are the root and the fields of `WorkspaceSpecialLocationsResult`, `WorkspaceSpecialLocation`, `WorkspaceDiscoveryCoverage`, `WorkspaceDiscoveryDiagnostic` and `WorkspaceDiscoveryPermissionHint`. Every one of them needs `workspace:read` and nothing else. The four action roots keep `workspace:control` AND `desktop:control`, and their SDL is the text of release 1.0.1.
+The workspace provider serves two roots. This subsection describes `Query.workspaceSpecialLocations(requests:)`, with the types of the [design SDL](../design/workspace-discovery-schema.graphql). That file equals the types of the full [search SDL](../design/workspace-search-schema.graphql) that the root reaches, word for word. The served coordinates are the root and the fields of `WorkspaceSpecialLocationsResult`, `WorkspaceSpecialLocation`, `WorkspaceDiscoveryCoverage`, `WorkspaceDiscoveryDiagnostic` and `WorkspaceDiscoveryPermissionHint`. Every one of them needs `workspace:read` and nothing else. The four action roots keep `workspace:control` AND `desktop:control`, and their SDL is the text of release 1.0.1.
 
 The provider answers a request in these steps:
 
@@ -173,13 +173,13 @@ The result has one coverage source, `FOUNDATION_LOCATIONS`. Its `declaredDomain`
 
 Each absent pair adds a `NO_NATIVE_VALUE` diagnostic, and each pair with a withheld value adds an `UNREPRESENTABLE_VALUE` diagnostic. Both have a null subject and `affectsCoverage` true. A request names at most ten pairs, so the diagnostics cannot reach the limit of 63 records. `resultsTruncated` is always false.
 
-The read disclosure of Koine 0.4.0 states the reach of this root alone. The host feature `workspace-native-disclosures-v1` carries it, and the workspace manifest and descriptor require it. Koine 0.3.0 does not advertise the feature, so it refuses this provider before it loads.
+The read disclosure of Koine 0.4.0 states the reach of both roots. The host feature `workspace-native-disclosures-v1` carries it, and the workspace manifest and descriptor require it. Koine 0.3.0 does not advertise the feature, so it refuses this provider before it loads.
 
 Evidence so far:
 
 - The L tests in `Tests/WorkspaceProviderLogicTests/SpecialLocationsTests.swift` substitute the native adapter. They cover the ten default pairs, each refused request, an absent value and a withheld value.
 - The G tests in `Tests/KoineServerTests/WorkspaceSpecialLocationsTests.swift` cover the authority of every field, the served disclosure and the refusal on a host without the feature. Tests in `SchemaConformanceTests` and `WorkspaceProviderTests` hold the served SDL to its design file.
-- `task design:special-locations-check` holds the design files to each other.
+- `task design:workspace-discovery-check` holds the design files to each other.
 - The real adapter returned a value for each of the ten pairs on the macOS 27 build host. Every location existed there, so the run does not show that a missing directory stays uncreated. That run is not acceptance.
 - The N check and the V run on the signed bundle are pending. They belong to the discovery acceptance leaf.
 
@@ -201,6 +201,56 @@ Supplement the index with generic NSWorkspace.runningApplications (RUNNING_APPS)
 Expand each distinct coherent seed identifier once, with no recursive identifier cascade. Record the actual source membership of every returned choice. A registration supplement is not labelled indexed. Registration and preferred-location lookups are per-identifier facts. They are never an enumeration of all registrations.
 
 The design chooses the deprecated but declared error-bearing API because it gives meaningful checked negatives. If the API is unsupported or unusable, diagnose that and keep UNKNOWN, which preserves the unmet useful work. The source report cites its SDK and primary documentation.
+
+### Application catalogue served in Koine 0.4.0
+
+The workspace provider serves `Query.workspaceApplications` beside the special-locations root. The served coordinates are the root and the fields of `WorkspaceApplicationsResult`, `WorkspaceApplicationChoice`, `WorkspaceDiscoveryCoverage`, `WorkspaceDiscoveryDiagnostic` and `WorkspaceDiscoveryPermissionHint`. Every one of them needs `workspace:read` and nothing else.
+
+The [design SDL](../design/workspace-discovery-schema.graphql) serves the result types word for word. It serves `WorkspaceApplicationChoice` with four fields: `applicationPath`, `name`, `bundleIdentifier` and `sources`. Each has the name and type of the full design and a description of this release.
+
+The other fields wait for the cut that fills them. They are `metadataSource`, `installationState`, `uiElement`, `backgroundOnly` and `runningActivationPolicies`. Under `koine-desktop/1` a later field is an addition, and an addition breaks no client. The served description of the root says what this release does, not what the full design does.
+
+This release reads the index and nothing else. It adds no running-application supplement, no registration expansion and no bundle reader. The sections below describe those parts as the design of later cuts. The provider answers a call in these steps:
+
+1. Run the one fixed query of the section above on a private operation queue, and wait for its initial gathering. The wait ends after three seconds.
+2. If the gathering holds more than 2,048 items, copy none of them. A prefix in the index's order is never reported.
+3. Make one choice for each item that gives an absolute path of 1 to 8,192 UTF-8 bytes without a NUL. Keep the order of the index. The order is an observation, not a ranking.
+4. Fill the choice from the item. The path and the identifier are the index's values. The name is the localised name that the index reports. Never read a name from the path.
+5. Withhold an item that has no usable path. Withhold an item whose type tree is present and lacks the application-bundle type. Set a name to null if it is not 1 to 1,024 bytes without a NUL. Set an identifier to null if it is not 1 to 512 bytes without a NUL. Never shorten or repair a value.
+6. Keep each copy of one application as its own choice. The same identifier on two paths is two choices, as the [identity decision](../adr/application-search-uses-bundle-identity.md) requires.
+
+The status follows the coverage rules of "Coverage and frozen publication":
+
+| Gathering | Status | Items | Diagnostic reason |
+| --- | --- | --- | --- |
+| Finished, every item usable | `AVAILABLE` | List | None |
+| Finished, some item withheld or some field null | `PARTIAL` | List | `UNREPRESENTABLE_VALUE` or `METADATA_UNKNOWN` |
+| Finished, no items | `UNKNOWN` | Null | `METADATA_UNKNOWN` |
+| Finished, every item withheld | `FAILED` | Null | `UNREPRESENTABLE_VALUE` or `METADATA_UNKNOWN` |
+| Not finished within the wait | `FAILED` | Null | `TIME_LIMIT` |
+| More than 2,048 items | `FAILED` | Null | `ENTRY_LIMIT` |
+| The system refused the query | `FAILED` | Null | `INSPECTION_FAILED` |
+
+An empty answer is never a complete empty inventory. The index can be disabled, excluded or rebuilding, and a finished gathering does not show otherwise. A `FAILED` result raises `failed` at each selected `items`, so omit `items` to read the status and the diagnostics. `resultsTruncated` is always false, because a failure reports no prefix.
+
+The result has one coverage source, `INDEXED_APPS`. Its `declaredDomain` is `indexed local computer applications`. Its `examined` is the number of items that the index returned, and it is 0 when none was copied. Its `category` is always `UNKNOWN`.
+
+The source is `AVAILABLE` and `COMPLETE` only when every item was usable. Each reason gives one diagnostic with a count in its guidance, a null subject and `affectsCoverage` true. A run has four reasons at most, so the diagnostics cannot reach the limit of 63 records.
+
+The read disclosure states this reach, as the subsection "Served in Koine 0.4.0" above says. It names the applications that Spotlight has indexed on the local disks, wherever they are. A listed path gives no authority over the application. Acting on a listed application through the workspace actions still needs `workspace:control` AND `desktop:control`.
+
+Evidence so far:
+
+- The L tests in `Tests/WorkspaceProviderLogicTests/ApplicationCatalogueTests.swift` substitute the native adapter. They cover how index items become choices and every row of the table above. They also show that the query asks for nothing except the index.
+- The G tests in `Tests/KoineServerTests/WorkspaceApplicationCatalogueTests.swift` cover the authority of every field, the widened disclosure and the refusal of control grants alone. They also cover the empty, late and overflowing answers. Tests in `SchemaConformanceTests` and `WorkspaceProviderTests` hold the served SDL to its design file.
+- `task design:workspace-discovery-check` holds the design files to each other and to the search design.
+- The real query is `IndexedApplicationQuery`. It has not run yet. The SDK requires `startQuery` on the operation queue of the query, and the adapter follows that rule. Whether the index lists Safari and Finder, and whether a read raises a permission dialog, are open until the V run.
+- The Safari and Finder lookup is not built. The V run of the discovery acceptance leaf decides whether it is needed.
+- The N check and the V run on the signed bundle are pending. They belong to the discovery acceptance leaf.
+
+### Hold on the private metadata reader
+
+The hold of "Private application qualification order" covers the private explicit metadata reader only. The index-backed catalogue above reads no bundle file, so no reader hold applies to it. The [acceptance-order decision](../adr/application-metadata-qualification-precedes-analytic-fit.md) says the same.
 
 <!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 

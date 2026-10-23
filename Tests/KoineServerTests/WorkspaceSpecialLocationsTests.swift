@@ -13,12 +13,27 @@ import Testing
 @Suite struct WorkspaceSpecialLocationsTests {
     static let read = ["workspace:read"]
 
-    /// A native adapter for the query alone: it gives the ten default values and counts every call that is
-    /// not a location lookup, which a read must never make.
+    /// A native adapter for the two reads alone: it gives the ten default location values and what the test
+    /// arranges for the index query, and counts every call that is neither, which a read must never make.
     final class LocationsOnly: WorkspaceNative, @unchecked Sendable {
         private let lock = NSLock()
         private var lookups: [LocationPair] = []
         private var others = 0
+        private var indexRead: IndexedApplicationsRead = .gathered([])
+        private var indexRuns = 0
+
+        /// What the fixed application query comes to.
+        var index: IndexedApplicationsRead {
+            get { lock.withLock { indexRead } }
+            set { lock.withLock { indexRead = newValue } }
+        }
+        var indexQueries: Int { lock.withLock { indexRuns } }
+        func indexedApplications(limit: Int, wait: Duration) -> IndexedApplicationsRead {
+            lock.withLock {
+                indexRuns += 1
+                return indexRead
+            }
+        }
 
         var looked: [LocationPair] { lock.withLock { lookups } }
         var otherCalls: Int { lock.withLock { others } }
@@ -104,7 +119,7 @@ import Testing
         let coverage = try #require((locations["sources"] as? [[String: Any]])?.first)
         #expect(coverage["source"] as? String == "FOUNDATION_LOCATIONS" && coverage["examined"] as? Int == 10)
         #expect(native.looked == LocationPair.defaults)
-        #expect(native.otherCalls == 0, "a read looked at nothing but the values")
+        #expect(native.otherCalls == 0 && native.indexQueries == 0, "a read looked at nothing but the values")
     }
 
     @Test(arguments: [

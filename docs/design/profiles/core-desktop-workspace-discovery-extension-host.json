@@ -1,12 +1,12 @@
 {
   "name": "extension-host core + desktop + workspace 1.0.2",
-  "design": "../desktop-workspace-special-locations-schema-extension-host.graphql",
+  "design": "../desktop-workspace-discovery-schema-extension-host.graphql",
   "management": "extended",
   "comment": [
     "The signed application as shipped: desktop 1.0.0 and workspace release/schema 1.0.2, the repaired actions with the",
-    "first cut of native discovery, Query.workspaceSpecialLocations. Its design differs from the 1.0.1 profile's",
-    "(core-desktop-workspace-repair-extension-host.json, held to the retained 1.0.1 bundle) by that query root and the types",
-    "it reaches, so its canonical digest differs on the same host and printer. The candidate versions are pinned here, apart",
+    "first cut of native discovery, Query.workspaceSpecialLocations and Query.workspaceApplications. Its design differs from",
+    "the 1.0.1 profile's (core-desktop-workspace-repair-extension-host.json, held to the retained 1.0.1 bundle) by those",
+    "two query roots and the types they reach, so its canonical digest differs on the same host and printer. The candidate versions are pinned here, apart",
     "from the SDL and the digest, because an identical schema and digest cannot say which binary ran."
   ],
   "providers": [

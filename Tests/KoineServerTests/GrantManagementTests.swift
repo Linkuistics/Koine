@@ -58,9 +58,11 @@ import Testing
         #expect(text.contains("any application registered"))
         #expect(text.contains("run a script or follow a location document"))
         #expect(text.contains("desktop:control"))
-        // Read states the reach of the one query it admits, and the limits that make that reach small.
+        // Read states the reach of the two queries it admits, and the limits that make that reach small.
         let read = try #require(entries.last?["disclosure"])
         #expect(read.contains("special locations that macOS names for Koine's own account"))
+        #expect(read.contains("applications that Spotlight has indexed on this Mac's local disks"))
+        #expect(read.contains("name, bundle identifier and location"))
         #expect(read.contains("reads no file contents and lists no folder"))
         #expect(read.contains("gives no access to it"))
         #expect(read.contains("workspace:control and desktop:control"))

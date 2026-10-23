@@ -1,7 +1,8 @@
 # Native discovery proposals: introspect the actually served schema before use.
-# Served by Koine 0.4.0 (workspace 1.0.2): NativeStartingLocations and the DiscoveryCoverage fragment, nothing else here.
+# Served by Koine 0.4.0 (workspace 1.0.2): NativeStartingLocations, NativeApplications and the DiscoveryCoverage fragment,
+# nothing else here. The index gives the path, name and bundle identifier of each application and nothing more.
 # Omit $requests for the ten default pairs; pass [{kind: APPLICATIONS, domain: LOCAL}] for one. The other
-# operations wait for the cut that serves their roots, and `task design:special-locations-check` holds the split.
+# operations wait for the cut that serves their roots, and `task design:workspace-discovery-check` holds the split.
 fragment DiscoveryCoverage on WorkspaceDiscoveryCoverage {
   source declaredDomain availability observations category examined
   diagnostics {
@@ -18,6 +19,15 @@ query NativeStartingLocations($requests: [WorkspaceLocationRequest!]) {
   }
 }
 query NativeApplications {
+  apps: workspaceApplications {
+    status
+    items { name applicationPath bundleIdentifier sources }
+    sources { ...DiscoveryCoverage }
+    resultsTruncated
+  }
+}
+# The full catalogue design, which a later cut serves. This one asks for fields that Koine 0.4.0 does not serve yet.
+query NativeApplicationsFullDesign {
   apps: workspaceApplications {
     status
     items { name applicationPath bundleIdentifier metadataSource installationState uiElement backgroundOnly runningActivationPolicies sources }

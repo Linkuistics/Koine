@@ -289,6 +289,10 @@ struct NativeWorkspace: WorkspaceNative {
         return FileManager.default.urls(for: directory, in: domain).map(\.path)
     }
 
+    func indexedApplications(limit: Int, wait: Duration) -> IndexedApplicationsRead {
+        IndexedApplicationQuery.read(limit: limit, wait: wait)
+    }
+
     func accountIdentifier() -> String { String(getuid()) }
 
     func processStart(of pid: Int32) -> ProcessLookup { readKernelProcessStart(of: pid) }

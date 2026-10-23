@@ -95,14 +95,14 @@ import Testing
         func read(_ name: String) throws -> String {
             try String(contentsOf: Self.repository.appending(path: "docs/design/\(name)"), encoding: .utf8)
         }
-        let design = try read("workspace-special-locations-schema.graphql")
+        let design = try read("workspace-discovery-schema.graphql")
         let repair = try read("workspace-action-repair-schema.graphql")
         func body(_ text: String) -> String {
             text.components(separatedBy: "\n\n").dropFirst().joined(separator: "\n\n")
         }
         #expect(body(served) == body(design), "the served contribution is not the design file's body")
         let blocks = served.components(separatedBy: "\n\n").filter { $0.contains("\"\"\"") }
-        #expect(blocks.count == 10 + 7, "ten action blocks, and the seven described blocks of the query and its types")
+        #expect(blocks.count == 10 + 8, "ten action blocks, and the eight described blocks of the queries and their types")
         for block in blocks where !block.hasPrefix("extend type") {
             #expect(design.contains(block), "not verbatim from the design file: \(block.prefix(60))")
         }
@@ -124,17 +124,37 @@ import Testing
         for reached in ["WorkspaceRevealResult", "WorkspaceRevealReceipt"] {
             #expect(served.contains("type \(reached) {"), "\(reached) is reached by the last action root")
         }
-        // The one query root, and only it, is declared on Query, and its types are the search design's.
+        // The two query roots, and only they, are declared on Query, and their types are the search design's.
         let query = try #require(blocks.first { $0.hasPrefix("extend type Query") })
+        let rootLines = query.components(separatedBy: "\n").filter { $0.hasPrefix("  workspace") }
         #expect(
-            query.components(separatedBy: "\n").filter { $0.hasPrefix("  workspace") }
-                == ["  workspaceSpecialLocations(requests: [WorkspaceLocationRequest!]): WorkspaceSpecialLocationsResult"])
+            rootLines == [
+                "  workspaceSpecialLocations(requests: [WorkspaceLocationRequest!]): WorkspaceSpecialLocationsResult",
+                "  workspaceApplications: WorkspaceApplicationsResult",
+            ])
         let search = try read("workspace-search-schema.graphql")
-        for name in ["WorkspaceSpecialLocationsResult", "WorkspaceSpecialLocation", "WorkspaceDiscoveryCoverage"] {
+        func definition(_ name: String) throws -> String {
             let type = try #require(served.range(of: "type \(name) {")).lowerBound
-            let definition = String(served[type...].prefix(through: try #require(served[type...].range(of: "\n}")).upperBound))
-            #expect(search.contains(definition), "\(name) is not the search design's")
+            return String(served[type...].prefix(through: try #require(served[type...].range(of: "\n}")).upperBound))
         }
+        for name in [
+            "WorkspaceSpecialLocationsResult", "WorkspaceSpecialLocation", "WorkspaceDiscoveryCoverage",
+            "WorkspaceApplicationsResult",
+        ] {
+            #expect(search.contains(try definition(name)), "\(name) is not the search design's")
+        }
+        // The application choice serves the fields that the index fills, with the design's name and type for each
+        // and the descriptions of this release. The design's other fields wait for the cut that fills them.
+        func fields(_ text: String) -> [String] {
+            text.components(separatedBy: "\n").filter { $0.hasPrefix("  ") && !$0.hasPrefix("  \"\"\"") }
+        }
+        let designed = fields(try {
+            let start = try #require(search.range(of: "type WorkspaceApplicationChoice {")).lowerBound
+            return String(search[start...].prefix(through: try #require(search[start...].range(of: "\n}")).upperBound))
+        }())
+        let offered = fields(try definition("WorkspaceApplicationChoice"))
+        #expect(offered == ["  applicationPath: String!", "  name: String", "  bundleIdentifier: String", "  sources: [WorkspaceDiscoverySource!]!"])
+        for field in offered { #expect(designed.contains(field), "not the design's field: \(field)") }
     }
 
     @Test func theLoadedProviderServesAllFourRootsAndNoOther() async throws {

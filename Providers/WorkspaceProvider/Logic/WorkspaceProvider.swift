@@ -1,8 +1,8 @@
 import Foundation
 import KoineProviderAPI
 
-// The contribution: the launch, URL, path and reveal roots, and the special-locations query, with every type
-// they reach. The SDL (schema.graphql) is served verbatim from the design file.
+// The contribution: the launch, URL, path and reveal roots, and the special-locations and application queries,
+// with every type they reach. The SDL (schema.graphql) is served verbatim from the design file.
 
 /// The host feature that says the host's grant views and management catalogue state the reach of
 /// `workspace:read` (docs/adr/native-workspace-requires-disclosure-capable-host.md). A host without it
@@ -53,14 +53,24 @@ func workspaceDescriptor(schemaSDL: String) -> ProviderDescriptor {
         ],
         "WorkspaceDiscoveryDiagnostic": ["source", "reason", "subject", "affectsCoverage", "guidance", "permission"],
         "WorkspaceDiscoveryPermissionHint": ["permission", "target", "event", "consent"],
+        "WorkspaceApplicationsResult": ["status", "items", "sources", "resultsTruncated"],
+        "WorkspaceApplicationChoice": ["applicationPath", "name", "bundleIdentifier", "sources"],
     ]
-    fields.append(
+    fields += [
         ProviderFieldRegistration(
-            coordinate: "Query.workspaceSpecialLocations", resolverId: "specialLocations", authority: .read))
+            coordinate: "Query.workspaceSpecialLocations", resolverId: "specialLocations", authority: .read),
+        ProviderFieldRegistration(
+            coordinate: "Query.workspaceApplications", resolverId: "applications", authority: .read),
+    ]
     for (type, names) in discovery.sorted(by: { $0.key < $1.key }) {
         fields += names.map {
-            // A failed lookup raises at `items`, so that one field has a resolver of its own.
-            let resolverId = type == "WorkspaceSpecialLocationsResult" && $0 == "items" ? "frozen.items" : "parent.\($0)"
+            // A failed lookup raises at `items`, so that one field of each result has a resolver of its own.
+            let resolverId =
+                switch (type, $0) {
+                case ("WorkspaceSpecialLocationsResult", "items"): "frozen.items"
+                case ("WorkspaceApplicationsResult", "items"): "frozen.applicationItems"
+                default: "parent.\($0)"
+                }
             return ProviderFieldRegistration(
                 coordinate: "\(type).\($0)", resolverId: resolverId, authority: .read)
         }
@@ -73,15 +83,19 @@ func workspaceDescriptor(schemaSDL: String) -> ProviderDescriptor {
 
 /// Launches or reactivates an installed application by bundle identity, opens a web URL in
 /// the default browser, opens a document or directory in its default or a named
-/// application, asks Finder to reveal a path, and reports the system's special locations. Nothing is cached between calls: the installation is inspected on every action, and
+/// application, asks Finder to reveal a path, and reports the system's special locations and the applications that the
+/// index lists. Nothing is cached between calls: the installation is inspected on every action, and
 /// the one thing held is the bound on native submissions still outstanding.
 final class WorkspaceProvider: Provider, @unchecked Sendable {
     /// Below the core's five-second request ceiling, which can still win first.
     static let defaultAcknowledgmentBound = Duration.seconds(3)
     static let defaultSubmissionCapacity = 16
+    /// How long one application query waits for the index's initial gathering: the same bound as an acknowledgment.
+    static let defaultIndexWait = Duration.seconds(3)
 
     private let native: any WorkspaceNative
     private let bound: Duration
+    private let indexWait: Duration
     private let limit: SubmissionLimit
     /// Inspection reads the filesystem, which can block: it never runs on Swift's
     /// cooperative threads.
@@ -89,10 +103,12 @@ final class WorkspaceProvider: Provider, @unchecked Sendable {
 
     init(
         native: any WorkspaceNative, acknowledgmentBound: Duration = WorkspaceProvider.defaultAcknowledgmentBound,
-        submissionCapacity: Int = WorkspaceProvider.defaultSubmissionCapacity
+        submissionCapacity: Int = WorkspaceProvider.defaultSubmissionCapacity,
+        indexWait: Duration = WorkspaceProvider.defaultIndexWait
     ) {
         self.native = native
         self.bound = acknowledgmentBound
+        self.indexWait = indexWait
         self.limit = SubmissionLimit(capacity: submissionCapacity)
     }
 
@@ -115,7 +131,12 @@ final class WorkspaceProvider: Provider, @unchecked Sendable {
         }
         switch request.resolverId {
         case "specialLocations": return await specialLocations(request.arguments["requests"])
-        case "frozen.items": return frozenItems(of: request.parent)
+        case "frozen.items":
+            return frozenItems(
+                of: request.parent, failure: "The system gave special-location values that cannot be reported, and none that can.")
+        case "applications": return await applications()
+        case "frozen.applicationItems":
+            return frozenItems(of: request.parent, failure: "The index gave no application list that can be reported.")
         case "launchApplication": return await launch(request.arguments["application"])
         case "openURL": return await openWebURL(request.arguments["url"])
         case "openPath": return await openPath(request.arguments["path"], application: request.arguments["application"])
@@ -151,13 +172,23 @@ final class WorkspaceProvider: Provider, @unchecked Sendable {
 
     /// The frozen list, or the failure a FAILED lookup raises at each selected `items`: the list is null for the
     /// other statuses that have none.
-    private func frozenItems(of parent: ProviderValue?) -> ResolutionResult {
+    private func frozenItems(of parent: ProviderValue?, failure: String) -> ResolutionResult {
         guard case .object(let fields)? = parent, case .string(let status)? = fields["status"], let items = fields["items"]
         else { return failed("No parent value.") }
-        if status == "FAILED" {
-            return failed("The system gave special-location values that cannot be reported, and none that can.")
-        }
+        if status == "FAILED" { return failed(failure) }
         return .success(items)
+    }
+
+    // MARK: Applications
+
+    /// The applications that the one fixed index query reports, and nothing else: no copy is resolved, registered,
+    /// launched or inspected. The query blocks until the initial gathering finishes or the wait ends, so it never runs
+    /// on a cooperative thread.
+    private func applications() async -> ResolutionResult {
+        guard !Task.isCancelled else { return failed("Cancelled before the index was queried.") }
+        let native = native
+        let wait = indexWait
+        return .success(await onQueue { applicationsResult(native: native, wait: wait) })
     }
 
     // MARK: Launch

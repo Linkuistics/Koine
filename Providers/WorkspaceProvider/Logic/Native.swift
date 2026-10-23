@@ -43,6 +43,28 @@ protocol LaunchedApplication: Sendable {
     func freshLookupEqualsSelf(pid: Int32) -> Bool
 }
 
+/// One item that the fixed application query returned, with the four attributes of its fixed projection. Each
+/// attribute is what the item reported, or nil when it reported none or one of another type. Nothing here has
+/// been checked, so none of it establishes the identity of a bundle directory.
+struct IndexedApplication: Equatable, Sendable {
+    var path: String?
+    var contentTypeTree: [String]?
+    var bundleIdentifier: String?
+    var displayName: String?
+}
+
+/// How one run of the fixed application query ended.
+enum IndexedApplicationsRead: Equatable, Sendable {
+    /// The initial gathering finished, and these are its items in the index's order.
+    case gathered([IndexedApplication])
+    /// The initial gathering finished with more items than the limit, so none was copied.
+    case overLimit
+    /// The initial gathering had not finished when the wait ended.
+    case unfinished
+    /// The query did not start.
+    case failed(String)
+}
+
 protocol WorkspaceNative: Sendable {
     /// Launch Services' registered copy for the identifier, which it may report
     /// although the bundle is gone. Registration is not presence.
@@ -131,6 +153,13 @@ protocol WorkspaceNative: Sendable {
     /// is resolved, listed, opened or inspected, and a lookup that creates a directory is never used
     /// (`SpecialLocations`). Empty when the system gives none.
     func specialLocationValues(_ pair: LocationPair) -> [String]
+
+    /// Runs the one fixed index query of the search spec ("Application sources and native facts"): the
+    /// application-bundle content-type-tree equality over the indexed local computer scope, with its four-attribute
+    /// projection read from each returned item. It waits at most `wait` for the initial gathering, stops the query
+    /// before it returns, and copies no item when the gathering holds more than `limit`. It reads nothing but the
+    /// index: it registers, launches, resolves and inspects no application. Blocks the calling thread.
+    func indexedApplications(limit: Int, wait: Duration) -> IndexedApplicationsRead
 
     /// The numeric user identifier of Koine's own account, which every special location describes.
     func accountIdentifier() -> String

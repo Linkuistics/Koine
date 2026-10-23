@@ -272,6 +272,11 @@ import Testing
         "WorkspaceDiscoveryDiagnostic.guidance", "WorkspaceDiscoveryDiagnostic.permission",
         "WorkspaceDiscoveryPermissionHint.permission", "WorkspaceDiscoveryPermissionHint.target",
         "WorkspaceDiscoveryPermissionHint.event", "WorkspaceDiscoveryPermissionHint.consent",
+        "Query.workspaceApplications",
+        "WorkspaceApplicationsResult.status", "WorkspaceApplicationsResult.items",
+        "WorkspaceApplicationsResult.sources", "WorkspaceApplicationsResult.resultsTruncated",
+        "WorkspaceApplicationChoice.applicationPath", "WorkspaceApplicationChoice.name",
+        "WorkspaceApplicationChoice.bundleIdentifier", "WorkspaceApplicationChoice.sources",
     ]
 
     /// Every action field needs both controls and nothing else. Every field the query reaches needs
@@ -783,6 +788,7 @@ import Testing
             completion(.acknowledged(nil))
         }
         func specialLocationValues(_ pair: LocationPair) -> [String] { [] }
+        func indexedApplications(limit: Int, wait: Duration) -> IndexedApplicationsRead { .gathered([]) }
         func accountIdentifier() -> String { "501" }
         func processStart(of pid: Int32) -> ProcessLookup { .absent }
         func liveExecutableIdentity(of pid: Int32) -> ObjectIdentity? { nil }

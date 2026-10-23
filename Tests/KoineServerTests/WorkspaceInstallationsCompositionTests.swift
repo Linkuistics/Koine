@@ -102,6 +102,7 @@ import Testing
             completion(.refused("a reveal is not part of this test"))
         }
         func specialLocationValues(_ pair: LocationPair) -> [String] { [] }
+        func indexedApplications(limit: Int, wait: Duration) -> IndexedApplicationsRead { .gathered([]) }
         func accountIdentifier() -> String { "501" }
         func processStart(of pid: Int32) -> ProcessLookup { .absent }
         func liveExecutableIdentity(of pid: Int32) -> ObjectIdentity? { nil }

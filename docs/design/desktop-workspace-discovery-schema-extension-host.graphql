@@ -2,8 +2,8 @@
 The koine-desktop/1 schema as composed from the core and the two bundled providers, desktop
 and workspace 1.0.2, on an extension host. `task conformance` holds a running Koine to it. It is
 `desktop-workspace-repair-schema-extension-host.graphql` (the workspace 1.0.1 composition, which stays
-as it is) with the first cut of native discovery added: `Query.workspaceSpecialLocations` and the
-types it reaches. The workspace part is `workspace-special-locations-schema.graphql`, verbatim; a
+as it is) with the first cut of native discovery added: `Query.workspaceSpecialLocations`,
+`Query.workspaceApplications` and the types they reach. The workspace part is `workspace-discovery-schema.graphql`, verbatim; a
 coordinate is never declared here that it does not, and a later root lands by adding its own
 coordinates to this file, never by relaxing the check. Root fields are declared in composition order:
 the core's own, then desktop's, then workspace's, because the schema digest is taken over a canonical
@@ -37,6 +37,8 @@ type Query {
   desktopWindow(ref: Reference!): DesktopWindow
   "Value-only Foundation lookup; null/omitted defaults to ten named pairs. Explicit nonempty unique requests <=10; HOME/Desktop/Documents/Downloads/Movies/Music/Pictures USER only; APPLICATIONS USER/LOCAL/SYSTEM. Never lists or inspects contents. All reachable fields require workspace:read."
   workspaceSpecialLocations(requests: [WorkspaceLocationRequest!]): WorkspaceSpecialLocationsResult
+  "Applications that the Spotlight index lists: one fixed query for application bundles over the indexed local computer scope, run once per call. Each choice has the path, display name and bundle identifier that the index reports, with source INDEXED_APPS. Copies of one identifier stay separate choices. Nothing is registered, resolved, launched or inspected, and the index can omit or lag applications, so a result is no inventory of the disk: category completeness is always UNKNOWN. An empty index answer is UNKNOWN with null items, never an empty inventory. A gathering that does not finish in three seconds, or one with more than 2048 items, is FAILED with null items and no prefix, and each selected items alias raises failed. Installation state, running state and bundle flags are not part of this release. All reachable fields require workspace:read."
+  workspaceApplications: WorkspaceApplicationsResult
 }
 
 type Mutation {
@@ -223,10 +225,27 @@ type WorkspaceSpecialLocation {
   sources: [WorkspaceDiscoverySource!]!
 }
 
+type WorkspaceApplicationChoice {
+  """Absolute path of the bundle as the index reported it. It is not checked, resolved or opened, so it is not a bundle-directory identity and promises no installed or launchable application. Pass it with bundleIdentifier to workspaceLaunchApplication, which resolves it again."""
+  applicationPath: String!
+  """The localised display name that the index reports, or null when it reports none that Koine can pass on. Never taken from the path."""
+  name: String
+  """The bundle identifier that the index reports, or null when it reports none that Koine can pass on."""
+  bundleIdentifier: String
+  sources: [WorkspaceDiscoverySource!]!
+}
+
 type WorkspaceSpecialLocationsResult {
   status: WorkspaceDiscoveryStatus!
   """Frozen list for AVAILABLE/PARTIAL; otherwise null. FAILED raises failed at each selected items alias; BLOCKED/UNAVAILABLE/UNKNOWN give ordinary null."""
   items: [WorkspaceSpecialLocation!]
+  sources: [WorkspaceDiscoveryCoverage!]!
+  resultsTruncated: Boolean!
+}
+
+type WorkspaceApplicationsResult {
+  status: WorkspaceDiscoveryStatus!
+  items: [WorkspaceApplicationChoice!]
   sources: [WorkspaceDiscoveryCoverage!]!
   resultsTruncated: Boolean!
 }

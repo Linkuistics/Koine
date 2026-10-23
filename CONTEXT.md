@@ -245,6 +245,8 @@ Its selected platform, plain information, strings and loctable semantics use reg
 
 The [selected qualification order](docs/adr/application-metadata-qualification-precedes-analytic-fit.md) permits guarded private qualification before analytic useful fit. It requires complete design, whole-producer review and earned integration first. Advertisement and consumption remain held until four things qualify: full useful native operands, actual complete responses, required witnesses and independent serviceability. Required subjects that failed, were refused, are unknown or are missing keep the affected work live. A checked pathname and file plan alone is no useful-reader closure.
 
+These holds cover this reader only. The index-backed catalogue of Koine 0.4.0 reads no bundle file, so no reader hold applies to it.
+
 <!-- tc: pending because this glossary has hundreds of findings; an entry converts when an edit touches it -->
 
 **Private application qualification**: The

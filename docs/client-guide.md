@@ -366,7 +366,7 @@ nothing".
 
 ## Searching for applications and files
 
-Raw filesystem search belongs to the client. The client chooses its traversal engine, permissions, filtering, ordering and budgets. The [native discovery design](specs/workspace-search.md) supplies special locations. It also supplies named catalogues of applications and System Settings on macOS 26+ Apple Silicon. **Koine 0.4.0 serves `workspaceSpecialLocations` and nothing else of that design.** The rest of this section describes queries that Koine does not serve yet.
+Raw filesystem search belongs to the client. The client chooses its traversal engine, permissions, filtering, ordering and budgets. The [native discovery design](specs/workspace-search.md) supplies special locations. It also supplies named catalogues of applications and System Settings on macOS 26+ Apple Silicon. **Koine 0.4.0 serves `workspaceSpecialLocations` and `workspaceApplications`, and nothing else of that design.** The rest of this section describes the full design, which later releases serve.
 
 Introspect the actual schema before you use the [operations](design/workspace-search-operations.graphql). Koine has no generic predicate, root or query API and no raw-search fallback.
 
@@ -391,6 +391,34 @@ The accountIdentifier is the UID of that account. A location can name a director
 Read the status before the items.
 
 AVAILABLE means that every pair gave a usable value. PARTIAL means that some pair gave none or gave a value that Koine withheld. The diagnostics name NO_NATIVE_VALUE or UNREPRESENTABLE_VALUE. UNKNOWN means that no pair gave a value, and items is null. FAILED means that every value was withheld. Each selected items then raises `failed`, so omit items to read the status and the diagnostics.
+
+Call `workspaceApplications` under `workspace:read` to list the applications that Spotlight has indexed on the local disks. A grant of `workspace:control` and `desktop:control` alone cannot call it. The query takes no argument.
+
+```graphql
+query Applications {
+  apps: workspaceApplications {
+    status
+    items { applicationPath name bundleIdentifier sources }
+    sources { source declaredDomain availability observations category examined diagnostics { reason guidance } }
+  }
+}
+```
+
+Koine 0.4.0 reads the index and nothing else. Each item has the path, the localised name and the bundle identifier that the index reports. The name and the identifier can be null. The source is always INDEXED_APPS.
+
+Koine does not check the path. It does not resolve the path, open it or register the application. A path gives no promise that the application is installed or can launch. Two copies of one application are two items.
+
+Filter, rank and present the items in your client. The order is the order of the index, not a ranking. This release gives no installation state, no running state and no bundle flags. Koine suppresses no helper or accessory application.
+
+To launch a listed application, pass its bundleIdentifier and its applicationPath to `workspaceLaunchApplication`. That needs `workspace:control` and `desktop:control`. Koine resolves both again, so a changed or removed application gives a typed dependency answer. An item with a null identifier cannot be launched this way.
+
+Read the status before the items. AVAILABLE means that the index finished its list and Koine reported every item. PARTIAL means that Koine withheld an item or set a name or an identifier to null, and the diagnostics say which. UNKNOWN means that the index finished with no item, and items is null.
+
+Do not read UNKNOWN as an empty Mac. The index can be disabled, excluded or rebuilding. FAILED means one of four things. The index did not finish in three seconds, or it listed more than 2,048 items. Otherwise the system refused the query, or no item was usable. Items is then null, and each selected items raises `failed`, so omit items to read the status and the diagnostics.
+
+The category completeness is always UNKNOWN, because the index can omit or lag applications. Treat the list as the applications that Spotlight knows, not as an inventory of the disk.
+
+The paragraphs below describe the full design of the catalogue, which later releases serve. Koine 0.4.0 serves only what the paragraphs above describe.
 
 <!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 

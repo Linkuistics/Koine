@@ -1,8 +1,11 @@
 # Workspace 1.0.2 contribution as served: the four action roots of workspace-action-repair-schema.graphql, unchanged,
-# and the first cut of native discovery, Query.workspaceSpecialLocations, whose types are those of
-# workspace-search-schema.graphql, verbatim. The full catalogue design stays there.
-# The query root and every field it reaches need workspace:read alone. The actions keep workspace:control AND desktop:control.
-# Composed with desktop's contribution by desktop-workspace-special-locations-schema-extension-host.graphql.
+# and the first cut of native discovery: Query.workspaceSpecialLocations and Query.workspaceApplications.
+# Their names and types are those of workspace-search-schema.graphql. Every definition is its text verbatim,
+# except WorkspaceApplicationChoice, which serves only the fields that the index fills (applicationPath, name,
+# bundleIdentifier and sources) with descriptions of this release, and the description of Query.workspaceApplications.
+# The full catalogue design stays in the search schema.
+# Both query roots and every field they reach need workspace:read alone. The actions keep workspace:control AND desktop:control.
+# Composed with desktop's contribution by desktop-workspace-discovery-schema-extension-host.graphql.
 
 """A registered application bundle present at inspection, even if in the Trash. Requires a bundle identifier; bundle-less programs have no named-selector route. No executable, argv, environment or shell input."""
 input WorkspaceApplicationInput {
@@ -153,6 +156,16 @@ type WorkspaceSpecialLocation {
   sources: [WorkspaceDiscoverySource!]!
 }
 
+type WorkspaceApplicationChoice {
+  """Absolute path of the bundle as the index reported it. It is not checked, resolved or opened, so it is not a bundle-directory identity and promises no installed or launchable application. Pass it with bundleIdentifier to workspaceLaunchApplication, which resolves it again."""
+  applicationPath: String!
+  """The localised display name that the index reports, or null when it reports none that Koine can pass on. Never taken from the path."""
+  name: String
+  """The bundle identifier that the index reports, or null when it reports none that Koine can pass on."""
+  bundleIdentifier: String
+  sources: [WorkspaceDiscoverySource!]!
+}
+
 type WorkspaceSpecialLocationsResult {
   status: WorkspaceDiscoveryStatus!
   """Frozen list for AVAILABLE/PARTIAL; otherwise null. FAILED raises failed at each selected items alias; BLOCKED/UNAVAILABLE/UNKNOWN give ordinary null."""
@@ -161,7 +174,16 @@ type WorkspaceSpecialLocationsResult {
   resultsTruncated: Boolean!
 }
 
+type WorkspaceApplicationsResult {
+  status: WorkspaceDiscoveryStatus!
+  items: [WorkspaceApplicationChoice!]
+  sources: [WorkspaceDiscoveryCoverage!]!
+  resultsTruncated: Boolean!
+}
+
 extend type Query {
   """Value-only Foundation lookup; null/omitted defaults to ten named pairs. Explicit nonempty unique requests <=10; HOME/Desktop/Documents/Downloads/Movies/Music/Pictures USER only; APPLICATIONS USER/LOCAL/SYSTEM. Never lists or inspects contents. All reachable fields require workspace:read."""
   workspaceSpecialLocations(requests: [WorkspaceLocationRequest!]): WorkspaceSpecialLocationsResult
+  """Applications that the Spotlight index lists: one fixed query for application bundles over the indexed local computer scope, run once per call. Each choice has the path, display name and bundle identifier that the index reports, with source INDEXED_APPS. Copies of one identifier stay separate choices. Nothing is registered, resolved, launched or inspected, and the index can omit or lag applications, so a result is no inventory of the disk: category completeness is always UNKNOWN. An empty index answer is UNKNOWN with null items, never an empty inventory. A gathering that does not finish in three seconds, or one with more than 2048 items, is FAILED with null items and no prefix, and each selected items alias raises failed. Installation state, running state and bundle flags are not part of this release. All reachable fields require workspace:read."""
+  workspaceApplications: WorkspaceApplicationsResult
 }

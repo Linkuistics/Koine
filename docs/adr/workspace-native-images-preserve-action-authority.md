@@ -2,12 +2,12 @@
 
 ## What binds now
 
-Koine 0.4.0 ships the first cut of discovery. It reads values from the system and gives them to a client that holds `workspace:read`. It lists no directory, opens no file, runs no script and shows no consent prompt. Until System Settings scripting or the private application metadata reader arrives, this discovery code shares the workspace image with the four actions.
+Koine 0.4.0 ships the first cut of discovery. It reads two things and gives them to a client that holds `workspace:read`. They are Foundation's values for the special locations and the application list of the Spotlight index. It lists no directory, opens no file, runs no script and shows no consent prompt. Until System Settings scripting or the private application metadata reader arrives, this discovery code shares the workspace image with the four actions.
 
 The cut keeps the action authority in three ways:
 
 - Every field of a discovery query needs `workspace:read` and nothing else. Every action field keeps `workspace:control` and `desktop:control`. A grant of one set never reaches the other.
-- The native adapter of the action code and of the discovery code is the same private seam. A discovery lookup calls no launch, open or reveal method, and a test records that.
+- The native adapter of the action code and of the discovery code is the same private seam. A discovery lookup calls no launch, open or reveal method, and a test records that. The application query also registers, resolves and inspects no application.
 - The provider requires the host feature of [the disclosure decision](native-workspace-requires-disclosure-capable-host.md), so no host shows a read grant with less than its reach.
 
 ## What binds when scripting or the private reader arrives

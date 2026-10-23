@@ -31,7 +31,9 @@ workspace providers are bundled.
 
 The workspace provider launches and activates applications. It opens URLs, documents and folders, and it reveals paths in Finder. Each of those actions needs `workspace:control` and `desktop:control`. 
 
-The provider also serves one read, `workspaceSpecialLocations`. A client with `workspace:read` gets the special locations that macOS names for the account of Koine, such as the home, Documents and Applications folders. The query reads values only. It lists no folder, opens no file and grants no access to a location it returns. The [client guide](docs/client-guide.md#searching-for-applications-and-files) describes it.
+The provider also serves two reads. A client with `workspace:read` calls `workspaceSpecialLocations` to get the special locations that macOS names for the account of Koine, such as the home, Documents and Applications folders. The query reads values only. It lists no folder, opens no file and grants no access to a location it returns.
+
+The client calls `workspaceApplications` to list the applications that Spotlight has indexed on the local disks. Each choice has a path, a name and a bundle identifier. The result says whether it is complete, empty, unknown or failed. The query registers, resolves and launches nothing. The [client guide](docs/client-guide.md#searching-for-applications-and-files) describes both.
 
 <!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
@@ -284,7 +286,7 @@ binary ran:
 | `core-desktop-extension-host` | [`desktop-schema-extension-host.graphql`](docs/design/desktop-schema-extension-host.graphql) | this tree's headless host with desktop as its only bundled provider |
 | `core-desktop-workspace-extension-host` | [`desktop-workspace-schema-extension-host.graphql`](docs/design/desktop-workspace-schema-extension-host.graphql): the workspace design restricted to the implemented roots and the types they reach, verbatim | the **signed** `Koine.app` with desktop and workspace bundled, in a clean TestAnyware clone |
 | `core-desktop-workspace-repair-extension-host` | [`desktop-workspace-repair-schema-extension-host.graphql`](docs/design/desktop-workspace-repair-schema-extension-host.graphql): the same composition with the action-only repair's three description changes (workspace 1.0.1), verbatim | the bundle of the 1.0.1 repair, in a clean TestAnyware clone; the next row supersedes it for `task conformance:vm`. The row above is the retained workspace 1.0.0, held to its own bundle by `task compat:workspace-baseline-verify` |
-| `core-desktop-workspace-special-locations-extension-host` | [`desktop-workspace-special-locations-schema-extension-host.graphql`](docs/design/desktop-workspace-special-locations-schema-extension-host.graphql): the repair composition plus `Query.workspaceSpecialLocations` and the types it reaches (workspace 1.0.2), verbatim | the **signed** `Koine.app` as shipped, in a clean TestAnyware clone; `task conformance:vm` holds this one |
+| `core-desktop-workspace-discovery-extension-host` | [`desktop-workspace-discovery-schema-extension-host.graphql`](docs/design/desktop-workspace-discovery-schema-extension-host.graphql): the repair composition plus `Query.workspaceSpecialLocations`, `Query.workspaceApplications` and the types they reach (workspace 1.0.2), verbatim | the **signed** `Koine.app` as shipped, in a clean TestAnyware clone; `task conformance:vm` holds this one |
 
 The first two are served by headless hosts over loopback HTTP; the workspace ones launch
 the signed bundle in a VM and captures the introspection response a standard code
