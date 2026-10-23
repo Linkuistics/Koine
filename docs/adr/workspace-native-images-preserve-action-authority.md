@@ -1,25 +1,15 @@
 # Workspace native images preserve action authority
 
-Workspace packages a routing-only principal and independently linked actions,
-discovery and settings images, with source and built-image guards on each. The
-production action adapter is constructed privately inside WorkspaceActions;
-the principal cannot inject an effect-capable replacement. Test substitution is
-absent from production exports and linkage. Only Koine’s local explaining UI
-reaches the settings image’s private conditional consent seam; no principal
-GraphQL route can do so. The
-[native contract](../specs/workspace-search.md#source-and-binary-authority-boundary)
-and [workflow authority](provider-authority-follows-effects.md) define the
-permitted routes and complete grants; these images remain in one trusted process,
-sharing OS permissions and the failure domain. The discovery image alone owns
-the narrowly approved component-relative fixed-file/direct-localization reader;
-action/principal/shared lookup acquire no new contents code. Guards constrain
-fixed paths and reachability as well as imports, so a generic scan using the same
-syscalls is rejected.
+Workspace packages four images. The principal image only routes. The actions, discovery and settings images link independently. Each image has source and built-image guards.
 
-Independent packaging, loader verification and guard instruments cost more than
-one permissive image, but preserve the four accepted action paths while allowing
-bounded native discovery and explicitly authorized settings effects. A single
-image, or a clean action image with an injectable principal adapter, cannot
-establish that actions cannot reach scripting, prompting or extra activation.
-Reopen this boundary only if a replacement source and binary instrument can
-reject those routes without weakening the existing action contract.
+The production action adapter is constructed privately inside WorkspaceActions. The principal cannot inject an effect-capable replacement. Production exports and linkage contain no test substitution.
+
+Only the local explaining UI of Koine reaches the private conditional consent seam of the settings image. No principal GraphQL route reaches it.
+
+The [native contract](../specs/workspace-search.md#source-and-binary-authority-boundary) and the [workflow authority](provider-authority-follows-effects.md) define the permitted routes and the complete grants. The images remain in one trusted process. They share its OS permissions and its failure domain.
+
+The discovery image alone owns the narrowly approved component-relative reader of fixed files and direct localisation names. The action image, the principal and the shared lookup acquire no new contents code. The guards constrain fixed paths and reachability as well as imports. A generic scan that uses the same syscalls is rejected.
+
+Independent packaging, loader verification and guard instruments cost more than one permissive image. They preserve the four accepted action paths. They also allow bounded native discovery and explicitly authorised settings effects.
+
+A single image cannot establish that actions cannot reach scripting, prompting or extra activation. A clean action image with an injectable principal adapter cannot establish it either. Reopen this boundary only if a replacement source and binary instrument can reject those routes without weakening the existing action contract.

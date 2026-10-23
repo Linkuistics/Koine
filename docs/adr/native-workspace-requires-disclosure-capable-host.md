@@ -1,26 +1,11 @@
 # Native workspace requires a disclosure-capable host
 
-Native workspace providers require `workspace-native-disclosures-v1`, alongside
-`additional-capabilities-v1` and `first-party-selection-v1`. A host advertises the
-feature only when its native grant creation, approval and existing-grant views
-and management disclosure catalogue state the native surface's actual reach:
-workspace read supplies location/app/settings metadata, including fixed application
-information/name files and direct localization names, without client filesystem
-access; workspace control permits background Settings preparation alone;
-launch/open/Finder reveal and selected Settings reveal additionally need desktop
-control. Conditional OS consent remains exclusive to Koine's local explaining UI.
+A native workspace provider requires `workspace-native-disclosures-v1`, alongside `additional-capabilities-v1` and `first-party-selection-v1`.
 
-Core owns those disclosures. Prior selection-aware hosts can load the new images
-but ship the action-only wording that workspace control always requires desktop
-control and omit workspace read. Requiring a host feature makes that mismatch a
-pre-load `INCOMPATIBLE` / `unsupported-feature` refusal, including a per-user native
-update; the retained action-only bundled provider remains selected with visible
-refusals. This costs compatibility with those prior hosts and requires a corrected
-host release before native providers ship. Loading there would under-disclose the
-new grant reach. Provider-owned replacement text cannot correct those core UI and
-management surfaces.
+A host advertises the feature only when three surfaces state the actual reach of the native surface. The surfaces are its native grant creation views, its approval and existing-grant views, and its management disclosure catalogue. Workspace read supplies location, application and settings metadata, including fixed application information and name files and direct localisation names, without client filesystem access. Workspace control permits background Settings preparation alone. Launch, open, Finder reveal and selected Settings reveal additionally need desktop control. Conditional OS consent remains exclusive to the local explaining UI of Koine.
 
-The [spec](../specs/workspace-search.md#compatibility-and-acceptance) and
-[finite acceptance profiles](../verification/native-discovery-acceptance.md#exact-identities-and-posture)
-pin that boundary. The feature is independent of conditional Automation signing
-posture. Design validation establishes no shipped disclosure or native loader pass.
+Core owns those disclosures. Earlier selection-aware hosts can load the new images, but they ship the action-only wording. That wording says that workspace control always requires desktop control, and it omits workspace read. A required host feature turns that mismatch into a refusal before load. The refusal is `INCOMPATIBLE` with reason `unsupported-feature`. The refusal applies to a per-user native update too. The retained action-only bundled provider stays selected, with visible refusals.
+
+This costs compatibility with those earlier hosts. A host release with the disclosures must ship before native providers do. Loading on an earlier host would under-disclose the new grant reach. Replacement text from a provider cannot correct those core UI and management surfaces.
+
+The [spec](../specs/workspace-search.md#compatibility-and-acceptance) and the [finite acceptance profiles](../verification/native-discovery-acceptance.md#exact-identities-and-posture) pin that boundary. The feature is independent of the conditional Automation signing posture. Design validation establishes no shipped disclosure and no native loader pass.
