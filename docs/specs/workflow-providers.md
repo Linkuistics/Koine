@@ -1,5 +1,7 @@
 # Workflow providers
 
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
+
 This is the designed extension for the
 [agreed workflows](../requirements/modaliser-workflows.md), pending implementation
 and acceptance. It does not claim that Koine 0.1.0 serves the new providers or
@@ -300,22 +302,13 @@ ownership and independent listener/store/action outcomes remains pending.
 Old raw-search payloads, find/worker scheduling and custom-walk accounts are
 comparison input; their captures are no native discovery pass.
 
-The selected-action rows below use the launch/open increment's
-[v1 long-location boundary](workspace-launch-and-open.md#long-location-action-boundary):
-the same `workspace:control` AND `desktop:control` operations resolve every
-selected location themselves and refuse, with `failed`, an extant location too
-long for macOS's application hand-off. That refusal adds no capability, grant,
-consent or operation; long-path application support is deferred past v1. The
-[route evaluation](../verification/long-action-route.md#v1-decision) records
-the evidence. Action-only and native-discovery subjects, and the retained 1.0.0,
-repair 1.0.1 and future native discovery profiles, stay distinct. The signed
-application packages the action-only repair as workspace release/schema 1.0.1 and
-holds it to its own
-[profile](../design/profiles/core-desktop-workspace-repair-extension-host.json)
-([record](../verification/action-repair-release.md)). The retained 1.0.0 profile is
-independent evidence. New native profiles pin workspace 1.2.0/schema 1.1.0 and update 1.3.0/schema
-1.1.0, independently of action-only update 1.1.0/schema 1.0.1; none is accepted
-by a historical raw-search or action-only capture.
+<!-- tc: on -->
+
+The selected-action rows below use the [v1 long-location boundary](workspace-launch-and-open.md#long-location-action-boundary). The same `workspace:control` AND `desktop:control` operations resolve every selected location themselves. They refuse an extant location that is too long for the application hand-off of macOS, and they report `failed`. That refusal adds no capability, grant, consent or operation. Long-path application support is deferred past v1. The [route evaluation](../verification/long-action-route.md#v1-decision) records the evidence.
+
+Action-only and native-discovery subjects stay distinct. So do the retained 1.0.0, repair 1.0.1 and future native discovery profiles. The signed application packages the action-only repair as workspace release/schema 1.0.1 and holds it to its own [profile](../design/profiles/core-desktop-workspace-repair-extension-host.json) ([record](../verification/action-repair-release.md)). The retained 1.0.0 profile is independent evidence. New native profiles pin workspace 1.2.0/schema 1.1.0 and update 1.3.0/schema 1.1.0, independently of action-only update 1.1.0/schema 1.0.1. No historical raw-search or action-only capture accepts any of them.
+
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
 | Inventory row | Operation allocation / client step | Increment; acceptance |
 | --- | --- | --- |

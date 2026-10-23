@@ -1,5 +1,7 @@
 # Writing a Koine client
 
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
+
 This is the reading path for anyone writing a program that talks to Koine: a
 script, an LLM agent's tool, or an application with its own Machine client. The
 [contract](specs/machine.md) is authoritative and this guide never overrides it;
@@ -11,13 +13,11 @@ written from the contract alone had to guess
 Nothing here is specific to one client. A client that follows it needs no
 knowledge of Koine's source.
 
-This guide describes what a Koine serves today: the core, the bundled `desktop`
-provider and, beside it, the bundled `workspace` provider's launch, URL, path and
-reveal operations (["Launching an application"](#launching-an-application), ["Opening a URL"](#opening-a-url),
-["Opening a document or folder"](#opening-a-document-or-folder) and ["Revealing a path in Finder"](#revealing-a-path-in-finder)). The
-[workflow-provider design](specs/workflow-providers.md) names more workspace
-operations than are served yet; discover what a given Koine serves from its own
-introspection, never from the presence of an operation in a design document.
+<!-- tc: on -->
+
+This guide describes what a Koine serves today. Koine serves the core and the bundled `desktop` provider. Beside them, it serves the launch, URL, path and reveal operations of the bundled `workspace` provider (["Launching an application"](#launching-an-application), ["Opening a URL"](#opening-a-url), ["Opening a document or folder"](#opening-a-document-or-folder) and ["Revealing a path in Finder"](#revealing-a-path-in-finder)). The [workflow-provider design](specs/workflow-providers.md) names more workspace operations than Koine serves yet. Discover what a given Koine serves from its own introspection. Never infer it from an operation in a design document.
+
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
 ## Contract version
 
@@ -362,20 +362,15 @@ deadline reached as the action started, or a grant store Koine could not read.
 So a client reports every `failed` focus as "not confirmed", not as "did
 nothing".
 
+<!-- tc: on -->
+
 ## Searching for applications and files
 
-Raw filesystem search belongs to the client: choose its traversal engine,
-permissions, filtering, ordering and budgets. Koine's [native discovery design](specs/workspace-search.md)
-supplies special starting locations and named applications/System Settings
-catalogues on macOS 26+ Apple Silicon. **Designed, not served or native-accepted
-yet:** introspect the actual schema before using the
-[operations](design/workspace-search-operations.graphql). There is no generic
-predicate/root/query API or Koine raw-search fallback.
+Raw filesystem search belongs to the client. The client chooses its traversal engine, permissions, filtering, ordering and budgets. The [native discovery design](specs/workspace-search.md) supplies special locations and named catalogues of applications and System Settings on macOS 26+ Apple Silicon. **Designed, not served or native-accepted yet.** Introspect the actual schema before you use the [operations](design/workspace-search-operations.graphql). Koine has no generic predicate, root or query API and no raw-search fallback.
 
-Use workspaceSpecialLocations under workspace:read for HOME, Desktop, Documents,
-Downloads, Movies, Music, Pictures and application domains. Read its account UID
-and domain: these values belong to Koine's account. They grant no client access,
-contents listing or consent, and can name a nonexistent directory.
+Use workspaceSpecialLocations under workspace:read for HOME, Desktop, Documents, Downloads, Movies, Music, Pictures and the application domains. Read its account UID and its domain. These values belong to the account of Koine. They grant no client access, no listing of contents and no consent. They can name a nonexistent directory.
+
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
 Use workspaceApplications under workspace:read, then filter/rank on the client.
 Indexed metadata supplies breadth; running observations and per-identifier

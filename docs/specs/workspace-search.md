@@ -1,5 +1,7 @@
 # Native discovery and client-owned search
 
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
+
 **Designed; mandatory review, implementation and native acceptance pending.**
 The design includes application population admission and conditional cost arithmetic,
 bounded Settings full-response comparison with honest lazy-readiness uncertainty,
@@ -140,20 +142,19 @@ no icon, thumbnail, content, arbitrary plist, alias-file
 resolution or default document handler lookup is part of a read. The host's
 existing value/type/depth checks still reject malformed provider output.
 
+<!-- tc: on -->
+
 ## Special locations
 
-Use NSHomeDirectory for HOME and FileManager.urls(for:in:) for the other named
-pairs. Never a create-enabled URL lookup. Return all representable values for a
-requested pair with kind/domain, Koine account's UID as accountIdentifier,
-contentsAvailability UNKNOWN and FOUNDATION_LOCATIONS provenance. Domain and
-account describe Koine's user, not a remote client's user. Native value order is
-an observation, not ranking. Do not resolve, stat, list, create, follow links,
-read resources, mount, open bookmarks or inspect account/cloud containers merely
-to return a value. A nonexistent or inaccessible location can still be a valid
-starting value. Absent native values are UNKNOWN with NO_NATIVE_VALUE; they do
-not certify absence or a healthy empty filesystem. COMPLETE means every requested
-value lookup supplied checked values, never that any directory's contents were
-searched. Temporary/container/network/iCloud enumeration is outside this set.
+Use `NSHomeDirectory` for HOME. Use `FileManager.urls(for:in:)` for the other named pairs. Never use a lookup that can create a directory.
+
+For each requested pair, return all representable values. Give each value its kind and domain. Give the UID of the account of Koine as accountIdentifier. Set contentsAvailability to UNKNOWN and the source to FOUNDATION_LOCATIONS. The domain and the account describe the user of Koine, not the user of a remote client. The order of native values is an observation, not a ranking.
+
+To return a value, do none of these: resolve, stat, list, create, follow links, read resources, mount, open bookmarks, or inspect account and cloud containers. A nonexistent or inaccessible location can still be a valid starting value.
+
+An absent native value is UNKNOWN with NO_NATIVE_VALUE. It does not certify absence or a healthy empty filesystem. COMPLETE means that every requested value lookup supplied checked values. It never means that a search covered the contents of any directory. Enumeration of temporary, container, network and iCloud locations is outside this set.
+
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
 ## Application sources and native facts
 
