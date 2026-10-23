@@ -6,6 +6,8 @@ differ, this one governs and ModalAnyware's follows.
 
 ## Language
 
+<!-- tc: pending because this glossary has hundreds of findings; an entry converts when an edit touches it -->
+
 **Koine**: This project: the **Machine server**.
 _Avoid_: MachineWare
 
@@ -235,22 +237,15 @@ to that inode or prove current bundle contents; public metadataSource INDEXED_IT
 retains UNKNOWN installation state and null bundle flags. Native long-source
 qualification remains separate from disk construction and action refusal.
 
-**Explicit application metadata reader**: The ordinary BUNDLE_RESOURCE episode:
-a checked root resource-type observation at <=1,023 UTF-8 bytes followed by a
-closed fixed-file and direct-localization plan through held directories. It has
-no foreign Bundle/resource lookup or reconstructed descendant whole-path call.
-Typed facts, provenance, native races and qualification limits remain explicit.
-Its selected platform/plain information, strings and loctable semantics use
-131,072-byte regular files with individual affected-fact refusal. The useful finite
-certificate remains unestablished: the scoped conservative candidate exceeds its
-gate and full native operands/final wire stay conditional. The grouped linked-slab refinement still fails its controlled enclosure.
-The [selected qualification order](docs/adr/application-metadata-qualification-precedes-analytic-fit.md)
-permits guarded private qualification before analytic useful fit, after complete
-design, whole-producer review and earned integration. Advertisement/consumption
-remain held until full useful native operands, actual complete responses, required
-witnesses and independent serviceability qualify; required failed/refused/unknown
-or missing subjects keep the affected work live. A checked
-pathname/file plan alone is no useful-reader closure.
+<!-- tc: on -->
+
+**Explicit application metadata reader**: The ordinary BUNDLE_RESOURCE episode. It makes a checked root resource-type observation at 1,023 UTF-8 bytes or fewer. It then follows a closed plan of fixed files and direct localisations through held directories. It has no foreign Bundle or resource lookup and no reconstructed descendant whole-path call. Typed facts, provenance, native races and qualification limits remain explicit.
+
+Its selected platform, plain information, strings and loctable semantics use regular files of 131,072 bytes. A refusal affects only the fact that it concerns. The useful finite certificate remains unestablished. The scoped conservative candidate exceeds its gate, and the full native operands and final wire stay conditional. The grouped linked-slab refinement still fails its controlled enclosure.
+
+The [selected qualification order](docs/adr/application-metadata-qualification-precedes-analytic-fit.md) permits guarded private qualification before analytic useful fit. It requires complete design, whole-producer review and earned integration first. Advertisement and consumption remain held until four things qualify: full useful native operands, actual complete responses, required witnesses and independent serviceability. Required subjects that failed, were refused, are unknown or are missing keep the affected work live. A checked pathname and file plan alone is no useful-reader closure.
+
+<!-- tc: pending because this glossary has hundreds of findings; an entry converts when an edit touches it -->
 
 **Private application qualification**: The
 [guarded construction](docs/specs/application-metadata-private-qualification.md)

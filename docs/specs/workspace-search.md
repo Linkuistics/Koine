@@ -184,40 +184,25 @@ Evidence so far:
 - The N check and the V run on the signed bundle are pending. They belong to the discovery acceptance leaf.
 
 
-<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
-
 ## Application sources and native facts
 
-The breadth source is one NSMetadataQuery with the fixed application-bundle
-content-type-tree equality kMDItemContentTypeTree = com.apple.application-bundle
-and NSMetadataQueryIndexedLocalComputerScope. Read the fixed kMDItemPath,
-kMDItemContentTypeTree, kMDItemCFBundleIdentifier and kMDItemDisplayName projection
-from the same returned NSMetadataItem. Indexed type/name/identifier are reported
-source facts; none establishes bundle-directory identity. No other attribute,
-arbitrary item construction or client attribute selection is admitted.
-This fixed predicate's array/type semantics
-are qualified against real non-witness application bundles.
-No client predicate or explicit directory scope is accepted. Record INDEXED_APPS
-provenance; user exclusions, stale index state, unindexed volumes/system locations
-and even a remote home may affect this scope. Post-result pruning cannot undo
-source contact. The adapter must qualify that exact predicate/scope on signed
-supported subjects before it is accepted; it is not silently widened to
-LocalComputerScope. A finished gathering notification permits freezing returned
-observations, not proof that every application on disk was indexed or healthy.
+<!-- tc: depart synonym-rotation because "fixed" is the adjective of the term "fixed predicate", and "repair" in this document names another action -->
 
-Supplement with generic NSWorkspace.runningApplications (RUNNING_APPS), and
-error-bearing LSCopyApplicationURLsForBundleIdentifier expansion
-(REGISTRATION) for identifiers from admitted indexed/running observations plus
-the fixed system identifiers com.apple.Safari and com.apple.finder. These recover
-known system apps but never define the inventory; the twelve configured launchers
-are acceptance witnesses, not a hard-coded production seed list.
-Expand each distinct coherent seed identifier once, no recursive identifier cascade. Record
-every returned choice's actual source membership; a registration supplement is
-not falsely labelled indexed. Registration and preferred-location lookup are
-per-identifier facts, never an enumeration of all registrations. The deprecated
-but declared error-bearing API is chosen for meaningful checked negatives;
-if unsupported/unusable, diagnose and keep UNKNOWN, preserving unmet useful work.
-The source report cites its SDK/primary documentation.
+The breadth source is one NSMetadataQuery. Its predicate is the fixed equality kMDItemContentTypeTree = com.apple.application-bundle on the application-bundle content-type tree. Its scope is NSMetadataQueryIndexedLocalComputerScope.
+
+Read the fixed projection from the same returned NSMetadataItem. The projection is kMDItemPath, kMDItemContentTypeTree, kMDItemCFBundleIdentifier and kMDItemDisplayName. The indexed type, name and identifier are reported source facts. None of them establishes the identity of a bundle directory. No other attribute is admitted, and no client chooses an attribute or builds an item.
+
+The semantics of this fixed predicate for arrays and types are qualified against real non-witness application bundles. The query accepts no client predicate and no explicit directory scope. Record INDEXED_APPS provenance. User exclusions, stale index state, unindexed volumes, unindexed system locations and even a remote home may affect this scope. Pruning after the result cannot undo contact with the source.
+
+The adapter must qualify this exact predicate and scope on signed supported subjects before it is accepted. Nothing widens it silently to LocalComputerScope. A finished gathering notification permits freezing the returned observations. It is no proof that the index holds every application on disk or that the index is healthy.
+
+Supplement the index with generic NSWorkspace.runningApplications (RUNNING_APPS). Supplement it also with the error-bearing LSCopyApplicationURLsForBundleIdentifier expansion (REGISTRATION). The expansion takes its identifiers from the admitted indexed and running observations, plus the fixed system identifiers com.apple.Safari and com.apple.finder. These supplements recover known system applications. They never define the inventory. The twelve configured launchers are acceptance witnesses, not a hard-coded production seed list.
+
+Expand each distinct coherent seed identifier once, with no recursive identifier cascade. Record the actual source membership of every returned choice. A registration supplement is not labelled indexed. Registration and preferred-location lookups are per-identifier facts. They are never an enumeration of all registrations.
+
+The design chooses the deprecated but declared error-bearing API because it gives meaningful checked negatives. If the API is unsupported or unusable, diagnose that and keep UNKNOWN, which preserves the unmet useful work. The source report cites its SDK and primary documentation.
+
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
 ### Application population admission
 
@@ -1271,23 +1256,17 @@ G/N/V subjects and every native verdict remain pending here. Frozen SDL/example,
 link and browser/render checks supply design verification only; source declaration
 availability and mocked outcomes are no native pass.
 
+<!-- tc: on -->
+
 ## Grouped refinement and retained hold
 
-The [grouped inventory/key refinement](../verification/application-metadata-grouped-storage.md) replaces complete retained key
-partitions with independent linked-slab owners, while preserving the selected
-reader semantics, scoped gates, every saved association and the full wire. Its
-controlled local/source/two-walk enclosure still exceeds 20 MiB before other
-terms; it establishes no useful fit or native pass. Earlier independent-block
-numbers remain reproducible comparison. The amended private design boundary is complete; whole-producer review and the
-advertisement/consumption holds remain. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md) selects ordering only.
-Private construction requires the complete [eligibility conjunction](application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence);
-that predicate, rather than an abbreviated ordering summary, governs builds. Advertisement/downstream consumption remain held until full useful
-native operands, actual complete selected responses, required witnesses and
-independent serviceability qualify. Failed/refused/unknown required useful cases
-and unavailable subjects keep those holds and affected acceptance work live.
-Existing whole-producer review, all native G/N/V, actual full operands/response,
-useful breadth and independent authority/action/Settings/disclosure/compatibility
-duties remain. No repeated strict/scoped selection or new capture leaf follows.
+The [grouped inventory/key refinement](../verification/application-metadata-grouped-storage.md) replaces complete retained key partitions with independent linked-slab owners. It preserves the selected reader semantics, the scoped gates, every saved association and the full wire. Its controlled local, source and two-walk enclosure still exceeds 20 MiB before other terms. It establishes no useful fit and no native pass. The earlier independent-block numbers remain a reproducible comparison.
+
+The amended private design boundary is complete. Whole-producer review and the advertisement and consumption holds remain. The [selected qualification order](../adr/application-metadata-qualification-precedes-analytic-fit.md) selects ordering only. Private construction requires the complete [eligibility conjunction](application-metadata-private-qualification.md#eligibility-and-existing-qualification-sequence). That predicate governs builds, not an abbreviated ordering summary.
+
+Advertisement and downstream consumption remain held until four things qualify: full useful native operands, actual complete selected responses, required witnesses and independent serviceability. Failed, refused or unknown required useful cases keep those holds and the affected acceptance work live. Unavailable subjects do the same. Existing whole-producer review, all native G, N and V subjects, the actual full operands and response, and the useful breadth remain duties. So do the independent authority, action, Settings, disclosure and compatibility duties. No repeated strict or scoped selection and no new capture leaf follows.
+
+<!-- tc: pending because this section has not been converted; it converts when an edit touches it -->
 
 ## Population evidence boundary
 
