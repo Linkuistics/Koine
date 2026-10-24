@@ -64,7 +64,7 @@ import Testing
         let fields = try #require(await Self.query(provider))
         #expect(
             Self.coverage(fields) == [
-                "source": .string("INDEXED_APPS"), "declaredDomain": .string("indexed local computer applications"),
+                "source": .string("INDEXED_APPS"), "declaredDomain": .string("indexed applications"),
                 "availability": .string("AVAILABLE"), "observations": .string("COMPLETE"),
                 "category": .string("UNKNOWN"), "examined": .int(1), "diagnostics": .list([]),
             ])

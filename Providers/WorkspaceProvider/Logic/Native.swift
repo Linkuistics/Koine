@@ -155,7 +155,7 @@ protocol WorkspaceNative: Sendable {
     func specialLocationValues(_ pair: LocationPair) -> [String]
 
     /// Runs the one fixed index query of the search spec ("Application sources and native facts"): the
-    /// application-bundle content-type-tree equality over the indexed local computer scope, with its four-attribute
+    /// application-bundle content-type-tree equality with no search scope set, with its four-attribute
     /// projection read from each returned item. It waits at most `wait` for the initial gathering, stops the query
     /// before it returns, and copies no item when the gathering holds more than `limit`. It reads nothing but the
     /// index: it registers, launches, resolves and inspects no application. Blocks the calling thread.

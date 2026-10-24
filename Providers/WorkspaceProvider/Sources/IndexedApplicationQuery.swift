@@ -1,7 +1,7 @@
 import Foundation
 
 /// One run of the fixed application query over the Spotlight index: the application-bundle content-type-tree
-/// equality, the indexed local computer scope and the four-attribute projection of the search spec
+/// equality, no search scope and the four-attribute projection of the search spec
 /// ("Application sources and native facts"). The query lives on a private serial operation queue and nowhere
 /// else. The SDK says `startQuery` "must be called from the receiver's operationQueue or on the main thread"
 /// (NSMetadata.h, Foundation, macOS SDK), and a pool thread has no run loop to deliver notifications to.
@@ -21,7 +21,10 @@ final class IndexedApplicationQuery: @unchecked Sendable {
         operations.name = "dev.antony.Koine.provider.workspace.index"
         operations.maxConcurrentOperationCount = 1
         query.predicate = NSPredicate(format: "kMDItemContentTypeTree == %@", "com.apple.application-bundle")
-        query.searchScopes = [NSMetadataQueryIndexedLocalComputerScope]
+        // No scope is set, and the SDK says that then "the receiver has no limitation on its search scope"
+        // (NSMetadata.h, Foundation, macOS SDK). Under NSMetadataQueryIndexedLocalComputerScope, the first run
+        // in a fresh guest finished its gathering with no items and received the 327 bundles about 75 seconds
+        // later by updates. With no scope, all 327 arrived at the finish (docs/verification/discovery-vm.md).
         query.operationQueue = operations
     }
 

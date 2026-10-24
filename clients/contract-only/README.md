@@ -27,9 +27,11 @@ its independence from the repository is not claimed.
 
 `capture/` holds the response of the signed Koine.app that serves core, desktop and workspace. The workspace part is the complete design of that release. It has the four action roots `workspaceLaunchApplication`, `workspaceOpenURL`, `workspaceOpenPath` and `workspaceRevealPath`. It also has the types that those roots reach. They are `WorkspaceApplicationInput`, `WorkspaceOpenResult`, `WorkspaceRevealResult`, `WorkspaceOperationStatus`, `WorkspaceOpenReceipt`, `WorkspaceRevealReceipt`, `WorkspaceProcessIdentity`, `WorkspaceDependencyUnavailable` and `WorkspaceDependencyReason`.
 
-Workspace release and schema 1.0.1 served this capture. It is the action-only long-location repair. It has the same shapes, error kinds and enums as 1.0.0, and the three action descriptions are longer.
+Workspace release and schema 1.0.2 served this capture. It adds the first cut of native discovery to the 1.0.1 repair. The roots are `workspaceSpecialLocations` and `workspaceApplications`. The 1.0.1 repair kept the shapes, error kinds and enums of 1.0.0, and the three action descriptions were longer.
 
-The contract is `koine-desktop/1`. The schema digest is `0a489328533ad17dcb54f2a81e1828588bfebd203da32cac11da57752e91f8d2`. The retained 1.0.0 served `3bab3a0457329647e795ab04bdd52580d43e35841f0179aea1b83f9eb222a733`. A client that pins the digest therefore sees the repair.
+The contract is `koine-desktop/1`. The schema digest is `7534c4f66f38a1cdd9dc536ca22f96b872025300b6838e7ec99daaf0d4570501`. The released 1.0.1 served `0a489328533ad17dcb54f2a81e1828588bfebd203da32cac11da57752e91f8d2`. The retained 1.0.0 served `3bab3a0457329647e795ab04bdd52580d43e35841f0179aea1b83f9eb222a733`. A client that pins the digest therefore sees each release.
+
+The commands `locations` and `applications` read the two discovery roots. Both need `workspace:read` and nothing else. See "Locations and applications" below.
 
 The client builds to one ES module with no dependency, `dist/koine-client.mjs`. The module runs on macOS arm64 under Node 24 with nothing installed beside it.
 
@@ -107,6 +109,8 @@ Every result carries `command`, `ok`, `classification`, `endpoint`, `http`,
 | `reveal-path --secret <p> (--path <text> \| --path-file <file>)` | `RevealPath` with the path as a literal variable, byte-for-byte, sent **once**; same two controls. See "Reveal path" below. |
 | `open-path --secret <p> (--path <text> \| --path-file <file>) [--bundle-identifier <id>] [--application-path <absolute path>]` | `OpenDocumentOrDirectory` with the path as a literal variable, byte-for-byte, sent **once**; same two controls. See "Open path" below. |
 | `search --secret <p> --query <text> [--engine-template <url with one %s>] [--suggestions-url <url with one %s>]` | The client-owned search flow: optionally ask a suggestion source, then build the typed-query URL and open it with `OpenSearchURL`, once. See "Search" below. |
+| `locations --secret <p> [--kind <k> --domain <d>]` | `NativeStartingLocations`: the special locations that Foundation gives, with their sources and coverage. With no option it asks for the ten default pairs. A kind and a domain together ask for one pair. Needs `workspace:read`. See "Locations and applications" below. |
+| `applications --secret <p>` | `NativeApplications`: the applications that the Spotlight index lists, with path, name, bundle identifier and source `INDEXED_APPS`. Needs `workspace:read`. See "Locations and applications" below. |
 
 Any `--name value` may also be written `--name=value`; that is the only way to give
 a value that itself begins with `--` (a query, or a URL under test).
@@ -279,6 +283,14 @@ Koine), and a suggestion source that redirects is not followed. The output is th
 
 A template without exactly one `%s`, or a missing `--query`, is a usage error and
 nothing is sent.
+
+### Locations and applications
+
+Both commands send one query, once, and never replay it. The answer is one JSON line, as for every command. A client reads `status`, `items`, `sources` and `resultsTruncated`. A null `items` stays null, and it is never an empty list.
+
+The field `items` is null when the status is `UNKNOWN` or `FAILED`. An empty index answer is `UNKNOWN`, so it is never an empty inventory. The field `sources` carries the coverage with its diagnostics. The adapter reports a broken contract rule as `failed`. Examples are a null root with no error, an unknown status and an available result with null items.
+
+A grant without `workspace:read` receives `capability-denied`. The denial names `workspace:read` in `requiredCapability` and has the phase `execution`. The HTTP status is 200, because the refusal is per field and `items` is null. The command `locations` accepts a kind and a domain only together, and it reports `request-error` otherwise.
 
 ### Repeat safety
 

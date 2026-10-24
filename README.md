@@ -610,7 +610,9 @@ before and after, and writes `results.json` beside the trees.
 
 <!-- tc: on -->
 
-The workspace has pairs of its own ([record](docs/verification/workspace-compatibility.md)). The retained 1.0.0 bundle (`task compat:workspace-baseline`) and this tree's 1.0.1 bundle each run under both hosts. The same 1.0.1 source runs again with `first-party-selection-v1` stated and approved per user, over the bundled 1.0.0. The same locations are probed through every pair, and the two releases are compared. The task `task compat:workspace-subjects` runs the retained revision's own short-path suites, unedited, against the 1.0.1 bundle.
+The workspace has pairs of its own ([record](docs/verification/workspace-compatibility.md)). Three releases take part. They are the retained 1.0.0 bundle (`task compat:workspace-baseline`), the 1.0.1 bundle that Koine 0.3.0 shipped (`task compat:workspace-release`) and this tree's 1.0.2 bundle. The 1.0.2 bundle requires `workspace-native-disclosures-v1`. The new host loads it. The retained host and the released 0.3.0 host refuse it before they load it, and they name the missing feature.
+
+The same 1.0.2 source runs again with `first-party-selection-v1` stated and approved per user, over the bundled 1.0.0. The same locations are probed through every pair, and the releases are compared. The task `task compat:workspace-subjects` runs the retained revision's own short-path suites, unedited, against the released 1.0.1 bundle.
 
 <!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 

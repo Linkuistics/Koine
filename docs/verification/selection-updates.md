@@ -1,5 +1,7 @@
 # First-party selection: independent updates across binary generations
 
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
+
 The update rows of "Selection acceptance" in
 [the Machine spec](../specs/machine.md#selection-acceptance), at the two seams that node assigns
 them: **N**, the native loader with real independently built binaries in a fresh signed host
@@ -320,6 +322,20 @@ its 153 host runs, each on exactly the workspace row or the profile (for example
 served where `'1.0.0'` was wanted), and the same run with the pins changed passes all 153. The scenarios that
 use only fixtures, `selection:decisions` and `selection:failures`, assume no real release and are unchanged.
 
+<!-- tc: on -->
+
+### Re-pinned to workspace 1.0.2
+
+Workspace 1.0.2 adds native discovery and requires `workspace-native-disclosures-v1`. The acceptance pinned this tree's workspace at 1.0.1 before. Every row that names the real workspace now names 1.0.2, so that no row passes on the old value.
+
+The four update profiles moved to the discovery design and to workspace 1.0.2. They are `desktop-update`, `workspace-update`, `update` and `update-refused`. The generation before any update is now held to `core-desktop-workspace-discovery-extension-host`. In `scripts/verify-selection-updates.py`, the rows `w_base` and `w_sup` moved to 1.0.2. So did the impostor refusal that `production` expects and the two rows that claim release 1.1.0.
+
+The control in `scripts/selection_harness.py` moves each workspace row pinned at 1.0.2 to 1.0.0. The discovery design joined the list of other designs that must turn the check red. The impostor-host fixture keeps its release 1.0.1, because it is a fixture and not the current workspace.
+
+The released 1.0.1 bundle stays under its own profiles in [the compatibility record](workspace-compatibility.md). The 1.0.2 bundle cannot be the subject of the repair tests, so those tests use the released bundle.
+
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
+
 ## Instruments seen red
 
 `task selection:mutation` breaks one decision at a time in a copy of the tree
@@ -396,6 +412,19 @@ approval record is compared by inode and time as well as bytes; the inventory as
 a released-host run credits a control only when its own checks held. Accepted and documented: the real updates
 cannot be told from their baselines by behaviour, and the `…-no-feature` real bundles keep the production signing
 identifier (Observations).
+
+<!-- tc: on -->
+
+### Run of 2026-10-27, workspace 1.0.2
+
+The run used debug builds on macOS 27.0.1, arm64, after the rows moved to workspace 1.0.2. The search scope of the index query changed before this run.
+
+- `task selection:updates` ran 153 host runs. None failed, none lacked a control, and no owned reason went unseen.
+- `task selection:decisions` ran 134 host runs and `task selection:failures` ran 119. None failed in either task.
+- `task selection:mutation` saw every mutation. Each instrument came back red against a loader with one decision broken.
+- The `PENDING` lines are the same as before. A bundle from a second real Developer ID team, and the alternate-team host, need a second certificate.
+
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
 ## Observations
 

@@ -1,0 +1,482 @@
+{
+  "guest": "27.0.1 (26A434)",
+  "schemaDigest": "7534c4f66f38a1cdd9dc536ca22f96b872025300b6838e7ec99daaf0d4570501",
+  "index": {
+    "mdutil": "/: \tIndex is read-only.",
+    "applicationBundles": 327,
+    "present": {
+      "com.apple.Safari": [
+        "/Applications/Safari.app"
+      ],
+      "com.apple.finder": [
+        "/System/Library/CoreServices/Finder.app"
+      ],
+      "company.thebrowser.dia": [
+        "/Applications/Dia.app"
+      ],
+      "com.openai.codex": [
+        "/Applications/ChatGPT.app"
+      ],
+      "com.anthropic.claudefordesktop": [
+        "/Applications/Claude.app"
+      ],
+      "dev.zed.Zed": [
+        "/Applications/Zed.app"
+      ],
+      "com.microsoft.VSCode": [
+        "/Applications/Visual Studio Code.app"
+      ],
+      "com.p5sys.jump.mac.viewer.web": [
+        "/Applications/Jump Desktop.app"
+      ],
+      "com.moonshot.kimichat": [
+        "/Applications/Kimi.app"
+      ],
+      "com.googlecode.iterm2": [
+        "/Applications/iTerm.app"
+      ],
+      "com.apple.mail": [
+        "/System/Applications/Mail.app"
+      ],
+      "com.apple.Notes": [
+        "/System/Applications/Notes.app"
+      ],
+      "md.obsidian": [
+        "/Applications/Obsidian.app"
+      ],
+      "org.zotero.zotero": [
+        "/Applications/Zotero.app"
+      ]
+    },
+    "samples": [
+      {
+        "atSeconds": 1,
+        "applicationBundles": 327
+      },
+      {
+        "atSeconds": 21,
+        "applicationBundles": 327
+      },
+      {
+        "atSeconds": 41,
+        "applicationBundles": 327
+      },
+      {
+        "atSeconds": 62,
+        "applicationBundles": 327
+      }
+    ],
+    "settled": true
+  },
+  "locations": [
+    {
+      "pair": "HOME/USER",
+      "found": 1,
+      "location": "/Users/admin",
+      "sources": [
+        "FOUNDATION_LOCATIONS"
+      ]
+    },
+    {
+      "pair": "DESKTOP/USER",
+      "found": 1,
+      "location": "/Users/admin/Desktop",
+      "sources": [
+        "FOUNDATION_LOCATIONS"
+      ]
+    },
+    {
+      "pair": "DOCUMENTS/USER",
+      "found": 1,
+      "location": "/Users/admin/Documents",
+      "sources": [
+        "FOUNDATION_LOCATIONS"
+      ]
+    },
+    {
+      "pair": "DOWNLOADS/USER",
+      "found": 1,
+      "location": "/Users/admin/Downloads",
+      "sources": [
+        "FOUNDATION_LOCATIONS"
+      ]
+    },
+    {
+      "pair": "MOVIES/USER",
+      "found": 1,
+      "location": "/Users/admin/Movies",
+      "sources": [
+        "FOUNDATION_LOCATIONS"
+      ]
+    },
+    {
+      "pair": "MUSIC/USER",
+      "found": 1,
+      "location": "/Users/admin/Music",
+      "sources": [
+        "FOUNDATION_LOCATIONS"
+      ]
+    },
+    {
+      "pair": "PICTURES/USER",
+      "found": 1,
+      "location": "/Users/admin/Pictures",
+      "sources": [
+        "FOUNDATION_LOCATIONS"
+      ]
+    },
+    {
+      "pair": "APPLICATIONS/USER",
+      "found": 1,
+      "location": "/Users/admin/Applications",
+      "sources": [
+        "FOUNDATION_LOCATIONS"
+      ]
+    },
+    {
+      "pair": "APPLICATIONS/LOCAL",
+      "found": 1,
+      "location": "/Applications",
+      "sources": [
+        "FOUNDATION_LOCATIONS"
+      ]
+    },
+    {
+      "pair": "APPLICATIONS/SYSTEM",
+      "found": 2,
+      "location": "/System/Applications",
+      "sources": [
+        "FOUNDATION_LOCATIONS"
+      ]
+    }
+  ],
+  "catalogue": {
+    "status": "AVAILABLE",
+    "resultsTruncated": false,
+    "sources": [
+      {
+        "source": "INDEXED_APPS",
+        "declaredDomain": "indexed applications",
+        "availability": "AVAILABLE",
+        "observations": "COMPLETE",
+        "category": "UNKNOWN",
+        "examined": 327,
+        "diagnostics": []
+      }
+    ],
+    "count": 327,
+    "byApplication": [
+      {
+        "name": "Safari",
+        "bundleIdentifier": "com.apple.Safari",
+        "expectedPath": null,
+        "indexedBefore": [
+          "/Applications/Safari.app"
+        ],
+        "catalogue": [
+          {
+            "applicationPath": "/Applications/Safari.app",
+            "name": "Safari",
+            "sources": [
+              "INDEXED_APPS"
+            ]
+          }
+        ],
+        "listed": true,
+        "pathMatches": null
+      },
+      {
+        "name": "Finder",
+        "bundleIdentifier": "com.apple.finder",
+        "expectedPath": null,
+        "indexedBefore": [
+          "/System/Library/CoreServices/Finder.app"
+        ],
+        "catalogue": [
+          {
+            "applicationPath": "/System/Library/CoreServices/Finder.app",
+            "name": "Finder",
+            "sources": [
+              "INDEXED_APPS"
+            ]
+          }
+        ],
+        "listed": true,
+        "pathMatches": null
+      },
+      {
+        "name": "Dia",
+        "bundleIdentifier": "company.thebrowser.dia",
+        "expectedPath": "/Applications/Dia.app",
+        "indexedBefore": [
+          "/Applications/Dia.app"
+        ],
+        "catalogue": [
+          {
+            "applicationPath": "/Applications/Dia.app",
+            "name": "Dia",
+            "sources": [
+              "INDEXED_APPS"
+            ]
+          }
+        ],
+        "listed": true,
+        "pathMatches": true
+      },
+      {
+        "name": "ChatGPT",
+        "bundleIdentifier": "com.openai.codex",
+        "expectedPath": "/Applications/ChatGPT.app",
+        "indexedBefore": [
+          "/Applications/ChatGPT.app"
+        ],
+        "catalogue": [
+          {
+            "applicationPath": "/Applications/ChatGPT.app",
+            "name": "ChatGPT",
+            "sources": [
+              "INDEXED_APPS"
+            ]
+          }
+        ],
+        "listed": true,
+        "pathMatches": true
+      },
+      {
+        "name": "Claude",
+        "bundleIdentifier": "com.anthropic.claudefordesktop",
+        "expectedPath": "/Applications/Claude.app",
+        "indexedBefore": [
+          "/Applications/Claude.app"
+        ],
+        "catalogue": [
+          {
+            "applicationPath": "/Applications/Claude.app",
+            "name": "Claude",
+            "sources": [
+              "INDEXED_APPS"
+            ]
+          }
+        ],
+        "listed": true,
+        "pathMatches": true
+      },
+      {
+        "name": "Zed",
+        "bundleIdentifier": "dev.zed.Zed",
+        "expectedPath": "/Applications/Zed.app",
+        "indexedBefore": [
+          "/Applications/Zed.app"
+        ],
+        "catalogue": [
+          {
+            "applicationPath": "/Applications/Zed.app",
+            "name": "Zed",
+            "sources": [
+              "INDEXED_APPS"
+            ]
+          }
+        ],
+        "listed": true,
+        "pathMatches": true
+      },
+      {
+        "name": "Visual Studio Code",
+        "bundleIdentifier": "com.microsoft.VSCode",
+        "expectedPath": "/Applications/Visual Studio Code.app",
+        "indexedBefore": [
+          "/Applications/Visual Studio Code.app"
+        ],
+        "catalogue": [
+          {
+            "applicationPath": "/Applications/Visual Studio Code.app",
+            "name": "Visual Studio Code",
+            "sources": [
+              "INDEXED_APPS"
+            ]
+          }
+        ],
+        "listed": true,
+        "pathMatches": true
+      },
+      {
+        "name": "Jump Desktop",
+        "bundleIdentifier": "com.p5sys.jump.mac.viewer.web",
+        "expectedPath": "/Applications/Jump Desktop.app",
+        "indexedBefore": [
+          "/Applications/Jump Desktop.app"
+        ],
+        "catalogue": [
+          {
+            "applicationPath": "/Applications/Jump Desktop.app",
+            "name": "Jump Desktop",
+            "sources": [
+              "INDEXED_APPS"
+            ]
+          }
+        ],
+        "listed": true,
+        "pathMatches": true
+      },
+      {
+        "name": "Kimi",
+        "bundleIdentifier": "com.moonshot.kimichat",
+        "expectedPath": "/Applications/Kimi.app",
+        "indexedBefore": [
+          "/Applications/Kimi.app"
+        ],
+        "catalogue": [
+          {
+            "applicationPath": "/Applications/Kimi.app",
+            "name": "Kimi",
+            "sources": [
+              "INDEXED_APPS"
+            ]
+          }
+        ],
+        "listed": true,
+        "pathMatches": true
+      },
+      {
+        "name": "iTerm",
+        "bundleIdentifier": "com.googlecode.iterm2",
+        "expectedPath": "/Applications/iTerm.app",
+        "indexedBefore": [
+          "/Applications/iTerm.app"
+        ],
+        "catalogue": [
+          {
+            "applicationPath": "/Applications/iTerm.app",
+            "name": "iTerm",
+            "sources": [
+              "INDEXED_APPS"
+            ]
+          }
+        ],
+        "listed": true,
+        "pathMatches": true
+      },
+      {
+        "name": "Mail",
+        "bundleIdentifier": "com.apple.mail",
+        "expectedPath": "/System/Applications/Mail.app",
+        "indexedBefore": [
+          "/System/Applications/Mail.app"
+        ],
+        "catalogue": [
+          {
+            "applicationPath": "/System/Applications/Mail.app",
+            "name": "Mail",
+            "sources": [
+              "INDEXED_APPS"
+            ]
+          }
+        ],
+        "listed": true,
+        "pathMatches": true
+      },
+      {
+        "name": "Notes",
+        "bundleIdentifier": "com.apple.Notes",
+        "expectedPath": "/System/Applications/Notes.app",
+        "indexedBefore": [
+          "/System/Applications/Notes.app"
+        ],
+        "catalogue": [
+          {
+            "applicationPath": "/System/Applications/Notes.app",
+            "name": "Notes",
+            "sources": [
+              "INDEXED_APPS"
+            ]
+          }
+        ],
+        "listed": true,
+        "pathMatches": true
+      },
+      {
+        "name": "Obsidian",
+        "bundleIdentifier": "md.obsidian",
+        "expectedPath": "/Applications/Obsidian.app",
+        "indexedBefore": [
+          "/Applications/Obsidian.app"
+        ],
+        "catalogue": [
+          {
+            "applicationPath": "/Applications/Obsidian.app",
+            "name": "Obsidian",
+            "sources": [
+              "INDEXED_APPS"
+            ]
+          }
+        ],
+        "listed": true,
+        "pathMatches": true
+      },
+      {
+        "name": "Zotero",
+        "bundleIdentifier": "org.zotero.zotero",
+        "expectedPath": "/Applications/Zotero.app",
+        "indexedBefore": [
+          "/Applications/Zotero.app"
+        ],
+        "catalogue": [
+          {
+            "applicationPath": "/Applications/Zotero.app",
+            "name": "Zotero",
+            "sources": [
+              "INDEXED_APPS"
+            ]
+          }
+        ],
+        "listed": true,
+        "pathMatches": true
+      }
+    ]
+  },
+  "launch": {
+    "catalogueEntry": {
+      "name": "Notes",
+      "applicationPath": "/System/Applications/Notes.app",
+      "bundleIdentifier": "com.apple.Notes",
+      "sources": [
+        "INDEXED_APPS"
+      ]
+    },
+    "receipt": {
+      "pid": 1439,
+      "startedAt": "2026-10-27T05:57:43.534693Z"
+    },
+    "kernel": {
+      "pid": 1439,
+      "startedAt": "2026-10-27T05:57:43.534693Z"
+    },
+    "receiptIsKernelIdentity": true,
+    "answerMs": 247,
+    "activationMs": 269
+  },
+  "dialogsAfterEachRead": [
+    {
+      "read": "refused reads",
+      "dialogs": "",
+      "words": ""
+    },
+    {
+      "read": "special-locations read",
+      "dialogs": "",
+      "words": ""
+    },
+    {
+      "read": "application-catalogue read",
+      "dialogs": "",
+      "words": ""
+    },
+    {
+      "read": "launch",
+      "dialogs": "",
+      "words": ""
+    }
+  ],
+  "missingSpecial": [],
+  "failures": []
+}

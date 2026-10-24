@@ -1,0 +1,141 @@
+node-v24.21.0-darwin-arm64.tar.xz: 6239d4cf92d864487ec8cd3615038f7b67e7f58b77b21cd2f09ea9fbd68065fe matches its published digest
+
+== Start a clean VM (koine-verify-56449)
+Setting guest display resolution to 1920x1080 px...
+  set-display-mode: switched main display to 1920x1080 pt @ 1x (1920x1080 px, modeID 10)
+ProductName:		macOS
+ProductVersion:		27.0.1
+BuildVersion:		26A434
+arm64
+Gatekeeper: assessments enabled
+
+== Install the signed bundle (ditto zip, testanyware file upload, ditto -x)
+Quarantine attribute: xattr: /Applications/Koine.app: No such xattr: com.apple.quarantine
+--prepared:/Applications/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+--prepared:/Applications/Koine.app/Contents/PlugIns/Desktop.koineprovider
+--prepared:/Applications/Koine.app/Contents/PlugIns/Workspace.koineprovider
+--validated:/Applications/Koine.app/Contents/PlugIns/Desktop.koineprovider
+--validated:/Applications/Koine.app/Contents/PlugIns/Workspace.koineprovider
+--validated:/Applications/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+/Applications/Koine.app: valid on disk
+/Applications/Koine.app: satisfies its Designated Requirement
+Identifier=dev.antony.Koine
+CodeDirectory v=20500 size=37148 flags=0x10000(runtime) hashes=1150+7 location=embedded
+Authority=Developer ID Application: Antony Blakey (TA43A4RUP3)
+Authority=Developer ID Certification Authority
+TeamIdentifier=TA43A4RUP3
+/Applications/Koine.app: rejected
+source=Unnotarized Developer ID
+origin=Developer ID Application: Antony Blakey (TA43A4RUP3)
+(spctl assessment did not accept the bundle; recorded, not a failure of this stage)
+
+== Carry the client, the Node runtime it needs, the witness and the index probe into the guest
+v24.21.0
+Guest: 27.0.1 26A434; Gatekeeper: assessments enabled
+Held to com.apple.Safari com.apple.finder company.thebrowser.dia com.openai.codex com.anthropic.claudefordesktop dev.zed.Zed com.microsoft.VSCode com.p5sys.jump.mac.viewer.web com.moonshot.kimichat com.googlecode.iterm2 com.apple.mail com.apple.Notes md.obsidian org.zotero.zotero 
+
+== The index state, read by the guest's own Spotlight before Koine reads anything
+Index at 1s: /: 	Indexing enabled.; 327 application bundles
+Index at 21s: /: 	Index is read-only.; 327 application bundles
+Index at 41s: /: 	Index is read-only.; 327 application bundles
+Index at 62s: /: 	Index is read-only.; 327 application bundles
+  com.apple.Safari: /Applications/Safari.app
+  com.apple.finder: /System/Library/CoreServices/Finder.app
+  company.thebrowser.dia: /Applications/Dia.app
+  com.openai.codex: /Applications/ChatGPT.app
+  com.anthropic.claudefordesktop: /Applications/Claude.app
+  dev.zed.Zed: /Applications/Zed.app
+  com.microsoft.VSCode: /Applications/Visual Studio Code.app
+  com.p5sys.jump.mac.viewer.web: /Applications/Jump Desktop.app
+  com.moonshot.kimichat: /Applications/Kimi.app
+  com.googlecode.iterm2: /Applications/iTerm.app
+  com.apple.mail: /System/Applications/Mail.app
+  com.apple.Notes: /System/Applications/Notes.app
+  md.obsidian: /Applications/Obsidian.app
+  org.zotero.zotero: /Applications/Zotero.app
+Settled: 1; bundles in the index when it was read: 327
+
+== Launch Koine; the client finds the endpoint from the descriptor alone
+{"command":"probe","ok":true,"classification":"ok","descriptor":{"path":"/Users/admin/Library/Application Support/Koine/endpoint.json","present":true,"mode":"600","descriptorVersion":1,"instanceId":"9792d187-1569-48a5-8515-20da3fe854c0","pid":922,"port":49152,"graphqlPath":"/graphql","contractVersion":"koine-desktop/1","url":"http://127.0.0.1:49152/graphql"},"serviceReachable":true,"probeClassification":"unauthenticated","authenticationDemanded":true,"endpoint":{"url":"http://127.0.0.1:49152/graphql","instanceId":"9792d187-1569-48a5-8515-20da3fe854c0"},"http":{"status":401,"contentType":null,"cacheControl":"no-store","retryAfterSeconds":null},"response":null,"errors":[],"transport":null,"outcomeUnknown":false}
+
+== The client enrols two grants itself, and the user approves each in the window
+{"command":"enrol","ok":true,"classification":"ok","credential":{"path":"/Users/admin/koine-secret-read","mode":"600","created":true},"label":"discovery-client-read","requestedCapabilities":["workspace:read"],"requestId":"439c9564-d421-419d-b582-aa4bc70768e2","comparisonCode":"PDDN-E43V","endpoint":{"url":"http://127.0.0.1:49152/graphql","instanceId":"9792d187-1569-48a5-8515-20da3fe854c0"},"http":{"status":200,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"data":{"koineRequestGrant":{"requestId":"439c9564-d421-419d-b582-aa4bc70768e2","comparisonCode":"PDDN-E43V"}}},"errors":[],"transport":null,"outcomeUnknown":false}
+{"command":"poll","ok":true,"classification":"ok","credential":{"path":"/Users/admin/koine-secret-read","mode":"600","created":false},"requestState":"PENDING","grant":null,"endpoint":{"url":"http://127.0.0.1:49152/graphql","instanceId":"9792d187-1569-48a5-8515-20da3fe854c0"},"http":{"status":200,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"data":{"koineGrantRequest":{"state":"PENDING","grant":null}}},"errors":[],"transport":null,"outcomeUnknown":false}
+Window shows: label discovery-client-read  code PDDN-E43V
+{"command":"poll","ok":true,"classification":"ok","credential":{"path":"/Users/admin/koine-secret-read","mode":"600","created":false},"requestState":"APPROVED","grant":{"grantId":"05258366-0ddf-4a85-aa7d-5c3fa9601248","capabilities":["workspace:read"],"state":"ACTIVE"},"endpoint":{"url":"http://127.0.0.1:49152/graphql","instanceId":"9792d187-1569-48a5-8515-20da3fe854c0"},"http":{"status":200,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"data":{"koineGrantRequest":{"state":"APPROVED","grant":{"grantId":"05258366-0ddf-4a85-aa7d-5c3fa9601248","capabilities":["workspace:read"],"state":"ACTIVE"}}}},"errors":[],"transport":null,"outcomeUnknown":false}
+Approved: request 439c9564-d421-419d-b582-aa4bc70768e2, comparison code PDDN-E43V, capabilities ["workspace:read"]
+{"command":"enrol","ok":true,"classification":"ok","credential":{"path":"/Users/admin/koine-secret-both","mode":"600","created":false},"label":"discovery-client-control","requestedCapabilities":["workspace:control","desktop:control"],"requestId":"df6c07ac-ac44-4858-96f9-5f284209fe91","comparisonCode":"X3B4-BQFS","endpoint":{"url":"http://127.0.0.1:49152/graphql","instanceId":"9792d187-1569-48a5-8515-20da3fe854c0"},"http":{"status":200,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"data":{"koineRequestGrant":{"requestId":"df6c07ac-ac44-4858-96f9-5f284209fe91","comparisonCode":"X3B4-BQFS"}}},"errors":[],"transport":null,"outcomeUnknown":false}
+{"command":"poll","ok":true,"classification":"ok","credential":{"path":"/Users/admin/koine-secret-both","mode":"600","created":false},"requestState":"PENDING","grant":null,"endpoint":{"url":"http://127.0.0.1:49152/graphql","instanceId":"9792d187-1569-48a5-8515-20da3fe854c0"},"http":{"status":200,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"data":{"koineGrantRequest":{"state":"PENDING","grant":null}}},"errors":[],"transport":null,"outcomeUnknown":false}
+Window shows: label discovery-client-control  code X3B4-BQFS
+{"command":"poll","ok":true,"classification":"ok","credential":{"path":"/Users/admin/koine-secret-both","mode":"600","created":false},"requestState":"APPROVED","grant":{"grantId":"fff3b839-6159-46b0-9ff2-f5b4898c6776","capabilities":["desktop:control","workspace:control"],"state":"ACTIVE"},"endpoint":{"url":"http://127.0.0.1:49152/graphql","instanceId":"9792d187-1569-48a5-8515-20da3fe854c0"},"http":{"status":200,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"data":{"koineGrantRequest":{"state":"APPROVED","grant":{"grantId":"fff3b839-6159-46b0-9ff2-f5b4898c6776","capabilities":["desktop:control","workspace:control"],"state":"ACTIVE"}}}},"errors":[],"transport":null,"outcomeUnknown":false}
+Approved: request df6c07ac-ac44-4858-96f9-5f284209fe91, comparison code X3B4-BQFS, capabilities ["desktop:control","workspace:control"]
+
+== The schema the client was generated against is the one Koine serves
+{"command":"inspect","ok":true,"classification":"ok","credential":{"path":"/Users/admin/koine-secret-read","mode":"600","created":false},"koine":{"contractVersion":"koine-desktop/1","instanceId":"9792d187-1569-48a5-8515-20da3fe854c0","schemaDigest":"7534c4f66f38a1cdd9dc536ca22f96b872025300b6838e7ec99daaf0d4570501","ownGrant":{"capabilities":["workspace:read"],"state":"ACTIVE"}},"generatedAgainst":{"contractVersion":"koine-desktop/1","schemaDigest":"7534c4f66f38a1cdd9dc536ca22f96b872025300b6838e7ec99daaf0d4570501"},"endpoint":{"url":"http://127.0.0.1:49152/graphql","instanceId":"9792d187-1569-48a5-8515-20da3fe854c0"},"http":{"status":200,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"data":{"koine":{"contractVersion":"koine-desktop/1","instanceId":"9792d187-1569-48a5-8515-20da3fe854c0","schemaDigest":"7534c4f66f38a1cdd9dc536ca22f96b872025300b6838e7ec99daaf0d4570501","ownGrant":{"capabilities":["workspace:read"],"state":"ACTIVE"}}}},"errors":[],"transport":null,"outcomeUnknown":false}
+{"command": "introspect", "ok": true, "classification": "ok", "credential": {"path": "/Users/admin/koine-secret-read", "mode": "600", "created": false}, "out": "/Users/admin/introspection.json", "byteCount": 73261, "servedSchemaDigest": "7534c4f66f38a1cdd9dc536ca22f96b872025300b6838e7ec99daaf0d4570501", "generatedAgainstSchemaDigest": "7534c4f66f38a1cdd9dc536ca22f96b872025300b6838e7ec99daaf0d4570501", "schemaDigestsEqual": true, "servedContractVersion": "koine-desktop/1", "generatedAgainstContractVersion": "koine-desktop/1", "metadataClassification": "ok", "metadataResponse": {"data": {"koine": {"contractVersion": "koine-desktop/1", "instanceId": "9792d187-1569-48a5-8515-20da3fe854c0", "schemaDigest": "7534c4f66f38a1cdd9dc536ca22f96b872025300b6838e7ec99daaf0d4570501", "ownGrant": {"capabilities": ["workspace:read"], "state": "ACTIVE"}}}}, "endpoint": {"url": "http://127.0.0.1:49152/graphql", "instanceId": "9792d187-1569-48a5-8515-20da3fe854c0"}, "http": {"status": 200, "contentType": "application/graphql-response+json", "cacheControl": "no-store", "retryAfterSeconds": null}, "response": null, "errors": [], "transport": null, "outcomeUnknown": false, "responseBytes": 78982}
+Digest generated against: 7534c4f66f38a1cdd9dc536ca22f96b872025300b6838e7ec99daaf0d4570501
+Digest served now:        7534c4f66f38a1cdd9dc536ca22f96b872025300b6838e7ec99daaf0d4570501
+
+== A grant holding both controls and no read capability is refused both reads, naming workspace:read
+control-locations: {"classification":"capability-denied","status":null,"items":null,"resultsTruncated":null,"errors":[{"classification":"capability-denied","path":["locations"],"kind":"permission"}],"requiredCapability":"workspace:read","requiredCapabilities":null,"phase":"execution"}
+control-applications: {"classification":"capability-denied","status":null,"items":null,"resultsTruncated":null,"errors":[{"classification":"capability-denied","path":["apps"],"kind":"permission"}],"requiredCapability":"workspace:read","requiredCapabilities":null,"phase":"execution"}
+Observation: no permission dialog naming Koine after the refused reads.
+
+== The special locations: a value for each of the ten default pairs
+locations: {"classification":"ok","status":"AVAILABLE","items":11,"resultsTruncated":false,"errors":[],"requiredCapability":null,"requiredCapabilities":null,"phase":null}
+Observation: no permission dialog naming Koine after the special-locations read.
+  HOME/USER: /Users/admin
+  DESKTOP/USER: /Users/admin/Desktop
+  DOCUMENTS/USER: /Users/admin/Documents
+  DOWNLOADS/USER: /Users/admin/Downloads
+  MOVIES/USER: /Users/admin/Movies
+  MUSIC/USER: /Users/admin/Music
+  PICTURES/USER: /Users/admin/Pictures
+  APPLICATIONS/USER: /Users/admin/Applications
+  APPLICATIONS/LOCAL: /Applications
+  APPLICATIONS/SYSTEM: /System/Applications
+
+== The application catalogue: Safari, Finder and the twelve launchers
+applications: {"classification":"ok","status":"AVAILABLE","items":327,"resultsTruncated":false,"errors":[],"requiredCapability":null,"requiredCapabilities":null,"phase":null}
+Observation: no permission dialog naming Koine after the application-catalogue read.
+Status: AVAILABLE; coverage: [{"source":"INDEXED_APPS","availability":"AVAILABLE","observations":"COMPLETE","category":"UNKNOWN","examined":327,"diagnostics":[]}]
+The catalogue lists 327 applications.
+  Safari (com.apple.Safari): /Applications/Safari.app [Safari]; indexed before the read: yes
+  Finder (com.apple.finder): /System/Library/CoreServices/Finder.app [Finder]; indexed before the read: yes
+  Dia (company.thebrowser.dia): /Applications/Dia.app [Dia]; indexed before the read: yes
+  ChatGPT (com.openai.codex): /Applications/ChatGPT.app [ChatGPT]; indexed before the read: yes
+  Claude (com.anthropic.claudefordesktop): /Applications/Claude.app [Claude]; indexed before the read: yes
+  Zed (dev.zed.Zed): /Applications/Zed.app [Zed]; indexed before the read: yes
+  Visual Studio Code (com.microsoft.VSCode): /Applications/Visual Studio Code.app [Visual Studio Code]; indexed before the read: yes
+  Jump Desktop (com.p5sys.jump.mac.viewer.web): /Applications/Jump Desktop.app [Jump Desktop]; indexed before the read: yes
+  Kimi (com.moonshot.kimichat): /Applications/Kimi.app [Kimi]; indexed before the read: yes
+  iTerm (com.googlecode.iterm2): /Applications/iTerm.app [iTerm]; indexed before the read: yes
+  Mail (com.apple.mail): /System/Applications/Mail.app [Mail]; indexed before the read: yes
+  Notes (com.apple.Notes): /System/Applications/Notes.app [Notes]; indexed before the read: yes
+  Obsidian (md.obsidian): /Applications/Obsidian.app [Obsidian]; indexed before the read: yes
+  Zotero (org.zotero.zotero): /Applications/Zotero.app [Zotero]; indexed before the read: yes
+
+== A grant holding workspace:read alone is refused a launch, and nothing launches
+{"atMs":1793080369940,"instances":[{"bundle":"\/Applications\/Koine.app","bundleIdentifier":"dev.antony.Koine","executable":"\/Applications\/Koine.app\/Contents\/MacOS\/Koine","isActive":false,"isTerminated":false,"name":"Koine","pid":922,"startedAt":"2026-10-27T05:44:26.254513Z"}]}
+Precondition: TextEdit is in front ({"pid":1165,"startedAt":"2026-10-27T05:50:18.480094Z"}) and Koine is inactive.
+{"command":"launch","ok":false,"classification":"capability-denied","credential":{"path":"/Users/admin/koine-secret-read","mode":"600","created":false},"application":{"bundleIdentifier":"com.apple.Notes"},"sentMs":1793080415328,"receivedMs":1793080415374,"status":null,"actionEffect":"none","receipt":null,"process":null,"processState":"no-receipt","choicesArguments":null,"dependency":null,"requiredCapability":"workspace:control","requiredCapabilities":["workspace:control","desktop:control"],"phase":"authorization","branchSuppressed":false,"resultErrorPaths":[],"contractViolation":null,"endpoint":{"url":"http://127.0.0.1:49152/graphql","instanceId":"9792d187-1569-48a5-8515-20da3fe854c0"},"http":{"status":403,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"errors":[{"message":"This operation requires the workspace:control capability.","locations":[{"line":3,"column":3}],"path":["workspaceLaunchApplication"],"extensions":{"permissionClass":"capability","requiredCapability":"workspace:control","requiredCapabilities":["workspace:control","desktop:control"],"phase":"authorization","kind":"permission"}}]},"errors":[{"classification":"capability-denied","message":"This operation requires the workspace:control capability.","path":["workspaceLaunchApplication"],"kind":"permission","permissionClass":"capability","requiredCapability":"workspace:control","requiredCapabilities":["workspace:control","desktop:control"],"phase":"authorization","osPermission":null,"permissionOwner":null,"reason":null,"requestState":null}],"transport":null,"outcomeUnknown":false}
+Denied: first unmet workspace:control, complete set ["workspace:control","desktop:control"]
+{"atMs":1793080538495,"instances":[]}
+
+== One listed application launches through workspaceLaunchApplication with the identifier and path the catalogue gave
+The catalogue's entry: {"name":"Notes","applicationPath":"/System/Applications/Notes.app","bundleIdentifier":"com.apple.Notes","sources":["INDEXED_APPS"]}
+{"atMs":1793080629931,"instances":[{"bundle":"\/Applications\/Koine.app","bundleIdentifier":"dev.antony.Koine","executable":"\/Applications\/Koine.app\/Contents\/MacOS\/Koine","isActive":false,"isTerminated":false,"name":"Koine","pid":922,"startedAt":"2026-10-27T05:44:26.254513Z"}]}
+Precondition: TextEdit is in front ({"pid":1165,"startedAt":"2026-10-27T05:50:18.480094Z"}) and Koine is inactive.
+{"command":"launch","ok":true,"classification":"ok","credential":{"path":"/Users/admin/koine-secret-both","mode":"600","created":false},"application":{"bundleIdentifier":"com.apple.Notes","applicationPath":"/System/Applications/Notes.app"},"sentMs":1793080663480,"receivedMs":1793080663727,"status":"AVAILABLE","actionEffect":"acknowledged","receipt":{"process":{"pid":1439,"startedAt":"2026-10-27T05:57:43.534693Z"}},"process":{"pid":1439,"startedAt":"2026-10-27T05:57:43.534693Z"},"processState":"present","choicesArguments":["--pid","1439","--started-at","2026-10-27T05:57:43.534693Z"],"dependency":null,"requiredCapability":null,"requiredCapabilities":null,"phase":null,"branchSuppressed":false,"resultErrorPaths":[],"contractViolation":null,"endpoint":{"url":"http://127.0.0.1:49152/graphql","instanceId":"9792d187-1569-48a5-8515-20da3fe854c0"},"http":{"status":200,"contentType":"application/graphql-response+json","cacheControl":"no-store","retryAfterSeconds":null},"response":{"data":{"workspaceLaunchApplication":{"status":"AVAILABLE","value":{"process":{"pid":1439,"startedAt":"2026-10-27T05:57:43.534693Z"}},"dependency":null}}},"errors":[],"transport":null,"outcomeUnknown":false}
+Timing: the client's answer 247 ms after it sent the request; the witness saw Notes activated 269 ms after it.
+{"application":{"bundle":"\/System\/Applications\/Notes.app","bundleIdentifier":"com.apple.Notes","executable":"\/System\/Applications\/Notes.app\/Contents\/MacOS\/Notes","isActive":true,"isTerminated":false,"name":"Notes","pid":1439,"startedAt":"2026-10-27T05:57:43.534693Z"},"atMs":1793080694677,"frontCGWindow":{"pid":1439,"windowNumber":60}}
+{"atMs":1793080694841,"instances":[{"bundle":"\/System\/Applications\/Notes.app","bundleIdentifier":"com.apple.Notes","executable":"\/System\/Applications\/Notes.app\/Contents\/MacOS\/Notes","isActive":true,"isTerminated":false,"name":"Notes","pid":1439,"startedAt":"2026-10-27T05:57:43.534693Z"}]}
+Receipt, as the client printed it: {"pid":1439,"startedAt":"2026-10-27T05:57:43.534693Z"}; the kernel's, read by the witness: {"pid":1439,"startedAt":"2026-10-27T05:57:43.534693Z"}
+Observation: no permission dialog naming Koine after the launch.
+
+== Results
+Written: .build/discovery-vm/results.json
+
+== Quit Koine
+
+== PASSED — transcript in .build/vm-verify/discovery-vm-20261027T164257.log

@@ -15,6 +15,13 @@ import {
 } from './adapter/workspace-open.js';
 import { interpretReveal, type WorkspaceRevealFacts } from './adapter/workspace-reveal.js';
 import {
+  APPLICATIONS_ALIAS,
+  interpretDiscovery,
+  LOCATIONS_ALIAS,
+  type DiscoveryAlias,
+  type DiscoveryFacts,
+} from './adapter/workspace-discovery.js';
+import {
   askSuggestions,
   DEFAULT_ENGINE_TEMPLATE,
   fillTemplate,
@@ -31,6 +38,8 @@ import {
   FocusDesktopWindowDocument,
   InspectOwnConnectionDocument,
   LaunchInstalledApplicationDocument,
+  NativeApplicationsDocument,
+  NativeStartingLocationsDocument,
   OpenDocumentOrDirectoryDocument,
   OpenSearchUrlDocument,
   PollOwnGrantRequestDocument,
@@ -55,6 +64,8 @@ const USAGE = `koine-client <command> [options]
   open-url   --secret <path> (--url <text> | --url-file <path>)
   open-path  --secret <path> (--path <text> | --path-file <file>) [--bundle-identifier <id>] [--application-path <absolute path>]
   reveal-path --secret <path> (--path <text> | --path-file <file>)
+  locations  --secret <path> [--kind <kind> --domain <domain>]
+  applications --secret <path>
   search     --secret <path> --query <text> [--engine-template <url with one %s>] [--suggestions-url <url with one %s>]
 
 Any --name value may also be written --name=value, which is the only way to give a
@@ -663,6 +674,67 @@ async function commandRevealPath(args: Args): Promise<Json> {
   };
 }
 
+/**
+ * The two read roots, `workspaceSpecialLocations` and `workspaceApplications`, each asked as the
+ * published `NativeStartingLocations` and `NativeApplications` operations ask. They need
+ * `workspace:read` and nothing else. Nothing is retried: a read is repeatable, but a client that
+ * asks twice has two answers to explain.
+ */
+async function commandDiscovery(
+  args: Args,
+  alias: DiscoveryAlias,
+  document: string,
+  operationName: string,
+  variables?: Record<string, unknown>,
+): Promise<Json> {
+  const secretPath = require_(args, 'secret');
+  const credential = await loadOrCreateCredential(secretPath);
+  const result = await send({
+    document,
+    operationName,
+    kind: 'query',
+    secret: credential.secret,
+    ...(variables === undefined ? {} : { variables }),
+  });
+  const facts: DiscoveryFacts = interpretDiscovery(result, alias);
+  return {
+    classification: facts.classification,
+    credential: credentialFacts(credential, secretPath),
+    sentMs: result.sentMs,
+    receivedMs: result.receivedMs,
+    status: facts.status,
+    items: facts.items,
+    sources: facts.sources,
+    resultsTruncated: facts.resultsTruncated,
+    requiredCapability: facts.requiredCapability,
+    requiredCapabilities: facts.requiredCapabilities,
+    phase: facts.phase,
+    resultErrorPaths: facts.resultErrorPaths,
+    contractViolation: facts.contractViolation,
+    ...wire(result),
+  };
+}
+
+async function commandLocations(args: Args): Promise<Json> {
+  const kind = args.single.get('kind');
+  const domain = args.single.get('domain');
+  if ((kind === undefined) !== (domain === undefined)) {
+    throw new UsageError('--kind and --domain are given together or not at all');
+  }
+  // With no request the server answers its ten default pairs, as the operation's comment says.
+  return commandDiscovery(
+    args,
+    LOCATIONS_ALIAS,
+    NativeStartingLocationsDocument.toString(),
+    'NativeStartingLocations',
+    kind === undefined ? undefined : { requests: [{ kind, domain }] },
+  );
+}
+
+async function commandApplications(args: Args): Promise<Json> {
+  return commandDiscovery(args, APPLICATIONS_ALIAS, NativeApplicationsDocument.toString(), 'NativeApplications');
+}
+
 async function commandSearch(args: Args): Promise<Json> {
   const secretPath = require_(args, 'secret');
   const query = require_(args, 'query');
@@ -751,6 +823,12 @@ async function main(): Promise<void> {
       case 'reveal-path':
         payload = await commandRevealPath(args);
         break;
+      case 'locations':
+        payload = await commandLocations(args);
+        break;
+      case 'applications':
+        payload = await commandApplications(args);
+        break;
       case 'search':
         payload = await commandSearch(args);
         break;
@@ -773,7 +851,8 @@ async function main(): Promise<void> {
   }
 
   const line = redact({ command, ok: payload['classification'] === 'ok', ...payload }, secrets);
-  process.stdout.write(`${line}\n`);
+  // Exit from the write callback: a pipe takes 64 KiB at a time, and an exit before it drains cuts the line off.
+  await new Promise<void>((done) => process.stdout.write(`${line}\n`, () => done()));
 }
 
 await main();

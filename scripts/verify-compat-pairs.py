@@ -10,9 +10,11 @@ framework images) and from the fixture's initializer log (whether any of the
 bundle's code ran).
 
 The workspace pairs (docs/verification/workspace-compatibility.md) put the RETAINED 1.0.0
-workspace bundle and this tree's 1.0.1 one each under the other revision's host, and
-the 1.0.1 per-user variant under both hosts over a bundled 1.0.0; the same fixtures
-are probed through every one of them and the outcomes compared.
+workspace bundle, the released Koine 0.3.0's 1.0.1 one and this tree's 1.0.2 one each under
+the hosts that can serve them, and the per-user 1.0.1 and 1.0.2 variants under this tree's
+host over a bundled 1.0.0; the released 0.3.0 host and the retained 1.0.0 host each refuse
+1.0.2 before it loads, naming the feature they lack. The same fixtures are probed through
+every pair that serves a release and the outcomes compared.
 
 usage: verify-compat-pairs.py [debug|release]
 
@@ -490,15 +492,20 @@ def desktop_pair(name, host_revision, conformance):
 
 # --- The workspace pairs ---------------------------------------------------------------------------------------
 #
-# The old side is the retained 1.0.0 bundle (scripts/build-retained-workspace.sh), the new side this tree's 1.0.1
-# (scripts/build-compat-pairs.sh); a host is the retained revision's own, or this tree's. Each case is one headless
-# host over a bundled root that stands in for Contents/PlugIns and a per-user root.
+# The old sides are the retained 1.0.0 bundle and the released Koine 0.3.0's 1.0.1 (scripts/build-retained-workspace.sh,
+# one pin each), the new side this tree's 1.0.2 (scripts/build-compat-pairs.sh); a host is a retained revision's own,
+# or this tree's. Each case is one headless host over a bundled root that stands in for Contents/PlugIns and a per-user
+# root.
 
 RETAINED = "workspace-1.0.0"
+RELEASED = "workspace-1.0.1"
 PROFILES = os.path.join(REPOSITORY, "docs", "design", "profiles")
 RETAINED_PROFILE = "core-desktop-workspace-extension-host.json"
 REPAIR_PROFILE = "core-desktop-workspace-repair-extension-host.json"
 PER_USER_PROFILE = "core-desktop-workspace-repair-per-user-extension-host.json"
+DISCOVERY_PROFILE = "core-desktop-workspace-discovery-extension-host.json"
+DISCOVERY_PER_USER_PROFILE = "core-desktop-workspace-discovery-per-user-extension-host.json"
+FEATURE_NATIVE_DISCLOSURES = "workspace-native-disclosures-v1"
 RETAINED_DESIGN = os.path.join(REPOSITORY, "docs", "design", "desktop-workspace-schema-extension-host.graphql")
 FEATURE_SELECTION = "first-party-selection-v1"
 SELECTION_REFUSED = "requires host features this Koine lacks: " + FEATURE_SELECTION
@@ -510,6 +517,14 @@ LONG_NAME = "d" * 200
 
 def retained_bundled():
     return os.path.join(PAIRS, RETAINED, "bundled")
+
+
+def released_bundled():
+    return os.path.join(PAIRS, RELEASED, "bundled")
+
+
+def released_per_user_variant():
+    return os.path.join(PAIRS, RELEASED, "workspace-per-user")
 
 
 def newer_desktop():
@@ -685,14 +700,15 @@ def rows_of(candidates):
 
 
 def workspace_pair(name, plugin, host_revision, bundled, per_user, conformance, profile, release, expected_rows,
-                   staged_binaries, probes):
+                   staged_binaries, probes, refused_for=None):
     """One host of `host_revision`, over `bundled` (Contents/PlugIns) and `per_user` (a root with the per-user
     bundle, or None), holding `release` of workspace as its serving candidate.
 
     `expected_rows` are the candidate rows, exactly; `staged_binaries` the SHA-256 of the workspace image the host
     must have mapped (it loads its staged copy, never the installed one), and no other: a candidate the host did
     not select is never loaded. `probes` is the
-    (base, {name: spelling}) the locations are taken from."""
+    (base, {name: spelling}) the locations are taken from. `refused_for` names a host feature the host lacks: the
+    workspace row must then be INCOMPATIBLE with a diagnostic that names it, and no workspace image may be mapped."""
     case = Case(name, plugin, host_revision)
     per_user_root = per_user or tempfile.mkdtemp(prefix="koine-compat-empty-")
     host = Host(host_revision, per_user_root, bundled=bundled)
@@ -700,6 +716,11 @@ def workspace_pair(name, plugin, host_revision, bundled, per_user, conformance, 
         providers = host.data_of(CANDIDATES)["koineManagement"]["providers"]
         case.check("the candidate rows are exactly the ones this pair is pinned to",
                    rows_of(providers) == sorted(expected_rows), {"served": rows_of(providers), "pinned": sorted(expected_rows)})
+        if refused_for is not None:
+            diagnostics = [p["diagnostic"] for p in providers if p["provider"] == "workspace" and p["state"] == "INCOMPATIBLE"]
+            case.check(f"the refused candidate's diagnostic names the missing feature {refused_for} and says it is a requirement the host lacks",
+                       len(diagnostics) == 1 and diagnostics[0] is not None and refused_for in diagnostics[0]
+                       and "requires host features this Koine lacks" in diagnostics[0], diagnostics)
         if profile is not None:
             hold_profile(host, case, conformance, profile, name)
         images = [os.path.realpath(image) for image in host.ready["frameworkImages"]]
@@ -707,7 +728,8 @@ def workspace_pair(name, plugin, host_revision, bundled, per_user, conformance, 
                    images == [framework_image(host_revision)], images)
         mapped = mapped_images(host, "libWorkspaceProvider.dylib")
         case.check("the workspace image the host mapped is exactly one, the expected binary, loaded from the host's own staging "
-                   "(a candidate the host did not select is never loaded)",
+                   "(a candidate the host did not select is never loaded)" if staged_binaries else
+                   "no workspace image is mapped: the refused bundle was never loaded",
                    sorted(digest(path) for path in mapped) == sorted(staged_binaries)
                    and all("/ProviderStaging/" in path for path in mapped),
                    {"mapped": [os.path.relpath(path, host.data) for path in mapped], "wanted": sorted(staged_binaries)})
@@ -745,7 +767,7 @@ def probes_agree(cases):
     """The outcomes of the probe fixtures through every pair: alike within a release, and between the releases alike
     but for the one documented class (an extant location whose spelling is 1,024 bytes or more)."""
     case = Case("the same locations through every pair: the releases differ in the long-location correction alone",
-                "workspace 1.0.0 and 1.0.1, each in each host", "retained and newer")
+                "workspace 1.0.0, 1.0.1 and 1.0.2, in the hosts that serve each", "retained, released and newer")
     by_release = {}
     for release, named in PROBED.items():
         distinct = {json.dumps(value, sort_keys=True) for value in named.values()}
@@ -753,10 +775,12 @@ def probes_agree(cases):
                    len(distinct) == 1 and len(named) >= 2, {"pairs": sorted(named), "distinct": len(distinct)})
         if named:
             by_release[release] = next(iter(named.values()))
-    old, new = by_release.get("1.0.0"), by_release.get("1.0.1")
-    if old is None or new is None:
-        case.check("both releases were probed", False, sorted(by_release))
+    old, new, newest = by_release.get("1.0.0"), by_release.get("1.0.1"), by_release.get("1.0.2")
+    if old is None or new is None or newest is None:
+        case.check("all three releases were probed", False, sorted(by_release))
         return case
+    case.check("1.0.2, which adds discovery reads and no action, gives every location the outcome 1.0.1 gives",
+               newest == new, {k: [new[k], newest[k]] for k in new if new[k] != newest[k]})
     long_class = "an extant directory of 1,024 bytes or more"
     case.check("every other location has one outcome in both releases (absent, a cycle and an impossible name included)",
                {k: v for k, v in old.items() if k != long_class} == {k: v for k, v in new.items() if k != long_class},
@@ -791,11 +815,15 @@ def main():
         products("baseline"), "DesktopProviders", "Desktop.koineprovider", "libDesktopProvider.dylib")
     conformance = os.path.join(products("newer"), "KoineConformance")
     subjects["newer conformance tool"] = conformance
-    # The workspace pairs' subjects: the retained 1.0.0 bundle and its host, this tree's 1.0.1 bundle and the variant.
+    # The workspace pairs' subjects: the retained 1.0.0 bundle and its host, the released 1.0.1 bundle, its per-user
+    # variant and its host, this tree's 1.0.2 bundle and its variant.
     workspace_images = {
         "retained 1.0.0": os.path.join(retained_bundled(), "Workspace.koineprovider", "libWorkspaceProvider.dylib"),
-        "newer 1.0.1": os.path.join(newer_workspace(), "Workspace.koineprovider", "libWorkspaceProvider.dylib"),
-        "newer 1.0.1 per-user variant": os.path.join(per_user_variant(), "Workspace.koineprovider", "libWorkspaceProvider.dylib"),
+        "released 1.0.1": os.path.join(released_bundled(), "Workspace.koineprovider", "libWorkspaceProvider.dylib"),
+        "released 1.0.1 per-user variant": os.path.join(
+            released_per_user_variant(), "Workspace.koineprovider", "libWorkspaceProvider.dylib"),
+        "newer 1.0.2": os.path.join(newer_workspace(), "Workspace.koineprovider", "libWorkspaceProvider.dylib"),
+        "newer 1.0.2 per-user variant": os.path.join(per_user_variant(), "Workspace.koineprovider", "libWorkspaceProvider.dylib"),
     }
     for label, path in workspace_images.items():
         subjects[f"workspace {label} image"] = path
@@ -804,6 +832,9 @@ def main():
     subjects["retained host"] = host_binary(RETAINED)
     subjects["retained framework"] = framework_image(RETAINED)
     subjects["retained desktop provider"] = os.path.join(retained_bundled(), "Desktop.koineprovider", "libDesktopProvider.dylib")
+    subjects["released host"] = host_binary(RELEASED)
+    subjects["released framework"] = framework_image(RELEASED)
+    subjects["released desktop provider"] = os.path.join(released_bundled(), "Desktop.koineprovider", "libDesktopProvider.dylib")
     subjects["newer desktop provider"] = os.path.join(newer_desktop(), "Desktop.koineprovider", "libDesktopProvider.dylib")
     before = {name: digest(path) for name, path in subjects.items()}
 
@@ -860,17 +891,23 @@ def main():
             ))
 
     # --- The workspace pairs: independently built old and new providers under each revision's host ---
-    old_image, new_image, variant_image = (digest(workspace_images[k]) for k in
-                                           ("retained 1.0.0", "newer 1.0.1", "newer 1.0.1 per-user variant"))
+    old_image, released_image, released_variant_image, new_image, variant_image = (
+        digest(workspace_images[k]) for k in
+        ("retained 1.0.0", "released 1.0.1", "released 1.0.1 per-user variant", "newer 1.0.2", "newer 1.0.2 per-user variant"))
     probes = build_probe_fixtures()
     D = ("desktop", "1.0.0", "1.0.0", "ACTIVE", "BUNDLED", "SELECTED", None)
     W100 = ("workspace", "1.0.0", "1.0.0", "ACTIVE", "BUNDLED", "SELECTED", None)
     W101 = ("workspace", "1.0.1", "1.0.1", "ACTIVE", "BUNDLED", "SELECTED", None)
     W101_USER = ("workspace", "1.0.1", "1.0.1", "ACTIVE", "PER_USER", "SELECTED", None)
+    W102 = ("workspace", "1.0.2", "1.0.2", "ACTIVE", "BUNDLED", "SELECTED", None)
+    W102_USER = ("workspace", "1.0.2", "1.0.2", "ACTIVE", "PER_USER", "SELECTED", None)
     W100_SUPERSEDED = ("workspace", "1.0.0", "1.0.0", "REJECTED", "BUNDLED", "NOT_SELECTED", "superseded-candidate")
-    nothing = lambda: tempfile.mkdtemp(prefix="koine-compat-empty-")
+    # The refused bundle keeps its own row, and the reserved slot, with no eligible candidate, is a row beside it.
+    W102_REFUSED = ("workspace", "1.0.2", "1.0.2", "INCOMPATIBLE", "BUNDLED", "NOT_SELECTED", "feature-unavailable")
+    W_SLOT_UNAVAILABLE = ("workspace", "unknown", "unknown", "REJECTED", None, "UNAVAILABLE", "no-eligible-candidate")
     try:
         retained_root = lambda: compose(retained_bundled(), retained_bundled())
+        released_root = lambda: compose(released_bundled(), released_bundled())
         cases += [
             workspace_pair("the retained 1.0.0 workspace in the retained host (the old pair)",
                            "workspace 1.0.0, retained", RETAINED, retained_root(), None, conformance, RETAINED_PROFILE,
@@ -878,27 +915,50 @@ def main():
             workspace_pair("the retained 1.0.0 workspace, newer host",
                            "workspace 1.0.0, retained", "newer", compose(newer_desktop(), retained_bundled()), None,
                            conformance, RETAINED_PROFILE, "1.0.0", [D, W100], [old_image], probes),
-            workspace_pair("the 1.0.1 workspace bundled, retained host",
-                           "workspace 1.0.1, this tree's, sealed as the application seals it", RETAINED,
-                           compose(retained_bundled(), newer_workspace()), None, conformance, REPAIR_PROFILE,
-                           "1.0.1", [D, W101], [new_image], probes),
-            workspace_pair("control: the 1.0.1 workspace bundled, newer host",
-                           "workspace 1.0.1, this tree's", "newer", compose(newer_desktop(), newer_workspace()), None,
-                           conformance, REPAIR_PROFILE, "1.0.1", [D, W101], [new_image], probes),
+            workspace_pair("the released 1.0.1 workspace in the released Koine 0.3.0 host (the 1.0.1 pair)",
+                           "workspace 1.0.1, released with Koine 0.3.0", RELEASED, released_root(), None, conformance,
+                           REPAIR_PROFILE, "1.0.1", [D, W101], [released_image], probes),
+            workspace_pair("the released 1.0.1 workspace bundled, retained host",
+                           "workspace 1.0.1, released with Koine 0.3.0", RETAINED,
+                           compose(retained_bundled(), released_bundled()), None, conformance, REPAIR_PROFILE,
+                           "1.0.1", [D, W101], [released_image], probes),
+            workspace_pair("the released 1.0.1 workspace bundled, newer host",
+                           "workspace 1.0.1, released with Koine 0.3.0", "newer",
+                           compose(newer_desktop(), released_bundled()), None, conformance, REPAIR_PROFILE,
+                           "1.0.1", [D, W101], [released_image], probes),
             workspace_pair("the approved per-user 1.0.1 variant over the bundled 1.0.0, retained host",
                            "workspace 1.0.1 stating first-party-selection-v1, approved per user", RETAINED,
-                           retained_root(), only(per_user_variant(), "Workspace"), conformance, PER_USER_PROFILE,
-                           "1.0.1", [D, W101_USER, W100_SUPERSEDED], [variant_image], probes),
+                           retained_root(), only(released_per_user_variant(), "Workspace"), conformance, PER_USER_PROFILE,
+                           "1.0.1", [D, W101_USER, W100_SUPERSEDED], [released_variant_image], probes),
             workspace_pair("the approved per-user 1.0.1 variant over the bundled 1.0.0, newer host",
                            "workspace 1.0.1 stating first-party-selection-v1, approved per user", "newer",
-                           compose(newer_desktop(), retained_bundled()), only(per_user_variant(), "Workspace"),
-                           conformance, PER_USER_PROFILE, "1.0.1", [D, W101_USER, W100_SUPERSEDED], [variant_image], probes),
+                           compose(newer_desktop(), retained_bundled()), only(released_per_user_variant(), "Workspace"),
+                           conformance, PER_USER_PROFILE, "1.0.1", [D, W101_USER, W100_SUPERSEDED],
+                           [released_variant_image], probes),
             workspace_pair("the shipped 1.0.1 bundle installed per user does not state the feature: refused, 1.0.0 keeps the slot, retained host",
                            "workspace 1.0.1 as shipped, approved per user", RETAINED, retained_root(),
-                           only(newer_workspace(), "Workspace"), conformance, None, "1.0.0",
+                           only(released_bundled(), "Workspace"), conformance, None, "1.0.0",
                            [D, ("workspace", "1.0.1", "1.0.1", "INCOMPATIBLE", "PER_USER", "NOT_SELECTED", "selection-feature-required"),
                             ("workspace", "1.0.0", "1.0.0", "ACTIVE", "BUNDLED", "SELECTED", "selected-with-refusals")],
                            [old_image], probes),
+            # This tree's 1.0.2: it loads in this tree's host, and the two older hosts refuse it before it loads.
+            workspace_pair("the 1.0.2 workspace bundled, newer host: the new bundle loads in the new host",
+                           "workspace 1.0.2, this tree's, sealed as the application seals it", "newer",
+                           compose(newer_desktop(), newer_workspace()), None, conformance, DISCOVERY_PROFILE, "1.0.2",
+                           [D, W102], [new_image], probes),
+            workspace_pair("the approved per-user 1.0.2 variant over the bundled 1.0.0, newer host",
+                           "workspace 1.0.2 stating first-party-selection-v1, approved per user", "newer",
+                           compose(newer_desktop(), retained_bundled()), only(per_user_variant(), "Workspace"),
+                           conformance, DISCOVERY_PER_USER_PROFILE, "1.0.2", [D, W102_USER, W100_SUPERSEDED],
+                           [variant_image], probes),
+            workspace_pair("the 1.0.2 workspace bundled, released Koine 0.3.0 host: refused before it loads",
+                           "workspace 1.0.2, this tree's", RELEASED, compose(released_bundled(), newer_workspace()), None,
+                           conformance, None, None, [D, W102_REFUSED, W_SLOT_UNAVAILABLE], [], probes,
+                           refused_for=FEATURE_NATIVE_DISCLOSURES),
+            workspace_pair("the 1.0.2 workspace bundled, retained 1.0.0 host: refused before it loads",
+                           "workspace 1.0.2, this tree's", RETAINED, compose(retained_bundled(), newer_workspace()), None,
+                           conformance, None, None, [D, W102_REFUSED, W_SLOT_UNAVAILABLE], [], probes,
+                           refused_for=FEATURE_NATIVE_DISCLOSURES),
         ]
         cases.append(probes_agree(cases))
     finally:

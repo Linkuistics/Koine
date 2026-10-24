@@ -267,6 +267,10 @@ export type Query = {
   koineGrantRequest: Maybe<KoineGrantRequest>;
   /** koine:manage. Never returns bearer credentials. */
   koineManagement: Maybe<KoineManagement>;
+  /** Applications that the Spotlight index lists: one fixed query for application bundles over the Spotlight index with no search scope set, run once per call. Each choice has the path, display name and bundle identifier that the index reports, with source INDEXED_APPS. Copies of one identifier stay separate choices. Nothing is registered, resolved, launched or inspected, and the index can omit or lag applications, so a result is no inventory of the disk: category completeness is always UNKNOWN. An empty index answer is UNKNOWN with null items, never an empty inventory. A gathering that does not finish in three seconds, or one with more than 2048 items, is FAILED with null items and no prefix, and each selected items alias raises failed. Installation state, running state and bundle flags are not part of this release. All reachable fields require workspace:read. */
+  workspaceApplications: Maybe<WorkspaceApplicationsResult>;
+  /** Value-only Foundation lookup; null/omitted defaults to ten named pairs. Explicit nonempty unique requests <=10; HOME/Desktop/Documents/Downloads/Movies/Music/Pictures USER only; APPLICATIONS USER/LOCAL/SYSTEM. Never lists or inspects contents. All reachable fields require workspace:read. */
+  workspaceSpecialLocations: Maybe<WorkspaceSpecialLocationsResult>;
 };
 
 
@@ -284,12 +288,36 @@ export type QueryDesktopWindowArgs = {
   ref: Scalars['Reference']['input'];
 };
 
+
+export type QueryWorkspaceSpecialLocationsArgs = {
+  requests: InputMaybe<Array<WorkspaceLocationRequest>>;
+};
+
+export type WorkspaceApplicationChoice = {
+  __typename?: 'WorkspaceApplicationChoice';
+  /** Absolute path of the bundle as the index reported it. It is not checked, resolved or opened, so it is not a bundle-directory identity and promises no installed or launchable application. Pass it with bundleIdentifier to workspaceLaunchApplication, which resolves it again. */
+  applicationPath: Scalars['String']['output'];
+  /** The bundle identifier that the index reports, or null when it reports none that Koine can pass on. */
+  bundleIdentifier: Maybe<Scalars['String']['output']>;
+  /** The localised display name that the index reports, or null when it reports none that Koine can pass on. Never taken from the path. */
+  name: Maybe<Scalars['String']['output']>;
+  sources: Array<WorkspaceDiscoverySource>;
+};
+
 /** A registered application bundle present at inspection, even if in the Trash. Requires a bundle identifier; bundle-less programs have no named-selector route. No executable, argv, environment or shell input. */
 export type WorkspaceApplicationInput = {
   /** Optional absolute path constraining selection to a registered bundle with this identifier, compared by native file identity after symlink resolution. Never substitute another copy when supplied; otherwise running-copy substitution is allowed. */
   applicationPath: InputMaybe<Scalars['String']['input']>;
   /** Nonblank native bundle identifier, not a display name or process identity. */
   bundleIdentifier: Scalars['String']['input'];
+};
+
+export type WorkspaceApplicationsResult = {
+  __typename?: 'WorkspaceApplicationsResult';
+  items: Maybe<Array<WorkspaceApplicationChoice>>;
+  resultsTruncated: Scalars['Boolean']['output'];
+  sources: Array<WorkspaceDiscoveryCoverage>;
+  status: WorkspaceDiscoveryStatus;
 };
 
 /** Pre-submission prerequisite failure; no successful value accompanies it. */
@@ -306,6 +334,111 @@ export type WorkspaceDependencyUnavailable = {
   guidance: Scalars['String']['output'];
   /** Requires workspace:control AND desktop:control. Closed reason for not submitting this action. */
   reason: WorkspaceDependencyReason;
+};
+
+export type WorkspaceDiscoveryAvailability =
+  | 'AVAILABLE'
+  | 'BLOCKED'
+  | 'UNAVAILABLE'
+  | 'UNKNOWN';
+
+export type WorkspaceDiscoveryCompleteness =
+  | 'COMPLETE'
+  | 'PARTIAL'
+  | 'UNKNOWN';
+
+export type WorkspaceDiscoveryConsent =
+  | 'UNKNOWN';
+
+export type WorkspaceDiscoveryCoverage = {
+  __typename?: 'WorkspaceDiscoveryCoverage';
+  availability: WorkspaceDiscoveryAvailability;
+  /** UNKNOWN for app/settings inventory and filesystem contents of starting values. */
+  category: WorkspaceDiscoveryCompleteness;
+  declaredDomain: Scalars['String']['output'];
+  diagnostics: Array<WorkspaceDiscoveryDiagnostic>;
+  examined: Scalars['Int']['output'];
+  /** Completeness of checked finite observations, not atomicity or internal health. */
+  observations: WorkspaceDiscoveryCompleteness;
+  source: WorkspaceDiscoverySource;
+};
+
+export type WorkspaceDiscoveryDiagnostic = {
+  __typename?: 'WorkspaceDiscoveryDiagnostic';
+  affectsCoverage: Scalars['Boolean']['output'];
+  guidance: Scalars['String']['output'];
+  permission: Maybe<WorkspaceDiscoveryPermissionHint>;
+  reason: WorkspaceDiscoveryReason;
+  source: WorkspaceDiscoverySource;
+  /** Only an independently identified location/pane; never parsed from error text. */
+  subject: Maybe<Scalars['String']['output']>;
+};
+
+export type WorkspaceDiscoveryPermission =
+  | 'AUTOMATION'
+  | 'PROMPT_RISK';
+
+export type WorkspaceDiscoveryPermissionHint = {
+  __typename?: 'WorkspaceDiscoveryPermissionHint';
+  consent: WorkspaceDiscoveryConsent;
+  event: Maybe<WorkspaceSettingsEvent>;
+  permission: WorkspaceDiscoveryPermission;
+  /** Fixed target com.apple.systempreferences for Automation; established target or declared source otherwise. */
+  target: Scalars['String']['output'];
+};
+
+export type WorkspaceDiscoveryReason =
+  | 'CALL_LIMIT'
+  | 'CAPACITY_LIMIT'
+  | 'CHANGED_DURING_DISCOVERY'
+  | 'DIAGNOSTIC_LIMIT'
+  | 'ENTRY_LIMIT'
+  | 'INSPECTION_FAILED'
+  | 'METADATA_UNKNOWN'
+  | 'NO_NATIVE_VALUE'
+  | 'PROMPT_RISK'
+  | 'SETUP_UNSUPPORTED'
+  | 'SOURCE_UNAVAILABLE'
+  | 'TARGET_CHANGED'
+  | 'TARGET_NOT_RUNNING'
+  | 'TIME_LIMIT'
+  | 'UNREPRESENTABLE_VALUE'
+  | 'VALUE_LIMIT';
+
+export type WorkspaceDiscoverySource =
+  | 'FOUNDATION_LOCATIONS'
+  | 'INDEXED_APPS'
+  | 'REGISTRATION'
+  | 'RUNNING_APPS'
+  | 'SETTINGS_RUNTIME';
+
+/** Inspect sources, uncertainty and independent GraphQL errors together. */
+export type WorkspaceDiscoveryStatus =
+  | 'AVAILABLE'
+  | 'BLOCKED'
+  | 'FAILED'
+  | 'PARTIAL'
+  | 'UNAVAILABLE'
+  | 'UNKNOWN';
+
+export type WorkspaceLocationDomain =
+  | 'LOCAL'
+  | 'SYSTEM'
+  | 'USER';
+
+export type WorkspaceLocationKind =
+  | 'APPLICATIONS'
+  | 'DESKTOP'
+  | 'DOCUMENTS'
+  | 'DOWNLOADS'
+  | 'HOME'
+  | 'MOVIES'
+  | 'MUSIC'
+  | 'PICTURES';
+
+export type WorkspaceLocationRequest = {
+  domain: WorkspaceLocationDomain;
+  kind: WorkspaceLocationKind;
 };
 
 /** Native launch/open acknowledgment under workspace:control AND desktop:control, not proof of rendered content or foreground state. No installed path, bundle identifier or default-handler metadata is disclosed. */
@@ -357,6 +490,45 @@ export type WorkspaceRevealResult = {
   /** Requires workspace:control AND desktop:control. Non-null exactly for AVAILABLE absent an error at or below this result. */
   value: Maybe<WorkspaceRevealReceipt>;
 };
+
+export type WorkspaceSettingsEvent =
+  | 'READ'
+  | 'REVEAL';
+
+export type WorkspaceSpecialLocation = {
+  __typename?: 'WorkspaceSpecialLocation';
+  /** UID of Koine's account, not the client's account. */
+  accountIdentifier: Scalars['String']['output'];
+  contentsAvailability: WorkspaceDiscoveryAvailability;
+  domain: WorkspaceLocationDomain;
+  kind: WorkspaceLocationKind;
+  /** OS-known absolute local value; no existence, access, listing or consent guarantee. */
+  location: Scalars['String']['output'];
+  sources: Array<WorkspaceDiscoverySource>;
+};
+
+export type WorkspaceSpecialLocationsResult = {
+  __typename?: 'WorkspaceSpecialLocationsResult';
+  /** Frozen list for AVAILABLE/PARTIAL; otherwise null. FAILED raises failed at each selected items alias; BLOCKED/UNAVAILABLE/UNKNOWN give ordinary null. */
+  items: Maybe<Array<WorkspaceSpecialLocation>>;
+  resultsTruncated: Scalars['Boolean']['output'];
+  sources: Array<WorkspaceDiscoveryCoverage>;
+  status: WorkspaceDiscoveryStatus;
+};
+
+export type DiscoveryCoverageFragment = { __typename?: 'WorkspaceDiscoveryCoverage', source: WorkspaceDiscoverySource, declaredDomain: string, availability: WorkspaceDiscoveryAvailability, observations: WorkspaceDiscoveryCompleteness, category: WorkspaceDiscoveryCompleteness, examined: number, diagnostics: Array<{ __typename?: 'WorkspaceDiscoveryDiagnostic', source: WorkspaceDiscoverySource, reason: WorkspaceDiscoveryReason, subject: string | null, affectsCoverage: boolean, guidance: string, permission: { __typename?: 'WorkspaceDiscoveryPermissionHint', permission: WorkspaceDiscoveryPermission, target: string, event: WorkspaceSettingsEvent | null, consent: WorkspaceDiscoveryConsent } | null }> };
+
+export type NativeStartingLocationsQueryVariables = Exact<{
+  requests: InputMaybe<Array<WorkspaceLocationRequest> | WorkspaceLocationRequest>;
+}>;
+
+
+export type NativeStartingLocationsQuery = { __typename?: 'Query', locations: { __typename?: 'WorkspaceSpecialLocationsResult', status: WorkspaceDiscoveryStatus, resultsTruncated: boolean, items: Array<{ __typename?: 'WorkspaceSpecialLocation', kind: WorkspaceLocationKind, domain: WorkspaceLocationDomain, accountIdentifier: string, location: string, contentsAvailability: WorkspaceDiscoveryAvailability, sources: Array<WorkspaceDiscoverySource> }> | null, sources: Array<{ __typename?: 'WorkspaceDiscoveryCoverage', source: WorkspaceDiscoverySource, declaredDomain: string, availability: WorkspaceDiscoveryAvailability, observations: WorkspaceDiscoveryCompleteness, category: WorkspaceDiscoveryCompleteness, examined: number, diagnostics: Array<{ __typename?: 'WorkspaceDiscoveryDiagnostic', source: WorkspaceDiscoverySource, reason: WorkspaceDiscoveryReason, subject: string | null, affectsCoverage: boolean, guidance: string, permission: { __typename?: 'WorkspaceDiscoveryPermissionHint', permission: WorkspaceDiscoveryPermission, target: string, event: WorkspaceSettingsEvent | null, consent: WorkspaceDiscoveryConsent } | null }> }> } | null };
+
+export type NativeApplicationsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type NativeApplicationsQuery = { __typename?: 'Query', apps: { __typename?: 'WorkspaceApplicationsResult', status: WorkspaceDiscoveryStatus, resultsTruncated: boolean, items: Array<{ __typename?: 'WorkspaceApplicationChoice', name: string | null, applicationPath: string, bundleIdentifier: string | null, sources: Array<WorkspaceDiscoverySource> }> | null, sources: Array<{ __typename?: 'WorkspaceDiscoveryCoverage', source: WorkspaceDiscoverySource, declaredDomain: string, availability: WorkspaceDiscoveryAvailability, observations: WorkspaceDiscoveryCompleteness, category: WorkspaceDiscoveryCompleteness, examined: number, diagnostics: Array<{ __typename?: 'WorkspaceDiscoveryDiagnostic', source: WorkspaceDiscoverySource, reason: WorkspaceDiscoveryReason, subject: string | null, affectsCoverage: boolean, guidance: string, permission: { __typename?: 'WorkspaceDiscoveryPermissionHint', permission: WorkspaceDiscoveryPermission, target: string, event: WorkspaceSettingsEvent | null, consent: WorkspaceDiscoveryConsent } | null }> }> } | null };
 
 export type DesktopChoicesQueryVariables = Exact<{
   process: DesktopProcessIdentity;
@@ -438,6 +610,29 @@ export class TypedDocumentString<TResult, TVariables>
     return this.value;
   }
 }
+export const DiscoveryCoverageFragmentDoc = new TypedDocumentString(`
+    fragment DiscoveryCoverage on WorkspaceDiscoveryCoverage {
+  source
+  declaredDomain
+  availability
+  observations
+  category
+  examined
+  diagnostics {
+    source
+    reason
+    subject
+    affectsCoverage
+    guidance
+    permission {
+      permission
+      target
+      event
+      consent
+    }
+  }
+}
+    `, {"fragmentName":"DiscoveryCoverage"}) as unknown as TypedDocumentString<DiscoveryCoverageFragment, unknown>;
 export const WorkspaceOpenOutcomeFragmentDoc = new TypedDocumentString(`
     fragment WorkspaceOpenOutcome on WorkspaceOpenResult {
   status
@@ -453,6 +648,82 @@ export const WorkspaceOpenOutcomeFragmentDoc = new TypedDocumentString(`
   }
 }
     `, {"fragmentName":"WorkspaceOpenOutcome"}) as unknown as TypedDocumentString<WorkspaceOpenOutcomeFragment, unknown>;
+export const NativeStartingLocationsDocument = new TypedDocumentString(`
+    query NativeStartingLocations($requests: [WorkspaceLocationRequest!]) {
+  locations: workspaceSpecialLocations(requests: $requests) {
+    status
+    items {
+      kind
+      domain
+      accountIdentifier
+      location
+      contentsAvailability
+      sources
+    }
+    sources {
+      ...DiscoveryCoverage
+    }
+    resultsTruncated
+  }
+}
+    fragment DiscoveryCoverage on WorkspaceDiscoveryCoverage {
+  source
+  declaredDomain
+  availability
+  observations
+  category
+  examined
+  diagnostics {
+    source
+    reason
+    subject
+    affectsCoverage
+    guidance
+    permission {
+      permission
+      target
+      event
+      consent
+    }
+  }
+}`) as unknown as TypedDocumentString<NativeStartingLocationsQuery, NativeStartingLocationsQueryVariables>;
+export const NativeApplicationsDocument = new TypedDocumentString(`
+    query NativeApplications {
+  apps: workspaceApplications {
+    status
+    items {
+      name
+      applicationPath
+      bundleIdentifier
+      sources
+    }
+    sources {
+      ...DiscoveryCoverage
+    }
+    resultsTruncated
+  }
+}
+    fragment DiscoveryCoverage on WorkspaceDiscoveryCoverage {
+  source
+  declaredDomain
+  availability
+  observations
+  category
+  examined
+  diagnostics {
+    source
+    reason
+    subject
+    affectsCoverage
+    guidance
+    permission {
+      permission
+      target
+      event
+      consent
+    }
+  }
+}`) as unknown as TypedDocumentString<NativeApplicationsQuery, NativeApplicationsQueryVariables>;
 export const DesktopChoicesDocument = new TypedDocumentString(`
     query DesktopChoices($process: DesktopProcessIdentity!) {
   desktopApplication(process: $process) {

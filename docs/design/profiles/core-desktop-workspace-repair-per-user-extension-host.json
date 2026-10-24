@@ -5,8 +5,8 @@
   "comment": [
     "Held by scripts/verify-compat-pairs.py (`task compat:verify`) against the headless compatibility host of the",
     "RETAINED workspace 1.0.0 revision, and of this tree, each bundling the retained workspace 1.0.0 and given the",
-    "action-only repair, release/schema 1.0.1, approved per user: the same source as the shipped 1.0.1 with",
-    "`first-party-selection-v1` stated in its manifest and descriptor, as an earlier host requires of an update.",
+    "action-only repair, release/schema 1.0.1, approved per user: the source of the released Koine 0.3.0 (tag v0.3.0)",
+    "with `first-party-selection-v1` stated in its manifest and descriptor, as an earlier host requires of an update.",
     "The served schema is the repair's, so its digest is the repair composition's and differs from the retained",
     "1.0.0 one; the pins are what tell the binaries apart, because an identical digest cannot prove which binary ran.",
     "The retained 1.0.0 stays a candidate, REJECTED / NOT_SELECTED as superseded, and is never loaded."

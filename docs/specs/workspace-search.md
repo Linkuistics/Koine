@@ -188,7 +188,7 @@ Evidence so far:
 
 <!-- tc: depart synonym-rotation because "fixed" is the adjective of the term "fixed predicate", and "repair" in this document names another action -->
 
-The breadth source is one NSMetadataQuery. Its predicate is the fixed equality kMDItemContentTypeTree = com.apple.application-bundle on the application-bundle content-type tree. Its scope is NSMetadataQueryIndexedLocalComputerScope.
+The breadth source is one NSMetadataQuery. Its predicate is the fixed equality kMDItemContentTypeTree = com.apple.application-bundle on the application-bundle content-type tree. It sets no search scope, so the query has no limit on its scope. The indexed local computer scope was tried first. In a fresh guest it finished with no items and filled in about 75 seconds later, so a call could not wait for it.
 
 Read the fixed projection from the same returned NSMetadataItem. The projection is kMDItemPath, kMDItemContentTypeTree, kMDItemCFBundleIdentifier and kMDItemDisplayName. The indexed type, name and identifier are reported source facts. None of them establishes the identity of a bundle directory. No other attribute is admitted, and no client chooses an attribute or builds an item.
 
@@ -233,7 +233,7 @@ The status follows the coverage rules of "Coverage and frozen publication":
 
 An empty answer is never a complete empty inventory. The index can be disabled, excluded or rebuilding, and a finished gathering does not show otherwise. A `FAILED` result raises `failed` at each selected `items`, so omit `items` to read the status and the diagnostics. `resultsTruncated` is always false, because a failure reports no prefix.
 
-The result has one coverage source, `INDEXED_APPS`. Its `declaredDomain` is `indexed local computer applications`. Its `examined` is the number of items that the index returned, and it is 0 when none was copied. Its `category` is always `UNKNOWN`.
+The result has one coverage source, `INDEXED_APPS`. Its `declaredDomain` is `indexed applications`. Its `examined` is the number of items that the index returned, and it is 0 when none was copied. Its `category` is always `UNKNOWN`.
 
 The source is `AVAILABLE` and `COMPLETE` only when every item was usable. Each reason gives one diagnostic with a count in its guidance, a null subject and `affectsCoverage` true. A run has four reasons at most, so the diagnostics cannot reach the limit of 63 records.
 

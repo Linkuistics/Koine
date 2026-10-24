@@ -137,7 +137,7 @@ private func result(
 ) -> ProviderValue {
     let coverage: ProviderValue = .object([
         "source": .string(source),
-        "declaredDomain": .string("indexed local computer applications"),
+        "declaredDomain": .string("indexed applications"),
         "availability": .string(available ? "AVAILABLE" : "UNKNOWN"),
         "observations": .string(observations),
         // Whether the index holds every application is never established here.

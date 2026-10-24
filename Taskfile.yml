@@ -1541,6 +1541,12 @@ tasks:
     cmds:
       - scripts/vm-verify-launch-contract-client.sh
 
+  app:vm-verify-discovery:
+    desc: The V seam of the first cut of app and file search (Koine 0.4.0) in a clone of the prepared launcher image (task launchers:prepare, Gatekeeper ENFORCING, the twelve launchers installed), on the development-signed Koine.app through the contract-only client - the guest's own Spotlight index read and sampled until it settles BEFORE Koine reads, so a missing application is told apart from an index still building; a workspace:read grant and a workspace:control AND desktop:control grant enrolled through the window, each refused what the other reads or does; a value for each of the ten default locations; the catalogue holding Safari, Finder and the twelve launchers by identifier and path with its status and coverage; Notes launched through workspaceLaunchApplication with the catalogue's identifier and path while TextEdit is in front, an independent witness observing activation and the kernel's identity; and after every read the screen checked for a permission dialog naming Koine, which stops the run with status 4 for the human. Exits 5 when the settled index does not report Safari or Finder (the REGISTRATION lookup is needed) and 6 when the index had not settled
+    deps: [app, client]
+    cmds:
+      - scripts/vm-verify-discovery.sh
+
   conformance:
     desc: Hold three profiles (docs/design/profiles/; the third is the 1.0.1 workspace repair) to the schemas their hosts serve, each by type, field, argument, nullability, default, deprecation and description, its digest against the one Koine served, and its provider candidates against the pin kept apart from both - old-host core + desktop (the released host), extension-host core + desktop (this tree's headless host) and core + desktop + workspace (the signed Koine.app in a TestAnyware VM); each check first proves itself red against mutated copies of the contract and of the pins
     cmds:
@@ -1557,7 +1563,7 @@ tasks:
       - scripts/vm-verify-conformance.sh
 
   compat:
-    desc: Build and run the binary compatibility pairs (independently built old/new hosts and providers, the workspace 1.0.0 and 1.0.1 pairs among them) and repeat the retained workspace subjects against 1.0.1
+    desc: Build and run the binary compatibility pairs (independently built old/new hosts and providers, the workspace 1.0.0, 1.0.1 and 1.0.2 pairs among them, the released 0.3.0 host refusing 1.0.2 before it loads) and repeat the retained workspace subjects against the released 1.0.1
     cmds:
       - task: compat:build
       - task: compat:verify
@@ -1569,18 +1575,19 @@ tasks:
       - scripts/build-baseline-host.sh {{.CONFIGURATION | default "debug"}}
 
   compat:build:
-    desc: Build the retained workspace 1.0.0 (compat:workspace-baseline) and the released baseline (compat:baseline), then this tree's newer revision in a separate tree under .build/compat - its host, fixtures, workspace 1.0.1 as shipped and the same source stating first-party-selection-v1 as a per-user update - and the later fixtures (CONFIGURATION=debug|release)
+    desc: Build the retained workspace 1.0.0 (compat:workspace-baseline), the released Koine 0.3.0 with its workspace 1.0.1 (compat:workspace-release) and the released baseline (compat:baseline), then this tree's newer revision in a separate tree under .build/compat - its host, fixtures, workspace 1.0.2 as shipped and the same source stating first-party-selection-v1 as a per-user update - and the later fixtures (CONFIGURATION=debug|release)
     cmds:
       - task: compat:workspace-baseline
+      - task: compat:workspace-release
       - scripts/build-compat-pairs.sh {{.CONFIGURATION | default "debug"}}
 
   compat:verify:
-    desc: Pair each revision's provider with the other revision's headless host and check every case over loopback HTTP - the fixture pairs, and the workspace pairs - the retained 1.0.0 and this tree's 1.0.1 each under both hosts, and the approved per-user 1.0.1 variant over the bundled 1.0.0 in both - with the same locations probed through every one and the two releases compared (CONFIGURATION=debug|release; needs compat:build)
+    desc: Pair each revision's provider with the other revision's headless host and check every case over loopback HTTP - the fixture pairs, and the workspace pairs - the retained 1.0.0, the released 1.0.1 and this tree's 1.0.2 under the hosts that can serve them, the approved per-user 1.0.1 and 1.0.2 variants over the bundled 1.0.0, and the released Koine 0.3.0 host and the retained 1.0.0 host each refusing 1.0.2 before it loads and naming workspace-native-disclosures-v1 - with the same locations probed through every pair that serves a release and the releases compared (CONFIGURATION=debug|release; needs compat:build)
     cmds:
       - scripts/verify-compat-pairs.py {{.CONFIGURATION | default "debug"}}
 
   compat:workspace-subjects:
-    desc: Run the RETAINED workspace 1.0.0 revision's own short-path subjects (N, over the signed bundle) and composition suites (G), unedited, against this tree's workspace 1.0.1 bundle in a copy of that revision's tree; the instrument is first seen red against a 1.0.1 provider with the missing-path rule broken, and only the one assertion that names release 1.0.0 may fail (CONFIGURATION=debug|release; needs compat:build)
+    desc: Run the RETAINED workspace 1.0.0 revision's own short-path subjects (N, over the signed bundle) and composition suites (G), unedited, against the released Koine 0.3.0's workspace 1.0.1 bundle in a copy of that revision's tree (this tree's 1.0.2 needs a newer host than that copy builds); the instrument is first seen red against a 1.0.1 provider with the missing-path rule broken, and only the one assertion that names release 1.0.0 may fail (CONFIGURATION=debug|release; needs compat:build)
     cmds:
       - scripts/verify-repair-subjects.sh {{.CONFIGURATION | default "debug"}}
 
@@ -1588,6 +1595,11 @@ tasks:
     desc: Build the RETAINED workspace 1.0.0 provider from the revision scripts/retained-workspace-1.0.0.json pins (jj tag workspace-1.0.0-baseline), never from this working tree, in a tree of its own under .build/compat/<configuration>/workspace-1.0.0 - that revision's host, framework and desktop provider, and its sealed, approved Desktop and Workspace bundles kept apart in bundled/ with a record of their digests; the old side of every workspace old/new pair (CONFIGURATION=debug|release)
     cmds:
       - scripts/build-retained-workspace.sh {{.CONFIGURATION | default "debug"}}
+
+  compat:workspace-release:
+    desc: Build the released Koine 0.3.0 (the revision scripts/retained-workspace-1.0.1.json pins, tag v0.3.0), never from this working tree, in a tree of its own under .build/compat/<configuration>/workspace-1.0.1 - its host, framework and desktop provider, its sealed, approved Desktop and Workspace 1.0.1 bundles kept apart in bundled/ with a record of their digests; the released host that refuses this tree's workspace 1.0.2, and the old side of the 1.0.1 pairs (CONFIGURATION=debug|release)
+    cmds:
+      - scripts/build-retained-workspace.sh {{.CONFIGURATION | default "debug"}} scripts/retained-workspace-1.0.1.json
 
   compat:workspace-baseline-verify:
     desc: Hold the retained workspace 1.0.0 bundle to what it shipped with - its pinned identity and SDL, the 1.0.0 profile served by that revision's own host bundling it, and that revision's workspace suites (logic, composition, installations, schema and catalogue conformance, and the short-path N subjects loading the bundle) - each first seen red against a mutated copy (CONFIGURATION=debug|release; needs compat:workspace-baseline)

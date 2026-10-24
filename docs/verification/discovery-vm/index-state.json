@@ -1,0 +1,67 @@
+{
+  "mdutil": "/: \tIndex is read-only.",
+  "applicationBundles": 327,
+  "present": {
+    "com.apple.Safari": [
+      "/Applications/Safari.app"
+    ],
+    "com.apple.finder": [
+      "/System/Library/CoreServices/Finder.app"
+    ],
+    "company.thebrowser.dia": [
+      "/Applications/Dia.app"
+    ],
+    "com.openai.codex": [
+      "/Applications/ChatGPT.app"
+    ],
+    "com.anthropic.claudefordesktop": [
+      "/Applications/Claude.app"
+    ],
+    "dev.zed.Zed": [
+      "/Applications/Zed.app"
+    ],
+    "com.microsoft.VSCode": [
+      "/Applications/Visual Studio Code.app"
+    ],
+    "com.p5sys.jump.mac.viewer.web": [
+      "/Applications/Jump Desktop.app"
+    ],
+    "com.moonshot.kimichat": [
+      "/Applications/Kimi.app"
+    ],
+    "com.googlecode.iterm2": [
+      "/Applications/iTerm.app"
+    ],
+    "com.apple.mail": [
+      "/System/Applications/Mail.app"
+    ],
+    "com.apple.Notes": [
+      "/System/Applications/Notes.app"
+    ],
+    "md.obsidian": [
+      "/Applications/Obsidian.app"
+    ],
+    "org.zotero.zotero": [
+      "/Applications/Zotero.app"
+    ]
+  },
+  "samples": [
+    {
+      "atSeconds": 1,
+      "applicationBundles": 327
+    },
+    {
+      "atSeconds": 21,
+      "applicationBundles": 327
+    },
+    {
+      "atSeconds": 41,
+      "applicationBundles": 327
+    },
+    {
+      "atSeconds": 62,
+      "applicationBundles": 327
+    }
+  ],
+  "settled": true
+}

@@ -1,0 +1,42 @@
+{
+  "name": "extension-host core + desktop + workspace 1.0.2 approved per user over the bundled 1.0.0",
+  "design": "../desktop-workspace-discovery-schema-extension-host.graphql",
+  "management": "extended",
+  "comment": [
+    "Held by scripts/verify-compat-pairs.py (`task compat:verify`) against the headless compatibility host of this tree,",
+    "bundling the retained workspace 1.0.0 and given workspace release/schema 1.0.2 approved per user: the same source as",
+    "the shipped 1.0.2 with `first-party-selection-v1` stated in its manifest and descriptor, as an earlier host requires",
+    "of an update. The served schema is the discovery composition's, so its digest is that composition's. The pins are",
+    "what tell the binaries apart, because an identical digest cannot prove which binary ran. The retained 1.0.0 stays a",
+    "candidate, REJECTED / NOT_SELECTED as superseded, and is never loaded."
+  ],
+  "providers": [
+    {
+      "provider": "desktop",
+      "version": "1.0.0",
+      "schemaVersion": "1.0.0",
+      "state": "ACTIVE",
+      "origin": "BUNDLED",
+      "selection": "SELECTED",
+      "reason": null
+    },
+    {
+      "provider": "workspace",
+      "version": "1.0.2",
+      "schemaVersion": "1.0.2",
+      "state": "ACTIVE",
+      "origin": "PER_USER",
+      "selection": "SELECTED",
+      "reason": null
+    },
+    {
+      "provider": "workspace",
+      "version": "1.0.0",
+      "schemaVersion": "1.0.0",
+      "state": "REJECTED",
+      "origin": "BUNDLED",
+      "selection": "NOT_SELECTED",
+      "reason": "superseded-candidate"
+    }
+  ]
+}

@@ -30,6 +30,11 @@ const WORKSPACE_OPERATIONS_USED: readonly string[] = [
   'OpenDocumentOrDirectory',
   'RevealPath',
 ];
+// The discovery reads of Koine 0.4.0 are published in the search design's operations file, which also
+// declares operations whose roots a later cut serves, so the same rule applies: this client names the two
+// it uses, and the file's own text and the fragment they spread are generated.
+const WORKSPACE_SEARCH_OPERATIONS = '../../docs/design/workspace-search-operations.graphql';
+const WORKSPACE_SEARCH_OPERATIONS_USED: readonly string[] = ['NativeStartingLocations', 'NativeApplications'];
 
 function servedRootFields(): ReadonlySet<string> {
   const introspection = JSON.parse(readFileSync('./capture/introspection.json', 'utf8')) as {
@@ -107,7 +112,11 @@ function pickPublished(path: string, used: readonly string[]): string {
 
 const config: CodegenConfig = {
   schema: './capture/introspection.json',
-  documents: [DESKTOP_OPERATIONS, pickPublished(WORKSPACE_OPERATIONS, WORKSPACE_OPERATIONS_USED)],
+  documents: [
+    DESKTOP_OPERATIONS,
+    pickPublished(WORKSPACE_OPERATIONS, WORKSPACE_OPERATIONS_USED),
+    pickPublished(WORKSPACE_SEARCH_OPERATIONS, WORKSPACE_SEARCH_OPERATIONS_USED),
+  ],
   ignoreNoDocuments: false,
   generates: {
     './src/generated/graphql.ts': {

@@ -10,7 +10,7 @@
 #                           sealed under dev.antony.Koine.provider.desktop: the old
 #                           designated baseline a selection-aware host is given
 #   current-desktop         this tree's desktop provider (release 1.0.0), sealed the same
-#   current-workspace       this tree's workspace provider (release/schema 1.0.1, the action-only repair)
+#   current-workspace       this tree's workspace provider (release/schema 1.0.2, the repaired actions and the discovery reads)
 #   desktop-update          a NEWER release of the same source: 1.1.0, and the feature
 #   workspace-update        `first-party-selection-v1` stated in its manifest AND its
 #                           descriptor, as every newly published first-party update must

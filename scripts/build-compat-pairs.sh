@@ -10,13 +10,15 @@
 #             `additional-capabilities-v1`, with its host and fixture
 #   later     later revisions of the fixture, from the newer tree's source, each
 #             compiled against the framework its name says
-#   workspace the newer tree's workspace provider (release/schema 1.0.1), sealed and
+#   workspace the newer tree's workspace provider (release/schema 1.0.2), sealed and
 #             approved as the application seals it (newer/products/WorkspaceProviders),
 #             and the same source stating first-party-selection-v1, which an earlier
 #             host requires of a per-user update (newer/workspace-per-user). Its old
-#             side is the RETAINED 1.0.0 bundle scripts/build-retained-workspace.sh
-#             keeps apart under workspace-1.0.0: it must exist first, and is never
-#             rebuilt here.
+#             sides are the RETAINED 1.0.0 bundle and the released Koine 0.3.0, whose
+#             host refuses 1.0.2 and whose workspace is 1.0.1: scripts/build-retained-workspace.sh
+#             keeps them apart under workspace-1.0.0 and workspace-1.0.1. Both must
+#             exist first, and neither is rebuilt here. The released tree's own source
+#             also gives the 1.0.1 per-user variant (workspace-1.0.1/workspace-per-user).
 #
 # Nothing built in one tree sees the other: a pair is put together only when
 # scripts/verify-compat-pairs.py installs one tree's bundle under the other
@@ -32,6 +34,10 @@ PAIRS="$(pwd)/.build/compat/${CONFIGURATION}"
 mkdir -p "${PAIRS}"
 [ -f "${PAIRS}/workspace-1.0.0/retained.json" ] || {
     echo "Error: ${PAIRS}/workspace-1.0.0/retained.json does not exist. Run: task compat:workspace-baseline" >&2
+    exit 1
+}
+[ -f "${PAIRS}/workspace-1.0.1/retained.json" ] || {
+    echo "Error: ${PAIRS}/workspace-1.0.1/retained.json does not exist. Run: task compat:workspace-release" >&2
     exit 1
 }
 
@@ -117,6 +123,26 @@ unset FIXTURE_ADDITIONAL
     mkdir -p "${PAIRS}/newer/workspace-per-user"
     cp -R "${VARIANT}" "${PAIRS}/newer/workspace-per-user/"
     Fixtures/FixtureProvider/seal.sh "${PAIRS}/newer/workspace-per-user/Workspace.koineprovider" >&2
+)
+
+# The released Koine 0.3.0's workspace 1.0.1 stating the feature, as a per-user update of it: the released
+# tree's own source, helpers and build definition (its first-party-update-lib.sh names its own descriptor
+# line), so nothing of this tree's 1.0.2 is in it. The released tree is only ever read for this, never edited.
+(
+    cd "${PAIRS}/workspace-1.0.1/src"
+    WORK="$(mktemp -d)"
+    trap 'rm -rf "${WORK}"' EXIT
+    # shellcheck source=scripts/first-party-update-lib.sh
+    source scripts/first-party-update-lib.sh
+    PRODUCTS="$(cd "${PAIRS}/workspace-1.0.1/products" && pwd -P)"
+    rm -rf "${PAIRS}/workspace-1.0.1/workspace-per-user"
+    VARIANT_TREE="$(tree variant)"
+    state_feature_in_workspace "${VARIANT_TREE}"
+    VARIANT="$("${VARIANT_TREE}/Providers/WorkspaceProvider/build.sh" "${PRODUCTS}/PackageFrameworks" "${WORK}/variant")"
+    edit "${VARIANT}" "m['requiredFeatures'] = m['requiredFeatures'] + ['${FEATURE}']"
+    mkdir -p "${PAIRS}/workspace-1.0.1/workspace-per-user"
+    cp -R "${VARIANT}" "${PAIRS}/workspace-1.0.1/workspace-per-user/"
+    Fixtures/FixtureProvider/seal.sh "${PAIRS}/workspace-1.0.1/workspace-per-user/Workspace.koineprovider" >&2
 )
 
 echo "${PAIRS}"

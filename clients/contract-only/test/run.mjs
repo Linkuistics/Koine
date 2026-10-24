@@ -9,6 +9,7 @@ import { LAUNCH_ANSWERS, PROCESS } from './launch-stubs.mjs';
 import { OPEN_URL_ANSWERS } from './open-url-stubs.mjs';
 import { OPEN_PATH_ANSWERS } from './open-path-stubs.mjs';
 import { REVEAL_ANSWERS, echo as revealEcho } from './reveal-stubs.mjs';
+import { DISCOVERY_ANSWERS } from './discovery-stubs.mjs';
 import { startSuggestionSources } from './suggestion-stubs.mjs';
 
 const run = promisify(execFile);
@@ -53,6 +54,8 @@ let openPathMode = 'available-process';
 const openPathRequests = [];
 let revealMode = 'available';
 const revealRequests = [];
+let discoveryMode = 'apps-partial';
+const discoveryRequests = [];
 const stub = await startStub(({ request, auth }) => {
   const name = request.operationName;
   if (name === 'LaunchInstalledApplication') {
@@ -70,6 +73,10 @@ const stub = await startStub(({ request, auth }) => {
   if (name === 'RevealPath') {
     revealRequests.push({ request, auth });
     return REVEAL_ANSWERS[revealMode]();
+  }
+  if (name === 'NativeStartingLocations' || name === 'NativeApplications') {
+    discoveryRequests.push({ request, auth });
+    return DISCOVERY_ANSWERS[discoveryMode]();
   }
   if (name === 'DesktopChoices' && choicesNull) {
     return { status: 200, body: { data: { desktopApplication: null }, _process: request.variables.process } };
@@ -947,6 +954,76 @@ for (const raw of ['', 'relative/notes.txt', '~/notes.txt', 'file:///tmp/notes.t
   }
 }
 revealMode = 'available';
+
+// --- locations and applications -----------------------------------------
+// The two read roots of Koine 0.4.0, each asked as its published operation asks (test/discovery-stubs.mjs).
+// A read changes nothing, so every case sends exactly one request and the facts carry no action effect.
+const DISCOVERY_KEYS = ['credential', 'sentMs', 'receivedMs', 'status', 'items', 'sources', 'resultsTruncated', 'requiredCapability', 'requiredCapabilities', 'phase', 'resultErrorPaths', 'contractViolation', 'endpoint', 'http', 'response', 'errors', 'transport', 'outcomeUnknown'];
+// [stub, command, classification, status, extra checks]
+const discoveryCases = [
+  ['locations-available', 'locations', 'ok', 'AVAILABLE', (r) => {
+    check('locations available: ten items, each a kind, domain, account, location and sources, as served', r.items.length === 10 && r.items.every((i) => ['kind', 'domain', 'accountIdentifier', 'location', 'contentsAvailability', 'sources'].every((k) => k in i)), r.items);
+    check('locations available: a returned location is a value, never an assurance about its contents', r.items.every((i) => i.contentsAvailability === 'UNKNOWN'), r.items.map((i) => i.contentsAvailability));
+  }],
+  ['apps-partial', 'applications', 'ok', 'PARTIAL', (r) => {
+    check('applications partial: the three choices are copied as served', r.items.length === 3 && r.items[0].bundleIdentifier === 'com.apple.Safari' && r.items[0].applicationPath === '/Applications/Safari.app', r.items);
+    check('applications partial: the coverage keeps category UNKNOWN, so the list is not a complete inventory', r.sources[0].category === 'UNKNOWN' && r.sources[0].observations === 'PARTIAL', r.sources);
+  }],
+  ['apps-unknown', 'applications', 'ok', 'UNKNOWN', (r) => {
+    check('applications unknown: items stay null and are never turned into an empty list', r.items === null && r.sources[0].observations === 'UNKNOWN', r);
+  }],
+  ['apps-failed', 'applications', 'failed', 'FAILED', (r) => {
+    check('applications failed: the error is at items and kept, and the diagnostic reason is the time limit', JSON.stringify(r.errors[0].path) === JSON.stringify(['apps', 'items']) && r.items === null && r.sources[0].diagnostics[0].reason === 'TIME_LIMIT', r);
+  }],
+  ['apps-denied-preflight', 'applications', 'capability-denied', null, (r) => {
+    check('applications denied: HTTP 403, no data, the first unmet and the complete set are workspace:read', r.http.status === 403 && r.response.data === undefined && r.requiredCapability === 'workspace:read' && JSON.stringify(r.requiredCapabilities) === JSON.stringify(['workspace:read']) && r.phase === 'authorization', r);
+  }],
+  ['locations-denied-preflight', 'locations', 'capability-denied', null, (r) => {
+    check('locations denied: HTTP 403 and the same one capability', r.http.status === 403 && r.requiredCapability === 'workspace:read', r);
+  }],
+  ['apps-denied-revoked', 'applications', 'capability-denied', null, (r) => {
+    check('applications revoked before dispatch: phase execution, HTTP 200, no items', r.phase === 'execution' && r.http.status === 200 && r.items === null, r);
+  }],
+  ['null-root', 'applications', 'failed', null, (r) => { check('applications null root with no error is not absence, and names its root', r.classification !== 'absent' && r.contractViolation.includes('apps'), r.contractViolation); }],
+  ['no-root', 'applications', 'failed', null, (r) => { check('applications with no result and no error: a contract violation', r.contractViolation !== null, r); }],
+  ['unknown-status', 'applications', 'failed', 'COMPLETE', (r) => { check('applications a status that is not in the enum: a violation, never an answer', r.contractViolation !== null && r.contractViolation.includes('WorkspaceDiscoveryStatus'), r); }],
+  ['available-without-items', 'applications', 'failed', 'AVAILABLE', (r) => { check('applications AVAILABLE without items: a contract violation', r.contractViolation !== null, r); }],
+  ['sources-not-a-list', 'applications', 'failed', 'PARTIAL', (r) => { check('applications without coverage: a contract violation, since coverage is what tells empty from unknown', r.contractViolation !== null, r); }],
+];
+for (const [name, command, classification, status, extra] of discoveryCases) {
+  discoveryMode = name;
+  const before = discoveryRequests.length;
+  const before_ms = Date.now();
+  const { result, stdout } = await cli(stub.descriptor, [command, '--secret', secret]);
+  const after_ms = Date.now();
+  check(`${command} ${name}: exactly one request, never replayed`, discoveryRequests.length - before === 1, discoveryRequests.length - before);
+  check(`${command} ${name}: classification ${classification}`, result.classification === classification, result.classification);
+  check(`${command} ${name}: status ${status}`, result.status === status, result.status);
+  check(`${command} ${name}: command, ok`, result.command === command && result.ok === (result.classification === 'ok'));
+  check(`${command} ${name}: timing fields`, Number.isInteger(result.sentMs) && before_ms <= result.sentMs && result.sentMs <= result.receivedMs && result.receivedMs <= after_ms, [before_ms, result.sentMs, result.receivedMs, after_ms]);
+  check(`${command} ${name}: secret never printed`, !stdout.includes(secretTextForLaunch));
+  check(`${command} ${name}: common fields present`, DISCOVERY_KEYS.every((k) => k in result), DISCOVERY_KEYS.filter((k) => !(k in result)));
+  extra(result);
+}
+// The request itself: the published operation, no variable unless a pair is asked for, the bearer.
+{
+  discoveryMode = 'apps-partial';
+  await cli(stub.descriptor, ['applications', '--secret', secret]);
+  const sent = discoveryRequests.at(-1);
+  check('applications request: the published operation, its one root and no variable', sent.request.operationName === 'NativeApplications' && sent.request.variables === undefined && sent.request.query.includes('workspaceApplications') && !sent.request.query.includes('workspaceSpecialLocations') && !sent.request.query.includes('mutation'), sent.request);
+  check('applications request: bearer presented', sent.auth !== null && sent.auth.startsWith('Bearer '));
+  discoveryMode = 'locations-available';
+  await cli(stub.descriptor, ['locations', '--secret', secret]);
+  const defaults = discoveryRequests.at(-1);
+  check('locations request: the published operation, with no requests so the server answers its ten pairs', defaults.request.operationName === 'NativeStartingLocations' && defaults.request.variables === undefined && defaults.request.query.includes('workspaceSpecialLocations(requests: $requests)'), defaults.request);
+  await cli(stub.descriptor, ['locations', '--secret', secret, '--kind', 'DOCUMENTS', '--domain', 'USER']);
+  const asked = discoveryRequests.at(-1);
+  check('locations request: one asked pair is sent as the one request', JSON.stringify(asked.request.variables) === JSON.stringify({ requests: [{ kind: 'DOCUMENTS', domain: 'USER' }] }), asked.request.variables);
+  const before = discoveryRequests.length;
+  const lone = await cli(stub.descriptor, ['locations', '--secret', secret, '--kind', 'DOCUMENTS']);
+  check('locations usage: a kind without a domain is a request error and nothing is sent', lone.result.classification === 'request-error' && discoveryRequests.length === before, lone.result);
+}
+discoveryMode = 'apps-partial';
 
 // --- search -------------------------------------------------------------
 // The client-owned flow. Whatever the suggestion source does, exactly one

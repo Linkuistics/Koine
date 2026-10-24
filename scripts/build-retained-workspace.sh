@@ -1,9 +1,12 @@
 #!/bin/bash
-# Builds the RETAINED workspace 1.0.0 provider, the old side of every workspace
-# old/new pair, from the revision scripts/retained-workspace-1.0.0.json pins, never
-# from this working tree: the long-location repair changes the provider source, and
-# a binary rebuilt from changed source and called 1.0.0 would retain nothing
-# (docs/specs/workspace-launch-and-open.md#subjects-and-versions).
+# Builds a RETAINED workspace provider, the old side of every workspace old/new
+# pair, from the revision a pin file names, never from this working tree: a binary
+# rebuilt from changed source and called by an old release would retain nothing
+# (docs/specs/workspace-launch-and-open.md#subjects-and-versions). Two pins exist:
+#   scripts/retained-workspace-1.0.0.json   workspace 1.0.0, before the long-location repair
+#   scripts/retained-workspace-1.0.1.json   workspace 1.0.1, as the released Koine 0.3.0 shipped it
+# The second revision is also the released 0.3.0 host: its host, framework and desktop
+# provider are what the new workspace bundle is shown to be refused by.
 #
 # The pinned revision's files are extracted into a tree of their own with a build
 # directory of their own, and built there by that revision's own scripts, as
@@ -13,25 +16,25 @@
 # helper as source) that `jj file show` would flatten, so no colocated git checkout
 # is needed: `jj git root` names the store.
 #
-# Under .build/compat/<configuration>/workspace-1.0.0:
+# Under .build/compat/<configuration>/workspace-<release>:
 #   src/            the extracted revision and its .build
 #   products        the tree's build products (host, framework, desktop provider)
 #   bundled/        the sealed, approved Desktop and Workspace bundles: what the
 #                   retained host bundles, and what a later pair installs
 #   retained.json   the record: revision, release, signing identifier, digests
 #
-# usage: build-retained-workspace.sh [debug|release]   (prints the directory)
+# usage: build-retained-workspace.sh [debug|release] [pin file]   (prints the directory)
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
 CONFIGURATION="${1:-debug}"
-PIN="scripts/retained-workspace-1.0.0.json"
+PIN="${2:-scripts/retained-workspace-1.0.0.json}"
 COMMIT="$(jq -r .commit "${PIN}")"
 TAG="$(jq -r .tag "${PIN}")"
 RELEASE="$(jq -r .release "${PIN}")"
 SCHEMA="$(jq -r .schemaVersion "${PIN}")"
 IDENTIFIER="$(jq -r .signingIdentifier "${PIN}")"
-DIRECTORY="$(pwd)/.build/compat/${CONFIGURATION}/workspace-1.0.0"
+DIRECTORY="$(pwd)/.build/compat/${CONFIGURATION}/workspace-${RELEASE}"
 TREE="${DIRECTORY}/src"
 
 # The pinned commit must be one this repository holds, and the tag, where this

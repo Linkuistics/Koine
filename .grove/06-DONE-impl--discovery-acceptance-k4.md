@@ -66,3 +66,43 @@ One happy-path TestAnyware VM run passes.
   `aBundleWithinTheLimitWhoseInfoPlistIsTooLongForThePlatformIsFailedNamingTheCause`
   at length 1023. On macOS 27 the platform words that refusal differently
   ("the file name … is invalid") from the macOS 26.5 text that the test expects.
+
+## Decisions (running log)
+
+- **The released 0.3.0 tree is the source of the retained 1.0.1 bundle.** The tag
+  `v0.3.0` (commit `efcc06023dd28edfc6300f6a90be42f8c3acec83`) ships workspace
+  1.0.1. The pin file `scripts/retained-workspace-1.0.1.json` names it. The task
+  `compat:workspace-release` builds it.
+- **Workspace 1.0.2 cannot be the subject of the repair tests.** The script
+  `scripts/verify-repair-subjects.sh` takes the released 1.0.1 bundle as its subject.
+  Its header says why.
+- **A new per-user profile covers 1.0.2.** The file is
+  `docs/design/profiles/core-desktop-workspace-discovery-per-user-extension-host.json`.
+  The four selection profiles now pin workspace 1.0.2.
+- **The old hosts refuse the 1.0.2 bundle with `feature-unavailable`.** The refused
+  row is `INCOMPATIBLE`. A second placeholder row has the reason `no-eligible-candidate`.
+  The checker reads the diagnostic on the `INCOMPATIBLE` row.
+- **The first real V run found that the index adapter returned nothing.** The guest's
+  own `mdfind` listed 327 application bundles, and Koine's catalogue read finished
+  with no items and the status `UNKNOWN`. A probe in the guest showed the cause.
+  Under `NSMetadataQueryIndexedLocalComputerScope`, the gathering finishes with 0 items,
+  and the full list arrives by updates about 75 seconds later. With no scope set, all
+  327 arrive at once. The evidence is in `docs/verification/discovery-vm/scope-probe.txt`.
+- **The human chose to leave the search scope unset.** The adapter, its comments, the
+  coverage `declaredDomain` (now `indexed applications`), its test, three schema
+  descriptions and the search spec changed. The disclosure still says "local disks",
+  and an unset scope also reaches network volumes. That gap belongs with issue 13.
+  The root certificate keeps the designed scope call. Its cost bound still holds,
+  because the change removes one call.
+- **The V script had two mistakes of its own.** A field-level denial arrives as HTTP 200,
+  not 403. A sample of the guest index now has three attempts. The contract client now
+  exits after its output drains, because the larger schema made `introspect` output
+  pass 64 KiB.
+- **TestAnyware 2.6.0 broke input to the guests.** Issue 12 of `Linkuistics/TestAnyware`
+  records it, and 2.7.0 closed it. The capture and the V run then worked.
+- **The V run passed on 2026-10-27.** Safari and Finder are in the settled index of 327
+  bundles, so the `REGISTRATION` lookup stays unbuilt. No permission dialog named Koine.
+  The record is `docs/verification/discovery-vm.md`.
+- **The N seam ran again after the scope change.** `compat:verify` ran 37 cases with 0
+  failed checks. `compat:workspace-subjects` passed. The three `selection` tasks ran 153,
+  134 and 119 host runs with 0 failed, and `selection:mutation` saw every mutation.

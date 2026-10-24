@@ -7,8 +7,11 @@
 # dangling link, a loop, an application that is absent or the wrong one, every refusal) and
 # `WorkspaceCompositionTests` and `WorkspaceInstallationsCompositionTests` (G). They run in a copy
 # of the retained tree (never this tree's tests), built on their own, with the in-application root
-# holding the retained desktop provider and THIS tree's workspace 1.0.1 as the sealed, approved
-# bundle the application would ship (scripts/build-compat-pairs.sh).
+# holding the retained desktop provider and the released Koine 0.3.0's workspace 1.0.1 as the
+# sealed, approved bundle that application shipped (scripts/build-retained-workspace.sh with
+# scripts/retained-workspace-1.0.1.json). It is not this tree's workspace 1.0.2: that bundle needs
+# `workspace-native-disclosures-v1`, which no host the retained revision builds advertises, so
+# 1.0.2 is refused by design and its short-path workflows are held by this tree's own suites.
 #
 # Two inputs of those suites name the release the bundle is, and are the repair's own changes:
 # the shipped catalogue the suites hold the bundle to (App/ProviderCatalogue.json of the copy,
@@ -32,7 +35,7 @@ CONFIGURATION="${1:-debug}"
 REPOSITORY="$(pwd)"
 PAIRS="${REPOSITORY}/.build/compat/${CONFIGURATION}"
 RETAINED="${PAIRS}/workspace-1.0.0"
-NEWER="${PAIRS}/newer"
+RELEASED="${PAIRS}/workspace-1.0.1"
 SUBJECTS="${PAIRS}/workspace-1.0.1-subjects"
 TREE="${SUBJECTS}/src"
 PIN="scripts/retained-workspace-1.0.0.json"
@@ -42,9 +45,10 @@ step() { printf '\n== %s\n' "$*"; }
 fail() { printf 'FAILED: %s\n' "$*" >&2; exit 1; }
 
 [ -f "${RETAINED}/retained.json" ] || fail "${RETAINED}/retained.json does not exist. Run: task compat:workspace-baseline"
-[ -d "${NEWER}/products/WorkspaceProviders/Workspace.koineprovider" ] ||
-    fail "this tree's workspace bundle is not built. Run: task compat:build"
-SHIPPED="${NEWER}/products/WorkspaceProviders"
+[ -f "${RELEASED}/retained.json" ] || fail "${RELEASED}/retained.json does not exist. Run: task compat:workspace-release"
+[ -d "${RELEASED}/bundled/Workspace.koineprovider" ] ||
+    fail "the released Koine 0.3.0's workspace bundle is not built. Run: task compat:workspace-release"
+SHIPPED="${RELEASED}/bundled"
 sha() { shasum -a 256 "$1" | cut -d' ' -f1; }
 
 WORK="$(mktemp -d)"
@@ -69,7 +73,7 @@ diff -r "${RETAINED}/src/Tests" "${TREE}/Tests" >/dev/null || fail "the tests we
 echo "  revision $(jq -r .commit "${PIN}"), Tests identical to the retained tree's"
 
 step "Move the copy's catalogue entry for workspace to the repair's release and schema"
-python3 - "${TREE}/App/ProviderCatalogue.json" "${NEWER}/src/App/ProviderCatalogue.json" <<'PY'
+python3 - "${TREE}/App/ProviderCatalogue.json" "${RELEASED}/src/App/ProviderCatalogue.json" <<'PY'
 import json, sys
 copy_path, shipped_path = sys.argv[1:3]
 with open(copy_path) as file:
@@ -109,9 +113,9 @@ run_suites() { (cd "${TREE}" && swift test -c "${CONFIGURATION}" --skip-build --
 
 step "Control: a 1.0.1 provider that reads a missing component as a failure must fail the missing-path subjects"
 mkdir -p "${WORK}/mutated-tree/scripts" "${WORK}/mutated-tree/App"
-cp -R "${NEWER}/src/Providers" "${WORK}/mutated-tree/Providers"
-cp "${NEWER}/src/scripts/signing-env.sh" "${WORK}/mutated-tree/scripts/"
-cp "${NEWER}/src/App/Info.plist" "${WORK}/mutated-tree/App/"
+cp -R "${RELEASED}/src/Providers" "${WORK}/mutated-tree/Providers"
+cp "${RELEASED}/src/scripts/signing-env.sh" "${WORK}/mutated-tree/scripts/"
+cp "${RELEASED}/src/App/Info.plist" "${WORK}/mutated-tree/App/"
 python3 - "${WORK}/mutated-tree/Providers/WorkspaceProvider/Logic/LocationWalk.swift" <<'PY'
 import sys
 path = sys.argv[1]
@@ -122,8 +126,8 @@ if broken == text:
     raise SystemExit("the mutation changes nothing in the provider")
 open(path, "w").write(broken)
 PY
-MUTATED="$("${WORK}/mutated-tree/Providers/WorkspaceProvider/build.sh" "${NEWER}/products/PackageFrameworks" "${WORK}/mutated-out")"
-(cd "${NEWER}/src" && Fixtures/FixtureProvider/seal.sh "${MUTATED}")
+MUTATED="$("${WORK}/mutated-tree/Providers/WorkspaceProvider/build.sh" "${RELEASED}/products/PackageFrameworks" "${WORK}/mutated-out")"
+(cd "${RELEASED}/src" && Fixtures/FixtureProvider/seal.sh "${MUTATED}")
 install_bundled "${WORK}/mutated-out"
 if run_suites 'WorkspaceProviderTests' >"${OUT}/mutated.log"; then
     tail -20 "${OUT}/mutated.log" | sed 's/^/  /'

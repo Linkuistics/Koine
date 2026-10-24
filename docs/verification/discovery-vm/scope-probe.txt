@@ -1,0 +1,21 @@
+Probe: one NSMetadataQuery in a fresh guest process, in a clone of koine-launchers-prepared (macOS 27.0.1, 26A434).
+
+Predicate: kMDItemContentTypeTree == com.apple.application-bundle. Source: scope-probe.swift.
+
+Items at the finish-gathering notification, and the item counts of later update notifications, by search scope:
+
+  IndexedLocalComputerScope (the adapter's first choice): 0 at finish. 1 at 1.1 s (Safari only). 21 at 48.6 s. 305 at 49.6 s. 324 at 74.1 s. 327 at 75.1 s.
+
+  IndexedLocalComputerScope, predicate written as a literal: 0 at finish. 1 at 1.1 s.
+
+  IndexedLocalComputerScope, started on the main run loop: 0 at finish. 1 at 1.1 s.
+
+  LocalComputerScope: 305 at finish. 324 at 7.6 s.
+
+  No scope set (the SDK default, "no limitation on its search scope"): 327 at finish, at 0.01 s.
+
+  Two file URLs, /Applications and /System/Applications: 76 at finish.
+
+The guest's own mdfind, which uses no scope, listed 326 to 327 bundles.
+
+SDK header NSMetadata.h line 30: "By default, the receiver has no limitation on its search scope."
