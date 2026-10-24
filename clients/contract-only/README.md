@@ -1,5 +1,7 @@
 # koine-client
 
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
+
 A GraphQL client for Koine's `koine-desktop/1` contract, written entirely from
 the published contract documents: the Machine, workspace-launch-and-open and
 workflow-provider specs, the client guide, `desktop-operations.graphql` and
@@ -19,23 +21,19 @@ it is `open-path` with the receipt `{ path }` in place of `{ process }`, read by
 `src/adapter/workspace-reveal.ts` under the same rules, so it carries no findings document and
 its independence from the repository is not claimed.
 
+<!-- tc: on -->
+
 ## Regenerated against
 
-`capture/` holds the response of the signed Koine.app serving **core + desktop +
-workspace**, where the workspace part is the complete design: all four roots
-(`workspaceLaunchApplication`, `workspaceOpenURL`, `workspaceOpenPath`,
-`workspaceRevealPath`) and the types they reach: `WorkspaceApplicationInput`,
-`WorkspaceOpenResult`, `WorkspaceRevealResult`, `WorkspaceOperationStatus`,
-`WorkspaceOpenReceipt`, `WorkspaceRevealReceipt`, `WorkspaceProcessIdentity`,
-`WorkspaceDependencyUnavailable`, `WorkspaceDependencyReason`, served by workspace
-release/schema **1.0.1** (the action-only long-location repair: the same shapes, error kinds and
-enums as 1.0.0, with the three action descriptions extended). Contract
-`koine-desktop/1`, schema digest
-`0a489328533ad17dcb54f2a81e1828588bfebd203da32cac11da57752e91f8d2`; the retained 1.0.0 served
-`3bab3a0457329647e795ab04bdd52580d43e35841f0179aea1b83f9eb222a733`, so a client that pins the digest sees the repair.
+`capture/` holds the response of the signed Koine.app that serves core, desktop and workspace. The workspace part is the complete design of that release. It has the four action roots `workspaceLaunchApplication`, `workspaceOpenURL`, `workspaceOpenPath` and `workspaceRevealPath`. It also has the types that those roots reach. They are `WorkspaceApplicationInput`, `WorkspaceOpenResult`, `WorkspaceRevealResult`, `WorkspaceOperationStatus`, `WorkspaceOpenReceipt`, `WorkspaceRevealReceipt`, `WorkspaceProcessIdentity`, `WorkspaceDependencyUnavailable` and `WorkspaceDependencyReason`.
 
-It builds to one dependency-free ES module, `dist/koine-client.mjs`, which runs
-on macOS arm64 under Node 24 with nothing installed beside it.
+Workspace release and schema 1.0.1 served this capture. It is the action-only long-location repair. It has the same shapes, error kinds and enums as 1.0.0, and the three action descriptions are longer.
+
+The contract is `koine-desktop/1`. The schema digest is `0a489328533ad17dcb54f2a81e1828588bfebd203da32cac11da57752e91f8d2`. The retained 1.0.0 served `3bab3a0457329647e795ab04bdd52580d43e35841f0179aea1b83f9eb222a733`. A client that pins the digest therefore sees the repair.
+
+The client builds to one ES module with no dependency, `dist/koine-client.mjs`. The module runs on macOS arm64 under Node 24 with nothing installed beside it.
+
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
 ## Build
 
