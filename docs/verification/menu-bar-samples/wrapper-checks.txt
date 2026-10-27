@@ -1,0 +1,10 @@
+task: [check:vm-menu-sample] bash -n docs/verification/menu-bar-samples/run.sh docs/verification/menu-bar-samples/inventory.sh docs/verification/menu-bar-samples/links.sh
+task: [check:vm-menu-sample] shellcheck docs/verification/menu-bar-samples/run.sh docs/verification/menu-bar-samples/inventory.sh docs/verification/menu-bar-samples/links.sh
+task: [check:vm-menu-sample] bats Tests/scripts/vm-menu-sample.bats
+1..6
+ok 1 invalid attempt is refused before scenario or VM cleanup
+ok 2 a successful attempt records both exits and artifacts, cleans up, and refuses overwrite
+ok 3 scenario failure collects read-only native and window evidence before cleanup without retry
+ok 4 failed native observation still retains the scenario failure and stops its clone
+ok 5 a changed subject fails collection despite a successful scenario and still stops its clone
+ok 6 the frozen PATH selects observation tools even when caller PATH is shadowed

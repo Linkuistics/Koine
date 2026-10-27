@@ -1,0 +1,10 @@
+.build/vm-verify/menu-bar-20261028T110232-after-login.png
+.build/vm-verify/menu-bar-20261028T110232-first-launch.png
+.build/vm-verify/menu-bar-20261028T110232-installed-after.txt
+.build/vm-verify/menu-bar-20261028T110232-installed-before.txt
+.build/vm-verify/menu-bar-20261028T110232-least-size-440x352.png
+.build/vm-verify/menu-bar-20261028T110232-least-size-content.json
+.build/vm-verify/menu-bar-20261028T110232-mark.png
+.build/vm-verify/menu-bar-20261028T110232-over-textedit.png
+.build/vm-verify/menu-bar-20261028T110232-requests.png
+.build/vm-verify/menu-bar-20261028T110232.log

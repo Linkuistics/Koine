@@ -1,0 +1,8 @@
+/opt/homebrew/bin/testanyware
+/opt/homebrew/bin/tart
+/opt/homebrew/bin/mise
+/opt/homebrew/bin/task
+/opt/homebrew/bin/jq
+/usr/bin/ditto
+/opt/homebrew/bin/bash
+/usr/bin/shasum

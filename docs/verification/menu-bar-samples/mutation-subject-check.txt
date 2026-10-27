@@ -1,0 +1,2 @@
+.build/menu-samples/control/Tests/scripts/vm-menu-sample.bats: OK
+.build/menu-samples/control/docs/verification/menu-bar-samples/run.sh: OK

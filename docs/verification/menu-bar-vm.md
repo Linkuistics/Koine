@@ -12,6 +12,12 @@ that decides all of it (`MenuBarModel`) is tested without a GUI by
 `MenuBarModelTests` under `swift test`; this run shows the application renders it.
 The shape being checked is in README "Resident application".
 
+The [bounded 2026-10-28 comparison](#bounded-release-comparison-after-the-repairs)
+ended at its four-attempt cap: one complete 0.4.0 pass, two 0.3.0 failures and
+one 0.4.0 failure at repeated Settings activation. Resize and later assertions
+were NOT RUN in the failed attempts. Activation remains unresolved; these
+finite observations establish no release regression or reliability rate.
+
 ## Procedure
 
 ```sh
@@ -30,7 +36,14 @@ The pointer-helper checks run without a bundle or VM:
 ```sh
 mise exec -- task check:vm-menu-pointer
 mise exec -- task check:vm-window-resize
+mise exec -- task check:vm-menu-sample
 ```
+
+The declared comparison uses `task app:vm-sample-menu-bar -- <attempt> <version>`
+around this unchanged scenario. Its [frozen protocol](menu-bar-samples/PLAN.md)
+defines the four operands, cap, stopping rule, observation-only failure collection
+and cleanup. Existing result directories are not overwritten; this recorded
+sample is complete, so further measurements need a new declared protocol.
 
 | Step | How | Expectation checked |
 |---|---|---|
@@ -91,7 +104,9 @@ mise exec -- task check:vm-window-resize
   first launch on a clean clone left Koine's window behind TextEdit's in three runs
   of five, and never in some twenty-five choices made once TextEdit had been up for a
   while, with Koine freshly launched or not. The cause is not established, so the
-  script waits for TextEdit to settle before it asks.
+  script waits for TextEdit to settle before it asks. Those earlier observations
+  do not establish that waiting repairs activation: the bounded comparison below
+  reproduced failures at later reopens with the settled wait still in place.
 - **This installation route sets no quarantine attribute.** Older golden-image
   runs had Gatekeeper off; the k10 macOS 27 guest reported assessments enabled.
   Neither establishes Gatekeeper first-launch behavior on a stock machine;
@@ -1012,3 +1027,75 @@ normalizes host bundle paths and symlink targets to the guest inventory format.
 Both installed endpoints of the two focused attempts and the complete scenario
 match that frozen host bundle, associating these native runs with the retained
 release input as well as showing endpoint equality.
+
+## Bounded release comparison after the repairs
+
+The [k4 protocol](menu-bar-samples/PLAN.md) fixed the released bundle subjects,
+script/input identities, image, OS/build, tools, display sequence, order and cap
+before the first attempt. Four fresh macOS 27.0.1/26A434 guests ran sequentially
+with TestAnyware 2.7.0, the unchanged signed 0.3.0/0.4.0 bundles and the settled
+paced resize helper. Each began at 1920×1080 at 1×. No subject changed, scenario
+was retried or failed attempt was replaced. The cap ended collection.
+
+| Attempt | Released bundle | Actual scenario / Task exits | Outcome |
+|---|---|---|---|
+| [01](menu-bar-samples/01/task.log) | 0.3.0 | 1 / 201 | Settings reopen 1 failed |
+| [02](menu-bar-samples/02/task.log) | 0.4.0 | 0 / 0 | Complete pass |
+| [03](menu-bar-samples/03/task.log) | 0.4.0 | 1 / 201 | Settings reopen 1 failed |
+| [04](menu-bar-samples/04/task.log) | 0.3.0 | 1 / 201 | Settings reopen 3 failed |
+
+All four passed first launch, the TextEdit baseline and the initial Settings
+action. Attempt 04 also passed reopens 1 and 2. In 01/03/04, **resize and every
+later assertion were NOT RUN**: minimum-size scrolling, shortcuts, client
+requests, Requests/Accessibility navigation, consent, silent manual launch,
+application reopening, Command-Q/login restart, silent login launch, final Quit
+and installed after equality. The [per-assertion table](menu-bar-samples/README.md#assertion-coverage)
+records the complete coverage. No attempt was interrupted or lost in setup.
+
+Attempt 02 ran every intended assertion. It grew to 703×903, stopped at a
+440×352 frame with [320 measured content pixels](menu-bar-samples/02/menu-bar-20261028T110232-least-size-content.json),
+and reached all required controls by scrolling. Shortcuts, requests and consent,
+silent launch, reopening, login restart and final Quit/old-port refusal passed.
+Its display reset to [1024×768](menu-bar-samples/02/final-display.json) after the
+restart, matching the qualified route's actual sequence. This is one full
+0.4.0 acceptance, separate from k10's earlier complete pass. The new 0.3.0
+attempts add no resize acceptance because they stopped before that assertion.
+
+### Activation outcome remains open
+
+The first two failures have clean fresh-process native activation/CoreGraphics
+captures, with explicit executable permission, alongside agent windows and
+original/subsequent screenshots. They agree TextEdit is active/in front and
+Koine is inactive behind it, after menu dismissal and before keyboard, focus or
+repeated-action intervention. The third failure has agreeing agent/screenshot
+observations; its observer stdout contains complete native JSON, but the exec
+reports timeout and exit -1. That transport failure remains explicit and was
+not retried. Its final environment exec has the same limitation. Full envelopes,
+screenshots and the [failure analysis](menu-bar-samples/README.md#failure-observations-and-the-remaining-diagnostic)
+retain both the observations and their limits.
+
+These results corroborate the symptom on both releases. They do not show
+callback delivery or native activation transitions during the action. The exact
+missing diagnostic is a time-correlated record of the single Settings selection,
+its callback entry, window-show/activation calls, and native active/key-window
+transitions through the assertion. A separately identified instrumented candidate
+and unchanged released control could distinguish a missed callback, failed
+activation or activation subsequently lost. No such trace exists in this sample,
+so no application repair, focus workaround, increased poll bound or external
+defect ownership is selected. Issue 14's activation outcome stays unresolved.
+
+The [evidence directory](menu-bar-samples/README.md) retains the exact release
+metadata, host and installed inventories, symlink targets, tool resolution,
+protocol, logs, screenshots and exits. All per-attempt subject audits returned
+zero; every available installed inventory matches its selected frozen host
+input. Only 02 reached both installed endpoints. Explicit stop results and
+final VM/Tart inventories record cleanup. Endpoint equality does not establish
+continuous runtime immutability.
+
+The pointer/resize controls pass, and the six new wrapper controls cover evidence
+retention and cleanup without a VM. The one pre-freeze reviewer found two
+instrument gaps; both fixes pass controls that fail when the fixes are removed.
+No second reviewer or new release was produced. The finite sample supports no
+population reliability rate or regression claim. Historical counts, k3's earlier
+corroborated failure and NOT RUN assertions, the failed unpaced resize candidates,
+and k10's focused/complete positives remain separate evidence.

@@ -1,0 +1,31 @@
+Executable=/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/menu-samples/releases/0.3.0/Koine.app/Contents/MacOS/Koine
+Identifier=dev.antony.Koine
+Format=app bundle with Mach-O thin (arm64)
+CodeDirectory v=20500 size=37148 flags=0x10000(runtime) hashes=1150+7 location=embedded
+VersionPlatform=1
+VersionMin=1703936
+VersionSDK=1703936
+Hash type=sha256 size=32
+CandidateCDHash sha256=7703a40869b728450dd84a164bbbb7f803deb3bc
+CandidateCDHashFull sha256=7703a40869b728450dd84a164bbbb7f803deb3bc9a80691f2607d2c35444c411
+Hash choices=sha256
+CMSDigest=7703a40869b728450dd84a164bbbb7f803deb3bc9a80691f2607d2c35444c411
+CMSDigestType=2
+Executable Segment base=0
+Executable Segment limit=7290880
+Executable Segment flags=0x1
+Page size=16384
+CDHash=7703a40869b728450dd84a164bbbb7f803deb3bc
+Signature size=8976
+Authority=Developer ID Application: Antony Blakey (TA43A4RUP3)
+Authority=Developer ID Certification Authority
+Authority=Apple Root CA
+Timestamp=17 Oct 2026 at 11:41:25
+Notarization Ticket=stapled
+Info.plist entries=13
+TeamIdentifier=TA43A4RUP3
+Runtime Version=26.0.0
+Sealed Resources version=2 rules=13 files=4
+Internal requirements count=1 size=176
+Total signatures=1
+Chosen signature=1

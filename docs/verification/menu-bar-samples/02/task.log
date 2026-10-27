@@ -1,0 +1,135 @@
+task: [app:vm-verify-menu-bar] status=0
+scripts/vm-verify-menu-bar.sh || status=$?
+if [ -n "${KOINE_K4_OUT:-}" ]; then printf '%s\n' "${status}" > "${KOINE_K4_OUT}/scenario.exit"; fi
+exit "${status}"
+
+
+== Start a clean VM (koine-k4-02)
+waiting for a macOS guest slot: request r-5c3df3d1, place 1, 1 waiter, slots held by no VM
+Setting guest display resolution to 1920x1080 px...
+  set-display-mode: switched main display to 1920x1080 pt @ 1x (1920x1080 px, modeID 10)
+ProductName:		macOS
+ProductVersion:		27.0.1
+BuildVersion:		26A434
+arm64
+Gatekeeper: assessments enabled
+
+== Install the signed bundle (ditto zip, testanyware file upload, ditto -x)
+Quarantine attribute: xattr: /Applications/Koine.app: No such xattr: com.apple.quarantine
+--prepared:/Applications/Koine.app/Contents/PlugIns/Workspace.koineprovider
+--validated:/Applications/Koine.app/Contents/PlugIns/Workspace.koineprovider
+--prepared:/Applications/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+--validated:/Applications/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+--prepared:/Applications/Koine.app/Contents/PlugIns/Desktop.koineprovider
+--validated:/Applications/Koine.app/Contents/PlugIns/Desktop.koineprovider
+/Applications/Koine.app: valid on disk
+/Applications/Koine.app: satisfies its Designated Requirement
+Identifier=dev.antony.Koine
+CodeDirectory v=20500 size=37148 flags=0x10000(runtime) hashes=1150+7 location=embedded
+Authority=Developer ID Application: Antony Blakey (TA43A4RUP3)
+Authority=Developer ID Certification Authority
+TeamIdentifier=TA43A4RUP3
+/Applications/Koine.app: accepted
+source=Notarized Developer ID
+origin=Developer ID Application: Antony Blakey (TA43A4RUP3)
+Installed bundle inventory: .build/vm-verify/menu-bar-20261028T110232-installed-before.txt
+
+== First launch: no Dock icon, one menu bar item, and the settings window because setup needs the user
+Windows: ["Koine Settings"]
+Default frame: 720 95 480 712
+Background only (an agent application): true
+Dock: Finder, Apps, Safari, Messages, Mail, Maps, Photos, FaceTime, Phone, Calendar, Contacts, Reminders, Notes, TV, Music, Games, App Store, iPhone Mirroring, System Settings, missing value, Terminal, missing value, Downloads, Trash
+Item: Koine, Accessibility not granted
+Pointer source frame: 1660, 3, 36, 24
+Pointer: approach=(1666, 7) target=(1678, 15) display=1920x1080
+Menu: Accessibility Not Granted…, , Settings…, Quit Koine
+
+== No visible menu bar, even with the window open: the menu bar stays the previous application's
+Front application: TextEdit
+
+== Close the window; Settings… brings it back over TextEdit's, to the front
+Pointer source frame: 1660, 3, 36, 24
+Pointer: approach=(1666, 7) target=(1678, 15) display=1920x1080
+Pointer source frame: 1656, 71, 242, 24
+Pointer: approach=(1765, 75) target=(1777, 83) display=1920x1080
+Pointer source frame: 1660, 3, 36, 24
+Pointer: approach=(1666, 7) target=(1678, 15) display=1920x1080
+Pointer source frame: 1656, 71, 242, 24
+Pointer: approach=(1765, 75) target=(1777, 83) display=1920x1080
+Pointer source frame: 1660, 3, 36, 24
+Pointer: approach=(1666, 7) target=(1678, 15) display=1920x1080
+Pointer source frame: 1656, 71, 242, 24
+Pointer: approach=(1765, 75) target=(1777, 83) display=1920x1080
+Pointer source frame: 1660, 3, 36, 24
+Pointer: approach=(1666, 7) target=(1678, 15) display=1920x1080
+Pointer source frame: 1656, 71, 242, 24
+Pointer: approach=(1765, 75) target=(1777, 83) display=1920x1080
+
+== The window resizes: larger, then no smaller than its least size, where its content scrolls
+Resize pointer: start=(517, 749) destination=(740, 940) held points=10 interval=0.15s down dwell=0.2s
+Larger: 40 40 703 903
+Resize pointer: start=(740, 940) destination=(100, 100) held points=10 interval=0.15s down dwell=0.2s
+Smaller: 40 40 440 352
+Minimum content height: 320.0
+grant-label at y=437.0 moved to y=337.0 under --dy -10; towards the end is --dy -10
+
+== Shortcuts, with no visible menu bar: ⌘A, ⌘C, ⌘X, ⌘V in a field, ⌘W
+
+== A client's request shows the mark and a line within a poll, and never opens the window
+Pointer source frame: 1660, 3, 36, 24
+Pointer: approach=(1666, 7) target=(1678, 15) display=1920x1080
+Menu: Review 1 Grant Request…, Accessibility Not Granted…, , Settings…, Quit Koine
+Pointer source frame: 1660, 3, 36, 24
+Pointer: approach=(1666, 7) target=(1678, 15) display=1920x1080
+Menu: Review 2 Grant Requests…, Accessibility Not Granted…, , Settings…, Quit Koine
+
+== The line opens the window at Requests, scrolled there from the least size
+Pointer source frame: 1660, 3, 36, 24
+Pointer: approach=(1666, 7) target=(1678, 15) display=1920x1080
+Pointer source frame: 1656, 36, 242, 24
+Pointer: approach=(1765, 40) target=(1777, 48) display=1920x1080
+Requests on screen: ["request-label-a4d9f52e-b7d3-47ca-9081-7e3ece859ae6","vm-editor"]
+Pointer source frame: 1660, 3, 36, 24
+Pointer: approach=(1666, 7) target=(1678, 15) display=1920x1080
+Menu: Accessibility Not Granted…, , Settings…, Quit Koine
+
+== The Accessibility line opens the window at Accessibility, scrolled there from below
+Pointer source frame: 1660, 3, 36, 24
+Pointer: approach=(1666, 7) target=(1678, 15) display=1920x1080
+Pointer source frame: 1656, 36, 242, 24
+Pointer: approach=(1765, 40) target=(1777, 48) display=1920x1080
+
+== Consent given in System Settings: the mark and the line go within a poll
+Pointer source frame: 1660, 3, 36, 24
+Pointer: approach=(1666, 7) target=(1678, 15) display=1920x1080
+Menu: Settings…, Quit Koine
+
+== Setup complete: enable login launch, Quit from the menu, and a launch by hand starts silently
+Pointer source frame: 1660, 3, 36, 24
+Pointer: approach=(1666, 7) target=(1678, 15) display=1920x1080
+Pointer source frame: 1656, 60, 141, 24
+Pointer: approach=(1714, 64) target=(1726, 72) display=1920x1080
+Item: Koine; windows: 0
+
+== Opening Koine again while it runs shows the window
+
+== Quit with ⌘Q from the window, then restart the VM: only the login item can start Koine
+Pointer source frame: 1660, 3, 36, 24
+Pointer: approach=(1666, 7) target=(1678, 15) display=1920x1080
+Pointer source frame: 1656, 36, 141, 24
+Pointer: approach=(1714, 40) target=(1726, 48) display=1920x1080
+
+== After login, with nothing having launched Koine: the item, and no window
+476 /Applications/Koine.app/Contents/MacOS/Koine
+Item after login launch: Koine; windows: 0
+
+== Quit Koine from the menu: the server stops as it always has
+Pointer source frame: 764, 3, 36, 24
+Pointer: approach=(770, 7) target=(782, 15) display=1024x768
+Pointer source frame: 760, 60, 141, 24
+Pointer: approach=(818, 64) target=(830, 72) display=1024x768
+curl to the old port 49152: exit 7
+Installed bundle inventory: .build/vm-verify/menu-bar-20261028T110232-installed-after.txt
+
+== PASSED — transcript in .build/vm-verify/menu-bar-20261028T110232.log
+VM koine-k4-02 left running. Stop it with: testanyware vm stop koine-k4-02

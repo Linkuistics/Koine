@@ -1,0 +1,9 @@
+{
+  "command": "chmod +x /Users/admin/k4-activation-snapshot; /Users/admin/k4-activation-snapshot",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "{\n  \"windows\" : [\n    {\n      \"app\" : \"TextEdit\",\n      \"pid\" : 732,\n      \"number\" : 51\n    },\n    {\n      \"app\" : \"Koine\",\n      \"pid\" : 698,\n      \"number\" : 41\n    }\n  ],\n  \"apps\" : [\n    {\n      \"active\" : false,\n      \"name\" : \"Koine\",\n      \"pid\" : 698,\n      \"policy\" : 1\n    },\n    {\n      \"active\" : true,\n      \"name\" : \"TextEdit\",\n      \"pid\" : 732,\n      \"policy\" : 0\n    }\n  ],\n  \"front\" : \"TextEdit\",\n  \"time\" : 1793145691.453238,\n  \"pid\" : 732\n}",
+  "timed_out": false
+}

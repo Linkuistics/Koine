@@ -983,9 +983,15 @@ Run the application in a TestAnyware VM, not on a machine in use: it takes
 focus and owns the account's real data directory.
 
 **VM verification.** `task app:vm-verify-menu-bar` (`scripts/vm-verify-menu-bar.sh`)
-proves the menu bar application on the signed bundle in a clean VM; its
+exercises the menu bar application on the signed bundle in a clean VM; its
 procedure and recorded evidence are in
 [docs/verification/menu-bar-vm.md](docs/verification/menu-bar-vm.md).
+The bounded 2026-10-28 comparison retained one complete 0.4.0 pass, including
+minimum-size scrolling, and three Settings activation failures across 0.3.0 and
+0.4.0. Resize and later assertions did not run in those failed attempts.
+Activation remains unresolved; the sample establishes no reliability rate or
+release regression. [Per-attempt evidence](docs/verification/menu-bar-samples/README.md)
+preserves the failures and the successful run separately.
 `task app:vm-verify` (`scripts/vm-verify.sh`) clones the
 TestAnyware macOS golden, installs the signed bundle, and drives the real UI:
 login launch across a restart with no client, a grant created and its

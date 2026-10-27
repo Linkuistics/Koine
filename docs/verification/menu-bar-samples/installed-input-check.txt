@@ -1,0 +1,5 @@
+MATCH docs/verification/menu-bar-samples/01/menu-bar-20261028T105708-installed-before.txt to frozen host 0.3.0
+MATCH docs/verification/menu-bar-samples/02/menu-bar-20261028T110232-installed-after.txt to frozen host 0.4.0
+MATCH docs/verification/menu-bar-samples/02/menu-bar-20261028T110232-installed-before.txt to frozen host 0.4.0
+MATCH docs/verification/menu-bar-samples/03/menu-bar-20261028T112213-installed-before.txt to frozen host 0.4.0
+MATCH docs/verification/menu-bar-samples/04/menu-bar-20261028T112621-installed-before.txt to frozen host 0.3.0

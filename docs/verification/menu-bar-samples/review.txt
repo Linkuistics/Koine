@@ -1,0 +1,23 @@
+One fresh-context, read-only adversarial review before freezing the sample.
+
+Artifact: PLAN.md, run.sh, inventory.sh, links.sh and the two relevant Task tasks;
+bounded source fallback for the full scenario and helpers. No graph generation
+could be established because of the documented CLI coordination conflict.
+
+Reviewer findings:
+1. set -e stops the post-run audit at a changed hash, before retaining actual
+   after digests and symlink inventory.
+2. Fixed /opt/homebrew binary hashes do not establish which PATH-selected tools
+   run, particularly through the nested mise environment.
+
+Reconciliation against the artifact: both valid and actionable. The wrapper now
+aggregates audit failures after collecting both inventories and diffs. It restores
+the frozen mise-selected PATH and explicitly passes it into the nested Task.
+The builder resolves and hashes tools under that same PATH; resolution is saved.
+These are endpoint checks, not continuous executable-identity guarantees.
+
+Six no-VM controls pass. Removing audit aggregation and PATH restoration from an
+isolated copy makes exactly the changed-subject and shadowed-tool controls fail;
+the other four stay green. wrapper-mutation-checks.txt and mutation-subjects.sha256
+identify that deliberate control. No VM subject ran under the mutated wrapper.
+The executable controls cover the fixes; no second reviewer was materialized.

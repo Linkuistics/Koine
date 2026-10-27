@@ -1462,7 +1462,23 @@ tasks:
   app:vm-verify-menu-bar:
     desc: Verify the signed bundle as a menu bar application in a clean TestAnyware macOS VM (installed bundle inventories before/after; one action and an independent focus check for every intended reopen; silent launch; menu item, status and client requests; shortcuts; held-button corner growth and minimum-size scrolling; login launch; Quit)
     cmds:
-      - scripts/vm-verify-menu-bar.sh
+      - |
+        status=0
+        scripts/vm-verify-menu-bar.sh || status=$?
+        if [ -n "${KOINE_K4_OUT:-}" ]; then printf '%s\n' "${status}" > "${KOINE_K4_OUT}/scenario.exit"; fi
+        exit "${status}"
+
+  app:vm-sample-menu-bar:
+    desc: Run one declared k4 sample attempt (CLI_ARGS='01 0.3.0', through '04 0.3.0'); retain evidence and stop the guest; protocol in docs/verification/menu-bar-samples/PLAN.md
+    cmds:
+      - bash docs/verification/menu-bar-samples/run.sh {{.CLI_ARGS}}
+
+  check:vm-menu-sample:
+    desc: Check bounded sample evidence and failure cleanup without a VM
+    cmds:
+      - bash -n docs/verification/menu-bar-samples/run.sh docs/verification/menu-bar-samples/inventory.sh docs/verification/menu-bar-samples/links.sh
+      - shellcheck docs/verification/menu-bar-samples/run.sh docs/verification/menu-bar-samples/inventory.sh docs/verification/menu-bar-samples/links.sh
+      - bats Tests/scripts/vm-menu-sample.bats
 
   check:vm-window-resize:
     desc: Check corner input, transport failure cleanup and resize acceptance guards without a VM; native acceptance requires app:vm-verify-menu-bar

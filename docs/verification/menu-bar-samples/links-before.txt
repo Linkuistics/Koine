@@ -1,0 +1,6 @@
+.build/menu-samples/releases/0.3.0/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/KoineProviderAPI -> Versions/Current/KoineProviderAPI
+.build/menu-samples/releases/0.3.0/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Resources -> Versions/Current/Resources
+.build/menu-samples/releases/0.3.0/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current -> A
+.build/menu-samples/releases/0.4.0/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/KoineProviderAPI -> Versions/Current/KoineProviderAPI
+.build/menu-samples/releases/0.4.0/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Resources -> Versions/Current/Resources
+.build/menu-samples/releases/0.4.0/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current -> A

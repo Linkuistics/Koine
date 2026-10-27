@@ -1,5 +1,91 @@
 # menu-bar-samples-k4
 
+## Decisions (running log)
+
+- 2026-10-28: Use four sequential fresh-guest attempts in order 0.3.0,
+  0.4.0, 0.4.0, 0.3.0. Stop at four or a finding requiring a new repair;
+  unexplained activation failures are retained without expanding the cap.
+  The existing full scenario is unchanged. Prepare observation-only failure
+  collection, explicit observer executable permission and clone cleanup before
+  freezing. Preserve the actual scenario exit separately from Task's exit.
+- 2026-10-28: Release archive digests match GitHub's v0.3.0 and v0.4.0 asset
+  metadata. Both extracted bundles pass strict/deep host signature checks.
+  Use the same macOS 27 golden at explicit 1920×1080; record the restart's
+  actual display. No application repair or candidate release is involved.
+- 2026-10-28: Graph project/generation remains unavailable with the documented
+  pre-coordination conflict. Use bounded reads of the scenario, all sourced
+  shell helpers, Taskfile, signing environment and preceding evidence.
+- 2026-10-28: The one fresh-context review found early audit exit losing actual
+  changed-subject hashes and a gap between fixed tool hashes and PATH execution.
+  Both are actionable. Aggregate all post-run inventories before returning an
+  audit failure; freeze/restore mise's PATH, pass it explicitly into nested Task,
+  and resolve/hash tools under it. Six no-VM controls pass; removing those fixes
+  makes exactly the two corresponding controls fail. No second review is needed
+  for these executable seams. The review is retained with the sample evidence.
+- 2026-10-28: Attempt 01 (released 0.3.0) fails at Settings reopen 1, after
+  the initial Settings action passed. Fresh native activation/CoreGraphics,
+  agent order and the visible dismissed-menu screenshot agree TextEdit is active
+  and Koine is inactive behind it. Native exec exits 0 without timeout, before
+  any focus/key/repeated-action intervention. All resize and later assertions
+  are NOT RUN. Scenario exit 1, Task exit 201, subject audit 0 and stop success
+  are retained. This is an unexplained activation failure, not a demonstrated
+  repair requirement; continue the declared cap without changing inputs.
+- 2026-10-28: Attempt 02 (released 0.4.0) completes with scenario/Task/audit
+  exits 0/0/0 and every intended assertion run. Growth is 703×903, minimum
+  frame 440×352 with measured content 320; required controls are reached by
+  scrolling. Login restart, silent launch and final Quit/old-port refusal pass.
+  Display changes from 1920×1080 to 1024×768 after restart as expected. Both
+  installed inventories match the frozen host input, all host subjects match,
+  and explicit stop succeeds. Keep this separate from k10 and historical runs.
+- 2026-10-28: Attempt 03 (released 0.4.0) fails at Settings reopen 1 after
+  the initial action passes, matching attempt 01's symptom. Fresh native read
+  (exit 0, no timeout), CoreGraphics, agent focus/order and screenshot agree
+  TextEdit is active/in front, Koine inactive behind it and the menu dismissed.
+  Scenario/Task/audit exits are 1/201/0; explicit stop succeeds. Resize and every
+  later phase are NOT RUN. There is still no callback/native-transition trace
+  establishing cause, so no repair is selected. Continue to the final declared
+  attempt without a script or bundle change.
+- 2026-10-28: Attempt 04 (released 0.3.0) fails at Settings reopen 3 after
+  the initial action and reopens 1/2 pass. Agent order/focus and both screenshots
+  show TextEdit active/in front and Koine behind it, with no open menu. The
+  observer emits complete agreeing JSON, but its exec envelope reports timeout
+  and exit -1; do not call that a successful native read. The final environment
+  read has the same transport limitation. Scenario/Task/audit exits are
+  1/201/0, all frozen host endpoints match, and stop succeeds. Resize and all
+  later phases are NOT RUN. The four-attempt cap is reached; there is no retry
+  or fifth guest. No causal explanation or application repair is established.
+- 2026-10-28: Final checks pass eight pointer, nine resize and six wrapper
+  controls with syntax/lint/helper formatting checks. Per-file/symlink subjects
+  re-enumerate identically for every attempt and at the final endpoint; all five
+  available installed inventories match the selected host inputs. Retained
+  scenario artifacts match original files byte for byte. Golden config/disk/
+  NVRAM before/after hashes agree, and final VM/Tart inventories show no sample
+  guest running. No ADR changes are needed for this verification result.
+
+## Result
+
+The four-attempt protocol, exact release/script/image/tool identities and all
+started outcomes are retained in docs/verification/menu-bar-samples. The report
+maps every assertion, including NOT RUN phases, and keeps the observer transport
+timeouts distinct from the scenario failures. It names the precise missing
+callback/native-transition record rather than selecting an unsupported repair.
+The main verification document and public README now describe the one complete
+pass and the unresolved activation failures accurately. No release or issue
+closure was performed. Earlier failures and focused/complete positives remain
+separate evidence.
+
+## Execution plan
+
+1. Freeze the protocol, host subjects, golden-image bytes and per-file bundle
+   inventories; run the existing pointer/resize checks. Add a Taskfile entry
+   around an evidence wrapper that invokes the unchanged end-to-end task once.
+2. Run the four declared attempts sequentially. Retain logs, screenshots,
+   installed inventories, native failure observations and explicit stop results.
+   Compare subject hashes after each attempt and re-enumerate at the end.
+3. Classify each attempt's completed, failed and NOT RUN assertions. Update the
+   verification record and directly affected README claims, keeping activation
+   unresolved where no cause is demonstrated. Retire and seal this leaf.
+
 ## Goal
 
 Measure the menu-bar scenario after the pointer repair and stronger reopen

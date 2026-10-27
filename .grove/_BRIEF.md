@@ -139,3 +139,45 @@ failed complete attempt and its unrun assertions, both failed unpaced focused
 candidates, and the older macOS 26/0.3.0 evidence. The current native evidence is
 in docs/verification/resize-delivery and the Paced fresh-window route section of
 menu-bar-vm.md. No release, application repair or upstream report was made.
+
+## Bounded comparison handoff
+
+K4 reached its declared four-attempt cap with the unchanged released bundles,
+settled scenario/helpers and matched fresh macOS 27.0.1/26A434 guests. The order
+was 0.3.0, 0.4.0, 0.4.0, 0.3.0. Attempt 02 completed every assertion, including
+703×903 growth, a 440×352 minimum frame with 320 measured content pixels,
+minimum-size scrolling, requests/consent, shortcuts, silent launch, login restart
+and final Quit. It began at 1920×1080 and reset to 1024×768 after restart.
+
+Attempts 01/03 failed at Settings reopen 1; attempt 04 failed at reopen 3.
+Both releases therefore reproduced the activation symptom. Resize and every
+later phase are NOT RUN in those attempts. There was no interruption, replacement
+or full-scenario retry. Every subject audit passes; all available installed
+inventories match their frozen host release inputs, with both endpoints available
+only for the complete pass. Every guest stopped. No measured input changed.
+Final golden config/disk/NVRAM hashes also match their pre-sample values.
+
+The first two failure captures have clean fresh native activation/CoreGraphics
+reads, agreeing agent windows and original/subsequent screenshots before any
+key/focus/repeated-action intervention. The final failed attempt's observer emits
+agreeing complete JSON but reports timeout and exit -1, as does its final
+environment read. These transport failures are explicit, not successful native
+reads or new scenario failures. The original scenario exits remain 1/0/1/1,
+separate from Task's 201/0/201/201.
+
+The causal question remains open under k4's explicit instruction to retain an
+unclassified failure and name the missing observation. That observation is a
+time-correlated record across one Settings selection: callback entry,
+window-show/activation calls and native active/key-window transitions. The
+post-failure captures cannot distinguish missing callback delivery, failed
+activation and activation subsequently lost. No workaround or product repair is
+selected. This work does not close issue 14's activation outcome, claim a rate or
+regression, or pool these attempts with k3/k10/historical evidence.
+
+The durable report and full assertion/NOT RUN table are in
+docs/verification/menu-bar-samples/README.md and the main menu-bar verification
+document. The Taskfile exposes the one-attempt wrapper and six focused no-VM
+controls, alongside the existing eight pointer and nine resize controls. One
+pre-freeze reviewer found two instrument gaps; mutation controls demonstrate the
+fixes. No release or upstream report was made. The finite measurement charter
+has been discharged without representing the unresolved issue as repaired.
