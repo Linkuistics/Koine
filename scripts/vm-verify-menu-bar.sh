@@ -129,20 +129,37 @@ done
 koine_in_front || fail "the window did not come to the front after being closed three more times"
 guest "osascript -e 'tell application \"TextEdit\" to quit saving no'" || true
 
+RESIZE_NOT_RUN=""
 step "The window resizes: larger, then no smaller than its least size, where its content scrolls"
 testanyware agent window-move --window "${WINDOW_TITLE}" --x 40 --y 40 >/dev/null
 sleep 1
-drag_window_corner 740 940
-echo "Larger: $(frame)"
-read -r _ _ W H <<<"$(frame)"
-[ "${W}" -ge 690 ] && [ "${H}" -ge 880 ] || fail "the window did not grow"
-drag_window_corner 100 100
-echo "Smaller: $(frame)"
-read -r _ _ W H <<<"$(frame)"
-[ "${W}" = "${MIN_WIDTH}" ] || fail "the window's least width is not ${MIN_WIDTH}: ${W}"
-[ "${H}" -ge "${MIN_HEIGHT}" ] && [ "${H}" -lt $((MIN_HEIGHT + 60)) ] || fail "the window's least height is not ${MIN_HEIGHT} plus its title bar: ${H}"
+# Whether the guest delivers a pointer drag of window chrome at all is asked of the title bar first. On a macOS 27
+# guest under TestAnyware 2.7.0 a drag of the title bar or of a corner does nothing, and a scroll-bar drag works.
+# Then a window that did not grow says nothing about Koine, so the resize is recorded as NOT RUN, which is different
+# from a pass, and the steps that follow still run. A guest that moves the window by a drag and then fails to
+# grow it fails here as before.
+read -r X Y W H <<<"$(frame)"
+testanyware input drag $((X + W / 2)) $((Y + 12)) $((X + W / 2 + 120)) $((Y + 92)) >/dev/null
+sleep 1
+read -r X2 Y2 _ _ <<<"$(frame)"
+testanyware agent window-move --window "${WINDOW_TITLE}" --x 40 --y 40 >/dev/null
+sleep 1
+if [ "${X2}" = "${X}" ] && [ "${Y2}" = "${Y}" ]; then
+    RESIZE_NOT_RUN="the guest delivered no drag of the title bar (it stayed at ${X} ${Y}), so no resize by a drag was tried"
+    echo "NOT RUN: ${RESIZE_NOT_RUN}"
+else
+    drag_window_corner 740 940
+    echo "Larger: $(frame)"
+    read -r _ _ W H <<<"$(frame)"
+    [ "${W}" -ge 690 ] && [ "${H}" -ge 880 ] || fail "the window did not grow"
+    drag_window_corner 100 100
+    echo "Smaller: $(frame)"
+    read -r _ _ W H <<<"$(frame)"
+    [ "${W}" = "${MIN_WIDTH}" ] || fail "the window's least width is not ${MIN_WIDTH}: ${W}"
+    [ "${H}" -ge "${MIN_HEIGHT}" ] && [ "${H}" -lt $((MIN_HEIGHT + 60)) ] || fail "the window's least height is not ${MIN_HEIGHT} plus its title bar: ${H}"
+fi
 testanyware screen capture -o "${LOG%.log}-least-size.png" >/dev/null
-# Every control stays reachable by scrolling, at the least size.
+# Every control stays reachable by scrolling (at the least size when the resize ran).
 calibrate_window_scroll
 reveal '.id=="login-launch"'
 reveal '.id=="grant-label"'
@@ -274,4 +291,5 @@ done
 echo "curl to the old port ${PORT}: exit ${REFUSED}"
 [ "${REFUSED}" = 7 ] || fail "something still answers on port ${PORT}"
 
+[ -z "${RESIZE_NOT_RUN}" ] || echo "NOT RUN, and not a pass: the resize by a drag: ${RESIZE_NOT_RUN}"
 step "PASSED — transcript in ${LOG}"

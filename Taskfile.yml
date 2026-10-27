@@ -1547,6 +1547,14 @@ tasks:
     cmds:
       - scripts/vm-verify-discovery.sh
 
+  app:vm-verify-discovery-notarized:
+    desc: The V seam of the first cut of app and file search again, on the notarized, stapled bundle that `task app:notarize` left in .build/app instead of a freshly built one - the same steps and exit statuses as app:vm-verify-discovery, refusing a bundle with no stapled ticket (run `task app && task app:notarize` first, and never `task app` between the two)
+    deps: [client]
+    env:
+      KOINE_DISCOVERY_NOTARIZED: "1"
+    cmds:
+      - scripts/vm-verify-discovery.sh
+
   conformance:
     desc: Hold three profiles (docs/design/profiles/; the third is the 1.0.1 workspace repair) to the schemas their hosts serve, each by type, field, argument, nullability, default, deprecation and description, its digest against the one Koine served, and its provider candidates against the pin kept apart from both - old-host core + desktop (the released host), extension-host core + desktop (this tree's headless host) and core + desktop + workspace (the signed Koine.app in a TestAnyware VM); each check first proves itself red against mutated copies of the contract and of the pins
     cmds:

@@ -1,7 +1,8 @@
 #!/bin/bash
 # Verifies, on the signed Koine.app in a clean TestAnyware macOS VM, that the
-# native window discloses workspace control's reach wherever a person grants or
-# reviews it, and that a koine:manage client is served the same words: the
+# native window discloses workspace control's and workspace read's reach wherever
+# a person grants or reviews it, and that a koine:manage client is served the same
+# words: the
 # create-grant view for a new grant, the request view for a pending request, and
 # the grant list for an existing grant, each observed in the window itself and
 # compared with what the management client reads over HTTP. A request that asks
@@ -27,10 +28,14 @@ source scripts/vm-verify-desktop-lib.sh
 # shellcheck disable=SC2016  # guest-side $HOME
 MANAGER='$HOME/koine-secret-manager' WORKSPACE='$HOME/koine-secret-workspace'
 CAPABILITY="workspace:control"
-# What the spec requires the disclosure to state, as phrases of it: any
+READ="workspace:read"
+# What the spec requires each disclosure to state, as phrases of it. Control: any
 # registered installed application, document execution and redirects by
-# handlers, and both controls.
-PHRASES=("any application registered on this Mac" "run a script or follow a location document" "desktop:control")
+# handlers, and both controls. Read: the special locations, the indexed
+# applications with their network and remote reach, that no content is read and
+# no folder is listed, and both controls for acting on a listed application.
+CONTROL_PHRASES=("any application registered on this Mac" "run a script or follow a location document" "desktop:control")
+READ_PHRASES=("special locations that macOS names for Koine's own account" "on mounted network volumes and in a remote home folder" "reads no file contents and lists no folder" "workspace:control and desktop:control")
 
 # Local copies of the enrollment script's wrappers, for the reason the
 # grant-workflow script gives: that route passes and is not changed here.
@@ -57,14 +62,21 @@ disclosure_of() {
     reveal ".id==\"$1\""
     element ".id==\"$1\"" | jq -r --arg id "$1" '[.. | strings] | map(select(length > 40 and . != $id)) | first // empty' | tr -s '[:space:]' ' ' | sed 's/ $//'
 }
-# expect_disclosure <element id> <what>: on screen, in the served words, naming
-# everything the spec requires.
+# expect_disclosure <element id> <what> [capability]: on screen, in the served words
+# of the capability (default workspace:control), naming everything the spec requires.
 expect_disclosure() {
-    local shown
+    local shown served phrases
+    if [ "${3:-${CAPABILITY}}" = "${READ}" ]; then
+        served="${SERVED_READ}"
+        phrases=("${READ_PHRASES[@]}")
+    else
+        served="${SERVED}"
+        phrases=("${CONTROL_PHRASES[@]}")
+    fi
     shown="$(disclosure_of "$1")"
     echo "$2: ${shown}"
-    [ "${shown}" = "${SERVED}" ] || fail "$2 is not the text koine:manage clients are served"
-    for phrase in "${PHRASES[@]}"; do
+    [ "${shown}" = "${served}" ] || fail "$2 is not the text koine:manage clients are served"
+    for phrase in "${phrases[@]}"; do
         grep -qF -- "${phrase}" <<<"${shown}" || fail "$2 does not state: ${phrase}"
     done
 }
@@ -95,20 +107,26 @@ MANAGER_GRANT="$(jq -r .response.data.koine.ownGrant.grantId <<<"${ANSWER}")"
 step "The management client is served the disclosure: the words the window must then show"
 enrollee "${MANAGER}" disclosures
 expect '(.response.errors // []) | length == 0' "the manager could not read the disclosures"
-expect '.response.data.koineManagement.capabilityDisclosures | length == 1 and .[0].capability == "workspace:control"' \
-    "the served disclosures are not exactly workspace:control's"
-SERVED="$(jq -r '.response.data.koineManagement.capabilityDisclosures[0].disclosure' <<<"${ANSWER}" | tr -s '[:space:]' ' ' | sed 's/ $//')"
-echo "Served: ${SERVED}"
-for phrase in "${PHRASES[@]}"; do
-    grep -qF -- "${phrase}" <<<"${SERVED}" || fail "the served disclosure does not state: ${phrase}"
+expect '.response.data.koineManagement.capabilityDisclosures | map(.capability) == ["workspace:control","workspace:read"]' \
+    "the served disclosures are not exactly workspace:control's and workspace:read's"
+SERVED="$(jq -r '.response.data.koineManagement.capabilityDisclosures[] | select(.capability == "workspace:control") | .disclosure' <<<"${ANSWER}" | tr -s '[:space:]' ' ' | sed 's/ $//')"
+SERVED_READ="$(jq -r '.response.data.koineManagement.capabilityDisclosures[] | select(.capability == "workspace:read") | .disclosure' <<<"${ANSWER}" | tr -s '[:space:]' ' ' | sed 's/ $//')"
+echo "Served control: ${SERVED}"
+echo "Served read: ${SERVED_READ}"
+for phrase in "${CONTROL_PHRASES[@]}"; do
+    grep -qF -- "${phrase}" <<<"${SERVED}" || fail "the served control disclosure does not state: ${phrase}"
+done
+for phrase in "${READ_PHRASES[@]}"; do
+    grep -qF -- "${phrase}" <<<"${SERVED_READ}" || fail "the served read disclosure does not state: ${phrase}"
 done
 
-step "The create-grant view: a new grant, with workspace control offered"
+step "The create-grant view: a new grant, with workspace control and workspace read offered"
 calibrate_window_scroll
 reveal ".id==\"capability-${CAPABILITY}\""
 capture create-offered
 expect_disclosure "disclosure-${CAPABILITY}" "the create-grant view"
-for other in koine:manage desktop:read desktop:control workspace:read; do
+expect_disclosure "disclosure-${READ}" "the create-grant view, for workspace read" "${READ}"
+for other in koine:manage desktop:read desktop:control; do
     [ "$(element ".id==\"capability-${other}\"")" != null ] || fail "${other} is not offered"
     no_disclosure "disclosure-${other}" "${other}"
 done
@@ -126,12 +144,13 @@ expect '.response.data.koineManagement.grants | map(select(.clientLabel == "work
     "the new grant is not workspace:control and desktop:control"
 
 step "The request view: a pending request for workspace control"
-enrol "${WORKSPACE}" workspace-client workspace:control desktop:control desktop:read
+enrol "${WORKSPACE}" workspace-client workspace:control desktop:control desktop:read workspace:read
 WS_REQUEST="${REQUEST_ID}"
 await_element ".id==\"request-${WS_REQUEST}\"" present
 reveal ".id==\"request-disclosure-${WS_REQUEST}-${CAPABILITY}\""
 capture request-pending
 expect_disclosure "request-disclosure-${WS_REQUEST}-${CAPABILITY}" "the request view"
+expect_disclosure "request-disclosure-${WS_REQUEST}-${READ}" "the request view, for workspace read" "${READ}"
 # Desktop control's expanded reach is window-layout's disclosure, not this one's.
 no_disclosure "request-disclosure-${WS_REQUEST}-desktop:control" "desktop:control"
 no_disclosure "request-disclosure-${WS_REQUEST}-desktop:read" "desktop:read"
@@ -139,7 +158,7 @@ reveal_click ".id==\"approve-${WS_REQUEST}\""
 await_element ".id==\"request-${WS_REQUEST}\"" absent
 enrollee "${WORKSPACE}" poll
 WS_GRANT="$(jq -r .response.data.koineGrantRequest.grant.grantId <<<"${ANSWER}")"
-expect '.response.data.koineGrantRequest.grant | .state == "ACTIVE" and (.capabilities | sort) == ["desktop:control","desktop:read","workspace:control"]' \
+expect '.response.data.koineGrantRequest.grant | .state == "ACTIVE" and (.capabilities | sort) == ["desktop:control","desktop:read","workspace:control","workspace:read"]' \
     "the approved grant is not the requested set"
 
 step "The grant list: both existing grants disclose, and a grant without workspace control does not"
@@ -147,6 +166,8 @@ reveal ".id==\"grant-disclosure-${NEW_GRANT}-${CAPABILITY}\""
 capture grant-list
 expect_disclosure "grant-disclosure-${NEW_GRANT}-${CAPABILITY}" "the new grant's row"
 expect_disclosure "grant-disclosure-${WS_GRANT}-${CAPABILITY}" "the approved grant's row"
+expect_disclosure "grant-disclosure-${WS_GRANT}-${READ}" "the approved grant's row, for workspace read" "${READ}"
+no_disclosure "grant-disclosure-${NEW_GRANT}-${READ}" "a grant without workspace read"
 no_disclosure "grant-disclosure-${MANAGER_GRANT}-koine:manage" "the manager's row"
 no_disclosure "grant-disclosure-${WS_GRANT}-desktop:control" "an approved desktop:control"
 
@@ -161,6 +182,7 @@ AFTER="$(jq -c '.response.data.koineManagement.grants' <<<"${ANSWER}")"
 [ "${BEFORE}" = "${AFTER}" ] || fail "the restart changed the grants: ${BEFORE} -> ${AFTER}"
 expect_disclosure "grant-disclosure-${NEW_GRANT}-${CAPABILITY}" "the new grant's row after the restart"
 expect_disclosure "grant-disclosure-${WS_GRANT}-${CAPABILITY}" "the approved grant's row after the restart"
+expect_disclosure "grant-disclosure-${WS_GRANT}-${READ}" "the approved grant's row after the restart, for workspace read" "${READ}"
 capture after-restart
 
 step "A revoked grant holds nothing, so its row discloses nothing"

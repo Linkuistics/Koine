@@ -107,6 +107,23 @@ koine_pid() { guest "pgrep -f ${INSTALLED}/Contents/MacOS" 2>&1 | grep -E '^[0-9
 # asserted for every request is that Koine offers the control, and that any
 # dialog that does appear names Koine rather than a client.
 CONSENT_DIALOG=""
+# dialog_found: the dialog's sentences that carry DIALOG_TEXT, in the shape `find-text --json` prints. The screen is
+# read first. Over the stacked Finder windows of this run, the OCR drops the dialog's bold heading, which is the
+# sentence that names Koine, while the dialog is plainly on screen. So when the OCR finds nothing, the accessibility
+# tree of the dialog's own process is read for the same sentence.
+dialog_found() {
+    local ocr
+    ocr="$(testanyware screen find-text "${DIALOG_TEXT}" --json)" || return 1
+    if jq -e '.total > 0' >/dev/null <<<"${ocr}"; then
+        echo "${ocr}"
+        return 0
+    fi
+    all_windows | jq -c --arg host "${DIALOG_HOST}" --arg text "${DIALOG_TEXT}" '
+        [.windows[] | select(.appName == $host) | .elements[]? | .. | objects
+            | select(has("platformRole") and .platformRole == "AXStaticText") | .value // empty
+            | select(type == "string" and contains($text))] as $found
+        | {detections: ($found | map({text: .})), total: ($found | length)}'
+}
 request_consent() {
     place_window
     [ "$(element '.id=="request-accessibility"')" != null ] ||
@@ -118,7 +135,7 @@ request_consent() {
     local found tries=0
     sleep 3
     while :; do
-        found="$(testanyware screen find-text "${DIALOG_TEXT}" --json)" || fail "the screen could not be read"
+        found="$(dialog_found)" || fail "the screen could not be read"
         jq -e '.total > 0' >/dev/null <<<"${found}" && break
         tries=$((tries + 1))
         [ "${tries}" -lt 5 ] || break

@@ -26,6 +26,9 @@
 # Nothing here runs an application on the host. The procedure and its recorded evidence:
 # docs/verification/discovery-vm.md
 #
+# KOINE_DISCOVERY_NOTARIZED=1 runs the check on the notarized, stapled bundle that `task app:notarize` left in
+# .build/app, and refuses a bundle with no stapled ticket. `task app` builds the bundle again and drops the staple,
+# so the task that sets this variable does not depend on it.
 # KOINE_VM_KEEP=1 leaves the VM running afterwards, for inspection.
 # KOINE_VM_PASSWORD is the VM account's password (the golden image's default: admin).
 # KOINE_LAUNCHERS_IMAGE is the prepared image (default koine-launchers-prepared).
@@ -39,6 +42,11 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 # shellcheck source=scripts/signing-env.sh
 source scripts/signing-env.sh
+
+if [ "${KOINE_DISCOVERY_NOTARIZED:-}" = 1 ] && ! xcrun stapler validate "${APP_BUNDLE}" >/dev/null 2>&1; then
+    echo "Error: ${APP_BUNDLE} carries no stapled notarization ticket. Run: task app && task app:notarize" >&2
+    exit 1
+fi
 
 IMAGE="${KOINE_LAUNCHERS_IMAGE:-koine-launchers-prepared}"
 tart list --quiet 2>/dev/null | grep -qx "${IMAGE}" || {
