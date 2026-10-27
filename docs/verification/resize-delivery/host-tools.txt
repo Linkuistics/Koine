@@ -1,0 +1,9 @@
+testanyware 2.7.0
+ProductName:		macOS
+ProductVersion:		27.0.1
+BuildVersion:		26A434
+arm64
+3.54.0
+/opt/homebrew/bin/testanyware
+/opt/homebrew/bin/jq
+/usr/bin/ditto

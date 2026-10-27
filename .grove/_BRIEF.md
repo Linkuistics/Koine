@@ -99,9 +99,10 @@ endpoint-inventory limitations are in docs/verification/menu-bar-vm.md.
 Window-resize-k3 decomposed after exploratory corner successes failed fresh
 qualification twice. Resize-input-evidence-k9 delivers the request/error seam,
 both failed candidates and the native observations; resize-input-delivery-k10
-continues the precise input-delivery/timing investigation. There is still no
-new minimum-size or minimum-size scrolling acceptance on macOS 27. The prior
-macOS 26/0.3.0 evidence remains the basis of that claim.
+continued the precise input-delivery/timing investigation. At that handoff there
+was no new minimum-size or minimum-size scrolling acceptance on macOS 27; k10
+subsequently qualified the paced route below. The prior macOS 26/0.3.0 evidence
+remains the historical acceptance for that older release.
 
 The one complete k3 attempt also reproduced Settings reopen 3 behind TextEdit;
 fresh native activation, CoreGraphics order, agent windows and the screenshot
@@ -110,3 +111,31 @@ but no activation cause. K4 owns that causal question and the full-scenario
 sample after the resize subtree settles. All k3 guests were stopped. See
 docs/verification/menu-bar-vm.md, User-input corner route, and the raw
 docs/verification/window-resize evidence. No release or upstream report was made.
+
+
+## Qualified resize handoff
+
+K10 closes window-resize-k3 with a useful user-input route on the unchanged
+signed 0.4.0 bundle in macOS 27.0.1/TestAnyware 2.7.0. Matched initial-frame
+controls showed unpaced 100-step corner input failing fresh Koine at both tested
+insets while growing TextEdit. Separate paced held-button requests grew both.
+The helper keeps the three-pixel inset, waits after its initial down and ten
+held points, attempts release on transport failure and never retries the input.
+Pacing, point count and connection lifecycle changed together; no pure timing
+cause or external defect ownership is established.
+
+The final frozen focused run and the sole final complete scenario both grew to
+703×903 and stopped at 440×352 with 320 measured content pixels; scrolling reached
+the existing required controls. The complete scenario exited 0 with all intended
+assertions run, including login restart and Quit. Installed and host endpoint
+inventories match; all investigation guests stopped. The display began at
+1920×1080 and reset to 1024×768 after restart. Nine resize controls and the eight
+pointer controls pass; the scenario also now rejects failed frame reads and
+checks actual content height rather than inferring it from outer frame height.
+
+K4 can use the settled script. It still owns its declared finite sample and the
+historical activation cause; a positive k10 run closes neither. Retain k3's
+failed complete attempt and its unrun assertions, both failed unpaced focused
+candidates, and the older macOS 26/0.3.0 evidence. The current native evidence is
+in docs/verification/resize-delivery and the Paced fresh-window route section of
+menu-bar-vm.md. No release, application repair or upstream report was made.

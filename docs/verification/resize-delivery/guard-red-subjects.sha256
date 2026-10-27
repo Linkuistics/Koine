@@ -1,0 +1,3 @@
+8e9bdf92a4dd589d942785bf7b748906d89fb03b86cb1ced1fa19f9e46c262d0  .build/resize-delivery/guard-regression/Tests/scripts/vm-window-resize.bats
+2afbc595aa7f392764856de228e324ef270d5edbef8556cd61051d7748dde365  .build/resize-delivery/guard-regression/scripts/vm-verify-menu-bar.sh
+1396eda19afef9d067b5f10c69007bd79427ab80fb93070a83c274b1bbe4ee8b  .build/resize-delivery/guard-regression/scripts/vm-window-resize-lib.sh

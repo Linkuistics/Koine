@@ -149,14 +149,23 @@ sleep 1
 # guest where a held-button corner path grew and shrank this window. Exercise
 # the corner itself, retaining the original dimension and content requirements.
 drag_window_corner 740 940
-echo "Larger: $(frame)"
-read -r _ _ W H <<<"$(frame)"
+RESIZE_FRAME="$(frame)" || fail "the grown window frame could not be read"
+echo "Larger: ${RESIZE_FRAME}"
+read -r _ _ W H <<<"${RESIZE_FRAME}"
 [ "${W}" -ge 690 ] && [ "${H}" -ge 880 ] || fail "the window did not grow; resize acceptance is unestablished"
 drag_window_corner 100 100
-echo "Smaller: $(frame)"
-read -r _ _ W H <<<"$(frame)"
+RESIZE_FRAME="$(frame)" || fail "the minimum window frame could not be read"
+echo "Smaller: ${RESIZE_FRAME}"
+read -r _ _ W H <<<"${RESIZE_FRAME}"
 [ "${W}" = "${MIN_WIDTH}" ] || fail "the window's least width is not ${MIN_WIDTH}: ${W}"
 [ "${H}" -ge "${MIN_HEIGHT}" ] && [ "${H}" -lt $((MIN_HEIGHT + 60)) ] || fail "the window's least height is not ${MIN_HEIGHT} plus its title bar: ${H}"
+# Check content directly: the outer frame includes platform window chrome.
+RESIZE_CONTENT="$(element '.platformRole=="AXScrollArea"')" || fail "the minimum content frame could not be read"
+printf '%s\n' "${RESIZE_CONTENT}" > "${LOG%.log}-least-size-content.json"
+jq -e --argjson minimum "${MIN_HEIGHT}" \
+    '(.sizeHeight | type == "number") and .sizeHeight >= $minimum' >/dev/null <<<"${RESIZE_CONTENT}" ||
+    fail "the window content is below ${MIN_HEIGHT} high: ${RESIZE_CONTENT}"
+echo "Minimum content height: $(jq -r '.sizeHeight' <<<"${RESIZE_CONTENT}")"
 testanyware screen capture -o "${LOG%.log}-least-size-${W}x${H}.png" >/dev/null
 # Every control stays reachable by scrolling at the observed minimum size.
 calibrate_window_scroll

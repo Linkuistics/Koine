@@ -112,3 +112,29 @@ owns the retained instruments/positive and negative evidence delivered here;
 resize-input-delivery-k10 owns the fresh-context delivery/timing investigation
 and the original remaining qualification. This is ordinary decomposition,
 not a predeclared repetition series. No native minimum-size claim is closed.
+
+
+## K10 contract closure
+
+The original criteria are met by a qualified user-input route. K10 inspected
+2.7.0's command/source semantics and matched fresh Koine/TextEdit starting frames
+and focus. Unpaced corner input failed fresh Koine at both tested insets but
+worked on TextEdit; separate paced held-button points grew both. This establishes
+a useful recipe without separating delay, point count and connection lifecycle
+or assigning an upstream defect. The title-bar failures remain recorded and
+supply no skip gate.
+
+The final focused qualification and one final complete scenario used frozen
+actual subjects and the unchanged signed 0.4.0 bundle. Both grew to 703×903,
+attempted shrinking to (100,100), stopped at 440×352 with 320 measured content
+pixels and reached the required controls by scrolling. The complete scenario
+exited 0 through final Quit, with no intended assertion NOT RUN. Host and installed
+bundle endpoint inventories match and all investigation guests stopped. Nine
+resize request/error/guard controls and eight pointer controls pass. No product
+change or release was needed.
+
+The verification record now describes the actual paced path, failed candidates,
+exact environment, screenshots and guard checks. No upstream report is warranted
+without defect ownership. K4 retains the broader sample and historical activation
+cause, including k3's reproduced failure; the one positive k10 scenario does not
+resolve it. This outcome is promoted to the root brief and k4's handoff.

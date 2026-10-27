@@ -1,0 +1,7 @@
+{
+  "action": "window-move",
+  "message": "Window moved to (1100, 40)",
+  "ok": true,
+  "schema_version": "1.0",
+  "success": true
+}

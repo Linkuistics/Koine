@@ -66,12 +66,17 @@ mise exec -- task check:vm-window-resize
   440 wide and 320 high in content (a 440 by 352 frame).
   The resize phase explicitly focuses the window and checks its front/focused
   state before the helper prepares a point three pixels inside the bottom-right
-  corner, then sends one `input drag --steps 100` with held-button movement.
+  corner, then sends a paced path with the button mask held at every point.
+  It uses an initial down, a 0.2 s dwell, ten held points with a 0.15 s sleep each,
+  then release. Ordinary `move` requests release the button and cannot be
+  substituted for the held points.
   It tests growth directly before shrinking. The title-bar movement probe used
   by earlier macOS 27 attempts could skip a working corner route; it is removed.
   Both dimension assertions must run before the minimum-size screenshot and
   scrolling checks. A failed action or assertion stops the scenario and gives
   no resize acceptance. The screenshot filename records the observed dimensions.
+  The actual scroll-area height is also read and must be at least 320; the
+  outer frame includes window chrome and alone cannot establish that minimum.
 - **The mark is read as the label.** The dot is also seen in
   `…-mark.png`, but the check asserts the accessibility label, which the item
   states in words.
@@ -87,9 +92,10 @@ mise exec -- task check:vm-window-resize
   of five, and never in some twenty-five choices made once TextEdit had been up for a
   while, with Koine freshly launched or not. The cause is not established, so the
   script waits for TextEdit to settle before it asks.
-- **No quarantine and Gatekeeper is off in the golden**, as in
-  [resident-app-vm.md](resident-app-vm.md). Nothing here is evidence of what
-  Gatekeeper does on a stock machine; the notarized build is shown in
+- **This installation route sets no quarantine attribute.** Older golden-image
+  runs had Gatekeeper off; the k10 macOS 27 guest reported assessments enabled.
+  Neither establishes Gatekeeper first-launch behavior on a stock machine;
+  the quarantined notarized-build exercise is in
   [notarized-release-vm.md](notarized-release-vm.md).
 - **Restart, not log out.** Login launch is exercised by a restart and the golden's
   automatic login, with Koine quit first so that macOS's reopening of running
@@ -714,14 +720,15 @@ remains unresolved, with the precise follow-up stated above.
 
 ## User-input corner route — 2026-10-28
 
-**Resize acceptance remains unestablished in macOS 27.0.1/TestAnyware 2.7.0.**
-Corner input produced positive exploratory effects, but both fresh-guest
+**Historical k3/k9 outcome; the [k10 qualification below](#paced-fresh-window-route--2026-10-28) supersedes this handoff.**
+At this boundary, resize acceptance remained unestablished in macOS
+27.0.1/TestAnyware 2.7.0. Corner input produced positive exploratory effects, but both fresh-guest
 candidates failed to grow the window. Minimum-size acceptance continues to rest
 on the older macOS 26/Koine 0.3.0 run. The title-bar probe could skip a usable
 exploratory corner route, and
 the former corner helper sent only mouse-down at the corner and mouse-up at
-the destination. The replacement establishes a focused window, prepares the pointer three pixels inside
-the corner and sends a combined `input drag --steps 100`, which includes
+the destination. The then-candidate replacement established a focused window, prepared the pointer three pixels inside
+the corner and sent a combined `input drag --steps 100`, which includes
 movement with the button held. The application and its size contract are
 unchanged.
 
@@ -734,7 +741,7 @@ its 703×903 frame unchanged; preparation and a combined drag from that same
 point then produced a 440×352 frame. The repaired helper itself repeated the
 703×903 growth and 440×352 minimum and grew TextEdit from 751×701 to 853×823.
 These are sequential exploratory observations without a complete subject
-freeze. They identify the working recipe, not the necessity of each parameter
+freeze. They identified a candidate recipe, not the necessity of each parameter
 or a general cause for the unsuccessful title drags.
 
 The [official TestAnyware v2.7.0 implementation](https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-rfb/src/input.rs#L171-L194)
@@ -887,3 +894,121 @@ observed minimum, or leave the result explicitly unresolved with a minimal
 reproducer. The historical activation failure and the complete scenario remain
 separate live work. No release, product fix, new upstream report or reliability
 rate follows from this session.
+
+## Paced fresh-window route — 2026-10-28
+
+**The signed Koine 0.4.0 minimum-size and scrolling segment is now qualified in
+macOS 27.0.1/TestAnyware 2.7.0.** The [final focused log](resize-delivery/final-focus.log)
+records a fresh 480×712 window grown by user input to 703×903, then dragged toward
+`(100,100)` and stopped at 440×352. The [actual content read](resize-delivery/menu-bar-20261028T103029-least-size-content.json)
+measured 320 pixels of scroll-area height, and scrolling reached `login-launch`,
+`grant-label` and `accessibility-status` while the frame remained 440×352. The
+[minimum-size screenshot](resize-delivery/menu-bar-20261028T103029-least-size-440x352.png)
+records that frame. Koine received no AX resize assignment in this qualification.
+This is a focused result; a complete scenario has its own outcome below.
+
+The [declared comparison and raw evidence](resize-delivery/README.md) retain
+four failed/successful unpaced trials and two paced trials. At the same fresh
+480×712 starting geometry and checked front/focused state, unpaced 100-step
+drags failed to grow Koine at both three- and eight-pixel insets, while matched
+TextEdit controls grew. A path using separate paced held-button requests then
+grew both to 703×903. It preserves the original three-pixel inset. Each point
+sends a held-button mask; an ordinary `move` would release it. The helper waits
+0.2 s after the initial down and 0.15 s after each of ten interpolated held requests,
+then releases. CLI overhead adds to these sleeps; actual guest event intervals
+were not measured. Each CLI request has its own connection, so event pacing, point
+count and connection lifecycle are not independently isolated. These observations
+qualify a useful route; they do not establish a pure timing cause, a TestAnyware
+defect or an application repair. No upstream report was sent, and the closed
+TestAnyware issue 12 remains a different fault.
+
+The first [focused candidate](resize-delivery/qualification.log) also grew to
+703×903, stopped at 440×352 and reached those controls. Its inherited guards
+were then reviewed. The [one review](resize-delivery/review.txt) found that a
+failed geometry query could be hidden by shell `read`, and that the outer-frame
+lower bound alone did not enforce 320 **content** pixels. The
+[red controls](resize-delivery/guard-checks-red.txt) reproduce both gaps. The
+[green controls](resize-delivery/guard-checks-green.txt) pass after checked
+frame assignments and a separate actual content-height assertion were added.
+The final focused attempt above uses those corrected assertions. The original
+outer-frame width/height requirements remain in force. No second reviewer was
+used for these directly tested guard repairs.
+
+Both focused attempts have matching installed regular-file/symlink endpoint
+inventories and matching host before/after inventories. For the final attempt,
+see [installed before](resize-delivery/menu-bar-20261028T103029-installed-before.txt),
+[installed after](resize-delivery/menu-bar-20261028T103029-installed-after.txt),
+[host before](resize-delivery/final-subjects.sha256),
+[host after](resize-delivery/final-focus-subjects-after.sha256),
+[item checks](resize-delivery/final-focus-subject-check.txt) and
+[symlink endpoints](resize-delivery/final-focus-links-after.txt).
+The [final wrapper](resize-delivery/qualify-final.sh) extracts the real scenario's
+resize/scroll section. Subjects include the unchanged signed 0.4.0 bundle and
+archive, actual scenario and sourced helpers, wrappers, client fixtures,
+Taskfile, App/Info.plist and the observer binary. These are endpoint comparisons,
+not proof against temporary runtime mutation. The focused guests stopped.
+
+The older macOS 27 attempts remain resize NOT RUN or failed candidates as
+recorded. Their scrolling at a default frame gains no minimum-size credit.
+The earlier macOS 26/Koine 0.3.0 acceptance is unchanged; this new focused
+0.4.0 evidence adds a qualified macOS 27 route. The finite trials establish no
+reliability rate and resolve no historical activation cause.
+
+### Complete scenario with the settled route
+
+One complete attempt used the same final frozen subject, with no automatic
+full-scenario retry:
+
+```sh
+KOINE_APP_BUNDLE="$PWD/.build/menu-interaction/Koine.app" \
+KOINE_VM_ID=koine-k10-scenario KOINE_VM_BASE=testanyware-golden-macos-27 \
+KOINE_VM_KEEP=1 mise exec -- task app:vm-verify-menu-bar
+```
+
+The [complete log](resize-delivery/scenario.log) and [exit record](resize-delivery/scenario.exit)
+record **exit 0**. First launch, all four Settings menu actions, growth,
+minimum-size content and scrolling, shortcuts, client-request labels and silent
+waiting, Requests/Accessibility navigation, consent, silent launch after setup,
+reopening, login restart and final Quit all ran and passed. The old-port curl
+returned exit 7 after Quit. No assertion was NOT RUN in this attempt.
+
+The run began at 1920×1080, where resize and scrolling ran. Restart restored the
+guest's 1024×768 display; the final pointer log and
+[post-run display read](resize-delivery/scenario-final-display.json) record that
+change. The [after-login screenshot](resize-delivery/menu-bar-20261028T103051-after-login.png)
+records silent login launch at that size. Other retained images include
+[first launch](resize-delivery/menu-bar-20261028T103051-first-launch.png),
+[Settings over TextEdit](resize-delivery/menu-bar-20261028T103051-over-textedit.png),
+[the 440×352 frame](resize-delivery/menu-bar-20261028T103051-least-size-440x352.png),
+[the request mark](resize-delivery/menu-bar-20261028T103051-mark.png) and
+[Requests at the minimum size](resize-delivery/menu-bar-20261028T103051-requests.png).
+The [content observation](resize-delivery/menu-bar-20261028T103051-least-size-content.json)
+again measured 320 pixels high.
+
+[Installed before](resize-delivery/menu-bar-20261028T103051-installed-before.txt)
+and [after](resize-delivery/menu-bar-20261028T103051-installed-after.txt) match.
+The [host after enumeration](resize-delivery/scenario-subjects-after.sha256),
+[item checks](resize-delivery/scenario-subject-check.txt),
+[manifest comparison](resize-delivery/scenario-inventory-diff.txt),
+[symlink comparison](resize-delivery/scenario-links-diff.txt) and
+[installed comparison](resize-delivery/scenario-installed-diff.txt) match the
+[final before subject](resize-delivery/final-subjects.sha256). These inventories
+cover the exact scenario and helper versions, both client fixtures, Taskfile,
+App/Info.plist, wrappers, original bundle archive and the extracted bundle's
+regular files and associated symlink targets. The
+[stop result](resize-delivery/scenario-stop.json),
+[TestAnyware inventory](resize-delivery/vms-after.json) and
+[tart states](resize-delivery/tart-after.txt) record cleanup. No investigation
+clone remains running.
+
+This one complete positive qualifies the route in this declared environment.
+It does not erase the k3 activation failure, explain historical activation
+failures, establish a release regression or supply a reliability rate. K4 owns
+the broader bounded sample and the remaining activation question. No release,
+application repair or upstream report was produced.
+
+The [installed-to-input comparison](resize-delivery/installed-input-check.txt)
+normalizes host bundle paths and symlink targets to the guest inventory format.
+Both installed endpoints of the two focused attempts and the complete scenario
+match that frozen host bundle, associating these native runs with the retained
+release input as well as showing endpoint equality.

@@ -1,0 +1,19 @@
+1..6
+not ok 1 resize sends a held-button path through the selected corner to its destination
+# (in test file Tests/scripts/vm-window-resize.bats, line 22)
+#   `[[ "$(sed -n '2,4p' "${calls}")" == $'input move 517 749\ninput mouse-down 517 749\ninput mouse-down 539 768' ]]' failed
+# Resize pointer: start=(517, 749) destination=(740, 940) steps=100
+not ok 2 an explicit title selects the ordinary-window corner without changing its destination
+# (in test file Tests/scripts/vm-window-resize.bats, line 31)
+#   `[[ "$(sed -n '2,4p' "${calls}")" == $'input move 1250 582\ninput mouse-down 1250 582\ninput mouse-down 1265 601' ]]' failed
+# Resize pointer: start=(1250, 582) destination=(1400, 780) steps=100
+ok 3 a failed pointer preparation never presses the button in a conditional caller
+not ok 4 a failed initial down attempts release and preserves the failure
+# (in test file Tests/scripts/vm-window-resize.bats, line 44)
+#   `[[ "${status}" == 7 ]]' failed
+not ok 5 a failed held point releases there and stops instead of masking the error
+# (in test file Tests/scripts/vm-window-resize.bats, line 52)
+#   `[[ "${status}" == 7 ]]' failed
+not ok 6 a failed final release is returned rather than hidden by sleep
+# (in test file Tests/scripts/vm-window-resize.bats, line 60)
+#   `[[ "${status}" == 7 ]]' failed

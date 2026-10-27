@@ -1,0 +1,22 @@
+One fresh-context adversarial reviewer inspected the source-only helper, its
+request/error tests, the real scenario resize section and the focused wrapper.
+No VM was launched by the reviewer.
+
+Finding 1: read ... <<<"$(frame)" can discard a nonzero frame command status,
+even when that failed command emitted plausible geometry.
+Classification: valid and actionable. Checked assignments now capture both
+grown and minimum frame reads before parsing. A control that supplies geometry
+and returns 7 failed against the old assertions and passes after repair.
+
+Finding 2: the inherited lower height bound checks 320 outer-frame pixels,
+although the product minimum concerns content and the frame includes chrome.
+Classification: valid and actionable. The scenario retains the original outer
+frame bounds and additionally reads the actual AXScrollArea sizeHeight, rejects
+a failed/missing read and enforces at least 320 content pixels. The failing
+288-content/440x352-outer-frame control and the successful 320-content control
+exercise the real scenario section with external observations substituted.
+
+These guard changes are covered by the executable seam; no second reviewer was
+materialised. The first frozen focused result is retained with its original
+subjects. A separate final focused qualification and one complete scenario use
+the tightened assertions; their results must be read separately.

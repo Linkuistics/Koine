@@ -11,45 +11,102 @@ setup() {
     if [[ "$*" == 'agent windows --json' ]]; then
       echo '{"ok":true,"windows":[{"title":"Untitled","positionX":650,"positionY":80,"sizeWidth":603,"sizeHeight":505},{"title":"Koine Settings","positionX":40,"positionY":40,"sizeWidth":480,"sizeHeight":712}]}'
     fi
+    if [[ "${reject:-}" == "$*" ]]; then return 7; fi
   }
 }
 
-# Catches replacing a held-button path with down at the start and up at the end,
-# or targeting the rounded outermost pixel instead of the qualified resize zone.
-@test "resize prepares the selected corner and requests a complete held-button drag" {
+# Catches sending only endpoints, releasing the button during interpolation,
+# or targeting the outermost rounded corner instead of the observed resize zone.
+@test "resize sends a held-button path through the selected corner to its destination" {
   drag_window_corner 740 940
-  [[ "$(cat "${calls}")" == $'agent windows --json\ninput move 517 749\ninput drag 517 749 740 940 --steps 100' ]]
+  [[ "$(sed -n '2,4p' "${calls}")" == $'input move 517 749\ninput mouse-down 517 749\ninput mouse-down 539 768' ]]
+  grep -qx 'input mouse-down 628 844' "${calls}"
+  [[ "$(tail -n 2 "${calls}")" == $'input mouse-down 740 940\ninput mouse-up 740 940' ]]
+  [[ "$(grep -c '^input mouse-down ' "${calls}")" == 11 ]]
+  [[ "$(wc -l <"${calls}" | tr -d ' ')" == 14 ]]
 }
 
-@test "an explicit title selects the ordinary-window control without changing its destination" {
+@test "an explicit title selects the ordinary-window corner without changing its destination" {
   drag_window_corner 1400 780 Untitled
-  [[ "$(cat "${calls}")" == $'agent windows --json\ninput move 1250 582\ninput drag 1250 582 1400 780 --steps 100' ]]
+  [[ "$(sed -n '2,4p' "${calls}")" == $'input move 1250 582\ninput mouse-down 1250 582\ninput mouse-down 1265 601' ]]
+  [[ "$(tail -n 2 "${calls}")" == $'input mouse-down 1400 780\ninput mouse-up 1400 780' ]]
 }
 
-@test "a failed pointer preparation never starts a drag even in a conditional caller" {
-  testanyware() {
-    echo "$*" >>"${calls}"
-    if [[ "$*" == 'agent windows --json' ]]; then
-      echo '{"ok":true,"windows":[{"title":"Koine Settings","positionX":40,"positionY":40,"sizeWidth":480,"sizeHeight":712}]}'
-    else
-      return 7
-    fi
-  }
-  if drag_window_corner 740 940; then
-    return 1
-  fi
+@test "a failed pointer preparation never presses the button in a conditional caller" {
+  reject='input move 517 749'
+  if drag_window_corner 740 940; then return 1; fi
   [[ "$(wc -l <"${calls}" | tr -d ' ')" == 2 ]]
 }
 
-@test "a rejected drag is returned to a conditional caller rather than hidden by sleep" {
-  testanyware() {
-    echo "$*" >>"${calls}"
-    if [[ "$*" == 'agent windows --json' ]]; then
-      echo '{"ok":true,"windows":[{"title":"Koine Settings","positionX":40,"positionY":40,"sizeWidth":480,"sizeHeight":712}]}'
-    elif [[ "$*" == 'input drag '* ]]; then
-      return 7
-    fi
-  }
+@test "a failed initial down attempts release and preserves the failure" {
+  reject='input mouse-down 517 749'
   run drag_window_corner 740 940
   [[ "${status}" == 7 ]]
+  [[ "$(tail -n 2 "${calls}")" == $'input mouse-down 517 749\ninput mouse-up 517 749' ]]
+  [[ "$(wc -l <"${calls}" | tr -d ' ')" == 4 ]]
+}
+
+@test "a failed held point releases there and stops instead of masking the error" {
+  reject='input mouse-down 606 825'
+  run drag_window_corner 740 940
+  [[ "${status}" == 7 ]]
+  [[ "$(tail -n 2 "${calls}")" == $'input mouse-down 606 825\ninput mouse-up 606 825' ]]
+  [[ "$(wc -l <"${calls}" | tr -d ' ')" == 8 ]]
+}
+
+@test "a failed final release is returned rather than hidden by sleep" {
+  reject='input mouse-up 740 940'
+  run drag_window_corner 740 940
+  [[ "${status}" == 7 ]]
+}
+
+# Execute the real scenario's resize section, substituting only external input,
+# observations and slow scrolling. These controls catch false acceptance in its
+# guards; the helper request tests above cover the actual input path separately.
+exercise_resize_section() {
+  local section
+  export resize_frame_count="${BATS_TEST_TMPDIR}/frame-count"
+  echo 0 >"${resize_frame_count}"
+  WINDOW_TITLE='Koine Settings' MIN_WIDTH=440 MIN_HEIGHT=320
+  LOG="${BATS_TEST_TMPDIR}/scenario.log"
+  step() { :; }
+  testanyware() { :; }
+  koine_in_front() { return 0; }
+  drag_window_corner() { echo "$1" >"${resize_frame_count}"; }
+  calibrate_window_scroll() { :; }
+  reveal() { :; }
+  fail() { echo "FAILED: $*" >&2; exit 1; }
+  frame() {
+    local n
+    n="$(cat "${resize_frame_count}")"
+    if [[ "${n}" == 740 ]]; then
+      echo '40 40 703 903'
+      return "${frame_error:-0}"
+    fi
+    echo '40 40 440 352'
+  }
+  element() {
+    printf '{"platformRole":"AXScrollArea","sizeHeight":%s}\n' "${content_height:-320}"
+  }
+  section="$(awk '/^step "The window resizes:/ {selected=1} /^step "Shortcuts,/ {selected=0} selected' \
+    "${BATS_TEST_DIRNAME}/../../scripts/vm-verify-menu-bar.sh")"
+  [[ -n "${section}" ]] || return 99
+  eval "${section}"
+}
+
+@test "the scenario refuses a failed frame read even when it emitted valid geometry" {
+  frame_error=7
+  run exercise_resize_section
+  [[ "${status}" != 0 ]]
+}
+
+@test "the scenario refuses content below 320 even when the outer frame is 440 by 352" {
+  content_height=288
+  run exercise_resize_section
+  [[ "${status}" != 0 ]]
+}
+
+@test "the scenario accepts the observed minimum only with at least 320 content pixels" {
+  run exercise_resize_section
+  [[ "${status}" == 0 ]]
 }

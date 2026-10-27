@@ -1,0 +1,9 @@
+{
+  "command": "/Users/admin/k10-observer",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "{\n  \"windows\" : [\n    {\n      \"app\" : \"TextEdit\",\n      \"pid\" : 760,\n      \"number\" : 51\n    },\n    {\n      \"app\" : \"Koine\",\n      \"pid\" : 740,\n      \"number\" : 40\n    }\n  ],\n  \"apps\" : [\n    {\n      \"active\" : false,\n      \"name\" : \"Koine\",\n      \"pid\" : 740,\n      \"policy\" : 1\n    },\n    {\n      \"active\" : true,\n      \"name\" : \"TextEdit\",\n      \"pid\" : 760,\n      \"policy\" : 0\n    }\n  ],\n  \"front\" : \"TextEdit\",\n  \"time\" : 1793143534.448626,\n  \"pid\" : 760\n}",
+  "timed_out": false
+}

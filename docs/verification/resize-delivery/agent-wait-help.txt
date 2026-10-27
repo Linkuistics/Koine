@@ -1,0 +1,54 @@
+Wait for the agent's accessibility tree to be ready
+
+Usage: testanyware agent wait [OPTIONS]
+
+Options:
+      --connect <PATH>
+          Path to connection spec JSON file
+
+      --vm <ID>
+          [env: TESTANYWARE_VM_ID=]
+
+      --vnc <HOST:PORT>
+          [env: TESTANYWARE_VNC=]
+
+      --agent <HOST:PORT>
+          [env: TESTANYWARE_AGENT=]
+
+      --platform <PLATFORM>
+          [env: TESTANYWARE_PLATFORM=]
+
+      --window <WINDOW>
+          
+
+      --timeout <TIMEOUT>
+          
+
+      --json
+          Emit JSON envelope on stdout
+
+  -h, --help
+          Print help (see a summary with '-h')
+
+  -V, --version
+          Print version
+
+OUTPUT:
+    Stable formats: text (`OK` / `FAILED: <message>`), --json (schema:
+    agent-action). Read-only: no --dry-run.
+
+EXIT CODES:
+    0  success (accessibility became ready)
+    3  WINDOW_NOT_FOUND
+    4  AUTH_REQUIRED
+    7  CONNECTION_TIMEOUT
+
+EXAMPLES:
+    # Wait for the agent's accessibility tree to be ready
+    testanyware agent wait --vm "$TESTANYWARE_VM_ID"
+
+    # Wait, scoped to a window, with an explicit timeout
+    testanyware agent wait --vm "$TESTANYWARE_VM_ID" --window "Settings" --timeout 30 --json
+
+SEE ALSO:
+    testanyware agent health, testanyware agent windows

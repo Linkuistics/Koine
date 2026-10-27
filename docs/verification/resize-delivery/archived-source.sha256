@@ -1,0 +1,6 @@
+6f47e8d69a0c5ee0e6dc7fe62eeb3a45c65427a245a0a5f2872bdb0a9ace2775  docs/verification/resize-delivery/initial-source/Taskfile.yml
+2afbc595aa7f392764856de228e324ef270d5edbef8556cd61051d7748dde365  docs/verification/resize-delivery/initial-source/vm-verify-menu-bar.sh
+7e0280fdf9dccbf607eb6c8164b6e6aed8ce815acd302f98ad1bfbff4d886715  docs/verification/resize-delivery/initial-source/vm-window-resize-lib.sh
+aeba4eca39ba31e8362f59e010102879a8f80d33c555f6cfe6318d7c5dcdcc10  docs/verification/resize-delivery/comparison-inventory.sh
+e0d9a3dfdee85e77fb2867644c7e420099cf2df06d89fc238e8a915f301cb498  docs/verification/resize-delivery/qualification-inventory.sh
+2e7888f7d84d02cc3ff34c930d484622ccfcfbb2be6f7f49f9d1465ddbfb4c76  docs/verification/resize-delivery/qualify-initial.sh

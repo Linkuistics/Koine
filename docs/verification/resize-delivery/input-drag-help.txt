@@ -1,0 +1,77 @@
+Drag from one point to another
+
+Usage: testanyware input drag [OPTIONS] <FROM_X> <FROM_Y> <TO_X> <TO_Y>
+
+Arguments:
+  <FROM_X>
+          
+
+  <FROM_Y>
+          
+
+  <TO_X>
+          
+
+  <TO_Y>
+          
+
+Options:
+      --connect <PATH>
+          Path to connection spec JSON file
+
+      --vm <ID>
+          [env: TESTANYWARE_VM_ID=]
+
+      --vnc <HOST:PORT>
+          [env: TESTANYWARE_VNC=]
+
+      --agent <HOST:PORT>
+          [env: TESTANYWARE_AGENT=]
+
+      --platform <PLATFORM>
+          [env: TESTANYWARE_PLATFORM=]
+
+      --button <BUTTON>
+          [default: left]
+
+      --steps <STEPS>
+          [default: 10]
+
+      --window <WINDOW>
+          Window name for relative coordinates. The CLI subtracts a 40 px top inset (measured on macOS 26) from the window origin of a macOS guest; macOS 27 reports the visible top, so set `TESTANYWARE_WINDOW_TOP_INSET=0` there (any pixel count works).
+
+      --json
+          Emit JSON envelope on stdout
+
+      --dry-run
+          Plan the event but do not send it
+
+  -h, --help
+          Print help (see a summary with '-h')
+
+  -V, --version
+          Print version
+
+OUTPUT:
+    Stable formats: text (`Dragged from (x,y) to (x,y)`), --json (schema:
+    input-action). Both endpoints share one --window origin when given.
+
+EXIT CODES:
+    0  success
+    2  USAGE_ERROR / UNKNOWN_BUTTON / NO_CONNECTION_SPECIFIED
+    3  WINDOW_NOT_FOUND (with --window)
+    4  AUTH_REQUIRED
+    7  CONNECTION_TIMEOUT
+
+IDEMPOTENCY:
+    Not idempotent — each call performs the drag. Not retry-safe.
+
+EXAMPLES:
+    # Drag from one point to another
+    testanyware input drag 100 100 400 300 --vm "$TESTANYWARE_VM_ID"
+
+    # Plan only
+    testanyware input drag 100 100 400 300 --dry-run --json --vm "$TESTANYWARE_VM_ID"
+
+SEE ALSO:
+    testanyware input click, testanyware input move, testanyware input scroll

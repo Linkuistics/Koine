@@ -1465,7 +1465,7 @@ tasks:
       - scripts/vm-verify-menu-bar.sh
 
   check:vm-window-resize:
-    desc: Check the corner-drag request and transport failures without a VM; native minimum-size acceptance requires app:vm-verify-menu-bar
+    desc: Check corner input, transport failure cleanup and resize acceptance guards without a VM; native acceptance requires app:vm-verify-menu-bar
     cmds:
       - bash -n scripts/vm-window-resize-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
       - shellcheck -x scripts/vm-window-resize-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh

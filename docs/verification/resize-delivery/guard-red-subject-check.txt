@@ -1,0 +1,3 @@
+.build/resize-delivery/guard-regression/Tests/scripts/vm-window-resize.bats: OK
+.build/resize-delivery/guard-regression/scripts/vm-verify-menu-bar.sh: OK
+.build/resize-delivery/guard-regression/scripts/vm-window-resize-lib.sh: OK

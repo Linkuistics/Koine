@@ -1,0 +1,7 @@
+{
+  "action": "wait",
+  "message": "Accessibility ready",
+  "ok": true,
+  "schema_version": "1.0",
+  "success": true
+}

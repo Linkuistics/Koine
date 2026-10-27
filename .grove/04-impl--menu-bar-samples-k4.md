@@ -88,8 +88,25 @@ held-button interpolation, retaining all size/content assertions. Include
 pass with this route remains a separate obligation from a focused resize pass;
 an earlier activation failure leaves resize and all following assertions NOT RUN.
 
-Both k3 focused fresh-guest candidates subsequently failed growth, including
-the version with explicit focus setup. The input-delivery cause is still live
-in resize-input-delivery-k10 under the decomposed k3 node. Do not sample the
-candidate as if it were an established resize repair. Wait for that subtree to
-settle and preserve its native acceptance limits in k4's record.
+Both k3 unpaced focused fresh-guest candidates failed growth, including the
+version with explicit focus setup. K10 subsequently settled the route and
+qualified it, as recorded below; retain those failed candidates in the history.
+
+
+K10 qualified the paced helper on the unchanged signed 0.4.0 bundle. Its final
+focused attempt and sole final complete scenario both grew to 703×903 and stopped
+at 440×352 with actual AXScrollArea content height 320, then reached the existing
+required controls by scrolling. The complete scenario exited 0 with every
+intended assertion run. This is one complete positive, not a reliability rate
+or historical activation repair. Read docs/verification/resize-delivery/README.md
+and scenario.log; preserve k3's earlier native activation failure and all its
+unrun assertions independently.
+
+Use the settled paced held-button helper and corrected frame/content guards.
+The request/error/guard seam has nine resize controls plus the eight existing
+pointer controls. The comparison isolates recipe sensitivity, not a pure timing
+cause: per-command connections, sleeps and point count changed together. No
+upstream defect or application repair was established. The final complete guest
+started at 1920×1080 and reverted to 1024×768 after restart; record and match
+that actual display sequence in the bounded sample. The final host/installed
+endpoint inventories agree, and every k10 guest is stopped.

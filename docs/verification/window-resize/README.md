@@ -4,10 +4,13 @@ This directory retains k3's macOS 27 input investigation and complete-scenario
 evidence. The result and its acceptance limits are recorded in
 [menu-bar-vm.md](../menu-bar-vm.md#user-input-corner-route--2026-10-28).
 
-**Current result: native resize remains unaccepted.** The exploratory positives
+**Historical k3/k9 result: native resize remained unaccepted.** The exploratory positives
 below were followed by two frozen fresh-guest candidates that both failed to
 grow the window. The full scenario failed earlier on activation. None establishes
-minimum-size scrolling in this environment.
+minimum-size scrolling in this environment. The later
+[k10 delivery investigation](../resize-delivery/README.md) records the paced
+route and its separate native qualification; it does not change these failed
+attempts.
 
 ## Exploratory sequence
 
@@ -118,8 +121,8 @@ explains every result, freeze and assertion not run. The ordinary-window control
 in this directory remains exploratory; it was not matched to those failed fresh
 states. The [final VM inventory](vms-after.json) contains no running clone.
 
-The three-pixel recipe and the focus setup are unqualified candidate code.
-Further investigation must isolate input delivery/timing and starting state with
+At the k9 handoff, the three-pixel unpaced recipe and focus setup remained
+unqualified candidate code. Further investigation needed to isolate input delivery/timing and starting state with
 a matched ordinary-window control before choosing another repair or assigning
 an external defect. The official input implementation's lack of a per-step
 delay is only a lead. No new issue was sent, and no full-scenario retry was made

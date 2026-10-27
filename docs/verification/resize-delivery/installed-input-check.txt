@@ -1,0 +1,6 @@
+menu-bar-20261028T102656-installed-before.txt: MATCH to frozen extracted host bundle
+menu-bar-20261028T102656-installed-after.txt: MATCH to frozen extracted host bundle
+menu-bar-20261028T103029-installed-before.txt: MATCH to frozen extracted host bundle
+menu-bar-20261028T103029-installed-after.txt: MATCH to frozen extracted host bundle
+menu-bar-20261028T103051-installed-before.txt: MATCH to frozen extracted host bundle
+menu-bar-20261028T103051-installed-after.txt: MATCH to frozen extracted host bundle

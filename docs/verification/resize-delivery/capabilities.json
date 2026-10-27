@@ -1,0 +1,192 @@
+{
+  "aliases": {
+    "agent show": "agent inspect",
+    "download": "file download",
+    "exec": "file exec",
+    "find-text": "screen find-text",
+    "record": "screen record",
+    "screen-size": "screen size",
+    "screenshot": "screen capture",
+    "upload": "file upload",
+    "vm ls": "vm list",
+    "vm remove": "vm delete",
+    "vm rm": "vm delete"
+  },
+  "commands": [
+    "vm start",
+    "vm stop",
+    "vm list",
+    "vm slots",
+    "vm delete",
+    "vm create-golden",
+    "agent health",
+    "agent snapshot",
+    "agent inspect",
+    "agent windows",
+    "agent wait",
+    "agent press",
+    "agent set-value",
+    "agent focus",
+    "agent show-menu",
+    "agent window-focus",
+    "agent window-resize",
+    "agent window-move",
+    "agent window-close",
+    "agent window-minimize",
+    "input key",
+    "input key-down",
+    "input key-up",
+    "input type",
+    "input click",
+    "input mouse-down",
+    "input mouse-up",
+    "input move",
+    "input scroll",
+    "input drag",
+    "screen capture",
+    "screen record",
+    "screen size",
+    "screen find-text",
+    "file upload",
+    "file download",
+    "file exec",
+    "viewer",
+    "doctor",
+    "capabilities",
+    "schema",
+    "llm-instructions"
+  ],
+  "env_vars": [
+    {
+      "description": "VM instance id; resolves the per-VM connection spec.",
+      "internal": false,
+      "name": "TESTANYWARE_VM_ID"
+    },
+    {
+      "description": "VNC endpoint host[:port] (ad-hoc, no spec file).",
+      "internal": false,
+      "name": "TESTANYWARE_VNC"
+    },
+    {
+      "description": "Agent HTTP endpoint host[:port].",
+      "internal": false,
+      "name": "TESTANYWARE_AGENT"
+    },
+    {
+      "description": "Target platform: macos, linux, windows.",
+      "internal": false,
+      "name": "TESTANYWARE_PLATFORM"
+    },
+    {
+      "description": "Another config.rhai file for the Host CLI, or `none` to run without one. The default is ~/.config/testanyware/config.rhai. The app does not read this variable.",
+      "internal": false,
+      "name": "TESTANYWARE_CONFIG"
+    },
+    {
+      "description": "Socket of the TestAnyware app, for tests. Overrides the default socket on a macOS host, and turns routing through the app on elsewhere.",
+      "internal": true,
+      "name": "TESTANYWARE_APP_SOCKET"
+    },
+    {
+      "description": "Force a single primary RFB encoding (zrle|tight|raw) so the live-VM gate can exercise each decoder; not part of the stable contract.",
+      "internal": true,
+      "name": "TESTANYWARE_RFB_ENCODING"
+    }
+  ],
+  "error_codes": [
+    "AUTH_REQUIRED",
+    "CONNECTION_REFUSED",
+    "CONNECTION_TIMEOUT",
+    "CONNECTION_DROPPED",
+    "INVALID_ENDPOINT",
+    "NO_CONNECTION_SPECIFIED",
+    "INVALID_PLATFORM",
+    "SSH_CONNECT_FAILED",
+    "VM_NOT_FOUND",
+    "VM_BOOT_TIMEOUT",
+    "VM_LIMIT_REACHED",
+    "VM_STOP_FAILED",
+    "VM_BACKEND_UNSUPPORTED",
+    "VM_HOST_UNSUPPORTED",
+    "GOLDEN_NOT_FOUND",
+    "GOLDEN_IN_USE",
+    "GOLDEN_CREATE_FAILED",
+    "TART_FAILED",
+    "QEMU_FAILED",
+    "KVM_PERMISSION_DENIED",
+    "SWTPM_MISSING",
+    "UEFI_NOT_FOUND",
+    "SPAWN_FAILED",
+    "VNC_NOT_CONFIGURED",
+    "VNC_FRAMEBUFFER_NOT_READY",
+    "VNC_CAPTURE_FAILED",
+    "VNC_ENCODING_FAILED",
+    "VNC_PIXEL_MISMATCH",
+    "VNC_DIMENSIONS_ZERO",
+    "RECORD_ALREADY_ACTIVE",
+    "RECORD_NOT_ACTIVE",
+    "RECORD_BUFFER_UNAVAILABLE",
+    "RECORD_BUFFER_CREATE_FAILED",
+    "ELEMENT_NOT_FOUND",
+    "ELEMENT_AMBIGUOUS",
+    "WINDOW_NOT_FOUND",
+    "ACTION_UNSUPPORTED",
+    "EXEC_FAILED",
+    "UPLOAD_FAILED",
+    "DOWNLOAD_FAILED",
+    "AGENT_ERROR_UNKNOWN",
+    "AGENT_INVALID_JSON",
+    "USAGE_ERROR",
+    "IO_ERROR",
+    "OCR_UNAVAILABLE",
+    "OCR_CHILD_CRASHED",
+    "OCR_TIMEOUT",
+    "UNKNOWN_KEY",
+    "UNKNOWN_BUTTON",
+    "INTERNAL",
+    "TEXT_NOT_FOUND",
+    "APP_NOT_INSTALLED",
+    "APP_UNREACHABLE",
+    "APP_INCOMPATIBLE",
+    "CONFIG_INVALID",
+    "SCHEMA_NOT_FOUND"
+  ],
+  "features": {
+    "dry_run": true,
+    "idempotency_keys": false,
+    "schema_command": true,
+    "streaming": true
+  },
+  "git_revision": "v2.7.0",
+  "ok": true,
+  "output_formats": [
+    "text",
+    "json",
+    "jsonl"
+  ],
+  "platforms": {
+    "guest": [
+      "macos",
+      "linux",
+      "windows"
+    ],
+    "host": [
+      "macos",
+      "linux"
+    ]
+  },
+  "schema_version": "1.0",
+  "subcommands": [
+    "vm",
+    "agent",
+    "input",
+    "screen",
+    "file",
+    "viewer",
+    "doctor",
+    "capabilities",
+    "schema",
+    "llm-instructions"
+  ],
+  "version": "2.7.0"
+}
