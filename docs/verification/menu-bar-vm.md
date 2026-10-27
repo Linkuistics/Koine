@@ -25,6 +25,12 @@ application on the host. Each run clones the golden, stops the clone when it end
 with a screenshot beside the transcript, and writes the transcript to
 `.build/vm-verify/menu-bar-<timestamp>.log`.
 
+The pointer-helper checks run without a bundle or VM:
+
+```sh
+mise exec -- task check:vm-menu-pointer
+```
+
 | Step | How | Expectation checked |
 |---|---|---|
 | First launch | `open` the bundle on a clone where Accessibility is not granted and login launch is not enabled | one window titled "Koine Settings", 480 wide and 680 plus the title bar high; System Events reports the process `background only`; the Dock holds no Koine; exactly one menu bar item, labelled "Koine, Accessibility not granted"; its menu is "Accessibility Not Granted…", a separator, "Settings…", "Quit Koine" |
@@ -192,3 +198,141 @@ The claim that the window resizes and keeps its content reachable rests on the
 0.3.0 run above. Transcripts of passing 0.4.0 runs: `menu-bar-20261027T222535.log`,
 `menu-bar-20261027T232206.log`, `menu-bar-20261027T233659.log`,
 `menu-bar-20261027T235535.log` and `menu-bar-20261028T001643.log`.
+
+## Coordinate repair and focus diagnosis, 2026-10-28
+
+The coordinate helper is repaired; **the intermittent focus problem remains
+open**. These are different outcomes. The menu-interaction Grove leaf was
+decomposed after a real focus failure reproduced, so its remaining focus work
+and complete scenario acceptance stay live. This investigation establishes no
+failure rate and changes no Koine application code.
+
+The subject was the released, notarised and stapled **0.4.0** zip downloaded
+with `gh release download v0.4.0 --repo Linkuistics/Koine --pattern
+Koine-0.4.0-aarch64-apple-darwin.zip --dir .build/menu-interaction`. Its SHA-256
+was `e1cd1481195e41a042a49cc2131d35fb12e34c0655c3e78375a965f7438af4e8`;
+the extracted bundle passed `codesign --verify --strict --deep` and had CDHash
+`160b0f0b39a0541f99b8d656a5c87dc3bad9ef5c`. The older bundle in the other
+workspace was 0.2.0 and was not used. CLI and running TestAnyware app were both
+2.7.0. The guest base was `testanyware-golden-macos-27`, at 1920×1080.
+The host's transcript filenames use local time; the guest clock is a separate
+observation and is not used to compare event latency.
+
+### Deterministic coordinate reproducer
+
+With the old helper, `click_centre '100, 0, 22, 15'` computes the valid target
+`(111, 7)`, then calls `testanyware input move 99 -1` before moving onto that
+target. TestAnyware 2.7.0 rejects that first command with exit 2:
+[CLI reproduction](menu-bar-interaction/negative-coordinate.txt). This is a
+deterministic reproduction of the helper path, **not a recovered historical
+source frame**: the two original failures did not retain that frame.
+
+The repair preserves the centre of every accepted frame. It reads the actual
+framebuffer dimensions, rejects invalid or off-display destinations, and bounds
+only the synthetic approach point. At the top-left corner it uses a distinct
+on-display approach pixel. Invalid frame input is refused before any pointer
+event; fields are validated separately, including positive width and height.
+The source-only `vm-menu-pointer-lib.sh` can be checked without initialising the
+VM helper's bundle checks, transcript or cleanup trap.
+
+The Bats controls first failed for the y=7 approach, corner geometry, malformed
+frames and ignored transport failure. `task check:vm-menu-pointer` then passed
+eight controls, including missing/malformed display dimensions and rejected
+off-display destinations. These checks verify arithmetic, validation and CLI
+arguments. They do not establish native focus behaviour. The
+[check output](menu-bar-interaction/helper-checks.txt),
+[source inventory](menu-bar-interaction/helper-subjects.sha256) and
+[post-check verification](menu-bar-interaction/helper-subject-check.txt) preserve
+the checked subjects. The existing installation and latency recipes now include
+the extracted helper in their own digest lists; both changed recipes also passed
+Bash syntax and ShellCheck.
+
+### Real menu action: delivered, window opened, focus stayed with TextEdit
+
+In guest `koine-menu-k2-diagnosis`, the first Automation setup attempt failed
+while the prompt was still present. The prompt was answered manually through
+TestAnyware input, and the diagnostic sequence was restarted after that consent.
+This intervention makes the sequence exploratory, not an untouched acceptance
+run. Its [failed Automation attempt](menu-bar-interaction/automation-attempt.log)
+and [diagnostic transcript](menu-bar-interaction/diagnosis.log) are retained.
+`testanyware doctor --json` reported the app reachable, matching CLI/app versions
+and permitted local networking; its only failing check was the host app's login
+item registration. No host setting was changed.
+
+The diagnostic launched TextEdit once, waited ten seconds, closed Koine's
+window once, observed zero Koine windows, then chose Settings once through
+`choose_menu_item`. It did not repeat the action or explicitly focus a window.
+The pointer transport calls returned success:
+
+| Source | Frame | Approach | Destination and click |
+|---|---|---|---|
+| Koine status item | `1660, 3, 36, 24` | `(1666, 7)` | `(1678, 15)` |
+| Settings… | `1656, 71, 242, 24` | `(1765, 75)` | `(1777, 83)` |
+
+The [before-action window observation](menu-bar-interaction/before-action-windows.json)
+contains TextEdit and no Koine window. The
+[after-action observation](menu-bar-interaction/after-action-windows.json)
+contains Koine Settings, behind TextEdit, with `focused: false`; TextEdit is
+first and has `focused: true`. `koine_in_front` returned false. System Events
+reported Koine's window `AXMain=true`, `AXFocused=false`, and the
+[screenshot](menu-bar-interaction/after-action.png) shows TextEdit covering it.
+A separate follow-up command returned `TextEdit`:
+
+```sh
+testanyware file exec 'osascript -e '\''tell application "System Events" to get name of first process whose frontmost is true'\''' --vm koine-menu-k2-diagnosis --json
+```
+
+The transcript's attempted combined `{name, frontmost}` process query is
+malformed AppleScript and returned `-1728`; it is **not focus evidence**. The
+individual query above, the window AX attributes and the screenshot are the
+independent observations used here. Reading menu titles after the action still
+returned titles; that read does not prove whether the menu was visibly dismissed.
+
+This establishes a delivered menu action with a window effect and a real
+front/focus failure. It does not yet identify whether the menu-input route or
+Koine's activation sequence caused the failure. A longer count wait or a repeated
+action would not explain it. The next focus investigation must capture menu
+dismissal and activation evidence, check every intended reopen independently,
+preserve silent-launch versus reopen semantics, and complete the scenario.
+The diagnostic guest was stopped after evidence capture.
+
+### Additional whole-scenario attempt
+
+Exactly one additional, unassisted Taskfile attempt ran with the repaired
+pointer helper:
+
+```sh
+KOINE_APP_BUNDLE="$PWD/.build/menu-interaction/Koine.app" \
+KOINE_VM_BASE=testanyware-golden-macos-27 \
+KOINE_VM_ID=koine-menu-k2-scenario \
+mise exec -- task app:vm-verify-menu-bar
+```
+
+It exited **0**, with the existing checks printing PASSED and resize explicitly
+**NOT RUN**. The [complete transcript](menu-bar-interaction/scenario.log)
+records macOS 27.0.1 (26A434), arm64. Gatekeeper was enabled and accepted the
+notarised bundle; this installation had no quarantine attribute. The initial
+display was 1920×1080; after restart it was 1024×768. The helper read the new
+dimensions and clicked the relocated status item and Quit successfully. Login
+launch was silent and the final connection to the old port was refused. The
+scenario's cleanup stopped its guest.
+
+The [host/tool versions](menu-bar-interaction/host-tools.txt) and
+[bundle identity](menu-bar-interaction/bundle-identity.txt) identify the subject.
+Every entry in the [script and release-zip inventory](menu-bar-interaction/scenario-subjects.sha256)
+was [verified unchanged after the run](menu-bar-interaction/scenario-subject-check.txt).
+The extracted bundle passed strict deep signature verification before and after
+the run. **Its complete file tree was not hashed before the run.** The original
+zip checksum and signature checks are a weaker inventory than a full per-file
+bundle freeze; the next acceptance run must include that actual input tree.
+
+The script still checks focus after the first Settings reopen and after the
+three-iteration loop, rather than after each intermediate reopen. Its explicit
+application reopen still uses the retrying `guest()` wrapper. Consequently this
+run does not establish the parent's stricter every-reopen/one-action criteria,
+nor does it explain the failed diagnostic action. Request review, Accessibility,
+silent launch, explicit reopen, login launch and final Quit all ran; no later
+scenario assertion was skipped. Resize was the separate NOT RUN outcome, and
+scroll reachability was exercised at the default size. Resize acceptance still
+rests on the older 0.3.0 run, not this attempt. This is one successful attempt of
+the existing script, with these stated limits, not a reliability estimate.

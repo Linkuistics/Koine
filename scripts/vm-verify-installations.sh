@@ -72,7 +72,7 @@ BUNDLE="clients/contract-only/dist/koine-client.mjs"
 # Everything this run reads or runs, digested now and again at the end: a run whose subjects
 # changed under it (the script itself included, which the shell reads as it goes) measured
 # nothing, and says so.
-SUBJECTS=(scripts/vm-verify-installations.sh scripts/vm-installation-fixtures.sh scripts/vm-installation-request.py scripts/vm-installation-trash-window.py scripts/vm-registration-lookup.swift
+SUBJECTS=(scripts/vm-verify-installations.sh scripts/vm-menu-pointer-lib.sh scripts/vm-installation-fixtures.sh scripts/vm-installation-request.py scripts/vm-installation-trash-window.py scripts/vm-registration-lookup.swift
     Fixtures/InstallationFixture/main.swift scripts/vm-verify-witness-lib.sh scripts/vm-verify-contract-client-lib.sh
     scripts/vm-verify-launch-lib.sh scripts/vm-launchers-lib.sh "${BUNDLE}" "${APP_BUNDLE}/Contents/MacOS/${APP_NAME}")
 if [ "${KOINE_APPLICATION_LOCATIONS:-0}" = 1 ]; then

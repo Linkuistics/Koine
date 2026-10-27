@@ -1,0 +1,9 @@
+Taskfile.yml: OK
+scripts/signing-env.sh: OK
+scripts/vm-verify-menu-bar.sh: OK
+scripts/vm-verify-lib.sh: OK
+scripts/vm-menu-pointer-lib.sh: OK
+scripts/vm-verify-desktop-lib.sh: OK
+scripts/vm-verify-client.sh: OK
+scripts/vm-verify-enrollment-client.py: OK
+.build/menu-interaction/Koine-0.4.0-aarch64-apple-darwin.zip: OK

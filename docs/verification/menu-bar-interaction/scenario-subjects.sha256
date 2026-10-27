@@ -1,0 +1,9 @@
+d16d94a13d508c5a57d45ebc37fb3fdf79fd22b87a52ceaca403e58292415ada  Taskfile.yml
+bdc96ddde8964a1f386b77d33de1385b55a47e95a42b09d4627405d1e0fa6a52  scripts/signing-env.sh
+7fb516d1ad35be1893514923086e5a88b9b90a22dcf63f79876d8ae33b4fb41b  scripts/vm-verify-menu-bar.sh
+f47b54a46f009e480d27b450db659b217ad3570afd6679b8ec03e7e36ce6420f  scripts/vm-verify-lib.sh
+fad671a58ff4f2cc5f8ee3fd6c00474c69bfb8f0203ce32c5206ebef7dc3f5f6  scripts/vm-menu-pointer-lib.sh
+8a469c5d5ea662fe825cf2c6ec19fb6edb01d362713be21a2257fc22b705a7e3  scripts/vm-verify-desktop-lib.sh
+dcf439c68c1577c31250104828eb8b97006a0f7c872213e2d97d7e4cbfdb9620  scripts/vm-verify-client.sh
+943253a3e9fdddd13404aad8a77fe7d9fb2667f2fd36ffeb65591a1bda4aeda8  scripts/vm-verify-enrollment-client.py
+e1cd1481195e41a042a49cc2131d35fb12e34c0655c3e78375a965f7438af4e8  .build/menu-interaction/Koine-0.4.0-aarch64-apple-darwin.zip

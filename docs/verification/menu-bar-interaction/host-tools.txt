@@ -1,0 +1,12 @@
+ProductName:		macOS
+ProductVersion:		27.0.1
+BuildVersion:		26A434
+arm64
+testanyware 2.7.0
+3.54.0
+Bats 1.14.0
+ShellCheck - shell script analysis tool
+version: 0.11.0
+license: GNU General Public License, version 3
+website: https://www.shellcheck.net
+3.14.1

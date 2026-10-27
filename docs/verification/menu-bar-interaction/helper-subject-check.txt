@@ -1,0 +1,9 @@
+Taskfile.yml: OK
+Tests/scripts/vm-menu-pointer.bats: OK
+scripts/vm-menu-pointer-lib.sh: OK
+scripts/vm-verify-menu-bar.sh: OK
+scripts/vm-verify-lib.sh: OK
+scripts/vm-verify-desktop-lib.sh: OK
+scripts/signing-env.sh: OK
+scripts/vm-verify-installations.sh: OK
+scripts/vm-verify-latency.sh: OK

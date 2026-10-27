@@ -53,6 +53,7 @@ SUBJECTS=(
     scripts/latency-report.py
     scripts/vm-verify-desktop-client.py
     scripts/vm-verify-lib.sh
+    scripts/vm-menu-pointer-lib.sh
     scripts/vm-verify-desktop-lib.sh
     scripts/signing-env.sh
     Fixtures/WindowIdentityProbe/main.swift

@@ -24,7 +24,7 @@ between a Koine failure, a test-driver failure and an assertion that did not run
 
 ## Decomposition
 
-Requirements were established in plan-k1. Three narrow implementation leaves
+Requirements were established in plan-k1. Three implementation work items
 follow: menu-interaction-k2 diagnoses and repairs menu input/focus checks;
 window-resize-k3 restores or isolates resize input; menu-bar-samples-k4 measures
 the resulting scenario over a declared finite sample. Each owns its evidence

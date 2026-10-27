@@ -304,7 +304,7 @@ start_vm() {
     # needs it, to put a control far below the fold of a System Settings pane on
     # screen at all; every other run takes testanyware's default.
     # KOINE_VM_BASE clones a prepared tart image instead of the platform's golden.
-    testanyware vm start --platform macos --id "${VM_ID}" \
+    testanyware vm start --platform macos --wait --id "${VM_ID}" \
         ${KOINE_VM_BASE:+--base "${KOINE_VM_BASE}"} \
         ${KOINE_VM_DISPLAY:+--display "${KOINE_VM_DISPLAY}"} >/dev/null
     # On a macOS 27 host, Virtualization.framework's VNC server (which tart serves
@@ -364,23 +364,8 @@ grant_system_events_automation() {
     sleep 2
     [ -n "$(sysevents 'get name of every process')" ] || fail "System Events still refuses the agent"
 }
-# click_at <x> <y>: a menu tracks the pointer, and a click with no movement before
-# it chooses nothing, so the pointer is brought onto the target first.
-click_at() {
-    testanyware input move $(($1 - 12)) $(($2 - 8)) >/dev/null
-    sleep 0.3
-    testanyware input move "$1" "$2" >/dev/null
-    sleep 0.3
-    testanyware input click "$1" "$2" >/dev/null
-    sleep 1
-}
-# click_centre <"x, y, w, h" as System Events prints position then size>
-click_centre() {
-    local x y w h
-    IFS=', ' read -r x y w h <<<"$(tr -s ', ' ' ' <<<"$1")"
-    [[ "${x}${y}${w}${h}" =~ ^[0-9]+$ ]] || fail "not a frame: $1"
-    click_at $((x + w / 2)) $((y + h / 2))
-}
+# shellcheck source=scripts/vm-menu-pointer-lib.sh
+source scripts/vm-menu-pointer-lib.sh
 # menu_item_count: how many items Koine has in the menu bar. One, always.
 menu_item_count() { sysevents "get count of menu bar items of menu bar 2 of process \"Koine\""; }
 # menu_item_label: the item's accessibility description, which is what VoiceOver

@@ -1451,6 +1451,14 @@ tasks:
     cmds:
       - scripts/vm-verify-disclosure.sh
 
+  check:vm-menu-pointer:
+    desc: Check menu-pointer geometry and transport failures without a VM
+    cmds:
+      - bash -n scripts/vm-menu-pointer-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+      - shellcheck -x scripts/vm-menu-pointer-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+      - shfmt -d -i 4 scripts/vm-menu-pointer-lib.sh
+      - bats Tests/scripts/vm-menu-pointer.bats
+
   app:vm-verify-menu-bar:
     desc: Verify the signed bundle as a menu bar application in a clean TestAnyware macOS VM (no Dock icon; the one menu bar item, its menu, mark and label as consent and client requests come and go; the settings window at first launch, not once setup is complete, reopened from the menu over another window, resizable, with its shortcuts; login launch; Quit from the menu)
     cmds:

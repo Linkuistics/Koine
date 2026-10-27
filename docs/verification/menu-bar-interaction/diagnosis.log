@@ -1,0 +1,203 @@
+OBSERVE before-close 2026-10-27T21:44:42Z
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "windows": [
+    {
+      "appName": "TextEdit",
+      "focused": true,
+      "positionX": 213.0,
+      "positionY": 77.0,
+      "sizeHeight": 505.0,
+      "sizeWidth": 603.0,
+      "title": "Untitled",
+      "windowType": "standard"
+    },
+    {
+      "appName": "Koine",
+      "focused": false,
+      "positionX": 720.0,
+      "positionY": 95.0,
+      "sizeHeight": 712.0,
+      "sizeWidth": 480.0,
+      "title": "Koine Settings",
+      "windowType": "standard"
+    },
+    {
+      "appName": "MenuBarAgent",
+      "focused": false,
+      "positionX": 0.0,
+      "positionY": 0.0,
+      "sizeHeight": 30.0,
+      "sizeWidth": 1920.0,
+      "windowType": "dialog"
+    },
+    {
+      "appName": "Notification Center",
+      "focused": false,
+      "positionX": 8.0,
+      "positionY": 218.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 360.0,
+      "title": "Featured",
+      "windowType": "standard"
+    },
+    {
+      "appName": "Notification Center",
+      "focused": false,
+      "positionX": 188.0,
+      "positionY": 38.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 180.0,
+      "title": "Forecast",
+      "windowType": "standard"
+    },
+    {
+      "appName": "Notification Center",
+      "focused": false,
+      "positionX": 8.0,
+      "positionY": 38.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 180.0,
+      "title": "Month",
+      "windowType": "standard"
+    }
+  ]
+}
+40:98: execution error: Can’t get {{"loginwindow", "universalaccessd", "WindowManager", "CoreServicesUIAgent", "talagentd", "AppSSOAgent", "Dock", "SystemUIServer", "ControlCenter", "WallpaperAgent", "Finder", "com.apple.dock.extra", "ViewBridgeAuxiliary", "MenuBarAgent", "QuickLookUIService", "NotificationCenter", "TextInputMenuAgent", "AirPlayUIAgent", "Siri AI", "CursorUIViewService", "CampoRemoteService", "chronod", "TextInputSwitcher", "SoftwareUpdateNotificationManager", "AccessibilityUIServer", "sharingd", "CoreLocationAgent", "IOUIAgent", "UIKitSystem", "WeatherWidget", "AppSSODaemon", "WiFiAgent", "Koine", "BackgroundTaskManagementAgent", "universalAccessAuthWarn", "com.apple.SafariPlatformSupport.Helper", "ShortcutsViewService", "System Events", "FolderActionsDispatcher", "UserNotificationCenter", "testanyware-agent", "TextEdit", "AXVisualSupportAgent", "com.apple.appkit.xpc.openAndSavePanelService", "QuickLookUIService", "osascript"}, {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, false, false, false, false}} whose frontmost = true. (-1728)
+Koine Settings, true, false
+OK: Window closed successfully
+OBSERVE before-action 2026-10-27T21:45:12Z
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "windows": [
+    {
+      "appName": "TextEdit",
+      "focused": true,
+      "positionX": 213.0,
+      "positionY": 77.0,
+      "sizeHeight": 505.0,
+      "sizeWidth": 603.0,
+      "title": "Untitled",
+      "windowType": "standard"
+    },
+    {
+      "appName": "MenuBarAgent",
+      "focused": false,
+      "positionX": 0.0,
+      "positionY": 0.0,
+      "sizeHeight": 30.0,
+      "sizeWidth": 1920.0,
+      "windowType": "dialog"
+    },
+    {
+      "appName": "Notification Center",
+      "focused": false,
+      "positionX": 8.0,
+      "positionY": 218.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 360.0,
+      "title": "Featured",
+      "windowType": "standard"
+    },
+    {
+      "appName": "Notification Center",
+      "focused": false,
+      "positionX": 188.0,
+      "positionY": 38.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 180.0,
+      "title": "Forecast",
+      "windowType": "standard"
+    },
+    {
+      "appName": "Notification Center",
+      "focused": false,
+      "positionX": 8.0,
+      "positionY": 38.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 180.0,
+      "title": "Month",
+      "windowType": "standard"
+    }
+  ]
+}
+40:98: execution error: Can’t get {{"loginwindow", "universalaccessd", "WindowManager", "CoreServicesUIAgent", "talagentd", "AppSSOAgent", "Dock", "SystemUIServer", "ControlCenter", "WallpaperAgent", "Finder", "com.apple.dock.extra", "ViewBridgeAuxiliary", "MenuBarAgent", "QuickLookUIService", "NotificationCenter", "TextInputMenuAgent", "AirPlayUIAgent", "Siri AI", "CursorUIViewService", "CampoRemoteService", "chronod", "TextInputSwitcher", "SoftwareUpdateNotificationManager", "AccessibilityUIServer", "sharingd", "CoreLocationAgent", "IOUIAgent", "UIKitSystem", "WeatherWidget", "AppSSODaemon", "WiFiAgent", "Koine", "BackgroundTaskManagementAgent", "universalAccessAuthWarn", "com.apple.SafariPlatformSupport.Helper", "ShortcutsViewService", "System Events", "FolderActionsDispatcher", "UserNotificationCenter", "testanyware-agent", "TextEdit", "AXVisualSupportAgent", "com.apple.appkit.xpc.openAndSavePanelService", "QuickLookUIService", "osascript"}, {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, false, false, false, false}} whose frontmost = true. (-1728)
+,,
+Pointer source frame: 1660, 3, 36, 24
+Pointer: approach=(1666, 7) target=(1678, 15) display=1920x1080
+Pointer source frame: 1656, 71, 242, 24
+Pointer: approach=(1765, 75) target=(1777, 83) display=1920x1080
+OBSERVE after-action 2026-10-27T21:45:18Z
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "windows": [
+    {
+      "appName": "TextEdit",
+      "focused": true,
+      "positionX": 213.0,
+      "positionY": 77.0,
+      "sizeHeight": 505.0,
+      "sizeWidth": 603.0,
+      "title": "Untitled",
+      "windowType": "standard"
+    },
+    {
+      "appName": "Koine",
+      "focused": false,
+      "positionX": 720.0,
+      "positionY": 95.0,
+      "sizeHeight": 712.0,
+      "sizeWidth": 480.0,
+      "title": "Koine Settings",
+      "windowType": "standard"
+    },
+    {
+      "appName": "MenuBarAgent",
+      "focused": false,
+      "positionX": 0.0,
+      "positionY": 0.0,
+      "sizeHeight": 30.0,
+      "sizeWidth": 1920.0,
+      "windowType": "dialog"
+    },
+    {
+      "appName": "Notification Center",
+      "focused": false,
+      "positionX": 8.0,
+      "positionY": 218.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 360.0,
+      "title": "Featured",
+      "windowType": "standard"
+    },
+    {
+      "appName": "Notification Center",
+      "focused": false,
+      "positionX": 188.0,
+      "positionY": 38.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 180.0,
+      "title": "Forecast",
+      "windowType": "standard"
+    },
+    {
+      "appName": "Notification Center",
+      "focused": false,
+      "positionX": 8.0,
+      "positionY": 38.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 180.0,
+      "title": "Month",
+      "windowType": "standard"
+    }
+  ]
+}
+40:98: execution error: Can’t get {{"loginwindow", "universalaccessd", "WindowManager", "CoreServicesUIAgent", "talagentd", "AppSSOAgent", "Dock", "SystemUIServer", "ControlCenter", "WallpaperAgent", "Finder", "com.apple.dock.extra", "ViewBridgeAuxiliary", "MenuBarAgent", "QuickLookUIService", "NotificationCenter", "TextInputMenuAgent", "AirPlayUIAgent", "Siri AI", "CursorUIViewService", "CampoRemoteService", "chronod", "TextInputSwitcher", "SoftwareUpdateNotificationManager", "AccessibilityUIServer", "sharingd", "CoreLocationAgent", "IOUIAgent", "UIKitSystem", "WeatherWidget", "AppSSODaemon", "WiFiAgent", "Koine", "BackgroundTaskManagementAgent", "universalAccessAuthWarn", "com.apple.SafariPlatformSupport.Helper", "ShortcutsViewService", "System Events", "FolderActionsDispatcher", "UserNotificationCenter", "testanyware-agent", "TextEdit", "com.apple.appkit.xpc.openAndSavePanelService", "QuickLookUIService", "osascript"}, {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, false, false, false}} whose frontmost = true. (-1728)
+Koine Settings, true, false
+koine_in_front=false
+Accessibility Not Granted…, , Settings…, Quit Koine
+wrote .build/menu-interaction/after-action.png (1920x1080)
+VM koine-menu-k2-diagnosis left running. Stop it with: testanyware vm stop koine-menu-k2-diagnosis

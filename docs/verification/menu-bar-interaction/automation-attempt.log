@@ -1,0 +1,2 @@
+FAILED: the Automation prompt for System Events did not appear
+VM koine-menu-k2-diagnosis left running. Stop it with: testanyware vm stop koine-menu-k2-diagnosis

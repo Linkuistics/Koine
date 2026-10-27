@@ -1,0 +1,10 @@
+error: unexpected argument '-1' found
+
+  tip: to pass '-1' as a value, use '-- -1'
+
+Usage: testanyware input move [OPTIONS] <X> <Y>
+
+For more information, try '--help'.
+
+LLM agents: run `testanyware llm-instructions` for the full usage guide.
+CLI exit: 2

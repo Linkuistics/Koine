@@ -1,4 +1,4 @@
-# menu-interaction-k2
+# menu-interaction-k2 — brief
 
 ## Goal
 
@@ -54,3 +54,40 @@ testing its pure logic. Prefer its existing boundary over a new test framework.
 
 No release, product feature or host GUI run is required. If diagnosis expands
 beyond one focused session, decompose this leaf and preserve the concrete work.
+
+## Decisions (running log)
+
+- The graph CLI refused access with the same active-generation error recorded
+  by plan-k1. Use bounded direct source reads; do not stop other CBM sessions.
+- Use the released 0.4.0 zip, downloaded from GitHub, for this diagnosis. Its
+  SHA-256 matches the issue's `e1cd1481195e41a042a49cc2131d35fb12e34c0655c3e78375a965f7438af4e8`.
+  The other workspace's local bundle is 0.2.0 and is not the subject.
+- Reproduced the CLI rejection without a VM: `testanyware input move 100 -1`
+  exits with `unexpected argument '-1' found`. Test coordinate arithmetic and
+  malformed frames before repairing the helper. Keep the destination unchanged;
+  only the synthetic approach point may be bounded to the display.
+
+## Execution plan
+
+1. Extract the pointer helper into a source-only boundary, with failing focused
+   tests for the y=7 approach, display edges and invalid frame observations.
+2. Repair only the established pointer defect. Capture frame, CLI coordinates,
+   menu dismissal, window ordering and System Events focus around one action.
+3. Use that evidence to decide whether any focus repair is justified. Check
+   every intended reopen, with one action per assertion and no action retries.
+4. Freeze the scripts and bundle, run the complete Taskfile scenario, retain
+   failed and NOT RUN outcomes, and update the existing verification document.
+
+## Decomposition
+
+The diagnostic guest reproduced a persistent focus failure after a delivered
+Settings menu action: the window appeared, but TextEdit remained first and
+focused. System Events and the screenshot agree with the agent. This expands
+the work beyond the pointer arithmetic repair and rules out treating a longer
+window-count wait as an established fix.
+
+- menu-pointer-k5 delivers the bounded coordinate repair, focused controls and
+  real-guest input evidence. It also preserves the failed focus observation.
+- A following implementation child owns the remaining focus diagnosis and the
+  complete scenario, including checking every intended reopen once. The parent
+  stays live until its original Done when criteria are met.
