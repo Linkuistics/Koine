@@ -165,3 +165,30 @@ reopening the window; a Notification Center banner counted as the front window;
 TextEdit's first launch), and on the resize being tried with an accessibility
 resize that the window does not hold to its least size. None of them was Koine
 behaving other than as specified.
+
+## Koine 0.4.0
+
+The check ran on the **notarised, stapled 0.4.0** bundle. The bundle is tag `v0.4.0`, submission `3a73ea8c-e99d-4d98-a943-5b4c1a0e9f26`, CDHash `160b0f0b39a0541f99b8d656a5c87dc3bad9ef5c` and zip SHA-256 `e1cd1481195e41a042a49cc2131d35fb12e34c0655c3e78375a965f7438af4e8`.
+It passed on 5 of 9 runs, and the last 5 runs all passed. The released 0.3.0
+bundle passed 3 of 3 runs with the same script. The runs were on 2026-10-27 and
+2026-10-28 on macOS 27.0.1.
+
+The failures included "the window did not come to the front" (twice, at
+different steps) and `testanyware input move` rejecting an argument of `-1`
+(twice). The code difference between `v0.3.0` and the 0.4.0 commit touches no
+window or activation code. The sample is too small to show a difference between
+the two bundles. Issue 14 tracks it.
+
+**The resize by a drag was not run.** In this guest (macOS 27.0.1, testanyware
+2.7.0), a drag of the title bar or of a window corner has no effect at any
+position. A drag of a scroll thumb works. The released 0.3.0 bundle fails the
+same way, so the guest or the input tool is the cause.
+
+The script now tries a title-bar drag first. If the window does not move, the script prints `NOT RUN`
+for the resize assertions and does not count them as a pass. It still runs the
+least-size screenshot and the scroll-reachability steps.
+
+The claim that the window resizes and keeps its content reachable rests on the
+0.3.0 run above. Transcripts of passing 0.4.0 runs: `menu-bar-20261027T222535.log`,
+`menu-bar-20261027T232206.log`, `menu-bar-20261027T233659.log`,
+`menu-bar-20261027T235535.log` and `menu-bar-20261028T001643.log`.

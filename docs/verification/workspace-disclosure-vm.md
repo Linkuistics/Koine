@@ -95,6 +95,23 @@ shared `create_grant` and the two scripts that clicked Create Grant directly
 through the window, only this one and `task conformance` were re-run for this
 change; the others change only by that helper.
 
+## The two disclosures on 0.4.0
+
+The check now covers `workspace:read` as well as `workspace:control`. It expects
+the served list to hold exactly these two capabilities. It reads the
+`workspace:read` text in the create-grant view, in the request view (the request
+now includes `workspace:read`), in the grant list and after a restart. It also
+checks that a grant without `workspace:read` shows no read text.
+
+The check passed on the **notarised, stapled 0.4.0** bundle (tag `v0.4.0`, submission `3a73ea8c-e99d-4d98-a943-5b4c1a0e9f26`, CDHash `160b0f0b39a0541f99b8d656a5c87dc3bad9ef5c`), run on 2026-10-27 on macOS 27.0.1. The
+transcript is `disclosure-20261027T180346.log`. The bundle carried its stapled
+ticket. Gatekeeper accepted it as Notarized Developer ID. The first run of the day failed
+with "served disclosures are not exactly workspace:control's". The script still
+expected one disclosure, and the script was the cause.
+
+The `workspace:read` text names network volumes and a remote home folder. The
+human approved this text before the release. No run read a remote location.
+
 ## What this does not claim
 
 - **Desktop control's expanded reach** (windows' geometry, pointer, media) is

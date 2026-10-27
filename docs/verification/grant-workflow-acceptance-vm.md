@@ -142,6 +142,9 @@ printed. The enrollment workflow touches no clipboard at all.
 
 ## Evidence
 
+The check passed on the **notarised, stapled 0.4.0** bundle (tag `v0.4.0`, submission `3a73ea8c-e99d-4d98-a943-5b4c1a0e9f26`, CDHash `160b0f0b39a0541f99b8d656a5c87dc3bad9ef5c`). The run was on 2026-10-27 on macOS 27.0.1,
+transcript `grant-workflows-20261027T183127.log`. No 0.4.0 run used macOS 26.5.
+
 Run of 2026-09-21, transcript `grant-workflows-20260921T013850.log`, against the
 **notarized, stapled 0.1.0** bundle that
 [release-acceptance-vm.md](release-acceptance-vm.md) ran against, signed

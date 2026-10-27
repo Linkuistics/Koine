@@ -73,6 +73,15 @@ hosts that run alone (`scripts/conformance-capture-headless.py`).
 | Report | the introspected schema against the design file | empty |
 | Pin | the served `koineManagement.providers` rows against the profile | every pinned candidate served as pinned, and no row the profile did not expect |
 
+## Koine 0.4.0
+
+`task conformance:headless` passed. `KOINE_CONFORMANCE_REQUIRE_NOTARIZED=1 task
+conformance` passed all three profiles on the stapled **0.4.0** bundle (tag
+`v0.4.0`, CDHash `160b0f0b39a0541f99b8d656a5c87dc3bad9ef5c`). The served schema
+is the profile "extension-host core + desktop + workspace 1.0.2" exactly. The
+run was on 2026-10-27 on macOS 27.0.1. The transcript is
+`conformance-20261027T193950.log`.
+
 ## What a green run is, and why it is two things
 
 **The digest half.** `KoineCore/CanonicalSDL.swift` is the one implementation of

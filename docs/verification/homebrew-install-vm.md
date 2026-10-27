@@ -98,6 +98,18 @@ largest footprint any user's setting produces.
 
 ## Evidence
 
+Koine 0.4.0 passed every expectation above once, on 2026-10-28. The guest was
+macOS 27.0.1 (26A434) with Homebrew 7.0.9. The host ran testanyware 2.7.0. The
+cask was `Casks/koine.rb` in `Linkuistics/homebrew-taps` at `21f59c1`. It
+installed release `v0.4.0` (`Koine-0.4.0-aarch64-apple-darwin.zip`, SHA-256
+`e1cd1481195e41a042a49cc2131d35fb12e34c0655c3e78375a965f7438af4e8`). The
+transcript is `homebrew-20261028T004952.log`.
+
+Gatekeeper accepted the quarantined bundle as Notarized Developer ID. Koine
+launched and served. After `--zap`, nothing named Koine remained under `~/Library`, and the
+run found no defaults domain and no saved window state. No 0.4.0 run used macOS
+26.5. The 26.5 result below rests on 0.3.0.
+
 Two runs of 2026-10-19, both passing every expectation above. The host was a
 Mac16,5 (Apple M4 Max) on macOS 27.0.1 (26A434), running testanyware 2.3.0 and
 tart 2.40.1. The cask was `Casks/koine.rb` in `Linkuistics/homebrew-taps` at

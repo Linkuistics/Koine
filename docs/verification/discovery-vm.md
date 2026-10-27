@@ -92,7 +92,14 @@ A catalogue call cannot wait 75 seconds, because the provider waits three second
 - **The host.** No discovery read ran on the host, as the rules require. This record does not show whether the indexed scope fills slowly on a host with a long uptime. It does not show the behaviour of a second query in one process.
 - **The deadline.** Issue 12 (the timeout waits behind native work) was not met in this run, because the query finished at once.
 - **The root certificate.** The cost certificate still names the indexed local computer scope. The change removes that one call, so its bound still holds.
-- **The notarised build.** The release leaf owns those checks.
+- **The 26.5 guest.** The runs of 0.4.0 used macOS 27.0.1 only.
+
+The notarised build passed the same check. The run used the stapled 0.4.0 bundle
+(CDHash `160b0f0b39a0541f99b8d656a5c87dc3bad9ef5c`) through
+`task app:vm-verify-discovery-notarized`, which refuses an unstapled bundle.
+The transcript is `discovery-vm-20261027T180909.log`. Spotlight indexed
+Safari and Finder. `task app:vm-verify-discovery` rebuilds the bundle and drops
+the staple, so it cannot show the notarised case.
 
 ## Reproduce
 

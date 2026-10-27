@@ -126,6 +126,23 @@ not interchangeable, and a run that revokes should grant by Add.
 
 ## Evidence
 
+The check passed on the **notarised, stapled 0.4.0** bundle. The bundle is tag `v0.4.0`, submission `3a73ea8c-e99d-4d98-a943-5b4c1a0e9f26`, CDHash `160b0f0b39a0541f99b8d656a5c87dc3bad9ef5c` and zip SHA-256 `e1cd1481195e41a042a49cc2131d35fb12e34c0655c3e78375a965f7438af4e8`.
+The run was on 2026-10-27 on macOS 27.0.1. The transcript is
+`release-20261027T203819.log`, and the run took 23 minutes. The bundle did not
+change between the runs below.
+
+Earlier runs on the same bundle failed with "the first request showed no consent
+dialog". The dialog was on screen. Its title is "Device Control and Data
+Access". Its text names Koine and says that Koine would like to control this
+Mac and access the data of the user. OCR dropped the bold heading and the title when stacked Finder windows
+lay behind the dialog. The notarised check passes only because its dialog lies
+over a plain desktop. The released 0.3.0 bundle fails the same way.
+
+The script now finds the dialog by OCR first. If OCR finds nothing, the script
+reads the static text of the windows of the process `universalAccessAuthWarn`
+from the accessibility tree. The 23-minute run used that fallback and passed.
+No 0.4.0 run used macOS 26.5. The 26.5 run below rests on 0.3.0.
+
 Run of 2026-10-17, transcript `release-20261017T130017.log`, against the
 **notarized, stapled 0.3.0** bundle (tag `v0.3.0`), signed
 `Developer ID Application: Antony Blakey (TA43A4RUP3)` and notarized as

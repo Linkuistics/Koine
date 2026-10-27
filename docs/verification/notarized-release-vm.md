@@ -192,6 +192,9 @@ It asserts the loader's refusal before `dlopen` that
 records, and grants through the settings window. The 0.1.0 transcript above is
 the one the table and the discussion below describe step for step.
 
+The same script passes on the **notarised, stapled 0.4.0** bundle (tag `v0.4.0`, submission `3a73ea8c-e99d-4d98-a943-5b4c1a0e9f26`, CDHash `160b0f0b39a0541f99b8d656a5c87dc3bad9ef5c`, zip SHA-256 `e1cd1481195e41a042a49cc2131d35fb12e34c0655c3e78375a965f7438af4e8`). The run was on 2026-10-27 on macOS 27.0.1,
+transcript `notarized-20261027T184312.log`. No 0.4.0 run used macOS 26.5.
+
 Screenshots beside the transcript: `-first-launch.png` (the notarized first-run
 dialog), `-plugin-refused.png` (the loader refusal) and `-consent-dialog.png`
 (the Accessibility prompt naming Koine).
