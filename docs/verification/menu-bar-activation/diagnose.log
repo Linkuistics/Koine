@@ -1,0 +1,22 @@
+
+== Historical route: TextEdit was launched once in setup; close Koine once, then choose Settings once
+{
+  "action": "window-close",
+  "message": "Window closed successfully",
+  "ok": true,
+  "schema_version": "1.0",
+  "success": true
+}
+OBSERVE historical-before 2026-10-27T22:28:20Z
+Native transport status: 0
+{
+  "command": "/Users/admin/activation-snapshot",
+  "exit_code": 126,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "/bin/bash: /Users/admin/activation-snapshot: Permission denied",
+  "stdout": "",
+  "timed_out": false
+}
+jq: error (at .build/menu-activation/historical-before-native.json:9): Expected JSON value (while parsing '')
+VM koine-menu-k8-diagnosis left running. Stop it with: testanyware vm stop koine-menu-k8-diagnosis

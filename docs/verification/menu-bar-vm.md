@@ -543,3 +543,161 @@ and observation conditions. It is neither a reliability estimate nor a repair
 of the unexplained historical focus failure. The remaining investigation must
 explain that failure using qualified observations before selecting a product
 change or activation-wait policy.
+
+## Historical activation route and installed-bundle inventories — 2026-10-28
+
+The historical activation failure remains **unexplained and unresolved**. A
+single-action recreation succeeded with qualified native observations, but it
+cannot explain the earlier screenshot-confirmed failure. No application repair
+or new focus polling bound was selected. The scenario now inventories the
+installed guest bundle as well as the separately recorded host input.
+
+### Single-action recreation
+
+Guest `koine-menu-k8-diagnosis` used the same released 0.4.0 input, macOS 27.0.1
+(26A434), TestAnyware 2.7.0 and 1920×1080 display. The
+[tool and bundle record](menu-bar-activation/host-tools.txt) identifies the
+subject. The [setup](menu-bar-activation/setup.sh) and its
+[transcript](menu-bar-activation/setup.log) installed and verified the signed
+bundle, answered Automation consent, launched Koine once, then launched TextEdit
+once and used the inherited ten-second settling delay.
+
+The [first diagnostic wrapper](menu-bar-activation/diagnose-upload-permission.sh)
+closed Koine once and [failed before any Settings action](menu-bar-activation/diagnose.log):
+upload had not preserved the native observer's executable permission. After one
+`chmod +x` in the guest, the [corrected wrapper](menu-bar-activation/diagnose.sh)
+started from the already-closed window. It neither repeated close nor explicitly
+focused TextEdit. The [intervention record](menu-bar-activation/diagnostic-notes.txt)
+preserves that correction and the extra read-only window observation.
+
+The [corrected transcript](menu-bar-activation/diagnose-2.log) records one Settings
+click, using the unchanged k7 [fresh-process native observer](menu-bar-focus/activation-snapshot.m).
+Both native execs returned exit code zero without a timeout.
+
+| Observation | Before Settings | After Settings, before any keyboard input |
+| --- | --- | --- |
+| Native activation | TextEdit active; Koine inactive | Koine active; TextEdit inactive |
+| CoreGraphics normal-window order | TextEdit; no Koine window | Koine, then TextEdit |
+| Agent windows | TextEdit first and focused | Koine first and focused; TextEdit unfocused |
+| Visible state | Koine absent; its menu then open | Menu dismissed; Koine above TextEdit |
+
+The [before native result](menu-bar-activation/historical-before-native.json),
+[after native result](menu-bar-activation/historical-after-before-keyboard-native.json),
+[before windows](menu-bar-activation/historical-before-windows.json) and
+[after windows](menu-bar-activation/historical-after-before-keyboard-windows.json)
+retain the raw readings. The [before image](menu-bar-activation/historical-before.png),
+[open menu](menu-bar-activation/historical-open-menu.png) and
+[after image](menu-bar-activation/historical-after-before-keyboard.png) corroborate
+the visible transition. No keyboard intervention followed this action. The
+status-item frame was `1660, 3, 36, 24`, and Settings was `1656, 71, 242, 24`;
+the helper retained the same approach and destination coordinates as k5.
+
+These are sequential observations, not an atomic snapshot or an event trace.
+They establish that this action succeeded from a natively TextEdit-active
+baseline. They do not reproduce or diagnose the historical failure. In
+particular, this pass does not relabel the failure as an observer error or as
+an external limitation. The [guest stop result](menu-bar-activation/diagnostic-stop.json)
+records cleanup. This exploratory attempt had no complete per-file freeze.
+
+The macOS floor remains 26 in `Package.swift`; the SDK and guest were 27.
+Apple's [activation contract](https://developer.apple.com/documentation/appkit/nsapplication/activate())
+and [cooperative activation guide](https://developer.apple.com/documentation/appkit/passing-control-from-one-app-to-another-with-cooperative-activation)
+permit a denied activation request. That contract alone does not identify why
+the earlier Settings action failed. No API change follows from it.
+
+### Reusable installed-subject check
+
+`task app:vm-verify-menu-bar` now records every regular file's SHA-256 and each
+symlink's associated path and target in `/Applications/Koine.app` after
+installation, before first launch, and after final Quit. Each read requires a
+completion marker after successful enumeration and hashing. The scenario
+compares the manifests before printing PASSED. An early scenario failure does
+not imply that its after inventory ran. These endpoint inventories detect
+changed, added or removed files and changed symlink targets at the endpoints;
+they do not prove an immutable runtime or detect a transient edit restored
+before the final read. Attributes and empty directories are outside this check.
+
+The [focused checks](menu-bar-activation/checks-final.txt) passed Bash syntax,
+ShellCheck, the existing pointer formatter check and eight pointer controls.
+The [bounded review record](menu-bar-activation/inventory-review.txt) found no
+actionable defect in inventory collection or comparison. Neither check
+establishes native activation reliability.
+
+### Remaining activation work
+
+The existing `menu-bar-samples-k4` task now carries the precise follow-up:
+prepare observation-only failure collection before freezing its declared finite
+sample. At the first reproduced failure, capture fresh native activation,
+CoreGraphics ordering, agent windows and the screenshot/menu state before
+keyboard input, a window-focus action, or another menu action. Keep the guest
+long enough to collect that evidence and then stop it. Use the qualified
+fresh-process observer with executable permission; exclude the known System
+Events focus disagreement and the old cached polling trace. Do not enlarge the
+sample cap to chase a failure. If the observations still cannot classify the
+failure, retain it and name the missing observation. All-green samples leave
+the historical defect unresolved; they do not establish an external limitation
+or justify an activation workaround.
+
+### Complete scenario with both host and installed-subject inventories
+
+Exactly one complete attempt ran after the scripts and inputs were settled:
+
+```sh
+KOINE_APP_BUNDLE="$PWD/.build/menu-interaction/Koine.app" \
+KOINE_VM_BASE=testanyware-golden-macos-27 \
+KOINE_VM_ID=koine-menu-k8-scenario \
+mise exec -- task app:vm-verify-menu-bar
+```
+
+It exited **0**. The [complete transcript](menu-bar-activation/scenario.log)
+reaches PASSED after the first Settings reopen and each of its three further
+iterations, request review, Accessibility reopening, the single explicit app
+reopen and the Settings opening before Command-Q. It also completes the
+shortcut checks, setup-complete silent launch, silent login launch across a
+reboot and final Quit. The old port refused the final connection with curl exit
+7. No scenario assertion failed or was skipped after a failure. No extra guest
+input or observation was supplied outside the fixed scenario during this run.
+The inherited TextEdit setup, settling delays and window-count observation
+remain; this is no matched reliability comparison with earlier attempts.
+
+**Resize was NOT RUN.** The title-bar drag left the window at `(40,40)`, so the
+corner-resize assertions were not attempted. Scroll reachability ran at the
+default size. This adds no minimum-size acceptance to the older 0.3.0 evidence.
+The guest ran macOS 27.0.1 (26A434), arm64, with Gatekeeper enabled. Its installed
+bundle had no quarantine attribute and passed strict deep signature verification
+and the notarised Developer ID assessment. The display changed from 1920×1080
+to 1024×768 after reboot; the final pointer coordinates used that new size.
+
+The [inventory builder used for this attempt](menu-bar-activation/host-inventory.sh)
+recorded every regular file of the actual extracted host bundle, the release
+zip, Taskfile, `App/Info.plist`, all sourced scripts and both client fixtures.
+The [before inventory](menu-bar-activation/scenario-subjects.sha256),
+[after re-enumeration](menu-bar-activation/scenario-subjects-after.sha256),
+[item-by-item verification](menu-bar-activation/scenario-subject-check.txt) and
+[empty manifest diff](menu-bar-activation/scenario-inventory-diff.txt) agree.
+Re-enumeration also detects additions or removals. The host bundle's
+[before symlinks](menu-bar-activation/scenario-links-before.txt) and
+[after symlinks](menu-bar-activation/scenario-links-after.txt)
+[match](menu-bar-activation/scenario-links-diff.txt); its
+[post-run signature verification](menu-bar-activation/signature-after.txt) passed.
+
+The installed guest's own
+[before manifest](menu-bar-activation/menu-bar-20261028T093123-installed-before.txt)
+and [after manifest](menu-bar-activation/menu-bar-20261028T093123-installed-after.txt)
+[match](menu-bar-activation/installed-inventory-diff.txt). Its before manifest
+also [matches the extracted host bundle](menu-bar-activation/host-installed-before-diff.txt),
+using the retained [relative-path host manifest](menu-bar-activation/host-bundle-relative.txt).
+These are complete regular-file and symlink endpoint inventories of the actual
+installed subject, with the runtime and metadata limits stated above. The
+[post-run VM inventory](menu-bar-activation/vms-after.json) confirms that neither
+of this investigation's guests remained running.
+
+The screenshots retain [first launch](menu-bar-activation/menu-bar-20261028T093123-first-launch.png),
+[Settings above TextEdit](menu-bar-activation/menu-bar-20261028T093123-over-textedit.png),
+[the default size after resize NOT RUN](menu-bar-activation/menu-bar-20261028T093123-least-size.png),
+[the request mark](menu-bar-activation/menu-bar-20261028T093123-mark.png),
+[request review](menu-bar-activation/menu-bar-20261028T093123-requests.png) and
+[silent login launch](menu-bar-activation/menu-bar-20261028T093123-after-login.png).
+This is one passing attempt under its recorded conditions. It establishes no
+activation repair or reliability rate. Issue 14's historical activation outcome
+remains unresolved, with the precise follow-up stated above.

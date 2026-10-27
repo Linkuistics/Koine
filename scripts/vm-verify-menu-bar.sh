@@ -64,8 +64,19 @@ expect_stopped() {
     guest "[ ! -e \"${DATA}/endpoint.json\" ]" || fail "the descriptor survived Quit"
 }
 
+# Inventory the installed subject, separately from the extracted host input.
+# The completion marker rejects a truncated read, including a false exec timeout.
+record_installed_bundle() {
+    local phase="$1" inventory
+    inventory="$(guest_text "set -euo pipefail; cd '${INSTALLED}'; find . -type f -exec shasum -a 256 {} + | LC_ALL=C sort; find . -type l -exec stat -f '%N -> %Y' {} + | LC_ALL=C sort; echo KOINE_INVENTORY_COMPLETE")"
+    [ "${inventory##*$'\n'}" = KOINE_INVENTORY_COMPLETE ] || fail "incomplete installed bundle inventory (${phase})"
+    printf '%s\n' "${inventory%$'\n'KOINE_INVENTORY_COMPLETE}" > "${LOG%.log}-installed-${phase}.txt"
+    echo "Installed bundle inventory: ${LOG%.log}-installed-${phase}.txt"
+}
+
 start_vm
 install_app
+record_installed_bundle before
 testanyware file upload scripts/vm-verify-enrollment-client.py /Users/admin/vm-verify-enrollment-client.py >/dev/null
 grant_system_events_automation
 
@@ -292,6 +303,10 @@ for _ in 1 2 3 4; do
 done
 echo "curl to the old port ${PORT}: exit ${REFUSED}"
 [ "${REFUSED}" = 7 ] || fail "something still answers on port ${PORT}"
+
+record_installed_bundle after
+cmp "${LOG%.log}-installed-before.txt" "${LOG%.log}-installed-after.txt" ||
+    fail "the installed bundle changed during the scenario"
 
 [ -z "${RESIZE_NOT_RUN}" ] || echo "NOT RUN, and not a pass: the resize by a drag: ${RESIZE_NOT_RUN}"
 step "PASSED — transcript in ${LOG}"

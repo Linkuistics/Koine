@@ -1,0 +1,29 @@
+Exploratory guest: koine-menu-k8-diagnosis, testanyware-golden-macos-27.
+setup.sh installed released 0.4.0 and launched Koine once, then TextEdit once,
+with the inherited ten-second TextEdit settling delay. Automation was answered
+by the existing helper. No failed setup restart was needed.
+
+diagnose-upload-permission.sh closed Koine once, then failed before any Settings
+click because upload had not preserved activation-snapshot's executable bit.
+The failure is diagnose.log, including the native permission error. The failed
+source is preserved separately. No Settings action had been sent.
+
+One intervening read-only agent windows call confirmed TextEdit focused and no
+Koine window. Then, exactly once:
+  testanyware file exec 'chmod +x /Users/admin/activation-snapshot' \
+    --vm koine-menu-k8-diagnosis --timeout 3 --json
+returned exit_code 0, timed_out false, no stdout/stderr. The corrected diagnose.sh
+started from the already-closed window without repeating close or refocusing
+TextEdit. Its diagnose-2.log records exactly one Settings click.
+
+Both fresh native execs returned exit_code 0 and timed_out false. Their data,
+agent ordering, before/open-menu/after images were collected before keyboard
+input. No keyboard intervention followed this action. The observer was compiled
+from the unchanged menu-bar-focus/activation-snapshot.m with:
+  xcrun clang -fobjc-arc -mmacosx-version-min=26.0 activation-snapshot.m \
+    -framework AppKit -framework ApplicationServices -o activation-snapshot
+It ran only in the guest. These native API reads are sequential, not atomic.
+
+The guest was stopped after collection, as recorded in diagnostic-stop.json.
+This exploratory attempt did not have before/after per-file bundle inventories.
+The separate full-scenario attempt supplies endpoint inventories.

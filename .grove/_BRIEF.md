@@ -70,3 +70,26 @@ The graph CLI could not establish a project or generation during plan-k1:
 is active; close all CBM sessions and commands, then retry`. Source observations
 in this brief use bounded direct reads, not graph completeness claims. Do not
 stop other sessions merely to obtain graph access.
+
+## Menu-interaction handoff
+
+K5 repairs the demonstrated coordinate defect while preserving the valid target;
+its historical failing source frame was not recovered. K7 qualifies the focus
+instruments and asserts every intended reopen from one Koine action. K8 adds a
+successful historical-route recreation and one full passing scenario with
+matched host-input and installed-guest regular-file/symlink endpoint inventories,
+including App/Info.plist in the original host inventory.
+
+Menu-interaction-k2 and menu-focus-k6 close under their explicit allowance for an
+unexplained historical symptom with a precise remaining task. **The historical
+activation failure is still unresolved.** No application activation change,
+new focus polling bound, reliability rate or external cause is established. The
+original criteria are checked in both node briefs. K4 already owns the finite
+sample and now carries precise native/window/visible failure capture before
+keyboard, focus or repeated action intervention; an all-green sample does not
+close that historical issue outcome. Do not expand its cap to chase a failure.
+
+K8's resize remained NOT RUN, with scroll reachability at the default size.
+K3 still owns the missing user-input resize exercise; no new minimum-size
+acceptance follows from the passing menu scenario. The detailed evidence and
+endpoint-inventory limitations are in docs/verification/menu-bar-vm.md.

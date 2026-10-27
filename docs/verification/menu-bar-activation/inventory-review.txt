@@ -1,0 +1,6 @@
+One fresh-context in-session reviewer read record_installed_bundle, its two call sites,
+and guest()/guest_text(). Its contract covered every regular file SHA-256, associated
+symlink paths/targets, output completeness, read-only observations and comparison
+before PASSED. It found no actionable defect. It performed no VM run or edits.
+This review does not establish a cause for the historical activation failure.
+Existing install and TextEdit setup retries were outside the narrow change reviewed.

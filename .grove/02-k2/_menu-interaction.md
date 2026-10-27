@@ -91,3 +91,36 @@ window-count wait as an established fix.
 - A following implementation child owns the remaining focus diagnosis and the
   complete scenario, including checking every intended reopen once. The parent
   stays live until its original Done when criteria are met.
+
+## Original acceptance check and handoff
+
+- Coordinate diagnosis/repair: k5 retains the deterministic old-helper path
+  from a valid centre at y=7 to a rejected approach at y=-1, edge and malformed
+  observation controls, the unchanged destination and actual guest pointer
+  evidence. The original historical source frame was not recovered; that limit
+  remains explicit. The shared helper's affected consumers and focused checks
+  are recorded with its repair.
+- Action/focus evidence: k5 retains a real screenshot/agent-order failure; k7
+  separates unreliable System Events focus reads from qualified native and
+  keyboard evidence. K8 recreates the historical route with native activation,
+  independent native window order and visible dismissal before keyboard input.
+  That action succeeds; it does not explain the earlier failure. No activation
+  workaround or guessed focus wait is claimed as a repair.
+- Full scenario: k7 adds an independent assertion after every intended reopen
+  and makes launch/reopen operations single-action. K8's one complete frozen
+  Taskfile attempt exits 0 through those assertions, silent launch, login launch
+  across reboot and final Quit. The host and actual installed-guest endpoint
+  inventories match. Resize remains NOT RUN and is neither a pass nor minimum-
+  size acceptance; k3 owns it.
+- Reusable procedure and accurate record: Taskfile and the scenario now include
+  installed-subject inventories; the verification document retains subjects,
+  tools, attempted actions, driver failures, limits and outputs. The original
+  residual-symptom criterion is met by the precise remaining task in the already
+  live menu-bar-samples-k4 leaf: collect qualified native/visible failure state
+  before intervention at the first failure in its bounded sample, without
+  enlarging the cap. Historical activation remains unresolved even if that
+  sample is all green. No external cause or application repair is inferred.
+
+The menu-interaction implementation handoff is complete under that explicit
+residual-symptom allowance. This is not closure of issue 14's activation outcome.
+The root brief and k4 retain that distinction for the remaining work.

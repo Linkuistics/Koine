@@ -83,3 +83,36 @@ installed subject. The predecessor's exploratory attempt records that limit.
   Decompose: the first child preserves this observer qualification, strengthens
   every-reopen/one-action scenario coverage, and records one frozen full attempt.
   A following child owns remaining activation diagnosis and any justified repair.
+
+## Original acceptance check and handoff
+
+- Qualified action evidence: k7 qualifies the fresh-process activation observer
+  and keyboard receipt; k8 recreates the historical route with TextEdit natively
+  active, visible menu dismissal, native activation, CoreGraphics order and
+  agent focus before any keyboard intervention. The historical failed action
+  remains unclassified. No application change or new focus polling bound was
+  selected without a cause.
+- Repair/residual clause: no local activation cause was established, so no
+  activation repair is claimed. The original Done when explicitly permits an
+  unexplained historical symptom with a precise remaining task. K4 now owns
+  qualified observation-only collection at the first failure in its finite
+  sample; its body states the instruments, intervention boundary and cap rule.
+- Every-reopen/one-action criterion: the k7 scenario asserts the first Settings
+  reopen, each of three further iterations, request review, Accessibility,
+  explicit application reopening and the opening before Command-Q separately.
+  K8's full attempt reached PASSED through all of them. Initial launch, silent
+  launch and explicit reopening each use one guest_once operation. No Koine
+  action retry or new focus polling was introduced. Inherited TextEdit setup,
+  count observation and settling remain disclosed.
+- Complete frozen scenario: k8's one attempt exited 0, reached reboot/login
+  launch and final Quit, and checked every sourced script, Taskfile,
+  App/Info.plist, both client fixtures, every regular host app file and its
+  symlinks before/after. Installed guest regular-file and symlink manifests
+  independently matched before/after and matched the host input. This is
+  endpoint evidence, not an immutable-runtime claim.
+- Records and boundaries: docs/verification/menu-bar-vm.md retains every k8
+  attempt, the pre-action observer permission failure, all interventions and
+  the complete scenario. Resize remains NOT RUN and belongs to k3. K2's original
+  criteria are checked in its brief. This closes the implementation and
+  observation handoff under the residual-symptom allowance, without resolving
+  issue 14's historical activation outcome or claiming an external cause.

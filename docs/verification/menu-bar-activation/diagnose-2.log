@@ -1,0 +1,171 @@
+
+== Historical route: TextEdit was launched once in setup; close Koine once, then choose Settings once
+OBSERVE historical-before 2026-10-27T22:28:27Z
+Native transport status: 0
+{
+  "command": "/Users/admin/activation-snapshot",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "{\n  \"windows\" : [\n    {\n      \"app\" : \"TextEdit\",\n      \"pid\" : 699,\n      \"number\" : 49\n    }\n  ],\n  \"apps\" : [\n    {\n      \"active\" : false,\n      \"name\" : \"Koine\",\n      \"pid\" : 685,\n      \"policy\" : 1\n    },\n    {\n      \"active\" : true,\n      \"name\" : \"TextEdit\",\n      \"pid\" : 699,\n      \"policy\" : 0\n    }\n  ],\n  \"front\" : \"TextEdit\",\n  \"time\" : 1793140108.080797,\n  \"pid\" : 699\n}",
+  "timed_out": false
+}
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "windows": [
+    {
+      "appName": "TextEdit",
+      "focused": true,
+      "positionX": 213.0,
+      "positionY": 77.0,
+      "sizeHeight": 505.0,
+      "sizeWidth": 603.0,
+      "title": "Untitled",
+      "windowType": "standard"
+    },
+    {
+      "appName": "MenuBarAgent",
+      "focused": false,
+      "positionX": 0.0,
+      "positionY": 0.0,
+      "sizeHeight": 30.0,
+      "sizeWidth": 1920.0,
+      "windowType": "dialog"
+    },
+    {
+      "appName": "Notification Center",
+      "focused": false,
+      "positionX": 8.0,
+      "positionY": 218.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 360.0,
+      "title": "Featured",
+      "windowType": "standard"
+    },
+    {
+      "appName": "Notification Center",
+      "focused": false,
+      "positionX": 188.0,
+      "positionY": 38.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 180.0,
+      "title": "Forecast",
+      "windowType": "standard"
+    },
+    {
+      "appName": "Notification Center",
+      "focused": false,
+      "positionX": 8.0,
+      "positionY": 38.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 180.0,
+      "title": "Month",
+      "windowType": "standard"
+    }
+  ]
+}
+{
+  "height": 1080,
+  "ok": true,
+  "path": ".build/menu-activation/historical-before.png",
+  "schema_version": "1.0",
+  "width": 1920
+}
+Pointer source frame: 1660, 3, 36, 24
+Pointer: approach=(1666, 7) target=(1678, 15) display=1920x1080
+{
+  "height": 1080,
+  "ok": true,
+  "path": ".build/menu-activation/historical-open-menu.png",
+  "schema_version": "1.0",
+  "width": 1920
+}
+ONE SETTINGS ACTION 2026-10-27T22:28:30Z frame=1656, 71, 242, 24
+Pointer source frame: 1656, 71, 242, 24
+Pointer: approach=(1765, 75) target=(1777, 83) display=1920x1080
+OBSERVE historical-after-before-keyboard 2026-10-27T22:28:31Z
+Native transport status: 0
+{
+  "command": "/Users/admin/activation-snapshot",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "{\n  \"windows\" : [\n    {\n      \"app\" : \"Koine\",\n      \"pid\" : 685,\n      \"number\" : 40\n    },\n    {\n      \"app\" : \"TextEdit\",\n      \"pid\" : 699,\n      \"number\" : 49\n    }\n  ],\n  \"apps\" : [\n    {\n      \"active\" : true,\n      \"name\" : \"Koine\",\n      \"pid\" : 685,\n      \"policy\" : 1\n    },\n    {\n      \"active\" : false,\n      \"name\" : \"TextEdit\",\n      \"pid\" : 699,\n      \"policy\" : 0\n    }\n  ],\n  \"front\" : \"Koine\",\n  \"time\" : 1793140111.9223731,\n  \"pid\" : 685\n}",
+  "timed_out": false
+}
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "windows": [
+    {
+      "appName": "Koine",
+      "focused": true,
+      "positionX": 720.0,
+      "positionY": 95.0,
+      "sizeHeight": 712.0,
+      "sizeWidth": 480.0,
+      "title": "Koine Settings",
+      "windowType": "standard"
+    },
+    {
+      "appName": "TextEdit",
+      "focused": false,
+      "positionX": 213.0,
+      "positionY": 77.0,
+      "sizeHeight": 505.0,
+      "sizeWidth": 603.0,
+      "title": "Untitled",
+      "windowType": "standard"
+    },
+    {
+      "appName": "MenuBarAgent",
+      "focused": false,
+      "positionX": 0.0,
+      "positionY": 0.0,
+      "sizeHeight": 30.0,
+      "sizeWidth": 1920.0,
+      "windowType": "dialog"
+    },
+    {
+      "appName": "Notification Center",
+      "focused": false,
+      "positionX": 8.0,
+      "positionY": 218.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 360.0,
+      "title": "Featured",
+      "windowType": "standard"
+    },
+    {
+      "appName": "Notification Center",
+      "focused": false,
+      "positionX": 188.0,
+      "positionY": 38.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 180.0,
+      "title": "Forecast",
+      "windowType": "standard"
+    },
+    {
+      "appName": "Notification Center",
+      "focused": false,
+      "positionX": 8.0,
+      "positionY": 38.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 180.0,
+      "title": "Month",
+      "windowType": "standard"
+    }
+  ]
+}
+{
+  "height": 1080,
+  "ok": true,
+  "path": ".build/menu-activation/historical-after-before-keyboard.png",
+  "schema_version": "1.0",
+  "width": 1920
+}
+VM koine-menu-k8-diagnosis left running. Stop it with: testanyware vm stop koine-menu-k8-diagnosis
