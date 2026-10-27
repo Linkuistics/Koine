@@ -1,4 +1,4 @@
-# menu-focus-k6
+# menu-focus-k6 — brief
 
 ## Goal
 
@@ -55,3 +55,31 @@ before and after the run, as well as every sourced script, Taskfile and client
 fixture. Hashing only the original release zip plus checking code signatures is
 a weaker inventory; do not describe it as a complete per-file freeze of the
 installed subject. The predecessor's exploratory attempt records that limit.
+
+## Decisions (running log)
+
+- CBM again refused `list_projects` because an unverified generation is active.
+  Use bounded source reads; do not stop other sessions.
+- Diagnose the unchanged released 0.4.0 bundle first. The retained release zip's
+  SHA-256 matches the brief. Guest `koine-menu-k6-diagnosis` uses the macOS 27
+  golden and TestAnyware 2.7.0. Setup installed and verified the bundle and
+  answered Automation consent, then the exploratory wrapper failed because it
+  called `await_koine`, which belongs to the scenario rather than either shared
+  library. A second wrapper also made that mistaken assumption before any
+  action. Both logs are retained; neither is an acceptance run.
+- Apple documents `NSApplication.activate()` (available since macOS 14) as an
+  activation request with no guarantee. This is a hypothesis lead, not proof of
+  the observed cause. Compare a single pointer menu action with native
+  NSWorkspace frontmost-process and CoreGraphics window-order sampling, System
+  Events AX focus attributes, the agent's windows and screenshots before repair.
+- A controlled action with TextEdit explicitly active and no Koine window
+  succeeded: a fresh native process reported Koine active and first in
+  CoreGraphics window order before keyboard input; the keyboard witness then
+  reached Koine. System Events continued to name TextEdit and report Koine's
+  AXFocused false. Those System Events reads are not a reliable independent
+  focus oracle here. The initial polling monitor did not service AppKit's event
+  loop; exclude its cached activation field. Its raw trace is exploratory.
+- The historical screenshot-confirmed failure still has no established cause.
+  Decompose: the first child preserves this observer qualification, strengthens
+  every-reopen/one-action scenario coverage, and records one frozen full attempt.
+  A following child owns remaining activation diagnosis and any justified repair.

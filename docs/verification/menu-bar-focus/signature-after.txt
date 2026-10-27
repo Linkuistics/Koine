@@ -1,0 +1,8 @@
+--prepared:/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/menu-interaction/Koine.app/Contents/PlugIns/Workspace.koineprovider
+--prepared:/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/menu-interaction/Koine.app/Contents/PlugIns/Desktop.koineprovider
+--validated:/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/menu-interaction/Koine.app/Contents/PlugIns/Workspace.koineprovider
+--prepared:/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/menu-interaction/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+--validated:/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/menu-interaction/Koine.app/Contents/PlugIns/Desktop.koineprovider
+--validated:/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/menu-interaction/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+.build/menu-interaction/Koine.app: valid on disk
+.build/menu-interaction/Koine.app: satisfies its Designated Requirement

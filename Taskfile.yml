@@ -1460,7 +1460,7 @@ tasks:
       - bats Tests/scripts/vm-menu-pointer.bats
 
   app:vm-verify-menu-bar:
-    desc: Verify the signed bundle as a menu bar application in a clean TestAnyware macOS VM (no Dock icon; the one menu bar item, its menu, mark and label as consent and client requests come and go; the settings window at first launch, not once setup is complete, reopened from the menu over another window, resizable, with its shortcuts; login launch; Quit from the menu)
+    desc: Verify the signed bundle as a menu bar application in a clean TestAnyware macOS VM (one action and an independent focus check for every intended reopen; silent launch; menu item, status and client requests; shortcuts; user-drag resize or explicit NOT RUN; login launch; Quit)
     cmds:
       - scripts/vm-verify-menu-bar.sh
 

@@ -1,0 +1,2 @@
+.build/menu-focus/diagnose.sh: line 17: await_koine: command not found
+VM koine-menu-k6-diagnosis left running. Stop it with: testanyware vm stop koine-menu-k6-diagnosis

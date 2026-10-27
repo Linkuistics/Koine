@@ -1,0 +1,8 @@
+Two extra observation-only calls during the complete Taskfile attempt:
+  testanyware screen capture --vm koine-menu-k7-scenario -o .build/menu-focus/scenario-before-cmdq-delay.png --json
+  testanyware agent windows --vm koine-menu-k7-scenario --json
+The capture returned ok:true, 1920x1080. Their archived names are scenario-midrun.png
+and scenario-midrun-windows.json. No input or focus command accompanied them.
+The scenario continued concurrently: although collection was started while its
+position read was delayed, it can race the menu opening, Command-Q and subsequent
+steps. These observations are not atomic before/after-action focus evidence.

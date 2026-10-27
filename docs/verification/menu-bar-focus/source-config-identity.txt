@@ -1,0 +1,6 @@
+Supplemental repository configuration identity (not part of pre-run SHA-256 inventory).
+Initial workspace was clean, with parent a764302d (menu-pointer-k5).
+App/Info.plist read by signing-env.sh, from that immutable parent:
+0bb29276815b59d9456925d8e2a1501a798600aab4229f9a39ebe0f4be68b5b5  -
+Current App/Info.plist:
+0bb29276815b59d9456925d8e2a1501a798600aab4229f9a39ebe0f4be68b5b5  App/Info.plist

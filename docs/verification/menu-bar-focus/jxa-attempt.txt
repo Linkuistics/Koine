@@ -1,0 +1,9 @@
+Transcription of the one failed JXA tool experiment (not a raw downloaded log).
+Guest: koine-menu-k6-diagnosis; testanyware file exec --timeout 3 --json.
+Command:
+osascript -l JavaScript -e 'ObjC.import("AppKit"); JSON.stringify({front:$.NSWorkspace.sharedWorkspace.frontmostApplication.localizedName.js, apps:ObjC.deepUnwrap($.NSWorkspace.sharedWorkspace.runningApplications).filter(a => ["Koine","TextEdit"].includes(a.localizedName.js)).map(a => ({name:a.localizedName.js, active:!!a.active}))})'
+Reported exit_code: -1; ok: true; timed_out: true; stdout: empty.
+stderr:
+execution error: Error: TypeError: undefined is not an object (evaluating 'a.localizedName.js') (-2700)
+[Process timed out after 3s]
+No activation snapshot was produced. This read supplies no focus evidence.

@@ -1,0 +1,9 @@
+{
+  "command": "chmod +x /Users/admin/focus-witness; /Users/admin/focus-witness",
+  "exit_code": -1,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "Process timed out after 3s",
+  "stdout": "{\n  \"app\" : {\n    \"error\" : -25204\n  },\n  \"trusted\" : 1,\n  \"workspaceFront\" : \"Koine\",\n  \"element\" : {\n    \"error\" : -25204\n  }\n}",
+  "timed_out": true
+}

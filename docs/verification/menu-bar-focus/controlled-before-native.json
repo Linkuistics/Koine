@@ -1,0 +1,9 @@
+{
+  "command": "/Users/admin/activation-snapshot",
+  "exit_code": -1,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "Process timed out after 3s",
+  "stdout": "{\n  \"windows\" : [\n    {\n      \"app\" : \"TextEdit\",\n      \"pid\" : 749,\n      \"number\" : 49\n    }\n  ],\n  \"apps\" : [\n    {\n      \"active\" : false,\n      \"name\" : \"Koine\",\n      \"pid\" : 687,\n      \"policy\" : 1\n    },\n    {\n      \"active\" : true,\n      \"name\" : \"TextEdit\",\n      \"pid\" : 749,\n      \"policy\" : 0\n    }\n  ],\n  \"front\" : \"TextEdit\",\n  \"time\" : 1793138880.061399,\n  \"pid\" : 749\n}",
+  "timed_out": true
+}

@@ -1,0 +1,11 @@
+Observed host checks before starting the frozen scenario:
+  mise exec -- task check:vm-menu-pointer: exit 0; all 8 Bats controls passed.
+  This task also passed bash -n, ShellCheck and the pointer helper's shfmt check.
+  mise exec -- bash -n scripts/vm-verify-menu-bar.sh: exit 0.
+  mise exec -- shellcheck -x scripts/vm-verify-menu-bar.sh: exit 0.
+These focused controls verify pointer geometry and shell validity, not native focus.
+The scenario is the verification seam for assertion placement and one-action use.
+See docs-check.txt for the retained documentation link-check output.
+The retained activation-snapshot.m (with its added source-citation comment) also
+compiled successfully with xcrun clang, -fobjc-arc, macOS deployment target 26.0,
+AppKit and ApplicationServices. Compilation did not launch a GUI app on the host.

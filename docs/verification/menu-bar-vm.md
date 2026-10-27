@@ -284,9 +284,12 @@ testanyware file exec 'osascript -e '\''tell application "System Events" to get 
 
 The transcript's attempted combined `{name, frontmost}` process query is
 malformed AppleScript and returned `-1728`; it is **not focus evidence**. The
-individual query above, the window AX attributes and the screenshot are the
-independent observations used here. Reading menu titles after the action still
-returned titles; that read does not prove whether the menu was visibly dismissed.
+individual query above and the window AX attributes are retained as raw
+readings. The [later observer qualification](#which-observations-can-support-a-conclusion)
+shows why they cannot serve as an independent focus oracle here. The agent's
+window order and screenshot preserve the observed failure. Reading menu titles
+after the action still returned titles; that read does not prove whether the
+menu was visibly dismissed.
 
 This establishes a delivered menu action with a window effect and a real
 front/focus failure. It does not yet identify whether the menu-input route or
@@ -336,3 +339,207 @@ scenario assertion was skipped. Resize was the separate NOT RUN outcome, and
 scroll reachability was exercised at the default size. Resize acceptance still
 rests on the older 0.3.0 run, not this attempt. This is one successful attempt of
 the existing script, with these stated limits, not a reliability estimate.
+
+## Focus observation qualification — 2026-10-28
+
+The k7 investigation used the same released 0.4.0 bundle and macOS 27.0.1
+(26A434) golden, with TestAnyware 2.7.0. It made **no application change and
+established no cause for the earlier screenshot-confirmed failure**. The
+[environment record](menu-bar-focus/host-tools.txt) identifies the tools.
+
+### Exploratory attempts and controls
+
+All actions below used guest `koine-menu-k6-diagnosis`. Setup installed and
+verified the released bundle, answered the System Events Automation prompt,
+and launched Koine once. The [setup wrapper](menu-bar-focus/setup.sh) then
+[failed](menu-bar-focus/setup.log) because `await_koine` is defined by the full
+scenario, not its shared libraries. The next wrapper repeated that helper-scope
+mistake and [failed before any menu action](menu-bar-focus/diagnose.log).
+The retained `diagnose.sh` is the subsequently corrected wrapper; the failed
+version's bytes were not retained. These are exploratory driver failures.
+
+The corrected [first sequence](menu-bar-focus/diagnose.sh) and its
+[transcript](menu-bar-focus/diagnose-2.log) closed Koine's window, chose Settings
+once, and observed Koine first and focused in the agent. The
+[open menu](menu-bar-focus/open-menu.png) is retained. The
+[after-action image](menu-bar-focus/after-action.png) was captured later, after
+blocking System Events reads and an intervening keyboard probe. That probe was
+issued outside the scripted transcript. The image and
+[Koine snapshot](menu-bar-focus/keyboard-koine.json) contain its witness text,
+but the retained sequence does not establish how focus was obtained or a
+pre-keyboard screenshot. The [TextEdit snapshot](menu-bar-focus/keyboard-textedit.json)
+is also retained. Use the separately traced controlled sequence below for
+the keyboard-delivery conclusion.
+
+A [second sequence](menu-bar-focus/controlled.sh), with its
+[transcript](menu-bar-focus/controlled.log), added a fresh native observer.
+Its before-action native snapshot still named Koine active after the window
+closed; closing a window had not established a TextEdit-active baseline. This
+sequence therefore does not establish an activation transition from TextEdit.
+
+The [controlled sequence](menu-bar-focus/controlled-textedit.sh) explicitly
+focused TextEdit **before** opening the menu. Its
+[transcript](menu-bar-focus/controlled-textedit.log) records one Settings action
+and no window-focus intervention after that action:
+
+| Observation | Before the action | After the action, before keyboard input |
+|---|---|---|
+| Agent windows | TextEdit focused; no Koine window | Koine first and focused; TextEdit unfocused |
+| Fresh native activation | TextEdit active; Koine inactive | Koine active; TextEdit inactive |
+| Native normal-window order | TextEdit only | Koine, TextEdit |
+| System Events front process | TextEdit | TextEdit |
+| System Events Koine window AXFocused | No window | false |
+
+The raw [before native envelope](menu-bar-focus/controlled-before-native.json)
+and [after native envelope](menu-bar-focus/controlled-after-before-keyboard-native.json)
+retain transport status and complete JSON output. The before read reported a
+timeout with a complete answer; the after read exited zero. This
+exploratory collection accepted complete parseable observation output even
+when the driver reported a timeout; it did not resend an action.
+
+The pointer source frames were `1660, 3, 36, 24` for the status item and
+`1656, 71, 242, 24` for Settings. The approach/target pairs were
+`(1666,7)→(1678,15)` and `(1765,75)→(1777,83)`. The
+[before image](menu-bar-focus/controlled-before.png),
+[open menu](menu-bar-focus/controlled-open-menu.png), and
+[after image before keyboard input](menu-bar-focus/controlled-after-before-keyboard.png)
+agree with the native ordering. The menu visibly dismissed and the window
+appeared above TextEdit. Only after those observations did keyboard input append
+`k6-controlled-witness` to the client label. The
+[Koine keyboard snapshot](menu-bar-focus/controlled-keyboard-koine.json) records
+the exact value and the focused text field; the
+[TextEdit snapshot](menu-bar-focus/controlled-keyboard-textedit.json) and
+[after-keyboard image](menu-bar-focus/controlled-after-keyboard.png) retain the
+other observations. This establishes keyboard delivery for this action.
+
+### Which observations can support a conclusion
+
+The [native snapshot source](menu-bar-focus/activation-snapshot.m) reads
+`NSRunningApplication.active`, `NSWorkspace.frontmostApplication` and
+CoreGraphics normal-window ordering in a **fresh process per observation**.
+It was compiled on the host, then executed only inside the guest:
+
+```sh
+xcrun clang -fobjc-arc -mmacosx-version-min=26.0 activation-snapshot.m \
+  -framework AppKit -framework ApplicationServices -o activation-snapshot
+```
+
+System Events continued to report TextEdit frontmost and Koine's window
+AXFocused false even while native activation, visible ordering and actual
+keyboard receipt agreed on Koine. These System Events queries are an
+**not a qualified focus oracle in this guest**, including when the AppleScript
+syntax is correct. This does not invalidate the predecessor's screenshot and
+agent-order evidence of a real failure; it limits the additional System Events
+corroboration claimed there.
+
+Two other diagnostic instruments are explicitly excluded as activation/focus
+proof. The [polling monitor](menu-bar-focus/front-monitor.m) did not service
+AppKit's event loop. The macOS 27 SDK's `NSRunningApplication.h` documents that
+time-varying application properties persist until a main-run-loop turn in a
+common mode. Thus its [trace](menu-bar-focus/front-monitor.jsonl) may retain
+cached activation state; its activation field is excluded rather
+than treated as a measured transition. The
+[system-wide AX probe](menu-bar-focus/focus-witness.m) reported trusted but
+returned `-25204` for both focused application and focused element, as retained
+in its [result](menu-bar-focus/native-focus.json). Those reads established no
+keyboard recipient. An additional JXA experiment using `ObjC.deepUnwrap` on the
+running-application array failed with a TypeError before producing a snapshot;
+its [transcribed result](menu-bar-focus/jxa-attempt.txt) supplies no focus evidence.
+
+Apple's [activate documentation](https://developer.apple.com/documentation/appkit/nsapplication/activate())
+(available since macOS 14) and
+[cooperative activation guide](https://developer.apple.com/documentation/appkit/passing-control-from-one-app-to-another-with-cooperative-activation)
+state that activation is a request that can be denied. The manifest's macOS
+floor is 26; this run used 27.0.1. That API contract is a diagnostic lead,
+**not an established explanation** of the historical failure. No focus polling
+bound, activation workaround or application repair was selected.
+
+The exploratory guest was stopped after collection. Its bundle and scripts did
+not have a complete before/after per-file freeze; this is observer qualification
+and reproduction evidence, not a frozen acceptance sample.
+
+### Every intended reopen now has its own assertion
+
+The scenario now checks the first Settings reopen, **each** of its three further
+Settings iterations, request review, the Accessibility line, explicit application
+reopen and the Settings opening immediately before Command-Q. Each assertion
+checks agent window order and its focused flag after the window-count observation.
+A count alone does not pass it. The initial launch and explicit reopen now use
+`guest_once`; the setup-complete silent launch remains its own separate,
+unrepeated operation. No action retry or additional focus poll was introduced.
+The Taskfile description names this coverage and the explicit resize NOT RUN
+outcome. The [host checks](menu-bar-focus/checks.txt) record syntax, ShellCheck
+and the eight existing pointer controls.
+
+This plumbing does not repair application activation. The scenario still uses
+its inherited TextEdit settle delay and window-count polling; a successful run
+under those conditions cannot explain the historical failure. The residual
+activation investigation must qualify its timing and focus instruments before
+selecting a repair or a new polling policy.
+
+### Complete scenario attempt with the stricter assertions
+
+Exactly one full attempt used the changed scenario:
+
+```sh
+KOINE_APP_BUNDLE="$PWD/.build/menu-interaction/Koine.app" \
+KOINE_VM_BASE=testanyware-golden-macos-27 \
+KOINE_VM_ID=koine-menu-k7-scenario \
+mise exec -- task app:vm-verify-menu-bar
+```
+
+It exited **0**. The [complete transcript](menu-bar-focus/scenario.log) reaches
+PASSED after every intended reopen assertion, setup-complete silent launch,
+explicit reopening, Command-Q, silent login launch after reboot, and final Quit.
+The final request to the old port returned curl exit 7. No scenario assertion
+failed or was skipped after a failure. **Resize was NOT RUN** because the
+window's title-bar drag left it at `(40,40)`, so no corner drag was attempted.
+Scroll reachability ran at the default size. Minimum-size resize acceptance
+continues to rest on the older 0.3.0 evidence; this attempt adds none.
+
+The guest ran macOS 27.0.1 (26A434), arm64, with Gatekeeper enabled. Installation
+had no quarantine attribute and accepted the notarised Developer ID bundle.
+The display changed from 1920×1080 to 1024×768 after reboot; the pointer helper
+used the new dimensions for final Quit. Its cleanup stopped the guest; a final
+VM inventory showed no running clone.
+
+The [before inventory](menu-bar-focus/scenario-subjects.sha256) hashes every
+regular file of the actual extracted input app at
+`.build/menu-interaction/Koine.app`, the original release zip, Taskfile, each
+sourced script and both uploaded client fixtures. The
+[after inventory](menu-bar-focus/scenario-subjects-after.sha256),
+[item-by-item verification](menu-bar-focus/scenario-subject-check.txt) and
+[empty inventory diff](menu-bar-focus/scenario-inventory-diff.txt) agree.
+Re-enumeration also checked for added or removed files rather than checking only
+the old paths. The app's [before symlink inventory](menu-bar-focus/scenario-links-before.txt)
+and [after inventory](menu-bar-focus/scenario-links-after.txt) also
+[match](menu-bar-focus/scenario-links-diff.txt), and its
+[post-run signature verification](menu-bar-focus/signature-after.txt) passed.
+This is a per-file freeze of the extracted **host input bundle** supplied to the
+installer. The installed guest copy passed strict deep signature verification;
+its own tree was not independently hashed before and after execution.
+
+`signing-env.sh` also reads the repository's `App/Info.plist`. Its
+[supplemental identity](menu-bar-focus/source-config-identity.txt) matches the
+session's initial clean, immutable parent `a764302d`. This comparison is recorded
+separately from the pre-run SHA inventory, which did not include that source
+configuration path. A future inventory should include it explicitly.
+
+The run's screenshots retain [first launch](menu-bar-focus/menu-bar-20261028T091002-first-launch.png),
+[Settings above TextEdit](menu-bar-focus/menu-bar-20261028T091002-over-textedit.png),
+[the default-sized window after the resize NOT RUN](menu-bar-focus/menu-bar-20261028T091002-least-size.png),
+[request mark](menu-bar-focus/menu-bar-20261028T091002-mark.png),
+[request review](menu-bar-focus/menu-bar-20261028T091002-requests.png) and
+[silent login launch](menu-bar-focus/menu-bar-20261028T091002-after-login.png).
+During an extended position-read delay, two additional observation-only calls
+collected a [screenshot](menu-bar-focus/scenario-midrun.png) and
+[window read](menu-bar-focus/scenario-midrun-windows.json); their
+[collection note](menu-bar-focus/scenario-midrun.txt) explains the race with the
+script. No additional input or focus action was supplied. Those observations
+do not establish an atomic action boundary.
+
+This is one successful attempt of the stricter script, under its stated timing
+and observation conditions. It is neither a reliability estimate nor a repair
+of the unexplained historical focus failure. The remaining investigation must
+explain that failure using qualified observations before selecting a product
+change or activation-wait policy.

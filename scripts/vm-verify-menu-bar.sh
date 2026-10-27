@@ -70,7 +70,7 @@ testanyware file upload scripts/vm-verify-enrollment-client.py /Users/admin/vm-v
 grant_system_events_automation
 
 step "First launch: no Dock icon, one menu bar item, and the settings window because setup needs the user"
-guest "open ${INSTALLED}" || true
+guest_once "open ${INSTALLED}"
 await_koine
 await_windows 1
 echo "Windows: $(testanyware agent windows --json | jq -c "[.windows[] | select(.appName == \"${APP_NAME}\") | .title]")"
@@ -120,13 +120,13 @@ choose_menu_item "Settings…"
 await_windows 1
 koine_in_front || fail "the window did not come to the front over TextEdit's: $(front_windows); front application: $(sysevents 'get name of first process whose frontmost is true')"
 testanyware screen capture -o "${LOG%.log}-over-textedit.png" >/dev/null
-for _ in 1 2 3; do
+for reopen in 1 2 3; do
     testanyware agent window-close --window "${WINDOW_TITLE}" >/dev/null
     await_windows 0
     choose_menu_item "Settings…"
     await_windows 1
+    koine_in_front || fail "Settings reopen ${reopen} did not bring the window to the front: $(front_windows)"
 done
-koine_in_front || fail "the window did not come to the front after being closed three more times"
 guest "osascript -e 'tell application \"TextEdit\" to quit saving no'" || true
 
 RESIZE_NOT_RUN=""
@@ -218,6 +218,7 @@ testanyware agent window-close --window "${WINDOW_TITLE}" >/dev/null
 await_windows 0
 choose_menu_item "Accessibility Not Granted…"
 await_windows 1
+koine_in_front || fail "the Accessibility line did not bring the window to the front: $(front_windows)"
 sleep 2
 read_frame
 on_screen '.id=="accessibility-status"' || fail "the window did not scroll to Accessibility"
@@ -241,7 +242,7 @@ await_menu_item_label "Koine"
 echo "Item: $(menu_item_label); windows: $(koine_windows)"
 
 step "Opening Koine again while it runs shows the window"
-guest "open ${INSTALLED}" || true
+guest_once "open ${INSTALLED}"
 await_windows 1
 koine_in_front || fail "reopening did not bring the window to the front: $(front_windows)"
 testanyware agent window-close --window "${WINDOW_TITLE}" >/dev/null
@@ -250,6 +251,7 @@ await_windows 0
 step "Quit with ⌘Q from the window, then restart the VM: only the login item can start Koine"
 choose_menu_item "Settings…"
 await_windows 1
+koine_in_front || fail "Settings did not focus the window before Command-Q: $(front_windows)"
 testanyware input key q --modifiers cmd >/dev/null
 expect_stopped
 BOOT_BEFORE="$(guest 'sysctl -n kern.boottime')"
