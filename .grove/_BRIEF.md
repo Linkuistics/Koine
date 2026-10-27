@@ -1,0 +1,72 @@
+# Koine menu-bar VM reliability — brief
+
+## Goal
+
+Resolve the menu-bar verification problems recorded in
+[Koine issue 14](https://github.com/Linkuistics/Koine/issues/14): intermittent
+front-window assertions, rejected negative pointer coordinates, and the missing
+window-drag resize exercise in the macOS 27 guest. Preserve the distinction
+between a Koine failure, a test-driver failure and an assertion that did not run.
+
+## Done when
+
+- The intermittent failure paths have evidence-based diagnoses and verified
+  repairs where the cause is within this repository. Any remaining external
+  limitation has a concrete reproducer and an explicit unresolved outcome.
+- Resize evidence exercises the user's minimum-size behaviour through a working
+  input route. If that route remains unavailable, resize stays NOT RUN and the
+  evidence continues to name the older run on which the claim rests.
+- A bounded set of complete VM runs records each attempt, bundle and environment,
+  including failures and assertions not run. Comparisons use matched conditions
+  and make no reliability claim beyond their sample.
+- The reusable Taskfile entry and verification document describe the resulting
+  procedure and its limits. No release is produced as part of this workstream.
+
+## Decomposition
+
+Requirements were established in plan-k1. Three narrow implementation leaves
+follow: menu-interaction-k2 diagnoses and repairs menu input/focus checks;
+window-resize-k3 restores or isolates resize input; menu-bar-samples-k4 measures
+the resulting scenario over a declared finite sample. Each owns its evidence
+and any local repair. If investigation makes a leaf too large, that leaf
+decomposes with the new evidence rather than guessing later work now.
+
+## Test seams — agreed with Antony
+
+Keep `task app:vm-verify-menu-bar` as the end-to-end seam: a real signed bundle,
+real menu input, independent window observations and screenshots in a disposable
+TestAnyware guest. Preserve the minimum-size assertion's user-input semantics;
+an Accessibility frame assignment alone does not prove the constraint.
+
+Use focused non-GUI checks for any repaired script logic at its existing helper
+boundary, such as pointer coordinates or observation classification. Such checks
+supplement the VM exercise; they cannot establish native window behaviour.
+
+Antony agreed on 2026-10-28: "Yes, use that test scope." The proposed scope kept
+the real menu-bar workflow in disposable TestAnyware VMs, focused script checks,
+and resize explicitly unresolved until actual user-input resizing works. A
+documented external limitation can conclude this workstream's resize investigation;
+it cannot count as resize acceptance or close that unresolved issue outcome.
+
+## Pointers
+
+- [Issue 14](https://github.com/Linkuistics/Koine/issues/14), read on 2026-10-28.
+- `docs/verification/menu-bar-vm.md`: established 0.3.0 evidence and the 0.4.0
+  attempts, failures and resize limitation.
+- `README.md`, Resident application: the behaviour being verified.
+- `Taskfile.yml`, `app:vm-verify-menu-bar`.
+- `scripts/vm-verify-menu-bar.sh` and `scripts/vm-verify-lib.sh`: the scenario,
+  menu-pointer helpers, front-window observation and corner-drag route.
+
+## Notes
+
+Issue 14 explicitly says these findings do not block 0.4.0 under the roadmap's
+happy-path release rule. It records 5/9 passes for the unchanged notarised 0.4.0
+bundle and 3/3 for 0.3.0; this does not establish a regression. The old counts
+also omit a successful resize exercise on macOS 27.0.1/TestAnyware 2.7.0.
+
+The graph CLI could not establish a project or generation during plan-k1:
+`CBM CLI could not start because a pre-coordination or unverified CBM generation
+is active; close all CBM sessions and commands, then retry`. Source observations
+in this brief use bounded direct reads, not graph completeness claims. Do not
+stop other sessions merely to obtain graph access.
