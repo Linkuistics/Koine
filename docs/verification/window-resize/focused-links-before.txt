@@ -1,0 +1,3 @@
+.build/menu-interaction/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/KoineProviderAPI -> Versions/Current/KoineProviderAPI
+.build/menu-interaction/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Resources -> Versions/Current/Resources
+.build/menu-interaction/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current -> A

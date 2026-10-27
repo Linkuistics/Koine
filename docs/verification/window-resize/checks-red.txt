@@ -1,0 +1,13 @@
+1..4
+not ok 1 resize prepares the selected corner and requests a complete held-button drag
+# (in test file Tests/scripts/vm-window-resize.bats, line 21)
+#   `[[ "$(cat "${calls}")" == $'agent windows --json\ninput move 517 749\ninput drag 517 749 740 940 --steps 100' ]]' failed
+not ok 2 an explicit title selects the ordinary-window control without changing its destination
+# (in test file Tests/scripts/vm-window-resize.bats, line 26)
+#   `[[ "$(cat "${calls}")" == $'agent windows --json\ninput move 1250 582\ninput drag 1250 582 1400 780 --steps 100' ]]' failed
+not ok 3 a failed pointer preparation never starts a drag even in a conditional caller
+# (in test file Tests/scripts/vm-window-resize.bats, line 39)
+#   `return 1' failed
+not ok 4 a rejected drag is returned to a conditional caller rather than hidden by sleep
+# (in test file Tests/scripts/vm-window-resize.bats, line 54)
+#   `[[ "${status}" == 7 ]]' failed

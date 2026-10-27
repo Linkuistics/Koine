@@ -1,0 +1,16 @@
+Resize pointer: start=(477, 389) destination=(740, 940) steps=100
+{
+  "height": 1080,
+  "ok": true,
+  "path": ".build/window-resize/helper-grown.png",
+  "schema_version": "1.0",
+  "width": 1920
+}
+Resize pointer: start=(740, 940) destination=(100, 100) steps=100
+{
+  "height": 1080,
+  "ok": true,
+  "path": ".build/window-resize/helper-minimum-440x352.png",
+  "schema_version": "1.0",
+  "width": 1920
+}

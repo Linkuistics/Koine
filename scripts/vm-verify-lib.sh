@@ -439,21 +439,8 @@ front_windows() {
 koine_in_front() {
     front_windows | jq -e --arg app "${APP_NAME}" '.[0] | .[0] == $app and .[2] == true' >/dev/null
 }
-# drag_window_corner <x> <y> [title]: a user's resize, the pointer taking the
-# window's bottom-right corner to that point. `agent window-resize` is not that: it
-# sets the frame by accessibility and is not held to the window's least size, which
-# a drag is.
-drag_window_corner() {
-    local frame x y w h
-    frame="$(testanyware agent windows --json | jq -r --arg title "${3:-${WINDOW_TITLE}}" \
-        '[.windows[] | select(.title == $title)][0] | "\(.positionX | floor) \(.positionY | floor) \(.sizeWidth | floor) \(.sizeHeight | floor)"')"
-    read -r x y w h <<<"${frame}"
-    testanyware input move $((x + w - 1)) $((y + h - 1)) >/dev/null
-    sleep 0.5
-    testanyware input mouse-down $((x + w - 1)) $((y + h - 1)) >/dev/null
-    testanyware input mouse-up "$1" "$2" >/dev/null
-    sleep 1
-}
+# shellcheck source=scripts/vm-window-resize-lib.sh
+source scripts/vm-window-resize-lib.sh
 # guest_once <command>: a command that must run exactly once. `open` of a running
 # Koine is a reopen, which shows the settings window, so a launch that must stay
 # silent cannot be repeated by guest()'s retry of the agent's false timeout; what

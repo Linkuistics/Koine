@@ -1,0 +1,9 @@
+task: [check:vm-window-resize] bash -n scripts/vm-window-resize-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+task: [check:vm-window-resize] shellcheck -x scripts/vm-window-resize-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+task: [check:vm-window-resize] shfmt -d -i 4 scripts/vm-window-resize-lib.sh
+task: [check:vm-window-resize] bats Tests/scripts/vm-window-resize.bats
+1..4
+ok 1 resize prepares the selected corner and requests a complete held-button drag
+ok 2 an explicit title selects the ordinary-window control without changing its destination
+ok 3 a failed pointer preparation never starts a drag even in a conditional caller
+ok 4 a rejected drag is returned to a conditional caller rather than hidden by sleep

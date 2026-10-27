@@ -1,0 +1,14 @@
+{
+  "button": "left",
+  "from": {
+    "x": 740,
+    "y": 940
+  },
+  "ok": true,
+  "schema_version": "1.0",
+  "steps": 100,
+  "to": {
+    "x": 100,
+    "y": 100
+  }
+}

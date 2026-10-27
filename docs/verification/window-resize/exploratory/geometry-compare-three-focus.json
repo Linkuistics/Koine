@@ -1,0 +1,7 @@
+{
+  "action": "window-focus",
+  "message": "Window focused successfully",
+  "ok": true,
+  "schema_version": "1.0",
+  "success": true
+}

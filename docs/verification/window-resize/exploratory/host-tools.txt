@@ -1,0 +1,7 @@
+ProductName:		macOS
+ProductVersion:		27.0.1
+BuildVersion:		26A434
+arm64
+testanyware 2.7.0
+3.54.0
+2298b1bd55af4f208286c57b6ff67b98e79a5ea8641c1c584632895bcc707720  /opt/homebrew/bin/testanyware

@@ -1,0 +1,65 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "windows": [
+    {
+      "appName": "TextEdit",
+      "focused": true,
+      "positionX": 650.0,
+      "positionY": 80.0,
+      "sizeHeight": 505.0,
+      "sizeWidth": 603.0,
+      "title": "Untitled",
+      "windowType": "standard"
+    },
+    {
+      "appName": "Koine",
+      "focused": false,
+      "positionX": 720.0,
+      "positionY": 95.0,
+      "sizeHeight": 712.0,
+      "sizeWidth": 480.0,
+      "title": "Koine Settings",
+      "windowType": "standard"
+    },
+    {
+      "appName": "MenuBarAgent",
+      "focused": false,
+      "positionX": 0.0,
+      "positionY": 0.0,
+      "sizeHeight": 30.0,
+      "sizeWidth": 1920.0,
+      "windowType": "dialog"
+    },
+    {
+      "appName": "Notification Center",
+      "focused": false,
+      "positionX": 8.0,
+      "positionY": 218.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 360.0,
+      "title": "Featured",
+      "windowType": "standard"
+    },
+    {
+      "appName": "Notification Center",
+      "focused": false,
+      "positionX": 188.0,
+      "positionY": 38.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 180.0,
+      "title": "Forecast",
+      "windowType": "standard"
+    },
+    {
+      "appName": "Notification Center",
+      "focused": false,
+      "positionX": 8.0,
+      "positionY": 38.0,
+      "sizeHeight": 180.0,
+      "sizeWidth": 180.0,
+      "title": "Month",
+      "windowType": "standard"
+    }
+  ]
+}

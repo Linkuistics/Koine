@@ -1,0 +1,9 @@
+{
+  "command": "chmod +x /Users/admin/k3-activation-snapshot; /Users/admin/k3-activation-snapshot",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "{\n  \"windows\" : [\n    {\n      \"app\" : \"TextEdit\",\n      \"pid\" : 849,\n      \"number\" : 49\n    },\n    {\n      \"app\" : \"Koine\",\n      \"pid\" : 687,\n      \"number\" : 39\n    }\n  ],\n  \"apps\" : [\n    {\n      \"active\" : false,\n      \"name\" : \"Koine\",\n      \"pid\" : 687,\n      \"policy\" : 1\n    },\n    {\n      \"active\" : true,\n      \"name\" : \"TextEdit\",\n      \"pid\" : 849,\n      \"policy\" : 0\n    }\n  ],\n  \"front\" : \"TextEdit\",\n  \"time\" : 1793142477.6547689,\n  \"pid\" : 849\n}",
+  "timed_out": false
+}

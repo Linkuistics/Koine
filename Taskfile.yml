@@ -1460,9 +1460,17 @@ tasks:
       - bats Tests/scripts/vm-menu-pointer.bats
 
   app:vm-verify-menu-bar:
-    desc: Verify the signed bundle as a menu bar application in a clean TestAnyware macOS VM (installed bundle inventories before/after; one action and an independent focus check for every intended reopen; silent launch; menu item, status and client requests; shortcuts; user-drag resize or explicit NOT RUN; login launch; Quit)
+    desc: Verify the signed bundle as a menu bar application in a clean TestAnyware macOS VM (installed bundle inventories before/after; one action and an independent focus check for every intended reopen; silent launch; menu item, status and client requests; shortcuts; held-button corner growth and minimum-size scrolling; login launch; Quit)
     cmds:
       - scripts/vm-verify-menu-bar.sh
+
+  check:vm-window-resize:
+    desc: Check the corner-drag request and transport failures without a VM; native minimum-size acceptance requires app:vm-verify-menu-bar
+    cmds:
+      - bash -n scripts/vm-window-resize-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+      - shellcheck -x scripts/vm-window-resize-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+      - shfmt -d -i 4 scripts/vm-window-resize-lib.sh
+      - bats Tests/scripts/vm-window-resize.bats
 
   app:vm-verify:
     desc: Verify the signed bundle in a clean TestAnyware macOS VM (install, login launch, grant, revoke, quit)

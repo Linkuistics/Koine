@@ -1,0 +1,65 @@
+task: [app:vm-verify-menu-bar] scripts/vm-verify-menu-bar.sh
+
+== Start a clean VM (koine-resize-k3-scenario)
+waiting for a macOS guest slot: request r-536cc5d4, place 1, 1 waiter, slots held by no VM
+Setting guest display resolution to 1920x1080 px...
+  set-display-mode: switched main display to 1920x1080 pt @ 1x (1920x1080 px, modeID 10)
+ProductName:		macOS
+ProductVersion:		27.0.1
+BuildVersion:		26A434
+arm64
+Gatekeeper: assessments enabled
+
+== Install the signed bundle (ditto zip, testanyware file upload, ditto -x)
+Quarantine attribute: xattr: /Applications/Koine.app: No such xattr: com.apple.quarantine
+--prepared:/Applications/Koine.app/Contents/PlugIns/Desktop.koineprovider
+--prepared:/Applications/Koine.app/Contents/PlugIns/Workspace.koineprovider
+--prepared:/Applications/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+--validated:/Applications/Koine.app/Contents/PlugIns/Desktop.koineprovider
+--validated:/Applications/Koine.app/Contents/PlugIns/Workspace.koineprovider
+--validated:/Applications/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+/Applications/Koine.app: valid on disk
+/Applications/Koine.app: satisfies its Designated Requirement
+Identifier=dev.antony.Koine
+CodeDirectory v=20500 size=37148 flags=0x10000(runtime) hashes=1150+7 location=embedded
+Authority=Developer ID Application: Antony Blakey (TA43A4RUP3)
+Authority=Developer ID Certification Authority
+TeamIdentifier=TA43A4RUP3
+/Applications/Koine.app: accepted
+source=Notarized Developer ID
+origin=Developer ID Application: Antony Blakey (TA43A4RUP3)
+Installed bundle inventory: .build/vm-verify/menu-bar-20261028T100532-installed-before.txt
+
+== First launch: no Dock icon, one menu bar item, and the settings window because setup needs the user
+Windows: ["Koine Settings"]
+Default frame: 720 95 480 712
+Background only (an agent application): true
+Dock: Finder, Apps, Safari, Messages, Mail, Maps, Photos, FaceTime, Phone, Calendar, Contacts, Reminders, Notes, TV, Music, Games, App Store, iPhone Mirroring, System Settings, missing value, Terminal, missing value, Downloads, Trash
+Item: Koine, Accessibility not granted
+Pointer source frame: 1660, 3, 36, 24
+Pointer: approach=(1666, 7) target=(1678, 15) display=1920x1080
+Menu: Accessibility Not Granted…, , Settings…, Quit Koine
+
+== No visible menu bar, even with the window open: the menu bar stays the previous application's
+Front application: TextEdit
+
+== Close the window; Settings… brings it back over TextEdit's, to the front
+Pointer source frame: 1660, 3, 36, 24
+Pointer: approach=(1666, 7) target=(1678, 15) display=1920x1080
+Pointer source frame: 1656, 71, 242, 24
+Pointer: approach=(1765, 75) target=(1777, 83) display=1920x1080
+Pointer source frame: 1660, 3, 36, 24
+Pointer: approach=(1666, 7) target=(1678, 15) display=1920x1080
+Pointer source frame: 1656, 71, 242, 24
+Pointer: approach=(1765, 75) target=(1777, 83) display=1920x1080
+Pointer source frame: 1660, 3, 36, 24
+Pointer: approach=(1666, 7) target=(1678, 15) display=1920x1080
+Pointer source frame: 1656, 71, 242, 24
+Pointer: approach=(1765, 75) target=(1777, 83) display=1920x1080
+Pointer source frame: 1660, 3, 36, 24
+Pointer: approach=(1666, 7) target=(1678, 15) display=1920x1080
+Pointer source frame: 1656, 71, 242, 24
+Pointer: approach=(1765, 75) target=(1777, 83) display=1920x1080
+FAILED: Settings reopen 3 did not bring the window to the front: [["TextEdit","Untitled",true],["Koine","Koine Settings",false],["MenuBarAgent",null,false]]
+VM koine-resize-k3-scenario left running. Stop it with: testanyware vm stop koine-resize-k3-scenario
+task: Failed to run task "app:vm-verify-menu-bar": exit status 1

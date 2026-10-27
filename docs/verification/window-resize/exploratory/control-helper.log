@@ -1,0 +1,15 @@
+{
+  "action": "window-focus",
+  "message": "Window focused successfully",
+  "ok": true,
+  "schema_version": "1.0",
+  "success": true
+}
+Resize pointer: start=(1398, 778) destination=(1500, 900) steps=100
+{
+  "height": 1080,
+  "ok": true,
+  "path": ".build/window-resize/control-helper-after.png",
+  "schema_version": "1.0",
+  "width": 1920
+}

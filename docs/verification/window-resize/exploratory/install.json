@@ -1,0 +1,9 @@
+{
+  "command": "ditto -x -k /tmp/Koine.zip /Applications; codesign --verify --strict --deep /Applications/Koine.app; sw_vers; uname -m; open /Applications/Koine.app; open -a TextEdit",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\narm64",
+  "timed_out": false
+}

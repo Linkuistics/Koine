@@ -29,6 +29,7 @@ The pointer-helper checks run without a bundle or VM:
 
 ```sh
 mise exec -- task check:vm-menu-pointer
+mise exec -- task check:vm-window-resize
 ```
 
 | Step | How | Expectation checked |
@@ -63,6 +64,14 @@ mise exec -- task check:vm-menu-pointer
 - **A drag resizes, an accessibility resize does not obey the least size.**
   `agent window-resize` set the window to 200 by 200. A drag of the corner stops at
   440 wide and 320 high in content (a 440 by 352 frame).
+  The resize phase explicitly focuses the window and checks its front/focused
+  state before the helper prepares a point three pixels inside the bottom-right
+  corner, then sends one `input drag --steps 100` with held-button movement.
+  It tests growth directly before shrinking. The title-bar movement probe used
+  by earlier macOS 27 attempts could skip a working corner route; it is removed.
+  Both dimension assertions must run before the minimum-size screenshot and
+  scrolling checks. A failed action or assertion stops the scenario and gives
+  no resize acceptance. The screenshot filename records the observed dimensions.
 - **The mark is read as the label.** The dot is also seen in
   `…-mark.png`, but the check asserts the accessibility label, which the item
   states in words.
@@ -185,14 +194,15 @@ different steps) and `testanyware input move` rejecting an argument of `-1`
 window or activation code. The sample is too small to show a difference between
 the two bundles. Issue 14 tracks it.
 
-**The resize by a drag was not run.** In this guest (macOS 27.0.1, testanyware
-2.7.0), a drag of the title bar or of a window corner has no effect at any
-position. A drag of a scroll thumb works. The released 0.3.0 bundle fails the
+**The resize by a drag was not run in these attempts.** In this guest (macOS 27.0.1, testanyware
+2.7.0), the attempted title-bar and corner routes had no effect at the tested
+positions. A drag of a scroll thumb worked. The released 0.3.0 bundle failed the
 same way, so the guest or the input tool is the cause.
 
-The script now tries a title-bar drag first. If the window does not move, the script prints `NOT RUN`
-for the resize assertions and does not count them as a pass. It still runs the
-least-size screenshot and the scroll-reachability steps.
+At that point the script tried a title-bar drag first. If the window did not
+move, it printed `NOT RUN` for resize and still ran a screenshot and scrolling
+at the observed size. The later [corner-route investigation](#user-input-corner-route--2026-10-28)
+finds a working corner path in this environment and removes that proxy gate.
 
 The claim that the window resizes and keeps its content reachable rests on the
 0.3.0 run above. Transcripts of passing 0.4.0 runs: `menu-bar-20261027T222535.log`,
@@ -701,3 +711,179 @@ The screenshots retain [first launch](menu-bar-activation/menu-bar-20261028T0931
 This is one passing attempt under its recorded conditions. It establishes no
 activation repair or reliability rate. Issue 14's historical activation outcome
 remains unresolved, with the precise follow-up stated above.
+
+## User-input corner route — 2026-10-28
+
+**Resize acceptance remains unestablished in macOS 27.0.1/TestAnyware 2.7.0.**
+Corner input produced positive exploratory effects, but both fresh-guest
+candidates failed to grow the window. Minimum-size acceptance continues to rest
+on the older macOS 26/Koine 0.3.0 run. The title-bar probe could skip a usable
+exploratory corner route, and
+the former corner helper sent only mouse-down at the corner and mouse-up at
+the destination. The replacement establishes a focused window, prepares the pointer three pixels inside
+the corner and sends a combined `input drag --steps 100`, which includes
+movement with the button held. The application and its size contract are
+unchanged.
+
+The [exploratory sequence and raw observations](window-resize/README.md)
+retain the unsuccessful routes as well as the successful ones. In one
+disposable 1920×1080 guest, the inherited title-bar probe left Koine and an
+independent TextEdit window unmoved. A combined corner route nevertheless
+grew both. At Koine's valid grown corner, the separate down/up sequence left
+its 703×903 frame unchanged; preparation and a combined drag from that same
+point then produced a 440×352 frame. The repaired helper itself repeated the
+703×903 growth and 440×352 minimum and grew TextEdit from 751×701 to 853×823.
+These are sequential exploratory observations without a complete subject
+freeze. They identify the working recipe, not the necessity of each parameter
+or a general cause for the unsuccessful title drags.
+
+The [official TestAnyware v2.7.0 implementation](https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-rfb/src/input.rs#L171-L194)
+confirms the held-button interpolation semantics, and the helper cites it
+beside the call. The ordinary separate `move` sends no held button; it cannot
+substitute for that interpolation. [TestAnyware issue 12](https://github.com/Linkuistics/TestAnyware/issues/12)
+is a closed input-reset fault repaired in 2.7.0. This investigation establishes
+no new upstream defect, so no report was sent. It also establishes no product
+activation repair or reliability rate.
+
+The helper now lives in source-only `scripts/vm-window-resize-lib.sh`, still
+loaded through the shared VM library. `task check:vm-window-resize` checks the
+selected window's corner request and propagates failed pointer preparation or
+drag transport instead of hiding it behind a later sleep. The
+[four regression controls](window-resize/checks-red.txt) failed against the
+former implementation and [passed after repair](window-resize/checks-green.txt),
+with syntax, ShellCheck and formatting checks. The
+[eight pointer controls](window-resize/pointer-checks.txt) also passed.
+The [one bounded fresh-context review](window-resize/review.txt) found no
+actionable issue. These checks supplement the native scenario.
+
+The scenario now tests corner growth directly, with the original minimum-width,
+minimum-height and scroll-reachability assertions. Failed input or a failed
+dimension check stops execution and establishes no resize acceptance. The
+minimum-size screenshot includes its observed dimensions in its filename.
+Earlier resize NOT RUN attempts remain NOT RUN; their default-size scrolling
+and screenshots do not gain minimum-size credit from this repair.
+
+### Complete-scenario failure retained
+
+Exactly one complete attempt ran with the first candidate script and the
+unchanged notarised 0.4.0 input:
+
+```sh
+KOINE_APP_BUNDLE="$PWD/.build/menu-interaction/Koine.app" \
+KOINE_VM_BASE=testanyware-golden-macos-27 \
+KOINE_VM_ID=koine-resize-k3-scenario KOINE_VM_KEEP=1 \
+mise exec -- task app:vm-verify-menu-bar
+```
+
+The [complete log](window-resize/scenario.log) stopped at Settings reopen 3:
+TextEdit was first/focused and Koine was behind it. The scenario exited 1;
+Task returned 201, retained in [the wrapper result](window-resize/scenario.exit).
+First launch, the first Settings reopen and loop iterations 1 and 2 passed.
+**Resize and all later assertions were NOT RUN**: minimum-size scrolling,
+shortcuts, requests, consent, setup-complete silent launch, explicit app reopen,
+Command-Q, login restart and final Quit have no result from this attempt.
+
+Before any keyboard or focus intervention, observation-only collection retained
+[a screenshot](window-resize/scenario-activation-failure.png),
+[agent windows](window-resize/scenario-failure-windows.json) and
+[fresh native activation/CoreGraphics ordering](window-resize/scenario-failure-native.json).
+They agree: TextEdit active and in front, Koine inactive and behind it, menu
+dismissed. The native observer returned zero without a timeout. Its
+[binary](window-resize/failure-observer-binary) and
+[digest](window-resize/failure-observer.sha256) identify the reused k7 observer;
+the [source and qualification](menu-bar-vm.md#which-observations-can-support-a-conclusion)
+remain applicable. These are sequential post-failure observations, with no
+native pre-action observation. They reproduce and corroborate the activation
+failure but do not explain it or select an application repair. No full-scenario
+retry was made to obtain a pass. K4 retains the causal investigation and a
+complete run of the resulting resize route.
+
+The [host inventory builder](window-resize/host-inventory.sh),
+[before hashes](window-resize/scenario-subjects.sha256),
+[after re-enumeration](window-resize/scenario-subjects-after.sha256),
+[item checks](window-resize/scenario-subject-check.txt),
+[empty manifest diff](window-resize/scenario-inventory-diff.txt) and
+[symlink comparison](window-resize/scenario-links-diff.txt) agree. Subjects are
+every regular file in the extracted app, its release zip, Taskfile,
+`App/Info.plist`, all sourced helpers and both uploaded client fixtures.
+The [archived initial scenario](window-resize/initial-source/vm-verify-menu-bar.sh)
+and [initial helper](window-resize/initial-source/vm-window-resize-lib.sh) match
+their measured hashes, preserving the source before the later focus-setup edit.
+
+The normal after-Quit inventory was not reached. An explicit
+[post-failure guest read](window-resize/scenario-installed-after-failure.json)
+returned complete output ending in the required marker, despite the driver's
+false 30-second timeout. No action was retried. Its
+[parsed manifest](window-resize/scenario-installed-after-failure.txt)
+[matches](window-resize/scenario-installed-failure-diff.txt) the
+[installed before manifest](window-resize/menu-bar-20261028T100532-installed-before.txt).
+These are endpoint regular-file/symlink checks, with no claim about transient
+runtime changes, attributes or empty directories. The
+[stop result](window-resize/scenario-stop.json) records cleanup.
+
+### Focused qualification and its failed first candidate
+
+One separate clean-guest attempt of the exact resize/scroll segment used the
+[first focused wrapper](window-resize/resize-only.sh). Its
+[log](window-resize/focused.log) and [exit 1](window-resize/focused.exit) retain
+another failure: the three-pixel drag left the fresh 480×712 window unchanged.
+The dimension assertion correctly failed, and minimum-size scrolling was NOT RUN.
+Its [before](window-resize/focused-subjects.sha256) and
+[after](window-resize/focused-subjects-after.sha256) subject inventories,
+[item checks](window-resize/focused-subject-check.txt),
+[manifest diff](window-resize/focused-inventory-diff.txt) and
+[symlink diff](window-resize/focused-links-diff.txt) agree. This failed candidate
+is retained separately from the later revised recipe.
+
+In follow-up exploration, both eight-pixel and three-pixel inset paths worked
+after explicit window focus. An AX resize prepared the default frame for one
+comparison only; no acceptance rests on that assignment. The
+[geometry setup log](window-resize/exploratory/geometry-setup.log) and
+[three-pixel before](window-resize/exploratory/geometry-compare-three-before.json)/
+[after](window-resize/exploratory/geometry-compare-three-after.json) observations
+retain this distinction. Earlier exploratory input sent before setup completed
+is unqualified; it is retained in the evidence directory rather than treated
+as a geometry result. The trials establish neither the necessity of an inset
+nor the cause of the failed first focused attempt.
+
+The revised resize phase explicitly focuses the window and checks its
+front/focused state before dragging. This is a setup precondition for the size
+exercise, after the unchanged menu-reopen assertions. It does not intervene in
+or pass a failed menu activation. The revised recipe requires fresh native
+qualification rather than pooling the earlier exploratory successes.
+
+That one [revised focused attempt](window-resize/revised.log) also
+[exited 1](window-resize/revised.exit): the explicitly focused 480×712 window
+did not grow. Minimum-size scrolling was NOT RUN. Its
+[before](window-resize/revised-subjects.sha256) and
+[after](window-resize/revised-subjects-after.sha256) inventories,
+[item checks](window-resize/revised-subject-check.txt),
+[manifest diff](window-resize/revised-inventory-diff.txt) and
+[symlink diff](window-resize/revised-links-diff.txt) agree. No result from either
+focused candidate is a minimum-size pass. The
+[final VM inventory](window-resize/vms-after.json) contains no running clone.
+
+Both focused failures stopped before their installed-after reads, so they have
+no installed-guest endpoint comparison. Their retained failure screenshots show
+the default [first-candidate 480×712 frame](window-resize/menu-bar-20261028T100921-failure.png)
+and [revised-candidate 480×712 frame](window-resize/menu-bar-20261028T101315-failure.png).
+The [revised scenario source](window-resize/revised-source/vm-verify-menu-bar.sh)
+and [revised helper bytes](window-resize/revised-source/vm-window-resize-lib.sh)
+match the measured hashes in the [source recovery comparison](window-resize/revised-source-recovery.txt).
+Only the helper's later explanatory comment changed. Its measured bytes were
+recovered by restoring that comment and checking the pre-recorded SHA-256;
+no runtime behavior changed after the revised failed attempt.
+
+This investigation is therefore split at the input-delivery boundary.
+The retained candidate fails an unperformed native exercise instead of allowing
+the title-bar proxy to print a passing scenario with resize skipped. Further
+work must isolate held-button delivery/timing in the fresh guest, with a matched
+ordinary-window control, before selecting another route or blaming an upstream
+component. The current CLI has interpolation steps but no exposed duration;
+its source sends those steps without a per-step delay. That is an untested
+diagnostic lead, not a measured cause. A native route must still grow the real
+window, attempt shrinking below its limit and establish scrolling at the
+observed minimum, or leave the result explicitly unresolved with a minimal
+reproducer. The historical activation failure and the complete scenario remain
+separate live work. No release, product fix, new upstream report or reliability
+rate follows from this session.

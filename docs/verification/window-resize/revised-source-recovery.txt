@@ -1,0 +1,4 @@
+2afbc595aa7f392764856de228e324ef270d5edbef8556cd61051d7748dde365  docs/verification/window-resize/revised-source/vm-verify-menu-bar.sh
+b837392f30c1838c95efbff431bafd41c7cf7d9d0a4c1b3f9499462f4ccc4e3d  docs/verification/window-resize/revised-source/vm-window-resize-lib.sh
+2afbc595aa7f392764856de228e324ef270d5edbef8556cd61051d7748dde365  scripts/vm-verify-menu-bar.sh
+b837392f30c1838c95efbff431bafd41c7cf7d9d0a4c1b3f9499462f4ccc4e3d  scripts/vm-window-resize-lib.sh

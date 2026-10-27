@@ -1,0 +1,9 @@
+One bounded fresh-context review of the helper, its source integration, the
+scenario changes, Taskfile and four regression controls. The reviewer received
+only the artifact paths, original resize contract and tool/graph limitations.
+Axes: transport errors, corner geometry, skipped acceptance and source-only seam.
+Result: no findings. Native minimum-size and scrolling acceptance were expressly
+left to the frozen-subject complete VM scenario. No second reviewer was used.
+This review preceded the later explicit focus setup/check. That small setup
+change was exercised by the revised fresh-guest attempt, which failed growth;
+neither the review nor the request checks establish a qualified native route.

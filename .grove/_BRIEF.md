@@ -93,3 +93,20 @@ K8's resize remained NOT RUN, with scroll reachability at the default size.
 K3 still owns the missing user-input resize exercise; no new minimum-size
 acceptance follows from the passing menu scenario. The detailed evidence and
 endpoint-inventory limitations are in docs/verification/menu-bar-vm.md.
+
+## Resize investigation handoff
+
+Window-resize-k3 decomposed after exploratory corner successes failed fresh
+qualification twice. Resize-input-evidence-k9 delivers the request/error seam,
+both failed candidates and the native observations; resize-input-delivery-k10
+continues the precise input-delivery/timing investigation. There is still no
+new minimum-size or minimum-size scrolling acceptance on macOS 27. The prior
+macOS 26/0.3.0 evidence remains the basis of that claim.
+
+The one complete k3 attempt also reproduced Settings reopen 3 behind TextEdit;
+fresh native activation, CoreGraphics order, agent windows and the screenshot
+agree before any keyboard/focus intervention. This supplies new corroboration
+but no activation cause. K4 owns that causal question and the full-scenario
+sample after the resize subtree settles. All k3 guests were stopped. See
+docs/verification/menu-bar-vm.md, User-input corner route, and the raw
+docs/verification/window-resize evidence. No release or upstream report was made.

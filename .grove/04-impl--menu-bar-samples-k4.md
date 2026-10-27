@@ -69,3 +69,27 @@ The preceding leaves must leave their scripts settled before this measurement.
 If this sample reveals a new cause, retain its failed evidence and cut the
 specific repair before a fresh measurement. An outcome requiring a future
 release remains explicit; it does not authorize releasing one here.
+
+K3's sole full-scenario attempt reproduced the activation failure at Settings
+reopen 3 before resize, in `koine-resize-k3-scenario`. Its post-failure native
+read, agent ordering and screenshot agree TextEdit is active/in front and Koine
+inactive behind it. These observations were collected before keyboard or focus
+intervention; no complete native pre-action observation was taken. Read
+`docs/verification/window-resize/scenario-failure-native.json`,
+`scenario-failure-windows.json`, `scenario-activation-failure.png` and
+`scenario.log`. The fresh observer had explicit executable permission and
+returned exit zero with no timeout. This establishes a reproduced failure with
+corroboration, but no causal explanation or product repair. Retain it in the
+historical outcome regardless of k4's sample results.
+
+K3 replaces the title-bar proxy gate and down/up corner sequence with prepared
+held-button interpolation, retaining all size/content assertions. Include
+`scripts/vm-window-resize-lib.sh` in host subject inventories. A full-scenario
+pass with this route remains a separate obligation from a focused resize pass;
+an earlier activation failure leaves resize and all following assertions NOT RUN.
+
+Both k3 focused fresh-guest candidates subsequently failed growth, including
+the version with explicit focus setup. The input-delivery cause is still live
+in resize-input-delivery-k10 under the decomposed k3 node. Do not sample the
+candidate as if it were an established resize repair. Wait for that subtree to
+settle and preserve its native acceptance limits in k4's record.
