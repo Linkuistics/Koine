@@ -392,7 +392,7 @@ Read the status before the items.
 
 AVAILABLE means that every pair gave a usable value. PARTIAL means that some pair gave none or gave a value that Koine withheld. The diagnostics name NO_NATIVE_VALUE or UNREPRESENTABLE_VALUE. UNKNOWN means that no pair gave a value, and items is null. FAILED means that every value was withheld. Each selected items then raises `failed`, so omit items to read the status and the diagnostics.
 
-Call `workspaceApplications` under `workspace:read` to list the applications that Spotlight has indexed on the local disks. A grant of `workspace:control` and `desktop:control` alone cannot call it. The query takes no argument.
+Call `workspaceApplications` under `workspace:read`. It lists the applications that Spotlight has indexed on this Mac's disks, on mounted network volumes and in a remote home folder. A grant of `workspace:control` and `desktop:control` alone cannot call it. The query takes no argument.
 
 ```graphql
 query Applications {

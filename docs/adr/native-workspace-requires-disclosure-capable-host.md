@@ -6,7 +6,7 @@ A native workspace provider requires the host feature `workspace-native-disclosu
 
 Koine 0.4.0 advertises the feature and the workspace provider requires it, together with `additional-capabilities-v1`. A per-user update also states `first-party-selection-v1`, as every first-party update does. The disclosure catalogue states two reaches:
 
-- Workspace read returns the special locations that macOS names for the account of Koine. It also lists the applications that Spotlight has indexed on the local disks, with each name, bundle identifier and location. It reads no file contents and lists no folder. A returned location gives no access to it.
+- Workspace read returns the special locations that macOS names for the account of Koine. It also lists the applications that Spotlight has indexed on this Mac's disks, on mounted network volumes and in a remote home folder. Each has a name, bundle identifier and location. It reads no file contents and lists no folder. A returned location gives no access to it.
 - Workspace control launches, opens and reveals. Each of these actions also needs desktop control.
 
 The feature version states this reach and no wider one. A later cut that widens the reach needs a new feature version. Planned widenings are further application metadata, System Settings metadata, background Settings preparation, and selected Settings reveal. The [search spec](../specs/workspace-search.md#compatibility-and-acceptance) holds that plan. Conditional OS consent remains exclusive to the local explaining UI of Koine.

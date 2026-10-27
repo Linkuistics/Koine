@@ -29,10 +29,11 @@ public enum CapabilityDisclosures {
     public static let workspaceRead = """
         Reads the special locations that macOS names for Koine's own account, such as \
         the home, Documents and Applications folders. Lists the applications that \
-        Spotlight has indexed on this Mac's local disks, wherever they are, with each \
-        one's name, bundle identifier and location. It reads no file contents and \
-        lists no folder. A returned location gives no access to it. Launching or \
-        opening a listed application still needs workspace:control and desktop:control.
+        Spotlight has indexed on this Mac's disks, on mounted network volumes and in a \
+        remote home folder, with each one's name, bundle identifier and location. It \
+        reads no file contents and lists no folder. A returned location gives no \
+        access to it. Launching or opening a listed application still needs \
+        workspace:control and desktop:control.
         """
 
     /// Every capability with a disclosure, in capability order.

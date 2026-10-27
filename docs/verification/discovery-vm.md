@@ -88,7 +88,7 @@ A catalogue call cannot wait 75 seconds, because the provider waits three second
 
 ## What this run does not cover
 
-- **Network volumes.** An unset scope can list applications on network volumes. The served disclosure still says "local disks". This gap belongs with issue 13, which already records that the disclosure omits a remote home.
+- **Network volumes.** An unset scope can list applications on network volumes and in a remote home folder. This run read none. The served disclosure names both, as issue 13 asked, and the G test pins that wording. No run read a remote location.
 - **The host.** No discovery read ran on the host, as the rules require. This record does not show whether the indexed scope fills slowly on a host with a long uptime. It does not show the behaviour of a second query in one process.
 - **The deadline.** Issue 12 (the timeout waits behind native work) was not met in this run, because the query finished at once.
 - **The root certificate.** The cost certificate still names the indexed local computer scope. The change removes that one call, so its bound still holds.

@@ -61,7 +61,7 @@ import Testing
         // Read states the reach of the two queries it admits, and the limits that make that reach small.
         let read = try #require(entries.last?["disclosure"])
         #expect(read.contains("special locations that macOS names for Koine's own account"))
-        #expect(read.contains("applications that Spotlight has indexed on this Mac's local disks"))
+        #expect(read.contains("applications that Spotlight has indexed on this Mac's disks, on mounted network volumes and in a remote home folder"))
         #expect(read.contains("name, bundle identifier and location"))
         #expect(read.contains("reads no file contents and lists no folder"))
         #expect(read.contains("gives no access to it"))

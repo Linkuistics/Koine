@@ -33,7 +33,7 @@ The workspace provider launches and activates applications. It opens URLs, docum
 
 The provider also serves two reads. A client with `workspace:read` calls `workspaceSpecialLocations` to get the special locations that macOS names for the account of Koine, such as the home, Documents and Applications folders. The query reads values only. It lists no folder, opens no file and grants no access to a location it returns.
 
-The client calls `workspaceApplications` to list the applications that Spotlight has indexed on the local disks. Each choice has a path, a name and a bundle identifier. The result says whether it is complete, empty, unknown or failed. The query registers, resolves and launches nothing. The [client guide](docs/client-guide.md#searching-for-applications-and-files) describes both.
+The client calls `workspaceApplications` to list the applications that Spotlight has indexed on this Mac's disks, on mounted network volumes and in a remote home folder. Each choice has a path, a name and a bundle identifier. The result says whether it is complete, empty, unknown or failed. The query registers, resolves and launches nothing. The [client guide](docs/client-guide.md#searching-for-applications-and-files) describes both.
 
 <!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 

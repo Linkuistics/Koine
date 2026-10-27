@@ -237,7 +237,7 @@ The result has one coverage source, `INDEXED_APPS`. Its `declaredDomain` is `ind
 
 The source is `AVAILABLE` and `COMPLETE` only when every item was usable. Each reason gives one diagnostic with a count in its guidance, a null subject and `affectsCoverage` true. A run has four reasons at most, so the diagnostics cannot reach the limit of 63 records.
 
-The read disclosure states this reach, as the subsection "Served in Koine 0.4.0" above says. It names the applications that Spotlight has indexed on the local disks, wherever they are. A listed path gives no authority over the application. Acting on a listed application through the workspace actions still needs `workspace:control` AND `desktop:control`.
+The read disclosure states this reach, as the subsection "Served in Koine 0.4.0" above says. It names the applications that Spotlight has indexed on this Mac's disks, on mounted network volumes and in a remote home folder. A listed path gives no authority over the application. Acting on a listed application through the workspace actions still needs `workspace:control` AND `desktop:control`.
 
 Evidence so far:
 
