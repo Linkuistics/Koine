@@ -1,0 +1,8 @@
+Pre-guest review, 2026-10-28. One fresh-context reviewer read the context
+protocol, new scripts, tests and Taskfile entries plus bounded native capture
+dependencies. Adversarial contract: retain every unsuccessful outcome and raw
+transport, keep trace disabled and unchanged application/input path, qualify
+known native records and stop/collect every started guest. No actionable issues
+found. The offline process clause is implicit because the saved streams already
+use exactly the live predicate's process set; ASCII/Unicode limits are explicit.
+This spends k18's sole in-session reviewer allowance. No second reviewer ran.

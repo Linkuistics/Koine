@@ -155,3 +155,24 @@ qualification. K18 owns the remaining context discrimination, application repair
 and ordinary-operation complete acceptance, including a reduced filter/trace
 timing question under a new protocol. No completed sample may be extended.
 NATIVE-RESULTS.md retains every outcome and unmet criterion. K14/k12 stay open.
+
+## Reduced-context evidence and original-duty reconciliation
+
+K19 retains the bounded context slice; details and every original criterion are
+reconciled in docs/verification/settings-activation/CONTEXT-RESULTS.md. Offline
+reduction retains all known native references. Two of three overall guests stop
+on preflight defects before Koine launch; the final guest passes four Settings
+actions with successful native client/front-change/resume records. Post-trace,
+logger-stop, environment and installed transports time out. All failures,
+corrective freezes, the first golden digest's four-second overlap and NOT RUN
+phases remain explicit. All host/archived overlays and final golden digests match;
+every clone stops. None of these controls establish a cause or application repair.
+
+The original recorded callback/failed-activation classification remains met by
+diagnostic-02. Responsible actual-path/context discrimination, product repair and
+its useful focused seam, and separately declared frozen complete ordinary-operation
+acceptance remain unmet. No external ownership is established; no upstream report,
+release or notarization. K20 owns the precise missing callback/call and event-context
+join without synchronous trace writes plus every original remaining criterion.
+This node and its causal/repair ancestors remain open. No completed sample may
+be reset, replaced or extended.

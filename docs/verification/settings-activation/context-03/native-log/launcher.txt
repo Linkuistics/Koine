@@ -1,0 +1,1 @@
+/Users/admin/native-guest-log.sh: line 16:   723 Terminated: 15          /usr/bin/log stream --style ndjson --level debug --timeout 15m --predicate "$(cat /Users/admin/context-predicate.txt)" > stream.jsonl 2> stream.stderr

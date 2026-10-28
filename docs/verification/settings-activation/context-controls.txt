@@ -1,0 +1,26 @@
+task: [check:vm-settings-context] bash -n docs/verification/settings-activation/context-*.sh
+task: [check:vm-settings-context] shellcheck -x -e SC2034 docs/verification/settings-activation/context-*.sh
+task: [check:vm-settings-context] bats Tests/scripts/vm-settings-context.bats
+1..3
+ok 1 context rejects enabled tracing and preserves the one observation
+ok 2 context rejects timed-out trace observation even with a success marker
+ok 3 context requires the disabled marker from a clean single transport
+task: [check:vm-settings-native] bash -n docs/verification/settings-activation/native-prefix.sh docs/verification/settings-activation/native-run.sh docs/verification/settings-activation/native-guest-log.sh docs/verification/settings-activation/native-start.sh docs/verification/settings-activation/native-guest-stop.sh
+task: [check:vm-settings-native] shellcheck -x -e SC2034 docs/verification/settings-activation/native-prefix.sh docs/verification/settings-activation/native-run.sh docs/verification/settings-activation/native-guest-log.sh docs/verification/settings-activation/native-start.sh docs/verification/settings-activation/native-guest-stop.sh
+task: [check:vm-settings-native] bats Tests/scripts/vm-settings-native.bats Tests/scripts/vm-settings-native-stop.bats
+1..6
+ok 1 native startup retains a timed-out transport and never replays it
+ok 2 native startup rejects a failed envelope even when the CLI exits zero
+ok 3 native startup accepts and retains a clean readiness observation
+ok 4 native stop rejects a logger that ended before collection
+ok 5 native stop rejects a missing process without claiming intentional stop
+ok 6 native stop signals a live logger and waits for its recorded exit
+task: [check:vm-settings-activation] bash -n docs/verification/settings-activation/run.sh docs/verification/settings-activation/inventory.sh
+task: [check:vm-settings-activation] shellcheck docs/verification/settings-activation/run.sh docs/verification/settings-activation/inventory.sh
+task: [check:vm-settings-activation] bats Tests/scripts/vm-settings-activation.bats
+1..5
+ok 1 an early scenario failure still audits the installed endpoint and stops the guest
+ok 2 an added bundle file fails the complete inventory audit
+ok 3 a changed symlink fails the complete inventory audit
+ok 4 a changed installed endpoint fails even after a passing scenario
+ok 5 an interrupted attempt collects trace and artifacts before stopping without replay

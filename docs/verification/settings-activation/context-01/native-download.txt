@@ -1,0 +1,20 @@
+error: Download failed on the target VM: no such file: /Users/admin/native-activation-log/help.txt
+  → run `testanyware llm-instructions` for the full usage guide
+error: Download failed on the target VM: no such file: /Users/admin/native-activation-log/started.txt
+  → run `testanyware llm-instructions` for the full usage guide
+error: Download failed on the target VM: no such file: /Users/admin/native-activation-log/pid
+  → run `testanyware llm-instructions` for the full usage guide
+error: Download failed on the target VM: no such file: /Users/admin/native-activation-log/process.txt
+  → run `testanyware llm-instructions` for the full usage guide
+error: Download failed on the target VM: no such file: /Users/admin/native-activation-log/stream.jsonl
+  → run `testanyware llm-instructions` for the full usage guide
+error: Download failed on the target VM: no such file: /Users/admin/native-activation-log/stream.stderr
+  → run `testanyware llm-instructions` for the full usage guide
+error: Download failed on the target VM: no such file: /Users/admin/native-activation-log/stream.exit
+  → run `testanyware llm-instructions` for the full usage guide
+error: Download failed on the target VM: no such file: /Users/admin/native-activation-log/ended.txt
+  → run `testanyware llm-instructions` for the full usage guide
+error: Download failed on the target VM: no such file: /Users/admin/native-activation-log/launcher.txt
+  → run `testanyware llm-instructions` for the full usage guide
+error: Download failed on the target VM: no such file: /Users/admin/native-activation-log/stop-requested.txt
+  → run `testanyware llm-instructions` for the full usage guide

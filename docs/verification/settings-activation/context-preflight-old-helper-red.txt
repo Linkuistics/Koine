@@ -1,0 +1,4 @@
+1..1
+not ok 1 context accepts the guest's absent-domain diagnostic
+# (in test file .build/settings-activation/context-old-preflight.bats, line 64)
+#   `[[ "${status}" == 0 ]]' failed

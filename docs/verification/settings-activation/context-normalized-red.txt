@@ -1,0 +1,9 @@
+1..6
+ok 1 context rejects enabled tracing and preserves the one observation
+ok 2 context rejects timed-out trace observation even with a success marker
+ok 3 context requires the disabled marker from a clean single transport
+ok 4 context accepts the guest's absent-domain diagnostic
+ok 5 context refuses an unexpected preference error and an enabled preference
+not ok 6 context accepts the actual newline-normalized success transport
+# (in test file Tests/scripts/vm-settings-context.bats, line 80)
+#   `[[ "${status}" == 0 ]]' failed

@@ -1,0 +1,18 @@
+{
+  "lines": 16373,
+  "unparsed_lines": 1,
+  "event_types": [
+    {
+      "type": null,
+      "count": 1
+    },
+    {
+      "type": "activityCreateEvent",
+      "count": 231
+    },
+    {
+      "type": "logEvent",
+      "count": 16141
+    }
+  ]
+}

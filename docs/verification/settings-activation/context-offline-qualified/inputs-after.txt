@@ -1,0 +1,6 @@
+docs/verification/settings-activation/context-qualify-filter.sh: OK
+docs/verification/settings-activation/context-predicate.txt: OK
+docs/verification/settings-activation/native-01/native-log/stream.jsonl.gz: OK
+docs/verification/settings-activation/native-02/native-log/stream.jsonl.gz: OK
+docs/verification/settings-activation/native-01/native-path-records.jsonl: OK
+docs/verification/settings-activation/native-02/native-path-records.jsonl: OK

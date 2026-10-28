@@ -1,0 +1,9 @@
+{
+  "command": "bash /Users/admin/native-guest-stop.sh",
+  "exit_code": -1,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "Process timed out after 30s",
+  "stdout": "",
+  "timed_out": true
+}

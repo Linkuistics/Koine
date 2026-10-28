@@ -1,0 +1,9 @@
+{
+  "command": "chmod +x /Users/admin/k12-activation-snapshot; /Users/admin/k12-activation-snapshot",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "{\n  \"windows\" : [\n\n  ],\n  \"apps\" : [\n\n  ],\n  \"front\" : \"Finder\",\n  \"time\" : 1793162352.1287069,\n  \"pid\" : 364\n}",
+  "timed_out": false
+}

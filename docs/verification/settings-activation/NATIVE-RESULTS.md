@@ -181,3 +181,10 @@ application repair, focused failing product seam or final ordinary candidate.
 The required separate finite complete fresh-guest acceptance with diagnostics
 disabled has not run. All original repair/acceptance obligations stay live in
 the successor, with no close of k16, k14 or k12 from this qualification result.
+
+The subsequent [reduced-context evidence](CONTEXT-RESULTS.md) qualifies retention
+of this sample's known positive records offline. Its overall three-guest budget
+contains two preflight failures and one actual application guest; that guest
+passes four Settings actions with trace disabled at launch. Postcondition and
+other final transports fail. It supplies no failed disposition, causal repair
+or ordinary complete acceptance, and does not extend this native sample.

@@ -231,3 +231,14 @@ be extended. All original failed evidence remains; Settings activation is still
 unresolved, with no product repair or ordinary-operation complete acceptance.
 The linked report identifies the remaining context/trace-timing question and
 preserves raw compressed native logs. No release or upstream report occurred.
+
+## Reduced native-context follow-up
+
+The [reduced-filter/trace-disabled evidence](CONTEXT-RESULTS.md) preserves three
+budgeted guests: two preflight instrument failures before application launch,
+then one focused guest passing all four Settings assertions. Native client/front
+change/resume records remain successful controls only. Several final transports
+time out; the first golden digest overlaps clone launch by four seconds. These
+limits and both corrective charters are explicit. No failed native disposition,
+causal repair, complete ordinary-operation acceptance or external owner follows.
+All historical failures/classifications and closed sample caps remain unchanged.

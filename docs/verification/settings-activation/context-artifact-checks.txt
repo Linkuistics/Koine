@@ -1,0 +1,5 @@
+01: every 48 original collection file matches its retained copy (raw gzip restored where applicable).
+02: every 48 original collection file matches its retained copy (raw gzip restored where applicable).
+03: every 54 original collection file matches its retained copy (raw gzip restored where applicable).
+context-initial-inputs: all 289 frozen inputs match current unchanged bytes or the exact archived overlay.
+context-second-inputs: all 292 frozen inputs match current unchanged bytes or the exact archived overlay.

@@ -1512,6 +1512,33 @@ tasks:
     cmds:
       - bash docs/verification/settings-activation/native-run.sh {{.CLI_ARGS}}
 
+  app:vm-settings-context:
+    desc: Run final remaining context guest 03; see settings-activation/CONTEXT-FINAL-PLAN.md
+    cmds:
+      - bash docs/verification/settings-activation/context-run.sh {{.CLI_ARGS}}
+
+  app:vm-settings-context-scenario:
+    desc: Run the existing Settings prefix with reduced native logging and application tracing disabled
+    cmds:
+      - |
+        status=0
+        bash docs/verification/settings-activation/context-prefix.sh || status=$?
+        if [ -n "${KOINE_K4_OUT:-}" ]; then printf '%s\n' "${status}" > "${KOINE_K4_OUT}/scenario.exit"; fi
+        exit "${status}"
+
+  check:vm-settings-context:
+    desc: Check trace-disabled observations and context experiment helpers without a VM
+    cmds:
+      - bash -n docs/verification/settings-activation/context-*.sh
+      - shellcheck -x -e SC2034 docs/verification/settings-activation/context-*.sh
+      - bats Tests/scripts/vm-settings-context.bats
+      - task: check:vm-settings-native
+
+  check:vm-settings-context-filter:
+    desc: Qualify the reduced filter against both retained wide native streams; output directory must be new
+    cmds:
+      - bash docs/verification/settings-activation/context-qualify-filter.sh {{.CLI_ARGS}}
+
   app:vm-settings-native-scenario:
     desc: Run the unchanged Settings prefix with a guest unified-log sidecar
     cmds:

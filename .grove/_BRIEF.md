@@ -253,3 +253,28 @@ repair k18. Every original k12/k14/k16 causal repair and ordinary-operation
 acceptance obligation remains live; no completed sample may be extended. The
 durable report is docs/verification/settings-activation/NATIVE-RESULTS.md. No
 product change, ordinary acceptance, release, notarization or upstream report.
+
+## Reduced activation-context handoff
+
+K19 completes the reduced-filter/context evidence slice of decomposed k18.
+Offline filtering retains every known native reference row; a front-term mutant
+fails. The overall three-guest budget contains two preflight parser failures
+before Koine launch and one focused guest passing four Settings assertions.
+The first golden digest completes four seconds after the first clone launch;
+initial charters end for instrument defects, with separately frozen corrections
+and no guest replacement/cap expansion. All limits remain in CONTEXT-RESULTS.md.
+
+The actual application's reduced native stream shows successful client/front
+changes/resumes only. Its prelaunch trace check/logger start are clean; post-trace,
+logger-stop, final environment and installed transports time out. Matching text
+is retained as failed transport. Host/archived overlay and final golden audits
+match; every clone stops. Resize and every later complete-scenario phase are
+NOT RUN. No failure under the reduced instrument means no symptom-preservation
+qualification, cause, external owner, product repair or ordinary acceptance.
+
+K20 owns the missing callback/call and user-event-context join without synchronous
+trace-file writes, positive failed actual-path discrimination, and every original
+k18/k16/k14/k12 repair and separately declared complete ordinary acceptance duty.
+Those nodes remain open. Diagnostic-02's delivered-callback/failed-activation
+classification and all older failures remain unchanged. Every completed sample
+stays closed; no release/notarization/upstream report.

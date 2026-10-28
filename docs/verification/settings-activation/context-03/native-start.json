@@ -1,0 +1,9 @@
+{
+  "command": "mkdir /Users/admin/native-activation-log || exit 1; nohup bash /Users/admin/native-guest-log.sh >/Users/admin/native-activation-log/launcher.txt 2>&1 </dev/null & for n in 1 2 3 4 5; do test ! -s /Users/admin/native-activation-log/pid || break; sleep 1; done; test -s /Users/admin/native-activation-log/pid && kill -0 \"$(cat /Users/admin/native-activation-log/pid)\"",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "",
+  "timed_out": false
+}

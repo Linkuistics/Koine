@@ -1,0 +1,6 @@
+attempt=02
+raw_bytes= 284018836
+retained_bytes= 17165430
+reference_records=      56
+retained_records=   14396
+missing_reference_records=       0

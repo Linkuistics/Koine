@@ -1,0 +1,6 @@
+Only in docs/verification/settings-activation/context-01: launcher-task.exit
+Only in docs/verification/settings-activation/context-01: launcher-task.log
+Only in docs/verification/settings-activation/context-02: launcher-task.exit
+Only in docs/verification/settings-activation/context-02: launcher-task.log
+Only in docs/verification/settings-activation/context-03: launcher-task.exit
+Only in docs/verification/settings-activation/context-03: launcher-task.log

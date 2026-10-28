@@ -1148,3 +1148,24 @@ failures/classifications remain unchanged, and no completed sample may be
 extended. The remaining work owns activation-context discrimination, an
 application repair where justified, and separately declared complete acceptance
 with diagnostics disabled. No product change, release or upstream report.
+
+## Settings activation: reduced native context
+
+The [next bounded context slice](settings-activation/CONTEXT-RESULTS.md) retains
+all known native reference rows with a reduced predicate. Its three overall
+slots include two preflight parser failures before Koine launch and one focused
+application guest. That guest passes four Settings actions and records matching
+native client/front-change/resume observations, with a clean prelaunch
+trace-disabled check. Post-trace, native-stop, environment and installed
+transports time out; those results remain failed even where returned text agrees.
+The first golden digest also overlaps the first clone launch by four seconds.
+All three clones stop, host/archived input audits match, and final golden hashes
+match, without erasing those qualification limits.
+
+No failed native disposition or responsible condition is observed. Resize and
+all subsequent full-scenario phases remain NOT RUN. The activation cause,
+application repair and separate complete ordinary-operation acceptance stay
+open. The next precise observation must retain useful callback/call and event
+context without synchronous trace-file writes and positively discriminate a
+failed actual-path request/disposition. All original failures and closed caps
+remain; no product repair, external ownership, release or upstream report.
