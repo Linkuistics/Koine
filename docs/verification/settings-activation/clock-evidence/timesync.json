@@ -1,0 +1,10 @@
+{
+  "argv": [
+    "/usr/bin/log",
+    "raw-dump",
+    "--no-pager",
+    "-t",
+    ".build/settings-activation/persisted/01/archive-audit/deferred-native/system.logarchive/timesync"
+  ],
+  "exit": 0
+}

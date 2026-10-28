@@ -1,0 +1,18 @@
+usage: log raw-dump [<options>] [-A | --archive] <logarchive>
+   or: log raw-dump [<options>] [-f | --file] <file.tracev3>
+   or: log raw-dump [<options>] [-s | --dsc-strings] <file>
+   or: log raw-dump [<options>] [-t | --timesync] <timesync dir>
+   or: log raw-dump [<options>] [-P | --prefs-cache]
+   or: log raw-dump [<options>] # needs root
+
+options:
+    -A, --archive                 The logarchive to dump
+    -f, --file                    The tracev3 file to dump
+    -s, --dsc-strings             The shared-cache srtings file to dump
+    -t, --timesync                The timesync database to dump
+    -P, --prefs-cache             Dump the preferences cache
+
+    -H, --hexdump                 hexdump tracepoints
+    -p, --[no-]pager              paginate using less
+    -r, --[no-]render             do not render logs
+

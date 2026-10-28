@@ -1236,3 +1236,11 @@ result or responsible cause is established. No product repair or ordinary comple
 acceptance follows. The sole slot is consumed; failed transports and every unrun
 phase are retained. The next step qualifies clock correlation from the saved
 archive without rerunning the guest. No activation outcome of issue 14 is closed.
+
+The [completed offline investigation](settings-activation/CLOCK-RESULTS.md)
+establishes the native boot/timebase using Apple's saved-archive decoder.
+Tick/uptime enclosure is conditional: the old application buffer lacks a measured
+continuous/awake-time relation. Exact joins and failed native disposition remain
+unqualified. No new guest or product change ran; a successor owns that precise
+measurement/discrimination gap, justified repair and separate complete ordinary
+acceptance. All prior classifications, failed transports and closed caps remain.

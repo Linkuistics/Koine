@@ -1530,6 +1530,22 @@ tasks:
       - mkdir -p .build/settings-activation/events
       - swiftc -swift-version 6 -target arm64-apple-macos26.0 Tools/SettingsEventDump/main.swift -o .build/settings-activation/events/settings-event-dump
 
+  check:settings-native-clock:
+    desc: Check offline clock admission and conditional joins without a VM
+    cmds:
+      - ruff check --select E,F,I --line-length 100 docs/verification/settings-activation/clock-report.py Tests/scripts/test_settings_clock.py
+      - pytest -q Tests/scripts/test_settings_clock.py
+
+  report:settings-native-clock:
+    desc: Report retained persisted clock evidence; exact cross-clock joins remain unqualified
+    cmds:
+      - >-
+        python3 docs/verification/settings-activation/clock-report.py
+        docs/verification/settings-activation/persisted-01/settings-events.json
+        docs/verification/settings-activation/persisted-01/native-path-records.jsonl
+        docs/verification/settings-activation/clock-evidence/timesync.txt
+        docs/verification/settings-activation/persisted-01/archive-clock/Info.plist
+
   app:vm-settings-persisted:
     desc: Run the sole persisted-Debug capability guest; see settings-activation/PERSISTED-PLAN.md
     cmds:

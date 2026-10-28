@@ -1,4 +1,28 @@
-# settings-native-clock-disposition-k29
+# settings-native-clock-disposition-k29 — brief
+
+## Decisions (running log)
+
+- 2026-10-28: Graph startup refuses before project/generation discovery. Use
+  bounded source reads without stopping other graph sessions. The jj working
+  copy starts clean at 03e37183. No guest or product modification is needed for
+  the existing offline clock question.
+- 2026-10-28: Apple's installed `log raw-dump -t` decodes the original guest
+  timesync database, including boot 2C83AC73-0855-44FD-A8A4-E03E227E1A01 and
+  timebase 125/3. This establishes the native scale without fitting uptime or
+  assuming host and guest timebases match. The application's systemUptime and
+  the native continuous clock have different documented sleep semantics. The
+  old buffer records neither boot UUID nor an absolute/continuous pair. Keep
+  exact cross-clock correlation unqualified unless independent evidence closes
+  those gaps; numerical enclosure alone cannot do it.
+- 2026-10-28: Decompose into offline clock evidence k30 and a precisely bounded
+  remaining clock/disposition/repair task. Preserve all original criteria below,
+  all historical bytes and closed caps. The first child delivers a reusable
+  offline report and controls; no new guest, product fix or causal claim.
+- 2026-10-28: Clock evidence k30 completes at the explicitly unqualified
+  application/native relation boundary; settings-measured-native-disposition-k31
+  retains the precise next measurement/discrimination and every original duty.
+  CLOCK-RESULTS.md owns the full comparison. No criterion for native failed
+  disposition, causal repair or separate ordinary acceptance is discharged here.
 
 ## Goal
 

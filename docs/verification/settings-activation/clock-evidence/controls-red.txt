@@ -1,0 +1,162 @@
+FFFFFFFFFFFF                                                             [100%]
+=================================== FAILURES ===================================
+____ test_real_sample_retains_false_qualification_despite_numeric_enclosure ____
+Tests/scripts/test_settings_clock.py:35: in test_real_sample_retains_false_qualification_despite_numeric_enclosure
+    result = report(inputs)
+             ^^^^^^^^^^^^^^
+Tests/scripts/test_settings_clock.py:30: in report
+    SPEC.loader.exec_module(READER)
+<frozen importlib._bootstrap_external>:759: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:896: in get_code
+    ???
+<frozen importlib._bootstrap_external>:954: in get_data
+    ???
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/verification/settings-activation/clock-report.py'
+_________ test_wrong_or_ambiguous_native_boot_metadata_rejected[boot] __________
+Tests/scripts/test_settings_clock.py:57: in test_wrong_or_ambiguous_native_boot_metadata_rejected
+    report((snapshot, native, dump, boot))
+Tests/scripts/test_settings_clock.py:30: in report
+    SPEC.loader.exec_module(READER)
+<frozen importlib._bootstrap_external>:759: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:896: in get_code
+    ???
+<frozen importlib._bootstrap_external>:954: in get_data
+    ???
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/verification/settings-activation/clock-report.py'
+______ test_wrong_or_ambiguous_native_boot_metadata_rejected[denominator] ______
+Tests/scripts/test_settings_clock.py:57: in test_wrong_or_ambiguous_native_boot_metadata_rejected
+    report((snapshot, native, dump, boot))
+Tests/scripts/test_settings_clock.py:30: in report
+    SPEC.loader.exec_module(READER)
+<frozen importlib._bootstrap_external>:759: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:896: in get_code
+    ???
+<frozen importlib._bootstrap_external>:954: in get_data
+    ???
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/verification/settings-activation/clock-report.py'
+________ test_wrong_or_ambiguous_native_boot_metadata_rejected[missing] ________
+Tests/scripts/test_settings_clock.py:57: in test_wrong_or_ambiguous_native_boot_metadata_rejected
+    report((snapshot, native, dump, boot))
+Tests/scripts/test_settings_clock.py:30: in report
+    SPEC.loader.exec_module(READER)
+<frozen importlib._bootstrap_external>:759: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:896: in get_code
+    ???
+<frozen importlib._bootstrap_external>:954: in get_data
+    ???
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/verification/settings-activation/clock-report.py'
+_______ test_wrong_or_ambiguous_native_boot_metadata_rejected[duplicate] _______
+Tests/scripts/test_settings_clock.py:57: in test_wrong_or_ambiguous_native_boot_metadata_rejected
+    report((snapshot, native, dump, boot))
+Tests/scripts/test_settings_clock.py:30: in report
+    SPEC.loader.exec_module(READER)
+<frozen importlib._bootstrap_external>:759: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:896: in get_code
+    ???
+<frozen importlib._bootstrap_external>:954: in get_data
+    ???
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/verification/settings-activation/clock-report.py'
+______________ test_broken_buffers_cannot_supply_intervals[lost] _______________
+Tests/scripts/test_settings_clock.py:77: in test_broken_buffers_cannot_supply_intervals
+    report((snapshot, native, dump, boot))
+Tests/scripts/test_settings_clock.py:30: in report
+    SPEC.loader.exec_module(READER)
+<frozen importlib._bootstrap_external>:759: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:896: in get_code
+    ???
+<frozen importlib._bootstrap_external>:954: in get_data
+    ???
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/verification/settings-activation/clock-report.py'
+____________ test_broken_buffers_cannot_supply_intervals[sequence] _____________
+Tests/scripts/test_settings_clock.py:77: in test_broken_buffers_cannot_supply_intervals
+    report((snapshot, native, dump, boot))
+Tests/scripts/test_settings_clock.py:30: in report
+    SPEC.loader.exec_module(READER)
+<frozen importlib._bootstrap_external>:759: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:896: in get_code
+    ???
+<frozen importlib._bootstrap_external>:954: in get_data
+    ???
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/verification/settings-activation/clock-report.py'
+______________ test_broken_buffers_cannot_supply_intervals[after] ______________
+Tests/scripts/test_settings_clock.py:77: in test_broken_buffers_cannot_supply_intervals
+    report((snapshot, native, dump, boot))
+Tests/scripts/test_settings_clock.py:30: in report
+    SPEC.loader.exec_module(READER)
+<frozen importlib._bootstrap_external>:759: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:896: in get_code
+    ???
+<frozen importlib._bootstrap_external>:954: in get_data
+    ???
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/verification/settings-activation/clock-report.py'
+_______________ test_broken_buffers_cannot_supply_intervals[pid] _______________
+Tests/scripts/test_settings_clock.py:77: in test_broken_buffers_cannot_supply_intervals
+    report((snapshot, native, dump, boot))
+Tests/scripts/test_settings_clock.py:30: in report
+    SPEC.loader.exec_module(READER)
+<frozen importlib._bootstrap_external>:759: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:896: in get_code
+    ???
+<frozen importlib._bootstrap_external>:954: in get_data
+    ???
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/verification/settings-activation/clock-report.py'
+____________ test_broken_buffers_cannot_supply_intervals[reversed] _____________
+Tests/scripts/test_settings_clock.py:77: in test_broken_buffers_cannot_supply_intervals
+    report((snapshot, native, dump, boot))
+Tests/scripts/test_settings_clock.py:30: in report
+    SPEC.loader.exec_module(READER)
+<frozen importlib._bootstrap_external>:759: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:896: in get_code
+    ???
+<frozen importlib._bootstrap_external>:954: in get_data
+    ???
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/verification/settings-activation/clock-report.py'
+___________ test_wrong_native_boot_cannot_match_by_pid_and_tick_fit ____________
+Tests/scripts/test_settings_clock.py:86: in test_wrong_native_boot_cannot_match_by_pid_and_tick_fit
+    report((snapshot, native, dump, boot))
+Tests/scripts/test_settings_clock.py:30: in report
+    SPEC.loader.exec_module(READER)
+<frozen importlib._bootstrap_external>:759: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:896: in get_code
+    ???
+<frozen importlib._bootstrap_external>:954: in get_data
+    ???
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/verification/settings-activation/clock-report.py'
+________ test_wrong_scale_has_no_candidates_but_never_becomes_qualified ________
+Tests/scripts/test_settings_clock.py:91: in test_wrong_scale_has_no_candidates_but_never_becomes_qualified
+    result = report((snapshot, native, dump.replace("125 / 3", "1 / 1"), boot))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Tests/scripts/test_settings_clock.py:30: in report
+    SPEC.loader.exec_module(READER)
+<frozen importlib._bootstrap_external>:759: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:896: in get_code
+    ???
+<frozen importlib._bootstrap_external>:954: in get_data
+    ???
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/verification/settings-activation/clock-report.py'
+=========================== short test summary info ============================
+FAILED Tests/scripts/test_settings_clock.py::test_real_sample_retains_false_qualification_despite_numeric_enclosure
+FAILED Tests/scripts/test_settings_clock.py::test_wrong_or_ambiguous_native_boot_metadata_rejected[boot]
+FAILED Tests/scripts/test_settings_clock.py::test_wrong_or_ambiguous_native_boot_metadata_rejected[denominator]
+FAILED Tests/scripts/test_settings_clock.py::test_wrong_or_ambiguous_native_boot_metadata_rejected[missing]
+FAILED Tests/scripts/test_settings_clock.py::test_wrong_or_ambiguous_native_boot_metadata_rejected[duplicate]
+FAILED Tests/scripts/test_settings_clock.py::test_broken_buffers_cannot_supply_intervals[lost]
+FAILED Tests/scripts/test_settings_clock.py::test_broken_buffers_cannot_supply_intervals[sequence]
+FAILED Tests/scripts/test_settings_clock.py::test_broken_buffers_cannot_supply_intervals[after]
+FAILED Tests/scripts/test_settings_clock.py::test_broken_buffers_cannot_supply_intervals[pid]
+FAILED Tests/scripts/test_settings_clock.py::test_broken_buffers_cannot_supply_intervals[reversed]
+FAILED Tests/scripts/test_settings_clock.py::test_wrong_native_boot_cannot_match_by_pid_and_tick_fit
+FAILED Tests/scripts/test_settings_clock.py::test_wrong_scale_has_no_candidates_but_never_becomes_qualified
+12 failed in 0.05s

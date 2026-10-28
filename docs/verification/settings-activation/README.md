@@ -269,3 +269,13 @@ The strict wall-clock joins fail for both selections, leaving clock correlation
 and explicit failed disposition/responsible context unqualified. Shared token
 results are not a cause. No application repair or ordinary acceptance follows;
 all prior failures, failed transports and unrun phases remain in that report.
+
+## Offline native clock boundary
+
+The [offline clock result](CLOCK-RESULTS.md) establishes the retained guest's
+boot-specific native scale through Apple's decoder. Numerical tick/uptime
+enclosure remains conditional because application boot/origin/sleep calibration
+was not recorded. Exact joins stay unqualified and the old wall-clock false
+result is unchanged. No guest, application change or repair acceptance ran.
+The successor carries measured-clock/native-disposition work and every original
+causal repair and separate complete ordinary-acceptance duty.

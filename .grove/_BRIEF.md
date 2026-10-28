@@ -1,5 +1,19 @@
 # Koine menu-bar VM reliability — brief
 
+## Offline native clock handoff
+
+K29 decomposes after clock evidence k30 establishes native boot/timebase through
+Apple's own saved-archive decoder. CLOCK-RESULTS.md retains exact conditional
+tick/uptime candidates with qualification false: application boot/origin/sleep
+calibration was not recorded. Original strict wall-clock false and both historical
+failure classifications remain unchanged. No guest or application change ran.
+The remaining measured-clock/native-disposition leaf must use a supported finite
+matched causal protocol, not repeat an unchanged sample to chase failure, and
+carries every original positive-disposition, responsible-context, justified repair/
+useful failing seam and separate frozen complete ordinary-acceptance duty. No
+causal ancestor closes, no final repair subject is selected, no external owner
+is established, and no release/notarization or upstream report occurred.
+
 ## Goal
 
 Resolve the menu-bar verification problems recorded in

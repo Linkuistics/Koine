@@ -1,0 +1,8 @@
+{
+  "argv": [
+    "/usr/bin/log",
+    "help",
+    "show"
+  ],
+  "exit": 64
+}

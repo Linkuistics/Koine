@@ -1,0 +1,5 @@
+03713286b3640ba66995c6d85fcbcc27ec3fcb41466e2d36e8e58523b9aa05f0  docs/verification/settings-activation/persisted-01/archive-clock/Info.plist
+cb5263fd350cdf0c2d5ab5becb75abd3233c8f64d0a2e728690ddfff428d5f01  docs/verification/settings-activation/persisted-01/archive-clock/0000000000000002.timesync
+03713286b3640ba66995c6d85fcbcc27ec3fcb41466e2d36e8e58523b9aa05f0  .build/settings-activation/persisted/01/archive-audit/deferred-native/system.logarchive/Info.plist
+cb5263fd350cdf0c2d5ab5becb75abd3233c8f64d0a2e728690ddfff428d5f01  .build/settings-activation/persisted/01/archive-audit/deferred-native/system.logarchive/timesync/0000000000000002.timesync
+699adac9aabcc30be5fb208db6cdd97ab5ff300e65674fa976fbc5b723179f3c  /usr/bin/log

@@ -1,0 +1,18 @@
+Read-only fresh-context adversarial review, 2026-10-28.
+Scope: clock-report.py, its 12 controls, Taskfile clock routes, Apple timesync
+output/receipt, original archive Info.plist, buffer, native-path records and
+strict wall-clock joins. Contract: no new guest, no widening/host assumption,
+boot-specific scale, conditional enclosure separate from exact qualification
+and causal disposition, failed input must not become qualified evidence.
+Graph startup unavailable before project/generation; bounded direct reads only.
+
+Reviewer result:
+No concrete issues found in the scoped artifacts.
+
+The retained report uses boot-specific 125/3 scaling, preserves exact intervals,
+labels enclosure as conditional, and returns qualified: false with no joined
+selections. The old wall-clock joins remain false. Original report execution
+succeeded; all 12 focused tests passed.
+
+No findings to classify or implement. No second review requested. This is one
+aimed review of the stated scope, not an independent native experiment.

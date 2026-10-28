@@ -1,0 +1,48 @@
+{
+  "qualified": false,
+  "joinedSelections": [],
+  "nativeBootUUID": "2C83AC73-0855-44FD-A8A4-E03E227E1A01",
+  "nativeTimebase": {
+    "numerator": 125,
+    "denominator": 3
+  },
+  "gaps": [
+    "buffer has no boot UUID; same-guest provenance is indirect",
+    "buffer has no paired absolute/continuous reading or measured sleep offset",
+    "systemUptime excludes sleep; native continuous time includes sleep",
+    "numeric enclosure under zero offset is conditional, not independent calibration"
+  ],
+  "intervals": [
+    {
+      "selection": 1,
+      "pid": 814,
+      "beforeUptime": 180.7741264166667,
+      "afterUptime": 180.77550395833333
+    },
+    {
+      "selection": 2,
+      "pid": 814,
+      "beforeUptime": 186.535147125,
+      "afterUptime": 186.5363756666667
+    }
+  ],
+  "conditionalZeroSleepCandidates": [
+    {
+      "selection": 1,
+      "pid": 814,
+      "machTimestamp": 4338579225,
+      "continuousSeconds": "180.774134375",
+      "secondsAfterBefore": "0.0000079583333",
+      "secondsBeforeAfter": "0.00136958333333"
+    },
+    {
+      "selection": 2,
+      "pid": 814,
+      "machTimestamp": 4476843871,
+      "continuousSeconds": "186.5351612916666666666666667",
+      "secondsAfterBefore": "0.0000141666666666666666667",
+      "secondsBeforeAfter": "0.0012143750000333333333333"
+    }
+  ],
+  "lossRecords": []
+}

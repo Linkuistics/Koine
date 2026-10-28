@@ -1,5 +1,15 @@
 # settings-activation-disposition-k27 — brief
 
+## Offline clock boundary
+
+K29 decomposes after k30's CLOCK-RESULTS.md establishes the actual archive's
+native boot/timebase with Apple's decoder. Application boot/origin/sleep relation
+remains unqualified; zero-offset numerical candidates do not upgrade strict
+wall-clock false or supply cause. No guest or product modification ran. The
+remaining measured-clock/native-disposition leaf retains all original criteria
+below and the complete duty comparison in CLOCK-RESULTS.md. K29 and all causal
+repair/ordinary-acceptance ancestors remain open; every prior cap stays closed.
+
 ## Goal
 
 Identify the responsible condition/disposition of a failed actual NSApp Settings
