@@ -1,17 +1,34 @@
 # Koine menu-bar VM reliability — brief
 
-## Causal-discrimination scope decision
+## Accepted Settings repair scope
 
-K39's docs/specs/settings-activation-discrimination.md finds no supported finite
-two-sided causal experiment in the retained evidence. The positive native
-appearance/ordering contrast does not identify an independently controllable
-cause. The current two route/four modality slots earn no runtime and remain
-unstarted, with all criteria/caps unchanged. Antony's proposed scope amendment
-is pending: consider a separately justified behavioral-repair design while
-leaving native cause unresolved. This is not authorization or causal closure.
-Tree review/every earned integration and the explicit scope decision precede
-further work; k36 retains every original causal/product/ordinary duty unless
-Antony explicitly amends it. No guest, product change or ancestor closure here.
+In settings-activation-scope-k42, Antony answers "I agree" to the recommended
+behavioral-repair design scope. The established failure and inability of the
+current finite probe to distinguish causes justify amending native causal
+discrimination/disposition as a prerequisite to a separately justified correction.
+The native evidence remains unmet and cause/ownership unresolved. The accepted
+contract is docs/specs/settings-activation-discrimination.md, including the
+complete original-duty comparison. This amendment governs the original
+causal-prerequisite language in the ancestor briefs and historical handoffs below.
+
+Only design of a concrete, evidenced API-use correction with one activation
+request is permitted. Repetition, driver waits/retries/repeated input, deferral
+and speculative yielding remain excluded. A different public API must meet the
+same justification test and its preconditions. No candidate is established and
+no guest is authorized by the agreement. Settings-activation-correction-k45 owns
+the new design and must insert its review before k36; every earned integration
+also precedes implementation/runtime. The existing six
+route/modality slots remain held with unchanged criteria/caps and no reuse as
+a budget for a different question.
+
+K36 retains justified product repair/useful failing seam, one selection/one
+front-focused window, actual signed/all-input/completed-golden freeze,
+transport/partial/NOT RUN retention, audits/exact stop and separate complete
+ordinary acceptance with diagnostics disabled. Historical classifications,
+strict false joins and closed caps remain unchanged. No causal ancestor closes
+from this scope decision; no release, notarization or upstream report.
+
+## Earlier evidence handoffs
 
 K41's protocol review integration in CAUSAL-PROTOCOL-REVIEW.md repairs offline
 launch-prefix accounting, final-control input and positive mouse/Return nonce

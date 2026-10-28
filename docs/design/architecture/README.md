@@ -154,11 +154,12 @@ k244/k242 live and all useful/generated/VM/private/product/native obligations re
 ## Other architecture topics
 
 The [Settings activation discussion](settings-activation/README.md) presents the
-pending repair-scope choice and its evidence limits. Its
+accepted repair scope and its evidence limits. Its
 [evidence view](index.html#diagram-settings-activation-evidence-limit) and
-[scope choices](index.html#diagram-settings-activation-scope-choice) use the same
+[accepted scope](index.html#diagram-settings-activation-scope-choice) use the same
 editable sources as the focused discussion. All six existing experiment slots
-remain held; no scope amendment or repair candidate is accepted.
+remain held. Antony accepted separately justified behavioral-repair design;
+no repair candidate or guest is selected.
 
 The viewer retains [workspace actions](index.html#diagram-workspace-open),
 [native outcomes](index.html#diagram-workspace-outcomes),

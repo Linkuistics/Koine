@@ -1,13 +1,19 @@
 # Settings reopen: recorded activation failure — 2026-10-28
 
-The [causal-discrimination design](../../specs/settings-activation-discrimination.md)
-finds that the positive appearance/ordering contrast does not yet identify a
-controllable cause with finite falsifiers for both predictions. All six proposed
-route/modality slots remain unstarted. Antony's scope decision is pending; the
-recommended behavioral-repair design would leave native cause unresolved and
-requires an explicit prerequisite amendment. Design review and every earned
-integration precede any guest. Every original repair, freeze/audit/stop and
-separate complete ordinary-acceptance duty remains; no causal ancestor closes.
+The [accepted repair scope](../../specs/settings-activation-discrimination.md#scope-decision-for-antony)
+permits a separately justified correction design using one activation request
+without first proving the native cause. Antony agreed on 2026-10-28. Native cause
+and ownership remain unresolved; the prerequisite is amended, not satisfied.
+The concrete API-use justification test and repetition/driver-wait/retry/deferral/
+speculative-yield exclusions remain. No candidate is selected. Design review and
+every earned integration precede implementation or runtime; complete ordinary
+acceptance with diagnostics disabled and every freeze/audit/stop/evidence duty
+remain required. All six existing route/modality slots stay unstarted. Scope
+agreement alone closes no causal ancestor and establishes no product repair.
+
+The following instrument handoffs record the earlier evidence boundaries. Their
+causal-prerequisite wording is historical; the accepted contract above owns the
+current prerequisite amendment. All recorded results and limits remain unchanged.
 
 K41's [protocol review integration](CAUSAL-PROTOCOL-REVIEW.md) repairs offline
 launch-prefix accounting, final-control input and positive mouse/Return nonce

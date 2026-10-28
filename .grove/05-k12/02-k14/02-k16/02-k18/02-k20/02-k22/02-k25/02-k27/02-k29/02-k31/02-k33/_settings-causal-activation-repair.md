@@ -1,15 +1,31 @@
 # settings-causal-activation-repair-k33 — brief
 
-## K39 discrimination boundary
+## K42 accepted scope and remaining work
 
-Read docs/specs/settings-activation-discrimination.md. The retained positive
-native contrast supports no independently controllable activation condition
-with finite falsifiers for both causal predictions. No route or modality runtime
-is earned; the six slots and all k41 criteria remain unchanged and unstarted.
-Antony's proposed behavioral-repair prerequisite amendment is pending, not
-accepted. Design tree review/every earned integration and explicit scope
-resolution precede further authorization. Every original criterion below remains;
-no causal ancestor closes and no richer-monitor producer is cut to evade the gap.
+Antony answers "I agree" to separately justified behavioral-repair design without
+first proving the native cause. Read docs/specs/settings-activation-discrimination.md
+for the accepted single-request correction boundary and complete original-duty
+comparison. The native causal-discrimination/disposition prerequisites in the
+original charter below are amended for that design/evaluation path; their
+evidence remains unmet. Cause and ownership stay unresolved, not externally
+attributed. This governs earlier ancestor and handoff wording, not their results.
+
+Settings-activation-correction-k45 must identify a concrete API-use mistake or
+omission and justify one correction, establish its preconditions and discretionary
+OS limits, preserve
+the explicit excluded classes, and require review/every earned integration before
+k36 implementation/runtime. If no candidate meets the test, retain unresolved
+repair and escalate rather than try speculative workarounds or richer monitors.
+The agreement itself selects no candidate or guest. The six existing causal
+slots retain their criteria/caps and remain held and unstarted.
+
+Every product/failing-seam, one-selection/front-focused-window, actual signed/
+all-input/completed-golden freeze, evidence retention, audit/exact stop and
+separate complete ordinary-acceptance duty survives. Historical bytes,
+classifications, strict false joins and closed caps remain unchanged. No causal
+ancestor closes from this decision; k36 remains live.
+
+## Earlier evidence handoffs and original charter
 
 ## K41 integration boundary
 

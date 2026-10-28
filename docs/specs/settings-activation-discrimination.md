@@ -1,18 +1,25 @@
-# Settings activation: experiment limit and scope decision
+# Settings activation: repair and evidence contract
 
 ## Current decision
 
-The retained evidence does **not** support the finite, two-sided causal
-experiment required by the current charter. The implemented mouse/Return probe
-earns **no runtime**, including its two route-qualification guests. All six
-slots remain unstarted. This is a decision about the evidence available for this
-design, not a claim that no future causal experiment is possible.
+Antony accepted the recommended behavioral-repair design scope on 2026-10-28,
+answering "I agree." A separately justified correction using one activation
+request may be designed without first proving the native cause. The
+[accepted boundary](#scope-decision-for-antony) requires a concrete, evidenced
+mistake or omission in the application's API use and preserves the excluded
+repair classes. No candidate has yet passed that test.
 
-The open decision for Antony is whether native causal discrimination must remain
-a prerequisite to evaluating a product repair. The recommendation below is a
-**proposal**, not an accepted change to that requirement. No product repair or
-external owner has been established. One Settings selection must still return
-one front/focused Settings window.
+This amends a prerequisite; it does not satisfy it. Native cause and ownership
+remain unresolved. The retained evidence still does **not** support the finite,
+two-sided causal experiment previously required before repair evaluation. The
+implemented mouse/Return probe earns **no runtime**, including its two
+route-qualification guests. All six slots remain unstarted. A different question
+needs its own separately justified protocol and bound.
+
+The accepted scope permits design only. A concrete candidate needs independent
+review before implementation or runtime evaluation, followed by separate complete
+ordinary-operation acceptance. One Settings selection must still return one
+front/focused Settings window. No product repair or external owner is established.
 
 The [visual discussion](../design/architecture/settings-activation/README.md)
 shows why the current observation and intervention do not meet the requirement.
@@ -110,14 +117,18 @@ matched successful setup cannot give the broad rival its missing finite falsifie
 
 ## Scope decision for Antony
 
-**Recommended: authorize a separate behavioral-repair design while leaving native
-cause unresolved.** The user-facing failure is established, and further spending
-on the present probe cannot satisfy the current causal prerequisite. This option
-would permit a candidate justified by public API contracts and the observed
-product behavior to be evaluated without first establishing a positive native
-refusal/responsible context or two-sided native causal discrimination.
+**Accepted: permit a separate behavioral-repair design while leaving native
+cause unresolved.** The user-facing failure is established, and the present
+probe cannot distinguish the competing causes. Retaining native causal proof
+as a prerequisite could block repair indefinitely. Antony accepted this
+recommendation; ending the repair investigation was not selected.
 
-The proposed boundary admits a **single-request application correction**. A
+A candidate justified by public API contracts and the observed product behavior
+may now be designed without first establishing a positive native refusal,
+responsible context or two-sided native causal discrimination. Those facts stay
+unresolved and remain necessary for any corresponding causal or ownership claim.
+
+The accepted boundary admits a **single-request application correction**. A
 different public activation API is eligible for design only if its preconditions
 can be established and it passes the justification test below. The following
 classes remain excluded under this amendment: application-side repeated
@@ -138,7 +149,7 @@ availability alone is insufficient. Apple's
 allows the system to decline activation; the
 [checked ordering evidence](../verification/settings-activation/ORDER-RESULTS.md)
 supplies no prescribed call sequence that explains or avoids the failure.
-No candidate has been justified here, and the proposal promises none.
+No candidate has been justified here, and the agreement promises none.
 
 This is an explicit amendment to those prerequisites, not a finding that they
 have been met. No candidate is selected by this document. A follow-on design
@@ -148,15 +159,16 @@ any runtime work. A green count or successful alternative API alone remains
 insufficient justification. If no such candidate can be justified, return the
 unresolved decision rather than trying a sequence of workarounds.
 
-| Choice | What accepting it means | Cost and limit |
+| Choice | Decision and effect | Cost and limit |
 |---|---|---|
-| Behavioral-repair design — recommended | Amend only the requirement that native causal discrimination/disposition precede repair evaluation. Admit design of a single-request correction under the justification test above; preserve the named repetition, deferral and speculative-yield exclusions. Keep native cause and ownership unresolved. | A documented correction might improve behavior without explaining the native mechanism. No such candidate is established. Review and separate bounded evaluation remain required; approval of design selects no candidate or guest. |
-| Retain the current causal requirement | Keep all guests held. Revisit only with independent evidence for a controllable intervention and predictions that each rule out a finite observable outcome. A separately authorized primary-source investigation could seek that basis. | The unrestricted intermittent rival cannot be falsified by any finite sample. A supported deterministic restriction is missing; a supported rate/trial model would offer only statistical rejection and require explicit agreement to that standard. Neither may become available. More monitoring or another all-green set does not supply them. |
-| End this investigation unresolved | Preserve the reproducer and findings, explicitly accept that Settings repair remains unresolved, and separately decide the fate of the remaining repair work. | Does not fix the behavior or meet the original repair criterion. Requires Antony's explicit decision. |
+| Behavioral-repair design — accepted | Amend only the requirement that native causal discrimination/disposition precede repair evaluation. Admit design of a single-request correction under the justification test above; preserve the named repetition, deferral and speculative-yield exclusions. Keep native cause and ownership unresolved. | A documented correction might improve behavior without explaining the native mechanism. No such candidate is established. Review and separate bounded evaluation remain required; this agreement selects no candidate or guest. |
+| Retain the causal prerequisite — not selected | A future causal experiment still needs independent evidence for a controllable intervention and predictions that each rule out a finite observable outcome. | The unrestricted intermittent rival cannot be falsified by any finite sample. A supported deterministic restriction is missing; a supported rate/trial model would offer only statistical rejection and require explicit agreement to that standard. Neither may become available. More monitoring or another all-green set does not supply them. |
+| End the investigation unresolved — not selected | The repair request remains active. The reproducer and findings remain evidence of an unresolved failure. | No repair obligation is abandoned or marked satisfied by the scope agreement. |
 
-No answer, review approval, or passage of time counts as accepting the recommended
-scope amendment. Under every choice, the existing six-slot probe remains held;
-authorizing behavioral design does not authorize this probe or any new guest.
+The existing six-slot probe remains held. Its unused slots provide no runtime
+budget for the accepted design question. If no candidate meets the justification
+test, the outcome remains unresolved; the agreement permits no sequence of
+speculative workarounds.
 
 ## Protocol change comparison and qualification boundaries
 
@@ -176,7 +188,7 @@ establish symptom preservation only for that instrument; no timing neutrality
 or reliability rate follows. Even exact enclosure is correlation, not a native
 transaction identity or refusal.
 
-## Duties preserved through the scope decision
+## Duties under the accepted scope
 
 ### Ownership and existing test seams
 
@@ -196,40 +208,42 @@ Changing an offline fixture cannot reproduce or control that native response.
 Keep these owners separate. A repair design must earn a product seam for its
 concrete behavior; adding more observer APIs or injecting invented OS outcomes
 would not resolve the missing causal control. No new seam or interface is added
-by this design. The root's agreed complete VM seam remains the acceptance surface.
+by this agreement. Antony agreed to the complete VM seam and focused helper
+checks on 2026-10-28 and retained that scope when accepting this amendment.
+The complete scenario exercises a real signed application, real menu input,
+independent window observations and screenshots in a disposable guest. A useful
+focused failing product check, where feasible, supplements that native evidence.
 
 ### Original-duty comparison
 
-The original criteria and full comparisons remain authoritative:
+The original criteria remain binding except for the two prerequisites explicitly
+amended below. The full earlier comparisons remain historical evidence:
 [causal](../verification/settings-activation/CAUSAL-RESULTS.md#every-original-duty),
 [protocol](../verification/settings-activation/CAUSAL-PROTOCOL-RESULTS.md#integrity-and-original-duties),
 [focus](../verification/settings-activation/FOCUS-RESULTS.md#every-original-duty),
 [clock](../verification/settings-activation/CLOCK-RESULTS.md#original-duties-and-remaining-work)
 and [persisted](../verification/settings-activation/PERSISTED-RESULTS.md#every-original-duty-and-remaining-work).
 
-| Duty | Disposition at this design boundary |
+| Duty | Disposition under the accepted scope |
 |---|---|
 | Historical callback/failed-activation classification and persisted symptom preservation | Preserved; no historical byte or classification changes |
-| Supported condition, matched intervention and two finite falsifiers | Not established; escalated explicitly, not discharged by the narrow probe |
-| Positive failed actual request/native disposition/responsible context | Still required under the current charter; unresolved. Only Antony may approve the proposed prerequisite amendment |
+| Supported condition, matched intervention and two finite falsifiers | Unmet. Amended as a prerequisite to the permitted behavioral-repair design/evaluation; still required for the corresponding causal claim. The narrow probe does not satisfy it |
+| Positive failed actual request/native disposition/responsible context | Unresolved. Amended as a prerequisite to the permitted behavioral-repair design/evaluation, not marked satisfied. Native cause and ownership remain unresolved |
 | Qualified acquisition/configuration/lag and changed-instrument availability/symptom/timing | Historical capabilities and limits preserved; no new runtime qualification |
 | Actual signed subject/all consumed inputs/completed golden freeze | Still required before any future launch, after all design/review/integration work; no final subject selected here |
 | Failed transport, partial archive, every started attempt and NOT RUN retention | Preserved separately from scenario results; timeout/nonzero text remains failed |
 | Original/endpoint/golden audits and exact clone stop | Required for future runs; historical duties and results unchanged; no clone in this design |
-| Justified application repair and useful failing product seam | Unmet; recorder/reader controls are not a failing product seam. The proposed candidate boundary preserves application repetition, driver waits/retries/repeated input, deferral and speculative-yield exclusions; alternative APIs require the stated justification test |
+| Justified application repair and useful failing product seam | Unmet; recorder/reader controls are not a failing product seam. The accepted candidate boundary preserves application repetition, driver waits/retries/repeated input, deferral and speculative-yield exclusions; alternative APIs require the stated justification test |
 | One selection, one front/focused Settings window | Required behavior unchanged |
 | Separate finite complete ordinary acceptance | Still required through app:vm-verify-menu-bar, final ordinary signed subject/all-input/completed-golden freeze, diagnostics disabled, every outcome retained and timing addressed |
 | External evidence/reproducer/approval | No external owner established; positive evidence/reproducer required for attribution, repair unresolved if external; no upstream report without Antony's approval |
 | Closed historical caps and unrun ordinary phases | All closed caps stay closed. Persisted reopens 2/3, resize/minimum-size/content-height/scrolling, shortcuts, requests/denials, consent, silent launch, running-app reopen, login restart and Quit stay NOT RUN |
-| Ancestor closure/release | No causal ancestor closes from this design; no release or notarization |
+| Repair acceptance/release | Scope agreement supplies no repair or ordinary-acceptance result; no release or notarization |
 
 Persisted scenario/inner Task 1/201, native/collection/audit 1/1/1, outer Task 201
 and post-trace timeout/-1 remain failed outcomes. Original strict false/empty
-clock joins remain unchanged. The existing runtime owner retains the enclosing
-readiness/freeze/audit/cleanup wrapper and every unresolved product/ordinary duty.
-
-The scope decision must be recorded explicitly. An accepted amendment requires
-a concrete replacement design and a comparison against every original duty.
-Independent review must precede implementation or guests. Retaining the original
-requirement keeps the present hold until new independent evidence supports it.
-Document review supplies no causal, product or ordinary-acceptance result.
+clock joins remain unchanged. Every future evaluation still requires complete
+readiness, freeze, audit and cleanup coverage and the product/ordinary duties
+above. Independent review of a concrete justified design precedes implementation
+or guests. Agreement and document review supply no causal, product or
+ordinary-acceptance result.

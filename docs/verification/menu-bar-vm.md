@@ -1,12 +1,17 @@
 # Menu bar application: VM verification
 
-The [Settings causal-discrimination design](../specs/settings-activation-discrimination.md)
-earns no route/modality runtime: the retained contrast lacks a supported
-controllable cause and finite falsifiers for both predictions. All six slots
-remain unstarted. A proposed behavioral-repair scope amendment awaits Antony;
-review/every earned integration and an explicit scope decision precede further
-authorization. The failure, native-cause question and repair remain unresolved;
-separate frozen complete ordinary acceptance and every historical outcome remain.
+The [accepted Settings repair scope](../specs/settings-activation-discrimination.md#scope-decision-for-antony)
+permits separately justified design of a single-request correction without prior
+native causal proof. Antony agreed on 2026-10-28. Native cause and ownership remain
+unresolved, and no candidate or repair is established. The correction must meet
+the concrete API-use justification test and preserve the repetition, driver-wait/
+retry, deferral and speculative-yield exclusions. Design review and every earned
+integration precede implementation or runtime. Separate frozen complete ordinary
+acceptance remains required with diagnostics disabled and all evidence retained.
+The existing six-slot causal probe remains held and unstarted.
+
+Earlier instrument handoffs below retain their historical evidence boundaries;
+the accepted contract owns the current prerequisite amendment.
 
 K41's [protocol review integration](settings-activation/CAUSAL-PROTOCOL-REVIEW.md) repairs offline
 launch-prefix accounting, final-control input and positive mouse/Return nonce

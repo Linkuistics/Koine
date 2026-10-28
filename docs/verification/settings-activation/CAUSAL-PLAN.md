@@ -2,21 +2,25 @@
 
 ## Execution boundary
 
-[K39's discrimination design](../../specs/settings-activation-discrimination.md)
-finds no supported finite two-sided experiment in the retained evidence. This
-protocol earns no runtime, including route qualification; all six slots remain
-unstarted with unchanged criteria and caps. The scope amendment proposed to Antony
-is pending, not accepted. Independent design review/every earned integration and
-an explicit scope decision precede further design or runtime authorization.
+[The accepted repair scope](../../specs/settings-activation-discrimination.md#scope-decision-for-antony)
+permits a separately justified single-request correction design without prior
+native causal proof. Antony accepted it on 2026-10-28. It supplies no supported
+two-sided causal experiment and does not authorize this protocol: all six slots,
+including route qualification, remain unstarted with unchanged criteria and
+caps. They provide no runtime budget for the new design question. No candidate
+or guest is selected; a concrete design, review and every earned integration
+must precede implementation or runtime under the accepted scope.
 
 This is k38's implemented replacement for the unstarted k34 proposal, repaired
 by [k41's integration](CAUSAL-PROTOCOL-REVIEW.md). The
 [complete prior proposal](CAUSAL-PLAN-K34.md) is retained unchanged.
 **No guest has run. No runtime freeze or launch is authorized by this artifact.**
-The producer's tree review and every earned integration precede k36. A separate
-causal-design leaf must resolve the precise competing-prediction gap below before
-*any* route-qualification or causal guest. The implementation makes a narrow
-question testable; it does not claim to satisfy k33's original causal duty.
+The protocol and causal-design reviews are integrated. The causal design found
+no supported finite two-sided experiment. The implementation makes a narrow
+question testable; it does not satisfy the original causal duty or earn runtime.
+The scope agreement amends the repair-design prerequisite while leaving that
+evidence unresolved. A future supported causal proposal would require explicit
+reconciliation and review before *any* route-qualification or causal guest.
 
 Explicit changes to the unstarted proposal: add one prior successful mouse
 Settings-selection/close control; replace the one-selection limit with exactly
@@ -59,7 +63,7 @@ failed. The narrow probe can refute necessity only. Mouse failure/Return success
 all-green, all failures, unmatched controls and unavailable route/clock outcomes
 remain inconclusive for native responsibility and repair.
 
-The externalized design question is: **Which independently supported,
+The unresolved causal question is: **Which independently supported,
 controllable foreground/window/native interaction can be matched and intervened
 on, with positive observations and a finite falsifier for each competing causal
 prediction, rather than merely testing row-click necessity?** It must account for
@@ -67,9 +71,10 @@ the paired appearance/ordering context without undocumented semantics and decide
 whether the narrow slots below earn runtime at all. It may specify a different
 finite set before launch, with an explicit comparison of changes; it cannot
 quietly spend these slots or a qualification guest to look for a hypothesis.
-If the evidence cannot answer it, escalate the scope decision to Antony rather
-than declaring this one-sided probe a cause or cutting endless richer monitors.
-No guest starts while that question remains unresolved.
+The reviewed discrimination design found no supported answer. Antony has now
+accepted a separate behavioral-repair design route; that agreement does not
+answer this causal question or permit another richer monitor to evade it.
+No guest under this protocol starts while the causal question remains unresolved.
 
 ## Implemented observation and input route
 

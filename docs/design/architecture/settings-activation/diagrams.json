@@ -1,5 +1,5 @@
 {
-  "title": "Settings activation: the scope decision",
+  "title": "Settings activation: accepted repair scope",
   "intro": "Start at each dark Start here node. These are reasoning and decision views, not measured event order or proven causal graphs. No guest is authorized.",
   "groups": [
     {
@@ -9,14 +9,14 @@
     },
     {
       "id": "scope",
-      "title": "Scope decision",
-      "description": "The recommendation is proposed; Antony has not accepted an amendment."
+      "title": "Accepted repair scope",
+      "description": "Antony accepted separately justified behavioral-repair design; native cause remains unresolved."
     }
   ],
   "discussion": {
-    "title": "Can repair evaluation proceed while native cause remains unresolved?",
-    "status": "Scope decision pending",
-    "summary": "Recommend design of a justified correction using one activation request, with explicit repetition, deferral and speculative-yield exclusions. No candidate is established. The causal alternative needs an outcome-excluding prediction or an explicitly agreed statistical standard. Antony has accepted neither amendment; all runtime holds remain.",
+    "title": "Design a justified correction while native cause remains unresolved",
+    "status": "Scope accepted; candidate design remains",
+    "summary": "Antony accepted design of a justified correction using one activation request, with explicit repetition, driver-wait/retry, deferral and speculative-yield exclusions. No candidate is established. Concrete design and independent review precede implementation or runtime; separate complete ordinary-VM acceptance remains required. The native-cause prerequisite is amended, its evidence remains unmet, and all six existing experiment slots stay held.",
     "diagramIds": [
       "evidence-limit",
       "scope-choice"
@@ -28,7 +28,7 @@
       },
       {
         "id": "scope-choice",
-        "summary": "Names candidate exclusions and the structural limit on finite causal testing; all six slots remain held."
+        "summary": "Records the accepted single-request correction scope, required justification and review, preserved acceptance and unresolved native cause; all six slots remain held."
       }
     ]
   },
@@ -43,9 +43,9 @@
     {
       "id": "scope-choice",
       "group": "scope",
-      "title": "Choose the proof required before repair evaluation",
+      "title": "Accepted scope for repair design",
       "source": "scope-choice.mmd",
-      "caption": "The proposed amendment permits design of a justified single-request correction, with repetition, deferral and speculative-yield exclusions. No candidate is established. The causal alternative lacks an outcome-excluding prediction; a rate model would require an agreed statistical standard. No guest is authorized."
+      "caption": "Antony accepted design of a justified single-request correction, preserving repetition, driver-wait/retry, deferral and speculative-yield exclusions. The native cause remains unresolved. Concrete design and review precede implementation or runtime, with separate complete ordinary-VM acceptance required. No candidate or guest is selected."
     }
   ]
 }

@@ -98,8 +98,8 @@
     },
     {
       "id": "settings-activation",
-      "title": "Settings activation · pending scope choice",
-      "description": "Evidence limits and the unaccepted repair-scope proposal; all six experiment slots remain held."
+      "title": "Settings activation · accepted repair scope",
+      "description": "Accepted single-request correction design, evidence limits and preserved acceptance; all six existing experiment slots remain held."
     }
   ],
   "diagrams": [
@@ -601,9 +601,9 @@
     {
       "id": "settings-activation-scope-choice",
       "group": "settings-activation",
-      "title": "Choose the proof required before repair evaluation",
+      "title": "Accepted scope for repair design",
       "source": "settings-activation/scope-choice.mmd",
-      "caption": "The proposed amendment permits design of a justified single-request correction, with repetition, deferral and speculative-yield exclusions. No candidate is established. The causal alternative lacks an outcome-excluding prediction; a rate model would require an agreed statistical standard. No guest is authorized."
+      "caption": "Antony accepted design of a justified single-request correction, preserving repetition, driver-wait/retry, deferral and speculative-yield exclusions. The native cause remains unresolved. Concrete design and review precede implementation or runtime, with separate complete ordinary-VM acceptance required. No candidate or guest is selected."
     }
   ]
 }
