@@ -1,0 +1,143 @@
+# settings-activation-correction-k45
+
+## Goal
+Determine whether one concrete Settings activation correction meets Antony's
+accepted behavioral-repair scope, and deliver its justified design and acceptance
+contract if it does. Native cause and ownership remain unresolved.
+
+## Context
+Read settings-activation-scope-k42's recorded answer and
+docs/specs/settings-activation-discrimination.md, including its candidate-class
+boundary, justification test, original-duty comparison and agreed test seams.
+Antony answered "I agree" to permitting this design without prior native causal
+discrimination/disposition. This is an amended prerequisite, not satisfied
+evidence, a selected candidate or runtime authorization.
+
+Read the reviewed evidence limits in DISCRIMINATION-REVIEW.md, CAUSAL-RESULTS.md,
+ORDER-RESULTS.md and the current CAUSAL-PLAN.md under
+docs/verification/settings-activation. The six existing route/modality slots
+remain held, unchanged and unstarted; their unused positions are not a budget
+for a different question. Do not repeat completed marker/clock extractions or
+add monitoring to avoid the missing candidate justification.
+
+The current source boundaries to inspect are AppDelegate's show/activate path
+and its callers, MenuBarController, SettingsMenuProbe and the opt-in diagnostics.
+Query the nearest current graph and check coverage first. Graph discovery in
+k42 refused before project/generation identification; no symbol or coverage
+evidence is supplied by that session. Fall back to bounded direct source reads
+if access still fails; do not interrupt other graph users.
+
+## Done when
+- Identify a concrete mismatch or omitted step in current window/activation
+  use, supported by applicable primary public API contracts and exact source or
+  retained evidence. State why one correction addresses it, establish all
+  preconditions and disclose remaining discretionary OS behavior. API existence,
+  a successful alternate call or green counts alone cannot justify a candidate.
+- Preserve one selection returning one front/focused Settings window with one
+  activation request. Application-side repeated activation, driver waits/retries/
+  repeated input, menu-close/later-run-loop deferral and speculative yield-based
+  activation remain excluded. A different public API is eligible only if it meets
+  the same concrete justification test. Reconsidering an excluded class requires
+  another explicit scope proposal; do not infer it from k42.
+- Define a useful failing product seam where feasible and explain what it
+  establishes. Prefer the agreed existing seams; observer/reader fixtures do not
+  reproduce the native failure. Retain the separate finite complete ordinary-VM
+  acceptance through app:vm-verify-menu-bar with diagnostics disabled. Specify
+  the candidate's behavioral effects, bounded evaluation and failure consequences;
+  no guest is used to discover a candidate or debug a route.
+- Compare every original duty against the accepted amendment. Preserve actual
+  signed-subject/all-input/completed-golden freeze, every attempt/failed transport/
+  partial archive/NOT RUN outcome, original/endpoint/golden audits and exact clone
+  stop. Qualify any changed instrument, its availability and timing before use.
+  Preserve historical bytes/classifications/strict false joins/closed caps; no
+  cause/ownership, repair, ordinary acceptance or ancestor closure follows from
+  design alone. No release/notarization or upstream report.
+- If a candidate meets the test, land a concrete behavioral design and insert
+  review-design with this producer's bare stem before
+  settings-modality-disposition-repair-k36. That review and every earned
+  integration must precede implementation or runtime. Use Grove's lazy review
+  chain: create the review only after its artifact exists, with this producer's
+  stable handle and the finishing provider evidence where available. No
+  in-session reviewer beside the required tree review.
+- If no candidate meets the test, record the precise no-candidate result and
+  escalate the unresolved scope choice to Antony before k36 can proceed. Do not
+  invent a correction, run speculative workarounds, prune repair work or cut a
+  richer-monitor producer merely to continue. A no-candidate design conclusion
+  must not make the runtime leaf eligible.
+
+## Notes
+K36 remains the implementation/runtime owner only after a justified concrete
+design, its independent review and every earned integration. This design session
+runs no product change or guest. It may refine the accepted contract in place,
+but cannot silently widen the accepted scope or replace a native-cause unknown
+with an external attribution. The root's agreed test scope is already settled;
+ask only about a material new seam or actual new scope choice.
+
+## Decisions (running log)
+
+- 2026-10-28: Adopt the mandated design on empty jj change zyzqouus,
+  parent b959a684. Graph list_projects refuses before project/generation
+  identification with the pre-coordination/unverified-generation error. Use
+  bounded direct source reads without interrupting other graph users; graph
+  coverage cannot be checked and no graph completeness is claimed.
+- 2026-10-28: Inspect AppDelegate and its menu/launch/reopen callers,
+  MenuBarController, SettingsMenuProbe, SettingsActivationTrace,
+  SettingsActivationInterval, main entry, MainMenu and App/Info.plist. Read
+  Apple's current public activation/window contracts and installed macOS 27.0
+  SDK declarations. The current path requests key/front status for a titled
+  retained window, then makes one self-activation call on the main actor.
+  The accessory policy admits activation. No missing required step or wrong
+  precondition is established for this failed reopen.
+- 2026-10-28: No candidate in the inspected scope meets the accepted API-use
+  mismatch/omission test. This is a bounded design finding, not proof that no
+  correction exists or that Apple owns the failure. Alternate activation APIs,
+  unconditional window ordering, policy changes and explicit main/key calls
+  supply no evidenced correction; cooperative activation lacks an established
+  yield from the active app. Reversal has inconclusive historical evidence and
+  no prescribed order. Excluded repetition/deferral/speculative yield remain
+  excluded. No product seam, candidate, acceptance sample or runtime is earned.
+- 2026-10-28: Record the assessment in durable verification evidence and update
+  the existing repair/evidence contract and visual discussion. The unresolved
+  scope choice is whether to admit a separately reviewed empirical design of
+  activation-before-window ordering without a documented API-use violation,
+  retain the current hold until new qualifying evidence, or explicitly end
+  unresolved. Recommend the narrow empirical-design option as a proposal only;
+  it preserves one request, the other exclusions and separate ordinary acceptance.
+  The old ABBA cap remains closed and proves no repair. An explicit new scope
+  answer is required; this session selects no new experiment.
+- 2026-10-28: The no-candidate finding is load-bearing for the scope choice, so
+  schedule independent review of this artifact before that choice and k36.
+  No in-session reviewer runs beside the tree review. The scope choice earns
+  a requirements leaf ahead of k36; its recorded answer must not be inferred
+  from silence, review or the retirement of this assessment. No ADR is earned
+  by this reversible finding/proposal, and no causal ancestor closes.
+- 2026-10-28: The existing presentation task cannot bind 8799; its existing
+  listener returns an empty response. Leave it alone and use owned loopback
+  preview 8801. Chrome renders the three local diagrams; the new view's path,
+  lower decision branches and fresh deep link are checked in desktop light.
+  Mobile, dark and parent-view rendering remain unchecked. No host product or
+  guest is launched by this documentation preview.
+- 2026-10-28: Final mise exec -- task check:docs returns 201 with exactly the
+  two pre-existing archived-context targets, context-predicate.txt and
+  context-qualify-filter.sh. Parent source/listing confirms their pre-existence.
+  All 210 documentation/checker/Taskfile/presentation/source/SDK input digests
+  match before and after, and again after browser inspection. Both manifests
+  parse with sources resolving. CAUSAL-PLAN from Implemented observation and
+  input route onward is byte-identical to the parent. The receipt and raw check
+  output are retained under correction-evidence. No new failure is hidden.
+- 2026-10-28: Insert review-design settings-activation-correction-k47, then
+  requirements settings-activation-evaluation-scope-k46, ahead of k36. K47
+  challenges the whole assessment and may refute the no-candidate finding;
+  every earned integration precedes k46. K46 owns Antony's explicit pending
+  scope choice, or the existing-scope route if review finds a qualifying
+  correction. No new empirical design or runtime is authorized here. The
+  current environment supplies no GROVE_PROVIDER_EVIDENCE, and this is not a
+  legacy launch; write no Creator line and invent no provider identity.
+- 2026-10-28: Check every Done when branch: the no-candidate branch is met by
+  the bounded source/public-contract assessment, preserved exclusions, honest
+  seam/acceptance limits, complete original-duty comparison and explicit scope
+  escalation ahead of k36. The concrete-candidate branch is not claimed.
+  Retire k45 only. K47/k46/k36 keep k33 and every causal/product ancestor live;
+  no parent cascade settles. No source/test/Taskfile or historical-byte change,
+  new signed subject, guest, repair, ordinary acceptance, release/notarization,
+  upstream report or pruning occurred.

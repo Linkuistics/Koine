@@ -2,6 +2,12 @@
 
 ## Execution boundary
 
+The [correction assessment](CORRECTION-ASSESSMENT.md) finds no candidate meeting
+the accepted API-use test in the inspected path. Independent review and an
+explicit scope resolution must precede further product work. Its proposed
+empirical-design option is unaccepted and supplies no runtime budget. The
+implemented protocol below and all six slots remain unchanged and held.
+
 [The accepted repair scope](../../specs/settings-activation-discrimination.md#scope-decision-for-antony)
 permits a separately justified single-request correction design without prior
 native causal proof. Antony accepted it on 2026-10-28. It supplies no supported

@@ -1,5 +1,11 @@
 # Settings reopen: recorded activation failure — 2026-10-28
 
+The [correction assessment](CORRECTION-ASSESSMENT.md) finds no qualifying
+API-use correction in the inspected Settings path. The finding awaits independent
+review, followed by the [explicit scope choice](../../specs/settings-activation-discrimination.md#scope-after-no-candidate).
+No product change or guest ran. Implementation/runtime remain held; no repair,
+native owner or ancestor closure follows.
+
 The [accepted repair scope](../../specs/settings-activation-discrimination.md#scope-decision-for-antony)
 permits a separately justified correction design using one activation request
 without first proving the native cause. Antony agreed on 2026-10-28. Native cause

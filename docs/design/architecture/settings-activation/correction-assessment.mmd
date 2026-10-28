@@ -1,0 +1,15 @@
+flowchart TD
+    S["Start here: one Settings selection"]:::start
+    S -->|1: menu action| W["Reuse the titled Settings window"]
+    W -->|2: existing call| K["Request key and front status"]
+    K -->|3: existing call| A["Request self activation once"]
+    A -->|4: discretionary result| O["macOS may grant or decline activation"]
+    O -.-> F["Assessment: no evidenced API-use correction in this path"]:::finding
+    F --> R["Independent review of the finding"]
+    R --> Q["Explicit scope choice; runtime remains held"]:::hold
+    Q --> E["Proposed: empirical ordering design only"]
+    Q --> H["Retain current test until new evidence"]
+    Q --> U["End unresolved only by explicit decision"]
+    classDef start fill:#19354b,color:#fff,font-weight:bold,stroke:#19354b
+    classDef finding fill:#e9f0f6,color:#152a3a,stroke:#526f87
+    classDef hold fill:#fff1d2,color:#322600,stroke:#866216

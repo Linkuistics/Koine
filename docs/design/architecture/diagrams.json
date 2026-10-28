@@ -604,6 +604,13 @@
       "title": "Accepted scope for repair design",
       "source": "settings-activation/scope-choice.mmd",
       "caption": "Antony accepted design of a justified single-request correction, preserving repetition, driver-wait/retry, deferral and speculative-yield exclusions. The native cause remains unresolved. Concrete design and review precede implementation or runtime, with separate complete ordinary-VM acceptance required. No candidate or guest is selected."
+    },
+    {
+      "id": "settings-activation-correction-assessment",
+      "group": "settings-activation",
+      "title": "Current path and the unresolved correction choice",
+      "source": "settings-activation/correction-assessment.mmd",
+      "caption": "Numbered arrows show existing application call order; the dotted edge starts the assessment. No qualifying correction was found in the inspected path. Independent review and an explicit scope choice precede product work. Empirical ordering design is proposed only; no runtime is selected."
     }
   ]
 }

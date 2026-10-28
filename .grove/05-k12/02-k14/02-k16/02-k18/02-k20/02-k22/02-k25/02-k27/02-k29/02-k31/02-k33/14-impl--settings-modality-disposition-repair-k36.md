@@ -1,5 +1,16 @@
 # settings-modality-disposition-repair-k36
 
+## K45 result: no eligible runtime
+
+K45 finds no qualifying correction in the inspected path. Read
+docs/verification/settings-activation/CORRECTION-ASSESSMENT.md and the existing
+spec's Correction assessment and Scope after no candidate sections. Independent
+review/every earned integration precede the new explicit scope resolution.
+The empirical ordering-design option is only proposed. This leaf stays live and
+held: even a favorable scope answer still needs concrete design, review and
+every earned integration before product changes or guests. No candidate or
+runtime budget is selected. Preserve all duties below; no ancestor closes.
+
 ## K42 accepted scope and execution boundary
 
 Antony answered "I agree" to the recommended behavioral-repair design scope.

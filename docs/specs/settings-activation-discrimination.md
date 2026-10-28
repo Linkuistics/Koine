@@ -7,7 +7,10 @@ answering "I agree." A separately justified correction using one activation
 request may be designed without first proving the native cause. The
 [accepted boundary](#scope-decision-for-antony) requires a concrete, evidenced
 mistake or omission in the application's API use and preserves the excluded
-repair classes. No candidate has yet passed that test.
+repair classes. The [correction assessment](#correction-assessment) finds no
+qualifying candidate in the inspected path. That bounded finding awaits
+independent review; the resulting [scope choice](#scope-after-no-candidate)
+remains pending. Implementation and runtime remain held.
 
 This amends a prerequisite; it does not satisfy it. Native cause and ownership
 remain unresolved. The retained evidence still does **not** support the finite,
@@ -169,6 +172,54 @@ The existing six-slot probe remains held. Its unused slots provide no runtime
 budget for the accepted design question. If no candidate meets the justification
 test, the outcome remains unresolved; the agreement permits no sequence of
 speculative workarounds.
+
+## Correction assessment
+
+The [source and public-contract assessment](../verification/settings-activation/CORRECTION-ASSESSMENT.md)
+finds no evidenced API-use mistake or omitted step that justifies a correction
+in the inspected Settings path. The application retains a titled window, requests
+key/front status and makes one self-activation request. Accessory application
+policy permits activation. Apple recommends the self-activation API already in
+use and leaves the outcome discretionary. A different activation API supplies no
+missing guarantee; cooperative activation lacks an established prior yield from
+the active app. Unconditional window ordering alone would not supply focus.
+
+Reversing the window and activation calls remains an empirical hypothesis. The
+checked contracts do not prescribe that ordering, and the closed comparison
+does not establish a repair. Repetition, driver waits/retries/repeated input,
+deferral and speculative yielding remain excluded. No candidate, new product
+seam, runtime subject or acceptance sample is selected. This is a bounded finding
+awaiting independent review, not proof that every possible correction is absent
+or that the operating system owns the failure.
+
+### Scope after no candidate
+
+**Pending proposal, not an amendment:** permit design of one empirical
+activation-before-window-ordering evaluation without requiring a documented
+API-use violation. This is the recommended next choice if the no-candidate
+finding survives review. It would change only the candidate-justification
+standard for that named hypothesis. One activation request, one front/focused
+window, the other excluded classes, independent design review, evidence integrity
+and separate complete ordinary acceptance would remain required.
+
+The reason to consider this option is the small behavioral change and the
+historical demonstration that the order can succeed. Those observations establish
+feasibility only. They do not predict that the intermittent failure disappears.
+The material trade-off is accepting a bounded behavioral result without proving
+a coding mistake, native cause or reliability beyond that sample. The permitted
+claim and consequences of failure or unavailable evidence need explicit agreement
+and a concrete reviewed design before any evaluation. The old ABBA cap stays
+closed; this proposal selects no new cap or guest.
+
+| Choice after the reviewed assessment | Effect and cost |
+|---|---|
+| Permit the named empirical design — recommended, pending | Allows design of activation-before-window ordering under a changed justification standard, preserving one request and all other exclusions. Requires explicit agreement on finite acceptance limits; green counts alone still prove no mechanism or general reliability. No implementation or runtime follows from the scope answer alone. |
+| Retain the accepted API-use test | Repair remains live and held until new evidence supplies a qualifying mismatch and correction. Further unchanged sampling or richer monitoring does not fill that gap. There is no currently established path to completion. |
+| End the investigation unresolved | Requires explicit authorization to abandon the affected repair work. Preserves the observed failure and reproducer; makes no repair or acceptance claim. |
+
+No answer is inferred from this document, review, silence or elapsed time. The
+accepted scope above remains in force until Antony explicitly changes it. The
+six held causal slots remain unchanged and unstarted under every pending choice.
 
 ## Protocol change comparison and qualification boundaries
 

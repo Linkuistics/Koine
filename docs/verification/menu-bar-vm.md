@@ -1,5 +1,11 @@
 # Menu bar application: VM verification
 
+The [Settings correction assessment](settings-activation/CORRECTION-ASSESSMENT.md)
+finds no qualifying API-use correction in the inspected path. Independent review
+and the [pending scope choice](../specs/settings-activation-discrimination.md#scope-after-no-candidate)
+precede any further product work. No product change or guest ran; the repair
+remains unresolved and implementation/runtime remain held.
+
 The [accepted Settings repair scope](../specs/settings-activation-discrimination.md#scope-decision-for-antony)
 permits separately justified design of a single-request correction without prior
 native causal proof. Antony agreed on 2026-10-28. Native cause and ownership remain

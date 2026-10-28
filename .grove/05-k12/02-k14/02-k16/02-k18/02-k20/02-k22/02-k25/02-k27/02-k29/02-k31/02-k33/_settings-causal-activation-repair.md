@@ -1,5 +1,17 @@
 # settings-causal-activation-repair-k33 — brief
 
+## K45 no-candidate boundary
+
+The bounded source/public-contract assessment in
+docs/verification/settings-activation/CORRECTION-ASSESSMENT.md finds no
+candidate meeting k42's API-use test. Independent review and every earned
+integration must challenge that finding before the explicit scope decision
+ahead of k36. The proposal to permit empirical activation-before-window-ordering
+design changes the justification standard and remains unaccepted. No product
+change, guest, repair seam or runtime cap is selected. K36 stays live and held;
+all original duties under k42, historical evidence and caps remain. This node
+and every causal/product ancestor stay open.
+
 ## K42 accepted scope and remaining work
 
 Antony answers "I agree" to separately justified behavioral-repair design without

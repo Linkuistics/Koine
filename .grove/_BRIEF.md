@@ -1,5 +1,23 @@
 # Koine menu-bar VM reliability — brief
 
+## K45 correction assessment
+
+Settings-activation-correction-k45 finds no qualifying API-use correction in the
+inspected path. Its durable assessment is
+docs/verification/settings-activation/CORRECTION-ASSESSMENT.md. The current
+window/key/self-activation calls meet the checked public-use conditions; the
+native failure still has no established cause or owner. This is a bounded finding
+awaiting independent review, not proof that no correction exists.
+
+Review of k45 and every earned integration precede an explicit scope decision
+and k36. The pending proposal permits only design of an empirical
+activation-before-window-ordering evaluation without a documented API-use
+violation. It is not accepted and authorizes no product change or guest. Keeping
+the current hold or explicitly ending unresolved remain human choices; no repair
+work is abandoned. K36 stays live and held. Every original duty under k42,
+historical byte/classification/strict false join/closed cap and all six held
+causal slots remain. No causal or product ancestor closes.
+
 ## Accepted Settings repair scope
 
 In settings-activation-scope-k42, Antony answers "I agree" to the recommended

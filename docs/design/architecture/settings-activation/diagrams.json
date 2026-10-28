@@ -1,6 +1,6 @@
 {
-  "title": "Settings activation: accepted repair scope",
-  "intro": "Start at each dark Start here node. These are reasoning and decision views, not measured event order or proven causal graphs. No guest is authorized.",
+  "title": "Settings activation: correction assessment",
+  "intro": "Start at each dark Start here node. The assessment numbers existing application calls; its dotted edge starts reasoning. The other views show reasoning and choices. None proves native event order or cause. No guest is authorized.",
   "groups": [
     {
       "id": "evidence",
@@ -11,24 +11,26 @@
       "id": "scope",
       "title": "Accepted repair scope",
       "description": "Antony accepted separately justified behavioral-repair design; native cause remains unresolved."
+    },
+    {
+      "id": "correction",
+      "title": "Correction assessment",
+      "description": "The inspected path supplies no qualifying API-use correction. Independent review and an explicit scope choice follow."
     }
   ],
   "discussion": {
-    "title": "Design a justified correction while native cause remains unresolved",
-    "status": "Scope accepted; candidate design remains",
-    "summary": "Antony accepted design of a justified correction using one activation request, with explicit repetition, driver-wait/retry, deferral and speculative-yield exclusions. No candidate is established. Concrete design and independent review precede implementation or runtime; separate complete ordinary-VM acceptance remains required. The native-cause prerequisite is amended, its evidence remains unmet, and all six existing experiment slots stay held.",
+    "title": "No qualifying correction found in the inspected path",
+    "status": "Assessment awaits review; new scope proposal pending",
+    "summary": "The current path already requests key/front status and self activation once. No evidenced API-use mismatch was found. Review must challenge that bounded finding before Antony chooses whether to permit a named empirical ordering design, retain the present hold, or end unresolved. The empirical option is only a proposal. Product work and all six existing causal slots remain held; cause and ownership remain unresolved.",
     "diagramIds": [
       "evidence-limit",
-      "scope-choice"
+      "scope-choice",
+      "correction-assessment"
     ],
     "updatedDiagrams": [
       {
-        "id": "evidence-limit",
-        "summary": "Accounts for the expanded native rows and separates marker sufficiency from necessity; one start reaches every branch."
-      },
-      {
-        "id": "scope-choice",
-        "summary": "Records the accepted single-request correction scope, required justification and review, preserved acceptance and unresolved native cause; all six slots remain held."
+        "id": "correction-assessment",
+        "summary": "Adds the current one-request path, bounded no-candidate finding and pending scope branches; no branch authorizes runtime."
       }
     ]
   },
@@ -46,6 +48,13 @@
       "title": "Accepted scope for repair design",
       "source": "scope-choice.mmd",
       "caption": "Antony accepted design of a justified single-request correction, preserving repetition, driver-wait/retry, deferral and speculative-yield exclusions. The native cause remains unresolved. Concrete design and review precede implementation or runtime, with separate complete ordinary-VM acceptance required. No candidate or guest is selected."
+    },
+    {
+      "id": "correction-assessment",
+      "group": "correction",
+      "title": "Current path and the unresolved correction choice",
+      "source": "correction-assessment.mmd",
+      "caption": "Numbered arrows show the existing application call order. The dotted edge moves to the assessment, not a measured cause. The no-candidate finding is bounded and awaits review. The proposed empirical ordering design would amend the justification standard only by explicit agreement; it selects no implementation, cap or guest."
     }
   ]
 }
