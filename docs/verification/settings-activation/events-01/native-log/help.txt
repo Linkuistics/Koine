@@ -1,0 +1,36 @@
+usage: log stream [options]
+   or: log stream [options] --process <pid> | <process>
+   or: log stream [options] --user <uid> | <user> 
+
+description:
+    Stream events from the system or a given process.
+
+options:
+    -c, --color <mode>                 Control color output (valid: auto, always, none)
+    -l, --level default | info | debug Include events at, and below, the given level
+    -P, --predicate <predicate>        Filter events using the given predicate
+    -p, --process <pid> | <process>    Stream events from the specified process
+    -u, --user <uid> | <user>          Stream events from the specified user
+    --source                           Annotate output with source file and line-number
+    -s, --style <style>                Output format (valid: default, syslog, json, ndjson, compact)
+    -T, --timeout <num>[m|h|d]         Terminate streaming after timeout has elapsed
+    -Y, --type activity | log | trace  Limit streaming to a given event type
+    --mach-continuous-time             Print mach continuous time timestamps rather than walltime
+    --unreliable                       Annotate output with whether the log was emitted unreliably
+    --ignore-dropped                   Don't output anything for dropped messages while streaming
+    -o, --payload                      Stream payload information (implies json type)
+    --[no-]backtrace                   Control whether backtraces are shown
+    --[no-]debug                       Include or don't include debug level events
+    --[no-]info                        Include or don't include info level events
+    --metric                           Include metrics events
+    --[no-]signpost                    Include or don't include signpost events
+
+predicate usage:
+    Filter predicates follow the NSPredicate format described at:
+    https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Predicates/AdditionalChapters/Introduction.html
+
+    For predicate field/type details, see `log help predicates`.
+
+shorthand usage: 
+    Shorthand is converted to a predicate. For details, see `log help shorthand`.
+

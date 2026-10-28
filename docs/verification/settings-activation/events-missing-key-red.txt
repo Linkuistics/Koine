@@ -1,0 +1,10 @@
+1..7
+ok 1 context rejects enabled tracing and preserves the one observation
+ok 2 context rejects timed-out trace observation even with a success marker
+ok 3 context requires the disabled marker from a clean single transport
+ok 4 context accepts the guest's absent-domain diagnostic
+not ok 5 context accepts the actual missing-key diagnostic after memory mode creates the domain
+# (in test file Tests/scripts/vm-settings-context.bats, line 71)
+#   `[[ "${status}" == 0 ]]' failed
+ok 6 context refuses an unexpected preference error and an enabled preference
+ok 7 context accepts the actual newline-normalized success transport

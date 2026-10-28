@@ -278,3 +278,33 @@ k18/k16/k14/k12 repair and separately declared complete ordinary acceptance duty
 Those nodes remain open. Diagnostic-02's delivered-callback/failed-activation
 classification and all older failures remain unchanged. Every completed sample
 stays closed; no release/notarization/upstream report.
+
+## Buffered event-context handoff
+
+K21 adds an opt-in memory recorder and retains one declared events guest. Its
+four Settings actions pass, with 101 zero-drop callback/call/event records and
+native client calls inside their activation intervals, followed by successful
+front changes/resumes. This supplies a successful instrument reference, not a
+failure discriminator or repair. The full original-criterion comparison is in
+docs/verification/settings-activation/EVENTS-RESULTS.md.
+
+Collection/native/audit remain 1/1/1: a new missing-key wording defeats the
+inherited post-trace parser and final environment/installed reads time out.
+Returned matching inventory text remains failed transport. After all frozen
+checks, an exact failing fixture precedes the literal parser repair; no guest
+is replayed. All frozen/archived inputs and completed golden digests match;
+clone stop is clean. Every later complete-scenario phase is NOT RUN.
+
+K20 decomposes into completed buffered evidence k21 and deferred native capture
+k22. K22 asks whether actual native-path records can be acquired after observation
+without a live formatting/output sidecar, and retains all original causal repair
+and separately declared frozen complete ordinary-acceptance obligations.
+K20/k18/k16/k14/k12 stay open. Every historical failure/classification remains;
+no closed sample is extended, no product repair/ordinary acceptance is claimed,
+and no release, notarization or upstream report occurred.
+
+The repository documentation check reports two pre-existing missing relative
+links in the archived initial context charter. K23 separately owns a byte-
+preserving archive packaging repair; k21 retains the failed check and confirms
+the same source bytes/target absence in its parent. This does not alter any VM
+outcome or weaken k22's causal/ordinary-acceptance obligations.

@@ -58,8 +58,10 @@ let package = Package(
         // scripts/build-app.sh assembles and signs Koine.app around it.
         .executableTarget(
             name: "KoineApp",
-            dependencies: ["KoineCore", "KoineServer", "KoineManagementClient", "KoineProviderLoader"]
+            dependencies: ["KoineCore", "KoineServer", "KoineManagementClient", "KoineProviderLoader", "KoineAppDiagnostics"]
         ),
+        .target(name: "KoineAppDiagnostics"),
+        .testTarget(name: "KoineAppDiagnosticsTests", dependencies: ["KoineAppDiagnostics"]),
         // The conformance check (task conformance, scripts/vm-verify-conformance.sh):
         // the schema a running Koine serves, against a profile's design SDL
         // (docs/design/profiles/), and the candidates it runs against the profile's pin.

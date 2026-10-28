@@ -1,0 +1,58 @@
+task: [check:settings-event-buffer] swift build --build-tests
+Building for debugging...
+[Computing dependencies]
+[Provisioning 56 / 65]
+[Pre-planning 1 / 1566]
+[Planning deferred tasks]
+[1 / 3]
+[4 / 10] KoineCore
+[13 / 14] KoineServerTests-product
+[14 / 17] WorkspaceProviderLogicTests-product
+[19 / 21] KoineApp-product
+[21 / 23] KoineApp-product
+[21 / 24] KoineApp-product
+[23 / 25] KoineApp-product
+[25 / 25] KoineApp-product
+Build complete! (2.98 sec.)
+task: [check:settings-event-buffer] scripts/stage-provider-framework.sh debug
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Products/Debug/PackageFrameworks/KoineProviderAPI.framework
+task: [check:settings-event-buffer] swift test --skip-build --filter SettingsEventBufferTests
+􀟈  Test run started.
+􀄵  Testing Library Version: 2084
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Suite SettingsEventBufferTests started.
+􀟈  Test failedDumpKeepsRecordsAvailable() started.
+􀟈  Test overflowPreservesPrefixAndReportsEveryDroppedRecord() started.
+􀟈  Test outputIsExplicitNonDestructiveAndCannotOverwriteEvidence() started.
+􀢄  Test overflowPreservesPrefixAndReportsEveryDroppedRecord() recorded an issue at SettingsEventBufferTests.swift:12:9: Expectation failed: snapshot["records"] as? [Int] == [1, 2]
+􀄵  snapshot["records"] as? [Int] == [1, 2] → false
+􀄵    snapshot["records"] as? [Int] → nil
+􀄵      some → [1, 2]
+􀢄  Test overflowPreservesPrefixAndReportsEveryDroppedRecord() recorded an issue at SettingsEventBufferTests.swift:13:9: Expectation failed: snapshot["dropped"] as? Int == 2
+􀄵  snapshot["dropped"] as? Int == 2 → false
+􀄵    snapshot["dropped"] as? Int → nil
+􀄵      some → 2
+􀢄  Test overflowPreservesPrefixAndReportsEveryDroppedRecord() recorded an issue at SettingsEventBufferTests.swift:14:9: Expectation failed: snapshot["capacity"] as? Int == 2
+􀄵  snapshot["capacity"] as? Int == 2 → false
+􀄵    snapshot["capacity"] as? Int → nil
+􀄵      some → 2
+􀢄  Test overflowPreservesPrefixAndReportsEveryDroppedRecord() failed after 0.001 seconds with 3 issues.
+􀄵  // Dropping the first record or silently overwriting on overflow loses the
+􀄵  // callback/call interval that this diagnostic exists to retain.
+􀢄  Test failedDumpKeepsRecordsAvailable() recorded an issue at SettingsEventBufferTests.swift:44:9: Expectation failed: an error was expected but none was thrown
+􀄵  (any Error).self → <not evaluated>
+􀄵    (any Error) → <not evaluated>
+􀄵    self → <not evaluated>
+􀢄  Test failedDumpKeepsRecordsAvailable() recorded an issue at SettingsEventBufferTests.swift:46:9: Expectation failed: snapshot["records"] as? [Int] == [42]
+􀄵  snapshot["records"] as? [Int] == [42] → false
+􀄵    snapshot["records"] as? [Int] → nil
+􀄵      some → [42]
+􀢄  Test failedDumpKeepsRecordsAvailable() failed after 0.001 seconds with 2 issues.
+􀢄  Test outputIsExplicitNonDestructiveAndCannotOverwriteEvidence() recorded an issue at SettingsEventBufferTests.swift:18:6: Caught error: Error Domain=NSCocoaErrorDomain Code=260 "The file “events.json” couldn’t be opened because there is no such file." UserInfo={NSFilePath=/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/EAFD0536-8F25-4A9B-BEC4-6B3136B1AD9D/events.json, NSURL=file:///var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/EAFD0536-8F25-4A9B-BEC4-6B3136B1AD9D/events.json, NSUnderlyingError=0x100a525c0 {Error Domain=NSPOSIXErrorDomain Code=2 "No such file or directory"}}
+􀢄  Test outputIsExplicitNonDestructiveAndCannotOverwriteEvidence() failed after 0.004 seconds with 1 issue.
+􀄵  // Record-time output or destructive dumps would invalidate a later dump.
+􀢄  Suite SettingsEventBufferTests failed after 0.004 seconds with 6 issues.
+􀢄  Test run with 3 tests in 1 suite failed after 0.004 seconds with 6 issues.
+Note: Some test targets reported failures:
+  - KoineAppDiagnosticsTests (Swift Testing)
+task: Failed to run task "check:settings-event-buffer": exit status 1

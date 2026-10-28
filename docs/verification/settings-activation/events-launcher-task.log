@@ -1,0 +1,2 @@
+task: [app:vm-settings-events] bash docs/verification/settings-activation/events-run.sh 01
+task: Failed to run task "app:vm-settings-events": exit status 1

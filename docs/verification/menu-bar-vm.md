@@ -1169,3 +1169,22 @@ open. The next precise observation must retain useful callback/call and event
 context without synchronous trace-file writes and positively discriminate a
 failed actual-path request/disposition. All original failures and closed caps
 remain; no product repair, external ownership, release or upstream report.
+
+### Buffered callback/event reference (issue 14, 2026-10-28)
+
+The [buffered-event experiment](settings-activation/EVENTS-RESULTS.md) retains one
+new finite guest, separately from every closed diagnostic/order/native/context
+sample. Four Settings actions pass with 101 zero-drop memory records and actual
+native client calls inside their activation intervals. File serialization occurs
+only on a later explicit dump; last-event snapshots establish no input provenance.
+The live reduced native logger still adds load, and no Settings failure is seen.
+There is no cause, product repair, symptom-preservation or ordinary acceptance.
+
+Collection/native/audit remain 1/1/1: an inherited missing-key parser fails its
+postcondition, while final environment/installed reads time out. Matching text
+is retained as failed transport. A post-measurement exact parser fixture fails
+before a literal correction; there is no replacement or corrected guest. Frozen
+inputs, measured overlays, golden digests and cleanup are reconciled in the
+report. Resize and all later full-scenario phases are NOT RUN. The remaining
+work is post-scenario native-capture capability without the live sidecar plus
+all original causal repair and complete diagnostics-disabled acceptance duties.

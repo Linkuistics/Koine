@@ -1,0 +1,7 @@
+docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md
+docs/verification/settings-activation/context-initial-inputs/Taskfile.yml
+docs/verification/settings-activation/context-initial-inputs/context-prefix.sh
+docs/verification/settings-activation/context-initial-inputs/context-run.sh
+docs/verification/settings-activation/context-initial-inputs/context-subjects.sha256
+docs/verification/settings-activation/context-initial-inputs/context-trace-disabled.sh
+docs/verification/settings-activation/context-initial-inputs/vm-settings-context.bats

@@ -1,0 +1,71 @@
+task: [check:vm-settings-events] bash -n docs/verification/settings-activation/events-*.sh
+task: [check:vm-settings-events] shellcheck -x -e SC2034 docs/verification/settings-activation/events-*.sh
+task: [check:vm-settings-events] bats Tests/scripts/vm-settings-events.bats Tests/scripts/vm-settings-events-stop.bats
+1..11
+ok 1 events enable accepts a clean normalized transport and retains it
+ok 2 events never accept a timeout, guest failure or transport failure as enable success
+ok 3 events reject a wrong enable marker and preserve nonzero CLI failure without replay
+ok 4 events dump retains complete JSON and rejects loss or missing call boundaries
+ok 5 events dump rejects empty output and timeout even with returned JSON
+ok 6 events dump retains a chmod failure from its actual guest command
+ok 7 events wrapper rejects a false stopped result even when CLI succeeds
+ok 8 events wrapper rejects the wrong stopped VM identity
+ok 9 events wrapper preserves a scenario failure and still stops once
+ok 10 events wrapper accepts clean cleanup and preserves CLI stop failure
+ok 11 events wrapper rejects nonzero stop CLI with matching returned text
+task: [check:vm-settings-context] bash -n docs/verification/settings-activation/context-*.sh
+task: [check:vm-settings-context] shellcheck -x -e SC2034 docs/verification/settings-activation/context-*.sh
+task: [check:vm-settings-context] bats Tests/scripts/vm-settings-context.bats
+1..6
+ok 1 context rejects enabled tracing and preserves the one observation
+ok 2 context rejects timed-out trace observation even with a success marker
+ok 3 context requires the disabled marker from a clean single transport
+ok 4 context accepts the guest's absent-domain diagnostic
+ok 5 context refuses an unexpected preference error and an enabled preference
+ok 6 context accepts the actual newline-normalized success transport
+task: [check:vm-settings-native] bash -n docs/verification/settings-activation/native-prefix.sh docs/verification/settings-activation/native-run.sh docs/verification/settings-activation/native-guest-log.sh docs/verification/settings-activation/native-start.sh docs/verification/settings-activation/native-guest-stop.sh
+task: [check:vm-settings-native] shellcheck -x -e SC2034 docs/verification/settings-activation/native-prefix.sh docs/verification/settings-activation/native-run.sh docs/verification/settings-activation/native-guest-log.sh docs/verification/settings-activation/native-start.sh docs/verification/settings-activation/native-guest-stop.sh
+task: [check:vm-settings-native] bats Tests/scripts/vm-settings-native.bats Tests/scripts/vm-settings-native-stop.bats
+1..6
+ok 1 native startup retains a timed-out transport and never replays it
+ok 2 native startup rejects a failed envelope even when the CLI exits zero
+ok 3 native startup accepts and retains a clean readiness observation
+ok 4 native stop rejects a logger that ended before collection
+ok 5 native stop rejects a missing process without claiming intentional stop
+ok 6 native stop signals a live logger and waits for its recorded exit
+task: [check:vm-settings-activation] bash -n docs/verification/settings-activation/run.sh docs/verification/settings-activation/inventory.sh
+task: [check:vm-settings-activation] shellcheck docs/verification/settings-activation/run.sh docs/verification/settings-activation/inventory.sh
+task: [check:vm-settings-activation] bats Tests/scripts/vm-settings-activation.bats
+1..5
+ok 1 an early scenario failure still audits the installed endpoint and stops the guest
+ok 2 an added bundle file fails the complete inventory audit
+ok 3 a changed symlink fails the complete inventory audit
+ok 4 a changed installed endpoint fails even after a passing scenario
+ok 5 an interrupted attempt collects trace and artifacts before stopping without replay
+task: [check:vm-menu-pointer] bash -n scripts/vm-menu-pointer-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+task: [check:vm-menu-pointer] shellcheck -x scripts/vm-menu-pointer-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+task: [check:vm-menu-pointer] shfmt -d -i 4 scripts/vm-menu-pointer-lib.sh
+task: [check:vm-menu-pointer] bats Tests/scripts/vm-menu-pointer.bats
+1..8
+ok 1 menu-bar centre at y=7 retains its target and never sends -1
+ok 2 ordinary frame retains the old approach and centre
+ok 3 display corners retain their targets with a distinct on-screen approach
+ok 4 invalid frame observations fail before any pointer input
+ok 5 pointer transport failure stops before the click even in a conditional caller
+ok 6 missing or malformed display dimensions never send pointer input
+ok 7 an out-of-display destination is refused rather than moved to another target
+ok 8 a failed move stops the action even when the caller tests its status
+task: [check:vm-window-resize] bash -n scripts/vm-window-resize-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+task: [check:vm-window-resize] shellcheck -x scripts/vm-window-resize-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+task: [check:vm-window-resize] shfmt -d -i 4 scripts/vm-window-resize-lib.sh
+task: [check:vm-window-resize] bats Tests/scripts/vm-window-resize.bats
+1..9
+ok 1 resize sends a held-button path through the selected corner to its destination
+ok 2 an explicit title selects the ordinary-window corner without changing its destination
+ok 3 a failed pointer preparation never presses the button in a conditional caller
+ok 4 a failed initial down attempts release and preserves the failure
+ok 5 a failed held point releases there and stops instead of masking the error
+ok 6 a failed final release is returned rather than hidden by sleep
+ok 7 the scenario refuses a failed frame read even when it emitted valid geometry
+ok 8 the scenario refuses content below 320 even when the outer frame is 440 by 352
+ok 9 the scenario accepts the observed minimum only with at least 320 content pixels

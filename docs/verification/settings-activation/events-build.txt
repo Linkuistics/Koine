@@ -1,0 +1,57 @@
+task: [app] scripts/build-app.sh
+Building KoineApp (release)...
+Building for production...
+[Computing dependencies]
+[Pre-planning 1 / 1159]
+[Planning deferred tasks]
+[41 / 151]
+[74 / 160] CNIOOpenBSD
+[89 / 171]
+[94 / 173] KoineProviderAPI
+[97 / 175] KoineProviderLoader
+[103 / 176] _NIODataStructures
+[112 / 171] KoineAppDiagnostics
+[124 / 180] _NIODataStructures
+[128 / 182] ContainersPreview
+[133 / 185] Atomics
+[135 / 181] DequeModule
+[138 / 183] NIOCore
+[140 / 184] OrderedCollections
+[143 / 186] GraphQL
+[145 / 187] KoineProviderLoader
+[147 / 183] NIOCore
+[153 / 192] NIOPosix
+[159 / 197] NIOEmbedded
+[161 / 193] NIOPosix
+[166 / 196] NIO
+[171 / 200]
+[172 / 200] GRDB
+[174 / 196] NIOHTTP1
+[184 / 205]
+[185 / 205] GraphQL
+[188 / 207] KoineCore
+[190 / 208] KoineHTTP
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Sources/KoineCore/Engine.swift:387:13: warning: initialization of immutable value 'operations' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+385 |     /// The root fields of the selected operation when it is a mutation.
+386 |     private func rootMutationActions(in document: Document, request: EngineRequest) -> [Field] {
+387 |         let operations = document.definitions.compactMap { $0 as? OperationDefinition }
+    |             `- warning: initialization of immutable value 'operations' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+388 |         guard let operation = selectedOperation(in: document, request: request),
+389 |             operation.operation == .mutation
+
+[#NoUsage]: <https://docs.swift.org/compiler/documentation/diagnostics/no-usage>
+[192 / 204] KoineCore
+[197 / 207] KoineSQLiteStore
+[202 / 210] KoineServer
+[207 / 213] KoineManagementClient
+[211 / 214] KoineApp-product
+[212 / 215] KoineApp-product
+[214 / 215] KoineApp-product
+[215 / 215] KoineApp-product
+Build complete! (33.63 sec.)
+Signing as "Developer ID Application: Antony Blakey (TA43A4RUP3)"...
+.build/settings-activation/events/Koine.app/Contents/Frameworks/KoineProviderAPI.framework: replacing existing signature
+.build/settings-activation/events/Koine.app/Contents/PlugIns/Desktop.koineprovider: replacing existing signature
+.build/settings-activation/events/Koine.app/Contents/PlugIns/Workspace.koineprovider: replacing existing signature
+.build/settings-activation/events/Koine.app: replacing existing signature
+Built .build/settings-activation/events/Koine.app

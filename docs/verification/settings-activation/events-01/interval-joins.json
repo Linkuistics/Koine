@@ -1,0 +1,66 @@
+[
+  {
+    "selection": 1,
+    "callbackUTC": "2026-10-28T05:08:37.905774+00:00",
+    "beforeUTC": "2026-10-28T05:08:37.907908+00:00",
+    "clientCall": "2026-10-27 22:08:37.907916-0700",
+    "afterUTC": "2026-10-28T05:08:37.911856+00:00",
+    "activeUTC": "2026-10-28T05:08:37.939654+00:00",
+    "keyUTC": "2026-10-28T05:08:37.938334+00:00",
+    "currentEvent": {
+      "modifierFlags": 0,
+      "timestamp": 53.899389458,
+      "type": 1,
+      "windowNumber": 0
+    },
+    "eventAgeSeconds": 0.347482792000001
+  },
+  {
+    "selection": 2,
+    "callbackUTC": "2026-10-28T05:08:43.704414+00:00",
+    "beforeUTC": "2026-10-28T05:08:43.705690+00:00",
+    "clientCall": "2026-10-27 22:08:43.705724-0700",
+    "afterUTC": "2026-10-28T05:08:43.709995+00:00",
+    "activeUTC": "2026-10-28T05:08:43.715880+00:00",
+    "keyUTC": "2026-10-28T05:08:43.714954+00:00",
+    "currentEvent": {
+      "modifierFlags": 0,
+      "timestamp": 59.69994925,
+      "type": 1,
+      "windowNumber": 0
+    },
+    "eventAgeSeconds": 0.34557250000000295
+  },
+  {
+    "selection": 3,
+    "callbackUTC": "2026-10-28T05:08:49.528410+00:00",
+    "beforeUTC": "2026-10-28T05:08:49.530826+00:00",
+    "clientCall": "2026-10-27 22:08:49.530840-0700",
+    "afterUTC": "2026-10-28T05:08:49.540022+00:00",
+    "activeUTC": "2026-10-28T05:08:49.546925+00:00",
+    "keyUTC": "2026-10-28T05:08:49.545866+00:00",
+    "currentEvent": {
+      "modifierFlags": 0,
+      "timestamp": 65.516989333,
+      "type": 1,
+      "windowNumber": 0
+    },
+    "eventAgeSeconds": 0.3525337503333361
+  },
+  {
+    "selection": 4,
+    "callbackUTC": "2026-10-28T05:09:25.482287+00:00",
+    "beforeUTC": "2026-10-28T05:09:25.483277+00:00",
+    "clientCall": "2026-10-27 22:09:25.483282-0700",
+    "afterUTC": "2026-10-28T05:09:25.489639+00:00",
+    "activeUTC": "2026-10-28T05:09:25.495410+00:00",
+    "keyUTC": "2026-10-28T05:09:25.494235+00:00",
+    "currentEvent": {
+      "modifierFlags": 0,
+      "timestamp": 101.476305833,
+      "type": 1,
+      "windowNumber": 0
+    },
+    "eventAgeSeconds": 0.34710737533333713
+  }
+]

@@ -65,6 +65,13 @@ SH
     [[ "$(cat "${context_out}/guest-stdout")" == KOINE_TRACE_DISABLED ]]
 }
 
+@test "context accepts the actual missing-key diagnostic after memory mode creates the domain" {
+    export defaults_output="Error: Could not find key 'KoineSettingsActivationTrace' in domain 'dev.antony.Koine'." defaults_status=1
+    run_guest_preflight
+    [[ "${status}" == 0 ]]
+    [[ "$(cat "${context_out}/guest-stdout")" == KOINE_TRACE_DISABLED ]]
+}
+
 @test "context refuses an unexpected preference error and an enabled preference" {
     export defaults_output='Could not communicate with preferences daemon' defaults_status=1
     run_guest_preflight

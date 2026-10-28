@@ -1,0 +1,14 @@
+1..5
+ok 1 events enable accepts a clean normalized transport and retains it
+not ok 2 events never accept a timeout, guest failure or transport failure as enable success
+# (in test file Tests/scripts/vm-settings-events.bats, line 32)
+#   `[[ "${status}" != 0 ]]' failed
+not ok 3 events reject a wrong enable marker and preserve nonzero CLI failure without replay
+# (in test file Tests/scripts/vm-settings-events.bats, line 40)
+#   `[[ "${status}" != 0 ]]' failed
+not ok 4 events dump retains complete JSON and rejects loss or missing call boundaries
+# (in test file Tests/scripts/vm-settings-events.bats, line 62)
+#   `[[ "${status}" != 0 ]]' failed
+not ok 5 events dump rejects empty output and timeout even with returned JSON
+# (in test file Tests/scripts/vm-settings-events.bats, line 71)
+#   `[[ "${status}" != 0 ]]' failed

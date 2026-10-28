@@ -176,3 +176,22 @@ release or notarization. K20 owns the precise missing callback/call and event-co
 join without synchronous trace writes plus every original remaining criterion.
 This node and its causal/repair ancestors remain open. No completed sample may
 be reset, replaced or extended.
+
+## Buffered event evidence and remaining causal work
+
+K21 retains the new bounded memory instrument and the sole events guest in
+settings-activation/EVENTS-RESULTS.md, including every original-duty comparison.
+All four Settings actions pass with 101 zero-drop callback/call/event records
+and enclosed actual client calls followed by native front changes/resumes.
+No failed disposition or responsible cause is observed. Collection/native/audit
+remain 1/1/1: post-trace parser failure and final endpoint/environment timeouts
+are retained. The parser's exact fixture fails before a post-measurement literal
+repair; no corrected guest runs. Frozen/archived inputs and completed golden
+hashes match; clone stop is clean. Later full-scenario phases are NOT RUN.
+
+K22 owns whether post-scenario native acquisition can retain actual-path records
+without the live formatting/output sidecar, and every original positive causal
+discrimination, product repair/failing seam and separately declared frozen
+complete ordinary-acceptance duty. Diagnostic-02's classification remains met;
+all other causal/repair criteria stay open. All samples are closed; no extension,
+replacement, external ownership, release/notarization or upstream report.

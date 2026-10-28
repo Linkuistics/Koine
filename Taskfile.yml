@@ -1517,6 +1517,41 @@ tasks:
     cmds:
       - bash docs/verification/settings-activation/context-run.sh {{.CLI_ARGS}}
 
+  check:settings-event-buffer:
+    desc: Check bounded retention, explicit output and preservation of Settings event evidence without launching AppKit
+    cmds:
+      - swift build --build-tests
+      - scripts/stage-provider-framework.sh debug
+      - swift test --skip-build --filter SettingsEventBufferTests
+
+  fixture:settings-event-dump:
+    desc: Build the headless post-observation dump requester for a disposable guest
+    cmds:
+      - mkdir -p .build/settings-activation/events
+      - swiftc -swift-version 6 -target arm64-apple-macos26.0 Tools/SettingsEventDump/main.swift -o .build/settings-activation/events/settings-event-dump
+
+  app:vm-settings-events:
+    desc: Run the single declared buffered-event qualification guest; see settings-activation/EVENTS-PLAN.md
+    cmds:
+      - bash docs/verification/settings-activation/events-run.sh {{.CLI_ARGS}}
+
+  app:vm-settings-events-scenario:
+    desc: Four unchanged Settings actions with memory-only event observation and reduced native logging
+    cmds:
+      - |
+        status=0
+        bash docs/verification/settings-activation/events-prefix.sh || status=$?
+        if [ -n "${KOINE_K4_OUT:-}" ]; then printf '%s\n' "${status}" > "${KOINE_K4_OUT}/scenario.exit"; fi
+        exit "${status}"
+
+  check:vm-settings-events:
+    desc: Check raw buffered-event transports and the inherited native capture controls
+    cmds:
+      - bash -n docs/verification/settings-activation/events-*.sh
+      - shellcheck -x -e SC2034 docs/verification/settings-activation/events-*.sh
+      - bats Tests/scripts/vm-settings-events.bats Tests/scripts/vm-settings-events-stop.bats
+      - task: check:vm-settings-context
+
   app:vm-settings-context-scenario:
     desc: Run the existing Settings prefix with reduced native logging and application tracing disabled
     cmds:

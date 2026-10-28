@@ -1,0 +1,19 @@
+1..11
+ok 1 events enable accepts a clean normalized transport and retains it
+ok 2 events never accept a timeout, guest failure or transport failure as enable success
+ok 3 events reject a wrong enable marker and preserve nonzero CLI failure without replay
+ok 4 events dump retains complete JSON and rejects loss or missing call boundaries
+ok 5 events dump rejects empty output and timeout even with returned JSON
+not ok 6 events dump retains a chmod failure from its actual guest command
+# (in test file Tests/scripts/vm-settings-events.bats, line 90)
+#   `jq -e '.exit_code == 1 and .stderr == "chmod refused\n"' "${KOINE_K4_OUT}/events-dump.json"' failed
+# false
+not ok 7 events wrapper rejects a false stopped result even when CLI succeeds
+# (in test file Tests/scripts/vm-settings-events-stop.bats, line 46)
+#   `[[ "${status}" != 0 ]]' failed
+not ok 8 events wrapper rejects the wrong stopped VM identity
+# (in test file Tests/scripts/vm-settings-events-stop.bats, line 55)
+#   `[[ "${status}" != 0 ]]' failed
+ok 9 events wrapper preserves a scenario failure and still stops once
+ok 10 events wrapper accepts clean cleanup and preserves CLI stop failure
+ok 11 events wrapper rejects nonzero stop CLI with matching returned text

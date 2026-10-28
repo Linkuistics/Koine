@@ -1,0 +1,22 @@
+Single fresh-context pre-guest review, 2026-10-28.
+
+P2: events-prefix.sh calls guest_once for new chmod work; that helper suppresses
+all output/failure. Move chmod into the retained raw dump transport.
+Classification: valid/actionable. The actual guest-command regression fails
+before the fix; after it, the returned failure envelope retains chmod stderr.
+
+P2: events-run.sh trusts VM-stop CLI exit without validating ok/stopped/id.
+Classification: valid/actionable. Two wrapper-level fixtures demonstrate false
+stop and wrong-VM results accepted before repair. Validate the retained envelope
+and propagate failure into stop.exit and wrapper status, without replay.
+
+During review, absence of current-event/native correlatability in structural
+transport checks was raised as a possible qualification-boundary limitation.
+The protocol requires actual event/native correlation and manual interpretation
+after collection; zero collection exit alone is not native qualification. A nil
+currentEvent is permitted by AppKit and cannot become invented provenance.
+Retain the distinction explicitly in the result. This concern was not included
+as a defect in the final review findings.
+
+Both repairs have executable failing seams. No second reviewer ran; this spends
+the picked leaf's one reviewer allowance. No cause or product repair is selected.

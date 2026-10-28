@@ -1,0 +1,29 @@
+task: [check:settings-event-buffer] swift build --build-tests
+Building for debugging...
+[Computing dependencies]
+[Provisioning 2 / 65]
+[1 / 4]
+[1 / 5] CNIOFreeBSD
+[2 / 6] KoineApp-product
+[4 / 8] KoineApp-product
+[5 / 8] KoineApp-product
+[7 / 10] KoineApp-product
+[9 / 10] KoineApp-product
+Build complete! (2.56 sec.)
+task: [check:settings-event-buffer] scripts/stage-provider-framework.sh debug
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Products/Debug/PackageFrameworks/KoineProviderAPI.framework
+task: [check:settings-event-buffer] swift test --skip-build --filter SettingsEventBufferTests
+􀟈  Test run started.
+􀄵  Testing Library Version: 2084
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Suite SettingsEventBufferTests started.
+􀟈  Test failedDumpKeepsRecordsAvailable() started.
+􀟈  Test outputIsExplicitNonDestructiveAndCannotOverwriteEvidence() started.
+􀟈  Test overflowPreservesPrefixAndReportsEveryDroppedRecord() started.
+􁁛  Test overflowPreservesPrefixAndReportsEveryDroppedRecord() passed after 0.001 seconds.
+􁁛  Test failedDumpKeepsRecordsAvailable() passed after 0.005 seconds.
+􁁛  Test outputIsExplicitNonDestructiveAndCannotOverwriteEvidence() passed after 0.007 seconds.
+􁁛  Suite SettingsEventBufferTests passed after 0.007 seconds.
+􁁛  Test run with 3 tests in 1 suite passed after 0.007 seconds.
+task: [fixture:settings-event-dump] mkdir -p .build/settings-activation/events
+task: [fixture:settings-event-dump] swiftc -swift-version 6 -target arm64-apple-macos26.0 Tools/SettingsEventDump/main.swift -o .build/settings-activation/events/settings-event-dump

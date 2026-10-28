@@ -1,0 +1,1 @@
+Returned text equals frozen inventory; transport timed out/exit -1.

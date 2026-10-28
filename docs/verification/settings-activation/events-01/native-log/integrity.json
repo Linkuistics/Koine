@@ -1,0 +1,12 @@
+{
+  "bytes": 14917542,
+  "sha256": "0223bb73b3deecf4940ad6c4f47d885a1c2e7b4b18936aaa27612576394934f0",
+  "restoredSHA256": "0223bb73b3deecf4940ad6c4f47d885a1c2e7b4b18936aaa27612576394934f0",
+  "eventTypes": {
+    "logEvent": 12263,
+    "activityCreateEvent": 229
+  },
+  "nonJSONLines": [
+    1
+  ]
+}
