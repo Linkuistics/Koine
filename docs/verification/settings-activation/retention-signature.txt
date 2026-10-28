@@ -1,0 +1,38 @@
+--prepared:/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/settings-activation/events/Koine.app/Contents/PlugIns/Desktop.koineprovider
+--validated:/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/settings-activation/events/Koine.app/Contents/PlugIns/Desktop.koineprovider
+--prepared:/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/settings-activation/events/Koine.app/Contents/PlugIns/Workspace.koineprovider
+--prepared:/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/settings-activation/events/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+--validated:/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/settings-activation/events/Koine.app/Contents/PlugIns/Workspace.koineprovider
+--validated:/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/settings-activation/events/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+.build/settings-activation/events/Koine.app: valid on disk
+.build/settings-activation/events/Koine.app: satisfies its Designated Requirement
+Executable=/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/settings-activation/events/Koine.app/Contents/MacOS/Koine
+Identifier=dev.antony.Koine
+Format=app bundle with Mach-O thin (arm64)
+CodeDirectory v=20500 size=37372 flags=0x10000(runtime) hashes=1157+7 location=embedded
+VersionPlatform=1
+VersionMin=1703936
+VersionSDK=1703936
+Hash type=sha256 size=32
+CandidateCDHash sha256=bf7c21e94102f12b33aa55bd04bcd0fe86089709
+CandidateCDHashFull sha256=bf7c21e94102f12b33aa55bd04bcd0fe86089709b58d459312f97216990b3ca5
+Hash choices=sha256
+CMSDigest=bf7c21e94102f12b33aa55bd04bcd0fe86089709b58d459312f97216990b3ca5
+CMSDigestType=2
+Executable Segment base=0
+Executable Segment limit=7323648
+Executable Segment flags=0x1
+Page size=16384
+CDHash=bf7c21e94102f12b33aa55bd04bcd0fe86089709
+Signature size=8976
+Authority=Developer ID Application: Antony Blakey (TA43A4RUP3)
+Authority=Developer ID Certification Authority
+Authority=Apple Root CA
+Timestamp=28 Oct 2026 at 16:05:01
+Info.plist entries=13
+TeamIdentifier=TA43A4RUP3
+Runtime Version=26.0.0
+Sealed Resources version=2 rules=13 files=4
+Internal requirements count=1 size=176
+Total signatures=1
+Chosen signature=1

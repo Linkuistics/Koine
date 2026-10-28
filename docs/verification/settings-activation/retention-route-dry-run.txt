@@ -1,0 +1,1 @@
+task: [app:vm-settings-retention] bash docs/verification/settings-activation/retention-run.sh 

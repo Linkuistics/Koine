@@ -339,3 +339,32 @@ classification stays met; all causal/repair ancestors remain open. No closed
 sample is extended, no generic native call becomes an app-path control and no
 product repair/ordinary acceptance, external ownership, release/notarization or
 upstream report is claimed.
+
+
+## Actual-path retention handoff
+
+K26 retains the sole corrected retention guest in
+`docs/verification/settings-activation/RETENTION-RESULTS.md`, including its full
+original-duty comparison. Four Settings actions pass. Default deferred capture
+with no live native output reader joins all four actual PID 723 client calls to
+101 zero-drop buffered records. Collection starts about 79.489/73.742/8.015/2.294
+seconds after those calls; WindowServer front-change/foreground records agree
+with success. This is finite actual-path capability, not failed disposition,
+cause, timing neutrality, symptom preservation or product repair.
+
+Scenario/inner Task are 0/0 and native collection 0; collection/audit remain 1/1,
+outer Task 201, because final environment/installed envelopes timeout/exit -1.
+Matching text remains failed transport. Initial independent raw endpoint,
+preflight/acquisition/dump/trace checks and validated stop are clean. All 302
+frozen inputs, full host inventory and completed golden hashes match. Every
+clone stops; all later complete-scenario phases are NOT RUN. The sole reviewer
+finds three instrument gaps, repaired before freeze with executable seams.
+
+K25 decomposes into completed retention evidence k26 and activation disposition
+k27. K27 must choose a supported causal hypothesis and a separately bounded
+protocol that discriminates it; it must not repeat an unchanged instrument to
+chase failure. Every original positive failed-path discriminator, justified
+application repair/useful failing seam and separately declared frozen complete
+ordinary-operation acceptance duty remains. Diagnostic-02's historical
+classification is unchanged. K25/k22/k20/k18/k16/k14/k12 remain open; every prior
+sample stays closed. No external owner, release/notarization or upstream report.

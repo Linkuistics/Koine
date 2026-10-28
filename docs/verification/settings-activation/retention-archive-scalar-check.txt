@@ -1,0 +1,8 @@
+acquisition.exit MATCH
+collect.stderr MATCH
+collect.stdout MATCH
+collected.txt MATCH
+native.jsonl MATCH
+rendered.txt MATCH
+show.stderr MATCH
+started.txt MATCH

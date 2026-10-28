@@ -1,0 +1,6 @@
+1..5
+ok 1 retention preserves environment CLI failure and fails audit while stopping once
+ok 2 retention rejects timeout environment and false-ok display envelopes
+ok 3 retention stops once and records TERM received during ordinary collection
+ok 4 retention accepts clean collection and refuses overwriting an attempt
+ok 5 retention preserves a failed independent initial endpoint in its audit

@@ -1,0 +1,9 @@
+1..1
+not ok 1 retention initial raw endpoint distinguishes complete text from CLI success
+# (in test file Tests/scripts/vm-settings-retention.bats, line 117)
+#   `[[ "${status}" == 0 ]]' failed
+
+The following warnings were encountered during tests:
+BW01: `run`'s command `bash /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../docs/verification/settings-activation/retention-installed-before.sh /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-tb706U/test/1/endpoint/expected-bundle.txt` exited with code 127, indicating 'Command not found'. Use run's return code checks, e.g. `run -127`, to fix this message.
+      (from function `run' in file /opt/homebrew/Cellar/bats-core/1.14.0/lib/bats-core/test_functions.bash, line 442,
+       in test file Tests/scripts/vm-settings-retention.bats, line 116)

@@ -1,0 +1,2 @@
+Downloaded /Users/admin/settings-events.json → /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/settings-activation/retention/01/settings-events.json
+Downloaded /Users/admin/settings-events.json.complete → /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/settings-activation/retention/01/settings-events.json.complete

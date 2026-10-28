@@ -1,0 +1,15 @@
+1..5
+not ok 1 retention preserves environment CLI failure and fails audit while stopping once
+# (in test file Tests/scripts/vm-settings-retention.bats, line 57)
+#   `[[ "${status}" != 0 ]]' failed
+not ok 2 retention rejects timeout environment and false-ok display envelopes
+# (in test file Tests/scripts/vm-settings-retention.bats, line 67)
+#   `[[ "${status}" != 0 ]]' failed
+not ok 3 retention stops once and records TERM received during ordinary collection
+# (in test file Tests/scripts/vm-settings-retention.bats, line 81)
+#   `[[ "$(cat .build/settings-activation/retention/01/interruption.exit)" == 143 ]]' failed
+# cat: .build/settings-activation/retention/01/interruption.exit: No such file or directory
+ok 4 retention accepts clean collection and refuses overwriting an attempt
+not ok 5 retention preserves a failed independent initial endpoint in its audit
+# (in test file Tests/scripts/vm-settings-retention.bats, line 97)
+#   `[[ "${status}" != 0 ]]' failed

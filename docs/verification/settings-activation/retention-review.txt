@@ -1,0 +1,23 @@
+One fresh-context adversarial reader inspected RETENTION-PLAN.md, the new wrapper
+and Task routes plus consumed deferred/buffer helpers before any guest.
+
+Findings and reconciliation:
+1. Actionable: clearing EXIT/INT/TERM before ordinary collection permits a first
+   TERM there to bypass clone stop. A fixture signals the actual wrapper during
+   collection. It fails before correction; recording non-reentrant INT/TERM
+   dispositions through cleanup passes and retains the 143 result and one stop.
+2. Actionable: the inherited initial installed inventory suppresses transport
+   failures through guest_text. Keep that historical safe read unchanged, add an
+   independent raw initial read in the new prefix, retain its CLI/envelope/diff
+   and propagate failure into audit. It does not manufacture successful transport
+   or abort all application actions solely because this extra read failed.
+3. Actionable: final environment/display CLI failures were discarded and their
+   envelopes did not affect audit. Retain their CLI statuses and validate both
+   envelopes. Nonzero CLI with matching text, timeout and false-ok fixtures fail
+   before correction and pass afterward.
+
+The raw initial endpoint helper also has a failing missing-implementation test
+followed by clean/text-with-CLI-failure controls. Wrapper fixtures exercise clean
+collection, failed initial endpoint propagation, exact-once stop and no overwrite.
+These executable seams cover the narrow fixes; no second reviewer is used. This
+review is one aimed reader, not an independent native sample or timing proof.

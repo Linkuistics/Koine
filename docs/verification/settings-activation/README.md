@@ -242,3 +242,20 @@ time out; the first golden digest overlaps clone launch by four seconds. These
 limits and both corrective charters are explicit. No failed native disposition,
 causal repair, complete ordinary-operation acceptance or external owner follows.
 All historical failures/classifications and closed sample caps remain unchanged.
+
+## Corrected default actual-path retention — k26
+
+The one [retention guest](RETENTION-RESULTS.md) passes four Settings actions and
+retains an actual Koine client call inside every buffered activation interval
+without a live native output reader. Per-selection collection lags, native
+front-change/foreground records, raw responses and all original duties are in
+that report. No failed disposition or causal repair is observed, and reduced-load
+symptom preservation remains unqualified. The sample is closed.
+
+Final environment and installed-bundle transports time out despite agreeing
+text, so collection/audit remain failed. Initial raw endpoint, acquisition/dump
+and validated stop are clean; frozen inputs and completed golden hashes match.
+All later complete-scenario phases remain NOT RUN. K27 owns a supported causal
+hypothesis/discriminating protocol and every original repair and separately
+declared ordinary complete-acceptance duty. No product repair, reliability rate,
+external ownership, release/notarization or upstream report follows.

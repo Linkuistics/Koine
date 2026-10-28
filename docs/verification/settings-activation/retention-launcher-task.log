@@ -1,0 +1,2 @@
+task: [app:vm-settings-retention] bash docs/verification/settings-activation/retention-run.sh 01
+task: Failed to run task "app:vm-settings-retention": exit status 1

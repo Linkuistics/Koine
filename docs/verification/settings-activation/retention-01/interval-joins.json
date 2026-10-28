@@ -1,0 +1,201 @@
+{
+  "qualified": true,
+  "joinedSelections": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "intervals": [
+    {
+      "selection": 1,
+      "pid": 723,
+      "beforeUnixTime": 1793166426.510707,
+      "afterUnixTime": 1793166426.516271,
+      "clientCalls": [
+        {
+          "timezoneName": "",
+          "messageType": "Info",
+          "eventType": "logEvent",
+          "source": null,
+          "launchPersonaName": "",
+          "formatString": "%x[%s]: SLSSetFrontProcessWithInfo(0x%{public}x-0x%{public}x window=%{public}d options=0x%{public}lx %{public}s%{public}s%{public}s%{public}s",
+          "userID": 501,
+          "activityIdentifier": 74485,
+          "subsystem": "com.apple.SkyLight",
+          "category": "processes",
+          "personaType": -1,
+          "threadID": 5127,
+          "launchPersonaType": -1,
+          "senderImageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234",
+          "launchPersonaID": 4294967295,
+          "backtrace": {
+            "frames": [
+              {
+                "imageOffset": 2110416,
+                "imageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234"
+              }
+            ]
+          },
+          "bootUUID": "D48BAFE9-859E-4F84-916A-C3A5EA60E282",
+          "processImagePath": "/Applications/Koine.app/Contents/MacOS/Koine",
+          "senderImagePath": "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/SkyLight",
+          "personaID": 4294967295,
+          "timestamp": "2026-10-27 22:47:06.511227-0700",
+          "machTimestamp": 3227612045,
+          "personaName": "",
+          "eventMessage": "0[outside of RPC]: SLSSetFrontProcessWithInfo(0x0-0x2 window=0 options=0x1",
+          "processImageUUID": "D1AF277B-BFEE-3EA8-9B15-F071B31B69F1",
+          "traceID": 534310424330699012,
+          "processID": 723,
+          "senderProgramCounter": 2110416,
+          "parentActivityIdentifier": 74484,
+          "unixTime": 1793166426.511227
+        }
+      ]
+    },
+    {
+      "selection": 2,
+      "pid": 723,
+      "beforeUnixTime": 1793166432.257451,
+      "afterUnixTime": 1793166432.258688,
+      "clientCalls": [
+        {
+          "timezoneName": "",
+          "messageType": "Info",
+          "eventType": "logEvent",
+          "source": null,
+          "launchPersonaName": "",
+          "formatString": "%x[%s]: SLSSetFrontProcessWithInfo(0x%{public}x-0x%{public}x window=%{public}d options=0x%{public}lx %{public}s%{public}s%{public}s%{public}s",
+          "userID": 501,
+          "activityIdentifier": 77038,
+          "subsystem": "com.apple.SkyLight",
+          "category": "processes",
+          "personaType": -1,
+          "threadID": 5127,
+          "launchPersonaType": -1,
+          "senderImageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234",
+          "launchPersonaID": 4294967295,
+          "backtrace": {
+            "frames": [
+              {
+                "imageOffset": 2110416,
+                "imageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234"
+              }
+            ]
+          },
+          "bootUUID": "D48BAFE9-859E-4F84-916A-C3A5EA60E282",
+          "processImagePath": "/Applications/Koine.app/Contents/MacOS/Koine",
+          "senderImagePath": "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/SkyLight",
+          "personaID": 4294967295,
+          "timestamp": "2026-10-27 22:47:12.257961-0700",
+          "machTimestamp": 3365533657,
+          "personaName": "",
+          "eventMessage": "0[outside of RPC]: SLSSetFrontProcessWithInfo(0x0-0x2 window=0 options=0x1",
+          "processImageUUID": "D1AF277B-BFEE-3EA8-9B15-F071B31B69F1",
+          "traceID": 534310424330699012,
+          "processID": 723,
+          "senderProgramCounter": 2110416,
+          "parentActivityIdentifier": 77037,
+          "unixTime": 1793166432.257961
+        }
+      ]
+    },
+    {
+      "selection": 3,
+      "pid": 723,
+      "beforeUnixTime": 1793166497.984312,
+      "afterUnixTime": 1793166497.9865298,
+      "clientCalls": [
+        {
+          "timezoneName": "",
+          "messageType": "Info",
+          "eventType": "logEvent",
+          "source": null,
+          "launchPersonaName": "",
+          "formatString": "%x[%s]: SLSSetFrontProcessWithInfo(0x%{public}x-0x%{public}x window=%{public}d options=0x%{public}lx %{public}s%{public}s%{public}s%{public}s",
+          "userID": 501,
+          "activityIdentifier": 100724,
+          "subsystem": "com.apple.SkyLight",
+          "category": "processes",
+          "personaType": -1,
+          "threadID": 5127,
+          "launchPersonaType": -1,
+          "senderImageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234",
+          "launchPersonaID": 4294967295,
+          "backtrace": {
+            "frames": [
+              {
+                "imageOffset": 2110416,
+                "imageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234"
+              }
+            ]
+          },
+          "bootUUID": "D48BAFE9-859E-4F84-916A-C3A5EA60E282",
+          "processImagePath": "/Applications/Koine.app/Contents/MacOS/Koine",
+          "senderImagePath": "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/SkyLight",
+          "personaID": 4294967295,
+          "timestamp": "2026-10-27 22:48:17.984822-0700",
+          "machTimestamp": 4942978311,
+          "personaName": "",
+          "eventMessage": "0[outside of RPC]: SLSSetFrontProcessWithInfo(0x0-0x2 window=0 options=0x1",
+          "processImageUUID": "D1AF277B-BFEE-3EA8-9B15-F071B31B69F1",
+          "traceID": 534310424330699012,
+          "processID": 723,
+          "senderProgramCounter": 2110416,
+          "parentActivityIdentifier": 100723,
+          "unixTime": 1793166497.984822
+        }
+      ]
+    },
+    {
+      "selection": 4,
+      "pid": 723,
+      "beforeUnixTime": 1793166503.705508,
+      "afterUnixTime": 1793166503.7065969,
+      "clientCalls": [
+        {
+          "timezoneName": "",
+          "messageType": "Info",
+          "eventType": "logEvent",
+          "source": null,
+          "launchPersonaName": "",
+          "formatString": "%x[%s]: SLSSetFrontProcessWithInfo(0x%{public}x-0x%{public}x window=%{public}d options=0x%{public}lx %{public}s%{public}s%{public}s%{public}s",
+          "userID": 501,
+          "activityIdentifier": 103370,
+          "subsystem": "com.apple.SkyLight",
+          "category": "processes",
+          "personaType": -1,
+          "threadID": 5127,
+          "launchPersonaType": -1,
+          "senderImageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234",
+          "launchPersonaID": 4294967295,
+          "backtrace": {
+            "frames": [
+              {
+                "imageOffset": 2110416,
+                "imageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234"
+              }
+            ]
+          },
+          "bootUUID": "D48BAFE9-859E-4F84-916A-C3A5EA60E282",
+          "processImagePath": "/Applications/Koine.app/Contents/MacOS/Koine",
+          "senderImagePath": "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/SkyLight",
+          "personaID": 4294967295,
+          "timestamp": "2026-10-27 22:48:23.706022-0700",
+          "machTimestamp": 5080287110,
+          "personaName": "",
+          "eventMessage": "0[outside of RPC]: SLSSetFrontProcessWithInfo(0x0-0x2 window=0 options=0x1",
+          "processImageUUID": "D1AF277B-BFEE-3EA8-9B15-F071B31B69F1",
+          "traceID": 534310424330699012,
+          "processID": 723,
+          "senderProgramCounter": 2110416,
+          "parentActivityIdentifier": 103369,
+          "unixTime": 1793166503.706022
+        }
+      ]
+    }
+  ],
+  "lossRecords": [],
+  "ignoredHeaders": []
+}

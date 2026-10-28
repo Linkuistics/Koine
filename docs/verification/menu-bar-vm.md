@@ -1207,3 +1207,20 @@ match; the clone is stopped. Actual-path qualification, positive causal evidence
 product repair and separately declared frozen complete ordinary acceptance remain
 open. Historical failures/classifications and closed samples are unchanged. No
 release/notarization or upstream report.
+
+### Corrected post-observation actual-path retention
+
+The separately declared one-guest k26 [retention result](settings-activation/RETENTION-RESULTS.md)
+passes four Settings checks and retains all four actual Koine client calls inside
+buffered activation intervals, with no live native output reader. Native front
+changes agree with success; the report gives each selection's retention lag.
+This qualifies finite acquisition capability, not a failed native disposition,
+causal repair or symptom preservation under the reduced instrument.
+
+Collection/audit remain failed for final environment/installed transport timeouts;
+matching text remains failed transport. Initial raw inventory, acquisition/dump
+and validated stop are clean. Frozen subjects and completed golden hashes match.
+All later complete-scenario phases remain NOT RUN. The sample stays closed; k27
+carries every original causal repair and separately declared diagnostics-disabled
+complete ordinary-operation acceptance duty. Issue 14's activation repair remains
+unresolved. No release/notarization or upstream report occurred.

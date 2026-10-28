@@ -1530,6 +1530,28 @@ tasks:
       - mkdir -p .build/settings-activation/events
       - swiftc -swift-version 6 -target arm64-apple-macos26.0 Tools/SettingsEventDump/main.swift -o .build/settings-activation/events/settings-event-dump
 
+  app:vm-settings-retention:
+    desc: Run the sole corrected actual-path retention guest; see settings-activation/RETENTION-PLAN.md
+    cmds:
+      - bash docs/verification/settings-activation/retention-run.sh {{.CLI_ARGS}}
+
+  app:vm-settings-retention-scenario:
+    desc: Four unchanged Settings actions with a retained independent initial endpoint read
+    cmds:
+      - |
+        status=0
+        bash docs/verification/settings-activation/retention-prefix.sh || status=$?
+        if [ -n "${KOINE_K4_OUT:-}" ]; then printf '%s\n' "${status}" > "${KOINE_K4_OUT}/scenario.exit"; fi
+        exit "${status}"
+
+  check:vm-settings-retention:
+    desc: Check the retention routing and inherited raw acquisition and buffered controls without a VM
+    cmds:
+      - bash -n docs/verification/settings-activation/retention-*.sh
+      - shellcheck -x -e SC2034 docs/verification/settings-activation/retention-*.sh
+      - bats Tests/scripts/vm-settings-retention.bats
+      - task: check:vm-settings-deferred
+
   app:vm-settings-deferred:
     desc: Run the sole deferred-acquisition guest; see settings-activation/DEFERRED-PLAN.md
     cmds:

@@ -88,3 +88,19 @@ SH
     run bash "${evidence}/deferred-preflight.sh"
     [[ "${status}" != 0 ]]
 }
+
+@test "deferred preflight rejects failed guest CLI and false-ok envelopes without replay" {
+    local evidence="${BATS_TEST_DIRNAME}/../../docs/verification/settings-activation"
+    export deferred_reply
+    for mutation in '.exit_code=7' '.ok=false'; do
+        deferred_reply="$(jq "${mutation}" "${evidence}/deferred-01/deferred-preflight.json")"
+        run bash "${evidence}/deferred-preflight.sh"
+        [[ "${status}" != 0 ]]
+        [[ "$(cat "${KOINE_K4_OUT}/deferred-preflight.json")" == "${deferred_reply}" ]]
+    done
+    deferred_reply="$(cat "${evidence}/deferred-01/deferred-preflight.json")"
+    export deferred_status=7
+    run bash "${evidence}/deferred-preflight.sh"
+    [[ "${status}" == 7 ]]
+    [[ "$(wc -l <"${deferred_calls}" | tr -d ' ')" == 3 ]]
+}
