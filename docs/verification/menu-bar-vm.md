@@ -1108,3 +1108,25 @@ No second reviewer or new release was produced. The finite sample supports no
 population reliability rate or regression claim. Historical counts, k3's earlier
 corroborated failure and NOT RUN assertions, the failed unpaced resize candidates,
 and k10's focused/complete positives remain separate evidence.
+
+## Settings activation: subsequent ordering comparison
+
+The [diagnostic observation](settings-activation/README.md) subsequently
+classifies a delivered callback and activation request that does not produce an
+active/key Settings window. The separate
+[four-guest call-order comparison](settings-activation/ORDER-RESULTS.md) then
+tests activation before window ordering against the unchanged original order.
+Original A01 fails at the first Settings action; reversed B02/B03 and original
+A04 pass all four actions. This is an inconclusive causal comparison, with no
+product repair or complete ordinary-operation acceptance. The original
+application call order is restored after final audits.
+
+The failed attempt again records callback/show/activate without a later observed
+active/key transition; screenshot and agent windows agree. Its native snapshot
+times out despite agreeing text. B03's final installed read also times out, so
+its collection/audit remain 1/1; A01/A04 final environment reads time out. All
+host inputs, full inventories and golden hashes match; clean installed reads
+match and every clone stops. Resize and every later complete scenario phase are
+NOT RUN in all four focused attempts. These observations are separate from all
+earlier complete scenarios and supply no reliability rate or external cause.
+The linked report names the remaining native request/disposition observation.

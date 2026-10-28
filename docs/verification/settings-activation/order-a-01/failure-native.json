@@ -1,0 +1,9 @@
+{
+  "command": "chmod +x /Users/admin/k12-activation-snapshot; /Users/admin/k12-activation-snapshot",
+  "exit_code": -1,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "Process timed out after 30s",
+  "stdout": "{\n  \"windows\" : [\n    {\n      \"app\" : \"TextEdit\",\n      \"pid\" : 1213,\n      \"number\" : 52\n    },\n    {\n      \"app\" : \"Koine\",\n      \"pid\" : 852,\n      \"number\" : 41\n    }\n  ],\n  \"apps\" : [\n    {\n      \"active\" : false,\n      \"name\" : \"Koine\",\n      \"pid\" : 852,\n      \"policy\" : 1\n    },\n    {\n      \"active\" : true,\n      \"name\" : \"TextEdit\",\n      \"pid\" : 1213,\n      \"policy\" : 0\n    }\n  ],\n  \"front\" : \"TextEdit\",\n  \"time\" : 1793159009.5496969,\n  \"pid\" : 1213\n}",
+  "timed_out": true
+}

@@ -1,0 +1,16 @@
+task: [app] scripts/build-app.sh
+Building KoineApp (release)...
+Building for production...
+[Computing dependencies]
+[1 / 1]
+[2 / 5] KoineApp-product
+[3 / 6] KoineApp-product
+[5 / 6] KoineApp-product
+[6 / 6] KoineApp-product
+Build complete! (4.22 sec.)
+Signing as "Developer ID Application: Antony Blakey (TA43A4RUP3)"...
+.build/settings-activation/order-b/Koine.app/Contents/Frameworks/KoineProviderAPI.framework: replacing existing signature
+.build/settings-activation/order-b/Koine.app/Contents/PlugIns/Desktop.koineprovider: replacing existing signature
+.build/settings-activation/order-b/Koine.app/Contents/PlugIns/Workspace.koineprovider: replacing existing signature
+.build/settings-activation/order-b/Koine.app: replacing existing signature
+Built .build/settings-activation/order-b/Koine.app

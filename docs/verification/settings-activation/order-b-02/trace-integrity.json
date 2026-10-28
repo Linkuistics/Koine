@@ -1,0 +1,44 @@
+[
+  {
+    "pid": 730,
+    "rows": 100,
+    "contiguous": true,
+    "selections": [
+      {
+        "selection": 0,
+        "first": "trace.started",
+        "last": "menu.didClose",
+        "active": false,
+        "key": false
+      },
+      {
+        "selection": 1,
+        "first": "callback.settings",
+        "last": "menu.didClose",
+        "active": true,
+        "key": true
+      },
+      {
+        "selection": 2,
+        "first": "callback.settings",
+        "last": "menu.didClose",
+        "active": true,
+        "key": true
+      },
+      {
+        "selection": 3,
+        "first": "callback.settings",
+        "last": "menu.didClose",
+        "active": true,
+        "key": true
+      },
+      {
+        "selection": 4,
+        "first": "callback.settings",
+        "last": "NSApplicationDidBecomeActiveNotification",
+        "active": true,
+        "key": true
+      }
+    ]
+  }
+]

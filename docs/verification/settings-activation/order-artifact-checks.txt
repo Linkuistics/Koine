@@ -1,0 +1,8 @@
+order-a-01: every original collection file matches archived copy
+order-a-01: initial installed inventory matches frozen arm
+order-b-02: every original collection file matches archived copy
+order-b-02: initial installed inventory matches frozen arm
+order-b-03: every original collection file matches archived copy
+order-b-03: initial installed inventory matches frozen arm
+order-a-04: every original collection file matches archived copy
+order-a-04: initial installed inventory matches frozen arm

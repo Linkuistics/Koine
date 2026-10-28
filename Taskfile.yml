@@ -1485,6 +1485,28 @@ tasks:
       - shellcheck docs/verification/settings-activation/run.sh docs/verification/settings-activation/inventory.sh
       - bats Tests/scripts/vm-settings-activation.bats
 
+  app:vm-settings-order:
+    desc: Run one of the four declared activation/window order comparisons; see ORDER-PLAN.md
+    cmds:
+      - bash docs/verification/settings-activation/order-run.sh {{.CLI_ARGS}}
+
+  app:vm-settings-order-scenario:
+    desc: Run the frozen menu scenario prefix through the four Settings actions
+    cmds:
+      - |
+        status=0
+        bash docs/verification/settings-activation/order-prefix.sh || status=$?
+        if [ -n "${KOINE_K4_OUT:-}" ]; then printf '%s\n' "${status}" > "${KOINE_K4_OUT}/scenario.exit"; fi
+        exit "${status}"
+
+  check:vm-settings-order:
+    desc: Check the focused activation-order experiment's shell syntax and unchanged capture seam without a VM
+    cmds:
+      - bash -n docs/verification/settings-activation/order-prefix.sh docs/verification/settings-activation/order-run.sh
+      # The prefix preserves unused full-scenario declarations for exact comparison.
+      - shellcheck -x -e SC2034 docs/verification/settings-activation/order-prefix.sh docs/verification/settings-activation/order-run.sh
+      - task: check:vm-settings-activation
+
   check:vm-menu-sample:
     desc: Check bounded sample evidence and failure cleanup without a VM
     cmds:

@@ -1,0 +1,12 @@
+/opt/homebrew/bin/task
+/usr/bin/swift
+/opt/homebrew/bin/testanyware
+/opt/homebrew/bin/jq
+/opt/homebrew/bin/tart
+Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)
+Target: arm64-apple-macosx27.0.0
+3.54.0
+testanyware 2.7.0
+ProductName:		macOS
+ProductVersion:		27.0.1
+BuildVersion:		26A434

@@ -112,3 +112,22 @@ remains open against every original criterion.
    follows, first capture its failing focused check, then change the application.
 4. Declare and freeze a bounded fresh-guest complete-scenario repair sample;
    retain all outcomes. Update durable verification and the root handoff.
+
+## Ordering experiment handoff
+
+K14 decomposes after k15's completed four-guest original/reversed/reversed/
+original comparison. Original A01 fails at its first Settings action; B02,
+B03 and original A04 pass all four actions. Reversal is not disproved and is
+not established as the cause or a repair. The original application call order
+is restored after the final audit. The remaining question is whether AppKit
+submits the request and the native service declines it, or submission is
+suppressed before that boundary. A void call's normal return and missing native
+notifications cannot tell those apart.
+
+Every host audit and golden hash check matches; every guest stops. B03's final
+installed read times out with matching returned text, so collection/audit are
+1/1. A01's native snapshot and A01/A04 final environment reads also time out.
+No timeout is promoted to a successful read. Resize and every later complete
+scenario phase are NOT RUN in all four focused attempts. The result is in
+settings-activation/ORDER-RESULTS.md. All original k12 criteria remain in force;
+there is still no product repair or ordinary-operation complete acceptance.

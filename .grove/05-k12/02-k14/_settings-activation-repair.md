@@ -1,4 +1,4 @@
-# settings-activation-repair-k14
+# settings-activation-repair-k14 — brief
 
 
 ## Goal
@@ -79,3 +79,61 @@ no graph completeness claim was made. Bounded direct reads covered
 AppDelegate.showSettingsWindow, its launch/reopen/menu callers,
 MenuBarController, and the existing scenario/helpers. Try the graph normally
 at session start; do not stop other sessions to acquire it.
+
+## Decisions (running log)
+
+- 2026-10-28: Graph startup again refuses before project/generation discovery.
+  Use bounded direct reads of AppDelegate, MenuBarController, trace recorder,
+  scenario/helpers and capture wrapper; do not interrupt other graph users.
+- 2026-10-28: Apple documents activation as discretionary and the former
+  ignoringOtherApps flag as ignored under cooperative activation. The SDK also
+  says activate(from:options:) expects the other application to yield first.
+  Neither is a justified force-activation repair. Test the narrower ordering
+  hypothesis with a separately frozen candidate that requests activation before
+  ordering the window. Preserve the unchanged diagnostic bundle and sample.
+- 2026-10-28: A new four-guest focused comparison is fixed at original/reversed/
+  reversed/original order, four Settings actions per guest, stopping each guest
+  at its first failure. This is causal exploration, not repair acceptance.
+  Details and cap consequences are in settings-activation/ORDER-PLAN.md.
+
+## Implementation plan
+
+1. Freeze original and activation-before-window candidates separately. Retain
+   exact source overlay, bundle inventories and consumed input hashes.
+2. Run the declared four focused fresh-guest attempts with the existing scenario
+   prefix and unchanged input/focus checks. Preserve failures before intervention.
+3. Compare event order and native outcomes. If reversal also fails, reject that
+   repair and restore ordinary source. If evidence supports a repair, validate
+   ordinary operation without observation in a separately declared complete
+   scenario sample. Do not substitute passing counts for a cause.
+4. Update evidence and the brief chain. Decompose if causal discrimination and
+   repair acceptance prove larger than this session; keep every unmet criterion.
+
+## Ordering comparison handoff
+
+K15 discharges the predeclared focused ABBA comparison without a causal repair.
+A01 fails on its first Settings action; B02, B03 and A04 pass all four actions.
+This neither disproves the ordering hypothesis nor establishes it as the cause.
+The B intervention also moves synchronous trace writes; ordinary behavior has
+not been qualified. The void activation call's normal return cannot distinguish
+an AppKit request not submitted from a native request declined under system
+context. That is the next precise causal question.
+
+B03's final installed read times out despite returning matching inventory text;
+its collection/audit exits are 1/1. A01's native failure snapshot and A01/A04's
+final environment reads also time out. These are failed transports. All host
+subject checks and available clean installed comparisons match; every clone
+stops; final golden config/disk/NVRAM hashes match. No measured input changed
+during the comparison. The final checks precede the deliberate restoration of
+AppDelegate and addition of a no-VM check task. The saved B source and measured
+Taskfile retain the exact experiment inputs.
+
+The ordinary AppDelegate is restored byte-for-byte to the diagnostic baseline.
+No product repair or complete ordinary-operation acceptance occurred. K14 and
+k12 remain open against their original criteria; do not extend either completed
+sample. The durable result is settings-activation/ORDER-RESULTS.md.
+
+Settings-activation-native-path-k16 carries the remaining causal question and
+every original repair/acceptance obligation. Note that the existing run.sh
+enables tracing for both diagnostic and repair stages; its repair stage cannot
+silently qualify ordinary behavior with diagnostics disabled.

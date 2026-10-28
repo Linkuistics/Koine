@@ -1,0 +1,7 @@
+One fresh-context reviewer, before the first guest, found no actionable defect.
+Direct source comparisons: prefix is the original first 143 lines with only cd
+adjusted; B moves only activate and its trace boundaries; A's inventory matches
+the diagnostic baseline; B matches its saved source. Scenario, Task, collection
+and stop exits remain separate. Audit exit does not qualify native transport:
+inspect ok/exit_code/timed_out independently of returned text. All-green B does
+not establish cause or repair. Graph startup unavailable; bounded source reads.

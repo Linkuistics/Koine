@@ -1,0 +1,23 @@
+[
+  {
+    "pid": 852,
+    "rows": 25,
+    "contiguous": true,
+    "selections": [
+      {
+        "selection": 0,
+        "first": "trace.started",
+        "last": "menu.didClose",
+        "active": false,
+        "key": false
+      },
+      {
+        "selection": 1,
+        "first": "callback.settings",
+        "last": "application.activate.after",
+        "active": false,
+        "key": false
+      }
+    ]
+  }
+]

@@ -189,3 +189,27 @@ Grove child owns causal discrimination, a focused failing check where useful,
 an application repair and its own predeclared bounded complete-scenario sample.
 A test-driver wait or retry is no product repair. No release or upstream report
 was made.
+
+## Subsequent call-order comparison
+
+The separate [four-guest ordering experiment](ORDER-RESULTS.md) finishes its
+declared cap with one original-order failure, two reversed-order passes and
+one original-order pass. Both orders can produce active/key windows. Reversal
+is not disproved, but these outcomes establish neither its sufficiency nor the
+cause of the intermittent failure. Moving synchronous trace writes also keeps
+the timing limitation. The ordinary application call order was restored after
+the final subject audit. No ordinary-operation repair acceptance ran.
+
+The new failed attempt again reaches callback/show/activation and records no
+subsequent active/key transition. Its native snapshot reports timeout/-1, despite
+agreeing returned text. One passing reversed-order attempt has a final installed
+inventory timeout, retaining collection/audit 1/1; two final environment reads
+also time out. Every available clean installed inventory and all host/golden
+checks match; every clone stops. All four focused attempts leave resize and
+every later complete-scenario phase NOT RUN. The full report retains every
+outcome and the remaining native request/disposition question. Both completed
+samples remain closed to further attempts; Settings activation remains unresolved.
+
+`task check:vm-settings-order` checks the focused scripts and existing capture
+controls without a VM. The `app:vm-settings-order` Task entries retain the exact
+finite experiment route; they do not authorize resetting the completed sample.

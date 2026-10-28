@@ -213,3 +213,24 @@ signed diagnostic candidate is not the released bundle and is unnotarized.
 The durable record and raw traces are in docs/verification/settings-activation.
 No release or upstream report was made. The successor owns a causal repair and
 its own bounded fresh-guest complete-scenario acceptance; k12 stays open.
+
+## Activation ordering comparison handoff
+
+K14 decomposes after k15's declared four-guest focused comparison. The original
+call order fails once at initial Settings and passes once; activation before
+window ordering passes both attempts. Both orders therefore produce active/key
+windows in this sample, but there is no established cause or qualified repair.
+The experimental ordinary-source change is restored after final audits. K14's
+successor owns the native request/disposition boundary and eventual application
+repair with complete ordinary-operation acceptance. Neither completed sample
+may be extended to seek a preferred outcome.
+
+All host subject/inventory and golden config/disk/NVRAM checks match; every clone
+stops. One passing B scenario's final installed read times out with matching
+returned text, leaving collection/audit 1/1. The failed A native snapshot and
+two final environment reads also time out. These are retained failed transports,
+not successful native reads. The focused prefix supplies no resize, scrolling,
+shortcuts, consent, client-request, restart or Quit acceptance. Full outcomes and
+the precise missing native observation are in
+docs/verification/settings-activation/ORDER-RESULTS.md. K12 remains open; no
+release, notarization or upstream report was made.
