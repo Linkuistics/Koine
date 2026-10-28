@@ -29,7 +29,8 @@ absence, obtain the decision rather than infer it from review or retirement.
 - For an accepted amendment, compare every original duty and distinguish amended
   prerequisites from unmet duties. Native cause/ownership stays unresolved;
   product justification, a useful failing seam where feasible, one selection/one
-  front-focused window, no driver wait/retry/repeated-input repair, all-input/
+  front-focused window, the spec's explicit candidate-class exclusions and
+  single-request justification test, no driver wait/retry/repeated-input repair, all-input/
   signed-subject/completed-golden freeze, failed transport/partial/NOT RUN retention,
   audits/exact stop and separate complete ordinary acceptance survive unless
   Antony explicitly says otherwise. Do not call a changed criterion satisfied.
@@ -56,3 +57,19 @@ expected nonce, positive mouse/strict Return and exact prefix/ordinal containmen
 criteria unless a supported explicitly reviewed replacement earns changes.
 The existing six slots remain unstarted; unused slots are not a runtime budget
 for another question. K36 remains live with all original obligations.
+
+## Integration handoff
+
+K44's DISCRIMINATION-REVIEW.md records the k43 dispositions. Present the repaired
+scope section, including the candidate-class boundary and Choice B's structural
+limit. A supported rate/trial model would provide statistical rejection rather
+than logical falsification; do not silently change the causal standard. No
+candidate has been justified and the amendment remains unaccepted.
+
+K44 moved session review/resumption procedure out of the spec. This leaf owns
+recording the actual answer, cutting any precisely earned replacement design
+and its review before implementation/runtime, and reconciling the spec's final
+membership after the choice. Retain a durable behavioral/evidence contract if
+one results; move task-only procedure to the brief and reconcile every citation
+if the provisional agreement document no longer earns spec membership. The
+historical verification receipt now lives by reference in the presentation README.

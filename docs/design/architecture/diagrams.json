@@ -95,6 +95,11 @@
       "id": "plugin-contracts",
       "title": "Native provider interface",
       "description": "Independent binary upgrades without a script host."
+    },
+    {
+      "id": "settings-activation",
+      "title": "Settings activation · pending scope choice",
+      "description": "Evidence limits and the unaccepted repair-scope proposal; all six experiment slots remain held."
     }
   ],
   "diagrams": [
@@ -585,6 +590,20 @@
       "source": "native-metadata-qualification-admission.d2",
       "rendered": "native-metadata-qualification-admission.svg",
       "caption": "Application admission is owned by the private qualification spec. Reserve spent work, live/possible cleanup, full failure publication and one complete terminal guard evaluation. Admitted checks retain that credit; first refusal or final return consumes it. Sticky freeze keeps borrowers/slots until true return. Failed cleanup publishes FAILED/null with INSPECTION_FAILED only while authorized; lifecycle/core loss suppresses delivery. Core encoding remains independent."
+    },
+    {
+      "id": "settings-activation-evidence-limit",
+      "group": "settings-activation",
+      "title": "Why the current probe does not discriminate cause",
+      "source": "settings-activation/evidence-limit.mmd",
+      "caption": "Appearance, main-resignation and front/resume observations do not identify a matched intervention. Qualified failures can refute row-click or marker necessity only when absence is independently established; the broad rivals have no finite falsifier."
+    },
+    {
+      "id": "settings-activation-scope-choice",
+      "group": "settings-activation",
+      "title": "Choose the proof required before repair evaluation",
+      "source": "settings-activation/scope-choice.mmd",
+      "caption": "The proposed amendment permits design of a justified single-request correction, with repetition, deferral and speculative-yield exclusions. No candidate is established. The causal alternative lacks an outcome-excluding prediction; a rate model would require an agreed statistical standard. No guest is authorized."
     }
   ]
 }

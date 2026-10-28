@@ -37,22 +37,43 @@ and independent visible/window observations supply the failed outcome.
 
 Two causal directions remain compatible with this contrast: a competing native
 interaction could affect activation, or an unsuccessful activation could leave
-TextEdit's appearance and Koine's relative ordering as observed. The retained
-evidence does not identify an independently settable pre-activation variable
-that separates those directions. These are possible explanations of the
-observations, not newly validated experimental hypotheses.
+TextEdit's appearance and Koine's relative ordering as observed. The full
+[native-row comparison](../verification/settings-activation/DISCRIMINATION-REVIEW.md#native-row-comparison)
+adds details that matter to that distinction:
+
+- After the failure-adjacent token checks, TextEdit requests active-key appearance
+  for window 32 and asks window 38 to resign main appearance. Connection 2d503
+  earlier set window 38 active main and later sets it inactive main; its owner
+  is not identified here. In success, Koine also requests main-appearance
+  resignation for another window. Resignation alone is not a failure marker.
+- Success records setting Koine frontmost and posting its resume after the token
+  checks. No matching rows are identified between the failure-adjacent client
+  call and conditional ordering. TextEdit's request is interleaved with that
+  native processing; it is not evidence of an action taken only after a recorded
+  failed result. A missing counterpart still proves no absent event.
+- Koine's remote-menu tracking-end update follows its client call in both
+  outcomes, at about 19 ms and 4 ms respectively. Both menu interactions also
+  end with the same immediate end-user-interaction form. Neither shared event
+  identifies the responsible condition.
+
+These observations leave both causal directions open. They do not identify a
+supported setter for the relevant interaction, a qualified observation of its
+absence, or a matched intervention that separates the directions. They supply
+context for candidate hypotheses, not a completed causal experiment.
 
 The [earlier marker comparison](../verification/settings-activation/FOCUS-RESULTS.md#native-sequence-evidence)
-also has positive successful counterexamples. The TextEdit viewbridge marker
-alone cannot be the failure discriminator. Different recording loads prevent
-those runs from establishing a replacement matched cause.
+also has positive successful counterexamples. These refute marker presence as
+a sufficient condition for failure, but do not refute its necessity. The table
+below evaluates that separate claim. Different recording loads prevent those
+runs from establishing a replacement matched cause.
 
 ## Candidate interventions and falsifiers
 
 | Candidate | Independent support and controllability | Prediction, possible falsifier and remaining gap |
 |---|---|---|
 | Change the final Settings-row input from mouse to Return | Mouse deferred-activation context is positively recorded in both outcomes. The route can request a different final input after identical mouse-open/hover preparation; actual direct delivery is still unqualified. | If row clicking is necessary for failure, a positively qualified failed Return reopen refutes necessity. The shared-context rival permits either outcome and has no finite falsifier here. Mouse failure/Return success, all-green and all-failed results do not distinguish the pair. |
-| Change TextEdit's apparent key state or foreground application | The paired appearance records are positive, but a setter for the relevant native interaction and its causal direction are not established by these records. | Closing/replacing TextEdit or forcing focus changes the foreground/window setup and potentially many interactions. Neither a positive causal prediction nor a finite counterprediction follows from the observed op values. It is not an admissible matched replacement. |
+| Change TextEdit's apparent key state or foreground application | TextEdit's active-key/main-resignation requests occur after the failure-adjacent token checks. Koine makes analogous resignation requests in success. No supported setter isolates the relevant competing interaction. | The necessity hypothesis predicts that failure requires TextEdit's key reclaim; one qualified failure with reclaim independently excluded would refute it. Missing log rows cannot establish that exclusion. The rival permits failure without reclaim and has no finite falsifier here. Closing/replacing TextEdit or forcing focus also changes the foreground/window setup and other interactions, so it is not the required matched intervention. |
+| Remove TextEdit's viewbridge marker before selection | The saved rendering contains its deferring rules after a ViewBridge termination message and before the failed selection; it also contains rules after success. Earlier native runs place the marker before successful activations. No supported independent setter/remover in the same setup is established. | If the marked condition is necessary, a qualified failure with that condition independently absent would refute necessity. Success with the marker refutes sufficiency only. Missing logs cannot qualify absence, and changing the app/window/service setup changes other conditions. The marker-independent rival still permits either outcome and has no finite falsifier here. |
 | Remove the earlier successful Settings selection | The persisted failure follows one successful menu selection and close; the ordering study also contains an initial-selection failure. | A universal prior-selection necessity claim is already contradicted. Repeating that comparison would not isolate the failed request's responsible context. Matching one prior selection is a control, not an intervention on a proven cause. |
 | Reverse the application's show/activate order | The completed ordering comparison contains success in both orders and a failure in the original order; the experimental source was restored. | Its finite results do not establish reversal as a cause or sufficient repair. Repeating it or enlarging its cap supplies no newly supported deterministic or probabilistic prediction. |
 
@@ -61,6 +82,16 @@ model or deterministic identical-outcome rule for the shared-context explanation
 Four outcomes cannot manufacture one. A richer recorder could improve correlation
 while leaving this identifiability problem intact; it is not the missing
 intervention and earns no additional producer or guest under this decision.
+
+More generally, an unrestricted claim that failure *can* occur with or without a
+condition permits every finite sequence of successes and failures. To obtain a
+logical finite falsifier, independent evidence must support a narrower prediction
+that rules out some observable outcome under a controllable intervention. An
+evidence-backed failure-rate bound and trial model could instead support a
+predeclared statistical rejection rule; that is not logical disproof and would
+need explicit agreement as the causal standard. Neither basis is established
+here. The intermittent symptom alone supplies neither one, and there is no
+promise that a targeted investigation can obtain them.
 
 ### Matched setup retained for the narrow question
 
@@ -86,6 +117,29 @@ would permit a candidate justified by public API contracts and the observed
 product behavior to be evaluated without first establishing a positive native
 refusal/responsible context or two-sided native causal discrimination.
 
+The proposed boundary admits a **single-request application correction**. A
+different public activation API is eligible for design only if its preconditions
+can be established and it passes the justification test below. The following
+classes remain excluded under this amendment: application-side repeated
+activation; driver waits, retries or repeated input; menu-close or later-run-loop
+deferral; and yield-based activation used as a speculative timing workaround.
+Reconsidering an excluded class requires a separate explicit scope proposal.
+The unchanged experiment subject still excludes every alternative API, yield,
+async deferral and repeated activation, irrespective of candidate-design scope.
+
+The justification test requires a concrete mismatch or omitted step in Koine's
+current window/activation use, supported by applicable public API requirements
+and source or retained evidence. A design must show how its single-request
+correction addresses that mismatch, establish its preconditions, and state the
+remaining discretionary OS behavior. It must identify a useful failing product
+seam where feasible and a separate finite ordinary-acceptance plan. API
+availability alone is insufficient. Apple's
+[activation contract](https://developer.apple.com/documentation/appkit/nsapplication/activate())
+allows the system to decline activation; the
+[checked ordering evidence](../verification/settings-activation/ORDER-RESULTS.md)
+supplies no prescribed call sequence that explains or avoids the failure.
+No candidate has been justified here, and the proposal promises none.
+
 This is an explicit amendment to those prerequisites, not a finding that they
 have been met. No candidate is selected by this document. A follow-on design
 must identify one concrete candidate, explain its justification and limits,
@@ -96,9 +150,9 @@ unresolved decision rather than trying a sequence of workarounds.
 
 | Choice | What accepting it means | Cost and limit |
 |---|---|---|
-| Behavioral-repair design — recommended | Amend only the requirement that native causal discrimination/disposition precede repair evaluation. Keep native cause and ownership explicitly unresolved. Design a justified candidate and its separate bounded evaluation before implementation or guests. | May deliver useful behavior without explaining the native mechanism. It promises neither a candidate nor success and does not establish external ownership. |
-| Retain the current causal requirement | Keep all guests held. Revisit only with independent evidence that identifies a controllable condition and finite falsifiers for both predictions. A separately authorized, targeted primary-source investigation could seek that evidence. | No supported runtime experiment or immediate repair route is currently available. More monitoring alone does not change this. |
-| End this investigation unresolved | Preserve the reproducer and findings, explicitly accept that Settings repair remains unresolved, and separately decide the fate of the live repair work. | Does not fix the behavior or meet the original repair criterion. Requires Antony's explicit decision; no leaf is abandoned here. |
+| Behavioral-repair design — recommended | Amend only the requirement that native causal discrimination/disposition precede repair evaluation. Admit design of a single-request correction under the justification test above; preserve the named repetition, deferral and speculative-yield exclusions. Keep native cause and ownership unresolved. | A documented correction might improve behavior without explaining the native mechanism. No such candidate is established. Review and separate bounded evaluation remain required; approval of design selects no candidate or guest. |
+| Retain the current causal requirement | Keep all guests held. Revisit only with independent evidence for a controllable intervention and predictions that each rule out a finite observable outcome. A separately authorized primary-source investigation could seek that basis. | The unrestricted intermittent rival cannot be falsified by any finite sample. A supported deterministic restriction is missing; a supported rate/trial model would offer only statistical rejection and require explicit agreement to that standard. Neither may become available. More monitoring or another all-green set does not supply them. |
+| End this investigation unresolved | Preserve the reproducer and findings, explicitly accept that Settings repair remains unresolved, and separately decide the fate of the remaining repair work. | Does not fix the behavior or meet the original repair criterion. Requires Antony's explicit decision. |
 
 No answer, review approval, or passage of time counts as accepting the recommended
 scope amendment. Under every choice, the existing six-slot probe remains held;
@@ -109,7 +163,7 @@ authorizing behavioral design does not authorize this probe or any new guest.
 | Surface | Before this design | Current disposition |
 |---|---|---|
 | Two route slots and four modality slots | Unstarted, conditional on a supported causal design | Still unstarted; no runtime earned because that condition is unmet |
-| Slots, setup, order, caps, route and recorder | K41-integrated protocol | Unchanged; no replacement runtime protocol is published |
+| Slots, setup, order, caps, route and recorder | Current reviewed protocol | Unchanged; no replacement runtime protocol is published |
 | Highlight and delivery | Actual highlight, expected route nonce; positive mouse pair/callback correlation; strict Return event identity | Unchanged, including Return's possible unavailability despite delivered input |
 | Native containment and controls | One explicit launch prefix plus all ordinal candidates; exact ENCLOSED/OUTSIDE/MISSING/AMBIGUOUS/INVALID classes; successful window controls and deferred native gates; final takes no measured focus input | Unchanged; no desired-bracket filtering or weakened control |
 | Headless versus guest evidence | Reader/request/transport checks and compilation; actual AppKit dispatch, timing and changed-instrument availability unqualified | Unchanged; this design runs no guest or product check |
@@ -162,7 +216,7 @@ and [persisted](../verification/settings-activation/PERSISTED-RESULTS.md#every-o
 | Actual signed subject/all consumed inputs/completed golden freeze | Still required before any future launch, after all design/review/integration work; no final subject selected here |
 | Failed transport, partial archive, every started attempt and NOT RUN retention | Preserved separately from scenario results; timeout/nonzero text remains failed |
 | Original/endpoint/golden audits and exact clone stop | Required for future runs; historical duties and results unchanged; no clone in this design |
-| Justified application repair and useful failing product seam | Unmet; recorder/reader controls are not a failing product seam; no driver waits/retries/repeated-input repair |
+| Justified application repair and useful failing product seam | Unmet; recorder/reader controls are not a failing product seam. The proposed candidate boundary preserves application repetition, driver waits/retries/repeated input, deferral and speculative-yield exclusions; alternative APIs require the stated justification test |
 | One selection, one front/focused Settings window | Required behavior unchanged |
 | Separate finite complete ordinary acceptance | Still required through app:vm-verify-menu-bar, final ordinary signed subject/all-input/completed-golden freeze, diagnostics disabled, every outcome retained and timing addressed |
 | External evidence/reproducer/approval | No external owner established; positive evidence/reproducer required for attribution, repair unresolved if external; no upstream report without Antony's approval |
@@ -174,26 +228,8 @@ and post-trace timeout/-1 remain failed outcomes. Original strict false/empty
 clock joins remain unchanged. The existing runtime owner retains the enclosing
 readiness/freeze/audit/cleanup wrapper and every unresolved product/ordinary duty.
 
-## Review and resumption
-
-This design requires independent tree review and every earned integration before
-the runtime owner may proceed, including before route qualification. Review must
-challenge the no-experiment conclusion against the paired positive evidence and
-check that the proposed scope amendment is neither silently accepted nor an
-unjustified workaround. No in-session reviewer runs beside that review.
-
 The scope decision must be recorded explicitly. An accepted amendment requires
-a coherent replacement design, exact comparison against the original duties and
-its own earned review before any guest. Retaining the original requirement keeps
-the present hold until new independent evidence supports it. The design and its
-review cannot themselves close the causal repair ancestors.
-
-## Verification record
-
-The [verification receipt](../verification/settings-activation/discrimination-evidence/verification.json)
-records the documentation check and per-input digest comparison. Its
-[raw output](../verification/settings-activation/discrimination-evidence/doc-links.txt)
-retains all reported failures. The browser presentation was inspected in Chrome
-at the current-discussion view and both rendered diagrams, including a fresh
-direct link to the scope view. This is document/presentation verification only;
-no AppKit, guest, activation, timing or product-repair acceptance is claimed.
+a concrete replacement design and a comparison against every original duty.
+Independent review must precede implementation or guests. Retaining the original
+requirement keeps the present hold until new independent evidence supports it.
+Document review supplies no causal, product or ordinary-acceptance result.

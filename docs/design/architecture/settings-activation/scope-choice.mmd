@@ -3,11 +3,13 @@ flowchart TD
     S -->|Proposal A: recommended| A["Permit separately justified behavioral-repair design"]
     S -->|Alternative B| B["Retain native causal-proof prerequisite"]
     S -->|Alternative C| C["End investigation explicitly unresolved"]
-    A --> A1["Native cause stays unresolved; candidate and review still required"]
-    B --> B1["Wait for independent evidence supporting an intervention"]
-    C --> C1["Human decides live repair work; no abandonment here"]
-    A1 --> H["All six existing slots remain unstarted"]:::hold
-    B1 --> H
+    A --> A1["Justified single-request correction only; no repetition, deferral or speculative yield"]
+    A1 --> A2["No candidate established; native cause unresolved; review and ordinary acceptance required"]
+    B --> B1["Need an outcome-excluding prediction; unrestricted intermittent rival has none"]
+    B1 --> B2["A supported rate model would need an agreed statistical standard; neither basis is available"]
+    C --> C1["Antony explicitly decides whether remaining repair work ends"]
+    A2 --> H["All six existing slots remain unstarted"]:::hold
+    B2 --> H
     C1 --> H
     classDef start fill:#19354b,color:#fff,font-weight:bold,stroke:#19354b
     classDef hold fill:#fff1d2,color:#322600,stroke:#866216

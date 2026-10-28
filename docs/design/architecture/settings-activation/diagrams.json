@@ -2,21 +2,50 @@
   "title": "Settings activation: the scope decision",
   "intro": "Start at each dark Start here node. These are reasoning and decision views, not measured event order or proven causal graphs. No guest is authorized.",
   "groups": [
-    { "id": "evidence", "title": "Evidence and experiment limit", "description": "Positive observations do not yet identify a controllable cause." },
-    { "id": "scope", "title": "Scope decision", "description": "The recommendation is proposed; Antony has not accepted an amendment." }
+    {
+      "id": "evidence",
+      "title": "Evidence and experiment limit",
+      "description": "Positive observations do not yet identify a controllable cause."
+    },
+    {
+      "id": "scope",
+      "title": "Scope decision",
+      "description": "The recommendation is proposed; Antony has not accepted an amendment."
+    }
   ],
   "discussion": {
     "title": "Can repair evaluation proceed while native cause remains unresolved?",
     "status": "Scope decision pending",
-    "summary": "Recommend a separate justified behavioral-repair design. The current causal prerequisite and all runtime holds remain until Antony explicitly decides. No candidate is selected.",
-    "diagramIds": ["evidence-limit", "scope-choice"],
+    "summary": "Recommend design of a justified correction using one activation request, with explicit repetition, deferral and speculative-yield exclusions. No candidate is established. The causal alternative needs an outcome-excluding prediction or an explicitly agreed statistical standard. Antony has accepted neither amendment; all runtime holds remain.",
+    "diagramIds": [
+      "evidence-limit",
+      "scope-choice"
+    ],
     "updatedDiagrams": [
-      { "id": "evidence-limit", "summary": "Added the two compatible causal directions and the one-sided limit of the existing probe." },
-      { "id": "scope-choice", "summary": "Added three explicit scope choices; none authorizes the six existing slots." }
+      {
+        "id": "evidence-limit",
+        "summary": "Accounts for the expanded native rows and separates marker sufficiency from necessity; one start reaches every branch."
+      },
+      {
+        "id": "scope-choice",
+        "summary": "Names candidate exclusions and the structural limit on finite causal testing; all six slots remain held."
+      }
     ]
   },
   "diagrams": [
-    { "id": "evidence-limit", "group": "evidence", "title": "Why the current probe does not discriminate cause", "source": "evidence-limit.mmd", "caption": "Appearance and conditional ordering are positive native observations with unestablished causal direction and private semantics. A failed qualified Return selection can refute row-click necessity only." },
-    { "id": "scope-choice", "group": "scope", "title": "Choose the proof required before repair evaluation", "source": "scope-choice.mmd", "caption": "The behavioral-repair option is a proposed scope amendment, not an accepted design or runtime authorization. Product justification, review and separate frozen complete ordinary acceptance remain required." }
+    {
+      "id": "evidence-limit",
+      "group": "evidence",
+      "title": "Why the current probe does not discriminate cause",
+      "source": "evidence-limit.mmd",
+      "caption": "Appearance, main-resignation and front/resume observations do not identify a matched intervention. Qualified failures can refute row-click or marker necessity only when absence is independently established; the broad rivals have no finite falsifier."
+    },
+    {
+      "id": "scope-choice",
+      "group": "scope",
+      "title": "Choose the proof required before repair evaluation",
+      "source": "scope-choice.mmd",
+      "caption": "The proposed amendment permits design of a justified single-request correction, with repetition, deferral and speculative-yield exclusions. No candidate is established. The causal alternative lacks an outcome-excluding prediction; a rate model would require an agreed statistical standard. No guest is authorized."
+    }
   ]
 }

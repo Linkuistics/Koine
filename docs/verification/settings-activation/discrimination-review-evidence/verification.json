@@ -1,0 +1,66 @@
+{
+  "command": [
+    "mise",
+    "exec",
+    "--",
+    "task",
+    "check:docs"
+  ],
+  "exit": 201,
+  "failures": [
+    "docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md: missing target context-predicate.txt",
+    "docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md: missing target context-qualify-filter.sh"
+  ],
+  "sameFailuresAsProducer": true,
+  "inputCount": 1461,
+  "changedInputs": [],
+  "subjectManifest": "subjects.json.gz",
+  "scope": "All documentation-checker sources and executable, Taskfile, both presentation manifests and sources/shared viewer, all pre-existing Settings verification files, historical signed events bundle regular files/symlinks and persisted native archive. Output receipts excluded; no runtime freeze or golden qualification.",
+  "nativeRendering": {
+    "eventCount": 1061,
+    "completion": {
+      "count": 1061,
+      "finished": 1
+    },
+    "sha256": "8040d101cd481cf33063cdefd55522d67c7709bc88e727ca81915b152715346a",
+    "menuTrackingEndMillisecondsAfterClient": [
+      18.830666666666666,
+      3.999125
+    ],
+    "newArchiveExtraction": false
+  },
+  "protectedTrackedInputsUnchanged": [
+    "Taskfile.yml",
+    "docs/verification/settings-activation/CAUSAL-PLAN.md",
+    "docs/verification/settings-activation/CAUSAL-RESULTS.md",
+    "docs/verification/settings-activation/causal-protocol.py"
+  ],
+  "changeBoundary": "Only named documents, presentation assets/symlink, integration evidence and k44/k42 task bodies; no product/test/Taskfile change.",
+  "browser": {
+    "surface": "Chrome desktop light, normal viewport",
+    "focusedViews": [
+      "discussion",
+      "evidence-limit",
+      "scope-choice"
+    ],
+    "parentFreshDeepLink": "#diagram-settings-activation-scope-choice",
+    "sharedViewerSymlink": "../index.html",
+    "mobileAndDark": "not checked"
+  },
+  "previewServer": {
+    "initialPort": 8799,
+    "initialExit": 201,
+    "initialReason": "Address already in use; existing server left untouched",
+    "inspectionPort": 8809,
+    "inspectionExit": 0,
+    "stopped": true
+  },
+  "narrowReview": {
+    "scope": "Proposed single-request candidate boundary and existing contract only",
+    "result": "No material contract gaps found",
+    "freshContext": true,
+    "additionalReviewers": 0
+  },
+  "runtime": "No guest, product build or test run; all six experiment slots remain held and unstarted.",
+  "humanDecision": "Pending; no amendment accepted and no candidate selected."
+}
