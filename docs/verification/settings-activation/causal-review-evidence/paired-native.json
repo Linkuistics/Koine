@@ -1,0 +1,388 @@
+{
+  "subjectDigestsBefore": {
+    "docs/verification/settings-activation/causal-evidence/persisted-input-context.jsonl.gz": "dcea09506cb487e91f864650c53306471cd7ad02889044a03e0cc4579735b01f",
+    "docs/verification/settings-activation/causal-evidence/reproduction.json": "06cafa1caf4b1ab8b8f29975af83eeaa49a4269ceef2d84f84f91f809bc4d9d6"
+  },
+  "subjectDigestsAfter": {
+    "docs/verification/settings-activation/causal-evidence/persisted-input-context.jsonl.gz": "dcea09506cb487e91f864650c53306471cd7ad02889044a03e0cc4579735b01f",
+    "docs/verification/settings-activation/causal-evidence/reproduction.json": "06cafa1caf4b1ab8b8f29975af83eeaa49a4269ceef2d84f84f91f809bc4d9d6"
+  },
+  "uncompressedSHA256": "8040d101cd481cf33063cdefd55522d67c7709bc88e727ca81915b152715346a",
+  "records": 1061,
+  "completion": {
+    "count": 1061,
+    "finished": 1
+  },
+  "positiveRows": [
+    {
+      "sourceLine": 365,
+      "record": {
+        "timezoneName": "",
+        "messageType": "Info",
+        "eventType": "logEvent",
+        "source": null,
+        "launchPersonaName": "",
+        "formatString": "%x[%s]: SLSSetFrontProcessWithInfo(0x%{public}x-0x%{public}x window=%{public}d options=0x%{public}lx %{public}s%{public}s%{public}s%{public}s",
+        "userID": 501,
+        "activityIdentifier": 88373,
+        "subsystem": "com.apple.SkyLight",
+        "category": "processes",
+        "personaType": -1,
+        "threadID": 6603,
+        "launchPersonaType": -1,
+        "senderImageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234",
+        "launchPersonaID": 4294967295,
+        "backtrace": {
+          "frames": [
+            {
+              "imageOffset": 2110416,
+              "imageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234"
+            }
+          ]
+        },
+        "bootUUID": "2C83AC73-0855-44FD-A8A4-E03E227E1A01",
+        "processImagePath": "/Applications/Koine.app/Contents/MacOS/Koine",
+        "senderImagePath": "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/SkyLight",
+        "personaID": 4294967295,
+        "timestamp": "2026-10-27 23:05:59.904569-0700",
+        "machTimestamp": 4338579225,
+        "personaName": "",
+        "eventMessage": "0[outside of RPC]: SLSSetFrontProcessWithInfo(0x0-0x2 window=0 options=0x1",
+        "processImageUUID": "D1AF277B-BFEE-3EA8-9B15-F071B31B69F1",
+        "traceID": 534310424330699012,
+        "processID": 814,
+        "senderProgramCounter": 2110416,
+        "parentActivityIdentifier": 88372
+      }
+    },
+    {
+      "sourceLine": 376,
+      "record": {
+        "timezoneName": "",
+        "messageType": "Info",
+        "eventType": "logEvent",
+        "source": null,
+        "launchPersonaName": "",
+        "formatString": "LS/CAS: %{public}s front application to 0x%x-0x%x, err=%ld/%s",
+        "userID": 88,
+        "activityIdentifier": 88373,
+        "subsystem": "com.apple.launchservices",
+        "category": "cas",
+        "personaType": -1,
+        "threadID": 818,
+        "launchPersonaType": -1,
+        "senderImageUUID": "00ED6A89-5E67-37AA-9342-51EB93F68EE5",
+        "launchPersonaID": 4294967295,
+        "backtrace": {
+          "frames": [
+            {
+              "imageOffset": 2442944,
+              "imageUUID": "00ED6A89-5E67-37AA-9342-51EB93F68EE5"
+            }
+          ]
+        },
+        "bootUUID": "2C83AC73-0855-44FD-A8A4-E03E227E1A01",
+        "processImagePath": "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/Resources/WindowServer",
+        "senderImagePath": "/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/LaunchServices",
+        "personaID": 4294967295,
+        "timestamp": "2026-10-27 23:05:59.905194-0700",
+        "machTimestamp": 4338594230,
+        "personaName": "",
+        "eventMessage": "LS/CAS: Changed front application to 0x0-0x2e02e, err=0/noErr",
+        "processImageUUID": "CE154A09-A5FC-3FB4-A238-5749D2EBC351",
+        "traceID": 72473604604100868,
+        "processID": 164,
+        "senderProgramCounter": 2442944,
+        "parentActivityIdentifier": 88372
+      }
+    },
+    {
+      "sourceLine": 424,
+      "record": {
+        "timezoneName": "",
+        "messageType": "Info",
+        "eventType": "logEvent",
+        "source": null,
+        "launchPersonaName": "",
+        "formatString": "%x[%s]: request window %x set %s %s appearance",
+        "userID": 88,
+        "activityIdentifier": 0,
+        "subsystem": "com.apple.SkyLight",
+        "category": "packages",
+        "personaType": -1,
+        "threadID": 818,
+        "launchPersonaType": -1,
+        "senderImageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234",
+        "launchPersonaID": 4294967295,
+        "backtrace": {
+          "frames": [
+            {
+              "imageOffset": 2751360,
+              "imageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234"
+            }
+          ]
+        },
+        "bootUUID": "2C83AC73-0855-44FD-A8A4-E03E227E1A01",
+        "processImagePath": "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/Resources/WindowServer",
+        "senderImagePath": "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/SkyLight",
+        "personaID": 4294967295,
+        "timestamp": "2026-10-27 23:05:59.928410-0700",
+        "machTimestamp": 4339151428,
+        "personaName": "",
+        "eventMessage": "53ea7[SetWindowHasKeyAppearance]: request window 32 set inactive key appearance",
+        "processImageUUID": "CE154A09-A5FC-3FB4-A238-5749D2EBC351",
+        "traceID": 534402950811091204,
+        "processID": 164,
+        "senderProgramCounter": 2751360,
+        "parentActivityIdentifier": 0
+      }
+    },
+    {
+      "sourceLine": 499,
+      "record": {
+        "timezoneName": "",
+        "messageType": "Info",
+        "eventType": "logEvent",
+        "source": null,
+        "launchPersonaName": "",
+        "formatString": "%x[%s]: request window %x set %s %s appearance",
+        "userID": 88,
+        "activityIdentifier": 0,
+        "subsystem": "com.apple.SkyLight",
+        "category": "packages",
+        "personaType": -1,
+        "threadID": 818,
+        "launchPersonaType": -1,
+        "senderImageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234",
+        "launchPersonaID": 4294967295,
+        "backtrace": {
+          "frames": [
+            {
+              "imageOffset": 2751360,
+              "imageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234"
+            }
+          ]
+        },
+        "bootUUID": "2C83AC73-0855-44FD-A8A4-E03E227E1A01",
+        "processImagePath": "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/Resources/WindowServer",
+        "senderImagePath": "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/SkyLight",
+        "personaID": 4294967295,
+        "timestamp": "2026-10-27 23:06:00.094066-0700",
+        "machTimestamp": 4343127150,
+        "personaName": "",
+        "eventMessage": "403fb[SetWindowHasKeyAppearance]: request window 28 set active key appearance",
+        "processImageUUID": "CE154A09-A5FC-3FB4-A238-5749D2EBC351",
+        "traceID": 534402950811091204,
+        "processID": 164,
+        "senderProgramCounter": 2751360,
+        "parentActivityIdentifier": 0
+      }
+    },
+    {
+      "sourceLine": 512,
+      "record": {
+        "timezoneName": "",
+        "messageType": "Info",
+        "eventType": "logEvent",
+        "source": null,
+        "launchPersonaName": "",
+        "formatString": "%x[%s]: order window: %x op: %d relative: %x",
+        "userID": 88,
+        "activityIdentifier": 0,
+        "subsystem": "com.apple.SkyLight",
+        "category": "packages",
+        "personaType": -1,
+        "threadID": 818,
+        "launchPersonaType": -1,
+        "senderImageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234",
+        "launchPersonaID": 4294967295,
+        "backtrace": {
+          "frames": [
+            {
+              "imageOffset": 3553336,
+              "imageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234"
+            }
+          ]
+        },
+        "bootUUID": "2C83AC73-0855-44FD-A8A4-E03E227E1A01",
+        "processImagePath": "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/Resources/WindowServer",
+        "senderImagePath": "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/SkyLight",
+        "personaID": 4294967295,
+        "timestamp": "2026-10-27 23:06:00.094367-0700",
+        "machTimestamp": 4343134387,
+        "personaName": "",
+        "eventMessage": "403fb[OrderWindowGroupFrontConditionally]: order window: 28 op: 1 relative: 0",
+        "processImageUUID": "CE154A09-A5FC-3FB4-A238-5749D2EBC351",
+        "traceID": 534521642232316164,
+        "processID": 164,
+        "senderProgramCounter": 3553336,
+        "parentActivityIdentifier": 0
+      }
+    },
+    {
+      "sourceLine": 515,
+      "record": {
+        "timezoneName": "",
+        "messageType": "Info",
+        "eventType": "logEvent",
+        "source": null,
+        "launchPersonaName": "",
+        "formatString": "%x[%s]: order window: %x op: %d relative: %x",
+        "userID": 88,
+        "activityIdentifier": 0,
+        "subsystem": "com.apple.SkyLight",
+        "category": "packages",
+        "personaType": -1,
+        "threadID": 818,
+        "launchPersonaType": -1,
+        "senderImageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234",
+        "launchPersonaID": 4294967295,
+        "backtrace": {
+          "frames": [
+            {
+              "imageOffset": 3553336,
+              "imageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234"
+            }
+          ]
+        },
+        "bootUUID": "2C83AC73-0855-44FD-A8A4-E03E227E1A01",
+        "processImagePath": "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/Resources/WindowServer",
+        "senderImagePath": "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/SkyLight",
+        "personaID": 4294967295,
+        "timestamp": "2026-10-27 23:06:00.094384-0700",
+        "machTimestamp": 4343134801,
+        "personaName": "",
+        "eventMessage": "403fb[OrderWindowGroupFrontConditionally]: order window: 28 op: 1 relative: 0",
+        "processImageUUID": "CE154A09-A5FC-3FB4-A238-5749D2EBC351",
+        "traceID": 534521642232316164,
+        "processID": 164,
+        "senderProgramCounter": 3553336,
+        "parentActivityIdentifier": 0
+      }
+    },
+    {
+      "sourceLine": 970,
+      "record": {
+        "timezoneName": "",
+        "messageType": "Info",
+        "eventType": "logEvent",
+        "source": null,
+        "launchPersonaName": "",
+        "formatString": "%x[%s]: SLSSetFrontProcessWithInfo(0x%{public}x-0x%{public}x window=%{public}d options=0x%{public}lx %{public}s%{public}s%{public}s%{public}s",
+        "userID": 501,
+        "activityIdentifier": 89551,
+        "subsystem": "com.apple.SkyLight",
+        "category": "processes",
+        "personaType": -1,
+        "threadID": 6603,
+        "launchPersonaType": -1,
+        "senderImageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234",
+        "launchPersonaID": 4294967295,
+        "backtrace": {
+          "frames": [
+            {
+              "imageOffset": 2110416,
+              "imageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234"
+            }
+          ]
+        },
+        "bootUUID": "2C83AC73-0855-44FD-A8A4-E03E227E1A01",
+        "processImagePath": "/Applications/Koine.app/Contents/MacOS/Koine",
+        "senderImagePath": "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/SkyLight",
+        "personaID": 4294967295,
+        "timestamp": "2026-10-27 23:06:05.665596-0700",
+        "machTimestamp": 4476843871,
+        "personaName": "",
+        "eventMessage": "0[outside of RPC]: SLSSetFrontProcessWithInfo(0x0-0x2 window=0 options=0x1",
+        "processImageUUID": "D1AF277B-BFEE-3EA8-9B15-F071B31B69F1",
+        "traceID": 534310424330699012,
+        "processID": 814,
+        "senderProgramCounter": 2110416,
+        "parentActivityIdentifier": 89550
+      }
+    },
+    {
+      "sourceLine": 977,
+      "record": {
+        "timezoneName": "",
+        "messageType": "Info",
+        "eventType": "logEvent",
+        "source": null,
+        "launchPersonaName": "",
+        "formatString": "%x[%s]: request window %x set %s %s appearance",
+        "userID": 88,
+        "activityIdentifier": 0,
+        "subsystem": "com.apple.SkyLight",
+        "category": "packages",
+        "personaType": -1,
+        "threadID": 818,
+        "launchPersonaType": -1,
+        "senderImageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234",
+        "launchPersonaID": 4294967295,
+        "backtrace": {
+          "frames": [
+            {
+              "imageOffset": 2751360,
+              "imageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234"
+            }
+          ]
+        },
+        "bootUUID": "2C83AC73-0855-44FD-A8A4-E03E227E1A01",
+        "processImagePath": "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/Resources/WindowServer",
+        "senderImagePath": "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/SkyLight",
+        "personaID": 4294967295,
+        "timestamp": "2026-10-27 23:06:05.666793-0700",
+        "machTimestamp": 4476872612,
+        "personaName": "",
+        "eventMessage": "53ea7[SetWindowHasKeyAppearance]: request window 32 set active key appearance",
+        "processImageUUID": "CE154A09-A5FC-3FB4-A238-5749D2EBC351",
+        "traceID": 534402950811091204,
+        "processID": 164,
+        "senderProgramCounter": 2751360,
+        "parentActivityIdentifier": 0
+      }
+    },
+    {
+      "sourceLine": 988,
+      "record": {
+        "timezoneName": "",
+        "messageType": "Info",
+        "eventType": "logEvent",
+        "source": null,
+        "launchPersonaName": "",
+        "formatString": "%x[%s]: order window: %x op: %d relative: %x",
+        "userID": 88,
+        "activityIdentifier": 0,
+        "subsystem": "com.apple.SkyLight",
+        "category": "packages",
+        "personaType": -1,
+        "threadID": 818,
+        "launchPersonaType": -1,
+        "senderImageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234",
+        "launchPersonaID": 4294967295,
+        "backtrace": {
+          "frames": [
+            {
+              "imageOffset": 3553336,
+              "imageUUID": "8A3B348E-4637-3685-92D0-6CBC2F36A234"
+            }
+          ]
+        },
+        "bootUUID": "2C83AC73-0855-44FD-A8A4-E03E227E1A01",
+        "processImagePath": "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/Resources/WindowServer",
+        "senderImagePath": "/System/Library/PrivateFrameworks/SkyLight.framework/Versions/A/SkyLight",
+        "personaID": 4294967295,
+        "timestamp": "2026-10-27 23:06:05.684514-0700",
+        "machTimestamp": 4477297904,
+        "personaName": "",
+        "eventMessage": "403fb[OrderWindowGroupFrontConditionally]: order window: 28 op: -1 relative: 32",
+        "processImageUUID": "CE154A09-A5FC-3FB4-A238-5749D2EBC351",
+        "traceID": 534521642232316164,
+        "processID": 164,
+        "senderProgramCounter": 3553336,
+        "parentActivityIdentifier": 0
+      }
+    }
+  ],
+  "scope": "Native-only sequence comparison; no qualified old application clock join, private-field semantics or absence inference."
+}

@@ -1,0 +1,6 @@
+Historical persisted raw archive SHA256 matches persisted-archive.sha256.
+Historical events candidate complete regular-file/symlink inventory matches persisted-bundle.txt.
+Saved broad rendering and reproduction receipt checks are retained in paired-native.json.
+No guest, golden-image command or product-source edit ran in k37.
+After final checks: original raw archive digest and complete events candidate inventory still match.
+K33 Done when section is byte-identical to ac8f7eca; every original k36 Done when line is retained with only the new prerequisite added.

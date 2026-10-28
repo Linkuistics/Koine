@@ -1,4 +1,62 @@
-# Matched Settings selection modality
+# Unstarted Settings modality proposal
+
+## Current execution boundary after k35 integration
+
+**Do not freeze or run this proposal.** [The review disposition](CAUSAL-REVIEW.md)
+identifies a setup mismatch, an unfalsifiable competing explanation and missing
+route qualification. No modality clone has started. Settings-causal-protocol-k38
+must produce a coherent replacement, cut its tree review before k36 and resolve
+every earned integration before k36 freezes runtime inputs. The sections below
+retain the unstarted k34 proposal for that repair; they are not a runnable charter.
+
+The replacement must decide how to match persisted reopen 1, including its
+preceding successful menu activation/key-window/close cycle and retained control
+outcome. Initial-position failures also exist historically, so this history is
+not a demonstrated cause. Do not insert repeated selections to seek failure.
+Its hypothesis table must state a finite falsifier for each competing prediction;
+changing input-source labels does not falsify a native failed-disposition claim.
+The original proposal only supplies a possible one-sided refutation of row-click
+necessity. That does not discharge k33's competing-prediction duty.
+
+Implement and headlessly check the exact read-only highlight observation and
+positive Return invocation criterion before a runtime freeze. Clean key transport
+or a stale currentEvent is insufficient. If route qualification needs a guest,
+declare a separately named finite qualification set and its outcomes before any
+launch; this document authorizes none. Do not consume or silently enlarge the
+unstarted modality cap to debug a route. All changes to selection history, caps,
+setup and criteria must be explicit in the replacement before any set starts.
+
+The existing recorder bounds NSApp.activate only. Native key-appearance and
+conditional-order records can follow its return; they must be retained in the
+full native timeline. No qualified common clock places them relative to the
+buffered makeKeyAndOrderFront/menu/notification rows. A replacement that needs
+that relation must first add and test a recorder with that coverage and disclose
+its observer overhead. Existing helper tests establish no such relation.
+
+Treat client-record containment as an availability test, with these outcomes:
+
+| Observation with independently matching guest boot/scale/PID/image | Qualification |
+|---|---|
+| One identified client record within ordered exact endpoints | Enclosing correlation only; no transaction identity or synchronous-emission guarantee |
+| One candidate outside the interval, even if its native sequence is plausible | Containment UNQUALIFIED; retain the record and exact distance; no widening, fit or suppression/refusal inference |
+| Missing or ambiguous candidate | Join UNQUALIFIED; no proof of an absent request |
+| Invalid identity, scale, metadata, reversed endpoints, dropped or incomplete buffer | Invalid instrument evidence; retain failure and stop causal interpretation |
+
+Name the unavoidable first-launch activation as a same-guest positive success
+control for containment, separate from any prior menu-selection setup control.
+Do not assume that it succeeds or that startup has the same activation context.
+A successful first-launch window without a contained client record fails this
+instrument gate. An unavailable gate ends that slot rather than authorizing a
+second input or interval widening. The repaired protocol must fix whether later
+actions run after each control outcome before launch.
+
+The [host boot control](causal-review-evidence/host-boot.json) checks the sysctl
+against current host log bootUUID values. It qualifies that host observation
+only. Actual guest sysctl/archive/timesync identity and scale must still match.
+Every original causal, justified repair/useful failing-seam and separate frozen
+ordinary-acceptance duty below remains live; no ancestor closes here.
+
+## Retained k34 proposal, not authorized for execution
 
 This protocol selects a controllable activation condition before new runtime
 work: select the same highlighted Settings menu row with a mouse click or Return.

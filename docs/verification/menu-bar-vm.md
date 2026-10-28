@@ -31,8 +31,10 @@ bundles and the k4 comparison; no release or reliability claim follows.
 
 The latest [native-call recorder/input-context handoff](settings-activation/CAUSAL-RESULTS.md)
 adds tested direct continuous-tick brackets and guest-process clock metadata for
-future observation. Its fixed mouse/Return selection comparison awaits protocol
-review and actual runtime freeze. No new guest, justified repair or complete
+future observation. [Review integration](settings-activation/CAUSAL-REVIEW.md)
+finds the unstarted mouse/Return proposal insufficient. A repaired protocol/route
+producer and its earned review/integration must precede runtime freeze or launch.
+No new guest, justified repair or complete
 ordinary acceptance ran; historical strict false joins, failures and NOT RUN
 phases remain. This does not close the Settings activation outcome.
 

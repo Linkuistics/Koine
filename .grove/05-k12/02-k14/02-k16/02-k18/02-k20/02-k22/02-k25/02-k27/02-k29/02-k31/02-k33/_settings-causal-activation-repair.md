@@ -1,5 +1,18 @@
 # settings-causal-activation-repair-k33 — brief
 
+## Review integration boundary
+
+K37 triages k35 in CAUSAL-REVIEW.md and adds the saved paired native appearance/
+ordering contrast to CAUSAL-RESULTS.md. Activate-only scope and inspection-only
+trace integration remain explicit; the host boot control supplies no guest
+qualification. The unstarted modality proposal cannot yet satisfy this node's
+matched-state, competing-prediction or route-qualification duties. K38 produces
+the coherent protocol/route repair without guests and inserts its review before
+k36. Every earned integration precedes runtime freeze/launch. All original Done
+when criteria below remain unchanged, including positive failed disposition/
+responsible context, justified repair/useful failing seam and separate frozen
+complete ordinary acceptance. No causal ancestor closes or historical cap opens.
+
 ## Goal
 Establish a supported causal activation intervention, measure actual native
 request/disposition and responsible context, repair justified application behavior

@@ -1,0 +1,41 @@
+{
+  "measuredAtUTC": "2026-10-28T08:26:13.065683+00:00",
+  "command": [
+    "/usr/bin/log",
+    "show",
+    "--last",
+    "2m",
+    "--style",
+    "ndjson",
+    "--info",
+    "--predicate",
+    "process == \"kernel\""
+  ],
+  "logExit": 0,
+  "sysctlCommand": [
+    "/usr/sbin/sysctl",
+    "-n",
+    "kern.bootsessionuuid"
+  ],
+  "sysctlBefore": "C3259116-200A-4066-810A-F6EA4CD4B438",
+  "sysctlAfter": "C3259116-200A-4066-810A-F6EA4CD4B438",
+  "allLogBootUUIDs": [
+    "C3259116-200A-4066-810A-F6EA4CD4B438"
+  ],
+  "completion": {
+    "count": 80,
+    "finished": 1
+  },
+  "positiveRecordProjection": {
+    "bootUUID": "C3259116-200A-4066-810A-F6EA4CD4B438",
+    "timestamp": "2026-10-28 19:25:09.477457+1100",
+    "machTimestamp": 26985766143100,
+    "processID": 0,
+    "processImagePath": "/kernel",
+    "processImageUUID": "D46FC75B-A889-3796-A66C-D28FDD50FB68"
+  },
+  "rawOutputSHA256": "c46bea03a2cbc81617f196346ebfb063fdcc5b5054c6c2ed3009f846cbe85236",
+  "retainedProjectionOnly": true,
+  "wrongUUIDControlRejected": true,
+  "scope": "Current host only; no target guest/archive/timesync qualification."
+}

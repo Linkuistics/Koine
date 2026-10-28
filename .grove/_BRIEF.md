@@ -6,7 +6,11 @@ K33 decomposes at a compiled/tested native-call recorder and saved-input-context
 boundary. CAUSAL-RESULTS.md retains the new full-archive input read and nine
 headless controls. The revised four-slot mouse/Return comparison tests necessity
 of clicking the Settings row, not removal of shared mouse-open native context.
-Its causal interpretation receives tree review before runtime. No guest starts,
+Its causal interpretation receives tree review before runtime. K35/k37 find the
+unstarted proposal insufficient: CAUSAL-REVIEW.md records all dispositions, the
+positive paired ordering contrast and unchanged recorder/coverage limits. K38
+must produce its coherent protocol/route repair and insert review before k36;
+every earned integration precedes runtime freeze/launch. No guest starts,
 no product repair/final signed subject is selected and old strict false joins,
 failed transports, NOT RUN phases and every closed cap remain. Actual native
 disposition/context, justified repair and separate frozen ordinary acceptance

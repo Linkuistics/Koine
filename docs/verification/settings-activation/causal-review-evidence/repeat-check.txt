@@ -1,0 +1,10 @@
+clockMetadataRejectsUnknownBootAndInvalidScale: initial PASS; final PASS
+disabledMeasurementStillPerformsOperationOnce: initial PASS; final PASS
+encodingKeepsTicksAsExactDecimalStrings: initial PASS; final PASS
+failedDumpKeepsRecordsAvailable: initial PASS; final PASS
+outputIsExplicitNonDestructiveAndCannotOverwriteEvidence: initial PASS; final PASS
+overflowPreservesPrefixAndReportsEveryDroppedRecord: initial PASS; final PASS
+realClockMetadataMatchesIndependentKernelQueries: initial PASS; final PASS
+realContinuousClockEnclosesAnIndependentRead: initial PASS; final PASS
+samplesEncloseOneOperation: initial PASS; final PASS
+Documentation outputs match byte for byte, including the known two failures.

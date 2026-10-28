@@ -1,11 +1,13 @@
 # Settings reopen: recorded activation failure — 2026-10-28
 
-The latest [native-call recorder and input-context slice](CAUSAL-RESULTS.md)
-adds direct tick brackets and observed-process boot/timebase metadata, with nine
-headless controls and a declared matched selection-modality question. No new
-guest, native disposition, product repair or ordinary acceptance follows. The
-revised protocol receives tree review before runtime; every earlier outcome and
-closed cap below and in the linked results remains unchanged.
+The [native-call recorder and input-context slice](CAUSAL-RESULTS.md) adds direct
+tick brackets and observed-process boot/timebase metadata, with nine headless
+helper/buffer controls. [Review integration](CAUSAL-REVIEW.md) retains a positive
+native ordering contrast and finds the unstarted modality proposal insufficient.
+K38's repaired protocol/route and earned review/integration precede k36's runtime
+freeze or launch. No new guest, native disposition, product repair or ordinary
+acceptance follows. Every earlier outcome and closed cap below and in the linked
+results remains unchanged.
 
 The second instrumented guest reproduced Settings reopen 3 behind TextEdit.
 Koine received the Settings callback, showed its window and requested

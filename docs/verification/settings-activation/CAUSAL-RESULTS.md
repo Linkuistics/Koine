@@ -6,13 +6,13 @@ headless checks pass and the application builds. This supplies a tested recorder
 not a reproduced activation failure, native refusal, causal explanation or repair.
 No guest starts in this slice and no new signed candidate is selected.
 
-The remaining saved archive was inspected before choosing a new runtime question.
-Its native input records support testing whether clicking the Settings row is
-necessary for the failure. The [matched modality protocol](CAUSAL-PLAN.md) fixes
-four fresh slots, mouse/Return/Return/mouse, with one selection per slot and the
-same highlighted row, application/window and foreground setup. It requires
-positive failed-path evidence, not a comparison of green counts. Its revised
-interpretation receives a separate tree review before any guest starts.
+The remaining saved archive was inspected before proposing a new runtime question.
+K35 review and [k37 integration](CAUSAL-REVIEW.md) find the resulting
+[unstarted modality proposal](CAUSAL-PLAN.md) insufficient for execution. Its
+initial-position setup omits the persisted failure's earlier menu-selection cycle,
+its competing explanation has no finite falsifier, and its route lacks positive
+qualification criteria. K38 owns a repaired producer and its earned review before
+k36 can freeze or run anything. All four proposed slots remain unstarted.
 
 ## Independent saved input context
 
@@ -32,6 +32,21 @@ JSON/completion validation and the positive records used here.
 | output orderWindowFront for the input event | 4330276700 / 318 | 4468193378 / 920 |
 | Ignoring activation end-user interaction for mouse | 4330278190 / 321 | 4468198962 / 923 |
 | Koine client SLSSetFrontProcessWithInfo | 4338579225 / 365 | 4476843871 / 970 |
+| LS/CAS front change, err=0/noErr | 4338594230 / 376 | No corresponding row identified in this rendering |
+| TextEdit 53ea7 window 32 key appearance | inactive: 4339151428 / 424 | active: 4476872612 / 977 |
+| Koine 403fb window 28 key appearance | active: 4343127150 / 499 | No corresponding row identified in this rendering |
+| Koine 403fb OrderWindowGroupFrontConditionally | op 1 relative 0: 4343134387 / 512; 4343134801 / 515 | op -1 relative 32: 4477297904 / 988 |
+
+The [paired-row check](causal-review-evidence/paired-native.json) validates the
+whole saved rendering's JSON/completion and exact reproduction digest, then
+retains these positive source rows. The two conditional-order records are
+4,555,162/4,555,576 ticks after the success-adjacent client call; the failed-adjacent
+record is 454,033 ticks after its client call. These are native-only differences,
+not a qualified join to the old buffered show/activate/notification records.
+The op/relative fields are undocumented observations. They establish a positive
+paired ordering contrast, not refusal semantics or a cause. Failure to identify
+a corresponding row cannot establish that an event did not occur. K38 must
+account for this contrast when selecting an intervention and its predictions.
 
 The successful native sequence positively records LS/CAS front change with
 err=0/noErr at 4338594230 (line 376). The failed-adjacent sequence records
@@ -73,7 +88,8 @@ opt-in memory recorder initialization.
 
 SettingsActivationTrace appends application.activate.interval after the existing
 call. The existing window-then-activation order and before/after records remain.
-Disabled and legacy-file modes call the same operation without new tick reads.
+Inspection finds disabled and legacy-file modes call the same operation without
+new tick reads. This trace integration is not reached by the headless helper tests.
 The wrapper constructs its interval record after the call, but existing
 notification observers can run synchronously inside NSApp.activate and record
 there. Their overhead is part of the measured call. No capture-free execution,
@@ -88,6 +104,15 @@ metadata and independent sysctl/timebase agreement, plus the existing buffer
 retention/dump controls. These test the recorder, not the product's failed
 activation. The application also compiles in the task's build-tests step. The
 initial build emitted unrelated existing test warnings; final results are retained.
+
+The six interval/clock tests exercise SettingsActivationInterval and
+SettingsNativeClock; the three buffer tests exercise SettingsEventBuffer.
+SettingsActivationTrace's enable predicate, legacy/after-dump bypass, record
+ordering and encoded nativeClockError are supported by source inspection only.
+There is no headless test of that AppKit integration and no measured timing or
+guest availability result. K37 accepts this coverage limit visibly rather than
+adding an unrelated refactor. Any change to that integration needs appropriate
+new controls before its runtime freeze.
 
 The [sole reviewer](causal-evidence/review.txt) found two P2 limits. Correct the
 overbroad outside-bracket capture claim while preserving observer evidence.
@@ -134,7 +159,7 @@ remain authoritative. This boundary checks them without replacing them.
 |---|---|
 | Historical classification, k12/k14/k16 | Diagnostic-02 delivered-callback/failed-activation and persisted corroboration unchanged |
 | Clock relation, k29/k31/k33 | Old application relation unqualified; strict wall-clock false/empty joins preserved. New direct native recorder passes headless checks; actual guest/archive boot/scale and interval joins still require qualification |
-| Supported condition/finite matched protocol, k33/k31/k29/k27/k25/k22/k20/k18/k16/k14 | Row-click necessity versus modality-independent context selected from saved input evidence and public interaction contracts; finite four-slot plan declared but revised interpretation awaits tree review and actual runtime implementation/freeze |
+| Supported condition/finite matched protocol, k33/k31/k29/k27/k25/k22/k20/k18/k16/k14 | K35/k37 find the unstarted four-slot proposal insufficient: setup mismatch, no falsifier for the competing explanation and unqualified route. K38 produces the replacement and earns review/integration before k36 runtime freeze; the full competing-prediction duty stays open |
 | Instrument availability/symptom/timing, same owners plus k12 | New recorder compiles; no new runtime outcome. Symptom preservation and target-guest matching unknown; synchronous observers and changed input timing remain explicit |
 | Bound/freeze/completed golden before launch, same owners | Offline subjects frozen/audited. No new clone. All historical caps remain closed; future set needs actual signed subject/all inputs and completed golden hashes before its first slot |
 | Acquisition/default fallback/lag, k25/k22/k20/k18 | Prior outcomes/lag preserved; broad saved read adds context, not a complete refusal monitor or new retention qualification |
@@ -150,6 +175,7 @@ For persisted-01, reopens 2/3 and every later complete phase remain NOT RUN:
 resize/minimum-size/content-height/scrolling, shortcuts, requests/denials,
 Accessibility consent, silent launch, running-app reopen, login restart and Quit.
 The new focused protocol does not inherit acceptance from older complete passes.
-K33 decomposes at this tested recorder/offline-evidence boundary, with protocol
-review before the live successor's matched experiment, disposition, justified
-repair and separate complete ordinary acceptance.
+K33 retains this tested helper/offline-evidence boundary. K38's no-guest protocol
+repair and its earned review/integration precede k36's matched experiment,
+disposition, justified repair and separate complete ordinary acceptance. See
+CAUSAL-REVIEW.md for all eight k35 dispositions and the remaining recorder limits.

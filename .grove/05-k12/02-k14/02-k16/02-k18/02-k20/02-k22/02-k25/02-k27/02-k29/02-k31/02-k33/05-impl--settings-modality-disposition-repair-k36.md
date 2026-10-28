@@ -6,11 +6,13 @@ call/disposition evidence, repair justified application behavior and qualify
 complete ordinary operation against every original criterion.
 
 ## Context
-K34 delivers the compiled/tested direct-call recorder and independent saved input
-context in CAUSAL-RESULTS.md. Read CAUSAL-PLAN.md and the k35 review's disposition
-and any intervening integration before runtime work. Its initial four-slot
-mouse/Return/Return/mouse charter is a causal probe with one Settings selection
-per fresh clone, not an unchanged four-action chase or ordinary acceptance.
+K34 delivers compiled/tested direct-call helpers and saved input context in
+CAUSAL-RESULTS.md. K37's CAUSAL-REVIEW.md finds its unstarted CAUSAL-PLAN.md
+proposal insufficient. Settings-causal-protocol-k38 owns a coherent replacement
+and must insert its tree review here before this leaf; every earned integration
+also precedes this leaf's runtime freeze or launch. The initial four-slot
+mouse/Return/Return/mouse proposal is held for that repair. It does not authorize
+execution or satisfy k33's competing-prediction criterion.
 No modality clone has started and no final signed repair subject is selected.
 The parent retains all original k33/k31/k29/k27/k25/k22/k20/k18/k16/k14/k12 duties.
 
@@ -21,6 +23,11 @@ The parent retains all original k33/k31/k29/k27/k25/k22/k20/k18/k16/k14/k12 duti
   retain shared mouse-open context; green counts/alternate input alone prove
   neither cause nor repair. Do not repeat k32's completed marker extraction or
   retry old unqualified clock fitting/widening to fill omitted historical data.
+  Consume k38's reviewed replacement, including declared selection history and
+  retained setup controls, positive highlight/Return criteria, exact containment
+  outcomes and first-launch success-control stop policy. No ad hoc criteria after
+  observation or causal-slot consumption to debug an unqualified route. If route
+  qualification needs guests, its separate finite charter must exist first.
 - Implement/check the matched route and native relation reader before launch.
   Freeze the actual new signed candidate/all consumed inputs and complete golden
   digests. All historical candidates stay intact, especially events/Koine.app.
