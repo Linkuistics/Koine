@@ -1,4 +1,4 @@
-# settings-measured-native-disposition-k31
+# settings-measured-native-disposition-k31 — brief
 
 
 ## Goal
@@ -72,3 +72,45 @@ Post-trace timeout/-1 stays failed despite matching marker. Other recorded
 transports/endpoints/final environment are clean, all 316 historical frozen
 inputs matched at that run's close, golden hashes matched and clone stopped.
 Reopens 2/3 and all later complete phases NOT RUN. No new guest ran in k30.
+
+## Decisions (running log)
+
+- 2026-10-28: Graph startup refuses before project/generation discovery. Use
+  bounded direct reads without stopping other graph sessions. The jj working
+  copy starts clean at 963cfde3. Preserve the events candidate and all closed caps.
+- 2026-10-28: Independent native context shows persisted generation 45 ending
+  at TextEdit PID 974 before success, while generation 57 additionally names
+  TextEdit's viewbridge-key-window before failure. Native-01 generations 50, 62
+  and 75 contain that same terminal marker before successful Koine front changes.
+  The marker alone therefore cannot discriminate failure. These are native-only
+  sequence observations, not retroactive application/native clock joins.
+- 2026-10-28: Preserve a reproducible, strict offline extraction of all keyboard
+  chain updates and Koine client/front-result context from the two named saved
+  sources. Reject malformed input rather than silently discarding it. No new
+  guest is justified by this marker comparison. Decompose at this independently
+  verifiable counterexample boundary; the remaining child must formulate a
+  supported matched causal intervention and measure actual native call brackets,
+  retaining every original disposition, repair and ordinary acceptance duty.
+
+## Native focus evidence and remaining causal work
+
+K32 delivers FOCUS-RESULTS.md and strict reusable offline extraction. The
+persisted failure's TextEdit viewbridge terminal marker also occurs before three
+positive native-01 Koine front changes. Marker presence alone cannot discriminate
+failure; different instruments/timing still preclude a matched causal inference.
+The observed TextEdit key-appearance request supplies context, not a refusal.
+No guest, product change or ordinary acceptance runs in this slice. All original
+Done when criteria above remain this node's charter, not replaced by child goals.
+
+K33 owns the supported controllable-condition/matched-intervention question,
+measured native call brackets/disposition, justified repair/useful failing seam
+and separate complete ordinary acceptance. The old application clock relation
+remains unqualified; no historical outcome or cap changes. No causal ancestor
+closes. FOCUS-RESULTS.md checks every original duty and preserves all NOT RUN and
+failed-transport distinctions.
+
+- 2026-10-28: Offline focus evidence k32 completes with strict extraction,
+  successful native counterexamples, fifteen controls, exact source reproduction
+  and preserved archive/candidate. K33 remains live with all original causal,
+  product and separate ordinary duties. No matching-clock or marker claim fills
+  them. No ancestor closes at this retirement boundary.

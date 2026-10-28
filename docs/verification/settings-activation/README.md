@@ -279,3 +279,14 @@ was not recorded. Exact joins stay unqualified and the old wall-clock false
 result is unchanged. No guest, application change or repair acceptance ran.
 The successor carries measured-clock/native-disposition work and every original
 causal repair and separate complete ordinary-acceptance duty.
+
+## Independent native focus comparison
+
+The [offline focus comparison](FOCUS-RESULTS.md) finds the failed-adjacent
+TextEdit terminal viewbridge marker before successful Koine native front changes
+too. Marker presence alone cannot discriminate failure. The different native
+instruments do not establish a matched causal comparison. Strict reusable
+extraction retains full records/source positions and rejects malformed input.
+No guest or product change ran. Native failed disposition, the old application
+clock relation, justified repair and separate complete ordinary acceptance remain
+open under the report's full original-duty comparison.

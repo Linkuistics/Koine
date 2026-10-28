@@ -1,0 +1,22 @@
+One fresh-context reviewer, inspection only, bounded to FOCUS-RESULTS.md,
+focus-extract.jq, focused tests/Task entries and both original native sources.
+
+Review outcome:
+- P2: completion recognition accepted corrupt count values, duplicate completion
+  objects and native records after completion. Validate the count and terminal,
+  unique framing, and add focused rejection controls.
+- Both extracts independently agree with every selected original record and its
+  sourceLine position: 235 native-01 and 194 persisted rows.
+- Native table generations/ticks/activity labels, positive LS/CAS/resume records,
+  persisted TextEdit connection context and counterexample interpretation agree
+  with originals. No additional causal, disposition or clock-limit issue found.
+- Reviewer ran no tests/build/lint commands.
+
+Reconciliation: valid and actionable. Eight concrete corrupt/mismatched count or
+post-completion fixtures fail against the reviewed extractor (framing-red.txt).
+The extractor now counts all native records and requires any completion count to
+match, rejecting every following input. Fifteen controls, including those eight,
+pass through check:settings-native-focus. This executable seam conclusively
+covers the mechanical framing repair; no second reviewer is commissioned.
+The corrected extractor is frozen afresh before final reproduction. Review of
+native behavior, a new causal experiment or product repair is not supplied here.

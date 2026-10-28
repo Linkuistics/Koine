@@ -1,0 +1,5 @@
+task: [check:settings-native-focus] ruff check --select E,F,I --line-length 100 Tests/scripts/test_settings_focus.py
+All checks passed!
+task: [check:settings-native-focus] pytest -q Tests/scripts/test_settings_focus.py
+...............                                                          [100%]
+15 passed in 0.09s

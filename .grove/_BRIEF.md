@@ -1,5 +1,16 @@
 # Koine menu-bar VM reliability — brief
 
+## Independent native focus handoff
+
+K31 decomposes after k32's strict offline comparison. FOCUS-RESULTS.md retains
+positive native-01 successes preceded by the persisted failure's TextEdit
+viewbridge terminal marker. That marker alone is no failure discriminator;
+different instruments/timing do not establish a matched cause. No new guest or
+product change ran. K33 retains the supported controllable-condition/matched-
+intervention question, measured native call brackets/disposition, justified repair
+and separate complete ordinary acceptance. Every original duty, historical failed
+transport/classification and closed cap remains. No causal ancestor closes.
+
 ## Offline native clock handoff
 
 K29 decomposes after clock evidence k30 establishes native boot/timebase through

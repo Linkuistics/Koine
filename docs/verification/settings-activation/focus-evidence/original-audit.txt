@@ -1,0 +1,4 @@
+Original raw archive digest equals historical persisted-archive.sha256.
+Historical archive inventory: every digest and full file set match.
+Committed filtered gzip decompresses exactly to the original archived rendering.
+Full candidate regular-file/link inventory equals historical persisted-bundle.txt.

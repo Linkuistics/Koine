@@ -1244,3 +1244,11 @@ continuous/awake-time relation. Exact joins and failed native disposition remain
 unqualified. No new guest or product change ran; a successor owns that precise
 measurement/discrimination gap, justified repair and separate complete ordinary
 acceptance. All prior classifications, failed transports and closed caps remain.
+
+The [independent native focus comparison](settings-activation/FOCUS-RESULTS.md)
+retains successful counterexamples to treating the failed-adjacent TextEdit
+viewbridge marker alone as a cause. This is an offline comparison across different
+instruments, with no matched causal inference, qualified application/native join,
+failed native disposition, new guest, product repair or ordinary acceptance.
+The successor must specify a supported controllable condition and matched
+intervention before any new bounded measurement; all original duties stay live.

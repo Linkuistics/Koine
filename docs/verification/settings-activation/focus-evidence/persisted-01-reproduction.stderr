@@ -1,0 +1,3 @@
+task: [report:settings-native-focus] set -o pipefail
+gzip -dc docs/verification/settings-activation/persisted-01/deferred-native/native.jsonl.gz | jq -Rnc -f docs/verification/settings-activation/focus-extract.jq
+

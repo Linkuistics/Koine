@@ -97,3 +97,13 @@ closed; no replacement, reset, extension or unchanged four-action failure chase.
   root handoff before closing ancestors. PERSISTED-RESULTS.md compares them all;
   clock/parser/acquisition success cannot close causal repair or ordinary duties.
   Decompose a newly precise question only at a verified boundary if necessary.
+
+## Independent focus-context handoff
+
+K31 decomposes after k32's offline comparison. FOCUS-RESULTS.md shows that the
+persisted failure's terminal TextEdit viewbridge marker also occurs before three
+successful native-01 Koine front changes. It supplies no cause, native failed
+result or qualified application/native join. K33 retains the supported matched
+causal intervention, measured disposition, justified repair and separate complete
+ordinary acceptance. Every original criterion above remains live; no guest or
+product change runs here, and every historical cap/outcome remains unchanged.

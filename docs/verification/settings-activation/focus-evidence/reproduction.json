@@ -1,0 +1,36 @@
+[
+  {
+    "command": [
+      "mise",
+      "exec",
+      "--",
+      "task",
+      "report:settings-native-focus",
+      "SOURCE=docs/verification/settings-activation/native-01/native-log/stream.jsonl.gz"
+    ],
+    "exit": 0,
+    "exactExtractMatch": true,
+    "everyEmittedSourceLineMatchesOriginal": true,
+    "sourceLines": 150995,
+    "emittedRows": 235,
+    "outputSHA256": "6ecec6b90dc6ddbd38fa4cfadf5a7d5f250332676ea31f8a6a99d5c7a6f0ff28",
+    "extractorSHA256": "18851e194d54121f6abd935f8c094f0393140c258871336b63056703dc8ff896"
+  },
+  {
+    "command": [
+      "mise",
+      "exec",
+      "--",
+      "task",
+      "report:settings-native-focus",
+      "SOURCE=docs/verification/settings-activation/persisted-01/deferred-native/native.jsonl.gz"
+    ],
+    "exit": 0,
+    "exactExtractMatch": true,
+    "everyEmittedSourceLineMatchesOriginal": true,
+    "sourceLines": 6048,
+    "emittedRows": 194,
+    "outputSHA256": "6a8362567407bd5e1c7845d00a40e3208cac59b7089a4f2ddf4e766b0855611c",
+    "extractorSHA256": "18851e194d54121f6abd935f8c094f0393140c258871336b63056703dc8ff896"
+  }
+]

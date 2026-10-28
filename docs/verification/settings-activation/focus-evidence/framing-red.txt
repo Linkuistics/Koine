@@ -1,0 +1,122 @@
+.......FFFFFFFF                                                          [100%]
+=================================== FAILURES ===================================
+_______ test_corrupt_or_mismatched_completion_count_is_rejected[corrupt] _______
+
+count = 'corrupt'
+
+    @pytest.mark.parametrize("count", ["corrupt", None, -1, 0.5, True, 1])
+    def test_corrupt_or_mismatched_completion_count_is_rejected(count: object):
+>       assert extract(json.dumps({"count": count, "finished": 1})).returncode != 0
+E       assert 0 != 0
+E        +  where 0 = CompletedProcess(args=['jq', '-Rnc', '-f', '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/veri...ion/focus-extract.jq'], returncode=0, stdout='{"sourceLine":1,"record":{"count":"corrupt","finished":1}}\n', stderr='').returncode
+E        +    where CompletedProcess(args=['jq', '-Rnc', '-f', '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/veri...ion/focus-extract.jq'], returncode=0, stdout='{"sourceLine":1,"record":{"count":"corrupt","finished":1}}\n', stderr='') = extract('{"count": "corrupt", "finished": 1}')
+E        +      where '{"count": "corrupt", "finished": 1}' = <function dumps at 0x107ed3690>({'count': 'corrupt', 'finished': 1})
+E        +        where <function dumps at 0x107ed3690> = json.dumps
+
+Tests/scripts/test_settings_focus.py:58: AssertionError
+________ test_corrupt_or_mismatched_completion_count_is_rejected[None] _________
+
+count = None
+
+    @pytest.mark.parametrize("count", ["corrupt", None, -1, 0.5, True, 1])
+    def test_corrupt_or_mismatched_completion_count_is_rejected(count: object):
+>       assert extract(json.dumps({"count": count, "finished": 1})).returncode != 0
+E       assert 0 != 0
+E        +  where 0 = CompletedProcess(args=['jq', '-Rnc', '-f', '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/veri...tivation/focus-extract.jq'], returncode=0, stdout='{"sourceLine":1,"record":{"count":null,"finished":1}}\n', stderr='').returncode
+E        +    where CompletedProcess(args=['jq', '-Rnc', '-f', '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/veri...tivation/focus-extract.jq'], returncode=0, stdout='{"sourceLine":1,"record":{"count":null,"finished":1}}\n', stderr='') = extract('{"count": null, "finished": 1}')
+E        +      where '{"count": null, "finished": 1}' = <function dumps at 0x107ed3690>({'count': None, 'finished': 1})
+E        +        where <function dumps at 0x107ed3690> = json.dumps
+
+Tests/scripts/test_settings_focus.py:58: AssertionError
+_________ test_corrupt_or_mismatched_completion_count_is_rejected[-1] __________
+
+count = -1
+
+    @pytest.mark.parametrize("count", ["corrupt", None, -1, 0.5, True, 1])
+    def test_corrupt_or_mismatched_completion_count_is_rejected(count: object):
+>       assert extract(json.dumps({"count": count, "finished": 1})).returncode != 0
+E       assert 0 != 0
+E        +  where 0 = CompletedProcess(args=['jq', '-Rnc', '-f', '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/veri...activation/focus-extract.jq'], returncode=0, stdout='{"sourceLine":1,"record":{"count":-1,"finished":1}}\n', stderr='').returncode
+E        +    where CompletedProcess(args=['jq', '-Rnc', '-f', '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/veri...activation/focus-extract.jq'], returncode=0, stdout='{"sourceLine":1,"record":{"count":-1,"finished":1}}\n', stderr='') = extract('{"count": -1, "finished": 1}')
+E        +      where '{"count": -1, "finished": 1}' = <function dumps at 0x107ed3690>({'count': -1, 'finished': 1})
+E        +        where <function dumps at 0x107ed3690> = json.dumps
+
+Tests/scripts/test_settings_focus.py:58: AssertionError
+_________ test_corrupt_or_mismatched_completion_count_is_rejected[0.5] _________
+
+count = 0.5
+
+    @pytest.mark.parametrize("count", ["corrupt", None, -1, 0.5, True, 1])
+    def test_corrupt_or_mismatched_completion_count_is_rejected(count: object):
+>       assert extract(json.dumps({"count": count, "finished": 1})).returncode != 0
+E       assert 0 != 0
+E        +  where 0 = CompletedProcess(args=['jq', '-Rnc', '-f', '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/veri...ctivation/focus-extract.jq'], returncode=0, stdout='{"sourceLine":1,"record":{"count":0.5,"finished":1}}\n', stderr='').returncode
+E        +    where CompletedProcess(args=['jq', '-Rnc', '-f', '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/veri...ctivation/focus-extract.jq'], returncode=0, stdout='{"sourceLine":1,"record":{"count":0.5,"finished":1}}\n', stderr='') = extract('{"count": 0.5, "finished": 1}')
+E        +      where '{"count": 0.5, "finished": 1}' = <function dumps at 0x107ed3690>({'count': 0.5, 'finished': 1})
+E        +        where <function dumps at 0x107ed3690> = json.dumps
+
+Tests/scripts/test_settings_focus.py:58: AssertionError
+________ test_corrupt_or_mismatched_completion_count_is_rejected[True] _________
+
+count = True
+
+    @pytest.mark.parametrize("count", ["corrupt", None, -1, 0.5, True, 1])
+    def test_corrupt_or_mismatched_completion_count_is_rejected(count: object):
+>       assert extract(json.dumps({"count": count, "finished": 1})).returncode != 0
+E       assert 0 != 0
+E        +  where 0 = CompletedProcess(args=['jq', '-Rnc', '-f', '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/veri...tivation/focus-extract.jq'], returncode=0, stdout='{"sourceLine":1,"record":{"count":true,"finished":1}}\n', stderr='').returncode
+E        +    where CompletedProcess(args=['jq', '-Rnc', '-f', '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/veri...tivation/focus-extract.jq'], returncode=0, stdout='{"sourceLine":1,"record":{"count":true,"finished":1}}\n', stderr='') = extract('{"count": true, "finished": 1}')
+E        +      where '{"count": true, "finished": 1}' = <function dumps at 0x107ed3690>({'count': True, 'finished': 1})
+E        +        where <function dumps at 0x107ed3690> = json.dumps
+
+Tests/scripts/test_settings_focus.py:58: AssertionError
+__________ test_corrupt_or_mismatched_completion_count_is_rejected[1] __________
+
+count = 1
+
+    @pytest.mark.parametrize("count", ["corrupt", None, -1, 0.5, True, 1])
+    def test_corrupt_or_mismatched_completion_count_is_rejected(count: object):
+>       assert extract(json.dumps({"count": count, "finished": 1})).returncode != 0
+E       assert 0 != 0
+E        +  where 0 = CompletedProcess(args=['jq', '-Rnc', '-f', '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/veri...-activation/focus-extract.jq'], returncode=0, stdout='{"sourceLine":1,"record":{"count":1,"finished":1}}\n', stderr='').returncode
+E        +    where CompletedProcess(args=['jq', '-Rnc', '-f', '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/veri...-activation/focus-extract.jq'], returncode=0, stdout='{"sourceLine":1,"record":{"count":1,"finished":1}}\n', stderr='') = extract('{"count": 1, "finished": 1}')
+E        +      where '{"count": 1, "finished": 1}' = <function dumps at 0x107ed3690>({'count': 1, 'finished': 1})
+E        +        where <function dumps at 0x107ed3690> = json.dumps
+
+Tests/scripts/test_settings_focus.py:58: AssertionError
+_______ test_completion_is_unique_and_terminal[{"count":0,"finished":1}] _______
+
+suffix = '{"count":0,"finished":1}'
+
+    @pytest.mark.parametrize("suffix", ['{"count":0,"finished":1}',
+                                       '{"eventMessage":"unrelated"}'])
+    def test_completion_is_unique_and_terminal(suffix: str):
+>       assert extract('{"count":0,"finished":1}\n' + suffix + "\n").returncode != 0
+E       assert 0 != 0
+E        +  where 0 = CompletedProcess(args=['jq', '-Rnc', '-f', '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/veri...='{"sourceLine":1,"record":{"count":0,"finished":1}}\n{"sourceLine":2,"record":{"count":0,"finished":1}}\n', stderr='').returncode
+E        +    where CompletedProcess(args=['jq', '-Rnc', '-f', '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/veri...='{"sourceLine":1,"record":{"count":0,"finished":1}}\n{"sourceLine":2,"record":{"count":0,"finished":1}}\n', stderr='') = extract((('{"count":0,"finished":1}\n' + '{"count":0,"finished":1}') + '\n'))
+
+Tests/scripts/test_settings_focus.py:64: AssertionError
+_____ test_completion_is_unique_and_terminal[{"eventMessage":"unrelated"}] _____
+
+suffix = '{"eventMessage":"unrelated"}'
+
+    @pytest.mark.parametrize("suffix", ['{"count":0,"finished":1}',
+                                       '{"eventMessage":"unrelated"}'])
+    def test_completion_is_unique_and_terminal(suffix: str):
+>       assert extract('{"count":0,"finished":1}\n' + suffix + "\n").returncode != 0
+E       assert 0 != 0
+E        +  where 0 = CompletedProcess(args=['jq', '-Rnc', '-f', '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/veri...-activation/focus-extract.jq'], returncode=0, stdout='{"sourceLine":1,"record":{"count":0,"finished":1}}\n', stderr='').returncode
+E        +    where CompletedProcess(args=['jq', '-Rnc', '-f', '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/veri...-activation/focus-extract.jq'], returncode=0, stdout='{"sourceLine":1,"record":{"count":0,"finished":1}}\n', stderr='') = extract((('{"count":0,"finished":1}\n' + '{"eventMessage":"unrelated"}') + '\n'))
+
+Tests/scripts/test_settings_focus.py:64: AssertionError
+=========================== short test summary info ============================
+FAILED Tests/scripts/test_settings_focus.py::test_corrupt_or_mismatched_completion_count_is_rejected[corrupt]
+FAILED Tests/scripts/test_settings_focus.py::test_corrupt_or_mismatched_completion_count_is_rejected[None]
+FAILED Tests/scripts/test_settings_focus.py::test_corrupt_or_mismatched_completion_count_is_rejected[-1]
+FAILED Tests/scripts/test_settings_focus.py::test_corrupt_or_mismatched_completion_count_is_rejected[0.5]
+FAILED Tests/scripts/test_settings_focus.py::test_corrupt_or_mismatched_completion_count_is_rejected[True]
+FAILED Tests/scripts/test_settings_focus.py::test_corrupt_or_mismatched_completion_count_is_rejected[1]
+FAILED Tests/scripts/test_settings_focus.py::test_completion_is_unique_and_terminal[{"count":0,"finished":1}]
+FAILED Tests/scripts/test_settings_focus.py::test_completion_is_unique_and_terminal[{"eventMessage":"unrelated"}]
+8 failed, 7 passed in 0.11s

@@ -1,0 +1,36 @@
+F.....F                                                                  [100%]
+=================================== FAILURES ===================================
+____ test_native_chains_and_client_context_retain_original_line_and_fields _____
+
+    def test_native_chains_and_client_context_retain_original_line_and_fields():
+        events = [
+            {"eventMessage": "unrelated", "processID": 9},
+            {"eventMessage": "chain did update (setDeferringRules) <keyboardFocus>",
+             "processID": 164, "machTimestamp": 17, "bootUUID": "saved-boot"},
+            {"eventMessage": "SLSSetFrontProcessWithInfo request", "processID": 814},
+            {"eventMessage": "SetFrontProcessInternal resume", "processID": 164},
+            {"eventMessage": "isActivationTokenActive result=-50", "processID": 164},
+        ]
+        result = extract(HEADER + "\n" + "\n".join(json.dumps(row) for row in events))
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: jq: Could not open /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/verification/settings-activation/focus-extract.jq: No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['jq', '-Rc', '-f', '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/verif...actingComputers/Koine.gh-issue-14/docs/verification/settings-activation/focus-extract.jq: No such file or directory\n').returncode
+
+Tests/scripts/test_settings_focus.py:31: AssertionError
+_____ test_archive_completion_is_preserved_without_claiming_qualification ______
+
+    def test_archive_completion_is_preserved_without_claiming_qualification():
+        result = extract('{"count":6047,"finished":1}\n')
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: jq: Could not open /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/verification/settings-activation/focus-extract.jq: No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['jq', '-Rc', '-f', '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/docs/verif...actingComputers/Koine.gh-issue-14/docs/verification/settings-activation/focus-extract.jq: No such file or directory\n').returncode
+
+Tests/scripts/test_settings_focus.py:50: AssertionError
+=========================== short test summary info ============================
+FAILED Tests/scripts/test_settings_focus.py::test_native_chains_and_client_context_retain_original_line_and_fields
+FAILED Tests/scripts/test_settings_focus.py::test_archive_completion_is_preserved_without_claiming_qualification
+2 failed, 5 passed in 0.10s

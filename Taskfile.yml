@@ -1530,6 +1530,21 @@ tasks:
       - mkdir -p .build/settings-activation/events
       - swiftc -swift-version 6 -target arm64-apple-macos26.0 Tools/SettingsEventDump/main.swift -o .build/settings-activation/events/settings-event-dump
 
+  check:settings-native-focus:
+    desc: Check strict offline native-context extraction without a VM
+    cmds:
+      - ruff check --select E,F,I --line-length 100 Tests/scripts/test_settings_focus.py
+      - pytest -q Tests/scripts/test_settings_focus.py
+
+  report:settings-native-focus:
+    desc: Extract saved native context from SOURCE; no clock join or causal classification
+    requires:
+      vars: [SOURCE]
+    cmds:
+      - |
+        set -o pipefail
+        gzip -dc {{.SOURCE | shellQuote}} | jq -Rnc -f docs/verification/settings-activation/focus-extract.jq
+
   check:settings-native-clock:
     desc: Check offline clock admission and conditional joins without a VM
     cmds:
