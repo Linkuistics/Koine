@@ -1,0 +1,4 @@
+Historical persisted raw archive digest matches persisted-archive.sha256.
+Entire extracted archive regular-file set and every digest match persisted-archive-files.sha256; no links.
+Unchanged events candidate full regular-file/link inventory matches persisted-bundle.txt.
+Retained k34/k37 proposal equals parent commit CAUSAL-PLAN.md byte for byte.

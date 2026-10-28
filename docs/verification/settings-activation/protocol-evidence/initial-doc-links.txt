@@ -1,0 +1,8 @@
+task: [check:docs] scripts/check-doc-links.py 
+docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md: missing target context-predicate.txt
+docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md: missing target context-qualify-filter.sh
+docs/verification/settings-activation/protocol-evidence/k34-proposal.md: missing target CAUSAL-REVIEW.md
+docs/verification/settings-activation/protocol-evidence/k34-proposal.md: missing target causal-review-evidence/host-boot.json
+docs/verification/settings-activation/protocol-evidence/k34-proposal.md: missing target CAUSAL-RESULTS.md
+docs/verification/settings-activation/protocol-evidence/k34-proposal.md: missing target FOCUS-RESULTS.md
+task: Failed to run task "check:docs": exit status 1

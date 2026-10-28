@@ -1,5 +1,16 @@
 # settings-modality-disposition-repair-k36
 
+## K38 execution boundary
+
+Consume CAUSAL-PROTOCOL-RESULTS.md and the replacement CAUSAL-PLAN.md. The checked
+narrow route cannot falsify unrestricted modality independence. The precise
+remaining causal-design leaf and this producer's review/every earned integration
+precede every guest, including route qualification. Do not interpret a one-sided
+probe as satisfying k33 or use qualification to hunt a hypothesis. All original
+Done when criteria below remain. No new clone has started; runtime wrapper,
+actual signed/all-input/completed-golden freeze and every causal/product/ordinary
+duty still belong here after those prerequisites.
+
 ## Goal
 Execute a supported matched activation-condition experiment with qualified native
 call/disposition evidence, repair justified application behavior and qualify

@@ -29,6 +29,12 @@ bundles and the k4 comparison; no release or reliability claim follows.
 
 ## Procedure
 
+The [implemented Settings protocol](settings-activation/CAUSAL-PROTOCOL-RESULTS.md)
+adds checked highlight/Return and exact-containment seams with fixed setup/stop
+rules. Its scientific limit is explicit: row-click necessity is a one-sided
+question. Independent review and the externalized causal-design question precede
+every new guest. No product repair or ordinary acceptance is established.
+
 The latest [native-call recorder/input-context handoff](settings-activation/CAUSAL-RESULTS.md)
 adds tested direct continuous-tick brackets and guest-process clock metadata for
 future observation. [Review integration](settings-activation/CAUSAL-REVIEW.md)

@@ -1,0 +1,294 @@
+.........................................FFFFFF                          [100%]
+=================================== FAILURES ===================================
+____ test_real_route_stops_at_each_transport_without_replaying_input[none] _____
+
+tmp_path = PosixPath('/private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/pytest-of-antony/pytest-2260/test_real_route_stops_at_each_0')
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+failure = 'none'
+
+    @pytest.mark.parametrize("failure", ["none", "move", "request", "highlight", "key", "timeout"])
+    def test_real_route_stops_at_each_transport_without_replaying_input(tmp_path, highlight, failure):
+        calls = []
+    
+        def runner(command, **kwargs):
+            calls.append(command)
+            action = command[1:3]
+            if failure == "timeout" and action == ["input", "key"]:
+                raise subprocess.TimeoutExpired(command, 30, output=b"partial")
+            raw = {"ok": True, "schema_version": "1.0"}
+            status = 0
+            if action == ["file", "exec"]:
+                guest = command[3]
+                if "osascript" in guest:
+                    output = [1880, 60, 30, 22]
+                elif "cat " in guest:
+                    output = highlight
+                    if failure == "highlight":
+                        output = dict(highlight, highlightedSettings=False)
+                else:
+                    output = {"requestUUID": NONCE.upper()}
+                raw.update(exit_code=0, timed_out=False, stderr="", stdout=json.dumps(output))
+                if failure == "request" and "printf" in guest:
+                    raw.update(timed_out=True, exit_code=-1)
+            if failure == "move" and action == ["input", "move"]:
+                status = 7
+            if failure == "key" and action == ["input", "key"]:
+                raw["ok"] = False
+            return subprocess.CompletedProcess(command, status, json.dumps(raw), "")
+    
+        # The real function drives exactly the same command/parser seam as the CLI.
+        if failure == "none":
+>           protocol.select_row("Return", NONCE, 814, "frozen-vm-id", tmp_path / "route",
+            ^^^^^^^^^^^^^^^^^^^
+                                runner=runner, pause=lambda _: None)
+E           AttributeError: module 'causal_protocol' has no attribute 'select_row'
+
+Tests/scripts/test_settings_causal_protocol.py:214: AttributeError
+____ test_real_route_stops_at_each_transport_without_replaying_input[move] _____
+
+tmp_path = PosixPath('/private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/pytest-of-antony/pytest-2260/test_real_route_stops_at_each_1')
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+failure = 'move'
+
+    @pytest.mark.parametrize("failure", ["none", "move", "request", "highlight", "key", "timeout"])
+    def test_real_route_stops_at_each_transport_without_replaying_input(tmp_path, highlight, failure):
+        calls = []
+    
+        def runner(command, **kwargs):
+            calls.append(command)
+            action = command[1:3]
+            if failure == "timeout" and action == ["input", "key"]:
+                raise subprocess.TimeoutExpired(command, 30, output=b"partial")
+            raw = {"ok": True, "schema_version": "1.0"}
+            status = 0
+            if action == ["file", "exec"]:
+                guest = command[3]
+                if "osascript" in guest:
+                    output = [1880, 60, 30, 22]
+                elif "cat " in guest:
+                    output = highlight
+                    if failure == "highlight":
+                        output = dict(highlight, highlightedSettings=False)
+                else:
+                    output = {"requestUUID": NONCE.upper()}
+                raw.update(exit_code=0, timed_out=False, stderr="", stdout=json.dumps(output))
+                if failure == "request" and "printf" in guest:
+                    raw.update(timed_out=True, exit_code=-1)
+            if failure == "move" and action == ["input", "move"]:
+                status = 7
+            if failure == "key" and action == ["input", "key"]:
+                raw["ok"] = False
+            return subprocess.CompletedProcess(command, status, json.dumps(raw), "")
+    
+        # The real function drives exactly the same command/parser seam as the CLI.
+        if failure == "none":
+            protocol.select_row("Return", NONCE, 814, "frozen-vm-id", tmp_path / "route",
+                                runner=runner, pause=lambda _: None)
+        else:
+            with pytest.raises(ValueError):
+>               protocol.select_row("Return", NONCE, 814, "frozen-vm-id", tmp_path / "route",
+                ^^^^^^^^^^^^^^^^^^^
+                                    runner=runner, pause=lambda _: None)
+E               AttributeError: module 'causal_protocol' has no attribute 'select_row'
+
+Tests/scripts/test_settings_causal_protocol.py:218: AttributeError
+___ test_real_route_stops_at_each_transport_without_replaying_input[request] ___
+
+tmp_path = PosixPath('/private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/pytest-of-antony/pytest-2260/test_real_route_stops_at_each_2')
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+failure = 'request'
+
+    @pytest.mark.parametrize("failure", ["none", "move", "request", "highlight", "key", "timeout"])
+    def test_real_route_stops_at_each_transport_without_replaying_input(tmp_path, highlight, failure):
+        calls = []
+    
+        def runner(command, **kwargs):
+            calls.append(command)
+            action = command[1:3]
+            if failure == "timeout" and action == ["input", "key"]:
+                raise subprocess.TimeoutExpired(command, 30, output=b"partial")
+            raw = {"ok": True, "schema_version": "1.0"}
+            status = 0
+            if action == ["file", "exec"]:
+                guest = command[3]
+                if "osascript" in guest:
+                    output = [1880, 60, 30, 22]
+                elif "cat " in guest:
+                    output = highlight
+                    if failure == "highlight":
+                        output = dict(highlight, highlightedSettings=False)
+                else:
+                    output = {"requestUUID": NONCE.upper()}
+                raw.update(exit_code=0, timed_out=False, stderr="", stdout=json.dumps(output))
+                if failure == "request" and "printf" in guest:
+                    raw.update(timed_out=True, exit_code=-1)
+            if failure == "move" and action == ["input", "move"]:
+                status = 7
+            if failure == "key" and action == ["input", "key"]:
+                raw["ok"] = False
+            return subprocess.CompletedProcess(command, status, json.dumps(raw), "")
+    
+        # The real function drives exactly the same command/parser seam as the CLI.
+        if failure == "none":
+            protocol.select_row("Return", NONCE, 814, "frozen-vm-id", tmp_path / "route",
+                                runner=runner, pause=lambda _: None)
+        else:
+            with pytest.raises(ValueError):
+>               protocol.select_row("Return", NONCE, 814, "frozen-vm-id", tmp_path / "route",
+                ^^^^^^^^^^^^^^^^^^^
+                                    runner=runner, pause=lambda _: None)
+E               AttributeError: module 'causal_protocol' has no attribute 'select_row'
+
+Tests/scripts/test_settings_causal_protocol.py:218: AttributeError
+__ test_real_route_stops_at_each_transport_without_replaying_input[highlight] __
+
+tmp_path = PosixPath('/private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/pytest-of-antony/pytest-2260/test_real_route_stops_at_each_3')
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+failure = 'highlight'
+
+    @pytest.mark.parametrize("failure", ["none", "move", "request", "highlight", "key", "timeout"])
+    def test_real_route_stops_at_each_transport_without_replaying_input(tmp_path, highlight, failure):
+        calls = []
+    
+        def runner(command, **kwargs):
+            calls.append(command)
+            action = command[1:3]
+            if failure == "timeout" and action == ["input", "key"]:
+                raise subprocess.TimeoutExpired(command, 30, output=b"partial")
+            raw = {"ok": True, "schema_version": "1.0"}
+            status = 0
+            if action == ["file", "exec"]:
+                guest = command[3]
+                if "osascript" in guest:
+                    output = [1880, 60, 30, 22]
+                elif "cat " in guest:
+                    output = highlight
+                    if failure == "highlight":
+                        output = dict(highlight, highlightedSettings=False)
+                else:
+                    output = {"requestUUID": NONCE.upper()}
+                raw.update(exit_code=0, timed_out=False, stderr="", stdout=json.dumps(output))
+                if failure == "request" and "printf" in guest:
+                    raw.update(timed_out=True, exit_code=-1)
+            if failure == "move" and action == ["input", "move"]:
+                status = 7
+            if failure == "key" and action == ["input", "key"]:
+                raw["ok"] = False
+            return subprocess.CompletedProcess(command, status, json.dumps(raw), "")
+    
+        # The real function drives exactly the same command/parser seam as the CLI.
+        if failure == "none":
+            protocol.select_row("Return", NONCE, 814, "frozen-vm-id", tmp_path / "route",
+                                runner=runner, pause=lambda _: None)
+        else:
+            with pytest.raises(ValueError):
+>               protocol.select_row("Return", NONCE, 814, "frozen-vm-id", tmp_path / "route",
+                ^^^^^^^^^^^^^^^^^^^
+                                    runner=runner, pause=lambda _: None)
+E               AttributeError: module 'causal_protocol' has no attribute 'select_row'
+
+Tests/scripts/test_settings_causal_protocol.py:218: AttributeError
+_____ test_real_route_stops_at_each_transport_without_replaying_input[key] _____
+
+tmp_path = PosixPath('/private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/pytest-of-antony/pytest-2260/test_real_route_stops_at_each_4')
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+failure = 'key'
+
+    @pytest.mark.parametrize("failure", ["none", "move", "request", "highlight", "key", "timeout"])
+    def test_real_route_stops_at_each_transport_without_replaying_input(tmp_path, highlight, failure):
+        calls = []
+    
+        def runner(command, **kwargs):
+            calls.append(command)
+            action = command[1:3]
+            if failure == "timeout" and action == ["input", "key"]:
+                raise subprocess.TimeoutExpired(command, 30, output=b"partial")
+            raw = {"ok": True, "schema_version": "1.0"}
+            status = 0
+            if action == ["file", "exec"]:
+                guest = command[3]
+                if "osascript" in guest:
+                    output = [1880, 60, 30, 22]
+                elif "cat " in guest:
+                    output = highlight
+                    if failure == "highlight":
+                        output = dict(highlight, highlightedSettings=False)
+                else:
+                    output = {"requestUUID": NONCE.upper()}
+                raw.update(exit_code=0, timed_out=False, stderr="", stdout=json.dumps(output))
+                if failure == "request" and "printf" in guest:
+                    raw.update(timed_out=True, exit_code=-1)
+            if failure == "move" and action == ["input", "move"]:
+                status = 7
+            if failure == "key" and action == ["input", "key"]:
+                raw["ok"] = False
+            return subprocess.CompletedProcess(command, status, json.dumps(raw), "")
+    
+        # The real function drives exactly the same command/parser seam as the CLI.
+        if failure == "none":
+            protocol.select_row("Return", NONCE, 814, "frozen-vm-id", tmp_path / "route",
+                                runner=runner, pause=lambda _: None)
+        else:
+            with pytest.raises(ValueError):
+>               protocol.select_row("Return", NONCE, 814, "frozen-vm-id", tmp_path / "route",
+                ^^^^^^^^^^^^^^^^^^^
+                                    runner=runner, pause=lambda _: None)
+E               AttributeError: module 'causal_protocol' has no attribute 'select_row'
+
+Tests/scripts/test_settings_causal_protocol.py:218: AttributeError
+___ test_real_route_stops_at_each_transport_without_replaying_input[timeout] ___
+
+tmp_path = PosixPath('/private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/pytest-of-antony/pytest-2260/test_real_route_stops_at_each_5')
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+failure = 'timeout'
+
+    @pytest.mark.parametrize("failure", ["none", "move", "request", "highlight", "key", "timeout"])
+    def test_real_route_stops_at_each_transport_without_replaying_input(tmp_path, highlight, failure):
+        calls = []
+    
+        def runner(command, **kwargs):
+            calls.append(command)
+            action = command[1:3]
+            if failure == "timeout" and action == ["input", "key"]:
+                raise subprocess.TimeoutExpired(command, 30, output=b"partial")
+            raw = {"ok": True, "schema_version": "1.0"}
+            status = 0
+            if action == ["file", "exec"]:
+                guest = command[3]
+                if "osascript" in guest:
+                    output = [1880, 60, 30, 22]
+                elif "cat " in guest:
+                    output = highlight
+                    if failure == "highlight":
+                        output = dict(highlight, highlightedSettings=False)
+                else:
+                    output = {"requestUUID": NONCE.upper()}
+                raw.update(exit_code=0, timed_out=False, stderr="", stdout=json.dumps(output))
+                if failure == "request" and "printf" in guest:
+                    raw.update(timed_out=True, exit_code=-1)
+            if failure == "move" and action == ["input", "move"]:
+                status = 7
+            if failure == "key" and action == ["input", "key"]:
+                raw["ok"] = False
+            return subprocess.CompletedProcess(command, status, json.dumps(raw), "")
+    
+        # The real function drives exactly the same command/parser seam as the CLI.
+        if failure == "none":
+            protocol.select_row("Return", NONCE, 814, "frozen-vm-id", tmp_path / "route",
+                                runner=runner, pause=lambda _: None)
+        else:
+            with pytest.raises(ValueError):
+>               protocol.select_row("Return", NONCE, 814, "frozen-vm-id", tmp_path / "route",
+                ^^^^^^^^^^^^^^^^^^^
+                                    runner=runner, pause=lambda _: None)
+E               AttributeError: module 'causal_protocol' has no attribute 'select_row'
+
+Tests/scripts/test_settings_causal_protocol.py:218: AttributeError
+=========================== short test summary info ============================
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_real_route_stops_at_each_transport_without_replaying_input[none]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_real_route_stops_at_each_transport_without_replaying_input[move]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_real_route_stops_at_each_transport_without_replaying_input[request]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_real_route_stops_at_each_transport_without_replaying_input[highlight]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_real_route_stops_at_each_transport_without_replaying_input[key]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_real_route_stops_at_each_transport_without_replaying_input[timeout]
+6 failed, 41 passed in 0.08s

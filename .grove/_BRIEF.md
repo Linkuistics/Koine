@@ -1,5 +1,20 @@
 # Koine menu-bar VM reliability — brief
 
+## Implemented protocol handoff
+
+K38 delivers CAUSAL-PROTOCOL-RESULTS.md and the implemented replacement
+CAUSAL-PLAN.md: nonce-bound AppKit highlight observation, positive direct Return
+criteria, single-input transport preservation, exact containment classes and
+fixed first-launch/setup control policy. Headless checks and compilation qualify
+only those seams. No guest, signed final subject, native disposition or product
+repair is established. The narrow necessity probe cannot falsify unrestricted
+modality independence. Its precise remaining causal-design question is placed
+ahead of every guest, with this producer's review/every earned integration before
+it and k36 runtime freeze/launch. No in-session reviewer runs. Every historical
+classification/cap/failed transport/NOT RUN and all causal repair/useful failing
+product seam/separate complete ordinary-acceptance duties remain; no ancestor
+closes. See the durable report's full original-duty table.
+
 ## Direct native-call recorder handoff
 
 K33 decomposes at a compiled/tested native-call recorder and saved-input-context

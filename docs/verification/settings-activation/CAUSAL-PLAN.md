@@ -1,226 +1,313 @@
-# Unstarted Settings modality proposal
+# Settings row-selection protocol
 
-## Current execution boundary after k35 integration
+## Execution boundary
 
-**Do not freeze or run this proposal.** [The review disposition](CAUSAL-REVIEW.md)
-identifies a setup mismatch, an unfalsifiable competing explanation and missing
-route qualification. No modality clone has started. Settings-causal-protocol-k38
-must produce a coherent replacement, cut its tree review before k36 and resolve
-every earned integration before k36 freezes runtime inputs. The sections below
-retain the unstarted k34 proposal for that repair; they are not a runnable charter.
+This is k38's implemented replacement for the unstarted k34 proposal. The
+[complete prior proposal](CAUSAL-PLAN-K34.md) is retained unchanged.
+**No guest has run. No runtime freeze or launch is authorized by this artifact.**
+The producer's tree review and every earned integration precede k36. A separate
+causal-design leaf must resolve the precise competing-prediction gap below before
+*any* route-qualification or causal guest. The implementation makes a narrow
+question testable; it does not claim to satisfy k33's original causal duty.
 
-The replacement must decide how to match persisted reopen 1, including its
-preceding successful menu activation/key-window/close cycle and retained control
-outcome. Initial-position failures also exist historically, so this history is
-not a demonstrated cause. Do not insert repeated selections to seek failure.
-Its hypothesis table must state a finite falsifier for each competing prediction;
-changing input-source labels does not falsify a native failed-disposition claim.
-The original proposal only supplies a possible one-sided refutation of row-click
-necessity. That does not discharge k33's competing-prediction duty.
+Explicit changes to the unstarted proposal: add one prior successful mouse
+Settings-selection/close control; replace the one-selection limit with exactly
+one setup selection and one measured reopen, plus unavoidable first-launch
+activation; add two separately capped route-qualification slots; implement the
+highlight and Return-origin criteria; state provisional/deferred native-control
+policy. The four unstarted modality positions retain mouse/Return/Return/mouse
+order. None of the historical closed caps is reopened, replaced or enlarged.
 
-Implement and headlessly check the exact read-only highlight observation and
-positive Return invocation criterion before a runtime freeze. Clean key transport
-or a stale currentEvent is insufficient. If route qualification needs a guest,
-declare a separately named finite qualification set and its outcomes before any
-launch; this document authorizes none. Do not consume or silently enlarge the
-unstarted modality cap to debug a route. All changes to selection history, caps,
-setup and criteria must be explicit in the replacement before any set starts.
+## What the evidence permits
 
-The existing recorder bounds NSApp.activate only. Native key-appearance and
-conditional-order records can follow its return; they must be retained in the
-full native timeline. No qualified common clock places them relative to the
-buffered makeKeyAndOrderFront/menu/notification rows. A replacement that needs
-that relation must first add and test a recorder with that coverage and disclose
-its observer overhead. Existing helper tests establish no such relation.
+[CAUSAL-RESULTS.md](CAUSAL-RESULTS.md#independent-saved-input-context) retains the
+positive paired native contrast. Successful-adjacent native context has TextEdit
+inactive-key appearance, Koine active-key appearance and conditional ordering
+op 1 relative 0. Failed-adjacent context has TextEdit active-key appearance and
+Koine conditional ordering op -1 relative 32. Both contain deferred mouse
+activation. These private op values have no established semantic contract; they
+are observations, not refusals. Failure to identify a counterpart proves no
+absent event. Keep the complete native timeline and the
+[paired rows](causal-review-evidence/paired-native.json), including processing
+after activation return. The older marker counterexamples remain valid.
 
-Treat client-record containment as an availability test, with these outcomes:
+Persisted reopen 1 followed a successful initial menu selection and close.
+Match that history once in both arms. First-launch activation is a different
+control and cannot replace the prior menu selection. ORDER A01 also failed
+initially, so prior history is not a demonstrated necessary cause. A failed
+setup ends the slot; it does not justify repeating setup until green.
 
-| Observation with independently matching guest boot/scale/PID/image | Qualification |
+## Competing predictions and the remaining question
+
+| Claim | Positive prediction | Finite falsifier and limit |
+|---|---|---|
+| Hclick: clicking the Settings row is necessary for the observed failure | Every qualified failed measured reopen has a row click | A qualified Return-origin callback, exact enclosed actual client call, and independently observed inactive/behind/no-key failure after matched successful setup refute necessity. A missing log or stale currentEvent does not. |
+| Hshared: shared mouse-open/native context can permit failure regardless of row-selection modality | A qualified failure may occur in either arm | This possibility has **no finite falsifier in the supported four-slot comparison**. Green counts, source-label changes, mouse failure/Return success and different private op fields do not refute it. It is not a valid competing experimental prediction under k33. |
+
+These are not a completed two-sided experiment. No evidence supports replacing
+Hshared with a deterministic claim that the two arms must produce identical
+outcomes or private-field sequences. Nor does Hclick establish why any request
+failed. The narrow probe can refute necessity only. Mouse failure/Return success,
+all-green, all failures, unmatched controls and unavailable route/clock outcomes
+remain inconclusive for native responsibility and repair.
+
+The externalized design question is: **Which independently supported,
+controllable foreground/window/native interaction can be matched and intervened
+on, with positive observations and a finite falsifier for each competing causal
+prediction, rather than merely testing row-click necessity?** It must account for
+the paired appearance/ordering context without undocumented semantics and decide
+whether the narrow slots below earn runtime at all. It may specify a different
+finite set before launch, with an explicit comparison of changes; it cannot
+quietly spend these slots or a qualification guest to look for a hypothesis.
+If the evidence cannot answer it, escalate the scope decision to Antony rather
+than declaring this one-sided probe a cause or cutting endless richer monitors.
+No guest starts while that question remains unresolved.
+
+## Implemented observation and input route
+
+`SettingsMenuProbe` runs only when memory diagnostics are configured, file tracing
+is absent, and `KoineSettingsMenuProbe` is true. Before launch create the fixed
+empty guest directory `/Users/admin/settings-menu-probe`; set the memory path
+and opt-in boolean. No host GUI is involved. The probe reads no arbitrary path
+or command from a request. One UUID identifies one immutable response, with a
+16-request lifetime budget. A timer polls at 0.1 seconds in AppKit's event-tracking
+run-loop mode, at most 80 polls per menu opening. It reads only the fixed request
+file and `NSMenu.highlightedItem`, writes one response without overwriting, then
+stops. Closing the menu stops the timer and local monitor. Unsupported delivery,
+I/O or expiry yields no qualified receipt, never a fallback input.
+
+The getter reports the actual highlighted item. Its identity must be the enabled
+Settings item whose action is `chooseSettings`. This avoids assigning menu
+highlight semantics to an AXSelected/checkmark property. See Apple's
+[highlight contract](https://developer.apple.com/documentation/appkit/nsmenu/highlighteditem)
+and [tracking mode](https://developer.apple.com/documentation/foundation/runloop/mode/eventtracking).
+Raw primary API JSON and the
+[API receipt](protocol-evidence/API-SOURCES.md) are retained. This path adds
+preselection timer/file/monitor work; it proves no timing neutrality.
+
+Use `causal-protocol.py select` only after the reviewed caller's readiness checks
+and after opening the status menu once with the settled `open_menu` route.
+The implemented command fixes the remaining sequence:
+
+1. Read geometry once, retaining the complete raw exec envelope. The exact JXA
+   command is `FRAME_COMMAND` in the source: System Events → Koine → menuBars[1]
+   → menuBarItems[0] → menus[0] → menuItems.byName("Settings…") → position/size.
+   No setter, AXPress or foreground operation occurs. Validate four integers,
+   positive size and containment in the frozen 1920×1080 display. Record the
+   frame and integer centre. The same coordinate derivation applies in both arms;
+   concrete coordinates are observed facts, never adjusted after an outcome.
+2. Move once to centre minus (12,8), bounded at zero; wait 0.3 s. Move once to
+   centre; wait 0.3 s. No click yet. Preserve both JSON responses, host stderr
+   and CLI exits. CLI zero plus `ok:true` is required; the installed input schema
+   is a stub, so this is transport evidence only.
+3. Write one freshly allocated UUID to the fixed request file with the source's
+   literal `printf` command. Validate its raw guest/CLI statuses and exact UUID
+   acknowledgement. Wait 1 s; read the UUID-named response once with `cat`.
+   No polling/retry or second nonce. Require a fresh matching UUID, expected PID,
+   positive menu session, exact decimal native sample tick and true actual
+   Settings highlight. Any failure ends the slot before selection.
+4. Mouse: one `testanyware input click X Y --json --vm ID`. Return: one
+   `testanyware input key Return --json --vm ID`, with no modifiers. No further
+   move, arrow navigation, shortcut, AXPress, callback invocation, activate,
+   launch command or repeated input. Every command includes the exact guest ID.
+   Each raw command/stdout/stderr/exit is retained in a newly created route
+   directory; a host timeout retains partial output and is not retried.
+
+Example *after all review/design/readiness/freeze prerequisites*, not a launch
+instruction for this producer:
+
+```sh
+python3 docs/verification/settings-activation/causal-protocol.py select Return \
+  --nonce "$nonce" --pid "$koine_pid" --vm "$actual_clone_id" --output "$slot/route"
+```
+
+Exit zero from `select` means transport completion only; its JSON deliberately
+keeps `qualified:false`. Observe the outcome and preserve failure captures before
+any dump, archive acquisition or intervention. The same existing bounded
+one-window/front/focus checks run once in each arm; do not add a focus wait,
+retry or repair to obtain success.
+
+## Positive Return invocation
+
+The local monitor observes its actual NSEvent argument and returns that identical
+event unchanged. It records input only after serving the nonce, with that nonce,
+menu session, input serial, event type, key code, modifiers, repeat bit and actual
+highlight. Apple documents
+[pre-dispatch monitoring](https://developer.apple.com/documentation/appkit/nsevent/addlocalmonitorforevents(matching:handler:));
+its coverage of these menu-tracking events is **not yet qualified**.
+
+`return_invocation` requires exactly one direct input before the sole
+`callback.settings` for the measured selection: keyDown (10), Return (36),
+no device-independent modifiers, no repeat, same menu session and nonce, and
+Settings highlighted at that direct event. The callback must carry the same
+record and an object-identity match between the monitored NSEvent and
+`NSApp.currentEvent`. A fresh direct monitor event plus this match is the criterion;
+`currentEvent` alone, matching timestamps, clean VNC input or a different input
+label cannot qualify delivery. Duplicate, intervening, stale, missing, wrong-key,
+wrong-session or unhighlighted evidence is unavailable. Preserve it without
+substituting another route. No text characters are recorded.
+
+```sh
+python3 docs/verification/settings-activation/causal-protocol.py return events.json \
+  --highlight route/highlight.json --selection 2
+```
+
+This criterion intentionally can fail on a platform where the system menu does
+not expose the direct event through this monitor. That is a finite route failure,
+not permission to weaken the criterion after observing it.
+
+## Separate route qualification and finite setup
+
+Subject to the execution boundary, declare exactly **route-readiness-01** (mouse)
+and **route-readiness-02** (Return), fresh clones
+`koine-k12-route-readiness-01/02`. Every started clone consumes its slot, including
+preflight failure or interruption. Both slots must complete readiness, all controls,
+exact joins and the intended delivery evidence before any modality slot. Stop the
+whole qualification at the first unavailable/invalid/failed control; leave any
+unstarted slot NOT RUN. No replacement, corrected rerun, third slot or transfer
+of unused qualification slots to the modality set. Failure requires a new reviewed
+instrument/protocol decision, not additional input. These guests qualify the route
+and acquisition only, never cause, repair or ordinary operation.
+
+The still-unstarted **modality-01…04**, if earned by the causal-design decision,
+use fresh `koine-k12-modality-01…04` clones and mouse/Return/Return/mouse order.
+The maximum is four started clones, including all failures. Each has the same one
+setup selection and one measured reopen. At a qualification/precondition defect,
+stop the whole set and retain the remaining slots NOT RUN. A qualified measured
+product failure is a result: retain it and continue only the remaining fixed
+slots, never repeat input in that guest. At the cap preserve inconclusive outcomes.
+There is no fifth slot, replacement or extension of a historical set.
+
+Both sets use one newly built/signed candidate in
+`.build/settings-activation/modality/Koine.app`, preserving every historical
+candidate, especially events/Koine.app. Keep the original window-then-activation
+order, activation API/policy and ordinary product behavior. No alternate API,
+yield, async deferral or repeated activation is selected. Match macOS 27/build/
+architecture, TestAnyware, 1920×1080, preferences, installation and persisted
+Debug configuration (both SkyLight subsystems plus launchservices), with no live
+native output reader. Archive before/after subsystem status; command success alone
+is no retained-path qualification. Readiness includes a running unambiguous PID,
+valid signature/image identity, one status item/no Dock, exact display, usable
+observer/dump binaries, memory-only diagnostics and empty output directories.
+
+The fixed progression in each guest is:
+
+- First launch once. Retain the initial window/title/default-frame and independent
+  native active/key/front success observations. If they fail or their transport
+  fails, stop the slot before any menu selection. First-launch activation is
+  selection 0 and must later have exactly one enclosed actual client record.
+- Use the settled TextEdit idle-document setup from persisted-01, including its
+  fixed settling/move steps. Close Settings once, verify zero Settings windows,
+  TextEdit frontmost with the same idle document and no panel. Do not repair an
+  unmatched state. Open and observe the menu with the implemented route. Make
+  exactly one mouse Settings selection (setup selection 1). It must yield one
+  front/focused Settings window with successful independent transports. Failure
+  ends the slot; keep it as a failed setup control, never a measured reopen.
+- Close Settings once. Verify the same zero-window/TextEdit-front/document state.
+  Open/hover/observe by the same route. Make measured selection 2 in the assigned
+  arm. Capture the independent outcome without intervention. Stop focused work.
+- Acquire the full native archive/rendering once, dump once after observations,
+  and evaluate native joins for selections 0,1,2. No extra action follows a known
+  failed gate. Native qualification is deferred: later setup/measured actions
+  taken after successful window controls are explicitly **provisional** until
+  both earlier native controls are ENCLOSED. If either fails, credit neither
+  matched state nor the measured causal result, even if all windows looked right.
+
+This deferred policy avoids pretending the irreversible final dump supplies an
+online native gate. It deliberately allows only the two predeclared provisional
+menu inputs after successful window controls, never another input after a native
+gate is known to fail. `control_policy` and the `control` CLI implement this
+progression. A first-launch successful window without a contained actual client
+record fails availability for the entire slot; collect, audit and stop, with no
+replacement. Setup failure never becomes repeated-input failure hunting.
+
+## Recorder scope and exact native containment
+
+Keep the tested activate-only bracket. `mach_continuous_time` samples enclose
+exactly one NSApp.activate call. Cached observed-process boot UUID and scale must
+be valid. Existing observers can run synchronously inside the call and their work
+is inside its interval; no timing-neutral, capture-free or asynchronous-delivery
+claim follows. The new menu probe adds workload before selection and direct-input
+recording. Unsampled show/menu/notification rows have **no qualified native-time
+relation**. The narrow necessity inference needs callback/delivery and independent
+post-outcome observations, not their exact native ordering. A future inference
+that needs wider bounds must implement/test/review those samples first.
+
+Keep the broad full native rendering, with terminal completion/count, for the
+entire process lifetime. `read_native` rejects partial/malformed rendering. Retain
+all actual-image SLSSetFrontProcessWithInfo candidates, including outside ticks;
+never search only inside desired endpoints. `containment` requires equal numbers
+of complete application activation intervals and actual-client candidates and
+matches them by native order. Extra candidates are AMBIGUOUS, missing candidates
+MISSING. Both remain unqualified. Equal-cardinality ordering and enclosure are
+correlation, not a verified transaction ID. Every interval must be checked; no
+selected-success subset qualifies the set.
+
+Independently retain clean single-attempt guest sysctl boot UUID reads before
+launch and after collection; raw archive Info.plist boot and Apple
+`log raw-dump -t` timesync boot/timebase; observed-process metadata; and signed
+candidate/installed executing-image UUID and PID evidence. Normalize those exact
+independently validated values to identity.json fields `guestBootBefore`,
+`guestBootAfter`, `archiveBoot`, `timesyncBoot`, `numerator`, `denominator`, `pid`,
+`imageUUID`. The parser checks agreement, not provenance: the executing wrapper
+must validate and retain each raw transport and decoder outcome before writing
+that normalization. An invented/missing/failed source cannot qualify it. K37's
+host UUID receipt is not target-guest qualification. Capture `log raw-dump -t`
+from the extracted guest archive, never the host database or a fitted scale.
+
+| Exact result | Required disposition |
 |---|---|
-| One identified client record within ordered exact endpoints | Enclosing correlation only; no transaction identity or synchronous-emission guarantee |
-| One candidate outside the interval, even if its native sequence is plausible | Containment UNQUALIFIED; retain the record and exact distance; no widening, fit or suppression/refusal inference |
-| Missing or ambiguous candidate | Join UNQUALIFIED; no proof of an absent request |
-| Invalid identity, scale, metadata, reversed endpoints, dropped or incomplete buffer | Invalid instrument evidence; retain failure and stop causal interpretation |
+| ENCLOSED | One ordinal candidate in the exact closed interval and matching identities/scales; enclosing correlation only |
+| OUTSIDE | Retain sole candidate and exact tick distance; stop qualification, never widen or infer refusal/suppression |
+| MISSING | Retain missing candidate; unqualified, never absent-request proof |
+| AMBIGUOUS | Retain all candidates; unqualified, no preferred candidate |
+| INVALID | Metadata error/mismatch, reversed bounds, wrong PID/image, float ticks, dropped/incomplete buffer; stop interpretation |
 
-Name the unavoidable first-launch activation as a same-guest positive success
-control for containment, separate from any prior menu-selection setup control.
-Do not assume that it succeeds or that startup has the same activation context.
-A successful first-launch window without a contained client record fails this
-instrument gate. An unavailable gate ends that slot rather than authorizing a
-second input or interval widening. The repaired protocol must fix whether later
-actions run after each control outcome before launch.
+There is no contract that SkyLight emits its client row synchronously inside
+activate. Outside outcomes are expected possibilities, not instrument successes.
+No uptime equality, wall-clock fit, tolerance, widening or host substitution is
+permitted. After the native-control gates pass, an ENCLOSED measured failed
+activation is still no native refusal: positive disposition/responsible-context
+evidence remains required under k33. No richer monitor promises every refusal.
 
-The [host boot control](causal-review-evidence/host-boot.json) checks the sysctl
-against current host log bootUUID values. It qualifies that host observation
-only. Actual guest sysctl/archive/timesync identity and scale must still match.
-Every original causal, justified repair/useful failing-seam and separate frozen
-ordinary-acceptance duty below remains live; no ancestor closes here.
+## Freeze, outcomes, timing and every original duty
 
-## Retained k34 proposal, not authorized for execution
+K36 must implement the enclosing finite caller before a runtime freeze. This
+producer supplies checked route/readers, not a launch/scenario/audit wrapper.
+After all review/integration/design obligations, freeze the actual signed subject
+with full regular-file/link inventory; the complete build/source/manifests,
+Taskfile, this protocol, route/readers/tests, dump/native observer binaries,
+logging/subsystem configuration, decoder and every consumed input. Complete all
+edits, actual input freeze and golden config/disk/NVRAM hashes before *any* clone.
+Digest these subjects before and after; no overlapping edit or second writer.
+Audit both installed endpoints where available, original archives/candidates and
+golden. Stop each exact clone, validating its identity and stopped result on
+success, failure and interruption. Never erase or retry a failed endpoint.
 
-This protocol selects a controllable activation condition before new runtime
-work: select the same highlighted Settings menu row with a mouse click or Return.
-It is a causal probe of the selection path. It does not change the activation
-API, window order, foreground application or product behavior to obtain a pass.
-The compiled native-interval recorder is ready for runtime qualification; this
-document alone does not establish its availability or symptom preservation.
-The revised causal interpretation must receive its scheduled fresh review before
-VM execution. Review findings may require revision before this set is frozen;
-they cannot silently change a set after it starts.
+Retain every scenario, inner/outer Task, native acquisition/render/package,
+collection/audit, environment, dump, endpoint and stop status separately. Keep
+all raw CLI/envelope/timeouts/-1/partials and NOT RUN phases. Matching stdout from
+failed transport stays failed. Later focused actions are NOT RUN after early
+stop; ordinary resize/minimum-size/content-height/scrolling, shortcuts,
+requests/denials, consent, silent launch, running-app reopen, login restart and
+Quit are NOT RUN in this protocol. Clone stop is cleanup.
 
-## Evidence and competing predictions
+A recorded measured failure qualifies symptom preservation only for that actual
+changed instrument and route, not timing neutrality or a reliability rate. No
+failure means preservation unknown. New polling/file/monitor and synchronous
+observer work and input timing stay explicit. Qualification guests do not
+conclude cause, justified product repair/useful failing seam or ordinary acceptance.
+The complete original-duty table in [CAUSAL-RESULTS.md](CAUSAL-RESULTS.md#every-original-duty)
+and the FOCUS/CLOCK/PERSISTED comparisons remains authoritative. Preserve
+historical diagnostic-02 classification, persisted symptom preservation, old
+strict false/empty joins and every historical cap, failure and NOT RUN.
 
-The [retained native input analysis](CAUSAL-RESULTS.md) reads the full saved
-persisted archive, including messages omitted by the older text predicate.
-WindowServer positively records beginDeferredActivation for mouse selection of
-the menu row in both the successful and failed-adjacent native sequences. It
-records an active TextEdit key-appearance request in the latter. This supports
-testing a mouse-selection interaction with foreground focus, not declaring that
-deferred activation or a TextEdit marker causes failure. The [independent marker
-counterexamples](FOCUS-RESULTS.md) still apply.
-
-The necessary-row-click hypothesis predicts that an unsuccessful activation
-requires clicking the Settings row. A positively qualified Return selection
-with a failed activation would refute the necessity of that row click. It would
-not refute a mouse-origin native context: both arms still mouse-open and hover
-the menu, and Return may inherit that context. The competing hypothesis is a
-modality-independent activation-context problem: matched foreground/window
-context can produce the same positive native
-disposition after either input. Different positive native processing/disposition
-under otherwise matched context would contradict that strict independence claim.
-Neither hypothesis predicts a failure rate. An all-green finite sample, or a
-mouse failure and keyboard success without a positive discriminator, settles
-neither. No absence of a native message establishes absence of processing.
-
-Apple's [cooperative activation guidance](https://developer.apple.com/documentation/appkit/passing-control-from-one-app-to-another-with-cooperative-activation)
-supports context-dependent requests. Its [current status-item guidance](https://developer.apple.com/videos/play/wwdc2026/289/)
-supports keyboard interaction and distinguishes a system-managed menu from custom
-expanded UI. In particular, the [expanded-interface delegate contract](https://developer.apple.com/documentation/appkit/nsstatusitem/expandedinterfacedelegate)
-says menu-backed items do not receive those callbacks. Adding a custom delegate,
-forcing session cancellation or an extra activation is not this intervention.
-Menu keyboard delivery must be positively qualified in the actual guest.
-
-## Finite set and matched state
-
-The separately named set is **modality-01 through modality-04**, in fixed
-mouse / Return / Return / mouse order. Use fresh clones named
-`koine-k12-modality-01` through `koine-k12-modality-04`. Each started clone consumes
-its slot, including preflight/transport failures and interrupted runs. At most
-one Settings selection is made in each clone. Never replace a slot, add a fifth,
-repeat a failed selection or extend a previous sample. No clone has started.
-The executing successor must implement and check this route, freeze its actual
-inputs, and record readiness before starting the first slot.
-
-Use the same newly built/signed candidate for all four slots, in a new
-`.build/settings-activation/modality/Koine.app` directory. Keep every historical
-candidate, especially `.build/settings-activation/events/Koine.app`, intact.
-This candidate preserves makeKeyAndOrderFront then NSApp.activate, with opt-in
-memory diagnostics and direct native call brackets. No tracing file, live
-native reader, changed activation policy, yield, alternate API, added activation,
-async deferral or activation retry is allowed. The historical persisted Debug
-configuration/acquisition can be reused under the new names; retain configuration
-and actual-path records, not just successful config commands.
-
-All slots use the same macOS 27 golden/build/architecture, TestAnyware version,
-1920×1080 display, installation route, preferences, first-launch setup and idle
-TextEdit document as the persisted reference. Retain environment/version and
-signature observations. Use the existing first-launch/default-frame/title,
-agent-policy/no-Dock/one-item checks and settled TextEdit setup. Close Settings
-once. Independently verify no Settings window and TextEdit frontmost with its
-same document window before opening the menu. Do not create a document panel,
-activate another app, or repair an unmatched foreground state after selection.
-
-Open the status menu using the settled pointer route in every slot. Move the
-pointer to the same Settings row using the same approach and target coordinates,
-without selecting it. Use the same read-only menu observation in both arms to
-verify its identity and highlighted state; if highlighting cannot be observed,
-record the failed precondition and stop that slot. Freeze the exact input API,
-coordinates, pointer-motion and observation commands before launch.
-
-- Mouse arm: one click on the highlighted Settings row.
-- Return arm: one Return key press while that same row is highlighted. Do not
-  use Command-comma, AXPress, arrow-key exploration, callback invocation or a
-  launch command as a substitute. Verify the actual Settings callback and
-  keyboard invocation context afterward. Unavailable delivery is a failed
-  instrument precondition, not an application activation failure.
-
-Both arms then perform the same existing one-window/front/focus observations
-and untouched failure capture, with the same bounds and no new wait/retry.
-Retain pointer transport, invocation type, event context and native input path.
-Return changes event kind and inherent delivery timing together. This experiment
-does not isolate a pure timing effect. Extra preselection observation and the
-new recorder affect timing equally by design, without proving timing neutrality.
-
-## Native relation and positive qualification
-
-In memory mode, SettingsActivationTrace caches kern.bootsessionuuid and
-mach_timebase_info from the observed process. Its application.activate.interval
-record contains decimal-string beforeTicks and afterTicks sampled with
-mach_continuous_time immediately around exactly one NSApp.activate call. The
-wrapper constructs its interval record after the call and reads metadata only
-at initialization. Existing observers can still record synchronously if AppKit
-posts notifications during activation; this work is inside the measured call,
-not excluded from the interval. No promise of deferred notification delivery,
-capture-free execution or timing neutrality is made. Ordinary and
-legacy-file modes take no new samples. Metadata failure remains an explicit
-nativeClockError; it does not prevent or retry activation.
-
-Before using a runtime interval, independently match the guest kernel boot UUID
-and scale with the saved archive bootUUID and Apple's timesync decoder. Require
-one process/image identity, zero dropped buffer rows, complete contiguous
-sequences, exactly one interval for that selection and ordered tick endpoints.
-Require the actual Koine client record to lie inside the exact closed interval
-in the same continuous clock. Reject missing/ambiguous candidates, reversed
-samples, wrong identity/scale and malformed metadata. No tick/uptime equality,
-wall-clock fit, tolerance, interval widening or host-clock substitution is allowed.
-An interval is an enclosing correlation bound, not a verified native transaction
-identifier. Keep asynchronous server processing distinct from the client call.
-
-Retain full raw archives and a broad native rendering with input/session/window
-context; the old message predicate omits useful endUserInteraction/order records.
-Use positive successful request/front-change/result/resume controls where they
-occur, buffered active/key transitions and independent native/agent/screenshot
-observations. Compare complete native context around every actual interval,
-including foreground identity, focus chain and TextEdit key-return requests.
-Qualify keyboard delivery, instrument availability, recorded failure preservation
-and timing separately. If no failure occurs, preservation is unknown.
-
-Native cause/disposition remains open unless positive evidence connects an
-unsuccessful actual request to its disposition and responsible condition. Green
-counts, a valid clock join, missing rows, -50/shared token fields, the terminal
-marker or an effective alternative input alone cannot establish it. A qualified
-Return failure can refute the necessity of clicking the row, while leaving
-shared mouse-open context unresolved. Require positive keyboard invocation
-evidence as well as clean input transport; a stale currentEvent alone cannot
-qualify delivery. Other
-outcomes may remain inconclusive; preserve them at the cap and state the precise
-remaining question, without promising this monitor can observe every refusal.
-
-## Freeze, cleanup and original duties
-
-Before the first slot, complete golden config/disk/NVRAM digests and freeze the
-actual signed candidate's full regular-file/link inventory, dump tool, complete
-build/source/manifests, Taskfile, protocol and every consumed input/helper/test,
-observer, logging configuration/filter/decoder and comparison reader. Complete
-all edits before hashing. No measurement overlaps an edit or another writer.
-Preserve timestamps and pre/post digests. Audit every original, both installed
-endpoints where available, and golden afterward. Stop every clone and validate
-its exact identity/stopped result even after interruption. Retain every raw
-transport, timeout, nonzero exit, partial archive and failed audit separately.
-Matching returned text from failed transport remains failed.
-
-This focused set ends after the sole selection/observation. Reopens 1–3 and all
-later complete-scenario phases are NOT RUN here: resize/minimum-size/content-height/
-scrolling, shortcuts, requests/denials, Accessibility consent, silent launch,
-running-app reopen, login restart and Quit. Clone stop is cleanup. All prior
-historical caps and failure classifications remain unchanged.
-
-Any justified product repair still needs a useful failing seam where feasible
-and one selection returning one front/focused Settings window. Driver waits,
-retries and repeated input are not repairs. Separately declare finite fresh-guest
-complete ordinary acceptance through app:vm-verify-menu-bar only after selecting
-the final repair subject. Freeze it and all inputs, disable diagnostics, retain
-all outcomes and address timing. This probe supplies no ordinary acceptance.
-If an external cause is established, preserve positive evidence/reproducer and
-leave the repair unresolved. No upstream report without Antony's approval;
-no release/notarization. Every original duty in FOCUS-RESULTS.md remains live.
+One Settings selection must ultimately return one front/focused window. No
+driver waits/retries/repeated input counts as repair. Any justified application
+repair needs its useful failing seam where feasible and a **separate** finite
+complete ordinary-acceptance set through app:vm-verify-menu-bar, actual final
+signed subject/all-input/completed-golden freeze, diagnostics disabled, retained
+outcomes and explicit timing limits. No repair subject is selected here. If
+external, keep positive evidence/reproducer and repair unresolved; no upstream
+report without Antony's approval. No release/notarization or causal ancestor
+closure follows from this producer or the narrow probe.

@@ -1,0 +1,56 @@
+task: [check:settings-causal-protocol] python3 -m py_compile docs/verification/settings-activation/causal-protocol.py
+task: [check:settings-causal-protocol] uvx ruff@0.17.3 check docs/verification/settings-activation/causal-protocol.py Tests/scripts/test_settings_causal_protocol.py
+All checks passed!
+task: [check:settings-causal-protocol] uvx pyright@1.1.414 docs/verification/settings-activation/causal-protocol.py
+0 errors, 0 warnings, 0 informations
+task: [check:settings-causal-protocol] uv run --with pytest==9.1.1 pytest -q Tests/scripts/test_settings_causal_protocol.py
+...............................................................          [100%]
+63 passed in 0.28s
+task: [check:settings-causal-protocol] swift build --build-tests
+Building for debugging...
+[Computing dependencies]
+[Using on-disk description]
+[1 / 1]
+[1 / 32] WorkspaceProviderLogicTests-product
+[1 / 94] GraphQL
+[1 / 122] KoineProviderAPI-product
+[1 / 7] WorkspaceProviderLogicTests-product
+[2 / 5] KoineApp-product
+[10 / 13] KoineApp-product
+[13 / 15] KoineApp-product
+Build complete! (3.27 sec.)
+task: [check:settings-causal-protocol] scripts/stage-provider-framework.sh debug
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Products/Debug/PackageFrameworks/KoineProviderAPI.framework
+task: [check:settings-causal-protocol] swift test --skip-build --filter 'SettingsActivationIntervalTests|SettingsEventBufferTests|SettingsMenuProbeRequestTests'
+􀟈  Test run started.
+􀄵  Testing Library Version: 2084
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Suite SettingsEventBufferTests started.
+􀟈  Suite SettingsActivationIntervalTests started.
+􀟈  Suite SettingsMenuProbeRequestTests started.
+􀟈  Test requestIsConsumedOnceWithFiniteLifetimeBudget() started.
+􀟈  Test realClockMetadataMatchesIndependentKernelQueries() started.
+􀟈  Test realContinuousClockEnclosesAnIndependentRead() started.
+􀟈  Test disabledMeasurementStillPerformsOperationOnce() started.
+􀟈  Test acceptsOnlyOneUUIDWithoutPathComponents() started.
+􀟈  Test overflowPreservesPrefixAndReportsEveryDroppedRecord() started.
+􀟈  Test failedDumpKeepsRecordsAvailable() started.
+􀟈  Test encodingKeepsTicksAsExactDecimalStrings() started.
+􀟈  Test clockMetadataRejectsUnknownBootAndInvalidScale() started.
+􁁛  Test acceptsOnlyOneUUIDWithoutPathComponents() passed after 0.001 seconds.
+􁁛  Test requestIsConsumedOnceWithFiniteLifetimeBudget() passed after 0.001 seconds.
+􁁛  Suite SettingsMenuProbeRequestTests passed after 0.001 seconds.
+􁁛  Test encodingKeepsTicksAsExactDecimalStrings() passed after 0.001 seconds.
+􁁛  Test disabledMeasurementStillPerformsOperationOnce() passed after 0.001 seconds.
+􁁛  Test realContinuousClockEnclosesAnIndependentRead() passed after 0.001 seconds.
+􀟈  Test samplesEncloseOneOperation() started.
+􀟈  Test outputIsExplicitNonDestructiveAndCannotOverwriteEvidence() started.
+􁁛  Test overflowPreservesPrefixAndReportsEveryDroppedRecord() passed after 0.001 seconds.
+􁁛  Test samplesEncloseOneOperation() passed after 0.001 seconds.
+􁁛  Test clockMetadataRejectsUnknownBootAndInvalidScale() passed after 0.001 seconds.
+􁁛  Test realClockMetadataMatchesIndependentKernelQueries() passed after 0.003 seconds.
+􁁛  Suite SettingsActivationIntervalTests passed after 0.003 seconds.
+􁁛  Test failedDumpKeepsRecordsAvailable() passed after 0.007 seconds.
+􁁛  Test outputIsExplicitNonDestructiveAndCannotOverwriteEvidence() passed after 0.009 seconds.
+􁁛  Suite SettingsEventBufferTests passed after 0.010 seconds.
+􁁛  Test run with 11 tests in 3 suites passed after 0.010 seconds.

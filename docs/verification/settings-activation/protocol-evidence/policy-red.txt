@@ -1,0 +1,312 @@
+...............................................FFFFFFFFFFFFFF            [100%]
+=================================== FAILURES ===================================
+_ test_control_policy_never_retries_setup[launch-True-PENDING-SETUP_PROVISIONAL] _
+
+stage = 'launch', success = True, joined = 'PENDING'
+next_action = 'SETUP_PROVISIONAL'
+
+    @pytest.mark.parametrize("stage, success, joined, next_action", [
+        ("launch", True, "PENDING", "SETUP_PROVISIONAL"),
+        ("launch", True, "ENCLOSED", "SETUP_PROVISIONAL"),
+        ("setup", True, "PENDING", "MEASURE_PROVISIONAL"),
+        ("launch", False, "PENDING", "STOP_SLOT"),
+        ("setup", False, "ENCLOSED", "STOP_SLOT"),
+        ("launch", True, "OUTSIDE", "STOP_SLOT"),
+        ("launch", True, "MISSING", "STOP_SLOT"),
+        ("launch", True, "AMBIGUOUS", "STOP_SLOT"),
+        ("setup", True, "INVALID", "STOP_SLOT"),
+    ])
+    def test_control_policy_never_retries_setup(stage, success, joined, next_action):
+>       assert protocol.control_policy(stage, success, joined)["next"] == next_action
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'causal_protocol' has no attribute 'control_policy'
+
+Tests/scripts/test_settings_causal_protocol.py:238: AttributeError
+_ test_control_policy_never_retries_setup[launch-True-ENCLOSED-SETUP_PROVISIONAL] _
+
+stage = 'launch', success = True, joined = 'ENCLOSED'
+next_action = 'SETUP_PROVISIONAL'
+
+    @pytest.mark.parametrize("stage, success, joined, next_action", [
+        ("launch", True, "PENDING", "SETUP_PROVISIONAL"),
+        ("launch", True, "ENCLOSED", "SETUP_PROVISIONAL"),
+        ("setup", True, "PENDING", "MEASURE_PROVISIONAL"),
+        ("launch", False, "PENDING", "STOP_SLOT"),
+        ("setup", False, "ENCLOSED", "STOP_SLOT"),
+        ("launch", True, "OUTSIDE", "STOP_SLOT"),
+        ("launch", True, "MISSING", "STOP_SLOT"),
+        ("launch", True, "AMBIGUOUS", "STOP_SLOT"),
+        ("setup", True, "INVALID", "STOP_SLOT"),
+    ])
+    def test_control_policy_never_retries_setup(stage, success, joined, next_action):
+>       assert protocol.control_policy(stage, success, joined)["next"] == next_action
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'causal_protocol' has no attribute 'control_policy'
+
+Tests/scripts/test_settings_causal_protocol.py:238: AttributeError
+_ test_control_policy_never_retries_setup[setup-True-PENDING-MEASURE_PROVISIONAL] _
+
+stage = 'setup', success = True, joined = 'PENDING'
+next_action = 'MEASURE_PROVISIONAL'
+
+    @pytest.mark.parametrize("stage, success, joined, next_action", [
+        ("launch", True, "PENDING", "SETUP_PROVISIONAL"),
+        ("launch", True, "ENCLOSED", "SETUP_PROVISIONAL"),
+        ("setup", True, "PENDING", "MEASURE_PROVISIONAL"),
+        ("launch", False, "PENDING", "STOP_SLOT"),
+        ("setup", False, "ENCLOSED", "STOP_SLOT"),
+        ("launch", True, "OUTSIDE", "STOP_SLOT"),
+        ("launch", True, "MISSING", "STOP_SLOT"),
+        ("launch", True, "AMBIGUOUS", "STOP_SLOT"),
+        ("setup", True, "INVALID", "STOP_SLOT"),
+    ])
+    def test_control_policy_never_retries_setup(stage, success, joined, next_action):
+>       assert protocol.control_policy(stage, success, joined)["next"] == next_action
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'causal_protocol' has no attribute 'control_policy'
+
+Tests/scripts/test_settings_causal_protocol.py:238: AttributeError
+___ test_control_policy_never_retries_setup[launch-False-PENDING-STOP_SLOT] ____
+
+stage = 'launch', success = False, joined = 'PENDING', next_action = 'STOP_SLOT'
+
+    @pytest.mark.parametrize("stage, success, joined, next_action", [
+        ("launch", True, "PENDING", "SETUP_PROVISIONAL"),
+        ("launch", True, "ENCLOSED", "SETUP_PROVISIONAL"),
+        ("setup", True, "PENDING", "MEASURE_PROVISIONAL"),
+        ("launch", False, "PENDING", "STOP_SLOT"),
+        ("setup", False, "ENCLOSED", "STOP_SLOT"),
+        ("launch", True, "OUTSIDE", "STOP_SLOT"),
+        ("launch", True, "MISSING", "STOP_SLOT"),
+        ("launch", True, "AMBIGUOUS", "STOP_SLOT"),
+        ("setup", True, "INVALID", "STOP_SLOT"),
+    ])
+    def test_control_policy_never_retries_setup(stage, success, joined, next_action):
+>       assert protocol.control_policy(stage, success, joined)["next"] == next_action
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'causal_protocol' has no attribute 'control_policy'
+
+Tests/scripts/test_settings_causal_protocol.py:238: AttributeError
+___ test_control_policy_never_retries_setup[setup-False-ENCLOSED-STOP_SLOT] ____
+
+stage = 'setup', success = False, joined = 'ENCLOSED', next_action = 'STOP_SLOT'
+
+    @pytest.mark.parametrize("stage, success, joined, next_action", [
+        ("launch", True, "PENDING", "SETUP_PROVISIONAL"),
+        ("launch", True, "ENCLOSED", "SETUP_PROVISIONAL"),
+        ("setup", True, "PENDING", "MEASURE_PROVISIONAL"),
+        ("launch", False, "PENDING", "STOP_SLOT"),
+        ("setup", False, "ENCLOSED", "STOP_SLOT"),
+        ("launch", True, "OUTSIDE", "STOP_SLOT"),
+        ("launch", True, "MISSING", "STOP_SLOT"),
+        ("launch", True, "AMBIGUOUS", "STOP_SLOT"),
+        ("setup", True, "INVALID", "STOP_SLOT"),
+    ])
+    def test_control_policy_never_retries_setup(stage, success, joined, next_action):
+>       assert protocol.control_policy(stage, success, joined)["next"] == next_action
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'causal_protocol' has no attribute 'control_policy'
+
+Tests/scripts/test_settings_causal_protocol.py:238: AttributeError
+____ test_control_policy_never_retries_setup[launch-True-OUTSIDE-STOP_SLOT] ____
+
+stage = 'launch', success = True, joined = 'OUTSIDE', next_action = 'STOP_SLOT'
+
+    @pytest.mark.parametrize("stage, success, joined, next_action", [
+        ("launch", True, "PENDING", "SETUP_PROVISIONAL"),
+        ("launch", True, "ENCLOSED", "SETUP_PROVISIONAL"),
+        ("setup", True, "PENDING", "MEASURE_PROVISIONAL"),
+        ("launch", False, "PENDING", "STOP_SLOT"),
+        ("setup", False, "ENCLOSED", "STOP_SLOT"),
+        ("launch", True, "OUTSIDE", "STOP_SLOT"),
+        ("launch", True, "MISSING", "STOP_SLOT"),
+        ("launch", True, "AMBIGUOUS", "STOP_SLOT"),
+        ("setup", True, "INVALID", "STOP_SLOT"),
+    ])
+    def test_control_policy_never_retries_setup(stage, success, joined, next_action):
+>       assert protocol.control_policy(stage, success, joined)["next"] == next_action
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'causal_protocol' has no attribute 'control_policy'
+
+Tests/scripts/test_settings_causal_protocol.py:238: AttributeError
+____ test_control_policy_never_retries_setup[launch-True-MISSING-STOP_SLOT] ____
+
+stage = 'launch', success = True, joined = 'MISSING', next_action = 'STOP_SLOT'
+
+    @pytest.mark.parametrize("stage, success, joined, next_action", [
+        ("launch", True, "PENDING", "SETUP_PROVISIONAL"),
+        ("launch", True, "ENCLOSED", "SETUP_PROVISIONAL"),
+        ("setup", True, "PENDING", "MEASURE_PROVISIONAL"),
+        ("launch", False, "PENDING", "STOP_SLOT"),
+        ("setup", False, "ENCLOSED", "STOP_SLOT"),
+        ("launch", True, "OUTSIDE", "STOP_SLOT"),
+        ("launch", True, "MISSING", "STOP_SLOT"),
+        ("launch", True, "AMBIGUOUS", "STOP_SLOT"),
+        ("setup", True, "INVALID", "STOP_SLOT"),
+    ])
+    def test_control_policy_never_retries_setup(stage, success, joined, next_action):
+>       assert protocol.control_policy(stage, success, joined)["next"] == next_action
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'causal_protocol' has no attribute 'control_policy'
+
+Tests/scripts/test_settings_causal_protocol.py:238: AttributeError
+___ test_control_policy_never_retries_setup[launch-True-AMBIGUOUS-STOP_SLOT] ___
+
+stage = 'launch', success = True, joined = 'AMBIGUOUS'
+next_action = 'STOP_SLOT'
+
+    @pytest.mark.parametrize("stage, success, joined, next_action", [
+        ("launch", True, "PENDING", "SETUP_PROVISIONAL"),
+        ("launch", True, "ENCLOSED", "SETUP_PROVISIONAL"),
+        ("setup", True, "PENDING", "MEASURE_PROVISIONAL"),
+        ("launch", False, "PENDING", "STOP_SLOT"),
+        ("setup", False, "ENCLOSED", "STOP_SLOT"),
+        ("launch", True, "OUTSIDE", "STOP_SLOT"),
+        ("launch", True, "MISSING", "STOP_SLOT"),
+        ("launch", True, "AMBIGUOUS", "STOP_SLOT"),
+        ("setup", True, "INVALID", "STOP_SLOT"),
+    ])
+    def test_control_policy_never_retries_setup(stage, success, joined, next_action):
+>       assert protocol.control_policy(stage, success, joined)["next"] == next_action
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'causal_protocol' has no attribute 'control_policy'
+
+Tests/scripts/test_settings_causal_protocol.py:238: AttributeError
+____ test_control_policy_never_retries_setup[setup-True-INVALID-STOP_SLOT] _____
+
+stage = 'setup', success = True, joined = 'INVALID', next_action = 'STOP_SLOT'
+
+    @pytest.mark.parametrize("stage, success, joined, next_action", [
+        ("launch", True, "PENDING", "SETUP_PROVISIONAL"),
+        ("launch", True, "ENCLOSED", "SETUP_PROVISIONAL"),
+        ("setup", True, "PENDING", "MEASURE_PROVISIONAL"),
+        ("launch", False, "PENDING", "STOP_SLOT"),
+        ("setup", False, "ENCLOSED", "STOP_SLOT"),
+        ("launch", True, "OUTSIDE", "STOP_SLOT"),
+        ("launch", True, "MISSING", "STOP_SLOT"),
+        ("launch", True, "AMBIGUOUS", "STOP_SLOT"),
+        ("setup", True, "INVALID", "STOP_SLOT"),
+    ])
+    def test_control_policy_never_retries_setup(stage, success, joined, next_action):
+>       assert protocol.control_policy(stage, success, joined)["next"] == next_action
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'causal_protocol' has no attribute 'control_policy'
+
+Tests/scripts/test_settings_causal_protocol.py:238: AttributeError
+___________ test_final_credit_requires_both_positive_native_controls ___________
+
+    def test_final_credit_requires_both_positive_native_controls():
+>       assert protocol.control_policy("final", True, "ENCLOSED", "ENCLOSED")["qualified"]
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'causal_protocol' has no attribute 'control_policy'
+
+Tests/scripts/test_settings_causal_protocol.py:242: AttributeError
+___________ test_native_completion_is_required_before_any_join[none] ___________
+
+native = [{'processID': 814, 'processImagePath': '/Applications/Koine.app/Contents/MacOS/Koine', 'processImageUUID': 'D1AF277B-BFEE-3EA8-9B15-F071B31B69F1', 'bootUUID': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', ...}]
+defect = 'none'
+
+    @pytest.mark.parametrize("defect", ["none", "partial", "count", "duplicate"])
+    def test_native_completion_is_required_before_any_join(native, defect):
+        rows = native + [{"count": 1, "finished": 1}]
+        if defect == "partial":
+            rows.pop()
+        elif defect == "count":
+            rows[-1]["count"] = 2
+        elif defect == "duplicate":
+            rows.append(rows[-1])
+        text = "\n".join(json.dumps(row) for row in rows)
+        if defect == "none":
+>           assert protocol.read_native(text) == native
+                   ^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'causal_protocol' has no attribute 'read_native'
+
+Tests/scripts/test_settings_causal_protocol.py:258: AttributeError
+_________ test_native_completion_is_required_before_any_join[partial] __________
+
+native = [{'processID': 814, 'processImagePath': '/Applications/Koine.app/Contents/MacOS/Koine', 'processImageUUID': 'D1AF277B-BFEE-3EA8-9B15-F071B31B69F1', 'bootUUID': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', ...}]
+defect = 'partial'
+
+    @pytest.mark.parametrize("defect", ["none", "partial", "count", "duplicate"])
+    def test_native_completion_is_required_before_any_join(native, defect):
+        rows = native + [{"count": 1, "finished": 1}]
+        if defect == "partial":
+            rows.pop()
+        elif defect == "count":
+            rows[-1]["count"] = 2
+        elif defect == "duplicate":
+            rows.append(rows[-1])
+        text = "\n".join(json.dumps(row) for row in rows)
+        if defect == "none":
+            assert protocol.read_native(text) == native
+        else:
+            with pytest.raises(ValueError):
+>               protocol.read_native(text)
+                ^^^^^^^^^^^^^^^^^^^^
+E               AttributeError: module 'causal_protocol' has no attribute 'read_native'
+
+Tests/scripts/test_settings_causal_protocol.py:261: AttributeError
+__________ test_native_completion_is_required_before_any_join[count] ___________
+
+native = [{'processID': 814, 'processImagePath': '/Applications/Koine.app/Contents/MacOS/Koine', 'processImageUUID': 'D1AF277B-BFEE-3EA8-9B15-F071B31B69F1', 'bootUUID': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', ...}]
+defect = 'count'
+
+    @pytest.mark.parametrize("defect", ["none", "partial", "count", "duplicate"])
+    def test_native_completion_is_required_before_any_join(native, defect):
+        rows = native + [{"count": 1, "finished": 1}]
+        if defect == "partial":
+            rows.pop()
+        elif defect == "count":
+            rows[-1]["count"] = 2
+        elif defect == "duplicate":
+            rows.append(rows[-1])
+        text = "\n".join(json.dumps(row) for row in rows)
+        if defect == "none":
+            assert protocol.read_native(text) == native
+        else:
+            with pytest.raises(ValueError):
+>               protocol.read_native(text)
+                ^^^^^^^^^^^^^^^^^^^^
+E               AttributeError: module 'causal_protocol' has no attribute 'read_native'
+
+Tests/scripts/test_settings_causal_protocol.py:261: AttributeError
+________ test_native_completion_is_required_before_any_join[duplicate] _________
+
+native = [{'processID': 814, 'processImagePath': '/Applications/Koine.app/Contents/MacOS/Koine', 'processImageUUID': 'D1AF277B-BFEE-3EA8-9B15-F071B31B69F1', 'bootUUID': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', ...}]
+defect = 'duplicate'
+
+    @pytest.mark.parametrize("defect", ["none", "partial", "count", "duplicate"])
+    def test_native_completion_is_required_before_any_join(native, defect):
+        rows = native + [{"count": 1, "finished": 1}]
+        if defect == "partial":
+            rows.pop()
+        elif defect == "count":
+            rows[-1]["count"] = 2
+        elif defect == "duplicate":
+            rows.append(rows[-1])
+        text = "\n".join(json.dumps(row) for row in rows)
+        if defect == "none":
+            assert protocol.read_native(text) == native
+        else:
+            with pytest.raises(ValueError):
+>               protocol.read_native(text)
+                ^^^^^^^^^^^^^^^^^^^^
+E               AttributeError: module 'causal_protocol' has no attribute 'read_native'
+
+Tests/scripts/test_settings_causal_protocol.py:261: AttributeError
+=========================== short test summary info ============================
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_control_policy_never_retries_setup[launch-True-PENDING-SETUP_PROVISIONAL]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_control_policy_never_retries_setup[launch-True-ENCLOSED-SETUP_PROVISIONAL]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_control_policy_never_retries_setup[setup-True-PENDING-MEASURE_PROVISIONAL]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_control_policy_never_retries_setup[launch-False-PENDING-STOP_SLOT]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_control_policy_never_retries_setup[setup-False-ENCLOSED-STOP_SLOT]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_control_policy_never_retries_setup[launch-True-OUTSIDE-STOP_SLOT]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_control_policy_never_retries_setup[launch-True-MISSING-STOP_SLOT]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_control_policy_never_retries_setup[launch-True-AMBIGUOUS-STOP_SLOT]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_control_policy_never_retries_setup[setup-True-INVALID-STOP_SLOT]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_final_credit_requires_both_positive_native_controls
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_native_completion_is_required_before_any_join[none]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_native_completion_is_required_before_any_join[partial]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_native_completion_is_required_before_any_join[count]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_native_completion_is_required_before_any_join[duplicate]
+14 failed, 47 passed in 0.18s

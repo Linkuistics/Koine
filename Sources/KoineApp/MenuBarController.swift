@@ -11,6 +11,7 @@ final class MenuBarController: NSObject, NSMenuDelegate {
     /// rule, which `AppDelegate` applies once.
     private let loginLaunch = LoginLaunchState.current
     private var model: MenuBarModel
+    private let probe = SettingsMenuProbe()
 
     init(openSettings: @escaping (SettingsSection?) -> Void) {
         self.openSettings = openSettings
@@ -71,17 +72,23 @@ final class MenuBarController: NSObject, NSMenuDelegate {
     }
 
     @objc private func chooseStatusLine(_ sender: NSMenuItem) {
-        SettingsActivationTrace.shared.beginSelection("statusLine")
+        SettingsActivationTrace.shared.beginSelection("statusLine", menuProbe: probe.invocation())
         openSettings(sender.representedObject as? SettingsSection)
     }
 
     @objc private func chooseSettings(_ sender: NSMenuItem) {
-        SettingsActivationTrace.shared.beginSelection("settings")
+        SettingsActivationTrace.shared.beginSelection("settings", menuProbe: probe.invocation())
         openSettings(nil)
     }
 
-    func menuWillOpen(_ menu: NSMenu) { SettingsActivationTrace.shared.record("menu.willOpen") }
-    func menuDidClose(_ menu: NSMenu) { SettingsActivationTrace.shared.record("menu.didClose") }
+    func menuWillOpen(_ menu: NSMenu) {
+        SettingsActivationTrace.shared.record("menu.willOpen")
+        probe.open(menu, settings: menu.items.first { $0.action == #selector(chooseSettings(_:)) })
+    }
+    func menuDidClose(_ menu: NSMenu) {
+        probe.close()
+        SettingsActivationTrace.shared.record("menu.didClose")
+    }
 
     /// `character.bubble` as a template image, so the menu bar tints it. The
     /// mark is a dot in the corner, knocked out of the bubble by a ring so it

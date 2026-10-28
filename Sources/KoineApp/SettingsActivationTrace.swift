@@ -33,6 +33,7 @@ final class SettingsActivationTrace: NSObject {
         let nativeClock: SettingsNativeClock?
         let nativeClockError: String?
         let activationInterval: SettingsActivationInterval?
+        let menuProbe: SettingsMenuProbe.Input?
     }
 
     private struct EventContext: Encodable {
@@ -113,10 +114,10 @@ final class SettingsActivationTrace: NSObject {
         record(bufferPath == nil ? "trace.started" : "buffer.started")
     }
 
-    func beginSelection(_ source: String) {
+    func beginSelection(_ source: String, menuProbe: SettingsMenuProbe.Input? = nil) {
         guard output != nil || bufferPath != nil else { return }
         selection += 1
-        record("callback.\(source)")
+        record("callback.\(source)", menuProbe: menuProbe)
     }
 
     /// Exactly one call, including when diagnostics are disabled or dumped.
@@ -136,7 +137,8 @@ final class SettingsActivationTrace: NSObject {
     }
 
     func record(
-        _ event: String, subjectPID: pid_t? = nil, activationInterval: SettingsActivationInterval? = nil
+        _ event: String, subjectPID: pid_t? = nil, activationInterval: SettingsActivationInterval? = nil,
+        menuProbe: SettingsMenuProbe.Input? = nil
     ) {
         if bufferPath != nil {
             guard !dumpRequested else { return }
@@ -154,7 +156,7 @@ final class SettingsActivationTrace: NSObject {
                 settingsWindow: window?.windowNumber ?? -1, settingsVisible: window?.isVisible ?? false,
                 subjectPID: subjectPID ?? -1, runLoopMode: RunLoop.current.currentMode?.rawValue ?? "",
                 currentEvent: current, nativeClock: nativeClock, nativeClockError: nativeClockError,
-                activationInterval: activationInterval
+                activationInterval: activationInterval, menuProbe: menuProbe
             ))
             return
         }

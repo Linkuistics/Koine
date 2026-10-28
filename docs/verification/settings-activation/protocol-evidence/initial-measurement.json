@@ -1,0 +1,9 @@
+{
+  "subjects": 10743,
+  "changed": [],
+  "tasks": {
+    "check:settings-causal-protocol": 0,
+    "check:docs": 201
+  },
+  "scope": "Repository inputs outside build/VCS/grove/caches; dependency checkout files; original persisted archive/extracted files; events bundle; primary API JSON. Output files excluded. Compiler/SDK/build outputs not inventoried; not a guest freeze."
+}

@@ -1,5 +1,12 @@
 # Settings reopen: recorded activation failure — 2026-10-28
 
+The [implemented protocol boundary](CAUSAL-PROTOCOL-RESULTS.md) supplies checked
+highlight/Return/transport/containment seams and fixed setup/control policies.
+Its narrow necessity question still lacks a finite falsifier for the unrestricted
+competing possibility. Producer review and the precise remaining causal-design
+work precede every guest, including route qualification. No new guest, product
+repair, ordinary acceptance or causal ancestor closure follows.
+
 The [native-call recorder and input-context slice](CAUSAL-RESULTS.md) adds direct
 tick brackets and observed-process boot/timebase metadata, with nine headless
 helper/buffer controls. [Review integration](CAUSAL-REVIEW.md) retains a positive

@@ -1,5 +1,17 @@
 # settings-causal-activation-repair-k33 — brief
 
+## Implemented narrow protocol boundary
+
+K38's CAUSAL-PROTOCOL-RESULTS.md records the implemented highlight/Return/transport
+and exact-containment seams, matched prior menu-selection control and explicit
+deferred native gates. No guest runs. The one-sided necessity probe does not meet
+this node's original two-sided prediction duty; its precise remaining design
+question is placed before every route/causal guest, with producer review and
+earned integration first. K36 retains runtime wrapper/readiness/actual signed
+freeze, positive disposition, justified product repair/useful failing seam and
+separate complete ordinary acceptance. All original criteria below remain and
+no causal ancestor closes.
+
 ## Review integration boundary
 
 K37 triages k35 in CAUSAL-REVIEW.md and adds the saved paired native appearance/

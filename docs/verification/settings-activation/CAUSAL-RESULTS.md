@@ -1,5 +1,15 @@
 # Native call recorder and a bounded selection-path question
 
+## Current protocol boundary
+
+[K38's implemented replacement](CAUSAL-PROTOCOL-RESULTS.md) supplies checked
+highlight/Return/transport/containment seams and preserves the prior proposal.
+It explicitly leaves k33's two-sided competing-prediction duty unmet: a precise
+causal-design question and this producer's review/every earned integration precede
+every guest, including route qualification. No guest or product repair occurs.
+The historical recorder/evidence report below remains unchanged as history;
+the new report's original-duty table carries every remaining obligation.
+
 The source now has opt-in direct native-tick brackets around the existing
 Settings activation call, with observed-kernel boot identity and timebase. Nine
 headless checks pass and the application builds. This supplies a tested recorder,
