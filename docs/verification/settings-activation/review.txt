@@ -1,0 +1,20 @@
+Sole in-session fresh-context review, before diagnostic collection.
+Scope: trace observation, opt-in hook, bounded protocol and runner.
+
+Findings, independently checked against the current source:
+1. Early activation failures skip the scenario's final installed inventory.
+   Actionable: the wrapper now inventories the installed endpoint on every exit,
+   after untouched native/window/screenshot failure observations.
+2. shasum -c alone misses new bundle files and symlink changes.
+   Actionable: regenerate the full relative regular-file/link inventory before
+   and after each attempt and compare it to the frozen full inventory.
+3. INT/TERM previously stopped the guest but skipped evidence collection.
+   Actionable: collect from the EXIT handler, preserve the incoming wrapper exit,
+   separately retain collection and stop statuses, then stop even if collection
+   fails. No scenario replay.
+
+Five executable controls cover early failure, added host file, changed host
+symlink, changed installed endpoint and interruption with artifact collection.
+All fail against the initial wrapper. All pass against the final wrapper after
+correcting a changed-endpoint test fixture that emitted invalid JSON.
+There was no second reviewer. These are script checks, not native acceptance.

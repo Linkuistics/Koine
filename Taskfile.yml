@@ -1473,6 +1473,18 @@ tasks:
     cmds:
       - bash docs/verification/menu-bar-samples/run.sh {{.CLI_ARGS}}
 
+  app:vm-settings-activation:
+    desc: Run one declared k12 diagnostic or repair attempt; protocol in docs/verification/settings-activation/PLAN.md
+    cmds:
+      - bash docs/verification/settings-activation/run.sh {{.CLI_ARGS}}
+
+  check:vm-settings-activation:
+    desc: Check complete bundle audits and evidence collection after failure or interruption without a VM
+    cmds:
+      - bash -n docs/verification/settings-activation/run.sh docs/verification/settings-activation/inventory.sh
+      - shellcheck docs/verification/settings-activation/run.sh docs/verification/settings-activation/inventory.sh
+      - bats Tests/scripts/vm-settings-activation.bats
+
   check:vm-menu-sample:
     desc: Check bounded sample evidence and failure cleanup without a VM
     cmds:

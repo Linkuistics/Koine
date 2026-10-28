@@ -181,3 +181,35 @@ controls, alongside the existing eight pointer and nine resize controls. One
 pre-freeze reviewer found two instrument gaps; mutation controls demonstrate the
 fixes. No release or upstream report was made. The finite measurement charter
 has been discharged without representing the unresolved issue as repaired.
+
+## Settings activation observation handoff
+
+Antony requested repair of Settings reopening at the finish proposal. K12
+decomposed into observation/evidence k13 and the remaining causal repair work.
+K13 adds opt-in callback/show/activation and native active/key-window observation
+without changing the application's call order or adding an input/focus retry.
+Its declared diagnostic sample stops at the first classified failure within a
+three-guest cap: 01 completes every scenario assertion; 02 reproduces Settings
+reopen 3 behind TextEdit. Attempt 03 must not start under this charter.
+
+In 02, Settings callback selection 4 reaches show and activation, with the window
+visible but the app inactive and no key window. No subsequent become-active/key
+notification is recorded. Prior selections in the same process record both.
+This classifies failed activation in the observed interval, rather than missing
+callback or an observed activation then lost. The callback runs in default
+run-loop mode after menu.didClose; menu-tracking deferral is no demonstrated
+repair. The recorded failure shows observation can preserve the symptom, without
+proving timing neutrality. Application/platform cause and product repair remain
+open under k12. No external ownership, rate or regression is established.
+
+Scenario/Task exits are 0/0 and 1/201. 01's final inventory exec and 02's native
+failure observer return complete agreeing text but report timeout/-1; neither
+is a successful native read. 02's screenshot and agent windows independently
+agree with the inactive-behind-TextEdit state before intervention. Its resize
+and every later assertion are NOT RUN. Host full bundle inventories and hashes
+match; 02's installed endpoint read is clean. Both guests stopped. Five focused
+capture controls, eight pointer controls and nine resize controls pass. The
+signed diagnostic candidate is not the released bundle and is unnotarized.
+The durable record and raw traces are in docs/verification/settings-activation.
+No release or upstream report was made. The successor owns a causal repair and
+its own bounded fresh-guest complete-scenario acceptance; k12 stays open.

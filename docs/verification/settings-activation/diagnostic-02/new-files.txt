@@ -1,0 +1,5 @@
+.build/vm-verify/menu-bar-20261028T141103-failure.png
+.build/vm-verify/menu-bar-20261028T141103-first-launch.png
+.build/vm-verify/menu-bar-20261028T141103-installed-before.txt
+.build/vm-verify/menu-bar-20261028T141103-over-textedit.png
+.build/vm-verify/menu-bar-20261028T141103.log

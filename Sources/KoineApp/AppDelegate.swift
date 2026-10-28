@@ -13,6 +13,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var menuBar: MenuBarController?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        SettingsActivationTrace.shared.record("application.didFinishLaunching")
         NSApp.mainMenu = MainMenu.make()
         // The item exists from launch to Quit, before the server is up; it
         // shows no status until there is one.
@@ -107,6 +108,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     /// until it activates itself:
     /// https://developer.apple.com/documentation/appkit/nsapplication/activate()
     private func showSettingsWindow(at section: SettingsSection?) {
+        SettingsActivationTrace.shared.record("show.enter")
         guard let server, let port else { return }
         if window == nil {
             let view = ManagementView(
@@ -126,8 +128,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             self.window = window
         }
         if let section { navigation.show(section) }
+        SettingsActivationTrace.shared.record("window.makeKeyAndOrderFront.before")
         window?.makeKeyAndOrderFront(nil)
+        SettingsActivationTrace.shared.record("window.makeKeyAndOrderFront.after")
+        SettingsActivationTrace.shared.record("application.activate.before")
         NSApp.activate()
+        SettingsActivationTrace.shared.record("application.activate.after")
     }
 
     private func fail(_ message: String, detail: String) {

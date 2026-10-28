@@ -1,0 +1,62 @@
+[
+  {
+    "selection": 1,
+    "events": [
+      {
+        "event": "application.activate.after",
+        "unixTime": 1793156351.619967,
+        "active": false
+      },
+      {
+        "event": "NSApplicationDidBecomeActiveNotification",
+        "unixTime": 1793156351.65692,
+        "active": true
+      }
+    ]
+  },
+  {
+    "selection": 2,
+    "events": [
+      {
+        "event": "application.activate.after",
+        "unixTime": 1793156387.421479,
+        "active": false
+      },
+      {
+        "event": "NSApplicationDidBecomeActiveNotification",
+        "unixTime": 1793156387.4325919,
+        "active": true
+      }
+    ]
+  },
+  {
+    "selection": 3,
+    "events": [
+      {
+        "event": "application.activate.after",
+        "unixTime": 1793156393.0417252,
+        "active": false
+      },
+      {
+        "event": "NSApplicationDidBecomeActiveNotification",
+        "unixTime": 1793156393.0484109,
+        "active": true
+      }
+    ]
+  },
+  {
+    "selection": 4,
+    "events": [
+      {
+        "event": "application.activate.after",
+        "unixTime": 1793156398.7595758,
+        "active": false
+      },
+      {
+        "event": "NSApplicationDidBecomeActiveNotification",
+        "unixTime": 1793156398.766001,
+        "active": true
+      }
+    ]
+  }
+]

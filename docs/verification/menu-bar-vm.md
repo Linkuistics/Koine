@@ -18,6 +18,15 @@ one 0.4.0 failure at repeated Settings activation. Resize and later assertions
 were NOT RUN in the failed attempts. Activation remains unresolved; these
 finite observations establish no release regression or reliability rate.
 
+The subsequent [instrumented Settings investigation](settings-activation/README.md)
+reproduced reopen 3 while recording callback, show and activation boundaries.
+The callback and activation request ran, with no subsequent recorded activation
+or key-window transition for that selection. This classifies failed activation
+in the observed interval; the cause and product repair remain open. Its first
+guest completed every assertion, and its second stopped before resize and all
+later assertions. This diagnostic candidate is separate from the released
+bundles and the k4 comparison; no release or reliability claim follows.
+
 ## Procedure
 
 ```sh

@@ -77,6 +77,9 @@ record_installed_bundle() {
 start_vm
 install_app
 record_installed_bundle before
+if [ "${KOINE_SETTINGS_TRACE:-0}" = 1 ]; then
+    guest 'defaults write dev.antony.Koine KoineSettingsActivationTrace -string /Users/admin/settings-activation.jsonl'
+fi
 testanyware file upload scripts/vm-verify-enrollment-client.py /Users/admin/vm-verify-enrollment-client.py >/dev/null
 grant_system_events_automation
 

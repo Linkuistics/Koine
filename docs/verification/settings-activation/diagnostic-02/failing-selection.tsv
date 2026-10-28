@@ -1,0 +1,6 @@
+89	1793157517.143379	callback.settings	false	-1	com.apple.TextEdit	kCFRunLoopDefaultMode
+90	1793157517.1434221	show.enter	false	-1	com.apple.TextEdit	kCFRunLoopDefaultMode
+91	1793157517.1434488	window.makeKeyAndOrderFront.before	false	-1	com.apple.TextEdit	kCFRunLoopDefaultMode
+92	1793157517.144069	window.makeKeyAndOrderFront.after	false	-1	com.apple.TextEdit	kCFRunLoopDefaultMode
+93	1793157517.1441431	application.activate.before	false	-1	com.apple.TextEdit	kCFRunLoopDefaultMode
+94	1793157517.144757	application.activate.after	false	-1	com.apple.TextEdit	kCFRunLoopDefaultMode

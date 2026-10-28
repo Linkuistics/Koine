@@ -4,7 +4,7 @@ import KoineManagementClient
 /// The one menu bar item, from launch to Quit. It renders `MenuBarModel` and
 /// holds nothing of its own: the lines, the dot and the label are the model's.
 @MainActor
-final class MenuBarController: NSObject {
+final class MenuBarController: NSObject, NSMenuDelegate {
     private let item: NSStatusItem
     private let openSettings: (SettingsSection?) -> Void
     /// The item shows nothing of login launch; the model takes it for the launch
@@ -53,6 +53,7 @@ final class MenuBarController: NSObject {
 
     private func makeMenu() -> NSMenu {
         let menu = NSMenu()
+        menu.delegate = self
         for line in model.statusLines {
             let entry = NSMenuItem(title: line.title, action: #selector(chooseStatusLine(_:)), keyEquivalent: "")
             entry.target = self
@@ -70,10 +71,17 @@ final class MenuBarController: NSObject {
     }
 
     @objc private func chooseStatusLine(_ sender: NSMenuItem) {
+        SettingsActivationTrace.shared.beginSelection("statusLine")
         openSettings(sender.representedObject as? SettingsSection)
     }
 
-    @objc private func chooseSettings(_ sender: NSMenuItem) { openSettings(nil) }
+    @objc private func chooseSettings(_ sender: NSMenuItem) {
+        SettingsActivationTrace.shared.beginSelection("settings")
+        openSettings(nil)
+    }
+
+    func menuWillOpen(_ menu: NSMenu) { SettingsActivationTrace.shared.record("menu.willOpen") }
+    func menuDidClose(_ menu: NSMenu) { SettingsActivationTrace.shared.record("menu.didClose") }
 
     /// `character.bubble` as a template image, so the menu bar tints it. The
     /// mark is a dot in the corner, knocked out of the bubble by a ring so it

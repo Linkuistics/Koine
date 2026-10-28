@@ -1,0 +1,36 @@
+task: [check:vm-settings-activation] bash -n docs/verification/settings-activation/run.sh docs/verification/settings-activation/inventory.sh
+task: [check:vm-settings-activation] shellcheck docs/verification/settings-activation/run.sh docs/verification/settings-activation/inventory.sh
+task: [check:vm-settings-activation] bats Tests/scripts/vm-settings-activation.bats
+1..5
+ok 1 an early scenario failure still audits the installed endpoint and stops the guest
+ok 2 an added bundle file fails the complete inventory audit
+ok 3 a changed symlink fails the complete inventory audit
+ok 4 a changed installed endpoint fails even after a passing scenario
+ok 5 an interrupted attempt collects trace and artifacts before stopping without replay
+task: [check:vm-menu-pointer] bash -n scripts/vm-menu-pointer-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+task: [check:vm-menu-pointer] shellcheck -x scripts/vm-menu-pointer-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+task: [check:vm-menu-pointer] shfmt -d -i 4 scripts/vm-menu-pointer-lib.sh
+task: [check:vm-menu-pointer] bats Tests/scripts/vm-menu-pointer.bats
+1..8
+ok 1 menu-bar centre at y=7 retains its target and never sends -1
+ok 2 ordinary frame retains the old approach and centre
+ok 3 display corners retain their targets with a distinct on-screen approach
+ok 4 invalid frame observations fail before any pointer input
+ok 5 pointer transport failure stops before the click even in a conditional caller
+ok 6 missing or malformed display dimensions never send pointer input
+ok 7 an out-of-display destination is refused rather than moved to another target
+ok 8 a failed move stops the action even when the caller tests its status
+task: [check:vm-window-resize] bash -n scripts/vm-window-resize-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+task: [check:vm-window-resize] shellcheck -x scripts/vm-window-resize-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+task: [check:vm-window-resize] shfmt -d -i 4 scripts/vm-window-resize-lib.sh
+task: [check:vm-window-resize] bats Tests/scripts/vm-window-resize.bats
+1..9
+ok 1 resize sends a held-button path through the selected corner to its destination
+ok 2 an explicit title selects the ordinary-window corner without changing its destination
+ok 3 a failed pointer preparation never presses the button in a conditional caller
+ok 4 a failed initial down attempts release and preserves the failure
+ok 5 a failed held point releases there and stops instead of masking the error
+ok 6 a failed final release is returned rather than hidden by sleep
+ok 7 the scenario refuses a failed frame read even when it emitted valid geometry
+ok 8 the scenario refuses content below 320 even when the outer frame is 440 by 352
+ok 9 the scenario accepts the observed minimum only with at least 320 content pixels

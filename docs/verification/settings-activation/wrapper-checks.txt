@@ -1,0 +1,9 @@
+task: [check:vm-settings-activation] bash -n docs/verification/settings-activation/run.sh docs/verification/settings-activation/inventory.sh
+task: [check:vm-settings-activation] shellcheck docs/verification/settings-activation/run.sh docs/verification/settings-activation/inventory.sh
+task: [check:vm-settings-activation] bats Tests/scripts/vm-settings-activation.bats
+1..5
+ok 1 an early scenario failure still audits the installed endpoint and stops the guest
+ok 2 an added bundle file fails the complete inventory audit
+ok 3 a changed symlink fails the complete inventory audit
+ok 4 a changed installed endpoint fails even after a passing scenario
+ok 5 an interrupted attempt collects trace and artifacts before stopping without replay

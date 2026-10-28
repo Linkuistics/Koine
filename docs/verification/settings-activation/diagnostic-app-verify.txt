@@ -1,0 +1,23 @@
+task: [app:verify] scripts/verify-app.sh
+App/Info.plist LSMinimumSystemVersion: 26.0 (major 26)
+Assembled bundle checked: .build/app/Koine.app
+Every site states the macOS 26.0 floor.
+--prepared:/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/app/Koine.app/Contents/PlugIns/Desktop.koineprovider
+--prepared:/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/app/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+--validated:/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/app/Koine.app/Contents/PlugIns/Desktop.koineprovider
+--prepared:/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/app/Koine.app/Contents/PlugIns/Workspace.koineprovider
+--validated:/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/app/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+--validated:/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/app/Koine.app/Contents/PlugIns/Workspace.koineprovider
+.build/app/Koine.app: valid on disk
+.build/app/Koine.app: satisfies its Designated Requirement
+.build/app/Koine.app/Contents/PlugIns/Desktop.koineprovider: valid on disk
+.build/app/Koine.app/Contents/PlugIns/Desktop.koineprovider: satisfies its Designated Requirement
+.build/app/Koine.app/Contents/PlugIns/Workspace.koineprovider: valid on disk
+.build/app/Koine.app/Contents/PlugIns/Workspace.koineprovider: satisfies its Designated Requirement
+Designated requirement:
+  identifier "dev.antony.Koine" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = TA43A4RUP3
+Processing: /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/app/Koine.app
+Koine.app does not have a ticket stapled to it.
+Error: .build/app/Koine.app carries no stapled notarization ticket.
+  Koine is released notarized. Run: task app:notarize
+task: Failed to run task "app:verify": exit status 1

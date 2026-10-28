@@ -1,0 +1,1 @@
+Uploaded docs/verification/settings-activation/inventory.sh → /Users/admin/k12-inventory.sh
