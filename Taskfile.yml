@@ -1507,6 +1507,28 @@ tasks:
       - shellcheck -x -e SC2034 docs/verification/settings-activation/order-prefix.sh docs/verification/settings-activation/order-run.sh
       - task: check:vm-settings-activation
 
+  app:vm-settings-native:
+    desc: Run native-log qualification 01 or 02; see settings-activation/NATIVE-PLAN.md
+    cmds:
+      - bash docs/verification/settings-activation/native-run.sh {{.CLI_ARGS}}
+
+  app:vm-settings-native-scenario:
+    desc: Run the unchanged Settings prefix with a guest unified-log sidecar
+    cmds:
+      - |
+        status=0
+        bash docs/verification/settings-activation/native-prefix.sh || status=$?
+        if [ -n "${KOINE_K4_OUT:-}" ]; then printf '%s\n' "${status}" > "${KOINE_K4_OUT}/scenario.exit"; fi
+        exit "${status}"
+
+  check:vm-settings-native:
+    desc: Check native-log experiment syntax and existing capture controls without a VM
+    cmds:
+      - bash -n docs/verification/settings-activation/native-prefix.sh docs/verification/settings-activation/native-run.sh docs/verification/settings-activation/native-guest-log.sh docs/verification/settings-activation/native-start.sh docs/verification/settings-activation/native-guest-stop.sh
+      - shellcheck -x -e SC2034 docs/verification/settings-activation/native-prefix.sh docs/verification/settings-activation/native-run.sh docs/verification/settings-activation/native-guest-log.sh docs/verification/settings-activation/native-start.sh docs/verification/settings-activation/native-guest-stop.sh
+      - bats Tests/scripts/vm-settings-native.bats Tests/scripts/vm-settings-native-stop.bats
+      - task: check:vm-settings-activation
+
   check:vm-menu-sample:
     desc: Check bounded sample evidence and failure cleanup without a VM
     cmds:

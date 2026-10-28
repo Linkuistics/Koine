@@ -1,0 +1,1 @@
+/Users/admin/native-guest-log.sh: line 16:   875 Terminated: 15          /usr/bin/log stream --style ndjson --level debug --timeout 15m --predicate 'process IN {"Koine", "WindowServer", "Dock", "TextEdit", "runningboardd", "loginwindow", "lsd", "coreservicesd"}' > stream.jsonl 2> stream.stderr

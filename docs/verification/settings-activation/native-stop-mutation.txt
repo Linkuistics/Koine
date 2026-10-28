@@ -1,0 +1,10 @@
+1..3
+not ok 1 native stop rejects a logger that ended before collection
+# (in test file Tests/scripts/vm-settings-native-stop.bats, line 18)
+#   `[[ "${status}" != 0 ]]' failed
+not ok 2 native stop rejects a missing process without claiming intentional stop
+# (in test file Tests/scripts/vm-settings-native-stop.bats, line 25)
+#   `[[ "${status}" != 0 ]]' failed
+not ok 3 native stop signals a live logger and waits for its recorded exit
+# (in test file Tests/scripts/vm-settings-native-stop.bats, line 46)
+#   `[[ "${completed_before_cleanup}" == 1 ]]' failed

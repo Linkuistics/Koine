@@ -1,0 +1,1 @@
+Downloaded /Users/admin/settings-activation.jsonl → /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/settings-activation/native/01/trace.jsonl

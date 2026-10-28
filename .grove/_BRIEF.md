@@ -234,3 +234,22 @@ shortcuts, consent, client-request, restart or Quit acceptance. Full outcomes an
 the precise missing native observation are in
 docs/verification/settings-activation/ORDER-RESULTS.md. K12 remains open; no
 release, notarization or upstream report was made.
+
+## Native activation-path qualification handoff
+
+K17 completes a new two-guest native-log qualification on the unchanged signed
+diagnostic candidate. Both guests pass all four Settings actions. The actual
+NSApp interval correlates to a native client call, WindowServer front change
+and resume, followed by active/key notifications. This is a successful reference
+for the missing native observation, with no failed disposition or cause. The
+wide debug stream adds substantial load and leaves synchronous trace timing in
+place; preservation of the symptom under that instrument is unestablished.
+
+All recorded scenario, native capture, endpoint, host/golden audit and clone-stop
+outcomes pass. Resize and all later full-scenario phases are NOT RUN in these
+focused guests. All original failures and incomplete assertions remain. K16
+decomposes to completed native evidence k17 and remaining activation-context
+repair k18. Every original k12/k14/k16 causal repair and ordinary-operation
+acceptance obligation remains live; no completed sample may be extended. The
+durable report is docs/verification/settings-activation/NATIVE-RESULTS.md. No
+product change, ordinary acceptance, release, notarization or upstream report.

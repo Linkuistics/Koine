@@ -1,0 +1,18 @@
+One pre-guest fresh-context reviewer inspected the native plan, wrapper,
+prefix, logger and Taskfile against the bounded capture contract.
+
+Finding 1 (valid/actionable): guest() startup/readiness retries discard failed
+transports. Replaced both calls with one raw JSON exec in native-start.sh,
+requiring clean CLI and envelope outcomes. A timeout is retained and never
+replayed. Three focused controls pass for timeout, bad envelope and clean result.
+
+Finding 2 (valid/actionable): stop could mask kill failure or accept a logger
+that had already ended. native-guest-stop.sh now rejects prior completion and a
+missing process, records the intentional stop, requires a successful signal and
+waits for recorded completion. native-run.sh also validates the raw stop envelope.
+Three headless controls pass; an always-successful stop mutant fails all three.
+
+Both fixes are covered at executable script seams. No second reviewer was
+materialized. These controls test transport/cleanup logic, not native activation
+or completeness of macOS logging. Liveness at startup and stop is not continuous
+capture certification. The native log still needs qualification in the guests.

@@ -1130,3 +1130,21 @@ match and every clone stops. Resize and every later complete scenario phase are
 NOT RUN in all four focused attempts. These observations are separate from all
 earlier complete scenarios and supply no reliability rate or external cause.
 The linked report names the remaining native request/disposition observation.
+
+## Settings activation: native-log qualification
+
+The [subsequent two-guest native-log qualification](settings-activation/NATIVE-RESULTS.md)
+passes all four Settings actions in both fresh guests on the unchanged signed
+diagnostic candidate. Native records correlate the existing NSApp call with a
+WindowServer front-process change and resume, followed by active/key
+notifications. These are successful actual-path controls. No failure occurs in
+the fixed bound, so the failed disposition and responsible condition remain
+unresolved. The added debug-log load and synchronous trace can affect timing;
+the sample establishes no repair or ordinary-operation reliability.
+
+All recorded capture, endpoint, subject/golden audit and clone-stop outcomes
+pass. Resize and every later complete-scenario phase are NOT RUN. Original
+failures/classifications remain unchanged, and no completed sample may be
+extended. The remaining work owns activation-context discrimination, an
+application repair where justified, and separately declared complete acceptance
+with diagnostics disabled. No product change, release or upstream report.

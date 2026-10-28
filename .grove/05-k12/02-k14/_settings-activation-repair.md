@@ -137,3 +137,21 @@ Settings-activation-native-path-k16 carries the remaining causal question and
 every original repair/acceptance obligation. Note that the existing run.sh
 enables tracing for both diagnostic and repair stages; its repair stage cannot
 silently qualify ordinary behavior with diagnostics disabled.
+
+## Native-path qualification handoff
+
+K16 decomposes after k17's fixed two-guest native-log qualification. Both guests
+pass all four Settings actions. Native records correlate the existing NSApp
+call with WindowServer's successful front-process change and resume, followed
+by active/key notifications. A token-check result of -50 and an inactive-window
+ordering warning also occur in success; neither supplies a failed-activation
+classifier. No failed native disposition is observed in this bound.
+
+All recorded native startup/stop, final installed/environment and scenario
+outcomes are clean; every subject/inventory and golden-image comparison matches
+and both clones stop. The full debug streams add substantial load and retain
+synchronous application tracing. This instrument has no symptom-preservation
+qualification. K18 owns the remaining context discrimination, application repair
+and ordinary-operation complete acceptance, including a reduced filter/trace
+timing question under a new protocol. No completed sample may be extended.
+NATIVE-RESULTS.md retains every outcome and unmet criterion. K14/k12 stay open.

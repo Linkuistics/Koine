@@ -1,0 +1,11 @@
+{
+  "lines": 150995,
+  "json": 150994,
+  "nonJSON": [
+    "Filtering the log data using \"process IN {\"Koine\", \"WindowServer\", \"Dock\", \"TextEdit\", \"runningboardd\", \"loginwindow\", \"lsd\", \"coreservicesd\"}\""
+  ],
+  "types": {
+    "logEvent": 147659,
+    "activityCreateEvent": 3335
+  }
+}

@@ -131,3 +131,21 @@ No timeout is promoted to a successful read. Resize and every later complete
 scenario phase are NOT RUN in all four focused attempts. The result is in
 settings-activation/ORDER-RESULTS.md. All original k12 criteria remain in force;
 there is still no product repair or ordinary-operation complete acceptance.
+
+## Native-path qualification handoff
+
+K17's two fresh guests pass all four Settings actions with the unchanged signed
+diagnostic candidate and native unified-log capture. The logs now supply a
+successful actual-NSApp reference: client call, WindowServer front change and
+resume, then active/key notifications. No failure occurs under this added
+instrument, so cause and repair remain open. Its logging load and synchronous
+trace retain the timing limitation. All recorded endpoint/collection/cleanup
+outcomes and subject/golden comparisons pass. Full-scenario phases after the
+Settings prefix remain NOT RUN.
+
+K16 decomposes to preserve that completed evidence slice and carry the remaining
+activation-context discrimination and every original repair/ordinary acceptance
+criterion into k18. Do not extend the two-guest native sample or either earlier
+completed sample. The durable report is settings-activation/NATIVE-RESULTS.md.
+No product change, release, notarization or upstream report occurred; k12 stays
+open against its unmet causal repair and complete ordinary-operation criteria.

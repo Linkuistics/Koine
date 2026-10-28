@@ -213,3 +213,21 @@ samples remain closed to further attempts; Settings activation remains unresolve
 `task check:vm-settings-order` checks the focused scripts and existing capture
 controls without a VM. The `app:vm-settings-order` Task entries retain the exact
 finite experiment route; they do not authorize resetting the completed sample.
+
+## Subsequent native-log qualification
+
+The [separate two-guest native-log qualification](NATIVE-RESULTS.md) passes all
+four Settings actions in both guests. It correlates the actual NSApp call to a
+native client call, WindowServer front-process change/resume and active/key
+notifications. This supplies successful controls for the native path. No failed
+case occurs under the added instrument, so its request/disposition behavior on
+failure and its preservation of the symptom remain unqualified. The broad
+debug stream and synchronous trace can affect timing.
+
+Every recorded scenario, native capture, installed/host inventory, golden hash
+and clone-stop outcome passes. All full-scenario phases after the Settings
+prefix remain NOT RUN. The fixed native sample has reached its cap and must not
+be extended. All original failed evidence remains; Settings activation is still
+unresolved, with no product repair or ordinary-operation complete acceptance.
+The linked report identifies the remaining context/trace-timing question and
+preserves raw compressed native logs. No release or upstream report occurred.
