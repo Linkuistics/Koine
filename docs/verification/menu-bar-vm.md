@@ -29,6 +29,13 @@ bundles and the k4 comparison; no release or reliability claim follows.
 
 ## Procedure
 
+The latest [native-call recorder/input-context handoff](settings-activation/CAUSAL-RESULTS.md)
+adds tested direct continuous-tick brackets and guest-process clock metadata for
+future observation. Its fixed mouse/Return selection comparison awaits protocol
+review and actual runtime freeze. No new guest, justified repair or complete
+ordinary acceptance ran; historical strict false joins, failures and NOT RUN
+phases remain. This does not close the Settings activation outcome.
+
 ```sh
 task app                    # build and sign .build/app/Koine.app on the host
 task app:vm-verify-menu-bar # scripts/vm-verify-menu-bar.sh: everything below, in a fresh VM

@@ -132,7 +132,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         window?.makeKeyAndOrderFront(nil)
         SettingsActivationTrace.shared.record("window.makeKeyAndOrderFront.after")
         SettingsActivationTrace.shared.record("application.activate.before")
-        NSApp.activate()
+        SettingsActivationTrace.shared.measureActivation { NSApp.activate() }
         SettingsActivationTrace.shared.record("application.activate.after")
     }
 

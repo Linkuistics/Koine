@@ -1,0 +1,32 @@
+Sole in-session reviewer: interval_protocol_review (read-only, fresh context).
+Artifacts: native interval/metadata helper, AppKit trace/call integration, focused
+controls, two Taskfile entries and CAUSAL-PLAN.md. Contract included exactly one
+activation, native bounds, opt-in bypass, faithful metadata/error state and finite
+matched causal interpretation with every original duty retained.
+
+P2, SettingsActivationTrace.swift:124: Registered observers may synchronously
+record during NSApp.activate. No exclusion exists. This contradicts the initial
+protocol's capture-outside-samples statement. Historical persisted notifications
+arrived after return; synchronous delivery was not reproduced in the target guest.
+Correction options: guard observations and disclose loss, or revise/qualify the
+contract. Apple documents synchronous NotificationCenter delivery.
+
+P2, CAUSAL-PLAN.md:21: Return does not establish removal of all mouse-origin
+native context, since both arms mouse-open/hover the menu. Keyboard failure alone
+cannot refute necessity of a deferred-mouse native path. Require independent
+manipulation qualification or narrow the hypothesis to clicking the row itself.
+
+No other actionable defect in the bounded artifacts; no edits/tests/VM actions.
+Graph unavailable before project/generation discovery, so source claims bounded.
+
+Reconciliation:
+1. Contract stated too broadly. The required observation is a bound around the
+actual call, including any existing synchronous observers it invokes. Preserve
+those observations rather than silently drop them. Correct the source comment
+and protocol; explicitly retain the workload/timing limitation. The one-operation
+and native enclosure tests cover the helper, not AppKit notification timing.
+2. Valid/actionable. Narrow necessity to clicking the Settings row, require
+positive keyboard invocation evidence (not merely stale currentEvent), and keep
+shared mouse-open context unresolved. This changes causal interpretation rather
+than proving a mechanism. Schedule a tree review of the revised artifact before
+any runtime work, without spending a second in-session reviewer.

@@ -1,4 +1,4 @@
-# settings-causal-activation-repair-k33
+# settings-causal-activation-repair-k33 — brief
 
 ## Goal
 Establish a supported causal activation intervention, measure actual native
@@ -69,3 +69,72 @@ recorded transports/endpoints/final environment clean; original frozen inputs
 and golden hashes matched at that run's close; clone stopped. Reopens 2/3,
 resize/minimum-size/content-height/scrolling, shortcuts, requests/denials, consent,
 silent launch, running-app reopen, login restart and Quit remain NOT RUN there.
+
+## Decisions (running log)
+
+- 2026-10-28: Adopt the mandated impl leaf. Graph list_projects refuses before
+  project/generation discovery with the pre-coordination/unverified-generation
+  error; use bounded direct source and evidence reads without interrupting CBM
+  sessions. The jj working copy starts clean at afe275db.
+- 2026-10-28: Inspect remaining independent saved evidence before runtime work:
+  render the full local persisted archive for WindowServer/Koine/TextEdit/lsd in
+  the fixed 06:05:55–06:06:10 UTC interval, without the earlier message filter.
+  The first path was absent and exits nonzero; the retained archive-audit path
+  renders successfully. This is offline exploration, not a new guest, qualified
+  application/native join or repetition of k32's marker extraction. Preserve the
+  original archive/candidate, strict false joins and every closed cap.
+- 2026-10-28: Select selection modality as the controllable condition: click the
+  Settings row versus navigate that same already-open menu and press Return.
+  Saved WindowServer records positively show beginDeferredActivation on mouse
+  row selection in both outcomes; the full archive adds endUserInteraction and
+  orderWindowFront context. Neither sequence alone proves rejection. Test a
+  mouse-path interaction against modality-independent rejection, with identical
+  app/window/foreground setup; keyboard success alone cannot justify a repair.
+
+## Implementation plan
+
+1. Add failing headless checks for exactly one measured operation, disabled
+   clock bypass, exact tick encoding and valid same-kernel boot/timebase metadata.
+   Implement SettingsActivationInterval/SettingsNativeClock in KoineAppDiagnostics.
+2. Wrap only the existing NSApp.activate call, with direct continuous-tick samples
+   and no record construction between samples and call. Cache metadata only in
+   opt-in memory mode. Preserve the old signed events candidate unchanged.
+3. Preserve a reproducible full-archive native-input comparison and primary API
+   evidence, then specify the finite matched modality protocol and its limits.
+4. Verify headless controls/build and audit originals. If runtime qualification,
+   causal disposition/repair and separate ordinary acceptance exceed this slice,
+   decompose at the compiled/tested recorder and protocol boundary. No new guest
+   starts merely to qualify richer capture or to chase the old failure.
+- 2026-10-28: Nine focused headless tests pass after the expected missing-type
+  RED build. The application builds with the new wrapper. Cache observed-process
+  boot UUID/timebase only after memory opt-in; sample continuous ticks directly
+  around one operation, encode ticks as decimal strings and preserve metadata
+  errors. Disabled/legacy modes perform the call once without new tick reads.
+  These are recorder controls, not a useful failing product seam or VM outcome.
+- 2026-10-28: Narrow the matched comparison to one Settings selection per fresh
+  clone in a fixed mouse/Return/Return/mouse set, with the same highlighted row
+  and foreground/window setup. No clone starts here. CAUSAL-PLAN.md declares
+  positive-disposition and clock qualification, inconclusive outcomes at the cap,
+  actual freeze before launch and every original duty. Expanded-interface
+  delegation is not selected: Apple's current contract says menu-backed items
+  do not receive those callbacks.
+
+## Direct-call recorder boundary
+
+The first child delivers the opt-in native-tick recorder, headless checks and a
+reproducible full-archive input comparison. CAUSAL-RESULTS.md reconciles every
+original duty. The sole in-session reviewer finds two P2 interpretation limits:
+existing synchronous observers can run within the measured call; Return can
+retain shared mouse-open context. Preserve observer evidence and explicitly
+qualify its overhead; narrow the hypothesis to necessity of clicking the row,
+require positive keyboard invocation and review the revised protocol in the tree
+before runtime. No product repair, target-guest matching or ordinary acceptance
+is established here. The original Done when charter above remains unchanged.
+No causal ancestor can close. Old source/candidate/archive/classifications/caps
+remain historical; the unchanged events candidate is not the new final subject.
+
+- 2026-10-28: K34's final nine controls/build, exact native reproduction and all
+  frozen-input/original audits pass. K35 reviews its revised artifact before k36
+  can implement/freeze/run the matched modality question and carry every original
+  disposition, justified repair and separate ordinary-acceptance duty. K34 alone
+  retires; this node and every causal ancestor remain open.

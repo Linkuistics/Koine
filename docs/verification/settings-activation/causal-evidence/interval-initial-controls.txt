@@ -1,0 +1,96 @@
+task: [check:settings-activation-interval] swift build --build-tests
+Building for debugging...
+[Computing dependencies]
+[Constructing description]
+[Pre-planning 1 / 1566]
+[Planning deferred tasks]
+[15 / 94] KoineAppDiagnostics
+[25 / 81] NIOCore
+[42 / 97] NIOCore
+[49 / 97] KoineAppDiagnosticsTests-product
+[49 / 97] NIOCore
+[52 / 100] KoineAppDiagnosticsTests-product
+[54 / 97] KoineAppDiagnosticsTests-product
+[56 / 97] KoineAppDiagnosticsTests-product
+[58 / 97] CNIOAtomics
+[59 / 96] NIOCore
+[67 / 104] NIOEmbedded
+[71 / 108] NIOPosix
+[93 / 129] NIOPosix
+[94 / 129] NIOPosix
+[95 / 128] NIOPosix
+[99 / 132] NIO
+[106 / 138] NIOHTTP1
+[123 / 156] NIOHTTP1
+[124 / 156] NIOHTTP1
+[129 / 160] NIOHTTP1
+[137 / 168] KoineHTTP
+[142 / 172] KoineServer
+[146 / 176] KoineServer
+[153 / 187] NIOPosix
+[157 / 179] KoineCompatibilityHost-product
+[164 / 186] KoineCompatibilityHost-product
+[171 / 188] KoineServerTests-product
+[185 / 205] KoineServerTests-product
+[190 / 222] KoineApp-product
+[191 / 222] KoineServerTests-product
+[194 / 222] KoineApp-product
+[195 / 222] KoineApp-product
+[199 / 222] KoineApp-product
+[204 / 222] KoineApp-product
+[206 / 222] KoineApp-product
+[208 / 218] KoineApp-product
+[210 / 220] KoineServerTests-product
+[216 / 224] KoineManagementClientTests-product
+[219 / 225] KoineServerTests-product
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/KoineServerTests/ReceiptExecutableIdentityTests.swift:302:47: warning: '#require(_:_:)' is redundant because 'tree.identity(Self.target(of: row, parts: parts, base: base))' never equals 'nil' (from macro 'require')
+300 |         // The expected identity is the object the spelling names: the last real file the fixture placed.
+301 |         var expected: ObjectIdentity?
+302 |         if resolves { expected = try #require(tree.identity(Self.target(of: row, parts: parts, base: base))) }
+    |                                               `- warning: '#require(_:_:)' is redundant because 'tree.identity(Self.target(of: row, parts: parts, base: base))' never equals 'nil' (from macro 'require')
+303 | 
+304 |         let run = try Self.run(Self.probe().path, ["url", tree.path(parts)])
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/KoineManagementClientTests/ManagementClientTests.swift:88:19: warning: result of call to 'withServer(now:_:)' is unused [#NoUsage]
+ 86 | 
+ 87 |     @Test func aGraphQLErrorSurfacesItsMessageAndKind() async throws {
+ 88 |         try await withServer { _, client in
+    |                   `- warning: result of call to 'withServer(now:_:)' is unused [#NoUsage]
+ 89 |             await #expect(throws: ManagementError.rejected(
+ 90 |                 messages: ["Unknown capabilities: nope:read."], kind: "failed"
+
+[#NoUsage]: <https://docs.swift.org/compiler/documentation/diagnostics/no-usage>
+[219 / 225] KoineManagementClientTests-product
+[221 / 225] KoineManagementClientTests-product
+[223 / 226] KoineServerTests-product
+[225 / 226] KoineServerTests-product
+[230 / 230] KoineCompatibilityHost-product
+Build complete! (11.65 sec.)
+task: [check:settings-activation-interval] scripts/stage-provider-framework.sh debug
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Products/Debug/PackageFrameworks/KoineProviderAPI.framework
+task: [check:settings-activation-interval] swift test --skip-build --filter 'SettingsActivationIntervalTests|SettingsEventBufferTests'
+􀟈  Test run started.
+􀄵  Testing Library Version: 2084
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Suite SettingsActivationIntervalTests started.
+􀟈  Suite SettingsEventBufferTests started.
+􀟈  Test realContinuousClockEnclosesAnIndependentRead() started.
+􀟈  Test realClockMetadataMatchesIndependentKernelQueries() started.
+􀟈  Test encodingKeepsTicksAsExactDecimalStrings() started.
+􀟈  Test failedDumpKeepsRecordsAvailable() started.
+􀟈  Test disabledMeasurementStillPerformsOperationOnce() started.
+􀟈  Test clockMetadataRejectsUnknownBootAndInvalidScale() started.
+􀟈  Test outputIsExplicitNonDestructiveAndCannotOverwriteEvidence() started.
+􀟈  Test samplesEncloseOneOperation() started.
+􀟈  Test overflowPreservesPrefixAndReportsEveryDroppedRecord() started.
+􁁛  Test disabledMeasurementStillPerformsOperationOnce() passed after 0.001 seconds.
+􁁛  Test realContinuousClockEnclosesAnIndependentRead() passed after 0.001 seconds.
+􁁛  Test samplesEncloseOneOperation() passed after 0.001 seconds.
+􁁛  Test clockMetadataRejectsUnknownBootAndInvalidScale() passed after 0.001 seconds.
+􁁛  Test encodingKeepsTicksAsExactDecimalStrings() passed after 0.001 seconds.
+􁁛  Test overflowPreservesPrefixAndReportsEveryDroppedRecord() passed after 0.001 seconds.
+􁁛  Test realClockMetadataMatchesIndependentKernelQueries() passed after 0.002 seconds.
+􁁛  Suite SettingsActivationIntervalTests passed after 0.002 seconds.
+􁁛  Test failedDumpKeepsRecordsAvailable() passed after 0.004 seconds.
+􁁛  Test outputIsExplicitNonDestructiveAndCannotOverwriteEvidence() passed after 0.006 seconds.
+􁁛  Suite SettingsEventBufferTests passed after 0.006 seconds.
+􁁛  Test run with 9 tests in 2 suites passed after 0.006 seconds.

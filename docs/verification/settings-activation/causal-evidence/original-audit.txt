@@ -1,0 +1,5 @@
+Historical raw archive digest matches persisted-archive.sha256.
+Complete historical extracted archive file set and every digest match persisted-archive-files.sha256.
+Committed native gzip decompresses exactly to the original archived rendering.
+Unchanged events candidate complete regular-file/symlink inventory matches persisted-bundle.txt.
+Final broad native rendering exactly matches the exploratory complete output; every cited source row verified.

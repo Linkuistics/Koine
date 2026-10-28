@@ -1,0 +1,10 @@
+{
+  ".build/checkouts/GRDB.swift/Tests/CustomSQLite/GRDB": "../..",
+  ".build/checkouts/swift-nio/Tests/NIOFSIntegrationTests/Test Data/Foo.symlink": "Foo",
+  ".build/checkouts/swift-nio/Tests/NIOFSIntegrationTests/Test Data/README.md.symlink": "README.md",
+  ".build/settings-activation/events/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/KoineProviderAPI": "Versions/Current/KoineProviderAPI",
+  ".build/settings-activation/events/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Resources": "Versions/Current/Resources",
+  ".build/settings-activation/events/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current": "A",
+  "Providers/WorkspaceProvider/Logic/ProcessIdentity.swift": "../../DesktopProvider/Sources/ProcessIdentity.swift",
+  "Providers/WorkspaceProvider/Logic/ProcessStart.swift": "../../DesktopProvider/Logic/ProcessStart.swift"
+}

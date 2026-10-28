@@ -12,6 +12,8 @@ final class SettingsActivationTrace: NSObject {
     private var bufferPath: String?
     private var buffer: SettingsEventBuffer<EventRecord>?
     private var dumpRequested = false
+    private var nativeClock: SettingsNativeClock?
+    private var nativeClockError: String?
 
     private struct EventRecord: Encodable {
         let sequence: Int
@@ -28,6 +30,9 @@ final class SettingsActivationTrace: NSObject {
         let subjectPID: Int32
         let runLoopMode: String
         let currentEvent: EventContext?
+        let nativeClock: SettingsNativeClock?
+        let nativeClockError: String?
+        let activationInterval: SettingsActivationInterval?
     }
 
     private struct EventContext: Encodable {
@@ -74,6 +79,12 @@ final class SettingsActivationTrace: NSObject {
         }
         if bufferPath != nil {
             buffer = SettingsEventBuffer(capacity: 4096)
+            do {
+                nativeClock = try SettingsNativeClock()
+            } catch {
+                // Preserve metadata failure without suppressing activation.
+                nativeClockError = String(describing: error)
+            }
             // Delivered on the main run loop; delivery may be delayed or dropped.
             // The notification carries no path or other trusted data. Dump only
             // after scenario observations; never post this from the call path.
@@ -108,12 +119,25 @@ final class SettingsActivationTrace: NSObject {
         record("callback.\(source)")
     }
 
+    /// Exactly one call, including when diagnostics are disabled or dumped.
+    /// The wrapper constructs its interval record after the operation. Existing
+    /// observers can still record synchronously inside the operation; their
+    /// overhead is included in the interval, with no timing-neutrality claim.
+    func measureActivation(_ operation: () -> Void) {
+        let interval = SettingsActivationInterval.measure(
+            enabled: bufferPath != nil && !dumpRequested, operation: operation
+        )
+        if let interval { record("application.activate.interval", activationInterval: interval) }
+    }
+
     @objc private func observe(_ notification: Notification) {
         let app = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication
         record(notification.name.rawValue, subjectPID: app?.processIdentifier)
     }
 
-    func record(_ event: String, subjectPID: pid_t? = nil) {
+    func record(
+        _ event: String, subjectPID: pid_t? = nil, activationInterval: SettingsActivationInterval? = nil
+    ) {
         if bufferPath != nil {
             guard !dumpRequested else { return }
             sequence += 1
@@ -129,7 +153,8 @@ final class SettingsActivationTrace: NSObject {
                 mainWindow: NSApp.mainWindow?.windowNumber ?? -1,
                 settingsWindow: window?.windowNumber ?? -1, settingsVisible: window?.isVisible ?? false,
                 subjectPID: subjectPID ?? -1, runLoopMode: RunLoop.current.currentMode?.rawValue ?? "",
-                currentEvent: current
+                currentEvent: current, nativeClock: nativeClock, nativeClockError: nativeClockError,
+                activationInterval: activationInterval
             ))
             return
         }

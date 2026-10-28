@@ -1524,6 +1524,23 @@ tasks:
       - scripts/stage-provider-framework.sh debug
       - swift test --skip-build --filter SettingsEventBufferTests
 
+  check:settings-activation-interval:
+    desc: Check native call brackets, exact tick encoding and boot/timebase reads without launching AppKit
+    cmds:
+      - swift build --build-tests
+      - scripts/stage-provider-framework.sh debug
+      - swift test --skip-build --filter 'SettingsActivationIntervalTests|SettingsEventBufferTests'
+
+  report:settings-native-input:
+    desc: Read saved persisted native input context in its fixed historical interval, without a guest or message filter
+    requires:
+      vars: [ARCHIVE]
+    cmds:
+      - >-
+        /usr/bin/log show --archive {{.ARCHIVE | shellQuote}} --style ndjson --info --debug
+        --start '2026-10-28 06:05:55+0000' --end '2026-10-28 06:06:10+0000'
+        --predicate 'process == "WindowServer" OR process == "Koine" OR process == "TextEdit" OR process == "lsd"'
+
   fixture:settings-event-dump:
     desc: Build the headless post-observation dump requester for a disposable guest
     cmds:

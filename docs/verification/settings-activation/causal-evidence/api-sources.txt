@@ -1,0 +1,43 @@
+Read 2026-10-28; build target macOS 26.0, installed SDK macOS 27.0, Apple Swift 6.4.
+
+Continuous clock:
+https://developer.apple.com/documentation/kernel/1646199-mach_continuous_time
+Saved mach-continuous.json. Raw monotonic ticks include sleep; origin is arbitrary.
+
+Mach timebase:
+https://developer.apple.com/documentation/kernel/mach_timebase_info_t
+Saved timebase.json. Kernel numerator/denominator maps tick units to nanoseconds.
+
+Read-only kernel boot-session UUID export:
+https://github.com/apple-oss-distributions/xnu/blob/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/bsd/kern/kern_sysctl.c
+Retrieved complete file SHA256:
+1cc5d1e7b46df0b2fad33449eb7df948207b7bc4c760119ed33624e7d2750df8
+Relevant declaration lines 2921–2923 retained in boot-sysctl-source.txt.
+Apple upstream main and pinned source compared byte for byte. This is public
+source for the read-only sysctl, not a claim of exact guest-kernel source identity.
+Independent archive bootUUID/scale matching still required in the new guest.
+
+Menu-backed status items:
+https://developer.apple.com/documentation/appkit/nsstatusitem/expandedinterfacedelegate
+Saved expanded-interface.json. System handles the expanded menu automatically;
+menu-backed items do not receive custom expanded-interface delegate callbacks.
+https://developer.apple.com/videos/play/wwdc2026/289/ (6:34–8:57)
+Supports keyboard/status-item interaction; it does not promise activation success.
+
+Activation:
+https://developer.apple.com/documentation/appkit/passing-control-from-one-app-to-another-with-cooperative-activation
+Context-dependent request; no force-activation API/alternate repair selected.
+
+Synchronous notification delivery reviewed at:
+https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/CocoaFundamentals/CommunicatingWithObjects/CommunicateWithObjects.html
+No target-guest guarantee that all observed notifications follow activation return.
+
+Exploratory failures retained as limits:
+- First full-archive read named deferred-native/system.logarchive, which is absent;
+  log reported Archive not found. Successful reads use the extracted archive-audit
+  tree, checked against the historical full file inventory.
+- Initial proposed Apple source bsd/kern/kern_uuid.c returned HTTP 404. The actual
+  read-only export is verified in kern_sysctl.c above.
+- An exploratory jq native-input display rejected the completion object because
+  processImagePath is absent there. Its partial output was not used as a complete
+  analysis. Final reproduction validates original JSON and the completion count.

@@ -1,0 +1,117 @@
+task: [check:settings-activation-interval] swift build --build-tests
+Building for debugging...
+[Computing dependencies]
+[Constructing description]
+[Pre-planning 1 / 1566]
+[Planning deferred tasks]
+[31 / 211]
+[48 / 205] Atomics
+[79 / 205] WorkspaceProviderLogicTests-product
+[87 / 220] KoineAppDiagnostics
+[103 / 217] NIOConcurrencyHelpers
+[115 / 200] DequeModule
+[122 / 191] KoineAppDiagnosticsTests-product
+error: SwiftCompile normal arm64 /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/KoineAppDiagnosticsTests/SettingsActivationIntervalTests.swift failed with a nonzero exit code. Command line:     cd /Users/antony/Development/AbstractingComputers
+    builtin-SwiftPerFileCompile SettingsActivationIntervalTests.swift
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/KoineAppDiagnosticsTests/SettingsActivationIntervalTests.swift:11:37: error: cannot find 'SettingsActivationInterval' in scope
+ 9 |     @Test func samplesEncloseOneOperation() throws {
+10 |         var actions: [String] = []
+11 |         let interval = try #require(SettingsActivationInterval.measure(
+   |                                     `- error: cannot find 'SettingsActivationInterval' in scope
+12 |             enabled: true,
+13 |             readTicks: {
+
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/KoineAppDiagnosticsTests/SettingsActivationIntervalTests.swift:11:24: warning: no calls to throwing functions occur within 'try' expression [#UnnecessaryEffectMarker]
+ 9 |     @Test func samplesEncloseOneOperation() throws {
+10 |         var actions: [String] = []
+11 |         let interval = try #require(SettingsActivationInterval.measure(
+   |                        `- warning: no calls to throwing functions occur within 'try' expression [#UnnecessaryEffectMarker]
+12 |             enabled: true,
+13 |             readTicks: {
+
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/KoineAppDiagnosticsTests/SettingsActivationIntervalTests.swift:27:24: error: cannot find 'SettingsActivationInterval' in scope
+25 |     @Test func disabledMeasurementStillPerformsOperationOnce() {
+26 |         var actions: [String] = []
+27 |         let interval = SettingsActivationInterval.measure(
+   |                        `- error: cannot find 'SettingsActivationInterval' in scope
+28 |             enabled: false,
+29 |             readTicks: { actions.append("sample"); return 1 },
+
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/KoineAppDiagnosticsTests/SettingsActivationIntervalTests.swift:39:37: error: cannot find 'SettingsActivationInterval' in scope
+37 |     @Test func encodingKeepsTicksAsExactDecimalStrings() throws {
+38 |         var samples = [UInt64.max, UInt64.max - 1].makeIterator()
+39 |         let interval = try #require(SettingsActivationInterval.measure(
+   |                                     `- error: cannot find 'SettingsActivationInterval' in scope
+40 |             enabled: true, readTicks: { samples.next()! }, operation: {}
+41 |         ))
+
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/KoineAppDiagnosticsTests/SettingsActivationIntervalTests.swift:39:24: warning: no calls to throwing functions occur within 'try' expression [#UnnecessaryEffectMarker]
+37 |     @Test func encodingKeepsTicksAsExactDecimalStrings() throws {
+38 |         var samples = [UInt64.max, UInt64.max - 1].makeIterator()
+39 |         let interval = try #require(SettingsActivationInterval.measure(
+   |                        `- warning: no calls to throwing functions occur within 'try' expression [#UnnecessaryEffectMarker]
+40 |             enabled: true, readTicks: { samples.next()! }, operation: {}
+41 |         ))
+
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/KoineAppDiagnosticsTests/SettingsActivationIntervalTests.swift:51:37: error: cannot find 'SettingsActivationInterval' in scope
+49 |     @Test func realContinuousClockEnclosesAnIndependentRead() throws {
+50 |         var inside: UInt64 = 0
+51 |         let interval = try #require(SettingsActivationInterval.measure(enabled: true) {
+   |                                     `- error: cannot find 'SettingsActivationInterval' in scope
+52 |             inside = mach_continuous_time()
+53 |         })
+
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/KoineAppDiagnosticsTests/SettingsActivationIntervalTests.swift:51:24: warning: no calls to throwing functions occur within 'try' expression [#UnnecessaryEffectMarker]
+49 |     @Test func realContinuousClockEnclosesAnIndependentRead() throws {
+50 |         var inside: UInt64 = 0
+51 |         let interval = try #require(SettingsActivationInterval.measure(enabled: true) {
+   |                        `- warning: no calls to throwing functions occur within 'try' expression [#UnnecessaryEffectMarker]
+52 |             inside = mach_continuous_time()
+53 |         })
+
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/KoineAppDiagnosticsTests/SettingsActivationIntervalTests.swift:60:25: error: cannot find 'SettingsNativeClock' in scope
+58 |     // Missing identity and a zero scale cannot silently become usable metadata.
+59 |     @Test func clockMetadataRejectsUnknownBootAndInvalidScale() {
+60 |         #expect(throws: SettingsNativeClock.CaptureError.self) {
+   |                         `- error: cannot find 'SettingsNativeClock' in scope
+61 |             try SettingsNativeClock(bootSessionUUID: "unknown", numerator: 125, denominator: 3)
+62 |         }
+
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/KoineAppDiagnosticsTests/SettingsActivationIntervalTests.swift:61:17: error: cannot find 'SettingsNativeClock' in scope
+59 |     @Test func clockMetadataRejectsUnknownBootAndInvalidScale() {
+60 |         #expect(throws: SettingsNativeClock.CaptureError.self) {
+61 |             try SettingsNativeClock(bootSessionUUID: "unknown", numerator: 125, denominator: 3)
+   |                 `- error: cannot find 'SettingsNativeClock' in scope
+62 |         }
+63 |         for (numerator, denominator): (UInt32, UInt32) in [(0, 3), (125, 0)] {
+
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/KoineAppDiagnosticsTests/SettingsActivationIntervalTests.swift:64:29: error: cannot find 'SettingsNativeClock' in scope
+62 |         }
+63 |         for (numerator, denominator): (UInt32, UInt32) in [(0, 3), (125, 0)] {
+64 |             #expect(throws: SettingsNativeClock.CaptureError.self) {
+   |                             `- error: cannot find 'SettingsNativeClock' in scope
+65 |                 try SettingsNativeClock(
+66 |                     bootSessionUUID: "2C83AC73-0855-44FD-A8A4-E03E227E1A01",
+
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/KoineAppDiagnosticsTests/SettingsActivationIntervalTests.swift:65:21: error: cannot find 'SettingsNativeClock' in scope
+63 |         for (numerator, denominator): (UInt32, UInt32) in [(0, 3), (125, 0)] {
+64 |             #expect(throws: SettingsNativeClock.CaptureError.self) {
+65 |                 try SettingsNativeClock(
+   |                     `- error: cannot find 'SettingsNativeClock' in scope
+66 |                     bootSessionUUID: "2C83AC73-0855-44FD-A8A4-E03E227E1A01",
+67 |                     numerator: numerator, denominator: denominator
+
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/KoineAppDiagnosticsTests/SettingsActivationIntervalTests.swift:74:25: error: cannot find 'SettingsNativeClock' in scope
+72 | 
+73 |     @Test func realClockMetadataMatchesIndependentKernelQueries() throws {
+74 |         let clock = try SettingsNativeClock()
+   |                         `- error: cannot find 'SettingsNativeClock' in scope
+75 |         var scale = mach_timebase_info_data_t()
+76 |         #expect(mach_timebase_info(&scale) == KERN_SUCCESS)
+
+[#UnnecessaryEffectMarker]: <https://docs.swift.org/compiler/documentation/diagnostics/unnecessary-effect-marker>
+Failed frontend command:
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift-frontend -frontend -c /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Intermediates.noindex/Koine.build/Debug/KoineAppDiagnosticsTests-p.build/DerivedSources/test_entry_point.swift -primary-file /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/KoineAppDiagnosticsTests/SettingsActivationIntervalTests.swift /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/KoineAppDiagnosticsTests/SettingsEventBufferTests.swift -emit-dependencies-path /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Intermediates.noindex/Koine.build/Debug/KoineAppDiagnosticsTests-p.build/Objects-normal/arm64/SettingsActivationIntervalTests.d -emit-const-values-path /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Intermediates.noindex/Koine.build/Debug/KoineAppDiagnosticsTests-p.build/Objects-normal/arm64/SettingsActivationIntervalTests.swiftconstvalues -emit-reference-dependencies-path /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Intermediates.noindex/Koine.build/Debug/KoineAppDiagnosticsTests-p.build/Objects-normal/arm64/SettingsActivationIntervalTests.swiftdeps -serialize-diagnostics-path /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Intermediates.noindex/Koine.build/Debug/KoineAppDiagnosticsTests-p.build/Objects-normal/arm64/SettingsActivationIntervalTests.dia -target arm64-apple-macos26.0 -module-can-import-version Testing 2084 0 -module-can-import-version XCTest 25229 0 -disable-cross-import-overlay-search -swift-module-cross-import Darwin /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/Darwin.swiftcrossimport/xlocale.swiftoverlay -swift-module-cross-import Testing /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/Testing.framework/Modules/Testing.swiftcrossimport/AppKit.swiftoverlay -swift-module-cross-import Testing /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/Testing.framework/Modules/Testing.swiftcrossimport/CoreGraphics.swiftoverlay -swift-module-cross-import Testing /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/Testing.framework/Modules/Testing.swiftcrossimport/CoreImage.swiftoverlay -swift-module-cross-import Testing /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/Testing.framework/Modules/Testing.swiftcrossimport/CoreTransferable.swiftoverlay -swift-module-cross-import Testing /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks/Testing.framework/Modules/Testing.swiftcrossimport/Foundation.swiftoverlay -load-resolved-plugin /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib/swift/host/plugins/libFoundationMacros.dylib\#/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server\#FoundationMacros -load-resolved-plugin /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib/swift/host/plugins/libObservationMacros.dylib\#/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server\#ObservationMacros -load-resolved-plugin /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib/swift/host/plugins/libSwiftMacros.dylib\#/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server\#SwiftMacros -load-resolved-plugin /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing/libTestingMacros.dylib\#\#TestingMacros -disable-implicit-swift-modules -Xcc -fno-implicit-modules -Xcc -fno-implicit-module-maps -explicit-swift-module-map-file /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Intermediates.noindex/Koine.build/Debug/KoineAppDiagnosticsTests-p.build/Objects-normal/arm64/KoineAppDiagnosticsTests-dependencies-1.json -Xllvm -aarch64-use-tbi -enable-objc-interop -stack-check -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX27.0.sdk -I /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Products/Debug -Isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib -F /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Products/Debug/PackageFrameworks -F /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Products/Debug -F /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks -module-cache-path /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Intermediates.noindex/SwiftExplicitPrecompiledModules -no-color-diagnostics -Xcc -fno-color-diagnostics -enable-testing -g -debug-info-format\=dwarf -dwarf-version\=5 -swift-version 6 -Onone -D SWIFT_PACKAGE -D DEBUG -D Xcode -serialize-debugging-options -enable-experimental-feature DebugDescriptionMacro -empty-abi-descriptor -validate-clang-modules-once -clang-build-session-file /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/ModuleCache.noindex/Session.modulevalidation -Xcc -working-directory -Xcc /Users/antony/Development/AbstractingComputers -enable-anonymous-context-mangled-names -file-compilation-dir /Users/antony/Development/AbstractingComputers -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -Xcc -ivfsstatcache -Xcc /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/SDKStatCaches.noindex/macosx27.0-26A425-a0facfad118c1a7a18f0aad9463f65497231f6df4def33e022ae2eb8f782df1a.sdkstatcache -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -Xcc -I/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Products/Debug/include -Xcc -I/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Intermediates.noindex/Koine.build/Debug/KoineAppDiagnosticsTests-p.build/DerivedSources-normal/arm64 -Xcc -I/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Intermediates.noindex/Koine.build/Debug/KoineAppDiagnosticsTests-p.build/DerivedSources/arm64 -Xcc -I/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Intermediates.noindex/Koine.build/Debug/KoineAppDiagnosticsTests-p.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -no-auto-bridging-header-chaining -module-name KoineAppDiagnosticsTests -package-name koine_gh_issue_14 -const-gather-protocols-file /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Intermediates.noindex/Koine.build/Debug/KoineAppDiagnosticsTests-p.build/Objects-normal/arm64/KoineAppDiagnosticsTests_const_extract_protocols.json -disable-clang-spi -clang-target arm64-apple-macos27.0 -target-sdk-version 27.0 -target-sdk-name macosx27.0 -in-process-plugin-server-path /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/libSwiftInProcPluginServer.dylib -parse-as-library -o /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Intermediates.noindex/Koine.build/Debug/KoineAppDiagnosticsTests-p.build/Objects-normal/arm64/SettingsActivationIntervalTests.o -debug-module-path /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Intermediates.noindex/Koine.build/Debug/KoineAppDiagnosticsTests-p.build/Objects-normal/arm64/KoineAppDiagnosticsTests.swiftmodule -index-unit-output-path /Koine.build/Debug/KoineAppDiagnosticsTests-p.build/Objects-normal/arm64/SettingsActivationIntervalTests.o -index-store-path /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out -index-system-modules
+[142 / 208] NIOCore
+error: Build failed
+task: Failed to run task "check:settings-activation-interval": exit status 1

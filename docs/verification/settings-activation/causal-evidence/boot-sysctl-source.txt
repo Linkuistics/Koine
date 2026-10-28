@@ -1,0 +1,6 @@
+    &vm_max_batch, 0, "");
+
+SYSCTL_STRING(_kern, OID_AUTO, bootsessionuuid,
+    CTLFLAG_RD | CTLFLAG_LOCKED,
+    &bootsessionuuid_string, sizeof(bootsessionuuid_string), "");
+

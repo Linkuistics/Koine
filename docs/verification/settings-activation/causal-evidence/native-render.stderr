@@ -1,0 +1,1 @@
+task: [report:settings-native-input] /usr/bin/log show --archive .build/settings-activation/persisted/01/archive-audit/deferred-native/system.logarchive --style ndjson --info --debug --start '2026-10-28 06:05:55+0000' --end '2026-10-28 06:06:10+0000' --predicate 'process == "WindowServer" OR process == "Koine" OR process == "TextEdit" OR process == "lsd"'

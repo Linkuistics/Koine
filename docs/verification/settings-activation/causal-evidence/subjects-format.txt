@@ -1,0 +1,5 @@
+The frozen manifest is gzip-compressed losslessly to fit jj's new-file limit.
+Decoded SHA256: 05c902eed8709acd6f25bbee256f85e4c2e1e84747d0a6a777eddc0138fb9d33
+Its decoded bytes are exactly those consumed by the retained successful subjects-check.txt.
+Check from the repository root with pipefail enabled:
+gzip -dc docs/verification/settings-activation/causal-evidence/subjects.sha256.gz | shasum -a 256 -c

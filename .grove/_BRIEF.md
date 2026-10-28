@@ -1,5 +1,17 @@
 # Koine menu-bar VM reliability — brief
 
+## Direct native-call recorder handoff
+
+K33 decomposes at a compiled/tested native-call recorder and saved-input-context
+boundary. CAUSAL-RESULTS.md retains the new full-archive input read and nine
+headless controls. The revised four-slot mouse/Return comparison tests necessity
+of clicking the Settings row, not removal of shared mouse-open native context.
+Its causal interpretation receives tree review before runtime. No guest starts,
+no product repair/final signed subject is selected and old strict false joins,
+failed transports, NOT RUN phases and every closed cap remain. Actual native
+disposition/context, justified repair and separate frozen ordinary acceptance
+remain live; no causal ancestor closes.
+
 ## Independent native focus handoff
 
 K31 decomposes after k32's strict offline comparison. FOCUS-RESULTS.md retains
