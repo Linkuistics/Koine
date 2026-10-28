@@ -1,0 +1,7 @@
+Historical persisted raw archive matches persisted-archive.sha256.
+Entire extracted archive path set and every digest match persisted-archive-files.sha256; no links.
+Complete historical events bundle regular-file/link inventory matches persisted-bundle.txt.
+Retained prior proposal is byte-identical to ea01a166.
+_settings-causal-activation-repair.md: original Done when section byte-identical to ea01a166.
+07-design--settings-causal-discrimination-k39.md: original Done when section byte-identical to ea01a166.
+08-impl--settings-modality-disposition-repair-k36.md: original Done when section byte-identical to ea01a166.

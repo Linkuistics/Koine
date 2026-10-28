@@ -86,11 +86,12 @@ def records(snapshot: dict[str, Any]) -> list[dict[str, Any]]:
     return rows
 
 
-def return_invocation(
+def invocation_context(
     snapshot: dict[str, Any],
     highlight: dict[str, Any],
     selection: int,
-) -> dict[str, Any]:
+    nonce: str,
+) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     rows = records(snapshot)
     callbacks = [
         r
@@ -102,7 +103,32 @@ def return_invocation(
         "missing/ambiguous Settings callback",
     )
     callback = callbacks[0]
-    read_highlight(highlight, highlight["requestUUID"], callback["pid"])
+    read_highlight(highlight, nonce, callback["pid"])
+    inputs = [
+        r
+        for r in rows
+        if r["event"] == "menu.input"
+        and r["menuProbe"]["menuSession"] == highlight["menuSession"]
+        and r["sequence"] < callback["sequence"]
+    ]
+    require(
+        all(
+            r["pid"] == callback["pid"]
+            and UUID(r["menuProbe"]["requestUUID"]) == UUID(nonce)
+            for r in inputs
+        ),
+        "direct input process/nonce mismatch",
+    )
+    return callback, inputs
+
+
+def return_invocation(
+    snapshot: dict[str, Any],
+    highlight: dict[str, Any],
+    selection: int,
+    nonce: str,
+) -> dict[str, Any]:
+    callback, inputs = invocation_context(snapshot, highlight, selection, nonce)
     invoked = callback["menuProbe"]
     # These fields come from the monitor's actual NSEvent argument, not currentEvent.
     require(
@@ -116,14 +142,6 @@ def return_invocation(
         and UUID(invoked["requestUUID"]) == UUID(highlight["requestUUID"]),
         "Return origin unqualified; stale currentEvent/clean transport is insufficient",
     )
-    inputs = [
-        r
-        for r in rows
-        if r["event"] == "menu.input"
-        and r["menuProbe"]["menuSession"] == highlight["menuSession"]
-        and UUID(r["menuProbe"]["requestUUID"]) == UUID(highlight["requestUUID"])
-        and r["sequence"] < callback["sequence"]
-    ]
     require(
         len(inputs) == 1
         and inputs[0]["pid"] == callback["pid"]
@@ -136,6 +154,43 @@ def return_invocation(
         "menuSession": highlight["menuSession"],
         "inputSerial": invoked["inputSerial"],
         "scope": "observed Return-to-callback route",
+    }
+
+
+def mouse_invocation(
+    snapshot: dict[str, Any],
+    highlight: dict[str, Any],
+    selection: int,
+    nonce: str,
+) -> dict[str, Any]:
+    """Positive direct pair and callback correlation; no currentEvent identity claim."""
+    callback, inputs = invocation_context(snapshot, highlight, selection, nonce)
+    require(len(inputs) == 2, "missing/duplicate/intervening mouse input")
+    down, up = [r["menuProbe"] for r in inputs]
+    require(
+        [down["type"], up["type"]] == [1, 2]
+        and all(
+            p["keyCode"] is None
+            and p["modifierFlags"] == 0
+            and p["isARepeat"] is False
+            and p["highlightedSettings"] is True
+            and p["sameEvent"] is True
+            for p in (down, up)
+        )
+        and type(down["inputSerial"]) is int
+        and type(up["inputSerial"]) is int
+        and 0 < down["inputSerial"] < up["inputSerial"] <= 128
+        and up["inputSerial"] == down["inputSerial"] + 1
+        and {k: v for k, v in callback["menuProbe"].items() if k != "sameEvent"}
+        == {k: v for k, v in up.items() if k != "sameEvent"},
+        "mouse pair/highlight/callback unqualified",
+    )
+    return {
+        "qualified": True,
+        "selection": selection,
+        "menuSession": highlight["menuSession"],
+        "inputSerials": [down["inputSerial"], up["inputSerial"]],
+        "scope": "observed mouse-pair-to-callback correlation",
     }
 
 
@@ -158,13 +213,14 @@ def read_native(text: str) -> list[dict[str, Any]]:
 
 def control_policy(
     stage: str,
-    focus_success: bool,
+    focus_success: bool | None,
     launch_join: str,
     setup_join: str = "PENDING",
 ) -> dict[str, Any]:
     require(stage in {"launch", "setup", "final"}, "invalid control stage")
+    require(stage != "final" or focus_success is None, "final takes no focus input")
     allowed = {"PENDING", "ENCLOSED"} if stage != "final" else {"ENCLOSED"}
-    valid = focus_success and launch_join in allowed
+    valid = (stage == "final" or focus_success is True) and launch_join in allowed
     if stage in {"setup", "final"}:
         valid = valid and setup_join in allowed
     action = "STOP_SLOT"
@@ -228,8 +284,8 @@ def containment(
         before = ticks(row["activationInterval"]["beforeTicks"])
         after = ticks(row["activationInterval"]["afterTicks"])
         require(before <= after, "reversed interval")
-        # Retain the entire process rendering. Match a complete equal-cardinality
-        # list by native order, never by filtering to desired enclosure endpoints.
+        # Retain the entire process rendering, including the launch-prefix row.
+        # Fixed ordinal accounting, never a search for a desired enclosed row.
         clients = [
             r
             for r in native
@@ -258,15 +314,36 @@ def containment(
         all_intervals = [
             r for r in rows if r["event"] == "application.activate.interval"
         ]
-        if len(clients) != len(all_intervals):
+        prior_after = -1
+        selections: set[int] = set()
+        for interval in all_intervals:
+            start = ticks(interval["activationInterval"]["beforeTicks"])
+            end = ticks(interval["activationInterval"]["afterTicks"])
+            require(
+                interval["pid"] == row["pid"]
+                and interval.get("nativeClock") == clock
+                and not interval.get("nativeClockError")
+                and interval["selection"] not in selections
+                and prior_after < start <= end,
+                "invalid whole-process interval order/identity/metadata",
+            )
+            prior_after = end
+            selections.add(interval["selection"])
+        expected = len(all_intervals) + 1
+        if len(clients) != expected:
             return dict(
                 common,
-                outcome="MISSING" if len(clients) < len(all_intervals) else "AMBIGUOUS",
+                outcome="MISSING" if len(clients) < expected else "AMBIGUOUS",
             )
         ordered = sorted(clients, key=lambda c: c["machTimestamp"])
         if len({c["machTimestamp"] for c in ordered}) != len(ordered):
             return dict(common, outcome="AMBIGUOUS")
-        tick = ordered[all_intervals.index(row)]["machTimestamp"]
+        prefix = ordered[0]["machTimestamp"]
+        common["launchPrefixTick"] = str(prefix)
+        first_before = ticks(all_intervals[0]["activationInterval"]["beforeTicks"])
+        if prefix >= first_before:
+            return dict(common, outcome="AMBIGUOUS")
+        tick = ordered[all_intervals.index(row) + 1]["machTimestamp"]
         common["selectedTick"] = str(tick)
         if not before <= tick <= after:
             return dict(
@@ -401,7 +478,7 @@ def main() -> None:
         description=__doc__,
         epilog=(
             "Examples: causal-protocol.py highlight raw.json --cli-status 0 --nonce UUID --pid 814; "
-            "causal-protocol.py return events.json --highlight highlight.json --selection 2; "
+            "causal-protocol.py return events.json --highlight highlight.json --selection 2 --nonce UUID; "
             "causal-protocol.py containment events.json --native slice.json --identity identity.json --selection 2"
         ),
     )
@@ -411,12 +488,14 @@ def main() -> None:
     highlight.add_argument("--cli-status", required=True, type=int)
     highlight.add_argument("--nonce", required=True)
     highlight.add_argument("--pid", required=True, type=int)
-    invocation = commands.add_parser(
-        "return", help="qualify observed direct Return and callback"
-    )
-    invocation.add_argument("input", type=Path)
-    invocation.add_argument("--highlight", required=True, type=Path)
-    invocation.add_argument("--selection", required=True, type=int)
+    for mode in ("return", "mouse"):
+        invocation = commands.add_parser(
+            mode, help=f"qualify observed direct {mode} and callback"
+        )
+        invocation.add_argument("input", type=Path)
+        invocation.add_argument("--highlight", required=True, type=Path)
+        invocation.add_argument("--selection", required=True, type=int)
+        invocation.add_argument("--nonce", required=True, help="expected route UUID")
     join = commands.add_parser("containment", help="classify exact native containment")
     join.add_argument("input", type=Path)
     join.add_argument("--native", required=True, type=Path)
@@ -426,7 +505,12 @@ def main() -> None:
         "control", help="evaluate fixed control/stop policy; never sends input"
     )
     policy.add_argument("stage", choices=["launch", "setup", "final"])
-    policy.add_argument("--focus-success", action="store_true")
+    policy.add_argument(
+        "--focus-success",
+        action="store_true",
+        default=None,
+        help="launch/setup window-control success only; forbidden at final",
+    )
     policy.add_argument("--launch-join", default="PENDING")
     policy.add_argument("--setup-join", default="PENDING")
     route = commands.add_parser(
@@ -461,9 +545,13 @@ def main() -> None:
                     read_transport(source, args.cli_status), args.nonce, args.pid
                 ),
             }
-        elif args.command == "return":
-            result = return_invocation(
-                source, json.loads(args.highlight.read_text()), args.selection
+        elif args.command in {"return", "mouse"}:
+            reader = return_invocation if args.command == "return" else mouse_invocation
+            result = reader(
+                source,
+                json.loads(args.highlight.read_text()),
+                args.selection,
+                args.nonce,
             )
         else:
             result = containment(

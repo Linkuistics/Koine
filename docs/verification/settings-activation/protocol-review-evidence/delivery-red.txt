@@ -1,0 +1,1006 @@
+..............FFFFFFFFFF................................................ [ 76%]
+.FFFFFFFFFFFFF........                                                   [100%]
+=================================== FAILURES ===================================
+______ test_positive_return_requires_direct_input_and_same_callback_event ______
+
+snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 4, 'pid': 814}]}
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+
+    def test_positive_return_requires_direct_input_and_same_callback_event(
+        snapshot, highlight
+    ):
+>       assert protocol.return_invocation(snapshot, highlight, 2, NONCE)["qualified"] is True
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: return_invocation() takes 3 positional arguments but 4 were given
+
+Tests/scripts/test_settings_causal_protocol.py:181: TypeError
+_____ test_return_rejects_transport_only_and_stale_current_event[missing] ______
+
+snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'callback.settings', 'sele...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 3, 'pid': 814}]}
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+defect = 'missing'
+
+    @pytest.mark.parametrize(
+        "defect",
+        [
+            "missing",
+            "stale",
+            "repeat",
+            "wrong-key",
+            "modifier",
+            "unhighlighted",
+            "wrong-session",
+            "duplicate",
+            "intervening",
+        ],
+    )
+    def test_return_rejects_transport_only_and_stale_current_event(
+        snapshot, highlight, defect
+    ):
+        rows = snapshot["records"]
+        direct = rows[0]["menuProbe"]
+        callback = rows[1]["menuProbe"]
+        if defect == "missing":
+            rows.pop(0)
+        elif defect == "stale":
+            callback["sameEvent"] = False
+        elif defect == "repeat":
+            direct["isARepeat"] = callback["isARepeat"] = True
+        elif defect == "wrong-key":
+            direct["keyCode"] = callback["keyCode"] = 76
+        elif defect == "modifier":
+            direct["modifierFlags"] = callback["modifierFlags"] = 1048576
+        elif defect == "unhighlighted":
+            direct["highlightedSettings"] = callback["highlightedSettings"] = False
+        elif defect == "wrong-session":
+            direct["menuSession"] = callback["menuSession"] = 4
+        else:
+            inserted = copy.deepcopy(rows[0])
+            if defect == "intervening":
+                inserted["menuProbe"]["inputSerial"] = 8
+            rows.insert(1, inserted)
+        for index, row in enumerate(rows, 1):
+            row["sequence"] = index
+        with pytest.raises(ValueError):
+>           protocol.return_invocation(snapshot, highlight, 2, NONCE)
+E           TypeError: return_invocation() takes 3 positional arguments but 4 were given
+
+Tests/scripts/test_settings_causal_protocol.py:226: TypeError
+______ test_return_rejects_transport_only_and_stale_current_event[stale] _______
+
+snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 4, 'pid': 814}]}
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+defect = 'stale'
+
+    @pytest.mark.parametrize(
+        "defect",
+        [
+            "missing",
+            "stale",
+            "repeat",
+            "wrong-key",
+            "modifier",
+            "unhighlighted",
+            "wrong-session",
+            "duplicate",
+            "intervening",
+        ],
+    )
+    def test_return_rejects_transport_only_and_stale_current_event(
+        snapshot, highlight, defect
+    ):
+        rows = snapshot["records"]
+        direct = rows[0]["menuProbe"]
+        callback = rows[1]["menuProbe"]
+        if defect == "missing":
+            rows.pop(0)
+        elif defect == "stale":
+            callback["sameEvent"] = False
+        elif defect == "repeat":
+            direct["isARepeat"] = callback["isARepeat"] = True
+        elif defect == "wrong-key":
+            direct["keyCode"] = callback["keyCode"] = 76
+        elif defect == "modifier":
+            direct["modifierFlags"] = callback["modifierFlags"] = 1048576
+        elif defect == "unhighlighted":
+            direct["highlightedSettings"] = callback["highlightedSettings"] = False
+        elif defect == "wrong-session":
+            direct["menuSession"] = callback["menuSession"] = 4
+        else:
+            inserted = copy.deepcopy(rows[0])
+            if defect == "intervening":
+                inserted["menuProbe"]["inputSerial"] = 8
+            rows.insert(1, inserted)
+        for index, row in enumerate(rows, 1):
+            row["sequence"] = index
+        with pytest.raises(ValueError):
+>           protocol.return_invocation(snapshot, highlight, 2, NONCE)
+E           TypeError: return_invocation() takes 3 positional arguments but 4 were given
+
+Tests/scripts/test_settings_causal_protocol.py:226: TypeError
+______ test_return_rejects_transport_only_and_stale_current_event[repeat] ______
+
+snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 4, 'pid': 814}]}
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+defect = 'repeat'
+
+    @pytest.mark.parametrize(
+        "defect",
+        [
+            "missing",
+            "stale",
+            "repeat",
+            "wrong-key",
+            "modifier",
+            "unhighlighted",
+            "wrong-session",
+            "duplicate",
+            "intervening",
+        ],
+    )
+    def test_return_rejects_transport_only_and_stale_current_event(
+        snapshot, highlight, defect
+    ):
+        rows = snapshot["records"]
+        direct = rows[0]["menuProbe"]
+        callback = rows[1]["menuProbe"]
+        if defect == "missing":
+            rows.pop(0)
+        elif defect == "stale":
+            callback["sameEvent"] = False
+        elif defect == "repeat":
+            direct["isARepeat"] = callback["isARepeat"] = True
+        elif defect == "wrong-key":
+            direct["keyCode"] = callback["keyCode"] = 76
+        elif defect == "modifier":
+            direct["modifierFlags"] = callback["modifierFlags"] = 1048576
+        elif defect == "unhighlighted":
+            direct["highlightedSettings"] = callback["highlightedSettings"] = False
+        elif defect == "wrong-session":
+            direct["menuSession"] = callback["menuSession"] = 4
+        else:
+            inserted = copy.deepcopy(rows[0])
+            if defect == "intervening":
+                inserted["menuProbe"]["inputSerial"] = 8
+            rows.insert(1, inserted)
+        for index, row in enumerate(rows, 1):
+            row["sequence"] = index
+        with pytest.raises(ValueError):
+>           protocol.return_invocation(snapshot, highlight, 2, NONCE)
+E           TypeError: return_invocation() takes 3 positional arguments but 4 were given
+
+Tests/scripts/test_settings_causal_protocol.py:226: TypeError
+____ test_return_rejects_transport_only_and_stale_current_event[wrong-key] _____
+
+snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 4, 'pid': 814}]}
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+defect = 'wrong-key'
+
+    @pytest.mark.parametrize(
+        "defect",
+        [
+            "missing",
+            "stale",
+            "repeat",
+            "wrong-key",
+            "modifier",
+            "unhighlighted",
+            "wrong-session",
+            "duplicate",
+            "intervening",
+        ],
+    )
+    def test_return_rejects_transport_only_and_stale_current_event(
+        snapshot, highlight, defect
+    ):
+        rows = snapshot["records"]
+        direct = rows[0]["menuProbe"]
+        callback = rows[1]["menuProbe"]
+        if defect == "missing":
+            rows.pop(0)
+        elif defect == "stale":
+            callback["sameEvent"] = False
+        elif defect == "repeat":
+            direct["isARepeat"] = callback["isARepeat"] = True
+        elif defect == "wrong-key":
+            direct["keyCode"] = callback["keyCode"] = 76
+        elif defect == "modifier":
+            direct["modifierFlags"] = callback["modifierFlags"] = 1048576
+        elif defect == "unhighlighted":
+            direct["highlightedSettings"] = callback["highlightedSettings"] = False
+        elif defect == "wrong-session":
+            direct["menuSession"] = callback["menuSession"] = 4
+        else:
+            inserted = copy.deepcopy(rows[0])
+            if defect == "intervening":
+                inserted["menuProbe"]["inputSerial"] = 8
+            rows.insert(1, inserted)
+        for index, row in enumerate(rows, 1):
+            row["sequence"] = index
+        with pytest.raises(ValueError):
+>           protocol.return_invocation(snapshot, highlight, 2, NONCE)
+E           TypeError: return_invocation() takes 3 positional arguments but 4 were given
+
+Tests/scripts/test_settings_causal_protocol.py:226: TypeError
+_____ test_return_rejects_transport_only_and_stale_current_event[modifier] _____
+
+snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 4, 'pid': 814}]}
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+defect = 'modifier'
+
+    @pytest.mark.parametrize(
+        "defect",
+        [
+            "missing",
+            "stale",
+            "repeat",
+            "wrong-key",
+            "modifier",
+            "unhighlighted",
+            "wrong-session",
+            "duplicate",
+            "intervening",
+        ],
+    )
+    def test_return_rejects_transport_only_and_stale_current_event(
+        snapshot, highlight, defect
+    ):
+        rows = snapshot["records"]
+        direct = rows[0]["menuProbe"]
+        callback = rows[1]["menuProbe"]
+        if defect == "missing":
+            rows.pop(0)
+        elif defect == "stale":
+            callback["sameEvent"] = False
+        elif defect == "repeat":
+            direct["isARepeat"] = callback["isARepeat"] = True
+        elif defect == "wrong-key":
+            direct["keyCode"] = callback["keyCode"] = 76
+        elif defect == "modifier":
+            direct["modifierFlags"] = callback["modifierFlags"] = 1048576
+        elif defect == "unhighlighted":
+            direct["highlightedSettings"] = callback["highlightedSettings"] = False
+        elif defect == "wrong-session":
+            direct["menuSession"] = callback["menuSession"] = 4
+        else:
+            inserted = copy.deepcopy(rows[0])
+            if defect == "intervening":
+                inserted["menuProbe"]["inputSerial"] = 8
+            rows.insert(1, inserted)
+        for index, row in enumerate(rows, 1):
+            row["sequence"] = index
+        with pytest.raises(ValueError):
+>           protocol.return_invocation(snapshot, highlight, 2, NONCE)
+E           TypeError: return_invocation() takes 3 positional arguments but 4 were given
+
+Tests/scripts/test_settings_causal_protocol.py:226: TypeError
+__ test_return_rejects_transport_only_and_stale_current_event[unhighlighted] ___
+
+snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 4, 'pid': 814}]}
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+defect = 'unhighlighted'
+
+    @pytest.mark.parametrize(
+        "defect",
+        [
+            "missing",
+            "stale",
+            "repeat",
+            "wrong-key",
+            "modifier",
+            "unhighlighted",
+            "wrong-session",
+            "duplicate",
+            "intervening",
+        ],
+    )
+    def test_return_rejects_transport_only_and_stale_current_event(
+        snapshot, highlight, defect
+    ):
+        rows = snapshot["records"]
+        direct = rows[0]["menuProbe"]
+        callback = rows[1]["menuProbe"]
+        if defect == "missing":
+            rows.pop(0)
+        elif defect == "stale":
+            callback["sameEvent"] = False
+        elif defect == "repeat":
+            direct["isARepeat"] = callback["isARepeat"] = True
+        elif defect == "wrong-key":
+            direct["keyCode"] = callback["keyCode"] = 76
+        elif defect == "modifier":
+            direct["modifierFlags"] = callback["modifierFlags"] = 1048576
+        elif defect == "unhighlighted":
+            direct["highlightedSettings"] = callback["highlightedSettings"] = False
+        elif defect == "wrong-session":
+            direct["menuSession"] = callback["menuSession"] = 4
+        else:
+            inserted = copy.deepcopy(rows[0])
+            if defect == "intervening":
+                inserted["menuProbe"]["inputSerial"] = 8
+            rows.insert(1, inserted)
+        for index, row in enumerate(rows, 1):
+            row["sequence"] = index
+        with pytest.raises(ValueError):
+>           protocol.return_invocation(snapshot, highlight, 2, NONCE)
+E           TypeError: return_invocation() takes 3 positional arguments but 4 were given
+
+Tests/scripts/test_settings_causal_protocol.py:226: TypeError
+__ test_return_rejects_transport_only_and_stale_current_event[wrong-session] ___
+
+snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 4, 'pid': 814}]}
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+defect = 'wrong-session'
+
+    @pytest.mark.parametrize(
+        "defect",
+        [
+            "missing",
+            "stale",
+            "repeat",
+            "wrong-key",
+            "modifier",
+            "unhighlighted",
+            "wrong-session",
+            "duplicate",
+            "intervening",
+        ],
+    )
+    def test_return_rejects_transport_only_and_stale_current_event(
+        snapshot, highlight, defect
+    ):
+        rows = snapshot["records"]
+        direct = rows[0]["menuProbe"]
+        callback = rows[1]["menuProbe"]
+        if defect == "missing":
+            rows.pop(0)
+        elif defect == "stale":
+            callback["sameEvent"] = False
+        elif defect == "repeat":
+            direct["isARepeat"] = callback["isARepeat"] = True
+        elif defect == "wrong-key":
+            direct["keyCode"] = callback["keyCode"] = 76
+        elif defect == "modifier":
+            direct["modifierFlags"] = callback["modifierFlags"] = 1048576
+        elif defect == "unhighlighted":
+            direct["highlightedSettings"] = callback["highlightedSettings"] = False
+        elif defect == "wrong-session":
+            direct["menuSession"] = callback["menuSession"] = 4
+        else:
+            inserted = copy.deepcopy(rows[0])
+            if defect == "intervening":
+                inserted["menuProbe"]["inputSerial"] = 8
+            rows.insert(1, inserted)
+        for index, row in enumerate(rows, 1):
+            row["sequence"] = index
+        with pytest.raises(ValueError):
+>           protocol.return_invocation(snapshot, highlight, 2, NONCE)
+E           TypeError: return_invocation() takes 3 positional arguments but 4 were given
+
+Tests/scripts/test_settings_causal_protocol.py:226: TypeError
+____ test_return_rejects_transport_only_and_stale_current_event[duplicate] _____
+
+snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 5, 'pid': 814}]}
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+defect = 'duplicate'
+
+    @pytest.mark.parametrize(
+        "defect",
+        [
+            "missing",
+            "stale",
+            "repeat",
+            "wrong-key",
+            "modifier",
+            "unhighlighted",
+            "wrong-session",
+            "duplicate",
+            "intervening",
+        ],
+    )
+    def test_return_rejects_transport_only_and_stale_current_event(
+        snapshot, highlight, defect
+    ):
+        rows = snapshot["records"]
+        direct = rows[0]["menuProbe"]
+        callback = rows[1]["menuProbe"]
+        if defect == "missing":
+            rows.pop(0)
+        elif defect == "stale":
+            callback["sameEvent"] = False
+        elif defect == "repeat":
+            direct["isARepeat"] = callback["isARepeat"] = True
+        elif defect == "wrong-key":
+            direct["keyCode"] = callback["keyCode"] = 76
+        elif defect == "modifier":
+            direct["modifierFlags"] = callback["modifierFlags"] = 1048576
+        elif defect == "unhighlighted":
+            direct["highlightedSettings"] = callback["highlightedSettings"] = False
+        elif defect == "wrong-session":
+            direct["menuSession"] = callback["menuSession"] = 4
+        else:
+            inserted = copy.deepcopy(rows[0])
+            if defect == "intervening":
+                inserted["menuProbe"]["inputSerial"] = 8
+            rows.insert(1, inserted)
+        for index, row in enumerate(rows, 1):
+            row["sequence"] = index
+        with pytest.raises(ValueError):
+>           protocol.return_invocation(snapshot, highlight, 2, NONCE)
+E           TypeError: return_invocation() takes 3 positional arguments but 4 were given
+
+Tests/scripts/test_settings_causal_protocol.py:226: TypeError
+___ test_return_rejects_transport_only_and_stale_current_event[intervening] ____
+
+snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 5, 'pid': 814}]}
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+defect = 'intervening'
+
+    @pytest.mark.parametrize(
+        "defect",
+        [
+            "missing",
+            "stale",
+            "repeat",
+            "wrong-key",
+            "modifier",
+            "unhighlighted",
+            "wrong-session",
+            "duplicate",
+            "intervening",
+        ],
+    )
+    def test_return_rejects_transport_only_and_stale_current_event(
+        snapshot, highlight, defect
+    ):
+        rows = snapshot["records"]
+        direct = rows[0]["menuProbe"]
+        callback = rows[1]["menuProbe"]
+        if defect == "missing":
+            rows.pop(0)
+        elif defect == "stale":
+            callback["sameEvent"] = False
+        elif defect == "repeat":
+            direct["isARepeat"] = callback["isARepeat"] = True
+        elif defect == "wrong-key":
+            direct["keyCode"] = callback["keyCode"] = 76
+        elif defect == "modifier":
+            direct["modifierFlags"] = callback["modifierFlags"] = 1048576
+        elif defect == "unhighlighted":
+            direct["highlightedSettings"] = callback["highlightedSettings"] = False
+        elif defect == "wrong-session":
+            direct["menuSession"] = callback["menuSession"] = 4
+        else:
+            inserted = copy.deepcopy(rows[0])
+            if defect == "intervening":
+                inserted["menuProbe"]["inputSerial"] = 8
+            rows.insert(1, inserted)
+        for index, row in enumerate(rows, 1):
+            row["sequence"] = index
+        with pytest.raises(ValueError):
+>           protocol.return_invocation(snapshot, highlight, 2, NONCE)
+E           TypeError: return_invocation() takes 3 positional arguments but 4 were given
+
+Tests/scripts/test_settings_causal_protocol.py:226: TypeError
+____________ test_return_rejects_highlight_from_another_route_nonce ____________
+
+snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 4, 'pid': 814}]}
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+
+    def test_return_rejects_highlight_from_another_route_nonce(snapshot, highlight):
+        with pytest.raises(ValueError, match='nonce'):
+>           protocol.return_invocation(snapshot, highlight, 2, BOOT)
+E           TypeError: return_invocation() takes 3 positional arguments but 4 were given
+
+Tests/scripts/test_settings_causal_protocol.py:511: TypeError
+___ test_mouse_delivery_uses_direct_pair_even_with_saved_stale_current_event ___
+
+mouse_snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 5, 'pid': 814}]}
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+
+    def test_mouse_delivery_uses_direct_pair_even_with_saved_stale_current_event(
+        mouse_snapshot, highlight
+    ):
+>       result = protocol.mouse_invocation(mouse_snapshot, highlight, 2, NONCE)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'causal_protocol' has no attribute 'mouse_invocation'. Did you mean: 'return_invocation'?
+
+Tests/scripts/test_settings_causal_protocol.py:531: AttributeError
+__________ test_mouse_delivery_rejects_unqualified_pair[missing-down] __________
+
+mouse_snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 4, 'pid': 814}]}
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+defect = 'missing-down'
+
+    @pytest.mark.parametrize('defect', [
+        'missing-down', 'missing-up', 'reversed', 'intervening', 'wrong-session',
+        'wrong-nonce', 'unhighlighted', 'modifier', 'wrong-callback', 'serial', 'pid',
+    ])
+    def test_mouse_delivery_rejects_unqualified_pair(mouse_snapshot, highlight, defect):
+        rows = mouse_snapshot['records']
+        if defect == 'missing-down':
+            rows.pop(0)
+        elif defect == 'missing-up':
+            rows.pop(1)
+        elif defect == 'reversed':
+            rows[0], rows[1] = rows[1], rows[0]
+        elif defect == 'intervening':
+            rows.insert(1, copy.deepcopy(rows[0]))
+        elif defect == 'wrong-session':
+            rows[0]['menuProbe']['menuSession'] += 1
+        elif defect == 'wrong-nonce':
+            rows[0]['menuProbe']['requestUUID'] = BOOT
+        elif defect == 'unhighlighted':
+            rows[0]['menuProbe']['highlightedSettings'] = False
+        elif defect == 'modifier':
+            rows[0]['menuProbe']['modifierFlags'] = 1
+        elif defect == 'wrong-callback':
+            rows[2]['menuProbe']['inputSerial'] = 8
+        elif defect == 'serial':
+            rows[1]['menuProbe']['inputSerial'] = 10
+            rows[2]['menuProbe']['inputSerial'] = 10
+        else:
+            rows[0]['pid'] = 815
+        for index, row in enumerate(rows, 1):
+            row['sequence'] = index
+        with pytest.raises(ValueError):
+>           protocol.mouse_invocation(mouse_snapshot, highlight, 2, NONCE)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'causal_protocol' has no attribute 'mouse_invocation'. Did you mean: 'return_invocation'?
+
+Tests/scripts/test_settings_causal_protocol.py:569: AttributeError
+___________ test_mouse_delivery_rejects_unqualified_pair[missing-up] ___________
+
+mouse_snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 4, 'pid': 814}]}
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+defect = 'missing-up'
+
+    @pytest.mark.parametrize('defect', [
+        'missing-down', 'missing-up', 'reversed', 'intervening', 'wrong-session',
+        'wrong-nonce', 'unhighlighted', 'modifier', 'wrong-callback', 'serial', 'pid',
+    ])
+    def test_mouse_delivery_rejects_unqualified_pair(mouse_snapshot, highlight, defect):
+        rows = mouse_snapshot['records']
+        if defect == 'missing-down':
+            rows.pop(0)
+        elif defect == 'missing-up':
+            rows.pop(1)
+        elif defect == 'reversed':
+            rows[0], rows[1] = rows[1], rows[0]
+        elif defect == 'intervening':
+            rows.insert(1, copy.deepcopy(rows[0]))
+        elif defect == 'wrong-session':
+            rows[0]['menuProbe']['menuSession'] += 1
+        elif defect == 'wrong-nonce':
+            rows[0]['menuProbe']['requestUUID'] = BOOT
+        elif defect == 'unhighlighted':
+            rows[0]['menuProbe']['highlightedSettings'] = False
+        elif defect == 'modifier':
+            rows[0]['menuProbe']['modifierFlags'] = 1
+        elif defect == 'wrong-callback':
+            rows[2]['menuProbe']['inputSerial'] = 8
+        elif defect == 'serial':
+            rows[1]['menuProbe']['inputSerial'] = 10
+            rows[2]['menuProbe']['inputSerial'] = 10
+        else:
+            rows[0]['pid'] = 815
+        for index, row in enumerate(rows, 1):
+            row['sequence'] = index
+        with pytest.raises(ValueError):
+>           protocol.mouse_invocation(mouse_snapshot, highlight, 2, NONCE)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'causal_protocol' has no attribute 'mouse_invocation'. Did you mean: 'return_invocation'?
+
+Tests/scripts/test_settings_causal_protocol.py:569: AttributeError
+____________ test_mouse_delivery_rejects_unqualified_pair[reversed] ____________
+
+mouse_snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 5, 'pid': 814}]}
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+defect = 'reversed'
+
+    @pytest.mark.parametrize('defect', [
+        'missing-down', 'missing-up', 'reversed', 'intervening', 'wrong-session',
+        'wrong-nonce', 'unhighlighted', 'modifier', 'wrong-callback', 'serial', 'pid',
+    ])
+    def test_mouse_delivery_rejects_unqualified_pair(mouse_snapshot, highlight, defect):
+        rows = mouse_snapshot['records']
+        if defect == 'missing-down':
+            rows.pop(0)
+        elif defect == 'missing-up':
+            rows.pop(1)
+        elif defect == 'reversed':
+            rows[0], rows[1] = rows[1], rows[0]
+        elif defect == 'intervening':
+            rows.insert(1, copy.deepcopy(rows[0]))
+        elif defect == 'wrong-session':
+            rows[0]['menuProbe']['menuSession'] += 1
+        elif defect == 'wrong-nonce':
+            rows[0]['menuProbe']['requestUUID'] = BOOT
+        elif defect == 'unhighlighted':
+            rows[0]['menuProbe']['highlightedSettings'] = False
+        elif defect == 'modifier':
+            rows[0]['menuProbe']['modifierFlags'] = 1
+        elif defect == 'wrong-callback':
+            rows[2]['menuProbe']['inputSerial'] = 8
+        elif defect == 'serial':
+            rows[1]['menuProbe']['inputSerial'] = 10
+            rows[2]['menuProbe']['inputSerial'] = 10
+        else:
+            rows[0]['pid'] = 815
+        for index, row in enumerate(rows, 1):
+            row['sequence'] = index
+        with pytest.raises(ValueError):
+>           protocol.mouse_invocation(mouse_snapshot, highlight, 2, NONCE)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'causal_protocol' has no attribute 'mouse_invocation'. Did you mean: 'return_invocation'?
+
+Tests/scripts/test_settings_causal_protocol.py:569: AttributeError
+__________ test_mouse_delivery_rejects_unqualified_pair[intervening] ___________
+
+mouse_snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 6, 'pid': 814}]}
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+defect = 'intervening'
+
+    @pytest.mark.parametrize('defect', [
+        'missing-down', 'missing-up', 'reversed', 'intervening', 'wrong-session',
+        'wrong-nonce', 'unhighlighted', 'modifier', 'wrong-callback', 'serial', 'pid',
+    ])
+    def test_mouse_delivery_rejects_unqualified_pair(mouse_snapshot, highlight, defect):
+        rows = mouse_snapshot['records']
+        if defect == 'missing-down':
+            rows.pop(0)
+        elif defect == 'missing-up':
+            rows.pop(1)
+        elif defect == 'reversed':
+            rows[0], rows[1] = rows[1], rows[0]
+        elif defect == 'intervening':
+            rows.insert(1, copy.deepcopy(rows[0]))
+        elif defect == 'wrong-session':
+            rows[0]['menuProbe']['menuSession'] += 1
+        elif defect == 'wrong-nonce':
+            rows[0]['menuProbe']['requestUUID'] = BOOT
+        elif defect == 'unhighlighted':
+            rows[0]['menuProbe']['highlightedSettings'] = False
+        elif defect == 'modifier':
+            rows[0]['menuProbe']['modifierFlags'] = 1
+        elif defect == 'wrong-callback':
+            rows[2]['menuProbe']['inputSerial'] = 8
+        elif defect == 'serial':
+            rows[1]['menuProbe']['inputSerial'] = 10
+            rows[2]['menuProbe']['inputSerial'] = 10
+        else:
+            rows[0]['pid'] = 815
+        for index, row in enumerate(rows, 1):
+            row['sequence'] = index
+        with pytest.raises(ValueError):
+>           protocol.mouse_invocation(mouse_snapshot, highlight, 2, NONCE)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'causal_protocol' has no attribute 'mouse_invocation'. Did you mean: 'return_invocation'?
+
+Tests/scripts/test_settings_causal_protocol.py:569: AttributeError
+_________ test_mouse_delivery_rejects_unqualified_pair[wrong-session] __________
+
+mouse_snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 5, 'pid': 814}]}
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+defect = 'wrong-session'
+
+    @pytest.mark.parametrize('defect', [
+        'missing-down', 'missing-up', 'reversed', 'intervening', 'wrong-session',
+        'wrong-nonce', 'unhighlighted', 'modifier', 'wrong-callback', 'serial', 'pid',
+    ])
+    def test_mouse_delivery_rejects_unqualified_pair(mouse_snapshot, highlight, defect):
+        rows = mouse_snapshot['records']
+        if defect == 'missing-down':
+            rows.pop(0)
+        elif defect == 'missing-up':
+            rows.pop(1)
+        elif defect == 'reversed':
+            rows[0], rows[1] = rows[1], rows[0]
+        elif defect == 'intervening':
+            rows.insert(1, copy.deepcopy(rows[0]))
+        elif defect == 'wrong-session':
+            rows[0]['menuProbe']['menuSession'] += 1
+        elif defect == 'wrong-nonce':
+            rows[0]['menuProbe']['requestUUID'] = BOOT
+        elif defect == 'unhighlighted':
+            rows[0]['menuProbe']['highlightedSettings'] = False
+        elif defect == 'modifier':
+            rows[0]['menuProbe']['modifierFlags'] = 1
+        elif defect == 'wrong-callback':
+            rows[2]['menuProbe']['inputSerial'] = 8
+        elif defect == 'serial':
+            rows[1]['menuProbe']['inputSerial'] = 10
+            rows[2]['menuProbe']['inputSerial'] = 10
+        else:
+            rows[0]['pid'] = 815
+        for index, row in enumerate(rows, 1):
+            row['sequence'] = index
+        with pytest.raises(ValueError):
+>           protocol.mouse_invocation(mouse_snapshot, highlight, 2, NONCE)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'causal_protocol' has no attribute 'mouse_invocation'. Did you mean: 'return_invocation'?
+
+Tests/scripts/test_settings_causal_protocol.py:569: AttributeError
+__________ test_mouse_delivery_rejects_unqualified_pair[wrong-nonce] ___________
+
+mouse_snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 5, 'pid': 814}]}
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+defect = 'wrong-nonce'
+
+    @pytest.mark.parametrize('defect', [
+        'missing-down', 'missing-up', 'reversed', 'intervening', 'wrong-session',
+        'wrong-nonce', 'unhighlighted', 'modifier', 'wrong-callback', 'serial', 'pid',
+    ])
+    def test_mouse_delivery_rejects_unqualified_pair(mouse_snapshot, highlight, defect):
+        rows = mouse_snapshot['records']
+        if defect == 'missing-down':
+            rows.pop(0)
+        elif defect == 'missing-up':
+            rows.pop(1)
+        elif defect == 'reversed':
+            rows[0], rows[1] = rows[1], rows[0]
+        elif defect == 'intervening':
+            rows.insert(1, copy.deepcopy(rows[0]))
+        elif defect == 'wrong-session':
+            rows[0]['menuProbe']['menuSession'] += 1
+        elif defect == 'wrong-nonce':
+            rows[0]['menuProbe']['requestUUID'] = BOOT
+        elif defect == 'unhighlighted':
+            rows[0]['menuProbe']['highlightedSettings'] = False
+        elif defect == 'modifier':
+            rows[0]['menuProbe']['modifierFlags'] = 1
+        elif defect == 'wrong-callback':
+            rows[2]['menuProbe']['inputSerial'] = 8
+        elif defect == 'serial':
+            rows[1]['menuProbe']['inputSerial'] = 10
+            rows[2]['menuProbe']['inputSerial'] = 10
+        else:
+            rows[0]['pid'] = 815
+        for index, row in enumerate(rows, 1):
+            row['sequence'] = index
+        with pytest.raises(ValueError):
+>           protocol.mouse_invocation(mouse_snapshot, highlight, 2, NONCE)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'causal_protocol' has no attribute 'mouse_invocation'. Did you mean: 'return_invocation'?
+
+Tests/scripts/test_settings_causal_protocol.py:569: AttributeError
+_________ test_mouse_delivery_rejects_unqualified_pair[unhighlighted] __________
+
+mouse_snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 5, 'pid': 814}]}
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+defect = 'unhighlighted'
+
+    @pytest.mark.parametrize('defect', [
+        'missing-down', 'missing-up', 'reversed', 'intervening', 'wrong-session',
+        'wrong-nonce', 'unhighlighted', 'modifier', 'wrong-callback', 'serial', 'pid',
+    ])
+    def test_mouse_delivery_rejects_unqualified_pair(mouse_snapshot, highlight, defect):
+        rows = mouse_snapshot['records']
+        if defect == 'missing-down':
+            rows.pop(0)
+        elif defect == 'missing-up':
+            rows.pop(1)
+        elif defect == 'reversed':
+            rows[0], rows[1] = rows[1], rows[0]
+        elif defect == 'intervening':
+            rows.insert(1, copy.deepcopy(rows[0]))
+        elif defect == 'wrong-session':
+            rows[0]['menuProbe']['menuSession'] += 1
+        elif defect == 'wrong-nonce':
+            rows[0]['menuProbe']['requestUUID'] = BOOT
+        elif defect == 'unhighlighted':
+            rows[0]['menuProbe']['highlightedSettings'] = False
+        elif defect == 'modifier':
+            rows[0]['menuProbe']['modifierFlags'] = 1
+        elif defect == 'wrong-callback':
+            rows[2]['menuProbe']['inputSerial'] = 8
+        elif defect == 'serial':
+            rows[1]['menuProbe']['inputSerial'] = 10
+            rows[2]['menuProbe']['inputSerial'] = 10
+        else:
+            rows[0]['pid'] = 815
+        for index, row in enumerate(rows, 1):
+            row['sequence'] = index
+        with pytest.raises(ValueError):
+>           protocol.mouse_invocation(mouse_snapshot, highlight, 2, NONCE)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'causal_protocol' has no attribute 'mouse_invocation'. Did you mean: 'return_invocation'?
+
+Tests/scripts/test_settings_causal_protocol.py:569: AttributeError
+____________ test_mouse_delivery_rejects_unqualified_pair[modifier] ____________
+
+mouse_snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 5, 'pid': 814}]}
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+defect = 'modifier'
+
+    @pytest.mark.parametrize('defect', [
+        'missing-down', 'missing-up', 'reversed', 'intervening', 'wrong-session',
+        'wrong-nonce', 'unhighlighted', 'modifier', 'wrong-callback', 'serial', 'pid',
+    ])
+    def test_mouse_delivery_rejects_unqualified_pair(mouse_snapshot, highlight, defect):
+        rows = mouse_snapshot['records']
+        if defect == 'missing-down':
+            rows.pop(0)
+        elif defect == 'missing-up':
+            rows.pop(1)
+        elif defect == 'reversed':
+            rows[0], rows[1] = rows[1], rows[0]
+        elif defect == 'intervening':
+            rows.insert(1, copy.deepcopy(rows[0]))
+        elif defect == 'wrong-session':
+            rows[0]['menuProbe']['menuSession'] += 1
+        elif defect == 'wrong-nonce':
+            rows[0]['menuProbe']['requestUUID'] = BOOT
+        elif defect == 'unhighlighted':
+            rows[0]['menuProbe']['highlightedSettings'] = False
+        elif defect == 'modifier':
+            rows[0]['menuProbe']['modifierFlags'] = 1
+        elif defect == 'wrong-callback':
+            rows[2]['menuProbe']['inputSerial'] = 8
+        elif defect == 'serial':
+            rows[1]['menuProbe']['inputSerial'] = 10
+            rows[2]['menuProbe']['inputSerial'] = 10
+        else:
+            rows[0]['pid'] = 815
+        for index, row in enumerate(rows, 1):
+            row['sequence'] = index
+        with pytest.raises(ValueError):
+>           protocol.mouse_invocation(mouse_snapshot, highlight, 2, NONCE)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'causal_protocol' has no attribute 'mouse_invocation'. Did you mean: 'return_invocation'?
+
+Tests/scripts/test_settings_causal_protocol.py:569: AttributeError
+_________ test_mouse_delivery_rejects_unqualified_pair[wrong-callback] _________
+
+mouse_snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 5, 'pid': 814}]}
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+defect = 'wrong-callback'
+
+    @pytest.mark.parametrize('defect', [
+        'missing-down', 'missing-up', 'reversed', 'intervening', 'wrong-session',
+        'wrong-nonce', 'unhighlighted', 'modifier', 'wrong-callback', 'serial', 'pid',
+    ])
+    def test_mouse_delivery_rejects_unqualified_pair(mouse_snapshot, highlight, defect):
+        rows = mouse_snapshot['records']
+        if defect == 'missing-down':
+            rows.pop(0)
+        elif defect == 'missing-up':
+            rows.pop(1)
+        elif defect == 'reversed':
+            rows[0], rows[1] = rows[1], rows[0]
+        elif defect == 'intervening':
+            rows.insert(1, copy.deepcopy(rows[0]))
+        elif defect == 'wrong-session':
+            rows[0]['menuProbe']['menuSession'] += 1
+        elif defect == 'wrong-nonce':
+            rows[0]['menuProbe']['requestUUID'] = BOOT
+        elif defect == 'unhighlighted':
+            rows[0]['menuProbe']['highlightedSettings'] = False
+        elif defect == 'modifier':
+            rows[0]['menuProbe']['modifierFlags'] = 1
+        elif defect == 'wrong-callback':
+            rows[2]['menuProbe']['inputSerial'] = 8
+        elif defect == 'serial':
+            rows[1]['menuProbe']['inputSerial'] = 10
+            rows[2]['menuProbe']['inputSerial'] = 10
+        else:
+            rows[0]['pid'] = 815
+        for index, row in enumerate(rows, 1):
+            row['sequence'] = index
+        with pytest.raises(ValueError):
+>           protocol.mouse_invocation(mouse_snapshot, highlight, 2, NONCE)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'causal_protocol' has no attribute 'mouse_invocation'. Did you mean: 'return_invocation'?
+
+Tests/scripts/test_settings_causal_protocol.py:569: AttributeError
+_____________ test_mouse_delivery_rejects_unqualified_pair[serial] _____________
+
+mouse_snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 5, 'pid': 814}]}
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+defect = 'serial'
+
+    @pytest.mark.parametrize('defect', [
+        'missing-down', 'missing-up', 'reversed', 'intervening', 'wrong-session',
+        'wrong-nonce', 'unhighlighted', 'modifier', 'wrong-callback', 'serial', 'pid',
+    ])
+    def test_mouse_delivery_rejects_unqualified_pair(mouse_snapshot, highlight, defect):
+        rows = mouse_snapshot['records']
+        if defect == 'missing-down':
+            rows.pop(0)
+        elif defect == 'missing-up':
+            rows.pop(1)
+        elif defect == 'reversed':
+            rows[0], rows[1] = rows[1], rows[0]
+        elif defect == 'intervening':
+            rows.insert(1, copy.deepcopy(rows[0]))
+        elif defect == 'wrong-session':
+            rows[0]['menuProbe']['menuSession'] += 1
+        elif defect == 'wrong-nonce':
+            rows[0]['menuProbe']['requestUUID'] = BOOT
+        elif defect == 'unhighlighted':
+            rows[0]['menuProbe']['highlightedSettings'] = False
+        elif defect == 'modifier':
+            rows[0]['menuProbe']['modifierFlags'] = 1
+        elif defect == 'wrong-callback':
+            rows[2]['menuProbe']['inputSerial'] = 8
+        elif defect == 'serial':
+            rows[1]['menuProbe']['inputSerial'] = 10
+            rows[2]['menuProbe']['inputSerial'] = 10
+        else:
+            rows[0]['pid'] = 815
+        for index, row in enumerate(rows, 1):
+            row['sequence'] = index
+        with pytest.raises(ValueError):
+>           protocol.mouse_invocation(mouse_snapshot, highlight, 2, NONCE)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'causal_protocol' has no attribute 'mouse_invocation'. Did you mean: 'return_invocation'?
+
+Tests/scripts/test_settings_causal_protocol.py:569: AttributeError
+______________ test_mouse_delivery_rejects_unqualified_pair[pid] _______________
+
+mouse_snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 5, 'pid': 814}]}
+highlight = {'format': 'koine-menu-probe/1', 'requestUUID': '20f73e7f-1632-4c27-8c2c-35ab61bbcaac', 'pid': 814, 'menuSession': 3, ...}
+defect = 'pid'
+
+    @pytest.mark.parametrize('defect', [
+        'missing-down', 'missing-up', 'reversed', 'intervening', 'wrong-session',
+        'wrong-nonce', 'unhighlighted', 'modifier', 'wrong-callback', 'serial', 'pid',
+    ])
+    def test_mouse_delivery_rejects_unqualified_pair(mouse_snapshot, highlight, defect):
+        rows = mouse_snapshot['records']
+        if defect == 'missing-down':
+            rows.pop(0)
+        elif defect == 'missing-up':
+            rows.pop(1)
+        elif defect == 'reversed':
+            rows[0], rows[1] = rows[1], rows[0]
+        elif defect == 'intervening':
+            rows.insert(1, copy.deepcopy(rows[0]))
+        elif defect == 'wrong-session':
+            rows[0]['menuProbe']['menuSession'] += 1
+        elif defect == 'wrong-nonce':
+            rows[0]['menuProbe']['requestUUID'] = BOOT
+        elif defect == 'unhighlighted':
+            rows[0]['menuProbe']['highlightedSettings'] = False
+        elif defect == 'modifier':
+            rows[0]['menuProbe']['modifierFlags'] = 1
+        elif defect == 'wrong-callback':
+            rows[2]['menuProbe']['inputSerial'] = 8
+        elif defect == 'serial':
+            rows[1]['menuProbe']['inputSerial'] = 10
+            rows[2]['menuProbe']['inputSerial'] = 10
+        else:
+            rows[0]['pid'] = 815
+        for index, row in enumerate(rows, 1):
+            row['sequence'] = index
+        with pytest.raises(ValueError):
+>           protocol.mouse_invocation(mouse_snapshot, highlight, 2, NONCE)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'causal_protocol' has no attribute 'mouse_invocation'. Did you mean: 'return_invocation'?
+
+Tests/scripts/test_settings_causal_protocol.py:569: AttributeError
+=========================== short test summary info ============================
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_positive_return_requires_direct_input_and_same_callback_event
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_return_rejects_transport_only_and_stale_current_event[missing]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_return_rejects_transport_only_and_stale_current_event[stale]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_return_rejects_transport_only_and_stale_current_event[repeat]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_return_rejects_transport_only_and_stale_current_event[wrong-key]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_return_rejects_transport_only_and_stale_current_event[modifier]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_return_rejects_transport_only_and_stale_current_event[unhighlighted]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_return_rejects_transport_only_and_stale_current_event[wrong-session]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_return_rejects_transport_only_and_stale_current_event[duplicate]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_return_rejects_transport_only_and_stale_current_event[intervening]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_return_rejects_highlight_from_another_route_nonce
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_mouse_delivery_uses_direct_pair_even_with_saved_stale_current_event
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_mouse_delivery_rejects_unqualified_pair[missing-down]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_mouse_delivery_rejects_unqualified_pair[missing-up]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_mouse_delivery_rejects_unqualified_pair[reversed]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_mouse_delivery_rejects_unqualified_pair[intervening]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_mouse_delivery_rejects_unqualified_pair[wrong-session]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_mouse_delivery_rejects_unqualified_pair[wrong-nonce]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_mouse_delivery_rejects_unqualified_pair[unhighlighted]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_mouse_delivery_rejects_unqualified_pair[modifier]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_mouse_delivery_rejects_unqualified_pair[wrong-callback]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_mouse_delivery_rejects_unqualified_pair[serial]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_mouse_delivery_rejects_unqualified_pair[pid]
+23 failed, 71 passed in 0.28s

@@ -1,5 +1,11 @@
 # Settings reopen: recorded activation failure — 2026-10-28
 
+K41's [protocol review integration](CAUSAL-PROTOCOL-REVIEW.md) repairs offline
+launch-prefix accounting, final-control input and positive mouse/Return nonce
+criteria. No guest or product repair ran. Supported causal design and its review
+still precede all route/causal guests; native disposition, justified repair/useful
+failing product seam and separate frozen complete ordinary acceptance remain live.
+
 The [implemented protocol boundary](CAUSAL-PROTOCOL-RESULTS.md) supplies checked
 highlight/Return/transport/containment seams and fixed setup/control policies.
 Its narrow necessity question still lacks a finite falsifier for the unrestricted

@@ -1,0 +1,22 @@
+{
+  "check:settings-causal-protocol": {
+    "command": [
+      "mise",
+      "exec",
+      "--",
+      "task",
+      "check:settings-causal-protocol"
+    ],
+    "exit": 0
+  },
+  "check:docs": {
+    "command": [
+      "mise",
+      "exec",
+      "--",
+      "task",
+      "check:docs"
+    ],
+    "exit": 201
+  }
+}

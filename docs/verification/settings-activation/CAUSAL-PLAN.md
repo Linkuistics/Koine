@@ -2,7 +2,8 @@
 
 ## Execution boundary
 
-This is k38's implemented replacement for the unstarted k34 proposal. The
+This is k38's implemented replacement for the unstarted k34 proposal, repaired
+by [k41's integration](CAUSAL-PROTOCOL-REVIEW.md). The
 [complete prior proposal](CAUSAL-PLAN-K34.md) is retained unchanged.
 **No guest has run. No runtime freeze or launch is authorized by this artifact.**
 The producer's tree review and every earned integration precede k36. A separate
@@ -14,7 +15,7 @@ Explicit changes to the unstarted proposal: add one prior successful mouse
 Settings-selection/close control; replace the one-selection limit with exactly
 one setup selection and one measured reopen, plus unavoidable first-launch
 activation; add two separately capped route-qualification slots; implement the
-highlight and Return-origin criteria; state provisional/deferred native-control
+highlight and direct-delivery criteria; state provisional/deferred native-control
 policy. The four unstarted modality positions retain mouse/Return/Return/mouse
 order. None of the historical closed caps is reopened, replaced or enlarged.
 
@@ -127,6 +128,36 @@ any dump, archive acquisition or intervention. The same existing bounded
 one-window/front/focus checks run once in each arm; do not add a focus wait,
 retry or repair to obtain success.
 
+## Positive delivery criteria
+
+The expected nonce is allocated by the enclosing route and supplied explicitly
+as `--nonce` to either offline reader. A highlight file never authenticates its
+own request UUID. Both readers require a complete zero-drop event buffer, one
+Settings callback for the selection, a highlight receipt matching the expected
+nonce and callback PID, and direct inputs in that menu session before callback.
+
+**route-readiness-01 (mouse)** requires `mouse_invocation` / the `mouse` CLI:
+exactly one monitored leftMouseDown (1), then one leftMouseUp (2), both after
+the served nonce, in the receipt's session and with Settings highlighted. Both
+must have no modifiers/repeat/key code, the callback PID/nonce, and consecutive
+positive input serials within the probe budget. No extra direct input is allowed.
+The callback must carry the same last-input record as the up event except for
+`sameEvent`. Callback `currentEvent` identity is deliberately not a mouse gate:
+the saved mouse getter can still name the earlier down event. This qualifies
+positive mouse-pair-to-callback **correlation**, not object-identity dispatch
+provenance or a native transaction. Missing down/up/monitor coverage ends the
+slot; do not substitute clean click transport. The local monitor may not expose
+both events in real menu tracking; this remains an explicit route risk.
+
+```sh
+python3 docs/verification/settings-activation/causal-protocol.py mouse events.json \
+  --highlight route/highlight.json --selection 2 --nonce "$nonce"
+```
+
+**route-readiness-02 (Return)** requires `return_invocation` / the `return` CLI
+under the stricter criterion below. Both readers also apply to their respective
+measured modality selections; neither reader is a focus-outcome test.
+
 ## Positive Return invocation
 
 The local monitor observes its actual NSEvent argument and returns that identical
@@ -149,12 +180,21 @@ substituting another route. No text characters are recorded.
 
 ```sh
 python3 docs/verification/settings-activation/causal-protocol.py return events.json \
-  --highlight route/highlight.json --selection 2
+  --highlight route/highlight.json --selection 2 --nonce "$nonce"
 ```
 
 This criterion intentionally can fail on a platform where the system menu does
 not expose the direct event through this monitor. That is a finite route failure,
 not permission to weaken the criterion after observing it.
+
+Before deciding to spend readiness-02, weigh the retained observation in
+[EVENTS-RESULTS.md](EVENTS-RESULTS.md): successful mouse callbacks ran in default
+mode after menu close with `currentEvent` still leftMouseDown, about 0.35 s old,
+rather than the ending up event. This does not predict what Return exposes.
+It does positively show that callback context need not be the final input.
+There is no supported guarantee of Return object identity. Keep this criterion
+unchanged, retain unavailable evidence, and let k39 decide whether the finite
+route risk is worth runtime. No route guest may discover a causal hypothesis.
 
 ## Separate route qualification and finite setup
 
@@ -162,7 +202,7 @@ Subject to the execution boundary, declare exactly **route-readiness-01** (mouse
 and **route-readiness-02** (Return), fresh clones
 `koine-k12-route-readiness-01/02`. Every started clone consumes its slot, including
 preflight failure or interruption. Both slots must complete readiness, all controls,
-exact joins and the intended delivery evidence before any modality slot. Stop the
+exact joins and the named `mouse_invocation` (01) / `return_invocation` (02) evidence before any modality slot. Stop the
 whole qualification at the first unavailable/invalid/failed control; leave any
 unstarted slot NOT RUN. No replacement, corrected rerun, third slot or transfer
 of unused qualification slots to the modality set. Failure requires a new reviewed
@@ -195,7 +235,9 @@ The fixed progression in each guest is:
 - First launch once. Retain the initial window/title/default-frame and independent
   native active/key/front success observations. If they fail or their transport
   fails, stop the slot before any menu selection. First-launch activation is
-  selection 0 and must later have exactly one enclosed actual client record.
+  selection 0 and must later have its ordinal wrapped-call candidate enclosed.
+  A separate earlier launch-prefix row is required and retained as described below;
+  it is not selection 0's candidate and is never called enclosed by that bracket.
 - Use the settled TextEdit idle-document setup from persisted-01, including its
   fixed settling/move steps. Close Settings once, verify zero Settings windows,
   TextEdit frontmost with the same idle document and no panel. Do not repair an
@@ -217,7 +259,25 @@ This deferred policy avoids pretending the irreversible final dump supplies an
 online native gate. It deliberately allows only the two predeclared provisional
 menu inputs after successful window controls, never another input after a native
 gate is known to fail. `control_policy` and the `control` CLI implement this
-progression. A first-launch successful window without a contained actual client
+progression. At `launch`, `--focus-success` means only first-launch independent
+window/front/key checks and transports succeeded; at `setup`, it means only the
+setup-selection checks and transports succeeded, after a successful launch-stage
+decision. The caller retains both decisions. Native joins may be PENDING for
+these two provisional stages, but any known bad join stops immediately.
+
+At `final`, supply **no focus flag**: the reader rejects any supplied focus input.
+The caller must already have both recorded successful window-control decisions;
+pass `--launch-join ENCLOSED --setup-join ENCLOSED` only for their actual final
+joins. `CLASSIFY_MEASURED` permits interpretation of a measured success **or
+failure**, subject to measured delivery/join qualification. It certifies control
+availability only, not measured success. For example:
+
+```sh
+python3 docs/verification/settings-activation/causal-protocol.py control final \
+  --launch-join ENCLOSED --setup-join ENCLOSED
+```
+
+A first-launch successful window without a contained actual client
 record fails availability for the entire slot; collect, audit and stop, with no
 replacement. Setup failure never becomes repeated-input failure hunting.
 
@@ -236,12 +296,31 @@ that needs wider bounds must implement/test/review those samples first.
 Keep the broad full native rendering, with terminal completion/count, for the
 entire process lifetime. `read_native` rejects partial/malformed rendering. Retain
 all actual-image SLSSetFrontProcessWithInfo candidates, including outside ticks;
-never search only inside desired endpoints. `containment` requires equal numbers
-of complete application activation intervals and actual-client candidates and
-matches them by native order. Extra candidates are AMBIGUOUS, missing candidates
-MISSING. Both remain unqualified. Equal-cardinality ordering and enclosure are
-correlation, not a verified transaction ID. Every interval must be checked; no
-selected-success subset qualifies the set.
+never search only inside desired endpoints. The frozen whole-process shape is
+**one launch-prefix candidate plus one candidate per wrapped activation interval**.
+This is an empirical accounting rule, not a claim about the prefix's source or
+SkyLight semantics. The retained persisted-01 extract has rows at lines 9, 20,
+37 and 49 for three application calls. Events-01 and native-01 also have one
+extra launch-time row. See the retained-row control and evidence limits in
+[the integration](CAUSAL-PROTOCOL-REVIEW.md#launch-prefix-accounting).
+
+`containment` first validates every interval's process/clock metadata, unique
+selection and strict nonoverlapping native-tick order. It validates identities
+and integer ticks for **all** client candidates and requires exactly N+1 rows
+for N intervals. Fewer is MISSING; more is AMBIGUOUS, even if a desired subset
+would enclose. Sort the entire candidate list by native tick; duplicate ticks
+are AMBIGUOUS. Candidate 0 is retained as `launchPrefixTick` and must strictly
+precede the first bracket's before tick, otherwise AMBIGUOUS. Candidates 1…N
+map in order to intervals 0…N-1. Report the full `candidateTicks`, prefix tick,
+selected tick and any exact outside distance. Do not discard a second early row
+or search for a closer replacement. Check **every** interval before crediting
+the slot; another interval's failure cannot be hidden by selecting a success.
+
+This strict shape can reject a future legitimate different launch sequence.
+That is a retained availability failure requiring a new reviewed decision, not
+permission to remove rows after observation. Matching counts, ordinal placement
+and exact enclosure remain correlation, not a verified transaction ID or proof
+of native disposition. The prefix is not itself an activation success control.
 
 Independently retain clean single-attempt guest sysctl boot UUID reads before
 launch and after collection; raw archive Info.plist boot and Apple
@@ -257,7 +336,7 @@ from the extracted guest archive, never the host database or a fitted scale.
 
 | Exact result | Required disposition |
 |---|---|
-| ENCLOSED | One ordinal candidate in the exact closed interval and matching identities/scales; enclosing correlation only |
+| ENCLOSED | One ordinal wrapped-call candidate in the exact closed interval, validated launch prefix and matching identities/scales; enclosing correlation only |
 | OUTSIDE | Retain sole candidate and exact tick distance; stop qualification, never widen or infer refusal/suppression |
 | MISSING | Retain missing candidate; unqualified, never absent-request proof |
 | AMBIGUOUS | Retain all candidates; unqualified, no preferred candidate |

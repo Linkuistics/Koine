@@ -76,7 +76,7 @@ def snapshot(highlight):
 
 @pytest.fixture
 def native():
-    return [
+    clients = [
         {
             "processID": 814,
             "processImagePath": "/Applications/Koine.app/Contents/MacOS/Koine",
@@ -86,6 +86,8 @@ def native():
             "eventMessage": "0[outside of RPC]: SLSSetFrontProcessWithInfo(...)",
         }
     ]
+    # The whole-process model retains a separate launch-prefix row.
+    return [dict(clients[0], machTimestamp=50), *clients]
 
 
 @pytest.fixture
@@ -176,7 +178,9 @@ def test_highlight_requires_fresh_nonce_identity_and_actual_highlight(
 def test_positive_return_requires_direct_input_and_same_callback_event(
     snapshot, highlight
 ):
-    assert protocol.return_invocation(snapshot, highlight, 2)["qualified"] is True
+    assert (
+        protocol.return_invocation(snapshot, highlight, 2, NONCE)["qualified"] is True
+    )
 
 
 @pytest.mark.parametrize(
@@ -221,7 +225,7 @@ def test_return_rejects_transport_only_and_stale_current_event(
     for index, row in enumerate(rows, 1):
         row["sequence"] = index
     with pytest.raises(ValueError):
-        protocol.return_invocation(snapshot, highlight, 2)
+        protocol.return_invocation(snapshot, highlight, 2, NONCE)
 
 
 @pytest.mark.parametrize(
@@ -236,7 +240,7 @@ def test_return_rejects_transport_only_and_stale_current_event(
 def test_exact_closed_containment_above_double_precision(
     snapshot, native, identity, tick, outcome
 ):
-    native[0]["machTimestamp"] = tick
+    native[1]["machTimestamp"] = tick
     result = protocol.containment(snapshot, native, identity, 2)
     assert result["outcome"] == outcome
     assert result["qualified"] is (outcome == "ENCLOSED")
@@ -302,15 +306,17 @@ def test_invalid_instruments_stop_interpretation(snapshot, native, identity, def
 @pytest.mark.parametrize(
     "failure", ["none", "move", "request", "highlight", "key", "timeout"]
 )
+@pytest.mark.parametrize("mode", ["mouse", "Return"])
 def test_real_route_stops_at_each_transport_without_replaying_input(
-    tmp_path, highlight, failure
+    tmp_path, highlight, failure, mode
 ):
     calls = []
 
     def runner(command, **kwargs):
         calls.append(command)
         action = command[1:3]
-        if failure == "timeout" and action == ["input", "key"]:
+        selection_action = ["input", "key" if mode == "Return" else "click"]
+        if failure == "timeout" and action == selection_action:
             raise subprocess.TimeoutExpired(command, 30, output=b"partial")
         raw = {"ok": True, "schema_version": "1.0"}
         status = 0
@@ -331,14 +337,14 @@ def test_real_route_stops_at_each_transport_without_replaying_input(
                 raw.update(timed_out=True, exit_code=-1)
         if failure == "move" and action == ["input", "move"]:
             status = 7
-        if failure == "key" and action == ["input", "key"]:
+        if failure == "key" and action == selection_action:
             raw["ok"] = False
         return subprocess.CompletedProcess(command, status, json.dumps(raw), "")
 
     # The real function drives exactly the same command/parser seam as the CLI.
     if failure == "none":
         protocol.select_row(
-            "Return",
+            mode,
             NONCE,
             814,
             "frozen-vm-id",
@@ -349,7 +355,7 @@ def test_real_route_stops_at_each_transport_without_replaying_input(
     else:
         with pytest.raises(ValueError):
             protocol.select_row(
-                "Return",
+                mode,
                 NONCE,
                 814,
                 "frozen-vm-id",
@@ -357,8 +363,14 @@ def test_real_route_stops_at_each_transport_without_replaying_input(
                 runner=runner,
                 pause=lambda _: None,
             )
-    keys = [c for c in calls if c[1:3] == ["input", "key"]]
+    keys = [c for c in calls if c[1:3] in [["input", "key"], ["input", "click"]]]
     assert len(keys) == (1 if failure in {"none", "key", "timeout"} else 0)
+    if keys:
+        assert keys[0][1:-3] == (
+            ["input", "key", "Return"]
+            if mode == "Return"
+            else ["input", "click", "1895", "71"]
+        )
     assert all(c[-2:] == ["--vm", "frozen-vm-id"] for c in calls)
     assert (tmp_path / "route").exists()
 
@@ -382,21 +394,21 @@ def test_control_policy_never_retries_setup(stage, success, joined, next_action)
 
 
 def test_final_credit_requires_both_positive_native_controls():
-    assert protocol.control_policy("final", True, "ENCLOSED", "ENCLOSED")["qualified"]
+    assert protocol.control_policy("final", None, "ENCLOSED", "ENCLOSED")["qualified"]
     for result in ["PENDING", "OUTSIDE", "MISSING", "AMBIGUOUS", "INVALID"]:
         assert (
-            protocol.control_policy("final", True, "ENCLOSED", result)["next"]
+            protocol.control_policy("final", None, "ENCLOSED", result)["next"]
             == "STOP_SLOT"
         )
 
 
 @pytest.mark.parametrize("defect", ["none", "partial", "count", "duplicate"])
 def test_native_completion_is_required_before_any_join(native, defect):
-    rows = native + [{"count": 1, "finished": 1}]
+    rows = native + [{"count": len(native), "finished": 1}]
     if defect == "partial":
         rows.pop()
     elif defect == "count":
-        rows[-1]["count"] = 2
+        rows[-1]["count"] += 1
     elif defect == "duplicate":
         rows.append(rows[-1])
     text = "\n".join(json.dumps(row) for row in rows)
@@ -443,3 +455,272 @@ def test_control_cli_returns_provisional_progress_without_claiming_qualification
         "next": "SETUP_PROVISIONAL",
         "nativeControlsPending": True,
     }
+
+
+def test_retained_whole_process_rendering_has_explicit_launch_prefix(
+    snapshot, identity
+):
+    """Real retained rows; synthetic brackets do NOT qualify the old app clock."""
+    evidence = ROOT / "docs/verification/settings-activation/persisted-01"
+    native = [
+        json.loads(line)
+        for line in (evidence / "native-path-records.jsonl").read_text().splitlines()
+    ]
+    actual = [
+        r
+        for r in native
+        if r.get("processImagePath") == protocol.IMAGE
+        and "SLSSetFrontProcessWithInfo" in r.get("eventMessage", "")
+    ]
+    historical = [
+        json.loads(line)
+        for line in (evidence / "events.jsonl").read_text().splitlines()
+    ]
+    calls = [r for r in historical if r["event"] == "application.activate.before"]
+    assert len(actual) == len(calls) + 1 == 4
+    template = snapshot["records"][2]
+    snapshot["records"] = []
+    for selection, client in enumerate(actual[1:]):
+        interval = copy.deepcopy(template)
+        interval.update(selection=selection, sequence=selection + 1)
+        interval["activationInterval"] = {
+            "beforeTicks": str(client["machTimestamp"] - 1),
+            "afterTicks": str(client["machTimestamp"] + 1),
+        }
+        snapshot["records"].append(interval)
+    snapshot["records"].append(
+        {"event": "buffer.dump", "sequence": 4, "pid": 814, "selection": 2}
+    )
+    for selection in range(3):
+        result = protocol.containment(snapshot, native, identity, selection)
+        assert result["outcome"] == "ENCLOSED"
+        assert result["launchPrefixTick"] == str(actual[0]["machTimestamp"])
+        assert len(result["candidateTicks"]) == 4
+        assert result["selectedTick"] == str(actual[selection + 1]["machTimestamp"])
+    # A missing wrapped-call row must not be hidden by the launch-prefix row.
+    without_call = [r for r in native if r is not actual[2]]
+    assert (
+        protocol.containment(snapshot, without_call, identity, 2)["outcome"]
+        == "MISSING"
+    )
+
+
+def test_prefix_is_required_and_must_precede_first_bracket(snapshot, native, identity):
+    assert (
+        protocol.containment(snapshot, native[1:], identity, 2)["outcome"] == "MISSING"
+    )
+    native[0]["machTimestamp"] = 9007199254741000
+    assert protocol.containment(snapshot, native, identity, 2)["outcome"] == "AMBIGUOUS"
+
+
+def test_final_focus_input_is_rejected_instead_of_testing_measured_success():
+    for measured in [True, False]:
+        with pytest.raises(ValueError, match="final.*focus"):
+            protocol.control_policy("final", measured, "ENCLOSED", "ENCLOSED")
+
+
+def test_final_cli_needs_no_measured_focus_input():
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(SPEC.origin),
+            "control",
+            "final",
+            "--launch-join",
+            "ENCLOSED",
+            "--setup-join",
+            "ENCLOSED",
+        ],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert result.returncode == 0
+    assert json.loads(result.stdout)["next"] == "CLASSIFY_MEASURED"
+
+
+def test_return_rejects_highlight_from_another_route_nonce(snapshot, highlight):
+    with pytest.raises(ValueError, match="nonce"):
+        protocol.return_invocation(snapshot, highlight, 2, BOOT)
+
+
+@pytest.fixture
+def mouse_snapshot(snapshot):
+    snapshot = copy.deepcopy(snapshot)
+    down = snapshot["records"][0]
+    down["menuProbe"].update(type=1, keyCode=None, inputSerial=8)
+    up = copy.deepcopy(down)
+    up["menuProbe"].update(type=2, inputSerial=9)
+    snapshot["records"].insert(1, up)
+    callback = snapshot["records"][2]
+    callback["menuProbe"] = dict(up["menuProbe"], sameEvent=False)
+    for index, row in enumerate(snapshot["records"], 1):
+        row["sequence"] = index
+    return snapshot
+
+
+def test_mouse_delivery_uses_direct_pair_even_with_saved_stale_current_event(
+    mouse_snapshot, highlight
+):
+    result = protocol.mouse_invocation(mouse_snapshot, highlight, 2, NONCE)
+    assert result["qualified"] is True
+    assert result["inputSerials"] == [8, 9]
+    assert result["scope"] == "observed mouse-pair-to-callback correlation"
+
+
+@pytest.mark.parametrize(
+    "defect",
+    [
+        "missing-down",
+        "missing-up",
+        "reversed",
+        "intervening",
+        "wrong-session",
+        "wrong-nonce",
+        "unhighlighted",
+        "modifier",
+        "wrong-callback",
+        "serial",
+        "pid",
+    ],
+)
+def test_mouse_delivery_rejects_unqualified_pair(mouse_snapshot, highlight, defect):
+    rows = mouse_snapshot["records"]
+    if defect == "missing-down":
+        rows.pop(0)
+    elif defect == "missing-up":
+        rows.pop(1)
+    elif defect == "reversed":
+        rows[0], rows[1] = rows[1], rows[0]
+    elif defect == "intervening":
+        rows.insert(1, copy.deepcopy(rows[0]))
+    elif defect == "wrong-session":
+        rows[0]["menuProbe"]["menuSession"] += 1
+    elif defect == "wrong-nonce":
+        rows[0]["menuProbe"]["requestUUID"] = BOOT
+    elif defect == "unhighlighted":
+        rows[0]["menuProbe"]["highlightedSettings"] = False
+    elif defect == "modifier":
+        rows[0]["menuProbe"]["modifierFlags"] = 1
+    elif defect == "wrong-callback":
+        rows[2]["menuProbe"]["inputSerial"] = 8
+    elif defect == "serial":
+        rows[1]["menuProbe"]["inputSerial"] = 10
+        rows[2]["menuProbe"]["inputSerial"] = 10
+    else:
+        rows[0]["pid"] = 815
+    for index, row in enumerate(rows, 1):
+        row["sequence"] = index
+    with pytest.raises(ValueError):
+        protocol.mouse_invocation(mouse_snapshot, highlight, 2, NONCE)
+
+
+@pytest.mark.parametrize(
+    "frame",
+    [
+        [-1, 10, 30, 22],
+        [1900, 10, 30, 22],
+        [10, 1070, 30, 22],
+        [10, 10, 0, 22],
+        [10, 10, 30, -1],
+        [10, 10, 30],
+        [10, 10, True, 22],
+    ],
+)
+def test_bad_geometry_stops_before_any_input(tmp_path, frame):
+    calls = []
+
+    def runner(command, **kwargs):
+        calls.append(command)
+        return subprocess.CompletedProcess(
+            command,
+            0,
+            json.dumps(
+                {
+                    "ok": True,
+                    "exit_code": 0,
+                    "timed_out": False,
+                    "stderr": "",
+                    "stdout": json.dumps(frame),
+                }
+            ),
+            "",
+        )
+
+    with pytest.raises(ValueError):
+        protocol.select_row(
+            "mouse",
+            NONCE,
+            814,
+            "frozen-vm-id",
+            tmp_path / "route",
+            runner=runner,
+            pause=lambda _: None,
+        )
+    assert len(calls) == 1
+    assert calls[0][1:3] == ["file", "exec"]
+
+
+def test_existing_output_is_refused_before_transport(tmp_path):
+    output = tmp_path / "route"
+    output.mkdir()
+    (output / "original").write_text("preserve")
+
+    def forbidden(*args, **kwargs):
+        pytest.fail("an existing route must send no command")
+
+    with pytest.raises(FileExistsError):
+        protocol.select_row(
+            "mouse",
+            NONCE,
+            814,
+            "frozen-vm-id",
+            output,
+            runner=forbidden,
+            pause=forbidden,
+        )
+    assert (output / "original").read_text() == "preserve"
+
+
+@pytest.mark.parametrize("mode", ["return", "mouse"])
+@pytest.mark.parametrize("nonce", [NONCE, BOOT, None])
+def test_delivery_cli_binds_expected_nonce(
+    tmp_path, snapshot, mouse_snapshot, highlight, mode, nonce
+):
+    snapshot = mouse_snapshot if mode == "mouse" else snapshot
+    events = tmp_path / "events.json"
+    receipt = tmp_path / "highlight.json"
+    events.write_text(json.dumps(snapshot))
+    receipt.write_text(json.dumps(highlight))
+    command = [
+        sys.executable,
+        str(SPEC.origin),
+        mode,
+        str(events),
+        "--highlight",
+        str(receipt),
+        "--selection",
+        "2",
+    ]
+    if nonce is not None:
+        command.extend(["--nonce", nonce])
+    result = subprocess.run(command, capture_output=True, text=True, check=False)
+    assert result.returncode == (0 if nonce == NONCE else 2 if nonce is None else 1)
+
+
+@pytest.mark.parametrize("defect", ["overlap", "duplicate-selection", "other-metadata"])
+def test_entire_interval_sequence_is_validated(snapshot, native, identity, defect):
+    earlier = copy.deepcopy(snapshot["records"][2])
+    earlier.update(selection=0, sequence=1)
+    earlier["activationInterval"] = {"beforeTicks": "100", "afterTicks": "110"}
+    snapshot["records"].insert(0, earlier)
+    native.append(dict(native[0], machTimestamp=105))
+    for index, row in enumerate(snapshot["records"], 1):
+        row["sequence"] = index
+    if defect == "overlap":
+        earlier["activationInterval"]["afterTicks"] = "9007199254741000"
+    elif defect == "duplicate-selection":
+        earlier["selection"] = 2
+    else:
+        earlier["nativeClockError"] = "failure in nonselected interval"
+    assert protocol.containment(snapshot, native, identity, 2)["outcome"] == "INVALID"

@@ -1532,7 +1532,7 @@ tasks:
       - swift test --skip-build --filter 'SettingsActivationIntervalTests|SettingsEventBufferTests'
 
   check:settings-causal-protocol:
-    desc: Check exact protocol parsers, transport stop policy and menu probe request bounds without a guest or AppKit launch
+    desc: Check whole-process accounting, mouse/Return nonce delivery, control/transport stop policy and probe bounds without a guest or AppKit launch
     cmds:
       - python3 -m py_compile docs/verification/settings-activation/causal-protocol.py
       - uvx ruff@0.17.3 check docs/verification/settings-activation/causal-protocol.py Tests/scripts/test_settings_causal_protocol.py

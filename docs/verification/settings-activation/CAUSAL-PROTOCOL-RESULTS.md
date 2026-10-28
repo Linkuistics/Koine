@@ -1,5 +1,11 @@
 # Implemented Settings protocol boundary
 
+[K41's integration](CAUSAL-PROTOCOL-REVIEW.md) repairs the launch-prefix accounting,
+final-stage focus contract and named delivery/nonce criteria after k40's review.
+The current CAUSAL-PLAN.md and reader include those repairs. The k38 implementation
+and checks described below remain historical evidence at commit b2253f0c; their
+receipts are unchanged. No guest or product repair follows from either boundary.
+
 K38 delivers an opt-in AppKit highlight/input observer, a single-selection route,
 strict transport/Return/native readers and fixed control policies. The
 [replacement protocol](CAUSAL-PLAN.md) retains the
@@ -39,8 +45,10 @@ scenario/freeze/audit/stop wrapper remains k36's work; no launch task was added.
 
 The native reader checks actual supplied guest/archive/timesync boot and scale,
 PID/image identity, decimal exact ticks, complete contiguous zero-drop buffer
-and completed native rendering. It matches the full process candidate list by
-cardinality/order; it does not select only enclosed rows. It distinguishes
+and completed native rendering. K38 matched the full process candidate list by
+equal cardinality/order; k41 replaces that invalid launch assumption with explicit
+N+1 prefix accounting in the current protocol. Both versions retain outside
+candidates. The reader distinguishes
 ENCLOSED, OUTSIDE with exact distance, MISSING, AMBIGUOUS and INVALID. These are
 availability results, not refusal semantics or transaction identity. Independent
 raw provenance for the normalized identity file remains an executing-wrapper

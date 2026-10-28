@@ -1,5 +1,19 @@
 # settings-causal-discrimination-k39
 
+## K41 integration handoff
+
+Consume CAUSAL-PROTOCOL-REVIEW.md and the current CAUSAL-PLAN.md after k40/k41.
+The offline reader retains one explicit launch prefix plus every ordinal wrapped
+candidate; no desired-bracket filtering or historical clock upgrade. Final
+control takes no measured focus input. Readiness-01 has a positive mouse-pair/
+callback criterion; readiness-02 keeps strict Return identity despite the saved
+mouse getter limitation. Both readers require the expected route nonce. Actual
+AppKit dispatch and changed-instrument availability remain unqualified. No guest
+ran in k41. Every original Done when criterion below remains unchanged, including
+causal discrimination/disposition, justified repair/useful failing product seam,
+actual signed/all-input/golden freeze and separate complete ordinary acceptance.
+
+
 ## Goal
 Resolve the precise unsupported competing-prediction question left by k38 before
 any route-qualification or causal guest, preserving k33's unchanged causal duty.

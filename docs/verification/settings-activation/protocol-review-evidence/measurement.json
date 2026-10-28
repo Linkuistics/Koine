@@ -1,0 +1,30 @@
+{
+  "subjects": 10767,
+  "changed": [],
+  "tasks": {
+    "check:settings-causal-protocol": {
+      "command": [
+        "mise",
+        "exec",
+        "--",
+        "task",
+        "check:settings-causal-protocol"
+      ],
+      "exit": 0
+    },
+    "check:docs": {
+      "command": [
+        "mise",
+        "exec",
+        "--",
+        "task",
+        "check:docs"
+      ],
+      "exit": 201
+    }
+  },
+  "originalAudit": "passed; full extracted path/digest and events link inventory, proposal and original criteria",
+  "scope": "Repository/dependency source plus historical archive/extracted files/events bundle; per-item digests before/after. Grove bookkeeping and generated reports excluded; compiler/SDK executables and transient build outputs not inventoried. No guest or signed-subject freeze.",
+  "initialDocCheck": "exit 201: measurement output link not created yet, plus the two prior k23 archived-context failures; initial output retained",
+  "initialOriginalAudit": "wrong extraction root failed path-set comparison; corrected root passed without changing originals"
+}

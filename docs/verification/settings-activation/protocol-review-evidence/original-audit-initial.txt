@@ -1,0 +1,1 @@
+Initial audit used archive-audit as the extracted root, but the retained inventory is relative to archive-audit/deferred-native. The complete-path comparison failed before any success claim. No original bytes changed; the corrected audit below uses the actual extraction root.

@@ -1,5 +1,11 @@
 # Menu bar application: VM verification
 
+K41's [protocol review integration](settings-activation/CAUSAL-PROTOCOL-REVIEW.md) repairs offline
+launch-prefix accounting, final-control input and positive mouse/Return nonce
+criteria. No guest or product repair ran. Supported causal design and its review
+still precede all route/causal guests; native disposition, justified repair/useful
+failing product seam and separate frozen complete ordinary acceptance remain live.
+
 What the signed `Koine.app` does as a menu bar application, on the real bundle in
 a clean TestAnyware macOS VM: no Dock icon and one menu bar item from launch to
 Quit; its menu, status lines, mark and accessibility label as Accessibility consent

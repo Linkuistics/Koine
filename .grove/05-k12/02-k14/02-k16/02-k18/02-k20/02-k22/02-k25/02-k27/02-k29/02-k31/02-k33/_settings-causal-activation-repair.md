@@ -1,5 +1,15 @@
 # settings-causal-activation-repair-k33 — brief
 
+## K41 integration boundary
+
+CAUSAL-PROTOCOL-REVIEW.md records every k40 disposition and the checked offline
+launch-prefix, final-control and mouse/Return/nonce repairs. All original Done
+when criteria below remain unchanged. K39's reviewed supported causal design
+still precedes every guest; k36 retains actual runtime freeze/wrapper, positive
+disposition/responsible context, justified repair/useful failing product seam
+and separate frozen complete ordinary acceptance. No guest or product repair
+ran here, no historical cap opens, and no causal ancestor closes.
+
 ## Implemented narrow protocol boundary
 
 K38's CAUSAL-PROTOCOL-RESULTS.md records the implemented highlight/Return/transport

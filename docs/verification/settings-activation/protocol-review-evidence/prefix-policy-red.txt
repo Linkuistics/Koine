@@ -1,0 +1,228 @@
+........................FFFF............................F....F.FFFF      [100%]
+=================================== FAILURES ===================================
+_ test_exact_closed_containment_above_double_precision[9007199254741000-ENCLOSED] _
+
+snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 4, 'pid': 814}]}
+native = [{'processID': 814, 'processImagePath': '/Applications/Koine.app/Contents/MacOS/Koine', 'processImageUUID': 'D1AF277B-..., 'processImageUUID': 'D1AF277B-BFEE-3EA8-9B15-F071B31B69F1', 'bootUUID': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', ...}]
+identity = {'guestBootBefore': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', 'guestBootAfter': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', 'archiveBoot': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', 'timesyncBoot': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', ...}
+tick = 9007199254741000, outcome = 'ENCLOSED'
+
+    @pytest.mark.parametrize(
+        "tick, outcome",
+        [
+            (9007199254741000, "ENCLOSED"),
+            (9007199254741010, "ENCLOSED"),
+            (9007199254740999, "OUTSIDE"),
+            (9007199254741011, "OUTSIDE"),
+        ],
+    )
+    def test_exact_closed_containment_above_double_precision(
+        snapshot, native, identity, tick, outcome
+    ):
+        native[1]["machTimestamp"] = tick
+        result = protocol.containment(snapshot, native, identity, 2)
+>       assert result["outcome"] == outcome
+E       AssertionError: assert 'AMBIGUOUS' == 'ENCLOSED'
+E         
+E         - ENCLOSED
+E         + AMBIGUOUS
+
+Tests/scripts/test_settings_causal_protocol.py:243: AssertionError
+_ test_exact_closed_containment_above_double_precision[9007199254741010-ENCLOSED] _
+
+snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 4, 'pid': 814}]}
+native = [{'processID': 814, 'processImagePath': '/Applications/Koine.app/Contents/MacOS/Koine', 'processImageUUID': 'D1AF277B-..., 'processImageUUID': 'D1AF277B-BFEE-3EA8-9B15-F071B31B69F1', 'bootUUID': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', ...}]
+identity = {'guestBootBefore': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', 'guestBootAfter': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', 'archiveBoot': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', 'timesyncBoot': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', ...}
+tick = 9007199254741010, outcome = 'ENCLOSED'
+
+    @pytest.mark.parametrize(
+        "tick, outcome",
+        [
+            (9007199254741000, "ENCLOSED"),
+            (9007199254741010, "ENCLOSED"),
+            (9007199254740999, "OUTSIDE"),
+            (9007199254741011, "OUTSIDE"),
+        ],
+    )
+    def test_exact_closed_containment_above_double_precision(
+        snapshot, native, identity, tick, outcome
+    ):
+        native[1]["machTimestamp"] = tick
+        result = protocol.containment(snapshot, native, identity, 2)
+>       assert result["outcome"] == outcome
+E       AssertionError: assert 'AMBIGUOUS' == 'ENCLOSED'
+E         
+E         - ENCLOSED
+E         + AMBIGUOUS
+
+Tests/scripts/test_settings_causal_protocol.py:243: AssertionError
+_ test_exact_closed_containment_above_double_precision[9007199254740999-OUTSIDE] _
+
+snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 4, 'pid': 814}]}
+native = [{'processID': 814, 'processImagePath': '/Applications/Koine.app/Contents/MacOS/Koine', 'processImageUUID': 'D1AF277B-..., 'processImageUUID': 'D1AF277B-BFEE-3EA8-9B15-F071B31B69F1', 'bootUUID': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', ...}]
+identity = {'guestBootBefore': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', 'guestBootAfter': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', 'archiveBoot': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', 'timesyncBoot': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', ...}
+tick = 9007199254740999, outcome = 'OUTSIDE'
+
+    @pytest.mark.parametrize(
+        "tick, outcome",
+        [
+            (9007199254741000, "ENCLOSED"),
+            (9007199254741010, "ENCLOSED"),
+            (9007199254740999, "OUTSIDE"),
+            (9007199254741011, "OUTSIDE"),
+        ],
+    )
+    def test_exact_closed_containment_above_double_precision(
+        snapshot, native, identity, tick, outcome
+    ):
+        native[1]["machTimestamp"] = tick
+        result = protocol.containment(snapshot, native, identity, 2)
+>       assert result["outcome"] == outcome
+E       AssertionError: assert 'AMBIGUOUS' == 'OUTSIDE'
+E         
+E         - OUTSIDE
+E         + AMBIGUOUS
+
+Tests/scripts/test_settings_causal_protocol.py:243: AssertionError
+_ test_exact_closed_containment_above_double_precision[9007199254741011-OUTSIDE] _
+
+snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 4, 'pid': 814}]}
+native = [{'processID': 814, 'processImagePath': '/Applications/Koine.app/Contents/MacOS/Koine', 'processImageUUID': 'D1AF277B-..., 'processImageUUID': 'D1AF277B-BFEE-3EA8-9B15-F071B31B69F1', 'bootUUID': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', ...}]
+identity = {'guestBootBefore': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', 'guestBootAfter': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', 'archiveBoot': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', 'timesyncBoot': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', ...}
+tick = 9007199254741011, outcome = 'OUTSIDE'
+
+    @pytest.mark.parametrize(
+        "tick, outcome",
+        [
+            (9007199254741000, "ENCLOSED"),
+            (9007199254741010, "ENCLOSED"),
+            (9007199254740999, "OUTSIDE"),
+            (9007199254741011, "OUTSIDE"),
+        ],
+    )
+    def test_exact_closed_containment_above_double_precision(
+        snapshot, native, identity, tick, outcome
+    ):
+        native[1]["machTimestamp"] = tick
+        result = protocol.containment(snapshot, native, identity, 2)
+>       assert result["outcome"] == outcome
+E       AssertionError: assert 'AMBIGUOUS' == 'OUTSIDE'
+E         
+E         - OUTSIDE
+E         + AMBIGUOUS
+
+Tests/scripts/test_settings_causal_protocol.py:243: AssertionError
+___________ test_final_credit_requires_both_positive_native_controls ___________
+
+    def test_final_credit_requires_both_positive_native_controls():
+>       assert protocol.control_policy("final", None, "ENCLOSED", "ENCLOSED")["qualified"]
+E       assert False
+
+Tests/scripts/test_settings_causal_protocol.py:387: AssertionError
+_ test_complete_process_clients_are_matched_in_order_not_filtered_for_enclosure _
+
+snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'application.activate.inte...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 5, 'pid': 814}]}
+native = [{'processID': 814, 'processImagePath': '/Applications/Koine.app/Contents/MacOS/Koine', 'processImageUUID': 'D1AF277B-..., 'processImageUUID': 'D1AF277B-BFEE-3EA8-9B15-F071B31B69F1', 'bootUUID': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', ...}]
+identity = {'guestBootBefore': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', 'guestBootAfter': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', 'archiveBoot': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', 'timesyncBoot': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', ...}
+
+    def test_complete_process_clients_are_matched_in_order_not_filtered_for_enclosure(
+        snapshot, native, identity
+    ):
+        earlier = copy.deepcopy(snapshot["records"][2])
+        earlier["selection"] = 0
+        earlier["activationInterval"] = {"beforeTicks": "100", "afterTicks": "110"}
+        snapshot["records"].insert(0, earlier)
+        for index, row in enumerate(snapshot["records"], 1):
+            row["sequence"] = index
+        prior_client = dict(native[0], machTimestamp=105)
+        whole_process = native + [prior_client]
+        assert (
+>           protocol.containment(snapshot, whole_process, identity, 0)["selectedTick"]
+            == "105"
+        )
+E       KeyError: 'selectedTick'
+
+Tests/scripts/test_settings_causal_protocol.py:424: KeyError
+_______ test_retained_whole_process_rendering_has_explicit_launch_prefix _______
+
+snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'application.activate.inte...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'sequence': 4, 'pid': 814, 'selection': 2}]}
+identity = {'guestBootBefore': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', 'guestBootAfter': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', 'archiveBoot': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', 'timesyncBoot': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', ...}
+
+    def test_retained_whole_process_rendering_has_explicit_launch_prefix(snapshot, identity):
+        """Real retained rows; synthetic brackets do NOT qualify the old app clock."""
+        evidence = ROOT / 'docs/verification/settings-activation/persisted-01'
+        native = [json.loads(line) for line in
+                  (evidence / 'native-path-records.jsonl').read_text().splitlines()]
+        actual = [r for r in native if r.get('processImagePath') == protocol.IMAGE
+                  and 'SLSSetFrontProcessWithInfo' in r.get('eventMessage', '')]
+        historical = [json.loads(line) for line in (evidence / 'events.jsonl').read_text().splitlines()]
+        calls = [r for r in historical if r['event'] == 'application.activate.before']
+        assert len(actual) == len(calls) + 1 == 4
+        template = snapshot['records'][2]
+        snapshot['records'] = []
+        for selection, client in enumerate(actual[1:]):
+            interval = copy.deepcopy(template)
+            interval.update(selection=selection, sequence=selection + 1)
+            interval['activationInterval'] = {
+                'beforeTicks': str(client['machTimestamp'] - 1),
+                'afterTicks': str(client['machTimestamp'] + 1),
+            }
+            snapshot['records'].append(interval)
+        snapshot['records'].append(dict(event='buffer.dump', sequence=4, pid=814, selection=2))
+        for selection in range(3):
+            result = protocol.containment(snapshot, native, identity, selection)
+>           assert result['outcome'] == 'ENCLOSED'
+E           AssertionError: assert 'AMBIGUOUS' == 'ENCLOSED'
+E             
+E             - ENCLOSED
+E             + AMBIGUOUS
+
+Tests/scripts/test_settings_causal_protocol.py:473: AssertionError
+____________ test_prefix_is_required_and_must_precede_first_bracket ____________
+
+snapshot = {'format': 'koine-settings-events/1', 'capacity': 4096, 'dropped': 0, 'records': [{'event': 'menu.input', 'selection':...1A01', 'numerator': 125, 'denominator': 3}, ...}, {'event': 'buffer.dump', 'selection': 2, 'sequence': 4, 'pid': 814}]}
+native = [{'processID': 814, 'processImagePath': '/Applications/Koine.app/Contents/MacOS/Koine', 'processImageUUID': 'D1AF277B-..., 'processImageUUID': 'D1AF277B-BFEE-3EA8-9B15-F071B31B69F1', 'bootUUID': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', ...}]
+identity = {'guestBootBefore': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', 'guestBootAfter': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', 'archiveBoot': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', 'timesyncBoot': '2C83AC73-0855-44FD-A8A4-E03E227E1A01', ...}
+
+    def test_prefix_is_required_and_must_precede_first_bracket(snapshot, native, identity):
+>       assert protocol.containment(snapshot, native[1:], identity, 2)['outcome'] == 'MISSING'
+E       AssertionError: assert 'ENCLOSED' == 'MISSING'
+E         
+E         - MISSING
+E         + ENCLOSED
+
+Tests/scripts/test_settings_causal_protocol.py:483: AssertionError
+____ test_final_focus_input_is_rejected_instead_of_testing_measured_success ____
+
+    def test_final_focus_input_is_rejected_instead_of_testing_measured_success():
+        for measured in [True, False]:
+>           with pytest.raises(ValueError, match='final.*focus'):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE ValueError
+
+Tests/scripts/test_settings_causal_protocol.py:490: Failed
+_________________ test_final_cli_needs_no_measured_focus_input _________________
+
+    def test_final_cli_needs_no_measured_focus_input():
+        result = subprocess.run(
+            [sys.executable, str(SPEC.origin), 'control', 'final',
+             '--launch-join', 'ENCLOSED', '--setup-join', 'ENCLOSED'],
+            capture_output=True, text=True, check=False,
+        )
+>       assert result.returncode == 0
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/Users/antony/.cache/uv/builds-v0/.tmpSdI3XB/bin/python', '/Users/antony/Development/Abstracti...urncode=1, stdout='{\n  "qualified": false,\n  "next": "STOP_SLOT",\n  "nativeControlsPending": false\n}\n', stderr='').returncode
+
+Tests/scripts/test_settings_causal_protocol.py:500: AssertionError
+=========================== short test summary info ============================
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_exact_closed_containment_above_double_precision[9007199254741000-ENCLOSED]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_exact_closed_containment_above_double_precision[9007199254741010-ENCLOSED]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_exact_closed_containment_above_double_precision[9007199254740999-OUTSIDE]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_exact_closed_containment_above_double_precision[9007199254741011-OUTSIDE]
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_final_credit_requires_both_positive_native_controls
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_complete_process_clients_are_matched_in_order_not_filtered_for_enclosure
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_retained_whole_process_rendering_has_explicit_launch_prefix
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_prefix_is_required_and_must_precede_first_bracket
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_final_focus_input_is_rejected_instead_of_testing_measured_success
+FAILED Tests/scripts/test_settings_causal_protocol.py::test_final_cli_needs_no_measured_focus_input
+10 failed, 57 passed in 0.19s
