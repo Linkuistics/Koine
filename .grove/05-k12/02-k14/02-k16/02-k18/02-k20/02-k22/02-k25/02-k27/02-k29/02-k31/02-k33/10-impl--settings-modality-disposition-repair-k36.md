@@ -1,5 +1,16 @@
 # settings-modality-disposition-repair-k36
 
+## K39 discrimination boundary
+
+Read docs/specs/settings-activation-discrimination.md and its forthcoming tree
+review/every earned integration. No supported finite two-sided causal experiment
+is established; the existing six slots earn no runtime and remain unstarted.
+Antony's explicit scope decision must precede further authorization. The proposed
+behavioral-repair amendment is not accepted and authorizes no candidate or guest.
+Do not infer permission from k39 retirement or a clean design review. Every
+original Done when criterion below and the runtime/freeze/audit/stop/ordinary
+duties remain unchanged until an explicit accepted amendment is reconciled.
+
 ## K41 integration handoff
 
 Consume CAUSAL-PROTOCOL-REVIEW.md and the current CAUSAL-PLAN.md after k40/k41.

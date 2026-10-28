@@ -1,5 +1,18 @@
 # Koine menu-bar VM reliability — brief
 
+## Causal-discrimination scope decision
+
+K39's docs/specs/settings-activation-discrimination.md finds no supported finite
+two-sided causal experiment in the retained evidence. The positive native
+appearance/ordering contrast does not identify an independently controllable
+cause. The current two route/four modality slots earn no runtime and remain
+unstarted, with all criteria/caps unchanged. Antony's proposed scope amendment
+is pending: consider a separately justified behavioral-repair design while
+leaving native cause unresolved. This is not authorization or causal closure.
+Tree review/every earned integration and the explicit scope decision precede
+further work; k36 retains every original causal/product/ordinary duty unless
+Antony explicitly amends it. No guest, product change or ancestor closure here.
+
 K41's protocol review integration in CAUSAL-PROTOCOL-REVIEW.md repairs offline
 launch-prefix accounting, final-control input and positive mouse/Return nonce
 criteria. No guest or product repair ran. Supported causal design and its review

@@ -2,6 +2,13 @@
 
 ## Execution boundary
 
+[K39's discrimination design](../../specs/settings-activation-discrimination.md)
+finds no supported finite two-sided experiment in the retained evidence. This
+protocol earns no runtime, including route qualification; all six slots remain
+unstarted with unchanged criteria and caps. The scope amendment proposed to Antony
+is pending, not accepted. Independent design review/every earned integration and
+an explicit scope decision precede further design or runtime authorization.
+
 This is k38's implemented replacement for the unstarted k34 proposal, repaired
 by [k41's integration](CAUSAL-PROTOCOL-REVIEW.md). The
 [complete prior proposal](CAUSAL-PLAN-K34.md) is retained unchanged.

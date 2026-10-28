@@ -1,5 +1,13 @@
 # Menu bar application: VM verification
 
+The [Settings causal-discrimination design](../specs/settings-activation-discrimination.md)
+earns no route/modality runtime: the retained contrast lacks a supported
+controllable cause and finite falsifiers for both predictions. All six slots
+remain unstarted. A proposed behavioral-repair scope amendment awaits Antony;
+review/every earned integration and an explicit scope decision precede further
+authorization. The failure, native-cause question and repair remain unresolved;
+separate frozen complete ordinary acceptance and every historical outcome remain.
+
 K41's [protocol review integration](settings-activation/CAUSAL-PROTOCOL-REVIEW.md) repairs offline
 launch-prefix accounting, final-control input and positive mouse/Return nonce
 criteria. No guest or product repair ran. Supported causal design and its review

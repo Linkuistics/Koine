@@ -1,0 +1,20 @@
+{
+  "originalCriteria": [
+    {
+      "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/07-design--settings-causal-discrimination-k39.md",
+      "originalDoneWhenUnchanged": true
+    },
+    {
+      "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/10-impl--settings-modality-disposition-repair-k36.md",
+      "originalDoneWhenUnchanged": true
+    },
+    {
+      "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/_settings-causal-activation-repair.md",
+      "originalDoneWhenUnchanged": true
+    }
+  ],
+  "productInstrumentTestsTaskfileUnchanged": true,
+  "protocolOnlyAddsExecutionHandoff": true,
+  "finalInputDigestsMatch": true,
+  "inputCount": 192
+}

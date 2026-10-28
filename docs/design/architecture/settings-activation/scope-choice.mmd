@@ -1,0 +1,13 @@
+flowchart TD
+    S["Start here: Antony's scope decision is pending"]:::start
+    S -->|Proposal A: recommended| A["Permit separately justified behavioral-repair design"]
+    S -->|Alternative B| B["Retain native causal-proof prerequisite"]
+    S -->|Alternative C| C["End investigation explicitly unresolved"]
+    A --> A1["Native cause stays unresolved; candidate and review still required"]
+    B --> B1["Wait for independent evidence supporting an intervention"]
+    C --> C1["Human decides live repair work; no abandonment here"]
+    A1 --> H["All six existing slots remain unstarted"]:::hold
+    B1 --> H
+    C1 --> H
+    classDef start fill:#19354b,color:#fff,font-weight:bold,stroke:#19354b
+    classDef hold fill:#fff1d2,color:#322600,stroke:#866216

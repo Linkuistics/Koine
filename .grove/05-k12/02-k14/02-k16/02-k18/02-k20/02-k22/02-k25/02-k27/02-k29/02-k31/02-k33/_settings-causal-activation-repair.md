@@ -1,5 +1,16 @@
 # settings-causal-activation-repair-k33 — brief
 
+## K39 discrimination boundary
+
+Read docs/specs/settings-activation-discrimination.md. The retained positive
+native contrast supports no independently controllable activation condition
+with finite falsifiers for both causal predictions. No route or modality runtime
+is earned; the six slots and all k41 criteria remain unchanged and unstarted.
+Antony's proposed behavioral-repair prerequisite amendment is pending, not
+accepted. Design tree review/every earned integration and explicit scope
+resolution precede further authorization. Every original criterion below remains;
+no causal ancestor closes and no richer-monitor producer is cut to evade the gap.
+
 ## K41 integration boundary
 
 CAUSAL-PROTOCOL-REVIEW.md records every k40 disposition and the checked offline

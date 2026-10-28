@@ -1,5 +1,41 @@
 # settings-causal-discrimination-k39
 
+## Decisions (running log)
+
+- 2026-10-28: Adopt the mandated design leaf at clean jj parent e5ed68b0.
+  Read the current k41 protocol integration, original causal duties and paired
+  native evidence. Graph list_projects refuses before project/generation discovery
+  because an unverified generation is active; use bounded source/evidence reads
+  without stopping other sessions. No guest, clock extraction or product edit.
+- 2026-10-28: The retained evidence does not support a controllable activation
+  condition with finite falsifiers for both causal predictions. The appearance/
+  conditional-order contrast is positive native context, but its causal direction
+  and private semantics are unestablished. Row modality supplies only the existing
+  necessity falsifier. Do not spend either route slot or any modality slot to
+  discover a hypothesis. Preserve their criteria and caps unchanged.
+- 2026-10-28: Prepare an explicit scope decision for Antony. Recommend considering
+  a separately designed, justified behavioral-repair evaluation with native cause
+  left unresolved; this would amend the causal-proof prerequisite and requires
+  Antony's decision. Until then every original duty and the no-guest boundary
+  remain. No new monitor, replacement protocol or implementation leaf is earned.
+- 2026-10-28: The concrete decision document and two editable diagram views are
+  published. Ask Antony to choose the scope; no answer has been received at this
+  boundary. Settings-activation-scope-k42 owns that explicit decision before k36.
+  The recommendation is not accepted and no original requirement is amended.
+- 2026-10-28: Verification records both diagrams rendered in Chrome, including
+  a fresh scope deep link. The existing documentation check exits 201 with only
+  k23's two known archived-context targets. All 192 named input digests match
+  before/after. No product tests, build, VM or clock extraction run; no source,
+  historical receipt, signed candidate or protocol implementation is changed.
+- 2026-10-28: Land the design's expressly allowed no-supported-experiment and
+  escalation branch. The requested two-sided causal discrimination is NOT met;
+  neither its review nor this leaf's retirement may stand in for it. Cut
+  settings-causal-discrimination-k43 before settings-activation-scope-k42, both
+  before k36; every earned integration precedes them. No in-session reviewer.
+  K33 and every causal ancestor remain live. No ADR is earned by this reversible
+  runtime hold and unaccepted scope proposal. No provider receipt exists in this
+  environment, so no Creator line is fabricated.
+
 ## K41 integration handoff
 
 Consume CAUSAL-PROTOCOL-REVIEW.md and the current CAUSAL-PLAN.md after k40/k41.

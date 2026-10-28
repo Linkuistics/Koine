@@ -1,0 +1,23 @@
+{
+  "command": [
+    "mise",
+    "exec",
+    "--",
+    "task",
+    "check:docs"
+  ],
+  "exit": 201,
+  "inputCount": 192,
+  "changedInputs": [],
+  "scope": "Repository documentation checker inputs plus named source, saved evidence and presentation files; no compiler, signed guest subject or golden freeze.",
+  "browser": {
+    "surface": "Chrome desktop light appearance",
+    "rendered": [
+      "evidence-limit",
+      "scope-choice"
+    ],
+    "freshDeepLink": "#diagram-scope-choice",
+    "mobileAndDark": "not checked"
+  },
+  "runtime": "No guest or product check run"
+}

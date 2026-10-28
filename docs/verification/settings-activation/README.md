@@ -1,5 +1,14 @@
 # Settings reopen: recorded activation failure — 2026-10-28
 
+The [causal-discrimination design](../../specs/settings-activation-discrimination.md)
+finds that the positive appearance/ordering contrast does not yet identify a
+controllable cause with finite falsifiers for both predictions. All six proposed
+route/modality slots remain unstarted. Antony's scope decision is pending; the
+recommended behavioral-repair design would leave native cause unresolved and
+requires an explicit prerequisite amendment. Design review and every earned
+integration precede any guest. Every original repair, freeze/audit/stop and
+separate complete ordinary-acceptance duty remains; no causal ancestor closes.
+
 K41's [protocol review integration](CAUSAL-PROTOCOL-REVIEW.md) repairs offline
 launch-prefix accounting, final-control input and positive mouse/Return nonce
 criteria. No guest or product repair ran. Supported causal design and its review
