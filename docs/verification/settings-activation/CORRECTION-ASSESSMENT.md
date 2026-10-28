@@ -8,8 +8,9 @@ It is a bounded source-and-contract finding, not proof that no correction exists
 
 The [repair and evidence contract](../../specs/settings-activation-discrimination.md#correction-assessment)
 records the result and pending scope choice. No product changes, new tests,
-build, signed candidate or guest belong to this assessment. Independent review
-must challenge the finding before it becomes the basis of the scope decision.
+build, signed candidate or guest belong to this assessment. The finding survives
+the [review and integration](CORRECTION-REVIEW.md); the explicit scope choice
+remains pending.
 
 ## Inspection boundary
 
@@ -37,6 +38,11 @@ negative observations are limited to this source directory. The declaration
 and body reads above establish the material path, rather than treating the
 search's exit status as proof of completeness.
 
+The integration also checks the `moveToActiveSpace` collection behavior at
+AppDelegate line 126 against its public contract. This setting was inside the
+original body read but absent from the candidate dispositions; it is now
+dispositioned below. This adds no audit of other Spaces behavior.
+
 ## Applicable public contracts
 
 Apple's live documentation was read on 2026-10-28. The installed Xcode macOS 27.0
@@ -53,6 +59,7 @@ declared deployment boundary.
 | [Running-application activation](https://developer.apple.com/documentation/appkit/nsrunningapplication/activate%28options%3A%29) | A different receiver API and a Boolean return do not establish an omitted product step. The web page describes successful activation; the installed header describes successful request sending. Neither supplies evidence that changing APIs makes this failed selection front/focused, and the Boolean must not replace the independent window outcome. |
 | [Activation from another app](https://developer.apple.com/documentation/appkit/nsrunningapplication/activate%28from%3Aoptions%3A%29) | Its discussion and SDK declaration require the cooperating app to yield first for cooperative use. Knowing TextEdit is frontmost establishes neither that yield nor authority to issue it on TextEdit's behalf. The web parameter summary is terse; the SDK explicitly describes taking active status from the other app. |
 | [Unconditional front ordering](https://developer.apple.com/documentation/appkit/nswindow/orderfrontregardless%28%29) | Can place an inactive app's window in front within its level, while preserving key/main status. It cannot by itself satisfy the required focus outcome. Apple's documented cooperating-display use is not the observed Settings interaction. |
+| [Move to the active Space](https://developer.apple.com/documentation/appkit/nswindow/collectionbehavior-swift.struct/movetoactivespace) | Describes the window's destination when it becomes active. It supplies neither an activation prerequisite nor a guarantee that activation succeeds. The existing setting alone identifies no API-use mismatch. |
 | [WWDC23 cooperative activation](https://developer.apple.com/videos/play/wwdc2023/10054/) and SDK `NSRunningApplication.h` | The old ignoring-other-apps option has no effect under cooperative activation. `activateAllWindows` changes which windows are brought forward; it provides no stronger activation guarantee for the one Settings window. |
 
 The SDK reads covered `NSApplication.h` lines 216–249 and
@@ -61,7 +68,12 @@ The SDK reads covered `NSApplication.h` lines 216–249 and
 The [verification receipt](correction-evidence/verification.json) identifies
 those exact input bytes. Web Markdown retrieval succeeded through HTTPS after
 the browser-search tool could not consume Apple's Markdown content type; no
-partial web error was treated as a contract.
+partial web error was treated as a contract. The original receipt contains no
+web retrievals. The integration's [Apple contract record](correction-evidence/apple-contracts.json)
+retains fresh retrieval times, exact response digests and short checked excerpts
+for the eight cited contract pages, the WWDC transcript and the Spaces contract.
+These revalidate the claims; they do not recover the producer's or reviewer's
+unretained web responses. Full response bodies are not retained.
 
 ## Candidate disposition
 
@@ -75,6 +87,7 @@ partial web error was treated as a contract.
 | Add `orderFrontRegardless`, raise window level, or use a nonactivating panel | Front placement without application/key focus does not meet the required outcome; changing window role/level changes product behavior. | No supported repair to the front-and-focused contract. |
 | Add `makeMain`, another key request or force key eligibility | The window is titled and already receives a key request; the failure is independently observed application inactivity. No evidence shows an eligibility/main-window omission causing that inactivity. | No qualifying correction. |
 | Change activation policy, recreate the window, or add unhide/deminiaturize | Accessory activation is permitted; the retained failure has a visible Settings window after a close/reopen. No retained evidence identifies prohibited policy, a lost window, hidden application or miniaturization as this failure. | No qualifying correction for this observed failure; other unexamined states are not declared correct. |
+| Remove or change `moveToActiveSpace` | The existing setting chooses where an activated window moves. The checked contract supplies no failed activation precondition, and no cited failure evidence establishes a Spaces transition or second-Space condition to correct. | No qualifying correction for this observed failure; this is not a finding that every Spaces configuration is correct. |
 | Add menu-close/later-run-loop deferral, repeated activation or driver input/waits/retries | These remain outside the accepted scope. The historical callback already runs after menu close in default mode. | Not admitted; no experiment runs to justify them retrospectively. |
 
 The tempting inference is that an inactive-window warning makes ordering wrong.
@@ -135,13 +148,32 @@ The candidate would then need its own coherent design and independent review
 before implementation. An untested API's existence or a successful alternative
 call would not meet that condition.
 
-If the finding survives review, the [pending scope proposal](../../specs/settings-activation-discrimination.md#scope-after-no-candidate)
+The finding survives review. The [pending scope proposal](../../specs/settings-activation-discrimination.md#scope-after-no-candidate)
 offers a narrower next decision than an unrestricted workaround search: permit
 design of one empirical activation-before-window-ordering evaluation without
 requiring a documented API-use violation. The reason to consider it is its small
-single-request behavioral difference and historical feasibility, not a proven
-mechanism or repair. The cost is that even a finite passing ordinary sample
-cannot demonstrate elimination of an intermittent failure. Explicit agreement
-on that acceptance limit, then design/review/every earned integration, must
-precede any new runtime. Retaining the present hold or ending unresolved remain
-human choices. Nothing here selects any of them or abandons repair work.
+single-request behavioral difference. Historical feasibility is instrumented and
+symmetric: reversed B02/B03 and original A04 all succeeded with synchronous file
+tracing, and reversing the calls also moved the trace writes. The
+[closed comparison](ORDER-RESULTS.md) contains no instrument-free comparison and
+does not establish lower failure risk from reversal.
+
+Any finite acceptance bound would be an explicitly agreed convention, not a
+rejection rule derived from a supported failure-rate bound or trial model;
+neither is available. The proposed rule rejects reversal as the repair if one
+qualified Settings selection in its declared evaluation or separate ordinary
+acceptance fails to return one front/focused window. Failed transport or missing
+required observations prevent acceptance and leave the result unresolved; they
+are not automatically product failures. Every other required ordinary assertion
+must also pass. Completing the fixed bound with all required evidence and
+assertions passing supports only success for that declared sample, not
+elimination of intermittent failure, a mechanism or general reliability.
+
+Antony must explicitly agree to this standard before concrete design. The later
+reviewed design must fix the bound, qualification criteria and stop/failure/
+unavailable-evidence rules before runtime. This proposal selects no number or
+guest, reopens no closed cap and reuses none of the six held causal slots. The
+scope answer would permit design only; review and every earned integration must
+precede implementation or runtime. Retaining the present hold or ending
+unresolved remain human choices. Nothing here selects any of them or abandons
+repair work.

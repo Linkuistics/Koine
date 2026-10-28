@@ -1,8 +1,12 @@
 # Settings reopen: recorded activation failure — 2026-10-28
 
 The [correction assessment](CORRECTION-ASSESSMENT.md) finds no qualifying
-API-use correction in the inspected Settings path. The finding awaits independent
-review, followed by the [explicit scope choice](../../specs/settings-activation-discrimination.md#scope-after-no-candidate).
+API-use correction in the inspected Settings path. The finding survives
+[review and integration](CORRECTION-REVIEW.md); the
+[explicit scope choice](../../specs/settings-activation-discrimination.md#scope-after-no-candidate)
+remains pending. Both orders previously succeeded with file tracing. The proposed
+finite acceptance bound is a convention, with qualified recurrence rejecting
+the repair and unavailable required evidence preventing acceptance.
 No product change or guest ran. Implementation/runtime remain held; no repair,
 native owner or ancestor closure follows.
 

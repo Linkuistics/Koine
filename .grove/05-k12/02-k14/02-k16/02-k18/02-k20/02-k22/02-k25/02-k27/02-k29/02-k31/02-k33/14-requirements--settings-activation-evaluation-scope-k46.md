@@ -15,8 +15,16 @@ workarounds. Native cause/ownership remain unresolved.
 
 The pending recommendation is to permit design of one empirical
 activation-before-window-ordering evaluation without requiring a documented
-API-use violation. The historical ABBA result establishes feasibility, not
-elimination of intermittent failure. The material choice is whether to accept
+API-use violation. K48's CORRECTION-REVIEW.md records every k47 disposition.
+Historical ABBA feasibility is instrumented and symmetric: B02/B03 and original
+A04 passed with file tracing, and reversal also moved synchronous trace writes.
+There is no instrument-free comparison. Reduced failure risk is not established.
+The pending finite acceptance bound is a convention requiring explicit agreement,
+not an evidence-derived rule. A qualified recurrence would reject the repair;
+failed or missing required evidence prevents acceptance without automatically
+establishing product failure. Every required ordinary assertion must also pass;
+a passing fixed bound establishes only that sample's result. No number is chosen.
+The material choice is whether to accept
 bounded behavioral evidence under a changed justification standard, retain the
 existing hold until new qualifying evidence, or explicitly end unresolved.
 No answer has been supplied in the producer session. Consume any explicit answer

@@ -610,7 +610,7 @@
       "group": "settings-activation",
       "title": "Current path and the unresolved correction choice",
       "source": "settings-activation/correction-assessment.mmd",
-      "caption": "Numbered arrows show existing application call order; the dotted edge starts the assessment. No qualifying correction was found in the inspected path. Independent review and an explicit scope choice precede product work. Empirical ordering design is proposed only; no runtime is selected."
+      "caption": "The bounded no-candidate finding survives review. Both orders succeeded with synchronous file tracing; there is no instrument-free comparison. The empirical proposal needs an explicitly agreed finite convention: qualified recurrence rejects the repair, unavailable required evidence prevents acceptance, and all ordinary assertions must pass. Success covers only that sample. The scope choice remains pending; no number, product change or guest is selected."
     }
   ]
 }

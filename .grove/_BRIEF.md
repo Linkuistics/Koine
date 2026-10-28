@@ -6,10 +6,15 @@ Settings-activation-correction-k45 finds no qualifying API-use correction in the
 inspected path. Its durable assessment is
 docs/verification/settings-activation/CORRECTION-ASSESSMENT.md. The current
 window/key/self-activation calls meet the checked public-use conditions; the
-native failure still has no established cause or owner. This is a bounded finding
-awaiting independent review, not proof that no correction exists.
+native failure still has no established cause or owner. This bounded finding
+survives k47 review and k48 integration; it is not proof that no correction exists.
+CORRECTION-REVIEW.md records the four dispositions. Both orders previously
+succeeded with file tracing; there is no instrument-free comparison. The pending
+proposal makes a finite acceptance bound an agreed convention, with qualified
+recurrence rejecting the repair and unavailable required evidence preventing
+acceptance. No bound or scope answer is selected.
 
-Review of k45 and every earned integration precede an explicit scope decision
+The reviewed k45 assessment precedes k46's explicit scope decision
 and k36. The pending proposal permits only design of an empirical
 activation-before-window-ordering evaluation without a documented API-use
 violation. It is not accepted and authorizes no product change or guest. Keeping

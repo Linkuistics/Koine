@@ -1,9 +1,13 @@
 # Menu bar application: VM verification
 
 The [Settings correction assessment](settings-activation/CORRECTION-ASSESSMENT.md)
-finds no qualifying API-use correction in the inspected path. Independent review
-and the [pending scope choice](../specs/settings-activation-discrimination.md#scope-after-no-candidate)
-precede any further product work. No product change or guest ran; the repair
+finds no qualifying API-use correction in the inspected path. That bounded finding
+survives [review and integration](settings-activation/CORRECTION-REVIEW.md).
+The [pending scope choice](../specs/settings-activation-discrimination.md#scope-after-no-candidate)
+still precedes product work. Both orders previously succeeded with file tracing;
+the proposed finite acceptance bound is a convention, with qualified recurrence
+rejecting the repair and unavailable required evidence preventing acceptance.
+No product change or guest ran; the repair
 remains unresolved and implementation/runtime remain held.
 
 The [accepted Settings repair scope](../specs/settings-activation-discrimination.md#scope-decision-for-antony)

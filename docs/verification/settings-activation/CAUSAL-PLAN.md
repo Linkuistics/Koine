@@ -3,8 +3,9 @@
 ## Execution boundary
 
 The [correction assessment](CORRECTION-ASSESSMENT.md) finds no candidate meeting
-the accepted API-use test in the inspected path. Independent review and an
-explicit scope resolution must precede further product work. Its proposed
+the accepted API-use test in the inspected path. The finding survives
+[review and integration](CORRECTION-REVIEW.md); an explicit scope resolution
+must still precede further product work. Its proposed
 empirical-design option is unaccepted and supplies no runtime budget. The
 implemented protocol below and all six slots remain unchanged and held.
 

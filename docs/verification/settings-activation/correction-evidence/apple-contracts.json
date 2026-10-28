@@ -1,0 +1,159 @@
+{
+  "integrator": "settings-activation-correction-k48",
+  "purpose": "Revalidate the cited public contracts and retain short supporting excerpts, retrieval metadata and exact response digests.",
+  "provenanceLimit": "Fresh k48 retrievals; original k45/k47 web response bytes were not retained and are not reconstructed here. Full responses were read in scratch storage; only the short excerpts and response digests are retained.",
+  "excerptNormalization": "Rendered text: Markdown link labels, inline code without delimiters, doc:// value names; WWDC HTML tags removed and entities decoded; whitespace collapsed. Each excerpt is an exact substring of that normalized response. Some are sentence fragments.",
+  "records": [
+    {
+      "id": "self-activation",
+      "url": "https://developer.apple.com/documentation/appkit/nsapplication/activate%28%29.md",
+      "resolvedUrl": "https://developer.apple.com/documentation/appkit/nsapplication/activate%28%29.md",
+      "retrievedAtUTC": "2026-10-28T12:46:50.290297+00:00",
+      "status": 200,
+      "contentType": "text/markdown; charset=utf-8",
+      "bytes": 1234,
+      "sha256": "0bc5053f9f225578c9ac4ab1015fec5ea346667d284fec5b991fab2bc26e90c3",
+      "pageUrl": "https://developer.apple.com/documentation/appkit/nsapplication/activate%28%29",
+      "excerpts": [
+        "Use this method to request app activation; calling this method doesn’t guarantee app activation."
+      ],
+      "excerptWordCount": 14
+    },
+    {
+      "id": "cooperative-activation",
+      "url": "https://developer.apple.com/documentation/appkit/passing-control-from-one-app-to-another-with-cooperative-activation.md",
+      "resolvedUrl": "https://developer.apple.com/documentation/appkit/passing-control-from-one-app-to-another-with-cooperative-activation.md",
+      "retrievedAtUTC": "2026-10-28T12:46:50.281837+00:00",
+      "status": 200,
+      "contentType": "text/markdown; charset=utf-8",
+      "bytes": 6922,
+      "sha256": "0759b91c3f266fedce06195632fc8e520b8d50c86788674c816a36659908a5e2",
+      "pageUrl": "https://developer.apple.com/documentation/appkit/passing-control-from-one-app-to-another-with-cooperative-activation",
+      "excerpts": [
+        "Only the active app can influence the activation context.",
+        "Use NSApplication (or NSApp) if you want the target app to activate itself."
+      ],
+      "excerptWordCount": 22
+    },
+    {
+      "id": "key-front",
+      "url": "https://developer.apple.com/documentation/appkit/nswindow/makekeyandorderfront%28_%3A%29.md",
+      "resolvedUrl": "https://developer.apple.com/documentation/appkit/nswindow/makekeyandorderfront%28_%3A%29.md",
+      "retrievedAtUTC": "2026-10-28T12:46:50.264853+00:00",
+      "status": 200,
+      "contentType": "text/markdown; charset=utf-8",
+      "bytes": 1758,
+      "sha256": "cb4103bc06c42d62b13b2a480a4eafbed61b30fd6ac3ba1ed7bd5e47af019057",
+      "pageUrl": "https://developer.apple.com/documentation/appkit/nswindow/makekeyandorderfront%28_%3A%29",
+      "excerpts": [
+        "Moves the window to the front of the screen list, within its level, and makes it the key window"
+      ],
+      "excerptWordCount": 19
+    },
+    {
+      "id": "key-eligibility",
+      "url": "https://developer.apple.com/documentation/appkit/nswindow/canbecomekey.md",
+      "resolvedUrl": "https://developer.apple.com/documentation/appkit/nswindow/canbecomekey.md",
+      "retrievedAtUTC": "2026-10-28T12:46:49.947930+00:00",
+      "status": 200,
+      "contentType": "text/markdown; charset=utf-8",
+      "bytes": 1658,
+      "sha256": "eeba8f4a6d39e191a4609af67235fd97fadd63b9c0771e43b3e1a50ccf72dec6",
+      "pageUrl": "https://developer.apple.com/documentation/appkit/nswindow/canbecomekey",
+      "excerpts": [
+        "The value of this property is true if the window’s style mask includes the titled flag, or false otherwise."
+      ],
+      "excerptWordCount": 19
+    },
+    {
+      "id": "accessory",
+      "url": "https://developer.apple.com/documentation/appkit/nsapplication/activationpolicy-swift.enum/accessory.md",
+      "resolvedUrl": "https://developer.apple.com/documentation/appkit/nsapplication/activationpolicy-swift.enum/accessory.md",
+      "retrievedAtUTC": "2026-10-28T12:46:50.266336+00:00",
+      "status": 200,
+      "contentType": "text/markdown; charset=utf-8",
+      "bytes": 1033,
+      "sha256": "2f5ba22fe8d85d36d727f563c869bd48bd8611e94207b7f9ca7d7b79c1d995b9",
+      "pageUrl": "https://developer.apple.com/documentation/appkit/nsapplication/activationpolicy-swift.enum/accessory",
+      "excerpts": [
+        "but it may be activated programmatically or by clicking on one of its windows."
+      ],
+      "excerptWordCount": 14
+    },
+    {
+      "id": "running-activation",
+      "url": "https://developer.apple.com/documentation/appkit/nsrunningapplication/activate%28options%3A%29.md",
+      "resolvedUrl": "https://developer.apple.com/documentation/appkit/nsrunningapplication/activate%28options%3A%29.md",
+      "retrievedAtUTC": "2026-10-28T12:46:50.475880+00:00",
+      "status": 200,
+      "contentType": "text/markdown; charset=utf-8",
+      "bytes": 1410,
+      "sha256": "45163f253997fa3bc512b3df5a9a4272cdc6307640585594e28c9267252825de",
+      "pageUrl": "https://developer.apple.com/documentation/appkit/nsrunningapplication/activate%28options%3A%29",
+      "excerpts": [
+        "true if the application was activated successfully, otherwise false."
+      ],
+      "excerptWordCount": 9
+    },
+    {
+      "id": "activation-from",
+      "url": "https://developer.apple.com/documentation/appkit/nsrunningapplication/activate%28from%3Aoptions%3A%29.md",
+      "resolvedUrl": "https://developer.apple.com/documentation/appkit/nsrunningapplication/activate%28from%3Aoptions%3A%29.md",
+      "retrievedAtUTC": "2026-10-28T12:46:50.815263+00:00",
+      "status": 200,
+      "contentType": "text/markdown; charset=utf-8",
+      "bytes": 1587,
+      "sha256": "65f4cff8d4ca9a65154a704bf814cf0482d2f6e2d4757c1f5350f61ac417287c",
+      "pageUrl": "https://developer.apple.com/documentation/appkit/nsrunningapplication/activate%28from%3Aoptions%3A%29",
+      "excerpts": [
+        "For cooperative activation, the other application should call yieldActivation(to:) or equivalent prior to the target application invoking activate()."
+      ],
+      "excerptWordCount": 18
+    },
+    {
+      "id": "unconditional-front",
+      "url": "https://developer.apple.com/documentation/appkit/nswindow/orderfrontregardless%28%29.md",
+      "resolvedUrl": "https://developer.apple.com/documentation/appkit/nswindow/orderfrontregardless%28%29.md",
+      "retrievedAtUTC": "2026-10-28T12:46:50.847749+00:00",
+      "status": 200,
+      "contentType": "text/markdown; charset=utf-8",
+      "bytes": 1219,
+      "sha256": "a97de255c337d80b3fe8e057e674d8467d7b8805f6eaa5641f7fb734198cc679",
+      "pageUrl": "https://developer.apple.com/documentation/appkit/nswindow/orderfrontregardless%28%29",
+      "excerpts": [
+        "Moves the window to the front of its level, even if its application isn’t active, without changing either the key window or the main window."
+      ],
+      "excerptWordCount": 25
+    },
+    {
+      "id": "move-to-space",
+      "url": "https://developer.apple.com/documentation/appkit/nswindow/collectionbehavior-swift.struct/movetoactivespace.md",
+      "resolvedUrl": "https://developer.apple.com/documentation/appkit/nswindow/collectionbehavior-swift.struct/movetoactivespace.md",
+      "retrievedAtUTC": "2026-10-28T12:46:50.818060+00:00",
+      "status": 200,
+      "contentType": "text/markdown; charset=utf-8",
+      "bytes": 892,
+      "sha256": "4087b667e05c5a3535b1da1b8818b40d96c47782239b429b945995b685fc96a7",
+      "pageUrl": "https://developer.apple.com/documentation/appkit/nswindow/collectionbehavior-swift.struct/movetoactivespace",
+      "excerpts": [
+        "When the window becomes active, move it to the active space instead of switching spaces."
+      ],
+      "excerptWordCount": 15
+    },
+    {
+      "id": "wwdc23",
+      "url": "https://developer.apple.com/videos/play/wwdc2023/10054/",
+      "resolvedUrl": "https://developer.apple.com/videos/play/wwdc2023/10054/",
+      "retrievedAtUTC": "2026-10-28T12:46:51.598812+00:00",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 173349,
+      "sha256": "142580f02efb57472bfef0c5bd9a01a1b81f0c979ce1bc58bcd08f50a4333294",
+      "pageUrl": "https://developer.apple.com/videos/play/wwdc2023/10054/",
+      "excerpts": [
+        "the ignoringOtherApps parameter and option are ignored."
+      ],
+      "excerptWordCount": 7
+    }
+  ]
+}

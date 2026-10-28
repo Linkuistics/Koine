@@ -15,13 +15,13 @@
     {
       "id": "correction",
       "title": "Correction assessment",
-      "description": "The inspected path supplies no qualifying API-use correction. Independent review and an explicit scope choice follow."
+      "description": "The bounded no-candidate finding survives review; the explicit scope choice remains pending."
     }
   ],
   "discussion": {
     "title": "No qualifying correction found in the inspected path",
-    "status": "Assessment awaits review; new scope proposal pending",
-    "summary": "The current path already requests key/front status and self activation once. No evidenced API-use mismatch was found. Review must challenge that bounded finding before Antony chooses whether to permit a named empirical ordering design, retain the present hold, or end unresolved. The empirical option is only a proposal. Product work and all six existing causal slots remain held; cause and ownership remain unresolved.",
+    "status": "Review integrated; empirical scope proposal pending",
+    "summary": "The inspected path supplies no evidenced API-use correction, including its move-to-active-Space setting. The bounded finding survives review. Antony still must choose whether to permit empirical ordering design, retain the hold, or end unresolved. Both orders succeeded with synchronous file tracing; reversing calls moved the writes, and there is no instrument-free comparison. Reduced failure risk is not established. The proposed finite bound is an agreed convention: a qualified recurrence rejects the repair, unavailable required evidence prevents acceptance, and every required ordinary assertion must pass. A passing bound supports only that sample. No number, candidate or guest is selected; all six causal slots remain held and cause/ownership unresolved.",
     "diagramIds": [
       "evidence-limit",
       "scope-choice",
@@ -30,7 +30,7 @@
     "updatedDiagrams": [
       {
         "id": "correction-assessment",
-        "summary": "Adds the current one-request path, bounded no-candidate finding and pending scope branches; no branch authorizes runtime."
+        "summary": "Clarifies instrumented feasibility shared by both orders, the proposed acceptance convention and its failure outcomes; the scope choice stays pending."
       }
     ]
   },
@@ -54,7 +54,7 @@
       "group": "correction",
       "title": "Current path and the unresolved correction choice",
       "source": "correction-assessment.mmd",
-      "caption": "Numbered arrows show the existing application call order. The dotted edge moves to the assessment, not a measured cause. The no-candidate finding is bounded and awaits review. The proposed empirical ordering design would amend the justification standard only by explicit agreement; it selects no implementation, cap or guest."
+      "caption": "Numbered arrows show existing application calls; the dotted edge starts reasoning. The bounded finding survives review. Both orders succeeded with file tracing, without an instrument-free comparison. The proposed finite bound is a convention: qualified recurrence rejects the repair, unavailable required evidence prevents acceptance, and all ordinary assertions must pass. Success covers only that sample. Explicit scope agreement would permit design only; review and every earned integration precede implementation/runtime. No number or guest is selected."
     }
   ]
 }

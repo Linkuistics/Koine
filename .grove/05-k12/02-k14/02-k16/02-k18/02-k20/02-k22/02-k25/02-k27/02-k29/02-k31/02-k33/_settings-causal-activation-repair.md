@@ -4,9 +4,13 @@
 
 The bounded source/public-contract assessment in
 docs/verification/settings-activation/CORRECTION-ASSESSMENT.md finds no
-candidate meeting k42's API-use test. Independent review and every earned
-integration must challenge that finding before the explicit scope decision
-ahead of k36. The proposal to permit empirical activation-before-window-ordering
+candidate meeting k42's API-use test. It survives k47 review and k48 integration;
+CORRECTION-REVIEW.md records every disposition. Both orders previously succeeded
+with file tracing; there is no instrument-free comparison. The pending finite
+acceptance convention rejects the repair on qualified recurrence and prevents
+acceptance without required evidence. No bound or scope answer is selected.
+K46 owns the explicit scope decision ahead of k36.
+The proposal to permit empirical activation-before-window-ordering
 design changes the justification standard and remains unaccepted. No product
 change, guest, repair seam or runtime cap is selected. K36 stays live and held;
 all original duties under k42, historical evidence and caps remain. This node

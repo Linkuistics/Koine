@@ -4,8 +4,12 @@
 
 K45 finds no qualifying correction in the inspected path. Read
 docs/verification/settings-activation/CORRECTION-ASSESSMENT.md and the existing
-spec's Correction assessment and Scope after no candidate sections. Independent
-review/every earned integration precede the new explicit scope resolution.
+spec's Correction assessment and Scope after no candidate sections. K47 review
+and k48 integration are recorded in CORRECTION-REVIEW.md; the bounded finding
+survives. K46's explicit scope resolution remains pending. Historical feasibility
+is instrumented and shared by both orders. The proposed finite convention rejects
+the repair on qualified recurrence and prevents acceptance without required
+evidence; it selects no bound or answer.
 The empirical ordering-design option is only proposed. This leaf stays live and
 held: even a favorable scope answer still needs concrete design, review and
 every earned integration before product changes or guests. No candidate or
