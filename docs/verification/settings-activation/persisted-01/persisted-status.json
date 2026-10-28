@@ -1,0 +1,9 @@
+{
+  "command": "bash /Users/admin/persisted-guest-config.sh status",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "BEFORE com.apple.SkyLight\nMode for 'com.apple.SkyLight'  DEBUG PERSIST_DEBUG SIGNPOST_PERSISTED_OFF SIGNPOST_ENABLED_ON SIGNPOST_BACKTRACE_ENABLED_OFF OVERSIZE_ENABLED_ON\nBEFORE com.apple.SkyLight.processes\nMode for 'com.apple.SkyLight.processes'  DEBUG PERSIST_DEBUG SIGNPOST_PERSISTED_OFF SIGNPOST_ENABLED_ON SIGNPOST_BACKTRACE_ENABLED_OFF OVERSIZE_ENABLED_OFF\nBEFORE com.apple.launchservices\nMode for 'com.apple.launchservices'  DEBUG PERSIST_DEBUG SIGNPOST_PERSISTED_OFF SIGNPOST_ENABLED_ON SIGNPOST_BACKTRACE_ENABLED_OFF OVERSIZE_ENABLED_OFF\nKOINE_PERSISTED_status_COMPLETE",
+  "timed_out": false
+}

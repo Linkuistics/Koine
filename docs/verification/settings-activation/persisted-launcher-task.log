@@ -1,0 +1,2 @@
+task: [app:vm-settings-persisted] bash docs/verification/settings-activation/persisted-run.sh 01
+task: Failed to run task "app:vm-settings-persisted": exit status 201

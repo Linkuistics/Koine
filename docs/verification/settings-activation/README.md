@@ -259,3 +259,13 @@ All later complete-scenario phases remain NOT RUN. K27 owns a supported causal
 hypothesis/discriminating protocol and every original repair and separately
 declared ordinary complete-acceptance duty. No product repair, reliability rate,
 external ownership, release/notarization or upstream report follows.
+
+
+## Persisted Debug reproduces reopen 1 failure
+
+The [one-guest persisted result](PERSISTED-RESULTS.md) retains a failed reopen
+with memory/native/window/visible corroboration and useful deferred native Debug.
+The strict wall-clock joins fail for both selections, leaving clock correlation
+and explicit failed disposition/responsible context unqualified. Shared token
+results are not a cause. No application repair or ordinary acceptance follows;
+all prior failures, failed transports and unrun phases remain in that report.

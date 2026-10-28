@@ -1530,6 +1530,28 @@ tasks:
       - mkdir -p .build/settings-activation/events
       - swiftc -swift-version 6 -target arm64-apple-macos26.0 Tools/SettingsEventDump/main.swift -o .build/settings-activation/events/settings-event-dump
 
+  app:vm-settings-persisted:
+    desc: Run the sole persisted-Debug capability guest; see settings-activation/PERSISTED-PLAN.md
+    cmds:
+      - bash docs/verification/settings-activation/persisted-run.sh {{.CLI_ARGS}}
+
+  app:vm-settings-persisted-scenario:
+    desc: Four unchanged Settings actions with narrowly persisted native Debug records
+    cmds:
+      - |
+        status=0
+        bash docs/verification/settings-activation/persisted-prefix.sh || status=$?
+        if [ -n "${KOINE_K4_OUT:-}" ]; then printf '%s\n' "${status}" > "${KOINE_K4_OUT}/scenario.exit"; fi
+        exit "${status}"
+
+  check:vm-settings-persisted:
+    desc: Check single-attempt logging configuration and inherited capture controls without a VM
+    cmds:
+      - bash -n docs/verification/settings-activation/persisted-*.sh
+      - shellcheck -x -e SC2034 docs/verification/settings-activation/persisted-*.sh
+      - bats Tests/scripts/vm-settings-persisted.bats
+      - task: check:vm-settings-retention
+
   app:vm-settings-retention:
     desc: Run the sole corrected actual-path retention guest; see settings-activation/RETENTION-PLAN.md
     cmds:

@@ -1,0 +1,17 @@
+One fresh-context adversarial review before freeze. Scope: PERSISTED-PLAN.md,
+persisted scripts, Taskfile routes and focused controls; read-only, no VM.
+Graph project/generation and coverage unavailable because CLI startup refused.
+
+Medium: the public scenario route could bypass the wrapper's sole output/ID
+claim and start a default-ID/default-bundle clone before missing output failed.
+Classification: actionable. A fake-testanyware control ran the actual prefix
+without wrapper variables; it failed because the fake VM command log existed.
+No real VM was started by that control. Early prefix checks now require exact
+wrapper output/start marker, both declared VM IDs and frozen bundle path before
+any VM command. The same control then passes with no VM command emitted.
+
+No other actionable findings were reported in the bounded review. No second
+reviewer was used. Source inspection independently located LS/CAS explicit
+result rows in com.apple.launchservices and resume rows in com.apple.SkyLight;
+that literal configuration expansion preceded freeze. It does not establish
+failed-path coverage or configuration timing neutrality.

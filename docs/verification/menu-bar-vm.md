@@ -1224,3 +1224,15 @@ All later complete-scenario phases remain NOT RUN. The sample stays closed; k27
 carries every original causal repair and separately declared diagnostics-disabled
 complete ordinary-operation acceptance duty. Issue 14's activation repair remains
 unresolved. No release/notarization or upstream report occurred.
+
+
+## Persisted Debug activation failure
+
+The [persisted-Debug result](settings-activation/PERSISTED-RESULTS.md) reproduces
+Settings reopen 1 behind TextEdit with a delivered callback, clean independent
+native snapshot and agreeing window/screenshot evidence. Deferred capture retains
+useful Debug, but strict cross-clock joins fail and no explicit failed native
+result or responsible cause is established. No product repair or ordinary complete
+acceptance follows. The sole slot is consumed; failed transports and every unrun
+phase are retained. The next step qualifies clock correlation from the saved
+archive without rerunning the guest. No activation outcome of issue 14 is closed.

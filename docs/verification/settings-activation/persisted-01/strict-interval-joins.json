@@ -1,0 +1,22 @@
+{
+  "qualified": false,
+  "joinedSelections": [],
+  "intervals": [
+    {
+      "selection": 1,
+      "pid": 814,
+      "beforeUnixTime": 1793167559.902792,
+      "afterUnixTime": 1793167559.90417,
+      "clientCalls": []
+    },
+    {
+      "selection": 2,
+      "pid": 814,
+      "beforeUnixTime": 1793167565.663813,
+      "afterUnixTime": 1793167565.665042,
+      "clientCalls": []
+    }
+  ],
+  "lossRecords": [],
+  "ignoredHeaders": []
+}

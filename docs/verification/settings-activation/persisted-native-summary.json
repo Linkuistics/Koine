@@ -1,0 +1,52 @@
+{
+  "jsonRows": 6048,
+  "levels": {
+    "Default": 3932,
+    "Info": 1525,
+    "Error": 26,
+    "activityCreateEvent": 236,
+    "stateEvent": 124,
+    "Debug": 192,
+    "Fault": 12,
+    "unknown": 1
+  },
+  "lossRecords": [],
+  "bufferCount": 49,
+  "dropped": 0,
+  "selections": [
+    {
+      "selection": 1,
+      "pid": 814,
+      "callbackUnixTime": 1793167559.9016762,
+      "beforeUnixTime": 1793167559.902792,
+      "afterUnixTime": 1793167559.90417,
+      "beforeUptime": 180.7741264166667,
+      "afterUptime": 180.77550395833333,
+      "clientTimestamp": "2026-10-27 23:05:59.904569-0700",
+      "clientMachTimestamp": 4338579225,
+      "nativeMinusAfterMilliseconds": 0.39887428283691406,
+      "lagToCollectionStartSeconds": 8.095431089401245,
+      "lagToCollectionEndSeconds": 11.095431089401245,
+      "lastEventAgeSeconds": 0.34580504233332476,
+      "activityIdentifier": 88373,
+      "note": "Proximity association only; strict wall-clock interval join failed. Tick-to-uptime relation not yet qualified."
+    },
+    {
+      "selection": 2,
+      "pid": 814,
+      "callbackUnixTime": 1793167565.6631389,
+      "beforeUnixTime": 1793167565.663813,
+      "afterUnixTime": 1793167565.665042,
+      "beforeUptime": 186.535147125,
+      "afterUptime": 186.5363756666667,
+      "clientTimestamp": "2026-10-27 23:06:05.665596-0700",
+      "clientMachTimestamp": 4476843871,
+      "nativeMinusAfterMilliseconds": 0.5540847778320312,
+      "lagToCollectionStartSeconds": 2.3344039916992188,
+      "lagToCollectionEndSeconds": 5.334403991699219,
+      "lastEventAgeSeconds": 0.36105945866665934,
+      "activityIdentifier": 89551,
+      "note": "Proximity association only; strict wall-clock interval join failed. Tick-to-uptime relation not yet qualified."
+    }
+  ]
+}

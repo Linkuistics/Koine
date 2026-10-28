@@ -180,3 +180,33 @@ application repair/useful failing seam and separately declared frozen complete
 ordinary-operation acceptance duty remains. Diagnostic-02's historical
 classification is unchanged. K25/k22/k20/k18/k16/k14/k12 remain open; every prior
 sample stays closed. No external owner, release/notarization or upstream report.
+
+
+## Persisted Debug failure and remaining clock/disposition work
+
+K28 retains the sole new persisted guest in
+`docs/verification/settings-activation/PERSISTED-RESULTS.md`, including every
+original-duty comparison. Initial Settings passes; reopen 1 fails. The 49-row
+zero-drop buffer, clean independent native snapshot, agent windows and screenshot
+agree on a delivered callback followed by inactive Koine behind active TextEdit.
+The changed instrument preserves this symptom; no timing neutrality follows.
+Persisted Debug retains successful Koine front/result/resume and failed-selection-
+adjacent client/token records. Shared -50/token fields and post-call remote-menu
+teardown occur in both outcomes and establish no cause or external owner.
+
+Strict wall-clock joins match neither selection: native client timestamps are
+0.399/0.554 ms after buffered after-times. Raw tick/uptime numerical fit is only
+provisional. Keep the original failed join, archive clock bytes and all raw
+records. K29 first qualifies the existing cross-clock relation offline, then
+owns every positive failed-disposition/responsible-context, justified product
+repair/useful failing seam and separately predeclared frozen complete ordinary-
+acceptance duty. No missing record becomes proof and no unchanged sample is
+repeated to chase failure. K27 and all causal/repair ancestors remain open.
+
+Scenario/inner Task are 1/201, native/collection/audit 1/1/1 and outer Task 201.
+Post-trace timeout/-1 remains failed despite its marker. Other new raw transports,
+failure snapshot, both installed endpoints and final environment are clean.
+All 316 frozen inputs, endpoint inventories and completed golden hashes match;
+97 artifact checks pass and the correct clone stops. Reopens 2/3 and every later
+complete-scenario phase are NOT RUN. Every completed sample stays closed. No
+product repair, ordinary acceptance, release/notarization or upstream report.

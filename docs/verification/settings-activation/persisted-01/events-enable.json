@@ -1,0 +1,9 @@
+{
+  "command": "set -e; test ! -e /Users/admin/settings-events.json; test ! -e /Users/admin/settings-events.json.complete; defaults write dev.antony.Koine KoineSettingsEventBuffer -string /Users/admin/settings-events.json; test \"$(defaults read dev.antony.Koine KoineSettingsEventBuffer)\" = /Users/admin/settings-events.json; echo KOINE_EVENTS_ENABLED",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "KOINE_EVENTS_ENABLED",
+  "timed_out": false
+}

@@ -1,0 +1,9 @@
+{
+  "command": "bash /Users/admin/deferred-guest-collect.sh",
+  "exit_code": 0,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "",
+  "stdout": "KOINE_DEFERRED_COMPLETE",
+  "timed_out": false
+}

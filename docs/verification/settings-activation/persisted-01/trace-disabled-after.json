@@ -1,0 +1,9 @@
+{
+  "command": "value=$(defaults read dev.antony.Koine KoineSettingsActivationTrace 2>&1); status=$?; if [ \"$status\" -eq 0 ]; then printf \"%s\\n\" \"$value\"; exit 1; fi; case \"$value\" in *\"does not exist\"* | Error:\\ Domain\\ ?dev.antony.Koine?\\ not\\ found. | \"Error: Could not find key 'KoineSettingsActivationTrace' in domain 'dev.antony.Koine'.\") ;; *) printf \"%s\\n\" \"$value\"; exit 1;; esac; test ! -e /Users/admin/settings-activation.jsonl || exit 1; echo KOINE_TRACE_DISABLED",
+  "exit_code": -1,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "Process timed out after 30s",
+  "stdout": "KOINE_TRACE_DISABLED",
+  "timed_out": true
+}

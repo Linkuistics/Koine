@@ -1,0 +1,1 @@
+Uploaded docs/verification/window-resize/failure-observer-binary → /Users/admin/k12-activation-snapshot

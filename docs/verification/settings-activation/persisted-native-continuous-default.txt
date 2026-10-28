@@ -1,0 +1,5 @@
+Timestamp                       Thread     Type        Activity             PID    TTL  
+1337344730                      0x19cb     Info        0x0                  814    0    Koine: (SkyLight) [com.apple.SkyLight:processes] 0[outside of RPC]: SLSSetFrontProcessWithInfo(0x0-0x2 window=0 options=0x1
+1370028603                      0x19cb     Info        0x0                  814    0    Koine: (SkyLight) [com.apple.SkyLight:processes] 0[outside of RPC]: SLSSetFrontProcessWithInfo(0x0-0x2 window=0 options=0x1
+4338579225                      0x19cb     Info        0x15935              814    0    Koine: (SkyLight) [com.apple.SkyLight:processes] 0[outside of RPC]: SLSSetFrontProcessWithInfo(0x0-0x2 window=0 options=0x1
+4476843871                      0x19cb     Info        0x15dcf              814    0    Koine: (SkyLight) [com.apple.SkyLight:processes] 0[outside of RPC]: SLSSetFrontProcessWithInfo(0x0-0x2 window=0 options=0x1

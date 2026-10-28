@@ -1,0 +1,5 @@
+Timestamp               Ty Process[PID:TID]
+2026-10-27 23:03:54.853 I  Koine[814:19cb] [com.apple.SkyLight:processes] 0[outside of RPC]: SLSSetFrontProcessWithInfo(0x0-0x2 window=0 options=0x1
+2026-10-27 23:03:56.214 I  Koine[814:19cb] [com.apple.SkyLight:processes] 0[outside of RPC]: SLSSetFrontProcessWithInfo(0x0-0x2 window=0 options=0x1
+2026-10-27 23:05:59.904 I  Koine[814:19cb] [com.apple.SkyLight:processes] 0[outside of RPC]: SLSSetFrontProcessWithInfo(0x0-0x2 window=0 options=0x1
+2026-10-27 23:06:05.665 I  Koine[814:19cb] [com.apple.SkyLight:processes] 0[outside of RPC]: SLSSetFrontProcessWithInfo(0x0-0x2 window=0 options=0x1

@@ -1,0 +1,1 @@
+.build/settings-activation/persisted/01/deferred-native.tgz: OK

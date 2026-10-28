@@ -1,0 +1,97 @@
+MATCH original audit.exit
+MATCH original bundle-after.txt
+MATCH original bundle-before-diff.txt
+MATCH original bundle-before.txt
+MATCH original bundle-diff.txt
+MATCH original collection-started.txt
+MATCH original collection.exit
+MATCH original deferred-collect.json
+MATCH original deferred-collect.stderr
+MATCH original deferred-download.txt
+MATCH original deferred-native/acquisition.exit
+MATCH original deferred-native/collect.stderr
+MATCH original deferred-native/collect.stdout
+MATCH original deferred-native/collected.txt
+MATCH original deferred-native/complete.txt
+MATCH original deferred-native/native.jsonl
+MATCH original deferred-native/package.exit
+MATCH original deferred-native/rendered.txt
+MATCH original deferred-native/show.stderr
+MATCH original deferred-native/started.txt
+MATCH original deferred-preflight.json
+MATCH original deferred-preflight.stderr
+MATCH original ended.txt
+MATCH original events-download.txt
+MATCH original events-dump.json
+MATCH original events-dump.stderr
+MATCH original events-enable.json
+MATCH original events-enable.stderr
+MATCH original events.json
+MATCH original failure-capture.txt
+MATCH original failure-native.json
+MATCH original failure-native.stderr
+MATCH original failure-observed.png
+MATCH original failure-windows.json
+MATCH original failure-windows.stderr
+MATCH original files-after.txt
+MATCH original files-before.txt
+MATCH original final-display-cli.exit
+MATCH original final-display.json
+MATCH original final-display.stderr
+MATCH original guest-final-cli.exit
+MATCH original guest-final.json
+MATCH original guest-final.stderr
+MATCH original host-after.txt
+MATCH original host-before.txt
+MATCH original initial-inventory-upload.exit
+MATCH original initial-inventory-upload.txt
+MATCH original installed-after.json
+MATCH original installed-after.stderr
+MATCH original installed-after.txt
+MATCH original installed-before-check.exit
+MATCH original installed-before-cli.exit
+MATCH original installed-before-raw-diff.txt
+MATCH original installed-before-raw.json
+MATCH original installed-before-raw.stderr
+MATCH original installed-before-raw.txt
+MATCH original installed-diff.txt
+MATCH original interruption.exit
+MATCH original inventory-upload.txt
+MATCH original menu-bar-20261028T170257-failure.png
+MATCH original menu-bar-20261028T170257-first-launch.png
+MATCH original menu-bar-20261028T170257-installed-before.txt
+MATCH original menu-bar-20261028T170257-over-textedit.png
+MATCH original menu-bar-20261028T170257.log
+MATCH original native-collection.exit
+MATCH original new-files.txt
+MATCH original observer-upload.txt
+MATCH original persisted-enable.json
+MATCH original persisted-enable.stderr
+MATCH original persisted-status.json
+MATCH original persisted-status.stderr
+MATCH original scenario-ended.txt
+MATCH original scenario.exit
+MATCH original settings-events.json
+MATCH original settings-events.json.complete
+MATCH original started.txt
+MATCH original stop.exit
+MATCH original stop.json
+MATCH original stop.stderr
+MATCH original task.exit
+MATCH original task.log
+MATCH original trace-disabled-after.json
+MATCH original trace-disabled-after.stderr
+MATCH original trace-disabled-before.json
+MATCH original trace-disabled-before.stderr
+MATCH original wrapper.exit
+LOSSLESS filtered rendering 8576393 bytes SHA256 a2dffcd658d1f0cad003d42aec23d2830c348b2a47d701e134d7875901334451
+MATCH archive clock Info.plist
+MATCH archive clock 0000000000000002.timesync
+MATCH archive scalar native.jsonl
+MATCH archive scalar started.txt
+MATCH archive scalar collected.txt
+MATCH archive scalar rendered.txt
+MATCH archive scalar collect.stdout
+MATCH archive scalar collect.stderr
+MATCH archive scalar show.stderr
+MATCH archive scalar acquisition.exit
