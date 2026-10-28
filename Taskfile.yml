@@ -1530,6 +1530,29 @@ tasks:
       - mkdir -p .build/settings-activation/events
       - swiftc -swift-version 6 -target arm64-apple-macos26.0 Tools/SettingsEventDump/main.swift -o .build/settings-activation/events/settings-event-dump
 
+  app:vm-settings-deferred:
+    desc: Run the sole deferred-acquisition guest; see settings-activation/DEFERRED-PLAN.md
+    cmds:
+      - bash docs/verification/settings-activation/deferred-run.sh {{.CLI_ARGS}}
+
+  app:vm-settings-deferred-scenario:
+    desc: Four unchanged Settings actions with buffered events and no live native log reader
+    cmds:
+      - |
+        status=0
+        bash docs/verification/settings-activation/deferred-prefix.sh || status=$?
+        if [ -n "${KOINE_K4_OUT:-}" ]; then printf '%s\n' "${status}" > "${KOINE_K4_OUT}/scenario.exit"; fi
+        exit "${status}"
+
+  check:vm-settings-deferred:
+    desc: Check deferred acquisition transport and inherited buffered capture controls without a VM
+    cmds:
+      - bash -n docs/verification/settings-activation/deferred-*.sh
+      - shellcheck -x -e SC2034 docs/verification/settings-activation/deferred-*.sh
+      - bats Tests/scripts/vm-settings-deferred.bats Tests/scripts/vm-settings-deferred-join.bats
+      - ruff check --select E,F,I --line-length 100 docs/verification/settings-activation/deferred-join.py
+      - task: check:vm-settings-events
+
   app:vm-settings-events:
     desc: Run the single declared buffered-event qualification guest; see settings-activation/EVENTS-PLAN.md
     cmds:

@@ -1188,3 +1188,22 @@ inputs, measured overlays, golden digests and cleanup are reconciled in the
 report. Resize and all later full-scenario phases are NOT RUN. The remaining
 work is post-scenario native-capture capability without the live sidecar plus
 all original causal repair and complete diagnostics-disabled acceptance duties.
+
+
+## Deferred native acquisition: actual Settings path still unqualified
+
+The [sole deferred guest](settings-activation/DEFERRED-RESULTS.md) stops before
+Koine launch because a new preflight parser rejects a clean completion marker
+without a trailing newline. Every application assertion is NOT RUN. The exact
+response fails before the narrow parser correction and passes afterward; no
+corrected guest or replacement runs. The one-guest cap stays closed.
+
+Public post-observation collection acquires/renders a native archive with recent
+loginwindow Info calls. That demonstrates generic transport, not the actual
+Koine activation path or any cause/repair. Combined native/collection/audit are
+1/1/1; post-trace/environment/installed reads time out and matching text remains
+failed transport. Frozen subjects, measured overlays and completed golden hashes
+match; the clone is stopped. Actual-path qualification, positive causal evidence,
+product repair and separately declared frozen complete ordinary acceptance remain
+open. Historical failures/classifications and closed samples are unchanged. No
+release/notarization or upstream report.

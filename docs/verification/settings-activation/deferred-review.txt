@@ -1,0 +1,18 @@
+Sole in-session fresh-context review, before freeze or first guest.
+Artifact: deferred acquisition/prefix/transport/collection scripts and charter.
+Contract: no concurrent live reader, one collection after observation, preserve
+all unsuccessful transports/partial native archive, unconditional cleanup.
+
+Reviewer finding P1: set -e exits before the tar command on collect/show failure;
+wrapper downloads no partial raw archive locally before stopping the guest.
+Classification: valid and actionable.
+
+Repair: EXIT packaging retains acquisition and packaging statuses independently;
+wrapper permits one packaging-only recovery to a distinct archive if the initial
+download fails. It never repeats log collect or user input. Primary failure stays
+failed. Exact partial-archive and packaging-failure fixtures fail before this fix
+and pass afterward (deferred-package-red.txt / deferred-controls.txt). No second
+reviewer. Public-command native behavior is still to be qualified in the declared
+guest. Freeze/inventory inputs were not yet produced at review time; they are
+created only after edits/checks, before launch. Archive digest/file inventory and
+independent scalar cross-checks are host finalization duties before reporting.

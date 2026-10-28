@@ -1,0 +1,2 @@
+task: [app:vm-settings-deferred] bash docs/verification/settings-activation/deferred-run.sh 01
+task: Failed to run task "app:vm-settings-deferred": exit status 201

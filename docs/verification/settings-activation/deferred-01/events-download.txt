@@ -1,0 +1,4 @@
+error: Download failed on the target VM: no such file: /Users/admin/settings-events.json
+  → run `testanyware llm-instructions` for the full usage guide
+error: Download failed on the target VM: no such file: /Users/admin/settings-events.json.complete
+  → run `testanyware llm-instructions` for the full usage guide

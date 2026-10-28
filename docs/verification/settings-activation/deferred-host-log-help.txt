@@ -1,0 +1,91 @@
+usage: log collect [<options>]
+
+description:
+    Collect the system logs into a .logarchive that can be viewed with
+    `log show` or Console.app.
+
+options:
+    -d, --device                  Collect logs from first device found
+    -n, --device-name <name>      Collect logs from device with the given name
+    -u, --device-udid <UDID>      Collect logs from device with the given UDID
+    -D, --directory <directory>   Collect logs from the given directory path
+    -l, --last <num>[s|m|h|d]     Collect logs starting <num>[s|m|h|d] ago
+    -o, --output <path>           Output log archive to the given path
+    -z, --size <num>[k|m]         Limit log collection to the given size
+    -S, --start <time>            Collect logs starting at the given time
+    -P, --predicate <predicate>   Collect logs using a given predicate
+
+notes:
+    If an output path is not specified, system_logs.logarchive will be created
+    in the current directory. If the output path is a directory, a file named
+    `system_logs.logarchive` will be created in the specified directory. If the
+    path contains the extension .logarchive, a new logarchive will be created
+    with that name at the specified path.
+
+    Specifying a predicate for log collection will impact the performance and
+    memory usage of the operation.
+
+valid time formats:
+    'Y-M-D H:m:s+zzzz', 'Y-M-D H:m:s', 'Y-M-D', '@unixtime'
+
+examples:
+    log collect --device
+    log collect --device-name "Ed’s iPhone" --last 1h
+    log collect --output ~/mylogs.logarchive
+    log collect --output /tmp
+    log collect --start "2016-04-12" --output /Users/test --size 20m
+    log collect --start "2016-04-12 06:30:00"
+    log collect --predicate 'process!="kernel"'
+
+
+log help collect exit: 64
+usage: log show [options] <archive>
+   or: log show [options]
+
+description:
+    Show the contents of the system log datastore or a log archive.
+    Output contains only default level messages unless --info and/or
+    --debug are specified.
+
+options:
+    --[no-]backtrace                  Control whether backtraces are shown
+    --[no-]debug                      Control whether "Debug" events are shown
+    --[no-]info                       Control whether "Info" events are shown
+    --[no-]loss                       Control whether message loss events are shown
+    --[no-]signpost                   Control whether signposts are shown
+    -A, --archive <archive>           Display events stored in the given archive
+    -c, --color <mode>                Control color output (valid: auto, always, none)
+    -D, --directory <directory>       Display events from the given directory path
+    -E, --end <date>                  Display events up to the given end date
+    -l, --last <num>[s|m|h|d] | boot  Display recent events up to the given limit
+    -L, --last24                      Display last 24 hours
+    -Y, --yesterday                   Display the previous day
+    -T, --today                       Display since the start of the day
+    --[no-]pager                      Paginate output using less
+    -H, --highlight-predicate <predicate>
+                                      Highlight filtered events using the given predicate
+    -P, --predicate <predicate>       Filter events using the given predicate
+    -p, --process <pid> | <process>   Filter events using the specified process
+    --metric                          Display metrics events
+    --realtime                        Annotate output with "Real-Time" if the process uses the RT Logging system
+    --source                          Annotate output with source file and line-number
+    -S, --start <date>                Display events from the given start date
+    -s, --style <style>               Output format (valid: default, syslog, json, ndjson, compact)
+    -Z, --timezone local | <tz>       Use the given timezone when displaying event timestamps
+    --mach-continuous-time            Print mach continuous time timestamps rather than walltime
+    --unreliable                      Annotate output with whether the log was emitted unreliably
+
+valid time formats:
+    'Y-M-D H:m:s+zzzz', 'Y-M-D H:m:s', 'Y-M-D', '@unixtime'
+
+predicate usage:
+    Filter predicates follow the NSPredicate format described at:
+    https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Predicates/AdditionalChapters/Introduction.html
+
+    For predicate field/type details, see `log help predicates`.
+
+shorthand usage: 
+    Shorthand is converted to a predicate. For details, see `log help shorthand`.
+
+
+log help show exit: 64

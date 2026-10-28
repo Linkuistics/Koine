@@ -1,0 +1,1 @@
+Completed golden config/disk/NVRAM before and after digests MATCH

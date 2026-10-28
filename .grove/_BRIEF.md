@@ -308,3 +308,34 @@ links in the archived initial context charter. K23 separately owns a byte-
 preserving archive packaging repair; k21 retains the failed check and confirms
 the same source bytes/target absence in its parent. This does not alter any VM
 outcome or weaken k22's causal/ordinary-acceptance obligations.
+
+
+## Deferred acquisition evidence and remaining actual-path work
+
+K24 retains the sole deferred guest in
+`docs/verification/settings-activation/DEFERRED-RESULTS.md`, including every
+original-duty comparison. A clean preflight response is rejected because the
+new parser requires a trailing newline removed by TestAnyware. Koine never
+launches; every application assertion is NOT RUN. Scenario/inner Task are 1/201,
+combined native/collection/audit 1/1/1, clone stop 0. Post-trace/environment/
+installed reads time out; matching text remains failed transport. The bound is
+closed with no corrected guest or replacement.
+
+Post-observation archive acquisition/rendering/packaging is clean and retains
+recent loginwindow Info calls, not Koine's actual activation path. Generic
+native acquisition is demonstrated; actual-path retention, positive failed
+request/disposition discrimination and symptom preservation remain unqualified.
+Missing uuid text and native retention limits remain explicit. All original
+frozen subjects, exact measured prefix/test overlays and completed golden digests
+match; every collected artifact is retained and the clone is stopped. The exact
+normalized fixture fails before the narrow parser correction; final focused
+controls pass without replaying any guest.
+
+K22 decomposes to completed evidence k24 and actual-path qualification k25.
+K25 owns a separately named finite corrected capability protocol plus every
+original causal repair/useful failing product seam and separately declared
+frozen complete ordinary-operation acceptance duty. Diagnostic-02's historical
+classification stays met; all causal/repair ancestors remain open. No closed
+sample is extended, no generic native call becomes an app-path control and no
+product repair/ordinary acceptance, external ownership, release/notarization or
+upstream report is claimed.

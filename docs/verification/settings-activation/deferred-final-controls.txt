@@ -1,0 +1,61 @@
+task: [check:vm-settings-deferred] bash -n docs/verification/settings-activation/deferred-*.sh
+task: [check:vm-settings-deferred] shellcheck -x -e SC2034 docs/verification/settings-activation/deferred-*.sh
+task: [check:vm-settings-deferred] bats Tests/scripts/vm-settings-deferred.bats Tests/scripts/vm-settings-deferred-join.bats
+1..10
+ok 1 deferred collection accepts and retains one clean completed transport
+ok 2 deferred collection rejects timeout guest failure and CLI failure without replay
+ok 3 deferred collection rejects missing completion and preserves raw output
+ok 4 deferred packaging preserves a partial archive and original acquisition failure
+ok 5 deferred packaging failure stays failed even after successful acquisition
+ok 6 deferred preflight accepts the exact clean guest response with normalized trailing newline
+ok 7 deferred preflight rejects timeout and wrong completion despite normalized output
+ok 8 deferred reader joins four historical actual-PID calls to exact buffered intervals
+ok 9 deferred reader reports missing wrong-PID and out-of-interval calls as unmatched
+ok 10 deferred reader rejects malformed log JSON and incomplete buffered intervals
+task: [check:vm-settings-deferred] ruff check --select E,F,I --line-length 100 docs/verification/settings-activation/deferred-join.py
+All checks passed!
+task: [check:vm-settings-events] bash -n docs/verification/settings-activation/events-*.sh
+task: [check:vm-settings-events] shellcheck -x -e SC2034 docs/verification/settings-activation/events-*.sh
+task: [check:vm-settings-events] bats Tests/scripts/vm-settings-events.bats Tests/scripts/vm-settings-events-stop.bats
+1..11
+ok 1 events enable accepts a clean normalized transport and retains it
+ok 2 events never accept a timeout, guest failure or transport failure as enable success
+ok 3 events reject a wrong enable marker and preserve nonzero CLI failure without replay
+ok 4 events dump retains complete JSON and rejects loss or missing call boundaries
+ok 5 events dump rejects empty output and timeout even with returned JSON
+ok 6 events dump retains a chmod failure from its actual guest command
+ok 7 events wrapper rejects a false stopped result even when CLI succeeds
+ok 8 events wrapper rejects the wrong stopped VM identity
+ok 9 events wrapper preserves a scenario failure and still stops once
+ok 10 events wrapper accepts clean cleanup and preserves CLI stop failure
+ok 11 events wrapper rejects nonzero stop CLI with matching returned text
+task: [check:vm-settings-context] bash -n docs/verification/settings-activation/context-*.sh
+task: [check:vm-settings-context] shellcheck -x -e SC2034 docs/verification/settings-activation/context-*.sh
+task: [check:vm-settings-context] bats Tests/scripts/vm-settings-context.bats
+1..7
+ok 1 context rejects enabled tracing and preserves the one observation
+ok 2 context rejects timed-out trace observation even with a success marker
+ok 3 context requires the disabled marker from a clean single transport
+ok 4 context accepts the guest's absent-domain diagnostic
+ok 5 context accepts the actual missing-key diagnostic after memory mode creates the domain
+ok 6 context refuses an unexpected preference error and an enabled preference
+ok 7 context accepts the actual newline-normalized success transport
+task: [check:vm-settings-native] bash -n docs/verification/settings-activation/native-prefix.sh docs/verification/settings-activation/native-run.sh docs/verification/settings-activation/native-guest-log.sh docs/verification/settings-activation/native-start.sh docs/verification/settings-activation/native-guest-stop.sh
+task: [check:vm-settings-native] shellcheck -x -e SC2034 docs/verification/settings-activation/native-prefix.sh docs/verification/settings-activation/native-run.sh docs/verification/settings-activation/native-guest-log.sh docs/verification/settings-activation/native-start.sh docs/verification/settings-activation/native-guest-stop.sh
+task: [check:vm-settings-native] bats Tests/scripts/vm-settings-native.bats Tests/scripts/vm-settings-native-stop.bats
+1..6
+ok 1 native startup retains a timed-out transport and never replays it
+ok 2 native startup rejects a failed envelope even when the CLI exits zero
+ok 3 native startup accepts and retains a clean readiness observation
+ok 4 native stop rejects a logger that ended before collection
+ok 5 native stop rejects a missing process without claiming intentional stop
+ok 6 native stop signals a live logger and waits for its recorded exit
+task: [check:vm-settings-activation] bash -n docs/verification/settings-activation/run.sh docs/verification/settings-activation/inventory.sh
+task: [check:vm-settings-activation] shellcheck docs/verification/settings-activation/run.sh docs/verification/settings-activation/inventory.sh
+task: [check:vm-settings-activation] bats Tests/scripts/vm-settings-activation.bats
+1..5
+ok 1 an early scenario failure still audits the installed endpoint and stops the guest
+ok 2 an added bundle file fails the complete inventory audit
+ok 3 a changed symlink fails the complete inventory audit
+ok 4 a changed installed endpoint fails even after a passing scenario
+ok 5 an interrupted attempt collects trace and artifacts before stopping without replay

@@ -1,0 +1,10 @@
+1..7
+ok 1 deferred collection accepts and retains one clean completed transport
+ok 2 deferred collection rejects timeout guest failure and CLI failure without replay
+ok 3 deferred collection rejects missing completion and preserves raw output
+ok 4 deferred packaging preserves a partial archive and original acquisition failure
+ok 5 deferred packaging failure stays failed even after successful acquisition
+not ok 6 deferred preflight accepts the exact clean guest response with normalized trailing newline
+# (in test file Tests/scripts/vm-settings-deferred.bats, line 75)
+#   `[[ "${status}" == 0 ]]' failed
+ok 7 deferred preflight rejects timeout and wrong completion despite normalized output

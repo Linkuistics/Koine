@@ -1,0 +1,9 @@
+{
+  "command": "set -e; chmod +x /Users/admin/settings-event-dump; /Users/admin/settings-event-dump /Users/admin/settings-events.json",
+  "exit_code": 1,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "Settings event dump unavailable after one request: Error Domain=NSCocoaErrorDomain Code=260 \"The file “settings-events.json.complete” couldn’t be opened because there is no such file.\" UserInfo={NSFilePath=/Users/admin/settings-events.json.complete, NSURL=file:///Users/admin/settings-events.json.complete, NSUnderlyingError=0x1052a2520 {Error Domain=NSPOSIXErrorDomain Code=2 \"No such file or directory\"}}",
+  "stdout": "",
+  "timed_out": false
+}

@@ -1,0 +1,9 @@
+{
+  "command": "sw_vers; uname -m; spctl --status",
+  "exit_code": -1,
+  "ok": true,
+  "schema_version": "1.0",
+  "stderr": "Process timed out after 30s",
+  "stdout": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434\narm64\nassessments enabled",
+  "timed_out": true
+}
