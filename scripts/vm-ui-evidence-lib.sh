@@ -70,8 +70,8 @@ _ui_element_selection() {
 }
 
 # read_guest_element ROOT OPERATION WINDOW CONDITION REQUIREMENT
-# optional returns null for no match. Other modes require a matching element
-# and its consumed attributes; an empty string value remains a valid value.
+# optional modes return null for no match. Other modes require a matching
+# element and its consumed attributes; an empty string remains a valid value.
 read_guest_element() {
     local root="${1-}" operation="${2-}" window="${3-}" condition="${4-}" requirement="${5-}"
     local selection contract response result status=0
@@ -82,6 +82,11 @@ read_guest_element() {
     fi
     case "${requirement}" in
     optional) contract='(. == null or type == "object")' ;;
+    optional-vertical)
+        contract='. == null or (type == "object" and all(.positionY, .sizeHeight;
+            type == "number" and isfinite) and .sizeHeight >= 0)'
+        ;;
+    position-y) contract='type == "object" and (.positionY | type == "number" and isfinite)' ;;
     value) contract='type == "object" and (.value | type == "string")' ;;
     geometry)
         contract='type == "object" and all(.positionX, .positionY, .sizeWidth, .sizeHeight;
@@ -89,7 +94,7 @@ read_guest_element() {
         ;;
     height) contract='type == "object" and (.sizeHeight | type == "number" and isfinite and . >= 0)' ;;
     *)
-        _ui_evidence_fail "${root}" "${operation}" 'element requirement must be optional, value, geometry or height'
+        _ui_evidence_fail "${root}" "${operation}" 'element requirement must be optional, optional-vertical, position-y, value, geometry or height'
         return "$?"
         ;;
     esac

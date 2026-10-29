@@ -304,3 +304,84 @@ assert_ui_latched() {
         [[ ! -s "${ui_calls}" ]]
     done
 }
+
+@test "optional vertical reads preserve absence and qualify only consumed screen attributes" {
+    run --separate-stderr read_guest_element "${ui_root}" absent Koine '.id=="grant-label"' optional-vertical
+    [[ "${status}" == 0 && "${output}" == null ]]
+    local y
+    for y in 100 -100; do
+        ui_fixture | jq --argjson y "${y}" 'del(.windows[0].elements[0].children[0].positionX,
+            .windows[0].elements[0].children[0].sizeWidth,
+            .windows[0].elements[0].children[0].value) |
+            .windows[0].elements[0].children[0].positionY=$y |
+            .windows[0].elements[0].children[0].sizeHeight=0' >"${ui_replies}/$(($(wc -l <"${ui_calls}") + 1)).json"
+        run --separate-stderr read_guest_element "${ui_root}" screen Koine '.id=="grant-label"' optional-vertical
+        [[ "${status}" == 0 ]]
+        jq -e --argjson y "${y}" '.positionY==$y and .sizeHeight==0 and (has("positionX")|not) and (has("sizeWidth")|not)' <<<"${output}"
+        # Actual on_screen predicate: a clean off-screen object is data, not unavailable.
+        run jq -e '.positionY >= 50 and (.positionY + .sizeHeight) <= 700' <<<"${output}"
+        if [[ "${y}" == 100 ]]; then [[ "${status}" == 0 ]]; else [[ "${status}" == 1 ]]; fi
+    done
+    [[ "$(wc -l <"${ui_calls}" | tr -d ' ')" == 3 ]]
+    jq -se 'length==3 and all(.[]; .outcome=="clean")' "${ui_root}"/*/result.json
+    [[ ! -e "${ui_root}/unavailable" ]]
+}
+
+@test "required position reads accept y alone and refuse absence" {
+    ui_fixture | jq 'del(.windows[0].elements[0].children[0].positionX,
+        .windows[0].elements[0].children[0].sizeWidth,
+        .windows[0].elements[0].children[0].sizeHeight,
+        .windows[0].elements[0].children[0].value)' >"${ui_replies}/1.json"
+    run --separate-stderr read_guest_element "${ui_root}" scroll Koine '.id=="grant-label"' position-y
+    [[ "${status}" == 0 ]]
+    jq -e '.positionY==100 and (has("sizeHeight")|not)' <<<"${output}"
+    jq -e '.class=="read-poll" and (.payload_predicate|contains("positionY"))' "${ui_root}/000001/request.json"
+    run read_guest_element "${ui_root}" missing Koine '.id=="grant-label"' position-y
+    [[ "${status}" == 125 ]]
+    [[ "$(wc -l <"${ui_calls}" | tr -d ' ')" == 2 ]]
+    assert_ui_latched
+}
+
+@test "vertical requirements refuse missing or invalid consumed attributes without another read" {
+    local requirement change n=0
+    for requirement in optional-vertical position-y; do
+        for change in 'del(.positionY)' '.positionY=null' '.positionY="100"' \
+            'del(.sizeHeight)' '.sizeHeight=-1'; do
+            if [[ "${requirement}" == position-y && "${change}" == *sizeHeight* ]]; then continue; fi
+            n=$((n + 1))
+            reset_ui "vertical-${n}"
+            ui_fixture | jq ".windows[0].elements[0].children[0] |= (${change})" >"${ui_replies}/1.json"
+            run read_guest_element "${ui_root}" invalid Koine '.id=="grant-label"' "${requirement}"
+            [[ "${status}" == 125 ]]
+            [[ "$(wc -l <"${ui_calls}" | tr -d ' ')" == 1 ]]
+            assert_ui_latched
+        done
+    done
+}
+
+@test "a missing tree in another window refuses a positive and stops a settling poll" {
+    ui_fixture | jq '.windows += [(.windows[0] | del(.elements))]' >"${ui_replies}/1.json"
+    run await_guest_element "${ui_root}" settling Koine '.id=="grant-label"' present
+    [[ "${status}" == 125 ]]
+    [[ "$(wc -l <"${ui_calls}" | tr -d ' ')" == 1 && ! -s "${ui_waits}" ]]
+    jq -e '.outcome=="unavailable"' "${ui_root}/000001/result.json"
+    assert_ui_latched
+}
+
+@test "selector qualification depends on candidates and syntax failure follows dispatch" {
+    local selector n=0
+    for selector in '42' 'true,false' 'error("candidate only")'; do
+        n=$((n + 1))
+        reset_ui "empty-selector-${n}"
+        run await_guest_element "${ui_root}" empty Koine "${selector}" absent
+        [[ "${status}" == 0 ]]
+        [[ "$(wc -l <"${ui_calls}" | tr -d ' ')" == 1 && ! -s "${ui_waits}" ]]
+        [[ ! -e "${ui_root}/unavailable" ]]
+    done
+    reset_ui syntax-selector
+    run read_guest_element "${ui_root}" syntax Koine '.id ==' optional
+    [[ "${status}" == 125 ]]
+    [[ "$(wc -l <"${ui_calls}" | tr -d ' ')" == 1 ]]
+    jq -e '.outcome=="unavailable"' "${ui_root}/000001/result.json"
+    assert_ui_latched
+}

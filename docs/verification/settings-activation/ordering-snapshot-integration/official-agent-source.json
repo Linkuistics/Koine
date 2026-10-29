@@ -1,0 +1,11 @@
+{
+  "tag": "v2.7.0",
+  "commit": "65bc05c91cc5d2a6e3d4aa8f81cb2c7c7712fa03",
+  "method": "Read official immutable local commit via jj file show. Snapshot returns the original window on failed exact-frame lookup; failed AXValue copy returns nil; encoder omits nil value. No installed executable or native availability evidence.",
+  "files": {
+    "cli-rs/Cargo.toml": "e7c43079eda1fa5c7f81cb3e7f3742c65260cac139a7191910430a736a0bf06a",
+    "agents/macos/Sources/testanyware-agent/AgentServer.swift": "5ba8f16c34dc922448d9d28163f050720e4110c74a6064d2f191828e98f6ba5f",
+    "agents/macos/Sources/TestAnywareAgent/AXElementWrapper.swift": "7696811998a9ec9dc31f10e596bc6dcb7892f459c702bfaeddaf2f357a49ab21",
+    "agents/macos/Sources/TestAnywareAgentProtocol/ElementInfo.swift": "68f081a46b5ba0960ad3a8b8c2e317fadf5691cb2107b7a32b7da979aea02c29"
+  }
+}
