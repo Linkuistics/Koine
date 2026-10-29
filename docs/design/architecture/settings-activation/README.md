@@ -1,5 +1,7 @@
 # Settings activation design discussion
 
+The current discussion is [keepalive coordination](../../../verification/settings-activation/KEEPALIVE-DESIGN.md). A permitted overlap stops the keepalive and scenario eligibility. The proposed direction needs independent design review and an explicit timing/resource scope decision before any helper adoption. No scheduler, cap, guest, candidate or freeze is authorized.
+
 The [current contract](../../../specs/settings-activation-discrimination.md#single-request-ordering-design)
 defines one shared-method reversal: prepare the retained window and section,
 request activation once, then request key/front ordering without deferral.
@@ -34,7 +36,7 @@ Run `mise exec -- task design:serve PORT=8801` from the repository root and open
 The existing task serves only the architecture presentation directory.
 
 Start each graph at the dark **Start here** node; the sequence starts at its
-first message. The new sequence shows the implemented application call order,
+first message. The ordering sequence shows the implemented application call order,
 not measured native completion. The assessment numbers the assessed original call order before
 its dotted reasoning edge. Other graphs describe decisions or outcome rules;
 none is a proven causal graph. The sources are editable Mermaid. The viewer
@@ -45,12 +47,10 @@ loads these same sources while retaining its separate current discussion.
 
 Current changes:
 
-- [Evaluation → Prepare one window, activate once, then order it](http://127.0.0.1:8801/settings-activation/#diagram-ordering-sequence) — Defines the proposed synchronous order, readiness guard and retained-window ownership.
-- [Evaluation → Two focused guests before three complete ordinary guests](http://127.0.0.1:8801/settings-activation/#diagram-evaluation-outcomes) — Fixes the two sets, rejection precedence and stops on unavailable evidence.
-- [Correction → Assessed original path and the implemented empirical candidate](http://127.0.0.1:8801/settings-activation/#diagram-correction-assessment) — Connects the assessed original source and historical limits to the implemented candidate.
-- [Scope → Accepted scope for repair design](http://127.0.0.1:8801/settings-activation/#diagram-scope-choice) — Adds the proposed bounds and unchanged-candidate requirement to the accepted scope.
-- [Single-request ordering design](../../../specs/settings-activation-discrimination.md#single-request-ordering-design) — Specifies caller effects, preconditions, alternatives and the absence of an evidenced deterministic native fake.
-- [Finite protocol](../../../verification/settings-activation/ORDERING-EVALUATION-PLAN.md) — Defines raw-evidence qualification, diagnostics/timing limits, exact freeze, stop and cleanup obligations.
+- [Keepalive → A due capture conflicts with the whole-operation writer](http://127.0.0.1:8801/settings-activation/#diagram-keepalive-collision) — Shows refusal in both overlap directions and the sticky failure consequence.
+- [Keepalive → Choose explicit timing and resource amendments before implementation](http://127.0.0.1:8801/settings-activation/#diagram-keepalive-scope) — Separates the recommended scope from authorization and later design/implementation.
+- [Coordination and scope decision](../../../verification/settings-activation/KEEPALIVE-DESIGN.md) — Defines ownership, cancellation, exact partials, resource limits, alternatives and all remaining duties.
+- [Keepalive coordination hold](../../../specs/settings-activation-discrimination.md#keepalive-coordination-hold) — Keeps helper consumption and runtime held without changing the accepted product convention.
 
 Unchanged context is the [evidence limit](http://127.0.0.1:8801/settings-activation/#diagram-evidence-limit).
 The [design evidence](../../../verification/settings-activation/ORDERING-DESIGN-EVIDENCE.md)

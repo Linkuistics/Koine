@@ -17,6 +17,15 @@ The [ordering protocol](ORDERING-EVALUATION-PLAN.md),
 
 ## Interface
 
+The [k92 coordination assessment](KEEPALIVE-DESIGN.md) now defines the precise
+scope decision needed before this artifact can be adopted. The unchanged
+single-writer/sleep-20 combination admits collisions in both directions.
+Serialized scheduling with visible delays and a finite resource-profile design
+is recommended for a subsequent scope decision, not authorized here. Independent
+design review/every earned integration precede that decision and any resulting
+design/planning/implementation/review. K89/k81/k76 consumption and runtime stay
+held; the source behavior and historical receipts below remain unchanged.
+
 Source [the capture library](../../../scripts/vm-capture-evidence-lib.sh).
 Sourcing only defines functions and loads the source-only facade. Every public
 call requires a nonempty root initialized with `init_guest_evidence`. Empty,

@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant S as Scenario
+    participant W as Shared evidence writer
+    participant K as Keepalive loop
+    Note over S,K: Permitted schedule, illustrative times, not a native measurement
+    K->>W: Previous capture finishes and releases writer
+    Note over K: Sleep 20 after completion
+    S->>W: Start Allow read with timeout 30
+    Note over W: Lock spans dispatch and validation
+    K->>W: Sleep ends, request one capture
+    W-->>K: Refuse contention, no dispatch or ordinal
+    Note over W,K: Sticky unavailable latch, loop exits
+    W-->>S: Existing read may finish clean
+    S->>W: Next scenario operation
+    W-->>S: Refuse, earlier failure remains
+    Note over S,K: Reverse overlap also refuses scenario input during capture or PNG validation

@@ -126,6 +126,25 @@ different design under the existing default test; this exception does not.
 
 ## Finite evaluation and ordinary acceptance
 
+### Keepalive coordination hold
+
+The [keepalive design assessment](../verification/settings-activation/KEEPALIVE-DESIGN.md)
+finds a permitted overlap between periodic capture and the shared evidence
+writer. Current refusal rules stop eligibility and the keepalive. They do not
+establish useful complete-run availability or bounded resource use.
+Downstream helper consumption and runtime remain held pending independent design
+review, every earned integration and an explicit scope resolution. The
+recommended direction permits design of serialized scheduling with visible
+admission delays and deferred ticks, plus a finite resource profile retaining
+all produced originals. That direction is **proposed**, not approved.
+
+No scheduling wait, tick omission, second writer, memory/storage cap or evidence
+deletion is authorized by this assessment. Original inputs, explicit waits,
+poll bounds, one-attempt transports and complete under-lock capture qualification
+remain binding. Any approved replacement needs its own concrete reviewed design
+and implementation before adoption. Neither the fixed E/A sets nor their outcome
+rules change; no guest, candidate or freeze follows from this design boundary.
+
 The [evaluation protocol](../verification/settings-activation/ORDERING-EVALUATION-PLAN.md)
 owns the exact subjects, five slots, setup, observation qualification, freeze,
 stop rules and outcome precedence. Two fresh focused guests each run the current

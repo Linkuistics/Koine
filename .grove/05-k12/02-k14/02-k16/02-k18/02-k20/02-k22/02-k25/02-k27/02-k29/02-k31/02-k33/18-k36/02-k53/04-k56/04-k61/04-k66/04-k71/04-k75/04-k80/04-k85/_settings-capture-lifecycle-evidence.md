@@ -93,3 +93,18 @@ duty, k81 every exec/one-shot consequence and k76 full adoption/signals/both
 held-pointer controls. Snapshot missing-tree/empty-AXValue, OCR substring and
 held-frame fallback limits remain. K67/k62/k57/k54 and every runtime slot stay
 held. No VM/candidate/freeze, native acceptance, ancestor closure or release.
+
+## K92 keepalive design boundary
+
+K92 delivers docs/verification/settings-activation/KEEPALIVE-DESIGN.md and its
+editable collision/scope views. It takes its explicit unresolved-scope branch:
+the current writer and loop admit overlap in both directions; no scheduling
+change, second writer or resource cap is authorized. Independent review and
+every earned integration precede settings-keepalive-scope-k93. That requirements
+leaf owns the precise timing/failure/resource decision. Any approved replacement
+needs concrete design/review, planning, implementation and earned review before
+k89/k81/k76 consumption. All runtime stays held. Unbounded allocation/retention,
+exact interruption/partial records, private roots and unavailable containment
+are explicit. Every original k89/k81/k76/k67/k62/k57/k54 duty and existing
+snapshot/OCR/held-frame limit survives; no VM/candidate/freeze, native acceptance
+or ancestor closure follows.

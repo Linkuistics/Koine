@@ -25,6 +25,15 @@ remain held with unchanged criteria, subjects and caps.
 
 ## Fixed sets and subject
 
+The [keepalive coordination hold](KEEPALIVE-DESIGN.md#decision-and-status)
+precedes helper consumption and all readiness/freeze/runtime work. Its proposed
+serialized scheduling and finite resource-profile direction requires an explicit
+scope decision after independent design review and every earned integration.
+It changes no rule below. No tick can be skipped, delayed by a new scheduler,
+sent through a separate writer, or ignored on failure under the current contract.
+No arbitrary cap or image deletion is admitted. Any approved replacement must be
+designed, reviewed and implemented before these sets can be considered ready.
+
 Declare both sets and their exact slot identities before the first clone request.
 Reserve the distinct namespace `ordering-evaluation` for the focused set and
 `ordering-ordinary` for complete acceptance. Run serially, with one writer.

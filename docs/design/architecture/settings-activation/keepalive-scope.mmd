@@ -1,0 +1,21 @@
+flowchart TD
+    start["Start here: current writer and sleep-20 loop can collide"]
+    review["Independent design review and earned integration"]
+    choice{"Explicit timing and resource scope decision"}
+    keep["Keep current constraints: adoption remains unavailable"]
+    serial["Recommended direction: design one serialized owner"]
+    cost["Visible admission delays and deferred ticks; no native interval guarantee"]
+    profile["Specify finite resource profile and enforcement; retain produced originals"]
+    design["Concrete design, review and planning before implementation"]
+    held["K89 / K81 / K76 consumption and runtime remain held"]
+    start -->|1. Document conflict| review
+    review -->|2. No implementation authority| choice
+    choice -->|Retain rules| keep
+    choice -->|Authorize further design only| serial
+    serial --> cost
+    cost --> profile
+    profile --> design
+    keep --> held
+    design -->|Until required work qualifies| held
+    classDef start fill:#172b4d,color:#fff,stroke:#172b4d,font-weight:bold
+    class start start

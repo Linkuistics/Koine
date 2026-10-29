@@ -1,0 +1,153 @@
+{
+  "project": "Users-antony-Development-AbstractingComputers-Koine.gh-issue-14",
+  "signal": "best_effort",
+  "indexed_at": "2026-10-29T09:52:58Z",
+  "metadata": {
+    "generation": "2026-10-29T09:52:58Z",
+    "index_mode": "full",
+    "recorded_at": "2026-10-29T09:52:58Z",
+    "recording_status": "complete",
+    "ignored_files_stored": 276,
+    "ignored_files_total": 276,
+    "hash_records_complete": true,
+    "coverage_version": 3,
+    "generation_matches": true
+  },
+  "paths": [
+    {
+      "requested_path": "scripts/vm-capture-evidence-lib.sh",
+      "path": "scripts/vm-capture-evidence-lib.sh",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_changed",
+      "recommended_action": "read_source_and_reindex",
+      "coverage": []
+    },
+    {
+      "requested_path": "scripts/vm-guest-exec.py",
+      "path": "scripts/vm-guest-exec.py",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_changed",
+      "recommended_action": "read_source_and_reindex",
+      "coverage": []
+    },
+    {
+      "requested_path": "scripts/vm-guest-exec-lib.sh",
+      "path": "scripts/vm-guest-exec-lib.sh",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_match",
+      "recommended_action": "use_graph_with_best_effort_caveat",
+      "coverage": []
+    },
+    {
+      "requested_path": "scripts/vm_capture_artifact.py",
+      "path": "scripts/vm_capture_artifact.py",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_match",
+      "recommended_action": "use_graph_with_best_effort_caveat",
+      "coverage": []
+    },
+    {
+      "requested_path": "scripts/vm-click-evidence-lib.sh",
+      "path": "scripts/vm-click-evidence-lib.sh",
+      "status": "partial",
+      "freshness": "metadata_match",
+      "recommended_action": "read_ranges_and_verify_scope",
+      "coverage": [
+        {
+          "path": "scripts/vm-click-evidence-lib.sh",
+          "kind": "parse_partial",
+          "detail": "82-82",
+          "match": "exact",
+          "ranges": [
+            {
+              "start": 82,
+              "end": 82
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "requested_path": "Tests/scripts/vm-capture-evidence.bats",
+      "path": "Tests/scripts/vm-capture-evidence.bats",
+      "status": "no_recorded_issue",
+      "freshness": "not_tracked",
+      "recommended_action": "read_source_and_reindex",
+      "coverage": []
+    },
+    {
+      "requested_path": "docs/verification/settings-activation/ORDERING-CAPTURE-RESULTS.md",
+      "path": "docs/verification/settings-activation/ORDERING-CAPTURE-RESULTS.md",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_changed",
+      "recommended_action": "read_source_and_reindex",
+      "coverage": []
+    },
+    {
+      "requested_path": "docs/verification/settings-activation/ORDERING-NONEXEC-RESULTS.md",
+      "path": "docs/verification/settings-activation/ORDERING-NONEXEC-RESULTS.md",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_changed",
+      "recommended_action": "read_source_and_reindex",
+      "coverage": []
+    },
+    {
+      "requested_path": "docs/verification/settings-activation/ORDERING-PHYSICAL-RESULTS.md",
+      "path": "docs/verification/settings-activation/ORDERING-PHYSICAL-RESULTS.md",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_match",
+      "recommended_action": "use_graph_with_best_effort_caveat",
+      "coverage": []
+    },
+    {
+      "requested_path": "docs/verification/settings-activation/ORDERING-CLICK-RESULTS.md",
+      "path": "docs/verification/settings-activation/ORDERING-CLICK-RESULTS.md",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_match",
+      "recommended_action": "use_graph_with_best_effort_caveat",
+      "coverage": []
+    },
+    {
+      "requested_path": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "path": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_match",
+      "recommended_action": "use_graph_with_best_effort_caveat",
+      "coverage": []
+    },
+    {
+      "requested_path": "docs/specs/settings-activation-discrimination.md",
+      "path": "docs/specs/settings-activation-discrimination.md",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_match",
+      "recommended_action": "use_graph_with_best_effort_caveat",
+      "coverage": []
+    },
+    {
+      "requested_path": "docs/design/architecture/settings-activation/diagrams.json",
+      "path": "docs/design/architecture/settings-activation/diagrams.json",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_match",
+      "recommended_action": "use_graph_with_best_effort_caveat",
+      "coverage": []
+    },
+    {
+      "requested_path": "docs/design/architecture/settings-activation/README.md",
+      "path": "docs/design/architecture/settings-activation/README.md",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_match",
+      "recommended_action": "use_graph_with_best_effort_caveat",
+      "coverage": []
+    },
+    {
+      "requested_path": "CONTEXT.md",
+      "path": "CONTEXT.md",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_match",
+      "recommended_action": "use_graph_with_best_effort_caveat",
+      "coverage": []
+    }
+  ],
+  "scopes": [],
+  "caveat": "Best-effort signal only. No recorded issue does not prove graph or source completeness; read flagged source and qualify claims when metadata is changed or unavailable."
+}

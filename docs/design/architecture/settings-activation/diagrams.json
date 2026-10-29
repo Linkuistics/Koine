@@ -1,7 +1,12 @@
 {
-  "title": "Settings activation: concrete ordering evaluation",
-  "intro": "Start at each dark Start here node; the sequence starts at its first message. Application call order is implemented, not measured native completion. The application compiles; shared harness repairs and runtime acceptance remain live.",
+  "title": "Settings activation: keepalive coordination decision",
+  "intro": "Start each graph at the dark Start here node; sequences start at their first message. Keepalive coordination needs an explicit scope decision after design review. The application order is implemented; helper adoption and runtime remain held.",
   "groups": [
+    {
+      "id": "keepalive",
+      "title": "Keepalive coordination",
+      "description": "Current overlap and the proposed scope decision; no scheduler or resource cap is authorized."
+    },
     {
       "id": "evidence",
       "title": "Evidence and experiment limit",
@@ -24,36 +29,40 @@
     }
   ],
   "discussion": {
-    "title": "Single-request reversal and fixed behavioral acceptance",
-    "status": "Application compiles; shared harness repairs and native acceptance remain live",
-    "summary": "Prepare the same retained window and section, request activation once, then key/front ordering. Two focused guests must qualify before three separate complete ordinary guests, with identical signed bytes and diagnostics disabled. Both sets require strict single-attempt transport, positive TextEdit setup, an original-list Settings-title audit and separate process-loss classification. Zero-window rejection requires liveness. The prefix includes TextEdit quit; screenshots retain context, not automatic acceptance. Restart disconnect stays unavailable despite a later boot; demonstrably unavailable required completion holds E01 for a new decision. Qualified recurrence rejects reversal; any other required failure or unavailable evidence stops acceptance and later slots. A pass covers only that sample. Native cause and ownership remain unresolved. The reviewed application order is implemented; compilation and nine existing headless controls pass. Shared harness repairs and the finite caller remain required before freeze. No signed evaluation subject or guest exists.",
+    "title": "Resolve the keepalive writer conflict before adoption",
+    "status": "Design assessment complete; independent review and scope decision pending",
+    "summary": "A permitted sleep-20 tick can collide with the locked Allow read; capture validation can also refuse scenario input. Recommend permission to design one serialized owner with visible delays and deferred ticks, plus a finite resource profile retaining produced originals. Those amendments are not approved. All downstream consumption and runtime remain held. The diagrams are reasoning views, not native measurements or model checking.",
     "diagramIds": [
-      "ordering-sequence",
-      "evaluation-outcomes",
-      "correction-assessment",
-      "scope-choice",
-      "evidence-limit"
+      "keepalive-collision",
+      "keepalive-scope",
+      "evaluation-outcomes"
     ],
     "updatedDiagrams": [
       {
-        "id": "ordering-sequence",
-        "summary": "Defines readiness, retained-window preparation and the single activation-before-ordering request sequence."
+        "id": "keepalive-collision",
+        "summary": "Shows both overlap directions and why a later clean result cannot clear failure."
       },
       {
-        "id": "evaluation-outcomes",
-        "summary": "Adds shared setup/title/liveness checks and strict transport stops while preserving two focused and three ordinary slots."
-      },
-      {
-        "id": "correction-assessment",
-        "summary": "Connects the historical no-correction finding to the reviewed empirical design and remaining implementation duties."
-      },
-      {
-        "id": "scope-choice",
-        "summary": "Records completed review/integration while preserving the scope, fixed bounds and held causal work."
+        "id": "keepalive-scope",
+        "summary": "Separates the proposed timing/resource amendments from review, scope agreement and later implementation."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "keepalive-collision",
+      "group": "keepalive",
+      "title": "A due capture conflicts with the whole-operation writer",
+      "source": "keepalive-collision.mmd",
+      "caption": "Current semantics under a permitted schedule. Twenty seconds is sleep after completion, not wall-clock periodicity. The 30-second OCR timeout permits overlap but supplies no collision rate; early substring completion is also possible."
+    },
+    {
+      "id": "keepalive-scope",
+      "group": "keepalive",
+      "title": "Choose explicit timing and resource amendments before implementation",
+      "source": "keepalive-scope.mmd",
+      "caption": "Recommended direction is permission to design serialization and a finite profile, not approval of a queue, deadline, cap, new native transport or runtime. The current failure barrier and all produced originals remain required."
+    },
     {
       "id": "evidence-limit",
       "group": "evidence",

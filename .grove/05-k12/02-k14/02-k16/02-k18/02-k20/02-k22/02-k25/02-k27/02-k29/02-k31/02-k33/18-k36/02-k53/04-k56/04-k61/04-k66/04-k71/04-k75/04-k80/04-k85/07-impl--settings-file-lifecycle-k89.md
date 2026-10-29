@@ -33,3 +33,11 @@ review, precede consumption here and in k81/k76. Carry private per-tick image
 volume, unbounded allocation/partial-record limits and every original duty.
 Do not use generic CLI capture, reset/bypass a lock/latch, retry or overwrite
 evidence. No native keepalive/serviceability qualification follows from fixtures.
+
+## Keepalive consumption hold
+
+Consume KEEPALIVE-DESIGN.md only after k92 independent review/every earned
+integration and settings-keepalive-scope-k93's explicit resolution. Any resulting
+concrete design/planning/implementation and earned reviews/integrations must
+precede this leaf's consumption and k81/k76 adoption. K92 supplies no scheduler,
+resource cap or runtime authority. Every original duty above remains binding.

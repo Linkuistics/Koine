@@ -1,0 +1,34 @@
+task: [check:vm-capture-evidence] bash -n scripts/vm-capture-evidence-lib.sh Tests/scripts/vm-capture-evidence.bats
+task: [check:vm-capture-evidence] shellcheck -x scripts/vm-capture-evidence-lib.sh Tests/scripts/vm-capture-evidence.bats
+task: [check:vm-capture-evidence] shfmt -d -i 4 scripts/vm-capture-evidence-lib.sh Tests/scripts/vm-capture-evidence.bats
+task: [check:vm-capture-evidence] python3 -m py_compile scripts/vm-guest-exec.py scripts/vm_capture_artifact.py Tests/scripts/fixtures/capture-cli.py
+task: [check:vm-capture-evidence] uvx ruff@0.17.3 check scripts/vm-guest-exec.py scripts/vm_capture_artifact.py Tests/scripts/fixtures/capture-cli.py
+All checks passed!
+task: [check:vm-capture-evidence] uvx ruff@0.17.3 format --check scripts/vm-guest-exec.py scripts/vm_capture_artifact.py Tests/scripts/fixtures/capture-cli.py
+3 files already formatted
+task: [check:vm-capture-evidence] uvx pyright@1.1.414 scripts/vm-guest-exec.py scripts/vm_capture_artifact.py Tests/scripts/fixtures/capture-cli.py
+0 errors, 0 warnings, 0 informations
+task: [check:vm-capture-evidence] bats Tests/scripts/vm-capture-evidence.bats
+1..22
+ok 1 generic CLI capture refuses every class without dispatch or overwriting caller files
+ok 2 keepalive sleep signal survives refused recording under a competing writer
+ok 3 full capture retains complete image raw bytes exact VM and artifact digest
+ok 4 region and repeated operations use unique artifacts without extra reads
+ok 5 valid nonzero row filters remain readable through the checked backend
+ok 6 valid consecutive IDAT and ancillary chunks remain readable
+ok 7 retained native PNG qualifies in the reusable capture check without a new native read
+ok 8 malformed PNG branches retain their specific validator reasons
+ok 9 missing empty malformed truncated corrupt and incomplete pixels latch without retry
+ok 10 capture schema and image dimensions must match exact artifact and region
+ok 11 failed partial typed error and dry-run captures retain raw failure without output
+ok 12 collection after failed image retains first latch and never restores eligibility
+ok 13 invalid roots do not dispatch or write cwd and invalid capture arguments latch
+ok 14 PNG inspection still owns the shared lock after CLI completion
+ok 15 capture shares ordinals in both directions and failed collection cannot overwrite
+ok 16 caught capture SIGINT retains interruption partial streams and stops later input
+ok 17 relative roots remain usable and invalid class operation options cannot dispatch
+ok 18 keepalive preserves twenty-second ticks unique paths and exact local interruption
+ok 19 keepalive failure stops before another sleep or capture and latches later input
+ok 20 keepalive tick colliding with an in-flight dispatch stops and latches without retry
+ok 21 allocation failure retains partial capture and the next gate latches unfinished evidence
+ok 22 capture holds shared lock through CLI and refuses competing scenario dispatch
