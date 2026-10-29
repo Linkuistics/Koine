@@ -1,4 +1,4 @@
-# settings-scenario-transports-k66
+# settings-scenario-transports-k66 — brief
 
 ## Goal
 Adopt strict evidence throughout the complete ordinary scenario and every
@@ -43,3 +43,40 @@ ORDERING-NONEXEC-RESULTS.md and the reviewed ordering protocol.
 All k61 original Done when criteria survive this batch. K57/k54 and runtime
 remain held until the entire harness, earned reviews/integrations and readiness
 complete. No historical evidence, closed cap or held causal slot changes.
+
+
+## Decisions (running log)
+
+- 2026-10-29: Adopt the mandated leaf in the clean jj workspace. The nearest
+  graph is now indexed at generation 2026-10-29T06:37:22Z, Tier 2. Scripts,
+  script tests and docs are deliberately excluded; use bounded direct source
+  reads for these artifacts without treating empty graph results as absence.
+- 2026-10-29: The reviewed design already authorizes the evidence migration.
+  This leaf crosses independently testable window transports, element/input
+  reads, exec confirmations, lifecycle/file artifacts and whole-scenario signals.
+  Decompose at a checked window-transport expansion, then complete remaining
+  migration/adoption. Execute only the first child. Keep every original duty,
+  including both held-pointer interruption controls, in this node and the
+  remaining child. No ordinary caller becomes eligible from this expansion.
+
+## Decomposition
+
+K70 implements and checks source-only strict window list/action/poll helpers,
+using the reviewed shared adapter and actual tagged schemas. K71 consumes that
+artifact only after independent review and every earned integration, then owns
+all remaining original criteria above: migrate all actual callers and transports,
+confirm one-shot consequences, adopt the root before any transport, handle all
+signals and retain held-pointer uncertainty for k57. K67 still owns positive
+setup/title/liveness outcomes; k62 reconciles the final prefix and all duties.
+No VM, frozen subject or runtime readiness follows from either helper expansion.
+
+
+## Window transport handoff
+
+K70's source-only helpers and their checked schema/poll boundary are documented
+in docs/verification/settings-activation/ORDERING-WINDOW-RESULTS.md. They are
+not yet consumed by the ordinary scenario. Their independent review and every
+earned integration precede k71 consumption; all remaining original criteria above
+remain live, including both held-pointer signal controls. The TextEdit loop has
+a separate post-loop assertion read that k71 must also migrate. K67/k62/k57/k54
+retain their duties; no VM, signed subject or readiness follows from the expansion.

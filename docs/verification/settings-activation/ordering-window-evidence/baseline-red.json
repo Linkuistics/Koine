@@ -1,0 +1,19 @@
+{
+  "status": 1,
+  "method": "Test-only legacy wrappers preserve the pre-migration list/action routes; count poll executes the actual legacy functions extracted from vm-verify-lib.sh. Only external CLI/sleep controlled.",
+  "before": {
+    "scripts/vm-verify-lib.sh": "d9ff479fb1d8833bec80faacdffb18a62fc3f39ef3977ab0194cd205b2c40759",
+    "scripts/vm-verify-menu-bar.sh": "0740dbe480a2700d62e66c580b09a776adc6aedd07ac6d563f93f408d3b5cc41",
+    "scripts/vm-guest-exec-lib.sh": "22b2b52a7c2c0d5d3b63cfe1134dab167992b8c18ed2d7f322791cf3eecc6812",
+    "scripts/vm-guest-exec.py": "005d9d855eced791f7b49c0a14668be7470b0ea8bc051dfbbf9a850773f7d3b2",
+    "Tests/scripts/vm-window-evidence.bats": "57e4831cf87948fa216d1e08dee92c82f1303ea227d8ab908d41659164c3d5bc"
+  },
+  "after": {
+    "scripts/vm-verify-lib.sh": "d9ff479fb1d8833bec80faacdffb18a62fc3f39ef3977ab0194cd205b2c40759",
+    "scripts/vm-verify-menu-bar.sh": "0740dbe480a2700d62e66c580b09a776adc6aedd07ac6d563f93f408d3b5cc41",
+    "scripts/vm-guest-exec-lib.sh": "22b2b52a7c2c0d5d3b63cfe1134dab167992b8c18ed2d7f322791cf3eecc6812",
+    "scripts/vm-guest-exec.py": "005d9d855eced791f7b49c0a14668be7470b0ea8bc051dfbbf9a850773f7d3b2",
+    "Tests/scripts/vm-window-evidence.bats": "57e4831cf87948fa216d1e08dee92c82f1303ea227d8ab908d41659164c3d5bc"
+  },
+  "unchanged": true
+}

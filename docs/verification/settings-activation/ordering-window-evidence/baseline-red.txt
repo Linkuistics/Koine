@@ -1,0 +1,62 @@
+1..13
+not ok 1 window list emits the original full envelope and pins VM and ordinal
+# (in test file Tests/scripts/vm-window-evidence.bats, line 95)
+#   `cmp "${window_replies}/1.json" "${window_root}/000001/raw.stdout"' failed with status 2
+# window diagnostic 1
+# cmp: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-AtcXD9/test/1/evidence/000001/raw.stdout: No such file or directory
+not ok 2 only clean list negatives advance the ten by two count poll
+# (in test file Tests/scripts/vm-window-evidence.bats, line 105)
+#   `cmp "${window_replies}/3.json" "${BATS_TEST_TMPDIR}/actual"' failed
+# window diagnostic 1
+# window diagnostic 2
+# window diagnostic 3
+# cmp: EOF on ‘/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-AtcXD9/test/2/actual’ which is empty
+not ok 3 zero expected windows is clean data without title or focus strengthening
+# (in test file Tests/scripts/vm-window-evidence.bats, line 115)
+#   `jq -e '.windows == []' <<<"${output}"' failed with status 5
+# jq: parse error: Invalid numeric literal at line 1, column 7
+not ok 4 TextEdit poll retains fifteen by two and returns its original successful list
+# (in test file Tests/scripts/vm-window-evidence.bats, line 128)
+#   `cmp "${window_replies}/15.json" "${BATS_TEST_TMPDIR}/actual"' failed
+# window diagnostic 1
+# /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-AtcXD9/test/4/replies/15.json /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-AtcXD9/test/4/actual differ: char 46, line 1
+not ok 5 clean exhausted polls retain each list and a separate state confirmation
+# (in test file Tests/scripts/vm-window-evidence.bats, line 145)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 6 failed poll stops immediately despite matching text with no retry or input
+# (in test file Tests/scripts/vm-window-evidence.bats, line 170)
+#   `if await_guest_window_count "${window_root}" reopen Koine 1; then return 1; fi' failed
+# window diagnostic 1
+# window diagnostic 2
+not ok 7 window schemas reject incomplete arrays and malformed required or optional fields
+# (in test file Tests/scripts/vm-window-evidence.bats, line 189)
+#   `[[ "${status}" == 125 && -z "${output##*unavailable*}" ]]' failed
+not ok 8 window actions require matching actual receipt without invented target echo
+# (in test file Tests/scripts/vm-window-evidence.bats, line 198)
+#   `jq -se '. == [["agent","window-move","--window","TextEdit","--x","700","--y","120","--vm","exact-window-vm","--json"],["agent","window-focus","--window","Koine Settings","--vm","exact-window-vm","--json"],["agent","window-close","--window","Koine Settings","--vm","exact-window-vm","--json"]]' "${window_calls}"' failed
+# {"schema_version":"1.0","ok":true,"action":"window-move","success":true,"message":null}
+# window diagnostic 1
+# {"schema_version":"1.0","ok":true,"action":"window-focus","success":true,"message":null}
+# window diagnostic 2
+# {"schema_version":"1.0","ok":true,"action":"window-close","success":true,"message":null}
+# window diagnostic 3
+# false
+not ok 9 every window action rejects failed nonzero partial and mismatching completions
+# (in test file Tests/scripts/vm-window-evidence.bats, line 222)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 10 collection preserves a prior failure and cannot restore input eligibility
+# (in test file Tests/scripts/vm-window-evidence.bats, line 233)
+#   `jq -e '.class == "evidence"' "${window_root}/000002/request.json"' failed with status 2
+# guest evidence unavailable (000001): existing failure
+# window diagnostic 1
+# true
+# jq: error: Could not open file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-AtcXD9/test/10/evidence/000002/request.json: No such file or directory
+not ok 11 empty absent and uninitialized roots cause no CLI or cwd artifacts
+# (in test file Tests/scripts/vm-window-evidence.bats, line 242)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 12 invalid arguments latch and cannot dispatch scenario input
+# (in test file Tests/scripts/vm-window-evidence.bats, line 262)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 13 adapter SIGINT propagates distinctly and stops the poll before sleep or release
+# (in test file Tests/scripts/vm-window-evidence.bats, line 272)
+#   `[[ "${status}" == 130 ]]' failed

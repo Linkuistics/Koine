@@ -11,6 +11,9 @@ implementation and verification before freeze. The
 [application change](ORDERING-APPLICATION-RESULTS.md) now compiles and passes
 existing headless controls; shared harness repairs and native acceptance remain
 live. The repair remains unresolved.
+The [strict window transport expansion](ORDERING-WINDOW-RESULTS.md) supplies
+checked list/action/poll helpers for later migration. The complete ordinary
+scenario has not adopted them; independent review precedes consumption.
 Both sets require the same changed helpers: strict single-attempt transport,
 positive TextEdit setup, an audit of the original window list for the Settings
 title, and liveness before zero-window rejection. Process loss is separate.

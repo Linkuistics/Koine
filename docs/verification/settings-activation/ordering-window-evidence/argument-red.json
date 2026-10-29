@@ -1,0 +1,15 @@
+{
+  "exit": 1,
+  "before": {
+    "scripts/vm-window-evidence-lib.sh": "94d4f4eee94162fa16acbd35b573fe4b807b4eed4c2ef9b1f2507b1f1bef2ca8",
+    "scripts/vm-guest-exec-lib.sh": "22b2b52a7c2c0d5d3b63cfe1134dab167992b8c18ed2d7f322791cf3eecc6812",
+    "scripts/vm-guest-exec.py": "005d9d855eced791f7b49c0a14668be7470b0ea8bc051dfbbf9a850773f7d3b2",
+    "Tests/scripts/vm-window-evidence.bats": "ca82979ecc9044a690911f6425c20e31aa2b91d732f85e97475c056b08a37217"
+  },
+  "after": {
+    "scripts/vm-window-evidence-lib.sh": "94d4f4eee94162fa16acbd35b573fe4b807b4eed4c2ef9b1f2507b1f1bef2ca8",
+    "scripts/vm-guest-exec-lib.sh": "22b2b52a7c2c0d5d3b63cfe1134dab167992b8c18ed2d7f322791cf3eecc6812",
+    "scripts/vm-guest-exec.py": "005d9d855eced791f7b49c0a14668be7470b0ea8bc051dfbbf9a850773f7d3b2",
+    "Tests/scripts/vm-window-evidence.bats": "ca82979ecc9044a690911f6425c20e31aa2b91d732f85e97475c056b08a37217"
+  }
+}
