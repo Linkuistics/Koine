@@ -1,0 +1,91 @@
+1..20
+not ok 1 window list emits the original full envelope and pins VM and ordinal
+# (in test file Tests/scripts/vm-window-evidence.bats, line 96)
+#   `cmp "${window_replies}/1.json" "${window_root}/000001/raw.stdout"' failed with status 2
+# window diagnostic 1
+# cmp: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-uVYGhu/test/1/evidence/000001/raw.stdout: No such file or directory
+not ok 2 only clean list negatives advance the ten by two count poll
+# (in test file Tests/scripts/vm-window-evidence.bats, line 106)
+#   `cmp "${window_replies}/3.json" "${BATS_TEST_TMPDIR}/actual"' failed
+# window diagnostic 1
+# window diagnostic 2
+# window diagnostic 3
+# cmp: EOF on ‘/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-uVYGhu/test/2/actual’ which is empty
+not ok 3 zero expected windows is clean data without title or focus strengthening
+# (in test file Tests/scripts/vm-window-evidence.bats, line 116)
+#   `jq -e '.windows == []' <<<"${output}"' failed with status 5
+# jq: parse error: Invalid numeric literal at line 1, column 7
+not ok 4 TextEdit loop preserves its final assertion after fifteen reads and sleeps
+# (in test file Tests/scripts/vm-window-evidence.bats, line 129)
+#   `cmp "${window_replies}/16.json" "${BATS_TEST_TMPDIR}/actual"' failed
+# window diagnostic 1
+# /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-uVYGhu/test/4/replies/16.json /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-uVYGhu/test/4/actual differ: char 46, line 1
+not ok 5 clean exhausted polls retain each list and a separate state confirmation
+# (in test file Tests/scripts/vm-window-evidence.bats, line 148)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 6 failed poll stops immediately despite matching text with no retry or input
+# (in test file Tests/scripts/vm-window-evidence.bats, line 173)
+#   `if await_guest_window_count "${window_root}" reopen Koine 1; then return 1; fi' failed
+# window diagnostic 1
+# window diagnostic 2
+not ok 7 window schemas reject incomplete arrays and malformed required or optional fields
+# (in test file Tests/scripts/vm-window-evidence.bats, line 192)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 8 window actions require matching actual receipt without invented target echo
+# (in test file Tests/scripts/vm-window-evidence.bats, line 201)
+#   `jq -se '. == [["agent","window-move","--window","TextEdit","--x=700","--y=120","--vm","exact-window-vm","--json"],["agent","window-focus","--window","Koine Settings","--vm","exact-window-vm","--json"],["agent","window-close","--window","Koine Settings","--vm","exact-window-vm","--json"]]' "${window_calls}"' failed
+# {"schema_version":"1.0","ok":true,"action":"window-move","success":true,"message":null}
+# window diagnostic 1
+# {"schema_version":"1.0","ok":true,"action":"window-focus","success":true,"message":null}
+# window diagnostic 2
+# {"schema_version":"1.0","ok":true,"action":"window-close","success":true,"message":null}
+# window diagnostic 3
+# false
+not ok 9 every window action rejects failed nonzero partial and mismatching completions
+# (in test file Tests/scripts/vm-window-evidence.bats, line 225)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 10 collection preserves a prior failure and cannot restore input eligibility
+# (in test file Tests/scripts/vm-window-evidence.bats, line 236)
+#   `jq -e '.class == "evidence"' "${window_root}/000002/request.json"' failed with status 2
+# guest evidence unavailable (000001): existing failure
+# window diagnostic 1
+# true
+# jq: error: Could not open file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-uVYGhu/test/10/evidence/000002/request.json: No such file or directory
+not ok 11 empty absent and uninitialized roots cause no CLI or cwd artifacts
+# (in test file Tests/scripts/vm-window-evidence.bats, line 245)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 12 invalid arguments latch and cannot dispatch scenario input
+# (in test file Tests/scripts/vm-window-evidence.bats, line 265)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 13 adapter SIGINT propagates distinctly and stops the poll before sleep or release
+# (in test file Tests/scripts/vm-window-evidence.bats, line 275)
+#   `[[ "${status}" == 130 ]]' failed
+not ok 14 missing helper arguments under nounset latch an initialized root
+# (from function `assert_window_latched' in file Tests/scripts/vm-window-evidence.bats, line 87,
+#  in test file Tests/scripts/vm-window-evidence.bats, line 290)
+#   `assert_window_latched' failed
+not ok 15 TextEdit always makes the separate assertion read after an early positive
+# (in test file Tests/scripts/vm-window-evidence.bats, line 299)
+#   `[[ "$(wc -l <"${window_calls}" | tr -d ' ')" == 2 ]]' failed
+# window diagnostic 1
+not ok 16 TextEdit final assertion never rehabilitates a failed read
+# (in test file Tests/scripts/vm-window-evidence.bats, line 314)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 17 each poll records its state predicate and true or false decision
+# (in test file Tests/scripts/vm-window-evidence.bats, line 324)
+#   `jq -e '.transport == "poll-step" and .poll_phase == "state" and .local_status == 1 and .state_predicate == "([.windows[] | select(.appName == \"Koine\")] | length) == 1"' "${window_root}/000002/request.json"' failed with status 2
+# window diagnostic 1
+# window diagnostic 2
+# jq: error: Could not open file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-uVYGhu/test/17/evidence/000002/request.json: No such file or directory
+not ok 18 failed or interrupted poll sleeps record status and prevent later input
+# (in test file Tests/scripts/vm-window-evidence.bats, line 344)
+#   `[[ "${status}" == "${expected_status}" ]]' failed
+not ok 19 failed or interrupted local state evaluation records status without another read or sleep
+# (in test file Tests/scripts/vm-window-evidence.bats, line 367)
+#   `[[ "${status}" == "${expected_status}" ]]' failed
+not ok 20 negative window move coordinates use equals form accepted by the CLI
+# (in test file Tests/scripts/vm-window-evidence.bats, line 379)
+#   `jq -se '. == [["agent","window-move","--window","TextEdit","--x=-5","--y=-10","--vm","exact-window-vm","--json"]]' "${window_calls}"' failed
+# {"schema_version":"1.0","ok":true,"action":"window-move","success":true,"message":null}
+# window diagnostic 1
+# false

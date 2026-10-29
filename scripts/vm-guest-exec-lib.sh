@@ -14,6 +14,10 @@ fail_guest_evidence() {
     # Call after a failed downstream/artifact check; always returns nonzero.
     _guest_evidence_backend fail "$@"
 }
+record_guest_poll() {
+    # Record a local state decision/failure under the same writer lock/ordinals.
+    _guest_evidence_backend poll-step "$@"
+}
 cli_guest_evidence() {
     _guest_evidence_backend cli "$@"
 }

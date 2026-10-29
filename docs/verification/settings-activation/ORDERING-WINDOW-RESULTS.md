@@ -1,127 +1,165 @@
 # Strict window transport expansion
 
-K70 adds independently checked, source-only window list, action and bounded-poll
-helpers. K66 decomposes into this expansion and the complete remaining migration
-in k71. The ordinary scenario has not adopted these helpers or initialized the
-strict evidence root. Independent review and every earned integration precede
-consumption; whole-harness review still precedes runtime.
+K70 adds source-only window list, action and bounded-poll helpers. K72 reviews
+producer commit `846e0d91`; k73 integrates that review below. K66 still owns the
+complete migration in k71. The ordinary scenario has not adopted these helpers
+or initialized the strict root. Whole-harness review still precedes runtime.
 
-The [physical helper handoff](ORDERING-PHYSICAL-RESULTS.md),
-[reviewed shared adapter](ORDERING-NONEXEC-RESULTS.md) and
-[ordering protocol](ORDERING-EVALUATION-PLAN.md) remain binding. This increment
-changes no ordinary input, assertion, wait, subject or historical evidence. It
-starts no VM and supplies no native or product acceptance.
+The [physical handoff](ORDERING-PHYSICAL-RESULTS.md),
+[shared adapter](ORDERING-NONEXEC-RESULTS.md) and
+[ordering protocol](ORDERING-EVALUATION-PLAN.md) remain binding. These repairs
+preserve the ordinary inputs, assertions, waits and poll bounds. No VM, signed
+subject, freeze, native acceptance or ancestor closure follows.
 
 ## Interface and command schemas
 
 Source [the library](../../../scripts/vm-window-evidence-lib.sh). Sourcing defines
-functions only; it starts no process, transcript or VM. Each call takes an explicit
-initialized nonempty root, using the adapter's existing `init_guest_evidence`.
-There is no ambient-root or legacy fallback. Empty, absent and uninitialized roots
-refuse without writing into cwd or the uninitialized directory. The caller must
-retain the nonzero status and stderr; there is no initialized evidence destination
-in which to record these invalid-root refusals.
+functions only. Each call takes an explicit initialized nonempty root, created by
+`init_guest_evidence`. Empty, absent and uninitialized roots refuse without CLI
+input or cwd artifacts. The caller retains their nonzero status and stderr;
+there is no initialized destination in which to record an invalid-root refusal.
 
 | Helper | Contract |
 |---|---|
-| `read_guest_windows ROOT CLASS OPERATION` | One `agent windows` read; CLASS is `read-poll` or `evidence`. Emits the entire qualified original JSON envelope. |
-| `act_guest_window ROOT OPERATION ACTION WINDOW [X Y]` | One `window-focus`, `window-close` or `window-move`; move takes integer X/Y. Uses class `one-shot`. |
-| `await_guest_window_count ROOT OPERATION APP COUNT` | Existing ten reads with two-second waits, count 0 or 1. Counts all windows for APP without adding title/focus criteria. |
-| `await_guest_textedit_window ROOT OPERATION` | Existing fifteen reads with two-second waits, at least one TextEdit window. Supplies no positive setup qualification. |
+| `read_guest_windows ROOT CLASS OPERATION` | One `agent windows` read; CLASS is `read-poll` or `evidence`. Emits the complete qualified original envelope. |
+| `act_guest_window ROOT OPERATION ACTION WINDOW [X Y]` | One `window-focus`, `window-close` or `window-move`, using class `one-shot`. Move accepts integer X/Y through `--x=VALUE` and `--y=VALUE`, including negatives. |
+| `await_guest_window_count ROOT OPERATION APP COUNT` | Existing ten reads with two-second sleeps after each negative, including the tenth. COUNT is 0 or 1. Counts all APP windows without adding title/focus criteria. |
+| `await_guest_textedit_window ROOT OPERATION` | Existing loop of up to fifteen reads, sleeping two seconds after each negative, then the existing unconditional final assertion read. This final read occurs even after an early positive. At exhaustion: sixteen reads and fifteen sleeps. Supplies no positive setup qualification. |
 
-Each dispatch uses the reviewed adapter's same writer lock, ordinal sequence,
-pinned exact VM, raw streams, CLI status, strict envelope and payload predicate.
-Window reads require the full `windows` array and each entry's string `appName`
-and `windowType`, boolean `focused` and finite numeric position/size fields.
-Titles may be absent; when present they must be strings. Optional `elements`
-must be an array when present; this helper does not consume or qualify element
-trees. A valid empty array is a successful negative fact. Missing/malformed
-arrays and typed errors remain unavailable.
+Every dispatch uses the shared writer lock, ordinal sequence, pinned exact VM,
+raw streams, CLI status, strict envelope and command-specific payload predicate.
+Window reads require the complete `windows` array and each entry's string
+`appName` and `windowType`, boolean `focused` and finite numeric geometry.
+`title` may be absent; when present it must be a string. Optional `elements`
+must be an array; this helper does not qualify element trees. A valid empty array
+is clean negative data. Missing/malformed fields and typed errors are unavailable.
 
-Actions require the requested `action`, `success:true`, and the actual emitted
-`message` field, either null or a string. The CLI does not echo target title or
-coordinates in these action receipts. The exact request retains those arguments;
-the receipt alone cannot confirm the resulting geometry, focus or closure.
-The scenario must perform its named downstream checks. These helpers do not add
-any focus operation to a Settings menu selection.
+Actions require the requested `action`, `success:true`, and the actual `message`
+field, null or string. The CLI does not echo the target title or coordinates.
+Requests retain those arguments; the receipt alone does not confirm geometry,
+focus or closure. The scenario still owes each downstream check. No focus
+operation is added to a Settings selection.
 
-These schemas follow the official immutable `v2.7.0`
+These schemas follow official immutable v2.7.0
 [WindowInfo](https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-protocol/src/window_info.rs)
 and [agent handlers](https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/commands/agent.rs),
-read from local tag objects after their workspace manifest. Online raw-file
-retrieval failed. The [source receipt](ordering-window-evidence/official-source.json)
-records the tag commit and digests. Code comments carry the decision-site links.
-This supplies no installed CLI, endpoint or guest provenance or availability.
+read from local tag objects after the workspace manifest. The original
+[source receipt](ordering-window-evidence/official-source.json) remains unchanged.
+K73 rechecks those digests and reads the tagged move declarations and pinned
+clap source; its [source receipt](ordering-window-evidence/k73/official-source.json)
+records these inputs. Equals-form values avoid interpreting a negative coordinate
+as a short option. Controls inspect emitted argv; they do not execute the real
+CLI parser, an endpoint or a guest.
 
-## Negative polls and failure retention
+## Poll decisions and failure retention
 
-Only a clean, complete false count continues a poll. Failed transport, malformed
-payload, nonzero CLI and adapter SIGINT return immediately without another read
-or settling sleep. The fixed loops preserve the final clean-negative sleep as
-well as intermediate waits. The previous TextEdit loop's additional post-loop
-assertion read is not inside this helper; k71 must migrate that separate existing
-call site too, rather than silently omitting it.
+Only a clean complete false state continues a poll. Failed transport, malformed
+payload, nonzero CLI and adapter interruption stop before another read or sleep.
+The TextEdit helper now owns the whole legacy preparation block, including the
+post-loop assertion; k71 must replace that block once and must not add a duplicate
+assertion read. Koine's ten-read bound stays unchanged.
 
-Every read retains its full original bytes in its ordinal's `raw.stdout`, including
-clean negatives. A successful poll returns the complete final response, with shell
-newline normalization; its exact original remains in the evidence store. No
-filtered count/front projection replaces that original. K67 must audit the same
-original assertion lists, then distinguish title failure, same-process zero-window
-recurrence and process loss. Count success here does not discharge those duties.
+Every read retains exact original bytes in its ordinal's `raw.stdout`. A successful
+poll emits its final assertion's complete response, subject to shell newline
+normalization; exact bytes stay in the store. No projection replaces that list.
+K67 must audit the original assertion lists and distinguish title failure,
+same-process zero-window recurrence and process loss. A count success alone
+supplies none of those outcomes.
 
-Clean exhaustion records a separate `OPERATION-exhausted` confirmation after the
-ten or fifteen clean read receipts. Its reason names `clean window poll exhausted`,
-the fixed bound and state predicate. The failed confirmation latches eligibility;
-it does not reclassify preceding clean negatives as failed transport. K71/k67
-must preserve this state failure separately from transport failure and apply the
-required untouched liveness/outcome classification. No process read or qualified
-Settings recurrence is supplied here.
+The source-only facade adds
+`record_guest_poll ROOT OPERATION PHASE STATUS PREDICATE`. This records a local
+step through the same backend, lock, ordinals, atomic receipts and sticky latch.
+It submits no CLI and fabricates no raw transport streams. A state evaluation
+gets its own receipt immediately after its list; the helper records failed
+sleeps and terminal exhaustion through the same interface. Successful sleeps
+retain the existing timing and allocate no receipt.
 
-Malformed helper arguments against an initialized root record failure through
-the supported adapter, including under `nounset`. Scenario calls after a latch
-cannot dispatch. An explicit evidence-class list may collect context after a
-failure; a clean collection receipt does not clear the original failure or permit
-input. The shared adapter's partial-record, orphan-lock and storage limits remain.
+| Local receipt | Request fields | Result and return |
+|---|---|---|
+| True or false state | `transport:"poll-step"`, `poll_phase:"state"`, exact `state_predicate`, `local_status` 0 or 1 | `outcome:"clean"`, return 0 from recording. The shell uses the retained state status to continue or finish. |
+| Clean exhaustion | `transport:"poll-step"`, `poll_phase:"exhausted"`, exact predicate, `local_status:1` | `outcome:"state-failed"`, return 125 and latch. |
+| Failed local evaluation or sleep | `poll_phase:"state"` with status other than 0/1, or `poll_phase:"sleep"` with nonzero status | `outcome:"unavailable"`, return 125 and latch, except signal statuses below. |
+| Interrupted local evaluation or sleep | Same phase, shell signal status 129–192 retained as `local_status` | `outcome:"interrupted"`, same shell status returned and latch. |
 
-The library preserves adapter SIGINT as status 130. It does not install scenario
-INT/TERM/HUP handlers. An interrupted or failed shell sleep also returns nonzero;
-the complete scenario must retain that outcome and stop input. K71 still owes both
-held-pointer controls: a signal during a held-point attempt and during its settling
-sleep after a clean down. K57 must infer held input from ordered requests and clean
-completions, even without a latch, and contain the exact clone through the shared
-writer domain. No bare release, reset or lock bypass is authorized.
+Requests retain operation, VM, ordinal and times as usual; local steps use class
+`evidence`, empty argv and no CLI status. That class permits recording failure
+context after a latch, never clearing it. A later clean local record cannot
+restore scenario eligibility. Prior `state-failed` receipts also latch during
+eligibility inspection. Invalid phase/status/predicate arguments refuse and latch
+an identifiable initialized root.
 
-## Controls and remaining work
+Classifiers must inspect both request and result. Exhaustion is identified by
+`transport:"poll-step"`, `poll_phase:"exhausted"`, `local_status:1` and terminal
+`outcome:"state-failed"`; operation suffixes and reason text are not classifiers.
+A failed predicate cannot produce that combination. State failure stops input
+just as unavailable evidence does, while retaining a distinct measured outcome.
+It is not by itself a qualified Settings recurrence: k67 still owes untouched
+liveness, setup, title and screenshot evidence under the protocol.
 
-The [initial red run](ordering-window-evidence/baseline-red.txt) fails all thirteen
-initial controls against test-only legacy list/action routes and the actual legacy
-count functions extracted from the common library. This is a bounded comparison,
-not execution of the complete ordinary scenario. The failed-poll control shows
-that the legacy poll can accept a count from CLI 7. Its
-[receipt](ordering-window-evidence/baseline-red.json) identifies unchanged subjects.
+Malformed public helper arguments latch through the adapter, including under
+`nounset`. Scenario reads/actions after a latch cannot dispatch. Evidence-class
+window collection can retain context but cannot clear the original failure.
+Partial receipts, storage failure and orphan-held locks retain the shared
+adapter's limits. The existing orphan-lock control also checks poll-step refusal.
 
-The [argument regression](ordering-window-evidence/argument-red.txt) fails after
-the initial implementation because missing arguments under `nounset` can exit
-without recording a failure against the initialized root. Its
-[receipt](ordering-window-evidence/argument-red.json) precedes the argument guards.
-All fourteen final controls execute the production library and reviewed backend,
-substituting only the external CLI and settling sleeps. They cover original-list
-retention, pinned argv/ordinals, both unchanged bounds, clean negatives and
-exhaustion, malformed schemas, one-shot actions, first-failure stops, sticky
-eligibility, collection, invalid roots/arguments and adapter interruption.
+Local signal controls exercise statuses 130, 143 and 129 from the evaluation
+and sleep boundaries. They establish the helper's recording/propagation, not
+complete shell signal handling. K71 still owes INT/TERM/HUP handlers and both
+held-pointer cases: a signal during a held-point attempt and during the settling
+sleep after clean down. A signal killing the shell before recording can still
+leave a partial or absent local receipt; the caller must retain interruption
+and stop input. K57 infers held input from ordered clean down/release receipts
+and delivery uncertainty, then contains the exact clone through the same writer
+domain. No bare release, reset or lock bypass is authorized.
 
-The [verification receipt](ordering-window-evidence/verification.json) identifies
-the finished subjects, before/after digests, Taskfile outcomes and individual test
-results. It retains the new check and shared adapter/physical checks. These are
-headless evidence-handling controls, not guest availability or native behavior.
+## K72 findings and dispositions
 
-K71 retains every original k66 duty: migrate all remaining actual callers and
-transport families, initialize/adopt the exact root before every scenario command,
-confirm one-shot effects, preserve every later ordinary assertion, handle complete
-signals and hand untouched collection/containment to k57. K67 still owns positive
-TextEdit setup and all title/liveness outcomes. K62 owns exact final-prefix and
-whole-duty reconciliation. K57/k54 and every E/A slot remain held until complete
-implementation, all earned review/integration and readiness. Historical failures,
-strict false joins, closed caps and held causal slots remain unchanged. No native
-cause, ownership, repair acceptance, ancestor closure, release or upstream report
-follows from this increment.
+Each finding is verified against review commit `142b72b6`, the legacy scenario,
+the reviewed protocol and the tagged sources. All six are actionable within their
+stated limits; none establishes a native product defect.
+
+| Finding | Classification and disposition |
+|---|---|
+| P2-1, premature TextEdit exhaustion | Real. The helper now includes the unconditional final read, including after early success and after the fifteenth sleep. Controls cover a window first appearing on read sixteen, final clean absence, and failed final transport. K71 replaces the whole legacy block. |
+| P3-1, state/evidence ambiguity | Real. Per-state receipts retain predicates and decisions. Exhaustion has structured phase and `state-failed` outcome; evaluation and transport errors remain unavailable/interrupted. Operation names do not determine classification. |
+| P3-2, unrecorded local failures | Real. Failed sleeps and erroneous/interrupted state evaluations now record their phase/status, latch and stop without another read or input. Complete shell interruption remains k71's duty. |
+| P3-3, negative move coordinates | Real interface defect, though current scenario destinations are positive. Emit equals-form values and check positive and negative argv. No guest/parser availability claim follows. |
+| P3-4, changed red controls | Real provenance gap, not evidence of a false pass. State explicitly that the original baseline used an earlier control revision. Retain it unchanged and add a final-control baseline with before/after digests and individual results. |
+
+## Controls and provenance
+
+The original [baseline red](ordering-window-evidence/baseline-red.txt) and
+[receipt](ordering-window-evidence/baseline-red.json) used an earlier Bats digest.
+Its test 7 had an assertion absent from the final k70 controls. The original
+[argument regression](ordering-window-evidence/argument-red.txt) ran only test 14.
+Those records and the original [verification receipt](ordering-window-evidence/verification.json)
+remain historical, unchanged evidence; they do not show all final controls red.
+
+K73 retains a new [behavior red](ordering-window-evidence/k73/behavior-red.json)
+against the reviewed production implementation before the repairs. Its per-test
+output shows the new behavior checks failing. The intermediate
+[green receipt](ordering-window-evidence/k73/behavior-green.json) records all twenty
+passing after repair. The [final-control baseline](ordering-window-evidence/k73/final-baseline-red.json)
+runs the formatted final Bats file with `KOINE_WINDOW_BASELINE=1`; every control
+fails against the test-only legacy list/action routes and extracted legacy Koine
+count function. The TextEdit baseline stub is only one legacy list read; it does
+not execute the complete legacy TextEdit preparation. The production behavior-red
+run supplies the actual pre-repair TextEdit comparison. No complete ordinary
+scenario or native product behavior is simulated or qualified by these runs.
+
+Final Taskfile receipts under `ordering-window-evidence/k73/` record syntax,
+lint, formatting, types and individual window, shared-adapter and physical-helper
+results, with subject digests before/after and output digests. The docs receipt
+retains the two pre-existing archive-link failures owned by k23; it does not
+claim a clean documentation check. Existing red evidence is included in the
+subject hashes and remains unchanged.
+
+K71 retains every original k66 duty: adopt the exact root before each transport,
+migrate every remaining actual caller/family, confirm one-shot effects, retain
+every later assertion, implement full signals and hand untouched collection and
+containment to k57. K67 retains all positive setup/title/liveness outcomes. K62
+owns exact prefix correspondence and whole-duty reconciliation. K57/k54 and every
+E/A slot remain held until all harness work, reviews/integrations and readiness
+complete. Historical failures, strict false joins, closed caps and held causal
+slots remain unchanged. No native cause, ownership, repair acceptance, ancestor
+closure, release or upstream report follows.

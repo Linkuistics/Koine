@@ -230,7 +230,7 @@ def run_locked(
         try:
             receipt = read_object(path / "result.json")
             outcome = receipt.get("outcome")
-            if outcome not in ("clean", "unavailable", "interrupted"):
+            if outcome not in ("clean", "state-failed", "unavailable", "interrupted"):
                 raise ValueError("unknown terminal outcome")
             if outcome != "clean":
                 latch(root, f"{path.name}: prior {outcome} attempt")
@@ -242,7 +242,7 @@ def run_locked(
         return 0  # Inspection is not a reservation for a later unlocked input.
     if transport == "cli":
         argv = cli_argv(arguments, vm, kind)
-    elif transport == "confirmation":
+    elif transport in {"confirmation", "poll-step"}:
         argv = []
     else:
         # Explicit --vm wins over ambient VM/agent flags. No --connect is admitted.
@@ -267,14 +267,35 @@ def run_locked(
             "argv": argv,
             "payload_predicate": predicate,
             "started": timestamp(),
+            **(
+                {
+                    "poll_phase": command,
+                    "state_predicate": predicate,
+                    "local_status": int(arguments[0]),
+                }
+                if transport == "poll-step"
+                else {}
+            ),
         },
     )
     cli_status: int | None = None
     interrupted = False
+    local_signal_status = 0
+    state_failed = False
     emission_status = "not-attempted"
     reason = command if transport == "confirmation" else ""
     try:
-        if transport == "confirmation":
+        if transport == "poll-step":
+            local_status = int(arguments[0])
+            state_failed = command == "exhausted"
+            if state_failed:
+                reason = "clean window poll exhausted"
+            elif command == "sleep" or local_status not in (0, 1):
+                reason = f"window poll {command} exit {local_status}"
+                if 128 < local_status <= 192:
+                    interrupted = True
+                    local_signal_status = local_status
+        elif transport == "confirmation":
             latch(root, f"{attempt.name}: {reason}")
         else:
             with (
@@ -293,7 +314,7 @@ def run_locked(
     except KeyboardInterrupt:
         reason = "interrupted transport; completion unavailable"
         interrupted = True
-    if not reason:
+    if not reason and transport != "poll-step":
         try:
             stream_name = "guest.stdout" if transport == "exec" else "raw.stdout"
             sys.stdout.buffer.write((attempt / stream_name).read_bytes())
@@ -316,6 +337,8 @@ def run_locked(
         {
             "outcome": "interrupted"
             if interrupted
+            else "state-failed"
+            if state_failed
             else "unavailable"
             if reason
             else "clean",
@@ -326,6 +349,8 @@ def run_locked(
             "duration_ns": time.monotonic_ns() - started,
         },
     )
+    if local_signal_status:
+        return local_signal_status
     if interrupted:
         signal.signal(signal.SIGINT, signal.SIG_DFL)
         signal.raise_signal(signal.SIGINT)
@@ -350,6 +375,16 @@ def run(
         raise ValueError("operation must name this call site")
     if transport == "confirmation" and not command.strip():
         raise ValueError("failed confirmation requires a reason")
+    if transport == "poll-step" and not (
+        command in {"state", "sleep", "exhausted"}
+        and predicate.strip()
+        and len(arguments or []) == 1
+        and (arguments or [""])[0].isdigit()
+        and 0 <= int((arguments or [""])[0]) <= 255
+        and (command != "exhausted" or arguments == ["1"])
+        and (command != "sleep" or arguments != ["0"])
+    ):
+        raise ValueError("expected a poll predicate, phase and shell status")
     # Non-blocking lock covers the whole dispatch, including evidence collection.
     with (root / ".writer").open("a") as lock:
         try:
@@ -378,10 +413,12 @@ def main() -> int:
             "run prints qualified guest stdout only; raw data and JSON receipts stay in ROOT. "
             "cli prints qualified raw JSON; check inspects eligibility without reserving input; "
             "fail records a failed confirmation and always returns nonzero. "
+            "poll-step records a local window-poll decision or failure without dispatch. "
             "Exit 0: clean individual attempt (evidence collection does not clear an old latch); "
             "2: argument error (an identifiable initialized evidence root is latched); "
-            "125: unavailable or invalid run values; SIGINT: interrupted. "
-            "Every nonzero status is unavailable; do not retry or reset the root. "
+            "125: state failure, unavailable evidence or invalid run values; "
+            "129-192: local poll interruption; SIGINT: interrupted backend. "
+            "Every nonzero status stops scenario input; do not retry or reset the root. "
             "Example: init .build/exec-evidence exact-vm; "
             "run .build/exec-evidence read-poll endpoint 'probe' '.stdout == \"ABSENT\"'. "
             "See scripts/vm-guest-exec-lib.sh and ORDERING-TRANSPORT-RESULTS.md."
@@ -417,6 +454,14 @@ def main() -> int:
     fail_parser.add_argument("root", type=Path)
     fail_parser.add_argument("operation")
     fail_parser.add_argument("reason")
+    poll_parser = commands.add_parser(
+        "poll-step", help="record local window-poll state, failed sleep or exhaustion"
+    )
+    poll_parser.add_argument("root", type=Path)
+    poll_parser.add_argument("operation")
+    poll_parser.add_argument("phase", choices=["state", "sleep", "exhausted"])
+    poll_parser.add_argument("status", type=int)
+    poll_parser.add_argument("predicate")
     cli_parser = commands.add_parser(
         "cli", help="one non-exec TestAnyware attempt; emits raw JSON"
     )
@@ -435,7 +480,7 @@ def main() -> int:
         if (
             error.code
             and len(sys.argv) > 2
-            and sys.argv[1] in {"run", "cli", "check", "fail"}
+            and sys.argv[1] in {"run", "cli", "check", "fail", "poll-step"}
         ):
             root = Path(sys.argv[2])
             if (root / "subject.json").is_file():
@@ -455,6 +500,16 @@ def main() -> int:
                 cast(str, args.reason),
                 "",
                 "confirmation",
+            )
+        if args.action == "poll-step":
+            return run(
+                root,
+                "evidence",
+                cast(str, args.operation),
+                cast(str, args.phase),
+                cast(str, args.predicate),
+                "poll-step",
+                [str(args.status)],
             )
         if args.action == "cli":
             return run(

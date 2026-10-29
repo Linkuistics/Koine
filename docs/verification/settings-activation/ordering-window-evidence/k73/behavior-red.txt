@@ -1,0 +1,58 @@
+1..20
+ok 1 window list emits the original full envelope and pins VM and ordinal
+ok 2 only clean list negatives advance the ten by two count poll
+ok 3 zero expected windows is clean data without title or focus strengthening
+not ok 4 TextEdit loop preserves its final assertion after fifteen reads and sleeps
+# (from function `_guest_evidence_backend' in file Tests/scripts/../../scripts/vm-guest-exec-lib.sh, line 39,
+#  from function `fail_guest_evidence' in file Tests/scripts/../../scripts/vm-guest-exec-lib.sh, line 15,
+#  from function `_window_evidence_fail' in file Tests/scripts/../../scripts/vm-window-evidence-lib.sh, line 18,
+#  from function `_await_guest_windows' in file Tests/scripts/../../scripts/vm-window-evidence-lib.sh, line 131,
+#  from function `await_guest_textedit_window' in file Tests/scripts/../../scripts/vm-window-evidence-lib.sh, line 110,
+#  in test file Tests/scripts/vm-window-evidence.bats, line 128)
+#   `await_guest_textedit_window "${window_root}" prepare >"${BATS_TEST_TMPDIR}/actual"' failed with status 125
+# guest evidence unavailable (000016): clean window poll exhausted after 15 reads: ([.windows[] | select(.appName == "TextEdit")] | length) >= 1
+not ok 5 clean exhausted polls retain each list and a separate state confirmation
+# (in test file Tests/scripts/vm-window-evidence.bats, line 151)
+#   `jq -se --argjson n "${limit}" 'length == 2 * $n + 1 and all(.[0:2*$n][]; .outcome == "clean") and .[-1].outcome == "state-failed"' "${window_root}"/*/result.json' failed
+# false
+not ok 6 failed poll stops immediately despite matching text with no retry or input
+# (in test file Tests/scripts/vm-window-evidence.bats, line 176)
+#   `cmp "${window_replies}/2.json" "${window_root}/000003/raw.stdout"' failed with status 2
+# guest evidence unavailable (000002): CLI exit 7
+# cmp: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-lztnNw/test/6/failed-exit/000003/raw.stdout: No such file or directory
+ok 7 window schemas reject incomplete arrays and malformed required or optional fields
+not ok 8 window actions require matching actual receipt without invented target echo
+# (in test file Tests/scripts/vm-window-evidence.bats, line 201)
+#   `jq -se '. == [["agent","window-move","--window","TextEdit","--x=700","--y=120","--vm","exact-window-vm","--json"],["agent","window-focus","--window","Koine Settings","--vm","exact-window-vm","--json"],["agent","window-close","--window","Koine Settings","--vm","exact-window-vm","--json"]]' "${window_calls}"' failed
+# {"schema_version":"1.0","ok":true,"action":"window-move","success":true,"message":null}
+# {"schema_version":"1.0","ok":true,"action":"window-focus","success":true,"message":null}
+# {"schema_version":"1.0","ok":true,"action":"window-close","success":true,"message":null}
+# false
+ok 9 every window action rejects failed nonzero partial and mismatching completions
+ok 10 collection preserves a prior failure and cannot restore input eligibility
+ok 11 empty absent and uninitialized roots cause no CLI or cwd artifacts
+ok 12 invalid arguments latch and cannot dispatch scenario input
+ok 13 adapter SIGINT propagates distinctly and stops the poll before sleep or release
+ok 14 missing helper arguments under nounset latch an initialized root
+not ok 15 TextEdit always makes the separate assertion read after an early positive
+# (in test file Tests/scripts/vm-window-evidence.bats, line 299)
+#   `[[ "$(wc -l <"${window_calls}" | tr -d ' ')" == 2 ]]' failed
+not ok 16 TextEdit final assertion never rehabilitates a failed read
+# (in test file Tests/scripts/vm-window-evidence.bats, line 315)
+#   `[[ "$(wc -l <"${window_calls}" | tr -d ' ')" == 16 ]]' failed
+not ok 17 each poll records its state predicate and true or false decision
+# (in test file Tests/scripts/vm-window-evidence.bats, line 324)
+#   `jq -e '.transport == "poll-step" and .poll_phase == "state" and .local_status == 1 and .state_predicate == "([.windows[] | select(.appName == \"Koine\")] | length) == 1"' "${window_root}/000002/request.json"' failed
+# false
+not ok 18 failed or interrupted poll sleeps record status and prevent later input
+# (in test file Tests/scripts/vm-window-evidence.bats, line 341)
+#   `[[ "${status}" == "${expected_status}" ]]' failed
+not ok 19 failed or interrupted local state evaluation records status without another read or sleep
+# (in test file Tests/scripts/vm-window-evidence.bats, line 367)
+#   `command jq -e --argjson code "${local_status}" '.transport == "poll-step" and .poll_phase == "state" and .local_status == $code' "${window_root}/000002/request.json"' failed
+# false
+not ok 20 negative window move coordinates use equals form accepted by the CLI
+# (in test file Tests/scripts/vm-window-evidence.bats, line 376)
+#   `jq -se '. == [["agent","window-move","--window","TextEdit","--x=-5","--y=-10","--vm","exact-window-vm","--json"]]' "${window_calls}"' failed
+# {"schema_version":"1.0","ok":true,"action":"window-move","success":true,"message":null}
+# false

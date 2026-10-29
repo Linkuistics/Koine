@@ -106,7 +106,7 @@ assert_window_latched() {
     cmp "${window_replies}/3.json" "${BATS_TEST_TMPDIR}/actual"
     [[ "$(cat "${window_waits}")" == $'2\n2' ]]
     [[ "$(wc -l <"${window_calls}" | tr -d ' ')" == 3 ]]
-    jq -e '.outcome == "clean"' "${window_root}/000001/result.json" "${window_root}/000002/result.json"
+    jq -e '.outcome == "clean"' "${window_root}/000001/result.json" "${window_root}/000003/result.json"
     [[ ! -e "${window_root}/unavailable" ]]
 }
 
@@ -123,31 +123,33 @@ assert_window_latched() {
     jq -e '.windows[1].focused == false and (.windows[1] | has("title") | not)' <<<"${output}"
 }
 
-@test "TextEdit poll retains fifteen by two and returns its original successful list" {
-    window_fixture >"${window_replies}/15.json"
+@test "TextEdit loop preserves its final assertion after fifteen reads and sleeps" {
+    window_fixture >"${window_replies}/16.json"
     await_guest_textedit_window "${window_root}" prepare >"${BATS_TEST_TMPDIR}/actual"
-    cmp "${window_replies}/15.json" "${BATS_TEST_TMPDIR}/actual"
-    [[ "$(wc -l <"${window_calls}" | tr -d ' ')" == 15 ]]
-    [[ "$(wc -l <"${window_waits}" | tr -d ' ')" == 14 ]]
+    cmp "${window_replies}/16.json" "${BATS_TEST_TMPDIR}/actual"
+    [[ "$(wc -l <"${window_calls}" | tr -d ' ')" == 16 ]]
+    [[ "$(wc -l <"${window_waits}" | tr -d ' ')" == 15 ]]
     [[ "$(sort -u "${window_waits}")" == 2 ]]
 }
 
 @test "clean exhausted polls retain each list and a separate state confirmation" {
-    local kind limit
+    local kind limit waits
     for kind in koine textedit; do
         reset_windows "exhaust-${kind}"
         if [[ "${kind}" == koine ]]; then
             run await_guest_window_count "${window_root}" missing Koine 1
             limit=10
+            waits=10
         else
             run await_guest_textedit_window "${window_root}" missing
-            limit=15
+            limit=16
+            waits=15
         fi
         [[ "${status}" == 125 ]]
         [[ "$(wc -l <"${window_calls}" | tr -d ' ')" == "${limit}" ]]
-        [[ "$(wc -l <"${window_waits}" | tr -d ' ')" == "${limit}" ]]
-        jq -se --argjson n "${limit}" 'length == $n + 1 and all(.[0:$n][]; .outcome == "clean") and .[$n].outcome == "unavailable"' "${window_root}"/*/result.json
-        jq -se '.[-1].transport == "confirmation" and .[-1].operation == "missing-exhausted" and (.[-1].reason | contains("clean window poll exhausted"))' "${window_root}"/*/request.json
+        [[ "$(wc -l <"${window_waits}" | tr -d ' ')" == "${waits}" ]]
+        jq -se --argjson n "${limit}" 'length == 2 * $n + 1 and all(.[0:2*$n][]; .outcome == "clean") and .[-1].outcome == "state-failed"' "${window_root}"/*/result.json
+        jq -se '.[-1].transport == "poll-step" and .[-1].poll_phase == "exhausted" and .[-1].local_status == 1 and .[-1].state_predicate != ""' "${window_root}"/*/request.json
         assert_window_latched
     done
 }
@@ -171,7 +173,7 @@ assert_window_latched() {
         if await_guest_window_count "${window_root}" reopen Koine 1; then return 1; fi
         [[ "$(wc -l <"${window_calls}" | tr -d ' ')" == 2 ]]
         [[ "$(cat "${window_waits}")" == 2 ]]
-        cmp "${window_replies}/2.json" "${window_root}/000002/raw.stdout"
+        cmp "${window_replies}/2.json" "${window_root}/000003/raw.stdout"
         assert_window_latched
     done
 }
@@ -196,7 +198,7 @@ assert_window_latched() {
     act_guest_window "${window_root}" move-textedit window-move TextEdit 700 120
     act_guest_window "${window_root}" focus-resize window-focus 'Koine Settings'
     act_guest_window "${window_root}" close-settings window-close 'Koine Settings'
-    jq -se '. == [["agent","window-move","--window","TextEdit","--x","700","--y","120","--vm","exact-window-vm","--json"],["agent","window-focus","--window","Koine Settings","--vm","exact-window-vm","--json"],["agent","window-close","--window","Koine Settings","--vm","exact-window-vm","--json"]]' "${window_calls}"
+    jq -se '. == [["agent","window-move","--window","TextEdit","--x=700","--y=120","--vm","exact-window-vm","--json"],["agent","window-focus","--window","Koine Settings","--vm","exact-window-vm","--json"],["agent","window-close","--window","Koine Settings","--vm","exact-window-vm","--json"]]' "${window_calls}"
     jq -se 'all(.[]; .class == "one-shot" and .payload_predicate != "true")' "${window_root}"/*/request.json
     jq -se 'all(.[]; .outcome == "clean")' "${window_root}"/*/result.json
 }
@@ -287,4 +289,93 @@ assert_window_latched() {
         [[ ! -s "${window_calls}" ]]
         assert_window_latched
     done
+}
+
+@test "TextEdit always makes the separate assertion read after an early positive" {
+    window_fixture >"${window_replies}/1.json"
+    window_fixture >"${window_replies}/2.json"
+    await_guest_textedit_window "${window_root}" prepare >"${BATS_TEST_TMPDIR}/actual"
+    cmp "${window_replies}/2.json" "${BATS_TEST_TMPDIR}/actual"
+    [[ "$(wc -l <"${window_calls}" | tr -d ' ')" == 2 ]]
+    [[ ! -s "${window_waits}" ]]
+    reset_windows final-negative
+    window_fixture >"${window_replies}/1.json"
+    run await_guest_textedit_window "${window_root}" prepare
+    [[ "${status}" == 125 ]]
+    [[ "$(wc -l <"${window_calls}" | tr -d ' ')" == 2 ]]
+    jq -e '.outcome == "state-failed"' "${window_root}/000005/result.json"
+    assert_window_latched
+}
+
+@test "TextEdit final assertion never rehabilitates a failed read" {
+    window_fixture >"${window_replies}/16.json"
+    echo 7 >"${window_replies}/16.exit"
+    run await_guest_textedit_window "${window_root}" prepare
+    [[ "${status}" == 125 ]]
+    [[ "$(wc -l <"${window_calls}" | tr -d ' ')" == 16 ]]
+    [[ "$(wc -l <"${window_waits}" | tr -d ' ')" == 15 ]]
+    jq -e '.outcome == "unavailable" and .cli_status == 7' "${window_root}/000031/result.json"
+    assert_window_latched
+}
+
+@test "each poll records its state predicate and true or false decision" {
+    window_fixture >"${window_replies}/2.json"
+    await_guest_window_count "${window_root}" reopen Koine 1 >/dev/null
+    jq -e '.transport == "poll-step" and .poll_phase == "state" and .local_status == 1 and .state_predicate == "([.windows[] | select(.appName == \"Koine\")] | length) == 1"' "${window_root}/000002/request.json"
+    jq -e '.poll_phase == "state" and .local_status == 0' "${window_root}/000004/request.json"
+    jq -e '.outcome == "clean"' "${window_root}/000002/result.json" "${window_root}/000004/result.json"
+}
+
+@test "failed or interrupted poll sleeps record status and prevent later input" {
+    local local_status expected_status expected_outcome
+    for local_status in 1 130 143 129; do
+        reset_windows "sleep-${local_status}"
+        sleep() {
+            echo "$*" >>"${window_waits}"
+            return "${local_status}"
+        }
+        expected_status=125
+        expected_outcome=unavailable
+        if [[ "${local_status}" -gt 128 ]]; then
+            expected_status="${local_status}"
+            expected_outcome=interrupted
+        fi
+        run await_guest_window_count "${window_root}" wait Koine 1
+        [[ "${status}" == "${expected_status}" ]]
+        [[ "$(wc -l <"${window_calls}" | tr -d ' ')" == 1 ]]
+        jq -e --argjson code "${local_status}" '.transport == "poll-step" and .poll_phase == "sleep" and .local_status == $code' "${window_root}/000003/request.json"
+        jq -e --arg outcome "${expected_outcome}" '.outcome == $outcome' "${window_root}/000003/result.json"
+        assert_window_latched
+    done
+}
+
+@test "failed or interrupted local state evaluation records status without another read or sleep" {
+    local local_status expected_status expected_outcome
+    for local_status in 2 130 143 129; do
+        reset_windows "state-${local_status}"
+        jq() {
+            if [[ "$1" == -e ]]; then return "${local_status}"; fi
+            command jq "$@"
+        }
+        expected_status=125
+        expected_outcome=unavailable
+        if [[ "${local_status}" -gt 128 ]]; then
+            expected_status="${local_status}"
+            expected_outcome=interrupted
+        fi
+        run await_guest_window_count "${window_root}" state Koine 1
+        [[ "${status}" == "${expected_status}" ]]
+        [[ "$(wc -l <"${window_calls}" | tr -d ' ')" == 1 ]]
+        [[ ! -s "${window_waits}" ]]
+        command jq -e --argjson code "${local_status}" '.transport == "poll-step" and .poll_phase == "state" and .local_status == $code' "${window_root}/000002/request.json"
+        command jq -e --arg outcome "${expected_outcome}" '.outcome == $outcome' "${window_root}/000002/result.json"
+        unset -f jq
+        assert_window_latched
+    done
+}
+
+@test "negative window move coordinates use equals form accepted by the CLI" {
+    act_guest_window "${window_root}" negative-move window-move TextEdit -5 -10
+    jq -se '. == [["agent","window-move","--window","TextEdit","--x=-5","--y=-10","--vm","exact-window-vm","--json"]]' "${window_calls}"
+    jq -e '.outcome == "clean"' "${window_root}/000001/result.json"
 }

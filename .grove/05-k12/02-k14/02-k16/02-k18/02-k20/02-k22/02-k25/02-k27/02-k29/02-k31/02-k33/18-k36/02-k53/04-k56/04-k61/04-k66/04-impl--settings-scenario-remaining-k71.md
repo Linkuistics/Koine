@@ -7,7 +7,14 @@ the window transport artifact and its independent review/every earned integratio
 ## Context
 Read the parent k66 charter in full, ORDERING-PHYSICAL-RESULTS.md, the window
 transport report, ORDERING-NONEXEC-RESULTS.md and reviewed ordering protocol.
-K70 supplies helpers only: the complete scenario has not adopted strict evidence.
+K70 supplies helpers only, with k72 review integrated by k73: the complete
+scenario has not adopted strict evidence. Consume the current window report and
+its k73 receipts. The TextEdit helper owns the entire legacy poll plus its
+unconditional final assertion, including early positives; replace that block
+once without adding a duplicate read. Record/classify poll-step state-failed
+exhaustion separately from unavailable/interrupted evidence using the structured
+request/result fields. Preserve every nonzero status, including local evaluation
+and sleep signals. These helper controls do not implement shell signal handlers.
 
 ## Done when
 Every original k66 Done when criterion holds. Enumerate and migrate every actual

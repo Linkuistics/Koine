@@ -1,0 +1,16 @@
+{
+  "tag": "v2.7.0",
+  "commit": "65bc05c91cc5d2a6e3d4aa8f81cb2c7c7712fa03",
+  "method": "Read official immutable v2.7.0 tag objects, manifest first, and local Cargo registry clap_builder 4.6.0 parser source. Rechecked the original three source digests. This is source evidence; no CLI parser execution, guest or installed endpoint provenance.",
+  "files": {
+    "cli-rs/Cargo.toml": "e7c43079eda1fa5c7f81cb3e7f3742c65260cac139a7191910430a736a0bf06a",
+    "cli-rs/crates/testanyware-cli/src/commands/agent.rs": "5c401191f1d1df59d14967ee5f03c93cd625021ad8353dac84198e53bb68d7bc",
+    "cli-rs/crates/testanyware-protocol/src/window_info.rs": "82cca60fdd71bfee1c7266e8a26e9b6c1e88e191755fe04125ed6310d7e59629",
+    "cli-rs/crates/testanyware-cli/src/main.rs": "cc6550081806d2d81a3a1e35da358bfb8a3962ae4a474291c4da0e191be051be",
+    "cli-rs/Cargo.lock": "96ee8c89fbc69a1e74f97af03df5e85528bae27ddacd1143ab568468607793e2"
+  },
+  "clapBuilder": {
+    "version": "4.6.0",
+    "parserSha256": "f0c96c6038bc4da44e0176ad00118048593b2f04816276ff63f32df7d83a4d05"
+  }
+}

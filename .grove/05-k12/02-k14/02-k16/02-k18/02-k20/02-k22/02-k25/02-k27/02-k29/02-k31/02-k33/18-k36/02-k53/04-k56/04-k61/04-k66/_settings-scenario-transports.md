@@ -77,6 +77,9 @@ K70's source-only helpers and their checked schema/poll boundary are documented
 in docs/verification/settings-activation/ORDERING-WINDOW-RESULTS.md. They are
 not yet consumed by the ordinary scenario. Their independent review and every
 earned integration precede k71 consumption; all remaining original criteria above
-remain live, including both held-pointer signal controls. The TextEdit loop has
-a separate post-loop assertion read that k71 must also migrate. K67/k62/k57/k54
+remain live, including both held-pointer signal controls. K73 integrates k72 and makes the TextEdit helper own the loop plus its
+unconditional final assertion read; k71 must replace that whole legacy block
+once, without adding another read. Poll-step receipts retain exact predicates
+and local statuses; clean exhaustion is state-failed, distinct from unavailable
+evidence. Failed/interrupted local steps latch and preserve signal status. K67/k62/k57/k54
 retain their duties; no VM, signed subject or readiness follows from the expansion.

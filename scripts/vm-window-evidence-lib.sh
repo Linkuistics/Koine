@@ -69,7 +69,7 @@ act_guest_window() {
             _window_evidence_fail "${root}" "${operation}" 'expected window target and integer x/y'
             return "$?"
         }
-        options+=(--x "$5" --y "$6")
+        options+=("--x=$5" "--y=$6")
         ;;
     *)
         _window_evidence_fail "${root}" "${operation}" 'unsupported window action'
@@ -99,7 +99,7 @@ await_guest_window_count() {
     _await_guest_windows "${root}" "${operation}" "${predicate}" 10
 }
 
-# Existing TextEdit preparation poll: at least one window, fifteen by two.
+# Existing TextEdit preparation: fifteen by two, then an unconditional assertion.
 await_guest_textedit_window() {
     local root="${1-}" operation="${2-}"
     _window_evidence_root "${root}" || return
@@ -107,26 +107,49 @@ await_guest_textedit_window() {
         _window_evidence_fail "${root}" textedit-poll-arguments 'expected ROOT OPERATION'
         return "$?"
     }
-    _await_guest_windows "${root}" "${operation}" '([.windows[] | select(.appName == "TextEdit")] | length) >= 1' 15
+    _await_guest_windows "${root}" "${operation}" '([.windows[] | select(.appName == "TextEdit")] | length) >= 1' 15 1
+}
+
+# Internal: 0 means clean true state, 1 clean false, all other statuses stop.
+# Both the full original list and this local predicate/status receive receipts.
+_window_poll_read() {
+    local root="$1" operation="$2" predicate="$3" response state_status=0
+    response="$(read_guest_windows "${root}" read-poll "${operation}")" || return
+    jq -e "${predicate}" >/dev/null <<<"${response}" || state_status=$?
+    record_guest_poll "${root}" "${operation}-state" state "${state_status}" "${predicate}" || return
+    if [[ "${state_status}" == 0 ]]; then
+        printf '%s\n' "${response}"
+    fi
+    return "${state_status}"
 }
 
 _await_guest_windows() {
-    local root="$1" operation="$2" predicate="$3" limit="$4" response attempt state_status
+    local root="$1" operation="$2" predicate="$3" limit="$4" final_assertion="${5:-0}"
+    local response attempt state_status=1 sleep_status
     for ((attempt = 1; attempt <= limit; attempt++)); do
-        response="$(read_guest_windows "${root}" read-poll "${operation}-${attempt}")" || return
         state_status=0
-        jq -e "${predicate}" >/dev/null <<<"${response}" || state_status=$?
-        if [[ "${state_status}" == 0 ]]; then
-            printf '%s\n' "${response}"
-            return
-        fi
-        if [[ "${state_status}" != 1 ]]; then
-            _window_evidence_fail "${root}" "${operation}" 'window state predicate evaluation failed'
-            return "$?"
-        fi
+        response="$(_window_poll_read "${root}" "${operation}-${attempt}" "${predicate}")" || state_status=$?
+        if [[ "${state_status}" == 0 ]]; then break; fi
+        if [[ "${state_status}" != 1 ]]; then return "${state_status}"; fi
         # Preserve the final negative poll's existing sleep too. Only a clean
         # false state reaches it; failed/interrupted transport never does.
-        sleep 2 || return
+        sleep_status=0
+        sleep 2 || sleep_status=$?
+        if [[ "${sleep_status}" != 0 ]]; then
+            record_guest_poll "${root}" "${operation}-${attempt}-sleep" sleep "${sleep_status}" "${predicate}"
+            return "$?"
+        fi
     done
-    _window_evidence_fail "${root}" "${operation}-exhausted" "clean window poll exhausted after ${limit} reads: ${predicate}"
+    if [[ "${final_assertion}" == 1 ]]; then
+        # The legacy TextEdit block always asserts again, even after an early
+        # positive. It also allows a window to appear during the last sleep.
+        state_status=0
+        response="$(_window_poll_read "${root}" "${operation}-assertion" "${predicate}")" || state_status=$?
+        if [[ "${state_status}" != 0 && "${state_status}" != 1 ]]; then return "${state_status}"; fi
+    fi
+    if [[ "${state_status}" == 0 ]]; then
+        printf '%s\n' "${response}"
+        return
+    fi
+    record_guest_poll "${root}" "${operation}-exhausted" exhausted 1 "${predicate}"
 }

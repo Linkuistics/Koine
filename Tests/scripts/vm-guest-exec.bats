@@ -325,7 +325,8 @@ try:
     assert started.exists(), 'CLI did not start'
     process.send_signal(signal.SIGTERM)
     assert process.wait(timeout=5) == -signal.SIGTERM
-    for args in (['check', str(root)], ['fail', str(root), 'confirmation', 'failed'],
+    for args in (['poll-step', str(root), 'state', 'state', '1', '.windows == []'],
+                 ['check', str(root)], ['fail', str(root), 'confirmation', 'failed'],
                  ['run', str(root), 'evidence', 'context', 'probe', 'true'],
                  ['cli', str(root), 'evidence', 'context', 'true', '--', 'agent', 'windows'],
                  ['cli', str(root), 'evidence', 'containment', 'true', '--', 'vm', 'stop', 'exact-vm']):
@@ -335,7 +336,7 @@ try:
         refusal = json.loads((root / 'refusals.jsonl').read_text().splitlines()[-1])
         assert refusal['reason'] == 'competing evidence writer', refusal
         assert refusal['arguments'] == args, refusal
-    assert len((root / 'refusals.jsonl').read_text().splitlines()) == 5
+    assert len((root / 'refusals.jsonl').read_text().splitlines()) == 6
     assert calls.read_text().count('\n') == 1
     assert (root / 'unavailable').read_text().strip() == 'competing evidence writer'
     assert not (root / '000002').exists()
