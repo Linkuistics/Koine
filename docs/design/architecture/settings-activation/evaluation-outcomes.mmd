@@ -1,0 +1,15 @@
+flowchart TD
+    S["Start here: review and integrate design"]:::start
+    S -->|1| F["Implement and freeze one signed candidate and all inputs"]
+    F -->|2| E["E01 then E02: focused prefix; fresh clone each"]
+    E -->|3: both fully qualify| A["Separate readiness; A01 then A02 then A03: complete scenarios"]
+    A -->|4: every assertion and evidence duty passes| P["Finite behavioral acceptance only"]:::pass
+    E -->|Any required failure or unavailable result| Q{"Qualified Settings recurrence?"}
+    A -->|Any required failure or unavailable result| Q
+    Q -->|Yes| R["Reject reversal as repair"]:::stop
+    Q -->|No| U["No acceptance; retain exact unresolved or other failure"]:::stop
+    R --> C["Capture, audit and stop exact clone; later slots NOT RUN"]
+    U --> C
+    classDef start fill:#19354b,color:#fff,font-weight:bold,stroke:#19354b
+    classDef pass fill:#e4f2e8,color:#173824,stroke:#37734e
+    classDef stop fill:#fff1d2,color:#322600,stroke:#866216

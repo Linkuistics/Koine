@@ -1,6 +1,32 @@
 # settings-modality-disposition-repair-k36
 
-## K46 approval: concrete design and review still precede runtime
+## Concrete ordering design awaiting review
+
+K49 selects the shared show-method reversal: prepare the same retained window
+and requested section, request self activation once, then key/front ordering in
+the same invocation. The current contract is
+docs/specs/settings-activation-discrimination.md. The distinct
+ORDERING-EVALUATION-PLAN.md under docs/verification/settings-activation fixes
+two focused fresh guests followed, only if both qualify, by three separately
+declared complete ordinary guests. Use one unchanged newly signed candidate with
+diagnostics disabled throughout; no candidate has been built or run here.
+
+A qualified recurrence rejects reversal. Any other required failure or unavailable
+evidence stops acceptance and all later slots; no replacement, expansion or
+input retry. Raw transport failures cannot be cleared by matching text or a later
+success. The numbers are finite conventions, not statistical bounds. Historical
+product failures remain useful end-to-end evidence; no deterministic native fake
+or new public seam is earned. Passing supports only the declared sample.
+
+Independent review of the whole design and every earned integration must precede
+k36 implementation/runtime. K36 remains live and held. All six causal slots,
+historical results and closed caps remain unchanged. Native cause and ownership
+remain unresolved; no product or causal ancestor closes. No release,
+notarization or upstream report. Earlier scope sections below record their own
+boundaries; the concrete design now supplies the previously unselected order,
+bounds and outcome rules without changing those historical results.
+
+## Earlier K46 approval and retained requirements
 
 Antony answers "approve" to design of one empirical activation-before-window-
 ordering evaluation and the finite acceptance convention. Read k46's recorded

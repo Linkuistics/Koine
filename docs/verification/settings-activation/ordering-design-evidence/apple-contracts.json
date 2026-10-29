@@ -1,0 +1,53 @@
+{
+  "sources": [
+    {
+      "url": "https://developer.apple.com/documentation/appkit/nsapplication/activate%28%29.md",
+      "retrievedAt": "2026-10-29T03:47:14.670743+00:00",
+      "sha256": "0bc5053f9f225578c9ac4ab1015fec5ea346667d284fec5b991fab2bc26e90c3",
+      "bytes": 1234,
+      "status": 200,
+      "checkedExcerpt": "calling this method doesn’t guarantee app activation"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/appkit/nswindow/makekeyandorderfront%28_%3A%29.md",
+      "retrievedAt": "2026-10-29T03:47:15.201253+00:00",
+      "sha256": "cb4103bc06c42d62b13b2a480a4eafbed61b30fd6ac3ba1ed7bd5e47af019057",
+      "bytes": 1758,
+      "status": 200,
+      "checkedExcerpt": "Moves the window to the front of the screen list, within its level"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/appkit/nsapplication/activationpolicy-swift.enum/accessory.md",
+      "retrievedAt": "2026-10-29T03:47:15.734533+00:00",
+      "sha256": "2f5ba22fe8d85d36d727f563c869bd48bd8611e94207b7f9ca7d7b79c1d995b9",
+      "bytes": 1033,
+      "status": 200,
+      "checkedExcerpt": "it may be activated programmatically"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/appkit/nswindow/collectionbehavior-swift.struct/movetoactivespace.md",
+      "retrievedAt": "2026-10-29T03:47:16.287309+00:00",
+      "sha256": "4087b667e05c5a3535b1da1b8818b40d96c47782239b429b945995b685fc96a7",
+      "bytes": 892,
+      "status": 200,
+      "checkedExcerpt": "move it to the active space instead of switching spaces"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/appkit/nswindow/canbecomekey.md",
+      "retrievedAt": "2026-10-29T03:47:16.821924+00:00",
+      "sha256": "eeba8f4a6d39e191a4609af67235fd97fadd63b9c0771e43b3e1a50ccf72dec6",
+      "bytes": 1658,
+      "status": 200,
+      "checkedExcerpt": "Attempts to make the window the key window are abandoned"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/appkit/passing-control-from-one-app-to-another-with-cooperative-activation.md",
+      "retrievedAt": "2026-10-29T03:47:17.529151+00:00",
+      "sha256": "a3c3deb7777a72a9150f2e64400a7a633dfe4ba202f67ec72fd02c0a87c44452",
+      "bytes": 6852,
+      "status": 200,
+      "checkedExcerpt": "Only the active app can influence the activation context."
+    }
+  ],
+  "fullResponsesRetained": false
+}

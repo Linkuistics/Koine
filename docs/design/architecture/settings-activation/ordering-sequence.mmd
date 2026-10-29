@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant C as Launch / reopen / menu
+    participant D as Application delegate
+    participant W as Retained Settings window
+    participant A as NSApp
+    C->>D: Show requested section once
+    alt Server or port unavailable
+        D-->>C: Return without either request
+    else Ready
+        D->>W: Create only if absent and keep identity
+        Note over D,W: Configure window and apply requested section first
+        D->>A: Request activation once
+        A-->>D: Call returns
+        Note over D,A: Return does not establish active state
+        D->>W: Request key and front ordering once
+        W-->>D: Call returns
+        D-->>C: Return without retry or deferral
+    end
+    Note over C,A: Proposed application order with discretionary macOS outcome

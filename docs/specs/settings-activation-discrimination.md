@@ -16,9 +16,14 @@ The [correction assessment](#correction-assessment) still finds no qualifying
 API-use correction in the inspected path; that bounded finding survives
 [review and integration](../verification/settings-activation/CORRECTION-REVIEW.md).
 Those reports retain the proposal as presented before this approval. The empirical
-hypothesis is selected for design; no final candidate or numerical bound is fixed.
-Implementation and runtime remain held pending concrete design, independent review
-and every earned integration.
+hypothesis now has a [concrete design](#single-request-ordering-design): prepare
+the same retained window, request activation once, then request key/front
+ordering. The [distinct protocol](../verification/settings-activation/ORDERING-EVALUATION-PLAN.md)
+fixes two focused guests and a separate three-guest complete ordinary set, with
+one unchanged signed candidate and diagnostics disabled in both. These are
+conventions, not statistical bounds. No candidate has been built or run.
+Implementation and runtime remain held pending independent design review and
+every earned integration.
 
 This amends a prerequisite; it does not satisfy it. Native cause and ownership
 remain unresolved. The retained evidence still does **not** support the finite,
@@ -34,9 +39,113 @@ must still return one front/focused Settings window. No API violation, product
 repair, native mechanism or external owner is established.
 
 The [visual discussion](../design/architecture/settings-activation/README.md)
-shows why the current observation and intervention do not meet the requirement.
+shows the proposed call order, bounded evaluation and outcome rules alongside
+the unresolved causal question.
 Graph views begin at the dark **Start here** node; arrows in the evidence view
 describe reasoning, not measured event order or a proven causal graph.
+
+## Single-request ordering design
+
+The application delegate continues to own Settings readiness, the retained
+window and navigation. On the main actor, each admitted show invocation first
+requires the existing server and port, creates/configures the window only if
+needed, and applies any requested section. It then makes exactly one existing
+self-activation request, followed immediately in application control flow by
+the existing key/front window request. There is no suspension, run-loop dispatch,
+menu-close gate, activation-status polling or conditional second request between
+them. Existing trace boundaries move with their corresponding calls; they remain
+disabled in this evaluation.
+
+This is application call order, not a promise that macOS completes activation
+before window ordering. The system may decide later or decline. The window call
+still runs after the activation call returns, even if the application is inactive;
+an inactive result cannot select a retry. One valid user selection must
+return the one front/focused Settings window under the empirical acceptance
+standard. A refusal is a possible failed product outcome, not a branch the
+application hides with another API.
+
+| Caller or state | Preserved behavior and effect of reversal |
+|---|---|
+| First launch while setup needs the user | The same launch decision invokes the shared show operation after server/port readiness. The window is fully constructed before activation; no additional launch or request is added. |
+| Launch after setup, including login | The existing launch policy does not call show. Reversal must not introduce activation or an unsolicited window into that path. |
+| Finder/open of the running application | The existing reopen handler calls the same operation and returns false. If readiness is incomplete it retains the current no-op behavior; no queued retry is introduced. |
+| Settings menu selection | One callback invokes show once. One activation request and one key/front request apply to the retained window. |
+| Status-line selection | The same operation first selects the requested section, then uses the same order. The caller need not learn or choose an activation policy. |
+| Window closed or already visible | Keep the single window identity, non-release-on-close lifetime, size, ordinary level and move-to-active-Space behavior. Closing orders it out; reopening does not replace it. A visible window is reused. |
+| Already-active application | Retain the existing unconditional single request. Apple's contract says it cancels any pending outgoing activation yield; this design adds no yield and does not claim none could exist externally. |
+
+The separate fatal-alert activation/termination path is outside this method and
+unchanged. Main-actor serialization prevents concurrent application mutations;
+native notifications may still arrive while a framework call executes. The
+proposal adds no state, cache, completion callback or reentrancy mechanism.
+
+### Public API preconditions and limits
+
+The declared deployment floor is macOS 26; self activation is available from
+macOS 14. The current agent/accessory policy permits programmatic activation.
+The application owns an ordinary titled window, which is key eligible under the
+documented style rule. The real application run loop and main-actor owner remain
+in place. A ready server/port and constructed window precede both requests.
+These facts establish API applicability, not success.
+
+Apple recommends the existing self-activation API for this receiver and makes
+activation discretionary. The installed SDK additionally warns that a return
+does not establish immediate activation. The window request addresses key/front
+ordering within its level; moving to the active Space specifies destination when
+active, not activation authority. No checked contract requires this relative
+order. The [primary contracts and source evidence](../verification/settings-activation/ORDERING-DESIGN-EVIDENCE.md#primary-contracts)
+support those limits. No cooperating TextEdit yield is assumed or requested.
+
+### Alternatives, ownership and reversal condition
+
+| Design | Benefit | Cost and disposition |
+|---|---|---|
+| Reverse inside the existing show operation — selected for review | One owner keeps window lifetime, navigation and the two requests together; callers retain the same interface. Small, reversible application change. | Affects launch/reopen/status-line callers as well as Settings. Requires complete ordinary acceptance; no contract guarantees improvement. |
+| Reverse only in the menu caller or add a caller-selectable order | Could limit the changed path to menu actions. | Splits activation knowledge across callers or adds an unsupported mode. Divergent launch/reopen behavior and a wider test surface earn no benefit for the accepted single-window contract. Not selected. |
+| Keep current order | No behavioral migration. | Preserves the established unresolved failure. Remains the baseline if the empirical candidate is rejected, not a successful repair. |
+
+No general activation adapter, fake OS response, new public seam or additional
+monitor is earned. A fake that rejects the old order and accepts the new would
+encode the hypothesis as its own oracle. The actual native response is the
+external dependency; the agreed complete VM seam observes the relevant behavior.
+The existing historical end-to-end failures are useful failing product evidence.
+The intermittent response offers no established deterministic local RED test;
+do not manufacture one or run a baseline until failure. Source inspection can
+check one request and retained identity, but cannot demonstrate repaired focus.
+Focused helper tests instead exercise real transport/classification defects at
+their existing substitution boundary.
+
+A qualified recurrence in either declared set rejects reversal as the repair.
+Missing required evidence or another ordinary failure prevents acceptance and
+keeps the outcome unresolved. Neither permits another candidate or larger sample
+without a new explicit decision. A future API-use mismatch could justify a
+different design under the existing default test; this exception does not.
+
+## Finite evaluation and ordinary acceptance
+
+The [evaluation protocol](../verification/settings-activation/ORDERING-EVALUATION-PLAN.md)
+owns the exact subjects, five slots, setup, observation qualification, freeze,
+stop rules and outcome precedence. Two fresh focused guests each run the current
+first-launch/four-selection prefix. Only if both qualify does the separately
+declared three-guest complete ordinary set begin. One new signed candidate is
+frozen before the first guest and remains byte-identical across both sets;
+ordinary readiness is separately revalidated. There is no baseline arm or
+qualification-only guest. All implementation and review finish before freezing.
+
+Both sets disable application diagnostics and the native logging experiment.
+The existing UI seam retains real input, window/front/focus observations and
+screenshots. Raw failed transport cannot be stripped or repaired by later output.
+The protocol stops all later slots on the first required failure or unavailable
+result, retains every partial and NOT RUN phase, audits inputs/endpoints/golden,
+and verifies exact clone cleanup. It never changes an input or wait to obtain
+success. Ordinary successful bounded polling remains the existing scenario's.
+
+Removing diagnostics changes workload; it proves no timing neutrality. The new
+capture policy also adds observation work. A qualified recurrence demonstrates
+symptom preservation for that combination and rejects the candidate. An all-green
+sample leaves preservation unknown and supports only the explicitly accepted
+finite behavioral convention. No native mechanism, comparative risk reduction,
+API violation or general reliability claim follows.
 
 ## Evidence and the missing control
 
@@ -204,9 +313,10 @@ the observed failure.
 Reversing the window and activation calls remains an empirical hypothesis. The
 checked contracts do not prescribe that ordering, and the closed comparison
 does not establish a repair. Repetition, driver waits/retries/repeated input,
-deferral and speculative yielding remain excluded. No candidate, new product
-seam, runtime subject or acceptance sample is selected. This is a bounded finding
-that survives review, not proof that every possible correction is absent
+deferral and speculative yielding remain excluded. That assessment selected no
+candidate, new product seam, runtime subject or acceptance sample. The later
+empirical design above changes the permitted justification, not this finding.
+This is a bounded finding that survives review, not proof that every possible correction is absent
 or that the operating system owns the failure.
 
 ### Scope after no candidate
@@ -242,9 +352,10 @@ elimination of intermittent failure, a mechanism or general reliability.
 The concrete design must fix numerical bounds, qualification criteria and stop/
 failure/unavailable-evidence rules before runtime, and receive independent review
 with every earned integration completed before implementation or execution.
-The old ABBA cap stays closed. Approval fixes no new numerical cap, final subject
-or guest; it permits design only. The trial requires its own distinct finite
-protocol, and ordinary acceptance remains a separate complete scenario set.
+The old ABBA cap stays closed. The scope answer itself fixed no numerical cap,
+final subject or guest. The concrete design above now fixes two focused and three
+ordinary slots; review and every earned integration still precede implementation
+or runtime. No signed subject or runtime result exists for that design.
 
 | Choice after the reviewed assessment | Effect and cost |
 |---|---|
@@ -263,7 +374,7 @@ ancestor closes from agreement alone.
 | Surface | Before this design | Current disposition |
 |---|---|---|
 | Two route slots and four modality slots | Unstarted, conditional on a supported causal design | Still unstarted; no runtime earned because that condition is unmet |
-| Slots, setup, order, caps, route and recorder | Current reviewed protocol | Unchanged; no replacement runtime protocol is published |
+| Slots, setup, order, caps, route and recorder | Current reviewed causal protocol | Unchanged. The separate empirical protocol above does not replace or consume these slots |
 | Highlight and delivery | Actual highlight, expected route nonce; positive mouse pair/callback correlation; strict Return event identity | Unchanged, including Return's possible unavailability despite delivered input |
 | Native containment and controls | One explicit launch prefix plus all ordinal candidates; exact ENCLOSED/OUTSIDE/MISSING/AMBIGUOUS/INVALID classes; successful window controls and deferred native gates; final takes no measured focus input | Unchanged; no desired-bracket filtering or weakened control |
 | Headless versus guest evidence | Reader/request/transport checks and compilation; actual AppKit dispatch, timing and changed-instrument availability unqualified | Unchanged; this design runs no guest or product check |
@@ -290,7 +401,7 @@ Changing an offline fixture cannot reproduce or control that native response.
 |---|---|---|
 | Menu probe and route | Request bounds, transport retention and positive delivery criteria | Actual AppKit tracking/dispatch coverage and native activation authority |
 | Interval and evidence readers | Exact supplied identities/ticks, candidate accounting and control policy | Raw provenance, complete native decision coverage, cause and ownership |
-| Product behavior | One real selection must return one front/focused window | No useful failing headless product seam has yet been identified for a repair |
+| Product behavior | One real selection must return one front/focused window; historical VM failures demonstrate this seam | No deterministic failing headless native substitute is evidenced; source-order assertions cannot prove repair |
 | Existing complete VM scenario | The agreed ordinary user behavior across the declared finite sample | Mechanistic explanation and reliability beyond that sample |
 
 Keep these owners separate. A repair design must earn a product seam for its
@@ -319,12 +430,12 @@ and [persisted](../verification/settings-activation/PERSISTED-RESULTS.md#every-o
 | Supported condition, matched intervention and two finite falsifiers | Unmet. Amended as a prerequisite to the permitted behavioral-repair design/evaluation; still required for the corresponding causal claim. The narrow probe does not satisfy it |
 | Positive failed actual request/native disposition/responsible context | Unresolved. Amended as a prerequisite to the permitted behavioral-repair design/evaluation, not marked satisfied. Native cause and ownership remain unresolved |
 | Qualified acquisition/configuration/lag and changed-instrument availability/symptom/timing | Historical capabilities and limits preserved; no new runtime qualification |
-| Actual signed subject/all consumed inputs/completed golden freeze | Still required before any future launch, after all design/review/integration work; no final subject selected here |
+| Actual signed subject/all consumed inputs/completed golden freeze | Still required before any future launch, after review/integration and implementation. Design selects one unchanged candidate across both sets, but no actual signed subject has been built/frozen here |
 | Failed transport, partial archive, every started attempt and NOT RUN retention | Preserved separately from scenario results; timeout/nonzero text remains failed |
 | Original/endpoint/golden audits and exact clone stop | Required for future runs; historical duties and results unchanged; no clone in this design |
-| Justified application repair and useful failing product seam | Unmet; recorder/reader controls are not a failing product seam. Activation-before-window ordering alone may be designed without a documented API-use violation under the agreed empirical convention. Other candidates and alternative APIs retain the API-use test. Application repetition, driver waits/retries/repeated input, deferral and speculative yield remain excluded |
+| Justified application repair and useful failing product seam | Repair unmet. Concrete design reverses the two calls locally under the named exception. Historical real VM failures are useful product evidence; no deterministic local native RED seam is established. Recorder/reader controls and an order-encoding fake prove no repair. Other candidates retain the API-use test; repetition, driver waits/retries/repeated input, deferral and speculative yield remain excluded |
 | One selection, one front/focused Settings window | Required behavior and one activation request unchanged |
-| Separate finite complete ordinary acceptance | Still required through app:vm-verify-menu-bar, final ordinary signed subject/all-input/completed-golden freeze, diagnostics disabled, every outcome retained and timing addressed. A qualified recurrence in evaluation or acceptance rejects the repair; missing/failed required evidence or another failed ordinary assertion prevents acceptance. A complete pass supports only that finite sample |
+| Separate finite complete ordinary acceptance | Unmet. Fixed at three full fresh-guest scenarios after two qualifying focused slots, same signed subject and diagnostics disabled throughout. Separate declaration/readiness, all-input/completed-golden freeze and every evidence duty remain. A qualified recurrence rejects reversal; missing/failed required evidence or another required failure stops all later slots without acceptance. A complete pass supports only that finite sample |
 | External evidence/reproducer/approval | No external owner established; positive evidence/reproducer required for attribution, repair unresolved if external; no upstream report without Antony's approval |
 | Closed historical caps and unrun ordinary phases | All closed caps stay closed. Persisted reopens 2/3, resize/minimum-size/content-height/scrolling, shortcuts, requests/denials, consent, silent launch, running-app reopen, login restart and Quit stay NOT RUN |
 | Repair acceptance/release | Scope agreement supplies no repair or ordinary-acceptance result; no release or notarization |

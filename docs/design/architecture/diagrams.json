@@ -98,8 +98,8 @@
     },
     {
       "id": "settings-activation",
-      "title": "Settings activation · accepted repair scope",
-      "description": "Approved empirical ordering design with one request, evidence limits and separate ordinary acceptance; all six existing experiment slots remain held."
+      "title": "Settings activation · ordering evaluation",
+      "description": "Concrete single-request ordering design and fixed two-focused/three-ordinary convention awaiting independent review; native cause remains unresolved."
     }
   ],
   "diagrams": [
@@ -603,14 +603,28 @@
       "group": "settings-activation",
       "title": "Accepted scope for repair design",
       "source": "settings-activation/scope-choice.mmd",
-      "caption": "Antony approved design of one empirical activation-before-window-ordering evaluation without a documented API-use violation, preserving one request and repetition, driver-wait/retry, deferral and speculative-yield exclusions. Native cause remains unresolved. Concrete design, review and every earned integration precede implementation/runtime; separate complete ordinary-VM acceptance with diagnostics disabled remains required. No final candidate, numerical bound or guest is selected."
+      "caption": "The named empirical scope is approved. The concrete design proposes one local reversal, two focused and three complete ordinary guests using one unchanged candidate with diagnostics disabled. Independent review and every earned integration precede implementation/runtime. The causal slots remain held; no signed subject or result exists."
     },
     {
       "id": "settings-activation-correction-assessment",
       "group": "settings-activation",
       "title": "Current path and the approved empirical design",
       "source": "settings-activation/correction-assessment.mmd",
-      "caption": "The bounded no-candidate finding survives review. Both orders succeeded with synchronous file tracing; there is no instrument-free comparison. Antony approved empirical design and a finite acceptance convention: qualified recurrence rejects the repair, unavailable required evidence prevents acceptance without automatically proving product failure, and all ordinary assertions must pass. Success covers only that sample. Concrete design, review and every earned integration precede implementation/runtime; no numerical bound, product change or guest is selected."
+      "caption": "The numbered existing path remains unchanged in source; the dotted edge enters reasoning. Both orders previously succeeded with synchronous file tracing. The new design fixes separate behavioral sets, not comparative risk or causal proof. It awaits independent review; no implementation or runtime has occurred."
+    },
+    {
+      "id": "settings-activation-ordering-sequence",
+      "group": "settings-activation",
+      "title": "Prepare one window, activate once, then order it",
+      "source": "settings-activation/ordering-sequence.mmd",
+      "caption": "Proposed synchronous application order, including readiness failure. The window is constructed and navigation applied before activation. A return does not imply activation completed; the OS may decline. Launch, reopen and both menu callers share this owner. No retry, yielding or deferral is added."
+    },
+    {
+      "id": "settings-activation-evaluation-outcomes",
+      "group": "settings-activation",
+      "title": "Two focused guests before three complete ordinary guests",
+      "source": "settings-activation/evaluation-outcomes.mmd",
+      "caption": "Proposed finite convention: E01/E02 and A01/A02/A03 are fresh, serial slots using one frozen candidate with diagnostics disabled. Any required failure or unavailable evidence stops all later slots. Qualified recurrence takes precedence over later evidence failures. All outcomes retain audit and exact cleanup; passing covers only that sample. There is no baseline, replacement or cap expansion."
     }
   ]
 }

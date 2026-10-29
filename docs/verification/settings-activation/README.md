@@ -1,39 +1,34 @@
 # Settings reopen: recorded activation failure — 2026-10-28
 
-The [correction assessment](CORRECTION-ASSESSMENT.md) finds no qualifying
-API-use correction in the inspected Settings path. The finding survives
-[review and integration](CORRECTION-REVIEW.md); the
-[explicit scope choice](../../specs/settings-activation-discrimination.md#scope-after-no-candidate)
-is now approved. On 2026-10-29 Antony answered "approve" to design of one empirical
-activation-before-window-ordering evaluation without a documented API-use violation
-and to its finite acceptance convention. Both orders previously succeeded with
-file tracing, whose writes moved with the reversal. There is no instrument-free
-comparison or established reduction in failure risk.
+The [concrete ordering design](../../specs/settings-activation-discrimination.md#single-request-ordering-design)
+requests activation once before key/front window ordering, after preparing the
+same retained window and requested section. The [distinct finite protocol](ORDERING-EVALUATION-PLAN.md)
+fixes two focused fresh guests followed only if both qualify by three separate
+complete ordinary guests. One newly signed candidate must remain unchanged,
+with diagnostics disabled in both sets. No subject has been built or run.
+Independent design review and every earned integration precede implementation
+or runtime; the repair remains unresolved.
 
-A qualified recurrence in the evaluation or separate ordinary acceptance rejects
-the repair. Unavailable required evidence prevents acceptance without automatically
-proving product failure; every ordinary assertion must pass. A complete pass
-supports only that finite sample. No numerical bound or final candidate is selected.
-Concrete design, review and every earned integration precede implementation/runtime.
-No product change or guest ran in this scope decision; no repair, API violation,
-native owner or ancestor closure follows.
+Antony's [approved empirical scope](../../specs/settings-activation-discrimination.md#scope-after-no-candidate)
+removes the documented API-use-violation prerequisite for this named hypothesis
+only. A qualified recurrence rejects reversal. Any other required failure or
+unavailable evidence stops acceptance and later slots, without replacement or
+expansion. A passing bound supports only that sample. Raw failed transport is
+retained, not cleared by later output. The [source/API evidence](ORDERING-DESIGN-EVIDENCE.md)
+records caller effects, public-contract limits and the existing test seams.
 
-The [accepted repair scope](../../specs/settings-activation-discrimination.md#scope-decision-for-antony)
-permits a separately justified correction design using one activation request
-without first proving the native cause. Antony agreed on 2026-10-28. Native cause
-and ownership remain unresolved; the prerequisite is amended, not satisfied.
-The API-use test still applies outside the named empirical ordering exception;
-repetition/driver-wait/retry/deferral/speculative-yield exclusions remain. No final
-candidate is selected. Design review and
-every earned integration precede implementation or runtime; complete ordinary
-acceptance with diagnostics disabled and every freeze/audit/stop/evidence duty
-remain required. All six existing route/modality slots stay unstarted. Scope
-agreement alone closes no causal ancestor and establishes no product repair.
+The [reviewed assessment](CORRECTION-ASSESSMENT.md) remains a bounded
+no-API-correction finding. Historical original/reversed successes used synchronous
+file tracing whose writes moved with reversal; no instrument-free comparison or
+risk reduction is established. Repetition, driver wait/retry/input workarounds,
+deferral and speculative yielding remain excluded. Native cause and ownership
+remain unresolved. All six causal slots stay held and every historical cap stays
+closed. The complete original-duty comparison remains in the contract.
 
-The assessment/review and following instrument handoffs record earlier evidence
-and proposal boundaries. Their pending-choice and causal-prerequisite wording is
-historical; the accepted contract above owns the current amendments. All recorded
-results and limits remain unchanged.
+The assessment/review and instrument handoffs below retain earlier boundaries
+and results. The new design changes no historical bytes, classification or strict
+false clock join. It supplies no repair, ordinary-acceptance or ancestor-closure
+result, release, notarization or upstream report.
 
 K41's [protocol review integration](CAUSAL-PROTOCOL-REVIEW.md) repairs offline
 launch-prefix accounting, final-control input and positive mouse/Return nonce
