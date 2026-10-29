@@ -1,0 +1,47 @@
+1..14
+not ok 1 full capture retains complete image raw bytes exact VM and artifact digest
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 61)
+#   `cmp "${BATS_TEST_TMPDIR}/actual" "${capture_root}/000001/raw.stdout"' failed with status 2
+# synthetic capture diagnostic
+# cmp: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-QDeaHw/test/1/evidence/000001/raw.stdout: No such file or directory
+not ok 2 region and repeated operations use unique artifacts without extra reads
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 74)
+#   `[[ -s "${capture_root}/000001/screen.png" && -s "${capture_root}/000002/screen.png" ]]' failed
+# synthetic capture diagnostic
+# synthetic capture diagnostic
+not ok 3 missing empty malformed truncated corrupt and incomplete pixels latch without retry
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 86)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 4 capture schema and image dimensions must match exact artifact and region
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 100)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 5 failed partial typed error and dry-run captures retain raw failure without output
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 113)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 6 collection after failed image retains first latch and never restores eligibility
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 123)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 7 invalid roots do not dispatch or write cwd and invalid capture arguments latch
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 136)
+#   `[[ "${status}" == 125 && ! -s "${capture_calls}" ]]' failed
+ok 8 PNG inspection still owns the shared lock after CLI completion
+not ok 9 capture shares ordinals in both directions and failed collection cannot overwrite
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 189)
+#   `cp "${capture_root}/000002/screen.png" "${BATS_TEST_TMPDIR}/original.png"' failed
+# synthetic capture diagnostic
+# cp: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-QDeaHw/test/9/evidence/000002/screen.png: No such file or directory
+ok 10 caught capture SIGINT retains interruption partial streams and stops later input
+not ok 11 relative roots remain usable and invalid class operation options cannot dispatch
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 238)
+#   `jq -e --arg path "$(pwd -P)/relative-root/000001/screen.png" '.path == $path' relative-root/000001/artifact.json' failed with status 2
+# synthetic capture diagnostic
+# jq: error: Could not open file relative-root/000001/artifact.json: No such file or directory
+not ok 12 keepalive preserves twenty-second ticks unique paths and exact local interruption
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 259)
+#   `[[ "${status}" == 143 ]]' failed
+not ok 13 keepalive failure stops before another sleep or capture and latches later input
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 276)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 14 capture holds shared lock through CLI and refuses competing scenario dispatch
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 301)
+#   `[[ "${competing}" == 125 && "$(wc -l <"${capture_calls}" | tr -d ' ')" == 1 ]]' failed

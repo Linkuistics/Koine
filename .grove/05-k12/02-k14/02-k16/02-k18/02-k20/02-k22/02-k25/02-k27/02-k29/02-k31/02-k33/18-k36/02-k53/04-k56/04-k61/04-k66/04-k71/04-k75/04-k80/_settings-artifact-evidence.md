@@ -90,3 +90,14 @@ signals and both held-pointer controls. Missing-tree and empty-AXValue native
 availability limits and private secret-bearing roots remain binding. K67/k62/
 k57/k54 and every runtime slot remain held. No VM/candidate/freeze, native
 acceptance or ancestor closure follows.
+
+## Capture/file/lifecycle decomposition boundary
+
+K85 decomposes into source-only checked screenshot/keepalive artifacts k88 and
+remaining file/environment/lifecycle/collection helpers k89. Consume
+ORDERING-CAPTURE-RESULTS.md only after independent review and every earned
+integration. Unique PNG checks remain under the shared lock; sleep20 cadence is
+unchanged and contention refuses/latches without retry. K81/k76/k67/k62/k57/k54
+retain every original duty. No ordinary caller/root, native availability,
+VM/candidate/freeze/acceptance or ancestor closure follows. Private roots and
+all snapshot/OCR availability limits remain binding.

@@ -1,0 +1,355 @@
+{
+  "scope": [
+    "scripts/vm-verify-lib.sh",
+    "scripts/vm-verify-menu-bar.sh",
+    "scripts/vm-verify-desktop-lib.sh",
+    "scripts/vm-menu-pointer-lib.sh",
+    "scripts/vm-window-resize-lib.sh"
+  ],
+  "source_sha256": {
+    "scripts/vm-verify-lib.sh": "0cbd67a3b3aad4d27df39370d106637800716101cb619bf704901cf7235f1035",
+    "scripts/vm-verify-menu-bar.sh": "4cedeaebf72c19c65af51db6d57bace380508ffa1c8dee6e784997f22e0f74f2",
+    "scripts/vm-verify-desktop-lib.sh": "22f7c7026a9f3f7706783f6da56f517b468697eaad9e1fcd5f0570ee72932452",
+    "scripts/vm-menu-pointer-lib.sh": "dc38aae0998d1979c718cf38e9fecf9d3d570507477baf03e60d67c12e6a139b",
+    "scripts/vm-window-resize-lib.sh": "fba5397e2d798fccfcd022949c9cda6e03fe490d0616f43785de43d0615199b2"
+  },
+  "method": "Enumerate each testanyware token in the bounded actual source closure, then classify; shell source does not provide a whole-repository or dynamic-call completeness proof. Ordinary callers are unchanged.",
+  "candidates": [
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 15,
+      "source": "for tool in testanyware jq ditto; do",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 40,
+      "source": "    testanyware screen capture -o \"${LOG%.log}-failure.png\" >/dev/null 2>&1 || true",
+      "classification": "capture"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 53,
+      "source": "        out=\"$(testanyware file exec \"$1\" 2>&1)\" || status=$?",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 57,
+      "source": "        # 7 is testanyware's CONNECTION_TIMEOUT: the agent was not reached at all.",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 89,
+      "source": "    testanyware file upload \"${script}\" \"/Users/admin/${name}.sh\" >/dev/null",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 105,
+      "source": "        echo \"VM ${VM_ID} left running. Stop it with: testanyware vm stop ${VM_ID}\"",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 107,
+      "source": "        testanyware vm stop \"${VM_ID}\" >/dev/null 2>&1 || true",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 116,
+      "source": "snapshot() { testanyware agent snapshot --mode full --window \"${SNAPSHOT_WINDOW:-${APP_NAME}}\" --depth 14 --json; }",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 131,
+      "source": "    testanyware input click $(jq -r '\"\\(.positionX + .sizeWidth / 2 | floor) \\(.positionY + .sizeHeight / 2 | floor)\"' <<<\"${e}\") >/dev/null",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 157,
+      "source": "    entry=\"$(testanyware agent windows --json |",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 252,
+      "source": "    testanyware agent window-move --window \"${WINDOW_TITLE}\" --x 40 --y 40 >/dev/null",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 253,
+      "source": "    testanyware agent window-focus --window \"${APP_NAME}\" >/dev/null",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 291,
+      "source": "    testanyware agent window-focus --window \"${APP_NAME}\" >/dev/null",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 293,
+      "source": "    testanyware input key q --modifiers cmd >/dev/null",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 302,
+      "source": "        testanyware agent window-focus --window \"${APP_NAME}\" >/dev/null 2>&1 || true",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 304,
+      "source": "        testanyware input key q --modifiers cmd >/dev/null || true",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 316,
+      "source": "    # screen at all; every other run takes testanyware's default.",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 318,
+      "source": "    testanyware vm start --platform macos --wait --id \"${VM_ID}\" \\",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 328,
+      "source": "        testanyware screen capture -o \"${WORK}/keepalive.png\" >/dev/null 2>&1 || true",
+      "classification": "capture"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 337,
+      "source": "    step \"Install the signed bundle (ditto zip, testanyware file upload, ditto -x)\"",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 339,
+      "source": "    testanyware file upload \"${WORK}/Koine.zip\" /tmp/Koine.zip >/dev/null",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 341,
+      "source": "    testanyware file upload scripts/vm-verify-client.sh /Users/admin/vm-verify-client.sh >/dev/null",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 365,
+      "source": "# \"testanyware-agent\" and blocks until it is answered. It is started in the",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 370,
+      "source": "    found=\"$(testanyware screen find-text \"Allow\" --timeout 30 --json 2>/dev/null |",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 374,
+      "source": "    testanyware input click $(jq -r '\"\\(.x + .width / 2 | floor) \\(.y + .height / 2 | floor)\"' <<<\"${found}\") >/dev/null",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 432,
+      "source": "    testanyware agent windows --json |",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 448,
+      "source": "    testanyware agent windows --json |",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 461,
+      "source": "guest_once() { testanyware file exec \"$1\" >/dev/null 2>&1 || true; }",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 42,
+      "source": "    testanyware agent windows --json | jq -r --arg title \"${WINDOW_TITLE}\" \\",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 83,
+      "source": "testanyware file upload scripts/vm-verify-enrollment-client.py /Users/admin/vm-verify-enrollment-client.py >/dev/null",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 90,
+      "source": "echo \"Windows: $(testanyware agent windows --json | jq -c \"[.windows[] | select(.appName == \\\"${APP_NAME}\\\") | .title]\")\"",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 95,
+      "source": "testanyware agent windows --json |",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 108,
+      "source": "testanyware screen capture -o \"${LOG%.log}-first-launch.png\" >/dev/null",
+      "classification": "capture"
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 117,
+      "source": "    testanyware agent windows --json | jq -e '[.windows[] | select(.appName == \"TextEdit\")] | length >= 1' >/dev/null && break",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 120,
+      "source": "testanyware agent windows --json | jq -e '[.windows[] | select(.appName == \"TextEdit\")] | length >= 1' >/dev/null ||",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 123,
+      "source": "testanyware agent window-move --window TextEdit --x 700 --y 120 >/dev/null",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 130,
+      "source": "testanyware agent window-close --window \"${WINDOW_TITLE}\" >/dev/null",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 136,
+      "source": "testanyware screen capture -o \"${LOG%.log}-over-textedit.png\" >/dev/null",
+      "classification": "capture"
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 138,
+      "source": "    testanyware agent window-close --window \"${WINDOW_TITLE}\" >/dev/null",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 147,
+      "source": "testanyware agent window-move --window \"${WINDOW_TITLE}\" --x 40 --y 40 >/dev/null",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 148,
+      "source": "testanyware agent window-focus --window \"${WINDOW_TITLE}\" >/dev/null",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 172,
+      "source": "testanyware screen capture -o \"${LOG%.log}-least-size-${W}x${H}.png\" >/dev/null",
+      "classification": "capture"
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 204,
+      "source": "testanyware screen capture --region 1500,0,420,200 -o \"${LOG%.log}-mark.png\" >/dev/null",
+      "classification": "capture"
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 218,
+      "source": "testanyware screen capture -o \"${LOG%.log}-requests.png\" >/dev/null",
+      "classification": "capture"
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 228,
+      "source": "testanyware agent window-close --window \"${WINDOW_TITLE}\" >/dev/null",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 259,
+      "source": "testanyware agent window-close --window \"${WINDOW_TITLE}\" >/dev/null",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 270,
+      "source": "testanyware file exec 'echo admin | sudo -S shutdown -r now' >/dev/null 2>&1 || true",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 293,
+      "source": "testanyware screen capture -o \"${LOG%.log}-after-login.png\" >/dev/null",
+      "classification": "capture"
+    },
+    {
+      "file": "scripts/vm-verify-desktop-lib.sh",
+      "line": 38,
+      "source": "    testanyware input type \"${label}\" >/dev/null",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-desktop-lib.sh",
+      "line": 83,
+      "source": "    found=\"$(testanyware screen find-text \"${DIALOG_TEXT}\" --json)\" || fail \"the screen could not be read\"",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-desktop-lib.sh",
+      "line": 135,
+      "source": "    testanyware input type \"${VM_PASSWORD}\" >/dev/null",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-verify-desktop-lib.sh",
+      "line": 136,
+      "source": "    testanyware input key return >/dev/null",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-menu-pointer-lib.sh",
+      "line": 17,
+      "source": "    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/commands/screen.rs",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-window-resize-lib.sh",
+      "line": 18,
+      "source": "        frame=\"$(testanyware agent windows --json | jq -r --arg title \"${3:-${WINDOW_TITLE}}\" \\",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-window-resize-lib.sh",
+      "line": 27,
+      "source": "    # sends mask zero: https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-rfb/src/input.rs#L115-L146",
+      "classification": "other transport/comment; outside capture migration"
+    },
+    {
+      "file": "scripts/vm-window-resize-lib.sh",
+      "line": 41,
+      "source": "                testanyware input mouse-up \"${px}\" \"${py}\" >/dev/null || true",
+      "classification": "other transport/comment; outside capture migration"
+    }
+  ]
+}

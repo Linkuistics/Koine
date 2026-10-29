@@ -1,0 +1,35 @@
+1..10
+not ok 1 full capture retains complete image raw bytes exact VM and artifact digest
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 61)
+#   `cmp "${BATS_TEST_TMPDIR}/actual" "${capture_root}/000001/raw.stdout"' failed with status 2
+# synthetic capture diagnostic
+# cmp: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-YyWRZc/test/1/evidence/000001/raw.stdout: No such file or directory
+not ok 2 region and repeated operations use unique artifacts without extra reads
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 74)
+#   `[[ -s "${capture_root}/000001/screen.png" && -s "${capture_root}/000002/screen.png" ]]' failed
+# synthetic capture diagnostic
+# synthetic capture diagnostic
+not ok 3 missing empty malformed truncated corrupt and incomplete pixels latch without retry
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 86)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 4 capture schema and image dimensions must match exact artifact and region
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 100)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 5 failed partial typed error and dry-run captures retain raw failure without output
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 113)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 6 collection after failed image retains first latch and never restores eligibility
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 123)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 7 invalid roots do not dispatch or write cwd and invalid capture arguments latch
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 136)
+#   `[[ "${status}" == 125 && ! -s "${capture_calls}" ]]' failed
+not ok 8 keepalive preserves twenty-second ticks unique paths and exact local interruption
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 154)
+#   `[[ "${status}" == 143 ]]' failed
+not ok 9 keepalive failure stops before another sleep or capture and latches later input
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 171)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 10 capture holds shared lock through CLI and refuses competing scenario dispatch
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 189)
+#   `[[ "${competing}" == 125 && "$(wc -l <"${capture_calls}" | tr -d ' ')" == 1 ]]' failed

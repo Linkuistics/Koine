@@ -13,9 +13,12 @@ import signal
 import subprocess
 import sys
 import time
+import zlib
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import cast
+
+from vm_capture_artifact import inspect_capture
 
 UNAVAILABLE = 125
 
@@ -242,6 +245,8 @@ def run_locked(
         return 0  # Inspection is not a reservation for a later unlocked input.
     if transport == "cli":
         argv = cli_argv(arguments, vm, kind)
+    elif transport == "capture":
+        argv = []  # The exclusive attempt directory below owns the output path.
     elif transport in {"confirmation", "poll-step"}:
         argv = []
     else:
@@ -253,6 +258,21 @@ def run_locked(
         raise ValueError("attempt ordinal exhausted")
     attempt = root / f"{ordinal:06d}"
     attempt.mkdir()
+    artifact_path = (attempt / "screen.png").absolute()
+    if transport == "capture":
+        capture_args = ["screen", "capture"]
+        if arguments:
+            capture_args += ["--region", arguments[0]]
+        argv = cli_argv([*capture_args, "-o", str(artifact_path)], vm, kind)
+        # Validate actual capture fields and chosen path, not a constant predicate.
+        # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/commands/screen.rs
+        predicate = (
+            f".path == {json.dumps(str(artifact_path))} and "
+            'all(.width, .height; type == "number" and floor == . and . > 0 and . <= 4294967295)'
+        )
+        if arguments:
+            _, _, width, height = map(int, arguments[0].split(","))
+            predicate += f" and .width == {width} and .height == {height}"
     started = time.monotonic_ns()
     write_json(
         attempt / "request.json",
@@ -309,7 +329,15 @@ def run_locked(
             reason = validate_response(
                 attempt, command, cli_status, predicate, lock_fd, transport
             )
-    except (OSError, ValueError, UnicodeError) as error:
+            if not reason and transport == "capture":
+                envelope = read_object(attempt / "raw.stdout")
+                artifact = inspect_capture(
+                    artifact_path,
+                    int(cast(int, envelope["width"])),
+                    int(cast(int, envelope["height"])),
+                )
+                write_json(attempt / "artifact.json", artifact)
+    except (OSError, ValueError, UnicodeError, zlib.error) as error:
         reason = str(error)
     except KeyboardInterrupt:
         reason = "interrupted transport; completion unavailable"
@@ -373,6 +401,21 @@ def run(
         raise ValueError("class must be read-poll, one-shot or evidence")
     if not operation.strip():
         raise ValueError("operation must name this call site")
+    if transport == "capture" and not (
+        kind in {"read-poll", "evidence"}
+        and (
+            not arguments
+            or (
+                len(arguments) == 1
+                and re.fullmatch(r"[0-9]{1,10}(,[0-9]{1,10}){3}", arguments[0])
+                and all(int(part) <= 4294967295 for part in arguments[0].split(","))
+                and all(int(part) > 0 for part in arguments[0].split(",")[2:])
+            )
+        )
+    ):
+        raise ValueError(
+            "expected read-poll|evidence capture with optional X,Y,WIDTH,HEIGHT"
+        )
     if transport == "confirmation" and not command.strip():
         raise ValueError("failed confirmation requires a reason")
     if transport == "poll-step" and not (
@@ -474,13 +517,21 @@ def main() -> int:
     cli_parser.add_argument(
         "arguments", nargs=argparse.REMAINDER, help="-- command subcommand args"
     )
+    capture_parser = commands.add_parser(
+        "capture",
+        help="capture once to a unique path; validate complete PNG under the writer lock",
+    )
+    capture_parser.add_argument("root", type=Path)
+    capture_parser.add_argument("kind", choices=["read-poll", "evidence"])
+    capture_parser.add_argument("operation")
+    capture_parser.add_argument("region", nargs="?")
     try:
         args = parser.parse_args()
     except SystemExit as error:
         if (
             error.code
             and len(sys.argv) > 2
-            and sys.argv[1] in {"run", "cli", "check", "fail", "poll-step"}
+            and sys.argv[1] in {"run", "cli", "capture", "check", "fail", "poll-step"}
         ):
             root = Path(sys.argv[2])
             if (root / "subject.json").is_file():
@@ -520,6 +571,17 @@ def main() -> int:
                 cast(str, args.predicate),
                 "cli",
                 cast(list[str], args.arguments),
+            )
+        if args.action == "capture":
+            region = cast(str | None, args.region)
+            return run(
+                root,
+                cast(str, args.kind),
+                cast(str, args.operation),
+                "",
+                "",
+                "capture",
+                [region] if region is not None else [],
             )
         return run(
             root,

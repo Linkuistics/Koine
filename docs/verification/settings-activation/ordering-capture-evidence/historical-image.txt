@@ -1,0 +1,1 @@
+{"path": "docs/verification/settings-activation/persisted-01/failure-observed.png", "format": "RGBA8 PNG", "width": 1920, "height": 1080, "bytes": 233136, "sha256": "7cc3ea0c1c72f1a66975ab34925addbadac3504f648fd372fcafd7ce834a8587"}

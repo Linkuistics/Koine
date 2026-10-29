@@ -1,5 +1,20 @@
 # Koine menu-bar VM reliability — brief
 
+## Capture artifact expansion boundary
+
+K85 decomposes into checked screenshots/keepalive k88 and remaining file,
+environment, lifecycle and collection helpers k89. K88 supplies source-only
+unique PNG artifacts qualified under the shared writer lock and the unchanged
+sleep-20 capture cadence. Read docs/verification/settings-activation/ORDERING-CAPTURE-RESULTS.md
+for the actual callers, controls and availability limits. Independent review and
+every earned integration precede k89/k81/k76 consumption. Ordinary callers/root
+are unchanged; keepalive collisions still refuse/latch, without new waits or
+retry. K81 keeps every exec/one-shot consequence; k76 complete adoption/signals
+and both held-pointer cases; k67/k62/k57/k54 retain all original duties. Private
+secret-bearing roots and snapshot/OCR availability limits remain binding. No
+VM/candidate/freeze, native acceptance or ancestor closure follows.
+
+
 ## Physical helper migration boundary
 
 K61 decomposes into physical helpers k65, remaining complete-scenario transports/

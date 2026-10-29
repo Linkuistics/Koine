@@ -1,0 +1,11 @@
+1..10
+ok 1 full capture retains complete image raw bytes exact VM and artifact digest
+ok 2 region and repeated operations use unique artifacts without extra reads
+ok 3 missing empty malformed truncated corrupt and incomplete pixels latch without retry
+ok 4 capture schema and image dimensions must match exact artifact and region
+ok 5 failed partial typed error and dry-run captures retain raw failure without output
+ok 6 collection after failed image retains first latch and never restores eligibility
+ok 7 invalid roots do not dispatch or write cwd and invalid capture arguments latch
+ok 8 keepalive preserves twenty-second ticks unique paths and exact local interruption
+ok 9 keepalive failure stops before another sleep or capture and latches later input
+ok 10 capture holds shared lock through CLI and refuses competing scenario dispatch
