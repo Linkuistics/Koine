@@ -84,6 +84,51 @@ reached the guest. K57 must retain that uncertainty and contain the exact clone;
 it must not send an unrecorded release, clear the latch or bypass an orphan-held
 writer lock. The unset lane retains the older release behavior for its consumers.
 
+A signal can also end the scenario during a settling sleep between clean
+attempts. A clean `resize-down-N` receipt without a later clean
+`resize-release` receipt means held input, even when every recorded attempt is
+clean and no latch exists. A failed, interrupted, missing or partial held-point
+completion can also mean delivered input; a failed or partial release is no
+proof of release. K66's signal handling and k57's containment must inspect the
+ordered requests and completions, not only the latch or failed receipts. K66
+must control a signal during a held-point attempt and a signal in the settling
+sleep after a clean held point. Both controls must retain interruption and the
+held-input state, stop later scenario input and show no release attempt. K57
+must contain the exact clone through the same writer domain in either case.
+
+## K68 review integration
+
+K69 grades the findings at k68's review commit `bfa2342d` against the current
+source. P3-1 is a real retention issue: the latency and installation verifiers
+source the common library, which loads both physical helpers and their two
+facades. Both unconditional subject lists now include
+`vm-physical-evidence-lib.sh`, `vm-guest-exec-lib.sh` and the previously omitted
+`vm-window-resize-lib.sh`. These verifiers call no physical facade function;
+loading the shell adapter only defines functions, so it does not read the Python
+backend. That backend remains outside these two lists for this reason. This
+fix covers the named omissions, not a complete audit of the older verifiers.
+
+H-1 is a real handoff gap. The receipt rule and k66 controls above now cover
+held input after a signal between clean attempts as well as failed transport.
+The k57 task carries the same rule, and k66 carries both signal controls. This
+integration adds no signal implementation or runtime qualification.
+
+The [integration evidence](ordering-physical-evidence/k69/verification.txt)
+retains the syntax/shellcheck Taskfile result, bounded source checks and their
+limits. [Pre-edit digests](ordering-physical-evidence/k69/pre-edit.sha256)
+identify the repaired subjects. Verification digests taken
+[before](ordering-physical-evidence/k69/before.sha256) and
+[after](ordering-physical-evidence/k69/after.sha256) the checks identify the
+finished subjects and sourced lint dependencies. The same subjects must remain
+unchanged during verification. The documentation Taskfile check still fails on
+the two missing archive targets in `context-initial-inputs/CONTEXT-PLAN.md`.
+The charter bytes and target absence are identical at parent `bfa2342d`; the
+existing live settings-archive-links-k23 leaf already owns that packaging gap.
+The initial verification is retained under `k69/initial-verification`; the
+final verification follows this disclosure. K66/k67/k62/k57/k54 remain open
+and whole-harness review still precedes runtime. No guest, signed subject or
+acceptance follows.
+
 ## Reachable scenario inventory and remaining migration
 
 This is a bounded static call-site inventory of the complete

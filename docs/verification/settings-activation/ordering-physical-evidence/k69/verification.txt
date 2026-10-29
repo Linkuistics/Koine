@@ -1,0 +1,28 @@
+task: [check:vm-latency-installations] bash -n scripts/vm-verify-latency.sh scripts/vm-verify-installations.sh
+task: [check:vm-latency-installations] shellcheck -x scripts/vm-verify-latency.sh scripts/vm-verify-installations.sh
+
+check:vm-latency-installations exit: 0
+task: [check:docs] scripts/check-doc-links.py 
+docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md: missing target context-predicate.txt
+docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md: missing target context-qualify-filter.sh
+task: Failed to run task "check:docs": exit status 1
+
+check:docs exit: 201
+
+Bounded source checks: subject arrays only; neither verifier is executed.
+scripts/vm-verify-latency.sh: unconditional subject exactly once: scripts/vm-menu-pointer-lib.sh
+scripts/vm-verify-latency.sh: unconditional subject exactly once: scripts/vm-window-resize-lib.sh
+scripts/vm-verify-latency.sh: unconditional subject exactly once: scripts/vm-physical-evidence-lib.sh
+scripts/vm-verify-latency.sh: unconditional subject exactly once: scripts/vm-guest-exec-lib.sh
+scripts/vm-verify-installations.sh: unconditional subject exactly once: scripts/vm-menu-pointer-lib.sh
+scripts/vm-verify-installations.sh: unconditional subject exactly once: scripts/vm-window-resize-lib.sh
+scripts/vm-verify-installations.sh: unconditional subject exactly once: scripts/vm-physical-evidence-lib.sh
+scripts/vm-verify-installations.sh: unconditional subject exactly once: scripts/vm-guest-exec-lib.sh
+Bounded source-check exit: 0
+Scope: named subject-list omissions and source-derived signal handoffs only.
+No transport, guest, signed subject, full older-verifier audit or runtime qualification.
+Known docs failure: unchanged archive charter at bfa2342d has SHA-256 545200ec15c0bea549055666d4c519aa90c9835ba53496b9a09d76c2e019cb93.
+Parent jj file list has neither context-predicate.txt nor context-qualify-filter.sh in context-initial-inputs.
+Existing live settings-archive-links-k23 owns both omissions.
+
+Frozen verification subject digests match item by item; cmp exit: 0

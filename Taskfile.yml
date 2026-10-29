@@ -1459,6 +1459,12 @@ tasks:
       - shfmt -d -i 4 scripts/vm-menu-pointer-lib.sh
       - bats Tests/scripts/vm-menu-pointer.bats
 
+  check:vm-latency-installations:
+    desc: Check syntax and lint of the latency and installation verifiers without a VM
+    cmds:
+      - bash -n scripts/vm-verify-latency.sh scripts/vm-verify-installations.sh
+      - shellcheck -x scripts/vm-verify-latency.sh scripts/vm-verify-installations.sh
+
   check:vm-physical-evidence:
     desc: Check physical helper payloads, raw evidence and first-failure stops without a VM; complete scenario migration remains separate
     cmds:

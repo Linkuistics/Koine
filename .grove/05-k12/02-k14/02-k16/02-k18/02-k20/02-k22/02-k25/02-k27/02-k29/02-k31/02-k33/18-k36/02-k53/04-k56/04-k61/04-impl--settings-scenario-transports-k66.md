@@ -25,6 +25,14 @@ ORDERING-NONEXEC-RESULTS.md and the reviewed ordering protocol.
   outcomes, stop scenario input, and hand untouched collection/containment to
   k57, including uncertain held pointer and orphan-held-lock refusal. No bare
   release, reset or bypass restores eligibility.
+- K68 H-1, integrated by k69: control both a signal during a held-point
+  attempt and a signal during its settling sleep after a clean resize-down-N.
+  Retain interruption, stop later scenario input and assert no resize-release
+  attempt. A clean down receipt without a later clean release means held
+  input even without a latch or failed receipt. Failed/partial held-point
+  completions also retain delivery uncertainty; no failed/partial release
+  proves release. Hand the ordered receipts and this state to k57 for exact
+  clone containment through the reviewed writer domain.
 - Show meaningful pre-repair failures and passing Taskfile controls for every
   transport family, negative/failed/exhausted polls, all one-shot confirmations,
   schemas/artifacts and signals. Cut earned review/integration before consumption.

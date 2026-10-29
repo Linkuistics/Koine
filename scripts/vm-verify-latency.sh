@@ -54,6 +54,9 @@ SUBJECTS=(
     scripts/vm-verify-desktop-client.py
     scripts/vm-verify-lib.sh
     scripts/vm-menu-pointer-lib.sh
+    scripts/vm-window-resize-lib.sh
+    scripts/vm-physical-evidence-lib.sh
+    scripts/vm-guest-exec-lib.sh
     scripts/vm-verify-desktop-lib.sh
     scripts/signing-env.sh
     Fixtures/WindowIdentityProbe/main.swift

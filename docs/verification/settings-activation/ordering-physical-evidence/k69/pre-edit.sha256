@@ -1,0 +1,6 @@
+498dadfd75833b82651eaad88a2c6523f22e21368c8dc3dcc65a261e71489d24  Taskfile.yml
+4344752360bf606336ad6e7cb21df132988a8cce9282ed82389f24517c551148  scripts/vm-verify-latency.sh
+23ba7a5c8ebffeb7fc13e32ebbc9a3a48a317c0f3164b66269f7b8f7d8405a42  scripts/vm-verify-installations.sh
+b405ded7e24652716faa07e97bd59e9b4fa110c28351ac7e9e7dea6e59367b32  docs/verification/settings-activation/ORDERING-PHYSICAL-RESULTS.md
+7dca9098893f85c4b389eb63def945f083749db2b328e53c028b091fa44ea4c2  .grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-impl--settings-scenario-transports-k66.md
+3199efca075ef3cac0ac0a76f75302da1c4dcb48e61504cad256a51abf1d3bfc  .grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/05-impl--settings-ordering-caller-k57.md

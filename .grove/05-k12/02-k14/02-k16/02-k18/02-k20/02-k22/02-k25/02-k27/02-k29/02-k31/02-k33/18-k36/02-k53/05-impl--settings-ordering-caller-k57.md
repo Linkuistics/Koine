@@ -49,3 +49,13 @@ clone through the reviewed writer domain. No unrecorded release, reset, root
 replacement or lock bypass is permitted. Preserve orphan-holder/stop/inventory
 outcomes independently; unresolved containment blocks all later slots. Read
 ORDERING-PHYSICAL-RESULTS.md under docs/verification/settings-activation.
+
+K68 H-1, integrated by k69: a signal can end the scenario during a settling
+sleep between clean attempts. A clean resize-down-N receipt without a later
+clean resize-release means held input even if there is no latch or failed
+receipt. Inspect ordered requests and completions, not only failed receipts
+or the latch. A failed, interrupted, missing or partial held-point completion
+also leaves delivery uncertain, and a failed/partial release proves no release.
+Retain that state and apply the same exact-clone containment and later-slot
+block above. K66 owns controls for interruption during a held-point attempt
+and during the sleep after a clean held point, each with no release attempt.
