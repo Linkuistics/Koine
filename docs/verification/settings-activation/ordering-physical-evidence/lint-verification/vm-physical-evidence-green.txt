@@ -1,0 +1,13 @@
+task: [check:vm-physical-evidence] bash -n scripts/vm-physical-evidence-lib.sh scripts/vm-menu-pointer-lib.sh scripts/vm-window-resize-lib.sh Tests/scripts/vm-physical-evidence.bats
+task: [check:vm-physical-evidence] shellcheck -x scripts/vm-physical-evidence-lib.sh scripts/vm-menu-pointer-lib.sh scripts/vm-window-resize-lib.sh Tests/scripts/vm-physical-evidence.bats
+
+In Tests/scripts/vm-physical-evidence.bats line 18:
+    cd "${BATS_TEST_TMPDIR}/cwd"
+    ^--------------------------^ SC2164 (warning): Use 'cd ... || exit' or 'cd ... || return' in case cd fails.
+
+Did you mean:
+    cd "${BATS_TEST_TMPDIR}/cwd" || exit
+
+For more information:
+  https://www.shellcheck.net/wiki/SC2164 -- Use 'cd ... || exit' or 'cd ... |...
+task: Failed to run task "check:vm-physical-evidence": exit status 1

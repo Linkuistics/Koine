@@ -1,0 +1,4 @@
+1..1
+not ok 1 an explicit empty or unknown physical evidence root never selects legacy transport
+# (in test file Tests/scripts/vm-physical-evidence.bats, line 189)
+#   `[[ ! -e .writer && ! -e unavailable && ! -e refusals.jsonl ]]' failed

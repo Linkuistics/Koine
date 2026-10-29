@@ -1,0 +1,10 @@
+1..3
+not ok 1 failed title encoding latches before resize dispatch
+# (in test file Tests/scripts/vm-physical-evidence.bats, line 276)
+#   `[[ "${status}" == 125 && ! -s "${physical_calls}" ]]' failed
+not ok 2 failed frame decoding cannot qualify emitted geometry or leave input eligible
+# (in test file Tests/scripts/vm-physical-evidence.bats, line 286)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 3 failed display decoding cannot qualify emitted dimensions or leave input eligible
+# (in test file Tests/scripts/vm-physical-evidence.bats, line 297)
+#   `[[ "${status}" == 125 ]]' failed

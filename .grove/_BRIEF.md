@@ -1,5 +1,17 @@
 # Koine menu-bar VM reliability — brief
 
+## Physical helper migration boundary
+
+K61 decomposes into physical helpers k65, remaining complete-scenario transports/
+confirmations/signals k66, and positive setup/outcomes k67. K65's explicit-root
+physical lane consumes reviewed evidence with actual payload predicates; the
+complete ordinary scenario has not adopted the root. Read
+docs/verification/settings-activation/ORDERING-PHYSICAL-RESULTS.md for the bounded
+call inventory, controls and limits. Its independent review/every earned
+integration precedes later migration. K62 still owes exact final-prefix and
+whole-duty reconciliation; k57/k54 and runtime remain held. No VM, signed subject,
+freeze, native acceptance or ancestor closure follows.
+
 ## Shared evidence expansion boundary
 
 K56 decomposes into the shared non-exec evidence interface k60, complete scenario

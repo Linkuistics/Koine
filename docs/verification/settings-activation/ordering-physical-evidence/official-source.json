@@ -1,0 +1,17 @@
+{
+  "tag": "v2.7.0",
+  "commit": "65bc05c91cc5d2a6e3d4aa8f81cb2c7c7712fa03",
+  "method": "Read immutable official local tag objects after the workspace manifest; no executable, endpoint or runtime provenance claim.",
+  "files": {
+    "cli-rs/Cargo.toml": "e7c43079eda1fa5c7f81cb3e7f3742c65260cac139a7191910430a736a0bf06a",
+    "cli-rs/crates/testanyware-cli/src/main.rs": "cc6550081806d2d81a3a1e35da358bfb8a3962ae4a474291c4da0e191be051be",
+    "cli-rs/crates/testanyware-cli/src/output.rs": "402abc0570b0f7786cac0702b47cb4765408bfb47cc9d73168694c31dcbddde9",
+    "cli-rs/crates/testanyware-cli/src/commands/agent.rs": "5c401191f1d1df59d14967ee5f03c93cd625021ad8353dac84198e53bb68d7bc",
+    "cli-rs/crates/testanyware-cli/src/commands/file.rs": "909cc1b6bdeda70ebaf84b09b3656f29f928dee4326cf31d98cda00f59d9be7b",
+    "cli-rs/crates/testanyware-cli/src/commands/input.rs": "9e8294dc5bc65ff6ee913cfb90bfd34c3b87dbac8e9944852f9822de1770f6e1",
+    "cli-rs/crates/testanyware-cli/src/commands/screen.rs": "db9e6aa62424a8fc7692ab5e8b162199862826cad2637ae970281d9319c84ae1",
+    "cli-rs/crates/testanyware-cli/src/commands/vm.rs": "9204c0281fb384ce3480a956ae5be5702124e64320013a9934c9c3f88c63b7d6",
+    "cli-rs/crates/testanyware-protocol/src/window_info.rs": "82cca60fdd71bfee1c7266e8a26e9b6c1e88e191755fe04125ed6310d7e59629",
+    "cli-rs/crates/testanyware-protocol/src/agent_responses.rs": "928a71832cbf2e84bb6de1e6d1adc5939b9df5d24d5c789356333bd6abdc0df1"
+  }
+}

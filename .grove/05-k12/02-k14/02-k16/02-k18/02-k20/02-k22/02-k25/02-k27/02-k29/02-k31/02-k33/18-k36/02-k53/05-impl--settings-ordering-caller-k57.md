@@ -40,3 +40,12 @@ helpers and strict setup/title/liveness rules; retain every ordinary duty.
 No clone, slot or signed/frozen subject is created here. K54 owns actual readiness
 and runtime only after all implementation/review/integration. Cause/ownership and
 native/ordinary acceptance remain unresolved; ancestors stay open.
+
+## Physical-helper containment handoff
+
+K65's strict physical helpers stop all input after failed transport, including
+mouse-up. Retain possible delivered/held input separately and contain the exact
+clone through the reviewed writer domain. No unrecorded release, reset, root
+replacement or lock bypass is permitted. Preserve orphan-holder/stop/inventory
+outcomes independently; unresolved containment blocks all later slots. Read
+ORDERING-PHYSICAL-RESULTS.md under docs/verification/settings-activation.

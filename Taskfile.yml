@@ -1459,6 +1459,14 @@ tasks:
       - shfmt -d -i 4 scripts/vm-menu-pointer-lib.sh
       - bats Tests/scripts/vm-menu-pointer.bats
 
+  check:vm-physical-evidence:
+    desc: Check physical helper payloads, raw evidence and first-failure stops without a VM; complete scenario migration remains separate
+    cmds:
+      - bash -n scripts/vm-physical-evidence-lib.sh scripts/vm-menu-pointer-lib.sh scripts/vm-window-resize-lib.sh Tests/scripts/vm-physical-evidence.bats
+      - shellcheck -x scripts/vm-physical-evidence-lib.sh scripts/vm-menu-pointer-lib.sh scripts/vm-window-resize-lib.sh Tests/scripts/vm-physical-evidence.bats
+      - shfmt -d -i 4 scripts/vm-physical-evidence-lib.sh scripts/vm-menu-pointer-lib.sh scripts/vm-window-resize-lib.sh Tests/scripts/vm-physical-evidence.bats
+      - bats Tests/scripts/vm-physical-evidence.bats
+
   check:vm-guest-exec:
     desc: Check shared single-attempt exec/non-exec evidence, eligibility and confirmation failures without a VM; scenario migration remains separate
     cmds:

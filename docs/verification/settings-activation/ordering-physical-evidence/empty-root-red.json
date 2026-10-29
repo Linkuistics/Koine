@@ -1,0 +1,29 @@
+{
+  "command": [
+    "mise",
+    "exec",
+    "--",
+    "bats",
+    "--filter",
+    "an explicit empty or unknown",
+    "Tests/scripts/vm-physical-evidence.bats"
+  ],
+  "status": 1,
+  "before": {
+    "Tests/scripts/vm-physical-evidence.bats": "0974036eaff57fa8b80f1f3ef9876acdfdf7d69b38f40dc7ad25c1ff67a2392d",
+    "scripts/vm-physical-evidence-lib.sh": "fcd3afc8c415e0e8ed43a56af664f9a634421ee274ed8bdd9aaf979753091bca",
+    "scripts/vm-menu-pointer-lib.sh": "dc38aae0998d1979c718cf38e9fecf9d3d570507477baf03e60d67c12e6a139b",
+    "scripts/vm-window-resize-lib.sh": "fba5397e2d798fccfcd022949c9cda6e03fe490d0616f43785de43d0615199b2",
+    "scripts/vm-guest-exec-lib.sh": "22b2b52a7c2c0d5d3b63cfe1134dab167992b8c18ed2d7f322791cf3eecc6812",
+    "scripts/vm-guest-exec.py": "005d9d855eced791f7b49c0a14668be7470b0ea8bc051dfbbf9a850773f7d3b2"
+  },
+  "after": {
+    "Tests/scripts/vm-physical-evidence.bats": "0974036eaff57fa8b80f1f3ef9876acdfdf7d69b38f40dc7ad25c1ff67a2392d",
+    "scripts/vm-physical-evidence-lib.sh": "fcd3afc8c415e0e8ed43a56af664f9a634421ee274ed8bdd9aaf979753091bca",
+    "scripts/vm-menu-pointer-lib.sh": "dc38aae0998d1979c718cf38e9fecf9d3d570507477baf03e60d67c12e6a139b",
+    "scripts/vm-window-resize-lib.sh": "fba5397e2d798fccfcd022949c9cda6e03fe490d0616f43785de43d0615199b2",
+    "scripts/vm-guest-exec-lib.sh": "22b2b52a7c2c0d5d3b63cfe1134dab167992b8c18ed2d7f322791cf3eecc6812",
+    "scripts/vm-guest-exec.py": "005d9d855eced791f7b49c0a14668be7470b0ea8bc051dfbbf9a850773f7d3b2"
+  },
+  "outputSha256": "a7a30f8842b8ad0ef161a634aa7cb72cb70d3842dc283bc3109448c455b2f438"
+}

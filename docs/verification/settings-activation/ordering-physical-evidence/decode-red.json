@@ -1,0 +1,31 @@
+{
+  "command": [
+    "mise",
+    "exec",
+    "--",
+    "bats",
+    "--filter",
+    "failed (title encoding|frame decoding|display decoding)",
+    "Tests/scripts/vm-physical-evidence.bats"
+  ],
+  "status": 1,
+  "before": {
+    "Taskfile.yml": "498dadfd75833b82651eaad88a2c6523f22e21368c8dc3dcc65a261e71489d24",
+    "Tests/scripts/vm-physical-evidence.bats": "f225f5ccd54da3bbba8d48536e0b1c1c43bcc8b32b1322883f0229b3757d4713",
+    "scripts/vm-physical-evidence-lib.sh": "2130b7016acfadb21c09d66301f922044210f30989d288ff5bbcfc17bdceef28",
+    "scripts/vm-menu-pointer-lib.sh": "d385d3051afe5b0d8b8f1b979ea41e8aa7dc85476c39e3b054c0c3cea31fee80",
+    "scripts/vm-window-resize-lib.sh": "fba5397e2d798fccfcd022949c9cda6e03fe490d0616f43785de43d0615199b2",
+    "scripts/vm-guest-exec-lib.sh": "22b2b52a7c2c0d5d3b63cfe1134dab167992b8c18ed2d7f322791cf3eecc6812",
+    "scripts/vm-guest-exec.py": "005d9d855eced791f7b49c0a14668be7470b0ea8bc051dfbbf9a850773f7d3b2"
+  },
+  "after": {
+    "Taskfile.yml": "498dadfd75833b82651eaad88a2c6523f22e21368c8dc3dcc65a261e71489d24",
+    "Tests/scripts/vm-physical-evidence.bats": "f225f5ccd54da3bbba8d48536e0b1c1c43bcc8b32b1322883f0229b3757d4713",
+    "scripts/vm-physical-evidence-lib.sh": "2130b7016acfadb21c09d66301f922044210f30989d288ff5bbcfc17bdceef28",
+    "scripts/vm-menu-pointer-lib.sh": "d385d3051afe5b0d8b8f1b979ea41e8aa7dc85476c39e3b054c0c3cea31fee80",
+    "scripts/vm-window-resize-lib.sh": "fba5397e2d798fccfcd022949c9cda6e03fe490d0616f43785de43d0615199b2",
+    "scripts/vm-guest-exec-lib.sh": "22b2b52a7c2c0d5d3b63cfe1134dab167992b8c18ed2d7f322791cf3eecc6812",
+    "scripts/vm-guest-exec.py": "005d9d855eced791f7b49c0a14668be7470b0ea8bc051dfbbf9a850773f7d3b2"
+  },
+  "outputSha256": "8128472fd34d3d45f12160975b5dd639edfa75d3a9b5b22e0851cbf3a8ee1614"
+}

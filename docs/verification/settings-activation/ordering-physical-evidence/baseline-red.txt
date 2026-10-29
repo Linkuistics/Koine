@@ -1,0 +1,82 @@
+task: [check:vm-physical-evidence] bats Tests/scripts/vm-physical-evidence.bats
+1..13
+not ok 1 strict menu route retains exact raw completions, VM, ordinals and unchanged waits
+# (in test file Tests/scripts/vm-physical-evidence.bats, line 69)
+#   `jq -se '. == [["screen","size","--vm","exact-physical-vm","--json"],' failed
+# Pointer source frame: 100, 0, 22, 15
+# physical CLI diagnostic 1
+# Pointer: approach=(99, 0) target=(111, 7) display=1920x1080
+# physical CLI diagnostic 2
+# physical CLI diagnostic 3
+# physical CLI diagnostic 4
+# false
+not ok 2 strict successful resize preserves corner, eleven held points, release and waits
+# (in test file Tests/scripts/vm-physical-evidence.bats, line 86)
+#   `jq -se 'length == 14 and .[0] == ["agent","windows","--vm","exact-physical-vm","--json"]' failed
+# physical CLI diagnostic 1
+# Resize pointer: start=(517, 749) destination=(740, 940) held points=10 interval=0.15s down dwell=0.2s
+# physical CLI diagnostic 2
+# physical CLI diagnostic 3
+# physical CLI diagnostic 4
+# physical CLI diagnostic 5
+# physical CLI diagnostic 6
+# physical CLI diagnostic 7
+# physical CLI diagnostic 8
+# physical CLI diagnostic 9
+# physical CLI diagnostic 10
+# physical CLI diagnostic 11
+# physical CLI diagnostic 12
+# physical CLI diagnostic 13
+# physical CLI diagnostic 14
+# false
+not ok 3 strict menu rejects mismatching and incomplete move or click payloads
+# (in test file Tests/scripts/vm-physical-evidence.bats, line 111)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 4 strict screen dimensions reject missing, malformed, fractional and oversized payloads
+# (in test file Tests/scripts/vm-physical-evidence.bats, line 128)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 5 strict helper refuses CLI errors and invalid base envelopes at every menu stage
+# (from function `assert_blocked' in file Tests/scripts/vm-physical-evidence.bats, line 62,
+#  in test file Tests/scripts/vm-physical-evidence.bats, line 152)
+#   `assert_blocked' failed
+# physical CLI diagnostic 1
+not ok 6 strict geometry errors latch before any pointer action without legacy failure capture
+# (in test file Tests/scripts/vm-physical-evidence.bats, line 163)
+#   `[[ "${status}" == 125 && "${output}" != *'legacy fail:'* ]]' failed
+not ok 7 an explicit empty or unknown physical evidence root never selects legacy transport
+# (in test file Tests/scripts/vm-physical-evidence.bats, line 175)
+#   `[[ "${status}" != 0 && ! -s "${physical_calls}" ]]' failed
+not ok 8 a prior latch blocks all physical reads and input
+# (in test file Tests/scripts/vm-physical-evidence.bats, line 185)
+#   `[[ "${status}" == 125 && ! -s "${physical_calls}" ]]' failed
+not ok 9 strict resize stops at each failed dispatch without unrecorded release
+# (in test file Tests/scripts/vm-physical-evidence.bats, line 195)
+#   `if drag_window_corner 740 940; then return 1; fi' failed
+# physical CLI diagnostic 1
+# Resize pointer: start=(517, 749) destination=(740, 940) held points=10 interval=0.15s down dwell=0.2s
+# physical CLI diagnostic 2
+# physical CLI diagnostic 3
+# physical CLI diagnostic 4
+# physical CLI diagnostic 5
+# physical CLI diagnostic 6
+# physical CLI diagnostic 7
+# physical CLI diagnostic 8
+# physical CLI diagnostic 9
+# physical CLI diagnostic 10
+# physical CLI diagnostic 11
+# physical CLI diagnostic 12
+# physical CLI diagnostic 13
+# physical CLI diagnostic 14
+not ok 10 strict resize rejects wrong down and up coordinates or button
+# (in test file Tests/scripts/vm-physical-evidence.bats, line 213)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 11 strict resize refuses incomplete, ambiguous and unusable window observations
+# (in test file Tests/scripts/vm-physical-evidence.bats, line 232)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 12 strict resize validates destinations before reading windows or pressing a button
+# (in test file Tests/scripts/vm-physical-evidence.bats, line 244)
+#   `[[ "${status}" == 125 && ! -s "${physical_calls}" ]]' failed
+not ok 13 adapter interruption remains distinct through a physical helper and stops input
+# (in test file Tests/scripts/vm-physical-evidence.bats, line 252)
+#   `[[ "${status}" == 130 ]]' failed
+task: Failed to run task "check:vm-physical-evidence": exit status 1

@@ -1,0 +1,31 @@
+{
+  "command": [
+    "mise",
+    "exec",
+    "--",
+    "task",
+    "check:vm-physical-evidence"
+  ],
+  "status": 201,
+  "before": {
+    "Taskfile.yml": "a580b7e24b396fc89d71527bf5bbef71a78e970e821754ad651082de531786b1",
+    "Tests/scripts/vm-physical-evidence.bats": "02e87449076e7ded3a244e4bee1f787d4b6616f7f2f9215f4bb45ade058d7220",
+    "scripts/vm-menu-pointer-lib.sh": "fad671a58ff4f2cc5f8ee3fd6c00474c69bfb8f0203ce32c5206ebef7dc3f5f6",
+    "scripts/vm-window-resize-lib.sh": "1396eda19afef9d067b5f10c69007bd79427ab80fb93070a83c274b1bbe4ee8b",
+    "scripts/vm-guest-exec-lib.sh": "22b2b52a7c2c0d5d3b63cfe1134dab167992b8c18ed2d7f322791cf3eecc6812",
+    "scripts/vm-guest-exec.py": "005d9d855eced791f7b49c0a14668be7470b0ea8bc051dfbbf9a850773f7d3b2",
+    "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md": "1818b9a0a2209e7d93afbc4b2507a1425a67065d3627a4f4b22752ca55aba2fa",
+    "docs/verification/settings-activation/ORDERING-NONEXEC-RESULTS.md": "f70d61401ffad6a253759919c586338fc3ec299aa6a44c46105af695ed00140d"
+  },
+  "after": {
+    "Taskfile.yml": "a580b7e24b396fc89d71527bf5bbef71a78e970e821754ad651082de531786b1",
+    "Tests/scripts/vm-physical-evidence.bats": "02e87449076e7ded3a244e4bee1f787d4b6616f7f2f9215f4bb45ade058d7220",
+    "scripts/vm-menu-pointer-lib.sh": "fad671a58ff4f2cc5f8ee3fd6c00474c69bfb8f0203ce32c5206ebef7dc3f5f6",
+    "scripts/vm-window-resize-lib.sh": "1396eda19afef9d067b5f10c69007bd79427ab80fb93070a83c274b1bbe4ee8b",
+    "scripts/vm-guest-exec-lib.sh": "22b2b52a7c2c0d5d3b63cfe1134dab167992b8c18ed2d7f322791cf3eecc6812",
+    "scripts/vm-guest-exec.py": "005d9d855eced791f7b49c0a14668be7470b0ea8bc051dfbbf9a850773f7d3b2",
+    "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md": "1818b9a0a2209e7d93afbc4b2507a1425a67065d3627a4f4b22752ca55aba2fa",
+    "docs/verification/settings-activation/ORDERING-NONEXEC-RESULTS.md": "f70d61401ffad6a253759919c586338fc3ec299aa6a44c46105af695ed00140d"
+  },
+  "outputSha256": "4420c69efdf3160f7a7e0fd558af33b7b4ae0a1bd7d000b31d0792ff16d97adb"
+}
