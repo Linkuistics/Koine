@@ -1,0 +1,120 @@
+{
+  "scope": "Bounded literal candidate inventory of ordinary scenario/common/desktop source, read in full for reachable classification. Includes comments/definitions; not dynamic-shell or graph completeness. Original caller bytes unchanged.",
+  "subjects": {
+    "scripts/vm-verify-menu-bar.sh": "4cedeaebf72c19c65af51db6d57bace380508ffa1c8dee6e784997f22e0f74f2",
+    "scripts/vm-verify-lib.sh": "0cbd67a3b3aad4d27df39370d106637800716101cb619bf704901cf7235f1035",
+    "scripts/vm-verify-desktop-lib.sh": "22f7c7026a9f3f7706783f6da56f517b468697eaad9e1fcd5f0570ee72932452"
+  },
+  "candidates": [
+    {
+      "path": "scripts/vm-verify-menu-bar.sh",
+      "line": 84,
+      "text": "grant_system_events_automation"
+    },
+    {
+      "path": "scripts/vm-verify-menu-bar.sh",
+      "line": 180,
+      "text": "reveal_click '.id==\"grant-label\"'"
+    },
+    {
+      "path": "scripts/vm-verify-menu-bar.sh",
+      "line": 219,
+      "text": "click '(.id // \"\") | startswith(\"deny-\")'"
+    },
+    {
+      "path": "scripts/vm-verify-menu-bar.sh",
+      "line": 221,
+      "text": "click '(.id // \"\") | startswith(\"deny-\")'"
+    },
+    {
+      "path": "scripts/vm-verify-menu-bar.sh",
+      "line": 244,
+      "text": "reveal_click '.id==\"login-launch\"'"
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 121,
+      "text": "click() {"
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 131,
+      "text": "    testanyware input click $(jq -r '\"\\(.positionX + .sizeWidth / 2 | floor) \\(.positionY + .sizeHeight / 2 | floor)\"' <<<\"${e}\") >/dev/null"
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 219,
+      "text": "# reveal_click <jq condition>: scroll the element on screen, then click it."
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 220,
+      "text": "reveal_click() {"
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 355,
+      "text": "# control it; grant_system_events_automation answers that prompt."
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 367,
+      "text": "grant_system_events_automation() {"
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 370,
+      "text": "    found=\"$(testanyware screen find-text \"Allow\" --timeout 30 --json 2>/dev/null |"
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 374,
+      "text": "    testanyware input click $(jq -r '\"\\(.x + .width / 2 | floor) \\(.y + .height / 2 | floor)\"' <<<\"${found}\") >/dev/null"
+    },
+    {
+      "path": "scripts/vm-verify-desktop-lib.sh",
+      "line": 37,
+      "text": "    reveal_click '.id==\"grant-label\"'"
+    },
+    {
+      "path": "scripts/vm-verify-desktop-lib.sh",
+      "line": 40,
+      "text": "    for capability in \"$@\"; do reveal_click \".id==\\\"capability-${capability}\\\"\"; done"
+    },
+    {
+      "path": "scripts/vm-verify-desktop-lib.sh",
+      "line": 41,
+      "text": "    reveal_click '.role==\"button\" and .label==\"Create Grant\"'"
+    },
+    {
+      "path": "scripts/vm-verify-desktop-lib.sh",
+      "line": 43,
+      "text": "    click '.role==\"button\" and .label==\"Copy\"'"
+    },
+    {
+      "path": "scripts/vm-verify-desktop-lib.sh",
+      "line": 45,
+      "text": "    click '.role==\"button\" and .label==\"Done\"'"
+    },
+    {
+      "path": "scripts/vm-verify-desktop-lib.sh",
+      "line": 80,
+      "text": "no_consent_dialog() {"
+    },
+    {
+      "path": "scripts/vm-verify-desktop-lib.sh",
+      "line": 83,
+      "text": "    found=\"$(testanyware screen find-text \"${DIALOG_TEXT}\" --json)\" || fail \"the screen could not be read\""
+    },
+    {
+      "path": "scripts/vm-verify-desktop-lib.sh",
+      "line": 102,
+      "text": "    click '.role==\"button\" and .label==\"Add\"'"
+    },
+    {
+      "path": "scripts/vm-verify-desktop-lib.sh",
+      "line": 133,
+      "text": "    click '.id==\"Koine_Toggle\"'"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "before": {
+    "Taskfile.yml": "37328075ca5e8dd2d3ce98ca38917797ae8bce98c1a0f039b107b53a31303de3",
+    "scripts/check-doc-links.py": "7256dc194de0b8a70187b4fe671b5dd5eb878be7d6d782330378b4c7d7a3edc5",
+    "docs/verification/settings-activation/ORDERING-CLICK-RESULTS.md": "40f27d5ce245a2434727e800ecc4d60bf7193693a40d0e270ea314835af6fe83",
+    "docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md": "545200ec15c0bea549055666d4c519aa90c9835ba53496b9a09d76c2e019cb93"
+  },
+  "after": {
+    "Taskfile.yml": "37328075ca5e8dd2d3ce98ca38917797ae8bce98c1a0f039b107b53a31303de3",
+    "scripts/check-doc-links.py": "7256dc194de0b8a70187b4fe671b5dd5eb878be7d6d782330378b4c7d7a3edc5",
+    "docs/verification/settings-activation/ORDERING-CLICK-RESULTS.md": "40f27d5ce245a2434727e800ecc4d60bf7193693a40d0e270ea314835af6fe83",
+    "docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md": "545200ec15c0bea549055666d4c519aa90c9835ba53496b9a09d76c2e019cb93"
+  },
+  "argv": [
+    "mise",
+    "exec",
+    "--",
+    "task",
+    "check:docs"
+  ],
+  "exit": 201,
+  "stdout": "docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md: missing target context-predicate.txt\ndocs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md: missing target context-qualify-filter.sh\n",
+  "stderr": "task: [check:docs] scripts/check-doc-links.py \ntask: Failed to run task \"check:docs\": exit status 1\n"
+}

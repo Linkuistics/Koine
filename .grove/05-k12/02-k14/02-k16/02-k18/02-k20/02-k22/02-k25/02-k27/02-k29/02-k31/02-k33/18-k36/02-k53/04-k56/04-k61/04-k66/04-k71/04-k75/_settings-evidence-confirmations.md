@@ -107,3 +107,14 @@ confirmation, k76 complete adoption/signals and both held-pointer controls,
 k67 positive setup/title/liveness and k62 complete prefix/duty reconciliation.
 K57/k54 and every runtime slot remain held; no VM/candidate/freeze or ancestor
 closure. Secret-bearing consent roots remain private.
+
+## K80 decomposition and click boundary
+
+K80 decomposes into source-only OCR/Allow/element clicks k84 and all remaining
+capture/background/file/environment/lifecycle/collection helpers k85. Read
+docs/verification/settings-activation/ORDERING-CLICK-RESULTS.md. K84's independent
+review and every earned integration precede consumption; no ordinary caller or
+root is changed. K85 retains every remaining original k80 duty, k81 all exec and
+one-shot confirmations, and k76 complete adoption/signals/both held-pointer cases.
+Snapshot all-tree/empty-AXValue availability and private secret-bearing root
+limits remain binding. No runtime slot, candidate, freeze or ancestor closes.

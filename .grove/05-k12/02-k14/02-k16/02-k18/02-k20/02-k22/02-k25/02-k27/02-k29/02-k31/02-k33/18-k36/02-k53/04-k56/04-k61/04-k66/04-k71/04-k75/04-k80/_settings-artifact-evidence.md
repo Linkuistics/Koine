@@ -1,4 +1,4 @@
-# settings-artifact-evidence-k80
+# settings-artifact-evidence-k80 — brief
 
 ## Goal
 Complete the remaining OCR, physical-click, capture/background, upload/install, artifact and lifecycle evidence helper paths under k75.
@@ -40,3 +40,23 @@ confirmation, k76 complete adoption/signals and both held-pointer controls,
 k67 positive setup/title/liveness and k62 complete prefix/duty reconciliation.
 K57/k54 and every runtime slot remain held; no VM/candidate/freeze or ancestor
 closure. Secret-bearing consent roots remain private.
+
+## Decisions (running log)
+
+- 2026-10-29: Adopt the mandated k80 in the clean jj workspace. Tier 2
+  coverage generation 2026-10-29T08:49:50Z reports partial shell parses and
+  untracked Bats metadata. Read the actual bounded callers and missed ranges;
+  graph results are not a completeness claim.
+- 2026-10-29: The reviewed ordering design authorizes implementation. The
+  remaining paths split at independently checkable OCR/physical-click helpers
+  and capture/file/lifecycle helpers. Decompose there and execute only the first
+  child. Keep all original k80/k75/k71/k66 duties, native availability limits,
+  private secret-bearing roots, shared writer/latch and later consumption holds.
+
+## Decomposition
+K84 supplies source-only checked OCR, exact Allow and element-centre physical
+click helpers and their controls. K85 supplies all remaining capture/background,
+upload/install/environment/lifecycle/collection paths. Every original criterion
+above survives; each artifact requires independent review/every earned integration
+before downstream consumption. Execute only k84 in this session. K81/k76/k67/
+k62/k57/k54 and all runtime holds remain unchanged.

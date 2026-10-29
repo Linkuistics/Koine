@@ -1,0 +1,32 @@
+{
+  "method": "Test-only bare OCR/Allow routes and extracted unchanged legacy click; exec trigger/confirmation excluded. First failing assertion per test, not independent red proof for every nested vector.",
+  "before": {
+    "Taskfile.yml": "ffb50662bb3f95b0fe7db077ab0ab2bd94a2468b8e2850dafc8fe95f75ad79cd",
+    "Tests/scripts/vm-click-evidence.bats": "20ccca4cca172609375968a680e25c09d4c49904f58c74d8ef85befdc08e9290",
+    "scripts/vm-verify-lib.sh": "0cbd67a3b3aad4d27df39370d106637800716101cb619bf704901cf7235f1035",
+    "scripts/vm-verify-desktop-lib.sh": "22f7c7026a9f3f7706783f6da56f517b468697eaad9e1fcd5f0570ee72932452",
+    "scripts/vm-ui-evidence-lib.sh": "610efb270c893ea637fa63fa317fee6e8b981d3e3d6181bcad6ee6f18a8574b2",
+    "scripts/vm-guest-exec-lib.sh": "d9540371ce2cbfd6a717ce8e4243346f4af630d43c6421fcd919b1c78ed2e785",
+    "scripts/vm-guest-exec.py": "a11e688bf4e508f104333c05273b1be55a173c15d3666885e9b4b31c1f6ef6d0"
+  },
+  "after": {
+    "Taskfile.yml": "ffb50662bb3f95b0fe7db077ab0ab2bd94a2468b8e2850dafc8fe95f75ad79cd",
+    "Tests/scripts/vm-click-evidence.bats": "20ccca4cca172609375968a680e25c09d4c49904f58c74d8ef85befdc08e9290",
+    "scripts/vm-verify-lib.sh": "0cbd67a3b3aad4d27df39370d106637800716101cb619bf704901cf7235f1035",
+    "scripts/vm-verify-desktop-lib.sh": "22f7c7026a9f3f7706783f6da56f517b468697eaad9e1fcd5f0570ee72932452",
+    "scripts/vm-ui-evidence-lib.sh": "610efb270c893ea637fa63fa317fee6e8b981d3e3d6181bcad6ee6f18a8574b2",
+    "scripts/vm-guest-exec-lib.sh": "d9540371ce2cbfd6a717ce8e4243346f4af630d43c6421fcd919b1c78ed2e785",
+    "scripts/vm-guest-exec.py": "a11e688bf4e508f104333c05273b1be55a173c15d3666885e9b4b31c1f6ef6d0"
+  },
+  "argv": [
+    "KOINE_CLICK_BASELINE=1",
+    "mise",
+    "exec",
+    "--",
+    "bats",
+    "Tests/scripts/vm-click-evidence.bats"
+  ],
+  "exit": 1,
+  "stdout": "1..14\nnot ok 1 OCR preserves original bytes VM argv and nonconstant receipt\n# (in test file Tests/scripts/vm-click-evidence.bats, line 98)\n#   `cmp \"${click_replies}/1.json\" \"${click_root}/000001/raw.stdout\"' failed with status 2\n# click diagnostic 1\n# cmp: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-8CESQz/test/1/evidence/000001/raw.stdout: No such file or directory\nnot ok 2 complete OCR empty is clean data without a timeout or second read\n# (in test file Tests/scripts/vm-click-evidence.bats, line 108)\n#   `jq -e '.outcome == \"clean\"' \"${click_root}/000001/result.json\"' failed with status 2\n# click diagnostic 1\n# true\n# jq: error: Could not open file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-8CESQz/test/2/evidence/000001/result.json: No such file or directory\nnot ok 3 incomplete OCR counts field types and truncation cannot qualify absence\n# (in test file Tests/scripts/vm-click-evidence.bats, line 122)\n#   `[[ \"${status}\" == 125 ]]' failed\nnot ok 4 failed partial and typed-error OCR stop before click and sleep\n# (in test file Tests/scripts/vm-click-evidence.bats, line 140)\n#   `[[ \"${status}\" == 125 ]]' failed\nnot ok 5 Allow chooses first exact text floors its centre and clicks once\n# (in test file Tests/scripts/vm-click-evidence.bats, line 150)\n#   `jq -se '.[1] == [\"input\",\"click\",\"110\",\"220\",\"--vm\",\"exact-click-vm\",\"--json\"] and length == 2' \"${click_calls}\"' failed\n# click diagnostic 1\n# click diagnostic 2\n# false\nnot ok 6 clean OCR without exact Allow fails without a click\n# (in test file Tests/scripts/vm-click-evidence.bats, line 158)\n#   `[[ \"${status}\" == 125 ]]' failed\nnot ok 7 invalid Allow size and out-of-range derived coordinates refuse input\n# (in test file Tests/scripts/vm-click-evidence.bats, line 170)\n#   `[[ \"${status}\" == 125 ]]' failed\nnot ok 8 wrong click echo button count or failed completion stops without settling\n# (in test file Tests/scripts/vm-click-evidence.bats, line 187)\n#   `[[ \"${status}\" == 125 && ! -s \"${click_waits}\" ]]' failed\nnot ok 9 element click consumes one geometry snapshot and preserves centre input wait\n# (in test file Tests/scripts/vm-click-evidence.bats, line 197)\n#   `jq -se '. == [[\"agent\",\"snapshot\",\"--mode\",\"full\",\"--window\",\"System Settings\",\"--depth\",\"14\",\"--vm\",\"exact-click-vm\",\"--json\"],[\"input\",\"click\",\"160\",\"112\",\"--vm\",\"exact-click-vm\",\"--json\"]]' \"${click_calls}\"' failed\n# click diagnostic 1\n# click diagnostic 2\n# false\nnot ok 10 missing element tree geometry or invalid centre stops before element click\n# (in test file Tests/scripts/vm-click-evidence.bats, line 211)\n#   `[[ \"${status}\" == 125 ]]' failed\nnot ok 11 snapshot nonzero completion with valid geometry never permits input\n# (in test file Tests/scripts/vm-click-evidence.bats, line 221)\n#   `[[ \"${status}\" == 125 ]]' failed\nnot ok 12 failed local centre decoder output is never used for input\n# (in test file Tests/scripts/vm-click-evidence.bats, line 238)\n#   `[[ \"${status}\" == 125 ]]' failed\nnot ok 13 failed or interrupted settling keeps exact local status and stops later input\n# (in test file Tests/scripts/vm-click-evidence.bats, line 251)\n#   `if [[ \"${code}\" == 130 ]]; then [[ \"${status}\" == 130 ]]; else [[ \"${status}\" == 125 ]]; fi' failed\nnot ok 14 invalid roots and arguments refuse before dispatch or cwd writes\n# (in test file Tests/scripts/vm-click-evidence.bats, line 260)\n#   `[[ \"${status}\" == 125 && ! -s \"${click_calls}\" ]]' failed\n",
+  "stderr": ""
+}
