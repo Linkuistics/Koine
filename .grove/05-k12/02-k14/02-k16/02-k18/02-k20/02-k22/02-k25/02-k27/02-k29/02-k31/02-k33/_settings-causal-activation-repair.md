@@ -1,5 +1,14 @@
 # settings-causal-activation-repair-k33 — brief
 
+## Application implementation boundary
+
+K36 now contains application k52, shared harness/caller k53 and qualification
+k54. K52 implements the reviewed order and passes compilation and nine existing
+headless controls; ORDERING-APPLICATION-RESULTS.md retains their precise limits.
+No signed evaluation subject or guest exists; every E/A slot is NOT RUN.
+K53/K54 retain every shared-harness, freeze, acceptance and original-duty
+obligation. K36 and all causal/product ancestors remain open.
+
 ## Reviewed ordering design and implementation handoff
 
 K50's review and k51's integration are complete; ORDERING-REVIEW.md under

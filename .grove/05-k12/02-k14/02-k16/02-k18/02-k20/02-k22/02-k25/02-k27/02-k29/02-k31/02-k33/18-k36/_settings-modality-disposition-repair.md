@@ -1,4 +1,24 @@
-# settings-modality-disposition-repair-k36
+# settings-modality-disposition-repair-k36 — brief
+
+## Application implementation boundary
+
+K52 implements the reviewed order in the existing shared show method and passes
+task build plus nine existing interval/buffer controls. The durable receipt is
+docs/verification/settings-activation/ORDERING-APPLICATION-RESULTS.md. These are
+source/compilation and recorder results, not native repair acceptance. K53 and
+K54 remain live as described below; no signed evaluation subject or guest is
+produced and every E/A slot is NOT RUN. K36 and all causal/product ancestors
+remain open. All original duties, closed caps and held causal slots survive.
+
+## Implementation decomposition
+
+K36 now has independently verifiable children: k52 implements and compiles the
+reviewed shared application order; k53 repairs and checks the complete shared
+scenario/helpers and finite caller; k54 owns final readiness, signing/freeze
+and the declared finite evaluation/ordinary outcome. Each retains the original
+charter below. Only the first child runs in the decomposing session. No build
+or recorder control supplies native repair acceptance. All runtime stays held
+until the shared harness and every earned review/integration are complete.
 
 ## Reviewed ordering design and implementation handoff
 

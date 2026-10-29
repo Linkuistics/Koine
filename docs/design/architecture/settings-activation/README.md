@@ -6,7 +6,10 @@ request activation once, then request key/front ordering without deferral.
 The [distinct finite protocol](../../../verification/settings-activation/ORDERING-EVALUATION-PLAN.md)
 fixes two focused guests and, only if both qualify, three separately declared
 complete ordinary guests. Both sets use the same newly signed candidate with
-application diagnostics disabled. No candidate has been built or run.
+application diagnostics disabled. No signed evaluation subject has been built or run.
+The [application implementation](../../../verification/settings-activation/ORDERING-APPLICATION-RESULTS.md)
+now compiles and passes existing headless controls; shared harness repairs and
+native acceptance remain live.
 
 Antony approved the named empirical scope and finite acceptance convention.
 The [review and integration](../../../verification/settings-activation/ORDERING-REVIEW.md)
@@ -31,8 +34,8 @@ Run `mise exec -- task design:serve PORT=8801` from the repository root and open
 The existing task serves only the architecture presentation directory.
 
 Start each graph at the dark **Start here** node; the sequence starts at its
-first message. The new sequence shows proposed application calls, not measured
-native completion. The assessment numbers the existing source call order before
+first message. The new sequence shows the implemented application call order,
+not measured native completion. The assessment numbers the assessed original call order before
 its dotted reasoning edge. Other graphs describe decisions or outcome rules;
 none is a proven causal graph. The sources are editable Mermaid. The viewer
 loads Mermaid 12.0.0 from jsDelivr and needs network access; reload after editing.
@@ -44,7 +47,7 @@ Current changes:
 
 - [Evaluation → Prepare one window, activate once, then order it](http://127.0.0.1:8801/settings-activation/#diagram-ordering-sequence) — Defines the proposed synchronous order, readiness guard and retained-window ownership.
 - [Evaluation → Two focused guests before three complete ordinary guests](http://127.0.0.1:8801/settings-activation/#diagram-evaluation-outcomes) — Fixes the two sets, rejection precedence and stops on unavailable evidence.
-- [Correction → Current path and the approved empirical design](http://127.0.0.1:8801/settings-activation/#diagram-correction-assessment) — Connects the existing source and historical limits to the reviewed design.
+- [Correction → Assessed original path and the implemented empirical candidate](http://127.0.0.1:8801/settings-activation/#diagram-correction-assessment) — Connects the assessed original source and historical limits to the implemented candidate.
 - [Scope → Accepted scope for repair design](http://127.0.0.1:8801/settings-activation/#diagram-scope-choice) — Adds the proposed bounds and unchanged-candidate requirement to the accepted scope.
 - [Single-request ordering design](../../../specs/settings-activation-discrimination.md#single-request-ordering-design) — Specifies caller effects, preconditions, alternatives and the absence of an evidenced deterministic native fake.
 - [Finite protocol](../../../verification/settings-activation/ORDERING-EVALUATION-PLAN.md) — Defines raw-evidence qualification, diagnostics/timing limits, exact freeze, stop and cleanup obligations.

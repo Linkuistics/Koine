@@ -21,11 +21,12 @@ the same retained window, request activation once, then request key/front
 ordering. The [distinct protocol](../verification/settings-activation/ORDERING-EVALUATION-PLAN.md)
 fixes two focused guests and a separate three-guest complete ordinary set, with
 one unchanged signed candidate and diagnostics disabled in both. These are
-conventions, not statistical bounds. No candidate has been built or run.
+conventions, not statistical bounds. No signed evaluation subject has been built or run.
 The [independent review and integration](../verification/settings-activation/ORDERING-REVIEW.md)
-are complete. K36 owns implementation and verification of the application,
-scenario/helpers and finite caller before runtime freeze; no launch follows
-from documentary closure alone.
+are complete. The [application implementation](../verification/settings-activation/ORDERING-APPLICATION-RESULTS.md)
+now supplies the reviewed call order and passes compilation and existing headless
+controls. K36 retains the shared scenario/helper and finite-caller repairs before
+runtime freeze. Repair acceptance remains unresolved.
 
 This amends a prerequisite; it does not satisfy it. Native cause and ownership
 remain unresolved. The retained evidence still does **not** support the finite,
@@ -102,7 +103,7 @@ support those limits. No cooperating TextEdit yield is assumed or requested.
 
 | Design | Benefit | Cost and disposition |
 |---|---|---|
-| Reverse inside the existing show operation — selected for review | One owner keeps window lifetime, navigation and the two requests together; callers retain the same interface. Small, reversible application change. | Affects launch/reopen/status-line callers as well as Settings. Requires complete ordinary acceptance; no contract guarantees improvement. |
+| Reverse inside the existing show operation — selected and implemented | One owner keeps window lifetime, navigation and the two requests together; callers retain the same interface. Small, reversible application change. | Affects launch/reopen/status-line callers as well as Settings. Requires complete ordinary acceptance; no contract guarantees improvement. |
 | Reverse only in the menu caller or add a caller-selectable order | Could limit the changed path to menu actions. | Splits activation knowledge across callers or adds an unsupported mode. Divergent launch/reopen behavior and a wider test surface earn no benefit for the accepted single-window contract. Not selected. |
 | Keep current order | No behavioral migration. | Preserves the established unresolved failure. Remains the baseline if the empirical candidate is rejected, not a successful repair. |
 

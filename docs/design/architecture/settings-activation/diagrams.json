@@ -1,6 +1,6 @@
 {
   "title": "Settings activation: concrete ordering evaluation",
-  "intro": "Start at each dark Start here node; the sequence starts at its first message. Application call order is proposed, not measured native completion. Design review and integration are complete; implementation and evidence verification precede freeze.",
+  "intro": "Start at each dark Start here node; the sequence starts at its first message. Application call order is implemented, not measured native completion. The application compiles; shared harness repairs and runtime acceptance remain live.",
   "groups": [
     {
       "id": "evidence",
@@ -15,7 +15,7 @@
     {
       "id": "correction",
       "title": "Correction assessment",
-      "description": "The bounded no-candidate finding survives review; a named empirical exception is approved for design only."
+      "description": "The no-API-correction finding survives review; the reviewed empirical order is implemented, with acceptance unresolved."
     },
     {
       "id": "evaluation",
@@ -25,8 +25,8 @@
   ],
   "discussion": {
     "title": "Single-request reversal and fixed behavioral acceptance",
-    "status": "Design review integrated; implementation and verification before freeze",
-    "summary": "Prepare the same retained window and section, request activation once, then key/front ordering. Two focused guests must qualify before three separate complete ordinary guests, with identical signed bytes and diagnostics disabled. Both sets require strict single-attempt transport, positive TextEdit setup, an original-list Settings-title audit and separate process-loss classification. Zero-window rejection requires liveness. The prefix includes TextEdit quit; screenshots retain context, not automatic acceptance. Restart disconnect stays unavailable despite a later boot; demonstrably unavailable required completion holds E01 for a new decision. Qualified recurrence rejects reversal; any other required failure or unavailable evidence stops acceptance and later slots. A pass covers only that sample. Native cause and ownership remain unresolved. Review and integration are complete; no signed subject, build or guest exists.",
+    "status": "Application compiles; shared harness repairs and native acceptance remain live",
+    "summary": "Prepare the same retained window and section, request activation once, then key/front ordering. Two focused guests must qualify before three separate complete ordinary guests, with identical signed bytes and diagnostics disabled. Both sets require strict single-attempt transport, positive TextEdit setup, an original-list Settings-title audit and separate process-loss classification. Zero-window rejection requires liveness. The prefix includes TextEdit quit; screenshots retain context, not automatic acceptance. Restart disconnect stays unavailable despite a later boot; demonstrably unavailable required completion holds E01 for a new decision. Qualified recurrence rejects reversal; any other required failure or unavailable evidence stops acceptance and later slots. A pass covers only that sample. Native cause and ownership remain unresolved. The reviewed application order is implemented; compilation and nine existing headless controls pass. Shared harness repairs and the finite caller remain required before freeze. No signed evaluation subject or guest exists.",
     "diagramIds": [
       "ordering-sequence",
       "evaluation-outcomes",
@@ -66,21 +66,21 @@
       "group": "scope",
       "title": "Accepted scope for repair design",
       "source": "scope-choice.mmd",
-      "caption": "The named empirical scope is approved. Review and integration are complete. One local reversal, two focused and three complete ordinary guests use one unchanged candidate with diagnostics disabled. Implementation and evidence checks precede freeze. Causal slots remain held; no signed subject or result exists."
+      "caption": "The named empirical scope is approved. Review and integration are complete. One local reversal, two focused and three complete ordinary guests use one unchanged candidate with diagnostics disabled. The application compiles; shared harness repairs and evidence checks precede freeze. Causal slots remain held; no signed subject or result exists."
     },
     {
       "id": "correction-assessment",
       "group": "correction",
-      "title": "Current path and the approved empirical design",
+      "title": "Assessed original path and the implemented empirical candidate",
       "source": "correction-assessment.mmd",
-      "caption": "The numbered existing source path is unchanged; the dotted edge enters reasoning. Both orders previously succeeded with synchronous file tracing. The reviewed design fixes separate behavioral sets, not comparative risk or causal proof. Implementation and runtime have not occurred."
+      "caption": "The numbered path is the assessed original order; the dotted edge enters reasoning. Both orders previously succeeded with synchronous file tracing. The reviewed reversal now compiles and passes existing headless controls. Shared harness repairs and runtime acceptance remain live; no comparative risk or cause is established."
     },
     {
       "id": "ordering-sequence",
       "group": "evaluation",
       "title": "Prepare one window, activate once, then order it",
       "source": "ordering-sequence.mmd",
-      "caption": "Proposed synchronous application order, including readiness failure. The window is constructed and navigation applied before activation. A return does not imply activation completed; the OS may decline. Launch, reopen and both menu callers share this owner. No retry, yielding or deferral is added."
+      "caption": "Implemented synchronous application order, including readiness failure. The window is constructed and navigation applied before activation. A return does not imply activation completed; the OS may decline. Launch, reopen and both menu callers share this owner. No retry, yielding or deferral is added."
     },
     {
       "id": "evaluation-outcomes",

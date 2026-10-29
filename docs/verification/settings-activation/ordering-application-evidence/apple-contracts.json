@@ -1,0 +1,25 @@
+{
+  "sources": [
+    {
+      "url": "https://developer.apple.com/documentation/appkit/nsapplication/activate%28%29.md",
+      "retrievedAt": "2026-10-29T04:44:44.911278+00:00",
+      "status": 200,
+      "sha256": "0bc5053f9f225578c9ac4ab1015fec5ea346667d284fec5b991fab2bc26e90c3",
+      "bytes": 1234,
+      "checkedExcerpt": "calling this method doesn\u2019t guarantee app activation"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/appkit/nswindow/makekeyandorderfront%28_%3A%29.md",
+      "retrievedAt": "2026-10-29T04:44:44.958072+00:00",
+      "status": 200,
+      "sha256": "cb4103bc06c42d62b13b2a480a4eafbed61b30fd6ac3ba1ed7bd5e47af019057",
+      "bytes": 1758,
+      "checkedExcerpt": "Moves the window to the front of the screen list, within its level"
+    }
+  ],
+  "sdkHeader": {
+    "path": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSApplication.h",
+    "sha256": "33ed7a975710fc58046253c6d12f5210acb99418ae5e2c3f6a89c585fc3ee793"
+  },
+  "fullResponsesRetained": false
+}

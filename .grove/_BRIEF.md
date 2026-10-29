@@ -1,5 +1,15 @@
 # Koine menu-bar VM reliability — brief
 
+## Application implementation boundary
+
+K36 decomposes into application k52, shared harness/caller k53 and qualification
+k54. K52 implements activation before window ordering in the existing shared
+method; task build and nine existing interval/buffer controls pass. Read
+docs/verification/settings-activation/ORDERING-APPLICATION-RESULTS.md for limits.
+No signed evaluation subject or guest exists; E01/E02 and A01/A02/A03 are NOT RUN.
+Shared harness repairs and every earned review/integration precede runtime.
+Repair, native cause and ownership remain unresolved; no ancestor closes.
+
 ## Reviewed ordering design and implementation handoff
 
 K50's review and k51's integration are complete; ORDERING-REVIEW.md under

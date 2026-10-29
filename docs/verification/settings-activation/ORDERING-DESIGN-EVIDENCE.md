@@ -18,7 +18,10 @@ The working copy began empty at jj change `krwtqnvn`, parent `0140ef27`.
 pre-coordination/unverified-generation error as earlier sessions. No project,
 generation or coverage result was available. No graph session was stopped.
 The following exact reads are bounded source evidence, not an exhaustive
-repository audit. Application/source bytes remain unchanged in this design.
+repository audit. Application/source bytes remained unchanged in that design.
+The later [application implementation](ORDERING-APPLICATION-RESULTS.md) supplies
+the reviewed reversal and its separate build/control receipt; the source
+observations below remain the pre-implementation evidence.
 
 | Input | Material finding |
 |---|---|

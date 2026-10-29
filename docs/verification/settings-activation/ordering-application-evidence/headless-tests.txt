@@ -1,0 +1,35 @@
+task: [check:settings-activation-interval] swift build --build-tests
+Building for debugging...
+[Computing dependencies]
+[Provisioning 4 / 65]
+[3 / 131]
+Build complete! (0.98 sec.)
+task: [check:settings-activation-interval] scripts/stage-provider-framework.sh debug
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Products/Debug/PackageFrameworks/KoineProviderAPI.framework
+task: [check:settings-activation-interval] swift test --skip-build --filter 'SettingsActivationIntervalTests|SettingsEventBufferTests'
+􀟈  Test run started.
+􀄵  Testing Library Version: 2084
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Suite SettingsActivationIntervalTests started.
+􀟈  Suite SettingsEventBufferTests started.
+􀟈  Test realClockMetadataMatchesIndependentKernelQueries() started.
+􀟈  Test disabledMeasurementStillPerformsOperationOnce() started.
+􀟈  Test encodingKeepsTicksAsExactDecimalStrings() started.
+􀟈  Test clockMetadataRejectsUnknownBootAndInvalidScale() started.
+􀟈  Test outputIsExplicitNonDestructiveAndCannotOverwriteEvidence() started.
+􀟈  Test realContinuousClockEnclosesAnIndependentRead() started.
+􀟈  Test overflowPreservesPrefixAndReportsEveryDroppedRecord() started.
+􀟈  Test failedDumpKeepsRecordsAvailable() started.
+􀟈  Test samplesEncloseOneOperation() started.
+􁁛  Test realContinuousClockEnclosesAnIndependentRead() passed after 0.001 seconds.
+􁁛  Test samplesEncloseOneOperation() passed after 0.001 seconds.
+􁁛  Test disabledMeasurementStillPerformsOperationOnce() passed after 0.001 seconds.
+􁁛  Test clockMetadataRejectsUnknownBootAndInvalidScale() passed after 0.001 seconds.
+􁁛  Test encodingKeepsTicksAsExactDecimalStrings() passed after 0.001 seconds.
+􁁛  Test overflowPreservesPrefixAndReportsEveryDroppedRecord() passed after 0.001 seconds.
+􁁛  Test realClockMetadataMatchesIndependentKernelQueries() passed after 0.003 seconds.
+􁁛  Suite SettingsActivationIntervalTests passed after 0.003 seconds.
+􁁛  Test failedDumpKeepsRecordsAvailable() passed after 0.005 seconds.
+􁁛  Test outputIsExplicitNonDestructiveAndCannotOverwriteEvidence() passed after 0.007 seconds.
+􁁛  Suite SettingsEventBufferTests passed after 0.007 seconds.
+􁁛  Test run with 9 tests in 2 suites passed after 0.007 seconds.

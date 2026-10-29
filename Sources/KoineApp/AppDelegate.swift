@@ -103,10 +103,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         return .terminateLater
     }
 
-    /// Shows the settings window, comes to the front and, for a status line,
-    /// scrolls to the section it names. An agent application is never active
-    /// until it activates itself:
-    /// https://developer.apple.com/documentation/appkit/nsapplication/activate()
+    /// Requests activation and key/front placement of the retained settings
+    /// window, selecting the named section first for a status line.
     private func showSettingsWindow(at section: SettingsSection?) {
         SettingsActivationTrace.shared.record("show.enter")
         guard let server, let port else { return }
@@ -128,12 +126,17 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             self.window = window
         }
         if let section { navigation.show(section) }
-        SettingsActivationTrace.shared.record("window.makeKeyAndOrderFront.before")
-        window?.makeKeyAndOrderFront(nil)
-        SettingsActivationTrace.shared.record("window.makeKeyAndOrderFront.after")
+        // Empirical order: activation may be declined or complete later; its
+        // return does not gate the window request. Neither contract requires
+        // this order. See docs/specs/settings-activation-discrimination.md.
+        // https://developer.apple.com/documentation/appkit/nsapplication/activate()
+        // https://developer.apple.com/documentation/appkit/nswindow/makekeyandorderfront(_:)
         SettingsActivationTrace.shared.record("application.activate.before")
         SettingsActivationTrace.shared.measureActivation { NSApp.activate() }
         SettingsActivationTrace.shared.record("application.activate.after")
+        SettingsActivationTrace.shared.record("window.makeKeyAndOrderFront.before")
+        window?.makeKeyAndOrderFront(nil)
+        SettingsActivationTrace.shared.record("window.makeKeyAndOrderFront.after")
     }
 
     private func fail(_ message: String, detail: String) {

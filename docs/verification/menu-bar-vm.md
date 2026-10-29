@@ -5,10 +5,13 @@ requests activation once before key/front window ordering, after preparing the
 same retained window and requested section. The [distinct finite protocol](settings-activation/ORDERING-EVALUATION-PLAN.md)
 fixes two focused fresh guests followed only if both qualify by three separate
 complete ordinary guests. One newly signed candidate must remain unchanged,
-with diagnostics disabled in both sets. No subject has been built or run.
+with diagnostics disabled in both sets. No signed evaluation subject has been built or run.
 The [design review and integration](settings-activation/ORDERING-REVIEW.md) are
-complete; k36 owns implementation and verification before freeze. The repair
-remains unresolved. Both sets require the same changed helpers: strict
+complete; k36 owns implementation and verification before freeze. The
+[application change](settings-activation/ORDERING-APPLICATION-RESULTS.md) compiles
+and passes existing headless controls. Shared harness repairs and native
+acceptance remain live; the repair remains unresolved.
+Both sets require the same changed helpers: strict
 single-attempt transport, positive TextEdit setup, an audit of the original list
 for the Settings title, and liveness before zero-window rejection. Process loss
 is separate. The prefix includes TextEdit quit; screenshots retain context, not

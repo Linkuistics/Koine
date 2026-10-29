@@ -1,0 +1,51 @@
+{
+  "recordedAt": "2026-10-29T04:46:45.841145+00:00",
+  "sourceParent": "f019161b",
+  "leaf": "settings-ordering-application-k52",
+  "build": {
+    "command": "mise exec -- task build",
+    "exit": 0,
+    "output": "build.txt"
+  },
+  "headless": {
+    "command": "mise exec -- task check:settings-activation-interval",
+    "exit": 0,
+    "testsPassed": 9,
+    "output": "headless-tests.txt"
+  },
+  "selectedInputs": {
+    "before": "inputs-before.json",
+    "after": "inputs-after.json",
+    "files": 143,
+    "changed": [],
+    "scope": "Selected local source/test/package manifests and resolution/Taskfile/staging script. Excludes dependency checkouts, caches and complete SDK; not runtime freeze."
+  },
+  "artifacts": {
+    "build.txt": "6163c591f8487ebe84861f46554c291b7e38cfc9ecda9b464344d810d15b5e2b",
+    "headless-tests.txt": "e8e9db3e2d656f08a017d37be9892e050f1ab464f55fed1b42ff384f8b9ce761",
+    "inputs-before.json": "26065a2ba7490667d6dafe1b16f473c4634ad3a49085c85a64667760addfaa7a",
+    "inputs-after.json": "72d171d14dd9dd059c049318b4cdc03a8f53400fa11139ed83db32f9c568c805",
+    "apple-contracts.json": "55bbfb41d0291b732a7c5b9ea2bbeefa9a74af88f7aedcacd30436c929c754ee",
+    "doc-links.txt": "6c040699db1ace2855e358f7692bf001988b7461653e4742a58ed5bcadacd8ae"
+  },
+  "signedEvaluationBundleBuilt": false,
+  "runtimeSlots": {
+    "E01": "NOT RUN",
+    "E02": "NOT RUN",
+    "A01": "NOT RUN",
+    "A02": "NOT RUN",
+    "A03": "NOT RUN"
+  },
+  "nativeRepairAcceptance": "unresolved",
+  "nativeCauseAndOwnership": "unresolved",
+  "graph": "list_projects refused before project/generation/coverage discovery; bounded direct source fallback",
+  "documentation": {
+    "command": "mise exec -- task check:docs",
+    "taskExit": 201,
+    "checkerExit": 1,
+    "output": "doc-links.txt",
+    "outcome": "Only two previously recorded missing archived-context targets; separate k23 repair"
+  },
+  "presentation": "Updated existing Mermaid labels and JSON captions; JSON parses and declared source paths exist. No browser rendering check in this source-only child.",
+  "verifiedAt": "2026-10-29T04:48:20.729492+00:00"
+}

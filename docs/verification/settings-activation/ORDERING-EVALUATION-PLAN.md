@@ -12,7 +12,9 @@ identifies the inspected implementation and contracts.
 The [k50 review and k51 integration](ORDERING-REVIEW.md) settle the design's
 evidence and setup rules. K36 owns implementation of the application change,
 the changed scenario/helpers and the finite caller, with verification before
-freeze. This document identifies no built bundle and supplies no runtime result.
+freeze. The [application implementation](ORDERING-APPLICATION-RESULTS.md)
+compiles and passes existing headless controls. Shared harness repairs and the
+finite caller remain live. No signed bundle or runtime result is supplied here.
 
 The question is whether that candidate meets the agreed behavior over the fixed
 sets below. It is not a comparison of failure rates or an attempt to identify

@@ -1,18 +1,18 @@
 flowchart TD
-    S["Start here: one Settings selection"]:::start
+    S["Start here: assessed original Settings path"]:::start
     S -->|1: menu action| W["Reuse the titled Settings window"]
-    W -->|2: existing call| K["Request key and front status"]
-    K -->|3: existing call| A["Request self activation once"]
+    W -->|2: original call| K["Request key and front status"]
+    K -->|3: original call| A["Request self activation once"]
     A -->|4: discretionary result| O["macOS may grant or decline activation"]
     O -.-> F["Assessment: no evidenced API-use correction in this path"]:::finding
     F --> R["Finding survives review and integration"]
     R --> Q["Antony approved empirical scope; concrete design review integrated"]:::hold
-    Q --> E["Proposed: activation before key and front request"]
+    Q --> E["Implemented candidate: activation before key and front request"]
     E --> I["Both orders succeeded with file tracing; no instrument-free comparison"]
     I --> C["New design: two focused guests, then three complete ordinary guests"]
     C --> P["Qualified recurrence rejects repair; unavailable evidence prevents acceptance"]
     P --> B["Every ordinary assertion must pass; success covers only the declared sample"]
-    B --> D["Implement and verify application and evidence helpers before freeze"]:::hold
+    B --> D["Application compiles; shared evidence helpers and runtime remain live"]:::hold
     classDef start fill:#19354b,color:#fff,font-weight:bold,stroke:#19354b
     classDef finding fill:#e9f0f6,color:#152a3a,stroke:#526f87
     classDef hold fill:#fff1d2,color:#322600,stroke:#866216
