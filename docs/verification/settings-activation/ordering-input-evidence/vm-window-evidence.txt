@@ -1,0 +1,25 @@
+task: [check:vm-window-evidence] bash -n scripts/vm-window-evidence-lib.sh Tests/scripts/vm-window-evidence.bats
+task: [check:vm-window-evidence] shellcheck -x scripts/vm-window-evidence-lib.sh Tests/scripts/vm-window-evidence.bats
+task: [check:vm-window-evidence] shfmt -d -i 4 scripts/vm-window-evidence-lib.sh Tests/scripts/vm-window-evidence.bats
+task: [check:vm-window-evidence] bats Tests/scripts/vm-window-evidence.bats
+1..20
+ok 1 window list emits the original full envelope and pins VM and ordinal
+ok 2 only clean list negatives advance the ten by two count poll
+ok 3 zero expected windows is clean data without title or focus strengthening
+ok 4 TextEdit loop preserves its final assertion after fifteen reads and sleeps
+ok 5 clean exhausted polls retain each list and a separate state confirmation
+ok 6 failed poll stops immediately despite matching text with no retry or input
+ok 7 window schemas reject incomplete arrays and malformed required or optional fields
+ok 8 window actions require matching actual receipt without invented target echo
+ok 9 every window action rejects failed nonzero partial and mismatching completions
+ok 10 collection preserves a prior failure and cannot restore input eligibility
+ok 11 empty absent and uninitialized roots cause no CLI or cwd artifacts
+ok 12 invalid arguments latch and cannot dispatch scenario input
+ok 13 adapter SIGINT propagates distinctly and stops the poll before sleep or release
+ok 14 missing helper arguments under nounset latch an initialized root
+ok 15 TextEdit always makes the separate assertion read after an early positive
+ok 16 TextEdit final assertion never rehabilitates a failed read
+ok 17 each poll records its state predicate and true or false decision
+ok 18 failed or interrupted poll sleeps record status and prevent later input
+ok 19 failed or interrupted local state evaluation records status without another read or sleep
+ok 20 negative window move coordinates use equals form accepted by the CLI

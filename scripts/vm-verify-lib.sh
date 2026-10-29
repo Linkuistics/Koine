@@ -124,7 +124,7 @@ click() {
     # tree reports scrolled-out elements too; a click at one's centre lands on
     # the title bar or the wallpaper. So an element of Koine's window is first
     # scrolled wholly on screen. Another application's window is clicked as read.
-    [ -n "${SNAPSHOT_WINDOW:-}" ] || reveal "$1"
+    [ -n "${SNAPSHOT_WINDOW:-}" ] || reveal "$1" || return "$?"
     e="$(element "$1")"
     [ "${e}" != null ] || fail "no UI element matches: $1"
     # shellcheck disable=SC2046
@@ -175,18 +175,18 @@ on_screen() {
 # a setting, so it is measured on an element rather than assumed.
 SCROLL_END=-10
 scroll_by() {
-    testanyware input scroll $((FRAME_X + FRAME_W / 2)) $((FRAME_Y + FRAME_H / 2)) "--dy=$1" >/dev/null
+    scenario_input scroll-window scroll $((FRAME_X + FRAME_W / 2)) $((FRAME_Y + FRAME_H / 2)) "--dy=$1" >/dev/null || return "$?"
     sleep 1
 }
 calibrate_window_scroll() {
     local before after
     read_frame
     before="$(element '.id=="grant-label"' | jq -r '.positionY')"
-    scroll_by -10
+    scroll_by -10 || return "$?"
     after="$(element '.id=="grant-label"' | jq -r '.positionY')"
     if [ "$(jq -n "${after} < ${before}")" = true ]; then SCROLL_END=-10; else SCROLL_END=10; fi
     echo "grant-label at y=${before} moved to y=${after} under --dy -10; towards the end is --dy ${SCROLL_END}"
-    for _ in $(seq 1 30); do scroll_by $((-SCROLL_END)); done
+    for _ in $(seq 1 30); do scroll_by $((-SCROLL_END)) || return "$?"; done
 }
 # reveal <jq condition>: scroll until the element is wholly on screen.
 reveal() {
@@ -198,16 +198,16 @@ reveal() {
         [ "${e}" != null ] || fail "no UI element matches: $1"
         y="$(jq -r '.positionY' <<<"${e}")"
         if [ "$(jq -n "${y} > ${FRAME_Y} + ${FRAME_H} / 2")" = true ]; then
-            scroll_by "${SCROLL_END}"
+            scroll_by "${SCROLL_END}" || return "$?"
         else
-            scroll_by $((-SCROLL_END))
+            scroll_by $((-SCROLL_END)) || return "$?"
         fi
     done
     fail "scrolling did not bring $1 on screen"
 }
 # reveal_click <jq condition>: scroll the element on screen, then click it.
 reveal_click() {
-    reveal "$1"
+    reveal "$1" || return "$?"
     click "$1"
 }
 # show_window: the settings window is on screen, however Koine was launched. A
@@ -364,6 +364,8 @@ grant_system_events_automation() {
     sleep 2
     [ -n "$(sysevents 'get name of every process')" ] || fail "System Events still refuses the agent"
 }
+# shellcheck source=scripts/vm-input-evidence-lib.sh
+source scripts/vm-input-evidence-lib.sh
 # shellcheck source=scripts/vm-menu-pointer-lib.sh
 source scripts/vm-menu-pointer-lib.sh
 # menu_item_count: how many items Koine has in the menu bar. One, always.
@@ -398,7 +400,7 @@ read_menu() {
     open_menu
     MENU="$(menu_titles)"
     echo "Menu: ${MENU}"
-    testanyware input key escape >/dev/null
+    scenario_input close-menu key escape >/dev/null || return "$?"
     sleep 1
 }
 # choose_menu_item <title>: open the menu and click the item.

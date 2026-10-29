@@ -1,4 +1,4 @@
-# settings-scenario-remaining-k71
+# settings-scenario-remaining-k71 — brief
 
 ## Goal
 Complete all remaining settings-scenario-transports-k66 duties after consuming
@@ -49,3 +49,41 @@ readiness complete. No VM/candidate/freeze or historical/causal-slot change.
 ## Notes
 If this complete migration exceeds one focused session, decompose at an actual
 independently testable path and execute only its first child, retaining all duties.
+
+## Decisions (running log)
+
+- 2026-10-29: Adopt the mandated leaf in the clean jj workspace. Tier 2 graph
+  coverage generation is 2026-10-29T07:35:33Z. Structural discovery returned no
+  candidates for the bounded script query; coverage reports partial shell parses
+  and untracked Bats metadata. Read the actual scenario/helpers directly, including
+  the reported ranges; make no graph completeness claim.
+- 2026-10-29: The reviewed ordering design already authorizes implementation.
+  Remaining work crosses input, UI/artifact reads, one-shot consequences and
+  complete adoption/signals. Decompose at an actual caller migration batch:
+  keyboard/text/scroll helper transports and their scenario/helper callers first;
+  remaining UI/artifact/exec/lifecycle confirmation helpers second; complete
+  scenario root adoption, window-helper consumption and signal handling third.
+  Execute only the first child. Explicit-root strict dispatch preserves the
+  existing unset-root lane for other VM consumers, without fallback after failure.
+  Every original k71/k66 duty survives in this node and the later children.
+
+## Decomposition
+
+K74 migrates existing keyboard/text/scroll callers in the ordinary scenario and
+its shared UI/consent helpers through an explicit-root strict input facade.
+K75 supplies remaining UI/element/OCR/capture/file/lifecycle and exec confirmation
+helpers, with actual schemas and downstream checks. K76 consumes reviewed helpers,
+initializes/adopts the exact root throughout, replaces the complete TextEdit/window
+blocks once, and installs full INT/TERM/HUP handling with both held-input controls.
+Every earned review/integration precedes consumption; all original criteria above
+remain binding. K67/k62/k57/k54 and every runtime slot stay held.
+
+## Input migration handoff
+
+K74 supplies the explicit-root keyboard/text/scroll facade and actual reachable
+caller migration documented in docs/verification/settings-activation/ORDERING-INPUT-RESULTS.md.
+The complete scenario still has not adopted its root throughout. Independent
+review and every earned integration precede k75 consumption. K75 and k76 retain
+every original Done when above, including all remaining schemas/confirmations,
+window/TextEdit block adoption, complete signals and both held-pointer controls.
+K67/k62/k57/k54 and all runtime remain held.

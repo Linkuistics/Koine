@@ -1,0 +1,13 @@
+task: [check:vm-menu-pointer] bash -n scripts/vm-menu-pointer-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+task: [check:vm-menu-pointer] shellcheck -x scripts/vm-menu-pointer-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+task: [check:vm-menu-pointer] shfmt -d -i 4 scripts/vm-menu-pointer-lib.sh
+task: [check:vm-menu-pointer] bats Tests/scripts/vm-menu-pointer.bats
+1..8
+ok 1 menu-bar centre at y=7 retains its target and never sends -1
+ok 2 ordinary frame retains the old approach and centre
+ok 3 display corners retain their targets with a distinct on-screen approach
+ok 4 invalid frame observations fail before any pointer input
+ok 5 pointer transport failure stops before the click even in a conditional caller
+ok 6 missing or malformed display dimensions never send pointer input
+ok 7 an out-of-display destination is refused rather than moved to another target
+ok 8 a failed move stops the action even when the caller tests its status

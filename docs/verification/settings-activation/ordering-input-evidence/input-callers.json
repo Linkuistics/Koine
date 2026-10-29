@@ -1,0 +1,245 @@
+{
+  "scope": [
+    "scripts/vm-verify-menu-bar.sh",
+    "scripts/vm-verify-lib.sh",
+    "scripts/vm-verify-desktop-lib.sh"
+  ],
+  "sourceDigests": {
+    "scripts/vm-verify-menu-bar.sh": "4cedeaebf72c19c65af51db6d57bace380508ffa1c8dee6e784997f22e0f74f2",
+    "scripts/vm-verify-lib.sh": "bc83bc210fea679bea6ef57b2dde0790788d98968a8e00c78e486eb05351c469",
+    "scripts/vm-verify-desktop-lib.sh": "22f7c7026a9f3f7706783f6da56f517b468697eaad9e1fcd5f0570ee72932452"
+  },
+  "method": "Enumerate every direct input action and scenario_input call in the bounded source surfaces, then classify each. Imported physical helpers retain their separately reviewed inventory. No dynamic-shell or graph completeness claim.",
+  "controls": {
+    "primaryBareInputFound": false,
+    "scratchRestoredBareInputFound": true,
+    "legacyQuitCrossTreeFound": true
+  },
+  "callers": [
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 181,
+      "function": "top-level",
+      "action": "type",
+      "operation": "shortcut-type",
+      "route": "migrated-explicit-root",
+      "source": "scenario_input shortcut-type type \"shortcut\" >/dev/null || exit \"$?\""
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 184,
+      "function": "top-level",
+      "action": "key",
+      "operation": "shortcut-select-copy",
+      "route": "migrated-explicit-root",
+      "source": "scenario_input shortcut-select-copy key a --modifiers cmd >/dev/null || exit \"$?\""
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 185,
+      "function": "top-level",
+      "action": "key",
+      "operation": "shortcut-copy",
+      "route": "migrated-explicit-root",
+      "source": "scenario_input shortcut-copy key c --modifiers cmd >/dev/null || exit \"$?\""
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 186,
+      "function": "top-level",
+      "action": "key",
+      "operation": "shortcut-cut",
+      "route": "migrated-explicit-root",
+      "source": "scenario_input shortcut-cut key x --modifiers cmd >/dev/null || exit \"$?\""
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 189,
+      "function": "top-level",
+      "action": "key",
+      "operation": "shortcut-paste",
+      "route": "migrated-explicit-root",
+      "source": "scenario_input shortcut-paste key v --modifiers cmd >/dev/null || exit \"$?\""
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 192,
+      "function": "top-level",
+      "action": "key",
+      "operation": "shortcut-select-clear",
+      "route": "migrated-explicit-root",
+      "source": "scenario_input shortcut-select-clear key a --modifiers cmd >/dev/null || exit \"$?\""
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 193,
+      "function": "top-level",
+      "action": "key",
+      "operation": "shortcut-clear",
+      "route": "migrated-explicit-root",
+      "source": "scenario_input shortcut-clear key x --modifiers cmd >/dev/null || exit \"$?\""
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 194,
+      "function": "top-level",
+      "action": "key",
+      "operation": "shortcut-close",
+      "route": "migrated-explicit-root",
+      "source": "scenario_input shortcut-close key w --modifiers cmd >/dev/null || exit \"$?\""
+    },
+    {
+      "file": "scripts/vm-verify-menu-bar.sh",
+      "line": 266,
+      "function": "top-level",
+      "action": "key",
+      "operation": "pre-restart-quit",
+      "route": "migrated-explicit-root",
+      "source": "scenario_input pre-restart-quit key q --modifiers cmd >/dev/null || exit \"$?\""
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 131,
+      "function": "click",
+      "action": "click",
+      "operation": null,
+      "route": "remaining-physical-click",
+      "source": "testanyware input click $(jq -r '\"\\(.positionX + .sizeWidth / 2 | floor) \\(.positionY + .sizeHeight / 2 | floor)\"' <<<\"${e}\") >/dev/null"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 178,
+      "function": "scroll_by",
+      "action": "scroll",
+      "operation": "scroll-window",
+      "route": "migrated-explicit-root",
+      "source": "scenario_input scroll-window scroll $((FRAME_X + FRAME_W / 2)) $((FRAME_Y + FRAME_H / 2)) \"--dy=$1\" >/dev/null || return \"$?\""
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 282,
+      "function": "quit_koine",
+      "action": "key",
+      "operation": null,
+      "route": "unconsumed-legacy-definition",
+      "source": "testanyware input key q --modifiers cmd >/dev/null"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 293,
+      "function": "quit_koine_or_terminate",
+      "action": "key",
+      "operation": null,
+      "route": "unconsumed-legacy-definition",
+      "source": "testanyware input key q --modifiers cmd >/dev/null || true"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 363,
+      "function": "grant_system_events_automation",
+      "action": "click",
+      "operation": null,
+      "route": "remaining-physical-click",
+      "source": "testanyware input click $(jq -r '\"\\(.x + .width / 2 | floor) \\(.y + .height / 2 | floor)\"' <<<\"${found}\") >/dev/null"
+    },
+    {
+      "file": "scripts/vm-verify-lib.sh",
+      "line": 403,
+      "function": "read_menu",
+      "action": "key",
+      "operation": "close-menu",
+      "route": "migrated-explicit-root",
+      "source": "scenario_input close-menu key escape >/dev/null || return \"$?\""
+    },
+    {
+      "file": "scripts/vm-verify-desktop-lib.sh",
+      "line": 38,
+      "function": "create_grant",
+      "action": "type",
+      "operation": null,
+      "route": "unconsumed-legacy-definition",
+      "source": "testanyware input type \"${label}\" >/dev/null"
+    },
+    {
+      "file": "scripts/vm-verify-desktop-lib.sh",
+      "line": 104,
+      "function": "grant_accessibility",
+      "action": "type",
+      "operation": "consent-password",
+      "route": "migrated-explicit-root",
+      "source": "scenario_input consent-password type \"${VM_PASSWORD}\" >/dev/null || return \"$?\""
+    },
+    {
+      "file": "scripts/vm-verify-desktop-lib.sh",
+      "line": 105,
+      "function": "grant_accessibility",
+      "action": "key",
+      "operation": "consent-password-submit",
+      "route": "migrated-explicit-root",
+      "source": "scenario_input consent-password-submit key return >/dev/null || return \"$?\""
+    },
+    {
+      "file": "scripts/vm-verify-desktop-lib.sh",
+      "line": 107,
+      "function": "grant_accessibility",
+      "action": "key",
+      "operation": "consent-go-to-folder",
+      "route": "migrated-explicit-root",
+      "source": "scenario_input consent-go-to-folder key g --modifiers cmd,shift >/dev/null || return \"$?\""
+    },
+    {
+      "file": "scripts/vm-verify-desktop-lib.sh",
+      "line": 109,
+      "function": "grant_accessibility",
+      "action": "type",
+      "operation": "consent-bundle-path",
+      "route": "migrated-explicit-root",
+      "source": "scenario_input consent-bundle-path type \"${INSTALLED}\" >/dev/null || return \"$?\""
+    },
+    {
+      "file": "scripts/vm-verify-desktop-lib.sh",
+      "line": 111,
+      "function": "grant_accessibility",
+      "action": "key",
+      "operation": "consent-path-submit",
+      "route": "migrated-explicit-root",
+      "source": "scenario_input consent-path-submit key return >/dev/null || return \"$?\""
+    },
+    {
+      "file": "scripts/vm-verify-desktop-lib.sh",
+      "line": 113,
+      "function": "grant_accessibility",
+      "action": "key",
+      "operation": "consent-add-submit",
+      "route": "migrated-explicit-root",
+      "source": "scenario_input consent-add-submit key return >/dev/null || return \"$?\""
+    },
+    {
+      "file": "scripts/vm-verify-desktop-lib.sh",
+      "line": 117,
+      "function": "grant_accessibility",
+      "action": "key",
+      "operation": "consent-settings-quit",
+      "route": "migrated-explicit-root",
+      "source": "scenario_input consent-settings-quit key q --modifiers cmd >/dev/null || return \"$?\""
+    },
+    {
+      "file": "scripts/vm-verify-desktop-lib.sh",
+      "line": 135,
+      "function": "revoke_accessibility",
+      "action": "type",
+      "operation": null,
+      "route": "unconsumed-legacy-definition",
+      "source": "testanyware input type \"${VM_PASSWORD}\" >/dev/null"
+    },
+    {
+      "file": "scripts/vm-verify-desktop-lib.sh",
+      "line": 136,
+      "function": "revoke_accessibility",
+      "action": "key",
+      "operation": null,
+      "route": "unconsumed-legacy-definition",
+      "source": "testanyware input key return >/dev/null"
+    }
+  ]
+}

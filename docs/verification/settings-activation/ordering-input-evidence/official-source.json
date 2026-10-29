@@ -1,0 +1,10 @@
+{
+  "tag": "v2.7.0",
+  "commit": "65bc05c91cc5d2a6e3d4aa8f81cb2c7c7712fa03",
+  "method": "Read official immutable tag objects, workspace manifest first. Source evidence only; no CLI parser, guest or endpoint execution.",
+  "files": {
+    "cli-rs/Cargo.toml": "e7c43079eda1fa5c7f81cb3e7f3742c65260cac139a7191910430a736a0bf06a",
+    "cli-rs/crates/testanyware-cli/src/commands/input.rs": "9e8294dc5bc65ff6ee913cfb90bfd34c3b87dbac8e9944852f9822de1770f6e1",
+    "cli-rs/crates/testanyware-cli/src/main.rs": "cc6550081806d2d81a3a1e35da358bfb8a3962ae4a474291c4da0e191be051be"
+  }
+}

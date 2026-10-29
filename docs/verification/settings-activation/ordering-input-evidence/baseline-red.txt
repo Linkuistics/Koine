@@ -1,0 +1,54 @@
+1..12
+not ok 1 key text and scroll preserve original bytes exact argv and shared ordinals
+# (in test file Tests/scripts/vm-input-evidence.bats, line 81)
+#   `cmp "${BATS_TEST_TMPDIR}/key" "${input_root}/000001/raw.stdout"' failed with status 2
+# input diagnostic 1
+# input diagnostic 2
+# input diagnostic 3
+# cmp: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-bjp2w4/test/1/evidence/000001/raw.stdout: No such file or directory
+not ok 2 plain keys empty text and positive scroll use their actual complete payloads
+# (in test file Tests/scripts/vm-input-evidence.bats, line 97)
+#   `jq -se 'length == 3 and all(.[]; .outcome == "clean")' "${input_root}"/*/result.json' failed with status 2
+# {"schema_version":"1.0","ok":true,"key":"return","modifiers":[]}
+# input diagnostic 1
+# {"schema_version":"1.0","ok":true,"text":"","chars":0}
+# input diagnostic 2
+# {"schema_version":"1.0","ok":true,"x":0,"y":65535,"dx":0,"dy":10}
+# input diagnostic 3
+# jq: error: Could not open file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-bjp2w4/test/2/evidence/*/result.json: No such file or directory
+# false
+not ok 3 each family rejects nonzero partial typed error and dry-run completion without retry
+# (in test file Tests/scripts/vm-input-evidence.bats, line 116)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 4 key payload must echo requested key and exact ordered modifier array
+# (in test file Tests/scripts/vm-input-evidence.bats, line 132)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 5 type payload requires exact text and Unicode scalar count
+# (in test file Tests/scripts/vm-input-evidence.bats, line 145)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 6 scroll payload must include exact x y dx and signed dy
+# (in test file Tests/scripts/vm-input-evidence.bats, line 157)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 7 explicit empty missing and uninitialized roots never fall back or write cwd artifacts
+# (in test file Tests/scripts/vm-input-evidence.bats, line 167)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 8 invalid action arguments refuse and latch before dispatch including under nounset
+# (in test file Tests/scripts/vm-input-evidence.bats, line 187)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 9 shared prior window or confirmation failure blocks every input family
+# (in test file Tests/scripts/vm-input-evidence.bats, line 198)
+#   `[[ "${status}" == 125 ]]' failed
+# guest evidence unavailable (000001): existing failure
+not ok 10 SIGINT in every input family retains interruption without later input
+# (in test file Tests/scripts/vm-input-evidence.bats, line 210)
+#   `[[ "${status}" == 130 ]]' failed
+ok 11 unset root preserves existing bare input argv and nonzero status
+not ok 12 consumed scroll and menu helpers stop before settling sleep even with errexit suppressed
+# (in test file Tests/scripts/vm-input-evidence.bats, line 244)
+#   `if scroll_by -10; then return 1; else [[ "$?" == 125 ]]; fi' failed
+# input diagnostic 1
+
+The following warnings were encountered during tests:
+BW01: `run`'s command `bash -u -c source "$1"; shift; scenario_input "$@" _ /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/vm-input-evidence-lib.sh operation key` exited with code 127, indicating 'Command not found'. Use run's return code checks, e.g. `run -127`, to fix this message.
+      (from function `run' in file /opt/homebrew/Cellar/bats-core/1.14.0/lib/bats-core/test_functions.bash, line 442,
+       in test file Tests/scripts/vm-input-evidence.bats, line 185)

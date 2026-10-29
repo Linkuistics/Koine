@@ -101,20 +101,20 @@ grant_accessibility() {
     done
     click '.role=="button" and .label=="Add"'
     sleep 2
-    testanyware input type "${VM_PASSWORD}" >/dev/null
-    testanyware input key return >/dev/null
+    scenario_input consent-password type "${VM_PASSWORD}" >/dev/null || return "$?"
+    scenario_input consent-password-submit key return >/dev/null || return "$?"
     sleep 4
-    testanyware input key g --modifiers cmd,shift >/dev/null
+    scenario_input consent-go-to-folder key g --modifiers cmd,shift >/dev/null || return "$?"
     sleep 2
-    testanyware input type "${INSTALLED}" >/dev/null
+    scenario_input consent-bundle-path type "${INSTALLED}" >/dev/null || return "$?"
     sleep 2
-    testanyware input key return >/dev/null
+    scenario_input consent-path-submit key return >/dev/null || return "$?"
     sleep 2
-    testanyware input key return >/dev/null
+    scenario_input consent-add-submit key return >/dev/null || return "$?"
     sleep 3
     [ "$(element '.label=="Koine" or .value=="Koine"')" != null ] || fail "Koine is not in the Accessibility list"
     unset SNAPSHOT_WINDOW
-    testanyware input key q --modifiers cmd >/dev/null
+    scenario_input consent-settings-quit key q --modifiers cmd >/dev/null || return "$?"
     sleep 2
 }
 

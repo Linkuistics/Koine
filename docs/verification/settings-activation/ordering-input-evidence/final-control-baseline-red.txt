@@ -1,0 +1,94 @@
+1..14
+not ok 1 key text and scroll preserve original bytes exact argv and shared ordinals
+# (in test file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/koine-input-final-baseline-7cfy649t/Tests/scripts/vm-input-evidence.bats, line 82)
+#   `cmp "${BATS_TEST_TMPDIR}/key" "${input_root}/000001/raw.stdout"' failed with status 2
+# input diagnostic 1
+# input diagnostic 2
+# input diagnostic 3
+# cmp: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-PXjTHo/test/1/evidence/000001/raw.stdout: No such file or directory
+not ok 2 plain keys empty text and positive scroll use their actual complete payloads
+# (in test file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/koine-input-final-baseline-7cfy649t/Tests/scripts/vm-input-evidence.bats, line 98)
+#   `jq -se 'length == 3 and all(.[]; .outcome == "clean")' "${input_root}"/*/result.json' failed with status 2
+# {"schema_version":"1.0","ok":true,"key":"return","modifiers":[]}
+# input diagnostic 1
+# {"schema_version":"1.0","ok":true,"text":"","chars":0}
+# input diagnostic 2
+# {"schema_version":"1.0","ok":true,"x":0,"y":65535,"dx":0,"dy":10}
+# input diagnostic 3
+# jq: error: Could not open file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-PXjTHo/test/2/evidence/*/result.json: No such file or directory
+# false
+not ok 3 each family rejects nonzero partial typed error and dry-run completion without retry
+# (in test file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/koine-input-final-baseline-7cfy649t/Tests/scripts/vm-input-evidence.bats, line 117)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 4 key payload must echo requested key and exact ordered modifier array
+# (in test file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/koine-input-final-baseline-7cfy649t/Tests/scripts/vm-input-evidence.bats, line 133)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 5 type payload requires exact text and Unicode scalar count
+# (in test file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/koine-input-final-baseline-7cfy649t/Tests/scripts/vm-input-evidence.bats, line 146)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 6 scroll payload must include exact x y dx and signed dy
+# (in test file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/koine-input-final-baseline-7cfy649t/Tests/scripts/vm-input-evidence.bats, line 158)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 7 explicit empty missing and uninitialized roots never fall back or write cwd artifacts
+# (in test file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/koine-input-final-baseline-7cfy649t/Tests/scripts/vm-input-evidence.bats, line 168)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 8 invalid action arguments refuse and latch before dispatch including under nounset
+# (in test file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/koine-input-final-baseline-7cfy649t/Tests/scripts/vm-input-evidence.bats, line 193)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 9 shared prior window or confirmation failure blocks every input family
+# (in test file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/koine-input-final-baseline-7cfy649t/Tests/scripts/vm-input-evidence.bats, line 204)
+#   `[[ "${status}" == 125 ]]' failed
+# guest evidence unavailable (000001): existing failure
+not ok 10 SIGINT in every input family retains interruption without later input
+# (in test file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/koine-input-final-baseline-7cfy649t/Tests/scripts/vm-input-evidence.bats, line 216)
+#   `[[ "${status}" == 130 ]]' failed
+ok 11 unset root preserves existing bare input argv and nonzero status
+not ok 12 consumed scroll and menu helpers stop before settling sleep even with errexit suppressed
+# (in test file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/koine-input-final-baseline-7cfy649t/Tests/scripts/vm-input-evidence.bats, line 250)
+#   `if scroll_by -10; then return 1; else [[ "$?" == 125 ]]; fi' failed
+# input diagnostic 1
+not ok 13 actual scroll callers propagate failed input before another read or pointer action
+# (in test file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/koine-input-final-baseline-7cfy649t/Tests/scripts/vm-input-evidence.bats, line 277)
+#   `if "${name}" '.id=="grant-label"'; then return 1; else [[ "$?" == 125 ]]; fi' failed
+# input diagnostic 1
+# grant-label at y=800 moved to y=800 under --dy -10; towards the end is --dy 10
+# input diagnostic 2
+# input diagnostic 3
+# input diagnostic 4
+# input diagnostic 5
+# input diagnostic 6
+# input diagnostic 7
+# input diagnostic 8
+# input diagnostic 9
+# input diagnostic 10
+# input diagnostic 11
+# input diagnostic 12
+# input diagnostic 13
+# input diagnostic 14
+# input diagnostic 15
+# input diagnostic 16
+# input diagnostic 17
+# input diagnostic 18
+# input diagnostic 19
+# input diagnostic 20
+# input diagnostic 21
+# input diagnostic 22
+# input diagnostic 23
+# input diagnostic 24
+# input diagnostic 25
+# input diagnostic 26
+# input diagnostic 27
+# input diagnostic 28
+# input diagnostic 29
+# input diagnostic 30
+# input diagnostic 31
+not ok 14 actual consent sequence stops after failed text before key or later settling
+# (in test file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/koine-input-final-baseline-7cfy649t/Tests/scripts/vm-input-evidence.bats, line 297)
+#   `if grant_accessibility; then return 1; else [[ "$?" == 125 ]]; fi' failed
+# input diagnostic 1
+# input diagnostic 2
+# input diagnostic 3
+# input diagnostic 4
+# input diagnostic 5
+# input diagnostic 6
+# input diagnostic 7

@@ -44,7 +44,7 @@ frame() {
 }
 # expect_menu <titles>: the open-and-read menu is exactly this.
 expect_menu() {
-    read_menu
+    read_menu || return "$?"
     [ "${MENU}" = "$1" ] || fail "the menu is \"${MENU}\", not \"$1\""
 }
 # await_koine: the process runs and has served its descriptor.
@@ -178,20 +178,20 @@ reveal '.id=="accessibility-status"'
 
 step "Shortcuts, with no visible menu bar: ⌘A, ⌘C, ⌘X, ⌘V in a field, ⌘W"
 reveal_click '.id=="grant-label"'
-testanyware input type "shortcut" >/dev/null
+scenario_input shortcut-type type "shortcut" >/dev/null || exit "$?"
 sleep 1
 [ "$(value_of '.id=="grant-label"')" = shortcut ] || fail "typing reached no field"
-testanyware input key a --modifiers cmd >/dev/null
-testanyware input key c --modifiers cmd >/dev/null
-testanyware input key x --modifiers cmd >/dev/null
+scenario_input shortcut-select-copy key a --modifiers cmd >/dev/null || exit "$?"
+scenario_input shortcut-copy key c --modifiers cmd >/dev/null || exit "$?"
+scenario_input shortcut-cut key x --modifiers cmd >/dev/null || exit "$?"
 sleep 1
 [ -z "$(value_of '.id=="grant-label"')" ] || fail "⌘A ⌘X did not empty the field"
-testanyware input key v --modifiers cmd >/dev/null
+scenario_input shortcut-paste key v --modifiers cmd >/dev/null || exit "$?"
 sleep 1
 [ "$(value_of '.id=="grant-label"')" = shortcut ] || fail "⌘V did not restore what ⌘C copied"
-testanyware input key a --modifiers cmd >/dev/null
-testanyware input key x --modifiers cmd >/dev/null
-testanyware input key w --modifiers cmd >/dev/null
+scenario_input shortcut-select-clear key a --modifiers cmd >/dev/null || exit "$?"
+scenario_input shortcut-clear key x --modifiers cmd >/dev/null || exit "$?"
+scenario_input shortcut-close key w --modifiers cmd >/dev/null || exit "$?"
 await_windows 0
 [ "$(menu_item_count)" = 1 ] || fail "⌘W took the menu bar item with it"
 
@@ -263,7 +263,7 @@ step "Quit with ⌘Q from the window, then restart the VM: only the login item c
 choose_menu_item "Settings…"
 await_windows 1
 koine_in_front || fail "Settings did not focus the window before Command-Q: $(front_windows)"
-testanyware input key q --modifiers cmd >/dev/null
+scenario_input pre-restart-quit key q --modifiers cmd >/dev/null || exit "$?"
 expect_stopped
 BOOT_BEFORE="$(guest 'sysctl -n kern.boottime')"
 # Not through guest(): a restart must never be repeated by a retry.

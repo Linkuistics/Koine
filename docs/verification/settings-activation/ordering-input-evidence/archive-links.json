@@ -1,0 +1,11 @@
+{
+  "parentRevision": "00320226",
+  "source": "docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md",
+  "sourceSha256": "545200ec15c0bea549055666d4c519aa90c9835ba53496b9a09d76c2e019cb93",
+  "parentSourceSha256": "545200ec15c0bea549055666d4c519aa90c9835ba53496b9a09d76c2e019cb93",
+  "missingTargets": {
+    "docs/verification/settings-activation/context-initial-inputs/context-predicate.txt": true,
+    "docs/verification/settings-activation/context-initial-inputs/context-qualify-filter.sh": true
+  },
+  "owner": "settings-archive-links-k23"
+}
