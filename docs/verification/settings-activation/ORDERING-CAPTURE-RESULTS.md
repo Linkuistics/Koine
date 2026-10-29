@@ -3,7 +3,10 @@
 K88 supplies source-only checked screenshots and the existing background
 keepalive loop. K85 remains open with file/environment/lifecycle/collection work
 in k89. Independent review and every earned integration precede k89/k81/k76
-consumption. No ordinary caller or scenario root is changed. No VM, signed
+consumption. K91 integrates k90 below; the keepalive coordination design in
+settings-keepalive-coordination-k92, its review/every earned integration and any
+required implementation/review still precede downstream consumption. No ordinary
+caller or scenario root is changed. No VM, signed
 candidate, frozen subject, native availability or repair acceptance is supplied.
 
 The [ordering protocol](ORDERING-EVALUATION-PLAN.md),
@@ -35,6 +38,12 @@ positive width/height. It preserves the existing `1500,0,420,200` mark crop.
 No display read, input, extra poll, wait or retry is introduced. Argument/parser
 errors retain the adapter's existing nonzero statuses and latch identifiable
 initialized roots.
+
+Generic `cli_guest_evidence ... -- screen capture` refuses before dispatch in
+every class, including evidence collection after a latch. Use the checked
+capture entry point for screenshots. The internal checked transport alone may
+construct capture argv; the generic route cannot supply that authorization.
+This is a cooperating-helper contract, not a sandbox against arbitrary host code.
 
 The new `capture` backend action records `transport:"capture"` in the same
 writer/ordinal domain as exec, CLI and local poll steps. Requests preserve exact
@@ -75,8 +84,14 @@ It adds no leading capture, replacement attempt or success delay. Each successfu
 tick retains its own image. The first failed capture returns immediately,
 latches the shared root and stops before another sleep/capture. An observed
 failed sleep records its exact local status and `poll_phase:"sleep"` through
-`record_guest_poll`; signal statuses 129–192 return unchanged and ordinary
-failures return 125. Successful sleeps add no receipts. A signal killing the
+`record_guest_poll`. With the lock free, this produces an interrupted ordinal
+receipt for signal statuses 129–192. If recording is refused by contention,
+the exact attempted phase/status stays in `refusals.jsonl`, without a new
+ordinal; the root still latches. The loop returns an already observed signal
+status unchanged even if recording fails. Ordinary failed sleeps return 125
+when recorded or refused. Successful sleeps add no receipts. The shared reason
+still says `window poll`; classify the operation, transport, phase and local
+status fields rather than that historical wording. A signal killing the
 shell before recording may leave only caller status/partials.
 
 K76 must start and own the loop's process, retain/reap its terminal status and
@@ -88,12 +103,43 @@ unrecorded stop or bypass is permitted. Deliberate loop cancellation during
 cleanup must be recorded separately from a failed tick or scenario outcome.
 
 The shared lock remains nonblocking. A keepalive/scenario overlap therefore
-refuses and latches; this implementation adds no queue, scheduling wait or retry
-to avoid that availability cost. K76 must preserve that consequence on adoption.
+refuses and latches; this implementation adds no queue, scheduling wait or retry.
+The locked Allow read can last 30 seconds, so a sleep-20 tick can collide with
+it, stop the keepalive for the rest of the run, and remove the protection that
+the legacy loop intended against the VZ idle crash. The keepalive's capture can
+also refuse a scenario action. There is no measured collision rate or evidence
+that a complete run remains serviceable. This is an unresolved coordination
+design duty in k92 before k89/k81/k76 consumption, not an adoption instruction
+to accept a broken keepalive. Its reviewed resolution and any implementation
+must explicitly account for existing locking and evidence rules.
 A competitor can latch during a clean in-flight capture; that capture may still
 finish clean, but cannot clear the earlier latch. Evidence-class collection is
 context only. These are guarantees for cooperating processes in the one root,
 not protection from deliberate same-UID mutation or remote cancellation.
+
+Every successful tick retains a full logical screenshot; the legacy loop
+overwrote one file. As a size illustration, 90 copies of the retained 233,136-byte
+image are 20,982,240 bytes (about 20 MiB) over roughly 30 minutes at sleep-20
+cadence. Capture time, image content, scenario captures and raw receipts change
+actual volume; this is neither a measurement of a new run nor a resource bound.
+K76 must plan private storage for all ticks, and k57 must audit/retain every
+image and partial with original identity. Screenshots can contain credentials
+or other secret screen content. The entire secret-bearing root stays private
+and must not be published or committed; do not overwrite/delete images or redact
+the required originals to reduce volume. Carry this into collection handoffs.
+
+The validator has no practical file-byte, pixel-dimension, memory or run-volume
+cap. It reads the whole file, copies compressed data, and expands pixels up to
+the header-derived size; PNG's 2,147,483,647-per-axis format limit is not a useful
+memory bound. `MemoryError` is uncaught and can leave request/raw/image/validator
+partials without `artifact.json` or `result.json`. The shell facade preserves
+the nonzero status and latches; a direct backend call may leave no immediate
+latch, but the next locked gate latches the unfinished ordinal and refuses
+scenario input. Allocation failure during earlier receipt writing can leave
+still less evidence. Preserve all partials and do not reclassify them as success.
+These are fail-closed outcomes, not bounded resource use or guaranteed collection
+availability. K92 carries the resource question into design; k57/k76 retain its
+operational consequences. No arbitrary cap or truncation is introduced here.
 
 ## Actual source and caller inventory
 
@@ -180,6 +226,12 @@ result. No test or source changes during a recorded measurement.
 
 ## Remaining duties
 
+K92 resolves keepalive/scenario coordination and resource consequences before
+k89/k81/k76 consumption, with independent design review, every earned integration
+and any required implementation/review. The unchanged nonblocking behavior is
+not qualified as a working keepalive. K57/k76 must carry private screenshot
+volume and allocation/partial-record limits above into collection and adoption.
+
 K89 retains every remaining original k85 file/environment/lifecycle/collection
 helper duty. K81 retains EVERY exec and one-shot consequence, including installed
 inventory and exact defaults/launch/restart confirmations; no upload or PNG
@@ -195,3 +247,56 @@ k71/k66 criterion is waived. Historical candidates/results/classifications,
 failed transports, strict false joins, NOT RUN phases, closed caps and held
 causal slots are unchanged. Native cause, ownership and repair acceptance remain
 unresolved. No ancestor closes, release, notarization or upstream report follows.
+
+## K90 review integration (k91)
+
+Findings come from k90 commit `acf50e4d` against k88 `07d632b7`.
+
+| Finding | Classification and disposition |
+|---|---|
+| P1-1: keepalive collisions | **Real design conflict.** The overlap control shows a tick refuses, latches and stops while an in-flight dispatch can finish clean. It simulates the existing sleep and holds the actual lock; it measures neither 30-second native OCR nor collision frequency. The 30-second Allow read versus sleep-20 supplies a possible long-dispatch collision. K92 owns a separately reviewed resolution before consumption. No lock, wait, retry or eligibility rule changes here. |
+| P2-1: unchecked generic capture | **Real issue, repaired.** Generic CLI capture now refuses in every class without dispatch, ordinal or caller-file overwrite. Only the internally constructed checked capture route is admitted. Adapter controls now exercise generic screen size; successful screenshot collection still uses the checked evidence class. |
+| P2-2: validator controls | **Real control gap, repaired.** Reusable controls accept filters 1–4, consecutive IDAT, ancillary chunks and the unchanged retained native PNG, and assert exact reasons for the listed malformed branches. The historical image has one IDAT and no ancillary chunk, so the review's claim that rejecting either of those structures necessarily rejects every real capture is **noise**. Those mutations still violate the stated valid-PNG contract and are now caught. |
+| P3-1: sleep signal under contention | **Real issue, repaired; record shape clarified.** The loop attempts the same locked record once, then preserves its already observed signal status even if recording refuses. Refusal retains exact phase/status, latches and receives no ordinal. Free-lock recording remains an interrupted ordinal. The historical generic reason's window wording remains; structured fields identify keepalive. No complete scenario signal handler is supplied. |
+| P3-2: retention and resources | **Real handoff gap, repaired in the contract above.** Private per-tick image volume and unbounded allocation/partial records are explicit k57/k76 duties and k92 design inputs. The uncaught allocation path is a **visible trade-off**, closed to later scenario input but not a bounded-memory or serviceability guarantee. The deterministic allocation-failure control never exhausts real host memory. |
+
+The [repair red](ordering-capture-integration/repair-red.txt) fails the new
+generic-route and contended-sleep assertions before either production repair;
+the [repair green](ordering-capture-integration/repair-green.txt) passes both.
+The red loop stops at its first class, so it alone does not demonstrate each
+class red; the green exercises all three. No original k88 red receipt changes.
+
+The [filter mutation baseline](ordering-capture-integration/filters-original-controls.txt)
+passes all sixteen then-current controls despite rejecting nonzero filters.
+The expanded [filter](ordering-capture-integration/filters-expanded-red.txt),
+[IDAT](ordering-capture-integration/multi-expanded-red.txt) and
+[ancillary](ordering-capture-integration/ancillary-expanded-red.txt) mutation runs
+fail the relevant new acceptance assertions. The
+[mutation definitions](ordering-capture-integration/mutations.json) retain exact
+replacements and source digests. No production PNG validator behavior changed.
+Malformed controls check the actual recorded validator reason; the two pixel
+stream fixtures independently establish `unused_data` and `unconsumed_tail`,
+respectively, rather than merely relying on a generic status 125.
+
+The [expanded checks](ordering-capture-integration/expanded-check.json) pass
+22 capture and 37 adapter controls. The retained native PNG acceptance now runs
+through the normal capture Taskfile check, without a new native read. The
+[source recheck](ordering-capture-integration/official-source-check.txt) matches
+the original immutable tagged and lock-pinned registry digests. These results
+establish neither installed executable provenance nor fresh native pixels.
+
+The [final verification](ordering-capture-integration/final-verification.json)
+records the reusable capture/adapter and existing consumer checks, full output,
+per-test results and unchanged before/after subject digests. Its subject set
+includes scripts, suites/fixtures, the retained image and timeout response,
+Taskfile, contracts and mutation instruments. The
+[documentation check](ordering-capture-integration/docs-check-complete.txt) retains the
+two known missing k23 archive links; it is not a clean documentation result.
+The [first check](ordering-capture-integration/docs-check.txt) also reports its
+own output link, because that instrument wrote the log only after the check.
+The corrected instrument opens the actual output log before starting the check;
+the repeated documentation check records the resulting final contract digests.
+This documentation-only correction changes no tested script, fixture or suite.
+Secret-bearing native roots remain private; these new receipts contain only
+synthetic fixture traffic, source/digest metadata and test output. No VM,
+candidate, freeze, native acceptance or ancestor closure follows.

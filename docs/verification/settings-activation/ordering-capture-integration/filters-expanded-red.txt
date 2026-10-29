@@ -1,0 +1,13 @@
+1..2
+not ok 1 valid nonzero row filters remain readable through the checked backend
+# (from function `_guest_evidence_backend' in file .build/k91/mutants/filters/Tests/scripts/../../scripts/vm-guest-exec-lib.sh, line 43,
+#  from function `capture_guest_evidence' in file .build/k91/mutants/filters/Tests/scripts/../../scripts/vm-capture-evidence-lib.sh, line 17,
+#  in test file .build/k91/mutants/filters/Tests/scripts/vm-capture-evidence.bats, line 137)
+#   `capture_guest_evidence "${capture_root}" read-poll "filter-${filter}" >/dev/null' failed with status 125
+# guest evidence unavailable (000001): invalid PNG row filter
+not ok 2 retained native PNG qualifies in the reusable capture check without a new native read
+# (from function `_guest_evidence_backend' in file .build/k91/mutants/filters/Tests/scripts/../../scripts/vm-guest-exec-lib.sh, line 43,
+#  from function `capture_guest_evidence' in file .build/k91/mutants/filters/Tests/scripts/../../scripts/vm-capture-evidence-lib.sh, line 17,
+#  in test file .build/k91/mutants/filters/Tests/scripts/vm-capture-evidence.bats, line 154)
+#   `capture_guest_evidence "${capture_root}" read-poll retained-encoder >/dev/null' failed with status 125
+# guest evidence unavailable (000001): invalid PNG row filter

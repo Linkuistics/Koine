@@ -23,3 +23,13 @@ k57/k54 their original duties. Snapshot missing-tree/empty-AXValue and OCR
 substring availability limits remain. Every original k85 criterion survives;
 no VM/candidate/freeze/acceptance or ancestor closure. Decompose if needed,
 executing only the first child.
+
+## Capture dependency after k91
+
+Read the current capture report and k91 integration receipts. The checked
+capture repair is source-only. Settings-keepalive-coordination-k92 and its
+independent review/every earned integration, plus any required implementation/
+review, precede consumption here and in k81/k76. Carry private per-tick image
+volume, unbounded allocation/partial-record limits and every original duty.
+Do not use generic CLI capture, reset/bypass a lock/latch, retry or overwrite
+evidence. No native keepalive/serviceability qualification follows from fixtures.

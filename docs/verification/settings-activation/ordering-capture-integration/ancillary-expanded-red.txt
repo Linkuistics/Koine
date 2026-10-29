@@ -1,0 +1,7 @@
+1..1
+not ok 1 valid consecutive IDAT and ancillary chunks remain readable
+# (from function `_guest_evidence_backend' in file .build/k91/mutants/ancillary/Tests/scripts/../../scripts/vm-guest-exec-lib.sh, line 43,
+#  from function `capture_guest_evidence' in file .build/k91/mutants/ancillary/Tests/scripts/../../scripts/vm-capture-evidence-lib.sh, line 17,
+#  in test file .build/k91/mutants/ancillary/Tests/scripts/vm-capture-evidence.bats, line 147)
+#   `capture_guest_evidence "${capture_root}" read-poll ancillary >/dev/null' failed with status 125
+# guest evidence unavailable (000002): unexpected critical PNG chunk

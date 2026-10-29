@@ -1,0 +1,14 @@
+{
+  "commit": "65bc05c91cc5d2a6e3d4aa8f81cb2c7c7712fa03",
+  "matched": {
+    "cli-rs/Cargo.toml": "e7c43079eda1fa5c7f81cb3e7f3742c65260cac139a7191910430a736a0bf06a",
+    "cli-rs/Cargo.lock": "96ee8c89fbc69a1e74f97af03df5e85528bae27ddacd1143ab568468607793e2",
+    "cli-rs/crates/testanyware-cli/Cargo.toml": "da9dbcc88c9dbd5becc43cf0cbfd75d114b856e33a6f6052d1ff99cf3c7615ff",
+    "cli-rs/crates/testanyware-cli/src/commands/screen.rs": "db9e6aa62424a8fc7692ab5e8b162199862826cad2637ae970281d9319c84ae1",
+    "cli-rs/crates/testanyware-vm/src/capture.rs": "96066fb8d06489fcbe07e11b291bc55e72042c244a2fbcac6b42630ee31ae592",
+    "/Users/antony/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/image-0.25.10/src/codecs/png.rs": "0bdbbd9f213164903deda0e08c309bb279eee6e4cd3ed17d228ba31a0cd1efcd",
+    "/Users/antony/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/png-0.18.1/src/encoder.rs": "787f6f8922588a74436c76a3b2c2b5689206f7ed13a19a36227b8809710812ce",
+    "/Users/antony/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/png-0.18.1/src/common.rs": "1da94ac8aae8bf7fb63efcf4b110416bee0aaf294d042476b70591b670c33519"
+  },
+  "method": "immutable local jj objects and lock-pinned registry files; source contract only"
+}

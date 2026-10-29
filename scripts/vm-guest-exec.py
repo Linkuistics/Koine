@@ -163,7 +163,9 @@ def validate_response(
     )
 
 
-def cli_argv(arguments: list[str], vm: str, kind: str) -> list[str]:
+def cli_argv(
+    arguments: list[str], vm: str, kind: str, *, checked_capture: bool = False
+) -> list[str]:
     if arguments[:1] == ["--"]:
         arguments = arguments[1:]
     if "--" in arguments:
@@ -178,6 +180,8 @@ def cli_argv(arguments: list[str], vm: str, kind: str) -> list[str]:
     if len(arguments) < 2:
         raise ValueError("expected a supported TestAnyware command and subcommand")
     family, action = arguments[:2]
+    if (family, action) == ("screen", "capture") and not checked_capture:
+        raise ValueError("screen capture requires the checked capture backend")
     if kind == "evidence":
         collection_actions = {
             ("agent", "windows"),
@@ -263,7 +267,9 @@ def run_locked(
         capture_args = ["screen", "capture"]
         if arguments:
             capture_args += ["--region", arguments[0]]
-        argv = cli_argv([*capture_args, "-o", str(artifact_path)], vm, kind)
+        argv = cli_argv(
+            [*capture_args, "-o", str(artifact_path)], vm, kind, checked_capture=True
+        )
         # Validate actual capture fields and chosen path, not a constant predicate.
         # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/commands/screen.rs
         predicate = (

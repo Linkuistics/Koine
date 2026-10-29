@@ -110,11 +110,10 @@ SH
     init_guest_evidence "${exec_root}" exact-vm
     fail_guest_evidence "${exec_root}" setup 'original failure' || :
     local action
-    for action in windows snapshot capture size download list stop; do
+    for action in windows snapshot size download list stop; do
         case "${action}" in
         windows) set -- agent windows ;;
         snapshot) set -- agent snapshot --window TextEdit ;;
-        capture) set -- screen capture -o context.png ;;
         size) set -- screen size ;;
         download) set -- file download /tmp/evidence local ;;
         list) set -- vm list --all ;;
@@ -123,7 +122,7 @@ SH
         run cli_guest_evidence "${exec_root}" evidence "${action}" '.ok == true' -- "$@"
         [[ "${status}" == 0 ]]
     done
-    [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 7 ]]
+    [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 6 ]]
     [[ "$(cat "${exec_root}/unavailable")" == '000001: original failure' ]]
 }
 
@@ -250,7 +249,7 @@ SH
     done
 }
 
-@test "nonexec start list upload capture and input retain explicit call payloads" {
+@test "nonexec start list upload and screen size retain explicit call payloads" {
     init_guest_evidence "${exec_root}" exact-vm
     printf '%s\n' '{"schema_version":"1.0","ok":true,"id":"exact-vm"}' >"${exec_reply}"
     cli_guest_evidence "${exec_root}" one-shot start '.id == "exact-vm"' -- vm start --platform macos --wait >/dev/null
@@ -260,10 +259,10 @@ SH
     jq -e '.argv == ["testanyware","vm","list","--all","--json"]' "${exec_root}/000002/request.json"
     printf '%s\n' '{"schema_version":"1.0","ok":true,"marker":"complete"}' >"${exec_reply}"
     cli_guest_evidence "${exec_root}" one-shot upload '.marker == "complete"' -- file upload 'local file' '/tmp/guest file' >/dev/null
-    cli_guest_evidence "${exec_root}" evidence capture '.marker == "complete"' -- screen capture -o 'local image' >"${BATS_TEST_TMPDIR}/received"
+    cli_guest_evidence "${exec_root}" evidence size '.marker == "complete"' -- screen size >"${BATS_TEST_TMPDIR}/received"
     cmp "${exec_reply}" "${BATS_TEST_TMPDIR}/received"
     jq -e '.argv == ["testanyware","file","upload","local file","/tmp/guest file","--vm","exact-vm","--json"]' "${exec_root}/000003/request.json"
-    jq -e '.argv == ["testanyware","screen","capture","-o","local image","--vm","exact-vm","--json"]' "${exec_root}/000004/request.json"
+    jq -e '.argv == ["testanyware","screen","size","--vm","exact-vm","--json"]' "${exec_root}/000004/request.json"
     check_guest_evidence "${exec_root}"
     [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 4 ]]
 }

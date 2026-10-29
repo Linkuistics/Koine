@@ -1,0 +1,83 @@
+task: [check:vm-capture-evidence] bash -n scripts/vm-capture-evidence-lib.sh Tests/scripts/vm-capture-evidence.bats
+task: [check:vm-capture-evidence] shellcheck -x scripts/vm-capture-evidence-lib.sh Tests/scripts/vm-capture-evidence.bats
+task: [check:vm-capture-evidence] shfmt -d -i 4 scripts/vm-capture-evidence-lib.sh Tests/scripts/vm-capture-evidence.bats
+task: [check:vm-capture-evidence] python3 -m py_compile scripts/vm-guest-exec.py scripts/vm_capture_artifact.py Tests/scripts/fixtures/capture-cli.py
+task: [check:vm-capture-evidence] uvx ruff@0.17.3 check scripts/vm-guest-exec.py scripts/vm_capture_artifact.py Tests/scripts/fixtures/capture-cli.py
+All checks passed!
+task: [check:vm-capture-evidence] uvx ruff@0.17.3 format --check scripts/vm-guest-exec.py scripts/vm_capture_artifact.py Tests/scripts/fixtures/capture-cli.py
+3 files already formatted
+task: [check:vm-capture-evidence] uvx pyright@1.1.414 scripts/vm-guest-exec.py scripts/vm_capture_artifact.py Tests/scripts/fixtures/capture-cli.py
+0 errors, 0 warnings, 0 informations
+task: [check:vm-capture-evidence] bats Tests/scripts/vm-capture-evidence.bats
+1..22
+ok 1 generic CLI capture refuses every class without dispatch or overwriting caller files
+ok 2 keepalive sleep signal survives refused recording under a competing writer
+ok 3 full capture retains complete image raw bytes exact VM and artifact digest
+ok 4 region and repeated operations use unique artifacts without extra reads
+ok 5 valid nonzero row filters remain readable through the checked backend
+ok 6 valid consecutive IDAT and ancillary chunks remain readable
+ok 7 retained native PNG qualifies in the reusable capture check without a new native read
+ok 8 malformed PNG branches retain their specific validator reasons
+ok 9 missing empty malformed truncated corrupt and incomplete pixels latch without retry
+ok 10 capture schema and image dimensions must match exact artifact and region
+ok 11 failed partial typed error and dry-run captures retain raw failure without output
+ok 12 collection after failed image retains first latch and never restores eligibility
+ok 13 invalid roots do not dispatch or write cwd and invalid capture arguments latch
+ok 14 PNG inspection still owns the shared lock after CLI completion
+ok 15 capture shares ordinals in both directions and failed collection cannot overwrite
+ok 16 caught capture SIGINT retains interruption partial streams and stops later input
+ok 17 relative roots remain usable and invalid class operation options cannot dispatch
+ok 18 keepalive preserves twenty-second ticks unique paths and exact local interruption
+ok 19 keepalive failure stops before another sleep or capture and latches later input
+ok 20 keepalive tick colliding with an in-flight dispatch stops and latches without retry
+ok 21 allocation failure retains partial capture and the next gate latches unfinished evidence
+ok 22 capture holds shared lock through CLI and refuses competing scenario dispatch
+task: [check:vm-guest-exec] bash -n scripts/vm-guest-exec-lib.sh
+task: [check:vm-guest-exec] shellcheck -x scripts/vm-guest-exec-lib.sh Tests/scripts/vm-guest-exec.bats
+task: [check:vm-guest-exec] shfmt -d -i 4 scripts/vm-guest-exec-lib.sh Tests/scripts/vm-guest-exec.bats
+task: [check:vm-guest-exec] python3 -m py_compile scripts/vm-guest-exec.py
+task: [check:vm-guest-exec] uvx ruff@0.17.3 check scripts/vm-guest-exec.py
+All checks passed!
+task: [check:vm-guest-exec] uvx ruff@0.17.3 format --check scripts/vm-guest-exec.py
+1 file already formatted
+task: [check:vm-guest-exec] uvx pyright@1.1.414 scripts/vm-guest-exec.py
+0 errors, 0 warnings, 0 informations
+task: [check:vm-guest-exec] bats Tests/scripts/vm-guest-exec.bats
+1..37
+ok 1 nonexec attempts share exec ordinals and retain exact raw JSON
+ok 2 nonexec failure blocks exec and input while collection preserves the first latch
+ok 3 failed downstream confirmation is ordinal evidence and cannot restore input
+ok 4 evidence class refuses mutating CLI actions even after a prior latch
+ok 5 latched CLI evidence still admits collection and exact clone stop
+ok 6 refusals retain each request and reason without replacing the first latch
+ok 7 nonexec rejects malformed success dry-run failed CLI and incomplete command payloads
+ok 8 exec latch and incomplete receipts gate nonexec without dispatch
+ok 9 nonexec endpoint overrides and alternate exec routes refuse before dispatch
+ok 10 VM start refuses viewer and retained-failure options before dispatch
+ok 11 caller ID overrides refuse on both VM start and endpoint routes
+ok 12 nonexec start list upload and screen size retain explicit call payloads
+ok 13 nonexec invalid invocations and missing backends latch before later input
+ok 14 lifecycle evidence binds the pinned identity and never accepts a different stop
+ok 15 nonexec orphan and gate confirmation exec callers share one writer lock
+ok 16 clean exec retains exact bytes, command, VM, status and ordered receipts
+ok 17 initialization refuses reuse without touching existing evidence
+ok 18 missing and wrongly typed envelope fields cannot qualify matching text
+ok 19 partial malformed duplicate and multiple JSON responses stay unavailable
+ok 20 nonzero CLI status never qualifies a clean envelope and never retries
+ok 21 timeout with matching real retained output cannot qualify
+ok 22 missing command completion marker and invalid predicates latch unavailable
+ok 23 competing writers latch unavailable before a second transport can dispatch
+ok 24 clean negative polling permits the next existing poll without a hidden retry
+ok 25 failed poll latches across command substitution and prevents all later scenario dispatch
+ok 26 disconnect followed by changed boot in collection stays unavailable and cannot relaunch
+ok 27 unfinished prior attempt blocks scenario input but allows evidence collection
+ok 28 unknown class and missing initialized subject never dispatch
+ok 29 argument failures latch initialized roots even when the status is ignored
+ok 30 direct backend argument failures latch without the shell facade
+ok 31 missing backend and unexpected backend exit leave a persistent facade latch
+ok 32 broken stdout delivery cannot publish a clean terminal receipt
+ok 33 partial or unknown terminal receipts block later scenario dispatch
+ok 34 interrupted receipt publication leaves only a partial file
+ok 35 killed adapter leaves its CLI holding the writer lock until completion
+ok 36 caught SIGINT records interruption and preserves the signal exit
+ok 37 nonexec caught SIGINT retains partial streams and a distinct signal outcome

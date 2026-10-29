@@ -28,6 +28,7 @@ setup() {
     export capture_calls="${BATS_TEST_TMPDIR}/calls" capture_waits="${BATS_TEST_TMPDIR}/waits"
     export capture_ready="${BATS_TEST_TMPDIR}/ready"
     export capture_fixture="${BATS_TEST_DIRNAME}/fixtures/capture-cli.py"
+    export capture_historical="${BATS_TEST_DIRNAME}/../../docs/verification/settings-activation/persisted-01/failure-observed.png"
     export capture_mode=clean capture_exit=0 capture_block=0
     mkdir "${BATS_TEST_TMPDIR}/bin" "${BATS_TEST_TMPDIR}/cwd"
     cat >"${BATS_TEST_TMPDIR}/bin/testanyware" <<'CLI'
@@ -56,6 +57,64 @@ assert_capture_latched() {
     [[ "$(wc -l <"${capture_calls}")" == "${count}" ]]
 }
 
+@test "generic CLI capture refuses every class without dispatch or overwriting caller files" {
+    local kind
+    printf 'original evidence\n' >"${BATS_TEST_TMPDIR}/original.png"
+    for kind in read-poll one-shot evidence; do
+        reset_capture "bypass-${kind}"
+        run cli_guest_evidence "${capture_root}" "${kind}" unchecked '.ok == true' -- screen capture -o "${BATS_TEST_TMPDIR}/original.png"
+        [[ "${status}" == 125 && ! -s "${capture_calls}" ]]
+        [[ "$(cat "${BATS_TEST_TMPDIR}/original.png")" == 'original evidence' ]]
+        [[ ! -e "${capture_root}/000001" ]]
+        jq -se 'length == 1 and (.[0].reason | contains("checked capture"))' "${capture_root}/refusals.jsonl"
+        assert_capture_latched
+    done
+}
+
+@test "keepalive sleep signal survives refused recording under a competing writer" {
+    local backend="${BATS_TEST_TMPDIR}/backend" child ready=0 observed
+    mkdir "${backend}"
+    # A real cooperating writer owns the lock; no CLI or guest is needed.
+    python3 - "${capture_root}" "${capture_ready}" <<'PY' &
+import fcntl
+import sys
+import time
+from pathlib import Path
+root, ready = map(Path, sys.argv[1:])
+with (root / '.writer').open('a') as lock:
+    fcntl.flock(lock, fcntl.LOCK_EX)
+    ready.touch()
+    while not ready.with_suffix('.release').exists(): time.sleep(.02)
+PY
+    child=$!
+    for _ in $(seq 1 200); do
+        if [[ -f "${capture_ready}" ]]; then
+            ready=1
+            break
+        fi
+        sleep 0.02
+    done
+    if [[ "${ready}" != 1 ]]; then
+        kill "${child}"
+        wait "${child}" || :
+        return 1
+    fi
+    # shellcheck disable=SC2329
+    sleep() {
+        echo "$*" >>"${capture_waits}"
+        return 143
+    }
+    run keepalive_guest_evidence "${capture_root}"
+    observed="${status}"
+    touch "${capture_ready}.release"
+    wait "${child}"
+    [[ "${observed}" == 143 && ! -s "${capture_calls}" ]]
+    [[ "$(cat "${capture_waits}")" == 20 && ! -e "${capture_root}/000001" ]]
+    jq -se 'length == 1 and .[0].reason == "competing evidence writer"
+        and .[0].arguments[0] == "poll-step" and .[0].arguments[3:5] == ["sleep","143"]' "${capture_root}/refusals.jsonl"
+    assert_capture_latched
+}
+
 @test "full capture retains complete image raw bytes exact VM and artifact digest" {
     capture_guest_evidence "${capture_root}" read-poll first >"${BATS_TEST_TMPDIR}/actual"
     cmp "${BATS_TEST_TMPDIR}/actual" "${capture_root}/000001/raw.stdout"
@@ -75,6 +134,72 @@ assert_capture_latched() {
     jq -e '.width == 420 and .height == 200' "${capture_root}/000001/artifact.json"
     jq -se 'length == 2 and .[0][2:4] == ["--region","1500,0,420,200"]' "${capture_calls}"
     jq -se 'map(.ordinal) == [1,2] and map(.operation) == ["mark","mark"]' "${capture_root}"/*/request.json
+}
+
+@test "valid nonzero row filters remain readable through the checked backend" {
+    local filter
+    for filter in 1 2 3 4; do
+        export capture_mode="filter-${filter}"
+        capture_guest_evidence "${capture_root}" read-poll "filter-${filter}" >/dev/null
+    done
+    [[ "$(wc -l <"${capture_calls}" | tr -d ' ')" == 4 && ! -e "${capture_root}/unavailable" ]]
+    jq -se 'length == 4 and all(.[]; .outcome == "clean")' "${capture_root}"/*/result.json
+}
+
+@test "valid consecutive IDAT and ancillary chunks remain readable" {
+    export capture_mode=multi-idat
+    capture_guest_evidence "${capture_root}" read-poll split >/dev/null
+    export capture_mode=ancillary
+    capture_guest_evidence "${capture_root}" read-poll ancillary >/dev/null
+    [[ "$(wc -l <"${capture_calls}" | tr -d ' ')" == 2 && ! -e "${capture_root}/unavailable" ]]
+    jq -se 'length == 2 and all(.[]; .outcome == "clean")' "${capture_root}"/*/result.json
+}
+
+@test "retained native PNG qualifies in the reusable capture check without a new native read" {
+    export capture_mode=historical
+    capture_guest_evidence "${capture_root}" read-poll retained-encoder >/dev/null
+    cmp "${capture_historical}" "${capture_root}/000001/screen.png"
+    jq -e '.width == 1920 and .height == 1080 and .bytes == 233136
+        and .sha256 == "7cc3ea0c1c72f1a66975ab34925addbadac3504f648fd372fcafd7ce834a8587"' "${capture_root}/000001/artifact.json"
+}
+
+@test "malformed PNG branches retain their specific validator reasons" {
+    local mode reason
+    for mode in before-header nonconsecutive-idat critical invalid-type reserved-type end-payload compressed-trailing oversized-stream; do
+        reset_capture "branch-${mode}"
+        export capture_mode="${mode}"
+        case "${mode}" in
+        before-header) reason='PNG must begin with IHDR' ;;
+        nonconsecutive-idat) reason='nonconsecutive PNG image data' ;;
+        critical) reason='unexpected critical PNG chunk' ;;
+        invalid-type | reserved-type) reason='invalid PNG chunk length/type' ;;
+        end-payload) reason='incomplete PNG end or trailing data' ;;
+        compressed-trailing | oversized-stream) reason='incomplete or oversized PNG pixel stream' ;;
+        esac
+        run capture_guest_evidence "${capture_root}" read-poll malformed
+        [[ "${status}" == 125 && "$(wc -l <"${capture_calls}" | tr -d ' ')" == 1 ]]
+        jq -e --arg reason "${reason}" '.outcome == "unavailable" and .reason == $reason
+            and .cli_status == 0 and .emission_status == "not-attempted"' "${capture_root}/000001/result.json"
+        [[ ! -e "${capture_root}/000001/artifact.json" ]]
+        if [[ "${mode}" == compressed-trailing || "${mode}" == oversized-stream ]]; then
+            # Independently check which zlib boundary this fixture actually reaches.
+            python3 - "${capture_root}/000001/screen.png" "${mode}" <<'PY'
+import sys
+import zlib
+from pathlib import Path
+data = Path(sys.argv[1]).read_bytes()
+length = int.from_bytes(data[33:37], 'big')
+decoder = zlib.decompressobj()
+pixels = decoder.decompress(data[41:41+length], 19)  # 2 rows of (1 + 2*4), plus 1
+if sys.argv[2] == 'compressed-trailing':
+    assert decoder.eof and decoder.unused_data and not decoder.unconsumed_tail
+    assert len(pixels) == 18
+else:
+    assert decoder.unconsumed_tail and not decoder.eof and len(pixels) == 19
+PY
+        fi
+        assert_capture_latched
+    done
 }
 
 @test "missing empty malformed truncated corrupt and incomplete pixels latch without retry" {
@@ -275,6 +400,60 @@ PY
     run keepalive_guest_evidence "${capture_root}"
     [[ "${status}" == 125 ]]
     [[ "$(cat "${capture_waits}")" == 20 && "$(wc -l <"${capture_calls}" | tr -d ' ')" == 1 ]]
+    assert_capture_latched
+}
+
+@test "keepalive tick colliding with an in-flight dispatch stops and latches without retry" {
+    export capture_block=1
+    capture_guest_evidence "${capture_root}" read-poll in-flight >"${BATS_TEST_TMPDIR}/held.out" 2>&1 &
+    local child=$! ready=0 observed
+    for _ in $(seq 1 200); do
+        if [[ -f "${capture_ready}" ]]; then
+            ready=1
+            break
+        fi
+        sleep 0.02
+    done
+    if [[ "${ready}" != 1 ]]; then
+        kill "${child}"
+        wait "${child}" || :
+        return 1
+    fi
+    # Compress only the existing sleep; the real lock/dispatch stay held.
+    # shellcheck disable=SC2329
+    sleep() {
+        echo "$*" >>"${capture_waits}"
+        [[ "$(wc -l <"${capture_waits}" | tr -d ' ')" -le 1 ]] || return 143
+    }
+    run keepalive_guest_evidence "${capture_root}"
+    observed="${status}"
+    touch "${capture_ready}.release"
+    wait "${child}"
+    [[ "${observed}" == 125 && "$(cat "${capture_waits}")" == 20 ]]
+    [[ "$(wc -l <"${capture_calls}" | tr -d ' ')" == 1 ]]
+    jq -se 'length == 1 and .[0].reason == "competing evidence writer"
+        and .[0].arguments[0] == "capture" and .[0].arguments[3] == "keepalive-1"' "${capture_root}/refusals.jsonl"
+    jq -e '.outcome == "clean"' "${capture_root}/000001/result.json"
+    assert_capture_latched
+}
+
+@test "allocation failure retains partial capture and the next gate latches unfinished evidence" {
+    local backend="${BATS_TEST_TMPDIR}/backend"
+    mkdir "${backend}"
+    cp "${BATS_TEST_DIRNAME}/../../scripts/"{vm-guest-exec.py,vm_capture_artifact.py} "${backend}/"
+    cat >>"${backend}/vm_capture_artifact.py" <<'PY'
+
+# Deterministic allocation failure; never exhaust the host's actual memory.
+def inspect_capture(path, width, height):
+    raise MemoryError('synthetic allocation failure')
+PY
+    run python3 "${backend}/vm-guest-exec.py" capture "${capture_root}" read-poll allocate
+    [[ "${status}" == 1 && "${output}" == *'MemoryError: synthetic allocation failure'* ]]
+    [[ -s "${capture_root}/000001/request.json" && -s "${capture_root}/000001/raw.stdout" ]]
+    [[ -s "${capture_root}/000001/screen.png" && ! -e "${capture_root}/000001/result.json" ]]
+    [[ ! -e "${capture_root}/000001/artifact.json" && ! -e "${capture_root}/unavailable" ]]
+    run check_guest_evidence "${capture_root}"
+    [[ "${status}" == 125 && "$(cat "${capture_root}/unavailable")" == 'unfinished attempt: 000001:'* ]]
     assert_capture_latched
 }
 

@@ -44,7 +44,7 @@ Non-exec commands share only that base envelope. Pointer input has no exec-style
 `timed_out`/`exit_code`/guest-stream fields. The caller must validate the actual
 complete command-specific payload. The example checks only a pointer response;
 controlled `marker` payloads in tests exercise the validator, not real upload or
-capture schemas. K61 must enumerate and check every consumed schema before use,
+screen-size schemas. K61 must enumerate and check every consumed schema before use,
 including explicit clean negative facts. Exit zero alone never qualifies output.
 
 Each k61 call site must supply a predicate on its own complete payload schema,
@@ -59,6 +59,9 @@ new tolerated status or poll bound.
 
 Supported families are agent, input, screen, file upload/download and the limited
 lifecycle forms below. Endpoint commands receive the pinned `--vm` and `--json`.
+Screenshots must use the [checked capture interface](ORDERING-CAPTURE-RESULTS.md);
+generic CLI `screen capture` refuses in every class before dispatch. Its unique
+output path and complete PNG qualification remain inside the shared lock.
 Caller endpoint/output/live-execution overrides and embedded `--` terminators
 refuse before dispatch and latch failure. The API's initial `--` only separates
 its own arguments. Guest exec must use the stricter `exec_guest_evidence` route.
@@ -117,11 +120,12 @@ internals, or actual executable/spec/endpoint provenance follows. K54 retains
 the executable/config/spec/endpoint freeze and audit duties.
 
 For CLI calls, `evidence` admits only `agent windows`, `agent snapshot` without
-`--open-menu`, `screen capture`, `screen size`, `file download`, `vm list` and
+`--open-menu`, `screen size`, `file download`, `vm list` and
 the pinned `vm stop`. All other actions refuse with this class, both before and
 after a latch. Snapshot's `--open-menu` option sends VNC clicks in tagged
 [agent.rs](https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/commands/agent.rs),
-so both separate and equals forms refuse. Collection cannot restore eligibility.
+so both separate and equals forms refuse. Checked evidence-class captures use
+the capture backend rather than this generic CLI route. Collection cannot restore eligibility.
 Free guest-exec commands still require caller classification: an evidence-class
 exec must collect read-only context, never scenario input or configuration.
 There is no reset, overwrite or scenario retry.

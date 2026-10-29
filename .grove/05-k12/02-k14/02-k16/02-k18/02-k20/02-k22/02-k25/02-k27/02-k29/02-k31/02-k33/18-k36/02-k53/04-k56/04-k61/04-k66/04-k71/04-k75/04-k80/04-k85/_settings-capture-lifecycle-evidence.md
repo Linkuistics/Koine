@@ -60,3 +60,36 @@ collection duty; k81 every exec/one-shot consequence; k76 full adoption/signals
 and both held-pointer cases. Every original criterion and availability/privacy
 limit remains binding. K85 and every ancestor remain open; no VM/candidate/
 freeze/native acceptance follows.
+
+## K91 capture review integration handoff
+
+K90's findings are integrated by k91 in
+docs/verification/settings-activation/ORDERING-CAPTURE-RESULTS.md and its
+ordering-capture-integration receipts. Generic CLI capture refuses in all
+classes; use the checked capture interface, including evidence collection.
+An observed keepalive sleep signal returns unchanged even when its one record
+attempt is refused: contention retains exact phase/status in refusals.jsonl,
+latches and allocates no ordinal. Classify structured fields, not the historical
+window-poll reason wording. Full scenario signals remain k76's work.
+
+The keepalive/scenario collision is unresolved design work in
+settings-keepalive-coordination-k92 before k89/k81/k76 consumption. K92 must earn
+independent review/every integration and place any required implementation/
+review before consumption. The current nonblocking lock, sleep20 cadence and
+failure stop remain unchanged; they prove no working native keepalive or
+complete-run serviceability. No scheduling wait, retry or bypass is selected.
+
+Reusable controls now accept actual retained native PNG bytes, nonzero filters,
+consecutive IDAT and ancillary chunks, and disprove over-strict validators.
+All required images, including every tick, remain unique/private and retained.
+K57/k76 must plan storage and audit originals/partials without overwriting,
+deleting or publishing secret-bearing roots. There is no practical file/dimension/
+memory/run-volume cap. Allocation failure can leave an unfinished capture;
+facade nonzero/latch and subsequent unfinished-attempt checks prevent later
+scenario input but promise no bounded resource use or available collection.
+
+K89 retains every remaining original k85 file/environment/lifecycle/collection
+duty, k81 every exec/one-shot consequence and k76 full adoption/signals/both
+held-pointer controls. Snapshot missing-tree/empty-AXValue, OCR substring and
+held-frame fallback limits remain. K67/k62/k57/k54 and every runtime slot stay
+held. No VM/candidate/freeze, native acceptance, ancestor closure or release.

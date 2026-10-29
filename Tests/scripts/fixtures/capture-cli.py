@@ -50,15 +50,40 @@ def main() -> int:
         pixels = pixels[:-1]
     if mode == "filter":
         pixels = b"\x05" + pixels[1:]
+    if mode.startswith("filter-"):
+        # Any byte sequence after a valid row filter decodes to valid RGBA pixels.
+        pixels = (bytes([int(mode[-1])]) + bytes(width * 4)) * height
+    if mode == "oversized-stream":
+        pixels += bytes(100000)
     compressed = zlib.compress(pixels)
     if mode == "zlib":
         compressed = compressed[:-2]
-    png = (
-        b"\x89PNG\r\n\x1a\n"
-        + chunk(b"IHDR", header)
-        + chunk(b"IDAT", compressed)
-        + chunk(b"IEND", b"")
-    )
+    if mode == "compressed-trailing":
+        compressed += b"trailing compressed bytes"
+    prefix = b""
+    middle = chunk(b"IDAT", compressed)
+    ending = chunk(b"IEND", b"payload" if mode == "end-payload" else b"")
+    if mode == "before-header":
+        prefix = chunk(b"tEXt", b"note\x00before header")
+    if mode in {"multi-idat", "nonconsecutive-idat"}:
+        split = len(compressed) // 2
+        middle = chunk(b"IDAT", compressed[:split])
+        if mode == "nonconsecutive-idat":
+            middle += chunk(b"tEXt", b"note\x00splits image data")
+        middle += chunk(b"IDAT", compressed[split:])
+    if mode in {"ancillary", "critical", "invalid-type", "reserved-type"}:
+        kind = {
+            "ancillary": b"tEXt",
+            "critical": b"ABCD",
+            "invalid-type": b"ab1D",
+            "reserved-type": b"abca",
+        }[mode]
+        middle += chunk(kind, b"note\x00synthetic")
+    png = b"\x89PNG\r\n\x1a\n" + prefix + chunk(b"IHDR", header) + middle + ending
+    if mode == "historical":
+        # Retained native bytes exercise the actual encoder, never a new capture.
+        png = Path(os.environ["capture_historical"]).read_bytes()
+        width, height = struct.unpack(">II", png[16:24])
     if mode == "signature":
         png = b"not an image"
     elif mode == "crc":

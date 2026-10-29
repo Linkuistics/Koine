@@ -1,0 +1,32 @@
+{
+  "mutations": [
+    {
+      "name": "filters",
+      "path": "scripts/vm_capture_artifact.py",
+      "old": "pixels[row * row_size] > 4",
+      "new": "pixels[row * row_size] != 0",
+      "original_sha256": "a2be1c456ae0484dc85495b51052721557d39584db90e210452b3220608fdd6e",
+      "mutated_sha256": "eaabe5a103ade3ce9e375ba2e39fb849ac053ae706d269c2424551443d5b3024",
+      "control": "valid nonzero row filters; retained native PNG"
+    },
+    {
+      "name": "multi",
+      "path": "scripts/vm_capture_artifact.py",
+      "old": "if ended_data:",
+      "new": "if ended_data or seen_data:",
+      "original_sha256": "a2be1c456ae0484dc85495b51052721557d39584db90e210452b3220608fdd6e",
+      "mutated_sha256": "68638fcbab298e5a468a2d545d1e659935fda3235380a61fcb2d6f02e75ae303",
+      "control": "valid consecutive IDAT"
+    },
+    {
+      "name": "ancillary",
+      "path": "scripts/vm_capture_artifact.py",
+      "old": "elif kind[0] < 97:",
+      "new": "elif True:",
+      "original_sha256": "a2be1c456ae0484dc85495b51052721557d39584db90e210452b3220608fdd6e",
+      "mutated_sha256": "6d42d528d3dd2755cced3a4d8a707fe9e35e0d96e01bb7799c33f68a8f428c88",
+      "control": "valid ancillary chunks"
+    }
+  ],
+  "preparation_source": "from pathlib import Path\nimport shutil\n\nbase = Path('.build/k91/mutants')\nfiles = ['scripts/vm-guest-exec.py', 'scripts/vm-guest-exec-lib.sh', 'scripts/vm_capture_artifact.py', 'scripts/vm-capture-evidence-lib.sh', 'Tests/scripts/vm-capture-evidence.bats', 'Tests/scripts/fixtures/capture-cli.py', 'docs/verification/settings-activation/persisted-01/failure-observed.png']\nfor name, old, new in [\n    ('filters', 'pixels[row * row_size] > 4', 'pixels[row * row_size] != 0'),\n    ('multi', 'if ended_data:', 'if ended_data or seen_data:'),\n    ('ancillary', 'elif kind[0] < 97:', 'elif True:'),\n]:\n    root = base / name\n    for file in files:\n        target = root / file\n        target.parent.mkdir(parents=True, exist_ok=True)\n        shutil.copyfile(file, target)\n    path = root / 'scripts/vm_capture_artifact.py'\n    source = path.read_text()\n    assert source.count(old) == 1\n    path.write_text(source.replace(old, new))\n"
+}

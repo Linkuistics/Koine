@@ -20,7 +20,7 @@ capture_guest_evidence() {
 # Foreground loop for the caller to own as a background child and later reap.
 # Preserve while/sleep20/capture, with no ignored error or subsequent tick on failure.
 keepalive_guest_evidence() {
-    local root="${1-}" tick=0 status
+    local root="${1-}" tick=0 status record_status
     _capture_evidence_root "${root}" || return
     if [[ $# != 1 ]]; then
         fail_guest_evidence "${root}" keepalive-arguments 'expected ROOT'
@@ -31,8 +31,12 @@ keepalive_guest_evidence() {
         status=0
         sleep 20 || status=$?
         if [[ "${status}" != 0 ]]; then
-            record_guest_poll "${root}" "keepalive-sleep-${tick}" sleep "${status}" 'sleep 20 before each keepalive capture'
-            return "$?"
+            record_status=0
+            record_guest_poll "${root}" "keepalive-sleep-${tick}" sleep "${status}" 'sleep 20 before each keepalive capture' || record_status=$?
+            # Contention still refuses/latches and retains the attempted record.
+            # Preserve an already observed interruption even if recording fails.
+            if ((status > 128 && status <= 192)); then return "${status}"; fi
+            return "${record_status}"
         fi
         capture_guest_evidence "${root}" read-poll "keepalive-${tick}" || return
     done

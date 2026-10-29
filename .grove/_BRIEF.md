@@ -622,3 +622,16 @@ All 316 frozen inputs, endpoint inventories and completed golden hashes match;
 97 artifact checks pass and the correct clone stops. Reopens 2/3 and every later
 complete-scenario phase are NOT RUN. Every completed sample stays closed. No
 product repair, ordinary acceptance, release/notarization or upstream report.
+
+## Capture review integration boundary
+
+K91 integrates k90 in docs/verification/settings-activation/ORDERING-CAPTURE-RESULTS.md.
+Generic CLI capture now refuses; the checked backend owns unique readable PNGs.
+Observed keepalive sleep signals survive refused recording, with exact refusal
+fields and no new ordinal. Expanded fixture controls cover real retained encoder
+bytes and disprove over-strict validators. The keepalive/scenario lock conflict
+remains design work in settings-keepalive-coordination-k92 before k89/k81/k76
+consumption, with independent review/every integration and any required
+implementation/review. Private per-tick image volume and unbounded allocation/
+unfinished-record limits pass to k57/k76. All original duties and runtime holds
+remain; no VM/candidate/freeze, native acceptance or ancestor closure follows.

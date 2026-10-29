@@ -1,0 +1,17 @@
+1..16
+ok 1 generic CLI capture refuses every class without dispatch or overwriting caller files
+ok 2 keepalive sleep signal survives refused recording under a competing writer
+ok 3 full capture retains complete image raw bytes exact VM and artifact digest
+ok 4 region and repeated operations use unique artifacts without extra reads
+ok 5 missing empty malformed truncated corrupt and incomplete pixels latch without retry
+ok 6 capture schema and image dimensions must match exact artifact and region
+ok 7 failed partial typed error and dry-run captures retain raw failure without output
+ok 8 collection after failed image retains first latch and never restores eligibility
+ok 9 invalid roots do not dispatch or write cwd and invalid capture arguments latch
+ok 10 PNG inspection still owns the shared lock after CLI completion
+ok 11 capture shares ordinals in both directions and failed collection cannot overwrite
+ok 12 caught capture SIGINT retains interruption partial streams and stops later input
+ok 13 relative roots remain usable and invalid class operation options cannot dispatch
+ok 14 keepalive preserves twenty-second ticks unique paths and exact local interruption
+ok 15 keepalive failure stops before another sleep or capture and latches later input
+ok 16 capture holds shared lock through CLI and refuses competing scenario dispatch

@@ -1,0 +1,7 @@
+1..2
+not ok 1 generic CLI capture refuses every class without dispatch or overwriting caller files
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 65)
+#   `[[ "${status}" == 125 && ! -s "${capture_calls}" ]]' failed
+not ok 2 keepalive sleep signal survives refused recording under a competing writer
+# (in test file Tests/scripts/vm-capture-evidence.bats, line 104)
+#   `[[ "${observed}" == 143 && ! -s "${capture_calls}" ]]' failed
