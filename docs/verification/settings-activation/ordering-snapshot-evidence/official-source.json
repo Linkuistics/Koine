@@ -1,0 +1,12 @@
+{
+  "tag": "v2.7.0",
+  "commit": "65bc05c91cc5d2a6e3d4aa8f81cb2c7c7712fa03",
+  "method": "Read immutable official local commit with jj file show, manifest first; online fetch unavailable. No installed executable, endpoint or native availability claim.",
+  "files": {
+    "cli-rs/Cargo.toml": "e7c43079eda1fa5c7f81cb3e7f3742c65260cac139a7191910430a736a0bf06a",
+    "cli-rs/crates/testanyware-cli/src/commands/agent.rs": "5c401191f1d1df59d14967ee5f03c93cd625021ad8353dac84198e53bb68d7bc",
+    "cli-rs/crates/testanyware-protocol/src/window_info.rs": "82cca60fdd71bfee1c7266e8a26e9b6c1e88e191755fe04125ed6310d7e59629",
+    "cli-rs/crates/testanyware-protocol/src/element_info.rs": "6a421bf987cdeda867478a7de497e543deb5db5c5faeccbe1fb22609cd774e5e",
+    "cli-rs/crates/testanyware-protocol/src/unified_role.rs": "8f22cb5af4d73f22b3de51e6e335a6ada8300679370ccafa742f1ded56e15e9e"
+  }
+}

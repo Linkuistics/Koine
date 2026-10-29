@@ -1,0 +1,36 @@
+{
+  "subjects": {
+    "scripts/vm-verify-menu-bar.sh": {
+      "parent_sha256": "4cedeaebf72c19c65af51db6d57bace380508ffa1c8dee6e784997f22e0f74f2",
+      "current_sha256": "4cedeaebf72c19c65af51db6d57bace380508ffa1c8dee6e784997f22e0f74f2",
+      "equal": true
+    },
+    "scripts/vm-verify-lib.sh": {
+      "parent_sha256": "0cbd67a3b3aad4d27df39370d106637800716101cb619bf704901cf7235f1035",
+      "current_sha256": "0cbd67a3b3aad4d27df39370d106637800716101cb619bf704901cf7235f1035",
+      "equal": true
+    },
+    "scripts/vm-verify-desktop-lib.sh": {
+      "parent_sha256": "22f7c7026a9f3f7706783f6da56f517b468697eaad9e1fcd5f0570ee72932452",
+      "current_sha256": "22f7c7026a9f3f7706783f6da56f517b468697eaad9e1fcd5f0570ee72932452",
+      "equal": true
+    },
+    "docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md": {
+      "parent_sha256": "545200ec15c0bea549055666d4c519aa90c9835ba53496b9a09d76c2e019cb93",
+      "current_sha256": "545200ec15c0bea549055666d4c519aa90c9835ba53496b9a09d76c2e019cb93",
+      "equal": true
+    }
+  },
+  "existing_archive_targets": {
+    "docs/verification/settings-activation/context-initial-inputs/context-predicate.txt": {
+      "parent_read_exit": 1,
+      "stderr": "Error: No such path: docs/verification/settings-activation/context-initial-inputs/context-predicate.txt\n",
+      "current_exists": false
+    },
+    "docs/verification/settings-activation/context-initial-inputs/context-qualify-filter.sh": {
+      "parent_read_exit": 1,
+      "stderr": "Error: No such path: docs/verification/settings-activation/context-initial-inputs/context-qualify-filter.sh\n",
+      "current_exists": false
+    }
+  }
+}

@@ -1481,6 +1481,14 @@ tasks:
       - shfmt -d -i 4 scripts/vm-input-evidence-lib.sh Tests/scripts/vm-input-evidence.bats
       - bats Tests/scripts/vm-input-evidence.bats
 
+  check:vm-ui-evidence:
+    desc: Check source-only strict snapshot/element schemas and the existing element poll without a VM; caller adoption remains separate
+    cmds:
+      - bash -n scripts/vm-ui-evidence-lib.sh
+      - shellcheck -x scripts/vm-ui-evidence-lib.sh Tests/scripts/vm-ui-evidence.bats
+      - shfmt -d -i 4 scripts/vm-ui-evidence-lib.sh Tests/scripts/vm-ui-evidence.bats
+      - bats Tests/scripts/vm-ui-evidence.bats
+
   check:vm-window-evidence:
     desc: Check strict window list/action schemas and existing bounded negative polls without a VM; scenario adoption remains separate
     cmds:

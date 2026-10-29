@@ -1,0 +1,58 @@
+1..13
+not ok 1 snapshot retains original bytes full tree exact argv VM and shared ordinals
+# (in test file Tests/scripts/vm-ui-evidence.bats, line 89)
+#   `cmp "${ui_replies}/1.json" "${ui_root}/000001/raw.stdout"' failed with status 2
+# snapshot diagnostic 1
+# cmp: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-rRZ6sA/test/1/evidence/000001/raw.stdout: No such file or directory
+not ok 2 clean empty windows and empty element lists are optional negatives
+# (in test file Tests/scripts/vm-ui-evidence.bats, line 105)
+#   `jq -se 'length == 2 and all(.[]; .outcome == "clean")' "${ui_root}"/*/result.json' failed with status 2
+# jq: error: Could not open file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-rRZ6sA/test/2/evidence/*/result.json: No such file or directory
+# false
+not ok 3 nonzero partial typed error and dry run never become absence or retry
+# (in test file Tests/scripts/vm-ui-evidence.bats, line 120)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 4 snapshot validates every window and recursive element before a negative
+# (in test file Tests/scripts/vm-ui-evidence.bats, line 140)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 5 selected value geometry and height require actual consumed attributes
+# (in test file Tests/scripts/vm-ui-evidence.bats, line 158)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 6 clean negatives alone advance presence polls and retain state predicates
+# (in test file Tests/scripts/vm-ui-evidence.bats, line 174)
+#   `jq -se 'map(select(.transport=="poll-step") | .local_status) == [1,1,0] and all(.[] | select(.transport=="poll-step"); .poll_phase=="state" and (.state_predicate | contains("grant-label")))' "${ui_root}"/*/request.json' failed with status 2
+# jq: error: Could not open file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-rRZ6sA/test/6/evidence/*/request.json: No such file or directory
+# false
+not ok 7 clean absence poll succeeds without input or sleep
+# (in test file Tests/scripts/vm-ui-evidence.bats, line 183)
+#   `jq -e '.poll_phase=="state" and .local_status==0' "${ui_root}/000002/request.json"' failed with status 2
+# jq: error: Could not open file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-rRZ6sA/test/7/evidence/000002/request.json: No such file or directory
+not ok 8 ten clean negatives retain the final sleep and distinct state exhaustion
+# (in test file Tests/scripts/vm-ui-evidence.bats, line 188)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 9 invalid selectors and multiple-result selectors latch before another read
+# (in test file Tests/scripts/vm-ui-evidence.bats, line 204)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 10 invalid roots and arguments refuse without CLI or cwd writes
+# (in test file Tests/scripts/vm-ui-evidence.bats, line 213)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 11 prior failure blocks reads but evidence collection cannot clear the latch
+# (in test file Tests/scripts/vm-ui-evidence.bats, line 225)
+#   `[[ "${status}" == 125 && ! -s "${ui_calls}" ]]' failed
+# guest evidence unavailable (000001): existing failure
+not ok 12 sleep failure and signal statuses stop without another snapshot
+# (in test file Tests/scripts/vm-ui-evidence.bats, line 238)
+#   `if [[ "${signal}" == 1 ]]; then [[ "${status}" == 125 ]]; else [[ "${status}" == "${signal}" ]]; fi' failed
+not ok 13 adapter SIGINT retains interruption and refuses later input
+# (in test file Tests/scripts/vm-ui-evidence.bats, line 248)
+#   `[[ "${status}" == 130 ]]' failed
+
+The following warnings were encountered during tests:
+BW02: Using flags on `run` requires at least BATS_VERSION=1.5.0. Use `bats_require_minimum_version 1.5.0` to fix this message.
+      (from function `bats_warn_minimum_guaranteed_version' in file /opt/homebrew/Cellar/bats-core/1.14.0/lib/bats-core/warnings.bash, line 32,
+       from function `run' in file /opt/homebrew/Cellar/bats-core/1.14.0/lib/bats-core/test_functions.bash, line 359,
+       in test file Tests/scripts/vm-ui-evidence.bats, line 100)
+BW02: Using flags on `run` requires at least BATS_VERSION=1.5.0. Use `bats_require_minimum_version 1.5.0` to fix this message.
+      (from function `bats_warn_minimum_guaranteed_version' in file /opt/homebrew/Cellar/bats-core/1.14.0/lib/bats-core/warnings.bash, line 32,
+       from function `run' in file /opt/homebrew/Cellar/bats-core/1.14.0/lib/bats-core/test_functions.bash, line 359,
+       in test file Tests/scripts/vm-ui-evidence.bats, line 103)

@@ -1,0 +1,288 @@
+{
+  "scope": [
+    "scripts/vm-verify-menu-bar.sh",
+    "scripts/vm-verify-lib.sh",
+    "scripts/vm-verify-desktop-lib.sh"
+  ],
+  "method": "Bounded literal candidate enumeration followed by source classification. English/comment candidates omitted except retained message/string false positives. No dynamic-shell or graph completeness claim. All current callers are unchanged.",
+  "source_sha256": {
+    "scripts/vm-verify-menu-bar.sh": "4cedeaebf72c19c65af51db6d57bace380508ffa1c8dee6e784997f22e0f74f2",
+    "scripts/vm-verify-lib.sh": "0cbd67a3b3aad4d27df39370d106637800716101cb619bf704901cf7235f1035",
+    "scripts/vm-verify-desktop-lib.sh": "22f7c7026a9f3f7706783f6da56f517b468697eaad9e1fcd5f0570ee72932452"
+  },
+  "candidates": [
+    {
+      "path": "scripts/vm-verify-menu-bar.sh",
+      "line": 101,
+      "function": "<scenario>",
+      "candidate_tokens": [
+        "element"
+      ],
+      "source": "DOCK=\"$(sysevents 'get name of every UI element of list 1 of process \"Dock\"')\"",
+      "classification": "AppleScript noun, not a shell element read"
+    },
+    {
+      "path": "scripts/vm-verify-menu-bar.sh",
+      "line": 166,
+      "function": "<scenario>",
+      "candidate_tokens": [
+        "element"
+      ],
+      "source": "RESIZE_CONTENT=\"$(element '.platformRole==\"AXScrollArea\"')\" || fail \"the minimum content frame could not be read\"",
+      "classification": "legacy caller; adoption remains k80/k76 after review"
+    },
+    {
+      "path": "scripts/vm-verify-menu-bar.sh",
+      "line": 183,
+      "function": "<scenario>",
+      "candidate_tokens": [
+        "value_of"
+      ],
+      "source": "[ \"$(value_of '.id==\"grant-label\"')\" = shortcut ] || fail \"typing reached no field\"",
+      "classification": "legacy caller; adoption remains k80/k76 after review"
+    },
+    {
+      "path": "scripts/vm-verify-menu-bar.sh",
+      "line": 188,
+      "function": "<scenario>",
+      "candidate_tokens": [
+        "value_of"
+      ],
+      "source": "[ -z \"$(value_of '.id==\"grant-label\"')\" ] || fail \"\u2318A \u2318X did not empty the field\"",
+      "classification": "legacy caller; adoption remains k80/k76 after review"
+    },
+    {
+      "path": "scripts/vm-verify-menu-bar.sh",
+      "line": 191,
+      "function": "<scenario>",
+      "candidate_tokens": [
+        "value_of"
+      ],
+      "source": "[ \"$(value_of '.id==\"grant-label\"')\" = shortcut ] || fail \"\u2318V did not restore what \u2318C copied\"",
+      "classification": "legacy caller; adoption remains k80/k76 after review"
+    },
+    {
+      "path": "scripts/vm-verify-menu-bar.sh",
+      "line": 217,
+      "function": "<scenario>",
+      "candidate_tokens": [
+        "element"
+      ],
+      "source": "echo \"Requests on screen: $(element '(.id // \"\") | startswith(\"request-label-\")' | jq -c '[.id, .value]')\"",
+      "classification": "legacy caller; adoption remains k80/k76 after review"
+    },
+    {
+      "path": "scripts/vm-verify-menu-bar.sh",
+      "line": 245,
+      "function": "<scenario>",
+      "candidate_tokens": [
+        "value_of"
+      ],
+      "source": "[ \"$(value_of '.id==\"login-launch-status\"')\" = \"Koine will start when you log in.\" ] || fail \"login launch is not enabled\"",
+      "classification": "legacy caller; adoption remains k80/k76 after review"
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 116,
+      "function": "snapshot",
+      "candidate_tokens": [
+        "snapshot",
+        "snapshot"
+      ],
+      "source": "snapshot() { testanyware agent snapshot --mode full --window \"${SNAPSHOT_WINDOW:-${APP_NAME}}\" --depth 14 --json; }",
+      "classification": "definition or definition with body"
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 117,
+      "function": "element",
+      "candidate_tokens": [
+        "element"
+      ],
+      "source": "element() {",
+      "classification": "definition or definition with body"
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 118,
+      "function": "element",
+      "candidate_tokens": [
+        "snapshot"
+      ],
+      "source": "    snapshot | jq -c \"[.. | objects | select(has(\\\"platformRole\\\")) | select($1)][0]\"",
+      "classification": "legacy caller; adoption remains k80/k76 after review"
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 120,
+      "function": "value_of",
+      "candidate_tokens": [
+        "value_of",
+        "element"
+      ],
+      "source": "value_of() { element \"$1\" | jq -r '.value // empty'; }",
+      "classification": "definition or definition with body"
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 128,
+      "function": "click",
+      "candidate_tokens": [
+        "element"
+      ],
+      "source": "    e=\"$(element \"$1\")\" || return \"$?\"",
+      "classification": "legacy caller; adoption remains k80/k76 after review"
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 129,
+      "function": "click",
+      "candidate_tokens": [
+        "element"
+      ],
+      "source": "    [ \"${e}\" != null ] || fail \"no UI element matches: $1\"",
+      "classification": "failure-message literal, not a call"
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 136,
+      "function": "await_element",
+      "candidate_tokens": [
+        "await_element"
+      ],
+      "source": "await_element() {",
+      "classification": "definition or definition with body"
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 138,
+      "function": "await_element",
+      "candidate_tokens": [
+        "element"
+      ],
+      "source": "        if [ \"$(element \"$1\")\" != null ]; then",
+      "classification": "legacy helper outside current ordinary scenario reachable closure"
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 145,
+      "function": "await_element",
+      "candidate_tokens": [
+        "element"
+      ],
+      "source": "    fail \"window element $1 was not $2\"",
+      "classification": "failure-message literal, not a call"
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 147,
+      "function": "text_of",
+      "candidate_tokens": [
+        "text_of",
+        "element"
+      ],
+      "source": "text_of() { element \"$1\" | jq -r '[.. | strings] | join(\" \")'; }",
+      "classification": "definition or definition with body"
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 169,
+      "function": "on_screen",
+      "candidate_tokens": [
+        "element"
+      ],
+      "source": "    e=\"$(element \"$1\")\" || status=$?",
+      "classification": "legacy caller; adoption remains k80/k76 after review"
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 187,
+      "function": "calibrate_window_scroll",
+      "candidate_tokens": [
+        "element"
+      ],
+      "source": "    before=\"$(element '.id==\"grant-label\"' | jq -r '.positionY')\" || return \"$?\"",
+      "classification": "legacy caller; adoption remains k80/k76 after review"
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 189,
+      "function": "calibrate_window_scroll",
+      "candidate_tokens": [
+        "element"
+      ],
+      "source": "    after=\"$(element '.id==\"grant-label\"' | jq -r '.positionY')\" || return \"$?\"",
+      "classification": "legacy caller; adoption remains k80/k76 after review"
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 207,
+      "function": "reveal",
+      "candidate_tokens": [
+        "element"
+      ],
+      "source": "        e=\"$(element \"$1\")\" || return \"$?\"",
+      "classification": "legacy caller; adoption remains k80/k76 after review"
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 208,
+      "function": "reveal",
+      "candidate_tokens": [
+        "element"
+      ],
+      "source": "        [ \"${e}\" != null ] || fail \"no UI element matches: $1\"",
+      "classification": "failure-message literal, not a call"
+    },
+    {
+      "path": "scripts/vm-verify-lib.sh",
+      "line": 247,
+      "function": "place_window",
+      "candidate_tokens": [
+        "element"
+      ],
+      "source": "    until element '.id==\"grant-label\"' 2>/dev/null | grep -q '^{'; do",
+      "classification": "legacy helper outside current ordinary scenario reachable closure"
+    },
+    {
+      "path": "scripts/vm-verify-desktop-lib.sh",
+      "line": 42,
+      "function": "create_grant",
+      "candidate_tokens": [
+        "value_of"
+      ],
+      "source": "    [ -n \"$(value_of '.id==\"grant-credential\"')\" ] || fail \"the credential sheet did not appear\"",
+      "classification": "legacy helper outside current ordinary scenario reachable closure"
+    },
+    {
+      "path": "scripts/vm-verify-desktop-lib.sh",
+      "line": 97,
+      "function": "grant_accessibility",
+      "candidate_tokens": [
+        "element"
+      ],
+      "source": "    until element '.role==\"button\" and .label==\"Add\"' 2>/dev/null | grep -q '^{'; do",
+      "classification": "legacy caller; adoption remains k80/k76 after review"
+    },
+    {
+      "path": "scripts/vm-verify-desktop-lib.sh",
+      "line": 115,
+      "function": "grant_accessibility",
+      "candidate_tokens": [
+        "element"
+      ],
+      "source": "    [ \"$(element '.label==\"Koine\" or .value==\"Koine\"')\" != null ] || fail \"Koine is not in the Accessibility list\"",
+      "classification": "legacy caller; adoption remains k80/k76 after review"
+    },
+    {
+      "path": "scripts/vm-verify-desktop-lib.sh",
+      "line": 128,
+      "function": "revoke_accessibility",
+      "candidate_tokens": [
+        "value_of"
+      ],
+      "source": "    until [ \"$(value_of '.id==\"Koine_Toggle\"' 2>/dev/null)\" = 1 ]; do",
+      "classification": "legacy helper outside current ordinary scenario reachable closure"
+    }
+  ]
+}
