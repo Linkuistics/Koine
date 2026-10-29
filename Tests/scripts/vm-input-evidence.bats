@@ -236,6 +236,178 @@ load_caller() {
     eval "$(awk -v name="$1" '$0 ~ "^"name"\\(\\)" {selected=1} selected {print} selected && /^}/ {selected=0}' "${BATS_TEST_DIRNAME}/../../scripts/$2")"
 }
 
+assert_reveal_read_stops() {
+    local stage="$1" name context lane
+    for name in snapshot element on_screen scroll_by reveal reveal_click click; do
+        load_caller "${name}" vm-verify-lib.sh
+    done
+    export FRAME_X=40 FRAME_Y=40 FRAME_W=480 FRAME_H=712 BOTTOM=752 SCROLL_END=-10 TITLE_BAR=30 APP_NAME=Koine
+    # Keep real snapshot/element/on_screen and caller bodies; fail the external read.
+    # shellcheck disable=SC2329
+    read_frame() { return "${frame_status}"; }
+    # shellcheck disable=SC2329
+    sleep() { echo "$*" >>"${input_waits}"; }
+    # shellcheck disable=SC2329
+    fail() { exit 1; }
+    declare -f >"${BATS_TEST_TMPDIR}/callers.sh"
+    for context in plain conditional; do
+        for lane in strict legacy; do
+            for name in click reveal_click; do
+                reset_input "read-${context}-${stage}-${lane}-${name}"
+                [[ "${lane}" != legacy ]] || unset KOINE_VM_EVIDENCE_ROOT
+                export frame_status=0
+                [[ "${stage}" != frame ]] || frame_status=7
+                echo 7 >"${input_replies}/exit"
+                run bash -euo pipefail -c '
+                    source "$1"
+                    if [[ "$2" == conditional ]]; then
+                        if "$3" '\''.id=="grant-label"'\''; then :; else exit "$?"; fi
+                    else
+                        "$3" '\''.id=="grant-label"'\''
+                    fi
+                    echo later
+                ' _ "${BATS_TEST_TMPDIR}/callers.sh" "${context}" "${name}"
+                [[ "${status}" == 7 ]]
+                [[ "${output}" != *later* ]]
+                # A snapshot attempt is allowed; no input or settling follows it.
+                if grep -q '"input"' "${input_calls}"; then return 1; fi
+                [[ ! -s "${input_waits}" ]]
+                if [[ "${stage}" == frame ]]; then
+                    [[ ! -s "${input_calls}" ]]
+                else
+                    [[ "$(wc -l <"${input_calls}" | tr -d ' ')" == 1 ]]
+                fi
+            done
+        done
+    done
+}
+
+@test "failed frame read stops actual click chains in plain and conditional contexts" {
+    assert_reveal_read_stops frame
+}
+
+@test "failed snapshot read stops actual click chains in plain and conditional contexts" {
+    assert_reveal_read_stops snapshot
+}
+
+@test "real frame reader propagates failed window transport before click input" {
+    set -o pipefail # Match the scenario's pipeline status policy.
+    local name
+    for name in read_frame reveal click; do
+        load_caller "${name}" vm-verify-lib.sh
+    done
+    export WINDOW_TITLE='Koine Settings'
+    # shellcheck disable=SC2329
+    fail() { exit 1; }
+    echo 7 >"${input_replies}/exit"
+    run click '.id=="grant-label"'
+    [[ "${status}" == 7 ]]
+    [[ "$(wc -l <"${input_calls}" | tr -d ' ')" == 1 ]]
+    if grep -q '"input"' "${input_calls}"; then return 1; fi
+}
+
+@test "on-screen read status one is an error rather than a clean negative" {
+    load_caller on_screen vm-verify-lib.sh
+    load_caller reveal vm-verify-lib.sh
+    # shellcheck disable=SC2329
+    element() { return 1; }
+    # shellcheck disable=SC2329
+    read_frame() { :; }
+    # shellcheck disable=SC2329
+    scroll_by() {
+        echo forbidden >>"${input_calls}"
+        return 7
+    }
+    run reveal '.id=="grant-label"'
+    [[ "${status}" == 2 ]]
+    [[ ! -s "${input_calls}" ]]
+}
+
+@test "calibration stops on failed position reads before later scroll input" {
+    set -o pipefail # Bats does not enable the scenario's pipeline option.
+    local stage name
+    for name in calibrate_window_scroll scroll_by; do
+        load_caller "${name}" vm-verify-lib.sh
+    done
+    FRAME_X=40 FRAME_Y=40 FRAME_W=480 FRAME_H=712
+    export position_reads="${BATS_TEST_TMPDIR}/position-reads"
+    # shellcheck disable=SC2329
+    read_frame() { :; }
+    # shellcheck disable=SC2329
+    sleep() { echo "$*" >>"${input_waits}"; }
+    # shellcheck disable=SC2329
+    element() {
+        if [[ "${position_stage}" == after && ! -f "${position_reads}" ]]; then
+            touch "${position_reads}"
+            echo '{"positionY":100}'
+        else return 7; fi
+    }
+    for stage in before after; do
+        reset_input "calibration-${stage}"
+        position_stage="${stage}"
+        rm -f "${position_reads}"
+        run calibrate_window_scroll
+        [[ "${status}" == 7 ]]
+        if [[ "${stage}" == before ]]; then
+            [[ ! -s "${input_calls}" && ! -s "${input_waits}" ]]
+        else
+            [[ "$(wc -l <"${input_calls}" | tr -d ' ')" == 1 ]]
+            [[ "$(cat "${input_waits}")" == 1 ]]
+        fi
+    done
+}
+
+assert_menu_read_stops() {
+    local stage="$1" context lane
+    load_caller read_menu vm-verify-lib.sh
+    load_caller expect_menu vm-verify-menu-bar.sh
+    # shellcheck disable=SC2329
+    open_menu() { return "${open_status}"; }
+    # shellcheck disable=SC2329
+    menu_titles() {
+        echo titles >>"${input_reads}"
+        return 7
+    }
+    # shellcheck disable=SC2329
+    sleep() { echo "$*" >>"${input_waits}"; }
+    # shellcheck disable=SC2329
+    fail() { exit 1; }
+    export input_reads="${BATS_TEST_TMPDIR}/reads"
+    declare -f >"${BATS_TEST_TMPDIR}/callers.sh"
+    for context in plain conditional; do
+        for lane in strict legacy; do
+            reset_input "menu-${context}-${stage}-${lane}"
+            [[ "${lane}" != legacy ]] || unset KOINE_VM_EVIDENCE_ROOT
+            : >"${input_reads}"
+            export open_status=0
+            [[ "${stage}" != open ]] || open_status=7
+            run bash -euo pipefail -c '
+                    source "$1"
+                    if [[ "$2" == conditional ]]; then
+                        if expect_menu expected; then :; else exit "$?"; fi
+                    else
+                        expect_menu expected
+                    fi
+                    echo later
+                ' _ "${BATS_TEST_TMPDIR}/callers.sh" "${context}"
+            [[ "${status}" == 7 ]]
+            [[ "${output}" != *later* ]]
+            [[ ! -s "${input_calls}" && ! -s "${input_waits}" ]]
+            if [[ "${stage}" == open ]]; then
+                [[ ! -s "${input_reads}" ]]
+            else [[ "$(cat "${input_reads}")" == titles ]]; fi
+        done
+    done
+}
+
+@test "failed menu open stops before title reads Escape and settling" {
+    assert_menu_read_stops open
+}
+
+@test "failed menu title read stops before Escape and settling" {
+    assert_menu_read_stops titles
+}
+
 @test "consumed scroll and menu helpers stop before settling sleep even with errexit suppressed" {
     load_caller scroll_by vm-verify-lib.sh
     load_caller read_menu vm-verify-lib.sh

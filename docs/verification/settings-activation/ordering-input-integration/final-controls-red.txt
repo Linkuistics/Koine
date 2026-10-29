@@ -1,0 +1,31 @@
+1..7
+not ok 1 failed frame read stops actual click chains in plain and conditional contexts
+# (from function `assert_reveal_read_stops' in file Tests/scripts/vm-input-evidence.bats, line 270,
+#  in test file Tests/scripts/vm-input-evidence.bats, line 286)
+#   `assert_reveal_read_stops frame' failed
+not ok 2 failed snapshot read stops actual click chains in plain and conditional contexts
+# (from function `assert_reveal_read_stops' in file Tests/scripts/vm-input-evidence.bats, line 270,
+#  in test file Tests/scripts/vm-input-evidence.bats, line 290)
+#   `assert_reveal_read_stops snapshot' failed
+not ok 3 real frame reader propagates failed window transport before click input
+# (in test file Tests/scripts/vm-input-evidence.bats, line 303)
+#   `[[ "${status}" == 7 ]]' failed
+not ok 4 on-screen read status one is an error rather than a clean negative
+# (in test file Tests/scripts/vm-input-evidence.bats, line 318)
+#   `[[ "${status}" == 2 ]]' failed
+not ok 5 calibration stops on failed position reads before later scroll input
+# (in test file Tests/scripts/vm-input-evidence.bats, line 345)
+#   `[[ "${status}" == 7 ]]' failed
+not ok 6 failed menu open stops before title reads Escape and settling
+# (from function `assert_menu_read_stops' in file Tests/scripts/vm-input-evidence.bats, line 388,
+#  in test file Tests/scripts/vm-input-evidence.bats, line 399)
+#   `assert_menu_read_stops open' failed
+not ok 7 failed menu title read stops before Escape and settling
+# (from function `assert_menu_read_stops' in file Tests/scripts/vm-input-evidence.bats, line 388,
+#  in test file Tests/scripts/vm-input-evidence.bats, line 403)
+#   `assert_menu_read_stops titles' failed
+
+The following warnings were encountered during tests:
+BW01: `run`'s command `reveal .id=="grant-label"` exited with code 127, indicating 'Command not found'. Use run's return code checks, e.g. `run -127`, to fix this message.
+      (from function `run' in file /opt/homebrew/Cellar/bats-core/1.14.0/lib/bats-core/test_functions.bash, line 442,
+       in test file Tests/scripts/vm-input-evidence.bats, line 317)

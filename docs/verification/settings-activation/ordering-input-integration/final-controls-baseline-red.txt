@@ -1,0 +1,26 @@
+1..7
+not ok 1 failed frame read stops actual click chains in plain and conditional contexts
+# (from function `assert_reveal_read_stops' in file Tests/scripts/vm-input-evidence.bats, line 270,
+#  in test file Tests/scripts/vm-input-evidence.bats, line 286)
+#   `assert_reveal_read_stops frame' failed
+not ok 2 failed snapshot read stops actual click chains in plain and conditional contexts
+# (from function `assert_reveal_read_stops' in file Tests/scripts/vm-input-evidence.bats, line 270,
+#  in test file Tests/scripts/vm-input-evidence.bats, line 290)
+#   `assert_reveal_read_stops snapshot' failed
+not ok 3 real frame reader propagates failed window transport before click input
+# (in test file Tests/scripts/vm-input-evidence.bats, line 304)
+#   `[[ "${status}" == 7 ]]' failed
+not ok 4 on-screen read status one is an error rather than a clean negative
+# (in test file Tests/scripts/vm-input-evidence.bats, line 322)
+#   `[[ "${status}" == 2 ]]' failed
+not ok 5 calibration stops on failed position reads before later scroll input
+# (in test file Tests/scripts/vm-input-evidence.bats, line 350)
+#   `[[ "${status}" == 7 ]]' failed
+not ok 6 failed menu open stops before title reads Escape and settling
+# (from function `assert_menu_read_stops' in file Tests/scripts/vm-input-evidence.bats, line 393,
+#  in test file Tests/scripts/vm-input-evidence.bats, line 404)
+#   `assert_menu_read_stops open' failed
+not ok 7 failed menu title read stops before Escape and settling
+# (from function `assert_menu_read_stops' in file Tests/scripts/vm-input-evidence.bats, line 393,
+#  in test file Tests/scripts/vm-input-evidence.bats, line 408)
+#   `assert_menu_read_stops titles' failed

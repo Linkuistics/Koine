@@ -1,0 +1,43 @@
+{
+  "method": "Final controls against k77/pre-integration common helper source in an isolated tree; only the CLI/sleeps and named read/setup boundaries are substituted. No VM.",
+  "revision": "8d80872213c1ab9d020a1f6246673b7c9279f55e",
+  "command": [
+    "mise",
+    "exec",
+    "--",
+    "bats",
+    "--filter",
+    "failed frame read|failed snapshot read|real frame reader|on-screen read status|calibration stops|failed menu open|failed menu title read",
+    "Tests/scripts/vm-input-evidence.bats"
+  ],
+  "exit": 1,
+  "subjectsBefore": {
+    "scripts/vm-input-evidence-lib.sh": "8e7c2e1485b1a991fe57a06c7cc4632470ad9ca1081ac5d3c91834a00143daed",
+    "scripts/vm-guest-exec-lib.sh": "d9540371ce2cbfd6a717ce8e4243346f4af630d43c6421fcd919b1c78ed2e785",
+    "scripts/vm-guest-exec.py": "a11e688bf4e508f104333c05273b1be55a173c15d3666885e9b4b31c1f6ef6d0",
+    "scripts/vm-verify-lib.sh": "bc83bc210fea679bea6ef57b2dde0790788d98968a8e00c78e486eb05351c469",
+    "scripts/vm-verify-menu-bar.sh": "4cedeaebf72c19c65af51db6d57bace380508ffa1c8dee6e784997f22e0f74f2",
+    "scripts/vm-verify-desktop-lib.sh": "22f7c7026a9f3f7706783f6da56f517b468697eaad9e1fcd5f0570ee72932452",
+    "Tests/scripts/vm-input-evidence.bats": "1e20d849252f57c3037da7725ea302b2c068e2998b1c5cd040ef6e40e2340ea2"
+  },
+  "subjectsAfter": {
+    "scripts/vm-input-evidence-lib.sh": "8e7c2e1485b1a991fe57a06c7cc4632470ad9ca1081ac5d3c91834a00143daed",
+    "scripts/vm-guest-exec-lib.sh": "d9540371ce2cbfd6a717ce8e4243346f4af630d43c6421fcd919b1c78ed2e785",
+    "scripts/vm-guest-exec.py": "a11e688bf4e508f104333c05273b1be55a173c15d3666885e9b4b31c1f6ef6d0",
+    "scripts/vm-verify-lib.sh": "bc83bc210fea679bea6ef57b2dde0790788d98968a8e00c78e486eb05351c469",
+    "scripts/vm-verify-menu-bar.sh": "4cedeaebf72c19c65af51db6d57bace380508ffa1c8dee6e784997f22e0f74f2",
+    "scripts/vm-verify-desktop-lib.sh": "22f7c7026a9f3f7706783f6da56f517b468697eaad9e1fcd5f0570ee72932452",
+    "Tests/scripts/vm-input-evidence.bats": "1e20d849252f57c3037da7725ea302b2c068e2998b1c5cd040ef6e40e2340ea2"
+  },
+  "subjectsUnchanged": true,
+  "outputSha256": "2df652a90a3f62f73ace27e840de5d5bf5bdb6685337d7024a2c2177ab0499c2",
+  "tests": [
+    "not ok 1 failed frame read stops actual click chains in plain and conditional contexts",
+    "not ok 2 failed snapshot read stops actual click chains in plain and conditional contexts",
+    "not ok 3 real frame reader propagates failed window transport before click input",
+    "not ok 4 on-screen read status one is an error rather than a clean negative",
+    "not ok 5 calibration stops on failed position reads before later scroll input",
+    "not ok 6 failed menu open stops before title reads Escape and settling",
+    "not ok 7 failed menu title read stops before Escape and settling"
+  ]
+}

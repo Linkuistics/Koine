@@ -1,0 +1,17 @@
+1..4
+not ok 1 failed frame read stops actual click chains in plain and conditional contexts
+# (from function `assert_reveal_read_stops' in file Tests/scripts/vm-input-evidence.bats, line 268,
+#  in test file Tests/scripts/vm-input-evidence.bats, line 278)
+#   `assert_reveal_read_stops frame' failed
+not ok 2 failed snapshot read stops actual click chains in plain and conditional contexts
+# (from function `assert_reveal_read_stops' in file Tests/scripts/vm-input-evidence.bats, line 268,
+#  in test file Tests/scripts/vm-input-evidence.bats, line 282)
+#   `assert_reveal_read_stops snapshot' failed
+not ok 3 failed menu open stops before title reads Escape and settling
+# (from function `assert_menu_read_stops' in file Tests/scripts/vm-input-evidence.bats, line 318,
+#  in test file Tests/scripts/vm-input-evidence.bats, line 329)
+#   `assert_menu_read_stops open' failed
+not ok 4 failed menu title read stops before Escape and settling
+# (from function `assert_menu_read_stops' in file Tests/scripts/vm-input-evidence.bats, line 318,
+#  in test file Tests/scripts/vm-input-evidence.bats, line 333)
+#   `assert_menu_read_stops titles' failed

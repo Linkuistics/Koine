@@ -82,8 +82,29 @@ remain binding. K67/k62/k57/k54 and every runtime slot stay held.
 
 K74 supplies the explicit-root keyboard/text/scroll facade and actual reachable
 caller migration documented in docs/verification/settings-activation/ORDERING-INPUT-RESULTS.md.
-The complete scenario still has not adopted its root throughout. Independent
-review and every earned integration precede k75 consumption. K75 and k76 retain
+The complete scenario still has not adopted its root throughout. K77 review
+is integrated by k78; consume the current input report and integration receipts. K75 and k76 retain
 every original Done when above, including all remaining schemas/confirmations,
 window/TextEdit block adoption, complete signals and both held-pointer controls.
 K67/k62/k57/k54 and all runtime remain held.
+
+
+## K78 integration handoff
+
+K77 review is integrated in ORDERING-INPUT-RESULTS.md and its
+ordering-input-integration receipts. Shared scroll/click and menu chains now
+explicitly propagate the checked read failures before later input, including
+conditional contexts. A clean on-screen negative is status 1; a read failure
+with status 1 becomes error 2. Other read errors retain their status. These legacy
+reads still need strict one-attempt receipts/latching under k75/k76; this repair
+establishes no whole-scenario readiness. Preserve successful read/input counts,
+action order, waits and bounds. The original caller-chain baseline describes
+conditional harness behavior only, not parent-scenario continuation.
+
+Strict consent receipts retain the VM password, including any KOINE_VM_PASSWORD
+override, in exact argv/predicates/raw responses and potentially refusal logs.
+Secret-bearing evidence roots are private and must not be published or committed.
+Carry this restriction through migration/adoption and into k57 collection; do
+not silently redact required raw evidence or weaken text validation. Fixture
+controls use disposable synthetic text. All existing remaining duties, both
+held-pointer signal controls, whole-harness review and runtime holds remain.

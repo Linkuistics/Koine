@@ -3,8 +3,8 @@
 K74 migrates the ordinary scenario's existing keyboard/text/scroll callers to an
 explicit-root facade. Its headless controls pass through the real shared adapter,
 writer lock, ordinal store and jq. The complete scenario has not initialized or
-adopted that root throughout. Independent review and every earned integration
-precede the next migration batch; whole-harness review still precedes runtime.
+adopted that root throughout. K77's review is integrated by k78 as described
+below; whole-harness review still precedes runtime.
 
 The [ordering protocol](ORDERING-EVALUATION-PLAN.md),
 [shared adapter](ORDERING-NONEXEC-RESULTS.md),
@@ -71,6 +71,27 @@ suppress `errexit`; no settling sleep or later action in those tested chains
 follows the failed input. The scenario's direct inputs exit with the returned
 status. Existing assertions and successful inputs/waits are retained.
 
+K78 also checks failed frame/snapshot/position reads before scroll or click and
+failed menu opening/title reads before Escape. Those callers explicitly return
+on failure in both plain and conditional contexts. `on_screen` reserves status 1
+for a clean negative; a read that returns 1 becomes error status 2. Other failed
+read statuses propagate unchanged. This adds no input, wait or read on a successful
+path. These legacy reads do not yet produce strict receipts or latch the root;
+k75/k76 still owe that migration and whole-scenario failure handling.
+
+### Consent receipt privacy
+
+Strict `grant_accessibility` types the VM account password through `scenario_input`.
+Its full raw receipt contains that password in `request.json` (`argv` and
+`payload_predicate`) and the CLI's echoed `text` in `raw.stdout`. Refused or
+abnormal attempts can also retain it in `refusals.jsonl` and `facade-refusals.log`.
+`KOINE_VM_PASSWORD` can replace the disposable image's default `admin` value.
+When that value is a secret, the complete evidence root is private and must not
+be published or committed. K57 collection must preserve this restriction; k75
+and k76 must carry it through helper migration and root adoption. The existing
+exact-command/full-response contract remains in force, with no silent redaction
+or weaker text predicate. The headless fixtures use disposable synthetic text.
+
 Unused shared definitions (`create_grant`, `revoke_accessibility`, `quit_koine`
 and `quit_koine_or_terminate`) keep their legacy calls. They are outside this
 scenario's reachable input migration; the inventory exposes them. Bare element
@@ -95,6 +116,14 @@ strict control fails; the unchanged legacy-lane control passes. A loop's first
 failed assertion stops that control, so this does not claim every nested invalid
 fixture independently failed on the baseline. Source/fixture digests before and
 after match. No complete scenario, guest or native response is simulated.
+
+The original caller-chain controls (12–14 in that Bats revision) run their
+functions in `if` conditions, which suppress `errexit`. Their red baseline shows
+parent behavior in that harness context only. The actual parent scenario called
+those functions plainly under `set -euo pipefail` and stopped on failed input.
+That baseline is not evidence that the parent scenario continued after input
+failure. Its substituted reads all succeeded, so it could not detect the failed
+read regression identified by k77. All original red receipts remain unchanged.
 
 The passing controls cover exact argv and original bytes, modifier order,
 Unicode text/scalar count, empty text, signed scrolls, incomplete/mismatching
@@ -124,6 +153,39 @@ before/after subject digests. Its inventory includes the retained saved timeout
 fixture consumed by the adapter controls. The documentation check retains the
 existing archive-link failures owned by k23 rather than claiming a clean result.
 Run `mise exec -- task check:vm-input-evidence` for this bounded seam.
+
+## K77 findings and integration
+
+Findings were read from review commit `8d808722`, against producer `16826c12`.
+The dispositions apply the existing reviewed protocol without changing its scope.
+
+| Finding | Disposition |
+|---|---|
+| P2-1, failed reads can reach later input | Real issue. Explicitly check frame, position and snapshot reads in the scroll/click chain, and opening/title reads in `read_menu`. Distinguish `on_screen` read errors from clean negatives. Keep the existing successful action order, waits and bounds. |
+| P3-1, caller baseline differs from scenario context | Real evidence limitation. Qualify the historical baseline above. New controls exercise plain `set -euo pipefail` calls and conditional calls, with failing reads and assertions that later input and settling do not run. |
+| P3-2, consent password in raw receipts | Real retention limitation, accepted visibly. Preserve exact raw receipts and treat secret-bearing roots as private, as specified above and in the downstream handoffs. No authentic credential is used in these controls. |
+
+The initial [behavior-red run](ordering-input-integration/behavior-red.txt)
+and [expanded run](ordering-input-integration/expanded-red.txt) fail before
+production edits; adjacent before/after digest files identify those earlier test
+revisions. The first expanded-final comparison,
+[final-controls-red.json](ordering-input-integration/final-controls-red.json),
+has two setup limitations: two direct Bats pipeline controls lacked the scenario's
+`pipefail`, and the original status-one negative path reached an undefined
+`fail`/scroll boundary. It is retained, not credited for those cases.
+The [corrected final comparison](ordering-input-integration/final-controls-baseline-red.json)
+uses the final formatted tests and pre-integration helper source from `8d808722`
+in an isolated tree. All seven new controls fail there. Each loop stops at its
+first failed assertion; this proves no independent red result for every vector.
+
+The final [verification receipt](ordering-input-integration/verification.json)
+records the Taskfile input, shared adapter, physical, window, menu-pointer and
+resize checks, individual outcomes, complete outputs and before/after subject
+digests. It also checks original receipt integrity. Tests extract real caller
+functions and substitute only external CLI/read/setup/sleep boundaries; they
+establish the bounded failure stops, not native behavior, strict schemas for the
+remaining legacy reads, or a complete scenario. Executable red/green evidence
+addresses these behavior claims; no duplicate in-session reviewer ran.
 
 ## Remaining original duties
 

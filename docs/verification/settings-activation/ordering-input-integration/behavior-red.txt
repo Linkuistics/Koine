@@ -1,0 +1,7 @@
+1..2
+not ok 1 failed reveal reads stop actual click chains in plain and conditional contexts
+# (in test file Tests/scripts/vm-input-evidence.bats, line 269)
+#   `[[ "${status}" == 7 ]]' failed
+not ok 2 failed menu open or title read stops before legacy reads Escape and settling
+# (in test file Tests/scripts/vm-input-evidence.bats, line 310)
+#   `[[ "${status}" == 7 ]]' failed

@@ -1,0 +1,14 @@
+1..9
+ok 1 resize sends a held-button path through the selected corner to its destination
+ok 2 an explicit title selects the ordinary-window corner without changing its destination
+ok 3 a failed pointer preparation never presses the button in a conditional caller
+ok 4 a failed initial down attempts release and preserves the failure
+ok 5 a failed held point releases there and stops instead of masking the error
+ok 6 a failed final release is returned rather than hidden by sleep
+ok 7 the scenario refuses a failed frame read even when it emitted valid geometry
+ok 8 the scenario refuses content below 320 even when the outer frame is 440 by 352
+ok 9 the scenario accepts the observed minimum only with at least 320 content pixels
+task: [check:vm-window-resize] bash -n scripts/vm-window-resize-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+task: [check:vm-window-resize] shellcheck -x scripts/vm-window-resize-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+task: [check:vm-window-resize] shfmt -d -i 4 scripts/vm-window-resize-lib.sh
+task: [check:vm-window-resize] bats Tests/scripts/vm-window-resize.bats

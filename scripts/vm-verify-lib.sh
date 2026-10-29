@@ -125,7 +125,7 @@ click() {
     # the title bar or the wallpaper. So an element of Koine's window is first
     # scrolled wholly on screen. Another application's window is clicked as read.
     [ -n "${SNAPSHOT_WINDOW:-}" ] || reveal "$1" || return "$?"
-    e="$(element "$1")"
+    e="$(element "$1")" || return "$?"
     [ "${e}" != null ] || fail "no UI element matches: $1"
     # shellcheck disable=SC2046
     testanyware input click $(jq -r '"\(.positionX + .sizeWidth / 2 | floor) \(.positionY + .sizeHeight / 2 | floor)"' <<<"${e}") >/dev/null
@@ -155,7 +155,7 @@ TITLE_BAR=30
 read_frame() {
     local entry
     entry="$(testanyware agent windows --json |
-        jq -c --arg title "${WINDOW_TITLE}" '[.windows[] | select((.title // .name // "") == $title)][0]')"
+        jq -c --arg title "${WINDOW_TITLE}" '[.windows[] | select((.title // .name // "") == $title)][0]')" || return "$?"
     read -r FRAME_X FRAME_Y FRAME_W FRAME_H <<<"$(jq -r \
         '[(.positionX // .x // .bounds.x), (.positionY // .y // .bounds.y),
           (.sizeWidth // .width // .bounds.width), (.sizeHeight // .bounds.height // .height)]
@@ -165,8 +165,11 @@ read_frame() {
 }
 # on_screen <jq condition>: the element exists and lies wholly inside the window.
 on_screen() {
-    local e
-    e="$(element "$1")"
+    local e status=0
+    e="$(element "$1")" || status=$?
+    # 1 is reserved for a clean off-screen/absent result. Read errors must
+    # remain distinguishable even when a conditional caller suppresses errexit.
+    [ "${status}" = 0 ] || return "$((status == 1 ? 2 : status))"
     [ "${e}" != null ] || return 1
     jq -e --argjson top "$((FRAME_Y + TITLE_BAR))" --argjson bottom "${BOTTOM}" \
         '.positionY >= $top and (.positionY + .sizeHeight) <= $bottom' >/dev/null <<<"${e}"
@@ -179,25 +182,33 @@ scroll_by() {
     sleep 1
 }
 calibrate_window_scroll() {
-    local before after
-    read_frame
-    before="$(element '.id=="grant-label"' | jq -r '.positionY')"
+    local before after moved
+    read_frame || return "$?"
+    before="$(element '.id=="grant-label"' | jq -r '.positionY')" || return "$?"
     scroll_by -10 || return "$?"
-    after="$(element '.id=="grant-label"' | jq -r '.positionY')"
-    if [ "$(jq -n "${after} < ${before}")" = true ]; then SCROLL_END=-10; else SCROLL_END=10; fi
+    after="$(element '.id=="grant-label"' | jq -r '.positionY')" || return "$?"
+    moved="$(jq -n "${after} < ${before}")" || return "$?"
+    if [ "${moved}" = true ]; then SCROLL_END=-10; else SCROLL_END=10; fi
     echo "grant-label at y=${before} moved to y=${after} under --dy -10; towards the end is --dy ${SCROLL_END}"
     for _ in $(seq 1 30); do scroll_by $((-SCROLL_END)) || return "$?"; done
 }
 # reveal <jq condition>: scroll until the element is wholly on screen.
 reveal() {
-    local e y
-    read_frame
+    local e y below status
+    read_frame || return "$?"
     for _ in $(seq 1 60); do
-        if on_screen "$1"; then return 0; fi
-        e="$(element "$1")"
+        status=0
+        on_screen "$1" || status=$?
+        case "${status}" in
+            0) return 0 ;;
+            1) ;; # A clean negative may proceed to the existing scroll decision.
+            *) return "${status}" ;;
+        esac
+        e="$(element "$1")" || return "$?"
         [ "${e}" != null ] || fail "no UI element matches: $1"
-        y="$(jq -r '.positionY' <<<"${e}")"
-        if [ "$(jq -n "${y} > ${FRAME_Y} + ${FRAME_H} / 2")" = true ]; then
+        y="$(jq -r '.positionY' <<<"${e}")" || return "$?"
+        below="$(jq -n "${y} > ${FRAME_Y} + ${FRAME_H} / 2")" || return "$?"
+        if [ "${below}" = true ]; then
             scroll_by "${SCROLL_END}" || return "$?"
         else
             scroll_by $((-SCROLL_END)) || return "$?"
@@ -397,8 +408,8 @@ open_menu() {
 menu_titles() { sysevents "get title of every menu item of menu 1 of ${KOINE_ITEM}"; }
 # read_menu: the menu's titles, read open and closed again.
 read_menu() {
-    open_menu
-    MENU="$(menu_titles)"
+    open_menu || return "$?"
+    MENU="$(menu_titles)" || return "$?"
     echo "Menu: ${MENU}"
     scenario_input close-menu key escape >/dev/null || return "$?"
     sleep 1

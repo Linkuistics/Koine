@@ -1,0 +1,21 @@
+1..16
+ok 1 strict menu route retains exact raw completions, VM, ordinals and unchanged waits
+ok 2 strict successful resize preserves corner, eleven held points, release and waits
+ok 3 strict menu rejects mismatching and incomplete move or click payloads
+ok 4 strict screen dimensions reject missing, malformed, fractional and oversized payloads
+ok 5 strict helper refuses CLI errors and invalid base envelopes at every menu stage
+ok 6 strict geometry errors latch before any pointer action without legacy failure capture
+ok 7 an explicit empty or unknown physical evidence root never selects legacy transport
+ok 8 a prior latch blocks all physical reads and input
+ok 9 strict resize stops at each failed dispatch without unrecorded release
+ok 10 strict resize rejects wrong down and up coordinates or button
+ok 11 strict resize refuses incomplete, ambiguous and unusable window observations
+ok 12 strict resize validates destinations before reading windows or pressing a button
+ok 13 adapter interruption remains distinct through a physical helper and stops input
+ok 14 failed title encoding latches before resize dispatch
+ok 15 failed frame decoding cannot qualify emitted geometry or leave input eligible
+ok 16 failed display decoding cannot qualify emitted dimensions or leave input eligible
+task: [check:vm-physical-evidence] bash -n scripts/vm-physical-evidence-lib.sh scripts/vm-menu-pointer-lib.sh scripts/vm-window-resize-lib.sh Tests/scripts/vm-physical-evidence.bats
+task: [check:vm-physical-evidence] shellcheck -x scripts/vm-physical-evidence-lib.sh scripts/vm-menu-pointer-lib.sh scripts/vm-window-resize-lib.sh Tests/scripts/vm-physical-evidence.bats
+task: [check:vm-physical-evidence] shfmt -d -i 4 scripts/vm-physical-evidence-lib.sh scripts/vm-menu-pointer-lib.sh scripts/vm-window-resize-lib.sh Tests/scripts/vm-physical-evidence.bats
+task: [check:vm-physical-evidence] bats Tests/scripts/vm-physical-evidence.bats

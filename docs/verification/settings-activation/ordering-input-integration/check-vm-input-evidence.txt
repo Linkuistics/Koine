@@ -1,0 +1,26 @@
+1..21
+ok 1 key text and scroll preserve original bytes exact argv and shared ordinals
+ok 2 plain keys empty text and positive scroll use their actual complete payloads
+ok 3 each family rejects nonzero partial typed error and dry-run completion without retry
+ok 4 key payload must echo requested key and exact ordered modifier array
+ok 5 type payload requires exact text and Unicode scalar count
+ok 6 scroll payload must include exact x y dx and signed dy
+ok 7 explicit empty missing and uninitialized roots never fall back or write cwd artifacts
+ok 8 invalid action arguments refuse and latch before dispatch including under nounset
+ok 9 shared prior window or confirmation failure blocks every input family
+ok 10 SIGINT in every input family retains interruption without later input
+ok 11 unset root preserves existing bare input argv and nonzero status
+ok 12 failed frame read stops actual click chains in plain and conditional contexts
+ok 13 failed snapshot read stops actual click chains in plain and conditional contexts
+ok 14 real frame reader propagates failed window transport before click input
+ok 15 on-screen read status one is an error rather than a clean negative
+ok 16 calibration stops on failed position reads before later scroll input
+ok 17 failed menu open stops before title reads Escape and settling
+ok 18 failed menu title read stops before Escape and settling
+ok 19 consumed scroll and menu helpers stop before settling sleep even with errexit suppressed
+ok 20 actual scroll callers propagate failed input before another read or pointer action
+ok 21 actual consent sequence stops after failed text before key or later settling
+task: [check:vm-input-evidence] bash -n scripts/vm-input-evidence-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh scripts/vm-verify-desktop-lib.sh Tests/scripts/vm-input-evidence.bats
+task: [check:vm-input-evidence] shellcheck -x scripts/vm-input-evidence-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh scripts/vm-verify-desktop-lib.sh Tests/scripts/vm-input-evidence.bats
+task: [check:vm-input-evidence] shfmt -d -i 4 scripts/vm-input-evidence-lib.sh Tests/scripts/vm-input-evidence.bats
+task: [check:vm-input-evidence] bats Tests/scripts/vm-input-evidence.bats

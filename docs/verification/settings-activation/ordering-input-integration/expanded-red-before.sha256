@@ -1,0 +1,7 @@
+8b24c467f01a20965079f26a23e90f52b62426ed19214453bb751cc711fb36c7  Tests/scripts/vm-input-evidence.bats
+bc83bc210fea679bea6ef57b2dde0790788d98968a8e00c78e486eb05351c469  scripts/vm-verify-lib.sh
+4cedeaebf72c19c65af51db6d57bace380508ffa1c8dee6e784997f22e0f74f2  scripts/vm-verify-menu-bar.sh
+8e7c2e1485b1a991fe57a06c7cc4632470ad9ca1081ac5d3c91834a00143daed  scripts/vm-input-evidence-lib.sh
+d9540371ce2cbfd6a717ce8e4243346f4af630d43c6421fcd919b1c78ed2e785  scripts/vm-guest-exec-lib.sh
+a11e688bf4e508f104333c05273b1be55a173c15d3666885e9b4b31c1f6ef6d0  scripts/vm-guest-exec.py
+99078a49c098d3571566693bf049cd51859e256d48a02d16a22d9ca20cf119e8  Taskfile.yml
