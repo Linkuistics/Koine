@@ -9,10 +9,10 @@ in the same main-actor invocation. The [behavior contract](../../specs/settings-
 owns caller effects and API limits; the [design evidence](ORDERING-DESIGN-EVIDENCE.md)
 identifies the inspected implementation and contracts.
 
-**Design only; independent review and every earned integration precede product
-implementation or runtime.** The implementation owner must produce and verify
-the finite caller and its evidence handling before freezing a subject. This
-document does not identify a built bundle or authorize a launch now.
+The [k50 review and k51 integration](ORDERING-REVIEW.md) settle the design's
+evidence and setup rules. K36 owns implementation of the application change,
+the changed scenario/helpers and the finite caller, with verification before
+freeze. This document identifies no built bundle and supplies no runtime result.
 
 The question is whether that candidate meets the agreed behavior over the fixed
 sets below. It is not a comparison of failure rates or an attempt to identify
@@ -76,11 +76,16 @@ The application starts with Accessibility not granted and login launch disabled.
 First launch must show exactly one titled Settings window at the existing
 default size, with one menu item and no Dock icon. Retain all existing assertions.
 
-The focused set is the current complete scenario's prefix through its four
-Settings actions, not the historical frozen order-prefix file. Its build must
-verify that the extracted prefix has the same commands, waits and predicates as
-the frozen complete scenario, apart from evidence retention and its deliberate
-termination before resize. Do not copy a stale historical prefix into a new run.
+K36 must change the current scenario and its helpers to implement the transport,
+positive setup, title-audit and liveness rules below. These are required evidence
+repairs, not existing helper behavior. Retain every existing ordinary assertion,
+input action, fixed settling wait and state-poll bound. Replace hidden transport
+retries and ignored failures as specified below; add no focus wait or input retry.
+Freeze this changed complete scenario and extract its prefix for E from those
+same bytes. Both sets use identical helpers and predicates through the four
+Settings actions **and the existing TextEdit quit**, ending E immediately before
+the resize step. Verify that exact prefix correspondence before freeze. Do not
+copy a historical prefix or add the repairs only to E.
 
 For each of those four selections, close Settings once and establish zero visible
 Koine windows. TextEdit must be the front application, with its same idle untitled
@@ -91,6 +96,26 @@ Koine's menu. An unexpected front app, panel or document is failed setup; do not
 repair it with focus input, a wait extension or a repeated selection. The initial
 selection has no earlier successful menu selection; reopen 1 follows one, and so
 on. This preserves the observed histories without calling them causal controls.
+
+Use these fixed precondition oracles immediately before each of the four menu
+openings, after the existing close/count check and without an added settling wait:
+
+| Required fact | Retained observation and decision |
+|---|---|
+| No visible Koine window | A clean full agent window list contains zero entries for Koine. Retain the list used by the existing zero-count check. |
+| TextEdit is frontmost | A clean System Events read names TextEdit as the frontmost process, with its PID equal to the TextEdit PID captured after initial preparation. A merely non-Koine front app is insufficient. |
+| The same idle untitled document | The full agent list has exactly one TextEdit window, of type `standard`, titled `Untitled`, with the same position and size recorded after the initial move/settle. The scenario has made no document or typing action since preparation. This observable tuple and unchanged TextEdit PID are the continuity criterion; the agent list has no stable window identifier and proves no hidden document identity. |
+| No dialog or sheet | One clean System Events read of TextEdit's windows supplies their subroles and sheet counts. Require one `AXStandardWindow`, no extra window and zero attached sheets. An `AXDialog`, `AXSystemDialog`, extra panel/window or sheet is failed setup. Missing attributes or incomplete enumeration are unavailable. |
+| No open menu | A clean System Events enumeration of the menus exposed under the TextEdit and Koine menu-bar items reports zero open menus. Retain each item's count and completion of the enumeration. Missing or inaccessible menu data is unavailable, not zero. This is the same read-only menu boundary used for selection and closure; it sends no Escape or other input. |
+
+Retain a precondition screenshot with these observations. The structured checks
+must pass before opening the menu; the screenshot is supplemental visible
+context, audited after the slot and before admitting the next. An observed
+conflict invalidates setup. Add no human-response pause, focus action or settling
+delay. A clean mismatch is failed setup; missing, conflicting or unreadable
+required evidence is unavailable setup. Neither permits re-preparation or a
+replacement capture to obtain a pass. These are observable setup criteria, not
+proof of absent hidden state. Qualify their availability in E01 as specified below.
 
 Fresh clones and matching observable setup do not match hidden native state or
 make selections independent. The complete scenario deliberately changes setup
@@ -113,10 +138,16 @@ not a later recreation. Preserve the scenario's bounded observation polls and
 fixed waits, including its post-click delay; add no wait or success retry. A
 successful observation that the expected window is not yet visible may continue
 within the existing count-poll bound. Failed transport is different and stops
-the slot. The front/focus predicate runs once at its existing point: the first
-non-Notification-Center window must be the sole visible Koine Settings window
-and have `focused:true`. Retain the full unfiltered list and the exact predicate
-result, so an unrelated Koine window cannot satisfy it.
+the slot. The existing front/focus predicate runs once at its existing point:
+the first window outside Notification Center belongs to Koine and has
+`focused:true`. The existing count predicate separately counts all Koine windows,
+without checking their title. Retention alone strengthens neither predicate.
+Add a title/identity audit of that same full front/focus list: it must contain
+exactly one Koine window, titled `Koine Settings`, and that entry must be the
+front/focused entry. This audit is required for acceptance of each return,
+including later ordinary returns. A wrong title is a separate window-identity
+assertion failure; missing fields are unavailable evidence. Do not re-read to
+replace a failed list. Preserve both old predicate results and the new audit.
 
 Retain an outcome screenshot before any subsequent close, focus, keyboard action
 or launch. Screenshot collection must not replace the assertion's earlier raw
@@ -127,12 +158,28 @@ observations with their order, time, PID and raw status. No corrective input or
 second assertion follows. If the observer is unavailable, retain that failure;
 never use its text from timeout/nonzero transport as a successful read.
 
+An outcome screenshot is retained evidence, not an automatic acceptance
+assertion. Acceptance requires the clean window predicates and title audit plus
+a readable retained screenshot; it does not infer focus from pixels. A visible
+conflict discovered in the screenshot makes the outcome unresolved. Rejection
+additionally requires the explicit visual corroboration below.
+
 **A qualified behavioral recurrence** needs the frozen subject/setup, current
 enabled target and valid geometry, one clean issued row click, a closed menu,
 and clean original window/count/focus evidence plus a corroborating outcome
 screenshot that show the required return failed. Zero windows after the existing
-bound, multiple Settings windows, or a sole window behind/unfocused each fails
-the behavior. This qualifies the UI result of the requested selection; it does
+bound with the same Koine process still alive, multiple Settings windows, or a
+sole Settings window behind/unfocused each fails the behavior. For the zero-window
+branch only, make one clean process read during untouched failure capture and
+compare the Koine PID and process start identity recorded before the click. Use
+the existing guest process-inspection seam and retain the exact executable path,
+PID and start identity in both reads. A missing process or changed identity is
+`process lost during selection`, a separate assertion failure that prevents
+acceptance but does not qualify a Settings recurrence. An unavailable identity
+or failed liveness read leaves the result unresolved. A stale endpoint file is
+not liveness. Do not relaunch or repeat the selection. This does not distinguish
+a crash from a Quit misclick, and makes no claim of callback delivery.
+This qualifies the UI result of the requested selection; it does
 not prove callback dispatch identity, the count of native requests, native refusal
 or an activation subsequently lost. Missing route evidence, an open menu, invalid
 geometry, conflicting observations or failed essential observation transport makes
@@ -147,30 +194,69 @@ both. Evidence sufficient for rejection need not be sufficient for acceptance.
 
 ## Required transport and evidence handling
 
-The existing helpers are the test boundary, not already a complete acceptance
-instrument. `guest_once` can discard a failed launch result; `guest_text` can
-strip a timeout and parse its text. Before runtime, the finite caller must retain
-the actual command, exact VM identity, stdout, stderr, CLI exit and any raw JSON
-envelope for every attempt, including those currently hidden by these helpers.
-Required failed/timeout/incomplete transport must latch an unavailable outcome
-and stop the scenario before a retry. A later success or matching returned text
-cannot clear that result. Keep the existing bounded polls on clean observations;
-do not confuse a clean negative state predicate with failed transport.
+K36 must replace the scenario's uses of `guest`, `guest_text`, `guest_once` and
+bare discarded exec results with raw single-attempt adapters at the existing
+helper boundary. This includes setup, installation, defaults, System Events,
+launch, restart and final collection. The legacy twelve-attempt `guest` path is
+not admitted to either set. Idempotence alone does not authorize repeating failed
+evidence acquisition. No text stripping, `|| true` or later successful read may
+clear a failed required transport.
 
-Declare operation-specific expected outcomes before freeze. Examples include
-absence of a diagnostic key and the scenario's expected connection-refused result
-after Quit. Encode a clean negative observation in a successful envelope rather
-than accepting arbitrary nonzero transport. The existing one-shot restart still
-executes once; an unconfirmed transport remains unavailable even if a later boot
-appears. No runtime exception may be invented for a troublesome command.
-Keep scenario, inner/outer Task, collection, endpoint, environment, audit and
-stop results separate. A scenario exit of zero cannot override an evidence failure.
+For every attempt retain the command, exact VM identity, operation/class, ordinal,
+start/end times, stdout, stderr, CLI exit and complete raw response. Guest exec
+uses its JSON response: clean means CLI zero, `ok:true`, `timed_out:false`,
+`exit_code:0` and complete command-specific payload. Reject absent/malformed
+fields; preserve the whole original, not only decoded text. Agent/input/capture/VM
+commands likewise need successful completion and their full expected payload
+or output artifact. Do not infer success from exit zero alone.
+
+| Transport class | Bound and meaning |
+|---|---|
+| Read-only state poll | Keep only the existing scenario/helper poll count and delay. Every poll is one clean read. A complete negative state may advance to the next existing poll; a transport failure immediately latches unavailable. No nested twelve-try transport loop. `await_windows`, endpoint/boot polling and `koine_in_front` must keep read failure distinct from false state. |
+| One-shot command | Submit exactly once. Require clean completion and the command-specific downstream confirmation below. A downstream success cannot rehabilitate failed submission. Never repeat launch, defaults writes, menu input or restart. |
+| Required evidence acquisition | Window lists (including poll inputs), screenshots, setup/route records, inventories, environment/default reads, failure observer, process identity and stop evidence each require a clean single attempt. Failure latches unavailable; subsequent collection preserves context only. A window list used as a poll must meet this class on every poll. |
+
+Negative domain facts travel in a complete successful payload: absent diagnostic
+key or endpoint, absent process, count zero, unchanged boot identity and the
+expected curl connection-refused code 7 are data. They are not permission to
+accept CLI 7, guest errors, timeout or partial text. Ordinary state polls may
+continue on the clean negatives their existing predicates admit. An exhausted
+clean poll bound is the named state failure; an errored poll is unavailable.
+
+| One-shot operation | Required confirmation after clean submission |
+|---|---|
+| First Koine launch | Endpoint descriptor/process identity and the existing one titled window, size, menu and Dock assertions. |
+| Silent launch after setup | Endpoint/process identity, existing settling wait, zero-window and menu assertions. |
+| Open of running Koine | Same process remains, one titled front/focused window. No second `open`. |
+| TextEdit launch/quit and other setup actions | Existing window/state consequences, plus the positive precondition above. The prefix includes the one quit; require its clean completion and one clean process-absence observation. |
+| Menu open and row click | Each input's clean raw completion, the current enabled item/frame/coordinates, open-menu screenshot, subsequent closed menu and original window outcome. Delivery is not callback proof. |
+| Defaults write or other configuration mutation | Clean write plus one clean read of the exact expected key/value or absence. The diagnostic keys remain absent; no enabling write is permitted. |
+| Restart | The existing `shutdown -r now` is submitted once. Require clean submission, then changed boot identity within the existing 30-second wait and 60-by-5-second poll bound, followed by the existing login assertions. A disconnect, timeout, CLI 7/255, missing envelope or guest nonzero is unavailable, even if reboot later occurs. No delayed shutdown, detached launcher or substitute reboot route is selected. |
+
+An unlisted required operation uses the strict one-attempt rule and its existing
+assertion. K36 enumerates the exact call sites and payload schemas before freeze;
+it cannot add tolerated error classes. In particular, the agent's known false
+timeouts can end a slot early, and restart may never supply clean submission.
+That availability cost is accepted visibly under the existing evidence rule;
+no passing evaluation is promised. If implementation evidence establishes that
+a required command cannot supply the declared clean result, hold before E01 and
+return that precise gap for a new decision. Do not consume guests to qualify a
+different transport or silently relax this standard.
+
+On any latched failure stop scenario input, retain untouched failure evidence,
+audit and stop the exact clone. Collection continues only to preserve evidence
+and contain the clone. Keep scenario, inner/outer Task, collection, endpoint,
+environment, audit and stop results separate. A scenario zero cannot override
+an evidence failure; cleanup success cannot requalify a failed trial.
 
 At the existing focused-helper seam, use actual retained failed envelopes and
 controlled transport responses to check partial JSON, timeout with matching text,
 nonzero status, missing completion marker, unexpected extra/missing inventory
-entries, interruption and exact clone cleanup. Also check that a clean negative
-state poll can continue and a failed transport cannot. A passing envelope cannot
+entries, interruption and exact clone cleanup. Check all three transport classes,
+each one-shot confirmation, a clean negative state poll that continues, and a
+failed poll that stops without another scenario command. Check restart disconnect
+followed by a changed boot remains unavailable, hidden helper retry is rejected,
+and both E/A use the same setup/title/liveness rules. A passing envelope cannot
 hide an earlier failed one; a failed scenario cannot skip collection/stop. These
 are meaningful evidence-handling checks, not a simulated native product repair.
 No new public product interface or OS-response fake is selected.

@@ -603,14 +603,14 @@
       "group": "settings-activation",
       "title": "Accepted scope for repair design",
       "source": "settings-activation/scope-choice.mmd",
-      "caption": "The named empirical scope is approved. The concrete design proposes one local reversal, two focused and three complete ordinary guests using one unchanged candidate with diagnostics disabled. Independent review and every earned integration precede implementation/runtime. The causal slots remain held; no signed subject or result exists."
+      "caption": "The named empirical scope is approved. Review and integration are complete. One local reversal, two focused and three complete ordinary guests use one unchanged candidate with diagnostics disabled. Implementation and evidence checks precede freeze. Causal slots remain held; no signed subject or result exists."
     },
     {
       "id": "settings-activation-correction-assessment",
       "group": "settings-activation",
       "title": "Current path and the approved empirical design",
       "source": "settings-activation/correction-assessment.mmd",
-      "caption": "The numbered existing path remains unchanged in source; the dotted edge enters reasoning. Both orders previously succeeded with synchronous file tracing. The new design fixes separate behavioral sets, not comparative risk or causal proof. It awaits independent review; no implementation or runtime has occurred."
+      "caption": "The numbered existing source path is unchanged; the dotted edge enters reasoning. Both orders previously succeeded with synchronous file tracing. The reviewed design fixes separate behavioral sets, not comparative risk or causal proof. Implementation and runtime have not occurred."
     },
     {
       "id": "settings-activation-ordering-sequence",
@@ -624,7 +624,7 @@
       "group": "settings-activation",
       "title": "Two focused guests before three complete ordinary guests",
       "source": "settings-activation/evaluation-outcomes.mmd",
-      "caption": "Proposed finite convention: E01/E02 and A01/A02/A03 are fresh, serial slots using one frozen candidate with diagnostics disabled. Any required failure or unavailable evidence stops all later slots. Qualified recurrence takes precedence over later evidence failures. All outcomes retain audit and exact cleanup; passing covers only that sample. There is no baseline, replacement or cap expansion."
+      "caption": "E01/E02 and A01/A02/A03 are serial fresh slots using one frozen candidate with diagnostics disabled and the same repaired scenario/helpers. Setup, title and liveness rules separate recurrence from process loss and unavailable evidence. Failed transport stops acceptance, including restart disconnect. Screenshots retain context. Audit and exact cleanup remain required; passing covers only the sample. No baseline, replacement or expansion."
     }
   ]
 }

@@ -22,8 +22,10 @@ ordering. The [distinct protocol](../verification/settings-activation/ORDERING-E
 fixes two focused guests and a separate three-guest complete ordinary set, with
 one unchanged signed candidate and diagnostics disabled in both. These are
 conventions, not statistical bounds. No candidate has been built or run.
-Implementation and runtime remain held pending independent design review and
-every earned integration.
+The [independent review and integration](../verification/settings-activation/ORDERING-REVIEW.md)
+are complete. K36 owns implementation and verification of the application,
+scenario/helpers and finite caller before runtime freeze; no launch follows
+from documentary closure alone.
 
 This amends a prerequisite; it does not satisfy it. Native cause and ownership
 remain unresolved. The retained evidence still does **not** support the finite,
@@ -132,13 +134,34 @@ frozen before the first guest and remains byte-identical across both sets;
 ordinary readiness is separately revalidated. There is no baseline arm or
 qualification-only guest. All implementation and review finish before freezing.
 
+Both sets use the same changed scenario and helpers. The focused prefix includes
+the existing TextEdit quit and ends before resize. Positive setup observations
+must establish TextEdit in front with the same observable idle document and no
+dialog, sheet or menu before each of its four selections. Missing observations
+are unavailable setup, not permission to continue or refocus.
+
+The existing front predicate checks Koine and focused on the first window outside
+Notification Center; a separate count counts all Koine windows. The protocol
+adds a required title/identity audit on the original front/focus list. Outcome
+screenshots are retained context, not automatic acceptance assertions. A
+zero-window recurrence additionally requires clean same-process liveness;
+process loss is a separate assertion failure and unavailable liveness is
+unresolved. Neither supplies a native classification.
+
 Both sets disable application diagnostics and the native logging experiment.
 The existing UI seam retains real input, window/front/focus observations and
 screenshots. Raw failed transport cannot be stripped or repaired by later output.
 The protocol stops all later slots on the first required failure or unavailable
 result, retains every partial and NOT RUN phase, audits inputs/endpoints/golden,
 and verifies exact clone cleanup. It never changes an input or wait to obtain
-success. Ordinary successful bounded polling remains the existing scenario's.
+success. Only clean negative state reads continue within existing poll bounds.
+The protocol fixes state-poll, one-shot-command and required-evidence classes;
+hidden transport retries and ignored failures must be removed from both sets.
+Launch/configuration/restart need clean submission and their declared downstream
+confirmation. A restart disconnect remains unavailable despite a later boot.
+This availability cost may prevent acceptance; it is no authority to relax the
+rule, add a delay or replace a guest. If a required clean completion is
+demonstrably unavailable, hold before the first slot for a new decision.
 
 Removing diagnostics changes workload; it proves no timing neutrality. The new
 capture policy also adds observation work. A qualified recurrence demonstrates
@@ -354,8 +377,9 @@ failure/unavailable-evidence rules before runtime, and receive independent revie
 with every earned integration completed before implementation or execution.
 The old ABBA cap stays closed. The scope answer itself fixed no numerical cap,
 final subject or guest. The concrete design above now fixes two focused and three
-ordinary slots; review and every earned integration still precede implementation
-or runtime. No signed subject or runtime result exists for that design.
+ordinary slots; its independent review and integration are now complete.
+Implementation verification and actual readiness still precede runtime.
+No signed subject or runtime result exists for that design.
 
 | Choice after the reviewed assessment | Effect and cost |
 |---|---|

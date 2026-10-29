@@ -34,6 +34,23 @@ where the user completes setup, reviews client grant requests and manages
 **grants**. Closing it leaves the **Machine server** running.
 _Avoid_: management window, Koine's window
 
+**Qualified recurrence**: A Settings selection whose qualified setup, input and
+observations establish failure to return the one front/focused **Settings
+window**, under the [ordering protocol](docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md#input-and-observation-qualification).
+It excludes unavailable evidence and separately classified process loss; it
+establishes no native cause.
+
+**Focused evaluation**: The ordering protocol's two fresh-guest slots that each
+exercise first launch and four Settings selections before complete acceptance.
+Its [fixed set](docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md#fixed-sets-and-subject)
+is a finite behavioral convention, not a reliability estimate.
+
+**Ordinary acceptance**: The ordering protocol's separately declared three
+complete fresh-guest scenarios, admitted only after **focused evaluation**
+qualifies and using the same frozen candidate with diagnostics disabled.
+The [acceptance duties](docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md#complete-ordinary-acceptance-and-preserved-duties)
+cover every assertion and required evidence item, with claims limited to that sample.
+
 **Client**: A program that reaches the **Machine server** over its transport
 with a capability of its own: ModalAnyware through its Machine client module,
 a third-party application, a script or an LLM agent.

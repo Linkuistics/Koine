@@ -4,6 +4,13 @@ The [current contract](../../specs/settings-activation-discrimination.md#single-
 and [finite protocol](ORDERING-EVALUATION-PLAN.md) define the proposal. This record
 supports its source/API choices; it is not a runtime or repair result.
 
+The [review integration](ORDERING-REVIEW.md) verifies the transport, setup,
+predicate and liveness findings against the existing helpers. The current
+protocol explicitly requires scenario/helper changes before freeze, shared by
+focused and ordinary sets. The source observations below describe the inspected
+pre-implementation source; they are not claims that the repaired instrument
+already exists. K49's receipts remain historical.
+
 ## Inspection boundary
 
 The working copy began empty at jj change `krwtqnvn`, parent `0140ef27`.

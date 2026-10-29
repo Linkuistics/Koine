@@ -4,8 +4,9 @@
 
 The separate [ordering evaluation design](ORDERING-EVALUATION-PLAN.md) now fixes
 two focused and three complete ordinary slots for one diagnostics-disabled
-candidate. It awaits independent review and every earned integration before
-implementation/runtime. It neither replaces this causal protocol nor consumes
+candidate. Its [independent review and integration](ORDERING-REVIEW.md) are
+complete; k36 must implement and verify its explicit scenario/helper repairs
+before freeze. It neither replaces this causal protocol nor consumes
 its held slots. The [current contract](../../specs/settings-activation-discrimination.md#single-request-ordering-design)
 owns the concrete order and finite outcome rules; the scope history below
 selected none of them by itself.
@@ -27,7 +28,7 @@ including route qualification, remain unstarted with unchanged criteria and
 caps. They provide no runtime budget for the new design question. The scope
 answer itself selected no final candidate, numerical bound or guest.
 The separate design above now supplies a distinct finite protocol and separate
-complete ordinary acceptance with diagnostics disabled, pending review. A
+complete ordinary acceptance with diagnostics disabled, with review integrated. A
 qualified recurrence rejects the repair; unavailable
 required evidence prevents acceptance; every ordinary assertion must pass. A
 complete pass supports only that sample, with cause and ownership unresolved.

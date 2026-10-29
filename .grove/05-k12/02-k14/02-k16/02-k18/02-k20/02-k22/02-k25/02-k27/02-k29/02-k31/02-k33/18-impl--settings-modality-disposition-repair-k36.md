@@ -1,6 +1,19 @@
 # settings-modality-disposition-repair-k36
 
-## Concrete ordering design awaiting review
+## Reviewed ordering design and implementation handoff
+
+K50's review and k51's integration are complete; ORDERING-REVIEW.md under
+docs/verification/settings-activation records every disposition. K36 now owns
+implementation and verification before freeze. Change the scenario/helpers
+once for both sets: strict raw single-attempt transports, clean negative polls
+only, positive TextEdit setup, original-list Settings-title audit and a separate
+process-loss outcome. The focused prefix includes TextEdit quit and ends before
+resize. Screenshots retain context; they are not automatic acceptance assertions.
+Launch/defaults/restart require clean submission plus their named confirmation;
+restart disconnect stays unavailable even if a later boot is seen. If a required
+clean completion is demonstrably unavailable, hold before E01 for a new decision.
+No failed transport can be cleared by retry. These repairs select no new input,
+delay, slot, replacement or baseline.
 
 K49 selects the shared show-method reversal: prepare the same retained window
 and requested section, request self activation once, then key/front ordering in
@@ -18,8 +31,9 @@ success. The numbers are finite conventions, not statistical bounds. Historical
 product failures remain useful end-to-end evidence; no deterministic native fake
 or new public seam is earned. Passing supports only the declared sample.
 
-Independent review of the whole design and every earned integration must precede
-k36 implementation/runtime. K36 remains live and held. All six causal slots,
+The independent whole-design review and earned integration are complete.
+K36 remains live; actual implementation checks and readiness precede runtime.
+All six causal slots,
 historical results and closed caps remain unchanged. Native cause and ownership
 remain unresolved; no product or causal ancestor closes. No release,
 notarization or upstream report. Earlier scope sections below record their own

@@ -9,12 +9,22 @@ complete ordinary guests. Both sets use the same newly signed candidate with
 application diagnostics disabled. No candidate has been built or run.
 
 Antony approved the named empirical scope and finite acceptance convention.
-This concrete design awaits independent review and every earned integration
-before implementation/runtime. A qualified recurrence rejects reversal; any
+The [review and integration](../../../verification/settings-activation/ORDERING-REVIEW.md)
+are complete. K36 implements and verifies the candidate and evidence helpers
+before freeze. A qualified recurrence rejects reversal; any
 other required failure or unavailable evidence stops acceptance and all later
 slots. No replacement or cap expansion follows. A complete pass supports only
 that sample, not mechanism, risk reduction or general reliability. Native cause
 and ownership remain unresolved; all six causal slots remain held.
+
+Both sets use the same repaired scenario: strict single-attempt transport,
+positive TextEdit setup, an original-list Settings-title audit and a separate
+process-loss outcome. Zero-window rejection needs clean liveness. The focused
+prefix includes TextEdit quit and ends before resize. Screenshots retain context;
+they are not automatic acceptance assertions. Launch/defaults/restart need clean
+submission and their named confirmation. Restart disconnect remains unavailable
+despite a later boot; a demonstrably unavailable required completion holds E01
+for a new decision. No failed read is repaired by retry.
 
 Run `mise exec -- task design:serve PORT=8801` from the repository root and open
 [the current discussion](http://127.0.0.1:8801/settings-activation/#discussion).
@@ -34,7 +44,7 @@ Current changes:
 
 - [Evaluation → Prepare one window, activate once, then order it](http://127.0.0.1:8801/settings-activation/#diagram-ordering-sequence) — Defines the proposed synchronous order, readiness guard and retained-window ownership.
 - [Evaluation → Two focused guests before three complete ordinary guests](http://127.0.0.1:8801/settings-activation/#diagram-evaluation-outcomes) — Fixes the two sets, rejection precedence and stops on unavailable evidence.
-- [Correction → Current path and the approved empirical design](http://127.0.0.1:8801/settings-activation/#diagram-correction-assessment) — Connects the existing source and historical limits to the concrete design awaiting review.
+- [Correction → Current path and the approved empirical design](http://127.0.0.1:8801/settings-activation/#diagram-correction-assessment) — Connects the existing source and historical limits to the reviewed design.
 - [Scope → Accepted scope for repair design](http://127.0.0.1:8801/settings-activation/#diagram-scope-choice) — Adds the proposed bounds and unchanged-candidate requirement to the accepted scope.
 - [Single-request ordering design](../../../specs/settings-activation-discrimination.md#single-request-ordering-design) — Specifies caller effects, preconditions, alternatives and the absence of an evidenced deterministic native fake.
 - [Finite protocol](../../../verification/settings-activation/ORDERING-EVALUATION-PLAN.md) — Defines raw-evidence qualification, diagnostics/timing limits, exact freeze, stop and cleanup obligations.

@@ -1,6 +1,6 @@
 {
   "title": "Settings activation: concrete ordering evaluation",
-  "intro": "Start at each dark Start here node; the sequence starts at its first message. The new sequence is proposed application call order, not measured native completion. The evaluation graph shows proposed gates and outcomes. Design awaits independent review; no runtime is authorized.",
+  "intro": "Start at each dark Start here node; the sequence starts at its first message. Application call order is proposed, not measured native completion. Design review and integration are complete; implementation and evidence verification precede freeze.",
   "groups": [
     {
       "id": "evidence",
@@ -25,8 +25,8 @@
   ],
   "discussion": {
     "title": "Single-request reversal and fixed behavioral acceptance",
-    "status": "Concrete design for independent review; scope approved, implementation held",
-    "summary": "Prepare the same retained window and requested section, request activation once, then key/front ordering in the same invocation. Two focused guests must qualify before three separately declared complete ordinary guests. Both sets use identical signed candidate bytes with diagnostics disabled. A qualified recurrence rejects reversal. Any other required failure or unavailable evidence stops acceptance and all later slots. Raw transport failures remain failures. A complete pass supports only the declared sample; native cause and ownership remain unresolved. No new signed subject, build or guest exists. Independent review and every earned integration precede implementation/runtime.",
+    "status": "Design review integrated; implementation and verification before freeze",
+    "summary": "Prepare the same retained window and section, request activation once, then key/front ordering. Two focused guests must qualify before three separate complete ordinary guests, with identical signed bytes and diagnostics disabled. Both sets require strict single-attempt transport, positive TextEdit setup, an original-list Settings-title audit and separate process-loss classification. Zero-window rejection requires liveness. The prefix includes TextEdit quit; screenshots retain context, not automatic acceptance. Restart disconnect stays unavailable despite a later boot; demonstrably unavailable required completion holds E01 for a new decision. Qualified recurrence rejects reversal; any other required failure or unavailable evidence stops acceptance and later slots. A pass covers only that sample. Native cause and ownership remain unresolved. Review and integration are complete; no signed subject, build or guest exists.",
     "diagramIds": [
       "ordering-sequence",
       "evaluation-outcomes",
@@ -41,15 +41,15 @@
       },
       {
         "id": "evaluation-outcomes",
-        "summary": "Fixes two focused and three ordinary slots with first-failure stops and separate rejection/unavailable outcomes."
+        "summary": "Adds shared setup/title/liveness checks and strict transport stops while preserving two focused and three ordinary slots."
       },
       {
         "id": "correction-assessment",
-        "summary": "Connects the historical no-correction finding to the new concrete design and unchanged review hold."
+        "summary": "Connects the historical no-correction finding to the reviewed empirical design and remaining implementation duties."
       },
       {
         "id": "scope-choice",
-        "summary": "Adds the proposed fixed bounds while preserving the approved scope and held causal work."
+        "summary": "Records completed review/integration while preserving the scope, fixed bounds and held causal work."
       }
     ]
   },
@@ -66,14 +66,14 @@
       "group": "scope",
       "title": "Accepted scope for repair design",
       "source": "scope-choice.mmd",
-      "caption": "The named empirical scope is approved. The concrete design proposes one local reversal, two focused and three complete ordinary guests using one unchanged candidate with diagnostics disabled. Independent review and every earned integration precede implementation/runtime. The causal slots remain held; no signed subject or result exists."
+      "caption": "The named empirical scope is approved. Review and integration are complete. One local reversal, two focused and three complete ordinary guests use one unchanged candidate with diagnostics disabled. Implementation and evidence checks precede freeze. Causal slots remain held; no signed subject or result exists."
     },
     {
       "id": "correction-assessment",
       "group": "correction",
       "title": "Current path and the approved empirical design",
       "source": "correction-assessment.mmd",
-      "caption": "The numbered existing path remains unchanged in source; the dotted edge enters reasoning. Both orders previously succeeded with synchronous file tracing. The new design fixes separate behavioral sets, not comparative risk or causal proof. It awaits independent review; no implementation or runtime has occurred."
+      "caption": "The numbered existing source path is unchanged; the dotted edge enters reasoning. Both orders previously succeeded with synchronous file tracing. The reviewed design fixes separate behavioral sets, not comparative risk or causal proof. Implementation and runtime have not occurred."
     },
     {
       "id": "ordering-sequence",
@@ -87,7 +87,7 @@
       "group": "evaluation",
       "title": "Two focused guests before three complete ordinary guests",
       "source": "evaluation-outcomes.mmd",
-      "caption": "Proposed finite convention: E01/E02 and A01/A02/A03 are fresh, serial slots using one frozen candidate with diagnostics disabled. Any required failure or unavailable evidence stops all later slots. Qualified recurrence takes precedence over later evidence failures. All outcomes retain audit and exact cleanup; passing covers only that sample. There is no baseline, replacement or cap expansion."
+      "caption": "E01/E02 and A01/A02/A03 are serial fresh slots using one frozen candidate with diagnostics disabled and the same repaired scenario/helpers. Setup, title and liveness rules separate recurrence from process loss and unavailable evidence. Failed transport stops acceptance, including restart disconnect. Screenshots retain context. Audit and exact cleanup remain required; passing covers only the sample. No baseline, replacement or expansion."
     }
   ]
 }
