@@ -1,4 +1,15 @@
-# settings-ordering-harness-k53
+# settings-ordering-harness-k53 — brief
+
+## Strict exec evidence boundary
+
+K53 decomposes into strict exec evidence k55, shared scenario migration k56 and
+finite caller k57. K55 adds a checked adapter alongside the legacy helpers; the
+ordinary scenario has not adopted it. Read
+docs/verification/settings-activation/ORDERING-TRANSPORT-RESULTS.md for the exact
+limits. Independent adapter review precedes migration; every earned integration
+and whole-harness review precedes runtime. K54 remains held. No signed subject,
+clone or slot exists; native repair, cause and ownership remain unresolved.
+
 
 
 ## Goal
@@ -52,3 +63,25 @@ Do not change historical overlays/bundles/results or consume the six held causal
 slots. No native acceptance, cause, ownership or ancestor closure follows from
 helper fixtures. K54 owns final readiness, signed freeze and runtime only after
 all implementation and earned review/integration complete.
+
+## Decomposition
+
+The shared transport migration crosses scenario setup, pointer/resize helpers,
+consent, restart and collection; its finite caller is independently reviewable.
+Use expand then migrate: settings-exec-evidence adds and checks the strict raw
+exec adapter alongside existing helpers, settings-shared-scenario migrates the
+complete scenario and extracts its exact focused prefix, and
+settings-ordering-caller implements the finite caller/classifier. Each later
+child preserves every original Done when above. Only the first child executes
+in this session. Every earned review/integration precedes runtime; k54 remains
+held until the entire subtree is complete. No runtime readiness follows from
+an adapter that the ordinary scenario has not yet adopted.
+
+## Decisions (running log)
+
+- 2026-10-29: Graph startup refuses before project/generation discovery. Use
+  bounded direct reads; do not disturb other graph sessions.
+- 2026-10-29: Decompose into strict exec evidence, shared scenario migration and
+  finite caller. Preserve the original charter without shortening the scenario,
+  loosening failed-transport rules or opening any slot. First child owns the
+  independently executable adapter and its controls, not ordinary acceptance.

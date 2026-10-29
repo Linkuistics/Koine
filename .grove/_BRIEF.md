@@ -1,5 +1,16 @@
 # Koine menu-bar VM reliability — brief
 
+## Strict exec evidence boundary
+
+K53 decomposes into strict exec evidence k55, shared scenario migration k56 and
+finite caller k57. K55 adds a checked adapter alongside the legacy helpers; the
+ordinary scenario has not adopted it. Read
+docs/verification/settings-activation/ORDERING-TRANSPORT-RESULTS.md for the exact
+limits. Independent adapter review precedes migration; every earned integration
+and whole-harness review precedes runtime. K54 remains held. No signed subject,
+clone or slot exists; native repair, cause and ownership remain unresolved.
+
+
 ## Application implementation boundary
 
 K36 decomposes into application k52, shared harness/caller k53 and qualification

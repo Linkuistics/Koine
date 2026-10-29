@@ -1,0 +1,76 @@
+{
+  "scope": "headless guest-exec adapter and existing pointer/resize controls only; no VM or signed subject",
+  "commands": [
+    {
+      "command": [
+        "mise",
+        "exec",
+        "--",
+        "task",
+        "check:vm-guest-exec"
+      ],
+      "exit": 0,
+      "started": "2026-10-29T04:59:01.845440+00:00",
+      "ended": "2026-10-29T04:59:08.944375+00:00"
+    },
+    {
+      "command": [
+        "mise",
+        "exec",
+        "--",
+        "task",
+        "check:vm-menu-pointer"
+      ],
+      "exit": 0,
+      "started": "2026-10-29T04:59:08.944603+00:00",
+      "ended": "2026-10-29T04:59:10.385925+00:00"
+    },
+    {
+      "command": [
+        "mise",
+        "exec",
+        "--",
+        "task",
+        "check:vm-window-resize"
+      ],
+      "exit": 0,
+      "started": "2026-10-29T04:59:10.386132+00:00",
+      "ended": "2026-10-29T04:59:11.633808+00:00"
+    }
+  ],
+  "subjects_before": {
+    "Taskfile.yml": "acb201fe402d7e8629f8418bd916ca5f78a408ccd47c89f0a1635fe5aab45b0d",
+    "scripts/vm-guest-exec.py": "0af0c8bbfb742cd0bd047f105d08e78b64f38608cc5ae3f97cf9b2c5a0338fc7",
+    "scripts/vm-guest-exec-lib.sh": "51c8cc677bf06878552e51b392e84f9da9d3976d3f4695c14b1c11f5efc46b61",
+    "Tests/scripts/vm-guest-exec.bats": "a239fd0dd0e6ab16611327df50e7142514b81502498f029776f9a932865550bc",
+    "scripts/vm-menu-pointer-lib.sh": "fad671a58ff4f2cc5f8ee3fd6c00474c69bfb8f0203ce32c5206ebef7dc3f5f6",
+    "scripts/vm-window-resize-lib.sh": "1396eda19afef9d067b5f10c69007bd79427ab80fb93070a83c274b1bbe4ee8b",
+    "scripts/vm-verify-menu-bar.sh": "0740dbe480a2700d62e66c580b09a776adc6aedd07ac6d563f93f408d3b5cc41",
+    "scripts/vm-verify-lib.sh": "d9ff479fb1d8833bec80faacdffb18a62fc3f39ef3977ab0194cd205b2c40759",
+    "scripts/vm-verify-desktop-lib.sh": "8a469c5d5ea662fe825cf2c6ec19fb6edb01d362713be21a2257fc22b705a7e3",
+    "scripts/signing-env.sh": "bdc96ddde8964a1f386b77d33de1385b55a47e95a42b09d4627405d1e0fa6a52",
+    "Tests/scripts/vm-menu-pointer.bats": "75f6c056fcc2f8e9482a63ed4ebd62e1ea50bf13dba7c6edbb4637f55b103815",
+    "Tests/scripts/vm-window-resize.bats": "8e9bdf92a4dd589d942785bf7b748906d89fb03b86cb1ced1fa19f9e46c262d0",
+    "docs/verification/settings-activation/persisted-01/trace-disabled-after.json": "5a3252e2d6fd4b03ae52374b141f60f426b3deda394ea6d929a3861d85935bd7",
+    "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md": "1818b9a0a2209e7d93afbc4b2507a1425a67065d3627a4f4b22752ca55aba2fa",
+    "docs/verification/settings-activation/ORDERING-TRANSPORT-RESULTS.md": "29c3a6e79f56b5c1aad5dcba84b437062de011db014497a34469465a43849711"
+  },
+  "subjects_after": {
+    "Taskfile.yml": "acb201fe402d7e8629f8418bd916ca5f78a408ccd47c89f0a1635fe5aab45b0d",
+    "scripts/vm-guest-exec.py": "0af0c8bbfb742cd0bd047f105d08e78b64f38608cc5ae3f97cf9b2c5a0338fc7",
+    "scripts/vm-guest-exec-lib.sh": "51c8cc677bf06878552e51b392e84f9da9d3976d3f4695c14b1c11f5efc46b61",
+    "Tests/scripts/vm-guest-exec.bats": "a239fd0dd0e6ab16611327df50e7142514b81502498f029776f9a932865550bc",
+    "scripts/vm-menu-pointer-lib.sh": "fad671a58ff4f2cc5f8ee3fd6c00474c69bfb8f0203ce32c5206ebef7dc3f5f6",
+    "scripts/vm-window-resize-lib.sh": "1396eda19afef9d067b5f10c69007bd79427ab80fb93070a83c274b1bbe4ee8b",
+    "scripts/vm-verify-menu-bar.sh": "0740dbe480a2700d62e66c580b09a776adc6aedd07ac6d563f93f408d3b5cc41",
+    "scripts/vm-verify-lib.sh": "d9ff479fb1d8833bec80faacdffb18a62fc3f39ef3977ab0194cd205b2c40759",
+    "scripts/vm-verify-desktop-lib.sh": "8a469c5d5ea662fe825cf2c6ec19fb6edb01d362713be21a2257fc22b705a7e3",
+    "scripts/signing-env.sh": "bdc96ddde8964a1f386b77d33de1385b55a47e95a42b09d4627405d1e0fa6a52",
+    "Tests/scripts/vm-menu-pointer.bats": "75f6c056fcc2f8e9482a63ed4ebd62e1ea50bf13dba7c6edbb4637f55b103815",
+    "Tests/scripts/vm-window-resize.bats": "8e9bdf92a4dd589d942785bf7b748906d89fb03b86cb1ced1fa19f9e46c262d0",
+    "docs/verification/settings-activation/persisted-01/trace-disabled-after.json": "5a3252e2d6fd4b03ae52374b141f60f426b3deda394ea6d929a3861d85935bd7",
+    "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md": "1818b9a0a2209e7d93afbc4b2507a1425a67065d3627a4f4b22752ca55aba2fa",
+    "docs/verification/settings-activation/ORDERING-TRANSPORT-RESULTS.md": "29c3a6e79f56b5c1aad5dcba84b437062de011db014497a34469465a43849711"
+  },
+  "subjects_unchanged": true
+}

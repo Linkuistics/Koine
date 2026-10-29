@@ -1,5 +1,16 @@
 # settings-modality-disposition-repair-k36 — brief
 
+## Strict exec evidence boundary
+
+K53 decomposes into strict exec evidence k55, shared scenario migration k56 and
+finite caller k57. K55 adds a checked adapter alongside the legacy helpers; the
+ordinary scenario has not adopted it. Read
+docs/verification/settings-activation/ORDERING-TRANSPORT-RESULTS.md for the exact
+limits. Independent adapter review precedes migration; every earned integration
+and whole-harness review precedes runtime. K54 remains held. No signed subject,
+clone or slot exists; native repair, cause and ownership remain unresolved.
+
+
 ## Application implementation boundary
 
 K52 implements the reviewed order in the existing shared show method and passes
