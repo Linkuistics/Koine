@@ -7,7 +7,9 @@ from __future__ import annotations
 import argparse
 import fcntl
 import json
+import os
 import re
+import signal
 import subprocess
 import sys
 import time
@@ -23,9 +25,15 @@ def timestamp() -> str:
 
 
 def write_json(path: Path, value: object) -> None:
-    with path.open("x") as stream:
+    partial = path.with_name(path.name + ".partial")
+    with partial.open("x") as stream:
         json.dump(value, stream, indent=2, ensure_ascii=True)
         stream.write("\n")
+        stream.flush()
+        os.fsync(stream.fileno())
+    # Publish a complete file atomically without replacing any existing receipt.
+    os.link(partial, path)
+    partial.unlink()
 
 
 def unique_object(pairs: list[tuple[str, object]]) -> dict[str, object]:
@@ -69,7 +77,7 @@ def initialize(root: Path, vm: str) -> int:
 
 
 def validate_response(
-    attempt: Path, command: str, cli_status: int, predicate: str
+    attempt: Path, command: str, cli_status: int, predicate: str, lock_fd: int
 ) -> str:
     try:
         envelope = read_object(attempt / "raw.stdout")
@@ -107,6 +115,7 @@ def validate_response(
             stdout=output,
             stderr=errors,
             check=False,
+            pass_fds=(lock_fd,),
         )
     return (
         ""
@@ -117,7 +126,7 @@ def validate_response(
 
 
 def run_locked(
-    root: Path, kind: str, operation: str, command: str, predicate: str
+    root: Path, kind: str, operation: str, command: str, predicate: str, lock_fd: int
 ) -> int:
     subject = read_object(root / "subject.json")
     vm = subject.get("vm")
@@ -127,8 +136,15 @@ def run_locked(
         path for path in root.iterdir() if re.fullmatch(r"[0-9]{6}", path.name)
     )
     for path in prior:
-        if not (path / "result.json").is_file():
-            latch(root, f"unfinished attempt: {path.name}")
+        try:
+            receipt = read_object(path / "result.json")
+            outcome = receipt.get("outcome")
+            if outcome not in ("clean", "unavailable", "interrupted"):
+                raise ValueError("unknown terminal outcome")
+            if outcome != "clean":
+                latch(root, f"{path.name}: prior {outcome} attempt")
+        except (OSError, ValueError, UnicodeError) as error:
+            latch(root, f"unfinished attempt: {path.name}: {error}")
     if (root / "unavailable").exists() and kind != "evidence":
         print("unavailable latch prevents scenario dispatch", file=sys.stderr)
         return UNAVAILABLE
@@ -155,36 +171,61 @@ def run_locked(
         },
     )
     cli_status: int | None = None
+    interrupted = False
+    emission_status = "not-attempted"
     try:
         with (
             (attempt / "raw.stdout").open("xb") as output,
             (attempt / "raw.stderr").open("xb") as errors,
         ):
             cli_status = subprocess.run(
-                argv, stdout=output, stderr=errors, check=False
+                argv, stdout=output, stderr=errors, check=False, pass_fds=(lock_fd,)
             ).returncode
         (attempt / "cli.exit").write_text(f"{cli_status}\n")
-        reason = validate_response(attempt, command, cli_status, predicate)
+        reason = validate_response(attempt, command, cli_status, predicate, lock_fd)
     except (OSError, ValueError, UnicodeError) as error:
         reason = str(error)
     except KeyboardInterrupt:
         reason = "interrupted exec; completion unavailable"
+        interrupted = True
+    if not reason:
+        try:
+            sys.stdout.buffer.write((attempt / "guest.stdout").read_bytes())
+            sys.stdout.buffer.flush()
+            emission_status = "flushed"
+        except OSError as error:
+            reason = f"stdout emission failed: {error}"
+            emission_status = "failed"
+            # Prevent a second buffered flush at interpreter exit (status 120).
+            with open(os.devnull, "wb") as sink:
+                os.dup2(sink.fileno(), sys.stdout.fileno())
+        except KeyboardInterrupt:
+            reason = "interrupted stdout emission; delivery unavailable"
+            emission_status = "failed"
+            interrupted = True
     if reason:
         latch(root, f"{attempt.name}: {reason}")
     write_json(
         attempt / "result.json",
         {
-            "outcome": "unavailable" if reason else "clean",
+            "outcome": "interrupted"
+            if interrupted
+            else "unavailable"
+            if reason
+            else "clean",
             "reason": reason,
             "cli_status": cli_status,
+            "emission_status": emission_status,
             "ended": timestamp(),
             "duration_ns": time.monotonic_ns() - started,
         },
     )
+    if interrupted:
+        signal.signal(signal.SIGINT, signal.SIG_DFL)
+        signal.raise_signal(signal.SIGINT)
     if reason:
         print(f"guest exec unavailable ({attempt.name}): {reason}", file=sys.stderr)
         return UNAVAILABLE
-    sys.stdout.buffer.write((attempt / "guest.stdout").read_bytes())
     return 0
 
 
@@ -200,7 +241,9 @@ def run(root: Path, kind: str, operation: str, command: str, predicate: str) -> 
         except BlockingIOError:
             latch(root, "competing evidence writer")
             return UNAVAILABLE
-        return run_locked(root, kind, operation, command, predicate)
+        # The CLI/validator keep this same lock if the adapter is killed. Do not
+        # unlock explicitly: their inherited descriptors share its lifetime.
+        return run_locked(root, kind, operation, command, predicate, lock.fileno())
 
 
 def main() -> int:
@@ -210,7 +253,9 @@ def main() -> int:
             "Internal shell-helper backend. init requires a new directory. "
             "run prints qualified guest stdout only; raw data and JSON receipts stay in ROOT. "
             "Exit 0: clean individual attempt (evidence collection does not clear an old latch); "
-            "2: invalid invocation; 125: unavailable, do not retry or reset the root. "
+            "2: argument error (an identifiable initialized run root is latched); "
+            "125: unavailable or invalid run values; SIGINT: interrupted. "
+            "Every nonzero status is unavailable; do not retry or reset the root. "
             "Example: init .build/exec-evidence exact-vm; "
             "run .build/exec-evidence read-poll endpoint 'probe' '.stdout == \"ABSENT\"'. "
             "See scripts/vm-guest-exec-lib.sh and ORDERING-TRANSPORT-RESULTS.md."
@@ -236,7 +281,14 @@ def main() -> int:
     run_parser.add_argument(
         "predicate", help="jq predicate on the complete envelope; exactly true"
     )
-    args = parser.parse_args()
+    try:
+        args = parser.parse_args()
+    except SystemExit as error:
+        if error.code and len(sys.argv) > 2 and sys.argv[1] == "run":
+            root = Path(sys.argv[2])
+            if (root / "subject.json").is_file():
+                latch(root, "invalid run arguments")
+        raise
     root = cast(Path, args.root)
     try:
         if args.action == "init":

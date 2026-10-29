@@ -1,0 +1,6 @@
+{
+  "mutation": "replace writer-lock block with direct run_locked call",
+  "exit": 1,
+  "source_sha256": "54bc324b9d42c089fa8b70a02988c38159c6033ef0ca56220df1a23653147d86",
+  "test_sha256": "0527c575757484750eacfb6d64345214f8f6424e89b7ad2bad26c5e4471a1e94"
+}

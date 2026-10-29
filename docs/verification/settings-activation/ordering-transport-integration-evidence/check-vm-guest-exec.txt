@@ -1,0 +1,33 @@
+All checks passed!
+1 file already formatted
+0 errors, 0 warnings, 0 informations
+1..21
+ok 1 clean exec retains exact bytes, command, VM, status and ordered receipts
+ok 2 initialization refuses reuse without touching existing evidence
+ok 3 missing and wrongly typed envelope fields cannot qualify matching text
+ok 4 partial malformed duplicate and multiple JSON responses stay unavailable
+ok 5 nonzero CLI status never qualifies a clean envelope and never retries
+ok 6 timeout with matching real retained output cannot qualify
+ok 7 missing command completion marker and invalid predicates latch unavailable
+ok 8 competing writers latch unavailable before a second transport can dispatch
+ok 9 clean negative polling permits the next existing poll without a hidden retry
+ok 10 failed poll latches across command substitution and prevents all later scenario dispatch
+ok 11 disconnect followed by changed boot in collection stays unavailable and cannot relaunch
+ok 12 unfinished prior attempt blocks scenario input but allows evidence collection
+ok 13 unknown class and missing initialized subject never dispatch
+ok 14 argument failures latch initialized roots even when the status is ignored
+ok 15 direct backend argument failures latch without the shell facade
+ok 16 missing backend and unexpected backend exit leave a persistent facade latch
+ok 17 broken stdout delivery cannot publish a clean terminal receipt
+ok 18 partial or unknown terminal receipts block later scenario dispatch
+ok 19 interrupted receipt publication leaves only a partial file
+ok 20 killed adapter leaves its CLI holding the writer lock until completion
+ok 21 caught SIGINT records interruption and preserves the signal exit
+task: [check:vm-guest-exec] bash -n scripts/vm-guest-exec-lib.sh
+task: [check:vm-guest-exec] shellcheck -x scripts/vm-guest-exec-lib.sh Tests/scripts/vm-guest-exec.bats
+task: [check:vm-guest-exec] shfmt -d -i 4 scripts/vm-guest-exec-lib.sh Tests/scripts/vm-guest-exec.bats
+task: [check:vm-guest-exec] python3 -m py_compile scripts/vm-guest-exec.py
+task: [check:vm-guest-exec] uvx ruff@0.17.3 check scripts/vm-guest-exec.py
+task: [check:vm-guest-exec] uvx ruff@0.17.3 format --check scripts/vm-guest-exec.py
+task: [check:vm-guest-exec] uvx pyright@1.1.414 scripts/vm-guest-exec.py
+task: [check:vm-guest-exec] bats Tests/scripts/vm-guest-exec.bats

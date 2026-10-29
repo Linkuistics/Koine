@@ -1,0 +1,111 @@
+{
+  "scope": "k59 integration: offline adapter and pointer/resize controls only; no VM, signed subject or acceptance",
+  "review_commit": "b17080b23090b3bf67e0c17f1852c7d5453e3cb1",
+  "started": "2026-10-29T05:18:39.193646+00:00",
+  "python_executable": "/Users/antony/.local/share/mise/installs/python/3.15.1/bin/python3",
+  "commands": [
+    {
+      "command": [
+        "mise",
+        "exec",
+        "--",
+        "task",
+        "check:vm-guest-exec"
+      ],
+      "exit": 0,
+      "started": "2026-10-29T05:18:39.194311+00:00",
+      "ended": "2026-10-29T05:18:49.036388+00:00",
+      "output": "docs/verification/settings-activation/ordering-transport-integration-evidence/check-vm-guest-exec.txt",
+      "output_sha256": "c19032f72cc241abbcdcf30f08ed65f11bb2fa1e1c35404aab8e01fe92251a80",
+      "subjects_unchanged": true
+    },
+    {
+      "command": [
+        "mise",
+        "exec",
+        "--",
+        "task",
+        "check:vm-menu-pointer"
+      ],
+      "exit": 0,
+      "started": "2026-10-29T05:18:49.036943+00:00",
+      "ended": "2026-10-29T05:18:50.393454+00:00",
+      "output": "docs/verification/settings-activation/ordering-transport-integration-evidence/check-vm-menu-pointer.txt",
+      "output_sha256": "3860cf814b6875bfbb6d8c9f8803c7694aaf9b525c13cf42bb9a8735e8afea7c",
+      "subjects_unchanged": true
+    },
+    {
+      "command": [
+        "mise",
+        "exec",
+        "--",
+        "task",
+        "check:vm-window-resize"
+      ],
+      "exit": 0,
+      "started": "2026-10-29T05:18:50.394000+00:00",
+      "ended": "2026-10-29T05:18:51.575314+00:00",
+      "output": "docs/verification/settings-activation/ordering-transport-integration-evidence/check-vm-window-resize.txt",
+      "output_sha256": "f6534c6438b09277794579a8810a467e824c60a5e80997ea0b344df38e2edc0c",
+      "subjects_unchanged": true
+    }
+  ],
+  "subjects_before": {
+    "Taskfile.yml": "acb201fe402d7e8629f8418bd916ca5f78a408ccd47c89f0a1635fe5aab45b0d",
+    "scripts/vm-guest-exec.py": "9aaaa3f589fded83b3542b616a7d5732abac765ebde62bd7eb98d091f27efdf5",
+    "scripts/vm-guest-exec-lib.sh": "a8c3d08e09ea863fd86cc5bfd910ea5725af1e3e20f99ea495ef6332cc271877",
+    "Tests/scripts/vm-guest-exec.bats": "e360901125978b3500d7ba2ddc18f9f737383208dc0e7aebcc9a30eddbfd243e",
+    "scripts/vm-menu-pointer-lib.sh": "fad671a58ff4f2cc5f8ee3fd6c00474c69bfb8f0203ce32c5206ebef7dc3f5f6",
+    "scripts/vm-window-resize-lib.sh": "1396eda19afef9d067b5f10c69007bd79427ab80fb93070a83c274b1bbe4ee8b",
+    "scripts/vm-verify-menu-bar.sh": "0740dbe480a2700d62e66c580b09a776adc6aedd07ac6d563f93f408d3b5cc41",
+    "scripts/vm-verify-lib.sh": "d9ff479fb1d8833bec80faacdffb18a62fc3f39ef3977ab0194cd205b2c40759",
+    "scripts/vm-verify-desktop-lib.sh": "8a469c5d5ea662fe825cf2c6ec19fb6edb01d362713be21a2257fc22b705a7e3",
+    "scripts/signing-env.sh": "bdc96ddde8964a1f386b77d33de1385b55a47e95a42b09d4627405d1e0fa6a52",
+    "Tests/scripts/vm-menu-pointer.bats": "75f6c056fcc2f8e9482a63ed4ebd62e1ea50bf13dba7c6edbb4637f55b103815",
+    "Tests/scripts/vm-window-resize.bats": "8e9bdf92a4dd589d942785bf7b748906d89fb03b86cb1ced1fa19f9e46c262d0",
+    "docs/verification/settings-activation/persisted-01/trace-disabled-after.json": "5a3252e2d6fd4b03ae52374b141f60f426b3deda394ea6d929a3861d85935bd7",
+    "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md": "1818b9a0a2209e7d93afbc4b2507a1425a67065d3627a4f4b22752ca55aba2fa",
+    "docs/verification/settings-activation/ORDERING-TRANSPORT-RESULTS.md": "b0af3d51ba814a7b8b9a676bf3cf14b1b08fa8e7df39a95c829adc49a5d8a03d",
+    ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/03-impl--settings-ordering-qualification-k54.md": "04e37384c82a156824c047f4b69cc3c4d7fa7d2db4c24b32d71084aaa45a6e35",
+    ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-impl--settings-shared-scenario-k56.md": "f6e6a53a7ce0e68fca6bcee10cb59cd71adda5aa6655bdce98fa0e68291df763",
+    "docs/verification/settings-activation/ordering-transport-evidence/verification.json": "a8358e0bb40a350f63d79910b558a8b746e8fdb2e81d770ee87c5b1f39190d17",
+    "docs/verification/settings-activation/ordering-transport-integration-evidence/baseline-diagnostic-red.json": "1266896008f2e7110bc75fe817eef2e2b2a90b77c095948aabc89044a9825470",
+    "docs/verification/settings-activation/ordering-transport-integration-evidence/baseline-diagnostic-red.txt": "b97a1059edc9394aeb11bac089113020b1b5a28f206415b16cf7a5c9988e9a1c",
+    "docs/verification/settings-activation/ordering-transport-integration-evidence/baseline-red.json": "5fc9c43bf1b18ab42bf7accb0bd5bd1ee46551d4d59475bd25f05c3ad6792825",
+    "docs/verification/settings-activation/ordering-transport-integration-evidence/baseline-red.txt": "8d88002deba3f74ad2972f02e7da52707447d1498fe30dbceba7bc1389115dd8",
+    "docs/verification/settings-activation/ordering-transport-integration-evidence/lock-removed-red.json": "b9e4d7b716b93a1ed0f7dd39b9c452974a448c0e9736e233f7e2bcedfbe0c5b5",
+    "docs/verification/settings-activation/ordering-transport-integration-evidence/lock-removed-red.txt": "ce60826ff2acca877796a8c74650f660c37402dd34da2a08a1038b43a2040e2b",
+    "docs/verification/settings-activation/ordering-transport-integration-evidence/receipt-publication-red.json": "89c9990b6ad7e0ed2fd6d0a5859d674de4b081e5833f20344f12be3ed7496dbe",
+    "docs/verification/settings-activation/ordering-transport-integration-evidence/receipt-publication-red.txt": "eb29d77756c915943b68f80d368fe859ff2fd067917f2246e14683d283fd7b2c"
+  },
+  "subjects_after": {
+    "Taskfile.yml": "acb201fe402d7e8629f8418bd916ca5f78a408ccd47c89f0a1635fe5aab45b0d",
+    "scripts/vm-guest-exec.py": "9aaaa3f589fded83b3542b616a7d5732abac765ebde62bd7eb98d091f27efdf5",
+    "scripts/vm-guest-exec-lib.sh": "a8c3d08e09ea863fd86cc5bfd910ea5725af1e3e20f99ea495ef6332cc271877",
+    "Tests/scripts/vm-guest-exec.bats": "e360901125978b3500d7ba2ddc18f9f737383208dc0e7aebcc9a30eddbfd243e",
+    "scripts/vm-menu-pointer-lib.sh": "fad671a58ff4f2cc5f8ee3fd6c00474c69bfb8f0203ce32c5206ebef7dc3f5f6",
+    "scripts/vm-window-resize-lib.sh": "1396eda19afef9d067b5f10c69007bd79427ab80fb93070a83c274b1bbe4ee8b",
+    "scripts/vm-verify-menu-bar.sh": "0740dbe480a2700d62e66c580b09a776adc6aedd07ac6d563f93f408d3b5cc41",
+    "scripts/vm-verify-lib.sh": "d9ff479fb1d8833bec80faacdffb18a62fc3f39ef3977ab0194cd205b2c40759",
+    "scripts/vm-verify-desktop-lib.sh": "8a469c5d5ea662fe825cf2c6ec19fb6edb01d362713be21a2257fc22b705a7e3",
+    "scripts/signing-env.sh": "bdc96ddde8964a1f386b77d33de1385b55a47e95a42b09d4627405d1e0fa6a52",
+    "Tests/scripts/vm-menu-pointer.bats": "75f6c056fcc2f8e9482a63ed4ebd62e1ea50bf13dba7c6edbb4637f55b103815",
+    "Tests/scripts/vm-window-resize.bats": "8e9bdf92a4dd589d942785bf7b748906d89fb03b86cb1ced1fa19f9e46c262d0",
+    "docs/verification/settings-activation/persisted-01/trace-disabled-after.json": "5a3252e2d6fd4b03ae52374b141f60f426b3deda394ea6d929a3861d85935bd7",
+    "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md": "1818b9a0a2209e7d93afbc4b2507a1425a67065d3627a4f4b22752ca55aba2fa",
+    "docs/verification/settings-activation/ORDERING-TRANSPORT-RESULTS.md": "b0af3d51ba814a7b8b9a676bf3cf14b1b08fa8e7df39a95c829adc49a5d8a03d",
+    ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/03-impl--settings-ordering-qualification-k54.md": "04e37384c82a156824c047f4b69cc3c4d7fa7d2db4c24b32d71084aaa45a6e35",
+    ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-impl--settings-shared-scenario-k56.md": "f6e6a53a7ce0e68fca6bcee10cb59cd71adda5aa6655bdce98fa0e68291df763",
+    "docs/verification/settings-activation/ordering-transport-evidence/verification.json": "a8358e0bb40a350f63d79910b558a8b746e8fdb2e81d770ee87c5b1f39190d17",
+    "docs/verification/settings-activation/ordering-transport-integration-evidence/baseline-diagnostic-red.json": "1266896008f2e7110bc75fe817eef2e2b2a90b77c095948aabc89044a9825470",
+    "docs/verification/settings-activation/ordering-transport-integration-evidence/baseline-diagnostic-red.txt": "b97a1059edc9394aeb11bac089113020b1b5a28f206415b16cf7a5c9988e9a1c",
+    "docs/verification/settings-activation/ordering-transport-integration-evidence/baseline-red.json": "5fc9c43bf1b18ab42bf7accb0bd5bd1ee46551d4d59475bd25f05c3ad6792825",
+    "docs/verification/settings-activation/ordering-transport-integration-evidence/baseline-red.txt": "8d88002deba3f74ad2972f02e7da52707447d1498fe30dbceba7bc1389115dd8",
+    "docs/verification/settings-activation/ordering-transport-integration-evidence/lock-removed-red.json": "b9e4d7b716b93a1ed0f7dd39b9c452974a448c0e9736e233f7e2bcedfbe0c5b5",
+    "docs/verification/settings-activation/ordering-transport-integration-evidence/lock-removed-red.txt": "ce60826ff2acca877796a8c74650f660c37402dd34da2a08a1038b43a2040e2b",
+    "docs/verification/settings-activation/ordering-transport-integration-evidence/receipt-publication-red.json": "89c9990b6ad7e0ed2fd6d0a5859d674de4b081e5833f20344f12be3ed7496dbe",
+    "docs/verification/settings-activation/ordering-transport-integration-evidence/receipt-publication-red.txt": "eb29d77756c915943b68f80d368fe859ff2fd067917f2246e14683d283fd7b2c"
+  },
+  "subjects_unchanged": true,
+  "ended": "2026-10-29T05:18:51.575848+00:00"
+}

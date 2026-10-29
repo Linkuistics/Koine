@@ -1,0 +1,19 @@
+{
+  "command": [
+    "bats",
+    "--filter",
+    "argument failures|missing backend|broken stdout|partial or unknown|killed adapter|caught SIGINT",
+    "Tests/scripts/vm-guest-exec.bats"
+  ],
+  "exit": 1,
+  "subjects_before": {
+    "scripts/vm-guest-exec.py": "0af0c8bbfb742cd0bd047f105d08e78b64f38608cc5ae3f97cf9b2c5a0338fc7",
+    "scripts/vm-guest-exec-lib.sh": "51c8cc677bf06878552e51b392e84f9da9d3976d3f4695c14b1c11f5efc46b61",
+    "Tests/scripts/vm-guest-exec.bats": "e220c50eefc5f83eea4cf3c268d2d96641199bc052b77e13cf8d583361fea271"
+  },
+  "subjects_after": {
+    "scripts/vm-guest-exec.py": "0af0c8bbfb742cd0bd047f105d08e78b64f38608cc5ae3f97cf9b2c5a0338fc7",
+    "scripts/vm-guest-exec-lib.sh": "51c8cc677bf06878552e51b392e84f9da9d3976d3f4695c14b1c11f5efc46b61",
+    "Tests/scripts/vm-guest-exec.bats": "e220c50eefc5f83eea4cf3c268d2d96641199bc052b77e13cf8d583361fea271"
+  }
+}

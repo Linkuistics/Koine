@@ -1,0 +1,4 @@
+1..1
+not ok 1 competing writers latch unavailable before a second transport can dispatch
+# (in test file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/k59-lock-5ozsqcbg/Tests/scripts/vm-guest-exec.bats, line 142)
+#   `[[ "${status}" == 125 && -e "${exec_root}/unavailable" ]]' failed

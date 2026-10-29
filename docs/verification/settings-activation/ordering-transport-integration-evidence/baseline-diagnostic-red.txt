@@ -1,0 +1,35 @@
+1..7
+not ok 1 argument failures latch initialized roots even when the status is ignored
+# (in test file Tests/scripts/vm-guest-exec.bats, line 227)
+#   `[[ -s "${exec_root}/unavailable" ]]' failed
+# usage: vm-guest-exec.py run [-h]
+#                             root {read-poll,one-shot,evidence} operation
+#                             command predicate
+# vm-guest-exec.py run: error: argument kind: invalid choice: 'retry' (choose from 'read-poll', 'one-shot', 'evidence')
+not ok 2 direct backend argument failures latch without the shell facade
+# (in test file Tests/scripts/vm-guest-exec.bats, line 236)
+#   `[[ "${status}" == 2 && -s "${exec_root}/unavailable" ]]' failed
+not ok 3 missing backend and unexpected backend exit leave a persistent facade latch
+# (in test file Tests/scripts/vm-guest-exec.bats, line 252)
+#   `[[ "${status}" != 0 && -s "${exec_root}/unavailable" ]]' failed
+not ok 4 broken stdout delivery cannot publish a clean terminal receipt
+# (in test file Tests/scripts/vm-guest-exec.bats, line 281)
+#   `[[ "${status}" == 0 ]]' failed
+# Traceback (most recent call last):
+#   File "<stdin>", line 15, in <module>
+# AssertionError: {'outcome': 'clean', 'reason': '', 'cli_status': 0, 'ended': '2026-10-29T05:13:48.311286+00:00', 'duration_ns': 79902000}
+not ok 5 partial or unknown terminal receipts block later scenario dispatch
+# (in test file Tests/scripts/vm-guest-exec.bats, line 296)
+#   `[[ "${status}" == 125 && ! -e "${exec_calls}" ]]' failed
+not ok 6 killed adapter leaves its CLI holding the writer lock until completion
+# (in test file Tests/scripts/vm-guest-exec.bats, line 350)
+#   `[[ "${status}" == 0 ]]' failed
+# Traceback (most recent call last):
+#   File "<stdin>", line 31, in <module>
+# AssertionError: ('SIGTERM', 0)
+not ok 7 caught SIGINT records interruption and preserves the signal exit
+# (in test file Tests/scripts/vm-guest-exec.bats, line 389)
+#   `[[ "${status}" == 0 ]]' failed
+# Traceback (most recent call last):
+#   File "<stdin>", line 23, in <module>
+# AssertionError

@@ -15,6 +15,13 @@ settings-activation-discrimination spec and ORDERING-EVALUATION-PLAN.md. Earlier
 causal slots and all historical caps remain unchanged and closed/held.
 
 ## Done when
+- P3-3 from k58: freeze the absolute CLI and jq executable paths, versions
+  and hashes and the effective TestAnyware state/config paths. After each
+  declared clone is created, before its first guest transport, record the exact
+  VM spec path/content digest and resolved agent endpoint. Bind each attempt's
+  VM to that provenance and reject stale or changed mapping. A bare argv VM
+  name is not endpoint provenance. Use the frozen binaries/environment and
+  audit them and the per-clone mapping after; creation supplies no exec success.
 - Establish readiness before E01, including actual required transport completion.
   A demonstrably unavailable required clean result holds before E01 for a new
   explicit decision. Never run guests to qualify a different transport.

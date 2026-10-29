@@ -1,0 +1,26 @@
+1..7
+not ok 1 argument failures latch initialized roots even when the status is ignored
+# (in test file Tests/scripts/vm-guest-exec.bats, line 227)
+#   `[[ -s "${exec_root}/unavailable" ]]' failed
+# usage: vm-guest-exec.py run [-h]
+#                             root {read-poll,one-shot,evidence} operation
+#                             command predicate
+# vm-guest-exec.py run: error: argument kind: invalid choice: 'retry' (choose from 'read-poll', 'one-shot', 'evidence')
+not ok 2 direct backend argument failures latch without the shell facade
+# (in test file Tests/scripts/vm-guest-exec.bats, line 236)
+#   `[[ "${status}" == 2 && -s "${exec_root}/unavailable" ]]' failed
+not ok 3 missing backend and unexpected backend exit leave a persistent facade latch
+# (in test file Tests/scripts/vm-guest-exec.bats, line 252)
+#   `[[ "${status}" != 0 && -s "${exec_root}/unavailable" ]]' failed
+not ok 4 broken stdout delivery cannot publish a clean terminal receipt
+# (in test file Tests/scripts/vm-guest-exec.bats, line 280)
+#   `[[ "${status}" == 0 ]]' failed
+not ok 5 partial or unknown terminal receipts block later scenario dispatch
+# (in test file Tests/scripts/vm-guest-exec.bats, line 295)
+#   `[[ "${status}" == 125 && ! -e "${exec_calls}" ]]' failed
+not ok 6 killed adapter leaves its CLI holding the writer lock until completion
+# (in test file Tests/scripts/vm-guest-exec.bats, line 348)
+#   `[[ "${status}" == 0 ]]' failed
+not ok 7 caught SIGINT records interruption and preserves the signal exit
+# (in test file Tests/scripts/vm-guest-exec.bats, line 386)
+#   `[[ "${status}" == 0 ]]' failed

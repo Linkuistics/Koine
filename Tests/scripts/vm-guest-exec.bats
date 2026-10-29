@@ -14,9 +14,13 @@ setup() {
 #!/bin/bash
 jq -cn --args '$ARGS.positional' -- "$@" >>"${exec_calls}"
 touch "${exec_started}"
+if [[ -n "${exec_release:-}" ]]; then
+    until [[ -f "${exec_release}" ]]; do sleep 0.02; done
+fi
 sleep "${exec_delay:-0}"
 cat "${exec_reply}"
 cat "${exec_stderr}" >&2
+touch "${exec_started}.done"
 exit "${exec_status:-0}"
 SH
     chmod +x "${BATS_TEST_TMPDIR}/bin/testanyware"
@@ -137,8 +141,9 @@ change_reply() {
         wait "${writer}"
         return 1
     fi
-    run exec_guest_evidence "${exec_root}" one-shot launch probe true
+    run exec_guest_evidence "${exec_root}" evidence collection probe true
     [[ "${status}" == 125 && -e "${exec_root}/unavailable" ]]
+    [[ "$(cat "${exec_root}/unavailable")" == 'competing evidence writer' ]]
     wait "${writer}"
     [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 1 ]]
     run exec_guest_evidence "${exec_root}" read-poll state probe true
@@ -205,4 +210,206 @@ change_reply() {
     [[ "${status}" != 0 ]]
     run exec_guest_evidence "${exec_root}-absent" one-shot launch probe true
     [[ "${status}" != 0 && ! -e "${exec_calls}" ]]
+}
+
+@test "argument failures latch initialized roots even when the status is ignored" {
+    local ordinal=0
+    for failure in unknown missing empty; do
+        ordinal=$((ordinal + 1))
+        exec_root="${BATS_TEST_TMPDIR}/arguments-${ordinal}"
+        init_guest_evidence "${exec_root}" exact-vm
+        case "${failure}" in
+        unknown) exec_guest_evidence "${exec_root}" retry launch probe true || true ;;
+        missing) exec_guest_evidence "${exec_root}" one-shot launch probe || true ;;
+        empty) exec_guest_evidence "${exec_root}" one-shot '' probe true || true ;;
+        esac
+        [[ -s "${exec_root}/unavailable" ]]
+        run exec_guest_evidence "${exec_root}" one-shot launch probe true
+        [[ "${status}" == 125 && ! -e "${exec_calls}" ]]
+    done
+}
+
+@test "direct backend argument failures latch without the shell facade" {
+    init_guest_evidence "${exec_root}" exact-vm
+    run python3 "${BATS_TEST_DIRNAME}/../../scripts/vm-guest-exec.py" run "${exec_root}" one-shot launch probe
+    [[ "${status}" == 2 && -s "${exec_root}/unavailable" ]]
+    run exec_guest_evidence "${exec_root}" one-shot launch probe true
+    [[ "${status}" == 125 && ! -e "${exec_calls}" ]]
+}
+
+@test "missing backend and unexpected backend exit leave a persistent facade latch" {
+    local facade="${BATS_TEST_TMPDIR}/facade/vm-guest-exec-lib.sh"
+    mkdir "${facade%/*}"
+    cp "${BATS_TEST_DIRNAME}/../../scripts/vm-guest-exec-lib.sh" "${facade}"
+    for failure in missing unexpected; do
+        exec_root="${BATS_TEST_TMPDIR}/${failure}"
+        init_guest_evidence "${exec_root}" exact-vm
+        if [[ "${failure}" == unexpected ]]; then
+            printf 'raise SystemExit(120)\n' >"${facade%/*}/vm-guest-exec.py"
+        fi
+        run bash -c 'source "$1"; exec_guest_evidence "$2" one-shot launch probe true' _ "${facade}" "${exec_root}"
+        [[ "${status}" != 0 && -s "${exec_root}/unavailable" ]]
+        run exec_guest_evidence "${exec_root}" one-shot launch probe true
+        [[ "${status}" == 125 && ! -e "${exec_calls}" ]]
+    done
+}
+
+@test "broken stdout delivery cannot publish a clean terminal receipt" {
+    init_guest_evidence "${exec_root}" exact-vm
+    run python3 - "${BATS_TEST_DIRNAME}/../../scripts/vm-guest-exec.py" "${exec_root}" <<'PY'
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+backend, root = sys.argv[1], Path(sys.argv[2])
+with (root / 'caller.stderr').open('wb') as errors:
+    process = subprocess.Popen([sys.executable, backend, 'run', str(root),
+                                'one-shot', 'launch', 'probe', 'true'],
+                               stdout=subprocess.PIPE, stderr=errors)
+    process.stdout.close()
+    status = process.wait(timeout=5)
+assert status != 0, status
+receipt = json.loads((root / '000001/result.json').read_text())
+assert receipt['outcome'] == 'unavailable', receipt
+assert receipt['emission_status'] == 'failed', receipt
+assert receipt['cli_status'] == 0, receipt
+assert '000001' in (root / 'unavailable').read_text()
+PY
+    printf '%s\n' "${output}"
+    [[ "${status}" == 0 ]]
+    run exec_guest_evidence "${exec_root}" one-shot launch probe true
+    [[ "${status}" == 125 ]]
+    [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 1 ]]
+}
+
+@test "partial or unknown terminal receipts block later scenario dispatch" {
+    local ordinal=0
+    for receipt in '' '{"outcome":' '{}' '{"outcome":"unknown"}'; do
+        ordinal=$((ordinal + 1))
+        rm -f "${exec_calls}"
+        exec_root="${BATS_TEST_TMPDIR}/receipt-${ordinal}"
+        init_guest_evidence "${exec_root}" exact-vm
+        mkdir "${exec_root}/000001"
+        printf '%s' "${receipt}" >"${exec_root}/000001/result.json"
+        run exec_guest_evidence "${exec_root}" one-shot launch probe true
+        [[ "${status}" == 125 && ! -e "${exec_calls}" ]]
+        run exec_guest_evidence "${exec_root}" evidence context probe true
+        [[ "${status}" == 0 && -s "${exec_root}/unavailable" ]]
+        [[ "$(cat "${exec_root}/000001/result.json")" == "${receipt}" ]]
+    done
+}
+
+@test "interrupted receipt publication leaves only a partial file" {
+    run python3 - "${BATS_TEST_DIRNAME}/../../scripts/vm-guest-exec.py" "${BATS_TEST_TMPDIR}" <<'PY'
+import importlib.util
+import sys
+from pathlib import Path
+
+spec = importlib.util.spec_from_file_location('guest_exec', sys.argv[1])
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+target = Path(sys.argv[2]) / 'result.json'
+def interrupt(value, stream, **kwargs):
+    stream.write('{"outcome":')
+    raise KeyboardInterrupt
+module.json.dump = interrupt
+try:
+    module.write_json(target, {'outcome': 'clean'})
+except KeyboardInterrupt:
+    pass
+assert not target.exists(), 'partial terminal file was published'
+assert target.with_name('result.json.partial').read_text() == '{"outcome":'
+PY
+    printf '%s\n' "${output}"
+    [[ "${status}" == 0 ]]
+}
+
+@test "killed adapter leaves its CLI holding the writer lock until completion" {
+    run python3 - "${BATS_TEST_DIRNAME}/../../scripts/vm-guest-exec.py" "${exec_root}" <<'PY'
+import os
+import signal
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+backend, base = sys.argv[1], sys.argv[2]
+started, calls = Path(os.environ['exec_started']), Path(os.environ['exec_calls'])
+for name in ('SIGTERM', 'SIGHUP', 'SIGKILL'):
+    root = Path(base + '-' + name)
+    subprocess.run([sys.executable, backend, 'init', str(root), 'exact-vm'], check=True)
+    release = root / 'release'
+    env = dict(os.environ, exec_release=str(release))
+    started.unlink(missing_ok=True)
+    started.with_suffix('.done').unlink(missing_ok=True)
+    calls.unlink(missing_ok=True)
+    process = subprocess.Popen([sys.executable, backend, 'run', str(root),
+                                'evidence', 'context', 'probe', 'true'],
+                               stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, env=env)
+    try:
+        for _ in range(250):
+            if started.exists(): break
+            time.sleep(.02)
+        assert started.exists(), 'CLI did not start'
+        process.send_signal(getattr(signal, name))
+        assert process.wait(timeout=5) == -getattr(signal, name)
+        second = subprocess.run([sys.executable, backend, 'run', str(root),
+                                 'evidence', 'collection', 'probe', 'true'],
+                                capture_output=True, env=dict(os.environ, exec_delay='0'))
+        assert second.returncode == 125, (name, second.returncode)
+        assert calls.read_text().count('\n') == 1
+        assert (root / 'unavailable').read_text().strip() == 'competing evidence writer'
+        assert not (root / '000001/result.json').exists()
+    finally:
+        release.touch()
+        if process.poll() is None:
+            process.kill()
+            process.wait(timeout=5)
+        for _ in range(250):
+            if started.with_suffix('.done').exists(): break
+            time.sleep(.02)
+        assert started.with_suffix('.done').exists(), 'orphan CLI did not finish'
+PY
+    printf '%s\n' "${output}"
+    [[ "${status}" == 0 ]]
+}
+
+@test "caught SIGINT records interruption and preserves the signal exit" {
+    init_guest_evidence "${exec_root}" exact-vm
+    run python3 - "${BATS_TEST_DIRNAME}/../../scripts/vm-guest-exec.py" "${exec_root}" <<'PY'
+import json
+import os
+import signal
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+signal.signal(signal.SIGINT, signal.SIG_DFL)
+backend, root = sys.argv[1], Path(sys.argv[2])
+started = Path(os.environ['exec_started'])
+release = root / 'release'
+process = subprocess.Popen([sys.executable, backend, 'run', str(root),
+                            'one-shot', 'launch', 'probe', 'true'],
+                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                           env=dict(os.environ, exec_release=str(release)))
+try:
+    for _ in range(250):
+        if started.exists(): break
+        time.sleep(.02)
+    assert started.exists(), 'CLI did not start'
+    process.send_signal(signal.SIGINT)
+    assert process.wait(timeout=5) == -signal.SIGINT
+    receipt = json.loads((root / '000001/result.json').read_text())
+    assert receipt['outcome'] == 'interrupted', receipt
+    assert (root / 'unavailable').exists()
+finally:
+    release.touch()
+    if process.poll() is None:
+        process.kill()
+        process.wait(timeout=5)
+PY
+    printf '%s\n' "${output}"
+    [[ "${status}" == 0 ]]
 }

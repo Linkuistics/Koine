@@ -12,6 +12,14 @@ The adapter alone does not repair legacy callers. Enumerate reachable call sites
 and actual command payload schemas; do not infer missing fields as negative state.
 
 ## Done when
+- H-1 from k58: extend the supported evidence seam to read the latch before
+  non-exec input, latch failed non-exec transports/downstream confirmations,
+  and record non-exec attempts in the same ordinal and writer-lock domain.
+  Do not write latch files by hand or bypass that domain during collection.
+- Install explicit INT/TERM/HUP handling around the complete scenario so
+  interruption stops input, remains separate from ordinary transport failure,
+  and hands collection/containment to k57. Preserve the adapter's signal and
+  partial-record outcomes; no ignored nonzero status restores eligibility.
 - Satisfy all parent scenario/helper duties: strict raw adapters for exec, agent,
   pointer, capture/upload/lifecycle and collection; failure latch stops input.
 - Keep clean negative polls distinct from failed transport at unchanged bounds,

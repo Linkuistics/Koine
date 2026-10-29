@@ -1,0 +1,7 @@
+1..1
+not ok 1 interrupted receipt publication leaves only a partial file
+# (in test file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/k59-receipt-j5i__9fc/Tests/scripts/vm-guest-exec.bats, line 326)
+#   `[[ "${status}" == 0 ]]' failed
+# Traceback (most recent call last):
+#   File "<stdin>", line 17, in <module>
+# AssertionError: partial terminal file was published
