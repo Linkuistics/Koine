@@ -168,7 +168,7 @@ assert_input_latched() {
         [[ "${status}" == 125 ]]
         [[ "${output}" == *'initialized nonempty root'* ]]
         [[ ! -s "${input_calls}" ]]
-        [[ ! -e unavailable && ! -e writer.lock && ! -e refusals.jsonl ]]
+        [[ -z "$(find . -mindepth 1 -print)" ]]
     done
 }
 

@@ -40,3 +40,16 @@ confirmation, k76 complete adoption/signals and both held-pointer controls,
 k67 positive setup/title/liveness and k62 complete prefix/duty reconciliation.
 K57/k54 and every runtime slot remain held; no VM/candidate/freeze or ancestor
 closure. Secret-bearing consent roots remain private.
+
+## K87 click review integration handoff
+
+Consume the current `docs/verification/settings-activation/ORDERING-CLICK-RESULTS.md`
+and k87 receipts. A clean OCR result with no exact Allow is terminal structured
+state-failed setup; invalid geometry or failed evidence remains unavailable.
+Both stop input. The unchanged CLI poll can end early on a case-insensitive
+substring such as Don't Allow or allowed, before the later exact Allow check.
+Keep this availability limit, exact signal statuses, existing actions/waits/bounds
+and every original duty above; no replacement read, new exact-match poll or retry.
+K80/k85 keep artifacts/lifecycle, k81 all exec/one-shot consequences, k76 complete
+adoption/signals/both held-pointer controls. All snapshot availability limits,
+private secret-bearing roots and k67/k62/k57/k54/runtime holds remain binding.

@@ -60,3 +60,33 @@ upload/install/environment/lifecycle/collection paths. Every original criterion
 above survives; each artifact requires independent review/every earned integration
 before downstream consumption. Execute only k84 in this session. K81/k76/k67/
 k62/k57/k54 and all runtime holds remain unchanged.
+
+## K87 click review integration handoff
+
+K86 is integrated by k87 in
+`docs/verification/settings-activation/ORDERING-CLICK-RESULTS.md` and its
+`ordering-click-integration/` receipts. Consume the current helpers. A complete
+OCR read without an exact Allow records terminal `poll-step` / `exhausted` /
+status 1 / `state-failed`; invalid target geometry remains unavailable. Both
+stop and latch. Classify request/result fields, never the latch name or reason.
+The shared reason's window-poll wording does not identify the OCR operation.
+
+The unchanged v2.7.0 internal poll stops on a case-insensitive substring, such
+as Don't Allow or allowed, before the later exact case-sensitive Allow check.
+It can end before 30 seconds or before the exact button appears. K81/k76 retain
+this accepted availability limit; no exact-match poll, new read, wait or retry.
+Query/target/centre local interruptions retain exact signal statuses. These
+source/fixture controls implement no complete scenario signal handler.
+
+The corrected cwd and receipt controls and fractional coordinate mutations
+address the review gaps without altering production root guards or ordinary
+callers. Old red receipts remain unchanged. All eight Taskfile checks pass
+152 controls. Documentation still has the same two missing k23 archive targets.
+
+K85 keeps every original capture/background keepalive, complete readable
+artifact, upload/install/file, environment, lifecycle and collection duty. K81
+keeps every exec/one-shot consequence; k76 complete adoption, status handling,
+signals and both held-pointer controls. Missing-tree and empty-AXValue native
+availability limits and private secret-bearing roots remain binding. K67/k62/
+k57/k54 and every runtime slot remain held. No VM/candidate/freeze, native
+acceptance or ancestor closure follows.

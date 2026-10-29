@@ -127,18 +127,32 @@ assert_click_latched() {
 
 @test "failed partial and typed-error OCR stop before click and sleep" {
     local problem
-    for problem in nonzero partial error dry-run; do
+    for problem in nonzero partial error error-zero dry-run; do
         reset_click "ocr-failed-${problem}"
         ocr_fixture >"${click_replies}/1.json"
         case "${problem}" in
         nonzero) echo 255 >"${click_replies}/1.exit" ;;
         partial) echo '{"schema_version":' >"${click_replies}/1.json" ;;
-        error) echo '{"schema_version":"1.0","ok":false,"error":{"code":"TEXT_NOT_FOUND"}}' >"${click_replies}/1.json" ;;
+        error | error-zero)
+            # v2.7.0 output.rs: top-level code/message; OCR_TIMEOUT exits 7.
+            # error-zero is deliberately contradictory completion, not native.
+            echo '{"schema_version":"1.0","ok":false,"code":"OCR_TIMEOUT","message":"OCR timed out","remediation":"Increase the OCR deadline or reduce screen complexity, then retry.","details":{}}' >"${click_replies}/1.json"
+            if [[ "${problem}" == error ]]; then echo 7 >"${click_replies}/1.exit"; fi
+            ;;
         dry-run) ocr_fixture | jq '.dry_run=false' >"${click_replies}/1.json" ;;
         esac
         run click_guest_allow "${click_root}" allow
         [[ "${status}" == 125 ]]
         [[ "$(wc -l <"${click_calls}" | tr -d ' ')" == 1 && ! -s "${click_waits}" ]]
+        if [[ "${problem}" == error || "${problem}" == error-zero ]]; then
+            cmp "${click_replies}/1.json" "${click_root}/000001/raw.stdout"
+            jq -e '.code == "OCR_TIMEOUT" and .message == "OCR timed out"' "${click_root}/000001/raw.stdout"
+            if [[ "${problem}" == error ]]; then
+                jq -e '.outcome == "unavailable" and .cli_status == 7' "${click_root}/000001/result.json"
+            else
+                jq -e '.outcome == "unavailable" and .cli_status == 0' "${click_root}/000001/result.json"
+            fi
+        fi
         assert_click_latched
     done
 }
@@ -152,12 +166,25 @@ assert_click_latched() {
     [[ "$(cat "${click_waits}")" == 2 ]]
 }
 
-@test "clean OCR without exact Allow fails without a click" {
-    ocr_fixture | jq '.detections |= map(.text="allow")' >"${click_replies}/1.json"
-    run click_guest_allow "${click_root}" allow
-    [[ "${status}" == 125 ]]
-    [[ "$(wc -l <"${click_calls}" | tr -d ' ')" == 1 && ! -s "${click_waits}" ]]
-    assert_click_latched
+@test "clean OCR without exact Allow records state failure without input" {
+    local text n=0
+    for text in empty allow "Don't Allow" allowed; do
+        n=$((n + 1))
+        reset_click "no-exact-allow-${n}"
+        if [[ "${text}" == empty ]]; then
+            ocr_fixture | jq '.detections=[] | .returned=0 | .total=0' >"${click_replies}/1.json"
+        else
+            ocr_fixture | jq --arg text "${text}" '.detections |= map(.text=$text)' >"${click_replies}/1.json"
+        fi
+        run click_guest_allow "${click_root}" allow
+        [[ "${status}" == 125 ]]
+        [[ "$(wc -l <"${click_calls}" | tr -d ' ')" == 1 && ! -s "${click_waits}" ]]
+        jq -e '.outcome == "clean"' "${click_root}/000001/result.json"
+        jq -e '.transport == "poll-step" and .poll_phase == "exhausted" and .local_status == 1
+            and .state_predicate == "any(.detections[]; .text == \"Allow\")"' "${click_root}/000002/request.json"
+        jq -e '.outcome == "state-failed"' "${click_root}/000002/result.json"
+        assert_click_latched
+    done
 }
 
 @test "invalid Allow size and out-of-range derived coordinates refuse input" {
@@ -169,6 +196,8 @@ assert_click_latched() {
         run click_guest_allow "${click_root}" allow
         [[ "${status}" == 125 ]]
         [[ "$(wc -l <"${click_calls}" | tr -d ' ')" == 1 && ! -s "${click_waits}" ]]
+        jq -e '.transport == "confirmation" and (.reason | startswith("state exit 4:"))' "${click_root}/000002/request.json"
+        jq -e '.outcome == "unavailable" and (.reason | startswith("state exit 4:"))' "${click_root}/000002/result.json"
         assert_click_latched
     done
 }
@@ -237,7 +266,72 @@ assert_click_latched() {
     run click_guest_allow "${click_root}" allow
     [[ "${status}" == 125 ]]
     [[ "$(wc -l <"${click_calls}" | tr -d ' ')" == 1 && ! -s "${click_waits}" ]]
+    command jq -e '.transport == "confirmation" and (.reason | startswith("state exit 9:"))' "${click_root}/000002/request.json"
+    command jq -e '.outcome == "unavailable" and (.reason | startswith("state exit 9:"))' "${click_root}/000002/result.json"
     assert_click_latched
+}
+
+@test "interrupted query encoder preserves signal status before dispatch" {
+    # The local encoder emits plausible output before interruption. It must not
+    # become a usable predicate or dispatch any CLI invocation.
+    # shellcheck disable=SC2329
+    jq() {
+        if [[ "${1-}" == -rn ]]; then
+            echo '.query == "Allow"'
+            return 143
+        fi
+        command jq "$@"
+    }
+    run read_guest_text "${click_root}" consent Allow 30
+    [[ "${status}" == 143 && ! -s "${click_calls}" && ! -s "${click_waits}" ]]
+    command jq -e '.transport == "poll-step" and .poll_phase == "state" and .local_status == 143' "${click_root}/000001/request.json"
+    command jq -e '.outcome == "interrupted"' "${click_root}/000001/result.json"
+    assert_click_latched
+}
+
+@test "failed query encoder retains local exit in unavailable receipt" {
+    # shellcheck disable=SC2329
+    jq() {
+        if [[ "${1-}" == -rn ]]; then
+            echo '.query == "Allow"'
+            return 9
+        fi
+        command jq "$@"
+    }
+    run read_guest_text "${click_root}" consent Allow
+    [[ "${status}" == 125 && ! -s "${click_calls}" && ! -s "${click_waits}" ]]
+    command jq -e '.transport == "confirmation" and (.reason | startswith("state exit 9:"))' "${click_root}/000001/request.json"
+    command jq -e '.outcome == "unavailable" and (.reason | startswith("state exit 9:"))' "${click_root}/000001/result.json"
+    assert_click_latched
+}
+
+@test "failed or interrupted exact-target evaluation is never a clean negative" {
+    local code
+    # shellcheck disable=SC2329
+    jq() {
+        if [[ "${1-}" == -e && "${2-}" == 'any(.detections[]; .text == "Allow")' ]]; then
+            echo false
+            return "${click_state_status}"
+        fi
+        command jq "$@"
+    }
+    for code in 9 143; do
+        reset_click "target-state-${code}"
+        export click_state_status="${code}"
+        ocr_fixture >"${click_replies}/1.json"
+        run click_guest_allow "${click_root}" allow
+        [[ "$(wc -l <"${click_calls}" | tr -d ' ')" == 1 && ! -s "${click_waits}" ]]
+        if [[ "${code}" == 143 ]]; then
+            [[ "${status}" == 143 ]]
+            command jq -e '.transport == "poll-step" and .poll_phase == "state" and .local_status == 143' "${click_root}/000002/request.json"
+            command jq -e '.outcome == "interrupted"' "${click_root}/000002/result.json"
+        else
+            [[ "${status}" == 125 ]]
+            command jq -e '.transport == "confirmation" and (.reason | startswith("state exit 9:"))' "${click_root}/000002/request.json"
+            command jq -e '.outcome == "unavailable"' "${click_root}/000002/result.json"
+        fi
+        assert_click_latched
+    done
 }
 
 @test "failed or interrupted settling keeps exact local status and stops later input" {
@@ -256,7 +350,7 @@ assert_click_latched() {
 }
 
 @test "inclusive coordinate limits retain original floor-of-centre rule" {
-    ocr_fixture | jq '.detections[1] |= (.x=-0.5 | .y=65534.5 | .width=1 | .height=1)' >"${click_replies}/1.json"
+    ocr_fixture | jq '.detections[1] |= (.x=-0.25 | .y=65534.75 | .width=1 | .height=1)' >"${click_replies}/1.json"
     click_reply | jq '.x=0 | .y=65535' >"${click_replies}/2.json"
     click_guest_allow "${click_root}" allow
     jq -se '.[1] == ["input","click","0","65535","--vm","exact-click-vm","--json"]' "${click_calls}"
@@ -290,15 +384,17 @@ assert_click_latched() {
     [[ "${status}" == 125 ]]
     run bash -uc 'source "$1"; click_guest_element' -- "${BATS_TEST_DIRNAME}/../../scripts/vm-click-evidence-lib.sh"
     [[ "${status}" == 125 && ! -s "${click_calls}" && ! -s "${click_waits}" ]]
-    [[ "$(find . -type f | wc -l | tr -d ' ')" == 0 ]]
+    [[ -z "$(find . -mindepth 1 -print)" ]]
 }
 
 @test "invalid roots and arguments refuse before dispatch or cwd writes" {
     run read_guest_text '' empty Allow
     [[ "${status}" == 125 && ! -s "${click_calls}" ]]
+    [[ -z "$(find . -mindepth 1 -print)" ]]
     run click_guest_allow "${BATS_TEST_TMPDIR}/missing" allow
     [[ "${status}" == 125 && ! -s "${click_calls}" ]]
+    [[ -z "$(find . -mindepth 1 -print)" ]]
     run read_guest_text "${click_root}" invalid Allow 31
     [[ "${status}" == 125 && ! -s "${click_calls}" ]]
-    [[ ! -e subject.json && ! -e unavailable && ! -e .writer.lock ]]
+    [[ -z "$(find . -mindepth 1 -print)" ]]
 }

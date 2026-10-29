@@ -1,0 +1,22 @@
+{
+  "tag": "v2.7.0",
+  "commit": "65bc05c91cc5d2a6e3d4aa8f81cb2c7c7712fa03",
+  "method": "Read immutable official commit via jj file show; workspace/CLI manifests before consumers; all original six digests rechecked. Matcher/output inspected for substring polling and top-level error envelope. No executable/native provenance.",
+  "files": {
+    "cli-rs/Cargo.toml": "e7c43079eda1fa5c7f81cb3e7f3742c65260cac139a7191910430a736a0bf06a",
+    "cli-rs/crates/testanyware-cli/Cargo.toml": "da9dbcc88c9dbd5becc43cf0cbfd75d114b856e33a6f6052d1ff99cf3c7615ff",
+    "cli-rs/crates/testanyware-cli/src/commands/screen.rs": "db9e6aa62424a8fc7692ab5e8b162199862826cad2637ae970281d9319c84ae1",
+    "cli-rs/crates/testanyware-cli/src/commands/input.rs": "9e8294dc5bc65ff6ee913cfb90bfd34c3b87dbac8e9944852f9822de1770f6e1",
+    "cli-rs/crates/testanyware-ocr-client/src/detection.rs": "fc9f15bf305b0deab484b17041104b952cba7cc5ff1f565310cb2a827d0ea299",
+    "cli-rs/crates/testanyware-ocr-client/src/engine.rs": "fcb571c34e30a2f0e6f4942c9577d38821a475b56eda80ef9439b9559ac07369",
+    "cli-rs/crates/testanyware-ocr-client/src/find.rs": "4dc71096312458cd4c5236614d2ee34e62b6663f949b954ea12185a02972acb9",
+    "cli-rs/crates/testanyware-cli/src/output.rs": "402abc0570b0f7786cac0702b47cb4765408bfb47cc9d73168694c31dcbddde9"
+  },
+  "notes": [
+    "Detection geometry and confidence are floating point; width/height must be nonnegative for checked OCR data, positive for a physical target.",
+    "run_screen_find_text computes effective_limit from all/limit/default100 and passes it to emit_find_text even for a query. The comment claiming query always passes usize::MAX is inconsistent with the executable call path. Require truncated=false and returned=total=array length; no --all or replacement read is added.",
+    "Timeout30 is the existing CLI internal 500ms OCR loop, not a new shell poll or retry of a failed CLI completion.",
+    "find_text performs case-insensitive substring matching; the CLI ends its poll when any matched detection exists. Exact Allow selection happens only after that invocation.",
+    "output.rs emits top-level code/message and exits nonzero; OCR_TIMEOUT is code 7. The zero-exit error control is explicitly contradictory."
+  ]
+}

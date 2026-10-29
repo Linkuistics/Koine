@@ -1,0 +1,66 @@
+{
+  "comparison_commit": "e0a7c5b7",
+  "method": "Compare each original receipt, ordinary caller and unchanged shared production helper with immutable reviewed commit bytes.",
+  "files": {
+    "docs/verification/settings-activation/ordering-click-evidence/baseline-red.json": {
+      "reviewed": "9eb78e3a2f1ab383e1aa193ccb9781c91cf06efed886a9f9a4cf8f7495275f8e",
+      "current": "9eb78e3a2f1ab383e1aa193ccb9781c91cf06efed886a9f9a4cf8f7495275f8e"
+    },
+    "docs/verification/settings-activation/ordering-click-evidence/callers.json": {
+      "reviewed": "bd818f3240042090e64469b757dc31d70e0a6468c6d8bbfe67876f476048f0c8",
+      "current": "bd818f3240042090e64469b757dc31d70e0a6468c6d8bbfe67876f476048f0c8"
+    },
+    "docs/verification/settings-activation/ordering-click-evidence/docs-initial.json": {
+      "reviewed": "76f57cf423bf1e60a724aa02ac3dede5d655983e237ed504ddcd8bfce068cbf3",
+      "current": "76f57cf423bf1e60a724aa02ac3dede5d655983e237ed504ddcd8bfce068cbf3"
+    },
+    "docs/verification/settings-activation/ordering-click-evidence/docs.json": {
+      "reviewed": "7ba7231046123511aba8e5aedbbc81538dd42ef7091882f5466f8e01114babbf",
+      "current": "7ba7231046123511aba8e5aedbbc81538dd42ef7091882f5466f8e01114babbf"
+    },
+    "docs/verification/settings-activation/ordering-click-evidence/final-baseline-red.json": {
+      "reviewed": "d8689985808766aff3f17ad2fea6508f036193f26b115d50f224ad87807c3315",
+      "current": "d8689985808766aff3f17ad2fea6508f036193f26b115d50f224ad87807c3315"
+    },
+    "docs/verification/settings-activation/ordering-click-evidence/initial-sleep-assertion.json": {
+      "reviewed": "bbc37173187250291b1f3195d2bec7102f15a44c2fa20f359275c0ea42be4bd6",
+      "current": "bbc37173187250291b1f3195d2bec7102f15a44c2fa20f359275c0ea42be4bd6"
+    },
+    "docs/verification/settings-activation/ordering-click-evidence/official-source.json": {
+      "reviewed": "a2449dfd514e50e37c1a7f11eb3633ccb7143184cf6f08185b22ca01e5c73ca0",
+      "current": "a2449dfd514e50e37c1a7f11eb3633ccb7143184cf6f08185b22ca01e5c73ca0"
+    },
+    "docs/verification/settings-activation/ordering-click-evidence/verification.json": {
+      "reviewed": "7fd28698f22aadc0d060ccfa36af5565c24f5be536387673f7dd9f009c4ad529",
+      "current": "7fd28698f22aadc0d060ccfa36af5565c24f5be536387673f7dd9f009c4ad529"
+    },
+    "scripts/vm-verify-lib.sh": {
+      "reviewed": "0cbd67a3b3aad4d27df39370d106637800716101cb619bf704901cf7235f1035",
+      "current": "0cbd67a3b3aad4d27df39370d106637800716101cb619bf704901cf7235f1035"
+    },
+    "scripts/vm-verify-desktop-lib.sh": {
+      "reviewed": "22f7c7026a9f3f7706783f6da56f517b468697eaad9e1fcd5f0570ee72932452",
+      "current": "22f7c7026a9f3f7706783f6da56f517b468697eaad9e1fcd5f0570ee72932452"
+    },
+    "scripts/vm-verify-menu-bar.sh": {
+      "reviewed": "4cedeaebf72c19c65af51db6d57bace380508ffa1c8dee6e784997f22e0f74f2",
+      "current": "4cedeaebf72c19c65af51db6d57bace380508ffa1c8dee6e784997f22e0f74f2"
+    },
+    "scripts/vm-ui-evidence-lib.sh": {
+      "reviewed": "610efb270c893ea637fa63fa317fee6e8b981d3e3d6181bcad6ee6f18a8574b2",
+      "current": "610efb270c893ea637fa63fa317fee6e8b981d3e3d6181bcad6ee6f18a8574b2"
+    },
+    "scripts/vm-guest-exec-lib.sh": {
+      "reviewed": "d9540371ce2cbfd6a717ce8e4243346f4af630d43c6421fcd919b1c78ed2e785",
+      "current": "d9540371ce2cbfd6a717ce8e4243346f4af630d43c6421fcd919b1c78ed2e785"
+    },
+    "scripts/vm-guest-exec.py": {
+      "reviewed": "a11e688bf4e508f104333c05273b1be55a173c15d3666885e9b4b31c1f6ef6d0",
+      "current": "a11e688bf4e508f104333c05273b1be55a173c15d3666885e9b4b31c1f6ef6d0"
+    },
+    "scripts/vm-input-evidence-lib.sh": {
+      "reviewed": "8e7c2e1485b1a991fe57a06c7cc4632470ad9ca1081ac5d3c91834a00143daed",
+      "current": "8e7c2e1485b1a991fe57a06c7cc4632470ad9ca1081ac5d3c91834a00143daed"
+    }
+  }
+}

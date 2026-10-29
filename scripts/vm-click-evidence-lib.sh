@@ -6,7 +6,7 @@ source "${BASH_SOURCE[0]%/*}/vm-ui-evidence-lib.sh"
 # read_guest_text ROOT OPERATION QUERY [30]
 # Preserve the two existing callers: one immediate read, or Allow's CLI timeout.
 read_guest_text() {
-    local root="${1-}" operation="${2-}" query="${3-}" predicate
+    local root="${1-}" operation="${2-}" query="${3-}" predicate status=0
     _ui_evidence_root "${root}" || return
     if [[ ($# != 3 && $# != 4) || -z "${operation}" || -z "${query}" || "${query}" == -* ||
         ($# == 4 && "$4" != 30) ]]; then
@@ -16,10 +16,11 @@ read_guest_text() {
     # Field/count contract from the immutable CLI and OCR value type.
     # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/commands/screen.rs
     # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-ocr-client/src/detection.rs
-    predicate="$(jq -rn --arg query "${query}" '".query == \($query | tojson)"')" || {
-        _ui_evidence_fail "${root}" "${operation}" 'OCR query encoding failed'
+    predicate="$(jq -rn --arg query "${query}" '".query == \($query | tojson)"')" || status=$?
+    if [[ "${status}" != 0 ]]; then
+        _click_evidence_local_failure "${root}" "${operation}-query" "${status}" state 'OCR query encoding failed'
         return "$?"
-    }
+    fi
     predicate+=' and (.engine | type == "string" and length > 0)
         and (.detections | type == "array") and .truncated == false
         and (.returned | type == "number" and floor == . and . >= 0)
@@ -68,13 +69,24 @@ _click_guest_target() {
 
 # click_guest_allow ROOT OPERATION: exec trigger and confirmation remain separate.
 click_guest_allow() {
-    local root="${1-}" operation="${2-}" response
+    local root="${1-}" operation="${2-}" response status=0
+    local predicate='any(.detections[]; .text == "Allow")'
     _ui_evidence_root "${root}" || return
     if [[ $# != 2 || -z "${operation}" ]]; then
         _ui_evidence_fail "${root}" "${operation:-allow-arguments}" 'expected ROOT OPERATION'
         return "$?"
     fi
     response="$(read_guest_text "${root}" "${operation}-ocr" Allow 30)" || return
+    # The CLI stops on a substring, not necessarily an exact Allow. A clean
+    # terminal negative is failed setup; unusable target geometry is unavailable.
+    jq -e "${predicate}" >/dev/null <<<"${response}" || status=$?
+    if [[ "${status}" == 1 ]]; then
+        record_guest_poll "${root}" "${operation}-exact-target" exhausted 1 "${predicate}"
+        return "$?"
+    elif [[ "${status}" != 0 ]]; then
+        _click_evidence_local_failure "${root}" "${operation}-exact-target" "${status}" state "${predicate}"
+        return "$?"
+    fi
     _click_guest_target "${root}" "${operation}" "${response}" '[.detections[] | select(.text == "Allow")][0]'
 }
 

@@ -2,8 +2,8 @@
 
 K84 supplies source-only checked OCR and physical Allow/element click helpers.
 K80 remains open: k85 owns captures, background keepalive, files, environment,
-lifecycle and collection receipts. Independent review and every earned integration
-precede downstream consumption. No ordinary caller or scenario root is changed.
+lifecycle and collection receipts. K86's review is integrated by k87 below;
+consume the current interface and its limits. No ordinary caller or scenario root is changed.
 These controls establish no native availability, VM outcome or repair acceptance.
 
 The [ordering protocol](ORDERING-EVALUATION-PLAN.md),
@@ -41,8 +41,14 @@ height/confidence and nonnegative width/height. These are field-shape checks;
 there is no new confidence threshold or recognition guarantee. Typed CLI errors,
 partial JSON, dry-run envelopes and unsuccessful CLI completion are unavailable,
 even if they contain matching text. A complete empty array supports the existing
-negative consent assertion; absence of an exact Allow cannot satisfy a required
-click and latches without input.
+negative consent assertion. After a complete successful OCR read, absence of an
+exact Allow is failed setup: it records `transport:"poll-step"`,
+`poll_phase:"exhausted"`, `local_status:1`, the exact predicate
+`any(.detections[]; .text == "Allow")`, and `outcome:"state-failed"`.
+It returns 125 and latches without input. A present exact Allow with unusable
+geometry instead records an unavailable confirmation. Classify using request
+and result fields; the latch filename, operation suffix and reason alone do not
+distinguish these outcomes. Neither result proves a Settings recurrence.
 
 The selected target must have positive width/height. Coordinates retain the
 original `floor(x + width/2), floor(y + height/2)` formula and must be finite and
@@ -52,7 +58,8 @@ assertion is added. The exact click acknowledgment must echo both coordinates,
 `button:"left"` and `count:1`. This is the existing direct single click for these
 callers; the separate menu pointer route keeps its own approach moves and waits.
 
-Failed local centre decoding emits no usable coordinates. Ordinary decoder
+Failed local query encoding, exact-target evaluation or centre decoding emits
+no usable predicate or coordinates. Ordinary local
 failure records a confirmation failure, including the exact local exit in its
 reason. Signal statuses 129–192 instead retain the exact structured local status
 as an interrupted `poll-step`. Failed settling records phase `sleep` and the
@@ -76,9 +83,20 @@ serializer even with a query. Its adjacent comment claims query results always
 pass an unlimited value, but the executable call path does not. Qualification
 uses the actual returned counts and truncation flag. A truncated response stops;
 there is no `--all`, replacement capture or retry to obtain complete data. The
-existing timeout performs internal 500 ms OCR polling until a match or deadline;
-it is retained unchanged within one recorded CLI invocation. No successful
-completion can be inferred if that invocation fails.
+existing timeout performs internal 500 ms OCR polling until a case-insensitive
+substring match within one detection or the deadline. The
+[matcher](https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-ocr-client/src/find.rs)
+and screen handler stop on text such as `Don't Allow`, `allowed` or a Settings
+label containing `allow`, even before an exact `Allow` appears. Only after that
+invocation finishes does the helper require the first case-sensitive exact
+`Allow`. This inherited availability cost is accepted; k81/k76 must preserve it.
+There is no claim that the full 30 seconds elapsed or that the prompt never
+appeared. The terminal `exhausted` phase describes the end of the helper's
+existing single-invocation opportunity, including an early substring stop.
+The shared backend's generic reason mentions a window poll; its structured
+fields and the retained exact-target predicate govern classification.
+No additional polling, replacement read or retry is selected. No successful
+completion can be inferred if the invocation fails.
 
 Element click inherits every reviewed snapshot limit: required trees on all
 returned windows, first-match/platformRole traversal, fixed depth and selector
@@ -135,9 +153,21 @@ Each loop stops at its first failed assertion; neither baseline establishes an
 independent red result for every nested malformed vector. Before/after digests
 identify every comparison's subjects.
 
+In that old comparison, test 14 (inclusive coordinate limits) fails at the
+`--vm`/`--json` argv assertion, not at rounding or coordinate bounds. It supplies
+no independent red evidence for those rules. Its fixture also used an exact
+integer centre, so it did not distinguish floor from ceil. K87 uses fractional
+centres that floor to 0 and 65535 and demonstrates failures for ceil and for
+excluding either valid endpoint in isolated library copies. The original red
+receipts remain unchanged. The old typed-error fixture used an invented nested
+error and zero exit; it established only refusal of `ok:false`. The current
+fixture uses the official top-level `code`/`message` envelope for `OCR_TIMEOUT`
+with exit 7, plus a separately named contradictory zero-exit control. Neither
+uses `TEXT_NOT_FOUND`, which requires the unused `--require-match` option.
+
 Passing controls execute the real adapter/store, jq, reviewed snapshot reader
 and new helpers. Only the external CLI, settling sleep and explicitly faulted
-local centre projection are substituted. They cover original bytes, exact VM/
+local jq steps are substituted. They cover original bytes, exact VM/
 argv/ordinals, complete empty OCR, count/shape/truncation refusal, first exact
 Allow, floor-centre coordinate limits, click echo/completion, one required
 element snapshot, missing tree/attributes, local decoder/sleep failure and
@@ -150,6 +180,60 @@ Taskfile commands, full outputs/statuses, individual tests and stable before/
 after subjects for the new and shared-helper regressions. The
 [documentation check](ordering-click-evidence/docs.json) retains its actual
 outcome; the existing two missing archived-context targets remain owned by k23.
+
+## K86 findings and k87 integration
+
+The findings are retained in review commit `71acea38`, graded against k84
+`e0a7c5b7`, the parent charters and the reviewed ordering protocol.
+
+| Finding | Disposition and resulting behavior |
+|---|---|
+| P2-1, missing exact Allow conflated with invalid geometry | Real. A local predicate on the already qualified envelope now records terminal clean absence as structured `state-failed`. Invalid geometry stays `unavailable`. Both stop later input. |
+| P3-1, substring polling can finish before exact Allow | Accepted existing trade-off with a documentation omission, repaired above. Preserve the existing invocation and exact selection; carry this limit into k81/k76. |
+| P3-2, invalid-root cwd checks name the wrong lock and omit files | Real control gap. Click and sibling input tests now enumerate the entire isolated cwd after each refusal. They catch actual `.writer`, `refusals.jsonl` and `facade-refusals.log` writes rather than a fictional lock name. No production root guard changed. |
+| P3-3, query encoder loses interrupted status | Real. The local-failure recorder now retains signal status in an interrupted `poll-step`, before any CLI dispatch; ordinary failures retain the local exit in an unavailable confirmation. |
+| P3-4, local failure receipt claims untested | Real control gap. Controls now read transport, terminal outcome and local exit reason, or structured signal status, for centre/query/exact-target evaluation. A missing exact Allow and unusable geometry have separately asserted outcomes. |
+| P3-5, invented error shape and unrelated coordinate baseline failure | Real. Use the official error shape and exit, label contradictory completion separately, qualify the historical baseline, and demonstrate coordinate-control sensitivity with focused mutations. |
+
+[Exact-target red](ordering-click-integration/exact-target-red.json) fails at
+the missing structured state-failure receipt before the behavior repair; its
+geometry control already passes. The [green run](ordering-click-integration/exact-target-green.json)
+passes both, including empty/lowercase/substring payloads. The
+[encoder red](ordering-click-integration/query-encoder-red.json) independently
+fails signal propagation and ordinary local-exit retention; the
+[green run](ordering-click-integration/query-encoder-green.json) passes both.
+The red negative loop stops at its first empty-array failure; it does not
+establish an independent pre-repair result for every later substring vector.
+
+[Mutation controls](ordering-click-integration/mutation-controls.json) retain
+isolated subject digests and exact mutation diffs. Injected cwd writes pass the
+old tests and fail the current tests: all three named files for click, and the
+previously unguarded `.writer`/`facade-refusals.log` for input. Losing the decoder
+exit reason likewise passes the old test and fails the strengthened assertion.
+Separate ceil, lower-exclusive and upper-exclusive mutations fail the focused
+coordinate test. These are executable control checks, not native measurements.
+
+The [final verification](ordering-click-integration/verification.json) runs the
+eight existing Taskfile checks sequentially: click, UI, input, physical, window,
+guest exec, menu pointer and resize. All 152 Bats controls pass, including 20
+click controls, with syntax/lint/format checks and the existing backend Python
+checks. Digests of all regular script/test inputs, Taskfile and the inherited
+fixture match before and after. No source was edited during a run. The original
+helper/scenario inputs and old receipts are checked separately in the
+[preservation receipt](ordering-click-integration/preservation.json).
+
+The [source receipt](ordering-click-integration/official-source.json) adds exact
+immutable v2.7.0 matcher/output bytes; the workspace and CLI manifests were
+read before their consumers. It establishes source evidence only. Tier 2 graph
+coverage was checked at generations 2026-10-29T09:00:10Z and
+2026-10-29T09:22:05Z. Partial shell ranges, unavailable Bats freshness metadata
+and unrelated jq/read trace edges required direct bounded reads; no graph
+completeness is claimed. Executable controls provide the adversarial check for
+these bounded fixes; no in-session reviewer ran.
+
+The [final documentation check](ordering-click-integration/docs.json) retains
+its actual outcome and full source/target inventory. Its two existing missing
+archived-context targets remain k23's work. No new missing target is accepted.
 
 ## Remaining original duties
 
