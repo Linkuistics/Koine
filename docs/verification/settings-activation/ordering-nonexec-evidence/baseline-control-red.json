@@ -1,0 +1,26 @@
+{
+  "started": "2026-10-29T05:28:50.130951+00:00",
+  "command": [
+    "mise",
+    "exec",
+    "--",
+    "bats",
+    "--filter",
+    "nonexec|downstream confirmation|lifecycle evidence",
+    ".build/ordering-nonexec-controls/baseline/Tests/scripts/vm-guest-exec.bats"
+  ],
+  "subjects_before": {
+    ".build/ordering-nonexec-controls/baseline/Tests/scripts/vm-guest-exec.bats": "05a004f172fa7f07baa6017998fc13167ba99a75d706318b6af7e0f1fd9d0908",
+    ".build/ordering-nonexec-controls/baseline/scripts/vm-guest-exec-lib.sh": "a8c3d08e09ea863fd86cc5bfd910ea5725af1e3e20f99ea495ef6332cc271877",
+    ".build/ordering-nonexec-controls/baseline/scripts/vm-guest-exec.py": "9aaaa3f589fded83b3542b616a7d5732abac765ebde62bd7eb98d091f27efdf5"
+  },
+  "exit": 1,
+  "subjects_after": {
+    ".build/ordering-nonexec-controls/baseline/Tests/scripts/vm-guest-exec.bats": "05a004f172fa7f07baa6017998fc13167ba99a75d706318b6af7e0f1fd9d0908",
+    ".build/ordering-nonexec-controls/baseline/scripts/vm-guest-exec-lib.sh": "a8c3d08e09ea863fd86cc5bfd910ea5725af1e3e20f99ea495ef6332cc271877",
+    ".build/ordering-nonexec-controls/baseline/scripts/vm-guest-exec.py": "9aaaa3f589fded83b3542b616a7d5732abac765ebde62bd7eb98d091f27efdf5"
+  },
+  "ended": "2026-10-29T05:29:11.875407+00:00",
+  "subjects_unchanged": true,
+  "output_sha256": "ed37df5425c2a7004c8ea471b07a3f0b4c5dd86948acae8fa7867f1c1f2b74cc"
+}

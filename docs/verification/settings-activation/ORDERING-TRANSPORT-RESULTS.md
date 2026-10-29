@@ -1,11 +1,17 @@
 # Strict guest-exec evidence increment
 
-The reviewed guest-exec adapter passes twenty-one headless controls. It records
+The k55 guest-exec adapter, integrated by k59, passed twenty-one headless controls. It records
 one transport attempt and distinguishes clean command output from unavailable
 evidence. It has **not been adopted by the ordinary scenario**. The scenario,
 non-exec transports, positive setup/title/process assertions, one-shot downstream
 confirmations and finite evaluation caller remain unfinished. No signed subject,
 clone, evaluation slot, native acceptance or product repair result is supplied.
+
+K60's [non-exec interface expansion](ORDERING-NONEXEC-RESULTS.md) now adds
+supported latch inspection, failed-confirmation recording and non-exec attempts
+in the same writer/ordinal domain. Its review and every earned integration
+precede scenario migration. The twenty-one-control result below describes k59;
+the new report and receipt identify the expanded adapter and its limits.
 
 This is the first child of settings-ordering-harness-k53. The work decomposes at
 an expand-then-migrate boundary: strict exec evidence, complete shared scenario
@@ -17,7 +23,7 @@ Settings-ordering-qualification-k54 remains held until that work is complete.
 ## Implemented seam
 
 [vm-guest-exec-lib.sh](../../../scripts/vm-guest-exec-lib.sh) is source-only.
-Sourcing it starts no process or VM. Its two functions delegate structured
+Sourcing it starts no process or VM. Its exec entry points delegate structured
 recording to [vm-guest-exec.py](../../../scripts/vm-guest-exec.py):
 
 ```sh

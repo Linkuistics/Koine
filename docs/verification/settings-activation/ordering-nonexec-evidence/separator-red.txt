@@ -1,0 +1,4 @@
+1..1
+not ok 1 nonexec endpoint overrides and alternate exec routes refuse before dispatch
+# (in test file Tests/scripts/vm-guest-exec.bats, line 142)
+#   `[[ "${status}" == 125 && -s "${exec_root}-${n}/unavailable" ]]' failed

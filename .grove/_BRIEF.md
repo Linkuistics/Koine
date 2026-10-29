@@ -1,5 +1,15 @@
 # Koine menu-bar VM reliability — brief
 
+## Shared evidence expansion boundary
+
+K56 decomposes into the shared non-exec evidence interface k60, complete scenario
+migration k61 and exact focused-prefix verification k62. K60 extends the common
+lock/ordinal domain but ordinary callers remain legacy. Read
+docs/verification/settings-activation/ORDERING-NONEXEC-RESULTS.md for the interface,
+controls and limits. Its independent review/every earned integration precede
+migration; whole-harness review still precedes runtime. K57 and k54 remain held.
+No VM, signed subject, native acceptance or ancestor closure follows.
+
 ## Strict exec evidence boundary
 
 K53 decomposes into strict exec evidence k55, shared scenario migration k56 and

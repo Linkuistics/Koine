@@ -1,0 +1,47 @@
+1..8
+not ok 1 nonexec attempts share exec ordinals and retain exact raw JSON
+# (in test file Tests/scripts/vm-guest-exec.bats, line 34)
+#   `check_guest_evidence "${exec_root}"' failed with status 127
+# /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/vm-guest-exec.bats: line 34: check_guest_evidence: command not found
+not ok 2 nonexec failure blocks exec and input while collection preserves the first latch
+# (in test file Tests/scripts/vm-guest-exec.bats, line 51)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 3 failed downstream confirmation is ordinal evidence and cannot restore input
+# (in test file Tests/scripts/vm-guest-exec.bats, line 73)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 4 nonexec rejects malformed success dry-run failed CLI and incomplete command payloads
+# (in test file Tests/scripts/vm-guest-exec.bats, line 100)
+#   `[[ "${status}" == 125 && -s "${exec_root}/unavailable" ]]' failed
+not ok 5 exec latch and incomplete receipts gate nonexec without dispatch
+# (in test file Tests/scripts/vm-guest-exec.bats, line 124)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 6 nonexec endpoint overrides and alternate exec routes refuse before dispatch
+# (in test file Tests/scripts/vm-guest-exec.bats, line 142)
+#   `[[ "${status}" == 125 && -s "${exec_root}-${n}/unavailable" ]]' failed
+not ok 7 lifecycle evidence binds the pinned identity and never accepts a different stop
+# (in test file Tests/scripts/vm-guest-exec.bats, line 152)
+#   `cli_guest_evidence "${exec_root}" evidence stop '.id == "exact-vm" and .stopped == true' -- vm stop exact-vm >/dev/null' failed with status 127
+# /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/vm-guest-exec.bats: line 152: cli_guest_evidence: command not found
+not ok 8 nonexec orphan and gate confirmation exec callers share one writer lock
+# (in test file Tests/scripts/vm-guest-exec.bats, line 201)
+#   `[[ "${status}" == 0 ]]' failed
+# Traceback (most recent call last):
+#   File "<stdin>", line 20, in <module>
+# AssertionError: CLI did not start
+
+The following warnings were encountered during tests:
+BW01: `run`'s command `cli_guest_evidence /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-zzip5a/test/2/evidence read-poll windows true -- agent windows` exited with code 127, indicating 'Command not found'. Use run's return code checks, e.g. `run -127`, to fix this message.
+      (from function `run' in file /opt/homebrew/Cellar/bats-core/1.14.0/lib/bats-core/test_functions.bash, line 442,
+       in test file Tests/scripts/vm-guest-exec.bats, line 50)
+BW01: `run`'s command `fail_guest_evidence /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-zzip5a/test/3/evidence launch-identity wrong executable identity` exited with code 127, indicating 'Command not found'. Use run's return code checks, e.g. `run -127`, to fix this message.
+      (from function `run' in file /opt/homebrew/Cellar/bats-core/1.14.0/lib/bats-core/test_functions.bash, line 442,
+       in test file Tests/scripts/vm-guest-exec.bats, line 72)
+BW01: `run`'s command `cli_guest_evidence /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-zzip5a/test/4/case-1 one-shot click .x == 10 -- input click 10 20` exited with code 127, indicating 'Command not found'. Use run's return code checks, e.g. `run -127`, to fix this message.
+      (from function `run' in file /opt/homebrew/Cellar/bats-core/1.14.0/lib/bats-core/test_functions.bash, line 442,
+       in test file Tests/scripts/vm-guest-exec.bats, line 99)
+BW01: `run`'s command `cli_guest_evidence /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-zzip5a/test/5/evidence one-shot click true -- input click 10 20` exited with code 127, indicating 'Command not found'. Use run's return code checks, e.g. `run -127`, to fix this message.
+      (from function `run' in file /opt/homebrew/Cellar/bats-core/1.14.0/lib/bats-core/test_functions.bash, line 442,
+       in test file Tests/scripts/vm-guest-exec.bats, line 123)
+BW01: `run`'s command `cli_guest_evidence /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-zzip5a/test/6/evidence-1 one-shot click true -- input click 10 20 --connect` exited with code 127, indicating 'Command not found'. Use run's return code checks, e.g. `run -127`, to fix this message.
+      (from function `run' in file /opt/homebrew/Cellar/bats-core/1.14.0/lib/bats-core/test_functions.bash, line 442,
+       in test file Tests/scripts/vm-guest-exec.bats, line 141)

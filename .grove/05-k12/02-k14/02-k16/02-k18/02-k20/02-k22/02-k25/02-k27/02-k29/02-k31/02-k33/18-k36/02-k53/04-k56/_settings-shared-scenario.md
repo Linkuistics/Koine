@@ -1,4 +1,4 @@
-# settings-shared-scenario-k56
+# settings-shared-scenario-k56 — brief
 
 ## Goal
 Migrate the complete ordinary scenario and every consumed helper to the reviewed
@@ -40,3 +40,29 @@ and actual command payload schemas; do not infer missing fields as negative stat
 ## Notes
 No VM or signed/frozen candidate. Finite caller remains k57; k54 readiness/runtime
 stays held. Preserve all original parent duties and historical evidence.
+
+## Decomposition
+
+Expand the evidence interface first (k60), then migrate the complete scenario
+and every consumed helper (k61), then extract and byte-check the focused prefix
+and reconcile the whole scenario's duties (k62). Each later child inherits the
+entire Done when above; splitting does not waive later ordinary assertions,
+signals, confirmations, setup, title, liveness or transport coverage. Every
+earned review and integration precedes consumption/runtime; k57 and k54 stay held.
+
+K60's interface increment is documented in
+docs/verification/settings-activation/ORDERING-NONEXEC-RESULTS.md, with fresh
+headless evidence under ordering-nonexec-evidence. Its independent review and
+every earned integration precede k61. The complete scenario remains unmigrated;
+whole-harness review remains required after the final scenario/caller artifacts.
+No adapter check closes this node's original acceptance criteria.
+
+## Decisions (running log)
+
+- 2026-10-29: Graph startup refuses before project/generation discovery. Use
+  bounded direct source reads without disturbing other CBM sessions.
+- 2026-10-29: The reviewed H-1 interface gap is independently verifiable before
+  caller migration. Decompose at expand, complete migration and exact-prefix
+  verification boundaries; execute only the first child this session. Keep the
+  reviewed ordering protocol and its accepted scope; no new human design choice
+  or runtime authorization is needed for this implementation increment.

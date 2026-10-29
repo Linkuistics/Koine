@@ -1,0 +1,7 @@
+1..1
+not ok 1 nonexec orphan and gate confirmation exec callers share one writer lock
+# (in test file .build/ordering-nonexec-controls/unlocked/Tests/scripts/vm-guest-exec.bats, line 239)
+#   `[[ "${status}" == 0 ]]' failed
+# Traceback (most recent call last):
+#   File "<stdin>", line 27, in <module>
+# AssertionError: (['run', '/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-kuVPoN/test/1/evidence', 'evidence', 'context', 'probe', 'true'], 0)

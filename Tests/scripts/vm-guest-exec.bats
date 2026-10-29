@@ -29,6 +29,216 @@ SH
     printf '%s\n' '{"schema_version":"1.0","command":"probe","ok":true,"exit_code":0,"timed_out":false,"stdout":"READY\n","stderr":"guest diagnostic\n"}' >"${exec_reply}"
 }
 
+@test "nonexec attempts share exec ordinals and retain exact raw JSON" {
+    init_guest_evidence "${exec_root}" exact-vm
+    check_guest_evidence "${exec_root}"
+    exec_guest_evidence "${exec_root}" read-poll before probe true >/dev/null
+    printf '%s\n' '{"schema_version":"1.0","ok":true,"x":10,"y":20}' >"${exec_reply}"
+    run cli_guest_evidence "${exec_root}" one-shot row-click '.x == 10 and .y == 20' -- input click 10 20
+    [[ "${status}" == 0 ]]
+    cmp "${exec_reply}" "${exec_root}/000002/raw.stdout"
+    cmp "${exec_stderr}" "${exec_root}/000002/raw.stderr"
+    jq -e '.ordinal == 2 and .transport == "cli" and .vm == "exact-vm" and .argv == ["testanyware","input","click","10","20","--vm","exact-vm","--json"]' "${exec_root}/000002/request.json"
+    jq -e '.outcome == "clean" and .cli_status == 0 and .emission_status == "flushed"' "${exec_root}/000002/result.json"
+    check_guest_evidence "${exec_root}"
+    [[ ! -e "${exec_root}/000003" ]]
+}
+
+@test "nonexec failure blocks exec and input while collection preserves the first latch" {
+    init_guest_evidence "${exec_root}" exact-vm
+    export exec_status=7
+    run cli_guest_evidence "${exec_root}" read-poll windows true -- agent windows
+    [[ "${status}" == 125 ]]
+    local first
+    first="$(cat "${exec_root}/unavailable")"
+    run check_guest_evidence "${exec_root}"
+    [[ "${status}" == 125 ]]
+    run exec_guest_evidence "${exec_root}" one-shot launch probe true
+    [[ "${status}" == 125 ]]
+    run cli_guest_evidence "${exec_root}" one-shot click true -- input click 10 20
+    [[ "${status}" == 125 ]]
+    [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 1 ]]
+    export exec_status=0
+    run cli_guest_evidence "${exec_root}" evidence failure-windows '.stdout == "READY\n"' -- agent windows
+    [[ "${status}" == 0 ]]
+    [[ "$(cat "${exec_root}/unavailable")" == "${first}" ]]
+    run check_guest_evidence "${exec_root}"
+    [[ "${status}" == 125 ]]
+}
+
+@test "failed downstream confirmation is ordinal evidence and cannot restore input" {
+    init_guest_evidence "${exec_root}" exact-vm
+    exec_guest_evidence "${exec_root}" one-shot launch probe true >/dev/null
+    run fail_guest_evidence "${exec_root}" launch-identity 'wrong executable identity'
+    [[ "${status}" == 125 ]]
+    jq -e '.ordinal == 2 and .transport == "confirmation" and .operation == "launch-identity" and .reason == "wrong executable identity" and .argv == []' "${exec_root}/000002/request.json"
+    jq -e '.outcome == "unavailable" and .cli_status == null and .emission_status == "not-attempted"' "${exec_root}/000002/result.json"
+    run cli_guest_evidence "${exec_root}" one-shot click true -- input click 10 20
+    [[ "${status}" == 125 ]]
+    run fail_guest_evidence "${exec_root}" capture-artifact 'missing image'
+    [[ "${status}" == 125 && -f "${exec_root}/000003/result.json" ]]
+    [[ "$(cat "${exec_root}/unavailable")" == '000002: wrong executable identity' ]]
+    [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 1 ]]
+}
+
+@test "nonexec rejects malformed success dry-run failed CLI and incomplete command payloads" {
+    local n=0 reply
+    for reply in '' '{"ok":true' '{"schema_version":"1.0","ok":true,"ok":false}' \
+        '{"schema_version":"1.0","ok":true,"x":NaN}' \
+        '{"schema_version":"1.0","ok":true}{}' \
+        '{"schema_version":"1.0"}' '{"ok":true}' \
+        '{"schema_version":"1.0","ok":"true"}' \
+        '{"schema_version":"1.0","ok":false,"x":10}' \
+        '{"schema_version":"1.0","ok":true,"dry_run":false,"x":10}' \
+        '{"schema_version":"1.0","ok":true,"x":20}' \
+        '{"schema_version":"1.0","ok":true}'; do
+        n=$((n + 1))
+        exec_root="${BATS_TEST_TMPDIR}/case-${n}"
+        init_guest_evidence "${exec_root}" exact-vm
+        printf '%s' "${reply}" >"${exec_reply}"
+        run cli_guest_evidence "${exec_root}" one-shot click '.x == 10' -- input click 10 20
+        [[ "${status}" == 125 && -s "${exec_root}/unavailable" ]]
+        cmp "${exec_reply}" "${exec_root}/000001/raw.stdout"
+    done
+    for predicate in halt empty true,false null 'invalid syntax'; do
+        n=$((n + 1))
+        exec_root="${BATS_TEST_TMPDIR}/case-${n}"
+        init_guest_evidence "${exec_root}" exact-vm
+        printf '%s' '{"schema_version":"1.0","ok":true,"x":10}' >"${exec_reply}"
+        run cli_guest_evidence "${exec_root}" one-shot click "${predicate}" -- input click 10 20
+        [[ "${status}" == 125 ]]
+    done
+    export exec_status=255
+    init_guest_evidence "${BATS_TEST_TMPDIR}/nonzero" exact-vm
+    run cli_guest_evidence "${BATS_TEST_TMPDIR}/nonzero" one-shot click true -- input click 10 20
+    [[ "${status}" == 125 ]]
+    [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 18 ]]
+}
+
+@test "exec latch and incomplete receipts gate nonexec without dispatch" {
+    init_guest_evidence "${exec_root}" exact-vm
+    export exec_status=1
+    run exec_guest_evidence "${exec_root}" read-poll state probe true
+    [[ "${status}" == 125 ]]
+    run cli_guest_evidence "${exec_root}" one-shot click true -- input click 10 20
+    [[ "${status}" == 125 ]]
+    [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 1 ]]
+    init_guest_evidence "${exec_root}-partial" exact-vm
+    mkdir "${exec_root}-partial/000001"
+    printf '{"outcome":' >"${exec_root}-partial/000001/result.json"
+    run check_guest_evidence "${exec_root}-partial"
+    [[ "${status}" == 125 && -s "${exec_root}-partial/unavailable" ]]
+    run cli_guest_evidence "${exec_root}-partial" one-shot click true -- input click 10 20
+    [[ "${status}" == 125 ]]
+    [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 1 ]]
+}
+
+@test "nonexec endpoint overrides and alternate exec routes refuse before dispatch" {
+    local n=0
+    for argument in --connect --connect=other --vm --vm=other --agent=other --vnc=other --platform=linux --json --dry-run --; do
+        n=$((n + 1))
+        init_guest_evidence "${exec_root}-${n}" exact-vm
+        run cli_guest_evidence "${exec_root}-${n}" one-shot click true -- input click 10 20 "${argument}"
+        [[ "${status}" == 125 && -s "${exec_root}-${n}/unavailable" ]]
+    done
+    init_guest_evidence "${exec_root}" exact-vm
+    run cli_guest_evidence "${exec_root}" one-shot launch true -- file exec probe
+    [[ "${status}" == 125 && ! -e "${exec_calls}" ]]
+}
+
+@test "nonexec start list upload capture and input retain explicit call payloads" {
+    init_guest_evidence "${exec_root}" exact-vm
+    printf '%s\n' '{"schema_version":"1.0","ok":true,"id":"exact-vm"}' >"${exec_reply}"
+    cli_guest_evidence "${exec_root}" one-shot start '.id == "exact-vm"' -- vm start --platform macos --wait >/dev/null
+    jq -e '.argv == ["testanyware","vm","start","--platform","macos","--wait","--id","exact-vm","--json"]' "${exec_root}/000001/request.json"
+    printf '%s\n' '{"schema_version":"1.0","ok":true,"vms":[]}' >"${exec_reply}"
+    cli_guest_evidence "${exec_root}" evidence stopped '.vms == []' -- vm list --all >/dev/null
+    jq -e '.argv == ["testanyware","vm","list","--all","--json"]' "${exec_root}/000002/request.json"
+    printf '%s\n' '{"schema_version":"1.0","ok":true,"marker":"complete"}' >"${exec_reply}"
+    cli_guest_evidence "${exec_root}" one-shot upload '.marker == "complete"' -- file upload 'local file' '/tmp/guest file' >/dev/null
+    cli_guest_evidence "${exec_root}" evidence capture '.marker == "complete"' -- screen capture -o 'local image' >"${BATS_TEST_TMPDIR}/received"
+    cmp "${exec_reply}" "${BATS_TEST_TMPDIR}/received"
+    jq -e '.argv == ["testanyware","file","upload","local file","/tmp/guest file","--vm","exact-vm","--json"]' "${exec_root}/000003/request.json"
+    jq -e '.argv == ["testanyware","screen","capture","-o","local image","--vm","exact-vm","--json"]' "${exec_root}/000004/request.json"
+    check_guest_evidence "${exec_root}"
+    [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 4 ]]
+}
+
+@test "nonexec invalid invocations and missing backends latch before later input" {
+    local n=0 args
+    for args in check fail cli; do
+        n=$((n + 1))
+        init_guest_evidence "${exec_root}-${n}" exact-vm
+        run python3 "${BATS_TEST_DIRNAME}/../../scripts/vm-guest-exec.py" "${args}" "${exec_root}-${n}" extra
+        [[ "${status}" == 2 && -s "${exec_root}-${n}/unavailable" ]]
+        run cli_guest_evidence "${exec_root}-${n}" one-shot click true -- input click 10 20
+        [[ "${status}" == 125 && ! -e "${exec_calls}" ]]
+    done
+    local facade="${BATS_TEST_TMPDIR}/facade/vm-guest-exec-lib.sh"
+    mkdir "${facade%/*}"
+    cp "${BATS_TEST_DIRNAME}/../../scripts/vm-guest-exec-lib.sh" "${facade}"
+    init_guest_evidence "${exec_root}" exact-vm
+    run bash -c 'source "$1"; cli_guest_evidence "$2" one-shot click true -- input click 10 20' _ "${facade}" "${exec_root}"
+    [[ "${status}" != 0 && -s "${exec_root}/unavailable" ]]
+    run exec_guest_evidence "${exec_root}" one-shot launch probe true
+    [[ "${status}" == 125 && ! -e "${exec_calls}" ]]
+}
+
+@test "lifecycle evidence binds the pinned identity and never accepts a different stop" {
+    init_guest_evidence "${exec_root}" exact-vm
+    printf '%s\n' '{"schema_version":"1.0","ok":true,"id":"exact-vm","stopped":true}' >"${exec_reply}"
+    cli_guest_evidence "${exec_root}" evidence stop '.id == "exact-vm" and .stopped == true' -- vm stop exact-vm >/dev/null
+    jq -e '.argv == ["testanyware","vm","stop","exact-vm","--json"]' "${exec_root}/000001/request.json"
+    run cli_guest_evidence "${exec_root}" evidence wrong-stop true -- vm stop other-vm
+    [[ "${status}" == 125 ]]
+    [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 1 ]]
+}
+
+@test "nonexec orphan and gate confirmation exec callers share one writer lock" {
+    run python3 - "${BATS_TEST_DIRNAME}/../../scripts/vm-guest-exec.py" "${exec_root}" <<'PY'
+import os
+import signal
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+backend, root = sys.argv[1], Path(sys.argv[2])
+subprocess.run([sys.executable, backend, 'init', str(root), 'exact-vm'], check=True)
+started, calls = Path(os.environ['exec_started']), Path(os.environ['exec_calls'])
+release = root / 'release'
+process = subprocess.Popen([sys.executable, backend, 'cli', str(root), 'evidence',
+                            'windows', 'true', '--', 'agent', 'windows'],
+                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                           env=dict(os.environ, exec_release=str(release)))
+try:
+    for _ in range(250):
+        if started.exists(): break
+        time.sleep(.02)
+    assert started.exists(), 'CLI did not start'
+    process.send_signal(signal.SIGTERM)
+    assert process.wait(timeout=5) == -signal.SIGTERM
+    for args in (['check', str(root)], ['fail', str(root), 'confirmation', 'failed'],
+                 ['run', str(root), 'evidence', 'context', 'probe', 'true'],
+                 ['cli', str(root), 'evidence', 'context', 'true', '--', 'agent', 'windows']):
+        result = subprocess.run([sys.executable, backend, *args], capture_output=True)
+        assert result.returncode == 125, (args, result.returncode)
+    assert calls.read_text().count('\n') == 1
+    assert (root / 'unavailable').read_text().strip() == 'competing evidence writer'
+    assert not (root / '000002').exists()
+finally:
+    release.touch()
+    if process.poll() is None:
+        process.kill()
+        process.wait(timeout=5)
+    for _ in range(250):
+        if Path(str(started) + '.done').exists(): break
+        time.sleep(.02)
+PY
+    printf '%s\n' "${output}"
+    [[ "${status}" == 0 ]]
+}
+
 change_reply() {
     jq "$1" "${exec_reply}" >"${exec_reply}.new"
     mv "${exec_reply}.new" "${exec_reply}"
@@ -404,6 +614,51 @@ try:
     receipt = json.loads((root / '000001/result.json').read_text())
     assert receipt['outcome'] == 'interrupted', receipt
     assert (root / 'unavailable').exists()
+finally:
+    release.touch()
+    if process.poll() is None:
+        process.kill()
+        process.wait(timeout=5)
+PY
+    printf '%s\n' "${output}"
+    [[ "${status}" == 0 ]]
+}
+
+@test "nonexec caught SIGINT retains partial streams and a distinct signal outcome" {
+    init_guest_evidence "${exec_root}" exact-vm
+    run python3 - "${BATS_TEST_DIRNAME}/../../scripts/vm-guest-exec.py" "${exec_root}" <<'PY'
+import json
+import os
+import signal
+import subprocess
+import sys
+import time
+from pathlib import Path
+
+signal.signal(signal.SIGINT, signal.SIG_DFL)
+backend, root = sys.argv[1], Path(sys.argv[2])
+started = Path(os.environ['exec_started'])
+release = root / 'release'
+process = subprocess.Popen([sys.executable, backend, 'cli', str(root),
+                            'one-shot', 'click', 'true', '--', 'input', 'click', '10', '20'],
+                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                           env=dict(os.environ, exec_release=str(release)))
+try:
+    for _ in range(250):
+        if started.exists(): break
+        time.sleep(.02)
+    assert started.exists(), 'CLI did not start'
+    process.send_signal(signal.SIGINT)
+    assert process.wait(timeout=5) == -signal.SIGINT
+    receipt = json.loads((root / '000001/result.json').read_text())
+    assert receipt['outcome'] == 'interrupted', receipt
+    assert receipt['emission_status'] == 'not-attempted', receipt
+    assert (root / 'unavailable').exists()
+    assert (root / '000001/raw.stdout').exists()
+    later = subprocess.run([sys.executable, backend, 'cli', str(root), 'one-shot',
+                            'click', 'true', '--', 'input', 'click', '10', '20'], capture_output=True)
+    assert later.returncode == 125
+    assert Path(os.environ['exec_calls']).read_text().count('\n') == 1
 finally:
     release.touch()
     if process.poll() is None:

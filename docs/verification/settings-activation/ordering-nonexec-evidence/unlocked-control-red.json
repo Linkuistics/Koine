@@ -1,0 +1,26 @@
+{
+  "started": "2026-10-29T05:29:11.875862+00:00",
+  "command": [
+    "mise",
+    "exec",
+    "--",
+    "bats",
+    "--filter",
+    "nonexec orphan",
+    ".build/ordering-nonexec-controls/unlocked/Tests/scripts/vm-guest-exec.bats"
+  ],
+  "subjects_before": {
+    ".build/ordering-nonexec-controls/unlocked/Tests/scripts/vm-guest-exec.bats": "05a004f172fa7f07baa6017998fc13167ba99a75d706318b6af7e0f1fd9d0908",
+    ".build/ordering-nonexec-controls/unlocked/scripts/vm-guest-exec-lib.sh": "ce1b05ca6b92a582970f5db71d9b8c5a322059d2e883b96732fa18eaf601402f",
+    ".build/ordering-nonexec-controls/unlocked/scripts/vm-guest-exec.py": "a322ecb2cbf7088098a244ad40edf54dafc9b9099a9dfc7f68eb2df1668437f9"
+  },
+  "exit": 1,
+  "subjects_after": {
+    ".build/ordering-nonexec-controls/unlocked/Tests/scripts/vm-guest-exec.bats": "05a004f172fa7f07baa6017998fc13167ba99a75d706318b6af7e0f1fd9d0908",
+    ".build/ordering-nonexec-controls/unlocked/scripts/vm-guest-exec-lib.sh": "ce1b05ca6b92a582970f5db71d9b8c5a322059d2e883b96732fa18eaf601402f",
+    ".build/ordering-nonexec-controls/unlocked/scripts/vm-guest-exec.py": "a322ecb2cbf7088098a244ad40edf54dafc9b9099a9dfc7f68eb2df1668437f9"
+  },
+  "ended": "2026-10-29T05:29:12.392807+00:00",
+  "subjects_unchanged": true,
+  "output_sha256": "d673966a33b0ed12959409f270e3353c56a50a3116cb991a0901b07ad986fcde"
+}

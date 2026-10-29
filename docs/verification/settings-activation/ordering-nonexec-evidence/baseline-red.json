@@ -1,0 +1,27 @@
+{
+  "started": "2026-10-29T05:24:18.043981+00:00",
+  "command": [
+    "mise",
+    "exec",
+    "--",
+    "bats",
+    "--filter",
+    "nonexec|downstream confirmation|lifecycle evidence",
+    "Tests/scripts/vm-guest-exec.bats"
+  ],
+  "subjects_before": {
+    "scripts/vm-guest-exec.py": "9aaaa3f589fded83b3542b616a7d5732abac765ebde62bd7eb98d091f27efdf5",
+    "scripts/vm-guest-exec-lib.sh": "a8c3d08e09ea863fd86cc5bfd910ea5725af1e3e20f99ea495ef6332cc271877",
+    "Tests/scripts/vm-guest-exec.bats": "f74ee2f20d3f7217fea7d3b952084ed4245f8907a5dfe7d14a9f274f9eaac5a2",
+    "Taskfile.yml": "acb201fe402d7e8629f8418bd916ca5f78a408ccd47c89f0a1635fe5aab45b0d"
+  },
+  "exit": 1,
+  "subjects_after": {
+    "scripts/vm-guest-exec.py": "9aaaa3f589fded83b3542b616a7d5732abac765ebde62bd7eb98d091f27efdf5",
+    "scripts/vm-guest-exec-lib.sh": "a8c3d08e09ea863fd86cc5bfd910ea5725af1e3e20f99ea495ef6332cc271877",
+    "Tests/scripts/vm-guest-exec.bats": "f74ee2f20d3f7217fea7d3b952084ed4245f8907a5dfe7d14a9f274f9eaac5a2",
+    "Taskfile.yml": "acb201fe402d7e8629f8418bd916ca5f78a408ccd47c89f0a1635fe5aab45b0d"
+  },
+  "ended": "2026-10-29T05:24:32.757275+00:00",
+  "subjects_unchanged": true
+}

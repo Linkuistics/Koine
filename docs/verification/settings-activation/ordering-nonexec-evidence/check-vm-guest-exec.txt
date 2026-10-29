@@ -1,0 +1,44 @@
+task: [check:vm-guest-exec] bash -n scripts/vm-guest-exec-lib.sh
+task: [check:vm-guest-exec] shellcheck -x scripts/vm-guest-exec-lib.sh Tests/scripts/vm-guest-exec.bats
+task: [check:vm-guest-exec] shfmt -d -i 4 scripts/vm-guest-exec-lib.sh Tests/scripts/vm-guest-exec.bats
+task: [check:vm-guest-exec] python3 -m py_compile scripts/vm-guest-exec.py
+task: [check:vm-guest-exec] uvx ruff@0.17.3 check scripts/vm-guest-exec.py
+All checks passed!
+task: [check:vm-guest-exec] uvx ruff@0.17.3 format --check scripts/vm-guest-exec.py
+1 file already formatted
+task: [check:vm-guest-exec] uvx pyright@1.1.414 scripts/vm-guest-exec.py
+0 errors, 0 warnings, 0 informations
+task: [check:vm-guest-exec] bats Tests/scripts/vm-guest-exec.bats
+1..32
+ok 1 nonexec attempts share exec ordinals and retain exact raw JSON
+ok 2 nonexec failure blocks exec and input while collection preserves the first latch
+ok 3 failed downstream confirmation is ordinal evidence and cannot restore input
+ok 4 nonexec rejects malformed success dry-run failed CLI and incomplete command payloads
+ok 5 exec latch and incomplete receipts gate nonexec without dispatch
+ok 6 nonexec endpoint overrides and alternate exec routes refuse before dispatch
+ok 7 nonexec start list upload capture and input retain explicit call payloads
+ok 8 nonexec invalid invocations and missing backends latch before later input
+ok 9 lifecycle evidence binds the pinned identity and never accepts a different stop
+ok 10 nonexec orphan and gate confirmation exec callers share one writer lock
+ok 11 clean exec retains exact bytes, command, VM, status and ordered receipts
+ok 12 initialization refuses reuse without touching existing evidence
+ok 13 missing and wrongly typed envelope fields cannot qualify matching text
+ok 14 partial malformed duplicate and multiple JSON responses stay unavailable
+ok 15 nonzero CLI status never qualifies a clean envelope and never retries
+ok 16 timeout with matching real retained output cannot qualify
+ok 17 missing command completion marker and invalid predicates latch unavailable
+ok 18 competing writers latch unavailable before a second transport can dispatch
+ok 19 clean negative polling permits the next existing poll without a hidden retry
+ok 20 failed poll latches across command substitution and prevents all later scenario dispatch
+ok 21 disconnect followed by changed boot in collection stays unavailable and cannot relaunch
+ok 22 unfinished prior attempt blocks scenario input but allows evidence collection
+ok 23 unknown class and missing initialized subject never dispatch
+ok 24 argument failures latch initialized roots even when the status is ignored
+ok 25 direct backend argument failures latch without the shell facade
+ok 26 missing backend and unexpected backend exit leave a persistent facade latch
+ok 27 broken stdout delivery cannot publish a clean terminal receipt
+ok 28 partial or unknown terminal receipts block later scenario dispatch
+ok 29 interrupted receipt publication leaves only a partial file
+ok 30 killed adapter leaves its CLI holding the writer lock until completion
+ok 31 caught SIGINT records interruption and preserves the signal exit
+ok 32 nonexec caught SIGINT retains partial streams and a distinct signal outcome

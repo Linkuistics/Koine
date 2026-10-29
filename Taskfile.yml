@@ -1460,7 +1460,7 @@ tasks:
       - bats Tests/scripts/vm-menu-pointer.bats
 
   check:vm-guest-exec:
-    desc: Check strict single-attempt guest exec evidence without a VM; ordinary scenario migration remains separate
+    desc: Check shared single-attempt exec/non-exec evidence, eligibility and confirmation failures without a VM; scenario migration remains separate
     cmds:
       - bash -n scripts/vm-guest-exec-lib.sh
       - shellcheck -x scripts/vm-guest-exec-lib.sh Tests/scripts/vm-guest-exec.bats

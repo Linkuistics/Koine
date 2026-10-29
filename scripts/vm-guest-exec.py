@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Record one guest exec at the shell helper seam; never retry a transport."""
+"""Record single-attempt exec and CLI evidence in one VM writer domain."""
 
 # pyright: strict
 from __future__ import annotations
@@ -77,14 +77,19 @@ def initialize(root: Path, vm: str) -> int:
 
 
 def validate_response(
-    attempt: Path, command: str, cli_status: int, predicate: str, lock_fd: int
+    attempt: Path,
+    command: str,
+    cli_status: int,
+    predicate: str,
+    lock_fd: int,
+    transport: str = "exec",
 ) -> str:
     try:
         envelope = read_object(attempt / "raw.stdout")
     except (ValueError, UnicodeError) as error:
         return f"invalid exec envelope: {error}"
     # Preserve supplied guest streams even on failure; they are not qualified output.
-    for field in ("stdout", "stderr"):
+    for field in ("stdout", "stderr") if transport == "exec" else ():
         value = envelope.get(field)
         if isinstance(value, str):
             (attempt / f"guest.{field}").write_bytes(value.encode("utf-8"))
@@ -92,16 +97,22 @@ def validate_response(
     # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/commands/file.rs
     if cli_status != 0:
         return f"CLI exit {cli_status}"
+    # Non-exec commands share only this base envelope; callers must validate the
+    # actual command payload, then verify any artifact/downstream consequence.
+    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/output.rs
     if not (
         envelope.get("schema_version") == "1.0"
-        and envelope.get("command") == command
         and envelope.get("ok") is True
+        and "dry_run" not in envelope
+    ):
+        return "missing, invalid or unsuccessful envelope fields"
+    if transport == "exec" and not (
+        envelope.get("command") == command
         and envelope.get("timed_out") is False
         and type(envelope.get("exit_code")) is int
         and envelope["exit_code"] == 0
         and isinstance(envelope.get("stdout"), str)
         and isinstance(envelope.get("stderr"), str)
-        and "dry_run" not in envelope
     ):
         return "missing, invalid or unsuccessful exec fields"
     with (
@@ -125,8 +136,46 @@ def validate_response(
     )
 
 
+def cli_argv(arguments: list[str], vm: str) -> list[str]:
+    if arguments[:1] == ["--"]:
+        arguments = arguments[1:]
+    if "--" in arguments:
+        raise ValueError("embedded option terminator would bypass pinned CLI flags")
+    forbidden = {"--connect", "--vm", "--agent", "--vnc", "--json", "--dry-run", "--id"}
+    if arguments[:2] != ["vm", "start"]:
+        forbidden.add("--platform")
+    if any(arg.split("=", 1)[0] in forbidden for arg in arguments):
+        raise ValueError("caller cannot override VM, output mode or live execution")
+    if len(arguments) < 2:
+        raise ValueError("expected a supported TestAnyware command and subcommand")
+    family, action = arguments[:2]
+    # Lifecycle commands use positional IDs/--id, not ConnectionOptions. Bind
+    # those explicitly; endpoint commands instead receive the pinned --vm.
+    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/main.rs
+    if family == "vm":
+        if action == "start":
+            return ["testanyware", *arguments, "--id", vm, "--json"]
+        if action == "stop" and arguments[2:] == [vm]:
+            return ["testanyware", *arguments, "--json"]
+        if action == "list":
+            return ["testanyware", *arguments, "--json"]
+        raise ValueError("expected pinned vm stop, vm start or vm list")
+    if family not in {"agent", "input", "screen", "file"} or (
+        family == "file" and action not in {"upload", "download"}
+    ):
+        raise ValueError("unsupported non-exec transport; use run for guest exec")
+    return ["testanyware", *arguments, "--vm", vm, "--json"]
+
+
 def run_locked(
-    root: Path, kind: str, operation: str, command: str, predicate: str, lock_fd: int
+    root: Path,
+    kind: str,
+    operation: str,
+    command: str,
+    predicate: str,
+    lock_fd: int,
+    transport: str,
+    arguments: list[str],
 ) -> int:
     subject = read_object(root / "subject.json")
     vm = subject.get("vm")
@@ -148,14 +197,21 @@ def run_locked(
     if (root / "unavailable").exists() and kind != "evidence":
         print("unavailable latch prevents scenario dispatch", file=sys.stderr)
         return UNAVAILABLE
+    if transport == "check":
+        return 0  # Inspection is not a reservation for a later unlocked input.
+    if transport == "cli":
+        argv = cli_argv(arguments, vm)
+    elif transport == "confirmation":
+        argv = []
+    else:
+        # Explicit --vm wins over ambient VM/agent flags. No --connect is admitted.
+        # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/resolve.rs
+        argv = ["testanyware", "file", "exec", "--vm", vm, "--json", "--", command]
     ordinal = int(prior[-1].name) + 1 if prior else 1
     if ordinal > 999999:
         raise ValueError("attempt ordinal exhausted")
     attempt = root / f"{ordinal:06d}"
     attempt.mkdir()
-    # Explicit --vm wins over ambient VM/agent flags. No --connect is admitted.
-    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/resolve.rs
-    argv = ["testanyware", "file", "exec", "--vm", vm, "--json", "--", command]
     started = time.monotonic_ns()
     write_json(
         attempt / "request.json",
@@ -164,7 +220,9 @@ def run_locked(
             "vm": vm,
             "class": kind,
             "operation": operation,
+            "transport": transport,
             "command": command,
+            "reason": command if transport == "confirmation" else "",
             "argv": argv,
             "payload_predicate": predicate,
             "started": timestamp(),
@@ -173,24 +231,31 @@ def run_locked(
     cli_status: int | None = None
     interrupted = False
     emission_status = "not-attempted"
+    reason = command if transport == "confirmation" else ""
     try:
-        with (
-            (attempt / "raw.stdout").open("xb") as output,
-            (attempt / "raw.stderr").open("xb") as errors,
-        ):
-            cli_status = subprocess.run(
-                argv, stdout=output, stderr=errors, check=False, pass_fds=(lock_fd,)
-            ).returncode
-        (attempt / "cli.exit").write_text(f"{cli_status}\n")
-        reason = validate_response(attempt, command, cli_status, predicate, lock_fd)
+        if transport == "confirmation":
+            latch(root, f"{attempt.name}: {reason}")
+        else:
+            with (
+                (attempt / "raw.stdout").open("xb") as output,
+                (attempt / "raw.stderr").open("xb") as errors,
+            ):
+                cli_status = subprocess.run(
+                    argv, stdout=output, stderr=errors, check=False, pass_fds=(lock_fd,)
+                ).returncode
+            (attempt / "cli.exit").write_text(f"{cli_status}\n")
+            reason = validate_response(
+                attempt, command, cli_status, predicate, lock_fd, transport
+            )
     except (OSError, ValueError, UnicodeError) as error:
         reason = str(error)
     except KeyboardInterrupt:
-        reason = "interrupted exec; completion unavailable"
+        reason = "interrupted transport; completion unavailable"
         interrupted = True
     if not reason:
         try:
-            sys.stdout.buffer.write((attempt / "guest.stdout").read_bytes())
+            stream_name = "guest.stdout" if transport == "exec" else "raw.stdout"
+            sys.stdout.buffer.write((attempt / stream_name).read_bytes())
             sys.stdout.buffer.flush()
             emission_status = "flushed"
         except OSError as error:
@@ -224,16 +289,26 @@ def run_locked(
         signal.signal(signal.SIGINT, signal.SIG_DFL)
         signal.raise_signal(signal.SIGINT)
     if reason:
-        print(f"guest exec unavailable ({attempt.name}): {reason}", file=sys.stderr)
+        print(f"guest evidence unavailable ({attempt.name}): {reason}", file=sys.stderr)
         return UNAVAILABLE
     return 0
 
 
-def run(root: Path, kind: str, operation: str, command: str, predicate: str) -> int:
+def run(
+    root: Path,
+    kind: str,
+    operation: str,
+    command: str,
+    predicate: str,
+    transport: str = "exec",
+    arguments: list[str] | None = None,
+) -> int:
     if kind not in {"read-poll", "one-shot", "evidence"}:
         raise ValueError("class must be read-poll, one-shot or evidence")
     if not operation.strip():
         raise ValueError("operation must name this call site")
+    if transport == "confirmation" and not command.strip():
+        raise ValueError("failed confirmation requires a reason")
     # Non-blocking lock covers the whole dispatch, including evidence collection.
     with (root / ".writer").open("a") as lock:
         try:
@@ -243,7 +318,16 @@ def run(root: Path, kind: str, operation: str, command: str, predicate: str) -> 
             return UNAVAILABLE
         # The CLI/validator keep this same lock if the adapter is killed. Do not
         # unlock explicitly: their inherited descriptors share its lifetime.
-        return run_locked(root, kind, operation, command, predicate, lock.fileno())
+        return run_locked(
+            root,
+            kind,
+            operation,
+            command,
+            predicate,
+            lock.fileno(),
+            transport,
+            arguments or [],
+        )
 
 
 def main() -> int:
@@ -252,8 +336,10 @@ def main() -> int:
         epilog=(
             "Internal shell-helper backend. init requires a new directory. "
             "run prints qualified guest stdout only; raw data and JSON receipts stay in ROOT. "
+            "cli prints qualified raw JSON; check inspects eligibility without reserving input; "
+            "fail records a failed confirmation and always returns nonzero. "
             "Exit 0: clean individual attempt (evidence collection does not clear an old latch); "
-            "2: argument error (an identifiable initialized run root is latched); "
+            "2: argument error (an identifiable initialized evidence root is latched); "
             "125: unavailable or invalid run values; SIGINT: interrupted. "
             "Every nonzero status is unavailable; do not retry or reset the root. "
             "Example: init .build/exec-evidence exact-vm; "
@@ -281,18 +367,65 @@ def main() -> int:
     run_parser.add_argument(
         "predicate", help="jq predicate on the complete envelope; exactly true"
     )
+    check_parser = commands.add_parser(
+        "check", help="inspect eligibility; does not reserve input"
+    )
+    check_parser.add_argument("root", type=Path)
+    fail_parser = commands.add_parser(
+        "fail", help="record failed downstream confirmation; always 125"
+    )
+    fail_parser.add_argument("root", type=Path)
+    fail_parser.add_argument("operation")
+    fail_parser.add_argument("reason")
+    cli_parser = commands.add_parser(
+        "cli", help="one non-exec TestAnyware attempt; emits raw JSON"
+    )
+    cli_parser.add_argument("root", type=Path)
+    cli_parser.add_argument("kind", choices=["read-poll", "one-shot", "evidence"])
+    cli_parser.add_argument("operation")
+    cli_parser.add_argument(
+        "predicate", help="required command-specific jq payload predicate"
+    )
+    cli_parser.add_argument(
+        "arguments", nargs=argparse.REMAINDER, help="-- command subcommand args"
+    )
     try:
         args = parser.parse_args()
     except SystemExit as error:
-        if error.code and len(sys.argv) > 2 and sys.argv[1] == "run":
+        if (
+            error.code
+            and len(sys.argv) > 2
+            and sys.argv[1] in {"run", "cli", "check", "fail"}
+        ):
             root = Path(sys.argv[2])
             if (root / "subject.json").is_file():
-                latch(root, "invalid run arguments")
+                latch(root, "invalid evidence arguments")
         raise
     root = cast(Path, args.root)
     try:
         if args.action == "init":
             return initialize(root, cast(str, args.vm))
+        if args.action == "check":
+            return run(root, "read-poll", "eligibility", "", "", "check")
+        if args.action == "fail":
+            return run(
+                root,
+                "evidence",
+                cast(str, args.operation),
+                cast(str, args.reason),
+                "",
+                "confirmation",
+            )
+        if args.action == "cli":
+            return run(
+                root,
+                cast(str, args.kind),
+                cast(str, args.operation),
+                "",
+                cast(str, args.predicate),
+                "cli",
+                cast(list[str], args.arguments),
+            )
         return run(
             root,
             cast(str, args.kind),
@@ -302,7 +435,7 @@ def main() -> int:
         )
     except (OSError, ValueError, UnicodeError) as error:
         print(f"guest evidence: {error}", file=sys.stderr)
-        if args.action == "run" and root.is_dir():
+        if args.action != "init" and root.is_dir():
             latch(root, str(error))
         return UNAVAILABLE
 

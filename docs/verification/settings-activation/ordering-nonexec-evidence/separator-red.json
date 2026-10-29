@@ -1,0 +1,25 @@
+{
+  "started": "2026-10-29T05:27:32.489911+00:00",
+  "command": [
+    "mise",
+    "exec",
+    "--",
+    "bats",
+    "--filter",
+    "endpoint overrides",
+    "Tests/scripts/vm-guest-exec.bats"
+  ],
+  "subjects_before": {
+    "scripts/vm-guest-exec.py": "f9f01f69d9c4750078474e3e67c5a72284048344e20764b19b8ac24d93a66fb9",
+    "scripts/vm-guest-exec-lib.sh": "61c88d5736981f0c3ba620c0eeef66014a4b999df80031e17e003385a80643ee",
+    "Tests/scripts/vm-guest-exec.bats": "05a004f172fa7f07baa6017998fc13167ba99a75d706318b6af7e0f1fd9d0908"
+  },
+  "exit": 1,
+  "subjects_after": {
+    "scripts/vm-guest-exec.py": "f9f01f69d9c4750078474e3e67c5a72284048344e20764b19b8ac24d93a66fb9",
+    "scripts/vm-guest-exec-lib.sh": "61c88d5736981f0c3ba620c0eeef66014a4b999df80031e17e003385a80643ee",
+    "Tests/scripts/vm-guest-exec.bats": "05a004f172fa7f07baa6017998fc13167ba99a75d706318b6af7e0f1fd9d0908"
+  },
+  "ended": "2026-10-29T05:27:33.437399+00:00",
+  "subjects_unchanged": true
+}
