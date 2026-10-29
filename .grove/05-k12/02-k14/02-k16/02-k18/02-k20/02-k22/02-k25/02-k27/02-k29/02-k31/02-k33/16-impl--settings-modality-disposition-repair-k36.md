@@ -1,19 +1,28 @@
 # settings-modality-disposition-repair-k36
 
-## K45 result: no eligible runtime
+## K46 approval: concrete design and review still precede runtime
 
-K45 finds no qualifying correction in the inspected path. Read
-docs/verification/settings-activation/CORRECTION-ASSESSMENT.md and the existing
-spec's Correction assessment and Scope after no candidate sections. K47 review
-and k48 integration are recorded in CORRECTION-REVIEW.md; the bounded finding
-survives. K46's explicit scope resolution remains pending. Historical feasibility
-is instrumented and shared by both orders. The proposed finite convention rejects
-the repair on qualified recurrence and prevents acceptance without required
-evidence; it selects no bound or answer.
-The empirical ordering-design option is only proposed. This leaf stays live and
-held: even a favorable scope answer still needs concrete design, review and
-every earned integration before product changes or guests. No candidate or
-runtime budget is selected. Preserve all duties below; no ancestor closes.
+Antony answers "approve" to design of one empirical activation-before-window-
+ordering evaluation and the finite acceptance convention. Read k46's recorded
+answer and docs/specs/settings-activation-discrimination.md. The documented
+API-use-violation prerequisite is removed for this named hypothesis only; other
+candidates retain k42's test. Native cause and ownership remain unresolved.
+
+K45's bounded no-candidate assessment survives k47 review/k48 integration.
+Historical feasibility is instrumented and shared by both orders, with no
+instrument-free comparison or established reduction in failure risk. K49 must
+now produce the concrete design and insert its review before this leaf. Every
+earned integration also precedes implementation/runtime. This leaf stays live
+and held; approval selects no final candidate, numerical bound or guest.
+
+A qualified recurrence in the declared evaluation or separate ordinary acceptance
+rejects reversal as the repair. Failed/missing required evidence prevents
+acceptance without automatically proving product failure. Every required ordinary
+assertion must pass; a complete pass supports only that sample, not an API
+violation, mechanism, ownership or general reliability. The later reviewed design
+fixes the distinct finite protocols and their qualification/stop/outcome rules.
+No closed cap or held causal slot supplies a budget. Preserve all other duties
+below; no ancestor closes from this agreement.
 
 ## K42 accepted scope and execution boundary
 
@@ -24,23 +33,24 @@ and positive failed disposition/responsible context are amended as prerequisites
 to the permitted behavioral-repair design/evaluation. They remain unmet evidence;
 native cause and ownership remain unresolved.
 
-Settings-activation-correction-k45 must first justify one concrete single-request
-correction and insert its review before this leaf. Every earned integration also
-precedes implementation or runtime. The scope agreement selects no candidate or
-guest. If the design finds no candidate, this leaf stays live and held pending
-the resulting explicit scope resolution; it must not invent a workaround.
+K45 completed the no-candidate assessment. K46's accepted named exception above
+now governs k49's concrete single-request design. Review and every earned
+integration precede implementation/runtime. If that design cannot meet the
+accepted constraints, retain the unresolved decision; do not invent a workaround.
 
 ## Goal
 Implement a justified, independently reviewed Settings correction under the
 accepted scope and qualify complete ordinary operation. Preserve all original
-duties except the explicitly amended native-causal prerequisites.
+duties except the explicitly amended native-causal prerequisites and named
+candidate-justification exception.
 
 ## Context
 The recorded failure establishes a delivered callback and unsuccessful activation,
-not its native cause. The accepted contract requires a concrete, evidenced
-API-use mismatch or omission, proven preconditions for the proposed correction,
-and explicit discretionary OS limits. A different public API is eligible only
-under that same test. No candidate has yet met it.
+not its native cause. The accepted contract permits one empirical ordering
+evaluation without a documented API-use violation. Preconditions, effects and
+discretionary OS limits must still be established in its design. Other candidates,
+including a different public API, retain the concrete API-use mismatch/omission
+test. No final candidate or numerical bound is selected by the scope answer.
 
 The k34/k38 recorder/protocol and k35/k37/k40/k41/k39/k43/k44 reviews and
 integrations establish instrument and design boundaries only. Read CAUSAL-RESULTS,
@@ -50,10 +60,11 @@ The implemented narrow probe has no supported two-sided causal interpretation.
 Its two route/four modality slots remain held, unchanged and unstarted.
 
 ## Done when
-- Consume k45's concrete justification and completed independent review/every
-  earned integration. Establish that the selected correction satisfies the
-  accepted candidate test before changing product behavior. Preserve one Settings
-  selection returning one front/focused window with one activation request.
+- Consume k49's concrete design and completed independent review/every earned
+  integration. Establish that the selected correction satisfies the accepted
+  named empirical scope and outcome rules before changing product behavior.
+  Preserve one Settings selection returning one front/focused window with one
+  activation request.
   Application repetition, driver waits/retries/repeated input, menu-close or
   later-run-loop deferral and speculative yielding remain excluded.
 - Demonstrate a useful focused failing product seam where feasible before
@@ -78,6 +89,13 @@ Its two route/four modality slots remain held, unchanged and unstarted.
   every outcome. Address diagnostic timing explicitly. Focused or diagnostic
   wrapper success does not supply ordinary acceptance, and no reliability claim
   exceeds the declared sample.
+- Apply the approved convention across evaluation and ordinary acceptance: one
+  qualified recurrence rejects reversal as the repair. Missing/failed required
+  evidence prevents acceptance, without automatically proving product failure;
+  any other required ordinary assertion failing also prevents acceptance. Every
+  required observation and assertion must pass. At the fixed bounds, report only
+  the finite result and follow the reviewed stop rules without replacement or
+  extension. The standard is a convention, not a supported rate/trial model.
 - Report native cause/ownership as unresolved unless new positive evidence
   independently establishes them. A behavioral correction or green sample does
   not satisfy the amended causal criteria. If external ownership is established,

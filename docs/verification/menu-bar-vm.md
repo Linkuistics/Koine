@@ -3,25 +3,34 @@
 The [Settings correction assessment](settings-activation/CORRECTION-ASSESSMENT.md)
 finds no qualifying API-use correction in the inspected path. That bounded finding
 survives [review and integration](settings-activation/CORRECTION-REVIEW.md).
-The [pending scope choice](../specs/settings-activation-discrimination.md#scope-after-no-candidate)
-still precedes product work. Both orders previously succeeded with file tracing;
-the proposed finite acceptance bound is a convention, with qualified recurrence
-rejecting the repair and unavailable required evidence preventing acceptance.
-No product change or guest ran; the repair
-remains unresolved and implementation/runtime remain held.
+The [empirical design scope](../specs/settings-activation-discrimination.md#scope-after-no-candidate)
+was approved on 2026-10-29: Antony answered "approve" to design of one activation-
+before-window-ordering evaluation without a documented API-use violation and its
+finite acceptance convention. Both orders previously succeeded with file tracing;
+the reversal also moved those writes. There is no instrument-free comparison or
+established reduction in failure risk.
+
+A qualified recurrence in evaluation or separate ordinary acceptance rejects the
+repair. Unavailable required evidence prevents acceptance without automatically
+proving product failure, and every ordinary assertion must pass. A passing bound
+supports only that finite sample. Concrete design, independent review and every
+earned integration precede implementation/runtime. No numerical bound, final
+candidate, product change or guest belongs to this scope decision; repair, native
+cause and ownership remain unresolved.
 
 The [accepted Settings repair scope](../specs/settings-activation-discrimination.md#scope-decision-for-antony)
 permits separately justified design of a single-request correction without prior
 native causal proof. Antony agreed on 2026-10-28. Native cause and ownership remain
-unresolved, and no candidate or repair is established. The correction must meet
-the concrete API-use justification test and preserve the repetition, driver-wait/
-retry, deferral and speculative-yield exclusions. Design review and every earned
+unresolved, and no final candidate or repair is established. Outside the named
+empirical ordering exception, a correction must meet the API-use justification
+test. Repetition, driver waits/retries/repeated input, deferral and speculative
+yield remain excluded. Design review and every earned
 integration precede implementation or runtime. Separate frozen complete ordinary
 acceptance remains required with diagnostics disabled and all evidence retained.
 The existing six-slot causal probe remains held and unstarted.
 
-Earlier instrument handoffs below retain their historical evidence boundaries;
-the accepted contract owns the current prerequisite amendment.
+The assessment/review and earlier instrument handoffs below retain their historical
+evidence and proposal boundaries; the accepted contract owns the current amendments.
 
 K41's [protocol review integration](settings-activation/CAUSAL-PROTOCOL-REVIEW.md) repairs offline
 launch-prefix accounting, final-control input and positive mouse/Return nonce

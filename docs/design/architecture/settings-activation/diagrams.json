@@ -1,5 +1,5 @@
 {
-  "title": "Settings activation: correction assessment",
+  "title": "Settings activation: approved empirical design scope",
   "intro": "Start at each dark Start here node. The assessment numbers existing application calls; its dotted edge starts reasoning. The other views show reasoning and choices. None proves native event order or cause. No guest is authorized.",
   "groups": [
     {
@@ -10,18 +10,18 @@
     {
       "id": "scope",
       "title": "Accepted repair scope",
-      "description": "Antony accepted separately justified behavioral-repair design; native cause remains unresolved."
+      "description": "Antony approved the named empirical ordering design and finite acceptance convention; native cause remains unresolved."
     },
     {
       "id": "correction",
       "title": "Correction assessment",
-      "description": "The bounded no-candidate finding survives review; the explicit scope choice remains pending."
+      "description": "The bounded no-candidate finding survives review; a named empirical exception is approved for design only."
     }
   ],
   "discussion": {
-    "title": "No qualifying correction found in the inspected path",
-    "status": "Review integrated; empirical scope proposal pending",
-    "summary": "The inspected path supplies no evidenced API-use correction, including its move-to-active-Space setting. The bounded finding survives review. Antony still must choose whether to permit empirical ordering design, retain the hold, or end unresolved. Both orders succeeded with synchronous file tracing; reversing calls moved the writes, and there is no instrument-free comparison. Reduced failure risk is not established. The proposed finite bound is an agreed convention: a qualified recurrence rejects the repair, unavailable required evidence prevents acceptance, and every required ordinary assertion must pass. A passing bound supports only that sample. No number, candidate or guest is selected; all six causal slots remain held and cause/ownership unresolved.",
+    "title": "Empirical ordering design approved; execution remains held",
+    "status": "Approved by Antony; concrete design and independent review precede implementation or runtime",
+    "summary": "Antony answered approve to design of one activation-before-window-ordering evaluation without a documented API-use violation and its finite acceptance convention. This is a named exception; one request and the other exclusions remain. The bounded no-candidate assessment survives review. Both orders succeeded with synchronous file tracing; reversing calls moved the writes, and there is no instrument-free comparison or established reduction in failure risk. A qualified recurrence in evaluation or separate ordinary acceptance rejects the repair. Unavailable required evidence prevents acceptance without automatically proving product failure; every ordinary assertion must pass. A passing bound supports only that sample. Concrete design, review and every earned integration precede implementation/runtime. No numerical bound, final candidate or guest is selected; all six causal slots remain held and cause/ownership unresolved.",
     "diagramIds": [
       "evidence-limit",
       "scope-choice",
@@ -30,7 +30,11 @@
     "updatedDiagrams": [
       {
         "id": "correction-assessment",
-        "summary": "Clarifies instrumented feasibility shared by both orders, the proposed acceptance convention and its failure outcomes; the scope choice stays pending."
+        "summary": "Records approval of empirical design and the finite acceptance convention, retaining the symmetric instrumented evidence and review before execution."
+      },
+      {
+        "id": "scope-choice",
+        "summary": "Shows the named exception to the API-use test, one request and preserved exclusions, separate complete ordinary acceptance and finite claims."
       }
     ]
   },
@@ -47,14 +51,14 @@
       "group": "scope",
       "title": "Accepted scope for repair design",
       "source": "scope-choice.mmd",
-      "caption": "Antony accepted design of a justified single-request correction, preserving repetition, driver-wait/retry, deferral and speculative-yield exclusions. The native cause remains unresolved. Concrete design and review precede implementation or runtime, with separate complete ordinary-VM acceptance required. No candidate or guest is selected."
+      "caption": "Antony approved design of one empirical activation-before-window-ordering evaluation without a documented API-use violation, preserving one request and repetition, driver-wait/retry, deferral and speculative-yield exclusions. Native cause remains unresolved. Concrete design, review and every earned integration precede implementation/runtime; separate complete ordinary-VM acceptance with diagnostics disabled remains required. No final candidate, numerical bound or guest is selected."
     },
     {
       "id": "correction-assessment",
       "group": "correction",
-      "title": "Current path and the unresolved correction choice",
+      "title": "Current path and the approved empirical design",
       "source": "correction-assessment.mmd",
-      "caption": "Numbered arrows show existing application calls; the dotted edge starts reasoning. The bounded finding survives review. Both orders succeeded with file tracing, without an instrument-free comparison. The proposed finite bound is a convention: qualified recurrence rejects the repair, unavailable required evidence prevents acceptance, and all ordinary assertions must pass. Success covers only that sample. Explicit scope agreement would permit design only; review and every earned integration precede implementation/runtime. No number or guest is selected."
+      "caption": "Numbered arrows show existing application calls; the dotted edge starts reasoning. The bounded finding survives review. Both orders succeeded with file tracing, without an instrument-free comparison. Antony approved a finite acceptance convention: qualified recurrence rejects the repair, unavailable required evidence prevents acceptance without automatically proving product failure, and all ordinary assertions must pass. Success covers only that sample. Approval permits design only; review and every earned integration precede implementation/runtime. No numerical bound or guest is selected."
     }
   ]
 }

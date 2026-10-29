@@ -4,19 +4,24 @@
 
 The [correction assessment](CORRECTION-ASSESSMENT.md) finds no candidate meeting
 the accepted API-use test in the inspected path. The finding survives
-[review and integration](CORRECTION-REVIEW.md); an explicit scope resolution
-must still precede further product work. Its proposed
-empirical-design option is unaccepted and supplies no runtime budget. The
+[review and integration](CORRECTION-REVIEW.md). Antony answered "approve" on
+2026-10-29 to the [named empirical design and finite acceptance convention](../../specs/settings-activation-discrimination.md#scope-after-no-candidate).
+This removes the documented API-use-violation prerequisite for activation-before-
+window ordering only. Concrete design, review and every earned integration still
+precede product changes or execution; approval supplies no runtime budget. The
 implemented protocol below and all six slots remain unchanged and held.
 
 [The accepted repair scope](../../specs/settings-activation-discrimination.md#scope-decision-for-antony)
-permits a separately justified single-request correction design without prior
-native causal proof. Antony accepted it on 2026-10-28. It supplies no supported
+permits single-request correction design without prior native causal proof, now
+including the named empirical exception. It supplies no supported
 two-sided causal experiment and does not authorize this protocol: all six slots,
 including route qualification, remain unstarted with unchanged criteria and
-caps. They provide no runtime budget for the new design question. No candidate
-or guest is selected; a concrete design, review and every earned integration
-must precede implementation or runtime under the accepted scope.
+caps. They provide no runtime budget for the new design question. No final
+candidate, numerical bound or guest is selected. The empirical evaluation needs
+a distinct declared finite protocol and separate complete ordinary acceptance
+with diagnostics disabled. A qualified recurrence rejects the repair; unavailable
+required evidence prevents acceptance; every ordinary assertion must pass. A
+complete pass supports only that sample, with cause and ownership unresolved.
 
 This is k38's implemented replacement for the unstarted k34 proposal, repaired
 by [k41's integration](CAUSAL-PROTOCOL-REVIEW.md). The

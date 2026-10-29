@@ -2,16 +2,23 @@
 
 ## Current decision
 
-Antony accepted the recommended behavioral-repair design scope on 2026-10-28,
-answering "I agree." A separately justified correction using one activation
-request may be designed without first proving the native cause. The
-[accepted boundary](#scope-decision-for-antony) requires a concrete, evidenced
-mistake or omission in the application's API use and preserves the excluded
-repair classes. The [correction assessment](#correction-assessment) finds no
-qualifying candidate in the inspected path. That bounded finding survives
-[review and integration](../verification/settings-activation/CORRECTION-REVIEW.md);
-the resulting [scope choice](#scope-after-no-candidate)
-remains pending. Implementation and runtime remain held.
+Antony approved the recommended empirical design and finite acceptance convention
+on 2026-10-29, answering "approve." Permit design of one activation-before-window-
+ordering evaluation without requiring a documented API-use violation. This is a
+named exception to the [earlier API-use correction test](#scope-decision-for-antony),
+not permission for an unrestricted workaround search. One activation request and
+the repetition, driver-wait/retry, deferral and speculative-yield exclusions remain.
+The [accepted convention](#scope-after-no-candidate) rejects the repair on a
+qualified recurrence, prevents acceptance without required evidence and requires
+every ordinary assertion to pass. A passing finite bound supports only that sample.
+
+The [correction assessment](#correction-assessment) still finds no qualifying
+API-use correction in the inspected path; that bounded finding survives
+[review and integration](../verification/settings-activation/CORRECTION-REVIEW.md).
+Those reports retain the proposal as presented before this approval. The empirical
+hypothesis is selected for design; no final candidate or numerical bound is fixed.
+Implementation and runtime remain held pending concrete design, independent review
+and every earned integration.
 
 This amends a prerequisite; it does not satisfy it. Native cause and ownership
 remain unresolved. The retained evidence still does **not** support the finite,
@@ -22,8 +29,9 @@ needs its own separately justified protocol and bound.
 
 The accepted scope permits design only. A concrete candidate needs independent
 review before implementation or runtime evaluation, followed by separate complete
-ordinary-operation acceptance. One Settings selection must still return one
-front/focused Settings window. No product repair or external owner is established.
+ordinary-operation acceptance with diagnostics disabled. One Settings selection
+must still return one front/focused Settings window. No API violation, product
+repair, native mechanism or external owner is established.
 
 The [visual discussion](../design/architecture/settings-activation/README.md)
 shows why the current observation and intervention do not meet the requirement.
@@ -121,11 +129,15 @@ matched successful setup cannot give the broad rival its missing finite falsifie
 
 ## Scope decision for Antony
 
-**Accepted: permit a separate behavioral-repair design while leaving native
-cause unresolved.** The user-facing failure is established, and the present
+**Accepted on 2026-10-28: permit a separate behavioral-repair design while leaving
+native cause unresolved.** The user-facing failure is established, and the present
 probe cannot distinguish the competing causes. Retaining native causal proof
 as a prerequisite could block repair indefinitely. Antony accepted this
 recommendation; ending the repair investigation was not selected.
+
+This original API-use test remains the default for other candidates. The later
+[accepted empirical scope](#scope-after-no-candidate) removes its documented-
+violation prerequisite for activation-before-window ordering only.
 
 A candidate justified by public API contracts and the observed product behavior
 may now be designed without first establishing a positive native refusal,
@@ -142,9 +154,9 @@ Reconsidering an excluded class requires a separate explicit scope proposal.
 The unchanged experiment subject still excludes every alternative API, yield,
 async deferral and repeated activation, irrespective of candidate-design scope.
 
-The justification test requires a concrete mismatch or omitted step in Koine's
-current window/activation use, supported by applicable public API requirements
-and source or retained evidence. A design must show how its single-request
+Outside that named exception, the justification test requires a concrete mismatch
+or omitted step in Koine's current window/activation use, supported by applicable
+public API requirements and source or retained evidence. A design must show how its single-request
 correction addresses that mismatch, establish its preconditions, and state the
 remaining discretionary OS behavior. It must identify a useful failing product
 seam where feasible and a separate finite ordinary-acceptance plan. API
@@ -153,15 +165,16 @@ availability alone is insufficient. Apple's
 allows the system to decline activation; the
 [checked ordering evidence](../verification/settings-activation/ORDER-RESULTS.md)
 supplies no prescribed call sequence that explains or avoids the failure.
-No candidate has been justified here, and the agreement promises none.
+No candidate met that test in the inspected path, and the original agreement
+promised none.
 
 This is an explicit amendment to those prerequisites, not a finding that they
-have been met. No candidate is selected by this document. A follow-on design
-must identify one concrete candidate, explain its justification and limits,
-define a useful failing product seam where feasible, and receive review before
-any runtime work. A green count or successful alternative API alone remains
-insufficient justification. If no such candidate can be justified, return the
-unresolved decision rather than trying a sequence of workarounds.
+have been met. A follow-on design must identify one concrete candidate, explain
+its justification under the applicable scope and its limits, define a useful
+failing product seam where feasible, and receive review before any runtime work.
+A green count or successful alternative API alone does not establish an API-use
+correction. The no-candidate assessment led to the explicit empirical exception
+below, not permission to try a sequence of workarounds.
 
 | Choice | Decision and effect | Cost and limit |
 |---|---|---|
@@ -170,8 +183,8 @@ unresolved decision rather than trying a sequence of workarounds.
 | End the investigation unresolved — not selected | The repair request remains active. The reproducer and findings remain evidence of an unresolved failure. | No repair obligation is abandoned or marked satisfied by the scope agreement. |
 
 The existing six-slot probe remains held. Its unused slots provide no runtime
-budget for the accepted design question. If no candidate meets the justification
-test, the outcome remains unresolved; the agreement permits no sequence of
+budget for the accepted design question. The named exception below changes the
+justification standard only; it supplies no repair result or sequence of
 speculative workarounds.
 
 ## Correction assessment
@@ -198,24 +211,26 @@ or that the operating system owns the failure.
 
 ### Scope after no candidate
 
-**Pending proposal, not an amendment:** permit design of one empirical
+**Accepted on 2026-10-29, answering "approve":** permit design of one empirical
 activation-before-window-ordering evaluation without requiring a documented
-API-use violation. This is the recommended next choice after the reviewed
-no-candidate finding. It would change only the candidate-justification
-standard for that named hypothesis. One activation request, one front/focused
-window, the other excluded classes, independent design review, evidence integrity
-and separate complete ordinary acceptance would remain required.
+API-use violation. Antony approved the recommended design scope and finite
+acceptance convention after the reviewed no-candidate finding. This changes only
+the candidate-justification standard for that named hypothesis. One activation
+request, one front/focused window, the other excluded classes, independent design
+review, evidence integrity and separate complete ordinary acceptance remain
+required. It does not establish that the earlier API-use test was satisfied.
 
-The reason to consider this option is its small single-request behavioral change.
+The reason for recommending this option is its small single-request behavioral
+change.
 Historical feasibility is instrumented and symmetric: reversed B02/B03 and
 original A04 succeeded with synchronous file tracing, and reversing the calls
 also moved the trace writes. The [closed comparison](../verification/settings-activation/ORDER-RESULTS.md)
 contains no instrument-free comparison and does not establish lower failure
 risk from reversal. Feasibility does not predict that the intermittent failure disappears.
 
-Any finite acceptance bound would be an explicitly agreed convention, not a
+The finite acceptance standard is an explicitly agreed convention, not a
 rejection rule derived from a supported failure-rate bound or trial model;
-neither is available. The proposed rule rejects reversal as the repair if one
+neither is available. The accepted rule rejects reversal as the repair if one
 qualified Settings selection in its declared evaluation or separate ordinary
 acceptance fails to return one front/focused window. Failed transport or missing
 required observations prevent acceptance and leave the result unresolved; they
@@ -224,20 +239,24 @@ must also pass. Completing the fixed bound with all required evidence and
 assertions passing supports only success for that declared sample, not
 elimination of intermittent failure, a mechanism or general reliability.
 
-Antony must explicitly agree to this standard before concrete design. The later
-reviewed design must fix the bound, qualification criteria and stop/failure/
-unavailable-evidence rules before runtime. The old ABBA cap stays closed; this
-proposal selects no new cap or guest. The scope answer would permit design only.
+The concrete design must fix numerical bounds, qualification criteria and stop/
+failure/unavailable-evidence rules before runtime, and receive independent review
+with every earned integration completed before implementation or execution.
+The old ABBA cap stays closed. Approval fixes no new numerical cap, final subject
+or guest; it permits design only. The trial requires its own distinct finite
+protocol, and ordinary acceptance remains a separate complete scenario set.
 
 | Choice after the reviewed assessment | Effect and cost |
 |---|---|
-| Permit the named empirical design — recommended, pending | Allows design of activation-before-window ordering under a changed justification standard, preserving one request and all other exclusions. Its historical feasibility is instrumented and shared by the original order. A finite acceptance bound is an agreed convention: a qualified recurrence rejects the repair, unavailable required evidence prevents acceptance, and all required ordinary assertions must pass. A passing sample proves no mechanism or general reliability. No implementation or runtime follows from the scope answer alone. |
-| Retain the accepted API-use test | Repair remains live and held until new evidence supplies a qualifying mismatch and correction. Further unchanged sampling or richer monitoring does not fill that gap. There is no currently established path to completion. |
-| End the investigation unresolved | Requires explicit authorization to abandon the affected repair work. Preserves the observed failure and reproducer; makes no repair or acceptance claim. |
+| Permit the named empirical design — accepted | Allows design of activation-before-window ordering under the changed justification standard, preserving one request and all other exclusions. Its historical feasibility is instrumented and shared by the original order. A finite acceptance bound is an agreed convention: a qualified recurrence rejects the repair, unavailable required evidence prevents acceptance, and all required ordinary assertions must pass. A passing sample proves no API violation, mechanism, ownership or general reliability. No implementation or runtime follows from the scope answer alone. |
+| Retain the API-use test without an exception — not selected | Would keep repair held until new evidence supplied a qualifying mismatch and correction. Further unchanged sampling or richer monitoring would not fill that gap. The test still applies to other candidates. |
+| End the investigation unresolved — not selected | Repair remains live. The observed failure and reproducer remain; no repair work is abandoned or marked satisfied. |
 
-No answer is inferred from this document, review, silence or elapsed time. The
-accepted scope above remains in force until Antony explicitly changes it. The
-six held causal slots remain unchanged and unstarted under every pending choice.
+The answer is Antony's explicit approval, not an inference from review or elapsed
+time. Native cause and ownership remain unresolved. The six held causal slots
+remain unchanged and unstarted; unused positions provide no evaluation budget.
+No historical result or strict false join changes, and no causal or product
+ancestor closes from agreement alone.
 
 ## Protocol change comparison and qualification boundaries
 
@@ -285,8 +304,9 @@ focused failing product check, where feasible, supplements that native evidence.
 
 ### Original-duty comparison
 
-The original criteria remain binding except for the two prerequisites explicitly
-amended below. The full earlier comparisons remain historical evidence:
+The original criteria remain binding except for the native-causal prerequisites
+and the named candidate-justification exception explicitly amended below. The full
+earlier comparisons remain historical evidence:
 [causal](../verification/settings-activation/CAUSAL-RESULTS.md#every-original-duty),
 [protocol](../verification/settings-activation/CAUSAL-PROTOCOL-RESULTS.md#integrity-and-original-duties),
 [focus](../verification/settings-activation/FOCUS-RESULTS.md#every-original-duty),
@@ -302,9 +322,9 @@ and [persisted](../verification/settings-activation/PERSISTED-RESULTS.md#every-o
 | Actual signed subject/all consumed inputs/completed golden freeze | Still required before any future launch, after all design/review/integration work; no final subject selected here |
 | Failed transport, partial archive, every started attempt and NOT RUN retention | Preserved separately from scenario results; timeout/nonzero text remains failed |
 | Original/endpoint/golden audits and exact clone stop | Required for future runs; historical duties and results unchanged; no clone in this design |
-| Justified application repair and useful failing product seam | Unmet; recorder/reader controls are not a failing product seam. The accepted candidate boundary preserves application repetition, driver waits/retries/repeated input, deferral and speculative-yield exclusions; alternative APIs require the stated justification test |
-| One selection, one front/focused Settings window | Required behavior unchanged |
-| Separate finite complete ordinary acceptance | Still required through app:vm-verify-menu-bar, final ordinary signed subject/all-input/completed-golden freeze, diagnostics disabled, every outcome retained and timing addressed |
+| Justified application repair and useful failing product seam | Unmet; recorder/reader controls are not a failing product seam. Activation-before-window ordering alone may be designed without a documented API-use violation under the agreed empirical convention. Other candidates and alternative APIs retain the API-use test. Application repetition, driver waits/retries/repeated input, deferral and speculative yield remain excluded |
+| One selection, one front/focused Settings window | Required behavior and one activation request unchanged |
+| Separate finite complete ordinary acceptance | Still required through app:vm-verify-menu-bar, final ordinary signed subject/all-input/completed-golden freeze, diagnostics disabled, every outcome retained and timing addressed. A qualified recurrence in evaluation or acceptance rejects the repair; missing/failed required evidence or another failed ordinary assertion prevents acceptance. A complete pass supports only that finite sample |
 | External evidence/reproducer/approval | No external owner established; positive evidence/reproducer required for attribution, repair unresolved if external; no upstream report without Antony's approval |
 | Closed historical caps and unrun ordinary phases | All closed caps stay closed. Persisted reopens 2/3, resize/minimum-size/content-height/scrolling, shortcuts, requests/denials, consent, silent launch, running-app reopen, login restart and Quit stay NOT RUN |
 | Repair acceptance/release | Scope agreement supplies no repair or ordinary-acceptance result; no release or notarization |

@@ -1,19 +1,34 @@
 # settings-causal-activation-repair-k33 — brief
 
-## K45 no-candidate boundary
+## K46 accepted empirical design scope
+
+Antony answers "approve" to design of one empirical activation-before-window-
+ordering evaluation and its finite acceptance convention. The documented API-use
+violation prerequisite is removed for this named hypothesis only. Other candidate
+classes retain k42's test. Read docs/specs/settings-activation-discrimination.md
+for the actual answer and complete original-duty comparison. Native cause and
+ownership remain unresolved; neither an API violation nor general reliability
+is established.
+
+A qualified recurrence in the evaluation or separate ordinary acceptance rejects
+reversal as the repair. Missing/failed required evidence prevents acceptance
+without automatically proving product failure; every ordinary assertion must
+pass. A complete passing bound supports only that sample. No numerical cap or
+final subject is selected. K49 owns concrete design, with its required review
+and every earned integration before k36 implementation/runtime. No historical
+cap or held causal slot opens. Approval alone closes no ancestor or repair duty.
+
+## Reviewed no-candidate boundary
 
 The bounded source/public-contract assessment in
 docs/verification/settings-activation/CORRECTION-ASSESSMENT.md finds no
 candidate meeting k42's API-use test. It survives k47 review and k48 integration;
 CORRECTION-REVIEW.md records every disposition. Both orders previously succeeded
-with file tracing; there is no instrument-free comparison. The pending finite
-acceptance convention rejects the repair on qualified recurrence and prevents
-acceptance without required evidence. No bound or scope answer is selected.
-K46 owns the explicit scope decision ahead of k36.
-The proposal to permit empirical activation-before-window-ordering
-design changes the justification standard and remains unaccepted. No product
-change, guest, repair seam or runtime cap is selected. K36 stays live and held;
-all original duties under k42, historical evidence and caps remain. This node
+with file tracing; there is no instrument-free comparison or established reduction
+in failure risk. The assessment/review retain the proposal before k46's approval;
+the accepted scope above governs the next design. No product change, guest,
+repair seam or runtime cap is selected. K36 stays live and held; all original
+duties except the named amendments, historical evidence and caps remain. This node
 and every causal/product ancestor stay open.
 
 ## K42 accepted scope and remaining work
@@ -26,13 +41,13 @@ original charter below are amended for that design/evaluation path; their
 evidence remains unmet. Cause and ownership stay unresolved, not externally
 attributed. This governs earlier ancestor and handoff wording, not their results.
 
-Settings-activation-correction-k45 must identify a concrete API-use mistake or
-omission and justify one correction, establish its preconditions and discretionary
-OS limits, preserve
-the explicit excluded classes, and require review/every earned integration before
-k36 implementation/runtime. If no candidate meets the test, retain unresolved
-repair and escalate rather than try speculative workarounds or richer monitors.
-The agreement itself selects no candidate or guest. The six existing causal
+K45's reviewed assessment found no correction meeting that API-use test. K46's
+named empirical exception now permits k49's concrete design without a documented
+violation. It must establish preconditions and discretionary OS limits, preserve
+one request and the explicit excluded classes, and receive review/every earned
+integration before k36 implementation/runtime. No sequence of speculative
+workarounds or richer monitors is authorized. The agreement itself selects no
+final candidate or guest. The six existing causal
 slots retain their criteria/caps and remain held and unstarted.
 
 Every product/failing-seam, one-selection/front-focused-window, actual signed/

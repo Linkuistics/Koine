@@ -1,27 +1,38 @@
 # Koine menu-bar VM reliability — brief
 
-## K45 correction assessment
+## K46 accepted empirical design scope
+
+Antony answers "approve" on 2026-10-29 to design of one empirical activation-
+before-window-ordering evaluation and its finite acceptance convention. The
+named hypothesis no longer requires a documented API-use violation; other
+candidates retain k42's justification test. This amends the standard, not the
+evidence: API violation, native cause, ownership and general reliability remain
+unestablished. docs/specs/settings-activation-discrimination.md owns the current
+contract and complete original-duty comparison.
+
+A qualified recurrence in the declared evaluation or separate ordinary acceptance
+rejects reversal as the repair. Missing or failed required evidence prevents
+acceptance without automatically proving product failure. Every required ordinary
+assertion must pass; a passing fixed bound supports only that sample. No numerical
+bound or final subject is selected. The historical ABBA evidence is symmetric and
+file-traced, with no instrument-free comparison or established reduction in risk.
+
+Settings-activation-ordering-evaluation-k49 owns the concrete design. It must
+insert its review before k36 once the artifact exists; every earned integration
+also precedes implementation/runtime. Approval permits design only. K36 remains
+live and held. No old cap or held causal slot opens; no source change, guest,
+repair, release, notarization, upstream report, abandonment or ancestor closure
+follows from this decision.
+
+## Reviewed correction assessment
 
 Settings-activation-correction-k45 finds no qualifying API-use correction in the
 inspected path. Its durable assessment is
-docs/verification/settings-activation/CORRECTION-ASSESSMENT.md. The current
-window/key/self-activation calls meet the checked public-use conditions; the
-native failure still has no established cause or owner. This bounded finding
-survives k47 review and k48 integration; it is not proof that no correction exists.
-CORRECTION-REVIEW.md records the four dispositions. Both orders previously
-succeeded with file tracing; there is no instrument-free comparison. The pending
-proposal makes a finite acceptance bound an agreed convention, with qualified
-recurrence rejecting the repair and unavailable required evidence preventing
-acceptance. No bound or scope answer is selected.
-
-The reviewed k45 assessment precedes k46's explicit scope decision
-and k36. The pending proposal permits only design of an empirical
-activation-before-window-ordering evaluation without a documented API-use
-violation. It is not accepted and authorizes no product change or guest. Keeping
-the current hold or explicitly ending unresolved remain human choices; no repair
-work is abandoned. K36 stays live and held. Every original duty under k42,
-historical byte/classification/strict false join/closed cap and all six held
-causal slots remain. No causal or product ancestor closes.
+docs/verification/settings-activation/CORRECTION-ASSESSMENT.md. That bounded
+finding survives k47 review and k48 integration; it is not proof that no correction
+exists or that the native failure has an external owner. CORRECTION-REVIEW.md
+records every disposition. Those reports retain the proposal before k46's answer;
+the accepted scope above now governs the next design.
 
 ## Accepted Settings repair scope
 
@@ -34,13 +45,13 @@ contract is docs/specs/settings-activation-discrimination.md, including the
 complete original-duty comparison. This amendment governs the original
 causal-prerequisite language in the ancestor briefs and historical handoffs below.
 
-Only design of a concrete, evidenced API-use correction with one activation
-request is permitted. Repetition, driver waits/retries/repeated input, deferral
-and speculative yielding remain excluded. A different public API must meet the
-same justification test and its preconditions. No candidate is established and
-no guest is authorized by the agreement. Settings-activation-correction-k45 owns
-the new design and must insert its review before k36; every earned integration
-also precedes implementation/runtime. The existing six
+K42's API-use test remains the default, with k46's named empirical exception above.
+One activation request is required. Repetition, driver waits/retries/repeated
+input, deferral and speculative yielding remain excluded. A different public API
+must meet the same justification test and its preconditions. No final candidate is established
+and no guest is authorized by the agreement. K49 owns the concrete design and
+required review before k36; every earned integration also precedes
+implementation/runtime. The existing six
 route/modality slots remain held with unchanged criteria/caps and no reuse as
 a budget for a different question.
 
