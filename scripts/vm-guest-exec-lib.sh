@@ -29,6 +29,12 @@ _guest_evidence_backend() {
             set -o noclobber
             printf 'guest-exec backend exit %s\n' "${status}" >"$1/unavailable"
         ) || :
+        # Keep each facade failure even if an earlier reason already latched.
+        # Shell quoting retains argument boundaries without a working backend.
+        local request refusal
+        printf -v request '%q ' "${action}" "$@"
+        printf -v refusal 'backend_exit=%s argv=%s' "${status}" "${request}"
+        printf '%s\n' "${refusal}" >>"$1/facade-refusals.log" || :
     fi
     return "${status}"
 }

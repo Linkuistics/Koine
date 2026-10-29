@@ -1,0 +1,7 @@
+1..1
+not ok 1 nonexec orphan and gate confirmation exec callers share one writer lock
+# (in test file .build/k64-mutations/check-lock/Tests/scripts/vm-guest-exec.bats, line 352)
+#   `[[ "${status}" == 0 ]]' failed
+# Traceback (most recent call last):
+#   File "<stdin>", line 30, in <module>
+# AssertionError: ['check', '/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-HX9kKf/test/1/evidence']

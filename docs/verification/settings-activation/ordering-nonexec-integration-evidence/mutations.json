@@ -1,0 +1,34 @@
+[
+  {
+    "mutation": "caller-id",
+    "subject": "backend",
+    "old": "\"--dry-run\", \"--id\"}",
+    "new": "\"--dry-run\"}",
+    "original_sha256": "005d9d855eced791f7b49c0a14668be7470b0ea8bc051dfbbf9a850773f7d3b2",
+    "mutant_sha256": "becb7c35c663847ae56af91de62dcf335570dbc6951c077b3ec590f4afa22739"
+  },
+  {
+    "mutation": "check-lock",
+    "subject": "backend",
+    "old": "fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)",
+    "new": "if transport != \"check\":\n                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)",
+    "original_sha256": "005d9d855eced791f7b49c0a14668be7470b0ea8bc051dfbbf9a850773f7d3b2",
+    "mutant_sha256": "c86c672a084090168d46196094f8f2b90a8e3a08fbdc0a9e73e86fa359262fcb"
+  },
+  {
+    "mutation": "fail-lock",
+    "subject": "backend",
+    "old": "fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)",
+    "new": "if transport != \"confirmation\":\n                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)",
+    "original_sha256": "005d9d855eced791f7b49c0a14668be7470b0ea8bc051dfbbf9a850773f7d3b2",
+    "mutant_sha256": "a9a0509ebcb01fc81a52a7f39794c92d1b831f7de4acee78c5621d29beb3d57f"
+  },
+  {
+    "mutation": "facade-reason",
+    "subject": "facade",
+    "old": "guest-exec backend exit %s",
+    "new": "unexpected backend reason %s",
+    "original_sha256": "22b2b52a7c2c0d5d3b63cfe1134dab167992b8c18ed2d7f322791cf3eecc6812",
+    "mutant_sha256": "7be44dd491f56a7bebd65453da9b1b5f9a6ce32357138c4037f382f9debfd7fb"
+  }
+]

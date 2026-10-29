@@ -17,6 +17,14 @@ transport report. The adapter alone does not repair legacy callers.
   Migrate exec, agent, pointer, capture/upload/lifecycle and collection with
   explicit per-command predicates/artifact checks. No ignored completion or
   hidden retry; failed transport/confirmation stops scenario input.
+- K63 H-1, integrated by k64: express clean negative polls in successful
+  list-shaped payloads, such as agent windows. Typed WINDOW_NOT_FOUND,
+  ELEMENT_NOT_FOUND and TEXT_NOT_FOUND errors return CLI 3 and latch unavailable;
+  do not poll agent inspect/wait or screen find-text by tolerating those errors.
+  Every call site needs a predicate on its actual payload schema, never constant
+  true. Fixtures using true establish only adapter behavior. Evidence-class CLI
+  calls admit only the report's collection/exact-stop set; snapshot --open-menu
+  is input. Classify free guest-exec collection commands as read-only context.
 - Install complete INT/TERM/HUP handling that preserves interruption separately
   from ordinary failure and hands collection/containment to k57. Preserve
   adapter signal/partial outcomes and stop on every nonzero return.

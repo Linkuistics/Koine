@@ -68,6 +68,30 @@ def latch(root: Path, reason: str) -> None:
         pass  # The first failure remains the reason, including during collection.
 
 
+def refuse(root: Path, reason: str) -> int:
+    latch(root, reason)
+    record = (
+        json.dumps(
+            {
+                "source": "backend",
+                "at": timestamp(),
+                "arguments": sys.argv[1:],
+                "reason": reason,
+            },
+            ensure_ascii=True,
+        )
+        + "\n"
+    ).encode("utf-8")
+    # Refused contenders cannot acquire the writer lock. Append one escaped
+    # record in one write, independently of dispatched-attempt ordinals.
+    with (root / "refusals.jsonl").open("ab", buffering=0) as stream:
+        if stream.write(record) != len(record):
+            raise OSError("incomplete refusal record")
+        os.fsync(stream.fileno())
+    print(f"guest evidence refused: {reason}", file=sys.stderr)
+    return UNAVAILABLE
+
+
 def initialize(root: Path, vm: str) -> int:
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]*", vm):
         raise ValueError("expected an exact plain VM identity")
@@ -136,19 +160,37 @@ def validate_response(
     )
 
 
-def cli_argv(arguments: list[str], vm: str) -> list[str]:
+def cli_argv(arguments: list[str], vm: str, kind: str) -> list[str]:
     if arguments[:1] == ["--"]:
         arguments = arguments[1:]
     if "--" in arguments:
         raise ValueError("embedded option terminator would bypass pinned CLI flags")
     forbidden = {"--connect", "--vm", "--agent", "--vnc", "--json", "--dry-run", "--id"}
-    if arguments[:2] != ["vm", "start"]:
+    if arguments[:2] == ["vm", "start"]:
+        forbidden.update({"--viewer", "--keep-on-failure"})
+    else:
         forbidden.add("--platform")
     if any(arg.split("=", 1)[0] in forbidden for arg in arguments):
         raise ValueError("caller cannot override VM, output mode or live execution")
     if len(arguments) < 2:
         raise ValueError("expected a supported TestAnyware command and subcommand")
     family, action = arguments[:2]
+    if kind == "evidence":
+        collection_actions = {
+            ("agent", "windows"),
+            ("agent", "snapshot"),
+            ("screen", "capture"),
+            ("screen", "size"),
+            ("file", "download"),
+            ("vm", "list"),
+            ("vm", "stop"),
+        }
+        # Snapshot's --open-menu sends VNC clicks before reading the tree.
+        # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/commands/agent.rs
+        if (family, action) not in collection_actions or any(
+            arg.split("=", 1)[0] == "--open-menu" for arg in arguments
+        ):
+            raise ValueError("evidence class permits only collection and exact VM stop")
     # Lifecycle commands use positional IDs/--id, not ConnectionOptions. Bind
     # those explicitly; endpoint commands instead receive the pinned --vm.
     # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/main.rs
@@ -195,12 +237,11 @@ def run_locked(
         except (OSError, ValueError, UnicodeError) as error:
             latch(root, f"unfinished attempt: {path.name}: {error}")
     if (root / "unavailable").exists() and kind != "evidence":
-        print("unavailable latch prevents scenario dispatch", file=sys.stderr)
-        return UNAVAILABLE
+        return refuse(root, "unavailable latch prevents scenario dispatch")
     if transport == "check":
         return 0  # Inspection is not a reservation for a later unlocked input.
     if transport == "cli":
-        argv = cli_argv(arguments, vm)
+        argv = cli_argv(arguments, vm, kind)
     elif transport == "confirmation":
         argv = []
     else:
@@ -314,8 +355,7 @@ def run(
         try:
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError:
-            latch(root, "competing evidence writer")
-            return UNAVAILABLE
+            return refuse(root, "competing evidence writer")
         # The CLI/validator keep this same lock if the adapter is killed. Do not
         # unlock explicitly: their inherited descriptors share its lifetime.
         return run_locked(
@@ -399,7 +439,7 @@ def main() -> int:
         ):
             root = Path(sys.argv[2])
             if (root / "subject.json").is_file():
-                latch(root, "invalid evidence arguments")
+                refuse(root, "invalid evidence arguments")
         raise
     root = cast(Path, args.root)
     try:
@@ -436,7 +476,7 @@ def main() -> int:
     except (OSError, ValueError, UnicodeError) as error:
         print(f"guest evidence: {error}", file=sys.stderr)
         if args.action != "init" and root.is_dir():
-            latch(root, str(error))
+            return refuse(root, str(error))
         return UNAVAILABLE
 
 

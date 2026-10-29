@@ -1,0 +1,62 @@
+{
+  "command": [
+    "mise",
+    "exec",
+    "--",
+    "bats",
+    "--filter",
+    "evidence class refuses|latched CLI evidence still",
+    "Tests/scripts/vm-guest-exec.bats"
+  ],
+  "scope": "headless adapter controls; no VM or native acceptance",
+  "started": "2026-10-29T05:46:05.890641+00:00",
+  "subjects_before": {
+    "Taskfile.yml": "4789866dcf6b21e72fdd32a5a9c4126f5aa31415cafddcda1670902534aa1dd8",
+    "scripts/vm-guest-exec.py": "f6033efab79c6d558669dc7d5a0e3494af8857fdb4bf70edfd677d31e3c43922",
+    "scripts/vm-guest-exec-lib.sh": "ce1b05ca6b92a582970f5db71d9b8c5a322059d2e883b96732fa18eaf601402f",
+    "Tests/scripts/vm-guest-exec.bats": "4fa91280a9be63732a150726b49030114282ffd1fd8f7cc3677542d376937e87",
+    "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md": "1818b9a0a2209e7d93afbc4b2507a1425a67065d3627a4f4b22752ca55aba2fa",
+    "docs/verification/settings-activation/ORDERING-NONEXEC-RESULTS.md": "0e9fdbc147b8a137041f25bd68c7e5689005ce68041e731308f419d2b941db4b",
+    "docs/verification/settings-activation/persisted-01/trace-disabled-after.json": "5a3252e2d6fd4b03ae52374b141f60f426b3deda394ea6d929a3861d85935bd7",
+    "scripts/vm-menu-pointer-lib.sh": "fad671a58ff4f2cc5f8ee3fd6c00474c69bfb8f0203ce32c5206ebef7dc3f5f6",
+    "scripts/vm-window-resize-lib.sh": "1396eda19afef9d067b5f10c69007bd79427ab80fb93070a83c274b1bbe4ee8b",
+    "scripts/vm-verify-menu-bar.sh": "0740dbe480a2700d62e66c580b09a776adc6aedd07ac6d563f93f408d3b5cc41",
+    "scripts/vm-verify-lib.sh": "d9ff479fb1d8833bec80faacdffb18a62fc3f39ef3977ab0194cd205b2c40759",
+    "scripts/vm-verify-desktop-lib.sh": "8a469c5d5ea662fe825cf2c6ec19fb6edb01d362713be21a2257fc22b705a7e3",
+    "scripts/signing-env.sh": "bdc96ddde8964a1f386b77d33de1385b55a47e95a42b09d4627405d1e0fa6a52",
+    "Tests/scripts/vm-menu-pointer.bats": "75f6c056fcc2f8e9482a63ed4ebd62e1ea50bf13dba7c6edbb4637f55b103815",
+    "Tests/scripts/vm-window-resize.bats": "8e9bdf92a4dd589d942785bf7b748906d89fb03b86cb1ced1fa19f9e46c262d0",
+    ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/03-integrate-review-impl--settings-nonexec-evidence-k64.md": "431aacb783883c143cf899fe629d49108d84c03edca6b9558c543ace3bec2b90",
+    ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-impl--settings-scenario-migration-k61.md": "8fcfe93df1cfd5d1f6b7569b152d505bad89e5fbe9496fccd49821925eb3d350",
+    ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/05-impl--settings-ordering-caller-k57.md": "e7934007de61727d14bb8caa163f0586d1de62628fb2b5a292c1ec810151c30d"
+  },
+  "exit": 1,
+  "ended": "2026-10-29T05:46:10.173177+00:00",
+  "subjects_after": {
+    "Taskfile.yml": "4789866dcf6b21e72fdd32a5a9c4126f5aa31415cafddcda1670902534aa1dd8",
+    "scripts/vm-guest-exec.py": "f6033efab79c6d558669dc7d5a0e3494af8857fdb4bf70edfd677d31e3c43922",
+    "scripts/vm-guest-exec-lib.sh": "ce1b05ca6b92a582970f5db71d9b8c5a322059d2e883b96732fa18eaf601402f",
+    "Tests/scripts/vm-guest-exec.bats": "4fa91280a9be63732a150726b49030114282ffd1fd8f7cc3677542d376937e87",
+    "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md": "1818b9a0a2209e7d93afbc4b2507a1425a67065d3627a4f4b22752ca55aba2fa",
+    "docs/verification/settings-activation/ORDERING-NONEXEC-RESULTS.md": "0e9fdbc147b8a137041f25bd68c7e5689005ce68041e731308f419d2b941db4b",
+    "docs/verification/settings-activation/persisted-01/trace-disabled-after.json": "5a3252e2d6fd4b03ae52374b141f60f426b3deda394ea6d929a3861d85935bd7",
+    "scripts/vm-menu-pointer-lib.sh": "fad671a58ff4f2cc5f8ee3fd6c00474c69bfb8f0203ce32c5206ebef7dc3f5f6",
+    "scripts/vm-window-resize-lib.sh": "1396eda19afef9d067b5f10c69007bd79427ab80fb93070a83c274b1bbe4ee8b",
+    "scripts/vm-verify-menu-bar.sh": "0740dbe480a2700d62e66c580b09a776adc6aedd07ac6d563f93f408d3b5cc41",
+    "scripts/vm-verify-lib.sh": "d9ff479fb1d8833bec80faacdffb18a62fc3f39ef3977ab0194cd205b2c40759",
+    "scripts/vm-verify-desktop-lib.sh": "8a469c5d5ea662fe825cf2c6ec19fb6edb01d362713be21a2257fc22b705a7e3",
+    "scripts/signing-env.sh": "bdc96ddde8964a1f386b77d33de1385b55a47e95a42b09d4627405d1e0fa6a52",
+    "Tests/scripts/vm-menu-pointer.bats": "75f6c056fcc2f8e9482a63ed4ebd62e1ea50bf13dba7c6edbb4637f55b103815",
+    "Tests/scripts/vm-window-resize.bats": "8e9bdf92a4dd589d942785bf7b748906d89fb03b86cb1ced1fa19f9e46c262d0",
+    ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/03-integrate-review-impl--settings-nonexec-evidence-k64.md": "431aacb783883c143cf899fe629d49108d84c03edca6b9558c543ace3bec2b90",
+    ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-impl--settings-scenario-migration-k61.md": "8fcfe93df1cfd5d1f6b7569b152d505bad89e5fbe9496fccd49821925eb3d350",
+    ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/05-impl--settings-ordering-caller-k57.md": "e7934007de61727d14bb8caa163f0586d1de62628fb2b5a292c1ec810151c30d"
+  },
+  "output": "docs/verification/settings-activation/ordering-nonexec-integration-evidence/evidence-class-red.txt",
+  "output_sha256": "b9e7486bc7c847c79ab883054b182a60994a826e1380da0da889640d225681e6",
+  "subjects_unchanged": true,
+  "tests": [
+    "evidence class refuses mutating CLI actions even after a prior latch",
+    "latched CLI evidence still admits collection and exact clone stop"
+  ]
+}

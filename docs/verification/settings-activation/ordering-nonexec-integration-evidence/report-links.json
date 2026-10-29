@@ -1,0 +1,88 @@
+{
+  "report": "docs/verification/settings-activation/ORDERING-NONEXEC-RESULTS.md",
+  "sha256_before": "f70d61401ffad6a253759919c586338fc3ec299aa6a44c46105af695ed00140d",
+  "sha256_after": "f70d61401ffad6a253759919c586338fc3ec299aa6a44c46105af695ed00140d",
+  "targets": [
+    {
+      "target": "../../../scripts/vm-guest-exec-lib.sh",
+      "sha256": "22b2b52a7c2c0d5d3b63cfe1134dab167992b8c18ed2d7f322791cf3eecc6812"
+    },
+    {
+      "target": "ORDERING-TRANSPORT-RESULTS.md",
+      "sha256": "a917205fe0837276a116a8ac4bd45a9b8f86d4042e0bab58fe6764b29582ef60"
+    },
+    {
+      "target": "ordering-nonexec-evidence/baseline-red.txt",
+      "sha256": "66b2febe3947fae83de7ed631b2579ddbdaba2097436e62b39fb7bced818257b"
+    },
+    {
+      "target": "ordering-nonexec-evidence/baseline-control-red.txt",
+      "sha256": "ed37df5425c2a7004c8ea471b07a3f0b4c5dd86948acae8fa7867f1c1f2b74cc"
+    },
+    {
+      "target": "ordering-nonexec-evidence/unlocked-control-red.txt",
+      "sha256": "d673966a33b0ed12959409f270e3353c56a50a3116cb991a0901b07ad986fcde"
+    },
+    {
+      "target": "ordering-nonexec-evidence/separator-red.txt",
+      "sha256": "2ceaf18299c2e7cfb7fa8bb4ed35d32f211e343c5fca21de93683f5ca6ef01ff"
+    },
+    {
+      "target": "ordering-nonexec-evidence/verification.json",
+      "sha256": "d519f8f31b912cb73f4db082a7c2c257f7b6ccd831df85a9950dffd2c75bc36f"
+    },
+    {
+      "target": "ordering-nonexec-integration-evidence/evidence-class-red.txt",
+      "sha256": "b9e7486bc7c847c79ab883054b182a60994a826e1380da0da889640d225681e6"
+    },
+    {
+      "target": "ordering-nonexec-integration-evidence/evidence-class-green.txt",
+      "sha256": "b036689b20bea47e7eaad4e5ab117a51547bcaad800d5f2ff95d4ec44e86e735"
+    },
+    {
+      "target": "ordering-nonexec-integration-evidence/refusals-red.txt",
+      "sha256": "c5a3f5834379cba3b76df79d152085d98d25fcd18d9b78880c50a17a6c5d9274"
+    },
+    {
+      "target": "ordering-nonexec-integration-evidence/refusals-green.txt",
+      "sha256": "aa80387453a7192af3fe82933a1b7f325aa87b7bae2232ab044451fe82ef5360"
+    },
+    {
+      "target": "ordering-nonexec-integration-evidence/start-options-red.txt",
+      "sha256": "ce7e8689ba24cb33e3701364034d304ee8d5670cec9f7a1898548df35a63a54d"
+    },
+    {
+      "target": "ordering-nonexec-integration-evidence/start-options-green.txt",
+      "sha256": "0db0962a43e71870903a5d3d450f28e18dd87f71de224966bcc2056f3008d110"
+    },
+    {
+      "target": "ordering-nonexec-integration-evidence/caller-id-guard-red.txt",
+      "sha256": "41f97f030a56c1a244bc79e28d2bf9c4af7e58ffb5bb2efc3c3dbd2b2953842c"
+    },
+    {
+      "target": "ordering-nonexec-integration-evidence/check-lock-red.txt",
+      "sha256": "42776d6d4b76dd4ccdd9a62068b88a8df43f7c402a67b3edf7ab14e09da0b54d"
+    },
+    {
+      "target": "ordering-nonexec-integration-evidence/fail-lock-red.txt",
+      "sha256": "95559a48438c943554207d59b409ff91e425c849c6947fb4a387e249b3600126"
+    },
+    {
+      "target": "ordering-nonexec-integration-evidence/facade-reason-red.txt",
+      "sha256": "53cc1dadcdc6bce6051422757a9174335bfb0e32db7287a92fd0abad2e790397"
+    },
+    {
+      "target": "ordering-nonexec-integration-evidence/mutations.json",
+      "sha256": "11676c8200cd2e1dc456808fcdaaaa7348371f322b6e728ca783956948f8a793"
+    },
+    {
+      "target": "ordering-nonexec-integration-evidence/verification.json",
+      "sha256": "e223c57055a33b0d4d2c1bd75aa366b6a1c0c5fab63d0fe74d6d5f9dbc61a93a"
+    },
+    {
+      "target": "ordering-nonexec-integration-evidence/official-source.json",
+      "sha256": "7798bda7fda427c9ff08082e8e8c4fcb1512b6bbc36a45e2180f9f6dbca42412"
+    }
+  ],
+  "all_targets_exist": true
+}

@@ -1,0 +1,4 @@
+1..1
+not ok 1 VM start refuses viewer and retained-failure options before dispatch
+# (in test file Tests/scripts/vm-guest-exec.bats, line 226)
+#   `[[ "${status}" == 125 && ! -e "${exec_calls}" ]]' failed

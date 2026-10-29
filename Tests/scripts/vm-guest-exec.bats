@@ -81,6 +81,76 @@ SH
     [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 1 ]]
 }
 
+@test "evidence class refuses mutating CLI actions even after a prior latch" {
+    local action phase
+    for phase in eligible latched; do
+        for action in click start upload focus menu snapshot-menu snapshot-menu-equals; do
+            exec_root="${BATS_TEST_TMPDIR}/${phase}-${action}"
+            init_guest_evidence "${exec_root}" exact-vm
+            if [[ "${phase}" == latched ]]; then
+                fail_guest_evidence "${exec_root}" setup 'original failure' || :
+            fi
+            case "${action}" in
+            click) set -- input click 10 20 ;;
+            start) set -- vm start --platform macos ;;
+            upload) set -- file upload local /tmp/guest ;;
+            focus) set -- agent window-focus --window TextEdit ;;
+            menu) set -- agent show-menu --menu File ;;
+            snapshot-menu) set -- agent snapshot --open-menu File ;;
+            snapshot-menu-equals) set -- agent snapshot --open-menu=File ;;
+            esac
+            run cli_guest_evidence "${exec_root}" evidence "${action}" true -- "$@"
+            [[ "${status}" == 125 && ! -e "${exec_calls}" ]]
+            [[ -s "${exec_root}/unavailable" ]]
+        done
+    done
+}
+
+@test "latched CLI evidence still admits collection and exact clone stop" {
+    init_guest_evidence "${exec_root}" exact-vm
+    fail_guest_evidence "${exec_root}" setup 'original failure' || :
+    local action
+    for action in windows snapshot capture size download list stop; do
+        case "${action}" in
+        windows) set -- agent windows ;;
+        snapshot) set -- agent snapshot --window TextEdit ;;
+        capture) set -- screen capture -o context.png ;;
+        size) set -- screen size ;;
+        download) set -- file download /tmp/evidence local ;;
+        list) set -- vm list --all ;;
+        stop) set -- vm stop exact-vm ;;
+        esac
+        run cli_guest_evidence "${exec_root}" evidence "${action}" '.ok == true' -- "$@"
+        [[ "${status}" == 0 ]]
+    done
+    [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 7 ]]
+    [[ "$(cat "${exec_root}/unavailable")" == '000001: original failure' ]]
+}
+
+@test "refusals retain each request and reason without replacing the first latch" {
+    init_guest_evidence "${exec_root}" exact-vm
+    fail_guest_evidence "${exec_root}" setup 'original failure' || :
+    run cli_guest_evidence "${exec_root}" evidence wrong-stop true -- vm stop other-vm
+    [[ "${status}" == 125 ]]
+    run check_guest_evidence "${exec_root}"
+    [[ "${status}" == 125 ]]
+    run exec_guest_evidence "${exec_root}" one-shot launch probe true
+    [[ "${status}" == 125 ]]
+    run python3 "${BATS_TEST_DIRNAME}/../../scripts/vm-guest-exec.py" cli "${exec_root}" invalid
+    [[ "${status}" == 2 ]]
+    run fail_guest_evidence "${exec_root}" '' $'missing\nidentity'
+    [[ "${status}" == 125 ]]
+    jq -se 'length == 5
+        and .[0].arguments[3] == "wrong-stop" and (.[0].reason | contains("pinned vm stop"))
+        and .[1].arguments[0] == "check" and (.[1].reason | contains("latch"))
+        and .[2].arguments[0] == "run" and (.[2].reason | contains("latch"))
+        and .[3].arguments[2] == "invalid" and .[3].reason == "invalid evidence arguments"
+        and .[4].arguments[-1] == "missing\nidentity" and (.[4].reason | contains("operation"))
+        and all(.[]; .source == "backend" and (.at | length > 0))' "${exec_root}/refusals.jsonl"
+    [[ "$(cat "${exec_root}/unavailable")" == '000001: original failure' ]]
+    [[ ! -e "${exec_root}/000002" && ! -e "${exec_calls}" ]]
+}
+
 @test "nonexec rejects malformed success dry-run failed CLI and incomplete command payloads" {
     local n=0 reply
     for reply in '' '{"ok":true' '{"schema_version":"1.0","ok":true,"ok":false}' \
@@ -146,6 +216,40 @@ SH
     [[ "${status}" == 125 && ! -e "${exec_calls}" ]]
 }
 
+@test "VM start refuses viewer and retained-failure options before dispatch" {
+    local argument n=0
+    for argument in --viewer --viewer=true --keep-on-failure --keep-on-failure=true; do
+        n=$((n + 1))
+        exec_root="${BATS_TEST_TMPDIR}/start-${n}"
+        init_guest_evidence "${exec_root}" exact-vm
+        run cli_guest_evidence "${exec_root}" one-shot start true -- vm start --platform macos "${argument}"
+        [[ "${status}" == 125 && ! -e "${exec_calls}" ]]
+        [[ -s "${exec_root}/unavailable" && ! -e "${exec_root}/000001" ]]
+    done
+}
+
+@test "caller ID overrides refuse on both VM start and endpoint routes" {
+    local route form
+    for route in start endpoint; do
+        for form in separate equals; do
+            exec_root="${BATS_TEST_TMPDIR}/${route}-${form}"
+            init_guest_evidence "${exec_root}" exact-vm
+            case "${route}" in
+            start) set -- vm start --platform macos ;;
+            endpoint) set -- input click 10 20 ;;
+            esac
+            if [[ "${form}" == separate ]]; then
+                set -- "$@" --id other
+            else
+                set -- "$@" --id=other
+            fi
+            run cli_guest_evidence "${exec_root}" one-shot override true -- "$@"
+            [[ "${status}" == 125 && ! -e "${exec_calls}" ]]
+            [[ -s "${exec_root}/unavailable" && ! -e "${exec_root}/000001" ]]
+        done
+    done
+}
+
 @test "nonexec start list upload capture and input retain explicit call payloads" {
     init_guest_evidence "${exec_root}" exact-vm
     printf '%s\n' '{"schema_version":"1.0","ok":true,"id":"exact-vm"}' >"${exec_reply}"
@@ -180,6 +284,8 @@ SH
     init_guest_evidence "${exec_root}" exact-vm
     run bash -c 'source "$1"; cli_guest_evidence "$2" one-shot click true -- input click 10 20' _ "${facade}" "${exec_root}"
     [[ "${status}" != 0 && -s "${exec_root}/unavailable" ]]
+    [[ "$(cat "${exec_root}/unavailable")" == 'guest-exec backend exit 2' ]]
+    [[ "$(cat "${exec_root}/facade-refusals.log")" == "backend_exit=2 argv=cli ${exec_root} one-shot click true -- input click 10 20 " ]]
     run exec_guest_evidence "${exec_root}" one-shot launch probe true
     [[ "${status}" == 125 && ! -e "${exec_calls}" ]]
 }
@@ -197,6 +303,7 @@ SH
 @test "nonexec orphan and gate confirmation exec callers share one writer lock" {
     run python3 - "${BATS_TEST_DIRNAME}/../../scripts/vm-guest-exec.py" "${exec_root}" <<'PY'
 import os
+import json
 import signal
 import subprocess
 import sys
@@ -220,9 +327,15 @@ try:
     assert process.wait(timeout=5) == -signal.SIGTERM
     for args in (['check', str(root)], ['fail', str(root), 'confirmation', 'failed'],
                  ['run', str(root), 'evidence', 'context', 'probe', 'true'],
-                 ['cli', str(root), 'evidence', 'context', 'true', '--', 'agent', 'windows']):
+                 ['cli', str(root), 'evidence', 'context', 'true', '--', 'agent', 'windows'],
+                 ['cli', str(root), 'evidence', 'containment', 'true', '--', 'vm', 'stop', 'exact-vm']):
         result = subprocess.run([sys.executable, backend, *args], capture_output=True)
         assert result.returncode == 125, (args, result.returncode)
+        assert (root / 'unavailable').read_text().strip() == 'competing evidence writer', args
+        refusal = json.loads((root / 'refusals.jsonl').read_text().splitlines()[-1])
+        assert refusal['reason'] == 'competing evidence writer', refusal
+        assert refusal['arguments'] == args, refusal
+    assert len((root / 'refusals.jsonl').read_text().splitlines()) == 5
     assert calls.read_text().count('\n') == 1
     assert (root / 'unavailable').read_text().strip() == 'competing evidence writer'
     assert not (root / '000002').exists()

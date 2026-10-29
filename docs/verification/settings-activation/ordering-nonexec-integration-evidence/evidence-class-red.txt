@@ -1,0 +1,5 @@
+1..2
+not ok 1 evidence class refuses mutating CLI actions even after a prior latch
+# (in test file Tests/scripts/vm-guest-exec.bats, line 103)
+#   `[[ "${status}" == 125 && ! -e "${exec_calls}" ]]' failed
+ok 2 latched CLI evidence still admits collection and exact clone stop

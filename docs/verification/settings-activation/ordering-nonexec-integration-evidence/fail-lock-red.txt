@@ -1,0 +1,7 @@
+1..1
+not ok 1 nonexec orphan and gate confirmation exec callers share one writer lock
+# (in test file .build/k64-mutations/fail-lock/Tests/scripts/vm-guest-exec.bats, line 352)
+#   `[[ "${status}" == 0 ]]' failed
+# Traceback (most recent call last):
+#   File "<stdin>", line 33, in <module>
+# AssertionError: {'source': 'backend', 'at': '2026-10-29T05:49:31.824861+00:00', 'arguments': ['check', '/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-dQw6cd/test/1/evidence'], 'reason': 'competing evidence writer'}

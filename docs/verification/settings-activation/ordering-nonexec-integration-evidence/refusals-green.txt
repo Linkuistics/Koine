@@ -1,0 +1,4 @@
+1..3
+ok 1 refusals retain each request and reason without replacing the first latch
+ok 2 nonexec invalid invocations and missing backends latch before later input
+ok 3 nonexec orphan and gate confirmation exec callers share one writer lock

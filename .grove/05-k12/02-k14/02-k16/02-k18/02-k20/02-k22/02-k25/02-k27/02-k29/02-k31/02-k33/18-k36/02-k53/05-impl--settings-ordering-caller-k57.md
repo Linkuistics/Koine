@@ -18,6 +18,18 @@ helpers and strict setup/title/liveness rules; retain every ordinary duty.
   Qualified recurrence retains rejection precedence over later collection failure.
 - Implement complete original/installed/golden item audits and interrupted-run
   collection, exact clone stop and independent inventory; no count-only equality.
+- K63 P3-1/P3-2, integrated by k64: bind the declared golden image with an
+  explicit vm start --base and validate its returned identity against the frozen
+  image. Init binds only the clone ID. Viewer and keep-on-failure options refuse.
+  A failed or interrupted start can leave the pinned clone running; retain that
+  uncertainty and attempt exact-clone containment plus independent inventory.
+  An orphaned CLI/validator can retain the writer lock: record each refused
+  collection/confirmation/stop request and its reason from refusals.jsonl and
+  facade-refusals.log. Wait for the owned holder or end its recorded owned process
+  group before an exact-stop dispatch; never bypass the lock or clear the latch.
+  Record any additional containment action separately. If the holder cannot be
+  resolved or stop/inventory stays unavailable, record unresolved cleanup and
+  block all later slots. The adapter supplies no holder-discovery/cancellation API.
 - Show failing controls before repair for malformed/partial/timeout/nonzero,
   extra/missing inventory, interruption/cleanup and stop admission/classification.
 - Verify reusable Taskfile checks. Decide and insert earned whole harness/caller

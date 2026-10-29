@@ -1,0 +1,4 @@
+1..3
+ok 1 caller ID overrides refuse on both VM start and endpoint routes
+ok 2 nonexec invalid invocations and missing backends latch before later input
+ok 3 nonexec orphan and gate confirmation exec callers share one writer lock
