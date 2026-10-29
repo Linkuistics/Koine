@@ -14,14 +14,15 @@ accepting explicitly recorded scheduling delays and deferred keepalive ticks.
 This preserves complete capture qualification before another command can start.
 It changes timing, so it needs a scope decision; it is not an implementation
 instruction. Pair that decision with a finite resource-profile design that
-preserves all produced originals. No numerical limits have been selected.
+preserves all produced originals and an explicit normal-stop lifecycle contract.
+No numerical limits or cancellation exception have been selected.
 
 The [evaluation protocol](ORDERING-EVALUATION-PLAN.md),
 [capture contract and integration](ORDERING-CAPTURE-RESULTS.md),
 [shared writer](ORDERING-NONEXEC-RESULTS.md) and
 [accepted product scope](../../specs/settings-activation-discrimination.md)
-remain binding. Independent design review and every earned integration precede
-the scope decision. Any approved replacement then needs concrete design, review,
+remain binding. The [k94 review dispositions](#review-integration) distinguish
+these repairs from scope approval. Any approved replacement needs concrete design, review,
 planning, implementation and earned review/integration before k89/k81/k76
 consumption. This document supplies no native acceptance or ancestor closure.
 
@@ -36,7 +37,8 @@ The loop sleeps 20 seconds **after the preceding capture completes**, then
 attempts one capture. It is not a wall-clock periodic timer. The shared
 nonblocking lock covers dispatch, response validation, complete PNG inspection
 and terminal publication. The existing Allow OCR invocation can occupy this
-domain for its 30-second timeout; its substring matcher can also finish early.
+domain through its 30-second OCR polling interval; its substring matcher can
+also finish early. This is not a bound on the whole command or lock hold.
 There is no measured distribution or guaranteed early finish.
 
 A permitted schedule suffices: the preceding capture finishes at time 0; the
@@ -47,6 +49,40 @@ Conversely, a capture that starts first can refuse the next scenario command,
 including while the CLI has finished and PNG inspection still owns the lock.
 This is a schedule counterexample, not a measured 30-second native OCR run or
 a collision-frequency estimate.
+
+A blocking acquire for the keepalive alone, as suggested in k90, removes only
+the first direction. Once that capture starts, the scenario can still collide.
+Its lock covers RFB connection setup, frame acquisition, encoding, response
+checks, PNG inspection and publication. RFB is the protocol used by the VNC
+connection. The tagged frame reader has a five-second wait for each message's
+first byte; message completion and repeated messages are not bounded by that
+timer. Five seconds is not a whole-capture deadline.
+
+Under the present shared writer and independent loop, eliminating both
+contention refusals requires preventing capture ownership at every scenario
+dispatch. The scenario must either wait for ownership or declare an exclusive
+capture window that it cannot overrun. The latter also changes tick admission
+and needs a defined completion rule. Keepalive-only waiting and a check that the
+writer is free do not establish this invariant. This argument concerns the
+present capture design, not every possible liveness transport.
+
+### Lock duration and connection activity
+
+The tagged source distinguishes command execution from validation after it.
+The writer covers both. A live VNC connection during one part of a hold does
+not prove activity throughout the hold or establish a safe idle interval.
+
+| Operation class | Lock hold and VNC consequence |
+|---|---|
+| Screen capture, size and Allow OCR | The command opens a VNC connection; OCR reuses it across polls. While that connection remains live, a deferred tick creates no additional connection-free interval. PNG inspection and terminal publication after CLI exit still own the lock without that connection. |
+| Physical input | The command opens a VNC connection through input and confirmation. The tagged confirmation limit is ten seconds; it is not a whole-command bound or proof of delivery. |
+| Guest exec | The writer waits for the CLI and response checks. The legacy source and retained transport fixture identify a 30-second guest timeout; that does not bound host transport or total lock duration. The file-exec handler uses the agent connection, not VNC. |
+| Upload/download and plain agent reads | The writer spans the transfer or read and its validation. These handlers use the agent connection; they do not maintain VNC activity. Transfer length has no established bound here. `agent snapshot --open-menu` is a distinct path that sends VNC input; the collection adapter excludes it. |
+| VM lifecycle and local validation/publication | The writer spans the admitted lifecycle command or local work. Neither supplies a general VNC liveness guarantee. The adapter forbids `vm start --viewer`. |
+
+Exec, transfer and validation intervals therefore matter to any deferred-tick
+decision even when the OCR interval already has a live connection. Source
+classification supplies no collision rate or measured native availability.
 
 The legacy source documents an observed VZ assertion after roughly 60 seconds
 without a VNC client. That observation motivates activity; it does not establish
@@ -62,8 +98,9 @@ command duration, validation, scheduling and connection activity remain distinct
 | Current independent loop and global nonblocking writer | Immediate refusal, one ordinal domain, whole-capture qualification, unchanged sleeps | Collision stops both eligibility and keepalive; no useful complete-run availability is established | Retain source for evidence; do not adopt as the resolved design |
 | One serialized owner of scenario and keepalive commands | One dispatch at a time; complete capture validation before later dispatch; first failure can cancel unstarted work | Admission waits replace immediate contention refusal for owned submissions; ticks can be late and scenario actions can wait behind a capture | Recommended **scope for further design**, not selected implementation |
 | Separate keepalive writer plus shared failure admission gate | Scenario need not wait for PNG validation; capture could have its own unique receipts | Relaxes the global writer/ordinal domain and the barrier against input during unqualified capture; a later capture failure can follow newly admitted scenario input | Not recommended under the present evidence contract; a shared latch alone cannot restore the lost ordering guarantee |
+| Liveness-only capture outside the evidence root | Keeps the existing scenario command schedule without adding coordinator waits; the worker can retain its sleep-20 loop | Removes keepalive captures from required checked evidence and ignores their failures for scenario eligibility. Private images need an explicit retention/disposal decision. Concurrent VNC clients and host work can still affect input and elapsed timing | A distinct scope option, not a compliant implementation. Not recommended without accepting the evidence loss and qualifying the connection interaction separately |
 | Skip busy ticks or capture only at scenario checkpoints | Can avoid some collisions without a queue | Omits or defers required captures, changes cadence; checking free then dispatching still races; it does not solve a scenario arriving during a capture | Not selected; neither an idle guarantee nor preservation of all current obligations |
-| Persistent VNC connection or another keepalive transport | Might remove periodic screenshot work | New connection/lifecycle semantics and qualification duties; the current source does not establish a suitable supported interface or its effects | Separate capability/design question if serialization is rejected; no new transport selected |
+| Persistent VNC connection or another keepalive transport | Might remove periodic screenshot work | The tagged viewer forwards host input and reconnects; the recorder encodes video for at most 300 seconds. Both add lifecycle and resource duties and can coexist with other VNC clients | Neither is a passive liveness interface. A separately scoped capability/design question remains; neither is selected |
 
 One coordinator earns its place by owning the shared ordering invariant. Callers
 would submit one operation and receive one terminal result, rather than manage
@@ -74,6 +111,28 @@ ownership implicit. A priority queue cannot preempt a capture already validating
 Scenario priority can starve ticks; keepalive priority can delay input. Those
 trade-offs cannot be hidden behind the word serialization.
 
+One owner also serializes the scenario's VNC clients as a side effect. The
+tagged CLI documents a routed connection reset on client departure that can
+overtake input at tart's VNC server. It does not establish whether separate
+concurrent clients interfere. A separate writer, liveness-only worker or
+persistent connection gives up this serialization benefit. This is an
+unresolved delivery risk, not evidence that concurrent clients do interfere.
+
+The liveness-only alternative separates activity from evidence. Its capture
+would run outside the required writer, with a private image destination and
+failures that do not latch scenario eligibility. This explicitly reopens k85's
+rule that every capture, including keepalive, is checked and retained evidence.
+It cannot silently inherit permission to discard images or ignore failure from
+the legacy loop. A retained image can contain credentials or consent content;
+discarding it also changes the original-retention duty. Its lack of a new
+scenario wait is not a promise of unchanged native timing or useful liveness.
+
+The tagged viewer creates a host GUI, forwards input and reconnects. The
+recorder is noninteractive, but samples and encodes frames until its duration
+ends, capped at 300 seconds. Repeated recording, continuous connection ownership
+and resource handling would need a new design. Neither is admitted by the
+current adapter as a liveness replacement.
+
 Evidence that would reverse the recommendation is a qualified existing transport
 that maintains the needed connection without capture competition, or an accepted
 requirement that permits input while another required observation is unqualified.
@@ -83,12 +142,22 @@ Neither has been established. No claim rules out every possible design.
 
 The next requirements discussion must resolve these concrete choices together:
 
-1. **Timing:** permit design of a serialized owner with logged admission delays
-   and deferred ticks, or retain the current no-scheduling-wait rule and leave
-   adoption unavailable. The recommendation is permission to design serialization.
-   Existing explicit scenario sleeps, input sequence and poll counts would stay;
-   added elapsed delay would be a named amendment, with possible effects on the
-   intermittent symptom. No claim of unchanged timing would remain.
+1. **Timing and liveness:** permit design of a serialized owner with logged
+   admission delays and deferred ticks; retain the present rules and leave
+   adoption unavailable; or explicitly reopen the evidence/transport rules for
+   a separate liveness-only or persistent-connection design. The recommendation
+   is permission to design serialization. An admission delay before a Settings
+   click is a driver wait, even when its purpose is coordination. Approval must
+   explicitly constitute the separate scope proposal required by the spec's
+   excluded driver-wait class. The proposed exception is a delay determined by
+   command ownership and fixed policy, independent of observed UI state, focus
+   or outcome. No wait for focus, success, or a repeated input is proposed.
+   Existing explicit sleeps, input order and poll counts would stay; elapsed
+   timing changes and may affect the intermittent symptom. The protocol's
+   observation policy and symptom-preservation discussion must reflect any
+   accepted amendment before freeze. A liveness-only option avoids intentional
+   scenario admission delays but changes evidence eligibility, retention and
+   connection concurrency instead. It supplies no unchanged-timing guarantee.
 2. **Failure eligibility:** preserve the strong rule that required capture
    qualification finishes before any subsequent scenario dispatch. The
    recommendation retains it. A second writer requires a separate explicit
@@ -98,6 +167,14 @@ The next requirements discussion must resolve these concrete choices together:
    limits, or explicitly accept unbounded host resource exposure. The
    recommendation is the finite profile. It is not permission to truncate,
    overwrite, delete, downsample or omit a required image.
+4. **Normal worker stop:** permit design of a cooperative stop and/or a distinct
+   nonfailure lifecycle receipt for a matched planned stop, or retain the current
+   receipt semantics and accept that a recorded sleep interruption makes even
+   an otherwise successful run unavailable. Recommend design of an explicit
+   normal-stop result outside required tick outcomes. This is an amendment to
+   what can end without latching, not permission to clear an existing latch.
+   Prior failures, unexpected exits and interrupted required captures still
+   prevent acceptance. Exact schema, race handling and controls remain design work.
 
 Approval of this direction would not choose numerical bounds or admit runtime.
 The ensuing design must fix maximum pending work, admission/operation deadlines,
@@ -149,6 +226,20 @@ It is a lifecycle result, never a clean tick. If a required capture was in
 flight, its interrupted or missing completion still prevents acceptance.
 An unmatched exit/signal remains unexpected; do not relabel it after the fact.
 
+The current loop cannot express this normal-stop distinction. A recorded failed
+sleep uses `poll-step`/`sleep`; the backend sets a reason, latches immediately,
+and re-latches its interrupted result on later dispatch. Signalling during a
+capture can leave a failed or unfinished required attempt. Killing a sleeping
+worker without such a record supplies no lifecycle evidence. Recording intent
+elsewhere does not make any of these paths a clean stop.
+
+The proposed normal-stop contract therefore depends on scope item 4 and a
+reviewed replacement. A cooperative exit or separate lifecycle receipt must
+distinguish an undispatched tick from required work already dispatched, record
+the matched stop and reap, and preserve all earlier failures. It cannot turn a
+`poll-step` interruption into clean evidence, ignore a sticky latch, or relabel a
+missing capture as cleanup. Failure to record or establish the stop is unavailable.
+
 ## Exact interruption and partial records
 
 | Event | Required interpretation and retained evidence |
@@ -166,7 +257,9 @@ Current paths use shared ordinal request/result files, `artifact.json`,
 fields govern interpretation, not the historical reason text `window poll`.
 A future coordinator must distinguish queued-but-never-dispatched work from
 attempts, and may not allocate fake dispatched-attempt ordinals for cancellation.
-The exact lifecycle record schema is a subsequent reviewed design obligation.
+The exact lifecycle record schema is a subsequent reviewed design obligation,
+conditional on the explicit normal-stop scope amendment. Current signal and
+latch behavior remains unchanged.
 
 ## Resource contract and limits
 
@@ -216,7 +309,8 @@ The [capture controls](../../../Tests/scripts/vm-capture-evidence.bats) exercise
 the current overlap and partial-record cases. These are current direct source
 reads, not claims about an installed native tool's behavior.
 
-Tier 2 graph generation `2026-10-29T09:52:58Z` located the relevant symbols and
+The original k92 evidence used Tier 2 graph generation `2026-10-29T09:52:58Z`,
+which located the relevant symbols and
 the backend/inspector call. The bidirectional backend trace also had unrelated
 Swift/trace edges, which are not credited. The
 [coverage receipt](ordering-keepalive-design-evidence/coverage.json) reports changed
@@ -226,12 +320,12 @@ lines, including the actual current backend rather than trusting stale offsets.
 The earlier `scripts/.*` graph filter returned zero; no absence claim uses it.
 This is task-bounded verification, not an exhaustive graph audit.
 
-The [verification receipt](ordering-keepalive-design-evidence/verification.json)
+K92's [verification receipt](ordering-keepalive-design-evidence/verification.json)
 and [capture output](ordering-keepalive-design-evidence/capture-check.txt) identify
 the fresh helper check and unchanged measured inputs. The
 [documentation output](ordering-keepalive-design-evidence/docs-check.txt) is the
 actual repository-wide link result, including any pre-existing failures.
-Browser inspection checks the two new rendered views after correcting a sequence
+K92's browser inspection checked the two new rendered views after correcting a sequence
 label's semicolon parse error. No native guest or new implementation is tested.
 
 Use the existing helper/adapter seam with controlled CLI and sleep behavior.
@@ -244,11 +338,53 @@ Before a replacement is consumed, its controls must discriminate both overlap
 directions; tick due during 30-second OCR; failure before and after admission;
 capture failure before later input; no dispatch for cancelled pending work;
 unexpected worker death; planned cancellation during sleep versus in-flight
-capture; INT/TERM/HUP and inherited orphan lock; both held-pointer paths;
+capture; matched normal stop after an otherwise passing run; a prior latch that
+normal stop cannot erase; a tick racing stop before versus after dispatch;
+missing lifecycle publication; INT/TERM/HUP and inherited orphan lock; both held-pointer paths;
 original/partial retention; exact VM stop plus inventory; every resource-limit
 boundary and failure to write terminal evidence. Preserve all successful
 scenario actions, explicit waits, poll bounds and E/A prefix correspondence.
 Any newly permitted scheduling latency needs separate assertions and reporting.
+It must be independent of observed focus/outcome. Any liveness-only or persistent
+connection alternative needs separate qualification of concurrent-client effects,
+failure policy, private artifact handling and lifecycle before consumption.
+
+## Review integration
+
+K95 grades k94's findings from commit `79b6b340` against the reviewed artifact
+`5ce8a16e`, the current contracts and TestAnyware v2.7.0 at `65bc05c9`.
+
+| Finding | Classification and disposition |
+|---|---|
+| P2-1: planned cancellation latches | Real issue. The normal-stop choice and ownership contract now name the missing nonfailure exit/receipt semantics. Current `poll-step` still latches; intent alone supplies no exception. |
+| P2-2: excluded driver-wait class | Unclear contract. Timing item 1 now explicitly reopens that class for an ownership-based delay, distinguishes UI-conditioned waiting, and requires the actual agreement in the spec/protocol before use. No approval is inferred. |
+| P2-3: missing liveness-only choice | Real issue. Separate it from a second evidence writer. State lost required evidence, ignored failure, private retention/disposal and concurrent-client risks. Accept the absence of an intentional scheduling wait as an option's property, not the review's stronger unchanged-timing implication. |
+| P3-1: long holds and liveness | Real issue. Add the operation-class table and separate live VNC time from the whole lock hold. Qualify the review's agent generalization: open-menu snapshots also use VNC. No command duration becomes a native safe interval. |
+| P3-2: persistent consumers | Real issue. Name the tagged viewer's input/reconnect behavior and the recorder's 300-second cap and encoding work. These are available consumers, not a qualified passive replacement. |
+| P3-3: keepalive-only waiting | Real issue. State both directions and dispose of the half-measure explicitly. Correct the suggested five-second capture bound: it is only message readiness, not the whole operation. |
+| P3-4: repeated proposal/work orders | Real issue. The spec and protocol retain binding holds and pointers. The capture summary, view index and live brief/task handoffs refer to this decision surface. Historical findings and logs remain unchanged. |
+
+The supported held-pointer, orphan-lock, untouched-collection, exact-containment,
+resource and privacy obligations remain below and above. No redesign is
+implemented. No settled choice earns an ADR. K93 owns the human decision.
+
+The tagged command evidence is [VNC connection and input confirmation](https://github.com/Linkuistics/TestAnyware/blob/65bc05c9/cli-rs/crates/testanyware-cli/src/commands/mod.rs),
+[screen](https://github.com/Linkuistics/TestAnyware/blob/65bc05c9/cli-rs/crates/testanyware-cli/src/commands/screen.rs),
+[input](https://github.com/Linkuistics/TestAnyware/blob/65bc05c9/cli-rs/crates/testanyware-cli/src/commands/input.rs),
+[file](https://github.com/Linkuistics/TestAnyware/blob/65bc05c9/cli-rs/crates/testanyware-cli/src/commands/file.rs),
+[agent](https://github.com/Linkuistics/TestAnyware/blob/65bc05c9/cli-rs/crates/testanyware-cli/src/commands/agent.rs),
+[viewer](https://github.com/Linkuistics/TestAnyware/blob/65bc05c9/cli-rs/crates/testanyware-cli/src/commands/viewer.rs),
+[recorder](https://github.com/Linkuistics/TestAnyware/blob/65bc05c9/cli-rs/crates/testanyware-cli/src/commands/record.rs)
+and [frame acquisition](https://github.com/Linkuistics/TestAnyware/blob/65bc05c9/cli-rs/crates/testanyware-vm/src/capture.rs).
+These are direct reads of that commit, not a native experiment or a claim about
+an installed binary. Current backend and Bats source establish the latch path;
+no production test is rerun for this documentation-only repair. A single narrow
+adversarial reader found no issue in the scope, normal-stop, first-failure and
+hold contract. This is one aimed review, not native qualification or human approval.
+The [k95 verification receipt](ordering-keepalive-integration-evidence/verification.json)
+retains source coverage, document checks and rendered-view observations. The
+[documentation output](ordering-keepalive-integration-evidence/docs-check.txt)
+records the actual link-check outcome, including existing failures.
 
 Independent review should try to defeat the overlap argument and find a route
 that satisfies the unchanged contract. It should also challenge whether the

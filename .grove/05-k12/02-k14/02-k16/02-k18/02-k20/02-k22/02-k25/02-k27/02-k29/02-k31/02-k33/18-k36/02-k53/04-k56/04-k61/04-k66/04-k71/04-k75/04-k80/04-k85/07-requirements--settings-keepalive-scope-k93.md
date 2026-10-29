@@ -1,7 +1,7 @@
 # settings-keepalive-scope-k93
 
 ## Goal
-Resolve the explicit keepalive timing, failure-ordering and resource choices with
+Resolve the explicit keepalive timing, failure-ordering, normal-stop and resource choices with
 Antony after k92's independent review and every earned integration.
 
 ## Context
@@ -9,22 +9,26 @@ Read the current KEEPALIVE-DESIGN.md under docs/verification/settings-activation
 the spec's keepalive-coordination hold, ORDERING-EVALUATION-PLAN.md and current
 capture/shared/click reports. K92 takes its charter's unresolved-scope branch;
 its recommendation is not an approved scheduler or resource profile.
+K95 integrates k94 in the design's Review integration section. Use the current
+Required scope decision section as the single proposal and recommendation.
 
 ## Done when
-- Present the concrete trade-offs in Required scope decision. Recommend permission
-  to design one serialized command owner with visible scenario admission delays
-  and deferred keepalive ticks, preserving whole-capture qualification before
-  later input. Compare retaining the current constraints and the distinct weaker
-  concurrent-capture/new-transport alternatives. Record Antony's actual answer;
+- Present every choice and cost in Required scope decision, including the
+  separate evidence-writer and liveness-only alternatives, tagged persistent
+  consumers, connection risks and normal-stop semantics. Explain the design's
+  recommendation and its limits. Record Antony's actual answer for each choice;
   do not treat design review or silence as agreement.
-- Resolve finite resource-profile design versus explicit acceptance of unbounded
-  exposure. Recommend a finite profile that retains every produced original and
-  partial, with explicit unavailable outcomes. No arbitrary caps, deletion,
+- Resolve the resource choice in the design. No arbitrary caps, deletion,
   overwrite, downsampling or skipped required evidence. Explain that post-capture
   checks/streaming alone cannot bound the external producer.
 - Any accepted timing amendment names what changes: scheduling delay and cadence,
   distinct from unchanged input order, explicit sleeps, poll counts and one-attempt
-  transport. Preserve first-failure eligibility, exact VM identity and private
+  transport. An ownership-based admission delay explicitly reopens the excluded
+  driver-wait class; approval must name that scope proposal and its UI-independent
+  boundary. A liveness-only choice separately amends required tick evidence and
+  retention. A normal-stop choice must name any nonfailure lifecycle semantics
+  without excusing a prior latch or interrupted required capture. Preserve
+  first-failure eligibility, exact VM identity and private
   roots. No native idle interval or collection availability is established.
 - Update the existing verification/spec contracts and brief handoffs with the
   exact agreement and complete original-duty comparison. If a replacement is

@@ -1,0 +1,53 @@
+{
+  "task": "settings-keepalive-coordination-k95",
+  "review_commit": "79b6b340",
+  "reviewed_artifact": "5ce8a16e",
+  "testanyware_commit": "65bc05c9",
+  "command": [
+    "mise",
+    "exec",
+    "--",
+    "task",
+    "check:docs"
+  ],
+  "started": "2026-10-29T11:07:36.825255+00:00",
+  "finished": "2026-10-29T11:07:37.724311+00:00",
+  "exit_code": 201,
+  "source_count": 210,
+  "inputs_unchanged": true,
+  "source_membership_unchanged": true,
+  "changed_inputs": [],
+  "measurement_scope": "All documentation checker source files, checker, Taskfile, changed-view sources and viewer assets, plus relied-on current capture/backend/test source. JSON and text receipt outputs are not checker content inputs; their existence is checked through the design links.",
+  "browser_check": {
+    "tool": "cua_repl Chrome",
+    "url": "http://127.0.0.1:8805/settings-activation/",
+    "observed_at": "2026-10-29T11:09:29.933993+00:00",
+    "views": {
+      "keepalive-scope": "Rendered SVG and screenshots inspected: option branches, normal-stop and resource choices legible.",
+      "keepalive-collision": "Rendered SVG and screenshot inspected: overlap/refusal/latch sequence and live-VNC qualification legible."
+    },
+    "initial_failure": "The sequence note contained a semicolon that Mermaid parsed as a statement separator; corrected to a comma before final document measurement and final visual inspection.",
+    "limitations": "Browser rendering only; no native transport or scenario qualification."
+  },
+  "narrow_review": {
+    "scope": "Required scope decision, ownership/failure/collection, interruption sections and spec hold",
+    "result": "No issues found after examination",
+    "contexts": 1,
+    "kind": "aimed"
+  },
+  "runtime": "No production test, guest, candidate or freeze; no scope approval.",
+  "inputs_unchanged_through_browser_check": true,
+  "changed_inputs_after_browser_check": [],
+  "coverage_receipts": [
+    "coverage.json",
+    "additional-coverage.json",
+    "testanyware-coverage.json",
+    "testanyware-additional-coverage.json",
+    "check-coverage.json"
+  ],
+  "documentation_failures": [
+    "docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md: missing target context-predicate.txt",
+    "docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md: missing target context-qualify-filter.sh"
+  ],
+  "failure_disposition": "These are the existing archive-link defects owned by settings-archive-links-k23; no new failure was reported."
+}

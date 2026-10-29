@@ -1,0 +1,73 @@
+{
+  "project": "Users-antony-Development-AbstractingComputers-Koine.gh-issue-14",
+  "signal": "best_effort",
+  "indexed_at": "2026-10-29T10:59:40Z",
+  "metadata": {
+    "generation": "2026-10-29T10:59:40Z",
+    "index_mode": "full",
+    "recorded_at": "2026-10-29T10:59:40Z",
+    "recording_status": "complete",
+    "ignored_files_stored": 276,
+    "ignored_files_total": 276,
+    "hash_records_complete": true,
+    "coverage_version": 3,
+    "generation_matches": true
+  },
+  "paths": [
+    {
+      "requested_path": "docs/design/architecture/settings-activation/keepalive-scope.mmd",
+      "path": "docs/design/architecture/settings-activation/keepalive-scope.mmd",
+      "status": "partial",
+      "freshness": "metadata_changed",
+      "recommended_action": "read_source_and_reindex",
+      "coverage": [
+        {
+          "path": "docs/design/architecture/settings-activation/keepalive-scope.mmd",
+          "kind": "parse_partial",
+          "detail": "1-22",
+          "match": "exact",
+          "ranges": [
+            {
+              "start": 1,
+              "end": 22
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "requested_path": "docs/design/architecture/settings-activation/keepalive-collision.mmd",
+      "path": "docs/design/architecture/settings-activation/keepalive-collision.mmd",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_changed",
+      "recommended_action": "read_source_and_reindex",
+      "coverage": []
+    },
+    {
+      "requested_path": "docs/design/architecture/settings-activation/diagrams.json",
+      "path": "docs/design/architecture/settings-activation/diagrams.json",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_changed",
+      "recommended_action": "read_source_and_reindex",
+      "coverage": []
+    },
+    {
+      "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/07-requirements--settings-keepalive-scope-k93.md",
+      "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/07-requirements--settings-keepalive-scope-k93.md",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_changed",
+      "recommended_action": "read_source_and_reindex",
+      "coverage": []
+    },
+    {
+      "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-impl--settings-file-lifecycle-k89.md",
+      "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-impl--settings-file-lifecycle-k89.md",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_changed",
+      "recommended_action": "read_source_and_reindex",
+      "coverage": []
+    }
+  ],
+  "scopes": [],
+  "caveat": "Best-effort signal only. No recorded issue does not prove graph or source completeness; read flagged source and qualify claims when metadata is changed or unavailable."
+}

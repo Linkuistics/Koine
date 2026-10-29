@@ -1,6 +1,6 @@
 # Settings activation design discussion
 
-The current discussion is [keepalive coordination](../../../verification/settings-activation/KEEPALIVE-DESIGN.md). A permitted overlap stops the keepalive and scenario eligibility. The proposed direction needs independent design review and an explicit timing/resource scope decision before any helper adoption. No scheduler, cap, guest, candidate or freeze is authorized.
+The current discussion is [keepalive coordination](../../../verification/settings-activation/KEEPALIVE-DESIGN.md), including its review dispositions and unresolved scope choices. The [binding hold](../../../specs/settings-activation-discrimination.md#keepalive-coordination-hold) prevents helper adoption and runtime. The views illustrate that decision surface; they grant no authority.
 
 The [current contract](../../../specs/settings-activation-discrimination.md#single-request-ordering-design)
 defines one shared-method reversal: prepare the retained window and section,
@@ -48,7 +48,7 @@ loads these same sources while retaining its separate current discussion.
 Current changes:
 
 - [Keepalive → A due capture conflicts with the whole-operation writer](http://127.0.0.1:8801/settings-activation/#diagram-keepalive-collision) — Shows refusal in both overlap directions and the sticky failure consequence.
-- [Keepalive → Choose explicit timing and resource amendments before implementation](http://127.0.0.1:8801/settings-activation/#diagram-keepalive-scope) — Separates the recommended scope from authorization and later design/implementation.
+- [Keepalive → Resolve timing, evidence, stop and resource choices](http://127.0.0.1:8801/settings-activation/#diagram-keepalive-scope) — Compares scope options before any replacement design or implementation.
 - [Coordination and scope decision](../../../verification/settings-activation/KEEPALIVE-DESIGN.md) — Defines ownership, cancellation, exact partials, resource limits, alternatives and all remaining duties.
 - [Keepalive coordination hold](../../../specs/settings-activation-discrimination.md#keepalive-coordination-hold) — Keeps helper consumption and runtime held without changing the accepted product convention.
 

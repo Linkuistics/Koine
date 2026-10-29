@@ -1,0 +1,36 @@
+{
+  "project": "Users-antony-Development-AbstractingComputers-TestAnyware",
+  "signal": "best_effort",
+  "indexed_at": "2026-10-29T07:11:24Z",
+  "metadata": {
+    "generation": "2026-10-29T07:11:24Z",
+    "index_mode": "fast",
+    "recorded_at": "2026-10-29T07:11:25Z",
+    "recording_status": "complete",
+    "ignored_files_stored": 6,
+    "ignored_files_total": 6,
+    "hash_records_complete": true,
+    "coverage_version": 3,
+    "generation_matches": true
+  },
+  "paths": [
+    {
+      "requested_path": "cli-rs/crates/testanyware-cli/src/commands/file.rs",
+      "path": "cli-rs/crates/testanyware-cli/src/commands/file.rs",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_match",
+      "recommended_action": "use_graph_with_best_effort_caveat",
+      "coverage": []
+    },
+    {
+      "requested_path": "cli-rs/crates/testanyware-cli/src/commands/agent.rs",
+      "path": "cli-rs/crates/testanyware-cli/src/commands/agent.rs",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_match",
+      "recommended_action": "use_graph_with_best_effort_caveat",
+      "coverage": []
+    }
+  ],
+  "scopes": [],
+  "caveat": "Best-effort signal only. No recorded issue does not prove graph or source completeness; read flagged source and qualify claims when metadata is changed or unavailable."
+}

@@ -30,8 +30,8 @@
   ],
   "discussion": {
     "title": "Resolve the keepalive writer conflict before adoption",
-    "status": "Design assessment complete; independent review and scope decision pending",
-    "summary": "A permitted sleep-20 tick can collide with the locked Allow read; capture validation can also refuse scenario input. Recommend permission to design one serialized owner with visible delays and deferred ticks, plus a finite resource profile retaining produced originals. Those amendments are not approved. All downstream consumption and runtime remain held. The diagrams are reasoning views, not native measurements or model checking.",
+    "status": "Review findings integrated; explicit scope decision remains open",
+    "summary": "KEEPALIVE-DESIGN.md owns the timing, evidence, normal-stop and resource choices. These views compare the current collision with options for the scope discussion. All downstream consumption and runtime remain held. The diagrams are reasoning views, not native measurements or model checking.",
     "diagramIds": [
       "keepalive-collision",
       "keepalive-scope",
@@ -44,7 +44,7 @@
       },
       {
         "id": "keepalive-scope",
-        "summary": "Separates the proposed timing/resource amendments from review, scope agreement and later implementation."
+        "summary": "Compares serialization, liveness-only capture and other transports, with explicit stop and resource decisions."
       }
     ]
   },
@@ -54,14 +54,14 @@
       "group": "keepalive",
       "title": "A due capture conflicts with the whole-operation writer",
       "source": "keepalive-collision.mmd",
-      "caption": "Current semantics under a permitted schedule. Twenty seconds is sleep after completion, not wall-clock periodicity. The 30-second OCR timeout permits overlap but supplies no collision rate; early substring completion is also possible."
+      "caption": "Current semantics under a permitted schedule. Twenty seconds is sleep after completion. A live OCR connection maintains VNC activity during that part of the lock hold; validation after CLI exit does not. No collision rate or whole-command deadline follows."
     },
     {
       "id": "keepalive-scope",
       "group": "keepalive",
-      "title": "Choose explicit timing and resource amendments before implementation",
+      "title": "Resolve timing, evidence, stop and resource choices",
       "source": "keepalive-scope.mmd",
-      "caption": "Recommended direction is permission to design serialization and a finite profile, not approval of a queue, deadline, cap, new native transport or runtime. The current failure barrier and all produced originals remain required."
+      "caption": "The design document owns the recommendation and costs. A scheduling delay reopens the driver-wait exclusion. Liveness-only capture instead reopens required evidence and retention. No option, normal-stop exception, numerical cap or native transport is approved here."
     },
     {
       "id": "evidence-limit",

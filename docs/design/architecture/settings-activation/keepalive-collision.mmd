@@ -7,6 +7,7 @@ sequenceDiagram
     Note over K: Sleep 20 after completion
     S->>W: Start Allow read with timeout 30
     Note over W: Lock spans dispatch and validation
+    Note over S: OCR reuses a VNC connection while live, lock time is not idle time
     K->>W: Sleep ends, request one capture
     W-->>K: Refuse contention, no dispatch or ordinal
     Note over W,K: Sticky unavailable latch, loop exits
@@ -14,3 +15,4 @@ sequenceDiagram
     S->>W: Next scenario operation
     W-->>S: Refuse, earlier failure remains
     Note over S,K: Reverse overlap also refuses scenario input during capture or PNG validation
+    Note over S,K: Waiting only on the keepalive side leaves that reverse overlap
