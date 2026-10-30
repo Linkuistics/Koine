@@ -1,0 +1,17 @@
+{
+  "command": [
+    "python3",
+    "/Users/antony/.codex/skills/technical-communication/scripts/ste-lint.py",
+    "docs/specs/settings-keepalive-owner.md"
+  ],
+  "at": "2026-10-30T10:48:12.486132+00:00",
+  "exit": 1,
+  "before": {
+    "docs/specs/settings-keepalive-owner.md": "86d81f6bc2f6730c6e33884279990f50fa7a5da97f0c6c2115287c92ceeab799",
+    "/Users/antony/.codex/skills/technical-communication/scripts/ste-lint.py": "b4d68662ac4b8a73134313e46b9cd5765e5cae240f2bf9909d004121604536d7"
+  },
+  "after": {
+    "docs/specs/settings-keepalive-owner.md": "86d81f6bc2f6730c6e33884279990f50fa7a5da97f0c6c2115287c92ceeab799",
+    "/Users/antony/.codex/skills/technical-communication/scripts/ste-lint.py": "b4d68662ac4b8a73134313e46b9cd5765e5cae240f2bf9909d004121604536d7"
+  }
+}

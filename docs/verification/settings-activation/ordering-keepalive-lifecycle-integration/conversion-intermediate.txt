@@ -1,0 +1,35 @@
+docs/specs/settings-keepalive-owner.md:38:65 passive-voice: Possible passive voice ('is introduced'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:47:40 passive-voice: Possible passive voice ('are suppressed'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:47:77 passive-voice: Possible passive voice ('is settled'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:56:1 long-paragraph: Paragraph has 7 sentences (limit 6). Split it or cut it.
+docs/specs/settings-keepalive-owner.md:72:1 long-paragraph: Paragraph has 8 sentences (limit 6). Split it or cut it.
+docs/specs/settings-keepalive-owner.md:96:18 synonym-rotation: 'launch' and 'start' name the same action. Pick one and use it every time.
+docs/specs/settings-keepalive-owner.md:99:13 passive-voice: Possible passive voice ('are known'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:103:1 long-paragraph: Paragraph has 9 sentences (limit 6). Split it or cut it.
+docs/specs/settings-keepalive-owner.md:110:11 passive-voice: Possible passive voice ('is suppressed'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:122:1 long-paragraph: Paragraph has 7 sentences (limit 6). Split it or cut it.
+docs/specs/settings-keepalive-owner.md:125:26 present-perfect: Compound tense ('have reached'). Use the simple past or present, unless the link to now is the point.
+docs/specs/settings-keepalive-owner.md:138:1 long-paragraph: Paragraph has 7 sentences (limit 6). Split it or cut it.
+docs/specs/settings-keepalive-owner.md:155:26 passive-voice: Possible passive voice ('is processed'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:161:73 passive-voice: Possible passive voice ('is processed'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:164:12 synonym-rotation: 'validate' and 'check' name the same action. Pick one and use it every time.
+docs/specs/settings-keepalive-owner.md:164:96 passive-voice: Possible passive voice ('are established'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:173:38 passive-voice: Possible passive voice ('is cancelled'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:178:1 long-paragraph: Paragraph has 7 sentences (limit 6). Split it or cut it.
+docs/specs/settings-keepalive-owner.md:190:17 long-sentence: Instruction has 25 words (limit 20). Split it.
+docs/specs/settings-keepalive-owner.md:195:1 long-paragraph: Paragraph has 7 sentences (limit 6). Split it or cut it.
+docs/specs/settings-keepalive-owner.md:197:89 passive-voice: Possible passive voice ('are required'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:198:32 passive-voice: Possible passive voice ('is recorded'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:203:1 long-paragraph: Paragraph has 7 sentences (limit 6). Split it or cut it.
+docs/specs/settings-keepalive-owner.md:232:50 passive-voice: Possible passive voice ('are settled'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:239:1 long-paragraph: Paragraph has 10 sentences (limit 6). Split it or cut it.
+docs/specs/settings-keepalive-owner.md:243:52 passive-voice: Possible passive voice ('is introduced'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:274:220 passive-voice: Possible passive voice ('is tested'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:291:51 synonym-rotation: 'repair' and 'correct' name the same action. Pick one and use it every time.
+docs/specs/settings-keepalive-owner.md:296:1 long-paragraph: Paragraph has 8 sentences (limit 6). Split it or cut it.
+docs/specs/settings-keepalive-owner.md:318:1 long-paragraph: Paragraph has 7 sentences (limit 6). Split it or cut it.
+docs/specs/settings-keepalive-owner.md:327:75 synonym-rotation: 'fix' and 'correct' name the same action. Pick one and use it every time.
+docs/specs/settings-keepalive-owner.md:328:40 passive-voice: Possible passive voice ('are admitted'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:335:1 long-paragraph: Paragraph has 7 sentences (limit 6). Split it or cut it.
+docs/specs/settings-keepalive-owner.md:342:1 passive-voice: Possible passive voice ('are unchanged'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+17 hard, 17 advisory, 0 accepted, 0 pending, 3561 words, 0.5 hard per 100 words (baseline 0)

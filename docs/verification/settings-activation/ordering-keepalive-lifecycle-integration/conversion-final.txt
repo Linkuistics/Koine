@@ -1,0 +1,20 @@
+docs/specs/settings-keepalive-owner.md:38:65 passive-voice: Possible passive voice ('is introduced'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:47:40 passive-voice: Possible passive voice ('are suppressed'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:47:77 passive-voice: Possible passive voice ('is settled'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:98:24 synonym-rotation: 'launch' and 'start' name the same action. Pick one and use it every time.
+docs/specs/settings-keepalive-owner.md:100:13 passive-voice: Possible passive voice ('are known'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:113:11 passive-voice: Possible passive voice ('is suppressed'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:128:26 present-perfect: Compound tense ('have reached'). Use the simple past or present, unless the link to now is the point.
+docs/specs/settings-keepalive-owner.md:162:26 passive-voice: Possible passive voice ('is processed'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:168:73 passive-voice: Possible passive voice ('is processed'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:171:96 passive-voice: Possible passive voice ('are established'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:180:38 passive-voice: Possible passive voice ('is cancelled'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:206:89 passive-voice: Possible passive voice ('are required'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:207:32 passive-voice: Possible passive voice ('is recorded'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:245:50 passive-voice: Possible passive voice ('are settled'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:256:52 passive-voice: Possible passive voice ('is introduced'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:290:220 passive-voice: Possible passive voice ('is tested'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:347:75 synonym-rotation: 'fix' and 'repair' name the same action. Pick one and use it every time.
+docs/specs/settings-keepalive-owner.md:348:40 passive-voice: Possible passive voice ('are admitted'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:364:1 passive-voice: Possible passive voice ('are unchanged'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+2 hard, 17 advisory, 0 accepted, 0 pending, 3561 words, 0.1 hard per 100 words (baseline 0)

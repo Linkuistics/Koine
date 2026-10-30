@@ -1,0 +1,106 @@
+docs/specs/settings-keepalive-owner.md:14:9 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:19:23 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:28:9 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:29:13 spelling: American spelling 'initialization'. Write 'initialisation'.
+docs/specs/settings-keepalive-owner.md:29:32 spelling: American spelling 'initialized'. Write 'initialised'.
+docs/specs/settings-keepalive-owner.md:34:81 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:38:65 passive-voice: Possible passive voice ('is introduced'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:43:211 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:44:170 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:45:145 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:47:40 passive-voice: Possible passive voice ('are suppressed'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:47:77 passive-voice: Possible passive voice ('is settled'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:50:58 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:56:1 long-paragraph: Paragraph has 7 sentences (limit 6). Split it or cut it.
+docs/specs/settings-keepalive-owner.md:71:1 long-paragraph: Paragraph has 7 sentences (limit 6). Split it or cut it.
+docs/specs/settings-keepalive-owner.md:76:68 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:82:1 long-sentence: Description has 30 words (limit 25). Split it.
+docs/specs/settings-keepalive-owner.md:92:40 spelling: American spelling 'serialized'. Write 'serialised'.
+docs/specs/settings-keepalive-owner.md:94:18 synonym-rotation: 'launch' and 'start' name the same action. Pick one and use it every time.
+docs/specs/settings-keepalive-owner.md:97:13 passive-voice: Possible passive voice ('are known'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:103:62 long-sentence: Description has 27 words (limit 25). Split it.
+docs/specs/settings-keepalive-owner.md:104:56 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:108:1 long-sentence: Description has 27 words (limit 25). Split it.
+docs/specs/settings-keepalive-owner.md:108:11 passive-voice: Possible passive voice ('is suppressed'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:109:38 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:115:4 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:121:45 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:123:26 present-perfect: Compound tense ('have reached'). Use the simple past or present, unless the link to now is the point.
+docs/specs/settings-keepalive-owner.md:124:74 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:134:22 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:134:73 synonym-rotation: 'begin' and 'start' name the same action. Pick one and use it every time.
+docs/specs/settings-keepalive-owner.md:141:8 long-sentence: Description has 31 words (limit 25). Split it.
+docs/specs/settings-keepalive-owner.md:141:75 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:150:69 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:153:26 passive-voice: Possible passive voice ('is processed'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:155:48 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:157:17 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:158:132 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:159:73 passive-voice: Possible passive voice ('is processed'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:161:13 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:161:95 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:162:12 synonym-rotation: 'validate' and 'check' name the same action. Pick one and use it every time.
+docs/specs/settings-keepalive-owner.md:162:21 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:162:96 passive-voice: Possible passive voice ('are established'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:163:26 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:164:22 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:164:101 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:165:16 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:171:38 passive-voice: Possible passive voice ('is cancelled'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:176:82 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:178:46 long-sentence: Description has 26 words (limit 25). Split it.
+docs/specs/settings-keepalive-owner.md:180:21 synonym-rotation: 'display' and 'show' name the same action. Pick one and use it every time.
+docs/specs/settings-keepalive-owner.md:181:77 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:187:168 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:188:17 long-sentence: Instruction has 25 words (limit 20). Split it.
+docs/specs/settings-keepalive-owner.md:193:1 long-sentence: Description has 31 words (limit 25). Split it.
+docs/specs/settings-keepalive-owner.md:195:60 passive-voice: Possible passive voice ('are required'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:196:32 passive-voice: Possible passive voice ('is recorded'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:196:82 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:204:54 synonym-rotation: 'confirm' and 'check' name the same action. Pick one and use it every time.
+docs/specs/settings-keepalive-owner.md:207:80 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:215:28 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:222:17 spelling: American spelling 'authorize'. Write 'authorise'.
+docs/specs/settings-keepalive-owner.md:225:69 long-sentence: Instruction has 24 words (limit 20). Split it.
+docs/specs/settings-keepalive-owner.md:225:76 synonym-rotation: 'delete' and 'remove' name the same action. Pick one and use it every time.
+docs/specs/settings-keepalive-owner.md:231:50 passive-voice: Possible passive voice ('are settled'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:233:31 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:235:41 spelling: American spelling 'serialized'. Write 'serialised'.
+docs/specs/settings-keepalive-owner.md:238:1 long-sentence: Instruction has 23 words (limit 20). Split it.
+docs/specs/settings-keepalive-owner.md:238:1 long-paragraph: Paragraph has 7 sentences (limit 6). Split it or cut it.
+docs/specs/settings-keepalive-owner.md:240:54 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:242:52 passive-voice: Possible passive voice ('is introduced'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:243:61 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:246:39 synonym-rotation: 'erase' and 'remove' name the same action. Pick one and use it every time.
+docs/specs/settings-keepalive-owner.md:253:35 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:259:73 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:264:1 long-sentence: Instruction has 23 words (limit 20). Split it.
+docs/specs/settings-keepalive-owner.md:265:1 spelling: American spelling 'behavior'. Write 'behaviour'.
+docs/specs/settings-keepalive-owner.md:273:220 passive-voice: Possible passive voice ('is tested'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:275:179 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:276:125 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:277:115 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:278:49 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:282:41 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:282:159 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:283:72 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:286:1 long-sentence: Description has 32 words (limit 25). Split it.
+docs/specs/settings-keepalive-owner.md:290:51 synonym-rotation: 'repair' and 'correct' name the same action. Pick one and use it every time.
+docs/specs/settings-keepalive-owner.md:291:1 spelling: American spelling 'behavior'. Write 'behaviour'.
+docs/specs/settings-keepalive-owner.md:295:11 spelling: American spelling 'centralizes'. Write 'centralises'.
+docs/specs/settings-keepalive-owner.md:297:64 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:302:1 long-sentence: Description has 27 words (limit 25). Split it.
+docs/specs/settings-keepalive-owner.md:303:6 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:306:1 long-paragraph: Paragraph has 7 sentences (limit 6). Split it or cut it.
+docs/specs/settings-keepalive-owner.md:308:54 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:311:61 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:316:1 long-sentence: Description has 31 words (limit 25). Split it.
+docs/specs/settings-keepalive-owner.md:321:73 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:325:75 synonym-rotation: 'fix' and 'correct' name the same action. Pick one and use it every time.
+docs/specs/settings-keepalive-owner.md:326:40 passive-voice: Possible passive voice ('are admitted'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:328:53 synonym-rotation: 'alter' and 'change' name the same action. Pick one and use it every time.
+docs/specs/settings-keepalive-owner.md:329:8 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:340:1 passive-voice: Possible passive voice ('are unchanged'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:341:10 long-sentence: Description has 26 words (limit 25). Split it.
+docs/specs/settings-keepalive-owner.md:342:19 semicolon: Semicolon. Split the sentence in two.
+88 hard, 17 advisory, 0 accepted, 0 pending, 3543 words, 2.5 hard per 100 words (baseline 0)
