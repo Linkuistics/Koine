@@ -1,5 +1,5 @@
 {
-  "title": "Settings activation: command scheduling and deadlines",
+  "title": "Settings activation: resource admission",
   "intro": "Graph views start at the dark Start here node. Sequences start at their first message and state views at the initial dot. Lifecycle review is integrated. Scheduling review corrections are integrated. Enforceable resources and whole-design reconciliation remain outstanding. Implementation and runtime stay held.",
   "groups": [
     {
@@ -29,30 +29,29 @@
     }
   ],
   "discussion": {
-    "title": "Serve the oldest request within its deadline",
-    "status": "Scheduling proposal. Resource profile and whole-design review remain.",
-    "summary": "Receive-order service prevents younger work from overtaking a pending request. Failure and stop controls precede commitment. Admission expires after 152 seconds. Ownership continues through validation, publication and completion-frame delivery. Expiry closes eligibility without resubmission. These are service targets, not native liveness evidence.",
+    "title": "Establish resources before producer execution",
+    "status": "Admission proposal. Enforcement qualification and numerical profile remain open.",
+    "summary": "The owner requires a complete resource proof before commitment. Ordinary output cannot consume protected collection or terminal capacity. The pinned producer allocates before file writes; candidate OS limits require qualification. Antony approved audited test copies with phase barriers and a replaceable clock. No implementation or runtime is ready.",
     "diagramIds": [
-      "keepalive-scheduling",
+      "keepalive-resources",
       "keepalive-owner",
-      "keepalive-lifecycle"
+      "keepalive-scheduling"
     ],
     "updatedDiagrams": [
       {
-        "id": "keepalive-scheduling",
-        "summary": "Adds receive-order service, exact admission and operation deadlines, and failure containment."
-      },
-      {
-        "id": "keepalive-owner",
-        "summary": "Separates proposed scheduling from unresolved resource enforcement."
-      },
-      {
-        "id": "keepalive-lifecycle",
-        "summary": "Names the original 52-second capture deadline through normal drain."
+        "id": "keepalive-resources",
+        "summary": "Adds producer-enforcement and protected-capacity admission, with explicit unavailable outcomes."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "keepalive-resources",
+      "group": "keepalive",
+      "title": "Establish resources before producer execution",
+      "source": "keepalive-resources.mmd",
+      "caption": "Proposed resource admission under the existing writer authority. The checks require established evidence, not observed free space or post-capture rejection. Candidate inherited limits and reserved/capped storage remain unqualified. The diagram omits lifecycle joins shown in the owner and lifecycle views. Missing complete profile prohibits startup; no numerical cap, native liveness or model-checking result is claimed."
+    },
     {
       "id": "keepalive-scheduling",
       "group": "keepalive",

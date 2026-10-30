@@ -1,4 +1,4 @@
-# settings-keepalive-resources-k102
+# settings-keepalive-resources-k102 — brief
 
 
 ## Goal
@@ -44,3 +44,34 @@ and every earned integration. Numerical scheduling alone grants no readiness.
 Design only. No VM, candidate, freeze, native acceptance, cap expansion, closed
 causal-slot reuse, release or ancestor closure. Existing source/historical evidence
 stay unchanged. Missing resource inputs prohibit startup; timing values are no substitute.
+
+## Decisions (running log)
+
+- 2026-10-30: Adopt k102 at clean parent 77bdaabc. Consume k104's reviewed
+  scheduling corrections. The internal copied-module barrier and clock-reader
+  decision is requested from Antony; no answer or approval is inferred.
+- 2026-10-30: The resource profile depends on enforcement before the external
+  producer allocates and writes. Tagged capture source allocates full frames,
+  a crop and encoded output before the file write. Current XNU source offers
+  an address-space limit, but source-to-host correspondence, exec inheritance,
+  native service coverage and useful fit are not established by the old manual.
+  Split at an independently reviewable resource-admission design. Its first
+  child defines the enforcement obligations and supported candidate mechanisms.
+  External-mechanism research follows review and every earned integration;
+  complete profile design then retains every original Done when above.
+  Execute only the first child here. No numerical limit, native experiment,
+  complete profile or ancestor closure is implied by this split.
+- 2026-10-31: Antony approved audited test copies with internal phase barriers
+  and a replaceable continuous-clock reader for owner, backend and caller.
+  Each copy must match production except for declared substitutions. K105 records
+  the agreement; all numerical-profile and enforcement duties remain open.
+
+## Decomposition and retained charter
+
+K105 supplies the resource-admission design and evidence boundary. Independent
+review and every earned integration precede k106's external-enforcement research.
+K106 answers the precise producer/OS/storage questions for k107. K107 owns every
+original criterion above not actually discharged by the reviewed slices, including
+the complete useful numerical workload, schedules, all schemas, caller/containment,
+controls and original-duty reconciliation. It must cut independent whole-design
+review before planning and all consumption. This node, k98 and k96 remain open.

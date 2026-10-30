@@ -6,15 +6,18 @@ The proposed owner lets the Settings scenario and its required keepalive
 captures share one command stream. This document specifies ownership and
 cooperative stop under the [agreed
 scope](../verification/settings-activation/KEEPALIVE-DESIGN.md#required-scope-decision).
-It combines a **reviewed lifecycle slice** with a proposed
-[scheduling profile](#scheduling-and-deadline-profile). The scheduling proposal
+It combines a **reviewed lifecycle slice**, a proposed
+[scheduling profile](#scheduling-and-deadline-profile), and a proposed
+[resource-admission boundary](#resource-admission-boundary). The scheduling proposal
 incorporates [its review dispositions](../verification/settings-activation/KEEPALIVE-SCHEDULING.md#review-integration).
 The [remaining profile](#remaining-profile) must supply
 enforceable resources and whole-design reconciliation before whole-design review,
 planning or implementation. Adoption and every runtime slot stay held.
 
 The [review integration](../verification/settings-activation/KEEPALIVE-LIFECYCLE-REVIEW.md)
-records the source basis, dispositions and remaining test-seam choice.
+records the source basis and dispositions. The
+[test-seam agreement](../verification/settings-activation/KEEPALIVE-RESOURCES.md#test-seam-and-later-controls)
+settles its carried choice.
 
 A planned stop is a lifecycle event. It can cancel a tick before dispatch
 commitment. It cannot turn a failed sleep or capture into success. A capture
@@ -468,26 +471,25 @@ A copied validator wrapper reaches the interval after CLI exit and before PNG
 qualification completes. These controls retain real receipts and locking.
 
 CLI and sleep controls cannot reach every transition inside the owner. The
-proposed additional enabling points are test-only barriers in a copied owner
+agreed additional enabling points are test-only barriers in a copied owner
 module. They precede the final control drain and eligibility check, follow durable
 commitment before child creation, and bracket acknowledgement and terminal publication.
 They must preserve the real transition code and introduce no production switch
 or UI-dependent delay. A barrier before commitment resumes through the actual
 eligibility check.
 
-Whole-design agreement must settle the seam decision before these internal
-barriers become agreed. The recommendation uses barriers in copied modules, matching the existing
-validator control. Their cost is test-copy correspondence auditing. An injected
-production callback adds a maintained interface and requires separate approval.
-External controls alone leave the internal race rows unqualified. None of those
-alternatives is approved here by implication.
+Antony approved audited test copies on 2026-10-31. They use barriers in copied
+modules, matching the existing validator control. Each copy must match production
+except for declared test substitutions; a correspondence check must fail on any
+other difference. This auditing is the cost of preserving production interfaces.
+The alternative production injection interface is not part of this agreement.
+External controls alone leave the internal race rows unqualified.
 
 Exact deadline controls also require a substitutable continuous-clock reader in
 the copied owner, backend and caller modules. It supplies integer-nanosecond
 boundary values and simulated host resume without changing the host clock.
-This extends the same proposed enabling point, with the same correspondence cost.
+The same approval covers this clock reader, with the same correspondence cost.
 It covers equality, just-after expiry, clock discontinuity and long-holder schedules.
-The whole-design seam decision must include this reader before those controls become agreed.
 CLI and sleep substitutions alone cannot qualify these rows.
 
 | Controlled schedule or defect | Required discrimination |
@@ -813,12 +815,112 @@ specifies both overlap directions, expiry boundaries, stop races and containment
 Those are obligations for the real coordinator with controlled CLI and sleep.
 No coordinator test, native liveness result or focus repair is claimed here.
 
+## Resource admission boundary
+
+This is a proposed admission contract, not a complete resource profile.
+The [resource evidence](../verification/settings-activation/KEEPALIVE-RESOURCES.md)
+distinguishes supported candidate mechanisms from unresolved enforcement.
+All numerical limits and the complete useful workload remain mandatory.
+
+### One proof before producer launch
+
+The finite caller supplies one immutable resource profile for the exact run.
+The owner admits an operation only when that profile covers its entire work:
+producer creation, frame acquisition, decoding, encoding, raw output, validation,
+publication and containment. A bounded validator does not establish a bounded
+producer. A file-size limit does not establish a bound on an encoded memory buffer.
+
+The profile names each resource unit, its limit, its enforcement owner and the
+point at which enforcement becomes active. It also names the producer image,
+runtime and host assumptions, complete child/service set, storage identities,
+and evidence establishing the mechanism. Unknown or inapplicable evidence refuses
+startup. An unknown operation or resource cost refuses its commitment.
+
+The producer launcher must establish its applicable limits before executing the
+external image. A failed limit call, failed readback, unbound executable or
+uncovered allocation/write path refuses execution. Success of a setup call
+alone does not qualify enforcement. The complete profile must establish that the
+target process retains the limits and cannot place required work outside them.
+
+Per-process limits do not establish an aggregate process-tree limit. A separate
+service does not inherit a client's limits merely because the client calls it.
+The profile must account for every required producer and service, or retain that
+boundary as unavailable. No same-user security confinement is claimed.
+
+### Retention and protected capacity
+
+The resource model has three disjoint allowances under the same writer authority:
+
+| Allowance | Required use and protection |
+|---|---|
+| Ordinary work | All scenario and tick artifacts, raw streams and partials, including failed attempts. Admission reserves the operation's full permitted contribution before launch. |
+| Failure collection and containment | The finite required observer/window/screenshot sequence, remaining audits, exact clone stop and independent inventory. Ordinary work cannot consume this allowance. |
+| Terminal evidence | Bounded owner/worker/operation failure records, stop joins, partial-disposition and final caller outcome. Neither ordinary output nor collection output can consume it. |
+
+Reservations are backed by an established mechanism, not an observed amount of
+free storage or a number in a ledger. Separate quotas alone cap use but do not
+reserve capacity. If separate storage objects implement these allowances, their
+identities and mount relationships form part of the single logical evidence-root
+identity. They introduce no alternate writer, lock, ordinal allocator or success path.
+The owner refuses replacement or loss of an object in that identity.
+
+Capacity accounting includes file metadata, directory/record growth, temporary
+files, raw streams and simultaneous partials. Per-file limits do not bound the
+sum. Cumulative admission charges are not refunded to admit more work after
+failure, cancellation or disposal. The whole-run count and duration bound must
+include every mandatory capture and the complete collection path.
+
+Each commitment references the resource admission event: profile identity,
+operation allowance, reserved storage identities, limits installed by the
+launcher, observations and remaining capacity by class. Settlement records
+actual retained extents, exact resource failures and unknown tails. These fields
+extend the existing commitment/result join; no resource receipt alone grants
+dispatch, clean completion or normal stop.
+
+At exhaustion, close eligibility and retain existing complete and partial files.
+Do not discard an old image, truncate raw output, downsample a required capture,
+or omit a due tick to continue. Limit enforcement may prevent a new allocation
+or write and leave an incomplete attempt. A failed storage device, unknown holder
+or producer death can make unreturned bytes and final records unavailable.
+Record that boundary where possible; protected capacity is not guaranteed I/O
+service or proof that a lock can be acquired.
+
+### Candidate enforcement and acceptance evidence
+
+Inherited address-space and file-size limits, combined with separately reserved
+and capped storage, are the first candidate for external enforcement.
+They preserve the existing capture transport if their complete coverage can be
+established. They are not selected as a qualified mechanism by this proposal.
+Geometry, compressed-message lengths, decoder growth and encoded-buffer limits
+must each have an actual enforcement point before their relevant allocation.
+An aggregate address-space limit alone does not establish those individual bounds.
+
+A producer with explicit resource admission could own those checks earlier.
+Its cost is a changed external dependency and corresponding transport qualification.
+Isolation is another candidate only if its allocation, storage and process/service
+boundaries are established. Neither alternative authorizes implementation or a
+native experiment. The complete design must choose on evidence.
+
+Offline controls must distinguish failed launcher admission from failed external
+execution. They must also show no next dispatch after each exceeded allowance,
+unchanged originals/partials, protected terminal and containment capacity, and
+unavailable outcomes when those protected writes fail. Controls exercise the real
+owner and resource-admission code. Synthetic allocation/write substitutes cannot
+prove that a native encoder or OS enforces a limit.
+
+Native capability qualification, if necessary, requires its own explicit reviewed
+scope before execution. The focused evaluation and ordinary acceptance slots
+cannot discover the resource mechanism. No numerical profile is usable until
+the complete workload, all enforcement units and useful fit are reconciled.
+
 ## Remaining profile
 
 Scheduling is proposed above. Enforceable resources and complete workload accounting
 remain mandatory unresolved inputs. There is no executable combined profile.
 Absence prevents startup. Resource design must reconcile the timing targets with
 actual useful capture, transfer, validation, retention and collection work.
+The resource-admission boundary specifies the required evidence and ownership;
+it does not discharge that reconciliation.
 
 That design must bound the actual external CLI/encoder before
 allocations/writes. It must also bound encoded bytes, dimensions/decoded bytes,

@@ -1,6 +1,15 @@
 # Settings activation design discussion
 
-The current discussion is [the proposed scheduling profile](../../../specs/settings-keepalive-owner.md#scheduling-and-deadline-profile).
+The current discussion is [the proposed resource-admission boundary](../../../specs/settings-keepalive-owner.md#resource-admission-boundary).
+Producer limits must act before execution, with protected collection and terminal
+capacity under the same writer authority. The
+[resource assessment](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md)
+names candidate OS mechanisms and the evidence still needed before numeric design.
+Antony approved audited test copies with phase barriers and a replaceable clock.
+Each copy must match production except for declared test substitutions.
+
+The [scheduling profile](../../../specs/settings-keepalive-owner.md#scheduling-and-deadline-profile)
+remains proposed.
 The owner serves requests in receive order, after failure and stop controls.
 Admission expires after 152 seconds. Ownership continues through complete validation,
 result publication and completion-frame delivery. The reviewed lifecycle still requires matched normal-stop
@@ -44,8 +53,8 @@ submission and their named confirmation.
 Restart disconnect remains unavailable despite a later boot. A demonstrably unavailable required completion holds E01
 for a new decision. No failed read is repaired by retry.
 
-Run `mise exec -- task design:serve PORT=8803` from the repository root and open
-[the current discussion](http://127.0.0.1:8803/settings-activation/#discussion).
+Run `mise exec -- task design:serve PORT=8804` from the repository root and open
+[the current discussion](http://127.0.0.1:8804/settings-activation/#discussion).
 The existing task serves only the architecture presentation directory.
 
 <!-- tc: depart synonym-rotation because graph entry differs from application launch -->
@@ -65,14 +74,13 @@ loads these same sources while retaining its separate current discussion.
 
 Current changes:
 
-- [Keepalive → Serve the oldest request within its deadline](http://127.0.0.1:8803/settings-activation/#diagram-keepalive-scheduling) — Repairs the admission path and retains whole-operation ownership.
-- [Keepalive → One owner controls dispatch and evidence](http://127.0.0.1:8803/settings-activation/#diagram-keepalive-owner) — Distinguishes proposed scheduling from unresolved resource enforcement.
-- [Scheduling and deadline profile](../../../specs/settings-keepalive-owner.md#scheduling-and-deadline-profile) — Defines phase budgets, stop/drain deadlines and unresolved containment.
-- [Scheduling evidence](../../../verification/settings-activation/KEEPALIVE-SCHEDULING.md) — Adds source/API limits, alternatives, useful controlled schedules and required boundary controls.
+- [Keepalive → Establish resources before producer execution](http://127.0.0.1:8804/settings-activation/#diagram-keepalive-resources) — Adds enforcement and protected-capacity admission before commitment.
+- [Resource admission boundary](../../../specs/settings-keepalive-owner.md#resource-admission-boundary) — Defines enforcement ownership, retained resource evidence and unavailable outcomes.
+- [Resource evidence](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md) — Traces allocations and writes, compares candidate mechanisms and preserves unresolved qualification.
 
-The [worker lifecycle](http://127.0.0.1:8803/settings-activation/#diagram-keepalive-lifecycle)
+The [worker lifecycle](http://127.0.0.1:8804/settings-activation/#diagram-keepalive-lifecycle)
 now names its original 52-second capture deadline. The
-[evidence limit](http://127.0.0.1:8803/settings-activation/#diagram-evidence-limit) remains unchanged.
+[evidence limit](http://127.0.0.1:8804/settings-activation/#diagram-evidence-limit) remains unchanged.
 The [design evidence](../../../verification/settings-activation/ORDERING-DESIGN-EVIDENCE.md)
 links the source/API reads and [verification receipt](../../../verification/settings-activation/ordering-design-evidence/verification.json).
 The [raw documentation output](../../../verification/settings-activation/ordering-design-evidence/doc-links.txt)

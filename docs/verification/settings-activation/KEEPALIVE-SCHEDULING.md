@@ -12,8 +12,9 @@ Whole-design review still precedes planning.
 No current helper, historical receipt, VM, candidate or acceptance slot changes.
 The [accepted scope](KEEPALIVE-DESIGN.md#required-scope-decision) permits these
 ownership delays. It preserves input order, explicit waits, poll counts and
-one-attempt transports. The proposed internal copied-module barriers and clock reader remain
-subject to the whole-design seam decision from [k100](KEEPALIVE-LIFECYCLE-REVIEW.md#choice-carried-to-k98).
+one-attempt transports. The copied-module barriers and clock reader carried from
+[k100](KEEPALIVE-LIFECYCLE-REVIEW.md#choice-carried-to-k98) received
+[Antony's approval](KEEPALIVE-RESOURCES.md#test-seam-and-later-controls) on 2026-10-31.
 
 ## Source basis and API limits
 
@@ -165,9 +166,9 @@ claiming usefulness. No safe idle interval follows from the family numbers.
 Use the real owner, lock, validator and record logic with controlled CLI and sleep.
 Preserve every synthetic raw stream and complete/partial artifact. Observe invocation
 counts, exact arguments, event/ordinal relationships and later-dispatch refusal.
-The existing helper seam supplies external substitutions. Proposed copied-module
-barriers and substituted continuous-clock readers reach internal transitions and
-exact times only after the seam decision is settled.
+The existing helper seam supplies external substitutions. Approved audited copies
+add barriers and substituted continuous-clock readers for internal transitions
+and exact times. Each copy must match production except for declared substitutions.
 
 | Boundary | Required result and falsifying mutant |
 |---|---|
@@ -230,7 +231,10 @@ substitutable continuous-clock reader in the owner, backend and caller.
 It preserves production interfaces but requires correspondence checks for every copy.
 A production callback adds a maintained interface. External CLI/sleep controls
 alone leave exact deadline and internal race rows unqualified.
-K102 must obtain the human seam decision. This integration supplies no approval.
+This integration required k102 to obtain the human seam decision and supplied
+no approval itself. Antony subsequently
+[approved audited test copies](KEEPALIVE-RESOURCES.md#test-seam-and-later-controls)
+on 2026-10-31.
 
 One narrow reviewer challenged deadline observation and supervision in the repaired spec.
 It found an unclear completion boundary: a deferred echo cannot serve as an

@@ -46,6 +46,11 @@ exhaustive graph audit.
 
 ## Choice carried to k98
 
+Subsequent resolution: Antony
+[approved audited test copies](KEEPALIVE-RESOURCES.md#test-seam-and-later-controls)
+on 2026-10-31, including the clock reader added by k104. The paragraphs below
+record the choice as this integration handed it forward.
+
 K98 must settle how to exercise internal owner transitions before treating its
 control matrix as agreed. The recommendation is test-only barriers in copied
 modules, following the existing validator technique. This preserves the public

@@ -1,0 +1,24 @@
+flowchart TB
+  start["Start here: one run profile"]:::start
+  proof{"Producer bounds established?"}
+  storage{"Collection and terminal capacity protected?"}
+  commit["Owner records admission and commitment"]
+  producer["Run bounded producer"]
+  validate["Validate and publish\nRetain originals and partials"]
+  next["Permit later dispatch"]
+  hold["Refuse startup or later dispatch\nPreserve failed or unavailable outcome"]:::open
+  candidates["Candidates only\nInherited limits and reserved storage"]:::open
+  start -->|"1. establish evidence"| proof
+  proof -->|"2. established"| storage
+  proof -->|"missing or inapplicable"| hold
+  storage -->|"3. protected"| commit
+  storage -->|"missing or exhausted"| hold
+  commit -->|"4. enforce before execution"| producer
+  producer -->|"5. complete output"| validate
+  validate -->|"6. complete publication and delivery"| next
+  producer -->|"limit, death or partial output"| hold
+  validate -->|"failure or missing record"| hold
+  candidates -.-> proof
+  candidates -.-> storage
+  classDef start fill:#183849,color:#fff,stroke:#183849,font-weight:bold
+  classDef open fill:#fff2d6,color:#302410,stroke:#a66d00,stroke-dasharray:5 5

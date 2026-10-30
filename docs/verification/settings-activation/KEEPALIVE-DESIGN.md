@@ -27,6 +27,11 @@ subsequent answers supply the scope agreement. Settings-keepalive-owner-k96 owns
 the concrete design before k89/k81/k76 consumption. This document supplies no
 native acceptance or ancestor closure.
 
+The [resource-admission slice](KEEPALIVE-RESOURCES.md) now identifies the
+pre-producer enforcement and protected-capacity obligations. Candidate OS
+mechanisms still need external evidence and the complete useful numerical profile.
+The existing lifecycle and scheduling contracts supply no resource qualification.
+
 The editable [visual discussion](../../design/architecture/settings-activation/README.md)
 shows the collision and the agreed design scope. Sequence views start at their
 first message; graph views start at the dark **Start here** node. Neither is a
