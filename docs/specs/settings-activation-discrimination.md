@@ -1,3 +1,5 @@
+<!-- tc: pending because this large document retains its existing conversion boundary -->
+
 # Settings activation: repair and evidence contract
 
 ## Current decision
@@ -156,17 +158,23 @@ truncation, overwrite, deletion, downsampling or skipped required image is
 authorized. If storage or an owned process prevents preservation or cleanup,
 retain the available partials and report what remains unknown.
 
+<!-- tc: on -->
+
 Permit design of a cooperative planned worker stop with its own lifecycle record,
 matched to the owned worker and its confirmed exit. Stopping between captures
 after normal scenario completion may end without making the run unavailable.
-This result is separate from required tick outcomes: earlier failures remain
+This result is separate from required tick outcomes. Earlier failures remain
 binding, and unexpected exits, interrupted required captures or missing stop
-records still prevent acceptance. The proposed [owner and lifecycle contract](settings-keepalive-owner.md)
+records still prevent acceptance.
+
+The proposed [owner and lifecycle contract](settings-keepalive-owner.md)
 specifies reviewed dispatch/stop races and record fields. Its
 [scheduling proposal](settings-keepalive-owner.md#scheduling-and-deadline-profile)
-fixes receive-order service and exact deadlines, pending independent review.
+sets receive-order service and exact deadlines, pending independent review.
 Enforceable resources and whole-design reconciliation remain design work.
 No current interrupted receipt becomes successful.
+
+<!-- tc: pending because the remaining sections are outside this conversion -->
 
 Helper adoption, readiness, freeze and runtime remain held until the concrete
 design, independent review and every earned integration, planning, implementation

@@ -1,3 +1,5 @@
+<!-- tc: pending because this large document retains its existing conversion boundary -->
+
 # Empirical Settings ordering evaluation
 
 ## Decision and execution boundary
@@ -25,20 +27,28 @@ remain held with unchanged criteria, subjects and caps.
 
 ## Fixed sets and subject
 
+<!-- tc: on -->
+
 The [keepalive coordination hold](../../specs/settings-activation-discrimination.md#keepalive-coordination-hold)
 binds helper consumption and all readiness, freeze and runtime work.
 The [accepted scope](KEEPALIVE-DESIGN.md#required-scope-decision) permits design
-of one serialized owner, logged UI-independent ownership delays and deferred
-keepalive ticks, an enforceable finite resource profile, and a separately
-recorded cooperative normal stop. Required capture qualification before later
+of one serialised owner, logged UI-independent ownership delays and deferred
+keepalive ticks. It also permits an enforceable finite resource profile and a
+separately recorded cooperative normal stop. Required capture qualification before later
 scenario dispatch, first-failure eligibility and private original retention
-remain binding. This is design authority only: concrete design, independent
+remain binding.
+
+This is design authority only. Concrete design, independent
 review/every integration, planning, implementation and earned review/integration
-still precede consumption. The proposed [owner and lifecycle contract](../../specs/settings-keepalive-owner.md)
+still precede consumption.
+
+The proposed [owner and lifecycle contract](../../specs/settings-keepalive-owner.md)
 defines reviewed ownership, stop races and record fields. Its
 [scheduling proposal](../../specs/settings-keepalive-owner.md#scheduling-and-deadline-profile)
-now fixes receive-order service and exact deadlines, pending independent review.
+now sets receive-order service and exact deadlines, pending independent review.
 Enforceable resources and whole-design reconciliation remain outstanding. No slot is admitted.
+
+<!-- tc: pending because the remaining sections are outside this conversion -->
 
 Declare both sets and their exact slot identities before the first clone request.
 Reserve the distinct namespace `ordering-evaluation` for the focused set and
