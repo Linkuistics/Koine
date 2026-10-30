@@ -1,0 +1,54 @@
+{
+  "scope": "Document and arithmetic validation only; no coordinator or native run",
+  "command": "mise exec -- task check:docs",
+  "exit_status": 201,
+  "stdout": "docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md: missing target context-predicate.txt\ndocs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md: missing target context-qualify-filter.sh\n",
+  "stderr": "task: [check:docs] scripts/check-doc-links.py \ntask: Failed to run task \"check:docs\": exit status 1\n",
+  "expected_existing_failures": [
+    "docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md: missing target context-predicate.txt",
+    "docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md: missing target context-qualify-filter.sh"
+  ],
+  "input_definition": "Every markdown source returned by scripts/check-doc-links.py sources(), its existing markdown link targets, that script, Taskfile.yml, and all local Settings diagram sources/viewer/manifest",
+  "input_count": 210,
+  "changed_inputs": [],
+  "before_manifest_sha256": "5a126d906b9f991ca7a593ef1ffbdf5e294439384d47ad9020f53bd63bce0b40",
+  "after_manifest_sha256": "5a126d906b9f991ca7a593ef1ffbdf5e294439384d47ad9020f53bd63bce0b40",
+  "changed_document_sha256": {
+    "docs/design/architecture/settings-activation/README.md": "832d1b70aef310668eafad964716d8ddc5ba6af13d8316cbebc14360acfe04fa",
+    "docs/design/architecture/settings-activation/diagrams.json": "a840060924b6a4161ff0a62fc0c89fd5f17363b08a97a5f5d87810b297b035b7",
+    "docs/design/architecture/settings-activation/keepalive-owner.mmd": "459228a09c82b50ec90c09fd974056f14a58a47995a68250277039adf753f28e",
+    "docs/design/architecture/settings-activation/keepalive-scheduling.mmd": "7cba14d145bc8cc3acf6cc9b0eedb5e2bccec80cedfdd5e1e5363afb58483acb",
+    "docs/specs/settings-activation-discrimination.md": "dc30cdfa089116927c917ce74191989827b228a6c2ef8a3dedc60cb0b20385c1",
+    "docs/specs/settings-keepalive-owner.md": "6088f2f74743fb8b4fc33616fbc9c2836dd7fe3997d09f5a6f456b178870ff4c",
+    "docs/verification/settings-activation/KEEPALIVE-DESIGN.md": "971318daffb164c3d596a891e0b3033c2bf782625e4b1609e7dc8962f52b8cdc",
+    "docs/verification/settings-activation/KEEPALIVE-SCHEDULING.md": "35531cf1014d110f39c991b2acac5b5c19e3162c430d34b8fa649d14808e3a49",
+    "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md": "59ae22f954081c567b8f4fab42274780e4a1da4b8898ea8366500266ad36a9ab"
+  },
+  "arithmetic": {
+    "non_cli_phases_seconds": 22,
+    "whole_operation_seconds": [
+      22,
+      52,
+      67,
+      142
+    ],
+    "conservative_admission_seconds": 148,
+    "admission_limit_seconds": 150,
+    "normal_stop_drain_seconds": 148,
+    "normal_stop_limit_seconds": 150,
+    "containment_observation_seconds": 20
+  },
+  "prose_lint": {
+    "documents": [
+      "docs/specs/settings-keepalive-owner.md",
+      "docs/verification/settings-activation/KEEPALIVE-SCHEDULING.md"
+    ],
+    "scope": "Final owner spec and scheduling evidence; advisories retain existing passive forms where actor is not material",
+    "hard_findings": 0,
+    "advisory_findings": 36
+  },
+  "browser": {
+    "url": "http://127.0.0.1:8803/settings-activation/#diagram-keepalive-scheduling",
+    "observed": "Final scheduling and owner SVGs rendered. Scheduling upper and lower branches and final owner cardinality visually inspected. Deep links identify the requested views. No browser warning/error log entries at the scheduling check. Desktop light appearance checked; mobile and dark appearance not checked."
+  }
+}

@@ -6,10 +6,11 @@ The proposed owner lets the Settings scenario and its required keepalive
 captures share one command stream. This document specifies ownership and
 cooperative stop under the [agreed
 scope](../verification/settings-activation/KEEPALIVE-DESIGN.md#required-scope-decision).
-It is a **reviewed lifecycle slice with integrated corrections**, not an implemented
-or complete coordinator. The [remaining profile](#remaining-profile) must supply
-numerical deadlines, arbitration and enforceable resources before whole-design
-review, planning or implementation. Adoption and every runtime slot stay held.
+It combines a **reviewed lifecycle slice** with a proposed
+[scheduling profile](#scheduling-and-deadline-profile). The scheduling proposal
+awaits independent review. The [remaining profile](#remaining-profile) must supply
+enforceable resources and whole-design reconciliation before whole-design review,
+planning or implementation. Adoption and every runtime slot stay held.
 
 The [review integration](../verification/settings-activation/KEEPALIVE-LIFECYCLE-REVIEW.md)
 records the source basis, dispositions and remaining test-seam choice.
@@ -62,9 +63,11 @@ alternate root is introduced.
 | Finish scenario | Supply the declared end marker, final scenario submission/result identity and scenario outcome. Only normal completion with no outstanding scenario submission can request normal stop. Failure, interruption and premature completion request failure containment instead. |
 | Collect / contain | Only after ticks are suppressed and the active holder is settled, admit the existing read-only evidence and exact-clone containment set. Each command has its own receipt and may fail independently. |
 
-There is one active operation and at most two pending operations: one scenario
-submission and one tick. Submissions are immutable values. The owner hides
-queue, lock and process mechanics. A duplicate, unknown sender, sequence gap,
+There are at most two outstanding operations: one scenario submission and one tick.
+At most one is active. The other can be pending. When neither is active, both
+can be pending. Submissions are immutable values.
+
+The owner hides queue, lock and process mechanics. A duplicate, unknown sender, sequence gap,
 excess submission or broken result channel closes eligibility. It is not retried
 or silently deduplicated into success. One idempotent internal notification that
 an already recorded stop is pending is not a second stop request or external
@@ -508,19 +511,202 @@ This design introduces control channels, child supervision and acknowledgement
 state. It does not claim fewer failure cases or simpler implementation merely
 because callers have one entry point.
 
+## Scheduling and deadline profile
+
+This is the proposed `settings-owner-scheduling/1` policy. It is a reviewable
+timing contract, not an executable default or a qualified native profile.
+The [scheduling evidence](../verification/settings-activation/KEEPALIVE-SCHEDULING.md)
+explains its source basis, alternatives and required controls.
+
+### Arbitration and admission
+
+The owner orders complete valid submissions by its receive-event sequence.
+It serves the oldest pending submission without preemption. A stable scan order
+reads the scenario channel before the worker channel when both become readable
+in one control-loop iteration. This only breaks a simultaneous arrival tie.
+Already received work always precedes newly received work.
+
+Failure controls, expired deadlines and stop controls precede command selection.
+The owner drains these controls again immediately before commitment. An expired
+deadline takes precedence over a success observation processed at that boundary.
+No result, input class, VNC activity or observed UI state changes priority.
+
+Each producer has one outstanding operation, including pending, committed and
+awaiting-completion states. Thus there are at most two outstanding operations
+across scenario and worker. There can be one active and one pending operation,
+or two pending operations while the owner is idle. Neither producer may pipeline
+another operation behind its active one.
+
+The submitter starts its admission clock before sending its immutable request.
+For a tick, this origin is the worker's observation of successful sleep completion.
+The complete request must reach the owner within two seconds. The owner must
+publish admission or refusal within two further seconds. An admitted request
+must reach commitment within 150 seconds of its original admission-clock origin.
+These message and admission deadlines do not reset while the holder progresses.
+
+Every other control or result frame also has a two-second send-to-receive limit.
+An incomplete frame is not receipt. Existing whole-phase deadlines still apply.
+
+Selection starts immediately when ownership becomes available. The owner has
+two seconds to finish selection, reserve the ordinal and publish commitment.
+This interval remains inside the 150-second admission deadline. No deliberate
+delay consumes otherwise available time. Expiry closes eligibility and cancels
+unstarted work without ordinals. A failed or expired request is never resubmitted.
+
+One holder can delay the other producer. It cannot be replaced by an endless
+sequence of younger requests. With the operation bounds below, the longest
+clean holder occupies at most 142 seconds. Request transfer, admission recording
+and selection add at most six seconds. The 150-second admission budget covers
+that 148-second conservative path with two seconds of scheduling margin.
+
+If the host cannot meet those bounds, the outcome is unavailable. Starvation
+cannot be labelled success, even when process termination remains unresolved.
+
+### Clock and operation deadlines
+
+All proposed deadlines use one host continuous clock in integer nanoseconds.
+On macOS, use `clock_gettime_nsec_np(CLOCK_MONOTONIC_RAW)` or its exact binding.
+This clock includes host sleep. Record the host boot identity and clock API.
+
+Do not compare these times with guest clocks or the existing backend's
+`monotonic_ns` durations. The owner event sequence remains the ordering authority.
+Wall times are presentation only. Missing clock identity refuses startup.
+
+The owner checks deadlines on every control transition and before commitment.
+An observation processed at or after its deadline is expired. An earlier sender
+timestamp cannot rescue a late owner observation.
+
+The owner's timed event wait has a maximum of 100 milliseconds. After delayed scheduling
+or host resume, it checks expiry before accepting a result or dispatching work.
+The finite caller independently watches the advertised absolute deadlines.
+It receives each deadline/state transition through the existing private channel
+within two seconds. Lost progress or an unresponsive owner closes caller eligibility.
+No timer guarantees that the host can run a signal handler at its deadline.
+
+The CLI allowance starts when child creation is observed. The whole-operation
+allowance starts at dispatch commitment, before child creation.
+
+| Operation family | CLI allowance | Whole-operation allowance |
+|---|---:|---:|
+| Checked capture, physical input, ordinary agent/screen read | 30 seconds | 52 seconds |
+| Existing Allow OCR with its unchanged timeout of 30 seconds | 45 seconds | 67 seconds |
+| Guest exec, including its existing guest timeout | 45 seconds | 67 seconds |
+| File upload/download and VM lifecycle commands | 120 seconds | 142 seconds |
+| Local poll/failure record with no CLI | 0 seconds | 22 seconds |
+
+An exact operation mapping belongs to the frozen profile. Unknown operations
+refuse admission. Evidence-class operations use the same family limits.
+A helper with several commands retains separate submissions and existing waits.
+Its queue time never shortens a sleep, increases a poll count or grants another attempt.
+
+Every operation also has these phase ceilings. A phase starts at the end of
+its predecessor, without an unbudgeted gap. Every ceiling is clipped by the
+unchanged whole-operation deadline. Unused time cannot extend a later phase.
+
+| Phase | Maximum elapsed time | Required completion |
+|---|---:|---|
+| Commitment to observed backend/CLI creation | 2 seconds | Bound child identity and launch observation |
+| CLI | Family allowance above | Actual exit and retained complete raw streams |
+| Response, predicate and artifact validation | 10 seconds | Complete required checks, including every PNG check |
+| Backend receipt and payload emission | 2 seconds | Complete backend result and emission observations |
+| Backend exit/reap | 2 seconds | Actual terminal child observation |
+| Result offer and submitter acknowledgement | 2 seconds | Exact payload acknowledgement retained by owner |
+| Owner terminal publication | 2 seconds | Complete immutable operation disposition |
+| Completion frame delivery | 2 seconds | Sender observation and submitter receipt before its next action |
+
+The phases outside the CLI total 22 seconds. CLI exit does not release ownership.
+An active validator, unpublished result or unfinished delivery prevents later
+dispatch. The final echo still follows the lifecycle contract. A late echo
+cannot rescue an earlier delivery timeout or prove an unobserved receipt.
+
+The 45-second allowance leaves 15 seconds around the existing 30-second inner
+OCR/exec budget. The 120-second family accommodates slower finite transfers and
+lifecycle work without assigning them native liveness credit. The other phases
+reserve explicit time for validation and durable protocol work. These are
+selected service targets, not measured performance distributions. Resource design
+must demonstrate a useful workload within them or revise the whole profile before review.
+
+### Sleep, stop and containment deadlines
+
+Startup has five seconds from the caller's owner-creation request to published
+worker readiness and caller receipt. Missing readiness ends startup eligibility.
+It does not prove that no process was created.
+
+The worker starts its next sleep within two seconds of complete tick disposition.
+The sleep remains one invocation of `sleep 20`. From the worker's sleep-launch
+intent, allow 24 seconds for creation, natural sleep completion and its phase report.
+This includes two seconds each for launch and observation around the unchanged
+twenty-second sleep. A late, failed or interrupted sleep closes eligibility.
+
+Normal stop never signals or shortens this sleep. A due tick uses the original
+150-second admission budget, without catch-up ticks or another sleep while pending.
+
+Normal stop has 150 seconds from receipt of the valid finish request to published
+worker reap. Stop intent must publish within two seconds. A committed operation
+keeps its original deadline, leaving at most 142 seconds from finish receipt.
+An existing sleep keeps its original 24-second deadline. After that work resolves,
+allow two seconds each for stop acknowledgement, actual exit and reap publication.
+The conservative 142 + 2 + 2 + 2 path fits within 150 seconds.
+
+Intent publication
+occurs during that drain, not before starting a new drain clock.
+Pending cancellation must publish within two seconds of stop intent.
+Failure at any phase invokes failure containment. A matched stop never clears it.
+
+Failure containment uses one twenty-second observation window from the first
+failure requiring termination. Admission closes immediately. Send TERM only to
+established owned targets by second 2. Observe them until second 7. If still
+owned and live, send KILL once by second 9. Observe exit/reap until second 14.
+
+Allow two seconds each for holder bookkeeping, actual original-lock acquisition
+and containment-disposition publication. Missing facts at second 20 remain unresolved.
+Already exited targets receive no signal. Unknown identities receive no signal.
+Repeated failures cannot restart this window. A normal-stop deadline that fails
+starts this failure window once, without reclassifying the stop as normal.
+
+The caller applies this policy to its actual owned children after owner loss.
+It cannot infer a grandchild reap or authority over an unknown descendant.
+No unconditional blocking wait follows timeout. Uninterruptible holders may outlive
+the observation window and prevent collection indefinitely. The outcome remains
+unresolved containment, with every later slot blocked. No lock deletion or new
+writer domain substitutes for actual ownership.
+
+After established holder resolution, the collection-only path retains the same
+operation deadlines and writer domain. It performs the untouched observer,
+window list and screenshot in their required order, then the remaining audits.
+Exact-clone stop uses the lifecycle family. Independent inventory is a separate
+read, with its own result. Their failures remain separate. The complete workload
+must supply the total collection budget and protected capacity before startup.
+
+After collection ends, owner handoff, caller receipt, owner reap and caller outcome
+publication each have two seconds, for eight seconds total. A missing final fact
+remains unavailable under the existing caller-return trust boundary.
+
+### Timing evidence and offline controls
+
+Extend the existing record fields with profile identity, clock/boot identity,
+phase origin and absolute deadline, observed finish, and deadline-check time.
+Admission records retain the producer origin, owner receive sequence, current
+holder identity, queue entry, selection and commitment. Delay attribution names
+ownership, transfer or local protocol work. It never names a UI predicate as a
+scheduling reason. Record late observations even after eligibility closes.
+
+Retain sleep launch/return/report, due time, CLI creation/exit, validation end,
+publication, acknowledgement and completion receipt separately. Record the
+deadline that failed and the first-failure link. Preserve raw statuses alongside
+owner status 125. Do not invent an exit code for a process whose exit is unknown.
+
+The [boundary-control matrix](../verification/settings-activation/KEEPALIVE-SCHEDULING.md#required-offline-controls)
+specifies both overlap directions, expiry boundaries, stop races and containment.
+Those are obligations for the real coordinator with controlled CLI and sleep.
+No coordinator test, native liveness result or focus repair is claimed here.
+
 ## Remaining profile
 
-The protocol deliberately has no executable defaults for admission, operation,
-validation, publication, normal-stop drain, acknowledgement, reap or containment
-deadlines. These are mandatory, finite profile inputs. Absence prevents startup.
-The next design must derive and choose them together with tick arbitration,
-maximum tick delay, a finite run workload and enforced resource capacities.
-
-Normal stop consumes the remaining active-operation deadline. It cannot reset
-it. It must also account for the remainder of sleep20 and final
-publication/reap. Expiry closes acceptance and later dispatch, with no retry or
-successful cleanup reclassification. No deadline establishes a safe native idle
-interval.
+Scheduling is proposed above. Enforceable resources and complete workload accounting
+remain mandatory unresolved inputs. There is no executable combined profile.
+Absence prevents startup. Resource design must reconcile the timing targets with
+actual useful capture, transfer, validation, retention and collection work.
 
 That design must bound the actual external CLI/encoder before
 allocations/writes. It must also bound encoded bytes, dimensions/decoded bytes,
@@ -555,6 +741,6 @@ Missing snapshot trees, omitted versus empty AXValue, OCR substring early stop
 and held-frame capture fallback remain availability limits. Private roots, all
 historical failures/partials/NOT RUN phases, closed caps and held causal slots
 are unchanged. No VM, candidate, freeze, acceptance, release or ancestor closure
-follows. The lifecycle slice receives independent review before the remaining
-design consumes it. The complete owner receives whole-design review and every
-earned integration before planning and implementation.
+follows. Lifecycle review corrections are integrated. Scheduling review and every
+earned integration precede the resource design. The complete owner receives
+whole-design review and every earned integration before planning and implementation.

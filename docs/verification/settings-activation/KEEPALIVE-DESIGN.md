@@ -431,12 +431,14 @@ worker-acknowledgement and observed-reap join. Normal stop does not signal sleep
 or erase prior failure. Committed captures retain full validation, delivery and
 publication. Unknown inherited holders block collection and later slots.
 
-K98 retains the numerical scheduling/deadline and enforceable resource profile,
-including external producer limits, declared useful workload, aggregate raw/
-partial retention, protected final-record/cleanup capacity and boundary controls.
-The lifecycle's abstract profile inputs have no executable defaults; missing
-values prohibit startup. This split establishes no native liveness or available
-containment. The source behavior above remains current and unchanged.
+K98 now separates the [scheduling proposal](../../specs/settings-keepalive-owner.md#scheduling-and-deadline-profile)
+from enforceable resource design. K101 proposes receive-order service, exact
+deadlines and bounded containment observation. Its independent review and every
+integration precede k102. K102 retains external producer limits, the complete
+useful workload, raw/partial retention, protected final-record/cleanup capacity
+and whole-design reconciliation. Missing combined profile inputs prohibit startup.
+The [scheduling evidence](KEEPALIVE-SCHEDULING.md) establishes no native liveness
+or available containment. Current source behaviour remains unchanged.
 
 Independent lifecycle review and every integration precede k98 consumption.
 The complete design then receives whole-design review/every integration before

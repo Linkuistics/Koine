@@ -162,9 +162,11 @@ after normal scenario completion may end without making the run unavailable.
 This result is separate from required tick outcomes: earlier failures remain
 binding, and unexpected exits, interrupted required captures or missing stop
 records still prevent acceptance. The proposed [owner and lifecycle contract](settings-keepalive-owner.md)
-specifies dispatch/stop races and record fields for independent review. Its
-numerical scheduling and enforceable resource profile remain design work; no
-current interrupted receipt becomes successful.
+specifies reviewed dispatch/stop races and record fields. Its
+[scheduling proposal](settings-keepalive-owner.md#scheduling-and-deadline-profile)
+fixes receive-order service and exact deadlines, pending independent review.
+Enforceable resources and whole-design reconciliation remain design work.
+No current interrupted receipt becomes successful.
 
 Helper adoption, readiness, freeze and runtime remain held until the concrete
 design, independent review and every earned integration, planning, implementation

@@ -111,3 +111,12 @@ numerical deadline/arbitration/resource/usefulness and whole-design reconciliati
 duty above. Execute only k97 in this session. K98 must cut whole-design review
 before planning and consumption; no implementation leaves are cut here. All
 original k89/k81/k76/k67/k62/k57/k54 duties and all runtime holds survive.
+
+## Scheduling and resource design handoff
+
+K97's lifecycle review is integrated by k100. K98 now separates scheduling k101
+from enforceable resources and whole-design reconciliation k102. The scheduling
+proposal specifies receive-order admission and exact deadlines in the current spec.
+Its independent review and every earned integration precede k102. Missing producer,
+storage and complete workload limits still prohibit startup. K98 and this node
+remain open. Whole-design review still precedes planning and all consumption.

@@ -2,12 +2,12 @@ flowchart TB
   caller["Start here: finite caller\nOwn run, exact VM and private root"]:::start
   scenario["Scenario helpers\nOne outstanding submission"]
   worker["Owned keepalive worker\nSleep 20, submit one tick\nAwait complete disposition before next sleep"]
-  owner["Command owner and supervisor\nOne active operation\nOne pending scenario + one pending tick"]
+  owner["Command owner and supervisor\nTwo outstanding operations total\nAt most one active"]
   gate{"Eligible at dispatch?\nNo prior failure or stop"}
   operation["Owner reserves ordinal and publishes commitment\nChild: CLI, validation and backend receipt\nOwner: payload acknowledgement and terminal record"]
   stop["Close eligibility and suppress ticks\nCancel unstarted work without attempt ordinal"]
   collection["Settle owned holder and reap worker\nThen untouched collection and exact clone stop"]
-  profile["Remaining design: finite profile\nDeadlines, arbitration and producer limits\nMissing profile prohibits startup"]:::open
+  profile["Proposed receive-order schedule and deadlines\nProducer limits and workload remain unresolved\nMissing complete profile prohibits startup"]:::open
   caller -->|"1. create and own"| owner
   owner -->|"2. create and join"| worker
   scenario -->|"submission / result"| owner

@@ -1,4 +1,4 @@
-# settings-keepalive-profile-k98
+# settings-keepalive-profile-k98 — brief
 
 ## Goal
 Complete k96's concrete owner design with useful numerical scheduling/deadline
@@ -53,3 +53,12 @@ Design only. Existing source and historical records remain unchanged. No VM,
 candidate, freeze, native acceptance, cap expansion, release or ancestor closure.
 The lifecycle slice deliberately supplies no numerical or resource qualification;
 its abstract budget parameters are mandatory unresolved inputs, not defaults.
+
+## Decisions (running log)
+
+- 2026-10-30: Split the remaining profile at two independently reviewable design
+  questions. K101 fixes scheduling/deadline behavior. K102 establishes enforceable
+  producer/validator/storage resources, the useful workload and the complete original-duty
+  reconciliation. Only k101 executes here. Its review/every integration precedes k102;
+  k102 must earn whole-design review before planning or consumption. This node keeps
+  the complete original charter above; no numerical scheduling slice closes it.

@@ -1,0 +1,18 @@
+flowchart TB
+  start["Start here\nOne request per producer"]:::start
+  controls{"Failure, stop\nor expiry?"}
+  holder{"Older holder\nstill active?"}
+  commit["Commit oldest request once\nAdmission budget: 150 seconds"]
+  operation["CLI, validation and result protocol\nWhole budget: 52, 67 or 142 seconds"]
+  next["Complete result\nThen serve next request"]
+  fail["Close eligibility\nRetain evidence and settle holder"]
+  start -->|"1. receive in order"| controls
+  controls -->|"yes"| fail
+  controls -->|"no"| holder
+  holder -->|"yes: wait without reset"| controls
+  holder -->|"no"| commit
+  commit -->|"2. launch once"| operation
+  operation -->|"3. complete clean join"| next
+  next -->|"pending work"| controls
+  operation -->|"failure or expiry"| fail
+  classDef start fill:#183849,color:#fff,stroke:#183849,font-weight:bold

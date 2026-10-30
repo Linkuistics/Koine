@@ -35,8 +35,10 @@ scenario dispatch, first-failure eligibility and private original retention
 remain binding. This is design authority only: concrete design, independent
 review/every integration, planning, implementation and earned review/integration
 still precede consumption. The proposed [owner and lifecycle contract](../../specs/settings-keepalive-owner.md)
-now defines ownership, stop races and record fields for independent review;
-numerical timing and enforceable resources remain outstanding. No slot is admitted.
+defines reviewed ownership, stop races and record fields. Its
+[scheduling proposal](../../specs/settings-keepalive-owner.md#scheduling-and-deadline-profile)
+now fixes receive-order service and exact deadlines, pending independent review.
+Enforceable resources and whole-design reconciliation remain outstanding. No slot is admitted.
 
 Declare both sets and their exact slot identities before the first clone request.
 Reserve the distinct namespace `ordering-evaluation` for the focused set and
