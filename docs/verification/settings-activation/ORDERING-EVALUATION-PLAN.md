@@ -27,9 +27,15 @@ remain held with unchanged criteria, subjects and caps.
 
 The [keepalive coordination hold](../../specs/settings-activation-discrimination.md#keepalive-coordination-hold)
 binds helper consumption and all readiness, freeze and runtime work.
-The [scope questions](KEEPALIVE-DESIGN.md#required-scope-decision) authorize no
-change to the timing, required-evidence, normal-stop or retention rules below.
-Any explicit agreement must be reconciled here before these sets are ready.
+The [accepted scope](KEEPALIVE-DESIGN.md#required-scope-decision) permits design
+of one serialized owner, logged UI-independent ownership delays and deferred
+keepalive ticks, an enforceable finite resource profile, and a separately
+recorded cooperative normal stop. Required capture qualification before later
+scenario dispatch, first-failure eligibility and private original retention
+remain binding. This is design authority only: concrete design, independent
+review/every integration, planning, implementation and earned review/integration
+still precede consumption. Numerical policies and schemas remain outstanding;
+no slot is admitted by this agreement.
 
 Declare both sets and their exact slot identities before the first clone request.
 Reserve the distinct namespace `ordering-evaluation` for the focused set and
@@ -143,7 +149,9 @@ command, focus operation or replacement input is permitted for these selections.
 
 Record the raw window list used by each existing count/front/focus assertion,
 not a later recreation. Preserve the scenario's bounded observation polls and
-fixed waits, including its post-click delay; add no wait or success retry. A
+fixed waits, including its post-click delay; add no UI-conditioned wait or
+success retry. The sole new admission-delay scope is command ownership under
+the fixed policy described in [Diagnostics and timing](#diagnostics-and-timing). A
 successful observation that the expected window is not yet visible may continue
 within the existing count-poll bound. Failed transport is different and stops
 the slot. The existing front/focus predicate runs once at its existing point:
@@ -257,6 +265,25 @@ and contain the clone. Keep scenario, inner/outer Task, collection, endpoint,
 environment, audit and stop results separate. A scenario zero cannot override
 an evidence failure; cleanup success cannot requalify a failed trial.
 
+The approved worker-stop design may distinguish a cooperative stop between
+captures after declared normal scenario completion. It requires a separate
+lifecycle record matched to the owned worker and confirmed exit, never a clean
+tick or retrospective reclassification. Earlier failures, unexpected exits,
+interrupted required captures and missing lifecycle records still prevent
+acceptance. Preserve exact signal/status and any in-flight attempt or partial.
+The concrete stop/dispatch ordering must be designed and reviewed before use;
+current sleep-interruption receipts still latch. Suppress future ticks before
+collection and resolve owned holders through the same domain. A stuck or unknown
+holder leaves containment unresolved and all later slots NOT RUN.
+
+The finite resource profile must enforce its stated producer, validator and
+aggregate limits with separate final-record/cleanup capacity. Reaching a limit
+stops acceptance and later scenario dispatch. Retain all produced originals and
+partials; do not truncate, overwrite, delete, downsample or omit required images.
+Post-capture size checks and streaming validation alone do not bound prior
+external-producer work. Record any preservation or collection that storage or
+process failure makes unavailable. No numerical limit is selected here.
+
 At the existing focused-helper seam, use actual retained failed envelopes and
 controlled transport responses to check partial JSON, timeout with matching text,
 nonzero status, missing completion marker, unexpected extra/missing inventory
@@ -286,8 +313,25 @@ must confirm the disabled branches create no observer/timer/output or tick
 measurement. Do not call this an instrument-free application or neutral timing.
 
 The host transcript, precondition/menu screenshots, ordinary polling, VNC
-keepalive and post-assertion captures still add work and delays. The same
-observation policy applies in E and A; it is frozen before E01. Historical
+keepalive and post-assertion captures still add work and delays. The accepted
+coordination scope additionally permits logged waits determined by command
+ownership and fixed policy, independent of observed UI state, focus or outcome.
+A Settings click may wait behind a capture and its full qualification. The
+existing sleep-20 schedule may defer its due capture until ownership is available;
+actual tick cadence changes. Keep input order, explicit sleeps, poll counts and
+one-attempt transports unchanged. There is no UI-conditioned wait, focus/success
+retry, tick omission to avoid contention or repeated input.
+
+The concrete design must define and report the admission/dispatch timing,
+deadlines, pending-work bound, tick policy and normal-stop outcomes. An expired
+deadline stops acceptance and further dispatch; it cannot retry or resubmit work,
+silently drop a tick or relabel an interrupted required capture as cleanup.
+Neither serialized dispatch nor a chosen deadline establishes a safe native
+idle interval. Command connection activity, post-CLI validation and total lock
+duration remain distinct. These delays can affect the intermittent symptom.
+
+The same reviewed observation and scheduling policy applies in E and A and is
+frozen before E01. Historical
 ordinary-route failures establish that the broad end-to-end seam has exposed
 the symptom; the new candidate/capture combination has no preservation proof
 before it runs. A qualified recurrence demonstrates preservation for that
@@ -317,6 +361,13 @@ digests with a completion time strictly before the first clone request. No
 background freeze that overlaps launch, mutable input, second writer or reused
 output directory. An omitted required input prevents admission, not a later
 opportunity to reconstruct its old bytes.
+
+Include the completed, independently reviewed coordinator and resource design,
+its implementation and controls, fixed scheduling/deadline/tick policy,
+producer/validation/retention limits, capacity reservations and worker-stop
+schema in that freeze. The agreed scope supplies none of those qualified inputs.
+If a necessary native capability experiment emerges, it needs separate explicit
+reviewed scope; neither E nor A is a budget for discovering replacement limits.
 
 The declaration maps E01/E02/A01/A02/A03 to exact clone IDs
 `koine-k49-ordering-e01`, `koine-k49-ordering-e02`,
@@ -374,7 +425,10 @@ The [complete original-duty comparison](../../specs/settings-activation-discrimi
 is binding. Native condition/intervention/disposition and clock claims remain
 unmet; k42 amended their role as repair prerequisites, not their evidence.
 K46 additionally amended only the API-use-mismatch prerequisite for this named
-ordering hypothesis. Historical bytes, classifications, strict false joins,
+ordering hypothesis. K93 permits the narrow ownership-based admission-delay and
+normal-stop design, requires a finite resource profile, and preserves the
+required-capture barrier and every original helper/adoption/containment duty.
+Historical bytes, classifications, strict false joins,
 failed transports, NOT RUN phases and every closed cap are unchanged. A design
 or passing instrument control closes no product or causal ancestor. No release,
 notarization or upstream report is included.

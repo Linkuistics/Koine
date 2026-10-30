@@ -1,11 +1,11 @@
 {
-  "title": "Settings activation: keepalive coordination decision",
-  "intro": "Start each graph at the dark Start here node; sequences start at their first message. Keepalive coordination needs an explicit scope decision after design review. The application order is implemented; helper adoption and runtime remain held.",
+  "title": "Settings activation: agreed keepalive design scope",
+  "intro": "Start each graph at the dark Start here node; sequences start at their first message. Antony approved the keepalive design scope. Concrete scheduling, resource limits and normal-stop records remain design work; helper adoption and runtime stay held.",
   "groups": [
     {
       "id": "keepalive",
       "title": "Keepalive coordination",
-      "description": "Current overlap and the proposed scope decision; no scheduler or resource cap is authorized."
+      "description": "Current overlap and the approved design scope; no scheduler or resource cap is implemented or qualified."
     },
     {
       "id": "evidence",
@@ -30,8 +30,8 @@
   ],
   "discussion": {
     "title": "Resolve the keepalive writer conflict before adoption",
-    "status": "Review findings integrated; explicit scope decision remains open",
-    "summary": "KEEPALIVE-DESIGN.md owns the timing, evidence, normal-stop and resource choices. These views compare the current collision with options for the scope discussion. All downstream consumption and runtime remain held. The diagrams are reasoning views, not native measurements or model checking.",
+    "status": "Scope agreed; concrete design, review and implementation remain",
+    "summary": "KEEPALIVE-DESIGN.md records approval of one serialized owner with UI-independent ownership delays, complete capture validation, finite resources and recorded normal shutdown. Numerical policies and schemas remain design work. Downstream consumption and runtime remain held. These views establish no native measurement or model-checking result.",
     "diagramIds": [
       "keepalive-collision",
       "keepalive-scope",
@@ -44,7 +44,7 @@
       },
       {
         "id": "keepalive-scope",
-        "summary": "Compares serialization, liveness-only capture and other transports, with explicit stop and resource decisions."
+        "summary": "Shows the approved owner, timing, stop and resource scope, alongside alternatives not selected."
       }
     ]
   },
@@ -59,9 +59,9 @@
     {
       "id": "keepalive-scope",
       "group": "keepalive",
-      "title": "Resolve timing, evidence, stop and resource choices",
+      "title": "Agreed timing, evidence, stop and resource scope",
       "source": "keepalive-scope.mmd",
-      "caption": "The design document owns the recommendation and costs. A scheduling delay reopens the driver-wait exclusion. Liveness-only capture instead reopens required evidence and retention. No option, normal-stop exception, numerical cap or native transport is approved here."
+      "caption": "Antony approved further design of UI-independent ownership delays and deferred ticks, a finite resource profile, and a matched normal-stop lifecycle result. Full capture validation before later dispatch and prior failures remain binding. Limits, policies and schemas remain outstanding; no liveness-only exemption, new native experiment or runtime is authorized."
     },
     {
       "id": "evidence-limit",
@@ -75,7 +75,7 @@
       "group": "scope",
       "title": "Accepted scope for repair design",
       "source": "scope-choice.mmd",
-      "caption": "The named empirical scope is approved. Review and integration are complete. One local reversal, two focused and three complete ordinary guests use one unchanged candidate with diagnostics disabled. The application compiles; shared harness repairs and evidence checks precede freeze. Causal slots remain held; no signed subject or result exists."
+      "caption": "The named empirical scope is approved. One local reversal, two focused and three complete ordinary guests use one unchanged candidate with diagnostics disabled. The application compiles. The separately approved keepalive scope permits only UI-independent ownership waits; its concrete design/review and all shared harness repairs precede freeze. Causal slots remain held; no signed subject or result exists."
     },
     {
       "id": "correction-assessment",

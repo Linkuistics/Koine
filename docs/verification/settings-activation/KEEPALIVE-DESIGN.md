@@ -1,33 +1,34 @@
-# Keepalive coordination and the scope decision
+# Keepalive coordination and the agreed design scope
 
 ## Decision and status
 
-**Adoption remains held.** The existing keepalive cannot promise continued
-operation when it competes with the scenario's evidence writer. This design
-takes k92's explicit unresolved-scope branch: it specifies the conflict, the
-failure and containment contract that must survive, and the decision needed
-before designing a replacement. It does not authorize a scheduler, new lock,
-resource cap, guest, signed candidate or freeze.
+**Design is authorized; adoption remains held.** Antony approved design of
+**one serialized command owner**, logged ownership-based admission delays and
+deferred keepalive ticks. Required capture qualification must still finish
+before any subsequent scenario dispatch. The accepted scope also requires an
+enforceable finite resource profile with lossless retention, and permits design
+of a separately recorded normal worker stop. The [actual answers and precise
+boundaries](#required-scope-decision) resolve k92's scope questions.
 
-The recommendation is to permit design of **one serialized command owner**,
-accepting explicitly recorded scheduling delays and deferred keepalive ticks.
-This preserves complete capture qualification before another command can start.
-It changes timing, so it needs a scope decision; it is not an implementation
-instruction. Pair that decision with a finite resource-profile design that
-preserves all produced originals and an explicit normal-stop lifecycle contract.
-No numerical limits or cancellation exception have been selected.
+This changes the permitted design, not the current implementation. The existing
+keepalive still collides with the scenario's evidence writer. No scheduling
+policy, numerical limit or lifecycle schema has been implemented or qualified.
+Concrete design, independent review and every earned integration, planning,
+implementation and earned review/integration precede adoption. No guest, signed
+candidate, freeze or safe native idle interval follows from the agreement.
 
 The [evaluation protocol](ORDERING-EVALUATION-PLAN.md),
 [capture contract and integration](ORDERING-CAPTURE-RESULTS.md),
 [shared writer](ORDERING-NONEXEC-RESULTS.md) and
 [accepted product scope](../../specs/settings-activation-discrimination.md)
-remain binding. The [k94 review dispositions](#review-integration) distinguish
-these repairs from scope approval. Any approved replacement needs concrete design, review,
-planning, implementation and earned review/integration before k89/k81/k76
-consumption. This document supplies no native acceptance or ancestor closure.
+remain binding with the narrow amendments recorded here. The [k94 review
+dispositions](#review-integration) remain historical review evidence; Antony's
+subsequent answers supply the scope agreement. Settings-keepalive-owner-k96 owns
+the concrete design before k89/k81/k76 consumption. This document supplies no
+native acceptance or ancestor closure.
 
 The editable [visual discussion](../../design/architecture/settings-activation/README.md)
-shows the collision and the proposed decision. Sequence views start at their
+shows the collision and the agreed design scope. Sequence views start at their
 first message; graph views start at the dark **Start here** node. Neither is a
 model-checking result.
 
@@ -96,9 +97,9 @@ command duration, validation, scheduling and connection activity remain distinct
 | Arrangement | What it preserves | Cost or rule it would change | Disposition |
 |---|---|---|---|
 | Current independent loop and global nonblocking writer | Immediate refusal, one ordinal domain, whole-capture qualification, unchanged sleeps | Collision stops both eligibility and keepalive; no useful complete-run availability is established | Retain source for evidence; do not adopt as the resolved design |
-| One serialized owner of scenario and keepalive commands | One dispatch at a time; complete capture validation before later dispatch; first failure can cancel unstarted work | Admission waits replace immediate contention refusal for owned submissions; ticks can be late and scenario actions can wait behind a capture | Recommended **scope for further design**, not selected implementation |
-| Separate keepalive writer plus shared failure admission gate | Scenario need not wait for PNG validation; capture could have its own unique receipts | Relaxes the global writer/ordinal domain and the barrier against input during unqualified capture; a later capture failure can follow newly admitted scenario input | Not recommended under the present evidence contract; a shared latch alone cannot restore the lost ordering guarantee |
-| Liveness-only capture outside the evidence root | Keeps the existing scenario command schedule without adding coordinator waits; the worker can retain its sleep-20 loop | Removes keepalive captures from required checked evidence and ignores their failures for scenario eligibility. Private images need an explicit retention/disposal decision. Concurrent VNC clients and host work can still affect input and elapsed timing | A distinct scope option, not a compliant implementation. Not recommended without accepting the evidence loss and qualifying the connection interaction separately |
+| One serialized owner of scenario and keepalive commands | One dispatch at a time; complete capture validation before later dispatch; first failure can cancel unstarted work | Admission waits replace immediate contention refusal for owned submissions; ticks can be late and scenario actions can wait behind a capture | **Accepted scope for further design**; concrete policy and implementation remain outstanding |
+| Separate keepalive writer plus shared failure admission gate | Scenario need not wait for PNG validation; capture could have its own unique receipts | Relaxes the global writer/ordinal domain and the barrier against input during unqualified capture; a later capture failure can follow newly admitted scenario input | Not selected; the approved scope preserves the stronger ordering guarantee |
+| Liveness-only capture outside the evidence root | Keeps the existing scenario command schedule without adding coordinator waits; the worker can retain its sleep-20 loop | Removes keepalive captures from required checked evidence and ignores their failures for scenario eligibility. Private images need an explicit retention/disposal decision. Concurrent VNC clients and host work can still affect input and elapsed timing | Not selected; no exemption from tick qualification, failure eligibility or original retention is authorized |
 | Skip busy ticks or capture only at scenario checkpoints | Can avoid some collisions without a queue | Omits or defers required captures, changes cadence; checking free then dispatching still races; it does not solve a scenario arriving during a capture | Not selected; neither an idle guarantee nor preservation of all current obligations |
 | Persistent VNC connection or another keepalive transport | Might remove periodic screenshot work | The tagged viewer forwards host input and reconnects; the recorder encodes video for at most 300 seconds. Both add lifecycle and resource duties and can coexist with other VNC clients | Neither is a passive liveness interface. A separately scoped capability/design question remains; neither is selected |
 
@@ -140,43 +141,40 @@ Neither has been established. No claim rules out every possible design.
 
 ## Required scope decision
 
-The next requirements discussion must resolve these concrete choices together:
+**Resolved in k93.** Antony accepted the choices below individually, then
+confirmed the complete scope and test seams. The answers authorize further
+design only; review, silence and elapsed time supplied no agreement.
 
-1. **Timing and liveness:** permit design of a serialized owner with logged
-   admission delays and deferred ticks; retain the present rules and leave
-   adoption unavailable; or explicitly reopen the evidence/transport rules for
-   a separate liveness-only or persistent-connection design. The recommendation
-   is permission to design serialization. An admission delay before a Settings
-   click is a driver wait, even when its purpose is coordination. Approval must
-   explicitly constitute the separate scope proposal required by the spec's
-   excluded driver-wait class. The proposed exception is a delay determined by
-   command ownership and fixed policy, independent of observed UI state, focus
-   or outcome. No wait for focus, success, or a repeated input is proposed.
-   Existing explicit sleeps, input order and poll counts would stay; elapsed
-   timing changes and may affect the intermittent symptom. The protocol's
-   observation policy and symptom-preservation discussion must reflect any
-   accepted amendment before freeze. A liveness-only option avoids intentional
-   scenario admission delays but changes evidence eligibility, retention and
-   connection concurrency instead. It supplies no unchanged-timing guarantee.
-2. **Failure eligibility:** preserve the strong rule that required capture
-   qualification finishes before any subsequent scenario dispatch. The
-   recommendation retains it. A second writer requires a separate explicit
-   relaxation of this rule, not just agreement to use two lock files.
-3. **Resources:** permit design and offline qualification of a declared finite
-   profile with lossless retention and explicit unavailable outcomes at its
-   limits, or explicitly accept unbounded host resource exposure. The
-   recommendation is the finite profile. It is not permission to truncate,
-   overwrite, delete, downsample or omit a required image.
-4. **Normal worker stop:** permit design of a cooperative stop and/or a distinct
-   nonfailure lifecycle receipt for a matched planned stop, or retain the current
-   receipt semantics and accept that a recorded sleep interruption makes even
-   an otherwise successful run unavailable. Recommend design of an explicit
-   normal-stop result outside required tick outcomes. This is an amendment to
-   what can end without latching, not permission to clear an existing latch.
-   Prior failures, unexpected exits and interrupted required captures still
-   prevent acceptance. Exact schema, race handling and controls remain design work.
+| Choice | Actual answer and accepted boundary |
+|---|---|
+| Timing and liveness | On 2026-10-29, "approved" to one serialized owner with logged ownership-based driver waits and deferred ticks. This is the separate explicit scope amendment to the excluded driver-wait class. Admission depends only on command ownership and fixed policy, never observed UI state, focus or success. |
+| Required-capture failure ordering | The same approved proposal expressly preserves complete required-capture validation before later scenario input. The existing stronger barrier before any subsequent scenario dispatch remains binding; no second writer or liveness-only exemption was selected. |
+| Finite resources | On 2026-10-29, "approved" to design and offline qualification of enforceable finite limits with separate capacity for final records and cleanup. Account for the external capture producer as well as validation and retention. Unbounded host exposure was not selected. |
+| Normal worker stop | On 2026-10-30, "yes" to a cooperative stop with its own lifecycle record, matched to the owned worker and confirmed exit. A stop between captures after normal scenario completion may finish without making the run unavailable. This is a nonfailure lifecycle result, never a clean tick or an excuse for a prior failure, interrupted required capture or missing stop record. |
+| Test seams and complete understanding | On 2026-10-30, "yes" to the existing helper/adapter controls and existing TestAnyware VM workflow, with the full scope above. Numerical policies and schemas remain design work; no new native experiment is authorized. |
 
-Approval of this direction would not choose numerical bounds or admit runtime.
+Existing input order, explicit sleeps, poll counts and one-attempt transports
+stay fixed. In particular, the existing sleep-20 schedule may produce a due tick
+that waits for command ownership; actual tick cadence and scenario elapsed timing
+change. A Settings click may wait behind capture qualification, which can affect
+the intermittent symptom. No UI-conditioned delay, focus wait, success retry,
+repeated input, tick omission to avoid contention, or latch reset is admitted.
+The same reviewed policy must apply to the focused prefix and complete scenario.
+An all-green sample still leaves symptom preservation unknown.
+
+At a resource limit, stop acceptance and later scenario dispatch, preserve all
+bytes already produced and classify incomplete work honestly. No truncation,
+deletion, overwrite, downsampling or skipped required image is authorized.
+Post-capture checks and streaming validation alone cannot bound earlier producer
+allocation or writes. Storage failure may itself prevent preservation or cleanup;
+report that boundary rather than promising available collection.
+
+The accepted normal-stop result requires an explicit planned-stop/owned-worker
+match and confirmed exit. Earlier failures remain binding. Unexpected exits,
+interrupted required captures and missing lifecycle evidence still prevent
+acceptance. Pending work and a tick racing stop need concrete dispatch-boundary
+rules; no undispatched cancellation can pretend to be a completed capture.
+
 The ensuing design must fix maximum pending work, admission/operation deadlines,
 tick delay and stop policy, resource units and limits, and the evidence by which
 those choices are useful. A deadline that expires must stop acceptance and later
@@ -233,8 +231,8 @@ capture can leave a failed or unfinished required attempt. Killing a sleeping
 worker without such a record supplies no lifecycle evidence. Recording intent
 elsewhere does not make any of these paths a clean stop.
 
-The proposed normal-stop contract therefore depends on scope item 4 and a
-reviewed replacement. A cooperative exit or separate lifecycle receipt must
+The accepted normal-stop scope still requires a reviewed replacement. Its
+cooperative exit and separate lifecycle receipt must
 distinguish an undispatched tick from required work already dispatched, record
 the matched stop and reap, and preserve all earlier failures. It cannot turn a
 `poll-step` interruption into clean evidence, ignore a sticky latch, or relabel a
@@ -257,9 +255,9 @@ Current paths use shared ordinal request/result files, `artifact.json`,
 fields govern interpretation, not the historical reason text `window poll`.
 A future coordinator must distinguish queued-but-never-dispatched work from
 attempts, and may not allocate fake dispatched-attempt ordinals for cancellation.
-The exact lifecycle record schema is a subsequent reviewed design obligation,
-conditional on the explicit normal-stop scope amendment. Current signal and
-latch behavior remains unchanged.
+The exact lifecycle record schema is a subsequent reviewed design obligation
+under the accepted normal-stop scope. Current signal and latch behavior remains
+unchanged.
 
 ## Resource contract and limits
 
@@ -277,7 +275,7 @@ does not bound a guest's wall time, image bytes, raw output or partials.
 latching and collection. Rejecting subsequent input where the process and
 storage remain usable is failure containment, not guaranteed serviceability.
 
-No cap changes here. Any proposed finite profile must explicitly specify and
+No implemented cap changes here. The approved finite profile must specify and
 control: maximum encoded file bytes, dimensions and decoded bytes; peak owned
 validation buffers and elapsed work; total capture count/bytes; other raw output
 and partials; and separate capacity for terminal evidence and cleanup. It must
@@ -334,6 +332,12 @@ focus or establish VNC liveness. The existing overlap, post-CLI validation
 barrier, signal/refusal and synthetic allocation-failure controls are relevant
 evidence; their exact source and limitations are in the capture report.
 
+Antony confirmed these seams on 2026-10-30. Replacement controls exercise the
+real coordination logic at this same boundary. Native behavior stays at the
+existing TestAnyware VM workflow only after design, review, implementation and
+readiness. These local checks establish neither useful native liveness nor
+repaired focus; a new native capability experiment needs its own reviewed scope.
+
 Before a replacement is consumed, its controls must discriminate both overlap
 directions; tick due during 30-second OCR; failure before and after admission;
 capture failure before later input; no dispatch for cancelled pending work;
@@ -366,7 +370,8 @@ K95 grades k94's findings from commit `79b6b340` against the reviewed artifact
 
 The supported held-pointer, orphan-lock, untouched-collection, exact-containment,
 resource and privacy obligations remain below and above. No redesign is
-implemented. No settled choice earns an ADR. K93 owns the human decision.
+implemented. K93's later [scope agreement](#required-scope-decision) supplies the
+human decision; the k94/k95 dispositions record the preceding review.
 
 The tagged command evidence is [VNC connection and input confirmation](https://github.com/Linkuistics/TestAnyware/blob/65bc05c9/cli-rs/crates/testanyware-cli/src/commands/mod.rs),
 [screen](https://github.com/Linkuistics/TestAnyware/blob/65bc05c9/cli-rs/crates/testanyware-cli/src/commands/screen.rs),
@@ -386,25 +391,31 @@ retains source coverage, document checks and rendered-view observations. The
 [documentation output](ordering-keepalive-integration-evidence/docs-check.txt)
 records the actual link-check outcome, including existing failures.
 
-Independent review should try to defeat the overlap argument and find a route
-that satisfies the unchanged contract. It should also challenge whether the
-recommended scope weakens failure ordering, mistakes a deadline for native
-liveness, or promises preservation/containment when storage or a holder is
-unavailable. Review is inspection-only and precedes scope/implementation work.
+The preceding independent review challenged the overlap argument and routes
+under the unchanged contract before the scope decision. The concrete replacement
+still needs its own inspection-only review: challenge failure ordering, any
+deadline mistaken for native liveness, and preservation/containment claims when
+storage or a holder is unavailable. That review and every earned integration
+must precede implementation and consumption.
 
 ## Original duties and handoff
 
 | Duty | Disposition |
 |---|---|
-| Single writer, nonblocking refusal, sleep-20 loop, under-lock unique complete captures, sticky first failure | Current source unchanged; no collision-free availability claimed. Proposed timing amendment requires an explicit scope decision. |
-| Original scenario input, explicit sleeps, poll bounds and strict one-attempt transports | Preserved. No scheduling wait, retry, tick omission, bypass or latch reset authorized. |
-| K89 file/upload/install/environment/lifecycle/collection helpers | Remain live after review, scope resolution and any resulting design/planning/implementation/review. |
+| Single writer, nonblocking refusal, sleep-20 loop, under-lock unique complete captures, sticky first failure | Current source unchanged. Design may replace immediate contention refusal for owned submissions with fixed, logged ownership-based admission; due ticks may be deferred. One writer/ordinal domain, complete validation before subsequent dispatch and first-failure eligibility remain. No native liveness or collision-free implementation is established. |
+| Original scenario input, explicit sleeps, poll bounds and strict one-attempt transports | Preserved. Only UI-independent command-ownership admission delays are admitted for design. No UI-conditioned wait, retry, repeated input, tick omission to avoid contention, bypass or latch reset is authorized. |
+| Required capture qualification and original retention | Every required capture, including keepalive, remains checked evidence. Separate writers and liveness-only exemptions were not selected. Unique private complete images and every produced partial remain retained. |
+| Host resource exposure | Design and offline qualification of an enforceable finite profile are approved; unbounded exposure was not selected. Actual numerical limits, external-producer enforcement, reservations and useful boundary controls remain outstanding. A limit stops acceptance; no deletion, overwrite, truncation or downsampling. |
+| Normal worker stop | A cooperative stop with a separate matched lifecycle record and confirmed exit may end normally between captures after scenario completion. Prior failure, unexpected exit, interrupted required capture or missing stop evidence still prevents acceptance. Current receipt semantics stay unchanged until implementation. |
+| K89 file/upload/install/environment/lifecycle/collection helpers | Remain live after k96's concrete design, independent review/every integration, planning, implementation and earned review/integration. No speculative implementation leaf is created by k93. |
 | K81 every exec and one-shot consequence | Still required: installed identity, exact defaults/absence, launch/endpoint identity, quit/absence, restart clean submission plus changed boot. |
 | K76 complete adoption, all callers/root, window blocks and signals | Still required, including worker supervision, status propagation and both held-pointer cases. No ordinary caller changes here. |
 | K67 / k62 | Positive setup/title/liveness and later returns; exact shared focused prefix through TextEdit quit before resize and complete original-duty reconciliation remain. |
 | K57 / k54 | Finite caller, private retention, collection/orphan ownership/exact containment; whole-harness review, readiness, actual signed/all-input/completed-golden freeze and runtime remain held. |
 | Existing availability limits | Missing snapshot trees and omitted/empty AXValue distinction, OCR substring early stop and held-frame capture fallback remain. No new negative inference or retry. |
+| Agreed test seams | Existing helper/adapter controls with controlled CLI/sleep and real coordination/lock/validation/records; existing native TestAnyware workflow after all prerequisites. Both overlap directions, failure/stop races, resource/partial/publication limits, signals and both held-pointer cases remain required. No local test proves native liveness or focus. |
 | Product/causal and historical obligations | One selection/one front-focused window and all complete ordinary assertions remain. Native cause, ownership and repair acceptance unresolved; all historical bytes, false joins, failed transports, NOT RUN phases, closed caps and six held causal slots unchanged. |
 
-This completes the design's decision-needed boundary only. All ancestors remain
-open; no release, notarization, upstream report or runtime result follows.
+The requirements are agreed; concrete replacement design remains outstanding.
+All ancestors remain open; no release, notarization, upstream report or runtime
+result follows.

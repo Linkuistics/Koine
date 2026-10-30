@@ -72,12 +72,12 @@ attempt is refused: contention retains exact phase/status in refusals.jsonl,
 latches and allocates no ordinal. Classify structured fields, not the historical
 window-poll reason wording. Full scenario signals remain k76's work.
 
-The keepalive/scenario collision is unresolved design work in
-settings-keepalive-coordination-k92 before k89/k81/k76 consumption. K92 must earn
-independent review/every integration and place any required implementation/
-review before consumption. The current nonblocking lock, sleep20 cadence and
+The keepalive/scenario collision remains unresolved concrete design work in
+settings-keepalive-owner-k96 after the reviewed k92 assessment and k93 agreement
+below. Its independent review/every integration, planning, implementation and
+earned review/integration precede consumption. The current nonblocking lock, sleep20 cadence and
 failure stop remain unchanged; they prove no working native keepalive or
-complete-run serviceability. No scheduling wait, retry or bypass is selected.
+complete-run serviceability. No scheduling wait, retry or bypass is implemented.
 
 Reusable controls now accept actual retained native PNG bytes, nonzero filters,
 consecutive IDAT and ancillary chunks, and disprove over-strict validators.
@@ -94,13 +94,22 @@ held-pointer controls. Snapshot missing-tree/empty-AXValue, OCR substring and
 held-frame fallback limits remain. K67/k62/k57/k54 and every runtime slot stay
 held. No VM/candidate/freeze, native acceptance, ancestor closure or release.
 
-## K92 keepalive design boundary
+## Agreed keepalive design scope
 
-Read docs/verification/settings-activation/KEEPALIVE-DESIGN.md for the current
-scope choices and k94 review dispositions integrated by k95.
-Settings-keepalive-scope-k93 owns the human decision. The spec's coordination hold binds
-k89/k81/k76 consumption and all readiness/freeze/runtime work. Any authorized
-replacement still needs concrete design/review, planning, implementation and
-earned review. Every original k89/k81/k76/k67/k62/k57/k54 duty, private root,
-partial-record/containment limit and snapshot/OCR/held-frame limit survives.
-No current code rule is amended and no ancestor closes.
+Read docs/verification/settings-activation/KEEPALIVE-DESIGN.md for k93's actual
+answers and complete original-duty comparison. Antony approved design of one
+serialized owner with logged UI-independent command-ownership delays and deferred
+ticks, an enforceable finite resource profile with full original/partial
+retention, and cooperative normal stop with a separate matched lifecycle record
+and confirmed worker exit. Required capture validation before later dispatch and
+first-failure eligibility remain. Existing input order, explicit sleeps, poll
+counts and one-attempt transports stay fixed; elapsed timing changes.
+Settings-keepalive-owner-k96 owns concrete design. Independent design review and
+every integration, planning, implementation and earned review/integration precede
+k89/k81/k76 consumption and all readiness/freeze/runtime work. Every original
+k89/k81/k76/k67/k62/k57/k54 duty, private root, partial-record/containment and
+snapshot/OCR/held-frame limit survives. The existing helper/adapter and native
+TestAnyware test seams are agreed. Numerical policies and schemas remain open;
+current source is unchanged. This scope governs earlier handoffs only at these
+explicit boundaries. No native idle interval, collection availability, new
+runtime experiment or ancestor closure follows.

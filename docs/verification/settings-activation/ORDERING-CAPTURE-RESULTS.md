@@ -3,9 +3,11 @@
 K88 supplies source-only checked screenshots and the existing background
 keepalive loop. K85 remains open with file/environment/lifecycle/collection work
 in k89. Independent review and every earned integration precede k89/k81/k76
-consumption. K91 integrates k90 below; the keepalive coordination design in
-settings-keepalive-coordination-k92, its review/every earned integration and any
-required implementation/review still precede downstream consumption. No ordinary
+consumption. K91 integrates k90 below; k92's reviewed assessment led to the
+[accepted k93 scope](KEEPALIVE-DESIGN.md#required-scope-decision).
+Settings-keepalive-owner-k96 now owns concrete design, followed by independent
+review/every integration, planning, implementation and earned review/integration
+before downstream consumption. No ordinary
 caller or scenario root is changed. No VM, signed
 candidate, frozen subject, native availability or repair acceptance is supplied.
 
@@ -17,8 +19,9 @@ The [ordering protocol](ORDERING-EVALUATION-PLAN.md),
 
 ## Interface
 
-The [coordination assessment and review integration](KEEPALIVE-DESIGN.md)
-own the unresolved scope choices. The
+The [coordination assessment and accepted design scope](KEEPALIVE-DESIGN.md)
+record the approved ownership-based delays, finite resource-profile design and
+separate normal-stop result. The
 [binding hold](../../specs/settings-activation-discrimination.md#keepalive-coordination-hold)
 prevents k89/k81/k76 consumption and runtime. Source behavior and historical
 receipts below remain unchanged.
@@ -114,8 +117,8 @@ The locked Allow read can last 30 seconds, so a sleep-20 tick can collide with
 it, stop the keepalive for the rest of the run, and remove the protection that
 the legacy loop intended against the VZ idle crash. The keepalive's capture can
 also refuse a scenario action. There is no measured collision rate or evidence
-that a complete run remains serviceable. This is an unresolved coordination
-design duty in k92 before k89/k81/k76 consumption, not an adoption instruction
+that a complete run remains serviceable. This is an unresolved concrete coordination
+design duty in k96 before k89/k81/k76 consumption, not an adoption instruction
 to accept a broken keepalive. Its reviewed resolution and any implementation
 must explicitly account for existing locking and evidence rules.
 A competitor can latch during a clean in-flight capture; that capture may still
@@ -144,7 +147,7 @@ latch, but the next locked gate latches the unfinished ordinal and refuses
 scenario input. Allocation failure during earlier receipt writing can leave
 still less evidence. Preserve all partials and do not reclassify them as success.
 These are fail-closed outcomes, not bounded resource use or guaranteed collection
-availability. K92 carries the resource question into design; k57/k76 retain its
+availability. K93 authorizes a finite resource-profile design in k96; k57/k76 retain its
 operational consequences. No arbitrary cap or truncation is introduced here.
 
 ## Actual source and caller inventory
@@ -232,9 +235,10 @@ result. No test or source changes during a recorded measurement.
 
 ## Remaining duties
 
-K92 resolves keepalive/scenario coordination and resource consequences before
-k89/k81/k76 consumption, with independent design review, every earned integration
-and any required implementation/review. The unchanged nonblocking behavior is
+K93 resolves the scope; k96 must design the concrete keepalive/scenario
+coordination, finite resources and normal-stop semantics before k89/k81/k76
+consumption, with independent design review/every integration, planning,
+implementation and earned review/integration. The unchanged nonblocking behavior is
 not qualified as a working keepalive. K57/k76 must carry private screenshot
 volume and allocation/partial-record limits above into collection and adoption.
 

@@ -2,7 +2,7 @@ flowchart TD
     S["Start here: Antony approved empirical ordering design"]:::start
     S --> A["Design activation before window ordering; one activation request"]
     A --> J["Named exception to the API-use test; no violation established"]
-    A --> A1["Establish preconditions; exclude repetition, driver waits or retries, deferral and speculative yield"]
+    A --> A1["Establish preconditions; exclude repetition, retries, deferral and yield; only separately approved ownership waits"]
     A1 --> A2["Design review integrated; implementation and verification precede freeze"]
     A2 --> T["Proposed: two focused plus three complete ordinary guests; one unchanged candidate"]
     T --> F["Qualified recurrence rejects repair; missing required evidence prevents acceptance"]

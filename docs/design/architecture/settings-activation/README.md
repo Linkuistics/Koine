@@ -1,6 +1,6 @@
 # Settings activation design discussion
 
-The current discussion is [keepalive coordination](../../../verification/settings-activation/KEEPALIVE-DESIGN.md), including its review dispositions and unresolved scope choices. The [binding hold](../../../specs/settings-activation-discrimination.md#keepalive-coordination-hold) prevents helper adoption and runtime. The views illustrate that decision surface; they grant no authority.
+The current discussion is [the agreed keepalive design scope](../../../verification/settings-activation/KEEPALIVE-DESIGN.md): one serialized owner with UI-independent ownership delays, finite resources and recorded normal shutdown. Full capture validation and first-failure eligibility remain. The [binding hold](../../../specs/settings-activation-discrimination.md#keepalive-coordination-hold) still prevents helper adoption and runtime until concrete design, review and implementation qualify. The views illustrate the agreement; they are not implementation or native evidence.
 
 The [current contract](../../../specs/settings-activation-discrimination.md#single-request-ordering-design)
 defines one shared-method reversal: prepare the retained window and section,
@@ -48,8 +48,8 @@ loads these same sources while retaining its separate current discussion.
 Current changes:
 
 - [Keepalive → A due capture conflicts with the whole-operation writer](http://127.0.0.1:8801/settings-activation/#diagram-keepalive-collision) — Shows refusal in both overlap directions and the sticky failure consequence.
-- [Keepalive → Resolve timing, evidence, stop and resource choices](http://127.0.0.1:8801/settings-activation/#diagram-keepalive-scope) — Compares scope options before any replacement design or implementation.
-- [Coordination and scope decision](../../../verification/settings-activation/KEEPALIVE-DESIGN.md) — Defines ownership, cancellation, exact partials, resource limits, alternatives and all remaining duties.
+- [Keepalive → Agreed timing, evidence, stop and resource scope](http://127.0.0.1:8801/settings-activation/#diagram-keepalive-scope) — Shows the approved design direction and alternatives not selected; concrete policies remain outstanding.
+- [Coordination and scope agreement](../../../verification/settings-activation/KEEPALIVE-DESIGN.md) — Records the actual answers, ownership, cancellation, exact partials, resource obligations, alternatives and all remaining duties.
 - [Keepalive coordination hold](../../../specs/settings-activation-discrimination.md#keepalive-coordination-hold) — Keeps helper consumption and runtime held without changing the accepted product convention.
 
 Unchanged context is the [evidence limit](http://127.0.0.1:8801/settings-activation/#diagram-evidence-limit).

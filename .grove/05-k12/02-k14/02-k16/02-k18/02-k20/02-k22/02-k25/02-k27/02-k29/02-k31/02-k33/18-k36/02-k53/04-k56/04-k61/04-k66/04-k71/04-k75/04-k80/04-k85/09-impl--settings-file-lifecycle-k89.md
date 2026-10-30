@@ -27,18 +27,24 @@ executing only the first child.
 ## Capture dependency after k91
 
 Read the current capture report and k91 integration receipts. The checked
-capture repair is source-only. Settings-keepalive-coordination-k92 and its
-independent review/every earned integration, plus any required implementation/
-review, precede consumption here and in k81/k76. Carry private per-tick image
-volume, unbounded allocation/partial-record limits and every original duty.
+capture repair is source-only. The reviewed k92 assessment and k93 agreement
+require settings-keepalive-owner-k96's concrete design, independent review/every
+integration, planning, implementation and earned review/integration before
+consumption here and in k81/k76. Carry private per-tick image volume, the current
+source's allocation/partial-record limits, the approved finite-profile design
+obligation and every original duty.
 Do not use generic CLI capture, reset/bypass a lock/latch, retry or overwrite
 evidence. No native keepalive/serviceability qualification follows from fixtures.
 
 ## Keepalive consumption hold
 
-Read KEEPALIVE-DESIGN.md for k94's dispositions integrated by k95 and the
-current scope choices. Consumption requires settings-keepalive-scope-k93's
-explicit resolution. Any resulting
-concrete design/planning/implementation and earned reviews/integrations must
-precede this leaf's consumption and k81/k76 adoption. K92 supplies no scheduler,
-resource cap or runtime authority. Every original duty above remains binding.
+Read KEEPALIVE-DESIGN.md for k94/k95's dispositions and k93's explicit agreement.
+Design may admit logged UI-independent ownership waits and deferred ticks, an
+enforceable finite resource profile retaining every produced original/partial,
+and a cooperative normal stop with a matched lifecycle record and confirmed exit.
+Required capture validation before subsequent scenario dispatch, first-failure
+eligibility, exact VM identity and private roots remain binding. K96's concrete
+design, independent review/every integration, planning, implementation and earned
+review/integration must precede this leaf's consumption and k81/k76 adoption.
+No numerical policy, working scheduler, resource cap or runtime authority follows
+from scope agreement. Every original duty above remains binding.

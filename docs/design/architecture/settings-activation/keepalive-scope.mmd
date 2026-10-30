@@ -1,26 +1,26 @@
 flowchart TD
     start["Start here: current writer and sleep-20 loop can collide"]
-    choice{"Explicit scope decision; review grants no approval"}
-    keep["Keep current constraints: adoption remains unavailable"]
-    serial["Recommended direction: design one serialized owner"]
-    cost["Reopen driver-wait exclusion for ownership-based delays; defer ticks"]
-    ping["Liveness-only capture: no added scenario wait; waive required tick evidence"]
-    transport["Other transport: viewer forwards input; recorder encodes up to 300 seconds"]
-    risk["Concurrent VNC and timing effects unqualified; decide private image retention"]
-    stop["Decide normal-stop lifecycle semantics; no prior failure is erased"]
-    profile["Choose finite profile design or accept unbounded exposure"]
+    choice{"Antony approved further design; source behavior is unchanged"}
+    keep["Not selected: retain conflicting constraints"]
+    serial["Approved: design one serialized owner; validate captures before later dispatch"]
+    cost["Approved ownership delays and late ticks; independent of UI state or success"]
+    ping["Not selected: liveness-only capture waiving required tick evidence"]
+    transport["Not selected: viewer forwards input; recorder encodes up to 300 seconds"]
+    risk["Concurrent VNC effects unqualified; evidence and retention exemptions not approved"]
+    stop["Approved normal-stop design: matched lifecycle record and exit; prior failures remain"]
+    profile["Approved finite-profile design; retain originals and partials; limits still to establish"]
     design["Concrete design, review and planning before implementation"]
     held["K89 / K81 / K76 consumption and runtime remain held"]
     start -->|Documented conflict and missing normal-stop result| choice
-    choice -->|Retain rules| keep
-    choice -->|Authorize further design only| serial
-    choice -->|Explicit evidence amendment| ping
-    choice -->|Separate capability scope| transport
+    choice -->|Alternative not selected| keep
+    choice -->|Selected design direction| serial
+    choice -->|Alternative not selected| ping
+    choice -->|Alternative not selected| transport
     serial --> cost
     ping --> risk
     transport --> risk
     cost --> stop
-    risk --> stop
+    risk --> held
     stop --> profile
     profile --> design
     keep --> held
