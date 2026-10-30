@@ -161,8 +161,10 @@ matched to the owned worker and its confirmed exit. Stopping between captures
 after normal scenario completion may end without making the run unavailable.
 This result is separate from required tick outcomes: earlier failures remain
 binding, and unexpected exits, interrupted required captures or missing stop
-records still prevent acceptance. Exact dispatch/stop races and record schemas
-remain design work; no current interrupted receipt becomes successful.
+records still prevent acceptance. The proposed [owner and lifecycle contract](settings-keepalive-owner.md)
+specifies dispatch/stop races and record fields for independent review. Its
+numerical scheduling and enforceable resource profile remain design work; no
+current interrupted receipt becomes successful.
 
 Helper adoption, readiness, freeze and runtime remain held until the concrete
 design, independent review and every earned integration, planning, implementation

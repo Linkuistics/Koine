@@ -1,0 +1,24 @@
+flowchart TB
+  caller["Start here: finite caller\nOwn run, exact VM and private root"]:::start
+  scenario["Scenario helpers\nOne outstanding submission"]
+  worker["Owned keepalive worker\nSleep 20, request one tick"]
+  owner["Command owner and supervisor\nOne active operation\nOne pending scenario + one pending tick"]
+  gate{"Eligible at dispatch?\nNo prior failure or stop"}
+  operation["One attempt in original writer domain\nCLI → full validation → delivery → terminal record"]
+  stop["Close eligibility and suppress ticks\nCancel unstarted work without attempt ordinal"]
+  collection["Settle owned holder and reap worker\nThen untouched collection and exact clone stop"]
+  profile["Remaining design: finite profile\nDeadlines, arbitration and producer limits\nMissing profile prohibits startup"]:::open
+  caller -->|"1. create and own"| owner
+  owner -->|"2. create and join"| worker
+  scenario -->|"submission / result"| owner
+  worker -->|"tick / result / matched stop"| owner
+  owner -->|"3. choose under reviewed profile"| gate
+  gate -->|"yes"| operation
+  operation -->|"clean: return result"| owner
+  gate -->|"no"| stop
+  operation -->|"failure: retain original outcome"| stop
+  owner -->|"normal end or signal"| stop
+  stop --> collection
+  profile -.-> owner
+  classDef start fill:#183849,color:#fff,stroke:#183849,font-weight:bold
+  classDef open fill:#fff2d6,color:#302410,stroke:#a66d00,stroke-dasharray:5 5

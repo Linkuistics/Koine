@@ -34,8 +34,9 @@ recorded cooperative normal stop. Required capture qualification before later
 scenario dispatch, first-failure eligibility and private original retention
 remain binding. This is design authority only: concrete design, independent
 review/every integration, planning, implementation and earned review/integration
-still precede consumption. Numerical policies and schemas remain outstanding;
-no slot is admitted by this agreement.
+still precede consumption. The proposed [owner and lifecycle contract](../../specs/settings-keepalive-owner.md)
+now defines ownership, stop races and record fields for independent review;
+numerical timing and enforceable resources remain outstanding. No slot is admitted.
 
 Declare both sets and their exact slot identities before the first clone request.
 Reserve the distinct namespace `ordering-evaluation` for the focused set and
@@ -271,8 +272,9 @@ lifecycle record matched to the owned worker and confirmed exit, never a clean
 tick or retrospective reclassification. Earlier failures, unexpected exits,
 interrupted required captures and missing lifecycle records still prevent
 acceptance. Preserve exact signal/status and any in-flight attempt or partial.
-The concrete stop/dispatch ordering must be designed and reviewed before use;
-current sleep-interruption receipts still latch. Suppress future ticks before
+The proposed lifecycle slice and its remaining numerical/resource profile must
+receive whole-design review before use; current sleep-interruption receipts still
+latch. Suppress future ticks before
 collection and resolve owned holders through the same domain. A stuck or unknown
 holder leaves containment unresolved and all later slots NOT RUN.
 

@@ -1,0 +1,331 @@
+{
+  "initial": {
+    "project": "Users-antony-Development-AbstractingComputers-Koine.gh-issue-14",
+    "signal": "best_effort",
+    "indexed_at": "2026-10-30T09:51:57Z",
+    "metadata": {
+      "generation": "2026-10-30T09:51:57Z",
+      "index_mode": "full",
+      "recorded_at": "2026-10-30T09:51:57Z",
+      "recording_status": "complete",
+      "ignored_files_stored": 276,
+      "ignored_files_total": 276,
+      "hash_records_complete": true,
+      "coverage_version": 3,
+      "generation_matches": true
+    },
+    "paths": [
+      {
+        "requested_path": "scripts/vm-capture-evidence-lib.sh",
+        "path": "scripts/vm-capture-evidence-lib.sh",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "scripts/vm-guest-exec.py",
+        "path": "scripts/vm-guest-exec.py",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "scripts/vm_capture_artifact.py",
+        "path": "scripts/vm_capture_artifact.py",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "scripts/vm-verify-lib.sh",
+        "path": "scripts/vm-verify-lib.sh",
+        "status": "partial",
+        "freshness": "metadata_match",
+        "recommended_action": "read_ranges_and_verify_scope",
+        "coverage": [
+          {
+            "path": "scripts/vm-verify-lib.sh",
+            "kind": "parse_partial",
+            "detail": "175-175",
+            "match": "exact",
+            "ranges": [
+              {
+                "start": 175,
+                "end": 175
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "requested_path": "scripts/vm-click-evidence-lib.sh",
+        "path": "scripts/vm-click-evidence-lib.sh",
+        "status": "partial",
+        "freshness": "metadata_match",
+        "recommended_action": "read_ranges_and_verify_scope",
+        "coverage": [
+          {
+            "path": "scripts/vm-click-evidence-lib.sh",
+            "kind": "parse_partial",
+            "detail": "82-82",
+            "match": "exact",
+            "ranges": [
+              {
+                "start": 82,
+                "end": 82
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "requested_path": "Tests/scripts/vm-capture-evidence.bats",
+        "path": "Tests/scripts/vm-capture-evidence.bats",
+        "status": "no_recorded_issue",
+        "freshness": "not_tracked",
+        "recommended_action": "read_source_and_reindex",
+        "coverage": []
+      },
+      {
+        "requested_path": "scripts/vm-verify-menu-bar.sh",
+        "path": "scripts/vm-verify-menu-bar.sh",
+        "status": "partial",
+        "freshness": "metadata_match",
+        "recommended_action": "read_ranges_and_verify_scope",
+        "coverage": [
+          {
+            "path": "scripts/vm-verify-menu-bar.sh",
+            "kind": "parse_partial",
+            "detail": "169-169",
+            "match": "exact",
+            "ranges": [
+              {
+                "start": 169,
+                "end": 169
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "requested_path": "Taskfile.yml",
+        "path": "Taskfile.yml",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "docs/verification/settings-activation/KEEPALIVE-DESIGN.md",
+        "path": "docs/verification/settings-activation/KEEPALIVE-DESIGN.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_changed",
+        "recommended_action": "read_source_and_reindex",
+        "coverage": []
+      },
+      {
+        "requested_path": "docs/specs/settings-activation-discrimination.md",
+        "path": "docs/specs/settings-activation-discrimination.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_changed",
+        "recommended_action": "read_source_and_reindex",
+        "coverage": []
+      },
+      {
+        "requested_path": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+        "path": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_changed",
+        "recommended_action": "read_source_and_reindex",
+        "coverage": []
+      },
+      {
+        "requested_path": "docs/verification/settings-activation/ORDERING-CAPTURE-RESULTS.md",
+        "path": "docs/verification/settings-activation/ORDERING-CAPTURE-RESULTS.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_changed",
+        "recommended_action": "read_source_and_reindex",
+        "coverage": []
+      },
+      {
+        "requested_path": "docs/verification/settings-activation/ORDERING-NONEXEC-RESULTS.md",
+        "path": "docs/verification/settings-activation/ORDERING-NONEXEC-RESULTS.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "docs/verification/settings-activation/ORDERING-CLICK-RESULTS.md",
+        "path": "docs/verification/settings-activation/ORDERING-CLICK-RESULTS.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      }
+    ],
+    "scopes": [],
+    "caveat": "Best-effort signal only. No recorded issue does not prove graph or source completeness; read flagged source and qualify claims when metadata is changed or unavailable."
+  },
+  "artifacts": {
+    "project": "Users-antony-Development-AbstractingComputers-Koine.gh-issue-14",
+    "signal": "best_effort",
+    "indexed_at": "2026-10-30T10:18:08Z",
+    "metadata": {
+      "generation": "2026-10-30T10:18:08Z",
+      "index_mode": "full",
+      "recorded_at": "2026-10-30T10:18:09Z",
+      "recording_status": "complete",
+      "ignored_files_stored": 276,
+      "ignored_files_total": 276,
+      "hash_records_complete": true,
+      "coverage_version": 3,
+      "generation_matches": true
+    },
+    "paths": [
+      {
+        "requested_path": "docs/specs/settings-keepalive-owner.md",
+        "path": "docs/specs/settings-keepalive-owner.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_changed",
+        "recommended_action": "read_source_and_reindex",
+        "coverage": []
+      },
+      {
+        "requested_path": "docs/design/architecture/settings-activation/keepalive-owner.mmd",
+        "path": "docs/design/architecture/settings-activation/keepalive-owner.mmd",
+        "status": "partial",
+        "freshness": "metadata_match",
+        "recommended_action": "read_ranges_and_verify_scope",
+        "coverage": [
+          {
+            "path": "docs/design/architecture/settings-activation/keepalive-owner.mmd",
+            "kind": "parse_partial",
+            "detail": "1-25",
+            "match": "exact",
+            "ranges": [
+              {
+                "start": 1,
+                "end": 25
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "requested_path": "docs/design/architecture/settings-activation/keepalive-lifecycle.mmd",
+        "path": "docs/design/architecture/settings-activation/keepalive-lifecycle.mmd",
+        "status": "partial",
+        "freshness": "metadata_changed",
+        "recommended_action": "read_source_and_reindex",
+        "coverage": [
+          {
+            "path": "docs/design/architecture/settings-activation/keepalive-lifecycle.mmd",
+            "kind": "parse_partial",
+            "detail": "7-7,8-8,15-15,19-19,20-20,21-21,22-22,23-23,24-24,25-25,26-26,27-27,28-28,29-29,30-30",
+            "match": "exact",
+            "ranges": [
+              {
+                "start": 7,
+                "end": 7
+              },
+              {
+                "start": 8,
+                "end": 8
+              },
+              {
+                "start": 15,
+                "end": 15
+              },
+              {
+                "start": 19,
+                "end": 19
+              },
+              {
+                "start": 20,
+                "end": 20
+              },
+              {
+                "start": 21,
+                "end": 21
+              },
+              {
+                "start": 22,
+                "end": 22
+              },
+              {
+                "start": 23,
+                "end": 23
+              },
+              {
+                "start": 24,
+                "end": 24
+              },
+              {
+                "start": 25,
+                "end": 25
+              },
+              {
+                "start": 26,
+                "end": 26
+              },
+              {
+                "start": 27,
+                "end": 27
+              },
+              {
+                "start": 28,
+                "end": 28
+              },
+              {
+                "start": 29,
+                "end": 29
+              },
+              {
+                "start": 30,
+                "end": 30
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "requested_path": "docs/design/architecture/settings-activation/README.md",
+        "path": "docs/design/architecture/settings-activation/README.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "docs/design/architecture/settings-activation/diagrams.json",
+        "path": "docs/design/architecture/settings-activation/diagrams.json",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "scripts/check-doc-links.py",
+        "path": "scripts/check-doc-links.py",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "CONTEXT.md",
+        "path": "CONTEXT.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      }
+    ],
+    "scopes": [],
+    "caveat": "Best-effort signal only. No recorded issue does not prove graph or source completeness; read flagged source and qualify claims when metadata is changed or unavailable."
+  }
+}

@@ -1,6 +1,6 @@
 # Settings activation design discussion
 
-The current discussion is [the agreed keepalive design scope](../../../verification/settings-activation/KEEPALIVE-DESIGN.md): one serialized owner with UI-independent ownership delays, finite resources and recorded normal shutdown. Full capture validation and first-failure eligibility remain. The [binding hold](../../../specs/settings-activation-discrimination.md#keepalive-coordination-hold) still prevents helper adoption and runtime until concrete design, review and implementation qualify. The views illustrate the agreement; they are not implementation or native evidence.
+The current discussion is [the proposed owner and worker lifecycle](../../../specs/settings-keepalive-owner.md). One owner closes dispatch before acknowledging normal end; it cancels unstarted ticks without capture ordinals and retains committed captures through validation and publication. Normal stop requires matched intent, acknowledgement, actual exit and published reap. This independently reviewable slice leaves numerical scheduling and enforceable resources to the remaining design. The [binding hold](../../../specs/settings-activation-discrimination.md#keepalive-coordination-hold) still prevents adoption and runtime.
 
 The [current contract](../../../specs/settings-activation-discrimination.md#single-request-ordering-design)
 defines one shared-method reversal: prepare the retained window and section,
@@ -31,12 +31,12 @@ submission and their named confirmation. Restart disconnect remains unavailable
 despite a later boot; a demonstrably unavailable required completion holds E01
 for a new decision. No failed read is repaired by retry.
 
-Run `mise exec -- task design:serve PORT=8801` from the repository root and open
-[the current discussion](http://127.0.0.1:8801/settings-activation/#discussion).
+Run `mise exec -- task design:serve PORT=8802` from the repository root and open
+[the current discussion](http://127.0.0.1:8802/settings-activation/#discussion).
 The existing task serves only the architecture presentation directory.
 
 Start each graph at the dark **Start here** node; the sequence starts at its
-first message. The ordering sequence shows the implemented application call order,
+first message; state views start at the initial dot. The ordering sequence shows the implemented application call order,
 not measured native completion. The assessment numbers the assessed original call order before
 its dotted reasoning edge. Other graphs describe decisions or outcome rules;
 none is a proven causal graph. The sources are editable Mermaid. The viewer
@@ -47,12 +47,12 @@ loads these same sources while retaining its separate current discussion.
 
 Current changes:
 
-- [Keepalive → A due capture conflicts with the whole-operation writer](http://127.0.0.1:8801/settings-activation/#diagram-keepalive-collision) — Shows refusal in both overlap directions and the sticky failure consequence.
-- [Keepalive → Agreed timing, evidence, stop and resource scope](http://127.0.0.1:8801/settings-activation/#diagram-keepalive-scope) — Shows the approved design direction and alternatives not selected; concrete policies remain outstanding.
-- [Coordination and scope agreement](../../../verification/settings-activation/KEEPALIVE-DESIGN.md) — Records the actual answers, ownership, cancellation, exact partials, resource obligations, alternatives and all remaining duties.
-- [Keepalive coordination hold](../../../specs/settings-activation-discrimination.md#keepalive-coordination-hold) — Keeps helper consumption and runtime held without changing the accepted product convention.
+- [Keepalive → One owner controls dispatch and evidence](http://127.0.0.1:8802/settings-activation/#diagram-keepalive-owner) — Adds exact ownership and bounded pending submissions, with the finite profile explicitly unresolved.
+- [Keepalive → Normal stop preserves every committed capture](http://127.0.0.1:8802/settings-activation/#diagram-keepalive-lifecycle) — Adds cancellation, drain, matched exit and unresolved containment paths.
+- [Owner and worker lifecycle contract](../../../specs/settings-keepalive-owner.md) — Specifies dispatch/stop races, lifecycle evidence, final observation and discriminating controls.
+- [Current design handoff](../../../verification/settings-activation/KEEPALIVE-DESIGN.md#lifecycle-design-slice) — Separates the proposed lifecycle slice from remaining numerical/resource design and later implementation duties.
 
-Unchanged context is the [evidence limit](http://127.0.0.1:8801/settings-activation/#diagram-evidence-limit).
+Unchanged context is the [evidence limit](http://127.0.0.1:8802/settings-activation/#diagram-evidence-limit).
 The [design evidence](../../../verification/settings-activation/ORDERING-DESIGN-EVIDENCE.md)
 links the source/API reads and [verification receipt](../../../verification/settings-activation/ordering-design-evidence/verification.json).
 The [raw documentation output](../../../verification/settings-activation/ordering-design-evidence/doc-links.txt)

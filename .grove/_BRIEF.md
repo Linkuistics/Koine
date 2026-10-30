@@ -655,3 +655,16 @@ consumption, with independent review/every integration and any required
 implementation/review. Private per-tick image volume and unbounded allocation/
 unfinished-record limits pass to k57/k76. All original duties and runtime holds
 remain; no VM/candidate/freeze, native acceptance or ancestor closure follows.
+
+## Owner lifecycle design boundary
+
+K96 now contains the proposed ownership/cooperative-stop slice k97 and remaining
+complete profile design k98. Read docs/specs/settings-keepalive-owner.md and the
+lifecycle-design-slice section of KEEPALIVE-DESIGN.md under
+docs/verification/settings-activation. Independent lifecycle review/every
+integration precede k98; complete numerical scheduling and enforceable producer/
+validator/retention resources, whole-design review/every integration, planning,
+implementation and earned review/integration still precede k89/k81/k76
+consumption. No coordinator is implemented or resource-qualified. Every original
+duty, private root, availability limit, historical cap and runtime hold remains;
+k96 and all ancestors stay open.

@@ -1,4 +1,4 @@
-# settings-keepalive-owner-k96
+# settings-keepalive-owner-k96 — brief
 
 ## Goal
 Produce the concrete design of one owner for scenario and keepalive commands,
@@ -83,3 +83,31 @@ a deadline nor serialized commands establishes a safe native idle interval.
 Separate evidence writers, liveness-only ticks and persistent transports were
 not selected. Existing source behavior and historical records stay unchanged
 until authorized implementation. No ADR is earned by permission to design alone.
+
+## Decisions (running log)
+
+- 2026-10-30: Adopt k96 in the clean jj workspace at c0ca19ea. Tier 2 graph
+  coverage generation 2026-10-30T09:51:57Z identifies the current backend and
+  capture loop. Read the flagged shell ranges and current changed documents;
+  no exhaustive graph claim follows.
+- 2026-10-30: Decompose at the cooperative lifecycle contract. The first child
+  specifies exact ownership, dispatch/stop ordering, lifecycle publication and
+  reap, failure/containment handoff and discriminating controls. A second design
+  child closes the complete owner with numerical scheduling/deadline policies
+  and enforceable producer/validator/retention resources. Execute only the first
+  child here. All original Done when criteria remain this node's charter.
+  The lifecycle slice is independently reviewable but is not an executable or
+  resource-qualified coordinator. Review and every integration precede the
+  remaining design; its complete artifact earns whole-design review before
+  planning, implementation, earned reviews/integrations and k89 consumption.
+
+## Decomposition and current handoff
+
+Settings-keepalive-lifecycle-k97 specifies the owner/worker lifecycle and exact
+stop/publication/containment semantics in docs/specs/settings-keepalive-owner.md.
+It is a proposed, independently reviewable slice. Its required review and every
+integration precede settings-keepalive-profile-k98, which retains every original
+numerical deadline/arbitration/resource/usefulness and whole-design reconciliation
+duty above. Execute only k97 in this session. K98 must cut whole-design review
+before planning and consumption; no implementation leaves are cut here. All
+original k89/k81/k76/k67/k62/k57/k54 duties and all runtime holds survive.

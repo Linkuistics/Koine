@@ -416,6 +416,64 @@ must precede implementation and consumption.
 | Agreed test seams | Existing helper/adapter controls with controlled CLI/sleep and real coordination/lock/validation/records; existing native TestAnyware workflow after all prerequisites. Both overlap directions, failure/stop races, resource/partial/publication limits, signals and both held-pointer cases remain required. No local test proves native liveness or focus. |
 | Product/causal and historical obligations | One selection/one front-focused window and all complete ordinary assertions remain. Native cause, ownership and repair acceptance unresolved; all historical bytes, false joins, failed transports, NOT RUN phases, closed caps and six held causal slots unchanged. |
 
-The requirements are agreed; concrete replacement design remains outstanding.
+The requirements are agreed; the complete replacement design remains outstanding.
 All ancestors remain open; no release, notarization, upstream report or runtime
 result follows.
+
+## Lifecycle design slice
+
+K96 decomposes at an independently reviewable lifecycle boundary. K97 proposes
+the [command-owner and cooperative-stop contract](../../specs/settings-keepalive-owner.md):
+one owner, one active operation, at most one pending scenario submission and one
+pending tick; dispatch commitment distinct from confirmed external launch;
+unstarted cancellation without attempt ordinals; and a separate stop-intent,
+worker-acknowledgement and observed-reap join. Normal stop does not signal sleep20
+or erase prior failure. Committed captures retain full validation, delivery and
+publication. Unknown inherited holders block collection and later slots.
+
+K98 retains the numerical scheduling/deadline and enforceable resource profile,
+including external producer limits, declared useful workload, aggregate raw/
+partial retention, protected final-record/cleanup capacity and boundary controls.
+The lifecycle's abstract profile inputs have no executable defaults; missing
+values prohibit startup. This split establishes no native liveness or available
+containment. The source behavior above remains current and unchanged.
+
+Independent lifecycle review and every integration precede k98 consumption.
+The complete design then receives whole-design review/every integration before
+planning, implementation and earned review/integration. All precede k89/k81/k76
+consumption and readiness/freeze/runtime. No speculative implementation leaf is
+created. The original-duty table above remains binding in full: k89 all remaining
+file/environment/lifecycle/collection helpers; k81 every exec/one-shot consequence;
+k76 full adoption/status/signals and both held-pointer cases; k67 setup/title/
+liveness; k62 exact focused prefix; k57 finite caller/private retention/containment;
+k54 signed/all-input/completed-golden freeze and runtime. No ancestor closes.
+
+### Source basis and verification limits
+
+Tier 2 coverage generation `2026-10-30T09:51:57Z` locates the capture loop,
+backend dispatcher and PNG inspector. The keepalive trace identifies its capture,
+root, poll and failure helpers; absent caller edges are not proof of no callers.
+Exact backend snippets establish the whole-operation nonblocking lock, inherited
+descriptor, unfinished-attempt scan, under-lock PNG inspection and terminal
+publication. Direct reads cover current capture/cleanup, failed-sleep behavior,
+Allow's timeout argument and the fixture seam. Reported partial shell lines 175
+in the common library, 82 in the click library and 169 in the scenario were read
+directly. Bats metadata was untracked by the index; relied-on fixture/setup/lock
+controls were read directly. Changed document metadata was resolved with current
+file reads. This is bounded source evidence, not an exhaustive graph audit.
+
+The new control matrix describes later implementation tests, not passing tests
+of an existing coordinator. Existing controls establish neither this lifecycle,
+resource bounds, VNC liveness nor native focus. Editable views show
+[ownership](../../design/architecture/settings-activation/keepalive-owner.mmd)
+and [lifecycle](../../design/architecture/settings-activation/keepalive-lifecycle.mmd).
+
+The [coverage receipt](ordering-keepalive-lifecycle-evidence/coverage.json) retains
+those exact checks. The [documentation check](ordering-keepalive-lifecycle-evidence/docs-check.txt)
+and [verification receipt](ordering-keepalive-lifecycle-evidence/verification.json)
+record the final link result and source stability. Browser inspection found and
+corrected semicolon-created stray state nodes, then checked both rendered views
+and the lifecycle's failure/containment tail. This verifies the document delivery,
+not the proposed concurrency protocol. The documentation check still reports the
+two missing archived context targets assigned to k23; no runtime or new production
+control was run for this documentation-only slice.

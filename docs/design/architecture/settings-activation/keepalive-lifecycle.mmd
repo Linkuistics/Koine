@@ -1,0 +1,35 @@
+stateDiagram-v2
+  state "Cancel unstarted tick" as CancelUnstarted
+  state "Drain committed capture" as DrainCommitted
+  state "Await owned child exit" as AwaitExit
+  state "Normal worker stop" as NormalStop
+  state "Resolve owned holder" as ResolveHolder
+  [*] --> Running: owned worker ready
+  Running --> Closed: normal end / suppress future ticks
+  Running --> Failed: failure, signal or unexpected exit
+  Closed --> CancelUnstarted: sleeping or pending tick
+  Closed --> DrainCommitted: capture already committed
+  CancelUnstarted --> AwaitExit: sleep finishes and matched stop ack
+  DrainCommitted --> AwaitExit: clean qualification and matched stop ack
+  DrainCommitted --> Failed: interrupted, unavailable or expired
+  AwaitExit --> NormalStop: exact child exit zero AND published reap
+  AwaitExit --> Failed: missing ack, wrong child, nonzero, signal or missing record
+  CancelUnstarted --> Failed: sleep failure or missing record
+  NormalStop --> Collection: same owner and writer domain
+  Failed --> ResolveHolder: preserve first failure and all partials
+  ResolveHolder --> Collection: holder resolved for collection only
+  ResolveHolder --> Unresolved: unknown holder or containment expiry
+  Collection --> [*]: independent audit and exact-stop outcomes retained
+  Unresolved --> [*]: no acceptance or later slot
+  note right of CancelUnstarted
+    No capture attempt ordinal.
+    Normal stop sends no signal.
+  end note
+  note right of NormalStop
+    Requires clean prior history.
+    Never clears an earlier failure.
+  end note
+  note left of DrainCommitted
+    Uses original operation deadline.
+    Numerical profile remains design work.
+  end note
