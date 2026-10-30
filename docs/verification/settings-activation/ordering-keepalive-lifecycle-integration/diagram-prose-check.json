@@ -1,0 +1,24 @@
+{
+  "at": "2026-10-30T11:04:17.858736+00:00",
+  "command": [
+    "python3",
+    "/Users/antony/.codex/skills/technical-communication/scripts/ste-lint.py",
+    "/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/k100-metadata-79uofjbr/changed-prose.md"
+  ],
+  "projection": {
+    "intro": "Graph views start at the dark Start here node. Sequences start at their first message and state views at the initial dot. The lifecycle review findings are integrated. Numerical timing, enforceable resources and whole-design review remain outstanding. Implementation and runtime stay held.",
+    "discussion.status": "Lifecycle review integrated. Complete profile and whole-design review remain.",
+    "keepalive-owner.caption": "Proposed lifecycle slice with integrated review findings. Arrows show ownership, submission and control. Numbered edges mark startup and dispatch entry. The owner authorises operations and writes lifecycle records. Its backend child writes command receipts and the sticky latch under the same lock. The finite caller can take collection-only ownership after owner loss and resolved holders. It never restores scenario eligibility. Numerical profile and implementation remain outstanding.",
+    "keepalive-lifecycle.caption": "Proposed worker lifecycle. This state view starts at the initial dot. Normal stop never interrupts sleep20, clears failure or replaces a capture. Complete disposition requires backend validation, payload acknowledgement, terminal publication and a completion frame. Stop and reap bounds depend on the remaining finite profile. No native idle interval is established."
+  },
+  "projection_sha256": "61c63cf652874b64c660e7ba8cbda12d592fe29e957bc31b26214bf7bff76044",
+  "exit": 1,
+  "before": {
+    "docs/design/architecture/settings-activation/diagrams.json": "ed3ada4384d61a64fe92e8140204a958230fb7a49ffa0d71e536cae2c4656a63",
+    "/Users/antony/.codex/skills/technical-communication/scripts/ste-lint.py": "b4d68662ac4b8a73134313e46b9cd5765e5cae240f2bf9909d004121604536d7"
+  },
+  "after": {
+    "docs/design/architecture/settings-activation/diagrams.json": "ed3ada4384d61a64fe92e8140204a958230fb7a49ffa0d71e536cae2c4656a63",
+    "/Users/antony/.codex/skills/technical-communication/scripts/ste-lint.py": "b4d68662ac4b8a73134313e46b9cd5765e5cae240f2bf9909d004121604536d7"
+  }
+}

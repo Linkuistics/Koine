@@ -1,0 +1,4 @@
+/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/k100-metadata-79uofjbr/changed-prose.md:1:153 passive-voice: Possible passive voice ('are integrated'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/k100-metadata-79uofjbr/changed-prose.md:5:1 long-paragraph: Paragraph has 8 sentences (limit 6). Split it or cut it.
+/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/k100-metadata-79uofjbr/changed-prose.md:7:352 passive-voice: Possible passive voice ('is established'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+1 hard, 2 advisory, 0 accepted, 0 pending, 168 words, 0.6 hard per 100 words (baseline 0)

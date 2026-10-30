@@ -6,13 +6,16 @@ The proposed owner lets the Settings scenario and its required keepalive
 captures share one command stream. This document specifies ownership and
 cooperative stop under the [agreed
 scope](../verification/settings-activation/KEEPALIVE-DESIGN.md#required-scope-decision).
-It is a **design slice awaiting independent review**, not an implemented or
-complete coordinator. The [remaining profile](#remaining-profile) must supply
+It is a **reviewed lifecycle slice with integrated corrections**, not an implemented
+or complete coordinator. The [remaining profile](#remaining-profile) must supply
 numerical deadlines, arbitration and enforceable resources before whole-design
 review, planning or implementation. Adoption and every runtime slot stay held.
 
-A planned stop is a lifecycle event. It can cancel a tick that has not entered
-dispatch. It cannot turn a failed sleep or capture into success. A capture
+The [review integration](../verification/settings-activation/KEEPALIVE-LIFECYCLE-REVIEW.md)
+records the source basis, dispositions and remaining test-seam choice.
+
+A planned stop is a lifecycle event. It can cancel a tick before dispatch
+commitment. It cannot turn a failed sleep or capture into success. A capture
 already committed to dispatch must finish its original validation and
 publication, or remain failed or unavailable. Every earlier failure continues to
 prevent acceptance.
@@ -34,10 +37,18 @@ owned root refuse initialisation. An initialised root is not permission to
 bypass the owner. One run has one owner generation, never a replacement owner
 that resumes scenario input after loss.
 
-The owner is the only process that accepts commands, changes scenario
-eligibility, assigns attempt ordinals or publishes normal receipts. The worker
-requests ticks. It neither runs the CLI nor writes evidence. Scenario helpers
-submit operations to the owner and synchronously receive their result.
+The owner alone admits commands, assigns attempt ordinals and authorises backend
+execution. It writes the lifecycle events and the final operation disposition.
+The backend writes command, raw-output, validation and result receipts under that
+authority and the inherited lock. It can also set the existing sticky latch.
+The worker requests ticks but neither runs the CLI nor writes evidence.
+
+Scenario eligibility requires both the owner's open state and an absent backend
+latch. A failed child, missing receipt or unfinished prior attempt also prevents
+dispatch. The owner reads these facts at every commitment boundary, including
+after a child that otherwise returned clean. Neither writer can reopen eligibility.
+
+Scenario helpers submit operations to the owner and synchronously receive their result.
 Collection uses that same owner, root, lock and ordinal sequence after scenario
 eligibility closes. No second evidence writer, unlocked success path or
 alternate root is introduced.
@@ -45,7 +56,7 @@ alternate root is introduced.
 | Interface operation | Contract |
 |---|---|
 | Start | Pin run/VM/root, the reviewed profile identity and actual process ownership. Establish exclusive writer ownership and worker readiness before scenario admission. Missing profile, failed readiness or duplicate owner refuses startup. |
-| Submit scenario operation | Supply unique submission ID, caller sequence, operation name, class, transport, exact arguments and required predicate/confirmation. At most one outstanding submission per scenario. Helpers cannot pipeline inputs. |
+| Submit scenario operation | Supply the bound client identity, unique submission ID, caller sequence, operation name, class, transport, exact arguments and required predicate/confirmation. At most one outstanding submission per scenario. Helpers cannot pipeline inputs. |
 | Submit due tick | Supply worker generation, tick sequence and completed sleep identity. At most one outstanding tick. The owner constructs the existing checked capture. The worker cannot choose an evidence exemption or arbitrary CLI arguments. |
 | Report local failure | Submit the exact poll/state/sleep/signal status and phase. The owner closes eligibility and retains the original status. A failed reporting channel is itself unavailable. This control is not queued behind command admission. |
 | Finish scenario | Supply the declared end marker, final scenario submission/result identity and scenario outcome. Only normal completion with no outstanding scenario submission can request normal stop. Failure, interruption and premature completion request failure containment instead. |
@@ -65,6 +76,23 @@ and its recorded process incarnation. Retained private control channels bind
 messages to that child. A PID supplied later by a file is insufficient authority
 to signal, accept a stop acknowledgement or claim exit. The finite caller
 likewise owns the command-owner child until reap.
+
+The finite caller creates one private scenario channel and registers its client
+token and process incarnation during owner startup. Helpers use that channel
+through the caller. They cannot create another authorised sender by copying an ID.
+Each frame binds the role, run, owner generation, token and sequence to its
+retained channel. The worker channel has a separate role and token.
+
+The caller remains in its original process group. The owner starts a separate
+session, outside the caller's foreground group. Its worker and each active
+backend have separate owned process groups within that session. The backend's
+CLI and validators inherit the backend group. Only recorded members qualify for
+group containment. Unknown descendants retain the unresolved-containment outcome.
+
+Before readiness, the owner records the worker's creation and sends that identity
+to the caller. Each backend creation likewise receives a distinct observation.
+These records support identification after owner loss. They do not let the caller
+reap a grandchild or turn a bare PID into termination authority.
 
 Neither worker nor scenario client inherits the writer descriptor. Only the
 active command/validator processes that must preserve the current lock on owner
@@ -89,6 +117,23 @@ The adapter uses the owner's already-held writer descriptor through a private
 entry point. Calling the current public lock-taking adapter beneath a
 lifetime-held lock would contend with the owner itself and is not this design.
 Child lock inheritance and actual closure remain required.
+
+The owner exclusively reserves the next attempt directory and publishes its
+commitment before creating the backend child. The private entry point receives
+the held directory and lock, assigned ordinal, submission ID and commitment ID.
+It also receives the stop ID observed at commitment, or null. A later stop is a
+separate event referencing the commitment, never a rewritten argument.
+
+The child checks those bindings and uses that exact directory. It neither
+scans for a new ordinal nor creates another attempt. The prior-attempt scan
+excludes only this correctly bound commitment and still rejects unfinished
+predecessors. A reservation or publication failure closes eligibility and retains
+the partial directory. No ordinal is reused, including after owner loss.
+
+Owner events and child receipts occupy distinct immutable records under the same
+writer authority. Only the owner assigns event sequence numbers. No concurrent
+appenders share an event file, and no child independently authorises another
+operation. The current public backend remains unchanged until implementation.
 
 At actual dispatch the owner rechecks root/VM/generation identity, eligibility,
 pending failure and stop events, and worker health. It also rechecks the
@@ -141,10 +186,72 @@ eligibility. A terminal publication failure also closes eligibility even if
 successful payload bytes have reached the scenario. The scenario cannot use
 those bytes to bypass the next owner gate.
 
-The first failure is immutable. Later events add evidence rather than replace
-its cause or restore eligibility.
+The first failure observed by the owner is immutable. A backend latch can precede
+that observation and remains binding independently. Later events preserve their
+own times and causes without claiming a global signal-delivery order.
+
+### Output receipt and operation completion
+
+Backend emission and submitter receipt are different events. The backend flushes
+its payload to the owner and publishes its existing result receipt. The owner
+requires complete streams, that receipt, validation evidence and observed backend
+exit before offering a result to the submitter. Flush success alone proves no
+submitter receipt.
+
+The owner sends one result offer containing the submission, ordinal, payload
+identity and backend-result reference. The submitter acknowledges the exact offer
+and records its receipt time in that message. The owner retains the original
+acknowledgement and its own receive time. A missing, mismatched or failed
+acknowledgement closes eligibility. Failure results remain failures even when
+their delivery succeeds.
+
+The acknowledgement reports byte receipt, not permission to continue. The submitter
+waits while the owner publishes the terminal operation disposition. The owner
+then sends a completion frame naming that immutable terminal record. Only receipt
+of that frame completes the synchronous helper operation. No further acknowledgement
+of the frame is required, so publication does not depend on its own later receipt.
+
+The next submission or finish message echoes the preceding terminal identity and
+completion-frame receipt time. The worker's next phase report does the same.
+Missing or conflicting echoes close eligibility. A broken channel or failed
+completion send also closes eligibility. A recipient that lacks the completion
+frame reports unavailable and cannot continue from the offered payload.
+
+The owner's event records retain every available send, acknowledgement and echo
+observation. A missing final echo remains unknown, never inferred from a terminal
+file. The caller's final observation boundary below governs that unavailable tail.
 
 ## Cooperative normal stop
+
+The worker follows this sequence: complete one sleep of twenty seconds, submit
+one tick, then await that submission's disposition. It starts no new sleep while
+admission, capture, validation, acknowledgement or terminal completion is outstanding.
+After a clean completion frame, it starts the next sleep only if no stop or
+failure is pending. Cancellation or failure ends the loop instead.
+
+The worker's control channel remains observable while it waits for a result.
+That wait prohibits another tick. It does not prohibit receiving stop or failure
+controls. The worker acknowledges a result offer before waiting for completion,
+so the result protocol contains no circular wait.
+
+The worker supervises its sleep child and observes the parent channel while that
+child sleeps. The sleep child inherits the worker group and no writer descriptor.
+A normal stop waits for that same sleep to return. Parent loss follows failure
+containment instead and never supplies normal-stop evidence.
+
+| Worker phase | Meaning |
+|---|---|
+| Starting | The child exists but readiness is incomplete. |
+| Sleeping | The current sleep of twenty seconds has not returned. |
+| Submitting | Sleep completed and one tick message awaits its admission disposition. |
+| Awaiting result | One admitted tick awaits cancellation or the complete result protocol. |
+| Stopping | The worker resolves its current sleep or tick under the received stop ID. No new sleep or tick starts. |
+| Exiting | The worker sent its final acknowledgement or failure and is closing its channel. This phase does not establish exit. |
+
+The owner records each received phase report with its worker sequence and sleep
+or tick identity. A stop record names the last observed phase and report ID.
+That phase can lag the worker. The owner's pending and committed records decide
+cancellation versus drain. Reaped is an owner observation, not a worker phase.
 
 Normal completion closes scenario admission and suppresses future ticks in one
 owner transition **before** acknowledging the finish request. It assigns one
@@ -183,7 +290,7 @@ failure containment. It cannot be classified as a clean planned cancellation.
 | Capture committed or running | Retain the attempt and drain normally within its unchanged deadline. No next tick. Any interruption, failed transport or unknown completion prevents acceptance. |
 | CLI exited. Capture still validating | Keep ownership. Finish the required PNG qualification. Corruption or resource failure cannot become normal shutdown. |
 | Artifact qualified. Terminal publication or delivery outstanding | Keep ownership until both are established. A missing/failed result or delivery prevents acceptance. |
-| Clean attempt published. Worker has not received it | Deliver the original result and stop disposition. A broken channel is unavailable, not an assumed receipt. |
+| Terminal published. Completion frame outstanding | Deliver the completion frame and stop disposition. A broken channel is unavailable, not an assumed receipt. |
 | Worker acknowledged. Has not exited | Wait for this exact child. Acknowledgement alone is not exit. Unexpected signal/nonzero exit remains failed. |
 | Worker exited. Owner has not published reap | Require observed child wait status plus complete lifecycle publication. Exit zero alone is insufficient. |
 | Prior failure at any phase | Preserve it. A matched cooperative exit may still be recorded, but the run stays ineligible. |
@@ -208,12 +315,29 @@ common clock. The owner's event sequence decides ordering.
 
 | Record | Required fields in addition to common identity |
 |---|---|
-| Worker ready | Created-child identity/incarnation and channel token, initial tick sequence, readiness observation. |
-| Submission disposition | Submission ID and producer sequence, operation or tick ID, received/admitted/cancelled times, cancellation cause and stop ID when applicable. Attempt ordinal null until commitment. |
+| Worker ready | Created-child identity/incarnation, process group, channel role/token, initial tick sequence and readiness observation. Reference the prior creation record and caller notification. |
+| Worker phase | Original phase report, worker sequence, sleep/tick identity, sender time and owner receive time. Include the preceding completion identity and receipt time where applicable. |
+| Submission event | Client or worker identity, submission ID, producer sequence, operation/tick ID and event kind: received, admitted or cancelled-unstarted. Each kind has its own immutable event and time. Cancellation includes its cause and stop ID. The ordinal is always null. |
+| Dispatch commitment | Owner-written event linking submission and assigned ordinal to the reserved directory and exact command, arguments, predicate and transport. Include class, profile/deadlines/capacity identity, eligibility observations, commitment time and stop ID or null. |
+| Launch observation | Owner-written event referencing commitment, backend child token/incarnation/group, observed creation time and launch state. Backend observations separately name the CLI and validator children, times and actual wait results. Missing creation evidence remains unknown. |
+| Backend result | Child-written command result, raw stream references, validation/artifact references, raw statuses, emission status and terminal publication time. It names the assigned ordinal and commitment. It proves neither submitter receipt nor clean owner disposition. |
+| Result acknowledgement | Owner-retained original acknowledgement naming the result offer, submission, ordinal, payload identity and backend-result reference. Include submitter receipt time, owner receive time and any exact channel failure. |
+| Terminal operation disposition | Owner-written record joining commitment, launch observations, backend result, child reap and result acknowledgement. Include exact outcomes/statuses, first-failure reference, missing facts, publication identity and time. Clean requires the complete clean join. |
+| Completion observation | Owner-written completion-send observation or later submitter echo, each with its own event and time. Name the terminal record. A missing echo stays unknown. |
 | Stop intent | Stop ID, reason (`normal-end`, failure or signal), declared scenario-end/result identity and first-failure reference or null. Worker phase, pending IDs, current attempt ordinal or null and frozen deadline/profile identity. |
 | Worker acknowledgement | Exact stop ID/token, last submitted tick and its disposition, any active attempt result reference, final worker phase. The owner retains the received message before interpreting it. |
 | Worker reap | Exact child match, observed raw wait status, exit code or signal, acknowledgement reference, pending/active resolution, missing-record list and independent lifecycle classification. |
 | Owner handoff | Closed eligibility, first failure, all attempt/lifecycle references, holder status, possible held input, required untouched collection order and containment outcome. |
+
+Submission events never gain an ordinal later. The commitment provides the
+immutable link to an attempt. Launch observations distinguish backend creation
+from external CLI execution. A recorded creation alone proves neither CLI launch
+nor input delivery. Each publisher preserves partial files and missing facts
+without overwriting an earlier event.
+
+The record's complete publication establishes that record's existence. It cannot
+establish its publisher's later return or exit. Child terminal facts belong to
+the owner's observations, and owner terminal facts belong to the caller below.
 
 A **normal worker stop** requires the declared scenario end and a clean prior
 history. It also requires complete resolution of committed required work, the
@@ -245,6 +369,23 @@ Normal stop sends no signal. A signal used after timeout is a containment
 action, never its successful acknowledgement. Unexpected worker exit, broken
 parent channel or owner death likewise ends eligibility, including an exit with
 status zero that has no matching planned-stop evidence.
+
+The caller forwards an observed INT, TERM or HUP once to its owned owner through
+the control channel. Channel failure itself ends eligibility. The owner first
+closes admission and records the signal, then applies the declared containment
+policy to owned groups. It never forwards a signal as a normal-stop request.
+Independent or simultaneous signals retain each process's actual observed status.
+
+On parent-channel EOF or loss, the worker suppresses ticks immediately when it
+observes the loss. It reports failure if a channel remains and exits after
+settling its owned sleep child. Normal-stop protection against shortening sleep
+does not classify parent loss as normal. Uninterruptible sleep, unknown descendants
+or unavailable terminal observation can leave containment unresolved.
+
+The owner likewise treats caller-channel loss as failure. An orphaned worker
+cannot keep submitting ticks to a replacement owner. The caller cannot claim a
+worker reap after owner death unless its own actual child relationship permits
+that observation. Otherwise the missing terminal fact remains explicit.
 
 The active command and validator remain owned until actual terminal observation
 and reap. Recorded direct-child ownership and retained identity, not a bare PID
@@ -302,6 +443,27 @@ must observe actual CLI invocation count and arguments, event/ordinal
 relationships, raw statuses, retained bytes and later-dispatch refusal. Proposed
 controls are not claimed as executed tests of this unimplemented design.
 
+CLI controls reach an active command and its return. A controlled sleep executable
+in the worker's test environment reaches sleeping and sleep-return schedules.
+The parent's shell-function override does not reach a separately executed worker.
+A copied validator wrapper reaches the interval after CLI exit and before PNG
+qualification completes. These controls retain real receipts and locking.
+
+CLI and sleep controls cannot reach every transition inside the owner. The
+proposed additional enabling points are test-only barriers in a copied owner
+module. They precede the final control drain and eligibility check, follow durable
+commitment before child creation, and bracket acknowledgement and terminal publication.
+They must preserve the real transition code and introduce no production switch
+or UI-dependent delay. A barrier before commitment resumes through the actual
+eligibility check.
+
+Whole-design agreement must settle the seam decision before these internal
+barriers become agreed. The recommendation uses barriers in copied modules, matching the existing
+validator control. Their cost is test-copy correspondence auditing. An injected
+production callback adds a maintained interface and requires separate approval.
+External controls alone leave the internal race rows unqualified. None of those
+alternatives is approved here by implication.
+
 | Controlled schedule or defect | Required discrimination |
 |---|---|
 | OCR/exec/transfer holds ownership when a tick becomes due | Tick is pending, not dispatched/refused as a competing writer. A failure before its actual commitment cancels it with no ordinal. Numerical admission expiry is tested under the later profile. |
@@ -316,6 +478,12 @@ controls are not claimed as executed tests of this unimplemented design.
 | Parent dies while child retains writer. Unknown or uninterruptible holder | Collection stays refused until established ownership and actual lock acquisition. Unresolved containment blocks later slots. |
 | Both held-pointer cases | No resize-release or other corrective input. Ordered receipts and held-input uncertainty reach exact-clone containment. |
 | Collection failure and exact-clone stop/inventory disagreement | Separate statuses, unchanged recurrence, no acceptance and no later slot. |
+| Tick remains pending longer than twenty seconds | No second sleep or tick occurs before the first tick's complete disposition. A premature-sleep mutant fails. |
+| Owner dies after commitment and before backend creation | The reserved ordinal and intent remain. No second allocator, replacement attempt or claim of external delivery appears. |
+| Backend latches but returns otherwise clean | The owner's next commitment still refuses. Child result and owner eligibility remain separate facts. |
+| Backend emission succeeds but submitter acknowledgement fails | No clean terminal disposition or later dispatch follows. Payload bytes alone grant no authority. |
+| Terminal publication or completion frame is missing | The submitter cannot continue. The retained payload acknowledgement does not certify final completion. |
+| Terminal-group signal, direct child signal and parent-channel loss | The chosen process topology and actual statuses remain visible. No orphan tick, false reap or normal-stop classification follows. |
 
 Exercise mutants that treat cancellation as a clean capture or accept exit zero
 without the stop join. Also exercise mutants that clear a prior latch, release
@@ -325,7 +493,7 @@ belong to the complete profile. Local controls establish neither VNC liveness
 nor repaired native focus. Native behaviour stays at the existing TestAnyware
 workflow after all prerequisites.
 
-## Remaining profile
+## Decisions and excluded alternatives
 
 The owner centralises scheduling, failure and receipt knowledge that otherwise
 spreads across the scenario and background worker. A separate lifecycle writer
@@ -339,6 +507,8 @@ interruption controls.
 This design introduces control channels, child supervision and acknowledgement
 state. It does not claim fewer failure cases or simpler implementation merely
 because callers have one entry point.
+
+## Remaining profile
 
 The protocol deliberately has no executable defaults for admission, operation,
 validation, publication, normal-stop drain, acknowledgement, reap or containment

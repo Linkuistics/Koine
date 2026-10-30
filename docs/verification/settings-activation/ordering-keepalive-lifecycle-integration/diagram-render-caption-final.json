@@ -1,0 +1,33 @@
+{
+  "started_at": "2026-10-30T11:05:05.507174+00:00",
+  "before": {
+    "docs/design/architecture/settings-activation/keepalive-owner.mmd": "d086f6ead4481228da12bced25e6b62ab5440ce0e300b17ae18afd7f0cf8d5a1",
+    "docs/design/architecture/settings-activation/keepalive-lifecycle.mmd": "3de3df19a4e0ed87e20477d2c16e7cc199ed0cc8a27edfabf1f40d4f8149d564",
+    "docs/design/architecture/settings-activation/index.html": "d95fd35654622756c2632a73f66d00d72039043aa5c8a2a8f642231b75b4bd74",
+    "docs/design/architecture/index.html": "d95fd35654622756c2632a73f66d00d72039043aa5c8a2a8f642231b75b4bd74",
+    "docs/design/architecture/diagrams.json": "5fef619f04138a79562ae5daaa918ef96e256e253e4e98e733f9d1b5a4a00c57",
+    "docs/design/architecture/settings-activation/diagrams.json": "7c2a76f057a324db03faaa4f0762bdecce881f2daf949ed0a81d3a618690631b"
+  },
+  "browser": "Chrome",
+  "url": "http://127.0.0.1:8814/settings-activation/",
+  "reason": "Caption shortened to six sentences after its prose check.",
+  "after": {
+    "docs/design/architecture/settings-activation/keepalive-owner.mmd": "d086f6ead4481228da12bced25e6b62ab5440ce0e300b17ae18afd7f0cf8d5a1",
+    "docs/design/architecture/settings-activation/keepalive-lifecycle.mmd": "3de3df19a4e0ed87e20477d2c16e7cc199ed0cc8a27edfabf1f40d4f8149d564",
+    "docs/design/architecture/settings-activation/index.html": "d95fd35654622756c2632a73f66d00d72039043aa5c8a2a8f642231b75b4bd74",
+    "docs/design/architecture/index.html": "d95fd35654622756c2632a73f66d00d72039043aa5c8a2a8f642231b75b4bd74",
+    "docs/design/architecture/diagrams.json": "5fef619f04138a79562ae5daaa918ef96e256e253e4e98e733f9d1b5a4a00c57",
+    "docs/design/architecture/settings-activation/diagrams.json": "7c2a76f057a324db03faaa4f0762bdecce881f2daf949ed0a81d3a618690631b"
+  },
+  "subjects_unchanged": true,
+  "finished_at": "2026-10-30T11:05:34.835187+00:00",
+  "observations": {
+    "owner_svg_count": 1,
+    "lifecycle_svg_count": 1,
+    "alerts": [],
+    "browser_error_log": [],
+    "revised_caption_present": true,
+    "loading_status": ""
+  },
+  "result": "pass: final caption and rendering check"
+}

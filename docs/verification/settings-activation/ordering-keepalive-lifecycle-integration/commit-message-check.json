@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-30T11:06:07.174541+00:00",
+  "command": [
+    "python3",
+    "/Users/antony/.codex/skills/technical-communication/scripts/ste-lint.py",
+    "/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/koine-k100-commit-1ub62dt6.txt"
+  ],
+  "subject": "settings-keepalive-lifecycle-k100: integrate lifecycle review\n\nClarify worker blocking, command commitment and result completion.\nSpecify child authority, process ownership and parent-loss handling.\nCarry the internal test-barrier choice to k98 with its costs.\nPreserve every downstream hold and original acceptance duty.\n\nChecks: prose lint has zero hard findings. Both diagrams render.\nThe link check retains only the two known k23 archive gaps.\nRetire k100. K98 remains live, so no ancestor closes.\n",
+  "subject_sha256": "bb5e050979803bb3b6315e597c50bcd9960fe4a12975ca448e4b90cd9ce88389",
+  "checker_sha256": "b4d68662ac4b8a73134313e46b9cd5765e5cae240f2bf9909d004121604536d7",
+  "exit": 0,
+  "output": "0 hard, 0 advisory, 0 accepted, 0 pending, 68 words, 0.0 hard per 100 words (baseline 0)\n"
+}

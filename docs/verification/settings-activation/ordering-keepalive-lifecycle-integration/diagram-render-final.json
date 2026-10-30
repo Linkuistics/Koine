@@ -1,0 +1,30 @@
+{
+  "started_at": "2026-10-30T11:02:25.512421+00:00",
+  "before": {
+    "docs/design/architecture/settings-activation/keepalive-owner.mmd": "d086f6ead4481228da12bced25e6b62ab5440ce0e300b17ae18afd7f0cf8d5a1",
+    "docs/design/architecture/settings-activation/keepalive-lifecycle.mmd": "3de3df19a4e0ed87e20477d2c16e7cc199ed0cc8a27edfabf1f40d4f8149d564",
+    "docs/design/architecture/settings-activation/index.html": "d95fd35654622756c2632a73f66d00d72039043aa5c8a2a8f642231b75b4bd74",
+    "docs/design/architecture/index.html": "d95fd35654622756c2632a73f66d00d72039043aa5c8a2a8f642231b75b4bd74",
+    "docs/design/architecture/diagrams.json": "5fef619f04138a79562ae5daaa918ef96e256e253e4e98e733f9d1b5a4a00c57",
+    "docs/design/architecture/settings-activation/diagrams.json": "ed3ada4384d61a64fe92e8140204a958230fb7a49ffa0d71e536cae2c4656a63"
+  },
+  "browser": "Chrome",
+  "url": "http://127.0.0.1:8814/settings-activation/",
+  "after": {
+    "docs/design/architecture/settings-activation/keepalive-owner.mmd": "d086f6ead4481228da12bced25e6b62ab5440ce0e300b17ae18afd7f0cf8d5a1",
+    "docs/design/architecture/settings-activation/keepalive-lifecycle.mmd": "3de3df19a4e0ed87e20477d2c16e7cc199ed0cc8a27edfabf1f40d4f8149d564",
+    "docs/design/architecture/settings-activation/index.html": "d95fd35654622756c2632a73f66d00d72039043aa5c8a2a8f642231b75b4bd74",
+    "docs/design/architecture/index.html": "d95fd35654622756c2632a73f66d00d72039043aa5c8a2a8f642231b75b4bd74",
+    "docs/design/architecture/diagrams.json": "5fef619f04138a79562ae5daaa918ef96e256e253e4e98e733f9d1b5a4a00c57",
+    "docs/design/architecture/settings-activation/diagrams.json": "ed3ada4384d61a64fe92e8140204a958230fb7a49ffa0d71e536cae2c4656a63"
+  },
+  "subjects_unchanged": true,
+  "finished_at": "2026-10-30T11:03:16.146619+00:00",
+  "observations": {
+    "owner_svg_count": 1,
+    "lifecycle_svg_count": 1,
+    "error_log_entries": [],
+    "visual_inspection": "Both diagrams inspected from top to terminal states in Chrome. Worker waits, owner commitment, result protocol, normal exit and failure containment labels render. The owner view retains its horizontal scroll layout. Current captions distinguish owner authority from backend writes and state whole-design work remains."
+  },
+  "result": "pass: bounded rendering and caption check only"
+}

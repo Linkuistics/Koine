@@ -51,6 +51,37 @@ qualifies and using the same frozen candidate with diagnostics disabled.
 The [acceptance duties](docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md#complete-ordinary-acceptance-and-preserved-duties)
 cover every assertion and required evidence item, with claims limited to that sample.
 
+<!-- tc: on -->
+
+**Settings command owner**: The proposed harness process that admits scenario
+commands and keepalive captures through one writer and ordinal domain.
+Its [lifecycle contract](docs/specs/settings-keepalive-owner.md) awaits the complete
+profile and whole-design review before implementation.
+
+**Keepalive worker**: The **Settings command owner's** supervised child that
+sleeps twenty seconds, submits one **keepalive tick**, and awaits its complete
+disposition before another sleep.
+
+**Keepalive tick**: One required capture submission after a completed worker
+sleep. Cancellation before **dispatch commitment** creates no capture attempt.
+
+**Dispatch commitment**: The **Settings command owner's** immutable link from a
+submission to one reserved attempt ordinal. It establishes intent, not external
+execution or input delivery.
+
+**Keepalive lifecycle record**: An immutable owner event that records worker
+state, command coordination or stop evidence in the shared writer domain.
+Its event sequence is separate from command ordinals.
+
+**Keepalive stop ID**: The identity that joins one owner stop intent to the exact
+worker acknowledgement and observed reap. It cannot erase an earlier failure.
+
+**Collection-only generation**: A successor owner identity permitted to collect
+evidence and contain the exact clone after failed ownership is resolved.
+It cannot resume scenario commands.
+
+<!-- tc: pending because the remaining glossary entries retain their existing conversion boundary -->
+
 **Client**: A program that reaches the **Machine server** over its transport
 with a capability of its own: ModalAnyware through its Machine client module,
 a third-party application, a script or an LLM agent.

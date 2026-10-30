@@ -1,5 +1,5 @@
 stateDiagram-v2
-  state "Cancel unstarted tick" as CancelUnstarted
+  state "Finish sleep or cancel unstarted tick" as CancelUnstarted
   state "Drain committed capture" as DrainCommitted
   state "Await owned child exit" as AwaitExit
   state "Normal worker stop" as NormalStop
@@ -10,7 +10,7 @@ stateDiagram-v2
   Closed --> CancelUnstarted: sleeping or pending tick
   Closed --> DrainCommitted: capture already committed
   CancelUnstarted --> AwaitExit: sleep finishes and matched stop ack
-  DrainCommitted --> AwaitExit: clean qualification and matched stop ack
+  DrainCommitted --> AwaitExit: complete result protocol and matched stop ack
   DrainCommitted --> Failed: interrupted, unavailable or expired
   AwaitExit --> NormalStop: exact child exit zero AND published reap
   AwaitExit --> Failed: missing ack, wrong child, nonzero, signal or missing record

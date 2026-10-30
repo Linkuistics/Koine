@@ -1,0 +1,26 @@
+{
+  "command": [
+    "python3",
+    "/Users/antony/.codex/skills/technical-communication/scripts/ste-lint.py",
+    "docs/specs/settings-keepalive-owner.md",
+    "CONTEXT.md",
+    "docs/verification/settings-activation/KEEPALIVE-LIFECYCLE-REVIEW.md",
+    ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/03-integrate-review-design--settings-keepalive-lifecycle-k100.md"
+  ],
+  "at": "2026-10-30T11:04:17.712476+00:00",
+  "exit": 0,
+  "before": {
+    "docs/specs/settings-keepalive-owner.md": "e32c3f5e293763983c7d302fbda03abe799d8a4e51a9ecf2a506194cf6ef846a",
+    "CONTEXT.md": "3c3f1df15035f8ab17f0922c5617368457169f8360429717b998322cfe083065",
+    "docs/verification/settings-activation/KEEPALIVE-LIFECYCLE-REVIEW.md": "53be8b2fbf99db05fbb8c6798189eca02543718d9b986918a2a914fa133c9fdf",
+    ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/03-integrate-review-design--settings-keepalive-lifecycle-k100.md": "0e0cdd37720a4a86d7fa364d0187265baaf485c015f98ae1c85c5d2f3018c550",
+    "/Users/antony/.codex/skills/technical-communication/scripts/ste-lint.py": "b4d68662ac4b8a73134313e46b9cd5765e5cae240f2bf9909d004121604536d7"
+  },
+  "after": {
+    "docs/specs/settings-keepalive-owner.md": "e32c3f5e293763983c7d302fbda03abe799d8a4e51a9ecf2a506194cf6ef846a",
+    "CONTEXT.md": "3c3f1df15035f8ab17f0922c5617368457169f8360429717b998322cfe083065",
+    "docs/verification/settings-activation/KEEPALIVE-LIFECYCLE-REVIEW.md": "53be8b2fbf99db05fbb8c6798189eca02543718d9b986918a2a914fa133c9fdf",
+    ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/03-integrate-review-design--settings-keepalive-lifecycle-k100.md": "0e0cdd37720a4a86d7fa364d0187265baaf485c015f98ae1c85c5d2f3018c550",
+    "/Users/antony/.codex/skills/technical-communication/scripts/ste-lint.py": "b4d68662ac4b8a73134313e46b9cd5765e5cae240f2bf9909d004121604536d7"
+  }
+}

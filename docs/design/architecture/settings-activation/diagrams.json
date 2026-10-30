@@ -1,6 +1,6 @@
 {
   "title": "Settings activation: command ownership and cooperative stop",
-  "intro": "Graph views start at the dark Start here node; sequences start at their first message and state views at the initial dot. The lifecycle design is proposed for independent review. Numerical timing and enforceable resources remain a separate design obligation; implementation and runtime stay held.",
+  "intro": "Graph views start at the dark Start here node. Sequences start at their first message and state views at the initial dot. The lifecycle review findings are integrated. Numerical timing, enforceable resources and whole-design review remain outstanding. Implementation and runtime stay held.",
   "groups": [
     {
       "id": "keepalive",
@@ -30,7 +30,7 @@
   ],
   "discussion": {
     "title": "Distinguish unstarted ticks from committed captures at stop",
-    "status": "Lifecycle design proposed; independent review and complete profile remain",
+    "status": "Lifecycle review integrated. Complete profile and whole-design review remain.",
     "summary": "The owner closes dispatch before acknowledging normal end. Unstarted ticks cancel without attempt ordinals; committed captures retain their real validation and publication outcome. A clean worker stop needs matched intent, acknowledgement, actual exit and published reap. The complete numerical scheduling and resource profile remains outstanding. These diagrams are not model-checking or native evidence.",
     "diagramIds": [
       "keepalive-owner",
@@ -54,14 +54,14 @@
       "group": "keepalive",
       "title": "One owner controls dispatch and evidence",
       "source": "keepalive-owner.mmd",
-      "caption": "Proposed lifecycle slice. Arrows show ownership, submission and control; numbered edges mark startup and dispatch entry. Only the owner writes normal evidence. The finite caller can take collection-only ownership after owner loss and resolved holders; it never restores scenario eligibility. Numerical profile and implementation remain outstanding."
+      "caption": "Arrows show ownership, submission and control, and numbered edges mark startup and dispatch entry. The owner authorises operations and writes lifecycle records. Its backend child writes command receipts and the sticky latch under the same lock. The finite caller can take collection-only ownership after owner loss and resolved holders. It never restores scenario eligibility. Numerical profile and implementation remain outstanding."
     },
     {
       "id": "keepalive-lifecycle",
       "group": "keepalive",
       "title": "Normal stop preserves every committed capture",
       "source": "keepalive-lifecycle.mmd",
-      "caption": "Proposed worker lifecycle. This state view starts at the initial dot. Normal stop never interrupts sleep20, clears failure or replaces a capture. Capture completion includes validation, delivery and terminal publication. Stop and reap bounds depend on the remaining finite profile; no native idle interval is established."
+      "caption": "Proposed worker lifecycle. This state view starts at the initial dot. Normal stop never interrupts sleep20, clears failure or replaces a capture. Complete disposition requires backend validation, payload acknowledgement, terminal publication and a completion frame. Stop and reap bounds depend on the remaining finite profile. No native idle interval is established."
     },
     {
       "id": "keepalive-collision",
