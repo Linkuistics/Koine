@@ -1,0 +1,25 @@
+{
+  "command": [
+    "python3",
+    "/Users/antony/.codex/skills/technical-communication/scripts/ste-lint.py",
+    "--json",
+    "--text-type",
+    "commit"
+  ],
+  "exit_status": 0,
+  "input_sha256": "881295f3dded59aa362a2021f28a116e3bae6f0ca468130363d3cbd560e451f5",
+  "stdin": "settings-keepalive-scheduling-k104: integrate scheduling review\n",
+  "stdout": {
+    "findings": [],
+    "hard": 0,
+    "advisory": 0,
+    "accepted": {},
+    "pending": 0,
+    "words": 3,
+    "per_100": 0.0,
+    "exempt": false,
+    "text_type": "commit",
+    "baseline": 0
+  },
+  "stderr": ""
+}

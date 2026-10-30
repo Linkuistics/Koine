@@ -80,6 +80,20 @@ worker acknowledgement and observed reap. It cannot erase an earlier failure.
 evidence and contain the exact clone after failed ownership is resolved.
 It cannot resume scenario commands.
 
+**Admission clock**: The continuous-clock interval from a producer's request
+origin to **dispatch commitment**. A tick's origin is its observed sleep completion.
+Progress does not reset this interval.
+
+**Operation family**: A declared set of **Settings command owner** operations
+with the same CLI and whole-operation allowances. It grants no native liveness credit.
+
+**Phase ceiling**: The elapsed limit for one declared operation phase, checked
+by its named observer. The whole-operation deadline also bounds that phase.
+
+**Containment window**: One bounded interval for signalling established owned
+processes and observing their outcomes after failure. Expiry does not establish
+exit, released writer ownership or available collection.
+
 <!-- tc: pending because the remaining glossary entries retain their existing conversion boundary -->
 
 **Client**: A program that reaches the **Machine server** over its transport

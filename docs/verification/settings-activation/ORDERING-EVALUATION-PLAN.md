@@ -45,7 +45,9 @@ still precede consumption.
 The proposed [owner and lifecycle contract](../../specs/settings-keepalive-owner.md)
 defines reviewed ownership, stop races and record fields. Its
 [scheduling proposal](../../specs/settings-keepalive-owner.md#scheduling-and-deadline-profile)
-now sets receive-order service and exact deadlines, pending independent review.
+sets receive-order service and exact deadlines. The
+[scheduling review integration](KEEPALIVE-SCHEDULING.md#review-integration)
+records its repairs and the remaining seam decision.
 Enforceable resources and whole-design reconciliation remain outstanding. No slot is admitted.
 
 <!-- tc: pending because the remaining sections are outside this conversion -->

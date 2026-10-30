@@ -1,0 +1,52 @@
+{
+  "command": [
+    "python3",
+    "/Users/antony/.codex/skills/technical-communication/scripts/ste-lint.py",
+    "--json",
+    ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/03-integrate-review-design--settings-keepalive-scheduling-k104.md"
+  ],
+  "exit_status": 0,
+  "input_sha256": "3aa58c85efec0958979abcf5a138be383cbc4baa097595ba246f5cfd6ed9f417",
+  "stdin": null,
+  "stdout": {
+    "findings": [
+      {
+        "file": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/03-integrate-review-design--settings-keepalive-scheduling-k104.md",
+        "line": 52,
+        "col": 59,
+        "rule": "passive-voice",
+        "level": "advisory",
+        "match": "is approved",
+        "message": "Possible passive voice ('is approved'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+      },
+      {
+        "file": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/03-integrate-review-design--settings-keepalive-scheduling-k104.md",
+        "line": 63,
+        "col": 46,
+        "rule": "passive-voice",
+        "level": "advisory",
+        "match": "is introduced",
+        "message": "Possible passive voice ('is introduced'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+      },
+      {
+        "file": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/03-integrate-review-design--settings-keepalive-scheduling-k104.md",
+        "line": 72,
+        "col": 61,
+        "rule": "passive-voice",
+        "level": "advisory",
+        "match": "was run",
+        "message": "Possible passive voice ('was run'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+      }
+    ],
+    "hard": 0,
+    "advisory": 3,
+    "accepted": {},
+    "pending": 0,
+    "words": 628,
+    "per_100": 0.0,
+    "exempt": false,
+    "text_type": "auto",
+    "baseline": 0
+  },
+  "stderr": ""
+}

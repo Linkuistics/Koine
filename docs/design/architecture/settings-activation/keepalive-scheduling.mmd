@@ -2,7 +2,7 @@ flowchart TB
   start["Start here\nOne request per producer"]:::start
   controls{"Failure, stop\nor expiry?"}
   holder{"Older holder\nstill active?"}
-  commit["Commit oldest request once\nAdmission budget: 150 seconds"]
+  commit["Commit oldest request once\nAdmission budget: 152 seconds"]
   operation["CLI, validation and result protocol\nWhole budget: 52, 67 or 142 seconds"]
   next["Complete result\nThen serve next request"]
   fail["Close eligibility\nRetain evidence and settle holder"]

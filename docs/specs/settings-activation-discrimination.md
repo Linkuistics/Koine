@@ -170,7 +170,9 @@ records still prevent acceptance.
 The proposed [owner and lifecycle contract](settings-keepalive-owner.md)
 specifies reviewed dispatch/stop races and record fields. Its
 [scheduling proposal](settings-keepalive-owner.md#scheduling-and-deadline-profile)
-sets receive-order service and exact deadlines, pending independent review.
+sets receive-order service and exact deadlines. The
+[scheduling review integration](../verification/settings-activation/KEEPALIVE-SCHEDULING.md#review-integration)
+records its repairs and the remaining seam decision.
 Enforceable resources and whole-design reconciliation remain design work.
 No current interrupted receipt becomes successful.
 

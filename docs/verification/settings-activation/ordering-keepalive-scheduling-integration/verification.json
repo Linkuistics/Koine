@@ -1,0 +1,106 @@
+{
+  "scope": "Documentation and arithmetic only. No coordinator, product, native or VM test.",
+  "reviewed_commit": "e9045bf9",
+  "review_commit": "ff039f13",
+  "command": [
+    "mise",
+    "exec",
+    "--",
+    "task",
+    "check:docs"
+  ],
+  "exit_status": 201,
+  "stdout": "docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md: missing target context-predicate.txt\ndocs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md: missing target context-qualify-filter.sh\n",
+  "stderr": "task: [check:docs] scripts/check-doc-links.py \ntask: Failed to run task \"check:docs\": exit status 1\n",
+  "input_definition": "All Markdown and root diagram manifest returned by the link checker; checker, Taskfile, changed task, prose checker and local presentation inputs. JSON receipt contents are not link-checker inputs.",
+  "input_count": 213,
+  "changed_inputs": [],
+  "before_manifest_sha256": "59583e6ebfacc7c4127fa11a4af1a508cdea3d6930821482988951b3467fff6b",
+  "after_manifest_sha256": "59583e6ebfacc7c4127fa11a4af1a508cdea3d6930821482988951b3467fff6b",
+  "arithmetic": {
+    "non_cli_phases_seconds": 22,
+    "whole_operation_seconds": [
+      22,
+      52,
+      67,
+      142
+    ],
+    "admission_path_components_seconds": [
+      2,
+      2,
+      2,
+      142,
+      2
+    ],
+    "conservative_admission_seconds": 150,
+    "admission_limit_seconds": 152,
+    "admission_margin_seconds": 2,
+    "normal_stop_capture_path_seconds": 58,
+    "normal_stop_sleep_path_seconds": 30,
+    "normal_stop_limit_seconds": 150,
+    "containment_observation_seconds": 20,
+    "backend_phase_report_limit_seconds": 2,
+    "caller_owner_progress_report_limit_seconds": 2
+  },
+  "prose_lint": {
+    "command": [
+      "python3",
+      "/Users/antony/.codex/skills/technical-communication/scripts/ste-lint.py",
+      "--json",
+      "docs/specs/settings-keepalive-owner.md",
+      "docs/specs/settings-activation-discrimination.md",
+      "docs/verification/settings-activation/KEEPALIVE-SCHEDULING.md",
+      "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "docs/design/architecture/settings-activation/README.md",
+      "CONTEXT.md",
+      ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/03-integrate-review-design--settings-keepalive-scheduling-k104.md"
+    ],
+    "exit_status": 0,
+    "hard_findings": 0,
+    "advisory_findings": 48,
+    "output": "prose-final.json"
+  },
+  "browser": {
+    "url": "http://127.0.0.1:8814/settings-activation/",
+    "observed": "Chrome rendered the scheduling view and lifecycle view. The 152-second admission label and 52-second capture note were visually inspected. No warning/error log entries at the check. Desktop light appearance only.",
+    "unavailable_attempt": "In-app browser unavailable; Chrome used instead."
+  },
+  "prior_document_checks": [
+    {
+      "check": "Initial spec/evidence/index/glossary/task prose check",
+      "hard": 17,
+      "advisory": 42
+    },
+    {
+      "check": "Index conversion interim",
+      "hard": 2,
+      "advisory": 4
+    },
+    {
+      "check": "Index conversion final",
+      "hard": 0,
+      "advisory": 4
+    },
+    {
+      "check": "Read-only k102 prose inspection; task unchanged",
+      "hard": 10,
+      "advisory": 1
+    },
+    {
+      "check": "Initial repaired prose including task",
+      "hard": 15,
+      "advisory": 47
+    },
+    {
+      "check": "Rollup conversion final before split",
+      "hard": 0,
+      "advisory": 1
+    }
+  ],
+  "expected_existing_failures": [
+    "docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md: missing target context-predicate.txt",
+    "docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md: missing target context-qualify-filter.sh"
+  ],
+  "matches_expected_existing_failures": true,
+  "initial_link_check": "verification-initial.json preserves the check before its linked receipt existed. The final run follows receipt creation."
+}

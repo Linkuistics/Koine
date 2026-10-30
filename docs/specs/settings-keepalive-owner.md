@@ -8,7 +8,8 @@ cooperative stop under the [agreed
 scope](../verification/settings-activation/KEEPALIVE-DESIGN.md#required-scope-decision).
 It combines a **reviewed lifecycle slice** with a proposed
 [scheduling profile](#scheduling-and-deadline-profile). The scheduling proposal
-awaits independent review. The [remaining profile](#remaining-profile) must supply
+incorporates [its review dispositions](../verification/settings-activation/KEEPALIVE-SCHEDULING.md#review-integration).
+The [remaining profile](#remaining-profile) must supply
 enforceable resources and whole-design reconciliation before whole-design review,
 planning or implementation. Adoption and every runtime slot stay held.
 
@@ -214,6 +215,19 @@ then sends a completion frame naming that immutable terminal record. Only receip
 of that frame completes the synchronous helper operation. No further acknowledgement
 of the frame is required, so publication does not depend on its own later receipt.
 
+The completion frame carries the publication origin and absolute completion deadline.
+The owner checks its complete send before releasing dispatch ownership.
+The submitter separately checks receipt against that same deadline before any next
+action, using the declared continuous clock. A late receipt closes eligibility.
+The owner does not await the later echo before serving the other producer.
+Payload acknowledgement and terminal publication already precede this release.
+
+The later echo supplies the recipient's receipt evidence. A timely echo message
+may describe an earlier receipt, but cannot rescue a late send or receipt.
+Until that echo arrives, recipient receipt remains unknown to the owner.
+This is the protocol's explicit unacknowledged completion boundary, not a claim
+that successful send proves receipt. A missing echo still prevents final acceptance.
+
 The next submission or finish message echoes the preceding terminal identity and
 completion-frame receipt time. The worker's next phase report does the same.
 Missing or conflicting echoes close eligibility. A broken channel or failed
@@ -245,6 +259,7 @@ containment instead and never supplies normal-stop evidence.
 | Worker phase | Meaning |
 |---|---|
 | Starting | The child exists but readiness is incomplete. |
+| Ready before VM start | The worker is ready, but no sleep or tick starts before the owner completes VM start. |
 | Sleeping | The current sleep of twenty seconds has not returned. |
 | Submitting | Sleep completed and one tick message awaits its admission disposition. |
 | Awaiting result | One admitted tick awaits cancellation or the complete result protocol. |
@@ -399,7 +414,7 @@ policy, report unknown ownership/containment and block later slots. Do not
 delete or replace the writer file, clear the latch or reopen another lock
 domain. Do not assume that killing the parent released inherited ownership.
 
-If the owner dies, the finite caller stops the scenario and resolves only
+If the owner dies or misses its supervised progress deadline, the finite caller stops the scenario and resolves only
 children it can positively identify. It may acquire the original writer lock for
 a collection-only recovery after all known holders are settled and exclusive
 ownership is actually obtained. It records the failed owner generation and the
@@ -467,6 +482,14 @@ production callback adds a maintained interface and requires separate approval.
 External controls alone leave the internal race rows unqualified. None of those
 alternatives is approved here by implication.
 
+Exact deadline controls also require a substitutable continuous-clock reader in
+the copied owner, backend and caller modules. It supplies integer-nanosecond
+boundary values and simulated host resume without changing the host clock.
+This extends the same proposed enabling point, with the same correspondence cost.
+It covers equality, just-after expiry, clock discontinuity and long-holder schedules.
+The whole-design seam decision must include this reader before those controls become agreed.
+CLI and sleep substitutions alone cannot qualify these rows.
+
 | Controlled schedule or defect | Required discrimination |
 |---|---|
 | OCR/exec/transfer holds ownership when a tick becomes due | Tick is pending, not dispatched/refused as a competing writer. A failure before its actual commitment cancels it with no ordinal. Numerical admission expiry is tested under the later profile. |
@@ -511,6 +534,12 @@ This design introduces control channels, child supervision and acknowledgement
 state. It does not claim fewer failure cases or simpler implementation merely
 because callers have one entry point.
 
+Receive order prevents a younger request from overtaking pending work.
+Scenario priority could starve ticks unless another fairness rule intervened.
+Tick priority could delay older scenario work without established native liveness benefit.
+Neither priority policy is selected. One outstanding operation per producer
+keeps the receive-order queue finite.
+
 ## Scheduling and deadline profile
 
 This is the proposed `settings-owner-scheduling/1` policy. It is a reviewable
@@ -541,7 +570,7 @@ The submitter starts its admission clock before sending its immutable request.
 For a tick, this origin is the worker's observation of successful sleep completion.
 The complete request must reach the owner within two seconds. The owner must
 publish admission or refusal within two further seconds. An admitted request
-must reach commitment within 150 seconds of its original admission-clock origin.
+must reach commitment within 152 seconds of its original admission-clock origin.
 These message and admission deadlines do not reset while the holder progresses.
 
 Every other control or result frame also has a two-second send-to-receive limit.
@@ -549,15 +578,22 @@ An incomplete frame is not receipt. Existing whole-phase deadlines still apply.
 
 Selection starts immediately when ownership becomes available. The owner has
 two seconds to finish selection, reserve the ordinal and publish commitment.
-This interval remains inside the 150-second admission deadline. No deliberate
+This interval remains inside the 152-second admission deadline. No deliberate
 delay consumes otherwise available time. Expiry closes eligibility and cancels
 unstarted work without ordinals. A failed or expired request is never resubmitted.
 
 One holder can delay the other producer. It cannot be replaced by an endless
 sequence of younger requests. With the operation bounds below, the longest
-clean holder occupies at most 142 seconds. Request transfer, admission recording
-and selection add at most six seconds. The 150-second admission budget covers
-that 148-second conservative path with two seconds of scheduling margin.
+clean holder occupies at most 142 seconds. Let O be the waiting request's origin.
+That request reaches the owner before O + 2. The other producer can arrive just before it.
+
+The older request then needs up to two seconds for admission and two for commitment.
+
+Its operation ends before O + 148. The waiting request's final selection adds two seconds.
+Its own admission recording overlaps the older work and adds no later serial step.
+The complete upper path is 2 + 2 + 2 + 142 + 2 = 150 seconds.
+
+The 152-second admission budget preserves two seconds of scheduling margin.
 
 If the host cannot meet those bounds, the outcome is unavailable. Starvation
 cannot be labelled success, even when process termination remains unresolved.
@@ -573,17 +609,22 @@ Do not compare these times with guest clocks or the existing backend's
 Wall times are presentation only. Missing clock identity refuses startup.
 
 The owner checks deadlines on every control transition and before commitment.
-An observation processed at or after its deadline is expired. An earlier sender
-timestamp cannot rescue a late owner observation.
+For owner-observed phases, processing at or after the deadline is expired.
+An earlier sender timestamp cannot rescue late owner processing of those phases.
+The private backend observes its internal phases under the separate rule below.
 
 The owner's timed event wait has a maximum of 100 milliseconds. After delayed scheduling
 or host resume, it checks expiry before accepting a result or dispatching work.
 The finite caller independently watches the advertised absolute deadlines.
 It receives each deadline/state transition through the existing private channel
-within two seconds. Lost progress or an unresponsive owner closes caller eligibility.
+within two seconds. Missing progress by the advertised deadline plus that report
+limit is owner failure, even while the owner remains alive.
+
+The caller closes eligibility and starts its one containment window at that observation.
 No timer guarantees that the host can run a signal handler at its deadline.
 
-The CLI allowance starts when child creation is observed. The whole-operation
+The CLI allowance starts when the backend observes actual CLI creation.
+The whole-operation
 allowance starts at dispatch commitment, before child creation.
 
 | Operation family | CLI allowance | Whole-operation allowance |
@@ -592,12 +633,31 @@ allowance starts at dispatch commitment, before child creation.
 | Existing Allow OCR with its unchanged timeout of 30 seconds | 45 seconds | 67 seconds |
 | Guest exec, including its existing guest timeout | 45 seconds | 67 seconds |
 | File upload/download and VM lifecycle commands | 120 seconds | 142 seconds |
-| Local poll/failure record with no CLI | 0 seconds | 22 seconds |
+| Successful local poll record with no CLI | 0 seconds | 22 seconds |
+| Evidence-class local failure record with no CLI | 0 seconds | 22 seconds from owner failure observation |
 
 An exact operation mapping belongs to the frozen profile. Unknown operations
 refuse admission. Evidence-class operations use the same family limits.
 A helper with several commands retains separate submissions and existing waits.
 Its queue time never shortens a sleep, increases a poll count or grants another attempt.
+
+VM start belongs to this owner domain, after owner readiness and before worker
+sleep starts. Worker readiness does not start its cadence. The clean start result
+enables the first sleep at the existing post-start point, before environment reads
+and uploads. A failed start keeps ticks suppressed and enters containment.
+The 120-second CLI target does not qualify the existing 600-second slot wait
+or the subsequent boot work. K102 must reconcile that mismatch before startup.
+
+A failed poll, sleep or signal arrives as a priority control, not a queued
+scenario operation. The owner immediately closes eligibility and records the
+failure event. It then owns one evidence-class local record, with any original
+status and phase. After the holder settles, the owner may commit that record
+through the same ordinal domain.
+
+Its 22-second deadline starts at the first
+owner failure observation, including any holder wait. It never resets at commitment.
+If ownership or time is unavailable, retain the control and missing-record outcome.
+Never fabricate an ordinal or let this record delay failure containment.
 
 Every operation also has these phase ceilings. A phase starts at the end of
 its predecessor, without an unbudgeted gap. Every ceiling is clipped by the
@@ -605,19 +665,58 @@ unchanged whole-operation deadline. Unused time cannot extend a later phase.
 
 | Phase | Maximum elapsed time | Required completion |
 |---|---:|---|
-| Commitment to observed backend/CLI creation | 2 seconds | Bound child identity and launch observation |
+| Commitment to observed backend and CLI creation | 2 seconds shared | Owner observes backend creation. Backend observes CLI creation and binds both child identities. |
 | CLI | Family allowance above | Actual exit and retained complete raw streams |
 | Response, predicate and artifact validation | 10 seconds | Complete required checks, including every PNG check |
 | Backend receipt and payload emission | 2 seconds | Complete backend result and emission observations |
 | Backend exit/reap | 2 seconds | Actual terminal child observation |
 | Result offer and submitter acknowledgement | 2 seconds | Exact payload acknowledgement retained by owner |
 | Owner terminal publication | 2 seconds | Complete immutable operation disposition |
-| Completion frame delivery | 2 seconds | Sender observation and submitter receipt before its next action |
+| Completion frame delivery | 2 seconds | Owner observes complete send. Submitter checks receipt before its next action. The later echo retains that receipt evidence. |
 
 The phases outside the CLI total 22 seconds. CLI exit does not release ownership.
 An active validator, unpublished result or unfinished delivery prevents later
 dispatch. The final echo still follows the lifecycle contract. A late echo
 cannot rescue an earlier delivery timeout or prove an unobserved receipt.
+
+#### Backend phase observations
+
+The private backend uses the same continuous-clock API and boot identity as the
+owner. Its existing `monotonic_ns` receipts cannot establish these deadlines.
+It samples this clock when it observes CLI creation and exit, validation
+completion, and backend receipt/emission completion. CLI exit includes complete
+raw streams. No-CLI operations skip CLI creation and execution within the same whole limit.
+
+For each internal phase, the backend checks its observation against that phase's
+absolute deadline before starting the next phase. Equality or later is failure.
+The next phase starts at that observation, including intervening reporting work.
+
+The owner observes backend creation, backend reap, result acknowledgement,
+terminal publication and completion send. The submitter observes completion receipt.
+Both completion checks use the same deadline. The later echo is not another
+serial operation phase and does not extend ownership.
+An owner receipt time is not the backend's CLI-exit time.
+
+Each backend observation produces one sequenced progress frame on its private
+backend-to-owner channel. The frame names commitment, child identity, phase,
+clock/boot identity, origin, deadline, observation and raw status.
+It also names the next phase and deadline. The owner retains the original frame
+and its own processing time in an immutable event. The terminal join requires
+all corresponding phase events, backend receipts and actual child reap.
+
+The owner must process each frame within two seconds of its backend observation.
+This report limit starts at observation, not delayed send. It consumes the next
+phase and whole-operation allowance, never an added serial allowance.
+
+When a phase deadline is D, a missing report at D + 2 closes eligibility.
+The owner also checks the earlier whole-operation deadline without that allowance.
+It never offers a clean result from missing, inconsistent or late progress.
+Backend timestamps qualify only backend-observed phases. They cannot rescue an
+expired report deadline or a late owner-observed phase.
+
+The caller supervises the owner's advertised observation deadline, including any
+backend report limit already incorporated in it. Its separate two-second report
+limit does not extend an operation or restore eligibility.
 
 The 45-second allowance leaves 15 seconds around the existing 30-second inner
 OCR/exec budget. The 120-second family accommodates slower finite transfers and
@@ -639,14 +738,19 @@ This includes two seconds each for launch and observation around the unchanged
 twenty-second sleep. A late, failed or interrupted sleep closes eligibility.
 
 Normal stop never signals or shortens this sleep. A due tick uses the original
-150-second admission budget, without catch-up ticks or another sleep while pending.
+152-second admission budget, without catch-up ticks or another sleep while pending.
 
 Normal stop has 150 seconds from receipt of the valid finish request to published
-worker reap. Stop intent must publish within two seconds. A committed operation
-keeps its original deadline, leaving at most 142 seconds from finish receipt.
+worker reap. Stop intent must publish within two seconds. Normal finish permits
+no outstanding scenario submission, so only a committed tick capture can remain.
+It keeps its original deadline, leaving at most 52 seconds from finish receipt.
 An existing sleep keeps its original 24-second deadline. After that work resolves,
 allow two seconds each for stop acknowledgement, actual exit and reap publication.
-The conservative 142 + 2 + 2 + 2 path fits within 150 seconds.
+
+The reachable capture path is 52 + 2 + 2 + 2 = 58 seconds.
+The sleep path is 24 + 2 + 2 + 2 = 30 seconds.
+The retained 150-second outer limit is deliberately loose. It grants no extension
+to any phase or operation deadline.
 
 Intent publication
 occurs during that drain, not before starting a new drain clock.
@@ -664,8 +768,16 @@ Already exited targets receive no signal. Unknown identities receive no signal.
 Repeated failures cannot restart this window. A normal-stop deadline that fails
 starts this failure window once, without reclassifying the stop as normal.
 
-The caller applies this policy to its actual owned children after owner loss.
+The caller applies this policy after owner death, channel loss or missing supervised progress.
+It contains its directly owned owner even when that process is alive but unresponsive.
+It also contains reported groups only while their identities and ownership remain established.
 It cannot infer a grandchild reap or authority over an unknown descendant.
+
+Its window starts once, when it observes owner failure. Late progress cannot reset
+the window or restore scenario eligibility. At twenty seconds, it records the
+available disposition and ends active containment waits. If publication fails,
+the tail remains unavailable. It does not wait indefinitely for owner reap.
+
 No unconditional blocking wait follows timeout. Uninterruptible holders may outlive
 the observation window and prevent collection indefinitely. The outcome remains
 unresolved containment, with every later slot blocked. No lock deletion or new

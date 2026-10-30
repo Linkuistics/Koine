@@ -1,6 +1,6 @@
 {
   "title": "Settings activation: command scheduling and deadlines",
-  "intro": "Graph views start at the dark Start here node. Sequences start at their first message and state views at the initial dot. Lifecycle review is integrated. Scheduling awaits independent review. Enforceable resources and whole-design reconciliation remain outstanding. Implementation and runtime stay held.",
+  "intro": "Graph views start at the dark Start here node. Sequences start at their first message and state views at the initial dot. Lifecycle review is integrated. Scheduling review corrections are integrated. Enforceable resources and whole-design reconciliation remain outstanding. Implementation and runtime stay held.",
   "groups": [
     {
       "id": "keepalive",
@@ -31,7 +31,7 @@
   "discussion": {
     "title": "Serve the oldest request within its deadline",
     "status": "Scheduling proposal. Resource profile and whole-design review remain.",
-    "summary": "Receive-order service prevents younger work from overtaking a pending request. Failure and stop controls precede commitment. Admission expires after 150 seconds. Ownership continues through validation, delivery and publication. Expiry closes eligibility without resubmission. These are service targets, not native liveness evidence.",
+    "summary": "Receive-order service prevents younger work from overtaking a pending request. Failure and stop controls precede commitment. Admission expires after 152 seconds. Ownership continues through validation, publication and completion-frame delivery. Expiry closes eligibility without resubmission. These are service targets, not native liveness evidence.",
     "diagramIds": [
       "keepalive-scheduling",
       "keepalive-owner",
@@ -45,6 +45,10 @@
       {
         "id": "keepalive-owner",
         "summary": "Separates proposed scheduling from unresolved resource enforcement."
+      },
+      {
+        "id": "keepalive-lifecycle",
+        "summary": "Names the original 52-second capture deadline through normal drain."
       }
     ]
   },
@@ -54,7 +58,7 @@
       "group": "keepalive",
       "title": "Serve the oldest request within its deadline",
       "source": "keepalive-scheduling.mmd",
-      "caption": "Proposed scheduling contract. The owner checks failure, stop and expiry before commitment. Full capture qualification and terminal delivery precede later dispatch. Operation bounds are 52, 67 or 142 seconds; local records use 22. Resource limits and workload qualification remain outstanding. The graph omits detailed normal-stop joins, shown in the unchanged lifecycle view. No native idle safety or model checking is claimed."
+      "caption": "Proposed scheduling contract. The owner checks failure, stop and expiry before commitment. Full capture qualification and terminal delivery precede later dispatch. Operation bounds are 52, 67 or 142 seconds; local records use 22. Resource limits and workload qualification remain outstanding. The graph omits detailed normal-stop joins, shown in the lifecycle view. No native idle safety or model checking is claimed."
     },
     {
       "id": "keepalive-owner",

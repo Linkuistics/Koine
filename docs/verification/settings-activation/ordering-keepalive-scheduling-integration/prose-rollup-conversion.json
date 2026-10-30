@@ -1,0 +1,40 @@
+{
+  "findings": [
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 163,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "8 sentences",
+      "message": "Paragraph has 8 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 34,
+      "col": 1,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "29 words",
+      "message": "Description has 29 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 49,
+      "col": 83,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is admitted",
+      "message": "Possible passive voice ('is admitted'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    }
+  ],
+  "hard": 2,
+  "advisory": 1,
+  "accepted": {},
+  "pending": 4,
+  "words": 214,
+  "per_100": 0.9,
+  "exempt": false,
+  "text_type": "auto",
+  "baseline": 0
+}

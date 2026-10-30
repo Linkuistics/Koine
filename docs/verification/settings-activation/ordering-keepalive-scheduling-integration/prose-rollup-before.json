@@ -1,0 +1,2893 @@
+{
+  "findings": [
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 5,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "7 sentences",
+      "message": "Paragraph has 7 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 17,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "10 sentences",
+      "message": "Paragraph has 10 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 18,
+      "col": 41,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 24,
+      "col": 1,
+      "rule": "synonym-rotation",
+      "level": "hard",
+      "match": "fixes",
+      "message": "'fix' and 'repair' name the same action. Pick one and use it every time."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 26,
+      "col": 67,
+      "rule": "present-perfect",
+      "level": "advisory",
+      "match": "has been built",
+      "message": "Compound tense ('has been built'). Use the simple past or present, unless the link to now is the point."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 26,
+      "col": 71,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "been built",
+      "message": "Possible passive voice ('been built'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 33,
+      "col": 27,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 44,
+      "col": 44,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is established",
+      "message": "Possible passive voice ('is established'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 49,
+      "col": 33,
+      "rule": "synonym-rotation",
+      "level": "hard",
+      "match": "Start",
+      "message": "'start' and 'begin' name the same action. Pick one and use it every time."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 49,
+      "col": 50,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 55,
+      "col": 24,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "26 words",
+      "message": "Description has 26 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 61,
+      "col": 68,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 66,
+      "col": 82,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 72,
+      "col": 31,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 74,
+      "col": 9,
+      "rule": "synonym-rotation",
+      "level": "hard",
+      "match": "launch",
+      "message": "'launch' and 'begin' name the same action. Pick one and use it every time."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 74,
+      "col": 182,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 74,
+      "col": 216,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is added",
+      "message": "Possible passive voice ('is added'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 76,
+      "col": 172,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 76,
+      "col": 180,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 76,
+      "col": 198,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is introduced",
+      "message": "Possible passive voice ('is introduced'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 79,
+      "col": 148,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 79,
+      "col": 179,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 79,
+      "col": 229,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is reused",
+      "message": "Possible passive voice ('is reused'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 80,
+      "col": 152,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 83,
+      "col": 23,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "serialization",
+      "message": "American spelling 'serialization'. Write 'serialisation'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 83,
+      "col": 78,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 89,
+      "col": 42,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 99,
+      "col": 26,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 102,
+      "col": 53,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is assumed",
+      "message": "Possible passive voice ('is assumed'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 108,
+      "col": 148,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 108,
+      "col": 325,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 109,
+      "col": 214,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 110,
+      "col": 27,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavioral",
+      "message": "American spelling 'behavioral'. Write 'behavioural'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 110,
+      "col": 145,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is rejected",
+      "message": "Possible passive voice ('is rejected'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 112,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "7 sentences",
+      "message": "Paragraph has 7 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 113,
+      "col": 9,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is earned",
+      "message": "Possible passive voice ('is earned'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 115,
+      "col": 20,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 115,
+      "col": 72,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 117,
+      "col": 77,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 127,
+      "col": 49,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 134,
+      "col": 5,
+      "rule": "synonym-rotation",
+      "level": "hard",
+      "match": "confirmed",
+      "message": "'confirm' and 'check' name the same action. Pick one and use it every time."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 134,
+      "col": 52,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "serialized",
+      "message": "American spelling 'serialized'. Write 'serialised'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 135,
+      "col": 34,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "27 words",
+      "message": "Description has 27 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 140,
+      "col": 81,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 147,
+      "col": 61,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is admitted",
+      "message": "Possible passive voice ('is admitted'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 149,
+      "col": 1,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "30 words",
+      "message": "Description has 30 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 152,
+      "col": 72,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 156,
+      "col": 1,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "authorized",
+      "message": "American spelling 'authorized'. Write 'authorised'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 159,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "7 sentences",
+      "message": "Paragraph has 7 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 174,
+      "col": 43,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "are selected",
+      "message": "Possible passive voice ('are selected'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 175,
+      "col": 16,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 175,
+      "col": 25,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is unchanged",
+      "message": "Possible passive voice ('is unchanged'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 183,
+      "col": 74,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 188,
+      "col": 52,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "26 words",
+      "message": "Description has 26 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 194,
+      "col": 20,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 196,
+      "col": 13,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "are retained",
+      "message": "Possible passive voice ('are retained'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 197,
+      "col": 73,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 201,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "11 sentences",
+      "message": "Paragraph has 11 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 204,
+      "col": 1,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "28 words",
+      "message": "Description has 28 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 208,
+      "col": 78,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 212,
+      "col": 46,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 216,
+      "col": 38,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 220,
+      "col": 8,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavioral",
+      "message": "American spelling 'behavioral'. Write 'behavioural'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 235,
+      "col": 18,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 239,
+      "col": 1,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "29 words",
+      "message": "Description has 29 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 247,
+      "col": 68,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 251,
+      "col": 28,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "are identified",
+      "message": "Possible passive voice ('are identified'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 252,
+      "col": 53,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is interleaved",
+      "message": "Possible passive voice ('is interleaved'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 253,
+      "col": 20,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 275,
+      "col": 227,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 276,
+      "col": 363,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 277,
+      "col": 177,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 277,
+      "col": 343,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is established",
+      "message": "Possible passive voice ('is established'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 278,
+      "col": 123,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 279,
+      "col": 152,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 279,
+      "col": 178,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "was restored",
+      "message": "Possible passive voice ('was restored'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 283,
+      "col": 39,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "28 words",
+      "message": "Description has 28 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 284,
+      "col": 50,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 290,
+      "col": 75,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "29 words",
+      "message": "Description has 29 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 292,
+      "col": 39,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 293,
+      "col": 63,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is established",
+      "message": "Possible passive voice ('is established'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 303,
+      "col": 44,
+      "rule": "synonym-rotation",
+      "level": "hard",
+      "match": "display",
+      "message": "'display' and 'show' name the same action. Pick one and use it every time."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 304,
+      "col": 56,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "are required",
+      "message": "Possible passive voice ('are required'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 314,
+      "col": 45,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavioral",
+      "message": "American spelling 'behavioral'. Write 'behavioural'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 315,
+      "col": 52,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is established",
+      "message": "Possible passive voice ('is established'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 318,
+      "col": 15,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 324,
+      "col": 1,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "30 words",
+      "message": "Description has 30 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 324,
+      "col": 72,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 329,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "7 sentences",
+      "message": "Paragraph has 7 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 331,
+      "col": 64,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "30 words",
+      "message": "Description has 30 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 333,
+      "col": 11,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 333,
+      "col": 52,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 334,
+      "col": 9,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 342,
+      "col": 1,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "30 words",
+      "message": "Description has 30 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 346,
+      "col": 28,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 350,
+      "col": 40,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 357,
+      "col": 1,
+      "rule": "present-perfect",
+      "level": "advisory",
+      "match": "have been met",
+      "message": "Compound tense ('have been met'). Use the simple past or present, unless the link to now is the point."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 357,
+      "col": 16,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "33 words",
+      "message": "Description has 33 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 366,
+      "col": 3,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "Behavioral",
+      "message": "American spelling 'Behavioral'. Write 'Behavioural'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 366,
+      "col": 219,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 366,
+      "col": 379,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 366,
+      "col": 447,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is established",
+      "message": "Possible passive voice ('is established'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 366,
+      "col": 517,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 367,
+      "col": 335,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 368,
+      "col": 181,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is abandoned",
+      "message": "Possible passive voice ('is abandoned'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 372,
+      "col": 28,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 377,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "7 sentences",
+      "message": "Paragraph has 7 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 383,
+      "col": 18,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 386,
+      "col": 12,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 392,
+      "col": 37,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 408,
+      "col": 63,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "was satisfied",
+      "message": "Possible passive voice ('was satisfied'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 410,
+      "col": 69,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavioral",
+      "message": "American spelling 'behavioral'. Write 'behavioural'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 412,
+      "col": 24,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is instrumented",
+      "message": "Possible passive voice ('is instrumented'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 419,
+      "col": 74,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 420,
+      "col": 23,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "27 words",
+      "message": "Description has 27 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 423,
+      "col": 73,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 425,
+      "col": 17,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "28 words",
+      "message": "Description has 28 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 429,
+      "col": 1,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "28 words",
+      "message": "Description has 28 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 434,
+      "col": 15,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 440,
+      "col": 219,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is instrumented",
+      "message": "Possible passive voice ('is instrumented'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 440,
+      "col": 269,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "26 words",
+      "message": "Description has 26 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 442,
+      "col": 116,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 442,
+      "col": 133,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is abandoned",
+      "message": "Possible passive voice ('is abandoned'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 446,
+      "col": 31,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 454,
+      "col": 114,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 456,
+      "col": 66,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 456,
+      "col": 108,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 457,
+      "col": 91,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 457,
+      "col": 149,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 457,
+      "col": 203,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 457,
+      "col": 252,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 458,
+      "col": 83,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 458,
+      "col": 175,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 459,
+      "col": 76,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 459,
+      "col": 125,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 464,
+      "col": 56,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 472,
+      "col": 67,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 473,
+      "col": 60,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 474,
+      "col": 27,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 482,
+      "col": 11,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 482,
+      "col": 77,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 482,
+      "col": 178,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is evidenced",
+      "message": "Possible passive voice ('is evidenced'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 482,
+      "col": 190,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 483,
+      "col": 60,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 485,
+      "col": 29,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "28 words",
+      "message": "Description has 28 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 486,
+      "col": 10,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 486,
+      "col": 18,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 487,
+      "col": 72,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is added",
+      "message": "Possible passive voice ('is added'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 495,
+      "col": 35,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 499,
+      "col": 49,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 500,
+      "col": 69,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 518,
+      "col": 102,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 519,
+      "col": 123,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavioral",
+      "message": "American spelling 'behavioral'. Write 'behavioural'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 519,
+      "col": 158,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 520,
+      "col": 130,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavioral",
+      "message": "American spelling 'behavioral'. Write 'behavioural'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 521,
+      "col": 140,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 522,
+      "col": 243,
+      "rule": "present-perfect",
+      "level": "advisory",
+      "match": "has been built",
+      "message": "Compound tense ('has been built'). Use the simple past or present, unless the link to now is the point."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 522,
+      "col": 247,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "been built",
+      "message": "Possible passive voice ('been built'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 523,
+      "col": 126,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 524,
+      "col": 82,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 524,
+      "col": 123,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 525,
+      "col": 209,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 525,
+      "col": 250,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is established",
+      "message": "Possible passive voice ('is established'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 525,
+      "col": 434,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is admitted",
+      "message": "Possible passive voice ('is admitted'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 525,
+      "col": 466,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 526,
+      "col": 59,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "serialized",
+      "message": "American spelling 'serialized'. Write 'serialised'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 526,
+      "col": 124,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is approved",
+      "message": "Possible passive voice ('is approved'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 526,
+      "col": 218,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 526,
+      "col": 320,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is established",
+      "message": "Possible passive voice ('is established'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 528,
+      "col": 241,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 529,
+      "col": 281,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 531,
+      "col": 63,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 532,
+      "col": 329,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 533,
+      "col": 72,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 533,
+      "col": 158,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 535,
+      "col": 95,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/specs/settings-activation-discrimination.md",
+      "line": 535,
+      "col": 111,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "notarization",
+      "message": "American spelling 'notarization'. Write 'notarisation'."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 6,
+      "col": 1,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "26 words",
+      "message": "Description has 26 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 8,
+      "col": 41,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 9,
+      "col": 35,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 17,
+      "col": 63,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is supplied",
+      "message": "Possible passive voice ('is supplied'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 19,
+      "col": 57,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 19,
+      "col": 75,
+      "rule": "synonym-rotation",
+      "level": "hard",
+      "match": "fixed",
+      "message": "'fix' and 'repair' name the same action. Pick one and use it every time."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 28,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "8 sentences",
+      "message": "Paragraph has 8 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 30,
+      "col": 1,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "29 words",
+      "message": "Description has 29 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 31,
+      "col": 8,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "serialized",
+      "message": "American spelling 'serialized'. Write 'serialised'."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 41,
+      "col": 83,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is admitted",
+      "message": "Possible passive voice ('is admitted'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 49,
+      "col": 32,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 49,
+      "col": 78,
+      "rule": "synonym-rotation",
+      "level": "hard",
+      "match": "launch",
+      "message": "'launch' and 'start' name the same action. Pick one and use it every time."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 49,
+      "col": 153,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 50,
+      "col": 47,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 50,
+      "col": 209,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 52,
+      "col": 44,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavioral",
+      "message": "American spelling 'behavioral'. Write 'behavioural'."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 52,
+      "col": 60,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 54,
+      "col": 15,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "are selected",
+      "message": "Possible passive voice ('are selected'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 57,
+      "col": 21,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 59,
+      "col": 43,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "unnotarized",
+      "message": "American spelling 'unnotarized'. Write 'unnotarised'."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 60,
+      "col": 40,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 61,
+      "col": 59,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 63,
+      "col": 15,
+      "rule": "synonym-rotation",
+      "level": "hard",
+      "match": "alter",
+      "message": "'alter' and 'change' name the same action. Pick one and use it every time."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 67,
+      "col": 1,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "30 words",
+      "message": "Instruction has 30 words (limit 20). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 72,
+      "col": 47,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 79,
+      "col": 1,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "37 words",
+      "message": "Description has 37 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 83,
+      "col": 25,
+      "rule": "synonym-rotation",
+      "level": "hard",
+      "match": "Verify",
+      "message": "'verify' and 'check' name the same action. Pick one and use it every time."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 85,
+      "col": 9,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 86,
+      "col": 71,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 93,
+      "col": 19,
+      "rule": "synonym-rotation",
+      "level": "hard",
+      "match": "show",
+      "message": "'show' and 'display' name the same action. Pick one and use it every time."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 96,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "8 sentences",
+      "message": "Paragraph has 8 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 97,
+      "col": 61,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "are required",
+      "message": "Possible passive voice ('are required'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 98,
+      "col": 30,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 100,
+      "col": 48,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 107,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "7 sentences",
+      "message": "Paragraph has 7 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 110,
+      "col": 37,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 112,
+      "col": 58,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is failed",
+      "message": "Possible passive voice ('is failed'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 112,
+      "col": 73,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 114,
+      "col": 51,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 117,
+      "col": 1,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "24 words",
+      "message": "Instruction has 24 words (limit 20). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 124,
+      "col": 214,
+      "rule": "present-perfect",
+      "level": "advisory",
+      "match": "has made",
+      "message": "Compound tense ('has made'). Use the simple past or present, unless the link to now is the point."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 124,
+      "col": 348,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 125,
+      "col": 252,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is failed",
+      "message": "Possible passive voice ('is failed'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 126,
+      "col": 333,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 128,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "8 sentences",
+      "message": "Paragraph has 8 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 129,
+      "col": 34,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 132,
+      "col": 25,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is failed",
+      "message": "Possible passive voice ('is failed'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 132,
+      "col": 40,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 139,
+      "col": 46,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 144,
+      "col": 1,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "28 words",
+      "message": "Instruction has 28 words (limit 20). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 151,
+      "col": 47,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is permitted",
+      "message": "Possible passive voice ('is permitted'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 153,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "13 sentences",
+      "message": "Paragraph has 13 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 155,
+      "col": 44,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 164,
+      "col": 1,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "26 words",
+      "message": "Instruction has 26 words (limit 20). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 166,
+      "col": 33,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is required",
+      "message": "Possible passive voice ('is required'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 168,
+      "col": 18,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 173,
+      "col": 28,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "favorable",
+      "message": "American spelling 'favorable'. Write 'favourable'."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 173,
+      "col": 45,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "23 words",
+      "message": "Instruction has 23 words (limit 20). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 177,
+      "col": 78,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 180,
+      "col": 23,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is retained",
+      "message": "Possible passive voice ('is retained'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 182,
+      "col": 31,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 186,
+      "col": 1,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "38 words",
+      "message": "Description has 38 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 186,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "12 sentences",
+      "message": "Paragraph has 12 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 186,
+      "col": 15,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavioral",
+      "message": "American spelling 'behavioral'. Write 'behavioural'."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 189,
+      "col": 50,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "26 words",
+      "message": "Description has 26 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 191,
+      "col": 54,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 191,
+      "col": 64,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "27 words",
+      "message": "Description has 27 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 201,
+      "col": 1,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "28 words",
+      "message": "Description has 28 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 201,
+      "col": 56,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 209,
+      "col": 63,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is recorded",
+      "message": "Possible passive voice ('is recorded'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 211,
+      "col": 74,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 220,
+      "col": 56,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "authorize",
+      "message": "American spelling 'authorize'. Write 'authorise'."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 228,
+      "col": 7,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 234,
+      "col": 180,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 236,
+      "col": 264,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 238,
+      "col": 1,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "30 words",
+      "message": "Description has 30 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 243,
+      "col": 44,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 250,
+      "col": 156,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 252,
+      "col": 161,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 252,
+      "col": 181,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is permitted",
+      "message": "Possible passive voice ('is permitted'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 253,
+      "col": 44,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is submitted",
+      "message": "Possible passive voice ('is submitted'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 253,
+      "col": 404,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is selected",
+      "message": "Possible passive voice ('is selected'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 256,
+      "col": 81,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 259,
+      "col": 24,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is accepted",
+      "message": "Possible passive voice ('is accepted'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 259,
+      "col": 76,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 260,
+      "col": 23,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is promised",
+      "message": "Possible passive voice ('is promised'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 260,
+      "col": 36,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "26 words",
+      "message": "Instruction has 26 words (limit 20). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 269,
+      "col": 20,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 271,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "7 sentences",
+      "message": "Paragraph has 7 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 273,
+      "col": 50,
+      "rule": "synonym-rotation",
+      "level": "hard",
+      "match": "confirmed",
+      "message": "'confirm' and 'check' name the same action. Pick one and use it every time."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 278,
+      "col": 39,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 286,
+      "col": 9,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 286,
+      "col": 39,
+      "rule": "synonym-rotation",
+      "level": "hard",
+      "match": "delete",
+      "message": "'delete' and 'erase' name the same action. Pick one and use it every time."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 289,
+      "col": 55,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is selected",
+      "message": "Possible passive voice ('is selected'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 291,
+      "col": 1,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "36 words",
+      "message": "Description has 36 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 294,
+      "col": 48,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "25 words",
+      "message": "Instruction has 25 words (limit 20). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 296,
+      "col": 58,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "23 words",
+      "message": "Instruction has 23 words (limit 20). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 297,
+      "col": 69,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is rejected",
+      "message": "Possible passive voice ('is rejected'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 299,
+      "col": 27,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 301,
+      "col": 53,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is selected",
+      "message": "Possible passive voice ('is selected'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 305,
+      "col": 36,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 305,
+      "col": 74,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 307,
+      "col": 19,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 308,
+      "col": 60,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "24 words",
+      "message": "Instruction has 24 words (limit 20). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 310,
+      "col": 9,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 314,
+      "col": 35,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is enabled",
+      "message": "Possible passive voice ('is enabled'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 324,
+      "col": 82,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 330,
+      "col": 70,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "26 words",
+      "message": "Description has 26 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 331,
+      "col": 47,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 333,
+      "col": 9,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "serialized",
+      "message": "American spelling 'serialized'. Write 'serialised'."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 339,
+      "col": 66,
+      "rule": "present-perfect",
+      "level": "advisory",
+      "match": "has exposed",
+      "message": "Compound tense ('has exposed'). Use the simple past or present, unless the link to now is the point."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 340,
+      "col": 12,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 343,
+      "col": 29,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 343,
+      "col": 55,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 345,
+      "col": 33,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is admitted",
+      "message": "Possible passive voice ('is admitted'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 346,
+      "col": 35,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 348,
+      "col": 1,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "26 words",
+      "message": "Description has 26 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 349,
+      "col": 36,
+      "rule": "synonym-rotation",
+      "level": "hard",
+      "match": "correct",
+      "message": "'correct' and 'repair' name the same action. Pick one and use it every time."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 352,
+      "col": 74,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 358,
+      "col": 1,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "42 words",
+      "message": "Instruction has 42 words (limit 20). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 363,
+      "col": 1,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "21 words",
+      "message": "Instruction has 21 words (limit 20). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 369,
+      "col": 1,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "26 words",
+      "message": "Instruction has 26 words (limit 20). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 374,
+      "col": 15,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 380,
+      "col": 19,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is consumed",
+      "message": "Possible passive voice ('is consumed'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 382,
+      "col": 9,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 386,
+      "col": 51,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "29 words",
+      "message": "Description has 29 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 388,
+      "col": 9,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 394,
+      "col": 42,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "26 words",
+      "message": "Description has 26 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 395,
+      "col": 25,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 402,
+      "col": 43,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 406,
+      "col": 133,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 407,
+      "col": 154,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 408,
+      "col": 121,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 409,
+      "col": 66,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 410,
+      "col": 121,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavioral",
+      "message": "American spelling 'behavioral'. Write 'behavioural'."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 410,
+      "col": 174,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 418,
+      "col": 77,
+      "rule": "long-sentence",
+      "level": "hard",
+      "match": "54 words",
+      "message": "Description has 54 words (limit 25). Split it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 419,
+      "col": 37,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "behavior",
+      "message": "American spelling 'behavior'. Write 'behaviour'."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 428,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "7 sentences",
+      "message": "Paragraph has 7 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 430,
+      "col": 6,
+      "rule": "semicolon",
+      "level": "hard",
+      "match": ";",
+      "message": "Semicolon. Split the sentence in two."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 436,
+      "col": 56,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "are unchanged",
+      "message": "Possible passive voice ('are unchanged'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 438,
+      "col": 1,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "notarization",
+      "message": "American spelling 'notarization'. Write 'notarisation'."
+    },
+    {
+      "file": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md",
+      "line": 438,
+      "col": 33,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is included",
+      "message": "Possible passive voice ('is included'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    }
+  ],
+  "hard": 259,
+  "advisory": 61,
+  "accepted": {},
+  "pending": 0,
+  "words": 10094,
+  "per_100": 2.6,
+  "exempt": false,
+  "text_type": "auto",
+  "baseline": 0
+}

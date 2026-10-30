@@ -1,0 +1,555 @@
+{
+  "findings": [
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 56,
+      "col": 16,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is introduced",
+      "message": "Possible passive voice ('is introduced'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 65,
+      "col": 40,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "are suppressed",
+      "message": "Possible passive voice ('are suppressed'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 65,
+      "col": 77,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is settled",
+      "message": "Possible passive voice ('is settled'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 135,
+      "col": 35,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is reused",
+      "message": "Possible passive voice ('is reused'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 158,
+      "col": 13,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "are known",
+      "message": "Possible passive voice ('are known'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 171,
+      "col": 18,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is suppressed",
+      "message": "Possible passive voice ('is suppressed'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 190,
+      "col": 26,
+      "rule": "present-perfect",
+      "level": "advisory",
+      "match": "have reached",
+      "message": "Compound tense ('have reached'). Use the simple past or present, unless the link to now is the point."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 216,
+      "col": 14,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is required",
+      "message": "Possible passive voice ('is required'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 262,
+      "col": 69,
+      "rule": "synonym-rotation",
+      "level": "hard",
+      "match": "begins",
+      "message": "'begin' and 'start' name the same action. Pick one and use it every time."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 301,
+      "col": 26,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is processed",
+      "message": "Possible passive voice ('is processed'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 307,
+      "col": 73,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is processed",
+      "message": "Possible passive voice ('is processed'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 310,
+      "col": 96,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "are established",
+      "message": "Possible passive voice ('are established'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 319,
+      "col": 38,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is cancelled",
+      "message": "Possible passive voice ('is cancelled'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 363,
+      "col": 11,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "are required",
+      "message": "Possible passive voice ('are required'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 363,
+      "col": 58,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is recorded",
+      "message": "Possible passive voice ('is recorded'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 419,
+      "col": 52,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "are settled",
+      "message": "Possible passive voice ('are settled'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 431,
+      "col": 62,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is introduced",
+      "message": "Possible passive voice ('is introduced'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 483,
+      "col": 14,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is approved",
+      "message": "Possible passive voice ('is approved'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 495,
+      "col": 220,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is tested",
+      "message": "Possible passive voice ('is tested'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 540,
+      "col": 25,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is selected",
+      "message": "Possible passive voice ('is selected'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 585,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "12 sentences",
+      "message": "Paragraph has 12 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 609,
+      "col": 64,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is expired",
+      "message": "Possible passive voice ('is expired'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 613,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "7 sentences",
+      "message": "Paragraph has 7 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 647,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "8 sentences",
+      "message": "Paragraph has 8 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 657,
+      "col": 59,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is clipped",
+      "message": "Possible passive voice ('is clipped'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 684,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "8 sentences",
+      "message": "Paragraph has 8 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 700,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "8 sentences",
+      "message": "Paragraph has 8 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 724,
+      "col": 35,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "was created",
+      "message": "Possible passive voice ('was created'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 735,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "10 sentences",
+      "message": "Paragraph has 10 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 762,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "13 sentences",
+      "message": "Paragraph has 13 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 803,
+      "col": 61,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is claimed",
+      "message": "Possible passive voice ('is claimed'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 807,
+      "col": 12,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is proposed",
+      "message": "Possible passive voice ('is proposed'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 826,
+      "col": 40,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "are admitted",
+      "message": "Possible passive voice ('are admitted'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 844,
+      "col": 1,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "are unchanged",
+      "message": "Possible passive voice ('are unchanged'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/specs/settings-keepalive-owner.md",
+      "line": 845,
+      "col": 39,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "are integrated",
+      "message": "Possible passive voice ('are integrated'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/KEEPALIVE-SCHEDULING.md",
+      "line": 54,
+      "col": 8,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is justified",
+      "message": "Possible passive voice ('is justified'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/KEEPALIVE-SCHEDULING.md",
+      "line": 60,
+      "col": 46,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is claimed",
+      "message": "Possible passive voice ('is claimed'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/KEEPALIVE-SCHEDULING.md",
+      "line": 64,
+      "col": 41,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "was untracked",
+      "message": "Possible passive voice ('was untracked'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/KEEPALIVE-SCHEDULING.md",
+      "line": 65,
+      "col": 1,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "were read",
+      "message": "Possible passive voice ('were read'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/KEEPALIVE-SCHEDULING.md",
+      "line": 80,
+      "col": 161,
+      "rule": "present-perfect",
+      "level": "advisory",
+      "match": "has ten",
+      "message": "Compound tense ('has ten'). Use the simple past or present, unless the link to now is the point."
+    },
+    {
+      "file": "docs/verification/settings-activation/KEEPALIVE-SCHEDULING.md",
+      "line": 83,
+      "col": 50,
+      "rule": "spelling",
+      "level": "hard",
+      "match": "enrollment",
+      "message": "American spelling 'enrollment'. Write 'enrolment'."
+    },
+    {
+      "file": "docs/verification/settings-activation/KEEPALIVE-SCHEDULING.md",
+      "line": 83,
+      "col": 161,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "are unbounded",
+      "message": "Possible passive voice ('are unbounded'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/KEEPALIVE-SCHEDULING.md",
+      "line": 90,
+      "col": 27,
+      "rule": "synonym-rotation",
+      "level": "hard",
+      "match": "verify",
+      "message": "'verify' and 'check' name the same action. Pick one and use it every time."
+    },
+    {
+      "file": "docs/verification/settings-activation/KEEPALIVE-SCHEDULING.md",
+      "line": 101,
+      "col": 69,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is unbounded",
+      "message": "Possible passive voice ('is unbounded'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/KEEPALIVE-SCHEDULING.md",
+      "line": 105,
+      "col": 69,
+      "rule": "synonym-rotation",
+      "level": "hard",
+      "match": "begins",
+      "message": "'begin' and 'start' name the same action. Pick one and use it every time."
+    },
+    {
+      "file": "docs/verification/settings-activation/KEEPALIVE-SCHEDULING.md",
+      "line": 135,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "11 sentences",
+      "message": "Paragraph has 11 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/verification/settings-activation/KEEPALIVE-SCHEDULING.md",
+      "line": 168,
+      "col": 42,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is settled",
+      "message": "Possible passive voice ('is settled'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/KEEPALIVE-SCHEDULING.md",
+      "line": 185,
+      "col": 162,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is sent",
+      "message": "Possible passive voice ('is sent'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/KEEPALIVE-SCHEDULING.md",
+      "line": 188,
+      "col": 16,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "are specified",
+      "message": "Possible passive voice ('are specified'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/KEEPALIVE-SCHEDULING.md",
+      "line": 194,
+      "col": 38,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "are checked",
+      "message": "Possible passive voice ('are checked'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/KEEPALIVE-SCHEDULING.md",
+      "line": 205,
+      "col": 67,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is authorised",
+      "message": "Possible passive voice ('is authorised'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/verification/settings-activation/KEEPALIVE-SCHEDULING.md",
+      "line": 210,
+      "col": 45,
+      "rule": "synonym-rotation",
+      "level": "hard",
+      "match": "repairs",
+      "message": "'repair' and 'correct' name the same action. Pick one and use it every time."
+    },
+    {
+      "file": "docs/verification/settings-activation/KEEPALIVE-SCHEDULING.md",
+      "line": 233,
+      "col": 1,
+      "rule": "long-paragraph",
+      "level": "hard",
+      "match": "7 sentences",
+      "message": "Paragraph has 7 sentences (limit 6). Split it or cut it."
+    },
+    {
+      "file": "docs/design/architecture/settings-activation/README.md",
+      "line": 20,
+      "col": 64,
+      "rule": "present-perfect",
+      "level": "advisory",
+      "match": "has been built",
+      "message": "Compound tense ('has been built'). Use the simple past or present, unless the link to now is the point."
+    },
+    {
+      "file": "docs/design/architecture/settings-activation/README.md",
+      "line": 20,
+      "col": 68,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "been built",
+      "message": "Possible passive voice ('been built'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/design/architecture/settings-activation/README.md",
+      "line": 45,
+      "col": 36,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is repaired",
+      "message": "Possible passive voice ('is repaired'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/design/architecture/settings-activation/README.md",
+      "line": 60,
+      "col": 39,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is used",
+      "message": "Possible passive voice ('is used'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "docs/design/architecture/settings-activation/README.md",
+      "line": 68,
+      "col": 137,
+      "rule": "synonym-rotation",
+      "level": "hard",
+      "match": "Corrects",
+      "message": "'correct' and 'repair' name the same action. Pick one and use it every time."
+    },
+    {
+      "file": "CONTEXT.md",
+      "line": 80,
+      "col": 61,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "is resolved",
+      "message": "Possible passive voice ('is resolved'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    },
+    {
+      "file": "CONTEXT.md",
+      "line": 308,
+      "col": 460,
+      "rule": "passive-voice",
+      "level": "advisory",
+      "match": "were refused",
+      "message": "Possible passive voice ('were refused'). Name the actor and use an active verb, unless the actor is unknown or does not matter."
+    }
+  ],
+  "hard": 15,
+  "advisory": 45,
+  "accepted": {
+    "synonym-rotation": 3
+  },
+  "pending": 3,
+  "words": 11482,
+  "per_100": 0.1,
+  "exempt": false,
+  "text_type": "auto",
+  "baseline": 0
+}

@@ -2,8 +2,8 @@
 
 The current discussion is [the proposed scheduling profile](../../../specs/settings-keepalive-owner.md#scheduling-and-deadline-profile).
 The owner serves requests in receive order, after failure and stop controls.
-Admission expires after 150 seconds. Ownership continues through complete validation
-and result publication. The reviewed lifecycle still requires matched normal-stop
+Admission expires after 152 seconds. Ownership continues through complete validation,
+result publication and completion-frame delivery. The reviewed lifecycle still requires matched normal-stop
 intent, acknowledgement, actual exit and published reap. Enforceable resources
 and whole-design reconciliation remain outstanding.
 
@@ -65,13 +65,14 @@ loads these same sources while retaining its separate current discussion.
 
 Current changes:
 
-- [Keepalive → Serve the oldest request within its deadline](http://127.0.0.1:8803/settings-activation/#diagram-keepalive-scheduling) — Adds receive-order arbitration, admission expiry and whole-operation ownership.
+- [Keepalive → Serve the oldest request within its deadline](http://127.0.0.1:8803/settings-activation/#diagram-keepalive-scheduling) — Repairs the admission path and retains whole-operation ownership.
 - [Keepalive → One owner controls dispatch and evidence](http://127.0.0.1:8803/settings-activation/#diagram-keepalive-owner) — Distinguishes proposed scheduling from unresolved resource enforcement.
 - [Scheduling and deadline profile](../../../specs/settings-keepalive-owner.md#scheduling-and-deadline-profile) — Defines phase budgets, stop/drain deadlines and unresolved containment.
 - [Scheduling evidence](../../../verification/settings-activation/KEEPALIVE-SCHEDULING.md) — Adds source/API limits, alternatives, useful controlled schedules and required boundary controls.
 
-Unchanged context includes the [worker lifecycle](http://127.0.0.1:8803/settings-activation/#diagram-keepalive-lifecycle)
-and [evidence limit](http://127.0.0.1:8803/settings-activation/#diagram-evidence-limit).
+The [worker lifecycle](http://127.0.0.1:8803/settings-activation/#diagram-keepalive-lifecycle)
+now names its original 52-second capture deadline. The
+[evidence limit](http://127.0.0.1:8803/settings-activation/#diagram-evidence-limit) remains unchanged.
 The [design evidence](../../../verification/settings-activation/ORDERING-DESIGN-EVIDENCE.md)
 links the source/API reads and [verification receipt](../../../verification/settings-activation/ordering-design-evidence/verification.json).
 The [raw documentation output](../../../verification/settings-activation/ordering-design-evidence/doc-links.txt)
