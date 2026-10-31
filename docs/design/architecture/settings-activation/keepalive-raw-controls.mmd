@@ -1,21 +1,21 @@
 flowchart TD
-    entry["Start here<br/>17 future raw-output cases"]:::start
+    entry["Start here<br/>17 base cases plus open R duties"]:::start
     prerequisites{"Implemented subjects<br/>and qualified queue / backing?"}
     unavailable["Execution unavailable<br/>Name missing evidence"]
     bind["Owner commits once<br/>Backend binds original lock and pipes"]
-    emit["Controlled emitter<br/>Record actual accepted bytes"]
+    emit["Controlled emitter<br/>Record returned counts and unknowns"]
     capture["Real collector<br/>Record retained bytes and EOF"]
     fault{"Excess, failed write<br/>or process loss?"}
     contain["Close eligibility<br/>Resolve pipe writers"]
     tail["One bounded tail drain if available<br/>Only after writer resolution"]
     clean["Raw completion only<br/>Owner still checks full operation"]
-    refusal["Preserve first failure<br/>Sentinel dispatch count stays zero"]
+    refusal["Preserve first failure<br/>Sentinel scenario dispatch stays zero"]
     result["Retain original evidence<br/>Unknown facts stay unknown"]
     entry -->|"1. Check prerequisites"| prerequisites
     prerequisites -->|"Missing"| unavailable
     prerequisites -->|"2. All established"| bind
     bind -->|"3. External CLI seam"| emit
-    emit -->|"4. R3 releases before waiting"| capture
+    emit -->|"4. Read through bound pipes"| capture
     capture -->|"5. Inspect actual outcomes"| fault
     fault -->|"Failure"| contain
     contain -->|"Known writers cannot write"| tail

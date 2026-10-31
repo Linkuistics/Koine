@@ -562,6 +562,7 @@ complete profile still requires independent mechanism evidence before adoption.
 
 The [raw-output control design](../verification/settings-activation/KEEPALIVE-RAW-CONTROLS.md)
 names each R case, its finite emission, approved seam and decisive observation.
+It preserves additional loader-output coverage and missing R3 observations as open obligations.
 Its process and retention accounting remains separate from an executable study manifest.
 
 The separately audited collector R3 pre-read barrier and R5 raw-storage

@@ -219,6 +219,10 @@ intermediary launches so loader failures, direct native writes and panic text us
 the same route. The producer never receives the raw-storage write descriptors.
 Its structured result and artifact writers remain separate bounded interfaces.
 
+Persist each completed nonempty read before the next raw read.
+Do not defer persistence until a full buffer or EOF.
+The R4 prefix observation and R5 first data-write controls depend on this production rule.
+
 Define `Lout`, `Lerr` and `Lsum` as eligibility byte limits. The collector limits
 each read to the remaining applicable allowance plus **one** byte. Complete EOF
 at exactly the limit can be clean.
@@ -285,13 +289,20 @@ They require implemented subjects, a separate complete test envelope and establi
 
 | Later control | Fixed finite emission / required distinction |
 |---|---|
-| R1 | Empty streams. 4095, 4096 and 4097 bytes on each stream separately. And one byte on both streams. Eight cases. `Lout=Lerr=4096`, `Lsum=8192`. Require exact originals and EOF for clean rows. Excess is sticky despite exit zero. |
-| R2 | Both streams: 4096 each at `Lsum=8192`, then 4096 each at `Lsum=8191`. Two cases. The second must fail the aggregate even though both individual limits fit. |
-| R3 | One 8192-byte burst per stream while the collector is held after descriptor/buffer binding and before its first raw read. This audited-copy barrier was approved on 2026-11-01. One case. Record accepted writes and release the barrier without waiting for blocked writers to finish. All actually accepted bytes must survive when writers resolve. The finite burst tests retention but does not prove Q. |
-| R4 | Four fixed abnormal cases: missing-executable loader error, direct-write then abnormal exit, one owned inherited-descriptor child, collector death after a 1024-byte persisted prefix. Each controlled emitter supplies at most 8192 bytes per stream. Capture loader output under the established Q boundary. Do not assume its text size. Distinguish execution, EOF, child reap, persisted bytes and unknown tails. |
+| R1 | Empty streams. 4095, 4096 and 4097 bytes on each stream separately. And one byte on both streams. Eight cases. `Lout=Lerr=4096`, `Lsum=8192`. Exact-limit rows require raw-clean completion after actual EOF. Excess rows retain all 4097 accepted bytes on the emitting stream and empty originals on the other. Excess remains failure despite exit zero. |
+| R2 | Both streams: 4096 each at `Lsum=8192`, then 4096 each at `Lsum=8191`. Two cases. Retain exactly 4096 accepted bytes per stream in both. The first requires raw-clean EOF completion. The second fails the aggregate although individual limits fit. |
+| R3 | One 8192-byte burst per stream during the approved pre-read hold. One case. Release without waiting for write returns. Record entry, return and release order. Only independently established blocking tests release deadlock. Require all accepted bytes after writer resolution, using the raw design's independent prefix-plus-remainder oracle. Missing killed-write counts leave retention coverage unavailable. The observation route remains k125 work. No burst proves Q. |
+| R4 | Four base cases: backend refusal of an absent executable, direct-write abnormal exit, an owned inherited-descriptor child, and collector death after 1024 persisted bytes. The first has zero external invocations and two empty originals, without pipe EOF. The child case holds both descriptors at exactly 4096 stdout bytes until real containment signals it after expiry. Require independent helper-exit evidence, descriptor closure, EOF and complete retention without clearing failure. The backend reaps only its own child. Actual loader-output capture remains an additional open obligation outside these four cases. |
 | R5 | Two approved collector-copy write-result cases: fail before write. Write exactly 1024 real bytes then fail. Never fabricate a successful prefix. These qualify failure handling only. |
 
 These 17 later controls retain a proposed 256 KiB total extent ceiling per raw capture object.
+The [expanded raw design](KEEPALIVE-RAW-CONTROLS.md#fixed-case-matrix) specifies their observations and open coverage.
+K125 must separately specify actual loader diagnostics after descriptor binding, without assuming their text size.
+It also owns R3's missing observation route for blocking and killed-write accepted counts.
+K124 and k126 retain the additional costs and complete R coverage duties.
+
+The base count closes neither obligation. No collector site, numerical bound or native execution authority follows.
+
 Antony approved the two named collector-copy boundaries on 2026-11-01, with a
 separate source-correspondence audit. The [collector control decision](KEEPALIVE-RESOURCES.md#collector-control-decision)
 records the exact sites, real-prefix requirement and rejected unaudited edits.

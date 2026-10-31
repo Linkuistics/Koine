@@ -31,7 +31,7 @@
   "discussion": {
     "title": "Distinguish accepted bytes, retained bytes and completed operations",
     "status": "Proposed R-control design. Executable subjects and native bounds remain unavailable.",
-    "summary": "All 17 R cases now have finite emitter inputs, approved control sites and decisive observations. R3 releases its collector barrier before waiting for blocked writers. R5 retains actual prefixes. The process inventory exceeds the six-process mechanism envelope. Expanded S controls, workload accounting and native evidence scopes remain live work. No control ran.",
+    "summary": "The 17 base cases distinguish exact retained bytes, EOF, containment and sentinel scenario refusal. Actual loader-output coverage remains an additional open R obligation. R3 releases before waiting for writers, but needs independent blocking and accepted-byte observations for complete coverage. R5 retains actual prefixes. The process inventory exceeds the six-process mechanism envelope. Expanded S controls, workload accounting and native evidence scopes remain live work. No control ran.",
     "diagramIds": [
       "keepalive-raw-controls",
       "keepalive-records",
@@ -41,7 +41,7 @@
     "updatedDiagrams": [
       {
         "id": "keepalive-raw-controls",
-        "summary": "Separates raw emission, retention, failure containment and final owner completion."
+        "summary": "Clarifies exact-limit EOF, retained excess bytes, sentinel identity and remaining loader/R3 obligations."
       }
     ]
   },
@@ -51,7 +51,7 @@
       "group": "keepalive",
       "title": "Distinguish raw bytes from completed operations",
       "source": "keepalive-raw-controls.mmd",
-      "caption": "Proposed 17-case R control design. The real coordinator and collector run after implementation. Qualified queue, bootstrap and backing evidence remain execution prerequisites. R3 releases before waiting for emitter writes. R5 preserves actual prefixes. Missing collector or storage evidence prevents a tail-retention claim. The graph omits detailed stop, record-carrier and recovery joins, which remain governed by the owner and record specifications. No native mechanism or coordinator result follows."
+      "caption": "Proposed 17-case base inventory, with actual loader-output coverage still open. The graph shows dispatched pipe cases. Setup refusal has no pipe stage. The real coordinator and collector run after implementation. Qualified queue, bootstrap and backing evidence remain prerequisites. Only R3 uses the pre-read barrier, released without waiting for writes. Missing independent blocking or accepted-byte observations leave its corresponding coverage unavailable. R5 preserves actual prefixes. Sentinel refusal counts only its own scenario submission. Collection has separate identities and costs. The graph omits detailed stop, record-carrier and recovery joins, governed by the owner and record specifications. No native mechanism or coordinator result follows."
     },
     {
       "id": "keepalive-records",

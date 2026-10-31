@@ -3,6 +3,8 @@
 The current discussion is the [raw-output control design](../../../verification/settings-activation/KEEPALIVE-RAW-CONTROLS.md).
 It expands all 17 R cases into finite emitter inputs, approved control sites
 and separate byte, process and completion observations.
+Actual loader-output coverage remains outside that base list.
+R3 needs independent blocking and accepted-byte observations before its complete coverage is available.
 Its process inventory includes the caller, worker, sleep child and inherited helper.
 No executable study manifest, mechanism result or complete useful profile follows.
 
@@ -67,8 +69,8 @@ submission and their named confirmation.
 Restart disconnect remains unavailable despite a later boot. A demonstrably unavailable required completion holds E01
 for a new decision. A retry cannot make a failed read succeed.
 
-Run `mise exec -- task design:serve PORT=8816` from the repository root and open
-[the current discussion](http://127.0.0.1:8816/settings-activation/#discussion).
+Run `mise exec -- task design:serve` from the repository root and open
+[the current discussion](http://127.0.0.1:8765/settings-activation/#discussion).
 The existing task serves only the architecture presentation directory.
 
 <!-- tc: depart synonym-rotation because graph entry differs from application launch -->
@@ -88,7 +90,7 @@ loads these same sources while retaining its separate current discussion.
 
 Current changes:
 
-- [Keepalive → Distinguish raw bytes from completed operations](http://127.0.0.1:8816/settings-activation/#diagram-keepalive-raw-controls) — Separates accepted bytes, retained bytes and owner completion.
+- [Keepalive → Distinguish raw bytes from completed operations](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-raw-controls) — Separates accepted bytes, retained bytes and owner completion.
 - [Fixed case matrix](../../../verification/settings-activation/KEEPALIVE-RAW-CONTROLS.md#fixed-case-matrix) — Names all 17 R cases and their finite emitter inputs.
 - [Approved controls and precise schedules](../../../verification/settings-activation/KEEPALIVE-RAW-CONTROLS.md#approved-controls-and-precise-schedules) — Defines R3 barrier release and actual R5 prefixes.
 - [Process and descriptor accounting](../../../verification/settings-activation/KEEPALIVE-RAW-CONTROLS.md#process-and-descriptor-accounting) — Counts caller, worker, sleep and inherited-helper overlap.
@@ -100,9 +102,9 @@ protected backing storage under one ordinal sequence. K106 supplies a candidate
 arrangement with metadata and recovery gaps. The later k107 approval covers the
 named resource-result substitutions. It supplies no native enforcement evidence.
 
-The [worker lifecycle](http://127.0.0.1:8816/settings-activation/#diagram-keepalive-lifecycle)
+The [worker lifecycle](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-lifecycle)
 now names its original 52-second capture deadline. The
-[evidence limit](http://127.0.0.1:8816/settings-activation/#diagram-evidence-limit) remains unchanged.
+[evidence limit](http://127.0.0.1:8765/settings-activation/#diagram-evidence-limit) remains unchanged.
 The [design evidence](../../../verification/settings-activation/ORDERING-DESIGN-EVIDENCE.md)
 links the source/API reads and [verification receipt](../../../verification/settings-activation/ordering-design-evidence/verification.json).
 The [raw documentation output](../../../verification/settings-activation/ordering-design-evidence/doc-links.txt)
