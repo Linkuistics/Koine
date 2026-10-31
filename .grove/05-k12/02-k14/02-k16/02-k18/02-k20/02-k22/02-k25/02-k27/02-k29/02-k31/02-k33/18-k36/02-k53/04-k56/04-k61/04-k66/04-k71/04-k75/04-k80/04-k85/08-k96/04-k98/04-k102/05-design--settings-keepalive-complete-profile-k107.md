@@ -13,6 +13,16 @@ primary-source enforcement research. Read the complete parent charters, current
 owner spec, KEEPALIVE-DESIGN.md, lifecycle review, scheduling report and resource
 admission report. Slice completion supplies no combined profile or readiness.
 
+K106's survey is `docs/research/settings-keepalive-enforcement-a.md`.
+It finds that inherited limits do not enforce every required capture unit.
+The pinned XNU exec setter calls and remap route also qualify the earlier
+inheritance/coverage evidence. The installed kernel differs from that pin.
+No selected launcher exists from which to establish its install-point map size.
+The survey gives a concrete storage topology and a candidate allocation-fence
+recovery sequence, with metadata, durability and useful-fit gaps explicit.
+These are research inputs for this design and its review, not adopted schemas,
+qualified mechanisms or authority for a native experiment or dependency change.
+
 ## Done when
 - Discharge every original k102 criterion, and reconcile all k98/k96 criteria.
   Derive numerical dimensions, encoded/decoded/peak-owned-buffer/elapsed,

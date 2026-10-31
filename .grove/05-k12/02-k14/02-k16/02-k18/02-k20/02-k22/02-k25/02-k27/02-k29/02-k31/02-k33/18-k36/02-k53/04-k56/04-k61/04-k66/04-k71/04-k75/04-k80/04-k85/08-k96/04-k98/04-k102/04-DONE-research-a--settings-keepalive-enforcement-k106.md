@@ -53,3 +53,36 @@ this is a bounded platform-mechanism question, not two independent broad corpora
 No production implementation, volume creation, resource-exhaustion test, VM,
 candidate or freeze. Keep existing source and historical evidence unchanged.
 K107 retains complete profile/review/planning obligations and all downstream holds.
+
+## Decisions (running log)
+
+- 2026-10-31: Adopt k106 at clean jj parent 25923628. Use the research-a
+  procedure and Tier 2 graph discovery followed by exact pinned source reads.
+  Deliver docs/research/settings-keepalive-enforcement-a.md. No implementation,
+  resource-limit experiment, volume creation or VM work is authorised here.
+- 2026-10-31: Read-only host identity reports macOS 27.0.1/26A434 and
+  xnu-13432.1.9~1/RELEASE_ARM64_T6041. Apple's cited f6217f8 revision is
+  xnu-12377.1.9. Keep source semantics separate from installed-host capability;
+  matching source-to-host enforcement and useful launcher fit remain unqualified.
+- 2026-10-31: Deliver the source survey at
+  `docs/research/settings-keepalive-enforcement-a.md`. The unchanged CLI does not
+  enforce the required individual allocation units. Keep the exec setter and
+  remap coverage caveats distinct from an observed host bypass. A concrete
+  launcher does not yet exist, so its exact map floor is an explicit missing
+  prerequisite, not a guessed measurement. K107 receives the candidate storage
+  topology, recovery ordering, qualification questions and control-scope choices.
+  No mechanism or numerical profile is selected; no ADR is earned by this survey.
+- 2026-10-31: Final document check ran `mise exec -- task check:docs`.
+  It returned task status 201 (checker status 1) for only the two existing
+  `context-initial-inputs/CONTEXT-PLAN.md` targets: `context-predicate.txt` and
+  `context-qualify-filter.sh`. No new document-link failure appeared.
+  All 200 subjects were individually SHA-256 checked before and after and
+  unchanged: the checker-enumerated Markdown/diagram sources, its script and
+  Taskfile. The sorted path/digest manifest hash is
+  `b3f60c878e2e7d9bdeb992eab09cc9433ceba5f1ebd7a13e116a822fc15fd6a4`.
+  Survey SHA-256 is
+  `c4fdb226fe23c26d8a00b7d682a304d2700f5477157a2f64c16cd241f68e8f53`.
+  Every reference label and pinned TestAnyware source path resolved. These
+  checks establish document delivery only. Retire only k106; k107 remains live
+  and keeps k102/k98/k96 and their ancestors open. No review targets k106,
+  no in-session reviewer ran, and no producer mechanism or native fit is claimed.
