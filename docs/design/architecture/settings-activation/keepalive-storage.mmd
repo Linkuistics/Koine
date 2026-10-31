@@ -1,0 +1,30 @@
+flowchart TD
+    start["Start here: original terminal lock"]:::start
+    fence["Publish finite allocation fence"]
+    bind["Recheck, assign, charge and bind"]
+    ordinary["Ordinary attempt directory"]
+    collection["Collection attempt directory"]
+    commit["Publish commitment before launch"]
+    rows["Retain clean, failed and partial records"]
+    loss["Owner lost"]
+    holders{"Holders resolved and same lock acquired?"}
+    frontier{"Backing identities and frontier established?"}
+    burn["Burn uncertain ordinals; collection-only generation"]
+    unavailable["Collection unavailable; preserve unknown tail"]
+    start -->|1. Terminal storage| fence
+    fence -->|2. Terminal binding| bind
+    bind -->|3a. Ordinary backing| ordinary
+    bind -->|3b. Protected collection backing| collection
+    ordinary -->|4. Single sequence| commit
+    collection -->|4. Single sequence| commit
+    commit -->|5. Actual observations| rows
+    fence -.->|Loss at any boundary| loss
+    bind -.-> loss
+    commit -.-> loss
+    loss --> holders
+    holders -->|No| unavailable
+    holders -->|Yes| frontier
+    frontier -->|No| unavailable
+    frontier -->|Yes| burn
+    burn -->|New fence; no scenario restart| fence
+    classDef start fill:#172b4d,stroke:#172b4d,color:#fff,font-weight:bold

@@ -14,7 +14,10 @@ The [completion decision](../verification/settings-activation/KEEPALIVE-RESOURCE
 records why the unchanged producer cannot establish the required resource units.
 Antony approved bounded-producer design and audited resource-result substitutions.
 The [dependency contract](settings-capture-resource-contract.md) specifies those
-boundaries; its review and native/storage qualification remain outstanding.
+boundaries; its review is integrated. The
+[mechanism qualification proposal](../verification/settings-activation/KEEPALIVE-QUALIFICATION.md)
+selects candidates for independent review, with missing executable subjects and
+native/storage bounds explicit. No capability row has run.
 The [remaining profile](#remaining-profile) must supply
 enforceable resources and whole-design reconciliation before whole-design review,
 planning or implementation. Adoption and every runtime slot stay held.
@@ -139,8 +142,9 @@ separate event referencing the commitment, never a rewritten argument.
 The [resource boundary](#retention-and-protected-capacity) assigns the attempt's
 backing storage by operation class. A collection attempt uses collection capacity,
 including its directory, even when ordinary capacity is exhausted. Its ordinal
-still belongs to the single owner sequence. Physical placement has a research
-candidate, not a qualified or implemented mount arrangement.
+still belongs to the single owner sequence. Physical placement has a
+[disposable qualification candidate](../verification/settings-activation/KEEPALIVE-QUALIFICATION.md#disposable-storage-and-recoverable-order),
+not a qualified or implemented mount arrangement.
 
 The child checks those bindings and uses that exact directory. It neither
 scans for a new ordinal nor creates another attempt. The prior-attempt scan
@@ -920,7 +924,9 @@ before producer execution, including abnormal diagnostics and inherited child ou
 Producer-controlled structured emission has a separate bound. Capture must cover
 both streams, queued bytes, collector memory, backing storage and retained prefixes.
 An excess write or capture failure remains failed even if the producer exits zero.
-K111 must propose the mechanism and qualification of failure and holder-loss paths.
+The [qualification proposal](../verification/settings-activation/KEEPALIVE-QUALIFICATION.md#backend-raw-descriptor-capture)
+uses backend-owned pipes with precharged queued-byte retention as a candidate.
+Queue bounds, bootstrap coverage and process-loss availability remain unresolved.
 Actual qualification still needs its separately agreed execution scope.
 K112 must include its full cost and unavailable outcomes in the complete profile.
 

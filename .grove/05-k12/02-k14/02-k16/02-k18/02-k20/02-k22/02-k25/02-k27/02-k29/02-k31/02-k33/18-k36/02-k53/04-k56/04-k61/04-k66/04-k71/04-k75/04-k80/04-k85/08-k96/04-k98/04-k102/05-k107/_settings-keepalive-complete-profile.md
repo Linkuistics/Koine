@@ -117,3 +117,13 @@ does not supply an enforceable useful profile or close this node.
   producer design and a separately reviewed native/storage qualification proposal.
   This is design authority only: no external issue, dependency implementation,
   native experiment or resource-requirement relaxation was requested or approved.
+
+## Qualification proposal handoff
+
+K111 supplies docs/verification/settings-activation/KEEPALIVE-QUALIFICATION.md.
+It proposes a native C/libSystem intermediary, bounded pipe capture and three
+disposable fixed-image storage containers, with finite controls and explicit
+missing executable, kernel/native, metadata and recovery evidence. Its independent
+review and every earned integration precede k112 and any execution decision.
+A reviewed proposal supplies no mechanism result or authority to run it. The
+original complete-profile charter above is unchanged; no ancestor closes.

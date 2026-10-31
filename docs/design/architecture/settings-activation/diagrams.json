@@ -29,31 +29,45 @@
     }
   ],
   "discussion": {
-    "title": "Bound producer work before allocation and write",
-    "status": "Design path and test substitutions approved. Contract review integrated before qualification design.",
-    "summary": "The request binds the encoding proposal, OCR engine and declared environment. The backend owns bounded stdout/stderr capture, including abnormal output. The producer owns its allocation guards and structured emission. The owner retains commitment, accounting and final publication. Approved test substitutions qualify failure handling only. The capture mechanism, native/storage qualification and complete useful profile remain outstanding. No dependency implementation or experiment is authorised.",
+    "title": "Qualify launcher, raw capture and protected storage",
+    "status": "Qualification proposal; independent review pending. No execution authorised.",
+    "summary": "A minimal C/libSystem intermediary, bounded pipe collectors and three disposable storage images are candidates. The proposal fixes finite cases and retention/cleanup limits. Missing builds, SDK identity, kernel coverage and native/service bounds prevent an execution request and complete-profile startup. The producer contract review is integrated.",
     "diagramIds": [
-      "keepalive-completion",
+      "keepalive-qualification",
+      "keepalive-storage",
       "keepalive-producer",
-      "keepalive-resources",
-      "keepalive-scheduling"
+      "keepalive-resources"
     ],
     "updatedDiagrams": [
       {
-        "id": "keepalive-completion",
-        "summary": "Records both approvals and places contract review and integration before the separately reviewed qualification proposal. Missing evidence keeps the profile unavailable."
+        "id": "keepalive-qualification",
+        "summary": "Separates subject closure, proposal review, execution authority and the evidence still required for a useful profile."
+      },
+      {
+        "id": "keepalive-storage",
+        "summary": "Shows terminal fences and bindings before class-backed attempt creation, with original-lock collection-only recovery."
       },
       {
         "id": "keepalive-producer",
-        "summary": "Separates producer launcher checks, bounded raw descriptors and producer guards. Environment and selector mismatches refuse use. Partial evidence and owner publication duties remain."
-      },
-      {
-        "id": "keepalive-resources",
-        "summary": "Names environment and raw-capture setup before producer execution. The proposed mechanism still needs qualification."
+        "summary": "Updates the caption to distinguish the proposed pipe mechanism from outstanding enforcement and retention evidence."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "keepalive-qualification",
+      "group": "keepalive",
+      "title": "Qualify each mechanism before completing the profile",
+      "source": "keepalive-qualification.mmd",
+      "caption": "Proposed evidence sequence. Independent review precedes any execution decision. Exact executable subjects, SDK correspondence, kernel queue/map coverage and native bounds remain unavailable. Small controls cannot establish undocumented universal bounds or whole-workload fit. No capability row has run."
+    },
+    {
+      "id": "keepalive-storage",
+      "group": "keepalive",
+      "title": "Recover collection under the original lock and global fence",
+      "source": "keepalive-storage.mmd",
+      "caption": "Proposed storage/recovery order for three disposable fixed-image containers. Terminal storage holds the original lock, allocation fences, bindings and lifecycle/final rows. Attempt directories belong to their ordinary or collection backing. Recovery burns uncertain ordinals and permits collection only. The diagram abbreviates the complete write/flush/publication and holder protocol; no power-loss, metadata reservation or actual storage qualification is established."
+    },
     {
       "id": "keepalive-completion",
       "group": "keepalive",
@@ -66,7 +80,7 @@
       "group": "keepalive",
       "title": "Bound producer work before allocation and write",
       "source": "keepalive-producer.mmd",
-      "caption": "Proposed dependency interface after complete profile qualification. Read from the first owner transition. The producer launcher checks the declared environment and binds bounded raw descriptors before execution. The request pins encoding and OCR choices. Producer guards cover allocations and structured emission. Backend capture covers abnormal raw output and inherited holders. Original and partial outputs survive failure. The exact capture mechanism remains k111 qualification work. Delivery and terminal completion use the full owner protocol, abbreviated here. No implemented API or enforcement result follows."
+      "caption": "Proposed dependency interface after complete profile qualification. Read from the first owner transition. The producer launcher checks the declared environment and binds bounded raw descriptors before execution. The request pins encoding and OCR choices. Producer guards cover allocations and structured emission. Backend capture covers abnormal raw output and inherited holders. Original and partial outputs survive failure. The qualification proposal selects pipes with a precharged queue tail as a candidate; actual bounds and process-loss retention remain unqualified. Delivery and terminal completion use the full owner protocol, abbreviated here. No implemented API or enforcement result follows."
     },
     {
       "id": "keepalive-resources",

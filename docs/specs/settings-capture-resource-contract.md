@@ -173,7 +173,9 @@ write or a capture failure closes eligibility and retains the real written prefi
 The backend records the stream, bound, observed failure and unknown tail separately
 from any producer observation. Producer exit zero cannot clear this failure.
 
-K111 must propose the capture mechanism and its qualification plan. Use requires
+The [qualification proposal](../verification/settings-activation/KEEPALIVE-QUALIFICATION.md#backend-raw-descriptor-capture)
+selects backend-owned pipes and precharged queue-tail retention for independent
+review. Queue coverage, bootstrap and process-loss limits remain explicit. Use requires
 actual qualification evidence under separately agreed execution scope.
 Candidates include a bounded collector or a non-growing backing object with enforced
 write limits. A pipe's finite capacity alone only creates backpressure.

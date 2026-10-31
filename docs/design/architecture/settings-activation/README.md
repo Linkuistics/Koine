@@ -1,15 +1,16 @@
 # Settings activation design discussion
 
-The current discussion is [the bounded producer contract](../../../specs/settings-capture-resource-contract.md).
-Antony approved its design path and the named audited capacity, limit-call and
-write-result substitutions. Existing phase barriers and clock replacement remain
-approved. The contract gives the producer one immutable request and assigned
-outputs; the owner retains commitment, accounting and final publication.
-The integrated review binds the environment, encoding proposal and OCR engine.
-The backend owns raw descriptor capture, including abnormal output.
-Contract review and integration precede the separately reviewed native/storage
-qualification proposal. The complete useful profile remains unavailable.
-No dependency implementation or native experiment is authorised.
+The current discussion is the [mechanism qualification proposal](../../../verification/settings-activation/KEEPALIVE-QUALIFICATION.md).
+It proposes a C/libSystem intermediary, backend-owned pipe collectors and three
+disposable fixed-image storage containers. It separates finite controls from
+native guarantees and complete useful-workload fit. Executable subjects, SDK
+correspondence, kernel queue/map coverage and native/service bounds remain
+unavailable. Independent review precedes k112 consumption and any execution
+decision. No capability case, dependency implementation or native experiment ran.
+
+The producer contract's review is integrated. Approved audited capacity,
+limit-call/write-result substitutions, phase barriers and clock replacement
+qualify failure handling only. The complete useful profile remains unavailable.
 
 The [scheduling profile](../../../specs/settings-keepalive-owner.md#scheduling-and-deadline-profile)
 remains proposed.
@@ -77,12 +78,11 @@ loads these same sources while retaining its separate current discussion.
 
 Current changes:
 
-- [Keepalive → Complete the approved dependency design path](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-completion) — Records both approvals and places contract review and integration before the separately reviewed qualification proposal.
-- [Keepalive → Bound producer work before allocation and write](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-producer) — Shows the declared environment, bounded raw descriptors, producer checks, retained partials and unchanged owner publication authority.
-- [Keepalive → Establish resources before producer execution](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-resources) — Updates the mechanism candidate to the approved bounded-producer path, retaining runtime/storage evidence as prerequisites.
-- [Bounded producer contract](../../../specs/settings-capture-resource-contract.md) — Specifies per-phase enforcement, overlapping capacity, refusal/retention and the exact approved test controls.
-- [Resource admission boundary](../../../specs/settings-keepalive-owner.md#resource-admission-boundary) — Incorporates the dependency contract and approved controls while retaining every original profile obligation.
-- [Completion decision](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#completion-decision) — Records agreement and keeps implementation, qualification and numerical-profile gaps explicit.
+- [Keepalive → Qualify each mechanism before completing the profile](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-qualification) — Separates subject closure, independent review, execution authority and remaining native/useful-fit evidence.
+- [Keepalive → Recover collection under the original lock and global fence](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-storage) — Adds the proposed terminal fence/binding order and collection-only recovery across separately backed classes.
+- [Keepalive → Bound producer work before allocation and write](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-producer) — Updates the caption to separate the proposed pipe mechanism from unestablished bounds and process-loss retention.
+- [Mechanism qualification proposal](../../../verification/settings-activation/KEEPALIVE-QUALIFICATION.md) — Defines finite controls, exact-subject prerequisites, retained prefixes, cleanup and unsupported guarantees.
+- [Owner design boundary](../../../specs/settings-keepalive-owner.md#design-boundary) — Records integrated producer review and links the proposed qualification candidates without claiming enforcement.
 
 The [resource review integration](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#review-integration)
 records each k108 disposition. Collection directories and terminal records require

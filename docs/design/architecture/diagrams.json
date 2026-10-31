@@ -625,6 +625,20 @@
       "title": "Two focused guests before three complete ordinary guests",
       "source": "settings-activation/evaluation-outcomes.mmd",
       "caption": "E01/E02 and A01/A02/A03 are serial fresh slots using one frozen candidate with diagnostics disabled and the same repaired scenario/helpers. Setup, title and liveness rules separate recurrence from process loss and unavailable evidence. Failed transport stops acceptance, including restart disconnect. Screenshots retain context. Audit and exact cleanup remain required; passing covers only the sample. No baseline, replacement or expansion."
+    },
+    {
+      "id": "settings-activation-keepalive-qualification",
+      "group": "settings-activation",
+      "title": "Qualify each mechanism before completing the profile",
+      "source": "settings-activation/keepalive-qualification.mmd",
+      "caption": "Proposed evidence sequence. Independent review precedes any execution decision. Exact executable subjects, SDK correspondence, kernel queue/map coverage and native bounds remain unavailable. Small controls cannot establish undocumented universal bounds or whole-workload fit. No capability row has run."
+    },
+    {
+      "id": "settings-activation-keepalive-storage",
+      "group": "settings-activation",
+      "title": "Recover collection under the original lock and global fence",
+      "source": "settings-activation/keepalive-storage.mmd",
+      "caption": "Proposed storage/recovery order for three disposable fixed-image containers. Terminal storage holds the original lock, allocation fences, bindings and lifecycle/final rows. Attempt directories belong to their ordinary or collection backing. Recovery burns uncertain ordinals and permits collection only. The diagram abbreviates the complete write/flush/publication and holder protocol; no power-loss, metadata reservation or actual storage qualification is established."
     }
   ]
 }

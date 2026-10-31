@@ -1,0 +1,29 @@
+flowchart TD
+    start["Start here: reviewed producer contract"]:::start
+    subjects["Pin source, builds, host and case manifest"]
+    missing["Missing subject or required bound"]
+    hold["Profile unavailable; no execution request"]
+    review["Independent proposal review and integration"]
+    decision["Separate explicit execution decision"]
+    launch["Launcher floor and exec/map cases"]
+    raw["Raw prefixes, queued bytes and holders"]
+    storage["Protected storage and process-loss recovery"]
+    evidence["Separate source, controls, results and unknowns"]
+    native["Native service bounds and complete useful workload"]
+    complete["Complete profile design and whole-design review"]
+    start -->|1. Design only| subjects
+    subjects -->|2. Present proposal| review
+    review -->|3. Check exact subjects and scope| decision
+    subjects -->|Unresolved today| missing
+    missing --> hold
+    decision -->|Only if authorised and admitted| launch
+    decision -->|Only if authorised and admitted| raw
+    decision -->|Only if authorised and admitted| storage
+    launch --> evidence
+    raw --> evidence
+    storage --> evidence
+    evidence -->|Required evidence still missing| hold
+    evidence -->|Named finite observations| native
+    native -->|All required bounds and fit established| complete
+    native -->|Undocumented bound remains| hold
+    classDef start fill:#172b4d,stroke:#172b4d,color:#fff,font-weight:bold

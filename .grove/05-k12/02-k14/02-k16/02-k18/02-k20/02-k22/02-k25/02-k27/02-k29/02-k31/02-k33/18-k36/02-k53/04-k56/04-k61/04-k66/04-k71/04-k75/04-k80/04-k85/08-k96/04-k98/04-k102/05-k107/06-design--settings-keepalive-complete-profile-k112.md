@@ -10,6 +10,12 @@ This is the remainder of the original mandated task, not a reduced completion
 criterion. Read the entire k107 parent charter and k102/k98/k96 charters.
 Consume the bounded producer contract and qualification proposal only after
 independent review/every earned integration; a reviewed proposal is not a result.
+The qualification proposal is docs/verification/settings-activation/KEEPALIVE-QUALIFICATION.md.
+It identifies missing launcher/producer builds, SDK correspondence, kernel queue/map
+coverage, native/service bounds and protected metadata/recovery evidence. Its
+finite ceilings are study limits, never defaults for the useful profile. Do not
+request execution from an unfilled subject manifest or treat a pipe/image candidate
+as a qualified mechanism. Preserve its process-loss and unknown-tail limits.
 
 ## Done when
 - Discharge every original k107/k102/k98/k96 criterion. Derive numerical geometry,
