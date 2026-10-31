@@ -282,9 +282,43 @@ Those rows do not add mechanism prerequisites before the coordinator exists. Thi
 The owner spec remains authoritative for lifecycle, transitions and lock ownership.
 
 The [expanded record and recovery controls](../verification/settings-activation/KEEPALIVE-RECOVERY-CONTROLS.md)
-identify the approved copied boundaries, actual prefixes and dependent-action oracles for S2–S6 and retained lifecycle controls.
-Their finite design products add no substitution class or native execution authority.
-An unavailable approved site leaves its case unavailable until an explicit seam decision.
+identify copied boundaries, actual prefixes and dependent-action oracles for S2–S6 and retained lifecycle controls.
+Their canonical IDs and aliases prevent duplicate execution and charging.
+Their negative complete-write observations use the approved extension below.
+An unavailable approved site also leaves its case unavailable until an explicit seam decision.
+
+### Complete-write observation extension
+
+Antony approved this exact extension on 2026-11-01 during k130.
+Existing approvals above remain unchanged. Implementation and correspondence audits still precede execution.
+
+| Approved copied boundary | Approved controlled result | Required actual evidence and limits |
+|---|---|---|
+| The twelve named C targets in the recovery-control design, at their caller or owner publication-result return | After a complete actual write, report exactly one required flush, visibility or namespace result as failed or unknown | Retain complete real bytes and all actual call results independently. The real coordinator must refuse the dependent effect and retain the substituted observation. |
+| Caller K28 final publication-result return for G-final-result | After a complete actual write, report flush failure | Retain actual bytes and call results. The caller must return unavailable despite complete readback. |
+
+The substitution changes one returned observation field, never the actual write, flush, namespace or readback call.
+Successful write length, object identity and real bytes stay unchanged.
+The fixture transcript marks the returned field as substituted and retains its original value and actual raw status separately.
+It does not fabricate an OS error number or claim an actual failed syscall.
+Only an operation required by the frozen publication method can receive the failed or unknown observation.
+
+If no namespace operation is required, its result stays inapplicable and its two cases remain explicitly inapplicable.
+
+The approval covers 72 conditional negative C cases and one final-result case.
+The 24 namespace cases also require an applicable publication method.
+The twelve clean C cases continue to use actual calls only.
+
+Each copied site and invocation needs a correspondence audit against pinned production source.
+That audit and the extra transcripts, fixtures and retained bytes are the added costs for workload accounting.
+These controls establish failure handling only. They establish no actual I/O failure, durability, storage reservation or native bound.
+The approval adds no collector site, allocator replacement or production injection.
+
+The extension lets controls exercise the schema's existing rule that failed and unknown publication observations block dependent work.
+Keeping only the earlier two write-result shapes would leave these cases unavailable pending separately qualified real failure methods.
+Antony chose the extension with its audit and evidence costs. No requirement is relaxed.
+
+### Approved collector controls
 
 Antony approved the separate collector's two named copied boundaries on 2026-11-01.
 R3 follows descriptor/buffer binding and precedes the first raw read.

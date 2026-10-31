@@ -172,7 +172,7 @@ and exact times. Each copy must match production except for declared substitutio
 
 | Boundary | Required result and falsifying mutant |
 |---|---|
-| Tick due during OCR, exec and transfer, in each arrival order | One queued request, one dispatch, no extra sleep. A competing-writer refusal or younger-request bypass fails. |
+| Tick due during OCR, exec and transfer, in each arrival order, plus scenario post-CLI validation | One queued request, one dispatch, no extra sleep. Ownership extends through validation, delivery and publication. CLI-exit release, competing-writer refusal or younger-request bypass fails. |
 | Scenario arrives during capture CLI, validation and publication | No dispatch before the whole capture completes. Unlock-after-CLI mutant fails. |
 | Two complete submissions observed together | Scenario wins only that receive tie. A later scenario cannot overtake an already received tick. |
 | Every message, admission, phase and whole deadline | Use the proposed clock reader at each declared observer. Just-before can pass. Equality and just-after fail. Reset-on-progress and success-before-expiry-check mutants fail. |

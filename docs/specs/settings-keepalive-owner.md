@@ -567,7 +567,10 @@ Its process and retention accounting remains separate from an executable study m
 
 The [record and recovery control design](../verification/settings-activation/KEEPALIVE-RECOVERY-CONTROLS.md)
 expands S2–S6, mandatory carriers, original-object writes and the retained lifecycle and scheduling controls.
-Each expanded ID has its own outcome. The real coordinator retains allocation and transition ownership.
+Each canonical ID has its own outcome. Declared aliases share that case's invocation and all its assertions.
+The real coordinator retains allocation and transition ownership.
+The producer contract's [complete-write observation extension](settings-capture-resource-contract.md#complete-write-observation-extension) was approved on 2026-11-01.
+
 The process inventory includes worker/sleep, inherited holders and the original caller's successor role.
 Implementation, complete accounting and scoped review remain prerequisites to execution.
 
@@ -625,15 +628,15 @@ launcher limit-call/readback results and owner/backend/caller write results in
 audited copies. The [resource-control
 contract](settings-capture-resource-contract.md#approved-koine-test-controls)
 defines their enabling points, real prefix-write behaviour and copy audit. They
-test failure handling. They do not establish native capacity or enforcement. The
-2026-11-01 approval adds only the collector's R3 pre-read barrier and R5
-raw-storage write-result sites, with their own correspondence audit and real
-1024-byte retained-prefix control. The resource-control contract defines the
-scope.
+test failure handling. They do not establish native capacity or enforcement.
+
+The separate collector approval on 2026-11-01 adds only its R3 pre-read barrier and R5 raw-storage write-result sites.
+Those sites require their own correspondence audit and real 1024-byte retained-prefix control.
+The resource-control contract defines the scope.
 
 | Controlled schedule or defect | Required discrimination |
 |---|---|
-| OCR/exec/transfer holds ownership when a tick becomes due | Tick is pending, not dispatched/refused as a competing writer. A failure before its actual commitment cancels it with no ordinal. Numerical admission expiry is tested under the later profile. |
+| OCR/exec/transfer holds ownership when a tick becomes due, including scenario post-CLI validation | Tick stays pending through the whole ownership interval, including delivery and terminal publication. Unlocking at CLI exit fails. Failure before commitment cancels without an ordinal. Numerical admission expiry remains required under the later profile. |
 | Capture holds ownership when scenario input arrives, including after CLI exit | Input cannot dispatch until image validation, delivery and terminal publication finish. Invalid image prevents it entirely. |
 | Failure after admission, immediately before commitment, and immediately after commitment | Only the last schedule may have committed work. No later success restores eligibility. Launch uncertainty remains explicit. |
 | Normal end during each row of the stop race table | Required cancellation/drain and exact intent/acknowledgement/reap match. No fake attempt or extra tick. |

@@ -428,7 +428,11 @@ Their original 18 cases are excluded from the mechanism-study envelope.
 The [expanded recovery design](KEEPALIVE-RECOVERY-CONTROLS.md#accounting-alternatives-and-handoff)
 preserves those cases and recounts publication, attachment, codec, recovery, lifecycle and deadline products.
 The schema's [boundary mapping](../../specs/settings-keepalive-records.md#later-controls-and-remaining-inputs) remains authoritative.
-The later executable manifest must bind each design ID to implemented subjects, exact invocations and complete accounting.
+The later executable manifest binds each canonical design ID to implemented subjects, exact invocations and complete accounting.
+Declared aliases share that canonical result and all its assertions, without another invocation or charge.
+
+The original eighteen remain canonical. Successor directory-create failure and scenario post-CLI validation remain additional obligations.
+Negative complete-write observations use the [approved extension](../../specs/settings-capture-resource-contract.md#complete-write-observation-extension).
 The expanded design count supplies no execution budget.
 
 | Class / row | Finite cases and required observation |

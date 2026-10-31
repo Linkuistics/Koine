@@ -4,10 +4,10 @@ flowchart TD
     gate{"Holders resolved?<br/>Same lock, identities<br/>and unique frontier?"}
     normal["Normal transfer<br/>25 → 20"]
     entry["One successor<br/>25 → 20 → 5 → 20"]
-    collect["Delayed observations<br/>Unattempted suffix only"]
+    collect["Delayed observations<br/>Unattempted suffix only<br/>Create failure keeps charge"]
     unknown["Recovery unavailable<br/>No replacement writer"]
     final["Both paths<br/>27 → 20 → 28"]
-    result["Caller observes final write<br/>Loss leaves unknown tail"]
+    result["Caller observes final write<br/>Loss leaves unknown tail<br/>Approved result control keeps real bytes"]
     start -->|1a. Owner completes| handoff
     start -->|1b. Owner lost| gate
     handoff -->|2a. Burn unused ranges| normal

@@ -3,7 +3,10 @@
 The current discussion is the [record and recovery control design](../../../verification/settings-activation/KEEPALIVE-RECOVERY-CONTROLS.md).
 It preserves the original eighteen S cases and expands named publication cuts, carrier failures, malformed fixtures and recovery paths.
 It also retains lifecycle, signal, held-pointer and exact-deadline controls.
-Each expanded design ID has its own outcome. The later executable manifest still needs implemented subjects and qualified resource bounds.
+Each canonical design ID has its own outcome. Explicit aliases share its invocation and all assertions, without another charge.
+
+Antony approved the exact complete-write observation extension in the [producer contract](../../../specs/settings-capture-resource-contract.md#complete-write-observation-extension).
+Its negative cases retain actual bytes and call results separately. The later executable manifest still needs implemented subjects and qualified resource bounds.
 
 The [bounded record and recovery schema](../../../specs/settings-keepalive-records.md)
 remains unchanged context.

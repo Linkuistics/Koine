@@ -30,8 +30,8 @@
   ],
   "discussion": {
     "title": "Check each publication cut and recovery path",
-    "status": "Proposed S-control design. Scoped review precedes consumption.",
-    "summary": "The finite design inventory preserves the original eighteen S cases and expands publication cuts, carrier failures, attachments, codec fixtures, recovery, lifecycle and deadlines. Retained bytes, observed publication and dependent-action permission stay separate. The later executable manifest needs implementation and qualified resource bounds. No control ran.",
+    "status": "Review integrated. Exact complete-write observation extension approved.",
+    "summary": "Canonical cases preserve every original obligation. Explicit aliases prevent duplicate execution and charging. Added cases cover scenario post-CLI validation, successor directory creation and malformed recovery frames. Antony approved the exact complete-write observation substitutions with their audit and evidence costs. The later executable manifest still needs implementation and qualified bounds. No control ran.",
     "diagramIds": [
       "keepalive-recovery-controls",
       "keepalive-recovery-transfer",
@@ -42,11 +42,11 @@
     "updatedDiagrams": [
       {
         "id": "keepalive-recovery-controls",
-        "summary": "Separates actual bytes, observed publication and permission to act."
+        "summary": "Shows canonical cases, seam availability and publication permission."
       },
       {
         "id": "keepalive-recovery-transfer",
-        "summary": "Shows normal transfer, one recovery successor and the shared final sequence."
+        "summary": "Shows recovery checks, successor create failure and both final paths."
       }
     ]
   },
@@ -56,14 +56,14 @@
       "group": "keepalive",
       "title": "Check publication before dependent action",
       "source": "keepalive-recovery-controls.mmd",
-      "caption": "Proposed publication controls. A selected slot and its attachments remain consumed even when empty. Actual bytes, flush and visibility observations, and carrier publication stay distinct. Only complete required joins permit the dependent effect. The companion transfer view shows the later final paths. The full owner protocol governs omitted delivery and containment. No control ran. Implementation, mechanism evidence and complete accounting remain required."
+      "caption": "Canonical publication controls share all alias assertions without duplicate execution. The complete-write observation extension is approved. Its negative cases retain actual call results separately. Approved controls preserve actual bytes, required carriers and target-specific failure rules. Only complete required joins permit the dependent effect. The full protocol governs omitted delivery and containment. No control ran. Implementation, mechanism evidence and complete accounting remain required."
     },
     {
       "id": "keepalive-recovery-transfer",
       "group": "keepalive",
       "title": "Preserve both caller transfer paths",
       "source": "keepalive-recovery-transfer.mmd",
-      "caption": "Proposed normal and failed-owner transfers. The original caller must establish actual holders, original-lock ownership, identities and a unique frontier. Entry completes before delayed observations or a fence. Only proven unattempted collection items follow. Normal handoff can carry failed history and never restores eligibility. Both paths retain the final sequence and the caller-return trust boundary. The graph abbreviates per-write failures, which prevent dependent actions. Caller loss permits no successor. No control or durability result follows."
+      "caption": "Normal and failed-owner transfers retain the original lock, holders, identities and unique frontier. Header-complete torn frames supply no identity or link evidence. Entry completes before delayed observations or collection. Successor create failure preserves its fresh ordinal and charge. Both paths retain final records and the caller-return boundary. The approved final-result substitution retains actual call results separately. Caller loss permits no successor. No control or durability result follows."
     },
     {
       "id": "keepalive-raw-controls",

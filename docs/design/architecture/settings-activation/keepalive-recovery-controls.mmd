@@ -1,11 +1,15 @@
 flowchart TD
-    start["Start here: named case<br/>Real owner and lock"]:::start
+    start["Start here: canonical case<br/>Aliases share all assertions"]:::start
+    authority{"Required seam<br/>approved and available?"}
+    pending["Case unavailable<br/>Retain unmet prerequisite"]
     choose["Consume slot<br/>and attachments"]
     bytes["Write once<br/>Zero, prefix or complete"]
     observe{"Publication and<br/>carrier complete?"}
     effect["Permit dependent action"]
     failed["Keep failure and bytes<br/>No later scenario"]
-    start -->|1. Approved site| choose
+    start -->|1. Exact named site| authority
+    authority -->|No| pending
+    authority -->|Yes: real owner and lock| choose
     choose -->|2. Real bytes| bytes
     bytes -->|3. Observe result| observe
     observe -->|Success| effect

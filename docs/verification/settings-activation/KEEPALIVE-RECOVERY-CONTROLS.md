@@ -12,7 +12,10 @@ The [transfer view](../../design/architecture/settings-activation/keepalive-reco
 Graphs start at the dark **Start here** node.
 The view explains a proposed test contract. It supplies no model-checking result.
 
-Every ID below denotes one independently reportable design case with a fresh synthetic root.
+Every canonical ID below denotes one independently reportable design case with a fresh synthetic root.
+The explicit alias table maps coincident product members to that canonical case.
+An alias adds assertions to its canonical case, not another root, invocation or charge.
+
 A product expands only over its explicitly listed members.
 The count is not a runtime budget, executable manifest or permission to run controls.
 S1 and the 17 [raw cases](KEEPALIVE-RAW-CONTROLS.md#fixed-case-matrix) retain separate identities and counts.
@@ -26,7 +29,8 @@ No value here selects production capacity, changes sleep20 or relaxes an existin
 ## Common subjects and decisive oracle
 
 The test harness selects audited copies of the implemented owner, backend and finite caller.
-It substitutes only the approved barriers, clock reader, capacity observations and named write results.
+It uses the approved barriers, clock reader, capacity observations and named write results.
+The approved complete-write observation substitutions have the exact scope stated in the producer contract.
 The external CLI and sleep seams supply finite fixtures without contacting a VM or native OCR service.
 The real coordinator owns startup, lock acquisition, allocation, charging, validation, delivery, stop and collection.
 No test seeds a live state by replacing that transition code.
@@ -45,7 +49,9 @@ Bootstrap-failure cases stop before readiness.
 
 For each selected publication, retain the exact intended encoded bytes as `E` in the private fixture inventory.
 Let `N` be their checked length and `P = min(17, N - 1)`.
+The two header-complete recovery fixtures instead use the explicitly declared 376-byte prefix below.
 All selected frames and wrapped objects exceed seventeen bytes.
+
 The partial control writes exactly `E[0:P]` into the real assigned object, then reports failure.
 An unexpected short underlying write makes that boundary unavailable.
 It never invents persisted bytes or retries the failed publication.
@@ -78,7 +84,7 @@ No sentinel repeats failed work or submits corrective input.
 ## Original eighteen cases
 
 These IDs preserve the [qualification baseline](KEEPALIVE-QUALIFICATION.md#storage-and-process-loss-controls).
-Additional products below do not replace them or count them twice.
+Additional products retain coincident members as aliases of these original IDs.
 The prefix column describes the selected subject at the cut, not an invented persisted success.
 
 | ID | Module, kind and selected invocation | Control and actual prefix | Decisive additional oracle |
@@ -94,10 +100,10 @@ The prefix column describes the selected subject at the cut, not an invented per
 | S3-directory-before-commitment | Owner, first K9 | End owner before slot choice, after actual directory creation. | Preserve the exact directory. No inference of execution from it. |
 | S3-commitment-before-execution | Owner, first K9 | End owner after publication and its K20, before backend creation. | Intent remains. No resend or invented external execution. |
 | S4-result-before-disposition | Owner, first K18 | End owner before slot choice after backend result. | K15 and actual reap cannot substitute for K18. |
-| S4-send-before-echo | Owner, first K19 echo | End owner after actual completion send and before echo retention. | Recipient receipt stays unknown to owner. Final acceptance fails. |
+| S4-send-before-echo | Owner, first completion send | End owner after actual send, before choosing the K19 send-record slot. | Recipient receipt stays unknown to owner. Both send and echo records remain absent. Final acceptance fails. |
 | S4-ack-before-reap | Owner, K23 | End owner after K22 and actual worker wait, before K23. | Actual wait remains distinct from missing published reap. |
 | S4-handoff-before-final | Caller, normal K28 | End caller before K28 after handoff and owner wait. | No successor or inferred caller return. |
-| S5-inherited-holder | Caller, K25 entry | A controlled child retains the original descriptor after owner exit. | No concurrent write or recovery until holder resolution and actual original-lock acquisition. |
+| S5-inherited-holder | Caller, K25 entry | A controlled child retains the original descriptor after owner exit, then exits under the bounded schedule. | Refuse entry while held. After actual holder resolution, acquire the original lock and permit entry once. |
 | S5-backing-mismatch | Caller, K25 entry | Approved capacity/identity observation reports another backing. No K25. | Refuse recovery. Never replace the backing or lock. |
 | S6-collection-create | Owner, first collection directory | Approved named directory-create result fails before creation. | Preserve its assignment and charge, unavailable item and later independent outcomes. |
 | S6-terminal-prefix | Owner, first K18 | Write `P` real bytes then fail. | Preserve the prefix, no completion permission and no refunded charge. |
@@ -105,7 +111,7 @@ The prefix column describes the selected subject at the cut, not an invented per
 ## Publication cuts
 
 Case IDs are `W-<target>-<cut>`.
-Every target in the following table expands over all seven cuts.
+Every target in the following table expands over all seven cuts, subject to the alias table.
 The selected invocation is the first occurrence matching the complete table description.
 Earlier setup and preceding records follow their real paths.
 Each case ends only the directly owned selected writer, once, when its cut requires process loss.
@@ -118,7 +124,7 @@ Owner termination never constitutes reap of its grandchildren.
 | prefix | Named result site writes `P` bytes, reports failure, then loss | Retain real prefix and failed live observation if published. Recovery cannot invent the lost observation. |
 | complete | Barrier after all frame bytes, before flush observation, then loss | Complete readable bytes do not imply flush success. Dependent action has not occurred. |
 | observed | Barrier after successful publication observation, before the next dependent record/action, then loss | Preserve complete bytes. Recovery uses only retained evidence, never the dead writer's lost memory. |
-| fail-zero | Named write result fails without writing. Writer stays alive. | Eligibility closes. Required failure carrier uses a new slot. Dependent action stays absent. |
+| fail-zero | Named write result fails without writing. Writer stays alive. | Eligibility closes. The target-specific failure rule below applies. Dependent action stays absent. |
 | fail-prefix | Named write result writes `P` bytes then fails. Writer stays alive. | Keep prefix and actual failure. No retry, slot reuse or clean continuation. |
 
 The `empty` barrier precedes attachment writes for that selected event.
@@ -127,6 +133,25 @@ Attachment-specific cuts appear separately below.
 For K29 targets, the triggering earlier publication fails first at its declared site.
 Failure of K29 causes no recursive K29 or K20 about K29.
 Only independently necessary, already reserved containment and final evidence may follow.
+
+Both live failure cuts use the following carrier rules, where the writer can still publish.
+The rules follow the schema's existing schedule and bounded failure summary.
+No row permits retry, an invented successful publication or a recursive failure logger.
+
+| Failed target class | Required failure record or retained limit |
+|---|---|
+| K1, K2, K3 and bootstrap preparation objects | The next K4 preparation vector retains the result. Incomplete setup forbids readiness. |
+| K4 | Its required K20 retains the attempt's result. An earlier batch also retains its successor-batch obligation. |
+| K5, K9, K18, K21, K23, K25, K26 and K27 | Their mandatory K20 retains the result. Dependent work stays forbidden. |
+| K6, including renewed and collection fences | No K7 follows the failed fence. K10 retains first failure. The optional reserved K29 can retain the bounded write-failure summary. |
+| K7 or K9 as embedded predecessor carrier | Attempt one fallback K20 for K6 or K7 respectively. K9 also owes its own mandatory carrier. Neither permits dependent work. |
+| K20 | Only the reserved K29 failure summary may report this failure. No K20 reports another K20. |
+| K28 | The actual caller return observes failure. A readable final frame cannot restore acceptance. |
+| K29 | No recursive K29 or K20. Retain its partial or missing result and only independently necessary reserved failure actions. |
+| Other terminal kinds | Preserve first failure and the bounded K29 rule. Do not invent a mandatory K20 absent from the schema's schedule. |
+
+The K7/K9 row adds predecessor fallback duties to the target's own applicable rule.
+These rules concern record-write failures. Failure of an attachment also leaves its containing event unavailable.
 
 | Target | Module / lane | Kind and selected invocation | Dependent effect or acceptance fact |
 |---|---|---|---|
@@ -185,17 +210,25 @@ Repeated K12 phases, K13 progress and K24 containment actions also receive their
 
 ## Publication carriers and attachments
 
-Case IDs `C-<target>-<outcome>` use five outcomes: `clean`, `flush-failed`, `flush-unknown`, `visibility-failed` and `visibility-unknown`.
+Case IDs `C-<target>-<outcome>` use seven outcomes: `clean`, `flush-failed`, `flush-unknown`, `visibility-failed`, `visibility-unknown`, `namespace-failed` and `namespace-unknown`.
 The named target is its first matching publication in that path.
-The observer is its live writer, selected through the approved named publication-result site.
-The site returns the publication operation's failed or unavailable result, including its flush/visibility fields.
-It does not replace the allocator, create successful I/O or infer kernel behaviour.
-If the implementation cannot expose that result through the approved site, the case remains unavailable pending an explicit seam decision.
+The observer is its live writer at the named publication-result site.
+The clean outcome uses actual calls. The six negative outcomes use the producer contract's approved complete-write observation extension.
 
-For `clean`, actual target writes and flush/visibility calls succeed, and the carrier retains those observations before the dependent effect.
+Antony approved that extension on 2026-11-01. Implementation and correspondence audits still precede execution.
+The substituted observation changes no actual I/O call, allocation code or native mechanism evidence.
+
+For `clean`, actual target writes and all required flush, namespace and visibility calls succeed.
+The carrier retains those observations before the dependent effect.
 For each negative outcome, actual target bytes are complete. The copied publication result reports the named failed or unknown field.
 The original real call results remain separate control evidence.
-All four negative variants prohibit the dependent effect even if readback returns the complete frame.
+Each negative variant prohibits the dependent effect even if readback returns the complete frame.
+
+For namespace cases, the frozen publication method must require an actual namespace operation at that target.
+Precreated in-place objects can need no namespace operation. Then the actual field is inapplicable and both namespace cases remain explicitly inapplicable.
+The manifest must state that reason and preserve the conditional coverage obligation if the selected method later requires that operation.
+
+No fixture invents a namespace operation merely to make a case runnable.
 
 | Target | Writer and required carrier | Dependent effect |
 |---|---|---|
@@ -238,11 +271,16 @@ For `writer-lost`, end the directly owned writer before fallback slot choice.
 
 The lost observation stays unknown. Every variant forbids dependent work and retains all consumed capacity.
 
-Cases `A-<role>-<cut>` use roles `bootstrap`, `submission`, `recovery` and `final` with all seven publication cuts.
-The selected object is respectively the first O4 profile, K8's O1 original, K25's O7 lock summary, or K28's O7 collection summary.
-Its writer is the caller, owner, successor caller or final caller respectively.
+Cases `A-<role>-<cut>` use roles `submission`, `recovery` and `final` with all seven publication cuts, subject to aliases.
+Role `bootstrap` uses `prefix`, `complete`, `observed`, `fail-zero` and `fail-prefix`, plus the single `before-write` cut.
+
+The submission target is K8's O1 original, written by the owner. Recovery targets the successor caller's K25 O7 lock summary.
+Final targets the final caller's K28 O7 collection summary. Bootstrap targets the caller's first O4 profile object.
 For this product, slot choice means reserving the containing event's slot and its immutable attachment set.
-Bootstrap uses its preassigned setup object without inventing a new slot allocation.
+
+For `A-bootstrap-before-write`, end the caller at the barrier before writing the preassigned O4 object.
+No O4 bytes, event-slot choice or new allocation is implied. Bootstrap stays incomplete and cannot restart.
+The former bootstrap `choose` and `empty` labels alias this one boundary.
 
 Require exact real prefixes, no reference promoted to known before completion, and no reuse of any attachment after loss.
 The containing event and its dependent effect remain unavailable when their required object is incomplete.
@@ -261,11 +299,13 @@ Check actual byte length against the catalogue formula, digest preimage and exac
 Preserve original argv, environment and byte objects without text normalisation.
 These are codec cases, not evidence of transition reachability or useful capacity.
 
-For identities `K01` through `K29` and `O01` through `O12`, cases `M-<identity>-<fault>` apply these eight faults separately:
+For identities `K01` through `K29` and `O01` through `O12`, cases `M-<identity>-<fault>` apply these ten faults separately:
 
 | Fault | Exact finite mutation | Oracle |
 |---|---|---|
 | version | Increment the minor version and recompute the enclosing digest. | Reject unsupported version. |
+| major | Increment the major version and recompute the enclosing digest. | Reject unsupported version. |
+| magic | Flip the first magic byte and recompute the enclosing digest. | Reject the wrong record or object marker. |
 | kind | Set record kind or object type to 65533 and recompute digest. | Reject unknown type. |
 | reserved | Set the first reserved/flags bit and recompute digest. | Reject reserved bits. |
 | short | Remove the final byte. | Retain the received prefix. Reject incomplete frame. |
@@ -273,6 +313,9 @@ For identities `K01` through `K29` and `O01` through `O12`, cases `M-<identity>-
 | length | Set the payload-length field to unsigned 64-bit maximum and recompute digest. | Reject before allocation or offset overflow. |
 | digest | Flip one bit of the digest only. | Reject mismatch without interpreting the payload as evidence. |
 | bound | Give the complete valid object to a reader whose maximum frame/object bytes is `N-1`. | Reject before accepting or allocating its declared content. |
+
+Cases `M-K01-end-marker` through `M-K29-end-marker` change the first end-marker byte and recompute the digest.
+Each must reject the marker despite the valid digest. Wrapped O objects have no end marker, so this product excludes them.
 
 The real decoder receives these fixtures through its bounded input entry.
 Malformed fixtures exist only in fresh synthetic roots or channels before the real reader starts.
@@ -285,6 +328,8 @@ The following additional fixture cases distinguish semantic boundaries:
 | ID | Selected fixture and invocation | Required result |
 |---|---|---|
 | F-states | K18 settlement and joins, four finite rows | Distinguish known zero, missing, unknown and inapplicable. Do not accept a non-known nonzero payload. |
+| F-state-range | K23 fixtures set Q raw-wait, K stop and R acknowledgement states separately to 4, then 255, with valid digests | Reject every value outside the closed four-state set. Report each atom/value assertion separately. |
+| F-zero-identity | Four K18 fixtures separately zero the required root, generation, writer or pool I field, with valid digests | Reject every zero identity. Do not confuse an I field with an unknown tagged identity. |
 | F-reference-kind | K9 assignment reference names K6 instead of K7 | Reject the wrong exact type despite a valid referenced checksum. |
 | F-prefix-kind | K18 names a PFX as complete K9 | Reject the complete-record join. Retain the prefix separately. |
 | F-reference-root | K9 references another synthetic root's valid K7 | Reject the cross-root join. |
@@ -320,6 +365,8 @@ No live backing replacement, lock deletion, volume detach or new writer domain c
 | G-scan-gap | Caller scan, valid later K6 after an empty permitted slot | Scan the full bounded range. Never stop at the first empty slot. |
 | G-torn-odd | Caller scan, odd slot contains `P` fence bytes | Refuse all new ordinals. |
 | G-torn-even | Caller scan, even slot contains `P` K7 bytes with valid prior fence | Burn uncertainty. Preserve unknown assignment/charge facts. |
+| G-torn-odd-header | Caller scan, odd slot contains exactly the first 376 bytes of valid K6, then zero slot padding | Refuse new ordinals. Header identity, links and digest bytes cannot establish the absent payload and end marker. |
+| G-torn-even-header | Caller scan, even slot contains exactly the first 376 bytes of valid K7, with valid prior fence | Burn uncertainty. Use slot parity only to exclude a fence, never the torn header as evidence of identity, links or charge. |
 | G-conflict | Caller scan, two complete conflicting fence ranges | Refuse frontier and collection. |
 | G-predecessor | Caller scan, complete K6 with wrong prior-fence reference | Refuse frontier. |
 | G-generation | Caller scan, complete foreign-generation frame | Reject foreign evidence and refuse recovery. |
@@ -340,15 +387,27 @@ No live backing replacement, lock deletion, volume detach or new writer domain c
 | G-normal-final | Caller, normal transfer | Burn owner and entire successor suffixes. Require K25, K20, K27, K20, K28. No successor K5 or fence. |
 | G-recovery-final | Caller, transfer after collection | Burn successor suffix. Require K27, K20, K28 with no second K25. |
 | G-caller-loss | End original caller after successor K5's carrier | No new generation, adopted caller or repeated collection. Preserve unavailable final tail. |
-| G-final-result | Caller, K28 complete bytes but failed publication result | Caller must return unavailable. Readback cannot certify its later return. No second K28. |
+| G-final-result | Caller, K28 complete bytes with a reported flush failure under the approved observation extension | Caller must return unavailable. Readback cannot certify its later return. No second K28. Retain actual call results separately. |
 | G-attachments | Owner, parity skip then failure before a selected frame | Count every skipped/failed slot's full attachment set. Never lend those objects to a later row. |
 | G-history-tail | Owner, last permitted history transition | Real tail calculation refuses consuming reserved tail capacity. Stop/failure history remains available where storage works. |
 | G-lane-borrow | Owner, capacity query would require successor/final slots | Refuse transition. No borrowing across writer lanes. |
 | G-class-borrow | Owner, ordinary capacity insufficient while protected classes fit | Refuse before charge. Collection/terminal capacity cannot fund ordinary output. |
 | G-recheck | Owner, admitted request waits while copied capacity becomes insufficient | Actual commitment recheck refuses before assignment and directory creation. |
 | G-no-refund | Owner, assigned operation fails before backend creation | Full charge stays consumed. Later capacity does not refund it. |
-| G-protected-tail | Caller, collection prefix retained then final K27 write fails | Preserve both facts separately. Missing final evidence remains unavailable. |
+| G-protected-tail | Caller, second collection item retains a failed raw prefix, then final K27 write fails before bytes | Preserve both failures separately. This differs from W-owner-exit's one clean collection item. Final evidence remains unavailable. |
 | G-summary-failure | Owner, K29 itself fails after `P` bytes | Zero recursive K29/K20. Only independently necessary reserved failure actions may follow once. |
+
+The header length is `16 + 64 + 16 + 32 + 144 + 64 + 8 + 32 = 376` bytes.
+The schema's 384-byte framing also includes the eight-byte end marker after the payload.
+The scan must check the whole frame before trusting any header field.
+An indistinguishable damaged slot that could contain a fence refuses recovery. A known even slot supplies no valid K7 evidence from its torn bytes.
+
+`S6-successor-create` extends protected-publication coverage without replacing either original S6 case.
+The original caller first completes failed-owner entry and selects the first proven unattempted collection item.
+Its collection-only directory-create result then fails before creation, through the same approved site as the owner case.
+
+Keep the fresh ordinal, full collection charge and burned predecessor range. Attempt no K9, backend creation or directory recreation for that item.
+Later independent items require their own proven unattempted identities. No scenario input resumes.
 
 ## Lifecycle and scheduling controls
 
@@ -357,16 +416,26 @@ They share the common oracle, real startup and independently counted CLI invocat
 The worker uses the existing controlled sleep executable. Internal schedules use only approved copied-module barriers and clocks.
 All required writes retain the applicable catalogue kinds and carriers.
 
-Cases `L-overlap-<holder>-<order>` use holders `OCR`, `exec`, `transfer` and orders `scenario-first`, `tick-first`.
-The owner admits one request from each producer, in that observed order.
+Cases `L-overlap-<holder>-scenario-first` use scenario holders `OCR`, `exec` and `transfer`.
+Cases `L-tick-first-<request>` use waiting scenario requests `OCR`, `exec` and `transfer`, with the capture holding ownership first.
+Each request uses its family's distinct CLI arguments and result predicate, with one dispatch after the tick completes.
+The former tick-first overlap names alias these precise IDs.
+
+The owner admits one request from each producer, in the order named by the case.
 Require one queued request, one dispatch per admitted request and no second worker sleep before the tick's complete disposition.
 The declared CLI fixture holds its real ownership interval. No screen state changes priority.
 
 Cases `L-capture-<phase>-<result>` use phases `CLI`, `validation`, `publication` and results `clean`, `failed`.
 A scenario request arrives while a committed capture occupies that phase.
+Here the waiting scenario request is a finite synthetic pointer command, distinct from the three family requests above.
 Require zero scenario dispatch until capture qualification, acknowledgement, terminal publication and completion send finish.
 The failed variants use CLI exit 7, invalid PNG bytes or failed K18 publication respectively.
 Each failure closes eligibility instead of releasing ownership for input.
+
+`L-overlap-validation-scenario-first` makes a tick due after the scenario CLI exits and while its real validator remains at the approved barrier.
+The tick stays pending through validation, result delivery, terminal publication and completion send.
+Require no tick dispatch or competing-writer refusal before that whole ownership interval ends.
+Releasing ownership at scenario CLI exit must fail this case. The inverse capture-validation schedule remains separately required.
 
 Cases `L-stop-01` through `L-stop-12` correspond, in order, to all twelve rows of the owner's
 [stop race table](../../specs/settings-keepalive-owner.md#cooperative-normal-stop).
@@ -513,10 +582,60 @@ The backend can reap only its direct child. An orphaned helper needs qualified i
 Unavailable exit evidence leaves resolved containment unavailable.
 
 The later executable manifest must freeze all expanded IDs, implemented subjects, copied source identities, exact fixture bytes and site invocation numbers.
+It binds aliases to their canonical case and counts only canonical invocations, including every assertion attached through an alias.
 It must instantiate sizes, slot/object counts, tail tables, deadlines, process overlap, raw queue bounds and separately protected metadata.
 It must include setup, failed carriers, full attachment reservations, collection items, final caller records and all retained partials.
 An executable split adds explicit invocation counts and costs before execution.
 No design case borrows an existing native or VM cap.
+
+## Canonical cases and aliases
+
+Each row below maps a former product label to the case that owns its complete schedule and assertions.
+Run that canonical case once. Retain the alias mapping in its outcome, including a failure of any inherited assertion.
+The explicit mapping, rather than a count of names, governs deduplication.
+
+| Alias | Canonical case |
+|---|---|
+| W-fence-choose | S3-before-fence |
+| W-fence-prefix | S3-partial-fence |
+| W-fence-observed | S3-fence-before-assignment |
+| W-binding-empty | S3-charge-before-binding |
+| W-binding-prefix | S3-partial-binding |
+| W-binding-observed | S3-binding-before-directory |
+| W-commitment-choose | S3-directory-before-commitment |
+| W-carrier-observed | S3-commitment-before-execution |
+| W-terminal-choose | S4-result-before-disposition |
+| W-reap-choose | S4-ack-before-reap |
+| W-normal-final-choose | S4-handoff-before-final |
+| W-terminal-fail-prefix | S6-terminal-prefix |
+| G-holder-resolved | S5-inherited-holder |
+| CF-commitment | W-carrier-fail-zero |
+| FB-K7-retained | W-binding-fail-prefix |
+| FB-K9-retained | W-commitment-fail-prefix |
+| FB-K7-writer-lost | S3-partial-binding |
+| FB-K9-writer-lost | W-commitment-prefix |
+| A-submission-choose | W-received-choose |
+| A-submission-empty | W-received-empty |
+| A-recovery-choose | W-recover-choose |
+| A-recovery-empty | W-recover-empty |
+| A-final-choose | W-final-choose |
+| A-final-empty | W-final-empty |
+| G-entry-failure | CF-successor-open |
+| G-summary-failure | W-write-failure-fail-prefix |
+| A-bootstrap-choose | A-bootstrap-before-write |
+| A-bootstrap-empty | A-bootstrap-before-write |
+| L-overlap-OCR-tick-first | L-tick-first-OCR |
+| L-overlap-exec-tick-first | L-tick-first-exec |
+| L-overlap-transfer-tick-first | L-tick-first-transfer |
+
+For the aliased binding/commitment prefix-loss cases, end the writer before choosing a predecessor-fallback slot.
+The live fail-prefix variants retain the predecessor's fallback observation before stopping dependent work.
+These cases keep the distinct K9 mandatory-carrier duty as well.
+For W-send-observed, the K19 send row is complete. S4-send-before-echo instead ends before that row's slot choice.
+
+W-owner-exit uses one clean collection item before the K27 failure. G-protected-tail retains a separate failed collection prefix.
+The tick-first family cases check distinct waiting commands. L-capture-CLI-clean uses the synthetic pointer request.
+No original S obligation, lifecycle schedule or scheduling duty is removed by these identities.
 
 ## Accounting, alternatives and handoff
 
@@ -526,30 +645,35 @@ The complete workload must still reconcile useful limits and every mandatory car
 
 | Design set | Expansion | Cases |
 |---|---:|---:|
-| Original S2–S6 | 2 + 8 + 4 + 2 + 2 | 18 |
-| W publication cuts | 47 targets × 7 cuts | 329 |
-| C publication observations | 12 targets × 5 outcomes | 60 |
-| CF failed mandatory carriers | 12 targets | 12 |
+| Original S2–S6 and successor creation | Original 18 + 1 successor case | 19 |
+| W publication cuts | 47 × 7, less 12 aliases | 317 |
+| C publication observations | 12 targets × 7 outcomes | 84 |
+| CF failed mandatory carriers | 12 targets, less 1 alias | 11 |
 | CE embedded carriers | 7 named cases | 7 |
-| FB failed embedded-carrier fallback | 2 carriers × 3 outcomes | 6 |
-| A original objects | 4 roles × 7 cuts | 28 |
+| FB failed embedded-carrier fallback | 2 × 3, less 4 aliases | 2 |
+| A original objects | 3 × 7 + 6 bootstrap cuts, less 6 aliases | 21 |
 | BE backend objects | 3 kinds × 2 cuts | 6 |
 | E valid codecs | 29 records + 12 objects | 41 |
-| M malformed codecs | 41 identities × 8 faults | 328 |
-| F semantic fixtures | 20 named cases | 20 |
-| G recovery and protection | 32 named cases | 32 |
-| L overlaps, capture, stop and fixed lifecycle | 6 + 6 + 12 + 26 | 50 |
+| M malformed codecs | 41 × 10 + 29 record end markers | 439 |
+| F semantic fixtures | 22 named cases | 22 |
+| G recovery and protection | 34 named labels, less 3 aliases | 31 |
+| L overlaps, capture, stop and fixed lifecycle | 6 + 6 + 12 + 26 + 1 validation overlap | 51 |
 | SIG signals | 9 phase cases + 3 direct + 3 group | 15 |
 | LOSS abrupt owner loss | 3 phase barriers | 3 |
 | HP held-pointer schedules | 3 signals × 2 phases | 6 |
 | D deadlines and clock schedules | 31 boundaries × 3 offsets + 6 schedules | 99 |
 | CT containment boundaries | 7 boundaries | 7 |
-| **Total** | Disjoint design IDs | **1067** |
+| **Total** | Canonical design cases, including conditional cases | **1181** |
+
+The receipt also retains every declared alias. Aliases contribute no additional execution or resource charge.
+The 72 negative C cases and G-final-result use the approved complete-write observation extension.
+Namespace cases additionally depend on an applicable required namespace operation. They are not silently dropped from the conditional inventory.
 
 The large count comes mainly from codec faults and publication cuts shared across record kinds.
 Those products can share harness code, but each expanded identity retains its own outcome.
 They are not native experiments or a claim about feasible elapsed time.
-The later manifest cannot mark a whole product passing from one representative invocation.
+The later manifest cannot mark distinct canonical members passing from one representative invocation.
+One canonical result can satisfy only its explicitly declared aliases and all their assertions.
 
 The [design-check receipt](ordering-keepalive-recovery-controls/verification.json)
 retains the expanded IDs, count checks, manifest checks and document-check output with before/after subject hashes.
