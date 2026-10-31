@@ -59,6 +59,19 @@ The [bounded operation contract](../../specs/settings-capture-resource-contract.
 owns the behavioral interface, phase capacities, refusal/retention rules and test
 controls. The following states its scope within this assessment.
 
+The request now binds the encoding proposal, OCR engine, target and declared
+environment to the producer's versioned unit schema. The producer launcher checks
+that environment before execution. The producer refuses selector mismatches before
+connection or child creation. Later launch evidence references the actual private
+environment without exposing values or the evidence-root path in public diagnostics.
+
+The backend owns raw stdout/stderr capture, including abnormal diagnostics which
+bypass producer-controlled emission. Its boundary covers queued bytes, collector
+memory, backing storage and retained prefixes before execution. An exact-limit
+complete stream can succeed. Excess output fails without clearing an earlier failure.
+K111 must propose this mechanism and its qualification plan. No capped pipe or pre-sized file
+alone establishes its retention and resource guarantees.
+
 The proposed external work covers the capture path shared by screenshots and
 OCR: handshake and non-image message lengths; initial and resized geometry;
 raw, ZRLE, Tight and JPEG input and expansion; simultaneous wire and selected
@@ -81,7 +94,8 @@ review before any adoption. No replacement transport or OCR engine is proposed.
 | Obligation | Evidence still needed; no default is inferred |
 |---|---|
 | Launcher floor | Select the exact launcher image/runtime and install point; establish its map size there. A shell's RSS or a producer's later peak is a different quantity. |
-| Native containment | Establish applicable fork/exec/map coverage and the actual child/service boundary on the intended host. Bounded observations qualify only the exercised routes. |
+| Native containment | Establish applicable fork/exec/map coverage and actual child/service membership for the declared environment and OCR engine. Distinguish in-process Vision from a daemon/interpreter. Bounded observations qualify only the exercised routes. |
+| Raw capture | Qualify backend limits for both descriptors before execution, including loader/native/panic output and inherited holders. Cover aggregate bytes, queued data, collector memory, storage, deadlines and retained prefixes. |
 | Useful capture peak | Account for both frames, crop, codec growth, capacity slack and native work. At 1920×1080 RGBA8, one frame is 8,294,400 bytes; two frames plus a full crop are already 24,883,200 bytes before encoder output and runtime. These are arithmetic examples, not selected limits or host measurements. |
 | Protected storage | Qualify ordinary, collection and terminal backing identities, bytes, object/metadata capacity and retained partials. Collection directories belong on collection storage; the global allocation fence and bindings belong on terminal storage. |
 | Recovery | Specify and qualify one recoverable allocation sequence under the original lock. Burn uncertain assignments; do not infer a reusable ordinal by independently scanning output roots. Unknown holders or an unprovable terminal tail keep collection unavailable. |
@@ -148,7 +162,7 @@ The connection remains alive through encoding and file writing. Thus two frame
 buffers coexist before counting crop, PNG output and wire-decoder work.
 
 The shared capture function is also used by OCR. This assessment does not trace
-all OCR/native-service, file-transfer or VM-start allocations. K106 must include
+all OCR/native-service, file-transfer or VM-start allocations. K111 and k112 must cover
 them where the complete owner profile relies on their resource coverage.
 
 ## Primary OS evidence and its limits
@@ -179,8 +193,9 @@ The launcher has a separate installable-limit floor. The setter acts on
 `current_map()`, and [map validation](https://github.com/apple-oss-distributions/xnu/blob/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/osfmk/vm/vm_map.c#L22084)
 rejects a limit below that map's current size. A pre-exec call in a forked Python
 backend child therefore cannot choose a smaller limit than its inherited map.
-This is a source-derived constraint, not a measured host footprint. K106 must
-establish the install point, calling map size and useful producer allowance separately.
+This is a source-derived constraint, not a measured host footprint. K111 owns the
+qualification proposal for the install point and calling map size. K112 retains
+the complete useful producer allowance and evidence requirements.
 
 <!-- tc: depart synonym-rotation because launch evidence names child execution while start queue names a VM command -->
 A minimal exec'd intermediary could change that floor but adds a process and
@@ -285,14 +300,12 @@ The resource-specific controls must exercise launcher refusal before invocation
 and per-unit and aggregate admission. They must cover ordinary exhaustion with
 protected capacity remaining, failed protected writes and unavailable holders.
 Observe real records, exact invocation counts, unchanged originals/partials and
-later-dispatch refusal. Each control must reject its corresponding mutant:
-
-<!-- tc: depart synonym-rotation because launch means external execution while startup means owner readiness -->
-- Charging after launch
-- Refunding failed work
-- Borrowing terminal capacity
-- Truncating earlier files
-- Accepting limit readback as capability proof.
+later-dispatch refusal. The dependency contract's
+[authoritative resource-mutant list](../../specs/settings-capture-resource-contract.md#approved-koine-test-controls)
+contains every required mutant, including charging after execution and truncating
+earlier files. It also covers selector mismatch and abnormal raw output.
+The Koine-only section keeps the shared approval and copy audit in one place.
+It imposes no Koine test-seam implementation duty on TestAnyware's owner.
 
 ### Resource control enabling points
 
@@ -303,8 +316,8 @@ they cannot prove a native resource bound.
 
 | Required control | Enabling point and real work retained | Approval or dependency |
 |---|---|---|
-| Launcher refuses before external invocation | A real rejected setup/readback at the backend launcher, or a limit-call-result substitution in its audited copy. Observe zero CLI invocations and the real commitment/launch/terminal records. | Named audited setup/readback controls approved in k107. Real mechanism controls still require a selected mechanism and applicable native scope. |
-| Per-unit/aggregate refusal and unstarted cancellation | Declared finite profile inputs, controlled CLI output and approved barriers around the real admission/commitment transition. Observe charges, cancellation/refusal records and invocation counts. | Existing seam applies to coordinator accounting. Mechanism enforcement still requires k106 evidence. No allocator substitution is approved. |
+| Launcher refuses before external invocation | A real rejected setup/readback at the producer launcher, or a limit-call-result substitution in its audited backend copy. Observe zero CLI invocations and real commitment/launch/terminal records. | Named audited setup/readback controls approved in k107. Real mechanism controls still require a selected mechanism and applicable native scope. |
+| Per-unit/aggregate refusal and unstarted cancellation | Declared finite profile inputs, controlled CLI output and approved barriers around the real admission/commitment transition. Observe charges, cancellation/refusal records and invocation counts. | Existing seam applies to coordinator accounting. Mechanism enforcement still requires the evidence identified by k106 and the later qualification proposal. No allocator substitution is approved. |
 | Ordinary exhaustion preserves collection and terminal capacity | Real capped/reserved backing objects with collection directory creation and global ordinal recovery. Alternatively, substitute capacity/limit-call results in the audited owner/backend copies. | Audited capacity results approved in k107; these prove coordinator accounting only. Real objects still need mechanism qualification and applicable experiment scope. |
 | Protected writes themselves fail | A real failed protected-object write, or a write-result substitution at the corresponding owner, backend or caller write in its audited copy. Retain real failure propagation and unavailable outcomes. | Named audited write-result controls approved in k107, with actual finite partial prefixes. Real failure controls still need an established mechanism and appropriate scope. |
 | Holder remains unavailable | Controlled CLI child retains its inherited descriptor. Approved barriers and clock values place loss/expiry around real ownership and containment. Observe unresolved containment and no bypass. | Existing controlled-process seam applies. It does not reproduce kernel uninterruptibility or guarantee eventual release. |
@@ -314,9 +327,9 @@ the defect. They add copy-audit cost and qualify failure handling only. Native
 enforcement evidence remains separate. Real controls still depend on mechanism
 availability and safe qualification scope.
 
-The tests must also reject charging at pending admission, charging cancelled pending
-captures, or inventing installed-limit facts in commitment records. Terminal
-record costs still apply to refused and cancelled submissions.
+The authoritative list also includes pending-admission charges, cancelled pending
+capture charges and invented setup facts. Terminal record costs still apply to
+refused and cancelled submissions.
 These are proposed tests of the future real coordinator. No native bound or
 coordinator behaviour was tested in this design session.
 
@@ -385,7 +398,7 @@ The following changes affect the admission contract and research questions only.
 | Finding | Classification and reason | Disposition |
 |---|---|---|
 | P2-1: launcher map floor | Real issue. The pinned setter checks the calling map before producer exec. Inheritance alone does not establish an installable useful limit. | Name the floor, install point, DATA check and RSS alias. K106 retains host correspondence and footprint qualification. |
-| P2-2: storage arrangement and record costs | Unclear contract. Collection directories and clean lifecycle records lacked explicit allowance ownership. | Require collection-backed directories and terminal-backed global bindings/history. K106 must establish physical separation and recovery. The proposed private backend already receives its directory without rescanning, so the review's current-scanner example is a constraint, not proof of impossibility. |
+| P2-2: storage arrangement and record costs | Unclear contract. Collection directories and clean lifecycle records lacked explicit allowance ownership. | Require collection-backed directories and terminal-backed global bindings/history. K106 supplied a candidate. K111 and k112 retain physical-separation and recovery qualification. The proposed private backend already receives its directory without rescanning, so the review's current-scanner example is a constraint, not proof of impossibility. |
 | P2-3: charge point | Unclear contract. Admission and commitment are distinct scheduling events. | Admission checks without an operation charge. The commitment transition charges before directory creation/publication. Resource refusal has its own submission event. Pending cancellation costs terminal records only. |
 | P2-4: resource control enabling points | Real issue. Approved barriers and a clock cannot directly produce limit-call or protected-write failure. | Each enabling point is named above. K107 subsequently obtained explicit approval for the named audited results; no native experiment is inferred. |
 | P3-1: concurrent frames | Real issue. The connection retains its wire frame while capture owns a copy or downsample. | Name both buffers and scale/physical selection in the source table and k106's allocation trace. |
@@ -412,3 +425,46 @@ No second reviewer ran. Whole-profile review remains required after k107.
 The [integration receipt](ordering-keepalive-admission-integration/verification.json)
 records this revision's documentation checks and source coverage. Historical
 receipts remain unchanged and do not certify the edited documents.
+
+## Producer contract review integration
+
+K114 grades k113's findings from commit `2b1aec6d` against k110's contract at
+`46b20291` and the complete k107/k102/k98/k96 charters. The two 2026-10-31
+approvals remain design authority and the named test-substitution authority only.
+
+| Finding | Classification and reason | Disposition |
+|---|---|---|
+| P2-1: environment-selected behaviour | Real issue. The pinned producer reads encoding, OCR and target selectors from its environment. | Bind the encoding proposal, OCR engine, target, child/interpreter identities and declared environment. Refuse mismatches. Record actual launch evidence privately. |
+| P2-2: raw stream ownership | Real issue. Producer guards cannot cover loader, panic or native diagnostic writes. | Assign all descriptor capture to the backend before execution. Preserve accepted bytes and unknown tails. K111 must propose the mechanism and qualification of its queued-byte, storage and holder boundaries. Actual execution still needs separate scope. |
+| P3-1: resize wording | Unclear contract. The prohibition on shrinking could forbid a valid smaller server frame. | Permit valid resizes. Forbid shrinking a rejected frame to fit. Recheck geometry and scale at each capture, including OCR polls. |
+| P3-2: worked-example citation | Real issue. The arithmetic example is in this report. | Link the producer contract to the report's example. The value remains illustrative. |
+| P3-3: approval and owner references | Real issue. The survey's earlier approval state appeared current. Some remaining duties named retired producers. | Add the survey's forward adoption links and date the earlier assessment. Assign qualification and completion duties to k111 and k112. |
+| P3-4: viewer ports | Real issue. The instruction and links used different ports. | Use the Taskfile default, 8765, throughout the README. |
+| P3-5: Koine controls in dependency contract | Visible trade-off. A shared location keeps approval, copy audit and controls authoritative, but mixes audiences. | State the Koine-only audience and separate dependency obligations. Keep the section and accept its document-coupling cost. |
+| P3-6: launcher names | Unclear contract. Three names described the same backend role. | Use the glossary term, producer launcher. |
+| P3-7: private root binding | Unclear contract. A binding did not require disclosure of the root, but its representation was unspecified. | Require an opaque owner-issued token and private mappings. Do not expose root paths through request identity or producer observations. |
+| P3-8: unit-schema ownership | Unclear contract. The version existed without an explicit schema owner or change rule. | The dependency owns and versions internal units. Koine pins values against that version. Reject mismatches and the outer-bounds-only alternative. |
+| P3-9: mutant lists | Real issue. Neither list contained every named mutant. | Make the contract list authoritative and link the report to it. Preserve admission, delayed-charge, retention, publication and copy-audit mutants. |
+
+Direct reads at TestAnyware `65bc05c9` verify encoding selection and resize in
+`connection.rs`, OCR selection and interpreter resolution in `engine.rs`, and
+app-socket selection in `commands/mod.rs`. Current Koine `run_locked` passes file
+descriptors and inherits the environment. `inspect_capture` runs after producer exit.
+These facts establish the gaps, not an installed dependency identity or native bound.
+
+Tier 2 graph coverage at `2026-10-31T05:25:09Z` reports no recorded gaps for
+the two Koine scripts. The relevant Mermaid files have partial parse ranges.
+Direct reads cover all three views and the changed documents and task files.
+Historical TestAnyware claims use exact source reads, not the current graph.
+This is bounded verification, not an exhaustive allocator or environment audit.
+
+One narrow reviewer challenged the repaired environment and raw-capture sections.
+It returned no material finding. Actual capture enforcement and queued-byte
+retention remain explicit qualification duties, not claims that a mechanism exists.
+The [verification receipt](ordering-keepalive-producer-integration/verification.json)
+records documentation and diagram checks, their exact subjects and limitations.
+
+These repairs earn no ADR before adoption. K111 retains the separately reviewed qualification
+proposal. K112 retains the whole useful profile and any explicit human requirements
+choice if the required mechanism cannot be established. All original duties,
+privacy and availability limits, runtime holds and open ancestors remain.

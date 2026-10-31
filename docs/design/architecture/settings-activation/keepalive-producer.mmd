@@ -6,8 +6,12 @@ sequenceDiagram
     Note over O,A: Proposed operation after a complete qualified profile exists
     O->>O: Start here: recheck, charge and bind
     O->>B: One committed operation
-    B->>P: Immutable bounded request
-    P->>P: Validate before connection
+    B->>B: Producer launcher checks declared environment
+    B->>B: Bind bounded stdout and stderr before execution
+    Note over B,P: Setup refusal preserves commitment and charge
+    B->>P: Request with opaque binding, unit version and selectors
+    P->>P: Validate encoding and OCR choices before connection
+    Note right of B: Backend bounds all raw output, including abnormal paths
     loop Existing finite capture / OCR work
         P->>P: Check length and capacity before allocation
         Note right of P: Native bounds require separate evidence
@@ -15,13 +19,14 @@ sequenceDiagram
     end
     alt Within every bound
         P->>A: Check before each write
-        P-->>B: Bounded observation and raw outcome
+        P-->>B: Bounded observation and separately captured raw streams
         B->>B: Validate complete artifact
         B-->>O: Delivery and validation facts
         O->>O: Complete existing publication join
-    else Resource or write failure
+    else Producer guard or backend raw-capture failure
         Note over P,A: Retain original and partial objects
         P-->>B: First failure or incomplete observation
         B-->>O: Actual facts and unknowns
+        Note over B,P: No exit-zero override, truncation or unbounded drain
         O->>O: No later scenario dispatch
     end

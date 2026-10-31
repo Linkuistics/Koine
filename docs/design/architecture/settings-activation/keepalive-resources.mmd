@@ -4,7 +4,7 @@ flowchart TB
   storage{"Collection and terminal capacity protected?"}
   admission["Admission checks capacity\nNo operation charge"]
   commit["Commitment transition rechecks and charges\nReserve directory and publish commitment"]
-  launcher{"Launcher installs limits\nActual setup and readback observed?"}
+  launcher{"Producer launcher checks environment\nLimits and bounded raw descriptors established?"}
   producer["Run bounded producer"]
   validate["Validate and publish\nRetain originals and partials"]
   next["Permit later dispatch"]

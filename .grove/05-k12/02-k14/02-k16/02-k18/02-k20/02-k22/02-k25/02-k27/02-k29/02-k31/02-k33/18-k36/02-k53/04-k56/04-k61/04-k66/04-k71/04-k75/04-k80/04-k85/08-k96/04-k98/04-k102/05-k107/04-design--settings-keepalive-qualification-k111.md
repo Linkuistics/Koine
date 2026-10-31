@@ -17,6 +17,11 @@ revision or selected launcher exists yet.
 - Choose and justify the proposed launcher image/runtime and exact install point,
   including bootstrap exposure, installable map floor, exec/map coverage and
   producer useful fit as different claims. Do not substitute RSS or readback.
+- Bind the declared environment, encoding proposal, OCR engine and child/interpreter
+  membership to the exact producer build and unit-schema version.
+  Specify qualification of backend stdout/stderr capture before producer execution, including abnormal output,
+  queued bytes, memory/storage bounds, real prefixes and inherited holders.
+  Distinguish exact-limit completion from excess output and retain unknown tails.
 - Name exact source/build/host subjects and how correspondence will be established.
   Separate owned buffer checks from native Vision/device/service work, existing
   VM-host/guest-agent processes and aggregate containment. Name any bound still

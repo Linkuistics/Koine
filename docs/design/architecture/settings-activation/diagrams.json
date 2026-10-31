@@ -30,8 +30,8 @@
   ],
   "discussion": {
     "title": "Bound producer work before allocation and write",
-    "status": "Design path and test substitutions approved. Contract ready for independent review.",
-    "summary": "Antony approved bounded-producer design and the named audited capacity, limit-call and write-result controls. The contract gives the producer one immutable request and assigned outputs; the owner retains commitment, accounting and final publication. Tests preserve real coordinator behavior and partial bytes, but prove failure handling only. Native and storage qualification, the numerical profile and whole-design review remain outstanding. No dependency implementation or experiment is authorised.",
+    "status": "Design path and test substitutions approved. Contract review integrated before qualification design.",
+    "summary": "The request binds the encoding proposal, OCR engine and declared environment. The backend owns bounded stdout/stderr capture, including abnormal output. The producer owns its allocation guards and structured emission. The owner retains commitment, accounting and final publication. Approved test substitutions qualify failure handling only. The capture mechanism, native/storage qualification and complete useful profile remain outstanding. No dependency implementation or experiment is authorised.",
     "diagramIds": [
       "keepalive-completion",
       "keepalive-producer",
@@ -41,15 +41,15 @@
     "updatedDiagrams": [
       {
         "id": "keepalive-completion",
-        "summary": "Records both approvals and places contract review before the separately reviewed qualification proposal. Missing evidence still prevents a complete profile."
+        "summary": "Records both approvals and places contract review and integration before the separately reviewed qualification proposal. Missing evidence keeps the profile unavailable."
       },
       {
         "id": "keepalive-producer",
-        "summary": "Shows one bounded request, checks before producer allocations and writes, retained partials and the owner's unchanged publication authority."
+        "summary": "Separates producer launcher checks, bounded raw descriptors and producer guards. Environment and selector mismatches refuse use. Partial evidence and owner publication duties remain."
       },
       {
         "id": "keepalive-resources",
-        "summary": "Updates the mechanism candidate to the approved bounded-producer design path; its runtime and storage evidence remain prerequisites."
+        "summary": "Names environment and raw-capture setup before producer execution. The proposed mechanism still needs qualification."
       }
     ]
   },
@@ -59,21 +59,21 @@
       "group": "keepalive",
       "title": "Complete the approved dependency design path",
       "source": "keepalive-completion.mmd",
-      "caption": "Design work sequence, not runtime authority. Both human decisions are settled. Contract review comes before the native/storage qualification proposal and its separate review and execution decision. Required evidence includes a suitable external dependency, launcher, native and storage coverage; missing evidence keeps the profile unavailable. The original numerical/workload/timing/schema obligations and whole-design review remain."
+      "caption": "Design work sequence, not runtime authority. Both human decisions are settled. Contract review and integration come before the native/storage qualification proposal and its separate review and execution decision. Required evidence includes a suitable external dependency, launcher, native and storage coverage; missing evidence keeps the profile unavailable. The original numerical/workload/timing/schema obligations and whole-design review remain."
     },
     {
       "id": "keepalive-producer",
       "group": "keepalive",
       "title": "Bound producer work before allocation and write",
       "source": "keepalive-producer.mmd",
-      "caption": "Proposed dependency interface after complete profile qualification. Read from the first owner transition. Each producer allocation and write has an earlier bound; overlapping capacities and native contributions remain distinct. Original/partial outputs survive failure. Delivery, acknowledgement and terminal completion still use the full owner protocol, abbreviated here as a join. This is a design contract, not an implemented API or an enforcement result."
+      "caption": "Proposed dependency interface after complete profile qualification. Read from the first owner transition. The producer launcher checks the declared environment and binds bounded raw descriptors before execution. The request pins encoding and OCR choices. Producer guards cover allocations and structured emission. Backend capture covers abnormal raw output and inherited holders. Original and partial outputs survive failure. The exact capture mechanism remains k111 qualification work. Delivery and terminal completion use the full owner protocol, abbreviated here. No implemented API or enforcement result follows."
     },
     {
       "id": "keepalive-resources",
       "group": "keepalive",
       "title": "Establish resources before producer execution",
       "source": "keepalive-resources.mmd",
-      "caption": "Proposed resource admission under one writer authority. Admission checks without an operation charge. The commitment transition charges before directory reservation and publication. Launcher enforcement follows commitment and precedes external execution. Setup refusal retains the committed attempt and charge. The approved design path is a bounded producer with separately qualified runtime and storage; none is implemented or qualified here. Collection-backed directories and terminal-backed ordinal records remain requirements. The view omits stop cancellation and detailed lifecycle joins. The complete numerical profile remains unavailable."
+      "caption": "Proposed resource admission under one writer authority. Admission checks without an operation charge. The commitment transition charges before directory reservation and publication. Producer launcher enforcement follows commitment and precedes external execution, including environment checks and bounded raw descriptors. Setup refusal retains the committed attempt and charge. The approved design path is a bounded producer with separately qualified runtime and storage; none is implemented or qualified here. Collection-backed directories and terminal-backed ordinal records remain requirements. The view omits stop cancellation and detailed lifecycle joins. The complete numerical profile remains unavailable."
     },
     {
       "id": "keepalive-scheduling",

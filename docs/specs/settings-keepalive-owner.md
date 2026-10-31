@@ -684,7 +684,7 @@ sleep starts. Worker readiness does not start its cadence. The clean start resul
 enables the first sleep at the existing post-start point, before environment reads
 and uploads. A failed start keeps ticks suppressed and enters containment.
 The 120-second CLI target does not qualify the existing 600-second slot wait
-or the subsequent boot work. K102 must reconcile that mismatch before startup.
+or the subsequent boot work. K112 must reconcile that mismatch before startup.
 
 A failed poll, sleep or signal arrives as a priority control, not a queued
 scenario operation. The owner immediately closes eligibility and records the
@@ -886,6 +886,14 @@ runtime and host assumptions, complete child/service set, storage identities,
 and evidence establishing the mechanism. Unknown or inapplicable evidence refuses
 startup. An unknown operation or resource cost refuses its commitment.
 
+The [bounded request](settings-capture-resource-contract.md#responsibility-and-interface)
+pins the dependency's versioned unit schema, encoding proposal, OCR engine and
+declared launch environment. In-process Vision and a daemon with an interpreter
+have different process membership. The profile must cover the selected membership.
+Opaque operation and output identities bind private root mappings without exposing
+the root path to producer diagnostics. Launch evidence records the actual environment
+identity and selector comparison after commitment, never as an earlier setup fact.
+
 The backend's producer launcher must establish its applicable limits before
 executing the external image, under the owner's commitment.
 A failed limit call, failed readback, unbound executable or
@@ -906,6 +914,15 @@ Per-process limits do not establish an aggregate process-tree limit. A separate
 service does not inherit a client's limits merely because the client calls it.
 The profile must account for every required producer and service, or retain that
 boundary as unavailable. No same-user security confinement is claimed.
+
+The backend owns [bounded raw descriptor capture](settings-capture-resource-contract.md#raw-descriptor-capture-belongs-to-the-backend)
+before producer execution, including abnormal diagnostics and inherited child output.
+Producer-controlled structured emission has a separate bound. Capture must cover
+both streams, queued bytes, collector memory, backing storage and retained prefixes.
+An excess write or capture failure remains failed even if the producer exits zero.
+K111 must propose the mechanism and qualification of failure and holder-loss paths.
+Actual qualification still needs its separately agreed execution scope.
+K112 must include its full cost and unavailable outcomes in the complete profile.
 
 ### Retention and protected capacity
 
@@ -966,8 +983,8 @@ a separate resource admission event with facts from different times.
 |---|---|
 | Submission event | Profile and cost identity, check time, phase, available capacity and check outcome. Refusal includes the exact reason. Admission carries no operation charge. |
 | Dispatch commitment | Declared limits and install points, operation allowance, irrevocable charge, assigned ordinal/directory, reserved backing identities and remaining capacity by class. No installed-limit fact exists yet. |
-| Launch observation | Separate observations for backend creation and launcher setup. Setup names requested and installed limits, actual call/readback results, process identity and time. Refusal, CLI execution and unknown execution remain distinct. |
-| Terminal operation disposition | Resource settlement: actual retained extents, exact limit/write failures, references to setup and backend evidence, and unknown tails. Settlement never refunds the charge. |
+| Launch observation | Separate observations for backend creation and producer launcher setup. Setup records requested/installed limits, actual call/readback results, process identity and time. It also records environment identity, selector comparison and raw-capture bindings. Refusal, execution and unknown execution remain distinct. |
+| Terminal operation disposition | Resource settlement records retained extents, exact limit/write failures, setup/backend evidence and unknown tails. It distinguishes producer structured-emission failure from backend stdout/stderr capture failure. Settlement never refunds the charge. |
 
 The owner retains launcher evidence after backend creation in a later launch
 observation. It never rewrites commitment to add that evidence. Missing readback

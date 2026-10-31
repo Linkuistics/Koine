@@ -124,10 +124,13 @@ publication. Unstarted pending cancellation has no operation charge.
 
 **Producer launcher**: The backend execution point that installs applicable
 limits under the owner's commitment before executing the external producer.
+It binds the declared environment and bounded raw descriptors before execution.
 Its own map size can constrain which address-space limit it can install.
 
 **Bounded operation request**: The immutable, versioned dependency request that
-binds a committed operation to its resource profile, command and assigned outputs.
+binds an opaque operation token to its resource profile, command and assigned outputs.
+It pins the dependency's unit-schema version, encoding proposal, OCR engine and
+declared environment. The token resolves privately to the root, generation and operation.
 The producer checks it before connection or payload processing. Acceptance of
 the request does not establish enforcement.
 

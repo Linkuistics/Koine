@@ -5,7 +5,9 @@ Antony approved its design path and the named audited capacity, limit-call and
 write-result substitutions. Existing phase barriers and clock replacement remain
 approved. The contract gives the producer one immutable request and assigned
 outputs; the owner retains commitment, accounting and final publication.
-Independent contract review precedes the separately reviewed native/storage
+The integrated review binds the environment, encoding proposal and OCR engine.
+The backend owns raw descriptor capture, including abnormal output.
+Contract review and integration precede the separately reviewed native/storage
 qualification proposal. The complete useful profile remains unavailable.
 No dependency implementation or native experiment is authorised.
 
@@ -54,8 +56,8 @@ submission and their named confirmation.
 Restart disconnect remains unavailable despite a later boot. A demonstrably unavailable required completion holds E01
 for a new decision. No failed read is repaired by retry.
 
-Run `mise exec -- task design:serve PORT=8804` from the repository root and open
-[the current discussion](http://127.0.0.1:8804/settings-activation/#discussion).
+Run `mise exec -- task design:serve` from the repository root and open
+[the current discussion](http://127.0.0.1:8765/settings-activation/#discussion).
 The existing task serves only the architecture presentation directory.
 
 <!-- tc: depart synonym-rotation because graph entry differs from application launch -->
@@ -75,9 +77,9 @@ loads these same sources while retaining its separate current discussion.
 
 Current changes:
 
-- [Keepalive → Complete the approved dependency design path](http://127.0.0.1:8810/settings-activation/#diagram-keepalive-completion) — Records both approvals and places independent contract review before the separately reviewed qualification proposal.
-- [Keepalive → Bound producer work before allocation and write](http://127.0.0.1:8810/settings-activation/#diagram-keepalive-producer) — Shows the one-request boundary, producer checks, retained partials and unchanged owner publication authority.
-- [Keepalive → Establish resources before producer execution](http://127.0.0.1:8810/settings-activation/#diagram-keepalive-resources) — Updates the mechanism candidate to the approved bounded-producer path, retaining runtime/storage evidence as prerequisites.
+- [Keepalive → Complete the approved dependency design path](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-completion) — Records both approvals and places contract review and integration before the separately reviewed qualification proposal.
+- [Keepalive → Bound producer work before allocation and write](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-producer) — Shows the declared environment, bounded raw descriptors, producer checks, retained partials and unchanged owner publication authority.
+- [Keepalive → Establish resources before producer execution](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-resources) — Updates the mechanism candidate to the approved bounded-producer path, retaining runtime/storage evidence as prerequisites.
 - [Bounded producer contract](../../../specs/settings-capture-resource-contract.md) — Specifies per-phase enforcement, overlapping capacity, refusal/retention and the exact approved test controls.
 - [Resource admission boundary](../../../specs/settings-keepalive-owner.md#resource-admission-boundary) — Incorporates the dependency contract and approved controls while retaining every original profile obligation.
 - [Completion decision](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#completion-decision) — Records agreement and keeps implementation, qualification and numerical-profile gaps explicit.
@@ -88,9 +90,9 @@ protected backing storage under one ordinal sequence. K106 supplies a candidate
 arrangement with metadata and recovery gaps. The later k107 approval covers the
 named resource-result substitutions; it supplies no native enforcement evidence.
 
-The [worker lifecycle](http://127.0.0.1:8804/settings-activation/#diagram-keepalive-lifecycle)
+The [worker lifecycle](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-lifecycle)
 now names its original 52-second capture deadline. The
-[evidence limit](http://127.0.0.1:8804/settings-activation/#diagram-evidence-limit) remains unchanged.
+[evidence limit](http://127.0.0.1:8765/settings-activation/#diagram-evidence-limit) remains unchanged.
 The [design evidence](../../../verification/settings-activation/ORDERING-DESIGN-EVIDENCE.md)
 links the source/API reads and [verification receipt](../../../verification/settings-activation/ordering-design-evidence/verification.json).
 The [raw documentation output](../../../verification/settings-activation/ordering-design-evidence/doc-links.txt)

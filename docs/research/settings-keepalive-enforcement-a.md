@@ -29,6 +29,27 @@ authority to change TestAnyware. Its actual owner must agree the dependency
 work. Isolation remains a comparison, not a substitute already shown to preserve
 the native capture and input contract.
 
+## Adoption after the survey
+
+On 2026-10-31 Antony approved the bounded-producer design path and the named
+audited capacity, limit-call/readback and write-result substitutions. The
+[completion decision](../verification/settings-activation/KEEPALIVE-RESOURCES.md#completion-decision)
+records that later agreement. The [producer contract](../specs/settings-capture-resource-contract.md)
+adopts the survey's allocation and retention requirements. Its
+[Koine control section](../specs/settings-capture-resource-contract.md#approved-koine-test-controls)
+owns the exact approved sites, copy audit and authoritative mutant list.
+
+Those substitutions qualify failure handling only. Allocator substitutions,
+production injection seams and native experiments remain outside the approval.
+The approval-state statements in the original control assessment below describe
+the earlier survey boundary, before this later agreement.
+
+K114 clarifies the request's environment, encoding and OCR-engine binding and the
+backend's raw descriptor-capture duty. K111 owns the separately reviewed launcher,
+native and storage qualification proposal. K112 owns the complete useful profile
+and original-duty reconciliation. No selected dependency, actual native bound or
+numerical budget follows from these design decisions.
+
 ## Evidence identities and limits
 
 | Evidence | Identity and what it establishes |
@@ -393,12 +414,15 @@ memory. [Linux 6.12 cgroup v2 documentation][cgroup],
 
 ## Controls and later capability scope
 
-The existing approval covers audited copies with phase barriers and a
+At survey completion, before k107's later approval, the approval covered audited
+copies with phase barriers and a
 replaceable continuous-clock reader, plus established controlled CLI/sleep
-boundaries. It does not approve new limit-call, allocator, capacity or write
+boundaries. It did not approve new limit-call, allocator, capacity or write
 substitutions. The
 [resource-control matrix](../verification/settings-activation/KEEPALIVE-RESOURCES.md#resource-control-enabling-points)
-and k107's explicit choice still apply.
+now reflects the later agreement. The following table retains the earlier
+approval assessment. Read the [adoption section](#adoption-after-the-survey) for
+the current approval state.
 
 | Question/control | Actual enabling point | Scope and what a result could establish |
 |---|---|---|
@@ -459,8 +483,10 @@ OCR path.
 
 All original k89/k81/k76/k67/k62/k57/k54 duties and the k102/k98/k96 charters
 remain open. Whole-design review, earned integration, externalized planning and
-implementation still precede consumption. The already approved clock/barrier
-seam stays approved; other substitutions and native work stay unapproved.
+implementation still precede consumption. The clock/barrier seam remains approved.
+The later agreement adds only the named resource-result substitutions in the
+[producer contract](../specs/settings-capture-resource-contract.md#approved-koine-test-controls).
+Other substitution classes and native work remain unapproved.
 
 ## Walk-away checks and search silence
 

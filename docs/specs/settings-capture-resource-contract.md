@@ -24,8 +24,8 @@ cannot choose another root, ordinal, storage class, capture scale or resource
 profile, and cannot borrow protected collection or terminal capacity.
 
 Use one immutable **bounded operation request**, validated before connection or
-payload processing. It is an internal versioned contract between the owner-side
-launch adapter and the selected dependency. Its transport and CLI spelling belong
+payload processing. It is an internal versioned contract between the **producer
+launcher** and the selected dependency. Its transport and CLI spelling belong
 to the dependency design; Koine must not depend on a collection of independent
 environment defaults. The request is bounded in representation before parsing.
 Its maximum representation, bootstrap memory and diagnostic cost are explicit
@@ -33,13 +33,14 @@ profile inputs, not exemptions from accounting.
 
 | Request group | Required values and meaning |
 |---|---|
-| Identity | Contract version, profile identity, root/generation/operation binding, selected producer build and supported resource contract. An unknown version, missing field or mismatched binding refuses the operation. |
-| Operation | The already selected command, arguments, capture coordinate space, scale behavior, region if any, and existing OCR polling policy. Resource fields do not alter any of these. |
+| Identity | Contract version, profile identity, opaque operation token, selected producer build and supported resource contract. An unknown version, missing field or mismatched binding refuses the operation. |
+| Operation | The already selected command, arguments, exact target, capture coordinate space, scale behaviour, region and existing OCR polling policy. Resource fields cannot change these values. |
+| Producer behaviour | Ordered encoding proposal, permitted encoding set, OCR engine identity and execution mode, declared child/interpreter identities, and launch-environment identity. These describe the selected behaviour, not permission to change it. |
 | Geometry | Independent maximum wire width/height/pixels, selected-frame dimensions/bytes and region dimensions/bytes. All products and rectangle endpoints use checked arithmetic before allocation or indexing. |
 | Wire work | Per-message and cumulative bytes, message/rectangle counts, handshake/error/clipboard/name limits and the original absolute deadline. Persistent decode state belongs to the same operation budget. |
 | Decode | Compressed input, inflated intermediate, reconstructed pixel and codec-workspace capacities for each accepted encoding. An aggregate bound cannot replace these units. |
 | Capture/encode | Wire frame, selected owned frame, crop, encoder rows/state, compressed intermediates, outer PNG and total simultaneously owned capacity. Record both length and capacity limits where they differ. |
-| Output | Assigned artifact objects, maximum bytes per object, aggregate bytes and object count, bounded stdout/stderr and diagnostic/result bytes. Ordinary and collection operations have distinct assignments. |
+| Output | Assigned artifact objects, per-object and aggregate byte limits, object count and producer-controlled diagnostic/result limits. Separate backend stdout/stderr limits cover all descriptor output. Ordinary and collection operations have distinct assignments. |
 | Time and containment | Original continuous-clock/boot identity and absolute deadline, applicable process/native boundary and the separate launcher evidence reference. Producer progress cannot extend the deadline. |
 
 Every limit is a finite integer in a declared unit. Missing, overflowed,
@@ -48,6 +49,39 @@ The final profile must explicitly represent a disallowed unit. Validate internal
 relationships, including frame products, phase peaks and output totals, before
 processing external data. A request is a declaration of the required bounds;
 successful parsing or a producer's acknowledgement is not enforcement evidence.
+
+The dependency declares each internal allocation unit in its resource-contract
+version. Koine pins that version and the profile's values for its declared units.
+A changed unit schema requires a new version. A version mismatch refuses use.
+The owner still declares outer workload and aggregate limits. It cannot infer
+codec units from an older build or replace them with one outer byte ceiling.
+
+The owner issues the opaque operation token for its root, generation and operation.
+Only the retained owner/backend binding resolves that token. The token and producer
+observation never contain the private evidence-root path. Assigned output objects
+use opaque identities or handles. Private path mappings remain in owner/backend evidence.
+
+The producer launcher constructs a bounded, explicitly declared environment.
+It does not inherit undeclared variables from its parent. The declaration fixes
+each permitted variable's value or absence, including behaviour and target selectors.
+The launcher checks it before execution. The producer checks effective selectors
+against the request before connection, child creation or payload processing.
+A mismatch or undeclared selector refuses the operation without fallback.
+
+At the inspected pin, relevant selectors include `TESTANYWARE_RFB_ENCODING`,
+`TESTANYWARE_OCR_FALLBACK`, `TESTANYWARE_OCR_PYTHON` and `TESTANYWARE_APP_SOCKET`.
+This list is source evidence, not an exhaustive allowlist for a future build.
+That build must declare its complete environment contract, including bootstrap selectors.
+The request binds the encoding proposal before connection. Later observations
+record the encodings actually used, which must belong to the permitted set.
+An unsupported path fails rather than changing the proposal or reconnecting.
+
+The engine declaration distinguishes in-process Vision from a daemon child.
+It identifies any interpreter, child and service contribution that the profile must cover.
+The launch observation records the actual environment identity and comparison outcome.
+Exact environment values stay in bounded private evidence, referenced by opaque identity.
+No public diagnostic dumps the environment or private paths. This binding does not
+authorise an encoding, OCR-engine or target change to make a profile fit.
 
 The producer returns a bounded **operation observation**: request/profile/build
 identity, setup outcome, first failure, stage/unit, requested quantity if known,
@@ -69,15 +103,15 @@ an unchecked library allocation cannot be charged retrospectively as enforcement
 | Boundary and owner | Required behavior before work | Required refusal behavior |
 |---|---|---|
 | Connection/handshake reader | Bound variable-length reasons, names and security negotiation, plus parser/read-ahead buffers. Apply byte/count/deadline allowances even on discarded or error messages. | Do not allocate the advertised excessive length, drain an unbounded remainder or echo arbitrary text into diagnostics. |
-| Framebuffer manager | Validate initial and resized geometry, checked byte products and source/destination rectangles before payload storage or frame allocation. Reserve the simultaneous old/new frame peak before resize. | Keep existing evidence; do not resize down or reinterpret a rejected update as a usable capture. |
+| Framebuffer manager | Validate initial and resized geometry, checked byte products and source/destination rectangles before payload storage or frame allocation. Reserve the simultaneous old/new frame peak before resize. | Honour valid server resizes, including smaller geometry. Do not shrink or downsample a rejected frame to fit a budget or call it usable. |
 | Raw and CopyRect decoder | Raw payload fits the rectangle, wire and output budgets before read/allocation; CopyRect validates both ranges before copying. | Reject the malformed or over-budget operation without a corrective input or another capture. |
 | ZRLE decoder | Bound compressed storage, persistent inflater state, each inflate chunk, total expansion, tile scratch and decoded output before growth. Validate tiles within those limits. | No final oversized chunk appended before checking. No reset/retry to make the same request fit. |
 | Tight basic/fill/palette/gradient decoder | Account for persistent streams, compressed input, indices/palette, reconstruction and output capacities at their overlapping phases. | A protocol field maximum or expected final length cannot authorise a larger intermediate allocation. |
 | Tight JPEG decoder | Validate header geometry before output allocation and constrain input, decoder workspace and decoded capacity before the library consumes them. | An output-only library setting cannot stand in for earlier workspace limits. If any required path lacks a bound, the dependency cannot qualify that encoding. |
-| Capture selection | Reserve selected-frame capacity while retaining the wire frame. Preserve logical/physical scale behavior and existing held-frame fallback. | No extra downsample, skipped due capture or fallback caused by a resource failure. |
+| Capture selection | Recheck current geometry, derived scale and selected-frame capacity at every capture, including each OCR poll after resize. Reserve capacity while retaining the wire frame. Preserve logical/physical selection and held-frame fallback. | No extra downsample, skipped due capture or fallback caused by a resource failure. |
 | Crop and PNG encoder | Validate the region against the acquired frame; bound crop, row/state, compressor output, outer PNG and fallback-compressor overlap before allocation/growth. | No unbounded vector behind a bounded file writer. No recompression or lower quality selected to evade a refusal. |
-| Native OCR adapter | Bound each owned PNG copy, native-input copy and result collection; identify native image/recognition/device/service work separately. Retain the selected OCR engine and polling semantics. | Unsupported native coverage keeps the complete profile unavailable. A measured successful OCR call is not a hard native bound. |
-| Output writer | Use only assigned objects and check the next write against per-object and aggregate budgets before issuing it. Include temporary objects and raw/error/result output. | Retain the real written prefix on short write or failure; never delete, truncate or overwrite an earlier artifact to recover capacity. |
+| Native OCR adapter | Bound owned PNG copies, native-input copies and result collection. Identify native image/recognition/device/service work separately. Use the request's OCR engine and unchanged polling semantics. | Unsupported native coverage keeps the complete profile unavailable. A measured successful OCR call is not a hard native bound. |
+| Output writer | Use assigned objects and check per-object and aggregate budgets before each write. Include temporary objects and producer-controlled structured diagnostics/results. The backend separately bounds all raw descriptor output. | Retain the real written prefix on short write or failure. Never delete, truncate or overwrite an earlier artifact to recover capacity. |
 
 All accepted encodings remain in scope. Removing JPEG, changing the negotiated
 encoding set, replacing OCR, or changing the existing scale/held-frame behavior
@@ -101,7 +135,9 @@ charged in each phase.
 Reusable in-process scratch capacity may be reused only after its lifetime ends.
 This does not refund the owner's irrevocable operation charge or retained storage.
 Unknown allocator slack, bootstrap cost or native peak remains unknown. The
-24,883,200-byte two-frame-plus-crop example in the survey is not a useful profile.
+24,883,200-byte two-frame-plus-crop example in the
+[resource report](../verification/settings-activation/KEEPALIVE-RESOURCES.md#evidence-needed-to-finish-the-profile)
+is not a useful profile.
 Numerical values must follow the complete workload and qualified implementation.
 
 ### Time, failures and retention
@@ -121,11 +157,35 @@ captures. A failed partial remains attached to its original attempt. No second
 output pathname or replacement artifact conceals it. Actual file-write, flush
 and observation failures remain distinct; a receipt does not invent durability.
 
-If a raw stream reaches its bound, the operation fails at the write boundary.
-The writer must not silently discard bytes and report success. The returned
-failure, retained prefix and unknown later bytes remain explicit. Separate
-protected capacity supports the backend and owner failure records where writable;
-it is never an extension of the producer's output allowance.
+### Raw descriptor capture belongs to the backend
+
+The backend owns enforcement for every byte on the producer's stdout and stderr.
+This includes loader errors, panics, native diagnostics and inherited child output.
+The producer bounds its own structured emission. That check cannot replace the
+backend's boundary for output which bypasses the structured writer.
+
+Before execution, the producer launcher must bind both descriptors to qualified
+bounded capture objects under the committed allowance. Limits cover each stream,
+their aggregate, collector memory, queued bytes, backing storage and object metadata.
+No direct unbounded file or alternate inherited descriptor may bypass that boundary.
+An exact-limit complete stream may succeed. A write beyond its allowance, a short
+write or a capture failure closes eligibility and retains the real written prefix.
+The backend records the stream, bound, observed failure and unknown tail separately
+from any producer observation. Producer exit zero cannot clear this failure.
+
+K111 must propose the capture mechanism and its qualification plan. Use requires
+actual qualification evidence under separately agreed execution scope.
+Candidates include a bounded collector or a non-growing backing object with enforced
+write limits. A pipe's finite capacity alone only creates backpressure.
+A pre-sized file alone does not prevent growth. Neither establishes this contract.
+The design must preserve all accepted bytes, including bytes queued before failure,
+without truncating evidence or consuming protected capacity. It must bound draining
+and holder resolution under the original deadline. Unknown ownership or lost bytes
+remain unavailable, never clean completion. No output is discarded to keep a run eligible.
+
+Separate protected capacity supports backend and owner failure records where writable.
+It never extends the producer's output allowance. Failure of that final write
+leaves the corresponding facts unavailable under the existing publication protocol.
 
 Resource failure is sticky and preserves the first failure. It does not trigger
 another capture, input release, reconnect, polling attempt, revised cap or
@@ -134,6 +194,11 @@ existing protocol and decides collection only after exact writer containment.
 The producer cannot certify owner eligibility or normal stop.
 
 ## Approved Koine test controls
+
+This section addresses Koine harness maintainers. It keeps the shared approval,
+copy audit and authoritative control list together, at the cost of mixing audiences.
+It does not require TestAnyware's owner to implement Koine test seams.
+The dependency owes the interface and real producer-guard evidence described below.
 
 Antony approved resource-result substitutions on 2026-10-31, in addition to
 audited phase barriers and the continuous-clock reader. The enabling point is
@@ -146,7 +211,7 @@ locking, charge calculation, publication sequence and failure propagation.
 |---|---|---|
 | Owner admission capacity query | Available, insufficient or unavailable identity/capacity | No capture charge or ordinal for refused/pending-cancelled work; terminal-record allowance remains required. |
 | Owner commitment capacity recheck | Changed capacity/identity after admitted work waits | Actual recheck refuses before assignment/charge/attempt creation; a later success does not reopen eligibility. |
-| Backend launcher setup call/readback | Setup failure or unavailable/mismatched observation | The existing commitment and charge remain; zero external invocations on setup refusal; no installed-limit fact is backfilled into commitment. |
+| Producer launcher setup call/readback in the backend | Setup failure or unavailable/mismatched observation | The existing commitment and charge remain. Setup refusal causes zero external invocations. Commitment receives no later installed-limit fact. |
 | Owner allocation fence/binding writes | Error before write or failure after a real retained prefix | No dependent attempt creation, commitment publication or child dispatch; uncertain consumed ordinals stay burned under the eventual recovery protocol. |
 | Owner lifecycle/disposition/handoff writes | Named write failure | Earlier evidence remains intact, missing terminal facts stay unavailable, and the submitter cannot infer permission to continue. |
 | Backend attempt directory/raw/artifact/receipt writes | Create/write error, or real prefix followed by failure | Original prefix/partial object and attempt identity remain; failure settles once, with no retry or later scenario dispatch. |
@@ -174,12 +239,27 @@ observe invocation counts, immutable event/ordinal relations, retained bytes,
 cancelled work, first failure and later-dispatch refusal. The final schema must
 map every named write boundary to a row; this contract does not invent that schema.
 
-Discriminating mutants include charging at admission; omitting the commitment
-recheck; refunding a failed operation; borrowing terminal capacity; dropping a
-partial; treating readback as capability proof; dispatching after a failed fence;
-accepting a missing final record; and accepting a test copy with an unrelated
-edit. Each must fail the corresponding control. These are obligations for future
-tests, not tests executed by this design session.
+The following is the authoritative resource-mutant list for Koine controls:
+
+- Charge at admission or charge a cancelled pending capture.
+- Charge after producer execution instead of during commitment.
+- Omit the commitment recheck.
+- Refund a failed operation or borrow terminal capacity.
+- Drop a partial or truncate an earlier file.
+- Treat limit readback as capability proof or invent setup facts in commitment.
+- Dispatch after a failed allocation fence.
+- Accept a missing final record.
+- Accept a test copy with an unrelated edit.
+- Accept an environment, encoding or OCR-engine mismatch.
+- Accept raw output beyond its bound or let producer success clear a capture failure.
+
+Each mutant must fail its corresponding control. These are future test obligations,
+not tests executed by this design session. The existing controlled CLI can emit
+finite stdout/stderr prefixes without a structured observation, then exit or retain
+a descriptor. These controls must distinguish exact-limit completion, excess output,
+simultaneous streams, write failure and unresolved inherited holders.
+Use the existing named backend write-result seam for partial-write controls.
+They qualify failure handling, not the actual raw-capture mechanism or native failures.
 
 The approved substitutions qualify **failure handling only**. Producer guard
 tests require the real dependency with finite protocol fixtures; they must
@@ -195,10 +275,14 @@ input or the completed PNG cannot see allocations inside the decoder. Isolation
 may add aggregate containment but does not supply individual geometry/codec
 checks or preserve native behavior by itself.
 
+An outer-bounds-only request would hide internal codec units from Koine.
+That alternative conflicts with the required per-unit profile and rejection evidence.
+The dependency therefore owns the versioned unit schema while Koine pins its values.
+
 The selected design gives allocation knowledge to the producer and retains
 cross-operation accounting in the owner. Callers supply one request rather than
 reconstructing buffer lifetimes or independently setting limits. The cost is
-dependency/codec work, a verified launch adapter, output-interface migration and
+dependency/codec work, a verified producer launcher, output-interface migration and
 copy auditing in Koine tests. Internal codec state still requires implementation
 evidence; a smaller interface alone does not make that state simpler.
 

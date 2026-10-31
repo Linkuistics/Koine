@@ -18,6 +18,12 @@ independent review/every earned integration; a reviewed proposal is not a result
   workload. Include both simultaneous frames and the actual launcher map floor.
   Name the enforcement owner and point before every allocation/write. No
   source/binary/native mechanism may be assumed implemented or qualified.
+- Include the qualified raw-capture mechanism and declared environment in the profile.
+  Preserve opaque root bindings, exact unit versions and selected encoding/OCR behaviour.
+  If qualification cannot preserve every required bound and byte, keep startup unavailable.
+  Present any requirements change as an explicit human choice with its costs.
+  Choices are additional dependency/containment work, a separately agreed requirement change,
+  or continued unavailability. No choice is made by this integration.
 - Complete the record schemas, terminal-backed global ordinal/fence/storage
   binding and collection-backed directories under one recoverable original writer
   sequence. Retain uncertain ordinals/partials. Account for all clean/failed
