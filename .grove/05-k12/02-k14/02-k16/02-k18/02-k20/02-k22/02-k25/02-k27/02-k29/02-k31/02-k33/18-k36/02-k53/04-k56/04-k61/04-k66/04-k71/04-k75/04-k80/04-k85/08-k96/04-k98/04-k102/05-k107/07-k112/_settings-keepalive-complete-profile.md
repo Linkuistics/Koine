@@ -155,3 +155,14 @@ closed causal slot, VM/candidate/freeze/acceptance, cap expansion or release.
   original completion charter in this brief. Complete only the worksheet and
   approved handoff child; schema and full reconciliation remain live. No
   ancestor closes, implementation leaf is cut or runtime authority changes.
+
+## Record schema handoff
+
+K118 supplies docs/specs/settings-keepalive-records.md: bounded record and private
+object formats, preassigned terminal writer ranges, fence/storage bindings and
+one original-caller collection successor. Its scoped review and every earned
+integration precede k119. This handoff supplies no numerical useful profile,
+qualified storage or implemented coordinator. K119 retains all original duties,
+including the expanded workload/case counts, process overlap, metadata and
+mechanism evidence, whole-design reconciliation and eventual whole-design review.
+No parent closes from the schema slice.

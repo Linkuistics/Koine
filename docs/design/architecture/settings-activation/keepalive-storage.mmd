@@ -1,30 +1,33 @@
+%%{init: {"flowchart": {"useMaxWidth": true}}}%%
 flowchart TD
-    start["Start here: future coordinator under original terminal lock"]:::start
-    fence["Publish finite allocation fence"]
-    bind["Recheck, assign, charge and bind"]
-    ordinary["Ordinary attempt directory"]
-    collection["Collection attempt directory"]
-    commit["Publish commitment before launch"]
-    rows["Retain clean, failed and partial records"]
-    loss["Owner lost"]
-    holders{"Holders resolved and same lock acquired?"}
-    frontier{"Backing identities and frontier established?"}
-    burn["Burn uncertain ordinals; collection-only generation"]
-    unavailable["Collection unavailable; preserve unknown tail"]
-    start -->|1. Terminal storage| fence
-    fence -->|2. Terminal binding| bind
-    bind -->|3a. Ordinary backing| ordinary
-    bind -->|3b. Protected collection backing| collection
-    ordinary -->|4. Single sequence| commit
-    collection -->|4. Single sequence| commit
-    commit -->|5. Actual observations| rows
-    fence -.->|Loss at any boundary| loss
+    start["Start here: original writer lock<br/>and complete bounded pool"]:::start
+    fence["Publish fence in odd terminal slot<br/>Observe required write and flush results"]
+    bind["Recheck, assign ordinal and charge<br/>Publish storage binding in even slot"]
+    directory["Create exact directory once<br/>Ordinary or protected collection backing"]
+    commit["Publish commitment before launch<br/>Retain all failed writes and charges"]
+    next{"Current fence has permitted unused member?"}
+    loss["Owner loss at any boundary"]
+    holders{"Holders resolved, same lock acquired,<br/>backing and layout identities valid?"}
+    frontier{"Unique fence frontier?<br/>No torn or conflicting fence"}
+    burn["Burn owner slots and uncertain ordinals<br/>Retain unknown charges; no refund"]
+    recover["Publish recovery and collection-only opening<br/>Only proven unattempted plan suffix"]
+    unavailable["Collection unavailable<br/>No replacement lock, ordinal or scenario"]
+    start -->|1| fence
+    fence -->|2| bind
+    bind -->|3| directory
+    directory -->|4| commit
+    commit -->|5. Full operation completion before next selection| next
+    next -->|Yes| bind
+    next -->|No: next fence permitted by protocol| fence
+    fence -.-> loss
     bind -.-> loss
+    directory -.-> loss
     commit -.-> loss
     loss --> holders
     holders -->|No| unavailable
     holders -->|Yes| frontier
     frontier -->|No| unavailable
     frontier -->|Yes| burn
-    burn -->|New fence; no scenario restart| fence
-    classDef start fill:#172b4d,stroke:#172b4d,color:#fff,font-weight:bold
+    burn --> recover
+    recover -->|New fence: one ordinal per collection item| fence
+    classDef start fill:#17324d,stroke:#17324d,color:#fff,font-weight:bold

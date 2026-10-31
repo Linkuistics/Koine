@@ -227,49 +227,45 @@ to make this worksheet appear useful.
 
 ### Record coverage and remaining schema
 
-Use the owner spec's immutable lifecycle rows. The following coverage mapping
-extends the proposed fence/binding sequence without selecting its missing binary
-encoding, record sizes or physical durability guarantees.
+The [record and recovery schema](../../specs/settings-keepalive-records.md)
+now defines the immutable record catalogue, primitive encodings, private-object
+references, one-use terminal lanes and global ordinal recovery. Its
+[accounting rules](../../specs/settings-keepalive-records.md#encoded-and-physical-accounting)
+include every clean, failed and partial row, refusal, unstarted cancellation,
+accounting observation and final caller record. The retained heading is a stable
+link from earlier work; the remaining work is numerical workload completion and
+qualification, not an unspecified record format.
 
-| Record group | Required joins and allowance | Controls after implementation |
-|---|---|---|
-| Root/profile and pool identity | Schema/unit versions, run, original lock, backing identities, slot inventory and initial generation. Terminal capacity includes setup and partial setup. | S2 clean/failure coverage; S5 backing mismatch. |
-| Allocation fence | Predecessor, inclusive ordinal range, backing set, publication/flush observations. Terminal capacity. A fence burns uncertainty; it is not an operation charge. | Every S3 fence boundary. |
-| Assignment and storage binding | Submission, assigned ordinal, immutable cost/profile, class, backing/directory token and predecessor fence. Terminal capacity. No launcher result exists yet. | S3 assignment/binding boundaries; S6 creation failure. |
-| Submission and commitment | Separate received, admitted, refused/cancelled and commitment rows. Refusal/cancellation before assignment has no ordinal or operation charge. Failure after assignment retains both, even before launch. Terminal records still cost capacity. | S2; admission/recheck/cancellation resource mutants. |
-| Backend/producer/collector observations | Exact child/holder identity, setup/environment, limits, original deadlines and phase reports. Owner-retained observations use terminal capacity; child request/raw/validation/result objects use their attempt class. | R1–R5; S2; setup refusal and phase/deadline controls. |
-| Delivery and terminal disposition | Backend result, reap, payload acknowledgement, settlement and first failure. Completion send and later echo remain distinct. Terminal capacity. | S4 result/disposition and completion/echo cases. |
-| Stop and recovery | Stop intent, worker acknowledgement/reap, holder resolution, failed/new generation, old frontier, burned range and collection-only authority. Terminal capacity. | S3–S5; every lifecycle stop race, signal/orphan and held-pointer case. |
-| Handoff and caller outcome | Owner response/channel/wait facts, missing joins, collection/stop/inventory outcomes and final caller record. Terminal capacity. | S4 handoff/final-write and S6 partial terminal record. |
+The immutable pool separates bootstrap, owner history, owner tail, one collection
+successor and caller final ranges. Odd slots are fence-only; even slots are
+non-fence records. A successor burns the failed writer's ranges, including empty
+slots. This avoids an uncounted recursive slot-allocation log. Original-frame
+attachments are preassigned and charged too. The schema gives exact encoded-size
+formulas and conservative row multiplicities; physical metadata remains a named
+unqualified cost. No complete row is free and no partial slot is reused.
 
-The complete schema must bound every field and referenced object. Use closed
-outcome/reason codes and bounded private references for commands, environment,
-paths and raw text. Unavailable is distinct from zero, empty and not applicable.
-No field may silently truncate a required original. The object retaining that
-original must have its own admitted capacity or the operation is unavailable.
-Common envelope identity, payload length, checksum and predecessor semantics
-must be explicit. A checksum is not evidence of persistence or execution.
+Ordinary fences have a workload-derived width. Collection fences bind one
+ordinal to one immutable collection-plan item, preventing recovery from repeating
+an uncertain collection command. A fence burns ordinal uncertainty without
+inventing an operation charge. Failed commitment publication retains its actual
+assignment and charge when known. An unavailable frontier or original holder
+keeps collection unavailable. Caller loss permits no additional recovery.
 
-The terminal calculation must enumerate each record type's maximum encoded
-bytes, multiplicity and metadata contribution across the complete path. Include
-all clean history, phase reports, failed/partial attempts to write records,
-submission refusals and pending cancellations. The remaining failure/stop/recovery/
-caller tail must remain separately available at every transition. Logging a
-failure must not recursively require unbounded further failure records.
-
-Precreated slots need a recoverable one-use assignment rule. That rule must
-account for its own bindings and torn/empty-slot ambiguity; another uncounted
-allocation log cannot solve it. The proposal's eight-ordinal fence and 4096-byte
-study record are fixture choices, not selected production schema values.
-If a partial fence prevents establishing the upper frontier, recovery refuses.
-It neither scans another root for a replacement ordinal nor fabricates a charge
-for a burned but unstarted capture. Full schema/recovery completion remains open.
+The [later control mapping](../../specs/settings-keepalive-records.md#later-controls-and-remaining-inputs)
+refines S2–S6 at the approved seams, including death before the first byte and
+real retained prefixes. It preserves the exact approved R3/R5 collector sites.
+These tests follow implementation; they supply no storage/native qualification
+in this design session. Eight-ordinal and 4096-byte study values remain fixture
+choices. K119 retains every numerical capacity, complete workload, mechanism and
+whole-design reconciliation duty.
 
 The future R/S control plan must count actual simultaneous processes. Supervisor,
 owner, worker, sleep child, backend, collector, intermediary/producer and one
 inherited helper can total eight before validators or utilities are considered.
 Determine which phases overlap; do not reuse the six-process mechanism envelope.
-The 17 R cases and 18 S2–S6 cases remain later tests of implemented subjects.
+The original 17 R cases and 18 S2–S6 cases remain later test groups.
+The schema adds explicit boundary subcases whose finite total must be expanded
+with actual implemented subjects; the old count is not coverage of that expansion.
 They do not block implementation by demanding results from nonexistent code.
 All mechanism-dependent rows still need their actual bounds first.
 

@@ -254,8 +254,10 @@ Controls cross admission, commitment, creation, launch, validation, publication,
 normal-stop races, signals, owner loss and both held-pointer cases from the owner
 spec. Inject failure before and after each relevant ownership transition and
 observe invocation counts, immutable event/ordinal relations, retained bytes,
-cancelled work, first failure and later-dispatch refusal. The final schema must
-map every named write boundary to a row. This contract does not invent that schema.
+cancelled work, first failure and later-dispatch refusal. The
+[record schema](settings-keepalive-records.md#later-controls-and-remaining-inputs)
+maps the named write boundaries to bounded rows and later coordinator controls.
+Its numerical capacities and native storage qualification remain unresolved.
 
 The following is the authoritative resource-mutant list for Koine controls:
 

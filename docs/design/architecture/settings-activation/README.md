@@ -1,9 +1,11 @@
 # Settings activation design discussion
 
-The current discussion is the [completion worksheet](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#completion-worksheet).
-It separates VM-start timing from post-start admission, derives tick-count
-obligations and maps protected record costs. Numerical values and the full
-schema still require the complete workload and qualified mechanisms.
+The current discussion is the [bounded record and recovery schema](../../../specs/settings-keepalive-records.md).
+It defines fixed encodings, original-object references, one-use terminal slots,
+ordinal fences and one collection-only successor under the original lock.
+Numerical capacities, metadata protection and process-loss visibility still
+require the complete workload and qualified mechanisms. This is a proposed
+schema for scoped review, not an implemented or qualified coordinator.
 
 Antony approved the dependency-design issue and audited collector-copy controls
 on 2026-11-01. [TestAnyware issue #13](https://github.com/Linkuistics/TestAnyware/issues/13)
@@ -82,15 +84,13 @@ loads these same sources while retaining its separate current discussion.
 
 Current changes:
 
-- [Keepalive → Complete accounting and obtain dependency evidence](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-completion) — Separates independent accounting, the filed dependency request, approved test seams and evidence still required for whole-design review.
-- [Workload and tick accounting](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#workload-and-tick-accounting) — Derives the count from bounded scenario work without adding tick waits twice; keeps start and collection separate.
-- [Record coverage and remaining schema](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#record-coverage-and-remaining-schema) — Maps protected record groups to future controls and names the remaining slot/recovery obligations.
-- [Collector control decision](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#collector-control-decision) — Records approval of the exact copied collector sites and their extra audit cost.
-- [Dependency handoff decision](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#dependency-handoff-decision) — Links the filed request, its pinned contract attachment and the unselected alternatives.
-- [Keepalive → Bound producer work before allocation and write](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-producer) — Updates the caption with approval of the collector sites and their separate audit; enforcement remains unqualified.
-- [Approved Koine test controls](../../../specs/settings-capture-resource-contract.md#approved-koine-test-controls) — Adds the exact R3/R5 collector sites and their audit to the authoritative control contract.
-- [Raw descriptor capture controls](../../../verification/settings-activation/KEEPALIVE-QUALIFICATION.md#backend-raw-descriptor-capture) — Records the selected collector sites while retaining queue bounds and implementation as prerequisites.
-- [Owner design boundary](../../../specs/settings-keepalive-owner.md#design-boundary) — Links the worksheet and filed request without claiming a completed profile.
+- [Keepalive → Assign terminal slots once and preserve the final tail](http://127.0.0.1:8814/settings-activation/#diagram-keepalive-records) — Adds the five writer ranges, typed fence slots and bounded caller-final boundary.
+- [Keepalive → Recover collection under the original lock and global fence](http://127.0.0.1:8814/settings-activation/#diagram-keepalive-storage) — Separates lost slot capacity from ordinal uncertainty and prevents repeated collection commands.
+- [Keepalive → Complete accounting and obtain dependency evidence](http://127.0.0.1:8814/settings-activation/#diagram-keepalive-completion) — Names the schema as a design input without claiming numerical useful fit.
+- [Record catalogue](../../../specs/settings-keepalive-records.md#record-catalogue) — Defines bounded fields, original objects and record multiplicities for clean and failed paths.
+- [One-use pool and bounded costs](../../../specs/settings-keepalive-records.md#one-use-pool-and-bounded-costs) — Counts skipped slots, partials, metadata and the protected remaining tail.
+- [Ordered writes and recovery](../../../specs/settings-keepalive-records.md#ordered-writes-and-recovery) — Defines original-lock recovery, uncertain charges and a single unattempted collection suffix.
+- [Later controls](../../../specs/settings-keepalive-records.md#later-controls-and-remaining-inputs) — Maps each schema boundary to the approved seams, with native qualification separate.
 
 The [resource review integration](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#review-integration)
 records each k108 disposition. Collection directories and terminal records require

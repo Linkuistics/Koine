@@ -354,53 +354,53 @@ invalidates the proposed isolation claim.
 
 ### Candidate fence and binding schema
 
-Use the **original lock object in terminal storage** and one global sequence.
-The logical root binds all three backing identities. Collection directories
-physically belong to collection storage.
+The [record and recovery specification](../../specs/settings-keepalive-records.md)
+now owns the bounded schema and ordered writes. Use the original lock object in
+terminal storage and one global ordinal sequence across the three bound storage
+identities. Collection directories belong to collection storage. Neither class
+root is an ordinal allocator.
 
-Command ordinals never come from
-scanning separate roots. Records are immutable framed objects, at most 4096
-bytes each in this fixture, with schema version, root/generation, record type,
-sequence, exact payload length and checksum. Checksums detect damage. They
-neither prove durable media nor authenticate hostile same-user writes.
+The earlier **eight-ordinal fence** and **4096-byte record** are fixture choices,
+not selected production values. S1 still uses fixed byte objects and establishes
+no coordinator behavior. A future coordinator fixture must instantiate the
+schema's complete counts, vector maxima, slot size and physical metadata costs
+within its separately declared envelope; it cannot assume either study number
+fits, resize the study or borrow the 13-case mechanism allowance.
 
-For the study, precreate a terminal record pool inside the object cap. Bind each
-slot once. Reserve a distinct slot for each attempted write, including damaged
-prefixes.
+The proposed pool preassigns bootstrap, owner-history, owner-tail, single
+collection-successor and caller-final ranges. Odd slots permit fences; even
+slots permit other records. Each attempted write consumes its full slot and
+preassigned original-object attachments, including a failure before any byte is
+written. Failed-writer ranges are burned, never cleared or reused. This layout
+accounts for its own assignment without another allocation log. Precreation,
+fixed extents, opened identities and metadata protection still need qualification.
 
-Unused capacity is not a clean event. Retain the immutable slot binding,
-used length and partial state. Never zero/rewrite a failed slot. Test whether
-precreation and allocation actually survive the chosen open/write flags. It does
-not reserve unspecified future directory metadata.
+A valid fence precedes ordinal assignment and irreversible charging. The
+terminal storage binding precedes attempt-directory creation; complete commitment
+and observed publication precede launch. Readback, flush and subsequent visibility
+are separate facts. A record cannot attest to its own later successful flush.
+The [walkthroughs](../../specs/settings-keepalive-records.md#checkable-walkthroughs)
+cover clean work, failed commitment publication and owner-death collection.
 
-The proposed operation sequence is:
+After owner loss the original caller resolves actual holders and acquires the
+same original lock. It scans the entire bounded predecessor ranges, including
+gaps, and establishes a unique fence frontier. Unknown assignments retain
+unknown charge facts and unavailable prior allowance; burned ordinals are not
+invented captures. An invalid/torn fence, damaged allocation chain, lost binding
+identity or unresolved holder prevents new ordinals and collection. No lock
+replacement, other root or scenario restart is allowed.
 
-1. Before consuming a range member, publish a terminal allocation fence.
-   It names a finite eight-ordinal range, its predecessor and backing identities.
-   Observe the declared flush outcome before dependent work. This fence burns
-   recovery uncertainty. It is neither dispatch commitment nor an operation charge.
-2. Recheck admission in the serialised commitment transition, assign one ordinal
-   and irrevocably charge its full contribution. Publish its terminal binding:
-   submission, class, profile/cost, ordinal, backing UUID and assigned directory
-   token. Only then create the attempt directory in the assigned class and
-   publish commitment. Failed steps retain the charge and ordinal.
-3. Launch only from that commitment. Append actual setup/execution/settlement
-   observations separately. Neither readback nor a later result rewrites intent.
-4. After owner loss, a collection-only generation resolves holders and acquires the same lock.
-   It checks backing identities and reads the bounded terminal prefix.
-   Burn all unused or uncertain members of the last valid fence. Do not invent
-   execution or charge a capture merely because its ordinal is burned.
-5. A partial fence with no safely established upper frontier, damaged predecessor,
-   lost binding identity or unresolved lock refuses recovery. Do not scan output
-   roots, truncate a record, reuse an ordinal or resume scenario commands.
-   A later valid fence/disposition is a new record, never a rewrite in place.
+Ordinary fence width remains workload-derived. A collection fence binds one
+ordinal and one immutable collection-plan item. Recovery never repeats a
+possibly attempted collection item; it can use only a proven unattempted suffix.
+It uses the separate successor lane, retaining all prior bytes. Caller or
+successor loss permits no further recovery generation.
 
-This sequence is a future coordinator implementation obligation.
-For process loss on the still-mounted healthy system, test it at every boundary below after implementation. Requested flush, successful flush, namespace
-publication and subsequent visibility are separate fields. No successful
-process-loss control establishes power-loss atomicity, cross-volume transactions,
-device availability or universal APFS metadata reservation. Those claims remain
-unsupported and must not appear in the final profile by implication.
+These are future coordinator obligations under the explicit
+[mechanism assumptions](../../specs/settings-keepalive-records.md#assumptions-and-guarantees).
+Still-mounted process-loss visibility must be qualified. No result establishes
+power-loss atomicity, cross-volume transactions, device availability or universal
+APFS metadata reservation. Full numerical capacities and useful fit remain open.
 
 ### Storage and process-loss controls
 
@@ -409,13 +409,16 @@ Its collection and terminal records are fixed byte objects with declared names a
 
 They establish storage observations only, never lifecycle, recovery or final-publication correctness.
 S2 through S6 are future coordinator implementation controls under the authoritative owner and producer control sections.
-Their 18 cases are excluded from the mechanism-study envelope. All require separately planned implemented subjects and complete accounting.
+Their original 18 cases are excluded from the mechanism-study envelope.
+The schema's [boundary mapping](../../specs/settings-keepalive-records.md#later-controls-and-remaining-inputs)
+adds explicit subcases; the later finite implementation manifest must expand
+and recount them, including slot/attachment writes and successor entry. All require separately planned implemented subjects and complete accounting.
 
 | Class / row | Finite cases and required observation |
 |---|---|
 | S1: ordinary exhaustion | One quota-boundary sequence above, followed by one collection directory/raw/receipt set and terminal failure/final rows. Retain actual block/object use before/after, identities and prefixes. Ordinary refusal must not consume either protected class. Failure of protected writes is a separate result. |
-| S2: record coverage | One complete clean synthetic lifecycle and one failed lifecycle. Enumerate every owner row against the [lifecycle table](../../specs/settings-keepalive-owner.md#lifecycle-evidence-and-final-observation). Include received/admitted/resource-refused/cancelled submissions, phase reports, launch and resource observations, acknowledgements, completion sends/echoes, stop/reap/handoff, caller owner-exit/final-outcome, plus fence/binding/recovery rows. Backend request/raw/validation/result rows belong to their ordinary or collection attempt. The manifest supplies exact row counts and lengths within the pool. No clean row is free. |
-| S3: owner loss | Eight separately named controls: before fence. Partial fence. Complete fence before assignment. Charged assignment before binding. Partial binding. Complete binding before directory. Directory before commitment. Commitment before launch. Use approved barriers/result substitutions and real retained prefixes. A directly owned process ends once per case. Check burned uncertainty, no duplicate ordinal/charge, no scenario restart and truthful unstarted/unknown launch. |
+| S2: record coverage | One complete clean synthetic lifecycle and one failed lifecycle. Enumerate every owner row against the [lifecycle table](../../specs/settings-keepalive-owner.md#lifecycle-evidence-and-final-observation). Include received/admitted/resource-refused/cancelled submissions, phase reports, launch and resource observations, acknowledgements, completion sends/echoes, stop/reap/handoff, caller owner-exit/final-outcome, plus fence/binding/recovery rows. Backend request/raw/validation/result rows belong to their ordinary or collection attempt. The manifest supplies exact row counts and lengths within the pool, including parity-slot loss, preassigned original objects, setup and bounded write-failure summaries. No clean row is free. |
+| S3: owner loss | Eight separately named controls: before fence. Partial fence. Complete fence before assignment. Charged assignment before binding. Partial binding. Complete binding before directory. Directory before commitment. Commitment before launch. Use approved barriers/result substitutions and real retained prefixes. A directly owned process ends once per case. Check burned uncertainty, no duplicate ordinal/charge, no scenario restart and truthful unstarted/unknown launch. Expand the schema's before-first-byte, flush, successor-entry and partially completed collection boundaries as separately named finite subcases. |
 | S4: lifecycle/final loss | Four controls: backend result before owner disposition. Completion sent before echo. Worker acknowledgement before reap publication. Owner handoff before caller final write. Retain all prior records, actual wait observations and unavailable final joins. No complete-looking prefix establishes clean acceptance. |
 | S5: ownership/backing | Two controls: one known child retains the original lock after owner exit. One backing directory identity is deliberately mismatched in the approved copied capacity observation. Recovery refuses until exact holder resolution, and always refuses the mismatch. No live-volume detach or lock deletion is used to manufacture the case. |
 | S6: protected publication | Two approved result substitutions: collection directory create failure. Terminal slot partial write followed by failure. Observe retained objects and unavailable collection/final record separately. These are handling controls, not claims of actual ENOSPC or durability. |

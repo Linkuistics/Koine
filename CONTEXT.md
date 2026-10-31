@@ -76,9 +76,11 @@ Its event sequence is separate from command ordinals.
 **Keepalive stop ID**: The identity that joins one owner stop intent to the exact
 worker acknowledgement and observed reap. It cannot erase an earlier failure.
 
-**Collection-only generation**: A successor owner identity permitted to collect
-evidence and contain the exact clone after failed ownership is resolved.
-It cannot resume scenario commands.
+**Collection-only generation**: The original caller's one successor writer
+identity, permitted to collect evidence and contain the exact clone after failed
+ownership is resolved. Its [recovery contract](docs/specs/settings-keepalive-records.md#collection-only-entry)
+permits only proven unattempted collection items. It cannot resume scenario
+commands or admit a successor after caller loss.
 
 **Admission clock**: The continuous-clock interval from a producer's request
 origin to **dispatch commitment**. A tick's origin is its observed sleep completion.
@@ -136,8 +138,11 @@ Its own build, bootstrap, buffers and writer-lock lifetime require qualification
 **Allocation fence**: A proposed terminal record that reserves a finite ordinal range before its members are consumed.
 Recovery burns uncertain members without claiming execution or charging an unstarted capture.
 
-**Terminal record pool**: The proposed finite set of precreated terminal slots, each bound once to a distinct attempted record write.
-A failed or partial slot remains retained and cannot fund another write.
+**Terminal record pool**: The proposed finite set of precreated terminal slots,
+with [disjoint writer ranges](docs/specs/settings-keepalive-records.md#one-use-pool-and-bounded-costs).
+Odd slots permit allocation fences; even slots permit other records. Each slot
+and its original-object attachments are used once. Failed, skipped or uncertain
+slots remain consumed and cannot fund another write.
 
 **Bounded operation request**: The immutable, versioned dependency request that
 binds an opaque operation token to its resource profile, command and assigned outputs.

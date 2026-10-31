@@ -28,8 +28,11 @@ planning or implementation. Adoption and every runtime slot stay held.
 
 The [completion worksheet](../verification/settings-activation/KEEPALIVE-RESOURCES.md#completion-worksheet)
 separates start-queue accounting from post-start admission and derives tick
-counts from the complete bounded workload. Its record mapping still needs the
-complete schema and numerical capacities. Antony approved the named R3/R5
+counts from the complete bounded workload. The proposed
+[record and recovery schema](settings-keepalive-records.md) now defines bounded
+encodings, one-use terminal lanes, ordinal fences and collection-only recovery.
+Numerical capacities and qualified storage remain outstanding. Antony approved
+the named R3/R5
 collector-copy controls and their additional audit on 2026-11-01. The approved
 dependency design/evidence request is [TestAnyware issue #13](https://github.com/Linkuistics/TestAnyware/issues/13).
 Neither decision supplies missing mechanism evidence or implementation authority.
@@ -356,7 +359,10 @@ as unavailable with its causal failure, never as clean skipped work.
 ## Lifecycle evidence and final observation
 
 Lifecycle records use a separate event sequence under the **same owner and
-lock**. They do not consume command ordinals. Their type cannot be confused with
+lock**. The [record schema](settings-keepalive-records.md#common-frame) makes that
+sequence the global terminal slot index, with retained gaps and disjoint writer
+lanes. It is not a count of successful rows. They do not consume command ordinals.
+Their type cannot be confused with
 a clean capture or a local failed-sleep poll record. Each event is immutable. It
 names the run, exact VM/root identity, owner/worker generations, monotonic
 observation time, wall time for presentation, event ID and its causal
@@ -466,7 +472,12 @@ If the owner dies or misses its supervised progress deadline, the finite caller 
 children it can positively identify. It may acquire the original writer lock for
 a collection-only recovery after all known holders are settled and exclusive
 ownership is actually obtained. It records the failed owner generation and the
-new collection-only generation. It never resumes scenario admission or
+new collection-only generation under the
+[bounded recovery protocol](settings-keepalive-records.md#collection-only-entry).
+The original caller is the only permitted successor. It burns the failed writer's
+remaining slots and uncertain ordinal range; caller loss permits no further
+generation. Collection items already fenced are never reissued. It never resumes
+scenario admission or
 overwrites partial receipts. Inability to establish ownership leaves collection
 and exact clone containment unresolved. This is a serialised handoff in the
 original domain, not permission for a concurrent second writer or an out-of-band
@@ -517,8 +528,9 @@ Their results cannot precede the implementation they exercise.
 
 They must pass after implementation and before downstream consumption.
 The complete profile still requires independent mechanism evidence before adoption.
-No copied internal collector barrier or write-result substitution is approved.
-K112 must resolve R3 and R5 enabling points without silently broadening the existing owner/backend/caller approval.
+The separately audited collector R3 pre-read barrier and R5 raw-storage
+write-result controls were approved on 2026-11-01. Their exact scope is stated
+below and in the producer contract; no broader collector substitution follows.
 
 CLI controls reach an active command and its return. A controlled sleep executable
 in the worker's test environment reaches sleeping and sleep-return schedules.
@@ -994,13 +1006,17 @@ These bindings identify each attempt's backing object and directory under one
 logical root. They must survive owner loss whenever collection remains available.
 
 The enforcement survey's three-volume arrangement does not establish complete
-metadata protection, these bindings or recovery. Its proposed allocation fence
-still needs a concrete schema and qualification under the single writer sequence.
+metadata protection or qualified recovery. The
+[record schema](settings-keepalive-records.md#ordered-writes-and-recovery)
+now specifies these bindings, one-use pool assignment and the allocation fence
+under the single writer sequence; implementation and qualification remain open.
 The proposed private backend consumes an assigned directory and does not rescan
 for another ordinal. The current public backend's flat root scan cannot serve
 as the allocator across separate objects. A collection-only generation must
-establish prior assignments and storage identities before allocating another ordinal.
-If it cannot, collection remains unavailable.
+establish storage identities, a unique prior fence frontier and the known versus
+uncertain assignment sets before allocating another ordinal. Unknown charges
+remain unavailable and are never refunded or invented. A damaged frontier or
+unresolved holder leaves collection unavailable.
 
 Capacity accounting includes file metadata, directory/record growth, temporary
 files, raw streams and simultaneous partials. Per-file limits do not bound the
@@ -1019,6 +1035,12 @@ Record that boundary where possible. Protected capacity is not guaranteed I/O
 service or proof that a lock can be acquired.
 
 ### Resource record fields
+
+The [bounded catalogue and costs](settings-keepalive-records.md#record-catalogue)
+define encodings and maxima for these semantic rows, including backend objects,
+refusals, unstarted cancellations, failed publications and the caller tail.
+The [later control mapping](settings-keepalive-records.md#later-controls-and-remaining-inputs)
+refines S2–S6 without claiming execution or native qualification.
 
 Resource facts extend existing immutable lifecycle rows. They do not introduce
 a separate resource admission event with facts from different times.

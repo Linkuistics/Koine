@@ -71,3 +71,15 @@ No E/A, closed causal slot, VM/candidate/freeze/acceptance, cap expansion or
 release is authorised. Issue filing and collector-copy approval do not expand
 that boundary. A successful diagram render or document check supplies no
 mechanism, coordinator or native result.
+
+## Record schema input
+
+Consume docs/specs/settings-keepalive-records.md only after k118's scoped review
+and every earned integration. Instantiate its vector/object maxima, workload
+multiplicities, parity-slot allowance, tail-state tables, ordinary fence width
+and physical metadata costs from the full useful workload. Preserve one-use
+writer ranges, charged-but-unpublished uncertainty and no repeated collection
+item after owner loss. Its expanded S2–S6 boundaries need a finite later
+implementation manifest; the old 18-case count is not that expansion. No
+coordinator result is required before the implementation exists. All original
+Done when requirements and missing-mechanism boundaries remain unchanged.

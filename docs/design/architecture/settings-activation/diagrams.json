@@ -1,5 +1,5 @@
 {
-  "title": "Settings activation: completing the resource profile",
+  "title": "Settings activation: bounded records and recovery",
   "intro": "Graph views start at the dark Start here node. Sequences start at their first message and state views at the initial dot. Lifecycle review is integrated. Scheduling review corrections are integrated. Enforceable resources and whole-design reconciliation remain outstanding. Implementation and runtime stay held.",
   "groups": [
     {
@@ -29,27 +29,38 @@
     }
   ],
   "discussion": {
-    "title": "Complete accounting and resolve the dependency handoff",
-    "status": "Incomplete profile. Dependency request filed; collector control sites approved. No execution requested.",
-    "summary": "The worksheet separates VM start from post-start admission, derives tick counts without counting waits twice, and maps protected record costs. TestAnyware issue #13 requests dependency evidence. Two audited collector sites are approved for later failure-handling controls. No useful numerical limits or mechanism results are established.",
+    "title": "Retain uncertain records without reusing slots or commands",
+    "status": "Proposed schema. Numerical profile and storage qualification remain open.",
+    "summary": "Fixed writer lanes and typed fence slots bound empty/torn-write ambiguity. Ordinal fences preserve charged-but-unpublished attempts; collection fences prevent repeating an uncertain collection item. The schema accounts for original objects, partials and the final caller tail. Independent scoped review precedes full profile reconciliation. No coordinator or native control has run.",
     "diagramIds": [
-      "keepalive-completion",
-      "keepalive-qualification",
+      "keepalive-records",
       "keepalive-storage",
-      "keepalive-producer"
+      "keepalive-completion",
+      "keepalive-qualification"
     ],
     "updatedDiagrams": [
       {
-        "id": "keepalive-completion",
-        "summary": "Shows independent accounting, the filed dependency request, approved test seams and evidence required before whole-design review."
+        "id": "keepalive-records",
+        "summary": "Adds disjoint writer lanes, one-use slot assignment and the final caller boundary."
       },
       {
-        "id": "keepalive-producer",
-        "summary": "Updates the caption with approval of the two collector-copy sites and their separate audit; enforcement remains unqualified."
+        "id": "keepalive-storage",
+        "summary": "Separates slot loss from ordinal uncertainty and limits recovery to unattempted collection items."
+      },
+      {
+        "id": "keepalive-completion",
+        "summary": "Names the bounded schema as a design input while qualified bounds and useful fit remain missing."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "keepalive-records",
+      "group": "keepalive",
+      "title": "Assign terminal slots once and preserve the final tail",
+      "source": "keepalive-records.mmd",
+      "caption": "Proposed record schema. Five disjoint ranges preserve bootstrap, owner history, stop/failure/collection, one collection successor and caller-final capacity. Odd slots permit fences, even slots other events. All attempted writes and original-object attachments cost capacity, including empty failed writes. Failed writer ranges are burned without changing retained bytes. Original lock, identities, unique frontier and qualified process-loss visibility remain prerequisites. No implementation, durability result or second recovery after caller loss is implied."
+    },
     {
       "id": "keepalive-qualification",
       "group": "keepalive",
@@ -62,14 +73,14 @@
       "group": "keepalive",
       "title": "Recover collection under the original lock and global fence",
       "source": "keepalive-storage.mmd",
-      "caption": "Future coordinator storage and recovery obligations across three proposed fixed-image containers. Terminal storage holds the original lock, fences, bindings and lifecycle/final rows. Attempts use their assigned backing. Recovery burns uncertain ordinals and permits collection only. S1 tests storage with fixed byte objects. S2-S6 require the implemented coordinator. No metadata, durability or recovery result is established."
+      "caption": "Proposed bounded schema under the original lock and three bound storage identities. Assignment and charging precede binding, directory creation and commitment. Ordinal fences are separate from one-use terminal slots. Recovery burns uncertainty, retains unknown charge facts and never repeats a collection item already fenced. Only a proved unattempted suffix may run. The diagram abbreviates stop and delivery; their full owner contracts still apply. S1 uses fixed byte objects; S2-S6 require the implemented coordinator and expanded boundary cases. No native metadata, process-loss visibility or durability result is established."
     },
     {
       "id": "keepalive-completion",
       "group": "keepalive",
       "title": "Complete accounting and obtain dependency evidence",
       "source": "keepalive-completion.mmd",
-      "caption": "Completion worksheet, not a qualified profile. Contract and qualification proposal reviews are integrated. Workload/tick and record accounting can progress independently. TestAnyware issue #13 is filed; owner acceptance and timing are unknown. Collector R3/R5 copies are approved with a separate correspondence audit. These future controls qualify failure handling only, after implementation. Missing producer, launcher, queue/native and protected-storage evidence keeps startup unavailable. Whole-design review follows the complete artifact; execution needs its own exact reviewed scope."
+      "caption": "Completion worksheet, not a qualified profile. Contract and qualification proposal reviews are integrated. Workload/tick accounting and the bounded record schema are design inputs; complete numerical costs still need qualification. TestAnyware issue #13 is filed; owner acceptance and timing are unknown. Collector R3/R5 copies are approved with a separate correspondence audit. These future controls qualify failure handling only, after implementation. Missing producer, launcher, queue/native and protected-storage evidence keeps startup unavailable. Whole-design review follows the complete artifact; execution needs its own exact reviewed scope."
     },
     {
       "id": "keepalive-producer",
