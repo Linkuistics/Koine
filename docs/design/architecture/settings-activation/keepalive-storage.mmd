@@ -4,13 +4,13 @@ flowchart TD
     fence["Publish fence in odd terminal slot<br/>Observe required write and flush results"]
     bind["Recheck, assign ordinal and charge<br/>Publish storage binding in even slot"]
     directory["Create exact directory once<br/>Ordinary or protected collection backing"]
-    commit["Publish commitment before launch<br/>Retain all failed writes and charges"]
+    commit["Publish commitment and its kind 20<br/>Both precede child creation"]
     next{"Current fence has permitted unused member?"}
     loss["Owner loss at any boundary"]
     holders{"Holders resolved, same lock acquired,<br/>backing and layout identities valid?"}
     frontier{"Unique fence frontier?<br/>No torn or conflicting fence"}
-    burn["Burn owner slots and uncertain ordinals<br/>Retain unknown charges; no refund"]
-    recover["Publish recovery and collection-only opening<br/>Only proven unattempted plan suffix"]
+    burn["Burn owner slots, attachments and uncertain ordinals<br/>Retain unknown charges. No refund"]
+    recover["Publish entry rows 25 → 20 → 5 → 20<br/>Then delayed observations and an unattempted item"]
     unavailable["Collection unavailable<br/>No replacement lock, ordinal or scenario"]
     start -->|1| fence
     fence -->|2| bind

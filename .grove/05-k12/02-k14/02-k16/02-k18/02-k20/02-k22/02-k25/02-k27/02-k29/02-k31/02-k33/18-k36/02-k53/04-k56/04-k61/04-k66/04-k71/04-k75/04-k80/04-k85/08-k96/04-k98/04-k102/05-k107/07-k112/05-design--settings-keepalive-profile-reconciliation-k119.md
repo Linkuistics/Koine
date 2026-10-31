@@ -78,3 +78,26 @@ implementation manifest.
 The old 18-case count is not that expansion. No coordinator result is required
 before the implementation exists. All original Done when requirements and
 missing-mechanism boundaries remain unchanged.
+
+## Integrated record accounting inputs
+
+K121 integrates k120 before this task consumes the schema. Derive `v` from the
+mandatory publication-carrier schedule and its failed-carrier fallbacks on every
+reachable path. Reserve attachments for every slot, including skipped, failed
+and uncertain slots. Use the schema's `T_data`, object-count and
+physical-rounding formulas.
+
+Kind 7 has no per-attempt terminal range. Its size is `856 + 168u` bytes. The
+count `q` includes first failure and all later distinct controls.
+
+Reconcile fence width and all required write/flush/visibility costs with the
+commitment and creation ceilings. Include carriers for setup,
+openings, commitments, dispositions, stop, worker reap, handoff, recovery and
+owner-exit in their actual lanes and deadlines. The successor starts with kinds
+25, 20, 5 and 20 before delayed observations or a fence. Normal handoff starts
+caller-final with kinds 25 and 20.
+
+Both final paths retain kinds 27, 20 and 28. Use the explicit reference types,
+complete profile-digest preimage and per-write audited-copy barrier list. These
+corrections select no useful capacity or mechanism. Every original completion
+duty and prerequisite remains binding.

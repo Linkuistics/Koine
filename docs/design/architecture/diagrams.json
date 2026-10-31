@@ -638,14 +638,14 @@
       "group": "settings-activation",
       "title": "Assign terminal slots once and preserve the final tail",
       "source": "settings-activation/keepalive-records.mmd",
-      "caption": "Proposed record schema. Five disjoint ranges preserve bootstrap, owner history, stop/failure/collection, one collection successor and caller-final capacity. Odd slots permit fences, even slots other events. All attempted writes and original-object attachments cost capacity, including empty failed writes. Failed writer ranges are burned without changing retained bytes. Original lock, identities, unique frontier and qualified process-loss visibility remain prerequisites. No implementation, durability result or second recovery after caller loss is implied."
+      "caption": "Proposed record schema. Five disjoint ranges preserve bootstrap, owner history, stop/failure/collection, one collection successor and caller-final capacity. Odd slots permit fences, even slots other events. Every reserved slot has its own attachment allowance, including parity-skipped and failed slots. Required publication observations consume explicit records. Failed writer ranges are burned without changing retained bytes. Original lock, identities, unique frontier and qualified process-loss visibility remain prerequisites. No implementation, durability result or second recovery after caller loss is implied."
     },
     {
       "id": "settings-activation-keepalive-storage",
       "group": "settings-activation",
       "title": "Recover collection under the original lock and global fence",
       "source": "settings-activation/keepalive-storage.mmd",
-      "caption": "Proposed bounded schema under the original lock and three bound storage identities. Assignment and charging precede binding, directory creation and commitment. Ordinal fences are separate from one-use terminal slots. Recovery burns uncertainty, retains unknown charge facts and never repeats a collection item already fenced. Only a proved unattempted suffix may run. The diagram abbreviates stop and delivery; their full owner contracts still apply. S1 uses fixed byte objects; S2-S6 require the implemented coordinator and expanded boundary cases. No native metadata, process-loss visibility or durability result is established."
+      "caption": "Proposed bounded schema under the original lock and three bound storage identities. Assignment and charging precede binding, directory creation and commitment. The commitment observation also precedes child creation. Ordinal fences are separate from one-use terminal slots. Recovery burns uncertainty, retains unknown charge facts and never repeats a collection item already fenced. Only a proved unattempted suffix may run. The diagram abbreviates stop and delivery. Their full owner contracts still apply. S1 uses fixed byte objects. S2-S6 require the implemented coordinator and expanded boundary cases. No native metadata, process-loss visibility or durability result is established."
     }
   ]
 }

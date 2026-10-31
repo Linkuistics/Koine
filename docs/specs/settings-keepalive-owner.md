@@ -183,9 +183,19 @@ A reservation or publication failure closes eligibility and retains the partial
 directory. No ordinal is reused, including after owner loss.
 
 Owner events and child receipts occupy distinct immutable records under the same
-writer authority. Only the owner assigns event sequence numbers. No concurrent
-appenders share an event file, and no child independently authorises another
-operation. The current public backend remains unchanged until implementation.
+writer authority. The event sequence is the global terminal slot index. The
+owner writes only its history and tail lanes. The caller writes bootstrap, its
+one collection-successor lane and caller-final, at the permitted exclusive
+transfers. No concurrent appenders share an event file, and no child
+independently authorises another operation. The current public backend remains
+unchanged until implementation.
+
+The record schema's [publication
+carriers](settings-keepalive-records.md#publication-carriers) define the
+observation record required before each dependent effect. Their standalone
+kind-20 rows consume terminal slots and their assigned attachments. Their work
+must fit existing phase deadlines until whole-design reconciliation explicitly
+revises those deadlines.
 
 At actual dispatch the owner rechecks root/VM/generation identity, eligibility,
 pending failure and stop events, and worker health. It also rechecks the
@@ -564,9 +574,23 @@ CLI and sleep controls cannot reach every transition inside the owner. The
 agreed additional enabling points are test-only barriers in a copied owner
 module. They precede the final control drain and eligibility check, follow
 durable commitment before child creation, and bracket acknowledgement and
-terminal publication. They must preserve the real transition code and introduce
-no production switch or UI-dependent delay. A barrier before commitment resumes
-through the actual eligibility check.
+terminal publication. For each named terminal write, owner and caller copies
+also expose four barriers:
+
+- Before slot choice
+- After slot choice and before the first write
+- After the complete write and before its flush observation
+- After that observation and before the dependent record or action.
+
+The approved real-prefix write-result site supplies the stop schedule after a
+real prefix. The control manifest names each module, write boundary and
+invocation before execution. These points use the existing audited-copy class,
+with the same correspondence checks. They add no allocator replacement,
+production switch or collector site.
+
+They must preserve the real transition code and introduce no production switch
+or UI-dependent delay. A barrier before commitment resumes through the actual
+eligibility check.
 
 Antony approved audited test copies on 2026-10-31. They use barriers in copied
 modules, matching the existing validator control. Each copy must match

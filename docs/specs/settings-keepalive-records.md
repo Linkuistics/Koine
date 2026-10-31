@@ -103,6 +103,114 @@ missing expectations in a declaration. A known evidence reference must name
 already completed bytes. A later record can report newly observed evidence but
 cannot supply a missing earlier publication.
 
+### Reference types and profile identity
+
+The expected-kind word has disjoint domains. `K1` through `K29` below mean
+record kinds 1 through 29, encoded as those integers. `O1` through `O12` mean
+wrapped object types 1 through 12, encoded as `256 + object-type`. `PFX` means
+65534, a retained raw prefix.
+
+`RAW` means 65535, a native raw object. Reject every other expected-kind value.
+Storage class and expected kind are separate checks. Backend kinds 14 and 15 use
+their assigned ordinary or collection object index, rather than a terminal slot.
+
+Each reference stores one exact expected kind. A union below permits only its
+named members, never a wildcard. The immutable role definition selects the
+member for each branch before receipt. The reader checks that branch, the
+target's wrapper or record kind, and the reference's exact kind.
+
+Missing references keep that expected kind. Unknown and inapplicable references
+still use the field's declared kind or branch member. Their zero object/index
+payload does not authorise a different type.
+
+`Evidence` below is the closed union of `K1`–`K29`, `O1`–`O12`, `PFX` and `RAW`.
+Only generic observation fields use this union. Their role or target identity
+determines one exact member before checking bytes. A prefix never satisfies a
+complete-record join. A failed publication can instead carry a missing reference
+to the expected complete kind. The available prefix has its own `PFX` reference
+in the failure or extent observation.
+
+| Frame or bundle field | Permitted expected kind |
+|---|---|
+| Common `previous`, `causal` | Terminal `K1`–`K29`, excluding backend `K14` and `K15`. Backend `previous` permits `K14` or `K15`, and backend `causal` is `K9`. |
+| `P.creation-evidence` | `O1`, the exact original creation observation. |
+| `B.evidence` | `Evidence`, fixed by the unit, phase and enforcement evidence role. |
+| `E.retained-content` | The mapped object's exact complete kind, or `PFX` for its real retained prefix. |
+| `J.evidence` | The exact kind required by `J.required-kind` in its pinned registry. |
+| `F.target` | The schedule's exact target kind, or `PFX` for a partial target. A missing target retains its complete expected kind. |
+
+The following table covers every direct catalogue `R` field and `V(R,...)`
+element. Bundle references retain the rules above wherever a bundle occurs.
+
+| Record kind | Reference field to expected kind |
+|---|---|
+| 1 | `private-VM-binding`: `O1`. `original-lock-binding`: `O3`. `backing-map`: `O6`. `profile`, `pool-layout`: `O4`. `caller-binding`: `O1`. `clock-registry`: `O5`. |
+| 2 | `original-profile`: `O1`. `registry-bindings`: `O5`. |
+| 3 | `physical-layout`: `O6`. `bootstrap-manifest`: `O4`. |
+| 4 | Only bundle references. |
+| 5 | Owner `predecessor-handoff`: final setup `K4`. Collection `predecessor-handoff` and `recovery`: `K25`. Owner `recovery`: inapplicable `K25`. |
+| 6 | `prior-fence`: `K6`. `backing-map`: `O6`. Its `F.target` follows the publication-carrier schedule. |
+| 7 | `fence`: `K6`. `exact-request`, `cost-profile`: `O1`. Its `F.target`: `K6`. |
+| 8 | `original-frame`, `operation-definition`, `cost-profile`: `O1`. `holder`: `K11`. `stop`: `K21`. |
+| 9 | `assignment`: `K7`. `directory-observation`: `O3`. `exact-request`, `predicate`, `transport`: `O1`. `eligibility`: admitted `K8` or failure `K10`. `stop`: `K21`. Its `F.target`: `K7`. |
+| 10 | `original-frame`: `O1` or `PFX`. `failed-subject`: `Evidence`. `prior-backend-latch`: `O1`. |
+| 11 | `commitment`: `K9`. `channel-binding`: `O3`. `descriptor-inventory`: `O6`. |
+| 12 | `original-frame`: `O1`. `creation`: `K11`. `preceding-completion`: send subtype `K19`. |
+| 13 | `commitment`: `K9`. `original-frame`, `selector-comparison`: `O1`. `environment`: `O2`. `descriptor-inventory`: `O6`. |
+| 14 | `commitment`: `K9`. `dependency-request`, `predicate`: `O1`. `exact-argv`, `environment`: `O2`. |
+| 15 | `request`: `K14`. `producer-observation`, `validation`: `O1`. `stdout`, `stderr`: `RAW`. `payload`: `O1` or `RAW`, fixed by the output role. |
+| 16 | `backend-result`: result subtype `K15`. `payload`: the exact kind and identity from that result. |
+| 17 | `original-ack`: `O1`. `payload`: the exact kind and identity from its offer. `backend-result`: result subtype `K15`. |
+| 18 | `commitment`: `K9`. `launch`, `backend-reap`: `K11`. `backend-result`: result subtype `K15`. `acknowledgement`: `K17`. `first-failure`: `K10`. |
+| 19 | `terminal`: `K18`. `original-frame`: `O1`. |
+| 20 | `first-failure`: `K10`. Its `F.target` follows the publication-carrier schedule. |
+| 21 | `scenario-end`: `O1`. `final-scenario-result`: `K18`. `first-failure`: `K10`. `worker-phase`: `K12`. `pending`: `K8`. |
+| 22 | `original-ack`: `O1`. `last-tick`: `K8`. `disposition`: `K18` for an assigned tick or cancelled-unstarted `K8`. |
+| 23 | `acknowledgement`: `K22`. `tick-resolution`: `K18` or cancelled-unstarted `K8`, matching the stop acknowledgement. |
+| 24 | `first-failure`: `K10`. `ownership`: `O7`. |
+| 25 | `original-lock-observation`, `backing-check`: `O7` attachments, as specified under transfer order. `last-fence`: `K6`. `known-assignments`: `K7`. `first-failure`: `K10`. |
+| 26 | `first-failure`: `K10`. `final-worker`: `K23`. `final-attempt`, `exact-stop`, `independent-inventory`: `K18`. `event-range-summary`, `holder-summary`, `collection-results`: `O7`. `required-collection-order`: `O9`. |
+| 27 | `handoff`: `K26`. `original-response`: `O1`. |
+| 28 | `owner-exit`: `K27`. `recovery`: `K25`. `first-failure`: `K10`. `collection-results`: `O7`. `exact-stop`, `independent-inventory`: `K18`. |
+| 29 | `failed-slot`: `PFX`, or a missing reference to its intended terminal record kind. `first-failure`: `K10`. |
+
+| Object type | Reference field to expected kind |
+|---|---|
+| 1, 2 | No references. |
+| 3 | `original-path`, `opened-identity-evidence`: `O1`. |
+| 4 | `profile-fragments`: `O1`. `registries`, `clocks`: `O5`. `backings`, `lock`: `O3`. `collection-plan`: `O9`. `object-layout`: `O6`. `tail-tables`: `O8`. |
+| 5 | `definitions`: `O1`. |
+| 6 | `descriptor-bindings`: `O10`. Object extents follow the `E` rule. |
+| 7 | Join entries follow the `J` rule. |
+| 8 | `states`: `O11`. |
+| 9 | `items`: `O12`. |
+| 10 | `object`: `O3`, binding the exact opened object behind that descriptor. |
+| 11 | Resource cells follow the `B` rule. |
+| 12 | `operation-definition`, `exact-target`, `cost-profile`: `O1`. `prerequisites`: `O7`, declaring required joins rather than future successes. |
+
+The pool's `physical-layout` is a type-6 object dedicated to terminal slots. Its
+ordered extent vector has one entry per slot, in ascending global slot order.
+Vector position is the slot index. Type 4's disjoint ranges determine each
+slot's lane and permitted parity.
+
+Descriptor bindings retain each slot's opened identity through object types 10 and 3. The separate type-6 `object-layout` covers bootstrap objects, attachments and
+descriptor bindings. Both layouts have finite profile bounds. Future content
+references remain missing or inapplicable, without future digests.
+
+The frozen profile digest is SHA-256 over the complete canonical type-4
+bootstrap/profile object bytes. The preimage includes its 16-byte prefix,
+eight-byte payload length, complete payload and final 32-byte object digest. It
+contains no path spelling, textual digest or record frame. Root `profile` and
+`pool-layout`, and pool `bootstrap-manifest`, all identify that same object and
+complete-byte digest.
+
+Type-4 fragment references name original type-1 content objects. They never name
+kind-2 frames. Every common frame binds this digest, including kind 2. Prepared
+layouts cannot contain known references to any frame carrying this digest, or to
+their own enclosing manifest.
+
+These exclusions preserve the existing acyclic bootstrap rule.
+
 ### Common frame
 
 Every record has **384 bytes of framing** plus its kind's payload:
@@ -140,8 +248,9 @@ the event that caused this one.
 
 A failure can therefore follow a damaged slot while its predecessor still points
 to the preceding complete event. Missing joins prevent acceptance even if this
-shorter chain passes its checks. At lane transfer the first event references the
-prior lane's last checked event and its range disposition. Backend frames use an
+shorter chain passes its checks. At lane transfer, the first event references
+the prior lane's last checked event. The transfer-order rules locate the range
+disposition without a forward or self-reference. Backend frames use an
 operation-local monotonically increasing sequence and exact commitment
 reference.
 
@@ -231,10 +340,10 @@ object or record. It does not duplicate that payload.
 | 4 Setup publication | `V(F,z) publications, V(E,o) setup-objects, V(J,j) missing` | Bounded setup batches `b`. Establishes observed preparation, not guaranteed future I/O. |
 | 5 Generation open | `C mode, P writer, R predecessor-handoff, R recovery, V(A,2) assigned-ranges, V(J,j) missing` | Once for the owner. At most once for the collection successor. Neither ordinary admission nor generation reuse follows from parsing it. |
 | 6 Allocation fence | `R prior-fence, U lower, U upper, I generation, R backing-map, C class, Q collection-item, Q retired-unused-lower, F prior-publication` | `f` ordinary fences and at most `f_c` collection fences. Each inclusive finite range is contiguous with its established predecessor frontier. A collection fence binds exactly one plan item and one ordinal. |
-| 7 Assignment/storage binding | `I submission, U ordinal, R fence, C class, I backing, I directory, I operation-token, R exact-request, R cost-profile, V(B,u) charge, V(A,2) terminal-reservation, F fence-publication` | Once per assigned attempt, even if later publication fails. The in-memory assignment/charge precedes this write. |
+| 7 Assignment/storage binding | `I submission, U ordinal, R fence, C class, I backing, I directory, I operation-token, R exact-request, R cost-profile, V(B,u) charge, F fence-publication` | Once per assigned attempt, even if later publication fails. The in-memory assignment/charge precedes this write. |
 | 8 Submission observation | `C received-admitted-refused-cancelled, I sender, I submission, U producer-sequence, R original-frame, R operation-definition, R cost-profile, R holder, R stop, T producer-origin, T receive, D admission, V(B,u) check, V(J,j) missing` | At most four rows per bounded submission `n`. Received then admitted or refused, and at most one unstarted cancellation. All are ordinal-free. The subtype is a field-local closed enum in listed order. |
 | 9 Dispatch commitment | `I submission, U ordinal, R assignment, R directory-observation, R exact-request, R predicate, R transport, R eligibility, R stop, V(D,d) deadlines, V(B,u) charge, F binding-publication` | At most one per assignment `a`. The charge is the same immutable charge, not another debit. Installed-limit observations are inapplicable here. |
-| 10 First failure/control | `C reason, C phase, I sender, R original-frame, R failed-subject, R prior-backend-latch, S status, D deadline, C input-state, V(J,j) missing` | First failure plus bounded later distinct controls `q`. First-failure identity never changes. Repeated identical observations update no file and emit no new event. |
+| 10 First failure/control | `C reason, C phase, I sender, R original-frame, R failed-subject, R prior-backend-latch, S status, D deadline, C input-state, V(J,j) missing` | At most `q` rows, including the first failure and all later distinct controls. First-failure identity never changes. Repeated identical observations update no file and emit no new event. |
 
 Root/profile/layout use a bootstrap manifest prepared before owner creation. The
 caller retains the original lock while recording the observed owner creation in
@@ -346,7 +455,7 @@ digest of an unavailable original is never invented.
 | 17 Payload acknowledgement | `I offer, I submission, U ordinal, R original-ack, R payload, R backend-result, T receipt, T owner-receive, S channel` | At most one per offer. Retains the exact ack before interpreting its match. |
 | 18 Terminal disposition | `U ordinal, R commitment, R launch, R backend-result, R backend-reap, R acknowledgement, R first-failure, C outcome, V(S,4) statuses, V(B,u) settlement, V(E,o) extents, V(J,j) missing` | At most one per assigned attempt. A failed attempt can have missing commitment/backend. Settlement never refunds. |
 | 19 Completion observation | `C send-echo, I submission, U ordinal, R terminal, R original-frame, T sender, T receipt, T owner-receive, D deadline, S channel` | At most two per terminal disposition. Subtype is a field-local enum in listed order. The send and later echo stay distinct. |
-| 20 Publication observation | `F publication, R first-failure` | Bound `v`. Use only when the next semantic event cannot carry the observation it needs. No observation of this observation is required. |
+| 20 Publication observation | `F publication, R first-failure` | Bound `v`, derived from the publication-carrier schedule below. Mandatory clean-path observations and failed-path fallbacks both count. No observation of this observation is required. |
 
 For kind 15 the prepended subtype makes the size unambiguously `384 + 4 + 8 +
 6*72 + 3*64 + (4 + 184o) + (4 + 80j)`. Status, raw streams and producer
@@ -363,7 +472,7 @@ compatibility copy free.
 | 22 Worker stop acknowledgement | `I stop, I worker, R original-ack, R last-tick, R disposition, C phase, T sender, T receive, S status` | At most one matched ack. One malformed/duplicate channel event instead closes eligibility and consumes control capacity. |
 | 23 Worker reap | `K stop, P worker, R acknowledgement, R tick-resolution, S wait, C lifecycle-outcome, V(J,j) missing` | At most one direct-child reap record. Unavailable is retained if observation is absent. |
 | 24 Containment action/result | `R first-failure, P target, C action, T origin, T observation, D unchanged-window, S result, R ownership, C input-state, V(J,j) missing` | Bounded by `t` actual targets and their fixed TERM/KILL/observation protocol. Action enum: term, kill, wait, lock-acquire, disposition. Unknown targets receive no signal. |
-| 25 Recovery/range disposition | `I failed-generation, I successor-generation, C mode, R original-lock-observation, R backing-check, R last-fence, Q safe-upper, V(A,2) burned-slot-ranges, Q burn-lower, Q burn-upper, V(R,r) known-assignments, V(J,j) uncertain, R first-failure, C input-state` | At most one caller recovery entry. Ordinal burning is not a capture charge. Refusal is permitted only if the original terminal identity/lock and a valid unused successor lane are established. Otherwise no new record is possible. |
+| 25 Recovery/range disposition | `I failed-generation, I successor-generation, C mode, R original-lock-observation, R backing-check, R last-fence, Q safe-upper, V(A,2) burned-slot-ranges, Q burn-lower, Q burn-upper, V(R,r) known-assignments, V(J,j) uncertain, R first-failure, C input-state` | At most one caller range disposition, in the successor lane for failed recovery or the final lane for normal handoff. Ordinal burning is not a capture charge. Refusal is permitted only if the original terminal identity/lock and a valid unused successor lane are established. Otherwise no new record is possible. |
 | 26 Owner handoff | `R first-failure, R final-worker, R final-attempt, R event-range-summary, R holder-summary, R required-collection-order, R collection-results, R exact-stop, R independent-inventory, C eligibility, C input-state, V(J,j) missing` | At most one. Eligibility enum: closed-clean-history, closed-failed, unknown. None permits another scenario command. Summaries are bounded objects, not substituted evidence. |
 | 27 Caller owner-exit | `P owner, R handoff, R original-response, S response, S channel, S wait, T receipt, T wait-observation, V(J,j) missing` | At most one after the caller establishes exclusive original-lock ownership. Caller retains observations in its charged memory until then. |
 | 28 Caller final outcome | `R owner-exit, R recovery, R first-failure, R collection-results, R exact-stop, R independent-inventory, C outcome, C input-state, V(J,j) missing` | One attempted final write. Caller return/exit after publication is explicitly unrecorded. |
@@ -379,8 +488,8 @@ or signal target list.
 
 ## One-use pool and bounded costs
 
-The pool is a precreated set of fixed-size regular slot objects in terminal
-storage, plus immutable bootstrap objects and the original lock. Its private
+The pool contains precreated fixed-size terminal slot objects, their preassigned
+attachments, immutable bootstrap objects and the original lock. Its private
 layout maps each slot index to one opened object identity, maximum size and
 permitted writer lane. Precreation, extent allocation and namespace metadata are
 qualification obligations. A zero-filled slot is unused capacity, never a
@@ -441,12 +550,12 @@ finite caller trust boundary, and prevents endless recovery generations.
 ### Encoded and physical accounting
 
 Let `n` bound all valid received submissions, including due ticks and
-collection. `a` bound all assigned attempts. `w` bound worker reports. `h` bound
-process/holder observations.
+collection. Let `a` bound all assigned attempts. Let `w` bound worker reports.
+Let `h` bound process/holder observations.
 
-`q` bound distinct priority controls. And `g` bound progress events per attempt.
-Let `p,b,f,f_c,v,t` have the catalogue meanings. All are finite whole-workload
-inputs, including failure branches.
+Let `q` bound the first failure and all later distinct priority controls. Let
+`g` bound progress events per attempt. Let `p,b,f,f_c,v,t` have the catalogue
+meanings. All are finite whole-workload inputs, including failure branches.
 
 Counts do not come from the number of successful captures. Distinguish `a` from
 complete commitments.
@@ -454,7 +563,7 @@ complete commitments.
 For each kind `k`, let `L_k` be its catalogue maximum. For example:
 
 - Kind 6: `384 + 72 + 8 + 8 + 16 + 72 + 4 + 2*16 + 176 = 772` bytes.
-- Kind 7: `384 + 16 + 8 + 72 + 4 + 3*16 + 2*72 + (4+168u) + (4+24*2) + 176 = 908 + 168u` bytes.
+- Kind 7: `384 + 16 + 8 + 72 + 4 + 3*16 + 2*72 + (4+168u) + 176 = 856 + 168u` bytes.
 - Kind 8: `384 + 4 + 2*16 + 8 + 5*72 + 2*32 + 104 + (4+168u) + (4+80j) = 964 + 168u + 80j` bytes.
 - Kind 28: `384 + 6*72 + 2*4 + (4+80j) = 828 + 80j` bytes.
 
@@ -481,25 +590,40 @@ lane, with an even length. This pays for at most one skipped parity slot per
 attempted row, including fences and the final unused parity slot. Slots use the
 same maximum size even though their permitted kinds differ.
 
-Logical pool bytes are `S * sum(N_lane)` plus bootstrap object bytes. This
-conservative maximum avoids an unproved packing/reuse argument. The same path
-calculation reserves original channel-frame objects, summaries, profile/registry
-objects and their prefixes. Each object has one creation attempt and a fixed
-maximum.
+For each slot `i`, let `A_i` count every attachment in its immutable layout. Let
+`B_i` sum their maximum encoded byte lengths, including wrappers and prefixes.
+These sums cover all preassigned roles and element indices for that slot. They
+are not counts of attachments in a successful row or path. A parity-skipped,
+failed or uncertain slot consumes its complete attachment set. No later slot can
+reuse those objects or their capacity.
 
-A failed prefix keeps that full charge. A missing frame that was never received
-has no invented bytes.
+Let `B_boot` and `O_boot` be the bootstrap objects' maximum logical bytes and
+object count. Each object appears once, either in bootstrap or in one slot's
+attachment set. The lock and directory objects have separate physical charges
+below. Define total terminal logical data bytes as:
 
-Terminal physical capacity includes the lock, slot directory tree, each
-precreated slot and bootstrap/private-original objects. It also includes every
-permitted metadata operation and rounded data extents. Write it as `T_phys =
-T_data + M_lock + M_dirs + sum M_objects + M_updates + M_backing`. No `M` is
-assumed zero.
+`T_data = S * sum(N_lane) + sum_over_all_slots(B_i) + B_boot`.
 
-APFS/image/host allocation and copy-on-write costs need qualified upper bounds.
-Lack of such bounds keeps startup unavailable. No checksum or row-count
-calculation supplies them. Partial bootstrap has its own bounded preparation
-allocation and no resize/retry under this run identity.
+The terminal data-object count is `sum(N_lane) + sum_over_all_slots(A_i) +
+O_boot`. The sums include every reserved slot, including slots that no path
+writes. Path enumeration determines lane lengths and which attachment roles each
+slot must support. It cannot replace per-slot reservation with a per-row
+attachment total.
+
+Each object has one creation attempt and a fixed maximum. A failed prefix keeps
+that full charge. An unreceived frame has no invented bytes.
+
+For terminal physical capacity, add the lock, directory tree, metadata and
+backing costs to data extents. Let `E_round` bound allocation-rounding slack
+above `T_data` across every data object. Write the required capacity as:
+
+`T_phys = T_data + E_round + M_lock + M_dirs + sum M_objects + M_updates +
+M_backing`.
+
+No `M` is assumed zero. APFS/image/host allocation and copy-on-write costs need
+qualified upper bounds. Missing bounds keep startup unavailable. No checksum or
+row-count calculation supplies them. Partial bootstrap has its own bounded
+preparation allocation and no resize/retry under this run identity.
 
 Ordinary and collection charges separately include each attempted directory and
 request/validation/result object. They also include that attempt's original
@@ -527,6 +651,13 @@ caller-final capacity. Refusal and unstarted cancellation have their own
 terminal cost even when no operation is charged. The refusal's cost is reserved
 before admission can be attempted. Failure of that write is still unavailable.
 
+The tail check is an in-memory capacity decision against the immutable profile.
+Kind 7 reserves no contiguous terminal range for an attempt. Its lifecycle rows
+can interleave with other rows under the same sequential slot rule. Transition
+cost includes the chosen slot and every parity-skipped slot, with all their
+attachments. The profile must bound slots, attachment bytes, objects and
+metadata for each remaining lane separately.
+
 One bounded kind-29 failure summary per failing writer path is the last optional
 write about logging itself. Its failure emits no recursive summary. The writer
 then attempts only already reserved, independently necessary stop/containment/
@@ -545,7 +676,7 @@ form a cross-volume transaction.
 
 <!-- tc: depart synonym-rotation because launch names process execution while start also names range and time origins -->
 1. Check root, original lock object, backing identities, complete bootstrap and
-   owner generation. Acquire actual exclusive ownership and publish readiness.
+   owner generation. Acquire actual exclusive ownership. Publish the generation opening and its kind 20 before readiness.
 2. Before consuming an ordinal, select a fresh slot, write a fence, and observe
    its required write/flush/visibility results. Fence width `W` is a positive
    profile parameter derived from the workload. Only one fence may be open.
@@ -562,8 +693,8 @@ form a cross-volume transaction.
 4. Create the exact assigned directory once in ordinary or collection backing.
    Retain its identity and creation result in the commitment's referenced bounded
    observation object. Existing or mismatched objects are failure, never adoption.
-   Publish kind 9 and observe its required publication results before child
-   creation. Failure at any point prevents launch and all later scenario work.
+   Publish kind 9 and its mandatory kind 20 before child creation.
+   Failure at any point prevents launch and all later scenario work.
 5. The backend receives this assigned directory/ordinal and inherited lock. It
    cannot scan roots, allocate an ordinal or launch from a binding alone. Observe
    actual setup, process, collector, validation, result and reap facts separately.
@@ -576,11 +707,64 @@ form a cross-volume transaction.
    bound. No charge is created for that suffix. Later collection fences name
    the next unattempted applicable plan item. No normal owner restart exists.
 
-The live writer must observe write results required for dependent work. It must
-retain them in the next semantic record or kind 20. A record can say what was
-requested for itself but cannot predeclare its own successful flush. Recovery
-treats unrecorded flush success as unknown. Readability on the still-mounted
-system supplies only a later visibility fact.
+### Publication carriers
+
+The live writer observes each required write, flush and visibility result before
+the dependent effect. The following schedule defines where that observation must
+be retained. A known `F.target` names the exact complete target record or
+object. Failure uses its retained prefix or a missing expectation, without
+inventing a completed target.
+
+| Target publication | Dependent effect | Required carrier |
+|---|---|---|
+| Prepared bootstrap objects, kinds 1, 2 and 3, and any preceding kind 4 batch | Complete setup | Kind 4's `publications` vector covers every required preparation result. |
+| Final kind 4 setup batch | Transfer writer ownership to the created owner | One mandatory kind 20 before transfer. |
+| Kind 5 generation opening | Owner readiness, or successor command work | One mandatory kind 20 before readiness or any successor fence. |
+| Kind 6 fence | Assignment within its range | Kind 7's `fence-publication`, retained with each assignment. |
+| Kind 7 binding | Create its exact attempt directory | Kind 9's `binding-publication`. The live writer observes success before directory creation. |
+| Kind 9 commitment | Create the backend child | One mandatory kind 20 before child creation. |
+| Kind 18 terminal disposition | Send completion to the submitter | One mandatory kind 20 before completion send. |
+| Kind 21 stop intent | Send its stop ID to the worker | One mandatory kind 20 before stop delivery. Failure still suppresses future ticks and starts failure containment. |
+| Kind 23 worker reap | Claim published matched reap in handoff | One mandatory kind 20 before kind 26. |
+| Kind 25 in failed-owner mode | Publish the successor's kind 5 opening | One mandatory kind 20 between kind 25 and kind 5. |
+| Kind 25 in normal-handoff mode | Continue caller-final evidence | One mandatory kind 20 before kind 27. |
+| Kind 26 owner handoff | Send the handoff response and relinquish writer ownership | One mandatory kind 20 in the owner tail before response or transfer. |
+| Kind 27 owner-exit | Publish the caller's final outcome | One mandatory kind 20 before kind 28. |
+| Kind 28 final outcome | Caller return | The existing caller-return trust boundary observes publication. No additional record is required. |
+
+A mandatory kind 20 is attempted once after its target's publication attempt, if
+the live writer can still write. It records actual success, failure or unknown
+results. Failed or unknown target publication forbids the dependent effect. A
+failed mandatory kind 20 also forbids that effect and closes eligibility. Its
+own failure invokes only the existing bounded failure-summary rule. There is no
+kind 20 about another kind 20 or kind 29.
+
+If kind 7 or kind 9 cannot retain its predecessor observation, attempt one
+fallback kind 20 for that predecessor. Count the failed carrier and the fallback
+separately. A fallback never restores the failed carrier or permits dependent
+work. If the writer dies first, retain the missing observation as unknown.
+
+Recovery cannot invent the lost result. Kind 4 batches already carry preparation
+failures. Their own failed publication uses the same final-batch kind 20 rule.
+
+For kind 6, `prior-publication.target` is kind 5 on the first fence in each
+generation. On every later fence in that generation, it is the exact
+`prior-fence` kind 6 record. The field repeats the live writer's retained
+observation of that target. It does not observe the new fence's own publication.
+A successor's first fence therefore refers to its own opening, even when
+`prior-fence` names an older generation's fence.
+
+For each reachable path, count every attempted mandatory and fallback kind 20 in
+its actual lane. Set `v` to at least the maximum of that count across all
+complete paths, including publication failures. Thus `v` is derived from this
+schedule, not an independent allowance selected by k119. Kinds 4, 7 and 9 pay
+for their embedded carriers in their catalogue sizes. The count vector, lane
+parity costs and remaining-tail calculation include every standalone carrier and
+its attachments.
+
+A record cannot predeclare its own successful flush. Recovery treats an
+unrecorded flush result as unknown. Readability on the still-mounted system
+supplies only a later visibility fact.
 
 ### Collection-only entry
 
@@ -603,10 +787,10 @@ predecessors and references. Retain all invalid bytes and missing joins.
 
 The complete bootstrap supplies the genesis frontier zero. Before any fence,
 recovery can therefore start at ordinal 1. The first fence has an inapplicable
-prior-fence reference and references setup publication. A structurally complete,
-properly linked fence whose own flush outcome was not retained can supply a
-conservative upper frontier to burn. It cannot establish a successful prior
-publication or any clean attempt.
+prior-fence reference and references its generation-opening publication. A
+structurally complete, properly linked fence whose own flush outcome was not
+retained can supply a conservative upper frontier to burn. It cannot establish a
+successful prior publication or any clean attempt.
 
 The caller can recover only if it can establish a unique valid ordinal frontier.
 Every attempted fence must be either complete and checked or demonstrably absent
@@ -629,9 +813,10 @@ ordinary attempt only after holder resolution, with that attempt and its
 uncertainty retained.
 
 Burn the failed writer's slot ranges, write kind 25 in the predetermined
-successor lane, then kind 5 in collection-only mode. If either write fails, do
-not allocate a new fence or dispatch collection. No second entry attempt is
-allowed. The original caller owns the successor role.
+successor lane. Then write its kind 20, kind 5 in collection-only mode and that
+opening's kind 20. If any entry write fails, do not allocate a new fence or
+dispatch collection. No second entry attempt is allowed. The original caller
+owns the successor role.
 
 It creates no replacement scenario owner or worker. Its fresh generation token
 is never reused. It uses a new fence beyond the established frontier, the same
@@ -654,6 +839,55 @@ At final transfer, burn unused successor slots and use the caller-final range
 under the same lock. The caller records owner response/channel/wait observations
 and one final outcome. If it dies or the final write fails, the unknown tail is
 terminal. Existing files cannot establish its later return or acceptance.
+
+### Transfer order and joins
+
+The caller retains containment and original-lock observations in bounded charged
+memory while the old writer can still hold the lock. After exclusive
+original-lock acquisition, it writes their attachments in its first assigned
+caller slot. No caller publication occurs concurrently with an owner or backend
+writer. Kind 25's `original-lock-observation` and `backing-check` name type-7
+attachment summaries.
+
+Those summaries reference completed type-3 opened-identity bindings and type-1
+original observations, including every required holder disposition. They cannot
+reference later kind 11 or kind 24 rows as already known evidence. All
+attachment objects belong to kind 25's selected slot and consume its
+reservation.
+
+Failed-owner entry uses this successor-lane order:
+
+1. Write kind 25 after retaining its lock, holder, backing and frontier evidence.
+2. Write the mandatory kind 20 for kind 25.
+3. Write kind 5 in collection-only mode, with both `predecessor-handoff` and `recovery` naming that kind 25.
+4. Write the mandatory kind 20 for kind 5.
+5. Write any delayed kind 24 or kind 11 observations from the earlier containment window.
+6. Permit the first successor fence only after all required entry evidence is complete.
+
+Every row uses the next even slot, until a fence selects its next odd slot. The
+first kind 25's `previous` names the prior lane's last checked complete record.
+Its `causal` names the known first-failure record, or retains a missing/unknown
+failure join. Kind 5's `previous` names the intervening kind 20, and its
+`causal` names kind 25.
+
+Each later row's `previous` names the immediately preceding complete row. An intervening kind 20 names its complete target as `causal`.
+For an incomplete target, it uses a missing expectation of that target's record kind. Delayed observations use kind 25
+as their recovery cause. They retain their original observation times.
+
+Recovery never rewrites them as observations made after entry.
+
+Normal handoff burns the unused owner and entire successor ranges. Its kind 25
+is the first caller-final record, in `normal-handoff` mode. It names kind 26 as
+`causal` and the owner's handoff-publication kind 20 as `previous`. No successor
+kind 5 or collection fence follows this normal transfer. The caller writes kind
+25's mandatory kind 20, then kind 27, its mandatory kind 20, and kind 28.
+
+After failed recovery collection, the caller burns the successor suffix before
+entering caller-final. Kind 27 is then the first final-lane row. Its `previous`
+names the last complete successor row and its `causal` names kind 25. The
+caller's own uninterrupted cursor establishes its successor-range burn. No
+second kind 25 is written. Both paths end with the same kind 27, kind 20, kind
+28 sequence where facts and writable capacity permit it.
 
 ### Ambiguity table
 
@@ -713,11 +947,14 @@ publishes. Received/admitted submission `s` has no ordinal or operation charge.
 The transition assigns `a`, debits its contribution and publishes binding,
 creates its ordinary directory and publishes commitment.
 
-Backend/collector/validator events, complete result and actual reap precede
-offer/ack, terminal disposition and completion send. The worker echoes receipt
-before its next sleep. Clean stop later joins intent, exact ack and observed
-reap. Owner handoff precedes the caller's lock transfer, owner-exit record and
-final outcome.
+The commitment's kind 20 precedes backend creation. Backend/collector/validator
+events, complete result and actual reap precede offer/ack and terminal
+disposition. The disposition's kind 20 precedes completion send. The worker
+echoes receipt before its next sleep.
+
+Clean stop later joins intent, its kind 20, exact ack, observed reap and the
+reap's kind 20. Owner handoff and its kind 20 precede the caller's lock
+transfer. The caller-final sequence is kinds 25, 20, 27, 20 and 28.
 
 Every row/object costs capacity, including clean phase reports and the caller
 tail.
@@ -727,7 +964,8 @@ and created its directory. The commitment write retains a real prefix and fails.
 That slot, ordinal and full charge remain consumed. Backend invocation count is
 zero on this live controlled branch.
 
-No result bytes or later successful cleanup can permit scenario input. One
+No result bytes or later successful cleanup can permit scenario input. The
+failed commitment's kind 20 retains the observed failure where writable. One
 bounded write-failure summary, stop and containment use their reserved slots
 where writable. If the owner then dies, recovery does not rewrite commitment or
 refund `a`. It burns through `b` and marks the failed event unavailable.
@@ -743,11 +981,11 @@ grandchild. After actual original-lock acquisition and holder/identity checks,
 the bounded scan checks the unique last fence `[a,b]`.
 
 The caller burns both owner slot ranges and unresolved ordinals through `b`,
-preserving all partial objects and unknown charges. It writes recovery and
-collection-generation rows, then a new fence starting `b+1`. Binding and
-directory creation for the first collection command use terminal and collection
-capacity respectively. Required collection order, exact stop and inventory keep
-separate outcomes.
+preserving all partial objects and unknown charges. It writes kinds 25, 20, 5
+and 20, then any delayed holder observations. Only then can it write a new fence
+starting `b+1`. Binding and directory creation for the first collection command
+use terminal and collection capacity respectively. Required collection order,
+exact stop and inventory keep separate outcomes.
 
 Any unresolved holder, torn fence, missing backing or failed recovery write ends
 this trace before a collection command. Final caller loss never starts another
@@ -767,7 +1005,7 @@ actual process overlap before requesting any separate execution scope.
 | Boundary / later control | Approved enabling point and required discrimination |
 |---|---|
 | Encoding and S2 catalogue | Real encoder/decoder and original-lock coordinator. Declared finite fixture inputs. Every kind, missing/zero/unknown/inapplicable value, maximum and one-past length/count, wrong version/type/digest/predecessor and duplicate/stale slot. No allocator substitution. Check exact size formula and actual bytes. |
-| S2 clean/failure accounting | Real charge/tail calculation plus approved owner capacity observations. Enumerate each attempted row and private object, including kind 20/29, partial setup, refusal, cancellation and charged-unpublished attempt. Exhaust history with tail intact. Reject borrowing each other lane/class and recycling clean rows. |
+| S2 clean/failure accounting | Real charge/tail calculation plus approved owner capacity observations. Enumerate each attempted row, every scheduled kind 20, kind 29 and every reserved slot's attachments. Include parity-skipped slots, partial setup, refusal, cancellation and charged-unpublished attempts. Check the complete logical-byte, object-count and physical-rounding formulas. Exhaust history with tail intact. Reject borrowing each other lane/class and recycling clean rows. |
 | S3 slot consumption | Approved owner/caller barriers and named write results. Stop points: before slot choice, after choice before first write, and after a real prefix. Also stop after full write before flush observation, and after observation before dependent record. End the directly owned writer once per declared case. Burn empty uncertainty without rewriting it. |
 | S3 fence/assignment/directory/commitment | Preserve the eight named S3 schedules. Add declared boundary subcases where needed. Failure before write performs no write. Partial failure retains exactly the declared real prefix. For every required write/flush observation assert zero dependent directory creation or child launch when failed/unknown. |
 | S3 recovery entry and final lane | Real original lock plus audited caller barriers/write results before/after recovery and generation rows, at new fence, and at final transfer. No second recovery attempt after a failed entry or caller death, no duplicate ordinals or synthesised charges. |
@@ -791,3 +1029,17 @@ start queue and boot timing, post-start uploads, all ticks and collection,
 dependency issue #13's evidence, every R/S expansion and whole-design
 reconciliation. Missing inputs keep startup unavailable. All original parent
 duties and runtime holds remain live.
+
+K119 must reconcile the commitment ceiling with the complete publication-carrier
+schedule and fence width `W`. The current two-second selection-to-commitment
+ceiling includes any required fence, binding, directory creation and commitment
+publication. The mandatory commitment-observation kind 20 also precedes child
+creation and consumes the existing creation-phase allowance. All required write,
+flush and visibility work must fit its phase and the admission or
+whole-operation deadline.
+
+K119 must account for first-fence and reused-fence paths, plus all other added
+carriers in their existing deadlines. No independent choice of `W`, storage
+flush cost or capacity establishes that fit. Any revised timing belongs to
+explicit whole-design reconciliation, without changing input order, cadence or
+one-attempt transports here.
