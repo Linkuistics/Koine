@@ -1,5 +1,5 @@
 {
-  "title": "Settings activation: bounded records and recovery",
+  "title": "Settings activation: raw-output control design",
   "intro": "Graph views start at the dark Start here node. Sequences start at their first message and state views at the initial dot. Lifecycle review is integrated. Scheduling review corrections are integrated. Enforceable resources and whole-design reconciliation remain outstanding. Implementation and runtime stay held.",
   "groups": [
     {
@@ -29,31 +29,30 @@
     }
   ],
   "discussion": {
-    "title": "Retain uncertain records without reusing slots or commands",
-    "status": "Proposed schema. Numerical profile and storage qualification remain open.",
-    "summary": "Fixed writer lanes and typed fence slots bound empty/torn-write ambiguity. Ordinal fences preserve charged-but-unpublished attempts; collection fences prevent repeating an uncertain collection item. The schema accounts for original objects, partials and the final caller tail. Scoped review corrections define publication carriers, per-slot attachment costs and exact transfer sequences before full profile reconciliation. No coordinator or native control has run.",
+    "title": "Distinguish accepted bytes, retained bytes and completed operations",
+    "status": "Proposed R-control design. Executable subjects and native bounds remain unavailable.",
+    "summary": "All 17 R cases now have finite emitter inputs, approved control sites and decisive observations. R3 releases its collector barrier before waiting for blocked writers. R5 retains actual prefixes. The process inventory exceeds the six-process mechanism envelope. Expanded S controls, workload accounting and native evidence scopes remain live work. No control ran.",
     "diagramIds": [
+      "keepalive-raw-controls",
       "keepalive-records",
-      "keepalive-storage",
       "keepalive-completion",
       "keepalive-qualification"
     ],
     "updatedDiagrams": [
       {
-        "id": "keepalive-records",
-        "summary": "Shows per-slot attachment reservation and the ordered successor and caller-final records."
-      },
-      {
-        "id": "keepalive-storage",
-        "summary": "Shows the mandatory commitment observation and ordered recovery entry before an unattempted collection item."
-      },
-      {
-        "id": "keepalive-completion",
-        "summary": "Names the bounded schema as a design input while qualified bounds and useful fit remain missing."
+        "id": "keepalive-raw-controls",
+        "summary": "Separates raw emission, retention, failure containment and final owner completion."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "keepalive-raw-controls",
+      "group": "keepalive",
+      "title": "Distinguish raw bytes from completed operations",
+      "source": "keepalive-raw-controls.mmd",
+      "caption": "Proposed 17-case R control design. The real coordinator and collector run after implementation. Qualified queue, bootstrap and backing evidence remain execution prerequisites. R3 releases before waiting for emitter writes. R5 preserves actual prefixes. Missing collector or storage evidence prevents a tail-retention claim. The graph omits detailed stop, record-carrier and recovery joins, which remain governed by the owner and record specifications. No native mechanism or coordinator result follows."
+    },
     {
       "id": "keepalive-records",
       "group": "keepalive",

@@ -559,6 +559,11 @@ the implementation they exercise.
 
 They must pass after implementation and before downstream consumption. The
 complete profile still requires independent mechanism evidence before adoption.
+
+The [raw-output control design](../verification/settings-activation/KEEPALIVE-RAW-CONTROLS.md)
+names each R case, its finite emission, approved seam and decisive observation.
+Its process and retention accounting remains separate from an executable study manifest.
+
 The separately audited collector R3 pre-read barrier and R5 raw-storage
 write-result controls were approved on 2026-11-01. Their exact scope is stated
 below and in the producer contract. No broader collector substitution follows.

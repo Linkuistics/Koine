@@ -1,4 +1,6 @@
-# settings-keepalive-profile-reconciliation-k119
+# settings-keepalive-profile-reconciliation-k119 — brief
+
+<!-- tc: off because the inherited mandate is preserved verbatim as the original charter -->
 
 ## Goal
 Complete every remaining k112/k107 enforceable useful-profile obligation and
@@ -101,3 +103,32 @@ Both final paths retain kinds 27, 20 and 28. Use the explicit reference types,
 complete profile-digest preimage and per-write audited-copy barrier list. These
 corrections select no useful capacity or mechanism. Every original completion
 duty and prerequisite remains binding.
+
+<!-- tc: on -->
+
+## Decomposition and retained charter
+
+The original charter above remains binding in full.
+This node exceeds one focused session and lacks external qualification evidence.
+Its children answer distinct design questions. They are not repeated passes.
+
+- K122 specifies all 17 raw-output controls and their approved seams.
+- K123 expands record/recovery controls beyond the former 18-case baseline.
+- K124 derives the complete workload, carrier schedule and accounting requirements.
+- K125 specifies exact missing native and dependency evidence scopes.
+- K126 completes every remaining original duty and the whole-design reconciliation.
+
+Only k122 executes in this session. Every earned scoped review precedes consumption.
+Whole-design review still requires the complete artifact.
+Missing mechanisms keep startup unavailable. No slice closes this node or its ancestors.
+
+## Decisions (running log)
+
+- 2026-11-01: Adopt k119 at clean parent 1d85d799.
+  Consume k121's integrated schema and retain its carrier, attachment and final-tail corrections.
+- 2026-11-01: Read TestAnyware issue 13 through GitHub.
+  It remains OPEN with no comments or returned evidence.
+  No external message or dependency implementation follows.
+- 2026-11-01: Decompose at independently checkable control, workload and evidence questions.
+  Preserve every original completion condition. Complete only raw-control design k122 here.
+  Native execution, numerical profile adoption and ancestor closure remain unavailable.
