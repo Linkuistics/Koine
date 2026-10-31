@@ -125,7 +125,19 @@ publication. Unstarted pending cancellation has no operation charge.
 **Producer launcher**: The backend execution point that installs applicable
 limits under the owner's commitment before executing the external producer.
 It binds the declared environment and bounded raw descriptors before execution.
-Its own map size can constrain which address-space limit it can install.
+The installing process's map size can constrain which address-space limit it can install.
+
+**Native intermediary**: The proposed C/libSystem image that the **producer launcher** executes to install declared limits before producer exec.
+Its own bootstrap precedes that installation.
+
+**Raw collector**: The proposed separate backend-owned process that retains stdout and stderr from the producer's pipes.
+Its own build, bootstrap, buffers and writer-lock lifetime require qualification.
+
+**Allocation fence**: A proposed terminal record that reserves a finite ordinal range before its members are consumed.
+Recovery burns uncertain members without claiming execution or charging an unstarted capture.
+
+**Terminal record pool**: The proposed finite set of precreated terminal slots, each bound once to a distinct attempted record write.
+A failed or partial slot remains retained and cannot fund another write.
 
 **Bounded operation request**: The immutable, versioned dependency request that
 binds an opaque operation token to its resource profile, command and assigned outputs.

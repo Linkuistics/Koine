@@ -102,7 +102,7 @@ An unchecked library allocation cannot be charged retrospectively as enforcement
 
 | Boundary and owner | Required behaviour before work | Required refusal behaviour |
 |---|---|---|
-| Connection/handshake reader | Bound variable-length reasons, names and security negotiation, plus parser/read-ahead buffers. Apply byte/count/deadline allowances even on discarded or error messages. | Do not allocate the advertised excessive length, drain an unbounded remainder or echo arbitrary text into diagnostics. |
+| Connection/handshake reader | Bound variable-length reasons, names and security negotiation, plus parser/read-ahead buffers, colour maps and clipboard text. Apply byte/count/deadline allowances even on discarded or error messages. | Do not allocate the advertised excessive length, drain an unbounded remainder or echo arbitrary text into diagnostics. |
 | Framebuffer manager | Check initial and resized geometry, checked byte products and source/destination rectangles before payload storage or frame allocation. Reserve the simultaneous old/new frame peak before resize. | Honour valid server resizes, including smaller geometry. Do not shrink or downsample a rejected frame to fit a budget or call it usable. |
 | Raw and CopyRect decoder | Raw payload fits the rectangle, wire and output budgets before read/allocation. CopyRect checks both ranges before copying. | Reject the malformed or over-budget operation without a corrective input or another capture. |
 | ZRLE decoder | Bound compressed storage, persistent inflater state, each inflate chunk, total expansion, tile scratch and decoded output before growth. Check tiles within those limits. | No final oversized chunk appended before checking. No reset/retry to make the same request fit. |
@@ -175,12 +175,17 @@ No direct unbounded file or alternate inherited descriptor may bypass that bound
 
 An exact-limit complete stream may succeed. A write beyond its allowance, a short
 write or a capture failure closes eligibility and retains the real written prefix.
+The first excess or write failure opens the existing containment window immediately. An earlier open window keeps its original deadline.
 The backend records the stream, bound, observed failure and unknown tail separately
 from any producer observation. Producer exit zero cannot clear this failure.
 
 The [qualification proposal](../verification/settings-activation/KEEPALIVE-QUALIFICATION.md#backend-raw-descriptor-capture)
-selects backend-owned pipes and precharged queue-tail retention for independent
-review. Queue coverage, bootstrap and process-loss limits remain explicit. Use requires
+retains backend-owned pipes and precharged queue-tail retention as a candidate after review integration.
+Queue coverage, bootstrap and process-loss limits remain explicit. The raw group is blocked until those required bounds exist.
+
+The collector is a proposed separate C/libSystem image. Its build, bootstrap and runtime contribution need independent evidence.
+It inherits the original writer descriptor as an active command writer.
+The producer receives only pipe write ends for raw output, never raw-storage write descriptors. Use requires
 actual qualification evidence under separately agreed execution scope.
 
 Candidates include a bounded collector or a non-growing backing object with enforced
@@ -266,17 +271,33 @@ The following is the authoritative resource-mutant list for Koine controls:
 - Accept raw output beyond its bound or let producer success clear a capture failure.
 
 Each mutant must fail its corresponding control. These are future test obligations,
-not tests executed by this design session. The existing controlled CLI can emit
+not tests executed by this design session.
+The qualification proposal maps all R rows and S2 through S6 to later implementation controls.
+
+Those rows do not add mechanism prerequisites before the coordinator exists. This section remains authoritative for substitutions and resource mutants.
+The owner spec remains authoritative for lifecycle, transitions and lock ownership.
+
+The separate collector is not an approved copied module. Its proposed R3 internal barrier needs an explicit enabling-point decision in k112. The existing controlled CLI can emit
 finite stdout/stderr prefixes without a structured observation, then exit or retain
-a descriptor. These controls must distinguish exact-limit completion, excess output,
+a descriptor.
+
+These controls must distinguish exact-limit completion, excess output,
 simultaneous streams, write failure and unresolved inherited holders.
-Use the existing named backend write-result seam for partial-write controls.
+R5 must name a reachable approved backend write-result boundary.
+If raw persistence requires a collector-copy substitution, k112 must request separate approval and account for its correspondence audit.
+No collector-copy write-result substitution is approved.
 They qualify failure handling, not the actual raw-capture mechanism or native failures.
 
 The approved substitutions qualify **failure handling only**. Producer guard
 tests require the real dependency with finite protocol fixtures. They must
 observe rejection before the actual allocation/write and unchanged in-budget
-pixels/behavior. This design adds no copied-producer allocator seam. Native
+pixels/behaviour.
+
+The dependency owner must enumerate every unit and expanded control before separate review.
+The former 48-case proposal supplies no complete guard matrix.
+Pre-Vision copies cannot qualify native-input consumption or post-recognition result collection.
+Those require the real native path and separate explicit execution scope.
+This design adds no copied-producer allocator seam. Native
 limit, storage reservation and codec/service coverage need their own evidence.
 
 ## Alternatives and costs

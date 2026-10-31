@@ -1,0 +1,150 @@
+{
+  "project": "Users-antony-Development-AbstractingComputers-Koine.gh-issue-14",
+  "signal": "best_effort",
+  "indexed_at": "2026-10-31T06:29:00Z",
+  "metadata": {
+    "generation": "2026-10-31T06:29:00Z",
+    "index_mode": "full",
+    "recorded_at": "2026-10-31T06:29:00Z",
+    "recording_status": "complete",
+    "ignored_files_stored": 276,
+    "ignored_files_total": 276,
+    "hash_records_complete": true,
+    "coverage_version": 3,
+    "generation_matches": true
+  },
+  "paths": [
+    {
+      "requested_path": "docs/verification/settings-activation/KEEPALIVE-QUALIFICATION.md",
+      "path": "docs/verification/settings-activation/KEEPALIVE-QUALIFICATION.md",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_changed",
+      "recommended_action": "read_source_and_reindex",
+      "coverage": []
+    },
+    {
+      "requested_path": "docs/specs/settings-capture-resource-contract.md",
+      "path": "docs/specs/settings-capture-resource-contract.md",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_changed",
+      "recommended_action": "read_source_and_reindex",
+      "coverage": []
+    },
+    {
+      "requested_path": "docs/specs/settings-keepalive-owner.md",
+      "path": "docs/specs/settings-keepalive-owner.md",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_changed",
+      "recommended_action": "read_source_and_reindex",
+      "coverage": []
+    },
+    {
+      "requested_path": "CONTEXT.md",
+      "path": "CONTEXT.md",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_match",
+      "recommended_action": "use_graph_with_best_effort_caveat",
+      "coverage": []
+    },
+    {
+      "requested_path": "docs/design/architecture/settings-activation/README.md",
+      "path": "docs/design/architecture/settings-activation/README.md",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_changed",
+      "recommended_action": "read_source_and_reindex",
+      "coverage": []
+    },
+    {
+      "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-design--settings-keepalive-complete-profile-k112.md",
+      "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-design--settings-keepalive-complete-profile-k112.md",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_changed",
+      "recommended_action": "read_source_and_reindex",
+      "coverage": []
+    },
+    {
+      "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/06-integrate-review-design--settings-keepalive-qualification-k116.md",
+      "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/06-integrate-review-design--settings-keepalive-qualification-k116.md",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_changed",
+      "recommended_action": "read_source_and_reindex",
+      "coverage": []
+    },
+    {
+      "requested_path": "Taskfile.yml",
+      "path": "Taskfile.yml",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_match",
+      "recommended_action": "use_graph_with_best_effort_caveat",
+      "coverage": []
+    },
+    {
+      "requested_path": "scripts/check-doc-links.py",
+      "path": "scripts/check-doc-links.py",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_match",
+      "recommended_action": "use_graph_with_best_effort_caveat",
+      "coverage": []
+    },
+    {
+      "requested_path": "docs/design/architecture/diagrams.json",
+      "path": "docs/design/architecture/diagrams.json",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_match",
+      "recommended_action": "use_graph_with_best_effort_caveat",
+      "coverage": []
+    },
+    {
+      "requested_path": "docs/design/architecture/settings-activation/diagrams.json",
+      "path": "docs/design/architecture/settings-activation/diagrams.json",
+      "status": "no_recorded_issue",
+      "freshness": "metadata_changed",
+      "recommended_action": "read_source_and_reindex",
+      "coverage": []
+    },
+    {
+      "requested_path": "docs/design/architecture/settings-activation/keepalive-qualification.mmd",
+      "path": "docs/design/architecture/settings-activation/keepalive-qualification.mmd",
+      "status": "partial",
+      "freshness": "metadata_match",
+      "recommended_action": "read_ranges_and_verify_scope",
+      "coverage": [
+        {
+          "path": "docs/design/architecture/settings-activation/keepalive-qualification.mmd",
+          "kind": "parse_partial",
+          "detail": "1-32",
+          "match": "exact",
+          "ranges": [
+            {
+              "start": 1,
+              "end": 32
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "requested_path": "docs/design/architecture/settings-activation/keepalive-storage.mmd",
+      "path": "docs/design/architecture/settings-activation/keepalive-storage.mmd",
+      "status": "partial",
+      "freshness": "metadata_match",
+      "recommended_action": "read_ranges_and_verify_scope",
+      "coverage": [
+        {
+          "path": "docs/design/architecture/settings-activation/keepalive-storage.mmd",
+          "kind": "parse_partial",
+          "detail": "1-31",
+          "match": "exact",
+          "ranges": [
+            {
+              "start": 1,
+              "end": 31
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "scopes": [],
+  "caveat": "Best-effort signal only. No recorded issue does not prove graph or source completeness; read flagged source and qualify claims when metadata is changed or unavailable."
+}

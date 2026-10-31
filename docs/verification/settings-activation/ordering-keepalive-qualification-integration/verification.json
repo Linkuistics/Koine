@@ -1,0 +1,105 @@
+{
+  "task": "settings-keepalive-qualification-k116",
+  "date": "2026-10-31",
+  "review_commit": "565630245678ce413b2793cb5bbfe4010428a9f9",
+  "reviewed_proposal": "0fbb6fe7",
+  "prose_preparation_commit": "519cb222",
+  "scope": "Documentation integration only. No capability case, native experiment, build, image provisioning, VM or runtime slot ran.",
+  "checks": {
+    "prose": {
+      "receipt": "prose-final.json",
+      "exit_code": 0,
+      "hard_findings": 0,
+      "advisory_findings": 97,
+      "pending_markers": 3,
+      "limitations": "The three pending markers already existed in the converted documents. Advisory findings are recorded, not treated as errors.",
+      "earlier_receipts": [
+        "prose-baseline.json",
+        "prose-conversion.json",
+        "prose-conversion-final.json",
+        "prose-conversion-complete.json",
+        "prose-conversion-pass.json",
+        "prose-content-draft.json",
+        "prose-finalization.json",
+        "prose-conversion-intermediate.json"
+      ]
+    },
+    "links": {
+      "receipt": "links.json",
+      "earlier_receipt": "links-before-final-wording.json",
+      "command": [
+        "mise",
+        "exec",
+        "--",
+        "task",
+        "check:docs"
+      ],
+      "exit_code": 201,
+      "checker_exit_code": 1,
+      "subjects_unchanged": true,
+      "result": "Only the two known k23 missing targets: context-predicate.txt and context-qualify-filter.sh in context-initial-inputs/CONTEXT-PLAN.md. No clean whole-repository link result is claimed."
+    },
+    "manifests": {
+      "receipt": "manifests.json",
+      "result": "Both manifests pass uniqueness, group, file-existence and discussion-reference checks.",
+      "counts": {
+        "root": 61,
+        "settings_activation": 15
+      }
+    },
+    "browser": {
+      "before": "browser-inputs.json",
+      "after": "browser-inputs-after.json",
+      "subjects_unchanged": true,
+      "command": [
+        "mise",
+        "exec",
+        "--",
+        "task",
+        "design:serve",
+        "PORT=8812"
+      ],
+      "address": "127.0.0.1:8812",
+      "views": [
+        "/settings-activation/#diagram-keepalive-qualification",
+        "/#diagram-settings-activation-keepalive-qualification"
+      ],
+      "result": "Both updated qualification and storage sources rendered. The Settings page contains 15 rendered SVG diagrams. The root page contains 61 diagram sections; its updated qualification and storage views contain 14 and 12 nodes. No .error nodes were observed in either page.",
+      "visual_inspection": "Inspected qualification entry, separate native execution decision, post-implementation controls and the future-coordinator storage entry. Screenshots were inspected in-session, not retained as files.",
+      "limits": "This is a browser rendering check, not a semantic proof or a runtime qualification result.",
+      "setup": [
+        "Default port 8765 was already in use; task design:serve returned exit 201. That listener was left alone.",
+        "The in-app browser was unavailable. The check used a new Chrome task tab.",
+        "A missing favicon returned HTTP 404; diagram sources loaded successfully."
+      ],
+      "cleanup": "Closed the task tab and interrupted the owned port-8812 task server. It exited successfully."
+    },
+    "reviewer": {
+      "task": "review_qualification_bounds",
+      "scope": "Intermediary/producer map floors, L1-L5 controls, case/process/time/retention accounting and exclusion of later coordinator controls.",
+      "result": "No supported material finding in the assigned scope.",
+      "followup": "A related R5 backend-to-collector write-boundary ambiguity was made an explicit k112 prerequisite. No collector-copy substitution was approved.",
+      "limits": "One narrow read-only reviewer. No second review, experiment or test."
+    }
+  },
+  "graph": {
+    "tier": 2,
+    "project": "Users-antony-Development-AbstractingComputers-Koine.gh-issue-14",
+    "generation": "2026-10-31T06:29:00Z",
+    "receipt": "coverage.json",
+    "source_fallback": "Read changed documents directly. Read both partially indexed diagram sources completely. No recorded gap is not proof of completeness."
+  },
+  "pinned_sources": {
+    "xnu": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
+    "testanyware": "65bc05c91cc5d2a6e3d4aa8f81cb2c7c7712fa03",
+    "native_host_correspondence": "Not established. Source reads supply no installed-host enforcement result."
+  },
+  "evidence_scope": "Link snapshots hash all consumed Markdown/manifests, the checker and Taskfile, and record local-target existence. Browser snapshots hash local HTML/CSS/JS/JSON/Mermaid inputs; external browser runtime bytes are not pinned.",
+  "lifecycle": "K116 retirement changes only its filename after checks. The checked task bytes are retained under the DONE name. K112 remains live; no ancestor closes.",
+  "verification_driver": "import hashlib, importlib.util, json, subprocess\nfrom pathlib import Path\nroot=Path.cwd()\nout=root/'docs/verification/settings-activation/ordering-keepalive-qualification-integration'\nspec=importlib.util.spec_from_file_location('links',root/'scripts/check-doc-links.py')\nmod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)\ndef digest(p): return hashlib.sha256(p.read_bytes()).hexdigest()\ndef subjects():\n sources=list(mod.sources())\n inputs=set(sources)|{root/'Taskfile.yml',root/'scripts/check-doc-links.py'}\n targets={}\n for p in sources:\n  for href in mod.links(p):\n   resolved=mod.resolve(p,href)\n   if resolved is None: continue\n   dest,anchor=resolved\n   key=str(dest.relative_to(root)) if dest.is_relative_to(root) else str(dest)\n   targets[key]={'exists':dest.exists(),'kind':'file' if dest.is_file() else 'directory' if dest.is_dir() else 'missing'}\n   if anchor and dest.suffix=='.md' and dest.exists(): inputs.add(dest)\n return {'inputs':{str(p.relative_to(root)):digest(p) for p in sorted(inputs)},'targets':targets}\nbefore=subjects()\ncmd=['mise','exec','--','task','check:docs']\nr=subprocess.run(cmd,text=True,capture_output=True)\nafter=subjects()\nlinks={'command':cmd,'exit_code':r.returncode,'stdout':r.stdout,'stderr':r.stderr,'before':before,'after':after,'subjects_unchanged':before==after}\n(out/'links.json').write_text(json.dumps(links,indent=2)+'\\n')\nprint(json.dumps({k:v for k,v in links.items() if k not in ('before','after')},indent=2))\nmanifest_names=['docs/design/architecture/diagrams.json','docs/design/architecture/settings-activation/diagrams.json']\nchecks=[]\nbrowser_inputs={}\nfor name in manifest_names:\n p=root/name; data=json.loads(p.read_text())\n ids=[d['id'] for d in data['diagrams']]\n groups=[g['id'] for g in data['groups']]\n assert len(ids)==len(set(ids)),name\n assert len(groups)==len(set(groups)),name\n for d in data['diagrams']:\n  assert d['group'] in groups,(name,d['id'])\n  for key in ['source','rendered']:\n   if key in d: assert (p.parent/d[key]).is_file(),(name,d['id'],key)\n discussion=data.get('discussion',{})\n for did in discussion.get('diagramIds',[]): assert did in ids,(name,did)\n for upd in discussion.get('updatedDiagrams',[]): assert upd['id'] in ids,(name,upd)\n checks.append({'path':name,'sha256':digest(p),'diagram_count':len(ids),'group_count':len(groups),'result':'pass'})\nfor p in (root/'docs/design/architecture').rglob('*'):\n if p.is_file() and p.suffix in ('.mmd','.json','.html','.css','.js'): browser_inputs[str(p.relative_to(root))]=digest(p)\n(out/'browser-inputs.json').write_text(json.dumps(browser_inputs,indent=2)+'\\n')\n(out/'manifests.json').write_text(json.dumps({'checks':checks,'scope':'Unique diagram/group identifiers, valid diagram groups, existing source/rendered files and valid discussion references.'},indent=2)+'\\n')\nprint(json.dumps(checks,indent=2))\n",
+  "receipt_audit": {
+    "missing_referenced_receipts": [],
+    "final_prose_input_mismatches": [],
+    "browser_input_snapshots_equal": true
+  }
+}

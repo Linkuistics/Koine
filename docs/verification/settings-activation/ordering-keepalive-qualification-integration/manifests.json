@@ -1,0 +1,19 @@
+{
+  "checks": [
+    {
+      "path": "docs/design/architecture/diagrams.json",
+      "sha256": "eb344f4ba267e632c525871bdc0dc54e48be5d7f672b81e4c7b8b29f946ca8b8",
+      "diagram_count": 61,
+      "group_count": 11,
+      "result": "pass"
+    },
+    {
+      "path": "docs/design/architecture/settings-activation/diagrams.json",
+      "sha256": "bf835f89db6a4bf359acf0a8f5bfba7f27a01f921876362cfd41856e80ff27cd",
+      "diagram_count": 15,
+      "group_count": 5,
+      "result": "pass"
+    }
+  ],
+  "scope": "Unique diagram/group identifiers, valid diagram groups, existing source/rendered files and valid discussion references."
+}

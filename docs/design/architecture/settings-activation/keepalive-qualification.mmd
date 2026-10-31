@@ -1,29 +1,31 @@
 flowchart TD
-    start["Start here: reviewed producer contract"]:::start
-    subjects["Pin source, builds, host and case manifest"]
-    missing["Missing subject or required bound"]
+    start["Start here: integrated qualification proposal"]:::start
+    subjects["Pin source, builds, host, units and case manifest"]
+    missing["Missing subject, queue bound or other required evidence"]
     hold["Profile unavailable; no execution request"]
-    review["Independent proposal review and integration"]
-    decision["Separate explicit execution decision"]
-    launch["Launcher floor and exec/map cases"]
-    raw["Raw prefixes, queued bytes and holders"]
-    storage["Protected storage and process-loss recovery"]
-    evidence["Separate source, controls, results and unknowns"]
+    decision["Explicit reviewed mechanism execution decision"]
+    mechanism["13 mechanism cases: L1-L5 and S1"]
+    dependency["External producer guards and actual exec floor"]
+    evidence["Separate source, finite results and unknowns"]
+    scope["Separate native scope review and execution decision"]
     native["Native service bounds and complete useful workload"]
     complete["Complete profile design and whole-design review"]
-    start -->|1. Design only| subjects
-    subjects -->|2. Present proposal| review
-    review -->|3. Check exact subjects and scope| decision
-    subjects -->|Unresolved today| missing
+    implement["Planning and implementation"]
+    controls["Later R and S2-S6 coordinator controls"]
+    consume["Reviewed downstream adoption"]
+    start --> subjects
+    subjects --> decision
+    subjects --> missing
     missing --> hold
-    decision -->|Only if authorised and admitted| launch
-    decision -->|Only if authorised and admitted| raw
-    decision -->|Only if authorised and admitted| storage
-    launch --> evidence
-    raw --> evidence
-    storage --> evidence
-    evidence -->|Required evidence still missing| hold
-    evidence -->|Named finite observations| native
+    decision -->|Only if authorised and admitted| mechanism
+    mechanism --> evidence
+    dependency --> evidence
+    evidence -->|Required evidence missing| hold
+    evidence --> scope
+    scope -->|Only if separately authorised and admitted| native
     native -->|All required bounds and fit established| complete
-    native -->|Undocumented bound remains| hold
+    native -->|Required bound unresolved| hold
+    complete --> implement
+    implement -->|Exact subjects and complete test envelope| controls
+    controls -->|Pass with earned review and integration| consume
     classDef start fill:#172b4d,stroke:#172b4d,color:#fff,font-weight:bold

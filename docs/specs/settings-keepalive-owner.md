@@ -19,8 +19,9 @@ Antony approved bounded-producer design and audited resource-result substitution
 The [dependency contract](settings-capture-resource-contract.md) specifies those
 boundaries. Its review is integrated. The
 [mechanism qualification proposal](../verification/settings-activation/KEEPALIVE-QUALIFICATION.md)
-selects candidates for independent review, with missing executable subjects and
-native/storage bounds explicit. No capability row has run.
+retains mechanism candidates after review integration, with missing executable subjects and native/storage bounds explicit.
+
+It separates pre-implementation mechanism cases from future coordinator controls. No capability row has run.
 The [remaining profile](#remaining-profile) must supply
 enforceable resources and whole-design reconciliation before whole-design review,
 planning or implementation. Adoption and every runtime slot stay held.
@@ -115,6 +116,10 @@ reap a grandchild or turn a bare PID into termination authority.
 Neither worker nor scenario client inherits the writer descriptor. Only the
 active command/validator processes that must preserve the current lock on owner
 loss inherit it.
+The proposed intermediary passes that same descriptor through exec to the producer.
+
+The active collector also retains it while writing and until exit. These processes remain members of the owned backend group.
+The manifest records their exact descriptor inventory and closure points. Recovery must resolve every actual holder before acquiring the original lock.
 
 This is a cooperating-harness contract. It is not confinement against malicious
 same-user processes or a guarantee that the external CLI cannot create an
@@ -491,10 +496,21 @@ design does not guarantee preservation or available cleanup on failed storage.
 
 Use the agreed existing helper/adapter seam with controlled CLI and sleep
 behaviour. Exercise the real owner, lock, validator and receipt code once
-implemented. Phase barriers are test controls, not production UI waits. Tests
+implemented. Phase barriers are test controls, not production UI waits.
+
+Tests
 must observe actual CLI invocation count and arguments, event/ordinal
 relationships, raw statuses, retained bytes and later-dispatch refusal. Proposed
 controls are not claimed as executed tests of this unimplemented design.
+The qualification proposal classifies every R row and S2 through S6 as later implementation controls.
+
+This section owns their lifecycle and ownership duties. The producer contract owns their resource substitutions and mutant list.
+Their results cannot precede the implementation they exercise.
+
+They must pass after implementation and before downstream consumption.
+The complete profile still requires independent mechanism evidence before adoption.
+No copied internal collector barrier or write-result substitution is approved.
+K112 must resolve R3 and R5 enabling points without silently broadening the existing owner/backend/caller approval.
 
 CLI controls reach an active command and its return. A controlled sleep executable
 in the worker's test environment reaches sleeping and sleep-return schedules.
@@ -911,9 +927,12 @@ target process retains the limits and cannot place required work outside them.
 The install point has its own resource cost. In the pinned XNU source, the setter
 rejects an address-space limit below the calling process's existing map size.
 A pre-exec call in a forked Python backend child therefore inherits that map's floor.
+
 The enforcement survey found no selected launcher from which to establish the
 actual install point and its map-size requirement on the intended host.
-Producer useful fit and limit inheritance do not establish this floor.
+Producer useful fit and limit readback do not establish this floor.
+The threshold must cover both the intermediary install-point map and the real producer map when exec applies the inherited limit.
+The proposal distinguishes those observations, their source correspondence and later loader growth. No-op exec cases cannot supply the real producer floor.
 An exec'd intermediary, an in-producer check or another mechanism needs its own
 coverage and ownership argument before selection.
 
@@ -931,6 +950,10 @@ An excess write or capture failure remains failed even if the producer exits zer
 The [qualification proposal](../verification/settings-activation/KEEPALIVE-QUALIFICATION.md#backend-raw-descriptor-capture)
 uses backend-owned pipes with precharged queued-byte retention as a candidate.
 Queue bounds, bootstrap coverage and process-loss availability remain unresolved.
+
+The raw group is blocked until its queue and temporary-memory bounds are established.
+A finite pipe-fill observation cannot replace those bounds.
+Excess or write failure opens the existing failure-containment window immediately, without resetting an earlier window.
 Actual qualification still needs its separately agreed execution scope.
 K112 must include its full cost and unavailable outcomes in the complete profile.
 

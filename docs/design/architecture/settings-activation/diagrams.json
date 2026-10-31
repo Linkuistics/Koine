@@ -30,8 +30,8 @@
   ],
   "discussion": {
     "title": "Qualify launcher, raw capture and protected storage",
-    "status": "Qualification proposal; independent review pending. No execution authorised.",
-    "summary": "A minimal C/libSystem intermediary, bounded pipe collectors and three disposable storage images are candidates. The proposal fixes finite cases and retention/cleanup limits. Missing builds, SDK identity, kernel coverage and native/service bounds prevent an execution request and complete-profile startup. The producer contract review is integrated.",
+    "status": "Review integrated by k116. Exact mechanisms remain unqualified. No execution authorised.",
+    "summary": "The proposal separates thirteen mechanism cases from future coordinator controls and external producer evidence. The map threshold must cover the intermediary and real producer at exec. Raw qualification remains blocked on queue bounds. The collector control boundaries and exact native scope remain choices for k112. Missing builds, SDK correspondence and native/service bounds prevent execution and profile adoption.",
     "diagramIds": [
       "keepalive-qualification",
       "keepalive-storage",
@@ -41,15 +41,15 @@
     "updatedDiagrams": [
       {
         "id": "keepalive-qualification",
-        "summary": "Separates subject closure, proposal review, execution authority and the evidence still required for a useful profile."
+        "summary": "Separates mechanism results, the additional native execution gate and later implemented-coordinator controls."
       },
       {
         "id": "keepalive-storage",
-        "summary": "Shows terminal fences and bindings before class-backed attempt creation, with original-lock collection-only recovery."
+        "summary": "Labels fence and original-lock recovery as future coordinator obligations."
       },
       {
         "id": "keepalive-producer",
-        "summary": "Updates the caption to distinguish the proposed pipe mechanism from outstanding enforcement and retention evidence."
+        "summary": "Names the separate collector and its unapproved copied control boundaries."
       }
     ]
   },
@@ -59,14 +59,14 @@
       "group": "keepalive",
       "title": "Qualify each mechanism before completing the profile",
       "source": "keepalive-qualification.mmd",
-      "caption": "Proposed evidence sequence. Independent review precedes any execution decision. Exact executable subjects, SDK correspondence, kernel queue/map coverage and native bounds remain unavailable. Small controls cannot establish undocumented universal bounds or whole-workload fit. No capability row has run."
+      "caption": "Integrated qualification proposal. Thirteen mechanism cases exclude future R and S2-S6 coordinator controls and external dependency evidence. Exact subjects and bounds remain unavailable. Native fit needs its own reviewed execution decision. Small controls establish no universal native bound. No capability row has run."
     },
     {
       "id": "keepalive-storage",
       "group": "keepalive",
       "title": "Recover collection under the original lock and global fence",
       "source": "keepalive-storage.mmd",
-      "caption": "Proposed storage/recovery order for three disposable fixed-image containers. Terminal storage holds the original lock, allocation fences, bindings and lifecycle/final rows. Attempt directories belong to their ordinary or collection backing. Recovery burns uncertain ordinals and permits collection only. The diagram abbreviates the complete write/flush/publication and holder protocol; no power-loss, metadata reservation or actual storage qualification is established."
+      "caption": "Future coordinator storage and recovery obligations across three proposed fixed-image containers. Terminal storage holds the original lock, fences, bindings and lifecycle/final rows. Attempts use their assigned backing. Recovery burns uncertain ordinals and permits collection only. S1 tests storage with fixed byte objects. S2-S6 require the implemented coordinator. No metadata, durability or recovery result is established."
     },
     {
       "id": "keepalive-completion",
@@ -80,7 +80,7 @@
       "group": "keepalive",
       "title": "Bound producer work before allocation and write",
       "source": "keepalive-producer.mmd",
-      "caption": "Proposed dependency interface after complete profile qualification. Read from the first owner transition. The producer launcher checks the declared environment and binds bounded raw descriptors before execution. The request pins encoding and OCR choices. Producer guards cover allocations and structured emission. Backend capture covers abnormal raw output and inherited holders. Original and partial outputs survive failure. The qualification proposal selects pipes with a precharged queue tail as a candidate; actual bounds and process-loss retention remain unqualified. Delivery and terminal completion use the full owner protocol, abbreviated here. No implemented API or enforcement result follows."
+      "caption": "Proposed dependency interface after complete profile qualification. Read from the first owner transition. The producer launcher checks the declared environment and binds bounded raw descriptors before execution. The request pins encoding and OCR choices. Producer guards cover allocations and structured emission. Backend capture covers abnormal raw output and inherited holders. Original and partial outputs survive failure. The qualification proposal retains pipes and a separately pinned collector as candidates. Queue bounds, bootstrap and process-loss retention remain unqualified. Copied collector barriers and write-result substitutions are outside the approval. Delivery and terminal completion use the full owner protocol, abbreviated here. No implemented API or enforcement result follows."
     },
     {
       "id": "keepalive-resources",

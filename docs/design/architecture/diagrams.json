@@ -631,14 +631,14 @@
       "group": "settings-activation",
       "title": "Qualify each mechanism before completing the profile",
       "source": "settings-activation/keepalive-qualification.mmd",
-      "caption": "Proposed evidence sequence. Independent review precedes any execution decision. Exact executable subjects, SDK correspondence, kernel queue/map coverage and native bounds remain unavailable. Small controls cannot establish undocumented universal bounds or whole-workload fit. No capability row has run."
+      "caption": "Integrated qualification proposal. Thirteen mechanism cases exclude future R and S2-S6 coordinator controls and external dependency evidence. Exact subjects and bounds remain unavailable. Native fit needs its own reviewed execution decision. Small controls establish no universal native bound. No capability row has run."
     },
     {
       "id": "settings-activation-keepalive-storage",
       "group": "settings-activation",
       "title": "Recover collection under the original lock and global fence",
       "source": "settings-activation/keepalive-storage.mmd",
-      "caption": "Proposed storage/recovery order for three disposable fixed-image containers. Terminal storage holds the original lock, allocation fences, bindings and lifecycle/final rows. Attempt directories belong to their ordinary or collection backing. Recovery burns uncertain ordinals and permits collection only. The diagram abbreviates the complete write/flush/publication and holder protocol; no power-loss, metadata reservation or actual storage qualification is established."
+      "caption": "Future coordinator storage and recovery obligations across three proposed fixed-image containers. Terminal storage holds the original lock, fences, bindings and lifecycle/final rows. Attempts use their assigned backing. Recovery burns uncertain ordinals and permits collection only. S1 tests storage with fixed byte objects. S2-S6 require the implemented coordinator. No metadata, durability or recovery result is established."
     }
   ]
 }

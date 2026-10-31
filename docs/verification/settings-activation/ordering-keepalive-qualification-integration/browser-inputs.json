@@ -1,0 +1,21 @@
+{
+  "docs/design/architecture/index.html": "d95fd35654622756c2632a73f66d00d72039043aa5c8a2a8f642231b75b4bd74",
+  "docs/design/architecture/diagrams.json": "eb344f4ba267e632c525871bdc0dc54e48be5d7f672b81e4c7b8b29f946ca8b8",
+  "docs/design/architecture/settings-activation/correction-assessment.mmd": "7a2094e10dc5af5ef7d534e6fd1ecf93afe51e96be4e8d16d9202bd69147e78b",
+  "docs/design/architecture/settings-activation/keepalive-completion.mmd": "160a96a6b65c0da0cc9abfbaa482e06bd2e2c59bae5d28acf0d2b3db72264ca2",
+  "docs/design/architecture/settings-activation/keepalive-storage.mmd": "669ac0a06f3fd0a6b987955ec9a27d5f6fdce152db772bab4191c4b567823dc0",
+  "docs/design/architecture/settings-activation/index.html": "d95fd35654622756c2632a73f66d00d72039043aa5c8a2a8f642231b75b4bd74",
+  "docs/design/architecture/settings-activation/keepalive-collision.mmd": "e88ec7861a92c864a38e3fb88977254570498bda99f51229202a30838a5fb53a",
+  "docs/design/architecture/settings-activation/evidence-limit.mmd": "c1d2eef97a56975c39178dce301867c2efdd68693ff80f624d46b1e162227db5",
+  "docs/design/architecture/settings-activation/keepalive-scheduling.mmd": "7caa49e55141e991be87d227f4a72d278ab4d3607b5bb89edc4d76c9d5881b14",
+  "docs/design/architecture/settings-activation/keepalive-producer.mmd": "c2377a007f1626d212f4336872213e981b71fb69250c460e7ee4951a7250f125",
+  "docs/design/architecture/settings-activation/keepalive-lifecycle.mmd": "28340f03292dce65bb2cf03b91f09f86300f9fe9d19ab35d43f493c80007be16",
+  "docs/design/architecture/settings-activation/diagrams.json": "bf835f89db6a4bf359acf0a8f5bfba7f27a01f921876362cfd41856e80ff27cd",
+  "docs/design/architecture/settings-activation/ordering-sequence.mmd": "4693fb14ed53dd6783b467d2712975c17ea79e0865d699d4075fc0ef5ec9e1a3",
+  "docs/design/architecture/settings-activation/keepalive-owner.mmd": "4c169c96c96589b9068c80c79a7dcf4704c09bf23963bb52d3816a09699ea098",
+  "docs/design/architecture/settings-activation/keepalive-resources.mmd": "3e0efd927ce099d4831f9760ea7a721f6792dda94cde43164e448752fc7f9355",
+  "docs/design/architecture/settings-activation/keepalive-qualification.mmd": "5cc0220d7b810d43d55d16b1b756b05527adf882a5aaf639a4390723ea9246ad",
+  "docs/design/architecture/settings-activation/keepalive-scope.mmd": "3497cb0a1c825efd638d3b53b741ea989cbf603309fd268f2d64f56afb81ff81",
+  "docs/design/architecture/settings-activation/evaluation-outcomes.mmd": "b53a5548c66a5b8dfc85b33fb120b66b24c3b6c66c927160974692c6b2762e18",
+  "docs/design/architecture/settings-activation/scope-choice.mmd": "011c2e2a5c9610ae90ec6aa77c0a9e236909db9f637371db3d49415225b03ff8"
+}
