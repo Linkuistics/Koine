@@ -634,6 +634,20 @@
       "caption": "Integrated qualification proposal. Thirteen mechanism cases exclude future R and S2-S6 coordinator controls and external dependency evidence. Exact subjects and bounds remain unavailable. Native fit needs its own reviewed execution decision. Small controls establish no universal native bound. No capability row has run."
     },
     {
+      "id": "settings-activation-keepalive-recovery-controls",
+      "group": "settings-activation",
+      "title": "Check publication before dependent action",
+      "source": "settings-activation/keepalive-recovery-controls.mmd",
+      "caption": "Proposed publication controls. A selected slot and its attachments remain consumed even when empty. Actual bytes, flush and visibility observations, and carrier publication stay distinct. Only complete required joins permit the dependent effect. The companion transfer view shows the later final paths. The full owner protocol governs omitted delivery and containment. No control ran. Implementation, mechanism evidence and complete accounting remain required."
+    },
+    {
+      "id": "settings-activation-keepalive-recovery-transfer",
+      "group": "settings-activation",
+      "title": "Preserve both caller transfer paths",
+      "source": "settings-activation/keepalive-recovery-transfer.mmd",
+      "caption": "Proposed normal and failed-owner transfers. The original caller must establish actual holders, original-lock ownership, identities and a unique frontier. Entry completes before delayed observations or a fence. Only proven unattempted collection items follow. Normal handoff can carry failed history and never restores eligibility. Both paths retain the final sequence and the caller-return trust boundary. The graph abbreviates per-write failures, which prevent dependent actions. Caller loss permits no successor. No control or durability result follows."
+    },
+    {
       "id": "settings-activation-keepalive-records",
       "group": "settings-activation",
       "title": "Assign terminal slots once and preserve the final tail",

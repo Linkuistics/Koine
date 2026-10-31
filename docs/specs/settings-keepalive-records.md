@@ -993,6 +993,12 @@ recovery.
 
 ## Later controls and remaining inputs
 
+The [expanded recovery control design](../verification/settings-activation/KEEPALIVE-RECOVERY-CONTROLS.md)
+names the original S2–S6 cases and the finite publication, codec, recovery and lifecycle products.
+It separates real retained bytes, observed publication results and dependent-action permission.
+Its case count is a design inventory, not an executable manifest or a native execution budget.
+Scoped review and every earned integration precede consumption.
+
 The [qualification
 plan](../verification/settings-activation/KEEPALIVE-QUALIFICATION.md#storage-and-process-loss-controls)
 owns S1 and the existing S2–S6 case groups. The table below refines later

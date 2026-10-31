@@ -1,5 +1,5 @@
 {
-  "title": "Settings activation: raw-output control design",
+  "title": "Settings activation: record and recovery controls",
   "intro": "Graph views start at the dark Start here node. Sequences start at their first message and state views at the initial dot. Lifecycle review is integrated. Scheduling review corrections are integrated. Enforceable resources and whole-design reconciliation remain outstanding. Implementation and runtime stay held.",
   "groups": [
     {
@@ -29,23 +29,42 @@
     }
   ],
   "discussion": {
-    "title": "Distinguish accepted bytes, retained bytes and completed operations",
-    "status": "Proposed R-control design. Executable subjects and native bounds remain unavailable.",
-    "summary": "The 17 base cases distinguish exact retained bytes, EOF, containment and sentinel scenario refusal. Actual loader-output coverage remains an additional open R obligation. R3 releases before waiting for writers, but needs independent blocking and accepted-byte observations for complete coverage. R5 retains actual prefixes. The process inventory exceeds the six-process mechanism envelope. Expanded S controls, workload accounting and native evidence scopes remain live work. No control ran.",
+    "title": "Check each publication cut and recovery path",
+    "status": "Proposed S-control design. Scoped review precedes consumption.",
+    "summary": "The finite design inventory preserves the original eighteen S cases and expands publication cuts, carrier failures, attachments, codec fixtures, recovery, lifecycle and deadlines. Retained bytes, observed publication and dependent-action permission stay separate. The later executable manifest needs implementation and qualified resource bounds. No control ran.",
     "diagramIds": [
-      "keepalive-raw-controls",
+      "keepalive-recovery-controls",
+      "keepalive-recovery-transfer",
       "keepalive-records",
-      "keepalive-completion",
-      "keepalive-qualification"
+      "keepalive-storage",
+      "keepalive-raw-controls"
     ],
     "updatedDiagrams": [
       {
-        "id": "keepalive-raw-controls",
-        "summary": "Clarifies exact-limit EOF, retained excess bytes, sentinel identity and remaining loader/R3 obligations."
+        "id": "keepalive-recovery-controls",
+        "summary": "Separates actual bytes, observed publication and permission to act."
+      },
+      {
+        "id": "keepalive-recovery-transfer",
+        "summary": "Shows normal transfer, one recovery successor and the shared final sequence."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "keepalive-recovery-controls",
+      "group": "keepalive",
+      "title": "Check publication before dependent action",
+      "source": "keepalive-recovery-controls.mmd",
+      "caption": "Proposed publication controls. A selected slot and its attachments remain consumed even when empty. Actual bytes, flush and visibility observations, and carrier publication stay distinct. Only complete required joins permit the dependent effect. The companion transfer view shows the later final paths. The full owner protocol governs omitted delivery and containment. No control ran. Implementation, mechanism evidence and complete accounting remain required."
+    },
+    {
+      "id": "keepalive-recovery-transfer",
+      "group": "keepalive",
+      "title": "Preserve both caller transfer paths",
+      "source": "keepalive-recovery-transfer.mmd",
+      "caption": "Proposed normal and failed-owner transfers. The original caller must establish actual holders, original-lock ownership, identities and a unique frontier. Entry completes before delayed observations or a fence. Only proven unattempted collection items follow. Normal handoff can carry failed history and never restores eligibility. Both paths retain the final sequence and the caller-return trust boundary. The graph abbreviates per-write failures, which prevent dependent actions. Caller loss permits no successor. No control or durability result follows."
+    },
     {
       "id": "keepalive-raw-controls",
       "group": "keepalive",

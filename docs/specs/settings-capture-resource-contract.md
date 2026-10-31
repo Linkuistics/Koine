@@ -230,7 +230,8 @@ locking, charge calculation, publication sequence and failure propagation.
 | Producer launcher setup call/readback in the backend | Setup failure or unavailable/mismatched observation | The existing commitment and charge remain. Setup refusal causes zero external invocations. Commitment receives no later installed-limit fact. |
 | Owner allocation fence/binding writes | Error before write or failure after a real retained prefix | No dependent attempt creation, commitment publication or child dispatch. Uncertain consumed ordinals stay burned under the eventual recovery protocol. |
 | Owner lifecycle/disposition/handoff writes | Named write failure | Earlier evidence remains intact, missing terminal facts stay unavailable, and the submitter cannot infer permission to continue. |
-| Backend attempt directory/raw/artifact/receipt writes | Create/write error, or real prefix followed by failure | Original prefix/partial object and attempt identity remain. Failure settles once, with no retry or later scenario dispatch. |
+| Owner attempt-directory creation after binding | Create error | Original ordinal and full charge remain. No commitment or backend creation follows. The collection successor uses the same transition. |
+| Backend raw/artifact/receipt writes | Write error, or real prefix followed by failure | Original prefix/partial object and attempt identity remain. Failure settles once, with no retry or later scenario dispatch. |
 | Caller owner-exit/final-outcome writes | Named final publication failure | Actual observed child facts remain distinct from the unavailable final record. Exit zero alone cannot complete the run. |
 
 The harness identifies a substitution by module, named boundary and invocation
@@ -279,6 +280,11 @@ The qualification proposal maps all R rows and S2 through S6 to later implementa
 
 Those rows do not add mechanism prerequisites before the coordinator exists. This section remains authoritative for substitutions and resource mutants.
 The owner spec remains authoritative for lifecycle, transitions and lock ownership.
+
+The [expanded record and recovery controls](../verification/settings-activation/KEEPALIVE-RECOVERY-CONTROLS.md)
+identify the approved copied boundaries, actual prefixes and dependent-action oracles for S2–S6 and retained lifecycle controls.
+Their finite design products add no substitution class or native execution authority.
+An unavailable approved site leaves its case unavailable until an explicit seam decision.
 
 Antony approved the separate collector's two named copied boundaries on 2026-11-01.
 R3 follows descriptor/buffer binding and precedes the first raw read.

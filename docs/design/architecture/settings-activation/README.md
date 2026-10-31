@@ -1,17 +1,17 @@
 # Settings activation design discussion
 
-The current discussion is the [raw-output control design](../../../verification/settings-activation/KEEPALIVE-RAW-CONTROLS.md).
-It expands all 17 R cases into finite emitter inputs, approved control sites
-and separate byte, process and completion observations.
-Actual loader-output coverage remains outside that base list.
-R3 needs independent blocking and accepted-byte observations before its complete coverage is available.
-Its process inventory includes the caller, worker, sleep child and inherited helper.
-No executable study manifest, mechanism result or complete useful profile follows.
+The current discussion is the [record and recovery control design](../../../verification/settings-activation/KEEPALIVE-RECOVERY-CONTROLS.md).
+It preserves the original eighteen S cases and expands named publication cuts, carrier failures, malformed fixtures and recovery paths.
+It also retains lifecycle, signal, held-pointer and exact-deadline controls.
+Each expanded design ID has its own outcome. The later executable manifest still needs implemented subjects and qualified resource bounds.
 
 The [bounded record and recovery schema](../../../specs/settings-keepalive-records.md)
 remains unchanged context.
-Expanded S controls, workload accounting and native evidence scopes remain separate design work.
+Workload accounting and native evidence scopes remain separate design work.
 Numerical capacities and protected metadata still require qualified mechanisms.
+
+The [raw-output control design](../../../verification/settings-activation/KEEPALIVE-RAW-CONTROLS.md) remains unchanged context.
+Its additional loader-output and R3 observation obligations remain open.
 
 Antony approved the dependency-design issue and audited collector-copy controls
 on 2026-11-01. [TestAnyware issue #13](https://github.com/Linkuistics/TestAnyware/issues/13)
@@ -90,11 +90,11 @@ loads these same sources while retaining its separate current discussion.
 
 Current changes:
 
-- [Keepalive → Distinguish raw bytes from completed operations](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-raw-controls) — Separates accepted bytes, retained bytes and owner completion.
-- [Fixed case matrix](../../../verification/settings-activation/KEEPALIVE-RAW-CONTROLS.md#fixed-case-matrix) — Names all 17 R cases and their finite emitter inputs.
-- [Approved controls and precise schedules](../../../verification/settings-activation/KEEPALIVE-RAW-CONTROLS.md#approved-controls-and-precise-schedules) — Defines R3 barrier release and actual R5 prefixes.
-- [Process and descriptor accounting](../../../verification/settings-activation/KEEPALIVE-RAW-CONTROLS.md#process-and-descriptor-accounting) — Counts caller, worker, sleep and inherited-helper overlap.
-- [Retention and remaining execution inputs](../../../verification/settings-activation/KEEPALIVE-RAW-CONTROLS.md#retention-and-remaining-execution-inputs) — Separates raw extent arithmetic from missing complete execution bounds.
+- [Keepalive → Check publication before dependent action](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-recovery-controls) — Separates actual bytes, publication observations and permission to act.
+- [Keepalive → Preserve both caller transfer paths](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-recovery-transfer) — Shows normal transfer, one recovery successor and their shared final sequence.
+- [Original eighteen cases](../../../verification/settings-activation/KEEPALIVE-RECOVERY-CONTROLS.md#original-eighteen-cases) — Gives each retained S case its own identity and oracle.
+- [Publication carriers and attachments](../../../verification/settings-activation/KEEPALIVE-RECOVERY-CONTROLS.md#publication-carriers-and-attachments) — Names mandatory carriers, bounded fallbacks and original-object cuts.
+- [Accounting, alternatives and handoff](../../../verification/settings-activation/KEEPALIVE-RECOVERY-CONTROLS.md#accounting-alternatives-and-handoff) — Counts the finite design products separately from executable budgets.
 
 The [resource review integration](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#review-integration)
 records each k108 disposition. Collection directories and terminal records require

@@ -1,0 +1,13 @@
+flowchart TD
+    start["Start here: named case<br/>Real owner and lock"]:::start
+    choose["Consume slot<br/>and attachments"]
+    bytes["Write once<br/>Zero, prefix or complete"]
+    observe{"Publication and<br/>carrier complete?"}
+    effect["Permit dependent action"]
+    failed["Keep failure and bytes<br/>No later scenario"]
+    start -->|1. Approved site| choose
+    choose -->|2. Real bytes| bytes
+    bytes -->|3. Observe result| observe
+    observe -->|Success| effect
+    observe -->|Failed or unknown| failed
+    classDef start fill:#17324d,color:#fff,font-weight:bold,stroke:#17324d

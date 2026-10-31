@@ -424,9 +424,12 @@ Its collection and terminal records are fixed byte objects with declared names a
 They establish storage observations only, never lifecycle, recovery or final-publication correctness.
 S2 through S6 are future coordinator implementation controls under the authoritative owner and producer control sections.
 Their original 18 cases are excluded from the mechanism-study envelope.
-The schema's [boundary mapping](../../specs/settings-keepalive-records.md#later-controls-and-remaining-inputs)
-adds explicit subcases. The later finite implementation manifest must expand
-and recount them, including slot/attachment writes and successor entry. All require separately planned implemented subjects and complete accounting.
+
+The [expanded recovery design](KEEPALIVE-RECOVERY-CONTROLS.md#accounting-alternatives-and-handoff)
+preserves those cases and recounts publication, attachment, codec, recovery, lifecycle and deadline products.
+The schema's [boundary mapping](../../specs/settings-keepalive-records.md#later-controls-and-remaining-inputs) remains authoritative.
+The later executable manifest must bind each design ID to implemented subjects, exact invocations and complete accounting.
+The expanded design count supplies no execution budget.
 
 | Class / row | Finite cases and required observation |
 |---|---|

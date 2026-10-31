@@ -565,6 +565,12 @@ names each R case, its finite emission, approved seam and decisive observation.
 It preserves additional loader-output coverage and missing R3 observations as open obligations.
 Its process and retention accounting remains separate from an executable study manifest.
 
+The [record and recovery control design](../verification/settings-activation/KEEPALIVE-RECOVERY-CONTROLS.md)
+expands S2–S6, mandatory carriers, original-object writes and the retained lifecycle and scheduling controls.
+Each expanded ID has its own outcome. The real coordinator retains allocation and transition ownership.
+The process inventory includes worker/sleep, inherited holders and the original caller's successor role.
+Implementation, complete accounting and scoped review remain prerequisites to execution.
+
 The separately audited collector R3 pre-read barrier and R5 raw-storage
 write-result controls were approved on 2026-11-01. Their exact scope is stated
 below and in the producer contract. No broader collector substitution follows.
