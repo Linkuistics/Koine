@@ -10,8 +10,9 @@ finds that the inspected producer cannot provide that contract unchanged.
 Antony approved the bounded-producer design path on 2026-10-31. This is Koine's
 required dependency interface, not an implemented TestAnyware API or a selected
 release. Approval covers this design work and a separately reviewed proposal for
-native/storage qualification. External implementation, issue filing and native
-execution have not been authorised. The [owner design](settings-keepalive-owner.md)
+native/storage qualification. On 2026-11-01 Antony also approved filing the bounded
+dependency design/evidence request, now [TestAnyware issue #13](https://github.com/Linkuistics/TestAnyware/issues/13).
+External implementation and native execution remain unauthorised. The [owner design](settings-keepalive-owner.md)
 continues to prohibit initialisation without the complete enforceable useful profile.
 
 ## Responsibility and interface
@@ -277,16 +278,23 @@ The qualification proposal maps all R rows and S2 through S6 to later implementa
 Those rows do not add mechanism prerequisites before the coordinator exists. This section remains authoritative for substitutions and resource mutants.
 The owner spec remains authoritative for lifecycle, transitions and lock ownership.
 
-The separate collector is not an approved copied module. Its proposed R3 internal barrier needs an explicit enabling-point decision in k112. The existing controlled CLI can emit
-finite stdout/stderr prefixes without a structured observation, then exit or retain
-a descriptor.
+Antony approved the separate collector's two named copied boundaries on
+2026-11-01: R3 after descriptor/buffer binding and before the first raw read;
+R5 at the raw-storage write result, for failure before write and for exactly
+1024 real persisted bytes followed by failure. R3 records accepted finite emitter
+writes without waiting for blocked writers to finish before releasing the barrier.
+It does not prove the kernel queue bound. Existing controlled CLI emitters can
+write finite stdout/stderr prefixes without a structured observation, then exit
+or retain a descriptor.
 
-These controls must distinguish exact-limit completion, excess output,
-simultaneous streams, write failure and unresolved inherited holders.
-R5 must name a reachable approved backend write-result boundary.
-If raw persistence requires a collector-copy substitution, k112 must request separate approval and account for its correspondence audit.
-No collector-copy write-result substitution is approved.
-They qualify failure handling, not the actual raw-capture mechanism or native failures.
+The [collector control decision](../verification/settings-activation/KEEPALIVE-RESOURCES.md#collector-control-decision)
+requires a separate correspondence audit against the pinned collector source.
+Only the two declared sites may differ; missing, duplicate or unused sites and
+unrelated edits fail the audit. Preserve real failure propagation, stop/drain,
+containment and retained-prefix behaviour. Never fabricate a successful write.
+These controls distinguish exact-limit completion, excess output, simultaneous
+streams, write failure and unresolved inherited holders. They qualify failure
+handling, not the actual raw-capture mechanism or native failures.
 
 The approved substitutions qualify **failure handling only**. Producer guard
 tests require the real dependency with finite protocol fixtures. They must

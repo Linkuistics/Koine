@@ -29,27 +29,23 @@
     }
   ],
   "discussion": {
-    "title": "Qualify launcher, raw capture and protected storage",
-    "status": "Review integrated by k116. Exact mechanisms remain unqualified. No execution authorised.",
-    "summary": "The proposal separates thirteen mechanism cases from future coordinator controls and external producer evidence. The map threshold must cover the intermediary and real producer at exec. Raw qualification remains blocked on queue bounds. The collector control boundaries and exact native scope remain choices for k112. Missing builds, SDK correspondence and native/service bounds prevent execution and profile adoption.",
+    "title": "Complete accounting and resolve the dependency handoff",
+    "status": "Incomplete profile. Dependency request filed; collector control sites approved. No execution requested.",
+    "summary": "The worksheet separates VM start from post-start admission, derives tick counts without counting waits twice, and maps protected record costs. TestAnyware issue #13 requests dependency evidence. Two audited collector sites are approved for later failure-handling controls. No useful numerical limits or mechanism results are established.",
     "diagramIds": [
+      "keepalive-completion",
       "keepalive-qualification",
       "keepalive-storage",
-      "keepalive-producer",
-      "keepalive-resources"
+      "keepalive-producer"
     ],
     "updatedDiagrams": [
       {
-        "id": "keepalive-qualification",
-        "summary": "Separates mechanism results, the additional native execution gate and later implemented-coordinator controls."
-      },
-      {
-        "id": "keepalive-storage",
-        "summary": "Labels fence and original-lock recovery as future coordinator obligations."
+        "id": "keepalive-completion",
+        "summary": "Shows independent accounting, the filed dependency request, approved test seams and evidence required before whole-design review."
       },
       {
         "id": "keepalive-producer",
-        "summary": "Names the separate collector and its unapproved copied control boundaries."
+        "summary": "Updates the caption with approval of the two collector-copy sites and their separate audit; enforcement remains unqualified."
       }
     ]
   },
@@ -71,16 +67,16 @@
     {
       "id": "keepalive-completion",
       "group": "keepalive",
-      "title": "Complete the approved dependency design path",
+      "title": "Complete accounting and obtain dependency evidence",
       "source": "keepalive-completion.mmd",
-      "caption": "Design work sequence, not runtime authority. Both human decisions are settled. Contract review and integration come before the native/storage qualification proposal and its separate review and execution decision. Required evidence includes a suitable external dependency, launcher, native and storage coverage; missing evidence keeps the profile unavailable. The original numerical/workload/timing/schema obligations and whole-design review remain."
+      "caption": "Completion worksheet, not a qualified profile. Contract and qualification proposal reviews are integrated. Workload/tick and record accounting can progress independently. TestAnyware issue #13 is filed; owner acceptance and timing are unknown. Collector R3/R5 copies are approved with a separate correspondence audit. These future controls qualify failure handling only, after implementation. Missing producer, launcher, queue/native and protected-storage evidence keeps startup unavailable. Whole-design review follows the complete artifact; execution needs its own exact reviewed scope."
     },
     {
       "id": "keepalive-producer",
       "group": "keepalive",
       "title": "Bound producer work before allocation and write",
       "source": "keepalive-producer.mmd",
-      "caption": "Proposed dependency interface after complete profile qualification. Read from the first owner transition. The producer launcher checks the declared environment and binds bounded raw descriptors before execution. The request pins encoding and OCR choices. Producer guards cover allocations and structured emission. Backend capture covers abnormal raw output and inherited holders. Original and partial outputs survive failure. The qualification proposal retains pipes and a separately pinned collector as candidates. Queue bounds, bootstrap and process-loss retention remain unqualified. Copied collector barriers and write-result substitutions are outside the approval. Delivery and terminal completion use the full owner protocol, abbreviated here. No implemented API or enforcement result follows."
+      "caption": "Proposed dependency interface after complete profile qualification. Read from the first owner transition. The producer launcher checks the declared environment and binds bounded raw descriptors before execution. The request pins encoding and OCR choices. Producer guards cover allocations and structured emission. Backend capture covers abnormal raw output and inherited holders. Original and partial outputs survive failure. The qualification proposal retains pipes and a separately pinned collector as candidates. Queue bounds, bootstrap and process-loss retention remain unqualified. The two named R3/R5 collector-copy sites are now approved with a separate correspondence audit, for later failure-handling controls only. Delivery and terminal completion use the full owner protocol, abbreviated here. No implemented API or enforcement result follows."
     },
     {
       "id": "keepalive-resources",

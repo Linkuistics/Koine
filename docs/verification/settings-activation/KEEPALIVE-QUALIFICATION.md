@@ -287,19 +287,19 @@ They require implemented subjects, a separate complete test envelope and establi
 |---|---|
 | R1 | Empty streams. 4095, 4096 and 4097 bytes on each stream separately. And one byte on both streams. Eight cases. `Lout=Lerr=4096`, `Lsum=8192`. Require exact originals and EOF for clean rows. Excess is sticky despite exit zero. |
 | R2 | Both streams: 4096 each at `Lsum=8192`, then 4096 each at `Lsum=8191`. Two cases. The second must fail the aggregate even though both individual limits fit. |
-| R3 | One 8192-byte burst per stream while the collector is held at a proposed internal barrier. This barrier is not approved for the new collector image. One case. All actually accepted bytes must survive when writers resolve. The finite burst tests retention but does not prove Q. |
+| R3 | One 8192-byte burst per stream while the collector is held after descriptor/buffer binding and before its first raw read. This audited-copy barrier was approved on 2026-11-01. One case. Record accepted writes and release the barrier without waiting for blocked writers to finish. All actually accepted bytes must survive when writers resolve. The finite burst tests retention but does not prove Q. |
 | R4 | Four fixed abnormal cases: missing-executable loader error, direct-write then abnormal exit, one owned inherited-descriptor child, collector death after a 1024-byte persisted prefix. Each controlled emitter supplies at most 8192 bytes per stream. Capture loader output under the established Q boundary. Do not assume its text size. Distinguish execution, EOF, child reap, persisted bytes and unknown tails. |
-| R5 | Two proposed write-result cases: fail before write. Write exactly 1024 real bytes then fail. Never fabricate a successful prefix. These qualify failure handling only. |
+| R5 | Two approved collector-copy write-result cases: fail before write. Write exactly 1024 real bytes then fail. Never fabricate a successful prefix. These qualify failure handling only. |
 
 These 17 later controls retain a proposed 256 KiB total extent ceiling per raw capture object.
-R3 and R5 need explicit enabling-point decisions in k112 before they can run.
-A new audited collector-copy barrier would add another source-correspondence audit and needs Antony's approval.
-
-A backend-only or external control would preserve the existing approval, but must first demonstrate the required schedule without a collector substitution.
-R5 must name a reachable approved backend write-result boundary or request approval for a new collector-copy boundary.
-The collector owns raw persistence, so the existing backend seam does not automatically reach its writes.
-A collector-copy write-result substitution carries the same additional approval and correspondence-audit cost.
-Neither alternative is selected here. Existing owner/backend/caller substitutions remain unchanged.
+Antony approved the two named collector-copy boundaries on 2026-11-01, with a
+separate source-correspondence audit. The [collector control decision](KEEPALIVE-RESOURCES.md#collector-control-decision)
+records the exact sites, real-prefix requirement and rejected unaudited edits.
+A backend-only or external control has not established the required reach.
+The collector owns raw persistence, so a backend seam cannot be assumed to reach
+its writes. The selected copies preserve the real failure paths and qualify
+failure handling only. Their execution follows implementation and the required
+planning/reviews. The approval supplies neither Q nor any native execution scope.
 
 Q plus the stated limits must fit that ceiling before a native row is admitted.
 Otherwise no row runs and the proposal returns to review. A control which leaves
@@ -504,8 +504,10 @@ Koine owns this consumer proposal and its future harness integration. TestAnywar
 owner owns a conforming producer and its guard evidence. Apple/native and storage
 guarantees are external prerequisites.
 
-No implementation or issue filing is
-authorised here. K112 consumes mechanism and dependency evidence before complete-profile adoption.
+This proposal authorises no implementation. Antony separately approved the
+dependency design/evidence request on 2026-11-01; it is filed as
+[TestAnyware issue #13](https://github.com/Linkuistics/TestAnyware/issues/13).
+K112 consumes mechanism and dependency evidence before complete-profile adoption.
 It specifies future coordinator controls but cannot require their results before implementation exists.
 After implementation, those controls must pass before downstream consumption.
 K112 must either obtain adequate evidence under separately agreed reviewed scope or present the precise unmet requirement and alternatives to Antony. It cannot declare the profile complete from these small controls.

@@ -1,17 +1,20 @@
 # Settings activation design discussion
 
-The current discussion is the [mechanism qualification proposal](../../../verification/settings-activation/KEEPALIVE-QUALIFICATION.md).
-It proposes a C/libSystem intermediary, one separate backend-owned raw collector and three
-disposable fixed-image storage containers. It separates 13 mechanism cases from later coordinator controls, external dependency evidence and native/useful-fit work.
+The current discussion is the [completion worksheet](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#completion-worksheet).
+It separates VM-start timing from post-start admission, derives tick-count
+obligations and maps protected record costs. Numerical values and the full
+schema still require the complete workload and qualified mechanisms.
 
-Executable subjects, SDK
-correspondence, kernel queue/map coverage and native/service bounds remain
-unavailable. K116 integrates the qualification review before k112 consumption.
-The raw group stays blocked on missing bounds. Collector-control boundaries and exact native scopes remain decisions for k112. No capability case, dependency implementation or native experiment ran.
+Antony approved the dependency-design issue and audited collector-copy controls
+on 2026-11-01. [TestAnyware issue #13](https://github.com/Linkuistics/TestAnyware/issues/13)
+is filed. The R3 pre-read barrier and R5 real-prefix write-result controls need
+their own correspondence audit and qualify later failure handling only. No
+mechanism or coordinator control has run.
 
-The producer contract's review is integrated. Approved audited capacity,
-limit-call/write-result substitutions, phase barriers and clock replacement
-qualify failure handling only. The complete useful profile remains unavailable.
+The producer contract and mechanism-proposal reviews are integrated. Executable
+subjects, kernel queue/map correspondence, native/service bounds and protected
+metadata evidence remain unavailable. No capability case has run. The original
+complete-profile obligations and all runtime holds remain.
 
 The [scheduling profile](../../../specs/settings-keepalive-owner.md#scheduling-and-deadline-profile)
 remains proposed.
@@ -79,11 +82,15 @@ loads these same sources while retaining its separate current discussion.
 
 Current changes:
 
-- [Keepalive → Qualify each mechanism before completing the profile](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-qualification) — Separates mechanism evidence, later coordinator controls and the additional native execution gate.
-- [Keepalive → Recover collection under the original lock and global fence](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-storage) — Shows the future coordinator fence/binding order and recovery obligations. The mechanism study does not execute that coordinator.
-- [Keepalive → Bound producer work before allocation and write](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-producer) — Updates the caption to separate the proposed pipe mechanism from unestablished bounds and process-loss retention.
-- [Mechanism qualification proposal](../../../verification/settings-activation/KEEPALIVE-QUALIFICATION.md) — Defines finite controls, exact-subject prerequisites, retained prefixes, cleanup and unsupported guarantees.
-- [Owner design boundary](../../../specs/settings-keepalive-owner.md#design-boundary) — Records integrated producer review and links the proposed qualification candidates without claiming enforcement.
+- [Keepalive → Complete accounting and obtain dependency evidence](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-completion) — Separates independent accounting, the filed dependency request, approved test seams and evidence still required for whole-design review.
+- [Workload and tick accounting](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#workload-and-tick-accounting) — Derives the count from bounded scenario work without adding tick waits twice; keeps start and collection separate.
+- [Record coverage and remaining schema](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#record-coverage-and-remaining-schema) — Maps protected record groups to future controls and names the remaining slot/recovery obligations.
+- [Collector control decision](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#collector-control-decision) — Records approval of the exact copied collector sites and their extra audit cost.
+- [Dependency handoff decision](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#dependency-handoff-decision) — Links the filed request, its pinned contract attachment and the unselected alternatives.
+- [Keepalive → Bound producer work before allocation and write](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-producer) — Updates the caption with approval of the collector sites and their separate audit; enforcement remains unqualified.
+- [Approved Koine test controls](../../../specs/settings-capture-resource-contract.md#approved-koine-test-controls) — Adds the exact R3/R5 collector sites and their audit to the authoritative control contract.
+- [Raw descriptor capture controls](../../../verification/settings-activation/KEEPALIVE-QUALIFICATION.md#backend-raw-descriptor-capture) — Records the selected collector sites while retaining queue bounds and implementation as prerequisites.
+- [Owner design boundary](../../../specs/settings-keepalive-owner.md#design-boundary) — Links the worksheet and filed request without claiming a completed profile.
 
 The [resource review integration](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#review-integration)
 records each k108 disposition. Collection directories and terminal records require

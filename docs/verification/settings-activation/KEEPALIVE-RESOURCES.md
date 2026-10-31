@@ -134,6 +134,252 @@ k89/k81/k76 consumption. Every duty in the [complete comparison](#complete-origi
 survives, including both held-pointer cases, untouched collection order, privacy,
 availability limits, historical outcomes and all runtime holds.
 
+## Completion worksheet
+
+K112 consumes the integrated producer contract and qualification proposal.
+The complete profile remains unavailable. This worksheet advances the work
+that does not require an executable dependency. It is a design input for the
+remaining schema and whole-design review, not a selected numerical profile.
+The [completion view](../../design/architecture/settings-activation/keepalive-completion.mmd)
+separates that work from the missing evidence and the two decisions below.
+
+### Workload and tick accounting
+
+Count a complete permitted path, including every clean-negative poll and its
+local record, rather than counting shell function names. A helper can issue
+several owner operations. The final manifest must expand each helper and bind
+every operation's arguments, predicate, class, family and multiplicity.
+It must also enumerate local waits, local computation and all retained outputs.
+Unknown multiplicity, local duration or byte contribution refuses the profile.
+
+The present source is a migration baseline. Its legacy retries and ignored
+transport failures do not become permitted work. Use the reviewed single-attempt
+contracts and preserve clean-negative polling bounds. The final migrated source
+must reconcile item by item with the declared expansion before freezing it.
+
+| Workload segment | Known obligation | Missing input for a useful numerical profile |
+|---|---|---|
+| Owner setup and VM start | Owner/worker readiness precedes one start command. The worker remains ready without sleeping until clean start. Preserve the 600-second queue option. | Exact bounded creation/boot stages, start result identity and interrupted-start containment evidence. |
+| Post-start preparation | Start worker cadence before environment reads and uploads. The baseline uploads the bundle archive, verification client and enrolment client. Installation, signature/environment and installed-bundle observations remain. | Final bytes and object identities for every upload, packaging/local work bounds and the complete expanded operation list. |
+| Focused prefix | First launch, positive TextEdit setup, four Settings selections, all original observations and TextEdit quit; stop before resize. | Expanded clean and failure paths under the migrated helper contracts, including new confirmation/audit rows. |
+| Ordinary continuation | Resize through actual pointer input, scrolling, shortcuts, two enrolments, consent, quit/relaunch/reopen, restart/login, final quit and installed-bundle comparison. | All helper branches and clean-negative poll multiplicities; finite local/output costs. Both held-pointer failure cases must join collection without release input. |
+| Required screenshots | The baseline scenario directly requests six: first launch, over TextEdit, least size, mark region, requests and after login. Its focused prefix contains the first two. | Additional helper/collection captures and all due ticks. Six is not a full-run capture allowance. Region capture still pays for prior full-frame acquisition. |
+| Failure collection | Untouched observer, agent-window list and screenshot in that order when applicable; remaining endpoint/environment/original audits, exact-clone stop and independent inventory. | Exact ordered finite operations, output/partial ceilings and reachable availability conditions. No failed collection item is retried. |
+| Final tail | Worker stop/exit/reap, owner handoff/exit, caller outcome, retained incomplete records and possible one collection-only recovery. | Complete event schema, slot/byte maxima, backing metadata and bounded identity/holder observations. |
+
+Separate start from the post-start lifecycle family. Its CLI budget must include
+the retained queue allowance plus independently bounded boot/provisioning work.
+The start whole-operation allowance also includes its non-CLI phases. Neither
+the current 120/142-second target nor a new guessed total covers those duties.
+No tick competes with start, so its larger allowance need not enlarge the
+152-second admission budget for post-start work. Any later operation exceeding
+the current 142-second maximum would require a new scheduling proof and review.
+
+For the interval from the first worker sleep-launch intent to tick suppression,
+let `B` be a proved upper bound on a complete eligible scenario path. A
+conservative calculation is:
+
+```text
+B = sum over scenario operations i of n_i * (A_i + W_i)
+    + sum of unchanged explicit waits
+    + bounded local work and finish-message delivery
+K_due <= floor(B / 20 seconds)
+K_committed <= K_charged <= K_due
+```
+
+Here `A_i` includes request transfer, admission and commitment; `W_i` includes
+the complete operation through completion delivery. Use the reviewed allowances
+only where their family applies. Start is outside `B`. Collection and final
+stop drain are outside `B` because tick admission is already suppressed.
+They retain their own finite budgets and storage costs. A tick committed before
+suppression keeps its charge and original deadline.
+`K_charged` counts ticks assigned an ordinal and irrevocably charged, including
+those whose directory creation or commitment publication then fails.
+`K_committed` counts the subset with complete commitment publication.
+
+Each tick needs a distinct completed sleep of twenty seconds. The next sleep
+cannot begin until the previous tick's complete disposition. Thus this upper
+count does not assume a periodic timer or successful captures every twenty
+seconds. It also avoids a circular calculation that adds every tick's duration
+to `B` and uses that larger duration to invent more ticks: scenario admission
+already includes waiting behind the other producer. Count actual timing once.
+The final proof must include failure paths that can outlast a successful branch.
+
+For each attempt family, charge the maximum permitted storage contribution
+before directory creation. Sum scenario contributions and `K_charged` capture
+contributions for ordinary capacity. Sum the entire finite collection set
+separately. Each contribution includes directory/object metadata, command and
+result records, complete artifacts, raw streams, retained partials and any
+temporary object that can coexist. Mutually exclusive outputs can use a maximum
+only when their lifetime proof establishes exclusion. No settlement refunds it.
+
+For the proposed raw route, include each operation's `Lout + Lerr + 1 + Q`
+retention contribution and collector/bootstrap memory separately. `Q` is still
+unestablished on the intended host. This expression is an obligation, not a
+number suitable for admission. Full-frame/crop/codec/native capacity still comes
+from the dependency's unit schema and lifetime evidence.
+
+Finite duration and storage arithmetic do not prove useful VNC activity. A long
+post-start upload can delay the first or a later tick. Connection observations,
+held-frame limits and symptom-preservation uncertainty remain explicit. Do not
+reduce the upload, alter the encoding, move cadence or add another connection
+to make this worksheet appear useful.
+
+### Record coverage and remaining schema
+
+Use the owner spec's immutable lifecycle rows. The following coverage mapping
+extends the proposed fence/binding sequence without selecting its missing binary
+encoding, record sizes or physical durability guarantees.
+
+| Record group | Required joins and allowance | Controls after implementation |
+|---|---|---|
+| Root/profile and pool identity | Schema/unit versions, run, original lock, backing identities, slot inventory and initial generation. Terminal capacity includes setup and partial setup. | S2 clean/failure coverage; S5 backing mismatch. |
+| Allocation fence | Predecessor, inclusive ordinal range, backing set, publication/flush observations. Terminal capacity. A fence burns uncertainty; it is not an operation charge. | Every S3 fence boundary. |
+| Assignment and storage binding | Submission, assigned ordinal, immutable cost/profile, class, backing/directory token and predecessor fence. Terminal capacity. No launcher result exists yet. | S3 assignment/binding boundaries; S6 creation failure. |
+| Submission and commitment | Separate received, admitted, refused/cancelled and commitment rows. Refusal/cancellation before assignment has no ordinal or operation charge. Failure after assignment retains both, even before launch. Terminal records still cost capacity. | S2; admission/recheck/cancellation resource mutants. |
+| Backend/producer/collector observations | Exact child/holder identity, setup/environment, limits, original deadlines and phase reports. Owner-retained observations use terminal capacity; child request/raw/validation/result objects use their attempt class. | R1–R5; S2; setup refusal and phase/deadline controls. |
+| Delivery and terminal disposition | Backend result, reap, payload acknowledgement, settlement and first failure. Completion send and later echo remain distinct. Terminal capacity. | S4 result/disposition and completion/echo cases. |
+| Stop and recovery | Stop intent, worker acknowledgement/reap, holder resolution, failed/new generation, old frontier, burned range and collection-only authority. Terminal capacity. | S3–S5; every lifecycle stop race, signal/orphan and held-pointer case. |
+| Handoff and caller outcome | Owner response/channel/wait facts, missing joins, collection/stop/inventory outcomes and final caller record. Terminal capacity. | S4 handoff/final-write and S6 partial terminal record. |
+
+The complete schema must bound every field and referenced object. Use closed
+outcome/reason codes and bounded private references for commands, environment,
+paths and raw text. Unavailable is distinct from zero, empty and not applicable.
+No field may silently truncate a required original. The object retaining that
+original must have its own admitted capacity or the operation is unavailable.
+Common envelope identity, payload length, checksum and predecessor semantics
+must be explicit. A checksum is not evidence of persistence or execution.
+
+The terminal calculation must enumerate each record type's maximum encoded
+bytes, multiplicity and metadata contribution across the complete path. Include
+all clean history, phase reports, failed/partial attempts to write records,
+submission refusals and pending cancellations. The remaining failure/stop/recovery/
+caller tail must remain separately available at every transition. Logging a
+failure must not recursively require unbounded further failure records.
+
+Precreated slots need a recoverable one-use assignment rule. That rule must
+account for its own bindings and torn/empty-slot ambiguity; another uncounted
+allocation log cannot solve it. The proposal's eight-ordinal fence and 4096-byte
+study record are fixture choices, not selected production schema values.
+If a partial fence prevents establishing the upper frontier, recovery refuses.
+It neither scans another root for a replacement ordinal nor fabricates a charge
+for a burned but unstarted capture. Full schema/recovery completion remains open.
+
+The future R/S control plan must count actual simultaneous processes. Supervisor,
+owner, worker, sleep child, backend, collector, intermediary/producer and one
+inherited helper can total eight before validators or utilities are considered.
+Determine which phases overlap; do not reuse the six-process mechanism envelope.
+The 17 R cases and 18 S2–S6 cases remain later tests of implemented subjects.
+They do not block implementation by demanding results from nonexistent code.
+All mechanism-dependent rows still need their actual bounds first.
+
+### Collector control decision
+
+**Approved by Antony on 2026-11-01.** Extend the existing audited-copy technique
+to the new raw collector at exactly these two boundaries:
+
+- R3: a barrier after descriptor/buffer binding and before the first raw read.
+  The controlled emitters attempt their two finite 8192-byte bursts. The test
+  records actual accepted writes without waiting for blocked writers to finish
+  before releasing the collector. This reaches the schedule; it does not prove Q.
+- R5: a named raw-storage write-result boundary, once for failure before write
+  and once for exactly 1024 real persisted bytes followed by failure. The copied
+  collector must run the real close-eligibility, stop-drain, containment and
+  retained-prefix paths. No fabricated successful write is permitted.
+
+Each collector copy must match its pinned production source except for the
+declared barrier/result sites. The correspondence audit rejects all other edits,
+missing or duplicated sites, and unused planned substitutions. It adds another
+copy and audit to maintain. It qualifies failure handling only, without native
+resource evidence or a production injection interface.
+
+Select this extension because raw persistence belongs to the collector.
+A backend write-result replacement cannot directly reach that syscall, and no
+external schedule has yet demonstrated the required R3 boundary. The alternative
+was to leave R3/R5 unavailable until a qualified real object or external control
+reached those exact boundaries. The approval selects the two named collector-copy
+sites and accepts their additional audit cost. It does not authorise a native run
+or implementation before the required planning and reviews. The controls remain
+future tests of implemented subjects; no R3/R5 result is claimed.
+
+### Dependency handoff decision
+
+**Approved and filed on 2026-11-01:** [TestAnyware issue #13](https://github.com/Linkuistics/TestAnyware/issues/13),
+with the title and body below plus the pinned contract attachment. This requests
+a dependency design and evidence response. It authorises no implementation by
+this Koine session or native experiment. The external owner's acceptance and
+schedule are not assumed. The submitted body was read back and matched exactly
+to the approved payload.
+
+> **Title:** Specify bounded capture operations and return enforcement evidence for Koine
+>
+> Koine's Settings harness needs a resource contract enforced before allocation
+> and writing. The reviewed consumer contract is `docs/specs/settings-capture-resource-contract.md`
+> in Koine. The current inspected basis is TestAnyware
+> `65bc05c91cc5d2a6e3d4aa8f81cb2c7c7712fa03`; it is not a conforming build.
+>
+> Please assess the bounded-operation interface and return an owner-reviewed
+> design or an explicit infeasibility report. The interface binds an opaque
+> operation/output identity, versioned allocation-unit schema, encoding/OCR
+> selections, declared environment and original deadline. It needs guards before
+> handshake/message, framebuffer/resize, Raw/CopyRect, ZRLE, every accepted Tight
+> mode/JPEG, selected-frame, crop/PNG and owned OCR allocations or writes.
+> Account for actual capacity, simultaneous buffers, codec workspace and partial
+> outputs, including downloads. Preserve input order, single attempts, existing
+> capture scale, valid resize, held-frame and OCR polling behaviour.
+>
+> Enumerate all units and their in-budget, first-excess and malformed controls,
+> explaining any inapplicable category. Identify each enforcement owner/site and
+> give source, dependency/feature, build and binary provenance for any proposed
+> conforming subject. Report loader/native/device/service contributions and
+> unavailable bounds separately. An outer process limit or successful sample
+> does not establish the individual contract.
+>
+> Koine retains the writer/ordinal domain, aggregate accounting, raw descriptor
+> collector, protected storage and coordinator tests. A producer acknowledgement
+> does not certify owner eligibility or native enforcement. The dependency's
+> actual exec-map floor requires the exact producer and an independently reviewed
+> observation method; no-op images do not supply it.
+>
+> Return the complete contract assessment, exact missing evidence and proposed
+> ownership of further work. This request authorises no native experiment,
+> Vision call, VM/input action, resource exhaustion, implementation by the Koine
+> agent, requirement relaxation, external deadline or acceptance claim. Any
+> implementation and qualification need their own agreed scope.
+
+The issue includes the exact reviewed contract from Koine revision
+`e1900d49668c2ec13244c8fb189d0d45f167eab7`, SHA-256
+`cf26eab09b8abab7bdc9dc4dae5ae8f95573316cfe8fa61654245a8b4868aa4a`.
+The attachment is explicitly historical at that revision; the summary does not
+replace it. No private evidence roots, environment values or run artifacts were
+attached. Later approval updates in this checkout do not alter that pinned text.
+
+The alternatives are continued startup unavailability while the dependency is
+supplied by another route, or an explicit requirements discussion to change the
+resource/containment obligation. A requirements change would accept a different
+guarantee and needs its costs stated before agreement. The issue path is selected;
+no requirement change is approved.
+Even a conforming producer leaves Koine's launcher/collector/bootstrap, kernel
+queue/map correspondence, native/service and protected-storage proof outstanding.
+Do not request execution from the current unfilled subject manifest.
+
+### Source and verification boundary
+
+K112 reads the current scenario and common/capture/click helpers, the integrated
+owner/producer contracts and the qualification, scheduling and research reports.
+The current backend still opens direct raw files and calls `subprocess.run`;
+its exact `run_locked` snippet establishes that local fact only. Its graph trace
+contains unrelated name matches, which are discarded. Shell discovery returned
+no useful rows, so the bounded source reads supply those observations.
+
+Tier 2 coverage generation `2026-10-31T06:29:00Z` reports shell gaps at scenario
+line 169, common-library line 175 and click-library line 82. Direct reads cover
+them. Changed spec/proposal metadata is resolved by current file reads.
+The workload table is a baseline and a required expansion, not an exhaustive
+final caller inventory. No full-run total, implemented mechanism, coordinator
+test, native bound or useful-fit result is claimed. K112 and all ancestors stay
+live while the complete charter remains unmet.
+
 ## Producer and validator boundary
 
 The TestAnyware source identity is

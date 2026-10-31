@@ -26,6 +26,14 @@ The [remaining profile](#remaining-profile) must supply
 enforceable resources and whole-design reconciliation before whole-design review,
 planning or implementation. Adoption and every runtime slot stay held.
 
+The [completion worksheet](../verification/settings-activation/KEEPALIVE-RESOURCES.md#completion-worksheet)
+separates start-queue accounting from post-start admission and derives tick
+counts from the complete bounded workload. Its record mapping still needs the
+complete schema and numerical capacities. Antony approved the named R3/R5
+collector-copy controls and their additional audit on 2026-11-01. The approved
+dependency design/evidence request is [TestAnyware issue #13](https://github.com/Linkuistics/TestAnyware/issues/13).
+Neither decision supplies missing mechanism evidence or implementation authority.
+
 The [review integration](../verification/settings-activation/KEEPALIVE-LIFECYCLE-REVIEW.md)
 records the source basis and dispositions. The
 [test-seam agreement](../verification/settings-activation/KEEPALIVE-RESOURCES.md#test-seam-and-later-controls)
@@ -546,6 +554,9 @@ launcher limit-call/readback results and owner/backend/caller write results in
 audited copies. The [resource-control contract](settings-capture-resource-contract.md#approved-koine-test-controls)
 defines their enabling points, real prefix-write behaviour and copy audit.
 They test failure handling. They do not establish native capacity or enforcement.
+The 2026-11-01 approval adds only the collector's R3 pre-read barrier and R5
+raw-storage write-result sites, with their own correspondence audit and real
+1024-byte retained-prefix control. The resource-control contract defines the scope.
 
 | Controlled schedule or defect | Required discrimination |
 |---|---|

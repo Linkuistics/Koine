@@ -1,23 +1,23 @@
 flowchart TD
-    start["Start here:<br/>Approved design scope"]:::start
-    unresolved["Profile unavailable"]:::hold
-    contract["Bounded producer<br/>contract"]
-    contractReview["Contract review<br/>and integration"]
-    qualify["Native and storage<br/>qualification proposal"]
-    scope["Review and agree<br/>execution scope"]
-    evidence{"Required evidence<br/>established?"}
-    reconcile["Reconcile workload,<br/>timing and records"]
-    review["Review whole design<br/>before planning"]
-    start -->|1. Specify| contract
-    contract --> contractReview
-    contractReview --> qualify
-    qualify --> scope
-    scope --> evidence
-    evidence -->|Yes| reconcile
-    evidence -->|Missing| unresolved
-    reconcile --> review
-    tests["Approved audited<br/>resource-result tests"]:::approved
-    tests -.->|Failure handling only| contract
+    start["Start here:<br/>Reviewed design inputs"]:::start
+    worksheet["Workload, ticks<br/>and record costs"]
+    issue["Dependency issue #13<br/>Filed"]:::decided
+    seam["Collector R3/R5 copy<br/>Approved"]:::decided
+    external["Dependency owner<br/>assessment"]
+    bounds["Exact subjects<br/>and qualified bounds"]
+    evidence{"All evidence<br/>and useful fit?"}
+    hold["Profile unavailable<br/>Duties retained"]:::hold
+    review["Complete profile<br/>then whole-design review"]
+    start --> worksheet
+    start --> issue
+    start --> seam
+    issue -->|Awaiting response| external
+    external -->|Separate review before execution| bounds
+    worksheet --> evidence
+    bounds --> evidence
+    evidence -->|Missing| hold
+    evidence -->|Yes| review
+    seam -.->|Approved seams for future controls| review
     classDef start fill:#17324d,color:#fff,font-weight:bold,stroke:#17324d
-    classDef approved fill:#e1f2e5,color:#12351e,stroke:#36764a
+    classDef decided fill:#fff0c2,color:#463000,stroke:#987000
     classDef hold fill:#fbe4e4,color:#541515,stroke:#a63636
