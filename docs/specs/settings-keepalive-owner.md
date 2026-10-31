@@ -8,13 +8,16 @@ cooperative stop under the [agreed
 scope](../verification/settings-activation/KEEPALIVE-DESIGN.md#required-scope-decision).
 It combines a **reviewed lifecycle slice**, a proposed
 [scheduling profile](#scheduling-and-deadline-profile), and a proposed
-[resource-admission boundary](#resource-admission-boundary). The scheduling proposal
+[resource-admission boundary](#resource-admission-boundary).
+
+The scheduling proposal
 incorporates [its review dispositions](../verification/settings-activation/KEEPALIVE-SCHEDULING.md#review-integration).
 The [completion decision](../verification/settings-activation/KEEPALIVE-RESOURCES.md#completion-decision)
 records why the unchanged producer cannot establish the required resource units.
 Antony approved bounded-producer design and audited resource-result substitutions.
+
 The [dependency contract](settings-capture-resource-contract.md) specifies those
-boundaries; its review is integrated. The
+boundaries. Its review is integrated. The
 [mechanism qualification proposal](../verification/settings-activation/KEEPALIVE-QUALIFICATION.md)
 selects candidates for independent review, with missing executable subjects and
 native/storage bounds explicit. No capability row has run.
@@ -525,8 +528,8 @@ CLI and sleep substitutions alone cannot qualify these rows.
 The subsequent 2026-10-31 approval also covers named capacity observations,
 launcher limit-call/readback results and owner/backend/caller write results in
 audited copies. The [resource-control contract](settings-capture-resource-contract.md#approved-koine-test-controls)
-defines their enabling points, real prefix-write behavior and copy audit.
-They test failure handling; they do not establish native capacity or enforcement.
+defines their enabling points, real prefix-write behaviour and copy audit.
+They test failure handling. They do not establish native capacity or enforcement.
 
 | Controlled schedule or defect | Required discrimination |
 |---|---|
@@ -923,6 +926,7 @@ The backend owns [bounded raw descriptor capture](settings-capture-resource-cont
 before producer execution, including abnormal diagnostics and inherited child output.
 Producer-controlled structured emission has a separate bound. Capture must cover
 both streams, queued bytes, collector memory, backing storage and retained prefixes.
+
 An excess write or capture failure remains failed even if the producer exits zero.
 The [qualification proposal](../verification/settings-activation/KEEPALIVE-QUALIFICATION.md#backend-raw-descriptor-capture)
 uses backend-owned pipes with precharged queued-byte retention as a candidate.
@@ -1000,9 +1004,9 @@ No resource receipt alone grants dispatch, clean completion or normal stop.
 ### Candidate enforcement and acceptance evidence
 
 The [enforcement survey](../research/settings-keepalive-enforcement-a.md#result-and-scope)
-finds that inherited address-space and file-size limits, combined with separately
-reserved and capped storage, are insufficient as a complete mechanism for the
-unchanged producer. Its individual allocation checks occur too late. Complete
+finds that inherited address-space and file-size limits cannot bound the unchanged producer completely. Separately reserved and capped storage does not close that gap. Its individual allocation checks occur too late.
+
+Complete
 kernel exec/remap coverage remains unestablished, and the inspected kernel source
 differs from the intended host.
 Geometry, compressed-message lengths, decoder growth and encoded-buffer limits
@@ -1012,7 +1016,7 @@ Successful readback is not evidence that every target mapping route is constrain
 
 The approved design path gives those checks to an explicitly bounded producer.
 The [dependency contract](settings-capture-resource-contract.md#enforcement-inside-the-producer)
-assigns each boundary and preserves transport/input/scale/held-frame behavior.
+assigns each boundary and preserves transport/input/scale/held-frame behaviour.
 Its cost is a changed external dependency and corresponding transport qualification.
 Isolation is another candidate only if its allocation, storage and process/service
 boundaries are established. The design approval authorises neither implementation

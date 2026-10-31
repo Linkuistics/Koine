@@ -32,7 +32,7 @@ sets two focused guests and, only if both qualify, three separately declared
 complete ordinary guests. Both sets use the same newly signed candidate with
 application diagnostics disabled. No signed evaluation subject has been built or run.
 The [application implementation](../../../verification/settings-activation/ORDERING-APPLICATION-RESULTS.md)
-now compiles and passes existing headless controls. Shared harness repairs and
+now compiles and passes existing headless controls. Shared harness corrections and
 native acceptance remain live.
 
 Antony approved the named empirical scope and finite acceptance convention.
@@ -47,7 +47,7 @@ that sample, not mechanism, risk reduction or general reliability.
 
 Native cause and ownership remain unresolved. All six causal slots remain held.
 
-Both sets use the same repaired scenario: strict single-attempt transport,
+Both sets use the same updated scenario: strict single-attempt transport,
 positive TextEdit setup, an original-list Settings-title audit and a separate
 process-loss outcome. Zero-window rejection needs clean liveness. The focused
 prefix includes TextEdit quit and ends before resize. Screenshots retain context.
@@ -55,7 +55,7 @@ they are not automatic acceptance assertions. Launch/defaults/restart need clean
 submission and their named confirmation.
 
 Restart disconnect remains unavailable despite a later boot. A demonstrably unavailable required completion holds E01
-for a new decision. No failed read is repaired by retry.
+for a new decision. A retry cannot make a failed read succeed.
 
 Run `mise exec -- task design:serve` from the repository root and open
 [the current discussion](http://127.0.0.1:8765/settings-activation/#discussion).
@@ -88,7 +88,7 @@ The [resource review integration](../../../verification/settings-activation/KEEP
 records each k108 disposition. Collection directories and terminal records require
 protected backing storage under one ordinal sequence. K106 supplies a candidate
 arrangement with metadata and recovery gaps. The later k107 approval covers the
-named resource-result substitutions; it supplies no native enforcement evidence.
+named resource-result substitutions. It supplies no native enforcement evidence.
 
 The [worker lifecycle](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-lifecycle)
 now names its original 52-second capture deadline. The
@@ -97,5 +97,5 @@ The [design evidence](../../../verification/settings-activation/ORDERING-DESIGN-
 links the source/API reads and [verification receipt](../../../verification/settings-activation/ordering-design-evidence/verification.json).
 The [raw documentation output](../../../verification/settings-activation/ordering-design-evidence/doc-links.txt)
 retains the actual check result. These checks establish document consistency,
-not native behaviour, product repair or ordinary acceptance. Earlier receipts
+not native behaviour, resolution of product defects or ordinary acceptance. Earlier receipts
 remain historical and unchanged.

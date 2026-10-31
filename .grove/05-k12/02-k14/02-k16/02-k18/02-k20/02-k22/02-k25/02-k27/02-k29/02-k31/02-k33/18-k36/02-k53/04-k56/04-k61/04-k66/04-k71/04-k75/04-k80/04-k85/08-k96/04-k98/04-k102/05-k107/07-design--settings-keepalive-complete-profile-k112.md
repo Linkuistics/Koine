@@ -9,7 +9,9 @@ reconciliation once its dependency and qualification evidence exist.
 This is the remainder of the original mandated task, not a reduced completion
 criterion. Read the entire k107 parent charter and k102/k98/k96 charters.
 Consume the bounded producer contract and qualification proposal only after
-independent review/every earned integration; a reviewed proposal is not a result.
+independent review/every earned integration.
+
+A reviewed proposal is not a result.
 The qualification proposal is docs/verification/settings-activation/KEEPALIVE-QUALIFICATION.md.
 It identifies missing launcher/producer builds, SDK correspondence, kernel queue/map
 coverage, native/service bounds and protected metadata/recovery evidence. Its
@@ -51,8 +53,8 @@ as a qualified mechanism. Preserve its process-loss and unknown-tail limits.
 
 ## Notes
 Missing external evidence is a prerequisite, not permission to invent limits or
-relax the requirement. Progress independent schema/workload work where possible;
+relax the requirement. Progress independent schema/workload work where possible.
 record exact remaining dependency and obtain only the concrete authority it
 requires. No TestAnyware implementation leaf belongs in this grove. No native
-capability execution without its separately explicit reviewed scope; no E/A,
+capability execution without its separately explicit reviewed scope. No E/A,
 closed causal slot, VM/candidate/freeze/acceptance, cap expansion or release.
