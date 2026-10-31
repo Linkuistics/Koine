@@ -296,6 +296,7 @@ Antony approved the two named collector-copy boundaries on 2026-11-01, with a
 separate source-correspondence audit. The [collector control decision](KEEPALIVE-RESOURCES.md#collector-control-decision)
 records the exact sites, real-prefix requirement and rejected unaudited edits.
 A backend-only or external control has not established the required reach.
+
 The collector owns raw persistence, so a backend seam cannot be assumed to reach
 its writes. The selected copies preserve the real failure paths and qualify
 failure handling only. Their execution follows implementation and the required
@@ -362,21 +363,23 @@ root is an ordinal allocator.
 
 The earlier **eight-ordinal fence** and **4096-byte record** are fixture choices,
 not selected production values. S1 still uses fixed byte objects and establishes
-no coordinator behavior. A future coordinator fixture must instantiate the
+no coordinator behaviour. A future coordinator fixture must instantiate the
 schema's complete counts, vector maxima, slot size and physical metadata costs
-within its separately declared envelope; it cannot assume either study number
-fits, resize the study or borrow the 13-case mechanism allowance.
+within its separately declared envelope.
+It cannot assume either study number fits, resize the study or borrow the 13-case mechanism allowance.
 
 The proposed pool preassigns bootstrap, owner-history, owner-tail, single
-collection-successor and caller-final ranges. Odd slots permit fences; even
+collection-successor and caller-final ranges. Odd slots permit fences. Even
 slots permit other records. Each attempted write consumes its full slot and
 preassigned original-object attachments, including a failure before any byte is
 written. Failed-writer ranges are burned, never cleared or reused. This layout
-accounts for its own assignment without another allocation log. Precreation,
+accounts for its own assignment without another allocation log.
+
+Precreation,
 fixed extents, opened identities and metadata protection still need qualification.
 
 A valid fence precedes ordinal assignment and irreversible charging. The
-terminal storage binding precedes attempt-directory creation; complete commitment
+terminal storage binding precedes attempt-directory creation. Complete commitment
 and observed publication precede launch. Readback, flush and subsequent visibility
 are separate facts. A record cannot attest to its own later successful flush.
 The [walkthroughs](../../specs/settings-keepalive-records.md#checkable-walkthroughs)
@@ -385,14 +388,14 @@ cover clean work, failed commitment publication and owner-death collection.
 After owner loss the original caller resolves actual holders and acquires the
 same original lock. It scans the entire bounded predecessor ranges, including
 gaps, and establishes a unique fence frontier. Unknown assignments retain
-unknown charge facts and unavailable prior allowance; burned ordinals are not
+unknown charge facts and unavailable prior allowance. Burned ordinals are not
 invented captures. An invalid/torn fence, damaged allocation chain, lost binding
 identity or unresolved holder prevents new ordinals and collection. No lock
 replacement, other root or scenario restart is allowed.
 
 Ordinary fence width remains workload-derived. A collection fence binds one
 ordinal and one immutable collection-plan item. Recovery never repeats a
-possibly attempted collection item; it can use only a proven unattempted suffix.
+possibly attempted collection item. It can use only a proven unattempted suffix.
 It uses the separate successor lane, retaining all prior bytes. Caller or
 successor loss permits no further recovery generation.
 
@@ -411,7 +414,7 @@ They establish storage observations only, never lifecycle, recovery or final-pub
 S2 through S6 are future coordinator implementation controls under the authoritative owner and producer control sections.
 Their original 18 cases are excluded from the mechanism-study envelope.
 The schema's [boundary mapping](../../specs/settings-keepalive-records.md#later-controls-and-remaining-inputs)
-adds explicit subcases; the later finite implementation manifest must expand
+adds explicit subcases. The later finite implementation manifest must expand
 and recount them, including slot/attachment writes and successor entry. All require separately planned implemented subjects and complete accounting.
 
 | Class / row | Finite cases and required observation |
@@ -508,11 +511,12 @@ owner owns a conforming producer and its guard evidence. Apple/native and storag
 guarantees are external prerequisites.
 
 This proposal authorises no implementation. Antony separately approved the
-dependency design/evidence request on 2026-11-01; it is filed as
+dependency design/evidence request on 2026-11-01. It is filed as
 [TestAnyware issue #13](https://github.com/Linkuistics/TestAnyware/issues/13).
 K112 consumes mechanism and dependency evidence before complete-profile adoption.
 It specifies future coordinator controls but cannot require their results before implementation exists.
 After implementation, those controls must pass before downstream consumption.
+
 K112 must either obtain adequate evidence under separately agreed reviewed scope or present the precise unmet requirement and alternatives to Antony. It cannot declare the profile complete from these small controls.
 
 <!-- tc: depart synonym-rotation because the VM start queue is a named operation distinct from launching a process -->
