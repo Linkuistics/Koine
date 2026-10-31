@@ -280,10 +280,11 @@ The qualification proposal maps all R rows and S2 through S6 to later implementa
 Those rows do not add mechanism prerequisites before the coordinator exists. This section remains authoritative for substitutions and resource mutants.
 The owner spec remains authoritative for lifecycle, transitions and lock ownership.
 
-Antony approved the separate collector's two named copied boundaries on
-2026-11-01: R3 after descriptor/buffer binding and before the first raw read;
-R5 at the raw-storage write result, for failure before write and for exactly
-1024 real persisted bytes followed by failure. R3 records accepted finite emitter
+Antony approved the separate collector's two named copied boundaries on 2026-11-01.
+R3 follows descriptor/buffer binding and precedes the first raw read.
+R5 controls the raw-storage write result. It reports failure before any write or after exactly 1024 real persisted bytes.
+
+ R3 records accepted finite emitter
 writes without waiting for blocked writers to finish before releasing the barrier.
 It does not prove the kernel queue bound. Existing controlled CLI emitters can
 write finite stdout/stderr prefixes without a structured observation, then exit
@@ -291,9 +292,10 @@ or retain a descriptor.
 
 The [collector control decision](../verification/settings-activation/KEEPALIVE-RESOURCES.md#collector-control-decision)
 requires a separate correspondence audit against the pinned collector source.
-Only the two declared sites may differ; missing, duplicate or unused sites and
+Only the two declared sites may differ. Missing, duplicate or unused sites and
 unrelated edits fail the audit. Preserve real failure propagation, stop/drain,
 containment and retained-prefix behaviour. Never fabricate a successful write.
+
 These controls distinguish exact-limit completion, excess output, simultaneous
 streams, write failure and unresolved inherited holders. They qualify failure
 handling, not the actual raw-capture mechanism or native failures.
