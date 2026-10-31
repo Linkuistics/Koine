@@ -11,7 +11,7 @@ profile, implemented limit or startup permission.
 The inspected capture pipeline allocates frames and encoded PNG bytes before
 the image file is written. A quota and a later PNG validator cannot alone meet
 the accepted producer-resource requirement. Current XNU source supports an
-address-space-limit candidate; it does not by itself qualify the installed
+address-space-limit candidate. It does not by itself qualify the installed
 host, every native service or useful execution under a chosen limit.
 
 This is the admission slice of settings-keepalive-resources-k102. Independent
@@ -35,7 +35,7 @@ These are direct reads of that commit, not claims about an installed binary.
 | [Koine backend](../../../scripts/vm-guest-exec.py) | The locked attempt writes raw streams directly to unique files. It calls the inspector after CLI completion. | This is the current failure/publication seam, not pre-producer enforcement. |
 | [PNG inspector](../../../scripts/vm_capture_artifact.py) | Reads the complete encoded file, accumulates compressed IDAT, and decompresses using header-derived expected size. | Encoded data, chunk copies, compressed data and decoded storage can coexist. Streaming changes would still need their own buffer proof and cannot bound the earlier producer. |
 
-For RGBA8, pixel storage is `4 × width × height`; the filtered decoded stream
+For RGBA8, pixel storage is `4 × width × height`. The filtered decoded stream
 is `(4 × width + 1) × height`. These formulas describe units, not selected caps.
 Encoded PNG length requires its own bound. Neither a small retained image nor
 the six-digit attempt ordinal establishes a useful peak or aggregate limit.
@@ -58,8 +58,9 @@ The inspected XNU revision is
 passes RLIMIT_AS to Mach VM and rejects a limit below existing map use.
 Its [mapping path](https://github.com/apple-oss-distributions/xnu/blob/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/osfmk/vm/vm_map.c#L3677)
 changes an otherwise successful mapping result to KERN_NO_SPACE when map size
-exceeds that limit. This check follows possible mapping establishment; it is
+exceeds that limit. This check follows possible mapping establishment. It is
 not a promise that no kernel work occurs.
+
 The [exec path](https://github.com/apple-oss-distributions/xnu/blob/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/bsd/kern/kern_exec.c#L1531)
 sets the new map's size limit from the process limit.
 These are positive reasons to investigate inherited limits rather than declaring
@@ -67,8 +68,8 @@ all macOS memory limits ineffective.
 
 The inspected host reports macOS 27.0.1, build 26A434, Darwin 27.0.0.
 No source-to-build correspondence or runtime enforcement test was established.
-The source call in exec alone does not prove every loader, mapping, child or
-external-service path is covered, nor that a useful chosen limit permits startup.
+The source call in exec alone does not prove coverage of every loader, mapping,
+child or external-service path. It does not establish useful startup limits.
 An address-space ceiling is not an exact dimension, encoded-vector, RSS,
 aggregate-process or total host-memory ceiling.
 
@@ -83,7 +84,7 @@ created or reconfigured.
 
 | Candidate | What it can contribute | Evidence still needed |
 |---|---|---|
-| Unchanged transport with inherited limits and reserved/capped storage | Lowest transport-change cost; launcher owns limit setup while caller retains process and writer ownership. | Actual host enforcement, exec/child/service coverage, each required resource unit, aggregate exposure and useful fit. |
+| Unchanged transport with inherited limits and reserved/capped storage | Lowest transport-change cost. Launcher owns limit setup while caller retains process and writer ownership. | Actual host enforcement, exec/child/service coverage, each required resource unit, aggregate exposure and useful fit. |
 | Explicit bounded producer | Geometry, wire lengths, decoder growth and output buffers can be checked at their owning allocation sites. | External dependency scope, complete implementation contract and qualification without changing required pixels, attempts or input. |
 | Isolated execution environment | Could provide a separate aggregate resource boundary. | Supported topology and native-service coverage, actual reservation/enforcement, transfer costs and unchanged transport semantics. |
 | Post-capture rejection or RSS polling alone | Detects some completed excess or observed pressure. | Rejected as sufficient enforcement: observation follows the work and cannot prevent its earlier allocation or write. |
@@ -92,10 +93,10 @@ The preferred candidate to investigate first is inherited enforcement because
 it can preserve the transport. Preference is conditional, not mechanism approval.
 Reject it if any required allocation/write unit escapes its established boundary
 or if a useful workload cannot fit. A changed producer or isolation remains
-design work; neither is silently substituted.
+design work. Neither is silently substituted.
 
 The admission contract keeps queue policy separate from resource accounting.
-Callers submit once; the owner owns the commitment decision and its resource
+Callers submit once. The owner owns the commitment decision and its resource
 proof. Removing that owner would distribute reservation, failure and publication
 knowledge across scenario and worker. Its interface remains small, but its
 internal accounting and supervision costs are real.
@@ -105,8 +106,8 @@ internal accounting and supervision costs are real.
 K106's survey must answer these questions for k107:
 
 1. Which supported mechanism actually bounds allocations of the pinned producer
-   on the intended host, including loader, allocator, mappings, children and any
-   native OCR/service work? What does it exclude? Can inherited settings survive
+   on the intended host? Include loader, allocator, mappings, children and native
+   OCR/service work. What does it exclude? Can inherited settings survive
    exec and every required route without relying on readback alone?
 2. Where are exact dimension, wire-decoder, decoded, encoded and peak-buffer
    limits enforced? Can the unchanged transport meet each unit, or is an explicit
@@ -128,27 +129,31 @@ image cannot answer them alone.
 
 On 2026-10-31 Antony answered **"approved"** to test-only phase barriers and a
 replaceable continuous-clock reader in audited copies of the owner, backend and
-caller. Each copy must match production except for declared substitutions;
-the correspondence check must reject any other difference. The points are those
+caller. Each copy must match production except for declared substitutions. The correspondence check must reject any other difference. The points are those
 already specified in the lifecycle and scheduling contracts. This settles the
 choice carried by k100 and k104.
 
 The chosen seam reaches internal races and exact clock boundaries while preserving
 production interfaces. Its cost is auditing every test copy. A production injection
-interface adds a maintenance obligation; external CLI/sleep controls alone leave
+interface adds a maintenance obligation. External CLI/sleep controls alone leave
 those internal races and exact deadlines unqualified. Neither alternative was chosen.
-This approval does not qualify a resource mechanism or authorize a native experiment.
+This approval does not qualify a resource mechanism or authorise a native experiment.
 
-The resource-specific controls must exercise launcher refusal before invocation,
-per-unit and aggregate admission, ordinary exhaustion with protected capacity
-remaining, failure of the protected writes themselves, and unavailable holders.
+The resource-specific controls must exercise launcher refusal before invocation
+and per-unit and aggregate admission. They must cover ordinary exhaustion with
+protected capacity remaining, failed protected writes and unavailable holders.
 Observe real records, exact invocation counts, unchanged originals/partials and
-later-dispatch refusal. Mutants that charge after launch, refund failed work,
-borrow terminal capacity, truncate an earlier file or accept limit readback as
-capability proof must fail the corresponding control.
+later-dispatch refusal. Each control must reject its corresponding mutant:
+
+<!-- tc: depart synonym-rotation because launch means external execution while startup means owner readiness -->
+- Charging after launch
+- Refunding failed work
+- Borrowing terminal capacity
+- Truncating earlier files
+- Accepting limit readback as capability proof.
 
 These are proposed tests of the future real coordinator. No native bound or
-coordinator behavior was tested in this design session.
+coordinator behaviour was tested in this design session.
 
 ## Complete original duties
 
@@ -180,16 +185,18 @@ caps and held causal slots stay unchanged. No ancestor closes.
 ## Evidence discipline
 
 Tier 2 discovery located the inspector and its backend caller. The graph also
-returned unrelated outgoing edges; those contribute no evidence.
+returned unrelated outgoing edges. Those contribute no evidence.
 Koine coverage generation was 2026-10-30T12:10:34Z. Direct source reads covered
 the relied-on backend/validator, common-library and scenario parse gaps,
 click-library gap, Bats setup/control source and diagram source.
-TestAnyware's graph generation was 2026-10-29T07:11:24Z; the exact historical
+
+TestAnyware's graph generation was 2026-10-29T07:11:24Z. The exact historical
 source reads above, rather than current graph offsets, establish its claims.
+
 Coverage is best-effort, not an exhaustive allocation audit.
 
 The source/API assessment establishes the admission design's open boundary.
 The [verification receipt](ordering-keepalive-resources/verification.json)
 records document-link and browser checks, which establish only delivery of that
 design. The documentation task retains the two existing missing archive targets
-in context-initial-inputs; no new missing target was reported.
+in context-initial-inputs. No new missing target was reported.

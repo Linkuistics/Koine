@@ -14,10 +14,9 @@ Audience: settings-keepalive-complete-profile-k107. One survey is selected becau
 this is a bounded platform-mechanism question, not two independent broad corpora.
 
 ## Done when
-- Answer the report's external-evidence questions from pinned primary sources:
-  actual host correspondence; address-space/data/file limit enforcement through
-  exec, fork, mappings and native encoders; external services and descendants;
-  aggregate process exposure and useful loader/runtime allowance.
+- Answer the report's external-evidence questions from pinned primary sources.
+  Establish actual host correspondence and address-space/data/file limit enforcement through exec, fork, mappings and native encoders.
+  Include external services, descendants, aggregate process exposure and useful loader/runtime allowance.
 - Trace all capture allocations before geometry/output checks, including RFB
   handshake/resize, compressed-message fields, decoder output and PNG encoding.
   Determine whether an unchanged CLI plus OS limits can meet every required unit.
@@ -33,10 +32,11 @@ this is a bounded platform-mechanism question, not two independent broad corpora
 - Supply k107 a mechanism-by-obligation matrix, established limits, exact unresolved
   questions and source-linked reversal conditions. Do not choose arbitrary numeric
   budgets or claim native usefulness from a source read.
-- If a capability experiment is necessary, specify its question and required
-  explicit reviewed scope for a later task; do not run it or consume E/A/closed
+- If a capability experiment is necessary, specify its question.
+  Specify the required explicit reviewed scope for a later task.
+  Do not run it or consume E/A/closed
   causal slots. Work in another repository needs its actual owner, not an
-  unauthorized local implementation. No native or storage mutation here.
+  unauthorised local implementation. No native or storage mutation here.
 
 ## Notes
 No production implementation, volume creation, resource-exhaustion test, VM,

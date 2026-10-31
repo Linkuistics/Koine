@@ -480,8 +480,9 @@ eligibility check.
 
 Antony approved audited test copies on 2026-10-31. They use barriers in copied
 modules, matching the existing validator control. Each copy must match production
-except for declared test substitutions; a correspondence check must fail on any
+except for declared test substitutions. A correspondence check must fail on any
 other difference. This auditing is the cost of preserving production interfaces.
+
 The alternative production injection interface is not part of this agreement.
 External controls alone leave the internal race rows unqualified.
 
@@ -874,7 +875,7 @@ Each commitment references the resource admission event: profile identity,
 operation allowance, reserved storage identities, limits installed by the
 launcher, observations and remaining capacity by class. Settlement records
 actual retained extents, exact resource failures and unknown tails. These fields
-extend the existing commitment/result join; no resource receipt alone grants
+extend the existing commitment/result join. No resource receipt alone grants
 dispatch, clean completion or normal stop.
 
 At exhaustion, close eligibility and retain existing complete and partial files.
@@ -882,7 +883,7 @@ Do not discard an old image, truncate raw output, downsample a required capture,
 or omit a due tick to continue. Limit enforcement may prevent a new allocation
 or write and leave an incomplete attempt. A failed storage device, unknown holder
 or producer death can make unreturned bytes and final records unavailable.
-Record that boundary where possible; protected capacity is not guaranteed I/O
+Record that boundary where possible. Protected capacity is not guaranteed I/O
 service or proof that a lock can be acquired.
 
 ### Candidate enforcement and acceptance evidence
@@ -898,13 +899,13 @@ An aggregate address-space limit alone does not establish those individual bound
 A producer with explicit resource admission could own those checks earlier.
 Its cost is a changed external dependency and corresponding transport qualification.
 Isolation is another candidate only if its allocation, storage and process/service
-boundaries are established. Neither alternative authorizes implementation or a
+boundaries are established. Neither alternative authorises implementation or a
 native experiment. The complete design must choose on evidence.
 
 Offline controls must distinguish failed launcher admission from failed external
-execution. They must also show no next dispatch after each exceeded allowance,
-unchanged originals/partials, protected terminal and containment capacity, and
-unavailable outcomes when those protected writes fail. Controls exercise the real
+execution. They must also show no next dispatch after each exceeded allowance.
+They must show unchanged originals/partials, protected terminal and containment
+capacity, and unavailable outcomes when those protected writes fail. Controls exercise the real
 owner and resource-admission code. Synthetic allocation/write substitutes cannot
 prove that a native encoder or OS enforces a limit.
 
@@ -919,8 +920,8 @@ Scheduling is proposed above. Enforceable resources and complete workload accoun
 remain mandatory unresolved inputs. There is no executable combined profile.
 Absence prevents startup. Resource design must reconcile the timing targets with
 actual useful capture, transfer, validation, retention and collection work.
-The resource-admission boundary specifies the required evidence and ownership;
-it does not discharge that reconciliation.
+
+The resource-admission boundary specifies the required evidence and ownership. It does not discharge that reconciliation.
 
 That design must bound the actual external CLI/encoder before
 allocations/writes. It must also bound encoded bytes, dimensions/decoded bytes,

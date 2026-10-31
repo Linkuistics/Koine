@@ -21,7 +21,7 @@ admission report. Slice completion supplies no combined profile or readiness.
   allocation/write and resolve every candidate mechanism's qualification gap.
 - Reconcile the 600-second start queue, boot and interrupted-start exact-clone
   containment, post-start uploads, full-run duration/tick count and collection.
-  Correct scheduling where needed with explicit whole-review scope; preserve
+  Correct scheduling where needed with explicit whole-review scope. Preserve
   input order, waits, poll counts, one-attempt transports and honest VNC limits.
 - Complete all record schemas, finite caller, process/writer/ordinal ownership,
   eligibility/publication and exact containment consistently with reviewed slices.
@@ -32,7 +32,7 @@ admission report. Slice completion supplies no combined profile or readiness.
   k89/k81/k76/k67/k62/k57/k54 duty, privacy/availability/history/cap restriction.
 - Cut independent whole-design review before k89. Every earned integration,
   planning, implementation and earned review/integration precedes k89/k81/k76
-  consumption. Externalize planning; create no speculative implementation leaves.
+  consumption. Externalise planning. Create no speculative implementation leaves.
   Keep k102/k98/k96 open until their complete charters and handoffs are reconciled.
 
 ## Notes
