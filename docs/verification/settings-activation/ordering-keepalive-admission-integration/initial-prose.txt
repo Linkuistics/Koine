@@ -1,0 +1,82 @@
+.grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/04-research-a--settings-keepalive-enforcement-k106.md:13:64 passive-voice: Possible passive voice ('is selected'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+.grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/04-research-a--settings-keepalive-enforcement-k106.md:17:3 long-sentence: Instruction has 33 words (limit 20). Split it.
+.grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/04-research-a--settings-keepalive-enforcement-k106.md:18:29 semicolon: Semicolon. Split the sentence in two.
+.grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/04-research-a--settings-keepalive-enforcement-k106.md:19:43 semicolon: Semicolon. Split the sentence in two.
+.grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/04-research-a--settings-keepalive-enforcement-k106.md:19:78 semicolon: Semicolon. Split the sentence in two.
+.grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/04-research-a--settings-keepalive-enforcement-k106.md:36:3 long-sentence: Instruction has 27 words (limit 20). Split it.
+.grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/04-research-a--settings-keepalive-enforcement-k106.md:37:43 semicolon: Semicolon. Split the sentence in two.
+.grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/04-research-a--settings-keepalive-enforcement-k106.md:39:3 spelling: American spelling 'unauthorized'. Write 'unauthorised'.
+.grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-design--settings-keepalive-complete-profile-k107.md:24:67 semicolon: Semicolon. Split the sentence in two.
+.grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-design--settings-keepalive-complete-profile-k107.md:35:16 spelling: American spelling 'Externalize'. Write 'Externalise'.
+.grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-design--settings-keepalive-complete-profile-k107.md:35:36 semicolon: Semicolon. Split the sentence in two.
+.grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-design--settings-keepalive-complete-profile-k107.md:36:69 passive-voice: Possible passive voice ('are reconciled'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+CONTEXT.md:80:61 passive-voice: Possible passive voice ('is resolved'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+CONTEXT.md:308:460 passive-voice: Possible passive voice ('were refused'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:59:16 passive-voice: Possible passive voice ('is introduced'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:68:40 passive-voice: Possible passive voice ('are suppressed'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:68:77 passive-voice: Possible passive voice ('is settled'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:138:35 passive-voice: Possible passive voice ('is reused'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:161:13 passive-voice: Possible passive voice ('are known'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:174:18 passive-voice: Possible passive voice ('is suppressed'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:193:26 present-perfect: Compound tense ('have reached'). Use the simple past or present, unless the link to now is the point.
+docs/specs/settings-keepalive-owner.md:219:14 passive-voice: Possible passive voice ('is required'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:304:26 passive-voice: Possible passive voice ('is processed'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:310:73 passive-voice: Possible passive voice ('is processed'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:313:96 passive-voice: Possible passive voice ('are established'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:322:38 passive-voice: Possible passive voice ('is cancelled'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:366:11 passive-voice: Possible passive voice ('are required'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:366:58 passive-voice: Possible passive voice ('is recorded'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:422:52 passive-voice: Possible passive voice ('are settled'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:434:62 passive-voice: Possible passive voice ('is introduced'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:483:39 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:497:220 passive-voice: Possible passive voice ('is tested'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:542:25 passive-voice: Possible passive voice ('is selected'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:614:64 passive-voice: Possible passive voice ('is expired'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:665:59 passive-voice: Possible passive voice ('is clipped'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:734:35 passive-voice: Possible passive voice ('was created'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:816:61 passive-voice: Possible passive voice ('is claimed'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:848:60 passive-voice: Possible passive voice ('is claimed'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:860:14 passive-voice: Possible passive voice ('are backed'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:877:43 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:885:36 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:901:12 passive-voice: Possible passive voice ('are established'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:901:49 spelling: American spelling 'authorizes'. Write 'authorises'.
+docs/specs/settings-keepalive-owner.md:905:12 long-sentence: Description has 26 words (limit 25). Split it.
+docs/specs/settings-keepalive-owner.md:914:61 passive-voice: Possible passive voice ('are reconciled'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:918:12 passive-voice: Possible passive voice ('is proposed'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:922:78 semicolon: Semicolon. Split the sentence in two.
+docs/specs/settings-keepalive-owner.md:939:40 passive-voice: Possible passive voice ('are admitted'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:957:1 passive-voice: Possible passive voice ('are unchanged'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/specs/settings-keepalive-owner.md:958:39 passive-voice: Possible passive voice ('are integrated'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:12:16 passive-voice: Possible passive voice ('is written'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:13:45 long-sentence: Description has 26 words (limit 25). Split it.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:14:30 semicolon: Semicolon. Split the sentence in two.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:33:220 passive-voice: Possible passive voice ('are checked'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:38:49 semicolon: Semicolon. Split the sentence in two.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:61:70 semicolon: Semicolon. Split the sentence in two.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:69:63 passive-voice: Possible passive voice ('was established'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:70:1 long-sentence: Description has 26 words (limit 25). Split it.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:71:23 passive-voice: Possible passive voice ('is covered'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:86:103 semicolon: Semicolon. Split the sentence in two.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:91:46 passive-voice: Possible passive voice ('is inherited'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:95:12 semicolon: Semicolon. Split the sentence in two.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:98:20 semicolon: Semicolon. Split the sentence in two.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:107:4 long-sentence: Instruction has 24 words (limit 20). Split it.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:131:74 semicolon: Semicolon. Split the sentence in two.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:138:40 semicolon: Semicolon. Split the sentence in two.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:140:56 spelling: American spelling 'authorize'. Write 'authorise'.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:142:1 long-sentence: Description has 28 words (limit 25). Split it.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:146:25 long-sentence: Description has 27 words (limit 25). Split it.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:146:51 synonym-rotation: 'launch' and 'start' name the same action. Pick one and use it every time.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:150:7 passive-voice: Possible passive voice ('are proposed'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:151:13 spelling: American spelling 'behavior'. Write 'behaviour'.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:151:22 passive-voice: Possible passive voice ('was tested'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:183:34 semicolon: Semicolon. Split the sentence in two.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:187:56 semicolon: Semicolon. Split the sentence in two.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:195:26 semicolon: Semicolon. Split the sentence in two.
+docs/verification/settings-activation/KEEPALIVE-RESOURCES.md:195:50 passive-voice: Possible passive voice ('was reported'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/design/architecture/settings-activation/README.md:29:64 present-perfect: Compound tense ('has been built'). Use the simple past or present, unless the link to now is the point.
+docs/design/architecture/settings-activation/README.md:29:68 passive-voice: Possible passive voice ('been built'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/design/architecture/settings-activation/README.md:54:36 passive-voice: Possible passive voice ('is repaired'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+docs/design/architecture/settings-activation/README.md:69:39 passive-voice: Possible passive voice ('is used'). Name the actor and use an active verb, unless the actor is unknown or does not matter.
+35 hard, 46 advisory, 3 accepted, 3 pending, 12423 words, 0.3 hard per 100 words (baseline 0)

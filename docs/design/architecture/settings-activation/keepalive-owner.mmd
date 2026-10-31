@@ -5,7 +5,7 @@ flowchart TB
   owner["Command owner and supervisor\nTwo outstanding operations total\nAt most one active"]
   gate{"Eligible at dispatch?\nNo prior failure or stop"}
   operation["Owner reserves ordinal and publishes commitment\nChild: CLI, validation and backend receipt\nOwner: payload acknowledgement and terminal record"]
-  stop["Close eligibility and suppress ticks\nCancel unstarted work without attempt ordinal"]
+  stop["Close eligibility and suppress ticks\nCancel pending work without attempt ordinal"]
   collection["Settle owned holder and reap worker\nThen untouched collection and exact clone stop"]
   profile["Proposed receive-order schedule and deadlines\nProducer limits and workload remain unresolved\nMissing complete profile prohibits startup"]:::open
   caller -->|"1. create and own"| owner

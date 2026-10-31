@@ -1,0 +1,494 @@
+{
+  "tier": 2,
+  "initial": {
+    "project": "Users-antony-Development-AbstractingComputers-Koine.gh-issue-14",
+    "signal": "best_effort",
+    "indexed_at": "2026-10-30T12:26:51Z",
+    "metadata": {
+      "generation": "2026-10-30T12:26:51Z",
+      "index_mode": "full",
+      "recorded_at": "2026-10-30T12:36:42Z",
+      "recording_status": "complete",
+      "ignored_files_stored": 276,
+      "ignored_files_total": 276,
+      "hash_records_complete": true,
+      "coverage_version": 3,
+      "generation_matches": true
+    },
+    "paths": [
+      {
+        "requested_path": "scripts/vm-guest-exec.py",
+        "path": "scripts/vm-guest-exec.py",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "scripts/vm_capture_artifact.py",
+        "path": "scripts/vm_capture_artifact.py",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "CONTEXT.md",
+        "path": "CONTEXT.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "Taskfile.yml",
+        "path": "Taskfile.yml",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "docs/specs/settings-keepalive-owner.md",
+        "path": "docs/specs/settings-keepalive-owner.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_changed",
+        "recommended_action": "read_source_and_reindex",
+        "coverage": []
+      },
+      {
+        "requested_path": "docs/verification/settings-activation/KEEPALIVE-RESOURCES.md",
+        "path": "docs/verification/settings-activation/KEEPALIVE-RESOURCES.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_changed",
+        "recommended_action": "read_source_and_reindex",
+        "coverage": []
+      },
+      {
+        "requested_path": "docs/verification/settings-activation/KEEPALIVE-DESIGN.md",
+        "path": "docs/verification/settings-activation/KEEPALIVE-DESIGN.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "docs/verification/settings-activation/KEEPALIVE-SCHEDULING.md",
+        "path": "docs/verification/settings-activation/KEEPALIVE-SCHEDULING.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_changed",
+        "recommended_action": "read_source_and_reindex",
+        "coverage": []
+      },
+      {
+        "requested_path": "docs/verification/settings-activation/KEEPALIVE-LIFECYCLE-REVIEW.md",
+        "path": "docs/verification/settings-activation/KEEPALIVE-LIFECYCLE-REVIEW.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_changed",
+        "recommended_action": "read_source_and_reindex",
+        "coverage": []
+      },
+      {
+        "requested_path": "docs/verification/settings-activation/ORDERING-CAPTURE-RESULTS.md",
+        "path": "docs/verification/settings-activation/ORDERING-CAPTURE-RESULTS.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "docs/design/architecture/settings-activation/keepalive-resources.mmd",
+        "path": "docs/design/architecture/settings-activation/keepalive-resources.mmd",
+        "status": "partial",
+        "freshness": "metadata_match",
+        "recommended_action": "read_ranges_and_verify_scope",
+        "coverage": [
+          {
+            "path": "docs/design/architecture/settings-activation/keepalive-resources.mmd",
+            "kind": "parse_partial",
+            "detail": "1-25",
+            "match": "exact",
+            "ranges": [
+              {
+                "start": 1,
+                "end": 25
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "requested_path": "docs/design/architecture/settings-activation/diagrams.json",
+        "path": "docs/design/architecture/settings-activation/diagrams.json",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_changed",
+        "recommended_action": "read_source_and_reindex",
+        "coverage": []
+      },
+      {
+        "requested_path": "docs/design/architecture/settings-activation/README.md",
+        "path": "docs/design/architecture/settings-activation/README.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_changed",
+        "recommended_action": "read_source_and_reindex",
+        "coverage": []
+      }
+    ],
+    "scopes": [],
+    "caveat": "Best-effort signal only. No recorded issue does not prove graph or source completeness; read flagged source and qualify claims when metadata is changed or unavailable."
+  },
+  "additional": {
+    "project": "Users-antony-Development-AbstractingComputers-Koine.gh-issue-14",
+    "signal": "best_effort",
+    "indexed_at": "2026-10-31T03:23:31Z",
+    "metadata": {
+      "generation": "2026-10-31T03:23:31Z",
+      "index_mode": "full",
+      "recorded_at": "2026-10-31T03:23:43Z",
+      "recording_status": "complete",
+      "ignored_files_stored": 276,
+      "ignored_files_total": 276,
+      "hash_records_complete": true,
+      "coverage_version": 3,
+      "generation_matches": true
+    },
+    "paths": [
+      {
+        "requested_path": ".grove/_BRIEF.md",
+        "path": ".grove/_BRIEF.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/_settings-reopen-activation.md",
+        "path": ".grove/05-k12/_settings-reopen-activation.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/_settings-activation-repair.md",
+        "path": ".grove/05-k12/02-k14/_settings-activation-repair.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/_settings-activation-native-path.md",
+        "path": ".grove/05-k12/02-k14/02-k16/_settings-activation-native-path.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/_settings-activation-context.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/_settings-activation-context.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/_settings-event-context.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/_settings-event-context.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/_settings-deferred-native-capture.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/_settings-deferred-native-capture.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/_settings-deferred-path-qualification.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/_settings-deferred-path-qualification.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/_settings-activation-disposition.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/_settings-activation-disposition.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/_settings-native-clock-disposition.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/_settings-native-clock-disposition.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/_settings-measured-native-disposition.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/_settings-measured-native-disposition.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/_settings-causal-activation-repair.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/_settings-causal-activation-repair.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/_settings-modality-disposition-repair.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/_settings-modality-disposition-repair.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/_settings-ordering-harness.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/_settings-ordering-harness.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/_settings-shared-scenario.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/_settings-shared-scenario.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/_settings-scenario-migration.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/_settings-scenario-migration.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/_settings-scenario-transports.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/_settings-scenario-transports.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/_settings-scenario-remaining.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/_settings-scenario-remaining.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/_settings-evidence-confirmations.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/_settings-evidence-confirmations.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/_settings-artifact-evidence.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/_settings-artifact-evidence.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/_settings-capture-lifecycle-evidence.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/_settings-capture-lifecycle-evidence.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/_settings-keepalive-owner.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/_settings-keepalive-owner.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/_settings-keepalive-profile.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/_settings-keepalive-profile.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/_settings-keepalive-resources.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/_settings-keepalive-resources.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/01-DONE-design--settings-keepalive-admission-k105.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/01-DONE-design--settings-keepalive-admission-k105.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/02-DONE-review-design--settings-keepalive-admission-k108.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/02-DONE-review-design--settings-keepalive-admission-k108.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/03-integrate-review-design--settings-keepalive-admission-k109.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/03-integrate-review-design--settings-keepalive-admission-k109.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_changed",
+        "recommended_action": "read_source_and_reindex",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/04-research-a--settings-keepalive-enforcement-k106.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/04-research-a--settings-keepalive-enforcement-k106.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-design--settings-keepalive-complete-profile-k107.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-design--settings-keepalive-complete-profile-k107.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/_settings-keepalive-resources.md",
+        "path": ".grove/05-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/_settings-keepalive-resources.md",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "scripts/check-doc-links.py",
+        "path": "scripts/check-doc-links.py",
+        "status": "no_recorded_issue",
+        "freshness": "metadata_match",
+        "recommended_action": "use_graph_with_best_effort_caveat",
+        "coverage": []
+      },
+      {
+        "requested_path": "docs/design/architecture/settings-activation/keepalive-owner.mmd",
+        "path": "docs/design/architecture/settings-activation/keepalive-owner.mmd",
+        "status": "partial",
+        "freshness": "metadata_changed",
+        "recommended_action": "read_source_and_reindex",
+        "coverage": [
+          {
+            "path": "docs/design/architecture/settings-activation/keepalive-owner.mmd",
+            "kind": "parse_partial",
+            "detail": "1-25",
+            "match": "exact",
+            "ranges": [
+              {
+                "start": 1,
+                "end": 25
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "requested_path": "docs/design/architecture/settings-activation/keepalive-lifecycle.mmd",
+        "path": "docs/design/architecture/settings-activation/keepalive-lifecycle.mmd",
+        "status": "partial",
+        "freshness": "metadata_match",
+        "recommended_action": "read_ranges_and_verify_scope",
+        "coverage": [
+          {
+            "path": "docs/design/architecture/settings-activation/keepalive-lifecycle.mmd",
+            "kind": "parse_partial",
+            "detail": "24-24,25-25,26-26,27-27,28-28,29-29,30-30,31-31,32-32,33-33,34-34,35-35",
+            "match": "exact",
+            "ranges": [
+              {
+                "start": 24,
+                "end": 24
+              },
+              {
+                "start": 25,
+                "end": 25
+              },
+              {
+                "start": 26,
+                "end": 26
+              },
+              {
+                "start": 27,
+                "end": 27
+              },
+              {
+                "start": 28,
+                "end": 28
+              },
+              {
+                "start": 29,
+                "end": 29
+              },
+              {
+                "start": 30,
+                "end": 30
+              },
+              {
+                "start": 31,
+                "end": 31
+              },
+              {
+                "start": 32,
+                "end": 32
+              },
+              {
+                "start": 33,
+                "end": 33
+              },
+              {
+                "start": 34,
+                "end": 34
+              },
+              {
+                "start": 35,
+                "end": 35
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "scopes": [],
+    "caveat": "Best-effort signal only. No recorded issue does not prove graph or source completeness; read flagged source and qualify claims when metadata is changed or unavailable."
+  }
+}

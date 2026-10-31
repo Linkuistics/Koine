@@ -31,7 +31,7 @@
   "discussion": {
     "title": "Establish resources before producer execution",
     "status": "Admission proposal. Enforcement qualification and numerical profile remain open.",
-    "summary": "The owner requires a complete resource proof before commitment. Ordinary output cannot consume protected collection or terminal capacity. The pinned producer allocates before file writes; candidate OS limits require qualification. Antony approved audited test copies with phase barriers and a replaceable clock. No implementation or runtime is ready.",
+    "summary": "Admission checks capacity without an operation charge. The commitment transition charges before directory creation and publication. The launcher then installs limits before external execution. Collection directories and terminal records need mechanism-backed protection under one ordinal sequence. Physical placement and native enforcement remain open. Approved barriers and clock replacement do not approve new resource-failure substitutions. No implementation or runtime is ready.",
     "diagramIds": [
       "keepalive-resources",
       "keepalive-owner",
@@ -40,7 +40,7 @@
     "updatedDiagrams": [
       {
         "id": "keepalive-resources",
-        "summary": "Adds producer-enforcement and protected-capacity admission, with explicit unavailable outcomes."
+        "summary": "Separates admission checks, commitment charges and later launcher enforcement. Adds refusal before external invocation and retains storage qualification holds."
       }
     ]
   },
@@ -50,7 +50,7 @@
       "group": "keepalive",
       "title": "Establish resources before producer execution",
       "source": "keepalive-resources.mmd",
-      "caption": "Proposed resource admission under the existing writer authority. The checks require established evidence, not observed free space or post-capture rejection. Candidate inherited limits and reserved/capped storage remain unqualified. The diagram omits lifecycle joins shown in the owner and lifecycle views. Missing complete profile prohibits startup; no numerical cap, native liveness or model-checking result is claimed."
+      "caption": "Proposed resource admission under one writer authority. Admission checks without an operation charge. The commitment transition charges before directory reservation and publication. Launcher enforcement follows commitment and precedes external execution. Setup refusal retains the committed attempt and charge. Collection-backed directories and terminal-backed ordinal records remain physical-arrangement requirements. The view omits stop cancellation and detailed lifecycle joins shown in the lifecycle view. Candidate mechanisms and the complete numerical profile remain unqualified. No native liveness or model-checking result is claimed."
     },
     {
       "id": "keepalive-scheduling",

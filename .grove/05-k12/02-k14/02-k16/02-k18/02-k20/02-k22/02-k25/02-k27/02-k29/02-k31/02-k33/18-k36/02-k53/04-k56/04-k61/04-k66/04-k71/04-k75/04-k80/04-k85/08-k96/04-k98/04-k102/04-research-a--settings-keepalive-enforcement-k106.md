@@ -17,14 +17,23 @@ this is a bounded platform-mechanism question, not two independent broad corpora
 - Answer the report's external-evidence questions from pinned primary sources.
   Establish actual host correspondence and address-space/data/file limit enforcement through exec, fork, mappings and native encoders.
   Include external services, descendants, aggregate process exposure and useful loader/runtime allowance.
+  Establish the exact limit install point and the calling process's map size on the intended host.
+  Separate the launcher's installable floor from producer useful fit and exec inheritance.
+  Include RLIMIT_DATA's whole-map check and the RLIMIT_RSS alias when comparing manuals with source.
 - Trace all capture allocations before geometry/output checks, including RFB
   handshake/resize, compressed-message fields, decoder output and PNG encoding.
+  Include the simultaneous retained wire frame and owned capture copy at each logical/physical scale.
   Determine whether an unchanged CLI plus OS limits can meet every required unit.
   Do not infer dimension or encoded-buffer enforcement from RSS observation.
 - Establish an implementable private storage arrangement with actual reservation,
   quotas, file/inode/metadata accounting, raw/partial preservation, and protected
   terminal plus cleanup capacity under the original writer authority. Include
   failure and unavailable-holder cases. Free space and per-file caps are insufficient.
+  Place collection attempt directories in collection-backed storage, independent of ordinary directory exhaustion.
+  Place global ordinal/storage bindings and all clean/failed owner lifecycle records in terminal-backed storage.
+  Establish recovery of the single sequence after owner loss, including incomplete reservations and unknown tails.
+  Preserve the proposed private backend's assigned-directory interface, without separate root scans or ordinal allocators.
+  These are required properties, not an already selected physical arrangement.
 - Prefer the unchanged transport with inherited enforceable limits if it meets
   the contract. Compare a bounded producer boundary and isolation only where
   evidence defeats that candidate. Seek documented failures, bypasses and
@@ -32,6 +41,8 @@ this is a bounded platform-mechanism question, not two independent broad corpora
 - Supply k107 a mechanism-by-obligation matrix, established limits, exact unresolved
   questions and source-linked reversal conditions. Do not choose arbitrary numeric
   budgets or claim native usefulness from a source read.
+  Identify real enabling points for limit-call refusal, allowance exhaustion and failed protected writes.
+  Distinguish safe offline controls from separately scoped native capability work and unapproved copied-module substitutions.
 - If a capability experiment is necessary, specify its question.
   Specify the required explicit reviewed scope for a later task.
   Do not run it or consume E/A/closed

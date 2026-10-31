@@ -131,6 +131,12 @@ the held directory and lock, assigned ordinal, submission ID and commitment ID.
 It also receives the stop ID observed at commitment, or null. A later stop is a
 separate event referencing the commitment, never a rewritten argument.
 
+The [resource boundary](#retention-and-protected-capacity) assigns the attempt's
+backing storage by operation class. A collection attempt uses collection capacity,
+including its directory, even when ordinary capacity is exhausted. Its ordinal
+still belongs to the single owner sequence. Physical placement remains a required
+research result, not an implemented mount arrangement.
+
 The child checks those bindings and uses that exact directory. It neither
 scans for a new ordinal nor creates another attempt. The prior-attempt scan
 excludes only this correctly bound commitment and still rejects unfinished
@@ -338,7 +344,7 @@ common clock. The owner's event sequence decides ordering.
 |---|---|
 | Worker ready | Created-child identity/incarnation, process group, channel role/token, initial tick sequence and readiness observation. Reference the prior creation record and caller notification. |
 | Worker phase | Original phase report, worker sequence, sleep/tick identity, sender time and owner receive time. Include the preceding completion identity and receipt time where applicable. |
-| Submission event | Client or worker identity, submission ID, producer sequence, operation/tick ID and event kind: received, admitted or cancelled-unstarted. Each kind has its own immutable event and time. Cancellation includes its cause and stop ID. The ordinal is always null. |
+| Submission event | Client or worker identity, submission ID, producer sequence, operation/tick ID and event kind: received, admitted, resource-refused or cancelled-unstarted. Each kind has its own immutable event and time. Resource refusal records the failed check and first-failure reference. Cancellation includes its cause and stop ID. The ordinal is always null. |
 | Dispatch commitment | Owner-written event linking submission and assigned ordinal to the reserved directory and exact command, arguments, predicate and transport. Include class, profile/deadlines/capacity identity, eligibility observations, commitment time and stop ID or null. |
 | Launch observation | Owner-written event referencing commitment, backend child token/incarnation/group, observed creation time and launch state. Backend observations separately name the CLI and validator children, times and actual wait results. Missing creation evidence remains unknown. |
 | Backend result | Child-written command result, raw stream references, validation/artifact references, raw statuses, emission status and terminal publication time. It names the assigned ordinal and commitment. It proves neither submitter receipt nor clean owner disposition. |
@@ -355,6 +361,20 @@ immutable link to an attempt. Launch observations distinguish backend creation
 from external CLI execution. A recorded creation alone proves neither CLI launch
 nor input delivery. Each publisher preserves partial files and missing facts
 without overwriting an earlier event.
+
+Every owner lifecycle row in this table consumes terminal-evidence capacity,
+whether the outcome is clean, failed or unknown. The backend-result row is the
+exception: its child-written receipts consume the attempt's ordinary or collection
+allowance. Command records, raw streams and validation receipts use that same
+attempt allowance. Terminal operation dispositions preserve failed or missing
+backend records without claiming that they exist.
+
+Startup reserves terminal capacity for the bounded complete event history and
+the remaining failure/stop/final-outcome tail. Submission refusals and unstarted
+cancellations consume that history budget even though they have no operation charge.
+The caller's owner-exit and final-outcome records use terminal capacity too.
+The [resource record fields](#resource-record-fields) distinguish declared limits,
+later launcher observations and final settlement within these existing rows.
 
 The record's complete publication establishes that record's existence. It cannot
 establish its publisher's later return or exit. Child terminal facts belong to
@@ -582,8 +602,12 @@ An incomplete frame is not receipt. Existing whole-phase deadlines still apply.
 Selection starts immediately when ownership becomes available. The owner has
 two seconds to finish selection, reserve the ordinal and publish commitment.
 This interval remains inside the 152-second admission deadline. No deliberate
-delay consumes otherwise available time. Expiry closes eligibility and cancels
-unstarted work without ordinals. A failed or expired request is never resubmitted.
+delay consumes otherwise available time. Expiry closes eligibility.
+
+Before ordinal assignment and charging, expiry cancels pending work without an
+ordinal or operation charge. After assignment and charging, expiry retains the
+ordinal, charge and partial evidence even if backend creation never occurs.
+A failed or expired request is never resubmitted.
 
 One holder can delay the other producer. It cannot be replaced by an endless
 sequence of younger requests. With the operation bounds below, the longest
@@ -831,17 +855,40 @@ producer creation, frame acquisition, decoding, encoding, raw output, validation
 publication and containment. A bounded validator does not establish a bounded
 producer. A file-size limit does not establish a bound on an encoded memory buffer.
 
+Admission checks applicability and available capacity without charging the
+operation allowance. It grants neither a reservation nor dispatch authority.
+The owner repeats the check in the serialised commitment transition.
+After that check succeeds, it assigns the ordinal and irrevocably charges the
+operation's full permitted contribution. Charging precedes attempt-directory
+creation, commitment publication and backend creation.
+
+A resource refusal before that transition creates a `resource-refused` submission
+event with no ordinal or operation charge. It closes eligibility and retains the
+failed check, phase and first-failure reference. A normal stop that cancels pending
+work also has no operation charge. Once charging occurs, a failed directory or
+publication step retains its assigned ordinal, charge and any partial evidence.
+No later work can reclaim that charge.
+
 The profile names each resource unit, its limit, its enforcement owner and the
 point at which enforcement becomes active. It also names the producer image,
 runtime and host assumptions, complete child/service set, storage identities,
 and evidence establishing the mechanism. Unknown or inapplicable evidence refuses
 startup. An unknown operation or resource cost refuses its commitment.
 
-The producer launcher must establish its applicable limits before executing the
-external image. A failed limit call, failed readback, unbound executable or
+The backend's producer launcher must establish its applicable limits before
+executing the external image, under the owner's commitment.
+A failed limit call, failed readback, unbound executable or
 uncovered allocation/write path refuses execution. Success of a setup call
 alone does not qualify enforcement. The complete profile must establish that the
 target process retains the limits and cannot place required work outside them.
+
+The install point has its own resource cost. In the pinned XNU source, the setter
+rejects an address-space limit below the calling process's existing map size.
+A pre-exec call in a forked Python backend child therefore inherits that map's floor.
+K106 must establish the actual install point and its map-size requirement on the
+intended host. Producer useful fit and limit inheritance do not establish this floor.
+An exec'd intermediary, an in-producer check or another mechanism needs its own
+coverage and ownership argument before selection.
 
 Per-process limits do not establish an aggregate process-tree limit. A separate
 service does not inherit a client's limits merely because the client calls it.
@@ -850,13 +897,15 @@ boundary as unavailable. No same-user security confinement is claimed.
 
 ### Retention and protected capacity
 
-The resource model has three disjoint allowances under the same writer authority:
+The resource model requires three disjoint allowances under the same writer
+authority. Disjointness remains a mechanism requirement until k106 establishes
+an arrangement and k107 completes its useful profile.
 
 | Allowance | Required use and protection |
 |---|---|
-| Ordinary work | All scenario and tick artifacts, raw streams and partials, including failed attempts. Admission reserves the operation's full permitted contribution before launch. |
-| Failure collection and containment | The finite required observer/window/screenshot sequence, remaining audits, exact clone stop and independent inventory. Ordinary work cannot consume this allowance. |
-| Terminal evidence | Bounded owner/worker/operation failure records, stop joins, partial-disposition and final caller outcome. Neither ordinary output nor collection output can consume it. |
+| Ordinary work | All scenario and tick attempt directories, command/result/validation receipts, artifacts, raw streams and partials, including failed attempts. The commitment transition charges the full permitted contribution. |
+| Failure collection and containment | The complete collection attempt directories and outputs for the finite observer/window/screenshot sequence, remaining audits, exact clone stop and independent inventory. Ordinary work cannot consume this allowance. |
+| Terminal evidence | All owner lifecycle records, clean and failed, including ordinal/storage bindings, submission events, commitment, launch observations, stop joins and final caller outcome. Neither ordinary output nor collection output can consume it. |
 
 Reservations are backed by an established mechanism, not an observed amount of
 free storage or a number in a ledger. Separate quotas alone cap use but do not
@@ -865,18 +914,27 @@ identities and mount relationships form part of the single logical evidence-root
 identity. They introduce no alternate writer, lock, ordinal allocator or success path.
 The owner refuses replacement or loss of an object in that identity.
 
+Collection attempt directories must reside in the collection allowance's backing
+storage. Ordinary directory exhaustion must not prevent their creation.
+The terminal allowance pays for the owner's global ordinal/storage bindings.
+These bindings identify each attempt's backing object and directory under one
+logical root. They must survive owner loss whenever collection remains available.
+
+K106 must establish the physical directory arrangement and its mechanism-backed
+separation. Three volumes alone do not establish these bindings or recovery.
+The proposed private backend consumes an assigned directory and does not rescan
+for another ordinal. The current public backend's flat root scan cannot serve
+as the allocator across separate objects. A collection-only generation must
+establish prior assignments and storage identities before allocating another ordinal.
+If it cannot, collection remains unavailable.
+
 Capacity accounting includes file metadata, directory/record growth, temporary
 files, raw streams and simultaneous partials. Per-file limits do not bound the
-sum. Cumulative admission charges are not refunded to admit more work after
-failure, cancellation or disposal. The whole-run count and duration bound must
-include every mandatory capture and the complete collection path.
-
-Each commitment references the resource admission event: profile identity,
-operation allowance, reserved storage identities, limits installed by the
-launcher, observations and remaining capacity by class. Settlement records
-actual retained extents, exact resource failures and unknown tails. These fields
-extend the existing commitment/result join. No resource receipt alone grants
-dispatch, clean completion or normal stop.
+sum. Cumulative operation charges are not refunded after commitment, including
+failed launch, interruption or disposal. The whole-run count and duration bound
+must include every mandatory capture and the complete collection path.
+Its terminal budget also covers all bounded submissions, refusals and unstarted
+cancellations. A cancelled pending tick costs lifecycle records, not a capture.
 
 At exhaustion, close eligibility and retain existing complete and partial files.
 Do not discard an old image, truncate raw output, downsample a required capture,
@@ -885,6 +943,23 @@ or write and leave an incomplete attempt. A failed storage device, unknown holde
 or producer death can make unreturned bytes and final records unavailable.
 Record that boundary where possible. Protected capacity is not guaranteed I/O
 service or proof that a lock can be acquired.
+
+### Resource record fields
+
+Resource facts extend existing immutable lifecycle rows. They do not introduce
+a separate resource admission event with facts from different times.
+
+| Existing row | Resource facts available at that point |
+|---|---|
+| Submission event | Profile and cost identity, check time, phase, available capacity and check outcome. Refusal includes the exact reason. Admission carries no operation charge. |
+| Dispatch commitment | Declared limits and install points, operation allowance, irrevocable charge, assigned ordinal/directory, reserved backing identities and remaining capacity by class. No installed-limit fact exists yet. |
+| Launch observation | Separate observations for backend creation and launcher setup. Setup names requested and installed limits, actual call/readback results, process identity and time. Refusal, CLI execution and unknown execution remain distinct. |
+| Terminal operation disposition | Resource settlement: actual retained extents, exact limit/write failures, references to setup and backend evidence, and unknown tails. Settlement never refunds the charge. |
+
+The owner retains launcher evidence after backend creation in a later launch
+observation. It never rewrites commitment to add that evidence. Missing readback
+stays unknown, and a successful readback alone establishes no native enforcement.
+No resource receipt alone grants dispatch, clean completion or normal stop.
 
 ### Candidate enforcement and acceptance evidence
 
@@ -908,6 +983,13 @@ They must show unchanged originals/partials, protected terminal and containment
 capacity, and unavailable outcomes when those protected writes fail. Controls exercise the real
 owner and resource-admission code. Synthetic allocation/write substitutes cannot
 prove that a native encoder or OS enforces a limit.
+
+The [resource control matrix](../verification/settings-activation/KEEPALIVE-RESOURCES.md#resource-control-enabling-points)
+names each enabling point and its approval boundary. Audited barriers and clock
+replacement cannot alone cause a limit-call failure or a failed protected write.
+Those tests require an established real mechanism or an explicitly approved
+additional substitution. K107 owns that choice. No new substitution class follows
+from the 2026-10-31 approval.
 
 Native capability qualification, if necessary, requires its own explicit reviewed
 scope before execution. The focused evaluation and ordinary acceptance slots

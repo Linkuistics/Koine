@@ -2,7 +2,9 @@ flowchart TB
   start["Start here: one run profile"]:::start
   proof{"Producer bounds established?"}
   storage{"Collection and terminal capacity protected?"}
-  commit["Owner records admission and commitment"]
+  admission["Admission checks capacity\nNo operation charge"]
+  commit["Commitment transition rechecks and charges\nReserve directory and publish commitment"]
+  launcher{"Launcher installs limits\nActual setup and readback observed?"}
   producer["Run bounded producer"]
   validate["Validate and publish\nRetain originals and partials"]
   next["Permit later dispatch"]
@@ -11,11 +13,16 @@ flowchart TB
   start -->|"1. establish evidence"| proof
   proof -->|"2. established"| storage
   proof -->|"missing or inapplicable"| hold
-  storage -->|"3. protected"| commit
+  storage -->|"3. protected"| admission
   storage -->|"missing or exhausted"| hold
-  commit -->|"4. enforce before execution"| producer
-  producer -->|"5. complete output"| validate
-  validate -->|"6. complete publication and delivery"| next
+  admission -->|"4. eligible at commitment"| commit
+  admission -->|"resource refusal: no ordinal or operation charge"| hold
+  commit -->|"5. committed attempt"| launcher
+  commit -->|"reservation or publication failure: retain charge"| hold
+  launcher -->|"6. enforcement established before execution"| producer
+  launcher -->|"setup or readback refusal: no external invocation"| hold
+  producer -->|"7. complete output"| validate
+  validate -->|"8. complete publication and delivery"| next
   producer -->|"limit, death or partial output"| hold
   validate -->|"failure or missing record"| hold
   candidates -.-> proof

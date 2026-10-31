@@ -94,6 +94,42 @@ by its named observer. The whole-operation deadline also bounds that phase.
 processes and observing their outcomes after failure. Expiry does not establish
 exit, released writer ownership or available collection.
 
+**Resource profile**: The immutable run contract naming every resource unit,
+limit, enforcement owner, storage identity and complete workload. Missing
+enforcement or useful fit prevents **Settings command owner** startup.
+
+**Ordinary allowance**: Capacity for scenario and tick attempt directories,
+receipts, outputs and partials. Its full operation contribution is charged in
+the **dispatch commitment** transition.
+
+**Collection allowance**: Separately protected capacity for the finite failure
+observations, audits, exact-clone containment and independent inventory, including
+their attempt directories and outputs.
+
+**Terminal allowance**: Separately protected capacity for all owner lifecycle
+records, global ordinal/storage bindings and final caller records, including clean
+history, refusals, cancellations and failure tails.
+
+**Protected capacity**: The mechanism-backed **collection allowance** and
+**terminal allowance** that ordinary output cannot consume. It guarantees neither
+I/O availability nor resolution of an unknown holder.
+
+**Resource admission check**: The owner's check of profile applicability and
+available capacity. Admission does not charge operation capacity. The commitment
+transition repeats this check before charging.
+
+**Operation charge**: The full permitted operation contribution assigned
+irrevocably during the commitment transition, before directory creation and
+publication. Unstarted pending cancellation has no operation charge.
+
+**Producer launcher**: The backend execution point that installs applicable
+limits under the owner's commitment before executing the external producer.
+Its own map size can constrain which address-space limit it can install.
+
+**Resource settlement**: The terminal operation record of actual retained
+extents, resource failures and unknown tails. It does not refund an
+**operation charge** or establish missing native enforcement.
+
 <!-- tc: pending because the remaining glossary entries retain their existing conversion boundary -->
 
 **Client**: A program that reaches the **Machine server** over its transport

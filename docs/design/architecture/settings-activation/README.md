@@ -74,9 +74,15 @@ loads these same sources while retaining its separate current discussion.
 
 Current changes:
 
-- [Keepalive → Establish resources before producer execution](http://127.0.0.1:8804/settings-activation/#diagram-keepalive-resources) — Adds enforcement and protected-capacity admission before commitment.
+- [Keepalive → Establish resources before producer execution](http://127.0.0.1:8804/settings-activation/#diagram-keepalive-resources) — Separates admission checks, commitment charges and later launcher enforcement, including refusal before external invocation.
 - [Resource admission boundary](../../../specs/settings-keepalive-owner.md#resource-admission-boundary) — Defines enforcement ownership, retained resource evidence and unavailable outcomes.
 - [Resource evidence](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md) — Traces allocations and writes, compares candidate mechanisms and preserves unresolved qualification.
+
+The [resource review integration](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#review-integration)
+records each k108 disposition. Collection directories and terminal records require
+protected backing storage under one ordinal sequence. K106 must establish that
+physical arrangement. The approved test barriers and clock reader do not approve
+new resource-failure substitutions.
 
 The [worker lifecycle](http://127.0.0.1:8804/settings-activation/#diagram-keepalive-lifecycle)
 now names its original 52-second capture deadline. The
