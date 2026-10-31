@@ -126,6 +126,15 @@ publication. Unstarted pending cancellation has no operation charge.
 limits under the owner's commitment before executing the external producer.
 Its own map size can constrain which address-space limit it can install.
 
+**Bounded operation request**: The immutable, versioned dependency request that
+binds a committed operation to its resource profile, command and assigned outputs.
+The producer checks it before connection or payload processing. Acceptance of
+the request does not establish enforcement.
+
+**Operation observation**: The producer's bounded report of setup, failure,
+actual resource use, retained outputs and unknowns for one bounded operation
+request. It does not certify owner eligibility or durable final publication.
+
 **Resource settlement**: The terminal operation record of actual retained
 extents, resource failures and unknown tails. It does not refund an
 **operation charge** or establish missing native enforcement.

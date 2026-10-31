@@ -10,6 +10,11 @@ It combines a **reviewed lifecycle slice**, a proposed
 [scheduling profile](#scheduling-and-deadline-profile), and a proposed
 [resource-admission boundary](#resource-admission-boundary). The scheduling proposal
 incorporates [its review dispositions](../verification/settings-activation/KEEPALIVE-SCHEDULING.md#review-integration).
+The [completion decision](../verification/settings-activation/KEEPALIVE-RESOURCES.md#completion-decision)
+records why the unchanged producer cannot establish the required resource units.
+Antony approved bounded-producer design and audited resource-result substitutions.
+The [dependency contract](settings-capture-resource-contract.md) specifies those
+boundaries; its review and native/storage qualification remain outstanding.
 The [remaining profile](#remaining-profile) must supply
 enforceable resources and whole-design reconciliation before whole-design review,
 planning or implementation. Adoption and every runtime slot stay held.
@@ -134,8 +139,8 @@ separate event referencing the commitment, never a rewritten argument.
 The [resource boundary](#retention-and-protected-capacity) assigns the attempt's
 backing storage by operation class. A collection attempt uses collection capacity,
 including its directory, even when ordinary capacity is exhausted. Its ordinal
-still belongs to the single owner sequence. Physical placement remains a required
-research result, not an implemented mount arrangement.
+still belongs to the single owner sequence. Physical placement has a research
+candidate, not a qualified or implemented mount arrangement.
 
 The child checks those bindings and uses that exact directory. It neither
 scans for a new ordinal nor creates another attempt. The prior-attempt scan
@@ -513,6 +518,12 @@ The same approval covers this clock reader, with the same correspondence cost.
 It covers equality, just-after expiry, clock discontinuity and long-holder schedules.
 CLI and sleep substitutions alone cannot qualify these rows.
 
+The subsequent 2026-10-31 approval also covers named capacity observations,
+launcher limit-call/readback results and owner/backend/caller write results in
+audited copies. The [resource-control contract](settings-capture-resource-contract.md#approved-koine-test-controls)
+defines their enabling points, real prefix-write behavior and copy audit.
+They test failure handling; they do not establish native capacity or enforcement.
+
 | Controlled schedule or defect | Required discrimination |
 |---|---|
 | OCR/exec/transfer holds ownership when a tick becomes due | Tick is pending, not dispatched/refused as a competing writer. A failure before its actual commitment cancels it with no ordinal. Numerical admission expiry is tested under the later profile. |
@@ -885,8 +896,9 @@ target process retains the limits and cannot place required work outside them.
 The install point has its own resource cost. In the pinned XNU source, the setter
 rejects an address-space limit below the calling process's existing map size.
 A pre-exec call in a forked Python backend child therefore inherits that map's floor.
-K106 must establish the actual install point and its map-size requirement on the
-intended host. Producer useful fit and limit inheritance do not establish this floor.
+The enforcement survey found no selected launcher from which to establish the
+actual install point and its map-size requirement on the intended host.
+Producer useful fit and limit inheritance do not establish this floor.
 An exec'd intermediary, an in-producer check or another mechanism needs its own
 coverage and ownership argument before selection.
 
@@ -898,8 +910,8 @@ boundary as unavailable. No same-user security confinement is claimed.
 ### Retention and protected capacity
 
 The resource model requires three disjoint allowances under the same writer
-authority. Disjointness remains a mechanism requirement until k106 establishes
-an arrangement and k107 completes its useful profile.
+authority. The enforcement survey supplies a candidate arrangement.
+Disjointness, metadata protection and useful fit still require qualification.
 
 | Allowance | Required use and protection |
 |---|---|
@@ -920,8 +932,9 @@ The terminal allowance pays for the owner's global ordinal/storage bindings.
 These bindings identify each attempt's backing object and directory under one
 logical root. They must survive owner loss whenever collection remains available.
 
-K106 must establish the physical directory arrangement and its mechanism-backed
-separation. Three volumes alone do not establish these bindings or recovery.
+The enforcement survey's three-volume arrangement does not establish complete
+metadata protection, these bindings or recovery. Its proposed allocation fence
+still needs a concrete schema and qualification under the single writer sequence.
 The proposed private backend consumes an assigned directory and does not rescan
 for another ordinal. The current public backend's flat root scan cannot serve
 as the allocator across separate objects. A collection-only generation must
@@ -963,19 +976,24 @@ No resource receipt alone grants dispatch, clean completion or normal stop.
 
 ### Candidate enforcement and acceptance evidence
 
-Inherited address-space and file-size limits, combined with separately reserved
-and capped storage, are the first candidate for external enforcement.
-They preserve the existing capture transport if their complete coverage can be
-established. They are not selected as a qualified mechanism by this proposal.
+The [enforcement survey](../research/settings-keepalive-enforcement-a.md#result-and-scope)
+finds that inherited address-space and file-size limits, combined with separately
+reserved and capped storage, are insufficient as a complete mechanism for the
+unchanged producer. Its individual allocation checks occur too late. Complete
+kernel exec/remap coverage remains unestablished, and the inspected kernel source
+differs from the intended host.
 Geometry, compressed-message lengths, decoder growth and encoded-buffer limits
 must each have an actual enforcement point before their relevant allocation.
 An aggregate address-space limit alone does not establish those individual bounds.
+Successful readback is not evidence that every target mapping route is constrained.
 
-A producer with explicit resource admission could own those checks earlier.
+The approved design path gives those checks to an explicitly bounded producer.
+The [dependency contract](settings-capture-resource-contract.md#enforcement-inside-the-producer)
+assigns each boundary and preserves transport/input/scale/held-frame behavior.
 Its cost is a changed external dependency and corresponding transport qualification.
 Isolation is another candidate only if its allocation, storage and process/service
-boundaries are established. Neither alternative authorises implementation or a
-native experiment. The complete design must choose on evidence.
+boundaries are established. The design approval authorises neither implementation
+nor a native experiment. The complete profile still needs enforcement evidence.
 
 Offline controls must distinguish failed launcher admission from failed external
 execution. They must also show no next dispatch after each exceeded allowance.
@@ -985,11 +1003,11 @@ owner and resource-admission code. Synthetic allocation/write substitutes cannot
 prove that a native encoder or OS enforces a limit.
 
 The [resource control matrix](../verification/settings-activation/KEEPALIVE-RESOURCES.md#resource-control-enabling-points)
-names each enabling point and its approval boundary. Audited barriers and clock
-replacement cannot alone cause a limit-call failure or a failed protected write.
-Those tests require an established real mechanism or an explicitly approved
-additional substitution. K107 owns that choice. No new substitution class follows
-from the 2026-10-31 approval.
+names each enabling point and its approval boundary. Audited capacity, limit-call
+and named write-result substitutions are now approved alongside barriers and
+clock replacement. The [exact controls](settings-capture-resource-contract.md#approved-koine-test-controls)
+preserve real coordinator transitions and distinguish substituted observations
+from native evidence. No allocator replacement or production injection is approved.
 
 Native capability qualification, if necessary, requires its own explicit reviewed
 scope before execution. The focused evaluation and ordinary acceptance slots

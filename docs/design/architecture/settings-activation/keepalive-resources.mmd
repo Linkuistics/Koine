@@ -9,7 +9,7 @@ flowchart TB
   validate["Validate and publish\nRetain originals and partials"]
   next["Permit later dispatch"]
   hold["Refuse startup or later dispatch\nPreserve failed or unavailable outcome"]:::open
-  candidates["Candidates only\nInherited limits and reserved storage"]:::open
+  candidates["Design path only\nBounded producer with qualified runtime and storage"]:::open
   start -->|"1. establish evidence"| proof
   proof -->|"2. established"| storage
   proof -->|"missing or inapplicable"| hold

@@ -1,4 +1,4 @@
-# settings-keepalive-complete-profile-k107
+# settings-keepalive-complete-profile-k107 — brief
 
 
 ## Goal
@@ -59,3 +59,61 @@ qualified mechanisms or authority for a native experiment or dependency change.
 Design only. Missing resource inputs prohibit startup. Native capability work
 requires separately explicit reviewed scope, never E/A or closed causal slots.
 No VM/candidate/freeze/acceptance, cap expansion, release or ancestor closure.
+
+## Decomposition
+
+The bounded-producer dependency makes this larger than one design session.
+Preserve the entire Done when above. A child contract or approved test seam
+does not supply an enforceable useful profile or close this node.
+
+- The first child specifies Koine's required producer interface and the approved
+  resource-result test substitutions, then earns independent design review.
+- After that review and every earned integration, design a concrete, separately
+  reviewed native/storage qualification proposal. This proposal must identify
+  the launcher/bootstrap boundary and exact finite subjects before asking for
+  any new native execution authority. Do not substitute a study for a proof of
+  every required bound or launch a dependency that does not yet exist.
+- Complete the original numerical profile and whole-design reconciliation only
+  from established dependency and qualification evidence. Missing evidence
+  remains an explicit prerequisite. External TestAnyware implementation belongs
+  to its owner; this tree creates no implementation leaf for it and the current
+  approval authorises neither filing an external issue nor implementing it.
+- Cut the independent whole-design review only when that complete artifact
+  exists. Every earned integration and externalised planning still precedes
+  implementation and k89/k81/k76 consumption. Do not close k107/k102/k98/k96
+  while their original charters remain unmet.
+
+## Decisions (running log)
+
+- 2026-10-31: Adopt k107 in the clean jj workspace, parent 78f8aba4.
+  Read the inherited charters and reviewed lifecycle, scheduling and admission
+  slices. K106's research does not establish a usable unchanged-producer profile.
+  Preserve that result and every original completion obligation; do not select
+  unsupported numerical limits or treat research candidates as mechanisms.
+- 2026-10-31: Ask Antony whether to extend audited test copies to capacity
+  observations, limit-call/readback results and named owner/backend/caller write
+  results. Existing phase barriers and clock replacement remain approved.
+  No answer has arrived. The exact proposed sites and their limits are in
+  docs/verification/settings-activation/KEEPALIVE-RESOURCES.md, Completion decision.
+- 2026-10-31: Prepare a concrete dependency-path proposal in that same decision
+  section and visual discussion. Recommend external bounded-producer design
+  before qualification and numerical-profile completion. Do not implement or
+  file external dependency work, provision storage, or execute native studies.
+  The actual launcher floor, native coverage, storage metadata/recovery and
+  complete useful workload remain unestablished. This leaf stays live while
+  the necessary scope and test-seam decisions are pending.
+- 2026-10-31: Verify the proposal and Mermaid rendering in the local design
+  viewer at http://127.0.0.1:8810/settings-activation/#discussion.
+  Run `mise exec -- task check:docs` after the final spec wording change:
+  Task exits 201 (checker exits 1), reporting only the existing k23 missing
+  `context-predicate.txt` and `context-qualify-filter.sh` targets in
+  context-initial-inputs/CONTEXT-PLAN.md. Review the six-file jj diff; changes
+  are design documents and this running log. No native qualification or
+  implementation was performed. Yield for the two unanswered decisions;
+  do not retire, cascade, or emit a completion/force-stop signal while waiting.
+- 2026-10-31: Antony answers “approved” to both presented decisions. Adopt the
+  exact audited capacity-observation, limit-call/readback and named write-result
+  substitution class in the completion proposal. Proceed with bounded TestAnyware
+  producer design and a separately reviewed native/storage qualification proposal.
+  This is design authority only: no external issue, dependency implementation,
+  native experiment or resource-requirement relaxation was requested or approved.

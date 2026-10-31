@@ -12,19 +12,113 @@ The [k108 integration](#review-integration) clarifies the install point, storage
 obligations, charge point and test enabling points. Admission checks without
 charging operation capacity. The commitment transition charges before directory
 creation and publication. Launcher enforcement follows commitment and precedes
-external execution. The physical storage arrangement remains a research obligation.
+external execution. K106 has supplied a candidate storage arrangement, with
+metadata protection and recovery qualification still open.
 
 The inspected capture pipeline allocates frames and encoded PNG bytes before
 the image file is written. A quota and a later PNG validator cannot alone meet
-the accepted producer-resource requirement. Current XNU source supports an
+the accepted producer-resource requirement. The inspected XNU source supports an
 address-space-limit candidate. It does not by itself qualify the installed
 host, every native service or useful execution under a chosen limit.
 
 This is the admission slice of settings-keepalive-resources-k102. Independent
-review and every earned integration precede external-enforcement research k106.
+review and every earned integration preceded external-enforcement research k106.
+The [completion decision](#completion-decision) consumes that research.
 Complete-profile design k107 retains every original k102/k98/k96 criterion not
 established by the reviewed slices. Whole-design review still precedes planning.
 There is no source change, native experiment, storage mutation, VM or frozen subject.
+
+## Completion decision
+
+**Design path and test substitutions approved; the complete profile is not established.**
+The [enforcement survey](../../research/settings-keepalive-enforcement-a.md#result-and-scope)
+rules out treating the unchanged producer plus inherited process limits as a
+complete answer. It identifies allocations before individual geometry, wire,
+decoded and encoded limits. It also qualifies the earlier exec-inheritance
+argument and identifies an unchecked remap route in a kernel revision that
+differs from the installed host. Successful limit readback cannot repair those
+gaps. This is a bounded source conclusion, not a measured host bypass.
+
+On 2026-10-31 Antony answered **“approved”** to both the bounded-producer design
+path and the named audited resource-result substitutions. The resource
+requirements remain unchanged. The [dependency contract](../../specs/settings-capture-resource-contract.md)
+is Koine's required interface; external implementation belongs to TestAnyware's
+owner and must not become an implementation leaf in this grove. This agreement
+authorises design and a separately reviewed native/storage qualification proposal,
+not an external issue, dependency implementation or experiment.
+
+| Route | Consequence | Present disposition |
+|---|---|---|
+| Keep the unchanged producer and add inherited limits | Individual allocation units remain unenforced. A post-capture validator cannot cover earlier allocations. | Insufficient for the accepted contract; selecting numbers cannot complete it. |
+| Bound the producer explicitly, then qualify containment and storage | Preserves the resource goal, but requires external dependency work and evidence for the remaining native boundaries. | Approved design path. It is not yet an implemented or qualified mechanism. |
+| Change isolation or relax the resource requirement | Changes the execution boundary or the accepted risk. Neither native equivalence nor agreement to unbounded exposure exists. | Requires a new requirements decision; not silently selected. |
+
+### Dependency boundary
+
+The [bounded operation contract](../../specs/settings-capture-resource-contract.md#responsibility-and-interface)
+owns the behavioral interface, phase capacities, refusal/retention rules and test
+controls. The following states its scope within this assessment.
+
+The proposed external work covers the capture path shared by screenshots and
+OCR: handshake and non-image message lengths; initial and resized geometry;
+raw, ZRLE, Tight and JPEG input and expansion; simultaneous wire and selected
+frames; crop buffers; and encoder capacities before allocation or growth.
+Every allowed path must preserve existing input, capture selection, scale,
+held-frame fallback, OCR polling and one-attempt behavior. It must retain every
+produced original and partial, including failed downloads, through an output
+interface whose capacity and retention behavior are explicit.
+
+The deliverable must name each allocation/write owner, rejection point and
+observable failure. It must distinguish requested length from allocated capacity
+and overlapping buffers from mutually exclusive phases. A native-library or
+service contribution without an enforceable boundary stays unresolved. Guarding
+Rust vectors alone does not settle Vision, device, VM host or guest-agent work.
+An accepted dependency revision would return to this design for integration and
+review before any adoption. No replacement transport or OCR engine is proposed.
+
+### Evidence needed to finish the profile
+
+| Obligation | Evidence still needed; no default is inferred |
+|---|---|
+| Launcher floor | Select the exact launcher image/runtime and install point; establish its map size there. A shell's RSS or a producer's later peak is a different quantity. |
+| Native containment | Establish applicable fork/exec/map coverage and the actual child/service boundary on the intended host. Bounded observations qualify only the exercised routes. |
+| Useful capture peak | Account for both frames, crop, codec growth, capacity slack and native work. At 1920×1080 RGBA8, one frame is 8,294,400 bytes; two frames plus a full crop are already 24,883,200 bytes before encoder output and runtime. These are arithmetic examples, not selected limits or host measurements. |
+| Protected storage | Qualify ordinary, collection and terminal backing identities, bytes, object/metadata capacity and retained partials. Collection directories belong on collection storage; the global allocation fence and bindings belong on terminal storage. |
+| Recovery | Specify and qualify one recoverable allocation sequence under the original lock. Burn uncertain assignments; do not infer a reusable ordinal by independently scanning output roots. Unknown holders or an unprovable terminal tail keep collection unavailable. |
+| Complete workload | Bind the final bundle/uploads, every scenario call and poll, keepalive lifetime, all collection work and every clean/failed lifecycle row. Include resource refusals, unstarted cancellations and the caller's final tail. |
+| Timing | Separate the existing 600-second start queue from boot work and exact-clone containment after interrupted start. The provisional 120-second lifecycle allowance is insufficient to admit the full queue. Post-start uploads also need a useful timing and connection argument. |
+
+Native qualification needs a separate, reviewed proposal naming the selected
+mechanism, exact subject, finite small inputs, output ceiling, timeout, owned
+processes, stop conditions and preserved evidence. Storage qualification needs a
+disposable backing object and a stated metadata/recovery question. No experiment,
+provisioning or implementation is authorised by this completion assessment.
+E/A and closed causal slots remain unavailable for these questions.
+
+### Approved resource-failure substitutions
+
+Antony's additional approval covers capacity observations, launcher limit-call
+and readback results, and the named owner/backend/caller write results. Existing
+audited phase barriers and clock replacement remain approved. The
+[exact enabling points and copy audit](../../specs/settings-capture-resource-contract.md#approved-koine-test-controls)
+are specified in the dependency contract. Each test copy must match production
+except for those declared sites; the audit rejects every other difference.
+
+These controls test failure handling only. They prove neither reserved native
+capacity nor OS/codec enforcement. No allocator replacement, production injection
+API or successful-write fabrication is proposed. Real bounded/failing objects
+remain the alternative, after their mechanisms and any native scope are settled.
+Approval of substitutions does not authorise native exhaustion or provisioning.
+
+### Preserved completion obligations
+
+This decision surface does not discharge k107 or k102/k98/k96. The complete
+schemas, numerical workload, enforcement, useful fit and original-duty comparison
+remain required. Independent whole-design review, every earned integration,
+externalised planning, implementation and earned review/integration still precede
+k89/k81/k76 consumption. Every duty in the [complete comparison](#complete-original-duties)
+survives, including both held-pointer cases, untouched collection order, privacy,
+availability limits, historical outcomes and all runtime holds.
 
 ## Producer and validator boundary
 
@@ -124,11 +218,11 @@ created or reconfigured.
 | Isolated execution environment | Could provide a separate aggregate resource boundary. | Supported topology and native-service coverage, actual reservation/enforcement, transfer costs and unchanged transport semantics. |
 | Post-capture rejection or RSS polling alone | Detects some completed excess or observed pressure. | Rejected as sufficient enforcement: observation follows the work and cannot prevent its earlier allocation or write. |
 
-The preferred candidate to investigate first is inherited enforcement because
-it can preserve the transport. Preference is conditional, not mechanism approval.
-Reject it if any required allocation/write unit escapes its established boundary
-or if a useful workload cannot fit. A changed producer or isolation remains
-design work. Neither is silently substituted.
+K106 found the unchanged-producer candidate insufficient. The approved design
+path is now an explicitly bounded producer with separately qualified process and
+storage containment. The [dependency contract](../../specs/settings-capture-resource-contract.md#alternatives-and-costs)
+records caller obligations, alternatives and reversal conditions. Implementation,
+native qualification and the complete useful numerical profile remain outstanding.
 
 The admission contract keeps queue policy separate from resource accounting.
 Callers submit once. The owner owns the commitment decision and its resource
@@ -138,7 +232,9 @@ internal accounting and supervision costs are real.
 
 ## External evidence needed before numerical design
 
-K106's survey must answer these questions for k107:
+The questions commissioned for K106 were the following. Its
+[survey](../../research/settings-keepalive-enforcement-a.md#reversal-conditions-and-unresolved-inputs-for-k107)
+answers them with the stated limitations; unresolved evidence remains k107 work:
 
 1. Which supported mechanism actually bounds allocations of the pinned producer
    on the intended host? Include loader, allocator, mappings, children and native
@@ -183,6 +279,7 @@ production interfaces. Its cost is auditing every test copy. A production inject
 interface adds a maintenance obligation. External CLI/sleep controls alone leave
 those internal races and exact deadlines unqualified. Neither alternative was chosen.
 This approval does not qualify a resource mechanism or authorise a native experiment.
+The subsequent k107 approval adds the [named resource-result controls](#approved-resource-failure-substitutions).
 
 The resource-specific controls must exercise launcher refusal before invocation
 and per-unit and aggregate admission. They must cover ordinary exhaustion with
@@ -199,23 +296,23 @@ later-dispatch refusal. Each control must reject its corresponding mutant:
 
 ### Resource control enabling points
 
-The approved copied-module substitutions cover barriers and the continuous-clock
-reader only. Existing external CLI/sleep controls remain available at their agreed
-seam. They cannot prove a native resource bound or directly fail a launcher setup call.
+The approved copied-module substitutions now cover the named resource results
+as well as barriers and the continuous-clock reader. Existing external CLI/sleep
+controls remain available. The copied-result controls exercise failure handling;
+they cannot prove a native resource bound.
 
 | Required control | Enabling point and real work retained | Approval or dependency |
 |---|---|---|
-| Launcher refuses before external invocation | A real rejected setup/readback at the backend launcher, or a limit-call-result substitution in its audited copy. Observe zero CLI invocations and the real commitment/launch/terminal records. | K106 must identify a safe real mechanism control and any required native scope. A new limit-call substitution needs k107's explicit decision. |
+| Launcher refuses before external invocation | A real rejected setup/readback at the backend launcher, or a limit-call-result substitution in its audited copy. Observe zero CLI invocations and the real commitment/launch/terminal records. | Named audited setup/readback controls approved in k107. Real mechanism controls still require a selected mechanism and applicable native scope. |
 | Per-unit/aggregate refusal and unstarted cancellation | Declared finite profile inputs, controlled CLI output and approved barriers around the real admission/commitment transition. Observe charges, cancellation/refusal records and invocation counts. | Existing seam applies to coordinator accounting. Mechanism enforcement still requires k106 evidence. No allocator substitution is approved. |
-| Ordinary exhaustion preserves collection and terminal capacity | Real capped/reserved backing objects with collection directory creation and global ordinal recovery. Alternatively, substitute capacity/limit-call results in the audited owner/backend copies. | Real objects depend on k106 and applicable experiment scope. Substitutions require k107 approval and prove accounting only. |
-| Protected writes themselves fail | A real failed protected-object write, or a write-result substitution at the corresponding owner, backend or caller write in its audited copy. Retain real failure propagation and unavailable outcomes. | Barriers and clocks cannot enable this row. A new write-result substitution needs k107 approval. Real failure controls need an established mechanism and appropriate scope. |
+| Ordinary exhaustion preserves collection and terminal capacity | Real capped/reserved backing objects with collection directory creation and global ordinal recovery. Alternatively, substitute capacity/limit-call results in the audited owner/backend copies. | Audited capacity results approved in k107; these prove coordinator accounting only. Real objects still need mechanism qualification and applicable experiment scope. |
+| Protected writes themselves fail | A real failed protected-object write, or a write-result substitution at the corresponding owner, backend or caller write in its audited copy. Retain real failure propagation and unavailable outcomes. | Named audited write-result controls approved in k107, with actual finite partial prefixes. Real failure controls still need an established mechanism and appropriate scope. |
 | Holder remains unavailable | Controlled CLI child retains its inherited descriptor. Approved barriers and clock values place loss/expiry around real ownership and containment. Observe unresolved containment and no bypass. | Existing controlled-process seam applies. It does not reproduce kernel uninterruptibility or guarantee eventual release. |
 
-K107 must choose between real mechanism controls and additional audited
-substitutions where the current seam cannot trigger the defect. Real controls
-depend on mechanism availability and safe qualification scope. Substitutions add
-copy-audit cost and qualify failure handling only. Neither choice can replace
-native enforcement evidence, and no additional substitution is approved here.
+K107 chose the named audited substitutions where existing controls cannot trigger
+the defect. They add copy-audit cost and qualify failure handling only. Native
+enforcement evidence remains separate. Real controls still depend on mechanism
+availability and safe qualification scope.
 
 The tests must also reject charging at pending admission, charging cancelled pending
 captures, or inventing installed-limit facts in commitment records. Terminal
@@ -290,7 +387,7 @@ The following changes affect the admission contract and research questions only.
 | P2-1: launcher map floor | Real issue. The pinned setter checks the calling map before producer exec. Inheritance alone does not establish an installable useful limit. | Name the floor, install point, DATA check and RSS alias. K106 retains host correspondence and footprint qualification. |
 | P2-2: storage arrangement and record costs | Unclear contract. Collection directories and clean lifecycle records lacked explicit allowance ownership. | Require collection-backed directories and terminal-backed global bindings/history. K106 must establish physical separation and recovery. The proposed private backend already receives its directory without rescanning, so the review's current-scanner example is a constraint, not proof of impossibility. |
 | P2-3: charge point | Unclear contract. Admission and commitment are distinct scheduling events. | Admission checks without an operation charge. The commitment transition charges before directory creation/publication. Resource refusal has its own submission event. Pending cancellation costs terminal records only. |
-| P2-4: resource control enabling points | Real issue. Approved barriers and a clock cannot directly produce limit-call or protected-write failure. | Name each enabling point above. K107 owns any new substitution choice and its costs. No approval or native experiment is inferred. |
+| P2-4: resource control enabling points | Real issue. Approved barriers and a clock cannot directly produce limit-call or protected-write failure. | Each enabling point is named above. K107 subsequently obtained explicit approval for the named audited results; no native experiment is inferred. |
 | P3-1: concurrent frames | Real issue. The connection retains its wire frame while capture owns a copy or downsample. | Name both buffers and scale/physical selection in the source table and k106's allocation trace. |
 | P3-2: premature installed-limit facts | Real issue. Commitment precedes backend creation and limit setup. | Put declarations and charges in commitment, actual setup/readback in later launch observations, and settlement in terminal disposition. |
 | P3-3: caption ordering and missing refusal | Real issue. Enforcement follows commitment and can refuse before CLI execution. | Separate admission, charging and launcher setup in the view. Add launcher refusal and reconcile both captions. |

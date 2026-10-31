@@ -1,0 +1,23 @@
+flowchart TD
+    start["Start here:<br/>Approved design scope"]:::start
+    unresolved["Profile unavailable"]:::hold
+    contract["Bounded producer<br/>contract"]
+    contractReview["Independent<br/>contract review"]
+    qualify["Native and storage<br/>qualification proposal"]
+    scope["Review and agree<br/>execution scope"]
+    evidence{"Required evidence<br/>established?"}
+    reconcile["Reconcile workload,<br/>timing and records"]
+    review["Review whole design<br/>before planning"]
+    start -->|1. Specify| contract
+    contract --> contractReview
+    contractReview --> qualify
+    qualify --> scope
+    scope --> evidence
+    evidence -->|Yes| reconcile
+    evidence -->|Missing| unresolved
+    reconcile --> review
+    tests["Approved audited<br/>resource-result tests"]:::approved
+    tests -.->|Failure handling only| contract
+    classDef start fill:#17324d,color:#fff,font-weight:bold,stroke:#17324d
+    classDef approved fill:#e1f2e5,color:#12351e,stroke:#36764a
+    classDef hold fill:#fbe4e4,color:#541515,stroke:#a63636

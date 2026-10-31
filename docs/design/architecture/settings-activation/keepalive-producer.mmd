@@ -1,0 +1,27 @@
+sequenceDiagram
+    participant O as Owner
+    participant B as Backend
+    participant P as Bounded producer
+    participant A as Assigned output
+    Note over O,A: Proposed operation after a complete qualified profile exists
+    O->>O: Start here: recheck, charge and bind
+    O->>B: One committed operation
+    B->>P: Immutable bounded request
+    P->>P: Validate before connection
+    loop Existing finite capture / OCR work
+        P->>P: Check length and capacity before allocation
+        Note right of P: Native bounds require separate evidence
+        P->>P: Keep simultaneous buffers charged
+    end
+    alt Within every bound
+        P->>A: Check before each write
+        P-->>B: Bounded observation and raw outcome
+        B->>B: Validate complete artifact
+        B-->>O: Delivery and validation facts
+        O->>O: Complete existing publication join
+    else Resource or write failure
+        Note over P,A: Retain original and partial objects
+        P-->>B: First failure or incomplete observation
+        B-->>O: Actual facts and unknowns
+        O->>O: No later scenario dispatch
+    end

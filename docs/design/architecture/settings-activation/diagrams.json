@@ -1,5 +1,5 @@
 {
-  "title": "Settings activation: resource admission",
+  "title": "Settings activation: completing the resource profile",
   "intro": "Graph views start at the dark Start here node. Sequences start at their first message and state views at the initial dot. Lifecycle review is integrated. Scheduling review corrections are integrated. Enforceable resources and whole-design reconciliation remain outstanding. Implementation and runtime stay held.",
   "groups": [
     {
@@ -29,28 +29,51 @@
     }
   ],
   "discussion": {
-    "title": "Establish resources before producer execution",
-    "status": "Admission proposal. Enforcement qualification and numerical profile remain open.",
-    "summary": "Admission checks capacity without an operation charge. The commitment transition charges before directory creation and publication. The launcher then installs limits before external execution. Collection directories and terminal records need mechanism-backed protection under one ordinal sequence. Physical placement and native enforcement remain open. Approved barriers and clock replacement do not approve new resource-failure substitutions. No implementation or runtime is ready.",
+    "title": "Bound producer work before allocation and write",
+    "status": "Design path and test substitutions approved. Contract ready for independent review.",
+    "summary": "Antony approved bounded-producer design and the named audited capacity, limit-call and write-result controls. The contract gives the producer one immutable request and assigned outputs; the owner retains commitment, accounting and final publication. Tests preserve real coordinator behavior and partial bytes, but prove failure handling only. Native and storage qualification, the numerical profile and whole-design review remain outstanding. No dependency implementation or experiment is authorised.",
     "diagramIds": [
+      "keepalive-completion",
+      "keepalive-producer",
       "keepalive-resources",
-      "keepalive-owner",
       "keepalive-scheduling"
     ],
     "updatedDiagrams": [
       {
+        "id": "keepalive-completion",
+        "summary": "Records both approvals and places contract review before the separately reviewed qualification proposal. Missing evidence still prevents a complete profile."
+      },
+      {
+        "id": "keepalive-producer",
+        "summary": "Shows one bounded request, checks before producer allocations and writes, retained partials and the owner's unchanged publication authority."
+      },
+      {
         "id": "keepalive-resources",
-        "summary": "Separates admission checks, commitment charges and later launcher enforcement. Adds refusal before external invocation and retains storage qualification holds."
+        "summary": "Updates the mechanism candidate to the approved bounded-producer design path; its runtime and storage evidence remain prerequisites."
       }
     ]
   },
   "diagrams": [
     {
+      "id": "keepalive-completion",
+      "group": "keepalive",
+      "title": "Complete the approved dependency design path",
+      "source": "keepalive-completion.mmd",
+      "caption": "Design work sequence, not runtime authority. Both human decisions are settled. Contract review comes before the native/storage qualification proposal and its separate review and execution decision. Required evidence includes a suitable external dependency, launcher, native and storage coverage; missing evidence keeps the profile unavailable. The original numerical/workload/timing/schema obligations and whole-design review remain."
+    },
+    {
+      "id": "keepalive-producer",
+      "group": "keepalive",
+      "title": "Bound producer work before allocation and write",
+      "source": "keepalive-producer.mmd",
+      "caption": "Proposed dependency interface after complete profile qualification. Read from the first owner transition. Each producer allocation and write has an earlier bound; overlapping capacities and native contributions remain distinct. Original/partial outputs survive failure. Delivery, acknowledgement and terminal completion still use the full owner protocol, abbreviated here as a join. This is a design contract, not an implemented API or an enforcement result."
+    },
+    {
       "id": "keepalive-resources",
       "group": "keepalive",
       "title": "Establish resources before producer execution",
       "source": "keepalive-resources.mmd",
-      "caption": "Proposed resource admission under one writer authority. Admission checks without an operation charge. The commitment transition charges before directory reservation and publication. Launcher enforcement follows commitment and precedes external execution. Setup refusal retains the committed attempt and charge. Collection-backed directories and terminal-backed ordinal records remain physical-arrangement requirements. The view omits stop cancellation and detailed lifecycle joins shown in the lifecycle view. Candidate mechanisms and the complete numerical profile remain unqualified. No native liveness or model-checking result is claimed."
+      "caption": "Proposed resource admission under one writer authority. Admission checks without an operation charge. The commitment transition charges before directory reservation and publication. Launcher enforcement follows commitment and precedes external execution. Setup refusal retains the committed attempt and charge. The approved design path is a bounded producer with separately qualified runtime and storage; none is implemented or qualified here. Collection-backed directories and terminal-backed ordinal records remain requirements. The view omits stop cancellation and detailed lifecycle joins. The complete numerical profile remains unavailable."
     },
     {
       "id": "keepalive-scheduling",

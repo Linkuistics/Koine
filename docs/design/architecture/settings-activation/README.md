@@ -1,12 +1,13 @@
 # Settings activation design discussion
 
-The current discussion is [the proposed resource-admission boundary](../../../specs/settings-keepalive-owner.md#resource-admission-boundary).
-Producer limits must act before execution, with protected collection and terminal
-capacity under the same writer authority. The
-[resource assessment](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md)
-names candidate OS mechanisms and the evidence still needed before numeric design.
-Antony approved audited test copies with phase barriers and a replaceable clock.
-Each copy must match production except for declared test substitutions.
+The current discussion is [the bounded producer contract](../../../specs/settings-capture-resource-contract.md).
+Antony approved its design path and the named audited capacity, limit-call and
+write-result substitutions. Existing phase barriers and clock replacement remain
+approved. The contract gives the producer one immutable request and assigned
+outputs; the owner retains commitment, accounting and final publication.
+Independent contract review precedes the separately reviewed native/storage
+qualification proposal. The complete useful profile remains unavailable.
+No dependency implementation or native experiment is authorised.
 
 The [scheduling profile](../../../specs/settings-keepalive-owner.md#scheduling-and-deadline-profile)
 remains proposed.
@@ -74,15 +75,18 @@ loads these same sources while retaining its separate current discussion.
 
 Current changes:
 
-- [Keepalive → Establish resources before producer execution](http://127.0.0.1:8804/settings-activation/#diagram-keepalive-resources) — Separates admission checks, commitment charges and later launcher enforcement, including refusal before external invocation.
-- [Resource admission boundary](../../../specs/settings-keepalive-owner.md#resource-admission-boundary) — Defines enforcement ownership, retained resource evidence and unavailable outcomes.
-- [Resource evidence](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md) — Traces allocations and writes, compares candidate mechanisms and preserves unresolved qualification.
+- [Keepalive → Complete the approved dependency design path](http://127.0.0.1:8810/settings-activation/#diagram-keepalive-completion) — Records both approvals and places independent contract review before the separately reviewed qualification proposal.
+- [Keepalive → Bound producer work before allocation and write](http://127.0.0.1:8810/settings-activation/#diagram-keepalive-producer) — Shows the one-request boundary, producer checks, retained partials and unchanged owner publication authority.
+- [Keepalive → Establish resources before producer execution](http://127.0.0.1:8810/settings-activation/#diagram-keepalive-resources) — Updates the mechanism candidate to the approved bounded-producer path, retaining runtime/storage evidence as prerequisites.
+- [Bounded producer contract](../../../specs/settings-capture-resource-contract.md) — Specifies per-phase enforcement, overlapping capacity, refusal/retention and the exact approved test controls.
+- [Resource admission boundary](../../../specs/settings-keepalive-owner.md#resource-admission-boundary) — Incorporates the dependency contract and approved controls while retaining every original profile obligation.
+- [Completion decision](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#completion-decision) — Records agreement and keeps implementation, qualification and numerical-profile gaps explicit.
 
 The [resource review integration](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#review-integration)
 records each k108 disposition. Collection directories and terminal records require
-protected backing storage under one ordinal sequence. K106 must establish that
-physical arrangement. The approved test barriers and clock reader do not approve
-new resource-failure substitutions.
+protected backing storage under one ordinal sequence. K106 supplies a candidate
+arrangement with metadata and recovery gaps. The later k107 approval covers the
+named resource-result substitutions; it supplies no native enforcement evidence.
 
 The [worker lifecycle](http://127.0.0.1:8804/settings-activation/#diagram-keepalive-lifecycle)
 now names its original 52-second capture deadline. The
