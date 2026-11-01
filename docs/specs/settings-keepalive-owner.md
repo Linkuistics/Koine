@@ -992,7 +992,7 @@ numerical limits and the complete useful workload remain mandatory.
 
 ### One proof before producer launch
 
-The [finite caller workload](../verification/settings-activation/KEEPALIVE-CALLER.md) specifies one ordered collection plan shared with recovery, observer preparation and local audit dependencies. Its scoped review precedes consumption; executable requests and useful limits remain outstanding.
+The [finite caller workload](../verification/settings-activation/KEEPALIVE-CALLER.md) specifies one ordered collection plan shared with recovery, observer preparation and local audit dependencies. Its scoped review precedes consumption. Executable requests and useful limits remain outstanding.
 
 The finite caller supplies one immutable resource profile for the exact run. The
 owner admits an operation only when that profile covers its entire work:

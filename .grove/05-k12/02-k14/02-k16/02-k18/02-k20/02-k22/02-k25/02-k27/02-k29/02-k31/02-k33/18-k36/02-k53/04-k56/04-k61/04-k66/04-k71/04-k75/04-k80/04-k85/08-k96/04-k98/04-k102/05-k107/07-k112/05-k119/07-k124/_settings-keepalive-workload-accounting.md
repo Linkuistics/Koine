@@ -77,18 +77,18 @@ K136 retires only its integration. This node remains open with k137 live.
 
 ## Caller design handoff and full charter check
 
-K137 supplies KEEPALIVE-CALLER.md and the caller flow. Its scoped review and every earned integration precede k125/k126 consumption. The semantic plan has 25 fixed positions; implementation payloads and qualified limits remain prerequisites. This node remains open for that review. No ancestor closes in k137.
+K137 supplies KEEPALIVE-CALLER.md and the caller flow. Its scoped review and every earned integration precede k125/k126 consumption. The semantic plan has 25 fixed positions. Implementation payloads and qualified limits remain prerequisites. This node remains open for that review. No ancestor closes in k137.
 
 | Original k124 criterion | Delivered design and remaining obligation |
 |---|---|
 | Every helper/caller operation, branch, poll, wait and object | K131 inventory plus k137 caller plan enumerate semantic work. K126 must reconcile actual migrated grouping, original sharing and frozen executable payloads with k89/k81/k76/k67/k62/k57. |
 | Start, uploads, prefix, ordinary continuation, collection, tail | Workload expansion and caller B01–B07/1–25 cover all phases. Include the added observer transfer/exec and both final-record paths in final fit. |
-| Six baseline images and indirect OCR/capture | Preserved by the workload and caller; one failure image is additional. Exact migration image bindings and external internal-image limits remain with k126/k125. |
-| Start queue, boot and uncertain-start containment | Accounting separates the 600-second queue; caller preserves exact identity and unavailable containment. K125 supplies external scope, k126 bounds non-queue work. |
-| Elapsed/ticks without double service | Reviewed accounting applies; caller identifies B06 and local-work placement. Concrete local time remains k126 input. |
-| Charged unpublished, failures/cancellations/refusals/partials | Accounting and schema retained; caller union withholds uncertain contributions without duplicate charges or replay. Actual message counts remain k126. |
-| Carrier multiplicity | Reviewed derivation remains authoritative; caller uses its entry/final sequences. K126 instantiates paths and required carriers. |
-| Schema/vector/parity/attachment/object/tail maxima where evidence permits | Symbolic derivation plus caller semantic counts are available. Exact input lengths, role objects and physical metadata remain explicitly missing; k126 must instantiate from qualified inputs. |
-| Fence width and write costs by lane/deadline | Reviewed accounting retained; caller creates no extra stages or reset deadlines. K125 scopes physical/loss costs, k126 checks layout and fit. |
-| Exact missing inputs; no guessed capacity | Caller prerequisite and local-work tables assign payloads/implementation to existing owners, external scope to k125, final limits/fit to k126. |
-| Reconciliation and scoped review | Workload/accounting/owner/visuals and k125/k126 are reconciled; k137 scoped review remains live. Recheck this whole table before eventual node closure; review or a completed slice is not numerical qualification. |
+| Six baseline images and indirect OCR/capture | Preserved by the workload and caller. One failure image is additional. Exact migration image bindings and external internal-image limits remain with k126/k125. |
+| Start queue, boot and uncertain-start containment | Accounting separates the 600-second queue. Caller preserves exact identity and unavailable containment. K125 supplies external scope, k126 bounds non-queue work. |
+| Elapsed/ticks without double service | Reviewed accounting applies. Caller identifies B06 and local-work placement. Concrete local time remains k126 input. |
+| Charged unpublished, failures/cancellations/refusals/partials | Accounting and schema retained. Caller union withholds uncertain contributions without duplicate charges or replay. Actual message counts remain k126. |
+| Carrier multiplicity | Reviewed derivation remains authoritative. Caller uses its entry/final sequences. K126 instantiates paths and required carriers. |
+| Schema/vector/parity/attachment/object/tail maxima where evidence permits | Symbolic derivation plus caller semantic counts are available. Exact input lengths, role objects and physical metadata remain explicitly missing. K126 must instantiate from qualified inputs. |
+| Fence width and write costs by lane/deadline | Reviewed accounting retained. Caller creates no extra stages or reset deadlines. K125 scopes physical/loss costs, k126 checks layout and fit. |
+| Exact missing inputs. No guessed capacity | Caller prerequisite and local-work tables assign payloads/implementation to existing owners, external scope to k125, final limits/fit to k126. |
+| Reconciliation and scoped review | Workload/accounting/owner/visuals and k125/k126 are reconciled. K137 scoped review remains live. Recheck this whole table before eventual node closure. Review or a completed slice is not numerical qualification. |

@@ -249,6 +249,7 @@ does not prove no charge or no execution.
 | Final caller | Normal transfer starts final lane with kinds 25,20. Both paths retain kinds 27,20,28. Actual owner response, channel and wait remain separate. Caller return after final publication has no further durable record. Failed final publication or unknown return cannot establish acceptance. |
 
 The [caller specification](KEEPALIVE-CALLER.md) defines 25 ordered collection positions, including conditional failure context, sequence-final golden audit and local classification.
+
 Its original-owner and successor paths share each position once. The caller implementation, frozen executable payloads and qualified local bounds remain missing.
 The six summary labels are not six operations.
 Each collection item has one plan index, class contribution and applicability
