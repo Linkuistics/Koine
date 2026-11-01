@@ -35,12 +35,15 @@ the combined scheduling/record proof are distinct reviewable design questions.
 K131 first expands the actual shared scenario and helper paths, required migration
 additions, waits, polls, captures, collection and caller tail. It identifies exact
 missing payloads and caller implementations without inventing their counts.
+
 Its scoped review and every earned integration precede the scheduling and record
 derivation child. That child retains every elapsed/tick, carrier, vector, parity,
 attachment, tail, fence and physical-cost obligation above. Only k131 executes
 in this session. This node and all ancestors remain open.
 
 ## Decisions (running log)
+
+<!-- tc: off because these dated decisions are retained history -->
 
 - 2026-11-01: Adopt k124 in clean jj change ttsmxuup at parent df5011bc.
   The graph project matches this workspace and reports ready. Use Tier 2 evidence
@@ -51,6 +54,8 @@ in this session. This node and all ancestors remain open.
   needs a separately reviewed complete operation expansion. Preserve all original
   k124 requirements in this node and complete only the first child here.
 
+<!-- tc: on -->
+
 ## Combined accounting handoff
 
 K132 supplies KEEPALIVE-ACCOUNTING.md and the linked owner/record contracts.
@@ -58,5 +63,6 @@ It derives start/active timing, tick distinctions, carriers, lane costs and phys
 The coupled preparation/layout inequalities require a finite simultaneous solution.
 Exact caller, payload, local-work and qualified mechanism inputs remain explicit prerequisites.
 Scoped review and every earned integration precede consumption by k125/k126.
+
 K126 retains final numerical fit and whole-design reconciliation.
 No runtime authority or ancestor closure follows this derivation.
