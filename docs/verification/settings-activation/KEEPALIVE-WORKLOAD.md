@@ -44,11 +44,14 @@ The tables use these primitives:
 | `W` | Complete original agent window list, including the list used by the assertion | Read, 30/52 |
 | `S(selector)` | Full depth-14 snapshot and the reviewed selected-attribute predicate | Read, 30/52 |
 | `I(action)` | One physical input, exact arguments and command-specific acknowledgment | Input, 30/52 |
-| `A(action)` | One window move, focus or close and complete action response | Read/input family, 30/52 |
+| `A(action)` | One window move, focus or close and complete action response | Ordinary agent/screen read, 30/52 |
 | `C(region)` | One checked logical PNG capture, unique original, validation and result. Optional existing region only | Capture, 30/52 |
 | `F(file)` | Exact upload/download input and result, byte count and endpoint identity | Transfer, 120/142 |
 | `L(state)` | Original predicate and local status through the poll-step seam, without CLI bytes | Local, 0/22 |
 | `D(seconds)` | One unchanged local sleep, with failure/status observation. Successful settling allocates no operation receipt | Local duration. Not another CLI |
+
+These values come from the owner's [operation-family table](../../specs/settings-keepalive-owner.md#scheduling-and-deadline-profile).
+Window move, focus and close use its ordinary agent/screen read family.
 
 These family values remain provisional until the combined proof. Start has its
 own unresolved queue/boot family. No new value is selected here. Every primitive
@@ -210,12 +213,13 @@ These are source obligations, not installed-binary or native qualification:
 | Allow OCR | One owner operation can contain repeated full-frame capture/PNG encode/recognition/matching cycles on one connection. The pinned screen handler sleeps 500 ms only after an unmatched cycle that has not yet reached its 30-second deadline. It checks the deadline after recognition, so that option is no hard native-call elapsed bound. The successor must count each internal cycle and its temporaries, without adding owner ordinals or a second external OCR invocation. |
 | Exact Allow selection | The CLI may finish early on a case-insensitive substring such as Don't Allow. The helper then requires a case-sensitive exact Allow. Failure ends setup. Preserve all returned detections and truncation status. No extra loop to wait for exact Allow. |
 | `screen size` in every menu click | The executable handler connects and reads `framebuffer_size`. It does not call the PNG capture helper. Charge connection/frame setup, not an invented saved PNG. Its module comment is not the operation definition. |
-| Every physical input | The pinned input handlers call `confirm_input_read` after input. It requests a nonincremental 1×1 update and reads server messages until a framebuffer-update event or its ten-second timeout. Include connection, message/rectangle/decode and temporary work within the input operation. The request size is not an upper bound on actual received messages or allocated frame. Timeout/error warnings remain raw stderr. The CLI keeps its input exit behaviour. This is no extra owner capture or proof of native delivery. |
+| Every physical input | The pinned input handlers call `confirm_input_read` after input. It requests a nonincremental 1×1 update and reads server messages until a framebuffer-update event or its ten-second timeout. Include connection, message/rectangle/decode and temporary work within the input operation. The request size is not an upper bound on actual received messages or allocated frame. Timeout/error warnings remain raw stderr. The CLI keeps its input exit behaviour. This is no extra owner capture or proof of native delivery. A single-axis scroll of magnitude 10 sends 20 pointer events. Typing skips newline characters and sends a down/up pair for each emitted key symbol. Uppercase conversion can emit several symbols for one character. Each shifted character adds Shift down/up events and two 50 ms settles. A nonempty modifier chord adds down/up events for each modifier and two 50 ms settles. These events and sleeps remain internal costs of the existing operation. |
 | Snapshot/agent windows | Charge complete response/tree parsing and native agent work. The selected CLI snapshot path calls the agent. It uses no `--open-menu` option and introduces no CLI OCR or PNG capture. Missing trees and empty-AXValue limits still apply. No claim about hidden platform allocations follows. |
 
 The primary decision sites are the pinned [screen handler](https://github.com/Linkuistics/TestAnyware/blob/65bc05c91cc5d2a6e3d4aa8f81cb2c7c7712fa03/cli-rs/crates/testanyware-cli/src/commands/screen.rs),
 [input handlers](https://github.com/Linkuistics/TestAnyware/blob/65bc05c91cc5d2a6e3d4aa8f81cb2c7c7712fa03/cli-rs/crates/testanyware-cli/src/commands/input.rs),
-[input confirmation](https://github.com/Linkuistics/TestAnyware/blob/65bc05c91cc5d2a6e3d4aa8f81cb2c7c7712fa03/cli-rs/crates/testanyware-rfb/src/input.rs),
+[input events and confirmation](https://github.com/Linkuistics/TestAnyware/blob/65bc05c91cc5d2a6e3d4aa8f81cb2c7c7712fa03/cli-rs/crates/testanyware-rfb/src/input.rs),
+[scroll decomposition](https://github.com/Linkuistics/TestAnyware/blob/65bc05c91cc5d2a6e3d4aa8f81cb2c7c7712fa03/cli-rs/crates/testanyware-rfb/src/keymap.rs),
 [connection/warning boundary](https://github.com/Linkuistics/TestAnyware/blob/65bc05c91cc5d2a6e3d4aa8f81cb2c7c7712fa03/cli-rs/crates/testanyware-cli/src/commands/mod.rs)
 and [agent handler](https://github.com/Linkuistics/TestAnyware/blob/65bc05c91cc5d2a6e3d4aa8f81cb2c7c7712fa03/cli-rs/crates/testanyware-cli/src/commands/agent.rs).
 The [capture allocation survey](../../research/settings-keepalive-enforcement-a.md#capture-allocations-before-checks)
@@ -259,7 +263,7 @@ failed tails share duties but do not justify reserving only their successful row
 | Each pre-assignment submission or control / terminal | Original channel frame, submission/refusal/cancellation/control, status/deadline and process identity. One-use slot and every preassigned attachment, even when no bytes arrive. No phantom operation charge. |
 | Captures and OCR | Every required unique PNG and partial. Byte/dimension/checksum/decode evidence. OCR frames/copies/native inputs/results and detection payload. Internal temporary images cost capacity even when they are not saved artifacts. Required originals cannot be deleted or downsampled to fit. <!-- tc: depart synonym-rotation because deleting retained images differs from erasing a failed transport outcome --> |
 | Local helpers | Predicate construction, jq/parser/decoder input and output, temporary shell copies, inventory sorting/hashing/comparison, archive construction, sleep/clock/message observations and transcript bytes. Bound lifetime and total work. The CLI count does not cover them. |
-| Worker and processes / terminal | Every sleep/phase/tick/stop transition, owned child creation/exit/reap, held-descriptor observation, distinct signal/control, publication carrier and failure fallback. Worker plus sleep child can coexist with backend/collector/producer and caller/owner. The six-process study envelope is not the workload bound. |
+| Worker and processes / terminal | Every sleep/phase/tick/stop transition, owned child creation/exit/reap, held-descriptor observation, distinct signal/control, publication carrier and failure fallback. The [completion worksheet](KEEPALIVE-RESOURCES.md#completion-worksheet) names supervisor, owner, worker, sleep child, backend, collector, intermediary/producer and one inherited helper. They can total eight before validators or utilities. Determine which phases overlap. The six-process study envelope is not the workload bound. |
 | Final/failed writes | Full consumed slot and attachment reservation, partial setup/objects, bounded write-failure summary, uncertain burned ranges, failed owner/caller observations and missing tail. Settlement/refund or parity-slot reuse is forbidden. |
 
 The accounting successor must derive paths rather than multiply only successful
@@ -312,7 +316,7 @@ scenario/helper bodies.
 
 Graph edges to a documentary `testanyware` symbol are
 not executable call evidence. The external graph at `2026-10-29T07:11:24Z` has
-no recorded gaps in the five cited dependency files. Immutable tagged reads,
+no recorded gaps in the producer's original dependency files. Immutable tagged reads,
 not that absence, establish the cited source behaviour.
 
 Review must challenge loop endpoints, nested reveal and pointer multiplicities, all six baseline images, internal input-update/OCR work and unchanged waits.

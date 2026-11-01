@@ -645,7 +645,7 @@
       "group": "settings-activation",
       "title": "Expand every operation before choosing capacity",
       "source": "settings-activation/keepalive-workload.mmd",
-      "caption": "Proposed workload inventory. Solid arrows show permitted ordering and dotted arrows show accounting dependencies. Setup, the shared E prefix, complete A continuation and applicable failure/caller tails retain separate costs. Every helper includes its polls, waits and objects; OCR and input confirmation also process frames internally. Scoped review precedes the remaining scheduling and record derivation. Exact caller and qualified native/storage inputs remain missing. No runtime or useful-profile result follows."
+      "caption": "Proposed workload inventory. Solid arrows show permitted order and failure routes. Dotted arrows show accounting dependencies. Setup, the shared E prefix, complete A continuation and applicable failure/caller tails retain separate costs. Every helper includes its polls, waits and objects. OCR and input confirmation also process frames internally. Scoped review precedes the remaining scheduling and record derivation. Exact caller and qualified native/storage inputs remain missing. No runtime or useful-profile result follows."
     },
     {
       "id": "settings-activation-keepalive-recovery-transfer",

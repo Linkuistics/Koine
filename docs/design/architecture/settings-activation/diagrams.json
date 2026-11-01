@@ -53,7 +53,7 @@
       "group": "keepalive",
       "title": "Expand every operation before choosing capacity",
       "source": "keepalive-workload.mmd",
-      "caption": "Proposed source-grounded inventory. Solid arrows show permitted order and failure routes; dotted arrows show accounting dependencies. Start precedes worker cadence. E ends through TextEdit quit; A preserves the complete continuation. Every helper expands into operations and local work, including producer-internal frame processing. Collection and final records retain their own costs and availability conditions. Detailed stop, carrier and recovery joins remain governed by the owner and record contracts. No runtime, useful numerical profile, native result or model-checking claim follows."
+      "caption": "Proposed source-grounded inventory. Solid arrows show permitted order and failure routes. Dotted arrows show accounting dependencies. Start precedes worker cadence. E ends through TextEdit quit. A preserves the complete continuation. Every helper expands into operations and local work, including producer-internal frame processing. Collection and final records retain their own costs and availability conditions. Detailed stop, carrier and recovery joins remain governed by the owner and record contracts. No runtime, useful numerical profile, native result or model-checking claim follows."
     },
     {
       "id": "keepalive-recovery-controls",

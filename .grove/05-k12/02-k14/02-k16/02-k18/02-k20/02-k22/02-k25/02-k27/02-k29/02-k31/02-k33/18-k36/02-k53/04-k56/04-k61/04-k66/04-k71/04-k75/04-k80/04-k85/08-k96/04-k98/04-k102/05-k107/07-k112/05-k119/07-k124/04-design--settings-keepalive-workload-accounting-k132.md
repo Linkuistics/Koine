@@ -13,11 +13,12 @@ missing concrete caller/collection inputs. None is an adopted capacity.
 
 ## Done when
 - Reconcile every helper/caller operation, branch, clean-negative poll, wait,
-  six baseline screenshots, internal OCR/input-frame work and retained object.
+  six baseline screenshots, internal OCR/input-event/frame work and retained object.
 - Reconcile the 600-second start queue with bounded boot/provisioning and
   interrupted-start containment. Derive elapsed and due/charged/published tick
   counts, including post-start archives/uploads, local work and longest failing
   prefixes, without adding tick service twice to scenario admission waits.
+  Count failures, cancellations, refusals and partial records.
 - Derive carrier multiplicity v from all mandatory observations and failed-carrier
   fallbacks. Assign each write/flush/visibility cost to its actual lane/deadline.
 - Instantiate schema multiplicities, vector maxima, parity losses, attachments,
