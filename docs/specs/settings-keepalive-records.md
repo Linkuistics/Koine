@@ -549,6 +549,12 @@ finite caller trust boundary, and prevents endless recovery generations.
 
 ### Encoded and physical accounting
 
+The [combined workload derivation](../verification/settings-activation/KEEPALIVE-ACCOUNTING.md)
+applies this catalogue to start, scenario, ticks, collection and both caller paths.
+It derives standalone carrier counts, lane costs and the coupled preparation/layout constraints.
+It establishes `m >= 29` from the fixed parameter list, without selecting useful capacities.
+Its scoped review precedes consumption. Exact manifests and qualified physical costs remain prerequisites.
+
 Let `n` bound all valid received submissions, including due ticks and
 collection. Let `a` bound all assigned attempts. Let `w` bound worker reports.
 Let `h` bound process/holder observations.
@@ -1036,8 +1042,10 @@ dependency issue #13's evidence, every R/S expansion and whole-design
 reconciliation. Missing inputs keep startup unavailable. All original parent
 duties and runtime holds remain live.
 
-K119 must reconcile the commitment ceiling with the complete publication-carrier
-schedule and fence width `W`. The current two-second selection-to-commitment
+The [phase assignment](../verification/settings-activation/KEEPALIVE-ACCOUNTING.md#assign-every-publication-to-its-deadline)
+places every carrier in its existing deadline.
+K126 must establish useful fit with the selected fence width and qualified storage costs.
+The current two-second selection-to-commitment
 ceiling includes any required fence, binding, directory creation and commitment
 publication. The mandatory commitment-observation kind 20 also precedes child
 creation and consumes the existing creation-phase allowance. All required write,

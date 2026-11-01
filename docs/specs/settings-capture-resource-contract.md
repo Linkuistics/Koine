@@ -378,6 +378,12 @@ the configured limits is not that counterexample.
 
 ## Remaining qualification and adoption
 
+The [combined accounting](../verification/settings-activation/KEEPALIVE-ACCOUNTING.md)
+includes internal OCR cycles and input-confirmation frame work within each operation's charge.
+It also includes raw queue retention, simultaneous capacities and actual process overlap.
+Exact unit definitions, producer evidence and useful finite limits remain missing.
+The derivation adds no dependency operation or native execution authority.
+
 This contract supplies no selected producer build, launcher/map floor, numeric
 useful limits, protected storage arrangement, recovery schema or full-run
 duration/tick budget. VM-launch queue/boot containment, uploads and the complete

@@ -19,10 +19,11 @@ cleanup are not permitted paths. The reviewed strict helpers and protocol supply
 the replacement contracts. This inventory adds no input, observation, poll or
 wait beyond those contracts. It is a design input, not a frozen executable manifest.
 
-K131 supplies this inventory. K132 retains the complete elapsed/tick calculation,
-carrier schedule, schema maxima, tail tables, fence width and physical-capacity
-derivation from the original k124 charter. Its consumption follows this slice's
-review and every earned integration.
+K131 supplies this inventory. K133 reviewed it and k134 integrated the findings.
+K132 supplies the [combined scheduling and record derivation](KEEPALIVE-ACCOUNTING.md).
+That derivation includes elapsed/tick calculation, carriers, schema and lane costs,
+tail requirements, fence constraints and physical-capacity formulas.
+Its scoped review precedes consumption. Missing concrete inputs still prevent numerical profile adoption.
 
 K125 owns missing evidence scopes. K126
 owns final reconciliation. Unknown values below prevent a useful profile. They
@@ -301,8 +302,9 @@ These exact inputs remain missing:
 - Native/service coverage.
 - Physical storage metadata, flush/visibility latency and protected-capacity evidence.
 
-K125 scopes the external
-evidence. K132 derives remaining accounting and K126 retains useful-profile fit.
+K125 scopes the external evidence.
+The [combined accounting](KEEPALIVE-ACCOUNTING.md#exact-inputs-still-required)
+assigns every remaining input. K126 retains useful-profile fit.
 
 ## Evidence boundary and review questions
 

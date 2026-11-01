@@ -152,9 +152,12 @@ separates that work from the missing evidence and the two decisions below.
 The [expanded workload inventory](KEEPALIVE-WORKLOAD.md) now maps the baseline
 scenario, nested helpers, required migration additions and caller tails. It
 retains all six direct images and internal OCR/input-confirmation frame work.
-Its scoped review precedes the remaining scheduling and record-accounting
-derivation. The worksheet below remains the method. No numeric profile follows
-from the inventory or its baseline cross-check counts.
+
+K133 reviewed it and k134 integrated the findings.
+The [combined accounting](KEEPALIVE-ACCOUNTING.md) now derives start/active timing,
+tick distinctions, carriers, lane costs, attachments and physical-capacity constraints.
+Its scoped review precedes consumption. The worksheet below remains introductory context.
+No numerical profile follows from the inventory or its baseline cross-check counts.
 
 <!-- tc: pending because the remaining worksheet and historical integrations retain their existing prose -->
 
@@ -452,7 +455,7 @@ This is a source-derived constraint, not a measured host footprint. K111 owns th
 qualification proposal for the install point and calling map size. K112 retains
 the complete useful producer allowance and evidence requirements.
 
-<!-- tc: depart synonym-rotation because launch evidence names child execution while start queue names a VM command -->
+<!-- Vocabulary note: launch evidence names child execution while start queue names a VM command. -->
 A minimal exec'd intermediary could change that floor but adds a process and
 new launch/ownership evidence. An in-producer call changes the external dependency.
 Neither option is selected. A limit that survives exec can still be unusable

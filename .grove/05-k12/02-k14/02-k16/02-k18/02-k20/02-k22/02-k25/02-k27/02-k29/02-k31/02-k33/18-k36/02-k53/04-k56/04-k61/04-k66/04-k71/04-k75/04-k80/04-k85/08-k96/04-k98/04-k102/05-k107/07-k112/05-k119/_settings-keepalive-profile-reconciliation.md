@@ -144,3 +144,9 @@ frame/message processing. K125 must include those internal dependency paths in
 the missing evidence scope. Exact caller/audit commands and payloads, internal
 limits and qualified native/storage inputs remain missing; k126 still owns final
 useful-profile fit and whole-design reconciliation. No runtime authority follows.
+
+K132 now supplies KEEPALIVE-ACCOUNTING.md with its scoped review still required.
+It separates start from post-start admission and derives carriers, lane costs and coupled layout constraints.
+K125 consumes its exact missing-evidence table after review and every earned integration.
+K126 retains finite caller/layout instantiation, qualified numerical fit and whole-design reconciliation.
+No guessed capacity, mechanism result or ancestor closure follows.

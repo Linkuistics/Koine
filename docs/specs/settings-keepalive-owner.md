@@ -786,7 +786,8 @@ whole-operation allowance starts at dispatch commitment, before child creation.
 | Checked capture, physical input, ordinary agent/screen read | 30 seconds | 52 seconds |
 | Existing Allow OCR with its unchanged timeout of 30 seconds | 45 seconds | 67 seconds |
 | Guest exec, including its existing guest timeout | 45 seconds | 67 seconds |
-| File upload/download and VM lifecycle commands | 120 seconds | 142 seconds |
+| File upload/download and VM lifecycle commands other than start | 120 seconds | 142 seconds |
+| VM start before worker cadence | `600 seconds + U_start` | CLI allowance plus 22 seconds |
 | Successful local poll record with no CLI | 0 seconds | 22 seconds |
 | Evidence-class local failure record with no CLI | 0 seconds | 22 seconds from owner failure observation |
 
@@ -799,9 +800,12 @@ VM start belongs to this owner domain, after owner readiness and before worker
 sleep starts. Worker readiness does not start its cadence. The clean start
 result enables the first sleep at the existing post-start point, before
 environment reads and uploads. A failed start keeps ticks suppressed and enters
-containment. The 120-second CLI target does not qualify the existing 600-second
-slot wait or the subsequent boot work. K112 must reconcile that mismatch before
-startup.
+containment. The dedicated start family preserves the existing 600-second slot wait.
+
+`U_start` must bound all other CLI setup, provisioning, boot and response work.
+It remains unqualified, so the family cannot permit startup.
+The [combined accounting](../verification/settings-activation/KEEPALIVE-ACCOUNTING.md#separate-the-start-family)
+derives this split without enlarging post-start admission.
 
 A failed poll, sleep or signal arrives as a priority control, not a queued
 scenario operation. The owner immediately closes eligibility and records the
@@ -1204,11 +1208,17 @@ reconciled.
 
 ## Remaining profile
 
-The [workload inventory](../verification/settings-activation/KEEPALIVE-WORKLOAD.md)
-expands the shared scenario and helper paths, including producer-internal frame
-work and both caller tails. Its scoped review precedes combined scheduling and
-record accounting. Exact caller/confirmation manifests and native/storage
-evidence remain required. Baseline helper counts are not a useful profile.
+The reviewed [workload inventory](../verification/settings-activation/KEEPALIVE-WORKLOAD.md)
+expands the shared scenario, internal frame work and both caller tails.
+The [combined accounting](../verification/settings-activation/KEEPALIVE-ACCOUNTING.md)
+derives time, tick, carrier, lane, attachment and physical-capacity requirements.
+Its scoped review precedes consumption. Exact caller/confirmation manifests and native/storage evidence remain required.
+Baseline helper counts are not a useful profile.
+
+Every required write and carrier consumes its
+[assigned phase](../verification/settings-activation/KEEPALIVE-ACCOUNTING.md#assign-every-publication-to-its-deadline).
+The five-second startup, post-start admission, operation, stop and final-handoff targets remain conditional on that fit.
+No implicit serial allowance extends them.
 
 Scheduling is proposed above. Enforceable resources and complete workload
 accounting remain mandatory unresolved inputs. There is no executable combined

@@ -50,3 +50,13 @@ in this session. This node and all ancestors remain open.
   the finite caller still need migration; record-carrier and deadline arithmetic
   needs a separately reviewed complete operation expansion. Preserve all original
   k124 requirements in this node and complete only the first child here.
+
+## Combined accounting handoff
+
+K132 supplies KEEPALIVE-ACCOUNTING.md and the linked owner/record contracts.
+It derives start/active timing, tick distinctions, carriers, lane costs and physical-capacity constraints.
+The coupled preparation/layout inequalities require a finite simultaneous solution.
+Exact caller, payload, local-work and qualified mechanism inputs remain explicit prerequisites.
+Scoped review and every earned integration precede consumption by k125/k126.
+K126 retains final numerical fit and whole-design reconciliation.
+No runtime authority or ancestor closure follows this derivation.

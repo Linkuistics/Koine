@@ -1,5 +1,5 @@
 {
-  "title": "Settings activation: complete workload inventory",
+  "title": "Settings activation: workload accounting",
   "intro": "Graph views start at the dark Start here node. Sequences start at their first message and state views at the initial dot. Lifecycle review is integrated. Scheduling review corrections are integrated. Enforceable resources and whole-design reconciliation remain outstanding. Implementation and runtime stay held.",
   "groups": [
     {
@@ -29,25 +29,40 @@
     }
   ],
   "discussion": {
-    "title": "Count the complete workload before deriving capacity",
-    "status": "Proposed inventory. Scoped review precedes accounting.",
-    "summary": "The inventory expands setup, the shared prefix, ordinary continuation and both caller tails. It preserves nested polls, six baseline screenshots, internal OCR and input-confirmation frame work. Scheduling, carrier and capacity derivation remain in k132; exact caller and qualified native/storage inputs remain missing. No runtime or mechanism control ran.",
+    "title": "Derive time and protected capacity from complete paths",
+    "status": "Proposed derivation. Scoped review precedes consumption.",
+    "summary": "Separate the start queue from active cadence. Count tick service once, preserve charged unpublished work, and derive every carrier, lane and attachment cost. Coupled setup/layout constraints need a finite solution. Exact caller and qualified native/storage inputs remain missing. Startup remains unavailable.",
     "diagramIds": [
+      "keepalive-accounting",
       "keepalive-workload",
-      "keepalive-recovery-controls",
-      "keepalive-recovery-transfer",
       "keepalive-records",
       "keepalive-storage",
-      "keepalive-raw-controls"
+      "keepalive-recovery-transfer",
+      "keepalive-scheduling"
     ],
     "updatedDiagrams": [
       {
+        "id": "keepalive-accounting",
+        "summary": "Adds the combined calculation and unresolved profile boundary."
+      },
+      {
         "id": "keepalive-workload",
-        "summary": "Adds complete workload expansion and the remaining accounting boundary."
+        "summary": "Links the reviewed workload to the new combined derivation."
+      },
+      {
+        "id": "keepalive-scheduling",
+        "summary": "Clarifies the separate start family in the caption."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "keepalive-accounting",
+      "group": "keepalive",
+      "title": "Derive time and protected capacity",
+      "source": "keepalive-accounting.mmd",
+      "caption": "Proposed design dependency view. Start retains its 600-second queue before cadence. Active time includes local work and failing prefixes without counting tick service twice. Attempted records include mandatory and fallback carriers. All reserved slots retain attachments. Preparation and layout counts require a finite simultaneous solution. Exact caller and qualified dependency, native and storage inputs remain absent. No numerical profile, implementation, mechanism result or model-checking result follows."
+    },
     {
       "id": "keepalive-workload",
       "group": "keepalive",
@@ -123,7 +138,7 @@
       "group": "keepalive",
       "title": "Serve the oldest request within its deadline",
       "source": "keepalive-scheduling.mmd",
-      "caption": "Proposed scheduling contract. The owner checks failure, stop and expiry before commitment. Full capture qualification and terminal delivery precede later dispatch. Operation bounds are 52, 67 or 142 seconds; local records use 22. Resource limits and workload qualification remain outstanding. The graph omits detailed normal-stop joins, shown in the lifecycle view. No native idle safety or model checking is claimed."
+      "caption": "Proposed scheduling contract. The owner checks failure, stop and expiry before commitment. Full capture qualification and terminal delivery precede later dispatch. Post-start operation bounds are 52, 67 or 142 seconds; local records use 22. The separate start family retains the 600-second queue plus unqualified non-queue work and phase costs. Resource limits and workload qualification remain outstanding. The graph omits detailed normal-stop joins, shown in the lifecycle view. No native idle safety or model checking is claimed."
     },
     {
       "id": "keepalive-owner",

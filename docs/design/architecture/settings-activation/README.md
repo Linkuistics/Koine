@@ -1,10 +1,9 @@
 # Settings activation design discussion
 
-The current discussion is the [complete workload inventory](../../../verification/settings-activation/KEEPALIVE-WORKLOAD.md).
-It expands the shared E prefix and complete A continuation, including helper polls and waits.
-It retains six baseline screenshots, internal OCR/input-confirmation frame work and both
-caller tails. Scoped review precedes the remaining scheduling and record-accounting
-design. Exact migrated caller and qualified native/storage inputs remain missing.
+The current discussion is the [combined scheduling and record accounting](../../../verification/settings-activation/KEEPALIVE-ACCOUNTING.md).
+It derives start/active timing, tick distinctions, publication carriers, lane costs and protected storage requirements.
+The reviewed workload remains its input, including all six baseline images and internal frame work.
+Scoped review precedes consumption. Exact caller, layout and qualified native/storage inputs remain missing.
 
 The [record and recovery control design](../../../verification/settings-activation/KEEPALIVE-RECOVERY-CONTROLS.md) remains unchanged context.
 It preserves the original eighteen S cases and expands named publication cuts, carrier failures, malformed fixtures and recovery paths.
@@ -15,8 +14,8 @@ Antony approved the exact complete-write observation extension in the [producer 
 Its negative cases retain actual bytes and call results separately. The later executable manifest still needs implemented subjects and qualified resource bounds.
 
 The [bounded record and recovery schema](../../../specs/settings-keepalive-records.md)
-remains unchanged context.
-Workload accounting and native evidence scopes remain separate design work.
+now links its count and phase requirements to the combined derivation.
+Native evidence scopes remain separate design work.
 Numerical capacities and protected metadata still require qualified mechanisms.
 
 The [raw-output control design](../../../verification/settings-activation/KEEPALIVE-RAW-CONTROLS.md) remains unchanged context.
@@ -68,6 +67,7 @@ that sample, not mechanism, risk reduction or general reliability.
 
 Native cause and ownership remain unresolved. All six causal slots remain held.
 
+<!-- tc: depart synonym-rotation because application launch differs from the worker start boundary -->
 Both sets use the same updated scenario: strict single-attempt transport,
 positive TextEdit setup, an original-list Settings-title audit and a separate
 process-loss outcome. Zero-window rejection needs clean liveness. The focused
@@ -94,15 +94,17 @@ loads Mermaid 12.0.0 from jsDelivr and needs network access.
 Reload after editing. No export build is used.
 
 The local index links to the shared viewer, and the
-[parent outline](../index.html#diagram-settings-activation-keepalive-workload)
+[parent outline](../index.html#diagram-settings-activation-keepalive-accounting)
 loads these same sources while retaining its separate current discussion.
 
 Current changes:
 
-- [Keepalive → Expand every operation before choosing capacity](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-workload) — Adds setup, complete E/A work, failure tails and the accounting boundary.
-- [Helper and poll expansion](../../../verification/settings-activation/KEEPALIVE-WORKLOAD.md#helper-and-poll-expansion) — Preserves nested reveal calls, loop endpoints, local records and unchanged sleeps.
-- [Required additions and internal image work](../../../verification/settings-activation/KEEPALIVE-WORKLOAD.md#required-additions-and-internal-image-work) — Separates baseline screenshots, required observations, OCR cycles and input-confirmation frame work.
-- [Retained objects and accounting handoff](../../../verification/settings-activation/KEEPALIVE-WORKLOAD.md#retained-objects-and-accounting-handoff) — Names the exact unresolved scheduling, record, caller and mechanism inputs.
+- [Keepalive → Derive time and protected capacity](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-accounting) — Adds the combined calculation and unresolved fit boundary.
+- [Start, active cadence and final time](../../../verification/settings-activation/KEEPALIVE-ACCOUNTING.md#start-active-cadence-and-final-time) — Separates the start queue and counts tick service once.
+- [Publication carriers](../../../verification/settings-activation/KEEPALIVE-ACCOUNTING.md#derive-publication-carriers) — Counts mandatory and fallback writes in their actual lanes and deadlines.
+- [Counts, lanes and retained objects](../../../verification/settings-activation/KEEPALIVE-ACCOUNTING.md#counts-lanes-and-retained-objects) — Derives coupled layout, parity, attachment and physical-capacity constraints.
+- [Remaining-tail calculation](../../../verification/settings-activation/KEEPALIVE-ACCOUNTING.md#remaining-tail-calculation) — Specifies failure states and the missing inputs for numerical tables.
+- [Scheduling profile](../../../specs/settings-keepalive-owner.md#scheduling-and-deadline-profile) — Separates start from the post-start family and includes publication work in phase costs.
 
 The [resource review integration](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#review-integration)
 records each k108 disposition. Collection directories and terminal records require

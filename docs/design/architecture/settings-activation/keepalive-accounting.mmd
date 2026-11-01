@@ -1,0 +1,28 @@
+flowchart TD
+  start["Start here<br/>Workload paths"]:::start
+  stages["Start family<br/>600-second queue<br/>plus unknown work"]
+  active["Active time B<br/>Waits, local work<br/>and failing prefixes"]
+  ticks["Due at most floor B / 20<br/>Charged at most due<br/>Published at most charged"]
+  records["Attempted records<br/>Carriers and fallbacks"]
+  lanes["Five protected lanes<br/>Parity and attachments"]
+  solve["Coupled layout constraints<br/>Finite solution required"]
+  capacity["Remaining-tail checks<br/>Bytes, objects, metadata"]
+  phase["Existing phase deadlines<br/>All writes included"]
+  missing["Missing exact inputs<br/>Caller, dependency,<br/>native and storage"]:::held
+  hold["Startup unavailable<br/>Review before consumption"]:::held
+  start --> stages
+  start --> active
+  active --> ticks
+  start --> records
+  ticks --> records
+  records --> lanes
+  lanes --> solve
+  solve --> capacity
+  stages --> phase
+  records --> phase
+  missing --> solve
+  missing --> phase
+  capacity --> hold
+  phase --> hold
+  classDef start fill:#172f49,color:#fff,stroke:#172f49,font-weight:bold
+  classDef held fill:#fff0db,color:#402800,stroke:#a76b00

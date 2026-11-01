@@ -83,7 +83,7 @@ CLI allowances below exclude the additional 22 seconds of operation phases.
 | `file exec`, including observer, defaults, install, restart and other guest commands | Backend lines 249–251. Existing guest timeout is 30 seconds. Host transport remains separately bounded. | 45 seconds |
 | `file upload`, including Koine.zip, client and enrolment scripts | Common library lines 336–349 and scenario line 83. Bundle byte size and transfer duration are unbounded in the cited caller. | 120 seconds |
 | Evidence `file download` | Backend lines 185–202. No byte or elapsed bound in this admission code. | 120 seconds |
-| `vm start --wait` | Common library lines 312–334. Tagged CLI gives bare `--wait` a 600-second slot-queue limit, before boot work. | 120 seconds, useful fit unresolved |
+| `vm start --wait` | Common library lines 312–334. Tagged CLI gives bare `--wait` a 600-second slot-queue limit, before boot work. | Dedicated start family: 600 seconds plus unqualified non-queue CLI work. |
 | Exact `vm stop` | Backend lines 204–211. No whole-command bound in this admission code. | 120 seconds |
 | Independent `vm list` | Backend lines 204–211. Classified as lifecycle inventory, with a separate result. | 120 seconds |
 | Successful `poll-step`, failed `poll-step` and `confirmation` | Backend lines 246–247 and 314–329. No CLI. A failure control precedes its evidence-class record. | Zero, 22 seconds total |
@@ -109,6 +109,11 @@ sleep only after clean VM start, at the legacy post-start point before uploads.
 Owner startup's five seconds do not include VM boot. K102 must account for the
 600-second queue option, boot stages and exact-clone containment after interrupted start.
 It cannot silently shorten an explicit wait or move start outside the writer domain.
+
+The [combined accounting](KEEPALIVE-ACCOUNTING.md#start-active-cadence-and-final-time)
+now proposes that dedicated start family and preserves post-start admission at 152 seconds.
+It includes local work, failing prefixes and publication carriers within their existing deadlines.
+Its scoped review precedes consumption. Qualified timing and useful fit remain outstanding.
 
 ## Alternatives and usefulness
 
