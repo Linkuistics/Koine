@@ -31,3 +31,7 @@ Missing evidence keeps startup unavailable and this leaf live.
 Name missing evidence or authority. Never infer a requirement relaxation.
 No E/A, closed causal slot, VM, freeze, acceptance, cap expansion or release is authorised.
 Do not close ancestors from a completed slice.
+
+## Caller-workload input
+
+Consume KEEPALIVE-CALLER.md only after k137 scoped review and every earned integration. Reconcile B06's one observer upload plus one readiness exec inside active cadence, the single 25-position collection plan, normal/recovery union, uncertain allowances and sequence-level golden duties. Bind exact k57/k81/k89 probe and CLI payloads, k76/k67/k62 scenario grouping, object/attachment layouts and local hash/parser/archive/transcript/scan costs. Semantic counts do not instantiate useful byte/time/process limits. The complete k124 charter comparison remains in its brief and must survive eventual closure.

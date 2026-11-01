@@ -25,8 +25,8 @@ That derivation includes elapsed/tick calculation, carriers, schema and lane cos
 tail requirements, fence constraints and physical-capacity formulas.
 K135 reviewed the derivation and k136 integrated its findings. Missing concrete inputs still prevent numerical profile adoption.
 
-K125 owns missing evidence scopes. K126
-owns final reconciliation. Unknown values below prevent a useful profile. They
+K137 supplies the proposed [finite caller plan](KEEPALIVE-CALLER.md), subject to its scoped review and every earned integration.
+K125 owns missing evidence scopes. K126 owns final reconciliation. Unknown values below prevent a useful profile. They
 are not zeros, defaults or permission to relax requirements.
 
 ## Expansion rules
@@ -80,7 +80,7 @@ E01/E02 and A01/A02/A03 slot identities.
 |---|---|
 | P00 — Before clone request | Check tools and frozen bundle/inputs. Create the unique private root/transcript and three backing identities. Prepare profile, slots, attachments and collection plan. Establish caller/owner/worker identities and readiness. Retain original/installed/golden audit definitions, full before-slot input inventory and completed golden digests. Local file reads, hashes, directory creation, transcript writer and bootstrap objects need their own bounds. No root means caller-retained refusal, not a fabricated ordinal. |
 | P01 — Start | Consume the declared slot immediately before one exact clone-start submission, with the explicit golden/base, display and retained 600-second queue option. Retain requested and actual identity, spec/meta/config and every partial outcome. Worker is ready but has not begun sleep. Clean start enables its first sleep before P02. Queue, provisioning, boot and interrupted-start containment remain separate missing costs. |
-| P02 — Environment and installation | Two `X` observations for OS/architecture and Gatekeeper status. Local `ditto` archive creation. Two `F` uploads for archive and verification client. Five `X` operations for extraction, quarantine, signature verification, signature details and assessment. One installed before-inventory `X`, with its full sorted file/link list and completion marker. Upload the enrolment client once. Preserve clean domain-negative quarantine/assessment data without allowing failed transport. Bound archive, source, extracted target, transcript and all simultaneous copies. |
+| P02 — Environment and installation | Two `X` observations for OS/architecture and Gatekeeper status. Local `ditto` archive creation. Two `F` uploads for archive and verification client. Five `X` operations for extraction, quarantine, signature verification, signature details and assessment. One installed before-inventory `X`, with its full sorted file/link list and completion marker. Upload the enrolment client once. The caller plan additionally uploads and verifies the frozen failure observer before scenario input (one transfer and one exec). Preserve clean domain-negative quarantine/assessment data without allowing failed transport. Bound archive, source, extracted target, transcript and all simultaneous copies. |
 | P03 — Diagnostics and Automation | Required effective diagnostic/default/environment reads before first launch. No baseline optional trace-enabling write. One clean Automation-trigger `X`. One Allow OCR invocation. One exact Allow centre click and `D(2)`. One complete System Events confirmation `X`. No second OCR invocation after substring-only or missing exact Allow. <!-- tc: depart synonym-rotation because application launch and worker start name different lifecycle boundaries --> |
 | F01 — First launch | One `X(open)`. Endpoint poll. Window-count poll for one. Four further `W` reads in the baseline (printed titles, printed frame, size frame, title assertion). Two System Events `X` reads for background-only and Dock list, one menu-count read, one printed menu-label read, label poll, `read_menu`, then direct first-launch `C`. Launch identity/endpoint confirmation and original-list title audits remain required migration additions. |
 | F02 — TextEdit preparation | One `X(open TextEdit)`. The 15-read TextEdit poll plus its unconditional final `W`. `D(8)`. One move to 700,120. `D(1)`. One front-window `W` and one front-application `X`. Freeze the observed TextEdit PID, Untitled geometry and identity facts needed below. No corrective focus or extra settling. |
@@ -242,15 +242,15 @@ does not prove no charge or no execution.
 | Held pointer | Distinguish signal during a down attempt from signal during sleep after clean down. No clean release leaves possible held input. Partial down/release retains uncertainty. Worker stop, failure handling and recovery never issue a release. |
 | Holder resolution | Preserve established child/group identity, TERM/KILL/wait outcomes, inherited descriptor observations and actual original-lock acquisition under the one fixed containment window. Unknown targets receive no signal. No unbounded wait or substituted lock. <!-- tc: depart synonym-rotation because fixed describes an unchanged window and does not mean repair --> |
 | C01–C03 — Untouched context | When applicable and ownership permits, one independent failure observer, one complete agent window list, one checked screenshot, in that order before other collection. Each is a separate operation/result. Failure of one does not erase it or authorise replay. Later context may be unavailable. The zero-window process comparison belongs in this untouched capture plan without changing the three-item order. |
-| C04 — Remaining evidence | Endpoint/process/default/environment observations, installed final inventory, host-input/original/golden audits, required original-to-saved artifact comparisons and retained available archives. Enumerate every concrete command and local item in the future caller manifest. Diagnostics remain disabled and no new native archive is fabricated. Preserve local audit errors separately from guest errors. |
+| C04 — Remaining evidence | Endpoint/process/default/environment observations, installed final inventory, host-input/original/golden audits, required original-to-saved artifact comparisons and retained available archives. The [indexed caller plan](KEEPALIVE-CALLER.md#ordered-collection-plan) expands these duties into exact semantic requests, predicates and original roles. Freeze their executable payloads before implementation consumption. Diagnostics remain disabled and no new native archive is fabricated. Preserve local audit errors separately from guest errors. |
 | C05–C06 — Exact containment | One exact requested-clone stop result, then one independent complete VM inventory proving that identity stopped. These do not substitute for product Quit. Additional necessary exact-identity containment is separately declared and charged, never a trial retry or an unbounded fallback. |
 | Normal finish | Retain stop intent and pending cancellation if needed. Drain the current sleep or charged tick under its original deadline. Retain matching ack, actual worker exit/reap, all required publications, collection/audits, owner handoff and caller final sequence. No forced sleep shortening or retrospective success label. |
 | Failed-owner recovery | The original caller resolves holders and acquires the original lock. It validates backing/frontier and burns failed ranges and uncertain fence members. It writes kinds 25,20,5,20 before delayed observations or a new collection fence. Only plan items proved never fenced may run. One successor. No recovery after caller loss. |
 | Final caller | Normal transfer starts final lane with kinds 25,20. Both paths retain kinds 27,20,28. Actual owner response, channel and wait remain separate. Caller return after final publication has no further durable record. Failed final publication or unknown return cannot establish acceptance. |
 
-The caller implementation and concrete C04 plan do not yet exist. Therefore
-their exact command counts, payloads, observation grouping and local bounds are
-missing inputs, not a claim that the six collection labels are six operations.
+The [caller specification](KEEPALIVE-CALLER.md) defines 25 ordered collection positions, including conditional failure context, sequence-final golden audit and local classification.
+Its original-owner and successor paths share each position once. The caller implementation, frozen executable payloads and qualified local bounds remain missing.
+The six summary labels are not six operations.
 Each collection item has one plan index, class contribution and applicability
 predicate. An already fenced item cannot be repeated by recovery. Normal and
 failed tails share duties but do not justify reserving only their successful rows.
@@ -297,7 +297,7 @@ Those conservative wait envelopes supply neither full elapsed bounds nor a usefu
 These exact inputs remain missing:
 
 - The repaired source/confirmation grouping and payloads.
-- The finite caller and collection-item manifest.
+- The implementation of the specified finite caller plan and its frozen request/object manifest.
 - Complete local/transcript costs.
 - Internal OCR/message/frame limits.
 - Producer unit/version/lifetime evidence.

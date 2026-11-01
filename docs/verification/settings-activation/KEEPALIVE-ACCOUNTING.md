@@ -76,7 +76,7 @@ Their process, status, clock and failure evidence still consumes capacity.
 The original sleeps include both successful settling and the last negative sleeps where specified.
 The inventory's printed reads remain distinct unless the protocol explicitly shares the same original.
 
-P02 includes local archive creation and three uploads after worker cadence starts.
+P02 includes local archive creation and three baseline uploads after worker cadence starts. The [caller setup](KEEPALIVE-CALLER.md#caller-setup) adds one observer upload and one readiness exec before scenario input. Count those two operations and their full local/publication work in active time; do not count B05 as a second start.
 Include source bytes, archive bytes, guest extraction, inventories and simultaneous copies.
 P03 contains one Allow OCR invocation and one exact selection.
 No extra OCR invocation repairs substring-only output.
@@ -262,7 +262,8 @@ A late opportunity leaves that record unavailable rather than restarting its all
 Normal collection and failed-owner collection share the immutable item plan.
 Recovery withholds already fenced items and their allowances, even without a visible binding.
 It can use only the proven remaining suffix.
-Collection labels C01–C06 are not six commands: C04 still needs a concrete finite expansion.
+Collection labels C01–C06 are not six commands. The proposed [caller plan](KEEPALIVE-CALLER.md#ordered-collection-plan) expands them into 25 fixed positions, including local audits and the conditional sequence tail.
+Use its [path counts](KEEPALIVE-CALLER.md#multiplicity-and-object-accounting) only after scoped review and every earned integration. Concrete payload/layout and qualified local bounds remain required.
 
 The total observed run path is:
 
@@ -555,7 +556,7 @@ Enumerated loops and one-use roles make the path expansion finite only when ever
 | Caller final | The prescribed transfer sequence, attachments, possible single summary and final-return unknown. Caller loss has no successor. |
 
 Each row is an expansion requirement, not a complete instantiated type-8 table.
-Exact caller operations, message protocols and object layouts remain absent.
+Caller operations now have a proposed [indexed semantic plan](KEEPALIVE-CALLER.md). Frozen executable requests, message protocols and object layouts remain absent.
 Those missing inputs prevent numerical table entries and profile adoption.
 The table above specifies where each missing contribution belongs without claiming an executable state enumeration.
 
@@ -564,7 +565,7 @@ The table above specifies where each missing contribution belongs without claimi
 | Missing input | Required return and owner |
 |---|---|
 | Migrated scenario and confirmations | Exact operation sites, branch/loop grouping, requests, predicates and original-sharing joins. K126 retains reconciliation with k89/k81/k76/k67/k62. |
-| Finite caller and collection | Exact C04 commands, inventories, archive applicability, failure interpolation facts, plan indices, local bounds and post-failure submission policy. K126 retains k57's contract. |
+| Finite caller and collection | K137 specifies the indexed semantic requests, inventories, archive applicability, failure facts and no-repeat policy in [KEEPALIVE-CALLER.md](KEEPALIVE-CALLER.md). Scoped review precedes consumption. K57/k81/k89 implement exact payloads; k126 binds local limits, object contributions and final fit. |
 | Start | Actual queue/provision/boot/response stage subjects and finite `U_start`, returned identity and interrupted-start containment evidence. K125 scopes mechanisms and K126 fits the family. |
 | Messages and local processes | Actual worker/collector/progress transitions, child and holder overlaps, bounded transcript/parser/hash/scan/archive costs. These determine `w,h,q,g,t` and local time. K126 owns the protocol expansion and fit. K125 scopes missing external process-cost evidence. |
 | Dependency | Exact contract/unit versions, build, encoding/OCR/environment, input-update and OCR-cycle bounds, allocation/lifetime guards and full control results. K125 scopes this external work. |

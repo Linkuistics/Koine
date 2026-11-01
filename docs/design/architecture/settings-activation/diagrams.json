@@ -1,5 +1,5 @@
 {
-  "title": "Settings activation: workload accounting",
+  "title": "Settings activation: finite caller workload",
   "intro": "Graph views start at the dark Start here node. Sequences start at their first message and state views at the initial dot. Lifecycle review is integrated. Scheduling review corrections are integrated. Enforceable resources and whole-design reconciliation remain outstanding. Implementation and runtime stay held.",
   "groups": [
     {
@@ -29,39 +29,44 @@
     }
   ],
   "discussion": {
-    "title": "Derive time and protected capacity from complete paths",
-    "status": "Proposed derivation. K135 reviewed it and k136 integrated the findings.",
-    "summary": "Separate the start queue from active cadence. Size ticks from time without a live tick and preserve charged unpublished work. Scheduled carriers, lanes and attachments retain their costs. Extra fence-only reservation grants no write. Coupled setup/layout constraints need a finite solution. Exact caller and qualified native/storage inputs remain missing. Startup remains unavailable.",
+    "title": "Preserve one ordered caller and collection plan",
+    "status": "Proposed design from k137; scoped review precedes consumption.",
+    "summary": "Expand C04 into exact indexed observations and local audits. Prepare the observer before input. Original owner and recovery caller share one plan and never repeat a fenced item. Concrete payloads, local bounds and qualified native/storage inputs remain missing. Startup remains unavailable.",
     "diagramIds": [
-      "keepalive-accounting",
+      "keepalive-caller",
       "keepalive-workload",
-      "keepalive-records",
-      "keepalive-storage",
-      "keepalive-recovery-transfer",
-      "keepalive-scheduling"
+      "keepalive-accounting",
+      "keepalive-recovery-transfer"
     ],
     "updatedDiagrams": [
       {
-        "id": "keepalive-accounting",
-        "summary": "Tightens tick sizing and distinguishes scheduled carriers from deliberate over-reservation."
+        "id": "keepalive-caller",
+        "summary": "Adds observer preparation, ordered collection and recovery refusal paths."
       },
       {
         "id": "keepalive-workload",
-        "summary": "Links the reviewed workload to the new combined derivation."
+        "summary": "Connects collection to the indexed caller plan."
       },
       {
-        "id": "keepalive-scheduling",
-        "summary": "Clarifies the separate start family in the caption."
+        "id": "keepalive-accounting",
+        "summary": "Names concrete payloads and local costs as remaining inputs."
       }
     ]
   },
   "diagrams": [
     {
+      "id": "keepalive-caller",
+      "group": "keepalive",
+      "title": "Preserve one ordered caller and collection plan",
+      "source": "keepalive-caller.mmd",
+      "caption": "Proposed finite caller plan. Observer preparation precedes scenario input. One immutable 25-position plan preserves untouched failure order, independent audits, exact stop and inventory. Recovery may use only a proved never-fenced suffix after original-lock and frontier checks. Both held-pointer cases permit no release. Semantic counts are specified; executable payloads and qualified local/native/storage limits remain missing. Scoped review precedes consumption. No runtime or numerical-fit result follows."
+    },
+    {
       "id": "keepalive-accounting",
       "group": "keepalive",
       "title": "Derive time and protected capacity",
       "source": "keepalive-accounting.mmd",
-      "caption": "Proposed design dependency view. Start retains its 600-second queue before cadence. Tick sizing bounds time without a live tick, including local work and failure detection. The elapsed-time envelope retains the existing admission deadline. Attempted records follow the mandatory and fallback carrier schedule. Extra fence-only capacity grants no additional write. All reserved slots retain attachments. Preparation and layout counts require a finite simultaneous solution. Exact caller and qualified dependency, native and storage inputs remain absent. No numerical profile, implementation, mechanism result or model-checking result follows."
+      "caption": "Proposed design dependency view. Start retains its 600-second queue before cadence. Tick sizing bounds time without a live tick, including local work and failure detection. The elapsed-time envelope retains the existing admission deadline. Attempted records follow the mandatory and fallback carrier schedule. Extra fence-only capacity grants no additional write. All reserved slots retain attachments. Preparation and layout counts require a finite simultaneous solution. The proposed caller plan supplies semantic requests and counts. Exact payload/local-cost and qualified dependency, native and storage inputs remain absent. No numerical profile, implementation, mechanism result or model-checking result follows."
     },
     {
       "id": "keepalive-workload",

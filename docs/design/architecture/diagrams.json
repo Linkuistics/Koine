@@ -641,18 +641,25 @@
       "caption": "Canonical publication controls share all alias assertions without duplicate execution. The complete-write observation extension is approved. Its negative cases retain actual call results separately. Approved controls preserve actual bytes, required carriers and target-specific failure rules. Only complete required joins permit the dependent effect. The full protocol governs omitted delivery and containment. No control ran. Implementation, mechanism evidence and complete accounting remain required."
     },
     {
+      "id": "settings-activation-keepalive-caller",
+      "group": "settings-activation",
+      "title": "Preserve one ordered caller and collection plan",
+      "source": "settings-activation/keepalive-caller.mmd",
+      "caption": "Proposed finite caller plan. Observer preparation precedes scenario input. One immutable 25-position plan preserves untouched failure order, independent audits, exact stop and inventory. Recovery may use only a proved never-fenced suffix after original-lock and frontier checks. Both held-pointer cases permit no release. Semantic counts are specified; executable payloads and qualified local/native/storage limits remain missing. Scoped review precedes consumption. No runtime or numerical-fit result follows."
+    },
+    {
       "id": "settings-activation-keepalive-accounting",
       "group": "settings-activation",
       "title": "Derive time and protected capacity",
       "source": "settings-activation/keepalive-accounting.mmd",
-      "caption": "Proposed design dependency view. Start retains its 600-second queue before cadence. Tick sizing bounds time without a live tick, including local work and failure detection. The elapsed-time envelope retains the existing admission deadline. Attempted records follow the mandatory and fallback carrier schedule. Extra fence-only capacity grants no additional write. All reserved slots retain attachments. Preparation and layout counts require a finite simultaneous solution. Exact caller and qualified dependency, native and storage inputs remain absent. No numerical profile, implementation, mechanism result or model-checking result follows."
+      "caption": "Proposed design dependency view. Start retains its 600-second queue before cadence. Tick sizing bounds time without a live tick, including local work and failure detection. The elapsed-time envelope retains the existing admission deadline. Attempted records follow the mandatory and fallback carrier schedule. Extra fence-only capacity grants no additional write. All reserved slots retain attachments. Preparation and layout counts require a finite simultaneous solution. The proposed caller plan supplies semantic requests and counts. Exact payload/local-cost and qualified dependency, native and storage inputs remain absent. No numerical profile, implementation, mechanism result or model-checking result follows."
     },
     {
       "id": "settings-activation-keepalive-workload",
       "group": "settings-activation",
       "title": "Expand every operation before choosing capacity",
       "source": "settings-activation/keepalive-workload.mmd",
-      "caption": "Proposed workload inventory. Solid arrows show permitted order and failure routes. Dotted arrows show accounting dependencies. Setup, the shared E prefix, complete A continuation and applicable failure/caller tails retain separate costs. Every helper includes its polls, waits and objects. OCR and input confirmation also process frames internally. Scoped review precedes the remaining scheduling and record derivation. Exact caller and qualified native/storage inputs remain missing. No runtime or useful-profile result follows."
+      "caption": "Proposed workload inventory. Solid arrows show permitted order and failure routes. Dotted arrows show accounting dependencies. Setup, the shared E prefix, complete A continuation and applicable failure/caller tails retain separate costs. Every helper includes its polls, waits and objects. OCR and input confirmation also process frames internally. The scheduling derivation is reviewed. The proposed caller plan awaits its scoped review; executable payloads and qualified native/storage inputs remain missing. No runtime or useful-profile result follows."
     },
     {
       "id": "settings-activation-keepalive-recovery-transfer",

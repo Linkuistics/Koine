@@ -29,3 +29,7 @@ Design authority permits no native study or TestAnyware implementation here.
 Do not send new external messages without explicit authority.
 Present impossible requirements as concrete choices with costs.
 K126 retains the entire enforceable useful-profile and whole-design completion duty.
+
+## Caller-workload input
+
+Consume KEEPALIVE-CALLER.md only after k137 scoped review and every earned integration. Its B06 preparation and indices 1–25 bind semantic operation targets, results and local input dependencies. Include host hashing/archive/transcript/recovery-scan mechanism evidence in the external scope; retain exact-start identity, complete independent inventory, raw output and storage-loss prerequisites. This does not authorize native work or a new external message. K126 binds actual payloads and numerical fit.

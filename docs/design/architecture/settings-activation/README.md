@@ -1,11 +1,13 @@
 # Settings activation design discussion
 
-The current discussion is the [combined scheduling and record accounting](../../../verification/settings-activation/KEEPALIVE-ACCOUNTING.md).
-It derives start/active timing, tick distinctions, publication carriers, lane costs and protected storage requirements.
-Tick sizing uses time without a live tick. The elapsed-time envelope retains the unchanged admission deadline.
-The reviewed workload remains its input, including all six baseline images and internal frame work.
+The current discussion is the [finite caller workload](../../../verification/settings-activation/KEEPALIVE-CALLER.md).
+It expands collection into 25 ordered positions with exact semantic requests, predicates and retained original roles.
+The original owner and its recovery caller share one plan; neither can repeat a previously fenced item.
+The observer is prepared before input so failure context preserves observer, windows and screenshot order.
 
-K135 reviewed the derivation and k136 integrated its findings. Exact caller, layout and qualified native/storage inputs remain missing.
+K137 supplies this proposal. Its scoped review and every earned integration precede consumption.
+Executable payloads, local costs and qualified native/storage inputs remain missing.
+The [combined accounting](../../../verification/settings-activation/KEEPALIVE-ACCOUNTING.md) remains context, including tick sizing, carriers and protected lanes.
 
 The [record and recovery control design](../../../verification/settings-activation/KEEPALIVE-RECOVERY-CONTROLS.md) remains unchanged context.
 It preserves the original eighteen S cases and expands named publication cuts, carrier failures, malformed fixtures and recovery paths.
@@ -96,17 +98,17 @@ loads Mermaid 12.0.0 from jsDelivr and needs network access.
 Reload after editing. No export build is used.
 
 The local index links to the shared viewer, and the
-[parent outline](../index.html#diagram-settings-activation-keepalive-accounting)
+[parent outline](../index.html#diagram-settings-activation-keepalive-caller)
 loads these same sources while retaining its separate current discussion.
 
 Current changes:
 
-- [Keepalive → Derive time and protected capacity](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-accounting) — Adds the combined calculation and unresolved fit boundary.
-- [Start, active cadence and final time](../../../verification/settings-activation/KEEPALIVE-ACCOUNTING.md#start-active-cadence-and-final-time) — Separates the start queue and counts tick service once.
-- [Publication carriers](../../../verification/settings-activation/KEEPALIVE-ACCOUNTING.md#derive-publication-carriers) — Counts mandatory and fallback writes in their actual lanes and deadlines.
-- [Counts, lanes and retained objects](../../../verification/settings-activation/KEEPALIVE-ACCOUNTING.md#counts-lanes-and-retained-objects) — Derives coupled layout, parity, attachment and physical-capacity constraints.
-- [Remaining-tail calculation](../../../verification/settings-activation/KEEPALIVE-ACCOUNTING.md#remaining-tail-calculation) — Specifies failure states and the missing inputs for numerical tables.
-- [Scheduling profile](../../../specs/settings-keepalive-owner.md#scheduling-and-deadline-profile) — Separates start from the post-start family and includes publication work in phase costs.
+- [Collection → Preserve one ordered plan](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-caller) — Adds the fixed plan and original-owner, successor and unavailable paths.
+- [Ordered collection plan](../../../verification/settings-activation/KEEPALIVE-CALLER.md#ordered-collection-plan) — Expands observations, local audits and final sequence duties.
+- [Recovery and unavailable paths](../../../verification/settings-activation/KEEPALIVE-CALLER.md#recovery-and-unavailable-paths) — States every prerequisite for the never-fenced suffix.
+- [Multiplicity and object accounting](../../../verification/settings-activation/KEEPALIVE-CALLER.md#multiplicity-and-object-accounting) — Counts plan operations while preserving uncertain allowances and missing object limits.
+- [Workload expansion](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-workload) — Links collection to the indexed plan.
+- [Accounting dependencies](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-accounting) — Names executable payloads and local costs as remaining inputs.
 
 The [resource review integration](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#review-integration)
 records each k108 disposition. Collection directories and terminal records require
