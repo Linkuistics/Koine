@@ -992,7 +992,15 @@ numerical limits and the complete useful workload remain mandatory.
 
 ### One proof before producer launch
 
-The [finite caller workload](../verification/settings-activation/KEEPALIVE-CALLER.md) specifies one ordered collection plan shared with recovery, observer preparation and local audit dependencies. Its scoped review precedes consumption. Executable requests and useful limits remain outstanding.
+The [finite caller workload](../verification/settings-activation/KEEPALIVE-CALLER.md) specifies one ordered collection plan shared with recovery, observer preparation and local audit dependencies.
+K138 reviewed it and k139 integrates the supported findings.
+Its nine local audit operations require a collection-only family reconciled by k126, not the poll/failure-record rows above.
+Their computation stays inside each operation after tick suppression. No numerical allowance is adopted.
+
+K57 owns the sequence caller and its preflight/output manifest, including admission failure before a per-slot writer exists.
+Incomplete bootstrap permits no attempt allocation. Complete bootstrap with failed readiness permits only the schema's proven collection-only recovery.
+Unavailable audits remain required missing evidence. K126 must bound sequence output and each operation before startup.
+Collection failures never restart either supervisor's containment window.
 
 The finite caller supplies one immutable resource profile for the exact run. The
 owner admits an operation only when that profile covers its entire work:

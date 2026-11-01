@@ -251,6 +251,10 @@ Failure containment has one twenty-second window per existing supervisor role.
 Owner and caller observations can differ, so total path accounting uses their actual ordering and overlap.
 It must not reset either window after another failure.
 
+Collection failures use only actions still permitted within the relevant supervisor's original window.
+An unresolved holder after expiry blocks every later item, even an independent local audit.
+Do not derive a serial path that grants a fresh containment window to each expired operation.
+
 The finite caller must bound its own waits and local recovery scan.
 No design deadline bounds an unavailable host's physical return.
 
@@ -265,7 +269,18 @@ Recovery withholds already fenced items and their allowances, even without a vis
 It can use only the proven remaining suffix.
 
 Collection labels C01–C06 are not six commands. The proposed [caller plan](KEEPALIVE-CALLER.md#ordered-collection-plan) expands them into 25 immutable positions, including local audits and the conditional sequence tail.
-Use its [path counts](KEEPALIVE-CALLER.md#multiplicity-and-object-accounting) only after scoped review and every earned integration. Concrete payload/layout and qualified local bounds remain required.
+K138 reviewed its [path counts](KEEPALIVE-CALLER.md#multiplicity-and-object-accounting) and k139 integrates the supported findings.
+Concrete payload/layout and qualified local bounds remain required.
+
+The nine local collection operations include their complete computation and children inside each operation allowance.
+The existing 22-second local rows cover poll/failure records, so they supply no mapping or useful-fit evidence for these audits.
+K126 must reconcile the collection-only local-audit family, whole allowance, publication phases and total collection budget.
+No number is adopted here. Work after tick suppression cannot enlarge active-cadence admission or contribute to active `L_p`.
+
+The sequence caller's bounded preflight/output manifest remains a separate k57/k126 input.
+Include declarations, B01–B03 originals, admission decisions and NOT RUN outcomes without inventing owner ordinals.
+The caller's pre-start table identifies unavailable host/golden audits and recovery only after complete bootstrap and all entry proofs.
+No former slot's closed pool funds a later preflight failure.
 
 The total observed run path is:
 
@@ -567,7 +582,7 @@ The table above specifies where each missing contribution belongs without claimi
 | Missing input | Required return and owner |
 |---|---|
 | Migrated scenario and confirmations | Exact operation sites, branch/loop grouping, requests, predicates and original-sharing joins. K126 retains reconciliation with k89/k81/k76/k67/k62. |
-| Finite caller and collection | K137 specifies the indexed semantic requests, inventories, archive applicability, failure facts and no-repeat policy in [KEEPALIVE-CALLER.md](KEEPALIVE-CALLER.md). Scoped review precedes consumption. K57/k81/k89 implement exact payloads. K126 binds local limits, object contributions and final fit. |
+| Finite caller and collection | K137 specifies the semantic plan in [KEEPALIVE-CALLER.md](KEEPALIVE-CALLER.md), reviewed by k138 and integrated by k139. K57 owns sequence/per-slot callers and their manifests. K81/k89 supply exact payloads and domain-status envelopes. K76/k67 supply the failure-subject registry. K126 binds type-12 references, sequence-output bounds, the collection-only local-audit family, object contributions and final fit. |
 | Start | Actual queue/provision/boot/response stage subjects and finite `U_start`, returned identity and interrupted-start containment evidence. K125 scopes mechanisms and K126 fits the family. |
 | Messages and local processes | Actual worker/collector/progress transitions, child and holder overlaps, bounded transcript/parser/hash/scan/archive costs. These determine `w,h,q,g,t` and local time. K126 owns the protocol expansion and fit. K125 scopes missing external process-cost evidence. |
 | Dependency | Exact contract/unit versions, build, encoding/OCR/environment, input-update and OCR-cycle bounds, allocation/lifetime guards and full control results. K125 scopes this external work. |

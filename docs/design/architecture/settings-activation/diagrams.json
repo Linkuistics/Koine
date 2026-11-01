@@ -30,8 +30,8 @@
   ],
   "discussion": {
     "title": "Preserve one ordered caller and collection plan",
-    "status": "Proposed design from k137; scoped review precedes consumption.",
-    "summary": "Expand C04 into exact indexed observations and local audits. Prepare the observer before input. Original owner and recovery caller share one plan and never repeat a fenced item. Concrete payloads, local bounds and qualified native/storage inputs remain missing. Startup remains unavailable.",
+    "status": "K138 review integrated by k139. Numerical fit and whole-design review remain outstanding.",
+    "summary": "One plan retains every collection duty. Pre-start paths distinguish incomplete bootstrap from failed readiness after complete bootstrap. Sequence output, local-audit deadlines and registry definitions need k126 reconciliation. Expired containment with an unresolved holder blocks later items. Startup remains unavailable.",
     "diagramIds": [
       "keepalive-caller",
       "keepalive-workload",
@@ -41,7 +41,7 @@
     "updatedDiagrams": [
       {
         "id": "keepalive-caller",
-        "summary": "Adds observer preparation, ordered collection and recovery refusal paths."
+        "summary": "Clarifies sequence preflight, bootstrap failure, recovery and containment expiry."
       },
       {
         "id": "keepalive-workload",
@@ -59,7 +59,7 @@
       "group": "keepalive",
       "title": "Preserve one ordered caller and collection plan",
       "source": "keepalive-caller.mmd",
-      "caption": "Proposed finite caller plan. Observer preparation precedes scenario input. One immutable 25-position plan preserves untouched failure order, independent audits, exact stop and inventory. Recovery may use only a proved never-fenced suffix after original-lock and frontier checks. Both held-pointer cases permit no release. Semantic counts are specified; executable payloads and qualified local/native/storage limits remain missing. Scoped review precedes consumption. No runtime or numerical-fit result follows."
+      "caption": "Proposed finite caller plan after k138 review and k139 integration. Sequence preflight has separate bounded output. Incomplete bootstrap permits no attempts. Failed readiness after complete bootstrap permits only proven recovery. One immutable 25-position plan preserves failure order, independent audits and exact stop. Recovery cannot repeat a fenced item. Expired containment with an unresolved holder blocks later work. Both held-pointer cases permit no release. K126 must reconcile the collection-only local-audit family and sequence bounds. Executable payloads and qualified native/storage limits remain missing. No runtime or numerical-fit result follows."
     },
     {
       "id": "keepalive-accounting",

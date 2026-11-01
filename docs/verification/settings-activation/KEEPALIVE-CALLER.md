@@ -4,9 +4,8 @@
 
 This specification expands the caller portion of the [workload inventory](KEEPALIVE-WORKLOAD.md).
 Start with [Collection → Preserve one ordered plan](../../design/architecture/settings-activation/keepalive-caller.mmd).
-Graph views start at the dark **Start here** node. Solid arrows describe order.
-Dotted arrows describe prerequisites. The diagram explains the contract, not a
-model-checking result.
+Graph views start at the dark **Start here** node. Arrows describe order and failure paths.
+The diagram explains the contract, not a model-checking result.
 
 The proposed plan below replaces C04's unspecified command group. It defines
 semantic requests and required results before implementation. It does not claim
@@ -15,8 +14,9 @@ that the present CLI or a guest probe implements those results. The
 and [record schema](../../specs/settings-keepalive-records.md) retain authority.
 Their deadlines, original-lock rule, single attempts and first-failure rule apply.
 
-K137 supplies this design. Its scoped review and every earned integration precede
-downstream consumption. Numerical fit and whole-design review remain outstanding.
+K137 supplies this design. K138 reviewed it and k139 integrates the supported findings.
+Numerical fit and whole-design review remain outstanding.
+Local-audit deadlines, sequence-output bounds and executable registry definitions remain k126 prerequisites.
 
 Changed sections:
 
@@ -47,6 +47,21 @@ Indices are plan positions, not attempt ordinals or terminal slot indices.
 Inapplicable items keep their indices. A missing prerequisite is unavailable,
 not inapplicable. No compaction or renumbering follows a failure.
 
+The tuple maps onto the schema's existing type-12 collection item:
+
+| Type-12 field | Semantic fields carried by that field or its referenced definition |
+|---|---|
+| `index` | The plan index. Site names remain separate from attempt ordinals. |
+| `operation-definition` | A versioned registry definition binds site, request version and operands, predicate version, original roles and any declared applicability predicate. |
+| `exact-target` | The immutable target-identity reference. Runtime observations must establish its required identity before dispatch. |
+| `cost-profile` | A versioned registry definition binds family, storage class, local-work limits and the full resource contribution. |
+| `applicability` | The existing namespace-212 code under the mapping below. |
+| `prerequisites` | References to the immutable prerequisite definitions and their required original observations. |
+
+These references use the existing registry and exact-byte object forms.
+K126 must bind their bounded executable grammars with k57/k81/k89 before consumption.
+This mapping adds no schema field or numerical registry value.
+
 The request names below are proposed semantic contracts. For an exec request,
 the implementation must freeze the exact command bytes or probe image, argv,
 environment and output schema corresponding to that name. It must retain those
@@ -70,11 +85,22 @@ private, including endpoints, environment values, source paths and credentials.
 Known absence is explicit successful data. A missing field, inaccessible read,
 timeout or partial list never means absence.
 
-`L` means one evidence-class local
-operation with its own ordinal and result, but no external CLI response.
-The existing exec, read, capture, transfer, lifecycle and local families apply.
-This specification adds no deadline. Successful local computations inside an
-operation are covered by that operation, not charged again as separate `L` calls.
+The frozen probe must retain each inner tool's status and original output inside its complete payload.
+Only a documented, version-bound domain result may become data inside a guest exit-zero envelope.
+Examples include established absence and the protocol's expected curl code 7.
+Unknown statuses, tool failures and incomplete output remain unavailable.
+An exit-zero wrapper alone proves nothing. Neither `|| true` nor later success can erase an inner failure.
+
+`L` means one evidence-class local operation with its own ordinal and result, but no external CLI response.
+Its complete computation and local children remain inside that operation, including enumeration, hashing, copying, comparisons and classification.
+They do not run before submission as uncharged work.
+Successful local computations inside another operation belong to that operation and receive no additional `L` charge.
+
+Existing exec, read, capture, transfer and lifecycle families retain their limits.
+The two existing local rows cover poll records and failure records, not these nine collection operations.
+K126 must reconcile a collection-only local-audit family for indices 15–21 and 24–25, including its whole allowance and publication phases.
+No numerical allowance or admission authority is adopted here. Missing family coverage prevents startup.
+These operations follow tick suppression, so they cannot enlarge the active-cadence holder bound or its 152-second admission argument.
 
 Requests return observations separately from comparisons. An endpoint may be
 cleanly absent, a process may have ended, or installed bytes may differ. Those
@@ -82,6 +108,12 @@ facts remain available evidence even when the expected comparison fails.
 Collection cannot restore scenario eligibility. Each failed collection item
 keeps its own result while later independent applicable items may run under the
 same owner, once its holder is resolved.
+
+Each supervisor role has one containment window from its first termination-requiring failure.
+A later failure receives no fresh window or reset signal deadline.
+Only actions still permitted within that role's original window remain available.
+After expiry, an unresolved holder blocks every later collection item, including independent host audits and exact stop.
+The caller's separate owner-failure window is not a per-item retry allowance.
 
 There is at most one outstanding
 collection submission and at most one submission per plan index. No extra
@@ -94,9 +126,18 @@ The set order and exact clone IDs remain E01, E02, A01, A02, A03 as declared in
 the ordering protocol. Each owner/root is per slot. One original sequence caller
 maintains the finite set declaration and blocks all later slots on failure.
 
+K57 owns this sequence caller and its frozen preflight/output manifest.
+The same original process performs each per-slot caller role in sequence. It creates no successor caller after loss.
+Its sequence output retains set declarations, B01–B03 originals, admission decisions and later-slot NOT RUN outcomes.
+Those records have no owner ordinal and cannot reuse a completed slot's terminal pool.
+
+K126 must bound the sequence output's storage, processes, work, publication and failure behaviour before admission.
+These costs are separate from per-slot operation totals and precede worker cadence where applicable.
+Missing bounds keep startup unavailable. Sequence output loss remains missing evidence, not a fabricated owner record.
+
 | Setup index | Exact work and applicability | Required retained result |
 |---|---|---|
-| B01 | Once before E01: read the declared candidate, source/build/signing inputs, protocol, scenario/prefix/helpers, caller/classifier, observer, tools/decoders and owner/profile inputs. Enumerate regular files and symlink targets relative to their declared roots. | Complete sorted membership, per-item type/length/digest or link target, actual tool/SDK/signature/UUID provenance, exact launch defaults/environment, input errors and completion time. No reconstructed pre-run bytes. <!-- tc: depart synonym-rotation because application launch and clone start name different lifecycle boundaries --> |
+| B01 | Once before E01: read the declared candidate, source, package locks, build scripts/configuration, Taskfile, tests and signing/installation settings. Include protocol, scenario/prefix/helpers, caller/classifier, observer, tools/decoders and owner/profile inputs. Enumerate regular files and symlink targets relative to their declared roots. | Complete sorted membership, per-item type/length/digest or link target, actual tool/SDK/signature/UUID provenance, exact launch defaults/environment, input errors and completion time. No reconstructed pre-run bytes. <!-- tc: depart synonym-rotation because application launch and clone start name different lifecycle boundaries --> |
 | B02 | Once before E01: inventory and hash the stopped golden's exact config, disk and NVRAM objects and retain its stopped-state observation. | Exact golden identity, each original observation and item comparison basis, completed digest time strictly before the first clone request. Read failure prevents E01. |
 | B03 | Before every admitted slot: re-enumerate and compare B01's inputs and candidate item by item. Before A01 also repeat B02 and compare with the original golden basis. | Distinct current inventories and comparison results. A01 has its own ordinary-readiness decision on the same candidate. No input count substitutes for membership. |
 | B04 | Before every slot: create the unique private root and the profile's exact three backings, original lock, registries, plan, terminal pool and attachments. Establish caller/owner/worker/channel identities and readiness. | Schema bootstrap publications, all originals/partials, exact object identities, bounded transcript destination and preparation results. Do not invent an ordinal before bootstrap. Failed preparation prevents clone start. |
@@ -119,10 +160,30 @@ untouched observation interval. It does not qualify the observer's native
 availability. If preparation failed, C01 is unavailable. Collection must not
 repair that preparation by uploading, chmodding or launching another observer.
 
-The prelaunch diagnostic probe and C13 below share one request schema, with
+The prelaunch diagnostic probe and index 13 / C04.10 below share one request schema, with
 different phase operands and independent originals. Each A slot also retains
 its existing post-restart diagnostic/display observations. Final collection
 does not replace those earlier observations.
+
+### Before start and between slots
+
+B03 must pass before B04 starts for that slot.
+If B01–B03 fails, the sequence caller stops admission and does not bootstrap a new root merely for collection.
+It retains the failure and later-slot NOT RUN outcomes in its bounded sequence output, if available.
+Indices 16–21, 24 and 25 cannot run without an eligible writer.
+The required sequence-final golden audit remains unavailable on this path, even if earlier golden hashes passed.
+The missing audit prevents acceptance and is not an optional duty.
+
+| B04 outcome before B05 | Permitted audit and outcome path |
+|---|---|
+| Incomplete bootstrap | No attempt allocation. Indices 16–21, 24 and 25 are unavailable. The caller retains bootstrap originals/partials and its refusal through available sequence output. It neither repairs the root nor starts another writer domain. |
+| Complete bootstrap, then owner/worker readiness failure | The original caller may use collection-only recovery only after every schema entry proof succeeds. Complete bootstrap can establish genesis frontier zero, but does not establish holder resolution or available publication. After successful entry, indices 16–21, 24 and 25 may run once, subject to their prerequisites. Otherwise they remain unavailable. |
+| Complete bootstrap and readiness | The original owner admits the existing start. A subsequent start failure follows ordinary collection/recovery rules. Exact target evidence still governs guest reads and containment. |
+
+A failure before B05 consumes no clone-start slot and creates no clone.
+Index 24 is applicable when that slot ends the sequence. It can run only when its safe-read prerequisites hold.
+Neither a previous slot's closed root nor a later slot supplies substitute capacity.
+K126 must reconcile these paths with the sequence manifest and local-audit family before declaring the workload implementable.
 
 ## Ordered collection plan
 
@@ -137,6 +198,26 @@ refusal has no guest-context observations. Uncertain start requires established
 exact target identity before any guest read. Normal completion omits indices
 1–5. A failure arising later during collection does not restart the prefix.
 
+The table's collection-eligible slot requires complete bootstrap and either an available original owner or successful collection-only entry.
+Every operation still needs its own prerequisites and qualified family coverage.
+Schema applicability maps as follows:
+
+| Plan phrase or indices | Namespace-212 applicability and separate prerequisites |
+|---|---|
+| Failure-context, indices 1–3 | `failure-only`. Its predicate uses the recorded scenario/setup failure or signal. Exact guest identity is a prerequisite. B06 readiness is an additional prerequisite for index 1. |
+| Failed zero-window branch, index 4 | `declared-protocol-condition`. Its operation definition references the exact failure-subject predicate. Pre-click process identity remains a required observation. |
+| Initial failed Settings-return interpolation, index 5 | `declared-protocol-condition`, with its distinct failure-subject predicate. It must not follow from another observer's result. |
+| Any established accessible clone / same target, indices 6–13 | `always`. Established accessible target identity is a prerequisite, not proof that a missing read is inapplicable. |
+| Installation attempted, indices 14–15 | `declared-protocol-condition`. Installation-attempt evidence establishes applicability. Required originals remain prerequisites. |
+| Every collection-eligible slot, indices 16–21 and 25 | `always`, subject to writer availability and each listed input prerequisite. |
+| Start submitted, indices 22–23 | `declared-protocol-condition`. Established target identity, ownership and writer availability remain prerequisites. |
+| Sequence ends in this slot, index 24 | `declared-protocol-condition`. Established safe golden access and B02 originals remain prerequisites. |
+
+No plan item uses `held-input`. Both held-pointer cases still prohibit corrective release.
+K76/k67 must supply a versioned failure-subject registry binding assertion site, selection phase, branch and the original failed result.
+K57 consumes that registry for indices 4–5. K126 binds its grammar and cost through existing references.
+Unknown applicability evidence remains unavailable rather than false or inapplicable.
+
 | Index / site | Request and exact target | Applicability, predicate and extra original roles |
 |---|---|---|
 | 1 / C01 | `X(failure-observer/1)`, execute only the prepared `/Users/admin/k12-activation-snapshot` on this clone. | Failure-context and B06 ready. Require the complete frozen observer schema. Preserve native PID/window/focus/time data and every raw failure. No upload or corrective input here. |
@@ -148,22 +229,22 @@ exact target identity before any guest read. Normal completion omits indices
 | 7 / C04.04 | `X(process-identity/1, executable=/Applications/Koine.app/Contents/MacOS/Koine)`. | Any established accessible clone. Retain all matches and exact PID/start/path facts or absence. This final endpoint audit is independent of index 4. Compare against the last established scenario incarnation and expected stopped/running state. Early failure grants no invented expected success. |
 | 8 / C04.05 | `X(os-version/1)` using `sw_vers`. | Any established accessible clone. Complete product version and build. Compare to macOS 27.0.1/26A434. Retain raw fields and mismatch separately. |
 | 9 / C04.06 | `X(architecture/1)` using `uname -m`. | Same target. Complete architecture equals arm64 for matched setup. |
-| 10 / C04.07 | `X(gatekeeper-status/1)` using `spctl --status`. | Same target. Retain complete enabled/disabled assessment state and compare with installation/setup evidence. Nonzero/error is unavailable, not disabled. |
+| 10 / C04.07 | `X(gatekeeper-status/1)` using `spctl --status`. | Same target. Retain complete enabled/disabled assessment state, inner status and original output. Compare with installation/setup evidence. The frozen probe must establish which status/output combinations encode either state under the common `X` rule. An unknown nonzero or error remains unavailable, never inferred disabled. |
 | 11 / C04.08 | `screen size --json`, this clone. | Same target. Complete positive dimensions. Compare with the applicable initial or post-restart geometry. A post-restart 1024×768 result is retained under the protocol, never changed by display input. |
 | 12 / C04.09 | `X(boot-identity/1)` using the existing `sysctl -n kern.boottime` boundary. | Same target. Complete boot observation with provenance. Compare with known pre/post-restart originals as applicable. This read cannot rehabilitate failed restart submission or qualify native clock conversion. |
 | 13 / C04.10 | `X(diagnostics-context/1, phase=final, bundle=dev.antony.Koine)`. | Same target. Complete effective domain/global/managed preference observations for trace, event buffer and menu probe. Actual launch environment/argument evidence, including login persistence when applicable. Require trace environment unset, trace/buffer keys absent, menu probe absent/false, no conflicting injected values. Retain each source/result and inaccessible fields. Never interpret failed defaults access as absence. |
 | 14 / C04.11 | `X(installed-inventory/1, /Applications/Koine.app)`. | Clone where installation was attempted, including incomplete install. Complete membership/type/hash/link-target inventory and completion marker, or explicit target absence. Missing before-inventory makes comparison unavailable but does not omit this attempted read. Independent of O11's final inventory. |
 | 15 / C04.12 | `L(compare-installed/1)`: index 14, installed-before and frozen host bundle inventory. | Required when installation was attempted. Compare every path/type/digest/link target and detect extras, omissions and duplicates. Retain separate before/final/host comparisons and missing-input reasons. No stripping blank lines to repair malformed input. |
-| 16 / C04.13 | `L(host-input-inventory/1)`: all B01 declared roots and consumed inputs. | Every admitted slot, including start failure, when the original writer domain is available. Re-enumerate membership and hash exact current files/links. A digest check on only old paths cannot detect extras. |
-| 17 / C04.14 | `L(compare-host-inputs/1)`: B01, B03 and index 16. | Every admitted slot. Retain per-item three-way correspondence and all missing/unreadable inputs. Failed enumeration prevents a clean comparison. |
-| 18 / C04.15 | `L(bundle-inventory/1)`: exact frozen `.build/settings-activation/ordering-evaluation/Koine.app`. | Every admitted slot. Independent complete candidate file/link inventory, preserving the historical collector's distinct bundle audit. |
-| 19 / C04.16 | `L(compare-bundle/1)`: original candidate, before-slot candidate and index 18. | Every admitted slot. Complete item equality, including extras. Does not substitute for installed endpoint comparisons. |
-| 20 / C04.17 | `L(retain-archives/1)`: this slot's immutable permitted archive-role registry. | Every admitted slot. The P02 application package is the one planned archive role. Retain complete bytes or any produced partial and provenance. Native/log archives have zero scheduled roles because logging is disabled. An unexpected existing object is retained as unexpected evidence within its original charged extent, never parsed as a successful required archive. No log collection or new archive construction. |
-| 21 / C04.18 | `L(audit-artifacts/1)`: sealed produced-object prefix through index 20 and the immutable expected-role registry. | Every admitted slot. Enumerate exact original/saved identity, byte length, hash and completeness for each available object, plus missing/unknown expected roles. If already retained in place, bind the same object explicitly. If a saved copy is required, compare both complete originals. Never glob a shared output directory or flatten names. |
+| 16 / C04.13 | `L(host-input-inventory/1)`: all B01 declared roots and consumed inputs. | Every collection-eligible slot, including start failure, when the original writer domain is available. Re-enumerate membership and hash exact current files/links. A digest check on only old paths cannot detect extras. |
+| 17 / C04.14 | `L(compare-host-inputs/1)`: B01, B03 and index 16. | Every collection-eligible slot. Retain per-item three-way correspondence and all missing/unreadable inputs. Failed enumeration prevents a clean comparison. |
+| 18 / C04.15 | `L(bundle-inventory/1)`: exact frozen `.build/settings-activation/ordering-evaluation/Koine.app`. | Every collection-eligible slot. Independent complete candidate file/link inventory, preserving the historical collector's distinct bundle audit. |
+| 19 / C04.16 | `L(compare-bundle/1)`: original candidate, before-slot candidate and index 18. | Every collection-eligible slot. Complete item equality, including extras. Does not substitute for installed endpoint comparisons. |
+| 20 / C04.17 | `L(retain-archives/1)`: this slot's immutable permitted archive-role registry. | Every collection-eligible slot. The P02 application package is the one planned archive role. Retain complete bytes or any produced partial and provenance. Native/log archives have zero scheduled roles because logging is disabled. An unexpected existing object is retained as unexpected evidence within its original charged extent, never parsed as a successful required archive. No log collection or new archive construction. |
+| 21 / C04.18 | `L(audit-artifacts/1)`: sealed produced-object prefix through index 20 and the immutable expected-role registry. | Every collection-eligible slot. Enumerate exact original/saved identity, byte length, hash and completeness for each available object, plus missing/unknown expected roles. If already retained in place, bind the same object explicitly. If a saved copy is required, compare both complete originals. Never glob a shared output directory or flatten names. |
 | 22 / C05 | `vm stop <exact-requested-clone> --json`. | Start was submitted and target ownership/identity is established. One lifecycle-family attempt. Retain full stop response/CLI result. Mismatched returned start identity is not permission to stop another clone. Missing identity or unsafe targeting is unavailable. |
 | 23 / C06 | One complete independent VM inventory request through the read adapter. | Start was submitted, whether index 22 succeeded or failed, while owner/lock/target conditions permit. Retain complete inventory and exact-ID state. A clean inventory cannot erase failed stop. Absence needs the implementation's qualified inventory semantics. Omission from a partial list never proves stopped. |
 | 24 / sequence end | `L(golden-final/1)`: B02's exact stopped golden objects. | Only the slot that ends the sequence: A03 on all-clean execution, otherwise the first terminating slot. Inventory/hash every item and compare with B02 and any A01 recheck. Run after 22–23 where available. Unknown clone state or storage relation that prevents a safe read leaves this audit unavailable. |
-| 25 / outcome | `L(classify-slot/1)`: original scenario/assertion/route/setup results, all applicable collection results and separate Task/status observations. | Every admitted slot whose writer remains available. Preserve recurrence rejection, other assertion failure, unavailable evidence, audit and stop outcomes separately. Mark later phases/slots NOT RUN. Required missing data prevents acceptance. No result text can clear the first failure. |
+| 25 / outcome | `L(classify-slot/1)`: original scenario/assertion/route/setup results, all applicable collection results and separate Task/status observations. | Every collection-eligible slot whose writer remains available. Preserve recurrence rejection, other assertion failure, unavailable evidence, audit and stop outcomes separately. Mark later phases/slots NOT RUN. Required missing data prevents acceptance. No result text can clear the first failure. |
 
 Indices 1–3 are contiguous guest observations. Failed or inapplicable earlier
 items retain their disposition before advancing. There is no intervening guest
@@ -233,6 +314,10 @@ stop under that index. C06 may observe the result independently. Further exact
 containment is a separate explicitly declared action. This plan budgets none and
 provides no automatic fallback. Later slots remain blocked.
 
+The clone may remain running, with cleanup unresolved and no further in-domain stop available.
+Any additional exact-identity action needs a separately declared owner, record and capacity before execution.
+The protocol permits such a declaration, but this plan neither supplies it nor permits an out-of-band bypass.
+
 Unknown holders, failed original-lock acquisition, ambiguous frontier, missing
 backing capacity or caller death leave collection unavailable. No alternate
 root, direct CLI bypass, replacement owner or successor caller is permitted.
@@ -268,7 +353,7 @@ the owner/successor union. Never reserve a second full set for recovery.
 | Observer preparation addition | B06: one transfer plus one exec. No failure-time upload or inventory upload. These are ordinary P02 operations while ticks are active. |
 | Complete clean E/A sequence | Five starts. Five B06 pairs. Four 19-item tails and one 20-item tail = 96 collection submissions, of which 55 external and 41 local. This excludes scenario/tick operations and pre-owner work. |
 | Failure-stopped sequence | At most four completed 19-item tails plus one 25-item failure envelope = 101 collection submissions. This is conservative, not a claim that every index can coexist in the fifth failure. Never multiply five maximal failed tails. |
-| Golden observations | B02 once before E01, B03 once before A01 if reached, index 24 once at sequence end if possible. Failed/unavailable attempts are retained. No replacement digest. |
+| Golden observations | B02 once before E01, B03 once before A01 if reached, index 24 once at sequence end with eligible writer and safe golden access. The pre-start table identifies unavailable paths. Retain failures and missing audits. No replacement digest. |
 | Installed inventories | P02 before, O11 after only if reached in A, and collection index 14 independently in every installation-attempted slot. Clean E has two. Clean A has three. |
 | PNGs added by this caller | One at index 3 on applicable failure paths. B06 executes no capture. All two E/six A baseline images, additional required scenario images, ticks and internal OCR/input frame work remain separately counted. |
 
@@ -336,6 +421,9 @@ P02 archive work and B06 are inside it. Collection 1–25 follows suppression an
 adds no tick. `L_p` includes only local work not already covered by an operation
 or overlapping protocol interval. Tick service is still counted once.
 
+Collection local-audit computation stays inside its own whole-operation allowance, outside active `L_p`.
+K126 must account for sequence preflight/output separately, including failed preparation with no operation ordinal.
+
 `n`, `a`, fences, carriers and lane-tail vectors must consume this plan and its
 failure prefixes. Numeric `O_i`, messages, attachments and `u/r/z/o/j/d` remain
 implementation/layout inputs, not values inferred from the table length.
@@ -375,11 +463,11 @@ No controls are run by this design leaf.
 
 | Owner | Required return |
 |---|---|
-| K57 with k81/k89 | Implement the finite caller and exact frozen probe/CLI payloads. Prove observer preparation, effective defaults/process identity, independent complete VM inventory and one-shot file/lifecycle confirmations. Preserve unavailable outcomes where the actual service cannot supply them. |
-| K76/k67/k62, reconciled by k126 | Complete scenario adoption, setup/title/liveness grouping and exact E/A prefix. Bind every independently required screenshot and original-sharing point. This caller design does not supply their final counts. |
+| K57 with k81/k89 | Implement the sequence caller, bounded preflight/output manifest, per-slot caller and exact frozen probe/CLI payloads. Bind the type-12 references and domain-status envelopes. Prove observer preparation, effective defaults/process identity, independent complete VM inventory and one-shot file/lifecycle confirmations. Preserve unavailable outcomes where the actual service cannot supply them. |
+| K76/k67/k62, reconciled by k126 | Complete scenario adoption, setup/title/liveness grouping and exact E/A prefix. K76/k67 supply the versioned failure-subject registry consumed by k57. Bind every independently required screenshot and original-sharing point. This caller design does not supply their final counts. |
 | K125 | Scope external queue/start identity/containment, producer-unit and native/service completeness, raw collection and storage/loss evidence. Include host archive/hash/transcript/scan mechanism limits required by the local-work table. No native execution is authorised by this request. |
-| K126 | Instantiate frozen request lengths, input cardinalities, process/message counts, per-item object layouts, remaining-tail tables and all numerical time/space maxima. Reconcile B06 and 1–25 with the full workload, family deadlines, record carriers and useful protected capacity. Retain whole-design review before planning. |
-| Scoped review of k137 | Challenge every required duty, plan branch, independent original, no-repeat proof and multiplicity before k125/k126 consumption. |
+| K126 | Instantiate request/registry lengths, input cardinalities, process/message counts, object layouts, tail tables and numerical maxima. Reconcile the collection-only local-audit family and its publication phases. Bound sequence output and the pre-start paths. Preserve one containment window per supervisor role when expanding failure paths. Reconcile B06 and 1–25 with useful protected capacity. Retain whole-design review before planning. |
+| K138 review / k139 integration | The scoped review and supported repairs are complete. They establish no qualified numerical allowance, sequence-output mechanism or native result. |
 
 This discharges the caller's semantic expansion, not the implementable manifest
 or a useful numerical profile. Missing native/storage/producer evidence remains
@@ -418,3 +506,12 @@ evidence, not a repository-wide completeness claim.
 On 2026-11-01, a direct check established the consecutive 1–25 indices, external/local partition, clean tail counts and conservative sequence arithmetic. Both architecture manifests have unique diagram IDs, existing editable sources and valid current-discussion references. The browser rendered the caller flow, including its final audit/publication path.
 
 `mise exec -- task check:docs` returned Task status 201, checker status 1, with only the existing two missing targets in `context-initial-inputs/CONTEXT-PLAN.md`: `context-predicate.txt` and `context-qualify-filter.sh`. Those archive defects remain k23's work. These checks establish document consistency only. No coordinator, VM, storage qualification or native experiment ran.
+
+K139 rechecked every collection site/request against the preparatory conversion commit. All 25 remain unchanged, with 16 external and nine local positions.
+The clean tails remain 19/20 and the sequence totals remain 96/101.
+Both manifests retain valid IDs, sources and discussion references, with matching caller captions.
+The revised browser flow renders its pre-start and containment paths.
+
+The prose checker reports zero hard findings. The documentation check retains only the two archive defects above.
+Before/after SHA-256 records match for repository Markdown, diagram sources/manifests, Taskfiles, Python scripts and configuration, plus prose-checker files.
+These checks establish document consistency and count preservation, not executable or numerical qualification.

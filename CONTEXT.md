@@ -58,6 +58,10 @@ commands and keepalive captures through one writer and ordinal domain.
 Its [lifecycle contract](docs/specs/settings-keepalive-owner.md) awaits the complete
 profile and whole-design review before implementation.
 
+**Settings sequence caller**: The proposed original process that declares E01, E02, A01, A02 and A03 and performs each per-slot caller role.
+It retains preflight/admission outcomes and blocks later slots after failure.
+Its [bounded sequence output](docs/verification/settings-activation/KEEPALIVE-CALLER.md#before-start-and-between-slots) remains distinct from each owner's ordinal domain.
+
 **Keepalive worker**: The **Settings command owner's** supervised child that
 sleeps twenty seconds, submits one **keepalive tick**, and awaits its complete
 disposition before another sleep.

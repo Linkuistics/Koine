@@ -645,7 +645,7 @@
       "group": "settings-activation",
       "title": "Preserve one ordered caller and collection plan",
       "source": "settings-activation/keepalive-caller.mmd",
-      "caption": "Proposed finite caller plan. Observer preparation precedes scenario input. One immutable 25-position plan preserves untouched failure order, independent audits, exact stop and inventory. Recovery may use only a proved never-fenced suffix after original-lock and frontier checks. Both held-pointer cases permit no release. Semantic counts are specified; executable payloads and qualified local/native/storage limits remain missing. Scoped review precedes consumption. No runtime or numerical-fit result follows."
+      "caption": "Proposed finite caller plan after k138 review and k139 integration. Sequence preflight has separate bounded output. Incomplete bootstrap permits no attempts. Failed readiness after complete bootstrap permits only proven recovery. One immutable 25-position plan preserves failure order, independent audits and exact stop. Recovery cannot repeat a fenced item. Expired containment with an unresolved holder blocks later work. Both held-pointer cases permit no release. K126 must reconcile the collection-only local-audit family and sequence bounds. Executable payloads and qualified native/storage limits remain missing. No runtime or numerical-fit result follows."
     },
     {
       "id": "settings-activation-keepalive-accounting",
@@ -659,7 +659,7 @@
       "group": "settings-activation",
       "title": "Expand every operation before choosing capacity",
       "source": "settings-activation/keepalive-workload.mmd",
-      "caption": "Proposed workload inventory. Solid arrows show permitted order and failure routes. Dotted arrows show accounting dependencies. Setup, the shared E prefix, complete A continuation and applicable failure/caller tails retain separate costs. Every helper includes its polls, waits and objects. OCR and input confirmation also process frames internally. The scheduling derivation is reviewed. The proposed caller plan awaits its scoped review; executable payloads and qualified native/storage inputs remain missing. No runtime or useful-profile result follows."
+      "caption": "Proposed workload inventory. Solid arrows show permitted order and failure routes. Dotted arrows show accounting dependencies. Setup, the shared E prefix, complete A continuation and applicable failure/caller tails retain separate costs. Every helper includes its polls, waits and objects. OCR and input confirmation also process frames internally. The scheduling derivation is reviewed. K138 reviewed the caller plan and k139 integrates the supported findings. Executable payloads and qualified native/storage inputs remain missing. No runtime or useful-profile result follows."
     },
     {
       "id": "settings-activation-keepalive-recovery-transfer",

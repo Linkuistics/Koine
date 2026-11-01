@@ -33,3 +33,9 @@ K126 retains the entire enforceable useful-profile and whole-design completion d
 ## Caller-workload input
 
 Consume KEEPALIVE-CALLER.md only after k137 scoped review and every earned integration. Its B06 preparation and indices 1–25 bind semantic operation targets, results and local input dependencies. Include host hashing/archive/transcript/recovery-scan mechanism evidence in the external scope. Retain exact-start identity, complete independent inventory, raw output and storage-loss prerequisites. This does not authorise native work or a new external message. K126 binds actual payloads and numerical fit.
+
+K138 reviewed the caller plan and k139 integrates the supported findings.
+Scope complete local-audit computation and sequence-output storage/publication, including blocked filesystem work and process containment.
+The existing local record rows establish no audit-time fit.
+Qualify inner tool status/output meanings before probes encode negative domain facts as successful payloads, including Gatekeeper state.
+K126 owns family/phase reconciliation and sequence bounds. No extra cleanup or per-item containment window is assumed.

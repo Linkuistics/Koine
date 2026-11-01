@@ -25,7 +25,7 @@ That derivation includes elapsed/tick calculation, carriers, schema and lane cos
 tail requirements, fence constraints and physical-capacity formulas.
 K135 reviewed the derivation and k136 integrated its findings. Missing concrete inputs still prevent numerical profile adoption.
 
-K137 supplies the proposed [finite caller plan](KEEPALIVE-CALLER.md), subject to its scoped review and every earned integration.
+K137 supplies the proposed [finite caller plan](KEEPALIVE-CALLER.md). K138 reviewed it and k139 integrates the supported findings.
 K125 owns missing evidence scopes. K126 owns final reconciliation. Unknown values below prevent a useful profile. They
 are not zeros, defaults or permission to relax requirements.
 
@@ -53,6 +53,10 @@ The tables use these primitives:
 
 These values come from the owner's [operation-family table](../../specs/settings-keepalive-owner.md#scheduling-and-deadline-profile).
 Window move, focus and close use its ordinary agent/screen read family.
+
+The `L(state)` row covers the local poll seam only.
+The caller's nine collection `L` operations include complete audits and require k126's collection-only local-audit family reconciliation.
+Their computation stays inside each operation after tick suppression. No numerical allowance is supplied here.
 
 These family values remain provisional until the combined proof. Start has its
 own unresolved queue/boot family. No new value is selected here. Every primitive
@@ -243,7 +247,7 @@ does not prove no charge or no execution.
 | Holder resolution | Preserve established child/group identity, TERM/KILL/wait outcomes, inherited descriptor observations and actual original-lock acquisition under the one fixed containment window. Unknown targets receive no signal. No unbounded wait or substituted lock. <!-- tc: depart synonym-rotation because fixed describes an unchanged window and does not mean repair --> |
 | C01–C03 — Untouched context | When applicable and ownership permits, one independent failure observer, one complete agent window list, one checked screenshot, in that order before other collection. Each is a separate operation/result. Failure of one does not erase it or authorise replay. Later context may be unavailable. The zero-window process comparison belongs in this untouched capture plan without changing the three-item order. |
 | C04 — Remaining evidence | Endpoint/process/default/environment observations, installed final inventory, host-input/original/golden audits, required original-to-saved artifact comparisons and retained available archives. The [indexed caller plan](KEEPALIVE-CALLER.md#ordered-collection-plan) expands these duties into exact semantic requests, predicates and original roles. Freeze their executable payloads before implementation consumption. Diagnostics remain disabled and no new native archive is fabricated. Preserve local audit errors separately from guest errors. |
-| C05–C06 — Exact containment | One exact requested-clone stop result, then one independent complete VM inventory proving that identity stopped. These do not substitute for product Quit. Additional necessary exact-identity containment is separately declared and charged, never a trial retry or an unbounded fallback. |
+| C05–C06 — Exact containment | One exact requested-clone stop result, then one independent complete VM inventory proving that identity stopped. These do not substitute for product Quit. The caller plan budgets no additional cleanup. A failed stop may leave the clone running and cleanup unresolved. Additional exact-identity containment needs a separately declared owner, record and capacity before execution. It is never a trial retry or unbounded fallback. |
 | Normal finish | Retain stop intent and pending cancellation if needed. Drain the current sleep or charged tick under its original deadline. Retain matching ack, actual worker exit/reap, all required publications, collection/audits, owner handoff and caller final sequence. No forced sleep shortening or retrospective success label. |
 | Failed-owner recovery | The original caller resolves holders and acquires the original lock. It validates backing/frontier and burns failed ranges and uncertain fence members. It writes kinds 25,20,5,20 before delayed observations or a new collection fence. Only plan items proved never fenced may run. One successor. No recovery after caller loss. |
 | Final caller | Normal transfer starts final lane with kinds 25,20. Both paths retain kinds 27,20,28. Actual owner response, channel and wait remain separate. Caller return after final publication has no further durable record. Failed final publication or unknown return cannot establish acceptance. |
@@ -251,6 +255,16 @@ does not prove no charge or no execution.
 The [caller specification](KEEPALIVE-CALLER.md) defines 25 ordered collection positions, including conditional failure context, sequence-final golden audit and local classification.
 
 Its original-owner and successor paths share each position once. The caller implementation, frozen executable payloads and qualified local bounds remain missing.
+
+The [pre-start paths](KEEPALIVE-CALLER.md#before-start-and-between-slots) distinguish missing bootstrap from failed readiness after complete bootstrap.
+Without an eligible writer, the host audits and required final golden audit remain unavailable.
+
+K57 owns bounded sequence output for declarations, B01–B03 results, admission decisions and later-slot NOT RUN outcomes.
+K126 must reconcile that output, type-12 registry mappings and local-audit phase fit.
+
+Later collection failures cannot restart a supervisor's containment window.
+An unresolved holder after expiry blocks all later items. The 25 positions are not a reachable series of repeated timeout/containment cycles.
+
 The six summary labels are not six operations.
 Each collection item has one plan index, class contribution and applicability
 predicate. An already fenced item cannot be repeated by recovery. Normal and
