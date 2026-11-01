@@ -1,5 +1,7 @@
 # Keepalive resource admission and enforcement evidence
 
+<!-- tc: pending because this large document retains earlier prose outside the completion introduction -->
+
 ## Outcome and scope
 
 The command owner now has a proposed [resource-admission
@@ -136,6 +138,8 @@ availability limits, historical outcomes and all runtime holds.
 
 ## Completion worksheet
 
+<!-- tc: on -->
+
 K112 consumes the integrated producer contract and qualification proposal.
 The complete profile remains unavailable. This worksheet advances the work
 that does not require an executable dependency. It is a design input for the
@@ -149,8 +153,10 @@ The [expanded workload inventory](KEEPALIVE-WORKLOAD.md) now maps the baseline
 scenario, nested helpers, required migration additions and caller tails. It
 retains all six direct images and internal OCR/input-confirmation frame work.
 Its scoped review precedes the remaining scheduling and record-accounting
-derivation. The worksheet below remains the method; no numeric profile follows
+derivation. The worksheet below remains the method. No numeric profile follows
 from the inventory or its baseline cross-check counts.
+
+<!-- tc: pending because the remaining worksheet and historical integrations retain their existing prose -->
 
 Count a complete permitted path, including every clean-negative poll and its
 local record, rather than counting shell function names. A helper can issue

@@ -1208,7 +1208,7 @@ The [workload inventory](../verification/settings-activation/KEEPALIVE-WORKLOAD.
 expands the shared scenario and helper paths, including producer-internal frame
 work and both caller tails. Its scoped review precedes combined scheduling and
 record accounting. Exact caller/confirmation manifests and native/storage
-evidence remain required; baseline helper counts are not a useful profile.
+evidence remain required. Baseline helper counts are not a useful profile.
 
 Scheduling is proposed above. Enforceable resources and complete workload
 accounting remain mandatory unresolved inputs. There is no executable combined

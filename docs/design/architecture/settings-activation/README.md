@@ -1,8 +1,8 @@
 # Settings activation design discussion
 
 The current discussion is the [complete workload inventory](../../../verification/settings-activation/KEEPALIVE-WORKLOAD.md).
-It expands the shared E prefix and complete A continuation, helper polls and waits,
-all six baseline screenshots, internal OCR/input-confirmation frame work and both
+It expands the shared E prefix and complete A continuation, including helper polls and waits.
+It retains six baseline screenshots, internal OCR/input-confirmation frame work and both
 caller tails. Scoped review precedes the remaining scheduling and record-accounting
 design. Exact migrated caller and qualified native/storage inputs remain missing.
 
