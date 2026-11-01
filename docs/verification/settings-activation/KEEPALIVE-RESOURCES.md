@@ -145,6 +145,13 @@ separates that work from the missing evidence and the two decisions below.
 
 ### Workload and tick accounting
 
+The [expanded workload inventory](KEEPALIVE-WORKLOAD.md) now maps the baseline
+scenario, nested helpers, required migration additions and caller tails. It
+retains all six direct images and internal OCR/input-confirmation frame work.
+Its scoped review precedes the remaining scheduling and record-accounting
+derivation. The worksheet below remains the method; no numeric profile follows
+from the inventory or its baseline cross-check counts.
+
 Count a complete permitted path, including every clean-negative poll and its
 local record, rather than counting shell function names. A helper can issue
 several owner operations. The final manifest must expand each helper and bind

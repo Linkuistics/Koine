@@ -132,3 +132,15 @@ Missing mechanisms keep startup unavailable. No slice closes this node or its an
 - 2026-11-01: Decompose at independently checkable control, workload and evidence questions.
   Preserve every original completion condition. Complete only raw-control design k122 here.
   Native execution, numerical profile adoption and ancestor closure remain unavailable.
+
+## Workload handoff
+
+K124 decomposes into the source-grounded workload inventory k131 and combined
+scheduling/record accounting k132. K131's scoped review and earned integrations
+precede k132. The whole original k124 charter remains binding in its node.
+KEEPALIVE-WORKLOAD.md preserves baseline counts separately from migration
+additions, six direct images, internal OCR frames and physical-input confirmation
+frame/message processing. K125 must include those internal dependency paths in
+the missing evidence scope. Exact caller/audit commands and payloads, internal
+limits and qualified native/storage inputs remain missing; k126 still owns final
+useful-profile fit and whole-design reconciliation. No runtime authority follows.

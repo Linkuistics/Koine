@@ -1,6 +1,12 @@
 # Settings activation design discussion
 
-The current discussion is the [record and recovery control design](../../../verification/settings-activation/KEEPALIVE-RECOVERY-CONTROLS.md).
+The current discussion is the [complete workload inventory](../../../verification/settings-activation/KEEPALIVE-WORKLOAD.md).
+It expands the shared E prefix and complete A continuation, helper polls and waits,
+all six baseline screenshots, internal OCR/input-confirmation frame work and both
+caller tails. Scoped review precedes the remaining scheduling and record-accounting
+design. Exact migrated caller and qualified native/storage inputs remain missing.
+
+The [record and recovery control design](../../../verification/settings-activation/KEEPALIVE-RECOVERY-CONTROLS.md) remains unchanged context.
 It preserves the original eighteen S cases and expands named publication cuts, carrier failures, malformed fixtures and recovery paths.
 It also retains lifecycle, signal, held-pointer and exact-deadline controls.
 Each canonical design ID has its own outcome. Explicit aliases share its invocation and all assertions, without another charge.
@@ -88,16 +94,15 @@ loads Mermaid 12.0.0 from jsDelivr and needs network access.
 Reload after editing. No export build is used.
 
 The local index links to the shared viewer, and the
-[parent outline](../index.html#diagram-settings-activation-ordering-sequence)
+[parent outline](../index.html#diagram-settings-activation-keepalive-workload)
 loads these same sources while retaining its separate current discussion.
 
 Current changes:
 
-- [Keepalive → Check publication before dependent action](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-recovery-controls) — Separates actual bytes, publication observations and permission to act.
-- [Keepalive → Preserve both caller transfer paths](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-recovery-transfer) — Shows normal transfer, one recovery successor and their shared final sequence.
-- [Original eighteen cases](../../../verification/settings-activation/KEEPALIVE-RECOVERY-CONTROLS.md#original-eighteen-cases) — Gives each retained S case its own identity and oracle.
-- [Publication carriers and attachments](../../../verification/settings-activation/KEEPALIVE-RECOVERY-CONTROLS.md#publication-carriers-and-attachments) — Names mandatory carriers, bounded fallbacks and original-object cuts.
-- [Accounting, alternatives and handoff](../../../verification/settings-activation/KEEPALIVE-RECOVERY-CONTROLS.md#accounting-alternatives-and-handoff) — Counts the finite design products separately from executable budgets.
+- [Keepalive → Expand every operation before choosing capacity](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-workload) — Adds setup, complete E/A work, failure tails and the accounting boundary.
+- [Helper and poll expansion](../../../verification/settings-activation/KEEPALIVE-WORKLOAD.md#helper-and-poll-expansion) — Preserves nested reveal calls, loop endpoints, local records and unchanged sleeps.
+- [Required additions and internal image work](../../../verification/settings-activation/KEEPALIVE-WORKLOAD.md#required-additions-and-internal-image-work) — Separates baseline screenshots, required observations, OCR cycles and input-confirmation frame work.
+- [Retained objects and accounting handoff](../../../verification/settings-activation/KEEPALIVE-WORKLOAD.md#retained-objects-and-accounting-handoff) — Names the exact unresolved scheduling, record, caller and mechanism inputs.
 
 The [resource review integration](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#review-integration)
 records each k108 disposition. Collection directories and terminal records require

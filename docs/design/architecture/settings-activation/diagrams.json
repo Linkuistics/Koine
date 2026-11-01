@@ -1,5 +1,5 @@
 {
-  "title": "Settings activation: record and recovery controls",
+  "title": "Settings activation: complete workload inventory",
   "intro": "Graph views start at the dark Start here node. Sequences start at their first message and state views at the initial dot. Lifecycle review is integrated. Scheduling review corrections are integrated. Enforceable resources and whole-design reconciliation remain outstanding. Implementation and runtime stay held.",
   "groups": [
     {
@@ -29,10 +29,11 @@
     }
   ],
   "discussion": {
-    "title": "Check each publication cut and recovery path",
-    "status": "Review integrated. Exact complete-write observation extension approved.",
-    "summary": "Canonical cases preserve every original obligation. Explicit aliases prevent duplicate execution and charging. Added cases cover scenario post-CLI validation, successor directory creation and malformed recovery frames. Antony approved the exact complete-write observation substitutions with their audit and evidence costs. The later executable manifest still needs implementation and qualified bounds. No control ran.",
+    "title": "Count the complete workload before deriving capacity",
+    "status": "Proposed inventory. Scoped review precedes accounting.",
+    "summary": "The inventory expands setup, the shared prefix, ordinary continuation and both caller tails. It preserves nested polls, six baseline screenshots, internal OCR and input-confirmation frame work. Scheduling, carrier and capacity derivation remain in k132; exact caller and qualified native/storage inputs remain missing. No runtime or mechanism control ran.",
     "diagramIds": [
+      "keepalive-workload",
       "keepalive-recovery-controls",
       "keepalive-recovery-transfer",
       "keepalive-records",
@@ -41,16 +42,19 @@
     ],
     "updatedDiagrams": [
       {
-        "id": "keepalive-recovery-controls",
-        "summary": "Shows canonical cases, seam availability and publication permission."
-      },
-      {
-        "id": "keepalive-recovery-transfer",
-        "summary": "Shows recovery checks, successor create failure and both final paths."
+        "id": "keepalive-workload",
+        "summary": "Adds complete workload expansion and the remaining accounting boundary."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "keepalive-workload",
+      "group": "keepalive",
+      "title": "Expand every operation before choosing capacity",
+      "source": "keepalive-workload.mmd",
+      "caption": "Proposed source-grounded inventory. Solid arrows show permitted order and failure routes; dotted arrows show accounting dependencies. Start precedes worker cadence. E ends through TextEdit quit; A preserves the complete continuation. Every helper expands into operations and local work, including producer-internal frame processing. Collection and final records retain their own costs and availability conditions. Detailed stop, carrier and recovery joins remain governed by the owner and record contracts. No runtime, useful numerical profile, native result or model-checking claim follows."
+    },
     {
       "id": "keepalive-recovery-controls",
       "group": "keepalive",

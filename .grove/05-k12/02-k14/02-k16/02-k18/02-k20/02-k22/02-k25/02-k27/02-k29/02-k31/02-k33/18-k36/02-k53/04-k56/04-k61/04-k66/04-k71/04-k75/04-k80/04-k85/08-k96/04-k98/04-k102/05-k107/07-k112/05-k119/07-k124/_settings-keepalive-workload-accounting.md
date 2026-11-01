@@ -1,4 +1,4 @@
-# settings-keepalive-workload-accounting-k124
+# settings-keepalive-workload-accounting-k124 — brief
 
 ## Goal
 Expand the complete permitted Settings workload and derive its scheduling and record-accounting requirements.
@@ -27,3 +27,26 @@ This slice derives workload and accounting requirements.
 Dependency-unit evidence and physical metadata costs remain independent prerequisites.
 K125 supplies evidence scopes. K126 retains unresolved final-profile duties.
 No VM, freeze, acceptance, cap expansion or native experiment runs.
+
+## Decomposition and retained charter
+
+The complete original Done when above remains binding. Workload enumeration and
+the combined scheduling/record proof are distinct reviewable design questions.
+K131 first expands the actual shared scenario and helper paths, required migration
+additions, waits, polls, captures, collection and caller tail. It identifies exact
+missing payloads and caller implementations without inventing their counts.
+Its scoped review and every earned integration precede the scheduling and record
+derivation child. That child retains every elapsed/tick, carrier, vector, parity,
+attachment, tail, fence and physical-cost obligation above. Only k131 executes
+in this session. This node and all ancestors remain open.
+
+## Decisions (running log)
+
+- 2026-11-01: Adopt k124 in clean jj change ttsmxuup at parent df5011bc.
+  The graph project matches this workspace and reports ready. Use Tier 2 evidence
+  and direct reads for partial shell coverage. The baseline remains partly legacy;
+  its retry loops and ignored failures grant no permitted-work multiplicity.
+- 2026-11-01: Decompose at the workload inventory. Required positive setup and
+  the finite caller still need migration; record-carrier and deadline arithmetic
+  needs a separately reviewed complete operation expansion. Preserve all original
+  k124 requirements in this node and complete only the first child here.
