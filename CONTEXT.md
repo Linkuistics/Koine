@@ -140,7 +140,7 @@ Recovery burns uncertain members without claiming execution or charging an unsta
 
 **Terminal record pool**: The proposed finite set of precreated terminal slots,
 with [disjoint writer ranges](docs/specs/settings-keepalive-records.md#one-use-pool-and-bounded-costs).
-Odd slots permit allocation fences; even slots permit other records. Each slot
+Odd slots permit allocation fences. Even slots permit other records. Each slot
 and its original-object attachments are used once. Failed, skipped or uncertain
 slots remain consumed and cannot fund another write.
 
