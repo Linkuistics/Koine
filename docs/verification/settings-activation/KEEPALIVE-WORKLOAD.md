@@ -23,7 +23,7 @@ K131 supplies this inventory. K133 reviewed it and k134 integrated the findings.
 K132 supplies the [combined scheduling and record derivation](KEEPALIVE-ACCOUNTING.md).
 That derivation includes elapsed/tick calculation, carriers, schema and lane costs,
 tail requirements, fence constraints and physical-capacity formulas.
-Its scoped review precedes consumption. Missing concrete inputs still prevent numerical profile adoption.
+K135 reviewed the derivation and k136 integrated its findings. Missing concrete inputs still prevent numerical profile adoption.
 
 K125 owns missing evidence scopes. K126
 owns final reconciliation. Unknown values below prevent a useful profile. They
@@ -289,6 +289,10 @@ Keep due, assigned/charged and published-commitment tick counts distinct. Includ
 the longest failing prefix and bounded failure detection, not only the clean
 scenario. Stop drain, collection and final tail retain separate time/capacity.
 They cannot start another tick after suppression.
+
+The derivation separately bounds time without a live tick for tighter tick sizing.
+Its [baseline wait table](KEEPALIVE-ACCOUNTING.md#baseline-explicit-wait-cross-check) includes menu frames, clicks and settling.
+Those conservative wait envelopes supply neither full elapsed bounds nor a useful numerical profile.
 
 These exact inputs remain missing:
 

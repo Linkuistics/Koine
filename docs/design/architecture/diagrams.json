@@ -645,7 +645,7 @@
       "group": "settings-activation",
       "title": "Derive time and protected capacity",
       "source": "settings-activation/keepalive-accounting.mmd",
-      "caption": "Proposed design dependency view. Start retains its 600-second queue before cadence. Active time includes local work and failing prefixes without counting tick service twice. Attempted records include mandatory and fallback carriers. All reserved slots retain attachments. Preparation and layout counts require a finite simultaneous solution. Exact caller and qualified dependency, native and storage inputs remain absent. No numerical profile, implementation, mechanism result or model-checking result follows."
+      "caption": "Proposed design dependency view. Start retains its 600-second queue before cadence. Tick sizing bounds time without a live tick, including local work and failure detection. The elapsed-time envelope retains the existing admission deadline. Attempted records follow the mandatory and fallback carrier schedule. Extra fence-only capacity grants no additional write. All reserved slots retain attachments. Preparation and layout counts require a finite simultaneous solution. Exact caller and qualified dependency, native and storage inputs remain absent. No numerical profile, implementation, mechanism result or model-checking result follows."
     },
     {
       "id": "settings-activation-keepalive-workload",

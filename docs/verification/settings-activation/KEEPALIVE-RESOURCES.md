@@ -156,7 +156,7 @@ retains all six direct images and internal OCR/input-confirmation frame work.
 K133 reviewed it and k134 integrated the findings.
 The [combined accounting](KEEPALIVE-ACCOUNTING.md) now derives start/active timing,
 tick distinctions, carriers, lane costs, attachments and physical-capacity constraints.
-Its scoped review precedes consumption. The worksheet below remains introductory context.
+K135 reviewed the derivation and k136 integrated its findings. The worksheet below remains introductory context.
 No numerical profile follows from the inventory or its baseline cross-check counts.
 
 <!-- tc: pending because the remaining worksheet and historical integrations retain their existing prose -->
@@ -183,43 +183,48 @@ must reconcile item by item with the declared expansion before freezing it.
 | Failure collection | Untouched observer, agent-window list and screenshot in that order when applicable; remaining endpoint/environment/original audits, exact-clone stop and independent inventory. | Exact ordered finite operations, output/partial ceilings and reachable availability conditions. No failed collection item is retried. |
 | Final tail | Worker stop/exit/reap, owner handoff/exit, caller outcome, retained incomplete records and possible one collection-only recovery. | Complete event schema, slot/byte maxima, backing metadata and bounded identity/holder observations. |
 
+<!-- tc: on -->
+
 Separate start from the post-start lifecycle family. Its CLI budget must include
 the retained queue allowance plus independently bounded boot/provisioning work.
 The start whole-operation allowance also includes its non-CLI phases. Neither
-the current 120/142-second target nor a new guessed total covers those duties.
+the earlier shared 120/142-second target nor a new guessed total covers those duties.
+The owner spec now assigns start its own family with unresolved non-queue work.
+
 No tick competes with start, so its larger allowance need not enlarge the
 152-second admission budget for post-start work. Any later operation exceeding
 the current 142-second maximum would require a new scheduling proof and review.
 
-For the interval from the first worker sleep-launch intent to tick suppression,
-let `B` be a proved upper bound on a complete eligible scenario path. A
-conservative calculation is:
+From first worker sleep intent to tick suppression, retain separate bounds for elapsed time and time without a live tick.
+The [combined derivation](KEEPALIVE-ACCOUNTING.md#bound-the-interval-in-which-ticks-can-become-due) defines both over clean and failing paths.
+With `i` ranging over scenario operation occurrences, its envelopes are:
 
 ```text
-B = sum over scenario operations i of n_i * (A_i + W_i)
-    + sum of unchanged explicit waits
-    + bounded local work and finish-message delivery
-K_due <= floor(B / 20 seconds)
-K_committed <= K_charged <= K_due
+B_p = sum_i (A_i + W_i) + D_p + L_p + H_p
+B_no_tick,p = sum_i (6 seconds + W_i) + D_p + L_p + H_p
+B = max_path B_p
+B_no_tick = max_path B_no_tick,p
+K_due <= floor(B_no_tick / 20 seconds)
+K_published <= K_charged <= K_due
 ```
 
-Here `A_i` includes request transfer, admission and commitment; `W_i` includes
-the complete operation through completion delivery. Use the reviewed allowances
-only where their family applies. Start is outside `B`. Collection and final
-stop drain are outside `B` because tick admission is already suppressed.
-They retain their own finite budgets and storage costs. A tick committed before
-suppression keeps its charge and original deadline.
-`K_charged` counts ticks assigned an ordinal and irrevocably charged, including
-those whose directory creation or commitment publication then fails.
-`K_committed` counts the subset with complete commitment publication.
+Here `A_i` includes request transfer, admission and commitment under the unchanged 152-second post-start deadline.
+Each `W_i` covers complete operation delivery within its applicable family allowance.
+`D_p` counts explicit waits. `L_p` covers uncovered local/control work, and `H_p` covers uncovered failure detection and suppression.
+Start precedes both intervals. Collection and final stop drain follow suppression, with separate time and capacity costs.
 
-Each tick needs a distinct completed sleep of twenty seconds. The next sleep
-cannot begin until the previous tick's complete disposition. Thus this upper
-count does not assume a periodic timer or successful captures every twenty
-seconds. It also avoids a circular calculation that adds every tick's duration
-to `B` and uses that larger duration to invent more ticks: scenario admission
-already includes waiting behind the other producer. Count actual timing once.
-The final proof must include failure paths that can outlast a successful branch.
+Each due tick requires a distinct completed twenty-second sleep while no tick is live.
+Only a live tick can add holder delay beyond the scenario request's six seconds of admission phases.
+Using 152 seconds per request remains a coarse elapsed-time bound, but unnecessarily enlarges tick capacity.
+Tick service during explicit waits adds no wait, and service blocking a scenario request already appears in its admission interval.
+Count each failure prefix and detection suffix once. Unknown local or failure bounds prevent numerical adoption.
+
+`K_charged` counts assigned ticks with irreversible charges, including failed directory creation or commitment publication.
+`K_published` counts the subset with complete commitment publication.
+The earlier worksheet name `K_committed` meant that same published subset.
+Neither count establishes successful capture. A tick charged before suppression retains its original allowance and deadline.
+
+<!-- tc: pending because the remaining worksheet and historical integrations retain their existing prose -->
 
 For each attempt family, charge the maximum permitted storage contribution
 before directory creation. Sum scenario contributions and `K_charged` capture

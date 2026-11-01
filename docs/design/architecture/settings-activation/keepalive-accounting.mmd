@@ -1,9 +1,9 @@
 flowchart TD
   start["Start here<br/>Workload paths"]:::start
   stages["Start family<br/>600-second queue<br/>plus unknown work"]
-  active["Active time B<br/>Waits, local work<br/>and failing prefixes"]
-  ticks["Due at most floor B / 20<br/>Charged at most due<br/>Published at most charged"]
-  records["Attempted records<br/>Carriers and fallbacks"]
+  active["Time without a live tick<br/>Scenario phases, waits,<br/>local work and failure"]
+  ticks["Due at most floor B_no_tick / 20<br/>Charged at most due<br/>Published at most charged"]
+  records["Attempted records<br/>Scheduled carriers and fallbacks<br/>Extra reserve grants no write"]
   lanes["Five protected lanes<br/>Parity and attachments"]
   solve["Coupled layout constraints<br/>Finite solution required"]
   capacity["Remaining-tail checks<br/>Bytes, objects, metadata"]

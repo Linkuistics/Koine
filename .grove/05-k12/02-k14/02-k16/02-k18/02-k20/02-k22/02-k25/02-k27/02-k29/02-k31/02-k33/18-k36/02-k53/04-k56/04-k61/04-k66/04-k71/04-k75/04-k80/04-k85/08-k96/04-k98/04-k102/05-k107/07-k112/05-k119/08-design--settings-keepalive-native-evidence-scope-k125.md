@@ -8,6 +8,10 @@ Read the integrated qualification proposal, producer contract and TestAnyware is
 An issue response is not implementation proof.
 The 13-case mechanism envelope excludes dependency controls and real-producer floor observation.
 
+Consume KEEPALIVE-ACCOUNTING.md after k135 review and k136 integration.
+Its missing-input table assigns start, dependency, native containment, raw collection and storage evidence scopes here.
+Scope external process-cost evidence needed by the protocol expansion. K126 owns that expansion and final fit.
+
 ## Done when
 - Enumerate dependency units against the actual versioned schema and required boundary categories.
 - Identify missing subjects, source/build correspondence, encoding/OCR/environment bindings and guard evidence.

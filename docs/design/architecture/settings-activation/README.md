@@ -2,8 +2,10 @@
 
 The current discussion is the [combined scheduling and record accounting](../../../verification/settings-activation/KEEPALIVE-ACCOUNTING.md).
 It derives start/active timing, tick distinctions, publication carriers, lane costs and protected storage requirements.
+Tick sizing uses time without a live tick. The elapsed-time envelope retains the unchanged admission deadline.
 The reviewed workload remains its input, including all six baseline images and internal frame work.
-Scoped review precedes consumption. Exact caller, layout and qualified native/storage inputs remain missing.
+
+K135 reviewed the derivation and k136 integrated its findings. Exact caller, layout and qualified native/storage inputs remain missing.
 
 The [record and recovery control design](../../../verification/settings-activation/KEEPALIVE-RECOVERY-CONTROLS.md) remains unchanged context.
 It preserves the original eighteen S cases and expands named publication cuts, carrier failures, malformed fixtures and recovery paths.

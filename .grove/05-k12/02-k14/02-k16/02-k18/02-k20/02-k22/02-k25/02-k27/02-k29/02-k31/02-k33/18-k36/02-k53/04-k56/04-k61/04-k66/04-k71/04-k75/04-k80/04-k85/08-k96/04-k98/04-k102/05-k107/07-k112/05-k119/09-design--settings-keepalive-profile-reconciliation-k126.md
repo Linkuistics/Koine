@@ -9,6 +9,10 @@ Consume k122–k125 and every earned review integration.
 Their slices supply no complete profile, native result or ancestor closure.
 Actual dependency evidence must precede adoption.
 
+K135 reviewed KEEPALIVE-ACCOUNTING.md and k136 integrated its findings.
+Use its tighter tick bound, baseline wait envelopes, explicit parameter order and carrier schedule.
+Fence-only over-reservation grants no extra publication. Own the exact protocol/local-process costs, layout and final fit.
+
 ## Done when
 - Discharge every k119/k112/k107/k102/k98/k96 completion condition without narrowing its scope.
 - Establish useful numerical geometry, wire, encoded, decoded, simultaneous/peak, elapsed and aggregate allowances.

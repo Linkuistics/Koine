@@ -20,7 +20,7 @@ None of these owners can certify another owner's missing evidence.
 
 K133 reviewed the inventory and k134 integrated its findings before this derivation.
 K125 owns external evidence scopes. K126 owns final useful-profile fit and whole-design reconciliation.
-This derivation needs scoped review before either consumes it.
+K135 reviewed this derivation. K136 integrates its seven findings below.
 
 ## Expand paths before taking maxima
 
@@ -51,8 +51,8 @@ not a total for the repaired scenario.
 | Window polls | E has 9 invocations. A has 17. Each permits 10 reads and state decisions. | Original-list title audits and positive setup. |
 | Endpoint polls | E has 1 invocation. A has 3. Each permits 15 reads. | Application identity joins and separate post-restart 24-read poll. |
 | Label polls | E has 1 invocation. A has 7. Each permits 15 reads. | Local state receipts and exhaustion evidence. |
-| Menu helpers | E has 4 choices and 1 read. A has 9 choices and 5 reads. | Enabled-target, open-menu capture, closed-menu and outcome evidence. |
-| Menu clicks | `2 * choices + reads`: E has 9. A has 23. Each has one size read and three inputs. | Frame reads, predicates and their failures. |
+| Menu helpers | E has 4 choices and 1 read. A has 9 choices and 5 reads. Each open permits five two-second frame waits. Each choice permits five one-second row waits, then two seconds settling. Each read ends with one second settling. | Enabled-target, open-menu capture, closed-menu and outcome evidence. |
+| Menu clicks | `2 * choices + reads`: E has 9. A has 23. Each has one size read, three inputs and sleeps of 0.3, 0.3 and 1 second. | Frame reads, predicates and their failures. |
 | Drags | A has 2. Each has one initial frame read and 13 inputs, with 3.2 seconds explicit sleep. | Separate post-drag reads, growth/minimum checks and held-pointer failures. |
 | Calibration | A has one: one window read, two snapshots, 31 scroll inputs and 31 seconds explicit sleep. | Local direction calculation and state records. |
 | Reveals | A has 10, including both searches inside each `reveal_click`. | Geometry reads and clicks after a successful search. |
@@ -88,6 +88,44 @@ Include internal key/modifier events, scroll decomposition and their sleeps.
 For OCR, include every internal capture/encode/recognition cycle and simultaneous buffers.
 Those cycles acquire no additional owner ordinal.
 Their count, wire work and native costs need the dependency's enforceable unit schema.
+
+### Baseline explicit-wait cross-check
+
+The following sums bound prescribed sleep durations on each E or A baseline path.
+Each row uses independent helper maxima, including exhaustion where permitted.
+They are conservative envelopes, not simultaneously reachable paths or elapsed-time guarantees.
+Successful final reads often omit the last negative sleep.
+The table counts neither forbidden transport retries nor worker sleeps.
+
+| Explicit-wait contribution | E seconds | A seconds |
+|---|---:|---:|
+| Window polls: invocations × 10 × 2 | 180 | 340 |
+| Endpoint polls: invocations × 15 × 2 | 30 | 90 |
+| Label polls: invocations × 15 × 2 | 30 | 210 |
+| TextEdit poll: 15 × 2 | 30 | 30 |
+| Menu opening frames: opens × 5 × 2 | 50 | 140 |
+| Menu choice frames: choices × 5 × 1 | 20 | 45 |
+| Menu choice settling: choices × 2 | 8 | 18 |
+| Menu read settling: reads × 1 | 1 | 5 |
+| Menu pointer sleeps: clicks × 1.6 | 14.4 | 36.8 |
+| Automation click and TextEdit positioning: 2 + 8 + 1 | 11 | 11 |
+| Resize preparation and both drags: 1 + 2 × 3.2 | 0 | 7.4 |
+| Calibration and reveal scrolls: 31 + 10 × 60 | 0 | 631 |
+| Element-click settling: five clicks × 2 | 0 | 10 |
+| Shortcut settling: three × 1 | 0 | 3 |
+| Requests, relaunch and login settling: three × 6 | 0 | 18 |
+| Navigation and denial waits: 2 + 2 + 4 + 4 | 0 | 12 |
+| Add-button negatives and remaining consent waits: 14 × 2 + 2 + 4 + 2 + 2 + 2 + 3 + 2 | 0 | 45 |
+| Product-stopped checks: three × 3 | 0 | 9 |
+| Restart and login polls: 30 + 60 × 5 + 24 × 5 | 0 | 450 |
+| **Baseline envelope** | **374.4** | **2111.2** |
+
+Thus each path's baseline contribution satisfies `D_p <= 374.4 seconds` for E or `D_p <= 2111.2 seconds` for A.
+These values cover only the listed baseline waits, not the complete repaired scenario or caller.
+The five element clicks comprise the shortcut, two denials, login option and System Settings Add.
+The Add click's two-second sleep is separate from the following two-second consent wait.
+Sleep scheduling overrun and failed-sleep detection belong to bounded local/control terms below, not to these prescribed durations.
+Migration must preserve these waits and reconcile every additional required local contribution before adopting a total.
 
 ## Start, active cadence and final time
 
@@ -132,7 +170,8 @@ Let `t0` be the first worker sleep intent and `ts` the event that suppresses fut
 For each path `p`, partition `[t0, ts]` into scenario intervals, explicit waits and other local/control intervals.
 Do not count an interval twice because two actors overlap there.
 Let `A_i` cover request origin through commitment and `W_i` cover commitment through complete delivery.
-Use 152 seconds for each applicable post-start `A_i`.
+Each `W_i` is at most its applicable family whole-operation allowance.
+Use 152 seconds for each applicable post-start `A_i` in the coarse elapsed-time envelope.
 
 Let `D_p` sum the unchanged explicit waits.
 Let `L_p` bound local computation, archive construction, transcript work, finish delivery and other uncovered control work.
@@ -152,9 +191,35 @@ Do not include that same prefix again in `H_p`.
 The caller's separate report limit belongs only to the uncovered detection suffix.
 No numerical `B` exists until all local and failure-detection terms have finite evidence.
 
+A tighter tick bound excludes time while a tick is live.
+Here a tick is live from its sleep-completion origin through complete disposition or suppression.
+The worker cannot sleep during that interval.
+Without a live tick, scenario admission takes at most six seconds: two for transfer, two for admission and two for commitment.
+Only the other producer's live tick can add holder delay.
+Time beyond a failed phase deadline belongs to the uncovered failure-detection term, once.
+
+Let `T_no_tick(p)` be the total time in `[t0, ts]` without a live tick.
+The same partition gives:
+
+```text
+B_no_tick,p = sum_i (6 seconds + W_i) + D_p + L_p + H_p
+B_no_tick = max over P_E or P_A of B_no_tick,p
+20 seconds * K_due <= T_no_tick(p) <= B_no_tick,p
+K_due <= floor(B_no_tick / 20 seconds)
+```
+
+For refused or interrupted requests, retain the applicable admission prefix and uncovered detection cost without inventing an operation.
+Including a full family allowance for a cut operation is conservative.
+Explicit waits and operation time can overlap live ticks, so this expression can still overestimate `T_no_tick(p)`.
+It removes the 146 seconds of unnecessary admission allowance per operation from tick sizing.
+The 152-second admission deadline and the elapsed-time envelope `B` remain unchanged.
+Neither bound is numerical until every local/control term has finite evidence.
+
 Every due tick needs a distinct completed twenty-second sleep.
 The next sleep follows complete tick disposition, so these sleep intervals cannot overlap.
-Thus `20 * K_due <= ts - t0 <= B` on a bounded observed path.
+Those sleeps lie wholly within time without a live tick, which establishes the tighter inequality above.
+The weaker inequality `20 * K_due <= ts - t0 <= B` still holds on a bounded observed path.
+
 Tick service during an explicit wait does not lengthen that unchanged wait.
 Tick service blocking a scenario request already consumes its admission interval.
 Adding `52 * K_due` to `B` would count that service twice.
@@ -249,13 +314,15 @@ It includes both normal-transfer and owner-exit carriers.
 That identity is a clean-path cross-check, not the failure bound.
 
 A failed carrier and its fallback are separate attempted rows.
-A fence followed by no assignment still has a publication outcome requiring the schema's fallback treatment where writing remains possible.
-Therefore `F6` cannot be estimated solely from successfully assigned operations.
+A failed or unavailable K7 carrier requires the schema's K20 fallback for its fence observation where writing remains possible.
+An unattempted K7 after a fence creates no additional mandatory carrier under that schedule.
+If no later carrier retains the fence result, it remains unknown after writer loss.
 For conservative accounting, allow at most one fallback per failed or unavailable carrier opportunity.
 Count fence-without-binding and binding-without-commitment cuts explicitly.
 
 A loose algebraic envelope is `F6 <= a + f + f_c` and `F7 <= a`.
-It permits a fallback at each assignment opportunity and each fence-only tail.
+The `f + f_c` terms deliberately over-reserve fence-only tails without authorising extra K20 rows.
+Actual `F6` counts only fallbacks required after attempted K7 carriers cannot retain their observations, so `F6 <= a` suffices for those attempts.
 Consequently `v <= 4a + f + f_c + 8` is a coarse envelope under this catalogue.
 The profile must still derive the smaller lane-specific reachable counts.
 Neither this envelope nor a missing carrier permits another operation.
@@ -479,7 +546,7 @@ Enumerated loops and one-use roles make the path expansion finite only when ever
 | Partial bootstrap | Retained objects, final setup carrier where possible and at most one summary. No owner readiness or bootstrap restart. |
 | Ready, before start | One start or its refusal/failure, dormant worker evidence and applicable exact-identity collection/tail. |
 | Active sleep or pending request | Complete sleep or failure, refusal/cancellation, stop and collection. No capture charge before assignment. |
-| Fenced, before assignment | Fence outcome/fallback, possible full range burn, failure/containment and caller tail. |
+| Fenced, before assignment | Fence outcome, any scheduled carrier fallback, possible full range burn, failure/containment and caller tail. |
 | Charged, before complete commitment | Full operation charge, real directory/record prefixes, both predecessor-carrier opportunities and no replay. |
 | Producer, validator or delivery active | All remaining progress/result/ack/disposition/carrier/completion rows, or each permitted partial failure cut. |
 | Pointer down or post-down sleep | Both distinct signal cases retain possible held input, no corrective release, untouched collection and containment. |
@@ -499,11 +566,11 @@ The table above specifies where each missing contribution belongs without claimi
 | Migrated scenario and confirmations | Exact operation sites, branch/loop grouping, requests, predicates and original-sharing joins. K126 retains reconciliation with k89/k81/k76/k67/k62. |
 | Finite caller and collection | Exact C04 commands, inventories, archive applicability, failure interpolation facts, plan indices, local bounds and post-failure submission policy. K126 retains k57's contract. |
 | Start | Actual queue/provision/boot/response stage subjects and finite `U_start`, returned identity and interrupted-start containment evidence. K125 scopes mechanisms and K126 fits the family. |
-| Messages and local processes | Actual worker/collector/progress transitions, child and holder overlaps, bounded transcript/parser/hash/scan/archive costs. These determine `w,h,q,g,t` and local time. |
+| Messages and local processes | Actual worker/collector/progress transitions, child and holder overlaps, bounded transcript/parser/hash/scan/archive costs. These determine `w,h,q,g,t` and local time. K126 owns the protocol expansion and fit. K125 scopes missing external process-cost evidence. |
 | Dependency | Exact contract/unit versions, build, encoding/OCR/environment, input-update and OCR-cycle bounds, allocation/lifetime guards and full control results. K125 scopes this external work. |
-| Native containment | Intermediary install-map floor, actual producer exec-setter floor, loader/map/native/service coverage and process membership. No no-op producer substitutes for the real floor. |
-| Raw collection | Qualified accepted-byte observation, queue `Q`, collector bootstrap/buffers, descriptor lifetime and retention across loss. |
-| Storage | Exact backing/lock identities, object granularity, metadata/update/copy-on-write costs, protected bytes/objects and required flush/visibility latency and loss semantics. |
+| Native containment | Intermediary install-map floor, actual producer exec-setter floor, loader/map/native/service coverage and process membership. No no-op producer substitutes for the real floor. K125 owns the evidence scope. K126 checks applicability and fit. |
+| Raw collection | Qualified accepted-byte observation, queue `Q`, collector bootstrap/buffers, descriptor lifetime and retention across loss. K125 owns the evidence scope. K126 reconciles returned evidence with every operation family. |
+| Storage | Exact backing/lock identities, object granularity, metadata/update/copy-on-write costs, protected bytes/objects and required flush/visibility latency and loss semantics. K125 owns the evidence scope. K126 instantiates and checks the protected layout. |
 | Record layout | Concrete fragments, registries, per-slot role sets, object graphs, vector maxima, lane path enumeration and bounded recovery scan. K126 completes numerical fit. |
 
 The future [raw controls](KEEPALIVE-RAW-CONTROLS.md) and
@@ -533,14 +600,32 @@ OCR substring and held-frame limits remain.
 Historical failures, closed slots and caps remain unchanged.
 No VM, candidate, freeze, acceptance, cap expansion or release follows.
 
-Scoped review must challenge the failure-prefix time bound, carrier fallbacks before assignment,
-lane maxima, self-referential layout sizes and the shared phase ceilings.
-It must check that unknown inputs remain prerequisites rather than implied zero costs.
+K135's scoped review checked the derivation. K136 records each finding's disposition in its task.
+Whole-design review must still challenge the instantiated paths, lane maxima, coupled layout sizes and shared phase ceilings.
+Unknown inputs remain prerequisites rather than implied zero costs.
 An arithmetic or browser check supplies no useful-fit or mechanism result.
 
 ## Verification evidence
 
-The [check receipt](ordering-keepalive-accounting/verification.json) records the inspected input hashes and each result.
+### K136 integration checks
+
+The [integration receipt](ordering-keepalive-accounting/integration-verification.json) records final input hashes and each document/arithmetic result.
+It checks the schema's ordered 29-entry parameter vector separately from the record-kind count vector.
+It recomputes both explicit-wait envelopes and rejects omitted-wait and missing-parameter mutations.
+It also checks both diagram manifests and the touched prose.
+
+The narrow in-session reviewer found no issue in the tighter tick argument or baseline explicit-wait envelopes.
+Direct source reads covered the relevant shell parse gaps.
+The browser rendered the revised accounting view at port 8846, including the bound and over-reservation labels.
+Mobile and dark appearance were not checked.
+
+The document task still reports only the two k23 archive targets named below.
+These checks establish no numerical total-duration bound, useful-profile fit, implemented coordinator or native result.
+
+### Original k132 checks
+
+The original [check receipt](ordering-keepalive-accounting/verification.json) records k132's inspected input hashes and each result.
+Its 29-entry assertion checks the record-kind count vector, not the parameter vector.
 Catalogue arithmetic, manifest references and the touched prose checks pass.
 Broken coefficient and parity expectations fail their controls.
 The first arithmetic probe failed because its expression reader did not parse implicit multiplication such as `4n`.

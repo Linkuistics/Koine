@@ -146,8 +146,10 @@ the missing evidence scope. Exact caller/audit commands and payloads, internal
 limits and qualified native/storage inputs remain missing. K126 still owns final
 useful-profile fit and whole-design reconciliation. No runtime authority follows.
 
-K132 now supplies KEEPALIVE-ACCOUNTING.md with its scoped review still required.
+K132 supplies KEEPALIVE-ACCOUNTING.md, reviewed by k135 and integrated by k136.
 It separates start from post-start admission and derives carriers, lane costs and coupled layout constraints.
-K125 consumes its exact missing-evidence table after review and every earned integration.
+Tick sizing uses time without a live tick. Fence-only over-reservation grants no extra publication.
+K125 consumes its assigned external evidence rows. K126 owns protocol/local-process expansion and final fit.
+
 K126 retains finite caller/layout instantiation, qualified numerical fit and whole-design reconciliation.
 No guessed capacity, mechanism result or ancestor closure follows.

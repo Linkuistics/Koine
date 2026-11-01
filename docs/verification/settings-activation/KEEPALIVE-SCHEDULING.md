@@ -112,8 +112,10 @@ It cannot silently shorten an explicit wait or move start outside the writer dom
 
 The [combined accounting](KEEPALIVE-ACCOUNTING.md#start-active-cadence-and-final-time)
 now proposes that dedicated start family and preserves post-start admission at 152 seconds.
+K135 reviewed that derivation and k136 integrated its findings.
+The tighter tick count uses time without a live tick, while the elapsed-time envelope retains the existing admission allowance.
 It includes local work, failing prefixes and publication carriers within their existing deadlines.
-Its scoped review precedes consumption. Qualified timing and useful fit remain outstanding.
+Qualified timing and useful fit remain outstanding.
 
 ## Alternatives and usefulness
 

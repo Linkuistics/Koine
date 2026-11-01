@@ -404,15 +404,42 @@ Name only for absent environment).
 Its namespace is 202, values in listed order. No NUL terminators or character
 normalisation are added.
 
-The parameter vector in type 4 has this fixed order:
+The parameter vector in type 4 has this fixed order, with one value per row:
 
-- `n,a,w,h,q,g,p,b,f,f_c,v,t`
-- `u,r,z,o,j,d,m`
-- Fence width, slot size and total slots
-- Maximum object bytes and maximum original-frame bytes
-- Maximum argv/environment entries and aggregate bytes
-- Maximum receive/parser/scan live bytes
-- Maximum depth and component bytes.
+| Position | Parameter |
+|---|---|
+| 1 | `n` |
+| 2 | `a` |
+| 3 | `w` |
+| 4 | `h` |
+| 5 | `q` |
+| 6 | `g` |
+| 7 | `p` |
+| 8 | `b` |
+| 9 | `f` |
+| 10 | `f_c` |
+| 11 | `v` |
+| 12 | `t` |
+| 13 | `u` |
+| 14 | `r` |
+| 15 | `z` |
+| 16 | `o` |
+| 17 | `j` |
+| 18 | `d` |
+| 19 | `m` |
+| 20 | Fence width |
+| 21 | Slot size |
+| 22 | Total slots |
+| 23 | Maximum object bytes |
+| 24 | Maximum original-frame bytes |
+| 25 | Maximum argv/environment entries |
+| 26 | Maximum aggregate argv/environment bytes |
+| 27 | Maximum receive/parser/scan live bytes |
+| 28 | Maximum depth |
+| 29 | Maximum component bytes |
+
+Position 27 bounds combined simultaneous live bytes across receive, parser and scan work.
+It is one aggregate value, not three independent allowances.
 
 All are known finite `Q` values at startup. Missing/unknown is a refused
 profile. Each distinct field may have a smaller bound through its registry
@@ -553,7 +580,7 @@ The [combined workload derivation](../verification/settings-activation/KEEPALIVE
 applies this catalogue to start, scenario, ticks, collection and both caller paths.
 It derives standalone carrier counts, lane costs and the coupled preparation/layout constraints.
 It establishes `m >= 29` from the fixed parameter list, without selecting useful capacities.
-Its scoped review precedes consumption. Exact manifests and qualified physical costs remain prerequisites.
+K135 reviewed that derivation and k136 integrated its findings. Exact manifests and qualified physical costs remain prerequisites.
 
 Let `n` bound all valid received submissions, including due ticks and
 collection. Let `a` bound all assigned attempts. Let `w` bound worker reports.
@@ -752,6 +779,10 @@ work. If the writer dies first, retain the missing observation as unknown.
 
 Recovery cannot invent the lost result. Kind 4 batches already carry preparation
 failures. Their own failed publication uses the same final-batch kind 20 rule.
+
+A fence with no attempted kind 7 has no mandatory standalone fallback under this schedule.
+If no later carrier retains its publication result, recovery preserves that result as unknown.
+The accounting's extra fence-only allowance is deliberate over-reservation, not permission to add a kind 20.
 
 For kind 6, `prior-publication.target` is kind 5 on the first fence in each
 generation. On every later fence in that generation, it is the exact

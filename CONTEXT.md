@@ -65,6 +65,15 @@ disposition before another sleep.
 **Keepalive tick**: One required capture submission after a completed worker
 sleep. Cancellation before **dispatch commitment** creates no capture attempt.
 
+**Due tick**: A **keepalive tick** whose worker sleep completed successfully.
+It can still be pending, refused or cancelled without an operation charge.
+
+**Charged tick**: A **due tick** with an assigned ordinal and irreversible **operation charge**.
+Its directory or commitment publication can still fail.
+
+**Published tick**: A **charged tick** with a complete published commitment record.
+This term establishes neither capture execution nor successful completion.
+
 **Dispatch commitment**: The **Settings command owner's** immutable link from a
 submission to one reserved attempt ordinal. It establishes intent, not external
 execution or input delivery.
@@ -88,6 +97,10 @@ Progress does not reset this interval.
 
 **Operation family**: A declared set of **Settings command owner** operations
 with the same CLI and whole-operation allowances. It grants no native liveness credit.
+
+**Start family**: The **operation family** for VM start before worker cadence.
+Its proposed allowance retains the 600-second queue plus separately bounded non-queue work and protocol phases.
+Missing non-queue evidence keeps startup unavailable.
 
 **Phase ceiling**: The elapsed limit for one declared operation phase, checked
 by its named observer. The whole-operation deadline also bounds that phase.
@@ -137,6 +150,16 @@ Its own build, bootstrap, buffers and writer-lock lifetime require qualification
 
 **Allocation fence**: A proposed terminal record that reserves a finite ordinal range before its members are consumed.
 Recovery burns uncertain members without claiming execution or charging an unstarted capture.
+
+**Publication carrier**: A record that retains another record's or object's observed write, flush and visibility results.
+The [carrier schedule](docs/specs/settings-keepalive-records.md#publication-carriers) specifies the required embedded or standalone form before dependent effects.
+
+**Fallback carrier**: One kind-20 **publication carrier** required when an attempted kind-7 or kind-9 carrier cannot retain its predecessor observation.
+It restores neither the failed carrier nor permission for dependent work.
+
+**Writer lane**: One disjoint, preassigned range in the **terminal record pool**.
+Bootstrap, owner history, owner tail, collection successor and caller final each have a separate lane.
+Consumed or uncertain capacity cannot move between lanes.
 
 **Terminal record pool**: The proposed finite set of precreated terminal slots,
 with [disjoint writer ranges](docs/specs/settings-keepalive-records.md#one-use-pool-and-bounded-costs).

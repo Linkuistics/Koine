@@ -1212,7 +1212,8 @@ The reviewed [workload inventory](../verification/settings-activation/KEEPALIVE-
 expands the shared scenario, internal frame work and both caller tails.
 The [combined accounting](../verification/settings-activation/KEEPALIVE-ACCOUNTING.md)
 derives time, tick, carrier, lane, attachment and physical-capacity requirements.
-Its scoped review precedes consumption. Exact caller/confirmation manifests and native/storage evidence remain required.
+K135 reviewed the derivation and k136 integrated its findings. Exact caller/confirmation manifests and native/storage evidence remain required.
+Tick sizing uses time without a live tick, without changing the 152-second post-start admission deadline.
 Baseline helper counts are not a useful profile.
 
 Every required write and carrier consumes its
