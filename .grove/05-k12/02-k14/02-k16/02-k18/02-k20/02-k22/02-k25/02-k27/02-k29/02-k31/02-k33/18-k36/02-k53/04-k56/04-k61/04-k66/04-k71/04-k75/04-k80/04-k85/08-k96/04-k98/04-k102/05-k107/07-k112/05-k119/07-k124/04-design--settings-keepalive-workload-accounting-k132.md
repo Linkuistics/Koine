@@ -9,7 +9,7 @@ Consume settings-keepalive-workload-inventory-k131 after its scoped review and
 every earned integration. Read KEEPALIVE-WORKLOAD.md, the complete k124 brief,
 the resource worksheet, integrated owner/producer/record contracts and controls.
 The inventory distinguishes baseline counts, required migration additions and
-missing concrete caller/collection inputs; none is an adopted capacity.
+missing concrete caller/collection inputs. None is an adopted capacity.
 
 ## Done when
 - Reconcile every helper/caller operation, branch, clean-negative poll, wait,
@@ -29,5 +29,5 @@ missing concrete caller/collection inputs; none is an adopted capacity.
 
 ## Notes
 Design only. No implementation, VM, native experiment, freeze, acceptance or cap
-expansion. Do not require control results before their executable subject exists;
-retain later controls and qualification as prerequisites to adopting a profile.
+expansion. Do not require control results before their executable subject exists.
+Retain later controls and qualification as prerequisites to adopting a profile.
