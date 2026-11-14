@@ -1,0 +1,32 @@
+flowchart TD
+    start["Start here: preserve every required guarantee"]
+    manifest["Pin exact subjects, sources, builds and environment"]
+    producer["Producer: actual versioned units and pre-growth guards"]
+    platform["Platform: real Fe, separate Fi and bootstrap/service bounds"]
+    raw["Raw: Q, loader and independent R3 accepted-byte oracle"]
+    local["Storage and caller: protected metadata, finite local work and statuses"]
+    complete{"All required inputs and complete costs available?"}
+    hold["Unavailable: retain gaps and originals; no execution request"]
+    review["Review concrete study and integrate supported repairs"]
+    authority{"Exact execution authority obtained?"}
+    study["Only the frozen finite study; retain failures and unknowns"]
+    fit["K126: reconcile all families and solve useful fit"]
+    whole["Whole-design review before planning and implementation"]
+    start --> manifest
+    manifest --> producer
+    manifest --> platform
+    manifest --> raw
+    manifest --> local
+    producer --> complete
+    platform --> complete
+    raw --> complete
+    local --> complete
+    complete -->|No| hold
+    complete -->|Yes| review
+    review --> authority
+    authority -->|No| hold
+    authority -->|Yes| study
+    study --> fit
+    fit --> whole
+    classDef entry fill:#172b4d,color:#fff,stroke:#172b4d,font-weight:bold
+    class start entry

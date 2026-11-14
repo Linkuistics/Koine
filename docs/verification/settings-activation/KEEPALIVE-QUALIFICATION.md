@@ -25,6 +25,11 @@ It does not supply a complete resource profile. All capability rows below are
 
 ## Subject closure before an execution decision
 
+The [external evidence scope](KEEPALIVE-EVIDENCE-SCOPE.md) specifies the required
+producer-unit, real-Fe, native, queue, loader, storage and host-work returns.
+Its candidate scopes remain unavailable until every subject and cost is filled,
+reviewed and separately authorised. It does not enlarge the 13-case envelope.
+
 One immutable manifest must bind the following subjects. A changed subject
 invalidates correspondence and returns to design/review. It never silently
 replaces an execution slot. Missing entries keep the affected row unavailable.

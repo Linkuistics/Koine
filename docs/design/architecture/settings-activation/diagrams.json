@@ -1,5 +1,5 @@
 {
-  "title": "Settings activation: finite caller workload",
+  "title": "Settings activation: external evidence prerequisites",
   "intro": "Graph views start at the dark Start here node. Sequences start at their first message and state views at the initial dot. Lifecycle review is integrated. Scheduling review corrections are integrated. Enforceable resources and whole-design reconciliation remain outstanding. Implementation and runtime stay held.",
   "groups": [
     {
@@ -29,10 +29,11 @@
     }
   ],
   "discussion": {
-    "title": "Preserve one ordered caller and collection plan",
-    "status": "K138 review integrated by k139. Numerical fit and whole-design review remain outstanding.",
-    "summary": "One plan retains every collection duty. Pre-start paths distinguish incomplete bootstrap from failed readiness after complete bootstrap. Sequence output, local-audit deadlines and registry definitions need k126 reconciliation. Expired containment with an unresolved holder blocks later items. Startup remains unavailable.",
+    "title": "Require complete evidence before requesting execution",
+    "status": "K125 design proposed; scoped review, numerical fit and whole-design review remain outstanding.",
+    "summary": "Producer units, real Fe and bootstrap/service bounds, Q and raw observations, protected storage and finite host work need source-correspondent returns. Missing inputs leave studies unavailable. Three proposed Vision calls remain unauthorised. K126 retains complete useful fit.",
     "diagramIds": [
+      "keepalive-evidence",
       "keepalive-caller",
       "keepalive-workload",
       "keepalive-accounting",
@@ -40,20 +41,19 @@
     ],
     "updatedDiagrams": [
       {
-        "id": "keepalive-caller",
-        "summary": "Clarifies sequence preflight, bootstrap failure, recovery and containment expiry."
-      },
-      {
-        "id": "keepalive-workload",
-        "summary": "Connects collection to the indexed caller plan."
-      },
-      {
-        "id": "keepalive-accounting",
-        "summary": "Names concrete payloads and local costs as remaining inputs."
+        "id": "keepalive-evidence",
+        "summary": "Adds independent prerequisite returns, complete study review and authority gates, and the k126 fit handoff."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "keepalive-evidence",
+      "group": "keepalive",
+      "title": "Require complete evidence before requesting execution",
+      "source": "keepalive-evidence.mmd",
+      "caption": "Proposed evidence dependency view. Actual producer schema, real Fe with separate Fi, bootstrap and service bounds, Q, loader and independent R3 observations, protected metadata and complete local-work/status returns remain missing. Unfilled contributions keep the dependent study unavailable. A complete finite study needs review and exact execution authority. Its results feed k126's full useful fit and whole-design review before planning. No native study, Vision call, VM launch, input action or numerical qualification follows."
+    },
     {
       "id": "keepalive-caller",
       "group": "keepalive",

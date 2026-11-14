@@ -104,6 +104,13 @@
   ],
   "diagrams": [
     {
+      "id": "settings-activation-keepalive-evidence",
+      "group": "settings-activation",
+      "title": "Require complete evidence before requesting execution",
+      "source": "settings-activation/keepalive-evidence.mmd",
+      "caption": "Proposed k125 evidence dependencies. Actual schema, real Fe and separate Fi, bootstrap/service bounds, Q, raw observations, protected metadata and finite caller work remain required. Missing contributions prevent an execution request. Complete studies need review and authority; k126 retains full useful fit and whole-design review. No native execution or numerical qualification follows."
+    },
+    {
       "id": "native-reference-packaging",
       "group": "native-sources",
       "title": "Packaging → Rehearse the retained entry in a bound domain",

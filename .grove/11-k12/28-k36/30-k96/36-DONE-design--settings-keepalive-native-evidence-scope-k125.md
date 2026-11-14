@@ -56,3 +56,47 @@ envelope. Real producer Fe, intermediary Fi, Q, actual process overlap, native
 Vision scopes, source/build/SDK/kernel correspondence, metadata/recovery and
 finite external subjects remain required design inputs, not earned execution.
 The entire k124 final charter table is split with k126 as the crosswalk states.
+
+## Decisions (running log)
+
+The durable scope is `docs/verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md`.
+Issue 13 was open with no comments on 2026-11-15, so actual versioned units,
+conforming subjects and guard evidence remain unavailable. The category matrix
+requests every actual unit and its source/control crosswalk; it is not a
+fabricated enumeration or implementation proof. No external message or native
+study was authorised or performed.
+
+The proposed real-Fe route reconstructs a conservative bound `Fe <= S + R + E`
+from an external real-producer sample, all intervening removals and metric/
+perturbation correction. Its API, boundary, source derivation and finite costs
+remain prerequisites. An actual-setter instrument is an explicit alternative,
+not assumed authority. Fi and every bootstrap/runtime/service interval remain
+separate. Four candidate OCR operations plan three recognition calls, with zero
+currently authorised; proposed time/byte ceilings do not fill their missing
+native cost envelope.
+
+Raw controls require source-correspondent Q and independent R3 blocking/
+accepted-byte observations; a pipe-fill result cannot substitute. R3 releases
+the approved pre-read hold without waiting for blocked writes. R5 retains
+before-write or exactly-1024-real-persisted-byte failure and a separate copy
+audit. Protected metadata, full local archive/hash/transcript/recovery/audit
+work, blocked-I/O containment, exact-start identity and inner tool statuses
+including Gatekeeper all remain required returns. No new containment window,
+reduced guarantee or native qualification is inferred.
+
+The editable evidence graph and both manifests now link the admission gates.
+Fresh browser deep links rendered the topic and parent views without page
+errors; desktop, bottom branches, current-discussion markers and mobile dark
+appearance were inspected. The existing viewer requires horizontal panning
+inside wide graphs on narrow screens. Changed-document links/anchors pass.
+`mise exec -- task check:docs` still fails on the two pre-existing missing
+archive targets `context-predicate.txt` and `context-qualify-filter.sh` in
+`docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md`.
+No code tests are warranted for this documentation-only scope.
+
+A scoped adversarial review is earned because downstream study requests depend
+on these boundaries. Place it as a flat sibling before k126, which consumes
+the reviewed scope and retains all original/expanded family accounting,
+complete numerical fit and whole-design review. No helper whole-artifact
+review duplicates that session. The current environment has no
+`GROVE_PROVIDER_EVIDENCE`; the review receives no invented Creator line.

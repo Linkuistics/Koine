@@ -1,12 +1,18 @@
 # Settings activation design discussion
 
-The current discussion is the [finite caller workload](../../../verification/settings-activation/KEEPALIVE-CALLER.md).
-It expands collection into 25 ordered positions with exact semantic requests, predicates and retained original roles.
-The original owner and its recovery caller share one plan; neither can repeat a previously fenced item.
-The observer is prepared before input so failure context preserves observer, windows and screenshot order.
+The current discussion is the [external evidence scope](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md).
+K125 specifies the missing producer, exec-floor, native, raw-queue, storage and
+caller-work returns. Unfilled subjects keep the affected study unavailable;
+the proposal authorises no native execution. Scoped review remains outstanding.
 
-K137 supplies this proposal. Its scoped review and every earned integration precede consumption.
-Executable payloads, local costs and qualified native/storage inputs remain missing.
+The reviewed [finite caller workload](../../../verification/settings-activation/KEEPALIVE-CALLER.md)
+remains context. It expands collection into 25 ordered positions with exact
+semantic requests, predicates and retained original roles. The original owner
+and its recovery caller share one plan; neither can repeat a previously fenced
+item. The observer is prepared before input so failure context preserves
+observer, windows and screenshot order. K138 reviewed this plan and k139
+integrated its supported findings. Executable payloads, local costs and
+qualified native/storage inputs remain missing.
 The [combined accounting](../../../verification/settings-activation/KEEPALIVE-ACCOUNTING.md) remains context, including tick sizing, carriers and protected lanes.
 
 The [record and recovery control design](../../../verification/settings-activation/KEEPALIVE-RECOVERY-CONTROLS.md) remains unchanged context.
@@ -96,19 +102,20 @@ its dotted reasoning edge. Other graphs describe decisions or outcome rules.
 None is a proven causal graph. The sources are editable Mermaid. The viewer
 loads Mermaid 12.0.0 from jsDelivr and needs network access.
 Reload after editing. No export build is used.
+On narrow screens, scroll horizontally inside wide graphs to read each branch.
 
 The local index links to the shared viewer, and the
-[parent outline](../index.html#diagram-settings-activation-keepalive-caller)
+[parent outline](../index.html#diagram-settings-activation-keepalive-evidence)
 loads these same sources while retaining its separate current discussion.
 
 Current changes:
 
-- [Collection → Preserve one ordered plan](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-caller) — Adds the fixed plan and original-owner, successor and unavailable paths.
-- [Ordered collection plan](../../../verification/settings-activation/KEEPALIVE-CALLER.md#ordered-collection-plan) — Expands observations, local audits and final sequence duties.
-- [Recovery and unavailable paths](../../../verification/settings-activation/KEEPALIVE-CALLER.md#recovery-and-unavailable-paths) — States every prerequisite for the never-fenced suffix.
-- [Multiplicity and object accounting](../../../verification/settings-activation/KEEPALIVE-CALLER.md#multiplicity-and-object-accounting) — Counts plan operations while preserving uncertain allowances and missing object limits.
-- [Workload expansion](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-workload) — Links collection to the indexed plan.
-- [Accounting dependencies](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-accounting) — Names executable payloads and local costs as remaining inputs.
+- [Evidence → Require complete inputs before execution](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-evidence) — Adds the prerequisite, review, authority and k126 handoff gates.
+- [Producer schema and guards](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md#producer-owned-schema-and-guard-evidence) — Requires the actual versioned units and their complete control crosswalk.
+- [Real exec floor and bootstrap](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md#real-exec-floor-and-bootstrap-intervals) — Defines conservative reconstruction and perturbation obligations while preserving unavailable Fe and separate Fi.
+- [Native OCR proposal](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md#native-ocr-proposal-and-exact-calls) — Specifies four candidate operations and three planned recognition calls with zero current authority.
+- [Raw queues and R3 observations](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md#raw-queues-loader-diagnostics-and-r3-observations) — Requires Q, actual loader capture and an independent accepted-byte oracle.
+- [Storage and caller work](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md#storage-local-work-and-external-statuses) — Adds protected metadata, full host computation, blocked-I/O and inner-status evidence.
 
 The [resource review integration](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#review-integration)
 records each k108 disposition. Collection directories and terminal records require
