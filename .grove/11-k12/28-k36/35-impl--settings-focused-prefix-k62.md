@@ -37,3 +37,12 @@ The current additive brief chain and accepted spec amendments govern authority.
 k36 owns aggregate shared-harness and ordinary-duty reconciliation from k53/k56.
 This task owns exact prefix correspondence through TextEdit quit immediately
 before resize, every original prefix duty and earned review/integration.
+
+The original instruction to reconcile before closing k56 now means: before
+handoff to k57, compare every original k56/k53 shared-scenario duty and every
+inherited k61/k66/k71/k75/k80/k85 migration duty with delivered source/controls,
+including the later ordinary assertions beyond the focused prefix. Record
+per-duty evidence and resolve/cut precisely named gaps before that handoff;
+complete every earned shared-scenario review/integration. k57 consumes this
+comparison in its complete pre-runtime reconciliation; k36's later outcome
+closure cannot replace either check. This task creates no clone or frozen subject.

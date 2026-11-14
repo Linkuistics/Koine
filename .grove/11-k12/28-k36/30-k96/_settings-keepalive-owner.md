@@ -1,12 +1,14 @@
 # settings-keepalive-owner-k96 — brief
 
-## Goal and joint completion
+## Goal
 
 Design a useful serialized keepalive command owner with enforceable finite
 resources, preserving capture qualification, first failure and original ordinary
 input semantics. This level earns its place through a distinct owner subsystem,
 new lifecycle/scheduling/producer/storage/recovery context and a joint complete
 reviewed design needed by its consumers.
+
+## Done when
 
 Complete every original-duty row, the useful numerical workload/profile,
 cooperative-stop and containment contracts and meaningful coordinator controls.

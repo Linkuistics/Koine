@@ -14,6 +14,7 @@ candidate's outcome.
   verification and separate complete ordinary acceptance. The signed subject,
   complete inputs, original/installed/golden audits, failures and exact cleanup
   satisfy the original-duty comparison in the normative spec.
+  Report Koine failure, test-driver failure and assertion NOT RUN separately.
 - The repair, measured result and remaining native uncertainties are reconciled
   explicitly. A helper check, green finite sample, completed design or rejected/
   unavailable candidate does not close this unresolved aggregate contract.

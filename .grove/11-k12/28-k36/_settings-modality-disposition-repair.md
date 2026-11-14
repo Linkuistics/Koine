@@ -1,16 +1,29 @@
 # settings-modality-disposition-repair-k36 — ordering evaluation brief
 
-## Goal and joint completion
+## Goal
 
 Implement and evaluate the one approved activation-before-window-ordering
 correction with the shared strict harness, then record its finite outcome and
 reconcile every original ordinary-scenario duty. The historical handle remains
 stable; native causal scope belongs to k12.
 
+## Done when
+
 This scope completes only after the implemented/reviewed harness and finite
 caller, actual readiness/freeze, declared runtime outcome and full original-duty
 comparison are complete. Rejection or unavailable evidence leaves the repair
 live at k12 for an explicit next decision, never an inferred ancestor close.
+
+Before k54 freezes a subject or requests any clone, k57 must reconcile every
+original k53/k56/k61/k66/k71/k75/k80/k85 duty against delivered source and controls,
+including k62's shared-scenario comparison and all earned reviews/integrations.
+Record per-duty evidence and resolve precise gaps through leaves before k54;
+final k36 outcome reconciliation cannot substitute for this pre-runtime check.
+Include k52's application change: verify applicable public API contracts against
+primary sources and cite non-obvious calls at their decision sites, preserving
+the reviewed preconditions, effects and OS discretion. Build/recorder success
+does not discharge this duty. Report Koine failure, test-driver failure and
+assertion NOT RUN separately throughout evaluation and final handoff.
 
 ## Why this level exists
 
@@ -74,15 +87,20 @@ separate assertion failure and missing liveness unresolved. No invented window I
 - k67: positive setup, original-list title audit, physical/menu route and process
   outcome distinctions throughout the complete scenario.
 - k62: exact shared prefix through TextEdit quit immediately before resize, and
-  complete shared/ordinary-duty reconciliation, with earned reviews/integrations.
+  complete shared/ordinary-duty reconciliation before k57, with earned reviews/
+  integrations and precise missing-work leaves before handoff.
 - k57: finite namespaces/clone IDs/caller, one writer and ordered receipts,
   first-failure admission, frozen sequence manifest and per-item original/
   installed/golden audits. Orphan holders and unsettled held input prevent stop
   until the recorded owner is settled; no bypass/reset. One budgeted exact stop
   plus independent inventory only; unresolved cleanup blocks every later slot.
+  Own the complete per-duty source/control and application API reconciliation
+  above before k54 freeze or clone creation, with every earned review/integration.
 - k54: actual build/sign/UUID/all-input/completed-stopped-golden freeze and
   readiness, pinned absolute CLI/jq identity/config, per-clone spec digest and
   endpoint before first transport; serial runtime, outcome and final handoff.
+  Consume the completed k57 reconciliation before freeze or any clone request;
+  changed source/controls reopen affected checks and earned reviews before use.
 
 ## Availability boundaries
 

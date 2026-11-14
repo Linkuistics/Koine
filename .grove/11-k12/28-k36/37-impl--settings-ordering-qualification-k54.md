@@ -65,3 +65,13 @@ k36 owns readiness/freeze/runtime and full outcome reconciliation; k12 retains
 unresolved repair if recurrence or unavailable evidence prevents acceptance.
 No historical source/helper success supplies an actual signed/all-input/
 completed-stopped-golden freeze, ordinary readiness or new runtime result.
+
+Before freezing the subject or requesting any clone, consume k57's completed
+per-duty source/control reconciliation for original k53/k56/k61/k66/k71/k75/k80/
+k85, k62's shared-scenario comparison, k52's primary-source API and decision-site
+citation check, and every earned review/integration. Verify that their evidence
+applies to the source/controls being frozen. Missing duties require precise
+leaves ahead of this runtime; changed artifacts reopen affected checks and earned
+reviews before use. Final outcome reconciliation cannot replace this pre-runtime
+handoff. Report Koine failure, test-driver failure and assertion NOT RUN separately;
+missing required evidence prevents acceptance without establishing product failure.

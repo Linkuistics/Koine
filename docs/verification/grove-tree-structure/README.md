@@ -35,7 +35,7 @@ current spec govern prerequisite changes, rather than silently erasing duties.
 
 | Original identity | Current contract owner(s) | Scope transferred | Preserved text |
 |---|---|---|---|
-| root | root | Whole-workstream acceptance, retained evidence/uncertainty, authority and final handoff. | [exact original](original-briefs/k0.txt) |
+| root | root | Whole-workstream acceptance, retained evidence/uncertainty, separate Koine/test-driver/NOT RUN outcomes, authority and final handoff. | [exact original](original-briefs/k0.txt) |
 | k2 | root; k12 residual Settings repair | Coordinate/menu controls, valid destination and malformed edges; residual focus allowance and unresolved source frame. | [exact original](original-briefs/k2.txt) |
 | k3 | root; k36 current ordinary assertions | Qualified k10 resize/minimum/content/scroll outcome and route limits; no AX substitute, skip gate or isolated cause. | [exact original](original-briefs/k3.txt) |
 | k6 | root; k12 residual Settings repair | Qualified independent observers, full k8 result, resize NOT RUN then; no inferred activation repair or wait. | [exact original](original-briefs/k6.txt) |
@@ -49,10 +49,10 @@ current spec govern prerequisite changes, rather than silently erasing duties.
 | k27 | k12 | Preserved failed outcome, unresolved native mechanism; supported falsifiable independently reviewed future experiment only. | [exact original](original-briefs/k27.txt) |
 | k29 | k12 | Unqualified app/native clock relation; strict false/empty joins unchanged, no fitting/widening/host substitution. | [exact original](original-briefs/k29.txt) |
 | k31 | k12 | Successful marker counterexamples, no discriminator or cause; held causal protocol. | [exact original](original-briefs/k31.txt) |
-| k33 | k12; k36 empirical evaluation | Accepted k42/k46 amendments, exclusions, unresolved native duties, held six causal slots and aggregate repair. | [exact original](original-briefs/k33.txt) |
-| k36 | k36; k12 causal residue | One named ordering correction, complete harness/caller/readiness, fixed E/A outcome and whole-duty reconciliation. | [exact original](original-briefs/k36.txt) |
-| k53 | k36; k76/k67/k62/k57/k54 | Complete strict shared harness migration, actual predicates, finite caller, failing controls and reviewed runtime prerequisites. | [exact original](original-briefs/k53.txt) |
-| k56 | k36; k76/k62 | Latch and failed-confirmation handling, common non-exec ordinal/lock domain, signals, prefix and later ordinary duties. | [exact original](original-briefs/k56.txt) |
+| k33 | k12; k36 empirical evaluation; k57 pre-runtime API check | Accepted k42/k46 amendments, exclusions, primary-source API/citation duties, unresolved native duties, held six causal slots and aggregate repair. | [exact original](original-briefs/k33.txt) |
+| k36 | k36; k57 pre-runtime reconciliation; k12 causal residue | One named ordering correction, complete harness/caller/readiness, primary-source API/citation check, fixed E/A outcome and whole-duty reconciliation. | [exact original](original-briefs/k36.txt) |
+| k53 | k36; k76/k67/k62/k57/k54 | Complete strict shared harness migration, actual predicates, finite caller, failing controls and reviewed runtime prerequisites; k57 reconciles all source/controls before k54. | [exact original](original-briefs/k53.txt) |
+| k56 | k36; k76/k62; k57 pre-runtime reconciliation | Latch and failed-confirmation handling, common non-exec ordinal/lock domain, signals, prefix and later ordinary duties; k62 compares shared-scenario duties before k57. | [exact original](original-briefs/k56.txt) |
 | k61 | k36; k76/k81/k89 | Actual caller/schema predicates; clean list-shaped negatives only; typed errors unavailable; reviewed evidence class and read-only exec collection. | [exact original](original-briefs/k61.txt) |
 | k66 | k36; k76/k57 | Exact root every transport, all signals, both held-pointer controls, no corrective release, ordered containment and private receipts. | [exact original](original-briefs/k66.txt) |
 | k71 | k36; k76/k57 | Whole TextEdit loop replacement without extra read; local status distinctions, unchanged actions/reads/waits and privacy. | [exact original](original-briefs/k71.txt) |
@@ -101,13 +101,26 @@ design, independent review/integration, planning, implementation and earned
 reviews/integrations. k67/k62/k57/k54 retain their setup, prefix, finite caller and
 readiness/runtime duties. k12 owns all native uncertainty and accepted amendment
 limits from k12–k33. Root retains whole-workstream acceptance and final handoff.
+
+The removed nodes' closing checks remain pre-runtime duties. Before k57, k62
+compares all original shared-scenario and inherited migration duties, including
+ordinary assertions beyond the prefix, against source/controls and resolves or
+cuts precise missing work. Before k54 freezes a subject or requests any clone,
+k57 owns the complete per-duty reconciliation of k53/k56/k61/k66/k71/k75/k80/k85,
+consuming that comparison and every earned review/integration. It also checks
+k52 against the original k33/k36 primary-source public API and decision-site
+citation duties. k54 must verify that this evidence covers its frozen artifacts;
+changed artifacts reopen affected checks and earned reviews. k36 retains final
+outcome reconciliation after runtime. Koine failure, test-driver failure and an
+assertion NOT RUN remain separate throughout the root and Settings handoff.
+
 k23 alone repairs the known archived reading-aid links; their existing failure is
 not permission to alter measured charters or claim the aids were consumed.
 
 ## Structural verification
 
 The original tree had 31 briefs totalling 5,220 lines and at most 27 ancestor
-directories for a leaf. The retained tree has four briefs totalling 352 lines
+directories for a leaf. At k140, the retained tree had four briefs totalling 352 lines
 and at most three ancestor directories; k125 falls from 26 to three. The
 comparison used every original leaf, in order: all 110 keys, handles, kinds and
 outcomes match. Terminal bodies are byte-identical; ten pending bodies have
@@ -115,6 +128,8 @@ only appended ownership supplements. The structural task's own running log
 records its decisions. All 31 archived brief digests match their original bytes.
 Swapping two ordered identities and altering an archived byte both make the
 corresponding comparison fail. Grove's tree reader accepts the canonical layout.
+The k142 integration adds explicit pre-runtime ownership and acceptance clauses
+and Done-when headings to the retained briefs; 352 lines describes k140's artifact.
 
 A review-planning sibling of k140 precedes the Settings branch and k125. Its
 independent obligation-preservation review, and any integration it earns, must

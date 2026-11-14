@@ -17,6 +17,8 @@ reproducer where the evidence cannot establish a repair or ownership.
 - The remaining Settings repair and separate complete ordinary acceptance are
   reconciled by k12. Every started attempt, failure, partial and NOT RUN phase,
   candidate/input/environment identity and exact-clone cleanup is retained.
+  Distinguish a Koine failure, a test-driver failure and an assertion that did
+  not run; missing required evidence does not establish product failure.
 - Reusable Taskfile checks and verification documentation explain the correction,
   reproducer and remaining uncertainty. k23 owns the existing archived-link aids;
   k11 owns final handoff and requires explicit human confirmation to finish.

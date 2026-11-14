@@ -74,3 +74,16 @@ private unique originals/partials and finite storage planning. Failed-start
 orphan holders and clean down without confirmed release block later admission;
 no bypass/reset or compensating release. One budgeted exact stop plus independent
 inventory remains the limit, with unresolved holder/cleanup blocking every slot.
+
+The original instruction to check parents before closing k53 now means: before
+handoff to k54, reconcile every original k53/k56/k61/k66/k71/k75/k80/k85 duty
+against delivered source and meaningful controls. Use the exact archived
+contracts named in the ownership table, consume k62's completed shared-scenario
+comparison and record per-duty source/control evidence and disposition. Include
+k52's applicable public API contracts checked against primary sources and
+non-obvious calls cited at their decision sites, as required by original k33/k36.
+Preserve the reviewed preconditions, effects and OS discretion. Missing evidence
+is not a passed duty: resolve precise gaps through additional leaves before k54,
+with every earned whole-harness/caller review and integration complete. Neither
+freeze nor any clone request may precede this reconciliation. k36's final outcome
+comparison remains a separate duty after k54; it cannot defer these checks.
