@@ -1,0 +1,1402 @@
+{
+  "originalBriefs": [
+    {
+      "key": 0,
+      "path": ".grove/_BRIEF.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k0.txt",
+      "sha256": "232515c5d877274af9ffc184c6016666d1854fe53db455830fb9ffb5706fdb69",
+      "headings": [
+        "Koine menu-bar VM reliability \u2014 brief",
+        "Agreed keepalive design scope",
+        "Capture artifact expansion boundary",
+        "Physical helper migration boundary",
+        "Shared evidence expansion boundary",
+        "Strict exec evidence boundary",
+        "Application implementation boundary",
+        "Reviewed ordering design and implementation handoff",
+        "Earlier K46 accepted empirical design scope",
+        "Reviewed correction assessment",
+        "Accepted Settings repair scope",
+        "Earlier evidence handoffs",
+        "Implemented protocol handoff",
+        "Direct native-call recorder handoff",
+        "Independent native focus handoff",
+        "Offline native clock handoff",
+        "Goal",
+        "Done when",
+        "Decomposition",
+        "Test seams \u2014 agreed with Antony",
+        "Pointers",
+        "Notes",
+        "Menu-interaction handoff",
+        "Resize investigation handoff",
+        "Qualified resize handoff",
+        "Bounded comparison handoff",
+        "Settings activation observation handoff",
+        "Activation ordering comparison handoff",
+        "Native activation-path qualification handoff",
+        "Reduced activation-context handoff",
+        "Buffered event-context handoff",
+        "Deferred acquisition evidence and remaining actual-path work",
+        "Actual-path retention handoff",
+        "Persisted Debug failure and remaining clock/disposition work",
+        "Capture review integration boundary",
+        "Owner lifecycle design boundary"
+      ],
+      "contractOwner": "root",
+      "disposition": "retained with additive brief"
+    },
+    {
+      "key": 12,
+      "path": ".grove/06-k12/_settings-reopen-activation.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k12.txt",
+      "sha256": "05b5e008bceabbc4a1e320ddd603505d7333b0efe85208a6e4c35d78c54508e1",
+      "headings": [
+        "settings-reopen-activation-k12 \u2014 brief",
+        "Goal",
+        "Context",
+        "Done when",
+        "Notes",
+        "Decisions (running log)",
+        "Decomposition and handoff",
+        "Implementation plan",
+        "Ordering experiment handoff",
+        "Native-path qualification handoff",
+        "Reduced-context evidence and original-duty reconciliation",
+        "Buffered event evidence and remaining causal work",
+        "Deferred acquisition evidence and remaining actual-path work",
+        "Persisted Debug failure and remaining clock/disposition work"
+      ],
+      "contractOwner": "k12",
+      "disposition": "retained with additive brief"
+    },
+    {
+      "key": 2,
+      "path": ".grove/02-k2/_menu-interaction.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k2.txt",
+      "sha256": "49712cd06c6227694d7010f5e4bc02ec424b693943ab04c6b9b403f1dc7cab40",
+      "headings": [
+        "menu-interaction-k2 \u2014 brief",
+        "Goal",
+        "Context",
+        "Done when",
+        "Notes",
+        "Decisions (running log)",
+        "Execution plan",
+        "Decomposition",
+        "Original acceptance check and handoff"
+      ],
+      "contractOwner": "root; k12 residual Settings repair",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 3,
+      "path": ".grove/03-k3/_window-resize.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k3.txt",
+      "sha256": "f76c7ed35c18c504934d6a92c4df1d340407bbec5251dbe7a11244c1473d97cd",
+      "headings": [
+        "window-resize-k3 \u2014 brief",
+        "Goal",
+        "Context",
+        "Done when",
+        "Notes",
+        "Decisions (running log)",
+        "K10 contract closure"
+      ],
+      "contractOwner": "root; k36 current ordinary assertions",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 6,
+      "path": ".grove/02-k2/02-k6/_menu-focus.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k6.txt",
+      "sha256": "2ab4a8422c6f0a4aab1785cb03998475dc371906854287eb7ebddf9c9a670716",
+      "headings": [
+        "menu-focus-k6 \u2014 brief",
+        "Goal",
+        "Context",
+        "Done when",
+        "Evidence precision",
+        "Decisions (running log)",
+        "Original acceptance check and handoff"
+      ],
+      "contractOwner": "root; k12 residual Settings repair",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 14,
+      "path": ".grove/06-k12/02-k14/_settings-activation-repair.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k14.txt",
+      "sha256": "e91e439f09b3a4d0062ace5023ef15aa9c8f792d8a5edde3c1b5f3c16624a333",
+      "headings": [
+        "settings-activation-repair-k14 \u2014 brief",
+        "Goal",
+        "Context",
+        "Done when",
+        "Notes",
+        "Decisions (running log)",
+        "Implementation plan",
+        "Ordering comparison handoff",
+        "Native-path qualification handoff",
+        "Reduced-context evidence and original-duty reconciliation",
+        "Buffered event evidence and remaining causal work",
+        "Deferred acquisition evidence and remaining actual-path work",
+        "Persisted Debug failure and remaining clock/disposition work"
+      ],
+      "contractOwner": "k12; k36 empirical evaluation",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 16,
+      "path": ".grove/06-k12/02-k14/02-k16/_settings-activation-native-path.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k16.txt",
+      "sha256": "3ffb3862ad3507e19774543f1f172ec26170339e1b974afc3c5a4cd7b3369592",
+      "headings": [
+        "settings-activation-native-path-k16 \u2014 brief",
+        "Goal",
+        "Context",
+        "Done when",
+        "Notes",
+        "Decisions (running log)",
+        "Implementation plan",
+        "Native qualification handoff",
+        "Reduced-context evidence and original-duty reconciliation",
+        "Buffered event evidence and remaining causal work",
+        "Deferred acquisition evidence and remaining actual-path work",
+        "Persisted Debug failure and remaining clock/disposition work"
+      ],
+      "contractOwner": "k12",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 18,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/_settings-activation-context.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k18.txt",
+      "sha256": "abf4d73366fb537757a90073defe7ebf3f76dd009616d74ddf0f302a4ae3f893",
+      "headings": [
+        "settings-activation-context-k18 \u2014 brief",
+        "Goal",
+        "Context",
+        "Done when",
+        "Notes",
+        "Decisions (running log)",
+        "Implementation plan",
+        "Reduced-context evidence and original-duty reconciliation",
+        "Buffered event evidence and remaining causal work",
+        "Deferred acquisition evidence and remaining actual-path work",
+        "Persisted Debug failure and remaining clock/disposition work"
+      ],
+      "contractOwner": "k12",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 20,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/_settings-event-context.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k20.txt",
+      "sha256": "77a03a4efc2062eea364925887fd4d70e5bf5fc89fc81d935cf6790c8d3321e1",
+      "headings": [
+        "settings-event-context-k20 \u2014 brief",
+        "Goal",
+        "Context",
+        "Done when",
+        "Decisions (running log)",
+        "Implementation plan",
+        "Buffered event evidence and remaining causal work",
+        "Final decisions for the buffered evidence slice",
+        "Deferred acquisition evidence and remaining actual-path work",
+        "Persisted Debug failure and remaining clock/disposition work"
+      ],
+      "contractOwner": "k12; k23 archive aids",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 22,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/_settings-deferred-native-capture.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k22.txt",
+      "sha256": "3bbbd7892d481026c7061a68790dcb3ccd0c9f0d8419263e708f7e5e37527c4e",
+      "headings": [
+        "settings-deferred-native-capture-k22 \u2014 brief",
+        "Goal",
+        "Context",
+        "Done when",
+        "Notes",
+        "Decisions (running log)",
+        "Implementation plan",
+        "Deferred acquisition evidence and remaining actual-path work",
+        "Actual-path retention handoff",
+        "Persisted Debug failure and remaining clock/disposition work"
+      ],
+      "contractOwner": "k12; k36/k54/k57 live integrity",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 25,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/_settings-deferred-path-qualification.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k25.txt",
+      "sha256": "e66d116cf502f9b708cfe0c0a9529bd0843b61d7ae287fd3f860e28a1c9a5dc7",
+      "headings": [
+        "settings-deferred-path-qualification-k25 \u2014 brief",
+        "Goal",
+        "Context",
+        "Done when",
+        "Decisions (running log)",
+        "Implementation plan",
+        "Actual-path retention handoff",
+        "Persisted Debug failure and remaining clock/disposition work"
+      ],
+      "contractOwner": "k12",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 27,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/_settings-activation-disposition.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k27.txt",
+      "sha256": "5b49aa8feabbe2543c7c678d7f5214302056048fd8ce4606deda01af71ff0098",
+      "headings": [
+        "settings-activation-disposition-k27 \u2014 brief",
+        "Offline clock boundary",
+        "Goal",
+        "Context",
+        "Done when",
+        "Decisions (running log)",
+        "Implementation plan",
+        "Persisted Debug failure and remaining clock/disposition work"
+      ],
+      "contractOwner": "k12",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 29,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/_settings-native-clock-disposition.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k29.txt",
+      "sha256": "cb328901f25a90b53062f1dba0b6b0ce898ed420e54d30fca2d38b6cb96e9a07",
+      "headings": [
+        "settings-native-clock-disposition-k29 \u2014 brief",
+        "Decisions (running log)",
+        "Goal",
+        "Context",
+        "Done when",
+        "Independent focus-context handoff"
+      ],
+      "contractOwner": "k12",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 31,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/_settings-measured-native-disposition.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k31.txt",
+      "sha256": "d6da359991b4488b219ac663726f06edaa87668ce2d13fa86efba0e71e0e621d",
+      "headings": [
+        "settings-measured-native-disposition-k31 \u2014 brief",
+        "Goal",
+        "Context",
+        "Done when",
+        "Notes",
+        "Decisions (running log)",
+        "Native focus evidence and remaining causal work"
+      ],
+      "contractOwner": "k12",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 33,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/_settings-causal-activation-repair.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k33.txt",
+      "sha256": "1139e0824cdc96ce5fefb59850e65bdf1961f7de66dd16b6f5854dceab6ac433",
+      "headings": [
+        "settings-causal-activation-repair-k33 \u2014 brief",
+        "Application implementation boundary",
+        "Reviewed ordering design and implementation handoff",
+        "Earlier K46 accepted empirical design scope",
+        "Reviewed no-candidate boundary",
+        "K42 accepted scope and remaining work",
+        "Earlier evidence handoffs and original charter",
+        "K41 integration boundary",
+        "Implemented narrow protocol boundary",
+        "Review integration boundary",
+        "Goal",
+        "Context",
+        "Done when",
+        "Notes",
+        "Decisions (running log)",
+        "Implementation plan",
+        "Direct-call recorder boundary"
+      ],
+      "contractOwner": "k12; k36 empirical evaluation",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 36,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/_settings-modality-disposition-repair.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k36.txt",
+      "sha256": "a8d650bedd2f33f49fecd258632d7a1edad6322e0302cf8cc890ed082a2438ff",
+      "headings": [
+        "settings-modality-disposition-repair-k36 \u2014 brief",
+        "Strict exec evidence boundary",
+        "Application implementation boundary",
+        "Implementation decomposition",
+        "Reviewed ordering design and implementation handoff",
+        "Earlier K46 approval and retained requirements",
+        "K42 accepted scope and execution boundary",
+        "Goal",
+        "Context",
+        "Done when",
+        "Preserved causal-protocol duties",
+        "Notes"
+      ],
+      "contractOwner": "k36; k12 causal residue",
+      "disposition": "retained with additive brief"
+    },
+    {
+      "key": 53,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/_settings-ordering-harness.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k53.txt",
+      "sha256": "cb5c223258e834a1c4b83cdf7ed922c3505c9f6b15c14008f1583c1dbd09c35d",
+      "headings": [
+        "settings-ordering-harness-k53 \u2014 brief",
+        "Physical helper migration boundary",
+        "Strict exec evidence boundary",
+        "Goal",
+        "Context",
+        "Done when",
+        "Notes",
+        "Decomposition",
+        "Decisions (running log)"
+      ],
+      "contractOwner": "k36; k76/k67/k62/k57/k54",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 56,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/_settings-shared-scenario.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k56.txt",
+      "sha256": "aff2c98351c6d490f821d8d4a71714104839d46bc78d481bbc18853d14596b2d",
+      "headings": [
+        "settings-shared-scenario-k56 \u2014 brief",
+        "Physical helper migration boundary",
+        "Goal",
+        "Context",
+        "Done when",
+        "Notes",
+        "Decomposition",
+        "Decisions (running log)"
+      ],
+      "contractOwner": "k36; k76/k62",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 61,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/_settings-scenario-migration.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k61.txt",
+      "sha256": "88b6656c10e4438d36cdda4b27c44a53b9508e3ce607f092f7428f191cab4ddf",
+      "headings": [
+        "settings-scenario-migration-k61 \u2014 brief",
+        "Physical helper migration boundary",
+        "Goal",
+        "Context",
+        "Done when",
+        "Notes",
+        "Decisions (running log)",
+        "Decomposition"
+      ],
+      "contractOwner": "k36; k76/k81/k89",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 66,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/_settings-scenario-transports.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k66.txt",
+      "sha256": "a553e3d22dcfc622a4faab73c17b38890731aaf5c564c88ac1a02c226146e400",
+      "headings": [
+        "settings-scenario-transports-k66 \u2014 brief",
+        "Goal",
+        "Context",
+        "Done when",
+        "Notes",
+        "Decisions (running log)",
+        "Decomposition",
+        "Window transport handoff"
+      ],
+      "contractOwner": "k36; k76/k57",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 71,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/_settings-scenario-remaining.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k71.txt",
+      "sha256": "a1384b74c64c87ae9eb13ad8673edcf53cb2e577a849fd5f6f214ff26e3e062c",
+      "headings": [
+        "settings-scenario-remaining-k71 \u2014 brief",
+        "Goal",
+        "Context",
+        "Done when",
+        "Notes",
+        "Decisions (running log)",
+        "Decomposition",
+        "Input migration handoff",
+        "K78 integration handoff"
+      ],
+      "contractOwner": "k36; k76/k57",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 75,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/_settings-evidence-confirmations.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k75.txt",
+      "sha256": "9037b6b547e60edbe25c16dfed1d41e20c6017d9a902263da3c8b47f8cf108eb",
+      "headings": [
+        "settings-evidence-confirmations-k75 \u2014 brief",
+        "Goal",
+        "Context",
+        "Done when",
+        "Notes",
+        "K78 integration handoff",
+        "Decisions (running log)",
+        "Decomposition",
+        "Snapshot evidence handoff",
+        "K83 snapshot review integration handoff",
+        "K80 decomposition and click boundary"
+      ],
+      "contractOwner": "k36; k81/k89/k76",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 80,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/_settings-artifact-evidence.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k80.txt",
+      "sha256": "2d85e397797b5f7ef29926f4bc3c39aff87e2e81a752e7f2bd7bbbd00bab56e9",
+      "headings": [
+        "settings-artifact-evidence-k80 \u2014 brief",
+        "Goal",
+        "Context",
+        "Done when",
+        "K83 snapshot review integration handoff",
+        "Decisions (running log)",
+        "Decomposition",
+        "K87 click review integration handoff",
+        "Capture/file/lifecycle decomposition boundary"
+      ],
+      "contractOwner": "k36; k89/k81/k76",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 85,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/_settings-capture-lifecycle-evidence.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k85.txt",
+      "sha256": "165feee8aee68d3dfc1e5bf4f1d8fd8a2822e5532d3e0b219466dfcd451cfe85",
+      "headings": [
+        "settings-capture-lifecycle-evidence-k85 \u2014 brief",
+        "Goal",
+        "Context",
+        "Done when",
+        "Decisions (running log)",
+        "Decomposition",
+        "Capture artifact handoff",
+        "K91 capture review integration handoff",
+        "Agreed keepalive design scope",
+        "Owner lifecycle design boundary"
+      ],
+      "contractOwner": "k36; k89/k76/k57; k96 owner design",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 96,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/_settings-keepalive-owner.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k96.txt",
+      "sha256": "88574fe5932bfe1cc2b9e94d58b41533f35c3afd7717765fd6386efde333a5d9",
+      "headings": [
+        "settings-keepalive-owner-k96 \u2014 brief",
+        "Goal",
+        "Context",
+        "Done when",
+        "Notes",
+        "Decisions (running log)",
+        "Decomposition and current handoff",
+        "Scheduling and resource design handoff"
+      ],
+      "contractOwner": "k96; k125/k126",
+      "disposition": "retained with additive brief"
+    },
+    {
+      "key": 98,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/_settings-keepalive-profile.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k98.txt",
+      "sha256": "3700bf5a1c59768185152d864c22f0681d8af3a04d4e25c9e494918c7c413bf1",
+      "headings": [
+        "settings-keepalive-profile-k98 \u2014 brief",
+        "Goal",
+        "Context",
+        "Done when",
+        "Notes",
+        "Decisions (running log)"
+      ],
+      "contractOwner": "k96; k126; k125 external evidence",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 102,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/_settings-keepalive-resources.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k102.txt",
+      "sha256": "8834a308549dfb63fdfbc8394beaa1dc1fd4e43932df625f78e434557f31961d",
+      "headings": [
+        "settings-keepalive-resources-k102 \u2014 brief",
+        "Goal",
+        "Context",
+        "Done when",
+        "Notes",
+        "Decisions (running log)",
+        "Decomposition and retained charter"
+      ],
+      "contractOwner": "k96; k126; k125 external evidence",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 107,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/_settings-keepalive-complete-profile.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k107.txt",
+      "sha256": "879a50c2187c39d8bc43ba85f1d8169e0f1b18505dbd2dc3e4a2e9c1066cca37",
+      "headings": [
+        "settings-keepalive-complete-profile-k107 \u2014 brief",
+        "Goal",
+        "Context",
+        "Done when",
+        "Notes",
+        "Decomposition",
+        "Decisions (running log)",
+        "Qualification proposal handoff"
+      ],
+      "contractOwner": "k96; k126; k125 external evidence",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 112,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/_settings-keepalive-complete-profile.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k112.txt",
+      "sha256": "f435dd44df02313661da4c0fcdfe25a83dbabadd89b71776cd3fcb0580e2238b",
+      "headings": [
+        "settings-keepalive-complete-profile-k112 \u2014 brief",
+        "Goal",
+        "Context",
+        "Done when",
+        "Decomposition",
+        "Notes",
+        "Decisions (running log)",
+        "Record schema handoff"
+      ],
+      "contractOwner": "k96; k126; k125 external evidence",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 119,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/05-k119/_settings-keepalive-profile-reconciliation.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k119.txt",
+      "sha256": "40e6a76b19cb5073f466b882f0f9d3859a4d3eeafc1b6ff8d2d73ed6132d288b",
+      "headings": [
+        "settings-keepalive-profile-reconciliation-k119 \u2014 brief",
+        "Goal",
+        "Context",
+        "Done when",
+        "Notes",
+        "Record schema input",
+        "Integrated record accounting inputs",
+        "Decomposition and retained charter",
+        "Decisions (running log)",
+        "Workload handoff"
+      ],
+      "contractOwner": "k96; k126; k125 external evidence",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    },
+    {
+      "key": 124,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/05-k119/07-k124/_settings-keepalive-workload-accounting.md",
+      "archive": "docs/verification/grove-tree-structure/original-briefs/k124.txt",
+      "sha256": "28a9a37e1f653e7b83162d0fd92697f85f21448586bd5c8a2863ffb54c016950",
+      "headings": [
+        "settings-keepalive-workload-accounting-k124 \u2014 brief",
+        "Goal",
+        "Context",
+        "Done when",
+        "Notes",
+        "Decomposition and retained charter",
+        "Decisions (running log)",
+        "Combined accounting handoff",
+        "Remaining caller workload",
+        "Caller design handoff and full charter check"
+      ],
+      "contractOwner": "k96; k126; k125 external evidence; k57/k76/k67/k81 caller seams",
+      "disposition": "flattened; duties transferred, not accepted or abandoned"
+    }
+  ],
+  "leaves": [
+    {
+      "key": 1,
+      "path": ".grove/01-DONE-requirements--plan-k1.md",
+      "name": "01-DONE-requirements--plan-k1.md",
+      "sha256": "8218e133be189d3a389aea4af6be4945fad3c72a6a69e69499a8563858566e55",
+      "newPath": ".grove/01-DONE-requirements--plan-k1.md"
+    },
+    {
+      "key": 5,
+      "path": ".grove/02-k2/01-DONE-impl--menu-pointer-k5.md",
+      "name": "01-DONE-impl--menu-pointer-k5.md",
+      "sha256": "42b1c03672bc782b98f0770e88c6acd0dec53eece1584638c7ea58d34b42c30b",
+      "newPath": ".grove/02-DONE-impl--menu-pointer-k5.md"
+    },
+    {
+      "key": 7,
+      "path": ".grove/02-k2/02-k6/01-DONE-impl--menu-focus-evidence-k7.md",
+      "name": "01-DONE-impl--menu-focus-evidence-k7.md",
+      "sha256": "d29fd5cd2a29089aec07d74c0f8c1d72e370337c348d1ffc481b137cc56206cc",
+      "newPath": ".grove/03-DONE-impl--menu-focus-evidence-k7.md"
+    },
+    {
+      "key": 8,
+      "path": ".grove/02-k2/02-k6/02-DONE-impl--menu-activation-k8.md",
+      "name": "02-DONE-impl--menu-activation-k8.md",
+      "sha256": "4df454aa9363a523bd80872e2c225ed0dac2b08353db4ef3033150143d835f05",
+      "newPath": ".grove/04-DONE-impl--menu-activation-k8.md"
+    },
+    {
+      "key": 9,
+      "path": ".grove/03-k3/01-DONE-impl--resize-input-evidence-k9.md",
+      "name": "01-DONE-impl--resize-input-evidence-k9.md",
+      "sha256": "cb51ff7b3c7fb284a4765b78d538b257fae125de2db7076ceeefeb5558fdd33a",
+      "newPath": ".grove/05-DONE-impl--resize-input-evidence-k9.md"
+    },
+    {
+      "key": 10,
+      "path": ".grove/03-k3/02-DONE-impl--resize-input-delivery-k10.md",
+      "name": "02-DONE-impl--resize-input-delivery-k10.md",
+      "sha256": "d7342e546f8468c8f6cabe9c72a91cfeb8d936481340e3efcbf572d6fb5de274",
+      "newPath": ".grove/06-DONE-impl--resize-input-delivery-k10.md"
+    },
+    {
+      "key": 4,
+      "path": ".grove/04-DONE-impl--menu-bar-samples-k4.md",
+      "name": "04-DONE-impl--menu-bar-samples-k4.md",
+      "sha256": "5ca709ea696180fe441e3d91a820bee77cb2049f876e15ca86fe0fb06b0dda04",
+      "newPath": ".grove/07-DONE-impl--menu-bar-samples-k4.md"
+    },
+    {
+      "key": 140,
+      "path": ".grove/05-planning--grove-tree-structure-k140.md",
+      "name": "05-planning--grove-tree-structure-k140.md",
+      "sha256": "bcc00dfabd051dc78e97b921016164db1a939a37b27f3bbb72b36e11d50804d4",
+      "newPath": ".grove/08-DONE-planning--grove-tree-structure-k140.md"
+    },
+    {
+      "key": 13,
+      "path": ".grove/06-k12/01-DONE-impl--settings-activation-observation-k13.md",
+      "name": "01-DONE-impl--settings-activation-observation-k13.md",
+      "sha256": "c2c44c5a73b0e9d99adc30511f7d5b77c43f0182e50409a426a9402233cd6f30",
+      "newPath": ".grove/10-k12/01-DONE-impl--settings-activation-observation-k13.md"
+    },
+    {
+      "key": 15,
+      "path": ".grove/06-k12/02-k14/01-DONE-impl--settings-activation-order-evidence-k15.md",
+      "name": "01-DONE-impl--settings-activation-order-evidence-k15.md",
+      "sha256": "49630dd0c58189cc5ea5cedf5063580af38444a1fa4064a4e771b0e38dd8c911",
+      "newPath": ".grove/10-k12/02-DONE-impl--settings-activation-order-evidence-k15.md"
+    },
+    {
+      "key": 17,
+      "path": ".grove/06-k12/02-k14/02-k16/01-DONE-impl--settings-activation-native-evidence-k17.md",
+      "name": "01-DONE-impl--settings-activation-native-evidence-k17.md",
+      "sha256": "290450d1f0b224057f4da7ff5908b0ca4e4e7448506730c392918a557df0fb49",
+      "newPath": ".grove/10-k12/03-DONE-impl--settings-activation-native-evidence-k17.md"
+    },
+    {
+      "key": 19,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/01-DONE-impl--settings-context-evidence-k19.md",
+      "name": "01-DONE-impl--settings-context-evidence-k19.md",
+      "sha256": "697020ed9b8012991de22fd0901684fe8b1db2f83e4362db8a2d68fc46bc033c",
+      "newPath": ".grove/10-k12/04-DONE-impl--settings-context-evidence-k19.md"
+    },
+    {
+      "key": 21,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/01-DONE-impl--settings-buffered-evidence-k21.md",
+      "name": "01-DONE-impl--settings-buffered-evidence-k21.md",
+      "sha256": "7812934c81b134eed85ae232ea93bd20efd45f744c0fb046da729aa05da99d10",
+      "newPath": ".grove/10-k12/05-DONE-impl--settings-buffered-evidence-k21.md"
+    },
+    {
+      "key": 24,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/01-DONE-impl--settings-deferred-capture-evidence-k24.md",
+      "name": "01-DONE-impl--settings-deferred-capture-evidence-k24.md",
+      "sha256": "af57b4118f993736f82292d9c3522e6c67724e53440b9b551be27f1e4bafa044",
+      "newPath": ".grove/10-k12/06-DONE-impl--settings-deferred-capture-evidence-k24.md"
+    },
+    {
+      "key": 26,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/01-DONE-impl--settings-retention-evidence-k26.md",
+      "name": "01-DONE-impl--settings-retention-evidence-k26.md",
+      "sha256": "b47b4be5241fb8f9d78a077a28c56a78c593a9fb0089371725314ae647368784",
+      "newPath": ".grove/10-k12/07-DONE-impl--settings-retention-evidence-k26.md"
+    },
+    {
+      "key": 28,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/01-DONE-impl--settings-persisted-evidence-k28.md",
+      "name": "01-DONE-impl--settings-persisted-evidence-k28.md",
+      "sha256": "255fdd01a40acc7d28bd9f839bff5909b1e596334ce292171e1d65b65b764d30",
+      "newPath": ".grove/10-k12/08-DONE-impl--settings-persisted-evidence-k28.md"
+    },
+    {
+      "key": 30,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/01-DONE-impl--settings-native-clock-evidence-k30.md",
+      "name": "01-DONE-impl--settings-native-clock-evidence-k30.md",
+      "sha256": "ddd1f1de14e309496b2a147fe732c369e026587d76d484464eeb3ebfce285cf4",
+      "newPath": ".grove/10-k12/09-DONE-impl--settings-native-clock-evidence-k30.md"
+    },
+    {
+      "key": 32,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/01-DONE-impl--settings-native-focus-evidence-k32.md",
+      "name": "01-DONE-impl--settings-native-focus-evidence-k32.md",
+      "sha256": "dc4babd6beaefb3c372c8b9399eb092af4299b9e853f03aac69f1931b65dba57",
+      "newPath": ".grove/10-k12/10-DONE-impl--settings-native-focus-evidence-k32.md"
+    },
+    {
+      "key": 34,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/01-DONE-impl--settings-native-interval-evidence-k34.md",
+      "name": "01-DONE-impl--settings-native-interval-evidence-k34.md",
+      "sha256": "67d9ca5568c176a2bb9892ce9734c87fe680df6b3bb1ac3779fca7a0d3cad9a4",
+      "newPath": ".grove/10-k12/11-DONE-impl--settings-native-interval-evidence-k34.md"
+    },
+    {
+      "key": 35,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/02-DONE-review-impl--settings-native-interval-evidence-k35.md",
+      "name": "02-DONE-review-impl--settings-native-interval-evidence-k35.md",
+      "sha256": "90c1db59dfb6f227d5a0ba129baf25f799a471f6c04c8c3f4a6d069fe7f0eb8f",
+      "newPath": ".grove/10-k12/12-DONE-review-impl--settings-native-interval-evidence-k35.md"
+    },
+    {
+      "key": 37,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/03-DONE-integrate-review-impl--settings-native-interval-evidence-k37.md",
+      "name": "03-DONE-integrate-review-impl--settings-native-interval-evidence-k37.md",
+      "sha256": "ae6ef6716ba36d377499e64f2e2e46bfd8ce3911fad822a952fe551af86a728f",
+      "newPath": ".grove/10-k12/13-DONE-integrate-review-impl--settings-native-interval-evidence-k37.md"
+    },
+    {
+      "key": 38,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/04-DONE-impl--settings-causal-protocol-k38.md",
+      "name": "04-DONE-impl--settings-causal-protocol-k38.md",
+      "sha256": "f74527113fe9a35b760d3b769fbac982940944bd09599ada3cc88c17d4dbf524",
+      "newPath": ".grove/10-k12/14-DONE-impl--settings-causal-protocol-k38.md"
+    },
+    {
+      "key": 40,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/05-DONE-review-impl--settings-causal-protocol-k40.md",
+      "name": "05-DONE-review-impl--settings-causal-protocol-k40.md",
+      "sha256": "7579b235bae3f137bd6fa1ec36bb30676b139a9eb228bac4b1a5ce3edd5d0be8",
+      "newPath": ".grove/10-k12/15-DONE-review-impl--settings-causal-protocol-k40.md"
+    },
+    {
+      "key": 41,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/06-DONE-integrate-review-impl--settings-causal-protocol-k41.md",
+      "name": "06-DONE-integrate-review-impl--settings-causal-protocol-k41.md",
+      "sha256": "a4bd3c3eecfd8cf5c0662771655ac0ecbd77e071310e3c1cc7976a93e0e2d2f9",
+      "newPath": ".grove/10-k12/16-DONE-integrate-review-impl--settings-causal-protocol-k41.md"
+    },
+    {
+      "key": 39,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/07-DONE-design--settings-causal-discrimination-k39.md",
+      "name": "07-DONE-design--settings-causal-discrimination-k39.md",
+      "sha256": "56181cb9d5e3e94c8d66dbf335184e71dc16e9370760e01f5d8a5c273e643cc7",
+      "newPath": ".grove/10-k12/17-DONE-design--settings-causal-discrimination-k39.md"
+    },
+    {
+      "key": 43,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/08-DONE-review-design--settings-causal-discrimination-k43.md",
+      "name": "08-DONE-review-design--settings-causal-discrimination-k43.md",
+      "sha256": "e927583525c058ffd5146ac672e64c27823301a7b261516b0a1eb0da34458332",
+      "newPath": ".grove/10-k12/18-DONE-review-design--settings-causal-discrimination-k43.md"
+    },
+    {
+      "key": 44,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/09-DONE-integrate-review-design--settings-causal-discrimination-k44.md",
+      "name": "09-DONE-integrate-review-design--settings-causal-discrimination-k44.md",
+      "sha256": "2cc1baa5e592c303b98b849af75a3181008ffc951c4e0e34219f25a0d58c9a9d",
+      "newPath": ".grove/10-k12/19-DONE-integrate-review-design--settings-causal-discrimination-k44.md"
+    },
+    {
+      "key": 42,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/10-DONE-requirements--settings-activation-scope-k42.md",
+      "name": "10-DONE-requirements--settings-activation-scope-k42.md",
+      "sha256": "b326c0e16551dfb8bddfd0032a5fc9d24f3f6650690918cbd7871df3e0469b12",
+      "newPath": ".grove/10-k12/20-DONE-requirements--settings-activation-scope-k42.md"
+    },
+    {
+      "key": 45,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/11-DONE-design--settings-activation-correction-k45.md",
+      "name": "11-DONE-design--settings-activation-correction-k45.md",
+      "sha256": "439c34e5973e38ae114cfb3b8ca046f52e3697ec27ef10c6d15c71f73740cb27",
+      "newPath": ".grove/10-k12/21-DONE-design--settings-activation-correction-k45.md"
+    },
+    {
+      "key": 47,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/12-DONE-review-design--settings-activation-correction-k47.md",
+      "name": "12-DONE-review-design--settings-activation-correction-k47.md",
+      "sha256": "d84b6f4e76c9b6b70dc410aa850d220ba5c0b5540fce5316f4129cba3ff961bf",
+      "newPath": ".grove/10-k12/22-DONE-review-design--settings-activation-correction-k47.md"
+    },
+    {
+      "key": 48,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/13-DONE-integrate-review-design--settings-activation-correction-k48.md",
+      "name": "13-DONE-integrate-review-design--settings-activation-correction-k48.md",
+      "sha256": "b3fb61fc519f57dfa3045cb43f79b2b79aa801bdb52c2097419d5cb6570f7473",
+      "newPath": ".grove/10-k12/23-DONE-integrate-review-design--settings-activation-correction-k48.md"
+    },
+    {
+      "key": 46,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/14-DONE-requirements--settings-activation-evaluation-scope-k46.md",
+      "name": "14-DONE-requirements--settings-activation-evaluation-scope-k46.md",
+      "sha256": "4fa79f40dce8f8791f5a68be39802600642245a9390eaba084d6c0eb7bb9427d",
+      "newPath": ".grove/10-k12/24-DONE-requirements--settings-activation-evaluation-scope-k46.md"
+    },
+    {
+      "key": 49,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/15-DONE-design--settings-activation-ordering-evaluation-k49.md",
+      "name": "15-DONE-design--settings-activation-ordering-evaluation-k49.md",
+      "sha256": "e9e69b6eccdd7f5a1a11f5a2a76a87eacd697d75aa7f6f36cf519012a09baf94",
+      "newPath": ".grove/10-k12/25-DONE-design--settings-activation-ordering-evaluation-k49.md"
+    },
+    {
+      "key": 50,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/16-DONE-review-design--settings-activation-ordering-evaluation-k50.md",
+      "name": "16-DONE-review-design--settings-activation-ordering-evaluation-k50.md",
+      "sha256": "4bee083bfcd36c8ea0f4f5f2763379d0594d002a2ee8c2dbf907ccdb99825716",
+      "newPath": ".grove/10-k12/26-DONE-review-design--settings-activation-ordering-evaluation-k50.md"
+    },
+    {
+      "key": 51,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/17-DONE-integrate-review-design--settings-activation-ordering-evaluation-k51.md",
+      "name": "17-DONE-integrate-review-design--settings-activation-ordering-evaluation-k51.md",
+      "sha256": "00adf0c78ad440d6ef0c796410869e7cc37bf7307aa8b96d635931504397d912",
+      "newPath": ".grove/10-k12/27-DONE-integrate-review-design--settings-activation-ordering-evaluation-k51.md"
+    },
+    {
+      "key": 52,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/01-DONE-impl--settings-ordering-application-k52.md",
+      "name": "01-DONE-impl--settings-ordering-application-k52.md",
+      "sha256": "bf2ae79b6356c7d0c24ef9b8fbb29f8034ee941d8b581c683dcc1fc5d5d3076a",
+      "newPath": ".grove/10-k12/28-k36/01-DONE-impl--settings-ordering-application-k52.md"
+    },
+    {
+      "key": 55,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/01-DONE-impl--settings-exec-evidence-k55.md",
+      "name": "01-DONE-impl--settings-exec-evidence-k55.md",
+      "sha256": "216cd80aa4df68e974c2320b00e7d6a6a681ac6bc088c2588923cb6fefbc5aef",
+      "newPath": ".grove/10-k12/28-k36/02-DONE-impl--settings-exec-evidence-k55.md"
+    },
+    {
+      "key": 58,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/02-DONE-review-impl--settings-exec-evidence-k58.md",
+      "name": "02-DONE-review-impl--settings-exec-evidence-k58.md",
+      "sha256": "347d0309e33b4397cdd941b5be72175d1c4366a34cfab9ba925435e68ac97566",
+      "newPath": ".grove/10-k12/28-k36/03-DONE-review-impl--settings-exec-evidence-k58.md"
+    },
+    {
+      "key": 59,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/03-DONE-integrate-review-impl--settings-exec-evidence-k59.md",
+      "name": "03-DONE-integrate-review-impl--settings-exec-evidence-k59.md",
+      "sha256": "5619b698daadc99be7c6b7e23627f3fa447a8059972aacaafde07c0369fe4435",
+      "newPath": ".grove/10-k12/28-k36/04-DONE-integrate-review-impl--settings-exec-evidence-k59.md"
+    },
+    {
+      "key": 60,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/01-DONE-impl--settings-nonexec-evidence-k60.md",
+      "name": "01-DONE-impl--settings-nonexec-evidence-k60.md",
+      "sha256": "9ad7bb0d994411284d5f42ca0e6bd7230014a9e11add1adf4de4ffdda815e1d0",
+      "newPath": ".grove/10-k12/28-k36/05-DONE-impl--settings-nonexec-evidence-k60.md"
+    },
+    {
+      "key": 63,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/02-DONE-review-impl--settings-nonexec-evidence-k63.md",
+      "name": "02-DONE-review-impl--settings-nonexec-evidence-k63.md",
+      "sha256": "a901246d1ebadfeee87e5fed4038ad7805ec67f3ad1ea1bc8d1433ac2d715c87",
+      "newPath": ".grove/10-k12/28-k36/06-DONE-review-impl--settings-nonexec-evidence-k63.md"
+    },
+    {
+      "key": 64,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/03-DONE-integrate-review-impl--settings-nonexec-evidence-k64.md",
+      "name": "03-DONE-integrate-review-impl--settings-nonexec-evidence-k64.md",
+      "sha256": "38effe655db4f28cce1b6f6dbad823e4123f1492cb6f45237de4a86953d7feec",
+      "newPath": ".grove/10-k12/28-k36/07-DONE-integrate-review-impl--settings-nonexec-evidence-k64.md"
+    },
+    {
+      "key": 65,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/01-DONE-impl--settings-physical-evidence-k65.md",
+      "name": "01-DONE-impl--settings-physical-evidence-k65.md",
+      "sha256": "9e3455ca9f5f73e995e7c193e07c2ce0ca8eb093d5790f16e3075da4c00752d3",
+      "newPath": ".grove/10-k12/28-k36/08-DONE-impl--settings-physical-evidence-k65.md"
+    },
+    {
+      "key": 68,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/02-DONE-review-impl--settings-physical-evidence-k68.md",
+      "name": "02-DONE-review-impl--settings-physical-evidence-k68.md",
+      "sha256": "eabbebc5b1ba6940e794fbd2c075355bd4ff0ad1b658fc517e9df4d195b2e9e4",
+      "newPath": ".grove/10-k12/28-k36/09-DONE-review-impl--settings-physical-evidence-k68.md"
+    },
+    {
+      "key": 69,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/03-DONE-integrate-review-impl--settings-physical-evidence-k69.md",
+      "name": "03-DONE-integrate-review-impl--settings-physical-evidence-k69.md",
+      "sha256": "bf3ac00ae19900f9be077fb9533a8d435ece65ecdd47913bb65bee115cd19165",
+      "newPath": ".grove/10-k12/28-k36/10-DONE-integrate-review-impl--settings-physical-evidence-k69.md"
+    },
+    {
+      "key": 70,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/01-DONE-impl--settings-window-transports-k70.md",
+      "name": "01-DONE-impl--settings-window-transports-k70.md",
+      "sha256": "6377f900c8de6d13efb851c7b14b1b796b5707be473031b46a6fa86713de2f34",
+      "newPath": ".grove/10-k12/28-k36/11-DONE-impl--settings-window-transports-k70.md"
+    },
+    {
+      "key": 72,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/02-DONE-review-impl--settings-window-transports-k72.md",
+      "name": "02-DONE-review-impl--settings-window-transports-k72.md",
+      "sha256": "37a563eb54c471ac4e0fa5cdf9ee0046a2b7d82e8ce7e557782e6022f81303f7",
+      "newPath": ".grove/10-k12/28-k36/12-DONE-review-impl--settings-window-transports-k72.md"
+    },
+    {
+      "key": 73,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/03-DONE-integrate-review-impl--settings-window-transports-k73.md",
+      "name": "03-DONE-integrate-review-impl--settings-window-transports-k73.md",
+      "sha256": "73ecdca383f6530feb4df7530ec39ae2161061aa9fea7ad814c03e2717e1a31a",
+      "newPath": ".grove/10-k12/28-k36/13-DONE-integrate-review-impl--settings-window-transports-k73.md"
+    },
+    {
+      "key": 74,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/01-DONE-impl--settings-input-transports-k74.md",
+      "name": "01-DONE-impl--settings-input-transports-k74.md",
+      "sha256": "cc5c2c66d2932624c1d11c4ad3de26e03eb2a0f8e6c2f821ae758992a7b91b8c",
+      "newPath": ".grove/10-k12/28-k36/14-DONE-impl--settings-input-transports-k74.md"
+    },
+    {
+      "key": 77,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/02-DONE-review-impl--settings-input-transports-k77.md",
+      "name": "02-DONE-review-impl--settings-input-transports-k77.md",
+      "sha256": "c4ccea2a58a691140d7b15f41c57d562bcaa8264b189894c86321cb78877c17b",
+      "newPath": ".grove/10-k12/28-k36/15-DONE-review-impl--settings-input-transports-k77.md"
+    },
+    {
+      "key": 78,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/03-DONE-integrate-review-impl--settings-input-transports-k78.md",
+      "name": "03-DONE-integrate-review-impl--settings-input-transports-k78.md",
+      "sha256": "531eacad6410eefe90ca2291b1999c05c3800a54528687305764199ccda5bc31",
+      "newPath": ".grove/10-k12/28-k36/16-DONE-integrate-review-impl--settings-input-transports-k78.md"
+    },
+    {
+      "key": 79,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/01-DONE-impl--settings-snapshot-evidence-k79.md",
+      "name": "01-DONE-impl--settings-snapshot-evidence-k79.md",
+      "sha256": "06c35e079096d1bd96a97c63c297a6b38eaaaca904823db9b365d957d885b1c5",
+      "newPath": ".grove/10-k12/28-k36/17-DONE-impl--settings-snapshot-evidence-k79.md"
+    },
+    {
+      "key": 82,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/02-DONE-review-impl--settings-snapshot-evidence-k82.md",
+      "name": "02-DONE-review-impl--settings-snapshot-evidence-k82.md",
+      "sha256": "133f90d57d441541367b1872698886920e2dbd0141b6a1bdef3a10e94bac6694",
+      "newPath": ".grove/10-k12/28-k36/18-DONE-review-impl--settings-snapshot-evidence-k82.md"
+    },
+    {
+      "key": 83,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/03-DONE-integrate-review-impl--settings-snapshot-evidence-k83.md",
+      "name": "03-DONE-integrate-review-impl--settings-snapshot-evidence-k83.md",
+      "sha256": "311d7f2591f139f68906300252fde51caefb39ca4cb3760a4404f4c389eda4ac",
+      "newPath": ".grove/10-k12/28-k36/19-DONE-integrate-review-impl--settings-snapshot-evidence-k83.md"
+    },
+    {
+      "key": 84,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/01-DONE-impl--settings-click-evidence-k84.md",
+      "name": "01-DONE-impl--settings-click-evidence-k84.md",
+      "sha256": "def971c2ed96e0f82c29a7cdcc920f271b032a3efe284c733607822d0b9f1e45",
+      "newPath": ".grove/10-k12/28-k36/20-DONE-impl--settings-click-evidence-k84.md"
+    },
+    {
+      "key": 86,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/02-DONE-review-impl--settings-click-evidence-k86.md",
+      "name": "02-DONE-review-impl--settings-click-evidence-k86.md",
+      "sha256": "f31f1af65d6d78e0a5ee540a480b1850628d0c8d7c57ff5ac06dc6d36fe6b44f",
+      "newPath": ".grove/10-k12/28-k36/21-DONE-review-impl--settings-click-evidence-k86.md"
+    },
+    {
+      "key": 87,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/03-DONE-integrate-review-impl--settings-click-evidence-k87.md",
+      "name": "03-DONE-integrate-review-impl--settings-click-evidence-k87.md",
+      "sha256": "32df1cb7f918f24646d5d993c5b5a5f9df2afd6f79c6a64a5d7eca7201f125d2",
+      "newPath": ".grove/10-k12/28-k36/22-DONE-integrate-review-impl--settings-click-evidence-k87.md"
+    },
+    {
+      "key": 88,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/01-DONE-impl--settings-capture-artifacts-k88.md",
+      "name": "01-DONE-impl--settings-capture-artifacts-k88.md",
+      "sha256": "a1c9ec3c71f2753b007f280a6234dd62fdc4d69f35b1361f31fd9a6521f65167",
+      "newPath": ".grove/10-k12/28-k36/23-DONE-impl--settings-capture-artifacts-k88.md"
+    },
+    {
+      "key": 90,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/02-DONE-review-impl--settings-capture-artifacts-k90.md",
+      "name": "02-DONE-review-impl--settings-capture-artifacts-k90.md",
+      "sha256": "8a4c4ecb1daafa2e362f84139dfd9202ae03bdf8090066299c4aff8de78cd9e9",
+      "newPath": ".grove/10-k12/28-k36/24-DONE-review-impl--settings-capture-artifacts-k90.md"
+    },
+    {
+      "key": 91,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/03-DONE-integrate-review-impl--settings-capture-artifacts-k91.md",
+      "name": "03-DONE-integrate-review-impl--settings-capture-artifacts-k91.md",
+      "sha256": "bbe0093dd4dc0a65aa463f59d5f2e94461c35157843ba9c708cede2cdef2f268",
+      "newPath": ".grove/10-k12/28-k36/25-DONE-integrate-review-impl--settings-capture-artifacts-k91.md"
+    },
+    {
+      "key": 92,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/04-DONE-design--settings-keepalive-coordination-k92.md",
+      "name": "04-DONE-design--settings-keepalive-coordination-k92.md",
+      "sha256": "b2c91a542f256b271088aebd63dcecfbe8e9c1b480cd08528f909afc8229738b",
+      "newPath": ".grove/10-k12/28-k36/26-DONE-design--settings-keepalive-coordination-k92.md"
+    },
+    {
+      "key": 94,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/05-DONE-review-design--settings-keepalive-coordination-k94.md",
+      "name": "05-DONE-review-design--settings-keepalive-coordination-k94.md",
+      "sha256": "c183bd2da24975cda3f23793b0afe97f822c05e580d2dc0a75cd6c1b03530558",
+      "newPath": ".grove/10-k12/28-k36/27-DONE-review-design--settings-keepalive-coordination-k94.md"
+    },
+    {
+      "key": 95,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/06-DONE-integrate-review-design--settings-keepalive-coordination-k95.md",
+      "name": "06-DONE-integrate-review-design--settings-keepalive-coordination-k95.md",
+      "sha256": "afbe4706b8c18cf3c663701d0f1101a164e6c321c9c192acdee40dd0365f357e",
+      "newPath": ".grove/10-k12/28-k36/28-DONE-integrate-review-design--settings-keepalive-coordination-k95.md"
+    },
+    {
+      "key": 93,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/07-DONE-requirements--settings-keepalive-scope-k93.md",
+      "name": "07-DONE-requirements--settings-keepalive-scope-k93.md",
+      "sha256": "014b147af216d020eae2c9926b254464e31feda989a7a8071d94e0f0f96c113d",
+      "newPath": ".grove/10-k12/28-k36/29-DONE-requirements--settings-keepalive-scope-k93.md"
+    },
+    {
+      "key": 97,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/01-DONE-design--settings-keepalive-lifecycle-k97.md",
+      "name": "01-DONE-design--settings-keepalive-lifecycle-k97.md",
+      "sha256": "1271032055b3f32d3755a9efba5195a095a0b4cb6d0170867e2d6fe49dfd93de",
+      "newPath": ".grove/10-k12/28-k36/30-k96/01-DONE-design--settings-keepalive-lifecycle-k97.md"
+    },
+    {
+      "key": 99,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/02-DONE-review-design--settings-keepalive-lifecycle-k99.md",
+      "name": "02-DONE-review-design--settings-keepalive-lifecycle-k99.md",
+      "sha256": "3f8612664583467945a26561784b3dd623045db7e21568dfb0d79734a2313a4c",
+      "newPath": ".grove/10-k12/28-k36/30-k96/02-DONE-review-design--settings-keepalive-lifecycle-k99.md"
+    },
+    {
+      "key": 100,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/03-DONE-integrate-review-design--settings-keepalive-lifecycle-k100.md",
+      "name": "03-DONE-integrate-review-design--settings-keepalive-lifecycle-k100.md",
+      "sha256": "0e0cdd37720a4a86d7fa364d0187265baaf485c015f98ae1c85c5d2f3018c550",
+      "newPath": ".grove/10-k12/28-k36/30-k96/03-DONE-integrate-review-design--settings-keepalive-lifecycle-k100.md"
+    },
+    {
+      "key": 101,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/01-DONE-design--settings-keepalive-scheduling-k101.md",
+      "name": "01-DONE-design--settings-keepalive-scheduling-k101.md",
+      "sha256": "e766d2c58fbf8adc89c3925cf1260c95a1e2677e63f9ffe823c04095140beeb4",
+      "newPath": ".grove/10-k12/28-k36/30-k96/04-DONE-design--settings-keepalive-scheduling-k101.md"
+    },
+    {
+      "key": 103,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/02-DONE-review-design--settings-keepalive-scheduling-k103.md",
+      "name": "02-DONE-review-design--settings-keepalive-scheduling-k103.md",
+      "sha256": "cd60d04901fb7511d6387b9c3dfaee50785293c7a03595e8d07b422b2fe40af5",
+      "newPath": ".grove/10-k12/28-k36/30-k96/05-DONE-review-design--settings-keepalive-scheduling-k103.md"
+    },
+    {
+      "key": 104,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/03-DONE-integrate-review-design--settings-keepalive-scheduling-k104.md",
+      "name": "03-DONE-integrate-review-design--settings-keepalive-scheduling-k104.md",
+      "sha256": "3aa58c85efec0958979abcf5a138be383cbc4baa097595ba246f5cfd6ed9f417",
+      "newPath": ".grove/10-k12/28-k36/30-k96/06-DONE-integrate-review-design--settings-keepalive-scheduling-k104.md"
+    },
+    {
+      "key": 105,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/01-DONE-design--settings-keepalive-admission-k105.md",
+      "name": "01-DONE-design--settings-keepalive-admission-k105.md",
+      "sha256": "d27a6440ba95a974b1c8c1627fac9ea38cfbc7ed3fb825b6e96f167a8c723be4",
+      "newPath": ".grove/10-k12/28-k36/30-k96/07-DONE-design--settings-keepalive-admission-k105.md"
+    },
+    {
+      "key": 108,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/02-DONE-review-design--settings-keepalive-admission-k108.md",
+      "name": "02-DONE-review-design--settings-keepalive-admission-k108.md",
+      "sha256": "b781e3b694356c3d3347c4945cdcdfe114a8457f8dd45959523d9f22ace096be",
+      "newPath": ".grove/10-k12/28-k36/30-k96/08-DONE-review-design--settings-keepalive-admission-k108.md"
+    },
+    {
+      "key": 109,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/03-DONE-integrate-review-design--settings-keepalive-admission-k109.md",
+      "name": "03-DONE-integrate-review-design--settings-keepalive-admission-k109.md",
+      "sha256": "ee9638ddfb4cb01035fa20a1033d2c100f87ecdb606b2cfc8a24d002e7cd1bc3",
+      "newPath": ".grove/10-k12/28-k36/30-k96/09-DONE-integrate-review-design--settings-keepalive-admission-k109.md"
+    },
+    {
+      "key": 106,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/04-DONE-research-a--settings-keepalive-enforcement-k106.md",
+      "name": "04-DONE-research-a--settings-keepalive-enforcement-k106.md",
+      "sha256": "2f3fdbef98b6ddee29023685626ad7036b2bf8b8dbe6d36f48483faa485f21b8",
+      "newPath": ".grove/10-k12/28-k36/30-k96/10-DONE-research-a--settings-keepalive-enforcement-k106.md"
+    },
+    {
+      "key": 110,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/01-DONE-design--settings-keepalive-producer-contract-k110.md",
+      "name": "01-DONE-design--settings-keepalive-producer-contract-k110.md",
+      "sha256": "1c2459938914267013d9db1974e948e2981ccb06b0bd3a24a3b675b79fe4713a",
+      "newPath": ".grove/10-k12/28-k36/30-k96/11-DONE-design--settings-keepalive-producer-contract-k110.md"
+    },
+    {
+      "key": 113,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/02-DONE-review-design--settings-keepalive-producer-contract-k113.md",
+      "name": "02-DONE-review-design--settings-keepalive-producer-contract-k113.md",
+      "sha256": "e32f1b4f394e90b5671bb91caaba2579360157e3934581b850c2a6c7be2e1fbf",
+      "newPath": ".grove/10-k12/28-k36/30-k96/12-DONE-review-design--settings-keepalive-producer-contract-k113.md"
+    },
+    {
+      "key": 114,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/03-DONE-integrate-review-design--settings-keepalive-producer-contract-k114.md",
+      "name": "03-DONE-integrate-review-design--settings-keepalive-producer-contract-k114.md",
+      "sha256": "d4db589270e90f6d77a3c13351a9ba7f1511f382ce5b11678e744c8c7d384167",
+      "newPath": ".grove/10-k12/28-k36/30-k96/13-DONE-integrate-review-design--settings-keepalive-producer-contract-k114.md"
+    },
+    {
+      "key": 111,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/04-DONE-design--settings-keepalive-qualification-k111.md",
+      "name": "04-DONE-design--settings-keepalive-qualification-k111.md",
+      "sha256": "997aba65a9eeeafffb414bc228061d90060b7ee7b22545b37c3d597d4af88b01",
+      "newPath": ".grove/10-k12/28-k36/30-k96/14-DONE-design--settings-keepalive-qualification-k111.md"
+    },
+    {
+      "key": 115,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/05-DONE-review-design--settings-keepalive-qualification-k115.md",
+      "name": "05-DONE-review-design--settings-keepalive-qualification-k115.md",
+      "sha256": "d7bf91438960a6ab7b0514145d18144b3bf7e62d5a57a1d1687a81e06460fc88",
+      "newPath": ".grove/10-k12/28-k36/30-k96/15-DONE-review-design--settings-keepalive-qualification-k115.md"
+    },
+    {
+      "key": 116,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/06-DONE-integrate-review-design--settings-keepalive-qualification-k116.md",
+      "name": "06-DONE-integrate-review-design--settings-keepalive-qualification-k116.md",
+      "sha256": "ddb93f74b9ad93d9658b5597510b94b16b78fe06077321f13f7013c7a6314c05",
+      "newPath": ".grove/10-k12/28-k36/30-k96/16-DONE-integrate-review-design--settings-keepalive-qualification-k116.md"
+    },
+    {
+      "key": 117,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/01-DONE-design--settings-keepalive-completion-worksheet-k117.md",
+      "name": "01-DONE-design--settings-keepalive-completion-worksheet-k117.md",
+      "sha256": "08929e116fff2dd98aa1fec94c93426feddf0f3b1ef4ad25dd312c18410aa20e",
+      "newPath": ".grove/10-k12/28-k36/30-k96/17-DONE-design--settings-keepalive-completion-worksheet-k117.md"
+    },
+    {
+      "key": 118,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/02-DONE-design--settings-keepalive-record-recovery-k118.md",
+      "name": "02-DONE-design--settings-keepalive-record-recovery-k118.md",
+      "sha256": "23231f50d10e07aa54dbf658e3c361c0baa436bfd5e6fa8e30c26fb2c3907455",
+      "newPath": ".grove/10-k12/28-k36/30-k96/18-DONE-design--settings-keepalive-record-recovery-k118.md"
+    },
+    {
+      "key": 120,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/03-DONE-review-design--settings-keepalive-record-recovery-k120.md",
+      "name": "03-DONE-review-design--settings-keepalive-record-recovery-k120.md",
+      "sha256": "16bc89798738596c6feaf602a3053a0e96808000de2c2ec576f26724605cd9d9",
+      "newPath": ".grove/10-k12/28-k36/30-k96/19-DONE-review-design--settings-keepalive-record-recovery-k120.md"
+    },
+    {
+      "key": 121,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/04-DONE-integrate-review-design--settings-keepalive-record-recovery-k121.md",
+      "name": "04-DONE-integrate-review-design--settings-keepalive-record-recovery-k121.md",
+      "sha256": "7e63f1e12cac764afd29cbf1b0fd4511c67a591e23fb07ea1d88e1f1e0830da3",
+      "newPath": ".grove/10-k12/28-k36/30-k96/20-DONE-integrate-review-design--settings-keepalive-record-recovery-k121.md"
+    },
+    {
+      "key": 122,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/05-k119/01-DONE-design--settings-keepalive-raw-controls-k122.md",
+      "name": "01-DONE-design--settings-keepalive-raw-controls-k122.md",
+      "sha256": "74315c437835bde994df0cd6533e794c33587dcc3b2fb0d3d0c6aa8fc932549f",
+      "newPath": ".grove/10-k12/28-k36/30-k96/21-DONE-design--settings-keepalive-raw-controls-k122.md"
+    },
+    {
+      "key": 127,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/05-k119/02-DONE-review-design--settings-keepalive-raw-controls-k127.md",
+      "name": "02-DONE-review-design--settings-keepalive-raw-controls-k127.md",
+      "sha256": "c6ffa1cbdf00c8b4c998bfe84245a8a9ed0403553f0eda05880947b6a855cdeb",
+      "newPath": ".grove/10-k12/28-k36/30-k96/22-DONE-review-design--settings-keepalive-raw-controls-k127.md"
+    },
+    {
+      "key": 128,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/05-k119/03-DONE-integrate-review-design--settings-keepalive-raw-controls-k128.md",
+      "name": "03-DONE-integrate-review-design--settings-keepalive-raw-controls-k128.md",
+      "sha256": "f46c1986fe14111757d2fb2abf9a93d514d2648f98b83c6c2d0e47117f10b1e6",
+      "newPath": ".grove/10-k12/28-k36/30-k96/23-DONE-integrate-review-design--settings-keepalive-raw-controls-k128.md"
+    },
+    {
+      "key": 123,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/05-k119/04-DONE-design--settings-keepalive-recovery-controls-k123.md",
+      "name": "04-DONE-design--settings-keepalive-recovery-controls-k123.md",
+      "sha256": "15cd6d660cad83b46772a2769070b2b0a7613afea44369e821184e4b43f66fdf",
+      "newPath": ".grove/10-k12/28-k36/30-k96/24-DONE-design--settings-keepalive-recovery-controls-k123.md"
+    },
+    {
+      "key": 129,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/05-k119/05-DONE-review-design--settings-keepalive-recovery-controls-k129.md",
+      "name": "05-DONE-review-design--settings-keepalive-recovery-controls-k129.md",
+      "sha256": "ee5f1f609ba66d2e05d556fb563615894095c0c7560b56d2cf66314adcee030b",
+      "newPath": ".grove/10-k12/28-k36/30-k96/25-DONE-review-design--settings-keepalive-recovery-controls-k129.md"
+    },
+    {
+      "key": 130,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/05-k119/06-DONE-integrate-review-design--settings-keepalive-recovery-controls-k130.md",
+      "name": "06-DONE-integrate-review-design--settings-keepalive-recovery-controls-k130.md",
+      "sha256": "860b911030670d58cb2297a3f343c0d629c6176473b23c43abe143c211040062",
+      "newPath": ".grove/10-k12/28-k36/30-k96/26-DONE-integrate-review-design--settings-keepalive-recovery-controls-k130.md"
+    },
+    {
+      "key": 131,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/05-k119/07-k124/01-DONE-design--settings-keepalive-workload-inventory-k131.md",
+      "name": "01-DONE-design--settings-keepalive-workload-inventory-k131.md",
+      "sha256": "9fb2328789e6460ed5eda1c64e74169e4c07bff7d1d2493d589925f20f0cf7ed",
+      "newPath": ".grove/10-k12/28-k36/30-k96/27-DONE-design--settings-keepalive-workload-inventory-k131.md"
+    },
+    {
+      "key": 133,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/05-k119/07-k124/02-DONE-review-design--settings-keepalive-workload-inventory-k133.md",
+      "name": "02-DONE-review-design--settings-keepalive-workload-inventory-k133.md",
+      "sha256": "78ba1e3c28df0cab42dde729837c7889181d6d9e47666ace70c7df7a136eb84f",
+      "newPath": ".grove/10-k12/28-k36/30-k96/28-DONE-review-design--settings-keepalive-workload-inventory-k133.md"
+    },
+    {
+      "key": 134,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/05-k119/07-k124/03-DONE-integrate-review-design--settings-keepalive-workload-inventory-k134.md",
+      "name": "03-DONE-integrate-review-design--settings-keepalive-workload-inventory-k134.md",
+      "sha256": "7498d8269a3c27f860aa44c8394f5cabe0409c81187632fbc73cd6ccff717d1f",
+      "newPath": ".grove/10-k12/28-k36/30-k96/29-DONE-integrate-review-design--settings-keepalive-workload-inventory-k134.md"
+    },
+    {
+      "key": 132,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/05-k119/07-k124/04-DONE-design--settings-keepalive-workload-accounting-k132.md",
+      "name": "04-DONE-design--settings-keepalive-workload-accounting-k132.md",
+      "sha256": "b0680632cf3ffe497bb0d83ccdaa84385618494cb6b0051559af19057094a3f3",
+      "newPath": ".grove/10-k12/28-k36/30-k96/30-DONE-design--settings-keepalive-workload-accounting-k132.md"
+    },
+    {
+      "key": 135,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/05-k119/07-k124/05-DONE-review-design--settings-keepalive-workload-accounting-k135.md",
+      "name": "05-DONE-review-design--settings-keepalive-workload-accounting-k135.md",
+      "sha256": "0cd9b21994f44d4e03926484dd68a4521dd68f04a3aa2f59850955249725f467",
+      "newPath": ".grove/10-k12/28-k36/30-k96/31-DONE-review-design--settings-keepalive-workload-accounting-k135.md"
+    },
+    {
+      "key": 136,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/05-k119/07-k124/06-DONE-integrate-review-design--settings-keepalive-workload-accounting-k136.md",
+      "name": "06-DONE-integrate-review-design--settings-keepalive-workload-accounting-k136.md",
+      "sha256": "a5f6e2858f838714a6dd125685b1577a334328ab2fc8e133f4aa5202212484c1",
+      "newPath": ".grove/10-k12/28-k36/30-k96/32-DONE-integrate-review-design--settings-keepalive-workload-accounting-k136.md"
+    },
+    {
+      "key": 137,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/05-k119/07-k124/07-DONE-design--settings-keepalive-caller-workload-k137.md",
+      "name": "07-DONE-design--settings-keepalive-caller-workload-k137.md",
+      "sha256": "9d4473e44995453c0ad84799b98c93752ab9f2175068e4a50e611fc1df71090f",
+      "newPath": ".grove/10-k12/28-k36/30-k96/33-DONE-design--settings-keepalive-caller-workload-k137.md"
+    },
+    {
+      "key": 138,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/05-k119/07-k124/08-DONE-review-design--settings-keepalive-caller-workload-k138.md",
+      "name": "08-DONE-review-design--settings-keepalive-caller-workload-k138.md",
+      "sha256": "56a94eb2dcadaae4dd0b2e0127aaf71e4ba834744e08395ff7ada57d340b9324",
+      "newPath": ".grove/10-k12/28-k36/30-k96/34-DONE-review-design--settings-keepalive-caller-workload-k138.md"
+    },
+    {
+      "key": 139,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/05-k119/07-k124/09-DONE-integrate-review-design--settings-keepalive-caller-workload-k139.md",
+      "name": "09-DONE-integrate-review-design--settings-keepalive-caller-workload-k139.md",
+      "sha256": "f40a49d497d4efeb169b890ec5d4a81eac22d8bd7cc3e5c142a333ee9e7659cf",
+      "newPath": ".grove/10-k12/28-k36/30-k96/35-DONE-integrate-review-design--settings-keepalive-caller-workload-k139.md"
+    },
+    {
+      "key": 125,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/05-k119/08-design--settings-keepalive-native-evidence-scope-k125.md",
+      "name": "08-design--settings-keepalive-native-evidence-scope-k125.md",
+      "sha256": "6bf2a8aa6817b6cd0cadf8ca1239fa4f7a3a2d9d44ecbe2d39d255ace1a1d75e",
+      "newPath": ".grove/10-k12/28-k36/30-k96/36-design--settings-keepalive-native-evidence-scope-k125.md"
+    },
+    {
+      "key": 126,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/08-k96/04-k98/04-k102/05-k107/07-k112/05-k119/09-design--settings-keepalive-profile-reconciliation-k126.md",
+      "name": "09-design--settings-keepalive-profile-reconciliation-k126.md",
+      "sha256": "064f639cc3ef0bea3de31f4ffbc29930f11c95a535d9554468763be5a16bd86d",
+      "newPath": ".grove/10-k12/28-k36/30-k96/37-design--settings-keepalive-profile-reconciliation-k126.md"
+    },
+    {
+      "key": 89,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/04-k80/04-k85/09-impl--settings-file-lifecycle-k89.md",
+      "name": "09-impl--settings-file-lifecycle-k89.md",
+      "sha256": "94b941f2086b4e29e617eda78d97f38843f5594c784d32e2fd12dc032c982101",
+      "newPath": ".grove/10-k12/28-k36/31-impl--settings-file-lifecycle-k89.md"
+    },
+    {
+      "key": 81,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/04-k75/05-impl--settings-exec-confirmations-k81.md",
+      "name": "05-impl--settings-exec-confirmations-k81.md",
+      "sha256": "15e96472a3bd95996f31c40dde5e9f7f75d3cc03cc6653434bbc4027c7099749",
+      "newPath": ".grove/10-k12/28-k36/32-impl--settings-exec-confirmations-k81.md"
+    },
+    {
+      "key": 76,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/04-k66/04-k71/05-impl--settings-scenario-adoption-k76.md",
+      "name": "05-impl--settings-scenario-adoption-k76.md",
+      "sha256": "f6f67600320f3a3e3c1881d94e39822d4005fbde228f420f36342127d23800f7",
+      "newPath": ".grove/10-k12/28-k36/33-impl--settings-scenario-adoption-k76.md"
+    },
+    {
+      "key": 67,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/04-k61/05-impl--settings-scenario-outcomes-k67.md",
+      "name": "05-impl--settings-scenario-outcomes-k67.md",
+      "sha256": "930f9ec2109e6f32fcf787f1e7876d8b2c7b5064a3c5101262398a4f7507e7ae",
+      "newPath": ".grove/10-k12/28-k36/34-impl--settings-scenario-outcomes-k67.md"
+    },
+    {
+      "key": 62,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/04-k56/05-impl--settings-focused-prefix-k62.md",
+      "name": "05-impl--settings-focused-prefix-k62.md",
+      "sha256": "d086f2589323b5bf2d09df94eb9ddb54a4fb6a54066d643d9efbcad44a471cd0",
+      "newPath": ".grove/10-k12/28-k36/35-impl--settings-focused-prefix-k62.md"
+    },
+    {
+      "key": 57,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/02-k53/05-impl--settings-ordering-caller-k57.md",
+      "name": "05-impl--settings-ordering-caller-k57.md",
+      "sha256": "864e3818871c88dddfd3e45a37a8e6c9c8488ea1519fa88d0315fce4301b709e",
+      "newPath": ".grove/10-k12/28-k36/36-impl--settings-ordering-caller-k57.md"
+    },
+    {
+      "key": 54,
+      "path": ".grove/06-k12/02-k14/02-k16/02-k18/02-k20/02-k22/02-k25/02-k27/02-k29/02-k31/02-k33/18-k36/03-impl--settings-ordering-qualification-k54.md",
+      "name": "03-impl--settings-ordering-qualification-k54.md",
+      "sha256": "04e37384c82a156824c047f4b69cc3c4d7fa7d2db4c24b32d71084aaa45a6e35",
+      "newPath": ".grove/10-k12/28-k36/37-impl--settings-ordering-qualification-k54.md"
+    },
+    {
+      "key": 23,
+      "path": ".grove/07-impl--settings-archive-links-k23.md",
+      "name": "07-impl--settings-archive-links-k23.md",
+      "sha256": "5d226d0e1c1127eda1d266b552cdce14e927ae8a287734e8aff0f42c8e906da1",
+      "newPath": ".grove/11-impl--settings-archive-links-k23.md"
+    },
+    {
+      "key": 11,
+      "path": ".grove/08-finish--finish-k11.md",
+      "name": "08-finish--finish-k11.md",
+      "sha256": "69e95b4f1698153a814fd190bcacc0df4383946b4638b675e942bd357141c479",
+      "newPath": ".grove/12-finish--finish-k11.md"
+    }
+  ]
+}

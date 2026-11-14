@@ -95,3 +95,22 @@ and every original duty above; no replacement read, new exact-match poll or retr
 K80/k85 keep artifacts/lifecycle, k81 all exec/one-shot consequences, k76 complete
 adoption/signals/both held-pointer controls. All snapshot availability limits,
 private secret-bearing roots and k67/k62/k57/k54/runtime holds remain binding.
+
+
+## Contract ownership after k140
+
+The original task text above remains binding. Historical ancestor handles now
+resolve through `docs/verification/grove-tree-structure/README.md` to the retained
+owner and exact archived contract; they do not require the removed directory.
+The current additive brief chain and accepted spec amendments govern authority.
+
+k36 owns the whole harness and every remaining k53–k85 aggregate duty. Consume
+only after complete k96 design → independent whole-design review/integrations →
+planning → implementation → earned review/integrations. Preserve k56 common
+lock/latch/ordinal non-exec handling; k61 actual schema predicates, reviewed
+evidence-class restrictions and typed-error unavailable rules; k66 both held
+pointer controls and ordered containment; k71 whole-loop replacement with no
+extra read. Keep all original action/read counts, sleeps/polls/bounds and exact
+local statuses. Preserve private originals/partials and finite storage planning;
+secret-bearing raw argv, predicates, responses and refusals cannot be published
+or silently redacted. k36 explicitly retains snapshot/AXValue/selector/OCR limits.

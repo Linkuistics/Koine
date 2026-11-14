@@ -59,3 +59,18 @@ also leaves delivery uncertain, and a failed/partial release proves no release.
 Retain that state and apply the same exact-clone containment and later-slot
 block above. K66 owns controls for interruption during a held-point attempt
 and during the sleep after a clean held point, each with no release attempt.
+
+
+## Contract ownership after k140
+
+The original task text above remains binding. Historical ancestor handles now
+resolve through `docs/verification/grove-tree-structure/README.md` to the retained
+owner and exact archived contract; they do not require the removed directory.
+The current additive brief chain and accepted spec amendments govern authority.
+
+k36 owns finite evaluation. Retain all caller/manifest/namespace/first-failure,
+original/installed/golden per-item audits and exact containment duties. Preserve
+private unique originals/partials and finite storage planning. Failed-start
+orphan holders and clean down without confirmed release block later admission;
+no bypass/reset or compensating release. One budgeted exact stop plus independent
+inventory remains the limit, with unresolved holder/cleanup blocking every slot.

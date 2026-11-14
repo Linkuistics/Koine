@@ -53,3 +53,19 @@ and every original duty above; no replacement read, new exact-match poll or retr
 K80/k85 keep artifacts/lifecycle, k81 all exec/one-shot consequences, k76 complete
 adoption/signals/both held-pointer controls. All snapshot availability limits,
 private secret-bearing roots and k67/k62/k57/k54/runtime holds remain binding.
+
+
+## Contract ownership after k140
+
+The original task text above remains binding. Historical ancestor handles now
+resolve through `docs/verification/grove-tree-structure/README.md` to the retained
+owner and exact archived contract; they do not require the removed directory.
+The current additive brief chain and accepted spec amendments govern authority.
+
+k36 owns the whole harness; this task owns all remaining exec/one-shot clean
+submission and command-specific confirmation duties from k75/k80/k85, including
+inner-tool statuses/domains. The full k96 design → independent whole-design
+review/integrations → planning → implementation → earned review/integrations
+sequence must finish before consumption. Preserve exact-Allow OCR distinctions,
+unchanged substring-poll limit and exact local signal statuses. Required clean
+completion infeasibility holds before E01, even if later output looks successful.

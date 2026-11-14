@@ -48,3 +48,17 @@ design, independent review/every integration, planning, implementation and earne
 review/integration must precede this leaf's consumption and k81/k76 adoption.
 No numerical policy, working scheduler, resource cap or runtime authority follows
 from scope agreement. Every original duty above remains binding.
+
+
+## Contract ownership after k140
+
+The original task text above remains binding. Historical ancestor handles now
+resolve through `docs/verification/grove-tree-structure/README.md` to the retained
+owner and exact archived contract; they do not require the removed directory.
+The current additive brief chain and accepted spec amendments govern authority.
+
+k36 owns all k53–k85 aggregate harness duties; k96 owns replacement owner design.
+Consume nothing until complete useful design, independent whole-design review
+and every integration, externalised planning, implementation and earned review/
+integration finish. Preserve exact file/upload/install/environment/lifecycle/
+collection schemas, common lock/latch/ordinal and private original/partial bytes.

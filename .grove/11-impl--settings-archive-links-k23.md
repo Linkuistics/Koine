@@ -24,3 +24,15 @@ Evidence: settings-activation/events-doc-links.txt and events-parent-archive-fil
 - Check task check:docs and the relevant original measured-overlay audits.
 - Record the narrow packaging correction in the verification evidence/root
   handoff. It is no cause, activation repair, ordinary acceptance or release.
+
+
+## Contract ownership after k140
+
+The original task text above remains binding. Historical ancestor handles now
+resolve through `docs/verification/grove-tree-structure/README.md` to the retained
+owner and exact archived contract; they do not require the removed directory.
+The current additive brief chain and accepted spec amendments govern authority.
+
+Root and k12 retain historical evidence; this task still owns only the two
+faithful adjacent archived-link reading aids. Tree restructuring grants no
+alteration of measured charter/input bytes or retrospective consumption claim.

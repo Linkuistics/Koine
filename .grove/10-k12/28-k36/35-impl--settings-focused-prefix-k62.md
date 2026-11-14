@@ -25,3 +25,15 @@ share the same helpers and setup/title/liveness rules.
 ## Notes
 No clone or frozen subject. Finite caller remains k57; readiness/runtime k54
 stays held. Historical outcomes/caps and original unresolved native duties remain.
+
+
+## Contract ownership after k140
+
+The original task text above remains binding. Historical ancestor handles now
+resolve through `docs/verification/grove-tree-structure/README.md` to the retained
+owner and exact archived contract; they do not require the removed directory.
+The current additive brief chain and accepted spec amendments govern authority.
+
+k36 owns aggregate shared-harness and ordinary-duty reconciliation from k53/k56.
+This task owns exact prefix correspondence through TextEdit quit immediately
+before resize, every original prefix duty and earned review/integration.

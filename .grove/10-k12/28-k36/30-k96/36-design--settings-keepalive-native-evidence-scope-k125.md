@@ -39,3 +39,20 @@ Scope complete local-audit computation and sequence-output storage/publication, 
 The existing local record rows establish no audit-time fit.
 Qualify inner tool status/output meanings before probes encode negative domain facts as successful payloads, including Gatekeeper state.
 K126 owns family/phase reconciliation and sequence bounds. No extra cleanup or per-item containment window is assumed.
+
+
+## Contract ownership after k140
+
+The original task text above remains binding. Historical ancestor handles now
+resolve through `docs/verification/grove-tree-structure/README.md` to the retained
+owner and exact archived contract; they do not require the removed directory.
+The current additive brief chain and accepted spec amendments govern authority.
+
+k96 owns the complete design aggregate. Preserve exact R3/R5 limits (R3 does
+not wait for blocked writers; R5 fails before write or after exactly 1024 real
+persisted bytes), separate correspondence audit and failure-handling-only scope.
+Keep original/expanded R and S controls distinct from the 13-case mechanism
+envelope. Real producer Fe, intermediary Fi, Q, actual process overlap, native
+Vision scopes, source/build/SDK/kernel correspondence, metadata/recovery and
+finite external subjects remain required design inputs, not earned execution.
+The entire k124 final charter table is split with k126 as the crosswalk states.

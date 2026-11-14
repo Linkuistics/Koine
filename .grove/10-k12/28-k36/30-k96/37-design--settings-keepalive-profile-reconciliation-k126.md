@@ -48,3 +48,23 @@ K138 reviewed the caller plan and k139 integrates the supported findings. Reconc
 - Preserve the accepted cleanup limit. The plan budgets one exact stop and independent inventory. Further cleanup needs a separate owner, record and capacity before execution.
 
 These are reconciliation obligations, not adopted numerical allowances or new execution authority.
+
+
+## Contract ownership after k140
+
+The original task text above remains binding. Historical ancestor handles now
+resolve through `docs/verification/grove-tree-structure/README.md` to the retained
+owner and exact archived contract; they do not require the removed directory.
+The current additive brief chain and accepted spec amendments govern authority.
+
+k96 owns joint completion; this task owns every remaining completion condition
+and original Done-when clause of k98, k102, k107, k112, k119 and k124, including
+k124's entire final charter table. Consult their exact archived originals for
+formulas and case tables; concise ancestor replacement does not narrow them.
+The retained k96 brief preserves the mandatory carrier/fallback/attachment
+accounting, kind 7 = 856 + 168u, q, exact carrier orders, R3/R5 approval, real
+Fe/Fi/Q, expanded control coverage, process overlap and startup/admission/
+commitment distinctions. Reconcile every row with the current specs and k125's
+qualified inputs before whole-design review; missing evidence keeps startup
+unavailable. Preserve all final-golden, bootstrap/readiness/recovery, B03/no-B04,
+namespace-212/type-12 and exact-stop/inventory limits from k124.

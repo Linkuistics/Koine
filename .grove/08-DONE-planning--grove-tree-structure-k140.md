@@ -62,3 +62,45 @@ VM execution, implementation authority or acceptance outcome.
 Antony requested insertion ahead of the current task and immediate handoff to
 Grove. The creating session leaves k125 live and inserts this root-level task
 before its containing branch so the next iteration performs this refactor.
+
+Retain only k12 (aggregate Settings repair), k36 (the approved finite ordering
+evaluation) and k96 (the serialized keepalive owner design). Each has a distinct
+subgoal, joint completion condition and additional shared context. Flatten the
+other 27 nonroot scopes into their nearest retained owner while preserving the
+entire depth-first leaf order, handles, kinds and outcomes. These are scope
+transfers, not completion of the unresolved product contracts. No declared Grove
+pass series was found; finite experiment slots do not declare one.
+
+Preserve the original root and all 30 nonroot briefs byte for byte outside the
+live tree, with original paths, digests and explicit contract-owner mappings.
+Promote operative aggregate requirements into four additive briefs; give pending
+tasks targeted ownership supplements for detailed inherited obligations. Original
+leaf text remains intact, with supplements only on live tasks. The archive is
+evidence and precise contract detail, not an additional mandatory brief chain.
+
+The useful product increment remains the complete Settings repair with its
+shared harness and separate ordinary acceptance. Owner design, schema/resource
+work and its consumers cannot independently supply accepted behavior; splitting
+them into separate Groves would leave an unusable handoff. Keep the existing
+dependency-ordered sessions in this Grove and leave future implementation cuts
+to completed design/planning. Historical archive-link repair remains the already
+separate k23 task, ordered after the evaluation work.
+
+The structural comparison verifies all 110 existing leaves in identical DFS
+order, identical handles/kinds/outcomes, unchanged terminal bodies, and only
+additive ownership text on ten pending tasks. All 31 original brief digests
+match. k125 now has three ancestor directories instead of 26; the complete live
+brief corpus is 352 lines. Known-wrong swapped-order and altered-archive controls
+were rejected. Grove resolve/brief-chain/pick accepted the canonical tree.
+
+Independent review is warranted for the obligation transfers: an archived clause
+could remain readable while its active aggregate acceptance is weakened. Cut a
+root review-planning sibling immediately before k12 so review and any earned
+integration precede k125. This is independent challenge, distinct from the two
+bounded contract audits and mechanical preservation checks. This process lacks
+GROVE_PROVIDER_EVIDENCE; follow the no-current-evidence rule and leave Creator
+unset rather than inventing provenance. No product node closes here.
+
+`mise exec -- task check:docs` reports only the existing missing
+`context-predicate.txt` and `context-qualify-filter.sh` links in the archived
+CONTEXT-PLAN.md. They remain k23 work; this refactor does not rewrite that charter.

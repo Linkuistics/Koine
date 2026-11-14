@@ -31,3 +31,16 @@ prefix only after this artifact and earned reviews/integrations.
 All k61 original Done when criteria remain. K57/k54, freeze and runtime stay held.
 No historical classifications, failed transports, NOT RUN phases, closed caps or
 held causal slots change; no product/native/ancestor acceptance follows.
+
+
+## Contract ownership after k140
+
+The original task text above remains binding. Historical ancestor handles now
+resolve through `docs/verification/grove-tree-structure/README.md` to the retained
+owner and exact archived contract; they do not require the removed directory.
+The current additive brief chain and accepted spec amendments govern authority.
+
+k36 owns full ordinary acceptance. Retain all setup/title/menu/physical and
+process-outcome duties, original front/focus-list audits, same-PID liveness and
+failure-subject registry shared with k76. Complete resize/content/scroll duties
+remain binding despite historical k3 closure.
