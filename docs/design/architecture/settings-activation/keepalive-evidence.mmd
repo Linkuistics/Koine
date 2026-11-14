@@ -1,12 +1,14 @@
 flowchart TD
     start["Start here: preserve every required guarantee"]
     manifest["Pin exact subjects, sources, builds and environment"]
-    producer["Producer: actual versioned units and pre-growth guards"]
-    platform["Platform: real Fe, separate Fi and bootstrap/service bounds"]
-    raw["Raw: Q, loader and independent R3 accepted-byte oracle"]
+    producer["Producer: versioned units, input occurrences, OCR cycles and pre-growth guards"]
+    platform["Platform: proposed real Fe method, separate Fi and bootstrap/service bounds"]
+    native["Native: derived call maxima, frame sources and crash-reporting costs or proven suppression"]
+    raw["Raw: Q, R3 capacity feasibility, loader effects and independent blocking/accepted-byte oracle"]
     local["Storage and caller: protected metadata, finite local work and statuses"]
     complete{"All required inputs and complete costs available?"}
-    hold["Unavailable: retain gaps and originals; no execution request"]
+    hold["Unavailable: retain gaps and originals. No execution request"]
+    choice["If evidence cannot be supplied: Antony funds qualification or explicitly revises the requirement"]
     review["Review concrete study and integrate supported repairs"]
     authority{"Exact execution authority obtained?"}
     study["Only the frozen finite study; retain failures and unknowns"]
@@ -15,10 +17,13 @@ flowchart TD
     start --> manifest
     manifest --> producer
     manifest --> platform
+    manifest --> native
     manifest --> raw
     manifest --> local
+    manifest -.->|Available design inputs without execution| fit
     producer --> complete
     platform --> complete
+    native --> complete
     raw --> complete
     local --> complete
     complete -->|No| hold
@@ -26,6 +31,8 @@ flowchart TD
     review --> authority
     authority -->|No| hold
     authority -->|Yes| study
+    hold --> choice
+    choice -.->|Reviewed revised inputs| manifest
     study --> fit
     fit --> whole
     classDef entry fill:#172b4d,color:#fff,stroke:#172b4d,font-weight:bold

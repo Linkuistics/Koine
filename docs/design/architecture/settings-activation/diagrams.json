@@ -30,8 +30,8 @@
   ],
   "discussion": {
     "title": "Require complete evidence before requesting execution",
-    "status": "K125 design proposed; scoped review, numerical fit and whole-design review remain outstanding.",
-    "summary": "Producer units, real Fe and bootstrap/service bounds, Q and raw observations, protected storage and finite host work need source-correspondent returns. Missing inputs leave studies unavailable. Three proposed Vision calls remain unauthorised. K126 retains complete useful fit.",
+    "status": "K143 scoped review and k144 integration are complete. Numerical fit and whole-design review remain outstanding.",
+    "summary": "Producer input occurrences and OCR cycles need actual schema bounds. Native cases need derived call maxima, frame sources and bounded crash-reporting effects or proven suppression. Real Fe remains proposed alongside Q, feasible R3 capacities, independent raw observations, protected storage and finite host work. Missing inputs leave studies unavailable. Three planned maximum Vision calls remain unauthorised. K126 can consume design inputs without execution and retains complete useful fit.",
     "diagramIds": [
       "keepalive-evidence",
       "keepalive-caller",
@@ -42,7 +42,7 @@
     "updatedDiagrams": [
       {
         "id": "keepalive-evidence",
-        "summary": "Adds independent prerequisite returns, complete study review and authority gates, and the k126 fit handoff."
+        "summary": "Adds native prerequisites, fixed R3 capacity feasibility and crash-reporting effects. Preserves study review and authority gates. Shows the handoff of design inputs to k126 without execution and the human choice for unavailable evidence."
       }
     ]
   },
@@ -52,7 +52,7 @@
       "group": "keepalive",
       "title": "Require complete evidence before requesting execution",
       "source": "keepalive-evidence.mmd",
-      "caption": "Proposed evidence dependency view. Actual producer schema, real Fe with separate Fi, bootstrap and service bounds, Q, loader and independent R3 observations, protected metadata and complete local-work/status returns remain missing. Unfilled contributions keep the dependent study unavailable. A complete finite study needs review and exact execution authority. Its results feed k126's full useful fit and whole-design review before planning. No native study, Vision call, VM launch, input action or numerical qualification follows."
+      "caption": "Actual producer schema must bound input occurrences and OCR cycles, while native cases need derived cycle/call maxima and per-case frame sources. Loader/native cases need bounded crash-reporting effects or proven suppression. Proposed real Fe, separate Fi, bootstrap/service bounds, Q, feasible fixed R3 capacities, independent blocking/accepted-byte observations, protected metadata and complete local-work/status returns remain required. Missing inputs prevent an execution request and expose a human choice if the evidence cannot be supplied. Available design inputs reach k126 without execution, while complete studies need review and exact execution authority. K126 retains full useful fit and whole-design review, and this proposal authorises no execution or numerical qualification."
     },
     {
       "id": "keepalive-caller",

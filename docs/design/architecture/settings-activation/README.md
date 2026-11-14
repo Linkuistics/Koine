@@ -3,7 +3,9 @@
 The current discussion is the [external evidence scope](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md).
 K125 specifies the missing producer, exec-floor, native, raw-queue, storage and
 caller-work returns. Unfilled subjects keep the affected study unavailable.
-The proposal authorises no native execution. Scoped review remains outstanding.
+K143 reviewed this scope and k144 integrated its supported findings.
+The proposal authorises no native execution. Numerical fit and whole-design
+review remain outstanding.
 
 The reviewed [finite caller workload](../../../verification/settings-activation/KEEPALIVE-CALLER.md)
 remains context. It expands collection into 25 ordered positions with exact
@@ -113,11 +115,11 @@ loads these same sources while retaining its separate current discussion.
 
 Current changes:
 
-- [Evidence → Require complete inputs before execution](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-evidence) — Adds the prerequisite, review, authority and k126 handoff gates.
-- [Producer schema and guards](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md#producer-owned-schema-and-guard-evidence) — Requires the actual versioned units and their complete control crosswalk.
-- [Real exec floor and bootstrap](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md#real-exec-floor-and-bootstrap-intervals) — Defines conservative reconstruction and perturbation obligations while preserving unavailable Fe and separate Fi.
-- [Native OCR proposal](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md#native-ocr-proposal-and-exact-calls) — Specifies four candidate operations and three planned recognition calls with zero current authority.
-- [Raw queues and R3 observations](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md#raw-queues-loader-diagnostics-and-r3-observations) — Requires Q, actual loader capture and an independent accepted-byte oracle.
+- [Evidence → Require complete inputs before execution](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-evidence) — Shows every prerequisite, review and authority gate. Available design inputs reach k126 without execution. Unavailable evidence reaches a human choice.
+- [Producer schema and guards](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md#producer-owned-schema-and-guard-evidence) — Requires actual versioned units and their complete control crosswalk, including input occurrences and OCR cycles.
+- [Real exec floor and bootstrap](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md#real-exec-floor-and-bootstrap-intervals) — Proposes conservative reconstruction and perturbation obligations while preserving unavailable Fe and separate Fi.
+- [Native OCR proposal](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md#native-ocr-proposal-and-exact-calls) — Preserves four operations and three planned maximum recognition calls with zero current authority. Admission needs derived cycle/call maxima and each operation's frame source.
+- [Raw queues and R3 observations](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md#raw-queues-loader-diagnostics-and-r3-observations) — Requires Q, feasible fixed R3 capacities and independent blocking/accepted-byte observations. Loader/native cases need bounded crash-reporting effects or proven suppression.
 - [Storage and caller work](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md#storage-local-work-and-external-statuses) — Adds protected metadata, full host computation, blocked-I/O and inner-status evidence.
 
 The [resource review integration](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#review-integration)

@@ -75,6 +75,8 @@ removed, renamed or semantically changed requires reconciliation before dispatch
 | ZRLE | Compressed input, persistent inflater state, chunk and total expansion, tile scratch, decoded frame and simultaneous capacity. |
 | Tight | Every accepted basic/fill/palette/gradient mode and persistent stream, reconstruction and overlap. JPEG header geometry, compressed input, decoder workspace and output before the library call. |
 | Selection and fallback | Scale 1 and 2 logical/physical geometry, selected frame held through fallback, verified crop, PNG input/output/workspace and duplicate capacities. |
+| Input occurrences | Internal connection and `confirm_input_read` work, received rectangles and frame allocations. Bound events, modifier transitions, scroll work and sleeps before dispatch. |
+| OCR cycles | Maximum capture/encode/recognition cycles per operation, including polling, retries, held frames and fallback. Bound each cycle and aggregate allocations, wire, time and retained output. |
 | OCR | Native-input copies, native/image/framework/service work, returned objects and post-recognition result collection as distinct claims. Pre-Vision controls alone do not qualify them. |
 | Assigned output | Artifact/result/diagnostic/temporary/download partials, per-object and aggregate writes, actual failed prefixes and non-reuse. Raw descriptors retain their separate collector contract. |
 
@@ -107,7 +109,7 @@ The installable threshold must cover `max(Fi, Fe)` under the corresponding
 kernel accounting. Limit readback, RSS, a no-op image or a later map sample
 without a relation to the setter cannot supply `Fe`.
 
-The selected observation route is a conservative reconstruction from one
+The proposed observation route is a conservative reconstruction from one
 bounded external sample of the unmodified real producer, plus corresponding
 exec/map source. This avoids treating an instrumented producer's different
 image as the real subject. It is a method to review, currently unavailable:
@@ -169,12 +171,33 @@ VM launches and zero input actions. Every operation must have an exact fixture,
 unit/value, call site and pre-growth assertion before an execution request.
 The current authorised Vision-call count remains **zero**.
 
-| ID | Actual boundary and decisive observation | Planned recognition calls |
+| ID | Actual boundary and decisive observation | Planned maximum recognition calls |
 |---|---|---:|
 | V-I-fit | One finite valid crop/PNG. Observe real native-input capacity/copy admission, one real recognition and actual returned objects. Retain input/pixel correspondence. | 1 |
 | V-I-excess | Same declared native-input route with a separately frozen first-excess input-unit limit. Refuse before the guarded native allocation/copy and before recognition. No synthetic result. | 0 |
 | V-R-fit | One independently frozen finite text fixture and legal result-unit limit. Perform real recognition and collect its actual in-budget result through the guarded result path. | 1 |
 | V-R-excess | Frozen finite text fixture and legal first-excess result-unit limit. Perform real recognition once, then refuse before the first prohibited result growth. Retain actual native return and guard observations. | 1 |
+
+Before an execution request, derive each operation's hard maximum capture,
+encode and recognition counts from pinned source and exact invocation values.
+The contract preserves OCR polling. An elapsed-time test after recognition
+does not bound recognition count or a blocked call. The ten-second work ceiling
+alone cannot establish the table's maxima.
+
+The proof must cover stop conditions, period, deadline, fallback and every
+retry or loop path. A source-correspondent single-cycle production unit is
+another candidate only if its source and invocation prove those same maxima.
+An unreviewed test shim cannot replace the producer path. If either route
+cannot prove maxima of `1,0,1,1`, this slice remains unavailable.
+Greater counts or another workload family require k126 reconciliation and a
+new producer/review chain before any request. This integration adds neither.
+
+Each operation also needs its own named frame source and immutable source
+binding. For a real peer, count its process, role, transport, wire and frame
+costs with the producer. For a direct image, prove source correspondence to
+the production native-input path. Retain fixture construction, pixel/PNG copies,
+allocations and storage costs. Neither route may silently substitute for the
+other or use a VM or input action under this proposal.
 
 The dependency must establish that the chosen schema permits each limit and
 that the fixture reaches the named boundary. Unexpected/empty OCR or an
@@ -228,6 +251,21 @@ Launch it once through the real descriptor path. Pin its load commands and exact
 prove the failure is in the loader. Bound its possible diagnostic bytes from
 corresponding source and capture it under established `Q`/storage limits.
 
+Loader aborts and native crashes may activate host crash-reporting services,
+including ReportCrash. They may create reports outside the private evidence
+root. Historical service enumeration does not establish the pinned host's
+behaviour. Each affected case must identify activation conditions, services,
+processes and report paths from corresponding source/configuration.
+
+Bound their time, memory, process/descriptor overlap, report bytes, copies and
+filesystem metadata within per-case and whole-study costs. Declare report
+contents and privacy effects. Retain reports and partials under the stated
+evidence policy, including collection and cleanup costs outside the private
+root. Proven suppression on the pinned host is an alternative evidence return.
+If neither finite reporting costs nor suppression can be established, the
+affected loader/native cases remain unavailable. No host-setting change or
+crash execution is authorised here.
+
 Do not assume a short diagnostic or use absent-executable backend refusal as
 loader evidence. Missing/unreachable loader subject leaves this case unavailable.
 Never change system libraries or a production executable to make it run.
@@ -235,6 +273,17 @@ Never change system libraries or a production executable to make it run.
 For R3, the approved collector-copy pre-read hold follows descriptor/buffer
 binding. One emitter uses two fixed threads, each attempting its one declared
 8192-byte stream burst. Include both stacks without inventing another process.
+
+Before admission, return each held stream's maximum accepted capacity from
+its initial state across all pinned kernel routes. Keep these per-stream
+bounds distinct from total `Q`. If either stream can accept its complete
+8192-byte burst, the fixed R3 schedule is infeasible for the blocked-write
+obligation. Unknown capacities also prevent admission. A later successful
+drain cannot establish the missing blocked-write coverage.
+
+Preserve the two bursts and release rule. A larger burst, another schedule or
+another observer family requires k126 reconciliation and a new producer/review
+chain. This scope does not change the accepted R count.
 
 Record syscall entry independently. Release the barrier **without waiting for
 either blocked write to return**. Then record returns, containment and EOF.
@@ -342,9 +391,9 @@ proposal is presented for approval.
 
 | Recipient | Required next input and retained duty |
 |---|---|
-| Dependency owner via existing issue | Actual schema/unit crosswalk, conforming source/build/environment and pre-growth controls. Further messages require explicit authority. |
-| Launcher/platform evidence owner | Real Fe method/subject and finite observer costs, preserved Fi, all bootstrap/runtime/native routes and source/build/SDK/kernel correspondence. |
-| Kernel/raw evidence owner | Q and temporary memory, concrete loader subject and R3 independent blocking/accepted-byte oracle. All raw controls remain unavailable. |
+| Dependency owner via existing issue | Actual schema/unit crosswalk, including input occurrences and OCR cycles. Conforming source/build/environment and pre-growth controls. Further messages require explicit authority. |
+| Launcher/platform evidence owner | Proposed real Fe method/subject and finite observer costs, preserved Fi and all bootstrap/runtime/native routes. Derived native cycle/call maxima, per-case frame sources and crash-reporting costs or proven suppression. Source/build/SDK/kernel correspondence. |
+| Kernel/raw evidence owner | Q, temporary memory and per-stream R3 capacity feasibility. Concrete loader subject, crash-reporting costs or proven suppression and independent R3 blocking/accepted-byte oracle. All raw controls remain unavailable. |
 | Storage/caller mechanism owner | Protected metadata/publication/process-loss evidence and full host-work/status/`start` returns above. |
 | K126 | Bind every actual return. Expand all original/added workload families. Count process overlap, mandatory carriers, rounding, attachments and failure tails. Solve full useful fit and retain whole-design review before planning/implementation. |
 
@@ -355,8 +404,8 @@ The accounting `L7 = 856 + 168u`, successor `25,20,5,20` entry and caller
 `25,20` publication followed by `27,20,28` tails remain k126 inputs with all
 required carriers and original attachments. No count here retires those duties.
 
-Scoped fresh-context review should challenge whether this package can prevent an incomplete study request.
-It should challenge whether the Fe relation can survive removals and instrument effects.
-It should also challenge whether native/raw/local loss remains honestly unavailable.
-Review is a separate Grove leaf. Ordinary document/browser checks
+K143 reviewed this scope and k144 integrated its supported findings.
+Review of a concrete study must still challenge the Fe relation, source-derived
+native counts, raw feasibility and complete costs. Missing evidence remains
+unavailable. Review is a separate Grove leaf. Ordinary document/browser checks
 do not stand in for it. The whole owner design remains live under k96.
