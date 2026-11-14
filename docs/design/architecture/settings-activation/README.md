@@ -2,17 +2,20 @@
 
 The current discussion is the [external evidence scope](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md).
 K125 specifies the missing producer, exec-floor, native, raw-queue, storage and
-caller-work returns. Unfilled subjects keep the affected study unavailable;
-the proposal authorises no native execution. Scoped review remains outstanding.
+caller-work returns. Unfilled subjects keep the affected study unavailable.
+The proposal authorises no native execution. Scoped review remains outstanding.
 
 The reviewed [finite caller workload](../../../verification/settings-activation/KEEPALIVE-CALLER.md)
 remains context. It expands collection into 25 ordered positions with exact
 semantic requests, predicates and retained original roles. The original owner
-and its recovery caller share one plan; neither can repeat a previously fenced
+and its recovery caller share one plan. Neither can repeat a previously fenced
 item. The observer is prepared before input so failure context preserves
 observer, windows and screenshot order. K138 reviewed this plan and k139
-integrated its supported findings. Executable payloads, local costs and
+integrated its supported findings.
+
+Executable payloads, local costs and
 qualified native/storage inputs remain missing.
+
 The [combined accounting](../../../verification/settings-activation/KEEPALIVE-ACCOUNTING.md) remains context, including tick sizing, carriers and protected lanes.
 
 The [record and recovery control design](../../../verification/settings-activation/KEEPALIVE-RECOVERY-CONTROLS.md) remains unchanged context.
