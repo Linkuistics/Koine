@@ -4,17 +4,23 @@
 
 ## Current decision
 
-Antony approved the recommended empirical design and finite acceptance convention
-on 2026-10-29, answering "approve." Permit design of one activation-before-window-
-ordering evaluation without requiring a documented API-use violation. This is a
-named exception to the [earlier API-use correction test](#scope-decision-for-antony),
-not permission for an unrestricted workaround search. One activation request and
-the repetition, retry, deferral and speculative-yield exclusions remain. Driver
-waits stay excluded except for the separately approved, UI-independent
-[command-ownership admission scope](#keepalive-coordination-hold).
+<!-- tc: on -->
+
+On 2026-10-29, Antony approved the recommended empirical design and the finite
+acceptance convention, with the answer "approve." The decision permits the design
+of one activation-before-window-ordering evaluation. It does not require a
+documented API-use violation. This is a named exception to the
+[earlier API-use correction test](#scope-decision-for-antony). It is not
+permission for an unrestricted search for workarounds.
+
+One activation request and the repetition, retry, deferral and speculative-yield
+exclusions remain. Driver waits stay excluded except for the separately approved,
+UI-independent [command-ownership admission scope](#keepalive-coordination-hold).
 The [accepted convention](#scope-after-no-candidate) rejects the repair on a
 qualified recurrence, prevents acceptance without required evidence and requires
 every ordinary assertion to pass. A passing finite bound supports only that sample.
+
+<!-- tc: pending because the conversion has not reached this part of the document -->
 
 The [correction assessment](#correction-assessment) still finds no qualifying
 API-use correction in the inspected path; that bounded finding survives
@@ -130,17 +136,22 @@ different design under the existing default test; this exception does not.
 
 ## Finite evaluation and ordinary acceptance
 
+<!-- tc: on -->
+
 ### Keepalive coordination hold
 
+<!-- tc: depart synonym-rotation because fixed means set in advance, not repaired -->
 Antony approved [the keepalive design scope](../verification/settings-activation/KEEPALIVE-DESIGN.md#required-scope-decision)
-and confirmed its test seams. Permit design of one serialized command owner
-for scenario and keepalive work. This explicitly amends the
+and agreed to its test seams. The approval permits the design of one serialised
+command owner for scenario and keepalive work. It explicitly amends the
 [excluded driver-wait class](#scope-decision-for-antony) only for logged admission
-delays determined by command ownership and fixed policy, independent of observed
-UI state, focus or success. A due keepalive tick may wait, and scenario input may
-wait behind capture qualification. Input order, explicit sleeps, poll counts and
-single-attempt transports remain fixed. Actual cadence and elapsed timing change;
-no symptom-preservation or safe native idle-interval claim follows.
+delays. Command ownership and fixed policy determine these delays, independent of
+observed UI state, focus or success.
+
+A due keepalive tick may wait, and scenario input may wait behind capture
+qualification. Input order, explicit sleeps, poll counts and single-attempt
+transports remain fixed. Actual cadence and elapsed timing change. No claim of
+symptom preservation or of a safe native idle interval follows.
 
 The single writer and ordinal domain, complete required-capture qualification
 before any subsequent scenario dispatch, and first-failure eligibility remain
@@ -149,17 +160,21 @@ private originals and partials. No separate evidence writer, liveness-only
 exemption, UI-conditioned delay, input retry or latch reset is admitted.
 
 Design and offline qualification must establish an enforceable finite resource
-profile covering image size/dimensions/decoded data, validation memory and time,
-aggregate captures/raw data/partials, and separate capacity for final records
-and cleanup. Account for the external producer's allocations and writes;
-post-capture checks or streaming validation alone do not bound them. At a limit,
-stop acceptance and later scenario dispatch and retain all produced bytes. No
-truncation, overwrite, deletion, downsampling or skipped required image is
-authorized. If storage or an owned process prevents preservation or cleanup,
-retain the available partials and report what remains unknown.
+profile. The profile covers these resources:
 
-<!-- tc: on -->
+- Image size, dimensions and decoded data
+- Validation memory and time
+- Aggregate captures, raw data and partials
+- Separate capacity for final records and cleanup.
 
+Account for the external producer's allocations and writes. Post-capture checks or
+streaming validation alone do not bound them. At a limit, stop acceptance and later
+scenario dispatch, and retain all produced bytes. No truncation, overwrite,
+deletion, downsampling or skipped required image is authorised. If storage or an
+owned process prevents preservation or cleanup, retain the available partials and
+report what remains unknown.
+
+<!-- tc: depart synonym-rotation because a confirmed exit is an observed process exit, not a check of evidence -->
 Permit design of a cooperative planned worker stop with its own lifecycle record,
 matched to the owned worker and its confirmed exit. Stopping between captures
 after normal scenario completion may end without making the run unavailable.
@@ -176,23 +191,26 @@ records its repairs and the remaining seam decision.
 Enforceable resources and whole-design reconciliation remain design work.
 No current interrupted receipt becomes successful.
 
-<!-- tc: pending because the remaining sections are outside this conversion -->
-
 Helper adoption, readiness, freeze and runtime remain held until the concrete
-design, independent review and every earned integration, planning, implementation
-and earned review/integration are complete. No numerical limits, scheduling
-deadlines or native capability experiment are selected by this agreement.
-Current source behavior is unchanged. The fixed E/A sets, outcome rules, exact
-VM identity, private roots and all other evidence/containment duties remain.
+design, independent review and every earned integration are complete. Planning,
+implementation and each earned review and integration must also be complete
+first. This agreement selects no numerical limits, scheduling deadlines or native
+capability experiment. Current source behaviour is unchanged. The fixed E and A
+sets, outcome rules, exact VM identity, private roots and all other evidence and
+containment duties remain.
 
 The [evaluation protocol](../verification/settings-activation/ORDERING-EVALUATION-PLAN.md)
 owns the exact subjects, five slots, setup, observation qualification, freeze,
 stop rules and outcome precedence. Two fresh focused guests each run the current
-first-launch/four-selection prefix. Only if both qualify does the separately
-declared three-guest complete ordinary set begin. One new signed candidate is
-frozen before the first guest and remains byte-identical across both sets;
-ordinary readiness is separately revalidated. There is no baseline arm or
-qualification-only guest. All implementation and review finish before freezing.
+prefix of first launch and four selections. The separately declared three-guest
+complete ordinary set runs only if both qualify.
+
+One new signed candidate is frozen before the first guest. It remains
+byte-identical across both sets. Ordinary readiness is separately revalidated.
+There is no baseline arm or qualification-only guest. All implementation and
+review finish before freezing.
+
+<!-- tc: pending because the conversion has not reached this part of the document -->
 
 Both sets use the same changed scenario and helpers. The focused prefix includes
 the existing TextEdit quit and ends before resize. Positive setup observations
@@ -336,18 +354,26 @@ may now be designed without first establishing a positive native refusal,
 responsible context or two-sided native causal discrimination. Those facts stay
 unresolved and remain necessary for any corresponding causal or ownership claim.
 
+<!-- tc: on -->
+
 The accepted boundary admits a **single-request application correction**. A
 different public activation API is eligible for design only if its preconditions
-can be established and it passes the justification test below. The following
-classes remain excluded under this amendment: application-side repeated
-activation; driver waits, retries or repeated input; menu-close or later-run-loop
-deferral; and yield-based activation used as a speculative timing workaround.
+can be established and it passes the justification test below. These classes
+remain excluded under this amendment:
+
+- Application-side repeated activation
+- Driver waits, retries or repeated input
+- Menu-close or later-run-loop deferral
+- Yield-based activation used as a speculative timing workaround.
+
 Reconsidering an excluded class requires a separate explicit scope proposal.
 The later [keepalive scope agreement](#keepalive-coordination-hold) supplies that
 proposal only for UI-independent command-ownership admission delays. It permits
 no wait for focus or success and no application activation workaround.
 The unchanged experiment subject still excludes every alternative API, yield,
 async deferral and repeated activation, irrespective of candidate-design scope.
+
+<!-- tc: pending because the conversion has not reached this part of the document -->
 
 Outside that named exception, the justification test requires a concrete mismatch
 or omitted step in Koine's current window/activation use, supported by applicable
@@ -396,15 +422,21 @@ The existing move-to-active-Space setting governs an activated window's
 destination; it supplies no activation guarantee or evidenced correction for
 the observed failure.
 
+<!-- tc: on -->
+
 Reversing the window and activation calls remains an empirical hypothesis. The
 checked contracts do not prescribe that ordering, and the closed comparison
-does not establish a repair. Repetition, retries/repeated input, deferral and
-speculative yielding remain excluded; the later keepalive agreement permits
-only the separately stated ownership-based driver-wait design. That assessment
-selected no candidate, new product seam, runtime subject or acceptance sample. The later
-empirical design above changes the permitted justification, not this finding.
-This is a bounded finding that survives review, not proof that every possible correction is absent
-or that the operating system owns the failure.
+does not establish a repair. Repetition, retries, repeated input, deferral and
+speculative yielding remain excluded. The later keepalive agreement permits
+only the separately stated ownership-based driver-wait design.
+
+That assessment selected no candidate, new product seam, runtime subject or
+acceptance sample. The later empirical design above changes the permitted
+justification, not this finding. This is a bounded finding that survives review.
+It is not proof that every possible correction is absent or that the operating
+system owns the failure.
+
+<!-- tc: pending because the conversion has not reached this part of the document -->
 
 ### Scope after no candidate
 
@@ -501,20 +533,30 @@ The complete scenario exercises a real signed application, real menu input,
 independent window observations and screenshots in a disposable guest. A useful
 focused failing product check, where feasible, supplements that native evidence.
 
-On 2026-10-30 Antony confirmed the keepalive replacement's tests at these existing
-boundaries. Control CLI and sleep behavior while exercising real coordination,
-locks, capture validation and records. Cover both overlap directions, failure
-ordering, normal-stop/dispatch races, unexpected exits, resource limits,
-original/partial retention, signal handling and both held-pointer cases. Retain
-the existing TestAnyware VM workflow for native behavior after all prerequisites.
-These local controls cannot establish VNC liveness or repaired focus; a new
-native capability experiment needs its own explicitly reviewed scope.
+<!-- tc: on -->
+
+On 2026-10-30, Antony agreed to the keepalive replacement's tests at these
+existing boundaries. Control the CLI and sleep behaviour while the tests exercise
+real coordination, locks, capture validation and records. Cover these cases:
+
+- Both overlap directions
+- Failure ordering
+- Races between a normal stop and dispatch
+- Unexpected exits
+- Resource limits
+- Retention of originals and partials
+- Signal handling
+- Both held-pointer cases.
+
+Retain the existing TestAnyware VM workflow for native behaviour after all
+prerequisites. These local controls cannot establish VNC liveness or repaired
+focus. A new native capability experiment needs its own explicitly reviewed scope.
 
 ### Original-duty comparison
 
-The original criteria remain binding except for the native-causal prerequisites,
-named candidate-justification exception and narrow keepalive amendments below.
-The [keepalive duty comparison](../verification/settings-activation/KEEPALIVE-DESIGN.md#original-duties-and-handoff)
+The original criteria remain binding, except for the native-causal prerequisites,
+the named candidate-justification exception and the narrow keepalive amendments
+below. The [keepalive duty comparison](../verification/settings-activation/KEEPALIVE-DESIGN.md#original-duties-and-handoff)
 also preserves every outstanding helper, adoption, caller and qualification duty.
 The full earlier comparisons remain historical evidence:
 [causal](../verification/settings-activation/CAUSAL-RESULTS.md#every-original-duty),
@@ -525,29 +567,29 @@ and [persisted](../verification/settings-activation/PERSISTED-RESULTS.md#every-o
 
 | Duty | Disposition under the accepted scope |
 |---|---|
-| Historical callback/failed-activation classification and persisted symptom preservation | Preserved; no historical byte or classification changes |
-| Supported condition, matched intervention and two finite falsifiers | Unmet. Amended as a prerequisite to the permitted behavioral-repair design/evaluation; still required for the corresponding causal claim. The narrow probe does not satisfy it |
-| Positive failed actual request/native disposition/responsible context | Unresolved. Amended as a prerequisite to the permitted behavioral-repair design/evaluation, not marked satisfied. Native cause and ownership remain unresolved |
-| Qualified acquisition/configuration/lag and changed-instrument availability/symptom/timing | Historical capabilities and limits preserved; no new runtime qualification |
-| Actual signed subject/all consumed inputs/completed golden freeze | Still required before any future launch, after review/integration and implementation. Design selects one unchanged candidate across both sets, but no actual signed subject has been built/frozen here |
-| Failed transport, partial archive, every started attempt and NOT RUN retention | Preserved separately from scenario results; timeout/nonzero text remains failed |
-| Original/endpoint/golden audits and exact clone stop | Required for future runs; historical duties and results unchanged; no clone in this design |
-| Justified application repair and useful failing product seam | Repair unmet. Concrete design reverses the two calls locally under the named exception. Historical real VM failures are useful product evidence; no deterministic local native RED seam is established. Recorder/reader controls and an order-encoding fake prove no repair. Other candidates retain the API-use test. Only the separate UI-independent command-ownership delay is admitted for keepalive design; repetition, other driver waits, retries/repeated input, deferral and speculative yield remain excluded |
-| Keepalive/scenario admission and timing | Design of one serialized owner with logged ownership delays and deferred ticks is approved. Input order, explicit sleeps, poll counts and one-attempt transports remain fixed; elapsed timing changes and may affect the symptom. No implemented scheduler or native safe interval is established |
-| Required captures, failure ordering and retention | Preserved: one writer/ordinal domain, full required-capture validation before subsequent scenario dispatch, sticky first failure, unique private originals and all produced partials. No second writer or liveness-only exemption |
-| Finite host resource profile | Approved for design and offline qualification, including external-producer enforcement and final-record/cleanup capacity. Limits and usefulness remain unqualified. A limit stops acceptance and later dispatch; no truncation, deletion, overwrite, downsampling or omitted required image |
-| Planned keepalive shutdown | Design may distinguish a cooperative stop between captures after normal completion, with a matched lifecycle record and confirmed worker exit. Earlier failure, unexpected exit, interrupted required capture or missing record still prevents acceptance; current source semantics remain unchanged |
-| Helper, adoption, caller and qualification work | Every remaining file/environment/lifecycle/collection helper, exec/one-shot confirmation, complete scenario adoption/signals/both held-pointer cases, positive setup/title/liveness check, exact focused prefix, finite caller/containment and readiness/freeze/runtime duty survives. Concrete design/review, planning, implementation and earned review/integration still precede consumption |
-| One selection, one front/focused Settings window | Required behavior and one activation request unchanged |
-| Separate finite complete ordinary acceptance | Unmet. Fixed at three full fresh-guest scenarios after two qualifying focused slots, same signed subject and diagnostics disabled throughout. Separate declaration/readiness, all-input/completed-golden freeze and every evidence duty remain. A qualified recurrence rejects reversal; missing/failed required evidence or another required failure stops all later slots without acceptance. A complete pass supports only that finite sample |
-| External evidence/reproducer/approval | No external owner established; positive evidence/reproducer required for attribution, repair unresolved if external; no upstream report without Antony's approval |
-| Closed historical caps and unrun ordinary phases | All closed caps stay closed. Persisted reopens 2/3, resize/minimum-size/content-height/scrolling, shortcuts, requests/denials, consent, silent launch, running-app reopen, login restart and Quit stay NOT RUN |
-| Repair acceptance/release | Scope agreement supplies no repair or ordinary-acceptance result; no release or notarization |
+| Historical callback/failed-activation classification and persisted symptom preservation | Preserved. No historical byte or classification changes. |
+| Supported condition, matched intervention and two finite falsifiers | Unmet. Its role as a prerequisite to the permitted behavioural-repair design and evaluation is amended. It is still required for the corresponding causal claim. The narrow probe does not satisfy it. |
+| Positive failed actual request/native disposition/responsible context | Unresolved. Its role as a prerequisite to the permitted behavioural-repair design and evaluation is amended, and it is not marked satisfied. Native cause and ownership remain unresolved. |
+| Qualified acquisition/configuration/lag and changed-instrument availability/symptom/timing | Historical capabilities and limits are preserved. There is no new runtime qualification. |
+| Actual signed subject/all consumed inputs/completed golden freeze | Still required before any future launch, after review, integration and implementation. The design selects one unchanged candidate across both sets, but no actual signed subject has been built or frozen here. |
+| Failed transport, partial archive, every started attempt and NOT RUN retention <!-- tc: depart synonym-rotation because a started attempt is a protocol state, while launch names an application launch --> | Preserved separately from scenario results. Text from a timeout or a nonzero status remains failed. |
+| Original/endpoint/golden audits and exact clone stop | Required for future runs. Historical duties and results are unchanged. This design has no clone. |
+| Justified application repair and useful failing product seam | Repair unmet. The concrete design reverses the two calls locally under the named exception. Historical real VM failures are useful product evidence. No deterministic local native RED seam is established. Recorder and reader controls and an order-encoding fake prove no repair. Other candidates retain the API-use test. Only the separate UI-independent command-ownership delay is admitted for keepalive design. Repetition, other driver waits, retries, repeated input, deferral and speculative yield remain excluded. |
+| Keepalive/scenario admission and timing | Design of one serialised owner with logged ownership delays and deferred ticks is approved. Input order, explicit sleeps, poll counts and one-attempt transports remain fixed. Elapsed timing changes and may affect the symptom. No implemented scheduler or native safe interval is established. |
+| Required captures, failure ordering and retention | Preserved: one writer and ordinal domain, full required-capture validation before subsequent scenario dispatch, sticky first failure, unique private originals and all produced partials. There is no second writer or liveness-only exemption. |
+| Finite host resource profile | Approved for design and offline qualification, including external-producer enforcement and capacity for final records and cleanup. Limits and usefulness remain unqualified. A limit stops acceptance and later dispatch. No truncation, deletion, overwrite, downsampling or omitted required image is permitted. |
+| Planned keepalive shutdown | Design may distinguish a cooperative stop between captures after normal completion, with a matched lifecycle record and confirmed worker exit. Earlier failure, unexpected exit, interrupted required capture or missing record still prevents acceptance. Current source semantics remain unchanged. |
+| Helper, adoption, caller and qualification work | Every remaining duty survives. The surviving duties cover each file, environment, lifecycle and collection helper, and each exec and one-shot confirmation. They cover complete scenario adoption, signals and both held-pointer cases, and the positive setup, title and liveness check. They also cover the exact focused prefix, the finite caller and containment, and readiness, freeze and runtime. Concrete design and review, planning, implementation, and each earned review and integration still precede consumption. |
+| One selection, one front/focused Settings window | The required behaviour and one activation request are unchanged. |
+| Separate finite complete ordinary acceptance | Unmet. It is fixed at three full fresh-guest scenarios after two qualifying focused slots. The same signed subject applies throughout, with diagnostics disabled. Separate declaration and readiness, the all-input and completed-golden freeze and every evidence duty remain. A qualified recurrence rejects reversal. Missing or failed required evidence, or another required failure, stops all later slots without acceptance. A complete pass supports only that finite sample. |
+| External evidence/reproducer/approval | No external owner is established. Attribution requires positive evidence and a reproducer. If the owner is external, the repair stays unresolved. There is no upstream report without Antony's approval. |
+| Closed historical caps and unrun ordinary phases | All closed caps stay closed. Persisted reopens 2 and 3 stay NOT RUN. So do resize, minimum size, content height and scrolling, shortcuts, requests and denials, and consent. Silent launch, running-app reopen, login restart and Quit also stay NOT RUN. |
+| Repair acceptance/release | The scope agreement supplies no repair or ordinary-acceptance result. There is no release or notarisation. |
 
 Persisted scenario/inner Task 1/201, native/collection/audit 1/1/1, outer Task 201
 and post-trace timeout/-1 remain failed outcomes. Original strict false/empty
 clock joins remain unchanged. Every future evaluation still requires complete
-readiness, freeze, audit and cleanup coverage and the product/ordinary duties
+readiness, freeze, audit and cleanup coverage and the product and ordinary duties
 above. Independent review of a concrete justified design precedes implementation
 or guests. Agreement and document review supply no causal, product or
 ordinary-acceptance result.
