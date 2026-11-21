@@ -166,7 +166,24 @@ Consume it only after the review settings-file-lifecycle-k149 and every earned
 integration. The generic `file upload` and `file download` routes now refuse.
 
 Its caller table states the adoption duties. Replace each existing upload once
-with `upload_guest_file`. Follow it with one `download_guest_file` that names the
-upload ordinal. Replace each overwriting host copy with the raw receipt or an
-exclusive write. k57 supplies the clone identity, the explicit base, the single
-stop and the inventories around the start and the stop.
+with `upload_guest_file`. Add no download after it. Replace each overwriting
+host copy with the raw receipt or an exclusive write. k57 supplies the clone
+identity, the explicit base, the single stop and the inventories around the
+start and the stop.
+
+## K150 file and lifecycle review integration handoff
+
+k150 integrates the k149 review in the Review integration section of
+`ORDERING-FILE-LIFECYCLE-RESULTS.md`. It withdraws the paired download that the
+k89 handoff first required. The rule above keeps every original read count.
+The protocol gives an unlisted one-shot operation only its existing assertion.
+A scenario download of the uploaded bytes needs a new human amendment.
+
+A checked upload proves the local bytes, the remote path and the reported size.
+It does not prove the guest copy. The k57 audit of the installed regular files
+and the k81 installed inventory keep the guest-side checks.
+
+The tagged client keeps no bytes of a failed download. Those bytes are
+explicitly unavailable, and the attempt keeps its raw records. The backend
+keeps a temporary file that a killed CLI leaves. Plan the storage of collection
+roots with that file in them. Every other duty and hold above stays.

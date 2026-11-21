@@ -86,6 +86,13 @@ is a parser error, because a download is a read.
 An evidence-class download stays callable after a latch. It collects context
 only and never clears the latch. A read-poll download refuses after a latch.
 
+The tagged client streams into a hidden temporary sibling of `download.bin`. On
+a streaming error, the client deletes that file before the CLI returns. Thus
+the bytes of a failed download are explicitly unavailable. The attempt keeps
+its request, raw streams, CLI status and result. When a signal kills the CLI,
+the temporary file stays in the attempt directory, and the backend keeps it.
+A later download cannot recover the bytes of a failed transfer.
+
 ## VM start, stop and inventory
 
 The tagged
@@ -126,8 +133,10 @@ Each attempt keeps the existing records of the shared adapter: `request.json`,
 | `download.bin` | the CLI, at the backend-owned path | the guest bytes |
 | `transfer.json` | upload or download, only when qualified | the direction, the paths, the size, the SHA-256 and any matched upload ordinal |
 
-A failure keeps every partial record and the original bytes in place. The
-backend never deletes, replaces or redacts them.
+A failure keeps every partial record that the backend wrote and every file
+that the CLI left. The backend never deletes, replaces or redacts them. The
+only produced bytes that it cannot keep are those of a failed download. The
+tagged client deletes them, as the download section states.
 
 ## Actual source and caller inventory
 
@@ -143,14 +152,14 @@ makes no dynamic-shell or whole-repository completeness claim.
 
 | Existing caller | Adoption duty |
 |---|---|
-| `install_app` upload of `Koine.zip` to `/tmp/Koine.zip` | k76 replaces it once with `upload_guest_file`, then one `download_guest_file` that names the upload. k54 freezes the bundle that `ditto -c` archives. |
-| `install_app` upload of `vm-verify-client.sh` | k76 applies the same upload and download pair. |
-| Scenario upload of `vm-verify-enrollment-client.py` | k76 applies the same upload and download pair. |
+| `install_app` upload of `Koine.zip` to `/tmp/Koine.zip` | k76 replaces it once with `upload_guest_file`, and adds no read. k54 freezes the bundle that `ditto -c` archives. |
+| `install_app` upload of `vm-verify-client.sh` | k76 replaces it once with `upload_guest_file`, and adds no read. |
+| Scenario upload of `vm-verify-enrollment-client.py` | k76 replaces it once with `upload_guest_file`, and adds no read. |
 | `_start_vm` start | k57 supplies the clone identity and the explicit base. k76 calls `start_guest_vm` once, with an absent inventory before it and a running inventory after it. |
 | `cleanup` stop, which ignores failure | k57 replaces it with one `stop_guest_vm` and one absent inventory. A failed stop leaves cleanup unresolved. `KOINE_VM_KEEP` stays a k57 containment decision. |
 | `cleanup` deletion of `WORK` | k76 and k57 keep every original and partial before any deletion. |
 | Host copies `installed-PHASE.txt` and `least-size-content.json` | k76 replaces each overwriting `>` write with the raw receipt or an exclusive write. |
-| No guest file collection exists today | A collection step uses an evidence-class `download_guest_file`. |
+| No guest file collection exists today | A guest file collection after scenario input uses an evidence-class `download_guest_file`. |
 
 ## Environment and installed identity
 
@@ -191,9 +200,16 @@ now assert the refusal. The checked routes have their own controls in the new
 suite.
 
 Run `mise exec -- task check:vm-file-lifecycle-evidence`. The
-[measurement script](ordering-file-lifecycle-evidence/measure.sh) digests each
-subject before and after each recorded run. No source or test changed during a
-recorded run.
+[measurement script](ordering-file-lifecycle-evidence/measure.sh) digests ten
+named subjects before and after each recorded run. Those ten files stayed the
+same during each recorded run.
+
+The eleven checks also read other inputs, and
+the script did not digest them. Examples are the capture fixture CLI, the
+capture facade, `persisted-01/failure-observed.png` and
+`persisted-01/trace-disabled-after.json`. Thus these receipts do not show that
+every consumed input stayed the same. They also do not show that an omitted
+input changed, or that a test failed.
 
 The [documentation check](ordering-file-lifecycle-evidence/docs-check.txt)
 reports only the two known missing archive links that k23 owns. It is not a
@@ -202,9 +218,17 @@ clean documentation result.
 ## Limits
 
 A download proves the guest bytes at the moment of the download. It proves no
-later state and no installed tree. Each checked upload adds one download read.
-That read can end a slot as unavailable, like any other required read. It adds
-no input, wait or poll.
+later state and no installed tree.
+
+The scenario adds no download after an upload. The k76 task keeps every
+original read count. The protocol gives an unlisted one-shot operation only its
+existing assertion. A checked upload proves the local bytes, the remote path
+and the reported size. It does not prove the guest copy.
+
+The k57 audit of the
+installed regular files and the k81 installed inventory keep the guest-side
+checks. A download of the uploaded bytes during the scenario needs a new human
+amendment.
 
 The local digest holds only for cooperating processes. A same-user process
 can still change a file between two reads and restore every checked field. The
@@ -216,6 +240,37 @@ The stop helper does not count stops. k57 owns the single stop budget, the
 orphan-lock rule and the exact containment. The start payload does not show
 whether the TestAnyware app or the direct CLI started the clone. k54 pins that
 configuration.
+
+## Review integration
+
+k150 integrates the [k149 review](ORDERING-FILE-LIFECYCLE-REVIEW.md). The
+receipts are in [the integration directory](ordering-file-lifecycle-integration/).
+The k89 receipts stay unchanged.
+
+| Finding | Disposition | Repair |
+|---|---|---|
+| P2-1, deleted partial download bytes | A real issue. The Records section claimed bytes that the dependency deletes. | The download section and the Records section state the limit. A new control shows that a failed download is never qualified. It also shows that the backend keeps a temporary file that a killed CLI left. |
+| P2-2, added reads at three uploads | A contract stated unclearly. No agreed text admits the three downloads. | The caller table and the Limits section withdraw the paired download. The k76 and k81 handoffs agree. |
+| P3-1, incomplete measurement subjects | A real issue. The provenance statement claimed more than the ten digests show. | The provenance section qualifies the k89 receipts. The fresh run digests every working-copy file. |
+
+The bytes of a failed download change no acceptance. A failed download is
+unavailable, so it already stops the slot and prevents acceptance. Keeping the
+deleted bytes needs a TestAnyware change. The rejected resource contract
+proposed that change, and the keepalive removal ADR withdrew it.
+
+The [mutation receipt](ordering-file-lifecycle-integration/mutations.jsonl)
+shows that the new control can fail. With the
+[mutation instrument](ordering-file-lifecycle-integration/mutate.py), one
+mutation makes the backend delete the leftover file. Another keeps the prefix
+after a streaming error. Each mutation fails only the new control.
+
+The [final receipt](ordering-file-lifecycle-integration/final-verification.txt)
+runs the same eleven Taskfile checks. The new check passes its 18 controls. The
+ten other checks pass their 173 tests. The
+[measurement instrument](ordering-file-lifecycle-integration/measure.py) digests
+every tracked file and every untracked file that Git does not ignore. It writes
+the complete manifest and the tool versions beside the receipt. Ignored build
+outputs, caches and the installed tools are not subjects.
 
 ## Remaining duties
 

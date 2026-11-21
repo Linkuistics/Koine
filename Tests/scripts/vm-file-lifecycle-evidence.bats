@@ -184,6 +184,27 @@ assert_latched() {
     done
 }
 
+@test "failed download bytes stay where the CLI leaves them and are never qualified" {
+    local mode attempt
+    for mode in download-stream-error download-killed; do
+        reset_root "partial-${mode}"
+        upload_guest_file "${lifecycle_root}" install-archive "${local_input}" /tmp/Koine.zip >/dev/null
+        attempt="${lifecycle_root}/000002"
+        lifecycle_mode="${mode}" lifecycle_exit=1 run download_guest_file "${lifecycle_root}" evidence archive-identity /tmp/Koine.zip 000001
+        [[ "${status}" == 125 && -z "${output//guest evidence unavailable*/}" ]]
+        jq -e '.outcome == "unavailable" and .cli_status != 0' "${attempt}/result.json"
+        [[ -s "${attempt}/raw.stderr" && ! -e "${attempt}/download.bin" && ! -e "${attempt}/transfer.json" ]]
+        if [[ "${mode}" == download-killed ]]; then
+            # The backend keeps the prefix that a killed CLI left behind.
+            [[ "$(find "${attempt}" -name '.download.bin.testanyware-*.tmp' -size +0 | wc -l | tr -d ' ')" == 1 ]]
+        else
+            # The dependency deleted its prefix, so these bytes are unavailable.
+            [[ -z "$(find "${attempt}" -name '.download.bin.testanyware-*')" ]]
+        fi
+        assert_latched
+    done
+}
+
 @test "download refuses an unmatched upload record and a scenario class before dispatch" {
     upload_guest_file "${lifecycle_root}" install-archive "${local_input}" /tmp/Koine.zip >/dev/null
     run download_guest_file "${lifecycle_root}" read-poll archive-identity /tmp/other.zip 000001

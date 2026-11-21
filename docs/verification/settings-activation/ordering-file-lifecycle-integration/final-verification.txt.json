@@ -1,0 +1,27 @@
+{
+  "command": [
+    "bash",
+    "-c",
+    "set -e; for t in check:vm-file-lifecycle-evidence check:vm-guest-exec check:vm-capture-evidence check:vm-window-evidence check:vm-input-evidence check:vm-ui-evidence check:vm-click-evidence check:vm-physical-evidence check:vm-menu-pointer check:vm-verify-start check:vm-window-resize; do echo \"## task $t\"; mise exec -- task \"$t\"; done"
+  ],
+  "started": "2026-11-21T12:26:41Z",
+  "ended": "2026-11-21T12:29:17Z",
+  "status": 0,
+  "output_sha256": "fd1a6dc3dbe26240751d974d789249629bb06e410077dc37347b138e4e709683",
+  "subject_count": 4386,
+  "before_manifest_sha256": "c1ce1c13a07975080f94ab05a1d021fb34adde423b15331fa0a4fa1a880ee87b",
+  "after_manifest_sha256": "c1ce1c13a07975080f94ab05a1d021fb34adde423b15331fa0a4fa1a880ee87b",
+  "changed_subjects": [],
+  "added_files": [],
+  "removed_files": [],
+  "tools": {
+    "bats": "Bats 1.14.0",
+    "jq": "jq-1.8.2",
+    "python3": "Python 3.15.2",
+    "shellcheck": "ShellCheck - shell script analysis tool",
+    "shfmt": "3.14.1",
+    "task": "3.54.0",
+    "git": "git version 2.56.1"
+  },
+  "subjects_unchanged": true
+}

@@ -125,7 +125,11 @@ and VM inventory. Read
 Consume it only after the review settings-file-lifecycle-k149 and every earned
 integration. The generic `file upload` and `file download` routes now refuse.
 
-The upload record proves the local bytes, and a checked download proves the
-guest copy at that moment. Neither observes the installed tree. This task still
-owns every exec read. These include the guest environment, the defaults and
+The upload record proves the local bytes, the remote path and the reported
+size. It does not prove the guest copy. A checked download proves a guest copy
+at that moment. Neither observes the installed tree. k150 withdrew the download
+that k89 paired with each scenario upload, so the scenario adds no download
+read.
+
+This task still owns every exec read. These include the guest environment, the defaults and
 their absence and the exact installed inventory.

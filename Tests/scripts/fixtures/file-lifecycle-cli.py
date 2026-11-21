@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import os
+import signal
 import sys
 import time
 from pathlib import Path
@@ -50,7 +51,16 @@ def download(args: list[str], mode: str) -> dict[str, object]:
     if mode == "download-corrupt":
         data = bytes([data[0] ^ 1]) + data[1:] if data else b"x"
     target = Path(local)
-    if mode == "download-symlink":
+    if mode in {"download-stream-error", "download-killed"}:
+        # The tagged client streams into `.NAME.testanyware-PID.SEQ.tmp` and
+        # deletes it on a streaming error. A kill skips that deletion.
+        # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-agent-client/src/lib.rs#L456-L485
+        partial = target.with_name(f".{target.name}.testanyware-{os.getpid()}.0.tmp")
+        partial.write_bytes(data[: max(1, len(data) // 2)])
+        if mode == "download-killed":
+            os.kill(os.getpid(), signal.SIGKILL)
+        partial.unlink()
+    elif mode == "download-symlink":
         other = target.with_name("elsewhere")
         other.write_bytes(data)
         target.symlink_to(other)
@@ -164,7 +174,7 @@ def main() -> int:
         response["note"] = "unexpected field"
     elif mode == "dry-run":
         response["dry_run"] = False
-    elif mode == "error":
+    elif mode in {"error", "download-stream-error"}:
         response = {
             "schema_version": "1.0",
             "ok": False,

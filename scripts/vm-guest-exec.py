@@ -363,6 +363,10 @@ def run_locked(
             f".remote == {json.dumps(arguments[1])} and .bytes == {size}"
         )
     if transport == "download":
+        # The tagged client streams into a hidden sibling of download.bin. It
+        # deletes that file on a streaming error, so the failed bytes are then
+        # unavailable. A killed CLI leaves the file, and this backend keeps it.
+        # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-agent-client/src/lib.rs#L456-L485
         argv = cli_argv(
             ["file", "download", arguments[0], str(download_path)],
             vm,
