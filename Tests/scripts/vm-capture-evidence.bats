@@ -6,8 +6,8 @@ setup() {
     # shellcheck source=scripts/vm-guest-exec-lib.sh
     source "${BATS_TEST_DIRNAME}/../../scripts/vm-guest-exec-lib.sh"
     if [[ "${KOINE_CAPTURE_BASELINE:-0}" == 1 ]]; then
-        # Bare legacy capture and while/sleep/ignored-failure keepalive semantics.
-        # These test-only wrappers adapt the new signature, not the production API.
+        # Bare legacy capture semantics. This test-only wrapper adapts the new
+        # signature, not the production API.
         # shellcheck disable=SC2329
         capture_guest_evidence() {
             if [[ $# == 5 ]]; then
@@ -16,16 +16,12 @@ setup() {
                 testanyware screen capture -o "$1/keepalive.png" --json
             fi
         }
-        # shellcheck disable=SC2329
-        keepalive_guest_evidence() {
-            while sleep 20; do capture_guest_evidence "$1" read-poll keepalive >/dev/null 2>&1 || true; done
-        }
     else
         # shellcheck source=scripts/vm-capture-evidence-lib.sh
         source "${BATS_TEST_DIRNAME}/../../scripts/vm-capture-evidence-lib.sh"
     fi
     export capture_root="${BATS_TEST_TMPDIR}/evidence"
-    export capture_calls="${BATS_TEST_TMPDIR}/calls" capture_waits="${BATS_TEST_TMPDIR}/waits"
+    export capture_calls="${BATS_TEST_TMPDIR}/calls"
     export capture_ready="${BATS_TEST_TMPDIR}/ready"
     export capture_fixture="${BATS_TEST_DIRNAME}/fixtures/capture-cli.py"
     export capture_historical="${BATS_TEST_DIRNAME}/../../docs/verification/settings-activation/persisted-01/failure-observed.png"
@@ -38,7 +34,6 @@ CLI
     chmod +x "${BATS_TEST_TMPDIR}/bin/testanyware"
     export PATH="${BATS_TEST_TMPDIR}/bin:${PATH}"
     : >"${capture_calls}"
-    : >"${capture_waits}"
     cd "${BATS_TEST_TMPDIR}/cwd" || return
     init_guest_evidence "${capture_root}" exact-capture-vm
 }
@@ -69,50 +64,6 @@ assert_capture_latched() {
         jq -se 'length == 1 and (.[0].reason | contains("checked capture"))' "${capture_root}/refusals.jsonl"
         assert_capture_latched
     done
-}
-
-@test "keepalive sleep signal survives refused recording under a competing writer" {
-    local backend="${BATS_TEST_TMPDIR}/backend" child ready=0 observed
-    mkdir "${backend}"
-    # A real cooperating writer owns the lock; no CLI or guest is needed.
-    python3 - "${capture_root}" "${capture_ready}" <<'PY' &
-import fcntl
-import sys
-import time
-from pathlib import Path
-root, ready = map(Path, sys.argv[1:])
-with (root / '.writer').open('a') as lock:
-    fcntl.flock(lock, fcntl.LOCK_EX)
-    ready.touch()
-    while not ready.with_suffix('.release').exists(): time.sleep(.02)
-PY
-    child=$!
-    for _ in $(seq 1 200); do
-        if [[ -f "${capture_ready}" ]]; then
-            ready=1
-            break
-        fi
-        sleep 0.02
-    done
-    if [[ "${ready}" != 1 ]]; then
-        kill "${child}"
-        wait "${child}" || :
-        return 1
-    fi
-    # shellcheck disable=SC2329
-    sleep() {
-        echo "$*" >>"${capture_waits}"
-        return 143
-    }
-    run keepalive_guest_evidence "${capture_root}"
-    observed="${status}"
-    touch "${capture_ready}.release"
-    wait "${child}"
-    [[ "${observed}" == 143 && ! -s "${capture_calls}" ]]
-    [[ "$(cat "${capture_waits}")" == 20 && ! -e "${capture_root}/000001" ]]
-    jq -se 'length == 1 and .[0].reason == "competing evidence writer"
-        and .[0].arguments[0] == "poll-step" and .[0].arguments[3:5] == ["sleep","143"]' "${capture_root}/refusals.jsonl"
-    assert_capture_latched
 }
 
 @test "full capture retains complete image raw bytes exact VM and artifact digest" {
@@ -372,69 +323,6 @@ PY
         esac
         [[ "${status}" != 0 && ! -s "${capture_calls}" && -s "${capture_root}/unavailable" ]]
     done
-}
-
-@test "keepalive preserves twenty-second ticks unique paths and exact local interruption" {
-    # shellcheck disable=SC2329
-    sleep() {
-        echo "$*" >>"${capture_waits}"
-        [[ "$(wc -l <"${capture_waits}" | tr -d ' ')" -le 2 ]] || return 143
-    }
-    run keepalive_guest_evidence "${capture_root}"
-    [[ "${status}" == 143 ]]
-    [[ "$(cat "${capture_waits}")" == $'20\n20\n20' ]]
-    [[ "$(wc -l <"${capture_calls}" | tr -d ' ')" == 2 ]]
-    jq -se 'map(.operation) == ["keepalive-1","keepalive-2","keepalive-sleep-3"]' "${capture_root}"/*/request.json
-    jq -e '.poll_phase == "sleep" and .local_status == 143' "${capture_root}/000003/request.json"
-    jq -e '.outcome == "interrupted"' "${capture_root}/000003/result.json"
-    [[ -s "${capture_root}/000001/screen.png" && -s "${capture_root}/000002/screen.png" ]]
-}
-
-@test "keepalive failure stops before another sleep or capture and latches later input" {
-    export capture_mode=missing
-    # shellcheck disable=SC2329
-    sleep() {
-        echo "$*" >>"${capture_waits}"
-        [[ "$(wc -l <"${capture_waits}" | tr -d ' ')" -le 1 ]] || return 143
-    }
-    run keepalive_guest_evidence "${capture_root}"
-    [[ "${status}" == 125 ]]
-    [[ "$(cat "${capture_waits}")" == 20 && "$(wc -l <"${capture_calls}" | tr -d ' ')" == 1 ]]
-    assert_capture_latched
-}
-
-@test "keepalive tick colliding with an in-flight dispatch stops and latches without retry" {
-    export capture_block=1
-    capture_guest_evidence "${capture_root}" read-poll in-flight >"${BATS_TEST_TMPDIR}/held.out" 2>&1 &
-    local child=$! ready=0 observed
-    for _ in $(seq 1 200); do
-        if [[ -f "${capture_ready}" ]]; then
-            ready=1
-            break
-        fi
-        sleep 0.02
-    done
-    if [[ "${ready}" != 1 ]]; then
-        kill "${child}"
-        wait "${child}" || :
-        return 1
-    fi
-    # Compress only the existing sleep; the real lock/dispatch stay held.
-    # shellcheck disable=SC2329
-    sleep() {
-        echo "$*" >>"${capture_waits}"
-        [[ "$(wc -l <"${capture_waits}" | tr -d ' ')" -le 1 ]] || return 143
-    }
-    run keepalive_guest_evidence "${capture_root}"
-    observed="${status}"
-    touch "${capture_ready}.release"
-    wait "${child}"
-    [[ "${observed}" == 125 && "$(cat "${capture_waits}")" == 20 ]]
-    [[ "$(wc -l <"${capture_calls}" | tr -d ' ')" == 1 ]]
-    jq -se 'length == 1 and .[0].reason == "competing evidence writer"
-        and .[0].arguments[0] == "capture" and .[0].arguments[3] == "keepalive-1"' "${capture_root}/refusals.jsonl"
-    jq -e '.outcome == "clean"' "${capture_root}/000001/result.json"
-    assert_capture_latched
 }
 
 @test "allocation failure retains partial capture and the next gate latches unfinished evidence" {

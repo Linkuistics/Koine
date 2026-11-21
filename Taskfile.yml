@@ -1498,7 +1498,7 @@ tasks:
       - bats Tests/scripts/vm-click-evidence.bats
 
   check:vm-capture-evidence:
-    desc: Check unique complete capture artifacts and the existing keepalive cadence without a VM; adoption remains separate
+    desc: Check unique complete capture artifacts without a VM. Caller adoption remains separate
     cmds:
       - bash -n scripts/vm-capture-evidence-lib.sh Tests/scripts/vm-capture-evidence.bats
       - shellcheck -x scripts/vm-capture-evidence-lib.sh Tests/scripts/vm-capture-evidence.bats
@@ -1508,6 +1508,14 @@ tasks:
       - uvx ruff@0.17.3 format --check scripts/vm-guest-exec.py scripts/vm_capture_artifact.py Tests/scripts/fixtures/capture-cli.py
       - uvx pyright@1.1.414 scripts/vm-guest-exec.py scripts/vm_capture_artifact.py Tests/scripts/fixtures/capture-cli.py
       - bats Tests/scripts/vm-capture-evidence.bats
+
+  check:vm-verify-start:
+    desc: Check without a VM that the Settings scenario starts no VNC keepalive loop and that another start_vm caller still starts it
+    cmds:
+      - bash -n scripts/vm-verify-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify.sh Tests/scripts/vm-verify-start.bats
+      - shellcheck -x scripts/vm-verify-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify.sh Tests/scripts/vm-verify-start.bats
+      - shfmt -d -i 4 Tests/scripts/vm-verify-start.bats
+      - bats Tests/scripts/vm-verify-start.bats
 
   check:vm-window-evidence:
     desc: Check strict window list/action schemas and existing bounded negative polls without a VM; scenario adoption remains separate

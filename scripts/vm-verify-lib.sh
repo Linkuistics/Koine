@@ -98,6 +98,9 @@ guest_long() {
     return "${status}"
 }
 
+# Only start_vm sets this, when it starts the capture loop. Cleanup never stops
+# an inherited process.
+VNC_KEEPALIVE_PID=''
 cleanup() {
     [ -z "${VNC_KEEPALIVE_PID:-}" ] || kill "${VNC_KEEPALIVE_PID}" 2>/dev/null || true
     rm -rf "${WORK}"
@@ -309,7 +312,11 @@ quit_koine_or_terminate() {
     guest "pkill -f ${INSTALLED}" || true
 }
 
-start_vm() {
+# start_vm starts the VNC keepalive loop. start_vm_without_keepalive does not.
+start_vm() { _start_vm 1; }
+start_vm_without_keepalive() { _start_vm 0; }
+_start_vm() {
+    local keepalive="$1"
     step "Start a clean VM (${VM_ID})"
     # KOINE_VM_DISPLAY overrides the guest's resolution. Only the notarized run
     # needs it, to put a control far below the fold of a System Settings pane on
@@ -318,17 +325,26 @@ start_vm() {
     testanyware vm start --platform macos --wait --id "${VM_ID}" \
         ${KOINE_VM_BASE:+--base "${KOINE_VM_BASE}"} \
         ${KOINE_VM_DISPLAY:+--display "${KOINE_VM_DISPLAY}"} >/dev/null
-    # On a macOS 27 host, Virtualization.framework's VNC server (which tart serves
-    # the guest's screen through) hits an assertion in
-    # -[_VZVirtualMachineAccessor addAccessorObserver:] when a client connects
-    # after about 60s with none, and takes tart and the guest down with it. A run
-    # waits that long whenever it polls a cask install over the agent alone, so a
-    # background capture keeps the server from going idle until cleanup stops it.
-    ( while sleep 20; do
-        testanyware screen capture -o "${WORK}/keepalive.png" >/dev/null 2>&1 || true
-    done ) >/dev/null 2>&1 &
-    VNC_KEEPALIVE_PID=$!
-    disown "${VNC_KEEPALIVE_PID}"
+    # With macOS 27.0.1 and Tart 2.40.1 on the host, the VNC server of
+    # Virtualization.framework hit an assertion in
+    # -[_VZVirtualMachineAccessor addAccessorObserver:]. The assertion occurred
+    # when a client connected after about 60 s without a client. Tart serves the
+    # guest screen through that server, and the assertion stopped Tart and the
+    # guest. A run waits that long when it polls a cask install only through the
+    # agent. Thus a background capture every 20 s keeps the server active, and
+    # cleanup stops the capture loop.
+    #
+    # The crash does not occur on macOS 27.2.1 (26B131) with Tart 2.42.0. The
+    # Settings harness calls start_vm_without_keepalive and starts no loop, as
+    # docs/adr/settings-harness-takes-no-keepalive-captures.md decides. Every
+    # other caller keeps the loop.
+    if [ "${keepalive}" = 1 ]; then
+        ( while sleep 20; do
+            testanyware screen capture -o "${WORK}/keepalive.png" >/dev/null 2>&1 || true
+        done ) >/dev/null 2>&1 &
+        VNC_KEEPALIVE_PID=$!
+        disown "${VNC_KEEPALIVE_PID}"
+    fi
     guest 'sw_vers; uname -m'
     echo "Gatekeeper: $(guest 'spctl --status' 2>&1 || true)"
 }

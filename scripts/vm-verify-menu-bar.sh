@@ -74,7 +74,10 @@ record_installed_bundle() {
     echo "Installed bundle inventory: ${LOG%.log}-installed-${phase}.txt"
 }
 
-start_vm
+# The Settings harness takes no keepalive captures, as
+# docs/adr/settings-harness-takes-no-keepalive-captures.md decides. The choice
+# is in the source, so no environment variable can start the loop.
+start_vm_without_keepalive
 install_app
 record_installed_bundle before
 if [ "${KOINE_SETTINGS_TRACE:-0}" = 1 ]; then
