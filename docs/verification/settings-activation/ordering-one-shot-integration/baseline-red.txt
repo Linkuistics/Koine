@@ -1,0 +1,45 @@
+# command: bats Tests/scripts/vm-exec-one-shot-evidence.bats Tests/scripts/vm-exec-one-shot-host.bats
+# revision of scripts/vm_exec_reads.py: ac62cf219aadb5b93a10174add7c9fa9c7a49442
+# started: 2026-11-21T16:21:00Z
+# subjects
+c30f818cd470dd3e1e1d4f96f392889c69229b2081f0fbd70d9d483e4692a32c  scripts/vm_exec_reads.py
+fd13d0862dea7fd23b1b3c66540b9ed53f4d514cc26237ddc1086584bc8e23ca  scripts/vm-guest-exec.py
+d9540371ce2cbfd6a717ce8e4243346f4af630d43c6421fcd919b1c78ed2e785  scripts/vm-guest-exec-lib.sh
+267cede55ae25018ed6f0e25b376e4ea2e39a564fe397cc793870c279741ab41  scripts/vm-sysevents-evidence-lib.sh
+d80c9193c95538cb57bed52f431b0f3a555b3057876219a1b2ed15bb02eebf3a  scripts/vm-exec-one-shot-evidence-lib.sh
+c4694aadb6f22ed7655f9db1861583bc121dd940b96fa9e7d2187b79d54ff0dd  Tests/scripts/vm-exec-one-shot-evidence.bats
+9b38f31e495312091918359500133ad60002cb157edbee96e3b38def9646c5e9  Tests/scripts/vm-exec-one-shot-host.bats
+607ae1be65a1b53883628e94c4e1eec2f16eb662fdfbdf36cb5be76adf68ae33  Tests/scripts/fixtures/exec-read-cli.py
+741a7dc3f0dd76d3e8205ee756094bd5661a20a57b4c9118655556b85f1d6f9c  Tests/scripts/fixtures/identity-libproc-fake.py
+# output
+1..25
+ok 1 submissions admit only the one-shot class and take no arguments
+ok 2 each submission sends its legacy command once and keeps a clean receipt
+ok 3 a timeout, a guest failure or a transport failure of a submission is unavailable and sent once
+ok 4 other stdout from a submission is unavailable
+ok 5 the launch confirmation joins the descriptor, the only selected process, its executable and its start
+ok 6 a stale descriptor, a second process or another executable is a clean mismatch
+ok 7 a malformed identity answer is unavailable
+ok 8 a reopen keeps the same process: instance, PID, start and executable
+ok 9 the TextEdit quit needs a clean submission and then one clean absence read
+ok 10 a failed TextEdit quit reads nothing, and an absence cannot make it clean
+ok 11 the restart waits 30 seconds and polls the boot five seconds apart until it changes
+ok 12 a failed restart submission is unavailable even if the boot later changes
+ok 13 a refused connection during the boot poll stops it at once, even before a changed boot
+ok 14 an unchanged boot for sixty reads is a state failure
+ok 15 the restart refuses a boot argument that is not a boot record, before it sends anything
+ok 16 the diagnostic defaults write is refused and latches without dispatch
+ok 17 the real identity read names the kernel's executable and the start of a live host process
+ok 18 the real identity read reports an exited process as the clean fact no process
+ok 19 the real identity read reports an absent descriptor as a clean fact
+ok 20 a descriptor without a PID makes the real identity read unavailable
+ok 21 the fake libproc answers the real identity script with a live process
+not ok 22 a path read that fails with ESRCH while the process lives makes the identity unavailable
+# (in test file Tests/scripts/vm-exec-one-shot-host.bats, line 125)
+#   `[[ "${status}" == 125 && -s "${root}/unavailable" ]]' failed
+# diagnostic: path-esrch-live status=1 output=
+ok 23 the identity script reports an absent process only from a process-info read
+ok 24 the real TextEdit process read parses this host's answer
+ok 25 each submission command is valid bash
+# bats exit: 1
+# ended: 2026-11-21T16:21:26Z

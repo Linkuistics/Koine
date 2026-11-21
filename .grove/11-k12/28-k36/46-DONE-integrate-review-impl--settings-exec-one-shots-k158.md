@@ -31,3 +31,27 @@ It grants no VM, candidate, freeze, additional runtime slot or acceptance.
 k76 retains complete adoption, signals and both held-pointer controls.
 k67, k62, k57 and k54 retain their original duties. Secret-bearing evidence
 roots stay private. Substantial redesign follows the Grove integration rules.
+
+## Decisions (running log)
+
+- 2026-11-22: The pinned Apple bytes match the digests of the k157 source
+  receipt. Both findings follow from that source.
+- 2026-11-22: P2-1 is a real issue. The path call returns ESRCH for some live
+  processes, so only a process-information read reports an absent process.
+  A failed path read of a live process exits with status 7 and is
+  unavailable. The command, the three kernel calls and the read count stay
+  the same.
+- 2026-11-22: P2-2 is a real trade-off of the unchanged command. The protocol's
+  clean exec result can be supplied, so its hold rule does not apply. The
+  changed boot stays the only confirmation of the restart. A failed reboot3
+  ends as the state failure of the boot poll and is never a Koine failure.
+  The comments, the report and the k76 handoff state this limit.
+- 2026-11-22: The report's claim about the 5-second gap had no timing
+  evidence. The feasibility section now keeps the timing unknown. The hold
+  decision does not change.
+- 2026-11-22: The fake libproc fixture runs the real identity script, because
+  no host process fails its path read on demand. The baseline fails only the
+  new ESRCH control. Four mutations each fail their named control. The
+  measured green run passes 17 checks and 272 tests with unchanged subjects.
+- 2026-11-22: No further review is earned. The repair is local and has
+  controls, and k76 cuts the whole-harness review before k62 and runtime.

@@ -87,9 +87,15 @@ path as one JSON line.
 The host SDK declares both calls in `libproc.h`. `sys/proc_info.h` defines the
 flavour, the path buffer size and the `proc_bsdinfo` fields. The
 [source receipt](ordering-one-shot-evidence/official-source.json) keeps the
-digests. Each call fails with `ESRCH` for a PID that no longer exists, and the
-script reports that as the clean fact `process: null`. The script reads the
-start time before and after the path, and a difference is unavailable.
+digests. The script reads the start time before and after the path, and a
+difference is unavailable.
+
+Only a process-information read can report the clean fact `process: null`. With
+flags and argument zero, that call fails with `ESRCH` only when no process has
+the PID. The path call also fails with `ESRCH` for a live process, so it cannot
+report an absence. If both process-information reads find the process, a failed
+path read is unavailable, with script status 7. The
+[k157 integration](#integration-of-review-k157) gives the kernel evidence.
 
 The record is joined when three facts hold:
 
@@ -99,8 +105,8 @@ The record is joined when three facts hold:
 
 A stale descriptor, a second process, a missing process and another executable
 are clean mismatches. The descriptor keeps the version-1 grammar of the
-endpoint read. Any other script status, a malformed line or a process record
-with another PID is unavailable.
+endpoint read. A failed path read of a live process, any other script status, a
+malformed line or a process record with another PID is unavailable.
 
 The reopen confirmation compares the new record with the record that the silent
 launch confirmation printed. The instance, the PID, the start time in
@@ -135,20 +141,26 @@ boot read stops the poll at once.
 
 ### The submission grammar
 
-Apple's [shutdown.c](https://github.com/apple-oss-distributions/system_cmds/blob/main/shutdown/shutdown.c)
+Apple's [shutdown.c](https://github.com/apple-oss-distributions/system_cmds/blob/408bba7453608006b89772db185defbac8fe2fd0/shutdown/shutdown.c)
 decides the clean stdout. On the `now` path, the command skips its fork and
 prints `Shutdown NOW!`. It writes no `wall` text to stdout. It then prints
 `System shutdown time has arrived` between CR LF pairs, with two BEL characters,
-and calls `reboot3`. If that call returns, `finish(0)` exits 0.
+and calls `reboot3`. That call asks launchd for the reboot. Whether it succeeds
+or fails, `finish(0)` then exits 0.
+
+Thus a clean submission proves that the command sent the request. It cannot
+prove that launchd accepted it. Only the changed boot shows that the guest restarted.
 
 The agent's stdout is a file, so both lines reach it at exit. The agent removes
 the last CR LF, and BEL is not whitespace.
 
 The lock failure path of `reserve_reboot` also exits 0, after the first line
 only. The grammar refuses that output, so a refused reboot cannot start the
-poll. `sudo -S` writes its prompt to stderr, which no grammar reads. No host can
-run this command, so the grammar is source-only. The fetch kept no bytes, and
-the guest build is not pinned to the revision that it read.
+poll. `sudo -S` writes its prompt to stderr, which no grammar reads.
+
+No host can run this command, so the grammar is source-only. The k152 fetch read branch
+`main` and kept no bytes. The k157 review pinned revision 408bba74, and k158
+read the same bytes. The guest build is not pinned to that revision.
 
 ### Feasibility of a clean poll
 
@@ -163,21 +175,23 @@ it as follows.
   ([golden.rs](https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-vm/src/golden.rs)).
   The guest is therefore unreachable from the teardown of the old session
   until the autologin of the new one starts the agent.
-- No boot through autologin fits one 5-second gap between two reads. A clean
-  poll therefore needs the whole outage inside the 30-second wait.
+- A clean poll therefore needs every read outside the outage. The outage can
+  end inside the 30-second wait, or between two reads.
 
-Nothing in the source sets the length of that outage. Thus clean completion is
-feasible, but its availability is an unmeasured race. The submission races the
-teardown of the agent in the same way. The evaluation does not hold before E01
-for this reason.
+Nothing in the source sets the length of that outage. No evidence shows whether
+an outage can fit a 5-second gap between two reads. The source also does not
+show that clean completion is impossible, or that it is feasible on the guest.
+Thus its availability is an unmeasured race. The submission races the teardown
+of the agent in the same way. The evaluation does not hold before E01 for this
+reason.
 
 The protocol accepts that availability cost visibly: "restart may never supply
 clean submission". A refused poll read stays unavailable, even if the boot later
 changes. The restart runs only in the A slots, so this cost can stop the A set
 after both E slots qualified.
 
-This decision rests on source reading. A measured outage longer than 30
-seconds would make clean completion demonstrably infeasible. That measurement
+This decision rests on source reading. A measured outage that always overlaps
+a read would make clean completion demonstrably infeasible. That measurement
 needs a guest, which this task does not permit.
 
 ## The diagnostic defaults write
@@ -262,19 +276,129 @@ manifest digests.
 Run `mise exec -- task check:vm-exec-one-shot-evidence`. The host evidence runs
 with `mise exec -- task check:vm-exec-one-shot-host`.
 
+## Integration of review k157
+
+k158 triages the two findings of
+[review k157](ORDERING-ONE-SHOT-REVIEW.md) against the protocol's acceptance
+and its rules for each transport class. The review also disputed a timing
+claim of this report. k158 read the cited Apple source at the pinned revisions
+of the [review source receipt](ordering-one-shot-review-evidence/sources.json).
+The digests of those bytes match the receipt.
+
+| Finding | Class | Result |
+|---|---|---|
+| P2-1, a failed path read became an absent process | Real issue | Repaired in the identity script, with controls |
+| P2-2, a failed reboot request has the clean stdout | Real trade-off of the unchanged command | Accepted visibly. The comments and this report state the limit |
+| The 5-second gap claim | Real issue in this report | The feasibility section now keeps the timing unknown |
+
+### P2-1: a failed path read became an absent process
+
+The finding is a real issue. In xnu `proc_pidpathinfo_internal`, the path call
+can return `ESRCH` for a live process. It does so when the process has no
+executable vnode, or when the kernel cannot hold or reference that vnode or
+build its path. It also does so when the path lookup fails while the vnode is
+recycled or its volume unmounts. The libproc wrapper returns zero and keeps
+`errno`.
+
+The script of revision b3065ae1 then printed `process: null`, and `confirm_guest_launch` returned the
+clean mismatch status 1. A missing executable identity thus read as an absent
+process.
+
+The process-information call has a narrower meaning. With flags and argument
+zero, `proc_pidinfo` with `PROC_PIDTBSDINFO` returns `ESRCH` only when
+`proc_find` finds no live process for the PID. Thus only that answer is the
+clean fact "no process".
+
+The repair keeps the one command, the three kernel calls and their order. If
+either process-information read finds no process, the record is
+`process: null`. A process that exits during the read is therefore a clean
+absence at the second read. If both reads find the same process and the path
+read fails, the script exits with status 7. The adapter then latches the root
+as unavailable. The repair adds no read, retry, wait or route.
+
+### P2-2: a failed reboot request has the clean stdout
+
+The finding holds. `shutdown.c` prints both lines, calls `reboot3` and
+reaches `finish(0)` whether that call succeeds or fails. A failed call writes
+only to syslog. Thus no exec observation of this command can tell an accepted
+request from a failed one.
+
+The protocol defines a clean guest exec as CLI status 0, `ok`, no timeout,
+guest exit 0 and the complete command-specific payload. The command supplies
+that result, so the protocol's hold rule for an infeasible clean result does
+not apply. The protocol requires the changed boot as the confirmation of the
+restart. It does not require the submission to prove that launchd accepted the
+request.
+
+Any repair would change the legacy command or add a read, such as a syslog
+read. The protocol forbids both, and it selects no delayed shutdown or
+substitute reboot route. The limit is therefore a visible trade-off.
+
+After a failed request, the boot stays unchanged. The boot poll then ends in
+exhaustion, which is the named state failure of the restart. It is not an
+unavailable submission. This outcome stops the A slot and prevents acceptance,
+as an unavailable submission does. It is never a Koine failure, because the
+restart is a harness action. k57 and k54 report it as a failure of the test
+driver or the guest, not of the product.
+
+### The timing claim
+
+The earlier feasibility section said that no boot through autologin fits one
+5-second gap between two reads. No timing evidence supports that claim. The
+section now keeps the timing unknown. The hold decision does not change,
+because the source still shows neither infeasibility nor feasibility.
+
+### Controls of the repair
+
+No host process fails its path read on demand. The new
+[fake libproc fixture](../../../Tests/scripts/fixtures/identity-libproc-fake.py)
+therefore runs the real identity script with a fake `libSystem`. The host suite
+installs a `python3` shim only for the guest's `python3 -I -c` call. The real
+command, `pgrep`, adapter and parser stay in the path. The fake checks the call
+order, the flavour and the library load.
+
+The [baseline](ordering-one-shot-integration/baseline-red.txt) runs both suites
+with the read table of revision ac62cf21, through the
+[baseline script](ordering-one-shot-integration/baseline.sh). One control
+fails. A live process whose path read fails with `ESRCH` gave status 1 instead
+of the unavailable status 125. The other 24 tests pass.
+
+The [mutation receipt](ordering-one-shot-integration/mutations.jsonl) disables
+one part of the decision at a time with the
+[mutation instrument](ordering-one-shot-integration/mutate.py). N01 restores the
+old path gate, and N02 removes status 7. N03 lets any failed process-information
+read become an absence. N04 lets only the first read report it. Each of the four
+mutations fails the control that it names.
+
+The [green run](ordering-one-shot-integration/final-verification.txt) runs
+the same 17 Taskfile checks with the k81 measurement instrument. They pass 272
+tests with no failure, and each of the 4474 subjects stayed the same during the
+run. The
+[run record](ordering-one-shot-integration/final-verification.txt.json) keeps
+the manifest digests.
+
+The suites are host evidence. The fake proves the script's decision about each
+answer, not the kernel's answers. The frequency of a failed path read on the
+guest is unknown.
+
 ## Limits
 
 The submission grammars follow the source and the tagged agent. A guest that
 prints another form holds the harness visibly as unavailable. The restart
-grammar rests on an unpinned revision of `shutdown.c`.
+grammar rests on revision 408bba74 of `shutdown.c`, and the guest build is not
+pinned to that revision.
 
 The identity read cannot exclude a PID reuse between `pgrep` and the kernel
 read, other than through the PID join. The executable path is the kernel's path
-of the launched file. It proves no signature, which the k81 reads keep.
+of the launched file. It proves no signature, which the k81 reads keep. A live
+process whose path read fails holds the harness visibly as unavailable. The
+frequency of that case on the guest is unknown.
 
 A clean submission of `open` proves that LaunchServices accepted the request.
 The confirmations prove the launch. A clean background submission proves only
-that bash started the job.
+that bash started the job. A clean restart submission proves only that
+`shutdown` sent the reboot request. A failed request ends as the state failure
+of the boot poll, which is never a Koine failure.
 
 The boot poll can be clean only if the guest's outage fits the 30-second wait.
 Its length is unmeasured. A refused read stops the slot, and it says nothing

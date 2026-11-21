@@ -829,9 +829,14 @@ EXECUTABLE = f"{INSTALLED}/Contents/MacOS/Koine"
 # flavor, arg, buffer, size). sys/proc_info.h gives PROC_PIDTBSDINFO = 3,
 # PROC_PIDPATHINFO_MAXSIZE = 4 * MAXPATHLEN and the proc_bsdinfo fields below,
 # which end in the start time in seconds and microseconds. Host SDK digests:
-# libproc.h 246d8770…, sys/proc_info.h e427fa96…. Each call fails with ESRCH
-# for a PID that no longer exists, which is the clean fact "no process". Two
-# reads of the start time around the path read reject a PID reused between
+# libproc.h 246d8770…, sys/proc_info.h e427fa96…. In xnu proc_info.c, the
+# PROC_PIDTBSDINFO call with flags and arg zero returns ESRCH only when no
+# process has the PID. Only that answer is the clean fact "no process". The
+# path call also returns ESRCH for a live process whose executable vnode is
+# missing, recycled or on a volume that unmounts. If both info reads find the
+# process, a failed path read is unavailable, status 7.
+# https://github.com/apple-oss-distributions/xnu/blob/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/bsd/kern/proc_info.c
+# Two reads of the start time around the path read reject a PID reused between
 # them. The script holds no apostrophe, because the shell quotes it.
 IDENTITY_SCRIPT = """import ctypes, errno, json, sys
 u32 = ctypes.c_uint32
@@ -864,9 +869,11 @@ def path():
     sys.exit(5)
 first, executable, second = info(), path(), info()
 process = None
-if first is not None and executable is not None and second is not None:
+if first is not None and second is not None:
     if (first.pid, first.sec, first.usec) != (second.pid, second.sec, second.usec):
         sys.exit(6)
+    if executable is None:
+        sys.exit(7)
     process = {"pid": first.pid, "start_sec": first.sec,
         "start_usec": first.usec, "executable": executable}
 print(json.dumps({"descriptor_text": text, "process": process}, sort_keys=True))
@@ -972,11 +979,13 @@ SUBMISSIONS: dict[str, tuple[str, str]] = {
         ),
         "",
     ),
-    # shutdown.c on the `now` path skips the fork, prints these two lines, calls
-    # reboot3 and exits 0 through finish(0) if that call returns. The lock
-    # failure path exits 0 after the first line only. The agent strips the
-    # trailing CR LF, and BEL is not whitespace. The password is the legacy one.
-    # https://github.com/apple-oss-distributions/system_cmds/blob/main/shutdown/shutdown.c
+    # shutdown.c on the `now` path skips the fork, prints these two lines and
+    # calls reboot3, which asks launchd for the reboot. It then exits 0 through
+    # finish(0), whether reboot3 succeeds or fails. Thus this stdout proves the
+    # request, not its acceptance. Only the changed boot confirms the restart.
+    # The lock failure path exits 0 after the first line only. The agent strips
+    # the trailing CR LF, and BEL is not whitespace. The password is the legacy one.
+    # https://github.com/apple-oss-distributions/system_cmds/blob/408bba7453608006b89772db185defbac8fe2fd0/shutdown/shutdown.c
     "restart": (
         "echo admin | sudo -S shutdown -r now",
         "Shutdown NOW!\n\r\nSystem shutdown time has arrived\x07\x07",

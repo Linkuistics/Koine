@@ -94,7 +94,9 @@ quit_guest_textedit() {
 # The one restart. BOOT is the clean boot record read before it. After a clean
 # submission, the existing 30-second wait, then at most sixty boot reads, each
 # unchanged boot followed by five seconds. 0 prints the changed boot record.
-# Exhaustion is a state failure. A failed submission or a failed read, such as
+# Exhaustion is a state failure of the restart, never a Koine failure. It also
+# covers a failed reboot request, because shutdown prints the same clean
+# stdout and exits 0 when reboot3 fails. A failed submission or a failed read, such as
 # a refused connection while the guest restarts, is unavailable at once, even
 # if the boot later changes.
 restart_guest() {

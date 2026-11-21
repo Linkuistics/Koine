@@ -1561,14 +1561,14 @@ tasks:
       - bash -n scripts/vm-exec-one-shot-evidence-lib.sh Tests/scripts/vm-exec-one-shot-evidence.bats Tests/scripts/vm-exec-one-shot-host.bats
       - shellcheck -x scripts/vm-exec-one-shot-evidence-lib.sh Tests/scripts/vm-exec-one-shot-evidence.bats Tests/scripts/vm-exec-one-shot-host.bats
       - shfmt -d -i 4 scripts/vm-exec-one-shot-evidence-lib.sh Tests/scripts/vm-exec-one-shot-evidence.bats Tests/scripts/vm-exec-one-shot-host.bats
-      - python3 -m py_compile scripts/vm-guest-exec.py scripts/vm_exec_reads.py Tests/scripts/fixtures/exec-read-cli.py
-      - uvx ruff@0.17.3 check scripts/vm-guest-exec.py scripts/vm_exec_reads.py Tests/scripts/fixtures/exec-read-cli.py
-      - uvx ruff@0.17.3 format --check scripts/vm-guest-exec.py scripts/vm_exec_reads.py Tests/scripts/fixtures/exec-read-cli.py
-      - uvx pyright@1.1.414 scripts/vm-guest-exec.py scripts/vm_exec_reads.py Tests/scripts/fixtures/exec-read-cli.py
+      - python3 -m py_compile scripts/vm-guest-exec.py scripts/vm_exec_reads.py Tests/scripts/fixtures/exec-read-cli.py Tests/scripts/fixtures/identity-libproc-fake.py
+      - uvx ruff@0.17.3 check scripts/vm-guest-exec.py scripts/vm_exec_reads.py Tests/scripts/fixtures/exec-read-cli.py Tests/scripts/fixtures/identity-libproc-fake.py
+      - uvx ruff@0.17.3 format --check scripts/vm-guest-exec.py scripts/vm_exec_reads.py Tests/scripts/fixtures/exec-read-cli.py Tests/scripts/fixtures/identity-libproc-fake.py
+      - uvx pyright@1.1.414 scripts/vm-guest-exec.py scripts/vm_exec_reads.py Tests/scripts/fixtures/exec-read-cli.py Tests/scripts/fixtures/identity-libproc-fake.py
       - bats Tests/scripts/vm-exec-one-shot-evidence.bats
 
   check:vm-exec-one-shot-host:
-    desc: Run the launch identity read through real pgrep, python3 and libproc against a host process, and check the bash syntax of each submission. Host evidence, not guest evidence; no submission runs and no Koine launches
+    desc: Run the launch identity read through real pgrep, python3 and libproc against a host process, run the real identity script against a fake libproc for the failed path read, and check the bash syntax of each submission. Host evidence, not guest evidence; no submission runs and no Koine launches
     cmds:
       - bats Tests/scripts/vm-exec-one-shot-host.bats
 

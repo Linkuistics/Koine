@@ -240,3 +240,27 @@ latches and sends nothing. Keep each existing confirmation of a setup
 submission in its existing position. These are the signature verification,
 the TextEdit window poll, the Allow prompt with the System Events check and
 the Add button poll.
+
+## K158 one-shot review integration handoff
+
+k158 integrates the k157 review in the "Integration of review k157" section of
+`ORDERING-ONE-SHOT-RESULTS.md` and its `ordering-one-shot-integration/`
+receipts. The facade functions, the caller table, the read counts, the waits,
+the poll bounds and the one-attempt rules stay the same.
+
+The launch identity read now reports `process: null` only from a
+process-information read. A failed path read of a live process is unavailable,
+with script status 7, and it latches the root. Thus `confirm_guest_launch` and
+`confirm_guest_reopen` return 1 only for a clean mismatch. Keep status 1 and
+the unavailable statuses distinct in each caller.
+
+A clean restart submission proves only that `shutdown` sent the request. A
+failed `reboot3` prints the same stdout and exits 0. It then ends as the
+exhaustion of the boot poll, the named state failure of the restart. Keep that
+outcome distinct from an unavailable submission. Report it as a failure of the
+test driver or the guest, never as a Koine failure. The timing of the guest
+outage stays unknown, and the evaluation still does not hold before E01.
+
+Every other duty and hold above stays. These include complete adoption, the
+signals, both held-pointer controls, the private secret-bearing roots and the
+holds on k67, k62, k57, k54 and runtime.
