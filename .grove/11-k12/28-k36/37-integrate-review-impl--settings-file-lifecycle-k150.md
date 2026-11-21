@@ -18,7 +18,7 @@ report, the inherited k36 contract and the archived charters it names.
 
 ## Done when
 
-- Independently verify and classify each finding against source and the
+- Independently check and classify each finding against source and the
   agreed contract. Record each disposition and its evidence.
 - Repair real issues within this kind's scope and run the appropriate reusable
   checks. Preserve old receipts and qualify their limitations accurately.
@@ -32,5 +32,5 @@ report, the inherited k36 contract and the archived charters it names.
 ## Notes
 
 The findings belong to the review's own commit. This body does not prescribe
-their acceptance. k81 and k76 follow this integration; k67, k62, k57 and k54
+their acceptance. k81 and k76 follow this integration. k67, k62, k57 and k54
 retain their original duties and runtime holds.
