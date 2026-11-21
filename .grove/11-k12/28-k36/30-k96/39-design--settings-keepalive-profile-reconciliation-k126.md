@@ -68,3 +68,15 @@ commitment distinctions. Reconcile every row with the current specs and k125's
 qualified inputs before whole-design review; missing evidence keeps startup
 unavailable. Preserve all final-golden, bootstrap/readiness/recovery, B03/no-B04,
 namespace-212/type-12 and exact-stop/inventory limits from k124.
+
+## Decisions (running log)
+
+- 2026-11-21: Antony requested stopping Grove to upgrade the host OS. Keep k126
+  live with every reconciliation obligation intact. Resume in this workspace
+  after the upgrade. Re-establish the actual OS/build, SDK, kernel and runtime
+  identities before relying on platform-bound evidence.
+- 2026-11-21: The dependency-owner assessment and the platform, raw-output,
+  storage and caller returns in `KEEPALIVE-EVIDENCE-SCOPE.md` remain required
+  inputs. No numerical profile was adopted and no native study was run.
+  Missing evidence keeps startup unavailable; the OS-upgrade stop does not
+  retire this leaf or close its ancestors.
