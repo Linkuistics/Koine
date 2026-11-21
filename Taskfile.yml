@@ -1572,6 +1572,18 @@ tasks:
     cmds:
       - bats Tests/scripts/vm-exec-one-shot-host.bats
 
+  check:vm-settings-scenario:
+    desc: Run the adopted Settings scenario without a VM against a simulated backend (one root before any transport, the legacy-transport fence, one unavailable answer per transport family, refused trace write, required base, refused reused root, HUP) and the TERM and INT held-pointer controls on the real backend. No native acceptance
+    cmds:
+      - bash -n scripts/vm-settings-scenario-lib.sh scripts/vm-verify-menu-bar.sh Tests/scripts/vm-settings-scenario.bats
+      - shellcheck -x scripts/vm-settings-scenario-lib.sh scripts/vm-verify-menu-bar.sh Tests/scripts/vm-settings-scenario.bats
+      - shfmt -d -i 4 scripts/vm-settings-scenario-lib.sh scripts/vm-verify-menu-bar.sh Tests/scripts/vm-settings-scenario.bats
+      - python3 -m py_compile Tests/scripts/fixtures/settings-scenario-backend.py
+      - uvx ruff@0.17.3 check Tests/scripts/fixtures/settings-scenario-backend.py
+      - uvx ruff@0.17.3 format --check Tests/scripts/fixtures/settings-scenario-backend.py
+      - uvx pyright@1.1.414 Tests/scripts/fixtures/settings-scenario-backend.py
+      - bats Tests/scripts/vm-settings-scenario.bats
+
   check:vm-verify-start:
     desc: Check without a VM that the Settings scenario starts no VNC keepalive loop and that another start_vm caller still starts it
     cmds:

@@ -359,8 +359,10 @@ assert_reveal_read_stops() {
 
 assert_menu_read_stops() {
     local stage="$1" context lane
+    # The Settings scenario no longer calls read_menu: its strict menu read is
+    # settings_expect_menu, which Tests/scripts/vm-settings-scenario.bats checks.
+    # This keeps the legacy lane of read_menu in scripts/vm-verify-lib.sh.
     load_caller read_menu vm-verify-lib.sh
-    load_caller expect_menu vm-verify-menu-bar.sh
     # shellcheck disable=SC2329
     open_menu() { return "${open_status}"; }
     # shellcheck disable=SC2329
@@ -384,9 +386,9 @@ assert_menu_read_stops() {
             run bash -euo pipefail -c '
                     source "$1"
                     if [[ "$2" == conditional ]]; then
-                        if expect_menu expected; then :; else exit "$?"; fi
+                        if read_menu; then :; else exit "$?"; fi
                     else
-                        expect_menu expected
+                        read_menu
                     fi
                     echo later
                 ' _ "${BATS_TEST_TMPDIR}/callers.sh" "${context}"

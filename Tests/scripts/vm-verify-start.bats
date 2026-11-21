@@ -44,39 +44,51 @@ SLEEP
     unset KOINE_VM_BASE KOINE_VM_DISPLAY KOINE_VM_KEEP KOINE_VM_ID KOINE_SETTINGS_TRACE TESTANYWARE_VM_ID VNC_KEEPALIVE_PID
 }
 
-# Runs one script to its first upload, and then waits so that a surviving loop shows.
+# Runs one script to its first upload or its first strict failure, and then
+# waits so that a surviving loop shows.
 run_start_path() {
-    run -1 "${start_repo}/scripts/$1"
+    run "-$2" "${start_repo}/scripts/$1"
     /bin/sleep 0.3
     start_count="$(wc -l <"${start_captures}" | tr -d ' ')"
     /bin/sleep 0.3
     [[ "$(wc -l <"${start_captures}" | tr -d ' ')" == "${start_count}" ]]
 }
 
-@test "the Settings scenario start path starts no background screen capture" {
-    run_start_path vm-verify-menu-bar.sh
-    [[ "${output}" == *'== Start a clean VM'* && "${output}" == *stub-guest* ]]
-    [[ ! -s "${start_captures}" ]] || {
+# The strict Settings scenario stops at its first checked read, because the
+# stub answers no inventory. Its one failure screenshot is an evidence-class
+# capture into its root. No capture writes the keepalive path.
+no_keepalive_capture() {
+    if grep -q 'keepalive\.png' "${start_captures}" ||
+        grep -v -e '-evidence/[0-9]\{6\}/screen\.png' "${start_captures}" | grep -q .; then
         cat "${start_captures}"
         return 1
-    }
+    fi
+    [[ "$(wc -l <"${start_captures}" | tr -d ' ')" -le 1 ]]
+}
+
+@test "the Settings scenario start path starts no background screen capture" {
+    export KOINE_VM_BASE=testanyware-golden-macos-27
+    run_start_path vm-verify-menu-bar.sh 125
+    [[ "${output}" == *'== Start a clean VM'* && "${output}" == *'sent no VM stop'* ]]
+    no_keepalive_capture
 }
 
 @test "an inherited VNC_KEEPALIVE_PID neither starts a capture nor stops a process in the Settings scenario" {
     /bin/sleep 30 &
     local bystander=$!
-    export VNC_KEEPALIVE_PID="${bystander}"
-    run_start_path vm-verify-menu-bar.sh
+    export VNC_KEEPALIVE_PID="${bystander}" KOINE_VM_BASE=testanyware-golden-macos-27
+    run_start_path vm-verify-menu-bar.sh 125
     local alive=0
     kill -0 "${bystander}" 2>/dev/null && alive=1
     kill "${bystander}" 2>/dev/null || :
     wait "${bystander}" 2>/dev/null || :
-    [[ "${alive}" == 1 && ! -s "${start_captures}" ]]
+    [[ "${alive}" == 1 ]]
+    no_keepalive_capture
 }
 
 # The instrument detects a loop: another caller keeps it, and cleanup stops it.
 @test "another start_vm caller still starts the background capture loop" {
-    run_start_path vm-verify.sh
+    run_start_path vm-verify.sh 1
     [[ "${output}" == *'== Start a clean VM'* ]]
     [[ "${start_count}" -ge 1 ]]
     grep -q -- '-o .*/keepalive\.png$' "${start_captures}"

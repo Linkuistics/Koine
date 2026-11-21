@@ -264,3 +264,59 @@ outage stays unknown, and the evaluation still does not hold before E01.
 Every other duty and hold above stays. These include complete adoption, the
 signals, both held-pointer controls, the private secret-bearing roots and the
 holds on k67, k62, k57, k54 and runtime.
+
+## Decisions (running log)
+
+- 2026-11-22: Placement. This leaf attempts its acceptance inline and makes no
+  further split. k74 and k75 already handed this remainder forward, and every
+  reviewed helper that it consumes now exists. The stalled-handoff rule in the
+  Grove decomposition procedure therefore applies.
+- 2026-11-22: Root. The scenario initialises one new evidence root for the
+  exact clone before its first transport. The root is
+  `KOINE_VM_EVIDENCE_ROOT`, or `<log>-evidence` under `.build/vm-verify` when
+  the variable is unset. `init` refuses an existing directory, so no root is
+  reused. The scenario exports the absolute path for every helper.
+- 2026-11-22: Strict only. The Settings scenario has no legacy lane. A new
+  source-only library holds its strict functions. The shared libraries keep
+  their unset-root lanes for the other VM scripts. After the root exists, a
+  fence redefines `testanyware`, `guest`, `guest_text`, `guest_json`,
+  `guest_once`, `guest_long`, `sysevents` and `snapshot` in the scenario shell.
+  Each fenced call latches the root and sends nothing. The backend runs the
+  real CLI as a subprocess, so the fence does not affect it.
+- 2026-11-22: Exit. The scenario sends no VM stop and keeps every file. k57 owns
+  the single exact stop, the inventory and the collection. The scenario prints
+  the root, the clone and the work directory.
+- 2026-11-22: Signals. INT, TERM and HUP record one failed confirmation in the
+  same writer domain and exit with 128 plus the signal number. They send no
+  input and no release. A held writer lock turns that record into the recorded
+  refusal, which also latches.
+- 2026-11-22: Status. A clean false state (status 1) records one `state-failed`
+  receipt that carries the legacy message, and the scenario exits 1. Any other
+  nonzero status keeps the facade's own receipt, and the scenario exits with
+  that status. A failure keeps the legacy failure screenshot as one
+  evidence-class capture. A signal takes no capture.
+- 2026-11-22: Failure messages. A failed front-window assertion names the same
+  list that it judged, not a later read. This keeps k67's audit rule and removes
+  one read on a failure path only. The front-application read of the first
+  Settings selection stays, before the latch, as k151 requires. A message that
+  needs a value from a failed poll reads the newest record in the root. That is
+  a host file read, not a transport.
+- 2026-11-22: Base. `KOINE_VM_BASE` becomes required, because
+  `start_guest_vm` needs an explicit golden base. A missing base latches before
+  the start.
+- 2026-11-22: Verification. A fake backend that simulates the guest replaces
+  `vm-guest-exec.py` in a copied repository. The adopted scenario then runs to
+  PASSED with all its facades and its fence. The signal controls use the real
+  backend and a fixture CLI.
+- 2026-11-22: This leaf repairs two defects that the controls found. First, a
+  failed root initialisation left the legacy cleanup trap armed, and that trap
+  sent a bare `vm stop`. `settings_begin` now clears it first. Second, a signal
+  inside a call whose output goes to `/dev/null` lost the end-of-run report.
+  The report now writes to the scenario's streams, kept on descriptors 7 and 8.
+- 2026-11-22: `read_menu` in `scripts/vm-verify-lib.sh` has no caller in any
+  script now. It stays, because other scripts share that library. Its legacy
+  lane control now calls it directly.
+- 2026-11-22: Review placement. The whole-harness review,
+  `settings-scenario-adoption-k159`, sits directly after this leaf and before
+  k67. k67, k62, k57 and k54 all consume the adopted scenario, so the review
+  precedes each of them.

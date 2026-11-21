@@ -1,0 +1,11 @@
+== mutation no-term-trap: scripts/vm-settings-scenario-lib.sh
+not ok 1 TERM in the settling sleep after a clean held point sends no further input or release
+== mutation legacy-release: scripts/vm-window-resize-lib.sh
+ok 1 INT during a held-point attempt keeps it interrupted and sends no release
+== mutation no-cli-fence: scripts/vm-settings-scenario-lib.sh
+not ok 1 a fenced legacy transport latches instead of dispatching
+== mutation unrecorded-assertion: scripts/vm-settings-scenario-lib.sh
+not ok 1 a clean false state records the legacy message as state-failed and stops
+== mutation ignored-int-and-legacy-release: both layers removed
+not ok 1 INT during a held-point attempt keeps it interrupted and sends no release
+#   `[[ "$(tail -2 "${BATS_TEST_TMPDIR}/receipts")" == $'resize-down-3:interrupted\nscenario-signal-INT:unavailable' ]]' failed

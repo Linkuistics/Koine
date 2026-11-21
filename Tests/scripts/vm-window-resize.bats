@@ -60,9 +60,11 @@ setup() {
   [[ "${status}" == 7 ]]
 }
 
-# Execute the real scenario's resize section, substituting only external input,
-# observations and slow scrolling. These controls catch false acceptance in its
-# guards; the helper request tests above cover the actual input path separately.
+# Execute the real scenario's resize section, substituting only the strict
+# transports, observations and slow scrolling. The section's own guards, its
+# local decisions and its exclusive content write run unchanged. These
+# controls catch false acceptance in its guards; the helper request tests
+# above cover the actual input path separately.
 exercise_resize_section() {
   local section
   export resize_frame_count="${BATS_TEST_TMPDIR}/frame-count"
@@ -70,13 +72,20 @@ exercise_resize_section() {
   WINDOW_TITLE='Koine Settings' MIN_WIDTH=440 MIN_HEIGHT=320
   LOG="${BATS_TEST_TMPDIR}/scenario.log"
   step() { :; }
-  testanyware() { :; }
-  koine_in_front() { return 0; }
+  settings_window() { :; }
+  settings_expect_front() { :; }
+  settings_sleep() { :; }
+  settings_capture() { :; }
+  settings_calibrate_window_scroll() { :; }
+  settings_reveal() { :; }
   drag_window_corner() { echo "$1" >"${resize_frame_count}"; }
-  calibrate_window_scroll() { :; }
-  reveal() { :; }
-  fail() { echo "FAILED: $*" >&2; exit 1; }
-  frame() {
+  settings_fail() { echo "FAILED: $*" >&2; exit 1; }
+  settings_stop() { echo "FAILED: ${*:2} ($1)" >&2; exit "$1"; }
+  settings_require() { if [[ "$1" == 1 ]]; then settings_fail "${@:2}"; fi; settings_stop "$@"; }
+  settings_local_failure() { settings_stop 125 "$2"; }
+  # The real local decision, without its receipt.
+  settings_state() { jq -e "$2" >/dev/null <<<"$3"; }
+  settings_frame() {
     local n
     n="$(cat "${resize_frame_count}")"
     if [[ "${n}" == 740 ]]; then
@@ -85,7 +94,7 @@ exercise_resize_section() {
     fi
     echo '40 40 440 352'
   }
-  element() {
+  settings_element() {
     printf '{"platformRole":"AXScrollArea","sizeHeight":%s}\n' "${content_height:-320}"
   }
   section="$(awk '/^step "The window resizes:/ {selected=1} /^step "Shortcuts,/ {selected=0} selected' \

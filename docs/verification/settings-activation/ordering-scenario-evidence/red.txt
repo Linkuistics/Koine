@@ -1,0 +1,40 @@
+1..12
+not ok 1 the adopted scenario runs to PASSED with every call in one root initialised first
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 77)
+#   `return 1' failed
+#
+# == Start a clean VM (exact-settings-vm)
+not ok 2 the adopted scenario keeps the checked confirmations in their existing positions
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 95)
+#   `[[ "${status}" == 0 ]]' failed
+not ok 3 a failed read stops every later scenario input
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 120)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 4 a clean false state records the legacy message as state-failed and stops
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 135)
+#   `[[ "${status}" == 1 ]]' failed
+not ok 5 a fenced legacy transport latches instead of dispatching
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 153)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 6 KOINE_SETTINGS_TRACE=1 refuses before the first launch and sends nothing for it
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 164)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 7 a missing golden base latches before any VM start
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 172)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 8 an existing evidence root is refused before any transport
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 183)
+#   `[[ ! -s "${settings_sim}/calls.jsonl" && ! -s "${scenario_legacy}" ]]' failed
+not ok 9 HUP during a scenario wait records the signal and sends nothing more
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 190)
+#   `[[ "${status}" == 129 ]]' failed
+not ok 10 TERM in the settling sleep after a clean held point sends no further input or release
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 265)
+#   `[[ "${status}" == 143 ]]' failed
+not ok 11 INT during a held-point attempt keeps it interrupted and sends no release
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 280)
+#   `[[ "${status}" == 130 ]]' failed
+not ok 12 the caller inventory finds no legacy transport in the adopted scenario surface
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 302)
+#   `[[ -z "$(legacy_calls "${scripts}/vm-verify-menu-bar.sh" "${scripts}/vm-settings-scenario-lib.sh")" ]]' failed
+# grep: /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/vm-settings-scenario-lib.sh: No such file or directory
