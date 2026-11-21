@@ -63,3 +63,25 @@ request. k76 owns complete adoption, signals and both held-pointer controls.
 k67, k62, k57 and k54 keep their original duties. The missing snapshot tree,
 the empty AXValue and the OCR substring stop stay binding. Secret-bearing roots
 stay private. This task permits no VM, candidate, freeze or acceptance.
+
+## Decisions (running log)
+
+- 2026-11-22: Inspect producer `2d25459b6e80` against `9fe514934157` at Tier 2.
+  The graph coverage generation is `2026-11-21T14:32:25Z`. Direct reads cover
+  the partial shell ranges and the two Bats files with untracked metadata.
+  This review runs no test, build, lint, format or guest command.
+- 2026-11-22: A primary presentation shows a System Events read returning
+  denied Accessibility access with error -1719. The parser accepts any message
+  with that number as an absence. This earns one material finding against the
+  clean-negative rule. It establishes no occurrence on the pinned guest.
+- 2026-11-22: The backend locks each read and each state receipt separately.
+  The shell predicate runs between those operations. The keepalive writer is
+  withdrawn, and this review derives no additional dispatch defect from that
+  interval. No separate locking finding is earned.
+- 2026-11-22: Record the finding and the bounded contract inspection in
+  `docs/verification/settings-activation/ORDERING-SYSEVENTS-REVIEW.md`.
+  Read-only digest comparisons match the retained output, manifest, twelve
+  current inputs, four primary sources and all sixteen mutated source digests.
+  The retained run records 242 passing tests; this session reruns none of them.
+  The baseline row-wrapper transcription is disclosed as an evidence limit.
+  Insert the integration immediately before the next live sibling, k152.
