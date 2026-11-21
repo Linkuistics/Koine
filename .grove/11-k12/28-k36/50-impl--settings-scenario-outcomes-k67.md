@@ -18,26 +18,26 @@ prefix only after this artifact and earned reviews/integrations.
   title on that same full list for every return, including later ordinary phases.
 - Distinguish same-process zero-window recurrence, process loss, other assertion
   failure and unavailable evidence. Capture pre-click and untouched failure
-  executable/PID/start identity; keep liveness transport failure unresolved.
+  executable/PID/start identity. Keep liveness transport failure unresolved.
   Do not turn structured controls/screenshots into native cause or callback proof.
 - Retain all later ordinary resize/content/scroll/shortcut/request/consent/launch/
   restart/Quit assertions with strict transports and original bounds. Demonstrate
   failing controls before each repair, covering every setup/title/liveness branch
-  and shared E/A rules; pass Taskfile checks. Cut earned review/integration before
+  and shared E/A rules. Pass Taskfile checks. Cut earned review/integration before
   k62 and runtime. K62 then byte-checks through TextEdit quit before resize and
-  reconciles every original duty. No shortened historical prefix, VM or candidate.
+  reconciles every original duty. No shortened historical prefix, VM or candidate. <!-- tc: depart synonym-rotation because "start identity" is the process start time, not the application launch -->
 
 ## Notes
 All k61 original Done when criteria remain. K57/k54, freeze and runtime stay held.
 No historical classifications, failed transports, NOT RUN phases, closed caps or
-held causal slots change; no product/native/ancestor acceptance follows.
+held causal slots change. No product/native/ancestor acceptance follows.
 
 
 ## Contract ownership after k140
 
 The original task text above remains binding. Historical ancestor handles now
 resolve through `docs/verification/grove-tree-structure/README.md` to the retained
-owner and exact archived contract; they do not require the removed directory.
+owner and exact archived contract. They do not require the removed directory.
 The current additive brief chain and accepted spec amendments govern authority.
 
 k36 owns full ordinary acceptance. Retain all setup/title/menu/physical and
