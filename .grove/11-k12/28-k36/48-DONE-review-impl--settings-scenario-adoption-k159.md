@@ -71,3 +71,16 @@ Examine these doubts:
 
 The k67, k62, k57 and k54 duties stay with their owners. The review creates no
 VM, candidate or freeze.
+
+## Decisions (running log)
+
+- 2026-11-22: Inspect producer commit `83175695a0923b3c6498e1b56ecba0069f850599`
+  and the current source. This review runs no tests, builds, lint, format or
+  guest commands. Source derivations support its findings. Retained control
+  transcripts supply historical evidence only.
+- 2026-11-22: The conditional physical-helper calls lose failed sleep statuses.
+  Required request-label evidence can omit its value. Evidence-root creation
+  establishes no private permissions, and transcript creation can overwrite an
+  earlier run. These risks meet the integration threshold. Record their source
+  cases in `docs/verification/settings-activation/ORDERING-SCENARIO-REVIEW.md`
+  and place integration before k67. Keep every later owner and runtime hold.
