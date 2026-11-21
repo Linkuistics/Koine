@@ -99,7 +99,9 @@ invent a window ID.
   The ADR plans no replacement design.
 - k81 owns every remaining exec and one-shot confirmation, the clean submission
   and the command-specific downstream state. It owns the exact local statuses
-  and inner domains.
+  and inner domains. Three flat siblings share this duty. k81 owns the strict
+  exec reads and the caller table. k151 owns the System Events and enrolment
+  outputs. k152 owns the one-shot submissions and their confirmations.
 - k76 owns complete caller and root adoption before every transport, and signal
   and status propagation. It owns latch reads and failures, non-exec attempts in
   the same domain and both held-pointer controls. It replaces the whole TextEdit

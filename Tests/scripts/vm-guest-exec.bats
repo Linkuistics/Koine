@@ -331,7 +331,7 @@ try:
     assert process.wait(timeout=5) == -signal.SIGTERM
     for args in (['poll-step', str(root), 'state', 'state', '1', '.windows == []'],
                  ['check', str(root)], ['fail', str(root), 'confirmation', 'failed'],
-                 ['run', str(root), 'evidence', 'context', 'probe', 'true'],
+                 ['read', str(root), 'evidence', 'context', 'boot'],
                  ['cli', str(root), 'evidence', 'context', 'true', '--', 'agent', 'windows'],
                  ['cli', str(root), 'evidence', 'containment', 'true', '--', 'vm', 'stop', 'exact-vm']):
         result = subprocess.run([sys.executable, backend, *args], capture_output=True)
@@ -360,6 +360,12 @@ PY
 change_reply() {
     jq "$1" "${exec_reply}" >"${exec_reply}.new"
     mv "${exec_reply}.new" "${exec_reply}"
+}
+
+# The envelope of the checked boot read: scripts/vm_exec_reads.py owns its command.
+checked_boot_reply() {
+    change_reply '.command = "sysctl -n kern.boottime"
+        | .stdout = "{ sec = 1795249999, usec = 1 } Sat Nov 21 19:33:19 2026"'
 }
 
 @test "clean exec retains exact bytes, command, VM, status and ordered receipts" {
@@ -414,7 +420,7 @@ change_reply() {
         exec_root="${BATS_TEST_TMPDIR}/case-${ordinal}"
         printf '%s' "${reply}" >"${exec_reply}"
         init_guest_evidence "${exec_root}" exact-vm
-        run exec_guest_evidence "${exec_root}" evidence raw probe true
+        run exec_guest_evidence "${exec_root}" read-poll raw probe true
         [[ "${status}" == 125 ]]
         cmp "${exec_reply}" "${exec_root}/000001/raw.stdout"
     done
@@ -437,7 +443,7 @@ change_reply() {
     init_guest_evidence "${exec_root}" exact-vm
     local command
     command="$(jq -r .command "${exec_reply}")"
-    run exec_guest_evidence "${exec_root}" evidence defaults "${command}" '.stdout == "KOINE_TRACE_DISABLED"'
+    run exec_guest_evidence "${exec_root}" read-poll defaults "${command}" '.stdout == "KOINE_TRACE_DISABLED"'
     [[ "${status}" == 125 ]]
     cmp "${exec_reply}" "${exec_root}/000001/raw.stdout"
 }
@@ -448,7 +454,7 @@ change_reply() {
         ordinal=$((ordinal + 1))
         exec_root="${BATS_TEST_TMPDIR}/predicate-${ordinal}"
         init_guest_evidence "${exec_root}" exact-vm
-        run exec_guest_evidence "${exec_root}" evidence inventory probe "${predicate}"
+        run exec_guest_evidence "${exec_root}" read-poll inventory probe "${predicate}"
         [[ "${status}" == 125 && -f "${exec_root}/unavailable" ]]
     done
 }
@@ -456,7 +462,7 @@ change_reply() {
 @test "competing writers latch unavailable before a second transport can dispatch" {
     init_guest_evidence "${exec_root}" exact-vm
     export exec_delay=1
-    exec_guest_evidence "${exec_root}" evidence context probe true >"${BATS_TEST_TMPDIR}/first.out" &
+    exec_guest_evidence "${exec_root}" read-poll context probe true >"${BATS_TEST_TMPDIR}/first.out" &
     local writer=$! ready=0
     for _ in $(seq 1 100); do
         if [[ -f "${exec_started}" ]]; then
@@ -469,7 +475,8 @@ change_reply() {
         wait "${writer}"
         return 1
     fi
-    run exec_guest_evidence "${exec_root}" evidence collection probe true
+    # A checked read-only read is the only exec that the evidence class admits.
+    run _guest_evidence_backend read "${exec_root}" evidence collection boot
     [[ "${status}" == 125 && -e "${exec_root}/unavailable" ]]
     [[ "$(cat "${exec_root}/unavailable")" == 'competing evidence writer' ]]
     wait "${writer}"
@@ -512,8 +519,8 @@ change_reply() {
     [[ "${status}" == 125 ]]
     cp "${exec_root}/unavailable" "${BATS_TEST_TMPDIR}/first-failure"
     export exec_status=0
-    change_reply '.stdout = "CHANGED_BOOT"'
-    run exec_guest_evidence "${exec_root}" evidence boot-after probe '.stdout == "CHANGED_BOOT"'
+    checked_boot_reply
+    run _guest_evidence_backend read "${exec_root}" evidence boot-after boot
     [[ "${status}" == 0 ]]
     cmp "${BATS_TEST_TMPDIR}/first-failure" "${exec_root}/unavailable"
     run exec_guest_evidence "${exec_root}" one-shot launch probe true
@@ -527,7 +534,8 @@ change_reply() {
     printf 'interrupted partial response' >"${exec_root}/000001/raw.stdout"
     run exec_guest_evidence "${exec_root}" one-shot launch probe true
     [[ "${status}" == 125 && ! -e "${exec_calls}" ]]
-    run exec_guest_evidence "${exec_root}" evidence context probe true
+    checked_boot_reply
+    run _guest_evidence_backend read "${exec_root}" evidence context boot
     [[ "${status}" == 0 && -e "${exec_root}/unavailable" ]]
     [[ "$(cat "${exec_root}/000001/raw.stdout")" == 'interrupted partial response' ]]
 }
@@ -622,7 +630,8 @@ PY
         printf '%s' "${receipt}" >"${exec_root}/000001/result.json"
         run exec_guest_evidence "${exec_root}" one-shot launch probe true
         [[ "${status}" == 125 && ! -e "${exec_calls}" ]]
-        run exec_guest_evidence "${exec_root}" evidence context probe true
+        checked_boot_reply
+        run _guest_evidence_backend read "${exec_root}" evidence context boot
         [[ "${status}" == 0 && -s "${exec_root}/unavailable" ]]
         [[ "$(cat "${exec_root}/000001/result.json")" == "${receipt}" ]]
     done
@@ -674,7 +683,7 @@ for name in ('SIGTERM', 'SIGHUP', 'SIGKILL'):
     started.with_suffix('.done').unlink(missing_ok=True)
     calls.unlink(missing_ok=True)
     process = subprocess.Popen([sys.executable, backend, 'run', str(root),
-                                'evidence', 'context', 'probe', 'true'],
+                                'read-poll', 'context', 'probe', 'true'],
                                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, env=env)
     try:
         for _ in range(250):
@@ -683,8 +692,8 @@ for name in ('SIGTERM', 'SIGHUP', 'SIGKILL'):
         assert started.exists(), 'CLI did not start'
         process.send_signal(getattr(signal, name))
         assert process.wait(timeout=5) == -getattr(signal, name)
-        second = subprocess.run([sys.executable, backend, 'run', str(root),
-                                 'evidence', 'collection', 'probe', 'true'],
+        second = subprocess.run([sys.executable, backend, 'read', str(root),
+                                 'evidence', 'collection', 'boot'],
                                 capture_output=True, env=dict(os.environ, exec_delay='0'))
         assert second.returncode == 125, (name, second.returncode)
         assert calls.read_text().count('\n') == 1

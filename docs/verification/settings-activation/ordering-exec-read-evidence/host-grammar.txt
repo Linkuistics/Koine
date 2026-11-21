@@ -1,0 +1,33 @@
+# command: mise exec -- bats --show-output-of-passing-tests Tests/scripts/vm-exec-read-host.bats
+# host: ProductName:		macOS ProductVersion:		27.2.1 BuildVersion:		26B131 
+# started: 2026-11-21T13:10:38Z
+# The summary omits the host account name; the test still parses it.
+1..1
+ok 1 every state-free read parses the real output of this host
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# endpoint {"read":"endpoint","arguments":[],"present":false}
+# process {"read":"process","arguments":["executable"],"processes":[]}
+# process {"read":"process","arguments":["bundle"],"processes":[]}
+# boot {"read":"boot","arguments":[],"sec":1795248869,"usec":738891}
+# defaults {"read":"defaults","arguments":[],"sources":[{"source":"dev.antony.Koine any","present":true,"keys":{}},{"source":"dev.antony.Koine current","present":true,"keys":{}},{"source":"-g any","present":true,"keys":{}},{"source":"-g current","pres
+# installed-inventory {"read":"installed-inventory","arguments":[]}
+# system {"read":"system","arguments":[],"product_version":"27.2.1","product_version_extra":null,"build_version":"26B131","arch":"arm64"}
+# gatekeeper {"read":"gatekeeper","arguments":[],"assessments":"enabled"}
+# quarantine {"read":"quarantine","arguments":[],"present":true,"value":"01c1;6ae0af33;;6A2F73A0-0EA3-41C9-A6C4-B1EC047D5294"}
+# signature {"read":"signature","arguments":[],"valid":true,"status":0}
+# signature-display {"read":"signature-display","arguments":[],"authorities":["Developer ID Application: Antony Blakey (TA43A4RUP3)","Developer ID Certification Authority","Apple Root CA"],"shown":["Identifier=dev.antony.Koine","CodeDirectory v=20500 size=3714
+# port-refusal {"read":"port-refusal","arguments":["1"],"curl_exit":7}
+# exit: 0

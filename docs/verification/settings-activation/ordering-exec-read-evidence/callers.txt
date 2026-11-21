@@ -1,0 +1,89 @@
+# Bounded exec caller inventory for k81. Surface: the Settings scenario and every file it sources.
+# Pattern: guest, guest_text, guest_json, guest_once, sysevents as whole words, or `file exec`.
+# Comment lines are skipped. Columns: file:line [enclosing function, reached|unreached] text
+65ded2d89f7069130f048cc1dda391736a63fdc12e8d1ac8e9d4d0fbfa5b61b8  scripts/vm-verify-menu-bar.sh
+31fdedc5a025bfa5e18744f63873e299a72cfdd69cf0e4f45976282117afcbfd  scripts/vm-verify-lib.sh
+22f7c7026a9f3f7706783f6da56f517b468697eaad9e1fcd5f0570ee72932452  scripts/vm-verify-desktop-lib.sh
+8e7c2e1485b1a991fe57a06c7cc4632470ad9ca1081ac5d3c91834a00143daed  scripts/vm-input-evidence-lib.sh
+dc38aae0998d1979c718cf38e9fecf9d3d570507477baf03e60d67c12e6a139b  scripts/vm-menu-pointer-lib.sh
+fba5397e2d798fccfcd022949c9cda6e03fe490d0616f43785de43d0615199b2  scripts/vm-window-resize-lib.sh
+bdc96ddde8964a1f386b77d33de1385b55a47e95a42b09d4627405d1e0fa6a52  scripts/signing-env.sh
+## exec lines
+scripts/vm-verify-menu-bar.sh:36 [enrol, reached] guest_json "python3 \$HOME/vm-verify-enrollment-client.py \"$1\" enrol \"$2\" desktop:read" |
+scripts/vm-verify-menu-bar.sh:53 [await_koine, reached] if guest "[ -e \"${DATA}/endpoint.json\" ]" >/dev/null 2>&1; then return; fi
+scripts/vm-verify-menu-bar.sh:63 [expect_stopped, reached] guest "! pgrep -f ${INSTALLED}/Contents/MacOS" >/dev/null || fail "Koine still runs after Quit"
+scripts/vm-verify-menu-bar.sh:64 [expect_stopped, reached] guest "[ ! -e \"${DATA}/endpoint.json\" ]" || fail "the descriptor survived Quit"
+scripts/vm-verify-menu-bar.sh:71 [record_installed_bundle, reached] inventory="$(guest_text "set -euo pipefail; cd '${INSTALLED}'; find . -type f -exec shasum -a 256 {} + | LC_ALL=C sort; find . -type l -exec stat -f '%N -> %Y' {} + | LC_ALL=C sort; echo KOINE_INVENTORY_COMPLETE")"
+scripts/vm-verify-menu-bar.sh:84 [TOP, reached] guest 'defaults write dev.antony.Koine KoineSettingsActivationTrace -string /Users/admin/settings-activation.jsonl'
+scripts/vm-verify-menu-bar.sh:90 [TOP, reached] guest_once "open ${INSTALLED}"
+scripts/vm-verify-menu-bar.sh:101 [TOP, reached] BACKGROUND="$(sysevents 'get background only of process "Koine"')"
+scripts/vm-verify-menu-bar.sh:104 [TOP, reached] DOCK="$(sysevents 'get name of every UI element of list 1 of process "Dock"')"
+scripts/vm-verify-menu-bar.sh:114 [TOP, reached] guest "open -a TextEdit" || true
+scripts/vm-verify-menu-bar.sh:130 [TOP, reached] echo "Front application: $(sysevents 'get name of first process whose frontmost is true')"
+scripts/vm-verify-menu-bar.sh:138 [TOP, reached] koine_in_front || fail "the window did not come to the front over TextEdit's: $(front_windows); front application: $(sysevents 'get name of first process whose frontmost is true')"
+scripts/vm-verify-menu-bar.sh:147 [TOP, reached] guest "osascript -e 'tell application \"TextEdit\" to quit saving no'" || true
+scripts/vm-verify-menu-bar.sh:251 [TOP, reached] guest_once "open ${INSTALLED}"
+scripts/vm-verify-menu-bar.sh:259 [TOP, reached] guest_once "open ${INSTALLED}"
+scripts/vm-verify-menu-bar.sh:271 [TOP, reached] BOOT_BEFORE="$(guest 'sysctl -n kern.boottime')"
+scripts/vm-verify-menu-bar.sh:273 [TOP, reached] testanyware file exec 'echo admin | sudo -S shutdown -r now' >/dev/null 2>&1 || true
+scripts/vm-verify-menu-bar.sh:276 [TOP, reached] BOOT_AFTER="$(guest 'sysctl -n kern.boottime' 2>/dev/null || true)"
+scripts/vm-verify-menu-bar.sh:284 [TOP, reached] if guest "[ -e \"${DATA}/endpoint.json\" ]" >/dev/null 2>&1; then break; fi
+scripts/vm-verify-menu-bar.sh:287 [TOP, reached] guest "pgrep -lf ${INSTALLED}" || fail "Koine was not started at login"
+scripts/vm-verify-menu-bar.sh:294 [TOP, reached] BACKGROUND="$(sysevents 'get background only of process "Koine"')"
+scripts/vm-verify-menu-bar.sh:299 [TOP, reached] PORT="$(guest "jq -r .port \"${DATA}/endpoint.json\"")"
+scripts/vm-verify-menu-bar.sh:304 [TOP, reached] REFUSED="$(guest "curl -s -m 3 -o /dev/null http://127.0.0.1:${PORT}/graphql; echo \$?" || true)"
+scripts/vm-verify-lib.sh:49 [guest, reached] guest() {
+scripts/vm-verify-lib.sh:53 [guest, reached] out="$(testanyware file exec "$1" 2>&1)" || status=$?
+scripts/vm-verify-lib.sh:65 [guest, reached] echo "guest exec kept timing out: $1" >&2
+scripts/vm-verify-lib.sh:74 [guest_text, reached] guest_text() {
+scripts/vm-verify-lib.sh:76 [guest_text, reached] out="$(guest "$1" 2>&1)" || true
+scripts/vm-verify-lib.sh:77 [guest_text, reached] grep -v -e '^Process timed out after' -e '^guest exec kept timing out' -e '^\[Process timed out' <<<"${out}" || true
+scripts/vm-verify-lib.sh:90 [guest_long, unreached] guest "mkdir \$HOME/${name}.started 2>/dev/null || exit 0; nohup bash -c 'bash \$HOME/${name}.sh > \$HOME/${name}.log 2>&1; echo \$? > \$HOME/${name}.exit' >/dev/null 2>&1 &"
+scripts/vm-verify-lib.sh:92 [guest_long, unreached] if guest "[ -e \$HOME/${name}.exit ]" >/dev/null 2>&1; then break; fi
+scripts/vm-verify-lib.sh:95 [guest_long, unreached] guest "cat \$HOME/${name}.log" | sed 's/^/  | /'
+scripts/vm-verify-lib.sh:96 [guest_long, unreached] status="$(guest "cat \$HOME/${name}.exit" 2>/dev/null | tr -d '[:space:]')"
+scripts/vm-verify-lib.sh:237 [show_window, reached] guest "open ${INSTALLED}" || true
+scripts/vm-verify-lib.sh:260 [client, reached] client() { guest "bash \$HOME/vm-verify-client.sh \"${CREDENTIAL_FILE}\" '${1:-}'" || true; }
+scripts/vm-verify-lib.sh:273 [launch, reached] guest "open ${INSTALLED}" || true
+scripts/vm-verify-lib.sh:275 [launch, reached] if guest "[ -e \"${DATA}/endpoint.json\" ]" >/dev/null 2>&1; then
+scripts/vm-verify-lib.sh:298 [quit_koine, unreached] guest "! pgrep -f ${INSTALLED}" >/dev/null || fail "Koine still runs after Quit"
+scripts/vm-verify-lib.sh:309 [quit_koine_or_terminate, unreached] guest "! pgrep -f ${INSTALLED}" >/dev/null 2>&1 && return
+scripts/vm-verify-lib.sh:312 [quit_koine_or_terminate, unreached] guest "pkill -f ${INSTALLED}" || true
+scripts/vm-verify-lib.sh:348 [_start_vm, reached] guest 'sw_vers; uname -m'
+scripts/vm-verify-lib.sh:349 [_start_vm, reached] echo "Gatekeeper: $(guest 'spctl --status' 2>&1 || true)"
+scripts/vm-verify-lib.sh:358 [install_app, reached] guest "ditto -x -k /tmp/Koine.zip /Applications"
+scripts/vm-verify-lib.sh:361 [install_app, reached] echo "Quarantine attribute: $(guest "xattr -p com.apple.quarantine ${INSTALLED} 2>&1 || true")"
+scripts/vm-verify-lib.sh:362 [install_app, reached] guest "codesign --verify --strict --deep --verbose=2 ${INSTALLED} 2>&1" || fail "the VM rejects the signature"
+scripts/vm-verify-lib.sh:363 [install_app, reached] guest "codesign --display --verbose=2 ${INSTALLED} 2>&1 | grep -E '^(Identifier|TeamIdentifier|Authority=Developer|CodeDirectory)'"
+scripts/vm-verify-lib.sh:364 [install_app, reached] guest "spctl -a -vv ${INSTALLED} 2>&1" || echo "(spctl assessment did not accept the bundle; recorded, not a failure of this stage)"
+scripts/vm-verify-lib.sh:376 [sysevents, reached] sysevents() {
+scripts/vm-verify-lib.sh:378 [sysevents, reached] guest_text "osascript -e '${script}'" | tr -d '\r'
+scripts/vm-verify-lib.sh:384 [grant_system_events_automation, reached] guest "nohup osascript -e 'tell application \"System Events\" to get name of every process' >/dev/null 2>&1 &" || true
+scripts/vm-verify-lib.sh:392 [grant_system_events_automation, reached] [ -n "$(sysevents 'get name of every process')" ] || fail "System Events still refuses the agent"
+scripts/vm-verify-lib.sh:399 [menu_item_count, reached] menu_item_count() { sysevents "get count of menu bar items of menu bar 2 of process \"Koine\""; }
+scripts/vm-verify-lib.sh:402 [menu_item_label, reached] menu_item_label() { sysevents "get description of ${KOINE_ITEM}"; }
+scripts/vm-verify-lib.sh:418 [open_menu, reached] frame="$(sysevents "get {position, size} of ${KOINE_ITEM}")"
+scripts/vm-verify-lib.sh:424 [menu_titles, reached] menu_titles() { sysevents "get title of every menu item of menu 1 of ${KOINE_ITEM}"; }
+scripts/vm-verify-lib.sh:438 [choose_menu_item, reached] frame="$(sysevents "get {position, size} of menu item \"$1\" of menu 1 of ${KOINE_ITEM}")"
+scripts/vm-verify-lib.sh:477 [guest_once, reached] guest_once() { testanyware file exec "$1" >/dev/null 2>&1 || true; }
+scripts/vm-verify-desktop-lib.sh:17 [guest_json, reached] guest_json() {
+scripts/vm-verify-desktop-lib.sh:19 [guest_json, reached] out="$(guest "$1" 2>&1)" || status=$?
+scripts/vm-verify-desktop-lib.sh:20 [guest_json, reached] out="$(grep -v -e '^Process timed out after' -e '^guest exec kept timing out' <<<"${out}" | tail -1)"
+scripts/vm-verify-desktop-lib.sh:44 [create_grant, unreached] guest "umask 077; pbpaste > \"${file}\"; ls -l \"${file}\""
+scripts/vm-verify-desktop-lib.sh:50 [desktop, reached] ANSWER="$(guest "python3 \$HOME/vm-verify-desktop-client.py \"$1\" \"$2\" $3" | tail -1)"
+scripts/vm-verify-desktop-lib.sh:58 [lookup, unreached] ANSWER="$(guest_json "python3 \$HOME/vm-verify-desktop-client.py \"${CREDENTIAL_FILE}\" --ref $1 '$2'")"
+scripts/vm-verify-desktop-lib.sh:85 [no_consent_dialog, unreached] echo "no consent dialog on screen ($1); ${DIALOG_HOST}: $(guest "pgrep -x ${DIALOG_HOST} >/dev/null && echo running || echo not running")"
+scripts/vm-verify-desktop-lib.sh:93 [grant_accessibility, reached] guest 'open "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility"' || true
+scripts/vm-verify-desktop-lib.sh:125 [revoke_accessibility, unreached] guest 'open "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility"' || true
+scripts/vm-verify-desktop-lib.sh:148 [choices, unreached] ANSWER="$(guest_json "python3 \$HOME/vm-verify-desktop-client.py \"${CREDENTIAL_FILE}\" --operations \"${OPERATIONS}\" choices \"$1\"")"
+scripts/vm-verify-desktop-lib.sh:154 [focus, reached] ANSWER="$(guest_json "python3 \$HOME/vm-verify-desktop-client.py \"${CONTROLLER_FILE}\" --operations \"${OPERATIONS}\" focus '$1'")"
+scripts/vm-verify-desktop-lib.sh:167 [witness, unreached] WITNESS="$(guest_json "\$HOME/WindowIdentityProbe focused")"
+scripts/vm-verify-desktop-lib.sh:181 [listed, unreached] LISTED="$(guest_json "\$HOME/WindowIdentityProbe windows $1")"
+scripts/vm-input-evidence-lib.sh:5 [TOP, top-level] source "${BASH_SOURCE[0]%/*}/vm-guest-exec-lib.sh"
+## reached functions
+_start_vm await_koine await_menu_item_label await_settled await_windows calibrate_window_scroll choose_menu_item click click_at click_centre client desktop drag_window_corner element enrol expect_menu expect_stopped fail focus frame front_windows grant_accessibility grant_system_events_automation guest guest_json guest_once guest_text install_app koine_in_front koine_windows launch menu_item_count menu_item_label menu_titles on_screen open_menu place_window read_frame read_menu record_installed_bundle reveal reveal_click scenario_input scroll_by show_window snapshot start_vm_without_keepalive step sysevents value_of
+## unreached functions
+ask await_element choices cleanup create_grant expect expect_focused expect_os_permission expect_receipt expect_status expect_unavailable guest_long listed lookup no_consent_dialog plist_string quit_koine quit_koine_or_terminate refused revoke_accessibility start_vm text_of witness
+## controls
+positive: 1 exec line inside guest_once (expected 1)
+mutated pattern 'guest_oncex': 0 matches (expected 0, so the instrument can fail)

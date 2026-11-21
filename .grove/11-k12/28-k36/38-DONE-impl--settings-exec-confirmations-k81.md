@@ -133,3 +133,80 @@ read.
 
 This task still owns every exec read. These include the guest environment, the defaults and
 their absence and the exact installed inventory.
+
+## Split after k150
+
+This leaf keeps the first slice: the strict exec reads. Two flat siblings own
+the remainder, and they run after this slice's review and every earned
+integration. settings-system-events-evidence-k151 owns the System Events and
+enrolment outputs. settings-exec-one-shots-k152 owns every one-shot exec
+submission and its downstream confirmation. Every original criterion above
+keeps an owner among the three leaves.
+
+This slice delivers these items:
+
+- The enumeration of every exec caller on the Settings scenario surface, with
+  the owner of each caller.
+- A closed set of checked exec reads, each with an exact payload grammar and a
+  parsed record. The reads cover the endpoint descriptor, the process identity,
+  the boot identity and the port refusal. They also cover the diagnostic
+  defaults and their absence, the installed inventory and the setup records.
+- The classification of free collection commands. A generic exec in the
+  evidence class refuses. Only a checked read that is read-only admits the
+  evidence class.
+- The existing endpoint polls, with their exact bounds and outcomes.
+
+## Decisions (running log)
+
+- 2026-11-21: Adopt k81 in the jj workspace `gh-issue-14`. Its parent descends
+  from `main`, and no newer change sits on it, so the base is current. k146,
+  k147, k89, k149 and k150 are complete, so consumption may start.
+- 2026-11-21: Split the leaf into three flat siblings. About forty exec call
+  sites fall into three families with separate designs: shell state reads,
+  AppleScript outputs and one-shot submissions. One session cannot check all
+  three with failing controls. Each slice adds helpers that a later slice or
+  k76 consumes, so the split advances evidence. A node would add no shared
+  context that k36 does not already hold.
+- 2026-11-21: The System Events slice runs before the one-shot slice. The
+  silent launch and reopen confirmations need the menu reads that it supplies.
+- 2026-11-21: The tagged agent runs each command through `/bin/bash -c` and
+  strips trailing whitespace from stdout. Every read grammar therefore has no
+  trailing newline. The host `pgrep(1)` excludes its ancestors by default, so
+  the bash wrapper never matches its own pattern. A host control showed this.
+- 2026-11-21: The host `spctl(8)` page says that an assessment stores its
+  outcome in a cache. Thus `spctl -a` writes guest state, and the evidence
+  class cannot admit it. The loopback curl can reach a live listener, so the
+  port read is also read-poll only.
+- 2026-11-21: Diagnostic absence is a parsed plist, never a failed `defaults
+  read`. `defaults export` prints an empty dictionary for an absent domain.
+  The backend parses each exported domain with `plistlib`, because JSON
+  conversion fails on date and data values.
+- 2026-11-21: A closed read table in `scripts/vm_exec_reads.py` owns each
+  guest command and grammar. The backend action `read` builds the command, so
+  the evidence class admits only the reads that the table marks read-only. A
+  generic `run` in the evidence class now refuses. Eight older adapter tests
+  moved to the read-poll class or to a checked read. Their competing-writer
+  refusals keep that cause.
+- 2026-11-21: The host grammar run found that the signature wrapper added a
+  second newline before its status marker. A command substitution now leaves
+  exactly one newline. Every state-free read then parsed real host output.
+- 2026-11-21: The login descriptor loop has no failing assertion. Its
+  exhaustion therefore returns 1 and latches nothing, and the launch poll keeps
+  its state failure. The port loop ends at its first clean read, because a
+  clean read is never empty.
+- 2026-11-21: The boot poll after the restart may be infeasible. A guest that
+  is still restarting can refuse the connection, and a refused poll read is
+  unavailable. k152 carries this question, and it decides whether to hold
+  before E01.
+- 2026-11-21: All 21 new controls failed against legacy semantics, each for a
+  legacy cause. The first trailing-whitespace mutation survived, so its control
+  now covers the answers where only that rule rejects. Each of the 11
+  mutations then failed its named control.
+- 2026-11-21: The first measured run failed two capture tests. They copy the
+  backend without the new module. The tests now copy it, and that receipt stays
+  as `verification-run-1.txt`. The second run passed 13 checks with 213 tests,
+  and its 4415 subjects stayed the same. After it, only the report and the
+  k151, k152, k76 and k81 task files changed.
+- 2026-11-21: The review settings-exec-confirmations sits before k151, because
+  k151, k152, k76 and k57 build on the read table and the evidence-class rule.
+  The k76 task carries the handoff.

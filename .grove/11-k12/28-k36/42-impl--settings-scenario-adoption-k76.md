@@ -187,3 +187,21 @@ The tagged client keeps no bytes of a failed download. Those bytes are
 explicitly unavailable, and the attempt keeps its raw records. The backend
 keeps a temporary file that a killed CLI leaves. Plan the storage of collection
 roots with that file in them. Every other duty and hold above stays.
+
+## K81 exec read handoff
+
+k81 supplies source-only checked exec reads and the two existing descriptor
+polls. Read
+`docs/verification/settings-activation/ORDERING-EXEC-READ-RESULTS.md`. Consume
+it only after its review and every earned integration, and after k151 and k152.
+A generic exec in the evidence class now refuses. Collection after a latch uses
+only the checked reads that the table marks read-only.
+
+Its caller table states the adoption duty of each exec line. Replace each
+descriptor loop once with `await_guest_endpoint`, and keep its mode. Replace
+each state read with one `read_guest_exec` call. The `PORT` read uses the
+descriptor record and adds no read. The port loop ends at its first clean read.
+
+<!-- tc: depart synonym-rotation because the application launch and the VM restart are different operations -->
+The protocol adds the defaults reads before the first launch, after the restart
+and after the slot. k57 places them in the finite caller with you.

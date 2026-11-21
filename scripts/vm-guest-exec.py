@@ -20,6 +20,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import cast
 
+import vm_exec_reads
 from vm_capture_artifact import inspect_capture
 
 UNAVAILABLE = 125
@@ -180,7 +181,7 @@ def validate_response(
     except (ValueError, UnicodeError) as error:
         return f"invalid exec envelope: {error}"
     # Preserve supplied guest streams even on failure; they are not qualified output.
-    for field in ("stdout", "stderr") if transport == "exec" else ():
+    for field in ("stdout", "stderr") if transport in {"exec", "read"} else ():
         value = envelope.get(field)
         if isinstance(value, str):
             (attempt / f"guest.{field}").write_bytes(value.encode("utf-8"))
@@ -197,7 +198,7 @@ def validate_response(
         and "dry_run" not in envelope
     ):
         return "missing, invalid or unsuccessful envelope fields"
-    if transport == "exec" and not (
+    if transport in {"exec", "read"} and not (
         envelope.get("command") == command
         and envelope.get("timed_out") is False
         and type(envelope.get("exit_code")) is int
@@ -206,6 +207,8 @@ def validate_response(
         and isinstance(envelope.get("stderr"), str)
     ):
         return "missing, invalid or unsuccessful exec fields"
+    if transport == "read":
+        return ""  # run_locked parses the exact grammar of the checked read.
     with (
         (attempt / "raw.stdout").open("rb") as source,
         (attempt / "payload.stdout").open("xb") as output,
@@ -329,6 +332,14 @@ def run_locked(
         argv = []  # The exclusive attempt directory below owns the output path.
     elif transport in {"confirmation", "poll-step", "download"}:
         argv = []  # A download's exclusive attempt directory owns its output path.
+    elif transport == "read":
+        # The table owns every command that a checked read sends, and it admits
+        # the evidence class only for a read that changes no guest state.
+        command = vm_exec_reads.command(arguments[0], kind, arguments[1:])
+        predicate = (
+            f"checked read {arguments[0]}: exact grammar in scripts/vm_exec_reads.py"
+        )
+        argv = ["testanyware", "file", "exec", "--vm", vm, "--json", "--", command]
     elif transport == "upload":
         # The local path is absolute, so the CLI cannot read it as an option.
         argv = cli_argv(["file", "upload", *arguments], vm, kind, checked_transfer=True)
@@ -406,6 +417,11 @@ def run_locked(
             "transport": transport,
             "command": command,
             "reason": command if transport == "confirmation" else "",
+            **(
+                {"read": arguments[0], "read_arguments": arguments[1:]}
+                if transport == "read"
+                else {}
+            ),
             "argv": argv,
             "payload_predicate": predicate,
             "started": timestamp(),
@@ -455,6 +471,16 @@ def run_locked(
             reason = validate_response(
                 attempt, command, cli_status, predicate, lock_fd, transport
             )
+            if not reason and transport == "read":
+                envelope = read_object(attempt / "raw.stdout")
+                try:
+                    record = vm_exec_reads.parse(
+                        arguments[0], cast(str, envelope["stdout"]), arguments[1:]
+                    )
+                except vm_exec_reads.ReadError as error:
+                    reason = f"checked read {arguments[0]} grammar: {error}"
+                else:
+                    write_json(attempt / "read.json", record)
             if not reason and transport == "capture":
                 envelope = read_object(attempt / "raw.stdout")
                 artifact = inspect_capture(
@@ -504,8 +530,14 @@ def run_locked(
         interrupted = True
     if not reason and transport != "poll-step":
         try:
-            stream_name = "guest.stdout" if transport == "exec" else "raw.stdout"
-            sys.stdout.buffer.write((attempt / stream_name).read_bytes())
+            if transport == "read":
+                # One compact line of the parsed record; the raw bytes stay.
+                record = read_object(attempt / "read.json")
+                data = (json.dumps(record, ensure_ascii=True) + "\n").encode("ascii")
+            else:
+                stream_name = "guest.stdout" if transport == "exec" else "raw.stdout"
+                data = (attempt / stream_name).read_bytes()
+            sys.stdout.buffer.write(data)
             sys.stdout.buffer.flush()
             emission_status = "flushed"
         except OSError as error:
@@ -593,6 +625,14 @@ def run(
         )
     ):
         raise ValueError("expected read-poll|evidence download of /REMOTE [ORDINAL]")
+    if transport == "exec" and kind == "evidence":
+        # The adapter cannot know whether a free guest command sends input, so
+        # collection after a latch uses only the checked read-only reads.
+        raise ValueError("evidence-class exec requires a checked read-only read")
+    if transport == "read" and not (
+        kind in {"read-poll", "evidence"} and len(arguments or []) >= 1
+    ):
+        raise ValueError("expected a read-poll|evidence checked read NAME [ARGUMENT]")
     if transport == "confirmation" and not command.strip():
         raise ValueError("failed confirmation requires a reason")
     if transport == "poll-step" and not (
@@ -636,6 +676,8 @@ def main() -> int:
             "poll-step records a local window-poll decision or failure without dispatch. "
             "upload digests its local file before and after one dispatch; download writes "
             "a unique copy and compares a named upload record. "
+            "read runs one checked guest read from scripts/vm_exec_reads.py and prints its "
+            "parsed record; run refuses the evidence class, which only checked reads admit. "
             "Exit 0: clean individual attempt (evidence collection does not clear an old latch); "
             "2: argument error (an identifiable initialized evidence root is latched); "
             "125: state failure, unavailable evidence or invalid run values; "
@@ -722,6 +764,15 @@ def main() -> int:
     download_parser.add_argument("operation")
     download_parser.add_argument("remote")
     download_parser.add_argument("upload", nargs="?")
+    read_parser = commands.add_parser(
+        "read",
+        help="one checked guest read; emit its parsed record as one JSON line",
+    )
+    read_parser.add_argument("root", type=Path)
+    read_parser.add_argument("kind", choices=["read-poll", "evidence"])
+    read_parser.add_argument("operation")
+    read_parser.add_argument("name", choices=sorted(vm_exec_reads.READS))
+    read_parser.add_argument("arguments", nargs="*")
     try:
         args = parser.parse_args()
     except SystemExit as error:
@@ -735,6 +786,7 @@ def main() -> int:
                 "capture",
                 "upload",
                 "download",
+                "read",
                 "check",
                 "fail",
                 "poll-step",
@@ -799,6 +851,16 @@ def main() -> int:
                 "",
                 "upload",
                 [str(cast(Path, args.local).absolute()), cast(str, args.remote)],
+            )
+        if args.action == "read":
+            return run(
+                root,
+                cast(str, args.kind),
+                cast(str, args.operation),
+                "",
+                "",
+                "read",
+                [cast(str, args.name), *cast(list[str], args.arguments)],
             )
         if args.action == "download":
             upload = cast(str | None, args.upload)

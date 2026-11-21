@@ -223,7 +223,7 @@ PY
 @test "PNG inspection still owns the shared lock after CLI completion" {
     local backend="${BATS_TEST_TMPDIR}/backend" child ready=0 competing
     mkdir "${backend}"
-    cp "${BATS_TEST_DIRNAME}/../../scripts/"{vm-guest-exec.py,vm-guest-exec-lib.sh,vm_capture_artifact.py} "${backend}/"
+    cp "${BATS_TEST_DIRNAME}/../../scripts/"{vm-guest-exec.py,vm-guest-exec-lib.sh,vm_capture_artifact.py,vm_exec_reads.py} "${backend}/"
     cat >>"${backend}/vm_capture_artifact.py" <<'PY'
 
 # Test-only barrier at actual artifact inspection, after the CLI has exited.
@@ -328,7 +328,7 @@ PY
 @test "allocation failure retains partial capture and the next gate latches unfinished evidence" {
     local backend="${BATS_TEST_TMPDIR}/backend"
     mkdir "${backend}"
-    cp "${BATS_TEST_DIRNAME}/../../scripts/"{vm-guest-exec.py,vm_capture_artifact.py} "${backend}/"
+    cp "${BATS_TEST_DIRNAME}/../../scripts/"{vm-guest-exec.py,vm_capture_artifact.py,vm_exec_reads.py} "${backend}/"
     cat >>"${backend}/vm_capture_artifact.py" <<'PY'
 
 # Deterministic allocation failure; never exhaust the host's actual memory.

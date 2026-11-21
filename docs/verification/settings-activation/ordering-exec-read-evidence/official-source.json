@@ -1,0 +1,41 @@
+{
+  "tag": "v2.7.0",
+  "commit": "65bc05c91cc5d2a6e3d4aa8f81cb2c7c7712fa03",
+  "method": "Read immutable official local objects with jj file show at the tag. The host manual pages are the host's, macOS 27.2.1 (26B131), not the guest's.",
+  "files": {
+    "agents/macos/Sources/TestAnywareAgent/ProcessRunner.swift": "f9401669408f532aeafdcc277ff7553080b42e7c6d462abf8f59b04a84d86340",
+    "agents/macos/Sources/testanyware-agent/AgentServer.swift": "5ba8f16c34dc922448d9d28163f050720e4110c74a6064d2f191828e98f6ba5f",
+    "cli-rs/crates/testanyware-cli/src/commands/file.rs": "909cc1b6bdeda70ebaf84b09b3656f29f928dee4326cf31d98cda00f59d9be7b"
+  },
+  "decisions": {
+    "ProcessRunner.swift": "runShell runs /bin/bash -c COMMAND and strips trailing whitespace from stdout and stderr; a timeout sets exit -1 and appends the note",
+    "file.rs": "JSON mode emits command, exit_code, stdout, stderr and timed_out and exits 0 on a clean spawn; text mode exits with the guest status"
+  },
+  "host_manual_pages": {
+    "pgrep": {
+      "path": "/usr/share/man/man1/pgrep.1",
+      "sha256": "50e660d4db62a14d53a05cd80fb3ae93ad2a3251fd1adba387abf7ef68645ef8"
+    },
+    "spctl": {
+      "path": "/usr/share/man/man8/spctl.8",
+      "sha256": "4861c15e8b2d0fa7948c489aa20cee8957dc6f6604179e72cb301b804a7092ed"
+    },
+    "codesign": {
+      "path": "/usr/share/man/man1/codesign.1",
+      "sha256": "fec462ff82f5e09e4f59422774a1099192430598368196bcd1a3d51ad0b872ed"
+    },
+    "sysctl": {
+      "path": "/usr/share/man/man8/sysctl.8",
+      "sha256": "8d78e06342d7cf032e8dd0982349aa8a6d443b27d8e1d1305fe9ae1f5be8b72f"
+    },
+    "defaults": {
+      "path": "/usr/share/man/man1/defaults.1",
+      "sha256": "a8777efe7a9e0ca9aede5b099bf66a651d62dd938ee19f65c1c901bac01cb36c"
+    },
+    "ps": {
+      "path": "/usr/share/man/man1/ps.1",
+      "sha256": "fbddf023ce4960c7e6eadebcfb7f0badf0ab6c3f59b2b97c2807d3f67a85142d"
+    }
+  },
+  "host_sw_vers": "ProductName: macOS ProductVersion: 27.2.1 BuildVersion: 26B131"
+}

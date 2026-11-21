@@ -1,0 +1,96 @@
+# command: env KOINE_EXEC_READ_BASELINE=1 bats Tests/scripts/vm-exec-read-evidence.bats
+# revision of the backend and facade: 3a2c131e3b54696c9729770784579bba78d6ae80
+# started: 2026-11-21T13:05:35Z
+# subjects
+a2be1c456ae0484dc85495b51052721557d39584db90e210452b3220608fdd6e  scripts/vm_capture_artifact.py
+d9540371ce2cbfd6a717ce8e4243346f4af630d43c6421fcd919b1c78ed2e785  scripts/vm-guest-exec-lib.sh
+1122dc4c4257ecd3d8f0d7f40de70942ef81105cdf05ee345973081fb4389489  scripts/vm-guest-exec.py
+b00bc60e2c220bbf3a63b9aca93999c4bbd206389f19b90a1bc7b4fbf17b66a6  Tests/scripts/vm-exec-read-evidence.bats
+3e7f086cf772f316ab1a5d60082aa22f18b2ceee86f5244a296e4d2297a1c70b  Tests/scripts/fixtures/exec-read-cli.py
+absent  scripts/vm-exec-read-evidence-lib.sh
+absent  scripts/vm_exec_reads.py
+# output
+1..21
+not ok 1 generic evidence exec refuses without dispatch while read-poll and one-shot still dispatch
+# (in test file Tests/scripts/vm-exec-read-evidence.bats, line 152)
+#   `[[ "${status}" == 125 && "$(calls)" == 0 && ! -e "${read_root}/000001" ]]' failed
+not ok 2 evidence class admits only read-only reads and never clears a latch
+# (in test file Tests/scripts/vm-exec-read-evidence.bats, line 168)
+#   `[[ "${status}" == 125 && "$(calls)" == 0 && ! -e "${read_root}/000001" ]]' failed
+not ok 3 unknown reads, invalid arguments and the one-shot class refuse before dispatch
+# (in test file Tests/scripts/vm-exec-read-evidence.bats, line 195)
+#   `[[ "${status}" != 0 && "$(calls)" == 0 && -s "${read_root}/unavailable" ]]' failed
+not ok 4 endpoint absence is clean data and a present descriptor needs the exact schema
+# (from function `assert_record' in file Tests/scripts/vm-exec-read-evidence.bats, line 141,
+#  in test file Tests/scripts/vm-exec-read-evidence.bats, line 202)
+#   `assert_record 000001' failed with status 2
+# jq: error: Could not open file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-4qMz3Y/test/4/evidence/000001/read.json: No such file or directory
+not ok 5 a malformed descriptor is unavailable, never absent
+# (in test file Tests/scripts/vm-exec-read-evidence.bats, line 225)
+#   `[[ "${status}" == 125 && ! -e "${read_root}/000001/read.json" ]]' failed
+not ok 6 a failed descriptor read is unavailable, never absent
+# (in test file Tests/scripts/vm-exec-read-evidence.bats, line 239)
+#   `[[ "${status}" == 125 && "$(calls)" == 1 && ! -e "${read_root}/000001/read.json" ]]' failed
+not ok 7 a timeout with a complete grammatical answer stays unavailable for every read
+# (in test file Tests/scripts/vm-exec-read-evidence.bats, line 255)
+#   `[[ "${status}" == 125 && -z "${output}" ]]' failed
+not ok 8 stdout with trailing whitespace is not an agent answer
+# (in test file Tests/scripts/vm-exec-read-evidence.bats, line 270)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 9 launch poll keeps fifteen reads two seconds apart and ends in a state failure
+# (in test file Tests/scripts/vm-exec-read-evidence.bats, line 282)
+#   `[[ "${status}" == 125 && "$(calls)" == 15 ]]' failed
+# diagnostic: status=1 calls=15 output=
+not ok 10 launch poll stops on a present descriptor and prints its record
+# (in test file Tests/scripts/vm-exec-read-evidence.bats, line 296)
+#   `jq -e '.present == true and .descriptor.instanceId == "A1"' <<<"${output}"' failed with status 4
+# diagnostic: status=0 calls=3 output=
+not ok 11 a failed poll read stops at once and is never a negative
+# (in test file Tests/scripts/vm-exec-read-evidence.bats, line 306)
+#   `[[ "${status}" == 125 && "$(calls)" == 2 ]]' failed
+# diagnostic: status=1 calls=15 output=
+not ok 12 login poll keeps twenty-four reads five seconds apart and its exhaustion latches nothing
+# (in test file Tests/scripts/vm-exec-read-evidence.bats, line 317)
+#   `[[ "${status}" == 1 && "$(calls)" == 24 && ! -e "${read_root}/unavailable" ]]' failed
+# diagnostic: status=0 calls=24 output=
+not ok 13 process absence is clean data and process rows keep identity and arguments
+# (from function `assert_record' in file Tests/scripts/vm-exec-read-evidence.bats, line 141,
+#  in test file Tests/scripts/vm-exec-read-evidence.bats, line 326)
+#   `assert_record 000001' failed with status 2
+# jq: error: Could not open file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-4qMz3Y/test/13/evidence/000001/read.json: No such file or directory
+not ok 14 malformed process rows and a failed pgrep are unavailable, never absence
+# (in test file Tests/scripts/vm-exec-read-evidence.bats, line 347)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 15 boot identity parses exactly and a changed boot after a failed restart stays unavailable
+# (from function `assert_record' in file Tests/scripts/vm-exec-read-evidence.bats, line 141,
+#  in test file Tests/scripts/vm-exec-read-evidence.bats, line 360)
+#   `assert_record 000001' failed with status 2
+# jq: error: Could not open file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-4qMz3Y/test/15/evidence/000001/read.json: No such file or directory
+not ok 16 the port read keeps the legacy curl command and its exit status is data
+# (from function `assert_record' in file Tests/scripts/vm-exec-read-evidence.bats, line 141,
+#  in test file Tests/scripts/vm-exec-read-evidence.bats, line 382)
+#   `assert_record 000001' failed with status 2
+# jq: error: Could not open file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-4qMz3Y/test/16/evidence/000001/read.json: No such file or directory
+not ok 17 absent diagnostic defaults are a parsed fact across every effective source
+# (from function `assert_record' in file Tests/scripts/vm-exec-read-evidence.bats, line 141,
+#  in test file Tests/scripts/vm-exec-read-evidence.bats, line 415)
+#   `assert_record 000001' failed with status 2
+# jq: error: Could not open file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-4qMz3Y/test/17/evidence/000001/read.json: No such file or directory
+not ok 18 a malformed defaults answer is unavailable, never absence
+# (in test file Tests/scripts/vm-exec-read-evidence.bats, line 445)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 19 the installed inventory keeps the legacy command and needs its exact rows
+# (from function `assert_record' in file Tests/scripts/vm-exec-read-evidence.bats, line 141,
+#  in test file Tests/scripts/vm-exec-read-evidence.bats, line 455)
+#   `assert_record 000001' failed with status 2
+# jq: error: Could not open file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-4qMz3Y/test/19/evidence/000001/read.json: No such file or directory
+not ok 20 setup records keep each documented clean status as data
+# (from function `assert_record' in file Tests/scripts/vm-exec-read-evidence.bats, line 141,
+#  in test file Tests/scripts/vm-exec-read-evidence.bats, line 473)
+#   `assert_record 000001' failed with status 2
+# jq: error: Could not open file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-4qMz3Y/test/20/evidence/000001/read.json: No such file or directory
+not ok 21 undocumented statuses and missing result lines in setup records are unavailable
+# (in test file Tests/scripts/vm-exec-read-evidence.bats, line 514)
+#   `[[ "${status}" == 125 ]]' failed
+# bats exit: 1
+# ended: 2026-11-21T13:05:44Z
