@@ -20,7 +20,7 @@ findings are evidence to assess, not this task's prescribed conclusions.
 Classify every finding against the agreed acceptance and material-risk bar.
 Repair each accepted issue within this scope, or record the supported trade-off
 or contract decision. Complete the required controls and verification for any
-changes. Reconcile the report and k76 handoff with the resulting behavior.
+changes. Reconcile the report and k76 handoff with the resulting behaviour.
 Keep the original action/read counts, waits, poll bounds and one-attempt rules.
 If a required change needs a human scope decision, keep dependent work live.
 
