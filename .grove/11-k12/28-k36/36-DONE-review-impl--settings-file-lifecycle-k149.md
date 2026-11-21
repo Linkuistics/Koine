@@ -55,3 +55,22 @@ signals and both held-pointer cases. k67, k62, k57 and k54 keep their original
 duties. The missing snapshot tree, the empty AXValue, the OCR substring stop and
 the private secret-bearing roots stay explicit limits. No guest runs, and no
 ancestor closes.
+
+## Decisions (running log)
+
+- 2026-11-21: Review producer 25ed10823ff8 against its parent, with the
+  preceding report conversion 8918ca3c379f as context. Inspect source and
+  retained receipts only. Run no test, build, lint, format or guest command.
+- 2026-11-21: The immutable v2.7.0 objects match all nine digests in the
+  producer's source receipt. Their five payload key sets match the helpers.
+  The agent client's download error branch deletes its temporary copy, so
+  full partial-byte retention is not established by the adapter.
+- 2026-11-21: Record the added-download/read-count conflict and the incomplete
+  measurement subject inventory as findings. One integration sibling before
+  k81 will triage this review. It can reject a finding against the actual
+  contract. No implementation fix, scope amendment or native acceptance is
+  made here.
+
+Review artifact:
+`docs/verification/settings-activation/ORDERING-FILE-LIFECYCLE-REVIEW.md`.
+Integration `settings-file-lifecycle-k150` is the next sibling, before k81.
