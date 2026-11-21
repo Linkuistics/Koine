@@ -1,3 +1,9 @@
+> **History.** The ADR [settings harness takes no keepalive captures](../adr/settings-harness-takes-no-keepalive-captures.md)
+> rejects the keepalive owner design. This document belongs to that design. It is
+> now a historical record and binds no current work.
+
+<!-- tc: off because this historical record keeps its original text -->
+
 # Settings capture resource contract
 
 ## Problem and agreement

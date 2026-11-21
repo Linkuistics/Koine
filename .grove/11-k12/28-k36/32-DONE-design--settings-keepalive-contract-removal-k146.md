@@ -70,3 +70,59 @@ binding.
   release.
 - settings-keepalive-loop-removal-k147 removes the code after this leaf.
 - Post nothing on TestAnyware issue 13.
+
+## Decisions (running log)
+
+- 2026-11-21: The workspace parent is ahead of `main`, so no rebase is needed.
+- 2026-11-21: This leaf records a settled ADR and has no design discussion. A
+  new visual document earns no place. The existing visual README gets one
+  changed sentence, because it calls the withdrawn hold binding.
+- 2026-11-21: The goal sentence governs the scope, and the listed passages are
+  a minimum. A sweep of both documents found more keepalive requirements. In
+  the spec, the hold paragraph on helper adoption also goes. In the plan, these
+  passages also go:
+  - the admission-delay sentence in "Input and observation qualification"
+  - the worker stop and the resource profile in "Required transport and
+    evidence handling"
+  - the coordinator inputs in "Freeze, audit and exact cleanup"
+  - the k93 sentence in "Complete ordinary acceptance and preserved duties".
+- 2026-11-21: "The new capture policy" in the spec came from k49, before the
+  keepalive work. It names the protocol's own captures, and it stays.
+- 2026-11-21: The conversion covers the blocks that the edit touches. It uses
+  `on` and `pending` windows, as both documents already do. A table converts
+  whole, because a marker line inside a table breaks it. This keeps the
+  meaning risk and the review on the text that the ADR reaches. The skill
+  lets a later edit convert more.
+- 2026-11-21: In the spec, the hold section moves to the end of "Finite
+  evaluation and ordinary acceptance". k92 inserted it above the evaluation
+  text, so the evaluation paragraphs read as part of the hold. The heading text
+  stays, so each `#keepalive-coordination-hold` link still resolves.
+- 2026-11-21: The keepalive-only test seams are coordination, both overlap
+  directions, races between a normal stop and dispatch, unexpected worker exits
+  and resource limits. The locks, capture validation and records serve the
+  retained capture duties, so their tests stay.
+- 2026-11-21: The first glossary sweep read clean for every term, which was
+  false. zsh does not split an unquoted variable into words, so each search
+  read one nonexistent path. A positive control and an invented term exposed
+  the fault. The repeated sweep runs under bash and on text with collapsed
+  whitespace. Only "Keepalive tick" and "Resource profile" occur in live texts.
+  After this leaf, both occur only in withdrawals, so all 33 owner terms go.
+- 2026-11-21: Regions cannot nest, so `off` cannot contain `pending`.
+  `KEEPALIVE-DESIGN.md` loses its three internal markers to become one `off`
+  region. The history note sits above each title. The departure markers in
+  the owner and records specs had no checked block in `off`, so they go too.
+- 2026-11-21: A token comparison of the conversion found no lost link, handle,
+  code span, heading or number. The only change is "reopens 2/3", which now
+  reads "reopens 2 and 3". A mutated copy showed that the comparison detects a
+  lost link and a lost handle.
+- 2026-11-21: The withdrawal drops links only into the withdrawn design: its
+  scope decision, its scheduling profile and its review integration. The list
+  of evidence documents that nothing living cites is the same as at the parent
+  commit.
+- 2026-11-21: The conversion rewrites binding text, and the withdrawal reaches
+  five consumers. The in-session checks cover the instruments, not the
+  judgement calls above. So this leaf cuts `review-design` as
+  settings-keepalive-contract-removal-k148. It sits before k147, because k147
+  reads this contract.
+- 2026-11-21: This launch has no provider evidence and no legacy run identity,
+  so the review carries no Creator line.

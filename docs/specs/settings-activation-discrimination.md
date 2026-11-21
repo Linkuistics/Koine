@@ -14,11 +14,13 @@ documented API-use violation. This is a named exception to the
 permission for an unrestricted search for workarounds.
 
 One activation request and the repetition, retry, deferral and speculative-yield
-exclusions remain. Driver waits stay excluded except for the separately approved,
-UI-independent [command-ownership admission scope](#keepalive-coordination-hold).
-The [accepted convention](#scope-after-no-candidate) rejects the repair on a
-qualified recurrence, prevents acceptance without required evidence and requires
-every ordinary assertion to pass. A passing finite bound supports only that sample.
+exclusions remain. The ADR [settings harness takes no keepalive captures](../adr/settings-harness-takes-no-keepalive-captures.md)
+withdraws the [keepalive coordination hold](#keepalive-coordination-hold) and its
+command-ownership admission scope. Thus driver waits are excluded in full again.
+The harness relies on the pinned host macOS and Tart versions instead of keepalive
+captures. The [accepted convention](#scope-after-no-candidate) rejects the repair
+on a qualified recurrence, prevents acceptance without required evidence and
+requires every ordinary assertion to pass. A passing finite bound supports only that sample.
 
 <!-- tc: pending because the conversion has not reached this part of the document -->
 
@@ -138,67 +140,6 @@ different design under the existing default test; this exception does not.
 
 <!-- tc: on -->
 
-### Keepalive coordination hold
-
-<!-- tc: depart synonym-rotation because fixed means set in advance, not repaired -->
-Antony approved [the keepalive design scope](../verification/settings-activation/KEEPALIVE-DESIGN.md#required-scope-decision)
-and agreed to its test seams. The approval permits the design of one serialised
-command owner for scenario and keepalive work. It explicitly amends the
-[excluded driver-wait class](#scope-decision-for-antony) only for logged admission
-delays. Command ownership and fixed policy determine these delays, independent of
-observed UI state, focus or success.
-
-A due keepalive tick may wait, and scenario input may wait behind capture
-qualification. Input order, explicit sleeps, poll counts and single-attempt
-transports remain fixed. Actual cadence and elapsed timing change. No claim of
-symptom preservation or of a safe native idle interval follows.
-
-The single writer and ordinal domain, complete required-capture qualification
-before any subsequent scenario dispatch, and first-failure eligibility remain
-binding. Every keepalive capture remains required checked evidence with unique
-private originals and partials. No separate evidence writer, liveness-only
-exemption, UI-conditioned delay, input retry or latch reset is admitted.
-
-Design and offline qualification must establish an enforceable finite resource
-profile. The profile covers these resources:
-
-- Image size, dimensions and decoded data
-- Validation memory and time
-- Aggregate captures, raw data and partials
-- Separate capacity for final records and cleanup.
-
-Account for the external producer's allocations and writes. Post-capture checks or
-streaming validation alone do not bound them. At a limit, stop acceptance and later
-scenario dispatch, and retain all produced bytes. No truncation, overwrite,
-deletion, downsampling or skipped required image is authorised. If storage or an
-owned process prevents preservation or cleanup, retain the available partials and
-report what remains unknown.
-
-<!-- tc: depart synonym-rotation because a confirmed exit is an observed process exit, not a check of evidence -->
-Permit design of a cooperative planned worker stop with its own lifecycle record,
-matched to the owned worker and its confirmed exit. Stopping between captures
-after normal scenario completion may end without making the run unavailable.
-This result is separate from required tick outcomes. Earlier failures remain
-binding, and unexpected exits, interrupted required captures or missing stop
-records still prevent acceptance.
-
-The proposed [owner and lifecycle contract](settings-keepalive-owner.md)
-specifies reviewed dispatch/stop races and record fields. Its
-[scheduling proposal](settings-keepalive-owner.md#scheduling-and-deadline-profile)
-sets receive-order service and exact deadlines. The
-[scheduling review integration](../verification/settings-activation/KEEPALIVE-SCHEDULING.md#review-integration)
-records its repairs and the remaining seam decision.
-Enforceable resources and whole-design reconciliation remain design work.
-No current interrupted receipt becomes successful.
-
-Helper adoption, readiness, freeze and runtime remain held until the concrete
-design, independent review and every earned integration are complete. Planning,
-implementation and each earned review and integration must also be complete
-first. This agreement selects no numerical limits, scheduling deadlines or native
-capability experiment. Current source behaviour is unchanged. The fixed E and A
-sets, outcome rules, exact VM identity, private roots and all other evidence and
-containment duties remain.
-
 The [evaluation protocol](../verification/settings-activation/ORDERING-EVALUATION-PLAN.md)
 owns the exact subjects, five slots, setup, observation qualification, freeze,
 stop rules and outcome precedence. Two fresh focused guests each run the current
@@ -209,6 +150,13 @@ One new signed candidate is frozen before the first guest. It remains
 byte-identical across both sets. Ordinary readiness is separately revalidated.
 There is no baseline arm or qualification-only guest. All implementation and
 review finish before freezing.
+
+The freeze also pins the host, as the
+[keepalive removal ADR](../adr/settings-harness-takes-no-keepalive-captures.md)
+decides. The host must run macOS 27.2.1 (26B131) with Tart 2.42.0. A mismatch holds
+before the first slot for a new decision. The harness does not rely on the
+TestAnyware VNC keeper. A Tart crash during a slot is a test-driver failure. It
+stops every later slot, permits no retry and is never a Koine failure or a pass.
 
 <!-- tc: pending because the conversion has not reached this part of the document -->
 
@@ -247,6 +195,35 @@ symptom preservation for that combination and rejects the candidate. An all-gree
 sample leaves preservation unknown and supports only the explicitly accepted
 finite behavioral convention. No native mechanism, comparative risk reduction,
 API violation or general reliability claim follows.
+
+<!-- tc: on -->
+
+### Keepalive coordination hold
+
+The [keepalive removal ADR](../adr/settings-harness-takes-no-keepalive-captures.md)
+withdraws this hold. The harness takes no keepalive captures and has no serialised
+command owner. Thus the owner design, its ownership delays, the finite resource
+profile and the cooperative worker stop are withdrawn too. Helper adoption,
+readiness, freeze and runtime no longer wait for that design. Their other
+prerequisites remain. The driver-wait exclusion in the
+[scope decision](#scope-decision-for-antony) applies in full again.
+
+These capture duties stay binding:
+
+- The single writer and ordinal domain
+- Complete required-capture qualification before any later scenario dispatch
+- First-failure eligibility
+- Unique private originals and partials.
+
+<!-- tc: depart synonym-rotation because fixed means set in advance, not repaired -->
+No second evidence writer, UI-conditioned delay, input retry or latch reset is
+admitted. An interrupted required capture still prevents acceptance. The fixed E
+and A sets, outcome rules, exact VM identity, private roots and all other evidence
+and containment duties remain. The
+[design record](../verification/settings-activation/KEEPALIVE-DESIGN.md) and the
+[owner contract](settings-keepalive-owner.md) stay as history.
+
+<!-- tc: pending because the conversion has not reached this part of the document -->
 
 ## Evidence and the missing control
 
@@ -367,11 +344,12 @@ remain excluded under this amendment:
 - Yield-based activation used as a speculative timing workaround.
 
 Reconsidering an excluded class requires a separate explicit scope proposal.
-The later [keepalive scope agreement](#keepalive-coordination-hold) supplies that
-proposal only for UI-independent command-ownership admission delays. It permits
-no wait for focus or success and no application activation workaround.
-The unchanged experiment subject still excludes every alternative API, yield,
-async deferral and repeated activation, irrespective of candidate-design scope.
+The [keepalive removal ADR](../adr/settings-harness-takes-no-keepalive-captures.md)
+withdraws the later [keepalive scope agreement](#keepalive-coordination-hold),
+which was that proposal for command-ownership admission delays. Thus every
+excluded class applies in full. The unchanged experiment subject still excludes
+every alternative API, yield, async deferral and repeated activation, irrespective
+of candidate-design scope.
 
 <!-- tc: pending because the conversion has not reached this part of the document -->
 
@@ -426,9 +404,10 @@ the observed failure.
 
 Reversing the window and activation calls remains an empirical hypothesis. The
 checked contracts do not prescribe that ordering, and the closed comparison
-does not establish a repair. Repetition, retries, repeated input, deferral and
-speculative yielding remain excluded. The later keepalive agreement permits
-only the separately stated ownership-based driver-wait design.
+does not establish a repair. Repetition, driver waits, retries, repeated input,
+deferral and speculative yielding remain excluded. The
+[keepalive removal ADR](../adr/settings-harness-takes-no-keepalive-captures.md)
+withdraws the later keepalive agreement and its ownership-based driver-wait design.
 
 That assessment selected no candidate, new product seam, runtime subject or
 acceptance sample. The later empirical design above changes the permitted
@@ -536,14 +515,14 @@ focused failing product check, where feasible, supplements that native evidence.
 <!-- tc: on -->
 
 On 2026-10-30, Antony agreed to the keepalive replacement's tests at these
-existing boundaries. Control the CLI and sleep behaviour while the tests exercise
-real coordination, locks, capture validation and records. Cover these cases:
+existing boundaries. The
+[keepalive removal ADR](../adr/settings-harness-takes-no-keepalive-captures.md)
+withdraws the keepalive-only tests. They cover real coordination, both overlap
+directions, races between a normal stop and dispatch, unexpected worker exits and
+resource limits. Control the CLI and sleep behaviour while the remaining tests
+exercise real locks, capture validation and records. Cover these cases:
 
-- Both overlap directions
 - Failure ordering
-- Races between a normal stop and dispatch
-- Unexpected exits
-- Resource limits
 - Retention of originals and partials
 - Signal handling
 - Both held-pointer cases.
@@ -554,10 +533,12 @@ focus. A new native capability experiment needs its own explicitly reviewed scop
 
 ### Original-duty comparison
 
-The original criteria remain binding, except for the native-causal prerequisites,
-the named candidate-justification exception and the narrow keepalive amendments
-below. The [keepalive duty comparison](../verification/settings-activation/KEEPALIVE-DESIGN.md#original-duties-and-handoff)
-also preserves every outstanding helper, adoption, caller and qualification duty.
+The original criteria remain binding, except for the native-causal prerequisites
+and the named candidate-justification exception below. The
+[keepalive removal ADR](../adr/settings-harness-takes-no-keepalive-captures.md)
+withdraws the narrow keepalive amendments, and the rows below name each withdrawn
+duty. The [keepalive duty comparison](../verification/settings-activation/KEEPALIVE-DESIGN.md#original-duties-and-handoff)
+stays as history. It maps each keepalive duty to its origin.
 The full earlier comparisons remain historical evidence:
 [causal](../verification/settings-activation/CAUSAL-RESULTS.md#every-original-duty),
 [protocol](../verification/settings-activation/CAUSAL-PROTOCOL-RESULTS.md#integrity-and-original-duties),
@@ -571,15 +552,15 @@ and [persisted](../verification/settings-activation/PERSISTED-RESULTS.md#every-o
 | Supported condition, matched intervention and two finite falsifiers | Unmet. Its role as a prerequisite to the permitted behavioural-repair design and evaluation is amended. It is still required for the corresponding causal claim. The narrow probe does not satisfy it. |
 | Positive failed actual request/native disposition/responsible context | Unresolved. Its role as a prerequisite to the permitted behavioural-repair design and evaluation is amended, and it is not marked satisfied. Native cause and ownership remain unresolved. |
 | Qualified acquisition/configuration/lag and changed-instrument availability/symptom/timing | Historical capabilities and limits are preserved. There is no new runtime qualification. |
-| Actual signed subject/all consumed inputs/completed golden freeze | Still required before any future launch, after review, integration and implementation. The design selects one unchanged candidate across both sets, but no actual signed subject has been built or frozen here. |
+| Actual signed subject/all consumed inputs/completed golden freeze | Still required before any future launch, after review, integration and implementation. The design selects one unchanged candidate across both sets, but no actual signed subject has been built or frozen here. The freeze also pins the host macOS version and build and the Tart version. |
 | Failed transport, partial archive, every started attempt and NOT RUN retention <!-- tc: depart synonym-rotation because a started attempt is a protocol state, while launch names an application launch --> | Preserved separately from scenario results. Text from a timeout or a nonzero status remains failed. |
 | Original/endpoint/golden audits and exact clone stop | Required for future runs. Historical duties and results are unchanged. This design has no clone. |
-| Justified application repair and useful failing product seam | Repair unmet. The concrete design reverses the two calls locally under the named exception. Historical real VM failures are useful product evidence. No deterministic local native RED seam is established. Recorder and reader controls and an order-encoding fake prove no repair. Other candidates retain the API-use test. Only the separate UI-independent command-ownership delay is admitted for keepalive design. Repetition, other driver waits, retries, repeated input, deferral and speculative yield remain excluded. |
-| Keepalive/scenario admission and timing | Design of one serialised owner with logged ownership delays and deferred ticks is approved. Input order, explicit sleeps, poll counts and one-attempt transports remain fixed. Elapsed timing changes and may affect the symptom. No implemented scheduler or native safe interval is established. |
+| Justified application repair and useful failing product seam | Repair unmet. The concrete design reverses the two calls locally under the named exception. Historical real VM failures are useful product evidence. No deterministic local native RED seam is established. Recorder and reader controls and an order-encoding fake prove no repair. Other candidates retain the API-use test. The [keepalive removal ADR](../adr/settings-harness-takes-no-keepalive-captures.md) withdraws the separate command-ownership delay. Repetition, driver waits, retries, repeated input, deferral and speculative yield remain excluded. |
+| Keepalive/scenario admission and timing | Withdrawn by the [keepalive removal ADR](../adr/settings-harness-takes-no-keepalive-captures.md). The harness has no serialised owner, ownership delay or deferred tick. Input order, explicit sleeps, poll counts and one-attempt transports remain unchanged. |
 | Required captures, failure ordering and retention | Preserved: one writer and ordinal domain, full required-capture validation before subsequent scenario dispatch, sticky first failure, unique private originals and all produced partials. There is no second writer or liveness-only exemption. |
-| Finite host resource profile | Approved for design and offline qualification, including external-producer enforcement and capacity for final records and cleanup. Limits and usefulness remain unqualified. A limit stops acceptance and later dispatch. No truncation, deletion, overwrite, downsampling or omitted required image is permitted. |
-| Planned keepalive shutdown | Design may distinguish a cooperative stop between captures after normal completion, with a matched lifecycle record and confirmed worker exit. Earlier failure, unexpected exit, interrupted required capture or missing record still prevents acceptance. Current source semantics remain unchanged. |
-| Helper, adoption, caller and qualification work | Every remaining duty survives. The surviving duties cover each file, environment, lifecycle and collection helper, and each exec and one-shot confirmation. They cover complete scenario adoption, signals and both held-pointer cases, and the positive setup, title and liveness check. They also cover the exact focused prefix, the finite caller and containment, and readiness, freeze and runtime. Concrete design and review, planning, implementation, and each earned review and integration still precede consumption. |
+| Finite host resource profile | Withdrawn by the [keepalive removal ADR](../adr/settings-harness-takes-no-keepalive-captures.md). The harness needs no resource profile, limit or capacity reservation. |
+| Planned keepalive shutdown | Withdrawn by the [keepalive removal ADR](../adr/settings-harness-takes-no-keepalive-captures.md). The harness has no keepalive worker, so it needs no cooperative stop or worker supervision. Earlier failure or an interrupted required capture still prevents acceptance. |
+| Helper, adoption, caller and qualification work | Every remaining duty survives. The surviving duties cover each file, environment, lifecycle and collection helper, and each exec and one-shot confirmation. They cover complete scenario adoption, signals and both held-pointer cases, and the positive setup, title and liveness check. They also cover the exact focused prefix, the finite caller and containment, and readiness, freeze and runtime. The [keepalive removal ADR](../adr/settings-harness-takes-no-keepalive-captures.md) withdraws the owner design chain of design, review and planning. Implementation and each earned review and integration still precede consumption. |
 | One selection, one front/focused Settings window | The required behaviour and one activation request are unchanged. |
 | Separate finite complete ordinary acceptance | Unmet. It is fixed at three full fresh-guest scenarios after two qualifying focused slots. The same signed subject applies throughout, with diagnostics disabled. Separate declaration and readiness, the all-input and completed-golden freeze and every evidence duty remain. A qualified recurrence rejects reversal. Missing or failed required evidence, or another required failure, stops all later slots without acceptance. A complete pass supports only that finite sample. |
 | External evidence/reproducer/approval | No external owner is established. Attribution requires positive evidence and a reproducer. If the owner is external, the repair stays unresolved. There is no upstream report without Antony's approval. |

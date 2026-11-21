@@ -1,3 +1,9 @@
+> **History.** The ADR [settings harness takes no keepalive captures](../adr/settings-harness-takes-no-keepalive-captures.md)
+> rejects the keepalive owner design. This document belongs to that design. It is
+> now a historical record and binds no current work.
+
+<!-- tc: off because this historical record keeps its original text -->
+
 # Settings command ownership and worker lifecycle
 
 ## Design boundary
@@ -207,7 +213,6 @@ command can cross this boundary.
 There are three distinct records of progress:
 
 1. **Submission:** accepted into bounded pending work, with no attempt ordinal.
-<!-- tc: depart synonym-rotation because launch is an event and started is a required state identifier -->
 2. **Dispatch commitment:** the owner assigns the next ordinal and records an
    intent to execute once. This is the serialised ordering point against stop.
    It creates an owned attempt, not proof that the external CLI ran or delivered
@@ -1251,7 +1256,6 @@ Required offline controls and a useful declared workload must justify the
 numbers. This slice supplies neither an arbitrary cap nor an availability
 promise.
 
-<!-- tc: depart synonym-rotation because fixed describes policy and repaired describes native focus -->
 The complete design must preserve successful scenario input order, explicit
 sleeps, poll counts, one-attempt transports and the same E/A prefix. Only fixed,
 logged UI-independent ownership delays are admitted. Record submission, due,

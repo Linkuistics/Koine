@@ -1,3 +1,9 @@
+> **History.** The ADR [settings harness takes no keepalive captures](../../adr/settings-harness-takes-no-keepalive-captures.md)
+> rejects the keepalive owner design. This document belongs to that design. It is
+> now a historical record and binds no current work.
+
+<!-- tc: off because this historical record keeps its original text -->
+
 # Keepalive coordination and the agreed design scope
 
 ## Decision and status
@@ -45,8 +51,6 @@ The editable [visual discussion](../../design/architecture/settings-activation/R
 shows the collision and the agreed design scope. Sequence views start at their
 first message. Graph views start at the dark **Start here** node. Neither is a
 model-checking result.
-
-<!-- tc: pending because the conversion has not reached this part of the document -->
 
 ## Why the present rules conflict
 
@@ -202,8 +206,6 @@ No E/A slot is a budget for testing a replacement transport or discovering these
 limits. A newly required native capability experiment needs its own explicitly
 reviewed scope; it is not added by this document or by agreement to design.
 
-<!-- tc: on -->
-
 ## Finite-resource revision
 
 **Antony approved this revision on 2026-11-21.** He chose option B. He gave
@@ -244,8 +246,6 @@ The revision withdraws the external returns that the
 K126 reconciles each dependent duty and control with this revision. Each
 withdrawn duty names this revision as its reason. No duty disappears silently.
 Any message on TestAnyware issue 13 still needs explicit authority from Antony.
-
-<!-- tc: pending because the conversion has not reached this part of the document -->
 
 ## Ownership, failure and collection contract
 

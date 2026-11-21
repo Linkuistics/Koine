@@ -29,26 +29,18 @@ remain held with unchanged criteria, subjects and caps.
 
 <!-- tc: on -->
 
-The [keepalive coordination hold](../../specs/settings-activation-discrimination.md#keepalive-coordination-hold)
-binds helper consumption and all readiness, freeze and runtime work.
-The [accepted scope](KEEPALIVE-DESIGN.md#required-scope-decision) permits design
-of one serialised owner, logged UI-independent ownership delays and deferred
-keepalive ticks. It also permits an enforceable finite resource profile and a
-separately recorded cooperative normal stop. Required capture qualification before later
-scenario dispatch, first-failure eligibility and private original retention
-remain binding.
+The [keepalive removal ADR](../../adr/settings-harness-takes-no-keepalive-captures.md)
+withdraws the [keepalive coordination hold](../../specs/settings-activation-discrimination.md#keepalive-coordination-hold).
+It also withdraws the serialised owner, the ownership delays, the deferred
+keepalive ticks, the finite resource profile and the cooperative normal stop.
+Helper consumption, readiness, freeze and runtime no longer wait for an owner
+design. Their other prerequisites remain, and this withdrawal admits no slot.
 
-This is design authority only. Concrete design, independent
-review/every integration, planning, implementation and earned review/integration
-still precede consumption.
-
-The proposed [owner and lifecycle contract](../../specs/settings-keepalive-owner.md)
-defines reviewed ownership, stop races and record fields. Its
-[scheduling proposal](../../specs/settings-keepalive-owner.md#scheduling-and-deadline-profile)
-sets receive-order service and exact deadlines. The
-[scheduling review integration](KEEPALIVE-SCHEDULING.md#review-integration)
-records its repairs and the remaining seam decision.
-Enforceable resources and whole-design reconciliation remain outstanding. No slot is admitted.
+Required capture qualification before later scenario dispatch, first-failure
+eligibility and private original retention remain binding. The
+[keepalive design record](KEEPALIVE-DESIGN.md) and the
+[owner and lifecycle contract](../../specs/settings-keepalive-owner.md) stay as
+history.
 
 <!-- tc: pending because the remaining sections are outside this conversion -->
 
@@ -164,14 +156,14 @@ command, focus operation or replacement input is permitted for these selections.
 
 <!-- tc: on -->
 
-<!-- tc: depart synonym-rotation because fixed means set in advance, not repaired -->
 Record the raw window list used by each existing count, front and focus
 assertion, not a later recreation. Preserve the scenario's bounded observation
 polls and fixed waits, including its post-click delay. Add no UI-conditioned wait
-or success retry. The sole new admission-delay scope is command ownership under
-the fixed policy in [Diagnostics and timing](#diagnostics-and-timing). A
-successful observation that the expected window is not yet visible may continue
-within the existing count-poll bound. Failed transport is different, and it stops
+or success retry. The
+[keepalive removal ADR](../../adr/settings-harness-takes-no-keepalive-captures.md)
+withdraws the command-ownership admission delay. A successful observation that
+the expected window is not yet visible may continue within the existing
+count-poll bound. Failed transport is different, and it stops
 the slot.
 
 The existing front/focus predicate runs once at its existing point: the first
@@ -292,30 +284,16 @@ an evidence failure; cleanup success cannot requalify a failed trial.
 
 <!-- tc: on -->
 
-<!-- tc: depart synonym-rotation because a confirmed exit is an observed process exit, not a check of evidence -->
-The approved worker-stop design may distinguish a cooperative stop between
-captures after declared normal scenario completion. It requires a separate
-lifecycle record matched to the owned worker and its confirmed exit. A clean tick
-or a retrospective reclassification never serves as that record. Earlier
-failures, unexpected exits, interrupted required captures and missing lifecycle
-records still prevent acceptance. Preserve the exact signal and status and any
-in-flight attempt or partial.
+The [keepalive removal ADR](../../adr/settings-harness-takes-no-keepalive-captures.md)
+withdraws the cooperative worker stop and the finite resource profile. The harness
+takes no keepalive captures, so it has no worker to stop. The profile belonged to
+the rejected owner design.
 
-The proposed lifecycle slice and its remaining numerical and resource profile
-must receive whole-design review before use. Current sleep-interruption receipts
-still latch. Suppress future ticks before collection. Resolve owned holders
-through the same domain. A stuck or unknown holder leaves containment unresolved
-and all later slots NOT RUN.
-
-The finite resource profile must enforce its stated producer, validator and
-aggregate limits. It must keep separate capacity for final records and cleanup.
-Reaching a limit stops acceptance and later scenario dispatch. Retain all produced
-originals and partials. Do not truncate, overwrite, delete, downsample or omit
-required images.
-
-Post-capture size checks and streaming validation alone do not bound prior
-external-producer work. Record any preservation or collection that storage or
-process failure makes unavailable. No numerical limit is selected here.
+Earlier failures and interrupted required captures still prevent acceptance.
+Preserve the exact signal and status and any in-flight attempt or partial. Retain
+all produced originals and partials. Resolve owned holders through the same
+domain. A stuck or unknown holder leaves containment unresolved and all later
+slots NOT RUN.
 
 <!-- tc: pending because the conversion has not reached this part of the document -->
 
@@ -349,28 +327,20 @@ measurement. Do not call this an instrument-free application or neutral timing.
 
 <!-- tc: on -->
 
-The host transcript, precondition and menu screenshots, ordinary polling, VNC
-keepalive and post-assertion captures still add work and delays. The accepted
-coordination scope also permits logged waits that command ownership and fixed
-policy determine. These waits are independent of observed UI state, focus or
-outcome. A Settings click may wait behind a capture and its full qualification.
-The existing sleep-20 schedule may defer its due capture until ownership is
-available. Actual tick cadence changes.
+The host transcript, precondition and menu screenshots, ordinary polling and
+post-assertion captures still add work and delays. These delays can affect the
+intermittent symptom. The
+[keepalive removal ADR](../../adr/settings-harness-takes-no-keepalive-captures.md)
+withdraws the VNC keepalive captures and the coordination scope. No ownership wait,
+deferred capture, tick schedule or scheduling design remains.
 
 Keep input order, explicit sleeps, poll counts and one-attempt transports
-unchanged. There is no UI-conditioned wait, focus or success retry, tick omission
-to avoid contention, or repeated input.
+unchanged. There is no UI-conditioned wait, focus or success retry, or repeated
+input.
 
-The concrete design must define and report the admission and dispatch timing,
-deadlines, pending-work bound, tick policy and normal-stop outcomes. An expired
-deadline stops acceptance and further dispatch. It cannot retry or resubmit work,
-silently drop a tick or relabel an interrupted required capture as cleanup.
-Neither serialised dispatch nor a chosen deadline establishes a safe native idle
-interval. Command connection activity, post-CLI validation and total lock
-duration remain distinct. These delays can affect the intermittent symptom.
-
-The same reviewed observation and scheduling policy applies in E and A, and it is
-frozen before E01. Historical ordinary-route failures establish that the broad
+<!-- tc: depart synonym-rotation because repair names the product repair, while fixed means set in advance -->
+The same reviewed observation policy applies in E and A, and it is frozen before
+E01. Historical ordinary-route failures establish that the broad
 end-to-end seam has exposed the symptom. The new candidate/capture combination has
 no preservation proof before it runs. A qualified recurrence demonstrates
 preservation for that combination and simultaneously rejects the repair. If every
@@ -406,18 +376,22 @@ opportunity to reconstruct its old bytes.
 
 <!-- tc: on -->
 
-Include these items in that freeze:
+The freeze also pins the host, as the
+[keepalive removal ADR](../../adr/settings-harness-takes-no-keepalive-captures.md)
+decides. Before the first clone request, record the host macOS product version and
+build and the Tart version. They must be macOS 27.2.1 (26B131) and Tart 2.42.0. If
+either differs, hold before E01 for a new decision. The harness does not rely on
+the TestAnyware VNC keeper. The frozen TestAnyware version may start that keeper,
+and the harness does not disable it.
 
-- The completed, independently reviewed coordinator and resource design
-- Its implementation and controls
-- The fixed scheduling, deadline and tick policy
-- The producer, validation and retention limits
-- The capacity reservations
-- The worker-stop schema.
+The ADR also records a residual test-driver risk. A Tart crash during a slot is a
+test-driver failure. It stops every later slot and permits no retry. It is never a
+Koine failure or a pass.
 
-The agreed scope supplies none of those qualified inputs. If a necessary native
-capability experiment emerges, it needs a separate, explicit and reviewed scope.
-Neither E nor A is a budget for discovering replacement limits.
+The ADR withdraws the coordinator and resource design, so the freeze takes none of
+its inputs. If a necessary native capability experiment emerges, it needs a
+separate, explicit and reviewed scope. Neither E nor A is a budget for that
+experiment.
 
 <!-- tc: pending because the conversion has not reached this part of the document -->
 
@@ -479,9 +453,11 @@ The [complete original-duty comparison](../../specs/settings-activation-discrimi
 is binding. Native condition, intervention, disposition and clock claims remain
 unmet. K42 amended their role as repair prerequisites, not their evidence. K46
 also amended only the API-use-mismatch prerequisite for this named ordering
-hypothesis. K93 permits the narrow ownership-based admission-delay and
-normal-stop design, and it requires a finite resource profile. It preserves the
-required-capture barrier and every original helper, adoption and containment duty.
+hypothesis. The
+[keepalive removal ADR](../../adr/settings-harness-takes-no-keepalive-captures.md)
+withdraws the admission delay, the normal stop and the finite resource profile of
+k93. The required-capture barrier and every original helper, adoption and
+containment duty stay binding.
 
 Historical bytes, classifications, strict false joins, failed transports, NOT RUN
 phases and every closed cap are unchanged. A design or a passing instrument

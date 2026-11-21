@@ -66,9 +66,10 @@ result publication and completion-frame delivery. The reviewed lifecycle still r
 intent, acknowledgement, actual exit and published reap. Enforceable resources
 and whole-design reconciliation remain outstanding.
 
-The
-[binding hold](../../../specs/settings-activation-discrimination.md#keepalive-coordination-hold)
-still prevents adoption and runtime.
+The ADR withdraws the
+[keepalive coordination hold](../../../specs/settings-activation-discrimination.md#keepalive-coordination-hold).
+Design task k146 records the withdrawal in the spec and the evaluation plan, with
+the host pin and the residual test-driver risk.
 
 The [current contract](../../../specs/settings-activation-discrimination.md#single-request-ordering-design)
 defines one shared-method reversal: prepare the retained window and section,

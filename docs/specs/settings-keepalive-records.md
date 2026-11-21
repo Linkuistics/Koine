@@ -1,3 +1,9 @@
+> **History.** The ADR [settings harness takes no keepalive captures](../adr/settings-harness-takes-no-keepalive-captures.md)
+> rejects the keepalive owner design. This document belongs to that design. It is
+> now a historical record and binds no current work.
+
+<!-- tc: off because this historical record keeps its original text -->
+
 # Settings owner records and collection recovery
 
 ## Contract and scope
@@ -456,7 +462,6 @@ object-role, element-index)`. Their exact IDs, sizes and opened identities are
 in the immutable object layout. Reserve their slots before writing their bytes.
 Write each object once before its referring event.
 
-<!-- tc: depart synonym-rotation because launch names process execution while start also names range and time origins -->
 A crash burns
 these attachments with their parent slot even if the event remains empty. Backend objects are assigned by `(operation-token, object-role, element-index)`
 under the exact directory binding. The frozen role schema determines those
@@ -470,7 +475,6 @@ digest of an unavailable original is never invented.
 
 ### Processes, results and delivery
 
-<!-- tc: depart synonym-rotation because launch names process execution while start also names range and time origins -->
 | Kind | Payload in encoding order | Meaning and maximum multiplicity |
 |---|---|---|
 | 11 Process/holder observation | `P process, R commitment, R channel-binding, R descriptor-inventory, C creation-exit-holder, S status, T sender, T receive, V(J,j) missing` | Bound `h` includes each created child, inherited descriptor owner, exit and holder-resolution observation. Subtype is a field-local enum in listed order. A reported grandchild exit is not caller reap. |
@@ -707,7 +711,6 @@ observations.
 The following steps are serialised under the original writer lock. They do not
 form a cross-volume transaction.
 
-<!-- tc: depart synonym-rotation because launch names process execution while start also names range and time origins -->
 1. Check root, original lock object, backing identities, complete bootstrap and
    owner generation. Acquire actual exclusive ownership. Publish the generation opening and its kind 20 before readiness.
 2. Before consuming an ordinal, select a fresh slot, write a fence, and observe
@@ -928,7 +931,6 @@ second kind 25 is written. Both paths end with the same kind 27, kind 20, kind
 
 ### Ambiguity table
 
-<!-- tc: depart synonym-rotation because launch names process execution while start also names range and time origins -->
 | Observed condition | Required disposition |
 |---|---|
 | Empty slot before the first write, or death between in-memory slot consumption and first byte | Preserve it and burn the failed lane. Never infer that it is reusable. No fabricated event is added. |
@@ -949,7 +951,6 @@ implementation and the following still-unestablished mechanism prerequisites.
 Failure of a prerequisite is an unavailable profile or recovery, not permission
 to weaken its guarantee.
 
-<!-- tc: depart synonym-rotation because launch names process execution while start also names range and time origins -->
 | Prerequisite | What must be established. What is not inferred |
 |---|---|
 | Original lock and identity | Actual exclusivity across intended inherited holders, descriptor lifetime and reliable opened-object identity. Merely retaining its pathname is insufficient. |
@@ -1044,7 +1045,6 @@ mechanism envelope or claim the old 18-case S count covers every expanded row.
 The complete-profile task must enumerate a finite implementation suite and its
 actual process overlap before requesting any separate execution scope.
 
-<!-- tc: depart synonym-rotation because launch names process execution while start also names range and time origins -->
 | Boundary / later control | Approved enabling point and required discrimination |
 |---|---|
 | Encoding and S2 catalogue | Real encoder/decoder and original-lock coordinator. Declared finite fixture inputs. Every kind, missing/zero/unknown/inapplicable value, maximum and one-past length/count, wrong version/type/digest/predecessor and duplicate/stale slot. No allocator substitution. Check exact size formula and actual bytes. |
