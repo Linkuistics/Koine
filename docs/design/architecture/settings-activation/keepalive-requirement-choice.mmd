@@ -1,0 +1,32 @@
+flowchart TD
+    start["Start here: approved 2026-10-29 — enforceable finite limits, including the external capture producer"]
+    limit["Approved 2026-10-30 — no new native experiment"]
+    subgraph inputs["Remaining profile inputs — all unavailable on 2026-11-21"]
+        producer["Producer units: TestAnyware issue 13 has no reply"]
+        kernel["Q, R3 capacity and real Fe: no public source for xnu-13432.41.4"]
+        vision["Vision OCR service work: closed source, zero authorised calls"]
+        storage["Storage metadata and protected capacity: no qualification study"]
+        guest["Guest start and status mappings: no authorised VM"]
+    end
+    decide{"1. Antony decided on 2026-11-21"}
+    fund["A. Not selected: fund named evidence work"]
+    revise["B. Approved: owner-side limits enforced, TestAnyware used unchanged, its costs a named limitation"]
+    hold["C. Not selected: keep the full requirement and hold"]
+    check{"2. Does the VNC error still need keepalive?"}
+    profile["Not needed: k126 owner-side profile"]
+    rescope["3. Approved: remove keepalive captures, prune k126, close k96"]
+    plan["4. Planning task k145 removes keepalive from the k36 harness"]
+    start --> inputs
+    limit --> inputs
+    inputs --> decide
+    decide --> fund
+    decide --> revise
+    decide --> hold
+    revise --> check
+    check -.->|"Yes"| profile
+    check -->|"No: fixed with macOS 27.2.1 and Tart 2.42.0"| rescope
+    rescope --> plan
+    classDef entry fill:#172b4d,color:#fff,stroke:#172b4d,font-weight:bold
+    classDef rejected stroke-dasharray:5 5,color:#666
+    class start entry
+    class fund,hold,profile rejected

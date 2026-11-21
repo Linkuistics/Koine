@@ -2,6 +2,16 @@
 
 ## Decision and authority
 
+**Revised on 2026-11-21.** Antony approved the
+[finite-resource revision](KEEPALIVE-DESIGN.md#finite-resource-revision).
+The owner now guarantees finite limits only for the resources that it controls.
+Koine requires no schema, guard, build or evidence from TestAnyware.
+
+Thus the
+producer, native, raw-queue, exec-floor and storage-metadata returns below are
+no longer required inputs. Their costs are a named limitation. K126 reconciles
+each dependent row. This section keeps the original scope as history.
+
 K125 specifies the missing evidence for the complete owner profile. It does not
 qualify a mechanism or supply a useful numerical profile. Every execution row
 below is **NOT RUN**. Missing subjects keep that row unavailable.

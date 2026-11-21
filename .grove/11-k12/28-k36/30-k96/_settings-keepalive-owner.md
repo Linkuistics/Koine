@@ -33,6 +33,20 @@ Unexpected exit, interrupted required capture or missing stop evidence remains
 unavailable. Retain finite enforceable complete originals and partials, with
 protected final/cleanup capacity. Unqualified holder/storage boundaries hold.
 
+## Finite-resource revision
+
+On 2026-11-21, Antony approved the
+[finite-resource revision](../../../../docs/verification/settings-activation/KEEPALIVE-DESIGN.md#finite-resource-revision).
+"Enforceable finite resources" now means the resources that the owner controls.
+Koine uses TestAnyware unchanged and requires no schema, guard, build or evidence from it.
+TestAnyware, Vision, kernel-buffer, exec-floor, loader and filesystem-metadata
+costs are a named limitation. Deadlines and containment bound them in time only.
+
+This revision governs the text below. The k125 external returns are no longer
+required inputs. The producer frame, launcher install-map, Q and real Fe/Fi
+items stop being guarantees. K126 records this revision as the reason for each
+withdrawn duty. Every other duty below stays binding.
+
 ## Remaining owners and design detail
 
 k125 owns actionable external dependency/native/producer/storage/containment

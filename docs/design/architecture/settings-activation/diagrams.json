@@ -1,5 +1,5 @@
 {
-  "title": "Settings activation: external evidence prerequisites",
+  "title": "Settings activation: keepalive removal",
   "intro": "Graph views start at the dark Start here node. Sequences start at their first message and state views at the initial dot. Lifecycle review is integrated. Scheduling review corrections are integrated. Enforceable resources and whole-design reconciliation remain outstanding. Implementation and runtime stay held.",
   "groups": [
     {
@@ -29,24 +29,29 @@
     }
   ],
   "discussion": {
-    "title": "Require complete evidence before requesting execution",
-    "status": "K143 scoped review and k144 integration are complete. Numerical fit and whole-design review remain outstanding.",
-    "summary": "Producer input occurrences and OCR cycles need actual schema bounds. Native cases need derived call maxima, frame sources and bounded crash-reporting effects or proven suppression. Real Fe remains proposed alongside Q, feasible R3 capacities, independent raw observations, protected storage and finite host work. Missing inputs leave studies unavailable. Three planned maximum Vision calls remain unauthorised. K126 can consume design inputs without execution and retains complete useful fit.",
+    "title": "Remove the keepalive captures from the Settings harness",
+    "status": "Approved by Antony on 2026-11-21. K126 is pruned, k96 is closed, and planning task k145 is next.",
+    "summary": "The Tart crash that the keepalive captures avoided does not reproduce with macOS 27.2.1 and Tart 2.42.0. Thus the harness takes no keepalive captures and needs no serialised owner. It does not rely on the TestAnyware keeper. The ADR settings-harness-takes-no-keepalive-captures records the decision and the residual test-driver risk. Planning task k145 removes the keepalive and the k96 dependencies from the k36 harness.",
     "diagramIds": [
-      "keepalive-evidence",
-      "keepalive-caller",
-      "keepalive-workload",
-      "keepalive-accounting",
-      "keepalive-recovery-transfer"
+      "keepalive-requirement-choice",
+      "keepalive-collision",
+      "keepalive-scope"
     ],
     "updatedDiagrams": [
       {
-        "id": "keepalive-evidence",
-        "summary": "Adds native prerequisites, fixed R3 capacity feasibility and crash-reporting effects. Preserves study review and authority gates. Shows the handoff of design inputs to k126 without execution and the human choice for unavailable evidence."
+        "id": "keepalive-requirement-choice",
+        "summary": "Shows the keepalive check answered no, the approved removal and the k145 planning step. Marks the owner-side profile as not needed."
       }
     ]
   },
   "diagrams": [
+    {
+      "id": "keepalive-requirement-choice",
+      "group": "keepalive",
+      "title": "Remove the keepalive captures",
+      "source": "keepalive-requirement-choice.mmd",
+      "caption": "Antony approved option B, then the removal of the keepalive captures on 2026-11-21. The Tart crash does not reproduce with macOS 27.2.1 and Tart 2.42.0. The harness does not rely on the TestAnyware keeper, because the next TestAnyware version removes it. K126 is pruned and k96 is closed. Planning task k145 removes keepalive from the k36 harness."
+    },
     {
       "id": "keepalive-evidence",
       "group": "keepalive",

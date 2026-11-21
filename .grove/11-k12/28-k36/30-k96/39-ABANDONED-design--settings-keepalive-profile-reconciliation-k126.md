@@ -70,6 +70,25 @@ specs and k125's qualified inputs before whole-design review. Missing evidence
 keeps startup unavailable. Preserve all final-golden, bootstrap/readiness/recovery, B03/no-B04,
 namespace-212/type-12 and exact-stop/inventory limits from k124.
 
+## Revision after Antony's 2026-11-21 decision
+
+The [finite-resource revision](../../../../docs/verification/settings-activation/KEEPALIVE-DESIGN.md#finite-resource-revision)
+governs the text above. It changes these Done-when clauses:
+
+- "Include both frames, Fi, real Fe, Q, ..." keeps raw/partial outputs and
+  protected collection/terminal backing. Producer frames, Fi, real Fe, Q and
+  filesystem metadata become named limitations.
+- "Bind actual unit versions, ..." keeps the pinned TestAnyware identity,
+  encoding, OCR polling, environment and guest-probe meanings. Producer units,
+  guards and loader/native/service coverage become named limitations.
+- "Reconcile expanded R/S controls, ..." keeps every control whose subject the
+  owner controls. A control that depends on kernel capacity evidence records
+  that dependency as a named limitation.
+
+Every other clause stays binding. For each withdrawn duty, cite this revision.
+Do not drop a duty silently. The caller-workload, k124 and contract-ownership
+sections stay binding.
+
 ## Decisions (running log)
 
 <!-- tc: off because these entries are decisions that an earlier session recorded -->
@@ -85,3 +104,61 @@ namespace-212/type-12 and exact-stop/inventory limits from k124.
   retire this leaf or close its ancestors.
 
 <!-- tc: on -->
+
+- 2026-11-21: After the OS upgrade, the host reports macOS 27.2.1, build 26B131.
+  The kernel is Darwin 27.2.0, `xnu-13432.41.4~25` `RELEASE_ARM64_T6041`.
+  The toolchain is Xcode 27.2, build 27B52, with SDK 27.2.
+  No earlier observation binds this platform.
+- 2026-11-21: The acceptance attempt found no supplied return for any row of
+  the useful profile. TestAnyware issue 13 is open with zero comments.
+  Its last change was on 2026-10-31. The newest public XNU source tag is
+  `xnu-12377.121.6`. Thus no public kernel source corresponds to the host kernel.
+  Vision and its services have no public source. Each remaining row needs a
+  native study or a guest run.
+- 2026-11-21: The 2026-10-30 scope answer authorises no new native experiment.
+  This leaf authorises no VM. Thus no finite unblock can continue without a
+  decision by Antony. K125 already names that decision. Antony can fund named
+  evidence work, revise the finite-resource requirement explicitly, or keep the
+  full requirement and hold. The leaf stays live while the answer is pending.
+- 2026-11-21: Antony chose option B: "Option B. I don't want us to require
+  that of TestAnyware when our only interest is in using it for testing."
+  The owner enforces finite limits only on the resources that it controls.
+  Koine uses TestAnyware unchanged and requires no producer schema, guard or
+  evidence from it. Producer, Vision, kernel-buffer and filesystem-metadata
+  costs are bounded only by deadlines and containment. They are a named
+  limitation, not a guarantee. A breach makes the run unavailable, never a pass.
+- 2026-11-21: This session recorded the revision in `KEEPALIVE-DESIGN.md`, the
+  evidence scope, the k96 brief and this task. The owner spec, producer
+  contract, qualification and accounting documents still need reconciliation.
+- 2026-11-21: Antony reported that TestAnyware is checking whether the VNC
+  error still needs keepalive. The keepalive owner exists to keep a VNC client
+  active. Thus that result can change the need for k96. This session holds the
+  useful-profile work until the result arrives or Antony decides otherwise.
+- 2026-11-21: Antony reported that the latest macOS and Tart fix the assertion.
+  His 2026-11-21 comment on TestAnyware issue 13 gives the evidence. The fault
+  does not reproduce with macOS 27.2.1 (26B131) and Tart 2.42.0 after 70-second
+  and 300-second gaps. Every gap of 60 seconds or more crashed Tart 2.40.1 on
+  macOS 27.0.1. The test is `task vm:tart-vnc-idle-repro`.
+- 2026-11-21: The same comment says TestAnyware has given each guest that
+  `vm start` starts a passive VNC keeper since v2.2.0. TestAnyware ADR 0018
+  records it. The keeper holds one bare TCP connection and completes no RFB
+  handshake. Nothing restarts a keeper that dies. TestAnyware declines the
+  bounded-operation contract. This host runs Tart 2.42.0 and TestAnyware 2.9.0.
+- 2026-11-21: These facts meet the reversal condition in `KEEPALIVE-DESIGN.md`:
+  an existing transport keeps the connection without capture competition.
+  Thus this session asks Antony to approve three actions. Withdraw Koine's
+  keepalive captures. Prune this leaf, which closes k96. Insert a planning leaf
+  before k89 that plans the k36 harness without the owner.
+- <!-- tc: depart synonym-rotation because the quoted words are Antony's own -->
+  2026-11-21: Antony revised the proposal: "The bug is fixed, the keeper will
+  be deleted in the next version. TestAnyware is currently running." Thus the
+  harness must not rely on the keeper. It relies on the fixed macOS and Tart
+  versions alone. A TestAnyware session is active, so this session leaves issue
+  13 to it and posts nothing there.
+- 2026-11-21: Antony approved the adjusted plan. Koine drops its keepalive
+  captures and relies only on macOS 27.2.1 with Tart 2.42.0, pinned at the k54
+  freeze. The ADR `settings-harness-takes-no-keepalive-captures` records the
+  decision and the residual test-driver risk. Planning leaf
+  settings-keepalive-removal-k145 sits before k89. It carries every live text
+  that still requires the keepalive or k96. This session prunes k126, which
+  closes k96. It posts nothing on TestAnyware issue 13.

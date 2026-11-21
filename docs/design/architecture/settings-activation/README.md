@@ -1,7 +1,18 @@
 # Settings activation design discussion
 
-The current discussion is the [external evidence scope](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md).
-K125 specifies the missing producer, exec-floor, native, raw-queue, storage and
+The current discussion is the removal of the keepalive captures. Its view is
+`keepalive-requirement-choice.mmd`. On 2026-11-21, Antony first approved the
+[finite-resource revision](../../../verification/settings-activation/KEEPALIVE-DESIGN.md#finite-resource-revision).
+TestAnyware then found that the Tart crash does not reproduce with macOS 27.2.1
+and Tart 2.42.0. Antony approved the removal of the keepalive captures.
+
+The ADR [settings harness takes no keepalive captures](../../../adr/settings-harness-takes-no-keepalive-captures.md)
+records the decision. K126 is pruned and k96 is closed. Planning task k145
+removes the keepalive and the k96 dependencies from the k36 harness. The
+keepalive documents below are history.
+
+The [external evidence scope](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md)
+remains context. K125 specifies the missing producer, exec-floor, native, raw-queue, storage and
 caller-work returns. Unfilled subjects keep the affected study unavailable.
 K143 reviewed this scope and k144 integrated its supported findings.
 The proposal authorises no native execution. Numerical fit and whole-design

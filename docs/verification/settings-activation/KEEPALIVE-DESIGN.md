@@ -10,6 +10,15 @@ enforceable finite resource profile with lossless retention, and permits design
 of a separately recorded normal worker stop. The [actual answers and precise
 boundaries](#required-scope-decision) resolve k92's scope questions.
 
+**This design is history.** On 2026-11-21, Antony approved the removal of the
+keepalive captures. The ADR
+[settings harness takes no keepalive captures](../../adr/settings-harness-takes-no-keepalive-captures.md)
+records the decision. No consumer waits for the owner design below.
+
+Earlier that day, Antony revised the finite-resource requirement. The
+[finite-resource revision](#finite-resource-revision) limits the guarantee to
+the resources that the owner controls.
+
 This changes the permitted design, not the current implementation. The existing
 keepalive still collides with the scenario's evidence writer. No scheduling
 policy, numerical limit or lifecycle schema has been implemented or qualified.
@@ -192,6 +201,51 @@ for an uninterruptible/unknown holder and honest unresolved containment.
 No E/A slot is a budget for testing a replacement transport or discovering these
 limits. A newly required native capability experiment needs its own explicitly
 reviewed scope; it is not added by this document or by agreement to design.
+
+<!-- tc: on -->
+
+## Finite-resource revision
+
+**Antony approved this revision on 2026-11-21.** He chose option B. He gave
+this reason: "I don't want us to require that of TestAnyware when our only
+interest is in using it for testing." It revises the finite-resource row of the
+[required scope decision](#required-scope-decision). The other rows stay unchanged.
+
+The owner enforces finite limits on the resources that it controls:
+
+- Pending work, admission and operation deadlines.
+- The count of commands and child processes that it starts.
+- The bytes that it reads from each command and writes as evidence.
+- Its own validation buffers and local work.
+- Separate protected capacity for final records and cleanup.
+
+Koine uses TestAnyware unchanged. Koine requires no bounded-producer schema,
+guard, build or evidence from TestAnyware. These costs are outside the guarantee:
+
+- TestAnyware memory, storage and child work.
+- Vision and other native service work.
+- Kernel pipe buffers and exec memory floors.
+- Loader diagnostics and crash-reporting work.
+- Filesystem metadata and copy-on-write costs.
+
+Operation deadlines and containment bound these costs in time only. Their
+actual size is a named limitation, not a guarantee. A limit breach, an expired
+deadline or an exhausted resource stops later dispatch. The run is then
+unavailable. It never becomes a pass.
+
+The revision keeps the protected reserve, first failure and capture validation
+before later input. It also keeps the cooperative stop, privacy and lossless
+retention of the bytes that a command produces. Missing or partial evidence
+keeps its existing classification. Guest status meanings are not resource
+bounds, so their qualification stays with k81.
+
+The revision withdraws the external returns that the
+[evidence scope](KEEPALIVE-EVIDENCE-SCOPE.md) requested for these limits.
+K126 reconciles each dependent duty and control with this revision. Each
+withdrawn duty names this revision as its reason. No duty disappears silently.
+Any message on TestAnyware issue 13 still needs explicit authority from Antony.
+
+<!-- tc: pending because the conversion has not reached this part of the document -->
 
 ## Ownership, failure and collection contract
 
