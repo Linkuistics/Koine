@@ -60,3 +60,23 @@ submissions. k76 owns complete adoption, signals and both held-pointer cases.
 k67, k62, k57 and k54 keep their original duties. The missing snapshot tree, the
 empty AXValue, the OCR substring stop and the private secret-bearing roots stay
 explicit limits. No guest runs, and no ancestor closes.
+
+## Decisions (running log)
+
+- 2026-11-22: Review producer c3aa47c0 against parent 3a2c131e. Keep the
+  review inspection-only: no test, build, lint, format or guest command runs.
+  Use the committed source and retained receipts, with immutable TestAnyware
+  v2.7.0 objects and primary Apple documentation for the external contracts.
+- 2026-11-22: Record two source-derived findings. The defaults read omits
+  ordinary any-user preference domains, so its disabled-diagnostics result
+  can be false. The process wrapper loses the pgrep membership before its
+  two ps reads, so a disappearing candidate can be silently omitted from
+  a clean record. Neither counterexample is an observed native outcome.
+  Both findings need integration triage before helper consumption.
+- 2026-11-22: Fresh read-only comparisons confirm both retained output and
+  manifest digests, nine measured implementation/test/Taskfile inputs and all
+  three tagged source digests. The final log records 213 passing tests; it
+  does not cover either new counterexample. The review report is
+  `docs/verification/settings-activation/ORDERING-EXEC-READ-REVIEW.md`.
+  Cut one flat integration immediately before k151; leave all runtime and
+  ancestor acceptance duties open.
