@@ -37,6 +37,23 @@ _physical_fail() {
     return 1
 }
 
+# _physical_sleep OPERATION SECONDS: one existing wait between pointer actions.
+# A caller that tests a helper's status turns off errexit inside it, so the
+# helper must check each wait itself. In strict mode a failed wait records one
+# sleep receipt, which latches the root. Either way the failure is returned, so
+# no later input or release follows it.
+_physical_sleep() {
+    local status=0
+    sleep "$2" || status=$?
+    [[ "${status}" == 0 ]] && return 0
+    if [[ "${KOINE_VM_EVIDENCE_ROOT+x}" ]]; then
+        _physical_root || return
+        record_guest_poll "${KOINE_VM_EVIDENCE_ROOT}" "$1" sleep "${status}" "the existing ${2}-second wait" ||
+            return
+    fi
+    return "${status}"
+}
+
 _physical_coordinates() {
     [[ "$1" =~ ^[0-9]{1,5}$ && "$2" =~ ^[0-9]{1,5}$ ]] &&
         ((10#$1 <= 65535 && 10#$2 <= 65535))

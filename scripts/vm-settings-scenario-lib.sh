@@ -61,7 +61,7 @@ settings_begin() {
     trap 'settings_signal HUP 1' HUP
     trap 'settings_report $?' EXIT
     settings_fence
-    echo "Evidence root: ${KOINE_VM_EVIDENCE_ROOT} (clone ${vm}); it can hold KOINE_VM_PASSWORD, so keep it private"
+    echo "Evidence root: ${KOINE_VM_EVIDENCE_ROOT} (clone ${vm}); it can hold KOINE_VM_PASSWORD, so only its owner can enter it. Keep it private"
 }
 
 # A legacy transport in the strict scenario latches the root and sends nothing.

@@ -16,7 +16,8 @@
 #
 # KOINE_VM_BASE names the golden image to clone. It is required.
 # KOINE_VM_EVIDENCE_ROOT names a new evidence root; the default is beside the
-# transcript. The root can hold KOINE_VM_PASSWORD, so it stays private.
+# transcript. The root can hold KOINE_VM_PASSWORD, so init creates it with mode
+# 700: only its owner can enter it. Do not copy it out or publish it.
 # KOINE_VM_PASSWORD is the VM account's password (the golden image's default: admin).
 # The scenario sends no VM stop. The finite caller stops the exact clone.
 set -euo pipefail
@@ -227,7 +228,9 @@ settings_sleep requests-front 2
 settings_read_frame requests-frame
 settings_on_screen requests-on-screen '(.id // "") | startswith("request-label-")' ||
     settings_require "$?" "the window did not scroll to the requests"
-ELEMENT="$(settings_element requests-label '(.id // "") | startswith("request-label-")' optional)" ||
+# The echo is required evidence: the same one read requires the matching label
+# and its displayed value. A missing label or an omitted AXValue is unavailable.
+ELEMENT="$(settings_element requests-label '(.id // "") | startswith("request-label-")' value)" ||
     settings_stop "$?" "the request label could not be read"
 echo "Requests on screen: $(jq -c '[.id, .value]' <<<"${ELEMENT}")"
 settings_capture requests

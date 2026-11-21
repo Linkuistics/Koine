@@ -38,12 +38,13 @@ click_at() {
     # The top-left pixel still needs a distinct approach within this display.
     if ((approach_x == x && approach_y == y)); then approach_x=1; fi
     echo "Pointer: approach=(${approach_x}, ${approach_y}) target=(${x}, ${y}) display=${width}x${height}" >&2
+    # Each wait is checked: a failed wait stops the route before its next input.
     _physical_pointer menu-approach move "${approach_x}" "${approach_y}" >/dev/null || return
-    sleep 0.3
+    _physical_sleep menu-approach-wait 0.3 || return
     _physical_pointer menu-target move "${x}" "${y}" >/dev/null || return
-    sleep 0.3
+    _physical_sleep menu-target-wait 0.3 || return
     _physical_pointer menu-click click "${x}" "${y}" >/dev/null || return
-    sleep 1
+    _physical_sleep menu-click-wait 1
 }
 # click_centre <"x, y, w, h" as System Events prints position then size>
 click_centre() {

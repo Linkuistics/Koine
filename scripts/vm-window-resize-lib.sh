@@ -22,7 +22,10 @@ drag_window_corner() {
     x=$((x + w - 3)) y=$((y + h - 3))
     echo "Resize pointer: start=(${x}, ${y}) destination=($1, $2) held points=10 interval=0.15s down dwell=0.2s" >&2
     _physical_pointer resize-prepare move "${x}" "${y}" >/dev/null || return
-    sleep 0.5
+    # Each wait is checked: a failed wait stops the drag before the next point
+    # or the release. Its operation is not resize-down-N, so the held state
+    # still comes from the held points alone.
+    _physical_sleep resize-prepare-wait 0.5 || return
     # mouse-down sends a held-button mask at every coordinate; ordinary move
     # sends mask zero: https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-rfb/src/input.rs#L115-L146
     # Separate paced requests grew a fresh window where unpaced drag did not.
@@ -31,7 +34,11 @@ drag_window_corner() {
         px=$((x + (destination_x - x) * i / 10))
         py=$((y + (destination_y - y) * i / 10))
         if _physical_pointer "resize-down-${i}" mouse-down "${px}" "${py}" >/dev/null; then
-            if [ "${i}" = 0 ]; then sleep 0.2; else sleep 0.15; fi
+            if [ "${i}" = 0 ]; then
+                _physical_sleep "resize-hold-${i}-wait" 0.2 || return
+            else
+                _physical_sleep "resize-hold-${i}-wait" 0.15 || return
+            fi
         else
             status=$?
             # Strict failure stops input, including release. Preserve uncertain
@@ -44,5 +51,5 @@ drag_window_corner() {
         fi
     done
     _physical_pointer resize-release mouse-up "${destination_x}" "${destination_y}" >/dev/null || return
-    sleep 1
+    _physical_sleep resize-release-wait 1
 }

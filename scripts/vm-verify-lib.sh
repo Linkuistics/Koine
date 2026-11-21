@@ -23,7 +23,14 @@ WORK="$(mktemp -d)"
 LOG_DIR=".build/vm-verify"
 mkdir -p "${LOG_DIR}"
 LOG="${LOG_DIR}/${KOINE_VM_LOG_PREFIX:-}$(date +%Y%m%dT%H%M%S).log"
-exec > >(tee "${LOG}") 2>&1
+# Two runs in one second choose one name. Create the file exclusively, so a
+# later run refuses before it can truncate the earlier transcript. Status 2 is
+# a refused evidence path before any root or transport, as for an existing root.
+if ! (set -o noclobber && : >"${LOG}") 2>/dev/null; then
+    echo "Error: the transcript ${LOG} already exists; no run started, and that file is unchanged." >&2
+    exit 2
+fi
+exec > >(tee -a "${LOG}") 2>&1
 
 VM_ID="${KOINE_VM_ID:-koine-verify-$$}"
 export TESTANYWARE_VM_ID="${VM_ID}"

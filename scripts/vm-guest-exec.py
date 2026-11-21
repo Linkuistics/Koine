@@ -101,7 +101,11 @@ def refuse(root: Path, reason: str) -> int:
 def initialize(root: Path, vm: str) -> int:
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]*", vm):
         raise ValueError("expected an exact plain VM identity")
-    root.mkdir()  # Refuse reuse, overwrites and implicit parent creation.
+    root.mkdir(mode=0o700)  # Refuse reuse, overwrites and implicit parent creation.
+    # The root can hold KOINE_VM_PASSWORD in argv, predicates and responses. The
+    # umask can only narrow the mkdir mode, so no wider mode ever exists. chmod
+    # sets the exact mode before the first write: only the owner can enter.
+    os.chmod(root, 0o700)
     write_json(root / "subject.json", {"vm": vm})
     return 0
 

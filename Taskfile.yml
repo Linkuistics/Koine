@@ -1466,7 +1466,7 @@ tasks:
       - shellcheck -x scripts/vm-verify-latency.sh scripts/vm-verify-installations.sh
 
   check:vm-physical-evidence:
-    desc: Check physical helper payloads, raw evidence and first-failure stops without a VM; complete scenario migration remains separate
+    desc: Check physical helper payloads, raw evidence and first-failure stops without a VM, including a failed wait under a conditional caller; complete scenario migration remains separate
     cmds:
       - bash -n scripts/vm-physical-evidence-lib.sh scripts/vm-menu-pointer-lib.sh scripts/vm-window-resize-lib.sh Tests/scripts/vm-physical-evidence.bats
       - shellcheck -x scripts/vm-physical-evidence-lib.sh scripts/vm-menu-pointer-lib.sh scripts/vm-window-resize-lib.sh Tests/scripts/vm-physical-evidence.bats
@@ -1573,7 +1573,7 @@ tasks:
       - bats Tests/scripts/vm-exec-one-shot-host.bats
 
   check:vm-settings-scenario:
-    desc: Run the adopted Settings scenario without a VM against a simulated backend (one root before any transport, the legacy-transport fence, one unavailable answer per transport family, refused trace write, required base, refused reused root, HUP) and the TERM and INT held-pointer controls on the real backend. No native acceptance
+    desc: Run the adopted Settings scenario without a VM against a simulated backend (one root before any transport, the legacy-transport fence, one unavailable answer per transport family, refused trace write, required base, refused reused root, HUP, the required request-label value, an exclusive transcript) and the TERM, INT and failed-wait held-pointer controls on the real backend, with a private root. No native acceptance
     cmds:
       - bash -n scripts/vm-settings-scenario-lib.sh scripts/vm-verify-menu-bar.sh Tests/scripts/vm-settings-scenario.bats
       - shellcheck -x scripts/vm-settings-scenario-lib.sh scripts/vm-verify-menu-bar.sh Tests/scripts/vm-settings-scenario.bats
@@ -1601,7 +1601,7 @@ tasks:
       - bats Tests/scripts/vm-window-evidence.bats
 
   check:vm-guest-exec:
-    desc: Check shared single-attempt exec/non-exec evidence, eligibility and confirmation failures without a VM; scenario migration remains separate
+    desc: Check shared single-attempt exec/non-exec evidence, eligibility, confirmation failures and the owner-only root without a VM; scenario migration remains separate
     cmds:
       - bash -n scripts/vm-guest-exec-lib.sh
       - shellcheck -x scripts/vm-guest-exec-lib.sh Tests/scripts/vm-guest-exec.bats

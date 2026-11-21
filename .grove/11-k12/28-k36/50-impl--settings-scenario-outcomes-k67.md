@@ -44,3 +44,20 @@ k36 owns full ordinary acceptance. Retain all setup/title/menu/physical and
 process-outcome duties, original front/focus-list audits, same-PID liveness and
 failure-subject registry shared with k76. Complete resize/content/scroll duties
 remain binding despite historical k3 closure.
+
+## K160 scenario review integration handoff
+
+k160 integrates the k159 review in the "Integration of review k159" section of
+`docs/verification/settings-activation/ORDERING-SCENARIO-RESULTS.md`. Consume
+the scenario with that section. The successful actions, read counts, waits and
+bounds stay the same.
+
+The physical helpers now keep the status of each wait. A failed wait latches
+the root and stops all later input, including a release. The request-label
+echo reads its one element with the `value` requirement. A missing label or an
+omitted AXValue is unavailable. Each evidence root has mode 700. A second run
+in the same second stops with status 2, before its root.
+
+Keep each new control when you change the scenario. Every other duty and hold
+above stays. These include the positive setup, the title audits, the liveness,
+the private roots and the holds on k62, k57, k54 and runtime.

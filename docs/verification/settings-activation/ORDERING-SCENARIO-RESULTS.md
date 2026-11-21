@@ -32,7 +32,12 @@ caller of k57 owns the single exact stop and the inventory, through the same
 root. `KOINE_VM_KEEP` therefore has no effect on this scenario.
 
 The root can hold `KOINE_VM_PASSWORD` in raw argv, predicates and responses.
-Keep it private. Do not commit or publish it.
+`init` therefore creates it with mode 700, so only its owner can enter it.
+Keep it private. Do not copy it out, commit it or publish it.
+
+The transcript setup creates its file exclusively. A run in the same second as
+an earlier run chooses the same name, so it stops with status 2 before any root
+or transport. The earlier transcript and its root stay unchanged.
 
 ## The root and the fence
 
@@ -137,11 +142,12 @@ legacy action, read count, wait and bound unless the row says otherwise.
 | `enrol` | `submit_guest_enrolment` |
 | `element` in `on_screen` | `read_guest_element optional-vertical` |
 | `element` in `reveal` and the calibration | `read_guest_element position-y` |
+| Request-label echo | `read_guest_element value`, the one existing read |
 | `value_of` | `read_guest_element value`, with a recorded decision |
 | `click` and `reveal_click` | The existing reveal, then `click_guest_element`. `reveal_click` keeps its two reveals |
 | Content frame at the least size | `read_guest_element height`, then an exclusive write |
 | `scroll_by` and the keyboard inputs | `scenario_input`, unchanged |
-| `drag_window_corner` and `click_centre` | The reviewed physical helpers, unchanged, in strict mode |
+| `drag_window_corner` and `click_centre` | The reviewed physical helpers in strict mode. Each wait between their pointer actions now keeps its status |
 | `grant_accessibility` | `open_guest_accessibility_pane`, the 15-read Add loop, `click_guest_element`, the inputs, then the list check |
 | Screen captures | `capture_guest_evidence read-poll`, as the operation `screenshot-NAME` |
 | Boot before the restart, the restart and its poll | `read_guest_exec evidence boot`, then `restart_guest` |
@@ -247,5 +253,121 @@ These duties stay with their owners:
   containment of held input.
 - k54 owns the freeze, the readiness and the runtime.
 
-The whole-harness review is a separate `review-impl` leaf, before k62 and the
-runtime. No VM, candidate, freeze, acceptance or ancestor closure follows.
+The whole-harness review, `settings-scenario-adoption-k159`, ran before k62
+and the runtime. The next section integrates its findings. No VM, candidate,
+freeze, acceptance or ancestor closure follows.
+
+## Integration of review k159
+
+`settings-scenario-adoption-k160` integrates the review
+`settings-scenario-adoption-k159`. The review's own report,
+[`ORDERING-SCENARIO-REVIEW.md`](ORDERING-SCENARIO-REVIEW.md), stays unchanged.
+Each of its four findings reproduces from the source. Each one blocks a duty
+that the review cites, and a bounded change repairs it. None is an unclear
+contract, an accepted trade-off or noise.
+
+| Finding | Evidence | Repair |
+|---|---|---|
+| P2-1, failed physical waits | macOS `/bin/bash` 3.2 ignores `set -e` in a function that a `\|\|` caller runs. A scratch script sent three inputs and the release after failed waits. The plain call stopped at the first failure with 143 | `_physical_sleep` in `scripts/vm-physical-evidence-lib.sh` keeps the status of each wait of `drag_window_corner` and `click_at`. A failed wait records one sleep receipt, which latches the root. The helper returns the failure, so no later input or release follows |
+| P2-2, request-label value | The `optional` contract accepts a matching element without a `value`. The snapshot caller table requires the displayed id and value | The same single read selects `value`. A missing label or an omitted AXValue is unavailable, and the scenario stops before the screenshot and the denials |
+| P2-3, private storage | `init` used an ordinary `mkdir`. Under umask 022, the root had mode 755 | `init` creates the root with mode 700, and it sets that exact mode before its first write |
+| P2-4, transcript retention | The setup opened a timestamped name with plain `tee`, which truncates an existing file | `scripts/vm-verify-lib.sh` creates the transcript exclusively. A name that an earlier run holds stops the run with status 2, and that file stays unchanged |
+
+### Behaviour after the integration
+
+Every successful path keeps its actions, read counts, waits and bounds. Each
+wait keeps its duration and its position. The focused physical suite compares
+the exact list of waits for a successful drag and a successful menu click.
+
+A failed wait between pointer actions now has its own receipt. The operations
+are `resize-prepare-wait`, `resize-hold-N-wait`, `resize-release-wait`,
+`menu-approach-wait`, `menu-target-wait` and `menu-click-wait`. No wait
+operation has the prefix `resize-down-` or equals `resize-release`. The
+held-pointer state therefore still comes from the held points alone. A failed
+wait after a clean `resize-down-N` reports `held`.
+
+A wait that exits with a signal status, 129 to 192, gives an `interrupted`
+receipt. The helper returns that status. Any other failed wait gives an
+`unavailable` receipt and status 125. The scenario then stops with that status
+and its legacy message. Without a root, the legacy lane returns the failed
+status and records nothing. The other VM scripts that call these helpers
+conditionally now stop at a failed wait too.
+
+The request-label echo now prints a string value on each successful run. Mode
+700 applies to every root that `init` creates, including the roots of the
+helper suites and of k57.
+
+The transcript setup serves every VM script that sources
+`scripts/vm-verify-lib.sh`. A second run in the same second now stops with
+status 2. It creates no root, sends no transport and writes no transcript. In
+this scenario, status 1 stays the clean false state with its `state-failed`
+receipt. Status 2 already means a refused existing root.
+
+### Controls and records
+
+The integration adds these controls to the existing suites:
+
+| Control | Suite | What it establishes |
+|---|---|---|
+| Failed resize wait | `Tests/scripts/vm-physical-evidence.bats` | Each of the thirteen waits fails in turn under a `\|\|` caller. Each failure records one sleep receipt, latches and stops all later input, the release included. A failed wait without a signal is unavailable, with status 125 |
+| Failed menu wait | `Tests/scripts/vm-physical-evidence.bats` | Each of the three waits stops the target move and the click |
+| Failed settling wait | `Tests/scripts/vm-settings-scenario.bats` | The real backend runs the scenario's own conditional call. A wait that fails after a clean `resize-down-2` records `resize-hold-2-wait` as interrupted. No later down or release follows, the status is 143 and the report states `held` |
+| Request label without its value | `Tests/scripts/vm-settings-scenario.bats` | The simulated backend now applies each snapshot predicate, as the real backend does. An omitted value is unavailable before the screenshot and the denials |
+| Private root | `Tests/scripts/vm-guest-exec.bats` and the TERM control | Under umask 022, 000 and 077 below a traversable parent, `init` gives mode 700, and receipts still write. The TERM control finds mode 700 on the scenario's root under umask 022 |
+| Earlier transcript | `Tests/scripts/vm-settings-scenario.bats`, twice | A later run in the same second stops with status 2. This holds with the earlier default root and with a distinct root. The earlier transcript bytes stay unchanged |
+
+The real-backend driver of the held-pointer controls now calls the drag as the
+scenario does, with `|| settings_stop`. The TERM and INT controls pass
+unchanged through that conditional call.
+
+The records are in
+[`ordering-scenario-integration/`](ordering-scenario-integration/):
+
+- `record.sh` runs one command and writes three files. They are the
+  transcript, the manifest of its subjects before the run and a JSON summary.
+  The subjects are all files that jj tracks in the working copy. The summary
+  holds the command, the status, the manifest digests before and after the run,
+  the changed subjects and the tool versions.
+- `red.txt` runs the three affected suites before the repairs. Of 73 tests,
+  exactly the eight new or tightened controls fail. Its subjects stay unchanged
+  during the run.
+- `final-verification.txt` runs each affected Taskfile check after the
+  repairs. These are the seventeen checks of the k158 record and
+  `check:vm-settings-scenario`. All of them pass, and the subjects stay
+  unchanged during the run.
+
+Each manifest covers the tree at its run. The record files, the last entries
+of the task file and the retirement of the leaf come after the final run. The
+manifests name no tool outside the repository. The summaries name the tool
+versions instead. The k76 records in `ordering-scenario-evidence/` stay
+unchanged. As the review notes, their manifests cover only part of the inputs
+of that earlier run.
+
+### Limits after the integration
+
+- Mode 700 sets the POSIX permission bits only. It leaves in place any access
+  control list that the parent passes on. It gives no protection against the
+  same user or an administrator.
+- A parent directory that other users can write still lets them rename the
+  root. The repair sets no precondition on the parent.
+- The transcript, the installed inventories and the content record beside the
+  root keep the mode that the umask gives. This integration did not audit each
+  message that reaches the transcript for secret text.
+- The simulated backend applies only the snapshot predicates. The facade suites
+  still own the other payload schemas.
+- A refused transcript name ends the later run. It does not choose another
+  name.
+- No guest ran. The availability limits above and the restart race stay.
+
+### Owners after the integration
+
+- k67 consumes this scenario next. It owns the positive setup, the title audits
+  and the same-process liveness.
+- k62 owns the exact prefix and the complete duty comparison. The successful
+  actions, reads and waits of the prefix stay as they were.
+- k57 owns the finite caller and the containment. It reads the held state from
+  the `resize-down-N` and `resize-release` receipts. A wait receipt is a latch
+  reason, not a held point. k57 still owes the finite storage plan for the
+  private roots. A run that stops before its root has no receipts, so its
+  status alone establishes no product failure.
+- k54 owns the freeze, the readiness and the runtime.

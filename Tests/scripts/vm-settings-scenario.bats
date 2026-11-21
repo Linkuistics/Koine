@@ -258,6 +258,11 @@ if [[ -n "${signal_sleep_after:-}" && "${downs}" == "${signal_sleep_after}" && !
     : >"${scenario_waits}.signalled"
     kill -TERM "${PPID}"
 fi
+# The wait process alone fails, as if it received TERM. No trap runs.
+if [[ -n "${signal_fail_sleep_after:-}" && "${downs}" == "${signal_fail_sleep_after}" && ! -e "${scenario_waits}.failed" ]]; then
+    : >"${scenario_waits}.failed"
+    exit 143
+fi
 exit 0
 SLEEP
     cat >"${BATS_TEST_TMPDIR}/driver.sh" <<SH
@@ -268,7 +273,8 @@ source "${real}/vm-settings-scenario-lib.sh"
 WINDOW_TITLE='Koine Settings' VM_ID=exact-signal-vm WORK="${BATS_TEST_TMPDIR}"
 settings_begin "\${signal_root}" exact-signal-vm
 export settings_driver_pid=\$\$
-drag_window_corner 740 940
+# The scenario's own conditional call, in which Bash ignores errexit.
+drag_window_corner 740 940 || settings_stop "\$?" "the corner drag to 740, 940 did not complete cleanly"
 echo after-drag
 SH
     chmod +x "${BATS_TEST_TMPDIR}/driver.sh"
@@ -286,8 +292,11 @@ receipts() {
 
 @test "TERM in the settling sleep after a clean held point sends no further input or release" {
     export signal_sleep_after=3
+    # A permissive umask still gives a root that only its owner can enter.
+    umask 022
     signal_driver
     [[ "${status}" == 143 ]]
+    [[ "$(stat -f %Lp "${signal_root}")" == 700 ]]
     [[ "${output}" != *after-drag* ]]
     receipts >"${BATS_TEST_TMPDIR}/receipts"
     [[ "$(tail -2 "${BATS_TEST_TMPDIR}/receipts")" == $'resize-down-2:clean\nscenario-signal-TERM:unavailable' ]]
@@ -297,6 +306,23 @@ receipts() {
     refute mouse-up "${signal_calls}"
     [[ "${output}" == *'Held pointer: held'* ]]
     grep -q 'scenario interrupted by SIGTERM' "${signal_root}/unavailable"
+}
+
+@test "a failed settling wait after a clean held point stops input and release without a trap" {
+    export signal_fail_sleep_after=3
+    signal_driver
+    [[ "${status}" == 143 ]]
+    [[ "${output}" != *after-drag* ]]
+    receipts >"${BATS_TEST_TMPDIR}/receipts"
+    # Only the evidence-class failure screenshot may follow the wait's receipt.
+    [[ "$(grep -v '^failure-capture:' "${BATS_TEST_TMPDIR}/receipts" | tail -2)" == $'resize-down-2:clean\nresize-hold-2-wait:interrupted' ]]
+    refute '^resize-release:' "${BATS_TEST_TMPDIR}/receipts"
+    refute '^resize-down-3:' "${BATS_TEST_TMPDIR}/receipts"
+    [[ "$(grep -c mouse-down "${signal_calls}")" == 3 ]]
+    refute mouse-up "${signal_calls}"
+    [[ "${output}" == *'Held pointer: held'* ]]
+    [[ "${output}" == *'the corner drag to 740, 940 did not complete cleanly (evidence status 143)'* ]]
+    [[ -s "${signal_root}/unavailable" ]]
 }
 
 @test "INT during a held-point attempt keeps it interrupted and sends no release" {
@@ -329,4 +355,61 @@ legacy_calls() {
     cp "${scripts}/vm-verify-menu-bar.sh" "${BATS_TEST_TMPDIR}/mutated.sh"
     echo 'guest true' >>"${BATS_TEST_TMPDIR}/mutated.sh"
     [[ "$(legacy_calls "${BATS_TEST_TMPDIR}/mutated.sh" | wc -l | tr -d ' ')" == 1 ]]
+}
+
+# --- the request label and the transcript ----------------------------------
+
+@test "a request label without its value is unavailable before the screenshot and the denials" {
+    # The on-screen read needs no value, so it stays clean.
+    export settings_flags=request-label-no-value
+    run_scenario
+    [[ "${status}" == 125 ]]
+    [[ "${output}" == *'FAILED: the request label could not be read'* ]]
+    local at
+    at="$(call_index requests-label)"
+    [[ "$(call_index requests-on-screen)" -lt "${at}" ]]
+    jq -se --argjson n "${at}" '.[$n - 1].outcome == "unavailable"' "${settings_sim}/calls.jsonl"
+    [[ "$(input_after "${at}")" == '[]' ]]
+    [[ "$(call_index screenshot-requests)" == -1 ]]
+}
+
+# Two runs in one timestamp second choose one transcript name.
+same_second() {
+    export scenario_stamp=20261122T040000
+    cat >"${BATS_TEST_TMPDIR}/bin/date" <<'DATE'
+#!/bin/bash
+if [[ "$*" == '+%Y%m%dT%H%M%S' ]]; then
+    echo "${scenario_stamp}"
+    exit 0
+fi
+exec /bin/date "$@"
+DATE
+    chmod +x "${BATS_TEST_TMPDIR}/bin/date"
+    export earlier_log="${scenario_repo}/.build/vm-verify/menu-bar-${scenario_stamp}.log"
+    mkdir -p "${earlier_log%/*}"
+    printf 'the earlier run\n' >"${earlier_log}"
+    cp "${earlier_log}" "${BATS_TEST_TMPDIR}/earlier.log"
+}
+
+@test "an earlier transcript with its default root survives a refused run in the same second" {
+    same_second
+    mkdir "${earlier_log%.log}-evidence"
+    run_scenario
+    # The duty first: the earlier bytes survive. Then the refusal itself.
+    cmp "${BATS_TEST_TMPDIR}/earlier.log" "${earlier_log}"
+    [[ "${status}" == 2 ]]
+    [[ "${output}" == *'already exists'* ]]
+    [[ ! -s "${settings_sim}/calls.jsonl" && ! -s "${scenario_legacy}" ]]
+}
+
+@test "an earlier transcript survives a run in the same second with a distinct root" {
+    same_second
+    export KOINE_VM_EVIDENCE_ROOT="${BATS_TEST_TMPDIR}/distinct"
+    run_scenario
+    # The duty first: the earlier bytes survive. Then the refusal itself.
+    cmp "${BATS_TEST_TMPDIR}/earlier.log" "${earlier_log}"
+    [[ "${status}" == 2 ]]
+    [[ "${output}" == *'already exists'* ]]
+    [[ ! -e "${KOINE_VM_EVIDENCE_ROOT}" ]]
+    [[ ! -s "${settings_sim}/calls.jsonl" && ! -s "${scenario_legacy}" ]]
 }

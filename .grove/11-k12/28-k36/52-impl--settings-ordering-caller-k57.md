@@ -92,3 +92,22 @@ leaves before k54, with every earned whole-harness/caller review and
 integration complete. Neither freeze nor any clone request may precede this
 reconciliation. k36's final outcome comparison remains a separate duty after
 k54. It cannot defer these checks.
+
+## K160 scenario review integration handoff
+
+k160 integrates the k159 review in the "Integration of review k159" section of
+`docs/verification/settings-activation/ORDERING-SCENARIO-RESULTS.md`.
+
+A failed wait between pointer actions now records one sleep receipt and latches
+the root. Its operation ends in `-wait`, for example `resize-hold-2-wait`. It
+is a latch reason, not a held point. Read the held state from the
+`resize-down-N` and `resize-release` receipts only, as the containment handoff
+above requires. A clean down that a failed wait follows is still held input.
+
+`init` creates each evidence root with mode 700. Plan finite storage for these
+private roots, and keep the collected originals private, as the duties above
+require. A run that stops before its root leaves no receipts. A refused
+transcript name with status 2 is one such run. Its status alone establishes no
+Koine failure.
+
+Every other duty and hold above stays.

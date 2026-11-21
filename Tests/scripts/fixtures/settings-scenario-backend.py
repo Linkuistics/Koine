@@ -13,12 +13,15 @@ use of the domain instead:
 - `settings_fault=OPERATION` makes that call unavailable: it latches the root
   and returns 125 (or `settings_fault_status`) without changing the model.
 - `settings_flags` holds comma-separated model variations for state controls.
+- A snapshot answer must satisfy the facade's predicate, as in the real
+  backend. Otherwise the call is unavailable: it latches and returns 125.
 """
 
 from __future__ import annotations
 
 import json
 import os
+import subprocess
 import sys
 from pathlib import Path
 from typing import Any
@@ -154,20 +157,20 @@ def koine_elements(state: dict[str, Any]) -> list[dict[str, Any]]:
             )
         elif ident.startswith("request-label-"):
             value = "vm-editor"
-        elements.append(
-            {
-                "role": "textField" if ident == "grant-label" else "staticText",
-                "platformRole": "AXTextField"
-                if ident == "grant-label"
-                else "AXStaticText",
-                "id": ident,
-                "value": value,
-                "positionX": x + 20,
-                "positionY": y + 30 + CONTENT[ident] - state["offset"],
-                "sizeWidth": 200,
-                "sizeHeight": 20,
-            }
-        )
+        element: dict[str, Any] = {
+            "role": "textField" if ident == "grant-label" else "staticText",
+            "platformRole": "AXTextField" if ident == "grant-label" else "AXStaticText",
+            "id": ident,
+            "value": value,
+            "positionX": x + 20,
+            "positionY": y + 30 + CONTENT[ident] - state["offset"],
+            "sizeWidth": 200,
+            "sizeHeight": 20,
+        }
+        # A failed AX copy omits the value. It is not an empty string.
+        if "request-label-no-value" in FLAGS and ident.startswith("request-label-"):
+            del element["value"]
+        elements.append(element)
     for element in elements:
         element.update(enabled=True, focused=False, childCount=0, actions=[])
     return elements
@@ -704,6 +707,18 @@ def submission(state: dict[str, Any], name: str) -> dict[str, Any]:
     return {"stdout": ""}
 
 
+def holds(predicate: str, output: str) -> bool:
+    """The real backend's test of a payload predicate, on the same envelope."""
+    result = subprocess.run(
+        ["jq", "-e", f"[({predicate})] == [true]"],
+        input=output,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    return result.returncode == 0
+
+
 def latch(root: Path, reason: str) -> None:
     if not (root / "unavailable").exists():
         (root / "unavailable").write_text(reason + "\n")
@@ -763,6 +778,11 @@ def main() -> int:
     state = load()
     if action == "cli":
         output = cli(state, arguments[3:], root)
+        if arguments[5:7] == ["agent", "snapshot"] and not holds(arguments[3], output):
+            latch(root, f"{operation}: command payload predicate did not yield true")
+            entry["outcome"] = "unavailable"
+            log(entry)
+            return 125
     elif action == "read":
         output = json.dumps(read(state, arguments[3], arguments[4:]))
     elif action == "capture":

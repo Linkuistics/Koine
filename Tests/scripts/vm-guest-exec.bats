@@ -796,3 +796,20 @@ PY
     printf '%s\n' "${output}"
     [[ "${status}" == 0 ]]
 }
+
+# The root can hold KOINE_VM_PASSWORD. A permissive umask and a traversable
+# parent must not let another local user enter it or read its receipts.
+@test "init creates a root that only its owner can enter, whatever the umask" {
+    local parent="${BATS_TEST_TMPDIR}/shared" mask
+    mkdir "${parent}"
+    chmod 755 "${parent}"
+    for mask in 022 000 077; do
+        (
+            umask "${mask}"
+            init_guest_evidence "${parent}/root-${mask}" exact-vm
+            exec_guest_evidence "${parent}/root-${mask}" read-poll probe probe true >/dev/null
+        )
+        [[ "$(stat -f %Lp "${parent}/root-${mask}")" == 700 ]]
+        [[ -s "${parent}/root-${mask}/000001/raw.stdout" ]]
+    done
+}

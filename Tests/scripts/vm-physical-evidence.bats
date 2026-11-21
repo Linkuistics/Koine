@@ -307,3 +307,57 @@ assert_blocked() {
     [[ "$(wc -l <"${physical_calls}" | tr -d ' ')" == 1 ]]
     assert_blocked
 }
+
+# Bash ignores errexit inside a function that a conditional caller runs, as the
+# scenario's `helper || settings_stop` does. Wait number $1 then fails with $2.
+fail_wait_at() {
+    export physical_wait_fails_at="$1" physical_wait_status="$2"
+    # shellcheck disable=SC2329 # Called by the sourced physical helpers.
+    sleep() {
+        echo "$*" >>"${physical_waits}"
+        [[ "$(wc -l <"${physical_waits}" | tr -d ' ')" != "${physical_wait_fails_at}" ]] ||
+            return "${physical_wait_status}"
+    }
+}
+
+# assert_failed_wait WAIT STATUS OUTCOME: the helper returned STATUS. Wait WAIT
+# followed dispatch WAIT + 1, and its receipt is ordinal WAIT + 2. Nothing later.
+assert_failed_wait() {
+    local ordinal
+    [[ "${status}" == "$2" ]]
+    [[ "$(wc -l <"${physical_calls}" | tr -d ' ')" == $(($1 + 1)) ]]
+    [[ "$(wc -l <"${physical_waits}" | tr -d ' ')" == "$1" ]]
+    printf -v ordinal '%06d' $(($1 + 2))
+    jq -e --arg outcome "$3" '.outcome == $outcome' "${KOINE_VM_EVIDENCE_ROOT}/${ordinal}/result.json"
+    jq -e '.transport == "poll-step" and .poll_phase == "sleep"' "${KOINE_VM_EVIDENCE_ROOT}/${ordinal}/request.json"
+    assert_blocked
+}
+
+@test "a failed resize wait in a conditional caller latches and stops all later input, including the release" {
+    local wait
+    # Thirteen waits: after the move, after each of eleven held points, after the release.
+    for wait in {1..13}; do
+        reset_physical "resize-wait-${wait}"
+        fail_wait_at "${wait}" 143
+        status=0
+        drag_window_corner 740 940 || status=$?
+        assert_failed_wait "${wait}" 143 interrupted
+    done
+    reset_physical resize-wait-unavailable
+    fail_wait_at 5 1
+    status=0
+    drag_window_corner 740 940 || status=$?
+    assert_failed_wait 5 125 unavailable
+}
+
+@test "a failed menu wait in a conditional caller latches and stops the target move and the click" {
+    local wait
+    # Three waits: after the approach, after the target move, after the click.
+    for wait in 1 2 3; do
+        reset_physical "menu-wait-${wait}"
+        fail_wait_at "${wait}" 143
+        status=0
+        click_centre '100, 0, 22, 15' || status=$?
+        assert_failed_wait "${wait}" 143 interrupted
+    done
+}
