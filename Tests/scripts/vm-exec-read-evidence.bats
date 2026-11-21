@@ -326,20 +326,27 @@ DESCRIPTOR='{"contractVersion":"1","descriptorVersion":1,"instanceId":"A1","path
     assert_record 000001
     jq -e '.processes == []' <<<"${output}"
     jq -r .command "${read_root}/000001/request.json" | grep -qF "pgrep -f '/Applications/Koine.app/Contents/MacOS'"
-    answer $'  412 Sat Nov 21 23:37:39 2026     /Applications/Koine.app/Contents/MacOS/Koine\n---\n  412 /Applications/Koine.app/Contents/MacOS/Koine -AppleLanguages (en)'
+    answer $'KOINE-SELECTED 412\n  412 Sat Nov 21 23:37:39 2026     /Applications/Koine.app/Contents/MacOS/Koine\n---\n  412 Sat Nov 21 23:37:39 2026     /Applications/Koine.app/Contents/MacOS/Koine -AppleLanguages (en)'
     run read_guest_exec "${read_root}" read-poll login process bundle
     assert_record 000002
-    jq -e '.processes == [{"pid":412,"started":"Sat Nov 21 23:37:39 2026",
-        "executable":"/Applications/Koine.app/Contents/MacOS/Koine",
+    jq -e '.selected == [412] and .processes == [{"pid":412,"started":"Sat Nov 21 23:37:39 2026",
+        "argv0":"/Applications/Koine.app/Contents/MacOS/Koine",
         "arguments":"/Applications/Koine.app/Contents/MacOS/Koine -AppleLanguages (en)"}]' <<<"${output}"
     jq -r .command "${read_root}/000002/request.json" | grep -qF "pgrep -f '/Applications/Koine.app'"
+    jq -r .command "${read_root}/000002/request.json" | grep -qF "printf 'KOINE-SELECTED %s\n'"
+    jq -r .command "${read_root}/000002/request.json" | grep -qF "ps -ww -o pid=,lstart=,command="
 }
 
 @test "malformed process rows and a failed pgrep are unavailable, never absence" {
     local body index=0
-    for body in $'412 Sat Nov 21 23:37:39 2026 /x\n---' $'412 Sat Nov 21 23:37:39 2026 /x\n---\n413 /x' \
-        $'412 21 Nov 23:37:39 2026 /x\n---\n412 /x' $'412 Sat Nov 21 23:37:39 2026 <defunct>\n---\n412 x' \
-        $'412 Sat Nov 21 23:37:39 2026 /x\n412 Sat Nov 21 23:37:39 2026 /x\n---\n412 /x\n412 /x' '' 'none'; do
+    local start='Sat Nov 21 23:37:39 2026'
+    for body in "KOINE-SELECTED 412"$'\n'"412 ${start} /x"$'\n---' \
+        "KOINE-SELECTED 412"$'\n'"412 ${start} /x"$'\n---\n'"413 ${start} /x" \
+        "KOINE-SELECTED 412"$'\n'"412 21 Nov 23:37:39 2026 /x"$'\n---\n'"412 ${start} /x" \
+        "KOINE-SELECTED 412"$'\n'"412 ${start} <defunct>"$'\n---\n'"412 ${start} x" \
+        "KOINE-SELECTED 412"$'\n'"412 ${start} /x"$'\n'"412 ${start} /x"$'\n---\n'"412 ${start} /x"$'\n'"412 ${start} /x" \
+        "412 ${start} /x"$'\n---\n'"412 ${start} /x" "KOINE-SELECTED 412,412"$'\n'"412 ${start} /x"$'\n---\n'"412 ${start} /x" \
+        "KOINE-SELECTED 412"$'\n'"412 ${start} /x"$'\n---\n'"412 /x" "KOINE-SELECTED" '' 'none'; do
         index=$((index + 1))
         reset_root "process-${index}"
         answer "${body}"
@@ -351,6 +358,30 @@ DESCRIPTOR='{"contractVersion":"1","descriptorVersion":1,"instanceId":"A1","path
     answer '' 2
     run read_guest_exec "${read_root}" read-poll stopped process executable
     [[ "${status}" == 125 ]]
+    assert_latched
+}
+
+@test "a selected process missing from the ps rows makes the process read unavailable" {
+    # pgrep selected 412 and 413, and 413 exited before the first ps read.
+    local start='Sat Nov 21 23:37:39 2026'
+    answer "KOINE-SELECTED 412,413"$'\n'"  412 ${start}     /Applications/Koine.app/Contents/MacOS/Koine"$'\n---\n'"  412 ${start}     /Applications/Koine.app/Contents/MacOS/Koine"
+    run read_guest_exec "${read_root}" read-poll stopped process executable
+    echo "diagnostic: status=${status} output=${output}"
+    [[ "${status}" == 125 && ! -e "${read_root}/000001/read.json" ]]
+    assert_latched
+    # A row that pgrep did not select is unavailable too.
+    reset_root unselected
+    answer "KOINE-SELECTED 412"$'\n'"  413 ${start}     /x"$'\n---\n'"  413 ${start}     /x"
+    run read_guest_exec "${read_root}" read-poll stopped process executable
+    [[ "${status}" == 125 ]]
+    assert_latched
+}
+
+@test "process rows with two start times are two incarnations and stay unavailable" {
+    answer $'KOINE-SELECTED 412\n  412 Sat Nov 21 23:37:39 2026     /Applications/Koine.app/Contents/MacOS/Koine\n---\n  412 Sat Nov 21 23:37:40 2026     /Applications/Koine.app/Contents/MacOS/Koine'
+    run read_guest_exec "${read_root}" read-poll login process bundle
+    echo "diagnostic: status=${status} output=${output}"
+    [[ "${status}" == 125 && ! -e "${read_root}/000001/read.json" ]]
     assert_latched
 }
 
@@ -395,10 +426,16 @@ DESCRIPTOR='{"contractVersion":"1","descriptorVersion":1,"instanceId":"A1","path
     done
 }
 
-# defaults_answer [EXTRA-APP-KEYS] [MANAGED-APP-BODY]
+# defaults_answer [EXTRA-APP-KEYS] [MANAGED-APP-BODY] [ANY-USER-APP-KEYS] [ANY-USER-NETWORK-GLOBAL-KEYS]
 defaults_answer() {
     local empty=$'<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\n<plist version="1.0">\n<dict/>\n</plist>'
-    local app="${empty}" managed
+    local app="${empty}" managed any_app="${empty}" any_global="${empty}"
+    if [[ -n "${3:-}" ]]; then
+        any_app=$'<?xml version="1.0" encoding="UTF-8"?>\n<plist version="1.0">\n<dict>\n'"$3"$'\n</dict>\n</plist>'
+    fi
+    if [[ -n "${4:-}" ]]; then
+        any_global=$'<?xml version="1.0" encoding="UTF-8"?>\n<plist version="1.0">\n<dict>\n'"$4"$'\n</dict>\n</plist>'
+    fi
     if [[ -n "${1:-}" ]]; then
         app=$'<?xml version="1.0" encoding="UTF-8"?>\n<plist version="1.0">\n<dict>\n'"$1"$'\n</dict>\n</plist>'
     fi
@@ -406,15 +443,18 @@ defaults_answer() {
     if [[ -n "${2:-}" ]]; then
         managed=$'KOINE-MANAGED /Library/Managed Preferences/dev.antony.Koine.plist\n<?xml version="1.0" encoding="UTF-8"?>\n<plist version="1.0">\n<dict>\n'"$2"$'\n</dict>\n</plist>'
     fi
-    answer "KOINE-DOMAIN dev.antony.Koine any"$'\n'"${app}"$'\n'"KOINE-DOMAIN dev.antony.Koine current"$'\n'"${empty}"$'\n'"KOINE-DOMAIN -g any"$'\n'"${empty}"$'\n'"KOINE-DOMAIN -g current"$'\n'"${empty}"$'\n'"${managed}"$'\nKOINE-ABSENT /Library/Managed Preferences/admin/dev.antony.Koine.plist\nKOINE-ABSENT /Library/Managed Preferences/.GlobalPreferences.plist\nKOINE-ABSENT /Library/Managed Preferences/admin/.GlobalPreferences.plist\nKOINE-DEFAULTS-COMPLETE'
+    answer "KOINE-DOMAIN dev.antony.Koine any"$'\n'"${app}"$'\n'"KOINE-DOMAIN dev.antony.Koine current"$'\n'"${empty}"$'\n'"KOINE-DOMAIN -g any"$'\n'"${empty}"$'\n'"KOINE-DOMAIN -g current"$'\n'"${empty}"$'\n'"${managed}"$'\nKOINE-ABSENT /Library/Managed Preferences/admin/dev.antony.Koine.plist\nKOINE-ABSENT /Library/Managed Preferences/.GlobalPreferences.plist\nKOINE-ABSENT /Library/Managed Preferences/admin/.GlobalPreferences.plist\nKOINE-ANY-USER /Library/Preferences/dev.antony.Koine\n'"${any_app}"$'\nKOINE-ANY-USER /Library/Preferences/Network/dev.antony.Koine\n'"${empty}"$'\nKOINE-ANY-USER /Library/Preferences/.GlobalPreferences\n'"${empty}"$'\nKOINE-ANY-USER /Library/Preferences/Network/.GlobalPreferences\n'"${any_global}"$'\nKOINE-DEFAULTS-COMPLETE'
 }
 
 @test "absent diagnostic defaults are a parsed fact across every effective source" {
     defaults_answer
     run read_guest_exec "${read_root}" evidence defaults-before defaults
     assert_record 000001
-    jq -e '.diagnostics_disabled == true and .user == "admin" and (.sources | length) == 8
-        and all(.sources[]; .keys == {})' <<<"${output}"
+    jq -e '.diagnostics_disabled == true and .user == "admin" and (.sources | length) == 12
+        and all(.sources[]; .keys == {})
+        and [.sources[8:][].source] == ["/Library/Preferences/dev.antony.Koine",
+            "/Library/Preferences/Network/dev.antony.Koine", "/Library/Preferences/.GlobalPreferences",
+            "/Library/Preferences/Network/.GlobalPreferences"]' <<<"${output}"
     defaults_answer '<key>KoineSettingsMenuProbe</key><false/><key>Other</key><date>2026-11-21T00:00:00Z</date>'
     run read_guest_exec "${read_root}" read-poll defaults-after defaults
     assert_record 000002
@@ -430,6 +470,32 @@ defaults_answer() {
         and .sources[4].keys.KoineSettingsActivationTrace == "/tmp/t"' <<<"${output}"
 }
 
+@test "a diagnostic key in an any-user domain means diagnostics are not disabled" {
+    # UserDefaults searches the any-user domains after the current-user ones.
+    defaults_answer '' '' '<key>KoineSettingsActivationTrace</key><string>/tmp/t</string>'
+    run read_guest_exec "${read_root}" evidence defaults-before defaults
+    assert_record 000001
+    jq -e '.diagnostics_disabled == false and .sources[8].present == true
+        and .sources[8].keys == {"KoineSettingsActivationTrace":"/tmp/t"}' <<<"${output}"
+    defaults_answer '' '' '' '<key>KoineSettingsEventBuffer</key><string>/tmp/b</string>'
+    run read_guest_exec "${read_root}" read-poll defaults-after defaults
+    assert_record 000002
+    jq -e '.diagnostics_disabled == false and .sources[11].keys == {"KoineSettingsEventBuffer":"/tmp/b"}' <<<"${output}"
+    jq -r .command "${read_root}/000002/request.json" |
+        grep -qF 'for p in "/Library/Preferences/dev.antony.Koine" "/Library/Preferences/Network/dev.antony.Koine" "/Library/Preferences/.GlobalPreferences" "/Library/Preferences/Network/.GlobalPreferences"; do'
+}
+
+@test "raw control characters in a preference string do not hide a diagnostic key" {
+    # CFPropertyList writes C0 control characters unescaped, as in the time
+    # zone city of an any-user global domain, and XML 1.0 forbids them.
+    defaults_answer '' '' '<key>KoineSettingsActivationTrace</key><string>/tmp/t</string>' \
+        $'<key>com.apple.preferences.timezone.selected_city</key><string>\x1at\x1c\x1ds</string>'
+    run read_guest_exec "${read_root}" evidence defaults-before defaults
+    assert_record 000001
+    jq -e '.diagnostics_disabled == false and .sources[8].keys == {"KoineSettingsActivationTrace":"/tmp/t"}
+        and .sources[11].present == true and .sources[11].keys == {}' <<<"${output}"
+}
+
 @test "a malformed defaults answer is unavailable, never absence" {
     local index=0 body
     defaults_answer
@@ -437,7 +503,9 @@ defaults_answer() {
     good="$(cat "${read_stdout}")"
     for body in "${good%$'\n'KOINE-DEFAULTS-COMPLETE}" "${good/dev.antony.Koine current/dev.antony.Koine any}" \
         "${good/<dict\/>/<dict>}" "${good/admin\/.GlobalPreferences/other\/.GlobalPreferences}" \
-        "${good/KOINE-DOMAIN -g any/KOINE-DOMAIN -g current}" "${good}"$'\nextra' "${good/<dict\/>/<array\/>}"; do
+        "${good/KOINE-DOMAIN -g any/KOINE-DOMAIN -g current}" "${good}"$'\nextra' "${good/<dict\/>/<array\/>}" \
+        "${good/KOINE-ANY-USER \/Library\/Preferences\/Network\/dev.antony.Koine/KOINE-ANY-USER /Library/Preferences/Other}" \
+        "${good%%KOINE-ANY-USER*}KOINE-DEFAULTS-COMPLETE"; do
         index=$((index + 1))
         reset_root "defaults-${index}"
         answer "${body}"

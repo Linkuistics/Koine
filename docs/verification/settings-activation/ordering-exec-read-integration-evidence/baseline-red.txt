@@ -1,0 +1,68 @@
+# command: bats Tests/scripts/vm-exec-read-evidence.bats Tests/scripts/vm-exec-read-host.bats
+# revision of scripts/vm_exec_reads.py: 7627bb06238df8dfe208875d3cc67e4c9e6ed055
+# started: 2026-11-21T13:45:17Z
+# subjects
+0d15eb33dbe3e9e1be1ad38e15e6378e6528a75df207f5a0e67011df60210262  scripts/vm_exec_reads.py
+631584bdca6481a513f1c6192594fd64e2a738a20eab6144cec100946b69b110  scripts/vm-guest-exec.py
+d9540371ce2cbfd6a717ce8e4243346f4af630d43c6421fcd919b1c78ed2e785  scripts/vm-guest-exec-lib.sh
+7d184658d258809ec9da7e9da07aefbd1caf053b5826a4c726621840641fb4ca  scripts/vm-exec-read-evidence-lib.sh
+765cd0f6cd856b1b217cd0d1b30f002b2ea547512583cbccded613717076d1a9  Tests/scripts/vm-exec-read-evidence.bats
+b36bbe0c1ecfdf40f96f37089fafff6bf1688d719534956bdb2c1d84b0d89055  Tests/scripts/vm-exec-read-host.bats
+3e7f086cf772f316ab1a5d60082aa22f18b2ceee86f5244a296e4d2297a1c70b  Tests/scripts/fixtures/exec-read-cli.py
+# output
+1..28
+ok 1 generic evidence exec refuses without dispatch while read-poll and one-shot still dispatch
+ok 2 evidence class admits only read-only reads and never clears a latch
+ok 3 unknown reads, invalid arguments and the one-shot class refuse before dispatch
+ok 4 endpoint absence is clean data and a present descriptor needs the exact schema
+ok 5 a malformed descriptor is unavailable, never absent
+ok 6 a failed descriptor read is unavailable, never absent
+ok 7 a timeout with a complete grammatical answer stays unavailable for every read
+ok 8 stdout with trailing whitespace is not an agent answer
+ok 9 launch poll keeps fifteen reads two seconds apart and ends in a state failure
+ok 10 launch poll stops on a present descriptor and prints its record
+ok 11 a failed poll read stops at once and is never a negative
+ok 12 login poll keeps twenty-four reads five seconds apart and its exhaustion latches nothing
+not ok 13 process absence is clean data and process rows keep identity and arguments
+# (from function `assert_record' in file Tests/scripts/vm-exec-read-evidence.bats, line 140,
+#  in test file Tests/scripts/vm-exec-read-evidence.bats, line 331)
+#   `assert_record 000002' failed
+# true
+# true
+not ok 14 malformed process rows and a failed pgrep are unavailable, never absence
+# (in test file Tests/scripts/vm-exec-read-evidence.bats, line 354)
+#   `[[ "${status}" == 125 ]]' failed
+ok 15 a selected process missing from the ps rows makes the process read unavailable
+ok 16 process rows with two start times are two incarnations and stay unavailable
+ok 17 boot identity parses exactly and a changed boot after a failed restart stays unavailable
+ok 18 the port read keeps the legacy curl command and its exit status is data
+not ok 19 absent diagnostic defaults are a parsed fact across every effective source
+# (from function `assert_record' in file Tests/scripts/vm-exec-read-evidence.bats, line 140,
+#  in test file Tests/scripts/vm-exec-read-evidence.bats, line 452)
+#   `assert_record 000001' failed
+not ok 20 a diagnostic key in an any-user domain means diagnostics are not disabled
+# (from function `assert_record' in file Tests/scripts/vm-exec-read-evidence.bats, line 140,
+#  in test file Tests/scripts/vm-exec-read-evidence.bats, line 477)
+#   `assert_record 000001' failed
+not ok 21 raw control characters in a preference string do not hide a diagnostic key
+# (from function `assert_record' in file Tests/scripts/vm-exec-read-evidence.bats, line 140,
+#  in test file Tests/scripts/vm-exec-read-evidence.bats, line 494)
+#   `assert_record 000001' failed
+not ok 22 a malformed defaults answer is unavailable, never absence
+# (in test file Tests/scripts/vm-exec-read-evidence.bats, line 513)
+#   `[[ "${status}" == 125 ]]' failed
+ok 23 the installed inventory keeps the legacy command and needs its exact rows
+ok 24 setup records keep each documented clean status as data
+ok 25 undocumented statuses and missing result lines in setup records are unavailable
+ok 26 every state-free read parses the real output of this host
+not ok 27 a selected process that exits before ps makes the real process read unavailable
+# (in test file Tests/scripts/vm-exec-read-host.bats, line 65)
+#   `[[ "${status}" == 125 && ! -e "${root}/000001/read.json" && -e "${root}/unavailable" ]]' failed
+# diagnostic: status=0 output={"read": "process", "arguments": ["executable"], "processes": [{"pid": 31768, "started": "Sun Nov 22 00:45:50 2026", "executable": "/bin/sleep", "arguments": "/bin/sleep 30"}]} gone=31770
+not ok 28 an any-user diagnostic default reaches the real defaults read
+# (in test file Tests/scripts/vm-exec-read-host.bats, line 94)
+#   `jq -e '.diagnostics_disabled == false and ([.sources[]' failed
+# diagnostic: status=0 output={"read": "defaults", "arguments": [], "user": "antony", "sources": [{"source": "dev.antony.Koine any", "present": true, "keys": {}}, {"source": "dev.antony.Koine current", "present": true, "keys": {}}, {"source": "-g any", "present": true, "keys": {}}, {"source": "-g current", "present": true, "keys": {}}, {"source": "/Library/Managed Preferences/dev.antony.Koine.plist", "present": false, "keys": {}}, {"source": "/Library/Managed Preferences/antony/dev.antony.Koine.plist", "present": false, "keys": {}}, {"source": "/Library/Managed Preferences/.GlobalPreferences.plist", "present": false, "keys": {}}, {"source": "/Library/Managed Preferences/antony/.GlobalPreferences.plist", "present": false, "keys": {}}], "diagnostics_disabled": true}
+# false
+# bats exit: 1
+# ended: 2026-11-21T13:45:51Z

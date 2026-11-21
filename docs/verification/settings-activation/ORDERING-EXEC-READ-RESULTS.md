@@ -57,11 +57,11 @@ status 0, `ok`, the exact command, `timed_out` false and guest exit 0.
 | Read | Guest command | Clean payload | Evidence class |
 |---|---|---|---|
 | `endpoint` | test and `cat` of the descriptor | `ABSENT`, or `PRESENT` and the version-1 descriptor with its six exact fields | yes |
-| `process executable` | `pgrep -f '/Applications/Koine.app/Contents/MacOS'`, then two `ps` reads | `NONE`, or identity rows and argument rows with the same PIDs | yes |
+| `process executable` | `pgrep -f '/Applications/Koine.app/Contents/MacOS'`, then two `ps` reads | `NONE`, or the selected PID set, identity rows and argument rows with exactly those PIDs and the same start times | yes |
 | `process bundle` | the same with `/Applications/Koine.app` | the same | yes |
 | `boot` | `sysctl -n kern.boottime` | the `{ sec = S, usec = U } DATE` structure | yes |
 | `port-refusal PORT` | the legacy `curl … ; echo $?` | one curl exit status from 0 to 255 | no |
-| `defaults` | `defaults export` of four domains and the managed preference files | eight exact sections, each an XML property list or an absent file, and a completion marker | yes |
+| `defaults` | `defaults export` of eight domains and the managed preference files | twelve exact sections, each an XML property list or an absent file, and a completion marker | yes |
 | `installed-inventory` | the legacy inventory command, unchanged | SHA-256 file rows, then symbolic-link rows, then `KOINE_INVENTORY_COMPLETE` | yes |
 | `system` | `sw_vers; uname -m` | the `sw_vers` fields and one architecture | yes |
 | `gatekeeper` | `spctl --status` | `assessments enabled` or `assessments disabled` | yes |
@@ -79,8 +79,14 @@ never a negative.
 The process read joins `pgrep` and two `ps` reads. By default, `pgrep` excludes
 its ancestors, so the bash wrapper does not match its own pattern. A host
 control demonstrated this. `ps` runs with `LC_ALL=C`, because the start-time format
-depends on the locale. A process that exits between the reads makes `ps` fail,
-and the read is unavailable.
+depends on the locale.
+
+The command prints the `pgrep` selection before the two
+`ps` blocks. Each block must hold exactly the selected PIDs. Each row pair must
+agree on PID and start time. Thus a selected process that exits before either
+`ps` read makes the read unavailable. The record keeps the selection, and each
+row keeps `argv0`, `started` and `arguments`. The `comm` column prints argv[0],
+which the process sets, so `argv0` is not the executable path.
 
 The status reads keep each tool's documented clean statuses as data. `codesign`
 0 and 1 are clean. 2 is an argument error, and 3 needs `-R`, so both are
@@ -95,14 +101,22 @@ The protocol needs `KoineSettingsActivationTrace` and `KoineSettingsEventBuffer`
 absent from the effective defaults, and `KoineSettingsMenuProbe` absent or
 false. A failed `defaults read` is not an absence. `defaults export` prints an
 empty dictionary for an absent domain, so the read exports each domain. These
-are the four domains: the application and global domains, for any host and for
-the current host.
+are the four current-user domains: the application and global domains, for any
+host and for the current host. The read also exports the four any-user domains
+by path. They are `/Library/Preferences/dev.antony.Koine` and
+`/Library/Preferences/.GlobalPreferences` for the current host, and the same
+names in `/Library/Preferences/Network` for any host.
 
 The read also covers four managed preference files: the computer and user files
 of the application and global domains. An absent managed file is a clean
 `KOINE-ABSENT` section. The backend parses each property list with Python's
 `plistlib`. A JSON conversion fails on date and data values, so the guest does
 not convert.
+
+CFPropertyList writes C0 control characters in strings without an
+escape, and XML 1.0 forbids them. The parser replaces each such character with
+U+FFFD. No diagnostic key name or tag holds one, so the presence of a key stays
+exact.
 
 <!-- tc: depart synonym-rotation because the application launch and the VM restart are different operations -->
 The record lists each source and the diagnostic keys that it holds. It sets
@@ -240,14 +254,96 @@ Run `mise exec -- task check:vm-exec-read-evidence`. The host evidence runs with
 Every grammar follows the tagged agent and host output. A guest that prints
 another format holds the harness visibly as unavailable. The process read
 cannot see a process that the two patterns do not match. The defaults read
-covers the preference sources that `UserDefaults` searches on disk. The
-registration domain lives in the application, and source inspection at the
-freeze owns it.
+covers the eight persistent domains of the standard search list and the four
+managed preference files. The argument, registration and volatile domains live
+in the process. The process read carries the argument domain, and source
+inspection at the freeze owns the registration and volatile domains.
 
 The descriptor read proves the file at the moment of the read. The one-shot leaf
 joins it to the process identity. A read that is unavailable stops the slot. It
 says nothing about the product. Guest output can contain secrets, so the whole
 evidence root stays private. Do not publish or commit it.
+
+## Review integration
+
+<!-- tc: depart synonym-rotation because "fixed" means set in advance, and "repair" names the correction of a defect -->
+The independent review is in
+[ORDERING-EXEC-READ-REVIEW.md](ORDERING-EXEC-READ-REVIEW.md). k154 checked each
+finding against the source and primary sources, and repaired both. The
+[k154 evidence](ordering-exec-read-integration-evidence/) keeps the receipts.
+The earlier receipts of k81 stay unchanged.
+
+### P2-1: omitted any-user defaults domains
+
+Disposition: a real issue, and an overstated contract in this report. Apple's
+[CF search list](https://github.com/apple-oss-distributions/CF/blob/main/CFApplicationPreferences.c#L391-L436)
+adds four any-user domains after the four current-user domains.
+[CFPreferences.c](https://github.com/apple-oss-distributions/CF/blob/main/CFPreferences.c#L181-L512)
+puts the current-host files in `/Library/Preferences` and the any-host files in
+its `Network` directory. The [source receipt](ordering-exec-read-integration-evidence/host-sources.txt)
+keeps the digest and the decisive lines of each file.
+
+On the host, `UserDefaults.standard` returns `MultipleSessionEnabled`. Only the
+any-user global file holds that key. The host volatile domains are the argument
+and registration domains only. The host runs macOS 27.2.1, so these facts are
+not guest evidence.
+
+The read now exports the four any-user domains by path. The report claim is
+narrower: twelve persistent sources, with the argument, registration and
+volatile domains outside the read. Language domains have no documented path in
+the CF source, and the read makes no claim about them.
+
+The repair found one more defect on the host. The any-user global domain holds a
+time-zone string with raw control characters, and `plistlib` refused it. A guest
+with a time zone probably holds the same key. The parser now replaces each
+forbidden character before it parses.
+
+### P2-2: lost process selection
+
+Disposition: a real issue. Apple's
+[ps source](https://github.com/apple-oss-distributions/adv_cmds/blob/main/ps/ps.c)
+keeps each selected process that exists and exits 1 only when none remains. The
+host receipt records `ps -p` with one live and one exited PID exiting 0.
+
+The command now prints the selection, and the parser requires each `ps` block
+to hold exactly that set. Both blocks print the start time, and each row pair
+must agree on it. A disappearing member is unavailable, with no retry.
+
+Apple's [ps print source](https://github.com/apple-oss-distributions/adv_cmds/blob/main/ps/print.c)
+prints argv[0] in the `comm` column and skips the saved executable path. The
+field that k81 named `executable` is therefore `argv0`. No consumer read it.
+
+These limits stay. The start time has one-second resolution, so a PID reuse in
+the same second between the two `ps` reads is not excluded. A reuse between
+`pgrep` and the first `ps` is not excluded. Neither the pattern match nor
+`argv0` is an executable identity. k152 keeps the join of the descriptor, the
+process, its executable and its start time, and it needs another source of the
+executable path. The k152 task records this.
+
+### Controls of the repairs
+
+The [baseline](ordering-exec-read-integration-evidence/baseline-red.txt) runs
+the repaired suites with the read table of revision 7627bb06. Eight controls
+fail. Two host controls run the real commands with one stub each, and they
+reproduce both counterexamples. The old process read published a clean record
+of one PID from a selection of two. The old defaults read returned
+`diagnostics_disabled: true` while the any-user domain held the trace key.
+
+The other six failures come from the new grammars. Two new synthetic controls
+pass against the old table, because it rejects the new selection line. Their
+power comes from the mutations below, not from the baseline.
+
+The [mutation receipt](ordering-exec-read-integration-evidence/mutations.jsonl)
+disables one repair at a time with the
+[mutation instrument](ordering-exec-read-integration-evidence/mutate.py). Each
+of the five mutations fails its named control. Without the replacement of
+control characters, the real host reads fail too.
+
+The [final run](ordering-exec-read-integration-evidence/final-verification.txt)
+uses the k81 [measurement instrument](ordering-exec-read-evidence/measure.py).
+The same 13 Taskfile checks pass 219 tests with no failure. Every subject stayed
+the same during the run. The documentation check still fails on the two archived
+links that k23 owns.
 
 ## Remaining duties
 

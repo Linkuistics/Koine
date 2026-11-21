@@ -46,3 +46,52 @@ CLI
         printf '%s %s\n' "$(jq -r .read "${record}")" "$(jq -c 'del(.files, .symlinks, .text, .user)' "${record}" | cut -c1-240)"
     done
 }
+
+@test "a selected process that exits before ps makes the real process read unavailable" {
+    # The pgrep stub replays one selection. The ps reads and the parser are real.
+    local root="${BATS_TEST_TMPDIR}/membership" live other gone
+    /bin/sleep 30 3>&- &
+    live=$!
+    /bin/sleep 30 3>&- &
+    other=$!
+    sleep 0 &
+    gone=$!
+    wait "${gone}" || true
+    printf '#!/bin/bash\nprintf "%%s\\n" %s\n' "${live} ${gone}" >"${BATS_TEST_TMPDIR}/bin/pgrep"
+    chmod +x "${BATS_TEST_TMPDIR}/bin/pgrep"
+    init_guest_evidence "${root}" host-membership
+    run read_guest_exec "${root}" evidence one-gone process executable
+    echo "diagnostic: status=${status} output=${output} gone=${gone}"
+    [[ "${status}" == 125 && ! -e "${root}/000001/read.json" && -e "${root}/unavailable" ]]
+    # Both selected processes alive: a clean record of two real ps rows.
+    root="${BATS_TEST_TMPDIR}/membership-live"
+    printf '#!/bin/bash\nprintf "%%s\\n" %s\n' "${live} ${other}" >"${BATS_TEST_TMPDIR}/bin/pgrep"
+    init_guest_evidence "${root}" host-membership-live
+    read_guest_exec "${root}" evidence both-live process executable >/dev/null
+    kill "${live}" "${other}" 2>/dev/null || true
+    jq -e --argjson live "${live}" --argjson other "${other}" '.selected == [$live, $other]
+        and ([.processes[].pid] | sort) == ([$live, $other] | sort)
+        and all(.processes[]; .argv0 == "/bin/sleep" and .arguments == "/bin/sleep 30")' "${root}/000001/read.json"
+}
+
+@test "an any-user diagnostic default reaches the real defaults read" {
+    # The defaults stub answers only the any-user application domain. Every
+    # other export, the managed checks and the parser are real.
+    local root="${BATS_TEST_TMPDIR}/any-user"
+    cat >"${BATS_TEST_TMPDIR}/bin/defaults" <<'STUB'
+#!/bin/bash
+if [[ "$*" == "export /Library/Preferences/dev.antony.Koine -" ]]; then
+    printf '<?xml version="1.0" encoding="UTF-8"?>\n<plist version="1.0">\n<dict>\n<key>KoineSettingsActivationTrace</key><string>/tmp/t</string>\n</dict>\n</plist>\n'
+    exit 0
+fi
+exec /usr/bin/defaults "$@"
+STUB
+    chmod +x "${BATS_TEST_TMPDIR}/bin/defaults"
+    init_guest_evidence "${root}" host-any-user
+    run read_guest_exec "${root}" evidence any-user defaults
+    echo "diagnostic: status=${status} output=${output}"
+    [[ "${status}" == 0 ]]
+    jq -e '.diagnostics_disabled == false and ([.sources[]
+        | select(.keys.KoineSettingsActivationTrace == "/tmp/t") | .source] == ["/Library/Preferences/dev.antony.Koine"])' \
+        "${root}/000001/read.json"
+}

@@ -36,6 +36,18 @@ PROCESS_PATTERNS = {
     "bundle": INSTALLED,
 }
 MANAGED = "/Library/Managed Preferences"
+# The four any-user domains of the standard search list, after the four
+# current-user domains: this application, then the global domain, each for
+# the current host (/Library/Preferences) and for any host (its Network
+# directory). `defaults` addresses each one by its path.
+# https://github.com/apple-oss-distributions/CF/blob/main/CFApplicationPreferences.c#L391-L436
+# https://github.com/apple-oss-distributions/CF/blob/main/CFPreferences.c#L181-L512
+ANY_USER = (
+    f"/Library/Preferences/{DOMAIN}",
+    f"/Library/Preferences/Network/{DOMAIN}",
+    "/Library/Preferences/.GlobalPreferences",
+    "/Library/Preferences/Network/.GlobalPreferences",
+)
 
 
 class ReadError(ValueError):
@@ -120,25 +132,43 @@ def process_command(arguments: list[str]) -> str:
     # pgrep exits 1 for no match, which becomes the complete payload NONE.
     # By default pgrep excludes its ancestors, so the bash wrapper never
     # matches its own pattern (pgrep(1), "-a").
+    # With several PIDs, ps keeps each selected process that still exists and
+    # exits 1 only when none remains. The command therefore prints the
+    # selection, and the parser compares each ps block with it.
+    # https://github.com/apple-oss-distributions/adv_cmds/blob/main/ps/ps.c
+    # Both blocks print the start time, so each row pair joins on PID and start.
+    # The comm column is argv[0], which the process sets, and not the saved
+    # executable path that ps skips (print.c, getproclline).
+    # https://github.com/apple-oss-distributions/adv_cmds/blob/main/ps/print.c
     return (
         f"p=$(pgrep -f '{pattern}'); s=$?; if [ \"$s\" = 1 ]; then printf 'NONE'; "
         "elif [ \"$s\" = 0 ]; then l=$(printf '%s' \"$p\" | tr '\\n' ,); "
+        "printf 'KOINE-SELECTED %s\\n' \"$l\" && "
         "LC_ALL=C ps -ww -o pid=,lstart=,comm= -p \"$l\" && printf '%s\\n' --- && "
-        'LC_ALL=C ps -ww -o pid=,command= -p "$l"; else exit "$s"; fi'
+        'LC_ALL=C ps -ww -o pid=,lstart=,command= -p "$l"; else exit "$s"; fi'
     )
 
 
-IDENTITY = re.compile(
-    r" *([1-9][0-9]*) +([A-Z][a-z]{2} [A-Z][a-z]{2} [ 1-3][0-9] "
-    r"[0-2][0-9]:[0-5][0-9]:[0-6][0-9] [0-9]{4}) +(/.*)"
+SELECTED = re.compile(r"KOINE-SELECTED ([1-9][0-9]*(?:,[1-9][0-9]*)*)")
+START = (
+    r"([A-Z][a-z]{2} [A-Z][a-z]{2} [ 1-3][0-9] "
+    r"[0-2][0-9]:[0-5][0-9]:[0-6][0-9] [0-9]{4})"
 )
-ARGUMENTS = re.compile(r" *([1-9][0-9]*) +(\S.*)")
+IDENTITY = re.compile(r" *([1-9][0-9]*) +" + START + r" +(/.*)")
+ARGUMENTS = re.compile(r" *([1-9][0-9]*) +" + START + r" +(\S.*)")
 
 
 def process_parse(stdout: str, _: list[str]) -> dict[str, object]:
     if stdout == "NONE":
-        return {"processes": []}
+        return {"selected": [], "processes": []}
     rows = lines(stdout)
+    selection = SELECTED.fullmatch(rows[0])
+    if selection is None:
+        raise ReadError("expected the selected PID set")
+    selected = [int(pid) for pid in selection.group(1).split(",")]
+    if len(set(selected)) != len(selected):
+        raise ReadError("the selection repeats a PID")
+    rows = rows[1:]
     if rows.count("---") != 1:
         raise ReadError("expected one identity block and one argument block")
     split = rows.index("---")
@@ -150,17 +180,22 @@ def process_parse(stdout: str, _: list[str]) -> dict[str, object]:
         first, second = IDENTITY.fullmatch(identity), ARGUMENTS.fullmatch(command)
         if first is None or second is None or first.group(1) != second.group(1):
             raise ReadError(f"unparsed process rows: {identity!r} / {command!r}")
+        if first.group(2) != second.group(2):
+            raise ReadError(f"process rows of two starts: {identity!r} / {command!r}")
         processes.append(
             {
                 "pid": int(first.group(1)),
                 "started": first.group(2),
-                "executable": first.group(3),
-                "arguments": second.group(2),
+                "argv0": first.group(3),
+                "arguments": second.group(3),
             }
         )
     if len({entry["pid"] for entry in processes}) != len(processes):
         raise ReadError("duplicate process rows")
-    return {"processes": processes}
+    # A selected process that exited before either ps read leaves no row.
+    if {entry["pid"] for entry in processes} != set(selected):
+        raise ReadError("the process rows differ from the selected PID set")
+    return {"selected": selected, "processes": processes}
 
 
 # --- boot -----------------------------------------------------------------
@@ -208,6 +243,7 @@ def defaults_command(_: list[str]) -> str:
         f'"{MANAGED}/{name}" "{MANAGED}/$u/{name}"'
         for name in (f"{DOMAIN}.plist", ".GlobalPreferences.plist")
     )
+    any_user = " ".join(f'"{path}"' for path in ANY_USER)
     return (
         "set -e; u=$(id -un); "
         f"for d in {DOMAIN} -g; do for h in any current; do "
@@ -218,8 +254,13 @@ def defaults_command(_: list[str]) -> str:
         'if [ -e "$f" ]; then printf \'KOINE-MANAGED %s\\n\' "$f"; '
         'plutil -convert xml1 -o - "$f"; '
         "else printf 'KOINE-ABSENT %s\\n' \"$f\"; fi; done; "
+        f"for p in {any_user}; do "
+        'printf \'KOINE-ANY-USER %s\\n\' "$p"; defaults export "$p" -; done; '
         "printf 'KOINE-DEFAULTS-COMPLETE'"
     )
+
+
+FORBIDDEN_XML = re.compile("[\x00-\x08\x0b\x0c\x0e-\x1f\ufffe\uffff]")
 
 
 def plist_value(value: object) -> object:
@@ -241,7 +282,7 @@ def defaults_parse(stdout: str, _: list[str]) -> dict[str, object]:
     ]
     sources: list[dict[str, object]] = []
     index = 0
-    for position in range(8):
+    for position in range(12):
         if index >= len(rows):
             raise ReadError("defaults sections end early")
         header = rows[index]
@@ -250,6 +291,9 @@ def defaults_parse(stdout: str, _: list[str]) -> dict[str, object]:
         if position < 4:
             if (kind, subject) != expected[position]:
                 raise ReadError(f"unexpected defaults section: {header!r}")
+        elif position >= 8:
+            if (kind, subject) != ("KOINE-ANY-USER", ANY_USER[position - 8]):
+                raise ReadError(f"unexpected any-user section: {header!r}")
         else:
             name = (f"{DOMAIN}.plist", ".GlobalPreferences.plist")[(position - 4) // 2]
             match = re.fullmatch(
@@ -275,7 +319,11 @@ def defaults_parse(stdout: str, _: list[str]) -> dict[str, object]:
             end = rows.index("</plist>", index)
         except ValueError:
             raise ReadError("unterminated property list") from None
-        body = "\n".join(rows[index : end + 1]).encode("utf-8")
+        # CFPropertyList writes C0 control characters in strings unescaped,
+        # and XML 1.0 forbids them, so each becomes U+FFFD. No diagnostic key
+        # name or property list tag holds one, so a key's presence survives.
+        text = FORBIDDEN_XML.sub("\ufffd", "\n".join(rows[index : end + 1]))
+        body = text.encode("utf-8")
         index = end + 1
         try:
             value: object = plistlib.loads(body, fmt=plistlib.FMT_XML)

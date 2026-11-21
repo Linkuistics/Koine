@@ -1,0 +1,68 @@
+# started: 2026-11-21T13:48:41Z
+ProductName:		macOS
+ProductVersion:		27.2.1
+BuildVersion:		26B131
+## https://raw.githubusercontent.com/apple-oss-distributions/CF/main/CFApplicationPreferences.c
+sha256 b6e99c7c574ba111ac0c6ce16cab6564e0036b318e8f89691305d878c57783be
+    ADD_DOMAIN(_CFPreferencesStandardDomain(kCFPreferencesAnyApplication, kCFPreferencesCurrentUser, kCFPreferencesCurrentHost));
+    ADD_DOMAIN(_CFPreferencesStandardDomain(kCFPreferencesAnyApplication, kCFPreferencesCurrentUser, kCFPreferencesAnyHost));
+    ADD_DOMAIN(_CFPreferencesStandardDomain(appPreferences->_appName, kCFPreferencesAnyUser, kCFPreferencesCurrentHost));
+    ADD_DOMAIN(_CFPreferencesStandardDomain(appPreferences->_appName, kCFPreferencesAnyUser, kCFPreferencesAnyHost));
+    ADD_DOMAIN(_CFPreferencesStandardDomain(kCFPreferencesAnyApplication, kCFPreferencesAnyUser, kCFPreferencesCurrentHost));
+    ADD_DOMAIN(_CFPreferencesStandardDomain(kCFPreferencesAnyApplication, kCFPreferencesAnyUser, kCFPreferencesAnyHost));
+
+    _CFApplicationPreferencesSetSearchList(appPreferences, search);
+## https://raw.githubusercontent.com/apple-oss-distributions/CF/main/CFPreferences.c
+sha256 c455857bd9764420dbc794901839a5f5d88a53ff5eb26e7de63d2277e6ff5965
+    if (userName == kCFPreferencesAnyUser) {
+        if (!home) home = CFURLCreateWithFileSystemPath(alloc, CFSTR("/Library/Preferences/"), kCFURLPOSIXPathStyle, true);
+        levels = 1;
+        if (hostName == kCFPreferencesCurrentHost) url = home;
+        else {
+            url = CFURLCreateWithFileSystemPathRelativeToBase(alloc, CFSTR("Network/"), kCFURLPOSIXPathStyle, true, home);
+            levels ++;
+            CFRelease(home);
+        fileName = CFStringCreateWithFormat(prefAlloc, NULL, CFSTR("%@.plist"), appName);
+    }
+    if (mustFreeAppName) {
+## https://raw.githubusercontent.com/apple-oss-distributions/adv_cmds/main/ps/ps.c
+sha256 d338ad022a81a53a3f34149778b0a3dbe3e31b154395589c333c080ad308ea5a
+			if (pidlist.count > 0) {
+				for (elem = 0; elem < pidlist.count; elem++)
+					if (kp->kp_proc.p_pid == pidlist.l.pids[elem])
+						goto keepit;
+			}
+	if (nkept == 0)
+		exit(1);
+## https://raw.githubusercontent.com/apple-oss-distributions/adv_cmds/main/ps/print.c
+sha256 9f3b9e89bd6e58b9db68919189e34136cb903ed60dd6f06650d77e50a47aa40f
+	/* Skip the saved exec_path. */
+	for (; cp < &procargs[size]; cp++) {
+	/* Save where the argv[0] string starts. */
+	sp = cp;
+## https://raw.githubusercontent.com/apple-oss-distributions/adv_cmds/main/ps/keyword.c
+sha256 0af8cc559f9e7e830e5568eb61769df806be8b80a22f3745beeab6431ffa6444
+	{"comm", "COMM", NULL, COMM|LJUST|USER|DSIZ, just_command, s_just_command, 16},
+	{"command", "COMMAND", NULL, COMM|LJUST|USER|DSIZ, command, s_command, 16},
+## ps with one live and one exited PID
+44615
+selected 44615,44695 exit 0
+selected 44695 exit 1
+## comm is argv[0]
+k154-argv0 k154-argv0 5
+## any-user exports
+/Library/Preferences/dev.antony.Koine exit 0 keys 0 exists no
+/Library/Preferences/Network/dev.antony.Koine exit 0 keys 0 exists no
+/Library/Preferences/.GlobalPreferences exit 0 keys 13 exists yes
+/Library/Preferences/Network/.GlobalPreferences exit 0 keys 0 exists no
+export of /Library/Preferences/.GlobalPreferences matches its file
+raw C0 control characters in that export: 24
+## UserDefaults reads an any-user-only global key
+in /Library/Preferences/.GlobalPreferences: 1
+in the current-user global domain: 0
+in the current-user current-host global domain: 0
+managed preferences directory exists: no
+UserDefaults.standard MultipleSessionEnabled: 1
+UserDefaults.standard KoineK154AbsentControl: nil
+volatileDomainNames: ["NSArgumentDomain", "NSRegistrationDomain"]
+# ended: 2026-11-21T13:48:45Z

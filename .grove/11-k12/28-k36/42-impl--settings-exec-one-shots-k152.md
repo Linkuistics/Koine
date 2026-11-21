@@ -48,3 +48,14 @@ restart question.
   k54 keep their duties.
 - Secret-bearing roots stay private. This task permits no VM, candidate,
   freeze or acceptance.
+
+## Notes
+
+The k154 integration changed the process read. The record holds the
+`pgrep` selection, and each row holds `argv0`, `started` and `arguments`.
+A selected process without both `ps` rows makes the read unavailable. Each
+row pair joins on PID and start time, with one-second resolution.
+
+The `comm` column of `ps` prints argv[0], which the process sets. Thus neither the
+pattern match nor `argv0` is an executable identity. The executable join of
+this leaf needs another source of the saved executable path.
