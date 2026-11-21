@@ -23,6 +23,15 @@ Earlier causal slots and all historical caps stay unchanged, closed or held.
   provenance, and reject a stale or changed mapping. A bare argv VM name is not
   endpoint provenance. Use the frozen binaries and environment, and audit them
   and the per-clone mapping afterwards. Clone creation supplies no exec success.
+- Pin the host, as the ADR `settings-harness-takes-no-keepalive-captures`
+  decides. Before the first clone request, record the host macOS product
+  version and build and the Tart version. They must be macOS 27.2.1 (26B131)
+  and Tart 2.42.0. If either differs, hold before E01 for a new decision.
+- Record the residual test-driver risk from the ADR. A Tart crash during a slot
+  is a test-driver failure. It stops every later slot and permits no retry. It
+  is never a Koine failure or a pass.
+- The frozen TestAnyware version may start its passive VNC keeper. The harness
+  neither relies on that keeper nor disables it.
 - Establish readiness before E01, including the actual completion of required
   transports. If a required clean result is demonstrably unavailable, hold
   before E01 for a new explicit decision. Never run guests to qualify a

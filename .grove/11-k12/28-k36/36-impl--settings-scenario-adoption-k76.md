@@ -140,9 +140,10 @@ directory. The current additive brief chain and the accepted spec amendments
 govern authority.
 
 k36 owns the whole harness and every remaining aggregate duty of k53–k85.
-Consume only after the complete k96 sequence: design, independent whole-design
-review and integrations, planning, implementation, and earned review and
-integrations. Preserve these inherited duties:
+Consume only after k146 and k147 finish. The ADR
+`settings-harness-takes-no-keepalive-captures` withdraws the earlier k96
+sequence of design, review, planning and implementation. Preserve these
+inherited duties:
 
 - k56: non-exec handling under the common lock, latch and ordinal.
 - k61: actual schema predicates, the reviewed evidence-class restrictions and

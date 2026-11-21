@@ -31,17 +31,19 @@ external limitation with a reproducer.
 
 Only k12 earns a child scope. Its Settings repair subgoal, its joint product
 acceptance and its native-evidence and authority context do not belong to the
-completed menu or resize work. Its k36 evaluation scope and k96 owner-design
-scope add their own contracts. All other steps, including producer, review and
-integration chains and research pairs, are ordered siblings. No existing branch
-declares a Grove pass series. Finite historical samples and preset future slots
-keep their own caps.
+completed menu or resize work. Its k36 evaluation scope adds its own contract.
+The k96 owner-design scope closed without a design, because the ADR
+`settings-harness-takes-no-keepalive-captures` removes the keepalive captures.
+
+All other steps, including producer, review and integration chains and research
+pairs, are ordered siblings. No existing branch declares a Grove pass series.
+Finite historical samples and preset future slots keep their own caps.
 
 The remaining independently useful product increment is the accepted Settings
 behaviour. It needs a working shared harness and complete ordinary acceptance.
-A schema, an owner design or an isolated caller migration cannot supply that
-behaviour alone. Keep those dependency-ordered sessions in this grove. A
-completed design externalises its implementation work before any consumer
+A schema, a contract amendment or an isolated caller migration cannot supply
+that behaviour alone. Keep those dependency-ordered sessions in this grove. The
+keepalive removal in k146 and k147 finishes before any harness consumer
 proceeds. Module boundaries and document size justify no additional grove.
 
 ## Evidence and limits

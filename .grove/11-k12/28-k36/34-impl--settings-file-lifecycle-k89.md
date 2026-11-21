@@ -42,33 +42,24 @@ the ordering protocol.
 ## Capture dependency after k91
 
 Read the current capture report and the k91 integration receipts. The checked
-capture repair is source-only. The reviewed k92 assessment and the k93 agreement
-set a prerequisite for consumption here and in k81 and k76. The prerequisite is
-the concrete design of settings-keepalive-owner-k96, its independent review and
-every integration, planning, implementation and earned review and integration.
-Carry the private per-tick image volume, the allocation and partial-record
-limits of the current source, the approved finite-profile design obligation and
-every original duty. Do not use generic CLI capture.
+capture repair is source-only. The ADR
+`settings-harness-takes-no-keepalive-captures` withdraws the k96 prerequisite
+that the k92 assessment and the k93 agreement set. It also withdraws the
+per-tick image volume and the finite-profile design obligation. Carry the
+allocation and partial-record limits of the current source and every original
+duty. Do not use generic CLI capture.
 
 Do not reset or bypass a lock or latch, and do not retry or overwrite evidence.
-Fixtures supply no native keepalive or serviceability qualification.
+Fixtures supply no native serviceability qualification.
 
-## Keepalive consumption hold
+## Keepalive removal
 
-<!-- tc: depart synonym-rotation because "confirmed exit" is the term of the k92 design -->
-Read KEEPALIVE-DESIGN.md for the dispositions of k94 and k95 and for k93's
-explicit agreement. The design may admit logged UI-independent ownership waits
-and deferred ticks. It may admit an enforceable finite resource profile that
-retains every produced original and partial. It may admit a cooperative normal
-stop with a matched lifecycle record and a confirmed exit. Four duties stay
+The ADR `settings-harness-takes-no-keepalive-captures` withdraws the keepalive
+consumption hold. It also withdraws the ownership waits, deferred ticks,
+resource profile and cooperative stop that k93 permitted. Four duties stay
 binding: required capture validation before later scenario dispatch,
-first-failure eligibility, exact VM identity and private roots.
-
-K96's concrete design, independent review and every integration, planning,
-implementation and earned review and integration come first. Only then may this
-leaf consume them and k81 and k76 adopt them. The scope agreement supplies no
-numerical policy, working scheduler, resource cap or runtime authority. Every
-original duty above stays binding.
+first-failure eligibility, exact VM identity and private roots. This leaf starts
+only after k146 and k147 finish. Every original duty above stays binding.
 
 ## Contract ownership after k140
 
@@ -78,10 +69,8 @@ retained owner and the exact archived contract. They do not need the removed
 directory. The current additive brief chain and the accepted spec amendments
 govern authority.
 
-k36 owns all aggregate harness duties of k53–k85. k96 owns the replacement owner
-design. Consume nothing until the listed items finish. They are the complete
-useful design, the independent whole-design review with every integration, the
-externalised planning, the implementation and the earned review and
-integration. Preserve the exact file, upload, install, environment, lifecycle
+k36 owns all aggregate harness duties of k53–k85. The ADR
+`settings-harness-takes-no-keepalive-captures` closed k96 without a replacement
+owner design. Consume nothing until k146 and k147 finish. Preserve the exact file, upload, install, environment, lifecycle
 and collection schemas. Preserve the common lock, latch and ordinal, and the
 private original and partial bytes.

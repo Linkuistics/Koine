@@ -46,9 +46,10 @@ sequence of speculative candidates. k36 owns that one empirical evaluation.
 
 These items stay excluded: application repetition, retries and repeated input,
 deferral to menu close or a later run loop, added waits and speculative
-yielding. The later keepalive agreement admits only the separately reviewed
-UI-independent ownership delays and the cooperative-stop design. It does not
-accept interrupted required captures.
+yielding. The ADR `settings-harness-takes-no-keepalive-captures` withdraws the
+later keepalive agreement. Thus no ownership delay or cooperative stop is
+admitted, and the exclusion of added waits applies in full. An interrupted
+required capture still prevents acceptance.
 
 The original two route slots and four modality slots stay held and unstarted.
 Before use, they need an independently supported controllable intervention, a

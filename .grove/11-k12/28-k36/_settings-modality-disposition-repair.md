@@ -32,12 +32,13 @@ evaluation and the final handoff.
 ## Why this level exists
 
 The empirical evaluation is a distinct subgoal with a joint five-slot outcome.
-It has new shared context for transport, setup, identity and freeze. k96 adds
-only the serialised-owner design. The remaining helper migrations, scenario
-adoption, prefix, caller and qualification are dependency-ordered siblings, and
-another continuation session earns no level. k52's source build and nine
-recorder controls supply no signed subject or runtime acceptance. All E and A
-slots stay unrun.
+It has new shared context for transport, setup, identity and freeze. The k96
+owner-design scope closed without a design, because the ADR
+`settings-harness-takes-no-keepalive-captures` removes the keepalive captures.
+The remaining helper migrations, scenario adoption, prefix, caller and
+qualification are dependency-ordered siblings, and another continuation session
+earns no level. k52's source build and nine recorder controls supply no signed
+subject or runtime acceptance. All E and A slots stay unrun.
 
 ## Evaluation contract
 
@@ -86,15 +87,16 @@ invent a window ID.
 
 ## Shared harness obligations and owners
 
-- k96 owns the complete useful owner design. All its design, review,
-  integration, planning, implementation and earned-review prerequisites finish
-  before k89, k81 or k76 consumes anything.
+- k146 withdraws the keepalive and k96 requirements from the spec and the
+  evaluation plan, and it cites the ADR. k147 then removes the keepalive
+  captures from the Settings scenario. Both finish before k89, k81 or k76
+  consumes anything.
 <!-- tc: depart synonym-rotation because VM start and application launch are different operations -->
 - k89 owns the file, upload, environment, start, stop, inventory and collection
   paths and their exact raw schemas. It owns the uploaded bytes and the
   installed identity. It owns complete original and partial captures under the
-  common writer lock, latch and ordinal domain. Generic capture stays refused
-  until the checked qualification and the replacement design exist.
+  common writer lock, latch and ordinal domain. Generic capture stays refused.
+  The ADR plans no replacement design.
 - k81 owns every remaining exec and one-shot confirmation, the clean submission
   and the command-specific downstream state. It owns the exact local statuses
   and inner domains.
@@ -122,7 +124,9 @@ invent a window ID.
   earned review and integration is part of it.
 - k54 owns the actual freeze and readiness: build, signature, UUID, all inputs
   and the completed stopped golden image. It pins the absolute CLI and jq
-  identity and configuration. Before the first transport, it records each
+  identity and configuration. It pins the host macOS version and build and the
+  Tart version, and it records the residual test-driver risk from the ADR.
+  Before the first transport, it records each
   clone's spec digest and endpoint. It owns the serial runtime, the outcome and
   the final handoff. It consumes the completed k57 reconciliation before the
   freeze or any clone request. Changed source or controls reopen the affected
@@ -155,3 +159,9 @@ limits: `ORDERING-TRANSPORT-RESULTS.md`, `ORDERING-NONEXEC-RESULTS.md`,
 owner map assigns all original aggregate duties of k36 and k53–k85 to this
 scope. It assigns their details to the named live tasks. The current source
 stays unqualified for coordinated runtime.
+
+## Pointers
+
+- ADR: `docs/adr/settings-harness-takes-no-keepalive-captures.md`. The harness
+  takes no keepalive captures. It relies on the pinned host macOS and Tart
+  versions, not on the TestAnyware VNC keeper.

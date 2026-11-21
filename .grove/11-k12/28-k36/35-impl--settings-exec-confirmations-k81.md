@@ -109,9 +109,10 @@ govern authority.
 
 k36 owns the whole harness. This task owns all remaining duties of k75, k80 and
 k85 for exec and one-shot clean submission and command-specific confirmation.
-These include the statuses and domains of inner tools. The full k96 sequence
-must finish before consumption: design, independent whole-design review and
-integrations, planning, implementation, and earned review and integrations.
+These include the statuses and domains of inner tools. Consumption waits for
+k146 and k147. The ADR `settings-harness-takes-no-keepalive-captures` withdraws
+the earlier k96 sequence of design, review, planning and implementation.
+
 Preserve the exact-Allow OCR distinctions, the unchanged substring-poll limit
 and the exact local signal statuses. If required clean completion is
 infeasible, hold before E01, even if later output looks successful.
