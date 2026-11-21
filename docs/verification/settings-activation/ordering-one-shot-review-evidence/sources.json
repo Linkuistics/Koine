@@ -1,0 +1,28 @@
+{
+  "review": "settings-exec-one-shots-k157",
+  "inspected_at": "2026-11-22",
+  "method": "Read primary source bytes at immutable commits; SHA-256 over the downloaded bytes. No source was executed. These commits are not identified as the guest binary revisions.",
+  "sources": [
+    {
+      "repository": "apple-oss-distributions/system_cmds",
+      "commit": "408bba7453608006b89772db185defbac8fe2fd0",
+      "path": "shutdown/shutdown.c",
+      "sha256": "f1d8d2b3a4a1b80e424b6bb1583589b9e2e8f430234c03763b3fb1b080e892e2",
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/system_cmds/408bba7453608006b89772db185defbac8fe2fd0/shutdown/shutdown.c"
+    },
+    {
+      "repository": "apple-oss-distributions/xnu",
+      "commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
+      "path": "bsd/kern/proc_info.c",
+      "sha256": "557092f14fbad3341100f59e0391d2e812c54b79a7404c89b2af97471ad67082",
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/bsd/kern/proc_info.c"
+    },
+    {
+      "repository": "apple-oss-distributions/xnu",
+      "commit": "f6217f891ac0bb64f3d375211650a4c1ff8ca1ea",
+      "path": "libsyscall/wrappers/libproc/libproc.c",
+      "sha256": "5c8a771427e04c5e1d55c4cdf5a077f3b52c5be4a091683b970084bfdda76df2",
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/f6217f891ac0bb64f3d375211650a4c1ff8ca1ea/libsyscall/wrappers/libproc/libproc.c"
+    }
+  ]
+}

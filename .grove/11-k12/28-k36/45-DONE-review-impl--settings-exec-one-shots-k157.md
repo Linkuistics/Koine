@@ -66,3 +66,27 @@ k76 owns complete adoption, signals and both held-pointer controls. k67, k62,
 k57 and k54 keep their original duties. The missing snapshot tree, the empty
 AXValue and the OCR substring stop stay binding. Secret-bearing roots stay
 private. This task permits no VM, candidate, freeze or acceptance.
+
+## Decisions (running log)
+
+- 2026-11-22: Inspect producer b3065ae15118 against parent 58a1f7b274a1.
+  Keep the review source-only. Run no test, build, lint, format or guest
+  command, and change no production or test code. Tier 2 graph generation
+  2026-11-21T15:44:30Z supplies discovery; direct source reads cover the
+  reported shell parse gaps and the Bats files without tracked metadata.
+- 2026-11-22: The process-path read treats ESRCH as a clean absent process.
+  The kernel also returns that error for executable-vnode failures. Record
+  this classification defect for integration, with a source-derived case
+  in which both process-info reads succeed but the path read fails.
+- 2026-11-22: The cited shutdown source logs a failed reboot3 call and still
+  exits zero with the accepted stdout. Record the indistinguishable failed
+  submission for integration. The later boot check prevents an ordinary
+  pass on an unchanged boot, but does not establish a clean submission.
+- 2026-11-22: The retained green log and canonical manifest digests match
+  their run record. All six changed executable subjects match the recorded
+  bytes. The recorded 269 tests are historical evidence, not a new run.
+- 2026-11-22: Record the findings in ORDERING-ONE-SHOT-REVIEW.md with pinned
+  primary-source receipts. The two classification gaps directly concern the
+  strict submission and identity acceptance rules. Insert one integration
+  immediately before k76 so that it can triage the findings before adoption.
+  All product acceptance, runtime and ancestor obligations remain live.
