@@ -59,3 +59,13 @@ row pair joins on PID and start time, with one-second resolution.
 The `comm` column of `ps` prints argv[0], which the process sets. Thus neither the
 pattern match nor `argv0` is an executable identity. The executable join of
 this leaf needs another source of the saved executable path.
+
+## K151 handoff
+
+k151 checks the enrolment as a one-shot submission. The read table marks a
+submission entry, and only the one-shot class admits it. The table can hold
+your submissions in the same way. The background System Events automation
+request stays with you.
+
+k151 classifies AppleScript error numbers from the AppleScript Language
+Guide. Only -1728 and -1719 are an absence, and only three polls admit one.

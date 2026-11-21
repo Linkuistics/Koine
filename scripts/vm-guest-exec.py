@@ -629,10 +629,12 @@ def run(
         # The adapter cannot know whether a free guest command sends input, so
         # collection after a latch uses only the checked read-only reads.
         raise ValueError("evidence-class exec requires a checked read-only read")
+    # The read table decides which class each name admits: a read takes
+    # read-poll or evidence, and a checked submission takes only one-shot.
     if transport == "read" and not (
-        kind in {"read-poll", "evidence"} and len(arguments or []) >= 1
+        kind in {"read-poll", "evidence", "one-shot"} and len(arguments or []) >= 1
     ):
-        raise ValueError("expected a read-poll|evidence checked read NAME [ARGUMENT]")
+        raise ValueError("expected a checked read NAME [ARGUMENT]")
     if transport == "confirmation" and not command.strip():
         raise ValueError("failed confirmation requires a reason")
     if transport == "poll-step" and not (
@@ -676,8 +678,8 @@ def main() -> int:
             "poll-step records a local window-poll decision or failure without dispatch. "
             "upload digests its local file before and after one dispatch; download writes "
             "a unique copy and compares a named upload record. "
-            "read runs one checked guest read from scripts/vm_exec_reads.py and prints its "
-            "parsed record; run refuses the evidence class, which only checked reads admit. "
+            "read runs one checked guest read or submission from scripts/vm_exec_reads.py "
+            "and prints its parsed record; run refuses the evidence class, which only checked reads admit. "
             "Exit 0: clean individual attempt (evidence collection does not clear an old latch); "
             "2: argument error (an identifiable initialized evidence root is latched); "
             "125: state failure, unavailable evidence or invalid run values; "
@@ -766,10 +768,10 @@ def main() -> int:
     download_parser.add_argument("upload", nargs="?")
     read_parser = commands.add_parser(
         "read",
-        help="one checked guest read; emit its parsed record as one JSON line",
+        help="one checked guest read or submission; emit its parsed record as one JSON line",
     )
     read_parser.add_argument("root", type=Path)
-    read_parser.add_argument("kind", choices=["read-poll", "evidence"])
+    read_parser.add_argument("kind", choices=["read-poll", "evidence", "one-shot"])
     read_parser.add_argument("operation")
     read_parser.add_argument("name", choices=sorted(vm_exec_reads.READS))
     read_parser.add_argument("arguments", nargs="*")

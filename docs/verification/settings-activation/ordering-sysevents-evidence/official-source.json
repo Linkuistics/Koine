@@ -1,0 +1,67 @@
+{
+  "recorded": "2026-11-21T14:23:35Z",
+  "host": "27.2.1 (26B131)",
+  "sources": [
+    {
+      "source": "https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/AppleScriptLangGuide/reference/ASLR_error_codes.html",
+      "sha256": "418d30cd4500d458c8c433d6a8e86bf1b0da7b0976bd79e1b51adb0d3abb5bfb",
+      "lines": [
+        "-1728 The referenced object doesn’t exist.",
+        "-1719 The specified index is invalid or out of range.",
+        "-1712 The Apple event has timed out.",
+        "-600 Application isn’t running"
+      ]
+    },
+    {
+      "source": "/usr/share/man/man1/osascript.1",
+      "sha256": "aca3abc5c3d0641ea7dd33d2d1604b9de2fa7400d0f42433faaaaa72879397da",
+      "lines": [
+        "     -s flags",
+        "\t   Modify the output style.  The flags argument is a string consisting",
+        "\t   of any of the modifier characters e, h, o, and s.  Multiple",
+        "\t   modifiers can be concatenated in the same string, and multiple -s",
+        "\t   options can be specified.  The modifiers come in exclusive pairs;",
+        "\t   if conflicting modifiers are specified, the last one takes",
+        "\t   precedence.\tThe meanings of the modifier characters are as",
+        "\t   follows:",
+        "",
+        "\t   h  Print values in human-readable form (default).",
+        "\t   s  Print values in recompilable source form.",
+        "",
+        "\t      osascript normally prints its results in human-readable form:",
+        "\t      strings do not have quotes around them, characters are not",
+        "\t      escaped, braces for lists and records are omitted, etc.  This is",
+        "\t      generally more useful, but can introduce ambiguities.  For",
+        "\t      example, the lists ‘{\"foo\", \"bar\"}’ and ‘{{\"foo\", {\"bar\"}}}’",
+        "\t      would both be displayed as ‘foo, bar’.  To see the results in an",
+        "\t      unambiguous form that could be recompiled into the same value,",
+        "\t      use the s modifier.",
+        "",
+        "\t   e  Print script errors to stderr (default).",
+        "\t   o  Print script errors to stdout.",
+        "",
+        "\t      osascript normally prints script errors to stderr, so downstream",
+        "\t      clients only see valid results.  When running automated tests,",
+        "\t      however, using the o modifier lets you distinguish script",
+        "\t      errors, which you care about matching, from other diagnostic",
+        "\t      output, which you don't."
+      ]
+    },
+    {
+      "source": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/AE.framework/Versions/A/Headers/AppleEvents.h",
+      "sdk": "27.2",
+      "sha256": "4e4bc1ddd7b177ddbe7156b6c38c66561d746c0f56b62324cd553a58dc7eeb10",
+      "lines": [
+        "104:\t\terrAEEventNotPermitted = -1743, ///< Mac OS X 10.8 and later, the target of the AppleEvent does not allow this sender to execute this event"
+      ]
+    },
+    {
+      "source": "scripts/vm-verify-enrollment-client.py",
+      "sha256": "943253a3e9fdddd13404aad8a77fe7d9fb2667f2fd36ffeb65591a1bda4aeda8",
+      "lines": [
+        "84:        print(json.dumps({\"case\": case, \"secret\": encoded in text, \"digest\": digest in text, \"bytes\": len(text)}))",
+        "98:    print(json.dumps({\"case\": case, \"status\": status, \"response\": response}))"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+# command: KOINE_SYSEVENTS_BASELINE=1 bats Tests/scripts/vm-sysevents-evidence.bats
+# revision of scripts/: 9fe514934157b3ebb56cb22de5f165efa2a783da
+# started: 2026-11-21T14:24:49Z
+# subjects
+631584bdca6481a513f1c6192594fd64e2a738a20eab6144cec100946b69b110  scripts/vm-guest-exec.py
+d9540371ce2cbfd6a717ce8e4243346f4af630d43c6421fcd919b1c78ed2e785  scripts/vm-guest-exec-lib.sh
+bf0b01c9eb3ef31dc08b300e07680875424cec8eedef587a42f4b19b61b5e97c  scripts/vm_exec_reads.py
+31fdedc5a025bfa5e18744f63873e299a72cfdd69cf0e4f45976282117afcbfd  scripts/vm-verify-lib.sh
+65ded2d89f7069130f048cc1dda391736a63fdc12e8d1ac8e9d4d0fbfa5b61b8  scripts/vm-verify-menu-bar.sh
+22f7c7026a9f3f7706783f6da56f517b468697eaad9e1fcd5f0570ee72932452  scripts/vm-verify-desktop-lib.sh
+c7ddef5b93fccf38892442732932556bc86f352a474eb7e28fa6475bbb56cb65  Tests/scripts/vm-sysevents-evidence.bats
+dbf2b45a33ffb483bcc87046cfa83b809db99ca06802e0bf4cefe2213220853f  Tests/scripts/fixtures/exec-read-cli.py
+# output
+1..20
+not ok 1 System Events reads refuse the evidence class and the enrolment admits only one-shot
+# (from function `refused' in file Tests/scripts/vm-sysevents-evidence.bats, line 198,
+#  in test file Tests/scripts/vm-sysevents-evidence.bats, line 210)
+#   `refused evidence collect "${words[@]}"' failed
+# diagnostic: request=evidence collect sysevents-processes status=0 calls=1
+not ok 2 row titles, label modes and enrolment arguments refuse before dispatch
+# (from function `refused' in file Tests/scripts/vm-sysevents-evidence.bats, line 198,
+#  in test file Tests/scripts/vm-sysevents-evidence.bats, line 222)
+#   `refused read-poll row menu-row-frame' failed
+# diagnostic: request=read-poll row menu-row-frame status=0 calls=1
+not ok 3 each read sends the legacy AppleScript in source form with script errors on stdout
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 258)
+#   `jq -e --arg command "${expected}" --arg name "${name}" '.command == $command and .read == $name' failed with status 2
+# jq: error: Could not open file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ODg1FI/test/3/evidence/000001/request.json: No such file or directory
+not ok 4 a source-form list keeps a title that holds the separator
+# (from function `assert_clean_false' in file Tests/scripts/vm-sysevents-evidence.bats, line 188,
+#  in test file Tests/scripts/vm-sysevents-evidence.bats, line 276)
+#   `assert_clean_false' failed
+# diagnostic: status=0 output=
+not ok 5 an empty menu and a menu of one empty title are different lists
+# (from function `assert_clean_false' in file Tests/scripts/vm-sysevents-evidence.bats, line 188,
+#  in test file Tests/scripts/vm-sysevents-evidence.bats, line 289)
+#   `assert_clean_false' failed
+# diagnostic: status=0 output=
+not ok 6 the Dock assertion reads item names, and a failed Dock read shows nothing
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 301)
+#   `[[ "${status}" == 125 ]]' failed
+# diagnostic: status=1 output=
+not ok 7 count, agent flag, label and front application keep their exact types
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 320)
+#   `[[ "${status}" == 125 ]]' failed
+# diagnostic: status=0 output=
+not ok 8 a clean absence is a negative only in the label and frame polls
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 366)
+#   `jq -e '.absent == true and .error == -1728' <<<"${output}"' failed with status 5
+# jq: parse error: Expected string key before ':' at line 1, column 3
+not ok 9 other AppleScript errors, statuses and malformed answers are unavailable
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 404)
+#   `[[ "${status}" == 125 && ! -e "${read_root}/000001/read.json" ]]' failed
+# diagnostic: index=1 status=0 output=12:80: execution error: System Events got an error: Can’t get menu bar 2 of process "Koine". (-1743)
+not ok 10 a timeout, a guest failure or a transport failure is unavailable even with a clean answer
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 419)
+#   `[[ "${status}" == 125 && "$(calls)" == 1 && ! -e "${read_root}/000001/read.json" ]]' failed
+# diagnostic: failure=1 false 0 status=0 calls=1 output=synthetic guest diagnostic
+# "Koine"
+# KOINE-OSASCRIPT-STATUS 0
+not ok 11 the label poll keeps fifteen reads two seconds apart and ends in a state failure
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 431)
+#   `jq -e '.outcome == "state-failed"' "${read_root}/000031/result.json"' failed with status 2
+# diagnostic: status=125 calls=15 sleeps=2 2 2 2 2 2 2 2 2 2 2 2 2 2 2  output=
+# jq: error: Could not open file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ODg1FI/test/11/evidence/000031/result.json: No such file or directory
+not ok 12 the label poll waits through an absence and a missing value and stops on the exact label
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 444)
+#   `jq -e '.value == "Koine" and .arguments == ["poll"]' <<<"${output}"' failed with status 4
+# diagnostic: status=0 calls=4 sleeps=2 2 2  output=
+not ok 13 a failed label read stops the poll at once and is never a negative
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 455)
+#   `[[ "${status}" == 125 && "$(calls)" == 2 && "$(sleeps)" == '2 ' ]]' failed
+# diagnostic: status=0 calls=3 sleeps=2 2  output=
+not ok 14 the item frame poll keeps five reads two seconds apart and the legacy digit predicate
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 468)
+#   `[[ "${status}" == 0 && "$(calls)" == 3 && "$(sleeps)" == '2 2 ' ]]' failed
+# diagnostic: status=0 calls=1 sleeps= output=12:80: execution error: System Events got an error: Can’t get menu bar 2 of process "Koine". (-1728)
+not ok 15 a partial frame passes the legacy predicate and keeps its rendering for click_centre
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 482)
+#   `jq -e '.text == "1500, 0, missing value"' <<<"${output}"' failed with status 5
+# jq: parse error: Expected value before ',' at line 1, column 5
+not ok 16 the row frame poll names its row and keeps five reads one second apart
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 491)
+#   `[[ "${status}" == 125 && "$(calls)" == 5 && "$(sleeps)" == '1 1 1 1 1 ' ]]' failed
+# diagnostic: status=0 calls=1 sleeps= output=12:80: execution error: System Events got an error: Can’t get menu bar 2 of process "Koine". (-1719)
+not ok 17 the System Events check after the grant needs a complete nonempty process list
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 502)
+#   `[[ "${status}" == 125 ]]' failed
+# diagnostic: status=0 output=
+not ok 18 the enrolment needs one complete JSON line and keeps the legacy predicate
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 520)
+#   `jq -e '.status == 200 and .response.data.koineRequestGrant.requestId == "r1"' <<<"${output}"' failed with status 4
+not ok 19 a malformed enrolment answer is unavailable
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 549)
+#   `[[ "${status}" == 125 && ! -e "${read_root}/000001/read.json" ]]' failed
+# diagnostic: index=1 status=0 output=
+not ok 20 a failed enrolment submission is unavailable, and no later answer makes it clean
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 564)
+#   `[[ "${status}" == 125 && "$(calls)" == 1 ]]' failed
+# diagnostic: failure=1 false 0 status=0 calls=1
+# bats exit: 1
+# ended: 2026-11-21T14:24:57Z

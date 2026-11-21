@@ -76,6 +76,26 @@ def main() -> int:
         exit_code, stdout = (0 if stdout.startswith("PRESENT") else 1), ""
     elif exit_code == 0 and command.startswith("! pgrep -f "):
         exit_code, stdout = (0 if stdout == "NONE" else 1), ""
+    elif (
+        exit_code == 0
+        and command.startswith("osascript -e ")
+        and "\nKOINE-OSASCRIPT-STATUS " in stdout
+    ):
+        # The legacy sysevents command prints the default human-readable form
+        # and a script error on stderr. The real osascript renders the same
+        # source-form answer from a literal, so no Apple event is sent.
+        value, _, status = stdout.rpartition("\nKOINE-OSASCRIPT-STATUS ")
+        if status == "0":
+            # A successful osascript writes nothing to stderr.
+            stderr = ""
+            stdout = subprocess.run(
+                ["/usr/bin/osascript", "-e", value],
+                check=True,
+                capture_output=True,
+                text=True,
+            ).stdout
+        else:
+            exit_code, stdout, stderr = int(status), "", value
     if os.environ.get("read_keep_whitespace") != "1":
         stdout, stderr = strip(stdout), strip(stderr)
     if timed_out:

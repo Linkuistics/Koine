@@ -205,3 +205,19 @@ descriptor record and adds no read. The port loop ends at its first clean read.
 <!-- tc: depart synonym-rotation because the application launch and the VM restart are different operations -->
 The protocol adds the defaults reads before the first launch, after the restart
 and after the slot. k57 places them in the finite caller with you.
+
+## K151 System Events and enrolment handoff
+
+k151 supplies checked System Events reads, their three polls and the checked
+enrolment submission. Read
+`docs/verification/settings-activation/ORDERING-SYSEVENTS-RESULTS.md`. Consume
+it only after its review and every earned integration.
+
+Its caller table names one facade function for each `sysevents` caller and for
+`enrol`. Each function keeps the legacy assertion, read count, sleep and poll
+bound. Status 1 is a clean false state, and the caller keeps the legacy
+failure message. Compare each menu as the list in the report, never as a
+rendered string. Pass the `text` of a frame record to `click_centre`.
+
+No System Events read is in the evidence class. A front-application read in a
+failure message therefore needs the read before the failure latches.

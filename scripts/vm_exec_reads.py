@@ -546,6 +546,252 @@ def assessment_parse(stdout: str, _: list[str]) -> dict[str, object]:
     return {"accepted": status == 0, "status": status, "text": text}
 
 
+# --- System Events --------------------------------------------------------
+
+KOINE_ITEM = 'menu bar item 1 of menu bar 2 of process "Koine"'
+# The fixed AppleScript of each legacy sysevents caller in vm-verify-lib.sh and
+# vm-verify-menu-bar.sh. A row title is the only argument.
+SYSEVENTS = {
+    "sysevents-processes": "get name of every process",
+    "menu-item-count": 'get count of menu bar items of menu bar 2 of process "Koine"',
+    "menu-item-label": f"get description of {KOINE_ITEM}",
+    "menu-item-frame": f"get {{position, size}} of {KOINE_ITEM}",
+    "menu-row-frame": 'get {position, size} of menu item "%s" of menu 1 of '
+    + KOINE_ITEM,
+    "menu-titles": f"get title of every menu item of menu 1 of {KOINE_ITEM}",
+    "dock-items": 'get name of every UI element of list 1 of process "Dock"',
+    "background-only": 'get background only of process "Koine"',
+    "front-application": "get name of first process whose frontmost is true",
+}
+# The grammar admits no quote, backslash or apostrophe, so a title cannot leave
+# the AppleScript string or the shell quotes. Koine's titles end in U+2026.
+ROW_TITLE = re.compile("[A-Za-z0-9](?:[A-Za-z0-9 …]*[A-Za-z0-9…])?")
+# AppleScript Language Guide, "Error Numbers and Error Messages":
+# -1728 "The referenced object doesn't exist" and -1719 "The specified index is
+# invalid or out of range". Each other number, such as -1743 (AppleEvents.h,
+# errAEEventNotPermitted), -1712 (timed out) or -600 (not running), is
+# unavailable.
+# https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/AppleScriptLangGuide/reference/ASLR_error_codes.html
+ABSENT_ERRORS = {-1728, -1719}
+OSASCRIPT_ERROR = re.compile(r"[0-9]+:[0-9]+: execution error: ([^\n]*) \((-[0-9]+)\)")
+INTEGER = re.compile(r"-?(?:0|[1-9][0-9]*)")
+
+
+def sysevents_command(script: str) -> str:
+    # osascript(1): "-s s" prints values in recompilable source form. The
+    # default human-readable form prints {"a, b"} and {"a", "b"} alike, and it
+    # omits the quotes of a string. "-s o" prints a script error to stdout,
+    # apart from other diagnostics on stderr. The substitution drops the one
+    # newline after the value, and the status marker comes last.
+    return (
+        f"o=$(osascript -s so -e 'tell application \"System Events\" to {script}'); "
+        's=$?; printf \'%s\\nKOINE-OSASCRIPT-STATUS %s\' "$o" "$s"'
+    )
+
+
+def applescript_value(text: str) -> object:
+    """Parse one value in osascript's source form, or raise ReadError.
+
+    Strings, integers, booleans, `missing value` and lists only. A string
+    escapes only the quote and the backslash. A real, a record or another
+    class is not a value of these reads.
+    """
+
+    def value(index: int, depth: int) -> tuple[object, int]:
+        if depth > 8:
+            raise ReadError("source-form value nests too deeply")
+        if text.startswith('"', index):
+            index += 1
+            chars: list[str] = []
+            while index < len(text):
+                char = text[index]
+                if char == '"':
+                    return "".join(chars), index + 1
+                if char == "\\":
+                    escaped = text[index + 1 : index + 2]
+                    if escaped not in {'"', "\\"}:
+                        raise ReadError("unknown escape in a source-form string")
+                    chars.append(escaped)
+                    index += 2
+                    continue
+                chars.append(char)
+                index += 1
+            raise ReadError("unterminated source-form string")
+        if text.startswith("{", index):
+            items: list[object] = []
+            index += 1
+            if text.startswith("}", index):
+                return items, index + 1
+            while True:
+                item, index = value(index, depth + 1)
+                items.append(item)
+                if text.startswith("}", index):
+                    return items, index + 1
+                if not text.startswith(", ", index):
+                    raise ReadError("expected the source-form list separator")
+                index += 2
+        for word, parsed in (("missing value", None), ("true", True), ("false", False)):
+            if text.startswith(word, index):
+                return parsed, index + len(word)
+        number = INTEGER.match(text, index)
+        if number is None:
+            raise ReadError(f"unparsed source-form value at {index}")
+        return int(number.group(0)), number.end()
+
+    parsed, end = value(0, 0)
+    if end != len(text):
+        raise ReadError("unexpected text after the source-form value")
+    return parsed
+
+
+def human(value: object) -> str:
+    """osascript's default human-readable form of a value of these reads."""
+    if isinstance(value, list):
+        return ", ".join(human(item) for item in cast(list[object], value))
+    if value is None:
+        return "missing value"
+    if isinstance(value, bool):
+        return "true" if value else "false"
+    return str(value)
+
+
+def text_list(value: object) -> bool:
+    return isinstance(value, list) and all(
+        isinstance(item, str) or item is None for item in cast(list[object], value)
+    )
+
+
+def frame_value(value: object) -> bool:
+    # {position, size}: each part is a list of two integers or missing value.
+    return (
+        isinstance(value, list)
+        and len(cast(list[object], value)) == 2
+        and all(
+            part is None
+            or (
+                isinstance(part, list)
+                and len(cast(list[object], part)) == 2
+                and all(integer(item) for item in cast(list[object], part))
+            )
+            for part in cast(list[object], value)
+        )
+    )
+
+
+SYSEVENTS_TYPES: dict[str, Callable[[object], bool]] = {
+    "sysevents-processes": text_list,
+    "menu-item-count": lambda value: integer(value) and cast(int, value) >= 0,
+    "menu-item-label": lambda value: value is None or isinstance(value, str),
+    "menu-item-frame": frame_value,
+    "menu-row-frame": frame_value,
+    "menu-titles": text_list,
+    "dock-items": text_list,
+    "background-only": lambda value: isinstance(value, bool),
+    "front-application": lambda value: isinstance(value, str),
+}
+
+
+def admits_absence(name: str, arguments: list[str]) -> bool:
+    # Only the three existing polls admit a clean absence: the label poll, the
+    # item frame poll of open_menu and the row frame poll of choose_menu_item.
+    return name in {"menu-item-frame", "menu-row-frame"} or arguments == ["poll"]
+
+
+def sysevents_read(name: str) -> Read:
+    def command(arguments: list[str]) -> str:
+        script = SYSEVENTS[name]
+        return sysevents_command(
+            script % arguments[0] if name == "menu-row-frame" else script
+        )
+
+    def parse(stdout: str, arguments: list[str]) -> dict[str, object]:
+        lines(stdout)
+        text, separator, status = stdout.rpartition("\nKOINE-OSASCRIPT-STATUS ")
+        if not separator or status not in {"0", "1"}:
+            # osascript exits 0 with a result and 1 with a script error.
+            raise ReadError("expected osascript status 0 or 1 after the output")
+        if status == "1":
+            error = OSASCRIPT_ERROR.fullmatch(text)
+            if error is None:
+                raise ReadError("osascript status 1 without one execution error")
+            number = int(error.group(2))
+            if number not in ABSENT_ERRORS:
+                raise ReadError(f"AppleScript error {number} is unavailable")
+            if not admits_absence(name, arguments):
+                raise ReadError(
+                    f"AppleScript error {number} is an absence that only a poll admits"
+                )
+            return {"absent": True, "error": number, "message": error.group(1)}
+        value = applescript_value(text)
+        if not SYSEVENTS_TYPES[name](value):
+            raise ReadError(f"{name} returned a value of another type")
+        if name in {"menu-item-frame", "menu-row-frame"}:
+            # click_centre parses the human-readable form of {position, size}.
+            return {"absent": False, "value": value, "text": human(value)}
+        return {"absent": False, "value": value}
+
+    def valid(arguments: list[str]) -> bool:
+        if name == "menu-item-label":
+            return arguments in (["value"], ["poll"])
+        if name == "menu-row-frame":
+            return len(arguments) == 1 and ROW_TITLE.fullmatch(arguments[0]) is not None
+        return arguments == []
+
+    # An Apple event can launch System Events and can raise its Automation
+    # consent prompt, so no System Events read is read-only.
+    return Read(command, parse, valid, False, "an Apple event can start System Events")
+
+
+# --- enrolment ------------------------------------------------------------
+
+ENROL_SECRET = re.compile(r"\$HOME/koine-secret-[a-z]+")
+ENROL_LABEL = re.compile(r"[a-z][a-z0-9-]{0,62}")
+
+
+def enrol_command(arguments: list[str]) -> str:
+    # The legacy enrol command of vm-verify-menu-bar.sh. The guest expands $HOME.
+    return (
+        "python3 $HOME/vm-verify-enrollment-client.py "
+        f'"{arguments[0]}" enrol "{arguments[1]}" desktop:read'
+    )
+
+
+def enrol_parse(stdout: str, _: list[str]) -> dict[str, object]:
+    # The client prints exactly one JSON object on one line. A second line,
+    # such as a traceback before the object, is not the client's answer.
+    if "\n" in stdout or not stdout.startswith("{"):
+        raise ReadError("expected exactly one JSON line from the enrolment client")
+    lines(stdout)
+    try:
+        value: object = json.loads(
+            stdout, object_pairs_hook=unique_object, parse_constant=reject_constant
+        )
+    except json.JSONDecodeError as error:
+        raise ReadError(f"enrolment answer is not one JSON object: {error}") from None
+    if not isinstance(value, dict):
+        raise ReadError("enrolment answer is not one JSON object")
+    answer = cast(dict[str, object], value)
+    status, response = answer.get("status"), answer.get("response")
+    # scripts/vm-verify-enrollment-client.py owns these fields.
+    if not (
+        sorted(answer) == ["case", "response", "status"]
+        and answer["case"] == "enrol"
+        and integer(status)
+        and 100 <= cast(int, status) <= 599
+        and (response is None or isinstance(response, dict))
+    ):
+        raise ReadError("enrolment answer differs from the client's schema")
+    return {"case": "enrol", "status": status, "response": response}
+
+
+def enrol_arguments(arguments: list[str]) -> bool:
+    return (
+        len(arguments) == 2
+        and ENROL_SECRET.fullmatch(arguments[0]) is not None
+        and ENROL_LABEL.fullmatch(arguments[1]) is not None
+    )
+
+
 # --- the table ------------------------------------------------------------
 
 
@@ -557,6 +803,8 @@ class Read:
     # Admitted after a latch only when the read changes no guest state.
     evidence: bool
     why: str
+    # A checked submission sends input, so it admits only the one-shot class.
+    one_shot: bool = False
 
 
 def no_arguments(arguments: list[str]) -> bool:
@@ -616,6 +864,16 @@ READS: dict[str, Read] = {
         False,
         "spctl -a writes the assessment cache",
     ),
+    **{name: sysevents_read(name) for name in SYSEVENTS},
+    # The client sends a grant request, so the enrolment is a submission.
+    "enrol": Read(
+        enrol_command,
+        enrol_parse,
+        enrol_arguments,
+        False,
+        "the enrolment sends a grant request",
+        one_shot=True,
+    ),
 }
 
 
@@ -624,7 +882,10 @@ def command(name: str, kind: str, arguments: list[str]) -> str:
     read = READS.get(name)
     if read is None:
         raise ValueError(f"unknown checked read: {name}")
-    if kind not in {"read-poll", "evidence"}:
+    if read.one_shot:
+        if kind != "one-shot":
+            raise ValueError(f"checked submission {name} needs the one-shot class")
+    elif kind not in {"read-poll", "evidence"}:
         raise ValueError("a checked read needs the read-poll or evidence class")
     if kind == "evidence" and not read.evidence:
         raise ValueError(f"evidence class refuses read {name}: {read.why}")
