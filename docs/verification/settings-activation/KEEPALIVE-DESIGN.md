@@ -2,8 +2,8 @@
 
 ## Decision and status
 
-**Design is authorized; adoption remains held.** Antony approved design of
-**one serialized command owner**, logged ownership-based admission delays and
+**Design is authorised. Adoption remains held.** Antony approved design of
+**one serialised command owner**, logged ownership-based admission delays and
 deferred keepalive ticks. Required capture qualification must still finish
 before any subsequent scenario dispatch. The accepted scope also requires an
 enforceable finite resource profile with lossless retention, and permits design
@@ -22,8 +22,8 @@ The [evaluation protocol](ORDERING-EVALUATION-PLAN.md),
 [shared writer](ORDERING-NONEXEC-RESULTS.md) and
 [accepted product scope](../../specs/settings-activation-discrimination.md)
 remain binding with the narrow amendments recorded here. The [k94 review
-dispositions](#review-integration) remain historical review evidence; Antony's
-subsequent answers supply the scope agreement. Settings-keepalive-owner-k96 owns
+dispositions](#review-integration) remain historical review evidence.
+Antony's subsequent answers supply the scope agreement. Settings-keepalive-owner-k96 owns
 the concrete design before k89/k81/k76 consumption. This document supplies no
 native acceptance or ancestor closure.
 
@@ -34,8 +34,10 @@ The existing lifecycle and scheduling contracts supply no resource qualification
 
 The editable [visual discussion](../../design/architecture/settings-activation/README.md)
 shows the collision and the agreed design scope. Sequence views start at their
-first message; graph views start at the dark **Start here** node. Neither is a
+first message. Graph views start at the dark **Start here** node. Neither is a
 model-checking result.
+
+<!-- tc: pending because the conversion has not reached this part of the document -->
 
 ## Why the present rules conflict
 
