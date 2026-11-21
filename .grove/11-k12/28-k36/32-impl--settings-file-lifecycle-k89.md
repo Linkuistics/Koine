@@ -1,64 +1,87 @@
 # settings-file-lifecycle-k89
 
 ## Goal
-Complete all remaining k85 file, environment, lifecycle and collection helpers
-after the capture artifact's independent review and every earned integration.
+
+Complete all remaining k85 file, environment, lifecycle and collection helpers.
+Start after the independent review of the capture artifact and every earned
+integration.
 
 ## Context
-Read the complete k85/k80/k75/k71/k66 charters, capture report and reviewed
-shared/physical/window/input/snapshot/click reports and ordering protocol.
+
+Read the complete charters of k85, k80, k75, k71 and k66 and the capture report.
+Read the reviewed shared, physical, window, input, snapshot and click reports and
+the ordering protocol.
 
 ## Done when
-Enumerate actual schemas/callers. Check upload local/remote paths and byte identity,
-installed files/environment and start/stop plus independent inventory/collection
-receipts through the shared writer/latch. Preserve raw receipts and complete
-artifacts at unique paths, original assertions/inputs/waits/poll bounds and
-private secret-bearing roots. No constant predicate, ignored failure, retry,
-overwrite, bypass or negative from unavailable data. Show meaningful failing
-controls before repair and passing reusable Taskfile checks. Cut earned review
-and every integration before k81/k76 consumption. K81 retains EVERY exec/one-shot
-confirmation, including installed inventory and exact defaults/launch/restart
-consequences; k76 complete adoption/signals and both held-pointer cases; k67/k62/
-k57/k54 their original duties. Snapshot missing-tree/empty-AXValue and OCR
-substring availability limits remain. Every original k85 criterion survives;
-no VM/candidate/freeze/acceptance or ancestor closure. Decompose if needed,
-executing only the first child.
+
+- Enumerate the actual schemas and callers.
+- Check the local and remote upload paths and the byte identity. Check the
+  installed files and environment, and start and stop. Check the independent
+  inventory and collection receipts. All these checks go through the shared
+  writer and latch.
+- Preserve raw receipts and complete artifacts at unique paths. Preserve the
+  original assertions, inputs, waits and poll bounds, and the private
+  secret-bearing roots.
+- Use no constant predicate, ignored failure, retry, overwrite or bypass. Infer
+  no negative from unavailable data.
+- Show meaningful failing controls before each repair, and show passing reusable
+  Taskfile checks.
+- Cut the earned review and every integration before k81 or k76 consumes this
+  work.
+<!-- tc: depart synonym-rotation because VM start and application launch are different operations -->
+- k81 keeps EVERY exec and one-shot confirmation, including the installed
+  inventory and the exact defaults, launch and restart consequences. k76 keeps
+  complete adoption and signals and both held-pointer cases. k67, k62, k57 and
+  k54 keep their original duties.
+- The availability limits for a missing snapshot tree, an empty AXValue and the
+  OCR substring stay.
+- Every original k85 criterion survives. This task permits no VM, candidate,
+  freeze, acceptance or ancestor closure.
+- If needed, decompose, and execute only the first child.
 
 ## Capture dependency after k91
 
-Read the current capture report and k91 integration receipts. The checked
-capture repair is source-only. The reviewed k92 assessment and k93 agreement
-require settings-keepalive-owner-k96's concrete design, independent review/every
-integration, planning, implementation and earned review/integration before
-consumption here and in k81/k76. Carry private per-tick image volume, the current
-source's allocation/partial-record limits, the approved finite-profile design
-obligation and every original duty.
-Do not use generic CLI capture, reset/bypass a lock/latch, retry or overwrite
-evidence. No native keepalive/serviceability qualification follows from fixtures.
+Read the current capture report and the k91 integration receipts. The checked
+capture repair is source-only. The reviewed k92 assessment and the k93 agreement
+set a prerequisite for consumption here and in k81 and k76. The prerequisite is
+the concrete design of settings-keepalive-owner-k96, its independent review and
+every integration, planning, implementation and earned review and integration.
+Carry the private per-tick image volume, the allocation and partial-record
+limits of the current source, the approved finite-profile design obligation and
+every original duty. Do not use generic CLI capture.
+
+Do not reset or bypass a lock or latch, and do not retry or overwrite evidence.
+Fixtures supply no native keepalive or serviceability qualification.
 
 ## Keepalive consumption hold
 
-Read KEEPALIVE-DESIGN.md for k94/k95's dispositions and k93's explicit agreement.
-Design may admit logged UI-independent ownership waits and deferred ticks, an
-enforceable finite resource profile retaining every produced original/partial,
-and a cooperative normal stop with a matched lifecycle record and confirmed exit.
-Required capture validation before subsequent scenario dispatch, first-failure
-eligibility, exact VM identity and private roots remain binding. K96's concrete
-design, independent review/every integration, planning, implementation and earned
-review/integration must precede this leaf's consumption and k81/k76 adoption.
-No numerical policy, working scheduler, resource cap or runtime authority follows
-from scope agreement. Every original duty above remains binding.
+<!-- tc: depart synonym-rotation because "confirmed exit" is the term of the k92 design -->
+Read KEEPALIVE-DESIGN.md for the dispositions of k94 and k95 and for k93's
+explicit agreement. The design may admit logged UI-independent ownership waits
+and deferred ticks. It may admit an enforceable finite resource profile that
+retains every produced original and partial. It may admit a cooperative normal
+stop with a matched lifecycle record and a confirmed exit. Four duties stay
+binding: required capture validation before later scenario dispatch,
+first-failure eligibility, exact VM identity and private roots.
 
+K96's concrete design, independent review and every integration, planning,
+implementation and earned review and integration come first. Only then may this
+leaf consume them and k81 and k76 adopt them. The scope agreement supplies no
+numerical policy, working scheduler, resource cap or runtime authority. Every
+original duty above stays binding.
 
 ## Contract ownership after k140
 
-The original task text above remains binding. Historical ancestor handles now
-resolve through `docs/verification/grove-tree-structure/README.md` to the retained
-owner and exact archived contract; they do not require the removed directory.
-The current additive brief chain and accepted spec amendments govern authority.
+The original task text above stays binding. Historical ancestor handles now
+resolve through `docs/verification/grove-tree-structure/README.md` to the
+retained owner and the exact archived contract. They do not need the removed
+directory. The current additive brief chain and the accepted spec amendments
+govern authority.
 
-k36 owns all k53–k85 aggregate harness duties; k96 owns replacement owner design.
-Consume nothing until complete useful design, independent whole-design review
-and every integration, externalised planning, implementation and earned review/
-integration finish. Preserve exact file/upload/install/environment/lifecycle/
-collection schemas, common lock/latch/ordinal and private original/partial bytes.
+k36 owns all aggregate harness duties of k53–k85. k96 owns the replacement owner
+design. Consume nothing until the listed items finish. They are the complete
+useful design, the independent whole-design review with every integration, the
+externalised planning, the implementation and the earned review and
+integration. Preserve the exact file, upload, install, environment, lifecycle
+and collection schemas. Preserve the common lock, latch and ordinal, and the
+private original and partial bytes.

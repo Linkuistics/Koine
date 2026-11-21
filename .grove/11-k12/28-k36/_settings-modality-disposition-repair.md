@@ -2,125 +2,156 @@
 
 ## Goal
 
-Implement and evaluate the one approved activation-before-window-ordering
-correction with the shared strict harness, then record its finite outcome and
-reconcile every original ordinary-scenario duty. The historical handle remains
-stable; native causal scope belongs to k12.
+Implement the one approved activation-before-window-ordering correction, and
+evaluate it with the shared strict harness. Then record its finite outcome and
+reconcile every original ordinary-scenario duty. The historical handle stays
+stable. Native causal scope belongs to k12.
 
 ## Done when
 
-This scope completes only after the implemented/reviewed harness and finite
-caller, actual readiness/freeze, declared runtime outcome and full original-duty
-comparison are complete. Rejection or unavailable evidence leaves the repair
-live at k12 for an explicit next decision, never an inferred ancestor close.
+This scope completes only after four items are complete. They are the
+implemented and reviewed harness and finite caller, the actual readiness and
+freeze, the declared runtime outcome and the full original-duty comparison. A
+rejection or unavailable evidence leaves the repair live at k12 for an explicit
+next decision. It never supports an inferred close of an ancestor.
 
-Before k54 freezes a subject or requests any clone, k57 must reconcile every
-original k53/k56/k61/k66/k71/k75/k80/k85 duty against delivered source and controls,
-including k62's shared-scenario comparison and all earned reviews/integrations.
-Record per-duty evidence and resolve precise gaps through leaves before k54;
-final k36 outcome reconciliation cannot substitute for this pre-runtime check.
-Include k52's application change: verify applicable public API contracts against
-primary sources and cite non-obvious calls at their decision sites, preserving
-the reviewed preconditions, effects and OS discretion. Build/recorder success
-does not discharge this duty. Report Koine failure, test-driver failure and
-assertion NOT RUN separately throughout evaluation and final handoff.
+Before k54 freezes a subject or requests any clone, k57 must reconcile each
+original harness duty against the delivered source and controls. The duties are
+those of k53, k56, k61, k66, k71, k75, k80 and k85. The reconciliation includes
+k62's shared-scenario comparison and every earned review and integration.
+Record the evidence for each duty. Resolve precise gaps through leaves before
+k54. The final k36 outcome reconciliation cannot replace this pre-runtime check.
+
+The reconciliation includes k52's application change. Check the applicable
+public API contracts against primary sources. Cite each non-obvious call at its
+decision site, and keep the reviewed preconditions, effects and OS discretion. A
+successful build or recorder run does not discharge this duty. Report Koine
+failure, test-driver failure and assertion NOT RUN separately throughout the
+evaluation and the final handoff.
 
 ## Why this level exists
 
-The empirical evaluation is a distinct subgoal with a joint five-slot outcome
-and new shared transport, setup, identity and freeze context. k96 adds only the
-serialized-owner design. Remaining helper migrations, scenario adoption, prefix,
-caller and qualification are dependency-ordered siblings; another continuation
-session earns no level. k52's source build and nine recorder controls supply no
-signed subject or runtime acceptance. All E/A slots remain unrun.
+The empirical evaluation is a distinct subgoal with a joint five-slot outcome.
+It has new shared context for transport, setup, identity and freeze. k96 adds
+only the serialised-owner design. The remaining helper migrations, scenario
+adoption, prefix, caller and qualification are dependency-ordered siblings, and
+another continuation session earns no level. k52's source build and nine
+recorder controls supply no signed subject or runtime acceptance. All E and A
+slots stay unrun.
 
 ## Evaluation contract
 
 Use `docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md` and
-`ORDERING-REVIEW.md` with the inherited spec. Prepare the retained window/section,
-make one self-activation then key/front request in the same invocation. Finish
-implementation and every earned review/integration before freezing one new,
-unchanged signed bundle. Application diagnostics and native logging stay off.
+`ORDERING-REVIEW.md` with the inherited spec. Prepare the retained window and
+section. Then request self-activation once, followed by one key-and-front
+request, in the same invocation. Finish the implementation and every earned
+review and integration before you freeze one new, unchanged signed bundle.
+Application diagnostics and native logging stay off.
 
-Exactly E01/E02 fresh focused guests precede separately ready A01/A02/A03 complete
-ordinary guests; only both qualified E slots admit A. No baseline, replacement,
-retry, transport-qualification guest or cap expansion. Qualified recurrence
-rejects the correction. Any required failure or unavailable observation stops
-all later slots and prevents acceptance; preserve partial and NOT RUN phases.
-A green sample establishes only that sample, without reliability, mechanism,
-API-violation or native-ownership claims. Workload changes prove no neutrality.
+Exactly two fresh focused guests, E01 and E02, precede the separately ready
+complete ordinary guests A01, A02 and A03. Only two qualified E slots admit the
+A set. There is no baseline, replacement, retry, transport-qualification guest
+or cap expansion. A qualified recurrence rejects the correction. Any required
+failure or unavailable observation stops all later slots and prevents
+acceptance. Preserve the partial and NOT RUN phases.
+
+A green sample establishes only that sample. It supports no reliability,
+mechanism, API-violation or native-ownership claim. Workload changes prove no
+neutrality.
 
 Keep raw single-attempt transport evidence in three classes: bounded clean
-negative state polling, one-shot commands and required evidence. Failed/nonzero/
-timeout transport never becomes a negative state or success through matching
-text, later output or retry. Launch, defaults and restart need clean submission
-plus declared consequences; restart disconnect is unavailable despite later boot.
-If required completion is demonstrably infeasible, hold before E01 for a new
-decision. Typed WINDOW_NOT_FOUND/ELEMENT_NOT_FOUND/TEXT_NOT_FOUND or CLI 3 are
-unavailable, not clean list-shaped negatives. Evidence class admits only reviewed
-collection/exact-stop operations; `snapshot --open-menu` is input. Classify free
-exec collection commands for read-only behavior.
+negative state polling, one-shot commands and required evidence. A failed,
+nonzero or timed-out transport never becomes a negative state or a success.
+Matching text, later output or a retry cannot change it. Launch, defaults and
+restart need a clean submission and their declared consequences. A restart
+disconnect is unavailable even after a later boot. If required completion is
+demonstrably infeasible, hold before E01 for a new decision.
 
-Preserve physical input order, read counts, sleeps, polling bounds, assertions
-and one-attempt semantics. TextEdit setup positively establishes same PID, idle
-Untitled standard window, unchanged observable geometry and no menu/dialog/sheet
-before each selection. Missing setup is unavailable. Audit title/identity on the
-original front/focus list; screenshots supplement structured evidence. Zero-window
-recurrence additionally requires clean same-process liveness; process loss is a
-separate assertion failure and missing liveness unresolved. No invented window ID.
+A typed WINDOW_NOT_FOUND, ELEMENT_NOT_FOUND or TEXT_NOT_FOUND result or CLI
+status 3 is unavailable. It is not a clean list-shaped negative. The evidence
+class admits only reviewed collection and exact-stop operations.
+`snapshot --open-menu` is input. Classify free exec collection commands for
+read-only behaviour.
+
+Preserve the physical input order, read counts, sleeps, polling bounds,
+assertions and one-attempt semantics. Before each selection, the TextEdit setup
+positively establishes four facts. They are the same PID, an idle Untitled
+standard window, unchanged observable geometry and no menu, dialog or sheet.
+Missing setup is unavailable. Audit the title and identity on the original front
+and focus list. Screenshots supplement the structured evidence.
+
+A zero-window recurrence also needs clean same-process liveness. A process loss
+is a separate assertion failure, and missing liveness is unresolved. Do not
+invent a window ID.
 
 ## Shared harness obligations and owners
 
-- k96: complete useful owner design and all design/review/integration/planning/
-  implementation/earned-review prerequisites before any k89/k81/k76 consumption.
-- k89: file/upload/environment/start/stop/inventory/collection paths and exact raw
-  schemas; uploaded bytes and installed identity; complete original/partial
-  captures under the common writer lock/latch/ordinal domain. Generic capture
-  remains refused until the checked qualification and replacement design exist.
-- k81: every remaining exec and one-shot confirmation, clean submission and
-  command-specific downstream state; exact local statuses and inner domains.
-- k76: complete caller/root adoption before every transport, signal/status
-  propagation, latch reads/failures, non-exec attempts in the same domain, whole
-  TextEdit-loop replacement without extra read, and both held-pointer controls.
-  Clean down without later clean release remains held input even without a latch;
-  failed/partial release proves nothing. INT/TERM/HUP stop input including release.
-- k67: positive setup, original-list title audit, physical/menu route and process
-  outcome distinctions throughout the complete scenario.
-- k62: exact shared prefix through TextEdit quit immediately before resize, and
-  complete shared/ordinary-duty reconciliation before k57, with earned reviews/
-  integrations and precise missing-work leaves before handoff.
-- k57: finite namespaces/clone IDs/caller, one writer and ordered receipts,
-  first-failure admission, frozen sequence manifest and per-item original/
-  installed/golden audits. Orphan holders and unsettled held input prevent stop
-  until the recorded owner is settled; no bypass/reset. One budgeted exact stop
-  plus independent inventory only; unresolved cleanup blocks every later slot.
-  Own the complete per-duty source/control and application API reconciliation
-  above before k54 freeze or clone creation, with every earned review/integration.
-- k54: actual build/sign/UUID/all-input/completed-stopped-golden freeze and
-  readiness, pinned absolute CLI/jq identity/config, per-clone spec digest and
-  endpoint before first transport; serial runtime, outcome and final handoff.
-  Consume the completed k57 reconciliation before freeze or any clone request;
-  changed source/controls reopen affected checks and earned reviews before use.
+- k96 owns the complete useful owner design. All its design, review,
+  integration, planning, implementation and earned-review prerequisites finish
+  before k89, k81 or k76 consumes anything.
+<!-- tc: depart synonym-rotation because VM start and application launch are different operations -->
+- k89 owns the file, upload, environment, start, stop, inventory and collection
+  paths and their exact raw schemas. It owns the uploaded bytes and the
+  installed identity. It owns complete original and partial captures under the
+  common writer lock, latch and ordinal domain. Generic capture stays refused
+  until the checked qualification and the replacement design exist.
+- k81 owns every remaining exec and one-shot confirmation, the clean submission
+  and the command-specific downstream state. It owns the exact local statuses
+  and inner domains.
+- k76 owns complete caller and root adoption before every transport, and signal
+  and status propagation. It owns latch reads and failures, non-exec attempts in
+  the same domain and both held-pointer controls. It replaces the whole TextEdit
+  loop without an extra read. A clean down without a later clean release stays
+  held input, even without a latch. A failed or partial release proves nothing.
+  INT, TERM and HUP stop input, including the release.
+- k67 owns the positive setup and the title audit on the original list. It also
+  owns the physical and menu route and process outcome distinctions throughout
+  the complete scenario.
+- k62 owns the exact shared prefix through the TextEdit quit, immediately before
+  resize. Before k57, it owns the complete reconciliation of shared and ordinary
+  duties. That includes earned reviews and integrations and precise leaves for
+  missing work before handoff.
+- k57 owns the finite namespaces, clone IDs and caller, one writer and ordered
+  receipts, and first-failure admission. It owns the frozen sequence manifest
+  and the per-item original, installed and golden audits. Orphan holders and
+  unsettled held input prevent stop until the recorded owner is settled. There
+  is no bypass or reset. Only one budgeted exact stop and an independent
+  inventory are allowed. Unresolved cleanup blocks every later slot. Before the
+  k54 freeze or any clone creation, k57 owns the complete per-duty source and
+  control reconciliation and the application API reconciliation above. Every
+  earned review and integration is part of it.
+- k54 owns the actual freeze and readiness: build, signature, UUID, all inputs
+  and the completed stopped golden image. It pins the absolute CLI and jq
+  identity and configuration. Before the first transport, it records each
+  clone's spec digest and endpoint. It owns the serial runtime, the outcome and
+  the final handoff. It consumes the completed k57 reconciliation before the
+  freeze or any clone request. Changed source or controls reopen the affected
+  checks and earned reviews before use.
 
 ## Availability boundaries
 
-Missing tree in any returned window makes snapshot positive evidence unavailable;
-native frequency is unknown. Omitted AXValue cannot prove required empty text.
-Keep optional-vertical and required position-y predicates and preceding reveal
-reads distinct. Empty candidate sets do not qualify selector syntax. OCR's old
-case-insensitive substring poll may stop on Don't Allow/allowed: a later missing
-exact Allow is state-failed, invalid geometry unavailable. No replacement read,
-poll, retry or wait repairs this limit. Preserve exact local signal statuses.
+A missing tree in any returned window makes positive snapshot evidence
+unavailable. The native frequency of that case is unknown. An omitted AXValue
+cannot prove required empty text. Keep the optional-vertical predicate, the
+required position-y predicate and the preceding reveal reads distinct. Empty
+candidate sets do not qualify selector syntax.
 
-Unique originals, partials, argv/predicates/responses/refusals may contain
-KOINE_VM_PASSWORD. Plan finite storage and preserve required raw bytes privately;
-do not silently redact or publish them. Original/partial and stopped-golden
-item audits remain mandatory when available, otherwise explicitly unavailable.
+The old case-insensitive substring poll of OCR may stop on "Don't Allow" or
+"allowed". A later missing exact Allow is then state-failed, and invalid
+geometry is unavailable. No replacement read, poll, retry or wait repairs this
+limit. Preserve the exact local signal statuses.
 
-`ORDERING-TRANSPORT-RESULTS.md`, `ORDERING-NONEXEC-RESULTS.md`,
+Unique originals, partials, argv, predicates, responses and refusals may contain
+KOINE_VM_PASSWORD. Plan finite storage, and preserve the required raw bytes
+privately. Do not silently redact or publish them. The original, partial and
+stopped-golden item audits stay mandatory when they are available. Otherwise
+they are explicitly unavailable.
+
+These files in the verification directory retain the completed seam evidence and
+limits: `ORDERING-TRANSPORT-RESULTS.md`, `ORDERING-NONEXEC-RESULTS.md`,
 `ORDERING-PHYSICAL-RESULTS.md`, `ORDERING-WINDOW-RESULTS.md`,
 `ORDERING-INPUT-RESULTS.md`, `ORDERING-SNAPSHOT-RESULTS.md`,
-`ORDERING-CLICK-RESULTS.md` and `ORDERING-CAPTURE-RESULTS.md` in the verification
-directory retain completed seam evidence and limits. The structural owner map
-assigns all original k36/k53–k85 aggregate duties here and details to the named
-live tasks. Current source remains unqualified for coordinated runtime.
+`ORDERING-CLICK-RESULTS.md` and `ORDERING-CAPTURE-RESULTS.md`. The structural
+owner map assigns all original aggregate duties of k36 and k53–k85 to this
+scope. It assigns their details to the named live tasks. The current source
+stays unqualified for coordinated runtime.

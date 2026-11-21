@@ -1,116 +1,157 @@
 # settings-scenario-adoption-k76
 
 ## Goal
-Complete the entire k71/k66 charter by consuming reviewed helper paths and
-adopting the exact evidence root throughout the complete ordinary scenario.
+
+Complete the entire charter of k71 and k66. Consume the reviewed helper paths,
+and adopt the exact evidence root throughout the complete ordinary scenario.
 
 ## Context
-Read the complete ancestor charters, reviewed protocol and every current helper
-report/review integration. K74/k75 are migration increments, not readiness.
+
+Read the complete ancestor charters, the reviewed protocol and every current
+helper report and review integration. k74 and k75 are migration increments, not
+readiness.
 
 ## Done when
-Every original k71 Done when holds, including exact root initialization before
-every transport; complete caller enumeration/migration and one-shot confirmations;
-no ignored nonzero/retry/stripped result/constant predicate; unchanged physical
-inputs/assertions/waits/poll bounds and all later ordinary duties. Consume K70/K73
-window helpers: replace the entire TextEdit loop plus unconditional final assertion
-once without another read. Retain structured state-failed versus unavailable/
-interrupted poll outcomes and every local nonzero. Implement complete INT/TERM/HUP
-handling with both held-point-attempt and clean-down-settling-sleep controls, no
-subsequent input/release, ordered receipts and held uncertainty for k57. Clean
-down without later clean release remains held; failed/partial release proves
-nothing. Hand untouched collection/exact containment through the same writer
-domain, including orphan-lock refusal, without bypass/reset/bare release. Show
-failing controls before repairs and passing Taskfile checks for every remaining
-family/confirmation/artifact/schema/signal. Cut whole-harness review and every
-earned integration before k62/runtime. K67 retains all positive setup/title/
-liveness outcomes; k62 retains exact prefix and complete original-duty reconciliation.
+
+- Every original k71 Done-when criterion holds. These include:
+  - exact root initialisation before every transport
+  - complete caller enumeration and migration, and one-shot confirmations
+  - no ignored nonzero status, retry, stripped result or constant predicate
+  - unchanged physical inputs, assertions, waits and poll bounds
+  - all later ordinary duties.
+- Consume the window helpers of k70 and k73. Replace the entire TextEdit loop
+  and the unconditional final assertion once, without another read.
+- Keep the structured state-failed outcome distinct from unavailable or
+  interrupted poll outcomes. Keep every local nonzero status.
+- Implement complete INT, TERM and HUP handling. It needs both controls: the
+  held-point attempt and the clean-down settling sleep. After a signal, send no
+  further input or release. Keep ordered receipts, and hold the uncertainty for
+  k57.
+- A clean down without a later clean release stays held. A failed or partial
+  release proves nothing.
+- Hand untouched collection and exact containment through the same writer
+  domain, including orphan-lock refusal. Use no bypass, reset or bare release.
+- Show failing controls before repairs. Show passing Taskfile checks for every
+  remaining family, confirmation, artifact, schema and signal.
+- Cut the whole-harness review and every earned integration before k62 and
+  runtime.
+- k67 keeps all positive setup, title and liveness outcomes. k62 keeps the exact
+  prefix and the complete original-duty reconciliation.
 
 ## Notes
-K57 finite caller and k54 readiness/runtime remain held. No VM, candidate freeze,
-historical result/causal-slot change or ancestor closure from helper checks.
 
+The k57 finite caller and the k54 readiness and runtime stay held. Helper checks
+supply no VM, candidate freeze, historical result change, causal-slot change or
+ancestor closure.
 
 ## K78 integration handoff
 
-K77 review is integrated in ORDERING-INPUT-RESULTS.md and its
-ordering-input-integration receipts. Shared scroll/click and menu chains now
-explicitly propagate the checked read failures before later input, including
-conditional contexts. A clean on-screen negative is status 1; a read failure
-with status 1 becomes error 2. Other read errors retain their status. These legacy
-reads still need strict one-attempt receipts/latching under k75/k76; this repair
-establishes no whole-scenario readiness. Preserve successful read/input counts,
-action order, waits and bounds. The original caller-chain baseline describes
-conditional harness behavior only, not parent-scenario continuation.
+ORDERING-INPUT-RESULTS.md and its ordering-input-integration receipts integrate
+the k77 review. The shared scroll, click and menu chains now explicitly
+propagate the checked read failures before later input. This includes
+conditional contexts. A clean on-screen negative is status 1. A read failure
+with status 1 becomes error 2. Other read errors keep their status.
+
+These legacy reads still need strict one-attempt receipts and latching under k75
+and k76. This repair establishes no whole-scenario readiness. Preserve the
+successful read and input counts, the action order, the waits and the bounds.
+The original caller-chain baseline describes conditional harness behaviour only,
+not parent-scenario continuation.
 
 Strict consent receipts retain the VM password, including any KOINE_VM_PASSWORD
-override, in exact argv/predicates/raw responses and potentially refusal logs.
-Secret-bearing evidence roots are private and must not be published or committed.
-Carry this restriction through migration/adoption and into k57 collection; do
-not silently redact required raw evidence or weaken text validation. Fixture
-controls use disposable synthetic text. All existing remaining duties, both
-held-pointer signal controls, whole-harness review and runtime holds remain.
+override. It appears in exact argv, predicates and raw responses, and possibly
+in refusal logs. Secret-bearing evidence roots are private. Do not publish or
+commit them. Carry this restriction through migration and adoption and into the
+k57 collection. Do not silently redact required raw evidence or weaken text
+validation.
+
+Fixture controls use disposable synthetic text. All existing remaining duties,
+both held-pointer signal controls, the whole-harness review and the runtime
+holds stay.
 
 ## K83 snapshot review integration handoff
 
-K82 review is integrated by k83 in
+k83 integrates the k82 review in
 `docs/verification/settings-activation/ORDERING-SNAPSHOT-RESULTS.md` and its
-`ordering-snapshot-integration/` receipts. Use `optional-vertical` for the single
-existing on_screen read: null/off-screen is clean state, but a present match
-requires finite y and nonnegative height. Use `position-y` for each existing
-required calibration/reveal element read; it needs no x/width/height/value.
-Preserve reveal's distinct preceding on_screen read, all successful read/input
-counts, waits and bounds. Do not add a second attribute-qualification read.
-Ordinary callers are still unchanged; k76 owns adoption and status propagation.
+`ordering-snapshot-integration/` receipts. Use `optional-vertical` for the
+single existing on_screen read. A null or off-screen result is clean state, but
+a present match needs a finite y and a nonnegative height. Use `position-y` for
+each existing required calibration or reveal element read. It needs no x,
+width, height or value. Preserve the distinct preceding on_screen read of
+reveal, all successful read and input counts, the waits and the bounds.
 
-All returned windows still require trees: a missing tree refuses a positive in
-another window and stops the first settling read with an unavailable latch.
-The agent's exact-frame lookup can omit a tree during movement/animation; native
-frequency is unknown. K80/k76 retain this limit for the Add-button loop; no retry
-or negative inference follows. Required empty string AXValue after cut is
-native-unverified: a failed AX copy omits value and is unavailable, never empty.
-Carry this availability limit into k76/k67 and the fixed evaluation stop rule.
-Selector checks run per platformRole candidate, not on empty candidate sets;
-syntax errors are discovered after dispatch. Use the reviewed existing boolean
-predicates; clean empty data cannot qualify a new selector.
+Do not add a second attribute-qualification read. Ordinary callers are still
+unchanged. k76 owns adoption and status propagation.
 
-Original red receipts remain intact; the report explains test 16's divergent
-baseline branch and both previously uncited receipts. Source/fixture checks
-establish no native availability or scenario readiness. K75/k71/k66 keep every
-original duty, k80 its remaining artifacts/lifecycle, k81 every exec/one-shot
-confirmation, k76 complete adoption/signals and both held-pointer controls,
-k67 positive setup/title/liveness and k62 complete prefix/duty reconciliation.
-K57/k54 and every runtime slot remain held; no VM/candidate/freeze or ancestor
-closure. Secret-bearing consent roots remain private.
+All returned windows still need trees. A missing tree refuses a positive in
+another window. It stops the first settling read with an unavailable latch. The
+agent's exact-frame lookup can omit a tree during movement or animation, and
+the native frequency is unknown. k80 and k76 keep this limit for the Add-button
+loop. No retry or negative inference follows.
+
+The required empty-string AXValue after a cut is not verified natively. A failed
+AX copy omits the value and is unavailable, never empty. Carry this availability
+limit into k76, k67 and the preset evaluation stop rule.
+
+Selector checks run per platformRole candidate, not on empty candidate sets.
+Syntax errors appear only after dispatch. Use the reviewed existing boolean
+predicates. Clean empty data cannot qualify a new selector.
+
+The original red receipts stay intact. The report explains the divergent
+baseline branch of test 16 and both receipts that it did not cite before.
+Source and fixture checks establish no native availability or scenario
+readiness. These duties stay with their owners:
+
+- k75, k71 and k66: every original duty.
+- k80: its remaining artifacts and lifecycle.
+- k81: every exec and one-shot confirmation.
+- k76: complete adoption and signals and both held-pointer controls.
+- k67: positive setup, title and liveness.
+- k62: the complete prefix and duty reconciliation.
+
+k57, k54 and every runtime slot stay held. There is no VM, candidate, freeze or
+ancestor closure. Secret-bearing consent roots stay private.
 
 ## K87 click review integration handoff
 
-Consume the current `docs/verification/settings-activation/ORDERING-CLICK-RESULTS.md`
-and k87 receipts. A clean OCR result with no exact Allow is terminal structured
-state-failed setup; invalid geometry or failed evidence remains unavailable.
-Both stop input. The unchanged CLI poll can end early on a case-insensitive
-substring such as Don't Allow or allowed, before the later exact Allow check.
-Keep this availability limit, exact signal statuses, existing actions/waits/bounds
-and every original duty above; no replacement read, new exact-match poll or retry.
-K80/k85 keep artifacts/lifecycle, k81 all exec/one-shot consequences, k76 complete
-adoption/signals/both held-pointer controls. All snapshot availability limits,
-private secret-bearing roots and k67/k62/k57/k54/runtime holds remain binding.
+Consume the current
+`docs/verification/settings-activation/ORDERING-CLICK-RESULTS.md` and the k87
+receipts. A clean OCR result with no exact Allow is a terminal structured
+state-failed setup. Invalid geometry or failed evidence stays unavailable. Both
+outcomes stop input. The unchanged CLI poll can end early on a case-insensitive
+substring such as "Don't Allow" or "allowed". It can end before the later exact
+Allow check.
+
+Keep this availability limit, the exact signal statuses, the existing actions,
+waits and bounds and every original duty above. Add no replacement read, new
+exact-match poll or retry. k80 and k85 keep the artifacts and lifecycle. k81
+keeps all exec and one-shot consequences. k76 keeps complete adoption and
+signals and both held-pointer controls. All snapshot availability limits, the
+private secret-bearing roots and the holds on k67, k62, k57, k54 and runtime
+stay binding.
 
 
 ## Contract ownership after k140
 
-The original task text above remains binding. Historical ancestor handles now
-resolve through `docs/verification/grove-tree-structure/README.md` to the retained
-owner and exact archived contract; they do not require the removed directory.
-The current additive brief chain and accepted spec amendments govern authority.
+The original task text above stays binding. Historical ancestor handles now
+resolve through `docs/verification/grove-tree-structure/README.md` to the
+retained owner and the exact archived contract. They do not need the removed
+directory. The current additive brief chain and the accepted spec amendments
+govern authority.
 
-k36 owns the whole harness and every remaining k53–k85 aggregate duty. Consume
-only after complete k96 design → independent whole-design review/integrations →
-planning → implementation → earned review/integrations. Preserve k56 common
-lock/latch/ordinal non-exec handling; k61 actual schema predicates, reviewed
-evidence-class restrictions and typed-error unavailable rules; k66 both held
-pointer controls and ordered containment; k71 whole-loop replacement with no
-extra read. Keep all original action/read counts, sleeps/polls/bounds and exact
-local statuses. Preserve private originals/partials and finite storage planning;
-secret-bearing raw argv, predicates, responses and refusals cannot be published
-or silently redacted. k36 explicitly retains snapshot/AXValue/selector/OCR limits.
+k36 owns the whole harness and every remaining aggregate duty of k53–k85.
+Consume only after the complete k96 sequence: design, independent whole-design
+review and integrations, planning, implementation, and earned review and
+integrations. Preserve these inherited duties:
+
+- k56: non-exec handling under the common lock, latch and ordinal.
+- k61: actual schema predicates, the reviewed evidence-class restrictions and
+  the typed-error unavailable rules.
+- k66: both held-pointer controls and ordered containment.
+- k71: whole-loop replacement with no extra read.
+
+Keep all original action and read counts, sleeps, polls and bounds and the exact
+local statuses. Preserve private originals and partials and the finite storage
+plan. Do not publish or silently redact secret-bearing raw argv, predicates,
+responses and refusals. k36 explicitly keeps the snapshot, AXValue, selector and
+OCR limits.

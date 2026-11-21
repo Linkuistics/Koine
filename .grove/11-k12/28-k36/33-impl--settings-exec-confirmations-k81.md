@@ -1,71 +1,117 @@
 # settings-exec-confirmations-k81
 
 ## Goal
+
 Complete k75's remaining exec and one-shot confirmation helper paths.
 
 ## Context
-Read the complete k75/k71/k66 charters, reviewed protocol and current snapshot/artifact/input/window/physical/shared handoffs. Consume only reviewed artifacts after every earned integration.
+
+Read the complete charters of k75, k71 and k66 and the reviewed protocol. Read
+the current snapshot, artifact, input, window, physical and shared handoffs.
+Consume only reviewed artifacts, after every earned integration.
 
 ## Done when
-Enumerate actual exec callers and preserve full clean one-attempt completions with command-specific predicates and exact downstream confirmations: environment/diagnostics/default values and absence, process/executable/start/endpoint launch identity, silent launch and running reopen, clean TextEdit quit plus absence, clean restart plus changed boot, enrollment/System Events outputs, exact installed inventory and final port refusal/collection. Successful negative is complete payload data; failed submission is never rehabilitated by later text/state. Preserve all original assertions, inputs, waits and bounds. Demonstrated clean-completion infeasibility holds before E01 for a new decision without a qualifying guest. Show failing controls before repair and passing Taskfile checks; cut review/every earned integration before consumption. K76 owns complete root adoption/caller migration/signals and both held-pointer controls, k67/k62/k57/k54 retain their duties. Secret-bearing roots stay private. Decompose if needed, executing only the first child. No VM/candidate/freeze or acceptance.
+
+- Enumerate the actual exec callers.
+- Preserve full clean one-attempt completions with command-specific predicates
+  and exact downstream confirmations. The confirmations cover these items:
+  - environment, diagnostics and default values, and their absence
+  <!-- tc: depart synonym-rotation because the process start belongs to the launch identity, and they are not one action -->
+  - the launch identity: process, executable, start and endpoint
+  - silent launch and running reopen
+  - a clean TextEdit quit and its absence
+  - a clean restart and a changed boot
+  - enrolment and System Events outputs
+  - the exact installed inventory
+  - the final port refusal and collection.
+- A successful negative is complete payload data. Later text or state never
+  rehabilitates a failed submission.
+- Preserve all original assertions, inputs, waits and bounds.
+- If clean completion is demonstrably infeasible, hold before E01 for a new
+  decision, without a qualifying guest.
+- Show failing controls before each repair, and show passing Taskfile checks.
+  Cut the review and every earned integration before consumption.
+- k76 owns complete root adoption, caller migration, signals and both
+  held-pointer controls. k67, k62, k57 and k54 keep their duties.
+- Secret-bearing roots stay private.
+- If needed, decompose, and execute only the first child.
+- This task permits no VM, candidate, freeze or acceptance.
 
 ## K83 snapshot review integration handoff
 
-K82 review is integrated by k83 in
+k83 integrates the k82 review in
 `docs/verification/settings-activation/ORDERING-SNAPSHOT-RESULTS.md` and its
-`ordering-snapshot-integration/` receipts. Use `optional-vertical` for the single
-existing on_screen read: null/off-screen is clean state, but a present match
-requires finite y and nonnegative height. Use `position-y` for each existing
-required calibration/reveal element read; it needs no x/width/height/value.
-Preserve reveal's distinct preceding on_screen read, all successful read/input
-counts, waits and bounds. Do not add a second attribute-qualification read.
-Ordinary callers are still unchanged; k76 owns adoption and status propagation.
+`ordering-snapshot-integration/` receipts. Use `optional-vertical` for the
+single existing on_screen read. A null or off-screen result is clean state, but
+a present match needs a finite y and a nonnegative height. Use `position-y` for
+each existing required calibration or reveal element read. It needs no x,
+width, height or value. Preserve the distinct preceding on_screen read of
+reveal, all successful read and input counts, the waits and the bounds.
 
-All returned windows still require trees: a missing tree refuses a positive in
-another window and stops the first settling read with an unavailable latch.
-The agent's exact-frame lookup can omit a tree during movement/animation; native
-frequency is unknown. K80/k76 retain this limit for the Add-button loop; no retry
-or negative inference follows. Required empty string AXValue after cut is
-native-unverified: a failed AX copy omits value and is unavailable, never empty.
-Carry this availability limit into k76/k67 and the fixed evaluation stop rule.
-Selector checks run per platformRole candidate, not on empty candidate sets;
-syntax errors are discovered after dispatch. Use the reviewed existing boolean
-predicates; clean empty data cannot qualify a new selector.
+Do not add a second attribute-qualification read. Ordinary callers are still
+unchanged. k76 owns adoption and status propagation.
 
-Original red receipts remain intact; the report explains test 16's divergent
-baseline branch and both previously uncited receipts. Source/fixture checks
-establish no native availability or scenario readiness. K75/k71/k66 keep every
-original duty, k80 its remaining artifacts/lifecycle, k81 every exec/one-shot
-confirmation, k76 complete adoption/signals and both held-pointer controls,
-k67 positive setup/title/liveness and k62 complete prefix/duty reconciliation.
-K57/k54 and every runtime slot remain held; no VM/candidate/freeze or ancestor
-closure. Secret-bearing consent roots remain private.
+All returned windows still need trees. A missing tree refuses a positive in
+another window. It stops the first settling read with an unavailable latch. The
+agent's exact-frame lookup can omit a tree during movement or animation, and
+the native frequency is unknown. k80 and k76 keep this limit for the Add-button
+loop. No retry or negative inference follows.
+
+The required empty-string AXValue after a cut is not verified natively. A failed
+AX copy omits the value and is unavailable, never empty. Carry this availability
+limit into k76, k67 and the preset evaluation stop rule.
+
+Selector checks run per platformRole candidate, not on empty candidate sets.
+Syntax errors appear only after dispatch. Use the reviewed existing boolean
+predicates. Clean empty data cannot qualify a new selector.
+
+The original red receipts stay intact. The report explains the divergent
+baseline branch of test 16 and both receipts that it did not cite before.
+Source and fixture checks establish no native availability or scenario
+readiness. These duties stay with their owners:
+
+- k75, k71 and k66: every original duty.
+- k80: its remaining artifacts and lifecycle.
+- k81: every exec and one-shot confirmation.
+- k76: complete adoption and signals and both held-pointer controls.
+- k67: positive setup, title and liveness.
+- k62: the complete prefix and duty reconciliation.
+
+k57, k54 and every runtime slot stay held. There is no VM, candidate, freeze or
+ancestor closure. Secret-bearing consent roots stay private.
 
 ## K87 click review integration handoff
 
-Consume the current `docs/verification/settings-activation/ORDERING-CLICK-RESULTS.md`
-and k87 receipts. A clean OCR result with no exact Allow is terminal structured
-state-failed setup; invalid geometry or failed evidence remains unavailable.
-Both stop input. The unchanged CLI poll can end early on a case-insensitive
-substring such as Don't Allow or allowed, before the later exact Allow check.
-Keep this availability limit, exact signal statuses, existing actions/waits/bounds
-and every original duty above; no replacement read, new exact-match poll or retry.
-K80/k85 keep artifacts/lifecycle, k81 all exec/one-shot consequences, k76 complete
-adoption/signals/both held-pointer controls. All snapshot availability limits,
-private secret-bearing roots and k67/k62/k57/k54/runtime holds remain binding.
+Consume the current
+`docs/verification/settings-activation/ORDERING-CLICK-RESULTS.md` and the k87
+receipts. A clean OCR result with no exact Allow is a terminal structured
+state-failed setup. Invalid geometry or failed evidence stays unavailable. Both
+outcomes stop input. The unchanged CLI poll can end early on a case-insensitive
+substring such as "Don't Allow" or "allowed". It can end before the later exact
+Allow check.
+
+Keep this availability limit, the exact signal statuses, the existing actions,
+waits and bounds and every original duty above. Add no replacement read, new
+exact-match poll or retry. k80 and k85 keep the artifacts and lifecycle. k81
+keeps all exec and one-shot consequences. k76 keeps complete adoption and
+signals and both held-pointer controls. All snapshot availability limits, the
+private secret-bearing roots and the holds on k67, k62, k57, k54 and runtime
+stay binding.
 
 
 ## Contract ownership after k140
 
-The original task text above remains binding. Historical ancestor handles now
-resolve through `docs/verification/grove-tree-structure/README.md` to the retained
-owner and exact archived contract; they do not require the removed directory.
-The current additive brief chain and accepted spec amendments govern authority.
+The original task text above stays binding. Historical ancestor handles now
+resolve through `docs/verification/grove-tree-structure/README.md` to the
+retained owner and the exact archived contract. They do not need the removed
+directory. The current additive brief chain and the accepted spec amendments
+govern authority.
 
-k36 owns the whole harness; this task owns all remaining exec/one-shot clean
-submission and command-specific confirmation duties from k75/k80/k85, including
-inner-tool statuses/domains. The full k96 design → independent whole-design
-review/integrations → planning → implementation → earned review/integrations
-sequence must finish before consumption. Preserve exact-Allow OCR distinctions,
-unchanged substring-poll limit and exact local signal statuses. Required clean
-completion infeasibility holds before E01, even if later output looks successful.
+k36 owns the whole harness. This task owns all remaining duties of k75, k80 and
+k85 for exec and one-shot clean submission and command-specific confirmation.
+These include the statuses and domains of inner tools. The full k96 sequence
+must finish before consumption: design, independent whole-design review and
+integrations, planning, implementation, and earned review and integrations.
+Preserve the exact-Allow OCR distinctions, the unchanged substring-poll limit
+and the exact local signal statuses. If required clean completion is
+infeasible, hold before E01, even if later output looks successful.
