@@ -221,3 +221,22 @@ rendered string. Pass the `text` of a frame record to `click_centre`.
 
 No System Events read is in the evidence class. A front-application read in a
 failure message therefore needs the read before the failure latches.
+
+## K152 one-shot handoff
+
+k152 supplies the checked one-shot submissions and their confirmations. Read
+`docs/verification/settings-activation/ORDERING-ONE-SHOT-RESULTS.md`. Consume
+it only after its review and every earned integration.
+
+Its caller table names one facade function for each one-shot caller. Each
+submission is sent once in the one-shot class, and a failed submission latches
+the root. The protocol adds one launch identity read after each launch and the
+reopen, and one TextEdit absence read after the quit. Pass the identity record
+of the silent launch to the reopen confirmation. Pass the clean `boot` record
+from before the restart to `restart_guest`.
+
+`KOINE_SETTINGS_TRACE=1` now becomes `refuse_guest_trace_defaults`, which
+latches and sends nothing. Keep each existing confirmation of a setup
+submission in its existing position. These are the signature verification,
+the TextEdit window poll, the Allow prompt with the System Events check and
+the Add button poll.

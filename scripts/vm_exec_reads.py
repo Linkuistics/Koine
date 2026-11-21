@@ -34,6 +34,8 @@ DIAGNOSTIC_KEYS = (
 PROCESS_PATTERNS = {
     "executable": f"{INSTALLED}/Contents/MacOS",
     "bundle": INSTALLED,
+    # The one absence read after the TextEdit quit.
+    "textedit": "/System/Applications/TextEdit.app/Contents/MacOS",
 }
 MANAGED = "/Library/Managed Preferences"
 # The four any-user domains of the standard search list, after the four
@@ -94,6 +96,10 @@ def endpoint_parse(stdout: str, _: list[str]) -> dict[str, object]:
     if head != "PRESENT" or not separator:
         raise ReadError("expected ABSENT or PRESENT and the descriptor")
     lines(stdout)
+    return {"present": True, "descriptor": descriptor_fields(body)}
+
+
+def descriptor_fields(body: str) -> dict[str, object]:
     try:
         value: object = json.loads(
             body, object_pairs_hook=unique_object, parse_constant=reject_constant
@@ -121,7 +127,7 @@ def endpoint_parse(stdout: str, _: list[str]) -> dict[str, object]:
         and descriptor["contractVersion"] != ""
     ):
         raise ReadError("descriptor fields differ from the version-1 schema")
-    return {"present": True, "descriptor": descriptor}
+    return descriptor
 
 
 # --- process --------------------------------------------------------------
@@ -814,6 +820,188 @@ def enrol_arguments(arguments: list[str]) -> bool:
     )
 
 
+# --- launch identity ------------------------------------------------------
+
+EXECUTABLE = f"{INSTALLED}/Contents/MacOS/Koine"
+# The guest Python reads the kernel's record of the descriptor's PID. ps prints
+# argv[0], which the process sets, so it cannot give the executable.
+# libproc.h declares proc_pidpath(pid, buffer, size) and proc_pidinfo(pid,
+# flavor, arg, buffer, size). sys/proc_info.h gives PROC_PIDTBSDINFO = 3,
+# PROC_PIDPATHINFO_MAXSIZE = 4 * MAXPATHLEN and the proc_bsdinfo fields below,
+# which end in the start time in seconds and microseconds. Host SDK digests:
+# libproc.h 246d8770…, sys/proc_info.h e427fa96…. Each call fails with ESRCH
+# for a PID that no longer exists, which is the clean fact "no process". Two
+# reads of the start time around the path read reject a PID reused between
+# them. The script holds no apostrophe, because the shell quotes it.
+IDENTITY_SCRIPT = """import ctypes, errno, json, sys
+u32 = ctypes.c_uint32
+class Info(ctypes.Structure):
+    _fields_ = [(n, u32) for n in ("flags", "status", "xstatus", "pid", "ppid",
+        "uid", "gid", "ruid", "rgid", "svuid", "svgid", "rfu")] + [
+        ("comm", ctypes.c_char * 16), ("name", ctypes.c_char * 32)] + [
+        (n, u32) for n in ("nfiles", "pgid", "pjobc", "tdev", "tpgid")] + [
+        ("nice", ctypes.c_int32), ("sec", ctypes.c_uint64), ("usec", ctypes.c_uint64)]
+lib = ctypes.CDLL("/usr/lib/libSystem.B.dylib", use_errno=True)
+text = open(sys.argv[1], encoding="utf-8").read()
+pid = json.loads(text).get("pid")
+if type(pid) is not int or pid <= 0:
+    sys.exit(3)
+def info():
+    value = Info()
+    size = lib.proc_pidinfo(pid, 3, 0, ctypes.byref(value), ctypes.sizeof(value))
+    if size == ctypes.sizeof(value):
+        return value
+    if size <= 0 and ctypes.get_errno() == errno.ESRCH:
+        return None
+    sys.exit(4)
+def path():
+    buffer = ctypes.create_string_buffer(4096)
+    size = lib.proc_pidpath(pid, buffer, 4096)
+    if size > 0:
+        return buffer.raw[:size].decode("utf-8")
+    if ctypes.get_errno() == errno.ESRCH:
+        return None
+    sys.exit(5)
+first, executable, second = info(), path(), info()
+process = None
+if first is not None and executable is not None and second is not None:
+    if (first.pid, first.sec, first.usec) != (second.pid, second.sec, second.usec):
+        sys.exit(6)
+    process = {"pid": first.pid, "start_sec": first.sec,
+        "start_usec": first.usec, "executable": executable}
+print(json.dumps({"descriptor_text": text, "process": process}, sort_keys=True))
+"""
+
+
+def identity_command(_: list[str]) -> str:
+    pattern = PROCESS_PATTERNS["executable"]
+    # The pgrep selection precedes the kernel read, as in the process read.
+    return (
+        f"f={DESCRIPTOR}; if [ ! -e \"$f\" ]; then printf 'ABSENT'; exit 0; fi; "
+        f"p=$(pgrep -f '{pattern}'); s=$?; "
+        'if [ "$s" -gt 1 ]; then exit "$s"; fi; '
+        "printf 'KOINE-SELECTED %s\\n' \"$(printf '%s' \"$p\" | tr '\\n' ,)\"; "
+        f"python3 -I -c '{IDENTITY_SCRIPT}' \"$f\""
+    )
+
+
+IDENTITY_SELECTED = re.compile(r"KOINE-SELECTED ((?:[1-9][0-9]*(?:,[1-9][0-9]*)*)?)")
+
+
+def identity_parse(stdout: str, _: list[str]) -> dict[str, object]:
+    if stdout == "ABSENT":
+        return {"present": False, "joined": False}
+    rows = lines(stdout)
+    selection = IDENTITY_SELECTED.fullmatch(rows[0])
+    if selection is None or len(rows) != 2:
+        raise ReadError("expected the selected PID set and one identity line")
+    selected = [int(pid) for pid in selection.group(1).split(",") if pid]
+    if len(set(selected)) != len(selected):
+        raise ReadError("the selection repeats a PID")
+    try:
+        value: object = json.loads(
+            rows[1], object_pairs_hook=unique_object, parse_constant=reject_constant
+        )
+    except json.JSONDecodeError as error:
+        raise ReadError(f"identity line is not one JSON object: {error}") from None
+    if not isinstance(value, dict):
+        raise ReadError("identity line is not one JSON object")
+    answer = cast(dict[str, object], value)
+    text, process = answer.get("descriptor_text"), answer.get("process")
+    if sorted(answer) != ["descriptor_text", "process"] or not isinstance(text, str):
+        raise ReadError("identity line differs from the script's schema")
+    descriptor = descriptor_fields(text)
+    if process is not None:
+        if not isinstance(process, dict):
+            raise ReadError("identity process is not an object")
+        entry = cast(dict[str, object], process)
+        start_usec = entry.get("start_usec")
+        if not (
+            sorted(entry) == ["executable", "pid", "start_sec", "start_usec"]
+            and entry["pid"] == descriptor["pid"]
+            and integer(entry["start_sec"])
+            and cast(int, entry["start_sec"]) > 0
+            and integer(start_usec)
+            and 0 <= cast(int, start_usec) < 1_000_000
+            and isinstance(entry["executable"], str)
+            and entry["executable"].startswith("/")
+        ):
+            raise ReadError("identity process differs from the script's schema")
+    joined = (
+        isinstance(process, dict)
+        and cast(dict[str, object], process)["executable"] == EXECUTABLE
+        and selected == [descriptor["pid"]]
+    )
+    return {
+        "present": True,
+        "selected": selected,
+        "descriptor": descriptor,
+        "process": process,
+        "joined": joined,
+    }
+
+
+# --- one-shot submissions -------------------------------------------------
+
+# Each legacy one-shot command, unchanged, and its exact clean stdout. The agent
+# waits for the bash process only, so a background job leaves empty stdout.
+# https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/agents/macos/Sources/TestAnywareAgent/ProcessRunner.swift
+SUBMISSIONS: dict[str, tuple[str, str]] = {
+    # install_app in vm-verify-lib.sh.
+    "extract-bundle": ("ditto -x -k /tmp/Koine.zip /Applications", ""),
+    # The first launch, the silent launch and the reopen of vm-verify-menu-bar.sh.
+    "open-koine": (f"open {INSTALLED}", ""),
+    "open-textedit": ("open -a TextEdit", ""),
+    "quit-textedit": (
+        "osascript -e 'tell application \"TextEdit\" to quit saving no'",
+        "",
+    ),
+    # grant_system_events_automation in vm-verify-lib.sh.
+    "request-automation": (
+        (
+            'nohup osascript -e \'tell application "System Events" to get name of '
+            "every process' >/dev/null 2>&1 &"
+        ),
+        "",
+    ),
+    # grant_accessibility in vm-verify-desktop-lib.sh.
+    "open-accessibility-pane": (
+        (
+            'open "x-apple.systempreferences:com.apple.preference.security'
+            '?Privacy_Accessibility"'
+        ),
+        "",
+    ),
+    # shutdown.c on the `now` path skips the fork, prints these two lines, calls
+    # reboot3 and exits 0 through finish(0) if that call returns. The lock
+    # failure path exits 0 after the first line only. The agent strips the
+    # trailing CR LF, and BEL is not whitespace. The password is the legacy one.
+    # https://github.com/apple-oss-distributions/system_cmds/blob/main/shutdown/shutdown.c
+    "restart": (
+        "echo admin | sudo -S shutdown -r now",
+        "Shutdown NOW!\n\r\nSystem shutdown time has arrived\x07\x07",
+    ),
+}
+
+
+def submission_read(name: str) -> Read:
+    command, clean = SUBMISSIONS[name]
+
+    def parse(stdout: str, _: list[str]) -> dict[str, object]:
+        if stdout != clean:
+            raise ReadError(f"submission {name} printed other stdout")
+        return {"submitted": True, "stdout": stdout}
+
+    return Read(
+        lambda _: command,
+        parse,
+        no_arguments,
+        False,
+        f"submission {name} sends input",
+        one_shot=True,
+    )
+
+
 # --- the table ------------------------------------------------------------
 
 
@@ -896,6 +1084,15 @@ READS: dict[str, Read] = {
         "the enrolment sends a grant request",
         one_shot=True,
     ),
+    # Python can raise the Command Line Tools prompt where they are absent.
+    "launch-identity": Read(
+        identity_command,
+        identity_parse,
+        no_arguments,
+        False,
+        "python3 can raise the Command Line Tools prompt",
+    ),
+    **{name: submission_read(name) for name in SUBMISSIONS},
 }
 
 

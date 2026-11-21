@@ -38,9 +38,10 @@ def next_answer() -> tuple[int, bool, int, str]:
             int(exit_code),
             timed_out == "true",
             int(cli),
-            Path(stdout_file).read_text(),
+            # Bytes, so a CR in an answer survives, as in the agent's file.
+            Path(stdout_file).read_bytes().decode("utf-8"),
         )
-    stdout = Path(os.environ["read_stdout"]).read_text()
+    stdout = Path(os.environ["read_stdout"]).read_bytes().decode("utf-8")
     return (
         int(os.environ.get("read_exit_code", "0")),
         os.environ.get("read_timed_out", "false") == "true",
@@ -73,9 +74,15 @@ def main() -> int:
     # The baseline wrappers send the legacy test commands. Their status comes
     # from the same guest answer, so a legacy run sees the same guest state.
     if exit_code == 0 and command.startswith("[ -e "):
-        exit_code, stdout = (0 if stdout.startswith("PRESENT") else 1), ""
+        # A launch identity answer also names a present descriptor.
+        present = stdout.startswith(("PRESENT", "KOINE-SELECTED"))
+        exit_code, stdout = (0 if present else 1), ""
     elif exit_code == 0 and command.startswith("! pgrep -f "):
         exit_code, stdout = (0 if stdout == "NONE" else 1), ""
+    elif exit_code == 0 and command == "sysctl -n kern.boottime":
+        # A successful sysctl writes nothing to stderr, and the legacy guest
+        # merges stderr into the boot value it compares.
+        stderr = ""
     elif (
         exit_code == 0
         and command.startswith("osascript -e ")

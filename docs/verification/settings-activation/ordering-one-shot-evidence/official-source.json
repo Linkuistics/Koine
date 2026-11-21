@@ -1,0 +1,32 @@
+{
+  "testanyware": {
+    "tag": "v2.7.0",
+    "commit": "65bc05c91cc5d2a6e3d4aa8f81cb2c7c7712fa03",
+    "method": "Read immutable local objects with jj file show at the tag.",
+    "files": {
+      "agents/macos/Sources/TestAnywareAgent/ProcessRunner.swift": "f9401669408f532aeafdcc277ff7553080b42e7c6d462abf8f59b04a84d86340",
+      "cli-rs/crates/testanyware-agent-client/src/lib.rs": "af438f8d15650d4f7f23f1a0c4cc6c7948339bba209bcbd24b8c1dc352dce48a",
+      "cli-rs/crates/testanyware-cli/src/commands/file.rs": "909cc1b6bdeda70ebaf84b09b3656f29f928dee4326cf31d98cda00f59d9be7b",
+      "cli-rs/crates/testanyware-vm/src/golden.rs": "079b42fc7808ec1be524aab328cfa67e8711a73dc35684ff5961416e6e554102"
+    },
+    "decisions": {
+      "ProcessRunner.swift": "runShell waits for the bash process only, writes stdout to a temporary file and removes trailing \\s+",
+      "lib.rs": "open() makes one connector.connect() per request, with no retry; a failed dial is CONNECTION_REFUSED",
+      "golden.rs": "provision_agent installs the agent as a per-user LaunchAgent in ~/Library/LaunchAgents"
+    }
+  },
+  "apple_shutdown": {
+    "url": "https://raw.githubusercontent.com/apple-oss-distributions/system_cmds/main/shutdown/shutdown.c",
+    "method": "Read through a fetch on 2026-11-22 from branch main. The fetch kept no bytes, so no digest exists. The guest build is not pinned to this revision.",
+    "decisions": "The now path skips the fork, prints Shutdown NOW! and System shutdown time has arrived with two BEL characters, calls reboot3, and reaches finish(0), exit 0, if that call returns. A failed reserve_reboot exits 0 through finish(0) after the first line only."
+  },
+  "host_sdk": {
+    "path": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk",
+    "files": {
+      "usr/include/libproc.h": "246d87709fc6b9157ce5cf3c475656ac48e0e1ae8bbdc46cf45acd34294448cd",
+      "usr/include/sys/proc_info.h": "e427fa96b348537b21552b9de71e01039410bcad2cedee5584c5e5fddafd70fc"
+    },
+    "decisions": "libproc.h declares proc_pidpath and proc_pidinfo; sys/proc_info.h defines PROC_PIDTBSDINFO 3, PROC_PIDPATHINFO_MAXSIZE 4*MAXPATHLEN and struct proc_bsdinfo ending in pbi_start_tvsec and pbi_start_tvusec"
+  },
+  "host_sw_vers": "ProductName: macOS ProductVersion: 27.2.1 BuildVersion: 26B131"
+}

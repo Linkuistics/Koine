@@ -1,0 +1,82 @@
+# command: KOINE_ONE_SHOT_BASELINE=1 bats Tests/scripts/vm-exec-one-shot-evidence.bats
+# revision of scripts/: 58a1f7b274a1d4b9731b977001e523869e1ff68a
+# started: 2026-11-21T15:36:32Z
+# subjects
+fd13d0862dea7fd23b1b3c66540b9ed53f4d514cc26237ddc1086584bc8e23ca  scripts/vm-guest-exec.py
+d9540371ce2cbfd6a717ce8e4243346f4af630d43c6421fcd919b1c78ed2e785  scripts/vm-guest-exec-lib.sh
+2c747fde48fc0a4a9534a3554ebec0401cebfa1ed5877cb9288eaadf1450b4ac  scripts/vm_exec_reads.py
+31fdedc5a025bfa5e18744f63873e299a72cfdd69cf0e4f45976282117afcbfd  scripts/vm-verify-lib.sh
+65ded2d89f7069130f048cc1dda391736a63fdc12e8d1ac8e9d4d0fbfa5b61b8  scripts/vm-verify-menu-bar.sh
+22f7c7026a9f3f7706783f6da56f517b468697eaad9e1fcd5f0570ee72932452  scripts/vm-verify-desktop-lib.sh
+c4694aadb6f22ed7655f9db1861583bc121dd940b96fa9e7d2187b79d54ff0dd  Tests/scripts/vm-exec-one-shot-evidence.bats
+607ae1be65a1b53883628e94c4e1eec2f16eb662fdfbdf36cb5be76adf68ae33  Tests/scripts/fixtures/exec-read-cli.py
+# output
+1..16
+not ok 1 submissions admit only the one-shot class and take no arguments
+# (in test file Tests/scripts/vm-exec-one-shot-evidence.bats, line 191)
+#   `grep -q 'needs the one-shot class' "${read_root}/refusals.jsonl"' failed
+# diagnostic: request=read-poll submit restart status=2 calls=0
+not ok 2 each submission sends its legacy command once and keeps a clean receipt
+# (in test file Tests/scripts/vm-exec-one-shot-evidence.bats, line 212)
+#   `jq -e --arg name "${name}" '.class == "one-shot" and .read == $name' "${read_root}/000001/request.json"' failed with status 2
+# diagnostic: name=restart status=0 calls=1 output=
+# jq: error: Could not open file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-PiXOd5/test/2/submit-1/000001/request.json: No such file or directory
+not ok 3 a timeout, a guest failure or a transport failure of a submission is unavailable and sent once
+# (in test file Tests/scripts/vm-exec-one-shot-evidence.bats, line 234)
+#   `[[ "${status}" == 125 && "$(calls)" == 1 && ! -e "${read_root}/000001/read.json" ]]' failed
+# diagnostic: name=open-koine failure=1 false 0 status=0 calls=1
+not ok 4 other stdout from a submission is unavailable
+# (in test file Tests/scripts/vm-exec-one-shot-evidence.bats, line 250)
+#   `[[ "${status}" == 125 && "$(calls)" == 1 ]]' failed
+# diagnostic: row=open-koine|LSOpenURLsWithRole() failed status=0 calls=1
+not ok 5 the launch confirmation joins the descriptor, the only selected process, its executable and its start
+# (in test file Tests/scripts/vm-exec-one-shot-evidence.bats, line 261)
+#   `jq -e '.joined and .process.start_usec == 250000 and .descriptor.instanceId == "inst-1"' <<<"${output}"' failed with status 4
+# diagnostic: status=0 calls=1 output=
+not ok 6 a stale descriptor, a second process or another executable is a clean mismatch
+# (in test file Tests/scripts/vm-exec-one-shot-evidence.bats, line 281)
+#   `[[ "${status}" == 1 && "$(calls)" == 1 && ! -e "${read_root}/unavailable" ]]' failed
+# diagnostic: index=1 status=0 calls=1 output=
+not ok 7 a malformed identity answer is unavailable
+# (in test file Tests/scripts/vm-exec-one-shot-evidence.bats, line 301)
+#   `[[ "${status}" == 125 && "$(calls)" == 1 ]]' failed
+# diagnostic: index=1 status=0 calls=1
+not ok 8 a reopen keeps the same process: instance, PID, start and executable
+# (in test file Tests/scripts/vm-exec-one-shot-evidence.bats, line 313)
+#   `[[ "${status}" == 0 && "$(calls)" == 2 ]]' failed
+# diagnostic: status=0 calls=1 output=
+not ok 9 the TextEdit quit needs a clean submission and then one clean absence read
+# (in test file Tests/scripts/vm-exec-one-shot-evidence.bats, line 331)
+#   `[[ "${status}" == 0 && "$(calls)" == 2 ]]' failed
+# diagnostic: status=0 calls=1 output=synthetic guest diagnostic
+not ok 10 a failed TextEdit quit reads nothing, and an absence cannot make it clean
+# (in test file Tests/scripts/vm-exec-one-shot-evidence.bats, line 349)
+#   `[[ "${status}" == 125 && "$(calls)" == 1 ]]' failed
+# diagnostic: failure=1 false 0 status=0 calls=1
+not ok 11 the restart waits 30 seconds and polls the boot five seconds apart until it changes
+# (in test file Tests/scripts/vm-exec-one-shot-evidence.bats, line 362)
+#   `jq -e '.sec == 1795271000 and .usec == 450002' <<<"${output}"' failed with status 4
+# diagnostic: status=0 calls=4 sleeps=30 5 5  output=
+not ok 12 a failed restart submission is unavailable even if the boot later changes
+# (in test file Tests/scripts/vm-exec-one-shot-evidence.bats, line 376)
+#   `[[ "${status}" == 125 && "$(calls)" == 1 && -z "$(sleeps)" ]]' failed
+# diagnostic: failure=-1 true 0 status=0 calls=2 sleeps=30
+not ok 13 a refused connection during the boot poll stops it at once, even before a changed boot
+# (in test file Tests/scripts/vm-exec-one-shot-evidence.bats, line 387)
+#   `[[ "${status}" == 125 && "$(calls)" == 3 && "$(sleeps)" == "30 5 " ]]' failed
+# diagnostic: status=0 calls=4 sleeps=30 5 5
+not ok 14 an unchanged boot for sixty reads is a state failure
+# (in test file Tests/scripts/vm-exec-one-shot-evidence.bats, line 398)
+#   `grep -rl '"operation": "restart-boot-exhausted"' "${read_root}"/*/request.json' failed with status 2
+# diagnostic: status=125 calls=61
+# grep: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-PiXOd5/test/14/evidence/*/request.json: No such file or directory
+not ok 15 the restart refuses a boot argument that is not a boot record, before it sends anything
+# (in test file Tests/scripts/vm-exec-one-shot-evidence.bats, line 407)
+#   `[[ "${status}" == 125 && "$(calls)" == 0 && -s "${read_root}/unavailable" ]]' failed
+# diagnostic: status=125 calls=61
+not ok 16 the diagnostic defaults write is refused and latches without dispatch
+# (in test file Tests/scripts/vm-exec-one-shot-evidence.bats, line 413)
+#   `[[ "${status}" == 125 && "$(calls)" == 0 ]]' failed
+# diagnostic: status=0 calls=1
+# bats exit: 1
+# ended: 2026-11-21T15:36:44Z
