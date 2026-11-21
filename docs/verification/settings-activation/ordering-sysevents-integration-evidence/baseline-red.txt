@@ -1,0 +1,58 @@
+# command: bats Tests/scripts/vm-sysevents-evidence.bats Tests/scripts/vm-sysevents-host.bats
+# revision of scripts/vm_exec_reads.py: 222e89db7cd4ba90a064bd64603b0c2b6ac8a782
+# started: 2026-11-21T15:09:17Z
+# subjects
+a496c6972c525ef570e8e153ae2bd470deb24e845aab9377981d28ec60514ea6  scripts/vm_exec_reads.py
+fd13d0862dea7fd23b1b3c66540b9ed53f4d514cc26237ddc1086584bc8e23ca  scripts/vm-guest-exec.py
+d9540371ce2cbfd6a717ce8e4243346f4af630d43c6421fcd919b1c78ed2e785  scripts/vm-guest-exec-lib.sh
+267cede55ae25018ed6f0e25b376e4ea2e39a564fe397cc793870c279741ab41  scripts/vm-sysevents-evidence-lib.sh
+0e9adcc8db431600f99215621e046dde9bf96e18e8740549d3e5135f137e22ac  Tests/scripts/vm-sysevents-evidence.bats
+0cde4131b7edeb9950fc724dca4f7f07ff8b70f7a2735f4e9853fa73e272f4b8  Tests/scripts/vm-sysevents-host.bats
+dbf2b45a33ffb483bcc87046cfa83b809db99ca06802e0bf4cefe2213220853f  Tests/scripts/fixtures/exec-read-cli.py
+# output
+1..28
+ok 1 System Events reads refuse the evidence class and the enrolment admits only one-shot
+ok 2 row titles, label modes and enrolment arguments refuse before dispatch
+ok 3 each read sends the legacy AppleScript in source form with script errors on stdout
+ok 4 a source-form list keeps a title that holds the separator
+ok 5 an empty menu and a menu of one empty title are different lists
+ok 6 the Dock assertion reads item names, and a failed Dock read shows nothing
+ok 7 count, agent flag, label and front application keep their exact types
+ok 8 a clean absence is a negative only in the label and frame polls
+not ok 9 a denied or unformatted error with an absence number is unavailable in every poll
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 413)
+#   `[[ "${status}" == 125 && ! -e "${read_root}/000001/read.json" ]]' failed
+# diagnostic: body=12:80: execution error: System Events got an error: testanyware-agent is not allowed assistive access. (-1719)
+# KOINE-OSASCRIPT-STATUS 1 request=menu-item-label poll status=0 output={"read": "menu-item-label", "arguments": ["poll"], "absent": true, "error": -1719, "message": "System Events got an error: testanyware-agent is not allowed assistive access."}
+not ok 10 a denied label read stops the label poll at once and consumes no negative step
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 426)
+#   `[[ "${status}" == 125 && "$(calls)" == 1 && -z "$(sleeps)" ]]' failed
+# diagnostic: status=0 calls=2 sleeps=2  output={"read": "menu-item-label", "arguments": ["poll"], "absent": false, "value": "Koine"}
+not ok 11 a denied item frame read stops the item frame poll at once and consumes no negative step
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 437)
+#   `[[ "${status}" == 125 && "$(calls)" == 1 && -z "$(sleeps)" ]]' failed
+# diagnostic: status=0 calls=2 sleeps=2  output={"read": "menu-item-frame", "arguments": [], "absent": false, "value": [[1500, 0], [30, 24]], "text": "1500, 0, 30, 24"}
+not ok 12 a denied row frame read stops the row frame poll at once and consumes no negative step
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 448)
+#   `[[ "${status}" == 125 && "$(calls)" == 1 && -z "$(sleeps)" ]]' failed
+# diagnostic: status=0 calls=2 sleeps=1  output={"read": "menu-row-frame", "arguments": ["Settings\u2026"], "absent": false, "value": [[1490, 24], [200, 22]], "text": "1490, 24, 200, 22"}
+ok 13 other AppleScript errors, statuses and malformed answers are unavailable
+ok 14 a timeout, a guest failure or a transport failure is unavailable even with a clean answer
+ok 15 the label poll keeps fifteen reads two seconds apart and ends in a state failure
+ok 16 the label poll waits through an absence and a missing value and stops on the exact label
+ok 17 a failed label read stops the poll at once and is never a negative
+ok 18 the item frame poll keeps five reads two seconds apart and the legacy digit predicate
+ok 19 a partial frame passes the legacy predicate and keeps its rendering for click_centre
+ok 20 the row frame poll names its row and keeps five reads one second apart
+ok 21 the System Events check after the grant needs a complete nonempty process list
+ok 22 the enrolment needs one complete JSON line and keeps the legacy predicate
+ok 23 a malformed enrolment answer is unavailable
+ok 24 a failed enrolment submission is unavailable, and no later answer makes it clean
+ok 25 real osascript output parses for every System Events read
+ok 26 real osascript errors are an absence only in a poll and unavailable elsewhere
+not ok 27 a real denial with an absence number is unavailable in every poll
+# (in test file Tests/scripts/vm-sysevents-host.bats, line 112)
+#   `[[ "${status}" == 125 && ! -e "${BATS_TEST_TMPDIR}/r18/000001/read.json" ]]' failed
+ok 28 the real enrolment client prints one JSON line that the submission parses
+# bats exit: 1
+# ended: 2026-11-21T15:09:59Z

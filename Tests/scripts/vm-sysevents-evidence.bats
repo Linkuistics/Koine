@@ -144,9 +144,17 @@ answer() {
 # se VALUE: osascript printed VALUE in source form and exited 0.
 se() { printf '%s\nKOINE-OSASCRIPT-STATUS 0' "$1"; }
 # se_error NUMBER: osascript printed one script error on stdout and exited 1.
+# AppleScript writes -1719 with its "Invalid index." suffix and each other
+# number without it, as the host formatter does.
 se_error() {
-    printf '12:80: execution error: System Events got an error: Can’t get menu bar 2 of process "Koine". (%s)\nKOINE-OSASCRIPT-STATUS 1' "$1"
+    local suffix=''
+    [[ "$1" != -1719 ]] || suffix=' Invalid index.'
+    se_message "System Events got an error: Can’t get menu bar 2 of process \"Koine\".${suffix}" "$1"
 }
+# se_message MESSAGE NUMBER: one script error with that message and number.
+se_message() { printf '12:80: execution error: %s (%s)\nKOINE-OSASCRIPT-STATUS 1' "$1" "$2"; }
+# se_denied NUMBER: the denied Accessibility read of the review counterexample.
+se_denied() { se_message 'System Events got an error: testanyware-agent is not allowed assistive access.' "$1"; }
 
 # script ROW...: one guest answer per call, as `EXIT TIMED_OUT CLI TEXT`.
 script() {
@@ -384,6 +392,62 @@ SYSEVENTS_READS=(sysevents-processes menu-item-count 'menu-item-label value' 'me
         grep -q 'only a poll admits' "${read_root}/unavailable"
         assert_latched
     done
+}
+
+@test "a denied or unformatted error with an absence number is unavailable in every poll" {
+    local body request index=0
+    for body in "$(se_denied -1719)" "$(se_denied -1728)" \
+        "$(se_message 'System Events got an error: Can’t get menu bar 2 of process "Koine". Invalid index.' -1728)" \
+        "$(se_message 'System Events got an error: Can’t get menu bar 2 of process "Koine".' -1719)" \
+        "$(se_message 'Can’t get menu bar 2 of process "Koine". Invalid index.' -1719)" \
+        "$(se_message "System Events got an error: Can't get menu bar 2 of process \"Koine\"." -1728)" \
+        "$(se_message 'System Events got an error: Can’t get . Invalid index.' -1719)"; do
+        for request in 'menu-item-label poll' menu-item-frame 'menu-row-frame Quit Koine'; do
+            index=$((index + 1))
+            reset_root "denied-${index}"
+            answer "${body}"
+            read -r -a words <<<"${request}"
+            [[ "${words[0]}" != menu-row-frame ]] || words=(menu-row-frame 'Quit Koine')
+            run read_guest_exec "${read_root}" read-poll poll "${words[@]}"
+            echo "diagnostic: body=${body} request=${request} status=${status} output=${output}"
+            [[ "${status}" == 125 && ! -e "${read_root}/000001/read.json" ]]
+            grep -q 'does not report a missing element' "${read_root}/unavailable"
+            assert_latched
+        done
+    done
+}
+
+@test "a denied label read stops the label poll at once and consumes no negative step" {
+    # shellcheck disable=SC2329
+    sleep() { printf '%s\n' "$1" >>"${BATS_TEST_TMPDIR}/sleeps"; }
+    script "0 false 0 $(se_denied -1719)" "0 false 0 $(se '"Koine"')"
+    run await_guest_menu_label "${read_root}" label Koine
+    echo "diagnostic: status=${status} calls=$(calls) sleeps=$(sleeps) output=${output}"
+    [[ "${status}" == 125 && "$(calls)" == 1 && -z "$(sleeps)" ]]
+    grep -q 'AppleScript error -1719 does not report a missing element' "${read_root}/unavailable"
+    assert_latched
+}
+
+@test "a denied item frame read stops the item frame poll at once and consumes no negative step" {
+    # shellcheck disable=SC2329
+    sleep() { printf '%s\n' "$1" >>"${BATS_TEST_TMPDIR}/sleeps"; }
+    script "0 false 0 $(se_denied -1728)" "0 false 0 $(se '{{1500, 0}, {30, 24}}')"
+    run await_guest_menu_frame "${read_root}" item
+    echo "diagnostic: status=${status} calls=$(calls) sleeps=$(sleeps) output=${output}"
+    [[ "${status}" == 125 && "$(calls)" == 1 && -z "$(sleeps)" ]]
+    grep -q 'AppleScript error -1728 does not report a missing element' "${read_root}/unavailable"
+    assert_latched
+}
+
+@test "a denied row frame read stops the row frame poll at once and consumes no negative step" {
+    # shellcheck disable=SC2329
+    sleep() { printf '%s\n' "$1" >>"${BATS_TEST_TMPDIR}/sleeps"; }
+    script "0 false 0 $(se_denied -1719)" "0 false 0 $(se '{{1490, 24}, {200, 22}}')"
+    run await_guest_menu_frame "${read_root}" row 'Settings…'
+    echo "diagnostic: status=${status} calls=$(calls) sleeps=$(sleeps) output=${output}"
+    [[ "${status}" == 125 && "$(calls)" == 1 && -z "$(sleeps)" ]]
+    grep -q 'AppleScript error -1719 does not report a missing element' "${read_root}/unavailable"
+    assert_latched
 }
 
 @test "other AppleScript errors, statuses and malformed answers are unavailable" {

@@ -568,11 +568,29 @@ SYSEVENTS = {
 ROW_TITLE = re.compile("[A-Za-z0-9](?:[A-Za-z0-9 …]*[A-Za-z0-9…])?")
 # AppleScript Language Guide, "Error Numbers and Error Messages":
 # -1728 "The referenced object doesn't exist" and -1719 "The specified index is
-# invalid or out of range". Each other number, such as -1743 (AppleEvents.h,
+# invalid or out of range". MacErrors.h names them errAENoSuchObject and
+# errAEIllegalIndex. Each other number, such as -1743 (AppleEvents.h,
 # errAEEventNotPermitted), -1712 (timed out) or -600 (not running), is
 # unavailable.
 # https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/AppleScriptLangGuide/reference/ASLR_error_codes.html
 ABSENT_ERRORS = {-1728, -1719}
+# The number alone does not establish a missing element. System Events can
+# refuse a read without Accessibility access as -1719 with its own message:
+# R. Matsuda, "Scripting the Unscriptable", MacAdmins 2023, slide 29.
+# https://bpb-us-e1.wpmucdn.com/sites.psu.edu/dist/4/24696/files/2023/07/psumac2023-DYQWYU-Scripting-the-unscriptable-GUI-Scripts-in-macOS.pdf#page=51
+#
+# When the application gives only the number, AppleScript writes the message
+# itself: "Can’t get REFERENCE." for -1728 and "Can’t get REFERENCE. Invalid
+# index." for -1719. The host formatter does so in any locale. Only that form,
+# attributed to System Events, is an absence. Each other message is unavailable.
+ABSENCE_MESSAGES = {
+    -1728: re.compile(
+        r"System Events got an error: Can’t get \S[^\n]*(?<! Invalid index)\."
+    ),
+    -1719: re.compile(
+        r"System Events got an error: Can’t get \S[^\n]*\. Invalid index\."
+    ),
+}
 OSASCRIPT_ERROR = re.compile(r"[0-9]+:[0-9]+: execution error: ([^\n]*) \((-[0-9]+)\)")
 INTEGER = re.compile(r"-?(?:0|[1-9][0-9]*)")
 
@@ -717,6 +735,10 @@ def sysevents_read(name: str) -> Read:
             number = int(error.group(2))
             if number not in ABSENT_ERRORS:
                 raise ReadError(f"AppleScript error {number} is unavailable")
+            if ABSENCE_MESSAGES[number].fullmatch(error.group(1)) is None:
+                raise ReadError(
+                    f"AppleScript error {number} does not report a missing element"
+                )
             if not admits_absence(name, arguments):
                 raise ReadError(
                     f"AppleScript error {number} is an absence that only a poll admits"

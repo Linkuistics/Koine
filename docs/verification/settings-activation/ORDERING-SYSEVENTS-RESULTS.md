@@ -99,17 +99,32 @@ syntax error has another form, and it is unavailable.
 
 | Error number | Source | Class |
 |---|---|---|
-| -1728 | Language Guide: "The referenced object doesn't exist" | absence |
-| -1719 | Language Guide: "The specified index is invalid or out of range" | absence |
+| -1728 | Language Guide: "The referenced object doesn't exist" | absence, with the missing-element message only |
+| -1719 | Language Guide: "The specified index is invalid or out of range" | absence, with the missing-element message only |
 | -1743 | `AppleEvents.h`: `errAEEventNotPermitted` | unavailable |
 | -1712 | Language Guide: "The Apple event has timed out" | unavailable |
 | -600 | Language Guide: "Application isn't running" | unavailable |
 | any other | none | unavailable |
 
 The [AppleScript Language Guide](https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/AppleScriptLangGuide/reference/ASLR_error_codes.html)
-lists the numbers. The SDK of this host has no numeric list for -1728 or -1719.
-`AppleEvents.h` in the SDK defines -1743. The source receipt keeps the digest of
-the guide page and of the header.
+lists the numbers. `MacErrors.h` in the host SDK defines -1719 as
+`errAEIllegalIndex` and -1728 as `errAENoSuchObject`. `AppleEvents.h` in the SDK
+defines -1743. The source receipts keep the digests of the guide page and of
+both headers.
+
+The number alone does not establish a missing element. System Events can refuse
+a read without Accessibility access as -1719, with its own message. Thus an
+absence also needs the message that AppleScript writes itself when the
+application gives only the number:
+
+| Error number | Message after the number check |
+|---|---|
+| -1728 | `System Events got an error: Can’t get REFERENCE.` |
+| -1719 | `System Events got an error: Can’t get REFERENCE. Invalid index.` |
+
+REFERENCE is not empty, and it starts with a character that is not a space. Each
+other message with one of these numbers is unavailable. The section
+[Integration of review k155](#integration-of-review-k155) gives the evidence.
 
 An absence is a clean negative only in the three existing polls. They are the
 label poll, the item frame poll of `open_menu` and the row frame poll of
@@ -256,13 +271,73 @@ manual page, the guide page and the header.
 Run `mise exec -- task check:vm-sysevents-evidence`. The host evidence runs
 with `mise exec -- task check:vm-sysevents-host`.
 
+## Integration of review k155
+
+<!-- tc: depart synonym-rotation because "fixed" in the opening means set in advance, and "repair" names the product repair -->
+The [review](ORDERING-SYSEVENTS-REVIEW.md) raised one finding. k156 verified it
+against the source and repaired it. The review also found that the host SDK
+defines -1719 and -1728. The section on error numbers now states both
+definitions.
+
+### P2-1: a denied read became a clean negative
+
+The finding is a real issue. The parser of revision 2d25459b checked only the
+error number. A message that ended in -1719 or -1728 became a clean absence in
+the three polls. A denied Accessibility read then consumed a negative poll step.
+
+The review cites a primary example. On slide 29 of R. Matsuda, "Scripting the
+Unscriptable" (MacAdmins 2023), System Events refuses a read for assistive
+access with -1719. The digest of that PDF in the
+[source receipt](ordering-sysevents-integration-evidence/host-sources.json)
+matches the digest that the review recorded. The example shows macOS 13.4.1.
+It does not qualify the guest, but it disproves the meaning of the number alone.
+
+The host AppleScript formatter supplies the boundary. When a script gives only
+the number, the formatter writes "Can’t get «script»." for -1728. For -1719, it
+adds "Invalid index.". It writes the same UTF-8 apostrophe with no locale. A
+denial carries the application's own message instead. The receipt records these
+messages and the `MacErrors.h` lines.
+
+The repair keeps the number check and adds the message check of the table above.
+The message names System Events as the source. Each other message is
+unavailable, and the poll stops at once with no sleep. The repair adds no read,
+retry, wait or substitute route. Read counts, sleeps, poll bounds, statuses and
+the other classifications stay the same.
+
+### Controls of the repair
+
+The [baseline](ordering-sysevents-integration-evidence/baseline-red.txt) runs
+the repaired suites with the read table of revision 222e89db, through the
+[baseline script](ordering-sysevents-integration-evidence/baseline.sh). Five
+controls fail. In each of the three polls, the old parser published the denial
+as a clean absence. The poll then slept and completed with the next value. The
+host control raised the denial message through the real `osascript`.
+
+The [mutation receipt](ordering-sysevents-integration-evidence/mutations.jsonl)
+disables one part of the guard at a time with the
+[mutation instrument](ordering-sysevents-integration-evidence/mutate.py). K01
+removes the message check, and all five controls fail. K03 removes the System
+Events attribution, and K04 lets -1728 take the -1719 suffix. Each fails the
+control that it names.
+
+The [green run](ordering-sysevents-integration-evidence/final-verification.txt)
+runs the same 15 Taskfile checks with the k81 measurement instrument. They pass
+247 tests with no failure, and each of the 4449 subjects stayed the same during
+the run. The
+[run record](ordering-sysevents-integration-evidence/final-verification.txt.json)
+keeps the manifest digests. The suites are host evidence. They prove no guest
+output and no System Events behaviour.
+
 ## Limits
 
 The grammars follow the host `osascript` and the client source. A guest that
 prints another form holds the harness visibly as unavailable. A position or
-size that System Events gives as a real is unavailable. The classification of
--1728 and -1719 rests on an archived guide page. The host SDK does not define
-them.
+size that System Events gives as a real is unavailable.
+
+The meaning of -1728 and -1719 rests on an archived guide page and on generic SDK
+definitions. The missing-element message follows the host AppleScript formatter.
+A guest that writes another message for a missing element holds the poll visibly
+as unavailable. It never becomes a negative or a Koine failure.
 
 An absence outside a poll is unavailable. Thus an absent menu bar, an absent
 Koine process or an absent Dock list never becomes a Koine failure there. It

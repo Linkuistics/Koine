@@ -85,10 +85,10 @@ SCRIPTS
 }
 
 @test "real osascript errors are an absence only in a poll and unavailable elsewhere" {
-    local record absent='error "Can’t get menu bar 2 of process \"Koine\". Invalid index." number -1719'
+    local record absent='error "System Events got an error: Can’t get menu bar 2 of process \"Koine\". Invalid index." number -1719'
     record="$(host_read r12 "${absent}" read-poll menu-item-label poll)"
     jq -e '.absent == true and .error == -1719' <<<"${record}"
-    record="$(host_read r13 'error "Can’t get menu item." number -1728' read-poll menu-row-frame 'Quit Koine')"
+    record="$(host_read r13 'error "System Events got an error: Can’t get menu item \"Quit Koine\" of menu 1 of menu bar item 1 of menu bar 2 of process \"Koine\"." number -1728' read-poll menu-row-frame 'Quit Koine')"
     jq -e '.absent == true and .error == -1728' <<<"${record}"
     run host_read r14 "${absent}" read-poll menu-item-count
     [[ "${status}" == 125 ]]
@@ -103,6 +103,20 @@ SCRIPTS
     run host_read r17 'get (' read-poll menu-item-label poll
     [[ "${status}" == 125 ]]
     grep -q 'without one execution error' "${BATS_TEST_TMPDIR}/r17/unavailable"
+}
+
+@test "a real denial with an absence number is unavailable in every poll" {
+    # The message of the review counterexample, raised with each absence number.
+    local denied='error "System Events got an error: testanyware-agent is not allowed assistive access." number '
+    run host_read r18 "${denied}-1719" read-poll menu-item-label poll
+    [[ "${status}" == 125 && ! -e "${BATS_TEST_TMPDIR}/r18/000001/read.json" ]]
+    grep -q 'AppleScript error -1719 does not report a missing element' "${BATS_TEST_TMPDIR}/r18/unavailable"
+    run host_read r19 "${denied}-1719" read-poll menu-item-frame
+    [[ "${status}" == 125 ]]
+    grep -q 'does not report a missing element' "${BATS_TEST_TMPDIR}/r19/unavailable"
+    run host_read r20 "${denied}-1728" read-poll menu-row-frame 'Settings…'
+    [[ "${status}" == 125 ]]
+    grep -q 'AppleScript error -1728 does not report a missing element' "${BATS_TEST_TMPDIR}/r20/unavailable"
 }
 
 @test "the real enrolment client prints one JSON line that the submission parses" {

@@ -1,0 +1,44 @@
+{
+  "recorded": "2026-11-21T15:05:17Z",
+  "host": "27.2.1 (26B131)",
+  "sources": [
+    {
+      "source": "/usr/bin/osascript formatter",
+      "lines": [
+        "locale en_AU.UTF-8: osascript -s so -e error number -1728",
+        "0:18: execution error: Can’t get «script». (-1728)",
+        "locale en_AU.UTF-8: osascript -s so -e error number -1719",
+        "0:18: execution error: Can’t get «script». Invalid index. (-1719)",
+        "locale en_AU.UTF-8: osascript -s so -e item 5 of {1, 2}",
+        "0:6: execution error: Can’t get item 5 of {1, 2}. (-1728)",
+        "locale en_AU.UTF-8: osascript -s so -e error \"System Events got an error: testanyware-agent is not allowed assistive access.\" number -1719",
+        "6:86: execution error: System Events got an error: testanyware-agent is not allowed assistive access. (-1719)",
+        "locale none: osascript -s so -e error number -1728",
+        "0:18: execution error: Can’t get «script». (-1728)",
+        "locale none: osascript -s so -e error number -1719",
+        "0:18: execution error: Can’t get «script». Invalid index. (-1719)",
+        "locale none: osascript -s so -e item 5 of {1, 2}",
+        "0:6: execution error: Can’t get item 5 of {1, 2}. (-1728)",
+        "locale none: osascript -s so -e error \"System Events got an error: testanyware-agent is not allowed assistive access.\" number -1719",
+        "6:86: execution error: System Events got an error: testanyware-agent is not allowed assistive access. (-1719)"
+      ]
+    },
+    {
+      "source": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/Headers/MacErrors.h",
+      "sdk": "27.2",
+      "sha256": "0a85b7c817c459796804df88c941b60be963133812ca051860edc7b43ce9489d",
+      "lines": [
+        "694:  errAEIllegalIndex             = -1719, /* index is out of range in a put operation */",
+        "701:  errAENoSuchObject             = -1728, /* e.g.,: specifier asked for the 3rd, but there are only 2. Basically, this indicates a run-time resolution error. */",
+        "1054:  errOSACantAccess              = errAENoSuchObject, /* Signaled when an object is not found in a container*/",
+        "1088:  OSAIllegalIndex               = errAEIllegalIndex, /* Signaled when index was out of range. Specialization of errOSACantAccess*/"
+      ]
+    },
+    {
+      "source": "https://bpb-us-e1.wpmucdn.com/sites.psu.edu/dist/4/24696/files/2023/07/psumac2023-DYQWYU-Scripting-the-unscriptable-GUI-Scripts-in-macOS.pdf",
+      "page": 51,
+      "slide": 29,
+      "sha256": "0e64f5b9cf8b21c245456cf7d7e876289e71d76cb92957f73cdf77abb157b710"
+    }
+  ]
+}
