@@ -5,8 +5,8 @@
 ## Goal
 
 Triage the review of the complete ordinary Settings scenario. Apply the
-findings that block agreed acceptance or identify a material risk, and verify
-the resulting artifact before k67 consumes it.
+findings that block agreed acceptance or identify a material risk. Verify the
+resulting artifact before k67 consumes it.
 
 ## Context
 
@@ -22,14 +22,15 @@ the ordering protocol and the reviewed helper handoffs remain binding.
   integration procedure. Record the evidence and disposition of each one.
 - Required repairs and meaningful verification are complete. Preserve the
   original control records and identify every subject of fresh verification.
-- Update the report and handoffs to state the resulting behavior and limits.
-  Keep k67's setup/title/liveness work, k62's prefix and duty comparison,
-  k57's caller and containment, and k54's freeze and runtime with their owners.
+- Update the report and handoffs to state the resulting behaviour and limits.
+  Keep each later duty with its owner. k67 owns the setup, title and liveness
+  work. k62 owns the prefix and duty comparison. k57 owns the caller and
+  containment. k54 owns the freeze and runtime.
 
 ## Notes
 
 No VM, candidate, freeze or runtime slot is authorised. Preserve the exact
 successful actions, read counts, sleeps and bounds, the private originals and
 partials, the common writer domain and the keepalive withdrawal. Optional
-improvements do not widen acceptance. A finding may be rejected with evidence;
-the review's list is not this task's acceptance checklist.
+improvements do not widen acceptance. A finding may be rejected with evidence.
+The review's list is not this task's acceptance checklist.
