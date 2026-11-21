@@ -1,0 +1,305 @@
+# command: bash -c set -e; for t in check:vm-file-lifecycle-evidence check:vm-guest-exec check:vm-capture-evidence check:vm-window-evidence check:vm-input-evidence check:vm-ui-evidence check:vm-click-evidence check:vm-physical-evidence check:vm-menu-pointer check:vm-verify-start check:vm-window-resize; do echo "## task $t"; mise exec -- task "$t"; done
+# started: 2026-11-21T11:58:38Z
+# subjects before
+e69da1a0bdd15661b6d4923310291c650ea31a7cb921fddd0095bc6bafd89616  scripts/vm-guest-exec.py
+d9540371ce2cbfd6a717ce8e4243346f4af630d43c6421fcd919b1c78ed2e785  scripts/vm-guest-exec-lib.sh
+a2be1c456ae0484dc85495b51052721557d39584db90e210452b3220608fdd6e  scripts/vm_capture_artifact.py
+c672f0582f70cbcb4f6c49d9be25e32ecfb115c390b80c472bfd0dcbb46778ef  scripts/vm-file-evidence-lib.sh
+e71d4f54b0630683bcb786f206de11b0af29f38129bb871d310641865e339648  scripts/vm-lifecycle-evidence-lib.sh
+37f08b5cf997eb23e4a400e004a06bf47f872774fe4bfd97446d845e314973c9  Tests/scripts/vm-file-lifecycle-evidence.bats
+10dd29e0652445d15730e5d5e3f91976e6bf7ba4cb67297be16bb65515d72196  Tests/scripts/fixtures/file-lifecycle-cli.py
+28dde7840f7298ae615454e8fcad12aac4e2e5ec4c648d81dfd51e289d4053d1  Tests/scripts/vm-guest-exec.bats
+9c42891cf7e6152f5e45c3252fc4fca8239dcee58f1b91440612096421fa6edd  Tests/scripts/vm-capture-evidence.bats
+a993c1f7be8f8d905ebd0936834c34a6d7c73801c85b7e3c254a5594838f04ff  Taskfile.yml
+# output
+## task check:vm-file-lifecycle-evidence
+task: [check:vm-file-lifecycle-evidence] bash -n scripts/vm-file-evidence-lib.sh scripts/vm-lifecycle-evidence-lib.sh Tests/scripts/vm-file-lifecycle-evidence.bats
+task: [check:vm-file-lifecycle-evidence] shellcheck -x scripts/vm-file-evidence-lib.sh scripts/vm-lifecycle-evidence-lib.sh Tests/scripts/vm-file-lifecycle-evidence.bats
+task: [check:vm-file-lifecycle-evidence] shfmt -d -i 4 scripts/vm-file-evidence-lib.sh scripts/vm-lifecycle-evidence-lib.sh Tests/scripts/vm-file-lifecycle-evidence.bats
+task: [check:vm-file-lifecycle-evidence] python3 -m py_compile scripts/vm-guest-exec.py Tests/scripts/fixtures/file-lifecycle-cli.py
+task: [check:vm-file-lifecycle-evidence] uvx ruff@0.17.3 check scripts/vm-guest-exec.py Tests/scripts/fixtures/file-lifecycle-cli.py
+All checks passed!
+task: [check:vm-file-lifecycle-evidence] uvx ruff@0.17.3 format --check scripts/vm-guest-exec.py Tests/scripts/fixtures/file-lifecycle-cli.py
+2 files already formatted
+task: [check:vm-file-lifecycle-evidence] uvx pyright@1.1.414 scripts/vm-guest-exec.py Tests/scripts/fixtures/file-lifecycle-cli.py
+0 errors, 0 warnings, 0 informations
+task: [check:vm-file-lifecycle-evidence] bats Tests/scripts/vm-file-lifecycle-evidence.bats
+1..17
+ok 1 generic upload and download refuse every class without dispatch
+ok 2 upload records exact argv raw receipt and stable local identity before and after dispatch
+ok 3 download qualifies guest bytes against the upload record at a backend-owned path
+ok 4 a short guest write is unavailable even though the upload receipt was clean
+ok 5 a local input that changes during the transfer is unavailable and keeps both records
+ok 6 upload schema failures retain raw failure and stop later input
+ok 7 missing symlinked and directory local inputs never dispatch
+ok 8 download failures latch and never yield a qualified copy
+ok 9 download refuses an unmatched upload record and a scenario class before dispatch
+ok 10 evidence-class download remains collection after a latch and keeps the first reason
+ok 11 VM start pins the base wait and identity and qualifies the complete start payload
+ok 12 VM start schema failures are unavailable and stop later input
+ok 13 VM start refuses an implicit base and caller options before dispatch
+ok 14 inventory reads the complete list and decides running and absent from clean data
+ok 15 an unexpected inventory state or schema is unavailable and never a negative
+ok 16 exact stop is collection after a latch and a failed stop never passes
+ok 17 upload holds the shared writer lock through the CLI and a competing dispatch refuses
+## task check:vm-guest-exec
+task: [check:vm-guest-exec] bash -n scripts/vm-guest-exec-lib.sh
+task: [check:vm-guest-exec] shellcheck -x scripts/vm-guest-exec-lib.sh Tests/scripts/vm-guest-exec.bats
+task: [check:vm-guest-exec] shfmt -d -i 4 scripts/vm-guest-exec-lib.sh Tests/scripts/vm-guest-exec.bats
+task: [check:vm-guest-exec] python3 -m py_compile scripts/vm-guest-exec.py
+task: [check:vm-guest-exec] uvx ruff@0.17.3 check scripts/vm-guest-exec.py
+All checks passed!
+task: [check:vm-guest-exec] uvx ruff@0.17.3 format --check scripts/vm-guest-exec.py
+1 file already formatted
+task: [check:vm-guest-exec] uvx pyright@1.1.414 scripts/vm-guest-exec.py
+0 errors, 0 warnings, 0 informations
+task: [check:vm-guest-exec] bats Tests/scripts/vm-guest-exec.bats
+1..37
+ok 1 nonexec attempts share exec ordinals and retain exact raw JSON
+ok 2 nonexec failure blocks exec and input while collection preserves the first latch
+ok 3 failed downstream confirmation is ordinal evidence and cannot restore input
+ok 4 evidence class refuses mutating CLI actions even after a prior latch
+ok 5 latched CLI evidence still admits collection and exact clone stop
+ok 6 refusals retain each request and reason without replacing the first latch
+ok 7 nonexec rejects malformed success dry-run failed CLI and incomplete command payloads
+ok 8 exec latch and incomplete receipts gate nonexec without dispatch
+ok 9 nonexec endpoint overrides and alternate exec routes refuse before dispatch
+ok 10 VM start refuses viewer and retained-failure options before dispatch
+ok 11 caller ID overrides refuse on both VM start and endpoint routes
+ok 12 nonexec start list and screen size retain explicit call payloads and generic upload refuses
+ok 13 nonexec invalid invocations and missing backends latch before later input
+ok 14 lifecycle evidence binds the pinned identity and never accepts a different stop
+ok 15 nonexec orphan and gate confirmation exec callers share one writer lock
+ok 16 clean exec retains exact bytes, command, VM, status and ordered receipts
+ok 17 initialization refuses reuse without touching existing evidence
+ok 18 missing and wrongly typed envelope fields cannot qualify matching text
+ok 19 partial malformed duplicate and multiple JSON responses stay unavailable
+ok 20 nonzero CLI status never qualifies a clean envelope and never retries
+ok 21 timeout with matching real retained output cannot qualify
+ok 22 missing command completion marker and invalid predicates latch unavailable
+ok 23 competing writers latch unavailable before a second transport can dispatch
+ok 24 clean negative polling permits the next existing poll without a hidden retry
+ok 25 failed poll latches across command substitution and prevents all later scenario dispatch
+ok 26 disconnect followed by changed boot in collection stays unavailable and cannot relaunch
+ok 27 unfinished prior attempt blocks scenario input but allows evidence collection
+ok 28 unknown class and missing initialized subject never dispatch
+ok 29 argument failures latch initialized roots even when the status is ignored
+ok 30 direct backend argument failures latch without the shell facade
+ok 31 missing backend and unexpected backend exit leave a persistent facade latch
+ok 32 broken stdout delivery cannot publish a clean terminal receipt
+ok 33 partial or unknown terminal receipts block later scenario dispatch
+ok 34 interrupted receipt publication leaves only a partial file
+ok 35 killed adapter leaves its CLI holding the writer lock until completion
+ok 36 caught SIGINT records interruption and preserves the signal exit
+ok 37 nonexec caught SIGINT retains partial streams and a distinct signal outcome
+## task check:vm-capture-evidence
+task: [check:vm-capture-evidence] bash -n scripts/vm-capture-evidence-lib.sh Tests/scripts/vm-capture-evidence.bats
+task: [check:vm-capture-evidence] shellcheck -x scripts/vm-capture-evidence-lib.sh Tests/scripts/vm-capture-evidence.bats
+task: [check:vm-capture-evidence] shfmt -d -i 4 scripts/vm-capture-evidence-lib.sh Tests/scripts/vm-capture-evidence.bats
+task: [check:vm-capture-evidence] python3 -m py_compile scripts/vm-guest-exec.py scripts/vm_capture_artifact.py Tests/scripts/fixtures/capture-cli.py
+task: [check:vm-capture-evidence] uvx ruff@0.17.3 check scripts/vm-guest-exec.py scripts/vm_capture_artifact.py Tests/scripts/fixtures/capture-cli.py
+All checks passed!
+task: [check:vm-capture-evidence] uvx ruff@0.17.3 format --check scripts/vm-guest-exec.py scripts/vm_capture_artifact.py Tests/scripts/fixtures/capture-cli.py
+3 files already formatted
+task: [check:vm-capture-evidence] uvx pyright@1.1.414 scripts/vm-guest-exec.py scripts/vm_capture_artifact.py Tests/scripts/fixtures/capture-cli.py
+0 errors, 0 warnings, 0 informations
+task: [check:vm-capture-evidence] bats Tests/scripts/vm-capture-evidence.bats
+1..18
+ok 1 generic CLI capture refuses every class without dispatch or overwriting caller files
+ok 2 full capture retains complete image raw bytes exact VM and artifact digest
+ok 3 region and repeated operations use unique artifacts without extra reads
+ok 4 valid nonzero row filters remain readable through the checked backend
+ok 5 valid consecutive IDAT and ancillary chunks remain readable
+ok 6 retained native PNG qualifies in the reusable capture check without a new native read
+ok 7 malformed PNG branches retain their specific validator reasons
+ok 8 missing empty malformed truncated corrupt and incomplete pixels latch without retry
+ok 9 capture schema and image dimensions must match exact artifact and region
+ok 10 failed partial typed error and dry-run captures retain raw failure without output
+ok 11 collection after failed image retains first latch and never restores eligibility
+ok 12 invalid roots do not dispatch or write cwd and invalid capture arguments latch
+ok 13 PNG inspection still owns the shared lock after CLI completion
+ok 14 capture shares ordinals in both directions and failed collection cannot overwrite
+ok 15 caught capture SIGINT retains interruption partial streams and stops later input
+ok 16 relative roots remain usable and invalid class operation options cannot dispatch
+ok 17 allocation failure retains partial capture and the next gate latches unfinished evidence
+ok 18 capture holds shared lock through CLI and refuses competing scenario dispatch
+## task check:vm-window-evidence
+task: [check:vm-window-evidence] bash -n scripts/vm-window-evidence-lib.sh Tests/scripts/vm-window-evidence.bats
+task: [check:vm-window-evidence] shellcheck -x scripts/vm-window-evidence-lib.sh Tests/scripts/vm-window-evidence.bats
+task: [check:vm-window-evidence] shfmt -d -i 4 scripts/vm-window-evidence-lib.sh Tests/scripts/vm-window-evidence.bats
+task: [check:vm-window-evidence] bats Tests/scripts/vm-window-evidence.bats
+1..20
+ok 1 window list emits the original full envelope and pins VM and ordinal
+ok 2 only clean list negatives advance the ten by two count poll
+ok 3 zero expected windows is clean data without title or focus strengthening
+ok 4 TextEdit loop preserves its final assertion after fifteen reads and sleeps
+ok 5 clean exhausted polls retain each list and a separate state confirmation
+ok 6 failed poll stops immediately despite matching text with no retry or input
+ok 7 window schemas reject incomplete arrays and malformed required or optional fields
+ok 8 window actions require matching actual receipt without invented target echo
+ok 9 every window action rejects failed nonzero partial and mismatching completions
+ok 10 collection preserves a prior failure and cannot restore input eligibility
+ok 11 empty absent and uninitialized roots cause no CLI or cwd artifacts
+ok 12 invalid arguments latch and cannot dispatch scenario input
+ok 13 adapter SIGINT propagates distinctly and stops the poll before sleep or release
+ok 14 missing helper arguments under nounset latch an initialized root
+ok 15 TextEdit always makes the separate assertion read after an early positive
+ok 16 TextEdit final assertion never rehabilitates a failed read
+ok 17 each poll records its state predicate and true or false decision
+ok 18 failed or interrupted poll sleeps record status and prevent later input
+ok 19 failed or interrupted local state evaluation records status without another read or sleep
+ok 20 negative window move coordinates use equals form accepted by the CLI
+## task check:vm-input-evidence
+task: [check:vm-input-evidence] bash -n scripts/vm-input-evidence-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh scripts/vm-verify-desktop-lib.sh Tests/scripts/vm-input-evidence.bats
+task: [check:vm-input-evidence] shellcheck -x scripts/vm-input-evidence-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh scripts/vm-verify-desktop-lib.sh Tests/scripts/vm-input-evidence.bats
+task: [check:vm-input-evidence] shfmt -d -i 4 scripts/vm-input-evidence-lib.sh Tests/scripts/vm-input-evidence.bats
+task: [check:vm-input-evidence] bats Tests/scripts/vm-input-evidence.bats
+1..21
+ok 1 key text and scroll preserve original bytes exact argv and shared ordinals
+ok 2 plain keys empty text and positive scroll use their actual complete payloads
+ok 3 each family rejects nonzero partial typed error and dry-run completion without retry
+ok 4 key payload must echo requested key and exact ordered modifier array
+ok 5 type payload requires exact text and Unicode scalar count
+ok 6 scroll payload must include exact x y dx and signed dy
+ok 7 explicit empty missing and uninitialized roots never fall back or write cwd artifacts
+ok 8 invalid action arguments refuse and latch before dispatch including under nounset
+ok 9 shared prior window or confirmation failure blocks every input family
+ok 10 SIGINT in every input family retains interruption without later input
+ok 11 unset root preserves existing bare input argv and nonzero status
+ok 12 failed frame read stops actual click chains in plain and conditional contexts
+ok 13 failed snapshot read stops actual click chains in plain and conditional contexts
+ok 14 real frame reader propagates failed window transport before click input
+ok 15 on-screen read status one is an error rather than a clean negative
+ok 16 calibration stops on failed position reads before later scroll input
+ok 17 failed menu open stops before title reads Escape and settling
+ok 18 failed menu title read stops before Escape and settling
+ok 19 consumed scroll and menu helpers stop before settling sleep even with errexit suppressed
+ok 20 actual scroll callers propagate failed input before another read or pointer action
+ok 21 actual consent sequence stops after failed text before key or later settling
+## task check:vm-ui-evidence
+task: [check:vm-ui-evidence] bash -n scripts/vm-ui-evidence-lib.sh
+task: [check:vm-ui-evidence] shellcheck -x scripts/vm-ui-evidence-lib.sh Tests/scripts/vm-ui-evidence.bats
+task: [check:vm-ui-evidence] shfmt -d -i 4 scripts/vm-ui-evidence-lib.sh Tests/scripts/vm-ui-evidence.bats
+task: [check:vm-ui-evidence] bats Tests/scripts/vm-ui-evidence.bats
+1..21
+ok 1 snapshot retains original bytes full tree exact argv VM and shared ordinals
+ok 2 clean empty windows and empty element lists are optional negatives
+ok 3 nonzero partial typed error and dry run never become absence or retry
+ok 4 snapshot validates every window and recursive element before a negative
+ok 5 selected value geometry and height require actual consumed attributes
+ok 6 geometry and height accept actual attributes without requiring a text value
+ok 7 clean negatives alone advance presence polls and retain state predicates
+ok 8 clean absence poll succeeds without input or sleep
+ok 9 ten clean negatives retain the final sleep and distinct state exhaustion
+ok 10 invalid selectors and multiple-result selectors latch before another read
+ok 11 invalid roots and arguments refuse without CLI or cwd writes
+ok 12 prior failure blocks reads but evidence collection cannot clear the latch
+ok 13 sleep failure and signal statuses stop without another snapshot
+ok 14 adapter SIGINT retains interruption and refuses later input
+ok 15 failed local decoder output is never emitted or consumed and signals stay distinct
+ok 16 sourcing has no startup effects and missing public arguments are safe under nounset
+ok 17 optional vertical reads preserve absence and qualify only consumed screen attributes
+ok 18 required position reads accept y alone and refuse absence
+ok 19 vertical requirements refuse missing or invalid consumed attributes without another read
+ok 20 a missing tree in another window refuses a positive and stops a settling poll
+ok 21 selector qualification depends on candidates and syntax failure follows dispatch
+## task check:vm-click-evidence
+task: [check:vm-click-evidence] bash -n scripts/vm-click-evidence-lib.sh
+task: [check:vm-click-evidence] shellcheck -x scripts/vm-click-evidence-lib.sh Tests/scripts/vm-click-evidence.bats
+task: [check:vm-click-evidence] shfmt -d -i 4 scripts/vm-click-evidence-lib.sh Tests/scripts/vm-click-evidence.bats
+task: [check:vm-click-evidence] bats Tests/scripts/vm-click-evidence.bats
+1..20
+ok 1 OCR preserves original bytes VM argv and nonconstant receipt
+ok 2 complete OCR empty is clean data without a timeout or second read
+ok 3 incomplete OCR counts field types and truncation cannot qualify absence
+ok 4 failed partial and typed-error OCR stop before click and sleep
+ok 5 Allow chooses first exact text floors its centre and clicks once
+ok 6 clean OCR without exact Allow records state failure without input
+ok 7 invalid Allow size and out-of-range derived coordinates refuse input
+ok 8 wrong click echo button count or failed completion stops without settling
+ok 9 element click consumes one geometry snapshot and preserves centre input wait
+ok 10 missing element tree geometry or invalid centre stops before element click
+ok 11 snapshot nonzero completion with valid geometry never permits input
+ok 12 failed local centre decoder output is never used for input
+ok 13 interrupted query encoder preserves signal status before dispatch
+ok 14 failed query encoder retains local exit in unavailable receipt
+ok 15 failed or interrupted exact-target evaluation is never a clean negative
+ok 16 failed or interrupted settling keeps exact local status and stops later input
+ok 17 inclusive coordinate limits retain original floor-of-centre rule
+ok 18 interrupted local decoder preserves signal and emitted point is unused
+ok 19 source-only library and missing arguments are safe under nounset
+ok 20 invalid roots and arguments refuse before dispatch or cwd writes
+## task check:vm-physical-evidence
+task: [check:vm-physical-evidence] bash -n scripts/vm-physical-evidence-lib.sh scripts/vm-menu-pointer-lib.sh scripts/vm-window-resize-lib.sh Tests/scripts/vm-physical-evidence.bats
+task: [check:vm-physical-evidence] shellcheck -x scripts/vm-physical-evidence-lib.sh scripts/vm-menu-pointer-lib.sh scripts/vm-window-resize-lib.sh Tests/scripts/vm-physical-evidence.bats
+task: [check:vm-physical-evidence] shfmt -d -i 4 scripts/vm-physical-evidence-lib.sh scripts/vm-menu-pointer-lib.sh scripts/vm-window-resize-lib.sh Tests/scripts/vm-physical-evidence.bats
+task: [check:vm-physical-evidence] bats Tests/scripts/vm-physical-evidence.bats
+1..16
+ok 1 strict menu route retains exact raw completions, VM, ordinals and unchanged waits
+ok 2 strict successful resize preserves corner, eleven held points, release and waits
+ok 3 strict menu rejects mismatching and incomplete move or click payloads
+ok 4 strict screen dimensions reject missing, malformed, fractional and oversized payloads
+ok 5 strict helper refuses CLI errors and invalid base envelopes at every menu stage
+ok 6 strict geometry errors latch before any pointer action without legacy failure capture
+ok 7 an explicit empty or unknown physical evidence root never selects legacy transport
+ok 8 a prior latch blocks all physical reads and input
+ok 9 strict resize stops at each failed dispatch without unrecorded release
+ok 10 strict resize rejects wrong down and up coordinates or button
+ok 11 strict resize refuses incomplete, ambiguous and unusable window observations
+ok 12 strict resize validates destinations before reading windows or pressing a button
+ok 13 adapter interruption remains distinct through a physical helper and stops input
+ok 14 failed title encoding latches before resize dispatch
+ok 15 failed frame decoding cannot qualify emitted geometry or leave input eligible
+ok 16 failed display decoding cannot qualify emitted dimensions or leave input eligible
+## task check:vm-menu-pointer
+task: [check:vm-menu-pointer] bash -n scripts/vm-menu-pointer-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+task: [check:vm-menu-pointer] shellcheck -x scripts/vm-menu-pointer-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+task: [check:vm-menu-pointer] shfmt -d -i 4 scripts/vm-menu-pointer-lib.sh
+task: [check:vm-menu-pointer] bats Tests/scripts/vm-menu-pointer.bats
+1..8
+ok 1 menu-bar centre at y=7 retains its target and never sends -1
+ok 2 ordinary frame retains the old approach and centre
+ok 3 display corners retain their targets with a distinct on-screen approach
+ok 4 invalid frame observations fail before any pointer input
+ok 5 pointer transport failure stops before the click even in a conditional caller
+ok 6 missing or malformed display dimensions never send pointer input
+ok 7 an out-of-display destination is refused rather than moved to another target
+ok 8 a failed move stops the action even when the caller tests its status
+## task check:vm-verify-start
+task: [check:vm-verify-start] bash -n scripts/vm-verify-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify.sh Tests/scripts/vm-verify-start.bats
+task: [check:vm-verify-start] shellcheck -x scripts/vm-verify-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify.sh Tests/scripts/vm-verify-start.bats
+task: [check:vm-verify-start] shfmt -d -i 4 Tests/scripts/vm-verify-start.bats
+task: [check:vm-verify-start] bats Tests/scripts/vm-verify-start.bats
+1..3
+ok 1 the Settings scenario start path starts no background screen capture
+ok 2 an inherited VNC_KEEPALIVE_PID neither starts a capture nor stops a process in the Settings scenario
+ok 3 another start_vm caller still starts the background capture loop
+## task check:vm-window-resize
+task: [check:vm-window-resize] bash -n scripts/vm-window-resize-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+task: [check:vm-window-resize] shellcheck -x scripts/vm-window-resize-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+task: [check:vm-window-resize] shfmt -d -i 4 scripts/vm-window-resize-lib.sh
+task: [check:vm-window-resize] bats Tests/scripts/vm-window-resize.bats
+1..9
+ok 1 resize sends a held-button path through the selected corner to its destination
+ok 2 an explicit title selects the ordinary-window corner without changing its destination
+ok 3 a failed pointer preparation never presses the button in a conditional caller
+ok 4 a failed initial down attempts release and preserves the failure
+ok 5 a failed held point releases there and stops instead of masking the error
+ok 6 a failed final release is returned rather than hidden by sleep
+ok 7 the scenario refuses a failed frame read even when it emitted valid geometry
+ok 8 the scenario refuses content below 320 even when the outer frame is 440 by 352
+ok 9 the scenario accepts the observed minimum only with at least 320 content pixels
+# exit: 0
+# subjects after
+e69da1a0bdd15661b6d4923310291c650ea31a7cb921fddd0095bc6bafd89616  scripts/vm-guest-exec.py
+d9540371ce2cbfd6a717ce8e4243346f4af630d43c6421fcd919b1c78ed2e785  scripts/vm-guest-exec-lib.sh
+a2be1c456ae0484dc85495b51052721557d39584db90e210452b3220608fdd6e  scripts/vm_capture_artifact.py
+c672f0582f70cbcb4f6c49d9be25e32ecfb115c390b80c472bfd0dcbb46778ef  scripts/vm-file-evidence-lib.sh
+e71d4f54b0630683bcb786f206de11b0af29f38129bb871d310641865e339648  scripts/vm-lifecycle-evidence-lib.sh
+37f08b5cf997eb23e4a400e004a06bf47f872774fe4bfd97446d845e314973c9  Tests/scripts/vm-file-lifecycle-evidence.bats
+10dd29e0652445d15730e5d5e3f91976e6bf7ba4cb67297be16bb65515d72196  Tests/scripts/fixtures/file-lifecycle-cli.py
+28dde7840f7298ae615454e8fcad12aac4e2e5ec4c648d81dfd51e289d4053d1  Tests/scripts/vm-guest-exec.bats
+9c42891cf7e6152f5e45c3252fc4fca8239dcee58f1b91440612096421fa6edd  Tests/scripts/vm-capture-evidence.bats
+a993c1f7be8f8d905ebd0936834c34a6d7c73801c85b7e3c254a5594838f04ff  Taskfile.yml
+# subjects unchanged
+# ended: 2026-11-21T12:01:22Z

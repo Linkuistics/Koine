@@ -110,19 +110,22 @@ SH
     init_guest_evidence "${exec_root}" exact-vm
     fail_guest_evidence "${exec_root}" setup 'original failure' || :
     local action
-    for action in windows snapshot size download list stop; do
+    for action in windows snapshot size list stop; do
         case "${action}" in
         windows) set -- agent windows ;;
         snapshot) set -- agent snapshot --window TextEdit ;;
         size) set -- screen size ;;
-        download) set -- file download /tmp/evidence local ;;
         list) set -- vm list --all ;;
         stop) set -- vm stop exact-vm ;;
         esac
         run cli_guest_evidence "${exec_root}" evidence "${action}" '.ok == true' -- "$@"
         [[ "${status}" == 0 ]]
     done
-    [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 6 ]]
+    # Collection of guest files uses the checked download in
+    # vm-file-lifecycle-evidence.bats; the generic route refuses it.
+    run cli_guest_evidence "${exec_root}" evidence download '.ok == true' -- file download /tmp/evidence local
+    [[ "${status}" == 125 ]]
+    [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 5 ]]
     [[ "$(cat "${exec_root}/unavailable")" == '000001: original failure' ]]
 }
 
@@ -249,7 +252,7 @@ SH
     done
 }
 
-@test "nonexec start list upload and screen size retain explicit call payloads" {
+@test "nonexec start list and screen size retain explicit call payloads and generic upload refuses" {
     init_guest_evidence "${exec_root}" exact-vm
     printf '%s\n' '{"schema_version":"1.0","ok":true,"id":"exact-vm"}' >"${exec_reply}"
     cli_guest_evidence "${exec_root}" one-shot start '.id == "exact-vm"' -- vm start --platform macos --wait >/dev/null
@@ -258,13 +261,15 @@ SH
     cli_guest_evidence "${exec_root}" evidence stopped '.vms == []' -- vm list --all >/dev/null
     jq -e '.argv == ["testanyware","vm","list","--all","--json"]' "${exec_root}/000002/request.json"
     printf '%s\n' '{"schema_version":"1.0","ok":true,"marker":"complete"}' >"${exec_reply}"
-    cli_guest_evidence "${exec_root}" one-shot upload '.marker == "complete"' -- file upload 'local file' '/tmp/guest file' >/dev/null
     cli_guest_evidence "${exec_root}" evidence size '.marker == "complete"' -- screen size >"${BATS_TEST_TMPDIR}/received"
     cmp "${exec_reply}" "${BATS_TEST_TMPDIR}/received"
-    jq -e '.argv == ["testanyware","file","upload","local file","/tmp/guest file","--vm","exact-vm","--json"]' "${exec_root}/000003/request.json"
-    jq -e '.argv == ["testanyware","screen","size","--vm","exact-vm","--json"]' "${exec_root}/000004/request.json"
+    jq -e '.argv == ["testanyware","screen","size","--vm","exact-vm","--json"]' "${exec_root}/000003/request.json"
     check_guest_evidence "${exec_root}"
-    [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 4 ]]
+    [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 3 ]]
+    # Uploads use the checked transfer in vm-file-lifecycle-evidence.bats.
+    run cli_guest_evidence "${exec_root}" one-shot upload '.marker == "complete"' -- file upload 'local file' '/tmp/guest file'
+    [[ "${status}" == 125 && ! -e "${exec_root}/000004" ]]
+    [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 3 ]]
 }
 
 @test "nonexec invalid invocations and missing backends latch before later input" {

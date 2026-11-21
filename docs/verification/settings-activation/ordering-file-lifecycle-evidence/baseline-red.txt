@@ -1,0 +1,98 @@
+# command: env KOINE_FILE_LIFECYCLE_BASELINE=1 mise exec -- bats Tests/scripts/vm-file-lifecycle-evidence.bats
+# started: 2026-11-21T11:48:08Z
+# subjects before
+9c9da728bdd7c16ae796f7461149f95be3c59d125d346977353bd1d34a3e690f  scripts/vm-guest-exec.py
+d9540371ce2cbfd6a717ce8e4243346f4af630d43c6421fcd919b1c78ed2e785  scripts/vm-guest-exec-lib.sh
+a2be1c456ae0484dc85495b51052721557d39584db90e210452b3220608fdd6e  scripts/vm_capture_artifact.py
+absent  scripts/vm-file-evidence-lib.sh
+absent  scripts/vm-lifecycle-evidence-lib.sh
+37f08b5cf997eb23e4a400e004a06bf47f872774fe4bfd97446d845e314973c9  Tests/scripts/vm-file-lifecycle-evidence.bats
+10dd29e0652445d15730e5d5e3f91976e6bf7ba4cb67297be16bb65515d72196  Tests/scripts/fixtures/file-lifecycle-cli.py
+55700ec7504fb5074fcc4ceaad9b5ccbd2f7900e08db1d6b5f94985f1ea051c8  Tests/scripts/vm-guest-exec.bats
+9c42891cf7e6152f5e45c3252fc4fca8239dcee58f1b91440612096421fa6edd  Tests/scripts/vm-capture-evidence.bats
+3364e51f60e62db592c4dbec35e3ab9afe292b8fd3d8cb3e59203953b4bd73e2  Taskfile.yml
+# output
+1..17
+not ok 1 generic upload and download refuse every class without dispatch
+# (in test file Tests/scripts/vm-file-lifecycle-evidence.bats, line 81)
+#   `[[ "${status}" == 125 && "$(calls)" == 0 && ! -e "${lifecycle_root}/000001" ]]' failed
+not ok 2 upload records exact argv raw receipt and stable local identity before and after dispatch
+# (in test file Tests/scripts/vm-file-lifecycle-evidence.bats, line 93)
+#   `cmp "${BATS_TEST_TMPDIR}/actual" "${lifecycle_root}/000001/raw.stdout"' failed with status 2
+# synthetic lifecycle diagnostic
+# cmp: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-r9fo6Z/test/2/evidence/000001/raw.stdout: No such file or directory
+not ok 3 download qualifies guest bytes against the upload record at a backend-owned path
+# (in test file Tests/scripts/vm-file-lifecycle-evidence.bats, line 113)
+#   `cmp "${local_input}" "${copy}"' failed with status 2
+# synthetic lifecycle diagnostic
+# synthetic lifecycle diagnostic
+# cmp: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-r9fo6Z/test/3/evidence/000002/download.bin: No such file or directory
+not ok 4 a short guest write is unavailable even though the upload receipt was clean
+# (in test file Tests/scripts/vm-file-lifecycle-evidence.bats, line 127)
+#   `[[ "${status}" == 125 && -z "${output//guest evidence unavailable*/}" ]]' failed
+# synthetic lifecycle diagnostic
+not ok 5 a local input that changes during the transfer is unavailable and keeps both records
+# (in test file Tests/scripts/vm-file-lifecycle-evidence.bats, line 135)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 6 upload schema failures retain raw failure and stop later input
+# (in test file Tests/scripts/vm-file-lifecycle-evidence.bats, line 150)
+#   `[[ "${status}" == 125 && -z "${output//guest evidence unavailable*/}" ]]' failed
+not ok 7 missing symlinked and directory local inputs never dispatch
+# (in test file Tests/scripts/vm-file-lifecycle-evidence.bats, line 168)
+#   `[[ "${status}" == 125 && "$(calls)" == 0 ]]' failed
+not ok 8 download failures latch and never yield a qualified copy
+# (in test file Tests/scripts/vm-file-lifecycle-evidence.bats, line 180)
+#   `[[ "${status}" == 125 && -z "${output//guest evidence unavailable*/}" ]]' failed
+# synthetic lifecycle diagnostic
+not ok 9 download refuses an unmatched upload record and a scenario class before dispatch
+# (in test file Tests/scripts/vm-file-lifecycle-evidence.bats, line 190)
+#   `[[ "${status}" == 125 && "$(calls)" == 1 && ! -e "${lifecycle_root}/000002" ]]' failed
+# synthetic lifecycle diagnostic
+not ok 10 evidence-class download remains collection after a latch and keeps the first reason
+# (in test file Tests/scripts/vm-file-lifecycle-evidence.bats, line 202)
+#   `cmp "${lifecycle_guest}/log.txt" "${lifecycle_root}/000002/download.bin"' failed with status 2
+# guest evidence unavailable (000001): original failure
+# synthetic lifecycle diagnostic
+# cmp: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-r9fo6Z/test/10/evidence/000002/download.bin: No such file or directory
+not ok 11 VM start pins the base wait and identity and qualifies the complete start payload
+# (in test file Tests/scripts/vm-file-lifecycle-evidence.bats, line 211)
+#   `cmp "${BATS_TEST_TMPDIR}/actual" "${lifecycle_root}/000001/raw.stdout"' failed with status 2
+# synthetic lifecycle diagnostic
+# cmp: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-r9fo6Z/test/11/evidence/000001/raw.stdout: No such file or directory
+not ok 12 VM start schema failures are unavailable and stop later input
+# (in test file Tests/scripts/vm-file-lifecycle-evidence.bats, line 227)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 13 VM start refuses an implicit base and caller options before dispatch
+# (in test file Tests/scripts/vm-file-lifecycle-evidence.bats, line 240)
+#   `[[ "${status}" == 125 && "$(calls)" == 0 ]]' failed
+not ok 14 inventory reads the complete list and decides running and absent from clean data
+# (in test file Tests/scripts/vm-file-lifecycle-evidence.bats, line 252)
+#   `jq -se '[.[] | select(.[0:2] == ["vm","list"])] == [["vm","list","--all","--json"],["vm","list","--all","--json"],["vm","list","--all","--json"]]' \' failed
+# synthetic lifecycle diagnostic
+# false
+not ok 15 an unexpected inventory state or schema is unavailable and never a negative
+# (in test file Tests/scripts/vm-file-lifecycle-evidence.bats, line 267)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 16 exact stop is collection after a latch and a failed stop never passes
+# (in test file Tests/scripts/vm-file-lifecycle-evidence.bats, line 277)
+#   `jq -e '.id == "exact-lifecycle-vm" and .stopped == true' "${lifecycle_root}/000002/raw.stdout"' failed with status 2
+# guest evidence unavailable (000001): original failure
+# jq: error: Could not open file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-r9fo6Z/test/16/evidence/000002/raw.stdout: No such file or directory
+not ok 17 upload holds the shared writer lock through the CLI and a competing dispatch refuses
+# (in test file Tests/scripts/vm-file-lifecycle-evidence.bats, line 299)
+#   `[[ "${status}" == 125 && "$(calls)" == 1 ]]' failed
+# synthetic lifecycle diagnostic
+# exit: 1
+# subjects after
+9c9da728bdd7c16ae796f7461149f95be3c59d125d346977353bd1d34a3e690f  scripts/vm-guest-exec.py
+d9540371ce2cbfd6a717ce8e4243346f4af630d43c6421fcd919b1c78ed2e785  scripts/vm-guest-exec-lib.sh
+a2be1c456ae0484dc85495b51052721557d39584db90e210452b3220608fdd6e  scripts/vm_capture_artifact.py
+absent  scripts/vm-file-evidence-lib.sh
+absent  scripts/vm-lifecycle-evidence-lib.sh
+37f08b5cf997eb23e4a400e004a06bf47f872774fe4bfd97446d845e314973c9  Tests/scripts/vm-file-lifecycle-evidence.bats
+10dd29e0652445d15730e5d5e3f91976e6bf7ba4cb67297be16bb65515d72196  Tests/scripts/fixtures/file-lifecycle-cli.py
+55700ec7504fb5074fcc4ceaad9b5ccbd2f7900e08db1d6b5f94985f1ea051c8  Tests/scripts/vm-guest-exec.bats
+9c42891cf7e6152f5e45c3252fc4fca8239dcee58f1b91440612096421fa6edd  Tests/scripts/vm-capture-evidence.bats
+3364e51f60e62db592c4dbec35e3ab9afe292b8fd3d8cb3e59203953b4bd73e2  Taskfile.yml
+# subjects unchanged
+# ended: 2026-11-21T11:48:13Z

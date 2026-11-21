@@ -156,3 +156,17 @@ local statuses. Preserve private originals and partials and the finite storage
 plan. Do not publish or silently redact secret-bearing raw argv, predicates,
 responses and refusals. k36 explicitly keeps the snapshot, AXValue, selector and
 OCR limits.
+
+## K89 file and lifecycle handoff
+
+k89 supplies source-only checked uploads and downloads, VM start, exact VM stop
+and VM inventory. Read
+`docs/verification/settings-activation/ORDERING-FILE-LIFECYCLE-RESULTS.md`.
+Consume it only after the review settings-file-lifecycle-k149 and every earned
+integration. The generic `file upload` and `file download` routes now refuse.
+
+Its caller table states the adoption duties. Replace each existing upload once
+with `upload_guest_file`. Follow it with one `download_guest_file` that names the
+upload ordinal. Replace each overwriting host copy with the raw receipt or an
+exclusive write. k57 supplies the clone identity, the explicit base, the single
+stop and the inventories around the start and the stop.

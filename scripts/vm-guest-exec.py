@@ -6,10 +6,12 @@ from __future__ import annotations
 
 import argparse
 import fcntl
+import hashlib
 import json
 import os
 import re
 import signal
+import stat
 import subprocess
 import sys
 import time
@@ -103,6 +105,68 @@ def initialize(root: Path, vm: str) -> int:
     return 0
 
 
+def inspect_file(path: Path) -> dict[str, object]:
+    """Digest one regular non-symlink file whose identity stays stable while read."""
+    before = os.lstat(path)
+    if not stat.S_ISREG(before.st_mode):
+        raise ValueError(f"expected a regular non-symlink file: {path}")
+    descriptor = os.open(path, os.O_RDONLY | os.O_NOFOLLOW)
+    try:
+        opened = os.fstat(descriptor)
+        digest = hashlib.sha256()
+        count = 0
+        while block := os.read(descriptor, 1 << 20):
+            digest.update(block)
+            count += len(block)
+        after = os.fstat(descriptor)
+    finally:
+        os.close(descriptor)
+
+    def identity(value: os.stat_result) -> tuple[int, ...]:
+        return (
+            value.st_dev,
+            value.st_ino,
+            value.st_size,
+            value.st_mtime_ns,
+            value.st_ctime_ns,
+        )
+
+    if (before.st_dev, before.st_ino) != (opened.st_dev, opened.st_ino):
+        raise ValueError(f"file replaced while opening: {path}")
+    if identity(opened) != identity(after) or count != after.st_size:
+        raise ValueError(f"file changed while read: {path}")
+    return {
+        "path": str(path),
+        "bytes": count,
+        "sha256": digest.hexdigest(),
+        "device": after.st_dev,
+        "inode": after.st_ino,
+        "mtime_ns": after.st_mtime_ns,
+        "ctime_ns": after.st_ctime_ns,
+    }
+
+
+def upload_record(root: Path, ordinal: str, remote: str) -> dict[str, object]:
+    """Return the qualified upload of REMOTE at ORDINAL, under the writer lock."""
+    attempt = root / ordinal
+    try:
+        request = read_object(attempt / "request.json")
+        result = read_object(attempt / "result.json")
+        transfer = read_object(attempt / "transfer.json")
+    except (OSError, ValueError, UnicodeError) as error:
+        raise ValueError(
+            f"{ordinal} does not name upload of {remote}: {error}"
+        ) from None
+    if not (
+        request.get("transport") == "upload"
+        and result.get("outcome") == "clean"
+        and transfer.get("direction") == "upload"
+        and transfer.get("remote") == remote
+    ):
+        raise ValueError(f"{ordinal} does not name upload of {remote}")
+    return transfer
+
+
 def validate_response(
     attempt: Path,
     command: str,
@@ -164,7 +228,12 @@ def validate_response(
 
 
 def cli_argv(
-    arguments: list[str], vm: str, kind: str, *, checked_capture: bool = False
+    arguments: list[str],
+    vm: str,
+    kind: str,
+    *,
+    checked_capture: bool = False,
+    checked_transfer: bool = False,
 ) -> list[str]:
     if arguments[:1] == ["--"]:
         arguments = arguments[1:]
@@ -182,6 +251,13 @@ def cli_argv(
     family, action = arguments[:2]
     if (family, action) == ("screen", "capture") and not checked_capture:
         raise ValueError("screen capture requires the checked capture backend")
+    # Upload reports only the local size; download writes a caller path. The
+    # checked transfer backend owns the identity checks and the output path.
+    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/commands/file.rs
+    if (family, action) in {("file", "upload"), ("file", "download")} and not (
+        checked_transfer
+    ):
+        raise ValueError(f"file {action} requires the checked transfer backend")
     if kind == "evidence":
         collection_actions = {
             ("agent", "windows"),
@@ -251,18 +327,54 @@ def run_locked(
         argv = cli_argv(arguments, vm, kind)
     elif transport == "capture":
         argv = []  # The exclusive attempt directory below owns the output path.
-    elif transport in {"confirmation", "poll-step"}:
-        argv = []
+    elif transport in {"confirmation", "poll-step", "download"}:
+        argv = []  # A download's exclusive attempt directory owns its output path.
+    elif transport == "upload":
+        # The local path is absolute, so the CLI cannot read it as an option.
+        argv = cli_argv(["file", "upload", *arguments], vm, kind, checked_transfer=True)
     else:
         # Explicit --vm wins over ambient VM/agent flags. No --connect is admitted.
         # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/resolve.rs
         argv = ["testanyware", "file", "exec", "--vm", vm, "--json", "--", command]
+    expected: dict[str, object] | None = None
+    if transport == "download" and len(arguments) == 2:
+        expected = upload_record(root, arguments[1], arguments[0])
     ordinal = int(prior[-1].name) + 1 if prior else 1
     if ordinal > 999999:
         raise ValueError("attempt ordinal exhausted")
     attempt = root / f"{ordinal:06d}"
     attempt.mkdir()
     artifact_path = (attempt / "screen.png").absolute()
+    download_path = (attempt / "download.bin").absolute()
+    local_before: dict[str, object] | None = None
+    pre_dispatch = ""
+    if transport == "upload":
+        # The tagged client stats the file, then streams it, and reports that
+        # size as `bytes`. Digest it here, under the lock, before dispatch.
+        # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-agent-client/src/lib.rs
+        try:
+            local_before = inspect_file(Path(arguments[0]))
+        except (OSError, ValueError) as error:
+            pre_dispatch = f"upload input unavailable: {error}"
+        size = local_before["bytes"] if local_before else -1
+        predicate = (
+            'keys == ["bytes", "local", "ok", "remote", "schema_version"] and '
+            f".local == {json.dumps(arguments[0])} and "
+            f".remote == {json.dumps(arguments[1])} and .bytes == {size}"
+        )
+    if transport == "download":
+        argv = cli_argv(
+            ["file", "download", arguments[0], str(download_path)],
+            vm,
+            kind,
+            checked_transfer=True,
+        )
+        predicate = (
+            'keys == ["bytes", "local", "ok", "remote", "schema_version"] and '
+            f".remote == {json.dumps(arguments[0])} and "
+            f".local == {json.dumps(str(download_path))} and "
+            '(.bytes | type == "number" and floor == . and . >= 0)'
+        )
     if transport == "capture":
         capture_args = ["screen", "capture"]
         if arguments:
@@ -310,8 +422,12 @@ def run_locked(
     state_failed = False
     emission_status = "not-attempted"
     reason = command if transport == "confirmation" else ""
+    if local_before is not None:
+        write_json(attempt / "local-before.json", local_before)
     try:
-        if transport == "poll-step":
+        if pre_dispatch:
+            reason = pre_dispatch
+        elif transport == "poll-step":
             local_status = int(arguments[0])
             state_failed = command == "exhausted"
             if state_failed:
@@ -343,6 +459,40 @@ def run_locked(
                     int(cast(int, envelope["height"])),
                 )
                 write_json(attempt / "artifact.json", artifact)
+            if not reason and transport == "upload" and local_before is not None:
+                local_after = inspect_file(Path(arguments[0]))
+                write_json(attempt / "local-after.json", local_after)
+                if local_after != local_before:
+                    reason = "upload input changed during the transfer"
+                else:
+                    transfer = {
+                        "direction": "upload",
+                        "local": arguments[0],
+                        "remote": arguments[1],
+                        "bytes": local_before["bytes"],
+                        "sha256": local_before["sha256"],
+                    }
+                    write_json(attempt / "transfer.json", transfer)
+            if not reason and transport == "download":
+                envelope = read_object(attempt / "raw.stdout")
+                copy = inspect_file(download_path)
+                if copy["bytes"] != envelope["bytes"]:
+                    reason = "downloaded file size differs from the receipt"
+                elif expected is not None and (
+                    copy["bytes"],
+                    copy["sha256"],
+                ) != (expected["bytes"], expected["sha256"]):
+                    reason = f"downloaded bytes differ from upload {arguments[1]}"
+                else:
+                    transfer = {
+                        "direction": "download",
+                        "remote": arguments[0],
+                        "local": str(download_path),
+                        "bytes": copy["bytes"],
+                        "sha256": copy["sha256"],
+                        "matches_upload": arguments[1] if expected else None,
+                    }
+                    write_json(attempt / "transfer.json", transfer)
     except (OSError, ValueError, UnicodeError, zlib.error) as error:
         reason = str(error)
     except KeyboardInterrupt:
@@ -422,6 +572,23 @@ def run(
         raise ValueError(
             "expected read-poll|evidence capture with optional X,Y,WIDTH,HEIGHT"
         )
+    if transport == "upload" and not (
+        kind == "one-shot"
+        and len(arguments or []) == 2
+        and Path((arguments or ["", ""])[0]).is_absolute()
+        and (arguments or ["", ""])[1].startswith("/")
+    ):
+        raise ValueError("expected one-shot upload of an absolute LOCAL to /REMOTE")
+    if transport == "download" and not (
+        kind in {"read-poll", "evidence"}
+        and len(arguments or []) in {1, 2}
+        and (arguments or [""])[0].startswith("/")
+        and (
+            len(arguments or []) == 1
+            or re.fullmatch(r"[0-9]{6}", (arguments or ["", ""])[1]) is not None
+        )
+    ):
+        raise ValueError("expected read-poll|evidence download of /REMOTE [ORDINAL]")
     if transport == "confirmation" and not command.strip():
         raise ValueError("failed confirmation requires a reason")
     if transport == "poll-step" and not (
@@ -463,6 +630,8 @@ def main() -> int:
             "cli prints qualified raw JSON; check inspects eligibility without reserving input; "
             "fail records a failed confirmation and always returns nonzero. "
             "poll-step records a local window-poll decision or failure without dispatch. "
+            "upload digests its local file before and after one dispatch; download writes "
+            "a unique copy and compares a named upload record. "
             "Exit 0: clean individual attempt (evidence collection does not clear an old latch); "
             "2: argument error (an identifiable initialized evidence root is latched); "
             "125: state failure, unavailable evidence or invalid run values; "
@@ -531,13 +700,41 @@ def main() -> int:
     capture_parser.add_argument("kind", choices=["read-poll", "evidence"])
     capture_parser.add_argument("operation")
     capture_parser.add_argument("region", nargs="?")
+    upload_parser = commands.add_parser(
+        "upload",
+        help="upload once; digest the local file under the writer lock before and after",
+    )
+    upload_parser.add_argument("root", type=Path)
+    upload_parser.add_argument("kind", choices=["one-shot"])
+    upload_parser.add_argument("operation")
+    upload_parser.add_argument("local", type=Path)
+    upload_parser.add_argument("remote")
+    download_parser = commands.add_parser(
+        "download",
+        help="download once to a unique path; compare an upload record if named",
+    )
+    download_parser.add_argument("root", type=Path)
+    download_parser.add_argument("kind", choices=["read-poll", "evidence"])
+    download_parser.add_argument("operation")
+    download_parser.add_argument("remote")
+    download_parser.add_argument("upload", nargs="?")
     try:
         args = parser.parse_args()
     except SystemExit as error:
         if (
             error.code
             and len(sys.argv) > 2
-            and sys.argv[1] in {"run", "cli", "capture", "check", "fail", "poll-step"}
+            and sys.argv[1]
+            in {
+                "run",
+                "cli",
+                "capture",
+                "upload",
+                "download",
+                "check",
+                "fail",
+                "poll-step",
+            }
         ):
             root = Path(sys.argv[2])
             if (root / "subject.json").is_file():
@@ -588,6 +785,27 @@ def main() -> int:
                 "",
                 "capture",
                 [region] if region is not None else [],
+            )
+        if args.action == "upload":
+            return run(
+                root,
+                cast(str, args.kind),
+                cast(str, args.operation),
+                "",
+                "",
+                "upload",
+                [str(cast(Path, args.local).absolute()), cast(str, args.remote)],
+            )
+        if args.action == "download":
+            upload = cast(str | None, args.upload)
+            return run(
+                root,
+                cast(str, args.kind),
+                cast(str, args.operation),
+                "",
+                "",
+                "download",
+                [cast(str, args.remote), *([upload] if upload is not None else [])],
             )
         return run(
             root,

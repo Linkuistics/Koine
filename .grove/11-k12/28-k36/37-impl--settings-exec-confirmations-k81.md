@@ -116,3 +116,16 @@ the earlier k96 sequence of design, review, planning and implementation.
 Preserve the exact-Allow OCR distinctions, the unchanged substring-poll limit
 and the exact local signal statuses. If required clean completion is
 infeasible, hold before E01, even if later output looks successful.
+
+## K89 file and lifecycle handoff
+
+k89 supplies source-only checked uploads and downloads, VM start, exact VM stop
+and VM inventory. Read
+`docs/verification/settings-activation/ORDERING-FILE-LIFECYCLE-RESULTS.md`.
+Consume it only after the review settings-file-lifecycle-k149 and every earned
+integration. The generic `file upload` and `file download` routes now refuse.
+
+The upload record proves the local bytes, and a checked download proves the
+guest copy at that moment. Neither observes the installed tree. This task still
+owns every exec read. These include the guest environment, the defaults and
+their absence and the exact installed inventory.

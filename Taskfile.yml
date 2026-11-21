@@ -1509,6 +1509,18 @@ tasks:
       - uvx pyright@1.1.414 scripts/vm-guest-exec.py scripts/vm_capture_artifact.py Tests/scripts/fixtures/capture-cli.py
       - bats Tests/scripts/vm-capture-evidence.bats
 
+  check:vm-file-lifecycle-evidence:
+    desc: Check without a VM the checked upload and download identities, VM start, exact stop and inventory. Caller adoption stays separate
+    cmds:
+      - bash -n scripts/vm-file-evidence-lib.sh scripts/vm-lifecycle-evidence-lib.sh Tests/scripts/vm-file-lifecycle-evidence.bats
+      - shellcheck -x scripts/vm-file-evidence-lib.sh scripts/vm-lifecycle-evidence-lib.sh Tests/scripts/vm-file-lifecycle-evidence.bats
+      - shfmt -d -i 4 scripts/vm-file-evidence-lib.sh scripts/vm-lifecycle-evidence-lib.sh Tests/scripts/vm-file-lifecycle-evidence.bats
+      - python3 -m py_compile scripts/vm-guest-exec.py Tests/scripts/fixtures/file-lifecycle-cli.py
+      - uvx ruff@0.17.3 check scripts/vm-guest-exec.py Tests/scripts/fixtures/file-lifecycle-cli.py
+      - uvx ruff@0.17.3 format --check scripts/vm-guest-exec.py Tests/scripts/fixtures/file-lifecycle-cli.py
+      - uvx pyright@1.1.414 scripts/vm-guest-exec.py Tests/scripts/fixtures/file-lifecycle-cli.py
+      - bats Tests/scripts/vm-file-lifecycle-evidence.bats
+
   check:vm-verify-start:
     desc: Check without a VM that the Settings scenario starts no VNC keepalive loop and that another start_vm caller still starts it
     cmds:

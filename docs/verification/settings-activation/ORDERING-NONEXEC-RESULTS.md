@@ -79,6 +79,12 @@ limited lifecycle forms below. Endpoint commands receive the pinned `--vm` and
 `screen capture` refuses in every class before dispatch. Its unique output path
 and complete PNG qualification stay inside the shared lock.
 
+File transfers must use the
+[checked transfer interface](ORDERING-FILE-LIFECYCLE-RESULTS.md), which k89
+added. The generic CLI `file upload` and `file download` refuse in every class
+before dispatch. The checked backend digests the upload input and owns the
+download path, under the shared lock.
+
 Caller overrides of the endpoint, the output or live execution refuse before
 dispatch and latch failure. Embedded `--` terminators do the same. The initial
 `--` of the API only separates its own arguments. Guest exec must use the
@@ -160,7 +166,8 @@ in the tagged
 Thus both the separate and the equals forms refuse.
 
 Checked evidence-class captures use the capture backend, not this generic CLI
-route. Collection cannot restore eligibility. Free guest-exec commands still
+route. The evidence class admits `file download` only through the checked download
+backend, for the same reason. Collection cannot restore eligibility. Free guest-exec commands still
 need caller classification. An evidence-class exec must collect read-only
 context, never scenario input or configuration. There is no reset, overwrite or
 scenario retry.

@@ -1,0 +1,36 @@
+# Bounded caller inventory for k89. Surface: the Settings scenario and every file it sources.
+# Pattern 1: every testanyware file/vm token. Pattern 2: host files the scenario writes or removes.
+# Positive control: the same grep on scripts/vm-verify-lib.sh must find 'vm stop'.
+65ded2d89f7069130f048cc1dda391736a63fdc12e8d1ac8e9d4d0fbfa5b61b8  scripts/vm-verify-menu-bar.sh
+31fdedc5a025bfa5e18744f63873e299a72cfdd69cf0e4f45976282117afcbfd  scripts/vm-verify-lib.sh
+22f7c7026a9f3f7706783f6da56f517b468697eaad9e1fcd5f0570ee72932452  scripts/vm-verify-desktop-lib.sh
+8e7c2e1485b1a991fe57a06c7cc4632470ad9ca1081ac5d3c91834a00143daed  scripts/vm-input-evidence-lib.sh
+dc38aae0998d1979c718cf38e9fecf9d3d570507477baf03e60d67c12e6a139b  scripts/vm-menu-pointer-lib.sh
+fba5397e2d798fccfcd022949c9cda6e03fe490d0616f43785de43d0615199b2  scripts/vm-window-resize-lib.sh
+bdc96ddde8964a1f386b77d33de1385b55a47e95a42b09d4627405d1e0fa6a52  scripts/signing-env.sh
+## testanyware file and vm calls
+scripts/vm-verify-menu-bar.sh:86:testanyware file upload scripts/vm-verify-enrollment-client.py /Users/admin/vm-verify-enrollment-client.py >/dev/null
+scripts/vm-verify-menu-bar.sh:273:testanyware file exec 'echo admin | sudo -S shutdown -r now' >/dev/null 2>&1 || true
+scripts/vm-verify-lib.sh:53:        out="$(testanyware file exec "$1" 2>&1)" || status=$?
+scripts/vm-verify-lib.sh:89:    testanyware file upload "${script}" "/Users/admin/${name}.sh" >/dev/null
+scripts/vm-verify-lib.sh:108:        echo "VM ${VM_ID} left running. Stop it with: testanyware vm stop ${VM_ID}"
+scripts/vm-verify-lib.sh:110:        testanyware vm stop "${VM_ID}" >/dev/null 2>&1 || true
+scripts/vm-verify-lib.sh:325:    testanyware vm start --platform macos --wait --id "${VM_ID}" \
+scripts/vm-verify-lib.sh:353:    step "Install the signed bundle (ditto zip, testanyware file upload, ditto -x)"
+scripts/vm-verify-lib.sh:355:    testanyware file upload "${WORK}/Koine.zip" /tmp/Koine.zip >/dev/null
+scripts/vm-verify-lib.sh:357:    testanyware file upload scripts/vm-verify-client.sh /Users/admin/vm-verify-client.sh >/dev/null
+scripts/vm-verify-lib.sh:477:guest_once() { testanyware file exec "$1" >/dev/null 2>&1 || true; }
+## host file writes, removals and temporaries
+scripts/vm-verify-lib.sh:22:WORK="$(mktemp -d)"
+scripts/vm-verify-lib.sh:24:mkdir -p "${LOG_DIR}"
+scripts/vm-verify-lib.sh:106:    rm -rf "${WORK}"
+scripts/vm-verify-lib.sh:354:    ditto -c -k --keepParent "${APP_BUNDLE}" "${WORK}/Koine.zip"
+scripts/vm-verify-menu-bar.sh:73:    printf '%s\n' "${inventory%$'\n'KOINE_INVENTORY_COMPLETE}" > "${LOG%.log}-installed-${phase}.txt"
+scripts/vm-verify-menu-bar.sh:170:printf '%s\n' "${RESIZE_CONTENT}" > "${LOG%.log}-least-size-content.json"
+## guest_long callers on the surface (line 89 is inside guest_long)
+(none outside its definition)
+## transcript
+26:exec > >(tee "${LOG}") 2>&1
+## controls
+positive: 9 matches in scripts/vm-verify-lib.sh
+mutated pattern 'vm stopx': 0 matches (expected 0, so the instrument can fail)

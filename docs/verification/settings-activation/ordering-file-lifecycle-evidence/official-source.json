@@ -1,0 +1,17 @@
+{
+  "tag": "v2.7.0",
+  "commit": "65bc05c91cc5d2a6e3d4aa8f81cb2c7c7712fa03",
+  "method": "Read immutable official local objects with jj file show at the tag. No installed executable, endpoint, agent, golden or native availability provenance follows.",
+  "files": {
+    "cli-rs/Cargo.toml": "e7c43079eda1fa5c7f81cb3e7f3742c65260cac139a7191910430a736a0bf06a",
+    "cli-rs/Cargo.lock": "96ee8c89fbc69a1e74f97af03df5e85528bae27ddacd1143ab568468607793e2",
+    "cli-rs/crates/testanyware-cli/Cargo.toml": "da9dbcc88c9dbd5becc43cf0cbfd75d114b856e33a6f6052d1ff99cf3c7615ff",
+    "cli-rs/crates/testanyware-cli/src/commands/file.rs": "909cc1b6bdeda70ebaf84b09b3656f29f928dee4326cf31d98cda00f59d9be7b",
+    "cli-rs/crates/testanyware-cli/src/commands/vm.rs": "9204c0281fb384ce3480a956ae5be5702124e64320013a9934c9c3f88c63b7d6",
+    "cli-rs/crates/testanyware-cli/src/main.rs": "cc6550081806d2d81a3a1e35da358bfb8a3962ae4a474291c4da0e191be051be",
+    "cli-rs/crates/testanyware-cli/src/output.rs": "402abc0570b0f7786cac0702b47cb4765408bfb47cc9d73168694c31dcbddde9",
+    "cli-rs/crates/testanyware-agent-client/src/lib.rs": "af438f8d15650d4f7f23f1a0c4cc6c7948339bba209bcbd24b8c1dc352dce48a",
+    "cli-rs/crates/testanyware-vm/src/listing.rs": "9607fc8e6d4a70201e13317bb47a73cb6faef89a79808f3d9154108ae844ba1b"
+  },
+  "installed_cli": "testanyware 2.9.0"
+}

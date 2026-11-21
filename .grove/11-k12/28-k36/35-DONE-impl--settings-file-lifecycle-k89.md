@@ -74,3 +74,34 @@ k36 owns all aggregate harness duties of k53–k85. The ADR
 owner design. Consume nothing until k146 and k147 finish. Preserve the exact file, upload, install, environment, lifecycle
 and collection schemas. Preserve the common lock, latch and ordinal, and the
 private original and partial bytes.
+
+## Decisions (running log)
+
+- 2026-11-21: Adopt k89 in the jj workspace `gh-issue-14`. Its parent is `main`
+  at k147, so the base is current. k146 and k147 are complete, so the keepalive
+  hold no longer applies.
+- 2026-11-21: Do the work inline in this leaf. k85 already split this remainder
+  once, so a further split would hand on the same acceptance work. The slice is
+  the checked upload, the checked download, VM start, exact VM stop and the VM
+  inventory. Each one records in the shared writer domain.
+- 2026-11-21: The tagged v2.7.0 source decides the schemas. The upload receipt
+  `bytes` is the local file size at stat time. Thus it does not prove the guest
+  bytes. The backend digests the local file under the lock before and after the
+  dispatch. A separate checked download of the guest path compares its digest
+  with the upload record. The generic CLI route refuses `file upload` and
+  `file download`, as it refuses `screen capture`.
+- 2026-11-21: Exec reads stay with k81. These are the guest environment, the
+  defaults and the installed inventory. k57 keeps the per-item installed audit.
+  This leaf supplies the uploaded-byte identity that those audits start from.
+- 2026-11-21: The start helper requires an explicit golden base, and the
+  inventory reads `vm list --all`. Exact key sets make an unknown field
+  unavailable. The host has TestAnyware 2.9.0 installed, and the protocol names
+  2.7.0. That pin belongs to k54.
+- 2026-11-21: All 17 new controls failed against the legacy semantics, each
+  for a legacy cause. All 11 related Taskfile checks pass 190 tests. Each
+  mutation fails its named control. Two adapter tests now assert the generic
+  refusal.
+- 2026-11-21: The review settings-file-lifecycle-k149 sits before k81, because
+  this artifact is load-bearing for k81, k76 and k57. The k81 and k76 tasks
+  carry a handoff. The k57 task file needs a conversion before any edit, so the
+  report's caller table carries the k57 duties instead.
