@@ -187,6 +187,41 @@ assert_click_latched() {
     done
 }
 
+@test "a deferred Allow leaves the exact-target receipt to the caller and sends no input (k166)" {
+    [[ "${KOINE_CLICK_BASELINE:-0}" != 1 ]] || skip 'new deferred interface only'
+    ocr_fixture | jq '.detections |= map(.text="Don'"'"'t Allow")' >"${click_replies}/1.json"
+    run click_guest_allow "${click_root}" allow deferred
+    echo "diagnostic: status=${status} output=${output}"
+    [[ "${status}" == 1 && -z "${output}" && ! -e "${click_root}/unavailable" ]]
+    [[ "$(wc -l <"${click_calls}" | tr -d ' ')" == 1 && ! -s "${click_waits}" ]]
+    [[ ! -e "${click_root}/000002" ]]
+    # The caller's receipt is the facade's own receipt.
+    run record_guest_poll "${click_root}" allow-exact-target exhausted 1 "$(allow_target_predicate)"
+    [[ "${status}" == 125 ]]
+    jq -e '.operation == "allow-exact-target" and .poll_phase == "exhausted" and .local_status == 1
+        and .state_predicate == "any(.detections[]; .text == \"Allow\")"' "${click_root}/000002/request.json"
+    jq -e '.outcome == "state-failed"' "${click_root}/000002/result.json"
+    assert_click_latched
+}
+
+@test "a deferred Allow keeps the click, unusable geometry and the argument refusal (k166)" {
+    [[ "${KOINE_CLICK_BASELINE:-0}" != 1 ]] || skip 'new deferred interface only'
+    reset_click deferred-click
+    ocr_fixture >"${click_replies}/1.json"
+    click_reply >"${click_replies}/2.json"
+    click_guest_allow "${click_root}" allow deferred
+    [[ "$(wc -l <"${click_calls}" | tr -d ' ')" == 2 && "$(cat "${click_waits}")" == 2 ]]
+    jq -se 'map(.outcome) == ["clean","clean"]' "${click_root}"/*/result.json
+    reset_click deferred-geometry
+    ocr_fixture | jq '.detections[1] |= (.width=0)' >"${click_replies}/1.json"
+    run click_guest_allow "${click_root}" allow deferred
+    [[ "${status}" == 125 && "$(wc -l <"${click_calls}" | tr -d ' ')" == 1 ]]
+    assert_click_latched
+    reset_click deferred-word
+    run click_guest_allow "${click_root}" allow later
+    [[ "${status}" == 125 && ! -s "${click_calls}" && -s "${click_root}/unavailable" ]]
+}
+
 @test "invalid Allow size and out-of-range derived coordinates refuse input" {
     local change n=0
     for change in '.width=0' '.height=0' '.x=-20' '.y=65536' '.x=1e308 | .width=1e308'; do

@@ -29,6 +29,12 @@ use of the domain instead:
   `signature-invalid` makes the signature read invalid.
 - `settings_close_ignored=OPERATION` leaves Koine's window open after that one
   window close.
+- Each of these flags makes one poll of a facade exhaust cleanly (k166):
+  `endpoint-absent` for the launch descriptor, `label-stuck` for the menu label,
+  `item-frame-absent` for the item frame, `row-absent` for the row of the
+  chosen return, `quit-row-absent` for the Quit row, `textedit-no-window` for
+  the TextEdit window and `allow-substring` for the exact Allow target. Under
+  `label-stuck`, each read also keeps the record that the failure message reads.
 - The model exposes a menu under a menu bar item only while that menu is open.
   This is the protocol's oracle, assumed here. It is not a native fact.
 """
@@ -140,6 +146,8 @@ def from_return(state: dict[str, Any], flag: str) -> bool:
 
 
 def label(state: dict[str, Any]) -> str:
+    if "label-stuck" in FLAGS:
+        return "Koine, stuck"
     parts = ["Koine"]
     if state["pending"]:
         noun = "request" if state["pending"] == 1 else "requests"
@@ -164,6 +172,10 @@ def titles(state: dict[str, Any]) -> list[str]:
 def row_frame(state: dict[str, Any], title: str) -> list[list[int]] | None:
     rows = titles(state)
     if not state["menu"] or title not in rows:
+        return None
+    if before_return(state, "row-absent") or (
+        "quit-row-absent" in FLAGS and title == "Quit Koine"
+    ):
         return None
     index = rows.index(title)
     return [[ROW_X, ROW_Y + ROW_H * index], [ROW_W, ROW_H]]
@@ -325,7 +337,7 @@ def finder_in_front(
 def open_window(state: dict[str, Any], app: str) -> bool:
     return {
         "Koine": state["window"],
-        "TextEdit": state["textedit"],
+        "TextEdit": state["textedit"] and "textedit-no-window" not in FLAGS,
         "System Settings": state["settings_app"],
     }[app]
 
@@ -558,7 +570,7 @@ def cli(state: dict[str, Any], arguments: list[str], root: Path) -> str:
         detections = (
             [
                 {
-                    "text": "Allow",
+                    "text": "Don't Allow" if "allow-substring" in FLAGS else "Allow",
                     "x": ALLOW[0],
                     "y": ALLOW[1],
                     "width": ALLOW[2],
@@ -684,6 +696,8 @@ def sysevents(state: dict[str, Any], name: str, arguments: list[str]) -> dict[st
     elif name == "menu-item-label":
         value = label(state)
     elif name == "menu-item-frame":
+        if "item-frame-absent" in FLAGS:
+            return {"absent": True, "error": -1719, "message": "Invalid index."}
         value = [[ITEM[0], ITEM[1]], [ITEM[2], ITEM[3]]]
     elif name == "menu-row-frame":
         frame = row_frame(state, arguments[0])
@@ -735,7 +749,7 @@ def read(state: dict[str, Any], name: str, arguments: list[str]) -> dict[str, An
     if name == "endpoint":
         fields = (
             {"present": True, "descriptor": descriptor(state)}
-            if state["koine"]
+            if state["koine"] and "endpoint-absent" not in FLAGS
             else {"present": False}
         )
     elif name == "launch-identity":
@@ -964,6 +978,13 @@ def main() -> int:
     else:
         raise SystemExit("the Settings scenario takes no download")
     save(state)
+    if action == "read" and "label-stuck" in FLAGS:
+        # The failure message of the label poll reads the newest read record.
+        ordinal = (SIM / "calls.jsonl").read_text().count("\n") + 1
+        attempt = root / f"{ordinal:06d}"
+        attempt.mkdir()
+        (attempt / "request.json").write_text(json.dumps({"operation": operation}))
+        (attempt / "read.json").write_text(output)
     entry["outcome"] = "clean"
     log(entry)
     print(output)

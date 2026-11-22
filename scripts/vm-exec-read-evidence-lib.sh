@@ -33,22 +33,31 @@ _exec_read_poll_step() {
     return "${state}"
 }
 
-# await_guest_endpoint ROOT OPERATION {launch,login}
+# endpoint_present_predicate: the descriptor poll's predicate on one record.
+endpoint_present_predicate() {
+    printf '%s\n' '.present == true'
+}
+
+# await_guest_endpoint ROOT OPERATION {launch [deferred],login}
 # The two existing descriptor polls. launch is await_koine: fifteen reads,
-# each negative followed by two seconds, then a state failure. login is the
-# loop after a restart: twenty-four reads, each negative followed by five
-# seconds. Its exhaustion returns 1 and latches nothing, because the legacy
-# loop continues to its process assertion.
+# each negative followed by two seconds, then a state failure. With deferred,
+# a clean exhaustion returns 1 without its receipt, so nothing latches yet.
+# The caller takes its untouched failure reads, and it then records
+# OPERATION-exhausted with endpoint_present_predicate. login is the loop after
+# a restart: twenty-four reads, each negative followed by five seconds. Its
+# exhaustion returns 1 and latches nothing, because the legacy loop continues
+# to its process assertion.
 await_guest_endpoint() {
-    local root="${1-}" operation="${2-}" mode="${3-}" limit delay attempt
-    local record state sleep_status predicate='.present == true'
+    local root="${1-}" operation="${2-}" mode="${3-}" deferred="${4-}" limit delay attempt
+    local record state sleep_status predicate
+    predicate="$(endpoint_present_predicate)"
     _exec_read_root "${root}" || return
-    case "$#:${mode}" in
-    3:launch) limit=15 delay=2 ;;
-    3:login) limit=24 delay=5 ;;
+    case "$#:${mode}:${deferred}" in
+    3:launch: | 4:launch:deferred) limit=15 delay=2 ;;
+    3:login:) limit=24 delay=5 ;;
     *)
         fail_guest_evidence "${root}" "${operation:-endpoint-poll-arguments}" \
-            'expected ROOT OPERATION launch|login'
+            'expected ROOT OPERATION launch [deferred]|login'
         return
         ;;
     esac
@@ -72,7 +81,7 @@ await_guest_endpoint() {
             return
         fi
     done
-    if [[ "${mode}" == launch ]]; then
+    if [[ "${mode}" == launch && "${deferred}" != deferred ]]; then
         record_guest_poll "${root}" "${operation}-exhausted" exhausted 1 "${predicate}"
         return
     fi

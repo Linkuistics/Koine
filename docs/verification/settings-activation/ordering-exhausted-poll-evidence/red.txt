@@ -1,0 +1,80 @@
+1..15
+not ok 1 an exhausted launch endpoint poll takes the observations before its receipt (k166)
+# (from function `expect_order' in file Tests/scripts/vm-settings-scenario.bats, line 93,
+#  from function `expect_facade_exhaustion' in file Tests/scripts/vm-settings-scenario.bats, line 791,
+#  in test file Tests/scripts/vm-settings-scenario.bats, line 799)
+#   `expect_facade_exhaustion first-launch-endpoint-exhausted 'no endpoint descriptor after launch' \' failed
+# true
+# first-launch-endpoint-front-application at -1, after 53
+not ok 2 an exhausted menu label poll takes the observations and keeps the label it judged (k166)
+# (from function `expect_facade_exhaustion' in file Tests/scripts/vm-settings-scenario.bats, line 785,
+#  in test file Tests/scripts/vm-settings-scenario.bats, line 810)
+#   `expect_facade_exhaustion first-launch-label-exhausted \' failed
+# receipt first-launch-label-exhausted: status 125
+# FAILED: the menu bar item's label is "unknown", not "Koine, Accessibility not granted" (evidence status 125)
+# Failure screenshot: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-deZwdt/test/2/repo/.build/vm-verify/menu-bar-20261123T062428-evidence/failure-capture.png
+# Scenario status 125. Evidence root: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-deZwdt/test/2/repo/.build/vm-verify/menu-bar-20261123T062428-evidence. Work directory: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/tmp.wScuru55fC.
+# Held pointer: none
+# The scenario sent no VM stop. The finite caller owns the exact stop and inventory of exact-settings-vm: testanyware vm stop exact-settings-vm
+not ok 3 an exhausted menu item frame poll takes the observations before its receipt (k166)
+# (from function `expect_order' in file Tests/scripts/vm-settings-scenario.bats, line 93,
+#  from function `expect_facade_exhaustion' in file Tests/scripts/vm-settings-scenario.bats, line 791,
+#  in test file Tests/scripts/vm-settings-scenario.bats, line 819)
+#   `expect_facade_exhaustion first-launch-menu-item-exhausted "Koine's menu bar item has no position" \' failed
+# true
+# first-launch-menu-item-front-application at -1, after 55
+not ok 4 an exhausted menu row poll takes the observations on both menu routes (k166)
+# (from function `expect_order' in file Tests/scripts/vm-settings-scenario.bats, line 93,
+#  from function `expect_facade_exhaustion' in file Tests/scripts/vm-settings-scenario.bats, line 791,
+#  in test file Tests/scripts/vm-settings-scenario.bats, line 828)
+#   `expect_facade_exhaustion first-selection-row-exhausted 'the menu has no item "Settings…"' \' failed
+# true
+# first-selection-row-front-application at -1, after 98
+not ok 5 an exhausted TextEdit poll takes the observations after its final assertion (k166)
+# (from function `expect_order' in file Tests/scripts/vm-settings-scenario.bats, line 93,
+#  from function `expect_facade_exhaustion' in file Tests/scripts/vm-settings-scenario.bats, line 791,
+#  in test file Tests/scripts/vm-settings-scenario.bats, line 842)
+#   `expect_facade_exhaustion textedit-window-exhausted 'TextEdit has no window' \' failed
+# true
+# textedit-window-front-application at -1, after 88
+not ok 6 a missing exact Allow target takes the observations but runs no observer (k166)
+# (from function `expect_order' in file Tests/scripts/vm-settings-scenario.bats, line 93,
+#  from function `expect_facade_exhaustion' in file Tests/scripts/vm-settings-scenario.bats, line 791,
+#  in test file Tests/scripts/vm-settings-scenario.bats, line 852)
+#   `expect_facade_exhaustion automation-allow-exact-target 'the Automation prompt for System Events did not appear' \' failed
+# true
+# automation-allow-failure-windows at -1, after 18
+ok 7 an unavailable read in a deferred facade poll is no clean exhaustion (k166)
+not ok 8 a deferred launch poll keeps its bound and leaves the exhaustion receipt to the caller (k166)
+# (in test file Tests/scripts/vm-exec-read-evidence.bats, line 330)
+#   `[[ "${status}" == 1 && "$(calls)" == 15 && -z "${output}" && ! -e "${read_root}/unavailable" ]]' failed
+# diagnostic: status=125 calls=0 output=guest evidence unavailable (000001): expected ROOT OPERATION launch|login
+not ok 9 a deferred launch poll keeps the positive, the failed read and the argument refusals (k166)
+# (in test file Tests/scripts/vm-exec-read-evidence.bats, line 348)
+#   `[[ "${status}" == 0 && "$(calls)" == 2 ]]' failed
+not ok 10 each deferred menu poll keeps its bound and leaves the exhaustion receipt to the caller (k166)
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 575)
+#   `predicate="$(menu_label_predicate Koine)"' failed with status 127
+# /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/vm-sysevents-evidence.bats: line 575: menu_label_predicate: command not found
+not ok 11 a deferred menu poll keeps the positive, the failed read and the argument refusals (k166)
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 607)
+#   `[[ "${status}" == 0 && "$(calls)" == 2 ]]' failed
+not ok 12 a deferred Allow leaves the exact-target receipt to the caller and sends no input (k166)
+# (in test file Tests/scripts/vm-click-evidence.bats, line 195)
+#   `[[ "${status}" == 1 && -z "${output}" && ! -e "${click_root}/unavailable" ]]' failed
+# diagnostic: status=125 output=guest evidence unavailable (000001): expected ROOT OPERATION
+not ok 13 a deferred Allow keeps the click, unusable geometry and the argument refusal (k166)
+# (from function `_guest_evidence_backend' in file Tests/scripts/../../scripts/vm-guest-exec-lib.sh, line 43,
+#  from function `fail_guest_evidence' in file Tests/scripts/../../scripts/vm-guest-exec-lib.sh, line 15,
+#  from function `_ui_evidence_fail' in file Tests/scripts/../../scripts/vm-ui-evidence-lib.sh, line 15,
+#  from function `click_guest_allow' in file Tests/scripts/../../scripts/vm-click-evidence-lib.sh, line 76,
+#  in test file Tests/scripts/vm-click-evidence.bats, line 212)
+#   `click_guest_allow "${click_root}" allow deferred' failed with status 125
+# guest evidence unavailable (000001): expected ROOT OPERATION
+not ok 14 a deferred TextEdit poll keeps its final assertion and leaves the receipt to the caller (k166)
+# (in test file Tests/scripts/vm-window-evidence.bats, line 422)
+#   `[[ "${status}" == 1 ]]' failed
+# diagnostic: status=125 output=guest evidence unavailable (000001): expected ROOT OPERATION
+not ok 15 a deferred TextEdit poll keeps the positive, the failed read and the argument refusal (k166)
+# (in test file Tests/scripts/vm-window-evidence.bats, line 442)
+#   `[[ "${status}" == 0 && "$(wc -l <"${window_calls}" | tr -d ' ')" == 2 ]]' failed

@@ -414,3 +414,38 @@ assert_window_latched() {
     run await_guest_window_count "${window_root}" word Koine 1 later
     [[ "${status}" == 125 && ! -s "${window_calls}" && -s "${window_root}/unavailable" ]]
 }
+
+@test "a deferred TextEdit poll keeps its final assertion and leaves the receipt to the caller (k166)" {
+    [[ "${KOINE_WINDOW_BASELINE:-0}" != 1 ]] || skip 'new deferred interface only'
+    run await_guest_textedit_window "${window_root}" missing deferred
+    echo "diagnostic: status=${status} output=${output}"
+    [[ "${status}" == 1 ]]
+    # Fifteen polls, each with its wait, then the one final assertion.
+    [[ "$(wc -l <"${window_calls}" | tr -d ' ')" == 16 ]]
+    [[ "$(wc -l <"${window_waits}" | tr -d ' ')" == 15 ]]
+    jq -e '.windows | type == "array"' <<<"${output}"
+    jq -se 'length == 32 and all(.[]; .outcome == "clean")' "${window_root}"/*/result.json
+    [[ ! -e "${window_root}/unavailable" ]]
+    run record_guest_poll "${window_root}" missing-exhausted exhausted 1 "$(textedit_window_predicate)"
+    [[ "${status}" == 125 ]]
+    jq -se '.[-1].poll_phase == "exhausted"
+        and .[-1].state_predicate == "([.windows[] | select(.appName == \"TextEdit\")] | length) >= 1"' \
+        "${window_root}"/*/request.json
+    assert_window_latched
+}
+
+@test "a deferred TextEdit poll keeps the positive, the failed read and the argument refusal (k166)" {
+    [[ "${KOINE_WINDOW_BASELINE:-0}" != 1 ]] || skip 'new deferred interface only'
+    window_fixture >"${window_replies}/1.json"
+    window_fixture >"${window_replies}/2.json"
+    run await_guest_textedit_window "${window_root}" prepare deferred
+    [[ "${status}" == 0 && "$(wc -l <"${window_calls}" | tr -d ' ')" == 2 ]]
+    reset_windows deferred-textedit-failed
+    echo 1 >"${window_replies}/1.exit"
+    run await_guest_textedit_window "${window_root}" failed deferred
+    [[ "${status}" != 0 && "${status}" != 1 && -s "${window_root}/unavailable" ]]
+    [[ "$(wc -l <"${window_calls}" | tr -d ' ')" == 1 && ! -s "${window_waits}" ]]
+    reset_windows deferred-textedit-word
+    run await_guest_textedit_window "${window_root}" word later
+    [[ "${status}" == 125 && ! -s "${window_calls}" && -s "${window_root}/unavailable" ]]
+}

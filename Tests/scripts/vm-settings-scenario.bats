@@ -773,6 +773,111 @@ DATE
     [[ "$(input_after "$(call_index scenario-assertion)")" == '[]' ]]
 }
 
+# expect_facade_exhaustion RECEIPT MESSAGE ORDER...: a poll that a reviewed
+# facade exhausts keeps its receipt, its outcome and status 125. The untouched
+# observations precede the receipt, with one screenshot and no later input (k166).
+expect_facade_exhaustion() {
+    local receipt="$1" message="$2" at
+    shift 2
+    if [[ "${status}" != 125 || "${output}" != *"FAILED: ${message}"* ]] || [[ -s "${scenario_legacy}" ]]; then
+        echo "receipt ${receipt}: status ${status}"
+        printf '%s\n' "${output}" | tail -5
+        return 1
+    fi
+    at="$(call_index "${receipt}")"
+    [[ "${at}" -gt 0 && "$(input_after "${at}")" == '[]' ]]
+    jq -se --argjson n "${at}" '.[$n - 1] | .action == "poll-step" and .outcome == "state-failed"' \
+        "${settings_sim}/calls.jsonl"
+    expect_order "$@" failure-capture "${receipt}"
+    [[ "$(jq -s 'map(select(.operation == "failure-capture")) | length' "${settings_sim}/calls.jsonl")" == 1 ]]
+    [[ "$(jq -s --arg op "${receipt}" 'map(select(.operation == $op)) | length' "${settings_sim}/calls.jsonl")" == 1 ]]
+}
+
+@test "an exhausted launch endpoint poll takes the observations before its receipt (k166)" {
+    export settings_flags=endpoint-absent
+    run_scenario
+    expect_facade_exhaustion first-launch-endpoint-exhausted 'no endpoint descriptor after launch' \
+        first-launch-endpoint-15 first-launch-endpoint-front-application first-launch-endpoint-failure-windows
+    [[ "$(call_index first-launch-endpoint-16)" == -1 ]]
+    jq -se 'map(select(.operation == "first-launch-endpoint-front-application"))[0].outcome == "clean"' \
+        "${settings_sim}/calls.jsonl"
+}
+
+@test "an exhausted menu label poll takes the observations and keeps the label it judged (k166)" {
+    export settings_flags=label-stuck
+    run_scenario
+    # The message names the polled label, never the observer's later value.
+    expect_facade_exhaustion first-launch-label-exhausted \
+        "the menu bar item's label is \"Koine, stuck\", not \"Koine, Accessibility not granted\"" \
+        first-launch-label-15 first-launch-label-front-application first-launch-label-failure-windows
+    [[ "$(call_index first-launch-label-16)" == -1 ]]
+}
+
+@test "an exhausted menu item frame poll takes the observations before its receipt (k166)" {
+    export settings_flags=item-frame-absent
+    run_scenario
+    expect_facade_exhaustion first-launch-menu-item-exhausted "Koine's menu bar item has no position" \
+        first-launch-menu-item-5 first-launch-menu-item-front-application \
+        first-launch-menu-item-failure-windows
+    [[ "$(call_index first-launch-menu-item-6)" == -1 ]]
+}
+
+@test "an exhausted menu row poll takes the observations on both menu routes (k166)" {
+    export settings_flags=row-absent
+    run_scenario
+    expect_facade_exhaustion first-selection-row-exhausted 'the menu has no item "Settings…"' \
+        first-selection-row-5 first-selection-row-front-application first-selection-row-failure-windows
+    [[ "$(call_index first-selection-row-6)" == -1 ]]
+    [[ "$(call_index first-selection-enabled)" == -1 ]]
+    reset_run
+    export settings_flags=quit-row-absent
+    run_scenario
+    expect_facade_exhaustion setup-quit-row-exhausted 'the menu has no item "Quit Koine"' \
+        setup-quit-row-5 setup-quit-row-front-application setup-quit-row-failure-windows
+}
+
+@test "an exhausted TextEdit poll takes the observations after its final assertion (k166)" {
+    export settings_flags=textedit-no-window
+    run_scenario
+    expect_facade_exhaustion textedit-window-exhausted 'TextEdit has no window' \
+        textedit-window-15 textedit-window-assertion textedit-window-front-application \
+        textedit-window-failure-windows
+    [[ "$(call_index textedit-window-16)" == -1 ]]
+    [[ "$(call_index textedit-settle-wait)" == -1 ]]
+}
+
+@test "a missing exact Allow target takes the observations but runs no observer (k166)" {
+    export settings_flags=allow-substring
+    run_scenario
+    expect_facade_exhaustion automation-allow-exact-target 'the Automation prompt for System Events did not appear' \
+        automation-allow-ocr automation-allow-failure-windows
+    # The Automation check has not passed, so the k165 rule holds.
+    [[ "${output}" == *'the failure observer was not run'* ]]
+    [[ "$(call_index automation-allow-front-application)" == -1 ]]
+    [[ "$(call_index automation-allow-click)" == -1 ]]
+    [[ "$(call_index automation-check)" == -1 ]]
+}
+
+@test "an unavailable read in a deferred facade poll is no clean exhaustion (k166)" {
+    local fault base
+    for fault in first-launch-endpoint-1 first-launch-label-1 first-launch-menu-item-1 \
+        first-selection-row-1 textedit-window-1 textedit-window-assertion automation-allow-ocr; do
+        reset_run
+        export settings_flags='' settings_fault="${fault}"
+        [[ "${fault}" != textedit-window-assertion ]] || export settings_flags=textedit-no-window
+        run_scenario
+        base="${fault%-1}"
+        base="${base%-assertion}"
+        base="${base%-ocr}"
+        if [[ "${status}" != 125 || "$(call_index "${base}-failure-windows")" != -1 ||
+        "$(call_index "${base}-exhausted")" != -1 || "$(call_index "${base}-exact-target")" != -1 ]]; then
+            echo "fault ${fault}: status ${status}"
+            printf '%s\n' "${output}" | tail -5
+            return 1
+        fi
+    done
+}
+
 @test "two Koine windows after a selection are a multiple-windows failure" {
     export settings_flags=two-windows
     run_scenario

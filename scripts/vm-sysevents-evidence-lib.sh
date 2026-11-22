@@ -34,9 +34,16 @@ check_guest_read() {
 # Internal: LIMIT checked reads. Only a clean false state reaches the existing
 # sleep. Exhaustion is a state failure.
 _sysevents_poll() {
-    local root="$1" operation="$2" limit="$3" delay="$4" predicate="$5"
+    _sysevents_poll_as record "$@"
+}
+
+# Internal: the poll, with its exhaustion as record or deferred. A deferred
+# exhaustion returns 1 without its receipt, so nothing latches yet. The caller
+# takes its untouched failure reads, and it then records OPERATION-exhausted.
+_sysevents_poll_as() {
+    local exhaustion="$1" root="$2" operation="$3" limit="$4" delay="$5" predicate="$6"
     local attempt record state sleep_status
-    shift 5
+    shift 6
     for ((attempt = 1; attempt <= limit; attempt++)); do
         state=0
         record="$(check_guest_read "${root}" read-poll "${operation}-${attempt}" "${predicate}" "$@")" || state=$?
@@ -52,6 +59,7 @@ _sysevents_poll() {
             return
         fi
     done
+    [[ "${exhaustion}" != deferred ]] || return 1
     record_guest_poll "${root}" "${operation}-exhausted" exhausted 1 "${predicate}"
 }
 
@@ -110,34 +118,51 @@ expect_guest_menu() {
     check_guest_read "${root}" read-poll "${operation}" ".value == ${titles}" menu-titles
 }
 
-# await_guest_menu_label ROOT OPERATION LABEL
-# await_menu_item_label: fifteen reads. Another label, a missing value or a
-# clean absent item is a negative, and two seconds follow it.
-await_guest_menu_label() {
-    local root="${1-}" operation="${2-}" label
-    [[ $# == 3 && -n "${operation}" ]] || {
-        _sysevents_usage "${root}" "${operation}" 'ROOT OPERATION LABEL'
-        return
-    }
-    label="$(jq -cn --arg label "$3" '$label')" || return
-    _sysevents_poll "${root}" "${operation}" 15 2 \
-        "(.absent | not) and .value == ${label}" menu-item-label poll
+# menu_label_predicate LABEL: the label poll's predicate on one record.
+menu_label_predicate() {
+    local label
+    label="$(jq -cn --arg label "$1" '$label')" || return
+    printf '%s\n' "(.absent | not) and .value == ${label}"
 }
 
-# await_guest_menu_frame ROOT OPERATION [TITLE]
+# await_guest_menu_label ROOT OPERATION LABEL [deferred]
+# await_menu_item_label: fifteen reads. Another label, a missing value or a
+# clean absent item is a negative, and two seconds follow it. With deferred,
+# the caller records OPERATION-exhausted with menu_label_predicate.
+await_guest_menu_label() {
+    local root="${1-}" operation="${2-}" predicate exhaustion=record
+    [[ ($# == 3 || ($# == 4 && "${4-}" == deferred)) && -n "${operation}" ]] || {
+        _sysevents_usage "${root}" "${operation}" 'ROOT OPERATION LABEL [deferred]'
+        return
+    }
+    [[ $# != 4 ]] || exhaustion=deferred
+    predicate="$(menu_label_predicate "$3")" || return
+    _sysevents_poll_as "${exhaustion}" "${root}" "${operation}" 15 2 "${predicate}" menu-item-label poll
+}
+
+# menu_frame_predicate: the frame polls' predicate on one record.
+menu_frame_predicate() {
+    printf '%s\n' '(.absent | not) and (.value[0] | type == "array" and .[0] >= 0)'
+}
+
+# await_guest_menu_frame ROOT OPERATION [TITLE [deferred]]
 # Without TITLE, the item frame poll of open_menu: five reads, each negative
 # followed by two seconds. With TITLE, the row frame poll of choose_menu_item:
 # five reads, each negative followed by one second. The legacy predicate held
 # when the rendered frame began with a digit, which is a position whose x is a
 # nonnegative integer. The record's text is the rendering that click_centre
-# parses.
+# parses. A title can be any word, so the mode is a fourth argument. With
+# deferred, an empty TITLE selects the item frame, and the caller records
+# OPERATION-exhausted with menu_frame_predicate.
 await_guest_menu_frame() {
-    local root="${1-}" operation="${2-}"
-    local predicate='(.absent | not) and (.value[0] | type == "array" and .[0] >= 0)'
-    case "$#" in
-    2) _sysevents_poll "${root}" "${operation}" 5 2 "${predicate}" menu-item-frame ;;
-    3) _sysevents_poll "${root}" "${operation}" 5 1 "${predicate}" menu-row-frame "$3" ;;
-    *) _sysevents_usage "${root}" "${operation}" 'ROOT OPERATION [TITLE]' ;;
+    local root="${1-}" operation="${2-}" predicate
+    predicate="$(menu_frame_predicate)"
+    case "$#:${4-}:${3:+row}" in
+    2::) _sysevents_poll "${root}" "${operation}" 5 2 "${predicate}" menu-item-frame ;;
+    3::*) _sysevents_poll "${root}" "${operation}" 5 1 "${predicate}" menu-row-frame "$3" ;;
+    4:deferred:) _sysevents_poll_as deferred "${root}" "${operation}" 5 2 "${predicate}" menu-item-frame ;;
+    4:deferred:row) _sysevents_poll_as deferred "${root}" "${operation}" 5 1 "${predicate}" menu-row-frame "$3" ;;
+    *) _sysevents_usage "${root}" "${operation}" 'ROOT OPERATION [TITLE [deferred]]' ;;
     esac
 }
 

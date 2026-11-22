@@ -320,6 +320,50 @@ DESCRIPTOR='{"contractVersion":"1","descriptorVersion":1,"instanceId":"A1","path
     [[ "$(find "${read_root}" -name result.json | wc -l | tr -d ' ')" == 48 ]]
 }
 
+@test "a deferred launch poll keeps its bound and leaves the exhaustion receipt to the caller (k166)" {
+    [[ "${KOINE_EXEC_READ_BASELINE:-0}" != 1 ]] || skip 'new deferred interface only'
+    # shellcheck disable=SC2329
+    sleep() { printf '%s\n' "$1" >>"${BATS_TEST_TMPDIR}/sleeps"; }
+    answer 'ABSENT'
+    run await_guest_endpoint "${read_root}" launch-poll launch deferred
+    echo "diagnostic: status=${status} calls=$(calls) output=${output}"
+    [[ "${status}" == 1 && "$(calls)" == 15 && -z "${output}" && ! -e "${read_root}/unavailable" ]]
+    [[ "$(sort -u "${BATS_TEST_TMPDIR}/sleeps")" == 2 && "$(wc -l <"${BATS_TEST_TMPDIR}/sleeps" | tr -d ' ')" == 15 ]]
+    jq -se 'length == 30 and all(.[]; .outcome == "clean")' "${read_root}"/0000*/result.json
+    # The caller's receipt is the facade's own receipt.
+    run record_guest_poll "${read_root}" launch-poll-exhausted exhausted 1 "$(endpoint_present_predicate)"
+    [[ "${status}" == 125 ]]
+    jq -e '.operation == "launch-poll-exhausted" and .poll_phase == "exhausted"
+        and .local_status == 1 and .state_predicate == ".present == true"' "${read_root}/000031/request.json"
+    jq -e '.outcome == "state-failed"' "${read_root}/000031/result.json"
+    assert_latched
+}
+
+@test "a deferred launch poll keeps the positive, the failed read and the argument refusals (k166)" {
+    [[ "${KOINE_EXEC_READ_BASELINE:-0}" != 1 ]] || skip 'new deferred interface only'
+    # shellcheck disable=SC2329
+    sleep() { printf '%s\n' "$1" >>"${BATS_TEST_TMPDIR}/sleeps"; }
+    script '0 false 0 ABSENT' "0 false 0 PRESENT"$'\n'"${DESCRIPTOR}"
+    run await_guest_endpoint "${read_root}" launch-poll launch deferred
+    [[ "${status}" == 0 && "$(calls)" == 2 ]]
+    jq -e '.present == true and .descriptor.instanceId == "A1"' <<<"${output}"
+    reset_root deferred-failed
+    script '0 false 0 ABSENT' '1 false 0 ABSENT'
+    # The fixture keeps its cursor beside the script file.
+    echo 0 >"${read_script}.used"
+    run await_guest_endpoint "${read_root}" launch-poll launch deferred
+    [[ "${status}" == 125 && "$(calls)" == 2 ]]
+    assert_latched
+    local arguments
+    for arguments in 'login deferred' 'launch later'; do
+        reset_root "deferred-word-${arguments// /-}"
+        # shellcheck disable=SC2086 # Each case is two words.
+        run await_guest_endpoint "${read_root}" launch-poll ${arguments}
+        [[ "${status}" == 125 && "$(calls)" == 0 ]]
+        assert_latched
+    done
+}
+
 @test "process absence is clean data and process rows keep identity and arguments" {
     answer 'NONE'
     run read_guest_exec "${read_root}" read-poll stopped process executable

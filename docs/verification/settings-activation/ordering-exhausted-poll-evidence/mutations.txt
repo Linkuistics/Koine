@@ -1,0 +1,14 @@
+== Mutation: the label message reads the newest record after the observations
+1..1
+not ok 1 an exhausted menu label poll takes the observations and keeps the label it judged (k166)
+# FAILED: the menu bar item's label is "Koine", not "Koine, Accessibility not granted" (evidence status 125)
+
+== Mutation: settings_poll_failed records the receipt before the observations
+1..7
+not ok 1 an exhausted launch endpoint poll takes the observations before its receipt (k166)
+not ok 2 an exhausted menu label poll takes the observations and keeps the label it judged (k166)
+not ok 3 an exhausted menu item frame poll takes the observations before its receipt (k166)
+not ok 4 an exhausted menu row poll takes the observations on both menu routes (k166)
+not ok 5 an exhausted TextEdit poll takes the observations after its final assertion (k166)
+not ok 6 a missing exact Allow target takes the observations but runs no observer (k166)
+ok 7 an unavailable read in a deferred facade poll is no clean exhaustion (k166)

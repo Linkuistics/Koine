@@ -47,3 +47,27 @@ reuses, is the existing model.
 No VM, clone or signed subject. A source change before the TextEdit quit in
 `scripts/vm-verify-menu-bar.sh` needs a new prefix extraction. A change in the
 library or a facade needs none. k164 follows this leaf.
+
+## Decisions (running log)
+
+- 2026-11-23: Each listed facade gets an explicit `deferred` mode, on the model
+  of the count poll. Each facade exposes its predicate as a function, so the
+  caller's receipt cannot drift from the facade's receipt.
+- 2026-11-23: The frame poll already takes an optional title, and a title can
+  be any word. Its mode is therefore a fourth argument, and an empty title
+  selects the item frame.
+- 2026-11-23: The TextEdit poll is called directly from the scenario. Its
+  repair changes a line before the TextEdit quit, so the prefix is a new
+  extraction of 154 lines.
+- 2026-11-23: The restart boot poll stays outside this duty. The scenario
+  classifies its exhaustion as a test-driver or guest failure, not a failed
+  assertion. `await_guest_element` has no caller.
+- 2026-11-23: The facade change earns review k167 before k164, and that review
+  includes the k165 library change. The change moves the latch point in four
+  reviewed facade families, and the finite runtime slots depend on the
+  resulting classification.
+- 2026-11-23: Fourteen of the fifteen k166 controls failed before the repair,
+  and two mutations were detected. The fifteenth holds an existing property.
+  The recorded run of the nineteen Taskfile checks exits 0, with 346 passing
+  tests and none of the 4,558 subjects changed. The documentation check keeps
+  only the two existing k23 failures. No VM, clone or runtime slot ran.

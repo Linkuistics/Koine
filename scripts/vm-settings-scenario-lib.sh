@@ -193,6 +193,20 @@ settings_failure_observations() {
     [[ -n "${SETTINGS_OBSERVED}" ]] || settings_return_observations "$1"
 }
 
+# settings_poll_failed STATUS OPERATION RECEIPT PREDICATE MESSAGE: a deferred
+# facade poll ended. Status 1 is a clean exhaustion, which takes the untouched
+# failure observations under OPERATION. Then the facade's own state-failed
+# RECEIPT latches the root and keeps its status. Any other status is already
+# recorded, and it takes no observer read (k166).
+settings_poll_failed() {
+    local status="$1" operation="$2" receipt="$3" predicate="$4" message="$5" recorded=0
+    [[ "${status}" == 1 ]] || settings_stop "${status}" "${message}"
+    settings_failure_observations "${operation}"
+    record_guest_poll "${KOINE_VM_EVIDENCE_ROOT}" "${receipt}" exhausted 1 "${predicate}" || recorded=$?
+    [[ "${recorded}" != 0 ]] || recorded=125
+    settings_stop "${recorded}" "${message}"
+}
+
 # settings_require_as OUTCOME STATUS MESSAGE: status 1 is a classified clean
 # false state, and any other nonzero status is already recorded.
 settings_require_as() {
@@ -372,8 +386,9 @@ settings_launch() {
 
 # settings_await_koine OPERATION: the process runs and has served its descriptor.
 settings_await_koine() {
-    await_guest_endpoint "${KOINE_VM_EVIDENCE_ROOT}" "$1" launch >/dev/null ||
-        settings_stop "$?" "no endpoint descriptor after launch"
+    await_guest_endpoint "${KOINE_VM_EVIDENCE_ROOT}" "$1" launch deferred >/dev/null ||
+        settings_poll_failed "$?" "$1" "$1-exhausted" "$(endpoint_present_predicate)" \
+            "no endpoint descriptor after launch"
 }
 
 # settings_expect_stopped OPERATION: Quit stopped the server as it always has.
@@ -398,8 +413,9 @@ settings_grant_system_events_automation() {
     request_guest_automation "${KOINE_VM_EVIDENCE_ROOT}" automation-request ||
         settings_stop "$?" "the System Events request was not submitted cleanly"
     # The checked click keeps the legacy two seconds after it.
-    click_guest_allow "${KOINE_VM_EVIDENCE_ROOT}" automation-allow ||
-        settings_require "$?" "the Automation prompt for System Events did not appear"
+    click_guest_allow "${KOINE_VM_EVIDENCE_ROOT}" automation-allow deferred ||
+        settings_poll_failed "$?" automation-allow automation-allow-exact-target \
+            "$(allow_target_predicate)" "the Automation prompt for System Events did not appear"
     expect_guest_system_events "${KOINE_VM_EVIDENCE_ROOT}" automation-check >/dev/null ||
         settings_require "$?" "System Events still refuses the agent"
     SETTINGS_OBSERVER_READY=1
@@ -418,18 +434,22 @@ settings_menu_label() {
 
 # settings_await_menu_label OPERATION LABEL
 settings_await_menu_label() {
-    local got
-    await_guest_menu_label "${KOINE_VM_EVIDENCE_ROOT}" "$1" "$2" >/dev/null || {
+    local got predicate
+    await_guest_menu_label "${KOINE_VM_EVIDENCE_ROOT}" "$1" "$2" deferred >/dev/null || {
         local status=$?
+        # The message reads the last poll record before an observer adds one.
         got="$(settings_last_record "$1-" | jq -r '.value // "missing value"' 2>/dev/null)" || got=unknown
-        settings_stop "${status}" "the menu bar item's label is \"${got}\", not \"$2\""
+        predicate="$(menu_label_predicate "$2")" || predicate="label == $2"
+        settings_poll_failed "${status}" "$1" "$1-exhausted" "${predicate}" \
+            "the menu bar item's label is \"${got}\", not \"$2\""
     }
 }
 
 settings_open_menu() {
     local record
-    record="$(await_guest_menu_frame "${KOINE_VM_EVIDENCE_ROOT}" "$1-item")" ||
-        settings_stop "$?" "Koine's menu bar item has no position"
+    record="$(await_guest_menu_frame "${KOINE_VM_EVIDENCE_ROOT}" "$1-item" '' deferred)" ||
+        settings_poll_failed "$?" "$1-item" "$1-item-exhausted" "$(menu_frame_predicate)" \
+            "Koine's menu bar item has no position"
     click_centre "$(jq -r '.text' <<<"${record}")" ||
         settings_stop "$?" "the click on Koine's menu bar item was not delivered cleanly"
 }
@@ -455,8 +475,9 @@ settings_expect_menu() {
 settings_choose_menu_item() {
     local record
     settings_open_menu "$1"
-    record="$(await_guest_menu_frame "${KOINE_VM_EVIDENCE_ROOT}" "$1-row" "$2")" ||
-        settings_stop "$?" "the menu has no item \"$2\""
+    record="$(await_guest_menu_frame "${KOINE_VM_EVIDENCE_ROOT}" "$1-row" "$2" deferred)" ||
+        settings_poll_failed "$?" "$1-row" "$1-row-exhausted" "$(menu_frame_predicate)" \
+            "the menu has no item \"$2\""
     click_centre "$(jq -r '.text' <<<"${record}")" ||
         settings_stop "$?" "the click on the menu item \"$2\" was not delivered cleanly"
     settings_sleep "$1" 2
@@ -541,6 +562,13 @@ settings_await_windows() {
     got="$(settings_last_record "$1-" |
         jq --arg app "${SETTINGS_APP}" '[.windows[] | select(.appName == $app)] | length' 2>/dev/null)" || got=unknown
     settings_stop "${status}" "Koine has ${got} windows, not $2"
+}
+
+# settings_await_textedit_window OPERATION: the existing TextEdit poll and its
+# final assertion. The poll defers its exhaustion receipt (k166).
+settings_await_textedit_window() {
+    await_guest_textedit_window "${KOINE_VM_EVIDENCE_ROOT}" "$1" deferred >/dev/null ||
+        settings_poll_failed "$?" "$1" "$1-exhausted" "$(textedit_window_predicate)" "TextEdit has no window"
 }
 
 # settings_koine_in_front OPERATION: Koine's window is the front window and
@@ -664,8 +692,9 @@ settings_pre_click_identity() {
 settings_select_return() {
     local operation="$1" title="$2" record
     settings_open_menu "${operation}"
-    record="$(await_guest_menu_frame "${KOINE_VM_EVIDENCE_ROOT}" "${operation}-row" "${title}")" ||
-        settings_stop "$?" "the menu has no item \"${title}\""
+    record="$(await_guest_menu_frame "${KOINE_VM_EVIDENCE_ROOT}" "${operation}-row" "${title}" deferred)" ||
+        settings_poll_failed "$?" "${operation}-row" "${operation}-row-exhausted" "$(menu_frame_predicate)" \
+            "the menu has no item \"${title}\""
     check_guest_read "${KOINE_VM_EVIDENCE_ROOT}" read-poll "${operation}-enabled" '.value == true' \
         menu-row-enabled "${title}" >/dev/null ||
         settings_require_as menu-item-disabled "$?" "the menu item \"${title}\" is not enabled"

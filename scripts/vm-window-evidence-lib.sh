@@ -110,15 +110,23 @@ window_count_predicate() {
         '"([.windows[] | select(.appName == \($app | tojson))] | length) == \($count)"' -r
 }
 
-# Existing TextEdit preparation: fifteen by two, then an unconditional assertion.
+# textedit_window_predicate: the TextEdit poll's predicate on one list.
+textedit_window_predicate() {
+    printf '%s\n' '([.windows[] | select(.appName == "TextEdit")] | length) >= 1'
+}
+
+# Existing TextEdit preparation: fifteen by two, then an unconditional
+# assertion. With deferred, a clean exhaustion prints the final clean list and
+# returns 1 without its receipt. The caller takes its untouched failure reads,
+# and it then records OPERATION-exhausted with textedit_window_predicate.
 await_guest_textedit_window() {
-    local root="${1-}" operation="${2-}"
+    local root="${1-}" operation="${2-}" deferred="${3-}"
     _window_evidence_root "${root}" || return
-    [[ $# == 2 && -n "${operation}" ]] || {
-        _window_evidence_fail "${root}" textedit-poll-arguments 'expected ROOT OPERATION'
+    [[ ($# == 2 || ($# == 3 && "${deferred}" == deferred)) && -n "${operation}" ]] || {
+        _window_evidence_fail "${root}" textedit-poll-arguments 'expected ROOT OPERATION and an optional deferred'
         return "$?"
     }
-    _await_guest_windows "${root}" "${operation}" '([.windows[] | select(.appName == "TextEdit")] | length) >= 1' 15 1
+    _await_guest_windows "${root}" "${operation}" "$(textedit_window_predicate)" 15 1 "${deferred}"
 }
 
 # Internal: 0 means clean true state, 1 clean false, all other statuses stop.

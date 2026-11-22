@@ -67,13 +67,21 @@ _click_guest_target() {
     fi
 }
 
-# click_guest_allow ROOT OPERATION: exec trigger and confirmation remain separate.
+# allow_target_predicate: the exact-target predicate on one OCR response.
+allow_target_predicate() {
+    printf '%s\n' 'any(.detections[]; .text == "Allow")'
+}
+
+# click_guest_allow ROOT OPERATION [deferred]: exec trigger and confirmation
+# remain separate. With deferred, a clean terminal negative returns 1 without
+# its receipt, so nothing latches yet. The caller takes its untouched failure
+# reads, and it then records OPERATION-exact-target with allow_target_predicate.
 click_guest_allow() {
-    local root="${1-}" operation="${2-}" response status=0
-    local predicate='any(.detections[]; .text == "Allow")'
+    local root="${1-}" operation="${2-}" deferred="${3-}" response status=0 predicate
+    predicate="$(allow_target_predicate)"
     _ui_evidence_root "${root}" || return
-    if [[ $# != 2 || -z "${operation}" ]]; then
-        _ui_evidence_fail "${root}" "${operation:-allow-arguments}" 'expected ROOT OPERATION'
+    if [[ ($# != 2 && ($# != 3 || "${deferred}" != deferred)) || -z "${operation}" ]]; then
+        _ui_evidence_fail "${root}" "${operation:-allow-arguments}" 'expected ROOT OPERATION and an optional deferred'
         return "$?"
     fi
     response="$(read_guest_text "${root}" "${operation}-ocr" Allow 30)" || return
@@ -81,6 +89,7 @@ click_guest_allow() {
     # terminal negative is failed setup; unusable target geometry is unavailable.
     jq -e "${predicate}" >/dev/null <<<"${response}" || status=$?
     if [[ "${status}" == 1 ]]; then
+        [[ "${deferred}" != deferred ]] || return 1
         record_guest_poll "${root}" "${operation}-exact-target" exhausted 1 "${predicate}"
         return "$?"
     elif [[ "${status}" != 0 ]]; then

@@ -12,6 +12,8 @@ Read the "Gaps and their owners" section of
 the review `settings-focused-prefix-k163` and every earned integration first.
 Integration k165 repaired the failure observations, and
 `settings-exhausted-poll-observations-k166` closes gap G6 before this task.
+Consume its review `settings-exhausted-poll-observations-k167` and any earned
+integration first.
 
 For the G1 reveal counts, reuse the simulator flag `scroll-ignored`. The k165
 control "an exhausted reveal takes the untouched failure observations before

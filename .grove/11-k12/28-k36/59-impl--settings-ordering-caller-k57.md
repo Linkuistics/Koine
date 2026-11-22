@@ -172,3 +172,25 @@ missing observer read as a failed transport.
 An exhausted count poll keeps its `OPERATION-exhausted` receipt, its
 `state-failed` outcome and status 125. The scenario library now records that
 receipt after the observations. Every other duty and hold above stays.
+
+## K166 facade exhaustion handoff
+
+k166 closes gap G6 in the "Repair of gap G6" section of the same report.
+Consume it after review `settings-exhausted-poll-observations-k167` and any
+earned integration.
+
+The endpoint, menu label, menu item frame, menu row frame and TextEdit polls
+keep their `OPERATION-exhausted` receipts. The exact Allow target keeps
+`automation-allow-exact-target`. Each receipt keeps its `state-failed` outcome
+and status 125, and it now follows the observations. Classify each failure by
+that receipt.
+
+A missing exact Allow target comes before the Automation check, so its observer
+is NOT RUN. Its window list and screenshot still run.
+
+An exhausted restart boot poll keeps its receipt first and takes only the
+failure screenshot. It is a test-driver or guest failure, not a Koine
+assertion. Do not read its missing observer as a failed transport.
+
+k166 changed the scenario before the TextEdit quit, so the prefix is a new
+extraction. Freeze the current prefix bytes.

@@ -109,8 +109,7 @@ launch_guest_textedit "${KOINE_VM_EVIDENCE_ROOT}" textedit-launch ||
 # TextEdit had been up a while. The cause is not established (TextEdit taking the
 # front again as its document appears is the suspect), so the check lets it settle.
 # The checked poll owns the whole legacy loop and its final assertion.
-await_guest_textedit_window "${KOINE_VM_EVIDENCE_ROOT}" textedit-window >/dev/null ||
-    settings_stop "$?" "TextEdit has no window"
+settings_await_textedit_window textedit-window
 settings_sleep textedit-settle 8
 settings_window textedit-move window-move TextEdit 700 120
 settings_sleep textedit-move 1

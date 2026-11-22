@@ -16,9 +16,9 @@ The focused set E of the [ordering protocol](ORDERING-EVALUATION-PLAN.md#matched
 runs the complete scenario up to the TextEdit quit and stops before the resize.
 The prefix is
 [`scripts/vm-verify-menu-bar-prefix.sh`](../../../scripts/vm-verify-menu-bar-prefix.sh).
-It holds the first 155 lines of
+It holds the first 154 lines of
 [`scripts/vm-verify-menu-bar.sh`](../../../scripts/vm-verify-menu-bar.sh),
-which are 9,000 bytes. The last of those lines ends the `quit_guest_textedit`
+which are 8,913 bytes. The last of those lines ends the `quit_guest_textedit`
 command. The next line that is not blank is the resize step.
 
 The prefix sits beside the scenario, so its repository-root `cd` needs no
@@ -148,7 +148,7 @@ under this directory.
 | A demonstrably unavailable completion holds before E01 | Owned by k54 | ORDERING-ONE-SHOT-RESULTS finds infeasibility not demonstrated | k54 task, readiness bullet |
 | Positive setup before each of the four selections, with screenshots | Met. The screenshot audit is owned by k54 | `settings_record_textedit`, `settings_expect_setup` | `vm-settings-scenario.bats`: "the positive setup precedes each of the four selections and uses the zero-count list". Red: `ordering-outcomes-evidence/red.txt` |
 | Raw count and front lists. The title audit on the same list | Met | `settings_await_windows`, `settings_koine_in_front`, `settings_title_audit` | "a wrong title on the front list is a window-identity failure, for later returns too". Red: `ordering-outcomes-evidence/red-title.txt` |
-| Untouched failure observations: after a failed assertion, one observer read, one window read and one screenshot before other collection | Met for the returns, the clean single-read failures, the resize front check, the count polls and the reveal (k165). The observer is NOT RUN before the Automation check. Polls that a facade exhausts are [gap G6](#gaps-and-their-owners) | `settings_return_observations`, `settings_failure_observations`, `settings_fail`, `settings_fail_as`, `settings_expect_front`, `settings_await_windows`, `settings_reveal` | The five k165 controls and "a disabled row is recorded and not clicked". Red: `ordering-prefix-integration-evidence/red.txt` and `red-exhausted.txt` |
+| Untouched failure observations: after a failed assertion, one observer read, one window read and one screenshot before other collection | Met for the returns, the clean single-read failures, the resize front check, the count polls and the reveal (k165). Met for the four facade poll families (k166). The observer is NOT RUN before the Automation check. The restart boot poll is outside this duty. See [the repair of gap G6](#repair-of-gap-g6) | `settings_return_observations`, `settings_failure_observations`, `settings_poll_failed`, `settings_fail`, `settings_fail_as`, `settings_expect_front`, `settings_await_windows`, `settings_reveal` | The five k165 controls, the k166 controls and "a disabled row is recorded and not clicked". Red: `ordering-prefix-integration-evidence/red.txt`, `red-exhausted.txt` and `ordering-exhausted-poll-evidence/red.txt` |
 | Same-process zero windows versus process loss or unavailable liveness, for later returns too | Met | `settings_expect_return` | "zero windows with the same live process are a same-process recurrence, for later returns too", "a lost or replaced process after zero windows is process loss, not a recurrence" |
 | Preserve the physical route, actions, waits and poll bounds | Met by comparison. See [the baseline comparison](#later-ordinary-assertions-and-the-baseline) | `settings_select_return` and the facades | `vm-physical-evidence.bats`: "strict menu route retains exact raw completions, VM, ordinals and unchanged waits" |
 | Extract the prefix and check its bytes. E and A share the helpers and the rules | Met by this task | `scripts/vm-verify-menu-bar-prefix.sh`, `scripts/check-settings-prefix.py` | `vm-settings-prefix.bats`, all nine tests. Red: `ordering-prefix-evidence/red.txt` |
@@ -248,7 +248,7 @@ G1 to G5 are missing controls or comparisons. G6 is missing failure
 evidence, which review k163 found in a wider form (P2-1). No gap is a missing
 product behaviour in the scenario. The task `settings-scenario-controls` owns
 G1 to G4, before k57. k57 owns G5 through its handoff. The task
-`settings-exhausted-poll-observations` owns G6, before
+`settings-exhausted-poll-observations` closed G6 before
 `settings-scenario-controls`.
 
 - **G1, scenario-level bounds and call-site counts.** No strict-lane control
@@ -274,12 +274,13 @@ G1 to G4, before k57. k57 owns G5 through its handoff. The task
   arguments or environment. The scenario reads `system`, `gatekeeper` and the
   process arguments, but nothing compares them with the declaration. The k57
   handoff now names this comparison.
-- **G6, observations after a facade's exhaustion.** Four reviewed facades
-  record their own state-failed receipt when a poll exhausts. They are the
-  launch endpoint poll, the System Events label and frame polls, the TextEdit
-  window poll and the exact Allow target. That receipt latches the root, and
-  the latch refuses the System Events observer. These failures keep only the
-  screenshot. See [the integration of review k163](#integration-of-review-k163).
+- **G6, observations after a facade's exhaustion. Closed by k166.** Four
+  reviewed facades recorded their own state-failed receipt when a poll
+  exhausted. They were the launch endpoint poll, the System Events label and
+  frame polls, the TextEdit window poll and the exact Allow target. That
+  receipt latched the root, and the latch refused the System Events observer.
+  These failures kept only the screenshot. See
+  [the repair of gap G6](#repair-of-gap-g6).
 
 ## Integration of review k163
 
@@ -303,7 +304,7 @@ paths. Where the latch is written decides each repair.
 | A false front or title at `settings_expect_front`, including a false front beside an unavailable audit | Receipt or stop, then screenshot | Observer, window list and screenshot under the check's own operation, then the receipt or the stop, as at a return (k162) |
 | An exhausted count poll through `settings_await_windows` | The facade's receipt, then screenshot | The poll's deferred mode. Observer, window list and screenshot, then the same `OPERATION-exhausted` receipt with the same status |
 | An exhausted reveal | Receipt, then screenshot | Observer, window list and screenshot, then the receipt |
-| An exhausted poll inside a reviewed facade | Receipt, then screenshot | Unchanged. This is gap G6 |
+| An exhausted poll inside a reviewed facade | Receipt, then screenshot | Unchanged by k165. This was gap G6, which k166 closed |
 | An unavailable answer, through `settings_stop` | Screenshot | Unchanged. An unavailable answer is not a failed assertion |
 
 The observer is a System Events read. The latch refuses it, because an Apple
@@ -335,8 +336,9 @@ latches before the scenario can observe. The review did not name them, but
 they belong to the same duty. Their repair needs a deferred mode in four
 reviewed facade families, as k67 gave the return count poll. That change is
 too large for this integration, so the new task
-`settings-exhausted-poll-observations` owns it before
-`settings-scenario-controls`.
+`settings-exhausted-poll-observations` owned it before
+`settings-scenario-controls`. That task closed the gap. See
+[the repair of gap G6](#repair-of-gap-g6).
 
 ### The other doubts
 
@@ -376,6 +378,71 @@ open after one close. The flags `resize-ignored`, `scroll-ignored` and
 checks of the k62 record. The prefix check passes unchanged, because the
 repair changes only the library, which E and A share. No VM, clone or runtime
 slot ran.
+
+## Repair of gap G6
+
+Task `settings-exhausted-poll-observations-k166` gives each listed facade poll
+a `deferred` mode, on the model of the count poll. A clean exhaustion in this
+mode returns 1 and writes no receipt, so the root does not latch. The library
+function `settings_poll_failed` takes the observations. It then records the
+receipt that the facade formerly wrote, and the scenario stops with that
+receipt's status.
+
+| Failure | Operation of the observations | Receipt | Observer |
+|---|---|---|---|
+| Launch endpoint poll | `OPERATION` | `OPERATION-exhausted` | Runs |
+| Menu label poll | `OPERATION` | `OPERATION-exhausted` | Runs |
+| Menu item frame poll | `OPERATION-item` | `OPERATION-item-exhausted` | Runs |
+| Menu row frame poll, on both menu routes | `OPERATION-row` | `OPERATION-row-exhausted` | Runs |
+| TextEdit window poll, after its final assertion | `textedit-window` | `textedit-window-exhausted` | Runs |
+| Exact Allow target | `automation-allow` | `automation-allow-exact-target` | NOT RUN |
+
+The exact Allow target comes before the Automation check passes. The k165 rule
+therefore applies: the observer is NOT RUN, and the window list and the
+screenshot still run.
+
+Each receipt keeps its operation name, its predicate, its `state-failed`
+outcome and status 125. Each facade exposes its predicate as a function, so the
+facade and its caller share one definition. An unavailable read keeps its own
+status and takes no observations. Without `deferred`, each facade behaves as
+before. The label message reads the last poll record before the observer adds
+a newer one.
+
+The TextEdit poll is called from the scenario itself, before the TextEdit quit.
+Its call now goes through `settings_await_textedit_window`, so the prefix is a
+new extraction.
+
+### Exhaustion receipts outside the repair
+
+A search of the shell scripts for every exhausted receipt found two more
+facade writers. Neither one belongs to this duty:
+
+- **The restart boot poll.** `restart_guest` exhausts through the same internal
+  poll. The scenario reports that failure as a test-driver or guest failure,
+  not a Koine failure. It is not a failed assertion, so it keeps its receipt
+  and the failure screenshot.
+- **`await_guest_element`.** No shell script calls this facade.
+
+### G6 controls
+
+Fifteen controls carry "(k166)" in their names. Seven are in
+`vm-settings-scenario.bats`, and two are in each of the four facade suites.
+Fourteen failed against the source before the repair. The fifteenth holds that
+an unavailable read is not a clean exhaustion, which was already true. The
+records are in
+[`ordering-exhausted-poll-evidence/`](ordering-exhausted-poll-evidence/).
+
+`mutations.txt` shows two detected mutations. One reads the label message
+after the observer. The other records the receipt before the observations.
+
+`final-verification.txt` in the same directory runs the nineteen Taskfile
+checks. All of them pass, with 346 passing tests and no failure. None of the
+4,558 subjects changed during the run. The documentation check keeps only the
+two existing k23 failures. The record files, the last entry of the task file
+and the retirement of the leaf come after the final run.
+
+No VM, clone or runtime slot ran. The simulator and the fixture CLIs establish
+the order of calls, not native behaviour.
 
 ## Limits
 
@@ -419,8 +486,8 @@ come after the final run.
   scenario, the prefix, its check and this comparison before any consumer.
   Integration k165 repaired its finding. See
   [the integration of review k163](#integration-of-review-k163).
-- `settings-exhausted-poll-observations` closes G6 before
-  `settings-scenario-controls`.
+- `settings-exhausted-poll-observations` (k166) closed G6. Its review k167
+  reads the k165 and k166 changes before `settings-scenario-controls`.
 - `settings-scenario-controls` adds the controls of G1 to G4 after the review
   and every earned integration.
 - k57 consumes this comparison in its complete pre-runtime reconciliation. It

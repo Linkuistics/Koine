@@ -559,6 +559,76 @@ SYSEVENTS_READS=(sysevents-processes menu-item-count 'menu-item-label value' 'me
     jq -e '.outcome == "state-failed"' "${read_root}/000011/result.json"
 }
 
+@test "each deferred menu poll keeps its bound and leaves the exhaustion receipt to the caller (k166)" {
+    [[ "${KOINE_SYSEVENTS_BASELINE:-0}" != 1 ]] || skip 'new deferred interface only'
+    # shellcheck disable=SC2329
+    sleep() { printf '%s\n' "$1" >>"${BATS_TEST_TMPDIR}/sleeps"; }
+    local kind reads waits predicate
+    for kind in label item row; do
+        reset_root "deferred-${kind}"
+        rm -f "${BATS_TEST_TMPDIR}/sleeps"
+        answer "$(se_error -1719)"
+        case "${kind}" in
+        label)
+            run await_guest_menu_label "${read_root}" poll Koine deferred
+            reads=15 waits='2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 '
+            predicate="$(menu_label_predicate Koine)"
+            [[ "${predicate}" == '(.absent | not) and .value == "Koine"' ]]
+            ;;
+        item)
+            run await_guest_menu_frame "${read_root}" poll '' deferred
+            reads=5 waits='2 2 2 2 2 '
+            predicate="$(menu_frame_predicate)"
+            ;;
+        row)
+            run await_guest_menu_frame "${read_root}" poll 'Settings…' deferred
+            reads=5 waits='1 1 1 1 1 '
+            predicate="$(menu_frame_predicate)"
+            jq -e '.read_arguments == ["Settings…"]' "${read_root}/000001/request.json"
+            ;;
+        esac
+        echo "diagnostic ${kind}: status=${status} calls=$(calls) sleeps=$(sleeps) output=${output}"
+        [[ "${status}" == 1 && "$(calls)" == "${reads}" && "$(sleeps)" == "${waits}" && -z "${output}" ]]
+        [[ ! -e "${read_root}/unavailable" ]]
+        jq -se 'all(.[]; .outcome == "clean")' "${read_root}"/0000*/result.json
+        run record_guest_poll "${read_root}" poll-exhausted exhausted 1 "${predicate}"
+        [[ "${status}" == 125 ]]
+        assert_latched
+    done
+    [[ "$(menu_frame_predicate)" == '(.absent | not) and (.value[0] | type == "array" and .[0] >= 0)' ]]
+}
+
+@test "a deferred menu poll keeps the positive, the failed read and the argument refusals (k166)" {
+    [[ "${KOINE_SYSEVENTS_BASELINE:-0}" != 1 ]] || skip 'new deferred interface only'
+    # shellcheck disable=SC2329
+    sleep() { printf '%s\n' "$1" >>"${BATS_TEST_TMPDIR}/sleeps"; }
+    script "0 false 0 $(se_error -1719)" "0 false 0 $(se '{{1500, 0}, {30, 24}}')"
+    run await_guest_menu_frame "${read_root}" item '' deferred
+    [[ "${status}" == 0 && "$(calls)" == 2 ]]
+    jq -e '.text == "1500, 0, 30, 24"' <<<"${output}"
+    reset_root deferred-failed
+    script "0 false 0 $(se_error -1719)" "0 false 0 $(se_error -1743)"
+    # The fixture keeps its cursor beside the script file.
+    echo 0 >"${read_script}.used"
+    run await_guest_menu_label "${read_root}" label Koine deferred
+    [[ "${status}" == 125 && "$(calls)" == 2 ]]
+    assert_latched
+    # Three arguments stay a row title, even when the title is the mode's word.
+    reset_root deferred-title
+    answer "$(se '{{1500, 0}, {30, 24}}')"
+    run await_guest_menu_frame "${read_root}" row deferred
+    [[ "${status}" == 0 ]]
+    jq -e '.read_arguments == ["deferred"]' "${read_root}/000001/request.json"
+    reset_root deferred-word-frame
+    run await_guest_menu_frame "${read_root}" row 'Settings…' later
+    [[ "${status}" == 125 && "$(calls)" == 0 ]]
+    assert_latched
+    reset_root deferred-word-label
+    run await_guest_menu_label "${read_root}" label Koine later
+    [[ "${status}" == 125 && "$(calls)" == 0 ]]
+    assert_latched
+}
+
 @test "the System Events check after the grant needs a complete nonempty process list" {
     # A refusal prints an error line, which is not a process list.
     answer "$(se_error -1743)"
