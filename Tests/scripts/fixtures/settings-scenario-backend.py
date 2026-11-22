@@ -19,6 +19,11 @@ use of the domain instead:
   outcome flag affects. A return is a Settings, requests or Accessibility
   selection. A setup or route flag acts before the Nth return, and an outcome
   flag acts from the Nth return on.
+- `settings_untitled_behind=OPERATION` answers that one window read with a
+  focused Finder window in front of each Koine window, and each Koine window
+  loses its title.
+- The model exposes a menu under a menu bar item only while that menu is open.
+  This is the protocol's oracle, assumed here. It is not a native fact.
 """
 
 from __future__ import annotations
@@ -33,8 +38,10 @@ from typing import Any
 SIM = Path(os.environ["settings_sim"])
 FLAGS = set(filter(None, os.environ.get("settings_flags", "").split(",")))
 AT = int(os.environ.get("settings_at", "1"))
+# The operation of the current call, for an operation-scoped answer.
+OPERATION = ""
 TEXTEDIT_PID = 909
-# The TextEdit menu bar items that the open-menus read names.
+# The TextEdit menu bar items that the menu-bar-menus read names.
 TEXTEDIT_MENUS = [
     "Apple",
     "TextEdit",
@@ -283,6 +290,27 @@ def window_entry(state: dict[str, Any], app: str) -> dict[str, Any]:
         "sizeWidth": 700,
         "sizeHeight": 600,
     }
+
+
+def untitled_behind(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """A focused Finder window, then each window, with no title on Koine's."""
+    finder = {
+        "title": "Desktop",
+        "appName": "Finder",
+        "windowType": "standard",
+        "focused": True,
+        "positionX": 40,
+        "positionY": 60,
+        "sizeWidth": 600,
+        "sizeHeight": 400,
+    }
+    rest = []
+    for entry in entries:
+        entry = {**entry, "focused": False}
+        if entry["appName"] == "Koine":
+            entry.pop("title", None)
+        rest.append(entry)
+    return [finder, *rest]
 
 
 def open_window(state: dict[str, Any], app: str) -> bool:
@@ -539,7 +567,10 @@ def cli(state: dict[str, Any], arguments: list[str], root: Path) -> str:
             }
         )
     if (family, action) == ("agent", "windows"):
-        return envelope({"windows": windows(state)})
+        entries = windows(state)
+        if OPERATION == os.environ.get("settings_untitled_behind"):
+            entries = untitled_behind(entries)
+        return envelope({"windows": entries})
     if (family, action) == ("agent", "snapshot"):
         target = option(rest, "--window")
         entries = []
@@ -621,6 +652,11 @@ def process(state: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def koine_menus(state: dict[str, Any]) -> list[str | None]:
+    # The status menu has no name.
+    return [None] if state["menu"] else []
+
+
 def sysevents(state: dict[str, Any], name: str, arguments: list[str]) -> dict[str, Any]:
     if name == "sysevents-processes":
         value: Any = (
@@ -655,15 +691,20 @@ def sysevents(state: dict[str, Any], name: str, arguments: list[str]) -> dict[st
             value = [["AXStandardWindow"], [["AXSheet"]]]
         elif before_return(state, "textedit-dialog"):
             value = [["AXStandardWindow", "AXDialog"], [[], []]]
-    elif name == "open-menus":
-        selected = [False] * len(TEXTEDIT_MENUS)
+    elif name == "menu-bar-menus":
+        # The names of the menus under each item. A setup flag opens the File
+        # menu of TextEdit or Koine's menu for this read only.
+        menus: list[list[str]] = [[] for _ in TEXTEDIT_MENUS]
         if before_return(state, "menu-open-at-setup"):
-            selected[2] = True
-        value = [TEXTEDIT_MENUS, selected, state["menu"]]
+            menus[2] = ["File"]
+        koine = koine_menus(state)
+        if before_return(state, "koine-menu-open-at-setup"):
+            koine = [None]
+        value = [TEXTEDIT_MENUS, menus, koine]
     elif name == "menu-row-enabled":
         value = not before_return(state, "row-disabled")
-    elif name == "menu-item-selected":
-        value = state["menu"]
+    elif name == "koine-menus":
+        value = koine_menus(state)
     else:
         value = state["order"][0] if state["order"] else "Finder"
     record: dict[str, Any] = {"absent": False, "value": value}
@@ -765,9 +806,9 @@ def read(state: dict[str, Any], name: str, arguments: list[str]) -> dict[str, An
         "front-application",
         "front-process",
         "textedit-windows",
-        "open-menus",
+        "menu-bar-menus",
         "menu-row-enabled",
-        "menu-item-selected",
+        "koine-menus",
     }:
         fields = sysevents(state, name, arguments)
     else:
@@ -823,6 +864,7 @@ def latch(root: Path, reason: str) -> None:
 
 
 def main() -> int:
+    global OPERATION
     action, arguments = sys.argv[1], sys.argv[2:]
     if action == "init":
         root = Path(arguments[0])
@@ -873,6 +915,7 @@ def main() -> int:
         entry["outcome"] = "unavailable"
         log(entry)
         return int(os.environ.get("settings_fault_status", "125"))
+    OPERATION = operation
     state = load()
     if action == "cli":
         output = cli(state, arguments[3:], root)

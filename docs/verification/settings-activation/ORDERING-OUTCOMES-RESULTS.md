@@ -8,6 +8,11 @@ checks a positive TextEdit setup before each of the four Settings selections.
 Each return records its menu route. The title audit runs on each front list.
 Each failed return gets one outcome class.
 
+The integration `settings-scenario-outcomes-k162` changed the menu reads and the precedence of
+an unavailable title audit. The section
+[Integration of review k161](#integration-of-review-k161) records both
+changes, and the tables below list the current reads.
+
 The evidence is source and controls only. No VM ran, and no signed subject was
 built or frozen. No runtime slot ran. The work establishes no native
 behaviour, no native cause, no callback delivery and no scenario readiness. It
@@ -24,9 +29,9 @@ read is in the evidence class.
 |---|---|---|---|
 | `front-process` | System Events: `{name, unix id}` of the front process | A name and a positive PID | An Apple event can launch System Events |
 | `textedit-windows` | System Events: the subrole of each TextEdit window and the roles of its sheets | One subrole and one list of sheet roles for each window | The same |
-| `open-menus` | System Events: the names and `selected` values of the TextEdit menu bar items, and `selected` of the Koine item | A name list, a list of booleans of the same length, and a boolean | The same |
+| `menu-bar-menus` | System Events: the TextEdit menu bar items, and the menus under each item and under the Koine item, by name (k162) | A non-empty name list, one name list for each item, and one name list. The record keeps the count for each item | The same |
 | `menu-row-enabled TITLE` | System Events: `enabled` of the Koine menu row | A boolean | The same |
-| `menu-item-selected` | System Events: `selected` of the Koine menu bar item | A boolean | The same |
+| `koine-menus` | System Events: the names of the menus under the Koine menu bar item (k162) | A name list. The record keeps its count | The same |
 | `process-identity PID` | The kernel script of `launch-identity`, for one PID | The PID, and the process entry or `null` | python3 can raise the Command Line Tools prompt |
 
 `process-identity` reuses the script of the launch identity read. A pipe gives
@@ -67,7 +72,7 @@ The checks add no wait, and they send no input.
 | One idle Untitled document | The same list: one TextEdit window, `standard`, titled `Untitled`, at the recorded frame | Another count, type, title or frame | The same |
 | TextEdit is the front process | `front-process`: TextEdit with the recorded PID | Another name or PID | A failed read or a missing value |
 | No dialog or sheet | `textedit-windows`: one `AXStandardWindow` and no sheet | Another subrole, another window or a sheet | A missing subrole or two lengths |
-| No open menu | `open-menus`: each `selected` value is false | A true value | A missing value or two lengths |
+| No open menu | `menu-bar-menus`: no menu under any TextEdit item or under the Koine item | A menu under an item | A missing list, an empty item list or two lengths |
 
 A precondition screenshot, `setup-SELECTION`, follows the checks. A clean
 mismatch records `scenario-assertion-setup-failed`, and the scenario exits 1.
@@ -158,13 +163,13 @@ scenario takes no second screenshot when it stops.
 | Caller | Strict call |
 |---|---|
 | TextEdit PID after the preparation | `check_guest_read process textedit`, one selected PID |
-| Positive setup | The zero-count list, then `front-process`, `textedit-windows` and `open-menus`, then `capture setup-SELECTION` |
+| Positive setup | The zero-count list, then `front-process`, `textedit-windows` and `menu-bar-menus`, then `capture setup-SELECTION` |
 | Pre-click identity | `confirm_guest_launch SELECTION-identity` |
 | Row state | `check_guest_read menu-row-enabled TITLE` |
 | Open-menu screenshot | `capture menu-SELECTION` |
 | Return count poll | `await_guest_window_count ... 1 deferred` |
 | Title audit | One local decision on the front list |
-| Closed menu | `check_guest_read menu-item-selected`, as `RETURN-menu-closed` |
+| Closed menu | `check_guest_read koine-menus`, as `RETURN-menu-closed` |
 | Liveness | `check_guest_read process-identity PID`, as `RETURN-liveness` |
 | Failure observer and list | `read_guest_exec front-application`, then `read_guest_windows evidence` |
 | Outcome screenshots | `capture outcome-RETURN` |
@@ -238,6 +243,10 @@ window with a title bar, not an inspector or a sheet.
 No Apple source states that a menu bar item reports its open menu through it.
 The open-menu and closed-menu oracles are therefore unverified natively.
 
+The k162 integration replaced both selection reads with the protocol's menu
+enumeration. The two limits below about `selected` describe the reviewed
+source, not the current source.
+
 These limits follow:
 
 - A menu bar item that does not report `selected` gives a missing value, which
@@ -277,5 +286,95 @@ sources.
   It classifies a qualified recurrence from these receipts and the
   screenshots.
 
-The review `settings-scenario-outcomes-k161` reads this artifact before k62
-and the runtime.
+The review `settings-scenario-outcomes-k161` read this artifact before k62
+and the runtime. The integration `settings-scenario-outcomes-k162` applied its
+two findings.
+
+## Integration of review k161
+
+The integration `settings-scenario-outcomes-k162` triaged the two findings of
+[the review](ORDERING-OUTCOMES-REVIEW.md). Both findings are real issues, and
+the source changed for each. The successful actions, read counts, waits and
+bounds stay the same. Each setup and each closed-menu check still takes one
+read.
+
+### F1: the menu reads enumerate the menus under each item
+
+The protocol's "No open menu" row names an enumeration of the menus under the
+TextEdit and Koine items, with a count for each item. The reviewed source read
+`selected` instead. The System Events dictionary defines the `menu` elements of
+a menu bar item at lines 1099–1103. No Apple source equates the selection of an
+item with an open menu.
+
+Two reads replace the two selection reads:
+
+- `menu-bar-menus` serves the positive setup. It returns the TextEdit items
+  and the menus under each item and under the Koine item, by name. The setup
+  needs every list of menus to be empty.
+- `koine-menus` serves the closed-menu check after a selection. It reads only
+  the Koine item, because TextEdit quits before the later returns.
+
+Each parse refuses a missing list, a value of another type and two lengths
+that differ. An empty list of TextEdit items is unavailable, because the menu
+bar of a running application has at least the Apple menu. Each record keeps
+the count of menus for each item. A missing name stays admissible, because the
+Koine status menu can have no name.
+
+**Accepted trade-off.** No Apple source states when a menu bar item exposes its
+menu. The new oracle is the protocol's oracle, and it stays unverified natively.
+If a closed application menu exposes its menu in the guest, each setup fails
+cleanly at E01. That failure stops the evaluation. Before E01, the k36 brief's
+hold for a demonstrably infeasible completion is the route for a new decision.
+
+The simulated backend assumes the protocol's mapping, so its green controls
+establish only that mapping.
+
+### F2: an unavailable title audit keeps its status
+
+In the reviewed source, a clean false front predicate took precedence over an
+unavailable title audit. At the app reopen and at the resize focus, the
+scenario then exited 1 as `not-front`. Now the audit's own status ends the
+scenario. The app reopen still takes its untouched failure observations first.
+The resize focus checks the audit's status before it classifies `not-front`. A
+wrong title beside a false front stays `not-front`, as before.
+
+### Controls
+
+| Control | What it establishes | Red result |
+|---|---|---|
+| Menu enumeration | Each of the four setups reads `menu-bar-menus`, each of the seven closed-menu checks reads `koine-menus`, and no read asks for a selection | Failed. In the red tree, the setup reads `open-menus` |
+| Failed setup | An open Koine menu before the third selection is failed setup. The existing open TextEdit menu now opens the File menu in the model | Failed. With a menu exposed and the item reporting false, the reviewed source ended PASSED |
+| Open menu | The existing control now reads the exposed Koine menu | Failed. The reviewed source ended PASSED |
+| Untitled behind | At the app reopen and at the resize focus, a focused Finder window and an untitled Koine window stop with status 125 and no class | Failed. Each case exited 1 as `not-front` |
+| Read grammars | Each new read sends its exact AppleScript and refuses a missing list, two lengths, an empty item list and a script error. The two retired reads refuse before dispatch | Failed. The reviewed reads exist and the new ones do not |
+| Counts | The records keep the count of menus for each item | Failed. The read does not exist |
+
+The records are in
+[`ordering-outcomes-integration-evidence/`](ordering-outcomes-integration-evidence/).
+They use the producer's `record.sh`.
+
+- `red.txt` runs the new and changed controls in this tree, before the source
+  change. All eight selected tests fail. The scenario controls fail for a broad
+  reason, because the new simulated guest does not answer the retired reads.
+- `red-shim.txt` and `red-shim-resize.txt` run the scenario controls in a copy
+  of that tree. `red-tree-shim.diff` is the only change to the copy. Its
+  backend answers each retired selection read with false. These runs expose
+  each defect by itself. The resize run puts its case first, because the loop stops
+  at its first failure.
+- After the red runs, the closed-menu read of the previous return also saw the
+  Koine setup flag. The flag now acts on the setup read only. The red runs did
+  not depend on that flag.
+- `final-verification.txt` runs the eighteen affected Taskfile checks of the
+  producer's record after the change. All of them pass, with 317 passing tests
+  and no failure. None of the 4,512 subjects changed during the run.
+
+The record files, the last entries of the task file and the retirement of the
+leaf come after the final run.
+
+### Handoff
+
+k62 extracts the focused prefix from the changed bytes. The setup and the
+closed-menu checks keep their positions and their operation names. Only their
+reads change. k57 and k54 carry the native risk of the F1 oracle into the
+pre-runtime reconciliation and the readiness. E01 qualifies both new reads,
+with no replacement if either fails.

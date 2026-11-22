@@ -571,25 +571,29 @@ SYSEVENTS = {
     # The positive setup and the route evidence of the ordering protocol. Each
     # property is in the System Events dictionary, SystemEvents.sdef (host
     # macOS 27.2.1 build 26B131, SHA-256 4d2a6477…): "unix id" of a process,
-    # and "subrole", "selected" and "enabled" of a UI element, and the class
-    # "sheet". The guest runs macOS 27.0.1, so E01 qualifies each read there.
+    # "subrole" and "enabled" of a UI element, the class "sheet" and the "menu"
+    # elements of a menu bar item. The guest runs macOS 27.0.1, so E01
+    # qualifies each read there.
     "front-process": "get {name, unix id} of first process whose frontmost is true",
     # kAXStandardWindowSubrole is a standard window with a title bar, not an
     # inspector or a sheet. Each window gives one list of its sheet roles.
     # https://developer.apple.com/documentation/applicationservices/kaxstandardwindowsubrole
     "textedit-windows": 'tell process "TextEdit" to get {subrole of every window, '
     "role of every sheet of every window}",
-    # NSAccessibility.Attribute.selected says only whether an element is
-    # selected. No Apple source states that a menu bar item reports its open
-    # menu through it, so this oracle is unverified natively.
-    # https://developer.apple.com/documentation/appkit/nsaccessibility-swift.struct/attribute/selected
-    "open-menus": 'get {name of every menu bar item of menu bar 1 of process "TextEdit", '
-    'selected of every menu bar item of menu bar 1 of process "TextEdit", '
-    f"selected of {KOINE_ITEM}}}",
+    # The "No open menu" row of the ordering protocol: the menus exposed under
+    # each TextEdit menu bar item and under Koine's item, with a count for
+    # each item. The selection of an item is not this fact (k162). No Apple
+    # source states when an item exposes its menu, so E01 qualifies the
+    # protocol's oracle natively.
+    "menu-bar-menus": 'get {name of every menu bar item of menu bar 1 of process "TextEdit", '
+    'name of every menu of every menu bar item of menu bar 1 of process "TextEdit", '
+    f"name of every menu of {KOINE_ITEM}}}",
     # AXEnabled is required on menu items, and it is false for a disabled one.
     # https://developer.apple.com/documentation/applicationservices/kaxenabledattribute
     "menu-row-enabled": 'get enabled of menu item "%s" of menu 1 of ' + KOINE_ITEM,
-    "menu-item-selected": f"get selected of {KOINE_ITEM}",
+    # The same boundary for the closed menu after a selection. It reads only
+    # Koine's item, because TextEdit quits before the later returns.
+    "koine-menus": f"get name of every menu of {KOINE_ITEM}",
 }
 # The grammar admits no quote, backslash or apostrophe, so a title cannot leave
 # the AppleScript string or the shell quotes. Koine's titles end in U+2026.
@@ -751,18 +755,21 @@ def textedit_windows(value: object) -> bool:
     )
 
 
-def open_menus(value: object) -> bool:
-    # {TextEdit item names, their selected values, the Koine item's selected
-    # value}. A name may be missing. A selected value may not.
+def menu_bar_menus(value: object) -> bool:
+    # {TextEdit item names, the menu names of each item, the menu names of
+    # Koine's item}. A name may be missing. A list may not, and the lengths
+    # must agree. The menu bar of a running TextEdit has at least the Apple
+    # menu, so an empty enumeration is not a complete answer.
     if not isinstance(value, list) or len(cast(list[object], value)) != 3:
         return False
-    names, selected, koine = cast(list[object], value)
+    names, menus, koine = cast(list[object], value)
     return (
         text_list(names)
-        and isinstance(selected, list)
-        and len(cast(list[object], names)) == len(cast(list[object], selected))
-        and all(isinstance(item, bool) for item in cast(list[object], selected))
-        and isinstance(koine, bool)
+        and len(cast(list[object], names)) > 0
+        and isinstance(menus, list)
+        and len(cast(list[object], names)) == len(cast(list[object], menus))
+        and all(text_list(item) for item in cast(list[object], menus))
+        and text_list(koine)
     )
 
 
@@ -778,9 +785,9 @@ SYSEVENTS_TYPES: dict[str, Callable[[object], bool]] = {
     "front-application": lambda value: isinstance(value, str),
     "front-process": front_process,
     "textedit-windows": textedit_windows,
-    "open-menus": open_menus,
+    "menu-bar-menus": menu_bar_menus,
     "menu-row-enabled": lambda value: isinstance(value, bool),
-    "menu-item-selected": lambda value: isinstance(value, bool),
+    "koine-menus": text_list,
 }
 
 # The reads whose one argument is a menu row title.
@@ -826,6 +833,22 @@ def sysevents_read(name: str) -> Read:
         if name in {"menu-item-frame", "menu-row-frame"}:
             # click_centre parses the human-readable form of {position, size}.
             return {"absent": False, "value": value, "text": human(value)}
+        if name == "menu-bar-menus":
+            # The protocol retains the count of menus under each item.
+            _, menus, koine = cast(list[list[object]], value)
+            counts = [len(cast(list[object], item)) for item in menus]
+            return {
+                "absent": False,
+                "value": value,
+                "counts": counts,
+                "koine_count": len(koine),
+            }
+        if name == "koine-menus":
+            return {
+                "absent": False,
+                "value": value,
+                "count": len(cast(list[object], value)),
+            }
         return {"absent": False, "value": value}
 
     def valid(arguments: list[str]) -> bool:

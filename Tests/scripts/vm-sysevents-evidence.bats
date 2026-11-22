@@ -209,7 +209,7 @@ refused() {
 ACCEPTED='{"case": "enrol", "status": 200, "response": {"data": {"koineRequestGrant": {"requestId": "r1", "comparisonCode": "123456"}}}}'
 SYSEVENTS_READS=(sysevents-processes menu-item-count 'menu-item-label value' 'menu-item-label poll'
     menu-item-frame 'menu-row-frame Settings…' menu-titles dock-items background-only front-application
-    front-process textedit-windows open-menus 'menu-row-enabled Settings…' menu-item-selected)
+    front-process textedit-windows menu-bar-menus 'menu-row-enabled Settings…' koine-menus)
 
 @test "System Events reads refuse the evidence class and the enrolment admits only one-shot" {
     local request
@@ -642,12 +642,12 @@ SYSEVENTS_READS=(sysevents-processes menu-item-count 'menu-item-label value' 'me
     local -A scripts=(
         ["front-process"]='get {name, unix id} of first process whose frontmost is true'
         ["textedit-windows"]='tell process "TextEdit" to get {subrole of every window, role of every sheet of every window}'
-        ["open-menus"]='get {name of every menu bar item of menu bar 1 of process "TextEdit", selected of every menu bar item of menu bar 1 of process "TextEdit", selected of menu bar item 1 of menu bar 2 of process "Koine"}'
+        ["menu-bar-menus"]='get {name of every menu bar item of menu bar 1 of process "TextEdit", name of every menu of every menu bar item of menu bar 1 of process "TextEdit", name of every menu of menu bar item 1 of menu bar 2 of process "Koine"}'
         ["menu-row-enabled"]='get enabled of menu item "Settings…" of menu 1 of menu bar item 1 of menu bar 2 of process "Koine"'
-        ["menu-item-selected"]='get selected of menu bar item 1 of menu bar 2 of process "Koine"'
+        ["koine-menus"]='get name of every menu of menu bar item 1 of menu bar 2 of process "Koine"'
     )
     answer "$(se 'true')"
-    for request in front-process textedit-windows open-menus 'menu-row-enabled Settings…' menu-item-selected; do
+    for request in front-process textedit-windows menu-bar-menus 'menu-row-enabled Settings…' koine-menus; do
         index=$((index + 1))
         read -r -a words <<<"${request}"
         name="${words[0]}"
@@ -660,7 +660,11 @@ SYSEVENTS_READS=(sysevents-processes menu-item-count 'menu-item-label value' 'me
     refusals=0
     refused read-poll row menu-row-enabled
     refused read-poll row menu-row-enabled "Don't Allow"
-    refused read-poll menus open-menus extra
+    refused read-poll menus menu-bar-menus extra
+    refused read-poll menus koine-menus extra
+    # The selection reads are gone (k162).
+    refused read-poll menus open-menus
+    refused read-poll menus menu-item-selected
 }
 
 @test "the setup and route reads parse their complete values" {
@@ -670,9 +674,11 @@ SYSEVENTS_READS=(sysevents-processes menu-item-count 'menu-item-label value' 'me
         'textedit-windows|{{"AXStandardWindow"}, {{}}}|[["AXStandardWindow"],[[]]]' \
         'textedit-windows|{{"AXStandardWindow", "AXDialog"}, {{"AXSheet"}, {}}}|[["AXStandardWindow","AXDialog"],[["AXSheet"],[]]]' \
         'textedit-windows|{{}, {}}|[[],[]]' \
-        'open-menus|{{"Apple", missing value, "File"}, {false, false, true}, false}|[["Apple",null,"File"],[false,false,true],false]' \
+        'menu-bar-menus|{{"Apple", missing value, "File"}, {{}, {}, {"File"}}, {}}|[["Apple",null,"File"],[[],[],["File"]],[]]' \
+        'menu-bar-menus|{{"Apple"}, {{}}, {missing value}}|[["Apple"],[[]],[null]]' \
         'menu-row-enabled|false|false' \
-        'menu-item-selected|true|true'; do
+        'koine-menus|{}|[]' \
+        'koine-menus|{missing value}|[null]'; do
         IFS='|' read -r name text expected <<<"${case}"
         index=$((index + 1))
         reset_root "setup-parse-${index}"
@@ -686,6 +692,20 @@ SYSEVENTS_READS=(sysevents-processes menu-item-count 'menu-item-label value' 'me
     done
 }
 
+@test "the menu reads retain the count of menus under each item (k162)" {
+    reset_root menu-counts
+    answer "$(se '{{"Apple", "File"}, {{}, {"File"}}, {missing value}}')"
+    run read_guest_exec "${read_root}" read-poll counts menu-bar-menus
+    echo "diagnostic: status=${status} output=${output}"
+    [[ "${status}" == 0 ]]
+    jq -e '.counts == [0, 1] and .koine_count == 1' <<<"${output}"
+    reset_root koine-count
+    answer "$(se '{}')"
+    run read_guest_exec "${read_root}" read-poll count koine-menus
+    [[ "${status}" == 0 ]]
+    jq -e '.count == 0' <<<"${output}"
+}
+
 @test "a missing value, an incomplete enumeration or a script error in a setup read is unavailable" {
     local case name text index=0
     for case in \
@@ -695,12 +715,17 @@ SYSEVENTS_READS=(sysevents-processes menu-item-count 'menu-item-label value' 'me
         'textedit-windows|{{missing value}, {{}}}' \
         'textedit-windows|{{"AXStandardWindow"}, {}}' \
         'textedit-windows|{{"AXStandardWindow"}, {{missing value}}}' \
-        'open-menus|{{"Apple", "File"}, {false, missing value}, false}' \
-        'open-menus|{{"Apple", "File"}, {false}, false}' \
-        'open-menus|{{"Apple"}, {false}, missing value}' \
+        'menu-bar-menus|{{"Apple", "File"}, {{}, missing value}, {}}' \
+        'menu-bar-menus|{{"Apple", "File"}, {{}}, {}}' \
+        'menu-bar-menus|{{"Apple"}, {{}}, missing value}' \
+        'menu-bar-menus|{{"Apple", "File"}, {}, {}}' \
+        'menu-bar-menus|{{"Apple"}, {"File"}, {}}' \
+        'menu-bar-menus|{{}, {}, {}}' \
+        'menu-bar-menus|{{"Apple"}, {{false}}, {}}' \
         'menu-row-enabled|missing value' \
-        'menu-item-selected|missing value' \
-        'menu-item-selected|ERROR'; do
+        'koine-menus|missing value' \
+        'koine-menus|false' \
+        'koine-menus|ERROR'; do
         IFS='|' read -r name text <<<"${case}"
         index=$((index + 1))
         reset_root "setup-missing-${index}"

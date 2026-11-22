@@ -1,0 +1,29 @@
+{
+  "command": [
+    "bats",
+    "-f",
+    "k162|clean setup mismatch|menu that stays open",
+    "Tests/scripts/vm-settings-scenario.bats"
+  ],
+  "started": "2026-11-22T16:19:41Z",
+  "ended": "2026-11-22T16:21:54Z",
+  "status": 1,
+  "output_sha256": "1bb87c0c3bac88cfb34a094e3aa27f9caae68bb391a60e9b9520e6e417df3509",
+  "subject_count": 4509,
+  "before_manifest_sha256": "9f428c0fad051384dd85fe5e61db1ae940384e18cab0d6a0fe02c218fd2658d9",
+  "after_manifest_sha256": "9f428c0fad051384dd85fe5e61db1ae940384e18cab0d6a0fe02c218fd2658d9",
+  "changed_subjects": [],
+  "added_files": [],
+  "removed_files": [],
+  "tools": {
+    "bash": "GNU bash, version 3.2.57(1)-release (arm64-apple-darwin26)",
+    "bats": "Bats 1.14.0",
+    "jq": "jq-1.8.2",
+    "python3": "Python 3.15.2",
+    "shellcheck": "ShellCheck - shell script analysis tool",
+    "shfmt": "3.14.1",
+    "task": "3.54.0",
+    "jj": "jj 0.47.1"
+  },
+  "subjects_unchanged": true
+}

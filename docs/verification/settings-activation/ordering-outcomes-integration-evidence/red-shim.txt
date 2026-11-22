@@ -1,0 +1,37 @@
+1..4
+not ok 1 a clean setup mismatch before any of the four selections is failed setup and opens no menu
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 508)
+#   `return 1' failed
+# true
+# true
+# true
+# true
+# true
+# expected outcome setup-failed: status 0, at -1, later input [{"action":"read","root":"/private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-JQnrZa/test/1/repo/.build/vm-verify/menu-bar-20261123T032014-evidence","kind":"read-poll","operation":"installed-after","arguments":["installed-inventory"],"outcome":"clean"}]
+#
+# == PASSED — transcript in .build/vm-verify/menu-bar-20261123T032014.log
+# Scenario status 0. Evidence root: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-JQnrZa/test/1/repo/.build/vm-verify/menu-bar-20261123T032014-evidence. Work directory: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/tmp.paOtD9dOMZ.
+# Held pointer: none
+# The scenario sent no VM stop. The finite caller owns the exact stop and inventory of exact-settings-vm: testanyware vm stop exact-settings-vm
+# case menu-open-at-setup:2
+not ok 2 the setup and the closed-menu checks enumerate the menus under each item (k162)
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 586)
+#   `jq -se 'map(select((.operation // "") | test("-setup-menus$")))' failed
+# false
+not ok 3 a menu that stays open after the click makes the outcome unresolved
+# (from function `expect_outcome' in file Tests/scripts/vm-settings-scenario.bats, line 78,
+#  in test file Tests/scripts/vm-settings-scenario.bats, line 607)
+#   `expect_outcome menu-open' failed
+# expected outcome menu-open: status 0, at -1, later input [{"action":"read","root":"/private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-JQnrZa/test/3/repo/.build/vm-verify/menu-bar-20261123T032106-evidence","kind":"read-poll","operation":"installed-after","arguments":["installed-inventory"],"outcome":"clean"}]
+#
+# == PASSED — transcript in .build/vm-verify/menu-bar-20261123T032106.log
+# Scenario status 0. Evidence root: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-JQnrZa/test/3/repo/.build/vm-verify/menu-bar-20261123T032106-evidence. Work directory: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/tmp.JvzORsoqy9.
+# Held pointer: none
+# The scenario sent no VM stop. The finite caller owns the exact stop and inventory of exact-settings-vm: testanyware vm stop exact-settings-vm
+not ok 4 an unavailable title audit beside a false front predicate stays unavailable (k162)
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 658)
+#   `return 1' failed
+# case reopen-front: status 1, title audit at 582
+# Scenario status 1. Evidence root: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-JQnrZa/test/4/repo/.build/vm-verify/menu-bar-20261123T032131-evidence. Work directory: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/tmp.JZhYP3GiZe.
+# Held pointer: none
+# The scenario sent no VM stop. The finite caller owns the exact stop and inventory of exact-settings-vm: testanyware vm stop exact-settings-vm

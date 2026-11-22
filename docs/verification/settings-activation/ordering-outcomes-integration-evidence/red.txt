@@ -1,0 +1,83 @@
+1..8
+not ok 1 a clean setup mismatch before any of the four selections is failed setup and opens no menu
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 512)
+#   `return 1' failed
+# true
+# true
+# case textedit-title:2: the menu of reopen-1-selection opened, or the message names another selection
+not ok 2 the setup and the closed-menu checks enumerate the menus under each item (k162)
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 582)
+#   `[[ "${status}" == 0 ]]' failed
+not ok 3 an unavailable title audit beside a false front predicate stays unavailable (k162)
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 658)
+#   `return 1' failed
+# case reopen-front: status 1, title audit at -1
+# Scenario status 1. Evidence root: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-vDf5xL/test/3/repo/.build/vm-verify/menu-bar-20261123T031907-evidence. Work directory: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/tmp.rgX9MERpK4.
+# Held pointer: none
+# The scenario sent no VM stop. The finite caller owns the exact stop and inventory of exact-settings-vm: testanyware vm stop exact-settings-vm
+not ok 4 System Events reads refuse the evidence class and the enrolment admits only one-shot
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 220)
+#   `grep -q 'evidence class refuses read.*start System Events' "${read_root}/refusals.jsonl"' failed
+# diagnostic: request=evidence collect sysevents-processes status=125 calls=0
+# diagnostic: request=evidence collect menu-item-count status=125 calls=0
+# diagnostic: request=evidence collect menu-item-label value status=125 calls=0
+# diagnostic: request=evidence collect menu-item-label poll status=125 calls=0
+# diagnostic: request=evidence collect menu-item-frame status=125 calls=0
+# diagnostic: request=evidence collect menu-row-frame Settings… status=125 calls=0
+# diagnostic: request=evidence collect menu-titles status=125 calls=0
+# diagnostic: request=evidence collect dock-items status=125 calls=0
+# diagnostic: request=evidence collect background-only status=125 calls=0
+# diagnostic: request=evidence collect front-application status=125 calls=0
+# diagnostic: request=evidence collect front-process status=125 calls=0
+# diagnostic: request=evidence collect textedit-windows status=125 calls=0
+# diagnostic: request=evidence collect menu-bar-menus status=2 calls=0
+not ok 5 the setup and route reads send their fixed AppleScript in source form
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 656)
+#   `jq -e --arg command "${expected}" --arg name "${name}" '.command == $command and .read == $name' failed with status 2
+# true
+# true
+# jq: error: Could not open file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-vDf5xL/test/5/setup-command-2/000001/request.json: No such file or directory
+not ok 6 the setup and route reads parse their complete values
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 690)
+#   `[[ "${status}" == 0 ]]' failed
+# diagnostic: case=front-process|{"TextEdit", 909}|["TextEdit",909] status=0 output={"read": "front-process", "arguments": [], "absent": false, "value": ["TextEdit", 909]}
+# true
+# diagnostic: case=textedit-windows|{{"AXStandardWindow"}, {{}}}|[["AXStandardWindow"],[[]]] status=0 output={"read": "textedit-windows", "arguments": [], "absent": false, "value": [["AXStandardWindow"], [[]]]}
+# true
+# diagnostic: case=textedit-windows|{{"AXStandardWindow", "AXDialog"}, {{"AXSheet"}, {}}}|[["AXStandardWindow","AXDialog"],[["AXSheet"],[]]] status=0 output={"read": "textedit-windows", "arguments": [], "absent": false, "value": [["AXStandardWindow", "AXDialog"], [["AXSheet"], []]]}
+# true
+# diagnostic: case=textedit-windows|{{}, {}}|[[],[]] status=0 output={"read": "textedit-windows", "arguments": [], "absent": false, "value": [[], []]}
+# true
+# diagnostic: case=menu-bar-menus|{{"Apple", missing value, "File"}, {{}, {}, {"File"}}, {}}|[["Apple",null,"File"],[[],[],["File"]],[]] status=2 output=usage: vm-guest-exec.py read [-h]
+#                              root {read-poll,evidence,one-shot} operation
+#                              {assessment,background-only,boot,defaults,dock-items,endpoint,enrol,extract-bundle,front-application,front-process,gatekeeper,installed-inventory,launch-identity,menu-item-count,menu-item-frame,menu-item-label,menu-item-selected,menu-row-enabled,menu-row-frame,menu-titles,open-accessibility-pane,open-koine,open-menus,open-textedit,port-refusal,process,process-identity,quarantine,quit-textedit,request-automation,restart,signature,signature-display,sysevents-processes,system,textedit-windows}
+#                              [arguments ...]
+# vm-guest-exec.py read: error: argument name: invalid choice: 'menu-bar-menus', maybe you meant 'open-menus'? (choose from 'assessment', 'background-only', 'boot', 'defaults', 'dock-items', 'endpoint', 'enrol', 'extract-bundle', 'front-application', 'front-process', 'gatekeeper', 'installed-inventory', 'launch-identity', 'menu-item-count', 'menu-item-frame', 'menu-item-label', 'menu-item-selected', 'menu-row-enabled', 'menu-row-frame', 'menu-titles', 'open-accessibility-pane', 'open-koine', 'open-menus', 'open-textedit', 'port-refusal', 'process', 'process-identity', 'quarantine', 'quit-textedit', 'request-automation', 'restart', 'signature', 'signature-display', 'sysevents-processes', 'system', 'textedit-windows')
+# guest evidence refused: invalid evidence arguments
+# /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/vm-guest-exec-lib.sh: line 34: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-vDf5xL/test/6/setup-parse-5/unavailable: cannot overwrite existing file
+not ok 7 the menu reads retain the count of menus under each item (k162)
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 700)
+#   `[[ "${status}" == 0 ]]' failed
+# diagnostic: status=2 output=usage: vm-guest-exec.py read [-h]
+#                              root {read-poll,evidence,one-shot} operation
+#                              {assessment,background-only,boot,defaults,dock-items,endpoint,enrol,extract-bundle,front-application,front-process,gatekeeper,installed-inventory,launch-identity,menu-item-count,menu-item-frame,menu-item-label,menu-item-selected,menu-row-enabled,menu-row-frame,menu-titles,open-accessibility-pane,open-koine,open-menus,open-textedit,port-refusal,process,process-identity,quarantine,quit-textedit,request-automation,restart,signature,signature-display,sysevents-processes,system,textedit-windows}
+#                              [arguments ...]
+# vm-guest-exec.py read: error: argument name: invalid choice: 'menu-bar-menus', maybe you meant 'open-menus'? (choose from 'assessment', 'background-only', 'boot', 'defaults', 'dock-items', 'endpoint', 'enrol', 'extract-bundle', 'front-application', 'front-process', 'gatekeeper', 'installed-inventory', 'launch-identity', 'menu-item-count', 'menu-item-frame', 'menu-item-label', 'menu-item-selected', 'menu-row-enabled', 'menu-row-frame', 'menu-titles', 'open-accessibility-pane', 'open-koine', 'open-menus', 'open-textedit', 'port-refusal', 'process', 'process-identity', 'quarantine', 'quit-textedit', 'request-automation', 'restart', 'signature', 'signature-display', 'sysevents-processes', 'system', 'textedit-windows')
+# guest evidence refused: invalid evidence arguments
+# /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/vm-guest-exec-lib.sh: line 34: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-vDf5xL/test/7/menu-counts/unavailable: cannot overwrite existing file
+not ok 8 a missing value, an incomplete enumeration or a script error in a setup read is unavailable
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 737)
+#   `[[ "${status}" == 125 ]]' failed
+# diagnostic: case=front-process|{missing value, 909} status=125 output=guest evidence unavailable (000001): checked read front-process grammar: front-process returned a value of another type
+# diagnostic: case=front-process|{"TextEdit", 0} status=125 output=guest evidence unavailable (000001): checked read front-process grammar: front-process returned a value of another type
+# diagnostic: case=front-process|{"TextEdit"} status=125 output=guest evidence unavailable (000001): checked read front-process grammar: front-process returned a value of another type
+# diagnostic: case=textedit-windows|{{missing value}, {{}}} status=125 output=guest evidence unavailable (000001): checked read textedit-windows grammar: textedit-windows returned a value of another type
+# diagnostic: case=textedit-windows|{{"AXStandardWindow"}, {}} status=125 output=guest evidence unavailable (000001): checked read textedit-windows grammar: textedit-windows returned a value of another type
+# diagnostic: case=textedit-windows|{{"AXStandardWindow"}, {{missing value}}} status=125 output=guest evidence unavailable (000001): checked read textedit-windows grammar: textedit-windows returned a value of another type
+# diagnostic: case=menu-bar-menus|{{"Apple", "File"}, {{}, missing value}, {}} status=2 output=usage: vm-guest-exec.py read [-h]
+#                              root {read-poll,evidence,one-shot} operation
+#                              {assessment,background-only,boot,defaults,dock-items,endpoint,enrol,extract-bundle,front-application,front-process,gatekeeper,installed-inventory,launch-identity,menu-item-count,menu-item-frame,menu-item-label,menu-item-selected,menu-row-enabled,menu-row-frame,menu-titles,open-accessibility-pane,open-koine,open-menus,open-textedit,port-refusal,process,process-identity,quarantine,quit-textedit,request-automation,restart,signature,signature-display,sysevents-processes,system,textedit-windows}
+#                              [arguments ...]
+# vm-guest-exec.py read: error: argument name: invalid choice: 'menu-bar-menus', maybe you meant 'open-menus'? (choose from 'assessment', 'background-only', 'boot', 'defaults', 'dock-items', 'endpoint', 'enrol', 'extract-bundle', 'front-application', 'front-process', 'gatekeeper', 'installed-inventory', 'launch-identity', 'menu-item-count', 'menu-item-frame', 'menu-item-label', 'menu-item-selected', 'menu-row-enabled', 'menu-row-frame', 'menu-titles', 'open-accessibility-pane', 'open-koine', 'open-menus', 'open-textedit', 'port-refusal', 'process', 'process-identity', 'quarantine', 'quit-textedit', 'request-automation', 'restart', 'signature', 'signature-display', 'sysevents-processes', 'system', 'textedit-windows')
+# guest evidence refused: invalid evidence arguments
+# /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/vm-guest-exec-lib.sh: line 34: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-vDf5xL/test/8/setup-missing-7/unavailable: cannot overwrite existing file

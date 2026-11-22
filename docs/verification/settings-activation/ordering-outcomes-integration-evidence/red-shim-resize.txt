@@ -1,0 +1,8 @@
+1..1
+not ok 1 an unavailable title audit beside a false front predicate stays unavailable (k162)
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 658)
+#   `return 1' failed
+# case resize-front: status 1, title audit at 222
+# Scenario status 1. Evidence root: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-1A9dlz/test/1/repo/.build/vm-verify/menu-bar-20261123T032209-evidence. Work directory: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/tmp.B17LfVLE59.
+# Held pointer: none
+# The scenario sent no VM stop. The finite caller owns the exact stop and inventory of exact-settings-vm: testanyware vm stop exact-settings-vm

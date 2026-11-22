@@ -85,3 +85,20 @@ Extract the prefix from these bytes. The focused set and the ordinary set must
 use the same functions and predicates. The protocol requires each added
 observation. The open-menu and closed-menu oracles stay unverified natively,
 and E01 qualifies each new read.
+
+## K162 outcomes integration handoff
+
+k162 integrates the k161 review in the "Integration of review k161" section of
+`docs/verification/settings-activation/ORDERING-OUTCOMES-RESULTS.md`. Consume
+the scenario with that section. The successful actions, read counts, waits and
+bounds stay the same.
+
+The positive setup now reads `menu-bar-menus`, the menus under each TextEdit
+item and under the Koine item. The closed-menu check now reads `koine-menus`.
+Each check keeps its position and its operation name. An unavailable title
+audit now keeps its status beside a false front predicate, at the app reopen
+and at the resize focus.
+
+The protocol's menu oracle stays unverified natively. A closed application
+menu that exposes its menu in the guest would fail each setup at E01. k57 and
+k54 carry that risk. Keep each new control when you change the scenario.

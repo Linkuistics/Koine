@@ -1,0 +1,35 @@
+--- Tests/scripts/fixtures/settings-scenario-backend.py	2026-11-23 03:30:15.958474445 +1100
++++ ../red-tree/Tests/scripts/fixtures/settings-scenario-backend.py	2026-11-23 03:19:41.041784147 +1100
+@@ -700,6 +700,12 @@
+         if before_return(state, "menu-open-at-setup"):
+             menus[2] = ["File"]
+         value = [TEXTEDIT_MENUS, menus, koine_menus(state)]
++    elif name == "open-menus":
++        # RED-TREE SHIM (k162): the retired selection read. Every item reports
++        # false for selection, whatever menus it exposes.
++        value = [TEXTEDIT_MENUS, [False] * len(TEXTEDIT_MENUS), False]
++    elif name == "menu-item-selected":
++        value = False  # RED-TREE SHIM (k162)
+     elif name == "menu-row-enabled":
+         value = not before_return(state, "row-disabled")
+     elif name == "koine-menus":
+@@ -808,6 +814,8 @@
+         "menu-bar-menus",
+         "menu-row-enabled",
+         "koine-menus",
++        "open-menus",
++        "menu-item-selected",
+     }:
+         fields = sysevents(state, name, arguments)
+     else:
+--- Tests/scripts/vm-settings-scenario.bats	2026-11-23 03:30:15.958784491 +1100
++++ ../red-tree/Tests/scripts/vm-settings-scenario.bats	2026-11-23 03:22:07.711911702 +1100
+@@ -647,7 +647,7 @@
+     local op ret at
+     # The app reopen and the resize focus judge a list whose front window is
+     # Finder's and whose one Koine window has no title.
+-    for op in reopen-front resize-front; do
++    for op in resize-front reopen-front; do  # RED-TREE ORDER (k162)
+         reset_run
+         export settings_untitled_behind="${op}"
+         run_scenario

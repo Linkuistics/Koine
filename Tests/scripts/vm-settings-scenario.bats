@@ -46,7 +46,7 @@ SLEEP
     export KOINE_VM_BASE=testanyware-golden-macos-27 KOINE_VM_ID=exact-settings-vm
     unset KOINE_VM_EVIDENCE_ROOT KOINE_VM_DISPLAY KOINE_VM_KEEP KOINE_SETTINGS_TRACE \
         TESTANYWARE_VM_ID settings_fault settings_fault_status settings_flags settings_at \
-        scenario_signal scenario_signal_on
+        scenario_signal scenario_signal_on settings_untitled_behind
 }
 
 run_scenario() {
@@ -498,7 +498,7 @@ DATE
 @test "a clean setup mismatch before any of the four selections is failed setup and opens no menu" {
     local case flag at sel
     for case in textedit-moved:1 textedit-title:2 front-other-pid:3 textedit-sheet:4 \
-        textedit-dialog:1 menu-open-at-setup:2; do
+        textedit-dialog:1 menu-open-at-setup:2 koine-menu-open-at-setup:3; do
         flag="${case%:*}" at="${case#*:}" sel="${SELECTIONS[$((${case#*:} - 1))]}"
         reset_run
         export settings_flags="${flag}" settings_at="${at}"
@@ -577,6 +577,22 @@ DATE
     expect_order resize-front-state resize-front-title-state
 }
 
+@test "the setup and the closed-menu checks enumerate the menus under each item (k162)" {
+    run_scenario
+    [[ "${status}" == 0 ]]
+    # Each setup reads the menus under the TextEdit and Koine items. Each
+    # closed-menu check reads the menus under the Koine item. No check reads
+    # the selection of an item.
+    jq -se 'map(select((.operation // "") | test("-setup-menus$")))
+        | length == 4 and all(.[]; .action == "read" and .arguments == ["menu-bar-menus"])' \
+        "${settings_sim}/calls.jsonl"
+    jq -se 'map(select((.operation // "") | test("-menu-closed$")))
+        | length == 7 and all(.[]; .action == "read" and .arguments == ["koine-menus"])' \
+        "${settings_sim}/calls.jsonl"
+    [[ "$(jq -s 'map(select(.action == "read" and (.arguments[0] == "open-menus"
+        or .arguments[0] == "menu-item-selected"))) | length' "${settings_sim}/calls.jsonl")" == 0 ]]
+}
+
 @test "a disabled row is recorded and not clicked" {
     export settings_flags=row-disabled settings_at=2
     run_scenario
@@ -625,6 +641,39 @@ DATE
     jq -se --argjson n "${at}" '.[$n - 1].action == "fail"' "${settings_sim}/calls.jsonl"
     [[ "$(input_after "${at}")" == '[]' ]]
     [[ "$(call_index scenario-assertion-window-identity)" == -1 ]]
+}
+
+@test "an unavailable title audit beside a false front predicate stays unavailable (k162)" {
+    local op ret at
+    # The app reopen and the resize focus judge a list whose front window is
+    # Finder's and whose one Koine window has no title.
+    for op in reopen-front resize-front; do
+        reset_run
+        export settings_untitled_behind="${op}"
+        run_scenario
+        at="$(call_index "${op}-title")"
+        if [[ "${status}" != 125 || "${at}" -le 0 ]]; then
+            echo "case ${op}: status ${status}, title audit at ${at}"
+            printf '%s\n' "${output}" | tail -3
+            return 1
+        fi
+        # The front predicate is a clean false on the same list.
+        jq -se --arg op "${op}" 'map(select(.operation == $op + "-state"))[0].arguments[1] == "1"' \
+            "${settings_sim}/calls.jsonl"
+        jq -se --argjson n "${at}" '.[$n - 1].action == "fail"' "${settings_sim}/calls.jsonl"
+        [[ "$(input_after "${at}")" == '[]' ]]
+        [[ "$(jq -s 'map(select((.operation // "") | startswith("scenario-assertion"))) | length' \
+            "${settings_sim}/calls.jsonl")" == 0 ]] || {
+            echo "case ${op}: a clean outcome class replaced the unavailable audit"
+            return 1
+        }
+        [[ "${output}" == *"the title audit of ${op%-front}"*" is unavailable"* ]]
+    done
+    # The reopen keeps its untouched failure observations after the audit.
+    reset_run
+    export settings_untitled_behind=reopen-front
+    run_scenario
+    expect_order reopen-front-title reopen-failure-windows failure-capture
 }
 
 @test "two Koine windows after a selection are a multiple-windows failure" {

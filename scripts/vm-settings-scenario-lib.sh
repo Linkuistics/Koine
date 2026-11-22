@@ -560,6 +560,9 @@ settings_expect_front() {
     settings_koine_in_front "$1" || front=$?
     [[ "${front}" == 0 || "${front}" == 1 ]] || settings_stop "${front}" "$2: the front window could not be read"
     settings_title_audit "$1" "${SETTINGS_LIST}" || title=$?
+    # An unavailable audit keeps its status, even beside a false front (k162).
+    [[ "${title}" == 0 || "${title}" == 1 ]] ||
+        settings_stop "${title}" "$2: ${SETTINGS_FRONT}; the title audit of $1 is unavailable"
     [[ "${front}" == 0 ]] || settings_fail_as not-front "$2: ${SETTINGS_FRONT}"
     [[ "${title}" == 0 ]] ||
         settings_require_as window-identity "${title}" "$2: the front list has not exactly one \"${WINDOW_TITLE}\" window in front: ${SETTINGS_FRONT}"
@@ -607,8 +610,9 @@ settings_expect_setup() {
     check_guest_read "${KOINE_VM_EVIDENCE_ROOT}" read-poll "${operation}-setup-sheets" \
         '.value == [["AXStandardWindow"], [[]]]' textedit-windows >/dev/null ||
         settings_require_as setup-failed "$?" "before ${operation}, TextEdit shows a dialog, a sheet or another window"
+    # The protocol's oracle: no menu under any TextEdit item or Koine's item.
     check_guest_read "${KOINE_VM_EVIDENCE_ROOT}" read-poll "${operation}-setup-menus" \
-        '(.value[1] | all(. == false)) and .value[2] == false' open-menus >/dev/null ||
+        '(.value[1] | all(length == 0)) and (.value[2] | length == 0)' menu-bar-menus >/dev/null ||
         settings_require_as setup-failed "$?" "before ${operation}, a TextEdit or Koine menu is open"
     settings_capture "setup-${operation}"
 }
@@ -641,11 +645,11 @@ settings_select_return() {
     settings_sleep "${operation}" 2
 }
 
-# settings_menu_closed OPERATION: 0 when Koine's menu is closed after the
-# click, 1 when it is open. Any other status is already recorded.
+# settings_menu_closed OPERATION: 0 when Koine's item exposes no menu after
+# the click, 1 when it exposes one. Any other status is already recorded.
 settings_menu_closed() {
-    check_guest_read "${KOINE_VM_EVIDENCE_ROOT}" read-poll "$1-menu-closed" '.value == false' \
-        menu-item-selected >/dev/null
+    check_guest_read "${KOINE_VM_EVIDENCE_ROOT}" read-poll "$1-menu-closed" '.value | length == 0' \
+        koine-menus >/dev/null
 }
 
 # settings_return_observations OPERATION: the untouched failure capture of a
@@ -736,6 +740,9 @@ settings_expect_return() {
     settings_title_audit "${operation}-front" "${SETTINGS_LIST}" || title=$?
     if [[ "${front}" == 1 ]]; then
         settings_return_observations "${operation}"
+        # An unavailable audit keeps its status, even beside a false front (k162).
+        [[ "${title}" == 0 || "${title}" == 1 ]] || settings_stop "${title}" \
+            "${message}: ${SETTINGS_FRONT}; the title audit of ${operation} is unavailable, so the outcome is unresolved"
         settings_return_classify "${operation}" "${route}" not-front \
             "${message}: ${SETTINGS_FRONT}; front application: ${SETTINGS_OBSERVED_FRONT}"
     fi
