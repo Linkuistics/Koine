@@ -1,48 +1,64 @@
 # settings-focused-prefix-k62
 
-
 ## Goal
-Extract and byte-check the focused prefix from the repaired complete scenario,
-through TextEdit quit immediately before resize, and reconcile all k56 duties.
 
-
+Extract the focused prefix from the repaired complete scenario, and check its
+bytes. The prefix ends with the TextEdit quit, immediately before the resize.
+Reconcile all k56 duties.
 
 ## Context
-Consume k60/k61 and every earned review/integration. Read the parent charters,
-reviewed ordering protocol and current transport/migration reports. E and A must
-share the same helpers and setup/title/liveness rules.
+
+Consume k60 and k61 and every earned review and integration. Read the parent
+charters, the reviewed ordering protocol and the current transport and
+migration reports. E and A must share the same helpers and the same setup,
+title and liveness rules.
 
 ## Done when
-- Extract from the changed complete ordinary scenario and verify exact byte
-  correspondence through TextEdit quit, ending immediately before resize.
-- Check every original k56/k53 duty against delivered source/controls and every
-  later ordinary assertion; preserve actions/waits/bounds and required screenshots,
-  transport classes, confirmations, signal handling and failure distinctions.
-- Run reusable Taskfile checks, retain verification evidence and resolve/cut any
-  precisely named missing work before closing k56. Earn whole shared-scenario
-  review and every integration before k57/runtime.
+
+- Extract the prefix from the changed complete ordinary scenario. Check the
+  exact byte correspondence through the TextEdit quit, immediately before the
+  resize.
+- Check every original k56 and k53 duty, and every later ordinary assertion,
+  against the delivered source and controls. Preserve these:
+  - the actions, the waits and the bounds
+  - the required screenshots
+  - the transport classes and the confirmations
+  - the signal handling and the failure distinctions.
+- Run the reusable Taskfile checks, and keep the verification evidence. Resolve
+  or cut any precisely named missing work before k56 closes.
+- Earn the whole shared-scenario review and every integration before k57 and
+  the runtime.
 
 ## Notes
-No clone or frozen subject. Finite caller remains k57; readiness/runtime k54
-stays held. Historical outcomes/caps and original unresolved native duties remain.
 
+No clone or frozen subject exists. The finite caller stays with k57. The
+readiness and the runtime stay held at k54. The historical outcomes and caps
+and the original unresolved native duties stay.
 
 ## Contract ownership after k140
 
-The original task text above remains binding. Historical ancestor handles now
-resolve through `docs/verification/grove-tree-structure/README.md` to the retained
-owner and exact archived contract; they do not require the removed directory.
-The current additive brief chain and accepted spec amendments govern authority.
+The original task text above stays binding. Historical ancestor handles now
+resolve through `docs/verification/grove-tree-structure/README.md` to the
+retained owner and the exact archived contract. They do not need the removed
+directory. The current additive brief chain and the accepted spec amendments
+govern authority.
 
-k36 owns aggregate shared-harness and ordinary-duty reconciliation from k53/k56.
-This task owns exact prefix correspondence through TextEdit quit immediately
-before resize, every original prefix duty and earned review/integration.
+k36 owns the aggregate reconciliation of the shared harness and the ordinary
+duties from k53 and k56. This task owns these:
 
-The original instruction to reconcile before closing k56 now means: before
-handoff to k57, compare every original k56/k53 shared-scenario duty and every
-inherited k61/k66/k71/k75/k80/k85 migration duty with delivered source/controls,
-including the later ordinary assertions beyond the focused prefix. Record
-per-duty evidence and resolve/cut precisely named gaps before that handoff;
-complete every earned shared-scenario review/integration. k57 consumes this
-comparison in its complete pre-runtime reconciliation; k36's later outcome
-closure cannot replace either check. This task creates no clone or frozen subject.
+- the exact prefix correspondence through the TextEdit quit, immediately
+  before the resize
+- every original prefix duty
+- every earned review and integration.
+
+The original instruction to reconcile before k56 closes now means one check
+before the handoff to k57. Compare every original shared-scenario duty of k56
+and k53 with the delivered source and controls. Compare every inherited
+migration duty of k61, k66, k71, k75, k80 and k85 in the same way. Include the
+later ordinary assertions beyond the focused prefix. Record the evidence for
+each duty, and resolve or cut each precisely named gap before that handoff.
+Complete every earned shared-scenario review and integration.
+
+k57 consumes this comparison in its complete pre-runtime reconciliation. The
+later outcome closure of k36 cannot replace either check. This task creates no
+clone or frozen subject.
