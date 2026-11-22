@@ -1,0 +1,172 @@
+1..28
+not ok 1 the declaration holds exactly the five slots, in order, with their identities
+# (in test file Tests/scripts/vm-settings-sequence.bats, line 128)
+#   `[[ "${status}" == 0 ]]' failed
+not ok 2 a declaration refuses an existing directory
+# (from function `expect_refused' in file Tests/scripts/vm-settings-sequence.bats, line 75,
+#  in test file Tests/scripts/vm-settings-sequence.bats, line 144)
+#   `expect_refused "already exists"' failed
+# expected a refusal with "already exists": status 2: python3: can't open file '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py': [Errno 2] No such file or directory
+not ok 3 admission takes only the next slot, after its set is ready
+# (from function `seq_tool' in file Tests/scripts/vm-settings-sequence.bats, line 16,
+#  in test file Tests/scripts/vm-settings-sequence.bats, line 150)
+#   `seq_tool declare "${sequence}"' failed with status 2
+# python3: can't open file '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py': [Errno 2] No such file or directory
+not ok 4 a started slot without a settlement blocks the next slot
+# (from function `seq_tool' in file Tests/scripts/vm-settings-sequence.bats, line 16,
+#  from function `declare_ready' in file Tests/scripts/vm-settings-sequence.bats, line 68,
+#  in test file Tests/scripts/vm-settings-sequence.bats, line 165)
+#   `declare_ready' failed with status 2
+# python3: can't open file '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py': [Errno 2] No such file or directory
+not ok 5 the ordinary set needs both focused slots qualified and its own readiness
+# (from function `seq_tool' in file Tests/scripts/vm-settings-sequence.bats, line 16,
+#  from function `declare_ready' in file Tests/scripts/vm-settings-sequence.bats, line 68,
+#  in test file Tests/scripts/vm-settings-sequence.bats, line 174)
+#   `declare_ready' failed with status 2
+# python3: can't open file '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py': [Errno 2] No such file or directory
+not ok 6 five qualified slots end the sequence, and no sixth admission exists
+# (from function `seq_tool' in file Tests/scripts/vm-settings-sequence.bats, line 16,
+#  from function `declare_ready' in file Tests/scripts/vm-settings-sequence.bats, line 68,
+#  in test file Tests/scripts/vm-settings-sequence.bats, line 190)
+#   `declare_ready' failed with status 2
+# python3: can't open file '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py': [Errno 2] No such file or directory
+not ok 7 the first failure stops the sequence and leaves every later slot NOT RUN
+# (from function `seq_tool' in file Tests/scripts/vm-settings-sequence.bats, line 16,
+#  from function `declare_ready' in file Tests/scripts/vm-settings-sequence.bats, line 68,
+#  in test file Tests/scripts/vm-settings-sequence.bats, line 206)
+#   `declare_ready' failed with status 2
+# python3: can't open file '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py': [Errno 2] No such file or directory
+not ok 8 one writer: a held lock refuses and records the refusal
+# (from function `seq_tool' in file Tests/scripts/vm-settings-sequence.bats, line 16,
+#  from function `declare_ready' in file Tests/scripts/vm-settings-sequence.bats, line 68,
+#  in test file Tests/scripts/vm-settings-sequence.bats, line 227)
+#   `declare_ready' failed with status 2
+# python3: can't open file '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py': [Errno 2] No such file or directory
+not ok 9 a changed declaration or ledger refuses every later step
+# (from function `seq_tool' in file Tests/scripts/vm-settings-sequence.bats, line 16,
+#  from function `declare_ready' in file Tests/scripts/vm-settings-sequence.bats, line 68,
+#  in test file Tests/scripts/vm-settings-sequence.bats, line 246)
+#   `declare_ready' failed with status 2
+# python3: can't open file '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py': [Errno 2] No such file or directory
+not ok 10 an admission refuses a reused evidence root or a used output directory
+# (from function `seq_tool' in file Tests/scripts/vm-settings-sequence.bats, line 16,
+#  from function `declare_ready' in file Tests/scripts/vm-settings-sequence.bats, line 68,
+#  in test file Tests/scripts/vm-settings-sequence.bats, line 264)
+#   `declare_ready' failed with status 2
+# python3: can't open file '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py': [Errno 2] No such file or directory
+not ok 11 a complete run classifies as complete for its own set only
+# (in test file Tests/scripts/vm-settings-sequence.bats, line 278)
+#   `result="$(classify "${replayed}" focused)"' failed with status 2
+# python3: can't open file '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py': [Errno 2] No such file or directory
+not ok 12 a run that stops before its terminal receipt is incomplete, even at status zero
+# (in test file Tests/scripts/vm-settings-sequence.bats, line 288)
+#   `python3 -I "${backend}" init "${root}" exact-clone' failed
+# Traceback (most recent call last):
+#   File "/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/vm-guest-exec.py", line 23, in <module>
+#     import vm_exec_reads
+# ModuleNotFoundError: No module named 'vm_exec_reads'
+not ok 13 the three recurrence classes on a menu return are candidates, with their return
+# (in test file Tests/scripts/vm-settings-sequence.bats, line 296)
+#   `result="$(expect_kind recurrence-candidate)"' failed
+# guest evidence unavailable (000161): clean window poll exhausted
+# guest evidence unavailable (000162): clean window poll exhausted
+# python3: can't open file '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py': [Errno 2] No such file or directory
+not ok 14 a false front outside a menu return is a failed assertion, not a recurrence
+# (in test file Tests/scripts/vm-settings-sequence.bats, line 310)
+#   `jq -e '.class == "not-front" and (.blockers | length > 0)' <<<"$(expect_kind assertion-failed)"' failed with status 5
+# guest evidence unavailable (000225): clean window poll exhausted
+# python3: can't open file '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py': [Errno 2] No such file or directory
+# jq: parse error: Invalid numeric literal at line 1, column 9
+not ok 15 a failed observer before a recurrence class leaves the outcome unresolved
+# (in test file Tests/scripts/vm-settings-sequence.bats, line 315)
+#   `python3 -I "${backend}" init "${root}" exact-clone' failed
+# Traceback (most recent call last):
+#   File "/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/vm-guest-exec.py", line 23, in <module>
+#     import vm_exec_reads
+# ModuleNotFoundError: No module named 'vm_exec_reads'
+not ok 16 a recurrence needs one clean click between the enabled read and its class
+# (in test file Tests/scripts/vm-settings-sequence.bats, line 332)
+#   `python3 -I "${backend}" init "${root}" exact-clone' failed
+# Traceback (most recent call last):
+#   File "/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/vm-guest-exec.py", line 23, in <module>
+#     import vm_exec_reads
+# ModuleNotFoundError: No module named 'vm_exec_reads'
+not ok 17 other classes keep their own disposition
+# (in test file Tests/scripts/vm-settings-sequence.bats, line 349)
+#   `python3 -I "${backend}" init "${root}" exact-clone' failed
+# Traceback (most recent call last):
+#   File "/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/vm-guest-exec.py", line 23, in <module>
+#     import vm_exec_reads
+# ModuleNotFoundError: No module named 'vm_exec_reads'
+not ok 18 signals, boot exhaustion and poll exhaustion classify by their receipts
+# (in test file Tests/scripts/vm-settings-sequence.bats, line 361)
+#   `python3 -I "${backend}" init "${root}" exact-clone' failed
+# Traceback (most recent call last):
+#   File "/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/vm-guest-exec.py", line 23, in <module>
+#     import vm_exec_reads
+# ModuleNotFoundError: No module named 'vm_exec_reads'
+not ok 19 the pointer state comes from the ordered held-point receipts
+# (in test file Tests/scripts/vm-settings-sequence.bats, line 380)
+#   `python3 -I "${backend}" init "${root}" exact-clone' failed
+# Traceback (most recent call last):
+#   File "/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/vm-guest-exec.py", line 23, in <module>
+#     import vm_exec_reads
+# ModuleNotFoundError: No module named 'vm_exec_reads'
+not ok 20 an evidence root of another clone or a missing root is not a Koine failure
+# (in test file Tests/scripts/vm-settings-sequence.bats, line 401)
+#   `python3 -I "${backend}" init "${root}" other-clone' failed
+# Traceback (most recent call last):
+#   File "/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/vm-guest-exec.py", line 23, in <module>
+#     import vm_exec_reads
+# ModuleNotFoundError: No module named 'vm_exec_reads'
+not ok 21 a latch or a refusal keeps an otherwise complete run unavailable
+# (in test file Tests/scripts/vm-settings-sequence.bats, line 409)
+#   `python3 -I "${backend}" init "${root}" exact-clone' failed
+# Traceback (most recent call last):
+#   File "/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/vm-guest-exec.py", line 23, in <module>
+#     import vm_exec_reads
+# ModuleNotFoundError: No module named 'vm_exec_reads'
+not ok 22 a corroborated recurrence rejects, and later failures do not erase it
+# (from function `seq_tool' in file Tests/scripts/vm-settings-sequence.bats, line 16,
+#  from function `declare_ready' in file Tests/scripts/vm-settings-sequence.bats, line 68,
+#  from function `settle_recurrence' in file Tests/scripts/vm-settings-sequence.bats, line 422,
+#  in test file Tests/scripts/vm-settings-sequence.bats, line 437)
+#   `settle_recurrence collection=failed audit=unavailable stop=failed inventory=unavailable' failed with status 2
+# python3: can't open file '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py': [Errno 2] No such file or directory
+not ok 23 a recurrence without a corroborating screenshot stays unresolved
+# (from function `seq_tool' in file Tests/scripts/vm-settings-sequence.bats, line 16,
+#  from function `declare_ready' in file Tests/scripts/vm-settings-sequence.bats, line 68,
+#  from function `settle_recurrence' in file Tests/scripts/vm-settings-sequence.bats, line 422,
+#  in test file Tests/scripts/vm-settings-sequence.bats, line 446)
+#   `settle_recurrence screenshots=unavailable' failed with status 2
+# python3: can't open file '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py': [Errno 2] No such file or directory
+not ok 24 every phase and status must pass before a slot qualifies
+# (from function `seq_tool' in file Tests/scripts/vm-settings-sequence.bats, line 16,
+#  from function `declare_ready' in file Tests/scripts/vm-settings-sequence.bats, line 68,
+#  in test file Tests/scripts/vm-settings-sequence.bats, line 455)
+#   `declare_ready' failed with status 2
+# python3: can't open file '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py': [Errno 2] No such file or directory
+not ok 25 a scenario zero cannot override failed receipts
+# (from function `seq_tool' in file Tests/scripts/vm-settings-sequence.bats, line 16,
+#  from function `declare_ready' in file Tests/scripts/vm-settings-sequence.bats, line 68,
+#  in test file Tests/scripts/vm-settings-sequence.bats, line 467)
+#   `declare_ready' failed with status 2
+# python3: can't open file '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py': [Errno 2] No such file or directory
+not ok 26 a run that left no root is unresolved and claims no Koine failure
+# (from function `seq_tool' in file Tests/scripts/vm-settings-sequence.bats, line 16,
+#  from function `declare_ready' in file Tests/scripts/vm-settings-sequence.bats, line 68,
+#  in test file Tests/scripts/vm-settings-sequence.bats, line 478)
+#   `declare_ready' failed with status 2
+# python3: can't open file '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py': [Errno 2] No such file or directory
+not ok 27 held input prevents a slot from qualifying
+# (from function `seq_tool' in file Tests/scripts/vm-settings-sequence.bats, line 16,
+#  from function `declare_ready' in file Tests/scripts/vm-settings-sequence.bats, line 68,
+#  in test file Tests/scripts/vm-settings-sequence.bats, line 486)
+#   `declare_ready' failed with status 2
+# python3: can't open file '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py': [Errno 2] No such file or directory
+not ok 28 malformed phases refuse and leave the slot unsettled
+# (from function `seq_tool' in file Tests/scripts/vm-settings-sequence.bats, line 16,
+#  from function `declare_ready' in file Tests/scripts/vm-settings-sequence.bats, line 68,
+#  in test file Tests/scripts/vm-settings-sequence.bats, line 498)
+#   `declare_ready' failed with status 2
+# python3: can't open file '/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py': [Errno 2] No such file or directory

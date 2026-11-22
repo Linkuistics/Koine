@@ -1599,6 +1599,17 @@ tasks:
       - uvx pyright@1.1.414 scripts/check-settings-prefix.py
       - bats Tests/scripts/vm-settings-prefix.bats
 
+  check:vm-settings-sequence:
+    desc: Check without a VM the finite Settings sequence (the five declared slots and their identities, admission in order after each set's readiness, one writer, first-failure stop, explicit NOT RUN, a refused changed ledger) and its classifier on real receipts, including replayed calls of both scenario entries. It starts no clone and establishes no native acceptance
+    cmds:
+      - shellcheck -x Tests/scripts/vm-settings-sequence.bats
+      - shfmt -d -i 4 Tests/scripts/vm-settings-sequence.bats
+      - python3 -m py_compile scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py
+      - uvx ruff@0.17.3 check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py
+      - uvx ruff@0.17.3 format --check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py
+      - uvx pyright@1.1.414 scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py
+      - bats Tests/scripts/vm-settings-sequence.bats
+
   check:vm-verify-start:
     desc: Check without a VM that the Settings scenario starts no VNC keepalive loop and that another start_vm caller still starts it
     cmds:

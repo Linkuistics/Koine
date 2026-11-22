@@ -1,0 +1,53 @@
+1..8
+not ok 1 an exhausted poll keeps its status 125 and settles as a failed assertion
+# (in test file Tests/scripts/vm-settings-sequence.bats, line 523)
+#   `[[ "$(report_field '.slots.E01.disposition')" == failed ]]' failed
+ok 2 an exhausted poll with a scenario zero is a conflict
+not ok 3 a signal that met a held lock is classified from its refusal record
+# (in test file Tests/scripts/vm-settings-sequence.bats, line 553)
+#   `jq -e '.kind == "interrupted" and .signals == ["INT"]' <<<"$(classify "${root}")"' failed
+# guest evidence refused: competing evidence writer
+# false
+not ok 4 an ordinal gap before a recurrence class blocks the candidate
+# (in test file Tests/scripts/vm-settings-sequence.bats, line 567)
+#   `jq -e '.kind == "unresolved-outcome" and (.blockers | any(test("gap")))' <<<"$(classify "${root}")"' failed
+# false
+ok 5 a failure after the class does not remove a recurrence candidate
+not ok 6 an unreadable request can hide a held point, so the pointer is uncertain
+# (in test file Tests/scripts/vm-settings-sequence.bats, line 592)
+#   `[[ "$(classify "${root}" | jq -r .pointer)" == uncertain ]]' failed
+not ok 7 a hand-edited disposition refuses when the ledger replays
+# (from function `expect_refused' in file Tests/scripts/vm-settings-sequence.bats, line 75,
+#  in test file Tests/scripts/vm-settings-sequence.bats, line 607)
+#   `expect_refused "ledger"' failed
+# expected a refusal with "ledger": status 0: {
+#   "slot": "E02",
+#   "set": "focused",
+#   "namespace": "ordering-evaluation",
+#   "clone": "koine-k49-ordering-e02",
+#   "entry": "app:vm-verify-menu-bar-prefix",
+#   "output": "/private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-8Yjbox/test/7/sequence/ordering-evaluation/E02",
+#   "evidence_root": "/private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-8Yjbox/test/7/sequence/ordering-evaluation/E02/evidence"
+# }
+not ok 8 an unreadable output directory refuses the admission without a traceback
+# (from function `expect_refused' in file Tests/scripts/vm-settings-sequence.bats, line 75,
+#  in test file Tests/scripts/vm-settings-sequence.bats, line 614)
+#   `expect_refused "E01"' failed
+# expected a refusal with "E01": status 1: Traceback (most recent call last):
+#   File "/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py", line 769, in <module>
+#     sys.exit(main())
+#              ~~~~^^
+#   File "/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py", line 757, in main
+#     return admit(cast(Path, args.directory), cast(str, args.slot))
+#   File "/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py", line 335, in admit
+#     print(json.dumps(with_writer(directory, "admit", step), indent=2))
+#                      ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+#   File "/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py", line 278, in with_writer
+#     return step(Sequence(resolved))
+#   File "/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/../../scripts/settings-ordering-sequence.py", line 330, in step
+#     if any(output.iterdir()):
+#            ~~~~~~~~~~~~~~^^
+#   File "/Users/antony/.local/share/mise/installs/python/3.15.2/lib/python3.15/pathlib/__init__.py", line 1035, in iterdir
+#     with os.scandir(root_dir) as scandir_it:
+#          ~~~~~~~~~~^^^^^^^^^^
+# FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-8Yjbox/test/8/sequence/ordering-evaluation/E01'

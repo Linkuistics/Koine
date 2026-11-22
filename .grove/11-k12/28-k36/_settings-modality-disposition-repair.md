@@ -127,6 +127,10 @@ invent a window ID.
   k54 freeze or any clone creation, k57 owns the complete per-duty source and
   control reconciliation and the application API reconciliation above. Every
   earned review and integration is part of it.
+- k57 split into flat siblings, and its task file maps each duty to an owner.
+  k57 owns the sequence, the ledger and the classifier. k169 owns the slot run
+  and the containment. k170 owns the audits and cuts the whole-harness review.
+  k171 owns the reconciliation. All of them finish before k54.
 - k54 owns the actual freeze and readiness: build, signature, UUID, all inputs
   and the completed stopped golden image. It pins the absolute CLI and jq
   identity and configuration. It pins the host macOS version and build and the

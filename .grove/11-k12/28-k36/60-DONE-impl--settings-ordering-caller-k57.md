@@ -205,3 +205,45 @@ status of 1 now means only a clean false state.
 A clean menu mismatch leaves the menu open and sends no Escape. Its failure path
 therefore has no `OPERATION-close` receipt, and that absence is expected. k168
 changed no scenario bytes, so the current prefix extraction stays valid.
+
+## Scope of this slice after the split
+
+This leaf now delivers the first slice of the caller. The slice is the declared
+sequence, the single-writer ledger, slot admission, receipt classification,
+slot settlement and the NOT RUN report. Its controls and its Taskfile check are
+part of it.
+
+The text above stays binding on the owners below. Each duty has one owner.
+
+| Duty | Owner |
+|---|---|
+| E and A order, namespaces, clone IDs, first-failure stop, no replacement | this leaf |
+| Started-attempt receipts, separate results, explicit NOT RUN phases | this leaf |
+| Recurrence precedence, signal and exhaustion classification | this leaf |
+| The slot run, interrupted collection, exact stop, inventory, holders, held input | `settings-ordering-containment-k169` |
+| Original, installed and golden audits, G5, defaults after each slot | `settings-ordering-audits-k170` |
+| Whole-harness and caller review | cut by k170, before k171 |
+| Per-duty and application API reconciliation | `settings-ordering-reconciliation-k171` |
+
+## Decisions (running log)
+
+**Placement.** The work needs several sessions but shares the k36 purpose and
+context, so it becomes flat siblings before k54. No new node earns its place.
+
+**The slice stops before dispatch.** This slice has no verb that starts a clone.
+A run verb without containment could leave a clone running, so k169 adds both
+together.
+
+**An app reopen is not a recurrence candidate.** The protocol's recurrence names
+one clean row click, and a reopen has none. A failed reopen is a failed
+assertion.
+
+**A failed observer blocks a recurrence candidate.** The outcome stays
+unresolved. This cannot produce a false rejection, and it still prevents
+acceptance.
+
+**The exit status depends on the failure.** A classified assertion exits 1. An
+exhausted facade poll has no class and exits 125, as the k62 handoff states.
+
+**Result.** `ORDERING-CALLER-RESULTS.md` records the slice, its 36 controls, its
+15 guard mutations and its limits. The caller still cannot run a slot.

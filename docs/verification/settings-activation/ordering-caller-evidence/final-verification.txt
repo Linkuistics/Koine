@@ -1,0 +1,71 @@
+task: [check:vm-settings-sequence] shellcheck -x Tests/scripts/vm-settings-sequence.bats
+task: [check:vm-settings-sequence] shfmt -d -i 4 Tests/scripts/vm-settings-sequence.bats
+task: [check:vm-settings-sequence] python3 -m py_compile scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py
+task: [check:vm-settings-sequence] uvx ruff@0.17.3 check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py
+All checks passed!
+task: [check:vm-settings-sequence] uvx ruff@0.17.3 format --check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py
+2 files already formatted
+task: [check:vm-settings-sequence] uvx pyright@1.1.414 scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py
+0 errors, 0 warnings, 0 informations
+task: [check:vm-settings-sequence] bats Tests/scripts/vm-settings-sequence.bats
+1..36
+ok 1 the declaration holds exactly the five slots, in order, with their identities
+ok 2 a declaration refuses an existing directory
+ok 3 admission takes only the next slot, after its set is ready
+ok 4 a started slot without a settlement blocks the next slot
+ok 5 the ordinary set needs both focused slots qualified and its own readiness
+ok 6 five qualified slots end the sequence, and no sixth admission exists
+ok 7 the first failure stops the sequence and leaves every later slot NOT RUN
+ok 8 one writer: a held lock refuses and records the refusal
+ok 9 a changed declaration or ledger refuses every later step
+ok 10 an admission refuses a reused evidence root or a used output directory
+ok 11 a complete run classifies as complete for its own set only
+ok 12 a run that stops before its terminal receipt is incomplete, even at status zero
+ok 13 the three recurrence classes on a menu return are candidates, with their return
+ok 14 a false front outside a menu return is a failed assertion, not a recurrence
+ok 15 a failed observer before a recurrence class leaves the outcome unresolved
+ok 16 a recurrence needs one clean click between the enabled read and its class
+ok 17 other classes keep their own disposition
+ok 18 signals, boot exhaustion and poll exhaustion classify by their receipts
+ok 19 the pointer state comes from the ordered held-point receipts
+ok 20 an evidence root of another clone or a missing root is not a Koine failure
+ok 21 a latch or a refusal keeps an otherwise complete run unavailable
+ok 22 a corroborated recurrence rejects, and later failures do not erase it
+ok 23 a recurrence without a corroborating screenshot stays unresolved
+ok 24 every phase and status must pass before a slot qualifies
+ok 25 a scenario zero cannot override failed receipts
+ok 26 a run that left no root is unresolved and claims no Koine failure
+ok 27 held input prevents a slot from qualifying
+ok 28 malformed phases refuse and leave the slot unsettled
+ok 29 an exhausted poll keeps its status 125 and settles as a failed assertion
+ok 30 an exhausted poll with a scenario zero is a conflict
+ok 31 a signal that met a held lock is classified from its refusal record
+ok 32 an ordinal gap before a recurrence class blocks the candidate
+ok 33 a failure after the class does not remove a recurrence candidate
+ok 34 an unreadable request can hide a held point, so the pointer is uncertain
+ok 35 a hand-edited disposition refuses when the ledger replays
+ok 36 an unreadable output directory refuses the admission without a traceback
+task: [check:vm-settings-prefix] python3 -I scripts/check-settings-prefix.py
+scripts/vm-verify-menu-bar-prefix.sh is the first 154 lines (8913 bytes) of scripts/vm-verify-menu-bar.sh, through the TextEdit quit; line 155 onwards is not in the prefix
+task: [check:vm-settings-prefix] bash -n scripts/vm-verify-menu-bar-prefix.sh Tests/scripts/vm-settings-prefix.bats
+task: [check:vm-settings-prefix] shellcheck -x -e SC2034 scripts/vm-verify-menu-bar-prefix.sh
+task: [check:vm-settings-prefix] shellcheck -x Tests/scripts/vm-settings-prefix.bats
+task: [check:vm-settings-prefix] shfmt -d -i 4 scripts/vm-verify-menu-bar-prefix.sh Tests/scripts/vm-settings-prefix.bats
+task: [check:vm-settings-prefix] python3 -m py_compile scripts/check-settings-prefix.py
+task: [check:vm-settings-prefix] uvx ruff@0.17.3 check scripts/check-settings-prefix.py
+All checks passed!
+task: [check:vm-settings-prefix] uvx ruff@0.17.3 format --check scripts/check-settings-prefix.py
+1 file already formatted
+task: [check:vm-settings-prefix] uvx pyright@1.1.414 scripts/check-settings-prefix.py
+0 errors, 0 warnings, 0 informations
+task: [check:vm-settings-prefix] bats Tests/scripts/vm-settings-prefix.bats
+1..9
+ok 1 the prefix is the exact leading bytes of the scenario through the TextEdit quit
+ok 2 a changed, missing or extra byte in the prefix fails the check
+ok 3 a scenario change before the quit fails the check until the prefix is extracted again
+ok 4 a scenario without exactly one TextEdit quit before the resize step is refused
+ok 5 the prefix keeps the execute permission of the scenario
+ok 6 the prefix runs the scenario's calls and waits through the TextEdit quit and sends nothing after it
+ok 7 a failure inside the prefix has the same outcome in the prefix and in the scenario
+ok 8 a signal inside the prefix stops it as it stops the scenario
+ok 9 the Task entry of the prefix records its status like the complete scenario's entry
