@@ -1,0 +1,24 @@
+1..9
+not ok 1 the prefix is the exact leading bytes of the scenario through the TextEdit quit
+# (in test file Tests/scripts/vm-settings-prefix.bats, line 149)
+#   `return 1' failed
+# FAILED: scripts/vm-verify-menu-bar-prefix.sh is not the first 155 lines of scripts/vm-verify-menu-bar.sh: they differ at byte 8872, line 154 (8872 bytes, expected 9000)
+not ok 2 a changed, missing or extra byte in the prefix fails the check
+# (in test file Tests/scripts/vm-settings-prefix.bats, line 163)
+#   `[[ "${status}" == 0 ]]' failed
+ok 3 a scenario change before the quit fails the check until the prefix is extracted again
+ok 4 a scenario without exactly one TextEdit quit before the resize step is refused
+not ok 5 the prefix keeps the execute permission of the scenario
+# (in test file Tests/scripts/vm-settings-prefix.bats, line 232)
+#   `[[ "${output}" == *'execute permission'* ]]' failed
+not ok 6 the prefix runs the scenario's calls and waits through the TextEdit quit and sends nothing after it
+# (in test file Tests/scripts/vm-settings-prefix.bats, line 246)
+#   `jq -se '(.[-3:] | map(.operation)) == ["textedit-quit", "textedit-quit-absence", "textedit-quit-absence-state"]' failed
+# false
+not ok 7 a failure inside the prefix has the same outcome in the prefix and in the scenario
+# (in test file Tests/scripts/vm-settings-prefix.bats, line 279)
+#   `cmp -s "${runs}/complete.calls" "${runs}/prefix.calls"' failed
+ok 8 a signal inside the prefix stops it as it stops the scenario
+not ok 9 the Task entry of the prefix records its status like the complete scenario's entry
+# (in test file Tests/scripts/vm-settings-prefix.bats, line 312)
+#   `[[ "${status}" == 0 && "$(cat "${KOINE_K4_OUT}/scenario.exit")" == 0 ]]' failed

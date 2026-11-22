@@ -1,0 +1,6 @@
+## 1. The guard of a failure case refuses a run that reached the quit's absence read
+1:{"action":"read","kind":"read-poll","operation":"textedit-quit-absence","arguments":["process","textedit"],"outcome":"clean"}
+refute status 1 (expected 1)
+## 2. The check refuses the historical order prefix as the focused prefix
+FAILED: docs/verification/settings-activation/order-prefix.sh is not the first 155 lines of scripts/vm-verify-menu-bar.sh: they differ at byte 796, line 13 (7562 bytes, expected 9000)
+check status 1 (expected 1)

@@ -1,0 +1,27 @@
+{
+  "command": [
+    "bats",
+    "Tests/scripts/vm-settings-prefix.bats"
+  ],
+  "started": "2026-11-22T17:17:33Z",
+  "ended": "2026-11-22T17:19:47Z",
+  "status": 1,
+  "output_sha256": "c58a5983a83a25fcfc0a0e7ef8efd5b5d68d3003dfd5bb2accb55c2422a8797b",
+  "subject_count": 4529,
+  "before_manifest_sha256": "1756f3a306aa40657a233aa505a8d396d7e42dc77e8a479ec34030336036111d",
+  "after_manifest_sha256": "1756f3a306aa40657a233aa505a8d396d7e42dc77e8a479ec34030336036111d",
+  "changed_subjects": [],
+  "added_files": [],
+  "removed_files": [],
+  "tools": {
+    "bash": "GNU bash, version 3.2.57(1)-release (arm64-apple-darwin26)",
+    "bats": "Bats 1.14.0",
+    "jq": "jq-1.8.2",
+    "python3": "Python 3.15.2",
+    "shellcheck": "ShellCheck - shell script analysis tool",
+    "shfmt": "3.14.1",
+    "task": "3.54.0",
+    "jj": "jj 0.47.1"
+  },
+  "subjects_unchanged": true
+}

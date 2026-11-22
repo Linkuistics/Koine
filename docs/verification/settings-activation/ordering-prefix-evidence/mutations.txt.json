@@ -1,0 +1,27 @@
+{
+  "command": [
+    "bash",
+    "/private/tmp/claude-501/-Users-antony-Development-AbstractingComputers-Koine-gh-issue-14/50ee9604-f679-4b4a-98c5-ca3ed262c222/scratchpad/prefix-evidence/mutations.sh"
+  ],
+  "started": "2026-11-22T17:20:06Z",
+  "ended": "2026-11-22T17:20:06Z",
+  "status": 0,
+  "output_sha256": "8ff4b828c51f8de2ae1df900778ac2fd8a817281745eb4ce0bd26424258dc464",
+  "subject_count": 4529,
+  "before_manifest_sha256": "4e99d502c8f65deed93626b7a9d50848bb7da01c4e396664e9493afe499f1300",
+  "after_manifest_sha256": "4e99d502c8f65deed93626b7a9d50848bb7da01c4e396664e9493afe499f1300",
+  "changed_subjects": [],
+  "added_files": [],
+  "removed_files": [],
+  "tools": {
+    "bash": "GNU bash, version 3.2.57(1)-release (arm64-apple-darwin26)",
+    "bats": "Bats 1.14.0",
+    "jq": "jq-1.8.2",
+    "python3": "Python 3.15.2",
+    "shellcheck": "ShellCheck - shell script analysis tool",
+    "shfmt": "3.14.1",
+    "task": "3.54.0",
+    "jj": "jj 0.47.1"
+  },
+  "subjects_unchanged": true
+}

@@ -126,3 +126,27 @@ observer read before its first latch. Read the receipts in ordinal order.
 
 An open menu and an unavailable liveness read stay unresolved. Neither one is a
 recurrence or a Koine failure. Every other duty and hold above stays.
+
+## K62 prefix handoff
+
+k62 delivers the focused prefix `scripts/vm-verify-menu-bar-prefix.sh` and its
+byte check `scripts/check-settings-prefix.py`. Run E through
+`task app:vm-verify-menu-bar-prefix` and A through `task app:vm-verify-menu-bar`.
+Both entries write `scenario.exit` in the same way. Read the duty comparison in
+`docs/verification/settings-activation/ORDERING-PREFIX-RESULTS.md`. Consume it
+only after the review k163, every earned integration and the controls task
+k164.
+
+k57 owns these items, which the comparison names:
+
+- G5: compare the `system` and `gatekeeper` receipts and the arguments of the
+  Koine process with the declared image and inputs. A mismatch holds the
+  sequence.
+- Read the diagnostic defaults after each slot.
+- Audit the installed bundle after each E slot. The prefix records the
+  installed inventory once, before Koine first runs.
+- Classify a signal by its `scenario-signal-SIG` operation, because its receipt
+  outcome is `unavailable`. Classify an exhausted poll by its `state-failed`
+  receipt, not by its status 125.
+
+Every other duty and hold above stays.

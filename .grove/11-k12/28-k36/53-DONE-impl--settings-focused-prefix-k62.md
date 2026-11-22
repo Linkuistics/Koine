@@ -102,3 +102,30 @@ and at the resize focus.
 The protocol's menu oracle stays unverified natively. A closed application
 menu that exposes its menu in the guest would fail each setup at E01. k57 and
 k54 carry that risk. Keep each new control when you change the scenario.
+
+## Decisions (running log)
+
+- 2026-11-23: Adopt the mandated leaf in the jj workspace. Its parent is the
+  k162 integration commit, so the base is current. Keep the work in this leaf.
+  The prefix and the duty comparison share one artifact and one context, and
+  they fit one session. Gather the per-duty evidence with bounded read-only
+  helpers, and check each cited test name and source line here.
+- 2026-11-23: The prefix is `scripts/vm-verify-menu-bar-prefix.sh`. It holds
+  the leading bytes of the complete scenario through the line that ends the
+  TextEdit quit command. It sits beside the scenario, so its repository-root
+  `cd` needs no change, and every byte matches. The EXIT trap of the shared
+  library reports its status. The prefix sends no VM stop, like the scenario.
+- 2026-11-23: The check derives the boundary from the scenario text: one quit
+  command, its continuation lines, then only blank lines before the resize
+  step. The red record runs the final suite against the historical boundary,
+  which stops before the quit, and against a Taskfile without the new tasks.
+- 2026-11-23: The comparison finds no missing product behaviour. It names five
+  gaps, all missing controls or comparisons. The new impl leaf
+  `settings-scenario-controls-k164` owns G1 to G4 before k57. The k57 handoff
+  names G5, the defaults read after a slot, the installed audit after an E slot
+  and the receipt classification. The upload guest copy stays the limit that
+  k89 and k149 accepted, because a download needs a human amendment.
+- 2026-11-23: The prefix, its check and the comparison feed every E slot, so
+  they earn an adversarial review. `settings-focused-prefix-k163` reviews them
+  before k164 and k57. No provider evidence is in this environment, so the
+  review carries no Creator line.

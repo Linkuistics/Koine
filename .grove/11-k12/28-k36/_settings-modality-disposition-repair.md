@@ -115,6 +115,9 @@ invent a window ID.
   resize. Before k57, it owns the complete reconciliation of shared and ordinary
   duties. That includes earned reviews and integrations and precise leaves for
   missing work before handoff.
+- k163 reviews the shared scenario, the prefix and the k62 comparison. k164
+  then adds the missing scenario-level controls that the comparison names.
+  Both finish before k57.
 - k57 owns the finite namespaces, clone IDs and caller, one writer and ordered
   receipts, and first-failure admission. It owns the frozen sequence manifest
   and the per-item original, installed and golden audits. Orphan holders and
