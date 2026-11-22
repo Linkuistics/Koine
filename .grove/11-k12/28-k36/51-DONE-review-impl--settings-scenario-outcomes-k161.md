@@ -74,3 +74,29 @@ Examine these doubts:
 
 The k62, k57 and k54 duties stay with their owners. The review creates no VM,
 candidate or freeze.
+
+## Decisions (running log)
+
+- 2026-11-23: Review commit `7564ed77587e7467a831d71a3d899b6a58aea56c`
+  against the current source, the k67 charter, the k36 brief and the archived
+  k53/k56/k61 charters. This is an inspection-only review. No test, build,
+  lint, format command or guest runs.
+- 2026-11-23: The menu oracle is an actionable contract gap. The source reads
+  `selected`, while the protocol requires the menus exposed under each item
+  and their counts. Neither the System Events dictionary nor Apple's selected
+  attribute definition equates selection with an open menu. The producer's
+  recorded limitation does not amend that requirement.
+- 2026-11-23: The front-failure branches can discard an unavailable title
+  audit. In the app-reopen route and the resize front assertion, a clean
+  false front predicate takes precedence over title status 125 and produces
+  `not-front` with exit 1. Record this separately from the menu-oracle gap.
+- 2026-11-23: All eight doubts are addressed in
+  `docs/verification/settings-activation/ORDERING-OUTCOMES-REVIEW.md`.
+  Read-only digest comparisons match all three saved transcripts and subject
+  manifests to their summaries, and all ten reviewed source/control files to
+  the final manifest. These comparisons establish evidence identity, not a
+  fresh test result or native behaviour.
+- 2026-11-23: The two findings meet the acceptance/material-risk threshold.
+  Place their integration as a flat sibling immediately before k62, the first
+  later sibling with live work. The integration reads the findings from this
+  review's commit. No implementation or contract changes belong to this review.
