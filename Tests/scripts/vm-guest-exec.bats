@@ -590,6 +590,37 @@ checked_boot_reply() {
     done
 }
 
+@test "a backend exit of 1 is unavailable and keeps its original status as evidence (k168)" {
+    local facade="${BATS_TEST_TMPDIR}/facade/vm-guest-exec-lib.sh"
+    mkdir "${facade%/*}"
+    cp "${BATS_TEST_DIRNAME}/../../scripts/vm-guest-exec-lib.sh" "${facade}"
+    init_guest_evidence "${exec_root}" exact-vm
+    printf 'raise RuntimeError("uncaught backend failure")\n' >"${facade%/*}/vm-guest-exec.py"
+    run bash -c 'source "$1"; exec_guest_evidence "$2" read-poll probe probe true' _ "${facade}" "${exec_root}"
+    [[ "${status}" == 125 ]]
+    [[ "$(cat "${exec_root}/unavailable")" == 'guest-exec backend exit 1' ]]
+    [[ "$(cat "${exec_root}/facade-refusals.log")" == "backend_exit=1 argv=run ${exec_root} read-poll probe probe true " ]]
+    # A later failure keeps the first reason and adds its own original status.
+    printf 'raise SystemExit("uncaught backend exit")\n' >"${facade%/*}/vm-guest-exec.py"
+    run bash -c 'source "$1"; record_guest_poll "$2" probe-state state 1 true' _ "${facade}" "${exec_root}"
+    [[ "${status}" == 125 ]]
+    [[ "$(cat "${exec_root}/unavailable")" == 'guest-exec backend exit 1' ]]
+    [[ "$(grep -c '^backend_exit=1 ' "${exec_root}/facade-refusals.log")" == 2 ]]
+    # Every other status keeps its value, a signal status included.
+    for code in 2 120 130 143; do
+        printf 'raise SystemExit(%s)\n' "${code}" >"${facade%/*}/vm-guest-exec.py"
+        run bash -c 'source "$1"; exec_guest_evidence "$2" read-poll probe probe true' _ "${facade}" "${exec_root}"
+        [[ "${status}" == "${code}" ]]
+    done
+    printf 'raise SystemExit(0)\n' >"${facade%/*}/vm-guest-exec.py"
+    run bash -c 'source "$1"; exec_guest_evidence "$2" read-poll probe probe true' _ "${facade}" "${exec_root}"
+    [[ "${status}" == 0 ]]
+    # Without an initialised root there is no latch, and 1 is still no clean state.
+    printf 'raise SystemExit(1)\n' >"${facade%/*}/vm-guest-exec.py"
+    run bash -c 'source "$1"; exec_guest_evidence "$2" read-poll probe probe true' _ "${facade}" "${exec_root}-absent"
+    [[ "${status}" == 125 && ! -e "${exec_root}-absent" ]]
+}
+
 @test "broken stdout delivery cannot publish a clean terminal receipt" {
     init_guest_evidence "${exec_root}" exact-vm
     run python3 - "${BATS_TEST_DIRNAME}/../../scripts/vm-guest-exec.py" "${exec_root}" <<'PY'

@@ -148,7 +148,7 @@ under this directory.
 | A demonstrably unavailable completion holds before E01 | Owned by k54 | ORDERING-ONE-SHOT-RESULTS finds infeasibility not demonstrated | k54 task, readiness bullet |
 | Positive setup before each of the four selections, with screenshots | Met. The screenshot audit is owned by k54 | `settings_record_textedit`, `settings_expect_setup` | `vm-settings-scenario.bats`: "the positive setup precedes each of the four selections and uses the zero-count list". Red: `ordering-outcomes-evidence/red.txt` |
 | Raw count and front lists. The title audit on the same list | Met | `settings_await_windows`, `settings_koine_in_front`, `settings_title_audit` | "a wrong title on the front list is a window-identity failure, for later returns too". Red: `ordering-outcomes-evidence/red-title.txt` |
-| Untouched failure observations: after a failed assertion, one observer read, one window read and one screenshot before other collection | Met for the returns, the clean single-read failures, the resize front check, the count polls and the reveal (k165). Met for the four facade poll families (k166). The observer is NOT RUN before the Automation check. The restart boot poll is outside this duty. See [the repair of gap G6](#repair-of-gap-g6) | `settings_return_observations`, `settings_failure_observations`, `settings_poll_failed`, `settings_fail`, `settings_fail_as`, `settings_expect_front`, `settings_await_windows`, `settings_reveal` | The five k165 controls, the k166 controls and "a disabled row is recorded and not clicked". Red: `ordering-prefix-integration-evidence/red.txt`, `red-exhausted.txt` and `ordering-exhausted-poll-evidence/red.txt` |
+| Untouched failure observations: after a failed assertion, one observer read, one window read and one screenshot before other collection | Met for the returns, the clean single-read failures, the resize front check, the count polls and the reveal (k165). Met for the four facade poll families (k166). Met for a clean menu mismatch, which now sends no Escape first (k168). The observer is NOT RUN before the Automation check. The restart boot poll is outside this duty. See [the repair of gap G6](#repair-of-gap-g6) | `settings_return_observations`, `settings_failure_observations`, `settings_poll_failed`, `settings_fail`, `settings_fail_as`, `settings_expect_front`, `settings_await_windows`, `settings_reveal` | The five k165 controls, the k166 controls, the k168 menu control and "a disabled row is recorded and not clicked". Red: `ordering-prefix-integration-evidence/red.txt`, `red-exhausted.txt`, `ordering-exhausted-poll-evidence/red.txt` and `ordering-exhausted-poll-integration-evidence/red.txt` |
 | Same-process zero windows versus process loss or unavailable liveness, for later returns too | Met | `settings_expect_return` | "zero windows with the same live process are a same-process recurrence, for later returns too", "a lost or replaced process after zero windows is process loss, not a recurrence" |
 | Preserve the physical route, actions, waits and poll bounds | Met by comparison. See [the baseline comparison](#later-ordinary-assertions-and-the-baseline) | `settings_select_return` and the facades | `vm-physical-evidence.bats`: "strict menu route retains exact raw completions, VM, ordinals and unchanged waits" |
 | Extract the prefix and check its bytes. E and A share the helpers and the rules | Met by this task | `scripts/vm-verify-menu-bar-prefix.sh`, `scripts/check-settings-prefix.py` | `vm-settings-prefix.bats`, all nine tests. Red: `ordering-prefix-evidence/red.txt` |
@@ -403,9 +403,12 @@ screenshot still run.
 
 Each receipt keeps its operation name, its predicate, its `state-failed`
 outcome and status 125. Each facade exposes its predicate as a function, so the
-facade and its caller share one definition. An unavailable read keeps its own
-status and takes no observations. Without `deferred`, each facade behaves as
-before. The label message reads the last poll record before the observer adds
+facade and its caller share one definition.
+
+An unavailable read keeps its own status and takes no observations. The one
+exception to that status is a backend exit of 1, which returns 125. See
+[the integration of review k167](#integration-of-review-k167). Without
+`deferred`, each facade behaves as before. The label message reads the last poll record before the observer adds
 a newer one.
 
 The TextEdit poll is called from the scenario itself, before the TextEdit quit.
@@ -443,6 +446,63 @@ and the retirement of the leaf come after the final run.
 
 No VM, clone or runtime slot ran. The simulator and the fixture CLIs establish
 the order of calls, not native behaviour.
+
+## Integration of review k167
+
+Review `settings-exhausted-poll-observations-k167` is in
+[ORDERING-EXHAUSTED-POLL-REVIEW.md](ORDERING-EXHAUSTED-POLL-REVIEW.md).
+Integration `settings-exhausted-poll-observations-k168` verified both findings
+against the source and the protocol. Both are real issues, and this integration
+repairs both.
+
+### P2-1: a backend exit of 1 is not a clean state
+
+By design, the real backend reports 0, 125 or a signal status. An uncaught
+Python failure exits 1, and the callers read status 1 as a clean false state.
+The collision reached more than the deferred polls. It also reached each
+`settings_require` path and the login endpoint poll.
+
+`_guest_evidence_backend` now returns 125 for a backend exit of 1. It first
+writes the existing latch and refusal record, so `guest-exec backend exit 1` and
+`backend_exit=1` keep the original status. An earlier latch reason stays first.
+Every other status keeps its value, and this includes each signal status.
+
+This narrows one rule of
+[ORDERING-TRANSPORT-RESULTS.md](ORDERING-TRANSPORT-RESULTS.md), which says that
+the facade preserves a nonzero backend status. For an exit of 1, the receipts
+now preserve the status and the return value does not. That report stays as the
+k55 record.
+
+### P2-2: a menu mismatch sends no corrective input
+
+`settings_expect_menu` sent Escape and waited one second before a clean mismatch
+failed. A mismatch now reaches `settings_fail` with the menu open. The observer,
+the window list and the screenshot therefore see the menu as the comparison saw
+it. A match keeps its Escape and its one-second wait.
+
+### K167 controls and verification
+
+Five controls carry "(k168)" in their names. One is in `vm-guest-exec.bats`, and
+four are in `vm-settings-scenario.bats`. Four failed against the source before
+the repair. The fifth holds the successful menu close, which was already true.
+
+The records are in
+[`ordering-exhausted-poll-integration-evidence/`](ordering-exhausted-poll-integration-evidence/).
+`red.txt` also reproduces the review's Allow counterexample. `mutations.txt`
+shows six mutations, and the controls detect each one.
+
+The simulator gains the flag `menu-title-wrong`. Its `settings_fault` can now
+name a local poll record, so a control can fail a state receipt or a wait
+receipt.
+
+The repair changes only shared libraries, so the prefix bytes stay the same.
+`final-verification.txt` runs the same nineteen Taskfile checks. No VM, clone or
+runtime slot ran. The simulator and the fixtures establish the order of calls
+and the returned statuses, not native behaviour.
+
+This repair earns no new review chain. It is bounded to one status seam and one
+reordered branch, it changes no design, and a detected mutation supports each
+behaviour. k57 still reconciles it before any freeze.
 
 ## Limits
 
@@ -488,6 +548,8 @@ come after the final run.
   [the integration of review k163](#integration-of-review-k163).
 - `settings-exhausted-poll-observations` (k166) closed G6. Its review k167
   reads the k165 and k166 changes before `settings-scenario-controls`.
+  Integration k168 repaired its two findings. See
+  [the integration of review k167](#integration-of-review-k167).
 - `settings-scenario-controls` adds the controls of G1 to G4 after the review
   and every earned integration.
 - k57 consumes this comparison in its complete pre-runtime reconciliation. It

@@ -15,6 +15,11 @@ Integration k165 repaired the failure observations, and
 Consume its review `settings-exhausted-poll-observations-k167` and any earned
 integration first.
 
+Integration k168 makes a backend exit of 1 return 125 at the
+backend seam. It adds the simulator flag `menu-title-wrong`, and `settings_fault`
+can now name a local poll record. A read-failure control can use
+`settings_fault_status=1`.
+
 For the G1 reveal counts, reuse the simulator flag `scroll-ignored`. The k165
 control "an exhausted reveal takes the untouched failure observations before
 its receipt (k165)" already uses it to exhaust the reveal. A fully exhausted

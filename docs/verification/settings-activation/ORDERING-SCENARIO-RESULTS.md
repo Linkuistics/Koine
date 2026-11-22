@@ -135,7 +135,7 @@ legacy action, read count, wait and bound unless the row says otherwise.
 | `menu_item_label` echo | `read_guest_exec menu-item-label value` |
 | `await_menu_item_label` | `await_guest_menu_label` |
 | `open_menu` | `await_guest_menu_frame`, then `click_centre` on the record's `.text` |
-| `read_menu` and `expect_menu` | `expect_guest_menu` with a list. The menu still closes before the comparison fails |
+| `read_menu` and `expect_menu` | `expect_guest_menu` with a list. A match closes the menu. A clean mismatch sends no corrective input (k168) |
 | `choose_menu_item` | `await_guest_menu_frame TITLE`, then `click_centre` and the existing 2-second wait |
 | `BACKGROUND` and `DOCK` | `expect_guest_background_only` and `expect_guest_no_dock_item` |
 | Front-application echo | `read_guest_exec front-application` |

@@ -1,0 +1,48 @@
+== Mutation: no-remap
+1..5
+not ok 1 a backend exit of 1 is unavailable and keeps its original status as evidence (k168)
+not ok 2 a backend exit of 1 is no clean state at any read or record boundary (k168)
+not ok 3 a backend exit of 1 while recording a failed wait stays unavailable (k168)
+ok 4 a clean menu mismatch keeps the menu open for its untouched observations (k168)
+ok 5 a matching menu still closes with one Escape and its one-second wait (k168)
+
+== Mutation: remap-every-failure
+1..5
+not ok 1 a backend exit of 1 is unavailable and keeps its original status as evidence (k168)
+ok 2 a backend exit of 1 is no clean state at any read or record boundary (k168)
+ok 3 a backend exit of 1 while recording a failed wait stays unavailable (k168)
+ok 4 a clean menu mismatch keeps the menu open for its untouched observations (k168)
+ok 5 a matching menu still closes with one Escape and its one-second wait (k168)
+
+== Mutation: remap-before-receipts
+1..5
+not ok 1 a backend exit of 1 is unavailable and keeps its original status as evidence (k168)
+not ok 2 a backend exit of 1 is no clean state at any read or record boundary (k168)
+not ok 3 a backend exit of 1 while recording a failed wait stays unavailable (k168)
+ok 4 a clean menu mismatch keeps the menu open for its untouched observations (k168)
+ok 5 a matching menu still closes with one Escape and its one-second wait (k168)
+
+== Mutation: escape-before-failure
+1..5
+ok 1 a backend exit of 1 is unavailable and keeps its original status as evidence (k168)
+ok 2 a backend exit of 1 is no clean state at any read or record boundary (k168)
+ok 3 a backend exit of 1 while recording a failed wait stays unavailable (k168)
+not ok 4 a clean menu mismatch keeps the menu open for its untouched observations (k168)
+ok 5 a matching menu still closes with one Escape and its one-second wait (k168)
+
+== Mutation: wait-before-failure
+1..5
+ok 1 a backend exit of 1 is unavailable and keeps its original status as evidence (k168)
+ok 2 a backend exit of 1 is no clean state at any read or record boundary (k168)
+ok 3 a backend exit of 1 while recording a failed wait stays unavailable (k168)
+not ok 4 a clean menu mismatch keeps the menu open for its untouched observations (k168)
+ok 5 a matching menu still closes with one Escape and its one-second wait (k168)
+
+== Mutation: no-success-close
+1..5
+ok 1 a backend exit of 1 is unavailable and keeps its original status as evidence (k168)
+not ok 2 a backend exit of 1 is no clean state at any read or record boundary (k168)
+ok 3 a backend exit of 1 while recording a failed wait stays unavailable (k168)
+ok 4 a clean menu mismatch keeps the menu open for its untouched observations (k168)
+not ok 5 a matching menu still closes with one Escape and its one-second wait (k168)
+

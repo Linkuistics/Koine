@@ -1,0 +1,38 @@
+== Red: the k168 controls against the source of k167, before the two repairs
+1..5
+not ok 1 a backend exit of 1 is unavailable and keeps its original status as evidence (k168)
+# (in test file Tests/scripts/vm-guest-exec.bats, line 600)
+#   `[[ "${status}" == 125 ]]' failed
+not ok 2 a backend exit of 1 is no clean state at any read or record boundary (k168)
+# (from function `expect_backend_exit' in file Tests/scripts/vm-settings-scenario.bats, line 895,
+#  in test file Tests/scripts/vm-settings-scenario.bats, line 917)
+#   `expect_backend_exit "${fault}"' failed
+# fault first-launch-endpoint-15: status 125
+# Failure screenshot: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-9z0mRP/test/2/repo/.build/vm-verify/menu-bar-20261123T074006-evidence/failure-capture.png
+# FAILED: no endpoint descriptor after launch (evidence status 125)
+# Scenario status 125. Evidence root: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-9z0mRP/test/2/repo/.build/vm-verify/menu-bar-20261123T074006-evidence. Work directory: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/tmp.zn3lGNVVKM.
+# Held pointer: none
+# The scenario sent no VM stop. The finite caller owns the exact stop and inventory of exact-settings-vm: testanyware vm stop exact-settings-vm
+not ok 3 a backend exit of 1 while recording a failed wait stays unavailable (k168)
+# (from function `expect_backend_exit' in file Tests/scripts/vm-settings-scenario.bats, line 895,
+#  in test file Tests/scripts/vm-settings-scenario.bats, line 931)
+#   `expect_backend_exit first-launch-endpoint-1-sleep' failed
+# fault first-launch-endpoint-1-sleep: status 125
+# Failure screenshot: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-9z0mRP/test/3/repo/.build/vm-verify/menu-bar-20261123T074008-evidence/failure-capture.png
+# FAILED: no endpoint descriptor after launch (evidence status 125)
+# Scenario status 125. Evidence root: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-9z0mRP/test/3/repo/.build/vm-verify/menu-bar-20261123T074008-evidence. Work directory: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/tmp.d1gvy47FYU.
+# Held pointer: none
+# The scenario sent no VM stop. The finite caller owns the exact stop and inventory of exact-settings-vm: testanyware vm stop exact-settings-vm
+not ok 4 a clean menu mismatch keeps the menu open for its untouched observations (k168)
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 953)
+#   `[[ "$(call_index first-launch-menu-close)" == -1 ]]' failed
+ok 5 a matching menu still closes with one Escape and its one-second wait (k168)
+bats status: 1
+
+== Red: the review's shortest counterexample, Allow OCR with backend exit 1
+1..1
+scenario status: 125
+{"operation":"automation-allow-ocr","action":"cli","outcome":"unavailable"}
+{"operation":"automation-allow-failure-windows","action":"cli","outcome":"clean"}
+{"operation":"automation-allow-exact-target","action":"poll-step","outcome":"state-failed"}
+ok 1 review counterexample: Allow OCR backend exit 1

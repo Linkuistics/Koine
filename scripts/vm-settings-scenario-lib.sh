@@ -194,10 +194,11 @@ settings_failure_observations() {
 }
 
 # settings_poll_failed STATUS OPERATION RECEIPT PREDICATE MESSAGE: a deferred
-# facade poll ended. Status 1 is a clean exhaustion, which takes the untouched
-# failure observations under OPERATION. Then the facade's own state-failed
-# RECEIPT latches the root and keeps its status. Any other status is already
-# recorded, and it takes no observer read (k166).
+# facade poll ended. Status 1 is a clean exhaustion, because the backend seam
+# returns a backend exit of 1 as 125 (k168). It takes the untouched failure
+# observations under OPERATION. Then the facade's own state-failed RECEIPT
+# latches the root and keeps its status. Any other status is already recorded,
+# and it takes no observer read (k166).
 settings_poll_failed() {
     local status="$1" operation="$2" receipt="$3" predicate="$4" message="$5" recorded=0
     [[ "${status}" == 1 ]] || settings_stop "${status}" "${message}"
@@ -455,7 +456,8 @@ settings_open_menu() {
 }
 
 # settings_expect_menu OPERATION TITLE...: the open-and-read menu is exactly
-# these titles. As before, the menu closes before the comparison fails.
+# these titles. A match closes the menu. A clean mismatch sends no corrective
+# input, so the failure observations see the menu as the comparison saw it.
 settings_expect_menu() {
     local operation="$1" record status=0 menu expected
     shift
@@ -465,10 +467,12 @@ settings_expect_menu() {
     [[ "${status}" == 0 ]] || record="$(settings_last_record "${operation}")" || record='{"value":[]}'
     menu="$(jq -r '.value | join(", ")' <<<"${record}")"
     echo "Menu: ${menu}"
+    if [[ "${status}" != 0 ]]; then
+        expected="$(jq -rn '$ARGS.positional | join(", ")' --args "$@")"
+        settings_fail "the menu is \"${menu}\", not \"${expected}\""
+    fi
     settings_input "${operation}-close" key escape
     settings_sleep "${operation}-close" 1
-    expected="$(jq -rn '$ARGS.positional | join(", ")' --args "$@")"
-    [[ "${status}" == 0 ]] || settings_fail "the menu is \"${menu}\", not \"${expected}\""
 }
 
 # settings_choose_menu_item OPERATION TITLE: open the menu and click the item.

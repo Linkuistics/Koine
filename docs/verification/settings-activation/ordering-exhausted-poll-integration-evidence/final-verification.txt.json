@@ -1,0 +1,27 @@
+{
+  "command": [
+    "bash",
+    "-c",
+    "set -e; for t in check:vm-exec-one-shot-evidence check:vm-exec-one-shot-host check:vm-sysevents-evidence check:vm-sysevents-host check:vm-exec-read-evidence check:vm-exec-read-host check:vm-file-lifecycle-evidence check:vm-guest-exec check:vm-capture-evidence check:vm-window-evidence check:vm-input-evidence check:vm-ui-evidence check:vm-click-evidence check:vm-physical-evidence check:vm-menu-pointer check:vm-verify-start check:vm-window-resize check:vm-settings-scenario check:vm-settings-prefix; do echo \"## task $t\"; mise exec -- task \"$t\"; done"
+  ],
+  "status": 0,
+  "started": "2026-11-22T20:57:42.138912+00:00",
+  "ended": "2026-11-22T21:36:35.537567+00:00",
+  "subject_count": 4565,
+  "before_manifest_sha256": "dd9ddcfd414dbe236ca2693f416e6bb596df029bf63e2aec41c11dfe38fb5e6b",
+  "after_manifest_sha256": "dd9ddcfd414dbe236ca2693f416e6bb596df029bf63e2aec41c11dfe38fb5e6b",
+  "subjects_unchanged": true,
+  "changed_subjects": [],
+  "added_files": [],
+  "removed_files": [],
+  "output_sha256": "a39d4bc9b6abc03b87e34792a3728b654dcf4788ac2bee481565baba588a2ab3",
+  "tools": {
+    "bash": "GNU bash, version 5.3.20(1)-release (aarch64-apple-darwin25.6.0)",
+    "bats": "Bats 1.14.0",
+    "jq": "jq-1.8.2",
+    "python3": "Python 3.15.2",
+    "shfmt": "3.14.1",
+    "task": "3.54.0",
+    "jj": "jj 0.47.1"
+  }
+}

@@ -38,3 +38,20 @@ failure-observation duty before the existing controls and reconciliation
 owners consume it. No VM, clone, signed subject or runtime slot is authorised
 here. k57 retains complete pre-runtime reconciliation; k54 retains freeze and
 runtime. No retry, wait, empirical budget or acceptance amendment is granted.
+
+## Decisions (running log)
+
+- P2-1 is a real issue. The real backend exits 1 only on an unhandled failure.
+  The repair is at `_guest_evidence_backend`, because every status-1 caller
+  shares that seam. The latch and the refusal log keep the original status.
+- P2-2 is a real issue. A clean menu mismatch now fails before any Escape or
+  wait. A match keeps both.
+- The narrowed k55 status rule is recorded in `ORDERING-PREFIX-RESULTS.md`.
+  `ORDERING-TRANSPORT-RESULTS.md` stays as the finished k55 record.
+- The prefix bytes do not change, so no new extraction is necessary.
+- The repair earns no new review chain. It is bounded, it changes no design, and
+  a detected mutation supports each behaviour.
+- The final record passes all nineteen Taskfile checks, with 351 passing tests
+  and no failure. None of its 4,565 subjects changed during the run.
+  `check:docs` still reports only the two missing links in `CONTEXT-PLAN.md`,
+  which this task did not touch.

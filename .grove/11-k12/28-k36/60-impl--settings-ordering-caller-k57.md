@@ -194,3 +194,14 @@ assertion. Do not read its missing observer as a failed transport.
 
 k166 changed the scenario before the TextEdit quit, so the prefix is a new
 extraction. Freeze the current prefix bytes.
+
+## K168 failure status handoff
+
+k168 integrates review k167 in the "Integration of review k167" section of the
+same report. A backend exit of 1 now returns 125. Read its original status from
+`unavailable` and `facade-refusals.log`, not from the return value. A facade
+status of 1 now means only a clean false state.
+
+A clean menu mismatch leaves the menu open and sends no Escape. Its failure path
+therefore has no `OPERATION-close` receipt, and that absence is expected. k168
+changed no scenario bytes, so the current prefix extraction stays valid.

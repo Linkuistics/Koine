@@ -11,7 +11,9 @@ use of the domain instead:
 - A latched root refuses every non-evidence call with status 125, as the real
   backend does.
 - `settings_fault=OPERATION` makes that call unavailable: it latches the root
-  and returns 125 (or `settings_fault_status`) without changing the model.
+  and returns 125 (or `settings_fault_status`) without changing the model. The
+  operation can name a read or a local poll record.
+- The flag `menu-title-wrong` adds one unexpected title to each menu read.
 - `settings_flags` holds comma-separated model variations for state controls.
 - A snapshot answer must satisfy the facade's predicate, as in the real
   backend. Otherwise the call is unavailable: it latches and returns 125.
@@ -706,6 +708,8 @@ def sysevents(state: dict[str, Any], name: str, arguments: list[str]) -> dict[st
         value = frame
     elif name == "menu-titles":
         value = titles(state)
+        if "menu-title-wrong" in FLAGS:
+            value = [*value, "Unexpected"]
     elif name == "dock-items":
         value = ["Finder", "TextEdit"]
     elif name == "background-only":
@@ -925,6 +929,11 @@ def main() -> int:
         return 125
     if action == "poll-step":
         phase, status = arguments[2], int(arguments[3])
+        if operation == os.environ.get("settings_fault"):
+            latch(root, f"{operation}: injected unavailable answer")
+            entry["outcome"] = "unavailable"
+            log(entry)
+            return int(os.environ.get("settings_fault_status", "125"))
         if phase == "exhausted":
             latch(root, f"{operation}: state-failed")
             entry["outcome"] = "state-failed"
@@ -978,8 +987,8 @@ def main() -> int:
     else:
         raise SystemExit("the Settings scenario takes no download")
     save(state)
-    if action == "read" and "label-stuck" in FLAGS:
-        # The failure message of the label poll reads the newest read record.
+    if action == "read" and FLAGS & {"label-stuck", "menu-title-wrong"}:
+        # A failure message of a label or menu read uses the newest read record.
         ordinal = (SIM / "calls.jsonl").read_text().count("\n") + 1
         attempt = root / f"{ordinal:06d}"
         attempt.mkdir()

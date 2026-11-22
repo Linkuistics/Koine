@@ -40,5 +40,9 @@ _guest_evidence_backend() {
         printf -v refusal 'backend_exit=%s argv=%s' "${status}" "${request}"
         printf '%s\n' "${refusal}" >>"$1/facade-refusals.log" || :
     fi
+    # Callers read status 1 as a clean false state from a local predicate. The
+    # backend never reports that state, so its exit 1 is an unhandled failure.
+    # The latch and the refusal log above keep the original status.
+    [[ "${status}" != 1 ]] || return 125
     return "${status}"
 }

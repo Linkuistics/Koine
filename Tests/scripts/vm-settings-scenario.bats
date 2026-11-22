@@ -878,6 +878,104 @@ expect_facade_exhaustion() {
     done
 }
 
+# expect_backend_exit FAULT: an injected backend exit of 1 stayed unavailable.
+# It took no failure observation and no state-failed receipt. The first latch
+# reason and the original status both remain in the root.
+expect_backend_exit() {
+    local fault="$1" root
+    root="$(jq -rs '.[0].root' "${settings_sim}/calls.jsonl")"
+    if [[ "${status}" != 125 ]] ||
+        [[ "$(jq -s 'map(select(.outcome == "state-failed"
+            or ((.operation // "") | endswith("-failure-windows")))) | length' \
+            "${settings_sim}/calls.jsonl")" != 0 ]] ||
+        [[ "$(cat "${root}/unavailable")" != "${fault}: injected unavailable answer" ]] ||
+        ! grep -q '^backend_exit=1 ' "${root}/facade-refusals.log"; then
+        echo "fault ${fault}: status ${status}"
+        printf '%s\n' "${output}" | tail -5
+        return 1
+    fi
+}
+
+@test "a backend exit of 1 is no clean state at any read or record boundary (k168)" {
+    local case fault
+    for case in first-launch-endpoint-1: first-launch-endpoint-15:endpoint-absent \
+        first-launch-endpoint-15-state:endpoint-absent first-launch-label-1: \
+        first-launch-label-15:label-stuck first-launch-label-15-state:label-stuck \
+        first-launch-menu-item-1: first-launch-menu-item-5:item-frame-absent \
+        first-launch-menu-item-5-state:item-frame-absent first-selection-row-1: \
+        first-selection-row-5:row-absent first-selection-row-5-state:row-absent \
+        textedit-window-1: textedit-window-15:textedit-no-window \
+        textedit-window-15-state:textedit-no-window textedit-window-assertion:textedit-no-window \
+        textedit-window-assertion-state:textedit-no-window automation-allow-ocr: \
+        first-selection-window-1: first-selection-window-10:two-windows \
+        first-selection-window-10-state:two-windows login-endpoint-1: \
+        first-launch-count: first-launch-menu:; do
+        fault="${case%%:*}"
+        reset_run
+        export settings_flags="${case#*:}" settings_fault="${fault}" settings_fault_status=1
+        run_scenario
+        expect_backend_exit "${fault}"
+    done
+    # The failed menu read sends no corrective close.
+    [[ "$(call_index first-launch-menu-close)" == -1 ]]
+}
+
+@test "a backend exit of 1 while recording a failed wait stays unavailable (k168)" {
+    cat >"${BATS_TEST_TMPDIR}/bin/sleep" <<'SLEEP'
+#!/bin/bash
+[[ "$(tail -1 "${settings_sim}/calls.jsonl" | jq -r '.operation // ""')" != first-launch-endpoint-1-state ]] || exit 7
+exit 0
+SLEEP
+    export settings_flags=endpoint-absent settings_fault=first-launch-endpoint-1-sleep settings_fault_status=1
+    run_scenario
+    expect_backend_exit first-launch-endpoint-1-sleep
+    [[ "$(call_index first-launch-endpoint-2)" == -1 ]]
+}
+
+# record_waits_after OPERATION: the sleep stub logs each wait that directly
+# follows that call to the file ${scenario_waits}.after.
+record_waits_after() {
+    export scenario_wait_mark="$1"
+    cat >"${BATS_TEST_TMPDIR}/bin/sleep" <<'SLEEP'
+#!/bin/bash
+[[ "$(tail -1 "${settings_sim}/calls.jsonl" | jq -r '.operation // ""')" != "${scenario_wait_mark}" ]] ||
+    printf '%s\n' "$1" >>"${scenario_waits}.after"
+exit 0
+SLEEP
+}
+
+@test "a clean menu mismatch keeps the menu open for its untouched observations (k168)" {
+    record_waits_after first-launch-menu-state
+    export settings_flags=menu-title-wrong
+    run_scenario
+    [[ "${status}" == 1 ]]
+    [[ "${output}" == *'FAILED: the menu is "'*', Unexpected", not "'* ]]
+    [[ "$(call_index first-launch-menu-close)" == -1 ]]
+    [[ ! -e "${scenario_waits}.after" ]]
+    expect_order first-launch-menu-state assertion-front-application assertion-failure-windows \
+        failure-capture scenario-assertion
+    # After the comparison, the one guest read outside the evidence class is
+    # the independent observer.
+    jq -se --argjson n "$(call_index first-launch-menu-state)" '.[$n:] | map(select(
+        (.action == "cli" or .action == "read" or .action == "upload")
+        and .kind != "evidence" and .outcome != "refused"
+        and .operation != "assertion-front-application")) == []' "${settings_sim}/calls.jsonl"
+    jq -se 'map(select(.operation == "assertion-front-application"))[0].outcome == "clean"' \
+        "${settings_sim}/calls.jsonl"
+}
+
+@test "a matching menu still closes with one Escape and its one-second wait (k168)" {
+    record_waits_after first-launch-menu-close
+    run_scenario
+    [[ "${status}" == 0 ]]
+    local at
+    at="$(call_index first-launch-menu-close)"
+    [[ "${at}" -eq "$(($(call_index first-launch-menu-state) + 1))" ]]
+    jq -se --argjson n "${at}" '.[$n - 1] | .action == "cli" and any(.arguments[]; . == "escape")' \
+        "${settings_sim}/calls.jsonl"
+    [[ "$(cat "${scenario_waits}.after")" == 1 ]]
+}
+
 @test "two Koine windows after a selection are a multiple-windows failure" {
     export settings_flags=two-windows
     run_scenario
