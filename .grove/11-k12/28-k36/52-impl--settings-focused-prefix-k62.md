@@ -62,3 +62,26 @@ Complete every earned shared-scenario review and integration.
 k57 consumes this comparison in its complete pre-runtime reconciliation. The
 later outcome closure of k36 cannot replace either check. This task creates no
 clone or frozen subject.
+
+## K67 outcomes handoff
+
+k67 adds the positive setup, the title audit and the outcome classes to the
+complete scenario. Read
+`docs/verification/settings-activation/ORDERING-OUTCOMES-RESULTS.md`. Consume
+it only after its review and every earned integration.
+
+The prefix now holds these k67 additions, through the TextEdit quit:
+
+- the TextEdit PID read after the preparation
+- the pre-click identity and the positive setup before each of the four
+  selections
+- the enabled row read, the open-menu screenshot and the closed-menu read of
+  each selection
+- the deferred count poll, the title audit and the outcome screenshot of each
+  selection
+- the failure observations and the classified receipts.
+
+Extract the prefix from these bytes. The focused set and the ordinary set must
+use the same functions and predicates. The protocol requires each added
+observation. The open-menu and closed-menu oracles stay unverified natively,
+and E01 qualifies each new read.

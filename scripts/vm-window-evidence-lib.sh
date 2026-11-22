@@ -83,20 +83,31 @@ act_guest_window() {
     cli_guest_evidence "${root}" one-shot "${operation}" "${predicate}" -- agent "${action}" "${options[@]}"
 }
 
-# await_guest_window_count ROOT OPERATION APP {0,1}: existing Koine count poll.
+# await_guest_window_count ROOT OPERATION APP {0,1} [deferred]: existing Koine
+# count poll. A clean true state prints its list. With deferred, a clean
+# exhaustion prints the final clean list and returns 1 without its exhaustion
+# receipt, so nothing latches yet. The caller then takes only its untouched
+# failure reads, and it records OPERATION-exhausted with
+# window_count_predicate before any input.
 await_guest_window_count() {
-    local root="${1-}" operation="${2-}" app="${3-}" expected="${4-}" predicate
+    local root="${1-}" operation="${2-}" app="${3-}" expected="${4-}" deferred="${5-}" predicate
     _window_evidence_root "${root}" || return
-    [[ $# == 4 && -n "${operation}" && -n "${app}" && "${expected}" =~ ^[01]$ ]] || {
-        _window_evidence_fail "${root}" "${operation:-window-count-arguments}" 'expected ROOT OPERATION APP and window count 0 or 1'
+    [[ ($# == 4 || ($# == 5 && "${deferred}" == deferred)) && -n "${operation}" && -n "${app}" &&
+        "${expected}" =~ ^[01]$ ]] || {
+        _window_evidence_fail "${root}" "${operation:-window-count-arguments}" 'expected ROOT OPERATION APP, window count 0 or 1 and an optional deferred'
         return "$?"
     }
-    predicate="$(jq -cn --arg app "${app}" --argjson count "${expected}" \
-        '"([.windows[] | select(.appName == \($app | tojson))] | length) == \($count)"' -r)" || {
+    predicate="$(window_count_predicate "${app}" "${expected}")" || {
         _window_evidence_fail "${root}" "${operation}" 'window count predicate encoding failed'
         return "$?"
     }
-    _await_guest_windows "${root}" "${operation}" "${predicate}" 10
+    _await_guest_windows "${root}" "${operation}" "${predicate}" 10 0 "${deferred}"
+}
+
+# window_count_predicate APP COUNT: the count poll's predicate on one list.
+window_count_predicate() {
+    jq -cn --arg app "$1" --argjson count "$2" \
+        '"([.windows[] | select(.appName == \($app | tojson))] | length) == \($count)"' -r
 }
 
 # Existing TextEdit preparation: fifteen by two, then an unconditional assertion.
@@ -112,19 +123,20 @@ await_guest_textedit_window() {
 
 # Internal: 0 means clean true state, 1 clean false, all other statuses stop.
 # Both the full original list and this local predicate/status receive receipts.
+# A clean state of either value prints the list.
 _window_poll_read() {
     local root="$1" operation="$2" predicate="$3" response state_status=0
     response="$(read_guest_windows "${root}" read-poll "${operation}")" || return
     jq -e "${predicate}" >/dev/null <<<"${response}" || state_status=$?
     record_guest_poll "${root}" "${operation}-state" state "${state_status}" "${predicate}" || return
-    if [[ "${state_status}" == 0 ]]; then
+    if [[ "${state_status}" == 0 || "${state_status}" == 1 ]]; then
         printf '%s\n' "${response}"
     fi
     return "${state_status}"
 }
 
 _await_guest_windows() {
-    local root="$1" operation="$2" predicate="$3" limit="$4" final_assertion="${5:-0}"
+    local root="$1" operation="$2" predicate="$3" limit="$4" final_assertion="${5:-0}" deferred="${6-}"
     local response attempt state_status=1 sleep_status
     for ((attempt = 1; attempt <= limit; attempt++)); do
         state_status=0
@@ -150,6 +162,11 @@ _await_guest_windows() {
     if [[ "${state_status}" == 0 ]]; then
         printf '%s\n' "${response}"
         return
+    fi
+    # The caller of a deferred poll records this receipt after its failure reads.
+    if [[ "${deferred}" == deferred ]]; then
+        printf '%s\n' "${response}"
+        return 1
     fi
     record_guest_poll "${root}" "${operation}-exhausted" exhausted 1 "${predicate}"
 }

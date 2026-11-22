@@ -111,3 +111,18 @@ transcript name with status 2 is one such run. Its status alone establishes no
 Koine failure.
 
 Every other duty and hold above stays.
+
+## K67 outcomes handoff
+
+k67 adds classified state-failed receipts, named `scenario-assertion-CLASS`.
+Read the outcome classes in
+`docs/verification/settings-activation/ORDERING-OUTCOMES-RESULTS.md`. Consume
+it only after its review and every earned integration.
+
+The count poll of a return now defers its exhaustion receipt. The scenario
+records `RETURN-window-exhausted` after the untouched failure reads and before
+any input. Thus a failed return can show a clean liveness read and a clean
+observer read before its first latch. Read the receipts in ordinal order.
+
+An open menu and an unavailable liveness read stay unresolved. Neither one is a
+recurrence or a Koine failure. Every other duty and hold above stays.

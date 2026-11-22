@@ -125,29 +125,31 @@ esac
 FRONT="$(settings_front_application textedit-front-application)" ||
     settings_stop "$?" "the front application could not be read"
 echo "Front application: ${FRONT}"
+# The positive setup compares each later list with this PID and frame.
+settings_record_textedit
 
 step "Close the window; Settings… brings it back over TextEdit's, to the front"
 settings_window first-close window-close "${WINDOW_TITLE}"
 settings_await_windows first-close-window 0
+CLOSED_LIST="${SETTINGS_COUNT_LIST}"
 settings_expect_menu_count first-close-count "the menu bar item went with the window"
-settings_choose_menu_item first-selection "Settings…"
-settings_await_windows first-selection-window 1
-STATUS=0
-settings_koine_in_front first-selection-front || STATUS=$?
-if [ "${STATUS}" = 1 ]; then
-    # The front application read of the legacy message precedes the latch.
-    FRONT="$(settings_front_application first-selection-front-application)" ||
-        settings_stop "$?" "the front application could not be read"
-    settings_fail "the window did not come to the front over TextEdit's: ${SETTINGS_FRONT}; front application: ${FRONT}"
-fi
-[ "${STATUS}" = 0 ] || settings_stop "${STATUS}" "the front window could not be read"
+# Each of the four selections: the pre-click identity, the positive setup on
+# the zero-count list, the route, then the classified outcome. The front
+# application read of a failure precedes the latch.
+settings_pre_click_identity first-selection
+settings_expect_setup first-selection "${CLOSED_LIST}"
+settings_select_return first-selection "Settings…"
+settings_expect_return first-selection "the window did not come to the front over TextEdit's" menu
+# The outcome screenshot.
 settings_capture over-textedit
 for reopen in 1 2 3; do
     settings_window "reopen-${reopen}-close" window-close "${WINDOW_TITLE}"
     settings_await_windows "reopen-${reopen}-closed" 0
-    settings_choose_menu_item "reopen-${reopen}-selection" "Settings…"
-    settings_await_windows "reopen-${reopen}-window" 1
-    settings_expect_front "reopen-${reopen}-front" "Settings reopen ${reopen} did not bring the window to the front"
+    settings_pre_click_identity "reopen-${reopen}-selection"
+    settings_expect_setup "reopen-${reopen}-selection" "${SETTINGS_COUNT_LIST}"
+    settings_select_return "reopen-${reopen}-selection" "Settings…"
+    settings_expect_return "reopen-${reopen}" "Settings reopen ${reopen} did not bring the window to the front" menu
+    settings_capture "outcome-reopen-${reopen}"
 done
 quit_guest_textedit "${KOINE_VM_EVIDENCE_ROOT}" textedit-quit ||
     settings_require "$?" "TextEdit still runs after its quit"
@@ -221,9 +223,9 @@ settings_expect_menu second-request-menu "${TWO_REQUESTS[@]}"
 settings_expect_koine_count second-request-windows 0 "a second request brought the window forward"
 
 step "The line opens the window at Requests, scrolled there from the least size"
-settings_choose_menu_item requests-selection "Review 2 Grant Requests…"
-settings_await_windows requests-window 1
-settings_expect_front requests-front "the window did not come to the front"
+settings_pre_click_identity requests-selection
+settings_select_return requests-selection "Review 2 Grant Requests…"
+settings_expect_return requests "the window did not come to the front" menu
 settings_sleep requests-front 2
 settings_read_frame requests-frame
 settings_on_screen requests-on-screen '(.id // "") | startswith("request-label-")' ||
@@ -233,6 +235,7 @@ settings_on_screen requests-on-screen '(.id // "") | startswith("request-label-"
 ELEMENT="$(settings_element requests-label '(.id // "") | startswith("request-label-")' value)" ||
     settings_stop "$?" "the request label could not be read"
 echo "Requests on screen: $(jq -c '[.id, .value]' <<<"${ELEMENT}")"
+# The outcome screenshot: only reads and a wait follow the return before it.
 settings_capture requests
 settings_click requests-deny-1 '(.id // "") | startswith("deny-")'
 settings_sleep requests-deny-1 4
@@ -245,13 +248,14 @@ step "The Accessibility line opens the window at Accessibility, scrolled there f
 settings_reveal accessibility-below '.id=="login-launch"'
 settings_window accessibility-close window-close "${WINDOW_TITLE}"
 settings_await_windows accessibility-closed 0
-settings_choose_menu_item accessibility-selection "Accessibility Not Granted…"
-settings_await_windows accessibility-window 1
-settings_expect_front accessibility-front "the Accessibility line did not bring the window to the front"
+settings_pre_click_identity accessibility-selection
+settings_select_return accessibility-selection "Accessibility Not Granted…"
+settings_expect_return accessibility "the Accessibility line did not bring the window to the front" menu
 settings_sleep accessibility-front 2
 settings_read_frame accessibility-frame
 settings_on_screen accessibility-on-screen '.id=="accessibility-status"' ||
     settings_require "$?" "the window did not scroll to Accessibility"
+settings_capture outcome-accessibility
 
 step "Consent given in System Settings: the mark and the line go within a poll"
 settings_grant_accessibility
@@ -278,15 +282,19 @@ step "Opening Koine again while it runs shows the window"
 launch_guest_koine "${KOINE_VM_EVIDENCE_ROOT}" reopen || settings_stop "$?" "the reopen was not submitted cleanly"
 confirm_guest_reopen "${KOINE_VM_EVIDENCE_ROOT}" reopen-identity "${SILENT_IDENTITY}" >/dev/null ||
     settings_require "$?" "the reopen did not keep the same Koine process"
-settings_await_windows reopen-window 1
-settings_expect_front reopen-front "reopening did not bring the window to the front"
+# The confirmation proved the silent launch's process, so its entry is the
+# identity that a zero-window outcome compares.
+SETTINGS_PRE_IDENTITY="$(jq -c '.process' <<<"${SILENT_IDENTITY}")"
+settings_expect_return reopen "reopening did not bring the window to the front" reopen
+settings_capture outcome-reopen
 settings_window reopen-close window-close "${WINDOW_TITLE}"
 settings_await_windows reopen-closed 0
 
 step "Quit with ⌘Q from the window, then restart the VM: only the login item can start Koine"
-settings_choose_menu_item quit-selection "Settings…"
-settings_await_windows quit-window 1
-settings_expect_front quit-front "Settings did not focus the window before Command-Q"
+settings_pre_click_identity quit-selection
+settings_select_return quit-selection "Settings…"
+settings_expect_return quit "Settings did not focus the window before Command-Q" menu
+settings_capture outcome-quit
 settings_input pre-restart-quit key q --modifiers cmd
 settings_expect_stopped quit-stopped
 BOOT_BEFORE="$(read_guest_exec "${KOINE_VM_EVIDENCE_ROOT}" evidence boot-before boot)" ||

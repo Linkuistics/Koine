@@ -208,7 +208,8 @@ refused() {
 
 ACCEPTED='{"case": "enrol", "status": 200, "response": {"data": {"koineRequestGrant": {"requestId": "r1", "comparisonCode": "123456"}}}}'
 SYSEVENTS_READS=(sysevents-processes menu-item-count 'menu-item-label value' 'menu-item-label poll'
-    menu-item-frame 'menu-row-frame Settings…' menu-titles dock-items background-only front-application)
+    menu-item-frame 'menu-row-frame Settings…' menu-titles dock-items background-only front-application
+    front-process textedit-windows open-menus 'menu-row-enabled Settings…' menu-item-selected)
 
 @test "System Events reads refuse the evidence class and the enrolment admits only one-shot" {
     local request
@@ -631,5 +632,84 @@ SYSEVENTS_READS=(sysevents-processes menu-item-count 'menu-item-label value' 'me
         count="$(calls)"
         run submit_guest_enrolment "${read_root}" enrol-again '$HOME/koine-secret-first' vm-editor
         [[ "${status}" == 125 && "$(calls)" == "${count}" ]]
+    done
+}
+
+# --- the reads of the positive setup and the route (k67) -------------------
+
+@test "the setup and route reads send their fixed AppleScript in source form" {
+    local request name expected index=0
+    local -A scripts=(
+        ["front-process"]='get {name, unix id} of first process whose frontmost is true'
+        ["textedit-windows"]='tell process "TextEdit" to get {subrole of every window, role of every sheet of every window}'
+        ["open-menus"]='get {name of every menu bar item of menu bar 1 of process "TextEdit", selected of every menu bar item of menu bar 1 of process "TextEdit", selected of menu bar item 1 of menu bar 2 of process "Koine"}'
+        ["menu-row-enabled"]='get enabled of menu item "Settings…" of menu 1 of menu bar item 1 of menu bar 2 of process "Koine"'
+        ["menu-item-selected"]='get selected of menu bar item 1 of menu bar 2 of process "Koine"'
+    )
+    answer "$(se 'true')"
+    for request in front-process textedit-windows open-menus 'menu-row-enabled Settings…' menu-item-selected; do
+        index=$((index + 1))
+        read -r -a words <<<"${request}"
+        name="${words[0]}"
+        run read_guest_exec "${read_root}" read-poll command "${words[@]}"
+        expected="o=\$(osascript -s so -e 'tell application \"System Events\" to ${scripts[${name}]}'); s=\$?; printf '%s\\nKOINE-OSASCRIPT-STATUS %s' \"\$o\" \"\$s\""
+        jq -e --arg command "${expected}" --arg name "${name}" '.command == $command and .read == $name
+            and .class == "read-poll"' "${read_root}/000001/request.json"
+        reset_root "setup-command-${index}"
+    done
+    refusals=0
+    refused read-poll row menu-row-enabled
+    refused read-poll row menu-row-enabled "Don't Allow"
+    refused read-poll menus open-menus extra
+}
+
+@test "the setup and route reads parse their complete values" {
+    local case name text expected index=0
+    for case in \
+        'front-process|{"TextEdit", 909}|["TextEdit",909]' \
+        'textedit-windows|{{"AXStandardWindow"}, {{}}}|[["AXStandardWindow"],[[]]]' \
+        'textedit-windows|{{"AXStandardWindow", "AXDialog"}, {{"AXSheet"}, {}}}|[["AXStandardWindow","AXDialog"],[["AXSheet"],[]]]' \
+        'textedit-windows|{{}, {}}|[[],[]]' \
+        'open-menus|{{"Apple", missing value, "File"}, {false, false, true}, false}|[["Apple",null,"File"],[false,false,true],false]' \
+        'menu-row-enabled|false|false' \
+        'menu-item-selected|true|true'; do
+        IFS='|' read -r name text expected <<<"${case}"
+        index=$((index + 1))
+        reset_root "setup-parse-${index}"
+        answer "$(se "${text}")"
+        args=("${name}")
+        [[ "${name}" != menu-row-enabled ]] || args+=('Settings…')
+        run read_guest_exec "${read_root}" read-poll parse "${args[@]}"
+        echo "diagnostic: case=${case} status=${status} output=${output}"
+        [[ "${status}" == 0 ]]
+        jq -e --argjson value "${expected}" '.absent == false and .value == $value' <<<"${output}"
+    done
+}
+
+@test "a missing value, an incomplete enumeration or a script error in a setup read is unavailable" {
+    local case name text index=0
+    for case in \
+        'front-process|{missing value, 909}' \
+        'front-process|{"TextEdit", 0}' \
+        'front-process|{"TextEdit"}' \
+        'textedit-windows|{{missing value}, {{}}}' \
+        'textedit-windows|{{"AXStandardWindow"}, {}}' \
+        'textedit-windows|{{"AXStandardWindow"}, {{missing value}}}' \
+        'open-menus|{{"Apple", "File"}, {false, missing value}, false}' \
+        'open-menus|{{"Apple", "File"}, {false}, false}' \
+        'open-menus|{{"Apple"}, {false}, missing value}' \
+        'menu-row-enabled|missing value' \
+        'menu-item-selected|missing value' \
+        'menu-item-selected|ERROR'; do
+        IFS='|' read -r name text <<<"${case}"
+        index=$((index + 1))
+        reset_root "setup-missing-${index}"
+        if [[ "${text}" == ERROR ]]; then answer "$(se_error -1728)"; else answer "$(se "${text}")"; fi
+        args=("${name}")
+        [[ "${name}" != menu-row-enabled ]] || args+=('Settings…')
+        run read_guest_exec "${read_root}" read-poll missing "${args[@]}"
+        echo "diagnostic: case=${case} status=${status} output=${output}"
+        [[ "${status}" == 125 ]]
+        assert_latched
     done
 }

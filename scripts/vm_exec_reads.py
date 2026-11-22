@@ -568,6 +568,28 @@ SYSEVENTS = {
     "dock-items": 'get name of every UI element of list 1 of process "Dock"',
     "background-only": 'get background only of process "Koine"',
     "front-application": "get name of first process whose frontmost is true",
+    # The positive setup and the route evidence of the ordering protocol. Each
+    # property is in the System Events dictionary, SystemEvents.sdef (host
+    # macOS 27.2.1 build 26B131, SHA-256 4d2a6477…): "unix id" of a process,
+    # and "subrole", "selected" and "enabled" of a UI element, and the class
+    # "sheet". The guest runs macOS 27.0.1, so E01 qualifies each read there.
+    "front-process": "get {name, unix id} of first process whose frontmost is true",
+    # kAXStandardWindowSubrole is a standard window with a title bar, not an
+    # inspector or a sheet. Each window gives one list of its sheet roles.
+    # https://developer.apple.com/documentation/applicationservices/kaxstandardwindowsubrole
+    "textedit-windows": 'tell process "TextEdit" to get {subrole of every window, '
+    "role of every sheet of every window}",
+    # NSAccessibility.Attribute.selected says only whether an element is
+    # selected. No Apple source states that a menu bar item reports its open
+    # menu through it, so this oracle is unverified natively.
+    # https://developer.apple.com/documentation/appkit/nsaccessibility-swift.struct/attribute/selected
+    "open-menus": 'get {name of every menu bar item of menu bar 1 of process "TextEdit", '
+    'selected of every menu bar item of menu bar 1 of process "TextEdit", '
+    f"selected of {KOINE_ITEM}}}",
+    # AXEnabled is required on menu items, and it is false for a disabled one.
+    # https://developer.apple.com/documentation/applicationservices/kaxenabledattribute
+    "menu-row-enabled": 'get enabled of menu item "%s" of menu 1 of ' + KOINE_ITEM,
+    "menu-item-selected": f"get selected of {KOINE_ITEM}",
 }
 # The grammar admits no quote, backslash or apostrophe, so a title cannot leave
 # the AppleScript string or the shell quotes. Koine's titles end in U+2026.
@@ -702,6 +724,48 @@ def frame_value(value: object) -> bool:
     )
 
 
+def front_process(value: object) -> bool:
+    # {name, unix id}: a name and a positive PID.
+    if not isinstance(value, list) or len(cast(list[object], value)) != 2:
+        return False
+    name, pid = cast(list[object], value)
+    return isinstance(name, str) and integer(pid) and cast(int, pid) > 0
+
+
+def textedit_windows(value: object) -> bool:
+    # {subroles, sheet roles}: one subrole and one list of sheet roles for each
+    # window. A missing subrole or role, or two lengths, is not a complete answer.
+    if not isinstance(value, list) or len(cast(list[object], value)) != 2:
+        return False
+    subroles, sheets = cast(list[object], value)
+    return (
+        isinstance(subroles, list)
+        and isinstance(sheets, list)
+        and len(cast(list[object], subroles)) == len(cast(list[object], sheets))
+        and all(isinstance(item, str) for item in cast(list[object], subroles))
+        and all(
+            isinstance(roles, list)
+            and all(isinstance(role, str) for role in cast(list[object], roles))
+            for roles in cast(list[object], sheets)
+        )
+    )
+
+
+def open_menus(value: object) -> bool:
+    # {TextEdit item names, their selected values, the Koine item's selected
+    # value}. A name may be missing. A selected value may not.
+    if not isinstance(value, list) or len(cast(list[object], value)) != 3:
+        return False
+    names, selected, koine = cast(list[object], value)
+    return (
+        text_list(names)
+        and isinstance(selected, list)
+        and len(cast(list[object], names)) == len(cast(list[object], selected))
+        and all(isinstance(item, bool) for item in cast(list[object], selected))
+        and isinstance(koine, bool)
+    )
+
+
 SYSEVENTS_TYPES: dict[str, Callable[[object], bool]] = {
     "sysevents-processes": text_list,
     "menu-item-count": lambda value: integer(value) and cast(int, value) >= 0,
@@ -712,7 +776,15 @@ SYSEVENTS_TYPES: dict[str, Callable[[object], bool]] = {
     "dock-items": text_list,
     "background-only": lambda value: isinstance(value, bool),
     "front-application": lambda value: isinstance(value, str),
+    "front-process": front_process,
+    "textedit-windows": textedit_windows,
+    "open-menus": open_menus,
+    "menu-row-enabled": lambda value: isinstance(value, bool),
+    "menu-item-selected": lambda value: isinstance(value, bool),
 }
+
+# The reads whose one argument is a menu row title.
+ROW_READS = {"menu-row-frame", "menu-row-enabled"}
 
 
 def admits_absence(name: str, arguments: list[str]) -> bool:
@@ -724,9 +796,7 @@ def admits_absence(name: str, arguments: list[str]) -> bool:
 def sysevents_read(name: str) -> Read:
     def command(arguments: list[str]) -> str:
         script = SYSEVENTS[name]
-        return sysevents_command(
-            script % arguments[0] if name == "menu-row-frame" else script
-        )
+        return sysevents_command(script % arguments[0] if name in ROW_READS else script)
 
     def parse(stdout: str, arguments: list[str]) -> dict[str, object]:
         lines(stdout)
@@ -761,7 +831,7 @@ def sysevents_read(name: str) -> Read:
     def valid(arguments: list[str]) -> bool:
         if name == "menu-item-label":
             return arguments in (["value"], ["poll"])
-        if name == "menu-row-frame":
+        if name in ROW_READS:
             return len(arguments) == 1 and ROW_TITLE.fullmatch(arguments[0]) is not None
         return arguments == []
 
@@ -895,6 +965,72 @@ def identity_command(_: list[str]) -> str:
 IDENTITY_SELECTED = re.compile(r"KOINE-SELECTED ((?:[1-9][0-9]*(?:,[1-9][0-9]*)*)?)")
 
 
+def identity_process(process: object, pid: object) -> None:
+    """Refuse a process entry of the identity script that differs from its schema.
+
+    None is the clean fact that no process has the PID.
+    """
+    if process is None:
+        return
+    if not isinstance(process, dict):
+        raise ReadError("identity process is not an object")
+    entry = cast(dict[str, object], process)
+    start_usec = entry.get("start_usec")
+    if not (
+        sorted(entry) == ["executable", "pid", "start_sec", "start_usec"]
+        and entry["pid"] == pid
+        and integer(entry["start_sec"])
+        and cast(int, entry["start_sec"]) > 0
+        and integer(start_usec)
+        and 0 <= cast(int, start_usec) < 1_000_000
+        and isinstance(entry["executable"], str)
+        and entry["executable"].startswith("/")
+    ):
+        raise ReadError("identity process differs from the script's schema")
+
+
+def identity_line(row: str) -> tuple[str, object]:
+    """The descriptor text and the process entry of one identity line."""
+    try:
+        value: object = json.loads(
+            row, object_pairs_hook=unique_object, parse_constant=reject_constant
+        )
+    except json.JSONDecodeError as error:
+        raise ReadError(f"identity line is not one JSON object: {error}") from None
+    if not isinstance(value, dict):
+        raise ReadError("identity line is not one JSON object")
+    answer = cast(dict[str, object], value)
+    text, process = answer.get("descriptor_text"), answer.get("process")
+    if sorted(answer) != ["descriptor_text", "process"] or not isinstance(text, str):
+        raise ReadError("identity line differs from the script's schema")
+    return text, process
+
+
+PID_ARGUMENT = re.compile(r"[1-9][0-9]{0,8}")
+
+
+def pid_identity_command(arguments: list[str]) -> str:
+    # The same kernel script as the launch identity, for one recorded PID. The
+    # script reads a JSON object with a "pid" field from its file argument, so
+    # the pipe gives it that object in place of the descriptor.
+    return (
+        f"printf '{{\"pid\": {int(arguments[0])}}}' | "
+        f"python3 -I -c '{IDENTITY_SCRIPT}' /dev/stdin"
+    )
+
+
+def pid_identity_parse(stdout: str, arguments: list[str]) -> dict[str, object]:
+    pid = int(arguments[0])
+    rows = lines(stdout)
+    if len(rows) != 1:
+        raise ReadError("expected one identity line")
+    text, process = identity_line(rows[0])
+    if text != f'{{"pid": {pid}}}':
+        raise ReadError("the identity line names another PID")
+    identity_process(process, pid)
+    return {"pid": pid, "process": process}
+
+
 def identity_parse(stdout: str, _: list[str]) -> dict[str, object]:
     if stdout == "ABSENT":
         return {"present": False, "joined": False}
@@ -905,35 +1041,9 @@ def identity_parse(stdout: str, _: list[str]) -> dict[str, object]:
     selected = [int(pid) for pid in selection.group(1).split(",") if pid]
     if len(set(selected)) != len(selected):
         raise ReadError("the selection repeats a PID")
-    try:
-        value: object = json.loads(
-            rows[1], object_pairs_hook=unique_object, parse_constant=reject_constant
-        )
-    except json.JSONDecodeError as error:
-        raise ReadError(f"identity line is not one JSON object: {error}") from None
-    if not isinstance(value, dict):
-        raise ReadError("identity line is not one JSON object")
-    answer = cast(dict[str, object], value)
-    text, process = answer.get("descriptor_text"), answer.get("process")
-    if sorted(answer) != ["descriptor_text", "process"] or not isinstance(text, str):
-        raise ReadError("identity line differs from the script's schema")
+    text, process = identity_line(rows[1])
     descriptor = descriptor_fields(text)
-    if process is not None:
-        if not isinstance(process, dict):
-            raise ReadError("identity process is not an object")
-        entry = cast(dict[str, object], process)
-        start_usec = entry.get("start_usec")
-        if not (
-            sorted(entry) == ["executable", "pid", "start_sec", "start_usec"]
-            and entry["pid"] == descriptor["pid"]
-            and integer(entry["start_sec"])
-            and cast(int, entry["start_sec"]) > 0
-            and integer(start_usec)
-            and 0 <= cast(int, start_usec) < 1_000_000
-            and isinstance(entry["executable"], str)
-            and entry["executable"].startswith("/")
-        ):
-            raise ReadError("identity process differs from the script's schema")
+    identity_process(process, descriptor["pid"])
     joined = (
         isinstance(process, dict)
         and cast(dict[str, object], process)["executable"] == EXECUTABLE
@@ -1098,6 +1208,17 @@ READS: dict[str, Read] = {
         identity_command,
         identity_parse,
         no_arguments,
+        False,
+        "python3 can raise the Command Line Tools prompt",
+    ),
+    # The liveness read after a zero-window return, for the PID of the
+    # pre-click identity. None means that no process has that PID.
+    "process-identity": Read(
+        pid_identity_command,
+        pid_identity_parse,
+        lambda arguments: (
+            len(arguments) == 1 and PID_ARGUMENT.fullmatch(arguments[0]) is not None
+        ),
         False,
         "python3 can raise the Command Line Tools prompt",
     ),

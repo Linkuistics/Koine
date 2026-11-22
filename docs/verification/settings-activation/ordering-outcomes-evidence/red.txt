@@ -1,0 +1,311 @@
+1..108
+ok 1 the adopted scenario runs to PASSED with every call in one root initialised first
+ok 2 the adopted scenario keeps the checked confirmations in their existing positions
+not ok 3 an unavailable answer in any transport family stops every later scenario input
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 184)
+#   `return 1' failed
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# true
+# fault textedit-pid: status 0, at -1, later input [{"action":"read","root":"/private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/3/repo/.build/vm-verify/menu-bar-20261123T021620-evidence","kind":"read-poll","operation":"installed-after","arguments":["installed-inventory"],"outcome":"clean"}]
+#
+# == PASSED — transcript in .build/vm-verify/menu-bar-20261123T021620.log
+# Scenario status 0. Evidence root: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/3/repo/.build/vm-verify/menu-bar-20261123T021620-evidence. Work directory: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/tmp.z7pjjXdUr2.
+# Held pointer: none
+# The scenario sent no VM stop. The finite caller owns the exact stop and inventory of exact-settings-vm: testanyware vm stop exact-settings-vm
+ok 4 a failed read keeps the legacy failure message
+not ok 5 a clean false state records the legacy message as state-failed and stops
+# (from function `expect_outcome' in file Tests/scripts/vm-settings-scenario.bats, line 78,
+#  in test file Tests/scripts/vm-settings-scenario.bats, line 203)
+#   `expect_outcome not-front' failed
+# expected outcome not-front: status 1, at -1, later input []
+# FAILED: the window did not come to the front over TextEdit's: [["TextEdit","Untitled",true],["Koine","Koine Settings",false]]; front application: TextEdit
+# Failure screenshot: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/5/repo/.build/vm-verify/menu-bar-20261123T021701-evidence/failure-capture.png
+# Scenario status 1. Evidence root: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/5/repo/.build/vm-verify/menu-bar-20261123T021701-evidence. Work directory: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/tmp.HvrBjen6kQ.
+# Held pointer: none
+# The scenario sent no VM stop. The finite caller owns the exact stop and inventory of exact-settings-vm: testanyware vm stop exact-settings-vm
+ok 6 a fenced legacy transport latches instead of dispatching
+ok 7 KOINE_SETTINGS_TRACE=1 refuses before the first launch and sends nothing for it
+ok 8 a missing golden base latches before any VM start
+ok 9 an existing evidence root is refused before any transport
+ok 10 HUP during a scenario wait records the signal and sends nothing more
+ok 11 TERM in the settling sleep after a clean held point sends no further input or release
+ok 12 a failed settling wait after a clean held point stops input and release without a trap
+ok 13 INT during a held-point attempt keeps it interrupted and sends no release
+ok 14 the caller inventory finds no legacy transport in the adopted scenario surface
+ok 15 a request label without its value is unavailable before the screenshot and the denials
+ok 16 an earlier transcript with its default root survives a refused run in the same second
+ok 17 an earlier transcript survives a run in the same second with a distinct root
+not ok 18 the positive setup precedes each of the four selections and uses the zero-count list
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 468)
+#   `[[ "${output}" == *'TextEdit: PID 909, window frame [700,120,603,505]'* ]]' failed
+not ok 19 a clean setup mismatch before any of the four selections is failed setup and opens no menu
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 504)
+#   `return 1' failed
+# expected outcome setup-failed: status 0, at -1, later input [{"action":"read","root":"/private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/19/repo/.build/vm-verify/menu-bar-20261123T021804-evidence","kind":"read-poll","operation":"installed-after","arguments":["installed-inventory"],"outcome":"clean"}]
+#
+# == PASSED — transcript in .build/vm-verify/menu-bar-20261123T021804.log
+# Scenario status 0. Evidence root: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/19/repo/.build/vm-verify/menu-bar-20261123T021804-evidence. Work directory: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/tmp.ijIUZmg29g.
+# Held pointer: none
+# The scenario sent no VM stop. The finite caller owns the exact stop and inventory of exact-settings-vm: testanyware vm stop exact-settings-vm
+# case textedit-moved:1
+not ok 20 missing or failed setup evidence is unavailable and opens no menu
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 532)
+#   `return 1' failed
+# case flag:textedit-no-title:first-selection: status 0, at -1, later input [{"action":"read","root":"/private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/20/repo/.build/vm-verify/menu-bar-20261123T021837-evidence","kind":"read-poll","operation":"installed-after","arguments":["installed-inventory"],"outcome":"clean"}]
+# Scenario status 0. Evidence root: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/20/repo/.build/vm-verify/menu-bar-20261123T021837-evidence. Work directory: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/tmp.qyJ0alYe3P.
+# Held pointer: none
+# The scenario sent no VM stop. The finite caller owns the exact stop and inventory of exact-settings-vm: testanyware vm stop exact-settings-vm
+not ok 21 two TextEdit processes after the preparation are failed setup
+# (from function `expect_outcome' in file Tests/scripts/vm-settings-scenario.bats, line 78,
+#  in test file Tests/scripts/vm-settings-scenario.bats, line 540)
+#   `expect_outcome setup-failed' failed
+# expected outcome setup-failed: status 0, at -1, later input [{"action":"read","root":"/private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/21/repo/.build/vm-verify/menu-bar-20261123T021909-evidence","kind":"read-poll","operation":"installed-after","arguments":["installed-inventory"],"outcome":"clean"}]
+#
+# == PASSED — transcript in .build/vm-verify/menu-bar-20261123T021909.log
+# Scenario status 0. Evidence root: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/21/repo/.build/vm-verify/menu-bar-20261123T021909-evidence. Work directory: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/tmp.45DW293XGe.
+# Held pointer: none
+# The scenario sent no VM stop. The finite caller owns the exact stop and inventory of exact-settings-vm: testanyware vm stop exact-settings-vm
+not ok 22 each return records its route and its closed menu, and the Quit selections keep theirs
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 563)
+#   `return 1' failed
+# jq: error (at /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/22/sim/calls.jsonl:561): null (null) and number (1) cannot be subtracted
+# route of first-selection
+not ok 23 a disabled row is recorded and not clicked
+# (from function `expect_outcome' in file Tests/scripts/vm-settings-scenario.bats, line 78,
+#  in test file Tests/scripts/vm-settings-scenario.bats, line 579)
+#   `expect_outcome menu-item-disabled' failed
+# expected outcome menu-item-disabled: status 0, at -1, later input [{"action":"read","root":"/private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/23/repo/.build/vm-verify/menu-bar-20261123T022013-evidence","kind":"read-poll","operation":"installed-after","arguments":["installed-inventory"],"outcome":"clean"}]
+#
+# == PASSED — transcript in .build/vm-verify/menu-bar-20261123T022013.log
+# Scenario status 0. Evidence root: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/23/repo/.build/vm-verify/menu-bar-20261123T022013-evidence. Work directory: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/tmp.QsQwNUgUw0.
+# Held pointer: none
+# The scenario sent no VM stop. The finite caller owns the exact stop and inventory of exact-settings-vm: testanyware vm stop exact-settings-vm
+not ok 24 a menu that stays open after the click makes the outcome unresolved
+# (from function `expect_outcome' in file Tests/scripts/vm-settings-scenario.bats, line 78,
+#  in test file Tests/scripts/vm-settings-scenario.bats, line 587)
+#   `expect_outcome menu-open' failed
+# expected outcome menu-open: status 0, at -1, later input [{"action":"read","root":"/private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/24/repo/.build/vm-verify/menu-bar-20261123T022042-evidence","kind":"read-poll","operation":"installed-after","arguments":["installed-inventory"],"outcome":"clean"}]
+#
+# == PASSED — transcript in .build/vm-verify/menu-bar-20261123T022042.log
+# Scenario status 0. Evidence root: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/24/repo/.build/vm-verify/menu-bar-20261123T022042-evidence. Work directory: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/tmp.68jGjcOOsW.
+# Held pointer: none
+# The scenario sent no VM stop. The finite caller owns the exact stop and inventory of exact-settings-vm: testanyware vm stop exact-settings-vm
+not ok 25 a wrong title on the front list is a window-identity failure, for later returns too
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 602)
+#   `return 1' failed
+# expected outcome window-identity: status 125, at -1, later input []
+# FAILED: the corner drag to 740, 940 did not complete cleanly (evidence status 125)
+# Failure screenshot: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/25/repo/.build/vm-verify/menu-bar-20261123T022110-evidence/failure-capture.png
+# Scenario status 125. Evidence root: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/25/repo/.build/vm-verify/menu-bar-20261123T022110-evidence. Work directory: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/tmp.MFBXjSDiSy.
+# Held pointer: none
+# The scenario sent no VM stop. The finite caller owns the exact stop and inventory of exact-settings-vm: testanyware vm stop exact-settings-vm
+# return first-selection
+ok 26 a Koine window without a title makes the audit unavailable
+not ok 27 two Koine windows after a selection are a multiple-windows failure
+# (from function `expect_outcome' in file Tests/scripts/vm-settings-scenario.bats, line 78,
+#  in test file Tests/scripts/vm-settings-scenario.bats, line 627)
+#   `expect_outcome multiple-windows' failed
+# expected outcome multiple-windows: status 125, at -1, later input []
+# FAILED: Koine has unknown windows, not 1 (evidence status 125)
+# Failure screenshot: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/27/repo/.build/vm-verify/menu-bar-20261123T022124-evidence/failure-capture.png
+# Scenario status 125. Evidence root: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/27/repo/.build/vm-verify/menu-bar-20261123T022124-evidence. Work directory: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/tmp.Eq1HX4h5J5.
+# Held pointer: none
+# The scenario sent no VM stop. The finite caller owns the exact stop and inventory of exact-settings-vm: testanyware vm stop exact-settings-vm
+not ok 28 zero windows with the same live process are a same-process recurrence, for later returns too
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 645)
+#   `return 1' failed
+# expected outcome zero-window-same-process: status 125, at -1, later input []
+# FAILED: Koine has unknown windows, not 1 (evidence status 125)
+# Failure screenshot: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/28/repo/.build/vm-verify/menu-bar-20261123T022129-evidence/failure-capture.png
+# Scenario status 125. Evidence root: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/28/repo/.build/vm-verify/menu-bar-20261123T022129-evidence. Work directory: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/tmp.Cw0r67aGc4.
+# Held pointer: none
+# The scenario sent no VM stop. The finite caller owns the exact stop and inventory of exact-settings-vm: testanyware vm stop exact-settings-vm
+# return first-selection
+not ok 29 a lost or replaced process after zero windows is process loss, not a recurrence
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 667)
+#   `return 1' failed
+# expected outcome process-lost: status 125, at -1, later input []
+# FAILED: Koine has unknown windows, not 1 (evidence status 125)
+# Failure screenshot: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/29/repo/.build/vm-verify/menu-bar-20261123T022134-evidence/failure-capture.png
+# Scenario status 125. Evidence root: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/29/repo/.build/vm-verify/menu-bar-20261123T022134-evidence. Work directory: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/tmp.9aXzyt8fLc.
+# Held pointer: none
+# The scenario sent no VM stop. The finite caller owns the exact stop and inventory of exact-settings-vm: testanyware vm stop exact-settings-vm
+# case zero-window-crash:3
+not ok 30 a failed liveness read leaves the zero-window outcome unresolved
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 681)
+#   `[[ "${output}" == *'its liveness is unavailable, so the outcome is unresolved'* ]]' failed
+not ok 31 an app reopen that shows no window compares the silent launch's process
+# (from function `expect_outcome' in file Tests/scripts/vm-settings-scenario.bats, line 78,
+#  in test file Tests/scripts/vm-settings-scenario.bats, line 696)
+#   `expect_outcome zero-window-same-process' failed
+# expected outcome zero-window-same-process: status 125, at -1, later input []
+# FAILED: Koine has unknown windows, not 1 (evidence status 125)
+# Failure screenshot: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/31/repo/.build/vm-verify/menu-bar-20261123T022147-evidence/failure-capture.png
+# Scenario status 125. Evidence root: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/31/repo/.build/vm-verify/menu-bar-20261123T022147-evidence. Work directory: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/tmp.F9PVgOLm7r.
+# Held pointer: none
+# The scenario sent no VM stop. The finite caller owns the exact stop and inventory of exact-settings-vm: testanyware vm stop exact-settings-vm
+ok 32 window list emits the original full envelope and pins VM and ordinal
+ok 33 only clean list negatives advance the ten by two count poll
+ok 34 zero expected windows is clean data without title or focus strengthening
+ok 35 TextEdit loop preserves its final assertion after fifteen reads and sleeps
+ok 36 clean exhausted polls retain each list and a separate state confirmation
+ok 37 failed poll stops immediately despite matching text with no retry or input
+ok 38 window schemas reject incomplete arrays and malformed required or optional fields
+ok 39 window actions require matching actual receipt without invented target echo
+ok 40 every window action rejects failed nonzero partial and mismatching completions
+ok 41 collection preserves a prior failure and cannot restore input eligibility
+ok 42 empty absent and uninitialized roots cause no CLI or cwd artifacts
+ok 43 invalid arguments latch and cannot dispatch scenario input
+ok 44 adapter SIGINT propagates distinctly and stops the poll before sleep or release
+ok 45 missing helper arguments under nounset latch an initialized root
+ok 46 TextEdit always makes the separate assertion read after an early positive
+ok 47 TextEdit final assertion never rehabilitates a failed read
+ok 48 each poll records its state predicate and true or false decision
+ok 49 failed or interrupted poll sleeps record status and prevent later input
+ok 50 failed or interrupted local state evaluation records status without another read or sleep
+ok 51 negative window move coordinates use equals form accepted by the CLI
+not ok 52 a deferred count poll prints its final clean list and leaves the exhaustion receipt to the caller
+# (in test file Tests/scripts/vm-window-evidence.bats, line 388)
+#   `[[ "${status}" == 1 ]]' failed
+# diagnostic: status=125 output=guest evidence unavailable (000001): expected ROOT OPERATION APP and window count 0 or 1
+not ok 53 a deferred count poll keeps the positive, the failed read and the argument refusal
+# (in test file Tests/scripts/vm-window-evidence.bats, line 405)
+#   `[[ "${status}" == 0 ]]' failed
+not ok 54 System Events reads refuse the evidence class and the enrolment admits only one-shot
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 220)
+#   `grep -q 'evidence class refuses read.*start System Events' "${read_root}/refusals.jsonl"' failed
+# diagnostic: request=evidence collect sysevents-processes status=125 calls=0
+# diagnostic: request=evidence collect menu-item-count status=125 calls=0
+# diagnostic: request=evidence collect menu-item-label value status=125 calls=0
+# diagnostic: request=evidence collect menu-item-label poll status=125 calls=0
+# diagnostic: request=evidence collect menu-item-frame status=125 calls=0
+# diagnostic: request=evidence collect menu-row-frame Settings… status=125 calls=0
+# diagnostic: request=evidence collect menu-titles status=125 calls=0
+# diagnostic: request=evidence collect dock-items status=125 calls=0
+# diagnostic: request=evidence collect background-only status=125 calls=0
+# diagnostic: request=evidence collect front-application status=125 calls=0
+# diagnostic: request=evidence collect front-process status=2 calls=0
+ok 55 row titles, label modes and enrolment arguments refuse before dispatch
+ok 56 each read sends the legacy AppleScript in source form with script errors on stdout
+ok 57 a source-form list keeps a title that holds the separator
+ok 58 an empty menu and a menu of one empty title are different lists
+ok 59 the Dock assertion reads item names, and a failed Dock read shows nothing
+ok 60 count, agent flag, label and front application keep their exact types
+ok 61 a clean absence is a negative only in the label and frame polls
+ok 62 a denied or unformatted error with an absence number is unavailable in every poll
+ok 63 a denied label read stops the label poll at once and consumes no negative step
+ok 64 a denied item frame read stops the item frame poll at once and consumes no negative step
+ok 65 a denied row frame read stops the row frame poll at once and consumes no negative step
+ok 66 other AppleScript errors, statuses and malformed answers are unavailable
+ok 67 a timeout, a guest failure or a transport failure is unavailable even with a clean answer
+ok 68 the label poll keeps fifteen reads two seconds apart and ends in a state failure
+ok 69 the label poll waits through an absence and a missing value and stops on the exact label
+ok 70 a failed label read stops the poll at once and is never a negative
+ok 71 the item frame poll keeps five reads two seconds apart and the legacy digit predicate
+ok 72 a partial frame passes the legacy predicate and keeps its rendering for click_centre
+ok 73 the row frame poll names its row and keeps five reads one second apart
+ok 74 the System Events check after the grant needs a complete nonempty process list
+ok 75 the enrolment needs one complete JSON line and keeps the legacy predicate
+ok 76 a malformed enrolment answer is unavailable
+ok 77 a failed enrolment submission is unavailable, and no later answer makes it clean
+not ok 78 the setup and route reads send their fixed AppleScript in source form
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 656)
+#   `jq -e --arg command "${expected}" --arg name "${name}" '.command == $command and .read == $name' failed with status 2
+# jq: error: Could not open file /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/78/evidence/000001/request.json: No such file or directory
+not ok 79 the setup and route reads parse their complete values
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 684)
+#   `[[ "${status}" == 0 ]]' failed
+# diagnostic: case=front-process|{"TextEdit", 909}|["TextEdit",909] status=2 output=usage: vm-guest-exec.py read [-h]
+#                              root {read-poll,evidence,one-shot} operation
+#                              {assessment,background-only,boot,defaults,dock-items,endpoint,enrol,extract-bundle,front-application,gatekeeper,installed-inventory,launch-identity,menu-item-count,menu-item-frame,menu-item-label,menu-row-frame,menu-titles,open-accessibility-pane,open-koine,open-textedit,port-refusal,process,quarantine,quit-textedit,request-automation,restart,signature,signature-display,sysevents-processes,system}
+#                              [arguments ...]
+# vm-guest-exec.py read: error: argument name: invalid choice: 'front-process', maybe you meant 'process'? (choose from 'assessment', 'background-only', 'boot', 'defaults', 'dock-items', 'endpoint', 'enrol', 'extract-bundle', 'front-application', 'gatekeeper', 'installed-inventory', 'launch-identity', 'menu-item-count', 'menu-item-frame', 'menu-item-label', 'menu-row-frame', 'menu-titles', 'open-accessibility-pane', 'open-koine', 'open-textedit', 'port-refusal', 'process', 'quarantine', 'quit-textedit', 'request-automation', 'restart', 'signature', 'signature-display', 'sysevents-processes', 'system')
+# guest evidence refused: invalid evidence arguments
+# /private/tmp/claude-501/-Users-antony-Development-AbstractingComputers-Koine-gh-issue-14/156e7789-edb5-45ad-bd15-d7cda3575dea/scratchpad/red-tree/Tests/scripts/../../scripts/vm-guest-exec-lib.sh: line 34: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/79/setup-parse-1/unavailable: cannot overwrite existing file
+not ok 80 a missing value, an incomplete enumeration or a script error in a setup read is unavailable
+# (in test file Tests/scripts/vm-sysevents-evidence.bats, line 712)
+#   `[[ "${status}" == 125 ]]' failed
+# diagnostic: case=front-process|{missing value, 909} status=2 output=usage: vm-guest-exec.py read [-h]
+#                              root {read-poll,evidence,one-shot} operation
+#                              {assessment,background-only,boot,defaults,dock-items,endpoint,enrol,extract-bundle,front-application,gatekeeper,installed-inventory,launch-identity,menu-item-count,menu-item-frame,menu-item-label,menu-row-frame,menu-titles,open-accessibility-pane,open-koine,open-textedit,port-refusal,process,quarantine,quit-textedit,request-automation,restart,signature,signature-display,sysevents-processes,system}
+#                              [arguments ...]
+# vm-guest-exec.py read: error: argument name: invalid choice: 'front-process', maybe you meant 'process'? (choose from 'assessment', 'background-only', 'boot', 'defaults', 'dock-items', 'endpoint', 'enrol', 'extract-bundle', 'front-application', 'gatekeeper', 'installed-inventory', 'launch-identity', 'menu-item-count', 'menu-item-frame', 'menu-item-label', 'menu-row-frame', 'menu-titles', 'open-accessibility-pane', 'open-koine', 'open-textedit', 'port-refusal', 'process', 'quarantine', 'quit-textedit', 'request-automation', 'restart', 'signature', 'signature-display', 'sysevents-processes', 'system')
+# guest evidence refused: invalid evidence arguments
+# /private/tmp/claude-501/-Users-antony-Development-AbstractingComputers-Koine-gh-issue-14/156e7789-edb5-45ad-bd15-d7cda3575dea/scratchpad/red-tree/Tests/scripts/../../scripts/vm-guest-exec-lib.sh: line 34: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/80/setup-missing-1/unavailable: cannot overwrite existing file
+ok 81 submissions admit only the one-shot class and take no arguments
+ok 82 each submission sends its legacy command once and keeps a clean receipt
+ok 83 a timeout, a guest failure or a transport failure of a submission is unavailable and sent once
+ok 84 other stdout from a submission is unavailable
+ok 85 the launch confirmation joins the descriptor, the only selected process, its executable and its start
+ok 86 a stale descriptor, a second process or another executable is a clean mismatch
+ok 87 a malformed identity answer is unavailable
+ok 88 a reopen keeps the same process: instance, PID, start and executable
+ok 89 the TextEdit quit needs a clean submission and then one clean absence read
+ok 90 a failed TextEdit quit reads nothing, and an absence cannot make it clean
+ok 91 the restart waits 30 seconds and polls the boot five seconds apart until it changes
+ok 92 a failed restart submission is unavailable even if the boot later changes
+ok 93 a refused connection during the boot poll stops it at once, even before a changed boot
+ok 94 an unchanged boot for sixty reads is a state failure
+ok 95 the restart refuses a boot argument that is not a boot record, before it sends anything
+ok 96 the diagnostic defaults write is refused and latches without dispatch
+not ok 97 the PID identity read pipes the PID to the launch identity script and parses its answer
+# (in test file Tests/scripts/vm-exec-one-shot-evidence.bats, line 430)
+#   `[[ "${status}" == 0 ]]' failed
+# diagnostic: status=2 output=usage: vm-guest-exec.py read [-h]
+#                              root {read-poll,evidence,one-shot} operation
+#                              {assessment,background-only,boot,defaults,dock-items,endpoint,enrol,extract-bundle,front-application,gatekeeper,installed-inventory,launch-identity,menu-item-count,menu-item-frame,menu-item-label,menu-row-frame,menu-titles,open-accessibility-pane,open-koine,open-textedit,port-refusal,process,quarantine,quit-textedit,request-automation,restart,signature,signature-display,sysevents-processes,system}
+#                              [arguments ...]
+# vm-guest-exec.py read: error: argument name: invalid choice: 'process-identity', maybe you meant 'launch-identity'? (choose from 'assessment', 'background-only', 'boot', 'defaults', 'dock-items', 'endpoint', 'enrol', 'extract-bundle', 'front-application', 'gatekeeper', 'installed-inventory', 'launch-identity', 'menu-item-count', 'menu-item-frame', 'menu-item-label', 'menu-row-frame', 'menu-titles', 'open-accessibility-pane', 'open-koine', 'open-textedit', 'port-refusal', 'process', 'quarantine', 'quit-textedit', 'request-automation', 'restart', 'signature', 'signature-display', 'sysevents-processes', 'system')
+# guest evidence refused: invalid evidence arguments
+# /private/tmp/claude-501/-Users-antony-Development-AbstractingComputers-Koine-gh-issue-14/156e7789-edb5-45ad-bd15-d7cda3575dea/scratchpad/red-tree/Tests/scripts/../../scripts/vm-guest-exec-lib.sh: line 34: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/97/evidence/unavailable: cannot overwrite existing file
+not ok 98 a malformed PID identity answer or argument is unavailable and the evidence class refuses it
+# (in test file Tests/scripts/vm-exec-one-shot-evidence.bats, line 460)
+#   `[[ "${status}" == 125 && "$(calls)" == 1 ]]' failed
+# diagnostic: index=1 status=2
+ok 99 the real identity read names the kernel's executable and the start of a live host process
+ok 100 the real identity read reports an exited process as the clean fact no process
+ok 101 the real identity read reports an absent descriptor as a clean fact
+ok 102 a descriptor without a PID makes the real identity read unavailable
+ok 103 the fake libproc answers the real identity script with a live process
+ok 104 a path read that fails with ESRCH while the process lives makes the identity unavailable
+ok 105 the identity script reports an absent process only from a process-info read
+ok 106 the real TextEdit process read parses this host's answer
+ok 107 each submission command is valid bash
+not ok 108 the real PID identity read names a live host process and reports an exited one as no process
+# (in test file Tests/scripts/vm-exec-one-shot-host.bats, line 165)
+#   `record="$(read_guest_exec "${root}" read-poll host-liveness process-identity "${holder}")"' failed with status 2
+# usage: vm-guest-exec.py read [-h]
+#                              root {read-poll,evidence,one-shot} operation
+#                              {assessment,background-only,boot,defaults,dock-items,endpoint,enrol,extract-bundle,front-application,gatekeeper,installed-inventory,launch-identity,menu-item-count,menu-item-frame,menu-item-label,menu-row-frame,menu-titles,open-accessibility-pane,open-koine,open-textedit,port-refusal,process,quarantine,quit-textedit,request-automation,restart,signature,signature-display,sysevents-processes,system}
+#                              [arguments ...]
+# vm-guest-exec.py read: error: argument name: invalid choice: 'process-identity', maybe you meant 'launch-identity'? (choose from 'assessment', 'background-only', 'boot', 'defaults', 'dock-items', 'endpoint', 'enrol', 'extract-bundle', 'front-application', 'gatekeeper', 'installed-inventory', 'launch-identity', 'menu-item-count', 'menu-item-frame', 'menu-item-label', 'menu-row-frame', 'menu-titles', 'open-accessibility-pane', 'open-koine', 'open-textedit', 'port-refusal', 'process', 'quarantine', 'quit-textedit', 'request-automation', 'restart', 'signature', 'signature-display', 'sysevents-processes', 'system')
+# guest evidence refused: invalid evidence arguments
+# /private/tmp/claude-501/-Users-antony-Development-AbstractingComputers-Koine-gh-issue-14/156e7789-edb5-45ad-bd15-d7cda3575dea/scratchpad/red-tree/Tests/scripts/../../scripts/vm-guest-exec-lib.sh: line 34: /var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-ql77Cs/test/108/pid-host/unavailable: cannot overwrite existing file

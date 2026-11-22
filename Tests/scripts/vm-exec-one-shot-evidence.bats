@@ -414,3 +414,59 @@ declare -gA LEGACY=(
     grep -q 'permits no enabling diagnostic defaults write' "${read_root}/unavailable"
     assert_latched
 }
+
+# --- the liveness read of a zero-window return (k67) -----------------------
+
+# pid_identity PID PROCESS: an answer of the PID identity read.
+pid_identity() {
+    jq -cn --arg text "{\"pid\": $1}" --argjson process "$2" '{descriptor_text: $text, process: $process}'
+}
+
+@test "the PID identity read pipes the PID to the launch identity script and parses its answer" {
+    answer "$(pid_identity 501 "$(process 501 1795270100 250000 "${KOINE}")")"
+    run check_guest_read "${read_root}" read-poll liveness \
+        ".process == $(process 501 1795270100 250000 "${KOINE}")" process-identity 501
+    echo "diagnostic: status=${status} output=${output}"
+    [[ "${status}" == 0 ]]
+    jq -e '.pid == 501 and .process.start_usec == 250000' <<<"${output}"
+    jq -e '.command | startswith("printf '\''{\"pid\": 501}'\'' | python3 -I -c '\''import ctypes")
+        and endswith("'\'' /dev/stdin")' "${read_root}/000001/request.json"
+    # No process, or another start under the same PID, is a clean mismatch.
+    local index=0 answer_text
+    for answer_text in "$(pid_identity 501 null)" \
+        "$(pid_identity 501 "$(process 501 1795270100 250001 "${KOINE}")")"; do
+        index=$((index + 1))
+        reset_root "liveness-${index}"
+        answer "${answer_text}"
+        run check_guest_read "${read_root}" read-poll liveness \
+            ".process == $(process 501 1795270100 250000 "${KOINE}")" process-identity 501
+        [[ "${status}" == 1 && ! -e "${read_root}/unavailable" ]]
+    done
+}
+
+@test "a malformed PID identity answer or argument is unavailable and the evidence class refuses it" {
+    local index=0 answer_text
+    for answer_text in \
+        "$(pid_identity 777 "$(process 777 1795270100 250000 "${KOINE}")")" \
+        "$(pid_identity 501 "$(process 777 1795270100 250000 "${KOINE}")")" \
+        "$(pid_identity 501 "$(process 501 1795270100 1000000 "${KOINE}")")" \
+        "$(pid_identity 501 null)"$'\n'"$(pid_identity 501 null)" \
+        '{"descriptor_text": "{\"pid\": 501}"}'; do
+        index=$((index + 1))
+        reset_root "pid-malformed-${index}"
+        answer "${answer_text}"
+        run read_guest_exec "${read_root}" read-poll liveness process-identity 501
+        echo "diagnostic: index=${index} status=${status}"
+        [[ "${status}" == 125 && "$(calls)" == 1 ]]
+        grep -q 'checked read process-identity grammar' "${read_root}/unavailable"
+    done
+    for answer_text in 0 012 1234567890 x; do
+        reset_root "pid-argument-${answer_text}"
+        run read_guest_exec "${read_root}" read-poll liveness process-identity "${answer_text}"
+        [[ "${status}" != 0 && "$(calls)" == 0 && -s "${read_root}/unavailable" ]]
+    done
+    reset_root pid-evidence
+    run read_guest_exec "${read_root}" evidence liveness process-identity 501
+    [[ "${status}" != 0 && "$(calls)" == 0 ]]
+    grep -q 'evidence class refuses read process-identity' "${read_root}/refusals.jsonl"
+}

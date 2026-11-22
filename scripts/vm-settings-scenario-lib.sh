@@ -32,7 +32,18 @@ source "${BASH_SOURCE[0]%/*}/vm-window-resize-lib.sh"
 SETTINGS_APP="${APP_NAME:-Koine}"
 SETTINGS_PANE_WINDOW="System Settings"
 SETTINGS_FRONT=''
+SETTINGS_LIST=''
 SETTINGS_INTERRUPTED=''
+# Set once a return's failure observations took the failure screenshot.
+SETTINGS_OBSERVED=''
+# The TextEdit PID and the frame of its one window after the preparation.
+SETTINGS_TEXTEDIT_PID=''
+SETTINGS_TEXTEDIT_FRAME=''
+# The process entry of the identity read before a return's click.
+SETTINGS_PRE_IDENTITY=''
+# The count poll's list, and the failure observer's value.
+SETTINGS_COUNT_LIST=''
+SETTINGS_OBSERVED_FRONT=''
 
 # --- the root, the traps and the fence ---------------------------------------
 
@@ -156,13 +167,35 @@ settings_fail() {
     exit 1
 }
 
+# settings_fail_as OUTCOME MESSAGE: a classified clean false state. The one
+# state-failed receipt, scenario-assertion-OUTCOME, keeps the class for k54.
+# The classes are setup-failed, menu-item-disabled, menu-open (an unresolved
+# selection), zero-window-same-process, process-lost, multiple-windows,
+# not-front and window-identity. The scenario exits 1. A return's failure
+# observations already took the failure screenshot.
+settings_fail_as() {
+    local outcome="$1"
+    shift
+    echo "FAILED: $* (outcome ${outcome})" >&2
+    record_guest_poll "${KOINE_VM_EVIDENCE_ROOT}" "scenario-assertion-${outcome}" exhausted 1 "$*" || :
+    [[ -n "${SETTINGS_OBSERVED}" ]] || settings_failure_capture
+    exit 1
+}
+
+# settings_require_as OUTCOME STATUS MESSAGE: status 1 is a classified clean
+# false state, and any other nonzero status is already recorded.
+settings_require_as() {
+    if [[ "$2" == 1 ]]; then settings_fail_as "$1" "${@:3}"; fi
+    settings_stop "${@:2}"
+}
+
 # settings_stop STATUS MESSAGE: a facade already recorded its own failure.
 # The scenario keeps that status.
 settings_stop() {
     local status="$1"
     shift
     echo "FAILED: $* (evidence status ${status})" >&2
-    settings_failure_capture
+    [[ -n "${SETTINGS_OBSERVED}" ]] || settings_failure_capture
     exit "${status}"
 }
 
@@ -472,9 +505,11 @@ settings_expect_koine_count() {
 }
 
 # settings_await_windows OPERATION COUNT: the existing count poll.
+# SETTINGS_COUNT_LIST keeps the list that satisfied it.
 settings_await_windows() {
     local got
-    await_guest_window_count "${KOINE_VM_EVIDENCE_ROOT}" "$1" "${SETTINGS_APP}" "$2" >/dev/null || {
+    # shellcheck disable=SC2034 # The scenario passes it to the positive setup.
+    SETTINGS_COUNT_LIST="$(await_guest_window_count "${KOINE_VM_EVIDENCE_ROOT}" "$1" "${SETTINGS_APP}" "$2")" || {
         local status=$?
         got="$(settings_last_record "$1-" |
             jq --arg app "${SETTINGS_APP}" '[.windows[] | select(.appName == $app)] | length' 2>/dev/null)" || got=unknown
@@ -488,6 +523,7 @@ settings_await_windows() {
 settings_koine_in_front() {
     local list
     list="$(settings_windows "$1")" || return
+    SETTINGS_LIST="${list}"
     SETTINGS_FRONT="$(jq -c '[.windows[] | select(.appName != "Notification Center")
         | [.appName, .title, .focused]]' <<<"${list}")" || {
         fail_guest_evidence "${KOINE_VM_EVIDENCE_ROOT}" "$1-decode" 'the front list could not be decoded'
@@ -497,10 +533,224 @@ settings_koine_in_front() {
         | .appName == \"${SETTINGS_APP}\" and .focused == true" "${list}"
 }
 
+# settings_title_audit OPERATION LIST: the protocol's audit of the same full
+# list that the front predicate judged. Exactly one Koine window, titled
+# WINDOW_TITLE, and it is the front and focused entry. A Koine window without
+# a title is unavailable, never a wrong title.
+settings_title_audit() {
+    local title
+    jq -e --arg app "${SETTINGS_APP}" 'all(.windows[] | select(.appName == $app); has("title"))' \
+        >/dev/null <<<"$2" || {
+        fail_guest_evidence "${KOINE_VM_EVIDENCE_ROOT}" "$1-title" \
+            'a Koine window in the front list has no title, so the title audit is unavailable'
+        return
+    }
+    title="$(jq -cn --arg title "${WINDOW_TITLE}" '$title')" || return
+    settings_state "$1-title" "([.windows[] | select(.appName == \"${SETTINGS_APP}\")]
+            | length == 1 and .[0].title == ${title})
+        and ([.windows[] | select(.appName != \"Notification Center\")][0]
+            | .appName == \"${SETTINGS_APP}\" and .title == ${title} and .focused == true)" "$2"
+}
+
 # settings_expect_front OPERATION MESSAGE: the window is in front, or the
-# scenario ends with MESSAGE and the list that it judged.
+# scenario ends with MESSAGE and the list that it judged. The title audit
+# runs on the same list, and both results keep their receipts.
 settings_expect_front() {
-    settings_koine_in_front "$1" || settings_require "$?" "$2: ${SETTINGS_FRONT}"
+    local front=0 title=0
+    settings_koine_in_front "$1" || front=$?
+    [[ "${front}" == 0 || "${front}" == 1 ]] || settings_stop "${front}" "$2: the front window could not be read"
+    settings_title_audit "$1" "${SETTINGS_LIST}" || title=$?
+    [[ "${front}" == 0 ]] || settings_fail_as not-front "$2: ${SETTINGS_FRONT}"
+    [[ "${title}" == 0 ]] ||
+        settings_require_as window-identity "${title}" "$2: the front list has not exactly one \"${WINDOW_TITLE}\" window in front: ${SETTINGS_FRONT}"
+}
+
+# --- the positive setup and the returns --------------------------------------
+
+# settings_record_textedit: after the TextEdit preparation, its PID and the
+# frame of its one window. The frame comes from the list of the textedit-front
+# read, so no window read is added.
+settings_record_textedit() {
+    local record
+    settings_state textedit-prepared '[.windows[] | select(.appName == "TextEdit")] | length == 1' \
+        "${SETTINGS_LIST}" ||
+        settings_require_as setup-failed "$?" "TextEdit has not exactly one window after its preparation"
+    SETTINGS_TEXTEDIT_FRAME="$(jq -c '[.windows[] | select(.appName == "TextEdit")][0]
+        | [.positionX, .positionY, .sizeWidth, .sizeHeight]' <<<"${SETTINGS_LIST}")" ||
+        settings_local_failure textedit-frame "the TextEdit frame could not be decoded"
+    record="$(check_guest_read "${KOINE_VM_EVIDENCE_ROOT}" read-poll textedit-pid '.selected | length == 1' \
+        process textedit)" ||
+        settings_require_as setup-failed "$?" "TextEdit does not run as one process after its preparation"
+    SETTINGS_TEXTEDIT_PID="$(jq -r '.selected[0]' <<<"${record}")"
+    echo "TextEdit: PID ${SETTINGS_TEXTEDIT_PID}, window frame ${SETTINGS_TEXTEDIT_FRAME}"
+}
+
+# settings_expect_setup OPERATION LIST: the positive setup before one of the
+# four Settings selections over TextEdit, with no added wait. LIST is the
+# zero-count list of the close check, so no window read is added. A clean
+# mismatch is failed setup. Missing or unreadable evidence is unavailable.
+settings_expect_setup() {
+    local operation="$1" list="$2"
+    jq -e 'all(.windows[] | select(.appName == "TextEdit"); has("title"))' >/dev/null <<<"${list}" ||
+        settings_local_failure "${operation}-setup-title" \
+            "a TextEdit window in the zero-count list has no title, so the setup is unavailable"
+    settings_state "${operation}-setup-windows" "([.windows[] | select(.appName == \"${SETTINGS_APP}\")] | length) == 0
+        and ([.windows[] | select(.appName == \"TextEdit\")] | length) == 1
+        and ([.windows[] | select(.appName == \"TextEdit\")][0]
+            | .windowType == \"standard\" and .title == \"Untitled\"
+            and [.positionX, .positionY, .sizeWidth, .sizeHeight] == ${SETTINGS_TEXTEDIT_FRAME})" "${list}" ||
+        settings_require_as setup-failed "$?" \
+            "before ${operation}, the list shows a Koine window, or not one standard Untitled TextEdit window at ${SETTINGS_TEXTEDIT_FRAME}"
+    check_guest_read "${KOINE_VM_EVIDENCE_ROOT}" read-poll "${operation}-setup-front" \
+        ".value == [\"TextEdit\", ${SETTINGS_TEXTEDIT_PID}]" front-process >/dev/null ||
+        settings_require_as setup-failed "$?" "before ${operation}, TextEdit (PID ${SETTINGS_TEXTEDIT_PID}) is not the front process"
+    check_guest_read "${KOINE_VM_EVIDENCE_ROOT}" read-poll "${operation}-setup-sheets" \
+        '.value == [["AXStandardWindow"], [[]]]' textedit-windows >/dev/null ||
+        settings_require_as setup-failed "$?" "before ${operation}, TextEdit shows a dialog, a sheet or another window"
+    check_guest_read "${KOINE_VM_EVIDENCE_ROOT}" read-poll "${operation}-setup-menus" \
+        '(.value[1] | all(. == false)) and .value[2] == false' open-menus >/dev/null ||
+        settings_require_as setup-failed "$?" "before ${operation}, a TextEdit or Koine menu is open"
+    settings_capture "setup-${operation}"
+}
+
+# settings_pre_click_identity OPERATION: one identity read before a return's
+# menu opens. SETTINGS_PRE_IDENTITY keeps its process entry.
+settings_pre_click_identity() {
+    local record
+    record="$(confirm_guest_launch "${KOINE_VM_EVIDENCE_ROOT}" "$1-identity")" ||
+        settings_require_as setup-failed "$?" "before $1, the descriptor does not name one installed Koine process"
+    SETTINGS_PRE_IDENTITY="$(jq -c '.process' <<<"${record}")"
+}
+
+# settings_select_return OPERATION TITLE: a Settings or status-line selection,
+# by the existing physical route. The route adds the row's enabled state and a
+# screenshot of the open menu before the click. The item's frame, the derived
+# points, the display size and each input keep their receipts.
+settings_select_return() {
+    local operation="$1" title="$2" record
+    settings_open_menu "${operation}"
+    record="$(await_guest_menu_frame "${KOINE_VM_EVIDENCE_ROOT}" "${operation}-row" "${title}")" ||
+        settings_stop "$?" "the menu has no item \"${title}\""
+    check_guest_read "${KOINE_VM_EVIDENCE_ROOT}" read-poll "${operation}-enabled" '.value == true' \
+        menu-row-enabled "${title}" >/dev/null ||
+        settings_require_as menu-item-disabled "$?" "the menu item \"${title}\" is not enabled"
+    settings_capture "menu-${operation}"
+    echo "Menu item \"${title}\": enabled, frame $(jq -r '.text' <<<"${record}")"
+    click_centre "$(jq -r '.text' <<<"${record}")" ||
+        settings_stop "$?" "the click on the menu item \"${title}\" was not delivered cleanly"
+    settings_sleep "${operation}" 2
+}
+
+# settings_menu_closed OPERATION: 0 when Koine's menu is closed after the
+# click, 1 when it is open. Any other status is already recorded.
+settings_menu_closed() {
+    check_guest_read "${KOINE_VM_EVIDENCE_ROOT}" read-poll "$1-menu-closed" '.value == false' \
+        menu-item-selected >/dev/null
+}
+
+# settings_return_observations OPERATION: the untouched failure capture of a
+# return, after its liveness read and before any latch from this scenario.
+# One read with the independent observer, one window list in the evidence
+# class and one screenshot. A failed observer keeps its own receipt, and its
+# text is never used. SETTINGS_OBSERVED_FRONT keeps the observer's value.
+settings_return_observations() {
+    SETTINGS_OBSERVED_FRONT="unavailable"
+    SETTINGS_OBSERVED_FRONT="$(settings_front_application "$1-front-application")" ||
+        SETTINGS_OBSERVED_FRONT="unavailable"
+    read_guest_windows "${KOINE_VM_EVIDENCE_ROOT}" evidence "$1-failure-windows" >/dev/null || :
+    settings_failure_capture
+    SETTINGS_OBSERVED=1
+}
+
+# settings_return_classify OPERATION ROUTE OUTCOME MESSAGE [PREDICATE]: after
+# the observations, a menu selection reads its menu once more. With PREDICATE,
+# the deferred exhaustion receipt of the count poll follows that read, because
+# the receipt latches the root. An open menu makes the outcome unresolved.
+# Then the classified failure ends the scenario.
+settings_return_classify() {
+    local status=0
+    [[ "$2" != menu ]] || settings_menu_closed "$1" || status=$?
+    settings_record_exhaustion "$1" "${5-}"
+    [[ "${status}" != 1 ]] || settings_fail_as menu-open "$4; the menu stayed open, so the outcome is unresolved"
+    [[ "${status}" == 0 ]] ||
+        settings_stop "${status}" "$4; the closed-menu read is unavailable, so the outcome is unresolved"
+    settings_fail_as "$3" "$4"
+}
+
+# settings_record_exhaustion OPERATION [PREDICATE]: the deferred receipt of a
+# return's count poll, under the facade's own name. It latches the root.
+settings_record_exhaustion() {
+    [[ -z "$2" ]] ||
+        record_guest_poll "${KOINE_VM_EVIDENCE_ROOT}" "$1-window-exhausted" exhausted 1 "$2" || :
+}
+
+# settings_expect_return OPERATION MESSAGE {menu,reopen}: the window came back,
+# one and front and focused, and titled. The count poll defers its exhaustion,
+# so that a zero-window failure can still read the liveness of the process of
+# SETTINGS_PRE_IDENTITY. A menu return then reads its closed menu. The caller
+# takes the outcome screenshot.
+settings_expect_return() {
+    local operation="$1" message="$2" route="$3" status=0 list count pid front=0 title=0 predicate
+    # A deferred exhaustion prints the final clean list that it judged.
+    list="$(await_guest_window_count "${KOINE_VM_EVIDENCE_ROOT}" "${operation}-window" "${SETTINGS_APP}" 1 \
+        deferred)" || status=$?
+    if [[ "${status}" == 1 ]]; then
+        count="$(jq --arg app "${SETTINGS_APP}" '[.windows[] | select(.appName == $app)] | length' \
+            <<<"${list}" 2>/dev/null)" || count=unknown
+        [[ -n "${count}" ]] || count=unknown
+        predicate="$(window_count_predicate "${SETTINGS_APP}" 1)" || predicate='count == 1'
+        pid="$(jq -r '.pid' <<<"${SETTINGS_PRE_IDENTITY}")"
+        if [[ "${count}" == 0 ]]; then
+            status=0
+            check_guest_read "${KOINE_VM_EVIDENCE_ROOT}" read-poll "${operation}-liveness" \
+                ".process == ${SETTINGS_PRE_IDENTITY}" process-identity "${pid}" >/dev/null || status=$?
+            settings_return_observations "${operation}"
+            case "${status}" in
+            0) settings_return_classify "${operation}" "${route}" zero-window-same-process \
+                "Koine has 0 windows, not 1, and the same Koine process (PID ${pid}) still runs; front application: ${SETTINGS_OBSERVED_FRONT}" \
+                "${predicate}" ;;
+            1)
+                # A lost process has no menu to read.
+                settings_record_exhaustion "${operation}" "${predicate}"
+                settings_fail_as process-lost \
+                    "process lost during selection: Koine has 0 windows, and PID ${pid} no longer names the process ${SETTINGS_PRE_IDENTITY}"
+                ;;
+            *)
+                settings_record_exhaustion "${operation}" "${predicate}"
+                settings_stop "${status}" \
+                    "Koine has 0 windows, not 1, and its liveness is unavailable, so the outcome is unresolved"
+                ;;
+            esac
+        fi
+        settings_return_observations "${operation}"
+        if [[ "${count}" == unknown ]]; then
+            settings_record_exhaustion "${operation}" "${predicate}"
+            settings_local_failure "${operation}-window-count" "the last count list could not be read, so the outcome is unresolved"
+        fi
+        settings_return_classify "${operation}" "${route}" multiple-windows \
+            "Koine has ${count} windows, not 1; front application: ${SETTINGS_OBSERVED_FRONT}" "${predicate}"
+    fi
+    [[ "${status}" == 0 ]] || settings_stop "${status}" "the window count of ${operation} could not be read"
+    settings_koine_in_front "${operation}-front" || front=$?
+    [[ "${front}" == 0 || "${front}" == 1 ]] || settings_stop "${front}" "$2: the front window could not be read"
+    settings_title_audit "${operation}-front" "${SETTINGS_LIST}" || title=$?
+    if [[ "${front}" == 1 ]]; then
+        settings_return_observations "${operation}"
+        settings_return_classify "${operation}" "${route}" not-front \
+            "${message}: ${SETTINGS_FRONT}; front application: ${SETTINGS_OBSERVED_FRONT}"
+    fi
+    if [[ "${title}" == 1 ]]; then
+        settings_return_observations "${operation}"
+        settings_return_classify "${operation}" "${route}" window-identity \
+            "${message}: the front list has not exactly one \"${WINDOW_TITLE}\" window in front: ${SETTINGS_FRONT}"
+    fi
+    [[ "${title}" == 0 ]] || settings_stop "${title}" "the title audit of ${operation} is unavailable"
+    if [[ "${route}" == menu ]]; then
+        status=0
+        settings_menu_closed "${operation}" || status=$?
+        [[ "${status}" == 0 ]] ||
+            settings_require_as menu-open "${status}" "the menu stayed open after ${operation}, so the outcome is unresolved"
+    fi
 }
 
 # --- elements of a window ------------------------------------------------------

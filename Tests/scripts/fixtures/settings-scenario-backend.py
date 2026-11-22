@@ -15,6 +15,10 @@ use of the domain instead:
 - `settings_flags` holds comma-separated model variations for state controls.
 - A snapshot answer must satisfy the facade's predicate, as in the real
   backend. Otherwise the call is unavailable: it latches and returns 125.
+- `settings_at=N` (default 1) chooses the return that a setup, route or
+  outcome flag affects. A return is a Settings, requests or Accessibility
+  selection. A setup or route flag acts before the Nth return, and an outcome
+  flag acts from the Nth return on.
 """
 
 from __future__ import annotations
@@ -28,6 +32,19 @@ from typing import Any
 
 SIM = Path(os.environ["settings_sim"])
 FLAGS = set(filter(None, os.environ.get("settings_flags", "").split(",")))
+AT = int(os.environ.get("settings_at", "1"))
+TEXTEDIT_PID = 909
+# The TextEdit menu bar items that the open-menus read names.
+TEXTEDIT_MENUS = [
+    "Apple",
+    "TextEdit",
+    "File",
+    "Edit",
+    "Format",
+    "View",
+    "Window",
+    "Help",
+]
 TITLE = "Koine Settings"
 INSTALLED = "/Applications/Koine.app"
 # Menu bar item, and menu rows below it, in input coordinates.
@@ -76,6 +93,8 @@ def load() -> dict[str, Any]:
         "clipboard": "",
         "selected": False,
         "drag": None,
+        "returns": 0,
+        "closes": 0,
     }
 
 
@@ -94,6 +113,16 @@ def front(state: dict[str, Any], app: str) -> None:
 
 def drop(state: dict[str, Any], app: str) -> None:
     state["order"] = [name for name in state["order"] if name != app]
+
+
+def before_return(state: dict[str, Any], flag: str) -> bool:
+    """A setup or route flag, before the chosen return."""
+    return flag in FLAGS and state["returns"] == AT - 1
+
+
+def from_return(state: dict[str, Any], flag: str) -> bool:
+    """An outcome flag, from the chosen return on."""
+    return flag in FLAGS and state["returns"] >= AT
 
 
 def label(state: dict[str, Any]) -> str:
@@ -209,8 +238,8 @@ def window_entry(state: dict[str, Any], app: str) -> dict[str, Any]:
     focused = bool(state["order"]) and state["order"][0] == app
     if app == "Koine":
         x, y, w, h = state["frame"]
-        return {
-            "title": TITLE,
+        entry: dict[str, Any] = {
+            "title": "Koine" if from_return(state, "wrong-title") else TITLE,
             "appName": "Koine",
             "windowType": "standard",
             "focused": focused,
@@ -219,10 +248,20 @@ def window_entry(state: dict[str, Any], app: str) -> dict[str, Any]:
             "sizeWidth": w,
             "sizeHeight": h,
         }
+        if from_return(state, "no-title"):
+            del entry["title"]
+        return entry
     if app == "TextEdit":
         x, y, w, h = state["textedit_frame"]
-        return {
-            "title": "Untitled",
+        # A setup flag changes the list only after the first close, so the
+        # frame that the preparation records stays the original one.
+        late = state["closes"] >= 1
+        if late and before_return(state, "textedit-moved"):
+            x += 40
+        entry = {
+            "title": "Document"
+            if late and before_return(state, "textedit-title")
+            else "Untitled",
             "appName": "TextEdit",
             "windowType": "standard",
             "focused": focused,
@@ -231,6 +270,9 @@ def window_entry(state: dict[str, Any], app: str) -> dict[str, Any]:
             "sizeWidth": w,
             "sizeHeight": h,
         }
+        if late and before_return(state, "textedit-no-title"):
+            del entry["title"]
+        return entry
     return {
         "title": "Accessibility",
         "appName": "System Settings",
@@ -252,9 +294,12 @@ def open_window(state: dict[str, Any], app: str) -> bool:
 
 
 def windows(state: dict[str, Any]) -> list[dict[str, Any]]:
-    return [
+    entries = [
         window_entry(state, app) for app in state["order"] if open_window(state, app)
     ]
+    if state["window"] and from_return(state, "two-windows"):
+        entries.append({**window_entry(state, "Koine"), "focused": False})
+    return entries
 
 
 def show_koine(state: dict[str, Any], offset: int = 0) -> None:
@@ -283,6 +328,22 @@ def start_koine(state: dict[str, Any], window: bool) -> None:
 
 def choose(state: dict[str, Any], title: str) -> None:
     state["menu"] = False
+    if title != "Quit Koine":
+        state["returns"] += 1
+        if from_return(state, "menu-stays-open") and state["returns"] == AT:
+            state["menu"] = True
+        if state["returns"] == AT and FLAGS & {
+            "zero-window-alive",
+            "zero-window-crash",
+            "zero-window-reused",
+        }:
+            # The selection shows no window. The process lives, ends or is
+            # replaced under the same PID.
+            if "zero-window-crash" in FLAGS:
+                state.update(koine=False, menu=False)
+            elif "zero-window-reused" in FLAGS:
+                state["instance"] += 1
+            return
     if title == "Settings…":
         show_koine(state)
     elif title.startswith("Review "):
@@ -505,6 +566,7 @@ def cli(state: dict[str, Any], arguments: list[str], root: Path) -> str:
             front(state, app)
         elif action == "window-close" and app == "Koine":
             state["window"] = False
+            state["closes"] += 1
             drop(state, "Koine")
         return envelope({"action": action, "success": True, "message": None})
     if family == "input":
@@ -581,6 +643,27 @@ def sysevents(state: dict[str, Any], name: str, arguments: list[str]) -> dict[st
         value = ["Finder", "TextEdit"]
     elif name == "background-only":
         value = True
+    elif name == "front-process":
+        top = state["order"][0] if state["order"] else "Finder"
+        pid = {"TextEdit": TEXTEDIT_PID, "Koine": state["pid"]}.get(top, 77)
+        if top == "TextEdit" and before_return(state, "front-other-pid"):
+            pid += 1
+        value = [top, pid]
+    elif name == "textedit-windows":
+        value = [["AXStandardWindow"], [[]]]
+        if before_return(state, "textedit-sheet"):
+            value = [["AXStandardWindow"], [["AXSheet"]]]
+        elif before_return(state, "textedit-dialog"):
+            value = [["AXStandardWindow", "AXDialog"], [[], []]]
+    elif name == "open-menus":
+        selected = [False] * len(TEXTEDIT_MENUS)
+        if before_return(state, "menu-open-at-setup"):
+            selected[2] = True
+        value = [TEXTEDIT_MENUS, selected, state["menu"]]
+    elif name == "menu-row-enabled":
+        value = not before_return(state, "row-disabled")
+    elif name == "menu-item-selected":
+        value = state["menu"]
     else:
         value = state["order"][0] if state["order"] else "Finder"
     record: dict[str, Any] = {"absent": False, "value": value}
@@ -608,11 +691,17 @@ def read(state: dict[str, Any], name: str, arguments: list[str]) -> dict[str, An
                 "process": process(state),
                 "joined": True,
             }
+    elif name == "process-identity":
+        pid = int(arguments[0])
+        alive = state["koine"] and pid == state["pid"]
+        fields = {"pid": pid, "process": process(state) if alive else None}
     elif name == "process":
         live = state["textedit"] if arguments == ["textedit"] else state["koine"]
-        pid = 909 if arguments == ["textedit"] else state["pid"]
+        pids = [TEXTEDIT_PID] if arguments == ["textedit"] else [state["pid"]]
+        if arguments == ["textedit"] and "textedit-pids" in FLAGS:
+            pids.append(TEXTEDIT_PID + 1)
         fields = {
-            "selected": [pid] if live else [],
+            "selected": pids if live else [],
             "processes": [
                 {
                     "pid": pid,
@@ -620,6 +709,7 @@ def read(state: dict[str, Any], name: str, arguments: list[str]) -> dict[str, An
                     "argv0": "/x",
                     "arguments": "/x",
                 }
+                for pid in pids
             ]
             if live
             else [],
@@ -673,6 +763,11 @@ def read(state: dict[str, Any], name: str, arguments: list[str]) -> dict[str, An
         "dock-items",
         "background-only",
         "front-application",
+        "front-process",
+        "textedit-windows",
+        "open-menus",
+        "menu-row-enabled",
+        "menu-item-selected",
     }:
         fields = sysevents(state, name, arguments)
     else:
@@ -683,7 +778,10 @@ def read(state: dict[str, Any], name: str, arguments: list[str]) -> dict[str, An
 def submission(state: dict[str, Any], name: str) -> dict[str, Any]:
     if name == "open-koine":
         if state["koine"]:
-            show_koine(state)
+            # The reopen of a running Koine shows its window, unless a control
+            # asks for a reopen that shows none.
+            if "reopen-no-window" not in FLAGS:
+                show_koine(state)
         else:
             start_koine(state, window=not state["granted"])
     elif name == "open-textedit":

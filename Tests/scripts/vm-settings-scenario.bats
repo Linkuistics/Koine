@@ -45,7 +45,7 @@ SLEEP
     export KOINE_APP_BUNDLE="${scenario_repo}/bundle/Koine.app"
     export KOINE_VM_BASE=testanyware-golden-macos-27 KOINE_VM_ID=exact-settings-vm
     unset KOINE_VM_EVIDENCE_ROOT KOINE_VM_DISPLAY KOINE_VM_KEEP KOINE_SETTINGS_TRACE \
-        TESTANYWARE_VM_ID settings_fault settings_fault_status settings_flags \
+        TESTANYWARE_VM_ID settings_fault settings_fault_status settings_flags settings_at \
         scenario_signal scenario_signal_on
 }
 
@@ -66,6 +66,45 @@ call_index() {
     jq -rs --arg op "$1" 'map(.operation) | index($op) | if . == null then -1 else . + 1 end' \
         "${settings_sim}/calls.jsonl"
 }
+
+# expect_outcome CLASS: status 1 and one classified state-failed receipt,
+# with no later input.
+expect_outcome() {
+    local at
+    at="$(call_index "scenario-assertion-$1")"
+    if [[ "${status}" != 1 || "${at}" -le 0 || "$(input_after "${at}")" != '[]' ]] || [[ -s "${scenario_legacy}" ]]; then
+        echo "expected outcome $1: status ${status}, at ${at}, later input $(input_after "${at}")"
+        printf '%s\n' "${output}" | tail -5
+        return 1
+    fi
+    jq -se --argjson n "${at}" '.[$n - 1] | .action == "poll-step" and .outcome == "state-failed"' \
+        "${settings_sim}/calls.jsonl"
+    [[ "$(jq -s 'map(select((.operation // "") | startswith("scenario-assertion"))) | length' "${settings_sim}/calls.jsonl")" == 1 ]]
+}
+
+# expect_order OPERATION...: each operation occurs, in this order.
+expect_order() {
+    local op previous=0 index
+    for op in "$@"; do
+        index="$(call_index "${op}")"
+        [[ "${index}" -gt "${previous}" ]] || {
+            echo "${op} at ${index}, after ${previous}"
+            return 1
+        }
+        previous="${index}"
+    done
+}
+
+# reset_run: a loop's next run starts from a fresh guest and transcript.
+reset_run() {
+    rm -f "${settings_sim}/calls.jsonl" "${settings_sim}/state.json"
+    rm -rf "${scenario_repo}/.build"
+}
+
+# The Nth return, as settings_at counts them.
+RETURNS=(first-selection reopen-1 reopen-2 reopen-3 requests accessibility quit)
+SELECTIONS=(first-selection reopen-1-selection reopen-2-selection reopen-3-selection
+    requests-selection accessibility-selection quit-selection)
 
 # Calls after line $1 that could change the guest: anything but an
 # evidence-class collection or a local record.
@@ -130,7 +169,9 @@ input_after() {
         screenshot-first-launch textedit-window-1 reopen-2-front resize-move resize-down-3 \
         least-size-login-1 shortcut-type enrol-vm-editor requests-deny-1-click \
         accessibility-add-1 reopen-identity restart restart-boot-1 login-process port-refusal \
-        installed-after; do
+        installed-after textedit-pid first-selection-identity first-selection-setup-front \
+        first-selection-enabled screenshot-menu-first-selection reopen-1-menu-closed \
+        screenshot-outcome-reopen-2; do
         rm -f "${settings_sim}/calls.jsonl" "${settings_sim}/state.json"
         rm -rf "${scenario_repo}/.build"
         export settings_fault="${fault}"
@@ -159,14 +200,19 @@ input_after() {
     run_scenario
     [[ "${status}" == 1 ]]
     [[ "${output}" == *'did not come to the front over TextEdit'* ]]
+    expect_outcome not-front
     local at
-    at="$(call_index scenario-assertion)"
-    # The front-application read of the message precedes the latch.
-    [[ "$(call_index first-selection-front-application)" -lt "${at}" ]]
-    jq -se --argjson n "${at}" '.[$n - 1] | .action == "poll-step" and .outcome == "state-failed"
-        and (.arguments[2] | contains("did not come to the front over TextEdit"))' \
+    at="$(call_index scenario-assertion-not-front)"
+    jq -se --argjson n "${at}" '.[$n - 1].arguments[2] | contains("did not come to the front over TextEdit")' \
         "${settings_sim}/calls.jsonl"
-    [[ "$(input_after "${at}")" == '[]' ]]
+    # Both predicates keep their receipts on the one list, then the untouched
+    # failure observations come before the latch. The front-application read
+    # of the message is the observer.
+    expect_order first-selection-front first-selection-front-state first-selection-front-title-state \
+        first-selection-front-application first-selection-failure-windows failure-capture \
+        first-selection-menu-closed scenario-assertion-not-front
+    # One failure screenshot: the observations took it, so the stop takes none.
+    [[ "$(jq -s 'map(select(.operation == "failure-capture")) | length' "${settings_sim}/calls.jsonl")" == 1 ]]
 }
 
 @test "a fenced legacy transport latches instead of dispatching" {
@@ -412,4 +458,252 @@ DATE
     [[ "${output}" == *'already exists'* ]]
     [[ ! -e "${KOINE_VM_EVIDENCE_ROOT}" ]]
     [[ ! -s "${settings_sim}/calls.jsonl" && ! -s "${scenario_legacy}" ]]
+}
+
+# --- the positive setup ----------------------------------------------------
+
+@test "the positive setup precedes each of the four selections and uses the zero-count list" {
+    run_scenario
+    [[ "${status}" == 0 ]]
+    [[ "${output}" == *'TextEdit: PID 909, window frame [700,120,603,505]'* ]]
+    local sel index
+    for sel in "${SELECTIONS[@]:0:4}"; do
+        # The identity read, the setup reads and the screenshot come directly
+        # before the menu opening, with no window read and no wait.
+        jq -se --arg s "${sel}" 'map(.operation) as $o | ($o | index($s + "-item-1")) as $i
+            | $o[$i - 10:$i] == [$s + "-identity", $s + "-identity-state",
+                $s + "-setup-windows-state", $s + "-setup-front", $s + "-setup-front-state",
+                $s + "-setup-sheets", $s + "-setup-sheets-state", $s + "-setup-menus",
+                $s + "-setup-menus-state", "screenshot-setup-" + $s]' "${settings_sim}/calls.jsonl" || {
+            echo "setup sequence of ${sel}"
+            return 1
+        }
+    done
+    # The first setup follows the menu count; each later one follows its count poll.
+    jq -se 'map(.operation) as $o | ($o | index("first-selection-identity")) as $i
+        | $o[$i - 1] == "first-close-count-state"' "${settings_sim}/calls.jsonl"
+    for index in 1 2 3; do
+        jq -se --arg s "reopen-${index}" 'map(.operation) as $o | ($o | index($s + "-selection-identity")) as $i
+            | ($o[$i - 1] | test("^" + $s + "-closed-[0-9]+-state$"))' "${settings_sim}/calls.jsonl"
+    done
+    # No setup for the later returns or the Quit selections: each setup
+    # operation belongs to one of the four selections.
+    jq -se 'map((.operation // "") | select(test("-setup-")))
+        | length > 0 and all(.[]; test("^(screenshot-setup-)?(first-selection|reopen-[123]-selection)(-setup-|$)"))' \
+        "${settings_sim}/calls.jsonl"
+    [[ "$(jq -s 'map((.operation // "") | select(test("^requests|^accessibility|^quit|^setup-quit|^final-quit")
+        and test("-setup-"))) | length' "${settings_sim}/calls.jsonl")" == 0 ]]
+}
+
+@test "a clean setup mismatch before any of the four selections is failed setup and opens no menu" {
+    local case flag at sel
+    for case in textedit-moved:1 textedit-title:2 front-other-pid:3 textedit-sheet:4 \
+        textedit-dialog:1 menu-open-at-setup:2; do
+        flag="${case%:*}" at="${case#*:}" sel="${SELECTIONS[$((${case#*:} - 1))]}"
+        reset_run
+        export settings_flags="${flag}" settings_at="${at}"
+        run_scenario
+        expect_outcome setup-failed || {
+            echo "case ${case}"
+            return 1
+        }
+        [[ "${output}" == *"before ${sel}"* && "$(call_index "${sel}-item-1")" == -1 ]] || {
+            echo "case ${case}: the menu of ${sel} opened, or the message names another selection"
+            return 1
+        }
+    done
+}
+
+@test "missing or failed setup evidence is unavailable and opens no menu" {
+    local case kind name sel at
+    for case in flag:textedit-no-title:first-selection fault:textedit-pid:first-selection \
+        fault:first-selection-identity:first-selection \
+        fault:reopen-1-selection-setup-front:reopen-1-selection \
+        fault:reopen-2-selection-setup-sheets:reopen-2-selection \
+        fault:reopen-3-selection-setup-menus:reopen-3-selection \
+        fault:screenshot-setup-first-selection:first-selection; do
+        IFS=: read -r kind name sel <<<"${case}"
+        reset_run
+        unset settings_flags settings_fault
+        if [[ "${kind}" == flag ]]; then export settings_flags="${name}"; else export settings_fault="${name}"; fi
+        run_scenario
+        at="$(call_index "${name}")"
+        [[ "${kind}" == fault ]] || at="$(call_index "${sel}-setup-title")"
+        if [[ "${status}" != 125 || "${at}" -le 0 || "$(input_after "${at}")" != '[]' ]] ||
+            [[ "$(call_index "${sel}-item-1")" != -1 ]]; then
+            echo "case ${case}: status ${status}, at ${at}, later input $(input_after "${at}")"
+            printf '%s\n' "${output}" | tail -3
+            return 1
+        fi
+    done
+}
+
+@test "two TextEdit processes after the preparation are failed setup" {
+    export settings_flags=textedit-pids
+    run_scenario
+    expect_outcome setup-failed
+    [[ "$(call_index first-selection-item-1)" == -1 ]]
+}
+
+# --- the route and the outcome classes -------------------------------------
+
+@test "each return records its route and its closed menu, and the Quit selections keep theirs" {
+    run_scenario
+    [[ "${status}" == 0 ]]
+    local index sel ret
+    for index in 0 1 2 3 4 5 6; do
+        sel="${SELECTIONS[${index}]}" ret="${RETURNS[${index}]}"
+        # The enabled row and the open-menu screenshot come between the row
+        # frame and the click, and the closed menu after the front checks.
+        jq -se --arg s "${sel}" --arg r "${ret}" 'map(.operation) as $o
+            | ($o | index($s + "-enabled")) as $e
+            | ($o[$e - 1] | test("^" + $s + "-row-[0-9]+-state$"))
+            and $o[$e + 1:$e + 3] == [$s + "-enabled-state", "screenshot-menu-" + $s]
+            and ($o[$e + 3:] | index("menu-click")) != null
+            and ($o[$e + 3:] | index("menu-click")) < ($o[$e + 3:] | index($r + "-window-1"))
+            and ($o | index($r + "-front-title-state")) < ($o | index($r + "-menu-closed"))' \
+            "${settings_sim}/calls.jsonl" || {
+            echo "route of ${sel}"
+            return 1
+        }
+    done
+    # Each return has its outcome screenshot before the next input.
+    expect_order screenshot-over-textedit screenshot-outcome-reopen-1 screenshot-outcome-reopen-2 \
+        screenshot-outcome-reopen-3 screenshot-requests screenshot-outcome-accessibility \
+        screenshot-outcome-reopen screenshot-outcome-quit
+    [[ "$(call_index setup-quit-enabled)" == -1 && "$(call_index screenshot-menu-setup-quit)" == -1 ]]
+    [[ "$(call_index final-quit-enabled)" == -1 && "$(call_index final-quit-menu-closed)" == -1 ]]
+    # The resize focus keeps its front check, and the title audit joins it.
+    expect_order resize-front-state resize-front-title-state
+}
+
+@test "a disabled row is recorded and not clicked" {
+    export settings_flags=row-disabled settings_at=2
+    run_scenario
+    expect_outcome menu-item-disabled
+    expect_order reopen-1-selection-enabled-state scenario-assertion-menu-item-disabled
+    [[ "$(call_index screenshot-menu-reopen-1-selection)" == -1 ]]
+}
+
+@test "a menu that stays open after the click makes the outcome unresolved" {
+    export settings_flags=menu-stays-open
+    run_scenario
+    expect_outcome menu-open
+    [[ "${output}" == *'the menu stayed open after first-selection, so the outcome is unresolved'* ]]
+    expect_order first-selection-front-title-state first-selection-menu-closed-state \
+        scenario-assertion-menu-open
+}
+
+@test "a wrong title on the front list is a window-identity failure, for later returns too" {
+    local at ret
+    for at in 1 5 7; do
+        ret="${RETURNS[$((at - 1))]}"
+        reset_run
+        export settings_flags=wrong-title settings_at="${at}"
+        run_scenario
+        expect_outcome window-identity || {
+            echo "return ${ret}"
+            return 1
+        }
+        # The front predicate holds on the same list, and the audit does not.
+        jq -se --arg r "${ret}" '(map(select(.operation == $r + "-front-state"))[0].arguments[1] == "0")
+            and (map(select(.operation == $r + "-front-title-state"))[0].arguments[1] == "1")' \
+            "${settings_sim}/calls.jsonl"
+        expect_order "${ret}-front-title-state" "${ret}-front-application" "${ret}-failure-windows" \
+            failure-capture "${ret}-menu-closed" scenario-assertion-window-identity
+    done
+}
+
+@test "a Koine window without a title makes the audit unavailable" {
+    export settings_flags=no-title
+    run_scenario
+    [[ "${status}" == 125 ]]
+    local at
+    at="$(call_index first-selection-front-title)"
+    # The audit's own refusal stops the scenario, not a later read.
+    [[ "${at}" -gt 0 && "${output}" == *'the title audit of first-selection is unavailable'* ]]
+    jq -se --argjson n "${at}" '.[$n - 1].action == "fail"' "${settings_sim}/calls.jsonl"
+    [[ "$(input_after "${at}")" == '[]' ]]
+    [[ "$(call_index scenario-assertion-window-identity)" == -1 ]]
+}
+
+@test "two Koine windows after a selection are a multiple-windows failure" {
+    export settings_flags=two-windows
+    run_scenario
+    expect_outcome multiple-windows
+    [[ "${output}" == *'Koine has 2 windows, not 1'* ]]
+    # The deferred exhaustion follows the untouched observations and the closed menu.
+    expect_order first-selection-window-10 first-selection-front-application \
+        first-selection-failure-windows failure-capture first-selection-menu-closed \
+        first-selection-window-exhausted scenario-assertion-multiple-windows
+    [[ "$(call_index first-selection-liveness)" == -1 ]]
+}
+
+@test "zero windows with the same live process are a same-process recurrence, for later returns too" {
+    local at ret
+    for at in 1 6; do
+        ret="${RETURNS[$((at - 1))]}"
+        reset_run
+        export settings_flags=zero-window-alive settings_at="${at}"
+        run_scenario
+        expect_outcome zero-window-same-process || {
+            echo "return ${ret}"
+            return 1
+        }
+        # The liveness read is clean because nothing has latched before it.
+        expect_order "${ret}-window-10" "${ret}-liveness" "${ret}-liveness-state" \
+            "${ret}-front-application" "${ret}-failure-windows" failure-capture "${ret}-menu-closed" \
+            "${ret}-window-exhausted" scenario-assertion-zero-window-same-process
+        jq -se --arg r "${ret}" 'map(select(.operation == $r + "-liveness"))[0]
+            | .outcome == "clean" and .arguments == ["process-identity", "101"]' "${settings_sim}/calls.jsonl"
+        jq -se --arg r "${ret}" 'map(select(.operation == $r + "-failure-windows"))[0].kind == "evidence"' \
+            "${settings_sim}/calls.jsonl"
+    done
+}
+
+@test "a lost or replaced process after zero windows is process loss, not a recurrence" {
+    local case flag at ret
+    for case in zero-window-crash:3 zero-window-reused:1; do
+        flag="${case%:*}" at="${case#*:}" ret="${RETURNS[$((${case#*:} - 1))]}"
+        reset_run
+        export settings_flags="${flag}" settings_at="${at}"
+        run_scenario
+        expect_outcome process-lost || {
+            echo "case ${case}"
+            return 1
+        }
+        [[ "${output}" == *'process lost during selection'* ]]
+        expect_order "${ret}-liveness-state" "${ret}-front-application" failure-capture \
+            "${ret}-window-exhausted" scenario-assertion-process-lost
+        # A lost process has no menu to read.
+        [[ "$(call_index "${ret}-menu-closed")" == -1 ]]
+    done
+}
+
+@test "a failed liveness read leaves the zero-window outcome unresolved" {
+    export settings_flags=zero-window-alive settings_fault=first-selection-liveness
+    run_scenario
+    [[ "${status}" == 125 ]]
+    [[ "${output}" == *'its liveness is unavailable, so the outcome is unresolved'* ]]
+    local at
+    at="$(call_index first-selection-liveness)"
+    [[ "$(input_after "${at}")" == '[]' ]]
+    # The observer is refused after the latch, and its text is never used.
+    jq -se 'map(select(.operation == "first-selection-front-application"))[0].outcome == "refused"' \
+        "${settings_sim}/calls.jsonl"
+    expect_order first-selection-liveness first-selection-failure-windows failure-capture \
+        first-selection-window-exhausted
+    [[ "$(jq -s 'map(select((.operation // "") | startswith("scenario-assertion"))) | length' "${settings_sim}/calls.jsonl")" == 0 ]]
+}
+
+@test "an app reopen that shows no window compares the silent launch's process" {
+    export settings_flags=reopen-no-window
+    run_scenario
+    expect_outcome zero-window-same-process
+    # The silent launch's PID, and no menu read for a reopen.
+    jq -se 'map(select(.operation == "reopen-liveness"))[0].arguments == ["process-identity", "202"]' \
+        "${settings_sim}/calls.jsonl"
+    [[ "$(call_index reopen-menu-closed)" == -1 ]]
+    expect_order reopen-identity reopen-window-10 reopen-liveness reopen-front-application \
+        reopen-window-exhausted scenario-assertion-zero-window-same-process
 }

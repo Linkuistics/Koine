@@ -1539,7 +1539,7 @@ tasks:
       - bats Tests/scripts/vm-exec-read-host.bats
 
   check:vm-sysevents-evidence:
-    desc: Check without a VM the checked System Events reads, their polls and assertions, and the checked enrolment submission. Caller adoption stays separate
+    desc: Check without a VM the checked System Events reads, their polls and assertions, the reads of the positive setup and the menu route, and the checked enrolment submission. Caller adoption stays separate
     cmds:
       - bash -n scripts/vm-sysevents-evidence-lib.sh Tests/scripts/vm-sysevents-evidence.bats Tests/scripts/vm-sysevents-host.bats
       - shellcheck -x scripts/vm-sysevents-evidence-lib.sh Tests/scripts/vm-sysevents-evidence.bats Tests/scripts/vm-sysevents-host.bats
@@ -1556,7 +1556,7 @@ tasks:
       - bats Tests/scripts/vm-sysevents-host.bats
 
   check:vm-exec-one-shot-evidence:
-    desc: Check without a VM the checked one-shot submissions, the launch identity and reopen confirmations, the TextEdit quit absence, the restart and its boot poll, and the refused diagnostic write. Caller adoption stays separate
+    desc: Check without a VM the checked one-shot submissions, the launch identity and reopen confirmations, the PID identity read, the TextEdit quit absence, the restart and its boot poll, and the refused diagnostic write. Caller adoption stays separate
     cmds:
       - bash -n scripts/vm-exec-one-shot-evidence-lib.sh Tests/scripts/vm-exec-one-shot-evidence.bats Tests/scripts/vm-exec-one-shot-host.bats
       - shellcheck -x scripts/vm-exec-one-shot-evidence-lib.sh Tests/scripts/vm-exec-one-shot-evidence.bats Tests/scripts/vm-exec-one-shot-host.bats
@@ -1568,12 +1568,12 @@ tasks:
       - bats Tests/scripts/vm-exec-one-shot-evidence.bats
 
   check:vm-exec-one-shot-host:
-    desc: Run the launch identity read through real pgrep, python3 and libproc against a host process, run the real identity script against a fake libproc for the failed path read, and check the bash syntax of each submission. Host evidence, not guest evidence; no submission runs and no Koine launches
+    desc: Run the launch identity and PID identity reads through real pgrep, python3 and libproc against host processes, run the real identity script against a fake libproc for the failed path read, and check the bash syntax of each submission. Host evidence, not guest evidence; no submission runs and no Koine launches
     cmds:
       - bats Tests/scripts/vm-exec-one-shot-host.bats
 
   check:vm-settings-scenario:
-    desc: Run the adopted Settings scenario without a VM against a simulated backend (one root before any transport, the legacy-transport fence, one unavailable answer per transport family, refused trace write, required base, refused reused root, HUP, the required request-label value, an exclusive transcript) and the TERM, INT and failed-wait held-pointer controls on the real backend, with a private root. No native acceptance
+    desc: Run the adopted Settings scenario without a VM against a simulated backend (one root before any transport, the legacy-transport fence, one unavailable answer per transport family, refused trace write, required base, refused reused root, HUP, the required request-label value, an exclusive transcript, the positive setup before the four selections, the route and closed menu of each return, the title audit, and the zero-window, process-loss, multiple-window, not-front, window-identity and unresolved outcomes) and the TERM, INT and failed-wait held-pointer controls on the real backend, with a private root. No native acceptance
     cmds:
       - bash -n scripts/vm-settings-scenario-lib.sh scripts/vm-verify-menu-bar.sh Tests/scripts/vm-settings-scenario.bats
       - shellcheck -x scripts/vm-settings-scenario-lib.sh scripts/vm-verify-menu-bar.sh Tests/scripts/vm-settings-scenario.bats
@@ -1593,7 +1593,7 @@ tasks:
       - bats Tests/scripts/vm-verify-start.bats
 
   check:vm-window-evidence:
-    desc: Check strict window list/action schemas and existing bounded negative polls without a VM; scenario adoption remains separate
+    desc: Check strict window list/action schemas and existing bounded negative polls, including the deferred exhaustion of a return's count poll, without a VM; scenario adoption remains separate
     cmds:
       - bash -n scripts/vm-window-evidence-lib.sh Tests/scripts/vm-window-evidence.bats
       - shellcheck -x scripts/vm-window-evidence-lib.sh Tests/scripts/vm-window-evidence.bats

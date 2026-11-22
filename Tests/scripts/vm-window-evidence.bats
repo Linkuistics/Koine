@@ -379,3 +379,38 @@ assert_window_latched() {
     jq -se '. == [["agent","window-move","--window","TextEdit","--x=-5","--y=-10","--vm","exact-window-vm","--json"]]' "${window_calls}"
     jq -e '.outcome == "clean"' "${window_root}/000001/result.json"
 }
+
+@test "a deferred count poll prints its final clean list and leaves the exhaustion receipt to the caller" {
+    # The final list holds TextEdit and no Koine window.
+    window_fixture | jq -c '.windows |= map(select(.appName != "Koine"))' >"${window_replies}/10.json"
+    run await_guest_window_count "${window_root}" missing Koine 1 deferred
+    echo "diagnostic: status=${status} output=${output}"
+    [[ "${status}" == 1 ]]
+    cmp "${window_replies}/10.json" <(printf '%s\n' "${output}")
+    [[ "$(wc -l <"${window_calls}" | tr -d ' ')" == 10 ]]
+    [[ "$(wc -l <"${window_waits}" | tr -d ' ')" == 10 ]]
+    # Ten lists and ten clean state receipts. Nothing latches yet.
+    jq -se 'length == 20 and all(.[]; .outcome == "clean")' "${window_root}"/*/result.json
+    [[ ! -e "${window_root}/unavailable" ]]
+    # The caller's receipt latches, as the facade's own does without deferred.
+    record_guest_poll "${window_root}" missing-exhausted exhausted 1 "$(window_count_predicate Koine 1)" || :
+    jq -se '.[-1].poll_phase == "exhausted" and .[-1].state_predicate == "([.windows[] | select(.appName == \"Koine\")] | length) == 1"' \
+        "${window_root}"/*/request.json
+    assert_window_latched
+}
+
+@test "a deferred count poll keeps the positive, the failed read and the argument refusal" {
+    window_fixture >"${window_replies}/2.json"
+    run await_guest_window_count "${window_root}" reopen Koine 1 deferred
+    [[ "${status}" == 0 ]]
+    cmp "${window_replies}/2.json" <(printf '%s\n' "${output}")
+    reset_windows deferred-failed
+    echo 1 >"${window_replies}/1.exit"
+    run await_guest_window_count "${window_root}" failed Koine 1 deferred
+    [[ "${status}" != 0 && "${status}" != 1 && "${output}" != *windows* ]]
+    [[ "$(wc -l <"${window_calls}" | tr -d ' ')" == 1 && ! -s "${window_waits}" ]]
+    [[ -s "${window_root}/unavailable" ]]
+    reset_windows deferred-word
+    run await_guest_window_count "${window_root}" word Koine 1 later
+    [[ "${status}" == 125 && ! -s "${window_calls}" && -s "${window_root}/unavailable" ]]
+}

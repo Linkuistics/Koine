@@ -1,0 +1,281 @@
+# Settings scenario outcome results
+
+This report belongs to `settings-scenario-outcomes-k67`. The complete ordinary
+Settings scenario, `scripts/vm-verify-menu-bar.sh`, now applies the setup,
+title and liveness rules of the
+[ordering protocol](ORDERING-EVALUATION-PLAN.md#matched-observable-setup). It
+checks a positive TextEdit setup before each of the four Settings selections.
+Each return records its menu route. The title audit runs on each front list.
+Each failed return gets one outcome class.
+
+The evidence is source and controls only. No VM ran, and no signed subject was
+built or frozen. No runtime slot ran. The work establishes no native
+behaviour, no native cause, no callback delivery and no scenario readiness. It
+closes no ancestor.
+
+## New checked reads
+
+Six reads join the table in `scripts/vm_exec_reads.py`. Each parse refuses a
+missing value, a wrong type or an incomplete enumeration. That evidence is
+unavailable, and it latches the root. It is never a negative state. No new
+read is in the evidence class.
+
+| Read | Guest command | Clean record | Why it is not in the evidence class |
+|---|---|---|---|
+| `front-process` | System Events: `{name, unix id}` of the front process | A name and a positive PID | An Apple event can launch System Events |
+| `textedit-windows` | System Events: the subrole of each TextEdit window and the roles of its sheets | One subrole and one list of sheet roles for each window | The same |
+| `open-menus` | System Events: the names and `selected` values of the TextEdit menu bar items, and `selected` of the Koine item | A name list, a list of booleans of the same length, and a boolean | The same |
+| `menu-row-enabled TITLE` | System Events: `enabled` of the Koine menu row | A boolean | The same |
+| `menu-item-selected` | System Events: `selected` of the Koine menu bar item | A boolean | The same |
+| `process-identity PID` | The kernel script of `launch-identity`, for one PID | The PID, and the process entry or `null` | python3 can raise the Command Line Tools prompt |
+
+`process-identity` reuses the script of the launch identity read. A pipe gives
+the script a JSON object with the PID in place of the descriptor. The parse
+then checks the same process schema. `null` is the clean fact that no process
+has the PID. A live process whose path read fails stays unavailable, with
+script status 7.
+
+## The deferred count poll
+
+`await_guest_window_count` takes an optional fifth word, `deferred`. The
+existing poll latches the root when it runs out, and that latch would refuse
+the liveness read of a zero-window failure. A deferred poll prints its final
+clean list and returns 1 without its exhaustion receipt. The caller then takes
+only its untouched failure reads. It records `OPERATION-exhausted` under the
+same name and predicate before any input. `window_count_predicate` gives that
+predicate.
+
+A deferred poll keeps the same ten reads, the same waits and the same stop on a
+failed read. Without `deferred`, the poll is unchanged. Every clean poll read
+now also prints its list when the state is false. Only a deferred exhaustion
+passes that list to the caller.
+
+## The positive setup
+
+After the TextEdit preparation, the scenario records the TextEdit PID and the
+frame of its one window. The frame comes from the list of the existing
+`textedit-front` read, so the scenario adds no window read. One `process textedit` read
+gives the PID. Two TextEdit windows or two TextEdit processes are failed setup.
+
+Before each of the four Settings selections over TextEdit, these checks run.
+They follow the existing close and count check and the pre-click identity read.
+The checks add no wait, and they send no input.
+
+| Fact | Observation | Failed setup | Unavailable setup |
+|---|---|---|---|
+| No visible Koine window | The zero-count list of the close check. The setup takes no new window read | A Koine window in the list | A TextEdit window without a title |
+| One idle Untitled document | The same list: one TextEdit window, `standard`, titled `Untitled`, at the recorded frame | Another count, type, title or frame | The same |
+| TextEdit is the front process | `front-process`: TextEdit with the recorded PID | Another name or PID | A failed read or a missing value |
+| No dialog or sheet | `textedit-windows`: one `AXStandardWindow` and no sheet | Another subrole, another window or a sheet | A missing subrole or two lengths |
+| No open menu | `open-menus`: each `selected` value is false | A true value | A missing value or two lengths |
+
+A precondition screenshot, `setup-SELECTION`, follows the checks. A clean
+mismatch records `scenario-assertion-setup-failed`, and the scenario exits 1.
+Unavailable evidence keeps the status of its facade. Neither outcome opens the
+menu, so no repair, focus action or repeated selection follows.
+
+## The route of each return
+
+A return is a selection that must bring the window back. The scenario has
+seven menu returns and one app reopen. The menu returns are the four Settings
+selections over TextEdit, the requests line, the Accessibility line and the
+Settings selection before Command-Q.
+
+Each menu return runs these steps:
+
+1. Read the identity of the Koine process once, with `confirm_guest_launch`. A
+   clean mismatch is failed setup.
+2. Open the menu and poll the row frame, as before.
+3. Read the row's enabled state once. A disabled row records
+   `scenario-assertion-menu-item-disabled`, and the scenario sends no click.
+4. Take the open-menu screenshot, `menu-SELECTION`.
+5. Click the row centre by the existing physical route. The route keeps the
+   item frame, the display size, the derived points and each input receipt.
+6. Keep the existing 2-second wait.
+
+The outcome checks follow, in this order. The count poll is deferred. The front
+predicate and the title audit both run on one front list. A menu return then
+reads its menu once, and an open menu records `scenario-assertion-menu-open`.
+
+The outcome screenshot follows, before the next close, focus, keyboard input or
+launch. The first selection keeps `over-textedit` as its outcome screenshot.
+The requests line keeps `requests`, because only reads and a wait come before
+it.
+
+The app reopen takes the identity of the silent launch, which its reopen
+confirmation proves. It reads no menu. The two Quit selections keep their
+existing route, because they are not returns.
+
+## The title audit
+
+The audit runs on the same full list as the existing front predicate. It needs
+exactly one Koine window, titled `Koine Settings`. That entry must also be the
+front and focused entry outside Notification Center. Both results keep their
+receipts, `OPERATION-front-state` and `OPERATION-front-title-state`. A Koine
+window without a title makes the audit unavailable. The resize focus check
+also runs the audit, because it uses the same front assertion.
+
+## Outcome classes
+
+Each clean failure of a return records one state-failed receipt,
+`scenario-assertion-CLASS`, and the scenario exits 1.
+
+| Class | Condition |
+|---|---|
+| `zero-window-same-process` | The count poll ends with zero Koine windows. One liveness read finds the PID of the pre-click identity with the same start time and executable. The menu is closed <!-- tc: depart synonym-rotation because "start" names the kernel start time of a process, not the application launch --> |
+| `process-lost` | Zero windows, and the liveness read finds no process for that PID, or another start time or executable <!-- tc: depart synonym-rotation because "start" names the kernel start time of a process, not the application launch --> |
+| `multiple-windows` | The count poll ends with another nonzero count |
+| `not-front` | The front predicate is false |
+| `window-identity` | The front predicate holds and the title audit is false |
+| `menu-open` | The menu is still open after the click. The outcome is unresolved |
+| `menu-item-disabled` | The row is disabled before the click |
+| `setup-failed` | A clean mismatch in the positive setup or the pre-click identity |
+
+A zero-window outcome whose liveness read is unavailable keeps the status of
+that read. Its message says that the outcome is unresolved. An unavailable
+closed-menu read also keeps its status and says the same. No class claims a
+native cause, a callback or a crash. A same-process zero-window outcome still
+needs the screenshot audit of k54 before it can qualify a recurrence.
+
+## Untouched failure observations
+
+A failed return takes these observations before its first latch, in this order:
+
+1. The liveness read, for a zero-window outcome only.
+2. One front-application read, the independent observer of the legacy message.
+3. One window list, in the evidence class.
+4. One failure screenshot, in the evidence class.
+5. The closed-menu read, for a menu return whose process is not lost.
+6. The deferred exhaustion receipt, for a count failure.
+7. The classified receipt.
+
+A failed observer keeps its own receipt, and the message never uses its text.
+After a latch, the backend refuses the observer and records that refusal. The
+scenario takes no second screenshot when it stops.
+
+## Caller table additions
+
+| Caller | Strict call |
+|---|---|
+| TextEdit PID after the preparation | `check_guest_read process textedit`, one selected PID |
+| Positive setup | The zero-count list, then `front-process`, `textedit-windows` and `open-menus`, then `capture setup-SELECTION` |
+| Pre-click identity | `confirm_guest_launch SELECTION-identity` |
+| Row state | `check_guest_read menu-row-enabled TITLE` |
+| Open-menu screenshot | `capture menu-SELECTION` |
+| Return count poll | `await_guest_window_count ... 1 deferred` |
+| Title audit | One local decision on the front list |
+| Closed menu | `check_guest_read menu-item-selected`, as `RETURN-menu-closed` |
+| Liveness | `check_guest_read process-identity PID`, as `RETURN-liveness` |
+| Failure observer and list | `read_guest_exec front-application`, then `read_guest_windows evidence` |
+| Outcome screenshots | `capture outcome-RETURN` |
+
+## Controls and provenance
+
+`task check:vm-settings-scenario` runs the scenario controls against the
+simulated backend. Each new flag of the backend changes one answer at a chosen
+return. The facade suites check the grammar of each new read and the deferred
+poll.
+
+| Control | What it establishes |
+|---|---|
+| Setup order | Each of the four selections has the identity read, the setup reads and the screenshot directly before its menu opens. No window read comes between the count poll and the setup |
+| Failed setup | A moved frame, another title, another PID, a sheet, a dialog or an open menu stops the scenario before the menu opens. The controls cover the first and later selections |
+| Unavailable setup | A missing title or a failed setup read stops with status 125 before the menu opens |
+| TextEdit processes | Two TextEdit processes after the preparation are failed setup |
+| Route | Each return has its enabled read and its open-menu screenshot before the click, and its closed-menu read after the title audit. The Quit selections have neither |
+| Disabled row | A disabled row stops before its screenshot and its click |
+| Open menu | A menu that stays open is `menu-open` |
+| Title | A wrong title is `window-identity` at the first selection, the requests line and the last Settings selection, while the front predicate holds |
+| Missing title | A Koine window without a title is unavailable |
+| Two windows | Two Koine windows are `multiple-windows`, after the observations and the closed menu |
+| Same process | Zero windows with a live process are `zero-window-same-process`, at the first selection and the Accessibility line. The liveness read is clean, because nothing latched before it |
+| Lost process | A process that ends, or a new process under the same PID, is `process-lost`, with no menu read |
+| Failed liveness | A failed liveness read is unresolved, with status 125. The backend refuses the observer, and the scenario records no class |
+| App reopen | A reopen without a window compares the PID of the silent launch and reads no menu |
+| Not front | The existing control now records `not-front` after both predicates and the observations, with one failure screenshot |
+| Read grammars | Each new read sends its exact AppleScript, parses its complete values and refuses a missing value or two lengths |
+| PID identity | The read pipes the PID to the kernel script. A host run names a live `/bin/sleep` with its `ps` start second, and an exited PID as `null` <!-- tc: depart synonym-rotation because "start" names the kernel start time of a process, not the application launch --> |
+| Deferred poll | A deferred exhaustion prints the final list and latches nothing until the caller's receipt. A positive, a failed read and an unknown word keep their behaviour |
+
+The records are in [`ordering-outcomes-evidence/`](ordering-outcomes-evidence/):
+
+- `record.sh` runs one command and writes the transcript, the manifest of its
+  subjects before the run and a JSON summary. It is the k160 script, with one
+  option. `SUBJECTS=find` digests each file of a tree that no VCS tracks.
+- `red.txt` runs the five affected suites in a red tree. That tree is commit
+  `c0e0cc02`, with only the new controls and the extended simulated backend
+  copied in. Of 108 tests, 24 fail. These are 21 new controls and three
+  tightened ones. The tightened ones are the fault list, the `not-front`
+  control and the evidence-class list of System Events reads. The subjects
+  stay unchanged during the run.
+- One new control passed in that red run: the missing-title control. A later
+  stop with status 125 satisfied it. The control now needs the audit's own
+  receipt and message. `red-title.txt` records its failure in the same red
+  tree.
+- `final-verification.txt` runs each affected Taskfile check after the
+  repairs. These are the eighteen checks of the k160 record. All of them pass,
+  with 314 passing tests and no failure. None of the 4,507 subjects changed
+  during the run.
+- An earlier final run failed one assertion of the setup-order control. That
+  assertion expected the wrong count of setup operations. The repaired
+  assertion fails a synthetic mutation, and the final run above follows it.
+
+The record files, the last entries of the task file and the retirement of the
+leaf come after the final run.
+
+## Primary sources and unverified oracles
+
+The host's System Events dictionary, `SystemEvents.sdef`, defines `unix id` of
+a process. It also defines `subrole`, `selected` and `enabled` of a UI element,
+and the class `sheet`. The host runs macOS 27.2.1 build 26B131, and the file
+has SHA-256 `4d2a6477…`. The guest runs macOS 27.0.1, so E01 qualifies each
+read there.
+
+Apple documents `kAXEnabledAttribute` as required on menu items, and false for
+a disabled control. Apple documents `kAXStandardWindowSubrole` as a standard
+window with a title bar, not an inspector or a sheet.
+`NSAccessibility.Attribute.selected` says only whether an element is selected.
+No Apple source states that a menu bar item reports its open menu through it.
+The open-menu and closed-menu oracles are therefore unverified natively.
+
+These limits follow:
+
+- A menu bar item that does not report `selected` gives a missing value, which
+  is unavailable.
+- A menu bar item that reports false while its menu is open would pass the
+  check. The supplemental screenshots are the only other evidence.
+- E01 qualifies the availability of each new read, with no replacement if it
+  fails.
+
+The comments at each decision site in `scripts/vm_exec_reads.py` cite these
+sources.
+
+## Limits
+
+- The simulated backend models only the answers that the scenario needs. The
+  facade suites own the grammars.
+- No guest ran. The availability limits of the earlier reports stay binding.
+  These are the missing snapshot tree, the unverified empty AXValue after a cut
+  and the OCR substring stop.
+- The setup adds four System Events reads and one identity read before each of
+  the four selections. Each return adds an identity read, an enabled read, two
+  screenshots and a closed-menu read. The protocol requires these
+  observations. No wait changes, and no claim of timing neutrality follows.
+- The liveness read uses python3, like the launch identity read. A guest
+  without the Command Line Tools would fail the earlier launch identity read
+  first.
+- A zero-window class establishes neither a crash nor a misdirected Quit. A
+  same-process class establishes no native refusal and no lost activation.
+
+## Owners after k67
+
+- k62 extracts the focused prefix through the TextEdit quit from these bytes.
+  It verifies the byte correspondence and reconciles every original duty.
+- k57 reads the classified receipts and the deferred exhaustion receipts in
+  the finite caller. It owns the containment, the stop and the collection.
+- k54 owns the freeze, the screenshot audit of each outcome and the runtime.
+  It classifies a qualified recurrence from these receipts and the
+  screenshots.
+
+The review `settings-scenario-outcomes-k161` reads this artifact before k62
+and the runtime.

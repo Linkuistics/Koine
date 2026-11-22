@@ -1,0 +1,4 @@
+1..1
+not ok 1 a Koine window without a title makes the audit unavailable
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 620)
+#   `[[ "${at}" -gt 0 && "${output}" == *'the title audit of first-selection is unavailable'* ]]' failed

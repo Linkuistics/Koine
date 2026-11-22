@@ -156,3 +156,22 @@ SHIM
         /bin/bash -n -c "${command}"
     done
 }
+
+@test "the real PID identity read names a live host process and reports an exited one as no process" {
+    local root="${BATS_TEST_TMPDIR}/pid-host" record lstart gone
+    /bin/sleep 300 &
+    holder=$!
+    init_guest_evidence "${root}" host-pid-identity
+    record="$(read_guest_exec "${root}" read-poll host-liveness process-identity "${holder}")"
+    echo "diagnostic: ${record}"
+    jq -e --argjson pid "${holder}" '.pid == $pid and .process.pid == $pid
+        and .process.executable == "/bin/sleep"' <<<"${record}"
+    lstart="$(LC_ALL=C ps -o lstart= -p "${holder}" | sed 's/ *$//')"
+    [[ "$(LC_ALL=C date -j -f '%a %b %e %T %Y' "${lstart}" +%s)" == "$(jq -r .process.start_sec <<<"${record}")" ]]
+    /bin/sleep 0.01 &
+    gone=$!
+    wait "${gone}"
+    record="$(read_guest_exec "${root}" read-poll host-gone process-identity "${gone}")"
+    jq -e --argjson pid "${gone}" '.pid == $pid and .process == null' <<<"${record}"
+    [[ ! -e "${root}/unavailable" ]]
+}
