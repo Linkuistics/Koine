@@ -34,8 +34,10 @@ SETTINGS_PANE_WINDOW="System Settings"
 SETTINGS_FRONT=''
 SETTINGS_LIST=''
 SETTINGS_INTERRUPTED=''
-# Set once a return's failure observations took the failure screenshot.
+# Set once the untouched failure observations took the failure screenshot.
 SETTINGS_OBSERVED=''
+# Set once the Automation check passed, so the failure observer can run.
+SETTINGS_OBSERVER_READY=''
 # The TextEdit PID and the frame of its one window after the preparation.
 SETTINGS_TEXTEDIT_PID=''
 SETTINGS_TEXTEDIT_FRAME=''
@@ -158,12 +160,13 @@ PY
 
 # --- outcomes ---------------------------------------------------------------
 
-# settings_fail MESSAGE: an existing assertion saw a clean false state. One
-# state-failed receipt keeps the legacy message, and the scenario exits 1.
+# settings_fail MESSAGE: an existing assertion saw a clean false state. The
+# untouched failure observations come first. Then one state-failed receipt
+# keeps the legacy message, and the scenario exits 1.
 settings_fail() {
     echo "FAILED: $*" >&2
+    settings_failure_observations assertion
     record_guest_poll "${KOINE_VM_EVIDENCE_ROOT}" scenario-assertion exhausted 1 "$*" || :
-    settings_failure_capture
     exit 1
 }
 
@@ -171,15 +174,23 @@ settings_fail() {
 # state-failed receipt, scenario-assertion-OUTCOME, keeps the class for k54.
 # The classes are setup-failed, menu-item-disabled, menu-open (an unresolved
 # selection), zero-window-same-process, process-lost, multiple-windows,
-# not-front and window-identity. The scenario exits 1. A return's failure
-# observations already took the failure screenshot.
+# not-front and window-identity. The untouched failure observations precede
+# the receipt, unless a return already took them. The scenario exits 1.
 settings_fail_as() {
     local outcome="$1"
     shift
     echo "FAILED: $* (outcome ${outcome})" >&2
+    settings_failure_observations assertion
     record_guest_poll "${KOINE_VM_EVIDENCE_ROOT}" "scenario-assertion-${outcome}" exhausted 1 "$*" || :
-    [[ -n "${SETTINGS_OBSERVED}" ]] || settings_failure_capture
     exit 1
+}
+
+# settings_failure_observations OPERATION: the protocol's untouched capture
+# after a clean failed assertion, unless it already ran. It precedes the
+# state-failed receipt, because that receipt latches the root, and the latch
+# refuses the observer's System Events read.
+settings_failure_observations() {
+    [[ -n "${SETTINGS_OBSERVED}" ]] || settings_return_observations "$1"
 }
 
 # settings_require_as OUTCOME STATUS MESSAGE: status 1 is a classified clean
@@ -391,6 +402,7 @@ settings_grant_system_events_automation() {
         settings_require "$?" "the Automation prompt for System Events did not appear"
     expect_guest_system_events "${KOINE_VM_EVIDENCE_ROOT}" automation-check >/dev/null ||
         settings_require "$?" "System Events still refuses the agent"
+    SETTINGS_OBSERVER_READY=1
 }
 
 settings_expect_menu_count() {
@@ -505,16 +517,30 @@ settings_expect_koine_count() {
 }
 
 # settings_await_windows OPERATION COUNT: the existing count poll.
-# SETTINGS_COUNT_LIST keeps the list that satisfied it.
+# SETTINGS_COUNT_LIST keeps the list that satisfied it. The poll defers its
+# exhaustion receipt, so the untouched failure observations precede the
+# latch. The receipt keeps the facade's name and status (k165).
 settings_await_windows() {
-    local got
-    # shellcheck disable=SC2034 # The scenario passes it to the positive setup.
-    SETTINGS_COUNT_LIST="$(await_guest_window_count "${KOINE_VM_EVIDENCE_ROOT}" "$1" "${SETTINGS_APP}" "$2")" || {
-        local status=$?
-        got="$(settings_last_record "$1-" |
-            jq --arg app "${SETTINGS_APP}" '[.windows[] | select(.appName == $app)] | length' 2>/dev/null)" || got=unknown
-        settings_stop "${status}" "Koine has ${got} windows, not $2"
-    }
+    local got list status=0 receipt=0 predicate
+    list="$(await_guest_window_count "${KOINE_VM_EVIDENCE_ROOT}" "$1" "${SETTINGS_APP}" "$2" deferred)" ||
+        status=$?
+    if [[ "${status}" == 0 ]]; then
+        # shellcheck disable=SC2034 # The scenario passes it to the positive setup.
+        SETTINGS_COUNT_LIST="${list}"
+        return
+    fi
+    if [[ "${status}" == 1 ]]; then
+        got="$(jq --arg app "${SETTINGS_APP}" '[.windows[] | select(.appName == $app)] | length' \
+            <<<"${list}" 2>/dev/null)" || got=unknown
+        settings_failure_observations "$1"
+        predicate="$(window_count_predicate "${SETTINGS_APP}" "$2")" || predicate="count == $2"
+        record_guest_poll "${KOINE_VM_EVIDENCE_ROOT}" "$1-exhausted" exhausted 1 "${predicate}" || receipt=$?
+        [[ "${receipt}" != 0 ]] || receipt=125
+        settings_stop "${receipt}" "Koine has ${got:-unknown} windows, not $2"
+    fi
+    got="$(settings_last_record "$1-" |
+        jq --arg app "${SETTINGS_APP}" '[.windows[] | select(.appName == $app)] | length' 2>/dev/null)" || got=unknown
+    settings_stop "${status}" "Koine has ${got} windows, not $2"
 }
 
 # settings_koine_in_front OPERATION: Koine's window is the front window and
@@ -554,12 +580,17 @@ settings_title_audit() {
 
 # settings_expect_front OPERATION MESSAGE: the window is in front, or the
 # scenario ends with MESSAGE and the list that it judged. The title audit
-# runs on the same list, and both results keep their receipts.
+# runs on the same list, and both results keep their receipts. As at a
+# return, a clean false predicate takes the untouched failure observations
+# before any stop (k165).
 settings_expect_front() {
     local front=0 title=0
     settings_koine_in_front "$1" || front=$?
     [[ "${front}" == 0 || "${front}" == 1 ]] || settings_stop "${front}" "$2: the front window could not be read"
     settings_title_audit "$1" "${SETTINGS_LIST}" || title=$?
+    if [[ "${front}" == 1 || "${title}" == 1 ]]; then
+        settings_return_observations "$1"
+    fi
     # An unavailable audit keeps its status, even beside a false front (k162).
     [[ "${title}" == 0 || "${title}" == 1 ]] ||
         settings_stop "${title}" "$2: ${SETTINGS_FRONT}; the title audit of $1 is unavailable"
@@ -653,14 +684,21 @@ settings_menu_closed() {
 }
 
 # settings_return_observations OPERATION: the untouched failure capture of a
-# return, after its liveness read and before any latch from this scenario.
-# One read with the independent observer, one window list in the evidence
-# class and one screenshot. A failed observer keeps its own receipt, and its
-# text is never used. SETTINGS_OBSERVED_FRONT keeps the observer's value.
+# failed assertion, after a return's liveness read and before any latch from
+# this scenario. One read with the independent observer, one window list in
+# the evidence class and one screenshot. A failed observer keeps its own
+# receipt, and its text is never used. SETTINGS_OBSERVED_FRONT keeps the
+# observer's value. Before the Automation check passes, the observer is NOT
+# RUN: it cannot succeed, and its Apple event can raise the consent prompt.
 settings_return_observations() {
     SETTINGS_OBSERVED_FRONT="unavailable"
-    SETTINGS_OBSERVED_FRONT="$(settings_front_application "$1-front-application")" ||
-        SETTINGS_OBSERVED_FRONT="unavailable"
+    if [[ -n "${SETTINGS_OBSERVER_READY}" ]]; then
+        SETTINGS_OBSERVED_FRONT="$(settings_front_application "$1-front-application")" ||
+            SETTINGS_OBSERVED_FRONT="unavailable"
+    else
+        SETTINGS_OBSERVED_FRONT="not run"
+        echo "NOT RUN: the failure observer was not run, because the System Events Automation check has not passed" >&2
+    fi
     read_guest_windows "${KOINE_VM_EVIDENCE_ROOT}" evidence "$1-failure-windows" >/dev/null || :
     settings_failure_capture
     SETTINGS_OBSERVED=1
@@ -826,6 +864,8 @@ settings_reveal() {
             settings_scroll_by "${operation}-${index}-scroll" $((-SCROLL_END))
         fi
     done
+    # The untouched failure observations precede the latch (k165).
+    settings_failure_observations "${operation}"
     record_guest_poll "${KOINE_VM_EVIDENCE_ROOT}" "${operation}-exhausted" exhausted 1 \
         "scrolling did not bring ${condition} on screen" || settings_stop "$?" "scrolling did not bring ${condition} on screen"
 }

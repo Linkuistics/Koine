@@ -1,0 +1,34 @@
+1..3
+not ok 1 a false front at the resize focus takes the untouched failure observations first (k165)
+# (from function `expect_order' in file Tests/scripts/vm-settings-scenario.bats, line 92,
+#  in test file Tests/scripts/vm-settings-scenario.bats, line 699)
+#   `expect_order resize-front-title-state resize-front-front-application \' failed
+# true
+# true
+# resize-front-front-application at -1, after 222
+not ok 2 a plain failed assertion takes the untouched failure observations before its receipt (k165)
+# (from function `expect_order' in file Tests/scripts/vm-settings-scenario.bats, line 92,
+#  in test file Tests/scripts/vm-settings-scenario.bats, line 719)
+#   `expect_order resize-grown-state assertion-front-application assertion-failure-windows \' failed
+# true
+# assertion-front-application at -1, after 238
+not ok 3 a failed assertion before the Automation check takes no observer read (k165)
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 735)
+#   `[[ "${output}" == *'the failure observer was not run'* ]]' failed
+1..3
+ok 1 the setup and the closed-menu checks enumerate the menus under each item (k162)
+not ok 2 a disabled row is recorded and not clicked
+# (from function `expect_order' in file Tests/scripts/vm-settings-scenario.bats, line 92,
+#  in test file Tests/scripts/vm-settings-scenario.bats, line 602)
+#   `expect_order reopen-1-selection-enabled-state assertion-front-application \' failed
+# true
+# assertion-front-application at -1, after 129
+not ok 3 an unavailable title audit beside a false front predicate stays unavailable (k162)
+# (from function `expect_order' in file Tests/scripts/vm-settings-scenario.bats, line 92,
+#  in test file Tests/scripts/vm-settings-scenario.bats, line 684)
+#   `expect_order resize-front-title resize-front-failure-windows failure-capture' failed
+# true
+# true
+# true
+# true
+# resize-front-failure-windows at -1, after 222

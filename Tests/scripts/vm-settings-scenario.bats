@@ -46,7 +46,8 @@ SLEEP
     export KOINE_VM_BASE=testanyware-golden-macos-27 KOINE_VM_ID=exact-settings-vm
     unset KOINE_VM_EVIDENCE_ROOT KOINE_VM_DISPLAY KOINE_VM_KEEP KOINE_SETTINGS_TRACE \
         TESTANYWARE_VM_ID settings_fault settings_fault_status settings_flags settings_at \
-        scenario_signal scenario_signal_on settings_untitled_behind
+        scenario_signal scenario_signal_on settings_untitled_behind settings_finder_front \
+        settings_close_ignored
 }
 
 run_scenario() {
@@ -597,7 +598,10 @@ DATE
     export settings_flags=row-disabled settings_at=2
     run_scenario
     expect_outcome menu-item-disabled
-    expect_order reopen-1-selection-enabled-state scenario-assertion-menu-item-disabled
+    # A classified failure outside a return takes the untouched failure
+    # observations before its receipt (k165).
+    expect_order reopen-1-selection-enabled-state assertion-front-application \
+        assertion-failure-windows failure-capture scenario-assertion-menu-item-disabled
     [[ "$(call_index screenshot-menu-reopen-1-selection)" == -1 ]]
 }
 
@@ -674,6 +678,99 @@ DATE
     export settings_untitled_behind=reopen-front
     run_scenario
     expect_order reopen-front-title reopen-failure-windows failure-capture
+    # The resize focus takes them in the same order (k165).
+    reset_run
+    export settings_untitled_behind=resize-front
+    run_scenario
+    expect_order resize-front-title resize-front-failure-windows failure-capture
+}
+
+# The protocol's untouched capture after a failed assertion: one observer
+# read, one evidence-class window list and one screenshot, before the
+# state-failed receipt latches the root (k165).
+@test "a false front at the resize focus takes the untouched failure observations first (k165)" {
+    export settings_finder_front=resize-front
+    run_scenario
+    expect_outcome not-front
+    [[ "${output}" == *'the window is not focused for the resize exercise'* ]]
+    # Both predicates are clean false on the one list.
+    jq -se '(map(select(.operation == "resize-front-state"))[0].arguments[1] == "1")
+        and (map(select(.operation == "resize-front-title-state"))[0].arguments[1] == "1")' \
+        "${settings_sim}/calls.jsonl"
+    expect_order resize-front-title-state resize-front-front-application \
+        resize-front-failure-windows failure-capture scenario-assertion-not-front
+    jq -se '(map(select(.operation == "resize-front-front-application"))[0]
+            | .action == "read" and .arguments == ["front-application"] and .outcome == "clean")
+        and (map(select(.operation == "resize-front-failure-windows"))[0]
+            | .action == "cli" and .kind == "evidence" and .outcome == "clean")' \
+        "${settings_sim}/calls.jsonl"
+    [[ "$(jq -s 'map(select(.operation == "failure-capture")) | length' "${settings_sim}/calls.jsonl")" == 1 ]]
+}
+
+@test "a plain failed assertion takes the untouched failure observations before its receipt (k165)" {
+    export settings_flags=resize-ignored
+    run_scenario
+    [[ "${status}" == 1 ]]
+    [[ "${output}" == *'FAILED: the window did not grow; resize acceptance is unestablished'* ]]
+    local at
+    at="$(call_index scenario-assertion)"
+    [[ "${at}" -gt 0 && "$(input_after "${at}")" == '[]' && ! -s "${scenario_legacy}" ]]
+    jq -se --argjson n "${at}" '.[$n - 1] | .action == "poll-step" and .outcome == "state-failed"' \
+        "${settings_sim}/calls.jsonl"
+    expect_order resize-grown-state assertion-front-application assertion-failure-windows \
+        failure-capture scenario-assertion
+    jq -se 'map(select(.operation == "assertion-front-application"))[0].outcome == "clean"' \
+        "${settings_sim}/calls.jsonl"
+    [[ "$(jq -s 'map(select(.operation == "failure-capture")) | length' "${settings_sim}/calls.jsonl")" == 1 ]]
+    [[ "$(jq -s 'map(select((.operation // "") | startswith("scenario-assertion"))) | length' \
+        "${settings_sim}/calls.jsonl")" == 1 ]]
+}
+
+# A poll that the scenario library ends records its state-failed receipt only
+# after the untouched observations (k165).
+@test "an exhausted count poll takes the untouched failure observations before its receipt (k165)" {
+    export settings_close_ignored=first-close
+    run_scenario
+    [[ "${status}" == 125 ]]
+    local at
+    at="$(call_index first-close-window-exhausted)"
+    [[ "${at}" -gt 0 && "$(input_after "${at}")" == '[]' && ! -s "${scenario_legacy}" ]]
+    jq -se --argjson n "${at}" '.[$n - 1] | .action == "poll-step" and .outcome == "state-failed"' \
+        "${settings_sim}/calls.jsonl"
+    # The poll keeps its ten reads, then the observations precede the receipt.
+    [[ "$(call_index first-close-window-11)" == -1 ]]
+    expect_order first-close-window-10 first-close-window-front-application \
+        first-close-window-failure-windows failure-capture first-close-window-exhausted
+    [[ "$(jq -s 'map(select(.operation == "failure-capture")) | length' "${settings_sim}/calls.jsonl")" == 1 ]]
+    # The message counts the windows of the list that the last read judged.
+    [[ "${output}" == *'FAILED: Koine has 1 windows, not 0'* ]]
+}
+
+@test "an exhausted reveal takes the untouched failure observations before its receipt (k165)" {
+    export settings_flags=scroll-ignored
+    run_scenario
+    [[ "${status}" == 125 ]]
+    [[ "${output}" == *'FAILED: scrolling did not bring .id=="login-launch" on screen'* ]]
+    local at
+    at="$(call_index least-size-login-exhausted)"
+    [[ "${at}" -gt 0 && "$(input_after "${at}")" == '[]' && ! -s "${scenario_legacy}" ]]
+    expect_order least-size-login-60-scroll least-size-login-front-application \
+        least-size-login-failure-windows failure-capture least-size-login-exhausted
+    [[ "$(jq -s 'map(select(.operation == "failure-capture")) | length' "${settings_sim}/calls.jsonl")" == 1 ]]
+}
+
+@test "a failed assertion before the Automation check takes no observer read (k165)" {
+    # The System Events observer cannot succeed yet, and its Apple event could
+    # raise the consent prompt. The window list and the screenshot still run.
+    export settings_flags=signature-invalid
+    run_scenario
+    [[ "${status}" == 1 ]]
+    [[ "${output}" == *'FAILED: the VM rejects the signature'* ]]
+    [[ "${output}" == *'the failure observer was not run'* ]]
+    expect_order signature-state assertion-failure-windows failure-capture scenario-assertion
+    [[ "$(call_index assertion-front-application)" == -1 ]]
+    [[ "$(call_index automation-request)" == -1 ]]
+    [[ "$(input_after "$(call_index scenario-assertion)")" == '[]' ]]
 }
 
 @test "two Koine windows after a selection are a multiple-windows failure" {

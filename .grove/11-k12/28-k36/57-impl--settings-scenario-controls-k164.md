@@ -10,6 +10,13 @@ Change no successful action, read count, wait or bound.
 Read the "Gaps and their owners" section of
 `docs/verification/settings-activation/ORDERING-PREFIX-RESULTS.md`. Consume
 the review `settings-focused-prefix-k163` and every earned integration first.
+Integration k165 repaired the failure observations, and
+`settings-exhausted-poll-observations-k166` closes gap G6 before this task.
+
+For the G1 reveal counts, reuse the simulator flag `scroll-ignored`. The k165
+control "an exhausted reveal takes the untouched failure observations before
+its receipt (k165)" already uses it to exhaust the reveal. A fully exhausted
+reveal makes 120 element reads and one frame read, not 60 reads in total.
 The simulated backend `Tests/scripts/fixtures/settings-scenario-backend.py`
 and the real backend with a fixture CLI are the existing seams.
 

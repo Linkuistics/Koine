@@ -1,0 +1,21 @@
+== Mutation: SETTINGS_OBSERVER_READY=1 from the start (the observer gate is open before the Automation check)
+1..1
+not ok 1 a failed assertion before the Automation check takes no observer read (k165)
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 769)
+#   `[[ "${output}" == *'the failure observer was not run'* ]]' failed
+
+== Mutation: the Automation check never opens the observer gate
+1..2
+not ok 1 a false front at the resize focus takes the untouched failure observations first (k165)
+# (from function `expect_order' in file Tests/scripts/vm-settings-scenario.bats, line 93,
+#  in test file Tests/scripts/vm-settings-scenario.bats, line 700)
+#   `expect_order resize-front-title-state resize-front-front-application \' failed
+# true
+# true
+# resize-front-front-application at -1, after 222
+not ok 2 a plain failed assertion takes the untouched failure observations before its receipt (k165)
+# (from function `expect_order' in file Tests/scripts/vm-settings-scenario.bats, line 93,
+#  in test file Tests/scripts/vm-settings-scenario.bats, line 720)
+#   `expect_order resize-grown-state assertion-front-application assertion-failure-windows \' failed
+# true
+# assertion-front-application at -1, after 238

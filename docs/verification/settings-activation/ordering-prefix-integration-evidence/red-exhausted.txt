@@ -1,0 +1,12 @@
+1..2
+not ok 1 an exhausted count poll takes the untouched failure observations before its receipt (k165)
+# (from function `expect_order' in file Tests/scripts/vm-settings-scenario.bats, line 93,
+#  in test file Tests/scripts/vm-settings-scenario.bats, line 742)
+#   `expect_order first-close-window-10 first-close-window-front-application \' failed
+# true
+# first-close-window-front-application at -1, after 88
+not ok 2 an exhausted reveal takes the untouched failure observations before its receipt (k165)
+# (from function `expect_order' in file Tests/scripts/vm-settings-scenario.bats, line 93,
+#  in test file Tests/scripts/vm-settings-scenario.bats, line 757)
+#   `expect_order least-size-login-60-scroll least-size-login-front-application \' failed
+# least-size-login-front-application at -1, after 534

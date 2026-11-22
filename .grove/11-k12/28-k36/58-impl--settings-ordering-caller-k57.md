@@ -150,3 +150,25 @@ k57 owns these items, which the comparison names:
   receipt, not by its status 125.
 
 Every other duty and hold above stays.
+
+## K165 failure observations handoff
+
+k165 integrates review k163 in the "Integration of review k163" section of
+`docs/verification/settings-activation/ORDERING-PREFIX-RESULTS.md`. Consume
+it after `settings-exhausted-poll-observations-k166` closes gap G6.
+
+Each failed assertion now takes an observer read, a window read and a
+screenshot before its state-failed receipt. Their operations are
+`OPERATION-front-application`, `OPERATION-failure-windows` and
+`failure-capture`. A failure through `settings_fail` or `settings_fail_as`
+outside a return uses the operation `assertion`. Read the receipts in ordinal
+order. A failed observer read latches the root before the receipt, and the
+receipt still classifies the assertion.
+
+Before the System Events Automation check passes, the observer is NOT RUN. The
+scenario prints a `NOT RUN` line, and no receipt records it. Do not read the
+missing observer read as a failed transport.
+
+An exhausted count poll keeps its `OPERATION-exhausted` receipt, its
+`state-failed` outcome and status 125. The scenario library now records that
+receipt after the observations. Every other duty and hold above stays.

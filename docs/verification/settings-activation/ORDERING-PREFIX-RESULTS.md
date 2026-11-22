@@ -148,6 +148,7 @@ under this directory.
 | A demonstrably unavailable completion holds before E01 | Owned by k54 | ORDERING-ONE-SHOT-RESULTS finds infeasibility not demonstrated | k54 task, readiness bullet |
 | Positive setup before each of the four selections, with screenshots | Met. The screenshot audit is owned by k54 | `settings_record_textedit`, `settings_expect_setup` | `vm-settings-scenario.bats`: "the positive setup precedes each of the four selections and uses the zero-count list". Red: `ordering-outcomes-evidence/red.txt` |
 | Raw count and front lists. The title audit on the same list | Met | `settings_await_windows`, `settings_koine_in_front`, `settings_title_audit` | "a wrong title on the front list is a window-identity failure, for later returns too". Red: `ordering-outcomes-evidence/red-title.txt` |
+| Untouched failure observations: after a failed assertion, one observer read, one window read and one screenshot before other collection | Met for the returns, the clean single-read failures, the resize front check, the count polls and the reveal (k165). The observer is NOT RUN before the Automation check. Polls that a facade exhausts are [gap G6](#gaps-and-their-owners) | `settings_return_observations`, `settings_failure_observations`, `settings_fail`, `settings_fail_as`, `settings_expect_front`, `settings_await_windows`, `settings_reveal` | The five k165 controls and "a disabled row is recorded and not clicked". Red: `ordering-prefix-integration-evidence/red.txt` and `red-exhausted.txt` |
 | Same-process zero windows versus process loss or unavailable liveness, for later returns too | Met | `settings_expect_return` | "zero windows with the same live process are a same-process recurrence, for later returns too", "a lost or replaced process after zero windows is process loss, not a recurrence" |
 | Preserve the physical route, actions, waits and poll bounds | Met by comparison. See [the baseline comparison](#later-ordinary-assertions-and-the-baseline) | `settings_select_return` and the facades | `vm-physical-evidence.bats`: "strict menu route retains exact raw completions, VM, ordinals and unchanged waits" |
 | Extract the prefix and check its bytes. E and A share the helpers and the rules | Met by this task | `scripts/vm-verify-menu-bar-prefix.sh`, `scripts/check-settings-prefix.py` | `vm-settings-prefix.bats`, all nine tests. Red: `ordering-prefix-evidence/red.txt` |
@@ -222,6 +223,7 @@ timing neutrality.
 | `KOINE_SETTINGS_TRACE=1` defaults write | Now a refusal | The protocol permits no enabling write |
 | `KOINE_VM_BASE` | Now required | The clone needs a declared base, as k64 integrated |
 | Count-poll failure messages at each return | Now an outcome class with the judged list | ORDERING-OUTCOMES-RESULTS "Outcome classes" |
+| Every failed assertion | Now an observer read and a window read before the failure screenshot. No input follows | The protocol, lines 187–193. [Integration of review k163](#integration-of-review-k163) |
 | Front-check messages | Now name the judged list, not a second read | ORDERING-SCENARIO-RESULTS "Outcomes and statuses" |
 | TextEdit quit | Now strict, with one absence read and an assertion | The protocol's one-shot table |
 | Corner drag after a failed down | No best-effort release in strict mode | ORDERING-PHYSICAL-RESULTS and review k159 P2-1 |
@@ -242,10 +244,12 @@ them. An exhausted poll now exits with status 125 while its receipt says
 
 ## Gaps and their owners
 
-Every gap below is a missing control or a missing comparison. None is a
-missing product behaviour in the scenario. The new task
-`settings-scenario-controls` owns G1 to G4, before k57. k57 owns G5 through
-its handoff.
+G1 to G5 are missing controls or comparisons. G6 is missing failure
+evidence, which review k163 found in a wider form (P2-1). No gap is a missing
+product behaviour in the scenario. The task `settings-scenario-controls` owns
+G1 to G4, before k57. k57 owns G5 through its handoff. The task
+`settings-exhausted-poll-observations` owns G6, before
+`settings-scenario-controls`.
 
 - **G1, scenario-level bounds and call-site counts.** No strict-lane control
   exhausts the reveal loop (60 reads), the calibration (30 scrolls) or the Add
@@ -270,6 +274,108 @@ its handoff.
   arguments or environment. The scenario reads `system`, `gatekeeper` and the
   process arguments, but nothing compares them with the declaration. The k57
   handoff now names this comparison.
+- **G6, observations after a facade's exhaustion.** Four reviewed facades
+  record their own state-failed receipt when a poll exhausts. They are the
+  launch endpoint poll, the System Events label and frame polls, the TextEdit
+  window poll and the exact Allow target. That receipt latches the root, and
+  the latch refuses the System Events observer. These failures keep only the
+  screenshot. See [the integration of review k163](#integration-of-review-k163).
+
+## Integration of review k163
+
+Review `settings-focused-prefix-k163` is in
+[ORDERING-PREFIX-REVIEW.md](ORDERING-PREFIX-REVIEW.md). Integration
+`settings-focused-prefix-k165` verified its one finding against the protocol
+and the source.
+
+### P2-1: a real issue, repaired
+
+The protocol requires an observer read, a window read and a screenshot after
+a failed assertion, before other collection. The returns took them since k67.
+Every other failure took only the screenshot. The review named the resize
+front check, `settings_fail` and the unavailable resize title audit. This
+integration counted the whole class of failed assertions, not only the named
+paths. Where the latch is written decides each repair.
+
+| Failure path | Before | Now |
+|---|---|---|
+| A clean single-read failure, through `settings_fail` or `settings_fail_as` | Receipt, then screenshot | Observer, window list and screenshot under the operation `assertion`, then the receipt |
+| A false front or title at `settings_expect_front`, including a false front beside an unavailable audit | Receipt or stop, then screenshot | Observer, window list and screenshot under the check's own operation, then the receipt or the stop, as at a return (k162) |
+| An exhausted count poll through `settings_await_windows` | The facade's receipt, then screenshot | The poll's deferred mode. Observer, window list and screenshot, then the same `OPERATION-exhausted` receipt with the same status |
+| An exhausted reveal | Receipt, then screenshot | Observer, window list and screenshot, then the receipt |
+| An exhausted poll inside a reviewed facade | Receipt, then screenshot | Unchanged. This is gap G6 |
+| An unavailable answer, through `settings_stop` | Screenshot | Unchanged. An unavailable answer is not a failed assertion |
+
+The observer is a System Events read. The latch refuses it, because an Apple
+event can change the guest. So each repair places the observations before the
+state-failed receipt. Simply moving the read after the receipt would record
+only a refusal, as the review warned.
+
+Each repair keeps the successful actions, reads, waits and bounds. No input
+follows a failure. The receipts keep their names and outcomes. The count
+poll's message now counts the windows of the list that its last read judged.
+The real run gave the same value from the record file. The legacy lanes of
+the facades are unchanged.
+
+### The observer before the Automation check: a visible trade-off
+
+Two clean failures can come before the System Events Automation check passes.
+They are the rejected signature and the refused System Events check. There,
+the observer read cannot succeed. Its Apple event can also raise the consent
+prompt, which changes the guest after the failure.
+
+So the observer is NOT RUN until that check passes, and the scenario prints a
+`NOT RUN` line. The window list and the screenshot still run. Every return and every later failure comes
+after the check.
+
+### Polls that a facade exhausts: gap G6
+
+Four reviewed facades record their exhaustion receipt themselves, so the root
+latches before the scenario can observe. The review did not name them, but
+they belong to the same duty. Their repair needs a deferred mode in four
+reviewed facade families, as k67 gave the return count poll. That change is
+too large for this integration, so the new task
+`settings-exhausted-poll-observations` owns it before
+`settings-scenario-controls`.
+
+### The other doubts
+
+The review raised three other doubts and no other finding. Each one stays as
+the review classified it:
+
+- **The boundary check.** The check is a textual recogniser. A
+  here-document can contain a matching quit line. The behavioural control
+  catches that omission. Retain both checks. This is a limit.
+- **Normalised calls.** The comparison drops the root and reduces upload
+  paths to base names. The installed and frozen-input audits stay with k57.
+  This is a limit.
+- **G1's counts.** A fully exhausted reveal makes 120 element reads and one
+  frame read, not 60 reads in total. The calibration makes one probe scroll
+  and 30 return scrolls. `settings-scenario-controls` applies these counts.
+  The k165 control "an exhausted reveal takes the untouched failure
+  observations before its receipt (k165)" reaches that exhaustion with the
+  simulator flag `scroll-ignored`.
+
+### Controls and verification
+
+Five new controls in `vm-settings-scenario.bats` carry "(k165)" in their
+names. Two existing controls gained order assertions. They are "a disabled
+row is recorded and not clicked" and "an unavailable title audit beside a
+false front predicate stays unavailable (k162)". Each control failed against
+the source before its repair. `red.txt` and `red-exhausted.txt` in
+[`ordering-prefix-integration-evidence/`](ordering-prefix-integration-evidence/)
+keep those runs. `mutations.txt` shows two observer-gate mutations, each
+detected.
+
+The simulator gained three variations. `settings_finder_front` puts a focused
+Finder window in front at one read. `settings_close_ignored` keeps the window
+open after one close. The flags `resize-ignored`, `scroll-ignored` and
+`signature-invalid` stop the resize, the scroll and the signature.
+
+`final-verification.txt` in the same directory runs the nineteen Taskfile
+checks of the k62 record. The prefix check passes unchanged, because the
+repair changes only the library, which E and A share. No VM, clone or runtime
+slot ran.
 
 ## Limits
 
@@ -311,6 +417,10 @@ come after the final run.
 
 - The review `settings-focused-prefix` (review-impl) reads the whole shared
   scenario, the prefix, its check and this comparison before any consumer.
+  Integration k165 repaired its finding. See
+  [the integration of review k163](#integration-of-review-k163).
+- `settings-exhausted-poll-observations` closes G6 before
+  `settings-scenario-controls`.
 - `settings-scenario-controls` adds the controls of G1 to G4 after the review
   and every earned integration.
 - k57 consumes this comparison in its complete pre-runtime reconciliation. It

@@ -22,6 +22,13 @@ use of the domain instead:
 - `settings_untitled_behind=OPERATION` answers that one window read with a
   focused Finder window in front of each Koine window, and each Koine window
   loses its title.
+- `settings_finder_front=OPERATION` answers that one window read with a focused
+  Finder window in front of each window. Each window keeps its title.
+- The flag `resize-ignored` leaves the window frame unchanged after a release,
+  `scroll-ignored` leaves the content where it is after a scroll, and
+  `signature-invalid` makes the signature read invalid.
+- `settings_close_ignored=OPERATION` leaves Koine's window open after that one
+  window close.
 - The model exposes a menu under a menu bar item only while that menu is open.
   This is the protocol's oracle, assumed here. It is not a native fact.
 """
@@ -292,8 +299,10 @@ def window_entry(state: dict[str, Any], app: str) -> dict[str, Any]:
     }
 
 
-def untitled_behind(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """A focused Finder window, then each window, with no title on Koine's."""
+def finder_in_front(
+    entries: list[dict[str, Any]], untitled: bool
+) -> list[dict[str, Any]]:
+    """A focused Finder window, then each window, untitled on Koine's if asked."""
     finder = {
         "title": "Desktop",
         "appName": "Finder",
@@ -307,7 +316,7 @@ def untitled_behind(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
     rest = []
     for entry in entries:
         entry = {**entry, "focused": False}
-        if entry["appName"] == "Koine":
+        if untitled and entry["appName"] == "Koine":
             entry.pop("title", None)
         rest.append(entry)
     return [finder, *rest]
@@ -460,11 +469,15 @@ def key(state: dict[str, Any], name: str, modifiers: list[str]) -> None:
 
 
 def scroll(state: dict[str, Any], dy: int) -> None:
+    if "scroll-ignored" in FLAGS:
+        return
     visible = state["frame"][3] - 30
     state["offset"] = max(0, min(CONTENT_HEIGHT - visible, state["offset"] - 5 * dy))
 
 
 def release(state: dict[str, Any], x: int, y: int) -> None:
+    if "resize-ignored" in FLAGS:
+        return
     left, top = state["frame"][:2]
     state["frame"][2] = max(440, x - left + 3)
     state["frame"][3] = max(352, y - top + 3)
@@ -569,7 +582,9 @@ def cli(state: dict[str, Any], arguments: list[str], root: Path) -> str:
     if (family, action) == ("agent", "windows"):
         entries = windows(state)
         if OPERATION == os.environ.get("settings_untitled_behind"):
-            entries = untitled_behind(entries)
+            entries = finder_in_front(entries, untitled=True)
+        elif OPERATION == os.environ.get("settings_finder_front"):
+            entries = finder_in_front(entries, untitled=False)
         return envelope({"windows": entries})
     if (family, action) == ("agent", "snapshot"):
         target = option(rest, "--window")
@@ -596,6 +611,8 @@ def cli(state: dict[str, Any], arguments: list[str], root: Path) -> str:
         elif action == "window-focus":
             front(state, app)
         elif action == "window-close" and app == "Koine":
+            if OPERATION == os.environ.get("settings_close_ignored"):
+                return envelope({"action": action, "success": True, "message": None})
             state["window"] = False
             state["closes"] += 1
             drop(state, "Koine")
@@ -782,7 +799,8 @@ def read(state: dict[str, Any], name: str, arguments: list[str]) -> dict[str, An
     elif name == "quarantine":
         fields = {"present": False}
     elif name == "signature":
-        fields = {"valid": True, "status": 0, "text": [f"{INSTALLED}: valid on disk"]}
+        valid = "signature-invalid" not in FLAGS
+        fields = {"valid": valid, "status": 0, "text": [f"{INSTALLED}: valid on disk"]}
     elif name == "signature-display":
         fields = {
             "authorities": ["Developer ID Application"],
