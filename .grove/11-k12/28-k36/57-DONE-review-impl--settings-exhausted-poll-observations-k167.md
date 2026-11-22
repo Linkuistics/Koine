@@ -46,3 +46,23 @@ The contract is the k166 task file, the k36 brief and lines 187–193 of
 ## Notes
 
 No VM, clone or signed subject. This review changes no source.
+
+## Decisions (running log)
+
+- 2026-11-23: Backend status 1 is not reserved for a clean false state.
+  `_guest_evidence_backend` latches an unexpected backend exit but returns its
+  original status. A failed Allow OCR backend can therefore reach
+  `settings_poll_failed` as 1 and produce a false exhaustion receipt. Record
+  this as a material failure-classification finding, derived from the source.
+- 2026-11-23: A clean menu-title mismatch still sends Escape and waits before
+  `settings_fail` takes the new observations. This defeats the protocol's
+  untouched failure capture. Record this as an incomplete k165 repair; keep
+  the successful menu-close path and the runtime holds in the integration's
+  contract.
+- 2026-11-23: The committed review document is
+  `docs/verification/settings-activation/ORDERING-EXHAUSTED-POLL-REVIEW.md`.
+  Read-only inspection matched sixteen reviewed source/test files to the
+  retained verification manifest and matched the manifest and output-log
+  digests to its receipt. This review reran no development checks. Cut one
+  adjacent integration before k164 to triage the two findings; they directly
+  unblock its consumption of the failure-observation duty.
