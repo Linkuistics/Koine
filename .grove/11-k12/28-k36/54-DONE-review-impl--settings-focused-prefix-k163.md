@@ -53,3 +53,30 @@ No clone, signed subject or runtime slot exists. Cut an integration only for
 findings that pass the acceptance and material-risk threshold. The controls
 task `settings-scenario-controls-k164` follows this review. k57 and k54 stay
 held.
+
+## Decisions (running log)
+
+- 2026-11-23: Review k62 at commit `f731a906` in Tier 2. Read the eight
+  archived contracts directly. The graph generation is
+  `2026-11-22T17:29:46Z`; direct source reads cover its reported shell parse
+  gaps and the Bats and archived-text paths without tracked metadata.
+- 2026-11-23: The protocol's untouched failure observations are missing from
+  the resize front-check failure path and the generic assertion handlers.
+  Record this as a source-derived finding, not as a fixed issue. It needs
+  integration before k164 and the k57 reconciliation. Run the two relevant
+  reusable checks as this task explicitly requires, with no VM and no edits
+  to implementation or test code.
+- 2026-11-23: The current prefix correspondence and its nine reusable
+  controls pass. A here-document counterexample limits what the textual
+  boundary check alone proves; the separate behavioural control detects that
+  omitted quit. Record this as a limit, not another repair obligation. Keep
+  the normalised-call comparison's root and upload-path limits explicit.
+- 2026-11-23: The documentation check reports only the two existing missing
+  archived-context targets owned by k23. Preserve that adverse result and
+  leave those historical files unchanged.
+- 2026-11-23: Both requested Taskfile checks exit 0, with nine prefix tests
+  and 33 complete-scenario tests passing. Retain their complete output beside
+  `ORDERING-PREFIX-REVIEW.md`. One source-derived P2 finding earns a flat
+  integration immediately before k164. The integration reads this review's
+  commit and triages the finding; this review repairs no code and closes no
+  product or causal obligation.

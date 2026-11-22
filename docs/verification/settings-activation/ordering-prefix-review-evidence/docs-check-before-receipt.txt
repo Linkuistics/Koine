@@ -1,0 +1,5 @@
+task: [check:docs] scripts/check-doc-links.py 
+docs/verification/settings-activation/ORDERING-PREFIX-REVIEW.md: missing target ordering-prefix-review-evidence/docs-check.txt
+docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md: missing target context-predicate.txt
+docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md: missing target context-qualify-filter.sh
+task: Failed to run task "check:docs": exit status 1

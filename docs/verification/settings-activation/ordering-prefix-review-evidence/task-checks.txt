@@ -1,0 +1,69 @@
+task: [check:vm-settings-prefix] python3 -I scripts/check-settings-prefix.py
+scripts/vm-verify-menu-bar-prefix.sh is the first 155 lines (9000 bytes) of scripts/vm-verify-menu-bar.sh, through the TextEdit quit; line 156 onwards is not in the prefix
+task: [check:vm-settings-prefix] bash -n scripts/vm-verify-menu-bar-prefix.sh Tests/scripts/vm-settings-prefix.bats
+task: [check:vm-settings-prefix] shellcheck -x -e SC2034 scripts/vm-verify-menu-bar-prefix.sh
+task: [check:vm-settings-prefix] shellcheck -x Tests/scripts/vm-settings-prefix.bats
+task: [check:vm-settings-prefix] shfmt -d -i 4 scripts/vm-verify-menu-bar-prefix.sh Tests/scripts/vm-settings-prefix.bats
+task: [check:vm-settings-prefix] python3 -m py_compile scripts/check-settings-prefix.py
+task: [check:vm-settings-prefix] uvx ruff@0.17.3 check scripts/check-settings-prefix.py
+All checks passed!
+task: [check:vm-settings-prefix] uvx ruff@0.17.3 format --check scripts/check-settings-prefix.py
+1 file already formatted
+task: [check:vm-settings-prefix] uvx pyright@1.1.414 scripts/check-settings-prefix.py
+0 errors, 0 warnings, 0 informations
+task: [check:vm-settings-prefix] bats Tests/scripts/vm-settings-prefix.bats
+1..9
+ok 1 the prefix is the exact leading bytes of the scenario through the TextEdit quit
+ok 2 a changed, missing or extra byte in the prefix fails the check
+ok 3 a scenario change before the quit fails the check until the prefix is extracted again
+ok 4 a scenario without exactly one TextEdit quit before the resize step is refused
+ok 5 the prefix keeps the execute permission of the scenario
+ok 6 the prefix runs the scenario's calls and waits through the TextEdit quit and sends nothing after it
+ok 7 a failure inside the prefix has the same outcome in the prefix and in the scenario
+ok 8 a signal inside the prefix stops it as it stops the scenario
+ok 9 the Task entry of the prefix records its status like the complete scenario's entry
+task: [check:vm-settings-scenario] bash -n scripts/vm-settings-scenario-lib.sh scripts/vm-verify-menu-bar.sh Tests/scripts/vm-settings-scenario.bats
+task: [check:vm-settings-scenario] shellcheck -x scripts/vm-settings-scenario-lib.sh scripts/vm-verify-menu-bar.sh Tests/scripts/vm-settings-scenario.bats
+task: [check:vm-settings-scenario] shfmt -d -i 4 scripts/vm-settings-scenario-lib.sh scripts/vm-verify-menu-bar.sh Tests/scripts/vm-settings-scenario.bats
+task: [check:vm-settings-scenario] python3 -m py_compile Tests/scripts/fixtures/settings-scenario-backend.py
+task: [check:vm-settings-scenario] uvx ruff@0.17.3 check Tests/scripts/fixtures/settings-scenario-backend.py
+All checks passed!
+task: [check:vm-settings-scenario] uvx ruff@0.17.3 format --check Tests/scripts/fixtures/settings-scenario-backend.py
+1 file already formatted
+task: [check:vm-settings-scenario] uvx pyright@1.1.414 Tests/scripts/fixtures/settings-scenario-backend.py
+0 errors, 0 warnings, 0 informations
+task: [check:vm-settings-scenario] bats Tests/scripts/vm-settings-scenario.bats
+1..33
+ok 1 the adopted scenario runs to PASSED with every call in one root initialised first
+ok 2 the adopted scenario keeps the checked confirmations in their existing positions
+ok 3 an unavailable answer in any transport family stops every later scenario input
+ok 4 a failed read keeps the legacy failure message
+ok 5 a clean false state records the legacy message as state-failed and stops
+ok 6 a fenced legacy transport latches instead of dispatching
+ok 7 KOINE_SETTINGS_TRACE=1 refuses before the first launch and sends nothing for it
+ok 8 a missing golden base latches before any VM start
+ok 9 an existing evidence root is refused before any transport
+ok 10 HUP during a scenario wait records the signal and sends nothing more
+ok 11 TERM in the settling sleep after a clean held point sends no further input or release
+ok 12 a failed settling wait after a clean held point stops input and release without a trap
+ok 13 INT during a held-point attempt keeps it interrupted and sends no release
+ok 14 the caller inventory finds no legacy transport in the adopted scenario surface
+ok 15 a request label without its value is unavailable before the screenshot and the denials
+ok 16 an earlier transcript with its default root survives a refused run in the same second
+ok 17 an earlier transcript survives a run in the same second with a distinct root
+ok 18 the positive setup precedes each of the four selections and uses the zero-count list
+ok 19 a clean setup mismatch before any of the four selections is failed setup and opens no menu
+ok 20 missing or failed setup evidence is unavailable and opens no menu
+ok 21 two TextEdit processes after the preparation are failed setup
+ok 22 each return records its route and its closed menu, and the Quit selections keep theirs
+ok 23 the setup and the closed-menu checks enumerate the menus under each item (k162)
+ok 24 a disabled row is recorded and not clicked
+ok 25 a menu that stays open after the click makes the outcome unresolved
+ok 26 a wrong title on the front list is a window-identity failure, for later returns too
+ok 27 a Koine window without a title makes the audit unavailable
+ok 28 an unavailable title audit beside a false front predicate stays unavailable (k162)
+ok 29 two Koine windows after a selection are a multiple-windows failure
+ok 30 zero windows with the same live process are a same-process recurrence, for later returns too
+ok 31 a lost or replaced process after zero windows is process loss, not a recurrence
+ok 32 a failed liveness read leaves the zero-window outcome unresolved
+ok 33 an app reopen that shows no window compares the silent launch's process
