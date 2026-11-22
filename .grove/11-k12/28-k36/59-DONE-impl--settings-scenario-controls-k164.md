@@ -56,3 +56,29 @@ and the real backend with a fixture CLI are the existing seams.
 No VM, clone or signed subject. G5, the comparison with the declared
 environment, belongs to k57. A source change before the TextEdit quit needs a
 new prefix extraction and the check.
+
+## Decisions (running log)
+
+- 2026-11-23: G3 uses the real error shape. TestAnyware v2.7.0 `output.rs` maps
+  ELEMENT_NOT_FOUND and TEXT_NOT_FOUND to exit 3 in `exit_code_for`, and it puts
+  `code` and `message` at the top level of the envelope.
+- 2026-11-23: G2 parses each script with `shfmt --to-json` and follows calls
+  from the scenario. It enumerates the reachable surface and then classifies
+  each call, so a new helper cannot escape a list of patterns.
+- 2026-11-23: A predicate is constant-true only if it yields `true` for every
+  sample input and every value substituted for a shell expansion.
+- 2026-11-23: The transport scan found a real defect. `trap cleanup EXIT` in
+  `vm-verify-lib.sh` could send a bare VM stop when a library failed to load
+  before `settings_begin`. The library now skips that trap for the scenario and
+  its prefix. The scenario bytes stay the same, and other VM scripts keep their
+  stop. An empty work directory can remain after such a failure.
+- 2026-11-23: The final controls fail against the original trap in two tests.
+  The other thirteen hold existing behaviour, and 21 source mutations show that
+  they can fail. Each scan also detects its own mutations.
+- 2026-11-23: The change earns no new review chain before k57. The repair is one
+  bounded guard, it changes no design, and detected mutations support it. k57
+  still reconciles the controls and the scan before any freeze.
+- 2026-11-23: The recorded run of the nineteen Taskfile checks exits 0, with 366
+  passing tests and no failure. None of its 4,576 subjects changed. The prefix
+  bytes stay the same. `check:docs` keeps only the two existing k23 failures. No
+  VM, clone or runtime slot ran.

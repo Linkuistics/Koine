@@ -385,3 +385,24 @@ assert_ui_latched() {
     jq -e '.outcome=="unavailable"' "${ui_root}/000001/result.json"
     assert_ui_latched
 }
+
+@test "typed ELEMENT_NOT_FOUND with CLI status 3 is unavailable and never an absent element (k164)" {
+    local mode
+    # v2.7.0 output.rs: top-level code and message, and exit_code_for gives 3.
+    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/output.rs
+    for mode in optional optional-vertical position-y poll-absent; do
+        reset_ui "element-not-found-${mode}"
+        echo '{"schema_version":"1.0","ok":false,"code":"ELEMENT_NOT_FOUND","message":"no element","remediation":"","details":{}}' >"${ui_replies}/1.json"
+        echo 3 >"${ui_replies}/1.exit"
+        if [[ "${mode}" == poll-absent ]]; then
+            run await_guest_element "${ui_root}" typed Koine '.id=="grant-label"' absent
+        else
+            run read_guest_element "${ui_root}" typed Koine '.id=="grant-label"' "${mode}"
+        fi
+        [[ "${status}" == 125 && "${output}" != null ]]
+        [[ "$(wc -l <"${ui_calls}" | tr -d ' ')" == 1 && ! -s "${ui_waits}" ]]
+        cmp "${ui_replies}/1.json" "${ui_root}/000001/raw.stdout"
+        jq -e '.outcome == "unavailable" and .cli_status == 3' "${ui_root}/000001/result.json"
+        assert_ui_latched
+    done
+}

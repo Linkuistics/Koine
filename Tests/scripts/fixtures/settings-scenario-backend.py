@@ -37,6 +37,12 @@ use of the domain instead:
   chosen return, `quit-row-absent` for the Quit row, `textedit-no-window` for
   the TextEdit window and `allow-substring` for the exact Allow target. Under
   `label-stuck`, each read also keeps the record that the failure message reads.
+- Each of these flags drives one scenario-level control (k164). `add-absent`
+  removes the Add button of the Accessibility pane. `silent-launch-window` shows
+  a window at a launch after setup. `requests-off-screen` leaves the request
+  rows above the visible content after their selection. `element-no-height`
+  omits the height of `login-launch`. `element-no-position` omits the vertical
+  position of `grant-label`.
 - The model exposes a menu under a menu bar item only while that menu is open.
   This is the protocol's oracle, assumed here. It is not a native fact.
 """
@@ -227,6 +233,10 @@ def koine_elements(state: dict[str, Any]) -> list[dict[str, Any]]:
         # A failed AX copy omits the value. It is not an empty string.
         if "request-label-no-value" in FLAGS and ident.startswith("request-label-"):
             del element["value"]
+        if "element-no-height" in FLAGS and ident == "login-launch":
+            del element["sizeHeight"]
+        if "element-no-position" in FLAGS and ident == "grant-label":
+            del element["positionY"]
         elements.append(element)
     for element in elements:
         element.update(enabled=True, focused=False, childCount=0, actions=[])
@@ -234,17 +244,19 @@ def koine_elements(state: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def settings_elements(state: dict[str, Any]) -> list[dict[str, Any]]:
-    elements = [
-        {
-            "role": "button",
-            "platformRole": "AXButton",
-            "label": "Add",
-            "positionX": 500,
-            "positionY": 600,
-            "sizeWidth": 30,
-            "sizeHeight": 20,
-        }
-    ]
+    elements: list[dict[str, Any]] = []
+    if "add-absent" not in FLAGS:
+        elements.append(
+            {
+                "role": "button",
+                "platformRole": "AXButton",
+                "label": "Add",
+                "positionX": 500,
+                "positionY": 600,
+                "sizeWidth": 30,
+                "sizeHeight": 20,
+            }
+        )
     if state["granted"]:
         elements.append(
             {
@@ -398,7 +410,10 @@ def choose(state: dict[str, Any], title: str) -> None:
     if title == "Settings…":
         show_koine(state)
     elif title.startswith("Review "):
-        show_koine(state, CONTENT["request-label-1"])
+        offset = CONTENT["request-label-1"]
+        if "requests-off-screen" in FLAGS:
+            offset = CONTENT_HEIGHT - (state["frame"][3] - 30)
+        show_koine(state, offset)
     elif title == "Accessibility Not Granted…":
         show_koine(state, CONTENT["accessibility-status"])
     elif title == "Quit Koine":
@@ -860,7 +875,10 @@ def submission(state: dict[str, Any], name: str) -> dict[str, Any]:
             if "reopen-no-window" not in FLAGS:
                 show_koine(state)
         else:
-            start_koine(state, window=not state["granted"])
+            start_koine(
+                state,
+                window=not state["granted"] or "silent-launch-window" in FLAGS,
+            )
     elif name == "open-textedit":
         state["textedit"] = True
         front(state, "TextEdit")

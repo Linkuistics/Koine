@@ -117,7 +117,12 @@ cleanup() {
         testanyware vm stop "${VM_ID}" >/dev/null 2>&1 || true
     fi
 }
-trap cleanup EXIT
+# The strict Settings scenario and its prefix send no VM stop. The finite caller
+# owns the exact stop, so a failure before settings_begin must not send one.
+case "${BASH_SOURCE[1]##*/}" in
+vm-verify-menu-bar.sh | vm-verify-menu-bar-prefix.sh) ;;
+*) trap cleanup EXIT ;;
+esac
 
 # The accessibility tree of Koine's windows, deep enough to reach a grant row's
 # children. SwiftUI controls here refuse `agent press` (HTTP 400), so elements

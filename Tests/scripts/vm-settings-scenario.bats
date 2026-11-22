@@ -283,6 +283,17 @@ signal_driver() {
 #!/bin/bash
 set -euo pipefail
 jq -cn --args '$ARGS.positional' -- "$@" >>"${signal_calls}"
+# pointer_fault is exit:POINT or kill:POINT, and POINT is up or down:N. An exit
+# is a failed CLI. A kill ends the backend before its result, so the attempt is partial.
+point=''
+case "$2" in
+    mouse-down) point="down:$(($(grep -c mouse-down "${signal_calls}") - 1))" ;;
+    mouse-up) point=up ;;
+esac
+if [[ -n "${point}" && "${pointer_fault:-}" == *":${point}" ]]; then
+    if [[ "${pointer_fault}" == kill:* ]]; then kill -KILL "${PPID}"; fi
+    exit 7
+fi
 case "$1 $2" in
     'agent windows') payload='{"windows":[{"title":"Koine Settings","appName":"Koine","windowType":"standard","focused":true,"positionX":40,"positionY":40,"sizeWidth":480,"sizeHeight":712}]}' ;;
     'input move') payload=$(jq -cn --argjson x "$3" --argjson y "$4" '{x:$x,y:$y}') ;;
@@ -1055,4 +1066,397 @@ SLEEP
     [[ "$(call_index reopen-menu-closed)" == -1 ]]
     expect_order reopen-identity reopen-window-10 reopen-liveness reopen-front-application \
         reopen-window-exhausted scenario-assertion-zero-window-same-process
+}
+
+# --- scenario-level controls (k164) -----------------------------------------
+
+# record_all_waits: the sleep stub logs "OPERATION SECONDS" for each wait, where
+# OPERATION is the call that the wait follows.
+record_all_waits() {
+    cat >"${BATS_TEST_TMPDIR}/bin/sleep" <<'SLEEP'
+#!/bin/bash
+printf '%s %s\n' "$(tail -1 "${settings_sim}/calls.jsonl" | jq -r '.operation // ""')" "$1" >>"${scenario_waits}.ops"
+exit 0
+SLEEP
+}
+
+# operation_count REGEX: the calls whose operation matches.
+operation_count() {
+    jq -s --arg re "$1" 'map(select((.operation // "") | test($re))) | length' \
+        "${settings_sim}/calls.jsonl"
+}
+
+# wait_count REGEX SECONDS: the waits of that length after a matching call.
+wait_count() {
+    awk -v re="$1" -v seconds="$2" '$1 ~ re && $2 == seconds { n++ } END { print n + 0 }' \
+        "${scenario_waits}.ops"
+}
+
+@test "a failed library load before the root sends no VM stop, and other scripts keep theirs (k164)" {
+    local entry library saved="${BATS_TEST_TMPDIR}/saved-library"
+    for entry in vm-verify-menu-bar.sh vm-verify-menu-bar-prefix.sh; do
+        for library in vm-verify-desktop-lib.sh vm-settings-scenario-lib.sh vm-window-resize-lib.sh; do
+            reset_run
+            : >"${scenario_legacy}"
+            cp "${scenario_repo}/scripts/${library}" "${saved}"
+            echo 'return 3' >"${scenario_repo}/scripts/${library}"
+            run "${scenario_repo}/scripts/${entry}"
+            cp "${saved}" "${scenario_repo}/scripts/${library}"
+            if [[ "${status}" == 0 || -s "${scenario_legacy}" || -s "${settings_sim}/calls.jsonl" ]]; then
+                echo "${entry} with ${library}: status ${status}; legacy: $(cat "${scenario_legacy}")"
+                return 1
+            fi
+        done
+    done
+    # Another VM script that sources the library keeps the legacy cleanup stop.
+    cat >"${scenario_repo}/scripts/vm-other-verify.sh" <<'SH'
+#!/bin/bash
+set -euo pipefail
+cd "$(dirname "$0")/.."
+source scripts/signing-env.sh
+source scripts/vm-verify-lib.sh
+SH
+    chmod +x "${scenario_repo}/scripts/vm-other-verify.sh"
+    : >"${scenario_legacy}"
+    run "${scenario_repo}/scripts/vm-other-verify.sh"
+    [[ "${status}" == 0 ]]
+    grep -qx 'vm stop exact-settings-vm' "${scenario_legacy}"
+}
+
+@test "an exhausted reveal makes 120 element reads, one frame read and 60 scrolls with their waits (k164)" {
+    record_all_waits
+    export settings_flags=scroll-ignored
+    run_scenario
+    [[ "${status}" == 125 ]]
+    [[ "$(operation_count '^least-size-login-frame$')" == 1 ]]
+    [[ "$(operation_count '^least-size-login-[0-9]+$')" == 60 ]]
+    [[ "$(operation_count '^least-size-login-[0-9]+-position$')" == 60 ]]
+    [[ "$(operation_count '^least-size-login-[0-9]+-scroll$')" == 60 ]]
+    [[ "$(jq -s 'map(select(.action == "cli" and ((.operation // "") | startswith("least-size-login-"))
+        and (.arguments | index("snapshot")))) | length' "${settings_sim}/calls.jsonl")" == 120 ]]
+    [[ "$(call_index least-size-login-61)" == -1 ]]
+    [[ "$(wait_count '^least-size-login-[0-9]+-scroll$' 1)" == 60 ]]
+}
+
+@test "the calibration sends one probe and exactly 30 scrolls back, each with its wait (k164)" {
+    local case flags dy
+    for case in :--dy=10 scroll-ignored:--dy=-10; do
+        flags="${case%%:*}" dy="${case#*:}"
+        reset_run
+        rm -f "${scenario_waits}.ops"
+        record_all_waits
+        export settings_flags="${flags}"
+        run_scenario
+        expect_order calibrate-before calibrate-scroll calibrate-after calibrate-back-1 calibrate-back-30
+        [[ "$(operation_count '^calibrate-scroll$')" == 1 ]]
+        [[ "$(operation_count '^calibrate-back-[0-9]+$')" == 30 ]]
+        [[ "$(call_index calibrate-back-31)" == -1 ]]
+        [[ "$(wait_count '^calibrate-back-[0-9]+$' 1)" == 30 ]]
+        jq -se --arg dy "${dy}" 'map(select((.operation // "") | test("^calibrate-back-")))
+            | all(.[]; .arguments | index($dy))' "${settings_sim}/calls.jsonl"
+    done
+}
+
+@test "a missing Add button makes 15 reads and 14 waits and then fails before any click (k164)" {
+    record_all_waits
+    export settings_flags=add-absent
+    run_scenario
+    [[ "${status}" == 1 ]]
+    [[ "${output}" == *'FAILED: the Accessibility pane did not show its Add button'* ]]
+    [[ "$(operation_count '^accessibility-add-[0-9]+$')" == 15 ]]
+    [[ "$(operation_count '^accessibility-add-[0-9]+-state$')" == 15 ]]
+    [[ "$(call_index accessibility-add-16)" == -1 ]]
+    [[ "$(wait_count '^accessibility-add-[0-9]+-state$' 2)" == 14 ]]
+    [[ "$(wait_count '^accessibility-add-15-state$' 2)" == 0 ]]
+    expect_order accessibility-add-15-state assertion-front-application assertion-failure-windows \
+        failure-capture scenario-assertion
+    [[ "$(call_index accessibility-add-click)" == -1 && "$(call_index consent-password)" == -1 ]]
+    [[ "$(input_after "$(call_index scenario-assertion)")" == '[]' ]]
+}
+
+@test "the scenario's TextEdit call makes one poll read and one assertion read (k164)" {
+    run_scenario
+    [[ "${status}" == 0 ]]
+    jq -se 'map(.operation) as $o | $o[($o | index("textedit-launch")) + 1:($o | index("textedit-move"))]
+        == ["textedit-window-1", "textedit-window-1-state", "textedit-window-assertion",
+            "textedit-window-assertion-state"]' "${settings_sim}/calls.jsonl"
+    # An exhausted poll keeps fifteen reads, their waits and the one assertion.
+    reset_run
+    record_all_waits
+    export settings_flags=textedit-no-window
+    run_scenario
+    [[ "$(operation_count '^textedit-window-[0-9]+$')" == 15 ]]
+    [[ "$(operation_count '^textedit-window-assertion$')" == 1 ]]
+    [[ "$(wait_count '^textedit-window-[0-9]+-state$' 2)" == 15 ]]
+}
+
+@test "the scenario's on-screen and position reads keep their own element modes (k164)" {
+    run_scenario
+    [[ "${status}" == 0 ]]
+    local vertical='. == null or (type == "object" and all(.positionY, .sizeHeight;'
+    local position='type == "object" and (.positionY | type == "number" and isfinite)'
+    jq -se --arg mode "${vertical}" 'map(select((.operation // "")
+            | test("^(requests|accessibility)-on-screen$|^least-size-[a-z]+-[0-9]+$"))) as $reads
+        | ($reads | length) >= 5 and all($reads[]; .arguments[0] | contains($mode))' \
+        "${settings_sim}/calls.jsonl"
+    jq -se --arg mode "${position}" 'map(select((.operation // "")
+            | test("^calibrate-(before|after)$|-[0-9]+-position$"))) as $reads
+        | ($reads | length) >= 2 and all($reads[]; .arguments[0] | contains($mode))' \
+        "${settings_sim}/calls.jsonl"
+    # Behaviour: each mode refuses the attribute that it alone requires.
+    reset_run
+    export settings_flags=element-no-height
+    run_scenario
+    [[ "${status}" == 125 ]]
+    jq -se 'map(select(.operation == "least-size-login-1"))[0].outcome == "unavailable"' \
+        "${settings_sim}/calls.jsonl"
+    [[ "$(call_index calibrate-after)" -gt 0 ]]
+    reset_run
+    export settings_flags=element-no-position
+    run_scenario
+    [[ "${status}" == 125 ]]
+    [[ "${output}" == *'the calibration element could not be read'* ]]
+    jq -se 'map(select(.operation == "calibrate-before"))[0].outcome == "unavailable"' \
+        "${settings_sim}/calls.jsonl"
+    [[ "$(call_index calibrate-scroll)" == -1 ]]
+}
+
+@test "a window at the silent launch fails its assertion before the reopen (k164)" {
+    export settings_flags=silent-launch-window
+    run_scenario
+    [[ "${status}" == 1 ]]
+    [[ "${output}" == *'FAILED: the window opened though setup is complete'* ]]
+    jq -se 'map(select(.operation == "silent-launch-windows-state"))[0].arguments[1] == "1"' \
+        "${settings_sim}/calls.jsonl"
+    expect_order silent-launch-identity silent-launch-windows-state assertion-front-application \
+        assertion-failure-windows failure-capture scenario-assertion
+    [[ "$(call_index reopen)" == -1 ]]
+    [[ "$(input_after "$(call_index scenario-assertion)")" == '[]' ]]
+}
+
+@test "a clean on-screen negative stays apart from a failed read (k164)" {
+    export settings_flags=requests-off-screen
+    run_scenario
+    [[ "${status}" == 1 ]]
+    [[ "${output}" == *'FAILED: the window did not scroll to the requests'* ]]
+    jq -se 'map(select(.operation == "requests-on-screen"))[0].outcome == "clean"' "${settings_sim}/calls.jsonl"
+    jq -se 'map(select(.operation == "requests-on-screen-state"))[0].arguments[1] == "1"' \
+        "${settings_sim}/calls.jsonl"
+    expect_order requests-on-screen-state assertion-failure-windows failure-capture scenario-assertion
+    local case fault code
+    for case in requests-on-screen:125 requests-on-screen:1 least-size-login-1:125 least-size-login-1:1; do
+        fault="${case%:*}" code="${case#*:}"
+        reset_run
+        export settings_flags='' settings_fault="${fault}" settings_fault_status="${code}"
+        run_scenario
+        if [[ "${status}" != 125 || "$(call_index "${fault}-state")" != -1 ||
+        "$(call_index "${fault}-position")" != -1 || "$(call_index "${fault}-scroll")" != -1 ||
+        "$(operation_count '^scenario-assertion')" != 0 ]]; then
+            echo "fault ${case}: status ${status}"
+            printf '%s\n' "${output}" | tail -4
+            return 1
+        fi
+    done
+}
+
+# surface_scan ENTRY: the report of the static scan on the copied repository.
+surface_scan() {
+    python3 -I "${BATS_TEST_DIRNAME}/fixtures/settings-surface-scan.py" "${scenario_repo}/scripts/$1"
+}
+
+@test "the surface scan classifies each legacy transport that the scenario reaches (k164)" {
+    local entry report resize
+    for entry in vm-verify-menu-bar.sh vm-verify-menu-bar-prefix.sh; do
+        report="$(surface_scan "${entry}")"
+        # The prefix stops before the resize, so only the complete scenario
+        # reaches the corner drag and its two root-unset transports.
+        resize='[["vm-window-resize-lib.sh", "drag_window_corner", "root-unset"],
+            ["vm-window-resize-lib.sh", "drag_window_corner", "root-unset"]]'
+        if [[ "${entry}" == vm-verify-menu-bar-prefix.sh ]]; then
+            resize='[]'
+            [[ "$(jq '.functions | index("drag_window_corner")' <<<"${report}")" == null ]]
+        else
+            jq -e '.functions | index("drag_window_corner")' <<<"${report}"
+        fi
+        # Positive control: the scan reaches the deepest helpers of each family.
+        jq -e '.functions as $f | all("_physical_cli", "scenario_input",
+            "_sysevents_poll_as", "_await_guest_windows", "click_guest_allow", "capture_guest_evidence",
+            "upload_guest_file", "start_guest_vm", "_guest_evidence_backend"; . as $n | $f | index($n))' <<<"${report}"
+        [[ "$(jq -c '.dynamic' <<<"${report}")" == '[]' ]]
+        # Each transport is in a lane that needs an unset root.
+        jq -e --argjson resize "${resize}" '[.legacy[] | select(.kind == "call" and .command == "testanyware")
+            | [.file, .function, .lane]] == ([
+            ["vm-input-evidence-lib.sh", "scenario_input", "root-unset"],
+            ["vm-physical-evidence-lib.sh", "_physical_cli", "root-unset"],
+            ["vm-physical-evidence-lib.sh", "_physical_cli", "root-unset"]] + $resize)' <<<"${report}"
+        # The one other legacy call is a failure message in the same lane.
+        jq -e '[.legacy[] | select(.kind == "call" and .command != "testanyware")
+            | [.command, .function, .lane]] == [["fail", "_physical_fail", "root-unset"]]' <<<"${report}"
+        # The one legacy function reached only prints a step heading.
+        jq -e '[.legacy[] | select(.kind == "function") | .function] == ["step"]' <<<"${report}"
+    done
+}
+
+@test "the surface scan detects an unguarded transport in a helper or a restored trap (k164)" {
+    local scripts="${scenario_repo}/scripts" saved="${BATS_TEST_TMPDIR}/saved-library" report
+    # Mutation: the input lane no longer tests for an unset root.
+    cp "${scripts}/vm-input-evidence-lib.sh" "${saved}"
+    # shellcheck disable=SC2016 # The pattern names shell text literally.
+    sed -i '' 's/if \[\[ ! "${KOINE_VM_EVIDENCE_ROOT+x}" \]\]; then/if [[ -n "${operation}" ]]; then/' \
+        "${scripts}/vm-input-evidence-lib.sh"
+    report="$(surface_scan vm-verify-menu-bar.sh)"
+    cp "${saved}" "${scripts}/vm-input-evidence-lib.sh"
+    jq -e 'any(.legacy[]; .function == "scenario_input" and .lane == "unguarded")' <<<"${report}"
+    # Mutation: a new transport in a helper that only the facades call.
+    cp "${scripts}/vm-guest-exec-lib.sh" "${saved}"
+    sed -i '' 's/^cli_guest_evidence() {$/cli_guest_evidence() {\n    testanyware agent windows --json/' \
+        "${scripts}/vm-guest-exec-lib.sh"
+    report="$(surface_scan vm-verify-menu-bar.sh)"
+    cp "${saved}" "${scripts}/vm-guest-exec-lib.sh"
+    jq -e 'any(.legacy[]; .function == "cli_guest_evidence" and .lane == "unguarded")' <<<"${report}"
+    # Mutation: the legacy cleanup trap applies to the scenario again.
+    cp "${scripts}/vm-verify-lib.sh" "${saved}"
+    # shellcheck disable=SC2016 # The pattern names shell text literally.
+    sed -i '' '/^case "${BASH_SOURCE\[1\]##\*\/}" in$/,/^esac$/c\
+trap cleanup EXIT
+' "${scripts}/vm-verify-lib.sh"
+    grep -qx 'trap cleanup EXIT' "${scripts}/vm-verify-lib.sh"
+    report="$(surface_scan vm-verify-menu-bar.sh)"
+    cp "${saved}" "${scripts}/vm-verify-lib.sh"
+    jq -e 'any(.legacy[]; .function == "cleanup" and .lane == "unguarded")' <<<"${report}"
+}
+
+@test "the surface scan finds no constant-true predicate and detects each mutation (k164)" {
+    local scripts="${scenario_repo}/scripts" saved="${BATS_TEST_TMPDIR}/saved-library" report index
+    report="$(surface_scan vm-verify-menu-bar.sh)"
+    # Positive control: predicates of each seam, literal, composed and built.
+    jq -e '.predicate_count >= 50 and (.predicates as $p | all(".diagnostics_disabled == true",
+        ".value | length > 0", ".selected == []", "(.absent | not) and .value == \"Koine\"";
+        . as $n | $p | index($n)))
+        and any(.predicates[]; contains(".button == \"left\""))
+        and any(.predicates[]; contains("def number_field"))' <<<"${report}"
+    [[ "$(jq -c '.constant_true' <<<"${report}")" == '[]' && "$(jq -c '.unparsed' <<<"${report}")" == '[]' ]]
+    # Each mutation makes one real predicate constant, by one route to the gate:
+    # a forwarded literal, a local state, a disjunction, a variable and a builder.
+    local files=(vm-sysevents-evidence-lib.sh vm-settings-scenario-lib.sh vm-settings-scenario-lib.sh
+        vm-input-evidence-lib.sh vm-exec-read-evidence-lib.sh)
+    # shellcheck disable=SC2016 # Each entry names shell text literally.
+    local olds=("'.value | length > 0'" "'.valid == true'" "'.diagnostics_disabled == true'"
+        'predicate=".x == $1 and .y == $2 and .dx == 0 and .dy == ${dy}"' "'.present == true'")
+    local news=("'true'" "'. == .'" "'true or .x'" "predicate='true'" "'true'")
+    for index in "${!files[@]}"; do
+        cp "${scripts}/${files[index]}" "${saved}"
+        OLD="${olds[index]}" NEW="${news[index]}" python3 -I -c '
+import os, pathlib, sys
+path = pathlib.Path(sys.argv[1])
+text = path.read_text()
+assert os.environ["OLD"] in text
+path.write_text(text.replace(os.environ["OLD"], os.environ["NEW"], 1))' "${scripts}/${files[index]}"
+        report="$(surface_scan vm-verify-menu-bar.sh)"
+        cp "${saved}" "${scripts}/${files[index]}"
+        jq -e --arg file "${files[index]}" 'any(.constant_true[]; .file == $file)' <<<"${report}" || {
+            echo "mutation not detected: ${olds[index]}"
+            return 1
+        }
+    done
+}
+
+# held_fault FAULT: the real backend and the reviewed drag, with one pointer fault.
+held_fault() {
+    rm -rf "${BATS_TEST_TMPDIR}/signal-evidence"
+    export pointer_fault="$1"
+    signal_driver
+    receipts >"${BATS_TEST_TMPDIR}/receipts"
+}
+
+@test "a clean drag reports released, and each failed or partial point reports uncertain (k164)" {
+    held_fault ''
+    [[ "${status}" == 0 && "${output}" == *after-drag* && "${output}" == *'Held pointer: released'* ]]
+    local case fault operation outcome
+    for case in exit:up:resize-release:unavailable kill:up:resize-release:partial \
+        exit:down:0:resize-down-0:unavailable kill:down:0:resize-down-0:partial \
+        exit:down:5:resize-down-5:unavailable kill:down:5:resize-down-5:partial \
+        exit:down:10:resize-down-10:unavailable kill:down:10:resize-down-10:partial; do
+        outcome="${case##*:}"
+        operation="${case%:*}"
+        operation="${operation##*:}"
+        fault="${case%:*}"
+        fault="${fault%:*}"
+        held_fault "${fault}"
+        if [[ "${status}" == 0 || "${output}" == *after-drag* || "${output}" != *'Held pointer: uncertain'* ]] ||
+            ! grep -qx "${operation}:${outcome}" "${BATS_TEST_TMPDIR}/receipts"; then
+            echo "fault ${fault}: status ${status}"
+            cat "${BATS_TEST_TMPDIR}/receipts"
+            printf '%s\n' "${output}" | tail -4
+            return 1
+        fi
+        # A failed held point sends neither a later point nor a release.
+        if [[ "${fault}" == *:down:* ]]; then
+            refute mouse-up "${signal_calls}"
+            [[ "$(grep -c mouse-down "${signal_calls}")" == "$((${fault##*:} + 1))" ]]
+        fi
+    done
+}
+
+# consent_driver: the real backend, a fixture CLI and the real consent path.
+consent_driver() {
+    local real="${BATS_TEST_DIRNAME}/../../scripts"
+    export consent_root="${BATS_TEST_TMPDIR}/consent-evidence"
+    # This fixture logs nothing, so the password has no copy outside the root.
+    cat >"${BATS_TEST_TMPDIR}/bin/testanyware" <<'CLI'
+#!/bin/bash
+set -euo pipefail
+case "$1 $2" in
+    'agent snapshot')
+        payload='{"windows":[{"appName":"System Settings","title":"Accessibility","windowType":"standard","focused":true,"positionX":200,"positionY":200,"sizeWidth":700,"sizeHeight":600,"elements":[{"role":"button","platformRole":"AXButton","label":"Add","enabled":true,"focused":false,"childCount":0,"actions":[],"positionX":500,"positionY":600,"sizeWidth":30,"sizeHeight":20},{"role":"row","platformRole":"AXRow","label":"Koine","enabled":true,"focused":false,"childCount":0,"actions":[],"positionX":400,"positionY":400,"sizeWidth":300,"sizeHeight":20}]}]}'
+        ;;
+    'input click') payload=$(jq -cn --argjson x "$3" --argjson y "$4" '{x:$x,y:$y,button:"left",count:1}') ;;
+    'input type') payload=$(jq -cn --arg text "$3" '{text:$text,chars:($text | length)}') ;;
+    'input key')
+        modifiers='[]'
+        if [[ "${4-}" == --modifiers ]]; then modifiers=$(jq -cn --arg m "$5" '$m | split(",")'); fi
+        payload=$(jq -cn --arg key "$3" --argjson m "${modifiers}" '{key:$key,modifiers:$m}')
+        ;;
+    *) exit 98 ;;
+esac
+jq -cn --argjson payload "${payload}" '{schema_version:"1.0",ok:true} + $payload'
+CLI
+    cat >"${BATS_TEST_TMPDIR}/consent.sh" <<SH
+#!/bin/bash
+set -euo pipefail
+# shellcheck source=/dev/null
+source "${real}/vm-verify-desktop-lib.sh"
+# shellcheck source=/dev/null
+source "${real}/vm-settings-scenario-lib.sh"
+WINDOW_TITLE='Koine Settings' VM_ID=exact-consent-vm WORK="${BATS_TEST_TMPDIR}"
+INSTALLED=/Applications/Koine.app
+settings_begin "\${consent_root}" exact-consent-vm
+# The pane opens by a one-shot exec, which the one-shot suite owns.
+open_guest_accessibility_pane() { :; }
+settings_grant_accessibility
+echo consent-done
+SH
+    chmod +x "${BATS_TEST_TMPDIR}/consent.sh"
+    run "${BATS_TEST_TMPDIR}/consent.sh"
+}
+
+@test "a consent run with a password override keeps the raw text only in the private root (k164)" {
+    # Synthetic text only. It is no account password.
+    local password='synthetic-consent-text-8f3a' attempt
+    export KOINE_VM_PASSWORD="${password}"
+    umask 022
+    consent_driver
+    [[ "${status}" == 0 && "${output}" == *consent-done* ]] || {
+        printf '%s\n' "${output}" | tail -8
+        return 1
+    }
+    [[ "$(stat -f %Lp "${consent_root}")" == 700 ]]
+    # The attempt keeps the exact text, in its argv and in the raw response.
+    attempt="$(grep -l '"operation": *"consent-password"' "${consent_root}"/*/request.json)"
+    attempt="${attempt%/request.json}"
+    jq -e --arg text "${password}" '.argv | index($text)' "${attempt}/request.json"
+    jq -e --arg text "${password}" '.text == $text and .chars == ($text | length)' "${attempt}/raw.stdout"
+    # The transcript and every file outside the root have no copy.
+    [[ "${output}" != *"${password}"* ]]
+    [[ -z "$(grep -rlF --exclude-dir=consent-evidence -- "${password}" "${BATS_TEST_TMPDIR}" || :)" ]]
 }

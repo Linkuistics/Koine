@@ -433,3 +433,25 @@ assert_click_latched() {
     [[ "${status}" == 125 && ! -s "${click_calls}" ]]
     [[ -z "$(find . -mindepth 1 -print)" ]]
 }
+
+@test "typed TEXT_NOT_FOUND with CLI status 3 is unavailable and never a missing target (k164)" {
+    local mode
+    # v2.7.0 output.rs: top-level code and message, and exit_code_for gives 3.
+    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/output.rs
+    for mode in record deferred; do
+        reset_click "text-not-found-${mode}"
+        echo '{"schema_version":"1.0","ok":false,"code":"TEXT_NOT_FOUND","message":"no text","remediation":"","details":{}}' >"${click_replies}/1.json"
+        echo 3 >"${click_replies}/1.exit"
+        if [[ "${mode}" == deferred ]]; then
+            run click_guest_allow "${click_root}" allow deferred
+        else
+            run click_guest_allow "${click_root}" allow
+        fi
+        [[ "${status}" == 125 ]]
+        [[ "$(wc -l <"${click_calls}" | tr -d ' ')" == 1 && ! -s "${click_waits}" ]]
+        cmp "${click_replies}/1.json" "${click_root}/000001/raw.stdout"
+        jq -e '.outcome == "unavailable" and .cli_status == 3' "${click_root}/000001/result.json"
+        [[ ! -e "${click_root}/000002" ]]
+        assert_click_latched
+    done
+}

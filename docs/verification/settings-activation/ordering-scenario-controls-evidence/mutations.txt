@@ -1,0 +1,44 @@
+== reveal-bound-61
+not ok 1 an exhausted reveal makes 120 element reads, one frame read and 60 scrolls with their waits (k164)
+== reveal-bound-59
+not ok 1 an exhausted reveal makes 120 element reads, one frame read and 60 scrolls with their waits (k164)
+== calibration-bound-29
+not ok 1 the calibration sends one probe and exactly 30 scrolls back, each with its wait (k164)
+== calibration-bound-31
+not ok 1 the calibration sends one probe and exactly 30 scrolls back, each with its wait (k164)
+== add-bound-14
+not ok 1 a missing Add button makes 15 reads and 14 waits and then fails before any click (k164)
+== add-bound-16
+not ok 1 a missing Add button makes 15 reads and 14 waits and then fails before any click (k164)
+== textedit-extra-read
+not ok 1 the scenario's TextEdit call makes one poll read and one assertion read (k164)
+== on-screen-mode
+not ok 1 the scenario's on-screen and position reads keep their own element modes (k164)
+== calibration-mode
+not ok 1 the scenario's on-screen and position reads keep their own element modes (k164)
+== reveal-position-mode
+not ok 1 the scenario's on-screen and position reads keep their own element modes (k164)
+== silent-launch-count
+not ok 1 a window at the silent launch fails its assertion before the reopen (k164)
+== failed-read-as-negative
+not ok 1 a clean on-screen negative stays apart from a failed read (k164)
+== typed-status-3-clean
+not ok 1 typed ELEMENT_NOT_FOUND with CLI status 3 is unavailable and never an absent element (k164)
+not ok 2 typed TEXT_NOT_FOUND with CLI status 3 is unavailable and never a missing target (k164)
+== held-unavailable-as-clean
+not ok 1 a clean drag reports released, and each failed or partial point reports uncertain (k164)
+== held-partial-as-clean
+not ok 1 a clean drag reports released, and each failed or partial point reports uncertain (k164)
+== root-mode-755
+not ok 1 a consent run with a password override keeps the raw text only in the private root (k164)
+== password-in-transcript
+not ok 1 a consent run with a password override keeps the raw text only in the private root (k164)
+== password-redacted
+not ok 1 a consent run with a password override keeps the raw text only in the private root (k164)
+== cleanup-trap-restored
+not ok 1 a failed library load before the root sends no VM stop, and other scripts keep theirs (k164)
+== prefix-keeps-cleanup
+not ok 1 a failed library load before the root sends no VM stop, and other scripts keep theirs (k164)
+== other-script-loses-stop
+not ok 1 a failed library load before the root sends no VM stop, and other scripts keep theirs (k164)
+missed=0

@@ -1,0 +1,24 @@
+1..15
+not ok 1 a failed library load before the root sends no VM stop, and other scripts keep theirs (k164)
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 1107)
+#   `return 1' failed
+# vm-verify-menu-bar.sh with vm-verify-desktop-lib.sh: status 3; legacy: vm stop exact-settings-vm
+ok 2 an exhausted reveal makes 120 element reads, one frame read and 60 scrolls with their waits (k164)
+ok 3 the calibration sends one probe and exactly 30 scrolls back, each with its wait (k164)
+ok 4 a missing Add button makes 15 reads and 14 waits and then fails before any click (k164)
+ok 5 the scenario's TextEdit call makes one poll read and one assertion read (k164)
+ok 6 the scenario's on-screen and position reads keep their own element modes (k164)
+ok 7 a window at the silent launch fails its assertion before the reopen (k164)
+ok 8 a clean on-screen negative stays apart from a failed read (k164)
+not ok 9 the surface scan classifies each legacy transport that the scenario reaches (k164)
+# (in test file Tests/scripts/vm-settings-scenario.bats, line 1287)
+#   `jq -e --argjson resize "${resize}" '[.legacy[] | select(.kind == "call" and .command == "testanyware")' failed
+# 46
+# true
+# false
+ok 10 the surface scan detects an unguarded transport in a helper or a restored trap (k164)
+ok 11 the surface scan finds no constant-true predicate and detects each mutation (k164)
+ok 12 a clean drag reports released, and each failed or partial point reports uncertain (k164)
+ok 13 a consent run with a password override keeps the raw text only in the private root (k164)
+ok 14 typed ELEMENT_NOT_FOUND with CLI status 3 is unavailable and never an absent element (k164)
+ok 15 typed TEXT_NOT_FOUND with CLI status 3 is unavailable and never a missing target (k164)

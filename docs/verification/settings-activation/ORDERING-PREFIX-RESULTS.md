@@ -134,7 +134,7 @@ under this directory.
 | Duty | Disposition | Source | Control and red |
 |---|---|---|---|
 | Migrate the complete scenario and every consumed helper. Replace the legacy transports and discarded results | Met | `vm-verify-menu-bar.sh` 54–346. `settings_fence` in `vm-settings-scenario-lib.sh` | `vm-settings-scenario.bats`: "the adopted scenario runs to PASSED with every call in one root initialised first", "a fenced legacy transport latches instead of dispatching". Red: `ordering-scenario-evidence/red.txt` |
-| Enumerate every reachable call site | Met for the scenario and its library. The helper scan is a gap | Caller tables in ORDERING-SCENARIO-RESULTS and ORDERING-OUTCOMES-RESULTS | "the caller inventory finds no legacy transport in the adopted scenario surface" scans the scenario and its library only. See [gap G2](#gaps-and-their-owners) |
+| Enumerate every reachable call site | Met (k164) | Caller tables in ORDERING-SCENARIO-RESULTS and ORDERING-OUTCOMES-RESULTS. `Tests/scripts/fixtures/settings-surface-scan.py` | "the surface scan classifies each legacy transport that the scenario reaches (k164)". See [the scenario-level controls](#scenario-level-controls) |
 | Actual payload schemas. No missing field read as a negative | Met for each facade | `validate_response` in `vm-guest-exec.py`. The grammars in `vm_exec_reads.py`. `settings_title_audit` | `vm-window-evidence.bats`: "window schemas reject incomplete arrays and malformed required or optional fields". `vm-guest-exec.bats`: "missing and wrongly typed envelope fields cannot qualify matching text" |
 | H-1: read the latch before non-exec input, latch failed non-exec attempts, one ordinal and writer-lock domain | Met | `run_locked` and `run` in `vm-guest-exec.py`. `fail_guest_evidence` and `record_guest_poll` in `vm-guest-exec-lib.sh` | `vm-guest-exec.bats`: "exec latch and incomplete receipts gate nonexec without dispatch", "nonexec attempts share exec ordinals and retain exact raw JSON". Red: `ordering-nonexec-evidence/baseline-red.txt` |
 | H-1: no hand-written latch, no bypass during collection | Met for the scenario. Collection owned by k57 | The scenario writes no latch file. The facade fallback in `_guest_evidence_backend` latches inside the domain, as k59 accepted (P2-3) | "missing backend and unexpected backend exit leave a persistent facade latch". Red: `ordering-transport-integration-evidence/baseline-red.txt` |
@@ -143,7 +143,7 @@ under this directory.
 | Hand collection and containment to k57 | Owned by k57 | `settings_report` sends no stop | "the adopted scenario runs to PASSED with every call in one root initialised first" refutes a stop |
 | Strict exec, agent, pointer, input, capture, upload and lifecycle transports | Met. The stop is owned by k57 | `read_guest_exec`, `read_guest_windows`, `read_guest_element`, `check_guest_read`, `click_at`, `drag_window_corner`, `scenario_input`, `capture_guest_evidence`, `upload_guest_file`, `start_guest_vm`, `inventory_guest_vms` | One family suite each, with red records under `ordering-*-evidence/` |
 | A failure latch stops input | Met | `settings_stop` | "an unavailable answer in any transport family stops every later scenario input" injects 37 faults. Red: `ordering-scenario-evidence/red.txt` |
-| Clean negative polls continue. A failed read stops at unchanged bounds | Met at each facade. Three strict loops lack a bound control | `await_guest_endpoint`, `_await_guest_windows`, `_sysevents_poll`, `settings_reveal`, the Add loop | `vm-window-evidence.bats`: "only clean list negatives advance the ten by two count poll". See [gap G1](#gaps-and-their-owners) |
+| Clean negative polls continue. A failed read stops at unchanged bounds | Met (k164) | `await_guest_endpoint`, `_await_guest_windows`, `_sysevents_poll`, `settings_reveal`, the Add loop | `vm-window-evidence.bats`: "only clean list negatives advance the ten by two count poll". The k164 reveal, calibration and Add controls. See [the scenario-level controls](#scenario-level-controls) |
 | Exact defaults, launch identity, TextEdit quit and absence, restart with a changed boot. Disconnect unavailable <!-- tc: depart synonym-rotation because the launch identity names an application launch, while start names the VM start --> | Met | `settings_expect_defaults`, `confirm_guest_launch`, `confirm_guest_reopen`, `quit_guest_textedit`, `restart_guest` | `vm-exec-one-shot-evidence.bats`: "the TextEdit quit needs a clean submission and then one clean absence read", "a failed restart submission is unavailable even if the boot later changes". Red: `ordering-one-shot-evidence/baseline-red.txt` |
 | A demonstrably unavailable completion holds before E01 | Owned by k54 | ORDERING-ONE-SHOT-RESULTS finds infeasibility not demonstrated | k54 task, readiness bullet |
 | Positive setup before each of the four selections, with screenshots | Met. The screenshot audit is owned by k54 | `settings_record_textedit`, `settings_expect_setup` | `vm-settings-scenario.bats`: "the positive setup precedes each of the four selections and uses the zero-count list". Red: `ordering-outcomes-evidence/red.txt` |
@@ -161,29 +161,29 @@ under this directory.
 | Duty | Disposition | Source | Control and red |
 |---|---|---|---|
 | Migrate exec, agent, pointer, capture, upload, lifecycle and collection. Failed transport stops input | Met. Finite collection owned by k57 | `settings_start_vm`, `settings_install_app`, `settings_capture`, `settings_failure_capture` | "an unavailable answer in any transport family stops every later scenario input" |
-| No constant-true predicate | Met by reading. No control scans the strict surface | Each call site passes its own predicate | Only `vm-input-evidence.bats` and `vm-click-evidence.bats` assert a predicate that is not constant. See [gap G2](#gaps-and-their-owners) |
+| No constant-true predicate | Met (k164) | Each call site passes its own predicate | "the surface scan finds no constant-true predicate and detects each mutation (k164)". See [the scenario-level controls](#scenario-level-controls) |
 | K63: clean negatives come from list-shaped payloads | Met | `_await_guest_windows`, `await_guest_endpoint` | "only clean list negatives advance the ten by two count poll" |
-| K63: typed WINDOW_NOT_FOUND, ELEMENT_NOT_FOUND and TEXT_NOT_FOUND are CLI 3 and unavailable | Met for WINDOW_NOT_FOUND. The other two lack a fixture | `validate_response` refuses every nonzero CLI status | `vm-window-evidence.bats`: "failed poll stops immediately despite matching text with no retry or input". See [gap G3](#gaps-and-their-owners) |
+| K63: typed WINDOW_NOT_FOUND, ELEMENT_NOT_FOUND and TEXT_NOT_FOUND are CLI 3 and unavailable | Met (k164) | `validate_response` refuses every nonzero CLI status | `vm-window-evidence.bats`: "failed poll stops immediately despite matching text with no retry or input". The two typed k164 controls. See [the scenario-level controls](#scenario-level-controls) |
 | K63: no inspect or wait poll. `find-text` without tolerated errors | Met | `read_guest_text` is one read | `vm-click-evidence.bats`: "failed partial and typed-error OCR stop before click and sleep" |
 | K63: the evidence class admits collection and the exact stop only. `snapshot --open-menu` is input. Free exec collection is read-only | Met | `cli_argv` in `vm-guest-exec.py`. `command` in `vm_exec_reads.py` | `vm-guest-exec.bats`: "evidence class refuses mutating CLI actions even after a prior latch". Red: `ordering-nonexec-integration-evidence/evidence-class-red.txt` |
 | The root before every transport | Met | `settings_begin` | "an existing evidence root is refused before any transport". Red: `ordering-scenario-evidence/red.txt` |
-| Silent launch and running reopen | Met for the reopen. The silent launch has no failure control | `settings_launch`, `confirm_guest_reopen` | "an app reopen that shows no window compares the silent launch's process". See [gap G1](#gaps-and-their-owners) |
+| Silent launch and running reopen | Met (k164) | `settings_launch`, `confirm_guest_reopen` | "an app reopen that shows no window compares the silent launch's process", "a window at the silent launch fails its assertion before the reopen (k164)" |
 | K68: a signal during a held point and during the sleep after a clean `resize-down-N`. No release | Met | `drag_window_corner`, `_physical_sleep`, `settings_signal` | The INT and TERM controls above, and "a failed settling wait after a clean held point stops input and release without a trap". Red: `ordering-scenario-integration/red.txt` |
-| A clean down without a later clean release is held. A failed or partial point is uncertain | Met for held and interrupted. Failed and partial points lack a control | `settings_held_pointer` | The TERM and INT controls. See [gap G4](#gaps-and-their-owners) |
+| A clean down without a later clean release is held. A failed or partial point is uncertain | Met (k164) | `settings_held_pointer` | The TERM and INT controls, "a clean drag reports released, and each failed or partial point reports uncertain (k164)" |
 | No failed or partial release proves a release. Orphan-lock refusal | Owned by k57 | — | k57 task, physical-helper containment handoff |
-| Replace the whole TextEdit block once, with no extra read | Met at the facade. The call site has no count control | `await_guest_textedit_window`, called once | `vm-window-evidence.bats`: "TextEdit always makes the separate assertion read after an early positive". See [gap G1](#gaps-and-their-owners) |
+| Replace the whole TextEdit block once, with no extra read | Met (k164) | `await_guest_textedit_window`, called once | `vm-window-evidence.bats`: "TextEdit always makes the separate assertion read after an early positive". "the scenario's TextEdit call makes one poll read and one assertion read (k164)" |
 | Exhaustion is state-failed. Local steps keep their statuses | Met | `run_locked` poll steps | "clean exhausted polls retain each list and a separate state confirmation" |
 | Background keepalive capture | Withdrawn | `settings_start_vm` starts no loop | `vm-verify-start.bats`: "the Settings scenario start path starts no background screen capture" |
 | K78: checked read failures propagate before later input | Met | `settings_reveal`, `settings_expect_menu` | `vm-input-evidence.bats`: "failed snapshot read stops actual click chains in plain and conditional contexts" |
-| K78: a clean on-screen negative is status 1, and a read failure is never status 1 | Met in the legacy lane. The strict lane lacks its own control | `settings_on_screen` | `vm-input-evidence.bats`: "on-screen read status one is an error rather than a clean negative". See [gap G1](#gaps-and-their-owners) |
-| Private roots. No silent redaction of secret-bearing evidence | Met for the root mode. The consent path lacks a raw-retention control | `initialize` gives mode 700 | `vm-guest-exec.bats`: "init creates a root that only its owner can enter, whatever the umask". See [gap G4](#gaps-and-their-owners) |
+| K78: a clean on-screen negative is status 1, and a read failure is never status 1 | Met (k164) | `settings_on_screen` | `vm-input-evidence.bats`: "on-screen read status one is an error rather than a clean negative". "a clean on-screen negative stays apart from a failed read (k164)" |
+| Private roots. No silent redaction of secret-bearing evidence | Met (k164) | `initialize` gives mode 700 | `vm-guest-exec.bats`: "init creates a root that only its owner can enter, whatever the umask". "a consent run with a password override keeps the raw text only in the private root (k164)" |
 
 ## k75, k80 and k85: reads, artifacts and lifecycle
 
 | Duty | Disposition | Source | Control and red |
 |---|---|---|---|
 | Snapshot, element, window and OCR reads | Met | `read_guest_element`, `read_guest_windows`, `read_guest_text` | `vm-ui-evidence.bats`: "snapshot retains original bytes full tree exact argv VM and shared ordinals". Red: `ordering-snapshot-evidence/` |
-| K83: `optional-vertical` for the on-screen read, `position-y` for calibration and reveal, no second read | Met at the facade. The scenario's choice of mode lacks a control | `settings_on_screen`, `settings_calibrate_window_scroll`, `settings_reveal` | "optional vertical reads preserve absence and qualify only consumed screen attributes". See [gap G1](#gaps-and-their-owners) |
+| K83: `optional-vertical` for the on-screen read, `position-y` for calibration and reveal, no second read | Met (k164) | `settings_on_screen`, `settings_calibrate_window_scroll`, `settings_reveal` | "optional vertical reads preserve absence and qualify only consumed screen attributes". "the scenario's on-screen and position reads keep their own element modes (k164)" |
 | K83: a missing tree is unavailable. The empty AXValue stays unverified natively. Selectors are checked per candidate | Met as limits | `_read_guest_snapshot`, `_ui_element_selection` | "a missing tree in another window refuses a positive and stops a settling poll", "selector qualification depends on candidates and syntax failure follows dispatch" |
 | Physical clicks: exact Allow and element centre | Met | `click_guest_allow`, `click_guest_element` | `vm-click-evidence.bats`: "Allow chooses first exact text floors its centre and clicks once" |
 | K87: no exact Allow is state-failed. Invalid geometry is unavailable. Exact local signal statuses | Met | `click_guest_allow`, `_click_guest_target` | "clean OCR without exact Allow records state failure without input". Red: `ordering-click-integration/exact-target-red.json` |
@@ -246,29 +246,33 @@ them. An exhausted poll now exits with status 125 while its receipt says
 
 G1 to G5 are missing controls or comparisons. G6 is missing failure
 evidence, which review k163 found in a wider form (P2-1). No gap is a missing
-product behaviour in the scenario. The task `settings-scenario-controls` owns
-G1 to G4, before k57. k57 owns G5 through its handoff. The task
-`settings-exhausted-poll-observations` closed G6 before
-`settings-scenario-controls`.
+product behaviour in the scenario.
 
-- **G1, scenario-level bounds and call-site counts.** No strict-lane control
-  exhausts the reveal loop (60 reads), the calibration (30 scrolls) or the Add
-  loop of `settings_grant_accessibility` (15 reads and 14 waits). No control
-  counts the TextEdit reads at the scenario's call site. No control pins
-  `optional-vertical` and `position-y` at their scenario call sites. No control
-  drives a window at the silent launch to its failure. No strict-lane control
-  separates a clean on-screen negative from a read failure.
-- **G2, surface scans.** The caller inventory scans the scenario and its
-  library only. Five legacy-lane calls stay in `vm-input-evidence-lib.sh`,
-  `vm-physical-evidence-lib.sh` and `vm-window-resize-lib.sh`. They run only
-  without a root, and the scenario always has one. No control scans the strict
-  surface for a constant-true predicate.
-- **G3, typed errors.** ELEMENT_NOT_FOUND and TEXT_NOT_FOUND with CLI status 3
-  have no fixture. WINDOW_NOT_FOUND has one.
-- **G4, held state and privacy.** No control gives `uncertain` for a failed or
-  partial `resize-release`, or for an unavailable or partial `resize-down-N`.
-  No control runs the consent path with a `KOINE_VM_PASSWORD` override and
-  checks that the raw text stays in the private root.
+The task `settings-scenario-controls`
+closed G1 to G4 before k57. k57 owns G5 through its handoff. The task
+`settings-exhausted-poll-observations` closed G6 before
+`settings-scenario-controls`. See
+[the scenario-level controls](#scenario-level-controls).
+
+- **G1, scenario-level bounds and call-site counts. Closed by k164.** No
+  strict-lane control exhausted the reveal loop (60 reads), the calibration
+  (30 scrolls) or the Add loop of `settings_grant_accessibility` (15 reads and
+  14 waits). No control counted the TextEdit reads at the scenario's call site.
+  No control pinned `optional-vertical` and `position-y` at their scenario call
+  sites. No control drove a window at the silent launch to its failure. No
+  strict-lane control separated a clean on-screen negative from a read failure.
+- **G2, surface scans. Closed by k164.** The caller inventory scanned the
+  scenario and its library only. Five legacy-lane calls stay in
+  `vm-input-evidence-lib.sh`, `vm-physical-evidence-lib.sh` and
+  `vm-window-resize-lib.sh`. They run only without a root, and the scenario
+  always has one. No control scanned the strict surface for a constant-true
+  predicate.
+- **G3, typed errors. Closed by k164.** ELEMENT_NOT_FOUND and TEXT_NOT_FOUND
+  with CLI status 3 had no fixture. WINDOW_NOT_FOUND had one.
+- **G4, held state and privacy. Closed by k164.** No control gave `uncertain`
+  for a failed or partial `resize-release`, or for an unavailable or partial
+  `resize-down-N`. No control ran the consent path with a `KOINE_VM_PASSWORD`
+  override and checked that the raw text stays in the private root.
 - **G5, the declared environment.** The protocol says to check the guest
   environment after boot and to hold on a mismatch. It also rejects injected
   arguments or environment. The scenario reads `system`, `gatekeeper` and the
@@ -504,6 +508,95 @@ This repair earns no new review chain. It is bounded to one status seam and one
 reordered branch, it changes no design, and a detected mutation supports each
 behaviour. k57 still reconciles it before any freeze.
 
+## Scenario-level controls
+
+Task `settings-scenario-controls-k164` closes G1 to G4. It changes no successful
+action, read count, wait or bound. Fifteen controls carry "(k164)" in their
+names. Thirteen are in `vm-settings-scenario.bats`, one is in
+`vm-ui-evidence.bats` and one is in `vm-click-evidence.bats`.
+
+| Gap | Item | What the control establishes |
+|---|---|---|
+| G1 | Reveal | An exhausted reveal makes one frame read, 120 element reads and 60 scrolls, each scroll with its one-second wait |
+| G1 | Calibration | One probe and exactly 30 return scrolls, in the measured direction, each with its one-second wait |
+| G1 | Add loop | 15 reads and 14 two-second waits. The failure takes its observations and sends no click |
+| G1 | TextEdit | The call site makes one poll read and one assertion read. An exhausted poll makes 15 reads, 15 waits and the assertion |
+| G1 | Read modes | Each on-screen read uses `optional-vertical`, and each calibration or reveal position read uses `position-y`. Each mode refuses the attribute that it requires |
+| G1 | Silent launch | A window at the silent launch fails its assertion before the reopen |
+| G1 | On-screen read | A clean negative is a state failure. A failed read or a backend exit of 1 stops with status 125 and no state receipt |
+| G2 | Legacy transports | The scan classifies each transport that the scenario reaches |
+| G2 | Predicates | The scan finds no constant-true predicate |
+| G3 | Typed errors | ELEMENT_NOT_FOUND and TEXT_NOT_FOUND with CLI status 3 are unavailable, keep their raw bytes and latch the root |
+| G4 | Held state | A failed or partial `resize-release` and an unavailable or partial `resize-down-N` report `uncertain`. A clean drag reports `released` |
+| G4 | Consent privacy | A synthetic `KOINE_VM_PASSWORD` override stays exact in the attempt's argv and raw response. The root has mode 700, and the transcript and the other files hold no copy |
+
+### A defect that the inventory found
+
+The scan found one more legacy transport than the gap named.
+`vm-verify-lib.sh` installed `trap cleanup EXIT` as the scenario sourced it.
+`settings_begin` removes that trap, but a library that fails to load exits
+first. That exit sent `testanyware vm stop` for the clone, outside any evidence
+root. The protocol gives the stop to the finite caller alone.
+
+The library now installs the trap unless the sourcing script is the scenario or
+its prefix. The scenario bytes do not change, so the prefix needs no new
+extraction. Every other VM script keeps its cleanup stop, and a control holds
+that. A failure before `settings_begin` now leaves the empty work directory in
+place. This is a visible trade-off, because no evidence or guest state depends
+on that directory yet.
+
+### The surface scan
+
+`Tests/scripts/fixtures/settings-surface-scan.py` parses each script with
+`shfmt --to-json`. It follows every `source` and then every call and trap from
+the scenario. The scan enumerates the reachable functions first, and it then
+classifies each call. A new helper therefore needs no new search pattern.
+
+The complete scenario reaches five `testanyware` calls. Each one sits in a
+branch that runs only when `KOINE_VM_EVIDENCE_ROOT` is unset.
+
+| Helper | Calls | Lane |
+|---|---|---|
+| `scenario_input` | 1 | Root unset |
+| `_physical_cli` | 2 | Root unset |
+| `drag_window_corner` | 2 | Root unset |
+
+The prefix stops before the resize, so it reaches the first three calls only.
+One other legacy name is reachable in the same lane. `_physical_fail` calls
+`fail`, which reports a failure and sends no transport. The one legacy-library
+function that the scenario reaches is `step`, which prints a heading.
+
+The predicate scan covers each CLI payload predicate, each `jq -e` filter and
+each `*_predicate` builder. A predicate is constant-true when it yields true for
+every sample input and every value that replaces a shell expansion. Each scan
+has a positive control. The transport scan detects three mutations, and the
+predicate scan detects five.
+
+The scan reads source text and proves no runtime behaviour. It reports a call
+whose command word is not a literal, and the current surface has none. A
+predicate that is true only for every real guest answer is outside this test.
+
+### K164 records
+
+The records are in
+[`ordering-scenario-controls-evidence/`](ordering-scenario-controls-evidence/).
+
+- `red.txt` runs the final controls on a copy that keeps the original trap. The
+  library control and the transport classification fail on the bare stop. The
+  other thirteen controls pass, because they hold existing behaviour.
+- `mutations.txt` applies 21 source mutations, and a control detects each one.
+  This shows that each passing control can fail.
+- `final-verification.txt` runs the same nineteen Taskfile checks, with 366
+  passing tests and no failure. None of its subjects changed during the run.
+
+No VM, clone or runtime slot ran. The simulator and the fixtures establish the
+order of calls and the returned statuses, not native behaviour.
+
+This change earns no new review chain before k57. The repair is one bounded
+guard, it changes no design, and detected mutations support it. The scan is a
+test instrument with its own controls. k57 still reconciles it before any
+freeze.
+
 ## Limits
 
 - **L1.** The simulated backend models only the answers that the scenario
@@ -550,8 +643,9 @@ come after the final run.
   reads the k165 and k166 changes before `settings-scenario-controls`.
   Integration k168 repaired its two findings. See
   [the integration of review k167](#integration-of-review-k167).
-- `settings-scenario-controls` adds the controls of G1 to G4 after the review
-  and every earned integration.
+- `settings-scenario-controls` added the controls of G1 to G4 after the review
+  and every earned integration. See
+  [the scenario-level controls](#scenario-level-controls).
 - k57 consumes this comparison in its complete pre-runtime reconciliation. It
   also owns G5, the defaults read after each slot, the installed audit after an
   E slot and the classification of signal and exhaustion receipts.
