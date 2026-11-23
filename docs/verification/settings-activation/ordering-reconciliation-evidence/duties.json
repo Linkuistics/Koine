@@ -5480,7 +5480,7 @@
   "heading": "Done when",
   "text": "Implement complete INT/TERM/HUP handling and separate interrupted outcomes.",
   "also": [],
-  "disposition": "gap",
+  "disposition": "met",
   "source": [
    {
     "file": "scripts/vm-settings-scenario-lib.sh",
@@ -5493,6 +5493,10 @@
    {
     "file": "scripts/settings-ordering-sequence.py",
     "symbol": "\"interrupted\" if signals else \"unavailable\""
+   },
+   {
+    "file": "scripts/settings-ordering-sequence.py",
+    "symbol": "if first[\"outcome\"] == \"interrupted\" or ("
    }
   ],
   "controls": [
@@ -5511,14 +5515,35 @@
    {
     "suite": "Tests/scripts/vm-settings-scenario.bats",
     "test": "a failed settling wait after a clean held point stops input and release without a trap"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-scenario.bats",
+    "test": "the root of a failed settling wait classifies as interrupted"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-sequence.bats",
+    "test": "an interrupted first failure with no signal record classifies as interrupted"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-sequence.bats",
+    "test": "an interrupted receipt after another first failure keeps that failure's kind"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-sequence.bats",
+    "test": "an interrupted receipt settles unresolved and stops the later slots"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-sequence.bats",
+    "test": "a scenario zero and passed phases cannot qualify an interrupted receipt"
    }
   ],
   "red": [
-   "docs/verification/settings-activation/ordering-scenario-evidence/red.txt"
+   "docs/verification/settings-activation/ordering-scenario-evidence/red.txt",
+   "docs/verification/settings-activation/ordering-reconciliation-evidence/interrupted-outcome.txt"
   ],
-  "owner": "settings-ordering-interrupted-outcome-k174",
+  "owner": null,
   "authority": null,
-  "note": "Missing: classify an interrupted receipt with no signal record as interrupted, with a control, because it now reports unavailable and is no Koine failure."
+  "note": "The classifier reports a first essential interrupted receipt as interrupted, with or without a signal record. The slot still settles unresolved, and this is no Koine failure."
  },
  {
   "id": "D182",

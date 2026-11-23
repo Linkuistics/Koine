@@ -79,7 +79,7 @@ never infers an outcome from the scenario status alone.
 | `recurrence-candidate` | A clean recurrence class at a menu return, with its full route. The screenshot audit must still corroborate it |
 | `assertion-failed` | Another classified assertion, or an exhausted poll |
 | `unresolved-outcome` | An open menu, a recurrence class with a blocker, or a return exhaustion with no class |
-| `interrupted` | A `scenario-signal-SIG` receipt, or a signal record that a held lock refused |
+| `interrupted` | A `scenario-signal-SIG` receipt, a signal record that a held lock refused, or a first essential failure with outcome `interrupted` |
 | `test-driver` | The restart boot poll ran out. This is not a Koine assertion |
 | `unavailable` | A failed, partial or missing receipt, a latch, a refusal or another clone's root |
 | `no-root` | The run left no readable root. This claims no Koine failure |

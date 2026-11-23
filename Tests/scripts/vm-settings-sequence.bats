@@ -642,6 +642,115 @@ time.sleep(30)
     jq -e '.kind == "interrupted" and .signals == ["INT"]' <<<"$(classify "${root}")"
 }
 
+# interrupted_wait ROOT [OPERATION [STATUS]]: one real wait receipt that a signal
+# status ended. The receipt has no scenario-signal record.
+interrupted_wait() {
+    python3 "${backend}" poll-step "$1" "${2:-resize-hold-1-wait}" sleep "${3:-143}" control >/dev/null 2>&1 || :
+}
+
+# set_outcome ROOT ORDINAL OUTCOME: rewrite one real receipt. The backend latch
+# refuses an attempt after a failure, so it cannot write these orders itself.
+set_outcome() {
+    local file="$1/$2/result.json"
+    chmod u+w "${file}"
+    jq --arg outcome "$3" '.outcome = $outcome' "${file}" >"${file}.new"
+    mv "${file}.new" "${file}"
+}
+
+# fresh_root: an empty real root for the next case of one control.
+fresh_root() {
+    root="${BATS_TEST_TMPDIR}/root"
+    rm -rf "${root}"
+    python3 "${backend}" init "${root}" exact-clone
+}
+
+@test "an interrupted first failure with no signal record classifies as interrupted" {
+    fresh_root
+    step "${root}" resize-down-1
+    interrupted_wait "${root}"
+    jq -e '.kind == "interrupted" and .signals == []
+        and .first_failure.operation == "resize-hold-1-wait"
+        and .first_failure.outcome == "interrupted"
+        and .pointer == "held" and (.latch | length > 0)' <<<"$(classify "${root}")"
+}
+
+@test "only a local status in the signal range makes a wait interrupted" {
+    local wait_status expected
+    for wait_status in 1 128 129 192 193; do
+        expected=unavailable
+        [[ "${wait_status}" == 129 || "${wait_status}" == 192 ]] && expected=interrupted
+        fresh_root
+        interrupted_wait "${root}" resize-hold-1-wait "${wait_status}"
+        [[ "$(classify "${root}" | jq -r .kind)" == "${expected}" ]]
+    done
+}
+
+@test "an interrupted receipt after another first failure keeps that failure's kind" {
+    local operation outcome expected
+    while read -r operation outcome expected; do
+        fresh_root
+        step "${root}" "${operation}"
+        interrupted_wait "${root}"
+        set_outcome "${root}" 000001 "${outcome}"
+        [[ "$(classify "${root}" | jq -r .kind)" == "${expected}" ]]
+    done <<'CASES'
+first-selection-identity unavailable unavailable
+first-selection-row-exhausted state-failed assertion-failed
+restart-boot-exhausted state-failed test-driver
+reopen-1-window-exhausted state-failed unresolved-outcome
+CASES
+    fresh_root
+    step "${root}" first-selection-identity
+    interrupted_wait "${root}"
+    rm "${root}/000001/result.json"
+    [[ "$(classify "${root}" | jq -r .kind)" == unavailable ]]
+}
+
+@test "a classified assertion keeps its kind after an interrupted receipt" {
+    fresh_root
+    interrupted_wait "${root}"
+    step "${root}" scenario-assertion-menu-open
+    set_outcome "${root}" 000002 state-failed
+    jq -e '.kind == "unresolved-outcome" and .class == "menu-open"' <<<"$(classify "${root}")"
+}
+
+@test "an interrupted supplemental capture alone stays unavailable" {
+    fresh_root
+    step "${root}" first-selection-identity
+    interrupted_wait "${root}" failure-capture
+    jq -e '.kind == "unavailable" and .supplemental_failures == ["failure-capture"]' <<<"$(classify "${root}")"
+}
+
+@test "an interrupted receipt settles unresolved and stops the later slots" {
+    declare_ready
+    seq_tool admit "${sequence}" E01 >/dev/null
+    root="$(slot_field E01 evidence_root)"
+    python3 "${backend}" init "${root}" koine-k49-ordering-e01
+    step "${root}" resize-down-1
+    interrupted_wait "${root}"
+    settle_phases E01 "$(phases scenario=143 task=201)" >/dev/null
+    [[ "$(report_field '.slots.E01.classification.kind')" == interrupted ]]
+    [[ "$(report_field '.slots.E01.disposition')" == unresolved ]]
+    [[ "$(report_field '.slots.E01.conflicts | length')" == 0 ]]
+    [[ "$(report_field '.outcome')" == no-acceptance ]]
+    [[ "$(report_field '.stopped_at')" == E01 ]]
+    [[ "$(report_field '.slots.E02.state')" == "NOT RUN" ]]
+    run seq_tool admit "${sequence}" E02
+    [[ "${status}" == 3 ]]
+}
+
+@test "a scenario zero and passed phases cannot qualify an interrupted receipt" {
+    declare_ready
+    seq_tool admit "${sequence}" E01 >/dev/null
+    root="$(slot_field E01 evidence_root)"
+    python3 "${backend}" init "${root}" koine-k49-ordering-e01
+    interrupted_wait "${root}"
+    step "${root}" textedit-quit-absence-state
+    settle_phases E01 "$(phases)" >/dev/null
+    [[ "$(report_field '.slots.E01.classification.kind')" == interrupted ]]
+    [[ "$(report_field '.slots.E01.disposition')" == unresolved ]]
+}
+
 @test "an ordinal gap before a recurrence class blocks the candidate" {
     root="${BATS_TEST_TMPDIR}/root"
     python3 "${backend}" init "${root}" exact-clone

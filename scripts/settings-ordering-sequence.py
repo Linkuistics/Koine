@@ -718,7 +718,10 @@ def classify_root(root: Path, slot_set: str, clone: str) -> Json:
     if essential:
         first = essential[0]
         operation = first["operation"]
-        if isinstance(operation, str) and operation.startswith(SIGNAL):
+        if first["outcome"] == "interrupted" or (
+            isinstance(operation, str) and operation.startswith(SIGNAL)
+        ):
+            # A local wait can end by a signal and leave no signal record.
             result["kind"] = "interrupted"
         elif first["outcome"] != "state-failed":
             result["kind"] = "interrupted" if signals else "unavailable"

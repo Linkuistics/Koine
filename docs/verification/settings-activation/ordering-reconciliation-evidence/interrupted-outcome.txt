@@ -1,0 +1,36 @@
+# k174 interrupted outcome record
+
+## Failing run of the new controls on the classifier at e72a9aaf
+45184250fcfdf3e612899ee1f1ea86e5b67db01702121f7f44e846ecdf2ed2d3  scripts/settings-ordering-sequence.py
+1..10
+not ok 1 an interrupted first failure with no signal record classifies as interrupted
+not ok 2 only a local status in the signal range makes a wait interrupted
+ok 3 an interrupted receipt after another first failure keeps that failure's kind
+ok 4 a classified assertion keeps its kind after an interrupted receipt
+ok 5 an interrupted supplemental capture alone stays unavailable
+not ok 6 an interrupted receipt settles unresolved and stops the later slots
+not ok 7 a scenario zero and passed phases cannot qualify an interrupted receipt
+ok 8 a failed settling wait after a clean held point stops input and release without a trap
+not ok 9 the root of a failed settling wait classifies as interrupted
+ok 10 INT during a held-point attempt keeps it interrupted and sends no release
+
+## Exhaustive classifier comparison
+45184250fcfdf3e612899ee1f1ea86e5b67db01702121f7f44e846ecdf2ed2d3  sequence-before.py
+8bb3cd8c7b9d584d562b8cab67de4452c26e7d2f44932c3986e84dfe950c336d  settings-ordering-sequence.py
+cases 1072854
+changed 120492
+unchanged 952362
+violations 0
+
+## Guard mutations on private copies
+any-interrupted-failure: caught by "an interrupted receipt after another first failure keeps that failure's kind"
+supplemental-counts: caught by "an interrupted supplemental capture alone stays unavailable"
+before-the-class: caught by "a classified assertion keeps its kind after an interrupted receipt"
+interrupted-qualifies: caught by "a scenario zero and passed phases cannot qualify an interrupted receipt"
+wider-signal-range: caught by "only a local status in the signal range makes a wait interrupted"
+
+## Comparison control: the first mutation must report violations
+cases 1072854
+changed 120492
+unchanged 952362
+violations 119016

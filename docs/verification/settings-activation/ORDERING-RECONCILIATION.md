@@ -5,9 +5,10 @@ original duty of k53, k56, k61, k66, k71, k75, k80 and k85 with the current sour
 and controls. It also checks the k52 application change against Apple's public
 contracts.
 
-**The harness is not ready for the k54 freeze.** Twelve contract sentences stay
-open. They reduce to three precise pieces of work, and each piece has a new leaf
-before k54. No open item shows a Koine failure.
+**The harness is not ready for the k54 freeze.** Eleven contract sentences stay
+open. They reduce to two precise pieces of work, and each piece has a leaf before
+k54. No open item shows a Koine failure. Leaf k174 closed a third piece, duty D181,
+after this reconciliation.
 
 The evidence is source and controls only. No VM ran, and no clone, signed subject
 or runtime slot exists. The work establishes no native behaviour, no native cause
@@ -25,11 +26,11 @@ disposition, source, controls, failing record, owner, authority and note.
 | k56 | 11 | 4 | 0 | 0 | 1 | 17 | 33 |
 | k61 | 19 | 3 | 0 | 0 | 2 | 17 | 41 |
 | k66 | 19 | 3 | 0 | 0 | 0 | 20 | 42 |
-| k71 | 17 | 8 | 0 | 1 | 3 | 22 | 51 |
+| k71 | 18 | 8 | 0 | 1 | 2 | 22 | 51 |
 | k75 | 10 | 4 | 0 | 5 | 3 | 36 | 58 |
 | k80 | 10 | 4 | 1 | 10 | 0 | 25 | 50 |
 | k85 | 10 | 4 | 15 | 11 | 1 | 26 | 67 |
-| **Total** | **109** | **37** | **16** | **28** | **12** | **191** | **393** |
+| **Total** | **110** | **37** | **16** | **28** | **11** | **191** | **393** |
 
 A repeated sentence counts once, under the first contract that states it. Its row
 names the other places.
@@ -47,9 +48,14 @@ names the other places.
 
 | Leaf | Duties | Missing work | Effect today |
 |---|---|---|---|
-| `settings-ordering-interrupted-outcome-k174` | D181 | An `interrupted` receipt with no signal record is classified as `unavailable` | The slot settles `unresolved`. It cannot produce an acceptance, but the report merges two separate outcomes |
 | `settings-scenario-baseline-controls-k175` | D026, D029, D065, D099, D106, D262 | No control pins the scenario's inputs, waits and later assertions to baseline `f019161b`. No scenario control omits AXValue at `shortcut-emptied` | Earlier sessions compared the baseline by reading. With seven later waits each one second longer, the prefix, scenario and sequence suites still passed |
 | `settings-ordering-evidence-storage-k176` | D215, D216, D270, D275, D372 | No finite storage plan exists. `declare` accepts a tracked or published path for a root that can hold the VM password | A run could fill the disk, or an operator could place private evidence in a tracked path |
+
+Leaf k174 closed D181. The classifier now reports a first essential `interrupted`
+receipt as `interrupted`, with or without a signal record. The slot still settles
+`unresolved`, so the repair changes the reported outcome only. The
+[record](ordering-reconciliation-evidence/interrupted-outcome.txt) holds the failing
+run, the classifier comparison and the guard mutations.
 
 ## Method
 
@@ -84,8 +90,9 @@ a guide and classifies each duty again. Three of its results change:
   waits. The [mutation record](ordering-reconciliation-evidence/wait-mutations.txt)
   holds the runs. Some other waits fail a control, but only because a test
   depends on their literal text.
-- k62 assigned signal classification to k57. The caller delivers it for signal
-  records, but not for an interrupted receipt without one.
+- k62 assigned signal classification to k57. The caller delivered it for signal
+  records, but not for an interrupted receipt without one. Leaf k174 closed that
+  gap.
 - k62 assigned finite storage to k57. The k57 split named no owner for it, and no
   later task delivered it.
 
@@ -140,8 +147,8 @@ holds these results and their failing controls.
 
 The report keeps three outcomes apart. A Koine failure needs a qualified assertion
 in a guest, and none exists. A test-driver failure covers the harness and its
-tools. An interrupted attempt, the subject of gap D181, is unresolved evidence and
-is neither of those outcomes. Every E and A assertion is NOT RUN.
+tools. An interrupted attempt is unresolved evidence and is neither of those
+outcomes. Every E and A assertion is NOT RUN.
 
 ## Records
 
@@ -155,10 +162,13 @@ The records are in
 - `wait-mutations.txt` holds three runs on private copies with changed waits.
 - `final-verification.txt` runs the 23 harness checks between two digests of every
   tracked file. `measure.py` is its instrument.
+- `interrupted-outcome.txt` holds the k174 failing run, comparison and mutations.
+  `interrupted-outcome-measure.sh` and `interrupted-outcome-differential.py` are its
+  instruments.
 
 ## Handoff
 
-The leaves k174, k175 and k176 run next. Each one updates its ledger rows. Before
+The leaves k175 and k176 run next. Each one updates its ledger rows. Before
 the freeze, k54 runs `task check:settings-duty-ledger -- --require-closed`, which
 refuses any open gap. A later change to a source or control reopens its rows and
 any earned review.

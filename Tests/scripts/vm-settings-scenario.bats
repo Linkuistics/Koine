@@ -383,6 +383,17 @@ receipts() {
     [[ -s "${signal_root}/unavailable" ]]
 }
 
+@test "the root of a failed settling wait classifies as interrupted" {
+    export signal_fail_sleep_after=3
+    signal_driver
+    [[ "${status}" == 143 ]]
+    refute 'scenario-signal-' <(receipts)
+    python3 -I "${BATS_TEST_DIRNAME}/../../scripts/settings-ordering-sequence.py" classify \
+        "${signal_root}" ordinary "$(jq -r .vm "${signal_root}/subject.json")" >"${BATS_TEST_TMPDIR}/class"
+    jq -e '.kind == "interrupted" and .signals == [] and .first_failure.outcome == "interrupted"' \
+        "${BATS_TEST_TMPDIR}/class"
+}
+
 @test "INT during a held-point attempt keeps it interrupted and sends no release" {
     export signal_attempt=4
     signal_driver
