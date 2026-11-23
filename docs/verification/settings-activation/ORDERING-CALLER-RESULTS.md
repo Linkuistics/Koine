@@ -7,16 +7,17 @@ first slice of the finite caller of the
 them in order, classifies the receipts of each evidence root and settles each
 slot.
 
-The evidence is source and controls only. The tool starts no clone and sends no
-guest command. No VM ran, and no signed subject exists. No runtime slot ran. The
-work establishes no native behaviour, no native cause and no scenario readiness.
-It closes no ancestor.
+The evidence is source and controls only. The verbs of this slice start no clone
+and send no guest command. No VM ran, and no signed subject exists. No runtime
+slot ran. The work establishes no native behaviour, no native cause and no
+scenario readiness. It closes no ancestor.
 
-The caller is not complete. It cannot yet run a slot. These tasks own the rest:
+The caller is not complete. k169 adds the `run` verb, and the
+[containment report](ORDERING-CONTAINMENT-RESULTS.md) records it. No slot can
+qualify until the audits exist. These tasks own the rest:
 
 | Task | Remaining duty |
 |---|---|
-| `settings-ordering-containment-k169` | The slot run, interrupted collection, exact stop, inventory, lock holders and held input |
 | `settings-ordering-audits-k170` | The original, installed and golden audits, gap G5 and the defaults after each slot |
 | `settings-ordering-reconciliation-k171` | The per-duty and application API reconciliation, after the whole-harness review |
 
@@ -30,7 +31,8 @@ Each verb takes the sequence directory, except `classify`.
 | `ready DIR SET RECEIPT` | Records the digest of one readiness receipt for `focused` or `ordinary` |
 | `admit DIR SLOT` | Consumes the next slot. The caller must start that slot immediately afterwards |
 | `classify ROOT SET CLONE` | Prints the classification of one evidence root |
-| `settle DIR SLOT PHASES` | Records the terminal result of a started slot |
+| `settle DIR SLOT PHASES` | Records the terminal result of a started slot. It refuses while a live run owns the slot |
+| `run DIR SLOT` | Admits, runs, contains and settles one slot, as the [containment report](ORDERING-CONTAINMENT-RESULTS.md) states |
 | `report DIR` | Prints each slot, each NOT RUN slot and the outcome |
 
 Status 0 means that the step completed. Status 2 means invalid arguments. Status
@@ -106,9 +108,10 @@ screenshots. It applies the protocol's precedence.
 | `qualified` | A complete run, status 0 from both the scenario and Task, every phase passed and no held input |
 | `unresolved` | Everything else, including a status that conflicts with the receipts |
 
-A scenario status of zero cannot override failed receipts. A stop or inventory
-that did not pass records `cleanup: unresolved`. Only E and A slots that qualify
-admit a later slot.
+A scenario status of zero cannot override failed receipts. A failed or
+unavailable stop or inventory records `cleanup: unresolved`. A stop that did not
+run with a passed inventory records `cleanup: not-requested`. Only E and A slots
+that qualify admit a later slot.
 
 ## Decisions for review
 
@@ -156,7 +159,7 @@ The records are in [`ordering-caller-evidence/`](ordering-caller-evidence/):
 
 ## Handoff
 
-k169 adds the run verb and feeds real phase results to `settle`. k170 feeds the
-audit and environment phases, and it cuts the whole-harness review. k171
-reconciles every original duty after that review. k54 still owns the freeze, the
-readiness receipts, the screenshot audit and the runtime.
+k169 added the run verb, and it feeds real phase results to the ledger. k170
+feeds the audit and environment phases, and it cuts the whole-harness review.
+k171 reconciles every original duty after that review. k54 still owns the
+freeze, the readiness receipts, the screenshot audit and the runtime.

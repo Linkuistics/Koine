@@ -1,0 +1,157 @@
+1..39
+not ok 1 run admits the slot and runs its declared entry once, in its own recorded group
+# (in test file Tests/scripts/vm-settings-containment.bats, line 89)
+#   `[[ "${status}" == 0 ]]' failed
+not ok 2 the run passes the declared clone, base, evidence root and output directory
+# (in test file Tests/scripts/vm-settings-containment.bats, line 105)
+#   `[[ "$(jq -r .vm <<<"${call}")" == koine-k49-ordering-e01 ]]' failed
+not ok 3 a keep, display or trace request refuses before admission and consumes no slot
+# (from function `expect_refused' in file Tests/scripts/vm-settings-containment.bats, line 81,
+#  in test file Tests/scripts/vm-settings-containment.bats, line 116)
+#   `expect_refused "${name}"' failed
+# expected a refusal with "KOINE_VM_KEEP": status 2: usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'run' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'report')
+not ok 4 a slot that the ledger refuses starts no Task
+# (from function `expect_refused' in file Tests/scripts/vm-settings-containment.bats, line 81,
+#  in test file Tests/scripts/vm-settings-containment.bats, line 124)
+#   `expect_refused "next slot is E01"' failed
+# expected a refusal with "next slot is E01": status 2: usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'run' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'report')
+not ok 5 a settled slot cannot run again
+# (from function `expect_refused' in file Tests/scripts/vm-settings-containment.bats, line 81,
+#  in test file Tests/scripts/vm-settings-containment.bats, line 131)
+#   `expect_refused "stopped"' failed
+# expected a refusal with "stopped": status 2: usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'run' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'report')
+not ok 6 a missing Task executable refuses before admission
+# (from function `expect_refused' in file Tests/scripts/vm-settings-containment.bats, line 81,
+#  in test file Tests/scripts/vm-settings-containment.bats, line 139)
+#   `expect_refused "task"' failed
+# expected a refusal with "task": status 2: usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'run' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'report')
+not ok 7 a manual settle cannot take a slot while its run is live
+# (in test file Tests/scripts/vm-settings-containment.bats, line 155)
+#   `kill -TERM "${caller}"' failed
+# /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/vm-settings-containment.bats: line 155: kill: (1352) - No such process
+not ok 8 a complete run keeps its classification, and audits it does not own stay NOT RUN
+# (in test file Tests/scripts/vm-settings-containment.bats, line 165)
+#   `[[ "$(settled classification.kind)" == complete ]]' failed
+not ok 9 a failed assertion settles failed, and a clean stop does not requalify it
+# (in test file Tests/scripts/vm-settings-containment.bats, line 176)
+#   `[[ "$(settled disposition)" == failed && "$(settled cleanup)" == confirmed ]]' failed
+not ok 10 a missing scenario status stays null beside a nonzero Task status
+# (in test file Tests/scripts/vm-settings-containment.bats, line 185)
+#   `[[ "$(settled phases.scenario.status)" == null && "$(settled phases.task.status)" == 7 ]]' failed
+not ok 11 a malformed scenario status is no status
+# (in test file Tests/scripts/vm-settings-containment.bats, line 193)
+#   `[[ "$(settled phases.scenario.status)" == null && "$(result .scenario.file)" == malformed ]]' failed
+# jq: error: Could not open file /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-7mPtaL/test/11/sequence/ordering-evaluation/E01/containment/result.json: No such file or directory
+not ok 12 the manifest digests each retained file of a failed run
+# (in test file Tests/scripts/vm-settings-containment.bats, line 206)
+#   `[[ "$(jq -r '.errors | length' "${manifest}")" == 0 ]]' failed
+# shasum: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-7mPtaL/test/12/sequence/ordering-evaluation/E01/evidence/subject.json: No such file or directory
+# jq: error: Could not open file /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-7mPtaL/test/12/sequence/ordering-evaluation/E01/containment/manifest.json: No such file or directory
+# jq: error: Could not open file /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-7mPtaL/test/12/sequence/ordering-evaluation/E01/containment/manifest.json: No such file or directory
+not ok 13 a scenario that ends before its start sends no stop and reads the inventory
+# (in test file Tests/scripts/vm-settings-containment.bats, line 215)
+#   `[[ "$(stops)" == 0 && "$(starts)" == 0 && "$(lists)" == 1 ]]' failed
+not ok 14 a run that leaves no root sends no stop and keeps the no-root class
+# (in test file Tests/scripts/vm-settings-containment.bats, line 223)
+#   `[[ "$(settled classification.kind)" == no-root && "$(stops)" == 0 ]]' failed
+not ok 15 a failed start keeps its uncertain creation, contains that clone and starts no other
+# (in test file Tests/scripts/vm-settings-containment.bats, line 231)
+#   `[[ "$(starts)" == 1 && "$(stops)" == 1 ]]' failed
+not ok 16 an interrupted start keeps its uncertain creation and contains that clone
+# (in test file Tests/scripts/vm-settings-containment.bats, line 246)
+#   `[[ -e "${lifecycle_ready}" ]]' failed
+not ok 17 each refused collection, confirmation and stop request keeps its reason
+# (in test file Tests/scripts/vm-settings-containment.bats, line 261)
+#   `[[ "$(jq '[.[] | select(.class == "collection")] | length' "${refusals}")" -ge 1 ]]' failed
+# jq: error: Could not open file /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-7mPtaL/test/17/sequence/ordering-evaluation/E01/containment/refusals.json: No such file or directory
+not ok 18 an unreadable refusal line stays recorded, and collection does not pass
+# (in test file Tests/scripts/vm-settings-containment.bats, line 283)
+#   `)"' failed
+# Traceback (most recent call last):
+#   File "<stdin>", line 8, in <module>
+# AttributeError: module 'sequence' has no attribute 'read_refusals'. Did you mean '.record_refusal' instead of '.read_refusals'?
+not ok 19 an owned holder that finishes is awaited, and no signal is sent
+# (in test file Tests/scripts/vm-settings-containment.bats, line 292)
+#   `[[ "$(result .holder.result)" == waited && "$(stops)" == 1 ]]' failed
+# jq: error: Could not open file /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-7mPtaL/test/19/sequence/ordering-evaluation/E01/containment/result.json: No such file or directory
+not ok 20 a stuck owned holder ends with its recorded group before the stop
+# (in test file Tests/scripts/vm-settings-containment.bats, line 300)
+#   `[[ "$(result .holder.result)" == ended && "$(stops)" == 1 ]]' failed
+# jq: error: Could not open file /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-7mPtaL/test/20/sequence/ordering-evaluation/E01/containment/result.json: No such file or directory
+not ok 21 a holder that ignores TERM ends by KILL, recorded separately
+# (in test file Tests/scripts/vm-settings-containment.bats, line 309)
+#   `[[ "$(result .holder.result)" == ended ]]' failed
+# jq: error: Could not open file /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-7mPtaL/test/21/sequence/ordering-evaluation/E01/containment/result.json: No such file or directory
+not ok 22 a holder outside the group leaves cleanup unresolved and sends no stop
+# (in test file Tests/scripts/vm-settings-containment.bats, line 318)
+#   `[[ "${status}" == 0 ]]' failed
+not ok 23 containment keeps an existing latch and its first reason
+# (in test file Tests/scripts/vm-settings-containment.bats, line 331)
+#   `grep -q 'the inventory before the start failed' "$(root)/unavailable"' failed with status 2
+# grep: /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-7mPtaL/test/23/sequence/ordering-evaluation/E01/evidence/unavailable: No such file or directory
+not ok 24 a clean down without a release stays held, with no release sent
+# (in test file Tests/scripts/vm-settings-containment.bats, line 339)
+#   `[[ "$(result .held_input)" == held && "$(settled classification.pointer)" == held ]]' failed
+# jq: error: Could not open file /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-7mPtaL/test/24/sequence/ordering-evaluation/E01/containment/result.json: No such file or directory
+not ok 25 a clean down and a clean release are released
+# (in test file Tests/scripts/vm-settings-containment.bats, line 348)
+#   `[[ "$(result .held_input)" == released ]]' failed
+# jq: error: Could not open file /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-7mPtaL/test/25/sequence/ordering-evaluation/E01/containment/result.json: No such file or directory
+not ok 26 a failed held point is uncertain
+# (in test file Tests/scripts/vm-settings-containment.bats, line 354)
+#   `[[ "$(result .held_input)" == uncertain && "$(inputs)" == 0 ]]' failed
+# jq: error: Could not open file /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-7mPtaL/test/26/sequence/ordering-evaluation/E01/containment/result.json: No such file or directory
+not ok 27 a partial release proves no release
+# (in test file Tests/scripts/vm-settings-containment.bats, line 360)
+#   `[[ "$(result .held_input)" == uncertain && "$(inputs)" == 0 ]]' failed
+# jq: error: Could not open file /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-7mPtaL/test/27/sequence/ordering-evaluation/E01/containment/result.json: No such file or directory
+not ok 28 a missing receipt makes the pointer uncertain
+# (in test file Tests/scripts/vm-settings-containment.bats, line 366)
+#   `[[ "$(result .held_input)" == uncertain ]]' failed
+# jq: error: Could not open file /private/var/folders/z1/nw_wk3gj3hqchs4_73xrf2dw0000gn/T/bats-run-7mPtaL/test/28/sequence/ordering-evaluation/E01/containment/result.json: No such file or directory
+not ok 29 a nonzero stop is failed, is not repeated, and still gets its inventory
+# (in test file Tests/scripts/vm-settings-containment.bats, line 374)
+#   `[[ "$(stops)" == 1 && "$(phase stop)" == failed && "$(phase inventory)" == passed ]]' failed
+not ok 30 a malformed stop response is failed
+# (in test file Tests/scripts/vm-settings-containment.bats, line 381)
+#   `[[ "$(stops)" == 1 && "$(phase stop)" == failed && "$(settled cleanup)" == unresolved ]]' failed
+not ok 31 a stop response that says not stopped is failed
+# (in test file Tests/scripts/vm-settings-containment.bats, line 387)
+#   `[[ "$(stops)" == 1 && "$(phase stop)" == failed ]]' failed
+not ok 32 a stop that outlasts its bound is unavailable and is not repeated
+# (in test file Tests/scripts/vm-settings-containment.bats, line 394)
+#   `[[ "$(stops)" == 1 && "$(phase stop)" == unavailable && "$(settled cleanup)" == unresolved ]]' failed
+not ok 33 a clone still listed after the stop fails the inventory
+# (in test file Tests/scripts/vm-settings-containment.bats, line 404)
+#   `[[ "$(phase stop)" == passed && "$(phase inventory)" == failed ]]' failed
+not ok 34 a truncated inventory is not an absence
+# (in test file Tests/scripts/vm-settings-containment.bats, line 411)
+#   `[[ "$(phase inventory)" == failed && "$(settled cleanup)" == unresolved ]]' failed
+not ok 35 an inventory row with a missing field is not an absence
+# (in test file Tests/scripts/vm-settings-containment.bats, line 417)
+#   `[[ "$(phase inventory)" == failed && "$(settled cleanup)" == unresolved ]]' failed
+not ok 36 an inventory that outlasts its bound is unavailable
+# (in test file Tests/scripts/vm-settings-containment.bats, line 424)
+#   `[[ "$(phase inventory)" == unavailable && "$(settled cleanup)" == unresolved ]]' failed
+not ok 37 a signal reaches the recorded group once, then the run collects, stops and settles
+# (in test file Tests/scripts/vm-settings-containment.bats, line 438)
+#   `[[ -e "${run_ready}" ]]' failed
+not ok 38 a later signal does not cut the containment short
+# (in test file Tests/scripts/vm-settings-containment.bats, line 456)
+#   `kill -TERM "${caller}"' failed
+# /Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/scripts/vm-settings-containment.bats: line 456: kill: (4339) - No such process
+not ok 39 an unresolved stop keeps every later slot NOT RUN
+# (from function `expect_refused' in file Tests/scripts/vm-settings-containment.bats, line 81,
+#  in test file Tests/scripts/vm-settings-containment.bats, line 476)
+#   `expect_refused "stopped"' failed
+# expected a refusal with "stopped": status 2: usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'run' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'report')

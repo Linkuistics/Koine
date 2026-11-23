@@ -101,3 +101,16 @@ The final outcome reconciliation cannot replace this pre-runtime handoff. Report
 Koine failure, test-driver failure and assertion NOT RUN separately. Missing
 required evidence prevents acceptance, but it does not establish product
 failure.
+
+## K169 containment handoff
+
+Run each slot through `settings-ordering-sequence.py run`. Read
+`docs/verification/settings-activation/ORDERING-CONTAINMENT-RESULTS.md`.
+
+- Leave `KOINE_SEQUENCE_BOUNDS` unset. Only the controls shorten the bounds, and
+  `process.json` records the bounds of each run.
+- Pin the Task executable with the other frozen tools. The group and signal
+  control observed Task 3.54.0 only.
+- A SIGKILL of the caller leaves its group running and the slot unsettled. Use
+  the group in `process.json` for exact containment, and record that action
+  separately. Every later slot stays NOT RUN.

@@ -3,7 +3,8 @@
 
 The tool declares the five fixed slots, admits them in order and classifies the
 receipts of each evidence root. It settles each slot and reports every slot that
-did not run. It starts no clone and sends no guest command. The protocol is
+did not run. Only the run verb starts a Task entry. That verb collects the
+evidence of its slot and contains the exact clone. The protocol is
 docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md.
 
 Exit 0: the step completed. 2: invalid arguments. 3: the step was refused, and
@@ -19,11 +20,18 @@ import hashlib
 import json
 import os
 import re
+import select
+import shlex
+import shutil
+import signal
 import stat
+import subprocess
 import sys
+import time
 from collections.abc import Callable
 from datetime import UTC, datetime
 from pathlib import Path
+from types import FrameType
 from typing import cast
 
 BASE = "testanyware-golden-macos-27"
@@ -68,6 +76,25 @@ RESULT_PHASES = (
     "screenshots",
 )
 LEDGER_NAME = re.compile(r"([0-9]{6})-(ready|started|settled)\.json")
+ORDINAL_GAP = "the ordinals have a gap"
+REPOSITORY = Path(__file__).resolve().parents[1]
+LIFECYCLE = REPOSITORY / "scripts" / "vm-lifecycle-evidence-lib.sh"
+CONTAINMENT = "containment"
+STOP_OPERATION = "containment-stop"
+INVENTORY_OPERATION = "containment-inventory"
+# Each request would change what the protocol declares, so a run refuses it.
+OVERRIDES = ("KOINE_VM_KEEP", "KOINE_VM_DISPLAY", "KOINE_SETTINGS_TRACE")
+# Seconds. The tagged `vm stop` runs `tart stop` with no bound of its own:
+# https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-vm/src/tart.rs
+DEFAULT_BOUNDS = {
+    "holder": 30.0,
+    "term": 10.0,
+    "kill": 5.0,
+    "stop": 180.0,
+    "inventory": 60.0,
+}
+# The child waits here until the caller has recorded its process group.
+GATE = 'IFS= read -r go && [ "$go" = start ] || exit 125; exec </dev/null; exec "$@"'
 
 Json = dict[str, object]
 
@@ -331,7 +358,7 @@ def ready(directory: Path, slot_set: str, receipt: Path) -> int:
     return 0
 
 
-def admit(directory: Path, slot: str) -> int:
+def admit_slot(directory: Path, slot: str) -> Json:
     """Consume the slot. The caller invokes its clone start immediately after."""
 
     def step(sequence: Sequence) -> Json:
@@ -351,7 +378,11 @@ def admit(directory: Path, slot: str) -> int:
         sequence.append("started", {"slot": slot, "clone": declared["clone"]})
         return declared
 
-    print(json.dumps(with_writer(directory, "admit", step), indent=2))
+    return with_writer(directory, "admit", step)
+
+
+def admit(directory: Path, slot: str) -> int:
+    print(json.dumps(admit_slot(directory, slot), indent=2))
     return 0
 
 
@@ -365,7 +396,7 @@ def read_attempts(root: Path) -> tuple[list[Json], list[str]]:
     names = sorted(p.name for p in root.iterdir() if re.fullmatch(r"[0-9]{6}", p.name))
     for index, name in enumerate(names, 1):
         if int(name) != index:
-            unfinished.append(f"{name}: the ordinals have a gap")
+            unfinished.append(f"{name}: {ORDINAL_GAP}")
         operation: object = None
         outcome: object = "partial"
         try:
@@ -550,7 +581,12 @@ def classify_root(root: Path, slot_set: str, clone: str) -> Json:
         return result
     result["attempts"] = len(attempts)
     result["unfinished"] = unfinished
-    result["pointer"] = pointer_state(attempts)
+    # A missing receipt could be a held point or a release.
+    result["pointer"] = (
+        "uncertain"
+        if any(ORDINAL_GAP in entry for entry in unfinished)
+        else pointer_state(attempts)
+    )
     signals = [
         a["operation"].removeprefix(SIGNAL)
         for a in attempts
@@ -736,36 +772,699 @@ def decide(classification: Json, phases: Json) -> tuple[str, list[str]]:
     return "unresolved", conflicts
 
 
+def cleanup_state(phases: Json) -> str:
+    """Confirmed, not requested (no start and a clean absence) or unresolved."""
+    stop, inventory = phase_result(phases, "stop"), phase_result(phases, "inventory")
+    if inventory == "passed" and stop == "passed":
+        return "confirmed"
+    if inventory == "passed" and stop == "not-run":
+        return "not-requested"
+    return "unresolved"
+
+
+def record_settlement(
+    sequence: Sequence, slot: str, phases: Json, classification: Json
+) -> Json:
+    disposition, conflicts = decide(classification, phases)
+    return sequence.append(
+        "settled",
+        {
+            "slot": slot,
+            "disposition": disposition,
+            "cleanup": cleanup_state(phases),
+            "conflicts": conflicts,
+            "classification": classification,
+            "phases": phases,
+        },
+    )
+
+
+def run_is_live(directory: Path) -> bool:
+    try:
+        descriptor = os.open(directory / ".runner", os.O_RDONLY | os.O_NOFOLLOW)
+    except FileNotFoundError:
+        return False
+    try:
+        fcntl.flock(descriptor, fcntl.LOCK_SH | fcntl.LOCK_NB)
+    except BlockingIOError:
+        return True
+    finally:
+        os.close(descriptor)
+    return False
+
+
+def settled_classification(declared: Json) -> Json:
+    """The class that a run froze before containment wrote to the root."""
+    frozen = Path(cast(str, declared["output"])) / CONTAINMENT / "classification.json"
+    if frozen.exists():
+        try:
+            return read_object(frozen)
+        except (OSError, ValueError) as error:
+            raise Refusal(
+                f"the frozen classification is unreadable: {error}"
+            ) from error
+    return classify_root(
+        Path(cast(str, declared["evidence_root"])),
+        cast(str, declared["set"]),
+        cast(str, declared["clone"]),
+    )
+
+
 def settle(directory: Path, slot: str, phases_path: Path) -> int:
     def step(sequence: Sequence) -> Json:
         sequence.check_settle(slot)
+        if run_is_live(sequence.directory):
+            raise Refusal(f"a live run owns {slot}")
         phases = read_phases(phases_path)
-        declared = sequence.slots[slot]
-        classification = classify_root(
-            Path(cast(str, declared["evidence_root"])),
-            cast(str, declared["set"]),
-            cast(str, declared["clone"]),
-        )
-        disposition, conflicts = decide(classification, phases)
-        cleanup = (
-            "confirmed"
-            if phase_result(phases, "stop") == "passed"
-            and phase_result(phases, "inventory") == "passed"
-            else "unresolved"
-        )
-        return sequence.append(
-            "settled",
-            {
-                "slot": slot,
-                "disposition": disposition,
-                "cleanup": cleanup,
-                "conflicts": conflicts,
-                "classification": classification,
-                "phases": phases,
-            },
+        return record_settlement(
+            sequence, slot, phases, settled_classification(sequence.slots[slot])
         )
 
     print(json.dumps(with_writer(directory, "settle", step), indent=2))
+    return 0
+
+
+# --- the slot run and its containment ----------------------------------------
+
+
+def read_bounds() -> dict[str, float]:
+    """The fixed bounds. The controls shorten them, and the record keeps them."""
+    bounds = dict(DEFAULT_BOUNDS)
+    text = os.environ.get("KOINE_SEQUENCE_BOUNDS")
+    if text is None:
+        return bounds
+    for item in text.split(","):
+        key, _, value = item.partition("=")
+        if key not in bounds or float(value) <= 0:
+            raise ValueError(f"invalid bound: {item}")
+        bounds[key] = float(value)
+    return bounds
+
+
+def read_scenario_exit(path: Path) -> tuple[int | None, str]:
+    """The strict status that the Task entry wrote. Anything else is no status."""
+    try:
+        data = path.read_bytes()
+    except FileNotFoundError:
+        return None, "missing"
+    except OSError:
+        return None, "unreadable"
+    if re.fullmatch(rb"(0|[1-9][0-9]{0,2})\n", data) and int(data) <= 255:
+        return int(data), "read"
+    return None, "malformed"
+
+
+def group_members(group: int) -> list[int] | None:
+    """The live members of the group. None means the listing is unavailable."""
+    try:
+        listing = subprocess.run(
+            ["/bin/ps", "-axo", "pid=,pgid=,stat="],
+            capture_output=True,
+            text=True,
+            timeout=10,
+            check=False,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return None
+    if listing.returncode != 0:
+        return None
+    members: list[int] = []
+    for line in listing.stdout.splitlines():
+        fields = line.split()
+        if len(fields) != 3 or not (fields[0].isdigit() and fields[1].isdigit()):
+            return None
+        # The unreaped leader stays a zombie, which keeps the group ID reserved.
+        if int(fields[1]) == group and not fields[2].startswith("Z"):
+            members.append(int(fields[0]))
+    return members
+
+
+def writer_free(root: Path) -> bool | None:
+    """Test the evidence writer lock. Closing the descriptor releases the test."""
+    try:
+        descriptor = os.open(root / ".writer", os.O_RDONLY | os.O_NOFOLLOW)
+    except FileNotFoundError:
+        return True
+    except OSError:
+        return None
+    try:
+        fcntl.flock(descriptor, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        return False
+    except OSError:
+        return None
+    finally:
+        os.close(descriptor)
+    return True
+
+
+def start_evidence(root: Path) -> tuple[bool, bool]:
+    """Whether a start may have been requested, and whether its creation is open."""
+    if not root.exists():
+        return False, False
+    try:
+        attempts, unfinished = read_attempts(root)
+    except OSError:
+        return True, True
+    # An unreadable request or a missing ordinal could hide the start.
+    hidden = any(not isinstance(a["operation"], str) for a in attempts) or any(
+        ORDINAL_GAP in entry for entry in unfinished
+    )
+    starts = [a for a in attempts if a["operation"] == "vm-start"]
+    return bool(starts) or hidden, hidden or any(
+        a["outcome"] != "clean" for a in starts
+    )
+
+
+def refusal_class(arguments: list[str]) -> str:
+    if arguments[:1] in (["fail"], ["poll-step"]):
+        return "confirmation"
+    if "--" in arguments and arguments[arguments.index("--") + 1 :][:2] == [
+        "vm",
+        "stop",
+    ]:
+        return "stop"
+    return "collection" if arguments[2:3] == ["evidence"] else "other"
+
+
+def read_refusals(root: Path) -> list[Json]:
+    """Each refused request of both logs, with its class and reason."""
+    refusals: list[Json] = []
+
+    def unreadable(source: str, line: bytes) -> None:
+        refusals.append(
+            {
+                "source": source,
+                "class": "unreadable",
+                "reason": "the refusal record is unreadable",
+                "raw": line.decode("utf-8", "replace"),
+            }
+        )
+
+    path = root / "refusals.jsonl"
+    for line in path.read_bytes().splitlines() if path.exists() else []:
+        try:
+            record: object = json.loads(line)
+        except ValueError:
+            unreadable("backend", line)
+            continue
+        fields = cast(Json, record) if isinstance(record, dict) else {}
+        arguments = fields.get("arguments")
+        reason = fields.get("reason")
+        if not isinstance(arguments, list) or not isinstance(reason, str):
+            unreadable("backend", line)
+            continue
+        words = [str(word) for word in cast(list[object], arguments)]
+        refusals.append(
+            {
+                "source": "backend",
+                "class": refusal_class(words),
+                "reason": reason,
+                "arguments": words,
+            }
+        )
+    path = root / "facade-refusals.log"
+    for line in path.read_bytes().splitlines() if path.exists() else []:
+        match = re.fullmatch(rb"backend_exit=([0-9]+) argv=(.*)", line)
+        try:
+            words = shlex.split(match[2].decode()) if match else None
+        except (ValueError, UnicodeDecodeError):
+            words = None
+        if match is None or words is None:
+            unreadable("facade", line)
+            continue
+        refusals.append(
+            {
+                "source": "facade",
+                "class": refusal_class(words),
+                "reason": f"backend exit {match[1].decode()}",
+                "arguments": words,
+            }
+        )
+    return refusals
+
+
+def phase(result: str, detail: str) -> Json:
+    return {"result": result, "detail": detail}
+
+
+class Containment:
+    """One slot's Task, its evidence and the containment of its exact clone."""
+
+    def __init__(
+        self, declared: Json, bounds: dict[str, float], received: list[int]
+    ) -> None:
+        self.declared = declared
+        self.clone = cast(str, declared["clone"])
+        self.output = Path(cast(str, declared["output"]))
+        self.root = Path(cast(str, declared["evidence_root"]))
+        self.records = self.output / CONTAINMENT
+        self.bounds = bounds
+        self.received = received
+        self.record_errors: list[str] = []
+        self.released = False
+        self.exits: select.kqueue | None = None
+        self.environment = {
+            key: value for key, value in os.environ.items() if key not in OVERRIDES
+        }
+        self.environment.update(
+            KOINE_VM_ID=self.clone,
+            KOINE_VM_BASE=BASE,
+            KOINE_VM_EVIDENCE_ROOT=str(self.root),
+            KOINE_K4_OUT=str(self.output),
+        )
+        self.records.mkdir(mode=0o700)
+
+    def action(self, name: str, **fields: object) -> None:
+        """Keep one containment action. A lost record never stops containment."""
+        line = json.dumps({"at": timestamp(), "action": name, **fields}) + "\n"
+        try:
+            with (self.records / "actions.jsonl").open("ab", buffering=0) as stream:
+                stream.write(line.encode("ascii"))
+                os.fsync(stream.fileno())
+        except OSError as error:
+            self.record_errors.append(f"{name}: {error}")
+
+    def keep(self, name: str, value: object) -> None:
+        try:
+            write_exclusive(self.records / name, value)
+        except OSError as error:
+            self.record_errors.append(f"{name}: {error}")
+
+    def start_task(self, task: str) -> subprocess.Popen[bytes] | None:
+        """Start the entry behind a gate, and open it once the group is recorded."""
+        entry = cast(str, self.declared["entry"])
+        read_end, write_end = os.pipe()
+        try:
+            with (
+                (self.records / "task.stdout").open("xb") as stdout,
+                (self.records / "task.stderr").open("xb") as stderr,
+            ):
+                process = subprocess.Popen(
+                    ["/bin/bash", "-c", GATE, "gate", task, entry],
+                    cwd=REPOSITORY,
+                    env=self.environment,
+                    stdin=read_end,
+                    stdout=stdout,
+                    stderr=stderr,
+                    start_new_session=True,
+                )
+        except OSError as error:
+            os.close(write_end)
+            self.action("task-not-started", reason=str(error))
+            return None
+        finally:
+            os.close(read_end)
+        try:
+            # The gate keeps the child alive, so this registration cannot miss its
+            # exit. A kqueue event reports the exit and leaves the leader unreaped.
+            self.exits = select.kqueue()
+            self.exits.control(
+                [
+                    select.kevent(
+                        process.pid,
+                        select.KQ_FILTER_PROC,
+                        select.KQ_EV_ADD | select.KQ_EV_ONESHOT,
+                        select.KQ_NOTE_EXIT,
+                    )
+                ],
+                0,
+            )
+            write_exclusive(
+                self.records / "process.json",
+                {
+                    "pid": process.pid,
+                    "pgid": os.getpgid(process.pid),
+                    "task": task,
+                    "entry": entry,
+                    "bounds": self.bounds,
+                },
+            )
+            if not self.received:
+                os.write(write_end, b"start\n")
+                self.released = True
+        except OSError as error:
+            self.record_errors.append(f"process.json: {error}")
+        finally:
+            os.close(write_end)
+        self.action("task-released" if self.released else "task-withheld")
+        return process
+
+    def signal_group(self, group: int, name: str, number: int) -> None:
+        try:
+            os.killpg(group, number)
+            self.action(name, group=group, signal=signal.Signals(number).name)
+        except OSError as error:
+            self.action(name, group=group, error=str(error))
+
+    def await_task(self, process: subprocess.Popen[bytes]) -> None:
+        """Wait without reaping, so the group ID stays reserved. Forward one signal."""
+        if not self.released or self.exits is None:
+            return  # The closed gate ends the child, and the group wait sees it.
+        deadline: float | None = None
+        while not self.exits.control(None, 1, 0.02):
+            if self.received and deadline is None:
+                deadline = time.monotonic() + self.bounds["holder"]
+                self.signal_group(process.pid, "signal-forwarded", self.received[0])
+            if deadline is not None and time.monotonic() >= deadline:
+                return
+
+    def await_group(self, group: int, seconds: float) -> list[int] | None:
+        deadline = time.monotonic() + seconds
+        while True:
+            members = group_members(group)
+            if members is None or not members or time.monotonic() >= deadline:
+                return members
+            time.sleep(0.02)
+
+    def end_group(self, group: int, prefix: str = "") -> list[int] | None:
+        """TERM, then KILL, each with its own bound and record."""
+        members: list[int] | None = None
+        for name, number, bound in (
+            ("group-term", signal.SIGTERM, "term"),
+            ("group-kill", signal.SIGKILL, "kill"),
+        ):
+            self.signal_group(group, f"{prefix}{name}", number)
+            members = self.await_group(group, self.bounds[bound])
+            if members == []:
+                break
+        return members
+
+    def resolve_holders(self, group: int) -> Json:
+        """Wait for the recorded group, then end it. Never touch the lock or latch."""
+        result = "none"
+        members = group_members(group)
+        if members:
+            self.action("holder-wait", members=members)
+            members = self.await_group(group, self.bounds["holder"])
+            result = "waited"
+            if members:
+                members = self.end_group(group)
+                result = "ended"
+        if members is None:
+            return phase("unresolved", "the process listing is unavailable")
+        if members:
+            return phase("unresolved", f"the group still has members: {members}")
+        deadline = time.monotonic() + self.bounds["holder"]
+        while (free := writer_free(self.root)) is False:
+            if time.monotonic() >= deadline:
+                break
+            time.sleep(0.02)
+        if free is not True:
+            self.action("lock-held")
+            return phase("unresolved", "a process outside the group holds the lock")
+        return phase(result, "the recorded group is empty and the lock is free")
+
+    def facade(
+        self, function: str, operation: str, limit: float, *arguments: str
+    ) -> tuple[int | None, bool]:
+        """One bounded helper call, in its own group, through the writer domain."""
+        command = [
+            "/bin/bash",
+            "-c",
+            'source "$1"; shift; "$@"',
+            CONTAINMENT,
+            str(LIFECYCLE),
+            function,
+            str(self.root),
+            *arguments,
+        ]
+        try:
+            with (
+                (self.records / f"{operation}.stdout").open("xb") as stdout,
+                (self.records / f"{operation}.stderr").open("xb") as stderr,
+            ):
+                process = subprocess.Popen(
+                    command,
+                    cwd=REPOSITORY,
+                    env=self.environment,
+                    stdin=subprocess.DEVNULL,
+                    stdout=stdout,
+                    stderr=stderr,
+                    start_new_session=True,
+                )
+        except OSError as error:
+            self.action(f"{operation}-not-started", reason=str(error))
+            return None, False
+        try:
+            return process.wait(timeout=limit), False
+        except subprocess.TimeoutExpired:
+            self.action(f"{operation}-timeout", bound=limit)
+        # The leader stays unreaped here, so its group ID cannot be reused.
+        self.end_group(process.pid, f"{operation}-")
+        process.poll()
+        return None, True
+
+    def attempt_result(self, operation: str, status: int | None, late: bool) -> Json:
+        """Classify one containment attempt from its own receipt and status."""
+        fields: Json = {"sent": True, "status": status, "timed_out": late}
+        if late:
+            return {**fields, **phase("unavailable", "the attempt outlasted its bound")}
+        try:
+            attempts, _ = read_attempts(self.root)
+        except OSError as error:
+            return {**fields, **phase("unavailable", f"no readable root: {error}")}
+        matching = [a for a in attempts if a["operation"] == operation]
+        if not matching:
+            return {**fields, **phase("unavailable", f"no receipt, status {status}")}
+        outcome = matching[-1]["outcome"]
+        if outcome == "clean" and status == 0:
+            return {**fields, **phase("passed", "a clean receipt and status 0")}
+        if outcome in {"clean", "partial"}:
+            detail = f"receipt {outcome} with status {status}"
+            return {**fields, **phase("unavailable", detail)}
+        return {**fields, **phase("failed", f"receipt {outcome}, status {status}")}
+
+    def contain(self, requested: bool, holder: Json) -> tuple[Json, Json, bool]:
+        """At most one exact stop, then one independent inventory."""
+        idle: Json = {"sent": False, "status": None, "timed_out": False}
+        if holder["result"] == "unresolved":
+            detail = f"the lock holder is unresolved: {holder['detail']}"
+            return (
+                {**idle, **phase("not-run", detail)},
+                {
+                    **idle,
+                    **phase("not-run", detail),
+                },
+                False,
+            )
+        created = False
+        if not self.root.exists():
+            # The inventory needs a root in the same writer domain.
+            status, _ = self.facade(
+                "init_guest_evidence",
+                "containment-init",
+                self.bounds["kill"],
+                self.clone,
+            )
+            created = status == 0
+            self.action(
+                "root-created" if created else "root-not-created", status=status
+            )
+        if requested:
+            self.action("stop-sent", clone=self.clone)
+            status, late = self.facade(
+                "stop_guest_vm", STOP_OPERATION, self.bounds["stop"], STOP_OPERATION
+            )
+            stop = self.attempt_result(STOP_OPERATION, status, late)
+        else:
+            stop = {**idle, **phase("not-run", "no start attempt to contain")}
+        status, late = self.facade(
+            "inventory_guest_vms",
+            INVENTORY_OPERATION,
+            self.bounds["inventory"],
+            "evidence",
+            INVENTORY_OPERATION,
+            "absent",
+        )
+        return stop, self.attempt_result(INVENTORY_OPERATION, status, late), created
+
+    def write_manifest(self) -> Json:
+        """Digest every retained file. A file that cannot be read stays named."""
+        files: list[Json] = []
+        errors: list[Json] = []
+        for path in sorted(self.output.rglob("*")):
+            try:
+                mode = path.lstat().st_mode
+                if stat.S_ISDIR(mode):
+                    continue
+                if stat.S_ISLNK(mode):
+                    files.append({"path": str(path), "symlink": os.readlink(path)})
+                elif stat.S_ISREG(mode):
+                    files.append(digest_regular(path))
+                else:
+                    files.append({"path": str(path), "kind": "special"})
+            except (OSError, ValueError) as error:
+                errors.append({"path": str(path), "error": str(error)})
+        manifest: Json = {"files": files, "errors": errors}
+        self.keep("manifest.json", manifest)
+        return manifest
+
+    def execute(self, task: str) -> tuple[Json, Json]:
+        """Run the entry, then collect and contain. Each result stays separate."""
+        process = self.start_task(task)
+        holder = phase("none", "no Task process")
+        if process is not None:
+            self.await_task(process)
+            holder = self.resolve_holders(process.pid)
+        code = process.poll() if process is not None else None
+        code = code if self.released else None
+        task_status = code if code is None or code >= 0 else 128 - code
+        scenario_status, scenario_file = read_scenario_exit(
+            self.output / "scenario.exit"
+        )
+        # Freeze the class before any containment receipt enters the root.
+        left_root = self.root.exists()
+        classification = classify_root(
+            self.root, cast(str, self.declared["set"]), self.clone
+        )
+        self.keep("classification.json", classification)
+        requested, uncertain = start_evidence(self.root)
+        stop, inventory, created = self.contain(requested, holder)
+        try:
+            refusals = read_refusals(self.root)
+        except OSError as error:
+            refusals = [
+                {
+                    "source": "caller",
+                    "class": "unreadable",
+                    "reason": f"the refusal logs are unreadable: {error}",
+                }
+            ]
+        self.keep("refusals.json", refusals)
+        manifest = self.write_manifest()
+        refused = [r for r in refusals if r["class"] in {"collection", "unreadable"}]
+        if not left_root:
+            collection = phase("unavailable", "the scenario left no evidence root")
+        elif manifest["errors"]:
+            collection = phase("unavailable", "the manifest names unreadable files")
+        elif refused:
+            collection = phase("failed", f"{len(refused)} refused collection records")
+        else:
+            collection = phase("passed", f"{len(refusals)} refusals recorded")
+        owners = {
+            "environment": "settings-ordering-audits-k170",
+            "endpoint": "settings-ordering-audits-k170",
+            "audit": "settings-ordering-audits-k170",
+            "screenshots": "settings-ordering-qualification-k54",
+        }
+        phases: Json = {
+            "scenario": {"status": scenario_status},
+            "task": {"status": task_status},
+            "collection": collection,
+            "stop": phase(cast(str, stop["result"]), cast(str, stop["detail"])),
+            "inventory": phase(
+                cast(str, inventory["result"]), cast(str, inventory["detail"])
+            ),
+            **{
+                name: phase("not-run", f"{owner} owns this phase")
+                for name, owner in owners.items()
+            },
+        }
+        self.keep("phases.json", phases)
+        self.keep(
+            "result.json",
+            {
+                "slot": self.declared["slot"],
+                "clone": self.clone,
+                "task": {"status": task_status, "released": self.released},
+                "scenario": {"status": scenario_status, "file": scenario_file},
+                "start": {"requested": requested, "uncertain": uncertain},
+                "root_created_by_caller": created,
+                "holder": holder,
+                "held_input": classification["pointer"],
+                "stop": stop,
+                "inventory": inventory,
+                "refusals": len(refusals),
+                "interruptions": [
+                    signal.Signals(number).name for number in self.received
+                ],
+                "manifest": {
+                    "files": len(cast(list[Json], manifest["files"])),
+                    "errors": len(cast(list[Json], manifest["errors"])),
+                },
+                "record_errors": self.record_errors,
+            },
+        )
+        return phases, classification
+
+
+def settle_run(directory: Path, slot: str, phases: Json, classification: Json) -> Json:
+    """Settle through the ledger. A short-lived contender does not lose the result."""
+
+    def step(sequence: Sequence) -> Json:
+        sequence.check_settle(slot)
+        validate_phases(phases)
+        return record_settlement(sequence, slot, phases, classification)
+
+    for remaining in range(49, -1, -1):
+        try:
+            return with_writer(directory, "settle", step)
+        except Refusal as error:
+            if "competing" not in str(error) or remaining == 0:
+                raise
+            time.sleep(0.1)
+    raise Refusal("the settlement did not complete")
+
+
+def unstarted_phases(reason: str) -> Json:
+    missing = phase("unavailable", reason)
+    return {
+        "scenario": {"status": None},
+        "task": {"status": None},
+        **dict.fromkeys(RESULT_PHASES, missing),
+    }
+
+
+def run_slot(directory: Path, slot: str) -> int:
+    """Admit one slot, run its entry once, contain its clone and settle it."""
+    resolved = directory.absolute().resolve()
+    if not (resolved / "sequence.json").is_file():
+        raise Refusal(f"no declared sequence at {resolved}")
+
+    def refuse(reason: str) -> Refusal:
+        record_refusal(resolved, "run", reason)
+        return Refusal(reason)
+
+    present = [name for name in OVERRIDES if name in os.environ]
+    if present:
+        raise refuse(f"the run does not honour {', '.join(present)}")
+    try:
+        bounds = read_bounds()
+    except ValueError as error:
+        raise refuse(str(error)) from error
+    task = shutil.which("task")
+    if task is None:
+        raise refuse("the task executable is not on PATH")
+    received: list[int] = []
+
+    def receive(number: int, _frame: FrameType | None) -> None:
+        received.append(number)
+
+    with (resolved / ".runner").open("a") as runner:
+        try:
+            fcntl.flock(runner, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            raise refuse("another run is live") from None
+        for number in (signal.SIGINT, signal.SIGTERM, signal.SIGHUP):
+            signal.signal(number, receive)
+        if received:
+            raise refuse("interrupted before admission")
+        declared = admit_slot(resolved, slot)
+        try:
+            containment = Containment(declared, bounds, received)
+        except OSError as error:
+            # No Task started, so the slot settles with nothing to contain.
+            phases = unstarted_phases(f"the run records are unavailable: {error}")
+            classification = classify_root(
+                Path(cast(str, declared["evidence_root"])),
+                cast(str, declared["set"]),
+                cast(str, declared["clone"]),
+            )
+        else:
+            phases, classification = containment.execute(task)
+        settled = settle_run(resolved, slot, phases, classification)
+    print(json.dumps(settled, indent=2))
     return 0
 
 
@@ -849,6 +1548,11 @@ def main() -> int:
     settle_parser.add_argument("directory", type=Path)
     settle_parser.add_argument("slot", choices=SLOT_NAMES)
     settle_parser.add_argument("phases", type=Path)
+    run_parser = commands.add_parser(
+        "run", help="admit one slot, run its entry, contain its clone and settle it"
+    )
+    run_parser.add_argument("directory", type=Path)
+    run_parser.add_argument("slot", choices=SLOT_NAMES)
     report_parser = commands.add_parser(
         "report", help="report every slot and the outcome"
     )
@@ -876,6 +1580,8 @@ def main() -> int:
                 cast(str, args.slot),
                 cast(Path, args.phases),
             )
+        if action == "run":
+            return run_slot(cast(Path, args.directory), cast(str, args.slot))
         return report(cast(Path, args.directory))
     except Refusal as error:
         print(f"refused: {error}", file=sys.stderr)

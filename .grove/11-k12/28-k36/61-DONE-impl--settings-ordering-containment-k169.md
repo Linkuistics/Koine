@@ -50,3 +50,25 @@ success never requalifies a failed slot.
 
 `KOINE_VM_KEEP` is a containment decision that k89 assigned to this caller. The
 scenario sends no stop, so the caller must not honour a keep request.
+
+## Decisions (running log)
+
+**A keep request refuses the run.** The refusal comes before admission, so it
+consumes no slot. The display and trace overrides refuse in the same way.
+
+**The class freezes before containment.** The stop and inventory receipts share
+the evidence root, so a later classification would read them as scenario work.
+
+**No scenario time limit.** The protocol declares none. The caller bounds only
+its own holder wait, stop and inventory.
+
+**A stop needs a start attempt.** A root without a `vm-start` attempt gets an
+inventory only, and its cleanup is `not-requested`. An unreadable request or an
+ordinal gap counts as a possible start.
+
+**The four unowned phases stay `not-run`.** Each run therefore settles as
+`unresolved` until k170 and k54 supply them. The route for the screenshot audit
+is a named k170 duty.
+
+**Result.** `ORDERING-CONTAINMENT-RESULTS.md` records the run, its 43 controls,
+its 23 guard mutations and its limits.

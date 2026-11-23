@@ -1,0 +1,4 @@
+da8746364aa1cec2686aa24643fe8bd3a438486b20241515e4a0260ee98b55ae  scripts/settings-ordering-sequence.py
+133651d8c39733c4204b4987ff02cb61626b581de510ea7aa37a6ca0b2009c39  Tests/scripts/vm-settings-containment.bats
+d53d145d512cbab213b3545915e5ddb9dec95a2bf9d5af8f8369d76bc4db06f6  Tests/scripts/fixtures/settings-run-task.sh
+6e74b55f4d6e3aa17dd481c2c8c45042c31725d7b96ed73a8539f2c8a21f40c3  Tests/scripts/fixtures/file-lifecycle-cli.py

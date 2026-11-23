@@ -150,10 +150,23 @@ def main() -> int:
         stream.write(json.dumps(args) + "\n")
     print("synthetic lifecycle diagnostic", file=sys.stderr)
     mode = os.environ.get("lifecycle_mode", "clean")
-    if os.environ.get("lifecycle_block") == "1":
+    exit_status = int(os.environ.get("lifecycle_exit", "0"))
+    block = os.environ.get("lifecycle_block") == "1"
+    # lifecycle_only=stop or list applies the fault to that one vm command.
+    only = os.environ.get("lifecycle_only")
+    if only and args[:2] != ["vm", only]:
+        mode, exit_status, block = "clean", 0, False
+    if block:
+        if os.environ.get("lifecycle_ignore_term") == "1":
+            signal.signal(signal.SIGTERM, signal.SIG_IGN)
         ready = Path(os.environ["lifecycle_ready"])
         ready.touch()
-        while not ready.with_name(ready.name + ".release").exists():
+        # The bound ends a blocked call that a failed control never released.
+        end = time.monotonic() + 30
+        while (
+            not ready.with_name(ready.name + ".release").exists()
+            and time.monotonic() < end
+        ):
             time.sleep(0.02)
     command = tuple(args[:2])
     payload: dict[str, object]
@@ -185,7 +198,7 @@ def main() -> int:
         print('{"schema_version":')
     else:
         print(json.dumps(response))
-    return int(os.environ.get("lifecycle_exit", "0"))
+    return exit_status
 
 
 if __name__ == "__main__":

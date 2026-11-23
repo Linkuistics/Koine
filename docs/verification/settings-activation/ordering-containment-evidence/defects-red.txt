@@ -1,0 +1,8 @@
+1..3
+ok 1 a holder that ignores TERM ends by KILL, recorded separately
+not ok 2 a timed-out stop whose CLI ignores TERM ends by KILL before the inventory
+# (in test file Tests/scripts/vm-settings-containment.bats, line 407)
+#   `actions | grep -qx containment-stop-group-kill' failed
+not ok 3 a failed exit watch withholds the Task and does not hang the caller
+# (in test file Tests/scripts/vm-settings-containment.bats, line 554)
+#   `)"' failed with status 142

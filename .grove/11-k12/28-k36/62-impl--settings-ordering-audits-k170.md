@@ -43,3 +43,20 @@ read and the installed audit.
 No clone, slot or signed subject is created here. k54 owns the actual freeze
 and the actual golden digests. The private roots can hold `KOINE_VM_PASSWORD`,
 so plan finite storage and do not publish them.
+
+## K169 containment handoff
+
+Read `docs/verification/settings-activation/ORDERING-CONTAINMENT-RESULTS.md`.
+
+The `run` verb settles the slot in one step. `Containment.execute` sets the
+`environment`, `endpoint`, `audit` and `screenshots` phases to `not-run`, so
+every run now settles as `unresolved`. Replace the first three with real results.
+
+The k54 screenshot audit must reach the `screenshots` phase before settlement.
+No route exists yet, so this task must add one. A recurrence candidate cannot
+become `rejected` without it.
+
+An audit before the slot must run before `admit_slot`, because admission
+consumes the slot. The root now also holds the receipts `containment-stop` and
+`containment-inventory`. The frozen `containment/classification.json` excludes
+them, so read that file for the class of the scenario.

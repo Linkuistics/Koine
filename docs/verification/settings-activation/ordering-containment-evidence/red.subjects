@@ -1,0 +1,3 @@
+3b7035d3239ba15b6c5f51b04043150b8f320452daa9def211afdf01fe2bf8a5  scripts/settings-ordering-sequence.py
+19ed9414d314cc6564018914e22d7fb5fb20d73b59bfe6489a0ed436fdc2e9ae  Tests/scripts/vm-settings-containment.bats
+d53d145d512cbab213b3545915e5ddb9dec95a2bf9d5af8f8369d76bc4db06f6  Tests/scripts/fixtures/settings-run-task.sh
