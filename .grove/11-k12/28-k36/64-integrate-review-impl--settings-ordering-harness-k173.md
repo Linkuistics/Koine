@@ -16,16 +16,16 @@ material-risk threshold, and verify the resulting implementation.
 Read the findings from the commit of `settings-ordering-harness-k172`. Its
 durable report is
 `docs/verification/settings-activation/ORDERING-HARNESS-REVIEW.md`. Compare each
-finding with the actual source, the k36 brief, the accepted spec and
-`ORDERING-EVALUATION-PLAN.md`; the review's conclusions are not this task's
-charter.
+finding with the actual source and the k36 brief. Also compare it with the
+accepted spec and `ORDERING-EVALUATION-PLAN.md`. The conclusions of the review
+are not the charter of this task.
 
 ## Done when
 
 - Each finding has a source-grounded disposition under the integration
   procedure, including visible accepted trade-offs and rejected noise.
-- Each earned repair has meaningful failing controls and appropriate post-fix
-  verification through the existing Taskfile entries.
+- Each earned repair has meaningful failing controls. After the repair, the
+  existing Taskfile entries verify it.
 - The handoff identifies the source and control evidence that k171 must
   reconcile, with no claim of native behaviour or runtime acceptance.
 
