@@ -13,6 +13,8 @@ source "${repo}/scripts/vm-guest-exec-lib.sh"
 source "${repo}/scripts/vm-lifecycle-evidence-lib.sh"
 # shellcheck source=scripts/vm-exec-read-evidence-lib.sh
 source "${repo}/scripts/vm-exec-read-evidence-lib.sh"
+# shellcheck source=scripts/vm-file-evidence-lib.sh
+source "${repo}/scripts/vm-file-evidence-lib.sh"
 
 jq -cn --arg entry "$*" --arg pid "$$" --arg pgid "$(ps -o pgid= -p $$ | tr -d ' ')" \
     --arg vm "${KOINE_VM_ID-}" --arg base "${KOINE_VM_BASE-}" --arg root "${root}" --arg out "${out}" \
@@ -263,7 +265,7 @@ partial-original)
     printf 'partial bytes\n' >"${root}/${next}/raw.stdout"
     finish 0
     ;;
-recurrence)
+recurrence | recurrence-later-change | recurrence-record-shape)
     begin
     for operation in first-selection-identity first-selection-enabled \
         screenshot-menu-first-selection; do step "${operation}"; done
@@ -272,7 +274,38 @@ recurrence)
         failure-capture first-selection-menu-closed first-selection-liveness; do step "${operation}"; done
     exhaust first-selection-window-exhausted
     exhaust scenario-assertion-zero-window-same-process
+    if [[ "${run_mode}" == recurrence-later-change ]]; then
+        # The caller's later read of the guest sees this change.
+        printf 'changed after the selection\n' >>"${guest_bundle:?}/Contents/MacOS/Koine"
+    elif [[ "${run_mode}" == recurrence-record-shape ]]; then
+        installed="$(grep -l '"operation": "installed-before"' "${root}"/*/request.json | head -1)"
+        printf '{}\n' >"$(dirname "${installed}")/read.json"
+    fi
     finish 1
+    ;;
+member-lost)
+    begin
+    terminal
+    # shellcheck disable=SC2154 # The control names the attempt and its members.
+    lost_attempt="$(dirname "$(grep -l "\"operation\": \"${lost_operation}\"" "${root}"/*/request.json | head -1)")"
+    # shellcheck disable=SC2154,SC2086 # The members are separate words.
+    for member in ${lost_members}; do rm "${lost_attempt:?}/${member:?}"; done
+    finish 0
+    ;;
+upload-lost)
+    begin
+    printf 'upload\n' >"${out}/upload.txt"
+    upload_guest_file "${root}" upload-control "${out}/upload.txt" /tmp/control >/dev/null
+    lost_attempt="$(dirname "$(grep -l '"operation": "upload-control"' "${root}"/*/request.json | head -1)")"
+    rm "${lost_attempt:?}/transfer.json"
+    terminal
+    finish 0
+    ;;
+partial-response)
+    begin
+    terminal
+    lifecycle_mode=partial read_guest_exec "${root}" evidence late-read system >/dev/null 2>&1 || :
+    finish 0
     ;;
 refusals)
     begin

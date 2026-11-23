@@ -1604,10 +1604,10 @@ tasks:
     cmds:
       - shellcheck -x Tests/scripts/vm-settings-sequence.bats
       - shfmt -d -i 4 Tests/scripts/vm-settings-sequence.bats
-      - python3 -m py_compile scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py
-      - uvx ruff@0.17.3 check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py
-      - uvx ruff@0.17.3 format --check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py
-      - uvx pyright@1.1.414 scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py
+      - python3 -m py_compile scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py Tests/scripts/fixtures/settings-sequence-settle.py
+      - uvx ruff@0.17.3 check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py Tests/scripts/fixtures/settings-sequence-settle.py
+      - uvx ruff@0.17.3 format --check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py Tests/scripts/fixtures/settings-sequence-settle.py
+      - uvx pyright@1.1.414 scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py Tests/scripts/fixtures/settings-sequence-settle.py
       - bats Tests/scripts/vm-settings-sequence.bats
 
   check:vm-settings-containment:

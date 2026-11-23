@@ -32,6 +32,9 @@ This leaf runs after the whole-harness review and its integration. No freeze or
 clone request may precede it. The final k36 outcome comparison is a separate
 duty after k54, and it cannot replace this check.
 
+The whole-harness integration is in `ORDERING-HARNESS-INTEGRATION.md`. It names
+the changed source and controls that this reconciliation must consume.
+
 k57 found that `bash -n A B` parses only A, and 18 Taskfile lines use that form.
 `shellcheck` still parses those files. Record a disposition for the harness
 files among them.

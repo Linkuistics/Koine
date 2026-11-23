@@ -70,6 +70,7 @@ BOOT_EXHAUSTED = "restart-boot-exhausted"
 RESULTS = {"passed", "failed", "unavailable", "not-run"}
 RESULT_PHASES = (
     "collection",
+    "subject",
     "environment",
     "endpoint",
     "audit",
@@ -94,6 +95,26 @@ PROCESS_READ = "audit-process-after"
 AWAITING = "awaiting-screenshot-audit"
 SHA256 = re.compile(r"[0-9a-f]{64}")
 SYSTEM_FIELDS = ("product_version", "product_version_extra", "build_version", "arch")
+# The files that a clean attempt of each transport always holds. The backend
+# writes them before its clean result, in run_locked of scripts/vm-guest-exec.py.
+CLI_MEMBERS = ("raw.stdout", "raw.stderr", "cli.exit")
+PAYLOAD_MEMBERS = ("payload.stdout", "payload.stderr")
+REQUIRED_MEMBERS: dict[str, tuple[str, ...]] = {
+    "exec": (*CLI_MEMBERS, *PAYLOAD_MEMBERS, "guest.stdout", "guest.stderr"),
+    "read": (*CLI_MEMBERS, "guest.stdout", "guest.stderr", "read.json"),
+    "cli": (*CLI_MEMBERS, *PAYLOAD_MEMBERS),
+    "capture": (*CLI_MEMBERS, *PAYLOAD_MEMBERS, "artifact.json", "screen.png"),
+    "upload": (
+        *CLI_MEMBERS,
+        *PAYLOAD_MEMBERS,
+        "local-before.json",
+        "local-after.json",
+        "transfer.json",
+    ),
+    "download": (*CLI_MEMBERS, *PAYLOAD_MEMBERS, "transfer.json", "download.bin"),
+    "poll-step": (),
+    "confirmation": (),
+}
 ITEM_FIELDS = {
     "file": {"path", "kind", "bytes", "sha256"},
     "symlink": {"path", "kind", "target"},
@@ -798,8 +819,12 @@ def decide(classification: Json, phases: Json) -> tuple[str, list[str]]:
     if conflicts:
         return "unresolved", conflicts
     if kind == "recurrence-candidate":
+        # A recurrence needs the admitted subject and setup before its selection.
         # A later failed collection or cleanup cannot erase the rejection.
-        corroborated = phase_result(phases, "screenshots") == "passed"
+        corroborated = all(
+            phase_result(phases, name) == "passed"
+            for name in ("subject", "screenshots")
+        )
         return ("rejected" if corroborated else "unresolved"), conflicts
     if kind == "assertion-failed":
         return "failed", conflicts
@@ -871,17 +896,34 @@ def settled_classification(declared: Json) -> Json:
     )
 
 
-def settle(directory: Path, slot: str, phases_path: Path) -> int:
+def recovery_phases(output: Path) -> Json:
+    """The phases of a run that ended before it collected them.
+
+    Only the strict scenario status can survive. No audit, stop or inventory
+    result exists, so this route cannot qualify a slot or confirm its cleanup.
+    """
+    status, state = read_scenario_exit(output / "scenario.exit")
+    missing = phase(
+        "unavailable", f"the caller ended before this phase (scenario file {state})"
+    )
+    return {
+        "scenario": {"status": status},
+        "task": {"status": None},
+        **dict.fromkeys(RESULT_PHASES, missing),
+    }
+
+
+def settle(directory: Path, slot: str) -> int:
+    """Close a slot whose caller ended before it wrote its collected phases."""
+
     def step(sequence: Sequence) -> Json:
         sequence.check_settle(slot)
         if run_is_live(sequence.directory):
             raise Refusal(f"a live run owns {slot}")
-        # A collected run keeps its audited phases, so hand-written ones cannot
-        # replace them. A run that died before this file still needs this verb.
         output = Path(cast(str, sequence.slots[slot]["output"]))
         if (output / CONTAINMENT / "phases.json").exists():
             raise Refusal(f"{slot} has collected phases, so use settle-run")
-        phases = read_phases(phases_path)
+        phases = recovery_phases(output)
         return record_settlement(
             sequence, slot, phases, settled_classification(sequence.slots[slot])
         )
@@ -1210,35 +1252,41 @@ def audit_process(root: Path, declared: object, read_phase: Json) -> Json:
     return check("passed", f"{len(rows)} process rows match")
 
 
+def system_check(root: Path, declared: Json, absent: str) -> Json:
+    system = receipt_record(root, "system")
+    if system is None:
+        return check(absent, "no clean system receipt")
+    wanted = {name: declared[name] for name in SYSTEM_FIELDS}
+    seen = {name: system.get(name) for name in SYSTEM_FIELDS}
+    return check(
+        "passed" if wanted == seen else "failed",
+        "the guest system against the declared image",
+        expected=wanted,
+        observed=seen,
+    )
+
+
+def gatekeeper_check(root: Path, declared: Json, absent: str) -> Json:
+    gatekeeper = receipt_record(root, "gatekeeper")
+    if gatekeeper is None:
+        return check(absent, "no clean gatekeeper receipt")
+    same = gatekeeper.get("assessments") == declared["assessments"]
+    return check(
+        "passed" if same else "failed",
+        "the Gatekeeper state against the declared image",
+        expected=declared["assessments"],
+        observed=gatekeeper.get("assessments"),
+    )
+
+
 def audit_environment(root: Path, frozen: Json, guest: dict[str, GuestRead]) -> Json:
     """G5 and the defaults. Each comparison keeps its own result."""
     declared = cast(Json, frozen["environment"])
     # With no guest read, the receipts of a run that never reached a guest are
     # not failures of the environment.
     absent = "not-run" if guest["process"][1]["result"] == "not-run" else "unavailable"
-    system = receipt_record(root, "system")
-    if system is None:
-        system_check = check(absent, "no clean system receipt")
-    else:
-        wanted = {name: declared[name] for name in SYSTEM_FIELDS}
-        seen = {name: system.get(name) for name in SYSTEM_FIELDS}
-        system_check = check(
-            "passed" if wanted == seen else "failed",
-            "the guest system against the declared image",
-            expected=wanted,
-            observed=seen,
-        )
-    gatekeeper = receipt_record(root, "gatekeeper")
-    if gatekeeper is None:
-        gatekeeper_check = check(absent, "no clean gatekeeper receipt")
-    else:
-        same = gatekeeper.get("assessments") == declared["assessments"]
-        gatekeeper_check = check(
-            "passed" if same else "failed",
-            "the Gatekeeper state against the declared image",
-            expected=declared["assessments"],
-            observed=gatekeeper.get("assessments"),
-        )
+    system_result = system_check(root, declared, absent)
+    gatekeeper_result = gatekeeper_check(root, declared, absent)
     defaults, defaults_phase = guest["defaults"]
     if defaults is None:
         defaults_check = check(defaults_phase["result"], str(defaults_phase["detail"]))
@@ -1247,8 +1295,8 @@ def audit_environment(root: Path, frozen: Json, guest: dict[str, GuestRead]) -> 
     else:
         defaults_check = check("failed", "a diagnostic key is present")
     return {
-        "system": system_check,
-        "gatekeeper": gatekeeper_check,
+        "system": system_result,
+        "gatekeeper": gatekeeper_result,
         "process": audit_process(
             root, frozen["process_arguments"], guest["process"][1]
         ),
@@ -1283,36 +1331,91 @@ def installed_items(record: Json) -> list[Json]:
     return files + links
 
 
+def installed_endpoint(
+    expected: list[Json], record: Json | None, result: object, detail: str
+) -> Json:
+    if record is None:
+        return check(result, detail, missing=[], extra=[], changed=[])
+    comparison = compare_items(expected, installed_items(record))
+    return check(
+        comparison_result(comparison, []),
+        "the installed bundle against the frozen bundle",
+        **comparison,
+    )
+
+
 def audit_installed(root: Path, frozen: Json, guest: dict[str, GuestRead]) -> Json:
     """Each endpoint against the frozen bundle, so a stable wrong bundle fails."""
     expected = bundle_items(frozen)
-
-    def endpoint(record: Json | None, result: object, detail: str) -> Json:
-        if record is None:
-            return check(result, detail, missing=[], extra=[], changed=[])
-        comparison = compare_items(expected, installed_items(record))
-        return check(
-            comparison_result(comparison, []),
-            "the installed bundle against the frozen bundle",
-            **comparison,
-        )
-
     after, after_phase = guest["installed"]
     absent = "not-run" if after_phase["result"] == "not-run" else "unavailable"
     return {
-        "before": endpoint(
+        "before": installed_endpoint(
+            expected,
             receipt_record(root, INSTALLED_BEFORE),
             absent,
             f"no clean {INSTALLED_BEFORE} receipt",
         ),
-        "after": endpoint(after, after_phase["result"], str(after_phase["detail"])),
+        "after": installed_endpoint(
+            expected, after, after_phase["result"], str(after_phase["detail"])
+        ),
     }
 
 
+def audit_subject(root: Path, frozen: Json, absent: str) -> Json:
+    """The admitted subject and setup, which a recurrence needs.
+
+    The system, Gatekeeper and first installed receipts precede each selection.
+    Undeclared process arguments show a wrong launch. A later failed read says
+    nothing about this setup, so it cannot remove a recurrence.
+    """
+    declared = cast(Json, frozen["environment"])
+    rows, _ = observed_arguments(root)
+    different = any(row != frozen["process_arguments"] for row in rows)
+    try:
+        before = installed_endpoint(
+            bundle_items(frozen),
+            receipt_record(root, INSTALLED_BEFORE),
+            absent,
+            f"no clean {INSTALLED_BEFORE} receipt",
+        )
+    except (KeyError, TypeError) as error:
+        before = check("unavailable", f"malformed {INSTALLED_BEFORE}: {error}")
+    return combined(
+        [
+            ("system", system_check(root, declared, absent)["result"]),
+            ("gatekeeper", gatekeeper_check(root, declared, absent)["result"]),
+            (INSTALLED_BEFORE, before["result"]),
+            ("process arguments", "failed" if different else "passed"),
+        ]
+    )
+
+
+def guest_streams(
+    attempt: Path, transport: object, clean: bool
+) -> tuple[Json | None, list[str]]:
+    """The raw envelope, and each guest stream that the backend owes from it."""
+    names = ("stdout", "stderr")
+    saved = [name for name in names if (attempt / f"guest.{name}").exists()]
+    if transport not in {"exec", "read"}:
+        return (read_object(attempt / "raw.stdout"), saved) if saved else (None, [])
+    try:
+        envelope = read_object(attempt / "raw.stdout")
+    except (OSError, ValueError):
+        # A failed attempt can hold a partial response, which owes no stream.
+        if clean or saved:
+            raise
+        return None, []
+    return envelope, [
+        name for name in names if name in saved or isinstance(envelope.get(name), str)
+    ]
+
+
 def audit_originals(root: Path) -> Json:
-    """Compare each saved artifact with the digest or response of its original."""
+    """Compare each saved artifact with its original, and require each member."""
     compared = 0
     mismatched: list[str] = []
+    missing: list[str] = []
     unreadable: list[str] = []
     partials: list[str] = []
 
@@ -1339,6 +1442,7 @@ def audit_originals(root: Path) -> Json:
             f"no readable root: {error}",
             compared=0,
             mismatched=[],
+            missing=[],
             unreadable=[],
             partials=[],
         )
@@ -1348,6 +1452,19 @@ def audit_originals(root: Path) -> Json:
             partials.append(attempt.name)
             continue
         try:
+            transport = read_object(attempt / "request.json").get("transport")
+            clean = read_object(attempt / "result.json").get("outcome") == "clean"
+            if clean:
+                if not isinstance(transport, str) or transport not in REQUIRED_MEMBERS:
+                    unreadable.append(f"{attempt.name}: unknown transport {transport}")
+                    continue
+                # Membership comes from the receipt, so a lost file cannot agree
+                # with a manifest that was written after the loss.
+                missing += [
+                    f"{attempt.name}/{name}"
+                    for name in REQUIRED_MEMBERS[transport]
+                    if not (attempt / name).is_file()
+                ]
             if (attempt / "artifact.json").exists():
                 artifact = read_object(attempt / "artifact.json")
                 compare(
@@ -1363,29 +1480,29 @@ def audit_originals(root: Path) -> Json:
                         transfer.get("bytes"),
                         transfer.get("sha256"),
                     )
-            streams = [
-                name
-                for name in ("stdout", "stderr")
-                if (attempt / f"guest.{name}").exists()
-            ]
-            if streams:
-                envelope = read_object(attempt / "raw.stdout")
-                for name in streams:
-                    value = envelope.get(name)
-                    data = value.encode() if isinstance(value, str) else b""
-                    compare(
-                        attempt / f"guest.{name}",
-                        len(data) if isinstance(value, str) else None,
-                        hashlib.sha256(data).hexdigest(),
-                    )
+            envelope, streams = guest_streams(attempt, transport, clean)
+            for name in streams:
+                path = attempt / f"guest.{name}"
+                if clean and not path.exists():
+                    continue  # The member check above already names this loss.
+                value = cast(Json, envelope).get(name)
+                data = value.encode() if isinstance(value, str) else b""
+                compare(
+                    path,
+                    len(data) if isinstance(value, str) else None,
+                    hashlib.sha256(data).hexdigest(),
+                )
         except (OSError, ValueError) as error:
             unreadable.append(f"{attempt.name}: {error}")
-    result = "failed" if mismatched else "unavailable" if unreadable else "passed"
+    result = (
+        "failed" if mismatched or missing else "unavailable" if unreadable else "passed"
+    )
     return check(
         result,
         f"{compared} saved artifacts compared, {len(partials)} partial attempts kept",
         compared=compared,
         mismatched=mismatched,
+        missing=missing,
         unreadable=unreadable,
         partials=partials,
     )
@@ -2086,11 +2203,20 @@ class Containment:
                     ("environment", "endpoint", "audit"), phase("unavailable", detail)
                 ),
             )
-        self.keep("audits.json", audits)
+        # This audit stands alone, so a malformed later record cannot remove it.
+        absent = (
+            "not-run" if guest["process"][1]["result"] == "not-run" else "unavailable"
+        )
+        try:
+            subject = audit_subject(self.root, self.frozen, absent)
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            subject = phase("unavailable", f"the subject audit failed: {error}")
+        self.keep("audits.json", {**audits, "subject": subject})
         phases: Json = {
             "scenario": {"status": scenario_status},
             "task": {"status": task_status},
             "collection": collection,
+            "subject": subject,
             "stop": phase(cast(str, stop["result"]), cast(str, stop["detail"])),
             "inventory": phase(
                 cast(str, inventory["result"]), cast(str, inventory["detail"])
@@ -2297,11 +2423,10 @@ def main() -> int:
     classify_parser.add_argument("set", choices=[FOCUSED, ORDINARY])
     classify_parser.add_argument("clone")
     settle_parser = commands.add_parser(
-        "settle", help="record one slot's terminal result"
+        "settle", help="close a slot whose caller ended before it collected phases"
     )
     settle_parser.add_argument("directory", type=Path)
     settle_parser.add_argument("slot", choices=SLOT_NAMES)
-    settle_parser.add_argument("phases", type=Path)
     run_parser = commands.add_parser(
         "run", help="admit one slot, run its entry, contain its clone and settle it"
     )
@@ -2344,11 +2469,7 @@ def main() -> int:
                 cast(Path, args.root), cast(str, args.set), cast(str, args.clone)
             )
         if action == "settle":
-            return settle(
-                cast(Path, args.directory),
-                cast(str, args.slot),
-                cast(Path, args.phases),
-            )
+            return settle(cast(Path, args.directory), cast(str, args.slot))
         if action == "run":
             return run_slot(cast(Path, args.directory), cast(str, args.slot))
         if action == "inventory":

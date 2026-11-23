@@ -158,19 +158,40 @@ expect_refused() {
 @test "a manual settle cannot take a slot while its run is live" {
     export run_mode=signal-wait
     python3 -I "${tool}" run "${sequence}" E01 >/dev/null 2>&1 &
-    local caller=$! phases="${BATS_TEST_TMPDIR}/phases.json"
+    local caller=$!
     for _ in $(seq 1 200); do
         [[ -e "${run_ready}" ]] && break
         sleep 0.02
     done
-    jq -n '{result: "passed", detail: "control"} as $p
-        | {scenario: {status: 0}, task: {status: 0}, collection: $p, environment: $p,
-           endpoint: $p, audit: $p, stop: $p, inventory: $p, screenshots: $p}' >"${phases}"
-    run seq_tool settle "${sequence}" E01 "${phases}"
+    run seq_tool settle "${sequence}" E01
     kill -TERM "${caller}"
     wait "${caller}" || :
     expect_refused "run"
-    [[ "$(jq -r .detail <<<"$(settled phases.stop)")" != control ]]
+    [[ "$(report .slots.E01.state)" == started-unsettled ]]
+}
+
+@test "a caller lost before its phases recovers with no qualification or confirmed cleanup" {
+    export run_mode=signal-wait
+    python3 -I "${tool}" run "${sequence}" E01 >/dev/null 2>&1 &
+    local caller=$! group
+    for _ in $(seq 1 200); do
+        [[ -e "${run_ready}" ]] && break
+        sleep 0.02
+    done
+    [[ -e "${run_ready}" ]]
+    group="$(jq -er .pgid "$(out_dir)/containment/process.json")"
+    kill -KILL "${caller}"
+    wait "${caller}" || :
+    # The handoff contains the recorded group. The clone stays up, with no stop.
+    kill -KILL -- "-${group}"
+    [[ ! -e "$(out_dir)/containment/phases.json" ]]
+    seq_tool settle "${sequence}" E01 >/dev/null
+    [[ "$(settled disposition)" == unresolved && "$(settled cleanup)" == unresolved ]]
+    [[ "$(stops)" == 0 ]]
+    is_running
+    run seq_tool run "${sequence}" E02
+    expect_refused "stopped"
+    [[ "$(report .slots.E02.state)" == "NOT RUN" ]]
 }
 
 # --- results stay separate ---------------------------------------------------

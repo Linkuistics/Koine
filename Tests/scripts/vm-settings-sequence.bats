@@ -14,6 +14,12 @@ setup() {
 }
 
 seq_tool() { python3 -I "${tool}" "$@"; }
+# settle_phases SLOT PHASES: reach one row of the decision table. The product
+# settle verb takes no phases, so only this control fixture can supply them.
+settle_phases() {
+    python3 -I "${repo_root}/Tests/scripts/fixtures/settings-sequence-settle.py" \
+        "${tool}" "${sequence}" "$@"
+}
 
 # value SLOT FIELD: one field of a declared slot.
 slot_field() {
@@ -36,7 +42,7 @@ phases() {
     done
     jq -n --argjson scenario "${scenario}" --argjson task "${task}" '
         {result: "passed", detail: "control"} as $p
-        | {scenario: {status: $scenario}, task: {status: $task}, collection: $p, environment: $p,
+        | {scenario: {status: $scenario}, task: {status: $task}, collection: $p, subject: $p, environment: $p,
            endpoint: $p, audit: $p, stop: $p, inventory: $p, screenshots: $p}' |
         jq "${filter}" >"${file}"
     printf '%s\n' "${file}"
@@ -61,7 +67,7 @@ complete_root() {
 qualify() {
     seq_tool admit "${sequence}" "$1" >/dev/null
     complete_root "$1"
-    seq_tool settle "${sequence}" "$1" "$(phases)" >/dev/null
+    settle_phases "$1" "$(phases)" >/dev/null
 }
 
 declare_ready() {
@@ -208,7 +214,7 @@ expect_kind() {
     root="$(slot_field E02 evidence_root)"
     python3 "${backend}" init "${root}" koine-k49-ordering-e02
     step "${root}" scenario-assertion-setup-failed exhausted
-    seq_tool settle "${sequence}" E02 "$(phases scenario=1 task=201)" >/dev/null
+    settle_phases E02 "$(phases scenario=1 task=201)" >/dev/null
     [[ "$(report_field '.slots.E02.disposition')" == failed ]]
     for slot in A01 A02 A03; do
         [[ "$(report_field ".slots.${slot}.state")" == "NOT RUN" ]]
@@ -218,7 +224,7 @@ expect_kind() {
     expect_refused "stopped"
     run seq_tool admit "${sequence}" A01
     expect_refused "stopped"
-    run seq_tool settle "${sequence}" E02 "$(phases)"
+    run settle_phases E02 "$(phases)"
     expect_refused "not awaiting settlement"
 }
 
@@ -258,7 +264,7 @@ time.sleep(30)
     expect_refused "ledger"
     rm "${sequence}/ledger/000009-settled.json"
     printf 'partial' >"${sequence}/ledger/000003-settled.json.partial"
-    run seq_tool settle "${sequence}" E01 "$(phases)"
+    run settle_phases E01 "$(phases)"
     expect_refused "ledger"
 }
 
@@ -432,7 +438,7 @@ settle_recurrence() {
         step "${root}" "${op}"
     done
     step "${root}" scenario-assertion-not-front exhausted
-    seq_tool settle "${sequence}" E01 "$(phases scenario=1 task=201 "$@")" >/dev/null
+    settle_phases E01 "$(phases scenario=1 task=201 "$@")" >/dev/null
 }
 
 @test "a corroborated recurrence rejects, and later failures do not erase it" {
@@ -450,14 +456,25 @@ settle_recurrence() {
     [[ "$(report_field .outcome)" == no-acceptance ]]
 }
 
+@test "a recurrence without the admitted subject stays unresolved" {
+    local result
+    for result in failed unavailable not-run; do
+        rm -rf "${sequence:?}"
+        settle_recurrence "subject=${result}"
+        [[ "$(report_field '.slots.E01.classification.kind')" == recurrence-candidate ]]
+        [[ "$(report_field '.slots.E01.disposition')" == unresolved ]]
+        [[ "$(report_field .outcome)" == no-acceptance ]]
+    done
+}
+
 @test "every phase and status must pass before a slot qualifies" {
-    for override in task=201 scenario=null collection=failed environment=unavailable endpoint=not-run \
+    for override in task=201 scenario=null collection=failed subject=failed environment=unavailable endpoint=not-run \
         audit=failed stop=failed inventory=unavailable screenshots=not-run; do
         rm -rf "${sequence}"
         declare_ready
         seq_tool admit "${sequence}" E01 >/dev/null
         complete_root E01
-        seq_tool settle "${sequence}" E01 "$(phases "${override}")" >/dev/null
+        settle_phases E01 "$(phases "${override}")" >/dev/null
         [[ "$(report_field '.slots.E01.disposition')" == unresolved ]] || {
             echo "override ${override} qualified"
             return 1
@@ -471,7 +488,7 @@ settle_recurrence() {
     root="$(slot_field E01 evidence_root)"
     python3 "${backend}" init "${root}" koine-k49-ordering-e01
     step "${root}" scenario-assertion-setup-failed exhausted
-    seq_tool settle "${sequence}" E01 "$(phases)" >/dev/null
+    settle_phases E01 "$(phases)" >/dev/null
     [[ "$(report_field '.slots.E01.disposition')" == unresolved ]]
     [[ "$(report_field '.slots.E01.conflicts | length')" -gt 0 ]]
 }
@@ -479,7 +496,7 @@ settle_recurrence() {
 @test "a run that left no root is unresolved and claims no Koine failure" {
     declare_ready
     seq_tool admit "${sequence}" E01 >/dev/null
-    seq_tool settle "${sequence}" E01 "$(phases scenario=2 task=201)" >/dev/null
+    settle_phases E01 "$(phases scenario=2 task=201)" >/dev/null
     [[ "$(report_field '.slots.E01.disposition')" == unresolved ]]
     [[ "$(report_field '.slots.E01.classification.kind')" == no-root ]]
 }
@@ -491,7 +508,7 @@ settle_recurrence() {
     python3 "${backend}" init "${root}" koine-k49-ordering-e01
     step "${root}" resize-down-1
     step "${root}" textedit-quit-absence-state
-    seq_tool settle "${sequence}" E01 "$(phases)" >/dev/null
+    settle_phases E01 "$(phases)" >/dev/null
     [[ "$(report_field '.slots.E01.disposition')" == unresolved ]]
     [[ "$(report_field '.slots.E01.classification.pointer')" == held ]]
 }
@@ -504,13 +521,80 @@ settle_recurrence() {
     for filter in 'del(.stop)' '.extra = 1' '.stop.result = "fine"' '.task.status = "0"' '.scenario.status = 300' \
         '.audit.detail = 1'; do
         jq "${filter}" "$(phases)" >"${bad}"
-        run seq_tool settle "${sequence}" E01 "${bad}"
+        run settle_phases E01 "${bad}"
         expect_refused "phases"
     done
     printf '{"scenario": {"status": 0}, "scenario": {"status": 1}}' >"${bad}"
-    run seq_tool settle "${sequence}" E01 "${bad}"
+    run settle_phases E01 "${bad}"
     expect_refused "phases"
     [[ "$(report_field '.slots.E01.state')" == started-unsettled ]]
+}
+
+# --- recovery after a lost caller -------------------------------------------
+
+@test "a recovery settlement takes no phases from its operator" {
+    declare_ready
+    seq_tool admit "${sequence}" E01 >/dev/null
+    complete_root E01
+    run seq_tool settle "${sequence}" E01 "$(phases)"
+    [[ "${status}" == 2 ]]
+    [[ "$(report_field '.slots.E01.state')" == started-unsettled ]]
+}
+
+@test "a recovery of a complete root cannot qualify or confirm cleanup" {
+    declare_ready
+    seq_tool admit "${sequence}" E01 >/dev/null
+    complete_root E01
+    printf '0\n' >"$(slot_field E01 output)/scenario.exit"
+    seq_tool settle "${sequence}" E01 >/dev/null
+    [[ "$(report_field '.slots.E01.classification.kind')" == complete ]]
+    [[ "$(report_field '.slots.E01.disposition')" == unresolved ]]
+    [[ "$(report_field '.slots.E01.cleanup')" == unresolved ]]
+    [[ "$(report_field '.slots.E01.phases.scenario.status')" == 0 ]]
+    [[ "$(report_field '.slots.E01.phases.task.status')" == null ]]
+    [[ "$(report_field '[.slots.E01.phases | to_entries[] | select(.value.result?) | .value.result] | unique | join(" ")')" == unavailable ]]
+    run seq_tool admit "${sequence}" E02
+    expect_refused "stopped"
+}
+
+@test "a recovery keeps a recurrence class without rejecting the repair" {
+    declare_ready
+    seq_tool admit "${sequence}" E01 >/dev/null
+    root="$(slot_field E01 evidence_root)"
+    python3 "${backend}" init "${root}" koine-k49-ordering-e01
+    for op in first-selection-identity first-selection-enabled screenshot-menu-first-selection \
+        menu-click first-selection-front first-selection-front-state first-selection-front-title-state \
+        first-selection-front-application first-selection-failure-windows failure-capture \
+        first-selection-menu-closed; do
+        step "${root}" "${op}"
+    done
+    step "${root}" scenario-assertion-not-front exhausted
+    printf '1\n' >"$(slot_field E01 output)/scenario.exit"
+    seq_tool settle "${sequence}" E01 >/dev/null
+    [[ "$(report_field '.slots.E01.classification.kind')" == recurrence-candidate ]]
+    [[ "$(report_field '.slots.E01.disposition')" == unresolved ]]
+    [[ "$(report_field .outcome)" == no-acceptance ]]
+}
+
+@test "a recovery keeps a failed assertion, with its cleanup unresolved" {
+    declare_ready
+    seq_tool admit "${sequence}" E01 >/dev/null
+    root="$(slot_field E01 evidence_root)"
+    python3 "${backend}" init "${root}" koine-k49-ordering-e01
+    step "${root}" scenario-assertion-setup-failed exhausted
+    printf '1\n' >"$(slot_field E01 output)/scenario.exit"
+    seq_tool settle "${sequence}" E01 >/dev/null
+    [[ "$(report_field '.slots.E01.disposition')" == failed ]]
+    [[ "$(report_field '.slots.E01.cleanup')" == unresolved ]]
+}
+
+@test "a recovery with no root or scenario status stays unresolved" {
+    declare_ready
+    seq_tool admit "${sequence}" E01 >/dev/null
+    seq_tool settle "${sequence}" E01 >/dev/null
+    [[ "$(report_field '.slots.E01.classification.kind')" == no-root ]]
+    [[ "$(report_field '.slots.E01.disposition')" == unresolved ]]
+    [[ "$(report_field '.slots.E01.phases.scenario.status')" == null ]]
 }
 
 # --- defects that a read of the handoffs found -------------------------------
@@ -521,7 +605,7 @@ settle_recurrence() {
     root="$(slot_field E01 evidence_root)"
     python3 "${backend}" init "${root}" koine-k49-ordering-e01
     step "${root}" first-selection-row-exhausted exhausted
-    seq_tool settle "${sequence}" E01 "$(phases scenario=125 task=201)" >/dev/null
+    settle_phases E01 "$(phases scenario=125 task=201)" >/dev/null
     [[ "$(report_field '.slots.E01.disposition')" == failed ]]
     [[ "$(report_field '.slots.E01.conflicts | length')" == 0 ]]
 }
@@ -532,7 +616,7 @@ settle_recurrence() {
     root="$(slot_field E01 evidence_root)"
     python3 "${backend}" init "${root}" koine-k49-ordering-e01
     step "${root}" first-selection-row-exhausted exhausted
-    seq_tool settle "${sequence}" E01 "$(phases)" >/dev/null
+    settle_phases E01 "$(phases)" >/dev/null
     [[ "$(report_field '.slots.E01.disposition')" == unresolved ]]
 }
 
@@ -603,7 +687,7 @@ time.sleep(30)
     root="$(slot_field E01 evidence_root)"
     python3 "${backend}" init "${root}" koine-k49-ordering-e01
     step "${root}" scenario-assertion-setup-failed exhausted
-    seq_tool settle "${sequence}" E01 "$(phases scenario=1 task=201)" >/dev/null
+    settle_phases E01 "$(phases scenario=1 task=201)" >/dev/null
     entry="${sequence}/ledger/000003-settled.json"
     jq '.disposition = "qualified"' "${entry}" >"${entry}.edited"
     chmod u+w "${entry}"

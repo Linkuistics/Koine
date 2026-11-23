@@ -129,6 +129,17 @@ Read `docs/verification/settings-activation/ORDERING-AUDITS-RESULTS.md`.
 - The scenario keeps its transcript and installed text files in
   `.build/vm-verify`, outside the slot's output. Retain them separately.
 
+## K173 integration handoff
+
+Read `docs/verification/settings-activation/ORDERING-HARNESS-INTEGRATION.md`.
+
+- If a caller dies before it writes `phases.json`, contain its recorded group
+  and its exact clone first. Record those actions separately.
+- Then run `settle DIR SLOT`. The verb takes no phases. The slot cannot qualify,
+  and its cleanup stays unresolved.
+- A recurrence rejects the repair only with a passed `subject` phase and a
+  passed screenshot audit. A wrong subject or setup leaves the slot unresolved.
+
 ## TestAnyware version mismatch
 
 The protocol names TestAnyware 2.7.0, and the harness cites the payload formats

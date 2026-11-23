@@ -1,0 +1,184 @@
+{
+  "unchanged": true,
+  "baseline_failures": [],
+  "mutations": 22,
+  "caught": 22,
+  "rows": [
+    {
+      "mutation": "R1 recovery invents passed phases",
+      "caught": true,
+      "failed": [
+        "vm-settings-sequence.bats: a recovery of a complete root cannot qualify or confirm cleanup",
+        "vm-settings-sequence.bats: a recovery keeps a recurrence class without rejecting the repair",
+        "vm-settings-sequence.bats: a recovery keeps a failed assertion, with its cleanup unresolved",
+        "vm-settings-containment.bats: a caller lost before its phases recovers with no qualification or confirmed cleanup"
+      ]
+    },
+    {
+      "mutation": "R1 recovery invents a task status",
+      "caught": true,
+      "failed": [
+        "vm-settings-sequence.bats: a recovery of a complete root cannot qualify or confirm cleanup",
+        "vm-settings-sequence.bats: a recovery keeps a recurrence class without rejecting the repair",
+        "vm-settings-sequence.bats: a recovery keeps a failed assertion, with its cleanup unresolved",
+        "vm-settings-containment.bats: a caller lost before its phases recovers with no qualification or confirmed cleanup"
+      ]
+    },
+    {
+      "mutation": "R1 recovery confirms cleanup",
+      "caught": true,
+      "failed": [
+        "vm-settings-sequence.bats: a recovery of a complete root cannot qualify or confirm cleanup",
+        "vm-settings-sequence.bats: a recovery keeps a failed assertion, with its cleanup unresolved",
+        "vm-settings-containment.bats: a caller lost before its phases recovers with no qualification or confirmed cleanup"
+      ]
+    },
+    {
+      "mutation": "R1 verb accepts a phases file",
+      "caught": true,
+      "failed": [
+        "vm-settings-sequence.bats: a recovery settlement takes no phases from its operator"
+      ]
+    },
+    {
+      "mutation": "R1 collected-phases guard removed",
+      "caught": true,
+      "failed": [
+        "vm-settings-audits.bats: a recovery settle cannot replace the phases of a collected run"
+      ]
+    },
+    {
+      "mutation": "R2 decide ignores the subject",
+      "caught": true,
+      "failed": [
+        "vm-settings-sequence.bats: a recurrence without the admitted subject stays unresolved",
+        "vm-settings-audits.bats: a recurrence on a different guest build does not reject the repair",
+        "vm-settings-audits.bats: a recurrence under a different Gatekeeper state does not reject the repair",
+        "vm-settings-audits.bats: a recurrence on a different installed bundle does not reject the repair",
+        "vm-settings-audits.bats: a recurrence with undeclared process arguments does not reject the repair",
+        "vm-settings-audits.bats: a malformed pre-selection record leaves a recurrence unresolved"
+      ]
+    },
+    {
+      "mutation": "R2 subject omits system",
+      "caught": true,
+      "failed": [
+        "vm-settings-audits.bats: a recurrence on a different guest build does not reject the repair"
+      ]
+    },
+    {
+      "mutation": "R2 subject omits gatekeeper",
+      "caught": true,
+      "failed": [
+        "vm-settings-audits.bats: a recurrence under a different Gatekeeper state does not reject the repair"
+      ]
+    },
+    {
+      "mutation": "R2 subject omits installed-before",
+      "caught": true,
+      "failed": [
+        "vm-settings-audits.bats: a recurrence on a different installed bundle does not reject the repair",
+        "vm-settings-audits.bats: a malformed pre-selection record leaves a recurrence unresolved"
+      ]
+    },
+    {
+      "mutation": "R2 subject omits process arguments",
+      "caught": true,
+      "failed": [
+        "vm-settings-audits.bats: a recurrence with undeclared process arguments does not reject the repair"
+      ]
+    },
+    {
+      "mutation": "R2 later endpoint erases recurrence",
+      "caught": true,
+      "failed": [
+        "vm-settings-audits.bats: a later failed read does not erase a qualified recurrence",
+        "vm-settings-audits.bats: a guest change after the selection does not erase a qualified recurrence"
+      ]
+    },
+    {
+      "mutation": "R2 later environment erases recurrence",
+      "caught": true,
+      "failed": [
+        "vm-settings-audits.bats: a later failed read does not erase a qualified recurrence"
+      ]
+    },
+    {
+      "mutation": "R2 later process read erases recurrence",
+      "caught": true,
+      "failed": [
+        "vm-settings-audits.bats: a later failed read does not erase a qualified recurrence"
+      ]
+    },
+    {
+      "mutation": "R3 read owes no saved stdout",
+      "caught": true,
+      "failed": [
+        "vm-settings-audits.bats: a clean read that lost its saved stdout fails the audit",
+        "vm-settings-audits.bats: a clean read that lost both streams and its response fails the audit"
+      ]
+    },
+    {
+      "mutation": "R3 read owes no saved stderr",
+      "caught": true,
+      "failed": [
+        "vm-settings-audits.bats: a clean read that lost its saved stderr fails the audit",
+        "vm-settings-audits.bats: a clean read that lost both streams and its response fails the audit"
+      ]
+    },
+    {
+      "mutation": "R3 read owes no parsed record",
+      "caught": true,
+      "failed": [
+        "vm-settings-audits.bats: a clean read that lost its parsed record fails the audit"
+      ]
+    },
+    {
+      "mutation": "R3 commands owe no exit record",
+      "caught": true,
+      "failed": [
+        "vm-settings-audits.bats: a clean command that lost its exit record fails the audit"
+      ]
+    },
+    {
+      "mutation": "R3 responses are not owed",
+      "caught": true,
+      "failed": [
+        "vm-settings-audits.bats: a clean read that lost both streams and its response fails the audit"
+      ]
+    },
+    {
+      "mutation": "R3 upload owes no transfer record",
+      "caught": true,
+      "failed": [
+        "vm-settings-audits.bats: a clean transfer that lost its record fails the audit"
+      ]
+    },
+    {
+      "mutation": "R3 a missing member does not fail",
+      "caught": true,
+      "failed": [
+        "vm-settings-audits.bats: a clean read that lost its saved stdout fails the audit",
+        "vm-settings-audits.bats: a clean read that lost its saved stderr fails the audit",
+        "vm-settings-audits.bats: a clean read that lost both streams and its response fails the audit",
+        "vm-settings-audits.bats: a clean read that lost its parsed record fails the audit",
+        "vm-settings-audits.bats: a clean command that lost its exit record fails the audit",
+        "vm-settings-audits.bats: a clean transfer that lost its record fails the audit"
+      ]
+    },
+    {
+      "mutation": "R3 failed attempts owe clean members",
+      "caught": true,
+      "failed": [
+        "vm-settings-audits.bats: a failed attempt with a partial response owes no guest stream"
+      ]
+    },
+    {
+      "mutation": "R3 partial response is unreadable",
+      "caught": true,
+      "failed": [
+        "vm-settings-audits.bats: a failed attempt with a partial response owes no guest stream"
+      ]
+    }
+  ]
+}

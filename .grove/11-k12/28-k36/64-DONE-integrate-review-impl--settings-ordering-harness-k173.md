@@ -36,3 +36,17 @@ This task precedes `settings-ordering-reconciliation-k171` and
 Preserve the accepted finite caps, first-failure rules, private originals and
 all surviving original duties. No protocol relaxation or product/causal
 ancestor closure follows from integration alone.
+
+## Decisions (running log)
+
+- R1 is a real issue. The old source settled a forged E01 as `qualified`, with
+  cleanup `confirmed`. The `settle` verb now takes no phases.
+- R2 is a real issue. A wrong build or bundle produced `rejected`. A separate
+  `subject` phase now guards the rejection, and later failures cannot erase it.
+- R3 is a real issue. A lost guest stream left the audit `passed`. The audit now
+  takes the required files from each attempt's transport and outcome.
+- A recurrence in a run that lost its caller stays `unresolved`, because that run
+  has no screenshot audit. This trade-off is visible in the integration record.
+- The repairs earn no new review chain. They are bounded, they change no protocol
+  and a control detected each of 22 mutations.
+- The dispositions and the k171 handoff are in `ORDERING-HARNESS-INTEGRATION.md`.

@@ -1,0 +1,4 @@
+R1 disposition=qualified cleanup=confirmed clone_stops=0
+R2a environment=failed kind=recurrence-candidate disposition=rejected
+R2b endpoint=failed disposition=rejected
+R3 audit=passed disposition=qualified compared=11

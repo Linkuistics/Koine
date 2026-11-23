@@ -334,6 +334,65 @@ expect_held() {
     [[ "$(settled classification.kind)" == unavailable && "$(settled disposition)" == unresolved ]]
 }
 
+# expect_lost MEMBER...: a clean read loses these files before the manifest.
+expect_lost() {
+    export run_mode=member-lost lost_operation=system lost_members="$*"
+    run_e01
+    [[ "$(phase audit)" == failed && "$(audits '.originals.result')" == failed ]]
+    [[ "$(settled classification.kind)" == complete && "$(settled disposition)" == unresolved ]]
+    local member
+    for member in "$@"; do
+        audits '.originals.missing' | jq -e --arg member "${member}" 'any(endswith("/" + $member))' >/dev/null
+    done
+    run seq_tool run "${sequence}" E02
+    expect_refused "stopped"
+}
+
+@test "a clean read that lost its saved stdout fails the audit" {
+    expect_lost guest.stdout
+}
+
+@test "a clean read that lost its saved stderr fails the audit" {
+    expect_lost guest.stderr
+}
+
+@test "a clean read that lost both streams and its response fails the audit" {
+    expect_lost guest.stdout guest.stderr raw.stdout
+}
+
+@test "a clean read that lost its parsed record fails the audit" {
+    expect_lost read.json
+}
+
+@test "a clean command that lost its exit record fails the audit" {
+    export run_mode=member-lost lost_operation=vm-after lost_members=cli.exit
+    run_e01
+    [[ "$(phase audit)" == failed && "$(settled disposition)" == unresolved ]]
+    audits '.originals.missing' | jq -e 'any(endswith("/cli.exit"))' >/dev/null
+}
+
+@test "a clean transfer that lost its record fails the audit" {
+    export run_mode=upload-lost
+    run_e01
+    [[ "$(phase audit)" == failed && "$(settled disposition)" == unresolved ]]
+    audits '.originals.missing' | jq -e 'any(endswith("/transfer.json"))' >/dev/null
+}
+
+@test "every clean attempt of a complete run holds its required members" {
+    run_e01
+    [[ "$(audits '.originals.missing | length')" == 0 && "$(phase audit)" == passed ]]
+    (($(audits '.originals.compared') > 0))
+}
+
+@test "a failed attempt with a partial response owes no guest stream" {
+    export run_mode=partial-response
+    run_e01
+    [[ "$(audits '.originals.missing | length')" == 0 ]]
+    [[ "$(audits '.originals.unreadable | length')" == 0 ]]
+    [[ "$(audits '.originals.result')" == passed ]]
+    [[ "$(settled disposition)" == unresolved ]]
+}
+
 @test "a retained file that changes before settlement fails the audit" {
     run seq_tool run "${sequence}" E01
     printf 'edited\n' >>"$(slot_field E01 evidence_root)/000001/request.json"
@@ -565,6 +624,83 @@ expect_held() {
     [[ "$(settled disposition)" == rejected && "$(report .outcome)" == rejected ]]
 }
 
+# expect_invalid_recurrence: the wrong subject keeps its class and no rejection.
+expect_invalid_recurrence() {
+    export run_mode=recurrence
+    seq_tool run "${sequence}" E01 >/dev/null
+    settle_slot E01 >/dev/null
+    [[ "$(settled classification.kind)" == recurrence-candidate ]]
+    [[ "$(phase subject)" == failed && "$(phase screenshots)" == passed ]]
+    [[ "$(settled disposition)" == unresolved && "$(report .outcome)" == no-acceptance ]]
+    [[ "$(settled phases.scenario.status)" == 1 ]]
+    run seq_tool run "${sequence}" E02
+    expect_refused "stopped"
+}
+
+@test "a recurrence on a different guest build does not reject the repair" {
+    export guest_build=26A999
+    expect_invalid_recurrence
+    [[ "$(audits .subject.detail)" == *system* ]]
+}
+
+@test "a recurrence under a different Gatekeeper state does not reject the repair" {
+    export guest_gatekeeper=disabled
+    expect_invalid_recurrence
+    [[ "$(audits .subject.detail)" == *gatekeeper* ]]
+}
+
+@test "a recurrence on a different installed bundle does not reject the repair" {
+    printf 'another build\n' >"${guest_bundle}/Contents/MacOS/Koine"
+    expect_invalid_recurrence
+    [[ "$(audits .subject.detail)" == *installed-before* ]]
+}
+
+@test "a recurrence with undeclared process arguments does not reject the repair" {
+    export guest_arguments="/Applications/Koine.app/Contents/MacOS/Koine --trace"
+    expect_invalid_recurrence
+    [[ "$(audits .subject.detail)" == *"process arguments"* ]]
+}
+
+@test "a recurrence with no clean pre-selection receipt stays unresolved" {
+    export run_mode=recurrence scenario_guest_fail=system
+    seq_tool run "${sequence}" E01 >/dev/null
+    settle_slot E01 >/dev/null
+    [[ "$(phase subject)" == unavailable && "$(settled disposition)" == unresolved ]]
+}
+
+@test "a malformed pre-selection record leaves a recurrence unresolved" {
+    export run_mode=recurrence-record-shape
+    seq_tool run "${sequence}" E01 >/dev/null
+    settle_slot E01 >/dev/null
+    [[ "$(phase subject)" == unavailable && "$(settled disposition)" == unresolved ]]
+}
+
+@test "a later failed read does not erase a qualified recurrence" {
+    local name
+    for name in inventory defaults process; do
+        rm -rf "${sequence:?}"
+        seq_tool declare "${sequence}" >/dev/null
+        seq_tool ready "${sequence}" focused "${focused_receipt}" >/dev/null
+        : >"${lifecycle_state}"
+        export run_mode=recurrence guest_fail="${name}"
+        seq_tool run "${sequence}" E01 >/dev/null
+        settle_slot E01 >/dev/null
+        [[ "$(phase subject)" == passed && "$(settled disposition)" == rejected ]] || {
+            echo "a later failed ${name} read erased the recurrence"
+            return 1
+        }
+    done
+}
+
+@test "a guest change after the selection does not erase a qualified recurrence" {
+    export run_mode=recurrence-later-change
+    seq_tool run "${sequence}" E01 >/dev/null
+    settle_slot E01 >/dev/null
+    [[ "$(audits '.installed.before.result')" == passed && "$(audits '.installed.after.result')" == failed ]]
+    [[ "$(phase endpoint)" == failed && "$(phase subject)" == passed ]]
+    [[ "$(settled disposition)" == rejected ]]
+}
+
 @test "a recurrence with an unpassed screenshot audit stays unresolved" {
     export run_mode=recurrence
     seq_tool run "${sequence}" E01 >/dev/null
@@ -601,13 +737,10 @@ expect_held() {
     [[ "$(phase stop)" == passed ]]
 }
 
-@test "a manual settle cannot replace the phases of a collected run" {
+@test "a recovery settle cannot replace the phases of a collected run" {
     export guest_gatekeeper=disabled
     seq_tool run "${sequence}" E01 >/dev/null
-    jq -n '{result: "passed", detail: "control"} as $p
-        | {scenario: {status: 0}, task: {status: 0}, collection: $p, environment: $p,
-           endpoint: $p, audit: $p, stop: $p, inventory: $p, screenshots: $p}' >"${BATS_TEST_TMPDIR}/forged.json"
-    run seq_tool settle "${sequence}" E01 "${BATS_TEST_TMPDIR}/forged.json"
+    run seq_tool settle "${sequence}" E01
     expect_refused "settle-run"
     [[ "$(report .slots.E01.state)" == started-unsettled ]]
 }

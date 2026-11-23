@@ -32,7 +32,7 @@ Each verb takes the sequence directory, except `classify`.
 | `ready DIR SET RECEIPT` | Records the digest of one readiness receipt for `focused` or `ordinary` |
 | `admit DIR SLOT` | Consumes the next slot. The caller must start that slot immediately afterwards |
 | `classify ROOT SET CLONE` | Prints the classification of one evidence root |
-| `settle DIR SLOT PHASES` | Records the terminal result of a started slot. It refuses while a live run owns the slot, and it refuses a slot with collected phases |
+| `settle DIR SLOT` | Closes a started slot whose caller ended before it wrote collected phases. It takes no phases, and it cannot qualify the slot or report a finished cleanup. It refuses while a live run owns the slot, and it refuses a slot with collected phases |
 | `run DIR SLOT` | Audits, admits, runs and contains one slot, and leaves it for `settle-run`, as the [audit report](ORDERING-AUDITS-RESULTS.md) states |
 | `settle-run DIR SLOT AUDIT` | Settles a collected run with its screenshot audit |
 | `inventory ROOT NAME` | Prints one frozen tree for a readiness receipt |
@@ -101,13 +101,13 @@ reason, and it is not a held point.
 
 ## Settlement
 
-`settle` takes the scenario and Task statuses and seven separate phase results.
-The phases are collection, environment, endpoint, audit, stop, inventory and
-screenshots. It applies the protocol's precedence.
+A settlement takes the scenario and Task statuses and eight separate phase
+results. The phases are collection, subject, environment, endpoint, audit, stop,
+inventory and screenshots. It applies the protocol's precedence.
 
 | Disposition | Condition |
 |---|---|
-| `rejected` | A recurrence candidate with status 1 and a passed screenshot audit. Later failures stay recorded and cannot erase it |
+| `rejected` | A recurrence candidate with status 1, a passed `subject` audit and a passed screenshot audit. Later failures stay recorded and cannot erase it |
 | `failed` | Another failed assertion with its expected status. A classified assertion exits 1, and an exhausted poll exits 125 |
 | `qualified` | A complete run, status 0 from both the scenario and Task, every phase passed and no held input |
 | `unresolved` | Everything else, including a status that conflicts with the receipts |
@@ -116,6 +116,10 @@ A scenario status of zero cannot override failed receipts. A failed or
 unavailable stop or inventory records `cleanup: unresolved`. A stop that did not
 run with a passed inventory records `cleanup: not-requested`. Only E and A slots
 that qualify admit a later slot.
+
+The `settle` verb keeps only the strict scenario status of a lost run. It records
+each result phase as `unavailable`. The
+[integration record](ORDERING-HARNESS-INTEGRATION.md) states why.
 
 ## Decisions for review
 
@@ -130,7 +134,8 @@ that qualify admit a later slot.
 
 ## Controls and provenance
 
-`task check:vm-settings-sequence` runs 36 controls without a VM. The evidence
+`task check:vm-settings-sequence` ran 36 controls without a VM at k57, and k173
+added six. The evidence
 roots hold real receipts from `scripts/vm-guest-exec.py`. The scenario controls
 replay the ordered calls of both real entry points through that backend. The
 simulated guest supplied those calls, so they establish the operation order and

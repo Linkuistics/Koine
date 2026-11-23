@@ -40,9 +40,10 @@ not clear the entry.
 | `settle-run DIR SLOT AUDIT` | Settles a collected run with one screenshot result. It can change no other phase, except that a manifest mismatch fails `audit` |
 | `close DIR` | Records the closing golden audit, once |
 
-`settle` now refuses a slot that has collected phases, so hand-written phases
-cannot replace audited ones. It stays available for a run that died before it
-wrote those phases.
+`settle` refuses a slot that has collected phases. It takes no phases from its
+operator. For a run that died before it wrote its phases, `settle` records each
+result phase as `unavailable`, so that slot cannot qualify or report a finished
+cleanup.
 
 ## The readiness receipt
 
@@ -71,11 +72,12 @@ A difference holds the sequence at A01.
 
 ## Separate results
 
-Each audit keeps its own entry in `containment/audits.json`. Three settlement
+Each audit keeps its own entry in `containment/audits.json`. Four settlement
 phases take them.
 
 | Phase | Audit | A pass needs |
 |---|---|---|
+| `subject` | Admitted subject and setup | The `system`, `gatekeeper` and `installed-before` receipts match the declaration, and no process row has undeclared arguments |
 | `environment` | System | The `system` receipt equals the declared image |
 | `environment` | Gatekeeper | The `gatekeeper` receipt equals the declared state |
 | `environment` | Process | At least one Koine process row, and each row has the declared arguments |
@@ -92,7 +94,9 @@ count fails.
 
 The originals audit covers saved screenshots, downloads and guest streams. A
 partial attempt has no completed original, so the audit names it and the
-manifest keeps its bytes.
+manifest keeps its bytes. Each clean attempt must also hold every file that its
+transport writes. A lost file fails the audit, even when the manifest was written
+after the loss.
 
 ## Decisions for review
 
@@ -113,7 +117,8 @@ manifest keeps its bytes.
 
 ## Controls and provenance
 
-`task check:vm-settings-audits` runs 65 controls without a VM. A fake `task`
+`task check:vm-settings-audits` ran 65 controls without a VM at k170, and k173
+added 16. A fake `task`
 writes real receipts through the real facades, and a synthetic CLI answers each
 checked guest read in its exact grammar. The existing containment and sequence
 controls now expect the new flow.
@@ -151,8 +156,8 @@ process row beside the failed read. The failing record of each is its mutation.
   hold the originals.
 - The manifest recheck excludes the run's own `containment` records, because
   those files are still being written. A same-user process can still change them.
-- The `admit` and `settle` verbs can still consume and settle a slot without
-  these audits. k54 must use `run` and `settle-run`.
+- The `admit` verb can still consume a slot without these audits. `settle` then
+  records that slot with no qualification. k54 must use `run` and `settle-run`.
 - The audits read each file once. A change between the audit and the next step
   stays possible.
 

@@ -1,0 +1,274 @@
+$ task check:vm-settings-audits
+All checks passed!
+2 files already formatted
+0 errors, 0 warnings, 0 informations
+1..81
+ok 1 inventory lists each file, symlink and directory with its identity
+ok 2 inventory refuses a root that does not exist
+ok 3 a receipt without a frozen declaration refuses the run before admission
+ok 4 a receipt that changed after readiness refuses the run before admission
+ok 5 a receipt with a path outside its root refuses the run
+ok 6 an extra input item before the slot holds the sequence and consumes no slot
+ok 7 a missing input item before the slot holds the sequence
+ok 8 a changed input item before the slot holds the sequence
+ok 9 a replaced item with an equal count is not equal
+ok 10 an unreadable input before the slot is unavailable and holds the sequence
+ok 11 an unreadable input directory is unavailable, and its items are not missing
+ok 12 a held sequence refuses every later run and replays from the ledger
+ok 13 a clean slot passes each audit and qualifies
+ok 14 an input that changes during the slot fails the audit after it
+ok 15 an input item added during the slot fails the audit after it
+ok 16 an input item removed during the slot fails the audit after it
+ok 17 the caller reads the installed bundle itself, before the stop
+ok 18 a guest file that changes during the slot fails the endpoint after it
+ok 19 an extra guest file fails the endpoint after the slot
+ok 20 a missing guest file fails the endpoint after the slot
+ok 21 a changed guest symlink target fails the endpoint after the slot
+ok 22 an installed bundle that differs from the frozen bundle fails both endpoints
+ok 23 a failed installed read after the slot is unavailable, not a mismatch
+ok 24 a failed installed read before the slot is unavailable
+ok 25 a run with no start attempt reads nothing from the guest
+ok 26 a saved artifact that matches its original passes
+ok 27 a saved artifact that differs from its original fails the audit
+ok 28 a saved guest stream that differs from its raw response fails the audit
+ok 29 a partial original stays named and does not fail its audit
+ok 30 a clean read that lost its saved stdout fails the audit
+ok 31 a clean read that lost its saved stderr fails the audit
+ok 32 a clean read that lost both streams and its response fails the audit
+ok 33 a clean read that lost its parsed record fails the audit
+ok 34 a clean command that lost its exit record fails the audit
+ok 35 a clean transfer that lost its record fails the audit
+ok 36 every clean attempt of a complete run holds its required members
+ok 37 a failed attempt with a partial response owes no guest stream
+ok 38 a retained file that changes before settlement fails the audit
+ok 39 a retained file that disappears before settlement fails the audit
+ok 40 a file added to the evidence before settlement fails the audit
+ok 41 five clean slots wait for the closing golden audit, then accept
+ok 42 a golden item that changes before A01 holds the sequence
+ok 43 an extra golden item before A01 holds the sequence
+ok 44 a missing golden item before A01 holds the sequence
+ok 45 an E slot does not read the golden image
+ok 46 a golden item that changes after A01 prevents acceptance at the close
+ok 47 an unreadable golden item at the close prevents acceptance
+ok 48 the close refuses while a slot is unsettled, and it runs once
+ok 49 an ordinary receipt that differs from the focused receipt holds A01
+ok 50 G5: a different guest build fails the environment and stops the sequence
+ok 51 G5: a different product version fails the environment
+ok 52 G5: a different Gatekeeper state fails the environment
+ok 53 G5: an injected process argument fails the environment
+ok 54 G5: a failed system receipt is unavailable, not a mismatch
+ok 55 G5: a failed Gatekeeper receipt is unavailable
+ok 56 G5: a failed process read is unavailable
+ok 57 G5: a clean process row cannot hide a later failed process read
+ok 58 G5: no observed Koine process is unavailable, not a pass
+ok 59 the caller reads the defaults after the slot, and a clean absence passes
+ok 60 a diagnostic key after the slot fails the environment
+ok 61 a failed defaults read after the slot is unavailable, not an absence
+ok 62 one failed audit leaves the other results separate
+ok 63 a failed audit does not change a failed assertion
+ok 64 run stops before settlement, and the slot blocks the next slot
+ok 65 settle-run carries the screenshot audit into its phase
+ok 66 a recurrence becomes rejected only with a passed screenshot audit
+ok 67 a recurrence on a different guest build does not reject the repair
+ok 68 a recurrence under a different Gatekeeper state does not reject the repair
+ok 69 a recurrence on a different installed bundle does not reject the repair
+ok 70 a recurrence with undeclared process arguments does not reject the repair
+ok 71 a recurrence with no clean pre-selection receipt stays unresolved
+ok 72 a malformed pre-selection record leaves a recurrence unresolved
+ok 73 a later failed read does not erase a qualified recurrence
+ok 74 a guest change after the selection does not erase a qualified recurrence
+ok 75 a recurrence with an unpassed screenshot audit stays unresolved
+ok 76 settle-run refuses a malformed audit and leaves the slot unsettled
+ok 77 settle-run refuses a slot with no collected run, and a second settlement
+ok 78 a malformed read record is unavailable, and the slot still settles
+ok 79 a recovery settle cannot replace the phases of a collected run
+ok 80 a bundle that is one file refuses the run
+ok 81 settle-run cannot change a phase other than the screenshots
+
+task: [check:vm-settings-audits] shellcheck -x Tests/scripts/vm-settings-audits.bats Tests/scripts/fixtures/settings-run-task.sh Tests/scripts/fixtures/settings-audit-frozen.sh
+task: [check:vm-settings-audits] shfmt -d -i 4 Tests/scripts/vm-settings-audits.bats Tests/scripts/fixtures/settings-run-task.sh Tests/scripts/fixtures/settings-audit-frozen.sh
+task: [check:vm-settings-audits] python3 -m py_compile scripts/settings-ordering-sequence.py Tests/scripts/fixtures/file-lifecycle-cli.py
+task: [check:vm-settings-audits] uvx ruff@0.17.3 check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/file-lifecycle-cli.py
+task: [check:vm-settings-audits] uvx ruff@0.17.3 format --check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/file-lifecycle-cli.py
+task: [check:vm-settings-audits] uvx pyright@1.1.414 scripts/settings-ordering-sequence.py
+task: [check:vm-settings-audits] bats Tests/scripts/vm-settings-audits.bats
+
+status 0
+$ task check:vm-settings-containment
+All checks passed!
+2 files already formatted
+0 errors, 0 warnings, 0 informations
+1..44
+ok 1 run admits the slot and runs its declared entry once, in its own recorded group
+ok 2 the run passes the declared clone, base, evidence root and output directory
+ok 3 a keep, display or trace request refuses before admission and consumes no slot
+ok 4 a slot that the ledger refuses starts no Task
+ok 5 a settled slot cannot run again
+ok 6 a missing Task executable refuses before admission
+ok 7 a manual settle cannot take a slot while its run is live
+ok 8 a caller lost before its phases recovers with no qualification or confirmed cleanup
+ok 9 a complete run keeps its classification and qualifies with every phase passed
+ok 10 a failed assertion settles failed, and a clean stop does not requalify it
+ok 11 a missing scenario status stays null beside a nonzero Task status
+ok 12 a malformed scenario status is no status
+ok 13 the manifest digests each retained file of a failed run
+ok 14 a scenario that ends before its start sends no stop and reads the inventory
+ok 15 a run that leaves no root sends no stop and keeps the no-root class
+ok 16 a failed start keeps its uncertain creation, contains that clone and starts no other
+ok 17 an interrupted start keeps its uncertain creation and contains that clone
+ok 18 each refused collection, confirmation and stop request keeps its reason
+ok 19 an unreadable refusal line stays recorded, and collection does not pass
+ok 20 an owned holder that finishes is awaited, and no signal is sent
+ok 21 a stuck owned holder ends with its recorded group before the stop
+ok 22 a holder that ignores TERM ends by KILL, recorded separately
+ok 23 a holder outside the group leaves cleanup unresolved and sends no stop
+ok 24 containment keeps an existing latch and its first reason
+ok 25 a clean down without a release stays held, with no release sent
+ok 26 a clean down and a clean release are released
+ok 27 a failed held point is uncertain
+ok 28 a partial release proves no release
+ok 29 a missing receipt makes the pointer uncertain
+ok 30 a nonzero stop is failed, is not repeated, and still gets its inventory
+ok 31 a malformed stop response is failed
+ok 32 a stop response that says not stopped is failed
+ok 33 a stop that outlasts its bound is unavailable and is not repeated
+ok 34 a timed-out stop whose CLI ignores TERM ends by KILL before the inventory
+ok 35 a clone still listed after the stop fails the inventory
+ok 36 a truncated inventory is not an absence
+ok 37 an inventory row with a missing field is not an absence
+ok 38 an inventory that outlasts its bound is unavailable
+ok 39 a signal reaches the recorded group once, then the run collects, stops and settles
+ok 40 a later signal does not cut the containment short
+ok 41 the installed Task keeps the scenario in the recorded group and passes a signal
+ok 42 a signal before the gate opens withholds the Task and records no status
+ok 43 a failed exit watch withholds the Task and does not hang the caller
+ok 44 an unresolved stop keeps every later slot NOT RUN
+
+task: [check:vm-settings-containment] shellcheck -x Tests/scripts/vm-settings-containment.bats Tests/scripts/fixtures/settings-run-task.sh Tests/scripts/fixtures/settings-audit-frozen.sh
+task: [check:vm-settings-containment] shfmt -d -i 4 Tests/scripts/vm-settings-containment.bats Tests/scripts/fixtures/settings-run-task.sh Tests/scripts/fixtures/settings-audit-frozen.sh
+task: [check:vm-settings-containment] python3 -m py_compile scripts/settings-ordering-sequence.py Tests/scripts/fixtures/file-lifecycle-cli.py
+task: [check:vm-settings-containment] uvx ruff@0.17.3 check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/file-lifecycle-cli.py
+task: [check:vm-settings-containment] uvx ruff@0.17.3 format --check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/file-lifecycle-cli.py
+task: [check:vm-settings-containment] uvx pyright@1.1.414 scripts/settings-ordering-sequence.py
+task: [check:vm-settings-containment] bats Tests/scripts/vm-settings-containment.bats
+
+status 0
+$ task check:vm-settings-sequence
+All checks passed!
+3 files already formatted
+0 errors, 0 warnings, 0 informations
+1..42
+ok 1 the declaration holds exactly the five slots, in order, with their identities
+ok 2 a declaration refuses an existing directory
+ok 3 admission takes only the next slot, after its set is ready
+ok 4 a started slot without a settlement blocks the next slot
+ok 5 the ordinary set needs both focused slots qualified and its own readiness
+ok 6 five qualified slots end the sequence, and no sixth admission exists
+ok 7 the first failure stops the sequence and leaves every later slot NOT RUN
+ok 8 one writer: a held lock refuses and records the refusal
+ok 9 a changed declaration or ledger refuses every later step
+ok 10 an admission refuses a reused evidence root or a used output directory
+ok 11 a complete run classifies as complete for its own set only
+ok 12 a run that stops before its terminal receipt is incomplete, even at status zero
+ok 13 the three recurrence classes on a menu return are candidates, with their return
+ok 14 a false front outside a menu return is a failed assertion, not a recurrence
+ok 15 a failed observer before a recurrence class leaves the outcome unresolved
+ok 16 a recurrence needs one clean click between the enabled read and its class
+ok 17 other classes keep their own disposition
+ok 18 signals, boot exhaustion and poll exhaustion classify by their receipts
+ok 19 the pointer state comes from the ordered held-point receipts
+ok 20 an evidence root of another clone or a missing root is not a Koine failure
+ok 21 a latch or a refusal keeps an otherwise complete run unavailable
+ok 22 a corroborated recurrence rejects, and later failures do not erase it
+ok 23 a recurrence without a corroborating screenshot stays unresolved
+ok 24 a recurrence without the admitted subject stays unresolved
+ok 25 every phase and status must pass before a slot qualifies
+ok 26 a scenario zero cannot override failed receipts
+ok 27 a run that left no root is unresolved and claims no Koine failure
+ok 28 held input prevents a slot from qualifying
+ok 29 malformed phases refuse and leave the slot unsettled
+ok 30 a recovery settlement takes no phases from its operator
+ok 31 a recovery of a complete root cannot qualify or confirm cleanup
+ok 32 a recovery keeps a recurrence class without rejecting the repair
+ok 33 a recovery keeps a failed assertion, with its cleanup unresolved
+ok 34 a recovery with no root or scenario status stays unresolved
+ok 35 an exhausted poll keeps its status 125 and settles as a failed assertion
+ok 36 an exhausted poll with a scenario zero is a conflict
+ok 37 a signal that met a held lock is classified from its refusal record
+ok 38 an ordinal gap before a recurrence class blocks the candidate
+ok 39 a failure after the class does not remove a recurrence candidate
+ok 40 an unreadable request can hide a held point, so the pointer is uncertain
+ok 41 a hand-edited disposition refuses when the ledger replays
+ok 42 an unreadable output directory refuses the admission without a traceback
+
+task: [check:vm-settings-sequence] shellcheck -x Tests/scripts/vm-settings-sequence.bats
+task: [check:vm-settings-sequence] shfmt -d -i 4 Tests/scripts/vm-settings-sequence.bats
+task: [check:vm-settings-sequence] python3 -m py_compile scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py Tests/scripts/fixtures/settings-sequence-settle.py
+task: [check:vm-settings-sequence] uvx ruff@0.17.3 check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py Tests/scripts/fixtures/settings-sequence-settle.py
+task: [check:vm-settings-sequence] uvx ruff@0.17.3 format --check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py Tests/scripts/fixtures/settings-sequence-settle.py
+task: [check:vm-settings-sequence] uvx pyright@1.1.414 scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py Tests/scripts/fixtures/settings-sequence-settle.py
+task: [check:vm-settings-sequence] bats Tests/scripts/vm-settings-sequence.bats
+
+status 0
+$ task check:vm-file-lifecycle-evidence
+All checks passed!
+2 files already formatted
+0 errors, 0 warnings, 0 informations
+1..18
+ok 1 generic upload and download refuse every class without dispatch
+ok 2 upload records exact argv raw receipt and stable local identity before and after dispatch
+ok 3 download qualifies guest bytes against the upload record at a backend-owned path
+ok 4 a short guest write is unavailable even though the upload receipt was clean
+ok 5 a local input that changes during the transfer is unavailable and keeps both records
+ok 6 upload schema failures retain raw failure and stop later input
+ok 7 missing symlinked and directory local inputs never dispatch
+ok 8 download failures latch and never yield a qualified copy
+ok 9 failed download bytes stay where the CLI leaves them and are never qualified
+ok 10 download refuses an unmatched upload record and a scenario class before dispatch
+ok 11 evidence-class download remains collection after a latch and keeps the first reason
+ok 12 VM start pins the base wait and identity and qualifies the complete start payload
+ok 13 VM start schema failures are unavailable and stop later input
+ok 14 VM start refuses an implicit base and caller options before dispatch
+ok 15 inventory reads the complete list and decides running and absent from clean data
+ok 16 an unexpected inventory state or schema is unavailable and never a negative
+ok 17 exact stop is collection after a latch and a failed stop never passes
+ok 18 upload holds the shared writer lock through the CLI and a competing dispatch refuses
+
+task: [check:vm-file-lifecycle-evidence] bash -n scripts/vm-file-evidence-lib.sh scripts/vm-lifecycle-evidence-lib.sh Tests/scripts/vm-file-lifecycle-evidence.bats
+task: [check:vm-file-lifecycle-evidence] shellcheck -x scripts/vm-file-evidence-lib.sh scripts/vm-lifecycle-evidence-lib.sh Tests/scripts/vm-file-lifecycle-evidence.bats
+task: [check:vm-file-lifecycle-evidence] shfmt -d -i 4 scripts/vm-file-evidence-lib.sh scripts/vm-lifecycle-evidence-lib.sh Tests/scripts/vm-file-lifecycle-evidence.bats
+task: [check:vm-file-lifecycle-evidence] python3 -m py_compile scripts/vm-guest-exec.py Tests/scripts/fixtures/file-lifecycle-cli.py
+task: [check:vm-file-lifecycle-evidence] uvx ruff@0.17.3 check scripts/vm-guest-exec.py Tests/scripts/fixtures/file-lifecycle-cli.py
+task: [check:vm-file-lifecycle-evidence] uvx ruff@0.17.3 format --check scripts/vm-guest-exec.py Tests/scripts/fixtures/file-lifecycle-cli.py
+task: [check:vm-file-lifecycle-evidence] uvx pyright@1.1.414 scripts/vm-guest-exec.py Tests/scripts/fixtures/file-lifecycle-cli.py
+task: [check:vm-file-lifecycle-evidence] bats Tests/scripts/vm-file-lifecycle-evidence.bats
+
+status 0
+$ task check:vm-settings-prefix
+scripts/vm-verify-menu-bar-prefix.sh is the first 154 lines (8913 bytes) of scripts/vm-verify-menu-bar.sh, through the TextEdit quit; line 155 onwards is not in the prefix
+All checks passed!
+1 file already formatted
+0 errors, 0 warnings, 0 informations
+1..9
+ok 1 the prefix is the exact leading bytes of the scenario through the TextEdit quit
+ok 2 a changed, missing or extra byte in the prefix fails the check
+ok 3 a scenario change before the quit fails the check until the prefix is extracted again
+ok 4 a scenario without exactly one TextEdit quit before the resize step is refused
+ok 5 the prefix keeps the execute permission of the scenario
+ok 6 the prefix runs the scenario's calls and waits through the TextEdit quit and sends nothing after it
+ok 7 a failure inside the prefix has the same outcome in the prefix and in the scenario
+ok 8 a signal inside the prefix stops it as it stops the scenario
+ok 9 the Task entry of the prefix records its status like the complete scenario's entry
+
+task: [check:vm-settings-prefix] python3 -I scripts/check-settings-prefix.py
+task: [check:vm-settings-prefix] bash -n scripts/vm-verify-menu-bar-prefix.sh Tests/scripts/vm-settings-prefix.bats
+task: [check:vm-settings-prefix] shellcheck -x -e SC2034 scripts/vm-verify-menu-bar-prefix.sh
+task: [check:vm-settings-prefix] shellcheck -x Tests/scripts/vm-settings-prefix.bats
+task: [check:vm-settings-prefix] shfmt -d -i 4 scripts/vm-verify-menu-bar-prefix.sh Tests/scripts/vm-settings-prefix.bats
+task: [check:vm-settings-prefix] python3 -m py_compile scripts/check-settings-prefix.py
+task: [check:vm-settings-prefix] uvx ruff@0.17.3 check scripts/check-settings-prefix.py
+task: [check:vm-settings-prefix] uvx ruff@0.17.3 format --check scripts/check-settings-prefix.py
+task: [check:vm-settings-prefix] uvx pyright@1.1.414 scripts/check-settings-prefix.py
+task: [check:vm-settings-prefix] bats Tests/scripts/vm-settings-prefix.bats
+
+status 0
