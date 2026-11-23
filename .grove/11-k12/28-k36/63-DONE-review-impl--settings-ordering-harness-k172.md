@@ -45,3 +45,33 @@ k169 and k170 state the duties of each slice.
 
 Run no VM, clone or signed subject. The evidence roots can hold
 `KOINE_VM_PASSWORD`, so do not publish them.
+
+## Decisions (running log)
+
+**Review method.** Inspect the three producer commits and the current source,
+controls and recorded verification. Run no tests, builds, linters, formatters,
+VMs or signed subjects. Use Tier 2 graph evidence with direct source checks;
+the scenario library has recorded parse gaps, and the Bats suites need direct
+reads.
+
+**Recovery settlement.** The exposed `settle` route can qualify a runtime slot
+after caller loss before `containment/phases.json`, using supplied passed phases
+without the audits or containment. The k54 instruction to avoid that verb does
+not protect this recovery path. Record this as a material finding.
+
+**Recurrence qualification.** A failed audit of the pre-selection installed
+subject or guest environment cannot establish a qualified recurrence. The
+current settlement ignores those distinctions and can reject the candidate
+from the wrong subject. Preserve later-failure precedence without treating an
+invalid prerequisite as a later collection failure.
+
+**Original membership.** The originals audit enumerates surviving guest streams
+rather than the streams required by the attempt. Loss before the manifest is
+written can disappear from both checks and leave the slot qualified. Record
+this separately from a changed original, which the existing controls cover.
+
+**Result and placement.** The findings and receipt-shape inspection are in
+`docs/verification/settings-activation/ORDERING-HARNESS-REVIEW.md`. They are
+source-derived, not executed reproductions. Cut one integration sibling directly
+before k171 so it can triage the material risks before the pre-runtime
+reconciliation. Keep k36 and every product/causal ancestor open.
