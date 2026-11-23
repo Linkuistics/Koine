@@ -44,3 +44,19 @@ its working files. The installed tool is
 ## Notes
 
 Start no guest, clone or golden build. Do not stop `testanyware-setup-dbf7834f`.
+
+## Decisions (running log)
+
+- 2026-11-23: the tagged VNC size wait can recover from a failed session and
+  report a successful start. Its existing upstream control demonstrates the
+  path. The adapter accepts that result, so the amendment does not yet meet the
+  one-attempt contract. This earns an integration sibling before k54; no guest
+  is needed to establish the gap.
+- 2026-11-23: the typed exec check matches the inspected clean macOS shape; no
+  real-agent result is claimed. The unused `--open-menu` diagnostic gap and the
+  SIGHUP retention explanation are narrower observations, not additional runtime
+  qualification. Findings and the answers to every review question are in
+  `docs/verification/settings-activation/ORDERING-TESTANYWARE-3-REVIEW.md`.
+- 2026-11-23: integration belongs as the next flat sibling before k54, because
+  it consumes this review's source coordinates. k36 and k12 stay live; this
+  inspection establishes no product acceptance and changes no ADR decision.
