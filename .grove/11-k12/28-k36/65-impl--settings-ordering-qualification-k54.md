@@ -128,3 +128,17 @@ Read `docs/verification/settings-activation/ORDERING-AUDITS-RESULTS.md`.
   a golden file. No control ran against a real image.
 - The scenario keeps its transcript and installed text files in
   `.build/vm-verify`, outside the slot's output. Retain them separately.
+
+## TestAnyware version mismatch
+
+The protocol names TestAnyware 2.7.0, and the harness cites the payload formats
+of that tag. On 2026-11-23, the host had 2.9.0, and the owner planned an update.
+The protocol holds the sequence on a tool version mismatch.
+
+Before the freeze, ask the owner to choose one of these options:
+
+- Pin 2.7.0 for the evaluation.
+- Amend the protocol, and recheck each cited payload format against the new
+  version.
+
+Do not start E01 on another version without that decision.
