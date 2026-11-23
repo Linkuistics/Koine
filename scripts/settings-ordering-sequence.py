@@ -205,15 +205,89 @@ def declaration(directory: Path) -> Json:
     return {"schema": 1, "base": BASE, "slots": slots}
 
 
+def version_control(tool: str, root: Path, *arguments: str) -> tuple[int, str]:
+    """Run one read of a working tree. A tool that cannot run reports status -1."""
+    # An inherited GIT_DIR or GIT_WORK_TREE would answer for another repository.
+    environment = {k: v for k, v in os.environ.items() if not k.startswith("GIT_")}
+    prefix = (
+        ("git", "-C", str(root))
+        if tool == "git"
+        # A snapshot would write to the store, so this read takes none.
+        else ("jj", "--ignore-working-copy", "--no-pager", "-R", str(root))
+    )
+    try:
+        done = subprocess.run(
+            [*prefix, *arguments],
+            env=environment,
+            stdin=subprocess.DEVNULL,
+            capture_output=True,
+            timeout=30,
+            check=False,
+        )
+    except (OSError, subprocess.TimeoutExpired):
+        return -1, ""
+    return done.returncode, done.stdout.decode("utf-8", "surrogateescape")
+
+
+def public_path_problem(path: Path) -> str | None:
+    """Name why PATH could enter version control, or None for a private path.
+
+    PATH is resolved and does not exist yet. jj snapshots every unignored file
+    without an add step, so mode 700 alone cannot keep a root out of history.
+    """
+    for root in path.parents:
+        has_git, has_jj = (root / ".git").exists(), (root / ".jj").is_dir()
+        if not (has_git or has_jj):
+            continue
+        relative = path.relative_to(root).as_posix()
+        if not has_git:
+            return f"the jj workspace {root} has no Git view of its ignore rules"
+        status, tracked = version_control(
+            "git", root, "--literal-pathspecs", "ls-files", "-z", "--", relative
+        )
+        if status != 0:
+            return f"Git cannot read the index of {root}"
+        if tracked:
+            return f"Git tracks files under this path in {root}"
+        if has_jj:
+            # A jj string literal takes the JSON escapes of quote and backslash.
+            fileset = "root:" + json.dumps(relative, ensure_ascii=False)
+            status, tracked = version_control("jj", root, "file", "list", fileset)
+            if status != 0:
+                return f"jj cannot read the working copy of {root}"
+            if tracked:
+                return f"jj tracks files under this path in {root}"
+        # check-ignore refuses --literal-pathspecs, so `./` stops a leading colon
+        # from reading as magic. The slash applies directory rules like `.build/`.
+        status, _ = version_control(
+            "git", root, "check-ignore", "-q", "--", f"./{relative}/"
+        )
+        if status == 1:
+            return f"this path is not ignored in {root}"
+        if status != 0:
+            return f"Git cannot read the ignore rules of {root}"
+    return None
+
+
 def declare(directory: Path) -> int:
     absolute = directory.absolute()
+    if os.path.lexists(absolute):
+        raise Refusal(f"the sequence directory already exists: {absolute}")
     try:
-        absolute.mkdir(mode=0o700)
+        target = absolute.parent.resolve(strict=True) / absolute.name
+    except OSError as error:
+        raise Refusal(f"the parent directory is unavailable: {error}") from error
+    # The roots can hold KOINE_VM_PASSWORD, so they stay out of version control.
+    problem = public_path_problem(target)
+    if problem is not None:
+        raise Refusal(f"the sequence directory could be published: {problem}")
+    try:
+        target.mkdir(mode=0o700)
     except FileExistsError as error:
-        raise Refusal(f"the sequence directory already exists: {absolute}") from error
+        raise Refusal(f"the sequence directory already exists: {target}") from error
     # The roots can hold KOINE_VM_PASSWORD, so only the owner can enter.
-    os.chmod(absolute, 0o700)
-    resolved = absolute.resolve()
+    os.chmod(target, 0o700)
+    resolved = target.resolve()
     (resolved / "ledger").mkdir(mode=0o700)
     value = declaration(resolved)
     for namespace in {slot[2] for slot in SLOTS}:

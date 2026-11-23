@@ -1,0 +1,7 @@
+{
+ "path": ".build/settings-activation/ordering-sequence",
+ "exists": false,
+ "guard_problem": null,
+ "control_unignored_path": "docs/verification/k176-location-control",
+ "control_problem_present": true
+}

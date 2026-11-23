@@ -1,0 +1,162 @@
+{
+ "cases": {
+  "focused": {
+   "add-button": {
+    "attempts": 217,
+    "captures": 13
+   },
+   "complete": {
+    "attempts": 217,
+    "captures": 13
+   },
+   "exact-allow": {
+    "attempts": 21,
+    "captures": 0
+   },
+   "launch-endpoint": {
+    "attempts": 58,
+    "captures": 0
+   },
+   "login-endpoint": {
+    "attempts": 217,
+    "captures": 13
+   },
+   "menu-item-frame": {
+    "attempts": 60,
+    "captures": 0
+   },
+   "menu-label": {
+    "attempts": 78,
+    "captures": 0
+   },
+   "menu-row": {
+    "attempts": 103,
+    "captures": 2
+   },
+   "menu-titles": {
+    "attempts": 58,
+    "captures": 0
+   },
+   "quit-row": {
+    "attempts": 217,
+    "captures": 13
+   },
+   "requests-on-screen": {
+    "attempts": 217,
+    "captures": 13
+   },
+   "resize": {
+    "attempts": 217,
+    "captures": 13
+   },
+   "restart-boot": {
+    "attempts": 217,
+    "captures": 13
+   },
+   "reveal": {
+    "attempts": 217,
+    "captures": 13
+   },
+   "silent-launch": {
+    "attempts": 217,
+    "captures": 13
+   },
+   "textedit-window": {
+    "attempts": 93,
+    "captures": 1
+   },
+   "window-count": {
+    "attempts": 127,
+    "captures": 3
+   }
+  },
+  "ordinary": {
+   "add-button": {
+    "attempts": 543,
+    "captures": 19
+   },
+   "complete": {
+    "attempts": 660,
+    "captures": 23
+   },
+   "exact-allow": {
+    "attempts": 21,
+    "captures": 0
+   },
+   "launch-endpoint": {
+    "attempts": 58,
+    "captures": 0
+   },
+   "login-endpoint": {
+    "attempts": 676,
+    "captures": 22
+   },
+   "menu-item-frame": {
+    "attempts": 60,
+    "captures": 0
+   },
+   "menu-label": {
+    "attempts": 78,
+    "captures": 0
+   },
+   "menu-row": {
+    "attempts": 103,
+    "captures": 2
+   },
+   "menu-titles": {
+    "attempts": 58,
+    "captures": 0
+   },
+   "quit-row": {
+    "attempts": 567,
+    "captures": 19
+   },
+   "requests-on-screen": {
+    "attempts": 451,
+    "captures": 16
+   },
+   "resize": {
+    "attempts": 242,
+    "captures": 13
+   },
+   "restart-boot": {
+    "attempts": 740,
+    "captures": 22
+   },
+   "reveal": {
+    "attempts": 538,
+    "captures": 14
+   },
+   "silent-launch": {
+    "attempts": 574,
+    "captures": 19
+   },
+   "textedit-window": {
+    "attempts": 93,
+    "captures": 1
+   },
+   "window-count": {
+    "attempts": 127,
+    "captures": 3
+   }
+  }
+ },
+ "summary": {
+  "focused": {
+   "complete": {
+    "attempts": 217,
+    "captures": 13
+   },
+   "max_attempts": 217,
+   "max_captures": 13
+  },
+  "ordinary": {
+   "complete": {
+    "attempts": 660,
+    "captures": 23
+   },
+   "max_attempts": 740,
+   "max_captures": 23
+  }
+ }
+}

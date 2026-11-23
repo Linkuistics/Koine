@@ -148,6 +148,138 @@ expect_kind() {
     expect_refused "already exists"
 }
 
+# git_tree: a private repository that ignores private/ and re-includes one path.
+git_tree() {
+    mkdir "${BATS_TEST_TMPDIR}/tree"
+    tree="$(cd "${BATS_TEST_TMPDIR}/tree" && pwd -P)"
+    git init -q "${tree}"
+    printf 'private/*\n!private/public/\n' >"${tree}/.gitignore"
+    mkdir "${tree}/private" "${tree}/shared"
+}
+
+# expect_unpublished PATH REASON: refused, and nothing was created.
+expect_unpublished() {
+    run seq_tool declare "$1"
+    expect_refused "could be published"
+    expect_refused "$2"
+    [[ ! -e "$1" ]] || {
+        echo "the refused declaration created $1"
+        return 1
+    }
+}
+
+@test "a declaration refuses an unignored path in a Git tree" {
+    git_tree
+    expect_unpublished "${tree}/shared/sequence" "this path is not ignored"
+}
+
+@test "a declaration refuses a path that an ignore rule re-includes" {
+    git_tree
+    expect_unpublished "${tree}/private/public" "this path is not ignored"
+}
+
+@test "a declaration refuses an ignored path that holds a tracked file" {
+    git_tree
+    mkdir "${tree}/private/held"
+    echo tracked >"${tree}/private/held/file"
+    git -C "${tree}" add -f private/held/file
+    rm -r "${tree}/private/held"
+    expect_unpublished "${tree}/private/held" "Git tracks files"
+}
+
+@test "a declaration refuses a symlinked parent that leads to an unignored path" {
+    git_tree
+    ln -s "${tree}/shared" "${BATS_TEST_TMPDIR}/link"
+    run seq_tool declare "${BATS_TEST_TMPDIR}/link/sequence"
+    expect_refused "this path is not ignored"
+    [[ ! -e "${tree}/shared/sequence" ]]
+}
+
+@test "a declaration refuses a path in an outer tree that a nested tree ignores" {
+    git_tree
+    git init -q "${tree}/shared/inner"
+    # The outer tree reads a nested .gitignore, but not this private exclude file.
+    echo 'held/' >>"${tree}/shared/inner/.git/info/exclude"
+    [[ "$(git -C "${tree}/shared/inner" check-ignore -- held/)" == held/ ]]
+    expect_unpublished "${tree}/shared/inner/held" "this path is not ignored in ${tree}"
+}
+
+@test "a declaration refuses a tree whose rules it cannot read" {
+    git_tree
+    echo 'gitdir: /nonexistent' >"${tree}/.git.broken"
+    rm -rf "${tree}/.git"
+    mv "${tree}/.git.broken" "${tree}/.git"
+    expect_unpublished "${tree}/private/sequence" "Git cannot read"
+}
+
+# fail_tool TOOL WORD: TOOL exits 128 when one of its arguments is WORD.
+fail_tool() {
+    local real
+    real="$(type -P "$1")"
+    mkdir -p "${BATS_TEST_TMPDIR}/stub"
+    printf '#!/bin/bash\n[[ " $* " == *" %s "* ]] && exit 128\nexec "%s" "$@"\n' "$2" "${real}" \
+        >"${BATS_TEST_TMPDIR}/stub/$1"
+    chmod +x "${BATS_TEST_TMPDIR}/stub/$1"
+    export PATH="${BATS_TEST_TMPDIR}/stub:${PATH}"
+}
+
+@test "a declaration refuses a tree whose index Git cannot read" {
+    git_tree
+    fail_tool git ls-files
+    expect_unpublished "${tree}/private/sequence" "Git cannot read the index"
+}
+
+@test "a declaration refuses a tree whose ignore rules Git cannot read" {
+    git_tree
+    fail_tool git check-ignore
+    expect_unpublished "${tree}/private/sequence" "Git cannot read the ignore rules"
+}
+
+@test "a declaration refuses a tree whose working copy jj cannot read" {
+    git_tree
+    jj git init --quiet --colocate "${tree}"
+    fail_tool jj list
+    expect_unpublished "${tree}/private/sequence" "jj cannot read"
+}
+
+@test "a declaration refuses a jj workspace without a Git view" {
+    git_tree
+    rm -rf "${tree}/.git"
+    mkdir "${tree}/.jj"
+    expect_unpublished "${tree}/private/sequence" "has no Git view"
+}
+
+@test "a declaration refuses a path that only jj tracks" {
+    git_tree
+    jj git init --quiet --colocate "${tree}"
+    # jj snapshots the file while no rule ignores it, and then keeps tracking it.
+    mv "${tree}/.gitignore" "${tree}/.gitignore.off"
+    mkdir "${tree}/private/held"
+    echo tracked >"${tree}/private/held/file"
+    (cd "${tree}" && jj --quiet status)
+    mv "${tree}/.gitignore.off" "${tree}/.gitignore"
+    git -C "${tree}" rm -q --cached -- private/held/file
+    [[ -z "$(git -C "${tree}" ls-files -- private/held)" ]]
+    [[ "$(cd "${tree}" && jj --ignore-working-copy file list 'root:"private/held"')" == private/held/file ]]
+    rm -r "${tree}/private/held"
+    expect_unpublished "${tree}/private/held" "jj tracks files"
+}
+
+@test "a declaration refuses this repository's tracked and unignored paths" {
+    local repository
+    repository="$(cd "${BATS_TEST_DIRNAME}/../.." && pwd -P)"
+    expect_unpublished "${repository}/docs/verification/k176-refused" "this path is not ignored"
+    expect_unpublished "${repository}/k176-refused" "this path is not ignored"
+}
+
+@test "a declaration accepts an ignored path, with mode 700" {
+    git_tree
+    run seq_tool declare "${tree}/private/sequence"
+    [[ "${status}" == 0 ]]
+    [[ "$(stat -f %Lp "${tree}/private/sequence")" == 700 ]]
+    [[ -z "$(git -C "${tree}" status --porcelain -- private/sequence)" ]]
+}
+
 # --- admission --------------------------------------------------------------
 
 @test "admission takes only the next slot, after its set is ready" {

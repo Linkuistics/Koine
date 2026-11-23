@@ -1,0 +1,97 @@
+{
+ "unchanged": {
+  "status": 0,
+  "passed": 13,
+  "failed": []
+ },
+ "ignore a tracked path": {
+  "status": 1,
+  "passed": 12,
+  "failed": [
+   "a declaration refuses an ignored path that holds a tracked file"
+  ]
+ },
+ "ignore a jj tracked path": {
+  "status": 1,
+  "passed": 12,
+  "failed": [
+   "a declaration refuses a path that only jj tracks"
+  ]
+ },
+ "accept an unignored path": {
+  "status": 1,
+  "passed": 9,
+  "failed": [
+   "a declaration refuses an unignored path in a Git tree",
+   "a declaration refuses a path that an ignore rule re-includes",
+   "a declaration refuses a symlinked parent that leads to an unignored path",
+   "a declaration refuses a path in an outer tree that a nested tree ignores"
+  ]
+ },
+ "accept unreadable ignore rules": {
+  "status": 1,
+  "passed": 12,
+  "failed": [
+   "a declaration refuses a tree whose ignore rules Git cannot read"
+  ]
+ },
+ "accept an unreadable index": {
+  "status": 1,
+  "passed": 12,
+  "failed": [
+   "a declaration refuses a tree whose index Git cannot read"
+  ]
+ },
+ "accept an unreadable jj working copy": {
+  "status": 1,
+  "passed": 12,
+  "failed": [
+   "a declaration refuses a tree whose working copy jj cannot read"
+  ]
+ },
+ "accept a jj tree with no Git view": {
+  "status": 1,
+  "passed": 12,
+  "failed": [
+   "a declaration refuses a jj workspace without a Git view"
+  ]
+ },
+ "check only the innermost tree": {
+  "status": 1,
+  "passed": 12,
+  "failed": [
+   "a declaration refuses a path in an outer tree that a nested tree ignores"
+  ]
+ },
+ "keep the unresolved parent": {
+  "status": 1,
+  "passed": 12,
+  "failed": [
+   "a declaration refuses a symlinked parent that leads to an unignored path"
+  ]
+ },
+ "drop the directory slash": {
+  "status": 1,
+  "passed": 12,
+  "failed": [
+   "a declaration refuses a path that an ignore rule re-includes"
+  ]
+ },
+ "skip the guard": {
+  "status": 1,
+  "passed": 2,
+  "failed": [
+   "a declaration refuses an unignored path in a Git tree",
+   "a declaration refuses a path that an ignore rule re-includes",
+   "a declaration refuses an ignored path that holds a tracked file",
+   "a declaration refuses a symlinked parent that leads to an unignored path",
+   "a declaration refuses a path in an outer tree that a nested tree ignores",
+   "a declaration refuses a tree whose rules it cannot read",
+   "a declaration refuses a tree whose index Git cannot read",
+   "a declaration refuses a tree whose ignore rules Git cannot read",
+   "a declaration refuses a tree whose working copy jj cannot read",
+   "a declaration refuses a jj workspace without a Git view",
+   "a declaration refuses a path that only jj tracks"
+  ]
+ }
+}

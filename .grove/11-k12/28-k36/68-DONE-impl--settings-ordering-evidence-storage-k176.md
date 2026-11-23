@@ -39,3 +39,13 @@ Do not redact required raw evidence, and do not weaken text validation. Do not
 add an automatic deletion or a size cap that drops an original. If no finite
 bound can be established without a guest, state that limit and return the
 decision to the owner before k54 freezes a subject.
+
+## Decisions (running log)
+
+- The guard stays in `declare`. It reads each enclosing Git and jj tree, because
+  jj snapshots an unignored file without an add step.
+- No proven byte bound exists without a guest. The plan gives a 300 GB allowance,
+  and k54 returns that decision to the owner before the freeze.
+- The containment code stays unchanged. On a full volume, `run` can exit 0 and
+  leave a clone running. The existing recovery route covers this case, and k54
+  now states it.

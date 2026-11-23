@@ -1,0 +1,302 @@
+[
+ {
+  "stop_calls_both_runs": 2,
+  "clone_running_after": [],
+  "recovery": {},
+  "leave": null,
+  "ready": 0,
+  "run_E01": 0,
+  "settle_E01": 0,
+  "run_E02": 0,
+  "E02_tasks_started": 1,
+  "report": 0,
+  "state": {
+   "outcome": "in-progress",
+   "E01": "qualified",
+   "E02": "started-unsettled"
+  },
+  "record_errors": 0,
+  "partials": [],
+  "files_lost_after_E01": [],
+  "filler_unchanged": null,
+  "E01_stderr": "",
+  "E02_stderr": ""
+ },
+ {
+  "stop_calls_both_runs": 2,
+  "clone_running_after": [],
+  "recovery": {},
+  "leave": 2097152,
+  "ready": 0,
+  "run_E01": 0,
+  "settle_E01": 0,
+  "run_E02": 0,
+  "E02_tasks_started": 1,
+  "report": 0,
+  "state": {
+   "outcome": "in-progress",
+   "E01": "qualified",
+   "E02": "started-unsettled"
+  },
+  "record_errors": 0,
+  "partials": [],
+  "files_lost_after_E01": [],
+  "filler_unchanged": true,
+  "E01_stderr": "",
+  "E02_stderr": ""
+ },
+ {
+  "stop_calls_both_runs": 1,
+  "clone_running_after": [
+   "koine-k49-ordering-e02"
+  ],
+  "recovery": {},
+  "leave": 524288,
+  "ready": 0,
+  "run_E01": 0,
+  "settle_E01": 0,
+  "run_E02": 0,
+  "E02_tasks_started": 1,
+  "report": 0,
+  "state": {
+   "outcome": "in-progress",
+   "E01": "qualified",
+   "E02": "started-unsettled"
+  },
+  "record_errors": 0,
+  "partials": [],
+  "files_lost_after_E01": [],
+  "filler_unchanged": true,
+  "E01_stderr": "",
+  "E02_stderr": ""
+ },
+ {
+  "stop_calls_both_runs": 0,
+  "clone_running_after": [
+   "koine-k49-ordering-e01"
+  ],
+  "recovery": {
+   "settle": 0,
+   "E01": "unresolved",
+   "cleanup": "unresolved",
+   "outcome": "no-acceptance",
+   "run_E02": 3,
+   "E02": "NOT RUN",
+   "E02_tasks_started": 0,
+   "files_lost": []
+  },
+  "leave": 262144,
+  "ready": 0,
+  "run_E01": 0,
+  "settle_E01": 1,
+  "run_E02": 1,
+  "E02_tasks_started": 0,
+  "report": 0,
+  "state": {
+   "outcome": "in-progress",
+   "E01": "started-unsettled",
+   "E02": "NOT RUN"
+  },
+  "record_errors": "no result.json",
+  "partials": [
+   "ordering-evaluation/E01/evidence/000010/request.json.partial"
+  ],
+  "files_lost_after_E01": [],
+  "filler_unchanged": true,
+  "E01_stderr": "",
+  "E02_stderr": "line)\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nOSError: [Errno 28] No space left on device: '<case>/volume/sequence/refusals.jsonl'\n"
+ },
+ {
+  "stop_calls_both_runs": 0,
+  "clone_running_after": [
+   "koine-k49-ordering-e01"
+  ],
+  "recovery": {
+   "settle": 0,
+   "E01": "unresolved",
+   "cleanup": "unresolved",
+   "outcome": "no-acceptance",
+   "run_E02": 3,
+   "E02": "NOT RUN",
+   "E02_tasks_started": 0,
+   "files_lost": []
+  },
+  "leave": 131072,
+  "ready": 0,
+  "run_E01": 0,
+  "settle_E01": 1,
+  "run_E02": 1,
+  "E02_tasks_started": 0,
+  "report": 0,
+  "state": {
+   "outcome": "in-progress",
+   "E01": "started-unsettled",
+   "E02": "NOT RUN"
+  },
+  "record_errors": "no result.json",
+  "partials": [],
+  "files_lost_after_E01": [],
+  "filler_unchanged": true,
+  "E01_stderr": "",
+  "E02_stderr": "line)\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nOSError: [Errno 28] No space left on device: '<case>/volume/sequence/refusals.jsonl'\n"
+ },
+ {
+  "stop_calls_both_runs": 0,
+  "clone_running_after": [
+   "koine-k49-ordering-e01"
+  ],
+  "recovery": {
+   "settle": 0,
+   "E01": "unresolved",
+   "cleanup": "unresolved",
+   "outcome": "no-acceptance",
+   "run_E02": 3,
+   "E02": "NOT RUN",
+   "E02_tasks_started": 0,
+   "files_lost": []
+  },
+  "leave": 65536,
+  "ready": 0,
+  "run_E01": 0,
+  "settle_E01": 1,
+  "run_E02": 1,
+  "E02_tasks_started": 0,
+  "report": 0,
+  "state": {
+   "outcome": "in-progress",
+   "E01": "started-unsettled",
+   "E02": "NOT RUN"
+  },
+  "record_errors": "no result.json",
+  "partials": [
+   "ordering-evaluation/E01/evidence/000002/result.json.partial"
+  ],
+  "files_lost_after_E01": [],
+  "filler_unchanged": true,
+  "E01_stderr": "",
+  "E02_stderr": "line)\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nOSError: [Errno 28] No space left on device: '<case>/volume/sequence/refusals.jsonl'\n"
+ },
+ {
+  "stop_calls_both_runs": 0,
+  "clone_running_after": [],
+  "recovery": {
+   "settle": 0,
+   "E01": "unresolved",
+   "cleanup": "unresolved",
+   "outcome": "no-acceptance",
+   "run_E02": 3,
+   "E02": "NOT RUN",
+   "E02_tasks_started": 0,
+   "files_lost": []
+  },
+  "leave": 32768,
+  "ready": 0,
+  "run_E01": 0,
+  "settle_E01": 1,
+  "run_E02": 1,
+  "E02_tasks_started": 0,
+  "report": 0,
+  "state": {
+   "outcome": "in-progress",
+   "E01": "started-unsettled",
+   "E02": "NOT RUN"
+  },
+  "record_errors": "no result.json",
+  "partials": [],
+  "files_lost_after_E01": [],
+  "filler_unchanged": true,
+  "E01_stderr": "",
+  "E02_stderr": "line)\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nOSError: [Errno 28] No space left on device: '<case>/volume/sequence/refusals.jsonl'\n"
+ },
+ {
+  "stop_calls_both_runs": 0,
+  "clone_running_after": [],
+  "recovery": {
+   "settle": 0,
+   "E01": "unresolved",
+   "cleanup": "unresolved",
+   "outcome": "no-acceptance",
+   "run_E02": 3,
+   "E02": "NOT RUN",
+   "E02_tasks_started": 0,
+   "files_lost": []
+  },
+  "leave": 16384,
+  "ready": 0,
+  "run_E01": 0,
+  "settle_E01": 1,
+  "run_E02": 1,
+  "E02_tasks_started": 0,
+  "report": 0,
+  "state": {
+   "outcome": "in-progress",
+   "E01": "started-unsettled",
+   "E02": "NOT RUN"
+  },
+  "record_errors": "no result.json",
+  "partials": [
+   "ordering-evaluation/E01/evidence/subject.json.partial"
+  ],
+  "files_lost_after_E01": [],
+  "filler_unchanged": true,
+  "E01_stderr": "",
+  "E02_stderr": "line)\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nOSError: [Errno 28] No space left on device: '<case>/volume/sequence/refusals.jsonl'\n"
+ },
+ {
+  "stop_calls_both_runs": 0,
+  "clone_running_after": [],
+  "recovery": {
+   "settle": 0,
+   "E01": "unresolved",
+   "cleanup": "unresolved",
+   "outcome": "no-acceptance",
+   "run_E02": 3,
+   "E02": "NOT RUN",
+   "E02_tasks_started": 0,
+   "files_lost": []
+  },
+  "leave": 8192,
+  "ready": 0,
+  "run_E01": 0,
+  "settle_E01": 1,
+  "run_E02": 1,
+  "E02_tasks_started": 0,
+  "report": 0,
+  "state": {
+   "outcome": "in-progress",
+   "E01": "started-unsettled",
+   "E02": "NOT RUN"
+  },
+  "record_errors": "no result.json",
+  "partials": [
+   "ordering-evaluation/E01/containment/process.json.partial"
+  ],
+  "files_lost_after_E01": [],
+  "filler_unchanged": true,
+  "E01_stderr": "",
+  "E02_stderr": "line)\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nOSError: [Errno 28] No space left on device: '<case>/volume/sequence/refusals.jsonl'\n"
+ },
+ {
+  "stop_calls_both_runs": 0,
+  "clone_running_after": [],
+  "recovery": {},
+  "leave": 0,
+  "ready": 0,
+  "run_E01": 1,
+  "settle_E01": null,
+  "run_E02": 1,
+  "E02_tasks_started": 0,
+  "report": 0,
+  "state": {
+   "outcome": "in-progress",
+   "E01": "NOT RUN",
+   "E02": "NOT RUN"
+  },
+  "record_errors": "no result.json",
+  "partials": [],
+  "files_lost_after_E01": [],
+  "filler_unchanged": true,
+  "E01_stderr": "rs, newline)\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nOSError: [Errno 28] No space left on device: '<case>/volume/sequence/.runner'\n",
+  "E02_stderr": "rs, newline)\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nOSError: [Errno 28] No space left on device: '<case>/volume/sequence/.runner'\n"
+ }
+]

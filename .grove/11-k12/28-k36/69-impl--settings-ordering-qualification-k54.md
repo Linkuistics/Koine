@@ -159,10 +159,30 @@ Do not start E01 on another version without that decision.
 Read `docs/verification/settings-activation/ORDERING-RECONCILIATION.md`.
 
 - Before the freeze, run `task check:settings-duty-ledger -- --require-closed`.
-  An open gap refuses the freeze. Leaves k174, k175 and k176 own the open gaps.
+  An open gap refuses the freeze.
 - A resolved citation does not prove a disposition. If a source or control
   changes after its row, recheck that row and its earned review.
 - The guest copy of the two uploaded scripts stays unproved. This is an accepted
   limit. A scenario download needs a new human amendment.
 - The `bash -n A B` Taskfile lines stay unchanged. `shellcheck` in the same task
   parses each harness file that those lines skip.
+
+## K176 storage handoff
+
+Read `docs/verification/settings-activation/ORDERING-STORAGE-PLAN.md`.
+
+- Before the freeze, ask the owner to accept the 300 GB allowance or to request a
+  finite resource design. No proven byte bound exists. The plan holds the
+  recommendation and its evidence. Do not freeze a subject without this decision.
+- Declare the sequence at `.build/settings-activation/ordering-sequence`.
+- Do not commit or publish the sequence directory or a transcript. Do not redact
+  the required raw evidence.
+- Before E01, check that no backup or synchronisation tool copies the directory.
+- Before each set's readiness, run `df -k` on the parent of the sequence directory
+  and on `~/.tart/vms`. Each volume must report at least 292,968,750 KiB available.
+  If a volume reports less, hold before the slot.
+- After each slot, copy its `.build/vm-verify` transcript and installed text files
+  to `transcripts/<slot>/` in the sequence directory. Keep the originals.
+- A zero exit status from `run` does not show that the caller kept its records. If
+  `phases.json` is missing or `settle-run` fails, follow the recovery steps of the
+  plan. On a full volume, the caller can leave the clone running without a stop.

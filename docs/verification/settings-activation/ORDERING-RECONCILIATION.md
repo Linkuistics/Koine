@@ -5,10 +5,12 @@ original duty of k53, k56, k61, k66, k71, k75, k80 and k85 with the current sour
 and controls. It also checks the k52 application change against Apple's public
 contracts.
 
-**The harness is not ready for the k54 freeze.** Five contract sentences stay
-open. They reduce to one precise piece of work, and leaf k176 owns it before k54.
-No open item shows a Koine failure. After this reconciliation, leaf k174 closed
-duty D181 and leaf k175 closed six baseline and empty-field duties.
+**No contract sentence stays open, but two owner decisions still precede the k54
+freeze.** One is the TestAnyware version. The other is the
+[storage allowance](ORDERING-STORAGE-PLAN.md#decision-for-the-owner), because no
+proven byte bound exists. No item shows a Koine failure. After this reconciliation,
+leaf k174 closed duty D181, leaf k175 closed six baseline and empty-field duties,
+and leaf k176 closed five storage and privacy duties.
 
 The evidence is source and controls only. No VM ran, and no clone, signed subject
 or runtime slot exists. The work establishes no native behaviour, no native cause
@@ -26,11 +28,11 @@ disposition, source, controls, failing record, owner, authority and note.
 | k56 | 12 | 4 | 0 | 0 | 0 | 17 | 33 |
 | k61 | 21 | 3 | 0 | 0 | 0 | 17 | 41 |
 | k66 | 19 | 3 | 0 | 0 | 0 | 20 | 42 |
-| k71 | 18 | 8 | 0 | 1 | 2 | 22 | 51 |
-| k75 | 11 | 4 | 0 | 5 | 2 | 36 | 58 |
+| k71 | 20 | 8 | 0 | 1 | 0 | 22 | 51 |
+| k75 | 13 | 4 | 0 | 5 | 0 | 36 | 58 |
 | k80 | 10 | 4 | 1 | 10 | 0 | 25 | 50 |
-| k85 | 10 | 4 | 15 | 11 | 1 | 26 | 67 |
-| **Total** | **116** | **37** | **16** | **28** | **5** | **191** | **393** |
+| k85 | 11 | 4 | 15 | 11 | 0 | 26 | 67 |
+| **Total** | **121** | **37** | **16** | **28** | **0** | **191** | **393** |
 
 A repeated sentence counts once, under the first contract that states it. Its row
 names the other places.
@@ -44,11 +46,12 @@ names the other places.
 | Gap | Nothing delivers the duty. A new leaf owns it |
 | Context | The sentence states history or routing, and no duty still binds |
 
-## Open gaps
+## Closed gaps
 
-| Leaf | Duties | Missing work | Effect today |
-|---|---|---|---|
-| `settings-ordering-evidence-storage-k176` | D215, D216, D270, D275, D372 | No finite storage plan exists. `declare` accepts a tracked or published path for a root that can hold the VM password | A run could fill the disk, or an operator could place private evidence in a tracked path |
+Leaf k176 closed D215, D216, D270, D275 and D372. `declare` now refuses a sequence
+directory that could enter version control. The
+[storage plan](ORDERING-STORAGE-PLAN.md) states the location, the retained classes,
+the allowance, the free space and the behaviour on a full volume.
 
 Leaf k174 closed D181. The classifier now reports a first essential `interrupted`
 receipt as `interrupted`, with or without a signal record. The slot still settles
@@ -98,7 +101,7 @@ a guide and classifies each duty again. Three of its results change:
   records, but not for an interrupted receipt without one. Leaf k174 closed that
   gap.
 - k62 assigned finite storage to k57. The k57 split named no owner for it, and no
-  later task delivered it.
+  later task delivered it. Leaf k176 closed this gap.
 
 ## Application API contracts
 
@@ -146,6 +149,11 @@ holds these results and their failing controls.
 - The synthetic guest establishes call order and classification. E01 still
   qualifies each real read.
 - The TestAnyware version decision stays a prerequisite of k54.
+- No proven byte bound exists for a slot. The owner decides on the storage allowance
+  before the k54 freeze.
+- A zero exit status from `run` does not show that the caller kept its records. On
+  a full volume, the caller can leave a clone running. The storage plan gives the
+  recovery steps.
 
 ## Outcome separation
 
@@ -172,6 +180,6 @@ The records are in
 
 ## Handoff
 
-Leaf k176 runs next, and it updates its ledger rows. Before the freeze, k54 runs
-`task check:settings-duty-ledger -- --require-closed`, which refuses any open gap.
+Before the freeze, k54 runs `task check:settings-duty-ledger -- --require-closed`,
+which refuses any open gap.
 A later change to a source or control reopens its rows and any earned review.

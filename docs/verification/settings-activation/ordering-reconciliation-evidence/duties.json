@@ -6583,7 +6583,7 @@
   "also": [
    "k75:K78 integration handoff"
   ],
-  "disposition": "gap",
+  "disposition": "met",
   "source": [
    {
     "file": "scripts/vm-guest-exec.py",
@@ -6591,7 +6591,15 @@
    },
    {
     "file": "scripts/settings-ordering-sequence.py",
-    "symbol": "os.chmod(absolute, 0o700)"
+    "symbol": "os.chmod(target, 0o700)"
+   },
+   {
+    "file": "scripts/settings-ordering-sequence.py",
+    "symbol": "def public_path_problem"
+   },
+   {
+    "file": "docs/verification/settings-activation/ORDERING-STORAGE-PLAN.md",
+    "symbol": "## Privacy rules"
    }
   ],
   "controls": [
@@ -6606,14 +6614,31 @@
    {
     "suite": "Tests/scripts/vm-settings-scenario.bats",
     "test": "a consent run with a password override keeps the raw text only in the private root (k164)"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-sequence.bats",
+    "test": "a declaration refuses an unignored path in a Git tree"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-sequence.bats",
+    "test": "a declaration refuses an ignored path that holds a tracked file"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-sequence.bats",
+    "test": "a declaration refuses a path that only jj tracks"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-sequence.bats",
+    "test": "a declaration refuses this repository's tracked and unignored paths"
    }
   ],
   "red": [
-   "docs/verification/settings-activation/ordering-scenario-controls-evidence/red.txt"
+   "docs/verification/settings-activation/ordering-scenario-controls-evidence/red.txt",
+   "docs/verification/settings-activation/ordering-storage-evidence/guard-mutations.json"
   ],
-  "owner": "settings-ordering-evidence-storage-k176",
+  "owner": null,
   "authority": null,
-  "note": "Missing: k54 or declare must keep the sequence directory out of tracked and published paths, because only mode 700 enforces privacy now."
+  "note": "declare refuses a tracked or unignored directory in each enclosing Git or jj tree, and the plan and k54 carry the no-commit and no-publish rule. The guard cannot detect a backup or synchronisation tool."
  },
  {
   "id": "D216",
@@ -6624,15 +6649,23 @@
   "also": [
    "k75:K78 integration handoff"
   ],
-  "disposition": "gap",
+  "disposition": "met",
   "source": [
    {
     "file": "scripts/settings-ordering-sequence.py",
-    "symbol": "os.chmod(absolute, 0o700)"
+    "symbol": "os.chmod(target, 0o700)"
    },
    {
     "file": "scripts/vm-input-evidence-lib.sh",
     "symbol": "scenario_input()"
+   },
+   {
+    "file": "scripts/settings-ordering-sequence.py",
+    "symbol": "def public_path_problem"
+   },
+   {
+    "file": "docs/verification/settings-activation/ORDERING-STORAGE-PLAN.md",
+    "symbol": "Keep the required raw bytes"
    }
   ],
   "controls": [
@@ -6643,14 +6676,19 @@
    {
     "suite": "Tests/scripts/vm-settings-sequence.bats",
     "test": "the declaration holds exactly the five slots, in order, with their identities"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-sequence.bats",
+    "test": "a declaration refuses an unignored path in a Git tree"
    }
   ],
   "red": [
-   "docs/verification/settings-activation/ordering-scenario-controls-evidence/red.txt"
+   "docs/verification/settings-activation/ordering-scenario-controls-evidence/red.txt",
+   "docs/verification/settings-activation/ordering-storage-evidence/guard-mutations.json"
   ],
-  "owner": "settings-ordering-evidence-storage-k176",
+  "owner": null,
   "authority": null,
-  "note": "No redaction or weaker validation exists, but the no-publication rule is not carried into collection or k54, as D215 states."
+  "note": "The plan and k54 carry the restriction into collection. The harness keeps the required raw bytes, and this work changes no redaction or text validation."
  },
  {
   "id": "D217",
@@ -8231,7 +8269,7 @@
   "also": [
    "k80:K83 snapshot review integration handoff"
   ],
-  "disposition": "gap",
+  "disposition": "met",
   "source": [
    {
     "file": "scripts/vm-guest-exec.py",
@@ -8239,7 +8277,15 @@
    },
    {
     "file": "scripts/settings-ordering-sequence.py",
-    "symbol": "os.chmod(absolute, 0o700)"
+    "symbol": "os.chmod(target, 0o700)"
+   },
+   {
+    "file": "scripts/settings-ordering-sequence.py",
+    "symbol": "def public_path_problem"
+   },
+   {
+    "file": "docs/verification/settings-activation/ORDERING-STORAGE-PLAN.md",
+    "symbol": "## Privacy rules"
    }
   ],
   "controls": [
@@ -8254,14 +8300,31 @@
    {
     "suite": "Tests/scripts/vm-settings-scenario.bats",
     "test": "a consent run with a password override keeps the raw text only in the private root (k164)"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-sequence.bats",
+    "test": "a declaration refuses an unignored path in a Git tree"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-sequence.bats",
+    "test": "a declaration refuses an ignored path that holds a tracked file"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-sequence.bats",
+    "test": "a declaration refuses a path that only jj tracks"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-sequence.bats",
+    "test": "a declaration refuses this repository's tracked and unignored paths"
    }
   ],
   "red": [
-   "docs/verification/settings-activation/ordering-scenario-controls-evidence/red.txt"
+   "docs/verification/settings-activation/ordering-scenario-controls-evidence/red.txt",
+   "docs/verification/settings-activation/ordering-storage-evidence/guard-mutations.json"
   ],
-  "owner": "settings-ordering-evidence-storage-k176",
+  "owner": null,
   "authority": null,
-  "note": "Mode 700 is delivered, but the missing work of D215 leaves publication of the roots unguarded."
+  "note": "Mode 700 and the declare guard keep the consent roots private from version control. The plan states the limit for backup and synchronisation tools."
  },
  {
   "id": "D271",
@@ -8330,7 +8393,7 @@
   "heading": "K80 decomposition and click boundary",
   "text": "Snapshot all-tree/empty-AXValue availability and private secret-bearing root limits remain binding.",
   "also": [],
-  "disposition": "gap",
+  "disposition": "met",
   "source": [
    {
     "file": "scripts/vm-ui-evidence-lib.sh",
@@ -8338,7 +8401,15 @@
    },
    {
     "file": "scripts/settings-ordering-sequence.py",
-    "symbol": "os.chmod(absolute, 0o700)"
+    "symbol": "os.chmod(target, 0o700)"
+   },
+   {
+    "file": "scripts/settings-ordering-sequence.py",
+    "symbol": "def public_path_problem"
+   },
+   {
+    "file": "docs/verification/settings-activation/ORDERING-STORAGE-PLAN.md",
+    "symbol": "## Privacy rules"
    }
   ],
   "controls": [
@@ -8353,12 +8424,18 @@
    {
     "suite": "Tests/scripts/vm-settings-scenario.bats",
     "test": "a consent run with a password override keeps the raw text only in the private root (k164)"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-sequence.bats",
+    "test": "a declaration refuses an unignored path in a Git tree"
    }
   ],
-  "red": [],
-  "owner": "settings-ordering-evidence-storage-k176",
+  "red": [
+   "docs/verification/settings-activation/ordering-storage-evidence/guard-mutations.json"
+  ],
+  "owner": null,
   "authority": "docs/verification/settings-activation/ORDERING-PREFIX-RESULTS.md#Limits",
-  "note": "Availability limits stay carried by L3, but the private-root part needs the missing work of D215."
+  "note": "The availability limits stay carried by L3. The declare guard and the plan now deliver the private-root part."
  },
  {
   "id": "D276",
@@ -8901,7 +8978,7 @@
    },
    {
     "file": "scripts/settings-ordering-sequence.py",
-    "symbol": "os.chmod(absolute, 0o700)"
+    "symbol": "os.chmod(target, 0o700)"
    }
   ],
   "controls": [
@@ -9232,7 +9309,7 @@
    },
    {
     "file": "scripts/settings-ordering-sequence.py",
-    "symbol": "os.chmod(absolute, 0o700)"
+    "symbol": "os.chmod(target, 0o700)"
    },
    {
     "file": "scripts/vm-ui-evidence-lib.sh",
@@ -10271,7 +10348,7 @@
    },
    {
     "file": "scripts/settings-ordering-sequence.py",
-    "symbol": "os.chmod(absolute, 0o700)"
+    "symbol": "os.chmod(target, 0o700)"
    }
   ],
   "controls": [
@@ -10619,7 +10696,7 @@
    },
    {
     "file": "scripts/settings-ordering-sequence.py",
-    "symbol": "os.chmod(absolute, 0o700)"
+    "symbol": "os.chmod(target, 0o700)"
    },
    {
     "file": "scripts/vm-ui-evidence-lib.sh",
@@ -11362,7 +11439,7 @@
    },
    {
     "file": "scripts/settings-ordering-sequence.py",
-    "symbol": "os.chmod(absolute, 0o700)"
+    "symbol": "os.chmod(target, 0o700)"
    }
   ],
   "controls": [
@@ -12294,7 +12371,7 @@
    },
    {
     "file": "scripts/settings-ordering-sequence.py",
-    "symbol": "os.chmod(absolute, 0o700)"
+    "symbol": "os.chmod(target, 0o700)"
    }
   ],
   "controls": [
@@ -12645,7 +12722,7 @@
    },
    {
     "file": "scripts/settings-ordering-sequence.py",
-    "symbol": "os.chmod(absolute, 0o700)"
+    "symbol": "os.chmod(target, 0o700)"
    },
    {
     "file": "scripts/settings-ordering-sequence.py",
@@ -12690,7 +12767,7 @@
   "heading": "K91 capture review integration handoff",
   "text": "K57/k76 must plan storage and audit originals/partials without overwriting, deleting or publishing secret-bearing roots.",
   "also": [],
-  "disposition": "gap",
+  "disposition": "met",
   "source": [
    {
     "file": "scripts/settings-ordering-sequence.py",
@@ -12699,6 +12776,18 @@
    {
     "file": "scripts/settings-ordering-sequence.py",
     "symbol": "def write_manifest"
+   },
+   {
+    "file": "scripts/settings-ordering-sequence.py",
+    "symbol": "def public_path_problem"
+   },
+   {
+    "file": "docs/verification/settings-activation/ORDERING-STORAGE-PLAN.md",
+    "symbol": "## Size of each slot"
+   },
+   {
+    "file": "docs/verification/settings-activation/ORDERING-STORAGE-PLAN.md",
+    "symbol": "## When space runs out"
    }
   ],
   "controls": [
@@ -12709,12 +12798,19 @@
    {
     "suite": "Tests/scripts/vm-settings-audits.bats",
     "test": "a partial original stays named and does not fail its audit"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-sequence.bats",
+    "test": "a declaration refuses an unignored path in a Git tree"
    }
   ],
-  "red": [],
-  "owner": "settings-ordering-evidence-storage-k176",
+  "red": [
+   "docs/verification/settings-activation/ordering-storage-evidence/guard-mutations.json",
+   "docs/verification/settings-activation/ordering-storage-evidence/enospc.json"
+  ],
+  "owner": null,
   "authority": "settings-keepalive-contract-removal-k148",
-  "note": "Missing work: write the finite storage plan for the private E and A roots, which k148 kept and k57, k169 and k170 did not deliver."
+  "note": "The plan states the location, classes, allowance, free space and full-volume behaviour. No proven byte bound exists, so the owner decides on the allowance before the k54 freeze."
  },
  {
   "id": "D373",
