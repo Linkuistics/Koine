@@ -642,7 +642,7 @@
   "heading": "Done when",
   "text": "Preserve physical pointer route, existing input actions, waits and poll bounds.",
   "also": [],
-  "disposition": "gap",
+  "disposition": "met",
   "source": [
    {
     "file": "scripts/vm-settings-scenario-lib.sh",
@@ -651,6 +651,10 @@
    {
     "file": "scripts/vm-verify-menu-bar.sh",
     "symbol": "settings_sleep textedit-settle 8"
+   },
+   {
+    "file": "scripts/check-settings-baseline.py",
+    "symbol": "def check_runs"
    }
   ],
   "controls": [
@@ -665,12 +669,26 @@
    {
     "suite": "Tests/scripts/vm-window-evidence.bats",
     "test": "only clean list negatives advance the ten by two count poll"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-baseline.bats",
+    "test": "the complete scenario matches the retained record of baseline f019161b"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-baseline.bats",
+    "test": "the retained record is the derivation of the real baseline script"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-baseline.bats",
+    "test": "each changed input, wait, bound or assertion fails the control"
    }
   ],
-  "red": [],
-  "owner": "settings-scenario-baseline-controls-k175",
-  "authority": null,
-  "note": "Add a control that pins the ordered scenario inputs and explicit waits to baseline f019161b, which k62 and k163 only compared by reading."
+  "red": [
+   "docs/verification/settings-activation/ordering-baseline-evidence/mutations.txt"
+  ],
+  "owner": null,
+  "authority": "docs/verification/settings-activation/ORDERING-BASELINE-RESULTS.md",
+  "note": "The baseline control runs the real baseline script and the current scenario on one simulated guest, and compares their ordered inputs and waits."
  },
  {
   "id": "D027",
@@ -757,11 +775,15 @@
   "heading": "Done when",
   "text": "Retain all later ordinary duties.",
   "also": [],
-  "disposition": "gap",
+  "disposition": "met",
   "source": [
    {
     "file": "scripts/vm-verify-menu-bar.sh",
     "symbol": "settings_record_installed_bundle after"
+   },
+   {
+    "file": "scripts/check-settings-baseline.py",
+    "symbol": "def check_static"
    }
   ],
   "controls": [
@@ -772,12 +794,26 @@
    {
     "suite": "Tests/scripts/vm-settings-scenario.bats",
     "test": "the adopted scenario keeps the checked confirmations in their existing positions"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-baseline.bats",
+    "test": "the complete scenario matches the retained record of baseline f019161b"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-baseline.bats",
+    "test": "the retained record is the derivation of the real baseline script"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-baseline.bats",
+    "test": "each changed input, wait, bound or assertion fails the control"
    }
   ],
-  "red": [],
-  "owner": "settings-scenario-baseline-controls-k175",
-  "authority": null,
-  "note": "Add a control that pins the later ordinary operations and assertion predicates to baseline f019161b, which k62 and k163 only compared by reading."
+  "red": [
+   "docs/verification/settings-activation/ordering-baseline-evidence/mutations.txt"
+  ],
+  "owner": null,
+  "authority": "docs/verification/settings-activation/ORDERING-BASELINE-RESULTS.md",
+  "note": "The baseline control pins each later assertion to its current statement and to the ordered predicates of the complete run."
  },
  {
   "id": "D030",
@@ -1800,7 +1836,7 @@
   "heading": "Done when",
   "text": "Preserve existing physical inputs/actions/waits/poll bounds and every later ordinary duty.",
   "also": [],
-  "disposition": "gap",
+  "disposition": "met",
   "source": [
    {
     "file": "scripts/vm-settings-scenario-lib.sh",
@@ -1809,6 +1845,10 @@
    {
     "file": "scripts/vm-verify-menu-bar.sh",
     "symbol": "settings_sleep textedit-settle 8"
+   },
+   {
+    "file": "scripts/check-settings-baseline.py",
+    "symbol": "def check_runs"
    }
   ],
   "controls": [
@@ -1823,12 +1863,26 @@
    {
     "suite": "Tests/scripts/vm-window-evidence.bats",
     "test": "only clean list negatives advance the ten by two count poll"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-baseline.bats",
+    "test": "the complete scenario matches the retained record of baseline f019161b"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-baseline.bats",
+    "test": "the retained record is the derivation of the real baseline script"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-baseline.bats",
+    "test": "each changed input, wait, bound or assertion fails the control"
    }
   ],
-  "red": [],
-  "owner": "settings-scenario-baseline-controls-k175",
-  "authority": null,
-  "note": "Facade waits and bounds have controls, so add one that pins scenario inputs, explicit waits and later assertions to baseline f019161b."
+  "red": [
+   "docs/verification/settings-activation/ordering-baseline-evidence/mutations.txt"
+  ],
+  "owner": null,
+  "authority": "docs/verification/settings-activation/ORDERING-BASELINE-RESULTS.md",
+  "note": "The baseline control compares inputs, waits and exhausted poll bounds, and it pins the later assertions."
  },
  {
   "id": "D066",
@@ -2731,7 +2785,7 @@
   "heading": "Done when",
   "text": "Keep all physical actions, waits and poll bounds.",
   "also": [],
-  "disposition": "gap",
+  "disposition": "met",
   "source": [
    {
     "file": "scripts/vm-settings-scenario-lib.sh",
@@ -2740,6 +2794,10 @@
    {
     "file": "scripts/vm-verify-menu-bar.sh",
     "symbol": "settings_sleep textedit-settle 8"
+   },
+   {
+    "file": "scripts/check-settings-baseline.py",
+    "symbol": "def check_runs"
    }
   ],
   "controls": [
@@ -2754,12 +2812,26 @@
    {
     "suite": "Tests/scripts/vm-window-evidence.bats",
     "test": "only clean list negatives advance the ten by two count poll"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-baseline.bats",
+    "test": "the complete scenario matches the retained record of baseline f019161b"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-baseline.bats",
+    "test": "the retained record is the derivation of the real baseline script"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-baseline.bats",
+    "test": "each changed input, wait, bound or assertion fails the control"
    }
   ],
-  "red": [],
-  "owner": "settings-scenario-baseline-controls-k175",
-  "authority": null,
-  "note": "Facade waits and bounds have controls, so add one that pins all scenario actions and explicit waits to baseline f019161b."
+  "red": [
+   "docs/verification/settings-activation/ordering-baseline-evidence/mutations.txt"
+  ],
+  "owner": null,
+  "authority": "docs/verification/settings-activation/ORDERING-BASELINE-RESULTS.md",
+  "note": "The baseline control compares all scenario actions, explicit waits and exhausted poll bounds with the baseline run."
  },
  {
   "id": "D100",
@@ -3062,7 +3134,7 @@
   "heading": "Notes",
   "text": "Do not extract a historical prefix or weaken later complete-scenario assertions.",
   "also": [],
-  "disposition": "gap",
+  "disposition": "met",
   "source": [
    {
     "file": "scripts/check-settings-prefix.py",
@@ -3071,6 +3143,10 @@
    {
     "file": "scripts/vm-verify-menu-bar.sh",
     "symbol": "settings_record_installed_bundle after"
+   },
+   {
+    "file": "scripts/check-settings-baseline.py",
+    "symbol": "def check_static"
    }
   ],
   "controls": [
@@ -3085,14 +3161,27 @@
    {
     "suite": "Tests/scripts/vm-settings-scenario.bats",
     "test": "the adopted scenario keeps the checked confirmations in their existing positions"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-baseline.bats",
+    "test": "the complete scenario matches the retained record of baseline f019161b"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-baseline.bats",
+    "test": "the retained record is the derivation of the real baseline script"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-baseline.bats",
+    "test": "each changed input, wait, bound or assertion fails the control"
    }
   ],
   "red": [
-   "docs/verification/settings-activation/ordering-prefix-evidence/red.txt"
+   "docs/verification/settings-activation/ordering-prefix-evidence/red.txt",
+   "docs/verification/settings-activation/ordering-baseline-evidence/mutations.txt"
   ],
-  "owner": "settings-scenario-baseline-controls-k175",
-  "authority": null,
-  "note": "The prefix is current, so add a control that pins the later complete-scenario assertion predicates to baseline f019161b."
+  "owner": null,
+  "authority": "docs/verification/settings-activation/ORDERING-BASELINE-RESULTS.md",
+  "note": "The prefix check keeps the extraction current, and the baseline control fails on a weakened later assertion."
  },
  {
   "id": "D107",
@@ -7945,7 +8034,7 @@
   "also": [
    "k80:K83 snapshot review integration handoff"
   ],
-  "disposition": "gap",
+  "disposition": "met",
   "source": [
    {
     "file": "scripts/vm-settings-scenario-lib.sh",
@@ -7960,14 +8049,19 @@
    {
     "suite": "Tests/scripts/vm-ui-evidence.bats",
     "test": "selected value geometry and height require actual consumed attributes"
+   },
+   {
+    "suite": "Tests/scripts/vm-settings-scenario.bats",
+    "test": "an omitted AXValue at shortcut-emptied is unavailable and is not an empty value (k175)"
    }
   ],
   "red": [
-   "docs/verification/settings-activation/ordering-snapshot-evidence/baseline-red.txt"
+   "docs/verification/settings-activation/ordering-snapshot-evidence/baseline-red.txt",
+   "docs/verification/settings-activation/ordering-baseline-evidence/axvalue-control.txt"
   ],
-  "owner": "settings-scenario-baseline-controls-k175",
+  "owner": null,
   "authority": "docs/verification/settings-activation/ORDERING-SNAPSHOT-RESULTS.md#K82 review integration",
-  "note": "Missing: a scenario control that omits AXValue at shortcut-emptied and proves unavailable, while the native empty value stays an accepted limit."
+  "note": "A scenario control omits AXValue at shortcut-emptied and proves unavailable. Whether the native field reports an empty value stays an accepted limit."
  },
  {
   "id": "D263",

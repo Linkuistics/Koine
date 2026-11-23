@@ -1,0 +1,20 @@
+scenario-input: status 1: complete: event 20: expected 'window move TextEdit 700 120', current 'window move TextEdit 701 120'
+added-input: status 1: complete: event 22: expected 'window close Koine Settings', current 'input key escape'
+facade-input: status 1: complete: event 10: expected 'input move 1699 4', current 'input move 1698 4'
+scenario-wait: status 1: complete: event 272: expected 'wait 4', current 'wait 5'
+seven-later-waits: status 1: complete: event 227: expected 'wait 1', current 'wait 2'
+facade-wait: status 1: complete: event 339: expected 'wait 3', current 'wait 4'
+pointer-wait: status 1: complete: event 15: expected 'wait 1', current 'wait 2'
+label-poll-bound: status 1: menu-label: event 25: lengths 24 and 25, next 'wait 2'
+count-poll-delay: status 1: window-count: event 36: expected 'wait 2', current 'wait 3'
+login-poll-bound: status 1: login-endpoint: event 384: lengths 384 and 383, next 'wait 5'
+boot-poll-bound: status 1: restart-boot: event 420: lengths 420 and 419, next 'wait 5'
+reveal-bound: status 1: reveal: event 314: lengths 315 and 313, next 'input scroll 260 216 --dy=10'
+read-bound: status 1: read bound 2: not in scripts/vm-ui-evidence-lib.sh: 'agent snapshot --mode full --window "${window}" --depth 14'
+scenario-assertion: status 1: assertion 19: not in scripts/vm-verify-menu-bar.sh: '[ "${W}" -ge 690 ] && [ "${H}" -ge 880 ] || settings_fail "the window did not grow; resize accept
+facade-assertion: status 1: predicates: event 29: expected 'first-launch-count-state | .value == 1', current 'first-launch-count-state | .value >= 1'
+library-assertion: status 1: predicates: event 306: expected 'setup-stopped-process-state | .selected == []', current 'setup-stopped-process-state | .selected | length == 0'
+weaker-value-read: status 1: predicates: event 201: expected 'shortcut-typed | snapshot --window def number_field: type == "number" and isfinite;\n        def element_shape:\n    
+removed-assertion: status 1: assertion 42: not in scripts/vm-verify-menu-bar.sh: 'settings_expect_koine_count login-windows 0 "the window opened at login launch though setup is co
+restored-escape: status 1: menu-titles: event 16: lengths 15 and 17, next 'input key escape'
+19 of 19 mutations detected

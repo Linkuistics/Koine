@@ -1,0 +1,1435 @@
+{
+ "baseline": "f019161bbd3275ec12444a217a99a7a06da37176",
+ "classes": {
+  "unchanged-condition": {
+   "reason": "The shell condition is the same text.",
+   "citation": "docs/verification/settings-activation/ORDERING-PREFIX-RESULTS.md#later-ordinary-assertions-and-the-baseline"
+  },
+  "checked-same": {
+   "reason": "The same condition judges one checked read or one local state receipt.",
+   "citation": "docs/verification/settings-activation/ORDERING-SCENARIO-RESULTS.md#caller-table"
+  },
+  "missing-is-unavailable": {
+   "reason": "A missing element, height or AXValue is unavailable. It is not a false state or an empty value.",
+   "citation": "docs/verification/settings-activation/ORDERING-SNAPSHOT-RESULTS.md#actual-callers-and-adoption-boundary"
+  },
+  "classified-outcome": {
+   "reason": "A failed return keeps its condition and reports a named outcome class with the list that it judged.",
+   "citation": "docs/verification/settings-activation/ORDERING-OUTCOMES-RESULTS.md#outcome-classes"
+  },
+  "exact-menu-list": {
+   "reason": "The comparison uses the title list instead of the joined text, so a comma in a title cannot match another menu.",
+   "citation": "docs/verification/settings-activation/ORDERING-SCENARIO-RESULTS.md#caller-table"
+  },
+  "restart-classification": {
+   "reason": "A restart that does not return is a test-driver or guest failure, never a Koine failure.",
+   "citation": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md#required-transport-and-evidence-handling"
+  },
+  "message-only": {
+   "reason": "The failure text changes. The action, wait, bound and predicate do not.",
+   "citation": "docs/verification/settings-activation/ORDERING-PREFIX-RESULTS.md#later-ordinary-assertions-and-the-baseline"
+  },
+  "no-corrective-input": {
+   "reason": "After a failed assertion, no corrective input follows, so the failure evidence shows the state that the assertion judged.",
+   "citation": "docs/verification/settings-activation/ORDERING-PREFIX-RESULTS.md#p2-2-a-menu-mismatch-sends-no-corrective-input"
+  },
+  "keepalive-removed": {
+   "reason": "The harness takes no keepalive captures.",
+   "citation": "docs/adr/settings-harness-takes-no-keepalive-captures.md"
+  },
+  "caller-owns-stop": {
+   "reason": "The finite caller owns the exact stop, the inventory and the collection.",
+   "citation": "docs/verification/settings-activation/ORDERING-SCENARIO-RESULTS.md#interface"
+  },
+  "refused-diagnostic-write": {
+   "reason": "The ordering protocol permits no enabling diagnostic write.",
+   "citation": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md#diagnostics-and-timing"
+  },
+  "strict-one-attempt": {
+   "reason": "Each transport is one strict attempt. A failed attempt is unavailable and is never retried.",
+   "citation": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md#required-transport-and-evidence-handling"
+  },
+  "added-observation": {
+   "reason": "The protocol adds reads and failure observations between existing inputs. It adds no input or wait.",
+   "citation": "docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md#input-and-observation-qualification"
+  },
+  "reviewed-harness-change": {
+   "reason": "The prefix report records this harness change and its reason.",
+   "citation": "docs/verification/settings-activation/ORDERING-PREFIX-RESULTS.md#later-ordinary-assertions-and-the-baseline"
+  }
+ },
+ "waits": [
+  {
+   "seconds": 2,
+   "site": "await_koine: each negative endpoint read",
+   "current": [
+    {
+     "file": "scripts/vm-exec-read-evidence-lib.sh",
+     "text": "3:launch: | 4:launch:deferred) limit=15 delay=2 ;;"
+    }
+   ]
+  },
+  {
+   "seconds": 6,
+   "site": "await_settled",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_await_settled() { settings_sleep \"$1\" 6; }"
+    }
+   ]
+  },
+  {
+   "seconds": 3,
+   "site": "expect_stopped",
+   "current": [
+    {
+     "file": "scripts/vm-settings-scenario-lib.sh",
+     "text": "settings_sleep \"$1\" 3\ncheck_guest_read \"${KOINE_VM_EVIDENCE_ROOT}\" read-poll \"$1-process\""
+    }
+   ]
+  },
+  {
+   "seconds": 2,
+   "site": "TextEdit window poll: each negative read",
+   "current": [
+    {
+     "file": "scripts/vm-window-evidence-lib.sh",
+     "text": "sleep 2 || sleep_status=$?"
+    }
+   ]
+  },
+  {
+   "seconds": 8,
+   "site": "TextEdit settle",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_sleep textedit-settle 8"
+    }
+   ]
+  },
+  {
+   "seconds": 1,
+   "site": "after the TextEdit move",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_sleep textedit-move 1"
+    }
+   ]
+  },
+  {
+   "seconds": 1,
+   "site": "before the corner drag",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_sleep resize-front 1"
+    }
+   ]
+  },
+  {
+   "seconds": 1,
+   "site": "after typing",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_sleep shortcut-type 1"
+    }
+   ]
+  },
+  {
+   "seconds": 1,
+   "site": "after the cut",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_sleep shortcut-cut 1"
+    }
+   ]
+  },
+  {
+   "seconds": 1,
+   "site": "after the paste",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_sleep shortcut-paste 1"
+    }
+   ]
+  },
+  {
+   "seconds": 2,
+   "site": "after the requests return",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_sleep requests-front 2"
+    }
+   ]
+  },
+  {
+   "seconds": 4,
+   "site": "after the first denial",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_sleep requests-deny-1 4"
+    }
+   ]
+  },
+  {
+   "seconds": 4,
+   "site": "after the second denial",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_sleep requests-deny-2 4"
+    }
+   ]
+  },
+  {
+   "seconds": 2,
+   "site": "after the Accessibility return",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_sleep accessibility-front 2"
+    }
+   ]
+  },
+  {
+   "seconds": 30,
+   "site": "after the restart submission",
+   "current": [
+    {
+     "file": "scripts/vm-exec-one-shot-evidence-lib.sh",
+     "text": "sleep 30 || sleep_status=$?"
+    }
+   ]
+  },
+  {
+   "seconds": 5,
+   "site": "each unchanged boot read",
+   "current": [
+    {
+     "file": "scripts/vm-exec-one-shot-evidence-lib.sh",
+     "text": "_sysevents_poll \"${root}\" \"${operation}-boot\" 60 5"
+    }
+   ]
+  },
+  {
+   "seconds": 5,
+   "site": "each negative login endpoint read",
+   "current": [
+    {
+     "file": "scripts/vm-exec-read-evidence-lib.sh",
+     "text": "3:login:) limit=24 delay=5 ;;"
+    }
+   ]
+  }
+ ],
+ "assertions": [
+  {
+   "id": 1,
+   "site": "scenario",
+   "message": "enrollment of $2 was refused",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-settings-scenario-lib.sh",
+     "text": "submit_guest_enrolment \"${KOINE_VM_EVIDENCE_ROOT}\" \"enrol-$2\" \"$1\" \"$2\" >/dev/null ||\nsettings_require \"$?\" \"enrollment of $2 was refused\""
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "site": "scenario",
+   "message": "the menu is \\\"${MENU}\\\", not \\\"$1\\\"",
+   "class": "exact-menu-list",
+   "current": [
+    {
+     "file": "scripts/vm-settings-scenario-lib.sh",
+     "text": "settings_fail \"the menu is \\\"${menu}\\\", not \\\"${expected}\\\"\""
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "site": "scenario",
+   "message": "no endpoint descriptor after launch",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-settings-scenario-lib.sh",
+     "text": "await_guest_endpoint \"${KOINE_VM_EVIDENCE_ROOT}\" \"$1\" launch deferred >/dev/null ||\nsettings_poll_failed \"$?\" \"$1\" \"$1-exhausted\" \"$(endpoint_present_predicate)\" \\\n\"no endpoint descriptor after launch\""
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "site": "scenario",
+   "message": "Koine still runs after Quit",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-settings-scenario-lib.sh",
+     "text": "check_guest_read \"${KOINE_VM_EVIDENCE_ROOT}\" read-poll \"$1-process\" '.selected == []' \\\nprocess executable >/dev/null || settings_require \"$?\" \"Koine still runs after Quit\""
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "site": "scenario",
+   "message": "the descriptor survived Quit",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-settings-scenario-lib.sh",
+     "text": "check_guest_read \"${KOINE_VM_EVIDENCE_ROOT}\" read-poll \"$1-descriptor\" '.present == false' \\\nendpoint >/dev/null || settings_require \"$?\" \"the descriptor survived Quit\""
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "site": "scenario",
+   "message": "incomplete installed bundle inventory (${phase})",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-settings-scenario-lib.sh",
+     "text": "record=\"$(read_guest_exec \"${KOINE_VM_EVIDENCE_ROOT}\" read-poll \"installed-${phase}\" installed-inventory)\" ||\nsettings_stop \"$?\" \"incomplete installed bundle inventory (${phase})\""
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "site": "scenario",
+   "message": "the window did not open at ${DEFAULT_WIDTH}x${DEFAULT_HEIGHT} plus its title bar: ${W}x${H}",
+   "class": "unchanged-condition",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "[ \"${W}\" = \"${DEFAULT_WIDTH}\" ] && [ \"${H}\" -ge \"${DEFAULT_HEIGHT}\" ] && [ \"${H}\" -lt $((DEFAULT_HEIGHT + 60)) ] ||\nsettings_fail \"the window did not open at ${DEFAULT_WIDTH}x${DEFAULT_HEIGHT} plus its title bar: ${W}x${H}\""
+    }
+   ]
+  },
+  {
+   "id": 8,
+   "site": "scenario",
+   "message": "the window is not titled \\\"${WINDOW_TITLE}\\\"",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_state first-launch-title \"[.windows[] | select(.appName == \\\"Koine\\\")][0].title == \\\"${WINDOW_TITLE}\\\"\" \\\n\"${LIST}\" || settings_require \"$?\" \"the window is not titled \\\"${WINDOW_TITLE}\\\"\""
+    }
+   ]
+  },
+  {
+   "id": 9,
+   "site": "scenario",
+   "message": "Koine is not an agent application",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "RECORD=\"$(expect_guest_background_only \"${KOINE_VM_EVIDENCE_ROOT}\" first-launch-background)\" ||\nsettings_require \"$?\" \"Koine is not an agent application\""
+    }
+   ]
+  },
+  {
+   "id": 10,
+   "site": "scenario",
+   "message": "Koine has a Dock icon",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_require \"${STATUS}\" \"Koine has a Dock icon\""
+    },
+    {
+     "file": "scripts/vm-sysevents-evidence-lib.sh",
+     "text": "'[.value[] | strings | select(contains(\"Koine\"))] == []' dock-items"
+    }
+   ]
+  },
+  {
+   "id": 11,
+   "site": "scenario",
+   "message": "Koine has not exactly one menu bar item",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_expect_menu_count first-launch-count \"Koine has not exactly one menu bar item\""
+    }
+   ]
+  },
+  {
+   "id": 12,
+   "site": "scenario",
+   "message": "TextEdit has no window",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-settings-scenario-lib.sh",
+     "text": "await_guest_textedit_window \"${KOINE_VM_EVIDENCE_ROOT}\" \"$1\" deferred >/dev/null ||\nsettings_poll_failed \"$?\" \"$1\" \"$1-exhausted\" \"$(textedit_window_predicate)\" \"TextEdit has no window\""
+    }
+   ]
+  },
+  {
+   "id": 13,
+   "site": "scenario",
+   "message": "Koine is in front before it was asked to be",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "0) settings_fail \"Koine is in front before it was asked to be\" ;;"
+    }
+   ]
+  },
+  {
+   "id": 14,
+   "site": "scenario",
+   "message": "the menu bar item went with the window",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_expect_menu_count first-close-count \"the menu bar item went with the window\""
+    }
+   ]
+  },
+  {
+   "id": 15,
+   "site": "scenario",
+   "message": "the window did not come to the front over TextEdit's: $(front_windows); front application: $(sysevents 'get name of first process whose frontmost is true')",
+   "class": "classified-outcome",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_expect_return first-selection \"the window did not come to the front over TextEdit's\" menu"
+    }
+   ]
+  },
+  {
+   "id": 16,
+   "site": "scenario",
+   "message": "Settings reopen ${reopen} did not bring the window to the front: $(front_windows)",
+   "class": "classified-outcome",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_expect_return \"reopen-${reopen}\" \"Settings reopen ${reopen} did not bring the window to the front\" menu"
+    }
+   ]
+  },
+  {
+   "id": 17,
+   "site": "scenario",
+   "message": "the window is not focused for the resize exercise: $(front_windows)",
+   "class": "classified-outcome",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_expect_front resize-front \"the window is not focused for the resize exercise\""
+    }
+   ]
+  },
+  {
+   "id": 18,
+   "site": "scenario",
+   "message": "the grown window frame could not be read",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "RESIZE_FRAME=\"$(settings_frame resize-grown)\" || settings_require \"$?\" \"the grown window frame could not be read\""
+    }
+   ]
+  },
+  {
+   "id": 19,
+   "site": "scenario",
+   "message": "the window did not grow; resize acceptance is unestablished",
+   "class": "unchanged-condition",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "[ \"${W}\" -ge 690 ] && [ \"${H}\" -ge 880 ] || settings_fail \"the window did not grow; resize acceptance is unestablished\""
+    }
+   ]
+  },
+  {
+   "id": 20,
+   "site": "scenario",
+   "message": "the minimum window frame could not be read",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "RESIZE_FRAME=\"$(settings_frame resize-least)\" || settings_require \"$?\" \"the minimum window frame could not be read\""
+    }
+   ]
+  },
+  {
+   "id": 21,
+   "site": "scenario",
+   "message": "the window's least width is not ${MIN_WIDTH}: ${W}",
+   "class": "unchanged-condition",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "[ \"${W}\" = \"${MIN_WIDTH}\" ] || settings_fail \"the window's least width is not ${MIN_WIDTH}: ${W}\""
+    }
+   ]
+  },
+  {
+   "id": 22,
+   "site": "scenario",
+   "message": "the window's least height is not ${MIN_HEIGHT} plus its title bar: ${H}",
+   "class": "unchanged-condition",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "[ \"${H}\" -ge \"${MIN_HEIGHT}\" ] && [ \"${H}\" -lt $((MIN_HEIGHT + 60)) ] ||\nsettings_fail \"the window's least height is not ${MIN_HEIGHT} plus its title bar: ${H}\""
+    }
+   ]
+  },
+  {
+   "id": 23,
+   "site": "scenario",
+   "message": "the minimum content frame could not be read",
+   "class": "missing-is-unavailable",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "RESIZE_CONTENT=\"$(settings_element least-size-content '.platformRole==\"AXScrollArea\"' height)\" ||\nsettings_stop \"$?\" \"the minimum content frame could not be read\""
+    }
+   ]
+  },
+  {
+   "id": 24,
+   "site": "scenario",
+   "message": "the window content is below ${MIN_HEIGHT} high: ${RESIZE_CONTENT}",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_state least-size-content \"(.sizeHeight | type == \\\"number\\\") and .sizeHeight >= ${MIN_HEIGHT}\" \\\n\"${RESIZE_CONTENT}\" || settings_require \"$?\" \"the window content is below ${MIN_HEIGHT} high: ${RESIZE_CONTENT}\""
+    }
+   ]
+  },
+  {
+   "id": 25,
+   "site": "scenario",
+   "message": "typing reached no field",
+   "class": "missing-is-unavailable",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_expect_value shortcut-typed '.id==\"grant-label\"' shortcut \"typing reached no field\""
+    }
+   ]
+  },
+  {
+   "id": 26,
+   "site": "scenario",
+   "message": "⌘A ⌘X did not empty the field",
+   "class": "missing-is-unavailable",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_expect_value shortcut-emptied '.id==\"grant-label\"' \"\" \"⌘A ⌘X did not empty the field\""
+    }
+   ]
+  },
+  {
+   "id": 27,
+   "site": "scenario",
+   "message": "⌘V did not restore what ⌘C copied",
+   "class": "missing-is-unavailable",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_expect_value shortcut-pasted '.id==\"grant-label\"' shortcut \"⌘V did not restore what ⌘C copied\""
+    }
+   ]
+  },
+  {
+   "id": 28,
+   "site": "scenario",
+   "message": "⌘W took the menu bar item with it",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_expect_menu_count shortcut-count \"⌘W took the menu bar item with it\""
+    }
+   ]
+  },
+  {
+   "id": 29,
+   "site": "scenario",
+   "message": "a client's request brought the window forward",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_expect_koine_count first-request-windows 0 \"a client's request brought the window forward\""
+    }
+   ]
+  },
+  {
+   "id": 30,
+   "site": "scenario",
+   "message": "a second request brought the window forward",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_expect_koine_count second-request-windows 0 \"a second request brought the window forward\""
+    }
+   ]
+  },
+  {
+   "id": 31,
+   "site": "scenario",
+   "message": "the window did not come to the front",
+   "class": "classified-outcome",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_expect_return requests \"the window did not come to the front\" menu"
+    }
+   ]
+  },
+  {
+   "id": 32,
+   "site": "scenario",
+   "message": "the window did not scroll to the requests",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_on_screen requests-on-screen '(.id // \"\") | startswith(\"request-label-\")' ||\nsettings_require \"$?\" \"the window did not scroll to the requests\""
+    }
+   ]
+  },
+  {
+   "id": 33,
+   "site": "scenario",
+   "message": "the Accessibility line did not bring the window to the front: $(front_windows)",
+   "class": "classified-outcome",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_expect_return accessibility \"the Accessibility line did not bring the window to the front\" menu"
+    }
+   ]
+  },
+  {
+   "id": 34,
+   "site": "scenario",
+   "message": "the window did not scroll to Accessibility",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_on_screen accessibility-on-screen '.id==\"accessibility-status\"' ||\nsettings_require \"$?\" \"the window did not scroll to Accessibility\""
+    }
+   ]
+  },
+  {
+   "id": 35,
+   "site": "scenario",
+   "message": "login launch is not enabled",
+   "class": "missing-is-unavailable",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_expect_value login-status '.id==\"login-launch-status\"' \"Koine will start when you log in.\" \\\n\"login launch is not enabled\""
+    }
+   ]
+  },
+  {
+   "id": 36,
+   "site": "scenario",
+   "message": "the window opened though setup is complete",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_expect_koine_count silent-launch-windows 0 \"the window opened though setup is complete\""
+    }
+   ]
+  },
+  {
+   "id": 37,
+   "site": "scenario",
+   "message": "reopening did not bring the window to the front: $(front_windows)",
+   "class": "classified-outcome",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_expect_return reopen \"reopening did not bring the window to the front\" reopen"
+    }
+   ]
+  },
+  {
+   "id": 38,
+   "site": "scenario",
+   "message": "Settings did not focus the window before Command-Q: $(front_windows)",
+   "class": "classified-outcome",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_expect_return quit \"Settings did not focus the window before Command-Q\" menu"
+    }
+   ]
+  },
+  {
+   "id": 39,
+   "site": "scenario",
+   "message": "the VM did not come back from its restart",
+   "class": "restart-classification",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "restart_guest \"${KOINE_VM_EVIDENCE_ROOT}\" restart \"${BOOT_BEFORE}\" >/dev/null ||\nsettings_stop \"$?\" \"the VM did not come back from its restart; a test-driver or guest failure, not a Koine failure\""
+    }
+   ]
+  },
+  {
+   "id": 40,
+   "site": "scenario",
+   "message": "Koine was not started at login",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "RECORD=\"$(check_guest_read \"${KOINE_VM_EVIDENCE_ROOT}\" read-poll login-process '(.selected | length) > 0' process bundle)\" ||\nsettings_require \"$?\" \"Koine was not started at login\""
+    }
+   ]
+  },
+  {
+   "id": 41,
+   "site": "scenario",
+   "message": "no menu bar item after login launch",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_expect_menu_count login-count \"no menu bar item after login launch\""
+    }
+   ]
+  },
+  {
+   "id": 42,
+   "site": "scenario",
+   "message": "the window opened at login launch though setup is complete",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_expect_koine_count login-windows 0 \"the window opened at login launch though setup is complete\""
+    }
+   ]
+  },
+  {
+   "id": 43,
+   "site": "scenario",
+   "message": "Koine started at login is not an agent application",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "expect_guest_background_only \"${KOINE_VM_EVIDENCE_ROOT}\" login-background >/dev/null ||\nsettings_require \"$?\" \"Koine started at login is not an agent application\""
+    }
+   ]
+  },
+  {
+   "id": 44,
+   "site": "scenario",
+   "message": "something still answers on port ${PORT}",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "settings_state port-refusal '.curl_exit == 7' \"${RECORD}\" ||\nsettings_require \"$?\" \"something still answers on port ${PORT}\""
+    }
+   ]
+  },
+  {
+   "id": 45,
+   "site": "scenario",
+   "message": "the installed bundle changed during the scenario",
+   "class": "unchanged-condition",
+   "current": [
+    {
+     "file": "scripts/vm-verify-menu-bar.sh",
+     "text": "cmp \"${LOG%.log}-installed-before.txt\" \"${LOG%.log}-installed-after.txt\" || STATUS=$?\n[ \"${STATUS}\" != 1 ] || settings_fail \"the installed bundle changed during the scenario\""
+    }
+   ]
+  },
+  {
+   "id": 46,
+   "site": "click",
+   "message": "no UI element matches: $1",
+   "class": "message-only",
+   "current": [
+    {
+     "file": "scripts/vm-settings-scenario-lib.sh",
+     "text": "click_guest_element \"${KOINE_VM_EVIDENCE_ROOT}\" \"$1\" \"${window}\" \"$2\" ||\nsettings_stop \"$?\" \"the click on $2 was not delivered cleanly\""
+    }
+   ]
+  },
+  {
+   "id": 47,
+   "site": "read_frame",
+   "message": "the window's frame could not be read from the agent: ${entry}",
+   "class": "message-only",
+   "current": [
+    {
+     "file": "scripts/vm-settings-scenario-lib.sh",
+     "text": "frame=\"$(settings_frame \"$1\")\" ||\nsettings_require \"$?\" \"the window's frame could not be read from the agent\""
+    }
+   ]
+  },
+  {
+   "id": 48,
+   "site": "reveal",
+   "message": "no UI element matches: $1",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-settings-scenario-lib.sh",
+     "text": "element=\"$(settings_element \"${operation}-${index}-position\" \"${condition}\" position-y)\" ||\nsettings_stop \"$?\" \"no UI element matches: ${condition}\""
+    }
+   ]
+  },
+  {
+   "id": 49,
+   "site": "reveal",
+   "message": "scrolling did not bring $1 on screen",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-settings-scenario-lib.sh",
+     "text": "record_guest_poll \"${KOINE_VM_EVIDENCE_ROOT}\" \"${operation}-exhausted\" exhausted 1 \\\n\"scrolling did not bring ${condition} on screen\" || settings_stop \"$?\" \"scrolling did not bring ${condition} on screen\""
+    }
+   ]
+  },
+  {
+   "id": 50,
+   "site": "grant_system_events_automation",
+   "message": "the Automation prompt for System Events did not appear",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-settings-scenario-lib.sh",
+     "text": "click_guest_allow \"${KOINE_VM_EVIDENCE_ROOT}\" automation-allow deferred ||\nsettings_poll_failed \"$?\" automation-allow automation-allow-exact-target \\\n\"$(allow_target_predicate)\" \"the Automation prompt for System Events did not appear\""
+    }
+   ]
+  },
+  {
+   "id": 51,
+   "site": "grant_system_events_automation",
+   "message": "System Events still refuses the agent",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-settings-scenario-lib.sh",
+     "text": "expect_guest_system_events \"${KOINE_VM_EVIDENCE_ROOT}\" automation-check >/dev/null ||\nsettings_require \"$?\" \"System Events still refuses the agent\""
+    }
+   ]
+  },
+  {
+   "id": 52,
+   "site": "await_menu_item_label",
+   "message": "the menu bar item's label is \\\"${got}\\\", not \\\"$1\\\"",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-settings-scenario-lib.sh",
+     "text": "settings_poll_failed \"${status}\" \"$1\" \"$1-exhausted\" \"${predicate}\" \\\n\"the menu bar item's label is \\\"${got}\\\", not \\\"$2\\\"\""
+    }
+   ]
+  },
+  {
+   "id": 53,
+   "site": "open_menu",
+   "message": "Koine's menu bar item has no position",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-settings-scenario-lib.sh",
+     "text": "record=\"$(await_guest_menu_frame \"${KOINE_VM_EVIDENCE_ROOT}\" \"$1-item\" '' deferred)\" ||\nsettings_poll_failed \"$?\" \"$1-item\" \"$1-item-exhausted\" \"$(menu_frame_predicate)\" \\\n\"Koine's menu bar item has no position\""
+    }
+   ]
+  },
+  {
+   "id": 54,
+   "site": "choose_menu_item",
+   "message": "the menu has no item \\\"$1\\\"",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-settings-scenario-lib.sh",
+     "text": "record=\"$(await_guest_menu_frame \"${KOINE_VM_EVIDENCE_ROOT}\" \"$1-row\" \"$2\" deferred)\" ||\nsettings_poll_failed \"$?\" \"$1-row\" \"$1-row-exhausted\" \"$(menu_frame_predicate)\" \\\n\"the menu has no item \\\"$2\\\"\""
+    },
+    {
+     "file": "scripts/vm-settings-scenario-lib.sh",
+     "text": "record=\"$(await_guest_menu_frame \"${KOINE_VM_EVIDENCE_ROOT}\" \"${operation}-row\" \"${title}\" deferred)\" ||\nsettings_poll_failed \"$?\" \"${operation}-row\" \"${operation}-row-exhausted\" \"$(menu_frame_predicate)\" \\\n\"the menu has no item \\\"${title}\\\"\""
+    }
+   ]
+  },
+  {
+   "id": 55,
+   "site": "await_windows",
+   "message": "Koine has ${got} windows, not $1",
+   "class": "classified-outcome",
+   "current": [
+    {
+     "file": "scripts/vm-settings-scenario-lib.sh",
+     "text": "settings_stop \"${receipt}\" \"Koine has ${got:-unknown} windows, not $2\""
+    },
+    {
+     "file": "scripts/vm-settings-scenario-lib.sh",
+     "text": "\"Koine has 0 windows, not 1, and the same Koine process (PID ${pid}) still runs; front application: ${SETTINGS_OBSERVED_FRONT}\""
+    }
+   ]
+  },
+  {
+   "id": 56,
+   "site": "grant_accessibility",
+   "message": "the Accessibility pane did not show its Add button",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-settings-scenario-lib.sh",
+     "text": "settings_fail \"the Accessibility pane did not show its Add button\""
+    }
+   ]
+  },
+  {
+   "id": 57,
+   "site": "grant_accessibility",
+   "message": "Koine is not in the Accessibility list",
+   "class": "checked-same",
+   "current": [
+    {
+     "file": "scripts/vm-settings-scenario-lib.sh",
+     "text": "settings_state accessibility-koine '. != null' \"${element}\" ||\nsettings_require \"$?\" \"Koine is not in the Accessibility list\""
+    }
+   ]
+  }
+ ],
+ "read_bounds": [
+  {
+   "bound": "curl timeout of 3 seconds",
+   "current": [
+    {
+     "file": "scripts/vm_exec_reads.py",
+     "text": "curl -s -m 3 -o /dev/null http://127.0.0.1:{arguments[0]}/graphql; echo $?"
+    }
+   ]
+  },
+  {
+   "bound": "snapshot depth of 14",
+   "current": [
+    {
+     "file": "scripts/vm-ui-evidence-lib.sh",
+     "text": "agent snapshot --mode full --window \"${window}\" --depth 14"
+    }
+   ]
+  },
+  {
+   "bound": "OCR timeout of 30 seconds",
+   "current": [
+    {
+     "file": "scripts/vm-click-evidence-lib.sh",
+     "text": "screen find-text \"${query}\" --timeout 30"
+    }
+   ]
+  }
+ ],
+ "event_differences": [
+  {
+   "case": "menu-titles",
+   "index": 15,
+   "removed": [
+    "input key escape",
+    "wait 1"
+   ],
+   "class": "no-corrective-input"
+  }
+ ],
+ "failure_differences": [
+  {
+   "case": "window-count",
+   "baseline": "Koine has 0 windows, not 1",
+   "current": "Koine has 0 windows, not 1, and the same Koine process (PID 101) still runs; front application: TextEdit",
+   "class": "classified-outcome"
+  },
+  {
+   "case": "restart-boot",
+   "baseline": "the VM did not come back from its restart",
+   "current": "the VM did not come back from its restart; a test-driver or guest failure, not a Koine failure",
+   "class": "restart-classification"
+  }
+ ],
+ "source_differences": [
+  {
+   "change": "Keepalive capture loop",
+   "class": "keepalive-removed"
+  },
+  {
+   "change": "VM stop, work deletion and KOINE_VM_KEEP in the cleanup trap",
+   "class": "caller-owns-stop"
+  },
+  {
+   "change": "KOINE_SETTINGS_TRACE=1 defaults write is now a refusal",
+   "class": "refused-diagnostic-write"
+  },
+  {
+   "change": "KOINE_VM_BASE is now required",
+   "class": "reviewed-harness-change"
+  },
+  {
+   "change": "The twelve-attempt guest retry and the repeated port read are now one attempt",
+   "class": "strict-one-attempt"
+  },
+  {
+   "change": "Count-poll failure messages are now an outcome class with the judged list",
+   "class": "classified-outcome"
+  },
+  {
+   "change": "Every failed assertion now takes an observer read and a window read before its screenshot",
+   "class": "added-observation"
+  },
+  {
+   "change": "Front-check messages now name the judged list",
+   "class": "classified-outcome"
+  },
+  {
+   "change": "TextEdit quit is now strict, with one absence read and an assertion",
+   "class": "added-observation"
+  },
+  {
+   "change": "A failed held point sends no best-effort release in strict mode",
+   "class": "strict-one-attempt"
+  },
+  {
+   "change": "A minimum content read with no element or height is now unavailable",
+   "class": "missing-is-unavailable"
+  },
+  {
+   "change": "A field value after the cut with no AXValue is now unavailable",
+   "class": "missing-is-unavailable"
+  },
+  {
+   "change": "The request-label echo is now a required value read",
+   "class": "missing-is-unavailable"
+  },
+  {
+   "change": "A refused restart read now stops at once",
+   "class": "strict-one-attempt"
+  },
+  {
+   "change": "The port read now asserts that the descriptor is present",
+   "class": "reviewed-harness-change"
+  },
+  {
+   "change": "The background-only echo now follows its assertion",
+   "class": "message-only"
+  },
+  {
+   "change": "The read_frame failure message no longer prints the entry",
+   "class": "message-only"
+  },
+  {
+   "change": "A click on a vanished element reports an undelivered click",
+   "class": "message-only"
+  }
+ ],
+ "predicates": [
+  "system | read system",
+  "gatekeeper | read gatekeeper",
+  "extract-bundle | read extract-bundle",
+  "quarantine | read quarantine",
+  "signature | read signature",
+  "signature-state | .valid == true",
+  "signature-display | read signature-display",
+  "assessment | read assessment",
+  "installed-before | read installed-inventory",
+  "automation-request | read request-automation",
+  "automation-check | read sysevents-processes",
+  "automation-check-state | .value | length > 0",
+  "defaults-before-launch | read defaults",
+  "defaults-before-launch-state | .diagnostics_disabled == true",
+  "first-launch | read open-koine",
+  "first-launch-endpoint | read endpoint",
+  "first-launch-endpoint-state | .present == true",
+  "first-launch-identity | read launch-identity",
+  "first-launch-identity-state | .present and .joined",
+  "first-launch-window-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 1",
+  "first-launch-frame-state | any(.windows[]; .title == \"Koine Settings\")",
+  "first-launch-size-state | any(.windows[]; .title == \"Koine Settings\")",
+  "first-launch-title-state | [.windows[] | select(.appName == \"Koine\")][0].title == \"Koine Settings\"",
+  "first-launch-background | read background-only",
+  "first-launch-background-state | .value == true",
+  "first-launch-dock | read dock-items",
+  "first-launch-dock-state | [.value[] | strings | select(contains(\"Koine\"))] == []",
+  "first-launch-count | read menu-item-count",
+  "first-launch-count-state | .value == 1",
+  "first-launch-item | read menu-item-label value",
+  "first-launch-label | read menu-item-label poll",
+  "first-launch-label-state | (.absent | not) and .value == \"Koine, Accessibility not granted\"",
+  "first-launch-menu-item | read menu-item-frame",
+  "first-launch-menu-item-state | (.absent | not) and (.value[0] | type == \"array\" and .[0] >= 0)",
+  "first-launch-menu | read menu-titles",
+  "first-launch-menu-state | .value == [\"Accessibility Not Granted…\",\"\",\"Settings…\",\"Quit Koine\"]",
+  "textedit-launch | read open-textedit",
+  "textedit-window-state | ([.windows[] | select(.appName == \"TextEdit\")] | length) >= 1",
+  "textedit-window-assertion-state | ([.windows[] | select(.appName == \"TextEdit\")] | length) >= 1",
+  "textedit-front-state | [.windows[] | select(.appName != \"Notification Center\")][0]\n        | .appName == \"Koine\" and .focused == true",
+  "textedit-front-application | read front-application",
+  "textedit-prepared-state | [.windows[] | select(.appName == \"TextEdit\")] | length == 1",
+  "textedit-pid | read process textedit",
+  "textedit-pid-state | .selected | length == 1",
+  "first-close-window-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 0",
+  "first-close-count | read menu-item-count",
+  "first-close-count-state | .value == 1",
+  "first-selection-identity | read launch-identity",
+  "first-selection-identity-state | .present and .joined",
+  "first-selection-setup-windows-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 0\n        and ([.windows[] | select(.appName == \"TextEdit\")] | length) == 1\n        and ([.windows[] | select(.appName == \"TextEdit\")][0]\n            | .windowType == \"standard\" and .title == \"Untitled\"\n            and [.positionX, .positionY, .sizeWidth, .sizeHeight] == [700,120,603,505])",
+  "first-selection-setup-front | read front-process",
+  "first-selection-setup-front-state | .value == [\"TextEdit\", 909]",
+  "first-selection-setup-sheets | read textedit-windows",
+  "first-selection-setup-sheets-state | .value == [[\"AXStandardWindow\"], [[]]]",
+  "first-selection-setup-menus | read menu-bar-menus",
+  "first-selection-setup-menus-state | (.value[1] | all(length == 0)) and (.value[2] | length == 0)",
+  "first-selection-item | read menu-item-frame",
+  "first-selection-item-state | (.absent | not) and (.value[0] | type == \"array\" and .[0] >= 0)",
+  "first-selection-row | read menu-row-frame Settings…",
+  "first-selection-row-state | (.absent | not) and (.value[0] | type == \"array\" and .[0] >= 0)",
+  "first-selection-enabled | read menu-row-enabled Settings…",
+  "first-selection-enabled-state | .value == true",
+  "first-selection-window-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 1",
+  "first-selection-front-state | [.windows[] | select(.appName != \"Notification Center\")][0]\n        | .appName == \"Koine\" and .focused == true",
+  "first-selection-front-title-state | ([.windows[] | select(.appName == \"Koine\")]\n            | length == 1 and .[0].title == \"Koine Settings\")\n        and ([.windows[] | select(.appName != \"Notification Center\")][0]\n            | .appName == \"Koine\" and .title == \"Koine Settings\" and .focused == true)",
+  "first-selection-menu-closed | read koine-menus",
+  "first-selection-menu-closed-state | .value | length == 0",
+  "reopen-closed-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 0",
+  "reopen-selection-identity | read launch-identity",
+  "reopen-selection-identity-state | .present and .joined",
+  "reopen-selection-setup-windows-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 0\n        and ([.windows[] | select(.appName == \"TextEdit\")] | length) == 1\n        and ([.windows[] | select(.appName == \"TextEdit\")][0]\n            | .windowType == \"standard\" and .title == \"Untitled\"\n            and [.positionX, .positionY, .sizeWidth, .sizeHeight] == [700,120,603,505])",
+  "reopen-selection-setup-front | read front-process",
+  "reopen-selection-setup-front-state | .value == [\"TextEdit\", 909]",
+  "reopen-selection-setup-sheets | read textedit-windows",
+  "reopen-selection-setup-sheets-state | .value == [[\"AXStandardWindow\"], [[]]]",
+  "reopen-selection-setup-menus | read menu-bar-menus",
+  "reopen-selection-setup-menus-state | (.value[1] | all(length == 0)) and (.value[2] | length == 0)",
+  "reopen-selection-item | read menu-item-frame",
+  "reopen-selection-item-state | (.absent | not) and (.value[0] | type == \"array\" and .[0] >= 0)",
+  "reopen-selection-row | read menu-row-frame Settings…",
+  "reopen-selection-row-state | (.absent | not) and (.value[0] | type == \"array\" and .[0] >= 0)",
+  "reopen-selection-enabled | read menu-row-enabled Settings…",
+  "reopen-selection-enabled-state | .value == true",
+  "reopen-window-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 1",
+  "reopen-front-state | [.windows[] | select(.appName != \"Notification Center\")][0]\n        | .appName == \"Koine\" and .focused == true",
+  "reopen-front-title-state | ([.windows[] | select(.appName == \"Koine\")]\n            | length == 1 and .[0].title == \"Koine Settings\")\n        and ([.windows[] | select(.appName != \"Notification Center\")][0]\n            | .appName == \"Koine\" and .title == \"Koine Settings\" and .focused == true)",
+  "reopen-menu-closed | read koine-menus",
+  "reopen-menu-closed-state | .value | length == 0",
+  "reopen-closed-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 0",
+  "reopen-selection-identity | read launch-identity",
+  "reopen-selection-identity-state | .present and .joined",
+  "reopen-selection-setup-windows-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 0\n        and ([.windows[] | select(.appName == \"TextEdit\")] | length) == 1\n        and ([.windows[] | select(.appName == \"TextEdit\")][0]\n            | .windowType == \"standard\" and .title == \"Untitled\"\n            and [.positionX, .positionY, .sizeWidth, .sizeHeight] == [700,120,603,505])",
+  "reopen-selection-setup-front | read front-process",
+  "reopen-selection-setup-front-state | .value == [\"TextEdit\", 909]",
+  "reopen-selection-setup-sheets | read textedit-windows",
+  "reopen-selection-setup-sheets-state | .value == [[\"AXStandardWindow\"], [[]]]",
+  "reopen-selection-setup-menus | read menu-bar-menus",
+  "reopen-selection-setup-menus-state | (.value[1] | all(length == 0)) and (.value[2] | length == 0)",
+  "reopen-selection-item | read menu-item-frame",
+  "reopen-selection-item-state | (.absent | not) and (.value[0] | type == \"array\" and .[0] >= 0)",
+  "reopen-selection-row | read menu-row-frame Settings…",
+  "reopen-selection-row-state | (.absent | not) and (.value[0] | type == \"array\" and .[0] >= 0)",
+  "reopen-selection-enabled | read menu-row-enabled Settings…",
+  "reopen-selection-enabled-state | .value == true",
+  "reopen-window-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 1",
+  "reopen-front-state | [.windows[] | select(.appName != \"Notification Center\")][0]\n        | .appName == \"Koine\" and .focused == true",
+  "reopen-front-title-state | ([.windows[] | select(.appName == \"Koine\")]\n            | length == 1 and .[0].title == \"Koine Settings\")\n        and ([.windows[] | select(.appName != \"Notification Center\")][0]\n            | .appName == \"Koine\" and .title == \"Koine Settings\" and .focused == true)",
+  "reopen-menu-closed | read koine-menus",
+  "reopen-menu-closed-state | .value | length == 0",
+  "reopen-closed-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 0",
+  "reopen-selection-identity | read launch-identity",
+  "reopen-selection-identity-state | .present and .joined",
+  "reopen-selection-setup-windows-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 0\n        and ([.windows[] | select(.appName == \"TextEdit\")] | length) == 1\n        and ([.windows[] | select(.appName == \"TextEdit\")][0]\n            | .windowType == \"standard\" and .title == \"Untitled\"\n            and [.positionX, .positionY, .sizeWidth, .sizeHeight] == [700,120,603,505])",
+  "reopen-selection-setup-front | read front-process",
+  "reopen-selection-setup-front-state | .value == [\"TextEdit\", 909]",
+  "reopen-selection-setup-sheets | read textedit-windows",
+  "reopen-selection-setup-sheets-state | .value == [[\"AXStandardWindow\"], [[]]]",
+  "reopen-selection-setup-menus | read menu-bar-menus",
+  "reopen-selection-setup-menus-state | (.value[1] | all(length == 0)) and (.value[2] | length == 0)",
+  "reopen-selection-item | read menu-item-frame",
+  "reopen-selection-item-state | (.absent | not) and (.value[0] | type == \"array\" and .[0] >= 0)",
+  "reopen-selection-row | read menu-row-frame Settings…",
+  "reopen-selection-row-state | (.absent | not) and (.value[0] | type == \"array\" and .[0] >= 0)",
+  "reopen-selection-enabled | read menu-row-enabled Settings…",
+  "reopen-selection-enabled-state | .value == true",
+  "reopen-window-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 1",
+  "reopen-front-state | [.windows[] | select(.appName != \"Notification Center\")][0]\n        | .appName == \"Koine\" and .focused == true",
+  "reopen-front-title-state | ([.windows[] | select(.appName == \"Koine\")]\n            | length == 1 and .[0].title == \"Koine Settings\")\n        and ([.windows[] | select(.appName != \"Notification Center\")][0]\n            | .appName == \"Koine\" and .title == \"Koine Settings\" and .focused == true)",
+  "reopen-menu-closed | read koine-menus",
+  "reopen-menu-closed-state | .value | length == 0",
+  "textedit-quit | read quit-textedit",
+  "textedit-quit-absence | read process textedit",
+  "textedit-quit-absence-state | .selected == []",
+  "resize-front-state | [.windows[] | select(.appName != \"Notification Center\")][0]\n        | .appName == \"Koine\" and .focused == true",
+  "resize-front-title-state | ([.windows[] | select(.appName == \"Koine\")]\n            | length == 1 and .[0].title == \"Koine Settings\")\n        and ([.windows[] | select(.appName != \"Notification Center\")][0]\n            | .appName == \"Koine\" and .title == \"Koine Settings\" and .focused == true)",
+  "resize-grown-state | any(.windows[]; .title == \"Koine Settings\")",
+  "resize-least-state | any(.windows[]; .title == \"Koine Settings\")",
+  "least-size-content | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.platformRole==\"AXScrollArea\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and (.sizeHeight | type == \"number\" and isfinite and . >= 0))",
+  "least-size-content-state | (.sizeHeight | type == \"number\") and .sizeHeight >= 320",
+  "calibrate-frame-state | any(.windows[]; .title == \"Koine Settings\")",
+  "calibrate-before | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"grant-label\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and (.positionY | type == \"number\" and isfinite))",
+  "calibrate-after | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"grant-label\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and (.positionY | type == \"number\" and isfinite))",
+  "least-size-login-frame-state | any(.windows[]; .title == \"Koine Settings\")",
+  "least-size-login | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"login-launch\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "least-size-login-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "least-size-login-position | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"login-launch\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and (.positionY | type == \"number\" and isfinite))",
+  "least-size-login | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"login-launch\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "least-size-login-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "least-size-login-position | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"login-launch\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and (.positionY | type == \"number\" and isfinite))",
+  "least-size-login | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"login-launch\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "least-size-login-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "least-size-login-position | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"login-launch\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and (.positionY | type == \"number\" and isfinite))",
+  "least-size-login | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"login-launch\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "least-size-login-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "least-size-login-position | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"login-launch\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and (.positionY | type == \"number\" and isfinite))",
+  "least-size-login | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"login-launch\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "least-size-login-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "least-size-login-position | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"login-launch\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and (.positionY | type == \"number\" and isfinite))",
+  "least-size-login | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"login-launch\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "least-size-login-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "least-size-login-position | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"login-launch\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and (.positionY | type == \"number\" and isfinite))",
+  "least-size-login | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"login-launch\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "least-size-login-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "least-size-label-frame-state | any(.windows[]; .title == \"Koine Settings\")",
+  "least-size-label | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"grant-label\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "least-size-label-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "least-size-label-position | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"grant-label\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and (.positionY | type == \"number\" and isfinite))",
+  "least-size-label | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"grant-label\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "least-size-label-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "least-size-label-position | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"grant-label\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and (.positionY | type == \"number\" and isfinite))",
+  "least-size-label | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"grant-label\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "least-size-label-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "least-size-label-position | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"grant-label\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and (.positionY | type == \"number\" and isfinite))",
+  "least-size-label | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"grant-label\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "least-size-label-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "least-size-label-position | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"grant-label\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and (.positionY | type == \"number\" and isfinite))",
+  "least-size-label | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"grant-label\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "least-size-label-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "least-size-accessibility-frame-state | any(.windows[]; .title == \"Koine Settings\")",
+  "least-size-accessibility | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"accessibility-status\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "least-size-accessibility-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "least-size-accessibility-position | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"accessibility-status\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and (.positionY | type == \"number\" and isfinite))",
+  "least-size-accessibility | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"accessibility-status\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "least-size-accessibility-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "least-size-accessibility-position | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"accessibility-status\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and (.positionY | type == \"number\" and isfinite))",
+  "least-size-accessibility | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"accessibility-status\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "least-size-accessibility-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "shortcut-field-first-reveal-frame-state | any(.windows[]; .title == \"Koine Settings\")",
+  "shortcut-field-first-reveal | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"grant-label\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "shortcut-field-first-reveal-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "shortcut-field-first-reveal-position | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"grant-label\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and (.positionY | type == \"number\" and isfinite))",
+  "shortcut-field-first-reveal | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"grant-label\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "shortcut-field-first-reveal-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "shortcut-field-first-reveal-position | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"grant-label\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and (.positionY | type == \"number\" and isfinite))",
+  "shortcut-field-first-reveal | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"grant-label\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "shortcut-field-first-reveal-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "shortcut-field-reveal-frame-state | any(.windows[]; .title == \"Koine Settings\")",
+  "shortcut-field-reveal | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"grant-label\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "shortcut-field-reveal-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "shortcut-field-element | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"grant-label\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and all(.positionX, .positionY, .sizeWidth, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeWidth > 0 and .sizeHeight > 0)",
+  "shortcut-typed | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"grant-label\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and (.value | type == \"string\"))",
+  "shortcut-typed-state | .value == \"shortcut\"",
+  "shortcut-emptied | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"grant-label\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and (.value | type == \"string\"))",
+  "shortcut-emptied-state | .value == \"\"",
+  "shortcut-pasted | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"grant-label\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and (.value | type == \"string\"))",
+  "shortcut-pasted-state | .value == \"shortcut\"",
+  "shortcut-closed-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 0",
+  "shortcut-count | read menu-item-count",
+  "shortcut-count-state | .value == 1",
+  "enrol-vm-editor | read enrol $HOME/koine-secret-first vm-editor",
+  "enrol-vm-editor-state | .status == 200 and ((.response.errors // []) | length == 0)",
+  "first-request-label | read menu-item-label poll",
+  "first-request-label-state | (.absent | not) and .value == \"Koine, 1 grant request waiting, Accessibility not granted\"",
+  "first-request-windows-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 0",
+  "first-request-menu-item | read menu-item-frame",
+  "first-request-menu-item-state | (.absent | not) and (.value[0] | type == \"array\" and .[0] >= 0)",
+  "first-request-menu | read menu-titles",
+  "first-request-menu-state | .value == [\"Review 1 Grant Request…\",\"Accessibility Not Granted…\",\"\",\"Settings…\",\"Quit Koine\"]",
+  "enrol-vm-second | read enrol $HOME/koine-secret-second vm-second",
+  "enrol-vm-second-state | .status == 200 and ((.response.errors // []) | length == 0)",
+  "second-request-label | read menu-item-label poll",
+  "second-request-label-state | (.absent | not) and .value == \"Koine, 2 grant requests waiting, Accessibility not granted\"",
+  "second-request-menu-item | read menu-item-frame",
+  "second-request-menu-item-state | (.absent | not) and (.value[0] | type == \"array\" and .[0] >= 0)",
+  "second-request-menu | read menu-titles",
+  "second-request-menu-state | .value == [\"Review 2 Grant Requests…\",\"Accessibility Not Granted…\",\"\",\"Settings…\",\"Quit Koine\"]",
+  "second-request-windows-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 0",
+  "requests-selection-identity | read launch-identity",
+  "requests-selection-identity-state | .present and .joined",
+  "requests-selection-item | read menu-item-frame",
+  "requests-selection-item-state | (.absent | not) and (.value[0] | type == \"array\" and .[0] >= 0)",
+  "requests-selection-row | read menu-row-frame Review 2 Grant Requests…",
+  "requests-selection-row-state | (.absent | not) and (.value[0] | type == \"array\" and .[0] >= 0)",
+  "requests-selection-enabled | read menu-row-enabled Review 2 Grant Requests…",
+  "requests-selection-enabled-state | .value == true",
+  "requests-window-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 1",
+  "requests-front-state | [.windows[] | select(.appName != \"Notification Center\")][0]\n        | .appName == \"Koine\" and .focused == true",
+  "requests-front-title-state | ([.windows[] | select(.appName == \"Koine\")]\n            | length == 1 and .[0].title == \"Koine Settings\")\n        and ([.windows[] | select(.appName != \"Notification Center\")][0]\n            | .appName == \"Koine\" and .title == \"Koine Settings\" and .focused == true)",
+  "requests-menu-closed | read koine-menus",
+  "requests-menu-closed-state | .value | length == 0",
+  "requests-frame-state | any(.windows[]; .title == \"Koine Settings\")",
+  "requests-on-screen | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [((.id // \"\") | startswith(\"request-label-\"))] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "requests-on-screen-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "requests-label | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [((.id // \"\") | startswith(\"request-label-\"))] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and (.value | type == \"string\"))",
+  "requests-deny-reveal-frame-state | any(.windows[]; .title == \"Koine Settings\")",
+  "requests-deny-reveal | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [((.id // \"\") | startswith(\"deny-\"))] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "requests-deny-reveal-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "requests-deny-element | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [((.id // \"\") | startswith(\"deny-\"))] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and all(.positionX, .positionY, .sizeWidth, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeWidth > 0 and .sizeHeight > 0)",
+  "requests-deny-reveal-frame-state | any(.windows[]; .title == \"Koine Settings\")",
+  "requests-deny-reveal | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [((.id // \"\") | startswith(\"deny-\"))] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "requests-deny-reveal-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "requests-deny-element | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [((.id // \"\") | startswith(\"deny-\"))] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and all(.positionX, .positionY, .sizeWidth, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeWidth > 0 and .sizeHeight > 0)",
+  "requests-denied-label | read menu-item-label poll",
+  "requests-denied-label-state | (.absent | not) and .value == \"Koine, Accessibility not granted\"",
+  "requests-denied-menu-item | read menu-item-frame",
+  "requests-denied-menu-item-state | (.absent | not) and (.value[0] | type == \"array\" and .[0] >= 0)",
+  "requests-denied-menu | read menu-titles",
+  "requests-denied-menu-state | .value == [\"Accessibility Not Granted…\",\"\",\"Settings…\",\"Quit Koine\"]",
+  "accessibility-below-frame-state | any(.windows[]; .title == \"Koine Settings\")",
+  "accessibility-below | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"login-launch\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "accessibility-below-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "accessibility-closed-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 0",
+  "accessibility-selection-identity | read launch-identity",
+  "accessibility-selection-identity-state | .present and .joined",
+  "accessibility-selection-item | read menu-item-frame",
+  "accessibility-selection-item-state | (.absent | not) and (.value[0] | type == \"array\" and .[0] >= 0)",
+  "accessibility-selection-row | read menu-row-frame Accessibility Not Granted…",
+  "accessibility-selection-row-state | (.absent | not) and (.value[0] | type == \"array\" and .[0] >= 0)",
+  "accessibility-selection-enabled | read menu-row-enabled Accessibility Not Granted…",
+  "accessibility-selection-enabled-state | .value == true",
+  "accessibility-window-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 1",
+  "accessibility-front-state | [.windows[] | select(.appName != \"Notification Center\")][0]\n        | .appName == \"Koine\" and .focused == true",
+  "accessibility-front-title-state | ([.windows[] | select(.appName == \"Koine\")]\n            | length == 1 and .[0].title == \"Koine Settings\")\n        and ([.windows[] | select(.appName != \"Notification Center\")][0]\n            | .appName == \"Koine\" and .title == \"Koine Settings\" and .focused == true)",
+  "accessibility-menu-closed | read koine-menus",
+  "accessibility-menu-closed-state | .value | length == 0",
+  "accessibility-frame-state | any(.windows[]; .title == \"Koine Settings\")",
+  "accessibility-on-screen | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"accessibility-status\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "accessibility-on-screen-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "accessibility-pane | read open-accessibility-pane",
+  "accessibility-add | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.role==\"button\" and .label==\"Add\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | (. == null or type == \"object\"))",
+  "accessibility-add-state | . != null",
+  "accessibility-add-element | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.role==\"button\" and .label==\"Add\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and all(.positionX, .positionY, .sizeWidth, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeWidth > 0 and .sizeHeight > 0)",
+  "accessibility-koine | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.label==\"Koine\" or .value==\"Koine\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | (. == null or type == \"object\"))",
+  "accessibility-koine-state | . != null",
+  "granted-label | read menu-item-label poll",
+  "granted-label-state | (.absent | not) and .value == \"Koine\"",
+  "granted-menu-item | read menu-item-frame",
+  "granted-menu-item-state | (.absent | not) and (.value[0] | type == \"array\" and .[0] >= 0)",
+  "granted-menu | read menu-titles",
+  "granted-menu-state | .value == [\"Settings…\",\"Quit Koine\"]",
+  "granted-window-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 1",
+  "login-toggle-first-reveal-frame-state | any(.windows[]; .title == \"Koine Settings\")",
+  "login-toggle-first-reveal | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"login-launch\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "login-toggle-first-reveal-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "login-toggle-reveal-frame-state | any(.windows[]; .title == \"Koine Settings\")",
+  "login-toggle-reveal | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"login-launch\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | . == null or (type == \"object\" and all(.positionY, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeHeight >= 0))",
+  "login-toggle-reveal-state | (. != null) and .positionY >= 70\n        and (.positionY + .sizeHeight) <= 392",
+  "login-toggle-element | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"login-launch\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and all(.positionX, .positionY, .sizeWidth, .sizeHeight;\n            type == \"number\" and isfinite) and .sizeWidth > 0 and .sizeHeight > 0)",
+  "login-status | snapshot --window def number_field: type == \"number\" and isfinite;\n        def element_shape:\n            . as $element | type == \"object\" and (.role | type == \"string\")\n            and (.enabled | type == \"boolean\") and (.focused | type == \"boolean\")\n            and (.childCount | number_field and floor == . and . >= 0)\n            and (.actions | type == \"array\" and all(.[]; type == \"string\"))\n            and all(\"id\", \"label\", \"value\", \"description\", \"platformRole\";\n                . as $key | $element | (has($key) | not) or (.[$key] | type == \"string\"))\n            and ((has(\"showing\") | not) or (.showing | type == \"boolean\"))\n            and all(\"positionX\", \"positionY\", \"sizeWidth\", \"sizeHeight\";\n                . as $key | $element | (has($key) | not) or (.[$key] | number_field))\n            and ((has(\"children\") | not) or (.children | type == \"array\" and all(.[]; element_shape)));\n        (.windows | type == \"array\") and all(.windows[];\n            type == \"object\" and (.appName | type == \"string\")\n            and (.windowType | type == \"string\") and (.focused | type == \"boolean\")\n            and ((has(\"title\") | not) or (.title | type == \"string\"))\n            and all(.positionX, .positionY, .sizeWidth, .sizeHeight; number_field)\n            and (.elements | type == \"array\" and all(.[]; element_shape))) and ([.. | objects | select(has(\"platformRole\")) | select(\n        [(.id==\"login-launch-status\")] | if . == [true] then true elif . == [false] then false\n        else error(\"element selector must yield one boolean\") end)][0] | type == \"object\" and (.value | type == \"string\"))",
+  "login-status-state | .value == \"Koine will start when you log in.\"",
+  "setup-quit-item | read menu-item-frame",
+  "setup-quit-item-state | (.absent | not) and (.value[0] | type == \"array\" and .[0] >= 0)",
+  "setup-quit-row | read menu-row-frame Quit Koine",
+  "setup-quit-row-state | (.absent | not) and (.value[0] | type == \"array\" and .[0] >= 0)",
+  "setup-stopped-process | read process executable",
+  "setup-stopped-process-state | .selected == []",
+  "setup-stopped-descriptor | read endpoint",
+  "setup-stopped-descriptor-state | .present == false",
+  "silent-launch | read open-koine",
+  "silent-launch-endpoint | read endpoint",
+  "silent-launch-endpoint-state | .present == true",
+  "silent-launch-identity | read launch-identity",
+  "silent-launch-identity-state | .present and .joined",
+  "silent-launch-windows-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 0",
+  "silent-launch-label | read menu-item-label poll",
+  "silent-launch-label-state | (.absent | not) and .value == \"Koine\"",
+  "silent-launch-item | read menu-item-label value",
+  "reopen | read open-koine",
+  "reopen-identity | read launch-identity",
+  "reopen-identity-state | .present and .joined and ({instance: .descriptor.instanceId, process} == {\"instance\":\"instance-2\",\"process\":{\"pid\":202,\"start_sec\":2002,\"start_usec\":5,\"executable\":\"/Applications/Koine.app/Contents/MacOS/Koine\"}})",
+  "reopen-window-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 1",
+  "reopen-front-state | [.windows[] | select(.appName != \"Notification Center\")][0]\n        | .appName == \"Koine\" and .focused == true",
+  "reopen-front-title-state | ([.windows[] | select(.appName == \"Koine\")]\n            | length == 1 and .[0].title == \"Koine Settings\")\n        and ([.windows[] | select(.appName != \"Notification Center\")][0]\n            | .appName == \"Koine\" and .title == \"Koine Settings\" and .focused == true)",
+  "reopen-closed-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 0",
+  "quit-selection-identity | read launch-identity",
+  "quit-selection-identity-state | .present and .joined",
+  "quit-selection-item | read menu-item-frame",
+  "quit-selection-item-state | (.absent | not) and (.value[0] | type == \"array\" and .[0] >= 0)",
+  "quit-selection-row | read menu-row-frame Settings…",
+  "quit-selection-row-state | (.absent | not) and (.value[0] | type == \"array\" and .[0] >= 0)",
+  "quit-selection-enabled | read menu-row-enabled Settings…",
+  "quit-selection-enabled-state | .value == true",
+  "quit-window-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 1",
+  "quit-front-state | [.windows[] | select(.appName != \"Notification Center\")][0]\n        | .appName == \"Koine\" and .focused == true",
+  "quit-front-title-state | ([.windows[] | select(.appName == \"Koine\")]\n            | length == 1 and .[0].title == \"Koine Settings\")\n        and ([.windows[] | select(.appName != \"Notification Center\")][0]\n            | .appName == \"Koine\" and .title == \"Koine Settings\" and .focused == true)",
+  "quit-menu-closed | read koine-menus",
+  "quit-menu-closed-state | .value | length == 0",
+  "quit-stopped-process | read process executable",
+  "quit-stopped-process-state | .selected == []",
+  "quit-stopped-descriptor | read endpoint",
+  "quit-stopped-descriptor-state | .present == false",
+  "boot-before | read boot",
+  "restart | read restart",
+  "restart-boot | read boot",
+  "restart-boot-state | [.sec, .usec] != [1000,1]",
+  "defaults-after-restart | read defaults",
+  "defaults-after-restart-state | .diagnostics_disabled == true",
+  "login-endpoint | read endpoint",
+  "login-endpoint-state | .present == true",
+  "login-process | read process bundle",
+  "login-process-state | (.selected | length) > 0",
+  "login-launch-endpoint | read endpoint",
+  "login-launch-endpoint-state | .present == true",
+  "login-count | read menu-item-count",
+  "login-count-state | .value == 1",
+  "login-label | read menu-item-label poll",
+  "login-label-state | (.absent | not) and .value == \"Koine\"",
+  "login-windows-state | ([.windows[] | select(.appName == \"Koine\")] | length) == 0",
+  "login-item | read menu-item-label value",
+  "login-background | read background-only",
+  "login-background-state | .value == true",
+  "port-descriptor | read endpoint",
+  "port-descriptor-state | .present == true",
+  "final-quit-item | read menu-item-frame",
+  "final-quit-item-state | (.absent | not) and (.value[0] | type == \"array\" and .[0] >= 0)",
+  "final-quit-row | read menu-row-frame Quit Koine",
+  "final-quit-row-state | (.absent | not) and (.value[0] | type == \"array\" and .[0] >= 0)",
+  "final-stopped-process | read process executable",
+  "final-stopped-process-state | .selected == []",
+  "final-stopped-descriptor | read endpoint",
+  "final-stopped-descriptor-state | .present == false",
+  "port-refusal | read port-refusal 7650",
+  "port-refusal-state | .curl_exit == 7",
+  "installed-after | read installed-inventory"
+ ]
+}

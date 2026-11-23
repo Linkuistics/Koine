@@ -47,7 +47,7 @@ SLEEP
     unset KOINE_VM_EVIDENCE_ROOT KOINE_VM_DISPLAY KOINE_VM_KEEP KOINE_SETTINGS_TRACE \
         TESTANYWARE_VM_ID settings_fault settings_fault_status settings_flags settings_at \
         scenario_signal scenario_signal_on settings_untitled_behind settings_finder_front \
-        settings_close_ignored
+        settings_close_ignored settings_no_value
 }
 
 run_scenario() {
@@ -440,6 +440,28 @@ legacy_calls() {
     jq -se --argjson n "${at}" '.[$n - 1].outcome == "unavailable"' "${settings_sim}/calls.jsonl"
     [[ "$(input_after "${at}")" == '[]' ]]
     [[ "$(call_index screenshot-requests)" == -1 ]]
+}
+
+@test "an omitted AXValue at shortcut-emptied is unavailable and is not an empty value (k175)" {
+    # The control run reads a real empty string at the same operation.
+    run_scenario
+    [[ "${status}" == 0 ]]
+    jq -se 'any(.[]; .operation == "shortcut-emptied-state" and .outcome == "clean")' \
+        "${settings_sim}/calls.jsonl"
+    reset_run
+    export settings_no_value=shortcut-emptied
+    run_scenario
+    [[ "${status}" == 125 ]]
+    [[ "${output}" == *'FAILED: ⌘A ⌘X did not empty the field (evidence status 125)'* ]]
+    local at
+    at="$(call_index shortcut-emptied)"
+    [[ "${at}" -gt 0 ]]
+    jq -se --argjson n "${at}" '.[$n - 1].outcome == "unavailable"' "${settings_sim}/calls.jsonl"
+    # No state was judged, so the omission is neither an empty value nor a false state.
+    [[ "$(call_index shortcut-emptied-state)" == -1 ]]
+    refute 'scenario-assertion' "${settings_sim}/calls.jsonl"
+    [[ "$(input_after "${at}")" == '[]' ]]
+    [[ "$(call_index shortcut-paste)" == -1 ]]
 }
 
 # Two runs in one timestamp second choose one transcript name.

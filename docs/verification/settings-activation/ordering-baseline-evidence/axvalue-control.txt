@@ -1,0 +1,7 @@
+$ the control on the unchanged harness
+1..1
+ok 1 an omitted AXValue at shortcut-emptied is unavailable and is not an empty value (k175)
+$ mutation: element="$(settings_element "$1" "$2" value)" -> element="$(settings_element "$1" "$2" optional)"
+1..1
+not ok 1 an omitted AXValue at shortcut-emptied is unavailable and is not an empty value (k175)
+bats status 1

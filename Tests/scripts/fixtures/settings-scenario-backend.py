@@ -43,6 +43,11 @@ use of the domain instead:
   rows above the visible content after their selection. `element-no-height`
   omits the height of `login-launch`. `element-no-position` omits the vertical
   position of `grant-label`.
+- Two flags exhaust the restart polls for the baseline control (k175).
+  `boot-stuck` keeps the boot time after a restart. `login-not-started` starts
+  no Koine at login.
+- `settings_no_value=OPERATION` omits AXValue from `grant-label` in that one
+  snapshot (k175). A failed AX copy omits it, so the field is not empty.
 - The model exposes a menu under a menu bar item only while that menu is open.
   This is the protocol's oracle, assumed here. It is not a native fact.
 """
@@ -232,6 +237,8 @@ def koine_elements(state: dict[str, Any]) -> list[dict[str, Any]]:
         }
         # A failed AX copy omits the value. It is not an empty string.
         if "request-label-no-value" in FLAGS and ident.startswith("request-label-"):
+            del element["value"]
+        if ident == "grant-label" and OPERATION == os.environ.get("settings_no_value"):
             del element["value"]
         if "element-no-height" in FLAGS and ident == "login-launch":
             del element["sizeHeight"]
@@ -892,8 +899,9 @@ def submission(state: dict[str, Any], name: str) -> dict[str, Any]:
         front(state, "System Settings")
     elif name == "restart":
         quit_koine(state)
-        state["boot"] = [state["boot"][0] + 600, 2]
-        if state["login"]:
+        if "boot-stuck" not in FLAGS:
+            state["boot"] = [state["boot"][0] + 600, 2]
+        if state["login"] and "login-not-started" not in FLAGS:
             start_koine(state, window=False)
     elif name != "extract-bundle":
         raise SystemExit(f"unsimulated read: {name}")

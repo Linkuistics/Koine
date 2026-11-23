@@ -1632,6 +1632,17 @@ tasks:
       - uvx pyright@1.1.414 scripts/settings-ordering-sequence.py
       - bats Tests/scripts/vm-settings-audits.bats
 
+  check:settings-baseline:
+    desc: Check without a VM that the complete Settings scenario keeps the ordered inputs, explicit waits, poll bounds and assertions of protocol baseline f019161b. The real baseline script and the current scenario run against one simulated guest, each classified difference needs a cited reason, and mutated copies must fail. It establishes no native behaviour
+    cmds:
+      - shellcheck -x Tests/scripts/vm-settings-baseline.bats
+      - shfmt -d -i 4 Tests/scripts/vm-settings-baseline.bats
+      - python3 -m py_compile scripts/check-settings-baseline.py Tests/scripts/fixtures/settings-baseline-cli.py Tests/scripts/fixtures/settings-baseline-mutations.py
+      - uvx ruff@0.17.3 check scripts/check-settings-baseline.py Tests/scripts/fixtures/settings-baseline-cli.py Tests/scripts/fixtures/settings-baseline-mutations.py
+      - uvx ruff@0.17.3 format --check scripts/check-settings-baseline.py Tests/scripts/fixtures/settings-baseline-cli.py Tests/scripts/fixtures/settings-baseline-mutations.py
+      - uvx pyright@1.1.414 scripts/check-settings-baseline.py Tests/scripts/fixtures/settings-baseline-cli.py Tests/scripts/fixtures/settings-baseline-mutations.py
+      - bats Tests/scripts/vm-settings-baseline.bats
+
   check:settings-duty-ledger:
     desc: Check without a VM that the Settings harness duty ledger holds every sentence of the eight archived contracts and that each cited source symbol, exact control name, record and authority resolves. A resolved citation does not prove the disposition. Pass -- --require-closed to refuse an open gap, as the k54 freeze must. It starts no clone and establishes no native acceptance
     cmds:
