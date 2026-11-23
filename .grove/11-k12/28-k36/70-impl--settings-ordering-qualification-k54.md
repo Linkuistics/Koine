@@ -186,3 +186,27 @@ Read `docs/verification/settings-activation/ORDERING-STORAGE-PLAN.md`.
 - A zero exit status from `run` does not show that the caller kept its records. If
   `phases.json` is missing or `settle-run` fails, follow the recovery steps of the
   plan. On a full volume, the caller can leave the clone running without a stop.
+
+## Decisions (running log)
+
+- 2026-11-23, Antony: amend the protocol to the installed TestAnyware 2.9.0 now.
+  Each cited payload format needs a recheck against 2.9.0 before the freeze. The
+  amendment does not establish the guest version of the golden image.
+- 2026-11-23, Antony: accept the 300 GB planning allowance. This acceptance
+  establishes no byte bound for a real guest.
+- 2026-11-23 21:34, observation: Homebrew replaced 2.9.0 with the published
+  TestAnyware 3.0.0 at 21:29. The 2.9.0 decision cannot run without a downgrade,
+  so it waits for the owner. The golden disk dates from 19:03, before the 19:29
+  build of the 3.0.0 binary. `testanyware-setup-dbf7834f` is still running.
+- 2026-11-23, Antony: pin TestAnyware 3.0.0. This decision replaces the 2.9.0
+  decision and settles the version question above. The 300 GB decision settles
+  the K176 storage question.
+- 2026-11-23, Antony: the owner or the TestAnyware session finishes the golden
+  image and stops the setup VM. Before the freeze, get the owner's statement that
+  the image is final. Then record its digests and versions.
+- 2026-11-23, placement: `settings-testanyware-3-amendment-k177` is a flat sibling
+  before this leaf. It shares this scope and needs its own session.
+- Open before the freeze: the plan names guest macOS 27.0.1, and a 3.0.0 golden
+  holds the latest macOS 27 release. If the final image differs from 27.0.1, ask
+  the owner to accept that guest amendment. The historical symptom was observed
+  on 27.0.1, so a result on another release may not exercise the same behaviour.
