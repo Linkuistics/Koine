@@ -1,12 +1,13 @@
 """Synthetic CLI only: no endpoint, VM, guest or golden image is contacted.
 
-The payload shapes follow the tagged v2.7.0 handlers in
+The payload shapes follow the tagged v3.0.0 handlers in
 cli-rs/crates/testanyware-cli/src/commands/file.rs and commands/vm.rs.
 A directory stands in for the guest file system and a file for the clone list.
 """
 
 from __future__ import annotations
 
+import base64
 import hashlib
 import json
 import os
@@ -55,8 +56,8 @@ def download(args: list[str], mode: str) -> dict[str, object]:
     target = Path(local)
     if mode in {"download-stream-error", "download-killed"}:
         # The tagged client streams into `.NAME.testanyware-PID.SEQ.tmp` and
-        # deletes it on a streaming error. A kill skips that deletion.
-        # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-agent-client/src/lib.rs#L456-L485
+        # deletes it on a failure. SIGKILL skips that deletion.
+        # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-agent-client/src/lib.rs#L559-L589
         partial = target.with_name(f".{target.name}.testanyware-{os.getpid()}.0.tmp")
         partial.write_bytes(data[: max(1, len(data) // 2)])
         if mode == "download-killed":
@@ -225,12 +226,34 @@ def guest_exec(args: list[str]) -> dict[str, object]:
     command = args[-1]
     name, stdout = exec_read(command)
     failed = name in os.environ.get("guest_fail", "").split(",")
+    guest_stdout = "" if failed else stdout
+    guest_stderr = "synthetic guest failure" if failed else ""
     return {
         "command": command,
         "exit_code": 1 if failed else 0,
         "timed_out": False,
-        "stdout": "" if failed else stdout,
-        "stderr": "synthetic guest failure" if failed else "",
+        "stdout": guest_stdout,
+        "stderr": guest_stderr,
+        "exec_id": "synthetic-exec",
+        "record": "agent",
+        "legacy_projection": "macos",
+        "outcome": {"kind": "exited", "exit_code": 1 if failed else 0},
+        "evidence": {
+            "stdout": stream_evidence(guest_stdout),
+            "stderr": stream_evidence(guest_stderr),
+        },
+    }
+
+
+def stream_evidence(text: str) -> dict[str, object]:
+    data = text.encode("utf-8")
+    return {
+        "base64": base64.b64encode(data).decode("ascii"),
+        "bytes": len(data),
+        "file_bytes": len(data),
+        "sha256": hashlib.sha256(data).hexdigest(),
+        "capture": "complete",
+        "reason": None,
     }
 
 

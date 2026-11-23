@@ -13,8 +13,8 @@ click_at() {
         return "$?"
     }
     x=$((10#${x})) y=$((10#${y}))
-    # v2.7.0 screen size returns logical width/height, in input coordinates.
-    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/commands/screen.rs
+    # v3.0.0 screen size returns logical width/height, in input coordinates.
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/commands/screen.rs
     size="$(_physical_cli read-poll menu-display '
         all(.width, .height; type == "number" and . == floor and . >= 2 and . <= 65535)' screen size)" || return
     dimensions="$(jq -er '

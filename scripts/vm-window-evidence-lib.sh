@@ -36,7 +36,7 @@ read_guest_windows() {
     esac
     # Required WindowInfo geometry/app/type/focus, with optional title/elements.
     # No title, focus or process-identity assertion is added by the count schema.
-    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-protocol/src/window_info.rs
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-protocol/src/window_info.rs
     predicate='(.windows | type == "array") and all(.windows[];
         type == "object" and (.appName | type == "string")
         and (.windowType | type == "string") and (.focused | type == "boolean")
@@ -77,7 +77,7 @@ act_guest_window() {
         ;;
     esac
     # emit_action reports action/success/message, not target coordinates/title.
-    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/commands/agent.rs
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/commands/agent.rs
     predicate=".action == \"${action}\" and .success == true and has(\"message\")
         and (.message == null or (.message | type == \"string\"))"
     cli_guest_evidence "${root}" one-shot "${operation}" "${predicate}" -- agent "${action}" "${options[@]}"

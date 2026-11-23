@@ -82,7 +82,7 @@ evaluation or ordinary set. Return the gap for a new explicit scope decision.
 
 All slots use fresh clones of the same stopped
 `testanyware-golden-macos-27` image: macOS 27.0.1 build 26A434, arm64,
-TestAnyware 2.7.0, initial display 1920×1080, disposable admin account, one active
+TestAnyware 3.0.0, initial display 1920×1080, disposable admin account, one active
 Space, no restored application/session state, no pre-existing Koine data or
 diagnostic preferences. Verify the actual image and tool versions before clone
 creation and the actual guest environment after boot. A mismatch holds the
@@ -381,8 +381,9 @@ The freeze also pins the host, as the
 decides. Before the first clone request, record the host macOS product version and
 build and the Tart version. They must be macOS 27.2.1 (26B131) and Tart 2.42.0. If
 either differs, hold before E01 for a new decision. The harness does not rely on
-the TestAnyware VNC keeper. The frozen TestAnyware version may start that keeper,
-and the harness does not disable it.
+the TestAnyware VNC keeper, and TestAnyware 3.0.0 no longer contains it.
+[The 3.0.0 amendment](ORDERING-TESTANYWARE-3-RESULTS.md) records each changed
+format and the disposition of each release behaviour.
 
 The ADR also records a residual test-driver risk. A Tart crash during a slot is a
 test-driver failure. It stops every later slot and permits no retry. It is never a

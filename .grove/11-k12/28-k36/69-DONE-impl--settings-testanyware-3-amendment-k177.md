@@ -62,3 +62,18 @@ repair exists, ask the owner. Do not relax the rule.
 A changed harness reopens the affected checks and earned reviews. If the changes
 to a transport or an evidence class are load-bearing, cut a `review-impl` leaf
 for this handle before k54.
+
+## Decisions (running log)
+
+- 2026-11-23: a clean exec needs a typed macOS agent record, a clean `exited`
+  outcome and complete UTF-8 streams. The upstream specification forbids counting
+  a legacy `unknown` outcome as success.
+- 2026-11-23: a status 0 attempt with one of five exact withdrawing diagnostics is
+  unavailable. This keeps the one-attempt rule for the OCR retry, so the release
+  conflict needs no owner decision.
+- 2026-11-23: the existing input warning belongs in the same repair. The recheck
+  of the cited `input.rs` found it, and it also exists at v2.7.0.
+- 2026-11-23: the changes affect a transport and an evidence class, so this leaf
+  earns a `review-impl` sibling before k54.
+- `docs/verification/settings-activation/ORDERING-TESTANYWARE-3-RESULTS.md` holds
+  each citation result and release disposition.

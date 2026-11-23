@@ -26,7 +26,7 @@ SH
     chmod +x "${BATS_TEST_TMPDIR}/bin/testanyware"
     export PATH="${BATS_TEST_TMPDIR}/bin:${PATH}"
     printf 'CLI diagnostic\n' >"${exec_stderr}"
-    printf '%s\n' '{"schema_version":"1.0","command":"probe","ok":true,"exit_code":0,"timed_out":false,"stdout":"READY\n","stderr":"guest diagnostic\n"}' >"${exec_reply}"
+    printf '%s\n' '{"schema_version":"1.0","command":"probe","ok":true,"exit_code":0,"timed_out":false,"stdout":"READY\n","stderr":"guest diagnostic\n","exec_id":"synthetic-exec","record":"agent","legacy_projection":"macos","outcome":{"kind":"exited","exit_code":0},"evidence":{"stdout":{"base64":"UkVBRFkK","capture":"complete"},"stderr":{"base64":"Z3Vlc3QgZGlhZ25vc3RpYwo=","capture":"complete"}}}' >"${exec_reply}"
 }
 
 @test "nonexec attempts share exec ordinals and retain exact raw JSON" {
@@ -408,6 +408,83 @@ checked_boot_reply() {
         [[ -f "${exec_root}/unavailable" ]]
         cmp "${exec_reply}" "${exec_root}/000001/raw.stdout"
     done
+}
+
+@test "a legacy, partial or undecodable exec record cannot qualify a clean exit" {
+    local original ordinal=0
+    original="$(cat "${exec_reply}")"
+    for mutation in 'del(.record)' '.record = "legacy"' '.legacy_projection = "linux"' \
+        '.legacy_projection = null' '.outcome = {"kind":"unknown","reason":"legacy_agent"}' \
+        '.outcome = {"kind":"signalled","signal":9,"signal_name":"SIGKILL"}' \
+        '.outcome = {"kind":"exited","exit_code":1}' '.outcome.exit_code = false' \
+        '.outcome.exit_code = 0.0' '.evidence = null' 'del(.evidence.stderr)' \
+        '.evidence.stdout.capture = "incomplete"' '.evidence.stderr.capture = "incomplete"' \
+        '.evidence.stdout.base64 = "/w=="' '.evidence.stderr.base64 = "not base64"'; do
+        ordinal=$((ordinal + 1))
+        exec_root="${BATS_TEST_TMPDIR}/record-${ordinal}"
+        printf '%s\n' "${original}" >"${exec_reply}"
+        change_reply "${mutation}"
+        init_guest_evidence "${exec_root}" exact-vm
+        run exec_guest_evidence "${exec_root}" read-poll state probe '.stdout == "READY\n"'
+        [[ "${status}" == 125 ]]
+        [[ -f "${exec_root}/unavailable" ]]
+        jq -e '.outcome == "unavailable"' "${exec_root}/000001/result.json"
+        cmp "${exec_reply}" "${exec_root}/000001/raw.stdout"
+    done
+    # The same adapter accepts the unchanged complete record.
+    exec_root="${BATS_TEST_TMPDIR}/record-clean"
+    printf '%s\n' "${original}" >"${exec_reply}"
+    init_guest_evidence "${exec_root}" exact-vm
+    run exec_guest_evidence "${exec_root}" read-poll state probe '.stdout == "READY\n"'
+    [[ "${status}" == 0 ]]
+}
+
+@test "a clean CLI status with a withdrawing diagnostic stays unavailable" {
+    local ordinal=0 family action line
+    printf '%s\n' '{"schema_version":"1.0","ok":true}' >"${exec_reply}"
+    while IFS='|' read -r family action line; do
+        ordinal=$((ordinal + 1))
+        exec_root="${BATS_TEST_TMPDIR}/diagnostic-${ordinal}"
+        printf 'progress\n%s\n' "${line}" >"${exec_stderr}"
+        init_guest_evidence "${exec_root}" exact-vm
+        if [[ "${family}" == vm ]]; then
+            run cli_guest_evidence "${exec_root}" one-shot start true -- vm start --platform macos
+        else
+            run cli_guest_evidence "${exec_root}" read-poll step true -- "${family}" "${action}" argument
+        fi
+        [[ "${status}" == 125 ]]
+        [[ -f "${exec_root}/unavailable" ]]
+        jq -e '.outcome == "unavailable" and .cli_status == 0' "${exec_root}/000001/result.json"
+        cmp "${exec_stderr}" "${exec_root}/000001/raw.stderr"
+    done <<'ROWS'
+vm|start|  warning: VNC size wait: no session read 1920x1080 within 30 s. The last of 120 sessions read 1280x720. The first command can read that size.
+vm|start|  VNC size wait skipped: the screen size of the guest is not known, so the first command can read a stale size
+screen|find-text|testanyware: the Vision worker failed (response timeout); trying a new worker
+input|click|warning: the guest gave no sign within 10 s that it read the input; the input may not have reached it.
+input|key|warning: the guest connection ended before the guest showed that it read the input (reset); the input may not have reached it.
+ROWS
+}
+
+@test "a diagnostic stays clean when it withdraws nothing for that command" {
+    local ordinal=0 family action line
+    printf '%s\n' '{"schema_version":"1.0","ok":true}' >"${exec_reply}"
+    while IFS='|' read -r family action line; do
+        ordinal=$((ordinal + 1))
+        exec_root="${BATS_TEST_TMPDIR}/benign-${ordinal}"
+        printf '%s\n' "${line}" >"${exec_stderr}"
+        init_guest_evidence "${exec_root}" exact-vm
+        if [[ "${family}" == vm ]]; then
+            run cli_guest_evidence "${exec_root}" one-shot start true -- vm start --platform macos
+        else
+            run cli_guest_evidence "${exec_root}" read-poll step true -- "${family}" "${action}" argument
+        fi
+        [[ "${status}" == 0 ]]
+        [[ ! -e "${exec_root}/unavailable" ]]
+    done <<'ROWS'
+vm|start|VNC size wait: the first session read 1280x720. Session 3 read 1920x1080 after 0.75 s.
+screen|size|testanyware: the Vision worker failed (response timeout); trying a new worker
+agent|windows|warning: the guest gave no sign within 10 s that it read the input
+ROWS
 }
 
 @test "partial malformed duplicate and multiple JSON responses stay unavailable" {

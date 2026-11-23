@@ -1,17 +1,19 @@
 """Synthetic CLI only: no endpoint, VM, agent or guest is contacted.
 
-It answers `file exec` in the shapes of the tagged v2.7.0 handler: JSON mode
+It answers `file exec` in the shapes of the tagged v3.0.0 handler: JSON mode
 prints one envelope and exits 0 on a clean spawn, and text mode passes the
 streams through and exits with the guest status.
-https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/commands/file.rs
+https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/commands/file.rs
 The tagged agent strips trailing whitespace from both streams.
-https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/agents/macos/Sources/TestAnywareAgent/ProcessRunner.swift
+https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/agents/macos/Sources/TestAnywareAgent/ProcessRunner.swift
 Each call takes the next line of `read_script` when it exists, so a poll can
 see a sequence of guest answers. A line is `EXIT TIMED_OUT CLI STDOUT-FILE`.
 """
 
 from __future__ import annotations
 
+import base64
+import hashlib
 import json
 import os
 import re
@@ -22,6 +24,18 @@ from pathlib import Path
 
 def strip(text: str) -> str:
     return re.sub(r"\s+$", "", text)
+
+
+def stream_evidence(text: str) -> dict[str, object]:
+    data = text.encode("utf-8")
+    return {
+        "base64": base64.b64encode(data).decode("ascii"),
+        "bytes": len(data),
+        "file_bytes": len(data),
+        "sha256": hashlib.sha256(data).hexdigest(),
+        "capture": "complete",
+        "reason": None,
+    }
 
 
 def next_answer() -> tuple[int, bool, int, str]:
@@ -131,6 +145,18 @@ def main() -> int:
         "stdout": stdout,
         "stderr": stderr,
         "timed_out": timed_out,
+        "exec_id": "synthetic-exec",
+        "record": "agent",
+        "legacy_projection": "macos",
+        "outcome": (
+            {"kind": "timed_out", "timeout_seconds": 30}
+            if timed_out
+            else {"kind": "exited", "exit_code": exit_code}
+        ),
+        "evidence": {
+            "stdout": stream_evidence(stdout),
+            "stderr": stream_evidence(stderr),
+        },
     }
     print(json.dumps(envelope))
     return 0

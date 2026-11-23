@@ -3,7 +3,7 @@
 Each read has one fixed guest command, an exact grammar for its stdout and a
 parsed record. The tagged agent runs a command with `/bin/bash -c` and strips
 trailing whitespace from stdout, so no grammar ends in a newline.
-https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/agents/macos/Sources/TestAnywareAgent/ProcessRunner.swift
+https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/agents/macos/Sources/TestAnywareAgent/ProcessRunner.swift
 
 A negative domain fact is a complete payload, never a failed command. The
 evidence class admits a read only when the read changes no guest state.
@@ -1085,7 +1085,7 @@ def identity_parse(stdout: str, _: list[str]) -> dict[str, object]:
 
 # Each legacy one-shot command, unchanged, and its exact clean stdout. The agent
 # waits for the bash process only, so a background job leaves empty stdout.
-# https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/agents/macos/Sources/TestAnywareAgent/ProcessRunner.swift
+# https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/agents/macos/Sources/TestAnywareAgent/ProcessRunner.swift
 SUBMISSIONS: dict[str, tuple[str, str]] = {
     # install_app in vm-verify-lib.sh.
     "extract-bundle": ("ditto -x -k /tmp/Koine.zip /Applications", ""),

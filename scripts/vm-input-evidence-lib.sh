@@ -20,8 +20,8 @@ scenario_input() {
     if [[ $# -ge 2 && -n "${operation}" ]]; then
         shift 2
         # Payloads and comma-delimited modifiers follow the immutable release.
-        # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/commands/input.rs
-        # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/main.rs
+        # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/commands/input.rs
+        # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/main.rs
         case "${action}" in
         key)
             if [[ $# == 1 || ($# == 3 && "$2" == --modifiers && "$3" =~ ^[^,]+(,[^,]+)*$) ]] &&

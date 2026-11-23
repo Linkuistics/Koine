@@ -123,7 +123,7 @@ ITEM_FIELDS = {
 # Each request would change what the protocol declares, so a run refuses it.
 OVERRIDES = ("KOINE_VM_KEEP", "KOINE_VM_DISPLAY", "KOINE_SETTINGS_TRACE")
 # Seconds. The tagged `vm stop` runs `tart stop` with no bound of its own:
-# https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-vm/src/tart.rs
+# https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-vm/src/tart.rs
 DEFAULT_BOUNDS = {
     "holder": 30.0,
     "term": 10.0,

@@ -20,9 +20,9 @@ _read_guest_snapshot() {
     local root="$1" kind="$2" operation="$3" window="$4" extra="$5" predicate
     # Full snapshots require element arrays on every returned window. Missing
     # trees cannot establish absence. Optional element fields are typed if present.
-    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/commands/agent.rs
-    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-protocol/src/element_info.rs
-    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-protocol/src/window_info.rs
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/commands/agent.rs
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-protocol/src/element_info.rs
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-protocol/src/window_info.rs
     # Bind each recursive object before checking its optional fields.
     # shellcheck disable=SC2016 # jq variables, not shell expansions.
     predicate='def number_field: type == "number" and isfinite;

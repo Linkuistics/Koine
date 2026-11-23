@@ -14,8 +14,8 @@ read_guest_text() {
         return "$?"
     fi
     # Field/count contract from the immutable CLI and OCR value type.
-    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/commands/screen.rs
-    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-ocr-client/src/detection.rs
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/commands/screen.rs
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-ocr-client/src/detection.rs
     predicate="$(jq -rn --arg query "${query}" '".query == \($query | tojson)"')" || status=$?
     if [[ "${status}" != 0 ]]; then
         _click_evidence_local_failure "${root}" "${operation}-query" "${status}" state 'OCR query encoding failed'
@@ -48,7 +48,7 @@ _click_evidence_local_failure() {
 _click_guest_target() {
     local root="$1" operation="$2" response="$3" selection="$4" predicate point x y status=0
     # Keep floor-of-centre and the CLI uint16 coordinate range; add no reads.
-    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/commands/input.rs
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/commands/input.rs
     predicate="${selection}"' | select(type == "object" and .width > 0 and .height > 0)
         | [(.x + .width / 2 | floor), (.y + .height / 2 | floor)]
         | select(all(.[]; type == "number" and isfinite and . >= 0 and . <= 65535))

@@ -934,6 +934,10 @@
    {
     "suite": "Tests/scripts/vm-settings-containment.bats",
     "test": "a nonzero stop is failed, is not repeated, and still gets its inventory"
+   },
+   {
+    "suite": "Tests/scripts/vm-guest-exec.bats",
+    "test": "a clean CLI status with a withdrawing diagnostic stays unavailable"
    }
   ],
   "red": [
@@ -1392,6 +1396,10 @@
    {
     "suite": "Tests/scripts/vm-exec-read-evidence.bats",
     "test": "a malformed descriptor is unavailable, never absent"
+   },
+   {
+    "suite": "Tests/scripts/vm-guest-exec.bats",
+    "test": "a legacy, partial or undecodable exec record cannot qualify a clean exit"
    }
   ],
   "red": [],
@@ -1918,6 +1926,10 @@
    {
     "suite": "Tests/scripts/vm-input-evidence.bats",
     "test": "each family rejects nonzero partial typed error and dry-run completion without retry"
+   },
+   {
+    "suite": "Tests/scripts/vm-guest-exec.bats",
+    "test": "a clean CLI status with a withdrawing diagnostic stays unavailable"
    }
   ],
   "red": [
@@ -2352,6 +2364,10 @@
    {
     "suite": "Tests/scripts/vm-guest-exec.bats",
     "test": "missing and wrongly typed envelope fields cannot qualify matching text"
+   },
+   {
+    "suite": "Tests/scripts/vm-guest-exec.bats",
+    "test": "a legacy, partial or undecodable exec record cannot qualify a clean exit"
    }
   ],
   "red": [],
@@ -2477,6 +2493,10 @@
    {
     "suite": "Tests/scripts/vm-guest-exec.bats",
     "test": "failed downstream confirmation is ordinal evidence and cannot restore input"
+   },
+   {
+    "suite": "Tests/scripts/vm-guest-exec.bats",
+    "test": "a clean CLI status with a withdrawing diagnostic stays unavailable"
    }
   ],
   "red": [
@@ -3855,6 +3875,10 @@
    {
     "suite": "Tests/scripts/vm-settings-containment.bats",
     "test": "the manifest digests each retained file of a failed run"
+   },
+   {
+    "suite": "Tests/scripts/vm-guest-exec.bats",
+    "test": "a legacy, partial or undecodable exec record cannot qualify a clean exit"
    }
   ],
   "red": [
@@ -9901,7 +9925,7 @@
   "red": [],
   "owner": null,
   "authority": "docs/verification/settings-activation/ORDERING-CLICK-RESULTS.md#K86 findings and k87 integration",
-  "note": "The substring stop of the v2.7.0 poll is an accepted availability limit."
+  "note": "The substring stop of the v3.0.0 poll is an accepted availability limit."
  },
  {
   "id": "D308",

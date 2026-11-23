@@ -61,9 +61,9 @@ _physical_coordinates() {
 
 _physical_pointer() {
     local operation="$1" action="$2" x="$3" y="$4" predicate
-    # The real v2.7.0 payloads report actual coordinates; click also returns the
+    # The real v3.0.0 payloads report actual coordinates; click also returns the
     # default left button and count=1, while down/up return the left button.
-    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/commands/input.rs
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/commands/input.rs
     predicate=".x == ${x} and .y == ${y}"
     case "${action}" in
     click) predicate+=' and .button == "left" and .count == 1' ;;
@@ -80,7 +80,7 @@ _physical_resize_frame() {
     }
     # WindowInfo requires geometry/app/type/focus; titles may be absent on other
     # entries. Require one usable target on the same original complete list.
-    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-protocol/src/window_info.rs
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-protocol/src/window_info.rs
     predicate='(.windows | type == "array") and all(.windows[];
         type == "object" and (.appName | type == "string")
         and (.windowType | type == "string") and (.focused | type == "boolean")

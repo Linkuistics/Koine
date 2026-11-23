@@ -134,7 +134,7 @@ assert_click_latched() {
         nonzero) echo 255 >"${click_replies}/1.exit" ;;
         partial) echo '{"schema_version":' >"${click_replies}/1.json" ;;
         error | error-zero)
-            # v2.7.0 output.rs: top-level code/message; OCR_TIMEOUT exits 7.
+            # v3.0.0 output.rs: top-level code/message; OCR_TIMEOUT exits 7.
             # error-zero is deliberately contradictory completion, not native.
             echo '{"schema_version":"1.0","ok":false,"code":"OCR_TIMEOUT","message":"OCR timed out","remediation":"Increase the OCR deadline or reduce screen complexity, then retry.","details":{}}' >"${click_replies}/1.json"
             if [[ "${problem}" == error ]]; then echo 7 >"${click_replies}/1.exit"; fi
@@ -436,8 +436,8 @@ assert_click_latched() {
 
 @test "typed TEXT_NOT_FOUND with CLI status 3 is unavailable and never a missing target (k164)" {
     local mode
-    # v2.7.0 output.rs: top-level code and message, and exit_code_for gives 3.
-    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/output.rs
+    # v3.0.0 output.rs: top-level code and message, and exit_code_for gives 3.
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/output.rs
     for mode in record deferred; do
         reset_click "text-not-found-${mode}"
         echo '{"schema_version":"1.0","ok":false,"code":"TEXT_NOT_FOUND","message":"no text","remediation":"","details":{}}' >"${click_replies}/1.json"

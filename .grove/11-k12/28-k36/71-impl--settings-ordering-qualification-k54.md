@@ -210,3 +210,7 @@ Read `docs/verification/settings-activation/ORDERING-STORAGE-PLAN.md`.
   holds the latest macOS 27 release. If the final image differs from 27.0.1, ask
   the owner to accept that guest amendment. The historical symptom was observed
   on 27.0.1, so a result on another release may not exercise the same behaviour.
+- Open before the freeze, from k177: the harness now refuses a legacy exec record.
+  Establish that the final golden holds an agent from TestAnyware 2.9.0 or later.
+  Otherwise every exec is unavailable. The upstream menu bar repair needs a golden
+  that 3.0.0 built.

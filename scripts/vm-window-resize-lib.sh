@@ -27,7 +27,7 @@ drag_window_corner() {
     # still comes from the held points alone.
     _physical_sleep resize-prepare-wait 0.5 || return
     # mouse-down sends a held-button mask at every coordinate; ordinary move
-    # sends mask zero: https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-rfb/src/input.rs#L115-L146
+    # sends mask zero: https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-rfb/src/input.rs#L115-L146
     # Separate paced requests grew a fresh window where unpaced drag did not.
     # This is not a persistent connection or an isolated timing diagnosis.
     for ((i = 0; i <= 10; i++)); do

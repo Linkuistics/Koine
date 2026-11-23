@@ -107,6 +107,37 @@ assert_ui_latched() {
     [[ ! -e "${ui_root}/unavailable" ]]
 }
 
+@test "a menu bar of the front regular app supplies no scenario element" {
+    # v3.0.0 can return this pseudo-window while a background helper has focus.
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/agents/macos/Sources/TestAnywareAgent/MenuBarOwner.swift
+    local bar n=0 window condition
+    bar='{"appName":"OWNER","title":"Menu Bar","windowType":"menuBar","focused":false,"positionX":0,"positionY":0,"sizeWidth":1920,"sizeHeight":24,"elements":[{"role":"menubaritem","platformRole":"AXMenuBarItem","label":"OWNER","enabled":true,"focused":false,"childCount":0,"actions":["press"]}]}'
+    while IFS='|' read -r window condition; do
+        n=$((n + 1))
+        ui_fixture | jq --arg window "${window}" --argjson bar "${bar//OWNER/${window}}" \
+            '.windows[0].appName = $window | .windows[0].elements = [] | .windows += [$bar]' \
+            >"${ui_replies}/${n}.json"
+        run --separate-stderr read_guest_element "${ui_root}" "menu-bar-${n}" "${window}" "${condition}" optional
+        [[ "${status}" == 0 && "${output}" == null ]]
+    done <<'ROWS'
+Koine|.id=="grant-label"
+Koine|.id=="accessibility-status"
+Koine|.id=="login-launch"
+Koine|(.id // "") | startswith("request-label-")
+Koine|(.id // "") | startswith("deny-")
+Koine|.platformRole=="AXScrollArea"
+System Settings|.role=="button" and .label=="Add"
+System Settings|.label=="Koine" or .value=="Koine"
+ROWS
+    # The control: the same read does select a menu bar item that its selector names.
+    n=$((n + 1))
+    ui_fixture | jq --argjson bar "${bar//OWNER/Koine}" \
+        '.windows[0].elements = [] | .windows += [$bar]' >"${ui_replies}/${n}.json"
+    run --separate-stderr read_guest_element "${ui_root}" menu-bar-control Koine '.label=="Koine"' optional
+    [[ "${status}" == 0 ]]
+    jq -e '.platformRole == "AXMenuBarItem"' <<<"${output}"
+}
+
 @test "nonzero partial typed error and dry run never become absence or retry" {
     local problem
     for problem in exit partial error dry-run; do
@@ -388,8 +419,8 @@ assert_ui_latched() {
 
 @test "typed ELEMENT_NOT_FOUND with CLI status 3 is unavailable and never an absent element (k164)" {
     local mode
-    # v2.7.0 output.rs: top-level code and message, and exit_code_for gives 3.
-    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/output.rs
+    # v3.0.0 output.rs: top-level code and message, and exit_code_for gives 3.
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/output.rs
     for mode in optional optional-vertical position-y poll-absent; do
         reset_ui "element-not-found-${mode}"
         echo '{"schema_version":"1.0","ok":false,"code":"ELEMENT_NOT_FOUND","message":"no element","remediation":"","details":{}}' >"${ui_replies}/1.json"

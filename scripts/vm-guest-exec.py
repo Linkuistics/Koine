@@ -5,6 +5,7 @@
 from __future__ import annotations
 
 import argparse
+import base64
 import fcntl
 import hashlib
 import json
@@ -24,6 +25,21 @@ import vm_exec_reads
 from vm_capture_artifact import inspect_capture
 
 UNAVAILABLE = 125
+# Each stderr line below accompanies CLI status 0, but the attempt did not
+# establish its result. The size wait expired or did not run, OCR repeated a
+# failed request, or the guest did not confirm that it read the input.
+# https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-vm/src/lifecycle.rs
+# https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-vm/src/vnc_size_wait.rs
+# https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-ocr-client/src/engine.rs
+# https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/commands/mod.rs
+UNQUALIFIED_DIAGNOSTICS: dict[tuple[str, str | None], tuple[bytes, ...]] = {
+    ("vm", "start"): (b"warning: VNC size wait:", b"VNC size wait skipped:"),
+    ("screen", "find-text"): (b"testanyware: the Vision worker failed",),
+    ("input", None): (
+        b"warning: the guest gave no sign",
+        b"warning: the guest connection ended before",
+    ),
+}
 
 
 def timestamp() -> str:
@@ -172,6 +188,54 @@ def upload_record(root: Path, ordinal: str, remote: str) -> dict[str, object]:
     return transfer
 
 
+def exec_record_problem(envelope: dict[str, object]) -> str:
+    """Name why an exec envelope is not a complete clean agent record."""
+    # A legacy agent gives an unknown outcome, which never counts as success.
+    # An incomplete stream is a prefix. The macOS projection turns a stream that
+    # is not UTF-8 into empty text, so the exact bytes must decode.
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/docs/specs/guest-command-lifecycle.md
+    if envelope.get("record") != "agent" or envelope.get("legacy_projection") != (
+        "macos"
+    ):
+        return "exec reply is not a typed macOS agent record"
+    outcome = envelope.get("outcome")
+    if not (
+        isinstance(outcome, dict)
+        and set(cast(dict[str, object], outcome)) == {"kind", "exit_code"}
+        and cast(dict[str, object], outcome)["kind"] == "exited"
+        and type(cast(dict[str, object], outcome)["exit_code"]) is int
+        and cast(dict[str, object], outcome)["exit_code"] == 0
+    ):
+        return "exec outcome is not a clean exit"
+    evidence = envelope.get("evidence")
+    if not isinstance(evidence, dict):
+        return "exec record has no stream evidence"
+    for name in ("stdout", "stderr"):
+        stream = cast(dict[str, object], evidence).get(name)
+        if not isinstance(stream, dict):
+            return f"exec record has no {name} evidence"
+        fields = cast(dict[str, object], stream)
+        encoded = fields.get("base64")
+        if fields.get("capture") != "complete" or not isinstance(encoded, str):
+            return f"exec {name} capture is not complete"
+        try:
+            base64.b64decode(encoded, validate=True).decode("utf-8")
+        except ValueError:
+            return f"exec {name} bytes are not valid UTF-8"
+    return ""
+
+
+def diagnostic_problem(argv: list[str], stderr: bytes) -> str:
+    """Name a stderr line that withdraws the result of a clean CLI status."""
+    prefixes = UNQUALIFIED_DIAGNOSTICS.get(
+        (argv[1], argv[2]), ()
+    ) + UNQUALIFIED_DIAGNOSTICS.get((argv[1], None), ())
+    for line in stderr.splitlines():
+        if line.strip().startswith(prefixes):
+            return f"CLI diagnostic withdraws the result: {line.strip()!r}"
+    return ""
+
+
 def validate_response(
     attempt: Path,
     command: str,
@@ -189,13 +253,14 @@ def validate_response(
         value = envelope.get(field)
         if isinstance(value, str):
             (attempt / f"guest.{field}").write_bytes(value.encode("utf-8"))
-    # v2.7.0 puts these fields at top level; CLI zero only proves clean spawn.
-    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/commands/file.rs
+    # v3.0.0 puts these fields at top level. CLI zero proves only a sound
+    # transport and record, because a guest outcome never sets `ok` to false.
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/commands/file.rs
     if cli_status != 0:
         return f"CLI exit {cli_status}"
     # Non-exec commands share only this base envelope; callers must validate the
     # actual command payload, then verify any artifact/downstream consequence.
-    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/output.rs
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/output.rs
     if not (
         envelope.get("schema_version") == "1.0"
         and envelope.get("ok") is True
@@ -211,6 +276,10 @@ def validate_response(
         and isinstance(envelope.get("stderr"), str)
     ):
         return "missing, invalid or unsuccessful exec fields"
+    if transport in {"exec", "read"}:
+        problem = exec_record_problem(envelope)
+        if problem:
+            return problem
     if transport == "read":
         return ""  # run_locked parses the exact grammar of the checked read.
     with (
@@ -260,7 +329,7 @@ def cli_argv(
         raise ValueError("screen capture requires the checked capture backend")
     # Upload reports only the local size; download writes a caller path. The
     # checked transfer backend owns the identity checks and the output path.
-    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/commands/file.rs
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/commands/file.rs
     if (family, action) in {("file", "upload"), ("file", "download")} and not (
         checked_transfer
     ):
@@ -276,14 +345,14 @@ def cli_argv(
             ("vm", "stop"),
         }
         # Snapshot's --open-menu sends VNC clicks before reading the tree.
-        # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/commands/agent.rs
+        # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/commands/agent.rs
         if (family, action) not in collection_actions or any(
             arg.split("=", 1)[0] == "--open-menu" for arg in arguments
         ):
             raise ValueError("evidence class permits only collection and exact VM stop")
     # Lifecycle commands use positional IDs/--id, not ConnectionOptions. Bind
     # those explicitly; endpoint commands instead receive the pinned --vm.
-    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/main.rs
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/main.rs
     if family == "vm":
         if action == "start":
             return ["testanyware", *arguments, "--id", vm, "--json"]
@@ -349,7 +418,7 @@ def run_locked(
         argv = cli_argv(["file", "upload", *arguments], vm, kind, checked_transfer=True)
     else:
         # Explicit --vm wins over ambient VM/agent flags. No --connect is admitted.
-        # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/resolve.rs
+        # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/resolve.rs
         argv = ["testanyware", "file", "exec", "--vm", vm, "--json", "--", command]
     expected: dict[str, object] | None = None
     if transport == "download" and len(arguments) == 2:
@@ -366,7 +435,7 @@ def run_locked(
     if transport == "upload":
         # The tagged client stats the file, then streams it, and reports that
         # size as `bytes`. Digest it here, under the lock, before dispatch.
-        # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-agent-client/src/lib.rs
+        # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-agent-client/src/lib.rs
         try:
             local_before = inspect_file(Path(arguments[0]))
         except (OSError, ValueError) as error:
@@ -379,9 +448,9 @@ def run_locked(
         )
     if transport == "download":
         # The tagged client streams into a hidden sibling of download.bin. It
-        # deletes that file on a streaming error, so the failed bytes are then
-        # unavailable. A killed CLI leaves the file, and this backend keeps it.
-        # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-agent-client/src/lib.rs#L456-L485
+        # deletes that file on a failure, SIGINT or SIGTERM, so the failed bytes
+        # are then unavailable. SIGKILL leaves the file, and this backend keeps it.
+        # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-agent-client/src/lib.rs#L559-L589
         argv = cli_argv(
             ["file", "download", arguments[0], str(download_path)],
             vm,
@@ -402,7 +471,7 @@ def run_locked(
             [*capture_args, "-o", str(artifact_path)], vm, kind, checked_capture=True
         )
         # Validate actual capture fields and chosen path, not a constant predicate.
-        # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/commands/screen.rs
+        # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/commands/screen.rs
         predicate = (
             f".path == {json.dumps(str(artifact_path))} and "
             'all(.width, .height; type == "number" and floor == . and . > 0 and . <= 4294967295)'
@@ -475,6 +544,8 @@ def run_locked(
             reason = validate_response(
                 attempt, command, cli_status, predicate, lock_fd, transport
             )
+            if not reason and transport == "cli":
+                reason = diagnostic_problem(argv, (attempt / "raw.stderr").read_bytes())
             if not reason and transport == "read":
                 envelope = read_object(attempt / "raw.stdout")
                 try:

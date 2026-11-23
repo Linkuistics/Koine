@@ -23,8 +23,8 @@ def file_identity(value: os.stat_result) -> tuple[int, int, int, int, int]:
 
 
 def inspect_capture(path: Path, width: int, height: int) -> dict[str, object]:
-    # The v2.7.0 encoder writes RgbaImage as PNG (8-bit, noninterlaced).
-    # https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-vm/src/capture.rs
+    # The v3.0.0 encoder writes RgbaImage as PNG (8-bit, noninterlaced).
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-vm/src/capture.rs
     # PNG structure/CRC/filter rules: https://www.w3.org/TR/2025/REC-png-3-20250624/
     if not 0 < width <= 2147483647 or not 0 < height <= 2147483647:
         raise ValueError("capture dimensions outside PNG range")

@@ -2,8 +2,8 @@
 # Source-only VM start, exact stop and inventory evidence. Caller adoption,
 # the slot budget and containment stay with the scenario and the finite caller.
 # Payload shapes come from the tagged handlers:
-# https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-cli/src/commands/vm.rs
-# https://github.com/Linkuistics/TestAnyware/blob/v2.7.0/cli-rs/crates/testanyware-vm/src/listing.rs
+# https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/commands/vm.rs
+# https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-vm/src/listing.rs
 # shellcheck source=scripts/vm-guest-exec-lib.sh
 source "${BASH_SOURCE[0]%/*}/vm-guest-exec-lib.sh"
 
