@@ -40,6 +40,14 @@ UNQUALIFIED_DIAGNOSTICS: dict[tuple[str, str | None], tuple[bytes, ...]] = {
         b"warning: the guest connection ended before",
     ),
 }
+# A completed size wait reports only its first reading and its session count.
+# A first size and two sessions prove that no session failed. Any other form can
+# hide a failed session and its retry, so only this exact line stays clean.
+# https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-vm/src/vnc_size_wait.rs#L60-L136
+CLEAN_SIZE_WAIT = re.compile(
+    rb"VNC size wait: the first session read \d+x\d+\. "
+    rb"Session 2 read \d+x\d+ after \d+\.\d{2} s\."
+)
 
 
 def timestamp() -> str:
@@ -231,8 +239,13 @@ def diagnostic_problem(argv: list[str], stderr: bytes) -> str:
         (argv[1], argv[2]), ()
     ) + UNQUALIFIED_DIAGNOSTICS.get((argv[1], None), ())
     for line in stderr.splitlines():
-        if line.strip().startswith(prefixes):
-            return f"CLI diagnostic withdraws the result: {line.strip()!r}"
+        text = line.strip()
+        if text.startswith(prefixes) or (
+            (argv[1], argv[2]) == ("vm", "start")
+            and text.startswith(b"VNC size wait:")
+            and not CLEAN_SIZE_WAIT.fullmatch(text)
+        ):
+            return f"CLI diagnostic withdraws the result: {text!r}"
     return ""
 
 
@@ -449,7 +462,7 @@ def run_locked(
     if transport == "download":
         # The tagged client streams into a hidden sibling of download.bin. It
         # deletes that file on a failure, SIGINT or SIGTERM, so the failed bytes
-        # are then unavailable. SIGKILL leaves the file, and this backend keeps it.
+        # are then unavailable. SIGHUP and SIGKILL leave it, and this backend keeps it.
         # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-agent-client/src/lib.rs#L559-L589
         argv = cli_argv(
             ["file", "download", arguments[0], str(download_path)],

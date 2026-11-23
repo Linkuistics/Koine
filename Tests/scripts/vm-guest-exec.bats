@@ -481,9 +481,31 @@ ROWS
         [[ "${status}" == 0 ]]
         [[ ! -e "${exec_root}/unavailable" ]]
     done <<'ROWS'
-vm|start|VNC size wait: the first session read 1280x720. Session 3 read 1920x1080 after 0.75 s.
+vm|start|VNC size wait: the first session read 1280x720. Session 2 read 1920x1080 after 0.26 s.
 screen|size|testanyware: the Vision worker failed (response timeout); trying a new worker
 agent|windows|warning: the guest gave no sign within 10 s that it read the input
+ROWS
+}
+
+@test "a size wait that can hide a failed session stays unavailable" {
+    local ordinal=0 line
+    printf '%s\n' '{"schema_version":"1.0","ok":true}' >"${exec_reply}"
+    while IFS= read -r line; do
+        ordinal=$((ordinal + 1))
+        exec_root="${BATS_TEST_TMPDIR}/size-wait-${ordinal}"
+        printf 'progress\n%s\n' "${line}" >"${exec_stderr}"
+        init_guest_evidence "${exec_root}" exact-vm
+        run cli_guest_evidence "${exec_root}" one-shot start true -- vm start --platform macos
+        [[ "${status}" == 125 ]]
+        [[ -f "${exec_root}/unavailable" ]]
+        jq -e '.outcome == "unavailable" and .cli_status == 0' "${exec_root}/000001/result.json"
+        cmp "${exec_stderr}" "${exec_root}/000001/raw.stderr"
+    done <<'ROWS'
+VNC size wait: the first session read no size (connection refused). Session 2 read 1920x1080 after 0.26 s.
+VNC size wait: the first session read 1280x720. Session 3 read 1920x1080 after 0.75 s.
+VNC size wait: the first session read 1280x720. Session 12 read 1920x1080 after 3.01 s.
+VNC size wait: the first session read 1280x720. Session 2 read 1920x1080 after 0.26 s. trailing
+VNC size wait: a form that the pinned binary does not print
 ROWS
 }
 

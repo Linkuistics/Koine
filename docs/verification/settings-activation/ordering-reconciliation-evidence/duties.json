@@ -938,6 +938,10 @@
    {
     "suite": "Tests/scripts/vm-guest-exec.bats",
     "test": "a clean CLI status with a withdrawing diagnostic stays unavailable"
+   },
+   {
+    "suite": "Tests/scripts/vm-guest-exec.bats",
+    "test": "a size wait that can hide a failed session stays unavailable"
    }
   ],
   "red": [
@@ -1930,6 +1934,10 @@
    {
     "suite": "Tests/scripts/vm-guest-exec.bats",
     "test": "a clean CLI status with a withdrawing diagnostic stays unavailable"
+   },
+   {
+    "suite": "Tests/scripts/vm-guest-exec.bats",
+    "test": "a size wait that can hide a failed session stays unavailable"
    }
   ],
   "red": [
@@ -2497,6 +2505,10 @@
    {
     "suite": "Tests/scripts/vm-guest-exec.bats",
     "test": "a clean CLI status with a withdrawing diagnostic stays unavailable"
+   },
+   {
+    "suite": "Tests/scripts/vm-guest-exec.bats",
+    "test": "a size wait that can hide a failed session stays unavailable"
    }
   ],
   "red": [
@@ -3879,6 +3891,10 @@
    {
     "suite": "Tests/scripts/vm-guest-exec.bats",
     "test": "a legacy, partial or undecodable exec record cannot qualify a clean exit"
+   },
+   {
+    "suite": "Tests/scripts/vm-guest-exec.bats",
+    "test": "a size wait that can hide a failed session stays unavailable"
    }
   ],
   "red": [

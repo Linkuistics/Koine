@@ -56,16 +56,22 @@ wider tolerance.
   specification forbids counting a legacy `unknown` outcome as success. An
   incomplete stream is only a prefix. The macOS projection turns a stream that is
   not UTF-8 into empty text, and a checked read could take that text as a negative.
-- **Withdrawn CLI results.** Five stderr diagnostics now make a status 0 attempt
-  unavailable. The table below names them. The installed binary contains each
-  exact string.
+- **Withdrawn CLI results.** The stderr diagnostics in the table below now make a
+  status 0 attempt unavailable. The installed binary contains each exact prefix.
+- **Completed size wait.** Finding F1 of the
+  [amendment review](ORDERING-TESTANYWARE-3-REVIEW.md) showed that a completed
+  wait can hide a failed session. k179 keeps one form clean: the first session
+  read a size, and session 2 read the target. Those two sessions both returned a
+  size, so neither failed. Each other form is unavailable.
 - **Download comment.** The client now removes its temporary file on a failure,
-  SIGINT or SIGTERM. Only SIGKILL leaves it.
+  SIGINT or SIGTERM. SIGHUP and SIGKILL leave it. A TERM or HUP to the adapter
+  alone can leave the CLI running under its writer lock.
 
 | Command | Diagnostic prefix | Why the result is withdrawn |
 |---|---|---|
 | `vm start` | `warning: VNC size wait:` | No session read the set size in 30 seconds |
 | `vm start` | `VNC size wait skipped:` | The start does not know the size, so it did not wait |
+| `vm start` | `VNC size wait:`, except the exact two-session form | A failed session and its retry can be absent from the line |
 | `screen find-text` | `testanyware: the Vision worker failed` | OCR repeated a failed request |
 | `input` | `warning: the guest gave no sign` | The guest gave no sign that it read the input |
 | `input` | `warning: the guest connection ended before` | The connection ended before that sign |
@@ -80,7 +86,7 @@ this earlier gap, so 3.0.0 did not introduce it.
 | Host needs the latest macOS 27 and Tart | Met now. k54 pins both at the freeze |
 | VNC keeper removed | Compatible. The harness takes no keepalive captures and does not rely on the keeper |
 | A golden holds the latest macOS 27 release | Open for k54. The plan still names guest macOS 27.0.1 |
-| `vm start` ends with the size wait | A completed wait stays clean. An expired or skipped wait is unavailable |
+| `vm start` ends with the size wait | A wait with no line or the exact two-session line stays clean. Each other completed, expired or skipped wait is unavailable |
 | OCR replaces a failed worker and resends once | Conflicts with one-attempt evidence if accepted. The attempt is unavailable |
 | ZRLE decodes a stale-size rectangle | Compatible. The capture check still reads the artifact and its size |
 | `screen capture` crops by the captured frame | Compatible. The envelope size must still equal the PNG size |
@@ -106,6 +112,7 @@ These controls were added:
 - `a legacy, partial or undecodable exec record cannot qualify a clean exit`
 - `a clean CLI status with a withdrawing diagnostic stays unavailable`
 - `a diagnostic stays clean when it withdraws nothing for that command`
+- `a size wait that can hide a failed session stays unavailable`
 - `a menu bar of the front regular app supplies no scenario element`
 
 The source changes in `validate_response` and `run_locked` only add unavailable
@@ -114,8 +121,20 @@ Each disposition stands. Rows D031, D066 and D090 now cite the diagnostic contro
 Rows D056, D088 and D130 now cite the record control. The note of D307 now names
 the 3.0.0 poll, because `find.rs` keeps the same substring match.
 
+k179 added the size wait control to rows D031, D066, D090 and D130.
+
 ## Limits
 
+- A clean start that needs a third session is also unavailable, because its line
+  cannot show that no session failed. The protocol has no replacement slot, so
+  that start stops the sequence.
+- The upstream
+  [measurement](https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/docs/research/tart-vnc-stale-first-size-macos-27.md)
+  read the real size at session 2 on 7 of 7 guests. It gives no rate for k54.
+- The `input` prefixes do not cover the same two warnings from
+  `agent snapshot --open-menu`. A one-shot adapter call with that flag still
+  accepts them. The evidence class refuses the flag, and the scenario snapshot
+  helper does not send it.
 - The golden image must hold an agent from TestAnyware 2.9.0 or later, or every
   exec is unavailable. The upstream menu bar repair needs a golden that 3.0.0
   built.
