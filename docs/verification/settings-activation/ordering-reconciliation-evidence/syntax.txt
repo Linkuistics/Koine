@@ -1,0 +1,35 @@
+$ syntax-parse.py
+lines 27 multi-file lines 23 files never parsed by their line 47
+all files 71 harness files 37
+failures {}
+harness files unparsed by their line: 22
+  bats --count 0 Tests/scripts/vm-capture-evidence.bats
+  bats --count 0 Tests/scripts/vm-exec-one-shot-evidence.bats
+  bats --count 0 Tests/scripts/vm-exec-one-shot-host.bats
+  bats --count 0 Tests/scripts/vm-exec-read-evidence.bats
+  bats --count 0 Tests/scripts/vm-exec-read-host.bats
+  bats --count 0 Tests/scripts/vm-file-lifecycle-evidence.bats
+  bats --count 0 Tests/scripts/vm-input-evidence.bats
+  bats --count 0 Tests/scripts/vm-physical-evidence.bats
+  bats --count 0 Tests/scripts/vm-settings-prefix.bats
+  bats --count 0 Tests/scripts/vm-settings-scenario.bats
+  bats --count 0 Tests/scripts/vm-sysevents-evidence.bats
+  bats --count 0 Tests/scripts/vm-sysevents-host.bats
+  bats --count 0 Tests/scripts/vm-verify-start.bats
+  bats --count 0 Tests/scripts/vm-window-evidence.bats
+  bash -n 0 scripts/vm-lifecycle-evidence-lib.sh
+  bash -n 0 scripts/vm-menu-pointer-lib.sh
+  bash -n 0 scripts/vm-verify-desktop-lib.sh
+  bash -n 0 scripts/vm-verify-installations.sh
+  bash -n 0 scripts/vm-verify-lib.sh
+  bash -n 0 scripts/vm-verify-menu-bar.sh
+  bash -n 0 scripts/vm-verify.sh
+  bash -n 0 scripts/vm-window-resize-lib.sh
+control: bash -n good bad = 0
+control: bash -n bad = 2
+control: bats --count bad = 1
+control: bash -n valid bats = 2
+$ syntax-shellcheck.py
+harness task-file pairs unparsed by bash -n: 28 missing from the same task shellcheck: []
+control: shellcheck on a syntax error = 1
+control: shellcheck on a broken bats file = 1

@@ -1,0 +1,39 @@
+# Private wait mutations. Each ran on a disposable copy of the tracked files.
+
+## One wait before the TextEdit quit, in the scenario and the prefix
+$ mutation: settings_sleep textedit-settle 8 -> 9 in the scenario and its prefix
+scripts/vm-verify-menu-bar-prefix.sh is the first 154 lines (8913 bytes) of scripts/vm-verify-menu-bar.sh, through the TextEdit quit; line 155 onwards is not in the prefix
+prefix check status 0
+bats status 1
+ok 68
+not ok 3
+not ok 2 a changed, missing or extra byte in the prefix fails the check
+not ok 8 a signal inside the prefix stops it as it stops the scenario
+not ok 19 HUP during a scenario wait records the signal and sends nothing more
+
+## Eight waits after the TextEdit quit
+$ mutation: every explicit settings_sleep after the TextEdit quit gains one second
+scripts/vm-verify-menu-bar-prefix.sh is the first 154 lines (8913 bytes) of scripts/vm-verify-menu-bar.sh, through the TextEdit quit; line 155 onwards is not in the prefix
+prefix check status 0
+bats status 1
+1..113
+ok 112
+not ok 1
+not ok 3 a scenario change before the quit fails the check until the prefix is extracted again
+
+## Seven waits after the TextEdit quit
+$ mutation: seven explicit waits after the TextEdit quit each gain one second (resize-front stays 1)
+settings_sleep resize-front 1
+settings_sleep shortcut-type 2
+settings_sleep shortcut-cut 2
+settings_sleep shortcut-paste 2
+settings_sleep requests-front 3
+settings_sleep requests-deny-1 5
+settings_sleep requests-deny-2 5
+settings_sleep accessibility-front 3
+scripts/vm-verify-menu-bar-prefix.sh is the first 154 lines (8913 bytes) of scripts/vm-verify-menu-bar.sh, through the TextEdit quit; line 155 onwards is not in the prefix
+prefix check status 0
+bats status 0
+1..113
+ok 113
+not ok 0

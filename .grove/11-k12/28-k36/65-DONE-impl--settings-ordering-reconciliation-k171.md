@@ -38,3 +38,26 @@ the changed source and controls that this reconciliation must consume.
 k57 found that `bash -n A B` parses only A, and 18 Taskfile lines use that form.
 `shellcheck` still parses those files. Record a disposition for the harness
 files among them.
+
+## Decisions (running log)
+
+**Enumerate, then classify.** The ledger holds every distinct sentence of the
+eight contracts. A sampled duty list could omit a duty without any signal.
+
+**The k62 comparison is a guide.** k165 to k173 changed its subjects, so each
+duty is classified again against the current source.
+
+**Three gaps become three sibling leaves before k54.** k174 owns the interrupted
+outcome, k175 the baseline and AXValue controls, and k176 the storage plan and
+private path guard. They share the k36 scope, so no new node earns its place.
+
+**The wait gap is measured.** A first mutation failed three controls, so the
+claim that any wait can change was wrong. Seven later waits changed with all 113
+tests passing, and the report states only that result.
+
+**The `bash -n A B` lines stay.** `shellcheck` in the same task parses each
+skipped harness file. A direct repair would reject valid Bats files.
+
+**No review chain is cut for this leaf.** It changes no harness behaviour. Its
+ledger check has its own failing controls, and k174 to k176 decide their own
+reviews.

@@ -1632,6 +1632,18 @@ tasks:
       - uvx pyright@1.1.414 scripts/settings-ordering-sequence.py
       - bats Tests/scripts/vm-settings-audits.bats
 
+  check:settings-duty-ledger:
+    desc: Check without a VM that the Settings harness duty ledger holds every sentence of the eight archived contracts and that each cited source symbol, exact control name, record and authority resolves. A resolved citation does not prove the disposition. Pass -- --require-closed to refuse an open gap, as the k54 freeze must. It starts no clone and establishes no native acceptance
+    cmds:
+      - shellcheck -x Tests/scripts/vm-settings-duty-ledger.bats
+      - shfmt -d -i 4 Tests/scripts/vm-settings-duty-ledger.bats
+      - python3 -m py_compile scripts/check-settings-duty-ledger.py
+      - uvx ruff@0.17.3 check scripts/check-settings-duty-ledger.py
+      - uvx ruff@0.17.3 format --check scripts/check-settings-duty-ledger.py
+      - uvx pyright@1.1.414 scripts/check-settings-duty-ledger.py
+      - bats Tests/scripts/vm-settings-duty-ledger.bats
+      - python3 scripts/check-settings-duty-ledger.py {{.CLI_ARGS}}
+
   check:vm-verify-start:
     desc: Check without a VM that the Settings scenario starts no VNC keepalive loop and that another start_vm caller still starts it
     cmds:

@@ -153,3 +153,16 @@ Before the freeze, ask the owner to choose one of these options:
   version.
 
 Do not start E01 on another version without that decision.
+
+## K171 reconciliation handoff
+
+Read `docs/verification/settings-activation/ORDERING-RECONCILIATION.md`.
+
+- Before the freeze, run `task check:settings-duty-ledger -- --require-closed`.
+  An open gap refuses the freeze. Leaves k174, k175 and k176 own the open gaps.
+- A resolved citation does not prove a disposition. If a source or control
+  changes after its row, recheck that row and its earned review.
+- The guest copy of the two uploaded scripts stays unproved. This is an accepted
+  limit. A scenario download needs a new human amendment.
+- The `bash -n A B` Taskfile lines stay unchanged. `shellcheck` in the same task
+  parses each harness file that those lines skip.

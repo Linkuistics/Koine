@@ -1,0 +1,45 @@
+{
+  "sources": [
+    {
+      "url": "https://developer.apple.com/documentation/appkit/nsapplication/activate%28%29.md",
+      "retrievedAt": "2026-11-23T02:44:17.138689+00:00",
+      "status": 200,
+      "sha256": "0bc5053f9f225578c9ac4ab1015fec5ea346667d284fec5b991fab2bc26e90c3",
+      "bytes": 1234,
+      "checkedExcerpt": "calling this method doesn’t guarantee app activation",
+      "matchesK52Receipt": true
+    },
+    {
+      "url": "https://developer.apple.com/documentation/appkit/nswindow/makekeyandorderfront%28_%3A%29.md",
+      "retrievedAt": "2026-11-23T02:44:17.732892+00:00",
+      "status": 200,
+      "sha256": "cb4103bc06c42d62b13b2a480a4eafbed61b30fd6ac3ba1ed7bd5e47af019057",
+      "bytes": 1758,
+      "checkedExcerpt": "Moves the window to the front of the screen list, within its level",
+      "matchesK52Receipt": true
+    },
+    {
+      "url": "https://developer.apple.com/documentation/appkit/nswindow/canbecomekey.md",
+      "retrievedAt": "2026-11-23T02:44:18.334602+00:00",
+      "status": 200,
+      "sha256": "eeba8f4a6d39e191a4609af67235fd97fadd63b9c0771e43b3e1a50ccf72dec6",
+      "bytes": 1658,
+      "checkedExcerpt": "if the window’s style mask includes the"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/appkit/nsapplication/yieldactivation%28to%3A%29.md",
+      "retrievedAt": "2026-11-23T02:44:18.924971+00:00",
+      "status": 200,
+      "sha256": "f0e806fae8e5667496f115e6bd9b7ba17657d26c57f9ec6bf8510729e0461479",
+      "bytes": 1173,
+      "checkedExcerpt": "yield"
+    }
+  ],
+  "sdkHeader": {
+    "path": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AppKit.framework/Headers/NSApplication.h",
+    "sha256": "33ed7a975710fc58046253c6d12f5210acb99418ae5e2c3f6a89c585fc3ee793",
+    "matchesK52Receipt": true,
+    "checkedExcerpt": "You shouldn’t assume the app will be active immediately"
+  },
+  "fullResponsesRetained": false
+}
