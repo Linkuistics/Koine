@@ -193,7 +193,8 @@ expect_kind() {
     qualify A01
     qualify A02
     qualify A03
-    [[ "$(report_field .outcome)" == accepted-finite-sample ]]
+    # Acceptance also needs the closing golden audit, which vm-settings-audits.bats runs.
+    [[ "$(report_field .outcome)" == awaiting-golden-audit ]]
     run seq_tool admit "${sequence}" A03
     expect_refused "no slot remains"
     run seq_tool admit "${sequence}" A04

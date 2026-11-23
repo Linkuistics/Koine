@@ -1,0 +1,17 @@
+{
+  "started": "2026-11-23T01:21:36.140702+00:00",
+  "ended": "2026-11-23T01:33:09.256033+00:00",
+  "statuses": {
+    "check:vm-settings-audits": 0,
+    "check:vm-settings-containment": 0,
+    "check:vm-settings-sequence": 0,
+    "check:vm-file-lifecycle-evidence": 0,
+    "check:vm-settings-prefix": 0
+  },
+  "subject_count": 4616,
+  "subjects_unchanged": true,
+  "changed_subjects": [],
+  "added_files": [],
+  "removed_files": [],
+  "output_sha256": "e223c0aff5b1da244065f48271939abeaa75b72238fab77ed451692583604284"
+}

@@ -1613,13 +1613,24 @@ tasks:
   check:vm-settings-containment:
     desc: Check without a VM the slot run of the finite Settings caller (one admitted Task entry in its own recorded process group, separate results, failed and interrupted collection, lock holders, held input, at most one exact stop and an independent inventory). A fake Task writes real receipts through the real facades, and one control uses the installed Task. It starts no clone and establishes no native acceptance
     cmds:
-      - shellcheck -x Tests/scripts/vm-settings-containment.bats Tests/scripts/fixtures/settings-run-task.sh
-      - shfmt -d -i 4 Tests/scripts/vm-settings-containment.bats Tests/scripts/fixtures/settings-run-task.sh
+      - shellcheck -x Tests/scripts/vm-settings-containment.bats Tests/scripts/fixtures/settings-run-task.sh Tests/scripts/fixtures/settings-audit-frozen.sh
+      - shfmt -d -i 4 Tests/scripts/vm-settings-containment.bats Tests/scripts/fixtures/settings-run-task.sh Tests/scripts/fixtures/settings-audit-frozen.sh
       - python3 -m py_compile scripts/settings-ordering-sequence.py Tests/scripts/fixtures/file-lifecycle-cli.py
       - uvx ruff@0.17.3 check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/file-lifecycle-cli.py
       - uvx ruff@0.17.3 format --check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/file-lifecycle-cli.py
       - uvx pyright@1.1.414 scripts/settings-ordering-sequence.py
       - bats Tests/scripts/vm-settings-containment.bats
+
+  check:vm-settings-audits:
+    desc: Check without a VM the per-item audits of the finite Settings caller (host inputs and bundle before and after each slot, the installed bundle at both endpoints, originals and partials against a manifest, the stopped golden image before A01 and after the sequence, the declared guest environment and process arguments, the diagnostic defaults, and the screenshot route to settlement), with extra, missing, changed and unavailable items. A fake Task writes real receipts through the real facades. It starts no clone and establishes no native acceptance
+    cmds:
+      - shellcheck -x Tests/scripts/vm-settings-audits.bats Tests/scripts/fixtures/settings-run-task.sh Tests/scripts/fixtures/settings-audit-frozen.sh
+      - shfmt -d -i 4 Tests/scripts/vm-settings-audits.bats Tests/scripts/fixtures/settings-run-task.sh Tests/scripts/fixtures/settings-audit-frozen.sh
+      - python3 -m py_compile scripts/settings-ordering-sequence.py Tests/scripts/fixtures/file-lifecycle-cli.py
+      - uvx ruff@0.17.3 check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/file-lifecycle-cli.py
+      - uvx ruff@0.17.3 format --check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/file-lifecycle-cli.py
+      - uvx pyright@1.1.414 scripts/settings-ordering-sequence.py
+      - bats Tests/scripts/vm-settings-audits.bats
 
   check:vm-verify-start:
     desc: Check without a VM that the Settings scenario starts no VNC keepalive loop and that another start_vm caller still starts it

@@ -1,0 +1,421 @@
+1..60
+not ok 1 inventory lists each file, symlink and directory with its identity
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 2 inventory refuses a root that does not exist
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 3 a receipt without a frozen declaration refuses the run before admission
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 4 a receipt that changed after readiness refuses the run before admission
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 5 a receipt with a path outside its root refuses the run
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 6 an extra input item before the slot holds the sequence and consumes no slot
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 7 a missing input item before the slot holds the sequence
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 8 a changed input item before the slot holds the sequence
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 9 a replaced item with an equal count is not equal
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 10 an unreadable input before the slot is unavailable and holds the sequence
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 11 a held sequence refuses every later run and replays from the ledger
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 12 a clean slot passes each audit and qualifies
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 13 an input that changes during the slot fails the audit after it
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 14 an input item added during the slot fails the audit after it
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 15 an input item removed during the slot fails the audit after it
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 16 the caller reads the installed bundle itself, before the stop
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 17 a guest file that changes during the slot fails the endpoint after it
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 18 an extra guest file fails the endpoint after the slot
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 19 a missing guest file fails the endpoint after the slot
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 20 a changed guest symlink target fails the endpoint after the slot
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 21 an installed bundle that differs from the frozen bundle fails both endpoints
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 22 a failed installed read after the slot is unavailable, not a mismatch
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 23 a failed installed read before the slot is unavailable
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 24 a run with no start attempt reads nothing from the guest
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 25 a saved artifact that matches its original passes
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 26 a saved artifact that differs from its original fails the audit
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 27 a saved guest stream that differs from its raw response fails the audit
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 28 a partial original stays named and does not fail its audit
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 29 a retained file that changes before settlement fails the audit
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 30 a retained file that disappears before settlement fails the audit
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 31 a file added to the evidence before settlement fails the audit
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 32 five clean slots wait for the closing golden audit, then accept
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 33 a golden item that changes before A01 holds the sequence
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 34 an extra golden item before A01 holds the sequence
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 35 a missing golden item before A01 holds the sequence
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 36 an E slot does not read the golden image
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 37 a golden item that changes after A01 prevents acceptance at the close
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 38 an unreadable golden item at the close prevents acceptance
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 39 the close refuses while a slot is unsettled, and it runs once
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 40 an ordinary receipt that differs from the focused receipt holds A01
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 41 G5: a different guest build fails the environment and stops the sequence
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 42 G5: a different product version fails the environment
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 43 G5: a different Gatekeeper state fails the environment
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 44 G5: an injected process argument fails the environment
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 45 G5: a failed system receipt is unavailable, not a mismatch
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 46 G5: a failed Gatekeeper receipt is unavailable
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 47 G5: a failed process read is unavailable
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 48 G5: no observed Koine process is unavailable, not a pass
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 49 the caller reads the defaults after the slot, and a clean absence passes
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 50 a diagnostic key after the slot fails the environment
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 51 a failed defaults read after the slot is unavailable, not an absence
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 52 one failed audit leaves the other results separate
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 53 a failed audit does not change a failed assertion
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 54 run stops before settlement, and the slot blocks the next slot
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 55 settle-run carries the screenshot audit into its phase
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 56 a recurrence becomes rejected only with a passed screenshot audit
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 57 a recurrence with an unpassed screenshot audit stays unresolved
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 58 settle-run refuses a malformed audit and leaves the slot unsettled
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 59 settle-run refuses a slot with no collected run, and a second settlement
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')
+not ok 60 settle-run cannot change a phase other than the screenshots
+# (from function `frozen_receipt' in file Tests/scripts/fixtures/settings-audit-frozen.sh, line 23,
+#  from function `setup' in test file Tests/scripts/vm-settings-audits.bats, line 43)
+#   `frozen_receipt focused "${focused_receipt}"' failed with status 2
+# usage: settings-ordering-sequence.py [-h]
+#                                      {declare,ready,admit,classify,settle,run,report} ...
+# settings-ordering-sequence.py: error: argument action: invalid choice: 'inventory' (choose from 'declare', 'ready', 'admit', 'classify', 'settle', 'run', 'report')

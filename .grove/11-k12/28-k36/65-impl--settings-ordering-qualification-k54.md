@@ -114,3 +114,17 @@ Run each slot through `settings-ordering-sequence.py run`. Read
 - A SIGKILL of the caller leaves its group running and the slot unsettled. Use
   the group in `process.json` for exact containment, and record that action
   separately. Every later slot stays NOT RUN.
+
+## K170 audits handoff
+
+Read `docs/verification/settings-activation/ORDERING-AUDITS-RESULTS.md`.
+
+- Write each readiness receipt in the frozen form that the report states. Use the
+  `inventory` verb for each tree. Name the signed subject `bundle`.
+- Run each slot with `run`, then audit its screenshots. Pass that result to
+  `settle-run`. Do not use `admit` or `settle` for a runtime slot.
+- After the last slot or a stop, run `close`. Acceptance needs its golden audit.
+- Before you rely on the golden inventory, check if a Tart clone adds or changes
+  a golden file. No control ran against a real image.
+- The scenario keeps its transcript and installed text files in
+  `.build/vm-verify`, outside the slot's output. Retain them separately.

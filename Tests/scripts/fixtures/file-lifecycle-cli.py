@@ -7,8 +7,10 @@ A directory stands in for the guest file system and a file for the clone list.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
+import plistlib
 import signal
 import sys
 import time
@@ -144,6 +146,94 @@ def inventory(mode: str) -> dict[str, object]:
     return response
 
 
+def installed_text() -> str:
+    """The exact rows of the installed inventory, from a local directory."""
+    bundle = Path(os.environ["guest_bundle"])
+    files: list[str] = []
+    links: list[str] = []
+    for path in bundle.rglob("*"):
+        name = f"./{path.relative_to(bundle)}"
+        if path.is_symlink():
+            links.append(f"{name} -> {os.readlink(path)}")
+        elif path.is_file():
+            files.append(f"{hashlib.sha256(path.read_bytes()).hexdigest()}  {name}")
+    return "\n".join([*sorted(files), *sorted(links), "KOINE_INVENTORY_COMPLETE"])
+
+
+def defaults_text() -> str:
+    """Every section of the defaults read. One key can be present in the first."""
+    domain, managed = "dev.antony.Koine", "/Library/Managed Preferences"
+    key = os.environ.get("guest_defaults_key")
+    empty = plistlib.dumps({}).decode().strip()
+    first = plistlib.dumps({key: True}).decode().strip() if key else empty
+    rows = [f"KOINE-DOMAIN {domain} any", first]
+    for section in (f"{domain} current", "-g any", "-g current"):
+        rows += [f"KOINE-DOMAIN {section}", empty]
+    for name in (f"{domain}.plist", ".GlobalPreferences.plist"):
+        rows += [
+            f"KOINE-ABSENT {managed}/{name}",
+            f"KOINE-ABSENT {managed}/admin/{name}",
+        ]
+    for path in (
+        f"/Library/Preferences/{domain}",
+        f"/Library/Preferences/Network/{domain}",
+        "/Library/Preferences/.GlobalPreferences",
+        "/Library/Preferences/Network/.GlobalPreferences",
+    ):
+        rows += [f"KOINE-ANY-USER {path}", empty]
+    return "\n".join([*rows, "KOINE-DEFAULTS-COMPLETE"])
+
+
+def process_text() -> str:
+    if os.environ.get("guest_process") == "none":
+        return "NONE"
+    executable = "/Applications/Koine.app/Contents/MacOS/Koine"
+    arguments = os.environ.get("guest_arguments", executable)
+    start = "Mon Nov 23 10:00:00 2026"
+    return (
+        f"KOINE-SELECTED 501\n  501 {start} {executable}\n---\n"
+        f"  501 {start} {arguments}"
+    )
+
+
+def exec_read(command: str) -> tuple[str, str]:
+    """The name and the exact guest text of one checked read."""
+    if command == "sw_vers; uname -m":
+        version = os.environ.get("guest_version", "27.0.1")
+        build = os.environ.get("guest_build", "26A434")
+        return "system", (
+            f"ProductName:\t\tmacOS\nProductVersion:\t\t{version}\n"
+            f"BuildVersion:\t\t{build}\narm64"
+        )
+    if command == "spctl --status":
+        return (
+            "gatekeeper",
+            f"assessments {os.environ.get('guest_gatekeeper', 'enabled')}",
+        )
+    if "KOINE_INVENTORY_COMPLETE" in command:
+        return "inventory", installed_text()
+    if "KOINE-DEFAULTS-COMPLETE" in command:
+        return "defaults", defaults_text()
+    if "TextEdit.app" in command:
+        return "textedit", "NONE"
+    if "pgrep -f" in command:
+        return "process", process_text()
+    return "other", ""
+
+
+def guest_exec(args: list[str]) -> dict[str, object]:
+    command = args[-1]
+    name, stdout = exec_read(command)
+    failed = name in os.environ.get("guest_fail", "").split(",")
+    return {
+        "command": command,
+        "exit_code": 1 if failed else 0,
+        "timed_out": False,
+        "stdout": "" if failed else stdout,
+        "stderr": "synthetic guest failure" if failed else "",
+    }
+
+
 def main() -> int:
     args = sys.argv[1:]
     with Path(os.environ["lifecycle_calls"]).open("a") as stream:
@@ -180,6 +270,8 @@ def main() -> int:
         payload = stop(args, mode)
     elif command == ("vm", "list"):
         payload = inventory(mode)
+    elif command == ("file", "exec"):
+        payload = guest_exec(args)
     else:
         payload = {"key": "return", "modifiers": []}
     response: dict[str, object] = {"schema_version": "1.0", "ok": True, **payload}

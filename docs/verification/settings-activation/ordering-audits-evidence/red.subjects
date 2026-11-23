@@ -1,0 +1,5 @@
+461f774aeaf673e0aaceee5a18df87087a01a6ee9ae12051ec3da377bf945d3f  scripts/settings-ordering-sequence.py
+fa36cb18fc2a5eea4ff108f2733cd78916e46ebc418716535086c44142a341cf  Tests/scripts/vm-settings-audits.bats
+c5d751c059fe29af3b0bb5e2d0cfaddc5b97b0d47db764549f8141640a7adedc  Tests/scripts/fixtures/settings-audit-frozen.sh
+2738116281521de27dd093bdd1f99404bdd9362f08773ae8d590ec4fcc6f7e83  Tests/scripts/fixtures/settings-run-task.sh
+7e16e3504aad4137f9965e9af45017c8c2b66b9efeb85e4775f1e1c7fd6d39c1  Tests/scripts/fixtures/file-lifecycle-cli.py

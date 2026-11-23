@@ -12,14 +12,15 @@ and send no guest command. No VM ran, and no signed subject exists. No runtime
 slot ran. The work establishes no native behaviour, no native cause and no
 scenario readiness. It closes no ancestor.
 
-The caller is not complete. k169 adds the `run` verb, and the
-[containment report](ORDERING-CONTAINMENT-RESULTS.md) records it. No slot can
-qualify until the audits exist. These tasks own the rest:
+k169 adds the `run` verb, and the
+[containment report](ORDERING-CONTAINMENT-RESULTS.md) records it. k170 adds the
+audits, and the [audit report](ORDERING-AUDITS-RESULTS.md) records them. No
+independent review has read the whole caller yet. These tasks own the rest:
 
 | Task | Remaining duty |
 |---|---|
-| `settings-ordering-audits-k170` | The original, installed and golden audits, gap G5 and the defaults after each slot |
-| `settings-ordering-reconciliation-k171` | The per-duty and application API reconciliation, after the whole-harness review |
+| The whole-harness and caller review that k170 cuts | An independent read of the harness and the caller |
+| `settings-ordering-reconciliation-k171` | The per-duty and application API reconciliation, after that review |
 
 ## Interface
 
@@ -31,8 +32,11 @@ Each verb takes the sequence directory, except `classify`.
 | `ready DIR SET RECEIPT` | Records the digest of one readiness receipt for `focused` or `ordinary` |
 | `admit DIR SLOT` | Consumes the next slot. The caller must start that slot immediately afterwards |
 | `classify ROOT SET CLONE` | Prints the classification of one evidence root |
-| `settle DIR SLOT PHASES` | Records the terminal result of a started slot. It refuses while a live run owns the slot |
-| `run DIR SLOT` | Admits, runs, contains and settles one slot, as the [containment report](ORDERING-CONTAINMENT-RESULTS.md) states |
+| `settle DIR SLOT PHASES` | Records the terminal result of a started slot. It refuses while a live run owns the slot, and it refuses a slot with collected phases |
+| `run DIR SLOT` | Audits, admits, runs and contains one slot, and leaves it for `settle-run`, as the [audit report](ORDERING-AUDITS-RESULTS.md) states |
+| `settle-run DIR SLOT AUDIT` | Settles a collected run with its screenshot audit |
+| `inventory ROOT NAME` | Prints one frozen tree for a readiness receipt |
+| `close DIR` | Records the closing audit of the stopped golden image |
 | `report DIR` | Prints each slot, each NOT RUN slot and the outcome |
 
 Status 0 means that the step completed. Status 2 means invalid arguments. Status
@@ -160,6 +164,6 @@ The records are in [`ordering-caller-evidence/`](ordering-caller-evidence/):
 ## Handoff
 
 k169 added the run verb, and it feeds real phase results to the ledger. k170
-feeds the audit and environment phases, and it cuts the whole-harness review.
-k171 reconciles every original duty after that review. k54 still owns the
-freeze, the readiness receipts, the screenshot audit and the runtime.
+feeds the environment, endpoint and audit phases, and it cuts the whole-harness
+review. k171 reconciles every original duty after that review. k54 still owns
+the freeze, the readiness receipts, the screenshot audit and the runtime.

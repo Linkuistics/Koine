@@ -11,6 +11,8 @@ backend="${repo}/scripts/vm-guest-exec.py"
 source "${repo}/scripts/vm-guest-exec-lib.sh"
 # shellcheck source=scripts/vm-lifecycle-evidence-lib.sh
 source "${repo}/scripts/vm-lifecycle-evidence-lib.sh"
+# shellcheck source=scripts/vm-exec-read-evidence-lib.sh
+source "${repo}/scripts/vm-exec-read-evidence-lib.sh"
 
 jq -cn --arg entry "$*" --arg pid "$$" --arg pgid "$(ps -o pgid= -p $$ | tr -d ' ')" \
     --arg vm "${KOINE_VM_ID-}" --arg base "${KOINE_VM_BASE-}" --arg root "${root}" --arg out "${out}" \
@@ -22,6 +24,9 @@ jq -cn --arg entry "$*" --arg pid "$$" --arg pgid "$(ps -o pgid= -p $$ | tr -d '
 caller_mode="${lifecycle_mode:-clean}"
 export lifecycle_mode=clean lifecycle_exit=0 lifecycle_block=0
 unset lifecycle_only
+# A read fault for the caller stays out of the scenario, unless the control
+# names it for the scenario. The caller keeps its own environment.
+export guest_fail="${scenario_guest_fail-}"
 
 finish() {
     printf '%s\n' "$1" >"${out}/scenario.exit"
@@ -34,8 +39,27 @@ begin() {
     inventory_guest_vms "${root}" read-poll vm-before absent >/dev/null
     start_guest_vm "${root}" vm-start "${KOINE_VM_BASE}" >/dev/null
     inventory_guest_vms "${root}" read-poll vm-after running >/dev/null
+    # The setup records of the scenario. A control can make one of them fail.
+    read_guest_exec "${root}" read-poll system system >/dev/null 2>&1 || :
+    read_guest_exec "${root}" read-poll gatekeeper gatekeeper >/dev/null 2>&1 || :
+    read_guest_exec "${root}" read-poll installed-before installed-inventory >/dev/null 2>&1 || :
 }
-terminal() { step textedit-quit-absence-state; }
+# The last receipt of a complete run of the entry that this clone runs.
+terminal() {
+    case "${KOINE_VM_ID}" in
+    koine-k49-ordinary-*) step installed-after ;;
+    *) step textedit-quit-absence-state ;;
+    esac
+}
+# last_attempt: the directory of the newest attempt.
+last_attempt() { find "${root}" -mindepth 1 -maxdepth 1 -type d -name '[0-9]*' | sort | tail -1; }
+# save_artifact DIGEST: a saved screenshot and its receipt, in the newest attempt.
+save_artifact() {
+    local attempt
+    attempt="$(last_attempt)"
+    printf 'saved screenshot\n' >"${attempt}/screen.png"
+    jq -n --arg sha256 "$1" '{bytes: 17, sha256: $sha256}' >"${attempt}/artifact.json"
+}
 
 # hold MODE: a process that keeps the evidence writer lock after this script
 # exits. Every mode ends by itself, so a failed control leaks no process.
@@ -152,6 +176,103 @@ holder-brief | holder-stuck | holder-ignores-term | holder-outside)
     holder-outside) hold outside ;;
     esac
     finish 0
+    ;;
+input-changes)
+    begin
+    terminal
+    printf 'changed during the slot\n' >>"${frozen:?}/Taskfile.yml"
+    finish 0
+    ;;
+input-extra)
+    begin
+    terminal
+    printf 'new\n' >"${frozen:?}/Koine.app/Contents/Resources/extra"
+    finish 0
+    ;;
+input-missing)
+    begin
+    terminal
+    rm "${frozen:?}/Koine.app/Contents/Info.plist"
+    finish 0
+    ;;
+guest-changes)
+    begin
+    terminal
+    printf 'changed in the guest\n' >>"${guest_bundle:?}/Contents/MacOS/Koine"
+    finish 0
+    ;;
+guest-extra)
+    begin
+    terminal
+    printf 'new\n' >"${guest_bundle:?}/Contents/Resources/extra"
+    finish 0
+    ;;
+guest-missing)
+    begin
+    terminal
+    rm "${guest_bundle:?}/Contents/Info.plist"
+    finish 0
+    ;;
+guest-link)
+    begin
+    terminal
+    rm "${guest_bundle:?}/Contents/Resources/current"
+    ln -s ../Info.plist "${guest_bundle}/Contents/Resources/current"
+    finish 0
+    ;;
+artifact-clean)
+    begin
+    step saved-capture
+    save_artifact "$(printf 'saved screenshot\n' | shasum -a 256 | cut -d' ' -f1)"
+    terminal
+    finish 0
+    ;;
+artifact-changed)
+    begin
+    step saved-capture
+    save_artifact "$(printf 'the original\n' | shasum -a 256 | cut -d' ' -f1)"
+    terminal
+    finish 0
+    ;;
+stream-changed)
+    begin
+    terminal
+    guest_stream="$(grep -l '"operation": "system"' "${root}"/*/request.json | head -1)"
+    printf 'edited\n' >"$(dirname "${guest_stream}")/guest.stdout"
+    finish 0
+    ;;
+process-row)
+    begin
+    read_guest_exec "${root}" read-poll login-process process bundle >/dev/null
+    terminal
+    finish 0
+    ;;
+record-shape)
+    begin
+    terminal
+    installed="$(grep -l '"operation": "installed-before"' "${root}"/*/request.json | head -1)"
+    printf '{}\n' >"$(dirname "${installed}")/read.json"
+    finish 0
+    ;;
+partial-original)
+    begin
+    terminal
+    next="$(printf '%06d' $(($(find "${root}" -mindepth 1 -maxdepth 1 -type d -name '[0-9]*' | wc -l) + 1)))"
+    mkdir "${root}/${next}"
+    printf '{"operation":"late-read"}\n' >"${root}/${next}/request.json"
+    printf 'partial bytes\n' >"${root}/${next}/raw.stdout"
+    finish 0
+    ;;
+recurrence)
+    begin
+    for operation in first-selection-identity first-selection-enabled \
+        screenshot-menu-first-selection; do step "${operation}"; done
+    step menu-click
+    for operation in first-selection-front-application first-selection-failure-windows \
+        failure-capture first-selection-menu-closed first-selection-liveness; do step "${operation}"; done
+    exhaust first-selection-window-exhausted
+    exhaust scenario-assertion-zero-window-same-process
+    finish 1
     ;;
 refusals)
     begin

@@ -20,12 +20,14 @@ setup() {
     export run_ready="${BATS_TEST_TMPDIR}/task-ready"
     export run_holder="${BATS_TEST_TMPDIR}/holder"
     export lifecycle_mode=clean lifecycle_exit=0 lifecycle_block=0 run_mode=complete
-    export KOINE_SEQUENCE_BOUNDS="holder=0.8,term=0.8,kill=3,stop=8,inventory=8"
-    unset KOINE_VM_KEEP KOINE_VM_DISPLAY KOINE_SETTINGS_TRACE lifecycle_only
+    export KOINE_SEQUENCE_BOUNDS="holder=0.8,term=0.8,kill=3,stop=8,inventory=8,audit=8"
+    unset KOINE_VM_KEEP KOINE_VM_DISPLAY KOINE_SETTINGS_TRACE lifecycle_only guest_fail
     # A mise shim would resolve back to the stub below, so skip the shim directory.
     real_task="$(type -ap task | grep -v '/mise/shims/' | head -n 1)"
     export real_task
-    mkdir "${BATS_TEST_TMPDIR}/bin" "${lifecycle_guest}"
+    export frozen="${BATS_TEST_TMPDIR}/frozen"
+    export screens="${BATS_TEST_TMPDIR}/screens.json"
+    mkdir "${BATS_TEST_TMPDIR}/bin" "${lifecycle_guest}" "${frozen}"
     # shellcheck disable=SC2016 # The stub expands these when it runs.
     printf '#!/bin/bash\nexec python3 "${lifecycle_fixture}" "$@"\n' >"${BATS_TEST_TMPDIR}/bin/testanyware"
     # shellcheck disable=SC2016 # The stub expands these when it runs.
@@ -35,7 +37,11 @@ setup() {
     : >"${lifecycle_calls}"
     : >"${run_log}"
     seq_tool declare "${sequence}" >/dev/null
-    printf '{"set":"focused"}\n' >"${BATS_TEST_TMPDIR}/ready.json"
+    # shellcheck source=Tests/scripts/fixtures/settings-audit-frozen.sh
+    source "${BATS_TEST_DIRNAME}/fixtures/settings-audit-frozen.sh"
+    frozen_prepare
+    frozen_receipt focused "${BATS_TEST_TMPDIR}/ready.json"
+    printf '{"result":"passed","detail":"control"}\n' >"${screens}"
     seq_tool ready "${sequence}" focused "${BATS_TEST_TMPDIR}/ready.json" >/dev/null
 }
 
@@ -76,7 +82,13 @@ no_action() { if actions | grep -qx "$1"; then
     return 1
 fi; }
 
-run_e01() { run seq_tool run "${sequence}" E01; }
+# run_e01: run the slot, and settle a collected run with a passed screenshot
+# audit. The status and output stay those of the run.
+run_e01() {
+    run seq_tool run "${sequence}" E01
+    [[ "${status}" == 0 ]] || return 0
+    seq_tool settle-run "${sequence}" E01 "${screens}" >/dev/null
+}
 
 expect_refused() {
     [[ "${status}" == 3 && "${output}" == *"$1"* ]] || {
@@ -131,7 +143,7 @@ expect_refused() {
 @test "a settled slot cannot run again" {
     run_e01
     run_e01
-    expect_refused "stopped"
+    expect_refused "next slot is E02"
     [[ "$(tasks)" == 1 && "$(stops)" == 1 ]]
 }
 
@@ -163,13 +175,13 @@ expect_refused() {
 
 # --- results stay separate ---------------------------------------------------
 
-@test "a complete run keeps its classification, and audits it does not own stay NOT RUN" {
+@test "a complete run keeps its classification and qualifies with every phase passed" {
     run_e01
     [[ "$(settled classification.kind)" == complete ]]
     [[ "$(phase stop)" == passed && "$(phase inventory)" == passed && "$(phase collection)" == passed ]]
     local name
-    for name in environment endpoint audit screenshots; do [[ "$(phase "${name}")" == not-run ]]; done
-    [[ "$(settled disposition)" == unresolved && "$(settled cleanup)" == confirmed ]]
+    for name in environment endpoint audit screenshots; do [[ "$(phase "${name}")" == passed ]]; done
+    [[ "$(settled disposition)" == qualified && "$(settled cleanup)" == confirmed ]]
     not_running
 }
 
@@ -453,6 +465,7 @@ PY
     [[ -e "${run_ready}" ]]
     kill -TERM "${caller}"
     wait "${caller}"
+    seq_tool settle-run "${sequence}" E01 "${screens}" >/dev/null
     [[ "$(settled classification.kind)" == interrupted ]]
     [[ "$(settled phases.task.status)" == 143 && "$(stops)" == 1 ]]
     [[ "$(actions | grep -c '^signal-forwarded$')" == 1 ]]
@@ -473,6 +486,7 @@ PY
     kill -TERM "${caller}" || :
     kill -HUP "${caller}" || :
     wait "${caller}"
+    seq_tool settle-run "${sequence}" E01 "${screens}" >/dev/null
     [[ "$(stops)" == 1 && "$(report '.slots.E01.state')" == settled ]]
     [[ "$(actions | grep -c '^signal-forwarded$')" == 1 ]]
     not_running
@@ -506,6 +520,7 @@ YAML
     [[ "$(jq -r .pgid "${run_log}")" == "$(jq -r .pgid "$(out_dir)/containment/process.json")" ]]
     kill -TERM "${caller}"
     wait "${caller}"
+    seq_tool settle-run "${sequence}" E01 "${screens}" >/dev/null
     [[ "$(settled classification.kind)" == interrupted && "$(stops)" == 1 ]]
     [[ "$(settled phases.scenario.status)" == 143 && "$(settled phases.task.status)" == 201 ]]
     not_running
@@ -522,7 +537,7 @@ sys.modules["sequence"] = module
 spec.loader.exec_module(module)
 declared = {"slot": "E01", "set": "focused", "clone": "koine-k49-ordering-e01",
             "entry": module.PREFIX_ENTRY, "output": sys.argv[2], "evidence_root": sys.argv[3]}
-containment = module.Containment(declared, dict(module.DEFAULT_BOUNDS), [signal.SIGTERM])
+containment = module.Containment(declared, dict(module.DEFAULT_BOUNDS), [signal.SIGTERM], {}, {"inputs": []})
 process = containment.start_task("task")
 process.wait(timeout=10)
 print(json.dumps({"released": containment.released, "status": process.returncode}))
@@ -546,7 +561,7 @@ declared = {"slot": "E01", "set": "focused", "clone": "koine-k49-ordering-e01",
 def refuse():
     raise OSError("no kqueue")
 select.kqueue = refuse
-containment = module.Containment(declared, dict(module.DEFAULT_BOUNDS), [])
+containment = module.Containment(declared, dict(module.DEFAULT_BOUNDS), [], {}, {"inputs": []})
 process = containment.start_task("task")
 signal.alarm(5)
 containment.await_task(process)

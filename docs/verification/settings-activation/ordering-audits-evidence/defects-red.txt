@@ -1,0 +1,65 @@
+1..60
+ok 1 inventory lists each file, symlink and directory with its identity
+ok 2 inventory refuses a root that does not exist
+ok 3 a receipt without a frozen declaration refuses the run before admission
+ok 4 a receipt that changed after readiness refuses the run before admission
+ok 5 a receipt with a path outside its root refuses the run
+ok 6 an extra input item before the slot holds the sequence and consumes no slot
+ok 7 a missing input item before the slot holds the sequence
+ok 8 a changed input item before the slot holds the sequence
+ok 9 a replaced item with an equal count is not equal
+not ok 10 an unreadable input before the slot is unavailable and holds the sequence
+# (in test file Tests/scripts/vm-settings-audits.bats, line 184)
+#   `[[ "$(report '.held.audit.inputs[1].result')" == unavailable ]]' failed
+ok 11 a held sequence refuses every later run and replays from the ledger
+ok 12 a clean slot passes each audit and qualifies
+ok 13 an input that changes during the slot fails the audit after it
+ok 14 an input item added during the slot fails the audit after it
+ok 15 an input item removed during the slot fails the audit after it
+ok 16 the caller reads the installed bundle itself, before the stop
+ok 17 a guest file that changes during the slot fails the endpoint after it
+ok 18 an extra guest file fails the endpoint after the slot
+ok 19 a missing guest file fails the endpoint after the slot
+ok 20 a changed guest symlink target fails the endpoint after the slot
+ok 21 an installed bundle that differs from the frozen bundle fails both endpoints
+ok 22 a failed installed read after the slot is unavailable, not a mismatch
+ok 23 a failed installed read before the slot is unavailable
+ok 24 a run with no start attempt reads nothing from the guest
+ok 25 a saved artifact that matches its original passes
+ok 26 a saved artifact that differs from its original fails the audit
+ok 27 a saved guest stream that differs from its raw response fails the audit
+ok 28 a partial original stays named and does not fail its audit
+ok 29 a retained file that changes before settlement fails the audit
+ok 30 a retained file that disappears before settlement fails the audit
+ok 31 a file added to the evidence before settlement fails the audit
+ok 32 five clean slots wait for the closing golden audit, then accept
+ok 33 a golden item that changes before A01 holds the sequence
+ok 34 an extra golden item before A01 holds the sequence
+ok 35 a missing golden item before A01 holds the sequence
+ok 36 an E slot does not read the golden image
+ok 37 a golden item that changes after A01 prevents acceptance at the close
+not ok 38 an unreadable golden item at the close prevents acceptance
+# (in test file Tests/scripts/vm-settings-audits.bats, line 408)
+#   `[[ "$(report .outcome)" == no-acceptance && "$(report .closed.golden.result)" == unavailable ]]' failed
+ok 39 the close refuses while a slot is unsettled, and it runs once
+ok 40 an ordinary receipt that differs from the focused receipt holds A01
+ok 41 G5: a different guest build fails the environment and stops the sequence
+ok 42 G5: a different product version fails the environment
+ok 43 G5: a different Gatekeeper state fails the environment
+ok 44 G5: an injected process argument fails the environment
+ok 45 G5: a failed system receipt is unavailable, not a mismatch
+ok 46 G5: a failed Gatekeeper receipt is unavailable
+ok 47 G5: a failed process read is unavailable
+ok 48 G5: no observed Koine process is unavailable, not a pass
+ok 49 the caller reads the defaults after the slot, and a clean absence passes
+ok 50 a diagnostic key after the slot fails the environment
+ok 51 a failed defaults read after the slot is unavailable, not an absence
+ok 52 one failed audit leaves the other results separate
+ok 53 a failed audit does not change a failed assertion
+ok 54 run stops before settlement, and the slot blocks the next slot
+ok 55 settle-run carries the screenshot audit into its phase
+ok 56 a recurrence becomes rejected only with a passed screenshot audit
+ok 57 a recurrence with an unpassed screenshot audit stays unresolved
+ok 58 settle-run refuses a malformed audit and leaves the slot unsettled
+ok 59 settle-run refuses a slot with no collected run, and a second settlement
+ok 60 settle-run cannot change a phase other than the screenshots

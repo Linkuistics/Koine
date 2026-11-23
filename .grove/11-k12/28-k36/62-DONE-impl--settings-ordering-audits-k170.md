@@ -60,3 +60,42 @@ An audit before the slot must run before `admit_slot`, because admission
 consumes the slot. The root now also holds the receipts `containment-stop` and
 `containment-inventory`. The frozen `containment/classification.json` excludes
 them, so read that file for the class of the scenario.
+
+## Decisions (running log)
+
+**The readiness receipt carries the frozen declaration.** `run` reads the
+receipt that the ledger digested. A receipt without a valid declaration refuses
+before admission, so it consumes no slot. k54 writes the receipt, and the new
+`inventory` verb gives it the exact item format.
+
+**The `endpoint` phase is the installed audit at both endpoints.** The protocol
+and `ORDERING-REVIEW.md` name "original/endpoint/golden audits". The `audit`
+phase holds the host inputs and the originals. The `environment` phase holds G5
+and the defaults.
+
+**The installed audit compares with the frozen bundle.** Each endpoint must equal
+the frozen bundle item by item. A before and after comparison alone would accept
+a wrong bundle that stayed the same.
+
+**The caller reads the guest before its stop.** It reads the installed inventory,
+the defaults and the Koine process through the evidence class. The prefix has no
+process read while Koine runs, so G5 needs this read.
+
+**An audit before a slot that does not pass holds the sequence.** A `held` ledger
+entry blocks every later admission, and it consumes no slot.
+
+**`run` stops before settlement.** The screenshot audit needs a judgement that
+the caller cannot make. A new `settle-run` verb takes that result and settles the
+slot. It also compares the retained files with the manifest again.
+
+**Acceptance needs a closing golden audit.** A new `close` verb records it. Five
+qualified slots report `awaiting-golden-audit` until that audit passes.
+
+**A collected run refuses `settle`.** Otherwise hand-written phases could replace
+the audited ones. A run that died before it wrote its phases still uses `settle`.
+
+**An unreadable item is unavailable.** The first implementation reported it as
+missing, which is a clean difference that the read did not establish.
+
+**Result.** `ORDERING-AUDITS-RESULTS.md` records the audits, their 65 controls,
+their guard mutations and their limits.

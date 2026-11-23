@@ -3,8 +3,10 @@
 
 The tool declares the five fixed slots, admits them in order and classifies the
 receipts of each evidence root. It settles each slot and reports every slot that
-did not run. Only the run verb starts a Task entry. That verb collects the
-evidence of its slot and contains the exact clone. The protocol is
+did not run. Only the run verb starts a Task entry. That verb audits the frozen
+inputs, collects the evidence of its slot and contains the exact clone. The
+settle-run verb then takes the screenshot audit and settles the slot. The close
+verb rechecks the stopped golden image. The protocol is
 docs/verification/settings-activation/ORDERING-EVALUATION-PLAN.md.
 
 Exit 0: the step completed. 2: invalid arguments. 3: the step was refused, and
@@ -75,13 +77,28 @@ RESULT_PHASES = (
     "inventory",
     "screenshots",
 )
-LEDGER_NAME = re.compile(r"([0-9]{6})-(ready|started|settled)\.json")
+LEDGER_NAME = re.compile(r"([0-9]{6})-(ready|started|settled|held|closed)\.json")
 ORDINAL_GAP = "the ordinals have a gap"
 REPOSITORY = Path(__file__).resolve().parents[1]
 LIFECYCLE = REPOSITORY / "scripts" / "vm-lifecycle-evidence-lib.sh"
 CONTAINMENT = "containment"
 STOP_OPERATION = "containment-stop"
 INVENTORY_OPERATION = "containment-inventory"
+EXEC_READS = REPOSITORY / "scripts" / "vm-exec-read-evidence-lib.sh"
+# The caller's own guest reads. They run after the class freezes and before the
+# stop. The prefix has no process read while Koine runs, so G5 needs this one.
+INSTALLED_BEFORE = "installed-before"
+INSTALLED_READ = "audit-installed-after"
+DEFAULTS_READ = "audit-defaults-after"
+PROCESS_READ = "audit-process-after"
+AWAITING = "awaiting-screenshot-audit"
+SHA256 = re.compile(r"[0-9a-f]{64}")
+SYSTEM_FIELDS = ("product_version", "product_version_extra", "build_version", "arch")
+ITEM_FIELDS = {
+    "file": {"path", "kind", "bytes", "sha256"},
+    "symlink": {"path", "kind", "target"},
+    "directory": {"path", "kind"},
+}
 # Each request would change what the protocol declares, so a run refuses it.
 OVERRIDES = ("KOINE_VM_KEEP", "KOINE_VM_DISPLAY", "KOINE_SETTINGS_TRACE")
 # Seconds. The tagged `vm stop` runs `tart stop` with no bound of its own:
@@ -92,11 +109,14 @@ DEFAULT_BOUNDS = {
     "kill": 5.0,
     "stop": 180.0,
     "inventory": 60.0,
+    "audit": 120.0,
 }
 # The child waits here until the caller has recorded its process group.
 GATE = 'IFS= read -r go && [ "$go" = start ] || exit 125; exec </dev/null; exec "$@"'
 
 Json = dict[str, object]
+# One guest read: its parsed record, when it is clean, and its result.
+GuestRead = tuple[Json | None, Json]
 
 
 class Refusal(Exception):
@@ -195,6 +215,8 @@ class Sequence:
         self.ready: dict[str, Json] = {}
         self.started: dict[str, Json] = {}
         self.settled: dict[str, Json] = {}
+        self.held: Json | None = None
+        self.closed: Json | None = None
         self.count = 0
         self.slots: dict[str, Json] = {}
         try:
@@ -236,6 +258,12 @@ class Sequence:
             slot = cast(str, record["slot"])
             self.check_admit(slot)
             self.started[slot] = record
+        elif event == "held":
+            self.check_admit(cast(str, record["slot"]))
+            self.held = record
+        elif event == "closed":
+            self.check_close()
+            self.closed = record
         else:
             slot = cast(str, record["slot"])
             self.check_settle(slot)
@@ -248,6 +276,8 @@ class Sequence:
             self.settled[slot] = record
 
     def stopped(self) -> str | None:
+        if self.held is not None:
+            return cast(str, self.held["slot"])
         for slot in SLOT_NAMES:
             record = self.settled.get(slot)
             if record is not None and record.get("disposition") != "qualified":
@@ -287,6 +317,17 @@ class Sequence:
     def check_settle(self, slot: str) -> None:
         if slot not in self.started or slot in self.settled:
             raise Refusal(f"{slot} is not awaiting settlement")
+
+    def check_close(self) -> None:
+        if self.closed is not None:
+            raise Refusal("the sequence is already closed")
+        if FOCUSED not in self.ready:
+            raise Refusal("the focused set is not ready")
+        for name in SLOT_NAMES:
+            if name in self.started and name not in self.settled:
+                raise Refusal(f"{name} is unsettled")
+        if self.stopped() is None and len(self.settled) != len(SLOT_NAMES):
+            raise Refusal("the sequence is not over")
 
     def append(self, event: str, fields: Json) -> Json:
         ordinal = self.count + 1
@@ -835,12 +876,637 @@ def settle(directory: Path, slot: str, phases_path: Path) -> int:
         sequence.check_settle(slot)
         if run_is_live(sequence.directory):
             raise Refusal(f"a live run owns {slot}")
+        # A collected run keeps its audited phases, so hand-written ones cannot
+        # replace them. A run that died before this file still needs this verb.
+        output = Path(cast(str, sequence.slots[slot]["output"]))
+        if (output / CONTAINMENT / "phases.json").exists():
+            raise Refusal(f"{slot} has collected phases, so use settle-run")
         phases = read_phases(phases_path)
         return record_settlement(
             sequence, slot, phases, settled_classification(sequence.slots[slot])
         )
 
     print(json.dumps(with_writer(directory, "settle", step), indent=2))
+    return 0
+
+
+# --- the audits --------------------------------------------------------------
+
+
+def scan_entry(path: Path, relative: str) -> Json:
+    mode = path.lstat().st_mode
+    if stat.S_ISLNK(mode):
+        return {"path": relative, "kind": "symlink", "target": os.readlink(path)}
+    if stat.S_ISREG(mode):
+        digest = digest_regular(path)
+        return {
+            "path": relative,
+            "kind": "file",
+            "bytes": digest["bytes"],
+            "sha256": digest["sha256"],
+        }
+    if stat.S_ISDIR(mode):
+        return {"path": relative, "kind": "directory"}
+    return {"path": relative, "kind": "special"}
+
+
+def scan_tree(root: Path) -> tuple[list[Json], list[Json]]:
+    """Each item under the root, by relative path. A failed read stays named."""
+    items: list[Json] = []
+    errors: list[Json] = []
+
+    def add(path: Path, relative: str) -> None:
+        try:
+            items.append(scan_entry(path, relative))
+        except (OSError, ValueError) as error:
+            errors.append({"path": relative, "error": str(error)})
+
+    def failed(error: OSError) -> None:
+        relative = os.path.relpath(cast(str, error.filename), root)
+        errors.append({"path": relative, "error": str(error)})
+
+    try:
+        mode = root.lstat().st_mode
+    except FileNotFoundError:
+        return [], []
+    except OSError as error:
+        return [], [{"path": ".", "error": str(error)}]
+    if not stat.S_ISDIR(mode):
+        add(root, ".")
+        return items, errors
+    for current, directories, files in os.walk(root, onerror=failed):
+        for name in [*directories, *files]:
+            entry = Path(current) / name
+            add(entry, str(entry.relative_to(root)))
+    items.sort(key=lambda item: cast(str, item["path"]))
+    return items, errors
+
+
+def compare_items(expected: list[Json], observed: list[Json]) -> Json:
+    """Compare by path and identity. Equal counts prove nothing here."""
+    wanted = {cast(str, item["path"]): item for item in expected}
+    seen = {cast(str, item["path"]): item for item in observed}
+    return {
+        "missing": sorted(wanted.keys() - seen.keys()),
+        "extra": sorted(seen.keys() - wanted.keys()),
+        "changed": sorted(
+            path for path in wanted.keys() & seen.keys() if wanted[path] != seen[path]
+        ),
+    }
+
+
+def comparison_result(comparison: Json, errors: list[Json]) -> str:
+    """A clean difference is a failure. A failed read alone is unavailable."""
+    if any(comparison[key] for key in ("missing", "extra", "changed")):
+        return "failed"
+    return "unavailable" if errors else "passed"
+
+
+def audit_tree(tree: Json) -> Json:
+    items, errors = scan_tree(Path(cast(str, tree["root"])))
+    comparison = compare_items(cast(list[Json], tree["items"]), items)
+    # An item that could not be read is unavailable. It is not a missing item.
+    unread = [cast(str, error["path"]) for error in errors]
+    comparison["missing"] = [
+        path
+        for path in cast(list[str], comparison["missing"])
+        if not any(
+            name == "." or path == name or path.startswith(f"{name}/")
+            for name in unread
+        )
+    ]
+    return {
+        "name": tree["name"],
+        "root": tree["root"],
+        "result": comparison_result(comparison, errors),
+        **comparison,
+        "errors": errors,
+    }
+
+
+def combined(results: list[tuple[str, object]]) -> Json:
+    """The worst named result: failed, then unavailable, then not-run."""
+    for wanted in ("failed", "unavailable", "not-run"):
+        names = [name for name, result in results if result == wanted]
+        if names:
+            return phase(wanted, f"{wanted}: {', '.join(names)}")
+    return phase("passed", f"passed: {', '.join(name for name, _ in results)}")
+
+
+def valid_item(value: object) -> bool:
+    if not isinstance(value, dict):
+        return False
+    item = cast(Json, value)
+    fields = ITEM_FIELDS.get(cast(str, item.get("kind")))
+    path = item.get("path")
+    if fields is None or set(item) != fields or not isinstance(path, str):
+        return False
+    parts = path.split("/")
+    if path != "." and ("" in parts or "." in parts or ".." in parts):
+        return False
+    if item["kind"] == "file":
+        size, digest = item["bytes"], item["sha256"]
+        return (
+            type(size) is int
+            and size >= 0
+            and isinstance(digest, str)
+            and SHA256.fullmatch(digest) is not None
+        )
+    if item["kind"] == "symlink":
+        return isinstance(item["target"], str) and item["target"] != ""
+    return True
+
+
+def valid_tree(value: object) -> bool:
+    if not isinstance(value, dict):
+        return False
+    tree = cast(Json, value)
+    if set(tree) != {"name", "root", "items"}:
+        return False
+    name, root, items = tree["name"], tree["root"], tree["items"]
+    if not (isinstance(name, str) and name and isinstance(root, str)):
+        return False
+    if not (Path(root).is_absolute() and isinstance(items, list) and items):
+        return False
+    entries = cast(list[object], items)
+    if not all(valid_item(entry) for entry in entries):
+        return False
+    paths = [cast(Json, entry)["path"] for entry in entries]
+    return len({cast(str, path) for path in paths}) == len(paths)
+
+
+def frozen_problem(value: Json, slot_set: str) -> str | None:
+    """Why this value is not the frozen declaration of the set, if it is not."""
+    if set(value) != {
+        "schema",
+        "set",
+        "environment",
+        "process_arguments",
+        "inputs",
+        "golden",
+    }:
+        return "it needs exactly the declared fields"
+    if value["schema"] != 1 or value["set"] != slot_set:
+        return f"it needs schema 1 and the set {slot_set}"
+    environment = value["environment"]
+    if not isinstance(environment, dict) or set(cast(Json, environment)) != {
+        *SYSTEM_FIELDS,
+        "assessments",
+    }:
+        return "its environment needs exactly the declared fields"
+    declared = cast(Json, environment)
+    for name in ("product_version", "build_version", "arch"):
+        if not isinstance(declared[name], str) or not declared[name]:
+            return f"its environment needs {name}"
+    extra = declared["product_version_extra"]
+    if extra is not None and not isinstance(extra, str):
+        return "its product_version_extra is invalid"
+    if declared["assessments"] not in {"enabled", "disabled"}:
+        return "its Gatekeeper state is invalid"
+    arguments = value["process_arguments"]
+    if not isinstance(arguments, str) or not arguments:
+        return "it needs the process arguments"
+    inputs = value["inputs"]
+    if not isinstance(inputs, list) or not all(
+        valid_tree(tree) for tree in cast(list[object], inputs)
+    ):
+        return "its inputs are invalid"
+    names = [cast(str, cast(Json, tree)["name"]) for tree in cast(list[object], inputs)]
+    if len(set(names)) != len(names) or names.count("bundle") != 1:
+        return "its inputs need unique names and one bundle"
+    bundle = next(
+        cast(Json, tree)
+        for tree in cast(list[object], inputs)
+        if cast(Json, tree)["name"] == "bundle"
+    )
+    if any(
+        cast(Json, item)["path"] == "." for item in cast(list[object], bundle["items"])
+    ):
+        return "its bundle must be a directory"
+    if not valid_tree(value["golden"]):
+        return "its golden image is invalid"
+    return None
+
+
+def read_frozen(sequence: Sequence, slot_set: str) -> Json:
+    """The declaration in the readiness receipt that the ledger digested."""
+    record = sequence.ready.get(slot_set)
+    if record is None:
+        raise Refusal(f"the {slot_set} set is not ready")
+    receipt = cast(Json, record["receipt"])
+    path = Path(cast(str, receipt["path"]))
+    try:
+        identity = digest_regular(path)
+        value = read_object(path)
+    except (OSError, ValueError) as error:
+        raise Refusal(f"the readiness receipt is unreadable: {error}") from error
+    if identity != receipt:
+        raise Refusal(f"the {slot_set} receipt changed since its readiness record")
+    problem = frozen_problem(value, slot_set)
+    if problem is not None:
+        raise Refusal(f"the receipt holds no valid frozen declaration: {problem}")
+    return value
+
+
+def frozen_core(frozen: Json) -> Json:
+    return {key: value for key, value in frozen.items() if key != "set"}
+
+
+def audit_before(directory: Path, slot: str) -> tuple[Json, Json]:
+    """Audit the host before admission, which consumes the slot."""
+
+    def load(sequence: Sequence) -> Json:
+        sequence.check_admit(slot)
+        slot_set = cast(str, sequence.slots[slot]["set"])
+        frozen = read_frozen(sequence, slot_set)
+        same = slot_set == FOCUSED or frozen_core(frozen) == frozen_core(
+            read_frozen(sequence, FOCUSED)
+        )
+        return {"frozen": frozen, "same": same}
+
+    loaded = with_writer(directory, "audit-before", load)
+    frozen = cast(Json, loaded["frozen"])
+    inputs = [audit_tree(tree) for tree in cast(list[Json], frozen["inputs"])]
+    results: Json = {
+        "receipt": "passed" if loaded["same"] else "failed",
+        "inputs": inputs,
+    }
+    named: list[tuple[str, object]] = [("receipt", results["receipt"])]
+    named += [(cast(str, tree["name"]), tree["result"]) for tree in inputs]
+    if slot == "A01":
+        golden = audit_tree(cast(Json, frozen["golden"]))
+        results["golden"] = golden
+        named.append(("golden", golden["result"]))
+    verdict = combined(named)
+    if verdict["result"] != "passed":
+
+        def hold(sequence: Sequence) -> Json:
+            sequence.check_admit(slot)
+            sequence.append("held", {"slot": slot, "audit": results})
+            raise Refusal(
+                f"the audit before {slot} did not pass, so the sequence holds: "
+                f"{verdict['detail']}"
+            )
+
+        with_writer(directory, "audit-before", hold)
+    return frozen, results
+
+
+def receipt_record(root: Path, operation: str) -> Json | None:
+    """The parsed record of the last attempt of this read, when it is clean."""
+    try:
+        attempts, _ = read_attempts(root)
+        matching = [a for a in attempts if a["operation"] == operation]
+        if not matching or matching[-1]["outcome"] != "clean":
+            return None
+        return read_object(root / cast(str, matching[-1]["ordinal"]) / "read.json")
+    except (OSError, ValueError):
+        return None
+
+
+def check(result: object, detail: str, **fields: object) -> Json:
+    return {"result": result, "detail": detail, **fields}
+
+
+def observed_arguments(root: Path) -> tuple[list[str], list[str]]:
+    """The arguments of each Koine process row, and each read that failed."""
+    rows: list[str] = []
+    problems: list[str] = []
+    try:
+        attempts, _ = read_attempts(root)
+    except OSError as error:
+        return [], [f"root: {error}"]
+    for attempt in attempts:
+        ordinal = cast(str, attempt["ordinal"])
+        try:
+            request = read_object(root / ordinal / "request.json")
+            if request.get("read") != "process" or request.get("read_arguments") == [
+                "textedit"
+            ]:
+                continue
+            if attempt["outcome"] != "clean":
+                problems.append(f"{attempt['operation']} is {attempt['outcome']}")
+                continue
+            record = read_object(root / ordinal / "read.json")
+            rows += [
+                cast(str, entry["arguments"])
+                for entry in cast(list[Json], record["processes"])
+            ]
+        except (OSError, ValueError, KeyError) as error:
+            problems.append(f"{ordinal}: {error}")
+    return rows, problems
+
+
+def audit_process(root: Path, declared: object, read_phase: Json) -> Json:
+    rows, problems = observed_arguments(root)
+    different = sorted({row for row in rows if row != declared})
+    if different:
+        return check("failed", "a process has undeclared arguments", observed=different)
+    if problems:
+        return check("unavailable", ", ".join(problems))
+    if not rows:
+        result = read_phase["result"] if read_phase["result"] != "passed" else None
+        return check(result or "unavailable", "no Koine process was observed")
+    return check("passed", f"{len(rows)} process rows match")
+
+
+def audit_environment(root: Path, frozen: Json, guest: dict[str, GuestRead]) -> Json:
+    """G5 and the defaults. Each comparison keeps its own result."""
+    declared = cast(Json, frozen["environment"])
+    # With no guest read, the receipts of a run that never reached a guest are
+    # not failures of the environment.
+    absent = "not-run" if guest["process"][1]["result"] == "not-run" else "unavailable"
+    system = receipt_record(root, "system")
+    if system is None:
+        system_check = check(absent, "no clean system receipt")
+    else:
+        wanted = {name: declared[name] for name in SYSTEM_FIELDS}
+        seen = {name: system.get(name) for name in SYSTEM_FIELDS}
+        system_check = check(
+            "passed" if wanted == seen else "failed",
+            "the guest system against the declared image",
+            expected=wanted,
+            observed=seen,
+        )
+    gatekeeper = receipt_record(root, "gatekeeper")
+    if gatekeeper is None:
+        gatekeeper_check = check(absent, "no clean gatekeeper receipt")
+    else:
+        same = gatekeeper.get("assessments") == declared["assessments"]
+        gatekeeper_check = check(
+            "passed" if same else "failed",
+            "the Gatekeeper state against the declared image",
+            expected=declared["assessments"],
+            observed=gatekeeper.get("assessments"),
+        )
+    defaults, defaults_phase = guest["defaults"]
+    if defaults is None:
+        defaults_check = check(defaults_phase["result"], str(defaults_phase["detail"]))
+    elif defaults.get("diagnostics_disabled") is True:
+        defaults_check = check("passed", "a clean read shows diagnostics disabled")
+    else:
+        defaults_check = check("failed", "a diagnostic key is present")
+    return {
+        "system": system_check,
+        "gatekeeper": gatekeeper_check,
+        "process": audit_process(
+            root, frozen["process_arguments"], guest["process"][1]
+        ),
+        "defaults": defaults_check,
+    }
+
+
+def bundle_items(frozen: Json) -> list[Json]:
+    """The frozen bundle, in the shape of the installed inventory."""
+    tree = next(
+        tree for tree in cast(list[Json], frozen["inputs"]) if tree["name"] == "bundle"
+    )
+    items: list[Json] = []
+    for item in cast(list[Json], tree["items"]):
+        path = f"./{item['path']}"
+        if item["kind"] == "file":
+            items.append({"path": path, "kind": "file", "sha256": item["sha256"]})
+        elif item["kind"] == "symlink":
+            items.append({"path": path, "kind": "symlink", "target": item["target"]})
+    return items
+
+
+def installed_items(record: Json) -> list[Json]:
+    files = [
+        {"path": entry["path"], "kind": "file", "sha256": entry["sha256"]}
+        for entry in cast(list[Json], record["files"])
+    ]
+    links = [
+        {"path": entry["path"], "kind": "symlink", "target": entry["target"]}
+        for entry in cast(list[Json], record["symlinks"])
+    ]
+    return files + links
+
+
+def audit_installed(root: Path, frozen: Json, guest: dict[str, GuestRead]) -> Json:
+    """Each endpoint against the frozen bundle, so a stable wrong bundle fails."""
+    expected = bundle_items(frozen)
+
+    def endpoint(record: Json | None, result: object, detail: str) -> Json:
+        if record is None:
+            return check(result, detail, missing=[], extra=[], changed=[])
+        comparison = compare_items(expected, installed_items(record))
+        return check(
+            comparison_result(comparison, []),
+            "the installed bundle against the frozen bundle",
+            **comparison,
+        )
+
+    after, after_phase = guest["installed"]
+    absent = "not-run" if after_phase["result"] == "not-run" else "unavailable"
+    return {
+        "before": endpoint(
+            receipt_record(root, INSTALLED_BEFORE),
+            absent,
+            f"no clean {INSTALLED_BEFORE} receipt",
+        ),
+        "after": endpoint(after, after_phase["result"], str(after_phase["detail"])),
+    }
+
+
+def audit_originals(root: Path) -> Json:
+    """Compare each saved artifact with the digest or response of its original."""
+    compared = 0
+    mismatched: list[str] = []
+    unreadable: list[str] = []
+    partials: list[str] = []
+
+    def compare(path: Path, size: object, digest: object) -> None:
+        nonlocal compared
+        compared += 1
+        try:
+            saved = digest_regular(path)
+        except FileNotFoundError:
+            mismatched.append(str(path))
+        except (OSError, ValueError) as error:
+            unreadable.append(f"{path}: {error}")
+        else:
+            if (saved["bytes"], saved["sha256"]) != (size, digest):
+                mismatched.append(str(path))
+
+    try:
+        attempts = sorted(
+            path for path in root.iterdir() if re.fullmatch(r"[0-9]{6}", path.name)
+        )
+    except OSError as error:
+        return check(
+            "unavailable",
+            f"no readable root: {error}",
+            compared=0,
+            mismatched=[],
+            unreadable=[],
+            partials=[],
+        )
+    for attempt in attempts:
+        # A partial has no completed original to compare. The manifest keeps it.
+        if not (attempt / "result.json").exists():
+            partials.append(attempt.name)
+            continue
+        try:
+            if (attempt / "artifact.json").exists():
+                artifact = read_object(attempt / "artifact.json")
+                compare(
+                    attempt / "screen.png",
+                    artifact.get("bytes"),
+                    artifact.get("sha256"),
+                )
+            if (attempt / "transfer.json").exists():
+                transfer = read_object(attempt / "transfer.json")
+                if transfer.get("direction") == "download":
+                    compare(
+                        attempt / "download.bin",
+                        transfer.get("bytes"),
+                        transfer.get("sha256"),
+                    )
+            streams = [
+                name
+                for name in ("stdout", "stderr")
+                if (attempt / f"guest.{name}").exists()
+            ]
+            if streams:
+                envelope = read_object(attempt / "raw.stdout")
+                for name in streams:
+                    value = envelope.get(name)
+                    data = value.encode() if isinstance(value, str) else b""
+                    compare(
+                        attempt / f"guest.{name}",
+                        len(data) if isinstance(value, str) else None,
+                        hashlib.sha256(data).hexdigest(),
+                    )
+        except (OSError, ValueError) as error:
+            unreadable.append(f"{attempt.name}: {error}")
+    result = "failed" if mismatched else "unavailable" if unreadable else "passed"
+    return check(
+        result,
+        f"{compared} saved artifacts compared, {len(partials)} partial attempts kept",
+        compared=compared,
+        mismatched=mismatched,
+        unreadable=unreadable,
+        partials=partials,
+    )
+
+
+def retained_files(output: Path) -> tuple[list[Json], list[Json]]:
+    """Each retained file with its identity. A failed read stays named."""
+    files: list[Json] = []
+    errors: list[Json] = []
+    for path in sorted(output.rglob("*")):
+        try:
+            mode = path.lstat().st_mode
+            if stat.S_ISDIR(mode):
+                continue
+            if stat.S_ISLNK(mode):
+                files.append({"path": str(path), "symlink": os.readlink(path)})
+            elif stat.S_ISREG(mode):
+                files.append(digest_regular(path))
+            else:
+                files.append({"path": str(path), "kind": "special"})
+        except (OSError, ValueError) as error:
+            errors.append({"path": str(path), "error": str(error)})
+    return files, errors
+
+
+def recheck_manifest(output: Path) -> Json:
+    """Compare the evidence with its manifest. The run's own records keep growing."""
+    records = f"{output / CONTAINMENT}/"
+
+    def evidence(items: list[Json]) -> list[Json]:
+        return [
+            item for item in items if not cast(str, item["path"]).startswith(records)
+        ]
+
+    try:
+        manifest = read_object(output / CONTAINMENT / "manifest.json")
+        recorded = cast(list[Json], manifest["files"])
+    except (OSError, ValueError, KeyError) as error:
+        return phase("unavailable", f"the manifest is unreadable: {error}")
+    files, errors = retained_files(output)
+    comparison = compare_items(evidence(recorded), evidence(files))
+    result = comparison_result(comparison, errors)
+    if result == "passed":
+        return phase("passed", "the evidence matches its manifest")
+    return phase(result, f"the evidence differs from its manifest: {comparison}")
+
+
+def inventory_tree(root: Path, name: str) -> int:
+    """Print one frozen tree, in the exact form of the readiness receipt."""
+    absolute = root.absolute()
+    items, errors = scan_tree(absolute)
+    if errors:
+        raise Refusal(f"the tree has unreadable items: {errors}")
+    if not items:
+        raise Refusal(f"the tree has no items: {absolute}")
+    print(json.dumps({"name": name, "root": str(absolute), "items": items}, indent=2))
+    return 0
+
+
+def read_screenshot_audit(path: Path) -> Json:
+    try:
+        audit = read_object(path)
+    except (OSError, ValueError) as error:
+        raise Refusal(f"the screenshot audit is unreadable: {error}") from error
+    detail = audit.get("detail")
+    if (
+        set(audit) != {"result", "detail"}
+        or audit["result"] not in RESULTS
+        or not isinstance(detail, str)
+        or not detail
+    ):
+        raise Refusal("the screenshot audit needs exactly a result and a detail")
+    return audit
+
+
+def settle_collected(directory: Path, slot: str, audit_path: Path) -> int:
+    """Settle a collected run with its screenshot audit. Nothing else can change."""
+
+    def step(sequence: Sequence) -> Json:
+        sequence.check_settle(slot)
+        if run_is_live(sequence.directory):
+            raise Refusal(f"a live run owns {slot}")
+        declared = sequence.slots[slot]
+        output = Path(cast(str, declared["output"]))
+        records = output / CONTAINMENT
+        if not (records / "phases.json").exists():
+            raise Refusal(f"{slot} has no collected phases")
+        phases = read_phases(records / "phases.json")
+        audit = read_screenshot_audit(audit_path)
+        target = records / "screenshots.json"
+        if target.exists():
+            # A settlement that stopped here can run again with the same audit.
+            if read_screenshot_audit(target) != audit:
+                raise Refusal("a different screenshot audit is already recorded")
+        else:
+            write_exclusive(target, audit)
+        phases["screenshots"] = phase(
+            cast(str, audit["result"]), cast(str, audit["detail"])
+        )
+        recheck = recheck_manifest(output)
+        if recheck["result"] != "passed" and phase_result(phases, "audit") == "passed":
+            phases["audit"] = recheck
+        return record_settlement(
+            sequence, slot, phases, settled_classification(declared)
+        )
+
+    print(json.dumps(with_writer(directory, "settle-run", step), indent=2))
+    return 0
+
+
+def close_sequence(directory: Path) -> int:
+    """Recheck the stopped golden image once, after the last slot."""
+
+    def step(sequence: Sequence) -> Json:
+        sequence.check_close()
+        frozen = read_frozen(sequence, FOCUSED)
+        return sequence.append(
+            "closed", {"golden": audit_tree(cast(Json, frozen["golden"]))}
+        )
+
+    print(json.dumps(with_writer(directory, "close", step), indent=2))
     return 0
 
 
@@ -1012,9 +1678,16 @@ class Containment:
     """One slot's Task, its evidence and the containment of its exact clone."""
 
     def __init__(
-        self, declared: Json, bounds: dict[str, float], received: list[int]
+        self,
+        declared: Json,
+        bounds: dict[str, float],
+        received: list[int],
+        frozen: Json,
+        before: Json,
     ) -> None:
         self.declared = declared
+        self.frozen = frozen
+        self.before = before
         self.clone = cast(str, declared["clone"])
         self.output = Path(cast(str, declared["output"]))
         self.root = Path(cast(str, declared["evidence_root"]))
@@ -1182,9 +1855,10 @@ class Containment:
         command = [
             "/bin/bash",
             "-c",
-            'source "$1"; shift; "$@"',
+            'source "$1"; source "$2"; shift 2; "$@"',
             CONTAINMENT,
             str(LIFECYCLE),
+            str(EXEC_READS),
             function,
             str(self.root),
             *arguments,
@@ -1279,23 +1953,79 @@ class Containment:
         )
         return stop, self.attempt_result(INVENTORY_OPERATION, status, late), created
 
+    def read_guest(self, operation: str, name: str, *arguments: str) -> GuestRead:
+        """One bounded evidence read. A failed read is never a negative fact."""
+        status, late = self.facade(
+            "read_guest_exec",
+            operation,
+            self.bounds["audit"],
+            "evidence",
+            operation,
+            name,
+            *arguments,
+        )
+        if late:
+            return None, phase("unavailable", f"{operation} outlasted its bound")
+        record = receipt_record(self.root, operation)
+        if status != 0 or record is None:
+            return None, phase("unavailable", f"{operation}: status {status}")
+        return record, phase("passed", f"{operation} is clean")
+
+    def read_guest_state(
+        self, requested: bool, uncertain: bool, holder: Json
+    ) -> dict[str, GuestRead]:
+        """Read the guest before the stop, when a guest can have been reached."""
+        reason = None
+        if holder["result"] == "unresolved":
+            reason = f"the lock holder is unresolved: {holder['detail']}"
+        elif not requested:
+            reason = "no start attempt"
+        elif uncertain:
+            reason = "the start did not complete"
+        if reason is not None:
+            skipped: GuestRead = (None, phase("not-run", reason))
+            return {"installed": skipped, "defaults": skipped, "process": skipped}
+        return {
+            "installed": self.read_guest(INSTALLED_READ, "installed-inventory"),
+            "defaults": self.read_guest(DEFAULTS_READ, "defaults"),
+            "process": self.read_guest(PROCESS_READ, "process", "executable"),
+        }
+
+    def run_audits(self, guest: dict[str, GuestRead]) -> tuple[Json, Json]:
+        """Run each audit after the stop. Each result stays separate."""
+        environment = audit_environment(self.root, self.frozen, guest)
+        installed = audit_installed(self.root, self.frozen, guest)
+        after = [audit_tree(tree) for tree in cast(list[Json], self.frozen["inputs"])]
+        originals = audit_originals(self.root)
+        inputs = cast(list[Json], self.before["inputs"])
+        audits: Json = {
+            "host_before": inputs,
+            "host_after": after,
+            "installed": installed,
+            "originals": originals,
+            "environment": environment,
+        }
+        if "golden" in self.before:
+            audits["golden_before"] = self.before["golden"]
+        host: list[tuple[str, object]] = [
+            (f"{tree['name']} before", tree["result"]) for tree in inputs
+        ]
+        host += [(f"{tree['name']} after", tree["result"]) for tree in after]
+        host.append(("originals", originals["result"]))
+        phases: Json = {
+            "environment": combined(
+                [(name, cast(Json, c)["result"]) for name, c in environment.items()]
+            ),
+            "endpoint": combined(
+                [(name, cast(Json, c)["result"]) for name, c in installed.items()]
+            ),
+            "audit": combined(host),
+        }
+        return audits, phases
+
     def write_manifest(self) -> Json:
         """Digest every retained file. A file that cannot be read stays named."""
-        files: list[Json] = []
-        errors: list[Json] = []
-        for path in sorted(self.output.rglob("*")):
-            try:
-                mode = path.lstat().st_mode
-                if stat.S_ISDIR(mode):
-                    continue
-                if stat.S_ISLNK(mode):
-                    files.append({"path": str(path), "symlink": os.readlink(path)})
-                elif stat.S_ISREG(mode):
-                    files.append(digest_regular(path))
-                else:
-                    files.append({"path": str(path), "kind": "special"})
-            except (OSError, ValueError) as error:
-                errors.append({"path": str(path), "error": str(error)})
+        files, errors = retained_files(self.output)
         manifest: Json = {"files": files, "errors": errors}
         self.keep("manifest.json", manifest)
         return manifest
@@ -1320,6 +2050,8 @@ class Containment:
         )
         self.keep("classification.json", classification)
         requested, uncertain = start_evidence(self.root)
+        # The guest reads need the clone, so they come before its stop.
+        guest = self.read_guest_state(requested, uncertain, holder)
         stop, inventory, created = self.contain(requested, holder)
         try:
             refusals = read_refusals(self.root)
@@ -1342,12 +2074,19 @@ class Containment:
             collection = phase("failed", f"{len(refused)} refused collection records")
         else:
             collection = phase("passed", f"{len(refusals)} refusals recorded")
-        owners = {
-            "environment": "settings-ordering-audits-k170",
-            "endpoint": "settings-ordering-audits-k170",
-            "audit": "settings-ordering-audits-k170",
-            "screenshots": "settings-ordering-qualification-k54",
-        }
+        try:
+            audits, audit_phases = self.run_audits(guest)
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            # A malformed record must not stop the settlement of this slot.
+            detail = f"the audit could not complete: {error}"
+            audits = {"error": detail}
+            audit_phases = cast(
+                Json,
+                dict.fromkeys(
+                    ("environment", "endpoint", "audit"), phase("unavailable", detail)
+                ),
+            )
+        self.keep("audits.json", audits)
         phases: Json = {
             "scenario": {"status": scenario_status},
             "task": {"status": task_status},
@@ -1356,10 +2095,10 @@ class Containment:
             "inventory": phase(
                 cast(str, inventory["result"]), cast(str, inventory["detail"])
             ),
-            **{
-                name: phase("not-run", f"{owner} owns this phase")
-                for name, owner in owners.items()
-            },
+            **audit_phases,
+            "screenshots": phase(
+                "not-run", "settle-run takes the k54 screenshot audit"
+            ),
         }
         self.keep("phases.json", phases)
         self.keep(
@@ -1450,9 +2189,13 @@ def run_slot(directory: Path, slot: str) -> int:
             signal.signal(number, receive)
         if received:
             raise refuse("interrupted before admission")
+        # Admission consumes the slot, so the host audit comes first.
+        frozen, before = audit_before(resolved, slot)
+        if received:
+            raise refuse("interrupted before admission")
         declared = admit_slot(resolved, slot)
         try:
-            containment = Containment(declared, bounds, received)
+            containment = Containment(declared, bounds, received, frozen, before)
         except OSError as error:
             # No Task started, so the slot settles with nothing to contain.
             phases = unstarted_phases(f"the run records are unavailable: {error}")
@@ -1461,10 +2204,12 @@ def run_slot(directory: Path, slot: str) -> int:
                 cast(str, declared["set"]),
                 cast(str, declared["clone"]),
             )
-        else:
-            phases, classification = containment.execute(task)
-        settled = settle_run(resolved, slot, phases, classification)
-    print(json.dumps(settled, indent=2))
+            settled = settle_run(resolved, slot, phases, classification)
+            print(json.dumps(settled, indent=2))
+            return 0
+        phases, _ = containment.execute(task)
+    # The screenshot audit needs a judgement, so settle-run ends this slot.
+    print(json.dumps({"slot": slot, "state": AWAITING, "phases": phases}, indent=2))
     return 0
 
 
@@ -1480,7 +2225,14 @@ def overall(sequence: Sequence) -> str:
     if sequence.stopped() is not None:
         return "no-acceptance"
     if len(dispositions) == len(SLOT_NAMES):
-        return "accepted-finite-sample"
+        if sequence.closed is None:
+            return "awaiting-golden-audit"
+        golden = cast(Json, sequence.closed["golden"])
+        return (
+            "accepted-finite-sample"
+            if golden["result"] == "passed"
+            else "no-acceptance"
+        )
     if {"E01", "E02"} <= set(dispositions):
         return "focused-sample-passed"
     return "in-progress"
@@ -1513,6 +2265,8 @@ def report(directory: Path) -> int:
             "outcome": overall(sequence),
             "stopped_at": sequence.stopped(),
             "ready": sorted(sequence.ready),
+            "held": sequence.held,
+            "closed": sequence.closed,
             "slots": slots,
         }
 
@@ -1553,6 +2307,21 @@ def main() -> int:
     )
     run_parser.add_argument("directory", type=Path)
     run_parser.add_argument("slot", choices=SLOT_NAMES)
+    inventory_parser = commands.add_parser(
+        "inventory", help="print one frozen tree for a readiness receipt"
+    )
+    inventory_parser.add_argument("root", type=Path)
+    inventory_parser.add_argument("name")
+    settle_run_parser = commands.add_parser(
+        "settle-run", help="settle a collected run with its screenshot audit"
+    )
+    settle_run_parser.add_argument("directory", type=Path)
+    settle_run_parser.add_argument("slot", choices=SLOT_NAMES)
+    settle_run_parser.add_argument("audit", type=Path)
+    close_parser = commands.add_parser(
+        "close", help="recheck the stopped golden image after the sequence"
+    )
+    close_parser.add_argument("directory", type=Path)
     report_parser = commands.add_parser(
         "report", help="report every slot and the outcome"
     )
@@ -1582,6 +2351,14 @@ def main() -> int:
             )
         if action == "run":
             return run_slot(cast(Path, args.directory), cast(str, args.slot))
+        if action == "inventory":
+            return inventory_tree(cast(Path, args.root), cast(str, args.name))
+        if action == "settle-run":
+            return settle_collected(
+                cast(Path, args.directory), cast(str, args.slot), cast(Path, args.audit)
+            )
+        if action == "close":
+            return close_sequence(cast(Path, args.directory))
         return report(cast(Path, args.directory))
     except Refusal as error:
         print(f"refused: {error}", file=sys.stderr)

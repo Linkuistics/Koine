@@ -9,9 +9,10 @@ The evidence is source and controls only. No VM ran, and no clone, signed
 subject or runtime slot exists. The work establishes no native behaviour, no
 native cause and no scenario readiness. It closes no ancestor.
 
-Until k170 and k54 supply their phases, every `run` settles as `unresolved`. No
-slot can qualify yet. This result is deliberate, because a phase that did not
-run cannot pass.
+k170 later changed the end of this flow. `run` now audits before admission and
+stops before settlement, and `settle-run` settles the slot. The
+[audit report](ORDERING-AUDITS-RESULTS.md) states the current flow. A phase that
+did not run still cannot pass.
 
 ## The run
 
@@ -158,7 +159,7 @@ Three controls have a narrower failing record:
 ## Handoff
 
 k170 feeds the `environment`, `endpoint` and `audit` phases, and it cuts the
-whole-harness review. It must also add the route by which the k54 screenshot
-audit reaches the `screenshots` phase before settlement, because `run` settles
-in one step. k171 reconciles every original duty after that review. k54 still
-owns the freeze, the readiness receipts and the runtime.
+whole-harness review. Its `settle-run` verb is the route by which the k54
+screenshot audit reaches the `screenshots` phase. k171 reconciles every original
+duty after that review. k54 still owns the freeze, the readiness receipts and
+the runtime.
