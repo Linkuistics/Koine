@@ -54,6 +54,9 @@ fi
 SH
     chmod +x "${BATS_TEST_TMPDIR}/bin/testanyware"
     export PATH="${BATS_TEST_TMPDIR}/bin:${PATH}"
+    # shellcheck source=Tests/scripts/fixtures/declared-tools.sh
+    source "${BATS_TEST_DIRNAME}/fixtures/declared-tools.sh"
+    declare_tools "${BATS_TEST_TMPDIR}/bin/testanyware"
     init_guest_evidence "${KOINE_VM_EVIDENCE_ROOT}" exact-physical-vm
 }
 

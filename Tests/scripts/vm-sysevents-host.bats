@@ -33,6 +33,9 @@ exec /usr/bin/osascript -s so -e "$(cat "${host_literal}")"
 SHIM
     chmod +x "${BATS_TEST_TMPDIR}/bin/testanyware" "${BATS_TEST_TMPDIR}/bin/osascript"
     export PATH="${BATS_TEST_TMPDIR}/bin:${PATH}"
+    # shellcheck source=Tests/scripts/fixtures/declared-tools.sh
+    source "${BATS_TEST_DIRNAME}/fixtures/declared-tools.sh"
+    declare_tools "${BATS_TEST_TMPDIR}/bin/testanyware"
 }
 
 # host_read ROOT LITERAL CLASS NAME [ARGUMENT...]: one read of the fresh root

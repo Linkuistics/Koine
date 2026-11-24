@@ -48,6 +48,9 @@ exit 0
 SLEEP
     chmod +x "${BATS_TEST_TMPDIR}/bin/testanyware" "${BATS_TEST_TMPDIR}/bin/sleep"
     export PATH="${BATS_TEST_TMPDIR}/bin:${PATH}"
+    # shellcheck source=Tests/scripts/fixtures/declared-tools.sh
+    source "${BATS_TEST_DIRNAME}/fixtures/declared-tools.sh"
+    declare_tools "${BATS_TEST_TMPDIR}/bin/testanyware"
     export KOINE_APP_BUNDLE="${scenario_repo}/bundle/Koine.app"
     export KOINE_VM_BASE=testanyware-golden-macos-27 KOINE_VM_ID=exact-settings-vm
     # One root path for every run, so the logged calls compare directly.

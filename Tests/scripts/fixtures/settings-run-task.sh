@@ -37,10 +37,15 @@ finish() {
 step() { python3 "${backend}" poll-step "${root}" "$1" state 0 control; }
 exhaust() { python3 "${backend}" poll-step "${root}" "$1" exhausted 1 control >/dev/null 2>&1 || :; }
 begin() {
-    init_guest_evidence "${root}" "${KOINE_VM_ID}"
+    # run_cli and run_jq declare other executables for the scenario than the frozen ones.
+    KOINE_TESTANYWARE_CLI="${run_cli:-${KOINE_TESTANYWARE_CLI-}}" KOINE_JQ="${run_jq:-${KOINE_JQ-}}" \
+        init_guest_evidence "${root}" "${KOINE_VM_ID}"
     inventory_guest_vms "${root}" read-poll vm-before absent >/dev/null
     start_guest_vm "${root}" vm-start "${KOINE_VM_BASE}" >/dev/null
     inventory_guest_vms "${root}" read-poll vm-after running >/dev/null
+    # run_provenance=skip leaves the clone without its provenance record.
+    [[ "${run_provenance-}" == skip ]] ||
+        record_guest_provenance "${root}" clone-provenance >/dev/null 2>&1 || :
     # The setup records of the scenario. A control can make one of them fail.
     read_guest_exec "${root}" read-poll system system >/dev/null 2>&1 || :
     read_guest_exec "${root}" read-poll gatekeeper gatekeeper >/dev/null 2>&1 || :

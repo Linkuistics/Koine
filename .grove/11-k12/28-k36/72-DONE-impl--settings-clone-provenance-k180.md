@@ -84,3 +84,54 @@ the guest release. Leave the historical evidence, subjects and caps unchanged.
 
 If the tagged resolver makes a strict binding impossible, ask the owner. Do not
 weaken the duty.
+
+## Decisions (running log)
+
+- 2026-11-24, source: on a macOS host, TestAnyware 3.0.0 sends each guest
+  stream through its app. For a `--vm` ID, the app reads
+  `<state_dir>/vms/<id>.json` itself, in `streams.rs`. The CLI sends its own
+  state directory with each request. The app refuses a request when that
+  directory differs from its own, in `incompatible_directories` of `error.rs`.
+  Thus the spec path that the CLI resolves is also the path that the app reads.
+- 2026-11-24, source: `VmPaths::from_env_and_file` of `paths.rs` gives the state
+  directory. It is `$XDG_STATE_HOME/testanyware`, then the `state_dir` of
+  `config.rhai`, then `$HOME/.local/state/testanyware`. `vm start` writes the
+  spec once with `write_atomic`. Only a kept failure or an adoption writes it
+  again.
+- 2026-11-24, decision: the harness does not evaluate Rhai. It accepts an absent
+  or disabled configuration file, or a file that holds only comments and one
+  empty map. Each other file refuses the attempt. The host file is only
+  comments and an empty map. A non-empty `TESTANYWARE_APP_SOCKET` also refuses,
+  because another app can read other directories.
+- 2026-11-24, decision: the caller declares the executables in
+  `KOINE_TESTANYWARE_CLI` and `KOINE_JQ` before `init`. `init` refuses a missing,
+  relative, symbolic-link or non-executable path, and it records each identity
+  in `subject.json`. No attempt falls back to `PATH`. Before each dispatch, the
+  adapter compares the path, size, SHA-256, device and inode. It ignores the
+  times, because a metadata change alone does not change the executable.
+- 2026-11-24, decision: a guest transport is an attempt whose argv carries
+  `--vm`. The `vm` family and the host-only steps are not guest transports. After
+  a `vm start` attempt, a guest transport without a provenance record refuses.
+  The caller's `subject` phase also requires a valid record, so the slot cannot
+  qualify, and a recurrence cannot reject the repair, without one.
+- 2026-11-24, decision: the frozen receipt names the two executables as input
+  trees `testanyware` and `jq`, and the state and configuration paths in
+  `testanyware_paths`. The existing tree audit then digests the executables
+  before admission and after the slot. The run passes the two roots to the
+  scenario.
+- 2026-11-24, decision: the strict scenario also runs its local `jq` decisions
+  through the declared jq, because a local predicate decides a clean false state.
+  The caller's facades keep the `jq` on `PATH`. They use it only to format the
+  stop argument, and the adapter refuses any other stop argument.
+- 2026-11-24, observation: after a failed provenance, the scenario still asks for
+  its failure screenshot. That collection reaches the guest, so the adapter
+  refuses it too. A latch admits collection, but it does not admit an unbound
+  guest transport.
+- 2026-11-24, decision: `check-settings-baseline.py` declares both executables for
+  its scenario run. The baseline comparison still finds 17 cases and 0 findings,
+  so the provenance step changes no compared input, wait or assertion.
+- 2026-11-24, observation: the first mutation run missed six of 36 mutations.
+  Five cases of the configuration control failed on a configuration file that
+  an earlier case left behind. The second-record case failed on the earlier
+  guest transport guard. Each case now starts from a clean file, and the second
+  record precedes any guest transport. The second run detected all 36.

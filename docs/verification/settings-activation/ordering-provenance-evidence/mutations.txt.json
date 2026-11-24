@@ -1,0 +1,14 @@
+{
+  "mode": "mutations",
+  "started": "2026-11-24T07:23:04.001841+00:00",
+  "ended": "2026-11-24T07:24:53.204701+00:00",
+  "statuses": {
+    "bash docs/verification/settings-activation/ordering-provenance-evidence/mutations.sh": 0
+  },
+  "subject_count": 4686,
+  "subjects_unchanged": true,
+  "changed_subjects": [],
+  "added_files": [],
+  "removed_files": [],
+  "output_sha256": "50df1bee374101913cd84a082e34f0fbddcc4680e65287bb12b257db4e3fc7e6"
+}

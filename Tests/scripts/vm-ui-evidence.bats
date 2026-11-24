@@ -58,6 +58,9 @@ if [[ -f "${ui_replies}/${n}.exit" ]]; then exit "$(cat "${ui_replies}/${n}.exit
 CLI
     chmod +x "${BATS_TEST_TMPDIR}/bin/testanyware"
     export PATH="${BATS_TEST_TMPDIR}/bin:${PATH}"
+    # shellcheck source=Tests/scripts/fixtures/declared-tools.sh
+    source "${BATS_TEST_DIRNAME}/fixtures/declared-tools.sh"
+    declare_tools "${BATS_TEST_TMPDIR}/bin/testanyware"
     init_guest_evidence "${ui_root}" exact-ui-vm
 }
 

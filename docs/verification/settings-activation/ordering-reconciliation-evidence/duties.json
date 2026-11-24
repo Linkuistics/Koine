@@ -363,6 +363,10 @@
    {
     "suite": "Tests/scripts/vm-guest-exec.bats",
     "test": "nonexec attempts share exec ordinals and retain exact raw JSON"
+   },
+   {
+    "suite": "Tests/scripts/vm-guest-exec.bats",
+    "test": "each attempt runs the declared executables and its receipt names them (k180)"
    }
   ],
   "red": [
@@ -370,7 +374,7 @@
   ],
   "owner": null,
   "authority": null,
-  "note": "Each attempt keeps its command, VM, class, ordinal, times, streams, CLI status and raw envelope."
+  "note": "Each attempt keeps its command, VM, class, ordinal, times, streams, CLI status and raw envelope. Since k180 it also names the declared CLI and jq that ran."
  },
  {
   "id": "D020",

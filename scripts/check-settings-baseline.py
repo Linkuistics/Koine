@@ -257,6 +257,9 @@ def run_case(source: Path, tree: Path | None, flags: str) -> Run:
             KOINE_APP_BUNDLE=str(repo / "bundle/Koine.app"),
             KOINE_VM_BASE="testanyware-golden-macos-27",
             KOINE_VM_ID="exact-settings-vm",
+            # The current scenario runs its local jq decisions through KOINE_JQ.
+            KOINE_TESTANYWARE_CLI=str(bin_dir / "testanyware"),
+            KOINE_JQ=os.path.realpath(shutil.which("jq") or "jq"),
         )
         result = subprocess.run(
             [str(repo / SCENARIO)],

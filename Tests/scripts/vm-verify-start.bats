@@ -40,6 +40,9 @@ exec /bin/sleep 0.05
 SLEEP
     chmod +x "${BATS_TEST_TMPDIR}/bin/testanyware" "${BATS_TEST_TMPDIR}/bin/sleep"
     export PATH="${BATS_TEST_TMPDIR}/bin:${PATH}"
+    # shellcheck source=Tests/scripts/fixtures/declared-tools.sh
+    source "${BATS_TEST_DIRNAME}/fixtures/declared-tools.sh"
+    declare_tools "${BATS_TEST_TMPDIR}/bin/testanyware"
     export KOINE_APP_BUNDLE="${start_repo}/bundle/Koine.app"
     unset KOINE_VM_BASE KOINE_VM_DISPLAY KOINE_VM_KEEP KOINE_VM_ID KOINE_SETTINGS_TRACE TESTANYWARE_VM_ID VNC_KEEPALIVE_PID
 }

@@ -40,6 +40,9 @@ exec python3 "${lifecycle_fixture}" "$@"
 CLI
     chmod +x "${BATS_TEST_TMPDIR}/bin/testanyware"
     export PATH="${BATS_TEST_TMPDIR}/bin:${PATH}"
+    # shellcheck source=Tests/scripts/fixtures/declared-tools.sh
+    source "${BATS_TEST_DIRNAME}/fixtures/declared-tools.sh"
+    declare_tools "${BATS_TEST_TMPDIR}/bin/testanyware"
     : >"${lifecycle_calls}"
     export local_input="${BATS_TEST_TMPDIR}/input file.zip"
     printf 'synthetic bundle archive bytes\n' >"${local_input}"
@@ -272,7 +275,7 @@ assert_latched() {
     inventory_guest_vms "${lifecycle_root}" evidence after-stop absent >/dev/null
     jq -se '[.[] | select(.[0:2] == ["vm","list"])] == [["vm","list","--all","--json"],["vm","list","--all","--json"],["vm","list","--all","--json"]]' \
         "${lifecycle_calls}"
-    jq -e '.argv == ["testanyware","vm","stop","exact-lifecycle-vm","--json"] and .class == "evidence"' \
+    jq -e '.argv == [env.KOINE_TESTANYWARE_CLI,"vm","stop","exact-lifecycle-vm","--json"] and .class == "evidence"' \
         "${lifecycle_root}/000004/request.json"
     [[ ! -e "${lifecycle_root}/unavailable" ]]
 }

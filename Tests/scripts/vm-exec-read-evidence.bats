@@ -22,6 +22,9 @@ exec python3 "${read_fixture}" "$@"
 CLI
     chmod +x "${BATS_TEST_TMPDIR}/bin/testanyware"
     export PATH="${BATS_TEST_TMPDIR}/bin:${PATH}"
+    # shellcheck source=Tests/scripts/fixtures/declared-tools.sh
+    source "${BATS_TEST_DIRNAME}/fixtures/declared-tools.sh"
+    declare_tools "${BATS_TEST_TMPDIR}/bin/testanyware"
     : >"${read_calls}"
     answer ''
     init_guest_evidence "${read_root}" exact-read-vm

@@ -42,6 +42,9 @@ exit 0
 SLEEP
     chmod +x "${BATS_TEST_TMPDIR}/bin/testanyware" "${BATS_TEST_TMPDIR}/bin/sleep"
     export PATH="${BATS_TEST_TMPDIR}/bin:${PATH}"
+    # shellcheck source=Tests/scripts/fixtures/declared-tools.sh
+    source "${BATS_TEST_DIRNAME}/fixtures/declared-tools.sh"
+    declare_tools "${BATS_TEST_TMPDIR}/bin/testanyware"
     export KOINE_APP_BUNDLE="${scenario_repo}/bundle/Koine.app"
     export KOINE_VM_BASE=testanyware-golden-macos-27 KOINE_VM_ID=exact-settings-vm
     unset KOINE_VM_EVIDENCE_ROOT KOINE_VM_DISPLAY KOINE_VM_KEEP KOINE_SETTINGS_TRACE \
@@ -1492,4 +1495,30 @@ SH
     # The transcript and every file outside the root have no copy.
     [[ "${output}" != *"${password}"* ]]
     [[ -z "$(grep -rlF --exclude-dir=consent-evidence -- "${password}" "${BATS_TEST_TMPDIR}" || :)" ]]
+}
+
+@test "the scenario records the clone provenance between the inventory and the first guest read, with the declared jq (k180)" {
+    cat >"${BATS_TEST_TMPDIR}/declared-jq" <<SH
+#!/bin/bash
+printf '%s\n' "\$*" >>"${BATS_TEST_TMPDIR}/declared-jq.log"
+exec "${KOINE_JQ}" "\$@"
+SH
+    chmod +x "${BATS_TEST_TMPDIR}/declared-jq"
+    export KOINE_JQ="${BATS_TEST_TMPDIR}/declared-jq"
+    run_scenario
+    [[ "${status}" == 0 && "${output}" == *'== PASSED'* ]]
+    jq -se 'map(.operation)[1:6] == ["vm-before", "vm-start", "vm-after", "clone-provenance", "system"]
+        and (map(select(.action == "provenance")) | length) == 1' "${settings_sim}/calls.jsonl"
+    # The signature decision is a local jq predicate of the scenario.
+    grep -qF -- '-e .valid == true' "${BATS_TEST_TMPDIR}/declared-jq.log"
+}
+
+@test "a failed clone provenance stops the scenario, and only the failure screenshot follows (k180)" {
+    export settings_fault=clone-provenance
+    run_scenario
+    [[ "${status}" == 125 ]]
+    [[ "${output}" == *'FAILED: the provenance of the clone exact-settings-vm could not be recorded'* ]]
+    # The real backend refuses that evidence-class capture too: no record follows the start.
+    jq -se 'map(.operation) | .[(index("clone-provenance") + 1):] == ["failure-capture"]' \
+        "${settings_sim}/calls.jsonl"
 }

@@ -17,14 +17,18 @@ frozen_prepare() {
     export guest_bundle="${frozen}/guest-bundle"
 }
 
-# frozen_receipt SET FILE: write the readiness receipt of one set.
+# frozen_receipt SET FILE: write the readiness receipt of one set. The
+# executables are the ones that declare_tools declared.
 frozen_receipt() {
-    local bundle taskfile golden
+    local bundle taskfile golden cli decoder
     bundle="$(python3 -I "${tool}" inventory "${frozen}/Koine.app" bundle)"
     taskfile="$(python3 -I "${tool}" inventory "${frozen}/Taskfile.yml" taskfile)"
     golden="$(python3 -I "${tool}" inventory "${frozen}/golden" golden)"
+    cli="$(python3 -I "${tool}" inventory "${KOINE_TESTANYWARE_CLI}" testanyware)"
+    decoder="$(python3 -I "${tool}" inventory "${KOINE_JQ}" jq)"
     jq -n --arg set "$1" --argjson bundle "${bundle}" --argjson taskfile "${taskfile}" \
-        --argjson golden "${golden}" '{
+        --argjson golden "${golden}" --argjson cli "${cli}" --argjson decoder "${decoder}" \
+        --arg state "${XDG_STATE_HOME}/testanyware" --arg config "${TESTANYWARE_CONFIG}" '{
             schema: 1,
             set: $set,
             environment: {
@@ -35,7 +39,8 @@ frozen_receipt() {
                 assessments: "enabled"
             },
             process_arguments: "/Applications/Koine.app/Contents/MacOS/Koine",
-            inputs: [$bundle, $taskfile],
-            golden: $golden
+            inputs: [$bundle, $taskfile, $cli, $decoder],
+            golden: $golden,
+            testanyware_paths: {state_dir: $state, config: $config}
         }' >"$2"
 }

@@ -1,6 +1,7 @@
 # shellcheck shell=bash
 # Source-only evidence seam; sourcing it starts no process, transcript or VM.
 init_guest_evidence() {
+    # KOINE_TESTANYWARE_CLI and KOINE_JQ declare the absolute executables first.
     python3 "${BASH_SOURCE[0]%/*}/vm-guest-exec.py" init "$@"
 }
 exec_guest_evidence() {
@@ -20,6 +21,11 @@ record_guest_poll() {
 }
 cli_guest_evidence() {
     _guest_evidence_backend cli "$@"
+}
+record_guest_provenance() {
+    # ROOT OPERATION: after the clone starts and before its first guest transport.
+    # A host file read of its spec; each later guest transport rereads that spec.
+    _guest_evidence_backend provenance "$@"
 }
 _guest_evidence_backend() {
     local action="$1"

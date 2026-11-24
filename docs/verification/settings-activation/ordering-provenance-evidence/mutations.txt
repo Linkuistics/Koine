@@ -1,0 +1,84 @@
+$ bash docs/verification/settings-activation/ordering-provenance-evidence/mutations.sh
+== relative-cli-accepted
+not ok 1 init refuses an undeclared, relative, linked or non-executable tool and creates no root (k180)
+== linked-cli-followed
+not ok 1 init refuses an undeclared, relative, linked or non-executable tool and creates no root (k180)
+== unrunnable-cli-accepted
+not ok 1 init refuses an undeclared, relative, linked or non-executable tool and creates no root (k180)
+== undeclared-jq-searched
+not ok 1 init refuses an undeclared, relative, linked or non-executable tool and creates no root (k180)
+== executable-check-skipped
+not ok 1 a changed, replaced or missing executable refuses the attempt before dispatch and latches (k180)
+== inode-ignored
+not ok 1 a changed, replaced or missing executable refuses the attempt before dispatch and latches (k180)
+== bare-cli-name
+not ok 1 each attempt runs the declared executables and its receipt names them (k180)
+== bare-jq-name
+not ok 1 each attempt runs the declared executables and its receipt names them (k180)
+== second-provenance-replaces
+not ok 1 the clone provenance records the spec, its digest, the endpoint and the resolving paths once (k180)
+== provenance-before-start
+not ok 1 provenance refuses before a VM start and after a guest transport (k180)
+== provenance-after-guest
+not ok 1 provenance refuses before a VM start and after a guest transport (k180)
+== unbound-guest-transport
+not ok 1 a guest transport after a VM start needs a provenance record, and VM lifecycle does not (k180)
+== spec-check-skipped
+not ok 1 a missing, changed or different spec refuses the next guest transport and latches (k180)
+== path-blind-spec-check
+not ok 1 a missing, changed or different spec refuses the next guest transport and latches (k180)
+== lifecycle-as-guest
+ok 1 init refuses an undeclared, relative, linked or non-executable tool and creates no root (k180)
+ok 2 each attempt runs the declared executables and its receipt names them (k180)
+ok 3 a changed, replaced or missing executable refuses the attempt before dispatch and latches (k180)
+not ok 4 the clone provenance records the spec, its digest, the endpoint and the resolving paths once (k180)
+ok 5 provenance refuses before a VM start and after a guest transport (k180)
+not ok 6 a guest transport after a VM start needs a provenance record, and VM lifecycle does not (k180)
+not ok 7 a missing, changed or different spec refuses the next guest transport and latches (k180)
+not ok 8 a configuration or environment that the harness cannot evaluate refuses the provenance (k180)
+== configuration-unchecked
+not ok 1 a configuration or environment that the harness cannot evaluate refuses the provenance (k180)
+== comments-not-nested
+not ok 1 a configuration or environment that the harness cannot evaluate refuses the provenance (k180)
+== other-app-accepted
+not ok 1 a configuration or environment that the harness cannot evaluate refuses the provenance (k180)
+== relative-state-accepted
+not ok 1 a configuration or environment that the harness cannot evaluate refuses the provenance (k180)
+== relative-config-accepted
+not ok 1 a configuration or environment that the harness cannot evaluate refuses the provenance (k180)
+== missing-home-accepted
+not ok 1 a configuration or environment that the harness cannot evaluate refuses the provenance (k180)
+== agentless-spec-accepted
+not ok 1 a configuration or environment that the harness cannot evaluate refuses the provenance (k180)
+== provenance-not-recorded
+not ok 1 the scenario records the clone provenance between the inventory and the first guest read, with the declared jq (k180)
+not ok 2 a failed clone provenance stops the scenario, and only the failure screenshot follows (k180)
+== scenario-jq-unpinned
+not ok 1 the scenario records the clone provenance between the inventory and the first guest read, with the declared jq (k180)
+== provenance-failure-ignored
+not ok 1 a failed clone provenance stops the scenario, and only the failure screenshot follows (k180)
+== frozen-executables-unchecked
+not ok 1 a receipt without both executables or the TestAnyware paths refuses the run before admission (k180)
+== frozen-relative-paths
+not ok 1 a receipt without both executables or the TestAnyware paths refuses the run before admission (k180)
+== executables-not-passed
+not ok 1 the run passes the frozen executables, and a qualifying slot names them and its provenance (k180)
+== subject-without-provenance
+not ok 1 a provenance on other frozen paths or a scenario on another CLI fails the subject (k180)
+== missing-record-counted
+not ok 1 a slot without a provenance record cannot qualify (k180)
+== attempt-cli-unchecked
+not ok 1 a provenance on other frozen paths or a scenario on another CLI fails the subject (k180)
+== attempt-jq-unchecked
+not ok 1 a provenance on other frozen paths or a scenario on another CLI fails the subject (k180)
+== subject-executables-unchecked
+not ok 1 a provenance on other frozen paths or a scenario on another CLI fails the subject (k180)
+== order-unchecked
+not ok 1 a guest transport ordered before the provenance record fails the provenance audit (k180)
+== ordinal-unchecked
+not ok 1 a guest transport ordered before the provenance record fails the provenance audit (k180)
+== spec-path-unchecked
+not ok 1 a provenance on other frozen paths or a scenario on another CLI fails the subject (k180)
+
+
+status 0

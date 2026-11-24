@@ -25,6 +25,9 @@ CLI
     # Resolve the interpreter before a fake_libproc shim can shadow it.
     real_python3="$(command -v python3)"
     export PATH="${BATS_TEST_TMPDIR}/bin:${PATH}"
+    # shellcheck source=Tests/scripts/fixtures/declared-tools.sh
+    source "${BATS_TEST_DIRNAME}/fixtures/declared-tools.sh"
+    declare_tools "${BATS_TEST_TMPDIR}/bin/testanyware"
     export HOME="${BATS_TEST_TMPDIR}/home"
     mkdir -p "${HOME}/Library/Application Support/Koine"
 }

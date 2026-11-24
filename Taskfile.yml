@@ -1672,11 +1672,11 @@ tasks:
       - bats Tests/scripts/vm-window-evidence.bats
 
   check:vm-guest-exec:
-    desc: Check shared single-attempt exec/non-exec evidence, eligibility, confirmation failures and the owner-only root without a VM; scenario migration remains separate
+    desc: Check shared single-attempt exec/non-exec evidence, eligibility, confirmation failures, the owner-only root, the declared CLI and jq executables and the clone provenance without a VM; scenario migration remains separate
     cmds:
       - bash -n scripts/vm-guest-exec-lib.sh
-      - shellcheck -x scripts/vm-guest-exec-lib.sh Tests/scripts/vm-guest-exec.bats
-      - shfmt -d -i 4 scripts/vm-guest-exec-lib.sh Tests/scripts/vm-guest-exec.bats
+      - shellcheck -x scripts/vm-guest-exec-lib.sh Tests/scripts/vm-guest-exec.bats Tests/scripts/fixtures/declared-tools.sh
+      - shfmt -d -i 4 scripts/vm-guest-exec-lib.sh Tests/scripts/vm-guest-exec.bats Tests/scripts/fixtures/declared-tools.sh
       - python3 -m py_compile scripts/vm-guest-exec.py
       - uvx ruff@0.17.3 check scripts/vm-guest-exec.py
       - uvx ruff@0.17.3 format --check scripts/vm-guest-exec.py

@@ -11,6 +11,13 @@ setup() {
     export tool="${repo_root}/scripts/settings-ordering-sequence.py"
     export backend="${repo_root}/scripts/vm-guest-exec.py"
     export sequence="${BATS_TEST_TMPDIR}/sequence"
+    # The receipts need declared executables. This CLI never runs.
+    mkdir "${BATS_TEST_TMPDIR}/bin"
+    printf '#!/bin/bash\nexit 97\n' >"${BATS_TEST_TMPDIR}/bin/testanyware"
+    chmod +x "${BATS_TEST_TMPDIR}/bin/testanyware"
+    # shellcheck source=Tests/scripts/fixtures/declared-tools.sh
+    source "${BATS_TEST_DIRNAME}/fixtures/declared-tools.sh"
+    declare_tools "${BATS_TEST_TMPDIR}/bin/testanyware"
 }
 
 seq_tool() { python3 -I "${tool}" "$@"; }

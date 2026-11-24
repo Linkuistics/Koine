@@ -942,6 +942,9 @@ def main() -> int:
     elif action in {"fail", "poll-step"}:
         kind, operation = "evidence", arguments[1]
         entry.update(kind=kind, operation=operation, arguments=arguments[2:])
+    elif action == "provenance":
+        kind, operation = "read-poll", arguments[1]
+        entry.update(kind=kind, operation=operation, arguments=arguments[2:])
     else:
         raise SystemExit(f"unsimulated backend action: {action}")
     if not (root / "subject.json").is_file():
@@ -982,6 +985,11 @@ def main() -> int:
         entry["outcome"] = "unavailable"
         log(entry)
         return int(os.environ.get("settings_fault_status", "125"))
+    if action == "provenance":
+        # A host file read of the clone's spec. The facade tests own its checks.
+        entry["outcome"] = "clean"
+        log(entry)
+        return 0
     OPERATION = operation
     state = load()
     if action == "cli":

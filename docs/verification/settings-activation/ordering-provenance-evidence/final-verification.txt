@@ -1,0 +1,932 @@
+$ mise exec -- task check:vm-exec-one-shot-evidence
+All checks passed!
+4 files already formatted
+0 errors, 0 warnings, 0 informations
+1..18
+ok 1 submissions admit only the one-shot class and take no arguments
+ok 2 each submission sends its legacy command once and keeps a clean receipt
+ok 3 a timeout, a guest failure or a transport failure of a submission is unavailable and sent once
+ok 4 other stdout from a submission is unavailable
+ok 5 the launch confirmation joins the descriptor, the only selected process, its executable and its start
+ok 6 a stale descriptor, a second process or another executable is a clean mismatch
+ok 7 a malformed identity answer is unavailable
+ok 8 a reopen keeps the same process: instance, PID, start and executable
+ok 9 the TextEdit quit needs a clean submission and then one clean absence read
+ok 10 a failed TextEdit quit reads nothing, and an absence cannot make it clean
+ok 11 the restart waits 30 seconds and polls the boot five seconds apart until it changes
+ok 12 a failed restart submission is unavailable even if the boot later changes
+ok 13 a refused connection during the boot poll stops it at once, even before a changed boot
+ok 14 an unchanged boot for sixty reads is a state failure
+ok 15 the restart refuses a boot argument that is not a boot record, before it sends anything
+ok 16 the diagnostic defaults write is refused and latches without dispatch
+ok 17 the PID identity read pipes the PID to the launch identity script and parses its answer
+ok 18 a malformed PID identity answer or argument is unavailable and the evidence class refuses it
+
+task: [check:vm-exec-one-shot-evidence] bash -n scripts/vm-exec-one-shot-evidence-lib.sh Tests/scripts/vm-exec-one-shot-evidence.bats Tests/scripts/vm-exec-one-shot-host.bats
+task: [check:vm-exec-one-shot-evidence] shellcheck -x scripts/vm-exec-one-shot-evidence-lib.sh Tests/scripts/vm-exec-one-shot-evidence.bats Tests/scripts/vm-exec-one-shot-host.bats
+task: [check:vm-exec-one-shot-evidence] shfmt -d -i 4 scripts/vm-exec-one-shot-evidence-lib.sh Tests/scripts/vm-exec-one-shot-evidence.bats Tests/scripts/vm-exec-one-shot-host.bats
+task: [check:vm-exec-one-shot-evidence] python3 -m py_compile scripts/vm-guest-exec.py scripts/vm_exec_reads.py Tests/scripts/fixtures/exec-read-cli.py Tests/scripts/fixtures/identity-libproc-fake.py
+task: [check:vm-exec-one-shot-evidence] uvx ruff@0.17.3 check scripts/vm-guest-exec.py scripts/vm_exec_reads.py Tests/scripts/fixtures/exec-read-cli.py Tests/scripts/fixtures/identity-libproc-fake.py
+task: [check:vm-exec-one-shot-evidence] uvx ruff@0.17.3 format --check scripts/vm-guest-exec.py scripts/vm_exec_reads.py Tests/scripts/fixtures/exec-read-cli.py Tests/scripts/fixtures/identity-libproc-fake.py
+task: [check:vm-exec-one-shot-evidence] uvx pyright@1.1.414 scripts/vm-guest-exec.py scripts/vm_exec_reads.py Tests/scripts/fixtures/exec-read-cli.py Tests/scripts/fixtures/identity-libproc-fake.py
+task: [check:vm-exec-one-shot-evidence] bats Tests/scripts/vm-exec-one-shot-evidence.bats
+
+status 0
+$ mise exec -- task check:vm-exec-one-shot-host
+1..10
+ok 1 the real identity read names the kernel's executable and the start of a live host process
+ok 2 the real identity read reports an exited process as the clean fact no process
+ok 3 the real identity read reports an absent descriptor as a clean fact
+ok 4 a descriptor without a PID makes the real identity read unavailable
+ok 5 the fake libproc answers the real identity script with a live process
+ok 6 a path read that fails with ESRCH while the process lives makes the identity unavailable
+ok 7 the identity script reports an absent process only from a process-info read
+ok 8 the real TextEdit process read parses this host's answer
+ok 9 each submission command is valid bash
+ok 10 the real PID identity read names a live host process and reports an exited one as no process
+
+task: [check:vm-exec-one-shot-host] bats Tests/scripts/vm-exec-one-shot-host.bats
+
+status 0
+$ mise exec -- task check:vm-sysevents-evidence
+All checks passed!
+3 files already formatted
+0 errors, 0 warnings, 0 informations
+1..30
+ok 1 System Events reads refuse the evidence class and the enrolment admits only one-shot
+ok 2 row titles, label modes and enrolment arguments refuse before dispatch
+ok 3 each read sends the legacy AppleScript in source form with script errors on stdout
+ok 4 a source-form list keeps a title that holds the separator
+ok 5 an empty menu and a menu of one empty title are different lists
+ok 6 the Dock assertion reads item names, and a failed Dock read shows nothing
+ok 7 count, agent flag, label and front application keep their exact types
+ok 8 a clean absence is a negative only in the label and frame polls
+ok 9 a denied or unformatted error with an absence number is unavailable in every poll
+ok 10 a denied label read stops the label poll at once and consumes no negative step
+ok 11 a denied item frame read stops the item frame poll at once and consumes no negative step
+ok 12 a denied row frame read stops the row frame poll at once and consumes no negative step
+ok 13 other AppleScript errors, statuses and malformed answers are unavailable
+ok 14 a timeout, a guest failure or a transport failure is unavailable even with a clean answer
+ok 15 the label poll keeps fifteen reads two seconds apart and ends in a state failure
+ok 16 the label poll waits through an absence and a missing value and stops on the exact label
+ok 17 a failed label read stops the poll at once and is never a negative
+ok 18 the item frame poll keeps five reads two seconds apart and the legacy digit predicate
+ok 19 a partial frame passes the legacy predicate and keeps its rendering for click_centre
+ok 20 the row frame poll names its row and keeps five reads one second apart
+ok 21 each deferred menu poll keeps its bound and leaves the exhaustion receipt to the caller (k166)
+ok 22 a deferred menu poll keeps the positive, the failed read and the argument refusals (k166)
+ok 23 the System Events check after the grant needs a complete nonempty process list
+ok 24 the enrolment needs one complete JSON line and keeps the legacy predicate
+ok 25 a malformed enrolment answer is unavailable
+ok 26 a failed enrolment submission is unavailable, and no later answer makes it clean
+ok 27 the setup and route reads send their fixed AppleScript in source form
+ok 28 the setup and route reads parse their complete values
+ok 29 the menu reads retain the count of menus under each item (k162)
+ok 30 a missing value, an incomplete enumeration or a script error in a setup read is unavailable
+
+task: [check:vm-sysevents-evidence] bash -n scripts/vm-sysevents-evidence-lib.sh Tests/scripts/vm-sysevents-evidence.bats Tests/scripts/vm-sysevents-host.bats
+task: [check:vm-sysevents-evidence] shellcheck -x scripts/vm-sysevents-evidence-lib.sh Tests/scripts/vm-sysevents-evidence.bats Tests/scripts/vm-sysevents-host.bats
+task: [check:vm-sysevents-evidence] shfmt -d -i 4 scripts/vm-sysevents-evidence-lib.sh Tests/scripts/vm-sysevents-evidence.bats Tests/scripts/vm-sysevents-host.bats
+task: [check:vm-sysevents-evidence] python3 -m py_compile scripts/vm-guest-exec.py scripts/vm_exec_reads.py Tests/scripts/fixtures/exec-read-cli.py
+task: [check:vm-sysevents-evidence] uvx ruff@0.17.3 check scripts/vm-guest-exec.py scripts/vm_exec_reads.py Tests/scripts/fixtures/exec-read-cli.py
+task: [check:vm-sysevents-evidence] uvx ruff@0.17.3 format --check scripts/vm-guest-exec.py scripts/vm_exec_reads.py Tests/scripts/fixtures/exec-read-cli.py
+task: [check:vm-sysevents-evidence] uvx pyright@1.1.414 scripts/vm-guest-exec.py scripts/vm_exec_reads.py Tests/scripts/fixtures/exec-read-cli.py
+task: [check:vm-sysevents-evidence] bats Tests/scripts/vm-sysevents-evidence.bats
+
+status 0
+$ mise exec -- task check:vm-sysevents-host
+1..4
+ok 1 real osascript output parses for every System Events read
+ok 2 real osascript errors are an absence only in a poll and unavailable elsewhere
+ok 3 a real denial with an absence number is unavailable in every poll
+ok 4 the real enrolment client prints one JSON line that the submission parses
+
+task: [check:vm-sysevents-host] bats Tests/scripts/vm-sysevents-host.bats
+
+status 0
+$ mise exec -- task check:vm-exec-read-evidence
+All checks passed!
+3 files already formatted
+0 errors, 0 warnings, 0 informations
+1..27
+ok 1 generic evidence exec refuses without dispatch while read-poll and one-shot still dispatch
+ok 2 evidence class admits only read-only reads and never clears a latch
+ok 3 unknown reads, invalid arguments and the one-shot class refuse before dispatch
+ok 4 endpoint absence is clean data and a present descriptor needs the exact schema
+ok 5 a malformed descriptor is unavailable, never absent
+ok 6 a failed descriptor read is unavailable, never absent
+ok 7 a timeout with a complete grammatical answer stays unavailable for every read
+ok 8 stdout with trailing whitespace is not an agent answer
+ok 9 launch poll keeps fifteen reads two seconds apart and ends in a state failure
+ok 10 launch poll stops on a present descriptor and prints its record
+ok 11 a failed poll read stops at once and is never a negative
+ok 12 login poll keeps twenty-four reads five seconds apart and its exhaustion latches nothing
+ok 13 a deferred launch poll keeps its bound and leaves the exhaustion receipt to the caller (k166)
+ok 14 a deferred launch poll keeps the positive, the failed read and the argument refusals (k166)
+ok 15 process absence is clean data and process rows keep identity and arguments
+ok 16 malformed process rows and a failed pgrep are unavailable, never absence
+ok 17 a selected process missing from the ps rows makes the process read unavailable
+ok 18 process rows with two start times are two incarnations and stay unavailable
+ok 19 boot identity parses exactly and a changed boot after a failed restart stays unavailable
+ok 20 the port read keeps the legacy curl command and its exit status is data
+ok 21 absent diagnostic defaults are a parsed fact across every effective source
+ok 22 a diagnostic key in an any-user domain means diagnostics are not disabled
+ok 23 raw control characters in a preference string do not hide a diagnostic key
+ok 24 a malformed defaults answer is unavailable, never absence
+ok 25 the installed inventory keeps the legacy command and needs its exact rows
+ok 26 setup records keep each documented clean status as data
+ok 27 undocumented statuses and missing result lines in setup records are unavailable
+
+task: [check:vm-exec-read-evidence] bash -n scripts/vm-exec-read-evidence-lib.sh Tests/scripts/vm-exec-read-evidence.bats Tests/scripts/vm-exec-read-host.bats
+task: [check:vm-exec-read-evidence] shellcheck -x scripts/vm-exec-read-evidence-lib.sh Tests/scripts/vm-exec-read-evidence.bats Tests/scripts/vm-exec-read-host.bats
+task: [check:vm-exec-read-evidence] shfmt -d -i 4 scripts/vm-exec-read-evidence-lib.sh Tests/scripts/vm-exec-read-evidence.bats Tests/scripts/vm-exec-read-host.bats
+task: [check:vm-exec-read-evidence] python3 -m py_compile scripts/vm-guest-exec.py scripts/vm_exec_reads.py Tests/scripts/fixtures/exec-read-cli.py
+task: [check:vm-exec-read-evidence] uvx ruff@0.17.3 check scripts/vm-guest-exec.py scripts/vm_exec_reads.py Tests/scripts/fixtures/exec-read-cli.py
+task: [check:vm-exec-read-evidence] uvx ruff@0.17.3 format --check scripts/vm-guest-exec.py scripts/vm_exec_reads.py Tests/scripts/fixtures/exec-read-cli.py
+task: [check:vm-exec-read-evidence] uvx pyright@1.1.414 scripts/vm-guest-exec.py scripts/vm_exec_reads.py Tests/scripts/fixtures/exec-read-cli.py
+task: [check:vm-exec-read-evidence] bats Tests/scripts/vm-exec-read-evidence.bats
+
+status 0
+$ mise exec -- task check:vm-exec-read-host
+1..3
+ok 1 every state-free read parses the real output of this host
+ok 2 a selected process that exits before ps makes the real process read unavailable
+ok 3 an any-user diagnostic default reaches the real defaults read
+
+task: [check:vm-exec-read-host] bats Tests/scripts/vm-exec-read-host.bats
+
+status 0
+$ mise exec -- task check:vm-file-lifecycle-evidence
+All checks passed!
+2 files already formatted
+0 errors, 0 warnings, 0 informations
+1..18
+ok 1 generic upload and download refuse every class without dispatch
+ok 2 upload records exact argv raw receipt and stable local identity before and after dispatch
+ok 3 download qualifies guest bytes against the upload record at a backend-owned path
+ok 4 a short guest write is unavailable even though the upload receipt was clean
+ok 5 a local input that changes during the transfer is unavailable and keeps both records
+ok 6 upload schema failures retain raw failure and stop later input
+ok 7 missing symlinked and directory local inputs never dispatch
+ok 8 download failures latch and never yield a qualified copy
+ok 9 failed download bytes stay where the CLI leaves them and are never qualified
+ok 10 download refuses an unmatched upload record and a scenario class before dispatch
+ok 11 evidence-class download remains collection after a latch and keeps the first reason
+ok 12 VM start pins the base wait and identity and qualifies the complete start payload
+ok 13 VM start schema failures are unavailable and stop later input
+ok 14 VM start refuses an implicit base and caller options before dispatch
+ok 15 inventory reads the complete list and decides running and absent from clean data
+ok 16 an unexpected inventory state or schema is unavailable and never a negative
+ok 17 exact stop is collection after a latch and a failed stop never passes
+ok 18 upload holds the shared writer lock through the CLI and a competing dispatch refuses
+
+task: [check:vm-file-lifecycle-evidence] bash -n scripts/vm-file-evidence-lib.sh scripts/vm-lifecycle-evidence-lib.sh Tests/scripts/vm-file-lifecycle-evidence.bats
+task: [check:vm-file-lifecycle-evidence] shellcheck -x scripts/vm-file-evidence-lib.sh scripts/vm-lifecycle-evidence-lib.sh Tests/scripts/vm-file-lifecycle-evidence.bats
+task: [check:vm-file-lifecycle-evidence] shfmt -d -i 4 scripts/vm-file-evidence-lib.sh scripts/vm-lifecycle-evidence-lib.sh Tests/scripts/vm-file-lifecycle-evidence.bats
+task: [check:vm-file-lifecycle-evidence] python3 -m py_compile scripts/vm-guest-exec.py Tests/scripts/fixtures/file-lifecycle-cli.py
+task: [check:vm-file-lifecycle-evidence] uvx ruff@0.17.3 check scripts/vm-guest-exec.py Tests/scripts/fixtures/file-lifecycle-cli.py
+task: [check:vm-file-lifecycle-evidence] uvx ruff@0.17.3 format --check scripts/vm-guest-exec.py Tests/scripts/fixtures/file-lifecycle-cli.py
+task: [check:vm-file-lifecycle-evidence] uvx pyright@1.1.414 scripts/vm-guest-exec.py Tests/scripts/fixtures/file-lifecycle-cli.py
+task: [check:vm-file-lifecycle-evidence] bats Tests/scripts/vm-file-lifecycle-evidence.bats
+
+status 0
+$ mise exec -- task check:vm-guest-exec
+All checks passed!
+1 file already formatted
+0 errors, 0 warnings, 0 informations
+1..51
+ok 1 nonexec attempts share exec ordinals and retain exact raw JSON
+ok 2 nonexec failure blocks exec and input while collection preserves the first latch
+ok 3 failed downstream confirmation is ordinal evidence and cannot restore input
+ok 4 evidence class refuses mutating CLI actions even after a prior latch
+ok 5 latched CLI evidence still admits collection and exact clone stop
+ok 6 refusals retain each request and reason without replacing the first latch
+ok 7 nonexec rejects malformed success dry-run failed CLI and incomplete command payloads
+ok 8 exec latch and incomplete receipts gate nonexec without dispatch
+ok 9 nonexec endpoint overrides and alternate exec routes refuse before dispatch
+ok 10 VM start refuses viewer and retained-failure options before dispatch
+ok 11 caller ID overrides refuse on both VM start and endpoint routes
+ok 12 nonexec start list and screen size retain explicit call payloads and generic upload refuses
+ok 13 nonexec invalid invocations and missing backends latch before later input
+ok 14 lifecycle evidence binds the pinned identity and never accepts a different stop
+ok 15 nonexec orphan and gate confirmation exec callers share one writer lock
+ok 16 clean exec retains exact bytes, command, VM, status and ordered receipts
+ok 17 initialization refuses reuse without touching existing evidence
+ok 18 missing and wrongly typed envelope fields cannot qualify matching text
+ok 19 a legacy, partial or undecodable exec record cannot qualify a clean exit
+ok 20 a clean CLI status with a withdrawing diagnostic stays unavailable
+ok 21 a diagnostic stays clean when it withdraws nothing for that command
+ok 22 a size wait that can hide a failed session stays unavailable
+ok 23 partial malformed duplicate and multiple JSON responses stay unavailable
+ok 24 nonzero CLI status never qualifies a clean envelope and never retries
+ok 25 timeout with matching real retained output cannot qualify
+ok 26 missing command completion marker and invalid predicates latch unavailable
+ok 27 competing writers latch unavailable before a second transport can dispatch
+ok 28 clean negative polling permits the next existing poll without a hidden retry
+ok 29 failed poll latches across command substitution and prevents all later scenario dispatch
+ok 30 disconnect followed by changed boot in collection stays unavailable and cannot relaunch
+ok 31 unfinished prior attempt blocks scenario input but allows evidence collection
+ok 32 unknown class and missing initialized subject never dispatch
+ok 33 argument failures latch initialized roots even when the status is ignored
+ok 34 direct backend argument failures latch without the shell facade
+ok 35 missing backend and unexpected backend exit leave a persistent facade latch
+ok 36 a backend exit of 1 is unavailable and keeps its original status as evidence (k168)
+ok 37 broken stdout delivery cannot publish a clean terminal receipt
+ok 38 partial or unknown terminal receipts block later scenario dispatch
+ok 39 interrupted receipt publication leaves only a partial file
+ok 40 killed adapter leaves its CLI holding the writer lock until completion
+ok 41 caught SIGINT records interruption and preserves the signal exit
+ok 42 nonexec caught SIGINT retains partial streams and a distinct signal outcome
+ok 43 init creates a root that only its owner can enter, whatever the umask
+ok 44 init refuses an undeclared, relative, linked or non-executable tool and creates no root (k180)
+ok 45 each attempt runs the declared executables and its receipt names them (k180)
+ok 46 a changed, replaced or missing executable refuses the attempt before dispatch and latches (k180)
+ok 47 the clone provenance records the spec, its digest, the endpoint and the resolving paths once (k180)
+ok 48 provenance refuses before a VM start and after a guest transport (k180)
+ok 49 a guest transport after a VM start needs a provenance record, and VM lifecycle does not (k180)
+ok 50 a missing, changed or different spec refuses the next guest transport and latches (k180)
+ok 51 a configuration or environment that the harness cannot evaluate refuses the provenance (k180)
+
+task: [check:vm-guest-exec] bash -n scripts/vm-guest-exec-lib.sh
+task: [check:vm-guest-exec] shellcheck -x scripts/vm-guest-exec-lib.sh Tests/scripts/vm-guest-exec.bats Tests/scripts/fixtures/declared-tools.sh
+task: [check:vm-guest-exec] shfmt -d -i 4 scripts/vm-guest-exec-lib.sh Tests/scripts/vm-guest-exec.bats Tests/scripts/fixtures/declared-tools.sh
+task: [check:vm-guest-exec] python3 -m py_compile scripts/vm-guest-exec.py
+task: [check:vm-guest-exec] uvx ruff@0.17.3 check scripts/vm-guest-exec.py
+task: [check:vm-guest-exec] uvx ruff@0.17.3 format --check scripts/vm-guest-exec.py
+task: [check:vm-guest-exec] uvx pyright@1.1.414 scripts/vm-guest-exec.py
+task: [check:vm-guest-exec] bats Tests/scripts/vm-guest-exec.bats
+
+status 0
+$ mise exec -- task check:vm-capture-evidence
+All checks passed!
+3 files already formatted
+0 errors, 0 warnings, 0 informations
+1..18
+ok 1 generic CLI capture refuses every class without dispatch or overwriting caller files
+ok 2 full capture retains complete image raw bytes exact VM and artifact digest
+ok 3 region and repeated operations use unique artifacts without extra reads
+ok 4 valid nonzero row filters remain readable through the checked backend
+ok 5 valid consecutive IDAT and ancillary chunks remain readable
+ok 6 retained native PNG qualifies in the reusable capture check without a new native read
+ok 7 malformed PNG branches retain their specific validator reasons
+ok 8 missing empty malformed truncated corrupt and incomplete pixels latch without retry
+ok 9 capture schema and image dimensions must match exact artifact and region
+ok 10 failed partial typed error and dry-run captures retain raw failure without output
+ok 11 collection after failed image retains first latch and never restores eligibility
+ok 12 invalid roots do not dispatch or write cwd and invalid capture arguments latch
+ok 13 PNG inspection still owns the shared lock after CLI completion
+ok 14 capture shares ordinals in both directions and failed collection cannot overwrite
+ok 15 caught capture SIGINT retains interruption partial streams and stops later input
+ok 16 relative roots remain usable and invalid class operation options cannot dispatch
+ok 17 allocation failure retains partial capture and the next gate latches unfinished evidence
+ok 18 capture holds shared lock through CLI and refuses competing scenario dispatch
+
+task: [check:vm-capture-evidence] bash -n scripts/vm-capture-evidence-lib.sh Tests/scripts/vm-capture-evidence.bats
+task: [check:vm-capture-evidence] shellcheck -x scripts/vm-capture-evidence-lib.sh Tests/scripts/vm-capture-evidence.bats
+task: [check:vm-capture-evidence] shfmt -d -i 4 scripts/vm-capture-evidence-lib.sh Tests/scripts/vm-capture-evidence.bats
+task: [check:vm-capture-evidence] python3 -m py_compile scripts/vm-guest-exec.py scripts/vm_capture_artifact.py Tests/scripts/fixtures/capture-cli.py
+task: [check:vm-capture-evidence] uvx ruff@0.17.3 check scripts/vm-guest-exec.py scripts/vm_capture_artifact.py Tests/scripts/fixtures/capture-cli.py
+task: [check:vm-capture-evidence] uvx ruff@0.17.3 format --check scripts/vm-guest-exec.py scripts/vm_capture_artifact.py Tests/scripts/fixtures/capture-cli.py
+task: [check:vm-capture-evidence] uvx pyright@1.1.414 scripts/vm-guest-exec.py scripts/vm_capture_artifact.py Tests/scripts/fixtures/capture-cli.py
+task: [check:vm-capture-evidence] bats Tests/scripts/vm-capture-evidence.bats
+
+status 0
+$ mise exec -- task check:vm-window-evidence
+1..24
+ok 1 window list emits the original full envelope and pins VM and ordinal
+ok 2 only clean list negatives advance the ten by two count poll
+ok 3 zero expected windows is clean data without title or focus strengthening
+ok 4 TextEdit loop preserves its final assertion after fifteen reads and sleeps
+ok 5 clean exhausted polls retain each list and a separate state confirmation
+ok 6 failed poll stops immediately despite matching text with no retry or input
+ok 7 window schemas reject incomplete arrays and malformed required or optional fields
+ok 8 window actions require matching actual receipt without invented target echo
+ok 9 every window action rejects failed nonzero partial and mismatching completions
+ok 10 collection preserves a prior failure and cannot restore input eligibility
+ok 11 empty absent and uninitialized roots cause no CLI or cwd artifacts
+ok 12 invalid arguments latch and cannot dispatch scenario input
+ok 13 adapter SIGINT propagates distinctly and stops the poll before sleep or release
+ok 14 missing helper arguments under nounset latch an initialized root
+ok 15 TextEdit always makes the separate assertion read after an early positive
+ok 16 TextEdit final assertion never rehabilitates a failed read
+ok 17 each poll records its state predicate and true or false decision
+ok 18 failed or interrupted poll sleeps record status and prevent later input
+ok 19 failed or interrupted local state evaluation records status without another read or sleep
+ok 20 negative window move coordinates use equals form accepted by the CLI
+ok 21 a deferred count poll prints its final clean list and leaves the exhaustion receipt to the caller
+ok 22 a deferred count poll keeps the positive, the failed read and the argument refusal
+ok 23 a deferred TextEdit poll keeps its final assertion and leaves the receipt to the caller (k166)
+ok 24 a deferred TextEdit poll keeps the positive, the failed read and the argument refusal (k166)
+
+task: [check:vm-window-evidence] bash -n scripts/vm-window-evidence-lib.sh Tests/scripts/vm-window-evidence.bats
+task: [check:vm-window-evidence] shellcheck -x scripts/vm-window-evidence-lib.sh Tests/scripts/vm-window-evidence.bats
+task: [check:vm-window-evidence] shfmt -d -i 4 scripts/vm-window-evidence-lib.sh Tests/scripts/vm-window-evidence.bats
+task: [check:vm-window-evidence] bats Tests/scripts/vm-window-evidence.bats
+
+status 0
+$ mise exec -- task check:vm-input-evidence
+1..21
+ok 1 key text and scroll preserve original bytes exact argv and shared ordinals
+ok 2 plain keys empty text and positive scroll use their actual complete payloads
+ok 3 each family rejects nonzero partial typed error and dry-run completion without retry
+ok 4 key payload must echo requested key and exact ordered modifier array
+ok 5 type payload requires exact text and Unicode scalar count
+ok 6 scroll payload must include exact x y dx and signed dy
+ok 7 explicit empty missing and uninitialized roots never fall back or write cwd artifacts
+ok 8 invalid action arguments refuse and latch before dispatch including under nounset
+ok 9 shared prior window or confirmation failure blocks every input family
+ok 10 SIGINT in every input family retains interruption without later input
+ok 11 unset root preserves existing bare input argv and nonzero status
+ok 12 failed frame read stops actual click chains in plain and conditional contexts
+ok 13 failed snapshot read stops actual click chains in plain and conditional contexts
+ok 14 real frame reader propagates failed window transport before click input
+ok 15 on-screen read status one is an error rather than a clean negative
+ok 16 calibration stops on failed position reads before later scroll input
+ok 17 failed menu open stops before title reads Escape and settling
+ok 18 failed menu title read stops before Escape and settling
+ok 19 consumed scroll and menu helpers stop before settling sleep even with errexit suppressed
+ok 20 actual scroll callers propagate failed input before another read or pointer action
+ok 21 actual consent sequence stops after failed text before key or later settling
+
+task: [check:vm-input-evidence] bash -n scripts/vm-input-evidence-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh scripts/vm-verify-desktop-lib.sh Tests/scripts/vm-input-evidence.bats
+task: [check:vm-input-evidence] shellcheck -x scripts/vm-input-evidence-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh scripts/vm-verify-desktop-lib.sh Tests/scripts/vm-input-evidence.bats
+task: [check:vm-input-evidence] shfmt -d -i 4 scripts/vm-input-evidence-lib.sh Tests/scripts/vm-input-evidence.bats
+task: [check:vm-input-evidence] bats Tests/scripts/vm-input-evidence.bats
+
+status 0
+$ mise exec -- task check:vm-ui-evidence
+1..23
+ok 1 snapshot retains original bytes full tree exact argv VM and shared ordinals
+ok 2 clean empty windows and empty element lists are optional negatives
+ok 3 a menu bar of the front regular app supplies no scenario element
+ok 4 nonzero partial typed error and dry run never become absence or retry
+ok 5 snapshot validates every window and recursive element before a negative
+ok 6 selected value geometry and height require actual consumed attributes
+ok 7 geometry and height accept actual attributes without requiring a text value
+ok 8 clean negatives alone advance presence polls and retain state predicates
+ok 9 clean absence poll succeeds without input or sleep
+ok 10 ten clean negatives retain the final sleep and distinct state exhaustion
+ok 11 invalid selectors and multiple-result selectors latch before another read
+ok 12 invalid roots and arguments refuse without CLI or cwd writes
+ok 13 prior failure blocks reads but evidence collection cannot clear the latch
+ok 14 sleep failure and signal statuses stop without another snapshot
+ok 15 adapter SIGINT retains interruption and refuses later input
+ok 16 failed local decoder output is never emitted or consumed and signals stay distinct
+ok 17 sourcing has no startup effects and missing public arguments are safe under nounset
+ok 18 optional vertical reads preserve absence and qualify only consumed screen attributes
+ok 19 required position reads accept y alone and refuse absence
+ok 20 vertical requirements refuse missing or invalid consumed attributes without another read
+ok 21 a missing tree in another window refuses a positive and stops a settling poll
+ok 22 selector qualification depends on candidates and syntax failure follows dispatch
+ok 23 typed ELEMENT_NOT_FOUND with CLI status 3 is unavailable and never an absent element (k164)
+
+task: [check:vm-ui-evidence] bash -n scripts/vm-ui-evidence-lib.sh
+task: [check:vm-ui-evidence] shellcheck -x scripts/vm-ui-evidence-lib.sh Tests/scripts/vm-ui-evidence.bats
+task: [check:vm-ui-evidence] shfmt -d -i 4 scripts/vm-ui-evidence-lib.sh Tests/scripts/vm-ui-evidence.bats
+task: [check:vm-ui-evidence] bats Tests/scripts/vm-ui-evidence.bats
+
+status 0
+$ mise exec -- task check:vm-click-evidence
+1..23
+ok 1 OCR preserves original bytes VM argv and nonconstant receipt
+ok 2 complete OCR empty is clean data without a timeout or second read
+ok 3 incomplete OCR counts field types and truncation cannot qualify absence
+ok 4 failed partial and typed-error OCR stop before click and sleep
+ok 5 Allow chooses first exact text floors its centre and clicks once
+ok 6 clean OCR without exact Allow records state failure without input
+ok 7 a deferred Allow leaves the exact-target receipt to the caller and sends no input (k166)
+ok 8 a deferred Allow keeps the click, unusable geometry and the argument refusal (k166)
+ok 9 invalid Allow size and out-of-range derived coordinates refuse input
+ok 10 wrong click echo button count or failed completion stops without settling
+ok 11 element click consumes one geometry snapshot and preserves centre input wait
+ok 12 missing element tree geometry or invalid centre stops before element click
+ok 13 snapshot nonzero completion with valid geometry never permits input
+ok 14 failed local centre decoder output is never used for input
+ok 15 interrupted query encoder preserves signal status before dispatch
+ok 16 failed query encoder retains local exit in unavailable receipt
+ok 17 failed or interrupted exact-target evaluation is never a clean negative
+ok 18 failed or interrupted settling keeps exact local status and stops later input
+ok 19 inclusive coordinate limits retain original floor-of-centre rule
+ok 20 interrupted local decoder preserves signal and emitted point is unused
+ok 21 source-only library and missing arguments are safe under nounset
+ok 22 invalid roots and arguments refuse before dispatch or cwd writes
+ok 23 typed TEXT_NOT_FOUND with CLI status 3 is unavailable and never a missing target (k164)
+
+task: [check:vm-click-evidence] bash -n scripts/vm-click-evidence-lib.sh
+task: [check:vm-click-evidence] shellcheck -x scripts/vm-click-evidence-lib.sh Tests/scripts/vm-click-evidence.bats
+task: [check:vm-click-evidence] shfmt -d -i 4 scripts/vm-click-evidence-lib.sh Tests/scripts/vm-click-evidence.bats
+task: [check:vm-click-evidence] bats Tests/scripts/vm-click-evidence.bats
+
+status 0
+$ mise exec -- task check:vm-physical-evidence
+1..18
+ok 1 strict menu route retains exact raw completions, VM, ordinals and unchanged waits
+ok 2 strict successful resize preserves corner, eleven held points, release and waits
+ok 3 strict menu rejects mismatching and incomplete move or click payloads
+ok 4 strict screen dimensions reject missing, malformed, fractional and oversized payloads
+ok 5 strict helper refuses CLI errors and invalid base envelopes at every menu stage
+ok 6 strict geometry errors latch before any pointer action without legacy failure capture
+ok 7 an explicit empty or unknown physical evidence root never selects legacy transport
+ok 8 a prior latch blocks all physical reads and input
+ok 9 strict resize stops at each failed dispatch without unrecorded release
+ok 10 strict resize rejects wrong down and up coordinates or button
+ok 11 strict resize refuses incomplete, ambiguous and unusable window observations
+ok 12 strict resize validates destinations before reading windows or pressing a button
+ok 13 adapter interruption remains distinct through a physical helper and stops input
+ok 14 failed title encoding latches before resize dispatch
+ok 15 failed frame decoding cannot qualify emitted geometry or leave input eligible
+ok 16 failed display decoding cannot qualify emitted dimensions or leave input eligible
+ok 17 a failed resize wait in a conditional caller latches and stops all later input, including the release
+ok 18 a failed menu wait in a conditional caller latches and stops the target move and the click
+
+task: [check:vm-physical-evidence] bash -n scripts/vm-physical-evidence-lib.sh scripts/vm-menu-pointer-lib.sh scripts/vm-window-resize-lib.sh Tests/scripts/vm-physical-evidence.bats
+task: [check:vm-physical-evidence] shellcheck -x scripts/vm-physical-evidence-lib.sh scripts/vm-menu-pointer-lib.sh scripts/vm-window-resize-lib.sh Tests/scripts/vm-physical-evidence.bats
+task: [check:vm-physical-evidence] shfmt -d -i 4 scripts/vm-physical-evidence-lib.sh scripts/vm-menu-pointer-lib.sh scripts/vm-window-resize-lib.sh Tests/scripts/vm-physical-evidence.bats
+task: [check:vm-physical-evidence] bats Tests/scripts/vm-physical-evidence.bats
+
+status 0
+$ mise exec -- task check:vm-menu-pointer
+1..8
+ok 1 menu-bar centre at y=7 retains its target and never sends -1
+ok 2 ordinary frame retains the old approach and centre
+ok 3 display corners retain their targets with a distinct on-screen approach
+ok 4 invalid frame observations fail before any pointer input
+ok 5 pointer transport failure stops before the click even in a conditional caller
+ok 6 missing or malformed display dimensions never send pointer input
+ok 7 an out-of-display destination is refused rather than moved to another target
+ok 8 a failed move stops the action even when the caller tests its status
+
+task: [check:vm-menu-pointer] bash -n scripts/vm-menu-pointer-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+task: [check:vm-menu-pointer] shellcheck -x scripts/vm-menu-pointer-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+task: [check:vm-menu-pointer] shfmt -d -i 4 scripts/vm-menu-pointer-lib.sh
+task: [check:vm-menu-pointer] bats Tests/scripts/vm-menu-pointer.bats
+
+status 0
+$ mise exec -- task check:vm-verify-start
+1..3
+ok 1 the Settings scenario start path starts no background screen capture
+ok 2 an inherited VNC_KEEPALIVE_PID neither starts a capture nor stops a process in the Settings scenario
+ok 3 another start_vm caller still starts the background capture loop
+
+task: [check:vm-verify-start] bash -n scripts/vm-verify-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify.sh Tests/scripts/vm-verify-start.bats
+task: [check:vm-verify-start] shellcheck -x scripts/vm-verify-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify.sh Tests/scripts/vm-verify-start.bats
+task: [check:vm-verify-start] shfmt -d -i 4 Tests/scripts/vm-verify-start.bats
+task: [check:vm-verify-start] bats Tests/scripts/vm-verify-start.bats
+
+status 0
+$ mise exec -- task check:vm-window-resize
+1..9
+ok 1 resize sends a held-button path through the selected corner to its destination
+ok 2 an explicit title selects the ordinary-window corner without changing its destination
+ok 3 a failed pointer preparation never presses the button in a conditional caller
+ok 4 a failed initial down attempts release and preserves the failure
+ok 5 a failed held point releases there and stops instead of masking the error
+ok 6 a failed final release is returned rather than hidden by sleep
+ok 7 the scenario refuses a failed frame read even when it emitted valid geometry
+ok 8 the scenario refuses content below 320 even when the outer frame is 440 by 352
+ok 9 the scenario accepts the observed minimum only with at least 320 content pixels
+
+task: [check:vm-window-resize] bash -n scripts/vm-window-resize-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+task: [check:vm-window-resize] shellcheck -x scripts/vm-window-resize-lib.sh scripts/vm-verify-menu-bar.sh scripts/vm-verify-lib.sh
+task: [check:vm-window-resize] shfmt -d -i 4 scripts/vm-window-resize-lib.sh
+task: [check:vm-window-resize] bats Tests/scripts/vm-window-resize.bats
+
+status 0
+$ mise exec -- task check:vm-settings-scenario
+All checks passed!
+2 files already formatted
+0 errors, 0 warnings, 0 informations
+1..66
+ok 1 the adopted scenario runs to PASSED with every call in one root initialised first
+ok 2 the adopted scenario keeps the checked confirmations in their existing positions
+ok 3 an unavailable answer in any transport family stops every later scenario input
+ok 4 a failed read keeps the legacy failure message
+ok 5 a clean false state records the legacy message as state-failed and stops
+ok 6 a fenced legacy transport latches instead of dispatching
+ok 7 KOINE_SETTINGS_TRACE=1 refuses before the first launch and sends nothing for it
+ok 8 a missing golden base latches before any VM start
+ok 9 an existing evidence root is refused before any transport
+ok 10 HUP during a scenario wait records the signal and sends nothing more
+ok 11 TERM in the settling sleep after a clean held point sends no further input or release
+ok 12 a failed settling wait after a clean held point stops input and release without a trap
+ok 13 the root of a failed settling wait classifies as interrupted
+ok 14 INT during a held-point attempt keeps it interrupted and sends no release
+ok 15 the caller inventory finds no legacy transport in the adopted scenario surface
+ok 16 a request label without its value is unavailable before the screenshot and the denials
+ok 17 an omitted AXValue at shortcut-emptied is unavailable and is not an empty value (k175)
+ok 18 an earlier transcript with its default root survives a refused run in the same second
+ok 19 an earlier transcript survives a run in the same second with a distinct root
+ok 20 the positive setup precedes each of the four selections and uses the zero-count list
+ok 21 a clean setup mismatch before any of the four selections is failed setup and opens no menu
+ok 22 missing or failed setup evidence is unavailable and opens no menu
+ok 23 two TextEdit processes after the preparation are failed setup
+ok 24 each return records its route and its closed menu, and the Quit selections keep theirs
+ok 25 the setup and the closed-menu checks enumerate the menus under each item (k162)
+ok 26 a disabled row is recorded and not clicked
+ok 27 a menu that stays open after the click makes the outcome unresolved
+ok 28 a wrong title on the front list is a window-identity failure, for later returns too
+ok 29 a Koine window without a title makes the audit unavailable
+ok 30 an unavailable title audit beside a false front predicate stays unavailable (k162)
+ok 31 a false front at the resize focus takes the untouched failure observations first (k165)
+ok 32 a plain failed assertion takes the untouched failure observations before its receipt (k165)
+ok 33 an exhausted count poll takes the untouched failure observations before its receipt (k165)
+ok 34 an exhausted reveal takes the untouched failure observations before its receipt (k165)
+ok 35 a failed assertion before the Automation check takes no observer read (k165)
+ok 36 an exhausted launch endpoint poll takes the observations before its receipt (k166)
+ok 37 an exhausted menu label poll takes the observations and keeps the label it judged (k166)
+ok 38 an exhausted menu item frame poll takes the observations before its receipt (k166)
+ok 39 an exhausted menu row poll takes the observations on both menu routes (k166)
+ok 40 an exhausted TextEdit poll takes the observations after its final assertion (k166)
+ok 41 a missing exact Allow target takes the observations but runs no observer (k166)
+ok 42 an unavailable read in a deferred facade poll is no clean exhaustion (k166)
+ok 43 a backend exit of 1 is no clean state at any read or record boundary (k168)
+ok 44 a backend exit of 1 while recording a failed wait stays unavailable (k168)
+ok 45 a clean menu mismatch keeps the menu open for its untouched observations (k168)
+ok 46 a matching menu still closes with one Escape and its one-second wait (k168)
+ok 47 two Koine windows after a selection are a multiple-windows failure
+ok 48 zero windows with the same live process are a same-process recurrence, for later returns too
+ok 49 a lost or replaced process after zero windows is process loss, not a recurrence
+ok 50 a failed liveness read leaves the zero-window outcome unresolved
+ok 51 an app reopen that shows no window compares the silent launch's process
+ok 52 a failed library load before the root sends no VM stop, and other scripts keep theirs (k164)
+ok 53 an exhausted reveal makes 120 element reads, one frame read and 60 scrolls with their waits (k164)
+ok 54 the calibration sends one probe and exactly 30 scrolls back, each with its wait (k164)
+ok 55 a missing Add button makes 15 reads and 14 waits and then fails before any click (k164)
+ok 56 the scenario's TextEdit call makes one poll read and one assertion read (k164)
+ok 57 the scenario's on-screen and position reads keep their own element modes (k164)
+ok 58 a window at the silent launch fails its assertion before the reopen (k164)
+ok 59 a clean on-screen negative stays apart from a failed read (k164)
+ok 60 the surface scan classifies each legacy transport that the scenario reaches (k164)
+ok 61 the surface scan detects an unguarded transport in a helper or a restored trap (k164)
+ok 62 the surface scan finds no constant-true predicate and detects each mutation (k164)
+ok 63 a clean drag reports released, and each failed or partial point reports uncertain (k164)
+ok 64 a consent run with a password override keeps the raw text only in the private root (k164)
+ok 65 the scenario records the clone provenance between the inventory and the first guest read, with the declared jq (k180)
+ok 66 a failed clone provenance stops the scenario, and only the failure screenshot follows (k180)
+
+task: [check:vm-settings-scenario] bash -n scripts/vm-settings-scenario-lib.sh scripts/vm-verify-menu-bar.sh Tests/scripts/vm-settings-scenario.bats
+task: [check:vm-settings-scenario] shellcheck -x scripts/vm-settings-scenario-lib.sh scripts/vm-verify-menu-bar.sh Tests/scripts/vm-settings-scenario.bats
+task: [check:vm-settings-scenario] shfmt -d -i 4 scripts/vm-settings-scenario-lib.sh scripts/vm-verify-menu-bar.sh Tests/scripts/vm-settings-scenario.bats
+task: [check:vm-settings-scenario] python3 -m py_compile Tests/scripts/fixtures/settings-scenario-backend.py Tests/scripts/fixtures/settings-surface-scan.py
+task: [check:vm-settings-scenario] uvx ruff@0.17.3 check Tests/scripts/fixtures/settings-scenario-backend.py Tests/scripts/fixtures/settings-surface-scan.py
+task: [check:vm-settings-scenario] uvx ruff@0.17.3 format --check Tests/scripts/fixtures/settings-scenario-backend.py Tests/scripts/fixtures/settings-surface-scan.py
+task: [check:vm-settings-scenario] uvx pyright@1.1.414 Tests/scripts/fixtures/settings-scenario-backend.py Tests/scripts/fixtures/settings-surface-scan.py
+task: [check:vm-settings-scenario] bats Tests/scripts/vm-settings-scenario.bats
+
+status 0
+$ mise exec -- task check:vm-settings-prefix
+scripts/vm-verify-menu-bar-prefix.sh is the first 154 lines (8913 bytes) of scripts/vm-verify-menu-bar.sh, through the TextEdit quit; line 155 onwards is not in the prefix
+All checks passed!
+1 file already formatted
+0 errors, 0 warnings, 0 informations
+1..9
+ok 1 the prefix is the exact leading bytes of the scenario through the TextEdit quit
+ok 2 a changed, missing or extra byte in the prefix fails the check
+ok 3 a scenario change before the quit fails the check until the prefix is extracted again
+ok 4 a scenario without exactly one TextEdit quit before the resize step is refused
+ok 5 the prefix keeps the execute permission of the scenario
+ok 6 the prefix runs the scenario's calls and waits through the TextEdit quit and sends nothing after it
+ok 7 a failure inside the prefix has the same outcome in the prefix and in the scenario
+ok 8 a signal inside the prefix stops it as it stops the scenario
+ok 9 the Task entry of the prefix records its status like the complete scenario's entry
+
+task: [check:vm-settings-prefix] python3 -I scripts/check-settings-prefix.py
+task: [check:vm-settings-prefix] bash -n scripts/vm-verify-menu-bar-prefix.sh Tests/scripts/vm-settings-prefix.bats
+task: [check:vm-settings-prefix] shellcheck -x -e SC2034 scripts/vm-verify-menu-bar-prefix.sh
+task: [check:vm-settings-prefix] shellcheck -x Tests/scripts/vm-settings-prefix.bats
+task: [check:vm-settings-prefix] shfmt -d -i 4 scripts/vm-verify-menu-bar-prefix.sh Tests/scripts/vm-settings-prefix.bats
+task: [check:vm-settings-prefix] python3 -m py_compile scripts/check-settings-prefix.py
+task: [check:vm-settings-prefix] uvx ruff@0.17.3 check scripts/check-settings-prefix.py
+task: [check:vm-settings-prefix] uvx ruff@0.17.3 format --check scripts/check-settings-prefix.py
+task: [check:vm-settings-prefix] uvx pyright@1.1.414 scripts/check-settings-prefix.py
+task: [check:vm-settings-prefix] bats Tests/scripts/vm-settings-prefix.bats
+
+status 0
+$ mise exec -- task check:vm-settings-sequence
+All checks passed!
+3 files already formatted
+0 errors, 0 warnings, 0 informations
+1..62
+ok 1 the declaration holds exactly the five slots, in order, with their identities
+ok 2 a declaration refuses an existing directory
+ok 3 a declaration refuses an unignored path in a Git tree
+ok 4 a declaration refuses a path that an ignore rule re-includes
+ok 5 a declaration refuses an ignored path that holds a tracked file
+ok 6 a declaration refuses a symlinked parent that leads to an unignored path
+ok 7 a declaration refuses a path in an outer tree that a nested tree ignores
+ok 8 a declaration refuses a tree whose rules it cannot read
+ok 9 a declaration refuses a tree whose index Git cannot read
+ok 10 a declaration refuses a tree whose ignore rules Git cannot read
+ok 11 a declaration refuses a tree whose working copy jj cannot read
+ok 12 a declaration refuses a jj workspace without a Git view
+ok 13 a declaration refuses a path that only jj tracks
+ok 14 a declaration refuses this repository's tracked and unignored paths
+ok 15 a declaration accepts an ignored path, with mode 700
+ok 16 admission takes only the next slot, after its set is ready
+ok 17 a started slot without a settlement blocks the next slot
+ok 18 the ordinary set needs both focused slots qualified and its own readiness
+ok 19 five qualified slots end the sequence, and no sixth admission exists
+ok 20 the first failure stops the sequence and leaves every later slot NOT RUN
+ok 21 one writer: a held lock refuses and records the refusal
+ok 22 a changed declaration or ledger refuses every later step
+ok 23 an admission refuses a reused evidence root or a used output directory
+ok 24 a complete run classifies as complete for its own set only
+ok 25 a run that stops before its terminal receipt is incomplete, even at status zero
+ok 26 the three recurrence classes on a menu return are candidates, with their return
+ok 27 a false front outside a menu return is a failed assertion, not a recurrence
+ok 28 a failed observer before a recurrence class leaves the outcome unresolved
+ok 29 a recurrence needs one clean click between the enabled read and its class
+ok 30 other classes keep their own disposition
+ok 31 signals, boot exhaustion and poll exhaustion classify by their receipts
+ok 32 the pointer state comes from the ordered held-point receipts
+ok 33 an evidence root of another clone or a missing root is not a Koine failure
+ok 34 a latch or a refusal keeps an otherwise complete run unavailable
+ok 35 a corroborated recurrence rejects, and later failures do not erase it
+ok 36 a recurrence without a corroborating screenshot stays unresolved
+ok 37 a recurrence without the admitted subject stays unresolved
+ok 38 every phase and status must pass before a slot qualifies
+ok 39 a scenario zero cannot override failed receipts
+ok 40 a run that left no root is unresolved and claims no Koine failure
+ok 41 held input prevents a slot from qualifying
+ok 42 malformed phases refuse and leave the slot unsettled
+ok 43 a recovery settlement takes no phases from its operator
+ok 44 a recovery of a complete root cannot qualify or confirm cleanup
+ok 45 a recovery keeps a recurrence class without rejecting the repair
+ok 46 a recovery keeps a failed assertion, with its cleanup unresolved
+ok 47 a recovery with no root or scenario status stays unresolved
+ok 48 an exhausted poll keeps its status 125 and settles as a failed assertion
+ok 49 an exhausted poll with a scenario zero is a conflict
+ok 50 a signal that met a held lock is classified from its refusal record
+ok 51 an interrupted first failure with no signal record classifies as interrupted
+ok 52 only a local status in the signal range makes a wait interrupted
+ok 53 an interrupted receipt after another first failure keeps that failure's kind
+ok 54 a classified assertion keeps its kind after an interrupted receipt
+ok 55 an interrupted supplemental capture alone stays unavailable
+ok 56 an interrupted receipt settles unresolved and stops the later slots
+ok 57 a scenario zero and passed phases cannot qualify an interrupted receipt
+ok 58 an ordinal gap before a recurrence class blocks the candidate
+ok 59 a failure after the class does not remove a recurrence candidate
+ok 60 an unreadable request can hide a held point, so the pointer is uncertain
+ok 61 a hand-edited disposition refuses when the ledger replays
+ok 62 an unreadable output directory refuses the admission without a traceback
+
+task: [check:vm-settings-sequence] shellcheck -x Tests/scripts/vm-settings-sequence.bats
+task: [check:vm-settings-sequence] shfmt -d -i 4 Tests/scripts/vm-settings-sequence.bats
+task: [check:vm-settings-sequence] python3 -m py_compile scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py Tests/scripts/fixtures/settings-sequence-settle.py
+task: [check:vm-settings-sequence] uvx ruff@0.17.3 check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py Tests/scripts/fixtures/settings-sequence-settle.py
+task: [check:vm-settings-sequence] uvx ruff@0.17.3 format --check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py Tests/scripts/fixtures/settings-sequence-settle.py
+task: [check:vm-settings-sequence] uvx pyright@1.1.414 scripts/settings-ordering-sequence.py Tests/scripts/fixtures/settings-sequence-replay.py Tests/scripts/fixtures/settings-sequence-settle.py
+task: [check:vm-settings-sequence] bats Tests/scripts/vm-settings-sequence.bats
+
+status 0
+$ mise exec -- task check:vm-settings-containment
+All checks passed!
+2 files already formatted
+0 errors, 0 warnings, 0 informations
+1..44
+ok 1 run admits the slot and runs its declared entry once, in its own recorded group
+ok 2 the run passes the declared clone, base, evidence root and output directory
+ok 3 a keep, display or trace request refuses before admission and consumes no slot
+ok 4 a slot that the ledger refuses starts no Task
+ok 5 a settled slot cannot run again
+ok 6 a missing Task executable refuses before admission
+ok 7 a manual settle cannot take a slot while its run is live
+ok 8 a caller lost before its phases recovers with no qualification or confirmed cleanup
+ok 9 a complete run keeps its classification and qualifies with every phase passed
+ok 10 a failed assertion settles failed, and a clean stop does not requalify it
+ok 11 a missing scenario status stays null beside a nonzero Task status
+ok 12 a malformed scenario status is no status
+ok 13 the manifest digests each retained file of a failed run
+ok 14 a scenario that ends before its start sends no stop and reads the inventory
+ok 15 a run that leaves no root sends no stop and keeps the no-root class
+ok 16 a failed start keeps its uncertain creation, contains that clone and starts no other
+ok 17 an interrupted start keeps its uncertain creation and contains that clone
+ok 18 each refused collection, confirmation and stop request keeps its reason
+ok 19 an unreadable refusal line stays recorded, and collection does not pass
+ok 20 an owned holder that finishes is awaited, and no signal is sent
+ok 21 a stuck owned holder ends with its recorded group before the stop
+ok 22 a holder that ignores TERM ends by KILL, recorded separately
+ok 23 a holder outside the group leaves cleanup unresolved and sends no stop
+ok 24 containment keeps an existing latch and its first reason
+ok 25 a clean down without a release stays held, with no release sent
+ok 26 a clean down and a clean release are released
+ok 27 a failed held point is uncertain
+ok 28 a partial release proves no release
+ok 29 a missing receipt makes the pointer uncertain
+ok 30 a nonzero stop is failed, is not repeated, and still gets its inventory
+ok 31 a malformed stop response is failed
+ok 32 a stop response that says not stopped is failed
+ok 33 a stop that outlasts its bound is unavailable and is not repeated
+ok 34 a timed-out stop whose CLI ignores TERM ends by KILL before the inventory
+ok 35 a clone still listed after the stop fails the inventory
+ok 36 a truncated inventory is not an absence
+ok 37 an inventory row with a missing field is not an absence
+ok 38 an inventory that outlasts its bound is unavailable
+ok 39 a signal reaches the recorded group once, then the run collects, stops and settles
+ok 40 a later signal does not cut the containment short
+ok 41 the installed Task keeps the scenario in the recorded group and passes a signal
+ok 42 a signal before the gate opens withholds the Task and records no status
+ok 43 a failed exit watch withholds the Task and does not hang the caller
+ok 44 an unresolved stop keeps every later slot NOT RUN
+
+task: [check:vm-settings-containment] shellcheck -x Tests/scripts/vm-settings-containment.bats Tests/scripts/fixtures/settings-run-task.sh Tests/scripts/fixtures/settings-audit-frozen.sh
+task: [check:vm-settings-containment] shfmt -d -i 4 Tests/scripts/vm-settings-containment.bats Tests/scripts/fixtures/settings-run-task.sh Tests/scripts/fixtures/settings-audit-frozen.sh
+task: [check:vm-settings-containment] python3 -m py_compile scripts/settings-ordering-sequence.py Tests/scripts/fixtures/file-lifecycle-cli.py
+task: [check:vm-settings-containment] uvx ruff@0.17.3 check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/file-lifecycle-cli.py
+task: [check:vm-settings-containment] uvx ruff@0.17.3 format --check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/file-lifecycle-cli.py
+task: [check:vm-settings-containment] uvx pyright@1.1.414 scripts/settings-ordering-sequence.py
+task: [check:vm-settings-containment] bats Tests/scripts/vm-settings-containment.bats
+
+status 0
+$ mise exec -- task check:vm-settings-audits
+All checks passed!
+2 files already formatted
+0 errors, 0 warnings, 0 informations
+1..87
+ok 1 inventory lists each file, symlink and directory with its identity
+ok 2 inventory refuses a root that does not exist
+ok 3 a receipt without a frozen declaration refuses the run before admission
+ok 4 a receipt that changed after readiness refuses the run before admission
+ok 5 a receipt with a path outside its root refuses the run
+ok 6 an extra input item before the slot holds the sequence and consumes no slot
+ok 7 a missing input item before the slot holds the sequence
+ok 8 a changed input item before the slot holds the sequence
+ok 9 a replaced item with an equal count is not equal
+ok 10 an unreadable input before the slot is unavailable and holds the sequence
+ok 11 an unreadable input directory is unavailable, and its items are not missing
+ok 12 a held sequence refuses every later run and replays from the ledger
+ok 13 a clean slot passes each audit and qualifies
+ok 14 an input that changes during the slot fails the audit after it
+ok 15 an input item added during the slot fails the audit after it
+ok 16 an input item removed during the slot fails the audit after it
+ok 17 the caller reads the installed bundle itself, before the stop
+ok 18 a guest file that changes during the slot fails the endpoint after it
+ok 19 an extra guest file fails the endpoint after the slot
+ok 20 a missing guest file fails the endpoint after the slot
+ok 21 a changed guest symlink target fails the endpoint after the slot
+ok 22 an installed bundle that differs from the frozen bundle fails both endpoints
+ok 23 a failed installed read after the slot is unavailable, not a mismatch
+ok 24 a failed installed read before the slot is unavailable
+ok 25 a run with no start attempt reads nothing from the guest
+ok 26 a saved artifact that matches its original passes
+ok 27 a saved artifact that differs from its original fails the audit
+ok 28 a saved guest stream that differs from its raw response fails the audit
+ok 29 a partial original stays named and does not fail its audit
+ok 30 a clean read that lost its saved stdout fails the audit
+ok 31 a clean read that lost its saved stderr fails the audit
+ok 32 a clean read that lost both streams and its response fails the audit
+ok 33 a clean read that lost its parsed record fails the audit
+ok 34 a clean command that lost its exit record fails the audit
+ok 35 a clean transfer that lost its record fails the audit
+ok 36 every clean attempt of a complete run holds its required members
+ok 37 a failed attempt with a partial response owes no guest stream
+ok 38 a retained file that changes before settlement fails the audit
+ok 39 a retained file that disappears before settlement fails the audit
+ok 40 a file added to the evidence before settlement fails the audit
+ok 41 five clean slots wait for the closing golden audit, then accept
+ok 42 a golden item that changes before A01 holds the sequence
+ok 43 an extra golden item before A01 holds the sequence
+ok 44 a missing golden item before A01 holds the sequence
+ok 45 an E slot does not read the golden image
+ok 46 a golden item that changes after A01 prevents acceptance at the close
+ok 47 an unreadable golden item at the close prevents acceptance
+ok 48 the close refuses while a slot is unsettled, and it runs once
+ok 49 an ordinary receipt that differs from the focused receipt holds A01
+ok 50 G5: a different guest build fails the environment and stops the sequence
+ok 51 G5: a different product version fails the environment
+ok 52 G5: a different Gatekeeper state fails the environment
+ok 53 G5: an injected process argument fails the environment
+ok 54 G5: a failed system receipt is unavailable, not a mismatch
+ok 55 G5: a failed Gatekeeper receipt is unavailable
+ok 56 G5: a failed process read is unavailable
+ok 57 G5: a clean process row cannot hide a later failed process read
+ok 58 G5: no observed Koine process is unavailable, not a pass
+ok 59 the caller reads the defaults after the slot, and a clean absence passes
+ok 60 a diagnostic key after the slot fails the environment
+ok 61 a failed defaults read after the slot is unavailable, not an absence
+ok 62 one failed audit leaves the other results separate
+ok 63 a failed audit does not change a failed assertion
+ok 64 run stops before settlement, and the slot blocks the next slot
+ok 65 settle-run carries the screenshot audit into its phase
+ok 66 a recurrence becomes rejected only with a passed screenshot audit
+ok 67 a recurrence on a different guest build does not reject the repair
+ok 68 a recurrence under a different Gatekeeper state does not reject the repair
+ok 69 a recurrence on a different installed bundle does not reject the repair
+ok 70 a recurrence with undeclared process arguments does not reject the repair
+ok 71 a recurrence with no clean pre-selection receipt stays unresolved
+ok 72 a malformed pre-selection record leaves a recurrence unresolved
+ok 73 a later failed read does not erase a qualified recurrence
+ok 74 a guest change after the selection does not erase a qualified recurrence
+ok 75 a recurrence with an unpassed screenshot audit stays unresolved
+ok 76 settle-run refuses a malformed audit and leaves the slot unsettled
+ok 77 settle-run refuses a slot with no collected run, and a second settlement
+ok 78 a malformed read record is unavailable, and the slot still settles
+ok 79 a recovery settle cannot replace the phases of a collected run
+ok 80 a bundle that is one file refuses the run
+ok 81 settle-run cannot change a phase other than the screenshots
+ok 82 a receipt without both executables or the TestAnyware paths refuses the run before admission (k180)
+ok 83 the run passes the frozen executables, and a qualifying slot names them and its provenance (k180)
+ok 84 a changed executable holds the sequence before admission (k180)
+ok 85 a slot without a provenance record cannot qualify (k180)
+ok 86 a provenance on other frozen paths or a scenario on another CLI fails the subject (k180)
+ok 87 a guest transport ordered before the provenance record fails the provenance audit (k180)
+
+task: [check:vm-settings-audits] shellcheck -x Tests/scripts/vm-settings-audits.bats Tests/scripts/fixtures/settings-run-task.sh Tests/scripts/fixtures/settings-audit-frozen.sh
+task: [check:vm-settings-audits] shfmt -d -i 4 Tests/scripts/vm-settings-audits.bats Tests/scripts/fixtures/settings-run-task.sh Tests/scripts/fixtures/settings-audit-frozen.sh
+task: [check:vm-settings-audits] python3 -m py_compile scripts/settings-ordering-sequence.py Tests/scripts/fixtures/file-lifecycle-cli.py
+task: [check:vm-settings-audits] uvx ruff@0.17.3 check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/file-lifecycle-cli.py
+task: [check:vm-settings-audits] uvx ruff@0.17.3 format --check scripts/settings-ordering-sequence.py Tests/scripts/fixtures/file-lifecycle-cli.py
+task: [check:vm-settings-audits] uvx pyright@1.1.414 scripts/settings-ordering-sequence.py
+task: [check:vm-settings-audits] bats Tests/scripts/vm-settings-audits.bats
+
+status 0
+$ mise exec -- task check:settings-baseline
+All checks passed!
+3 files already formatted
+0 errors, 0 warnings, 0 informations
+1..11
+ok 1 the complete scenario matches the retained record of baseline f019161b
+ok 2 the retained record is the derivation of the real baseline script
+ok 3 each changed input, wait, bound or assertion fails the control
+ok 4 an unclassified failure difference fails the control
+ok 5 an unclassified event difference fails the control
+ok 6 a classified removal that is not in the record fails the control
+ok 7 a difference without a known class fails the control
+ok 8 a class without a resolving citation fails the control
+ok 9 a wait table that differs from the baseline waits fails the control
+ok 10 an assertion table that omits a baseline assertion fails the control
+ok 11 the baseline CLI refuses a command that it does not simulate
+
+task: [check:settings-baseline] shellcheck -x Tests/scripts/vm-settings-baseline.bats
+task: [check:settings-baseline] shfmt -d -i 4 Tests/scripts/vm-settings-baseline.bats
+task: [check:settings-baseline] python3 -m py_compile scripts/check-settings-baseline.py Tests/scripts/fixtures/settings-baseline-cli.py Tests/scripts/fixtures/settings-baseline-mutations.py
+task: [check:settings-baseline] uvx ruff@0.17.3 check scripts/check-settings-baseline.py Tests/scripts/fixtures/settings-baseline-cli.py Tests/scripts/fixtures/settings-baseline-mutations.py
+task: [check:settings-baseline] uvx ruff@0.17.3 format --check scripts/check-settings-baseline.py Tests/scripts/fixtures/settings-baseline-cli.py Tests/scripts/fixtures/settings-baseline-mutations.py
+task: [check:settings-baseline] uvx pyright@1.1.414 scripts/check-settings-baseline.py Tests/scripts/fixtures/settings-baseline-cli.py Tests/scripts/fixtures/settings-baseline-mutations.py
+task: [check:settings-baseline] bats Tests/scripts/vm-settings-baseline.bats
+
+status 0
+$ mise exec -- task check:settings-duty-ledger
+All checks passed!
+1 file already formatted
+0 errors, 0 warnings, 0 informations
+1..15
+ok 1 the delivered ledger holds every archived sentence and resolves each citation
+ok 2 a missing duty is refused
+ok 3 a duplicate row is refused
+ok 4 changed duty text is refused
+ok 5 a changed archived contract is refused
+ok 6 an unknown disposition is refused
+ok 7 a met duty without a control is refused
+ok 8 a met duty without source is refused
+ok 9 a control name that is not an exact test is refused
+ok 10 a source symbol that is not in its file is refused
+ok 11 a gap without an owner handle is refused
+ok 12 a limit without an authority is refused
+ok 13 require-closed refuses an open gap
+ok 14 require-closed passes when no gap remains
+ok 15 an unreadable or malformed ledger is a usage failure
+393 duties: context 191, limit 28, met 121, owned 37, withdrawn 16; 0 findings
+
+task: [check:settings-duty-ledger] shellcheck -x Tests/scripts/vm-settings-duty-ledger.bats
+task: [check:settings-duty-ledger] shfmt -d -i 4 Tests/scripts/vm-settings-duty-ledger.bats
+task: [check:settings-duty-ledger] python3 -m py_compile scripts/check-settings-duty-ledger.py
+task: [check:settings-duty-ledger] uvx ruff@0.17.3 check scripts/check-settings-duty-ledger.py
+task: [check:settings-duty-ledger] uvx ruff@0.17.3 format --check scripts/check-settings-duty-ledger.py
+task: [check:settings-duty-ledger] uvx pyright@1.1.414 scripts/check-settings-duty-ledger.py
+task: [check:settings-duty-ledger] bats Tests/scripts/vm-settings-duty-ledger.bats
+task: [check:settings-duty-ledger] python3 scripts/check-settings-duty-ledger.py 
+
+status 0
+$ mise exec -- task check:settings-duty-ledger -- --require-closed
+All checks passed!
+1 file already formatted
+0 errors, 0 warnings, 0 informations
+1..15
+ok 1 the delivered ledger holds every archived sentence and resolves each citation
+ok 2 a missing duty is refused
+ok 3 a duplicate row is refused
+ok 4 changed duty text is refused
+ok 5 a changed archived contract is refused
+ok 6 an unknown disposition is refused
+ok 7 a met duty without a control is refused
+ok 8 a met duty without source is refused
+ok 9 a control name that is not an exact test is refused
+ok 10 a source symbol that is not in its file is refused
+ok 11 a gap without an owner handle is refused
+ok 12 a limit without an authority is refused
+ok 13 require-closed refuses an open gap
+ok 14 require-closed passes when no gap remains
+ok 15 an unreadable or malformed ledger is a usage failure
+393 duties: context 191, limit 28, met 121, owned 37, withdrawn 16; 0 findings
+
+task: [check:settings-duty-ledger] shellcheck -x Tests/scripts/vm-settings-duty-ledger.bats
+task: [check:settings-duty-ledger] shfmt -d -i 4 Tests/scripts/vm-settings-duty-ledger.bats
+task: [check:settings-duty-ledger] python3 -m py_compile scripts/check-settings-duty-ledger.py
+task: [check:settings-duty-ledger] uvx ruff@0.17.3 check scripts/check-settings-duty-ledger.py
+task: [check:settings-duty-ledger] uvx ruff@0.17.3 format --check scripts/check-settings-duty-ledger.py
+task: [check:settings-duty-ledger] uvx pyright@1.1.414 scripts/check-settings-duty-ledger.py
+task: [check:settings-duty-ledger] bats Tests/scripts/vm-settings-duty-ledger.bats
+task: [check:settings-duty-ledger] python3 scripts/check-settings-duty-ledger.py --require-closed
+
+status 0

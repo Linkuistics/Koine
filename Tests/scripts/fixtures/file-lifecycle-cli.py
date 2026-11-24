@@ -84,6 +84,13 @@ def start(args: list[str], mode: str) -> dict[str, object]:
     vm = args[args.index("--id") + 1]
     base = args[args.index("--base") + 1]
     set_running([*running(), vm])
+    # The tagged start writes the clone's spec once, where `--vm` resolves it.
+    if os.environ.get("XDG_STATE_HOME") and mode != "start-no-spec":
+        specs = Path(os.environ["XDG_STATE_HOME"], "testanyware", "vms")
+        specs.mkdir(parents=True, exist_ok=True)
+        agent = {"host": "192.0.2.4", "port": 8648}
+        spec = {"vnc": {"host": "127.0.0.1", "port": 5901}, "agent": agent}
+        (specs / f"{vm}.json").write_text(json.dumps({**spec, "platform": "macos"}))
     response: dict[str, object] = {
         "id": "other-vm" if mode == "start-id" else vm,
         "platform": "macos",
@@ -104,6 +111,10 @@ def stop(args: list[str], mode: str) -> dict[str, object]:
     vm = args[2]
     if mode != "stop-keeps":
         set_running([name for name in running() if name != vm])
+        if os.environ.get("XDG_STATE_HOME"):
+            Path(
+                os.environ["XDG_STATE_HOME"], "testanyware", "vms", f"{vm}.json"
+            ).unlink(missing_ok=True)
     return {"id": vm, "stopped": mode != "stop-false"}
 
 

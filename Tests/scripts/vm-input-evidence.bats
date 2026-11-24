@@ -47,6 +47,9 @@ if [[ -f "${input_replies}/exit" ]]; then exit "$(cat "${input_replies}/exit")";
 CLI
     chmod +x "${BATS_TEST_TMPDIR}/bin/testanyware"
     export PATH="${BATS_TEST_TMPDIR}/bin:${PATH}"
+    # shellcheck source=Tests/scripts/fixtures/declared-tools.sh
+    source "${BATS_TEST_DIRNAME}/fixtures/declared-tools.sh"
+    declare_tools "${BATS_TEST_TMPDIR}/bin/testanyware"
     init_guest_evidence "${input_root}" exact-input-vm
 }
 

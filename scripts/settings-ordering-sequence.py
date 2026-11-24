@@ -114,7 +114,11 @@ REQUIRED_MEMBERS: dict[str, tuple[str, ...]] = {
     "download": (*CLI_MEMBERS, *PAYLOAD_MEMBERS, "transfer.json", "download.bin"),
     "poll-step": (),
     "confirmation": (),
+    "provenance": (),
 }
+# The input trees of the declared executables. Each is one regular file.
+EXECUTABLE_INPUTS = {"testanyware": "KOINE_TESTANYWARE_CLI", "jq": "KOINE_JQ"}
+PROVENANCE = "provenance.json"
 ITEM_FIELDS = {
     "file": {"path", "kind", "bytes", "sha256"},
     "symlink": {"path", "kind", "target"},
@@ -1163,6 +1167,7 @@ def frozen_problem(value: Json, slot_set: str) -> str | None:
         "process_arguments",
         "inputs",
         "golden",
+        "testanyware_paths",
     }:
         return "it needs exactly the declared fields"
     if value["schema"] != 1 or value["set"] != slot_set:
@@ -1202,6 +1207,21 @@ def frozen_problem(value: Json, slot_set: str) -> str | None:
         cast(Json, item)["path"] == "." for item in cast(list[object], bundle["items"])
     ):
         return "its bundle must be a directory"
+    for name in EXECUTABLE_INPUTS:
+        tree = next((t for t in cast(list[Json], inputs) if t["name"] == name), None)
+        items = cast(list[Json], tree["items"]) if tree is not None else []
+        if len(items) != 1 or items[0]["path"] != "." or items[0]["kind"] != "file":
+            return f"its inputs need the {name} executable as one regular file"
+    paths = value["testanyware_paths"]
+    if not (
+        isinstance(paths, dict)
+        and set(cast(Json, paths)) == {"state_dir", "config"}
+        and all(
+            isinstance(path, str) and Path(path).is_absolute()
+            for path in cast(Json, paths).values()
+        )
+    ):
+        return "its testanyware_paths need absolute state_dir and config paths"
     if not valid_tree(value["golden"]):
         return "its golden image is invalid"
     return None
@@ -1439,12 +1459,108 @@ def audit_installed(root: Path, frozen: Json, guest: dict[str, GuestRead]) -> Js
     }
 
 
-def audit_subject(root: Path, frozen: Json, absent: str) -> Json:
+def provenance_check(root: Path, frozen: Json, clone: str, absent: str) -> Json:
+    """The executables and the clone's spec record of the root, against the freeze.
+
+    Each attempt must name the frozen executables. One clean provenance record
+    must follow a VM start and precede every guest transport. Its spec, state
+    and configuration paths must be the frozen ones.
+    """
+    trees = {
+        cast(str, tree["name"]): tree for tree in cast(list[Json], frozen["inputs"])
+    }
+    paths = cast(Json, frozen["testanyware_paths"])
+    roots = {name: trees[name]["root"] for name in EXECUTABLE_INPUTS}
+    try:
+        subject = read_object(root / "subject.json")
+        attempts, _ = read_attempts(root)
+        requests = [
+            read_object(root / cast(str, a["ordinal"]) / "request.json")
+            for a in attempts
+        ]
+    except (OSError, ValueError, KeyError) as error:
+        return check("unavailable", f"the root is unreadable: {error}")
+    failed: list[str] = []
+    recorded = subject.get("executables")
+    for name in EXECUTABLE_INPUTS:
+        item = cast(list[Json], trees[name]["items"])[0]
+        entry = cast(Json, recorded).get(name) if isinstance(recorded, dict) else None
+        wanted = (roots[name], item["bytes"], item["sha256"])
+        if not isinstance(entry, dict) or wanted != tuple(
+            cast(Json, entry).get(key) for key in ("path", "bytes", "sha256")
+        ):
+            failed.append(f"subject.json records another {name} executable")
+    starts: list[int] = []
+    guests: list[int] = []
+    records: list[int] = []
+    outcomes: dict[int, object] = {}
+    for attempt, request in zip(attempts, requests, strict=True):
+        index = int(cast(str, attempt["ordinal"]))
+        outcomes[index] = attempt["outcome"]
+        argv = request.get("argv")
+        words = (
+            [str(w) for w in cast(list[object], argv)] if isinstance(argv, list) else []
+        )
+        if words and words[0] != roots["testanyware"]:
+            failed.append(f"{index:06d} ran another CLI")
+        if "jq" in request and request["jq"] != roots["jq"]:
+            failed.append(f"{index:06d} ran another jq")
+        options = words[: words.index("--")] if "--" in words else words
+        starts += [index] if words[1:3] == ["vm", "start"] else []
+        guests += [index] if "--vm" in options else []
+        records += [index] if request.get("transport") == "provenance" else []
+    if failed:
+        return check("failed", ", ".join(failed))
+    if not starts:
+        return check(absent, "no VM start, so no clone provenance")
+    if len(records) != 1:
+        return check("unavailable", f"{len(records)} provenance attempts")
+    ordinal = records[0]
+    if outcomes[ordinal] != "clean":
+        return check(
+            "unavailable", f"the provenance attempt {ordinal:06d} is not clean"
+        )
+    try:
+        record = read_object(root / PROVENANCE)
+    except (OSError, ValueError) as error:
+        return check("unavailable", f"the provenance record is unreadable: {error}")
+    state = paths["state_dir"]
+    expected = {
+        "ordinal": ordinal,
+        "vm": clone,
+        "state_dir": state,
+        "config path": paths["config"],
+        "spec path": f"{state}/vms/{clone}.json",
+    }
+    spec, config = record.get("spec"), record.get("config")
+    observed = {
+        "ordinal": record.get("ordinal"),
+        "vm": record.get("vm"),
+        "state_dir": record.get("state_dir"),
+        "config path": cast(Json, config).get("path")
+        if isinstance(config, dict)
+        else None,
+        "spec path": cast(Json, spec).get("path") if isinstance(spec, dict) else None,
+    }
+    different = [key for key in expected if expected[key] != observed[key]]
+    if min(starts) > ordinal or any(guest < ordinal for guest in guests):
+        different.append("order")
+    return check(
+        "failed" if different else "passed",
+        f"the clone provenance of {ordinal:06d}"
+        + (f" differs: {', '.join(different)}" if different else " matches the freeze"),
+        expected=expected,
+        observed=observed,
+    )
+
+
+def audit_subject(root: Path, frozen: Json, absent: str, clone: str) -> Json:
     """The admitted subject and setup, which a recurrence needs.
 
     The system, Gatekeeper and first installed receipts precede each selection.
-    Undeclared process arguments show a wrong launch. A later failed read says
-    nothing about this setup, so it cannot remove a recurrence.
+    Undeclared process arguments show a wrong launch. The provenance binds each
+    guest transport to the clone's endpoint. A later failed read says nothing
+    about this setup, so it cannot remove a recurrence.
     """
     declared = cast(Json, frozen["environment"])
     rows, _ = observed_arguments(root)
@@ -1464,6 +1580,7 @@ def audit_subject(root: Path, frozen: Json, absent: str) -> Json:
             ("gatekeeper", gatekeeper_check(root, declared, absent)["result"]),
             (INSTALLED_BEFORE, before["result"]),
             ("process arguments", "failed" if different else "passed"),
+            ("provenance", provenance_check(root, frozen, clone, absent)["result"]),
         ]
     )
 
@@ -1900,6 +2017,12 @@ class Containment:
             KOINE_VM_EVIDENCE_ROOT=str(self.root),
             KOINE_K4_OUT=str(self.output),
         )
+        # The scenario's init records these executables, and each attempt runs them.
+        # read_frozen requires both trees, so a valid declaration sets both.
+        for tree in cast(list[Json], frozen.get("inputs", [])):
+            variable = EXECUTABLE_INPUTS.get(cast(str, tree["name"]))
+            if variable is not None:
+                self.environment[variable] = cast(str, tree["root"])
         self.records.mkdir(mode=0o700)
 
     def action(self, name: str, **fields: object) -> None:
@@ -2285,10 +2408,16 @@ class Containment:
             "not-run" if guest["process"][1]["result"] == "not-run" else "unavailable"
         )
         try:
-            subject = audit_subject(self.root, self.frozen, absent)
+            subject = audit_subject(self.root, self.frozen, absent, self.clone)
         except (OSError, ValueError, KeyError, TypeError) as error:
             subject = phase("unavailable", f"the subject audit failed: {error}")
-        self.keep("audits.json", {**audits, "subject": subject})
+        try:
+            provenance = provenance_check(self.root, self.frozen, self.clone, absent)
+        except (OSError, ValueError, KeyError, TypeError) as error:
+            provenance = phase("unavailable", f"the provenance audit failed: {error}")
+        self.keep(
+            "audits.json", {**audits, "subject": subject, "provenance": provenance}
+        )
         phases: Json = {
             "scenario": {"status": scenario_status},
             "task": {"status": task_status},

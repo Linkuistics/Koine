@@ -187,6 +187,24 @@ Read `docs/verification/settings-activation/ORDERING-STORAGE-PLAN.md`.
   `phases.json` is missing or `settle-run` fails, follow the recovery steps of the
   plan. On a full volume, the caller can leave the clone running without a stop.
 
+## K180 provenance handoff
+
+Read `docs/verification/settings-activation/ORDERING-PROVENANCE-RESULTS.md`.
+
+- Declare the CLI and jq as input trees named `testanyware` and `jq`. Use the
+  `inventory` verb on each real file, not on its Homebrew link. On 2026-11-24
+  these files were `/opt/homebrew/Cellar/testanyware/3.0.0/bin/testanyware` and
+  `/opt/homebrew/Cellar/jq/1.8.2/bin/jq`.
+- Declare `testanyware_paths` with the absolute `state_dir` and `config` paths.
+  On this host they are `~/.local/state/testanyware` and
+  `~/.config/testanyware/config.rhai`, written in full.
+- Leave `XDG_STATE_HOME`, `TESTANYWARE_CONFIG` and `TESTANYWARE_APP_SOCKET` unset
+  for the run. The run passes the two executables to the scenario itself.
+- A configuration file with any setting refuses every provenance. If the file
+  changes, recheck it before the freeze.
+- The adapter checks the executables and the spec before each dispatch. A
+  change between a check and its dispatch is refused only at the next attempt.
+
 ## Decisions (running log)
 
 - 2026-11-23, Antony: amend the protocol to the installed TestAnyware 2.9.0 now.

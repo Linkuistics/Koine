@@ -25,6 +25,9 @@ exit "${exec_status:-0}"
 SH
     chmod +x "${BATS_TEST_TMPDIR}/bin/testanyware"
     export PATH="${BATS_TEST_TMPDIR}/bin:${PATH}"
+    # shellcheck source=Tests/scripts/fixtures/declared-tools.sh
+    source "${BATS_TEST_DIRNAME}/fixtures/declared-tools.sh"
+    declare_tools "${BATS_TEST_TMPDIR}/bin/testanyware"
     printf 'CLI diagnostic\n' >"${exec_stderr}"
     printf '%s\n' '{"schema_version":"1.0","command":"probe","ok":true,"exit_code":0,"timed_out":false,"stdout":"READY\n","stderr":"guest diagnostic\n","exec_id":"synthetic-exec","record":"agent","legacy_projection":"macos","outcome":{"kind":"exited","exit_code":0},"evidence":{"stdout":{"base64":"UkVBRFkK","capture":"complete"},"stderr":{"base64":"Z3Vlc3QgZGlhZ25vc3RpYwo=","capture":"complete"}}}' >"${exec_reply}"
 }
@@ -38,7 +41,7 @@ SH
     [[ "${status}" == 0 ]]
     cmp "${exec_reply}" "${exec_root}/000002/raw.stdout"
     cmp "${exec_stderr}" "${exec_root}/000002/raw.stderr"
-    jq -e '.ordinal == 2 and .transport == "cli" and .vm == "exact-vm" and .argv == ["testanyware","input","click","10","20","--vm","exact-vm","--json"]' "${exec_root}/000002/request.json"
+    jq -e '.ordinal == 2 and .transport == "cli" and .vm == "exact-vm" and .argv == [env.KOINE_TESTANYWARE_CLI,"input","click","10","20","--vm","exact-vm","--json"]' "${exec_root}/000002/request.json"
     jq -e '.outcome == "clean" and .cli_status == 0 and .emission_status == "flushed"' "${exec_root}/000002/result.json"
     check_guest_evidence "${exec_root}"
     [[ ! -e "${exec_root}/000003" ]]
@@ -256,19 +259,21 @@ SH
     init_guest_evidence "${exec_root}" exact-vm
     printf '%s\n' '{"schema_version":"1.0","ok":true,"id":"exact-vm"}' >"${exec_reply}"
     cli_guest_evidence "${exec_root}" one-shot start '.id == "exact-vm"' -- vm start --platform macos --wait >/dev/null
-    jq -e '.argv == ["testanyware","vm","start","--platform","macos","--wait","--id","exact-vm","--json"]' "${exec_root}/000001/request.json"
+    jq -e '.argv == [env.KOINE_TESTANYWARE_CLI,"vm","start","--platform","macos","--wait","--id","exact-vm","--json"]' "${exec_root}/000001/request.json"
     printf '%s\n' '{"schema_version":"1.0","ok":true,"vms":[]}' >"${exec_reply}"
     cli_guest_evidence "${exec_root}" evidence stopped '.vms == []' -- vm list --all >/dev/null
-    jq -e '.argv == ["testanyware","vm","list","--all","--json"]' "${exec_root}/000002/request.json"
+    jq -e '.argv == [env.KOINE_TESTANYWARE_CLI,"vm","list","--all","--json"]' "${exec_root}/000002/request.json"
+    declare_clone_spec exact-vm
+    record_guest_provenance "${exec_root}" clone-provenance
     printf '%s\n' '{"schema_version":"1.0","ok":true,"marker":"complete"}' >"${exec_reply}"
     cli_guest_evidence "${exec_root}" evidence size '.marker == "complete"' -- screen size >"${BATS_TEST_TMPDIR}/received"
     cmp "${exec_reply}" "${BATS_TEST_TMPDIR}/received"
-    jq -e '.argv == ["testanyware","screen","size","--vm","exact-vm","--json"]' "${exec_root}/000003/request.json"
+    jq -e '.argv == [env.KOINE_TESTANYWARE_CLI,"screen","size","--vm","exact-vm","--json"]' "${exec_root}/000004/request.json"
     check_guest_evidence "${exec_root}"
     [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 3 ]]
     # Uploads use the checked transfer in vm-file-lifecycle-evidence.bats.
     run cli_guest_evidence "${exec_root}" one-shot upload '.marker == "complete"' -- file upload 'local file' '/tmp/guest file'
-    [[ "${status}" == 125 && ! -e "${exec_root}/000004" ]]
+    [[ "${status}" == 125 && ! -e "${exec_root}/000005" ]]
     [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 3 ]]
 }
 
@@ -298,7 +303,7 @@ SH
     init_guest_evidence "${exec_root}" exact-vm
     printf '%s\n' '{"schema_version":"1.0","ok":true,"id":"exact-vm","stopped":true}' >"${exec_reply}"
     cli_guest_evidence "${exec_root}" evidence stop '.id == "exact-vm" and .stopped == true' -- vm stop exact-vm >/dev/null
-    jq -e '.argv == ["testanyware","vm","stop","exact-vm","--json"]' "${exec_root}/000001/request.json"
+    jq -e '.argv == [env.KOINE_TESTANYWARE_CLI,"vm","stop","exact-vm","--json"]' "${exec_root}/000001/request.json"
     run cli_guest_evidence "${exec_root}" evidence wrong-stop true -- vm stop other-vm
     [[ "${status}" == 125 ]]
     [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 1 ]]
@@ -941,5 +946,233 @@ PY
         )
         [[ "$(stat -f %Lp "${parent}/root-${mask}")" == 700 ]]
         [[ -s "${parent}/root-${mask}/000001/raw.stdout" ]]
+    done
+}
+
+# start_clone ROOT VM: one clean VM start through the facade, as the scenario
+# sends it. The default exec reply comes back afterwards.
+start_clone() {
+    cp "${exec_reply}" "${BATS_TEST_TMPDIR}/exec-reply"
+    printf '{"schema_version":"1.0","ok":true,"id":"%s"}\n' "$2" >"${exec_reply}"
+    cli_guest_evidence "$1" one-shot vm-start true -- vm start --platform macos >/dev/null
+    cp "${BATS_TEST_TMPDIR}/exec-reply" "${exec_reply}"
+}
+
+@test "init refuses an undeclared, relative, linked or non-executable tool and creates no root (k180)" {
+    local cli="${KOINE_TESTANYWARE_CLI}" case
+    ln -s "${cli}" "${BATS_TEST_TMPDIR}/linked-cli"
+    cp "${cli}" "${BATS_TEST_TMPDIR}/still-cli"
+    chmod -x "${BATS_TEST_TMPDIR}/still-cli"
+    for case in unset-cli relative-cli linked-cli still-cli unset-jq missing-jq; do
+        (
+            case "${case}" in
+            unset-cli) unset KOINE_TESTANYWARE_CLI ;;
+            relative-cli)
+                # The relative path names the real CLI from here.
+                cd "${BATS_TEST_TMPDIR}"
+                export KOINE_TESTANYWARE_CLI=bin/testanyware
+                ;;
+            linked-cli) export KOINE_TESTANYWARE_CLI="${BATS_TEST_TMPDIR}/linked-cli" ;;
+            still-cli) export KOINE_TESTANYWARE_CLI="${BATS_TEST_TMPDIR}/still-cli" ;;
+            unset-jq) unset KOINE_JQ ;;
+            missing-jq) export KOINE_JQ="${BATS_TEST_TMPDIR}/no-jq" ;;
+            esac
+            run init_guest_evidence "${exec_root}-${case}" exact-vm
+            [[ "${status}" == 125 && ! -e "${exec_root}-${case}" ]]
+        )
+    done
+    [[ ! -e "${exec_calls}" ]]
+}
+
+@test "each attempt runs the declared executables and its receipt names them (k180)" {
+    cat >"${BATS_TEST_TMPDIR}/declared-jq" <<SH
+#!/bin/bash
+printf '%s\n' "\$*" >>"${BATS_TEST_TMPDIR}/declared-jq.log"
+exec "${KOINE_JQ}" "\$@"
+SH
+    chmod +x "${BATS_TEST_TMPDIR}/declared-jq"
+    export KOINE_JQ="${BATS_TEST_TMPDIR}/declared-jq"
+    init_guest_evidence "${exec_root}" exact-vm
+    exec_guest_evidence "${exec_root}" read-poll probe probe '.stdout == "READY\n"' >/dev/null
+    jq -e --arg cli "${KOINE_TESTANYWARE_CLI}" --arg jq "${KOINE_JQ}" \
+        '.argv[0] == $cli and .jq == $jq' "${exec_root}/000001/request.json"
+    jq -e --arg cli "$(shasum -a 256 "${KOINE_TESTANYWARE_CLI}" | cut -d' ' -f1)" \
+        --arg jq "$(shasum -a 256 "${KOINE_JQ}" | cut -d' ' -f1)" \
+        '.executables.testanyware.sha256 == $cli and .executables.jq.sha256 == $jq
+            and (.executables | map_values(keys) | .testanyware == .jq
+            and .jq == ["bytes", "device", "inode", "path", "sha256"])' "${exec_root}/subject.json"
+    grep -q '^-e \[(.stdout == "READY\\n")\] == \[true\]$' "${BATS_TEST_TMPDIR}/declared-jq.log"
+}
+
+@test "a changed, replaced or missing executable refuses the attempt before dispatch and latches (k180)" {
+    local case
+    for case in changed-cli replaced-jq missing-cli; do
+        (
+            cp "${KOINE_TESTANYWARE_CLI}" "${BATS_TEST_TMPDIR}/cli-${case}"
+            export KOINE_TESTANYWARE_CLI="${BATS_TEST_TMPDIR}/cli-${case}"
+            cp "${KOINE_JQ}" "${BATS_TEST_TMPDIR}/jq-${case}"
+            export KOINE_JQ="${BATS_TEST_TMPDIR}/jq-${case}"
+            init_guest_evidence "${exec_root}-${case}" exact-vm
+            case "${case}" in
+            changed-cli) printf '# changed\n' >>"${KOINE_TESTANYWARE_CLI}" ;;
+            replaced-jq)
+                cp "${KOINE_JQ}" "${KOINE_JQ}.new"
+                mv "${KOINE_JQ}.new" "${KOINE_JQ}"
+                ;;
+            missing-cli) rm "${KOINE_TESTANYWARE_CLI}" ;;
+            esac
+            run exec_guest_evidence "${exec_root}-${case}" read-poll probe probe true
+            [[ "${status}" == 125 && ! -e "${exec_calls}" ]]
+            [[ ! -e "${exec_root}-${case}/000001/raw.stdout" ]]
+            jq -e '.outcome == "unavailable" and .cli_status == null
+                and (.reason | test("^the declared (testanyware|jq) executable"))' \
+                "${exec_root}-${case}/000001/result.json"
+            grep -q '^000001: the declared ' "${exec_root}-${case}/unavailable"
+        )
+    done
+}
+
+@test "the clone provenance records the spec, its digest, the endpoint and the resolving paths once (k180)" {
+    local spec="${XDG_STATE_HOME}/testanyware/vms/exact-vm.json"
+    init_guest_evidence "${exec_root}" exact-vm
+    start_clone "${exec_root}" exact-vm
+    declare_clone_spec exact-vm 51234
+    record_guest_provenance "${exec_root}" clone-provenance
+    [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 1 ]]
+    jq -e '.transport == "provenance" and .argv == [] and .class == "read-poll"
+        and .operation == "clone-provenance" and (has("jq") | not)' "${exec_root}/000002/request.json"
+    jq -e '.outcome == "clean" and .emission_status == "not-attempted"' "${exec_root}/000002/result.json"
+    jq -e --arg spec "${spec}" --arg sha "$(shasum -a 256 "${spec}" | cut -d' ' -f1)" \
+        --arg state "${XDG_STATE_HOME}/testanyware" --arg config "${TESTANYWARE_CONFIG}" \
+        --arg csha "$(shasum -a 256 "${TESTANYWARE_CONFIG}" | cut -d' ' -f1)" '
+        .ordinal == 2 and .vm == "exact-vm" and .spec.path == $spec and .spec.sha256 == $sha
+        and .agent == {host: "192.0.2.4", port: 51234} and .state_dir == $state
+        and .state_source == "XDG_STATE_HOME"
+        and .config == {path: $config, state: "empty", sha256: $csha}
+        and .environment.XDG_STATE_HOME == env.XDG_STATE_HOME
+        and .environment.TESTANYWARE_APP_SOCKET == null' "${exec_root}/provenance.json"
+    # A second record refuses even before any guest transport.
+    run record_guest_provenance "${exec_root}" clone-provenance-again
+    [[ "${status}" == 125 ]]
+    jq -e '.outcome == "unavailable" and (.reason | test("[Ff]ile exists"))' "${exec_root}/000003/result.json"
+    [[ "$(jq -r .ordinal "${exec_root}/provenance.json")" == 2 ]]
+    [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 1 ]]
+}
+
+@test "provenance refuses before a VM start and after a guest transport (k180)" {
+    declare_clone_spec exact-vm
+    init_guest_evidence "${exec_root}-early" exact-vm
+    run record_guest_provenance "${exec_root}-early" clone-provenance
+    [[ "${status}" == 125 && ! -e "${exec_root}-early/provenance.json" ]]
+    jq -e '.reason == "no VM start precedes the clone provenance"' "${exec_root}-early/000001/result.json"
+    init_guest_evidence "${exec_root}-late" exact-vm
+    exec_guest_evidence "${exec_root}-late" read-poll probe probe true >/dev/null
+    start_clone "${exec_root}-late" exact-vm
+    run record_guest_provenance "${exec_root}-late" clone-provenance
+    [[ "${status}" == 125 && ! -e "${exec_root}-late/provenance.json" ]]
+    jq -e '.reason == "a guest transport precedes the clone provenance"' "${exec_root}-late/000003/result.json"
+}
+
+@test "a guest transport after a VM start needs a provenance record, and VM lifecycle does not (k180)" {
+    init_guest_evidence "${exec_root}" exact-vm
+    start_clone "${exec_root}" exact-vm
+    printf '%s\n' '{"schema_version":"1.0","ok":true,"vms":[]}' >"${BATS_TEST_TMPDIR}/list"
+    cp "${exec_reply}" "${BATS_TEST_TMPDIR}/exec-reply"
+    cp "${BATS_TEST_TMPDIR}/list" "${exec_reply}"
+    cli_guest_evidence "${exec_root}" read-poll vm-after '.vms == []' -- vm list >/dev/null
+    cp "${BATS_TEST_TMPDIR}/exec-reply" "${exec_reply}"
+    run exec_guest_evidence "${exec_root}" read-poll probe probe true
+    [[ "${status}" == 125 && "$(wc -l <"${exec_calls}" | tr -d ' ')" == 2 ]]
+    jq -e '.reason == "no clone provenance precedes this guest transport" and .cli_status == null' \
+        "${exec_root}/000003/result.json"
+    grep -q '^000003: no clone provenance' "${exec_root}/unavailable"
+    # The latch admits collection, but collection reaches the guest, so it refuses too.
+    run cli_guest_evidence "${exec_root}" evidence failure-windows true -- agent windows
+    [[ "${status}" == 125 && "$(wc -l <"${exec_calls}" | tr -d ' ')" == 2 ]]
+    jq -e '.reason == "no clone provenance precedes this guest transport"' "${exec_root}/000004/result.json"
+}
+
+@test "a missing, changed or different spec refuses the next guest transport and latches (k180)" {
+    local case spec
+    for case in changed missing other-state; do
+        (
+            export XDG_STATE_HOME="${BATS_TEST_TMPDIR}/state-${case}"
+            spec="${XDG_STATE_HOME}/testanyware/vms/exact-vm.json"
+            init_guest_evidence "${exec_root}-${case}" exact-vm
+            start_clone "${exec_root}-${case}" exact-vm
+            declare_clone_spec exact-vm
+            record_guest_provenance "${exec_root}-${case}" clone-provenance
+            case "${case}" in
+            changed) declare_clone_spec exact-vm 8649 ;;
+            missing) rm "${spec}" ;;
+            other-state)
+                mkdir -p "${XDG_STATE_HOME}-other/testanyware/vms"
+                cp "${spec}" "${XDG_STATE_HOME}-other/testanyware/vms/"
+                export XDG_STATE_HOME="${XDG_STATE_HOME}-other"
+                ;;
+            esac
+            local before
+            before="$(wc -l <"${exec_calls}" | tr -d ' ')"
+            run exec_guest_evidence "${exec_root}-${case}" read-poll probe probe true
+            [[ "${status}" == 125 && "$(wc -l <"${exec_calls}" | tr -d ' ')" == "${before}" ]]
+            jq -e '.outcome == "unavailable" and .cli_status == null
+                and (.reason | startswith("the clone spec mapping"))' "${exec_root}-${case}/000003/result.json"
+            run cli_guest_evidence "${exec_root}-${case}" evidence failure-windows true -- agent windows
+            [[ "${status}" == 125 && "$(wc -l <"${exec_calls}" | tr -d ' ')" == "${before}" ]]
+            # The exact stop is VM lifecycle, so the changed spec does not refuse it.
+            cp "${exec_reply}" "${BATS_TEST_TMPDIR}/exec-reply"
+            printf '%s\n' '{"schema_version":"1.0","ok":true,"id":"exact-vm"}' >"${exec_reply}"
+            cli_guest_evidence "${exec_root}-${case}" evidence stop true -- vm stop exact-vm >/dev/null
+            cp "${BATS_TEST_TMPDIR}/exec-reply" "${exec_reply}"
+            grep -q '^000003: the clone spec mapping' "${exec_root}-${case}/unavailable"
+        )
+        : >"${exec_calls}"
+    done
+}
+
+@test "a configuration or environment that the harness cannot evaluate refuses the provenance (k180)" {
+    local case
+    for case in setting quoted unclosed semicolon socket relative-state relative-config no-home agentless; do
+        (
+            # A case's file outlives its subshell, so each case starts clean.
+            declare_config
+            declare_clone_spec exact-vm
+            case "${case}" in
+            setting) printf '#{\n    state_dir: "/elsewhere",\n}\n' >"${TESTANYWARE_CONFIG}" ;;
+            quoted) printf '#{ } // "\n"x"\n' >"${TESTANYWARE_CONFIG}" ;;
+            unclosed) printf '/* /* */ #{ }\n' >"${TESTANYWARE_CONFIG}" ;;
+            semicolon) printf '#{ };\n' >"${TESTANYWARE_CONFIG}" ;;
+            socket) export TESTANYWARE_APP_SOCKET="${BATS_TEST_TMPDIR}/other.sock" ;;
+            # Each relative path names the real file from here.
+            relative-state) cd "${BATS_TEST_TMPDIR}" && export XDG_STATE_HOME=state ;;
+            relative-config) cd "${BATS_TEST_TMPDIR}" && export TESTANYWARE_CONFIG=config.rhai ;;
+            no-home) unset HOME ;;
+            agentless)
+                printf '{"vnc":{"host":"127.0.0.1","port":5901},"platform":"macos"}\n' \
+                    >"${XDG_STATE_HOME}/testanyware/vms/exact-vm.json"
+                ;;
+            esac
+            init_guest_evidence "${exec_root}-${case}" exact-vm
+            start_clone "${exec_root}-${case}" exact-vm
+            run record_guest_provenance "${exec_root}-${case}" clone-provenance
+            [[ "${status}" == 125 && ! -e "${exec_root}-${case}/provenance.json" ]]
+            jq -e '.outcome == "unavailable"' "${exec_root}-${case}/000002/result.json"
+        )
+    done
+    for case in nested absent disabled; do
+        (
+            declare_config
+            declare_clone_spec exact-vm
+            case "${case}" in
+            nested) printf '/* a /* nested */ comment */ #{\n} // end\n' >"${TESTANYWARE_CONFIG}" ;;
+            absent) rm "${TESTANYWARE_CONFIG}" ;;
+            disabled) export TESTANYWARE_CONFIG=none ;;
+            esac
+            init_guest_evidence "${exec_root}-${case}" exact-vm
+            start_clone "${exec_root}-${case}" exact-vm
+            record_guest_provenance "${exec_root}-${case}" clone-provenance
+            jq -e --arg state "$([[ "${case}" == nested ]] && echo empty || echo "${case}")" \
+                '.config.state == $state' "${exec_root}-${case}/provenance.json"
+        )
     done
 }

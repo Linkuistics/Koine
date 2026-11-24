@@ -52,7 +52,9 @@ SETTINGS_OBSERVED_FRONT=''
 # settings_begin ROOT VM: the first act of the scenario, before any transport.
 # The legacy cleanup trap of scripts/vm-verify-lib.sh would send a bare stop,
 # so it goes first. init refuses an existing directory, so no root is reused.
-# Then the traps and the fence take effect.
+# init also records the executables that KOINE_TESTANYWARE_CLI and KOINE_JQ
+# declare, and it refuses a missing one. Then the traps and the fence take
+# effect, and each local jq decision runs the declared jq.
 settings_begin() {
     local root="$1" vm="$2"
     trap - EXIT
@@ -66,6 +68,9 @@ settings_begin() {
     }
     KOINE_VM_EVIDENCE_ROOT="$(cd "${root}" && pwd -P)"
     export KOINE_VM_EVIDENCE_ROOT
+    # init checked this path. The backend checks its digest before each dispatch.
+    # shellcheck disable=SC2329 # Every later jq call in this shell reaches it.
+    jq() { "${KOINE_JQ}" "$@"; }
     # A signal can arrive inside a call whose output goes to /dev/null. The
     # report therefore writes to the scenario's own streams, kept here.
     exec 7>&1 8>&2
@@ -316,6 +321,10 @@ settings_start_vm() {
         settings_stop "$?" "the clone ${VM_ID} did not start from the base \"${KOINE_VM_BASE-}\""
     inventory_guest_vms "${KOINE_VM_EVIDENCE_ROOT}" read-poll vm-after running >/dev/null ||
         settings_stop "$?" "the VM inventory after the start did not show ${VM_ID} running once"
+    # A host file read, not a guest transport. Each later guest transport
+    # rereads the spec, and a missing or changed spec refuses that transport.
+    record_guest_provenance "${KOINE_VM_EVIDENCE_ROOT}" clone-provenance ||
+        settings_stop "$?" "the provenance of the clone ${VM_ID} could not be recorded"
     record="$(read_guest_exec "${KOINE_VM_EVIDENCE_ROOT}" read-poll system system)" ||
         settings_stop "$?" "the guest system could not be read"
     jq -r '"\(.product_version) \(.build_version) \(.arch)"' <<<"${record}"

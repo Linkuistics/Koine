@@ -31,6 +31,9 @@ setup() {
     printf '#!/bin/bash\nexec bash "${run_fixture}" "$@"\n' >"${BATS_TEST_TMPDIR}/bin/task"
     chmod +x "${BATS_TEST_TMPDIR}/bin/testanyware" "${BATS_TEST_TMPDIR}/bin/task"
     export PATH="${BATS_TEST_TMPDIR}/bin:${PATH}"
+    # shellcheck source=Tests/scripts/fixtures/declared-tools.sh
+    source "${BATS_TEST_DIRNAME}/fixtures/declared-tools.sh"
+    declare_tools "${BATS_TEST_TMPDIR}/bin/testanyware"
     : >"${lifecycle_calls}"
     : >"${run_log}"
     # shellcheck source=Tests/scripts/fixtures/settings-audit-frozen.sh
@@ -761,4 +764,95 @@ expect_invalid_recurrence() {
     printf '{"result":"passed","detail":"control"}\n' >"${screens}"
     settle_slot E01 >/dev/null
     [[ "$(phase environment)" == failed && "$(settled disposition)" == unresolved ]]
+}
+
+# --- the declared executables and the clone provenance (k180) ---------------
+
+@test "a receipt without both executables or the TestAnyware paths refuses the run before admission (k180)" {
+    local other="${BATS_TEST_TMPDIR}/other" case
+    for case in no-cli linked-jq no-paths relative-state; do
+        rm -rf "${other}"
+        case "${case}" in
+        no-cli) jq '.inputs |= map(select(.name != "testanyware"))' "${focused_receipt}" ;;
+        linked-jq) jq '(.inputs[] | select(.name == "jq") | .items) = [{path: ".", kind: "symlink", target: "jq"}]' "${focused_receipt}" ;;
+        no-paths) jq 'del(.testanyware_paths)' "${focused_receipt}" ;;
+        relative-state) jq '.testanyware_paths.state_dir = "state"' "${focused_receipt}" ;;
+        esac >"${BATS_TEST_TMPDIR}/${case}.json"
+        seq_tool declare "${other}" >/dev/null
+        seq_tool ready "${other}" focused "${BATS_TEST_TMPDIR}/${case}.json" >/dev/null
+        run seq_tool run "${other}" E01
+        expect_refused "frozen declaration"
+    done
+    [[ "$(tasks)" == 0 ]]
+}
+
+@test "the run passes the frozen executables, and a qualifying slot names them and its provenance (k180)" {
+    run env -u KOINE_TESTANYWARE_CLI -u KOINE_JQ python3 -I "${tool}" run "${sequence}" E01
+    [[ "${status}" == 0 ]]
+    settle_slot E01 >/dev/null
+    [[ "$(phase subject)" == passed && "$(settled disposition)" == qualified ]]
+    audits '.provenance.result == "passed"' >/dev/null
+    jq -e --arg cli "${KOINE_TESTANYWARE_CLI}" --arg jq "${KOINE_JQ}" \
+        '.executables.testanyware.path == $cli and .executables.jq.path == $jq' \
+        "$(slot_field E01 evidence_root)/subject.json"
+}
+
+@test "a changed executable holds the sequence before admission (k180)" {
+    printf '# changed\n' >>"${KOINE_TESTANYWARE_CLI}"
+    run seq_tool run "${sequence}" E01
+    expect_held "failed: testanyware"
+}
+
+@test "a slot without a provenance record cannot qualify (k180)" {
+    export run_provenance=skip
+    run_e01
+    audits '.provenance.result == "unavailable" and .provenance.detail == "0 provenance attempts"' >/dev/null
+    [[ "$(phase subject)" == unavailable && "$(settled disposition)" == unresolved ]]
+}
+
+@test "a provenance on other frozen paths or a scenario on another CLI fails the subject (k180)" {
+    local other="${BATS_TEST_TMPDIR}/other"
+    jq '.testanyware_paths.state_dir = "/other/state"' "${focused_receipt}" >"${BATS_TEST_TMPDIR}/state.json"
+    seq_tool declare "${other}" >/dev/null
+    seq_tool ready "${other}" focused "${BATS_TEST_TMPDIR}/state.json" >/dev/null
+    seq_tool run "${other}" E01 >/dev/null
+    [[ "$(jq -r .provenance.result "$(jq -er '.slots[0].output' "${other}/sequence.json")/containment/audits.json")" == failed ]]
+    jq -e '.provenance.detail | endswith("differs: state_dir, spec path")' \
+        "$(jq -er '.slots[0].output' "${other}/sequence.json")/containment/audits.json"
+    cp "${KOINE_TESTANYWARE_CLI}" "${BATS_TEST_TMPDIR}/other-cli"
+    cp "${KOINE_JQ}" "${BATS_TEST_TMPDIR}/other-jq"
+    export run_cli="${BATS_TEST_TMPDIR}/other-cli" run_jq="${BATS_TEST_TMPDIR}/other-jq"
+    run_e01
+    [[ "$(phase subject)" == failed && "$(settled disposition)" == unresolved ]]
+    audits '.provenance.detail | contains("subject.json records another testanyware executable")
+        and contains("subject.json records another jq executable")
+        and contains("000001 ran another CLI") and contains("000001 ran another jq")' >/dev/null
+}
+
+@test "a guest transport ordered before the provenance record fails the provenance audit (k180)" {
+    local root="${BATS_TEST_TMPDIR}/tamper"
+    (
+        # shellcheck source=scripts/vm-lifecycle-evidence-lib.sh
+        source "${repo_root}/scripts/vm-lifecycle-evidence-lib.sh"
+        init_guest_evidence "${root}" koine-k49-ordering-e01
+        start_guest_vm "${root}" vm-start testanyware-golden-macos-27 >/dev/null
+        record_guest_provenance "${root}" clone-provenance
+        cli_guest_evidence "${root}" one-shot key true -- input key return >/dev/null
+    )
+    run_check() {
+        python3 -I - "${tool}" "${root}" "${focused_receipt}" <<'PY_CONTROL'
+import importlib.util, json, sys
+spec = importlib.util.spec_from_file_location("sequence", sys.argv[1])
+module = importlib.util.module_from_spec(spec)
+sys.modules["sequence"] = module
+spec.loader.exec_module(module)
+frozen = json.load(open(sys.argv[3]))
+print(json.dumps(module.provenance_check(module.Path(sys.argv[2]), frozen, "koine-k49-ordering-e01", "not-run")))
+PY_CONTROL
+    }
+    [[ "$(run_check | jq -r .result)" == passed ]]
+    mv "${root}/000002" "${root}/swap"
+    mv "${root}/000003" "${root}/000002"
+    mv "${root}/swap" "${root}/000003"
+    run_check | jq -e '.result == "failed" and (.detail | endswith("differs: ordinal, order"))'
 }

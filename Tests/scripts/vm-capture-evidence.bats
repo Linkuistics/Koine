@@ -33,6 +33,9 @@ exec python3 "${capture_fixture}" "$@"
 CLI
     chmod +x "${BATS_TEST_TMPDIR}/bin/testanyware"
     export PATH="${BATS_TEST_TMPDIR}/bin:${PATH}"
+    # shellcheck source=Tests/scripts/fixtures/declared-tools.sh
+    source "${BATS_TEST_DIRNAME}/fixtures/declared-tools.sh"
+    declare_tools "${BATS_TEST_TMPDIR}/bin/testanyware"
     : >"${capture_calls}"
     cd "${BATS_TEST_TMPDIR}/cwd" || return
     init_guest_evidence "${capture_root}" exact-capture-vm

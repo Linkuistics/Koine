@@ -21,6 +21,9 @@ exec python3 "${read_fixture}" "$@"
 CLI
     chmod +x "${BATS_TEST_TMPDIR}/bin/testanyware"
     export PATH="${BATS_TEST_TMPDIR}/bin:${PATH}"
+    # shellcheck source=Tests/scripts/fixtures/declared-tools.sh
+    source "${BATS_TEST_DIRNAME}/fixtures/declared-tools.sh"
+    declare_tools "${BATS_TEST_TMPDIR}/bin/testanyware"
     [[ -d /Applications/Koine.app ]] || {
         echo 'host grammar evidence needs /Applications/Koine.app' >&2
         return 1

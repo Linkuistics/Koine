@@ -34,6 +34,9 @@ setup() {
     printf '#!/bin/bash\nexec bash "${run_fixture}" "$@"\n' >"${BATS_TEST_TMPDIR}/bin/task"
     chmod +x "${BATS_TEST_TMPDIR}/bin/testanyware" "${BATS_TEST_TMPDIR}/bin/task"
     export PATH="${BATS_TEST_TMPDIR}/bin:${PATH}"
+    # shellcheck source=Tests/scripts/fixtures/declared-tools.sh
+    source "${BATS_TEST_DIRNAME}/fixtures/declared-tools.sh"
+    declare_tools "${BATS_TEST_TMPDIR}/bin/testanyware"
     : >"${lifecycle_calls}"
     : >"${run_log}"
     seq_tool declare "${sequence}" >/dev/null

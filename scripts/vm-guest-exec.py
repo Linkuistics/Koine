@@ -48,6 +48,19 @@ CLEAN_SIZE_WAIT = re.compile(
     rb"VNC size wait: the first session read \d+x\d+\. "
     rb"Session 2 read \d+x\d+ after \d+\.\d{2} s\."
 )
+# The caller declares each executable before init. No attempt searches PATH.
+EXECUTABLES = (("testanyware", "KOINE_TESTANYWARE_CLI"), ("jq", "KOINE_JQ"))
+# The times are left out, because a metadata change alone changes no executable.
+IDENTITY_FIELDS = ("path", "bytes", "sha256", "device", "inode")
+PROVENANCE = "provenance.json"
+# The variables that decide which spec a `--vm` ID names, and which app reads it.
+RESOLUTION_VARIABLES = (
+    "HOME",
+    "XDG_STATE_HOME",
+    "TESTANYWARE_CONFIG",
+    "TESTANYWARE_APP_SOCKET",
+)
+SMALL_FILE = 1 << 16
 
 
 def timestamp() -> str:
@@ -125,21 +138,184 @@ def refuse(root: Path, reason: str) -> int:
 def initialize(root: Path, vm: str) -> int:
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]*", vm):
         raise ValueError("expected an exact plain VM identity")
+    executables = declared_executables()  # Before the root, so a refusal leaves none.
     root.mkdir(mode=0o700)  # Refuse reuse, overwrites and implicit parent creation.
     # The root can hold KOINE_VM_PASSWORD in argv, predicates and responses. The
     # umask can only narrow the mkdir mode, so no wider mode ever exists. chmod
     # sets the exact mode before the first write: only the owner can enter.
     os.chmod(root, 0o700)
-    write_json(root / "subject.json", {"vm": vm})
+    write_json(root / "subject.json", {"vm": vm, "executables": executables})
     return 0
+
+
+def executable_identity(name: str, text: str) -> dict[str, object]:
+    path = Path(text)
+    if not path.is_absolute():
+        raise ValueError(f"the declared {name} executable is not absolute: {text}")
+    identity = inspect_file(path)
+    if not os.access(path, os.X_OK):
+        raise ValueError(f"the declared {name} executable cannot run: {path}")
+    return {field: identity[field] for field in IDENTITY_FIELDS}
+
+
+def declared_executables() -> dict[str, object]:
+    executables: dict[str, object] = {}
+    for name, variable in EXECUTABLES:
+        text = os.environ.get(variable, "")
+        if not text:
+            raise ValueError(f"{variable} must declare the absolute {name} executable")
+        executables[name] = executable_identity(name, text)
+    return executables
+
+
+def recorded_executables(subject: dict[str, object]) -> dict[str, dict[str, object]]:
+    value = subject.get("executables")
+    names = {name for name, _ in EXECUTABLES}
+    if not (isinstance(value, dict) and set(cast(dict[str, object], value)) == names):
+        raise ValueError("the root records no declared executables")
+    recorded: dict[str, dict[str, object]] = {}
+    for name, entry in cast(dict[str, object], value).items():
+        if not (
+            isinstance(entry, dict)
+            and set(cast(dict[str, object], entry)) == set(IDENTITY_FIELDS)
+            and isinstance(cast(dict[str, object], entry)["path"], str)
+        ):
+            raise ValueError(f"the root records an invalid {name} executable")
+        recorded[name] = cast(dict[str, object], entry)
+    return recorded
+
+
+def executable_problem(recorded: dict[str, dict[str, object]]) -> str:
+    """Name a declared executable that is missing or changed since init."""
+    for name, record in recorded.items():
+        try:
+            current = executable_identity(name, cast(str, record["path"]))
+        except (OSError, ValueError) as error:
+            return f"the declared {name} executable is unavailable: {error}"
+        if current != record:
+            return (
+                f"the declared {name} executable changed since init: {record['path']}"
+            )
+    return ""
+
+
+def empty_configuration(text: str) -> bool:
+    """Whether a Rhai source holds only comments around one empty map."""
+    # Rhai 1.26.1, which TestAnyware 3.0.0 locks, nests block comments. A line
+    # comment ends at the newline. Any other kept character, a quote included,
+    # fails the match, so no string can hide a setting.
+    # https://docs.rs/crate/rhai/1.26.1/source/src/tokenizer.rs
+    kept: list[str] = []
+    index = depth = 0
+    while index < len(text):
+        pair = text[index : index + 2]
+        if depth and pair in {"/*", "*/"}:
+            depth += 1 if pair == "/*" else -1
+            index += 2
+        elif depth:
+            index += 1
+        elif pair == "/*":
+            depth, index = 1, index + 2
+        elif pair == "//":
+            end = text.find("\n", index)
+            index = len(text) if end < 0 else end
+        else:
+            kept.append(text[index])
+            index += 1
+    return depth == 0 and re.fullmatch(r"\s*#\{\s*\}\s*", "".join(kept)) is not None
+
+
+def spec_mapping(vm: str) -> dict[str, object]:
+    """Resolve the spec that `--vm VM` names, as the tagged CLI and app do."""
+    # On a macOS host each guest stream goes through the app, which reads
+    # <state_dir>/vms/<id>.json. The app refuses a request whose state directory
+    # differs from its own, so the CLI's spec is the app's spec.
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-app/src/streams.rs
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-app-protocol/src/error.rs
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-vm/src/paths.rs
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-config/src/location.rs
+    environment = {name: os.environ.get(name) for name in RESOLUTION_VARIABLES}
+    if os.environ.get("TESTANYWARE_APP_SOCKET"):
+        raise ValueError("TESTANYWARE_APP_SOCKET names another app")
+    home = os.environ.get("HOME", "")
+    if not Path(home).is_absolute():
+        raise ValueError("HOME is not an absolute path")
+    named = os.environ.get("TESTANYWARE_CONFIG", "")
+    config: dict[str, object] = {"path": None, "state": "disabled", "sha256": None}
+    if named != "none":
+        file = Path(named) if named else Path(home, ".config/testanyware/config.rhai")
+        if not file.is_absolute():
+            raise ValueError(f"TESTANYWARE_CONFIG is not absolute: {named}")
+        config = {"path": str(file), "state": "absent", "sha256": None}
+        try:
+            identity, text = read_stable(file, SMALL_FILE)
+        except FileNotFoundError:
+            pass  # The file is optional, and no file names no setting.
+        else:
+            if not empty_configuration(text.decode("utf-8")):
+                raise ValueError(
+                    f"{file} names settings that the harness cannot evaluate"
+                )
+            config.update(state="empty", sha256=identity["sha256"])
+    variable = os.environ.get("XDG_STATE_HOME", "")
+    if variable and not Path(variable).is_absolute():
+        raise ValueError(f"XDG_STATE_HOME is not absolute: {variable}")
+    state = Path(variable or Path(home, ".local/state"), "testanyware")
+    identity, data = read_stable(state / "vms" / f"{vm}.json", SMALL_FILE)
+    spec: object = json.loads(
+        data, object_pairs_hook=unique_object, parse_constant=reject_constant
+    )
+    agent = (
+        cast(dict[str, object], spec).get("agent") if isinstance(spec, dict) else None
+    )
+    fields = cast(dict[str, object], agent) if isinstance(agent, dict) else {}
+    host, port = fields.get("host"), fields.get("port")
+    if not (isinstance(host, str) and host and type(port) is int and 0 < port < 65536):
+        raise ValueError(f"the spec of {vm} has no valid agent endpoint")
+    return {
+        "vm": vm,
+        "spec": {field: identity[field] for field in IDENTITY_FIELDS},
+        "agent": {"host": host, "port": port},
+        "state_dir": str(state),
+        "state_source": "XDG_STATE_HOME" if variable else "default",
+        "config": config,
+        "environment": environment,
+    }
+
+
+def provenance_problem(root: Path, vm: str) -> str:
+    """Name how the current spec mapping differs from the recorded provenance."""
+    try:
+        recorded = read_object(root / PROVENANCE)
+        current = spec_mapping(vm)
+    except (OSError, ValueError, UnicodeError) as error:
+        return f"the clone spec mapping is unavailable: {error}"
+    differences = [key for key, value in current.items() if recorded.get(key) != value]
+    if differences:
+        return f"the clone spec mapping changed since its provenance: {differences}"
+    return ""
+
+
+def guest_transport(argv: list[str]) -> bool:
+    """An attempt reaches the guest when its pinned options name the VM."""
+    options = argv[: argv.index("--")] if "--" in argv else argv
+    return "--vm" in options
 
 
 def inspect_file(path: Path) -> dict[str, object]:
     """Digest one regular non-symlink file whose identity stays stable while read."""
+    return read_stable(path)[0]
+
+
+def read_stable(
+    path: Path, limit: int | None = None
+) -> tuple[dict[str, object], bytes]:
+    """inspect_file, which also keeps the bytes of a file of at most LIMIT bytes."""
     before = os.lstat(path)
     if not stat.S_ISREG(before.st_mode):
         raise ValueError(f"expected a regular non-symlink file: {path}")
     descriptor = os.open(path, os.O_RDONLY | os.O_NOFOLLOW)
+    kept: list[bytes] = []
     try:
         opened = os.fstat(descriptor)
         digest = hashlib.sha256()
@@ -147,6 +323,10 @@ def inspect_file(path: Path) -> dict[str, object]:
         while block := os.read(descriptor, 1 << 20):
             digest.update(block)
             count += len(block)
+            if limit is not None:
+                if count > limit:
+                    raise ValueError(f"file exceeds {limit} bytes: {path}")
+                kept.append(block)
         after = os.fstat(descriptor)
     finally:
         os.close(descriptor)
@@ -172,7 +352,7 @@ def inspect_file(path: Path) -> dict[str, object]:
         "inode": after.st_ino,
         "mtime_ns": after.st_mtime_ns,
         "ctime_ns": after.st_ctime_ns,
-    }
+    }, b"".join(kept)
 
 
 def upload_record(root: Path, ordinal: str, remote: str) -> dict[str, object]:
@@ -255,6 +435,7 @@ def validate_response(
     cli_status: int,
     predicate: str,
     lock_fd: int,
+    jq: str,
     transport: str = "exec",
 ) -> str:
     try:
@@ -301,7 +482,7 @@ def validate_response(
         (attempt / "payload.stderr").open("xb") as errors,
     ):
         result = subprocess.run(
-            ["jq", "-e", f"[({predicate})] == [true]"],
+            [jq, "-e", f"[({predicate})] == [true]"],
             stdin=source,
             stdout=output,
             stderr=errors,
@@ -320,6 +501,7 @@ def cli_argv(
     arguments: list[str],
     vm: str,
     kind: str,
+    cli: str,
     *,
     checked_capture: bool = False,
     checked_transfer: bool = False,
@@ -368,17 +550,17 @@ def cli_argv(
     # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/main.rs
     if family == "vm":
         if action == "start":
-            return ["testanyware", *arguments, "--id", vm, "--json"]
+            return [cli, *arguments, "--id", vm, "--json"]
         if action == "stop" and arguments[2:] == [vm]:
-            return ["testanyware", *arguments, "--json"]
+            return [cli, *arguments, "--json"]
         if action == "list":
-            return ["testanyware", *arguments, "--json"]
+            return [cli, *arguments, "--json"]
         raise ValueError("expected pinned vm stop, vm start or vm list")
     if family not in {"agent", "input", "screen", "file"} or (
         family == "file" and action not in {"upload", "download"}
     ):
         raise ValueError("unsupported non-exec transport; use run for guest exec")
-    return ["testanyware", *arguments, "--vm", vm, "--json"]
+    return [cli, *arguments, "--vm", vm, "--json"]
 
 
 def run_locked(
@@ -395,10 +577,23 @@ def run_locked(
     vm = subject.get("vm")
     if not isinstance(vm, str) or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]*", vm):
         raise ValueError("missing or invalid initialized VM identity")
+    executables = recorded_executables(subject)
+    cli = cast(str, executables["testanyware"]["path"])
+    jq = cast(str, executables["jq"]["path"])
     prior = sorted(
         path for path in root.iterdir() if re.fullmatch(r"[0-9]{6}", path.name)
     )
+    vm_started = guest_seen = False
     for path in prior:
+        try:
+            request = read_object(path / "request.json")
+            argv = request.get("argv")
+            if isinstance(argv, list):
+                words = [str(word) for word in cast(list[object], argv)]
+                vm_started |= words[1:3] == ["vm", "start"]
+                guest_seen |= guest_transport(words)
+        except (OSError, ValueError, UnicodeError):
+            pass  # The result check below latches an unfinished attempt.
         try:
             receipt = read_object(path / "result.json")
             outcome = receipt.get("outcome")
@@ -413,10 +608,10 @@ def run_locked(
     if transport == "check":
         return 0  # Inspection is not a reservation for a later unlocked input.
     if transport == "cli":
-        argv = cli_argv(arguments, vm, kind)
+        argv = cli_argv(arguments, vm, kind, cli)
     elif transport == "capture":
         argv = []  # The exclusive attempt directory below owns the output path.
-    elif transport in {"confirmation", "poll-step", "download"}:
+    elif transport in {"confirmation", "poll-step", "download", "provenance"}:
         argv = []  # A download's exclusive attempt directory owns its output path.
     elif transport == "read":
         # The table owns every command that a checked read sends, and it admits
@@ -425,14 +620,16 @@ def run_locked(
         predicate = (
             f"checked read {arguments[0]}: exact grammar in scripts/vm_exec_reads.py"
         )
-        argv = ["testanyware", "file", "exec", "--vm", vm, "--json", "--", command]
+        argv = [cli, "file", "exec", "--vm", vm, "--json", "--", command]
     elif transport == "upload":
         # The local path is absolute, so the CLI cannot read it as an option.
-        argv = cli_argv(["file", "upload", *arguments], vm, kind, checked_transfer=True)
+        argv = cli_argv(
+            ["file", "upload", *arguments], vm, kind, cli, checked_transfer=True
+        )
     else:
         # Explicit --vm wins over ambient VM/agent flags. No --connect is admitted.
         # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/resolve.rs
-        argv = ["testanyware", "file", "exec", "--vm", vm, "--json", "--", command]
+        argv = [cli, "file", "exec", "--vm", vm, "--json", "--", command]
     expected: dict[str, object] | None = None
     if transport == "download" and len(arguments) == 2:
         expected = upload_record(root, arguments[1], arguments[0])
@@ -468,6 +665,7 @@ def run_locked(
             ["file", "download", arguments[0], str(download_path)],
             vm,
             kind,
+            cli,
             checked_transfer=True,
         )
         predicate = (
@@ -481,7 +679,11 @@ def run_locked(
         if arguments:
             capture_args += ["--region", arguments[0]]
         argv = cli_argv(
-            [*capture_args, "-o", str(artifact_path)], vm, kind, checked_capture=True
+            [*capture_args, "-o", str(artifact_path)],
+            vm,
+            kind,
+            cli,
+            checked_capture=True,
         )
         # Validate actual capture fields and chosen path, not a constant predicate.
         # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/commands/screen.rs
@@ -492,6 +694,14 @@ def run_locked(
         if arguments:
             _, _, width, height = map(int, arguments[0].split(","))
             predicate += f" and .width == {width} and .height == {height}"
+    # Host file reads only. A failure refuses this attempt before any dispatch.
+    if argv:
+        pre_dispatch = executable_problem(executables) or pre_dispatch
+    if guest_transport(argv) and not pre_dispatch:
+        if (root / PROVENANCE).exists():
+            pre_dispatch = provenance_problem(root, vm)
+        elif vm_started:
+            pre_dispatch = "no clone provenance precedes this guest transport"
     started = time.monotonic_ns()
     write_json(
         attempt / "request.json",
@@ -509,6 +719,7 @@ def run_locked(
                 else {}
             ),
             "argv": argv,
+            **({"jq": jq} if argv and transport != "read" else {}),
             "payload_predicate": predicate,
             "started": timestamp(),
             **(
@@ -545,6 +756,14 @@ def run_locked(
                     local_signal_status = local_status
         elif transport == "confirmation":
             latch(root, f"{attempt.name}: {reason}")
+        elif transport == "provenance":
+            if not vm_started:
+                reason = "no VM start precedes the clone provenance"
+            elif guest_seen:
+                reason = "a guest transport precedes the clone provenance"
+            else:
+                # Exclusive: a second record, or a left partial, refuses.
+                write_json(root / PROVENANCE, {**spec_mapping(vm), "ordinal": ordinal})
         else:
             with (
                 (attempt / "raw.stdout").open("xb") as output,
@@ -555,7 +774,7 @@ def run_locked(
                 ).returncode
             (attempt / "cli.exit").write_text(f"{cli_status}\n")
             reason = validate_response(
-                attempt, command, cli_status, predicate, lock_fd, transport
+                attempt, command, cli_status, predicate, lock_fd, jq, transport
             )
             if not reason and transport == "cli":
                 reason = diagnostic_problem(argv, (attempt / "raw.stderr").read_bytes())
@@ -616,7 +835,7 @@ def run_locked(
     except KeyboardInterrupt:
         reason = "interrupted transport; completion unavailable"
         interrupted = True
-    if not reason and transport != "poll-step":
+    if not reason and transport not in {"poll-step", "provenance"}:
         try:
             if transport == "read":
                 # One compact line of the parsed record; the raw bytes stay.
@@ -723,6 +942,8 @@ def run(
         kind in {"read-poll", "evidence", "one-shot"} and len(arguments or []) >= 1
     ):
         raise ValueError("expected a checked read NAME [ARGUMENT]")
+    if transport == "provenance" and (kind != "read-poll" or arguments):
+        raise ValueError("expected a read-poll clone provenance with no arguments")
     if transport == "confirmation" and not command.strip():
         raise ValueError("failed confirmation requires a reason")
     if transport == "poll-step" and not (
@@ -768,6 +989,10 @@ def main() -> int:
             "a unique copy and compares a named upload record. "
             "read runs one checked guest read or submission from scripts/vm_exec_reads.py "
             "and prints its parsed record; run refuses the evidence class, which only checked reads admit. "
+            "init needs KOINE_TESTANYWARE_CLI and KOINE_JQ, the absolute executables that every "
+            "attempt runs; a changed executable refuses an attempt before dispatch. "
+            "provenance records the spec of the started clone once, in ROOT/provenance.json; "
+            "each later guest transport rereads that spec, and a change refuses it. "
             "Exit 0: clean individual attempt (evidence collection does not clear an old latch); "
             "2: argument error (an identifiable initialized evidence root is latched); "
             "125: state failure, unavailable evidence or invalid run values; "
@@ -863,6 +1088,12 @@ def main() -> int:
     read_parser.add_argument("operation")
     read_parser.add_argument("name", choices=sorted(vm_exec_reads.READS))
     read_parser.add_argument("arguments", nargs="*")
+    provenance_parser = commands.add_parser(
+        "provenance",
+        help="record the spec of the started clone once; a host file read, no transport",
+    )
+    provenance_parser.add_argument("root", type=Path)
+    provenance_parser.add_argument("operation")
     try:
         args = parser.parse_args()
     except SystemExit as error:
@@ -880,6 +1111,7 @@ def main() -> int:
                 "check",
                 "fail",
                 "poll-step",
+                "provenance",
             }
         ):
             root = Path(sys.argv[2])
@@ -892,6 +1124,10 @@ def main() -> int:
             return initialize(root, cast(str, args.vm))
         if args.action == "check":
             return run(root, "read-poll", "eligibility", "", "", "check")
+        if args.action == "provenance":
+            return run(
+                root, "read-poll", cast(str, args.operation), "", "", "provenance"
+            )
         if args.action == "fail":
             return run(
                 root,
