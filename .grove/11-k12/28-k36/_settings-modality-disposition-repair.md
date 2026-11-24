@@ -140,6 +140,9 @@ invent a window ID.
   the final handoff. It consumes the completed k57 reconciliation before the
   freeze or any clone request. Changed source or controls reopen the affected
   checks and earned reviews before use.
+- k180 owns the harness part of the k54 provenance duty. That part is the
+  absolute CLI and jq paths, the per-clone spec record and its check before each
+  guest transport. k180 and its earned review finish before the k54 freeze.
 
 ## Availability boundaries
 

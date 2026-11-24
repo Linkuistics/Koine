@@ -214,3 +214,59 @@ Read `docs/verification/settings-activation/ORDERING-STORAGE-PLAN.md`.
   Establish that the final golden holds an agent from TestAnyware 2.9.0 or later.
   Otherwise every exec is unavailable. The upstream menu bar repair needs a golden
   that 3.0.0 built.
+- 2026-11-24, observation: this session started no build, clone or guest. The host
+  reports macOS 27.2.1 (26B131), Tart 2.42.0 and TestAnyware 3.0.0. The closed
+  ledger check passes, and no clone runs.
+- 2026-11-24, observation: the disk of `testanyware-golden-macos-27` dates from
+  19:03 on 2026-11-23. The installed 3.0.0 binary dates from 19:29. The upstream
+  k4 record says that this golden holds the k16 menu bar repair. No record shows
+  that the released 3.0.0 built it.
+- 2026-11-24, observation: `testanyware-setup-dbf7834f` stopped at 21:35, and the
+  golden files did not change after 19:03. The guest macOS release and the guest
+  agent version of this golden stay unread, because reading them needs a boot.
+- 2026-11-24, observation: `testanyware-golden-macos-27-k21` dates from 22:54. No
+  repository under `AbstractingComputers` names it, and the plan does not name
+  it. This leaf does not use it.
+- 2026-11-24, Antony: rebuild `testanyware-golden-macos-27` with the released
+  TestAnyware 3.0.0. The owner runs the build in a Terminal.app window. The
+  19:03 golden is not final. Freeze nothing before the owner states that the new
+  image is stopped and final.
+- 2026-11-24, Antony: accept guest macOS 27.2.1 for this run. Amend the plan to
+  the release that the final image reports. If that release is not 27.2.1, hold
+  before the freeze. A result covers 27.2.1 only. It cannot show that the repair
+  removes the behaviour that 27.0.1 showed.
+- 2026-11-24, observation: the owner believes that 3.0.0 built the 19:03 golden.
+  The release commit `097ed8f7` dates from 15:23, before that golden. This session
+  attached `disk.img` as a read-only block device and mounted its volumes
+  read-only. The guest reports macOS 27.2.1 (26B131). Its
+  `/usr/local/bin/testanyware-agent` has SHA-256
+  `b111b2c80a6b1e422e53a5b2ba6e389c3c5dc0c3425db24c86efe4158c17579c`. The
+  released agent in the Homebrew 3.0.0 cellar has the same hash.
+- 2026-11-24, observation: the golden files kept their SHA-256 across that read.
+  `config.json` is `e5e314dd027571ffeaa87d50b083b14ad557a6f9b6271092b4a2b5a41a37ec5b`,
+  `nvram.bin` is `6c64366a6ace2cdff210643dcd74e9969955abe857d5c5e269ddcdcf7fe54078`
+  and `disk.img` is `f30cfdbdbe788aa36d7e78173773840c961ee018dc4c42bacf232b19fca6fffe`.
+  These hashes come before the freeze, so the freeze takes its own digests.
+- 2026-11-24, Antony: the 19:03 `testanyware-golden-macos-27` is stopped and
+  final. This decision withdraws the rebuild decision above. The agent hash match
+  removes the reason for the rebuild.
+- 2026-11-24, placement: the plan amendment waits for the final image. The plan
+  names a guest build, and only the rebuilt image can supply it. The plan section
+  is in a `pending` region, so its conversion lands first as its own change.
+- 2026-11-24: the plan names guest macOS 27.2.1 build 26B131 now. Two changes
+  hold that amendment, the conversion of the section and then the amendment.
+- 2026-11-24, blocker: no harness code records the per-clone provenance of the
+  P3-3 item. The adapter runs the bare name `testanyware`, and nothing reads or
+  binds the VM spec file. The record must exist before the first guest transport,
+  and a changed mapping must refuse the attempt. Both need code in the transport
+  path, so this leaf cannot meet them at the freeze alone.
+- 2026-11-24, placement: `settings-clone-provenance-k180` is a flat `impl` sibling
+  before this leaf. It shares this scope and context, and it needs its own
+  session and an earned review. The changed harness reopens the affected checks
+  before this leaf freezes anything.
+- Carried forward for the freeze: the golden digests above predate the freeze.
+  Read `ProductVersionExtra` and the Gatekeeper state of the image before the
+  readiness receipt declares them. Pin the Task binary at
+  `~/.local/share/mise/installs/task/3.54.0/task`, because `task` on `PATH` is a
+  mise shim. Set `KOINE_APP_BUNDLE` to the frozen bundle for each run, because the
+  scenario otherwise installs `.build/app/Koine.app`.
