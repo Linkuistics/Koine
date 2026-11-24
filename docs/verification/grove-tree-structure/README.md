@@ -21,6 +21,12 @@ Grove is created; future implementation is externalised after complete design.
 k23's independently scoped archived-link aids remain their existing separate
 session, in the original order.
 
+The `finish-k11` session removed the live tree on 2026-11-25. The final root,
+k12, k36 and k96 briefs and every task file stay in version control history.
+Read them from the parent of the `finish-k11` teardown commit. GitHub issue #15
+owns the next Settings evaluation. The k12 handle in the duty ledger is now a
+historical identity.
+
 ## Ownership of every original brief
 
 Each row transfers **all requirements, unresolved questions, Done-when clauses,
