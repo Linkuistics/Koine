@@ -1,0 +1,46 @@
+$ bash docs/verification/settings-activation/ordering-provenance-integration-evidence/mutations.sh
+== start-reply-ignored
+not ok 1 the clone provenance must match the one start reply, and a mismatch refuses it (k182)
+== start-agent-ignored
+not ok 1 the clone provenance must match the one start reply, and a mismatch refuses it (k182)
+== start-spec-path-ignored
+not ok 1 the clone provenance must match the one start reply, and a mismatch refuses it (k182)
+== second-start-accepted
+not ok 1 the clone provenance must match the one start reply, and a mismatch refuses it (k182)
+== record-without-start
+not ok 1 the clone provenance records the spec, its digest, the endpoint and the resolving paths once (k180)
+== provenance-before-start
+not ok 1 provenance refuses before a VM start and after a guest transport (k180)
+== unbound-guest-transport
+not ok 1 a guest transport after a VM start needs a provenance record, and VM lifecycle does not (k180)
+== second-provenance-replaces
+not ok 1 the clone provenance records the spec, its digest, the endpoint and the resolving paths once (k180)
+== after-executables-skipped
+not ok 1 a change during an attempt makes that attempt unavailable, before any clean result (k182)
+== after-spec-skipped
+not ok 1 a change during an attempt makes that attempt unavailable, before any clean result (k182)
+== after-reason-dropped
+not ok 1 a change during an attempt makes that attempt unavailable, before any clean result (k182)
+== record-fields-unchecked
+not ok 1 a provenance record without its endpoint, digest or start comparison cannot pass the audit (k182)
+== spec-digest-unchecked
+not ok 1 a provenance record without its endpoint, digest or start comparison cannot pass the audit (k182)
+== record-agent-unchecked
+not ok 1 a provenance record without its endpoint, digest or start comparison cannot pass the audit (k182)
+== record-environment-unchecked
+not ok 1 a provenance record without its endpoint, digest or start comparison cannot pass the audit (k182)
+== record-state-unchecked
+not ok 1 a provenance record without its endpoint, digest or start comparison cannot pass the audit (k182)
+== record-config-unchecked
+not ok 1 a provenance record without its endpoint, digest or start comparison cannot pass the audit (k182)
+== record-start-unchecked
+not ok 1 a provenance record without its endpoint, digest or start comparison cannot pass the audit (k182)
+== record-ordinal-unchecked
+not ok 1 a provenance record without its endpoint, digest or start comparison cannot pass the audit (k182)
+== start-attempt-unchecked
+not ok 1 a provenance record without its endpoint, digest or start comparison cannot pass the audit (k182)
+== start-reply-uncompared
+not ok 1 a provenance record without its endpoint, digest or start comparison cannot pass the audit (k182)
+
+
+status 0

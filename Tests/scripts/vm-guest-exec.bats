@@ -257,7 +257,7 @@ SH
 
 @test "nonexec start list and screen size retain explicit call payloads and generic upload refuses" {
     init_guest_evidence "${exec_root}" exact-vm
-    printf '%s\n' '{"schema_version":"1.0","ok":true,"id":"exact-vm"}' >"${exec_reply}"
+    start_reply exact-vm >"${exec_reply}"
     cli_guest_evidence "${exec_root}" one-shot start '.id == "exact-vm"' -- vm start --platform macos --wait >/dev/null
     jq -e '.argv == [env.KOINE_TESTANYWARE_CLI,"vm","start","--platform","macos","--wait","--id","exact-vm","--json"]' "${exec_root}/000001/request.json"
     printf '%s\n' '{"schema_version":"1.0","ok":true,"vms":[]}' >"${exec_reply}"
@@ -949,11 +949,19 @@ PY
     done
 }
 
-# start_clone ROOT VM: one clean VM start through the facade, as the scenario
-# sends it. The default exec reply comes back afterwards.
+# start_reply VM [PORT [SPEC]]: the start reply of the tagged CLI. Its agent
+# and spec path match declare_clone_spec VM PORT, unless SPEC names another path.
+start_reply() {
+    jq -cn --arg id "$1" --argjson port "${2:-8648}" \
+        --arg spec "${3:-${XDG_STATE_HOME}/testanyware/vms/$1.json}" \
+        '{schema_version: "1.0", ok: true, id: $id, agent: {host: "192.0.2.4", port: $port}, spec_path: $spec}'
+}
+
+# start_clone ROOT VM [PORT [SPEC]]: one clean VM start through the facade, as
+# the scenario sends it. The default exec reply comes back afterwards.
 start_clone() {
     cp "${exec_reply}" "${BATS_TEST_TMPDIR}/exec-reply"
-    printf '{"schema_version":"1.0","ok":true,"id":"%s"}\n' "$2" >"${exec_reply}"
+    start_reply "${@:2}" >"${exec_reply}"
     cli_guest_evidence "$1" one-shot vm-start true -- vm start --platform macos >/dev/null
     cp "${BATS_TEST_TMPDIR}/exec-reply" "${exec_reply}"
 }
@@ -1035,7 +1043,7 @@ SH
 @test "the clone provenance records the spec, its digest, the endpoint and the resolving paths once (k180)" {
     local spec="${XDG_STATE_HOME}/testanyware/vms/exact-vm.json"
     init_guest_evidence "${exec_root}" exact-vm
-    start_clone "${exec_root}" exact-vm
+    start_clone "${exec_root}" exact-vm 51234
     declare_clone_spec exact-vm 51234
     record_guest_provenance "${exec_root}" clone-provenance
     [[ "$(wc -l <"${exec_calls}" | tr -d ' ')" == 1 ]]
@@ -1050,7 +1058,8 @@ SH
         and .state_source == "XDG_STATE_HOME"
         and .config == {path: $config, state: "empty", sha256: $csha}
         and .environment.XDG_STATE_HOME == env.XDG_STATE_HOME
-        and .environment.TESTANYWARE_APP_SOCKET == null' "${exec_root}/provenance.json"
+        and .environment.TESTANYWARE_APP_SOCKET == null
+        and .start == {ordinal: 1, agent: .agent, spec_path: $spec}' "${exec_root}/provenance.json"
     # A second record refuses even before any guest transport.
     run record_guest_provenance "${exec_root}" clone-provenance-again
     [[ "${status}" == 125 ]]
@@ -1173,6 +1182,78 @@ SH
             record_guest_provenance "${exec_root}-${case}" clone-provenance
             jq -e --arg state "$([[ "${case}" == nested ]] && echo empty || echo "${case}")" \
                 '.config.state == $state' "${exec_root}-${case}/provenance.json"
+        )
+    done
+}
+
+@test "the clone provenance must match the one start reply, and a mismatch refuses it (k182)" {
+    local case ordinal
+    for case in other-port other-path no-agent second-start; do
+        (
+            init_guest_evidence "${exec_root}-${case}" exact-vm
+            ordinal=2
+            case "${case}" in
+            other-port) start_clone "${exec_root}-${case}" exact-vm 9999 ;;
+            other-path) start_clone "${exec_root}-${case}" exact-vm 8648 /elsewhere/vms/exact-vm.json ;;
+            no-agent)
+                cp "${exec_reply}" "${BATS_TEST_TMPDIR}/exec-reply"
+                start_reply exact-vm | jq -c 'del(.agent)' >"${exec_reply}"
+                cli_guest_evidence "${exec_root}-${case}" one-shot vm-start true -- vm start --platform macos >/dev/null
+                cp "${BATS_TEST_TMPDIR}/exec-reply" "${exec_reply}"
+                ;;
+            second-start)
+                start_clone "${exec_root}-${case}" exact-vm
+                start_clone "${exec_root}-${case}" exact-vm
+                ordinal=3
+                ;;
+            esac
+            declare_clone_spec exact-vm
+            run record_guest_provenance "${exec_root}-${case}" clone-provenance
+            [[ "${status}" == 125 && ! -e "${exec_root}-${case}/provenance.json" ]]
+            jq -e '.outcome == "unavailable" and .cli_status == null
+                and (.reason | test("start reply|VM starts precede"))' \
+                "${exec_root}-${case}/00000${ordinal}/result.json"
+            grep -q "^00000${ordinal}: " "${exec_root}-${case}/unavailable"
+        )
+    done
+}
+
+@test "a change during an attempt makes that attempt unavailable, before any clean result (k182)" {
+    local case ordinal
+    for case in spec cli jq; do
+        (
+            cp "${KOINE_JQ}" "${BATS_TEST_TMPDIR}/jq-${case}"
+            export KOINE_JQ="${BATS_TEST_TMPDIR}/jq-${case}"
+            # The CLI answers, then makes one change before jq reads its answer.
+            cat >"${BATS_TEST_TMPDIR}/cli-${case}" <<SH
+#!/bin/bash
+"${BATS_TEST_TMPDIR}/bin/testanyware" "\$@"
+status=\$?
+[[ " \$* " == *" --vm "* ]] || exit "\${status}"
+case "${case}" in
+spec) printf '{"agent":{"host":"192.0.2.4","port":8649}}\n' >"${XDG_STATE_HOME}/testanyware/vms/exact-vm.json" ;;
+cli) printf '# changed\n' >>"\$0" ;;
+jq) cp "${KOINE_JQ}" "${KOINE_JQ}.new" && mv "${KOINE_JQ}.new" "${KOINE_JQ}" ;;
+esac
+exit "\${status}"
+SH
+            chmod +x "${BATS_TEST_TMPDIR}/cli-${case}"
+            export KOINE_TESTANYWARE_CLI="${BATS_TEST_TMPDIR}/cli-${case}"
+            init_guest_evidence "${exec_root}-${case}" exact-vm
+            ordinal=1
+            if [[ "${case}" == spec ]]; then
+                start_clone "${exec_root}-${case}" exact-vm
+                declare_clone_spec exact-vm
+                record_guest_provenance "${exec_root}-${case}" clone-provenance
+                ordinal=3
+            fi
+            run exec_guest_evidence "${exec_root}-${case}" read-poll probe probe true
+            [[ "${status}" == 125 && "${output}" != *READY* ]]
+            jq -e '.outcome == "unavailable" and .cli_status == 0
+                and .emission_status == "not-attempted"
+                and (.reason | startswith("after the attempt, "))' \
+                "${exec_root}-${case}/00000${ordinal}/result.json"
+            grep -q "^00000${ordinal}: after the attempt, " "${exec_root}-${case}/unavailable"
         )
     done
 }

@@ -84,20 +84,24 @@ def start(args: list[str], mode: str) -> dict[str, object]:
     vm = args[args.index("--id") + 1]
     base = args[args.index("--base") + 1]
     set_running([*running(), vm])
-    # The tagged start writes the clone's spec once, where `--vm` resolves it.
-    if os.environ.get("XDG_STATE_HOME") and mode != "start-no-spec":
+    # The tagged start writes the clone's spec once, where `--vm` resolves it,
+    # and its reply names that spec path.
+    spec_path = f"/fixture/vms/{vm}.json"
+    if os.environ.get("XDG_STATE_HOME"):
         specs = Path(os.environ["XDG_STATE_HOME"], "testanyware", "vms")
-        specs.mkdir(parents=True, exist_ok=True)
+        spec_path = str(specs / f"{vm}.json")
+    if os.environ.get("XDG_STATE_HOME") and mode != "start-no-spec":
+        Path(spec_path).parent.mkdir(parents=True, exist_ok=True)
         agent = {"host": "192.0.2.4", "port": 8648}
         spec = {"vnc": {"host": "127.0.0.1", "port": 5901}, "agent": agent}
-        (specs / f"{vm}.json").write_text(json.dumps({**spec, "platform": "macos"}))
+        Path(spec_path).write_text(json.dumps({**spec, "platform": "macos"}))
     response: dict[str, object] = {
         "id": "other-vm" if mode == "start-id" else vm,
         "platform": "macos",
         "base": base + "-other" if mode == "start-base" else base,
         "vnc": {"host": "127.0.0.1", "port": 0 if mode == "start-port" else 5901},
         "agent": None if mode == "start-agent" else {"host": "192.0.2.4", "port": 8648},
-        "spec_path": f"/fixture/vms/{vm}.json",
+        "spec_path": spec_path,
         "meta_path": f"/fixture/vms/{vm}.meta.json",
     }
     if mode == "start-tpm":

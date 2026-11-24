@@ -119,6 +119,25 @@ REQUIRED_MEMBERS: dict[str, tuple[str, ...]] = {
 # The input trees of the declared executables. Each is one regular file.
 EXECUTABLE_INPUTS = {"testanyware": "KOINE_TESTANYWARE_CLI", "jq": "KOINE_JQ"}
 PROVENANCE = "provenance.json"
+# The record that vm-guest-exec.py writes once per clone. Each field is required.
+PROVENANCE_FIELDS = {
+    "vm",
+    "spec",
+    "agent",
+    "state_dir",
+    "state_source",
+    "config",
+    "environment",
+    "start",
+    "ordinal",
+}
+SPEC_FIELDS = {"path", "bytes", "sha256", "device", "inode"}
+RESOLUTION_VARIABLES = {
+    "HOME",
+    "XDG_STATE_HOME",
+    "TESTANYWARE_CONFIG",
+    "TESTANYWARE_APP_SOCKET",
+}
 ITEM_FIELDS = {
     "file": {"path", "kind", "bytes", "sha256"},
     "symlink": {"path", "kind", "target"},
@@ -1459,12 +1478,86 @@ def audit_installed(root: Path, frozen: Json, guest: dict[str, GuestRead]) -> Js
     }
 
 
+def endpoint(value: object) -> bool:
+    """A host and port, as the tagged spec and start reply state an agent."""
+    if not (isinstance(value, dict) and set(cast(Json, value)) == {"host", "port"}):
+        return False
+    host, port = cast(Json, value)["host"], cast(Json, value)["port"]
+    return (
+        isinstance(host, str) and bool(host) and type(port) is int and 0 < port < 65536
+    )
+
+
+def provenance_record_problems(record: Json) -> list[str]:
+    """The fields of a provenance record that do not have their required form."""
+
+    def count(value: object) -> bool:
+        return type(value) is int and value >= 0
+
+    def digest(value: object) -> bool:
+        return isinstance(value, str) and SHA256.fullmatch(value) is not None
+
+    def text(value: object) -> bool:
+        return isinstance(value, str) and bool(value)
+
+    def fields(name: str, wanted: set[str]) -> Json:
+        value = record.get(name)
+        if isinstance(value, dict) and set(cast(Json, value)) == wanted:
+            return cast(Json, value)
+        return {}
+
+    problems = [] if set(record) == PROVENANCE_FIELDS else ["fields"]
+    spec = fields("spec", SPEC_FIELDS)
+    if not (
+        text(spec.get("path"))
+        and digest(spec.get("sha256"))
+        and all(count(spec.get(key)) for key in ("bytes", "device", "inode"))
+    ):
+        problems.append("spec")
+    if not endpoint(record.get("agent")):
+        problems.append("agent")
+    environment = fields("environment", RESOLUTION_VARIABLES)
+    if not environment or not all(
+        value is None or isinstance(value, str) for value in environment.values()
+    ):
+        problems.append("environment")
+    source = record.get("state_source")
+    if not (
+        text(record.get("state_dir"))
+        and (source, bool(environment.get("XDG_STATE_HOME")))
+        in {("XDG_STATE_HOME", True), ("default", False)}
+    ):
+        problems.append("state")
+    config = fields("config", {"path", "state", "sha256"})
+    if (
+        config.get("state"),
+        text(config.get("path")),
+        digest(config.get("sha256")),
+    ) not in {
+        ("disabled", False, False),
+        ("absent", True, False),
+        ("empty", True, True),
+    } or (config.get("state") == "disabled" and config.get("path") is not None):
+        problems.append("config")
+    start = fields("start", {"ordinal", "agent", "spec_path"})
+    if not (
+        count(start.get("ordinal"))
+        and start.get("agent") == record.get("agent")
+        and start.get("spec_path") == spec.get("path")
+    ):
+        problems.append("start")
+    if not count(record.get("ordinal")) or not text(record.get("vm")):
+        problems.append("ordinal or vm")
+    return problems
+
+
 def provenance_check(root: Path, frozen: Json, clone: str, absent: str) -> Json:
     """The executables and the clone's spec record of the root, against the freeze.
 
     Each attempt must name the frozen executables. One clean provenance record
-    must follow a VM start and precede every guest transport. Its spec, state
-    and configuration paths must be the frozen ones.
+    must follow a VM start and precede every guest transport. It must hold every
+    required field. Its spec, state and configuration paths must be the frozen
+    ones, and its agent and spec path must be those of the clean start reply.
     """
     trees = {
         cast(str, tree["name"]): tree for tree in cast(list[Json], frozen["inputs"])
@@ -1524,6 +1617,19 @@ def provenance_check(root: Path, frozen: Json, clone: str, absent: str) -> Json:
         record = read_object(root / PROVENANCE)
     except (OSError, ValueError) as error:
         return check("unavailable", f"the provenance record is unreadable: {error}")
+    problems = provenance_record_problems(record)
+    begun = -1 if problems else cast(int, cast(Json, record["start"])["ordinal"])
+    if not problems and (begun not in starts or outcomes[begun] != "clean"):
+        problems.append("start ordinal")
+    if problems:
+        return check(
+            "unavailable",
+            f"the provenance record is invalid: {', '.join(problems)}",
+        )
+    try:
+        reply = read_object(root / f"{begun:06d}" / "raw.stdout")
+    except (OSError, ValueError) as error:
+        return check("unavailable", f"the start reply is unreadable: {error}")
     state = paths["state_dir"]
     expected = {
         "ordinal": ordinal,
@@ -1543,6 +1649,11 @@ def provenance_check(root: Path, frozen: Json, clone: str, absent: str) -> Json:
         "spec path": cast(Json, spec).get("path") if isinstance(spec, dict) else None,
     }
     different = [key for key in expected if expected[key] != observed[key]]
+    if (reply.get("agent"), reply.get("spec_path")) != (
+        record["agent"],
+        cast(Json, spec)["path"],
+    ):
+        different.append("start reply")
     if min(starts) > ordinal or any(guest < ordinal for guest in guests):
         different.append("order")
     return check(

@@ -856,3 +856,67 @@ PY_CONTROL
     mv "${root}/swap" "${root}/000003"
     run_check | jq -e '.result == "failed" and (.detail | endswith("differs: ordinal, order"))'
 }
+
+@test "a provenance record without its endpoint, digest or start comparison cannot pass the audit (k182)" {
+    local root="${BATS_TEST_TMPDIR}/record" case filter
+    (
+        # shellcheck source=scripts/vm-lifecycle-evidence-lib.sh
+        source "${repo_root}/scripts/vm-lifecycle-evidence-lib.sh"
+        init_guest_evidence "${root}" koine-k49-ordering-e01
+        start_guest_vm "${root}" vm-start testanyware-golden-macos-27 >/dev/null
+        record_guest_provenance "${root}" clone-provenance
+        cli_guest_evidence "${root}" one-shot key true -- input key return >/dev/null
+    )
+    run_check() {
+        python3 -I - "${tool}" "$1" "${focused_receipt}" <<'PY_CONTROL'
+import importlib.util, json, sys
+spec = importlib.util.spec_from_file_location("sequence", sys.argv[1])
+module = importlib.util.module_from_spec(spec)
+sys.modules["sequence"] = module
+spec.loader.exec_module(module)
+frozen = json.load(open(sys.argv[3]))
+print(json.dumps(module.provenance_check(module.Path(sys.argv[2]), frozen, "koine-k49-ordering-e01", "not-run")))
+PY_CONTROL
+    }
+    [[ "$(run_check "${root}" | jq -r .result)" == passed ]]
+    # five-fields is the review's record: no endpoint and no digest. Each other
+    # case breaks one required form, so a mutation of its guard fails it.
+    for case in five-fields no-agent no-start extra-field short-digest text-port \
+        numeric-home wrong-source disabled-with-path start-disagrees start-elsewhere \
+        text-ordinal; do
+        case "${case}" in
+        five-fields) filter='{ordinal, vm, state_dir, config: {path: .config.path}, spec: {path: .spec.path}}' ;;
+        no-agent) filter='del(.agent)' ;;
+        no-start) filter='del(.start)' ;;
+        extra-field) filter='.extra = true' ;;
+        short-digest) filter='.spec.sha256 = "abc"' ;;
+        text-port) filter='.agent.port |= tostring | .start.agent = .agent' ;;
+        numeric-home) filter='.environment.HOME = 7' ;;
+        wrong-source) filter='.state_source = "default"' ;;
+        disabled-with-path) filter='.config.state = "disabled"' ;;
+        start-disagrees) filter='.start.spec_path = "/elsewhere/x.json"' ;;
+        start-elsewhere) filter='.start.ordinal = 3' ;;
+        text-ordinal) filter='.ordinal |= tostring' ;;
+        esac
+        rm -rf "${root}-${case}"
+        cp -R "${root}" "${root}-${case}"
+        jq "${filter}" "${root}/provenance.json" >"${root}-${case}/provenance.json"
+        run_check "${root}-${case}" | jq -e --arg case "${case}" \
+            '.result == "unavailable" and (.detail | startswith("the provenance record is invalid"))' ||
+            {
+                echo "case ${case} passed the audit" >&2
+                false
+            }
+    done
+    # A complete record that agrees with itself, but not with the start reply.
+    for case in other-port other-path; do
+        case "${case}" in
+        other-port) filter='.agent.port = 9999 | .start.agent = .agent' ;;
+        other-path) filter='.spec.path = "/elsewhere/x.json" | .start.spec_path = .spec.path' ;;
+        esac
+        rm -rf "${root}-${case}"
+        cp -R "${root}" "${root}-${case}"
+        jq "${filter}" "${root}/provenance.json" >"${root}-${case}/provenance.json"
+        run_check "${root}-${case}" | jq -e '.result == "failed" and (.detail | contains("start reply"))'
+    done
+}

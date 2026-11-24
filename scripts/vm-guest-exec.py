@@ -296,6 +296,23 @@ def provenance_problem(root: Path, vm: str) -> str:
     return ""
 
 
+def start_problem(attempt: Path, mapping: dict[str, object]) -> str:
+    """Name how the clean start reply differs from the spec that it wrote."""
+    # The tagged CLI copies the app's StartResult into `agent` and `spec_path`,
+    # and the lifecycle predicate requires both in a clean start reply.
+    # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/commands/vm.rs
+    reply = read_object(attempt / "raw.stdout")
+    spec = cast(dict[str, object], mapping["spec"])
+    differences = [
+        name
+        for name, value in (("agent", mapping["agent"]), ("spec_path", spec["path"]))
+        if reply.get(name) != value
+    ]
+    if differences:
+        return f"the clone spec mapping differs from the start reply: {differences}"
+    return ""
+
+
 def guest_transport(argv: list[str]) -> bool:
     """An attempt reaches the guest when its pinned options name the VM."""
     options = argv[: argv.index("--")] if "--" in argv else argv
@@ -583,14 +600,15 @@ def run_locked(
     prior = sorted(
         path for path in root.iterdir() if re.fullmatch(r"[0-9]{6}", path.name)
     )
-    vm_started = guest_seen = False
+    starts: list[Path] = []
+    guest_seen = False
     for path in prior:
         try:
             request = read_object(path / "request.json")
             argv = request.get("argv")
             if isinstance(argv, list):
                 words = [str(word) for word in cast(list[object], argv)]
-                vm_started |= words[1:3] == ["vm", "start"]
+                starts += [path] if words[1:3] == ["vm", "start"] else []
                 guest_seen |= guest_transport(words)
         except (OSError, ValueError, UnicodeError):
             pass  # The result check below latches an unfinished attempt.
@@ -697,10 +715,11 @@ def run_locked(
     # Host file reads only. A failure refuses this attempt before any dispatch.
     if argv:
         pre_dispatch = executable_problem(executables) or pre_dispatch
+    bound = guest_transport(argv) and (root / PROVENANCE).exists()
     if guest_transport(argv) and not pre_dispatch:
-        if (root / PROVENANCE).exists():
+        if bound:
             pre_dispatch = provenance_problem(root, vm)
-        elif vm_started:
+        elif starts:
             pre_dispatch = "no clone provenance precedes this guest transport"
     started = time.monotonic_ns()
     write_json(
@@ -757,13 +776,27 @@ def run_locked(
         elif transport == "confirmation":
             latch(root, f"{attempt.name}: {reason}")
         elif transport == "provenance":
-            if not vm_started:
+            if not starts:
                 reason = "no VM start precedes the clone provenance"
+            elif len(starts) > 1:
+                reason = f"{len(starts)} VM starts precede the clone provenance"
             elif guest_seen:
                 reason = "a guest transport precedes the clone provenance"
             else:
-                # Exclusive: a second record, or a left partial, refuses.
-                write_json(root / PROVENANCE, {**spec_mapping(vm), "ordinal": ordinal})
+                # The latch check above admits only a clean start here.
+                mapping = spec_mapping(vm)
+                reason = start_problem(starts[0], mapping)
+                start = {
+                    "ordinal": int(starts[0].name),
+                    "agent": mapping["agent"],
+                    "spec_path": cast(dict[str, object], mapping["spec"])["path"],
+                }
+                if not reason:
+                    # Exclusive: a second record, or a left partial, refuses.
+                    write_json(
+                        root / PROVENANCE,
+                        {**mapping, "start": start, "ordinal": ordinal},
+                    )
         else:
             with (
                 (attempt / "raw.stdout").open("xb") as output,
@@ -835,6 +868,20 @@ def run_locked(
     except KeyboardInterrupt:
         reason = "interrupted transport; completion unavailable"
         interrupted = True
+    if not reason and argv:
+        # The same host file reads after the attempt, before a clean result. A
+        # persistent change during the attempt then refuses this attempt. A
+        # change undone within the attempt stays invisible, and the app reads
+        # the spec itself, so neither check binds the endpoint at its use.
+        # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-app/src/streams.rs
+        try:
+            after = executable_problem(executables)
+            if bound and not after:
+                after = provenance_problem(root, vm)
+            reason = f"after the attempt, {after}" if after else ""
+        except KeyboardInterrupt:
+            reason = "interrupted transport; completion unavailable"
+            interrupted = True
     if not reason and transport not in {"poll-step", "provenance"}:
         try:
             if transport == "read":

@@ -202,8 +202,30 @@ Read `docs/verification/settings-activation/ORDERING-PROVENANCE-RESULTS.md`.
   for the run. The run passes the two executables to the scenario itself.
 - A configuration file with any setting refuses every provenance. If the file
   changes, recheck it before the freeze.
-- The adapter checks the executables and the spec before each dispatch. A
-  change between a check and its dispatch is refused only at the next attempt.
+- The adapter checks the executables and the spec before each dispatch and
+  again after each attempt. A change that is undone within one attempt is not
+  refused. A refusal after an attempt cannot recall input that it sent.
+- The provenance step compares the spec with the clean start reply. The caller
+  requires a complete record that matches that reply. Read the k182 section of
+  the results record.
+
+## K182 provenance owner hold
+
+Before the freeze, ask the owner to decide how strict the endpoint binding must
+be. k180 requires that each attempt binds to the recorded endpoint. It says to
+ask the owner if the tagged resolver makes that impossible. The tagged app reads
+the spec itself, and the CLI runs by its pathname. Thus no host check binds the
+endpoint or the image at the moment of use. Offer these options:
+
+- Accept the check before dispatch and after each attempt as the binding for
+  this run. The recommendation is this option. Each persistent change refuses
+  its attempt, and the caller audits the executables after each slot.
+- Ask for a design that binds the endpoint at use, such as an upstream
+  TestAnyware interface. That design needs its own leaves and review before the
+  freeze.
+
+Do not freeze a subject or request a clone without this decision. Record the
+decision in this log. The contract wording stays strict until the owner decides.
 
 ## Decisions (running log)
 
@@ -282,6 +304,9 @@ Read `docs/verification/settings-activation/ORDERING-PROVENANCE-RESULTS.md`.
   before this leaf. It shares this scope and context, and it needs its own
   session and an earned review. The changed harness reopens the affected checks
   before this leaf freezes anything.
+- 2026-11-24, from k182: the strict binding of the P3-3 item needs an owner
+  decision before the freeze. The K182 section above holds the options and the
+  recommendation. The decision is open.
 - Carried forward for the freeze: the golden digests above predate the freeze.
   Read `ProductVersionExtra` and the Gatekeeper state of the image before the
   readiness receipt declares them. Pin the Task binary at
