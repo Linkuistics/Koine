@@ -22,23 +22,27 @@ captures. The [accepted convention](#scope-after-no-candidate) rejects the repai
 on a qualified recurrence, prevents acceptance without required evidence and
 requires every ordinary assertion to pass. A passing finite bound supports only that sample.
 
-<!-- tc: pending because the conversion has not reached this part of the document -->
-
 The [correction assessment](#correction-assessment) still finds no qualifying
-API-use correction in the inspected path; that bounded finding survives
+API-use correction in the inspected path. That bounded finding survives
 [review and integration](../verification/settings-activation/CORRECTION-REVIEW.md).
-Those reports retain the proposal as presented before this approval. The empirical
-hypothesis now has a [concrete design](#single-request-ordering-design): prepare
-the same retained window, request activation once, then request key/front
-ordering. The [distinct protocol](../verification/settings-activation/ORDERING-EVALUATION-PLAN.md)
-fixes two focused guests and a separate three-guest complete ordinary set, with
-one unchanged signed candidate and diagnostics disabled in both. These are
-conventions, not statistical bounds. No signed evaluation subject has been built or run.
+Those reports keep the proposal in its form before this approval. The empirical
+hypothesis now has a [concrete design](#single-request-ordering-design). Prepare
+the same retained window, request activation once, and then request key and
+front ordering.
+
+The [distinct protocol](../verification/settings-activation/ORDERING-EVALUATION-PLAN.md)
+sets two focused guests and a separate set of three complete ordinary guests.
+One unchanged signed candidate serves both sets, with diagnostics disabled. These
+numbers are conventions, not statistical bounds. No signed evaluation subject
+has been built or run.
+
 The [independent review and integration](../verification/settings-activation/ORDERING-REVIEW.md)
 are complete. The [application implementation](../verification/settings-activation/ORDERING-APPLICATION-RESULTS.md)
-now supplies the reviewed call order and passes compilation and existing headless
-controls. K36 retains the shared scenario/helper and finite-caller repairs before
-runtime freeze. Repair acceptance remains unresolved.
+supplies the reviewed call order. It passes compilation and the existing headless
+controls. K36 keeps the repairs of the shared scenario, its helpers and the finite
+caller before the runtime freeze. Repair acceptance stays unresolved.
+
+<!-- tc: pending because the conversion has not reached this part of the document -->
 
 This amends a prerequisite; it does not satisfy it. Native cause and ownership
 remain unresolved. The retained evidence still does **not** support the finite,
