@@ -439,58 +439,66 @@ justification, not this finding. This is a bounded finding that survives review.
 It is not proof that every possible correction is absent or that the operating
 system owns the failure.
 
-<!-- tc: pending because the conversion has not reached this part of the document -->
-
 ### Scope after no candidate
 
-**Accepted on 2026-10-29, answering "approve":** permit design of one empirical
-activation-before-window-ordering evaluation without requiring a documented
-API-use violation. Antony approved the recommended design scope and finite
+**Accepted on 2026-10-29, answering "approve":** permit the design of one
+empirical activation-before-window-ordering evaluation without a documented
+API-use violation. Antony approved the recommended design scope and the finite
 acceptance convention after the reviewed no-candidate finding. This changes only
-the candidate-justification standard for that named hypothesis. One activation
-request, one front/focused window, the other excluded classes, independent design
-review, evidence integrity and separate complete ordinary acceptance remain
-required. It does not establish that the earlier API-use test was satisfied.
+the candidate-justification standard for that named hypothesis. It does not
+establish that the earlier API-use test was satisfied.
 
-The reason for recommending this option is its small single-request behavioral
-change.
-Historical feasibility is instrumented and symmetric: reversed B02/B03 and
-original A04 succeeded with synchronous file tracing, and reversing the calls
-also moved the trace writes. The [closed comparison](../verification/settings-activation/ORDER-RESULTS.md)
-contains no instrument-free comparison and does not establish lower failure
-risk from reversal. Feasibility does not predict that the intermittent failure disappears.
+These items stay required: one activation request, one front and focused window
+and the other excluded classes. Independent design review, evidence integrity and
+a separate complete ordinary acceptance stay required too.
 
-The finite acceptance standard is an explicitly agreed convention, not a
-rejection rule derived from a supported failure-rate bound or trial model;
-neither is available. The accepted rule rejects reversal as the repair if one
-qualified Settings selection in its declared evaluation or separate ordinary
-acceptance fails to return one front/focused window. Failed transport or missing
-required observations prevent acceptance and leave the result unresolved; they
-are not automatically product failures. Every other required ordinary assertion
-must also pass. Completing the fixed bound with all required evidence and
-assertions passing supports only success for that declared sample, not
-elimination of intermittent failure, a mechanism or general reliability.
+The reason for the recommendation of this option is its small single-request
+behavioural change. The historical feasibility is instrumented and symmetric.
+Reversed B02 and B03 and original A04 succeeded with synchronous file tracing,
+and the reversal of the calls also moved the trace writes. The
+[closed comparison](../verification/settings-activation/ORDER-RESULTS.md)
+contains no instrument-free comparison. It does not establish lower failure risk
+from the reversal.
 
-The concrete design must fix numerical bounds, qualification criteria and stop/
-failure/unavailable-evidence rules before runtime, and receive independent review
-with every earned integration completed before implementation or execution.
-The old ABBA cap stays closed. The scope answer itself fixed no numerical cap,
-final subject or guest. The concrete design above now fixes two focused and three
-ordinary slots; its independent review and integration are now complete.
-Implementation verification and actual readiness still precede runtime.
-No signed subject or runtime result exists for that design.
+Feasibility does not predict that the intermittent failure disappears.
+
+The finite acceptance standard is an explicitly agreed convention. It is not a
+rejection rule derived from a supported failure-rate bound or trial model, and
+neither is available. The accepted rule rejects the reversal as the repair in one
+case. One qualified Settings selection in its declared evaluation or separate
+ordinary acceptance fails to return one front and focused window.
+
+Failed transport or missing required observations prevent acceptance and leave
+the result unresolved. They are not automatically product failures. Every other
+required ordinary assertion must also pass. A completed bound with all required
+evidence and assertions passing supports only success for that declared sample.
+It does not support the elimination of intermittent failure, a mechanism or
+general reliability.
+
+The concrete design must set numerical bounds, qualification criteria and the
+rules for stop, failure and unavailable evidence before runtime. It must receive
+independent review, with every earned integration complete before implementation
+or execution. The old ABBA cap stays closed. The scope answer itself set no
+numerical cap, final subject or guest.
+
+The concrete design above now sets two focused and three ordinary slots. Its
+independent review and integration are now complete. Implementation verification
+and actual readiness still precede runtime. No signed subject or runtime result
+exists for that design.
 
 | Choice after the reviewed assessment | Effect and cost |
 |---|---|
-| Permit the named empirical design — accepted | Allows design of activation-before-window ordering under the changed justification standard, preserving one request and all other exclusions. Its historical feasibility is instrumented and shared by the original order. A finite acceptance bound is an agreed convention: a qualified recurrence rejects the repair, unavailable required evidence prevents acceptance, and all required ordinary assertions must pass. A passing sample proves no API violation, mechanism, ownership or general reliability. No implementation or runtime follows from the scope answer alone. |
-| Retain the API-use test without an exception — not selected | Would keep repair held until new evidence supplied a qualifying mismatch and correction. Further unchanged sampling or richer monitoring would not fill that gap. The test still applies to other candidates. |
-| End the investigation unresolved — not selected | Repair remains live. The observed failure and reproducer remain; no repair work is abandoned or marked satisfied. |
+| Permit the named empirical design — accepted | It allows the design of activation-before-window ordering under the changed justification standard. It keeps one request and all other exclusions. Its historical feasibility is instrumented, and the original order shares it. A finite acceptance bound is an agreed convention. A qualified recurrence rejects the repair, unavailable required evidence prevents acceptance and all required ordinary assertions must pass. A passing sample proves no API violation, mechanism, ownership or general reliability. No implementation or runtime follows from the scope answer alone. |
+| Retain the API-use test without an exception — not selected | It would hold the repair until new evidence supplied a qualifying mismatch and correction. Further unchanged samples or richer monitoring would not fill that gap. The test still applies to other candidates. |
+| End the investigation unresolved — not selected | The repair stays live. The observed failure and the reproducer stay. No repair work is abandoned or marked satisfied. |
 
 The answer is Antony's explicit approval, not an inference from review or elapsed
-time. Native cause and ownership remain unresolved. The six held causal slots
-remain unchanged and unstarted; unused positions provide no evaluation budget.
-No historical result or strict false join changes, and no causal or product
-ancestor closes from agreement alone.
+time. Native cause and ownership stay unresolved. The six held causal slots stay
+unchanged and unstarted, and unused positions provide no evaluation budget. No
+historical result or strict false join changes. No causal or product ancestor
+closes from agreement alone.
+
+<!-- tc: pending because the conversion has not reached this part of the document -->
 
 ## Protocol change comparison and qualification boundaries
 
