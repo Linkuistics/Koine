@@ -1,0 +1,110 @@
+task: [build] swift build
+Building for debugging...
+[Computing dependencies]
+[Constructing description]
+[Pre-planning 1 / 1421]
+[Planning deferred tasks]
+[268 / 567]
+[291 / 578] CNIOWindows
+[323 / 621]
+[347 / 660]
+[366 / 693]
+[385 / 693] InternalCollectionsUtilities
+[413 / 724] InternalCollectionsUtilities
+[432 / 765] ContainersPreview
+[459 / 780] DesktopProviderLogic
+[477 / 797]
+[492 / 834] ContainersPreview
+[505 / 845] _NIODataStructures
+[519 / 845] _NIODataStructures
+[540 / 845] Atomics
+[555 / 845]
+[566 / 845] ContainersPreview
+[582 / 845] OrderedCollections
+[605 / 848] OrderedCollections
+[612 / 865] DequeModule
+[620 / 865] DequeModule
+[628 / 865] OrderedCollections-product
+[629 / 899]
+[642 / 899] GRDB
+[644 / 899] GraphQL
+[658 / 899] KoineAppDiagnostics
+[672 / 899] DequeModule
+[686 / 899] Crypto
+[688 / 899] Crypto
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/WorkspaceTestSupport/WalkTree.swift:23:16: [1;33mwarning: [1;39m'init(cString:)' is deprecated: Use String(decoding: array, as: UTF8.self) instead, after truncating the null termination.[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration\DeprecatedDeclaration]8;;\]
+ [0;36m21 |[0;0m         var template = Array((base + "/koine-k174-XXXXXX").utf8CString)
+ [0;36m22 |[0;0m         guard mkdtemp(&template) != nil else { throw WalkTreeError.call("mkdtemp", errno) }
+ [0;36m23 |[0;0m         root = String(cString: template)
+    [0;36m|[0;0m                `- [1;33mwarning: [1;39m'init(cString:)' is deprecated: Use String(decoding: array, as: UTF8.self) instead, after truncating the null termination.[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration\DeprecatedDeclaration]8;;\]
+ [0;36m24 |[0;0m     }
+ [0;36m25 |[0;0m 
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[710 / 899] KoineProviderLoader
+[720 / 899] KoineAppDiagnostics
+[723 / 899] GraphQL-product
+[733 / 899] KoineAppDiagnostics
+[735 / 899] GRDB
+[740 / 899] GRDB
+[745 / 899] GRDB
+[754 / 899] GRDB
+[758 / 899] GRDB-product
+[764 / 899] KoineCore
+[771 / 901] WorkspaceTestSupport
+[779 / 901] GRDB
+[795 / 936] KoineCore
+[801 / 936] NIOCore
+[815 / 936] NIOCore
+[819 / 936] NIOCore
+[824 / 936] KoineSQLiteStore
+[826 / 938] NIOCore
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Sources/KoineCore/Engine.swift:387:13: [1;33mwarning: [1;39minitialization of immutable value 'operations' was never used; consider replacing with assignment to '_' or removing it[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/no-usage\NoUsage]8;;\]
+[0;36m385 |[0;0m     /// The root fields of the selected operation when it is a mutation.
+[0;36m386 |[0;0m     private func rootMutationActions(in document: Document, request: EngineRequest) -> [Field] {
+[0;36m387 |[0;0m         let operations = document.definitions.compactMap { $0 as? OperationDefinition }
+    [0;36m|[0;0m             `- [1;33mwarning: [1;39minitialization of immutable value 'operations' was never used; consider replacing with assignment to '_' or removing it[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/no-usage\NoUsage]8;;\]
+[0;36m388 |[0;0m         guard let operation = selectedOperation(in: document, request: request),
+[0;36m389 |[0;0m             operation.operation == .mutation
+
+[#NoUsage]: <https://docs.swift.org/compiler/documentation/diagnostics/no-usage>
+[830 / 940] NIOCore
+[842 / 945] KoineConformanceCheck
+[853 / 946] KoineSQLiteStore
+[855 / 946] KoineConformance-product
+[857 / 948] KoineConformance-product
+[860 / 948] KoineConformance-product
+[862 / 948] NIOCore
+[872 / 950] NIOEmbedded
+[876 / 954] NIOPosix
+[903 / 976] NIOPosix
+[905 / 976] NIOEmbedded
+[906 / 976] NIOPosix
+[913 / 977] NIOPosix
+[915 / 979] NIO
+[923 / 980] NIOHTTP1
+[940 / 998] NIOHTTP1
+[941 / 998] NIOHTTP1
+[948 / 999] NIOHTTP1
+[958 / 1002] KoineHTTP
+[959 / 1002] KoineServer
+[974 / 1007] KoineCompatibilityHost-product
+[976 / 1009] KoineServer
+[977 / 1009] NIOPosix
+[983 / 1009] KoineServer
+[987 / 1012] KoineSelectionHost-product
+[991 / 1016] KoineManagementClient
+[1002 / 1017] KoineSelectionHost-product
+[1006 / 1017] KoineManagementClient
+[1012 / 1017] KoineApp-product
+[1033 / 1063]
+[1035 / 1063]
+[1040 / 1063]
+[1041 / 1063]
+[1058 / 1063] KoineApp-product
+[1059 / 1063] KoineApp-product
+[1061 / 1063] KoineApp-product
+Build complete! (16.10 sec.)
+task: [build] scripts/stage-provider-framework.sh debug
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Products/Debug/PackageFrameworks/KoineProviderAPI.framework
+exit 0

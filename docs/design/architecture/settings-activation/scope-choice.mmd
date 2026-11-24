@@ -2,13 +2,13 @@ flowchart TD
     S["Start here: Antony approved empirical ordering design"]:::start
     S --> A["Design activation before window ordering; one activation request"]
     A --> J["Named exception to the API-use test; no violation established"]
-    A --> A1["Establish preconditions; exclude repetition, retries, deferral and yield; only separately approved ownership waits"]
-    A1 --> A2["Design review integrated; implementation and verification precede freeze"]
+    A --> A1["Establish preconditions. Exclude repetition, retries, deferral, yield and added waits"]
+    A1 --> A2["Design review integrated. Implementation and verification preceded the k54 freeze"]
     A2 --> T["Proposed: two focused plus three complete ordinary guests; one unchanged candidate"]
     T --> F["Qualified recurrence rejects repair; missing required evidence prevents acceptance"]
     F --> P["Every ordinary assertion must pass; success covers only that sample"]
     S --> C["Native cause and ownership remain unresolved"]
     C --> H["All six existing experiment slots remain unstarted"]:::hold
-    P --> N["Application compiles; no signed evaluation subject or guest; acceptance remains open"]:::hold
+    P --> N["K54 froze one signed subject. E01 stopped at a setup read. Repair unresolved, issue #15 brings it back"]:::hold
     classDef start fill:#19354b,color:#fff,font-weight:bold,stroke:#19354b
     classDef hold fill:#fff1d2,color:#322600,stroke:#866216

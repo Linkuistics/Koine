@@ -52,3 +52,37 @@ stay off unless a defaults key or an environment variable enables them. Issue
 The change returns released code, so it earns no review leaf. No guest runs in
 this leaf. The duty ledger keeps its 37 rows, with k12 as their owner. The
 release check keeps the strict front read until issue #15 changes it.
+
+## Decisions (running log)
+
+- 2026-11-25: This session adopted the mandated leaf on the empty jj change
+  `wxuznmyo`, with parent `9161aa01`. It read the glossary, the brief chain, the
+  keepalive ADR and the k183 decision log.
+- 2026-11-25: The index and two Settings records landed as preparatory
+  conversions. The menu-bar record carries the same stale claim, so its opening
+  section converted too, and a pending marker holds the rest.
+- 2026-11-25: `showSettingsWindow` holds the released order again. The file
+  differs from the parent of `561dbf6c` only by a new comment, which names the
+  released order, issue #15 and the spec. The doc comment is the released text.
+- 2026-11-25: `mise exec -- task build` exits 0, and
+  `mise exec -- task check:settings-activation-interval` exits 0 with nine tests.
+  The outputs and the input digests before and after are under
+  `ordering-application-evidence/returned-*`. The digests match.
+- 2026-11-25: The spec, the application record, the index, the menu-bar record
+  and the visual discussion state the returned order and the current status. The
+  spec section "Scope after no candidate" also said that no signed subject
+  exists, so it converted as its own change and now names the k54 freeze.
+- 2026-11-25: The index sentence about unadopted window helpers was stale,
+  because k76 adopted them. The scope diagram dropped its stale ownership-wait
+  label, as the keepalive ADR decides.
+- 2026-11-25: `mise exec -- task design:serve` served the presentation. The
+  changed diagrams render as SVG without a parse error in the local discussion
+  and in the parent outline. Node N shows the new status.
+- 2026-11-25: `task check:docs` exits 201 with only the two archived targets
+  that k23 owns. `task check:settings-duty-ledger` reports 37 owned rows and 0
+  findings.
+- 2026-11-25, k12 close: this leaf is the last live leaf of k12. The brief
+  allows the close, because Antony closed the repair as unresolved and issue #15
+  holds the next decision. Each native uncertainty stays explicitly unresolved.
+  The root brief now holds the Settings outcome. No live review names k12, and
+  no ADR or glossary change is due.

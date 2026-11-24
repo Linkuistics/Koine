@@ -1,10 +1,48 @@
 # Settings ordering: application implementation
 
-The shared Settings show operation now prepares its retained window and requested
-section. It then requests activation once, and then key and front window placement.
-This implements the [reviewed design](ORDERING-REVIEW.md) in
-[AppDelegate](../../../Sources/KoineApp/AppDelegate.swift). Compilation and nine
-existing headless controls pass. Native repair acceptance stays unresolved.
+On 2026-10-29, k52 changed the shared Settings show operation. The operation
+prepared its retained window and requested section. It then requested activation
+once, and then key and front window placement. This implemented the
+[reviewed design](ORDERING-REVIEW.md) in [AppDelegate](../../../Sources/KoineApp/AppDelegate.swift).
+Compilation and nine existing headless controls passed. Native repair acceptance
+stays unresolved.
+
+On 2026-11-25, `settings-released-call-order-k184` returned the operation to the
+order that 0.4.0 released. The [return section](#return-to-the-released-order)
+below holds that change and its checks. The sections after it record the k52
+candidate as it was implemented.
+
+## Return to the released order
+
+`showSettingsWindow` now makes one key and front request, and then one activation
+request. Each trace record stays beside its call. The source file differs from
+the parent of the k52 commit `561dbf6c` only by a new comment. That comment names
+the released order and points to [issue #15](https://github.com/Linkuistics/Koine/issues/15)
+and to the [spec](../../specs/settings-activation-discrimination.md#current-decision).
+The doc comment of the operation is the released text again.
+
+Antony closed the repair as unresolved after the E01 setup stop. The decision
+task `settings-ordering-next-decision-k183` then chose the released order. The
+spec requires complete ordinary acceptance for the candidate, and the candidate
+has none. The candidate stays in commit `561dbf6c` and in issue #15. The dormant
+diagnostics stay. The trace and the menu probe stay off unless their defaults keys
+are set.
+
+| Command | Result | Scope |
+|---|---|---|
+| `mise exec -- task build` | Exit 0. [Full output](ordering-application-evidence/returned-build.txt) | Compiles the returned application and stages the debug provider framework. It does not launch AppKit |
+| `mise exec -- task check:settings-activation-interval` | Exit 0. Nine tests pass. [Full output](ordering-application-evidence/returned-headless-tests.txt) | The existing interval and buffer controls |
+
+The [input digests before](ordering-application-evidence/returned-inputs-before.sha256)
+and the [input digests after](ordering-application-evidence/returned-inputs-after.sha256)
+match. They cover the delegate source, the package manifest and resolution, the
+Taskfile and the staging script. The build output shows two compiler warnings in
+other files, and this change does not touch them.
+
+These checks cannot observe focus. They prove that the returned source compiles
+and that the existing helper controls still pass. They do not show that a Settings
+selection returns one front, focused window. No guest ran, and no signed subject
+was built. The release check keeps the strict front read until issue #15 changes it.
 
 ## Source and public-contract boundary
 

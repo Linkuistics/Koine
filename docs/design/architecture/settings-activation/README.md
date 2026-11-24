@@ -1,6 +1,20 @@
 # Settings activation design discussion
 
-The current discussion is the removal of the keepalive captures. Its view is
+The current discussion is the Settings outcome. On 2026-11-24, k54 froze one
+signed subject and ran E01. E01 stopped before the first selection, because one
+required setup read was unavailable. E02, A01, A02 and A03 are NOT RUN, and the
+evaluation ended with no acceptance. The
+[qualification results](../../../verification/settings-activation/ORDERING-QUALIFICATION-RESULTS.md)
+hold the record.
+
+Antony then closed the repair as unresolved. [Issue #15](https://github.com/Linkuistics/Koine/issues/15)
+brings the evaluation back, with a new declared sequence, freeze and slot
+identities. On 2026-11-25, the code returned to the order that 0.4.0 released.
+The show operation makes one key and front request, and then one activation
+request. The candidate stays in the k52 commit `561dbf6c` and in issue #15.
+Native cause and ownership stay unresolved.
+
+The earlier discussion was the removal of the keepalive captures. Its view is
 `keepalive-requirement-choice.mmd`. On 2026-11-21, Antony first approved the
 [finite-resource revision](../../../verification/settings-activation/KEEPALIVE-DESIGN.md#finite-resource-revision).
 TestAnyware then found that the Tart crash does not reproduce with macOS 27.2.1
@@ -8,7 +22,7 @@ and Tart 2.42.0. Antony approved the removal of the keepalive captures.
 
 The ADR [settings harness takes no keepalive captures](../../../adr/settings-harness-takes-no-keepalive-captures.md)
 records the decision. K126 is pruned and k96 is closed. Planning task k145
-removes the keepalive and the k96 dependencies from the k36 harness. The
+removed the keepalive and the k96 dependencies from the k36 harness. The
 keepalive documents below are history.
 
 The [external evidence scope](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md)
@@ -77,15 +91,14 @@ request activation once, then request key/front ordering without deferral.
 The [distinct finite protocol](../../../verification/settings-activation/ORDERING-EVALUATION-PLAN.md)
 sets two focused guests and, only if both qualify, three separately declared
 complete ordinary guests. Both sets use the same newly signed candidate with
-application diagnostics disabled. No signed evaluation subject has been built or run.
-The [application implementation](../../../verification/settings-activation/ORDERING-APPLICATION-RESULTS.md)
-now compiles and passes existing headless controls. Shared harness corrections and
-native acceptance remain live.
+application diagnostics disabled. The
+[application record](../../../verification/settings-activation/ORDERING-APPLICATION-RESULTS.md)
+holds the k52 candidate and its return to the released order.
 
 Antony approved the named empirical scope and finite acceptance convention.
 The [review and integration](../../../verification/settings-activation/ORDERING-REVIEW.md)
-are complete. K36 implements and verifies the candidate and evidence helpers
-before freeze. A qualified recurrence rejects reversal. Any
+are complete. K36 implemented and verified the candidate and evidence helpers
+before the k54 freeze. A qualified recurrence rejects reversal. Any
 other required failure or unavailable evidence stops acceptance and all later
 slots. No replacement or cap expansion follows.
 
@@ -112,8 +125,8 @@ The existing task serves only the architecture presentation directory.
 <!-- tc: depart synonym-rotation because graph entry differs from application launch -->
 Start each graph at the dark **Start here** node.
 The sequence starts at its first message. State views start at the initial dot.
-The ordering sequence shows the implemented application call order,
-not measured native completion. The assessment numbers the assessed original call order before
+The ordering sequence shows the candidate application call order, not the
+current code and not measured native completion. The assessment numbers the assessed original call order before
 its dotted reasoning edge. Other graphs describe decisions or outcome rules.
 
 None is a proven causal graph. The sources are editable Mermaid. The viewer
@@ -127,11 +140,17 @@ loads these same sources while retaining its separate current discussion.
 
 Current changes:
 
+- [Scope → Accepted scope for repair design](http://127.0.0.1:8765/settings-activation/#diagram-scope-choice) — Node N records the k54 freeze, the E01 stop and issue #15.
+- [Correction → Assessed original path and the empirical candidate](http://127.0.0.1:8765/settings-activation/#diagram-correction-assessment) — Records the return to the released order.
+- [Evaluation → Prepare one window, activate once, then order it](http://127.0.0.1:8765/settings-activation/#diagram-ordering-sequence) — Names the order as the candidate, not the current code.
+
+Earlier keepalive changes:
+
 - [Evidence → Require complete inputs before execution](http://127.0.0.1:8765/settings-activation/#diagram-keepalive-evidence) — Shows every prerequisite, review and authority gate. Available design inputs reach k126 without execution. Unavailable evidence reaches a human choice.
 - [Producer schema and guards](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md#producer-owned-schema-and-guard-evidence) — Requires actual versioned units and their complete control crosswalk, including input occurrences and OCR cycles.
 - [Real exec floor and bootstrap](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md#real-exec-floor-and-bootstrap-intervals) — Proposes conservative reconstruction and perturbation obligations while preserving unavailable Fe and separate Fi.
 - [Native OCR proposal](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md#native-ocr-proposal-and-exact-calls) — Preserves four operations and three planned maximum recognition calls with zero current authority. Admission needs derived cycle/call maxima and each operation's frame source.
-- [Raw queues and R3 observations](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md#raw-queues-loader-diagnostics-and-r3-observations) — Requires Q, feasible fixed R3 capacities and independent blocking/accepted-byte observations. Loader/native cases need bounded crash-reporting effects or proven suppression.
+- [Raw queues and R3 observations](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md#raw-queues-loader-diagnostics-and-r3-observations) — Requires Q, feasible fixed R3 capacities and independent blocking/accepted-byte observations. Loader/native cases need bounded crash-reporting effects or proven suppression. <!-- tc: depart synonym-rotation because fixed means set in advance, not repaired -->
 - [Storage and caller work](../../../verification/settings-activation/KEEPALIVE-EVIDENCE-SCOPE.md#storage-local-work-and-external-statuses) — Adds protected metadata, full host computation, blocked-I/O and inner-status evidence.
 
 The [resource review integration](../../../verification/settings-activation/KEEPALIVE-RESOURCES.md#review-integration)

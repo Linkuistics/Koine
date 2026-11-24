@@ -71,6 +71,18 @@ For those results, read `docs/verification/menu-bar-vm.md`,
 sample ended 1/0/1/1. It stopped at the first failure and is closed. It
 establishes no regression rate or general reliability.
 
+The Settings repair is unresolved. On 2026-11-24, k54 froze one signed subject,
+and E01 stopped at an unavailable setup read. Antony then closed the repair as
+unresolved, and the k12 scope closed on 2026-11-25. GitHub issue #15 owns the
+next evaluation, with a new declared sequence, freeze and slot identities. Native
+cause and ownership stay unresolved.
+
+The branch holds the call order that 0.4.0 released, and the dormant diagnostics
+stay. The release check keeps the strict front read until issue #15 changes it.
+The 37 owned rows of the duty ledger keep k12 as their owner. Read
+`docs/verification/settings-activation/ORDERING-QUALIFICATION-RESULTS.md` and
+`docs/verification/settings-activation/ORDERING-APPLICATION-RESULTS.md`.
+
 ## Authority and navigation
 
 This work grants no release, notarisation or upstream report. Runtime authority

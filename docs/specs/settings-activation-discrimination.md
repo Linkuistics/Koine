@@ -40,7 +40,7 @@ the [qualification results](../verification/settings-activation/ORDERING-QUALIFI
 
 The [independent review and integration](../verification/settings-activation/ORDERING-REVIEW.md)
 are complete. The [application implementation](../verification/settings-activation/ORDERING-APPLICATION-RESULTS.md)
-supplies the reviewed call order. It passes compilation and the existing headless
+supplied the reviewed call order. It passed compilation and the existing headless
 controls. K36 delivered the repairs of the shared scenario, its helpers and the
 finite caller before the runtime freeze. Repair acceptance stays unresolved.
 
@@ -50,9 +50,10 @@ back. A new run there needs a new scope decision, a new declared sequence, a new
 freeze and new slot identities.
 
 Antony left the call order to the decision task. That task chose the order that
-0.4.0 shipped, because the candidate has no acceptance.
-`settings-released-call-order-k184` returns the code to that order. Issue #15
-can apply the candidate again with its evaluation. The dormant diagnostics stay
+0.4.0 shipped, because the candidate has no acceptance. On 2026-11-25,
+`settings-released-call-order-k184` returned the code to that order. The show
+operation requests the key and front window first, and then activation once. Issue
+#15 can apply the candidate again with its evaluation. The dormant diagnostics stay
 in the product.
 
 The shared scenario keeps the strict positive setup. Thus the release menu-bar
@@ -139,9 +140,9 @@ support those limits. No cooperating TextEdit yield is assumed or requested.
 
 | Design | Benefit | Cost and disposition |
 |---|---|---|
-| Reverse inside the existing show operation — selected and implemented | One owner keeps the window lifetime, the navigation and the two requests together. Callers keep the same interface. It is a small, reversible application change. | It affects the launch, reopen and status-line callers as well as Settings. It requires complete ordinary acceptance, and no contract guarantees improvement. |
+| Reverse inside the existing show operation — selected, implemented, then returned | One owner keeps the window lifetime, the navigation and the two requests together. Callers keep the same interface. It is a small, reversible application change. | It affects the launch, reopen and status-line callers as well as Settings. It requires complete ordinary acceptance, and no contract guarantees improvement. K52 implemented it in commit `561dbf6c`. It has no acceptance, so `settings-released-call-order-k184` returned the code to the released order. [Issue #15](https://github.com/Linkuistics/Koine/issues/15) can apply it again with its evaluation. |
 | Reverse only in the menu caller or add a caller-selectable order | It could limit the changed path to menu actions. | It splits activation knowledge across callers or adds an unsupported mode. Divergent launch and reopen behaviour and a wider test surface earn no benefit for the accepted single-window contract. Not selected. |
-| Keep the current order | No behavioural migration. | It keeps the established unresolved failure. It is the baseline if the empirical candidate is rejected, not a successful repair. |
+| Keep the released order | No behavioural migration. | It keeps the established unresolved failure. It is the baseline if the empirical candidate is rejected, not a successful repair. The code holds this order until issue #15 decides. |
 
 No general activation adapter, fake OS response, new public seam or additional
 monitor is earned. A fake that rejects the old order and accepts the new order
@@ -481,10 +482,10 @@ independent review, with every earned integration complete before implementation
 or execution. The old ABBA cap stays closed. The scope answer itself set no
 numerical cap, final subject or guest.
 
-The concrete design above now sets two focused and three ordinary slots. Its
-independent review and integration are now complete. Implementation verification
-and actual readiness still precede runtime. No signed subject or runtime result
-exists for that design.
+The concrete design above sets two focused and three ordinary slots. Its
+independent review and integration are complete. On 2026-11-24, k54 froze one
+signed subject, and E01 stopped at an unavailable setup read. No acceptance
+result exists for that design, and issue #15 owns the next evaluation.
 
 | Choice after the reviewed assessment | Effect and cost |
 |---|---|

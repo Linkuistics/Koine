@@ -5,13 +5,19 @@ prepares the same retained window and requested section. It then requests
 activation once, before key and front window ordering. The [distinct finite protocol](settings-activation/ORDERING-EVALUATION-PLAN.md)
 sets two focused fresh guests. Only if both qualify do three separate complete
 ordinary guests follow. One newly signed candidate must stay unchanged, with
-diagnostics disabled in both sets. No signed evaluation subject has been built or run.
+diagnostics disabled in both sets.
+
+On 2026-11-24, k54 froze one signed subject and ran E01. E01 stopped before the
+first selection, because one required setup read was unavailable. The evaluation
+ended with no acceptance, as the [qualification results](settings-activation/ORDERING-QUALIFICATION-RESULTS.md)
+record. Antony then closed the repair as unresolved, and
+[issue #15](https://github.com/Linkuistics/Koine/issues/15) brings the evaluation back.
 
 The [design review and integration](settings-activation/ORDERING-REVIEW.md) are
-complete. K36 owns the implementation and its verification before the freeze. The
-[application change](settings-activation/ORDERING-APPLICATION-RESULTS.md) compiles
-and passes the existing headless controls. The shared harness repairs and native
-acceptance stay live, and the repair stays unresolved.
+complete. The [application record](settings-activation/ORDERING-APPLICATION-RESULTS.md)
+holds the k52 candidate and its return. On 2026-11-25, the code returned to the
+order that 0.4.0 released: one key and front request, and then one activation
+request. The release menu-bar check keeps the strict front read until issue #15 changes it.
 
 Both sets require the same changed helpers: strict single-attempt transport and
 positive TextEdit setup. They also require an audit of the original list for the

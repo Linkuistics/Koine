@@ -5,20 +5,27 @@ prepares the same retained window and requested section. It then requests
 activation once, before key and front window ordering. The [distinct finite protocol](ORDERING-EVALUATION-PLAN.md)
 sets two focused fresh guests. Only if both qualify do three separate complete
 ordinary guests follow. One newly signed candidate must stay unchanged, with
-diagnostics disabled in both sets. No signed evaluation subject has been built or run.
+diagnostics disabled in both sets.
 
-The [design review and integration](ORDERING-REVIEW.md) are complete. K36 owns
-the implementation and its verification before the freeze. The
-[application change](ORDERING-APPLICATION-RESULTS.md) now compiles and passes
-the existing headless controls. The shared harness repairs and native acceptance
-stay live. The repair stays unresolved.
+On 2026-11-24, k54 froze one signed subject and ran E01. E01 stopped before the
+first selection, because one required setup read was unavailable. E02, A01, A02
+and A03 are NOT RUN, and the evaluation ended with no acceptance. The
+[qualification results](ORDERING-QUALIFICATION-RESULTS.md) hold the record.
+Antony then closed the repair as unresolved. [Issue #15](https://github.com/Linkuistics/Koine/issues/15)
+brings the evaluation back, with a new declared sequence, freeze and slot identities.
 
-The [strict window transport expansion](ORDERING-WINDOW-RESULTS.md) supplies
-checked list, action and poll helpers for a later migration. The complete
-ordinary scenario does not use them yet. Independent review comes before their
-use. Both sets require the same changed helpers: strict single-attempt
-transport and positive TextEdit setup. They also require an audit of the
-original window list for the Settings title, and liveness before zero-window rejection.
+The [design review and integration](ORDERING-REVIEW.md) are complete. The
+[application record](ORDERING-APPLICATION-RESULTS.md) holds the k52 candidate
+and its return. On 2026-11-25, the code returned to the order that 0.4.0
+released. The show operation makes one key and front request, and then one
+activation request. The candidate has no acceptance, and issue #15 can apply it again.
+
+The [strict window transport expansion](ORDERING-WINDOW-RESULTS.md) supplied
+checked list, action and poll helpers. K36 later adopted them in the complete
+ordinary scenario, after independent review and before the k54 freeze. Both sets
+require the same changed helpers: strict single-attempt transport and positive
+TextEdit setup. They also require an audit of the original window list for the
+Settings title, and liveness before zero-window rejection.
 
 Process loss is separate. The prefix includes the TextEdit quit. Screenshots
 retain context, and they are not automatic acceptance. A restart disconnect

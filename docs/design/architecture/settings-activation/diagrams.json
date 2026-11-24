@@ -1,11 +1,11 @@
 {
-  "title": "Settings activation: keepalive removal",
-  "intro": "Graph views start at the dark Start here node. Sequences start at their first message and state views at the initial dot. Lifecycle review is integrated. Scheduling review corrections are integrated. Enforceable resources and whole-design reconciliation remain outstanding. Implementation and runtime stay held.",
+  "title": "Settings activation: repair closed as unresolved",
+  "intro": "Graph views start at the dark Start here node. Sequences start at their first message and state views at the initial dot. The k54 evaluation stopped at E01 on an unavailable setup read. The repair is unresolved, and issue #15 brings the evaluation back. The code holds the order that 0.4.0 released.",
   "groups": [
     {
       "id": "keepalive",
       "title": "Keepalive coordination",
-      "description": "Proposed ownership and cooperative-stop contract, alongside current collision and accepted scope. No coordinator is implemented or resource-qualified."
+      "description": "History. The ADR settings-harness-takes-no-keepalive-captures removed the keepalive captures, so no coordinator exists."
     },
     {
       "id": "evidence",
@@ -20,27 +20,35 @@
     {
       "id": "correction",
       "title": "Correction assessment",
-      "description": "The no-API-correction finding survives review; the reviewed empirical order is implemented, with acceptance unresolved."
+      "description": "The no-API-correction finding survives review. K52 implemented the reviewed empirical order, and the code then returned to the released order. Acceptance stays unresolved."
     },
     {
       "id": "evaluation",
       "title": "Concrete ordering evaluation",
-      "description": "One candidate, two focused slots and three separate complete ordinary slots; no runtime result."
+      "description": "One candidate, two focused slots and three separate complete ordinary slots. E01 stopped at a setup read, and the other slots are NOT RUN."
     }
   ],
   "discussion": {
-    "title": "Remove the keepalive captures from the Settings harness",
-    "status": "Approved by Antony on 2026-11-21. K126 is pruned, k96 is closed, and planning task k145 is next.",
-    "summary": "The Tart crash that the keepalive captures avoided does not reproduce with macOS 27.2.1 and Tart 2.42.0. Thus the harness takes no keepalive captures and needs no serialised owner. It does not rely on the TestAnyware keeper. The ADR settings-harness-takes-no-keepalive-captures records the decision and the residual test-driver risk. Planning task k145 removes the keepalive and the k96 dependencies from the k36 harness.",
+    "title": "Settings repair closed as unresolved",
+    "status": "Antony closed the repair on 2026-11-24. Issue #15 owns the next evaluation, and the code holds the released order.",
+    "summary": "On 2026-11-24, k54 froze one signed subject and ran E01. E01 stopped before the first selection, because one required setup read was unavailable. E02, A01, A02 and A03 are NOT RUN, and the evaluation ended with no acceptance. Antony closed the repair as unresolved. Issue #15 brings the evaluation back, with a new declared sequence, freeze and slot identities. On 2026-11-25, the code returned to the order that 0.4.0 released: the key and front request, then one activation request. Native cause and ownership stay unresolved.",
     "diagramIds": [
-      "keepalive-requirement-choice",
-      "keepalive-collision",
-      "keepalive-scope"
+      "scope-choice",
+      "correction-assessment",
+      "ordering-sequence"
     ],
     "updatedDiagrams": [
       {
-        "id": "keepalive-requirement-choice",
-        "summary": "Shows the keepalive check answered no, the approved removal and the k145 planning step. Marks the owner-side profile as not needed."
+        "id": "scope-choice",
+        "summary": "Node N records the k54 freeze, the E01 stop and issue #15. The exclusions include added waits again, as the keepalive ADR decides."
+      },
+      {
+        "id": "correction-assessment",
+        "summary": "The candidate node and the final node record the return to the released order and issue #15."
+      },
+      {
+        "id": "ordering-sequence",
+        "summary": "The caption names the order as the candidate, not the current code."
       }
     ]
   },
@@ -190,21 +198,21 @@
       "group": "scope",
       "title": "Accepted scope for repair design",
       "source": "scope-choice.mmd",
-      "caption": "The named empirical scope is approved. One local reversal, two focused and three complete ordinary guests use one unchanged candidate with diagnostics disabled. The application compiles. The separately approved keepalive scope permits only UI-independent ownership waits; its concrete design/review and all shared harness repairs precede freeze. Causal slots remain held; no signed subject or result exists."
+      "caption": "The named empirical scope is approved. One local reversal, two focused and three complete ordinary guests use one unchanged candidate with diagnostics disabled. On 2026-11-24, k54 froze one signed subject, and E01 stopped at an unavailable setup read. The repair is unresolved, and issue #15 owns the next evaluation. Causal slots remain held."
     },
     {
       "id": "correction-assessment",
       "group": "correction",
-      "title": "Assessed original path and the implemented empirical candidate",
+      "title": "Assessed original path and the empirical candidate",
       "source": "correction-assessment.mmd",
-      "caption": "The numbered path is the assessed original order; the dotted edge enters reasoning. Both orders previously succeeded with synchronous file tracing. The reviewed reversal now compiles and passes existing headless controls. Shared harness repairs and runtime acceptance remain live; no comparative risk or cause is established."
+      "caption": "The numbered path is the assessed original order, and the code holds that order again. The dotted edge enters reasoning. Both orders previously succeeded with synchronous file tracing. K52 implemented the reviewed reversal, and the code then returned to the released order. Issue #15 owns the next evaluation. No comparative risk or cause is established."
     },
     {
       "id": "ordering-sequence",
       "group": "evaluation",
       "title": "Prepare one window, activate once, then order it",
       "source": "ordering-sequence.mmd",
-      "caption": "Implemented synchronous application order, including readiness failure. The window is constructed and navigation applied before activation. A return does not imply activation completed; the OS may decline. Launch, reopen and both menu callers share this owner. No retry, yielding or deferral is added."
+      "caption": "Candidate synchronous application order, including readiness failure. K52 implemented it, and the code then returned to the released order. The window is constructed and navigation applied before activation. A return does not imply that activation completed, and the OS may decline. Launch, reopen and both menu callers share this owner. No retry, yielding or deferral is added."
     },
     {
       "id": "evaluation-outcomes",

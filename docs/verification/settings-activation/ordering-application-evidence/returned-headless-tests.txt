@@ -1,0 +1,80 @@
+task: [check:settings-activation-interval] swift build --build-tests
+Building for debugging...
+[Computing dependencies]
+[Provisioning 54 / 65]
+[Pre-planning 1 / 1566]
+[Planning deferred tasks]
+[66 / 132] KoineManagementClientTests-product
+[82 / 137] DesktopProviderLogicTests-product
+[83 / 141] KoineAppDiagnosticsTests-product
+[87 / 168]
+[101 / 168] KoineServerTests-product
+[114 / 187] KoineManagementClientTests-product
+[117 / 187] DesktopProviderLogicTests-product
+[122 / 187] WorkspaceProviderLogicTests-product
+[124 / 187] WorkspaceProviderLogicTests-product
+[125 / 187] WorkspaceProviderLogicTests-product
+[129 / 187] KoineServerTests-product
+[130 / 187] WorkspaceProviderLogicTests-product
+[137 / 187] WorkspaceProviderLogicTests-product
+[140 / 187] KoineServerTests-product
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/KoineManagementClientTests/ManagementClientTests.swift:88:19: [1;33mwarning: [1;39mresult of call to 'withServer(now:_:)' is unused[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/no-usage\NoUsage]8;;\]
+ [0;36m86 |[0;0m 
+ [0;36m87 |[0;0m     @Test func aGraphQLErrorSurfacesItsMessageAndKind() async throws {
+ [0;36m88 |[0;0m         try await withServer [4;39m{ _, client in[0;0m
+    [0;36m|[0;0m                   `- [1;33mwarning: [1;39mresult of call to 'withServer(now:_:)' is unused[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/no-usage\NoUsage]8;;\]
+ [0;36m89 |[0;0m             await #expect(throws: ManagementError.rejected(
+ [0;36m90 |[0;0m                 messages: ["Unknown capabilities: nope:read."], kind: "failed"
+
+[#NoUsage]: <https://docs.swift.org/compiler/documentation/diagnostics/no-usage>
+[142 / 187] KoineServerTests-product
+[143 / 187] KoineServerTests-product
+[144 / 187] KoineServerTests-product
+[147 / 187] WorkspaceProviderLogicTests-product
+[153 / 187] KoineManagementClientTests-product
+[156 / 187] KoineAppDiagnosticsTests-product
+[157 / 187] KoineAppDiagnosticsTests-product
+[158 / 187] KoineServerTests-product
+[167 / 187] KoineAppDiagnosticsTests-product
+[169 / 187] DesktopProviderLogicTests-product
+[175 / 187] KoineManagementClientTests-product
+[181 / 187] KoineServerTests-product
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/Tests/KoineServerTests/ReceiptExecutableIdentityTests.swift:302:47: [1;33mwarning: [1;39m'#require(_:_:)' is redundant because 'tree.identity(Self.target(of: row, parts: parts, base: base))' never equals 'nil' (from macro 'require')[0;0m
+[0;36m300 |[0;0m         // The expected identity is the object the spelling names: the last real file the fixture placed.
+[0;36m301 |[0;0m         var expected: ObjectIdentity?
+[0;36m302 |[0;0m         if resolves { expected = try #require([4;39mtree.identity(Self.target(of: row, parts: parts, base: base))[0;0m) }
+    [0;36m|[0;0m                                               `- [1;33mwarning: [1;39m'#require(_:_:)' is redundant because 'tree.identity(Self.target(of: row, parts: parts, base: base))' never equals 'nil' (from macro 'require')[0;0m
+[0;36m303 |[0;0m 
+[0;36m304 |[0;0m         let run = try Self.run(Self.probe().path, ["url", tree.path(parts)])
+[183 / 187] KoineServerTests-product
+Build complete! (9.55 sec.)
+task: [check:settings-activation-interval] scripts/stage-provider-framework.sh debug
+/Users/antony/Development/AbstractingComputers/Koine.gh-issue-14/.build/out/Products/Debug/PackageFrameworks/KoineProviderAPI.framework
+task: [check:settings-activation-interval] swift test --skip-build --filter 'SettingsActivationIntervalTests|SettingsEventBufferTests'
+􀟈  Test run started.
+􀄵  Testing Library Version: 2403
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Suite SettingsEventBufferTests started.
+􀟈  Suite SettingsActivationIntervalTests started.
+􀟈  Test realClockMetadataMatchesIndependentKernelQueries() started.
+􀟈  Test overflowPreservesPrefixAndReportsEveryDroppedRecord() started.
+􀟈  Test failedDumpKeepsRecordsAvailable() started.
+􀟈  Test samplesEncloseOneOperation() started.
+􀟈  Test realContinuousClockEnclosesAnIndependentRead() started.
+􀟈  Test disabledMeasurementStillPerformsOperationOnce() started.
+􀟈  Test clockMetadataRejectsUnknownBootAndInvalidScale() started.
+􀟈  Test encodingKeepsTicksAsExactDecimalStrings() started.
+􀟈  Test outputIsExplicitNonDestructiveAndCannotOverwriteEvidence() started.
+􁁛  Test samplesEncloseOneOperation() passed after 0.001 seconds.
+􁁛  Test realContinuousClockEnclosesAnIndependentRead() passed after 0.001 seconds.
+􁁛  Test disabledMeasurementStillPerformsOperationOnce() passed after 0.001 seconds.
+􁁛  Test encodingKeepsTicksAsExactDecimalStrings() passed after 0.001 seconds.
+􁁛  Test overflowPreservesPrefixAndReportsEveryDroppedRecord() passed after 0.001 seconds.
+􁁛  Test clockMetadataRejectsUnknownBootAndInvalidScale() passed after 0.001 seconds.
+􁁛  Test realClockMetadataMatchesIndependentKernelQueries() passed after 0.003 seconds.
+􁁛  Suite SettingsActivationIntervalTests passed after 0.004 seconds.
+􁁛  Test failedDumpKeepsRecordsAvailable() passed after 0.005 seconds.
+􁁛  Test outputIsExplicitNonDestructiveAndCannotOverwriteEvidence() passed after 0.007 seconds.
+􁁛  Suite SettingsEventBufferTests passed after 0.007 seconds.
+􁁛  Test run with 9 tests in 2 suites passed after 0.007 seconds.
+exit 0
