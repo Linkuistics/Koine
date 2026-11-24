@@ -80,16 +80,27 @@ evaluation or ordinary set. Return the gap for a new explicit scope decision.
 
 ## Matched observable setup
 
-All slots use fresh clones of the same stopped
-`testanyware-golden-macos-27` image: macOS 27.0.1 build 26A434, arm64,
-TestAnyware 3.0.0, initial display 1920×1080, disposable admin account, one active
-Space, no restored application/session state, no pre-existing Koine data or
-diagnostic preferences. Verify the actual image and tool versions before clone
-creation and the actual guest environment after boot. A mismatch holds the
-sequence; silently substituting a newer environment is not this design.
-The ordinary scenario's existing restart may reset display to 1024×768;
-record the actual result and continue only under its existing geometry checks.
-Do not force a display change after restart to obtain a pass.
+<!-- tc: on -->
+
+All slots use fresh clones of the same stopped `testanyware-golden-macos-27`
+image. The image has these properties:
+
+- macOS 27.0.1 build 26A434, arm64
+- TestAnyware 3.0.0
+- an initial display of 1920×1080
+- a disposable admin account and one active Space
+- no restored application or session state
+- no Koine data and no diagnostic preferences from before the slot
+
+Before clone creation, check the actual image and tool versions. After boot,
+check the actual guest environment. A mismatch holds the sequence. Do not
+silently substitute a newer environment, because this design does not admit one.
+
+The existing restart of the ordinary scenario may reset the display to 1024×768.
+Record the actual result. Continue only under the existing geometry checks of the
+scenario. Do not force a display change after the restart to get a pass.
+
+<!-- tc: pending because the conversion has not reached this part of the document -->
 
 Use the existing no-quarantine installation route and automation setup. It does
 not exercise Gatekeeper's quarantined first launch or establish release fitness.
