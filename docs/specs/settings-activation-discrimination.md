@@ -133,34 +133,36 @@ active, not activation authority. No checked contract requires this relative
 order. The [primary contracts and source evidence](../verification/settings-activation/ORDERING-DESIGN-EVIDENCE.md#primary-contracts)
 support those limits. No cooperating TextEdit yield is assumed or requested.
 
+<!-- tc: on -->
+
 ### Alternatives, ownership and reversal condition
 
 | Design | Benefit | Cost and disposition |
 |---|---|---|
-| Reverse inside the existing show operation — selected and implemented | One owner keeps window lifetime, navigation and the two requests together; callers retain the same interface. Small, reversible application change. | Affects launch/reopen/status-line callers as well as Settings. Requires complete ordinary acceptance; no contract guarantees improvement. |
-| Reverse only in the menu caller or add a caller-selectable order | Could limit the changed path to menu actions. | Splits activation knowledge across callers or adds an unsupported mode. Divergent launch/reopen behavior and a wider test surface earn no benefit for the accepted single-window contract. Not selected. |
-| Keep current order | No behavioral migration. | Preserves the established unresolved failure. Remains the baseline if the empirical candidate is rejected, not a successful repair. |
+| Reverse inside the existing show operation — selected and implemented | One owner keeps the window lifetime, the navigation and the two requests together. Callers keep the same interface. It is a small, reversible application change. | It affects the launch, reopen and status-line callers as well as Settings. It requires complete ordinary acceptance, and no contract guarantees improvement. |
+| Reverse only in the menu caller or add a caller-selectable order | It could limit the changed path to menu actions. | It splits activation knowledge across callers or adds an unsupported mode. Divergent launch and reopen behaviour and a wider test surface earn no benefit for the accepted single-window contract. Not selected. |
+| Keep the current order | No behavioural migration. | It keeps the established unresolved failure. It is the baseline if the empirical candidate is rejected, not a successful repair. |
 
 No general activation adapter, fake OS response, new public seam or additional
-monitor is earned. A fake that rejects the old order and accepts the new would
-encode the hypothesis as its own oracle. The actual native response is the
-external dependency; the agreed complete VM seam observes the relevant behavior.
+monitor is earned. A fake that rejects the old order and accepts the new order
+would encode the hypothesis as its own oracle. The actual native response is the
+external dependency. The agreed complete VM seam observes the relevant behaviour.
 The existing historical end-to-end failures are useful failing product evidence.
-The intermittent response offers no established deterministic local RED test;
-do not manufacture one or run a baseline until failure. Source inspection can
-check one request and retained identity, but cannot demonstrate repaired focus.
-Focused helper tests instead exercise real transport/classification defects at
-their existing substitution boundary.
 
-A qualified recurrence in either declared set rejects reversal as the repair.
-Missing required evidence or another ordinary failure prevents acceptance and
-keeps the outcome unresolved. Neither permits another candidate or larger sample
+The intermittent response offers no established deterministic local RED test.
+Do not manufacture one, and do not run a baseline until failure. Source
+inspection can check one request and the retained identity. It cannot
+demonstrate repaired focus. Focused helper tests instead exercise real transport
+and classification defects at their existing substitution boundary.
+
+A qualified recurrence in either declared set rejects the reversal as the repair.
+Missing required evidence or another ordinary failure prevents acceptance, and the
+outcome stays unresolved. Neither permits another candidate or a larger sample
 without a new explicit decision. A future API-use mismatch could justify a
-different design under the existing default test; this exception does not.
+different design under the existing default test. This exception does not
+justify one.
 
 ## Finite evaluation and ordinary acceptance
-
-<!-- tc: on -->
 
 The [evaluation protocol](../verification/settings-activation/ORDERING-EVALUATION-PLAN.md)
 owns the exact subjects, five slots, setup, observation qualification, freeze,
