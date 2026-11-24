@@ -85,7 +85,7 @@ this earlier gap, so 3.0.0 did not introduce it.
 |---|---|
 | Host needs the latest macOS 27 and Tart | Met now. k54 pins both at the freeze |
 | VNC keeper removed | Compatible. The harness takes no keepalive captures and does not rely on the keeper |
-| A golden holds the latest macOS 27 release | Open for k54. The plan still names guest macOS 27.0.1 |
+| A golden holds the latest macOS 27 release | Settled by k54. The final golden reports 27.2.1 (26B131), and Antony accepted that guest release |
 | `vm start` ends with the size wait | A wait with no line or the exact two-session line stays clean. Each other completed, expired or skipped wait is unavailable |
 | OCR replaces a failed worker and resends once | Conflicts with one-attempt evidence if accepted. The attempt is unavailable |
 | ZRLE decodes a stale-size rectangle | Compatible. The capture check still reads the artifact and its size |
@@ -137,7 +137,8 @@ k179 added the size wait control to rows D031, D066, D090 and D130.
   helper does not send it.
 - The golden image must hold an agent from TestAnyware 2.9.0 or later, or every
   exec is unavailable. The upstream menu bar repair needs a golden that 3.0.0
-  built.
+  built. On 2026-11-24, k54 read the agent of the final golden from a read-only
+  attachment. Its SHA-256 equals that of the released 3.0.0 agent.
 - A stderr prefix is exact to the pinned binary. A changed binary needs this
   recheck again.
 - These results establish no Koine behaviour, no reliability and no native cause.

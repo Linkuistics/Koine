@@ -85,8 +85,8 @@ evaluation or ordinary set. Return the gap for a new explicit scope decision.
 All slots use fresh clones of the same stopped `testanyware-golden-macos-27`
 image. The image has these properties:
 
-- macOS 27.0.1 build 26A434, arm64
-- TestAnyware 3.0.0
+- macOS 27.2.1 build 26B131, arm64
+- TestAnyware 3.0.0, with the released 3.0.0 agent
 - an initial display of 1920×1080
 - a disposable admin account and one active Space
 - no restored application or session state
@@ -95,6 +95,11 @@ image. The image has these properties:
 Before clone creation, check the actual image and tool versions. After boot,
 check the actual guest environment. A mismatch holds the sequence. Do not
 silently substitute a newer environment, because this design does not admit one.
+
+Antony accepted this guest release on 2026-11-24. The plan named macOS 27.0.1
+build 26A434 before then. The historical Settings symptom occurred on 27.0.1. A
+result on 27.2.1 covers 27.2.1 only. It cannot establish that the correction
+removes the symptom on 27.0.1.
 
 The existing restart of the ordinary scenario may reset the display to 1024×768.
 Record the actual result. Continue only under the existing geometry checks of the
