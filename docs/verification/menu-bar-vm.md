@@ -1,77 +1,93 @@
 # Menu bar application: VM verification
 
 The [concrete ordering design](../specs/settings-activation-discrimination.md#single-request-ordering-design)
-requests activation once before key/front window ordering, after preparing the
-same retained window and requested section. The [distinct finite protocol](settings-activation/ORDERING-EVALUATION-PLAN.md)
-fixes two focused fresh guests followed only if both qualify by three separate
-complete ordinary guests. One newly signed candidate must remain unchanged,
-with diagnostics disabled in both sets. No signed evaluation subject has been built or run.
+prepares the same retained window and requested section. It then requests
+activation once, before key and front window ordering. The [distinct finite protocol](settings-activation/ORDERING-EVALUATION-PLAN.md)
+sets two focused fresh guests. Only if both qualify do three separate complete
+ordinary guests follow. One newly signed candidate must stay unchanged, with
+diagnostics disabled in both sets. No signed evaluation subject has been built or run.
+
 The [design review and integration](settings-activation/ORDERING-REVIEW.md) are
-complete; k36 owns implementation and verification before freeze. The
+complete. K36 owns the implementation and its verification before the freeze. The
 [application change](settings-activation/ORDERING-APPLICATION-RESULTS.md) compiles
-and passes existing headless controls. Shared harness repairs and native
-acceptance remain live; the repair remains unresolved.
-Both sets require the same changed helpers: strict
-single-attempt transport, positive TextEdit setup, an audit of the original list
-for the Settings title, and liveness before zero-window rejection. Process loss
-is separate. The prefix includes TextEdit quit; screenshots retain context, not
-automatic acceptance. Restart disconnect remains unavailable despite a later
-boot. A known inability to obtain required clean completion holds E01 for a new
-decision.
+and passes the existing headless controls. The shared harness repairs and native
+acceptance stay live, and the repair stays unresolved.
+
+Both sets require the same changed helpers: strict single-attempt transport and
+positive TextEdit setup. They also require an audit of the original list for the
+Settings title, and liveness before zero-window rejection. Process loss is
+separate. The prefix includes the TextEdit quit. Screenshots retain context, and
+they are not automatic acceptance.
+
+A restart disconnect stays unavailable despite a later boot. A known inability to
+obtain the required clean completion holds E01 for a new decision.
 
 Antony's [approved empirical scope](../specs/settings-activation-discrimination.md#scope-after-no-candidate)
 removes the documented API-use-violation prerequisite for this named hypothesis
-only. A qualified recurrence rejects reversal. Any other required failure or
-unavailable evidence stops acceptance and later slots, without replacement or
-expansion. A passing bound supports only that sample. Raw failed transport is
-retained, not cleared by later output. The [source/API evidence](settings-activation/ORDERING-DESIGN-EVIDENCE.md)
+only. A qualified recurrence rejects the reversal. Any other required failure or
+unavailable evidence stops acceptance and the later slots, with no replacement or
+expansion. A passing bound supports only that sample. Raw failed transport stays
+retained, and later output does not clear it.
+
+The [source and API evidence](settings-activation/ORDERING-DESIGN-EVIDENCE.md)
 records caller effects, public-contract limits and the existing test seams.
 
-The [reviewed assessment](settings-activation/CORRECTION-ASSESSMENT.md) remains a bounded
-no-API-correction finding. Historical original/reversed successes used synchronous
-file tracing whose writes moved with reversal; no instrument-free comparison or
-risk reduction is established. Repetition, driver wait/retry/input workarounds,
-deferral and speculative yielding remain excluded. Native cause and ownership
-remain unresolved. All six causal slots stay held and every historical cap stays
-closed. The complete original-duty comparison remains in the contract.
+The [reviewed assessment](settings-activation/CORRECTION-ASSESSMENT.md) stays a
+bounded finding that no API-use correction exists. Historical original-order and
+reversed-order successes used synchronous file tracing, and its writes moved with
+the reversal. Thus no instrument-free comparison or risk reduction follows.
+Repetition, driver waits, retries, input workarounds, deferral and speculative
+yielding stay excluded. Native cause and ownership stay unresolved.
 
-The assessment/review and instrument handoffs below retain earlier boundaries
-and results. The new design changes no historical bytes, classification or strict
-false clock join. It supplies no repair, ordinary-acceptance or ancestor-closure
-result, release, notarization or upstream report.
+All six causal slots stay held, and every historical cap stays closed. The
+complete original-duty comparison stays in the contract.
 
-K41's [protocol review integration](settings-activation/CAUSAL-PROTOCOL-REVIEW.md) repairs offline
-launch-prefix accounting, final-control input and positive mouse/Return nonce
-criteria. No guest or product repair ran. Supported causal design and its review
-still precede all route/causal guests; native disposition, justified repair/useful
-failing product seam and separate frozen complete ordinary acceptance remain live.
+The assessment, review and instrument handoffs below keep their earlier
+boundaries and results. The new design changes no historical bytes, no
+classification and no strict false clock join. It supplies no repair,
+ordinary-acceptance or ancestor-closure result. It supplies no release,
+notarisation or upstream report.
 
-What the signed `Koine.app` does as a menu bar application, on the real bundle in
-a clean TestAnyware macOS VM: no Dock icon and one menu bar item from launch to
-Quit; its menu, status lines, mark and accessibility label as Accessibility consent
-and client grant requests come and go; the settings window at first launch and not
-once setup is complete, reopened from the menu over another application's window
-however often it was closed, resizable, with its shortcuts working and no visible
-menu bar; a client's request never opening it; reopening the running application
-showing it; login launch across a VM restart; and Quit from the menu. The model
-that decides all of it (`MenuBarModel`) is tested without a GUI by
-`MenuBarModelTests` under `swift test`; this run shows the application renders it.
-The shape being checked is in README "Resident application".
+K41's [protocol review integration](settings-activation/CAUSAL-PROTOCOL-REVIEW.md)
+repairs the offline launch-prefix accounting, the final-control input and the
+positive mouse and Return nonce criteria. No guest or product repair ran. A
+supported causal design and its review still come before all route and causal
+guests. Native disposition stays live. A justified repair or useful failing
+product seam and a separate frozen complete ordinary acceptance stay live too.
+
+This record shows what the signed `Koine.app` does as a menu bar application. It
+uses the real bundle in a clean TestAnyware macOS VM. The application shows no
+Dock icon and one menu bar item from launch to Quit. Its menu, status lines, mark
+and accessibility label follow Accessibility consent and client grant requests as
+they come and go.
+
+The settings window opens at first launch, and not once setup is complete. It
+reopens from the menu over the window of another application, however often it
+was closed. It is resizable, its shortcuts work and it has no visible menu bar. A
+client request never opens it. A reopen of the running application shows it. The
+record also covers a login launch across a VM restart and Quit from the menu.
+
+`MenuBarModelTests` under `swift test` checks the model that decides all of it,
+`MenuBarModel`, without a GUI. This run shows that the application renders it.
+The checked shape is in the README section "Resident application".
 
 The [bounded 2026-10-28 comparison](#bounded-release-comparison-after-the-repairs)
-ended at its four-attempt cap: one complete 0.4.0 pass, two 0.3.0 failures and
-one 0.4.0 failure at repeated Settings activation. Resize and later assertions
-were NOT RUN in the failed attempts. Activation remains unresolved; these
-finite observations establish no release regression or reliability rate.
+ended at its four-attempt cap. It had one complete 0.4.0 pass, two 0.3.0 failures
+and one 0.4.0 failure at repeated Settings activation. Resize and the later
+assertions were NOT RUN in the failed attempts. Activation stays unresolved.
+These finite observations establish no release regression and no reliability rate.
 
-The subsequent [instrumented Settings investigation](settings-activation/README.md)
-reproduced reopen 3 while recording callback, show and activation boundaries.
-The callback and activation request ran, with no subsequent recorded activation
-or key-window transition for that selection. This classifies failed activation
-in the observed interval; the cause and product repair remain open. Its first
-guest completed every assertion, and its second stopped before resize and all
-later assertions. This diagnostic candidate is separate from the released
-bundles and the k4 comparison; no release or reliability claim follows.
+The later [instrumented Settings investigation](settings-activation/README.md)
+reproduced reopen 3 while it recorded the callback, show and activation
+boundaries. The callback and the activation request ran. No later activation or
+key-window transition was recorded for that selection. This classifies failed
+activation in the observed interval. The cause and the product repair stay open.
+
+Its first guest completed every assertion. Its second guest stopped before resize
+and all later assertions. This diagnostic candidate is separate from the released
+bundles and the k4 comparison. No release or reliability claim follows.
+
+<!-- tc: pending because the conversion has not reached this part of the document -->
 
 ## Procedure
 

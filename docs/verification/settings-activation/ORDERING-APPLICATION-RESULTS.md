@@ -1,88 +1,96 @@
 # Settings ordering: application implementation
 
 The shared Settings show operation now prepares its retained window and requested
-section, requests activation once, then requests key/front window placement.
+section. It then requests activation once, and then key and front window placement.
 This implements the [reviewed design](ORDERING-REVIEW.md) in
 [AppDelegate](../../../Sources/KoineApp/AppDelegate.swift). Compilation and nine
-existing headless controls pass. Native repair acceptance remains unresolved.
+existing headless controls pass. Native repair acceptance stays unresolved.
 
 ## Source and public-contract boundary
 
 The implementation moves the existing activation block ahead of the existing
-window-ordering block after navigation, keeping each trace boundary with its
-call. The readiness guard, one retained window, non-release-on-close lifetime,
-size, Space behavior and launch/reopen/menu/status-line callers retain their
-existing code. The separate fatal-alert activation path is unchanged.
+window-ordering block after navigation. Each trace boundary stays with its call.
+The readiness guard, the one retained window and the non-release-on-close lifetime
+keep their existing code. The size, the Space behaviour and the launch, reopen,
+menu and status-line callers keep their existing code too. The separate
+fatal-alert activation path is unchanged.
 
-No conditional second request, suspension, deferral, yield, focus wait, public
-interface or new diagnostic instrument is added. This is application invocation
-order; it does not establish native completion or guarantee focus.
-Both calls are cited at the decision site.
+The change adds no conditional second request, suspension, deferral, yield or
+focus wait. It adds no public interface and no new diagnostic instrument. This is
+the application invocation order. It does not establish native completion or
+guarantee focus. Both calls are cited at the decision site.
 
 Apple's [activation contract](https://developer.apple.com/documentation/appkit/nsapplication/activate%28%29)
 allows the system to decline the request. Its
 [window contract](https://developer.apple.com/documentation/appkit/nswindow/makekeyandorderfront%28_%3A%29)
-describes key/front placement within the window's level. Neither retrieved
-contract prescribes their relative order. The macOS 27 SDK also warns against
-assuming immediate activation. The package requires macOS 26 and Swift tools
-6.2; the checked compiler is Apple Swift 6.4. The
-[retrieval receipt](ordering-application-evidence/apple-contracts.json) records
-response hashes and the installed SDK header digest, without retaining full
-copyrighted responses.
+describes key and front placement within the level of the window. Neither
+retrieved contract prescribes their relative order. The macOS 27 SDK also warns
+against an assumption of immediate activation.
+
+The package requires macOS 26 and Swift tools 6.2. The checked compiler is Apple
+Swift 6.4. The [retrieval receipt](ordering-application-evidence/apple-contracts.json)
+records response hashes and the digest of the installed SDK header. It does not
+retain the full copyrighted responses.
 
 The [accepted product seam](../../specs/settings-activation-discrimination.md#alternatives-ownership-and-reversal-condition)
 has historical real VM failures and no established deterministic local native
-RED test. No fake OS response or source-order test is added: either would encode
-the hypothesis rather than demonstrate repaired focus. Existing helper tests
-below establish their own limited properties only.
+RED test. The change adds no fake OS response and no source-order test. Either
+would encode the hypothesis instead of a demonstration of repaired focus. The
+existing helper tests below establish only their own limited properties.
 
 ## Verification
 
 | Command | Result | Scope |
 |---|---|---|
-| `mise exec -- task build` | Exit 0; [full output](ordering-application-evidence/build.txt) | Compiles the application and stages the debug provider framework; does not launch AppKit |
-| `mise exec -- task check:settings-activation-interval` | Exit 0; nine tests pass; [full output](ordering-application-evidence/headless-tests.txt) | Existing interval and buffer controls, including one operation and no tick reads when measurement is disabled |
+| `mise exec -- task build` | Exit 0. [Full output](ordering-application-evidence/build.txt) | Compiles the application and stages the debug provider framework. It does not launch AppKit |
+| `mise exec -- task check:settings-activation-interval` | Exit 0. Nine tests pass. [Full output](ordering-application-evidence/headless-tests.txt) | The existing interval and buffer controls. They include one operation and no tick reads when measurement is disabled |
 
-The [before inventory](ordering-application-evidence/inputs-before.json) and
-[after inventory](ordering-application-evidence/inputs-after.json) compare each
-selected local source, test, package manifest/resolution, Taskfile and staging
-script byte hash across those checks. Every listed item matches. These are
-bounded local-input checks, not the protocol's full build/signing/environment/
-golden freeze; dependency checkouts, build caches and the complete SDK are outside
-these inventories. The [verification receipt](ordering-application-evidence/verification.json)
-records statuses and interpretation limits.
+The [before inventory](ordering-application-evidence/inputs-before.json) and the
+[after inventory](ordering-application-evidence/inputs-after.json) compare byte
+hashes across those checks. They cover each selected local source, test, package
+manifest and resolution, the Taskfile and the staging script. Every listed item
+matches. These are bounded checks of local inputs, not the full build, signing,
+environment and golden freeze of the protocol.
+
+Dependency checkouts, build caches and the complete SDK are outside these
+inventories. The [verification receipt](ordering-application-evidence/verification.json)
+records the statuses and the limits of interpretation.
 
 The [documentation check output](ordering-application-evidence/doc-links.txt)
-retains Task exit 201 / checker exit 1 for the two previously recorded missing
-links in the unchanged archived context charter. No new link error is reported;
-the byte-preserving archive repair remains separate work.
+retains Task exit 201 and checker exit 1. They come from the two missing links
+in the unchanged archived context charter, which an earlier record named. No new
+link error is reported. The byte-preserving archive repair stays separate work.
 
-Bounded direct source reads cover the delegate, menu callbacks, entry point,
-trace/probe disabled branches and interval implementation. With both diagnostic
-paths absent, trace initialization returns before observer installation, record
-returns without output, and the interval wrapper executes once without sampling
-ticks. The menu probe has no directory and returns before creating its timer or
-monitor. Existing disabled calls remain in the executable; this supplies no
-timing-neutrality claim.
+Bounded direct source reads cover the delegate, the menu callbacks and the entry
+point. They also cover the disabled branches of the trace and the probe, and the
+interval implementation. With both diagnostic paths absent, trace initialisation returns
+before observer installation. The record call returns without output. The
+interval wrapper executes once without tick samples.
 
-CBM startup refused before project, generation or coverage discovery with the
-pre-coordination/unverified-generation error. No CBM session was stopped and
-no graph completeness is claimed. No extra implementation review is commissioned
-for this local reordering: the whole design and caller effects already received
-independent review, and this child adds no further policy or mechanism.
+The menu probe has no directory, and it returns before it creates its timer or
+monitor. The existing disabled calls stay in the executable. This supplies no
+claim of timing neutrality.
+
+CBM startup refused before project, generation or coverage discovery, with the
+pre-coordination unverified-generation error. No CBM session was stopped, and no
+graph completeness is claimed. No extra implementation review is commissioned
+for this local reordering. The whole design and its caller effects already
+received independent review, and this child adds no further policy or mechanism.
 
 ## Remaining evidence and acceptance
 
-No new signed application bundle, evaluation freeze or guest is produced here.
-E01/E02 and A01/A02/A03 are all NOT RUN. The reviewed shared transport/setup/
-title/liveness repairs and finite caller remain required before freeze, together
-with every earned implementation review and integration. Required restart
-submission must still be clean; a disconnect cannot be rehabilitated by a later
-boot. Demonstrably unavailable completion holds E01 for an explicit decision.
+This record produces no new signed application bundle, evaluation freeze or
+guest. E01, E02, A01, A02 and A03 are all NOT RUN. The reviewed shared transport,
+setup, title and liveness repairs and the finite caller stay required before the
+freeze. Every earned implementation review and integration stays required too.
+The required restart submission must still be clean. A later boot cannot
+rehabilitate a disconnect.
 
-The [finite protocol](ORDERING-EVALUATION-PLAN.md) and
+Demonstrably unavailable completion holds E01 for an explicit decision. The
+[finite protocol](ORDERING-EVALUATION-PLAN.md) and the
 [complete original-duty comparison](../../specs/settings-activation-discrimination.md#original-duty-comparison)
-remain binding. Historical failures, classifications, bundles, false clock joins,
-closed caps and NOT RUN phases retain their meaning. The six causal slots stay
-held. Native cause and ownership remain unresolved. No product or causal
-ancestor closes; no release, notarization or upstream report follows.
+stay binding. Historical failures, classifications, bundles, false clock joins,
+closed caps and NOT RUN phases keep their meaning. The six causal slots stay held.
+
+Native cause and ownership stay unresolved. No product or causal ancestor closes.
+No release, notarisation or upstream report follows.
