@@ -10,8 +10,12 @@ front process was unavailable. No Koine failure and no test-driver crash
 occurred. E02, A01, A02 and A03 did not run.
 
 The result says nothing about the activation-before-window ordering. No Settings
-selection ran, so the run gives no evidence for or against the repair. The next
-decision belongs to `settings-ordering-next-decision-k183`.
+selection ran, so the run gives no evidence for or against the repair.
+
+On 2026-11-24, Antony closed the repair as unresolved, and
+`settings-ordering-next-decision-k183` records that decision.
+[Issue #15](https://github.com/Linkuistics/Koine/issues/15) brings the evaluation
+back. The branch returns to the call order that 0.4.0 shipped.
 
 ## Owner decisions before the freeze
 
@@ -170,8 +174,8 @@ scope decision, a new declared sequence and a new freeze.
 ## Classification of the duties that k54 owned
 
 The [duty ledger](ordering-reconciliation-evidence/duties.json) assigned 37 rows
-to k54. Each row now names `settings-ordering-next-decision-k183` as its owner,
-because each still binds any future runtime.
+to k54. Each row now names `settings-reopen-activation-k12` as its owner,
+because each still binds any future runtime. Issue #15 brings that runtime back.
 
 | Rows | Duty | Result in k54 |
 |---|---|---|

@@ -62,8 +62,14 @@ The k36 ordering evaluation is closed. On 2026-11-24, k54 froze one signed
 subject, and E01 stopped before the first selection. One required setup read was
 unavailable, so the evaluation ended with no acceptance.
 `docs/verification/settings-activation/ORDERING-QUALIFICATION-RESULTS.md` holds
-the record. `settings-ordering-next-decision-k183` owns Antony's next scope
-decision. A new run needs that decision, a new declared sequence and a new freeze.
+the record.
+
+On 2026-11-24, Antony closed the repair as unresolved, and
+`settings-ordering-next-decision-k183` records that decision. GitHub issue #15
+brings the evaluation back, and it is the externalised next decision. A new run
+there needs a new declared sequence, a new freeze and new slot identities.
+`settings-released-call-order-k184` returns this branch to the released call
+order before k12 closes. The 37 duty rows of the ledger name k12 as their owner.
 
 ## Evidence to consult
 

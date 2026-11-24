@@ -163,9 +163,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "k58, k59, k172 and k173 delivered the reviews, and k54 must consume them before runtime. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "k58, k59, k172 and k173 delivered the reviews, and k54 must consume them before runtime. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D011",
@@ -540,9 +540,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "The source shows no demonstrated infeasibility, and k54 holds before E01 if a required clean result proves unavailable. k54 met this hold: no unavailability was known before E01, and the sequence stopped after E01 with no replacement guest. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "The source shows no demonstrated infeasibility, and k54 holds before E01 if a required clean result proves unavailable. k54 met this hold: no unavailability was known before E01, and the sequence stopped after E01 with no replacement guest. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D024",
@@ -1027,9 +1027,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "k172 reviewed the harness and k173 integrated it, and k54 must consume both before runtime. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "k172 reviewed the harness and k173 integrated it, and k54 must consume both before runtime. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D035",
@@ -1072,9 +1072,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "k54 keeps the causal slots held and preserves every historical subject. k54 changed no historical record, closed cap or held causal slot. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "k54 keeps the causal slots held and preserves every historical subject. k54 changed no historical record, closed cap or held causal slot. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D038",
@@ -1087,9 +1087,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "k54 keeps native cause and ownership unresolved, and no helper fixture supplies acceptance. k54 claims no native acceptance, cause, ownership or ancestor closure. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "k54 keeps native cause and ownership unresolved, and no helper fixture supplies acceptance. k54 claims no native acceptance, cause, ownership or ancestor closure. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D039",
@@ -1102,9 +1102,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "k54 holds readiness, the signed freeze and runtime after every implementation, review and integration. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "k54 holds readiness, the signed freeze and runtime after every implementation, review and integration. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D040",
@@ -1177,9 +1177,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "The subtree reviews are delivered, and k54 must consume every earned review and integration before runtime. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "The subtree reviews are delivered, and k54 must consume every earned review and integration before runtime. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D045",
@@ -1777,9 +1777,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "Restart controls deliver the unavailable disconnect, which is no Koine failure, and k54 holds any demonstrated infeasibility before E01. k54 met this hold: no unavailability was known before E01, and the sequence stopped after E01 with no replacement guest. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "Restart controls deliver the unavailable disconnect, which is no Koine failure, and k54 holds any demonstrated infeasibility before E01. k54 met this hold: no unavailability was known before E01, and the sequence stopped after E01 with no replacement guest. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D064",
@@ -2072,9 +2072,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "Task records, k172 and k173 exist, and k54 must check that they apply to its frozen subject before runtime. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "Task records, k172 and k173 exist, and k54 must check that they apply to its frozen subject before runtime. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D070",
@@ -2132,9 +2132,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "k54 reconciles the original-duty comparison and preserves every historical subject. k54 changed no historical record, closed cap or held causal slot. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "k54 reconciles the original-duty comparison and preserves every historical subject. k54 changed no historical record, closed cap or held causal slot. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D074",
@@ -2177,9 +2177,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "The earned reviews exist, and k54 must consume them before runtime. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "The earned reviews exist, and k54 must consume them before runtime. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D077",
@@ -2960,9 +2960,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "Restart controls deliver the unavailable disconnect, which is no Koine failure, and k54 holds any demonstrated infeasibility before E01. k54 met this hold: no unavailability was known before E01, and the sequence stopped after E01 with no replacement guest. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "Restart controls deliver the unavailable disconnect, which is no Koine failure, and k54 holds any demonstrated infeasibility before E01. k54 met this hold: no unavailability was known before E01, and the sequence stopped after E01 with no replacement guest. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D102",
@@ -3159,9 +3159,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "The reviews and integrations through k173 are delivered, and k54 must consume them before runtime. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "The reviews and integrations through k173 are delivered, and k54 must consume them before runtime. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D106",
@@ -3677,9 +3677,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "The earned reviews exist, k57 is complete, and k54 must consume them before any VM work. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "The earned reviews exist, k57 is complete, and k54 must consume them before any VM work. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D125",
@@ -4105,9 +4105,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "k54 holds the readiness stop, and ORDERING-ONE-SHOT-RESULTS finds infeasibility not demonstrated. k54 met this hold: no unavailability was known before E01, and the sequence stopped after E01 with no replacement guest. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "k54 holds the readiness stop, and ORDERING-ONE-SHOT-RESULTS finds infeasibility not demonstrated. k54 met this hold: no unavailability was known before E01, and the sequence stopped after E01 with no replacement guest. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D135",
@@ -4692,9 +4692,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "k57 is complete, and k54 keeps runtime held until the listed prerequisites are consumed. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "k57 is complete, and k54 keeps runtime held until the listed prerequisites are consumed. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D148",
@@ -4707,9 +4707,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "k54 keeps earlier causal slots and historical caps unchanged, closed or held. k54 changed no historical record, closed cap or held causal slot. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "k54 keeps earlier causal slots and historical caps unchanged, closed or held. k54 changed no historical record, closed cap or held causal slot. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D149",
@@ -5123,9 +5123,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "Every k66 item is met or classified as context except D134, D147 and D148, which k54 holds. The runtime duties stay unmet, because k54's E01 stopped before the first selection. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "Every k66 item is met or classified as context except D134, D147 and D148, which k54 holds. The runtime duties stay unmet, because k54's E01 stopped before the first selection. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D169",
@@ -5321,9 +5321,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "Every k66 criterion is met except the demonstrated-infeasibility hold of D134, which k54 holds. The runtime duties stay unmet, because k54's E01 stopped before the first selection. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "Every k66 criterion is met except the demonstrated-infeasibility hold of D134, which k54 holds. The runtime duties stay unmet, because k54's E01 stopped before the first selection. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D177",
@@ -5602,9 +5602,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "Failed submissions stay failed, and k54 holds the stop for demonstrated infeasibility. k54 met this hold: no unavailability was known before E01, and the sequence stopped after E01 with no replacement guest. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "Failed submissions stay failed, and k54 holds the stop for demonstrated infeasibility. k54 met this hold: no unavailability was known before E01, and the sequence stopped after E01 with no replacement guest. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D181",
@@ -6011,9 +6011,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "k57 is complete, and k54 keeps runtime held until its prerequisites are consumed. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "k57 is complete, and k54 keeps runtime held until its prerequisites are consumed. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D188",
@@ -6026,9 +6026,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "The VM limit bound k71, and k54 keeps historical caps and causal slots unchanged. k54 changed no historical record, closed cap or held causal slot. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "The VM limit bound k71, and k54 keeps historical caps and causal slots unchanged. k54 changed no historical record, closed cap or held causal slot. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D189",
@@ -6239,9 +6239,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "k67, k62 and k57 are complete, and k54 keeps every runtime slot held. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "k67, k62 and k57 are complete, and k54 keeps every runtime slot held. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D202",
@@ -6314,9 +6314,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "k67, k62 and k57 are complete, and k54 keeps all runtime held. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "k67, k62 and k57 are complete, and k54 keeps all runtime held. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D207",
@@ -6764,9 +6764,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "The held-pointer controls and whole-harness review are delivered, and k54 keeps the runtime hold. The runtime duties stay unmet, because k54's E01 stopped before the first selection. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "The held-pointer controls and whole-harness review are delivered, and k54 keeps the runtime hold. The runtime duties stay unmet, because k54's E01 stopped before the first selection. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D219",
@@ -7211,9 +7211,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "k54 holds the readiness stop, and ORDERING-ONE-SHOT-RESULTS finds infeasibility not demonstrated. k54 met this hold: no unavailability was known before E01, and the sequence stopped after E01 with no replacement guest. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "k54 holds the readiness stop, and ORDERING-ONE-SHOT-RESULTS finds infeasibility not demonstrated. k54 met this hold: no unavailability was known before E01, and the sequence stopped after E01 with no replacement guest. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D225",
@@ -7467,9 +7467,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "k67, k62 and k57 are complete, and k54 keeps every runtime slot held. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "k67, k62 and k57 are complete, and k54 keeps every runtime slot held. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D230",
@@ -7797,9 +7797,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "k67, k62 and k57 are complete, and k54 keeps every runtime slot held. The runtime duties stay unmet, because k54's E01 stopped before the first selection. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "k67, k62 and k57 are complete, and k54 keeps every runtime slot held. The runtime duties stay unmet, because k54's E01 stopped before the first selection. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D252",
@@ -8300,9 +8300,9 @@
   "source": [],
   "controls": [],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "k57 is complete, and k54 keeps runtime held and reconciles before any ancestor closes. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "k57 is complete, and k54 keeps runtime held and reconciles before any ancestor closes. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D270",
@@ -9200,9 +9200,9 @@
    }
   ],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "k81, k76, k67, k62 and k57 delivered their work except the k57 storage plan at D372, and k54 keeps its runtime duties. The runtime duties stay unmet, because k54's E01 stopped before the first selection. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "k81, k76, k67, k62 and k57 delivered their work except the k57 storage plan at D372, and k54 keeps its runtime duties. The runtime duties stay unmet, because k54's E01 stopped before the first selection. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D287",
@@ -9730,9 +9730,9 @@
    }
   ],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "The completed tasks delivered their work except the k57 storage plan at D372, and k54 keeps the runtime holds. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "The completed tasks delivered their work except the k57 storage plan at D372, and k54 keeps the runtime holds. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D301",
@@ -10515,9 +10515,9 @@
    }
   ],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "k67, k62 and k57 are complete except the k57 storage plan at D372, and k54 holds every runtime slot. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "k67, k62 and k57 are complete except the k57 storage plan at D372, and k54 holds every runtime slot. k54 met this hold: every k36 review and integration was complete before E01. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D320",
@@ -10706,9 +10706,9 @@
    }
   ],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "The completed tasks delivered their work except the k57 storage plan at D372, and k54 keeps its duties. The runtime duties stay unmet, because k54's E01 stopped before the first selection. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "The completed tasks delivered their work except the k57 storage plan at D372, and k54 keeps its duties. The runtime duties stay unmet, because k54's E01 stopped before the first selection. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D325",
@@ -11456,9 +11456,9 @@
    }
   ],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "k81, k76, k67, k62 and k57 delivered their work except the k57 storage plan at D372, and k54 keeps its duties. The runtime duties stay unmet, because k54's E01 stopped before the first selection. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "k81, k76, k67, k62 and k57 delivered their work except the k57 storage plan at D372, and k54 keeps its duties. The runtime duties stay unmet, because k54's E01 stopped before the first selection. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D337",
@@ -12028,9 +12028,9 @@
    }
   ],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "The completed tasks delivered their work except the k57 storage plan at D372, and k54 keeps its duties and holds. The runtime duties stay unmet, because k54's E01 stopped before the first selection. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "The completed tasks delivered their work except the k57 storage plan at D372, and k54 keeps its duties and holds. The runtime duties stay unmet, because k54's E01 stopped before the first selection. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D353",
@@ -13426,9 +13426,9 @@
    }
   ],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "Other items classify the delivered duties and limits, k57 storage stays the gap at D372, and k54 keeps readiness, freeze and runtime. The runtime duties stay unmet, because k54's E01 stopped before the first selection. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "Other items classify the delivered duties and limits, k57 storage stays the gap at D372, and k54 keeps readiness, freeze and runtime. The runtime duties stay unmet, because k54's E01 stopped before the first selection. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  },
  {
   "id": "D385",
@@ -13643,8 +13643,8 @@
    }
   ],
   "red": [],
-  "owner": "settings-ordering-next-decision-k183",
+  "owner": "settings-reopen-activation-k12",
   "authority": "settings-ordering-qualification-k54",
-  "note": "The ADR closed the k96 design, k57 storage stays the gap at D372, and k54 keeps the runtime holds. The runtime duties stay unmet, because k54's E01 stopped before the first selection. See ORDERING-QUALIFICATION-RESULTS.md."
+  "note": "The ADR closed the k96 design, k57 storage stays the gap at D372, and k54 keeps the runtime holds. The runtime duties stay unmet, because k54's E01 stopped before the first selection. See ORDERING-QUALIFICATION-RESULTS.md. On 2026-11-24, Antony closed the repair as unresolved, and issue #15 brings this duty back with any new runtime."
  }
 ]

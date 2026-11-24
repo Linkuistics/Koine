@@ -44,6 +44,22 @@ supplies the reviewed call order. It passes compilation and the existing headles
 controls. K36 delivered the repairs of the shared scenario, its helpers and the
 finite caller before the runtime freeze. Repair acceptance stays unresolved.
 
+On 2026-11-24, after the E01 stop, Antony closed the repair as unresolved.
+[Issue #15](https://github.com/Linkuistics/Koine/issues/15) brings the evaluation
+back. A new run there needs a new scope decision, a new declared sequence, a new
+freeze and new slot identities.
+
+Antony left the call order to the decision task. That task chose the order that
+0.4.0 shipped, because the candidate has no acceptance.
+`settings-released-call-order-k184` returns the code to that order. Issue #15
+can apply the candidate again with its evaluation. The dormant diagnostics stay
+in the product.
+
+The shared scenario keeps the strict positive setup. Thus the release menu-bar
+check runs the front-process read that stopped E01 before each of its four
+Settings selections. A release run can stop at that read until issue #15 changes
+it. Such a stop is unavailable evidence, not a Koine failure.
+
 <!-- tc: pending because the conversion has not reached this part of the document -->
 
 This amends a prerequisite; it does not satisfy it. Native cause and ownership
@@ -571,7 +587,7 @@ and [persisted](../verification/settings-activation/PERSISTED-RESULTS.md#every-o
 | Separate finite complete ordinary acceptance | Unmet. It is fixed at three full fresh-guest scenarios after two qualifying focused slots. The same signed subject applies throughout, with diagnostics disabled. Separate declaration and readiness, the all-input and completed-golden freeze and every evidence duty remain. A qualified recurrence rejects reversal. Missing or failed required evidence, or another required failure, stops all later slots without acceptance. A complete pass supports only that finite sample. In k54, E01 stopped with unavailable evidence, so A01, A02 and A03 did not run. |
 | External evidence/reproducer/approval | No external owner is established. Attribution requires positive evidence and a reproducer. If the owner is external, the repair stays unresolved. There is no upstream report without Antony's approval. |
 | Closed historical caps and unrun ordinary phases | All closed caps stay closed. Persisted reopens 2 and 3 stay NOT RUN. So do resize, minimum size, content height and scrolling, shortcuts, requests and denials, and consent. Silent launch, running-app reopen, login restart and Quit also stay NOT RUN. |
-| Repair acceptance/release | The scope agreement supplies no repair or ordinary-acceptance result. The k54 evaluation ended with no acceptance. `settings-ordering-next-decision-k183` owns the next decision. There is no release or notarisation. |
+| Repair acceptance/release | The scope agreement supplies no repair or ordinary-acceptance result. The k54 evaluation ended with no acceptance. Antony closed the repair as unresolved, and issue #15 owns the next evaluation. There is no release or notarisation. |
 
 Persisted scenario/inner Task 1/201, native/collection/audit 1/1/1, outer Task 201
 and post-trace timeout/-1 remain failed outcomes. Original strict false/empty
