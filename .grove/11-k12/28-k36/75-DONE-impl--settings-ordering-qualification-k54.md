@@ -307,6 +307,60 @@ decision in this log. The contract wording stays strict until the owner decides.
 - 2026-11-24, from k182: the strict binding of the P3-3 item needs an owner
   decision before the freeze. The K182 section above holds the options and the
   recommendation. The decision is open.
+- 2026-11-24, Antony: accept the check before dispatch and after each attempt as
+  the P3-3 binding for this run. This decision settles the K182 hold. A change
+  that is undone within one attempt stays unrefused, and a refusal cannot recall
+  sent input. The results record keeps both as limits.
+- 2026-11-24, observation: a read-only mount of the golden shows
+  `SystemVersion.plist` with 27.2.1 and 26B131 and no `ProductVersionExtra`. The
+  host has the same build and no extra value. The receipt declares
+  `product_version_extra` as null.
+- 2026-11-24, decision: the receipt declares Gatekeeper `enabled`. The tagged
+  3.0.0 golden creation runs no `spctl` command, and its note says that Gatekeeper
+  stays on. The image has no `SystemPolicy-prefs.plist`. That file read is not a
+  proven instrument, because the control image also lacked the file. No
+  direct guest read precedes E01, and the protocol admits no extra guest.
+- 2026-11-24, observation: Time Machine has no destination. The Google Drive
+  `roots` table is empty, and Dropbox syncs only its own folder. Carbon Copy
+  Cloner has one task, and its log says that the task has no automation. No tool
+  copies the sequence directory without an owner action.
+- 2026-11-24 10:27Z, freeze: the subject is built and signed at the declared
+  path from commit `37d09ab2`. The working copy changed only this task file and
+  the provenance results record. The executable UUID is
+  `3D5E7700-B5F2-3A99-AEDA-F2601CB5CEBD`, and the Team ID is TA43A4RUP3. The
+  focused receipt has SHA-256
+  `7b60058cd4b7af000baecfc5b5ce56d1fdf9a2a6b261750c02c9b2b31f53f3e8`. It holds
+  20 input trees and the golden tree. The golden digests equal the values above.
+- 2026-11-24, observation: one Tart clone of the golden, with no boot, left the
+  golden tree unchanged item by item. This session then removed that clone. The receipt
+  was written again after this probe, and it did not change.
+- 2026-11-24, decision: each slot runs through
+  `.build/settings-activation/ordering-freeze/run-slot.sh`. It puts Task 3.54.0
+  first on `PATH`, sets `KOINE_APP_BUNDLE` to the subject and turns off Python
+  byte-code writes. Byte-code writes would change the `scripts` tree between its
+  audits. The private freeze records stay in that directory.
+- 2026-11-24, decision before any slot: the screenshot audit uses one rule for
+  every slot. View each retained `screen.png` of the evidence root. Compare each
+  image with the structured result of its operation. A precondition image must
+  show TextEdit in front with its document, no Koine window and no open menu,
+  dialog or sheet. An open-menu image must show the Koine menu open. An outcome
+  image must show the one Koine Settings window in front. The result is `passed`
+  only when each image is readable and agrees. A visible conflict is `failed`,
+  and it leaves the outcome unresolved. An unreadable or missing image is
+  `unavailable`. The audit never infers focus from pixels.
+- 2026-11-24 10:28Z, E01: the slot stopped at `first-selection-setup-front`.
+  The System Events read of the front process returned -1728 about 750 ms after
+  the Settings window closed. The strict grammar classed it unavailable. Every
+  audit, the exact stop and the screenshot audit passed. E01 settled
+  `unresolved`, with cleanup `confirmed`.
+- 2026-11-24, outcome: the protocol gives a failed E01 no replacement, so the
+  sequence stopped. `close` passed its golden audit, and `report` gives
+  `no-acceptance`. E02, A01, A02 and A03 are NOT RUN. No Koine failure and no
+  test-driver failure occurred.
+- 2026-11-24, placement: `settings-ordering-next-decision-k183` is a
+  `requirements` leaf under k12, after the k36 node. The next step is Antony's
+  scope decision, and k36 has no remaining work. The 37 ledger rows of k54 now
+  name k183. `ORDERING-QUALIFICATION-RESULTS.md` holds the record.
 - Carried forward for the freeze: the golden digests above predate the freeze.
   Read `ProductVersionExtra` and the Gatekeeper state of the image before the
   readiness receipt declares them. Pin the Task binary at

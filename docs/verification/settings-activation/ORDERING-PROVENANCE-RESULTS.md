@@ -207,8 +207,9 @@ step changes no compared input, wait or assertion.
   The CLI runs by its pathname, and a digest of a pathname cannot bind the image
   that runs. A change that is undone within one attempt is not refused. A
   refusal after an attempt cannot recall input that the attempt sent.
-- k180 says to ask the owner when strict binding is impossible. No owner decision
-  accepts this guarantee yet. k54 holds before the freeze for that decision.
+- k180 says to ask the owner when strict binding is impossible. On 2026-11-24,
+  the owner accepted the check before dispatch and after each attempt as the
+  binding for the k54 run. The two gaps above stay limits of that run.
 - The harness accepts only a configuration file of comments around an empty map.
   A file with any setting refuses every provenance. A setting then needs an
   owner decision and a harness change.

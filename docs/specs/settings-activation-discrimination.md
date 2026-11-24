@@ -33,14 +33,16 @@ front ordering.
 The [distinct protocol](../verification/settings-activation/ORDERING-EVALUATION-PLAN.md)
 sets two focused guests and a separate set of three complete ordinary guests.
 One unchanged signed candidate serves both sets, with diagnostics disabled. These
-numbers are conventions, not statistical bounds. No signed evaluation subject
-has been built or run.
+numbers are conventions, not statistical bounds. On 2026-11-24, k54 froze one
+signed subject and ran E01. E01 stopped before the first selection, because one
+required setup read was unavailable. The evaluation ended with no acceptance, as
+the [qualification results](../verification/settings-activation/ORDERING-QUALIFICATION-RESULTS.md) record.
 
 The [independent review and integration](../verification/settings-activation/ORDERING-REVIEW.md)
 are complete. The [application implementation](../verification/settings-activation/ORDERING-APPLICATION-RESULTS.md)
 supplies the reviewed call order. It passes compilation and the existing headless
-controls. K36 keeps the repairs of the shared scenario, its helpers and the finite
-caller before the runtime freeze. Repair acceptance stays unresolved.
+controls. K36 delivered the repairs of the shared scenario, its helpers and the
+finite caller before the runtime freeze. Repair acceptance stays unresolved.
 
 <!-- tc: pending because the conversion has not reached this part of the document -->
 
@@ -556,9 +558,9 @@ and [persisted](../verification/settings-activation/PERSISTED-RESULTS.md#every-o
 | Supported condition, matched intervention and two finite falsifiers | Unmet. Its role as a prerequisite to the permitted behavioural-repair design and evaluation is amended. It is still required for the corresponding causal claim. The narrow probe does not satisfy it. |
 | Positive failed actual request/native disposition/responsible context | Unresolved. Its role as a prerequisite to the permitted behavioural-repair design and evaluation is amended, and it is not marked satisfied. Native cause and ownership remain unresolved. |
 | Qualified acquisition/configuration/lag and changed-instrument availability/symptom/timing | Historical capabilities and limits are preserved. There is no new runtime qualification. |
-| Actual signed subject/all consumed inputs/completed golden freeze | Still required before any future launch, after review, integration and implementation. The design selects one unchanged candidate across both sets, but no actual signed subject has been built or frozen here. The freeze also pins the host macOS version and build and the Tart version. |
+| Actual signed subject/all consumed inputs/completed golden freeze | Met for the closed k54 sequence. On 2026-11-24, k54 froze one signed subject, all consumed inputs and the completed golden image. It also pinned the host macOS version and build and the Tart version. Any future run needs its own freeze, after review, integration and implementation. The [qualification results](../verification/settings-activation/ORDERING-QUALIFICATION-RESULTS.md) hold the identities. |
 | Failed transport, partial archive, every started attempt and NOT RUN retention <!-- tc: depart synonym-rotation because a started attempt is a protocol state, while launch names an application launch --> | Preserved separately from scenario results. Text from a timeout or a nonzero status remains failed. |
-| Original/endpoint/golden audits and exact clone stop | Required for future runs. Historical duties and results are unchanged. This design has no clone. |
+| Original/endpoint/golden audits and exact clone stop | E01 passed its original, endpoint and input audits and its exact clone stop. The closing golden audit passed. Future runs keep the duty. Historical duties and results are unchanged. |
 | Justified application repair and useful failing product seam | Repair unmet. The concrete design reverses the two calls locally under the named exception. Historical real VM failures are useful product evidence. No deterministic local native RED seam is established. Recorder and reader controls and an order-encoding fake prove no repair. Other candidates retain the API-use test. The [keepalive removal ADR](../adr/settings-harness-takes-no-keepalive-captures.md) withdraws the separate command-ownership delay. Repetition, driver waits, retries, repeated input, deferral and speculative yield remain excluded. |
 | Keepalive/scenario admission and timing | Withdrawn by the [keepalive removal ADR](../adr/settings-harness-takes-no-keepalive-captures.md). The harness has no serialised owner, ownership delay or deferred tick. Input order, explicit sleeps, poll counts and one-attempt transports remain unchanged. |
 | Required captures, failure ordering and retention | Preserved: one writer and ordinal domain, full required-capture validation before subsequent scenario dispatch, sticky first failure, unique private originals and all produced partials. There is no second writer or liveness-only exemption. |
@@ -566,10 +568,10 @@ and [persisted](../verification/settings-activation/PERSISTED-RESULTS.md#every-o
 | Planned keepalive shutdown | Withdrawn by the [keepalive removal ADR](../adr/settings-harness-takes-no-keepalive-captures.md). The harness has no keepalive worker, so it needs no cooperative stop or worker supervision. Earlier failure or an interrupted required capture still prevents acceptance. |
 | Helper, adoption, caller and qualification work | Every remaining duty survives. The surviving duties cover each file, environment, lifecycle and collection helper, and each exec and one-shot confirmation. They cover complete scenario adoption, signals and both held-pointer cases, and the positive setup, title and liveness check. They also cover the exact focused prefix, the finite caller and containment, and readiness, freeze and runtime. The [keepalive removal ADR](../adr/settings-harness-takes-no-keepalive-captures.md) withdraws the owner design chain of design, review and planning. Implementation and each earned review and integration still precede consumption. |
 | One selection, one front/focused Settings window | The required behaviour and one activation request are unchanged. |
-| Separate finite complete ordinary acceptance | Unmet. It is fixed at three full fresh-guest scenarios after two qualifying focused slots. The same signed subject applies throughout, with diagnostics disabled. Separate declaration and readiness, the all-input and completed-golden freeze and every evidence duty remain. A qualified recurrence rejects reversal. Missing or failed required evidence, or another required failure, stops all later slots without acceptance. A complete pass supports only that finite sample. |
+| Separate finite complete ordinary acceptance | Unmet. It is fixed at three full fresh-guest scenarios after two qualifying focused slots. The same signed subject applies throughout, with diagnostics disabled. Separate declaration and readiness, the all-input and completed-golden freeze and every evidence duty remain. A qualified recurrence rejects reversal. Missing or failed required evidence, or another required failure, stops all later slots without acceptance. A complete pass supports only that finite sample. In k54, E01 stopped with unavailable evidence, so A01, A02 and A03 did not run. |
 | External evidence/reproducer/approval | No external owner is established. Attribution requires positive evidence and a reproducer. If the owner is external, the repair stays unresolved. There is no upstream report without Antony's approval. |
 | Closed historical caps and unrun ordinary phases | All closed caps stay closed. Persisted reopens 2 and 3 stay NOT RUN. So do resize, minimum size, content height and scrolling, shortcuts, requests and denials, and consent. Silent launch, running-app reopen, login restart and Quit also stay NOT RUN. |
-| Repair acceptance/release | The scope agreement supplies no repair or ordinary-acceptance result. There is no release or notarisation. |
+| Repair acceptance/release | The scope agreement supplies no repair or ordinary-acceptance result. The k54 evaluation ended with no acceptance. `settings-ordering-next-decision-k183` owns the next decision. There is no release or notarisation. |
 
 Persisted scenario/inner Task 1/201, native/collection/audit 1/1/1, outer Task 201
 and post-trace timeout/-1 remain failed outcomes. Original strict false/empty

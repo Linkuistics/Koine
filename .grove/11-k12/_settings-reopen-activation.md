@@ -58,6 +58,13 @@ of an unchanged failure earns another guest. Old caps, strict false or empty
 joins, subjects and failed transports are immutable. Unused slots supply no
 empirical budget.
 
+The k36 ordering evaluation is closed. On 2026-11-24, k54 froze one signed
+subject, and E01 stopped before the first selection. One required setup read was
+unavailable, so the evaluation ended with no acceptance.
+`docs/verification/settings-activation/ORDERING-QUALIFICATION-RESULTS.md` holds
+the record. `settings-ordering-next-decision-k183` owns Antony's next scope
+decision. A new run needs that decision, a new declared sequence and a new freeze.
+
 ## Evidence to consult
 
 `docs/specs/settings-activation-discrimination.md` is the current accepted
