@@ -1,0 +1,21 @@
+# Control 1: append one byte to context-initial-inputs/context-predicate.txt
+Recording revision: e3000cec62880031f4df413144a58efb751506b8
+context-initial-inputs: 7 archived files keep their bytes.
+context-initial-inputs: 1 of 2 reading aids equal their frozen subjects.
+context-initial-inputs: of 289 frozen inputs, 266 match the recording revision, 4 match the archived overlay and 18 match current local bytes.
+context-initial-inputs: NOT CHECKED outside the repository: /Users/antony/.config/mise/config.toml (changed since the freeze)
+context-second-inputs: 5 archived files keep their bytes.
+context-second-inputs: of 292 frozen inputs, 269 match the recording revision, 4 match the archived overlay and 18 match current local bytes.
+context-second-inputs: NOT CHECKED outside the repository: /Users/antony/.config/mise/config.toml (changed since the freeze)
+FAIL docs/verification/settings-activation/context-initial-inputs/context-predicate.txt: differs from frozen subject docs/verification/settings-activation/context-predicate.txt
+FAILED
+exit status: 1
+# Restored from e3000cec:
+36f5ed35408f91c186a806135f5487a44c09eefe806fd0796f2c21b86b8bec8b  docs/verification/settings-activation/context-initial-inputs/context-predicate.txt
+
+# Control 2: remove context-initial-inputs/context-qualify-filter.sh
+docs/verification/settings-activation/context-initial-inputs/CONTEXT-PLAN.md: missing target context-qualify-filter.sh
+docs/verification/settings-activation/context-initial-inputs/READING-AIDS.md: missing target context-qualify-filter.sh
+exit status: 1
+# Restored from e3000cec:
+e32070d14c0a66b65f9999b2c72bd3785e45e22bd73bfca70cf8325428acd5fa  docs/verification/settings-activation/context-initial-inputs/context-qualify-filter.sh

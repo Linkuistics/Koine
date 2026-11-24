@@ -400,3 +400,17 @@ No guest or product change ran. The full original-duty comparison of the report
 keeps four items open. They are the native failed disposition, the old
 application clock relation, a justified repair and a separate complete ordinary
 acceptance.
+
+## Archived charter link aids — k23
+
+The archived [initial context charter](context-initial-inputs/CONTEXT-PLAN.md)
+linked two targets that its archive did not hold. K23 added two
+[reading aids](context-initial-inputs/READING-AIDS.md) beside the charter. Each
+aid holds the exact bytes of its frozen subject. No guest used these copies, and
+the charter bytes did not change.
+
+The task `check:settings-archive-links` compares the archived files and the aids
+with their recorded digests. It also runs the original overlay audit again at
+the recording revision. The [retained evidence](archive-links-evidence/README.md)
+holds the passing runs and the mutation controls. This correction changes only
+the packaging. It establishes no cause, repair, ordinary acceptance or release.

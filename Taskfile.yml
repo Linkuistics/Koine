@@ -314,6 +314,14 @@ tasks:
     cmds:
       - scripts/check-doc-links.py {{.CLI_ARGS}}
 
+  check:settings-archive-links:
+    desc: Check the archived Settings context charters, their two reading aids and the original overlay audit; packaging only, no guest or repair
+    cmds:
+      - ruff check --select E,F,I --line-length 100 scripts/settings_archive_links.py scripts/test_settings_archive_links.py
+      - uv run --with pytest==9.1.1 pytest -q scripts/test_settings_archive_links.py
+      - uv run --with pytest==9.1.1 --with pyright==1.1.414 pyright scripts/settings_archive_links.py scripts/test_settings_archive_links.py
+      - python3 scripts/settings_archive_links.py --check
+
   design:workflow-render:
     desc: Render the workflow provider architecture views (D2 0.9.0 and PlantUML 1.2026.8)
     cmds:

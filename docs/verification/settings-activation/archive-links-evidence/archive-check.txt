@@ -1,0 +1,18 @@
+task: [check:settings-archive-links] ruff check --select E,F,I --line-length 100 scripts/settings_archive_links.py scripts/test_settings_archive_links.py
+All checks passed!
+task: [check:settings-archive-links] uv run --with pytest==9.1.1 pytest -q scripts/test_settings_archive_links.py
+..........                                                               [100%]
+10 passed in 0.04s
+task: [check:settings-archive-links] uv run --with pytest==9.1.1 --with pyright==1.1.414 pyright scripts/settings_archive_links.py scripts/test_settings_archive_links.py
+0 errors, 0 warnings, 0 informations
+task: [check:settings-archive-links] python3 scripts/settings_archive_links.py --check
+Recording revision: e3000cec62880031f4df413144a58efb751506b8
+context-initial-inputs: 7 archived files keep their bytes.
+context-initial-inputs: 2 of 2 reading aids equal their frozen subjects.
+context-initial-inputs: of 289 frozen inputs, 266 match the recording revision, 4 match the archived overlay and 18 match current local bytes.
+context-initial-inputs: NOT CHECKED outside the repository: /Users/antony/.config/mise/config.toml (changed since the freeze)
+context-second-inputs: 5 archived files keep their bytes.
+context-second-inputs: of 292 frozen inputs, 269 match the recording revision, 4 match the archived overlay and 18 match current local bytes.
+context-second-inputs: NOT CHECKED outside the repository: /Users/antony/.config/mise/config.toml (changed since the freeze)
+PASSED
+exit status: 0

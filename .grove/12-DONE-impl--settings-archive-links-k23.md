@@ -1,5 +1,7 @@
 # settings-archive-links-k23
 
+<!-- tc: off because the original task text is a binding contract that this session does not rewrite -->
+
 ## Goal
 
 Restore resolvable links for the archived initial context charter without
@@ -36,3 +38,20 @@ The current additive brief chain and accepted spec amendments govern authority.
 Root and k12 retain historical evidence; this task still owns only the two
 faithful adjacent archived-link reading aids. Tree restructuring grants no
 alteration of measured charter/input bytes or retrospective consumption claim.
+
+<!-- tc: on -->
+
+## Decisions (running log)
+
+- The aids are byte copies, not symbolic links. A copy keeps the frozen bytes
+  if the parent file changes later. The check compares each copy with its
+  manifest digest. The bytes come from commit e3000cec, where k19 retained the
+  archive.
+- READING-AIDS.md in the archive identifies the two aids. It states that no
+  guest used them, and the charter keeps its recorded bytes and links.
+- The overlay audit runs again at e3000cec, because the source changed after the
+  freeze. The archived overlay excludes the aids, so an aid cannot reconcile a
+  subject. A host or .build subject that differs is NOT CHECKED, not failed. The
+  host mise configuration is the only such subject.
+- The reusable check is `task check:settings-archive-links`. Its pytest suite
+  holds the mutation controls.

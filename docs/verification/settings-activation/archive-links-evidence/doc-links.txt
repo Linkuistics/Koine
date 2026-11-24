@@ -1,0 +1,2 @@
+task: [check:docs] scripts/check-doc-links.py 
+exit status: 0
