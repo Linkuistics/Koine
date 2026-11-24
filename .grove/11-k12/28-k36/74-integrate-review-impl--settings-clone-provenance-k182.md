@@ -21,7 +21,7 @@ immediately before this task, which precedes settings-ordering-qualification-k54
 
 The implementation and recorded controls are in the five scripts and
 ORDERING-PROVENANCE-RESULTS.md named by the review. Read TestAnyware's tagged
-`v3.0.0` source with `git -C ../TestAnyware show v3.0.0:<path>`; do not edit that
+`v3.0.0` source with `git -C ../TestAnyware show v3.0.0:<path>`. Do not edit that
 clone. The inherited brief chain and finite protocol remain authoritative.
 
 ## Done when
@@ -30,8 +30,8 @@ clone. The inherited brief chain and finite protocol remain authoritative.
   unclear contract, real issue, visible trade-off or noise. A rejected finding
   needs no repair merely because the review raised it.
 - Necessary repairs and their meaningful controls are complete. Record fresh
-  verification against the finished source and reconcile the affected duty
-  ledger rows and provenance handoff before k54 consumes them.
+  verification against the finished source. Before k54 consumes them, reconcile
+  the affected duty ledger rows and the provenance handoff.
 - Any required owner decision stays explicit and precedes dependent runtime.
   Preserve the contract's prohibition on silently weakening strict binding.
 - The source and results record state the supported guarantees and limits.
@@ -40,5 +40,5 @@ clone. The inherited brief chain and finite protocol remain authoritative.
 ## Notes
 
 Start no guest, clone, golden build or evaluation slot. This task does not
-authorize an extra read, wait, retry, slot or wider tolerance. Preserve all
+authorise an extra read, wait, retry, slot or wider tolerance. Preserve all
 historical evidence and the no-runtime boundary of the producer and review.
