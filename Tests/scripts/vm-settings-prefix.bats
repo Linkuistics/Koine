@@ -256,7 +256,7 @@ expect_same_failure() {
     # All four selections, each with its setup and its classified outcome checks.
     local selection
     for selection in first-selection reopen-1-selection reopen-2-selection reopen-3-selection; do
-        jq -se --arg s "${selection}" 'map(.operation) | index($s + "-setup-front") != null
+        jq -se --arg s "${selection}" 'map(.operation) | index($s + "-setup-front-state") != null
             and index($s + "-enabled") != null and index("screenshot-setup-" + $s) != null' "${runs}/prefix.calls"
     done
     # The EXIT report states status 0. No PASSED line, no stop and no legacy call.
@@ -271,7 +271,7 @@ expect_same_failure() {
     local case
     # Unavailable answers: the TextEdit PID, a setup read, a route read and a
     # closed-menu read, at the first and later selections.
-    for case in textedit-pid first-selection-setup-front reopen-2-selection-setup-sheets \
+    for case in textedit-pid first-selection-setup-front-state reopen-2-selection-setup-sheets \
         reopen-3-selection-setup-menus reopen-3-selection-enabled screenshot-menu-reopen-1-selection \
         reopen-2-window-1 reopen-3-menu-closed textedit-quit textedit-quit-absence; do
         export settings_fault="${case}"
@@ -288,7 +288,7 @@ expect_same_failure() {
     unset settings_fault
     # Clean false states and classified outcomes, at the fourth selection.
     export settings_at=4
-    for case in textedit-moved textedit-title front-other-pid textedit-sheet textedit-dialog \
+    for case in textedit-moved textedit-title textedit-not-focused textedit-sheet textedit-dialog \
         menu-open-at-setup koine-menu-open-at-setup row-disabled menu-stays-open wrong-title \
         no-title two-windows no-front-after-settings zero-window-crash zero-window-reused; do
         export settings_flags="${case}"

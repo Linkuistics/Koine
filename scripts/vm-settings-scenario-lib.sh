@@ -664,11 +664,17 @@ settings_record_textedit() {
 # four Settings selections over TextEdit, with no added wait. LIST is the
 # zero-count list of the close check, so no window read is added. A clean
 # mismatch is failed setup. Missing or unreadable evidence is unavailable.
+# The front application comes from the focused flag in LIST. The setup makes
+# no System Events front read, because that read stopped E01 (issue 15).
 settings_expect_setup() {
     local operation="$1" list="$2"
     jq -e 'all(.windows[] | select(.appName == "TextEdit"); has("title"))' >/dev/null <<<"${list}" ||
         settings_local_failure "${operation}-setup-title" \
             "a TextEdit window in the zero-count list has no title, so the setup is unavailable"
+    jq -e '[.windows[] | select(.appName != "Notification Center")][0] | has("focused")' \
+        >/dev/null <<<"${list}" ||
+        settings_local_failure "${operation}-setup-focus" \
+            "the front window in the zero-count list has no focused flag, so the setup is unavailable"
     settings_state "${operation}-setup-windows" "([.windows[] | select(.appName == \"${SETTINGS_APP}\")] | length) == 0
         and ([.windows[] | select(.appName == \"TextEdit\")] | length) == 1
         and ([.windows[] | select(.appName == \"TextEdit\")][0]
@@ -676,9 +682,9 @@ settings_expect_setup() {
             and [.positionX, .positionY, .sizeWidth, .sizeHeight] == ${SETTINGS_TEXTEDIT_FRAME})" "${list}" ||
         settings_require_as setup-failed "$?" \
             "before ${operation}, the list shows a Koine window, or not one standard Untitled TextEdit window at ${SETTINGS_TEXTEDIT_FRAME}"
-    check_guest_read "${KOINE_VM_EVIDENCE_ROOT}" read-poll "${operation}-setup-front" \
-        ".value == [\"TextEdit\", ${SETTINGS_TEXTEDIT_PID}]" front-process >/dev/null ||
-        settings_require_as setup-failed "$?" "before ${operation}, TextEdit (PID ${SETTINGS_TEXTEDIT_PID}) is not the front process"
+    settings_state "${operation}-setup-front" "[.windows[] | select(.appName != \"Notification Center\")][0]
+        | .appName == \"TextEdit\" and .focused == true" "${list}" ||
+        settings_require_as setup-failed "$?" "before ${operation}, the TextEdit window is not the front, focused window"
     check_guest_read "${KOINE_VM_EVIDENCE_ROOT}" read-poll "${operation}-setup-sheets" \
         '.value == [["AXStandardWindow"], [[]]]' textedit-windows >/dev/null ||
         settings_require_as setup-failed "$?" "before ${operation}, TextEdit shows a dialog, a sheet or another window"

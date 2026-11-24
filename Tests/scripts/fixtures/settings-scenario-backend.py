@@ -319,6 +319,11 @@ def window_entry(state: dict[str, Any], app: str) -> dict[str, Any]:
         }
         if late and before_return(state, "textedit-no-title"):
             del entry["title"]
+        # The positive setup judges the front application by this flag.
+        if late and before_return(state, "textedit-not-focused"):
+            entry["focused"] = False
+        if late and before_return(state, "textedit-no-focus"):
+            del entry["focused"]
         return entry
     return {
         "title": "Accessibility",

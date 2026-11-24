@@ -173,7 +173,7 @@ input_after() {
         screenshot-first-launch textedit-window-1 reopen-2-front resize-move resize-down-3 \
         least-size-login-1 shortcut-type enrol-vm-editor requests-deny-1-click \
         accessibility-add-1 reopen-identity restart restart-boot-1 login-process port-refusal \
-        installed-after textedit-pid first-selection-identity first-selection-setup-front \
+        installed-after textedit-pid first-selection-identity first-selection-setup-sheets \
         first-selection-enabled screenshot-menu-first-selection reopen-1-menu-closed \
         screenshot-outcome-reopen-2; do
         rm -f "${settings_sim}/calls.jsonl" "${settings_sim}/state.json"
@@ -519,8 +519,8 @@ DATE
         # The identity read, the setup reads and the screenshot come directly
         # before the menu opening, with no window read and no wait.
         jq -se --arg s "${sel}" 'map(.operation) as $o | ($o | index($s + "-item-1")) as $i
-            | $o[$i - 10:$i] == [$s + "-identity", $s + "-identity-state",
-                $s + "-setup-windows-state", $s + "-setup-front", $s + "-setup-front-state",
+            | $o[$i - 9:$i] == [$s + "-identity", $s + "-identity-state",
+                $s + "-setup-windows-state", $s + "-setup-front-state",
                 $s + "-setup-sheets", $s + "-setup-sheets-state", $s + "-setup-menus",
                 $s + "-setup-menus-state", "screenshot-setup-" + $s]' "${settings_sim}/calls.jsonl" || {
             echo "setup sequence of ${sel}"
@@ -545,7 +545,7 @@ DATE
 
 @test "a clean setup mismatch before any of the four selections is failed setup and opens no menu" {
     local case flag at sel
-    for case in textedit-moved:1 textedit-title:2 front-other-pid:3 textedit-sheet:4 \
+    for case in textedit-moved:1 textedit-title:2 textedit-not-focused:3 textedit-sheet:4 \
         textedit-dialog:1 menu-open-at-setup:2 koine-menu-open-at-setup:3; do
         flag="${case%:*}" at="${case#*:}" sel="${SELECTIONS[$((${case#*:} - 1))]}"
         reset_run
@@ -563,20 +563,22 @@ DATE
 }
 
 @test "missing or failed setup evidence is unavailable and opens no menu" {
-    local case kind name sel at
-    for case in flag:textedit-no-title:first-selection fault:textedit-pid:first-selection \
+    # A flag case names the local failure record that it latches.
+    local case kind name sel record at
+    for case in flag:textedit-no-title:first-selection:setup-title \
+        flag:textedit-no-focus:first-selection:setup-focus fault:textedit-pid:first-selection \
         fault:first-selection-identity:first-selection \
-        fault:reopen-1-selection-setup-front:reopen-1-selection \
+        fault:reopen-1-selection-setup-front-state:reopen-1-selection \
         fault:reopen-2-selection-setup-sheets:reopen-2-selection \
         fault:reopen-3-selection-setup-menus:reopen-3-selection \
         fault:screenshot-setup-first-selection:first-selection; do
-        IFS=: read -r kind name sel <<<"${case}"
+        IFS=: read -r kind name sel record <<<"${case}"
         reset_run
         unset settings_flags settings_fault
         if [[ "${kind}" == flag ]]; then export settings_flags="${name}"; else export settings_fault="${name}"; fi
         run_scenario
         at="$(call_index "${name}")"
-        [[ "${kind}" == fault ]] || at="$(call_index "${sel}-setup-title")"
+        [[ "${kind}" == fault ]] || at="$(call_index "${sel}-${record}")"
         if [[ "${status}" != 125 || "${at}" -le 0 || "$(input_after "${at}")" != '[]' ]] ||
             [[ "$(call_index "${sel}-item-1")" != -1 ]]; then
             echo "case ${case}: status ${status}, at ${at}, later input $(input_after "${at}")"

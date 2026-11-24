@@ -56,10 +56,12 @@ operation requests the key and front window first, and then activation once. Iss
 #15 can apply the candidate again with its evaluation. The dormant diagnostics stay
 in the product.
 
-The shared scenario keeps the strict positive setup. Thus the release menu-bar
-check runs the front-process read that stopped E01 before each of its four
-Settings selections. A release run can stop at that read until issue #15 changes
-it. Such a stop is unavailable evidence, not a Koine failure.
+For issue #15, the positive setup of the shared scenario no longer makes the
+System Events front-process read that stopped E01. Before each of the four
+Settings selections, the setup judges the zero-count list of the close check. The
+first window that is not Notification Center must be the TextEdit window, with
+`focused: true`. A clean mismatch is a failed setup. A list without the flag is
+unavailable evidence, not a Koine failure. The setup adds no read and no wait.
 
 <!-- tc: pending because the conversion has not reached this part of the document -->
 

@@ -47,3 +47,33 @@ breaks gets the narrowest repair that keeps it green. Do not remove the tooling.
 
 No review leaf exists in advance. At the end, cut one only if the change turns
 out to need an adversarial read.
+
+## Decisions (running log)
+
+The setup judges the first window that is not Notification Center in the
+zero-count list. It records the decision as the local state
+`<selection>-setup-front-state`. The new condition replaces the old
+`<selection>-setup-front` read at the same position.
+
+A missing `focused` flag on that window is a local failure record named
+`<selection>-setup-focus`. The check runs beside the title check, before any
+state decision. This follows the title pattern, because jq reads a missing key
+as `null`, and the predicate would then report a clean mismatch.
+
+The backend gets two setup flags. `textedit-not-focused` gives the clean
+mismatch, and `textedit-no-focus` removes the flag. Both act only after the
+first close, as `textedit-no-title` does. The `front-other-pid` flag and the
+`front-process` answer stay in the backend, because the read keeps its own
+tests.
+
+The transport-family fault test named the removed read. It now names
+`first-selection-setup-sheets`, which is still a System Events read of the
+same setup. The other fault cases name `-setup-front-state`, because the
+backend can fault a local poll record.
+
+`check:settings-baseline` pins the ordered state predicates of a complete
+run in `ordering-baseline-evidence/classification.json`. The pin named the
+old read before each of the four selections. The repair replaces only that
+`predicates` list with the output of `--print-predicates`. Each old read and
+state pair becomes one state entry, and no other entry moves. The `.subjects`
+digest files record past measurements, so they keep the old digest.

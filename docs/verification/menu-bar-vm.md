@@ -17,7 +17,9 @@ The [design review and integration](settings-activation/ORDERING-REVIEW.md) are
 complete. The [application record](settings-activation/ORDERING-APPLICATION-RESULTS.md)
 holds the k52 candidate and its return. On 2026-11-25, the code returned to the
 order that 0.4.0 released: one key and front request, and then one activation
-request. The release menu-bar check keeps the strict front read until issue #15 changes it.
+request. For issue #15, the positive setup makes no System Events front read. It
+judges the zero-count list of the close check. There, the first window that is not
+Notification Center must be the TextEdit window, with `focused: true`.
 
 Both sets require the same changed helpers: strict single-attempt transport and
 positive TextEdit setup. They also require an audit of the original list for the
