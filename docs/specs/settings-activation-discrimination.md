@@ -64,11 +64,18 @@ The show operation requests activation once, and then the key and front window.
 The dormant diagnostics stay in the product.
 
 For issue #15, the positive setup of the shared scenario no longer makes the
-System Events front-process read that stopped E01. Before each of the four
-Settings selections, the setup judges the zero-count list of the close check. The
-first window that is not Notification Center must be the TextEdit window, with
-`focused: true`. A clean mismatch is a failed setup. A list without the flag is
-unavailable evidence, not a Koine failure. The setup adds no read and no wait.
+System Events front-process read that stopped E01. The setup judges a window list
+that the scenario holds. Before the first Settings selection, that list is the
+zero-count list of the close check. The first window that is not
+Notification Center must be the TextEdit window, with `focused: true`. A clean
+mismatch is a failed setup. A list without the flag is unavailable evidence, not a Koine failure.
+
+Before each reopen, the scenario gives TextEdit's window focus with the agent's
+`window-focus` action. It then reads one window list, and the setup judges that
+list. Attempt 2 of the release showed why. After a close while Koine was active,
+no TextEdit window had the focus. A diagnostic guest qualified the step, as the
+[menu-bar record](../verification/menu-bar-vm.md#the-reopen-focus-step) states.
+The setup itself adds no read and no wait.
 
 For issue #15, the two menu checks of the shared scenario read the size of each
 menu. Before each Settings selection, each menu under each TextEdit item and under

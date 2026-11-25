@@ -73,3 +73,64 @@ the harness.
 The delivery rule applies. A finding that does not break the happy path becomes
 a GitHub issue. Whether macOS should give focus back to the previous window
 after Koine's Settings window closes is such a finding.
+
+## Decisions (running log)
+
+**The step and the read (2026-11-26).** In each reopen, the scenario adds two
+operations after the zero-count poll. `reopen-<n>-focus` sends
+`window-focus --window TextEdit`. `reopen-<n>-focused` then reads one complete
+window list, and the setup judges that list. The setup predicate does not
+change. The zero-count poll stays, because it proves that the window closed.
+
+TestAnyware's agent answers `window-focus` in `handleWindowFocus` of
+`agents/macos/Sources/testanyware-agent/AgentServer.swift` (the local
+checkout). It activates the owning application with
+`NSRunningApplication.activate(options: [])`, then sets `AXMain` and
+`AXFocused` on the window. The window list reports `focused: true` only for
+the main window of the accessibility focused application. So a refused
+activation leaves the flag false, and the probe can see it. The screenshot
+checks key status independently.
+
+**The qualification run (2026-11-26).** `task app:vm-probe-reopen-focus` ran on
+its own clone, `koine-reopen-focus-probe`, and stopped it. The guest ran macOS
+27.2.1, build 26B131, with the notarised 0.4.1 bundle. The evidence root is
+`.build/vm-verify/reopen-focus-20261125T134025Z`. Three cycles chose Settings…
+over TextEdit, closed the window while Koine was active and sent the focus step.
+
+In each cycle, the list after the close showed TextEdit's window first with
+`focused: false`, as in attempt 2. The list read at once after the step showed
+it first with `focused: true`, and so did a read one second later. The
+screenshot `closed-1.png` shows grey close buttons. `focused-1.png` shows
+coloured buttons and a caret. The title-bar click was not needed.
+
+Two earlier runs stopped in the probe's own route, and the leaf discarded
+them. In the first, Settings… did not open after the two clicks, and the probe
+logged no frame. The cause is not established. The probe now logs each frame
+and matches the row by a title that starts with "Settings". The second run
+failed on the AppleScript grammar of that row read.
+
+**The backend and the baseline (2026-11-26).** The simulated backend now models
+the fault. A close of Koine's window while Koine is first leaves no window
+focused, until an application comes to the front. The flag `focus-ignored`
+makes the step change nothing, and the new scenario test shows that the strict
+setup then fails. Two mutated scenarios turn both changed tests red: one with no
+focus step, and one that takes the step but judges the zero-count list.
+
+`check:settings-baseline` could classify only removals from the baseline
+stream, and the step adds the event `window focus TextEdit`. The narrowest
+repair lets a difference row carry an `added` list. `classification.json` adds
+the class `reopen-focus-step` and three additions in each of the nine cases
+that reach the reopens. A new control drops those rows and sees the check fail.
+
+**The follow-up issue (2026-11-26).** Issue #20 asks whether Koine should give
+the focus back when its window closes. The release does not change it.
+
+**The checks (2026-11-26).** One run took 28 Taskfile checks in turn. They are
+every check that reads the scenario, its prefix, its library, its backend, the
+baseline checker or the documents. A digest of each of the 12 changed files
+matched before and after the run.
+
+26 checks passed. `check:docs` failed on a
+link in `ORDERING-PROVENANCE-RESULTS.md` to `.grove/11-k12/`, which the parent
+commit does not hold either. `check:vm-settings-context-filter` failed on its
+retained native streams. This leaf changes neither input.

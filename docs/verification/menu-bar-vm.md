@@ -22,8 +22,11 @@ and then one key and front request. One clean run of this check on the notarised
 states.
 
 For issue #15, the positive setup makes no System Events front read. It
-judges the zero-count list of the close check. There, the first window that is not
+judges a window list that the scenario holds. Before the first selection, that
+list is the zero-count list of the close check. Before each reopen, it is the list
+that the scenario reads after its focus step. There, the first window that is not
 Notification Center must be the TextEdit window, with `focused: true`.
+[The reopen focus step](#the-reopen-focus-step) records why each reopen needs it.
 
 The setup and the closed-menu check after each menu selection read the size of
 each menu. A closed menu has the size `{0, 0}`. The checks read the menu names
@@ -171,6 +174,59 @@ These limits apply:
 - An item with no menu would make a closed check pass with no evidence. Thus each
   read needs at least one menu under each item.
 
+## The reopen focus step
+
+Each reopen of the shared scenario follows a Settings selection that worked. Koine
+is then the active application, and its window is the key window. The harness
+closes that window. macOS then leaves TextEdit as the front application, but no
+TextEdit window has the focus.
+
+Attempt 2 of the 0.4.1 release (`menu-bar-20261125T212057`) stopped in that state,
+in the setup of the first reopen. The list showed TextEdit's window first with
+`focused: false`. The failure screenshot showed grey close buttons. The first
+selection does not meet this state. Before it, the harness closes the window while
+TextEdit is active, and TextEdit keeps its focused window. The old System Events
+front read named only the front process, so it passed in both states.
+
+In each reopen, the scenario now sends the agent's `window-focus` action to TextEdit
+after the close poll, as `reopen-N-focus`. It then reads one window list, as
+`reopen-N-focused`, and the setup judges that list. The setup predicate does not
+change, and the scenario adds no wait. The agent activates the application of the
+window and sets `AXMain` and `AXFocused` on the window. Its list reports
+`focused: true` only for the main window of the focused application. So a refused
+activation leaves the flag false.
+
+`task app:vm-probe-reopen-focus` (`scripts/vm-probe-reopen-focus.sh`) qualified the
+step on its own clone. It is a bounded probe, not an acceptance attempt. The run at
+13:40 UTC on 2026-11-25 used the clone `koine-reopen-focus-probe` of
+`testanyware-golden-macos-27`. The guest ran macOS 27.2.1, build 26B131, with the
+notarised 0.4.1 zip. The reads and the screenshots are in
+`.build/vm-verify/reopen-focus-20261125T134025Z`.
+
+The probe ran three cycles, as the reopen loop does. Each cycle chose Settings…
+over TextEdit's window, closed the window while Koine was active and sent the focus
+step. In each list, TextEdit's window came first. The table gives its focused flag:
+
+| Cycle | After the close | At once after the step | One second later |
+|---|---|---|---|
+| 1 | false | true | true |
+| 2 | false | true | true |
+| 3 | false | true | true |
+
+Each screenshot after a close shows grey close buttons on TextEdit's window. Each
+screenshot after a step shows coloured buttons. The probe also had a click on the
+title bar for a step that failed, and no cycle needed it.
+
+These limits apply:
+
+- No Apple source states which window has the focus after an agent application
+  closes its key window. The result rests on this guest release and this run.
+- The scenario reads the list at once after the step, as the probe did. If a
+  slower guest reads the list before the activation completes, the setup fails
+  cleanly. The failure screenshot then shows the state.
+- Whether Koine should give the focus back when its window closes is a product
+  question. Issue #20 holds it.
+
 <!-- tc: pending because the conversion has not reached this part of the document -->
 
 ## Procedure
@@ -219,7 +275,7 @@ sample is complete, so further measurements need a new declared protocol.
 |---|---|---|
 | First launch | `open` the bundle on a clone where Accessibility is not granted and login launch is not enabled | one window titled "Koine Settings", 480 wide and 680 plus the title bar high; System Events reports the process `background only`; the Dock holds no Koine; exactly one menu bar item, labelled "Koine, Accessibility not granted"; its menu is "Accessibility Not Granted…", a separator, "Settings…", "Quit Koine" |
 | No visible menu bar | TextEdit opened over Koine's window | TextEdit is in front and the menu bar is its, though Koine's window is on screen |
-| Reopen from the menu | close the window; choose "Settings…" with the pointer; close and choose it three more times | the window is back each time, first in the front-to-back list and the key window, over TextEdit's; the item is there throughout |
+| Reopen from the menu | close the window; choose "Settings…" with the pointer; close it three more times, and each time give TextEdit's window focus with `window-focus` before Settings… is chosen again | the window is back each time, first in the front-to-back list and the key window, over TextEdit's; the item is there throughout |
 | Resize | drag the window's corner (not `agent window-resize`, which is not held to the least size) out, then in past the least size | larger as dragged; no smaller than 440 wide and 320 plus the title bar high; at that size every control is still reached by scrolling |
 | Shortcuts | in the Client label field: type, ⌘A ⌘C ⌘X, ⌘V; then ⌘W | the field empties on cut and returns on paste; ⌘W closes the window and the item stays |
 | A client's request | a guest client enrols with `scripts/vm-verify-enrollment-client.py`, with no credential and no consent from the user; a second | within a poll the label reads "Koine, 1 grant request waiting, Accessibility not granted" and then "…2 grant requests waiting…"; the menu leads with "Review 1 Grant Request…" and then "Review 2 Grant Requests…"; no window opened by itself |

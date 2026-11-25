@@ -56,6 +56,10 @@
   "reviewed-harness-change": {
    "reason": "The prefix report records this harness change and its reason.",
    "citation": "docs/verification/settings-activation/ORDERING-PREFIX-RESULTS.md#later-ordinary-assertions-and-the-baseline"
+  },
+  "reopen-focus-step": {
+   "reason": "Before each reopen, the scenario gives TextEdit's window focus, because a close while Koine is active leaves no window focused. A guest qualified the step.",
+   "citation": "docs/verification/menu-bar-vm.md#the-reopen-focus-step"
   }
  },
  "waits": [
@@ -966,6 +970,222 @@
     "wait 1"
    ],
    "class": "no-corrective-input"
+  },
+  {
+   "case": "complete",
+   "index": 36,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "complete",
+   "index": 50,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "complete",
+   "index": 64,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "quit-row",
+   "index": 36,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "quit-row",
+   "index": 50,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "quit-row",
+   "index": 64,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "add-button",
+   "index": 36,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "add-button",
+   "index": 50,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "add-button",
+   "index": 64,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "reveal",
+   "index": 36,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "reveal",
+   "index": 50,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "reveal",
+   "index": 64,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "restart-boot",
+   "index": 36,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "restart-boot",
+   "index": 50,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "restart-boot",
+   "index": 64,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "login-endpoint",
+   "index": 36,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "login-endpoint",
+   "index": 50,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "login-endpoint",
+   "index": 64,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "resize",
+   "index": 36,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "resize",
+   "index": 50,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "resize",
+   "index": 64,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "silent-launch",
+   "index": 36,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "silent-launch",
+   "index": 50,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "silent-launch",
+   "index": 64,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "requests-on-screen",
+   "index": 36,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "requests-on-screen",
+   "index": 50,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
+  },
+  {
+   "case": "requests-on-screen",
+   "index": 64,
+   "added": [
+    "window focus TextEdit"
+   ],
+   "class": "reopen-focus-step"
   }
  ],
  "failure_differences": [

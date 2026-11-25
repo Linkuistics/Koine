@@ -527,12 +527,18 @@ DATE
             return 1
         }
     done
-    # The first setup follows the menu count; each later one follows its count poll.
+    # The first setup follows the menu count and judges the zero-count list.
+    # Each reopen setup follows its count poll, the focus step and the one
+    # window read after it, and judges that list (k6).
     jq -se 'map(.operation) as $o | ($o | index("first-selection-identity")) as $i
         | $o[$i - 1] == "first-close-count-state"' "${settings_sim}/calls.jsonl"
     for index in 1 2 3; do
         jq -se --arg s "reopen-${index}" 'map(.operation) as $o | ($o | index($s + "-selection-identity")) as $i
-            | ($o[$i - 1] | test("^" + $s + "-closed-[0-9]+-state$"))' "${settings_sim}/calls.jsonl"
+            | $o[$i - 2:$i] == [$s + "-focus", $s + "-focused"]
+            and ($o[$i - 3] | test("^" + $s + "-closed-[0-9]+-state$"))' "${settings_sim}/calls.jsonl" || {
+            echo "focus step of reopen-${index}"
+            return 1
+        }
     done
     # No setup for the later returns or the Quit selections: each setup
     # operation belongs to one of the four selections.
@@ -586,6 +592,42 @@ DATE
             return 1
         fi
     done
+}
+
+@test "each reopen gives TextEdit's window focus, and the setup judges the list after it (k6)" {
+    run_scenario
+    [[ "${status}" == 0 ]]
+    local index
+    # The step targets TextEdit, and its read is one complete window list.
+    for index in 1 2 3; do
+        jq -se --arg s "reopen-${index}-focus" 'map(select(.operation == $s)) | length == 1
+            and (.[0] | tostring | test("window-focus")) and (.[0] | tostring | test("TextEdit"))' \
+            "${settings_sim}/calls.jsonl" || {
+            echo "the focus step of reopen-${index}"
+            return 1
+        }
+        jq -se --arg s "reopen-${index}-focused" 'map(select(.operation == $s)) | length == 1
+            and (.[0] | tostring | test("windows"))' "${settings_sim}/calls.jsonl" || {
+            echo "the window read of reopen-${index}"
+            return 1
+        }
+    done
+    # A step that leaves no window focused is failed setup, and no menu opens.
+    # The close before each reopen leaves no window focused in the model, so
+    # the strict front predicate rejects the list read after the step.
+    reset_run
+    export settings_flags=focus-ignored
+    run_scenario
+    expect_outcome setup-failed
+    [[ "${output}" == *"before reopen-1-selection, the TextEdit window is not the front, focused window"* ]]
+    [[ "$(call_index reopen-1-selection-item-1)" == -1 ]]
+    # An unavailable read after the step stops the scenario before the setup.
+    reset_run
+    unset settings_flags
+    export settings_fault=reopen-2-focused
+    run_scenario
+    [[ "${status}" == 125 && "$(call_index reopen-2-selection-identity)" == -1 ]]
+    [[ "$(input_after "$(call_index reopen-2-focused)")" == '[]' ]]
 }
 
 @test "two TextEdit processes after the preparation are failed setup" {

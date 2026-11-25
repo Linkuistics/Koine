@@ -423,19 +423,25 @@ def check_static(
 def expected_events(
     name: str, stream: list[str], differences: list[dict[str, object]]
 ) -> tuple[list[str], list[str]]:
-    """The baseline stream after the classified removals of one case."""
+    """The baseline stream after the classified differences of one case.
+
+    A row removes its "removed" events at its baseline index and puts its
+    "added" events there. The focus step before each reopen (k6) is the
+    first addition.
+    """
     findings: list[str] = []
     result = list(stream)
     rows = [row for row in differences if row["case"] == name]
     for row in sorted(rows, key=lambda item: -cast(int, item["index"])):
         index = cast(int, row["index"])
-        removed = cast(list[str], row["removed"])
+        removed = cast(list[str], row.get("removed", []))
+        added = cast(list[str], row.get("added", []))
         if result[index : index + len(removed)] != removed:
             findings.append(
                 f"{name}: classified removal at {index} is not in the record"
             )
             continue
-        del result[index : index + len(removed)]
+        result[index : index + len(removed)] = added
     return result, findings
 
 

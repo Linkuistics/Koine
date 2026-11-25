@@ -133,7 +133,8 @@ settings_await_windows first-close-window 0
 CLOSED_LIST="${SETTINGS_COUNT_LIST}"
 settings_expect_menu_count first-close-count "the menu bar item went with the window"
 # Each of the four selections: the pre-click identity, the positive setup on
-# the zero-count list, the route, then the classified outcome. The front
+# the zero-count list (on the list after the focus step, for each reopen), the
+# route, then the classified outcome. The front
 # application read of a failure precedes the latch.
 settings_pre_click_identity first-selection
 settings_expect_setup first-selection "${CLOSED_LIST}"
@@ -141,11 +142,18 @@ settings_select_return first-selection "Settings…"
 settings_expect_return first-selection "the window did not come to the front over TextEdit's" menu
 # The outcome screenshot.
 settings_capture over-textedit
+# Each reopen closes the window while Koine is active. macOS then leaves
+# TextEdit in front with no focused window (attempt 2 of 0.4.1), so the focus
+# step gives its window focus again. The setup judges the list read after the
+# step. A guest qualified the step (k6, scripts/vm-probe-reopen-focus.sh).
 for reopen in 1 2 3; do
     settings_window "reopen-${reopen}-close" window-close "${WINDOW_TITLE}"
     settings_await_windows "reopen-${reopen}-closed" 0
+    settings_window "reopen-${reopen}-focus" window-focus TextEdit
+    LIST="$(settings_windows "reopen-${reopen}-focused")" ||
+        settings_stop "$?" "the window list after the focus step could not be read"
     settings_pre_click_identity "reopen-${reopen}-selection"
-    settings_expect_setup "reopen-${reopen}-selection" "${SETTINGS_COUNT_LIST}"
+    settings_expect_setup "reopen-${reopen}-selection" "${LIST}"
     settings_select_return "reopen-${reopen}-selection" "Settings…"
     settings_expect_return "reopen-${reopen}" "Settings reopen ${reopen} did not bring the window to the front" menu
     settings_capture "outcome-reopen-${reopen}"

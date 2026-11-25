@@ -662,7 +662,8 @@ settings_record_textedit() {
 
 # settings_expect_setup OPERATION LIST: the positive setup before one of the
 # four Settings selections over TextEdit, with no added wait. LIST is the
-# zero-count list of the close check, so no window read is added. A clean
+# zero-count list of the close check before the first selection. Before each
+# reopen, it is the list read after the focus step (k6). A clean
 # mismatch is failed setup. Missing or unreadable evidence is unavailable.
 # The front application comes from the focused flag in LIST. The setup makes
 # no System Events front read, because that read stopped E01 (issue 15).

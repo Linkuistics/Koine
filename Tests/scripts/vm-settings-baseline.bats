@@ -63,6 +63,11 @@ refused_review() {
     refused_review menu-titles 'menu-titles: event'
 }
 
+@test "an unclassified added event fails the control (k6)" {
+    edit_review 'review["event_differences"] = [row for row in review["event_differences"] if "added" not in row]'
+    refused_review complete 'complete: event'
+}
+
 @test "a classified removal that is not in the record fails the control" {
     edit_review 'review["event_differences"][0]["removed"] = ["input key return", "wait 1"]'
     refused_review menu-titles 'classified removal'

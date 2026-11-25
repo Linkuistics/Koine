@@ -51,6 +51,11 @@ use of the domain instead:
 - Each menu bar item has one menu. A closed menu has the size {0, 0}, and an
   open menu has a positive size. A guest qualified this signal (k5,
   scripts/vm-probe-menu-open.sh).
+- A close of Koine's window while Koine is the active application leaves no
+  window focused, until an application comes to the front. The agent's
+  window-focus brings its target to the front. A guest showed both (k6,
+  scripts/vm-probe-reopen-focus.sh). The flag `focus-ignored` makes each
+  window-focus change nothing.
 """
 
 from __future__ import annotations
@@ -129,6 +134,7 @@ def load() -> dict[str, Any]:
         "drag": None,
         "returns": 0,
         "closes": 0,
+        "unfocused": False,
     }
 
 
@@ -143,6 +149,7 @@ def log(entry: dict[str, Any]) -> None:
 
 def front(state: dict[str, Any], app: str) -> None:
     state["order"] = [app] + [name for name in state["order"] if name != app]
+    state["unfocused"] = False
 
 
 def drop(state: dict[str, Any], app: str) -> None:
@@ -283,7 +290,11 @@ def settings_elements(state: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def window_entry(state: dict[str, Any], app: str) -> dict[str, Any]:
-    focused = bool(state["order"]) and state["order"][0] == app
+    focused = (
+        bool(state["order"])
+        and state["order"][0] == app
+        and not state.get("unfocused", False)
+    )
     if app == "Koine":
         x, y, w, h = state["frame"]
         entry: dict[str, Any] = {
@@ -651,10 +662,14 @@ def cli(state: dict[str, Any], arguments: list[str], root: Path) -> str:
             frame = state["frame"] if app == "Koine" else state["textedit_frame"]
             frame[0], frame[1] = int(option(rest, "--x")), int(option(rest, "--y"))
         elif action == "window-focus":
-            front(state, app)
+            if "focus-ignored" not in FLAGS:
+                front(state, app)
         elif action == "window-close" and app == "Koine":
             if OPERATION == os.environ.get("settings_close_ignored"):
                 return envelope({"action": action, "success": True, "message": None})
+            # Closed while Koine is active, no window keeps the focus (k6).
+            if state["order"][:1] == ["Koine"]:
+                state["unfocused"] = True
             state["window"] = False
             state["closes"] += 1
             drop(state, "Koine")
