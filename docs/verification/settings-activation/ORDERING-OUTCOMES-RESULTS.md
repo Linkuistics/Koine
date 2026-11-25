@@ -259,6 +259,12 @@ These limits follow:
 The comments at each decision site in `scripts/vm_exec_reads.py` cite these
 sources.
 
+Issue #15 qualified a replacement on a real guest (k5). There, System Events named
+the menu of each closed item, so the two name reads cannot serve. The scenario now
+reads the size of each menu, `menu-bar-menu-sizes` and `koine-menu-sizes`. The
+[menu-bar record](../menu-bar-vm.md#the-open-menu-signal) states the evidence. The
+tables of this record describe the k162 source.
+
 ## Limits
 
 - The simulated backend models only the answers that the scenario needs. The

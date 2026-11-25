@@ -688,9 +688,12 @@ settings_expect_setup() {
     check_guest_read "${KOINE_VM_EVIDENCE_ROOT}" read-poll "${operation}-setup-sheets" \
         '.value == [["AXStandardWindow"], [[]]]' textedit-windows >/dev/null ||
         settings_require_as setup-failed "$?" "before ${operation}, TextEdit shows a dialog, a sheet or another window"
-    # The protocol's oracle: no menu under any TextEdit item or Koine's item.
+    # No open menu: each menu under each TextEdit item and under Koine's item
+    # has the size {0, 0}. A guest qualified this signal (k5). System Events
+    # names a closed menu, so the menu names cannot serve.
     check_guest_read "${KOINE_VM_EVIDENCE_ROOT}" read-poll "${operation}-setup-menus" \
-        '(.value[1] | all(length == 0)) and (.value[2] | length == 0)' menu-bar-menus >/dev/null ||
+        '(.value[1] | all(all(. == [0, 0]))) and (.value[2] | all(. == [0, 0]))' \
+        menu-bar-menu-sizes >/dev/null ||
         settings_require_as setup-failed "$?" "before ${operation}, a TextEdit or Koine menu is open"
     settings_capture "setup-${operation}"
 }
@@ -724,11 +727,12 @@ settings_select_return() {
     settings_sleep "${operation}" 2
 }
 
-# settings_menu_closed OPERATION: 0 when Koine's item exposes no menu after
-# the click, 1 when it exposes one. Any other status is already recorded.
+# settings_menu_closed OPERATION: 0 when each menu under Koine's item has the
+# size {0, 0} after the click, 1 when one has another size. Any other status is
+# already recorded. A guest qualified this signal (k5).
 settings_menu_closed() {
-    check_guest_read "${KOINE_VM_EVIDENCE_ROOT}" read-poll "$1-menu-closed" '.value | length == 0' \
-        koine-menus >/dev/null
+    check_guest_read "${KOINE_VM_EVIDENCE_ROOT}" read-poll "$1-menu-closed" '.value | all(. == [0, 0])' \
+        koine-menu-sizes >/dev/null
 }
 
 # settings_return_observations OPERATION: the untouched failure capture of a

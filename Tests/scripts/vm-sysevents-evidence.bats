@@ -212,7 +212,8 @@ refused() {
 ACCEPTED='{"case": "enrol", "status": 200, "response": {"data": {"koineRequestGrant": {"requestId": "r1", "comparisonCode": "123456"}}}}'
 SYSEVENTS_READS=(sysevents-processes menu-item-count 'menu-item-label value' 'menu-item-label poll'
     menu-item-frame 'menu-row-frame Settings…' menu-titles dock-items background-only front-application
-    front-process textedit-windows menu-bar-menus 'menu-row-enabled Settings…' koine-menus)
+    front-process textedit-windows menu-bar-menus 'menu-row-enabled Settings…' koine-menus
+    menu-bar-menu-sizes koine-menu-sizes)
 
 @test "System Events reads refuse the evidence class and the enrolment admits only one-shot" {
     local request
@@ -806,6 +807,78 @@ SYSEVENTS_READS=(sysevents-processes menu-item-count 'menu-item-label value' 'me
         args=("${name}")
         [[ "${name}" != menu-row-enabled ]] || args+=('Settings…')
         run read_guest_exec "${read_root}" read-poll missing "${args[@]}"
+        echo "diagnostic: case=${case} status=${status} output=${output}"
+        [[ "${status}" == 125 ]]
+        assert_latched
+    done
+}
+
+# --- the open-menu signal (k5) ----------------------------------------------
+
+@test "the menu size reads send their fixed AppleScript in source form (k5)" {
+    local request expected index=0
+    local -A scripts=(
+        ["menu-bar-menu-sizes"]='get {name of every menu bar item of menu bar 1 of process "TextEdit", size of every menu of every menu bar item of menu bar 1 of process "TextEdit", size of every menu of menu bar item 1 of menu bar 2 of process "Koine"}'
+        ["koine-menu-sizes"]='get size of every menu of menu bar item 1 of menu bar 2 of process "Koine"'
+    )
+    answer "$(se 'true')"
+    for request in menu-bar-menu-sizes koine-menu-sizes; do
+        index=$((index + 1))
+        run read_guest_exec "${read_root}" read-poll command "${request}"
+        expected="o=\$(osascript -s so -e 'tell application \"System Events\" to ${scripts[${request}]}'); s=\$?; printf '%s\\nKOINE-OSASCRIPT-STATUS %s' \"\$o\" \"\$s\""
+        jq -e --arg command "${expected}" --arg name "${request}" '.command == $command and .read == $name
+            and .class == "read-poll"' "${read_root}/000001/request.json"
+        reset_root "size-command-${index}"
+    done
+    refusals=0
+    refused read-poll sizes menu-bar-menu-sizes extra
+    refused read-poll sizes koine-menu-sizes extra
+}
+
+@test "the menu size reads parse their values and keep whether a menu is open (k5)" {
+    local case name text expected open index=0
+    # The closed and open values are those that the guest returned.
+    for case in \
+        'menu-bar-menu-sizes|{{"Apple", missing value, "File"}, {{{0, 0}}, {{0, 0}}, {{0, 0}}}, {{0, 0}}}|[["Apple",null,"File"],[[[0,0]],[[0,0]],[[0,0]]],[[0,0]]]|.open == [false, false, false] and .koine_open == false' \
+        'menu-bar-menu-sizes|{{"Apple", "File"}, {{{0, 0}}, {{269, 425}}}, {{0, 0}}}|[["Apple","File"],[[[0,0]],[[269,425]]],[[0,0]]]|.open == [false, true] and .koine_open == false' \
+        'menu-bar-menu-sizes|{{"Apple"}, {{{0, 0}}}, {{242, 93}}}|[["Apple"],[[[0,0]]],[[242,93]]]|.open == [false] and .koine_open == true' \
+        'koine-menu-sizes|{{0, 0}}|[[0,0]]|.open == false' \
+        'koine-menu-sizes|{{242, 93}}|[[242,93]]|.open == true' \
+        'koine-menu-sizes|{{0, 0}, {0, 0}}|[[0,0],[0,0]]|.open == false'; do
+        IFS='|' read -r name text expected open <<<"${case}"
+        index=$((index + 1))
+        reset_root "size-parse-${index}"
+        answer "$(se "${text}")"
+        run read_guest_exec "${read_root}" read-poll parse "${name}"
+        echo "diagnostic: case=${case} status=${status} output=${output}"
+        [[ "${status}" == 0 ]]
+        jq -e --argjson value "${expected}" ".absent == false and .value == \$value and (${open})" <<<"${output}"
+    done
+}
+
+@test "a missing menu, a missing size or a script error in a menu size read is unavailable (k5)" {
+    local case name text index=0
+    for case in \
+        'menu-bar-menu-sizes|{{"Apple", "File"}, {{{0, 0}}, {}}, {{0, 0}}}' \
+        'menu-bar-menu-sizes|{{"Apple"}, {{{0, 0}}}, {}}' \
+        'menu-bar-menu-sizes|{{"Apple", "File"}, {{{0, 0}}}, {{0, 0}}}' \
+        'menu-bar-menu-sizes|{{}, {}, {{0, 0}}}' \
+        'menu-bar-menu-sizes|{{"Apple"}, {{missing value}}, {{0, 0}}}' \
+        'menu-bar-menu-sizes|{{"Apple"}, {{{0}}}, {{0, 0}}}' \
+        'menu-bar-menu-sizes|{{"Apple"}, {{{0, -1}}}, {{0, 0}}}' \
+        'menu-bar-menu-sizes|{{"Apple"}, {{{0, 0}}}, missing value}' \
+        'menu-bar-menu-sizes|{{"Apple"}, {{"File"}}, {{0, 0}}}' \
+        'koine-menu-sizes|{}' \
+        'koine-menu-sizes|missing value' \
+        'koine-menu-sizes|{missing value}' \
+        'koine-menu-sizes|{{0, false}}' \
+        'koine-menu-sizes|{{"Koine"}}' \
+        'koine-menu-sizes|ERROR'; do
+        IFS='|' read -r name text <<<"${case}"
+        index=$((index + 1))
+        reset_root "size-missing-${index}"
+        if [[ "${text}" == ERROR ]]; then answer "$(se_error -1728)"; else answer "$(se "${text}")"; fi
+        run read_guest_exec "${read_root}" read-poll missing "${name}"
         echo "diagnostic: case=${case} status=${status} output=${output}"
         [[ "${status}" == 125 ]]
         assert_latched

@@ -70,6 +70,17 @@ first window that is not Notification Center must be the TextEdit window, with
 `focused: true`. A clean mismatch is a failed setup. A list without the flag is
 unavailable evidence, not a Koine failure. The setup adds no read and no wait.
 
+For issue #15, the two menu checks of the shared scenario read the size of each
+menu. Before each Settings selection, each menu under each TextEdit item and under
+the Koine item must have the size `{0, 0}`. After each menu selection, each menu
+under the Koine item must have that size too. A clean other size is a failure of
+the check. A missing menu or size is unavailable evidence.
+
+The checks read the menu names before. On a real guest, System Events named the
+menu of each closed item, so attempt 1 of the release stopped at the setup. A
+diagnostic guest qualified the size, as the
+[menu-bar record](../verification/menu-bar-vm.md#the-open-menu-signal) states.
+
 One clean run of `task app:vm-verify-menu-bar` on the notarised 0.4.1 bundle
 accepts the candidate. A clean run passes every assertion of the check, apart from
 a resize that the script reports as NOT RUN. In that run, each of the four Settings

@@ -627,20 +627,21 @@ DATE
     expect_order resize-front-state resize-front-title-state
 }
 
-@test "the setup and the closed-menu checks enumerate the menus under each item (k162)" {
+@test "the setup and the closed-menu checks read the size of the menus under each item (k5)" {
     run_scenario
     [[ "${status}" == 0 ]]
-    # Each setup reads the menus under the TextEdit and Koine items. Each
-    # closed-menu check reads the menus under the Koine item. No check reads
-    # the selection of an item.
+    # Each setup reads the menu sizes under the TextEdit and Koine items. Each
+    # closed-menu check reads the menu sizes under the Koine item. No check
+    # reads the selection of an item, and no check reads the menu names.
     jq -se 'map(select((.operation // "") | test("-setup-menus$")))
-        | length == 4 and all(.[]; .action == "read" and .arguments == ["menu-bar-menus"])' \
+        | length == 4 and all(.[]; .action == "read" and .arguments == ["menu-bar-menu-sizes"])' \
         "${settings_sim}/calls.jsonl"
     jq -se 'map(select((.operation // "") | test("-menu-closed$")))
-        | length == 7 and all(.[]; .action == "read" and .arguments == ["koine-menus"])' \
+        | length == 7 and all(.[]; .action == "read" and .arguments == ["koine-menu-sizes"])' \
         "${settings_sim}/calls.jsonl"
     [[ "$(jq -s 'map(select(.action == "read" and (.arguments[0] == "open-menus"
-        or .arguments[0] == "menu-item-selected"))) | length' "${settings_sim}/calls.jsonl")" == 0 ]]
+        or .arguments[0] == "menu-item-selected" or .arguments[0] == "menu-bar-menus"
+        or .arguments[0] == "koine-menus"))) | length' "${settings_sim}/calls.jsonl")" == 0 ]]
 }
 
 @test "a disabled row is recorded and not clicked" {

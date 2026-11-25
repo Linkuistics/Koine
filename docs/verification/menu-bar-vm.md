@@ -25,6 +25,11 @@ For issue #15, the positive setup makes no System Events front read. It
 judges the zero-count list of the close check. There, the first window that is not
 Notification Center must be the TextEdit window, with `focused: true`.
 
+The setup and the closed-menu check after each menu selection read the size of
+each menu. A closed menu has the size `{0, 0}`. The checks read the menu names
+before, and a real guest showed that this signal cannot tell an open menu from a
+closed one. [The open-menu signal](#the-open-menu-signal) records the qualification.
+
 Both sets require the same changed helpers: strict single-attempt transport and
 positive TextEdit setup. They also require an audit of the original list for the
 Settings title, and liveness before zero-window rejection. Process loss is
@@ -98,6 +103,73 @@ activation in the observed interval. The cause and the product repair stay open.
 Its first guest completed every assertion. Its second guest stopped before resize
 and all later assertions. This diagnostic candidate is separate from the released
 bundles and the k4 comparison. No release or reliability claim follows.
+
+## The open-menu signal
+
+The shared Settings scenario checks for an open menu at two points. The positive
+setup before each Settings selection needs no open menu under a TextEdit item or
+under the Koine item. After each menu selection, the closed-menu check needs no
+open menu under the Koine item. An open menu could take the click or hide the
+window, so the result of the selection would be unresolved.
+
+Until issue #15, both checks read the names of the menus under each item. They
+needed an empty list. Attempt 1 of the 0.4.1 release
+(`menu-bar-20261125T165452`) ran that read on a real guest for the first time. System
+Events named one menu under each closed TextEdit item, and the menu "Koine" under
+the closed Koine item. The failure screenshot showed no open menu. So the menu names
+cannot tell an open menu from a closed one, and no attempt could pass.
+
+`task app:vm-probe-menu-open` (`scripts/vm-probe-menu-open.sh`) qualifies a
+replacement on its own clone. It is a bounded probe, not an acceptance attempt. The
+probe installs the notarised 0.4.1 zip, closes the Settings window of the first
+launch and opens TextEdit. It reads two candidates for each TextEdit menu bar item
+and for the Koine item. The first is the size of each menu under the item. The
+second is the `selected` attribute of the item.
+
+The probe reads both candidates with no menu open, and then with each menu open
+after a click on its item. Then it presses Escape and reads both again. Each read
+keeps a screenshot. The run on 2026-11-25 used the clone `koine-menu-oracle-probe`
+of `testanyware-golden-macos-27`. The guest ran macOS 27.2.1, build 26B131. The
+reads and the 19 screenshots are in `.build/vm-verify/menu-oracle-20261125T090709Z`.
+
+With no menu open, each item had one menu, and each menu had the size `{0, 0}`.
+Each item also read `selected` as false. The table gives the reads while the menu
+of one item was open:
+
+| Open menu | Size of that menu | Other menus | `selected` of that item |
+|---|---|---|---|
+| Apple | `{223, 305}` | `{0, 0}` | true |
+| TextEdit | `{199, 222}` | `{0, 0}` | true |
+| File | `{269, 425}` | `{0, 0}` | true |
+| Edit | `{262, 545}` | `{0, 0}` | true |
+| Format | `{241, 248}` | `{0, 0}` | true |
+| View | `{188, 176}` | `{0, 0}` | true |
+| Window | `{283, 366}` | `{0, 0}` | true |
+| Help | `{360, 69}` | `{0, 0}` | true |
+| Koine | `{242, 93}` | `{0, 0}` | false |
+
+After each Escape, every menu had the size `{0, 0}` again, and every item read
+`selected` as false. Each screenshot of an open state shows the menu of the clicked
+item, and no screenshot of a closed state shows a menu. An earlier debug clone on
+the same image gave the same values for the File and Koine menus.
+
+The size qualifies for each item. The `selected` attribute fails for the Koine
+item, which is a status item with the subrole `AXMenuExtra`. Thus the read
+`menu-bar-menu-sizes` serves the setup, and `koine-menu-sizes` serves the
+closed-menu check. A clean size other than `{0, 0}` is a failure of the check. A
+missing menu, a missing size or a script error is unavailable evidence. The two
+name reads stay in `scripts/vm_exec_reads.py` with their own tests, and the
+scenario no longer uses them.
+
+These limits apply:
+
+- Apple defines `kAXSizeAttribute` as the dimensions of the object. No Apple
+  source states what a closed menu reports. The `{0, 0}` value rests on this guest
+  release and this run.
+- The probe opened each menu with a click on its item. It did not open a menu from
+  the keyboard.
+- An item with no menu would make a closed check pass with no evidence. Thus each
+  read needs at least one menu under each item.
 
 <!-- tc: pending because the conversion has not reached this part of the document -->
 

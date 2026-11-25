@@ -1700,6 +1700,14 @@ tasks:
         if [ -n "${KOINE_K4_OUT:-}" ]; then printf '%s\n' "${status}" > "${KOINE_K4_OUT}/scenario.exit"; fi
         exit "${status}"
 
+  app:vm-probe-menu-open:
+    desc: Qualify the open-menu signal of the Settings scenario on a real guest (scripts/vm-probe-menu-open.sh). A bounded probe, not an acceptance; it needs KOINE_TESTANYWARE_CLI and KOINE_VM_BASE, uses its own clone and stops it
+    cmds:
+      - bash -n scripts/vm-probe-menu-open.sh
+      - shellcheck -x scripts/vm-probe-menu-open.sh
+      - shfmt -d -i 4 scripts/vm-probe-menu-open.sh
+      - scripts/vm-probe-menu-open.sh
+
   app:vm-verify-menu-bar-prefix:
     desc: Run the focused prefix of the menu bar scenario (scripts/vm-verify-menu-bar-prefix.sh, the exact leading bytes of scripts/vm-verify-menu-bar.sh through the TextEdit quit, immediately before the resize) in a clean TestAnyware macOS VM; it records its status like app:vm-verify-menu-bar and sends no VM stop. Run it only under the reviewed finite caller of the ordering evaluation
     cmds:

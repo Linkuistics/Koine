@@ -594,6 +594,20 @@ SYSEVENTS = {
     # The same boundary for the closed menu after a selection. It reads only
     # Koine's item, because TextEdit quits before the later returns.
     "koine-menus": f"get name of every menu of {KOINE_ITEM}",
+    # The open-menu signal of the positive setup and the closed-menu check
+    # (k5): the size of each menu under each TextEdit item and under Koine's
+    # item. Apple defines kAXSizeAttribute as "The vertical and horizontal
+    # dimensions of this accessibility object".
+    # https://developer.apple.com/documentation/applicationservices/kaxsizeattribute
+    # No Apple source states what a closed menu reports. On a macOS 27.2.1
+    # guest (scripts/vm-probe-menu-open.sh), each closed menu read {0, 0} and
+    # each open menu a positive size, for every TextEdit item and for Koine's
+    # status item. The menu names above named a closed menu, and `selected`
+    # read false while Koine's menu was open (docs/verification/menu-bar-vm.md).
+    "menu-bar-menu-sizes": 'get {name of every menu bar item of menu bar 1 of process "TextEdit", '
+    'size of every menu of every menu bar item of menu bar 1 of process "TextEdit", '
+    f"size of every menu of {KOINE_ITEM}}}",
+    "koine-menu-sizes": f"get size of every menu of {KOINE_ITEM}",
 }
 # The grammar admits no quote, backslash or apostrophe, so a title cannot leave
 # the AppleScript string or the shell quotes. Koine's titles end in U+2026.
@@ -773,6 +787,47 @@ def menu_bar_menus(value: object) -> bool:
     )
 
 
+def menu_sizes(value: object) -> bool:
+    # The sizes of the menus under one item: at least one, each a pair of
+    # integers that are not negative. An item with no menu would make a closed
+    # check pass with no evidence, so an empty list is not a complete answer.
+    return (
+        isinstance(value, list)
+        and len(cast(list[object], value)) > 0
+        and all(
+            isinstance(size, list)
+            and len(cast(list[object], size)) == 2
+            and all(
+                integer(part) and cast(int, part) >= 0
+                for part in cast(list[object], size)
+            )
+            for size in cast(list[object], value)
+        )
+    )
+
+
+def menu_bar_menu_sizes(value: object) -> bool:
+    # {TextEdit item names, the menu sizes of each item, the menu sizes of
+    # Koine's item}. A name may be missing. A size may not, and the lengths
+    # must agree, as in menu_bar_menus.
+    if not isinstance(value, list) or len(cast(list[object], value)) != 3:
+        return False
+    names, sizes, koine = cast(list[object], value)
+    return (
+        text_list(names)
+        and len(cast(list[object], names)) > 0
+        and isinstance(sizes, list)
+        and len(cast(list[object], names)) == len(cast(list[object], sizes))
+        and all(menu_sizes(item) for item in cast(list[object], sizes))
+        and menu_sizes(koine)
+    )
+
+
+def menus_open(sizes: list[list[int]]) -> bool:
+    # On the guest, only an open menu has a size other than {0, 0}.
+    return any(size != [0, 0] for size in sizes)
+
+
 SYSEVENTS_TYPES: dict[str, Callable[[object], bool]] = {
     "sysevents-processes": text_list,
     "menu-item-count": lambda value: integer(value) and cast(int, value) >= 0,
@@ -788,6 +843,8 @@ SYSEVENTS_TYPES: dict[str, Callable[[object], bool]] = {
     "menu-bar-menus": menu_bar_menus,
     "menu-row-enabled": lambda value: isinstance(value, bool),
     "koine-menus": text_list,
+    "menu-bar-menu-sizes": menu_bar_menu_sizes,
+    "koine-menu-sizes": menu_sizes,
 }
 
 # The reads whose one argument is a menu row title.
@@ -848,6 +905,21 @@ def sysevents_read(name: str) -> Read:
                 "absent": False,
                 "value": value,
                 "count": len(cast(list[object], value)),
+            }
+        if name == "menu-bar-menu-sizes":
+            # The record keeps whether a menu is open under each item.
+            _, sizes, koine = cast(list[list[list[int]]], value)
+            return {
+                "absent": False,
+                "value": value,
+                "open": [menus_open(cast(list[list[int]], item)) for item in sizes],
+                "koine_open": menus_open(koine),
+            }
+        if name == "koine-menu-sizes":
+            return {
+                "absent": False,
+                "value": value,
+                "open": menus_open(cast(list[list[int]], value)),
             }
         return {"absent": False, "value": value}
 

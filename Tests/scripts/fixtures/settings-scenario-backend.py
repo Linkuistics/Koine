@@ -48,8 +48,9 @@ use of the domain instead:
   no Koine at login.
 - `settings_no_value=OPERATION` omits AXValue from `grant-label` in that one
   snapshot (k175). A failed AX copy omits it, so the field is not empty.
-- The model exposes a menu under a menu bar item only while that menu is open.
-  This is the protocol's oracle, assumed here. It is not a native fact.
+- Each menu bar item has one menu. A closed menu has the size {0, 0}, and an
+  open menu has a positive size. A guest qualified this signal (k5,
+  scripts/vm-probe-menu-open.sh).
 """
 
 from __future__ import annotations
@@ -67,7 +68,7 @@ AT = int(os.environ.get("settings_at", "1"))
 # The operation of the current call, for an operation-scoped answer.
 OPERATION = ""
 TEXTEDIT_PID = 909
-# The TextEdit menu bar items that the menu-bar-menus read names.
+# The TextEdit menu bar items that the menu-bar-menu-sizes read names.
 TEXTEDIT_MENUS = [
     "Apple",
     "TextEdit",
@@ -710,9 +711,15 @@ def process(state: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def koine_menus(state: dict[str, Any]) -> list[str | None]:
-    # The status menu has no name.
-    return [None] if state["menu"] else []
+# The size of a closed menu, and the sizes that the guest showed for an open
+# File menu and an open Koine menu (k5).
+CLOSED_MENU = [0, 0]
+OPEN_FILE_MENU = [269, 425]
+OPEN_KOINE_MENU = [242, 93]
+
+
+def koine_menu_sizes(state: dict[str, Any]) -> list[list[int]]:
+    return [OPEN_KOINE_MENU if state["menu"] else CLOSED_MENU]
 
 
 def sysevents(state: dict[str, Any], name: str, arguments: list[str]) -> dict[str, Any]:
@@ -753,20 +760,20 @@ def sysevents(state: dict[str, Any], name: str, arguments: list[str]) -> dict[st
             value = [["AXStandardWindow"], [["AXSheet"]]]
         elif before_return(state, "textedit-dialog"):
             value = [["AXStandardWindow", "AXDialog"], [[], []]]
-    elif name == "menu-bar-menus":
-        # The names of the menus under each item. A setup flag opens the File
+    elif name == "menu-bar-menu-sizes":
+        # The sizes of the menus under each item. A setup flag opens the File
         # menu of TextEdit or Koine's menu for this read only.
-        menus: list[list[str]] = [[] for _ in TEXTEDIT_MENUS]
+        sizes = [[CLOSED_MENU] for _ in TEXTEDIT_MENUS]
         if before_return(state, "menu-open-at-setup"):
-            menus[2] = ["File"]
-        koine = koine_menus(state)
+            sizes[2] = [OPEN_FILE_MENU]
+        koine = koine_menu_sizes(state)
         if before_return(state, "koine-menu-open-at-setup"):
-            koine = [None]
-        value = [TEXTEDIT_MENUS, menus, koine]
+            koine = [OPEN_KOINE_MENU]
+        value = [TEXTEDIT_MENUS, sizes, koine]
     elif name == "menu-row-enabled":
         value = not before_return(state, "row-disabled")
-    elif name == "koine-menus":
-        value = koine_menus(state)
+    elif name == "koine-menu-sizes":
+        value = koine_menu_sizes(state)
     else:
         value = state["order"][0] if state["order"] else "Finder"
     record: dict[str, Any] = {"absent": False, "value": value}
@@ -869,9 +876,9 @@ def read(state: dict[str, Any], name: str, arguments: list[str]) -> dict[str, An
         "front-application",
         "front-process",
         "textedit-windows",
-        "menu-bar-menus",
+        "menu-bar-menu-sizes",
         "menu-row-enabled",
-        "koine-menus",
+        "koine-menu-sizes",
     }:
         fields = sysevents(state, name, arguments)
     else:
