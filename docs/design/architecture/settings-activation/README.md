@@ -10,9 +10,16 @@ hold the record.
 Antony then closed the repair as unresolved. [Issue #15](https://github.com/Linkuistics/Koine/issues/15)
 brings the evaluation back, with a new declared sequence, freeze and slot
 identities. On 2026-11-25, the code returned to the order that 0.4.0 released.
-The show operation makes one key and front request, and then one activation
-request. The candidate stays in the k52 commit `561dbf6c` and in issue #15.
-Native cause and ownership stay unresolved.
+
+Later that day, Antony chose a happy-path repair for issue #15 instead of a new
+run of the five-slot protocol. The code applies the k52 candidate of commit
+`561dbf6c` again. The show operation makes one activation request, and then one
+key and front request. Native cause and ownership stay unresolved.
+
+One clean run of the menu-bar check on the notarised 0.4.1 bundle accepts the
+candidate. The claim covers only that run. The
+[current decision](../../../specs/settings-activation-discrimination.md#current-decision)
+states the scope, the acceptance bar and its limit.
 
 The earlier discussion was the removal of the keepalive captures. Its view is
 `keepalive-requirement-choice.mmd`. On 2026-11-21, Antony first approved the
@@ -125,8 +132,8 @@ The existing task serves only the architecture presentation directory.
 <!-- tc: depart synonym-rotation because graph entry differs from application launch -->
 Start each graph at the dark **Start here** node.
 The sequence starts at its first message. State views start at the initial dot.
-The ordering sequence shows the candidate application call order, not the
-current code and not measured native completion. The assessment numbers the assessed original call order before
+The ordering sequence shows the application call order that the code applies
+again, not measured native completion. The assessment numbers the assessed original call order before
 its dotted reasoning edge. Other graphs describe decisions or outcome rules.
 
 None is a proven causal graph. The sources are editable Mermaid. The viewer
@@ -140,9 +147,12 @@ loads these same sources while retaining its separate current discussion.
 
 Current changes:
 
+- [Correction → Assessed original path and the empirical candidate](http://127.0.0.1:8765/settings-activation/#diagram-correction-assessment) — Records that the code applies the candidate again for issue #15.
+- [Evaluation → Prepare one window, activate once, then order it](http://127.0.0.1:8765/settings-activation/#diagram-ordering-sequence) — Names the order as the order that the code applies again.
+
+Earlier changes:
+
 - [Scope → Accepted scope for repair design](http://127.0.0.1:8765/settings-activation/#diagram-scope-choice) — Node N records the k54 freeze, the E01 stop and issue #15.
-- [Correction → Assessed original path and the empirical candidate](http://127.0.0.1:8765/settings-activation/#diagram-correction-assessment) — Records the return to the released order.
-- [Evaluation → Prepare one window, activate once, then order it](http://127.0.0.1:8765/settings-activation/#diagram-ordering-sequence) — Names the order as the candidate, not the current code.
 
 Earlier keepalive changes:
 

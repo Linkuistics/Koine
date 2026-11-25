@@ -17,8 +17,10 @@ brings the evaluation back, with a new declared sequence, freeze and slot identi
 The [design review and integration](ORDERING-REVIEW.md) are complete. The
 [application record](ORDERING-APPLICATION-RESULTS.md) holds the k52 candidate
 and its return. On 2026-11-25, the code returned to the order that 0.4.0
-released. The show operation makes one key and front request, and then one
-activation request. The candidate has no acceptance, and issue #15 can apply it again.
+released. Later that day, Antony chose a happy-path repair for issue #15, and the
+code applied the candidate again. The show operation makes one activation request,
+and then one key and front request. One clean run of the menu-bar check on the
+notarised 0.4.1 bundle accepts it, as the [current decision](../../specs/settings-activation-discrimination.md#current-decision) states.
 
 The [strict window transport expansion](ORDERING-WINDOW-RESULTS.md) supplied
 checked list, action and poll helpers. K36 later adopted them in the complete

@@ -15,9 +15,13 @@ record. Antony then closed the repair as unresolved, and
 
 The [design review and integration](settings-activation/ORDERING-REVIEW.md) are
 complete. The [application record](settings-activation/ORDERING-APPLICATION-RESULTS.md)
-holds the k52 candidate and its return. On 2026-11-25, the code returned to the
-order that 0.4.0 released: one key and front request, and then one activation
-request. For issue #15, the positive setup makes no System Events front read. It
+holds the k52 candidate and its return. For issue #15, Antony chose a happy-path
+repair on 2026-11-25. The code applies the candidate again: one activation request,
+and then one key and front request. One clean run of this check on the notarised
+0.4.1 bundle accepts it, as the [current decision](../specs/settings-activation-discrimination.md#current-decision)
+states.
+
+For issue #15, the positive setup makes no System Events front read. It
 judges the zero-count list of the close check. There, the first window that is not
 Notification Center must be the TextEdit window, with `focused: true`.
 

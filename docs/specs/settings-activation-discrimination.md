@@ -49,12 +49,19 @@ On 2026-11-24, after the E01 stop, Antony closed the repair as unresolved.
 back. A new run there needs a new scope decision, a new declared sequence, a new
 freeze and new slot identities.
 
+On 2026-11-25, Antony chose a happy-path repair for issue #15, instead of a new
+run of the five-slot protocol. The repair has two parts. The show operation uses
+the activation-first order again, and the positive setup judges the front window
+from the list that it holds. The **focused evaluation** and **ordinary acceptance**
+do not run for this repair. Their tooling stays in the repository, unused.
+GitHub issues hold the hardening work, such as the two races and a reliability study.
+
 Antony left the call order to the decision task. That task chose the order that
-0.4.0 shipped, because the candidate has no acceptance. On 2026-11-25,
-`settings-released-call-order-k184` returned the code to that order. The show
-operation requests the key and front window first, and then activation once. Issue
-#15 can apply the candidate again with its evaluation. The dormant diagnostics stay
-in the product.
+0.4.0 shipped, because the candidate had no acceptance. On 2026-11-25,
+`settings-released-call-order-k184` returned the code to that order. Later that
+day, `settings-call-order-k3` applied the candidate of commit `561dbf6c` again.
+The show operation requests activation once, and then the key and front window.
+The dormant diagnostics stay in the product.
 
 For issue #15, the positive setup of the shared scenario no longer makes the
 System Events front-process read that stopped E01. Before each of the four
@@ -62,6 +69,20 @@ Settings selections, the setup judges the zero-count list of the close check. Th
 first window that is not Notification Center must be the TextEdit window, with
 `focused: true`. A clean mismatch is a failed setup. A list without the flag is
 unavailable evidence, not a Koine failure. The setup adds no read and no wait.
+
+One clean run of `task app:vm-verify-menu-bar` on the notarised 0.4.1 bundle
+accepts the candidate. A clean run passes every assertion of the check, apart from
+a resize that the script reports as NOT RUN. In that run, each of the four Settings
+selections over TextEdit returns one front, focused Settings window. A stop with a
+cause in the harness, the guest, TextEdit or the test driver is unavailable
+evidence, not a Koine failure. The release task makes at most three attempts in
+total, and then asks Antony.
+
+The claim covers only that run, on the guest release that ran. On 0.4.0, the
+"not front" failure occurred in 2 of 9 runs. At that rate, one clean run occurs
+about 78% of the time with no improvement. Thus a pass shows that the candidate
+keeps the happy path. It does not show that the candidate removes the bug. If the
+candidate fails, the code returns to the released order and nothing ships.
 
 <!-- tc: pending because the conversion has not reached this part of the document -->
 
@@ -142,9 +163,9 @@ support those limits. No cooperating TextEdit yield is assumed or requested.
 
 | Design | Benefit | Cost and disposition |
 |---|---|---|
-| Reverse inside the existing show operation — selected, implemented, then returned | One owner keeps the window lifetime, the navigation and the two requests together. Callers keep the same interface. It is a small, reversible application change. | It affects the launch, reopen and status-line callers as well as Settings. It requires complete ordinary acceptance, and no contract guarantees improvement. K52 implemented it in commit `561dbf6c`. It has no acceptance, so `settings-released-call-order-k184` returned the code to the released order. [Issue #15](https://github.com/Linkuistics/Koine/issues/15) can apply it again with its evaluation. |
+| Reverse inside the existing show operation — selected, implemented, returned, then applied again | One owner keeps the window lifetime, the navigation and the two requests together. Callers keep the same interface. It is a small, reversible application change. | It affects the launch, reopen and status-line callers as well as Settings. It requires complete ordinary acceptance, and no contract guarantees improvement. K52 implemented it in commit `561dbf6c`. It had no acceptance, so `settings-released-call-order-k184` returned the code to the released order. For [issue #15](https://github.com/Linkuistics/Koine/issues/15), `settings-call-order-k3` applied it again. There, one clean menu-bar run replaces complete ordinary acceptance, as the [current decision](#current-decision) states. |
 | Reverse only in the menu caller or add a caller-selectable order | It could limit the changed path to menu actions. | It splits activation knowledge across callers or adds an unsupported mode. Divergent launch and reopen behaviour and a wider test surface earn no benefit for the accepted single-window contract. Not selected. |
-| Keep the released order | No behavioural migration. | It keeps the established unresolved failure. It is the baseline if the empirical candidate is rejected, not a successful repair. The code holds this order until issue #15 decides. |
+| Keep the released order | No behavioural migration. | It keeps the established unresolved failure. It is the baseline if the empirical candidate is rejected, not a successful repair. If the issue #15 candidate fails its acceptance run, the code returns to this order. |
 
 No general activation adapter, fake OS response, new public seam or additional
 monitor is earned. A fake that rejects the old order and accepts the new order

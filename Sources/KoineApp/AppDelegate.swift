@@ -128,17 +128,21 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             self.window = window
         }
         if let section { navigation.show(section) }
-        // The order that 0.4.0 released: the key and front request, then one
-        // activation request. The activation-first candidate has no acceptance.
-        // Issue #15 owns its evaluation, under the contract in
+        // Activation first: one activation request, then the key and front
+        // request. macOS can decline activation or complete it later, so its
+        // return does not gate the window request. No Apple contract requires
+        // this order. The happy-path scope and its acceptance bar are in the
+        // "Current decision" section of
         // docs/specs/settings-activation-discrimination.md.
         // https://github.com/Linkuistics/Koine/issues/15
-        SettingsActivationTrace.shared.record("window.makeKeyAndOrderFront.before")
-        window?.makeKeyAndOrderFront(nil)
-        SettingsActivationTrace.shared.record("window.makeKeyAndOrderFront.after")
+        // https://developer.apple.com/documentation/appkit/nsapplication/activate()
+        // https://developer.apple.com/documentation/appkit/nswindow/makekeyandorderfront(_:)
         SettingsActivationTrace.shared.record("application.activate.before")
         SettingsActivationTrace.shared.measureActivation { NSApp.activate() }
         SettingsActivationTrace.shared.record("application.activate.after")
+        SettingsActivationTrace.shared.record("window.makeKeyAndOrderFront.before")
+        window?.makeKeyAndOrderFront(nil)
+        SettingsActivationTrace.shared.record("window.makeKeyAndOrderFront.after")
     }
 
     private func fail(_ message: String, detail: String) {

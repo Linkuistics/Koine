@@ -617,14 +617,14 @@
       "group": "settings-activation",
       "title": "Assessed original path and the empirical candidate",
       "source": "settings-activation/correction-assessment.mmd",
-      "caption": "The numbered path is the assessed original order, and the code holds that order again. The dotted edge enters reasoning. Both orders previously succeeded with synchronous file tracing. K52 implemented the reviewed reversal, and the code then returned to the released order. Issue #15 owns the next evaluation. No comparative risk or cause is established."
+      "caption": "The numbered path is the assessed original order. The dotted edge enters reasoning. Both orders previously succeeded with synchronous file tracing. K52 implemented the reviewed reversal, and the code returned to the released order. For issue #15, the code applies the reversal again. No comparative risk or cause is established."
     },
     {
       "id": "settings-activation-ordering-sequence",
       "group": "settings-activation",
       "title": "Prepare one window, activate once, then order it",
       "source": "settings-activation/ordering-sequence.mmd",
-      "caption": "Candidate synchronous application order, including readiness failure. K52 implemented it, and the code then returned to the released order. The window is constructed and navigation applied before activation. A return does not imply that activation completed, and the OS may decline. Launch, reopen and both menu callers share this owner. No retry, yielding or deferral is added."
+      "caption": "Synchronous application order, including readiness failure. K52 implemented it, the code returned to the released order, and the code then applied it again for issue #15. The window is constructed and navigation applied before activation. A return does not imply that activation completed, and the OS may decline. Launch, reopen and both menu callers share this owner. No retry, yielding or deferral is added."
     },
     {
       "id": "settings-activation-evaluation-outcomes",

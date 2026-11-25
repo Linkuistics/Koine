@@ -1,6 +1,6 @@
 {
-  "title": "Settings activation: repair closed as unresolved",
-  "intro": "Graph views start at the dark Start here node. Sequences start at their first message and state views at the initial dot. The k54 evaluation stopped at E01 on an unavailable setup read. The repair is unresolved, and issue #15 brings the evaluation back. The code holds the order that 0.4.0 released.",
+  "title": "Settings activation: happy-path repair for issue #15",
+  "intro": "Graph views start at the dark Start here node. Sequences start at their first message and state views at the initial dot. The k54 evaluation stopped at E01 on an unavailable setup read. For issue #15, Antony chose a happy-path repair instead of a new run of the five-slot protocol. The code applies the activation-first candidate again.",
   "groups": [
     {
       "id": "keepalive",
@@ -20,7 +20,7 @@
     {
       "id": "correction",
       "title": "Correction assessment",
-      "description": "The no-API-correction finding survives review. K52 implemented the reviewed empirical order, and the code then returned to the released order. Acceptance stays unresolved."
+      "description": "The no-API-correction finding survives review. K52 implemented the reviewed empirical order, the code returned to the released order, and the code then applied the order again for issue #15. Acceptance stays unresolved."
     },
     {
       "id": "evaluation",
@@ -29,9 +29,9 @@
     }
   ],
   "discussion": {
-    "title": "Settings repair closed as unresolved",
-    "status": "Antony closed the repair on 2026-11-24. Issue #15 owns the next evaluation, and the code holds the released order.",
-    "summary": "On 2026-11-24, k54 froze one signed subject and ran E01. E01 stopped before the first selection, because one required setup read was unavailable. E02, A01, A02 and A03 are NOT RUN, and the evaluation ended with no acceptance. Antony closed the repair as unresolved. Issue #15 brings the evaluation back, with a new declared sequence, freeze and slot identities. On 2026-11-25, the code returned to the order that 0.4.0 released: the key and front request, then one activation request. Native cause and ownership stay unresolved.",
+    "title": "Happy-path Settings repair for issue #15",
+    "status": "Antony chose the happy-path repair on 2026-11-25. The code applies the activation-first candidate again, and one clean run of the menu-bar check on the notarised 0.4.1 bundle accepts it.",
+    "summary": "On 2026-11-24, k54 froze one signed subject and ran E01. E01 stopped before the first selection, because one required setup read was unavailable. E02, A01, A02 and A03 are NOT RUN, and the evaluation ended with no acceptance. Antony closed the repair as unresolved. Issue #15 brings the evaluation back, with a new declared sequence, freeze and slot identities. On 2026-11-25, the code returned to the order that 0.4.0 released. Later that day, Antony chose a happy-path repair instead of a new run of the five-slot protocol. The code applies the candidate again: one activation request, then the key and front request. The claim covers only the one clean acceptance run. Native cause and ownership stay unresolved.",
     "diagramIds": [
       "scope-choice",
       "correction-assessment",
@@ -44,11 +44,11 @@
       },
       {
         "id": "correction-assessment",
-        "summary": "The candidate node and the final node record the return to the released order and issue #15."
+        "summary": "The candidate node and the final node record that the code applies the candidate again for issue #15."
       },
       {
         "id": "ordering-sequence",
-        "summary": "The caption names the order as the candidate, not the current code."
+        "summary": "The caption and the final note name the order as the order that the code applies again."
       }
     ]
   },
@@ -205,14 +205,14 @@
       "group": "correction",
       "title": "Assessed original path and the empirical candidate",
       "source": "correction-assessment.mmd",
-      "caption": "The numbered path is the assessed original order, and the code holds that order again. The dotted edge enters reasoning. Both orders previously succeeded with synchronous file tracing. K52 implemented the reviewed reversal, and the code then returned to the released order. Issue #15 owns the next evaluation. No comparative risk or cause is established."
+      "caption": "The numbered path is the assessed original order. The dotted edge enters reasoning. Both orders previously succeeded with synchronous file tracing. K52 implemented the reviewed reversal, and the code returned to the released order. For issue #15, the code applies the reversal again. No comparative risk or cause is established."
     },
     {
       "id": "ordering-sequence",
       "group": "evaluation",
       "title": "Prepare one window, activate once, then order it",
       "source": "ordering-sequence.mmd",
-      "caption": "Candidate synchronous application order, including readiness failure. K52 implemented it, and the code then returned to the released order. The window is constructed and navigation applied before activation. A return does not imply that activation completed, and the OS may decline. Launch, reopen and both menu callers share this owner. No retry, yielding or deferral is added."
+      "caption": "Synchronous application order, including readiness failure. K52 implemented it, the code returned to the released order, and the code then applied it again for issue #15. The window is constructed and navigation applied before activation. A return does not imply that activation completed, and the OS may decline. Launch, reopen and both menu callers share this owner. No retry, yielding or deferral is added."
     },
     {
       "id": "evaluation-outcomes",
