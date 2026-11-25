@@ -21,14 +21,17 @@ GitHub issue 15 with a happy-path repair instead of the closed five-slot protoco
 
 ## Decomposition
 
-Three flat sibling leaves share the purpose and context of this root, so no leaf
+Four flat sibling leaves share the purpose and context of this root, so no leaf
 needs a node. Their order encodes the dependencies.
 
 1. `settings-setup-front` removes the read that stopped E01 from the positive
    setup. It comes first, because every later VM run makes that read.
 2. `settings-call-order` applies the candidate order again and records the new
    scope in the spec.
-3. `release-0-4-1` notarises, accepts, publishes and closes the issue.
+3. `settings-menu-oracle` replaces the two open-menu checks, which failed on a
+   real guest in attempt 1 of the release. Antony chose this repair on
+   2026-11-25.
+4. `release-0-4-1` notarises, accepts, publishes and closes the issue.
 
 ## Pointers
 
