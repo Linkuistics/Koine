@@ -125,3 +125,43 @@ The leaf inserted `settings-menu-oracle-k5` ahead of itself. The oracle repair
 is a separate slice, with its own guest run, grammar change, tests and documents.
 This leaf stays live with every condition unchanged. One of its three attempts
 is used. Attempt 2 runs on the same notarised bundle after k5 retires.
+
+**Attempt 2 (2026-11-25).** Attempt 2 (`menu-bar-20261125T212057`, clone
+`koine-041-menu-2`) ran on the same notarised bundle. Both zips still had the
+recorded SHA-256, and `task app:verify` passed before the run. The caller stopped
+the clone. The scenario exited 1 in the setup of `reopen-1`.
+
+The first Settings selection passed. Its setup read TextEdit's window first and
+focused, and the size checks of k5 passed. After the selection, the window list
+showed one front, focused "Koine Settings" window, and the Koine menu was closed.
+
+The harness then closed the Settings window. In the next window list (step
+000111), TextEdit's window came first with `focused: false`. A System Events read
+(000117) still named TextEdit as the front application. The failure screenshot
+(000119) shows the TextEdit menu bar and a TextEdit window with grey close
+buttons. So the k2 read was accurate: no TextEdit window had focus.
+
+The cause is the scenario, not a Settings return. Before the first selection,
+the harness closes the window while TextEdit is the active application, and
+TextEdit keeps its focused window. Before each reopen, Koine is the active
+application, because the selection before it worked. After that close, macOS
+leaves TextEdit in front with no focused window. The reopen loop never gives
+TextEdit focus again. The old System Events front read passed in this state, so
+the 0.4.0 runs could not see it.
+
+Both call orders end with Koine active and its window key. So 0.4.0 most likely
+reached the same state. No retained evidence shows a window list at this point
+under 0.4.0, so this is an inference. A rerun with no change stops at the same
+setup, as attempt 1 did at its read. The leaf counts attempt 2 and asks Antony
+before attempt 3. One attempt remains.
+
+**Reopen focus (2026-11-26).** Antony chose to give TextEdit's window focus
+before each reopen, with the test driver's `window-focus` action. The setup
+check stays as strict as now, and a diagnostic guest qualifies the step before
+attempt 3. The other choices were to relax the reopen setups to the old front
+read, or to stop with nothing shipped.
+
+The leaf inserted `settings-reopen-focus-k6` ahead of itself. The repair is a
+separate slice, with its own guest run, scenario change, tests and documents.
+This leaf stays live with every condition unchanged. Two of its three attempts
+are used. Attempt 3 runs on the same notarised bundle after k6 retires.

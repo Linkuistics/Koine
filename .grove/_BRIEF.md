@@ -21,7 +21,7 @@ GitHub issue 15 with a happy-path repair instead of the closed five-slot protoco
 
 ## Decomposition
 
-Four flat sibling leaves share the purpose and context of this root, so no leaf
+Five flat sibling leaves share the purpose and context of this root, so no leaf
 needs a node. Their order encodes the dependencies.
 
 1. `settings-setup-front` removes the read that stopped E01 from the positive
@@ -31,7 +31,10 @@ needs a node. Their order encodes the dependencies.
 3. `settings-menu-oracle` replaces the two open-menu checks, which failed on a
    real guest in attempt 1 of the release. Antony chose this repair on
    2026-11-25.
-4. `release-0-4-1` notarises, accepts, publishes and closes the issue.
+4. `settings-reopen-focus` gives TextEdit's window focus before each reopen.
+   Attempt 2 of the release stopped at the setup of the first reopen. Antony
+   chose this repair on 2026-11-26.
+5. `release-0-4-1` notarises, accepts, publishes and closes the issue.
 
 ## Pointers
 
