@@ -22,7 +22,7 @@ layout acceptance, and apply the findings that earn repair.
   acceptance and material-risk threshold.
 - Each accepted repair is applied to the artifact and its affected citations
   and downstream task obligations.
-- Relevant post-fix verification is recorded, with native acceptance limits
+- Relevant post-repair verification is recorded, with native acceptance limits
   preserved.
 - Rejected findings and accepted trade-offs have explicit reasons.
 
