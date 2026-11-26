@@ -22,7 +22,8 @@ of the menu-bar check on the notarised bundle must accept it first.
 
 - The bundle carries version 0.4.1. It is signed, notarised and stapled.
 - One clean run of `task app:vm-verify-menu-bar` on the notarised bundle accepts
-  the candidate, within at most three attempts.
+  the candidate, within at most three attempts or the further attempts that
+  Antony allows.
 - Each other release VM check passes. A failure with a cause outside the happy
   path gets a GitHub issue instead.
 - After Antony approves, the `v0.4.1` tag, the GitHub release and the cask update
@@ -165,3 +166,67 @@ The leaf inserted `settings-reopen-focus-k6` ahead of itself. The repair is a
 separate slice, with its own guest run, scenario change, tests and documents.
 This leaf stays live with every condition unchanged. Two of its three attempts
 are used. Attempt 3 runs on the same notarised bundle after k6 retires.
+
+**Attempt 3 (2026-11-26).** Attempt 3 (`menu-bar-20261126T015033`, clone
+`koine-041-menu-3`) ran on the same notarised bundle. Both zips still had the
+recorded SHA-256, and `task app:verify` passed before the run. The caller stopped
+the clone. The scenario exited 1 at the resize, after the four Settings
+selections.
+
+All four Settings selections passed, the first and the three reopens. The focus
+step of k6 let each reopen setup pass. After each selection, the scenario found
+one front, focused Settings window and continued. So the candidate did not fail
+a Settings return.
+
+The resize then failed with "the window did not grow". The check needs a grown
+frame of at least 690 by 880. The frame was 681 by 884, at 40, 40.
+
+The drag sends
+eleven held points from the corner to 740, 940, then the release. The CLI
+delivered each one cleanly, the last two at 740, 940 (000241 and 000242). The
+frame matches the ninth point, 717, 920 (000240), with the three-pixel inset. So
+the guest did not apply the last held point before the release.
+
+The cause is the input delivery of the guest or the test driver, not Koine. The
+window has no maximum size. The window code of 0.4.1 differs from 0.4.0 only in
+the order of the two show calls. The same route grew the window to 701 by 901
+and 703 by 903 in earlier complete runs.
+
+The assertions after the resize did not run. They are the minimum-size
+scrolling, the shortcuts, the client requests, the consent, the silent launch,
+the reopen, the login restart and the final Quit.
+
+The leaf used its three attempts without a clean run, so it asks Antony.
+
+**A fourth attempt (2026-11-26).** Antony allowed one more attempt, unchanged,
+on the same notarised bundle. The leaf files an issue for the dropped drag
+point. If attempt 4 stops for a cause outside Koine, the leaf asks Antony again.
+The other choices were to accept attempt 3 as it was, or to stop with nothing
+shipped.
+
+The leaf filed #21 for the dropped drag point.
+
+**Attempt 4 (2026-11-26).** Attempt 4 (`menu-bar-20261126T115459`, clone
+`koine-041-menu-4`) ran on the same notarised bundle, after the same digest and
+`task app:verify` checks. The caller stopped the clone. All four Settings
+selections passed again. The resize failed again, with the same frame, 681 by 884
+at 40, 40. The drag records match attempt 3, and the frame again matches the
+ninth point.
+
+So the dropped point is repeatable, not chance. The route was qualified on
+2026-10-28 with TestAnyware 2.7.0 on macOS 27.0.1. The harness moved to
+TestAnyware 3.0.0 on 2026-11-23 (k177), and the guest now runs macOS 27.2.1.
+Attempts 3 and 4 are the first real runs of the route since then. The most
+likely cause is that change, not Koine, but no run has separated the two. The
+leaf asks Antony again, as agreed.
+
+**The drag repair (2026-11-26).** Antony chose to repair the drag before
+another attempt. A diagnostic guest first runs the drag against a control, to
+rule out Koine. One other choice was to accept the Settings evidence of
+attempts 3 and 4. The others were to run only the Koine control first, or to
+stop with nothing shipped.
+
+The leaf inserted `settings-resize-drag-k7` ahead of itself. The repair is a
+separate slice, with its own guest runs, helper change, tests and documents.
+This leaf stays live. Attempt 5 runs on the same notarised bundle after k7
+retires.
