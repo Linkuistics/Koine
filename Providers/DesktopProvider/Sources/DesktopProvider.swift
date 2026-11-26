@@ -144,6 +144,15 @@ final class DesktopProvider: Provider, @unchecked Sendable {
         if request.resolverId == "focusWindow" { return await focus(request.arguments["ref"]) }
         if request.resolverId == "focusDisplay" { return await focusDisplay(request.arguments["ref"]) }
         if request.resolverId == "displays" { return await displays() }
+        if request.resolverId == "windowOnTop" {
+            // The Dock bar rule needs the visible frames, which AppKit gives on the main actor, so they are
+            // read before the queue turn. A failed display list leaves every Dock entry undecided.
+            let displays = await readDisplays() ?? []
+            let dock = Self.dockProcess()
+            return await onQueue {
+                self.windowOnTop(request.arguments["ref"], at: request.arguments["point"], dock: dock, displays: displays)
+            }
+        }
         if request.resolverId == "setWindowFrame" {
             return await setFrame(request.arguments["ref"], to: request.arguments["frame"])
         }
@@ -163,7 +172,6 @@ final class DesktopProvider: Provider, @unchecked Sendable {
         case "window": window(referencedBy: request.arguments["ref"])
         case "windows": windows(of: request.parent)
         case "windowList": windowList()
-        case "windowOnTop": windowOnTop(request.arguments["ref"], at: request.arguments["point"])
         default: .failure(ProviderFailure(kind: .unknownResolver, message: "No such resolver."))
         }
     }
@@ -413,7 +421,11 @@ final class DesktopProvider: Provider, @unchecked Sendable {
     /// candidates as the window list: the current windows of the application, and
     /// this window too when the application does not enumerate it now. So the two
     /// reads link a window in the same way.
-    private func windowOnTop(_ ref: ProviderValue?, at point: ProviderValue?) -> ResolutionResult {
+    /// Entries of the Dock process follow the Dock bar rule, with `displays` (docs/specs/machine.md,
+    /// "Visibility at a point").
+    private func windowOnTop(_ ref: ProviderValue?, at point: ProviderValue?, dock: Int32?, displays: [Display])
+        -> ResolutionResult
+    {
         guard case .object(let fields)? = point, let x = number(fields["x"]), let y = number(fields["y"]) else {
             return invalid("point needs a finite x and y.")
         }
@@ -444,7 +456,15 @@ final class DesktopProvider: Provider, @unchecked Sendable {
         let entries = windowServerList()
         let links = WindowStacking.links(candidates, entries: entries)
         let own = windows.firstIndex { $0.token == token }.flatMap { links[$0] }
-        return answer(WindowStacking.onTop(link: own, offScreen: false, point: (x, y), entries: entries))
+        return answer(
+            WindowStacking.onTop(
+                link: own, offScreen: false, point: (x, y), entries: entries, dock: dock, displays: displays))
+    }
+
+    /// The process identifier of the Dock, or nil when it does not run.
+    private static func dockProcess() -> Int32? {
+        NSRunningApplication.runningApplications(withBundleIdentifier: "com.apple.dock")
+            .first { !$0.isTerminated }?.processIdentifier
     }
 
     private func answer(_ onTop: OnTop) -> ResolutionResult { .success(.string(onTop.rawValue)) }
@@ -612,11 +632,28 @@ final class DesktopProvider: Provider, @unchecked Sendable {
     /// AppKit reading of the screens, combined by `DisplayGeometry`. Neither needs
     /// Accessibility consent.
     private func displays() async -> ResolutionResult {
+        guard let displays = await readDisplays() else { return displayListFailed }
+        return .success(
+            .list(
+                displays.map { display in
+                    .object([
+                        "ref": .reference(DesktopReference.display(display.id).uri),
+                        "frame": value(of: display.frame),
+                        "visibleFrame": display.visibleFrame.map(value(of:)) ?? .null,
+                        "primary": .bool(display.primary),
+                    ])
+                }
+            )
+        )
+    }
+
+    /// The display list, or nil when `CGGetActiveDisplayList` fails.
+    private func readDisplays() async -> [Display]? {
         // https://developer.apple.com/documentation/coregraphics/1454603-cggetactivedisplaylist
         var count: UInt32 = 0
-        guard CGGetActiveDisplayList(0, nil, &count) == .success else { return displayListFailed }
+        guard CGGetActiveDisplayList(0, nil, &count) == .success else { return nil }
         var identifiers = [CGDirectDisplayID](repeating: 0, count: Int(count))
-        guard CGGetActiveDisplayList(count, &identifiers, &count) == .success else { return displayListFailed }
+        guard CGGetActiveDisplayList(count, &identifiers, &count) == .success else { return nil }
         let active = identifiers.prefix(Int(count)).map { id in
             let bounds = CGDisplayBounds(id)
             return ActiveDisplay(
@@ -637,19 +674,7 @@ final class DesktopProvider: Provider, @unchecked Sendable {
                 )
             }
         }
-        let displays = DisplayGeometry.displays(active: active, main: main, screens: screens)
-        return .success(
-            .list(
-                displays.map { display in
-                    .object([
-                        "ref": .reference(DesktopReference.display(display.id).uri),
-                        "frame": value(of: display.frame),
-                        "visibleFrame": display.visibleFrame.map(value(of:)) ?? .null,
-                        "primary": .bool(display.primary),
-                    ])
-                }
-            )
-        )
+        return DisplayGeometry.displays(active: active, main: main, screens: screens)
     }
 
     /// An empty list would be a false known value.

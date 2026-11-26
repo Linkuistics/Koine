@@ -19,6 +19,12 @@
 #             keeps them apart under workspace-1.0.0 and workspace-1.0.1. Both must
 #             exist first, and neither is rebuilt here. The released tree's own source
 #             also gives the 1.0.1 per-user variant (workspace-1.0.1/workspace-per-user).
+#   desktop   the newer tree's desktop provider (release/schema 1.0.1, window layout) is
+#             in newer/products/DesktopProviders. The same source stating
+#             first-party-selection-v1 is newer/desktop-per-user: an approved per-user
+#             update over the bundled desktop 1.0.0 of the released Koine 0.4.1, whose
+#             host refuses both because it lacks desktop-disclosures-v1. That host is
+#             built by scripts/build-retained-workspace.sh under released-0.4.1.
 #
 # Nothing built in one tree sees the other: a pair is put together only when
 # scripts/verify-compat-pairs.py installs one tree's bundle under the other
@@ -38,6 +44,10 @@ mkdir -p "${PAIRS}"
 }
 [ -f "${PAIRS}/workspace-1.0.1/retained.json" ] || {
     echo "Error: ${PAIRS}/workspace-1.0.1/retained.json does not exist. Run: task compat:workspace-release" >&2
+    exit 1
+}
+[ -f "${PAIRS}/released-0.4.1/retained.json" ] || {
+    echo "Error: ${PAIRS}/released-0.4.1/retained.json does not exist. Run: task compat:released-0.4.1" >&2
     exit 1
 }
 
@@ -143,6 +153,25 @@ unset FIXTURE_ADDITIONAL
     mkdir -p "${PAIRS}/workspace-1.0.1/workspace-per-user"
     cp -R "${VARIANT}" "${PAIRS}/workspace-1.0.1/workspace-per-user/"
     Fixtures/FixtureProvider/seal.sh "${PAIRS}/workspace-1.0.1/workspace-per-user/Workspace.koineprovider" >&2
+)
+
+# This tree's desktop 1.0.1 stating first-party-selection-v1, as a per-user update of the bundled
+# desktop 1.0.0 that the released Koine 0.4.1 ships. Only the copy's descriptor and manifest change.
+(
+    cd "${PAIRS}/newer/src"
+    WORK="$(mktemp -d)"
+    trap 'rm -rf "${WORK}"' EXIT
+    # shellcheck source=scripts/first-party-update-lib.sh
+    source scripts/first-party-update-lib.sh
+    PRODUCTS="$(cd "${PAIRS}/newer/products" && pwd -P)"
+    rm -rf "${PAIRS}/newer/desktop-per-user"
+    VARIANT_TREE="$(tree variant)"
+    state_feature_in_desktop "${VARIANT_TREE}"
+    VARIANT="$("${VARIANT_TREE}/Providers/DesktopProvider/build.sh" "${PRODUCTS}/PackageFrameworks" "${WORK}/variant")"
+    edit "${VARIANT}" "m['requiredFeatures'] = m['requiredFeatures'] + ['${FEATURE}']"
+    mkdir -p "${PAIRS}/newer/desktop-per-user"
+    cp -R "${VARIANT}" "${PAIRS}/newer/desktop-per-user/"
+    Fixtures/FixtureProvider/seal.sh "${PAIRS}/newer/desktop-per-user/Desktop.koineprovider" >&2
 )
 
 echo "${PAIRS}"

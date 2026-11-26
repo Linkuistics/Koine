@@ -138,10 +138,56 @@ struct WindowOnTopTests {
     let window = rect(100, 100, 400, 300)
     let point = (x: 200.0, y: 200.0)
 
-    func answer(_ entries: [ServerEntry], link: Int?, at point: (x: Double, y: Double)? = nil, offScreen: Bool = false)
-        -> OnTop
-    {
-        WindowStacking.onTop(link: link, offScreen: offScreen, point: point ?? self.point, entries: entries)
+    func answer(
+        _ entries: [ServerEntry], link: Int?, at point: (x: Double, y: Double)? = nil, offScreen: Bool = false,
+        dock: Int32? = nil, displays: [Display] = []
+    ) -> OnTop {
+        WindowStacking.onTop(
+            link: link, offScreen: offScreen, point: point ?? self.point, entries: entries, dock: dock,
+            displays: displays)
+    }
+
+    // The Dock bar rule. The display is 1440 by 900 with a menu bar of 25 points and a Dock of 70 points at the
+    // bottom, so its visible frame ends at y = 830. The Dock (process 50) owns one opaque entry with the bounds
+    // of the whole display, above every window, as the VM run observed on macOS 27.2.1.
+    let display = Display(id: 1, frame: rect(0, 0, 1440, 900), visibleFrame: rect(0, 25, 1440, 805), primary: true)
+    var dockEntries: [ServerEntry] {
+        [entry(1, owner: 1, rect(0, 0, 1440, 25), layer: 24), entry(2, owner: 50, rect(0, 0, 1440, 900), layer: 20),
+         entry(9, owner: 10, rect(100, 100, 400, 790))]
+    }
+
+    @Test func theDockCoversNothingInsideTheVisibleFrame() {
+        #expect(answer(dockEntries, link: 2, dock: 50, displays: [display]) == .onTop)
+    }
+
+    @Test func theDockCoversItsBarOutsideTheVisibleFrame() {
+        #expect(answer(dockEntries, link: 2, at: (x: 200, y: 850), dock: 50, displays: [display]) == .notOnTop)
+        #expect(answer(dockEntries, link: 2, at: (x: 200, y: 829), dock: 50, displays: [display]) == .onTop,
+                "the last row of the visible frame is inside it")
+        #expect(answer(dockEntries, link: 2, at: (x: 200, y: 830), dock: 50, displays: [display]) == .notOnTop,
+                "the bottom edge of the visible frame is outside it")
+    }
+
+    /// Where Modaliser assumes visible, Koine reports unknown.
+    @Test func aDockEntryWithAnUnknownVisibleFrameOrNoDisplayMakesTheAnswerUnknown() {
+        let unknown = Display(id: 1, frame: rect(0, 0, 1440, 900), visibleFrame: nil, primary: true)
+        #expect(answer(dockEntries, link: 2, dock: 50, displays: [unknown]) == .unknown)
+        #expect(answer(dockEntries, link: 2, dock: 50, displays: []) == .unknown)
+        // A known cover still decides.
+        let covered = [entry(3, owner: 20, rect(150, 150, 100, 100))] + dockEntries
+        #expect(answer(covered, link: 3, dock: 50, displays: [unknown]) == .notOnTop)
+    }
+
+    /// The rule names the Dock process alone. Another owner's entry of the same shape still covers.
+    @Test func anotherOwnersFullDisplayEntryStillCovers() {
+        #expect(answer(dockEntries, link: 2, dock: 51, displays: [display]) == .notOnTop)
+        #expect(answer(dockEntries, link: 2, dock: nil, displays: [display]) == .notOnTop)
+    }
+
+    @Test func aTranslucentDockEntryCoversNothing() {
+        let tinted = [entry(2, owner: 50, rect(0, 0, 1440, 900), alpha: 0.5), entry(9, owner: 10, rect(100, 100, 400, 790))]
+        #expect(answer(tinted, link: 1, at: (x: 200, y: 850), dock: 50, displays: [display]) == .onTop,
+                "an alpha below 1 covers nothing, even over the Dock bar")
     }
 
     @Test func aWindowThatNothingCoversIsOnTop() {

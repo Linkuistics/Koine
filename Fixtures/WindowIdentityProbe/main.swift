@@ -17,6 +17,9 @@ import Foundation
 //        WindowIdentityProbe focused
 //        WindowIdentityProbe windows <pid>
 //        WindowIdentityProbe observe <pid> <seconds>
+//        WindowIdentityProbe displays
+//        WindowIdentityProbe stack <pid>...
+//        WindowIdentityProbe pointer
 // A command is a file <name>.cmd holding `list <pid>` or `held`; the answer is
 // written to <name>.json. `stop.cmd` ends the process. `focused` holds nothing: it
 // prints which window has focus now, as the system says and not as Koine does,
@@ -28,6 +31,13 @@ import Foundation
 // was told, for
 // docs/verification/desktop-remembered-windows-vm.md: whether the notification the
 // desktop provider relies on arrives, and for which window.
+//
+// The last three hold nothing, for docs/verification/desktop-window-layout-vm.md.
+// `displays` reports each active display as Core Graphics and AppKit give it to
+// this process. `stack` reports the window server's on-screen list, front to back,
+// and the Accessibility windows of each named application with their window
+// numbers, so a caller can put those windows in the window server's order.
+// `pointer` reports where the pointer is and which buttons are held.
 
 @_silgen_name("_AXUIElementGetWindow")
 func _AXUIElementGetWindow(_ element: AXUIElement, _ id: UnsafeMutablePointer<CGWindowID>) -> AXError
@@ -157,12 +167,93 @@ func focusedNow() -> [String: Any] {
     return answer
 }
 
+/// Every active display: the Core Graphics bounds, the primary flag, and the visible
+/// frame of the AppKit screen with the same number, flipped against the height of
+/// the first screen into the coordinates of window frames. AppKit puts the primary
+/// screen first. Null where no screen has the display's number.
+func displaysNow() -> [String: Any] {
+    var count: UInt32 = 0
+    let listed = CGGetActiveDisplayList(0, nil, &count)
+    var ids = [CGDirectDisplayID](repeating: 0, count: Int(count))
+    let read = CGGetActiveDisplayList(count, &ids, &count)
+    let screens = NSScreen.screens
+    let height = screens.first?.frame.height ?? 0
+    func box(_ r: CGRect) -> [Double] { [r.origin.x, r.origin.y, r.size.width, r.size.height].map(Double.init) }
+    let displays: [[String: Any]] = ids.prefix(Int(count)).map { id in
+        let screen = screens.first {
+            ($0.deviceDescription[NSDeviceDescriptionKey("NSScreenNumber")] as? NSNumber)?.uint32Value == id
+        }
+        let visible = screen.map { screen -> [Double] in
+            let v = screen.visibleFrame
+            return box(CGRect(x: v.origin.x, y: height - (v.origin.y + v.size.height), width: v.size.width, height: v.size.height))
+        }
+        return [
+            "id": Int(id), "bounds": box(CGDisplayBounds(id)), "primary": id == CGMainDisplayID(),
+            "screenFrame": screen.map { box($0.frame) } ?? NSNull(), "visibleFrame": visible ?? NSNull(),
+        ]
+    }
+    return ["listError": listed.rawValue, "readError": read.rawValue, "screenCount": screens.count, "displays": displays]
+}
+
+/// The window server's on-screen list, front to back, as the desktop provider reads
+/// it (on-screen entries only, without desktop elements), and the Accessibility
+/// windows of each named process with the window number that `_AXUIElementGetWindow`
+/// gives. `front` is the named processes' windows in the order of the list.
+func stackNow(_ pids: [pid_t]) -> [String: Any] {
+    let entries = (CGWindowListCopyWindowInfo([.optionOnScreenOnly, .excludeDesktopElements], kCGNullWindowID)
+        as? [[String: Any]] ?? []).map { info -> [String: Any] in
+        let bounds = info[kCGWindowBounds as String] as? [String: Any] ?? [:]
+        return [
+            "windowNumber": info[kCGWindowNumber as String] ?? NSNull(),
+            "pid": info[kCGWindowOwnerPID as String] ?? NSNull(),
+            "layer": info[kCGWindowLayer as String] ?? NSNull(),
+            "alpha": info[kCGWindowAlpha as String] ?? NSNull(),
+            "rect": ["X", "Y", "Width", "Height"].map { (bounds[$0] as? NSNumber)?.doubleValue ?? -1 },
+        ]
+    }
+    var windows: [[String: Any]] = []
+    for pid in pids {
+        let application = AXUIElementCreateApplication(pid)
+        AXUIElementSetMessagingTimeout(application, 2)
+        for element in copy(application, kAXWindowsAttribute).1 as? [AXUIElement] ?? [] {
+            var row = describe(element)
+            row["pid"] = Int(pid)
+            windows.append(row)
+        }
+    }
+    let front: [[String: Any]] = entries.compactMap { entry in
+        guard let number = entry["windowNumber"] as? Int,
+            let window = windows.first(where: { ($0["privateWindowId"] as? Int) == number })
+        else { return nil }
+        return ["windowNumber": number, "pid": window["pid"]!, "title": window["title"]!, "rect": entry["rect"]!]
+    }
+    return ["trusted": AXIsProcessTrusted(), "entries": entries, "windows": windows, "front": front]
+}
+
 nonisolated(unsafe) var watched: [(element: AXUIElement, described: [String: Any])] = []
 nonisolated(unsafe) var destroyed: [[String: Any]] = []
 
 let arguments = CommandLine.arguments
 if arguments.count == 2, arguments[1] == "focused" {
     print(String(decoding: try JSONSerialization.data(withJSONObject: focusedNow(), options: [.sortedKeys]), as: UTF8.self))
+    exit(0)
+}
+if arguments.count == 2, arguments[1] == "displays" {
+    print(String(decoding: try JSONSerialization.data(withJSONObject: displaysNow(), options: [.sortedKeys]), as: UTF8.self))
+    exit(0)
+}
+if arguments.count >= 3, arguments[1] == "stack" {
+    let pids = arguments.dropFirst(2).compactMap { pid_t($0) }
+    print(String(decoding: try JSONSerialization.data(withJSONObject: stackNow(pids), options: [.sortedKeys]), as: UTF8.self))
+    exit(0)
+}
+if arguments.count == 2, arguments[1] == "pointer" {
+    let location = CGEvent(source: nil)?.location
+    let answer: [String: Any] = [
+        "point": location.map { [Double($0.x), Double($0.y)] } ?? NSNull(),
+        "pressedMouseButtons": NSEvent.pressedMouseButtons,
+    ]
+    print(String(decoding: try JSONSerialization.data(withJSONObject: answer, options: [.sortedKeys]), as: UTF8.self))
     exit(0)
 }
 if arguments.count == 3, arguments[1] == "windows", let pid = pid_t(arguments[2]) {
@@ -209,7 +300,7 @@ if arguments.count == 4, arguments[1] == "observe", let pid = pid_t(arguments[2]
     exit(0)
 }
 guard arguments.count == 3, arguments[1] == "serve" else {
-    FileHandle.standardError.write(Data("usage: WindowIdentityProbe serve <directory> | focused | windows <pid> | observe <pid> <seconds>\n".utf8))
+    FileHandle.standardError.write(Data("usage: WindowIdentityProbe serve <directory> | focused | windows <pid> | observe <pid> <seconds> | displays | stack <pid>... | pointer\n".utf8))
     exit(2)
 }
 let directory = URL(fileURLWithPath: arguments[2], isDirectory: true)

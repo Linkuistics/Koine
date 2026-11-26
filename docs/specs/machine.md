@@ -1048,9 +1048,24 @@ entries in front of the window.
 
 An entry covers the window when its bounds contain the point and it is
 opaque, with an alpha of 1. An entry with no alpha counts as opaque. Entries of
-every layer and every owner can cover, including the menu bar, the Dock and the
-windows of Koine. A rectangle contains its top and left edges, but not its
-bottom and right edges.
+every layer and every owner can cover, including the menu bar and the windows of
+Koine. A rectangle contains its top and left edges, but not its bottom and right
+edges.
+
+The entries of the Dock follow the Dock bar rule. With default settings, the
+Dock owns an opaque entry with the bounds of the whole display, above every
+application window. Without this rule, no window would ever be on top while the
+Dock is visible. The provider finds the Dock as the running application
+`com.apple.dock`.
+
+An entry of the Dock covers a point only outside the visible frame of the
+display that contains the point. The Dock bar is there. Inside that visible
+frame, the entry covers nothing. When the visible frame is unknown, or no
+display contains the point, the Dock entry counts as an opaque entry with no
+bounds.
+
+The rule has a limit. A magnified Dock or a Dock folder stack draws inside the
+visible frame, so the answer can be `ON_TOP` where the Dock hides the window.
 
 The answer is `NOT_ON_TOP` when an entry covers the window, or when the bounds
 of the linked entry do not contain the point. When the linked entry has no

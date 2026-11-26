@@ -29,3 +29,8 @@ grove deferred.
 - The human approves each public step: the tag, the GitHub release, the
   cask, the issues and the edit to issue 11.
 - The human sees the final disclosure text before publishing.
+- File a third issue for the limit of the Dock bar rule
+  (`window-layout-acceptance-k6`). A magnified Dock or a Dock folder stack
+  draws inside the visible frame, so the point query can answer `ON_TOP` where
+  the Dock hides the window. The contract section "Visibility at a point"
+  states the limit.

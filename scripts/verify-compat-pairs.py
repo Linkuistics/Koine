@@ -16,6 +16,10 @@ host over a bundled 1.0.0; the released 0.3.0 host and the retained 1.0.0 host e
 1.0.2 before it loads, naming the feature they lack. The same fixtures are probed through
 every pair that serves a release and the outcomes compared.
 
+The desktop 1.0.1 pairs (docs/verification/desktop-window-layout-compatibility.md) put this tree's desktop 1.0.1
+under this tree's host, held to its profile, and under the released Koine 0.4.1 host, bundled and as an approved
+per-user update over its desktop 1.0.0. That host refuses it before it loads, naming desktop-disclosures-v1.
+
 usage: verify-compat-pairs.py [debug|release]
 
 Writes <pairs>/results.json and prints a summary. Exits 1 if any check fails.
@@ -389,8 +393,11 @@ def refused_after_loading(name, plugin_root, plugin, host_revision, state, diagn
     return case
 
 
-def desktop_pair(name, host_revision, conformance):
-    """The desktop provider built from the released revision, in this release's host.
+def desktop_pair(name, host_revision, conformance, bundled=None, profile="core-desktop-extension-host.json",
+                 plugin="desktop provider built from the released revision (against 1.0)", release="1.0.0"):
+    """The desktop provider built from the released revision, in this release's host. With `bundled`, `profile`,
+    `plugin` and `release`, another desktop bundle held to another profile in the same way: this tree's desktop 1.0.1
+    (window layout) and the extension-host core + desktop 1.0.1 profile.
 
     It is bundled, as the application supplies it, so `desktop` is its to own. The
     served schema and the candidates it runs are held to the extension-host
@@ -399,14 +406,14 @@ def desktop_pair(name, host_revision, conformance):
     text with one description changed, and against a profile that pins another
     release, must come back red. The original core + desktop design file is the
     old-host profile's; only a released host serves it, and the V run owns that."""
-    bundled = os.path.join(products("baseline"), "DesktopProviders")
-    case = Case(name, "desktop provider built from the released revision (against 1.0)", host_revision)
+    bundled = bundled or os.path.join(products("baseline"), "DesktopProviders")
+    case = Case(name, plugin, host_revision)
     empty = tempfile.mkdtemp(prefix="koine-compat-empty-")
     host = Host(host_revision, empty, bundled=bundled)
     try:
         providers = host.data_of(STATUS)["koineManagement"]["providers"]
         case.check(
-            "the released desktop provider is ACTIVE beside the new core",
+            f"the desktop provider {release} is ACTIVE beside the new core",
             [(p["provider"], p["state"]) for p in providers] == [("desktop", "ACTIVE")], providers,
         )
         koine = host.data_of("{ koine { schemaDigest availableCapabilities } }")["koine"]
@@ -428,7 +435,7 @@ def desktop_pair(name, host_revision, conformance):
         capture = os.path.join(directory, "introspection.json")
         with open(capture, "w") as file:
             json.dump(introspection, file)
-        profile = os.path.join(REPOSITORY, "docs", "design", "profiles", "core-desktop-extension-host.json")
+        profile = os.path.join(REPOSITORY, "docs", "design", "profiles", profile)
         with open(profile) as file:
             pinned = json.load(file)
         design = os.path.normpath(os.path.join(os.path.dirname(profile), pinned["design"]))
@@ -443,7 +450,7 @@ def desktop_pair(name, host_revision, conformance):
         )
         case.check(
             "the served schema is the extension-host contract and the candidate run is the profile's pin: "
-            "no difference from the design SDL, the served digest is that text's, and desktop 1.0.0 is BUNDLED and SELECTED",
+            f"no difference from the design SDL, the served digest is that text's, and desktop {release} is BUNDLED and SELECTED",
             status == 200 and run.returncode == 0, {"exit": run.returncode, "output": (run.stdout + run.stderr)[-400:]},
         )
         with open(design) as file:
@@ -486,6 +493,70 @@ def desktop_pair(name, host_revision, conformance):
     finally:
         _, code = host.stop()
         shutil.rmtree(empty, ignore_errors=True)
+    case.check("the host stops cleanly", code == 0, code)
+    return case
+
+
+# --- The desktop 1.0.1 pairs -----------------------------------------------------------------------------------
+#
+# This tree's desktop 1.0.1 (window layout) requires desktop-disclosures-v1 (docs/specs/machine.md, "Compatibility and
+# delivery"). The released Koine 0.4.1 host lacks that feature, so it must refuse the bundle before load: bundled in
+# place of its desktop 1.0.0, and as an approved per-user update over it, where its desktop 1.0.0 stays selected.
+# docs/verification/desktop-window-layout-compatibility.md records a run.
+
+RELEASED_041 = "released-0.4.1"
+FEATURE_DESKTOP_DISCLOSURES = "desktop-disclosures-v1"
+
+
+def released_041_bundled():
+    return os.path.join(PAIRS, RELEASED_041, "bundled")
+
+
+def desktop_per_user_variant():
+    return os.path.join(PAIRS, "newer", "desktop-per-user")
+
+
+def desktop_refused(name, plugin, host_revision, bundled, per_user, expected_rows, served_desktop_images):
+    """One host of `host_revision` over `bundled` (Contents/PlugIns) and `per_user` (a root with the per-user bundle,
+    or None). The candidate rows must be exactly `expected_rows`. The desktop 1.0.1 row must be INCOMPATIBLE with a
+    diagnostic that names desktop-disclosures-v1. The desktop images that the host mapped must be exactly
+    `served_desktop_images` (SHA-256), each from its staging: the refused bundle is never loaded."""
+    case = Case(name, plugin, host_revision)
+    per_user_root = per_user or tempfile.mkdtemp(prefix="koine-compat-empty-")
+    host = Host(host_revision, per_user_root, bundled=bundled)
+    try:
+        providers = host.data_of(CANDIDATES)["koineManagement"]["providers"]
+        case.check("the candidate rows are exactly the ones this pair is pinned to",
+                   rows_of(providers) == sorted(expected_rows), {"served": rows_of(providers), "pinned": sorted(expected_rows)})
+        diagnostics = [p["diagnostic"] for p in providers
+                       if p["provider"] == "desktop" and p["version"] == "1.0.1" and p["state"] == "INCOMPATIBLE"]
+        case.check(f"the refused desktop 1.0.1 names the missing feature {FEATURE_DESKTOP_DISCLOSURES} and says it is a "
+                   "requirement the host lacks",
+                   len(diagnostics) == 1 and diagnostics[0] is not None and FEATURE_DESKTOP_DISCLOSURES in diagnostics[0]
+                   and "requires host features this Koine lacks" in diagnostics[0], diagnostics)
+        images = [os.path.realpath(image) for image in host.ready["frameworkImages"]]
+        case.check("shared framework identity: one KoineProviderAPI image, the host's own",
+                   images == [framework_image(host_revision)], images)
+        mapped = mapped_images(host, "libDesktopProvider.dylib")
+        case.check("the desktop images the host mapped are exactly the served ones, each from the host's own staging "
+                   "(the refused desktop 1.0.1 was never loaded)" if served_desktop_images else
+                   "no desktop image is mapped: the refused bundle was never loaded",
+                   sorted(digest(path) for path in mapped) == sorted(served_desktop_images)
+                   and all("/ProviderStaging/" in path for path in mapped),
+                   {"mapped": [os.path.relpath(path, host.data) for path in mapped], "wanted": sorted(served_desktop_images)})
+        status, reply = host.post("{ desktopWindows { order } }")
+        case.check("the window list of desktop 1.0.1 is not in the schema: desktopWindows does not validate",
+                   status == 400, [status, reply])
+        if served_desktop_images:
+            absent = host.post(
+                '{ desktopApplication(process: { pid: 999999, startedAt: "2001-01-01T00:00:00.000000Z" }) { ref } }')
+            case.check("the selected desktop 1.0.0 still serves: an absent process is null without an error",
+                       absent[0] == 200 and absent[1].get("data") == {"desktopApplication": None}
+                       and not absent[1].get("errors"), absent)
+    finally:
+        _, code = host.stop()
+        shutil.rmtree(per_user_root, ignore_errors=True)
+        shutil.rmtree(bundled, ignore_errors=True)
     case.check("the host stops cleanly", code == 0, code)
     return case
 
@@ -843,6 +914,17 @@ def main():
     subjects["released framework"] = framework_image(RELEASED)
     subjects["released desktop provider"] = os.path.join(released_bundled(), "Desktop.koineprovider", "libDesktopProvider.dylib")
     subjects["newer desktop provider"] = os.path.join(newer_desktop(), "Desktop.koineprovider", "libDesktopProvider.dylib")
+    subjects["newer desktop provider manifest"] = os.path.join(newer_desktop(), "Desktop.koineprovider", "manifest.json")
+    subjects["newer desktop per-user variant"] = os.path.join(
+        desktop_per_user_variant(), "Desktop.koineprovider", "libDesktopProvider.dylib")
+    subjects["newer desktop per-user variant manifest"] = os.path.join(
+        desktop_per_user_variant(), "Desktop.koineprovider", "manifest.json")
+    subjects["released 0.4.1 host"] = host_binary(RELEASED_041)
+    subjects["released 0.4.1 framework"] = framework_image(RELEASED_041)
+    subjects["released 0.4.1 desktop provider"] = os.path.join(
+        released_041_bundled(), "Desktop.koineprovider", "libDesktopProvider.dylib")
+    subjects["released 0.4.1 workspace provider"] = os.path.join(
+        released_041_bundled(), "Workspace.koineprovider", "libWorkspaceProvider.dylib")
     before = {name: digest(path) for name, path in subjects.items()}
 
     cases = [
@@ -880,6 +962,9 @@ def main():
                 "the same source, the descriptor declaring the feature and the manifest not", "newer",
                 "REJECTED", "disagrees with its manifest"),
         desktop_pair("the released desktop provider, newer host", "newer", conformance),
+        desktop_pair("this tree's desktop 1.0.1 bundled, newer host: the new bundle loads in the new host", "newer",
+                     conformance, bundled=newer_desktop(), profile="core-desktop-window-layout-extension-host.json",
+                     plugin="desktop 1.0.1, this tree's, sealed as the application seals it", release="1.0.1"),
     ]
     refused = [
         ("unsupported-major", "INCOMPATIBLE", "framework major 2"),
@@ -896,6 +981,28 @@ def main():
                 os.path.join(variants[plugin_revision], variant), f"{plugin_revision} variant {variant}",
                 host_revision, state, diagnostic,
             ))
+
+    # --- The desktop 1.0.1 pairs: the released Koine 0.4.1 host refuses this tree's desktop before load ---
+    released_041_desktop = digest(subjects["released 0.4.1 desktop provider"])
+    D101_REFUSED = ("desktop", "1.0.1", "1.0.1", "INCOMPATIBLE", "BUNDLED", "NOT_SELECTED", "feature-unavailable")
+    D101_USER_REFUSED = ("desktop", "1.0.1", "1.0.1", "INCOMPATIBLE", "PER_USER", "NOT_SELECTED", "feature-unavailable")
+    D_SLOT_UNAVAILABLE = ("desktop", "unknown", "unknown", "REJECTED", None, "UNAVAILABLE", "no-eligible-candidate")
+    D100_KEPT = ("desktop", "1.0.0", "1.0.0", "ACTIVE", "BUNDLED", "SELECTED", "selected-with-refusals")
+    W102_041 = ("workspace", "1.0.2", "1.0.2", "ACTIVE", "BUNDLED", "SELECTED", None)
+    # With no desktop selected, nothing owns desktop:control, which workspace needs: the capability-owner cascade.
+    W102_041_NO_OWNER = ("workspace", "1.0.2", "1.0.2", "REJECTED", "BUNDLED", "SELECTED", "missing-capability-owner")
+    cases += [
+        desktop_refused("this tree's desktop 1.0.1 bundled, released Koine 0.4.1 host: refused before it loads",
+                        "desktop 1.0.1, this tree's, sealed as the application seals it", RELEASED_041,
+                        compose(newer_desktop(), released_041_bundled()), None,
+                        [D101_REFUSED, D_SLOT_UNAVAILABLE, W102_041_NO_OWNER], []),
+        desktop_refused("the approved per-user desktop 1.0.1 over the bundled 1.0.0, released Koine 0.4.1 host: "
+                        "refused before it loads, and desktop 1.0.0 stays selected",
+                        "desktop 1.0.1 stating first-party-selection-v1, approved per user", RELEASED_041,
+                        compose(released_041_bundled(), released_041_bundled()),
+                        only(desktop_per_user_variant(), "Desktop"),
+                        [D101_USER_REFUSED, D100_KEPT, W102_041], [released_041_desktop]),
+    ]
 
     # --- The workspace pairs: independently built old and new providers under each revision's host ---
     old_image, released_image, released_variant_image, new_image, variant_image = (

@@ -126,7 +126,17 @@ enum WindowStacking {
     /// cover, Koine's own included, because Koine draws no labels. Where Modaliser assumes visible, the
     /// answer is unknown. That is the case when the linked entry has no bounds. It is also the case when an
     /// opaque entry in front has no bounds and no other entry covers the window.
-    static func onTop(link: Int?, offScreen: Bool, point: (x: Double, y: Double), entries: [ServerEntry]) -> OnTop {
+    ///
+    /// The entries of the Dock process, `dock`, follow the Dock bar rule. With default settings the Dock
+    /// owns an opaque entry with the bounds of the whole display, above every application window
+    /// (docs/verification/desktop-window-layout-vm.md). So a Dock entry covers a point only outside the
+    /// visible frame of the display in `displays` that contains the point, where the Dock bar is. When no
+    /// display contains the point, or its visible frame is unknown, the Dock entry leaves the answer
+    /// undecided, as an entry with no bounds does.
+    static func onTop(
+        link: Int?, offScreen: Bool, point: (x: Double, y: Double), entries: [ServerEntry],
+        dock: Int32? = nil, displays: [Display] = []
+    ) -> OnTop {
         if offScreen { return .notOnTop }
         guard let link else { return .unknown }
         guard let own = entries[link].bounds else { return .unknown }
@@ -137,9 +147,24 @@ enum WindowStacking {
                 undecided = true
                 continue
             }
-            if bounds.contains(point) { return .notOnTop }
+            guard bounds.contains(point) else { continue }
+            guard let dock, entry.owner == dock else { return .notOnTop }
+            switch dockBarContains(point, displays: displays) {
+            case true?: return .notOnTop
+            case false?: continue
+            case nil: undecided = true
+            }
         }
         return undecided ? .unknown : .onTop
+    }
+
+    /// Whether `point` lies in the Dock bar's area: inside the frame of a display, and outside that
+    /// display's visible frame. Nil when no display contains the point, or its visible frame is unknown.
+    static func dockBarContains(_ point: (x: Double, y: Double), displays: [Display]) -> Bool? {
+        guard let display = displays.first(where: { $0.frame.contains(point) }),
+            let visible = display.visibleFrame
+        else { return nil }
+        return !visible.contains(point)
     }
 
     static func matches(_ a: ScreenRect, _ b: ScreenRect) -> Bool {

@@ -5,8 +5,10 @@
 # (docs/specs/workspace-launch-and-open.md#subjects-and-versions). Two pins exist:
 #   scripts/retained-workspace-1.0.0.json   workspace 1.0.0, before the long-location repair
 #   scripts/retained-workspace-1.0.1.json   workspace 1.0.1, as the released Koine 0.3.0 shipped it
+#   scripts/released-0.4.1.json             workspace 1.0.2, as the released Koine 0.4.1 shipped it
 # The second revision is also the released 0.3.0 host: its host, framework and desktop
-# provider are what the new workspace bundle is shown to be refused by.
+# provider are what the new workspace bundle is shown to be refused by. The third is
+# the released 0.4.1 host, which refuses this tree's desktop 1.0.1 before load.
 #
 # The pinned revision's files are extracted into a tree of their own with a build
 # directory of their own, and built there by that revision's own scripts, as
@@ -16,7 +18,8 @@
 # helper as source) that `jj file show` would flatten, so no colocated git checkout
 # is needed: `jj git root` names the store.
 #
-# Under .build/compat/<configuration>/workspace-<release>:
+# Under .build/compat/<configuration>/workspace-<release>, or under the directory that
+# the pin names in its optional "directory" field:
 #   src/            the extracted revision and its .build
 #   products        the tree's build products (host, framework, desktop provider)
 #   bundled/        the sealed, approved Desktop and Workspace bundles: what the
@@ -34,7 +37,7 @@ TAG="$(jq -r .tag "${PIN}")"
 RELEASE="$(jq -r .release "${PIN}")"
 SCHEMA="$(jq -r .schemaVersion "${PIN}")"
 IDENTIFIER="$(jq -r .signingIdentifier "${PIN}")"
-DIRECTORY="$(pwd)/.build/compat/${CONFIGURATION}/workspace-${RELEASE}"
+DIRECTORY="$(pwd)/.build/compat/${CONFIGURATION}/$(jq -r '.directory // "workspace-\(.release)"' "${PIN}")"
 TREE="${DIRECTORY}/src"
 
 # The pinned commit must be one this repository holds, and the tag, where this

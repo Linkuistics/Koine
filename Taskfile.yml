@@ -2127,6 +2127,11 @@ tasks:
     cmds:
       - scripts/vm-verify-desktop-remembered.sh
 
+  app:vm-verify-window-layout:
+    desc: The V seam of window layout (Koine 0.5.0, desktop 1.0.1), in ONE clean TestAnyware macOS VM with one display, on the signed bundle - the window list of TextEdit and Finder with references and frames, the display list with full and visible frames, a frame set to the left half and the earlier frame restored, order and visibility for overlapping windows of two applications and for two TextEdit windows with equal bounds, display focus raising the front window and moving the pointer, each against an independent native witness, and the desktop disclosures in the create-grant view, the request view and the grant list before and after a restart
+    cmds:
+      - scripts/vm-verify-window-layout.sh
+
   app:vm-verify-latency:
     desc: Measure, in a clean TestAnyware macOS VM on the signed bundle, warm query-to-choices and selection-to-focus latency in the keyboard workflow - a rotation of switches between two same-titled Finder windows and a TextEdit document, each starting from an asserted window and following real keystrokes in it - and print the observed distribution as a report, never a target
     cmds:
@@ -2232,6 +2237,7 @@ tasks:
     cmds:
       - task: compat:workspace-baseline
       - task: compat:workspace-release
+      - task: compat:released-0.4.1
       - scripts/build-compat-pairs.sh {{.CONFIGURATION | default "debug"}}
 
   compat:verify:
@@ -2253,6 +2259,11 @@ tasks:
     desc: Build the released Koine 0.3.0 (the revision scripts/retained-workspace-1.0.1.json pins, tag v0.3.0), never from this working tree, in a tree of its own under .build/compat/<configuration>/workspace-1.0.1 - its host, framework and desktop provider, its sealed, approved Desktop and Workspace 1.0.1 bundles kept apart in bundled/ with a record of their digests; the released host that refuses this tree's workspace 1.0.2, and the old side of the 1.0.1 pairs (CONFIGURATION=debug|release)
     cmds:
       - scripts/build-retained-workspace.sh {{.CONFIGURATION | default "debug"}} scripts/retained-workspace-1.0.1.json
+
+  compat:released-0.4.1:
+    desc: Build the released Koine 0.4.1 (the revision scripts/released-0.4.1.json pins, tag v0.4.1), never from this working tree, in a tree of its own under .build/compat/<configuration>/released-0.4.1 - its host, framework and desktop provider, and its sealed, approved Desktop 1.0.0 and Workspace 1.0.2 bundles kept apart in bundled/ with a record of their digests; the released host that refuses this tree's desktop 1.0.1 because it lacks desktop-disclosures-v1 (CONFIGURATION=debug|release)
+    cmds:
+      - scripts/build-retained-workspace.sh {{.CONFIGURATION | default "debug"}} scripts/released-0.4.1.json
 
   compat:workspace-baseline-verify:
     desc: Hold the retained workspace 1.0.0 bundle to what it shipped with - its pinned identity and SDL, the 1.0.0 profile served by that revision's own host bundling it, and that revision's workspace suites (logic, composition, installations, schema and catalogue conformance, and the short-path N subjects loading the bundle) - each first seen red against a mutated copy (CONFIGURATION=debug|release; needs compat:workspace-baseline)

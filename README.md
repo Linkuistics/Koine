@@ -33,7 +33,7 @@ The desktop provider reads applications and windows, and it focuses a window.
 
 Koine 0.5.0 adds window layout. A client with `desktop:read` calls `desktopWindows` to list the windows of every application with a Dock icon on the current Space. Each row has the frame of the window, its place in the front-to-back order and its visibility. The client calls `desktopWindowOnTop` to ask whether a window is on top at a screen point. It calls `desktopDisplays` to list the displays, each with a full frame and a visible frame.
 
-A client with `desktop:control` calls `desktopSetWindowFrame` to move and resize one window. It calls `desktopFocusDisplay` to raise the front window on a display and move the pointer to the centre of that display. Koine never clicks. Every frame uses screen coordinates, and the client computes every layout. The [client guide](docs/client-guide.md#arranging-windows) describes all five operations.
+A client with `desktop:control` calls `desktopSetWindowFrame` to move and resize one window. It calls `desktopFocusDisplay` to raise the front window on a display and move the pointer to the centre of that display. Koine never clicks. Every frame uses screen coordinates, and the client computes every layout. The [client guide](docs/client-guide.md#arranging-windows) describes all five operations. One VM run accepts them on one display ([record](docs/verification/desktop-window-layout-vm.md)), and in the compatibility pairs the released 0.4.1 host refuses desktop 1.0.1 ([record](docs/verification/desktop-window-layout-compatibility.md)).
 
 The workspace provider launches and activates applications. It opens URLs, documents and folders, and it reveals paths in Finder. Each of those actions needs `workspace:control` and `desktop:control`. 
 
@@ -267,6 +267,7 @@ task app:vm-verify-desktop  # the bundled desktop provider resolves a real appli
 task app:vm-verify-desktop-remembered  # a window left on another Space is REMEMBERED, revalidated on selection, and dropped when it or its application ends, in a VM
 task app:vm-verify-accessibility  # the settings window's Accessibility guidance and consent request, provider and service status, and koineManagement.osPermissions following consent given and removed, in a VM
 task app:vm-verify-desktop-focus  # desktopFocusWindow focuses exactly the chosen window of real applications, or reports why not and moves nothing, in a VM
+task app:vm-verify-window-layout  # window layout on one display: the window and display lists, frame setting, order, display focus and the desktop disclosures, against a native witness, in a VM
 task app:vm-verify-enrollment  # a guest client enrols itself, the settings window shows and decides its request, and the first manager it makes approves another over GraphQL, in a VM
 task fixture:notarized  # a notarized copy of the fixture provider, for the Gatekeeper check to accept
 task app:vm-verify-notarized  # quarantined first launch, attribution and quarantined providers, on a Gatekeeper-enforcing clone
@@ -628,6 +629,8 @@ before and after, and writes `results.json` beside the trees.
 The workspace has pairs of its own ([record](docs/verification/workspace-compatibility.md)). Three releases take part. They are the retained 1.0.0 bundle (`task compat:workspace-baseline`), the 1.0.1 bundle that Koine 0.3.0 shipped (`task compat:workspace-release`) and this tree's 1.0.2 bundle. The 1.0.2 bundle requires `workspace-native-disclosures-v1`. The new host loads it. The retained host and the released 0.3.0 host refuse it before they load it, and they name the missing feature.
 
 The same 1.0.2 source runs again with `first-party-selection-v1` stated and approved per user, over the bundled 1.0.0. The same locations are probed through every pair, and the releases are compared. The task `task compat:workspace-subjects` runs the retained revision's own short-path suites, unedited, against the released 1.0.1 bundle.
+
+The desktop provider has pairs of its own too ([record](docs/verification/desktop-window-layout-compatibility.md)). This tree's desktop 1.0.1 requires `desktop-disclosures-v1`. This tree's host loads it and serves its profile. The released Koine 0.4.1 host (`task compat:released-0.4.1`) refuses it before load, both bundled and as an approved per-user update, and names the missing feature. In the per-user case, the bundled desktop 1.0.0 of 0.4.1 stays selected.
 
 <!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 

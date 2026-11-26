@@ -417,7 +417,7 @@ query DesktopWindowOnTopAt($ref: Reference!, $point: DesktopPointInput!) {
 
 The answer is `ON_TOP` when the bounds of the window in the window server's list contain the point, and no opaque window covers it there. It is `NOT_ON_TOP` when those bounds do not contain the point, another window covers it there, or the window is off screen. It is `UNKNOWN` when Koine cannot link the window.
 
-The bounds can differ from the frame by 2 points. So a point on the edge of the frame can be `NOT_ON_TOP`. Your own label windows cover windows too, so ask before you draw your labels. A stale reference raises `unavailable`.
+The Dock covers only its bar, outside the visible frame of the display. A magnified Dock or a Dock folder stack can still hide a window that reads `ON_TOP`. The bounds can differ from the frame by 2 points. So a point on the edge of the frame can be `NOT_ON_TOP`. Your own label windows cover windows too, so ask before you draw your labels. A stale reference raises `unavailable`.
 
 Call `desktopSetWindowFrame` under `desktop:control` to move and resize one window. Pass the frame in screen coordinates, with a width and a height greater than zero. A frame without a positive size is an input error, and Koine attempts nothing.
 

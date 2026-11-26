@@ -1,0 +1,27 @@
+
+== Start a clean VM (koine-verify-89686)
+waiting for a macOS guest slot: request r-b4ded51f, place 1, 1 waiter, slots held by no VM
+Setting guest display resolution to 1920x1080 px...
+  set-display-mode: switched main display to 1920x1080 pt @ 1x (1920x1080 px, modeID 10)
+VNC size wait: the first session read 1280x720. Session 2 read 1920x1080 after 0.26 s.
+ProductName:		macOS
+ProductVersion:		27.2.1
+BuildVersion:		26B131
+arm64
+Gatekeeper: assessments enabled
+
+== Dock settings
+Error: Could not find key 'autohide' in domain 'com.apple.dock'.
+Error: Could not find key 'orientation' in domain 'com.apple.dock'.
+
+== Entries above layer 0, with their owners: at rest
+rest: {"entries":[{"alpha":1,"layer":24,"pid":164,"rect":[0,0,1920,30],"windowNumber":5},{"alpha":1,"layer":20,"pid":347,"rect":[0,0,1920,1080],"windowNumber":14},{"alpha":1,"layer":0,"pid":353,"rect":[500,152,920,436],"windowNumber":22}],"front":[],"trusted":true,"windows":[]}
+
+pid 164: /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer
+pid 347: /System/Library/CoreServices/Dock.app/Contents/MacOS/Dock
+after-textedit: {"entries":[{"alpha":1,"layer":24,"pid":164,"rect":[0,0,1920,30],"windowNumber":5},{"alpha":1,"layer":20,"pid":347,"rect":[0,0,1920,1080],"windowNumber":14},{"alpha":1,"layer":0,"pid":618,"rect":[213,77,603,505],"windowNumber":40},{"alpha":1,"layer":0,"pid":353,"rect":[500,152,920,436],"windowNumber":22}],"front":[],"trusted":true,"windows":[]}
+
+pid 164: /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer
+pid 347: /System/Library/CoreServices/Dock.app/Contents/MacOS/Dock
+
+== DONE

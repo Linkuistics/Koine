@@ -54,3 +54,11 @@ state_feature_in_workspace() {
         'requiredFeatures: [ProviderDescriptor.additionalCapabilitiesFeature, workspaceNativeDisclosuresFeature]' \
         "requiredFeatures: [ProviderDescriptor.additionalCapabilitiesFeature, workspaceNativeDisclosuresFeature, \"${FEATURE}\"]"
 }
+
+# state_feature_in_desktop <tree>: the descriptor of the desktop provider in <tree>
+# requires the feature beside the one it already requires.
+state_feature_in_desktop() {
+    substitute "$1/Providers/DesktopProvider/Sources/DesktopProvider.swift" \
+        'requiredFeatures: [desktopDisclosuresFeature]' \
+        "requiredFeatures: [desktopDisclosuresFeature, \"${FEATURE}\"]"
+}
