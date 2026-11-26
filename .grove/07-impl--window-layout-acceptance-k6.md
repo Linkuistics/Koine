@@ -13,8 +13,9 @@ Accept the first cut with the N check and the one happy-path VM run.
 
 ## Done when
 
-- The compatibility tasks pass. The new host loads the new desktop bundle,
-  and the released 0.4.1 host behaves as the compatibility record states.
+- The compatibility tasks pass. The new host loads the new desktop bundle.
+  The released 0.4.1 host refuses it before load, because it lacks
+  `desktop-disclosures-v1`, and the compatibility record states this.
 - A new Taskfile task runs the V checks in a TestAnyware macOS VM on the
   signed bundle, and every check passes.
 - A record in `docs/verification/` holds the run's evidence and states the

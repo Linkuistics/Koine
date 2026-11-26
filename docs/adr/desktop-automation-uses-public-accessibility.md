@@ -1,11 +1,26 @@
-# Desktop automation uses public Accessibility
+# Desktop automation uses public Accessibility, and Modaliser's private window order
 
-Koine uses public macOS Accessibility APIs for window listing, focus and
-notifications. The
+Koine uses public macOS Accessibility APIs for window listing, focus, window
+frames and notifications. Every action goes to a held public element. The
 [capture decision](desktop-capture-preserves-the-process-incarnation.md) fixes
 the process identity that a client submits. Koine checks it before AX work and
 never substitutes another process under it. Public AX routing is a separate
 boundary, and Koine keeps it on a best-effort basis.
+
+Koine also uses Modaliser's mechanisms where it can, including private API.
+Window order and visibility come from the private `_AXUIElementGetWindow`
+lookup and the window server's on-screen list. Where the lookup disagrees with
+the list, Koine matches by owner and bounds. Where neither settles a window,
+Koine reports its order and visibility as unknown, never as visible. The
+[window identity decision](desktop-window-identity-is-a-held-element.md) keeps
+these links out of identity.
+
+Bounds alone cannot tell apart two windows of one application with equal
+bounds. The private lookup can, and it needs no new consent. Neither Koine nor
+Modaliser has tried public matching with an Accessibility hit test. Screen Recording consent would add only window titles, which
+are not unique, and it is a consent that Koine does not need. The price is a
+private call that a macOS release can change or remove. Then the bounds match
+still orders some windows, and Koine reports the rest as unknown.
 
 Koine accepts wrong-process or wrong-window data and effects during process or
 window reuse. It also accepts stale or misattributed notifications, and
@@ -38,5 +53,7 @@ mechanism bounds what that channel acquires before parsing. Rebuilding AX
 objects from private tokens crosses process incarnations, just as held public
 elements do. The
 [held-AX counterexample](../verification/retained-ax-binding.md#private-ax-reconstruction-does-not-bind-a-process-either)
-shows it. Koine uses no helper, injection, target cooperation or behavioural
-restriction of applications.
+shows it. The private window-number lookup is a call on a held element, not a
+channel that Koine owns, and Koine rebuilds no element from its number. Koine
+uses no helper, injection, target cooperation or behavioural restriction of
+applications.

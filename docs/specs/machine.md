@@ -910,12 +910,206 @@ never uses a title fallback.
 An application reference encodes the process incarnation alone. So it resolves
 again after a restart of Koine, for as long as that incarnation runs.
 Modaliser's private window-number lookup and title fallback are no proof of
-identity, and the provider does not use them.
+identity. The provider never uses the title fallback. Window layout uses the
+lookup for order and visibility alone, as "Window layout" below states.
 
 The engine caches no graph results, refreshes nothing and retries nothing.
 Provider OS observations are private state, not retained snapshots for callers.
 One GraphQL operation can resolve several fields at different instants. It
 establishes no atomic snapshot across fields, calls or providers.
+
+### Window layout
+
+**Designed for Koine 0.5.0, not yet served.** Window layout adds three reads and
+two control operations to the desktop provider. The design is desktop release
+1.0.1 with schema 1.0.1, in the
+[window layout design](../design/desktop-window-layout-schema.graphql), with
+[example operations](../design/desktop-window-layout-operations.graphql). Every
+desktop 1.0.0 field keeps its meaning. `DesktopWindow` gains `application` and
+`frame`. Selection still uses `desktopFocusWindow`, unchanged.
+
+Clients own every layout, the restore history, label placement and the move to
+another display. Koine computes no layout and keeps no frame history.
+
+#### Screen coordinates
+
+Every frame and point in window layout uses screen coordinates. The unit is the
+point, and the origin is the top-left corner of the primary display. The x
+value grows to the right, and the y value grows downward. A display to the left
+of the primary display or above it has negative coordinates.
+
+Accessibility window frames, the bounds in the window server's list,
+`CGDisplayBounds` and the pointer use this space already. The provider converts
+one value. It flips `NSScreen.visibleFrame` against the full height of the
+primary display, as Modaliser does.
+
+#### The window list
+
+`desktopWindows` lists the windows of every running application with a Dock
+icon, which is an application with the regular activation policy. For each
+application, the provider reads the current Accessibility window list, with the
+rule of `DesktopApplication.windows`. So the rows use the same held elements
+and the same references. Windows on other Spaces are not in the list, because
+the current enumeration leaves them out. `DesktopApplication.windows` still
+lists them as `REMEMBERED`.
+
+Each row holds the window, its order and its visibility. The provider computes
+the order and the visibility of every row from one reading of the window
+server's on-screen list. Rows with a known order come first, front to back. The
+other rows follow in no promised order. A later read or action can find a
+different state.
+
+| Field | Known value | Unknown form |
+|---|---|---|
+| `DesktopWindow.frame` | The position and size that Accessibility reports, in screen coordinates. | Null when Koine cannot read either attribute. |
+| `DesktopWindowStacking.order` | The place among the rows with a known order. The front window is 0. | Null when the window is not on screen or has no window-server link. |
+| `DesktopWindowStacking.visibility` | `ON_SCREEN` with a window-server link. `OFF_SCREEN` for a minimised window or a window of a hidden application. | `UNKNOWN` in every other case. Koine never reports an unknown window as on screen. |
+
+#### The window-server link
+
+Order and visibility rest on a link from a held element to one entry of the
+window server's on-screen list. The provider reads that list with
+`CGWindowListCopyWindowInfo`, with on-screen entries only and without desktop
+elements. Without Screen Recording consent, the list still carries window
+numbers, owners, bounds, layers and alpha values. The provider reads no window
+name from it. The link has two steps, as in Modaliser:
+
+- **Window number.** The private `_AXUIElementGetWindow` gives the window
+  number of the element. The link holds when the list has that number under
+  the same process. When the window frame is known, the bounds of the entry must
+  also be within 2 points of it.
+- **Owner and bounds.** Otherwise, the link holds when exactly one layer-0 entry
+  of the same process has bounds within 2 points of the window frame. No other
+  window of that process may have a frame within 2 points of the same bounds.
+
+Where neither step holds, the window has no link. Its order is null, and its
+visibility is `UNKNOWN`. Two windows of one application with equal bounds stay
+apart only through their window numbers. When the lookup fails for them, both
+are unknown. The link serves order and visibility only. It never names a window
+in a reference, and it never chooses the target of an action
+([window identity decision](../adr/desktop-window-identity-is-a-held-element.md)).
+
+#### Visibility at a point
+
+`desktopWindowOnTop(ref:, point:)` says whether a window is on top at a screen
+point. The provider resolves the reference as `desktopWindow` does, so a stale
+or wrong-kind reference raises `unavailable`. A minimised window, or a window of
+a hidden application, is `NOT_ON_TOP`. Without a window-server link, the answer
+is `UNKNOWN`. Otherwise the provider reads the on-screen list and examines the
+entries in front of the window.
+
+An entry covers the window when its bounds contain the point and it is
+opaque, with an alpha of 1. An entry with no alpha counts as opaque. Entries of
+every layer and every owner can cover, including the menu bar, the Dock and the windows of Koine. The answer is
+`NOT_ON_TOP` when an entry covers the window, or when the bounds of the window
+do not contain the point. Otherwise it is `ON_TOP`. A rectangle contains its
+top and left edges, but not its bottom and right edges.
+
+The label windows of a client cover windows too. So a client asks before it
+draws its labels.
+
+#### Displays
+
+`desktopDisplays` lists every active display, left to right by the x value of
+its frame, then top to bottom. Each display has a reference, a frame, a visible
+frame and a primary flag. The frame is the `CGDisplayBounds` of the display.
+The visible frame excludes the menu bar and the Dock. The primary display has
+its top-left corner at the origin of screen coordinates.
+
+A display reference is `koine://desktop/display/<id>`, and its remainder is the
+`CGDirectDisplayID`. The reference stays valid while a display with that
+identifier is active. A reference to a display that is no longer active raises
+`unavailable`. A client lists the displays again after a display change.
+
+#### Frame setting
+
+`desktopSetWindowFrame(ref:, frame:)` moves and resizes exactly the window that
+the reference names. The frame is absolute, in screen coordinates. Its width
+and height must be greater than zero, or the provider reports an invalid
+argument and attempts nothing. The provider resolves the reference as
+`desktopFocusWindow` does, with consent and identity first. It never acts on a
+substitute. The writes follow Modaliser's mechanism:
+
+- When the `AXEnhancedUserInterface` attribute of the application element is
+  true, the provider sets it to false for the writes. After the writes, it sets
+  it to true again, whatever their result. Modaliser does this so that frame
+  writes take effect in Electron applications.
+- The provider writes `AXPosition`, then `AXSize`.
+- It reads `AXSize` back. When the width or the height is more than 20 points
+  from the request, it waits 50 milliseconds. Then it writes the position and the size
+  again, and it reads the size again. It writes again at most 7 times, so it
+  makes at most 8 writes in about 350 ms.
+
+A move to a larger display needs the repeat. macOS limits the new size to the
+old display until the window moves to the new one. The operation does not raise
+the window or activate its application. The receipt returns the reference and
+says that the writes completed. It does not say that the window took the frame,
+because an application can limit its own size and position.
+
+A client with `desktop:read` reads the frame back. A restore sets a frame that
+the client read earlier.
+
+#### Display focus
+
+`desktopFocusDisplay(ref:)` acts in this order:
+
+- When a pointer button is held, it does nothing and returns
+  `POINTER_BUTTON_HELD`. A pointer move then would be a drag, which needs input
+  authority.
+- It reads the window list as `desktopWindows` does. A row is on the display
+  when the centre of its frame is inside the frame of the display.
+- It returns `FRONT_WINDOW_UNKNOWN` and raises nothing in two cases. A row that
+  is not `OFF_SCREEN` has an unknown frame, or a row on the display has an
+  unknown visibility.
+- Otherwise the front window is the `ON_SCREEN` row on the display with the
+  lowest order. The provider focuses it as `desktopFocusWindow` does, and the
+  outcome is `WINDOW_FOCUSED`. With no such row, the outcome is `NO_WINDOW`.
+- Last, it moves the pointer to the centre of the frame of the display. It uses
+  `CGWarpMouseCursorPosition` and one mouse-moved event at that point. It never
+  clicks.
+
+When focus fails, the operation reports `failed` and does not move the pointer.
+The receipt names the display and the outcome, and it names no window. Display
+focus needs `desktop:control` alone. Its own read of the window list is part of
+the action and publishes no window state.
+
+#### Authority and failures
+
+Every read needs `desktop:read`. Frame setting and display focus need
+`desktop:control` alone, so a read-only grant cannot act. The toggle of
+`AXEnhancedUserInterface` is hidden preparation and cleanup of frame setting,
+under the same capability. The receipts carry no read-protected window state.
+Desktop declares no additional capability requirement.
+
+| Condition | Result |
+|---|---|
+| A read without `desktop:read`, or an action without `desktop:control` | `permission`, `capability`. Koine refuses an action before any effect. |
+| Koine lacks Accessibility consent | `permission`, `os-permission`, `accessibility`. |
+| A stale, closed or wrong-kind window reference, or a display that is no longer active | `unavailable`. |
+| A frame with a width or a height of zero or less | An invalid argument: an error with no `kind`. Koine attempted nothing. |
+| An Accessibility write or the pointer move fails, or focus does not arrive in time | `failed`. The operation may have acted, and Koine does not replay it. |
+| A value that Koine cannot establish in a read | The unknown form from the window list table, with no error. |
+
+#### Compatibility and delivery
+
+The window layout fields are additive in `koine-desktop/1`. The files
+`desktop-schema.graphql` and `desktop-operations.graphql` stay unchanged, and so
+does the `core-desktop-old-host` profile. The served composition gets a new
+composed design file and a new profile beside the earlier ones, as each
+workspace release did.
+
+The desktop 1.0.1 provider requires the host feature `desktop-disclosures-v1`. A
+host advertises it only when its Settings window and its management catalogue
+state the desktop reach that "Capability disclosures" gives. So the released
+0.4.1 host refuses the provider before load, and its bundled desktop 1.0.0 stays
+selected. The
+[host-feature decision](../adr/native-workspace-requires-disclosure-capable-host.md)
+gives the reasons for workspace, and they apply to desktop in the same way.
+
+Acceptance runs on one display, because a TestAnyware VM has one display. The
+move to another display, the repeated resize across displays and display focus
+on an empty display wait for a two-display check.
+
 
 <!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
@@ -1461,7 +1655,7 @@ continues to protect the entire surface, including locations in human diagnostic
 
 Three surfaces must tell a person the reach of each capability that a grant
 gives or holds: grant creation, request approval and the grant list. A `koine:manage`
-client must be able to show the same words. The provider framework carries no
+client must be able to present the same words. The provider framework carries no
 description, and an ordinary provider has no disclosure channel. So the core
 owns a small catalogue, keyed by capability name. Management serves it as
 additive metadata, with no new provider-framework requirement, capability or
@@ -1475,11 +1669,11 @@ error kind:
 The extension-host design files carry the field. `desktop-schema.graphql` and
 the `core-desktop-old-host` profile do not, because a released host never
 served it. A client of an older host gets a GraphQL error for the field. It must
-show its own fallback, and it must not treat the absence as "nothing to
+present its own fallback, and it must not treat the absence as "nothing to
 disclose".
 
-The native Settings window shows each disclosure beside its capability in all
-three places. It shows nothing for a revoked grant, which holds nothing.
+The native Settings window presents each disclosure beside its capability in
+all three places. It presents nothing for a revoked grant, which holds nothing.
 `workspace:control` is the first entry.
 [Workspace disclosure](../verification/workspace-disclosure-vm.md) records the
 text and its acceptance. Each later increment that owes a disclosure
@@ -1506,6 +1700,18 @@ Settings. The
 [host-feature decision](../adr/native-workspace-requires-disclosure-capable-host.md)
 refuses native providers on prior hosts before load. It does not rely on
 provider text to revise surfaces that the core owns.
+
+Window layout, designed for Koine 0.5.0, widens both desktop capabilities. The
+core adds a disclosure for each of them, and only then does the host advertise
+`desktop-disclosures-v1`. All three native grant views and management use the
+same entries. The new root fields of the
+[window layout design](../design/desktop-window-layout-schema.graphql) also
+state their capability and their reach. This is the first draft of the text:
+
+| Capability | Window layout disclosure |
+| --- | --- |
+| `desktop:read` | Lists the windows of every application with a Dock icon on the current Space. For each window, it reads the title, the application, the position and size, the place in front-to-back order and whether the window is on screen. A title can contain a document name, a web page title or a message subject. It also lists the displays with their positions and sizes. It reads no window contents and takes no screenshots. A grant from an earlier Koine version that holds desktop:read gets this reach too. |
+| `desktop:control` | Focuses a window. Moves and resizes any window of an application with a Dock icon. Focuses a display: Koine raises the front window there, activates its application and moves the pointer to the centre of the display. It never clicks or types. While it moves a window, it turns off the enhanced accessibility setting of the application, and then turns it on again. A grant from an earlier Koine version that holds desktop:control gets this reach too. |
 
 <!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
@@ -1848,15 +2054,17 @@ native evidence cost far more than the residual collision risk.
 
 ### Public Accessibility and its accepted limits
 
-The desktop provider uses only public macOS Accessibility for listing, held
-window elements, focus and notifications
+The desktop provider uses public macOS Accessibility for listing, held window
+elements, focus and notifications. Window layout, designed for Koine 0.5.0,
+adds window frames, and the private window-number lookup for order and
+visibility alone
 ([public Accessibility decision](../adr/desktop-automation-uses-public-accessibility.md)).
 It checks the process identity before AX work. That check narrows the race with
 process or window reuse, but it cannot close it:
 
 | Area | Accepted limit |
 |---|---|
-| Data and effects | After actual PID reuse, a held AX element can address the replacement process, as the [PID-recycling diagnostic](../verification/retained-ax-binding.md) shows. A race between check and use can return the data of another target or act on it. |
+| Data and effects | After actual PID reuse, a held AX element can address the replacement process, as the [PID-recycling diagnostic](../verification/retained-ax-binding.md) records. A race between check and use can return the data of another target or act on it. |
 | Reads and notifications | Koine does not independently authenticate replies and framework callbacks. A title, presence, focus report or notification may be stale or misattributed. |
 | Reference withdrawal | A platform closure report may withdraw a live reference. Withdrawal is still permanent, and identifiers are never reused. |
 | Framework AX reception | No memory or Mach-right bound that Koine enforces applies before framework-managed acquisition. Koine bounds its own records and work. |

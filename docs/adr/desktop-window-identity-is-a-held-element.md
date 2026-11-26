@@ -17,6 +17,13 @@ matches them. An application may not enumerate a held element now, as happens
 for a window on another Space. The provider lists that element as
 `REMEMBERED`, under the same reference. There is no second record of windows.
 
+Window layout links a held element to an entry of the window server's list.
+The link uses the private window number from `_AXUIElementGetWindow` first,
+and the owner and bounds second. It serves window order and visibility only.
+It never names a window in a reference, and it never chooses the target of an
+action. Every action goes to the held element that a reference names, and
+there is no title fallback.
+
 The process component is the served `{ pid, startedAt }` identity. The
 [capture decision](desktop-capture-preserves-the-process-incarnation.md) fixes
 it. An [actual PID-recycling experiment](../verification/retained-ax-binding.md)
@@ -45,17 +52,23 @@ process. It also assumes that the application does not issue that identity
 again. Those observations do not cover the cross-incarnation counterexample
 above.
 
+A wrong or failed link costs an order or a visibility answer, never a target.
+Koine reports the order and the visibility as unknown when the link fails. An
+identity has no such fallback, because a wrong identity acts on another window.
+
 ## Rejected alternatives
 
-**The window number from `_AXUIElementGetWindow`.** It agreed with the held
-element in every case, it would survive a restart of Koine, and Modaliser uses
-it. But it is private API. A signed product that holds the user's
-Accessibility consent should not rest on it. The contract names it as no proof
-of identity.
+**The window number from `_AXUIElementGetWindow`, as identity.** It agreed
+with the held element in every case, it would survive a restart of Koine, and
+Modaliser uses it as identity. But it is private API, and Modaliser records
+that it disagrees with the window server's numbers for some applications. As
+an identity, a wrong number would act on another window. The contract names it
+as no proof of identity. Koine uses it for order and visibility only.
 
-**`CGWindowListCopyWindowInfo`.** It is public. But no public route leads from
-a window number to the element that Koine must raise. Names need Screen
-Recording consent, and bounds are not unique.
+**`CGWindowListCopyWindowInfo`, as identity.** It is public. But no public
+route leads from a window number to the element that Koine must raise. Names
+need Screen Recording consent, and bounds are not unique. Koine reads this list
+for order and visibility only, and it needs no name from it.
 
 **Title, or the `AXIdentifier` attribute.** Neither is unique among the windows
 of an application.

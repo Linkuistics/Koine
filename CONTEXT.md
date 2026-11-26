@@ -133,12 +133,56 @@ serial number alone does not establish this identity.
 <!-- tc: on -->
 
 **Public Accessibility boundary**: The desktop transport uses macOS AX APIs for
-listing, focus attempts and notifications. Koine checks the **process
-incarnation** before AX work. That check does not bind the AX destination. AX
-data and effects may reach another process or window during reuse, and
-notifications may be stale or misattributed. Framework AX reception has no hard
-bound from Koine before it acquires memory or Mach rights. Koine still bounds
-its own state and work, and it enforces grants and consent.
+listing, focus attempts, **window frames** and notifications. It also uses the
+private window-number lookup, for the **window-server link** alone. Koine checks
+the **process incarnation** before AX work, but that check does not bind the AX
+destination. AX data and effects may reach another process or window during
+reuse, and notifications may be stale or misattributed. Framework AX reception
+has no hard bound from Koine before it acquires memory or Mach rights. Koine
+still bounds its own state and work, and it enforces grants and consent.
+
+**Screen coordinates**: The one coordinate space of **window frames**,
+**display** frames and screen points. Its unit is the point, and its origin is
+the top-left corner of the primary **display**, with x to the right and y
+downward.
+_Avoid_: AX coordinates, Cocoa coordinates, flipped coordinates
+
+**Display**: One active screen that macOS composes into the desktop, named by a
+**resource reference**. It has a frame, a **visible frame** and a primary flag.
+_Avoid_: monitor, screen (alone)
+
+**Visible frame**: The part of a **display** without the menu bar and the Dock,
+in **screen coordinates**.
+_Avoid_: usable area, work area
+
+**Window frame**: The position and size of a window in **screen coordinates**,
+as Accessibility reports them. It is unknown when Koine cannot read it.
+_Avoid_: bounds, which names the window server's rectangle
+
+**Window-server link**: The association of a held window element with one entry
+of the window server's on-screen list. The private window-number lookup, or a
+unique match by owner and bounds, makes it. It serves **window order** and
+**visibility** alone, never identity.
+_Avoid_: window ID, window number identity
+
+**Window order**: The place of a window from the front, among the listed windows
+whose order is known. It comes from the **window-server link** and is unknown
+without one.
+_Avoid_: z-index, stacking index
+
+**Visibility**: Whether a window is on screen in the current Space: on screen,
+off screen or unknown. A window on screen can still be covered.
+_Avoid_: shown, visible (alone)
+
+**On top at a point**: The state of a window at a point inside its **window
+frame**, with no opaque window in front. It is unknown without a
+**window-server link**.
+_Avoid_: visible at, unobscured
+
+**Display focus**: The desktop control operation on a **display**. It raises the
+front listed window there, activates its application and moves the pointer to
+the centre of the display. It never clicks.
+_Avoid_: focus screen, switch display
 
 <!-- tc: pending because the remaining glossary entries retain their existing conversion boundary -->
 

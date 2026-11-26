@@ -1331,6 +1331,102 @@ tasks:
         console.log(`First-cut SDL valid alone and composed; ${result.types} added definitions are the repair's or the search design's, but for the application choice and the application query; the two served operations validate and the unserved roots and fields are rejected; twelve mutated subjects rejected. Design only, runtime held by swift test and task conformance.`);
         JS
 
+  design:window-layout-check:
+    desc: Validate the desktop 1.0.1 window layout SDL alone, composed with the core and composed with workspace 1.0.2; check that every desktop 1.0.0 definition stays word for word, that only the designed fields and roots are added, that each new root states its capability, and that the example operations validate, with eight mutated subjects rejected (design check, not runtime conformance)
+    dir: clients/contract-only
+    cmds:
+      - npm ci --ignore-scripts --no-audit --no-fund
+      - |
+        node --input-type=module <<'JS'
+        import { readFileSync } from 'node:fs';
+        import { buildSchema, extendSchema, isEnumType, isInputObjectType, isObjectType, parse, validate, validateSchema } from 'graphql';
+        const read = name => readFileSync(`../../docs/design/${name}`, 'utf8');
+        const released = ['DesktopProcessStart', 'DesktopProcessIdentity', 'DesktopApplication', 'DesktopWindow', 'DesktopObservation', 'DesktopFocusReceipt'];
+        const addedRoots = { Query: ['desktopWindows', 'desktopDisplays', 'desktopWindowOnTop'], Mutation: ['desktopSetWindowFrame', 'desktopFocusDisplay'] };
+        const prefix = { Query: 'desktop:read. ', Mutation: 'desktop:control. ' };
+        const readTypes = ['DesktopWindowStacking', 'DesktopRect', 'DesktopDisplay'];
+        const fieldText = f => JSON.stringify({ type: String(f.type), description: f.description ?? null,
+          args: (f.args ?? []).map(a => [a.name, String(a.type), a.defaultValue ?? null, a.description ?? null]) });
+        const verify = ({ contribution, core, baseline, workspace, operations }) => {
+          const cut = parse(contribution);
+          const placeholder = buildSchema('scalar Reference type Query { placeholder: Boolean } type Mutation { placeholder: Boolean }');
+          const independent = extendSchema(placeholder, cut);
+          const composed = extendSchema(buildSchema(core), cut);
+          const withWorkspace = extendSchema(composed, parse(workspace));
+          const errors = [...validateSchema(independent), ...validateSchema(composed), ...validateSchema(withWorkspace)];
+          if (errors.length) throw new Error(errors.map(error => error.message).join('\n'));
+          // Desktop 1.0.0 stays: every released type and root field, word for word and in order. DesktopWindow alone gains fields.
+          const old = buildSchema(baseline);
+          for (const name of released) {
+            const before = old.getType(name), after = composed.getType(name);
+            if (!after || before.constructor !== after.constructor || (before.description ?? null) !== (after.description ?? null)) {
+              throw new Error(`Desktop 1.0.0 type changed: ${name}`);
+            }
+            if (isObjectType(before) || isInputObjectType(before)) {
+              const was = Object.entries(before.getFields()), now = Object.entries(after.getFields());
+              was.forEach(([field, value], index) => {
+                if (now[index]?.[0] !== field || fieldText(value) !== fieldText(now[index][1])) throw new Error(`Desktop 1.0.0 field changed: ${name}.${field}`);
+              });
+              const extra = now.slice(was.length).map(([field]) => field).join();
+              if (extra !== (name === 'DesktopWindow' ? 'application,frame' : '')) throw new Error(`Unexpected fields on ${name}: ${extra}`);
+            }
+            if (isEnumType(before) && before.getValues().map(v => v.name).join() !== after.getValues().map(v => v.name).join()) {
+              throw new Error(`Desktop 1.0.0 enum changed: ${name}`);
+            }
+          }
+          for (const root of ['Query', 'Mutation']) {
+            const was = Object.entries(old.getType(root).getFields()).filter(([field]) => field.startsWith('desktop'));
+            const now = Object.entries(composed.getType(root).getFields()).filter(([field]) => field.startsWith('desktop'));
+            for (const [field, value] of was) {
+              const kept = now.find(([other]) => other === field);
+              if (!kept || fieldText(value) !== fieldText(kept[1])) throw new Error(`Desktop 1.0.0 root changed: ${root}.${field}`);
+            }
+            const added = now.filter(([field]) => !was.some(([other]) => other === field));
+            if (added.map(([field]) => field).join() !== addedRoots[root].join()) throw new Error(`${root} adds ${added.map(([field]) => field).join()}`);
+            for (const [field, value] of added) {
+              if (!(value.description ?? '').startsWith(prefix[root])) throw new Error(`${root}.${field} does not state ${prefix[root].trim()}`);
+            }
+          }
+          for (const name of readTypes) {
+            if (composed.getType(name)?.description?.startsWith('All fields require desktop:read.') !== true) throw new Error(`${name} does not state desktop:read`);
+          }
+          // Every example operation validates against the core, desktop 1.0.1 and workspace 1.0.2, composed.
+          const operationErrors = validate(withWorkspace, parse(operations));
+          if (operationErrors.length) throw new Error(operationErrors.map(error => error.message).join('\n'));
+          return Object.values(addedRoots).flat().length;
+        };
+        const subject = {
+          contribution: read('desktop-window-layout-schema.graphql'),
+          core: read('core-schema-extension-host.graphql'),
+          baseline: read('desktop-schema-extension-host.graphql'),
+          workspace: read('workspace-discovery-schema.graphql'),
+          operations: read('desktop-window-layout-operations.graphql'),
+        };
+        const roots = verify(subject);
+        const swap = (key, from, to) => s => {
+          const changed = s[key].replace(from, to);
+          if (changed === s[key]) throw new Error(`Control mutation did not apply: ${from}`);
+          return { ...s, [key]: changed };
+        };
+        const controls = [
+          ['a released description reworded', swap('contribution', 'An absent process is ordinary null.', 'An absent process is null.')],
+          ['a released field made nullable', swap('contribution', '  title: String!\n', '  title: String\n')],
+          ['a released root removed', swap('contribution', /  "desktop:control\. Focuses exactly[^\n]*\n  desktopFocusWindow[^\n]*\n/, '')],
+          ['an undesigned root added', swap('contribution', '  desktopDisplays:', '  desktopWindowAt(point: DesktopPointInput!): DesktopWindow\n  desktopDisplays:')],
+          ['a field added to a released type', swap('contribution', '  bundleIdentifier: String\n', '  bundleIdentifier: String\n  hidden: Boolean\n')],
+          ['a new root without its capability', swap('contribution', '"desktop:read. Lists every active display', '"Lists every active display')],
+          ['a type that collides with workspace', swap('contribution', 'enum DesktopObservation', 'type WorkspaceApplicationChoice { name: String }\nenum DesktopObservation')],
+          ['an operation that asks for an undesigned field', swap('operations', '    primary\n', '    primary\n    scale\n')],
+        ];
+        for (const [label, mutate] of controls) {
+          let rejected = false;
+          const mutated = mutate(subject);
+          try { verify(mutated); } catch { rejected = true; }
+          if (!rejected) throw new Error(`Control accepted ${label}`);
+        }
+        console.log(`Window layout SDL valid alone, with the core and with workspace 1.0.2; desktop 1.0.0 kept word for word; ${roots} designed roots added, each stating its capability; example operations valid; ${controls.length} mutated subjects rejected. Design only: runtime is held by swift test and task conformance.`);
+        JS
+
   design:long-action-api-check:
     desc: Compile/link public long-action mechanism candidates without running them; declarations are not native acceptance
     cmds:

@@ -1,0 +1,51 @@
+# Example client operations for the desktop 1.0.1 window layout design (desktop-window-layout-schema.graphql).
+# They are designed and not yet served. The released operations stay in desktop-operations.graphql, which the
+# contract-only client checks against the schema that it was captured against.
+# task design:window-layout-check validates every operation here against the composed design.
+
+# Window list: desktop:read. A label client reads frames, order and visibility from one list.
+query DesktopWindowList {
+  desktopWindows {
+    window {
+      ref
+      title
+      application { ref name bundleIdentifier }
+      frame { x y width height }
+    }
+    order
+    visibility
+  }
+}
+
+# Display list: desktop:read. A layout client computes every frame from the visible frame.
+query DesktopDisplayList {
+  desktopDisplays {
+    ref
+    frame { x y width height }
+    visibleFrame { x y width height }
+    primary
+  }
+}
+
+# Visibility at a point: desktop:read. Ask before the client draws its own labels, because they cover windows too.
+query DesktopWindowOnTopAt($ref: Reference!, $point: DesktopPointInput!) {
+  desktopWindowOnTop(ref: $ref, point: $point)
+}
+
+# Frame read-back: desktop:read. A client reads a frame before it changes it, so that it can restore that frame later.
+query DesktopWindowFrame($ref: Reference!) {
+  desktopWindow(ref: $ref) {
+    ref
+    frame { x y width height }
+  }
+}
+
+# Frame setting: desktop:control. The frame is absolute, in screen coordinates.
+mutation SetDesktopWindowFrame($ref: Reference!, $frame: DesktopRectInput!) {
+  desktopSetWindowFrame(ref: $ref, frame: $frame) { ref }
+}
+
+# Display focus: desktop:control.
+mutation FocusDesktopDisplay($ref: Reference!) {
+  desktopFocusDisplay(ref: $ref) { ref outcome }
+}

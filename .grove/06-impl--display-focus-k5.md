@@ -6,6 +6,8 @@ Serve display focus as the design of `window-layout-k2` defines it.
 
 ## Context
 
+- The contract is "Display focus" in `docs/specs/machine.md`, under "Window
+  layout".
 - Modaliser's `focusDisplay`, in `WindowManipulator.swift`, raises the front
   window on a display, activates its application and moves the pointer. On a
   display with no window, it also clicks. Koine never clicks.
@@ -17,6 +19,10 @@ Serve display focus as the design of `window-layout-k2` defines it.
   application and moves the pointer to the display's centre.
 - On a display with no window, it moves the pointer to the centre and
   reports that no window took focus.
+- When Koine cannot establish the front window on the display, it raises
+  nothing, moves the pointer and reports `FRONT_WINDOW_UNKNOWN`.
+- While a pointer button is held, it does nothing and reports
+  `POINTER_BUTTON_HELD`.
 - It never clicks, under any grant.
 - L and G tests cover both cases and the authority.
 
@@ -24,3 +30,6 @@ Serve display focus as the design of `window-layout-k2` defines it.
 
 - The click for clients that also hold input control is an issue for the
   app input item. The release leaf files it.
+- Modaliser posts a mouse-moved event after it warps the pointer. If macOS
+  asks for a consent other than Accessibility for that event, stop and ask the
+  human (root brief, Notes).
