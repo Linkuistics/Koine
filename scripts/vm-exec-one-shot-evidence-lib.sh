@@ -96,11 +96,13 @@ quit_guest_textedit() {
 # unchanged boot followed by five seconds. 0 prints the changed boot record.
 #
 # The guest can close the connection before its reply arrives. The backend then
-# records a clean lost reply (LOST_REPLY in scripts/vm_exec_reads.py), and only
-# the changed boot confirms the restart. Exhaustion is a state failure of the
-# restart, never a Koine failure.
+# records a clean lost reply (LOST_REPLY in scripts/vm_exec_reads.py). The
+# agent can also cancel the shutdown at its own SIGTERM and still reply. The
+# backend then records a clean cancelled reply (CANCELLED_REPLY). In both
+# cases, only the changed boot confirms the restart. Exhaustion is a state
+# failure of the restart, never a Koine failure.
 #
-# Exhaustion also covers a lost reply without a restart. It covers a failed
+# Exhaustion also covers a lost or cancelled reply without a restart. It covers a failed
 # reboot request too, because shutdown prints the same clean stdout and exits 0
 # when reboot3 fails. Any other failed submission is unavailable at once, even
 # if the boot later changes. So is a failed read, such as a refused connection

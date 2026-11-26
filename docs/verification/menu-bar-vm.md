@@ -32,9 +32,10 @@ The resize step drags the window's corner with an anchor point after the press.
 On macOS 27.2.1, a drag without it stopped one step short.
 [The anchor point](#the-anchor-point) records the diagnosis and the qualification.
 
-The guest restart accepts a lost reply when a later boot read shows a changed
-boot record. [The lost restart reply](#the-lost-restart-reply) records the rule
-and its qualification.
+The guest restart accepts a lost reply or a cancelled reply when a later boot
+read shows a changed boot record. [The lost restart reply](#the-lost-restart-reply)
+and [the cancelled restart reply](#the-cancelled-restart-reply) record the rule
+and its diagnostic runs.
 
 The setup and the closed-menu check after each menu selection read the size of
 each menu. A closed menu has the size `{0, 0}`. The checks read the menu names
@@ -49,10 +50,11 @@ they are not automatic acceptance.
 
 In the closed protocol, a restart disconnect stays unavailable despite a later
 boot. A known inability to obtain the required clean completion holds E01 for a
-new decision. For issue #15, a lost restart reply counts as a restart when a later
-boot read shows a changed boot record.
-[The lost restart reply](#the-lost-restart-reply) records the rule and its
-qualification.
+new decision. For issue #15, a lost or cancelled restart reply counts as a
+restart when a later boot read shows a changed boot record.
+[The lost restart reply](#the-lost-restart-reply) and
+[the cancelled restart reply](#the-cancelled-restart-reply) record the rule and
+its diagnostic runs.
 
 Antony's [approved empirical scope](../specs/settings-activation-discrimination.md#scope-after-no-candidate)
 removes the documented API-use-violation prerequisite for this named hypothesis
@@ -385,6 +387,71 @@ These limits apply:
   release runs the revised restart in the scenario itself.
 - The closed protocol keeps its strict rule. Its records under
   `settings-activation/` describe that rule.
+
+## The cancelled restart reply
+
+Attempt 6 of the 0.4.1 release (`menu-bar-20261126T165831`) passed every
+assertion before the restart. In [record 000670](restart-reply/attempt6-000670/raw.stdout),
+the CLI exited 0 with `ok: true`. The outcome was `cancelled` with
+`before_start: false`, and the exit code was -1. The stdout was the clean
+shutdown stdout, and the stderr was the note `Process cancelled`.
+
+The backend refused this record at the exec fields, because the exit code was
+not 0. It latched the root and read no boot record, so the login launch and the
+final Quit did not run again.
+
+The cause is the same race as the lost reply. At SIGTERM, the macOS agent of
+TestAnyware closes admission, cancels each running command and replies if it
+can. If the connection closes first, the CLI reports `CONNECTION_DROPPED`. If
+the reply leaves first, the CLI prints the cancelled record. On 2026-11-26,
+Antony chose to accept the cancelled reply too.
+
+The checked read table now admits a second answer for the `restart` submission.
+`CANCELLED_REPLY` in `scripts/vm_exec_reads.py` names it. The record must have
+CLI status 0, `ok: true`, the exact command, `timed_out: false` and exit code
+-1. It must also have the outcome `cancelled` with `before_start: false`, the
+exact clean stdout, and a stderr that ends in the note.
+
+The backend also keeps the evidence checks of a clean record. Both streams must
+be complete captures, so the stdout is whole and not a prefix. The backend
+records the attempt as clean, with the read record `"reply": "cancelled"`. The
+boot poll then decides the restart, with the same waits and bound.
+
+These answers stay unavailable at once:
+
+- A cancelled record with `before_start: true`. The shutdown did not run.
+- A cancelled record with other stdout, such as the first line alone.
+- A cancelled record of any other submission.
+- Every other outcome that the lost reply section lists.
+
+A diagnostic guest ran the revised restart on a clone of
+`testanyware-golden-macos-27`, with macOS 27.2.1, build 26B131, and
+TestAnyware 3.0.0. `task app:vm-probe-restart-reply` made three trials in one
+evidence root, with the real backend. It is a bounded probe, not an acceptance
+attempt, and it stopped its clone.
+
+In each [trial](restart-reply/cancelled-probe-trials.tsv), the reply was
+`CONNECTION_DROPPED`, and the backend recorded a clean lost reply
+([trial 1](restart-reply/cancelled-probe-000002/read.json),
+[trial 2](restart-reply/cancelled-probe-000006/read.json),
+[trial 3](restart-reply/cancelled-probe-000010/read.json)). The first boot read
+after the 30-second wait showed a changed boot record. All twelve receipts are
+clean, and the root did not latch. The [subject digests](restart-reply/cancelled-probe-subjects.sha256)
+and the [guest version](restart-reply/cancelled-probe-system.txt) record the run.
+
+The race gave no cancelled reply in these trials. A helper test therefore sends
+the bytes of record 000670 through the real backend. The backend records a
+clean cancelled reply, and the same record with `before_start: true` stays
+unavailable.
+
+These limits apply:
+
+- One run cannot force the race either way. On this guest release, the reply
+  was lost in eight of nine restarts and cancelled in one.
+- No guest run shows a cancelled reply followed by the boot poll. The helper
+  tests show that path with synthetic boot reads.
+- The probe sends the restart without the scenario before it. Attempt 7 of the
+  release runs the revised restart in the scenario itself.
 
 <!-- tc: pending because the conversion has not reached this part of the document -->
 

@@ -1190,8 +1190,9 @@ SUBMISSIONS: dict[str, tuple[str, str]] = {
     # request, not its acceptance. Only the changed boot confirms the restart.
     # The lock failure path exits 0 after the first line only. The agent strips
     # the trailing CR LF, and BEL is not whitespace. The password is the legacy one.
-    # The guest can close the connection before this reply arrives. LOST_REPLY
-    # admits that one answer, and only restart_guest sends this submission.
+    # The guest can close the connection before this reply arrives, or the agent
+    # can cancel the command at its own SIGTERM. LOST_REPLY and CANCELLED_REPLY
+    # admit those two answers, and only restart_guest sends this submission.
     # https://github.com/apple-oss-distributions/system_cmds/blob/408bba7453608006b89772db185defbac8fe2fd0/shutdown/shutdown.c
     "restart": (
         "echo admin | sudo -S shutdown -r now",
@@ -1243,6 +1244,52 @@ def lost_reply(
         "code": code,
         "message": envelope["message"],
     }
+
+
+# The submissions whose command the guest agent can cancel after its start. At
+# SIGTERM, the macOS agent closes admission, cancels each running command and
+# replies if it can. So the shutdown races the reply: a closed connection gives
+# the lost reply, and a reply that gets out first gives this record. Release
+# attempt 6 of k4 got it (k9). Only a changed boot record then confirms the
+# restart, because the cancellation can come before reboot3.
+# https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/agents/macos/Sources/testanyware-agent/AgentServer.swift
+CANCELLED_REPLY = frozenset({"restart"})
+# The macOS projection of a cancellation: exit code -1, and this note as the
+# whole stderr, or after the guest stderr and a newline in brackets.
+# https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-protocol/src/exec_record.rs
+CANCELLED_NOTE = "Process cancelled"
+
+
+def cancelled_reply(name: str, envelope: dict[str, object]) -> dict[str, object] | None:
+    """The record of a submission that the agent cancelled after its start, or None.
+
+    Only a clean CLI reply with the exact command and the clean stdout of the
+    submission qualifies. The caller checks the record's stream evidence. The
+    record has no `submitted` field, as for a lost reply.
+    """
+    if name not in CANCELLED_REPLY:
+        return None
+    command, clean = SUBMISSIONS[name]
+    outcome = envelope.get("outcome")
+    stderr = envelope.get("stderr")
+    if not (
+        envelope.get("schema_version") == "1.0"
+        and envelope.get("ok") is True
+        and "dry_run" not in envelope
+        and envelope.get("command") == command
+        and envelope.get("timed_out") is False
+        and type(envelope.get("exit_code")) is int
+        and envelope["exit_code"] == -1
+        and isinstance(outcome, dict)
+        and set(cast(dict[str, object], outcome)) == {"kind", "before_start"}
+        and cast(dict[str, object], outcome)["kind"] == "cancelled"
+        and cast(dict[str, object], outcome)["before_start"] is False
+        and envelope.get("stdout") == clean
+        and isinstance(stderr, str)
+        and (stderr == CANCELLED_NOTE or stderr.endswith(f"\n[{CANCELLED_NOTE}]"))
+    ):
+        return None
+    return {"read": name, "arguments": [], "reply": "cancelled", "stdout": clean}
 
 
 def submission_read(name: str) -> Read:

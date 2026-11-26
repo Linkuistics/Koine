@@ -75,3 +75,58 @@ The delivery rule applies. A finding that does not break the happy path becomes
 a GitHub issue.
 
 ## Decisions (running log)
+
+**Where the harness admits the cancelled reply (2026-11-26).** The rule goes
+into the read table beside `lost_reply`, for the reason that k8 records. The
+cancelled reply has CLI status 0, so `validate_response` refuses it at the exec
+fields, because the exit code is -1. The backend then asks the new
+`cancelled_reply` in `scripts/vm_exec_reads.py`. It admits only the `restart`
+submission. The record must have `ok: true`, the exact command, `timed_out:
+false` and exit code -1. It must also have the outcome `{"kind": "cancelled",
+"before_start": false}`, the exact clean stdout, and a stderr that ends in the
+projection note `Process cancelled`.
+
+The backend also keeps the evidence checks of a clean record: a typed macOS
+agent record, and complete UTF-8 captures of both streams. A complete capture
+shows that the stdout is whole, not a prefix.
+
+The read record says `"reply": "cancelled"` and keeps the stdout. Like the lost
+record, it has no `submitted` field. The cancellation can come before
+`reboot3`, so only the changed boot decides the restart. The record of
+attempt 6 (record 000670) satisfies each condition: its stderr capture is
+empty, and its stderr field is the bare note.
+
+The macOS agent writes the note as the whole stderr when the command wrote
+none. Otherwise it appends `\n[Process cancelled]`
+(`agents/macos/Sources/TestAnywareAgent/ProcessRunner.swift`, `project`, in the
+TestAnyware checkout beside this repository).
+
+**The diagnostic guest (2026-11-26).** `task app:vm-probe-restart-reply` ran
+the revised `restart_guest` with the real backend on its own clone
+(`.build/vm-verify/restart-cancelled-20261126T062406Z`, clone
+`koine-restart-cancelled-probe`, macOS 27.2.1, 26B131, TestAnyware 3.0.0). The
+probe now takes `KOINE_PROBE_TRIALS`, and this run made three trials. Each
+reply was `CONNECTION_DROPPED` with CLI status 1, and the backend recorded a
+clean lost reply. In each trial, the first boot read after the 30-second wait
+showed a changed boot record.
+
+All twelve receipts are clean, the root did not latch, and the probe stopped
+its clone. The subject digests matched the files after the run.
+
+The race gave no cancelled reply in these three trials. The task allows that.
+So a helper test now sends the exact bytes of record 000670 through the real
+backend, and the backend records a clean cancelled reply. The same record with
+`before_start: true` stays unavailable. With `CANCELLED_REPLY` emptied, the
+test failed with the reason of attempt 6, so the test can fail. The record is
+kept in `docs/verification/restart-reply/attempt6-000670/`.
+
+**The checks (2026-11-26).** Twenty-three Taskfile checks read the read table,
+the backend, the helper, the fixture CLI, the scenario, its backend, the
+baseline or the probe. They are the seventeen that k8 ran, and
+`check:vm-latency-installations`, `check:vm-physical-evidence`,
+`check:vm-settings-audits`, `check:vm-settings-containment`,
+`check:vm-ui-evidence` and `check:vm-window-evidence`. Each passed in one serial
+run. The thirty changed files had the same digests before and after the run.
+`check:docs` fails only on the link of #22, as on the parent change.
+The leaf posted the result on issue #17. Attempt 7 of `release-0-4-1-k4` runs
+on the same notarised bundle.

@@ -8,6 +8,14 @@ The tagged agent strips trailing whitespace from both streams.
 https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/agents/macos/Sources/TestAnywareAgent/ProcessRunner.swift
 Each call takes the next line of `read_script` when it exists, so a poll can
 see a sequence of guest answers. A line is `EXIT TIMED_OUT CLI STDOUT-FILE`.
+TIMED_OUT is `true` or `false`. It can also be `cancelled` or
+`cancelled-before`: the agent cancelled the command after or before its start,
+as the agent does at its own SIGTERM. The record then has exit code -1 and the
+note `Process cancelled` in stderr. `read_stderr` replaces the guest stderr,
+so an empty value leaves the note alone, as in the restart of release attempt 6.
+`read_envelope` names a file of a real CLI reply. JSON mode then prints its
+bytes unchanged and exits 0.
+https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-protocol/src/exec_record.rs
 CLI is a status, or `STATUS:CODE` for a failure that prints the CLI error
 envelope with that code in JSON mode. The envelope has the four fields that the
 tagged CLI always prints, and the optional fields are left out.
@@ -42,7 +50,7 @@ def stream_evidence(text: str) -> dict[str, object]:
     }
 
 
-def next_answer() -> tuple[int, bool, str, str]:
+def next_answer() -> tuple[int, str, str, str]:
     script = Path(os.environ.get("read_script", "/nonexistent"))
     if script.exists():
         counter = Path(str(script) + ".used")
@@ -54,7 +62,7 @@ def next_answer() -> tuple[int, bool, str, str]:
         )
         return (
             int(exit_code),
-            timed_out == "true",
+            timed_out,
             cli,
             # Bytes, so a CR in an answer survives, as in the agent's file.
             Path(stdout_file).read_bytes().decode("utf-8"),
@@ -62,7 +70,7 @@ def next_answer() -> tuple[int, bool, str, str]:
     stdout = Path(os.environ["read_stdout"]).read_bytes().decode("utf-8")
     return (
         int(os.environ.get("read_exit_code", "0")),
-        os.environ.get("read_timed_out", "false") == "true",
+        os.environ.get("read_timed_out", "false"),
         os.environ.get("read_cli_status", "0"),
         stdout,
     )
@@ -76,8 +84,14 @@ def main() -> int:
         print(f"unsupported fixture command: {args}", file=sys.stderr)
         return 2
     command = args[-1]
-    exit_code, timed_out, cli, stdout = next_answer()
-    stderr = "synthetic guest diagnostic"
+    envelope_file = os.environ.get("read_envelope")
+    if envelope_file and "--json" in args:
+        sys.stdout.buffer.write(Path(envelope_file).read_bytes())
+        return 0
+    exit_code, ending, cli, stdout = next_answer()
+    timed_out = ending == "true"
+    cancelled = ending in {"cancelled", "cancelled-before"}
+    stderr = os.environ.get("read_stderr", "synthetic guest diagnostic")
     if os.environ.get("read_mode") == "host":
         # Run the real command on this host, as the agent runs it in a guest.
         done = subprocess.run(
@@ -127,6 +141,10 @@ def main() -> int:
         exit_code = -1
         note = "Process timed out after 30s"
         stderr = note if not stderr else f"{stderr}\n[{note}]"
+    if cancelled:
+        exit_code = -1
+        note = "Process cancelled"
+        stderr = note if not stderr else f"{stderr}\n[{note}]"
     status, _, code = cli.partition(":")
     if code and "--json" in args:
         # A failure with the CLI error envelope, such as a dropped connection.
@@ -166,6 +184,8 @@ def main() -> int:
         "outcome": (
             {"kind": "timed_out", "timeout_seconds": 30}
             if timed_out
+            else {"kind": "cancelled", "before_start": ending == "cancelled-before"}
+            if cancelled
             else {"kind": "exited", "exit_code": exit_code}
         ),
         "evidence": {

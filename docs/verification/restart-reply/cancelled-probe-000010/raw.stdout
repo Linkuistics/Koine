@@ -1,0 +1,6 @@
+{
+  "code": "CONNECTION_DROPPED",
+  "message": "connection dropped: connection closed before message completed",
+  "ok": false,
+  "schema_version": "1.0"
+}

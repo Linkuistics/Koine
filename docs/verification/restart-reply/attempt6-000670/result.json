@@ -1,0 +1,8 @@
+{
+  "outcome": "unavailable",
+  "reason": "missing, invalid or unsuccessful exec fields",
+  "cli_status": 0,
+  "emission_status": "not-attempted",
+  "ended": "2026-11-26T06:03:35.563301+00:00",
+  "duration_ns": 338893000
+}

@@ -1,0 +1,23 @@
+{
+  "ordinal": 2,
+  "vm": "koine-restart-cancelled-probe",
+  "class": "one-shot",
+  "operation": "restart-1",
+  "transport": "read",
+  "command": "echo admin | sudo -S shutdown -r now",
+  "reason": "",
+  "read": "restart",
+  "read_arguments": [],
+  "argv": [
+    "/opt/homebrew/Cellar/testanyware/3.0.0/bin/testanyware",
+    "file",
+    "exec",
+    "--vm",
+    "koine-restart-cancelled-probe",
+    "--json",
+    "--",
+    "echo admin | sudo -S shutdown -r now"
+  ],
+  "payload_predicate": "checked read restart: exact grammar in scripts/vm_exec_reads.py",
+  "started": "2026-11-26T06:24:20.571830+00:00"
+}

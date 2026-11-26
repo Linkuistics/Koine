@@ -405,6 +405,87 @@ declare -gA LEGACY=(
     done
 }
 
+@test "a cancelled restart reply counts as a restart when a later boot read changes" {
+    local stderr index=0
+    # shellcheck disable=SC2329
+    sleep() { printf '%s\n' "$1" >>"${BATS_TEST_TMPDIR}/sleeps"; }
+    # The bare note of release attempt 6, and the note after other guest stderr.
+    for stderr in '' 'Password:'; do
+        index=$((index + 1))
+        reset_root "cancelled-${index}"
+        export read_stderr="${stderr}"
+        script "0 cancelled 0 ${SHUTDOWN_OUT}" "0 false 0 ${BOOT_BEFORE}" "0 false 0 ${BOOT_AFTER}"
+        run restart_guest "${read_root}" restart "${BEFORE_RECORD}"
+        echo "diagnostic: stderr=${stderr} status=${status} calls=$(calls) sleeps=$(sleeps) output=${output}"
+        [[ "${status}" == 0 && "$(calls)" == 3 && "$(sleeps)" == "30 5 " ]]
+        jq -e '.sec == 1795271000 and .usec == 450002' <<<"${output}"
+        jq -e '.outcome == "clean" and .cli_status == 0' "${read_root}/000001/result.json"
+        jq -e --arg out "${SHUTDOWN_OUT}" '.read == "restart" and .reply == "cancelled"
+            and .stdout == $out and (has("submitted") | not)' "${read_root}/000001/read.json"
+        [[ ! -e "${read_root}/unavailable" ]]
+    done
+}
+
+@test "the cancelled restart reply of release attempt 6 is a clean cancelled reply, and not before its start" {
+    local recorded="${BATS_TEST_DIRNAME}/../../docs/verification/restart-reply/attempt6-000670/raw.stdout"
+    export read_envelope="${recorded}"
+    run submit_guest_once "${read_root}" restart restart
+    echo "diagnostic: status=${status} calls=$(calls) output=${output}"
+    [[ "${status}" == 0 && "$(calls)" == 1 && "$(sent 1)" == "${LEGACY[restart]}" ]]
+    cmp "${recorded}" "${read_root}/000001/raw.stdout"
+    jq -e '.outcome == "clean" and .cli_status == 0' "${read_root}/000001/result.json"
+    jq -e --arg out "${SHUTDOWN_OUT}" '.reply == "cancelled" and .stdout == $out' "${read_root}/000001/read.json"
+    [[ ! -e "${read_root}/unavailable" ]]
+    reset_root before-start
+    jq '.outcome.before_start = true' "${recorded}" >"${BATS_TEST_TMPDIR}/before-start.json"
+    export read_envelope="${BATS_TEST_TMPDIR}/before-start.json"
+    run submit_guest_once "${read_root}" restart restart
+    echo "diagnostic: status=${status} calls=$(calls)"
+    [[ "${status}" == 125 && "$(calls)" == 1 && ! -e "${read_root}/000001/read.json" ]]
+    assert_latched
+}
+
+@test "a cancelled restart reply with an unchanged boot for sixty reads is a state failure" {
+    # shellcheck disable=SC2329
+    sleep() { printf '%s\n' "$1" >>"${BATS_TEST_TMPDIR}/sleeps"; }
+    script "0 cancelled 0 ${SHUTDOWN_OUT}" "0 false 0 ${BOOT_BEFORE}"
+    run restart_guest "${read_root}" restart "${BEFORE_RECORD}"
+    echo "diagnostic: status=${status} calls=$(calls)"
+    [[ "${status}" == 125 && "$(calls)" == 61 && "$(sleeps)" == "30 $(printf '5 %.0s' {1..60})" ]]
+    jq -e '.reply == "cancelled"' "${read_root}/000001/read.json"
+    grep -rl '"operation": "restart-boot-exhausted"' "${read_root}"/*/request.json
+    assert_latched
+}
+
+@test "a restart cancelled before its start or with other stdout is unavailable even if the boot later changes" {
+    local row index=0
+    # shellcheck disable=SC2329
+    sleep() { printf '%s\n' "$1" >>"${BATS_TEST_TMPDIR}/sleeps"; }
+    for row in "cancelled-before|${SHUTDOWN_OUT}" 'cancelled|Shutdown NOW!' 'cancelled|'; do
+        index=$((index + 1))
+        reset_root "cancelled-restart-${index}"
+        script "0 ${row%%|*} 0 ${row#*|}" "0 false 0 ${BOOT_AFTER}"
+        run restart_guest "${read_root}" restart "${BEFORE_RECORD}"
+        echo "diagnostic: row=${row} status=${status} calls=$(calls) sleeps=$(sleeps)"
+        [[ "${status}" == 125 && "$(calls)" == 1 && -z "$(sleeps)" ]]
+        [[ ! -e "${read_root}/000001/read.json" ]]
+        assert_latched
+    done
+}
+
+@test "a cancelled reply of any other submission stays unavailable" {
+    local name index=0
+    for name in open-koine extract-bundle open-textedit quit-textedit request-automation open-accessibility-pane; do
+        index=$((index + 1))
+        reset_root "cancelled-other-${index}"
+        answer '' 0 cancelled 0
+        run submit_guest_once "${read_root}" "submit-${name}" "${name}"
+        echo "diagnostic: name=${name} status=${status} calls=$(calls)"
+        [[ "${status}" == 125 && "$(calls)" == 1 && ! -e "${read_root}/000001/read.json" ]]
+        assert_latched
+    done
+}
+
 @test "a refused or failed restart submission is unavailable even if the boot later changes" {
     local failure index=0
     # shellcheck disable=SC2329

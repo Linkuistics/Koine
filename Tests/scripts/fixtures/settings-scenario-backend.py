@@ -50,6 +50,10 @@ use of the domain instead:
   lost reply, which the real backend prints after `CONNECTION_DROPPED`. The
   guest still restarts. A guest lost each restart reply (k8,
   scripts/vm-probe-restart-reply.sh).
+- The flag `restart-reply-cancelled` answers the restart with the clean record
+  of a cancelled reply, which the real backend prints after the agent cancels
+  the shutdown at its own SIGTERM. The guest still restarts. Release attempt 6
+  got this reply (k9).
 - `settings_no_value=OPERATION` omits AXValue from `grant-label` in that one
   snapshot (k175). A failed AX copy omits it, so the field is not empty.
 - Each menu bar item has one menu. A closed menu has the size {0, 0}, and an
@@ -960,6 +964,11 @@ def submission(state: dict[str, Any], name: str) -> dict[str, Any]:
                 "code": "CONNECTION_DROPPED",
                 "message": "connection dropped: "
                 "connection closed before message completed",
+            }
+        if "restart-reply-cancelled" in FLAGS:
+            return {
+                "reply": "cancelled",
+                "stdout": "Shutdown NOW!\n\r\nSystem shutdown time has arrived\x07\x07",
             }
     elif name != "extract-bundle":
         raise SystemExit(f"unsimulated read: {name}")

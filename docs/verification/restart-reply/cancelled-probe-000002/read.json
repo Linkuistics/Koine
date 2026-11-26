@@ -1,0 +1,7 @@
+{
+  "read": "restart",
+  "arguments": [],
+  "reply": "lost",
+  "code": "CONNECTION_DROPPED",
+  "message": "connection dropped: connection closed before message completed"
+}

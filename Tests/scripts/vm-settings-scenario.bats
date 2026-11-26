@@ -187,6 +187,31 @@ input_after() {
     [[ "$(call_index login-endpoint-1)" == -1 ]]
 }
 
+@test "a cancelled restart reply with a changed boot runs through the login assertions to PASSED (k9)" {
+    export settings_flags=restart-reply-cancelled
+    run_scenario
+    [[ "${status}" == 0 ]] || {
+        printf '%s\n' "${output}" | tail -30
+        return 1
+    }
+    [[ "${output}" == *'== PASSED'* && ! -s "${scenario_legacy}" ]]
+    jq -se 'all(.[1:][]; .outcome == "clean")
+        and (map(select(.operation == "restart")) | length == 1 and .[0].reply == "cancelled")' \
+        "${settings_sim}/calls.jsonl"
+    expect_order restart restart-boot-1 defaults-after-restart login-endpoint-1 login-process \
+        login-launch-endpoint-1 login-windows final-stopped-process final-stopped-descriptor
+}
+
+@test "a cancelled restart reply with an unchanged boot stops at the restart as a test-driver or guest failure (k9)" {
+    export settings_flags=restart-reply-cancelled,boot-stuck
+    run_scenario
+    [[ "${status}" == 125 ]]
+    [[ "${output}" == *'FAILED: the VM did not come back from its restart; a test-driver or guest failure, not a Koine failure'* ]]
+    jq -se 'map(select(.operation == "restart-boot-exhausted")) | length == 1 and .[0].outcome == "state-failed"' \
+        "${settings_sim}/calls.jsonl"
+    [[ "$(call_index login-endpoint-1)" == -1 ]]
+}
+
 # One unavailable answer in each transport family. Each must stop the scenario
 # with that status and leave no later input: only the evidence-class failure
 # screenshot may follow.

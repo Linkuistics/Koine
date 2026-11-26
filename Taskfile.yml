@@ -1725,7 +1725,7 @@ tasks:
       - scripts/vm-probe-resize-drag.sh
 
   app:vm-probe-restart-reply:
-    desc: Qualify the guest restart of the menu bar scenario on a real guest, with the repair that accepts a lost restart reply (scripts/vm-probe-restart-reply.sh). A bounded probe, not an acceptance; it needs KOINE_TESTANYWARE_CLI, KOINE_JQ and KOINE_VM_BASE, uses its own clone and stops it
+    desc: Qualify the guest restart of the menu bar scenario on a real guest, with the repairs that accept a lost or a cancelled restart reply (scripts/vm-probe-restart-reply.sh). A bounded probe, not an acceptance; it needs KOINE_TESTANYWARE_CLI, KOINE_JQ and KOINE_VM_BASE, KOINE_PROBE_TRIALS sets the trial count (default 2); uses its own clone and stops it
     cmds:
       - bash -n scripts/vm-probe-restart-reply.sh
       - shellcheck -x scripts/vm-probe-restart-reply.sh

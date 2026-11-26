@@ -88,17 +88,23 @@ menu of each closed item, so attempt 1 of the release stopped at the setup. A
 diagnostic guest qualified the size, as the
 [menu-bar record](../verification/menu-bar-vm.md#the-open-menu-signal) states.
 
-For issue #15, the guest restart of the shared scenario accepts a lost reply.
-The guest can close the connection before the reply to the restart arrives.
-TestAnyware then reports `CONNECTION_DROPPED`, and the evidence backend records a
-clean lost reply. The restart then counts when a later boot read shows a changed
-boot record. An unchanged boot after the sixty reads is a failure of the restart, not
-of Koine.
+For issue #15, the guest restart of the shared scenario accepts two forms of
+the reply. At its own SIGTERM, the guest agent cancels the shutdown and then
+replies if it can. If the connection closes first, TestAnyware reports
+`CONNECTION_DROPPED`, and the evidence backend records a clean lost reply. If
+the reply leaves first, it has the outcome `cancelled` with
+`before_start: false` and the clean shutdown stdout. The backend then records a
+clean cancelled reply.
 
-A clean refusal of the restart and every other failed submission stay
-unavailable evidence. So does a failed boot read. Attempt 5 of the release
-stopped at a lost reply. A diagnostic guest qualified the rule, as the
-[menu-bar record](../verification/menu-bar-vm.md#the-lost-restart-reply) states.
+In both cases, the restart counts when a later boot read shows a changed boot
+record. An unchanged boot after the sixty reads is a failure of the restart, not
+of Koine. A clean refusal of the restart and every other failed submission stay
+unavailable evidence. That includes a cancelled reply with `before_start: true`
+or with other stdout. So does a failed boot read.
+
+Attempt 5 of the release stopped at a lost reply, and attempt 6 at a cancelled
+reply. A diagnostic guest ran the rule, as the
+[menu-bar record](../verification/menu-bar-vm.md#the-cancelled-restart-reply) states.
 The closed protocol keeps a restart disconnect unavailable, as the evaluation
 section below states. That rule does not bind issue #15.
 

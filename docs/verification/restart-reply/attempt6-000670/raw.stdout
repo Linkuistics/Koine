@@ -1,0 +1,56 @@
+{
+  "command": "echo admin | sudo -S shutdown -r now",
+  "evidence": {
+    "stderr": {
+      "base64": "",
+      "bytes": 0,
+      "capture": "complete",
+      "file_bytes": 0,
+      "reason": null,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "base64": "U2h1dGRvd24gTk9XIQoNClN5c3RlbSBzaHV0ZG93biB0aW1lIGhhcyBhcnJpdmVkBwcNCg==",
+      "bytes": 52,
+      "capture": "complete",
+      "file_bytes": 52,
+      "reason": null,
+      "sha256": "20761ffbdcae61123e7211bcfe4f36873b7f10dab3bf521f13679b753210f06e"
+    }
+  },
+  "exec_id": "1e88e561-3d62-4504-b7f4-ba37149f6545",
+  "exit_code": -1,
+  "legacy_projection": "macos",
+  "lifecycle": {
+    "duration_ms": 320,
+    "finalised_after_ms": 3,
+    "group_id": 1389,
+    "leader_pid": 1389,
+    "leader_start_time": "1795673015.230983",
+    "owner_lateness_ms": 0,
+    "spawn_ms": 0
+  },
+  "ok": true,
+  "outcome": {
+    "before_start": false,
+    "kind": "cancelled"
+  },
+  "record": "agent",
+  "remaining_group": null,
+  "schema_version": "1.0",
+  "stderr": "Process cancelled",
+  "stdout": "Shutdown NOW!\n\r\nSystem shutdown time has arrived\u0007\u0007",
+  "termination": {
+    "group_empty": "yes",
+    "group_empty_after_ms": 1,
+    "kill_sent_after_ms": 1,
+    "leader_exit_after_ms": 1,
+    "leader_status": {
+      "exit_code": 0,
+      "kind": "exited"
+    },
+    "term_sent_after_ms": 0,
+    "within_bounds": true
+  },
+  "timed_out": false
+}

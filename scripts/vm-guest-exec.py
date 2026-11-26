@@ -399,19 +399,32 @@ def exec_record_problem(envelope: dict[str, object]) -> str:
     # An incomplete stream is a prefix. The macOS projection turns a stream that
     # is not UTF-8 into empty text, so the exact bytes must decode.
     # https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/docs/specs/guest-command-lifecycle.md
-    if envelope.get("record") != "agent" or envelope.get("legacy_projection") != (
-        "macos"
-    ):
-        return "exec reply is not a typed macOS agent record"
     outcome = envelope.get("outcome")
-    if not (
+    clean = (
         isinstance(outcome, dict)
         and set(cast(dict[str, object], outcome)) == {"kind", "exit_code"}
         and cast(dict[str, object], outcome)["kind"] == "exited"
         and type(cast(dict[str, object], outcome)["exit_code"]) is int
         and cast(dict[str, object], outcome)["exit_code"] == 0
+    )
+    return exec_evidence_problem(
+        envelope, "" if clean else "exec outcome is not a clean exit"
+    )
+
+
+def exec_evidence_problem(
+    envelope: dict[str, object], outcome_problem: str = ""
+) -> str:
+    """Name why an exec envelope is not a typed macOS record with whole streams.
+
+    A named outcome problem comes after the record type and before the streams.
+    """
+    if envelope.get("record") != "agent" or envelope.get("legacy_projection") != (
+        "macos"
     ):
-        return "exec outcome is not a clean exit"
+        return "exec reply is not a typed macOS agent record"
+    if outcome_problem:
+        return outcome_problem
     evidence = envelope.get("evidence")
     if not isinstance(evidence, dict):
         return "exec record has no stream evidence"
@@ -809,21 +822,28 @@ def run_locked(
             reason = validate_response(
                 attempt, command, cli_status, predicate, lock_fd, jq, transport
             )
-            lost: dict[str, object] | None = None
-            if reason and transport == "read" and cli_status:
-                # The table admits a lost reply only for a named submission.
+            reply: dict[str, object] | None = None
+            if reason and transport == "read":
+                # The table admits a lost or cancelled reply only for a named
+                # submission. A cancelled record keeps the evidence checks.
                 try:
-                    lost = vm_exec_reads.lost_reply(
-                        arguments[0], read_object(attempt / "raw.stdout"), cli_status
-                    )
+                    envelope = read_object(attempt / "raw.stdout")
+                    if cli_status:
+                        reply = vm_exec_reads.lost_reply(
+                            arguments[0], envelope, cli_status
+                        )
+                    else:
+                        reply = vm_exec_reads.cancelled_reply(arguments[0], envelope)
+                        if reply is not None and exec_evidence_problem(envelope):
+                            reply = None
                 except (ValueError, UnicodeError):
-                    lost = None
-                if lost is not None:
+                    reply = None
+                if reply is not None:
                     reason = ""
-                    write_json(attempt / "read.json", lost)
+                    write_json(attempt / "read.json", reply)
             if not reason and transport == "cli":
                 reason = diagnostic_problem(argv, (attempt / "raw.stderr").read_bytes())
-            if not reason and transport == "read" and lost is None:
+            if not reason and transport == "read" and reply is None:
                 envelope = read_object(attempt / "raw.stdout")
                 try:
                     record = vm_exec_reads.parse(
