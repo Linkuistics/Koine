@@ -230,3 +230,64 @@ The leaf inserted `settings-resize-drag-k7` ahead of itself. The repair is a
 separate slice, with its own guest runs, helper change, tests and documents.
 This leaf stays live. Attempt 5 runs on the same notarised bundle after k7
 retires.
+
+**Attempt 5 (2026-11-26).** Attempt 5 (`menu-bar-20261126T134522`, clone
+`koine-041-menu-5`) ran on the same notarised bundle. Both zips still had the
+recorded SHA-256. `task app:verify` passed, and the CDHash matched. The caller
+stopped the clone. The scenario exited 125 at the guest restart, before the
+login-launch assertions.
+
+All four Settings selections passed again. The anchored drag of k7 grew the
+window to 703 by 903 and then shrank it to 440 by 352. The scrolling at the least
+size, the shortcuts, the client requests, the consent, the silent launch, the
+reopen and the Quit with Command-Q passed too.
+
+The restart request (000670) sent `shutdown -r now` to the guest. After 0.35 s,
+the CLI exited 1 with `CONNECTION_DROPPED`. The strict helper `restart_guest`
+counts a failed submission as unavailable at once, so it read no boot record
+after the request. This is the race of issue #17, the lost restart reply.
+
+No retained evidence root in either workspace holds an earlier strict restart
+record. So attempt 5 is the first real run of the strict helper. Attempt 1 was
+the first run of the menu read, and attempt 3 the first run of the drag. The other VM checks send the
+same restart and ignore its reply. An unchanged rerun most likely stops at the
+same step, but one run cannot show that the drop repeats.
+
+The assertions after the restart did not run. They are the login launch with
+the menu bar item and no window, and the final Quit from the menu. The leaf
+used the attempts that Antony allowed, so it asks Antony.
+
+**The restart repair (2026-11-26).** Antony chose to repair the restart before
+attempt 6. A lost reply then counts as a restart when a later boot read shows a
+changed boot record. The other choices were to rerun unchanged, to accept attempt
+5 as it was, or to stop with nothing shipped.
+
+The leaf inserted `settings-restart-reply-k8` ahead of itself. The repair is a
+separate slice, with its own guest run, helper change, tests and documents. This
+leaf stays live. Attempt 6 runs on the same notarised bundle after k8 retires.
+
+**The other release checks (2026-11-26).** While Antony decided the restart,
+the leaf ran the two other release VM checks on the same notarised bundle. The
+zip SHA-256 and the CDHash matched before the runs.
+`task app:vm-verify-grant-workflows` passed
+(`grant-workflows-20261126T135237.log`, clone `koine-041-grant-workflows`).
+
+`task app:vm-verify-release` ran twice. The first run (`release-20261126T135208`,
+clone `koine-041-release`) stopped at the first launch of the quarantined copy.
+A `jq` read of the agent snapshot found no `windows` array. The second run
+(clone `koine-041-release-2`) passed that step, so the fault did not repeat.
+
+The second run stopped at the step that needs two Finder windows with one
+title. The native list held the two new "Recents" windows and a third Finder
+window, "Utilities". The golden image of today's guest restores that window.
+Issue #18 reports it for the menu-bar check, and the screenshot of attempt 5
+shows it too. The cause is guest state, not Koine. The assertions after that
+step did not run on 0.4.1.
+
+**The Finder repair (2026-11-26).** Antony chose a narrow repair of the release
+check. Before the step opens its two Finder windows, it closes the Finder
+windows that the golden image restores. The leaf then runs the release check
+again, together with attempt 6. Issue #18 gets the new evidence. The other
+choices were an issue with no rerun, or a repair inside k8. The comment
+https://github.com/Linkuistics/Koine/issues/18#issuecomment-7183172805 records
+the evidence.

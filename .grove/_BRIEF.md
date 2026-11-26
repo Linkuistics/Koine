@@ -21,7 +21,7 @@ GitHub issue 15 with a happy-path repair instead of the closed five-slot protoco
 
 ## Decomposition
 
-Six flat sibling leaves share the purpose and context of this root, so no leaf
+Seven flat sibling leaves share the purpose and context of this root, so no leaf
 needs a node. Their order encodes the dependencies.
 
 1. `settings-setup-front` removes the read that stopped E01 from the positive
@@ -37,7 +37,10 @@ needs a node. Their order encodes the dependencies.
 5. `settings-resize-drag` makes the corner drag reach its destination on
    today's guest. Attempts 3 and 4 of the release stopped one drag step short.
    Antony chose this repair on 2026-11-26.
-6. `release-0-4-1` notarises, accepts, publishes and closes the issue.
+6. `settings-restart-reply` accepts a lost reply to the guest restart when the
+   boot record changes. Attempt 5 of the release stopped at that reply. Antony
+   chose this repair on 2026-11-26.
+7. `release-0-4-1` notarises, accepts, publishes and closes the issue.
 
 ## Pointers
 
@@ -68,7 +71,8 @@ RUN. In it, each of the four Settings selections over TextEdit returns one front
 focused Settings window. A stop or failure with a cause in the harness, the guest,
 TextEdit or the test driver is not a Koine failure. The release leaf runs the
 check again, with at most three attempts in total, and then asks Antony. On
-2026-11-26, Antony allowed a fourth attempt, and a fifth after the drag repair.
+2026-11-26, Antony allowed a fourth attempt, a fifth after the drag repair, and
+a sixth after the restart repair.
 
 The claim stays limited to the happy path on the guest release that ran. On
 0.4.0, the "not front" failure occurred in 2 of 9 runs. At that rate, one clean
