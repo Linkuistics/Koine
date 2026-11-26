@@ -352,3 +352,45 @@ a separate slice, as k8 was. It has its own guest run, read-table change, tests
 and documents. This leaf stays live. Attempt 7 runs on the same notarised bundle
 after the repair retires. The release check needs no rerun, because the repair
 changes only the menu-bar scenario's restart read.
+
+**Attempt 7 (2026-11-26).** Attempt 7 (`menu-bar-20261126T181134`, clone
+`koine-041-menu-7`) ran on the same notarised bundle. Both zips still had the
+recorded SHA-256. `task app:verify` passed, and the CDHash matched. The caller
+stopped the clone. The scenario exited 0 with "PASSED", and the transcript
+reports no NOT RUN step.
+
+All four Settings selections passed. The anchored drag grew the window to 703 by
+903 and shrank it to 440 by 352. Each later assertion passed too, through the
+login launch and the final Quit from the menu.
+
+The restart reply (000670) was the cancelled form again, with CLI status 0. The
+backend recorded a clean cancelled reply. The boot record changed from
+1795677095 (000669) to 1795677398 (000671), so the restart counted.
+
+So attempt 7 is the clean run that the leaf needs, and it accepts the candidate.
+The claim covers this one run on macOS 27.2.1 with TestAnyware 3.0.0. The leaf
+asks Antony before the tag, the GitHub release and the cask update.
+
+**Publishing (2026-11-26).** Antony approved the three publishing steps
+together: the annotated tag `v0.4.1` on `1088ce07`, the GitHub release with the
+zip and the drafted notes, and the cask update. The other choices were the tag
+and the release without the cask, or no publishing yet.
+
+**Published (2026-11-26).** `jj git push --tag v0.4.1` published the tag on
+`1088ce07`. It is a lightweight tag, because jj makes no annotated tag. The
+GitHub release "Koine 0.4.1" has the zip, and GitHub reports the recorded
+SHA-256 for it. The cask commit `1675e318` in `Linkuistics/homebrew-taps`
+changes only the version and the SHA-256.
+
+Antony asked for the local installation to be upgraded too.
+`brew upgrade --cask linkuistics/taps/koine` replaced 0.4.0 with 0.4.1 in
+`/Applications`. The installed bundle has the recorded CDHash, and Gatekeeper
+accepts it as "Notarized Developer ID". Koine was not running, so the upgrade
+quit nothing and the leaf did not launch it.
+
+**The published cask (2026-11-26).** `task app:vm-verify-homebrew`
+(`homebrew-20261126T182512`, clone `koine-041-homebrew`) passed on the published
+cask. Homebrew installed 0.4.1 with its quarantine intact, Gatekeeper accepted it
+as notarised, and Koine launched and served. The uninstall and `--zap` removed
+it. The Background Task Management entry after `--zap` matches the entry that
+the Homebrew record shows for 0.4.0. The script stopped its own clone.

@@ -122,6 +122,14 @@ about 78% of the time with no improvement. Thus a pass shows that the candidate
 keeps the happy path. It does not show that the candidate removes the bug. If the
 candidate fails, the code returns to the released order and nothing ships.
 
+On 2026-11-26, attempt 7 of the release accepted the candidate. Antony allowed
+four attempts beyond the first three. Each of the six earlier attempts stopped
+in the test or the guest. Each stop led to one repair of the scenario or its
+helpers. In attempt 7, each of the four Settings selections returned one
+front, focused Settings window, and every later assertion passed. The run used
+macOS 27.2.1 and TestAnyware 3.0.0, as the
+[menu-bar record](../verification/menu-bar-vm.md#the-041-acceptance-run) states.
+
 <!-- tc: pending because the conversion has not reached this part of the document -->
 
 This amends a prerequisite; it does not satisfy it. Native cause and ownership

@@ -21,6 +21,9 @@ and then one key and front request. One clean run of this check on the notarised
 0.4.1 bundle accepts it, as the [current decision](../specs/settings-activation-discrimination.md#current-decision)
 states.
 
+Attempt 7 of the release was that run, on 2026-11-26.
+[The 0.4.1 acceptance run](#the-041-acceptance-run) records it and its limits.
+
 For issue #15, the positive setup makes no System Events front read. It
 judges a window list that the scenario holds. Before the first selection, that
 list is the zero-count list of the close check. Before each reopen, it is the list
@@ -448,10 +451,46 @@ These limits apply:
 
 - One run cannot force the race either way. On this guest release, the reply
   was lost in eight of nine restarts and cancelled in one.
-- No guest run shows a cancelled reply followed by the boot poll. The helper
-  tests show that path with synthetic boot reads.
+- The probe showed no cancelled reply followed by the boot poll. The helper
+  tests showed that path with synthetic boot reads. Attempt 7 of the release
+  then showed it on the guest, as the next section records.
 - The probe sends the restart without the scenario before it. Attempt 7 of the
-  release runs the revised restart in the scenario itself.
+  release ran the revised restart in the scenario itself.
+
+## The 0.4.1 acceptance run
+
+Attempt 7 of the 0.4.1 release (`menu-bar-20261126T181134`) is the clean run
+that accepts the candidate. It ran on 2026-11-26, on the notarised 0.4.1
+bundle with the CDHash `70b6c044f60cdc3847a77bd871347edb8069d938`. The guest was
+a clone of `testanyware-golden-macos-27`, with macOS 27.2.1, build 26B131, and
+TestAnyware 3.0.0. The scenario exited 0, and its transcript reports no NOT RUN
+step.
+
+Each of the four Settings selections over TextEdit returned one front, focused
+Settings window. The anchored drag grew the window to 703 by 903 and then
+shrank it to 440 by 352. Each later assertion passed, through the login launch
+across the VM restart and the final Quit from the menu.
+
+The restart reply had the cancelled form. The backend recorded a clean
+cancelled reply. The next boot read showed a changed boot record, so the
+restart counted. This is the first guest run of a cancelled reply followed by
+the boot poll.
+
+Six earlier attempts on the same bundle stopped in the test or the guest, not
+at a Settings return. Attempt 1 stopped at the menu names, and attempt 2 at the
+setup of the first reopen. Attempts 3 and 4 stopped at the drag, and attempts 5
+and 6 at the restart reply. Each stop led to one repair, as the sections above
+record.
+
+These limits apply:
+
+- The claim covers this one run, on this guest release.
+- On 0.4.0, the "not front" failure occurred in 2 of 9 runs. At that rate, one
+  clean run occurs about 78% of the time with no improvement. So the run shows
+  that the candidate keeps the happy path. It does not show that the candidate
+  removes the intermittent failure.
+- [Issue #19](https://github.com/Linkuistics/Koine/issues/19) holds the
+  reliability study of both call orders.
 
 <!-- tc: pending because the conversion has not reached this part of the document -->
 
