@@ -531,6 +531,12 @@ def newer_desktop():
     return os.path.join(products("newer"), "DesktopProviders")
 
 
+def released_desktop():
+    """The desktop provider of the released revision. The workspace pairs compose it, not this tree's desktop 1.0.1
+    (window layout), because every workspace profile pins desktop 1.0.0 and the pairs are about workspace."""
+    return os.path.join(products("baseline"), "DesktopProviders")
+
+
 def newer_workspace():
     return os.path.join(products("newer"), "WorkspaceProviders")
 
@@ -549,7 +555,8 @@ def compose(desktop_from, workspace_from):
             path = os.path.join(source, name)
             if os.path.isdir(path):
                 shutil.copytree(path, os.path.join(root, name), symlinks=True)
-            else:
+            elif os.path.exists(path):
+                # A bundle in the application's own root needs no approval, so a missing record is no failure.
                 shutil.copy(path, os.path.join(root, name))
     return root
 
@@ -913,7 +920,7 @@ def main():
                            "workspace 1.0.0, retained", RETAINED, retained_root(), None, conformance, RETAINED_PROFILE,
                            "1.0.0", [D, W100], [old_image], probes),
             workspace_pair("the retained 1.0.0 workspace, newer host",
-                           "workspace 1.0.0, retained", "newer", compose(newer_desktop(), retained_bundled()), None,
+                           "workspace 1.0.0, retained", "newer", compose(released_desktop(), retained_bundled()), None,
                            conformance, RETAINED_PROFILE, "1.0.0", [D, W100], [old_image], probes),
             workspace_pair("the released 1.0.1 workspace in the released Koine 0.3.0 host (the 1.0.1 pair)",
                            "workspace 1.0.1, released with Koine 0.3.0", RELEASED, released_root(), None, conformance,
@@ -924,7 +931,7 @@ def main():
                            "1.0.1", [D, W101], [released_image], probes),
             workspace_pair("the released 1.0.1 workspace bundled, newer host",
                            "workspace 1.0.1, released with Koine 0.3.0", "newer",
-                           compose(newer_desktop(), released_bundled()), None, conformance, REPAIR_PROFILE,
+                           compose(released_desktop(), released_bundled()), None, conformance, REPAIR_PROFILE,
                            "1.0.1", [D, W101], [released_image], probes),
             workspace_pair("the approved per-user 1.0.1 variant over the bundled 1.0.0, retained host",
                            "workspace 1.0.1 stating first-party-selection-v1, approved per user", RETAINED,
@@ -932,7 +939,7 @@ def main():
                            "1.0.1", [D, W101_USER, W100_SUPERSEDED], [released_variant_image], probes),
             workspace_pair("the approved per-user 1.0.1 variant over the bundled 1.0.0, newer host",
                            "workspace 1.0.1 stating first-party-selection-v1, approved per user", "newer",
-                           compose(newer_desktop(), retained_bundled()), only(released_per_user_variant(), "Workspace"),
+                           compose(released_desktop(), retained_bundled()), only(released_per_user_variant(), "Workspace"),
                            conformance, PER_USER_PROFILE, "1.0.1", [D, W101_USER, W100_SUPERSEDED],
                            [released_variant_image], probes),
             workspace_pair("the shipped 1.0.1 bundle installed per user does not state the feature: refused, 1.0.0 keeps the slot, retained host",
@@ -944,11 +951,11 @@ def main():
             # This tree's 1.0.2: it loads in this tree's host, and the two older hosts refuse it before it loads.
             workspace_pair("the 1.0.2 workspace bundled, newer host: the new bundle loads in the new host",
                            "workspace 1.0.2, this tree's, sealed as the application seals it", "newer",
-                           compose(newer_desktop(), newer_workspace()), None, conformance, DISCOVERY_PROFILE, "1.0.2",
+                           compose(released_desktop(), newer_workspace()), None, conformance, DISCOVERY_PROFILE, "1.0.2",
                            [D, W102], [new_image], probes),
             workspace_pair("the approved per-user 1.0.2 variant over the bundled 1.0.0, newer host",
                            "workspace 1.0.2 stating first-party-selection-v1, approved per user", "newer",
-                           compose(newer_desktop(), retained_bundled()), only(per_user_variant(), "Workspace"),
+                           compose(released_desktop(), retained_bundled()), only(per_user_variant(), "Workspace"),
                            conformance, DISCOVERY_PER_USER_PROFILE, "1.0.2", [D, W102_USER, W100_SUPERSEDED],
                            [variant_image], probes),
             workspace_pair("the 1.0.2 workspace bundled, released Koine 0.3.0 host: refused before it loads",

@@ -80,6 +80,15 @@ expect_disclosure() {
         grep -qF -- "${phrase}" <<<"${shown}" || fail "$2 does not state: ${phrase}"
     done
 }
+# expect_served <element id> <what> <capability>: the window shows exactly the text that koine:manage clients are
+# served for that capability. Window layout gave desktop:read and desktop:control a disclosure in Koine 0.5.0.
+expect_served() {
+    local shown served
+    served="$(jq -r --arg c "$3" '.response.data.koineManagement.capabilityDisclosures[] | select(.capability == $c) | .disclosure' <<<"${DISCLOSURES}" | tr -s '[:space:]' ' ' | sed 's/ $//')"
+    shown="$(disclosure_of "$1")"
+    echo "$2: ${shown}"
+    [ -n "${served}" ] && [ "${shown}" = "${served}" ] || fail "$2 is not the served $3 disclosure"
+}
 # no_disclosure <element id> <what>
 no_disclosure() {
     [ "$(element ".id==\"$1\"")" = null ] || fail "$2 carries a disclosure it should not"
@@ -107,8 +116,9 @@ MANAGER_GRANT="$(jq -r .response.data.koine.ownGrant.grantId <<<"${ANSWER}")"
 step "The management client is served the disclosure: the words the window must then show"
 enrollee "${MANAGER}" disclosures
 expect '(.response.errors // []) | length == 0' "the manager could not read the disclosures"
-expect '.response.data.koineManagement.capabilityDisclosures | map(.capability) == ["workspace:control","workspace:read"]' \
-    "the served disclosures are not exactly workspace:control's and workspace:read's"
+expect '.response.data.koineManagement.capabilityDisclosures | map(.capability) == ["desktop:control","desktop:read","workspace:control","workspace:read"]' \
+    "the served disclosures are not exactly the two desktop ones and the two workspace ones"
+DISCLOSURES="${ANSWER}"
 SERVED="$(jq -r '.response.data.koineManagement.capabilityDisclosures[] | select(.capability == "workspace:control") | .disclosure' <<<"${ANSWER}" | tr -s '[:space:]' ' ' | sed 's/ $//')"
 SERVED_READ="$(jq -r '.response.data.koineManagement.capabilityDisclosures[] | select(.capability == "workspace:read") | .disclosure' <<<"${ANSWER}" | tr -s '[:space:]' ' ' | sed 's/ $//')"
 echo "Served control: ${SERVED}"
@@ -128,8 +138,10 @@ expect_disclosure "disclosure-${CAPABILITY}" "the create-grant view"
 expect_disclosure "disclosure-${READ}" "the create-grant view, for workspace read" "${READ}"
 for other in koine:manage desktop:read desktop:control; do
     [ "$(element ".id==\"capability-${other}\"")" != null ] || fail "${other} is not offered"
-    no_disclosure "disclosure-${other}" "${other}"
 done
+no_disclosure "disclosure-koine:manage" "koine:manage"
+expect_served "disclosure-desktop:read" "the create-grant view, for desktop read" desktop:read
+expect_served "disclosure-desktop:control" "the create-grant view, for desktop control" desktop:control
 reveal_click '.id=="grant-label"'
 testanyware input type "workspace-grant" >/dev/null
 reveal_click ".id==\"capability-${CAPABILITY}\""
@@ -151,9 +163,8 @@ reveal ".id==\"request-disclosure-${WS_REQUEST}-${CAPABILITY}\""
 capture request-pending
 expect_disclosure "request-disclosure-${WS_REQUEST}-${CAPABILITY}" "the request view"
 expect_disclosure "request-disclosure-${WS_REQUEST}-${READ}" "the request view, for workspace read" "${READ}"
-# Desktop control's expanded reach is window-layout's disclosure, not this one's.
-no_disclosure "request-disclosure-${WS_REQUEST}-desktop:control" "desktop:control"
-no_disclosure "request-disclosure-${WS_REQUEST}-desktop:read" "desktop:read"
+expect_served "request-disclosure-${WS_REQUEST}-desktop:control" "the request view, for desktop control" desktop:control
+expect_served "request-disclosure-${WS_REQUEST}-desktop:read" "the request view, for desktop read" desktop:read
 reveal_click ".id==\"approve-${WS_REQUEST}\""
 await_element ".id==\"request-${WS_REQUEST}\"" absent
 enrollee "${WORKSPACE}" poll
@@ -169,7 +180,7 @@ expect_disclosure "grant-disclosure-${WS_GRANT}-${CAPABILITY}" "the approved gra
 expect_disclosure "grant-disclosure-${WS_GRANT}-${READ}" "the approved grant's row, for workspace read" "${READ}"
 no_disclosure "grant-disclosure-${NEW_GRANT}-${READ}" "a grant without workspace read"
 no_disclosure "grant-disclosure-${MANAGER_GRANT}-koine:manage" "the manager's row"
-no_disclosure "grant-disclosure-${WS_GRANT}-desktop:control" "an approved desktop:control"
+expect_served "grant-disclosure-${WS_GRANT}-desktop:control" "the approved grant's row, for desktop control" desktop:control
 
 step "Quit and restart Koine: the existing grants still disclose, and nothing was revoked or reauthorized"
 enrollee "${MANAGER}" manage

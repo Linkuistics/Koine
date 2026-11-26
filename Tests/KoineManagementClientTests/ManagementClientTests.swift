@@ -61,7 +61,9 @@ import Testing
 
     @Test func disclosuresAreTheServedOnesKeyedByCapability() async throws {
         let served = try await withServer { _, client in try await client.capabilityDisclosures() }
-        #expect(Set(served.keys) == ["workspace:control", "workspace:read"])
+        #expect(Set(served.keys) == ["desktop:control", "desktop:read", "workspace:control", "workspace:read"])
+        #expect(served["desktop:control"] == CapabilityDisclosures.desktopControl)
+        #expect(served["desktop:read"] == CapabilityDisclosures.desktopRead)
         #expect(served["workspace:control"] == CapabilityDisclosures.workspaceControl)
         #expect(served["workspace:read"] == CapabilityDisclosures.workspaceRead)
     }

@@ -25,3 +25,7 @@ Accept the first cut with the N check and the one happy-path VM run.
 
 - A permission dialog other than Accessibility is a stop (root brief,
   Notes).
+- `window-geometry-k3` changed `scripts/vm-verify-disclosure.sh` to expect the
+  served desktop disclosures in all three views, and nobody has run it since.
+  The VM conformance check now uses the
+  `core-desktop-window-layout-workspace-extension-host` profile.

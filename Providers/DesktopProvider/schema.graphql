@@ -6,6 +6,14 @@ input DesktopProcessIdentity {
   startedAt: DesktopProcessStart!
 }
 
+"A rectangle in screen coordinates: the position of its top-left corner, its width and its height. The width and the height are greater than zero."
+input DesktopRectInput {
+  x: Float!
+  y: Float!
+  width: Float!
+  height: Float!
+}
+
 extend type Query {
   "desktop:read. An absent process is ordinary null."
   desktopApplication(process: DesktopProcessIdentity!): DesktopApplication
@@ -13,11 +21,17 @@ extend type Query {
   desktopApplicationByReference(ref: Reference!): DesktopApplication
   "desktop:read. A stale or wrong-kind reference raises unavailable."
   desktopWindow(ref: Reference!): DesktopWindow
+  "desktop:read. Lists the windows of every application with a Dock icon, not only the captured application. Each application's current window list leaves out its windows on other Spaces. Rows with a known order come first, front to back. The other rows follow in no promised order. A desktop:read grant from an earlier Koine version has this reach too."
+  desktopWindows: [DesktopWindowStacking!]!
+  "desktop:read. Lists every active display, left to right by the x value of its frame, then top to bottom. A desktop:read grant from an earlier Koine version has this reach too."
+  desktopDisplays: [DesktopDisplay!]!
 }
 
 extend type Mutation {
   "desktop:control. Focuses exactly this window or reports why it did not; never a substitute."
   desktopFocusWindow(ref: Reference!): DesktopFocusReceipt
+  "desktop:control. Moves and resizes exactly this window to this frame, and never a substitute. It does not raise the window or activate its application. During the writes, it turns off the application's enhanced accessibility setting, and then it turns the setting on again. It writes again, up to seven more times in about 350 ms, until the size is within 20 points of the request. A stale or wrong-kind reference raises unavailable. A desktop:control grant from an earlier Koine version can do this too."
+  desktopSetWindowFrame(ref: Reference!, frame: DesktopRectInput!): DesktopFrameReceipt
 }
 
 "All fields require desktop:read."
@@ -33,6 +47,10 @@ type DesktopWindow {
   ref: Reference!
   title: String!
   observation: DesktopObservation!
+  "The application that owns this window."
+  application: DesktopApplication!
+  "The position and size of the window in screen coordinates, as Accessibility reports them. Null when Koine cannot read them. Koine never invents a frame."
+  frame: DesktopRect
 }
 
 "Control-authorized output; it does not expose read-protected window state."
@@ -42,3 +60,41 @@ type DesktopFocusReceipt {
 }
 
 enum DesktopObservation { CURRENT REMEMBERED }
+
+"All fields require desktop:read. One row of the window list: a window with its order and visibility, both from one reading of the window server's list."
+type DesktopWindowStacking {
+  window: DesktopWindow!
+  "The place of the window among the listed windows with a known order. The front window is 0. Null when the window is not on screen or Koine cannot establish its order."
+  order: Int
+  "Whether the window server shows the window on the current Space. A window on screen can still be covered by other windows."
+  visibility: DesktopWindowVisibility!
+}
+
+"ON_SCREEN: the window server shows the window. OFF_SCREEN: the window is minimised, or its application is hidden. UNKNOWN: Koine cannot link the window to the window server's list. Never treat UNKNOWN as ON_SCREEN."
+enum DesktopWindowVisibility { ON_SCREEN OFF_SCREEN UNKNOWN }
+
+"All fields require desktop:read. A rectangle in screen coordinates: the position of its top-left corner, its width and its height."
+type DesktopRect {
+  x: Float!
+  y: Float!
+  width: Float!
+  height: Float!
+}
+
+"All fields require desktop:read."
+type DesktopDisplay {
+  "Names this display while it is active. Pass it unchanged."
+  ref: Reference!
+  "The whole display, in screen coordinates."
+  frame: DesktopRect!
+  "The display without the menu bar and the Dock, in screen coordinates. Null when Koine cannot establish it, as can happen during a display change. Koine never invents a visible frame."
+  visibleFrame: DesktopRect
+  "True for the primary display, whose top-left corner is the origin of screen coordinates."
+  primary: Boolean!
+}
+
+"Control-authorized output; it does not expose read-protected window state. It says that the writes completed. It does not say that the window took the frame, because an application can limit its own size. Read the frame under desktop:read."
+type DesktopFrameReceipt {
+  "The submitted target, under the mutation's control authority."
+  ref: Reference!
+}

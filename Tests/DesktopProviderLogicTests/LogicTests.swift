@@ -34,6 +34,9 @@ struct DesktopReferenceTests {
         let window = DesktopReference.window(process, session: "00ab34cd56ef7890", token: 7)
         #expect(window.uri == "koine://desktop/window/412/1789779723000456/00ab34cd56ef7890/7")
         #expect(DesktopReference(uri: window.uri) == window)
+        let display = DesktopReference.display(69_734_208)
+        #expect(display.uri == "koine://desktop/display/69734208")
+        #expect(DesktopReference(uri: display.uri) == display)
     }
 
     @Test(arguments: [
@@ -42,6 +45,9 @@ struct DesktopReferenceTests {
         "koine://desktop/window/412/5/00ab34cd56ef7890", "koine://desktop/window/412/5/00AB34CD56EF7890/7",
         "koine://desktop/window/412/5/short/7", "koine://desktop/window/412/5/00ab34cd56ef7890/+7",
         "koine://fixture/item/1", "koine://desktop/thing/412/5",
+        "koine://desktop/display/", "koine://desktop/display/012", "koine://desktop/display/-1",
+        "koine://desktop/display/+1", "koine://desktop/display/4294967296", "koine://desktop/display/1/2",
+        "koine://desktop/display/x",
     ])
     func anythingElseIsNoReference(uri: String) {
         #expect(DesktopReference(uri: uri) == nil)

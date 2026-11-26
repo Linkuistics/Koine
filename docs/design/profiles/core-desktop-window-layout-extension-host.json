@@ -1,0 +1,21 @@
+{
+  "name": "extension-host core + desktop 1.0.1",
+  "design": "../desktop-window-layout-schema-extension-host.graphql",
+  "management": "extended",
+  "comment": [
+    "This tree's headless host with this tree's desktop provider, release/schema 1.0.1, the first cut of window layout,",
+    "as its only bundled provider (`task conformance`). The desktop 1.0.0 profile (core-desktop-extension-host.json)",
+    "stays as it is, held by the selection-aware host over the released desktop provider."
+  ],
+  "providers": [
+    {
+      "provider": "desktop",
+      "version": "1.0.1",
+      "schemaVersion": "1.0.1",
+      "state": "ACTIVE",
+      "origin": "BUNDLED",
+      "selection": "SELECTED",
+      "reason": null
+    }
+  ]
+}

@@ -920,13 +920,19 @@ establishes no atomic snapshot across fields, calls or providers.
 
 ### Window layout
 
-**Designed for Koine 0.5.0, not yet served.** Window layout adds three reads and
+**Koine 0.5.0 delivers window layout.** Window layout adds three reads and
 two control operations to the desktop provider. The design is desktop release
 1.0.1 with schema 1.0.1, in the
 [window layout design](../design/desktop-window-layout-schema.graphql), with
 [example operations](../design/desktop-window-layout-operations.graphql). Every
 desktop 1.0.0 field keeps its meaning. `DesktopWindow` gains `application` and
 `frame`. Selection still uses `desktopFocusWindow`, unchanged.
+
+This tree serves the window list, the display list and frame setting. Until
+this tree serves the window-server link, each row of the window list has a null
+order. Its visibility is `OFF_SCREEN` for a minimised window or a hidden
+application, and `UNKNOWN` otherwise. The design holds the point query and
+display focus, and this tree does not serve them yet.
 
 Clients own every layout, the restore history, label placement and the move to
 another display. Koine computes no layout and keeps no frame history.
@@ -1145,9 +1151,22 @@ Desktop declares no additional capability requirement.
 
 The window layout fields are additive in `koine-desktop/1`. The files
 `desktop-schema.graphql` and `desktop-operations.graphql` stay unchanged, and so
-does the `core-desktop-old-host` profile. The served composition gets a new
-composed design file and a new profile beside the earlier ones, as each
-workspace release did.
+does the `core-desktop-old-host` profile. Two new composed design files and two
+new profiles sit beside the earlier ones, as each workspace release did:
+
+| Profile | Design SDL | Served by |
+|---|---|---|
+| `core-desktop-window-layout-extension-host` | [`desktop-window-layout-schema-extension-host.graphql`](../design/desktop-window-layout-schema-extension-host.graphql) | The headless host of this tree with desktop 1.0.1 alone, in `task conformance` |
+| `core-desktop-window-layout-workspace-extension-host` | [`desktop-window-layout-workspace-schema-extension-host.graphql`](../design/desktop-window-layout-workspace-schema-extension-host.graphql) | The signed application with desktop 1.0.1 and workspace 1.0.2 |
+
+Each composed file holds the window layout design restricted to the served
+roots and the types that they reach, word for word. A test holds that
+restriction. A root that lands later moves from the design into these files
+unchanged.
+
+The selection checks build a desktop update, release 1.1.0, from the source of
+this tree. So that update serves desktop schema 1.0.1. The update profiles pin
+schema 1.0.1 for it and use the window layout compositions as their design.
 
 The desktop 1.0.1 provider requires the host feature `desktop-disclosures-v1`. A
 host advertises it only when its Settings window and its management catalogue
@@ -1752,12 +1771,13 @@ Settings. The
 refuses native providers on prior hosts before load. It does not rely on
 provider text to revise surfaces that the core owns.
 
-Window layout, designed for Koine 0.5.0, widens both desktop capabilities. The
-core adds a disclosure for each of them, and only then does the host advertise
+Window layout widens both desktop capabilities in Koine 0.5.0. The core serves
+a disclosure for each of them, and only with them does the host advertise
 `desktop-disclosures-v1`. All three native grant views and management use the
 same entries. The new root fields of the
 [window layout design](../design/desktop-window-layout-schema.graphql) also
-state their capability and their reach. This is the first draft of the text:
+state their capability and their reach. The core serves this text, in
+`CapabilityDisclosures`:
 
 | Capability | Window layout disclosure |
 | --- | --- |
@@ -1868,13 +1888,13 @@ selected updates, and the explicit rejected ones for an update a host refuses, a
 
 | Profile | Design SDL | Candidates pinned |
 | --- | --- | --- |
-| `core-desktop-update-extension-host` | [`desktop-schema-extension-host.graphql`](../design/desktop-schema-extension-host.graphql) | desktop 1.1.0 `PER_USER` `SELECTED` and `ACTIVE`; the bundled 1.0.0, the desktop provider of the released revision compiled independently, `superseded-candidate` |
-| `core-desktop-workspace-desktop-update-extension-host` | [`desktop-workspace-repair-schema-extension-host.graphql`](../design/desktop-workspace-repair-schema-extension-host.graphql), the workspace 1.0.1 composition | a mixed release: desktop 1.1.0 selected over its superseded 1.0.0, workspace 1.0.1 / schema 1.0.1 bundled and selected |
-| `core-desktop-workspace-workspace-update-extension-host` | the same | the other mixed release: desktop 1.0.0 bundled and selected, workspace 1.1.0 / schema 1.0.1 selected over its superseded bundled 1.0.1 |
-| `core-desktop-workspace-update-extension-host` | the same | both updated, each over its superseded bundled release |
-| `core-desktop-workspace-update-refused-extension-host` | the same | each 1.1.0 update `INCOMPATIBLE` / `selection-feature-required` and `NOT_SELECTED`, each bundled release (desktop 1.0.0, workspace 1.0.1) `ACTIVE` and `SELECTED` with `selected-with-refusals` |
-| `core-desktop-workspace-repair-per-user-extension-host` | the same | the retained workspace 1.0.0 bundled, and the repair's 1.0.1 / schema 1.0.1 approved per user stating `first-party-selection-v1`: 1.0.1 `PER_USER` and `SELECTED`, the bundled 1.0.0 `NOT_SELECTED` as `superseded-candidate`; served by the retained revision's host and this tree's, not by `task selection:updates` ([workspace-compatibility.md](../verification/workspace-compatibility.md)) |
-| `core-desktop-old-host-update-refused` | [`desktop-schema.graphql`](../design/desktop-schema.graphql), the original core + desktop contract | served by the released host (`management: baseline`): desktop 1.0.0 `ACTIVE`, and a newly published desktop 1.1.0 `INCOMPATIBLE` before it loads |
+| `core-desktop-update-extension-host` | [`desktop-window-layout-schema-extension-host.graphql`](../design/desktop-window-layout-schema-extension-host.graphql), because the update is built from this tree | Desktop 1.1.0 / schema 1.0.1 is `PER_USER`, `SELECTED` and `ACTIVE`. The bundled 1.0.0 is the desktop provider of the released revision, compiled independently, and it is `superseded-candidate`. |
+| `core-desktop-workspace-desktop-update-extension-host` | [`desktop-window-layout-workspace-schema-extension-host.graphql`](../design/desktop-window-layout-workspace-schema-extension-host.graphql), the desktop 1.0.1 and workspace 1.0.2 composition | A mixed release. Desktop 1.1.0 / schema 1.0.1 is selected over its superseded bundled 1.0.1. Workspace 1.0.2 / schema 1.0.2 is bundled and selected. |
+| `core-desktop-workspace-workspace-update-extension-host` | The same | The other mixed release. Desktop 1.0.1 is bundled and selected. Workspace 1.1.0 / schema 1.0.2 is selected over its superseded bundled 1.0.2. |
+| `core-desktop-workspace-update-extension-host` | The same | Both providers are updated, each over its superseded bundled release. |
+| `core-desktop-workspace-update-refused-extension-host` | The same | Each 1.1.0 update is `INCOMPATIBLE` / `selection-feature-required` and `NOT_SELECTED`. Each bundled release, desktop 1.0.1 and workspace 1.0.2, is `ACTIVE` and `SELECTED` with `selected-with-refusals`. |
+| `core-desktop-workspace-repair-per-user-extension-host` | [`desktop-workspace-repair-schema-extension-host.graphql`](../design/desktop-workspace-repair-schema-extension-host.graphql), the workspace 1.0.1 composition | the retained workspace 1.0.0 bundled, and the repair's 1.0.1 / schema 1.0.1 approved per user stating `first-party-selection-v1`: 1.0.1 `PER_USER` and `SELECTED`, the bundled 1.0.0 `NOT_SELECTED` as `superseded-candidate`; served by the retained revision's host and this tree's, not by `task selection:updates` ([workspace-compatibility.md](../verification/workspace-compatibility.md)) |
+| `core-desktop-old-host-update-refused` | [`desktop-schema.graphql`](../design/desktop-schema.graphql), the original core + desktop contract | The released host serves it (`management: baseline`). Desktop 1.0.0 is `ACTIVE`, and a newly published desktop 1.1.0 / schema 1.0.1 is `INCOMPATIBLE` before it loads. The refusal names `desktop-disclosures-v1` and `first-party-selection-v1`. |
 
 They are served by signed purpose-built hosts, headless, around the real providers and checked by
 `task selection:updates`, not `task conformance`; each is held with its own controls, red against the wrong
@@ -2106,7 +2126,7 @@ native evidence cost far more than the residual collision risk.
 ### Public Accessibility and its accepted limits
 
 The desktop provider uses public macOS Accessibility for listing, held window
-elements, focus and notifications. Window layout, designed for Koine 0.5.0,
+elements, focus and notifications. Window layout, in Koine 0.5.0,
 adds window frames, and the private window-number lookup for order and
 visibility alone
 ([public Accessibility decision](../adr/desktop-automation-uses-public-accessibility.md)).

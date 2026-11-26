@@ -153,7 +153,8 @@ import Testing
         )
         let desktop = try #require(catalogue.entry(for: "desktop")?.baseline)
         #expect(desktop.bundleName == "Desktop.koineprovider")
-        #expect(desktop.release == ProviderVersion("1.0.0") && desktop.schema == ProviderVersion("1.0.0"))
+        // 1.0.1 is the first cut of window layout; the released 1.0.0 is built from its own revision.
+        #expect(desktop.release == ProviderVersion("1.0.1") && desktop.schema == ProviderVersion("1.0.1"))
         #expect(desktop.signingIdentifier == "dev.antony.Koine.provider.desktop")
         let workspace = try #require(catalogue.entry(for: "workspace")?.baseline)
         #expect(workspace.bundleName == "Workspace.koineprovider")
@@ -198,6 +199,7 @@ import Testing
         #expect(koineHostFeatures.contains(ProviderDescriptor.additionalCapabilitiesFeature))
         #expect(koineHostFeatures.contains("workspace-native-disclosures-v1"))
         #expect(workspaceNativeDisclosuresFeature == "workspace-native-disclosures-v1")
+        #expect(koineHostFeatures.contains("desktop-disclosures-v1"))
     }
 
     // MARK: What the core reserves

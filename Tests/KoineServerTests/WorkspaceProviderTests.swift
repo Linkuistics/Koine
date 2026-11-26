@@ -62,8 +62,9 @@ import Testing
             #expect(row["state"] as? String == "ACTIVE", "\(identity)")
             #expect(row["origin"] as? String == "BUNDLED", "\(identity)")
             #expect(row["selection"] as? String == "SELECTED", "\(identity)")
-            // The workspace bundle is 1.0.2, the first cut of native discovery; the desktop provider is still 1.0.0.
-            let expected = identity == "workspace" ? "1.0.2" : "1.0.0"
+            // The workspace bundle is 1.0.2, the first cut of native discovery; the desktop bundle is 1.0.1, the
+            // first cut of window layout.
+            let expected = identity == "workspace" ? "1.0.2" : "1.0.1"
             #expect(row["version"] as? String == expected && row["schemaVersion"] as? String == expected, "\(identity)")
             #expect(row["reason"] is NSNull, "a healthy shipped row carries no reason")
         }

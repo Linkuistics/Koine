@@ -94,6 +94,18 @@ PY
         "s.replace('koineRevokeGrant(grantId: ID!)', 'koineRevokeGrant(grantId: ID! = \"x\")', 1)"
     control "two root fields transposed" \
         "s.replace('  \"Authenticated caller metadata. No provider capability required.\"\n  koine: Koine!\n  \"Proof of the submitted secret, or its resulting active grant; own request only.\"\n  koineGrantRequest: KoineGrantRequest', '  \"Proof of the submitted secret, or its resulting active grant; own request only.\"\n  koineGrantRequest: KoineGrantRequest\n  \"Authenticated caller metadata. No provider capability required.\"\n  koine: Koine!', 1)"
+    if jq -e '.providers[] | select(.provider == "desktop" and .schemaVersion == "1.0.1")' "${profile}" >/dev/null; then
+        # The first cut of window layout is two query roots, frame setting and the types they reach;
+        # each is held on its own.
+        control "the window list root removed" \
+            "__import__('re').sub(r'  \"desktop:read\\. Lists the windows[^\n]*\"\n  desktopWindows[^\n]*\n', '', s, count=1)"
+        control "the frame setting root removed" \
+            "__import__('re').sub(r'  \"desktop:control\\. Moves and resizes[^\n]*\"\n  desktopSetWindowFrame[^\n]*\n', '', s, count=1)"
+        control "the window frame made non-null" "s.replace('  frame: DesktopRect\n', '  frame: DesktopRect!\n', 1)"
+        control "a display field's description changed" \
+            "s.replace('Koine never invents a visible frame.', 'Koine may invent a visible frame.', 1)"
+        control "a visibility value removed" "s.replace('ON_SCREEN OFF_SCREEN UNKNOWN', 'ON_SCREEN OFF_SCREEN', 1)"
+    fi
     if jq -e '[.providers[].provider] | index("workspace")' "${profile}" >/dev/null; then
         # A workspace coordinate that is missing is a difference, never silently omitted.
         control "the workspace launch root removed" \
@@ -107,7 +119,7 @@ PY
         control "a workspace type's description changed" \
             "s.replace('Closed reason for not submitting this action.', 'Closed reason for not submitting this action!', 1)"
         control "the workspace launch field moved before desktop's" \
-            "__import__('re').sub(r'(  \"desktop:control\\. Focuses exactly[^\n]*\n  desktopFocusWindow[^\n]*\n)(  \"\"\"Requires workspace:control AND desktop:control\\. Launch or request[^\n]*\"\"\"\n  workspaceLaunchApplication[^\n]*\n)', r'\\2\\1', s, count=1)"
+            "__import__('re').sub(r'(  \"desktop:control\\. [^\n]*\n  desktop[A-Za-z]+\\([^\n]*\n)(  \"\"\"Requires workspace:control AND desktop:control\\. Launch or request[^\n]*\"\"\"\n  workspaceLaunchApplication[^\n]*\n)', r'\\2\\1', s, count=1)"
         if jq -e '.providers[] | select(.provider == "workspace" and (.schemaVersion == "1.0.1" or .schemaVersion == "1.0.2"))' "${profile}" >/dev/null; then
             # The action-only repair is the three appended descriptions and nothing else, so the
             # contract is held to each of them separately: a served schema that kept the retained
@@ -159,6 +171,13 @@ PY
     profile_control "a required provider that is not served" \
         '.providers += [{"provider": "input", "version": "1.0.0", "schemaVersion": "1.0.0", "state": "ACTIVE"}]' 'is missing'
     profile_control "a served row the profile does not expect" '.providers = []' 'unexpected row desktop'
+    if jq -e '.providers[] | select(.provider == "desktop" and .schemaVersion == "1.0.1" and .origin == "BUNDLED")' "${profile}" >/dev/null; then
+        # Desktop 1.0.0 serves a subset under the earlier numbers, so the pins say that window layout ran.
+        profile_control "the released desktop release 1.0.0 pinned for window layout" \
+            '.providers |= map(if .provider == "desktop" then .version = "1.0.0" else . end)' 'is not served as expected'
+        profile_control "the released desktop schema 1.0.0 pinned for window layout" \
+            '.providers |= map(if .provider == "desktop" then .schemaVersion = "1.0.0" else . end)' 'is not served as expected'
+    fi
     if jq -e '[.providers[].provider] | index("workspace")' "${profile}" >/dev/null; then
         profile_control "workspace left out of the pin" \
             '.providers |= map(select(.provider != "workspace"))' 'unexpected row workspace'

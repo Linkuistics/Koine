@@ -53,11 +53,19 @@ public let firstPartySelectionFeature = "first-party-selection-v1"
 /// rather than show a grant with less than its reach. It widens only with a new version of the feature.
 public let workspaceNativeDisclosuresFeature = "workspace-native-disclosures-v1"
 
+/// The host feature that says this host's native grant views and its management disclosure catalogue
+/// state the window layout reach of `desktop:read` and `desktop:control` (`CapabilityDisclosures`;
+/// docs/specs/machine.md, "Compatibility and delivery"). The desktop 1.0.1 provider requires it, so a
+/// host that lacks it refuses that provider before it loads and keeps its bundled desktop selected.
+public let desktopDisclosuresFeature = "desktop-disclosures-v1"
+
 /// Host features a provider may require: `additional-capabilities-v1`, carried by
 /// framework minor 1 (docs/specs/machine.md, "Additional capability requirements"),
-/// `first-party-selection-v1` and `workspace-native-disclosures-v1`, which need no framework minor.
+/// `first-party-selection-v1`, `workspace-native-disclosures-v1` and `desktop-disclosures-v1`,
+/// which need no framework minor.
 public let koineHostFeatures: Set<String> = [
     ProviderDescriptor.additionalCapabilitiesFeature, firstPartySelectionFeature, workspaceNativeDisclosuresFeature,
+    desktopDisclosuresFeature,
 ]
 
 /// An identifier and prefix reserved to a shipped provider. Names beneath a

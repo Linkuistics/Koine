@@ -29,6 +29,10 @@ workspace providers are bundled.
 
 <!-- tc: on -->
 
+The desktop provider reads applications and windows, and it focuses a window.
+
+Koine 0.5.0 adds window layout. A client with `desktop:read` calls `desktopWindows` to list the windows of every application with a Dock icon on the current Space, each with its frame. It calls `desktopDisplays` to list the displays, each with a full frame and a visible frame. A client with `desktop:control` calls `desktopSetWindowFrame` to move and resize one window. Every frame uses screen coordinates, and the client computes every layout. The [client guide](docs/client-guide.md#arranging-windows) describes all three.
+
 The workspace provider launches and activates applications. It opens URLs, documents and folders, and it reveals paths in Finder. Each of those actions needs `workspace:control` and `desktop:control`. 
 
 The provider also serves two reads. A client with `workspace:read` calls `workspaceSpecialLocations` to get the special locations that macOS names for the account of Koine, such as the home, Documents and Applications folders. The query reads values only. It lists no folder, opens no file and grants no access to a location it returns.

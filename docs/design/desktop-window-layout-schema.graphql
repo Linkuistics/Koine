@@ -1,4 +1,5 @@
-# Desktop 1.0.1 contribution, designed for Koine 0.5.0 and not yet served: the first cut of window layout.
+# Desktop 1.0.1 contribution for Koine 0.5.0: the first cut of window layout. The served SDL
+# (Providers/DesktopProvider/schema.graphql) is this file restricted to the roots that the tree serves, word for word.
 # Every definition of the desktop 1.0.0 contribution (Providers/DesktopProvider/schema.graphql) stays word for word,
 # except that DesktopWindow gains two fields. Every other definition is new.
 # Every read needs desktop:read alone. Frame setting and display focus need desktop:control alone.

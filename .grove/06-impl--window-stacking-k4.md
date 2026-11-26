@@ -28,6 +28,11 @@ mechanism, as the design of `window-layout-k2` defines them.
   (`window-layout-k9`).
 - L tests feed plain values through the three ordering steps and the
   visibility rules. G tests cover authority and unknown values.
+- The point query moves from the design into the served SDL and both
+  composed files, word for word. Its coordinates leave
+  `desktopCoordinatesNotYetImplemented` in `SchemaConformanceTests`, and
+  `scripts/conformance-lib.sh` gains a control for its root
+  (`window-geometry-k3`).
 - The session decided whether an adversarial review is necessary before
   acceptance. If it is, the session inserts a `review-impl` leaf before
   `window-layout-acceptance-k6`.

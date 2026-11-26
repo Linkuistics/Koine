@@ -45,17 +45,23 @@ ENABLED_KEYS = ("bundle", "release", "schema", "signingIdentifier")
 def production_catalogue(definition):
     """The shipped catalogue (App/ProviderCatalogue.json) as a host sealed around real bundles carries it:
     verbatim, or with the named identities reserved-only (their baseline left out), which is the one
-    change a host makes that does not ship that provider. Nothing else about it is altered."""
+    change a host makes that does not ship that provider. A host around a RELEASED bundle states that
+    bundle's release and schema for its identity (`releasedBaselines`), as the catalogue that shipped the
+    bundle did: the shipped catalogue now names a later release. Nothing else about it is altered."""
     with open(PRODUCTION_CATALOGUE) as file:
         text = file.read()
     reserved = definition["production"].get("reservedOnly", [])
-    if not reserved:
+    released = definition["production"].get("releasedBaselines", {})
+    if not reserved and not released:
         return text
     catalogue = json.loads(text)
     for identity in catalogue["identities"]:
         if identity["providerId"] in reserved:
             for key in ENABLED_KEYS:
                 identity.pop(key, None)
+        for key, value in released.get(identity["providerId"], {}).items():
+            assert key in ("release", "schema"), key
+            identity[key] = value
     return json.dumps(catalogue, indent=2)
 
 

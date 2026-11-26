@@ -1,5 +1,5 @@
 # Example client operations for the desktop 1.0.1 window layout design (desktop-window-layout-schema.graphql).
-# They are designed and not yet served. The released operations stay in desktop-operations.graphql, which the
+# Koine 0.5.0 serves the operations whose roots the tree serves. The released operations stay in desktop-operations.graphql, which the
 # contract-only client checks against the schema that it was captured against.
 # task design:window-layout-check validates every operation here against the composed design.
 

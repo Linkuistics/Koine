@@ -28,6 +28,10 @@ Serve display focus as the design of `window-layout-k2` defines it.
   `pointerMoved` says whether the pointer moved (`window-layout-k9`).
 - It never clicks, under any grant.
 - L and G tests cover both cases, both button checks and the authority.
+- Display focus moves from the design into the served SDL and both composed
+  files, word for word. Its coordinates leave
+  `desktopCoordinatesNotYetImplemented`, and `scripts/conformance-lib.sh`
+  gains a control for its root (`window-geometry-k3`).
 
 ## Notes
 

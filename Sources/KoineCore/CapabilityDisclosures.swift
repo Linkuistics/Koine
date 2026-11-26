@@ -8,10 +8,34 @@
 /// active: a grant may hold a capability whose provider failed to load, and its
 /// reach is disclosed all the same. Serving a description supplies no authority.
 public enum CapabilityDisclosures {
+    /// Desktop control: the reach of window layout, which Koine 0.5.0 adds to focus
+    /// (docs/specs/machine.md, "Capability disclosures"). The host advertises
+    /// `desktop-disclosures-v1` only with this text and `desktopRead`.
+    public static let desktopControl = """
+        Focuses a window. Moves and resizes any window of an application with a Dock \
+        icon. Focuses a display: Koine raises the front window there, activates its \
+        application and moves the pointer to the centre of the display. It never \
+        clicks or types. While it moves a window, it turns off the enhanced \
+        accessibility setting of the application, and then turns it on again. A \
+        grant from an earlier Koine version that holds desktop:control gets this \
+        reach too.
+        """
+
+    /// Desktop read: the reach of the window list and the display list, which Koine
+    /// 0.5.0 adds to the reads of one application.
+    public static let desktopRead = """
+        Lists the windows of every application with a Dock icon on the current \
+        Space. For each window, it reads the title, the application, the position \
+        and size, the place in front-to-back order and whether the window is on \
+        screen. A title can contain a document name, a web page title or a message \
+        subject. It also lists the displays with their positions and sizes. It \
+        reads no window contents and takes no screenshots. A grant from an earlier \
+        Koine version that holds desktop:read gets this reach too.
+        """
+
     /// Workspace control: the reach `docs/specs/workspace-launch-and-open.md` and
     /// `docs/adr/provider-authority-follows-effects.md` require disclosed before
-    /// workspace ships. Desktop control's expanded reach is disclosed by the
-    /// window-layout increment, not here.
+    /// workspace ships.
     public static let workspaceControl = """
         Launches or reactivates any application registered on this Mac, not only \
         configured shortcuts, and opens documents, folders and web addresses in \
@@ -38,6 +62,9 @@ public enum CapabilityDisclosures {
 
     /// Every capability with a disclosure, in capability order.
     public static var all: [(capability: String, disclosure: String)] {
-        [("workspace:control", workspaceControl), ("workspace:read", workspaceRead)]
+        [
+            ("desktop:control", desktopControl), ("desktop:read", desktopRead),
+            ("workspace:control", workspaceControl), ("workspace:read", workspaceRead),
+        ]
     }
 }

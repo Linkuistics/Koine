@@ -113,8 +113,10 @@
       "signing": "developer-id", "identities": ["sh-impostor-id", "input"], "plugins": [{ "case": "baseline-other-identifier" }]
     },
     "desktop-old": {
-      "purpose": "The shipped catalogue around the RELEASED desktop provider as the designated baseline (workspace reserved-only): a selection-aware host over an independently compiled old baseline.",
-      "signing": "developer-id", "production": { "reservedOnly": ["workspace"] }, "plugins": [{ "case": "released-desktop" }]
+      "purpose": "The shipped catalogue around the RELEASED desktop provider as the designated baseline (workspace reserved-only), its desktop entry stating that release as the catalogue that shipped it did: a selection-aware host over an independently compiled old baseline.",
+      "signing": "developer-id",
+      "production": { "reservedOnly": ["workspace"], "releasedBaselines": { "desktop": { "release": "1.0.0", "schema": "1.0.0" } } },
+      "plugins": [{ "case": "released-desktop" }]
     },
     "production": {
       "purpose": "The shipped catalogue, whole, around this tree's real desktop and workspace providers as the designated baselines: the host the signed application is, headless.",

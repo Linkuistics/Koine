@@ -276,9 +276,10 @@ def legacy_not_reused(host, check, context):
           bool(mapped) and set(mapped) <= expected, {"mapped": mapped, "candidate-specific": sorted(expected)})
 
 
-def catalogue_matches_packaged(provider):
+def catalogue_matches_packaged(provider, released=None):
     """The host's sealed catalogue states the packaged baseline: its entry for `provider` is the shipped
-    catalogue's own, and the designated bundle carries what the entry says (signing identifier read from its
+    catalogue's own, with the release and schema of `released` where the host is around a released bundle
+    (Fixtures/SelectionHost/hosts.json, `releasedBaselines`), and the designated bundle carries what the entry says (signing identifier read from its
     signature, release and schema from its manifest), declares no `first-party-selection-v1`, and no new
     factory witness is asked of it."""
 
@@ -288,8 +289,9 @@ def catalogue_matches_packaged(provider):
         with open(os.path.join(harness.REPOSITORY, "App", "ProviderCatalogue.json")) as file:
             shipped = {e["providerId"]: e for e in json.load(file)["identities"]}
         entry = sealed[provider]
-        check(f"the sealed catalogue's entry for {provider} is the shipped catalogue's", entry == shipped[provider],
-              [entry, shipped[provider]])
+        expected = dict(shipped[provider], **(released or {}))
+        check(f"the sealed catalogue's entry for {provider} is the shipped catalogue's", entry == expected,
+              [entry, expected])
         bundle = os.path.join(host_app(host), "Contents", "PlugIns", entry["bundle"])
         with open(os.path.join(bundle, "manifest.json")) as file:
             manifest = json.load(file)
@@ -522,7 +524,7 @@ def scenarios():
         "an approved same-team provider claiming the reserved pairs at a high release under a fixture identifier is refused "
         "by the production catalogue",
         [R("desktop", "9.0.0", "U", REJECTED, NOT, "signing-identifier-mismatch", "dev.antony.Koine.provider.desktop.impostor"),
-         R("desktop", "1.0.0", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 9.0.0"),
+         R("desktop", "1.0.1", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 9.0.0"),
          R("workspace", "9.0.0", "U", REJECTED, NOT, "signing-identifier-mismatch", "dev.antony.Koine.provider.workspace.impostor"),
          R("workspace", "1.0.2", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 9.0.0")],
         host="production", installs=[U("desktop-impostor-9.0.0", "desktop-impostor"), U("workspace-impostor-9.0.0", "workspace-impostor")],
@@ -590,9 +592,10 @@ def scenarios():
     ))
 
     # -- The real first-party providers: the old baseline, updates, and mixed releases ---------
-    d_base = R("desktop", "1.0.0", "B", ACTIVE, SEL, None)
+    # This tree's desktop is release/schema 1.0.1, the first cut of window layout.
+    d_base = R("desktop", "1.0.1", "B", ACTIVE, SEL, None)
     w_base = R("workspace", "1.0.2", "B", ACTIVE, SEL, None)
-    d_sup = R("desktop", "1.0.0", "B", REJECTED, NOT, "superseded-candidate")
+    d_sup = R("desktop", "1.0.1", "B", REJECTED, NOT, "superseded-candidate")
     w_sup = R("workspace", "1.0.2", "B", REJECTED, NOT, "superseded-candidate")
     d_upd = R("desktop", "1.1.0", "U", ACTIVE, SEL, None)
     w_upd = R("workspace", "1.1.0", "U", ACTIVE, SEL, None)
@@ -603,13 +606,15 @@ def scenarios():
     add(Scenario(
         "a selection-aware host over an independently compiled old designated baseline",
         [R("desktop", "1.0.0", "B", ACTIVE, SEL, None)], host="desktop-old", images=["Desktop"],
-        extra=[catalogue_matches_packaged("desktop"), desktop_operations("new host, released baseline"),
+        extra=[catalogue_matches_packaged("desktop", released={"release": "1.0.0", "schema": "1.0.0"}),
+               desktop_operations("new host, released baseline"),
                image_inventory(expect_modules=modules)],
         conformance=PROFILES + "core-desktop-extension-host.json",
     ))
     add(Scenario(
         "a newer desktop release over the released baseline, without rebuilding the host",
-        [R("desktop", "1.1.0", "U", ACTIVE, SEL, None), d_sup], host="desktop-old",
+        [R("desktop", "1.1.0", "U", ACTIVE, SEL, None), R("desktop", "1.0.0", "B", REJECTED, NOT, "superseded-candidate")],
+        host="desktop-old",
         installs=[U("desktop-update", "desktop-update")], images=["desktop-update"],
         extra=[desktop_operations("new host, desktop update"), image_inventory(expect_modules=modules),
                approval_unchanged("desktop"), host_not_rebuilt()],
@@ -619,7 +624,7 @@ def scenarios():
         "the shipped catalogue around this tree's desktop and workspace: the generation before any update",
         [d_base, w_base], host="production", images=["Desktop", "Workspace"],
         extra=[both_loaded(), desktop_operations("production, baselines"), workspace_operation],
-        conformance=PROFILES + "core-desktop-workspace-discovery-extension-host.json",
+        conformance=PROFILES + "core-desktop-window-layout-workspace-extension-host.json",
     ))
     add(Scenario(
         "a mixed release: a newer desktop beside the workspace baseline",
@@ -656,7 +661,7 @@ def scenarios():
     refused_workspace = R("workspace", "1.1.0", "U", INCOMPATIBLE, NOT, "selection-feature-required", FEATURE_TEXT)
     add(Scenario(
         "real updates that do not state the feature are refused before they load, and the baselines run",
-        [refused_desktop, R("desktop", "1.0.0", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 1.1.0"),
+        [refused_desktop, R("desktop", "1.0.1", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 1.1.0"),
          refused_workspace, R("workspace", "1.0.2", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 1.1.0")],
         host="production", installs=[U("desktop-update-no-feature", "desktop-update"), U("workspace-update-no-feature", "workspace-update")],
         images=["Desktop", "Workspace"], extra=[desktop_operations("production, updates refused")],
@@ -664,7 +669,7 @@ def scenarios():
     ))
     add(Scenario(
         "real updates that do not state the feature, under another principal class, are refused the same way",
-        [refused_desktop, R("desktop", "1.0.0", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 1.1.0"),
+        [refused_desktop, R("desktop", "1.0.1", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 1.1.0"),
          refused_workspace, R("workspace", "1.0.2", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 1.1.0")],
         host="production",
         installs=[U("desktop-update-renamed-no-feature", "desktop-update"), U("workspace-update-renamed-no-feature", "workspace-update")],
@@ -678,6 +683,9 @@ def scenarios():
 
 
 INCOMPATIBLE_FEATURE = f"requires host features this Koine lacks: {FEATURE_TEXT}"
+# A desktop update built from this tree also requires desktop-disclosures-v1, and the loader names every missing
+# feature in sorted order.
+DESKTOP_UPDATE_REFUSED = f"requires host features this Koine lacks: desktop-disclosures-v1, {FEATURE_TEXT}"
 
 
 def released_run(name, bundled, installs, rows, update_label, profile=None, compared=None, baseline_markers=()):
@@ -862,12 +870,12 @@ EXTRA = [
         compared="old host, released desktop"),
     released_run(
         "old host: a newly published desktop update, the principal class kept", ["released-desktop"], [("desktop-update", "upd")],
-        [("desktop", "1.0.0", "ACTIVE", None), ("desktop", "1.1.0", "INCOMPATIBLE", INCOMPATIBLE_FEATURE)], "upd",
+        [("desktop", "1.0.0", "ACTIVE", None), ("desktop", "1.1.0", "INCOMPATIBLE", DESKTOP_UPDATE_REFUSED)], "upd",
         profile=PROFILES + "core-desktop-old-host-update-refused.json"),
     released_run(
         "old host: a newly published desktop update, the principal class renamed", ["released-desktop"],
         [("desktop-update-renamed", "upd")],
-        [("desktop", "1.0.0", "ACTIVE", None), ("desktop", "1.1.0", "INCOMPATIBLE", INCOMPATIBLE_FEATURE)], "upd"),
+        [("desktop", "1.0.0", "ACTIVE", None), ("desktop", "1.1.0", "INCOMPATIBLE", DESKTOP_UPDATE_REFUSED)], "upd"),
     released_run(
         "old host: a newly published workspace update, the principal class kept", ["released-desktop", "sk-baseline"],
         [("sk-r1.1.0", "upd")],

@@ -364,6 +364,48 @@ nothing".
 
 <!-- tc: on -->
 
+## Arranging windows
+
+Koine 0.5.0 serves three window layout operations of the [desktop contract](specs/machine.md#window-layout). A Koine 0.4.1 host does not serve them, so introspect the schema before you use the [operations](design/desktop-window-layout-operations.graphql).
+
+Every frame uses screen coordinates. The unit is the point, and the origin is the top-left corner of the primary display. The x value grows to the right, and the y value grows downward. A display to the left of the primary display or above it has negative coordinates.
+
+Call `desktopDisplays` under `desktop:read` to read the displays. Each display has a reference, a frame, a visible frame and a primary flag. The visible frame leaves out the menu bar and the Dock, so compute your layout from it.
+
+```graphql
+query DesktopDisplayList {
+  desktopDisplays { ref frame { x y width height } visibleFrame { x y width height } primary }
+}
+```
+
+A visible frame is null when Koine cannot establish it, as can happen during a display change. Then list the displays again. A display reference names its display while it is active. Pass it unchanged.
+
+Call `desktopWindows` under `desktop:read` to list the windows of every application with a Dock icon on the current Space. Each row holds the window with its reference, title, application and frame. A frame is null when Koine cannot read it. Koine never invents a frame.
+
+```graphql
+query DesktopWindowList {
+  desktopWindows {
+    window { ref title application { ref name bundleIdentifier } frame { x y width height } }
+    order
+    visibility
+  }
+}
+```
+
+Until Koine serves the window-server link, each order is null. Each visibility is `OFF_SCREEN` for a minimised window or a window of a hidden application, and `UNKNOWN` for every other window. Never treat `UNKNOWN` as on screen. A title can contain a document name, a web page title or a message subject, so treat titles as private data.
+
+Call `desktopSetWindowFrame` under `desktop:control` to move and resize one window. Pass the frame in screen coordinates, with a width and a height greater than zero. A frame without a positive size is an input error, and Koine attempts nothing.
+
+```graphql
+mutation SetDesktopWindowFrame($ref: Reference!, $frame: DesktopRectInput!) {
+  desktopSetWindowFrame(ref: $ref, frame: $frame) { ref }
+}
+```
+
+The receipt says that the writes completed. It does not say that the window took the frame, because an application can limit its own size. Read the frame again under `desktop:read` to see where the window went. Koine does not raise the window or activate its application.
+
+To restore a window, read its frame before you change it and keep that frame in your client. Then set it again. Koine keeps no frame history. A window reference does not survive a restart of Koine. So a stale reference raises `unavailable`, and Koine never moves a substitute window.
+
 ## Searching for applications and files
 
 Raw filesystem search belongs to the client. The client chooses its traversal engine, permissions, filtering, ordering and budgets. The [native discovery design](specs/workspace-search.md) supplies special locations. It also supplies named catalogues of applications and System Settings on macOS 26+ Apple Silicon. **Koine 0.4.0 serves `workspaceSpecialLocations` and `workspaceApplications`, and nothing else of that design.** The rest of this section describes the full design, which later releases serve.

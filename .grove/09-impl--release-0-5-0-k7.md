@@ -20,6 +20,8 @@ grove deferred.
 - GitHub issues exist for the two-display check and for the display-focus
   click with input control.
 - Each review finding that does not break the happy path is a GitHub issue.
+- A GitHub issue exists for a partial window list. Today one application that
+  does not answer fails the whole list (`window-geometry-k3`).
 - The window layout checkbox in issue 11 is ticked.
 
 ## Notes

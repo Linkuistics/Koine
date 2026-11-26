@@ -5,6 +5,11 @@ import KoineProviderAPI
 
 // build.sh generates `desktopSchemaSDL` from schema.graphql.
 
+/// The host feature that says the host's Settings window and management catalogue
+/// disclose the window layout reach of desktop:read and desktop:control. The core
+/// names the same feature as `desktopDisclosuresFeature`.
+let desktopDisclosuresFeature = "desktop-disclosures-v1"
+
 @objc(KoineDesktopProviderFactory)
 final class DesktopProviderFactory: NSObject, ProviderFactory {
     override required init() { super.init() }
@@ -13,7 +18,10 @@ final class DesktopProviderFactory: NSObject, ProviderFactory {
         // A nested field's resolver identifier is the key it reads from its parent.
         let outputs = [
             "DesktopApplication": ["ref", "name", "bundleIdentifier"],
-            "DesktopWindow": ["ref", "title", "observation"],
+            "DesktopWindow": ["ref", "title", "observation", "application", "frame"],
+            "DesktopWindowStacking": ["window", "order", "visibility"],
+            "DesktopDisplay": ["ref", "frame", "visibleFrame", "primary"],
+            "DesktopRect": ["x", "y", "width", "height"],
         ]
         var fields = [
             ProviderFieldRegistration(
@@ -28,6 +36,12 @@ final class DesktopProviderFactory: NSObject, ProviderFactory {
             ),
             ProviderFieldRegistration(
                 coordinate: "DesktopApplication.windows", resolverId: "windows", authority: .read
+            ),
+            ProviderFieldRegistration(
+                coordinate: "Query.desktopWindows", resolverId: "windowList", authority: .read
+            ),
+            ProviderFieldRegistration(
+                coordinate: "Query.desktopDisplays", resolverId: "displays", authority: .read
             ),
         ]
         for (type, names) in outputs {
@@ -45,10 +59,18 @@ final class DesktopProviderFactory: NSObject, ProviderFactory {
             ProviderFieldRegistration(
                 coordinate: "DesktopFocusReceipt.ref", resolverId: "parent.ref", authority: .control
             ),
+            ProviderFieldRegistration(
+                coordinate: "Mutation.desktopSetWindowFrame", resolverId: "setWindowFrame", authority: .control
+            ),
+            ProviderFieldRegistration(
+                coordinate: "DesktopFrameReceipt.ref", resolverId: "parent.ref", authority: .control
+            ),
         ]
+        // A host that cannot disclose the window layout reach refuses this release before it loads
+        // (docs/specs/machine.md, "Compatibility and delivery").
         return ProviderDescriptor(
             providerId: "desktop", graphQLPrefix: "Desktop", schemaSDL: desktopSchemaSDL,
-            fields: fields, requiredFeatures: []
+            fields: fields, requiredFeatures: [desktopDisclosuresFeature]
         )
     }
 
@@ -109,6 +131,10 @@ final class DesktopProvider: Provider, @unchecked Sendable {
             return .success(value)
         }
         if request.resolverId == "focusWindow" { return await focus(request.arguments["ref"]) }
+        if request.resolverId == "displays" { return await displays() }
+        if request.resolverId == "setWindowFrame" {
+            return await setFrame(request.arguments["ref"], to: request.arguments["frame"])
+        }
         return await onQueue { self.answer(request) }
     }
 
@@ -124,6 +150,7 @@ final class DesktopProvider: Provider, @unchecked Sendable {
         case "applicationByReference": application(referencedBy: request.arguments["ref"])
         case "window": window(referencedBy: request.arguments["ref"])
         case "windows": windows(of: request.parent)
+        case "windowList": windowList()
         default: .failure(ProviderFailure(kind: .unknownResolver, message: "No such resolver."))
         }
     }
@@ -209,14 +236,42 @@ final class DesktopProvider: Provider, @unchecked Sendable {
             return gone
         }
         guard AXIsProcessTrusted() else { return untrusted }
+        switch listing(process) {
+        case .rows(let rows):
+            let application = ProviderValue.object(fields.filter { ["ref", "name", "bundleIdentifier"].contains($0.key) })
+            return .success(.list(rows.map { row(process, $0, application: application) }))
+        case .gone: return gone
+        case .failed(let error): return unanswered(error)
+        }
+    }
+
+    /// One window of a listing, with the element that the table holds for it.
+    private struct Listed {
+        let token: UInt64
+        let title: String
+        let remembered: Bool
+        let element: AXUIElement?
+    }
+
+    private enum Listing {
+        case rows([Listed])
+        case gone
+        case failed(AXError)
+    }
+
+    /// The rows of one application, by the rule of `DesktopApplication.windows`:
+    /// its current Accessibility window list, then the windows held from before
+    /// that the list omits. Every route that lists windows starts here, so the
+    /// rows use the same held elements and the same references.
+    private func listing(_ process: ProcessIncarnation) -> Listing {
         let application = AXUIElementCreateApplication(process.pid)
         let listed: [AXUIElement]
         switch read(application, kAXWindowsAttribute, as: [AXUIElement].self) {
         case .value(let elements): listed = elements
         // An application with no window list has no windows to report.
         case .absent: listed = []
-        case .gone: return gone
-        case .failed(let error): return unanswered(error)
+        case .gone: return .gone
+        case .failed(let error): return .failed(error)
         }
         var real: [(element: AXUIElement, title: String)] = []
         for element in listed {
@@ -225,7 +280,7 @@ final class DesktopProvider: Provider, @unchecked Sendable {
             // Not a window, or one that closed while it was being read: no row.
             case .absent, .gone: continue
             // An application that stops answering is reported, not read as empty.
-            case .failed(let error): return unanswered(error)
+            case .failed(let error): return .failed(error)
             }
         }
         forget { $0 != process && !isRunning($0) }
@@ -240,25 +295,76 @@ final class DesktopProvider: Provider, @unchecked Sendable {
             }
         }
         for window in real { observation?.watch(window.element, of: process) }
-        return .success(
-            .list(
-                rows.map { row(process, token: $0.token, title: $0.title, remembered: $0.remembered) }
-            )
+        return .rows(
+            rows.map {
+                Listed(
+                    token: $0.token, title: $0.title, remembered: $0.remembered,
+                    element: table.element($0.token, of: process)
+                )
+            }
         )
+    }
+
+    /// `desktopWindows`: the current windows of every running application with a
+    /// Dock icon, which is the regular activation policy. Windows on other Spaces
+    /// are not in the list, because the current enumeration leaves them out.
+    /// Until the window-server link exists, no row has a known order, so the rows
+    /// follow in application order, and visibility comes from public facts alone.
+    private func windowList() -> ResolutionResult {
+        guard AXIsProcessTrusted() else { return untrusted }
+        var stacking: [ProviderValue] = []
+        for running in NSWorkspace.shared.runningApplications
+        where running.activationPolicy == .regular && !running.isTerminated {
+            let pid = running.processIdentifier
+            // An application that ended during the read has no rows.
+            guard case .running(let start) = processStart(of: pid) else { continue }
+            let process = ProcessIncarnation(pid: pid, startMicroseconds: start.microsecondsSinceEpoch)
+            guard case .value(let application) = self.running(pid: pid, startMicroseconds: process.startMicroseconds)
+            else { continue }
+            let rows: [Listed]
+            switch listing(process) {
+            case .rows(let listed): rows = listed.filter { !$0.remembered }
+            case .gone: continue
+            // One application that does not answer fails the read: a list without
+            // its windows would be a false complete list.
+            case .failed(let error):
+                return unanswered(error, application: running.localizedName ?? "An application")
+            }
+            for listed in rows {
+                let minimised: Bool? =
+                    if let element = listed.element, case .value(let value) = read(
+                        element, kAXMinimizedAttribute, as: Bool.self)
+                    { value } else { nil }
+                let visibility = WindowVisibility.fromPublicFacts(
+                    minimised: minimised, applicationHidden: running.isHidden
+                )
+                stacking.append(
+                    .object([
+                        "window": row(process, listed, application: application),
+                        "order": .null,
+                        "visibility": .string(visibility.rawValue),
+                    ])
+                )
+            }
+        }
+        return .success(.list(stacking))
     }
 
     private func window(referencedBy ref: ProviderValue?) -> ResolutionResult {
         switch held(referencedBy: ref) {
         case .window(let process, let token, let element, let title):
+            guard case .value(let application) = running(pid: process.pid, startMicroseconds: process.startMicroseconds)
+            else { return gone }
             // Whether the application enumerates it now, as a listing would say.
+            let remembered: Bool
             switch read(AXUIElementCreateApplication(process.pid), kAXWindowsAttribute, as: [AXUIElement].self) {
-            case .value(let listed):
-                let remembered = !listed.contains { CFEqual($0, element) }
-                return .success(row(process, token: token, title: title, remembered: remembered))
-            case .absent: return .success(row(process, token: token, title: title, remembered: true))
+            case .value(let listed): remembered = !listed.contains { CFEqual($0, element) }
+            case .absent: remembered = true
             case .gone: return gone
             case .failed(let error): return unanswered(error)
             }
+            let listed = Listed(token: token, title: title, remembered: remembered, element: element)
+            return .success(row(process, listed, application: application))
         case .not(let result): return result
         }
     }
@@ -302,14 +408,15 @@ final class DesktopProvider: Provider, @unchecked Sendable {
 
     /// Every route to a window ends here, so they report the same fields. A
     /// remembered window is one its application does not enumerate now; its title
-    /// is the last one read, which is no proof that it still exists.
-    private func row(
-        _ process: ProcessIncarnation, token: UInt64, title: String, remembered: Bool
-    ) -> ProviderValue {
+    /// is the last one read, which is no proof that it still exists. The frame is
+    /// read now from the held element, and is null when either attribute cannot be read.
+    private func row(_ process: ProcessIncarnation, _ listed: Listed, application: ProviderValue) -> ProviderValue {
         .object([
-            "ref": .reference(DesktopReference.window(process, session: table.session, token: token).uri),
-            "title": .string(title),
-            "observation": .string(remembered ? "REMEMBERED" : "CURRENT"),
+            "ref": .reference(DesktopReference.window(process, session: table.session, token: listed.token).uri),
+            "title": .string(listed.title),
+            "observation": .string(listed.remembered ? "REMEMBERED" : "CURRENT"),
+            "application": application,
+            "frame": listed.element.flatMap(frame(of:)).map(value(of:)) ?? .null,
         ])
     }
 
@@ -373,6 +480,172 @@ final class DesktopProvider: Provider, @unchecked Sendable {
         case .gone: return .gone
         case .failed(let error): return .failed(error)
         }
+    }
+
+    // MARK: Geometry
+
+    /// The position and size that Accessibility reports, in screen coordinates,
+    /// or nil when either attribute cannot be read. Koine never invents a frame.
+    private func frame(of element: AXUIElement) -> ScreenRect? {
+        guard case .value(let position) = read(element, kAXPositionAttribute, as: AXValue.self),
+            case .value(let size) = read(element, kAXSizeAttribute, as: AXValue.self)
+        else { return nil }
+        var point = CGPoint.zero
+        var extent = CGSize.zero
+        guard AXValueGetValue(position, .cgPoint, &point), AXValueGetValue(size, .cgSize, &extent) else {
+            return nil
+        }
+        return ScreenRect(x: point.x, y: point.y, width: extent.width, height: extent.height)
+    }
+
+    private func value(of rect: ScreenRect) -> ProviderValue {
+        .object([
+            "x": .double(rect.x), "y": .double(rect.y), "width": .double(rect.width),
+            "height": .double(rect.height),
+        ])
+    }
+
+    // MARK: Displays
+
+    /// `desktopDisplays`: one Core Graphics reading of the active displays and one
+    /// AppKit reading of the screens, combined by `DisplayGeometry`. Neither needs
+    /// Accessibility consent.
+    private func displays() async -> ResolutionResult {
+        // https://developer.apple.com/documentation/coregraphics/1454603-cggetactivedisplaylist
+        var count: UInt32 = 0
+        guard CGGetActiveDisplayList(0, nil, &count) == .success else { return displayListFailed }
+        var identifiers = [CGDirectDisplayID](repeating: 0, count: Int(count))
+        guard CGGetActiveDisplayList(count, &identifiers, &count) == .success else { return displayListFailed }
+        let active = identifiers.prefix(Int(count)).map { id in
+            let bounds = CGDisplayBounds(id)
+            return ActiveDisplay(
+                id: id,
+                bounds: ScreenRect(
+                    x: bounds.origin.x, y: bounds.origin.y, width: bounds.width, height: bounds.height)
+            )
+        }
+        let main = CGMainDisplayID()
+        // NSScreen belongs to the main actor. Its reading is at another instant than
+        // the Core Graphics one, which DisplayGeometry allows for.
+        let screens = await MainActor.run { () -> [AppKitScreen] in
+            let key = NSDeviceDescriptionKey("NSScreenNumber")
+            return NSScreen.screens.map { screen in
+                AppKitScreen(
+                    number: (screen.deviceDescription[key] as? NSNumber)?.uint32Value,
+                    frame: ScreenRect(screen.frame), visibleFrame: ScreenRect(screen.visibleFrame)
+                )
+            }
+        }
+        let displays = DisplayGeometry.displays(active: active, main: main, screens: screens)
+        return .success(
+            .list(
+                displays.map { display in
+                    .object([
+                        "ref": .reference(DesktopReference.display(display.id).uri),
+                        "frame": value(of: display.frame),
+                        "visibleFrame": display.visibleFrame.map(value(of:)) ?? .null,
+                        "primary": .bool(display.primary),
+                    ])
+                }
+            )
+        )
+    }
+
+    /// An empty list would be a false known value.
+    private var displayListFailed: ResolutionResult {
+        failed("macOS did not list the active displays.")
+    }
+
+    // MARK: Frame setting
+
+    /// `desktopSetWindowFrame`: moves and resizes exactly the window `ref` names,
+    /// with Modaliser's mechanism. An invalid frame attempts nothing. Consent and
+    /// identity come first, as for focus. The whole action is one turn on the
+    /// queue, so nothing comes between confirming identity and the writes, and the
+    /// enhanced accessibility setting is always turned on again. The repeat waits
+    /// on the queue for at most 7 times 50 ms.
+    private func setFrame(_ ref: ProviderValue?, to frame: ProviderValue?) async -> ResolutionResult {
+        guard case .object(let fields)? = frame, let x = number(fields["x"]), let y = number(fields["y"]),
+            let width = number(fields["width"]), let height = number(fields["height"])
+        else { return invalid("frame needs a finite x, y, width and height.") }
+        guard width > 0, height > 0 else { return invalid("frame.width and frame.height must be greater than zero.") }
+        let request = ScreenRect(x: x, y: y, width: width, height: height)
+        return await onQueue { self.writeFrame(ref, request) }
+    }
+
+    private func number(_ value: ProviderValue?) -> Double? {
+        let number: Double? =
+            switch value {
+            case .double(let double)?: double
+            case .int(let int)?: Double(int)
+            default: nil
+            }
+        return number.flatMap { $0.isFinite ? $0 : nil }
+    }
+
+    /// The application attribute that Electron applications honour: while it is on,
+    /// they ignore position and size writes. It is not in AXAttributeConstants.h.
+    /// Modaliser turns it off for its writes (`withResizableApp` in its
+    /// WindowManipulator.swift); no official source documents it, so the VM
+    /// acceptance is the proof.
+    private static let enhancedUserInterface = "AXEnhancedUserInterface"
+
+    private func writeFrame(_ ref: ProviderValue?, _ request: ScreenRect) -> ResolutionResult {
+        let target: AXUIElement
+        let pid: Int32
+        switch held(referencedBy: ref) {
+        case .window(let process, _, let element, _):
+            target = element
+            pid = process.pid
+        case .not(let result): return result
+        }
+        let application = AXUIElementCreateApplication(pid)
+        let enhanced: Bool
+        switch read(application, Self.enhancedUserInterface, as: Bool.self) {
+        case .value(let on): enhanced = on
+        case .absent, .gone, .failed: enhanced = false
+        }
+        if enhanced {
+            let error = set(application, Self.enhancedUserInterface, to: false)
+            guard error == .success else {
+                return result(stopped("could not have the enhanced accessibility setting of its application turned off", error))
+            }
+        }
+        let outcome = FrameWrites.apply(
+            width: request.width, height: request.height,
+            write: { write(target, request) },
+            size: { frame(of: target).map { (width: $0.width, height: $0.height) } },
+            wait: { usleep(useconds_t(FrameWrites.interval / 1_000)) }
+        )
+        let restored = enhanced ? set(application, Self.enhancedUserInterface, to: true) : .success
+        if let error = outcome.failure { return result(stopped("could not be moved or resized", error)) }
+        guard restored == .success else {
+            return failed(
+                "The window was moved and resized, but the enhanced accessibility setting of its application "
+                    + "could not be turned on again (AXError \(restored.rawValue))."
+            )
+        }
+        return .success(.object(["ref": ref ?? .null]))
+    }
+
+    /// One position write and one size write, in that order. Returns the error of
+    /// the first that fails, or nil.
+    private func write(_ element: AXUIElement, _ rect: ScreenRect) -> AXError? {
+        var point = CGPoint(x: rect.x, y: rect.y)
+        var size = CGSize(width: rect.width, height: rect.height)
+        guard let position = AXValueCreate(.cgPoint, &point), let extent = AXValueCreate(.cgSize, &size) else {
+            return .failure
+        }
+        AXUIElementSetMessagingTimeout(element, messagingTimeout)
+        var error = AXUIElementSetAttributeValue(element, kAXPositionAttribute as CFString, position)
+        guard error == .success else { return error }
+        error = AXUIElementSetAttributeValue(element, kAXSizeAttribute as CFString, extent)
+        return error == .success ? nil : error
+    }
+
+    private func result(_ step: Step) -> ResolutionResult {
+        if case .ended(let result) = step { return result }
+        return failed("The window could not be moved or resized.")
     }
 
     // MARK: Focus
@@ -520,14 +793,20 @@ final class DesktopProvider: Provider, @unchecked Sendable {
         )
     }
 
-    private func unanswered(_ error: AXError) -> ResolutionResult {
+    private func unanswered(_ error: AXError, application: String = "The application") -> ResolutionResult {
         // Consent can end while Koine runs, and between the trust check and the call.
         if error == .apiDisabled { return untrusted }
         return .failure(
             ProviderFailure(
                 kind: .failed,
-                message: "The application did not answer for its windows (AXError \(error.rawValue))."
+                message: "\(application) did not answer for its windows (AXError \(error.rawValue))."
             )
         )
+    }
+}
+
+extension ScreenRect {
+    init(_ rect: CGRect) {
+        self.init(x: rect.origin.x, y: rect.origin.y, width: rect.width, height: rect.height)
     }
 }

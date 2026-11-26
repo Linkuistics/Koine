@@ -9,10 +9,12 @@ struct ProcessIncarnation: Equatable, Hashable, Sendable {
 /// identity: the accessibility element this provider holds, named by the
 /// provider run that holds it (`session`) and its number in that run (`token`).
 /// An element cannot be held across provider runs, so a reference from another
-/// session names nothing here and is `unavailable`, never a guess.
+/// session names nothing here and is `unavailable`, never a guess. A display is
+/// its `CGDirectDisplayID`, which names it while it is active.
 enum DesktopReference: Equatable, Sendable {
     case application(ProcessIncarnation)
     case window(ProcessIncarnation, session: String, token: UInt64)
+    case display(UInt32)
 
     var uri: String {
         switch self {
@@ -20,6 +22,7 @@ enum DesktopReference: Equatable, Sendable {
             "koine://desktop/application/\(process.pid)/\(process.startMicroseconds)"
         case .window(let process, let session, let token):
             "koine://desktop/window/\(process.pid)/\(process.startMicroseconds)/\(session)/\(token)"
+        case .display(let id): "koine://desktop/display/\(id)"
         }
     }
 
@@ -28,6 +31,12 @@ enum DesktopReference: Equatable, Sendable {
         let prefix = "koine://desktop/"
         guard uri.hasPrefix(prefix) else { return nil }
         let parts = uri.dropFirst(prefix.count).split(separator: "/", omittingEmptySubsequences: false)
+        if parts.count == 2, parts[0] == "display" {
+            guard let id = UInt32(parts[1]) else { return nil }
+            self = .display(id)
+            guard self.uri == uri else { return nil }  // no leading zeros, signs or spaces
+            return
+        }
         guard parts.count >= 3, let pid = Int32(parts[1]), pid > 0,
             let start = Int64(parts[2]), start >= 0
         else { return nil }
