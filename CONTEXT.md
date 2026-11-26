@@ -130,13 +130,17 @@ instant. Its lifetime ends when that process ends; a restored logical applicatio
 incarnation. A PID, application name, bundle identifier or Process Manager
 serial number alone does not establish this identity.
 
+<!-- tc: on -->
+
 **Public Accessibility boundary**: The desktop transport uses macOS AX APIs for
 listing, focus attempts and notifications. Koine checks the **process
-incarnation** before AX work, but that check does not bind the AX destination:
-AX data and effects may reach another process or window during reuse, and
-notifications may be stale or misattributed. Framework AX reception has no Koine
-hard bound before memory or Mach rights are acquired. Koine still bounds its own
-state and work and enforces grants and consent.
+incarnation** before AX work. That check does not bind the AX destination. AX
+data and effects may reach another process or window during reuse, and
+notifications may be stale or misattributed. Framework AX reception has no hard
+bound from Koine before it acquires memory or Mach rights. Koine still bounds
+its own state and work, and it enforces grants and consent.
+
+<!-- tc: pending because the remaining glossary entries retain their existing conversion boundary -->
 
 **Reference withdrawal**: Permanently making a reference unavailable after
 its process incarnation ends, a platform closure report or another locally established failure.

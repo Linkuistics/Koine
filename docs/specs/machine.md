@@ -1,5 +1,7 @@
 # Koine desktop contract
 
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
+
 **The shared Machine and desktop contract.** Koine 0.4.0 implements the baseline:
 the shared resilient Swift framework, one resident Koine application (a menu bar
 application) and bearer
@@ -841,65 +843,81 @@ request review, manual creation, grant listing/revocation, service status and
 OS-permission guidance. Plugin installation/trust is a local user operation,
 not an extra meaning of a client's `desktop:control` grant.
 
+<!-- tc: on -->
+
+<!-- tc: depart spelling because evidence records and other sections cite this heading by its title -->
 ## Resource references and desktop behavior
 
 The `Reference` scalar accepts canonical `koine://<provider>/<remainder>` URI
-strings, with no userinfo, port or fragment. The scheme is lower-case, the
-authority is exactly a provider identifier, and the remainder is URI path and
-query text with well-formed percent escapes. The engine validates the envelope
-and routes by authority only. After the capability check it reads the provider
-of every reference among a field's arguments; a reference naming another
-registered provider still reaches the field's own provider, which reports
-`unavailable`. Providers own percent encoding, resource kind
-and remainder interpretation. A provider root has an empty remainder. The
-scalar maps to an opaque string wrapper in client bindings; clients cannot
-construct desktop resource references from PIDs or window titles.
+strings, with no userinfo, port or fragment. The scheme is lower-case, and the
+authority is exactly a provider identifier. The remainder is URI path and query
+text with well-formed percent escapes. The engine checks the envelope and
+routes by the authority only. After the capability check, it reads the provider
+of every reference among the arguments of a field. A reference that names
+another registered provider still reaches the provider of the field, which
+reports `unavailable`.
 
-The exact-target behavior below is not established across actual native PID
-reuse; the [native targeting discussion](#native-targeting-discussion) lists the
+Providers own percent encoding, the resource kind and the interpretation of
+the remainder. A provider root has an empty remainder. The scalar maps to an
+opaque string wrapper in client bindings. Clients cannot construct desktop
+resource references from PIDs or window titles.
+
+The exact-target behaviour below is not established across actual native PID
+reuse. The [native targeting discussion](#native-targeting-discussion) lists the
 accepted limits.
 
 The desktop provider encodes a process incarnation in application and window
-references. A window reference additionally carries its native window identity
-and provider-owned discrimination information. Each use re-resolves the target;
-a matching PID alone or another window with the same title is insufficient.
-Title fallback may be used only when the provider can establish the same target
-unambiguously. If that cannot be established after closure, PID reuse, restart
-or ambiguous native identity, return `unavailable`; never focus a substitute.
-Do not promise every window reference survives a provider/server restart.
-References with sufficient stable identity may resolve again; others explicitly
-become unavailable. The engine maintains no handle table.
+references. A window reference also carries its native window identity and
+discrimination information that the provider owns. Each use resolves the target
+again. A matching PID alone is not sufficient, and neither is another window
+with the same title. A title fallback is permitted only when the provider can
+establish the same target without ambiguity. If the provider cannot establish
+it after closure, PID reuse, restart or ambiguous native identity, it returns
+`unavailable` and never focuses a substitute.
 
-Enumerate real windows of the requested application. Empty titles are valid.
-Do not manufacture window rows for applications with no known windows. Include
-provider-remembered windows from other Spaces with `REMEMBERED` observation;
-current enumeration refreshes observations and known destruction/termination
-removes them. The remembered list is incomplete if Koine has never observed a
-Space and may include a window whose disappearance is not yet observable.
-A selection always revalidates; remembered display information is not proof
-that a window exists. This preserves useful observation across Spaces without
-claiming complete current knowledge.
+The contract does not promise that every window reference survives a restart of
+the provider or the server. References with sufficient stable identity may
+resolve again. Others explicitly become unavailable. The engine keeps no handle
+table.
+
+The provider enumerates the real windows of the requested application. An
+empty title is valid. The provider makes no window rows for an application with
+no known windows. It includes the windows that it remembers from other Spaces,
+with the `REMEMBERED` observation. A current enumeration refreshes the
+observations, and a known destruction or termination removes them.
+
+The remembered list is incomplete if Koine never observed a Space. It may
+include a window whose disappearance Koine cannot observe yet. A selection
+always checks the target again, because what Koine remembers is no proof that
+a window exists. This keeps useful observation across Spaces without
+a claim of complete current knowledge.
 
 The provider may activate the owning application to bring a known target into
-view as part of focusing it. Check consent and identity before that action,
-report OS failures rather than swallowing them, and acknowledge that later
-steps can fail after activation. A successful focus receipt means the native
-focus/raise operation completed against the resolved window; applications may
-subsequently change focus. A stale target produces `unavailable`, never silent
-success. The served design uses the window's
-accessibility element, held by the provider and named in the reference by the
-provider run and a token, as recorded in
-[desktop window identity is a held element](../adr/desktop-window-identity-is-a-held-element.md)
-with its [evidence](../verification/desktop-window-identity.md). A window
-reference therefore does not survive a restart of Koine, and title fallback is
-never used. An application reference encodes the process incarnation alone, so it
-resolves again after a restart of Koine for as long as that incarnation runs. Modaliser's private window-number lookup and title fallback are not
-proof of identity and are not used.
+view as part of focus. It checks consent and identity before that action. It
+reports OS failures and does not hide them. Later steps can fail after the
+activation. A successful focus receipt means that the native focus and raise
+operation completed against the resolved window. Applications may change focus
+after it.
+
+A stale target produces `unavailable`, never silent success. The served design
+uses the accessibility element of the window. The provider holds that element
+and names it in the reference by the provider run and a token.
+[Desktop window identity is a held element](../adr/desktop-window-identity-is-a-held-element.md)
+records this, with its [evidence](../verification/desktop-window-identity.md).
+So a window reference does not survive a restart of Koine, and the provider
+never uses a title fallback.
+
+An application reference encodes the process incarnation alone. So it resolves
+again after a restart of Koine, for as long as that incarnation runs.
+Modaliser's private window-number lookup and title fallback are no proof of
+identity, and the provider does not use them.
 
 The engine caches no graph results, refreshes nothing and retries nothing.
 Provider OS observations are private state, not retained snapshots for callers.
-One GraphQL operation can resolve multiple fields at different instants; it
+One GraphQL operation can resolve several fields at different instants. It
 establishes no atomic snapshot across fields, calls or providers.
+
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
 ## Native extensions — shared resilient Swift framework
 
@@ -1437,48 +1455,59 @@ on extension-host reports wherever their meaning is known; nullable types preser
 older callers and represent unidentified/synthetic cases. Management authority
 continues to protect the entire surface, including locations in human diagnostics.
 
+<!-- tc: on -->
+
 ### Capability disclosures
 
-Grant creation, request approval and the grant list must tell a person a
-capability's reach wherever it is granted or held, and a `koine:manage` client
-must be able to show the same words. The provider framework carries no
-description, and an ordinary provider has no disclosure channel, so the core owns
-a small catalogue keyed by capability name. Management serves it as additive
-metadata, with no new provider-framework requirement, capability or error kind:
+Three surfaces must tell a person the reach of each capability that a grant
+gives or holds: grant creation, request approval and the grant list. A `koine:manage`
+client must be able to show the same words. The provider framework carries no
+description, and an ordinary provider has no disclosure channel. So the core
+owns a small catalogue, keyed by capability name. Management serves it as
+additive metadata, with no new provider-framework requirement, capability or
+error kind:
 
 | Field / GraphQL type | Meaning |
 | --- | --- |
-| `KoineManagement.capabilityDisclosures: [KoineCapabilityDisclosure!]!` | One entry per capability that has a disclosure, in capability order, served whether or not its provider is active, because a grant may hold a capability whose provider failed to load. Requires `koine:manage`; serving it supplies no authority. |
-| `KoineCapabilityDisclosure { capability: String!, disclosure: String! }` | The capability name as listed in `availableCapabilities` and held by grants, and plain text stating its reach, including any other capability it needs. |
+| `KoineManagement.capabilityDisclosures: [KoineCapabilityDisclosure!]!` | One entry for each capability that has a disclosure, in capability order. Management serves it whether or not the provider is active, because a grant may hold a capability whose provider failed to load. It requires `koine:manage`, and serving it supplies no authority. |
+| `KoineCapabilityDisclosure { capability: String!, disclosure: String! }` | The capability name, as `availableCapabilities` lists it and grants hold it. Plain text states its reach, including any other capability that it needs. |
 
-The extension-host design files carry the field; `desktop-schema.graphql` and the
-`core-desktop-old-host` profile do not, because a released host never served it.
-A client of an older host gets a GraphQL error for the field and must show its own
-fallback rather than treat the absence as "nothing to disclose". The native settings window
-shows each disclosure beside its capability in all three places and shows nothing
-for a revoked grant, which holds nothing. `workspace:control` is the first entry;
-[workspace disclosure](../verification/workspace-disclosure-vm.md) records the text
-and its acceptance. Each later increment that owes a disclosure
-([workflow spec](workflow-providers.md#authority-allocation)) adds its capability
-here, so the settings window and every manager change together.
+The extension-host design files carry the field. `desktop-schema.graphql` and
+the `core-desktop-old-host` profile do not, because a released host never
+served it. A client of an older host gets a GraphQL error for the field. It must
+show its own fallback, and it must not treat the absence as "nothing to
+disclose".
 
-The native workspace release requires corrected core disclosures before the host
-advertises `workspace-native-disclosures-v1`. All three native grant views and
-management use the same entries:
+The native Settings window shows each disclosure beside its capability in all
+three places. It shows nothing for a revoked grant, which holds nothing.
+`workspace:control` is the first entry.
+[Workspace disclosure](../verification/workspace-disclosure-vm.md) records the
+text and its acceptance. Each later increment that owes a disclosure
+([workflow spec](workflow-providers.md#authority-allocation)) adds its
+capability here. So the Settings window and every manager change together.
+
+The native workspace release requires revised core disclosures before the
+host advertises `workspace-native-disclosures-v1`. All three native grant views
+and management use the same entries:
 
 | Capability | Required native-surface disclosure |
 | --- | --- |
-| `workspace:read` | Read Koine-account special-location values and native application/System Settings metadata, including fixed application information/name files and direct localization names. Returned locations grant no access to their contents or to the client's filesystem. |
-| `workspace:control` | Prepare System Settings in the background without desktop control. Launch applications, open URLs/files and reveal files or selected Settings destinations only with desktop control. Any registered installed application may be launched; a handler can execute scripts or follow location documents to other schemes and targets. Metadata refusal is not a content sandbox. |
+| `workspace:read` | Read the special-location values of the Koine account, and the native metadata of applications and System Settings. This includes fixed application information and name files, and direct localisation names. Returned locations grant no access to their contents or to the file system of the client. |
+| `workspace:control` | Prepare System Settings in the background without desktop control. Launch applications, open URLs and files, and reveal files or selected Settings destinations only with desktop control. Any registered installed application may be launched. A handler can execute scripts or follow location documents to other schemes and targets. Metadata refusal is not a content sandbox. |
 
-The action-only shipped wording and its recorded VM acceptance remain historical
-evidence; they do not disclose this native surface. App-and-file-search owns the
-actual core catalogue/UI/management implementation and independent acceptance
-before that release. OS Automation setup is outside bearer capability reach and
-explains consent for the Koine-host/System Settings pair in Koine's UI. The
+The shipped action-only wording and its recorded VM acceptance remain
+historical evidence. They do not disclose this native surface.
+App-and-file-search owns the actual implementation of the core catalogue, UI
+and management, and their independent acceptance, before that release.
+
+OS Automation setup is outside the reach of bearer capabilities. The setup
+explains, in Koine's UI, the consent for the pair of the Koine host and System
+Settings. The
 [host-feature decision](../adr/native-workspace-requires-disclosure-capable-host.md)
-refuses native providers on prior hosts before loading, rather than relying on
-provider text to correct core-owned surfaces.
+refuses native providers on prior hosts before load. It does not rely on
+provider text to revise surfaces that the core owns.
+
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
 Non-selected valid copies use `REJECTED` with a precise reason: `older-than-bundled`,
 `equal-to-bundled` or `superseded-candidate`; it means their contribution was refused,
@@ -1815,23 +1844,27 @@ native identity, transferred from the client's callback over an authenticated
 channel, is not used, because its capture/transfer protocol, sample attribution and
 native evidence cost far more than the residual collision risk.
 
+<!-- tc: on -->
+
 ### Public Accessibility and its accepted limits
 
-The desktop provider uses only public macOS Accessibility for listing, held window
-elements, focus and notifications
+The desktop provider uses only public macOS Accessibility for listing, held
+window elements, focus and notifications
 ([public Accessibility decision](../adr/desktop-automation-uses-public-accessibility.md)).
-It checks the process identity before AX work. That check narrows, but cannot
-close, the race with process or window reuse:
+It checks the process identity before AX work. That check narrows the race with
+process or window reuse, but it cannot close it:
 
 | Area | Accepted limit |
 |---|---|
-| Data and effects | After actual PID reuse, a held AX element can address the replacement process, as the [PID-recycling diagnostic](../verification/retained-ax-binding.md) shows. A check-then-use race can return another target's data or act on it. |
-| Reads and notifications | Replies and framework callbacks are not independently authenticated. A title, presence, focus report or notification may be stale or misattributed. |
+| Data and effects | After actual PID reuse, a held AX element can address the replacement process, as the [PID-recycling diagnostic](../verification/retained-ax-binding.md) shows. A race between check and use can return the data of another target or act on it. |
+| Reads and notifications | Koine does not independently authenticate replies and framework callbacks. A title, presence, focus report or notification may be stale or misattributed. |
 | Reference withdrawal | A platform closure report may withdraw a live reference. Withdrawal is still permanent, and identifiers are never reused. |
-| Framework AX reception | No Koine-enforced memory or Mach-right bound applies before framework-managed acquisition. Koine bounds its own records and work. |
+| Framework AX reception | No memory or Mach-right bound that Koine enforces applies before framework-managed acquisition. Koine bounds its own records and work. |
 
 Koine does not fall back to a private AX endpoint or to window-qualified
 activation to narrow these limits.
+
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
 ## Native discovery conformance profiles
 
