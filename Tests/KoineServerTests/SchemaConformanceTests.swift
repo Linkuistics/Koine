@@ -321,6 +321,7 @@ import Testing
                 ("DesktopWindow.observation", .read),
                 ("DesktopFocusReceipt.ref", .control),
                 ("Query.desktopWindows", .read), ("Query.desktopDisplays", .read),
+                ("Query.desktopWindowOnTop", .read),
                 ("Mutation.desktopSetWindowFrame", .control),
                 ("DesktopWindow.application", .read), ("DesktopWindow.frame", .read),
                 ("DesktopWindowStacking.window", .read), ("DesktopWindowStacking.order", .read),
@@ -388,12 +389,13 @@ import Testing
         #expect(try CanonicalSchemaText.digest(ofSDL: design) == digest)
     }
 
-    /// The coordinates the first cut of window layout adds to the desktop 1.0.0 contribution: two query roots,
-    /// frame setting, the two new window fields and every type they reach.
+    /// The coordinates the first cut of window layout adds to the desktop 1.0.0 contribution so far: three query
+    /// roots, frame setting, the two new window fields and every type they reach.
     static let windowLayoutCoordinates: Set<String> = [
-        "Query.desktopWindows", "Query.desktopDisplays", "Mutation.desktopSetWindowFrame",
-        "DesktopWindow.application", "DesktopWindow.frame", "DesktopRectInput", "DesktopWindowStacking",
-        "DesktopWindowVisibility", "DesktopRect", "DesktopDisplay", "DesktopFrameReceipt",
+        "Query.desktopWindows", "Query.desktopDisplays", "Query.desktopWindowOnTop", "Mutation.desktopSetWindowFrame",
+        "DesktopWindow.application", "DesktopWindow.frame", "DesktopPointInput", "DesktopRectInput",
+        "DesktopWindowStacking", "DesktopWindowVisibility", "DesktopOnTop", "DesktopRect", "DesktopDisplay",
+        "DesktopFrameReceipt",
     ]
 
     /// The cut is visible to the one thing a client compares: the schema the 1.0.1 bundle serves differs from the
@@ -412,11 +414,10 @@ import Testing
         #expect(try CanonicalSchemaText.digest(ofSDL: released) != digest)
     }
 
-    /// What `window-stacking-k4` and `display-focus-k5` have not served yet: the point query, display focus and
-    /// the types that only they reach. The set shrinks as each root lands, never by rewording.
+    /// What `display-focus-k5` has not served yet: display focus and the types that only it reaches. The set
+    /// shrinks as each root lands, never by rewording.
     static let desktopCoordinatesNotYetImplemented: Set<String> = [
-        "Query.desktopWindowOnTop", "Mutation.desktopFocusDisplay", "DesktopPointInput", "DesktopOnTop",
-        "DesktopDisplayFocusReceipt", "DesktopDisplayFocusOutcome",
+        "Mutation.desktopFocusDisplay", "DesktopDisplayFocusReceipt", "DesktopDisplayFocusOutcome",
     ]
 
     /// The desktop part of the window layout composition is the design SDL, never reworded: against the core plus

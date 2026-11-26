@@ -21,6 +21,11 @@ import Testing
         mutation SetDesktopWindowFrame($ref: Reference!, $frame: DesktopRectInput!) { \
         desktopSetWindowFrame(ref: $ref, frame: $frame) { ref } }
         """
+    /// `DesktopWindowOnTopAt`, as docs/design/desktop-window-layout-operations.graphql has it.
+    static let onTop = """
+        query DesktopWindowOnTopAt($ref: Reference!, $point: DesktopPointInput!) { \
+        desktopWindowOnTop(ref: $ref, point: $point) }
+        """
     static let staleWindow = "koine://desktop/window/1000000/5/00ab34cd56ef7890/1"
     static var someFrame: [String: Any] { ["x": 0, "y": 25, "width": 720, "height": 450] }
 
@@ -65,6 +70,7 @@ import Testing
 
     @Test(arguments: [
         "{ desktopDisplays { ref } }", "{ desktopWindows { order } }",
+        "{ desktopWindowOnTop(ref: \"\(staleWindow)\", point: { x: 0, y: 0 }) }",
     ])
     func everyReadNeedsDesktopRead(query: String) async throws {
         let harness = try await DesktopProviderTests.harness()
@@ -134,6 +140,64 @@ import Testing
         await harness.stop()
     }
 
+    // MARK: Visibility at a point
+
+    /// The point query resolves its reference as `desktopWindow` does, so a reference that names no held window
+    /// is unavailable. Decided before any Accessibility call, so these hold with or without consent.
+    @Test(arguments: [
+        staleWindow, "LIVE-WINDOW-OTHER-SESSION", "LIVE-APPLICATION", "koine://desktop/display/1",
+        "koine://desktop/window/412/5/SHORT/7",
+    ])
+    func askingAboutAReferenceThatNamesNoHeldWindowIsUnavailable(reference: String) async throws {
+        let harness = try await DesktopProviderTests.harness()
+        let reader = try await harness.consoleGrant(label: "reader", capabilities: ["desktop:read"])
+        let pid = try DesktopProviderTests.running().processIdentifier
+        let start = try DesktopProviderTests.startMicroseconds(pid)
+        let ref =
+            switch reference {
+            case "LIVE-APPLICATION": "koine://desktop/application/\(pid)/\(start)"
+            case "LIVE-WINDOW-OTHER-SESSION": "koine://desktop/window/\(pid)/\(start)/00ab34cd56ef7890/1"
+            default: reference
+            }
+        let reply = try await harness.post(
+            Self.onTop, variables: ["ref": ref, "point": ["x": 10, "y": 10]], authorization: "Bearer \(reader)"
+        )
+        try DesktopProviderTests.expectUnavailable(reply, at: "desktopWindowOnTop")
+        await harness.stop()
+    }
+
+    /// A point outside every display is inside no bounds in the window server's list. So for every listed
+    /// window the answer is `NOT_ON_TOP`, or `UNKNOWN` without a link, and never `ON_TOP`. Asking moves
+    /// nothing. Without consent for the test process, the list is a permission error and nothing is asked.
+    @Test func aPointOutsideEveryDisplayIsNeverOnTop() async throws {
+        let harness = try await DesktopProviderTests.harness()
+        let reader = try await harness.consoleGrant(label: "reader", capabilities: ["desktop:read"])
+        let listed = try await harness.post(
+            "{ desktopWindows { window { ref } visibility } }", authorization: "Bearer \(reader)")
+        guard AXIsProcessTrusted(), listed.errors.isEmpty,
+            let rows = listed.data?["desktopWindows"] as? [[String: Any]]
+        else {
+            await harness.stop()
+            return
+        }
+        for row in rows.prefix(5) {
+            let ref = try #require((row["window"] as? [String: Any])?["ref"] as? String)
+            let reply = try await harness.post(
+                Self.onTop, variables: ["ref": ref, "point": ["x": -1_000_000, "y": -1_000_000]],
+                authorization: "Bearer \(reader)"
+            )
+            // A window can close between the two reads.
+            if let error = reply.errors.first {
+                #expect((error["extensions"] as? [String: Any])?["kind"] as? String == "unavailable", "\(error)")
+                continue
+            }
+            let answer = try #require(reply.data?["desktopWindowOnTop"] as? String)
+            #expect(answer == "NOT_ON_TOP" || answer == "UNKNOWN", "\(row): \(answer)")
+            if row["visibility"] as? String == "OFF_SCREEN" { #expect(answer == "NOT_ON_TOP") }
+        }
+        await harness.stop()
+    }
+
     /// A display reference names no window or application, so the window reads raise unavailable for it.
     @Test(arguments: ["desktopWindow", "desktopApplicationByReference"])
     func aDisplayReferenceIsTheWrongKindForTheWindowReads(field: String) async throws {
@@ -149,9 +213,10 @@ import Testing
     // MARK: Window list
 
     /// Without Accessibility consent the list is an OS permission error, never an empty list. With consent,
-    /// every row has the designed shape, and until the window-server link exists no order is known and no window
-    /// is reported on screen. Which case holds depends on this host's consent for the test process.
-    @Test func theWindowListIsAPermissionErrorOrRowsWithUnknownOrder() async throws {
+    /// every row has the designed shape. A row is `ON_SCREEN` exactly when it has an order. The orders are
+    /// 0, 1, 2 and onwards, and those rows come first, front to back. Which case holds depends on this host's
+    /// consent for the test process.
+    @Test func theWindowListIsAPermissionErrorOrRowsWithKnownOrdersFirst() async throws {
         let harness = try await DesktopProviderTests.harness()
         let reader = try await harness.consoleGrant(label: "reader", capabilities: ["desktop:read"])
         let reply = try await harness.post(Self.windows, authorization: "Bearer \(reader)")
@@ -163,9 +228,14 @@ import Testing
             #expect(reply.data?["desktopWindows"] == nil)
         } else if reply.errors.isEmpty {
             let rows = try #require(reply.data?["desktopWindows"] as? [[String: Any]])
+            let orders = rows.map { $0["order"] as? Int }
+            let known = orders.prefix { $0 != nil }.compactMap { $0 }
+            #expect(known == Array(0..<known.count), "the known orders come first, front to back: \(orders)")
+            #expect(orders.dropFirst(known.count).allSatisfy { $0 == nil }, "\(orders)")
             for row in rows {
-                #expect(row["order"] is NSNull)
-                #expect(["OFF_SCREEN", "UNKNOWN"].contains(row["visibility"] as? String))
+                let visibility = try #require(row["visibility"] as? String)
+                #expect(["ON_SCREEN", "OFF_SCREEN", "UNKNOWN"].contains(visibility))
+                #expect((visibility == "ON_SCREEN") == (row["order"] as? Int != nil), "\(row)")
                 let window = try #require(row["window"] as? [String: Any])
                 #expect((window["ref"] as? String)?.hasPrefix("koine://desktop/window/") == true)
                 #expect(window["observation"] as? String == "CURRENT", "windows on other Spaces are not listed")
@@ -201,6 +271,9 @@ import Testing
         #expect(windows.hasPrefix("desktop:read."))
         #expect(windows.contains("every application with a Dock icon, not only the captured application"))
         #expect(windows.contains("A desktop:read grant from an earlier Koine version has this reach too."))
+        let onTop = try #require(descriptions["desktopWindowOnTop"])
+        #expect(onTop.hasPrefix("desktop:read."))
+        #expect(onTop.contains("The answer is UNKNOWN when Koine cannot link the window"))
         let displays = try #require(descriptions["desktopDisplays"])
         #expect(displays.contains("A desktop:read grant from an earlier Koine version has this reach too."))
         let setFrame = try #require(descriptions["desktopSetWindowFrame"])

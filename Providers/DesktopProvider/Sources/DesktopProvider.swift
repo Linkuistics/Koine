@@ -43,6 +43,9 @@ final class DesktopProviderFactory: NSObject, ProviderFactory {
             ProviderFieldRegistration(
                 coordinate: "Query.desktopDisplays", resolverId: "displays", authority: .read
             ),
+            ProviderFieldRegistration(
+                coordinate: "Query.desktopWindowOnTop", resolverId: "windowOnTop", authority: .read
+            ),
         ]
         for (type, names) in outputs {
             fields += names.map {
@@ -151,6 +154,7 @@ final class DesktopProvider: Provider, @unchecked Sendable {
         case "window": window(referencedBy: request.arguments["ref"])
         case "windows": windows(of: request.parent)
         case "windowList": windowList()
+        case "windowOnTop": windowOnTop(request.arguments["ref"], at: request.arguments["point"])
         default: .failure(ProviderFailure(kind: .unknownResolver, message: "No such resolver."))
         }
     }
@@ -239,7 +243,9 @@ final class DesktopProvider: Provider, @unchecked Sendable {
         switch listing(process) {
         case .rows(let rows):
             let application = ProviderValue.object(fields.filter { ["ref", "name", "bundleIdentifier"].contains($0.key) })
-            return .success(.list(rows.map { row(process, $0, application: application) }))
+            return .success(
+                .list(rows.map { row(process, $0, application: application, frame: $0.element.flatMap(frame(of:))) })
+            )
         case .gone: return gone
         case .failed(let error): return unanswered(error)
         }
@@ -307,12 +313,15 @@ final class DesktopProvider: Provider, @unchecked Sendable {
 
     /// `desktopWindows`: the current windows of every running application with a
     /// Dock icon, which is the regular activation policy. Windows on other Spaces
-    /// are not in the list, because the current enumeration leaves them out.
-    /// Until the window-server link exists, no row has a known order, so the rows
-    /// follow in application order, and visibility comes from public facts alone.
+    /// are not in the list, because the current enumeration leaves them out. The
+    /// order and the visibility of every row come from one reading of the window
+    /// server's on-screen list, taken after every Accessibility read, through the
+    /// links that `WindowStacking` makes.
     private func windowList() -> ResolutionResult {
         guard AXIsProcessTrusted() else { return untrusted }
-        var stacking: [ProviderValue] = []
+        var windows: [ProviderValue] = []
+        var offScreen: [Bool] = []
+        var candidates: [LinkCandidate] = []
         for running in NSWorkspace.shared.runningApplications
         where running.activationPolicy == .regular && !running.isTerminated {
             let pid = running.processIdentifier
@@ -331,24 +340,83 @@ final class DesktopProvider: Provider, @unchecked Sendable {
                 return unanswered(error, application: running.localizedName ?? "An application")
             }
             for listed in rows {
-                let minimised: Bool? =
-                    if let element = listed.element, case .value(let value) = read(
-                        element, kAXMinimizedAttribute, as: Bool.self)
-                    { value } else { nil }
-                let visibility = WindowVisibility.fromPublicFacts(
-                    minimised: minimised, applicationHidden: running.isHidden
-                )
-                stacking.append(
-                    .object([
-                        "window": row(process, listed, application: application),
-                        "order": .null,
-                        "visibility": .string(visibility.rawValue),
-                    ])
-                )
+                let frame = listed.element.flatMap(frame(of:))
+                windows.append(row(process, listed, application: application, frame: frame))
+                offScreen.append(isOffScreen(listed.element, applicationHidden: running.isHidden))
+                candidates.append(link(pid, listed.element, frame: frame))
             }
         }
-        return .success(.list(stacking))
+        let stacking = WindowStacking.stacking(
+            links: WindowStacking.links(candidates, entries: windowServerList()), offScreen: offScreen
+        )
+        return .success(
+            .list(
+                WindowStacking.presentation(stacking).map { position in
+                    .object([
+                        "window": windows[position],
+                        "order": stacking[position].order.map(ProviderValue.int) ?? .null,
+                        "visibility": .string(stacking[position].visibility.rawValue),
+                    ])
+                }
+            )
+        )
     }
+
+    /// Whether public facts put the window off screen: it is minimised, or its
+    /// application is hidden. A minimised state that cannot be read is no such fact.
+    private func isOffScreen(_ element: AXUIElement?, applicationHidden: Bool) -> Bool {
+        let minimised: Bool? =
+            if let element, case .value(let value) = read(element, kAXMinimizedAttribute, as: Bool.self) {
+                value
+            } else { nil }
+        return WindowVisibility.fromPublicFacts(minimised: minimised, applicationHidden: applicationHidden) == .offScreen
+    }
+
+    /// What the window-server link needs of one held window.
+    private func link(_ owner: Int32, _ element: AXUIElement?, frame: ScreenRect?) -> LinkCandidate {
+        LinkCandidate(owner: owner, number: element.flatMap(windowNumber(of:)), frame: frame)
+    }
+
+    /// `desktopWindowOnTop`: whether the window `ref` names is on top at `point`.
+    /// The reference resolves as for `desktopWindow`. The link uses the same
+    /// candidates as the window list: the current windows of the application, and
+    /// this window too when the application does not enumerate it now. So the two
+    /// reads link a window in the same way.
+    private func windowOnTop(_ ref: ProviderValue?, at point: ProviderValue?) -> ResolutionResult {
+        guard case .object(let fields)? = point, let x = number(fields["x"]), let y = number(fields["y"]) else {
+            return invalid("point needs a finite x and y.")
+        }
+        let process: ProcessIncarnation
+        let token: UInt64
+        let element: AXUIElement
+        switch held(referencedBy: ref) {
+        case .window(let heldProcess, let heldToken, let heldElement, _):
+            (process, token, element) = (heldProcess, heldToken, heldElement)
+        case .not(let result): return result
+        }
+        guard let running = NSRunningApplication(processIdentifier: process.pid), !running.isTerminated else {
+            return gone
+        }
+        if isOffScreen(element, applicationHidden: running.isHidden) {
+            return answer(WindowStacking.onTop(link: nil, offScreen: true, point: (x, y), entries: []))
+        }
+        var windows: [Listed]
+        switch listing(process) {
+        case .rows(let rows): windows = rows.filter { !$0.remembered }
+        case .gone: return gone
+        case .failed(let error): return unanswered(error)
+        }
+        if !windows.contains(where: { $0.token == token }) {
+            windows.append(Listed(token: token, title: "", remembered: true, element: element))
+        }
+        let candidates = windows.map { link(process.pid, $0.element, frame: $0.element.flatMap(frame(of:))) }
+        let entries = windowServerList()
+        let links = WindowStacking.links(candidates, entries: entries)
+        let own = windows.firstIndex { $0.token == token }.flatMap { links[$0] }
+        return answer(WindowStacking.onTop(link: own, offScreen: false, point: (x, y), entries: entries))
+    }
+
+    private func answer(_ onTop: OnTop) -> ResolutionResult { .success(.string(onTop.rawValue)) }
 
     private func window(referencedBy ref: ProviderValue?) -> ResolutionResult {
         switch held(referencedBy: ref) {
@@ -364,7 +432,7 @@ final class DesktopProvider: Provider, @unchecked Sendable {
             case .failed(let error): return unanswered(error)
             }
             let listed = Listed(token: token, title: title, remembered: remembered, element: element)
-            return .success(row(process, listed, application: application))
+            return .success(row(process, listed, application: application, frame: frame(of: element)))
         case .not(let result): return result
         }
     }
@@ -409,14 +477,16 @@ final class DesktopProvider: Provider, @unchecked Sendable {
     /// Every route to a window ends here, so they report the same fields. A
     /// remembered window is one its application does not enumerate now; its title
     /// is the last one read, which is no proof that it still exists. The frame is
-    /// read now from the held element, and is null when either attribute cannot be read.
-    private func row(_ process: ProcessIncarnation, _ listed: Listed, application: ProviderValue) -> ProviderValue {
+    /// read now from the held element by the caller, and is null when either attribute cannot be read.
+    private func row(
+        _ process: ProcessIncarnation, _ listed: Listed, application: ProviderValue, frame: ScreenRect?
+    ) -> ProviderValue {
         .object([
             "ref": .reference(DesktopReference.window(process, session: table.session, token: listed.token).uri),
             "title": .string(listed.title),
             "observation": .string(listed.remembered ? "REMEMBERED" : "CURRENT"),
             "application": application,
-            "frame": listed.element.flatMap(frame(of:)).map(value(of:)) ?? .null,
+            "frame": frame.map(value(of:)) ?? .null,
         ])
     }
 

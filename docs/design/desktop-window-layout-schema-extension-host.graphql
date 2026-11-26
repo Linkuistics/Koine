@@ -21,6 +21,12 @@ input DesktopProcessIdentity {
   startedAt: DesktopProcessStart!
 }
 
+"A point in screen coordinates. The origin is the top-left corner of the primary display. The x value grows to the right, and the y value grows downward. A display to the left of the primary display or above it has negative coordinates."
+input DesktopPointInput {
+  x: Float!
+  y: Float!
+}
+
 "A rectangle in screen coordinates: the position of its top-left corner, its width and its height. The width and the height are greater than zero."
 input DesktopRectInput {
   x: Float!
@@ -46,6 +52,8 @@ type Query {
   desktopWindows: [DesktopWindowStacking!]!
   "desktop:read. Lists every active display, left to right by the x value of its frame, then top to bottom. A desktop:read grant from an earlier Koine version has this reach too."
   desktopDisplays: [DesktopDisplay!]!
+  "desktop:read. Says whether this window is on top at this screen point. The answer is UNKNOWN when Koine cannot link the window to the window server's list. A stale or wrong-kind reference raises unavailable."
+  desktopWindowOnTop(ref: Reference!, point: DesktopPointInput!): DesktopOnTop
 }
 
 type Mutation {
@@ -103,6 +111,9 @@ type DesktopWindowStacking {
 
 "ON_SCREEN: the window server shows the window. OFF_SCREEN: the window is minimised, or its application is hidden. UNKNOWN: Koine cannot link the window to the window server's list. Never treat UNKNOWN as ON_SCREEN."
 enum DesktopWindowVisibility { ON_SCREEN OFF_SCREEN UNKNOWN }
+
+"ON_TOP: the bounds of the window in the window server's list contain the point, and no opaque window covers it there. NOT_ON_TOP: those bounds do not contain the point, another window covers it there, or the window is off screen. UNKNOWN: Koine cannot link the window to the window server's list. When the frame of the window is known, the bounds differ from it by 2 points at most."
+enum DesktopOnTop { ON_TOP NOT_ON_TOP UNKNOWN }
 
 "All fields require desktop:read. A rectangle in screen coordinates: the position of its top-left corner, its width and its height."
 type DesktopRect {

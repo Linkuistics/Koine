@@ -236,8 +236,11 @@ alone. The
 [capture decision](adr/desktop-capture-preserves-the-process-incarnation.md)
 records why Koine does not use an identity without the start instant.
 
-Koine uses public macOS Accessibility. During process or window reuse, Koine
-may return the data of another target or act on it. A notification or a
+Koine uses public macOS Accessibility to read and act on windows. For window
+order and visibility alone, it also uses a private lookup that gives the window
+number of a held window. That number never names a window in a reference.
+During process or window reuse, Koine may return the data of another target or
+act on it. A notification or a
 closure report may be stale or attributed to the wrong target.
 
 A withdrawn reference stays unavailable, and Koine never uses it again. After a call may
@@ -374,7 +377,7 @@ nothing".
 
 ## Arranging windows
 
-Koine 0.5.0 serves three window layout operations of the [desktop contract](specs/machine.md#window-layout). A Koine 0.4.1 host does not serve them, so introspect the schema before you use the [operations](design/desktop-window-layout-operations.graphql).
+Koine 0.5.0 serves four window layout operations of the [desktop contract](specs/machine.md#window-layout). A Koine 0.4.1 host does not serve them, so introspect the schema before you use the [operations](design/desktop-window-layout-operations.graphql).
 
 Every frame uses screen coordinates. The unit is the point, and the origin is the top-left corner of the primary display. The x value grows to the right, and the y value grows downward. A display to the left of the primary display or above it has negative coordinates.
 
@@ -400,7 +403,21 @@ query DesktopWindowList {
 }
 ```
 
-Until Koine serves the window-server link, each order is null. Each visibility is `OFF_SCREEN` for a minimised window or a window of a hidden application, and `UNKNOWN` for every other window. Never treat `UNKNOWN` as on screen. A title can contain a document name, a web page title or a message subject, so treat titles as private data.
+Koine links each window to an entry of the window server's list of on-screen windows. The link uses a private window-number lookup first, and then the owner and the bounds. A row with a link is `ON_SCREEN`, and its order is its place front to back. The front window has the order 0, and those rows come first. A minimised window or a window of a hidden application is `OFF_SCREEN`. Every other row is `UNKNOWN`, with a null order.
+
+Never treat `UNKNOWN` as on screen. A window that is `ON_SCREEN` can still be under other windows. A title can contain a document name, a web page title or a message subject, so treat titles as private data.
+
+Call `desktopWindowOnTop` under `desktop:read` to ask whether a window is on top at a screen point. Ask before you place a label on the window, for example.
+
+```graphql
+query DesktopWindowOnTopAt($ref: Reference!, $point: DesktopPointInput!) {
+  desktopWindowOnTop(ref: $ref, point: $point)
+}
+```
+
+The answer is `ON_TOP` when the bounds of the window in the window server's list contain the point, and no opaque window covers it there. It is `NOT_ON_TOP` when those bounds do not contain the point, another window covers it there, or the window is off screen. It is `UNKNOWN` when Koine cannot link the window.
+
+The bounds can differ from the frame by 2 points. So a point on the edge of the frame can be `NOT_ON_TOP`. Your own label windows cover windows too, so ask before you draw your labels. A stale reference raises `unavailable`.
 
 Call `desktopSetWindowFrame` under `desktop:control` to move and resize one window. Pass the frame in screen coordinates, with a width and a height greater than zero. A frame without a positive size is an input error, and Koine attempts nothing.
 

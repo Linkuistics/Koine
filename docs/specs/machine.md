@@ -284,10 +284,11 @@ This identity is the `koine-desktop/1` contract. The
 [capture decision](../adr/desktop-capture-preserves-the-process-incarnation.md)
 records why Koine does not use an identity without the start instant.
 
-Koine uses public macOS Accessibility for listing, focus and notifications. So
-it accepts races that reach a wrong target, and reports that it cannot
-authenticate. The [native targeting discussion](#native-targeting-discussion)
-states the limits.
+Koine uses public macOS Accessibility for listing, focus, window frames and
+notifications. So it accepts races that reach a wrong target, and reports that
+it cannot authenticate. Window layout also uses the private window-number
+lookup, for order and visibility alone. The
+[native targeting discussion](#native-targeting-discussion) states the limits.
 
 | Coordinate | Type / arguments | Meaning and authority |
 |---|---|---|
@@ -955,11 +956,9 @@ two control operations to the desktop provider. The design is desktop release
 desktop 1.0.0 field keeps its meaning. `DesktopWindow` gains `application` and
 `frame`. Selection still uses `desktopFocusWindow`, unchanged.
 
-This tree serves the window list, the display list and frame setting. Until
-this tree serves the window-server link, each row of the window list has a null
-order. Its visibility is `OFF_SCREEN` for a minimised window or a hidden
-application, and `UNKNOWN` otherwise. The design holds the point query and
-display focus, and this tree does not serve them yet.
+This tree serves the window list with order and visibility, the point query,
+the display list and frame setting. The design holds display focus, and this
+tree does not serve it yet.
 
 Clients own every layout, the restore history, label placement and the move to
 another display. Koine computes no layout and keeps no frame history.
@@ -1022,6 +1021,16 @@ visibility is `UNKNOWN`. Two windows of one application with equal bounds stay
 apart only through their window numbers. When the lookup fails for them, both
 are unknown.
 
+Two windows never share one entry. When two windows give the same window
+number, neither has a link. A link by bounds to an entry that another window
+holds by its number is no link. When macOS returns no on-screen list, every
+window is unknown. When macOS has no `_AXUIElementGetWindow` function, the
+link uses owner and bounds alone, and the provider still loads.
+
+The window list and the point query link a window with the same candidates.
+These are the current windows of its application. The point query adds the
+window itself when its application does not enumerate it now.
+
 The link serves order and visibility only, and it never names a window in a
 reference. Every operation on a reference acts on the held element
 that the reference names
@@ -1040,10 +1049,14 @@ entries in front of the window.
 
 An entry covers the window when its bounds contain the point and it is
 opaque, with an alpha of 1. An entry with no alpha counts as opaque. Entries of
-every layer and every owner can cover, including the menu bar, the Dock and the windows of Koine. The answer is
-`NOT_ON_TOP` when an entry covers the window, or when the bounds of the linked
-entry do not contain the point. Otherwise it is `ON_TOP`. A rectangle contains
-its top and left edges, but not its bottom and right edges.
+every layer and every owner can cover, including the menu bar, the Dock and the
+windows of Koine. A rectangle contains its top and left edges, but not its
+bottom and right edges.
+
+The answer is `NOT_ON_TOP` when an entry covers the window, or when the bounds
+of the linked entry do not contain the point. When the linked entry has no
+bounds, the answer is `UNKNOWN`. So is the answer when an opaque entry in front
+has no bounds and no other entry covers the window. Otherwise it is `ON_TOP`.
 
 The answer tests the bounds of the linked entry, not the window frame. The
 window server draws and covers by bounds, so the whole answer comes from one
