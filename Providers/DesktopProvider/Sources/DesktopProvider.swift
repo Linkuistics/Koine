@@ -68,7 +68,15 @@ final class DesktopProviderFactory: NSObject, ProviderFactory {
             ProviderFieldRegistration(
                 coordinate: "DesktopFrameReceipt.ref", resolverId: "parent.ref", authority: .control
             ),
+            ProviderFieldRegistration(
+                coordinate: "Mutation.desktopFocusDisplay", resolverId: "focusDisplay", authority: .control
+            ),
         ]
+        fields += ["ref", "outcome", "pointerMoved"].map {
+            ProviderFieldRegistration(
+                coordinate: "DesktopDisplayFocusReceipt.\($0)", resolverId: "parent.\($0)", authority: .control
+            )
+        }
         // A host that cannot disclose the window layout reach refuses this release before it loads
         // (docs/specs/machine.md, "Compatibility and delivery").
         return ProviderDescriptor(
@@ -134,6 +142,7 @@ final class DesktopProvider: Provider, @unchecked Sendable {
             return .success(value)
         }
         if request.resolverId == "focusWindow" { return await focus(request.arguments["ref"]) }
+        if request.resolverId == "focusDisplay" { return await focusDisplay(request.arguments["ref"]) }
         if request.resolverId == "displays" { return await displays() }
         if request.resolverId == "setWindowFrame" {
             return await setFrame(request.arguments["ref"], to: request.arguments["frame"])
@@ -318,8 +327,37 @@ final class DesktopProvider: Provider, @unchecked Sendable {
     /// server's on-screen list, taken after every Accessibility read, through the
     /// links that `WindowStacking` makes.
     private func windowList() -> ResolutionResult {
-        guard AXIsProcessTrusted() else { return untrusted }
+        let rows: [ListRow]
+        switch readWindowList() {
+        case .success(let read): rows = read
+        case .failure(let failure): return .failure(failure)
+        }
+        return .success(
+            .list(
+                WindowStacking.presentation(rows.map(\.stacking)).map { position in
+                    .object([
+                        "window": rows[position].window,
+                        "order": rows[position].stacking.order.map(ProviderValue.int) ?? .null,
+                        "visibility": .string(rows[position].stacking.visibility.rawValue),
+                    ])
+                }
+            )
+        )
+    }
+
+    /// One row of the window list, in listing order: the window value, its frame, and its order and
+    /// visibility.
+    private struct ListRow {
+        let window: ProviderValue
+        let frame: ScreenRect?
+        let stacking: Stacking
+    }
+
+    /// The reading behind `desktopWindows`, which display focus makes too.
+    private func readWindowList() -> Result<[ListRow], ProviderFailure> {
+        guard AXIsProcessTrusted() else { return .failure(untrustedFailure) }
         var windows: [ProviderValue] = []
+        var frames: [ScreenRect?] = []
         var offScreen: [Bool] = []
         var candidates: [LinkCandidate] = []
         for running in NSWorkspace.shared.runningApplications
@@ -337,11 +375,12 @@ final class DesktopProvider: Provider, @unchecked Sendable {
             // One application that does not answer fails the read: a list without
             // its windows would be a false complete list.
             case .failed(let error):
-                return unanswered(error, application: running.localizedName ?? "An application")
+                return .failure(unansweredFailure(error, application: running.localizedName ?? "An application"))
             }
             for listed in rows {
                 let frame = listed.element.flatMap(frame(of:))
                 windows.append(row(process, listed, application: application, frame: frame))
+                frames.append(frame)
                 offScreen.append(isOffScreen(listed.element, applicationHidden: running.isHidden))
                 candidates.append(link(pid, listed.element, frame: frame))
             }
@@ -350,15 +389,7 @@ final class DesktopProvider: Provider, @unchecked Sendable {
             links: WindowStacking.links(candidates, entries: windowServerList()), offScreen: offScreen
         )
         return .success(
-            .list(
-                WindowStacking.presentation(stacking).map { position in
-                    .object([
-                        "window": windows[position],
-                        "order": stacking[position].order.map(ProviderValue.int) ?? .null,
-                        "visibility": .string(stacking[position].visibility.rawValue),
-                    ])
-                }
-            )
+            windows.indices.map { ListRow(window: windows[$0], frame: frames[$0], stacking: stacking[$0]) }
         )
     }
 
@@ -831,6 +862,111 @@ final class DesktopProvider: Provider, @unchecked Sendable {
         }
     }
 
+    // MARK: Display focus
+
+    /// `desktopFocusDisplay`: raises the front window on the display that `ref` names, activates its
+    /// application and moves the pointer to the centre of the display. It never clicks. The steps and their
+    /// order are `DisplayFocus.perform`. The front window comes from one reading of the window list, as
+    /// `desktopWindows` makes it, and it is focused as `desktopFocusWindow` focuses a window: by the reference
+    /// of its own row, so the action goes to that row's held element. The receipt names no window.
+    private func focusDisplay(_ ref: ProviderValue?) async -> ResolutionResult {
+        guard case .reference(let uri)? = ref, case .display(let id)? = DesktopReference(uri: uri) else {
+            return notADisplay
+        }
+        let display: ScreenRect
+        switch activeDisplay(id) {
+        case .success(let frame?): display = frame
+        case .success(nil): return displayGone
+        case .failure(let failure): return .failure(failure)
+        }
+        var references: [ProviderValue] = []
+        let centre = DisplayFocus.centre(of: display)
+        let result = await DisplayFocus.perform(
+            buttonHeld: { Self.pointerButtonHeld() },
+            choose: { () async -> Result<FrontWindow, ProviderFailure> in
+                let reading = await onQueue { self.readWindowList() }
+                return reading.map { rows in
+                    references = rows.map { row in
+                        if case .object(let fields) = row.window, let ref = fields["ref"] { return ref }
+                        return .null
+                    }
+                    return DisplayFocus.front(
+                        of: display, rows: rows.map { FocusRow(frame: $0.frame, stacking: $0.stacking) })
+                }
+            },
+            focus: { position in
+                switch await self.focus(references[position]) {
+                case .success: return nil
+                case .failure(let failure):
+                    // Consent stays a consent failure. Any other failure of the focus step is the failure of
+                    // display focus, because the reference that the client passed names the display.
+                    if failure.kind == .osPermission { return failure }
+                    return ProviderFailure(
+                        kind: .failed, message: "The front window on the display did not take focus. \(failure.message)"
+                    )
+                @unknown default:
+                    return ProviderFailure(kind: .failed, message: "The front window on the display did not take focus.")
+                }
+            },
+            move: { Self.movePointer(to: centre) }
+        )
+        switch result {
+        case .success(let receipt):
+            return .success(
+                .object([
+                    "ref": .reference(uri),
+                    "outcome": .string(receipt.outcome.rawValue),
+                    "pointerMoved": .bool(receipt.pointerMoved),
+                ])
+            )
+        case .failure(let failure): return .failure(failure)
+        }
+    }
+
+    /// The frame of the display while it is active, or nil when it is not active or its bounds come back
+    /// empty (docs/specs/machine.md, "Displays").
+    private func activeDisplay(_ id: UInt32) -> Result<ScreenRect?, ProviderFailure> {
+        // https://developer.apple.com/documentation/coregraphics/1454603-cggetactivedisplaylist
+        var count: UInt32 = 0
+        let failure = ProviderFailure(kind: .failed, message: "macOS did not list the active displays.")
+        guard CGGetActiveDisplayList(0, nil, &count) == .success else { return .failure(failure) }
+        var identifiers = [CGDirectDisplayID](repeating: 0, count: Int(count))
+        guard CGGetActiveDisplayList(count, &identifiers, &count) == .success else { return .failure(failure) }
+        guard identifiers.prefix(Int(count)).contains(id) else { return .success(nil) }
+        let frame = ScreenRect(CGDisplayBounds(id))
+        return .success(frame.isEmpty ? nil : frame)
+    }
+
+    /// Whether any pointer button is down now. "This returns the state of devices combined with synthesized
+    /// events at the moment, independent of which events have been delivered via the event stream."
+    /// https://developer.apple.com/documentation/appkit/nsevent/pressedmousebuttons
+    private static func pointerButtonHeld() -> Bool { NSEvent.pressedMouseButtons != 0 }
+
+    /// Modaliser's pointer move (`warpMouse` in its WindowManipulator.swift): a warp, and then one mouse-moved
+    /// event at the same point. A warp "moves the mouse cursor without generating events", so the event lets
+    /// the application under the pointer see it there. No event here presses a button.
+    /// https://developer.apple.com/documentation/coregraphics/cgwarpmousecursorposition(_:)
+    /// https://developer.apple.com/documentation/coregraphics/cgevent/post(tap:)
+    private static func movePointer(to point: (x: Double, y: Double)) -> ProviderFailure? {
+        let target = CGPoint(x: point.x, y: point.y)
+        let error = CGWarpMouseCursorPosition(target)
+        guard error == .success else {
+            return ProviderFailure(kind: .failed, message: "macOS did not move the pointer (CGError \(error.rawValue)).")
+        }
+        guard
+            let moved = CGEvent(
+                mouseEventSource: nil, mouseType: .mouseMoved, mouseCursorPosition: target, mouseButton: .left)
+        else {
+            return ProviderFailure(
+                kind: .failed, message: "The pointer moved, but macOS did not create the mouse-moved event.")
+        }
+        moved.post(tap: .cghidEventTap)
+        return nil
+    }
+
+    private var notADisplay: ResolutionResult { unavailable("The reference does not name a desktop display.") }
+    private var displayGone: ResolutionResult { unavailable("The display is no longer active.") }
+
     private func stopped(_ what: String, _ error: AXError) -> Step {
         // Consent can end while Koine runs, and between the trust check and the call.
         if error == .apiDisabled { return .ended(untrusted) }
@@ -857,20 +993,21 @@ final class DesktopProvider: Provider, @unchecked Sendable {
     /// Consent is asked about, never asked for: only Koine's own UI requests it.
     /// `AXIsProcessTrusted` takes no options, so it cannot carry the prompt one.
     /// https://developer.apple.com/documentation/applicationservices/1460720-axisprocesstrusted
-    private var untrusted: ResolutionResult {
-        .failure(
-            .osPermission("accessibility", message: "Koine needs Accessibility access to read and focus windows.")
-        )
+    private var untrusted: ResolutionResult { .failure(untrustedFailure) }
+
+    private var untrustedFailure: ProviderFailure {
+        .osPermission("accessibility", message: "Koine needs Accessibility access to read and focus windows.")
     }
 
     private func unanswered(_ error: AXError, application: String = "The application") -> ResolutionResult {
+        .failure(unansweredFailure(error, application: application))
+    }
+
+    private func unansweredFailure(_ error: AXError, application: String) -> ProviderFailure {
         // Consent can end while Koine runs, and between the trust check and the call.
-        if error == .apiDisabled { return untrusted }
-        return .failure(
-            ProviderFailure(
-                kind: .failed,
-                message: "\(application) did not answer for its windows (AXError \(error.rawValue))."
-            )
+        if error == .apiDisabled { return untrustedFailure }
+        return ProviderFailure(
+            kind: .failed, message: "\(application) did not answer for its windows (AXError \(error.rawValue))."
         )
     }
 }

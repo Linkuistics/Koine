@@ -95,8 +95,8 @@ PY
     control "two root fields transposed" \
         "s.replace('  \"Authenticated caller metadata. No provider capability required.\"\n  koine: Koine!\n  \"Proof of the submitted secret, or its resulting active grant; own request only.\"\n  koineGrantRequest: KoineGrantRequest', '  \"Proof of the submitted secret, or its resulting active grant; own request only.\"\n  koineGrantRequest: KoineGrantRequest\n  \"Authenticated caller metadata. No provider capability required.\"\n  koine: Koine!', 1)"
     if jq -e '.providers[] | select(.provider == "desktop" and .schemaVersion == "1.0.1")' "${profile}" >/dev/null; then
-        # The first cut of window layout is three query roots, frame setting and the types that they reach.
-        # The check holds each of them on its own.
+        # The first cut of window layout is three query roots, frame setting, display focus and the types
+        # that they reach. The check holds each of them on its own.
         control "the window list root removed" \
             "__import__('re').sub(r'  \"desktop:read\\. Lists the windows[^\n]*\"\n  desktopWindows[^\n]*\n', '', s, count=1)"
         control "the point query root removed" \
@@ -104,6 +104,10 @@ PY
         control "an on-top value removed" "s.replace('ON_TOP NOT_ON_TOP UNKNOWN', 'ON_TOP NOT_ON_TOP', 1)"
         control "the frame setting root removed" \
             "__import__('re').sub(r'  \"desktop:control\\. Moves and resizes[^\n]*\"\n  desktopSetWindowFrame[^\n]*\n', '', s, count=1)"
+        control "the display focus root removed" \
+            "__import__('re').sub(r'  \"desktop:control\\. Focuses this display[^\n]*\"\n  desktopFocusDisplay[^\n]*\n', '', s, count=1)"
+        control "a display focus outcome removed" \
+            "s.replace('FRONT_WINDOW_UNKNOWN POINTER_BUTTON_HELD }', 'FRONT_WINDOW_UNKNOWN }', 1)"
         control "the window frame made non-null" "s.replace('  frame: DesktopRect\n', '  frame: DesktopRect!\n', 1)"
         control "a display field's description changed" \
             "s.replace('Koine never invents a visible frame.', 'Koine may invent a visible frame.', 1)"

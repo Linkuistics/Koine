@@ -74,6 +74,8 @@ type Mutation {
   desktopFocusWindow(ref: Reference!): DesktopFocusReceipt
   "desktop:control. Moves and resizes exactly this window to this frame, and never a substitute. It does not raise the window or activate its application. During the writes, it turns off the application's enhanced accessibility setting, and then it turns the setting on again. It writes again, up to seven more times in about 350 ms, until the size is within 20 points of the request. A stale or wrong-kind reference raises unavailable. A desktop:control grant from an earlier Koine version can do this too."
   desktopSetWindowFrame(ref: Reference!, frame: DesktopRectInput!): DesktopFrameReceipt
+  "desktop:control. Focuses this display: it raises the front listed window there, activates its application and moves the pointer to the display's centre. With no window there, it only moves the pointer. It never clicks, and it never moves the pointer while a pointer button is held. A stale or wrong-kind reference raises unavailable. A desktop:control grant from an earlier Koine version can do this too."
+  desktopFocusDisplay(ref: Reference!): DesktopDisplayFocusReceipt
   """Requires workspace:control AND desktop:control. Launch or request reactivation of any registered installed app, not only configured shortcuts. Do not force a new instance; reuse a running copy unless applicationPath constrains the installation. Native acknowledgment is not a window-focus guarantee. Missing app is typed dependency absence; acknowledgment wait ends after three seconds or earlier cancellation, possibly after effects begin, with failed and no replay. The core request deadline may answer first. Koine resolves applicationPath and every registered copy it compares component by component, and copies compare by the device and inode that resolution finds. APPLICATION_NOT_INSTALLED keeps its meaning: no registration for the identifier, an applicationPath or unconstrained registered location that resolution finds missing, a present non-application, or a present constrained copy that is not registered; a whole-path ELOOP, ENAMETOOLONG or nil never establishes it, and a cycle or impossible name at an application location is failed. A constrained launch compares registered copies in order until one matches: one found missing or different is skipped; one whose resolution fails before the match is failed. A chosen or selected application location whose literal, link-expanded or resolved spelling is PATH_MAX (1,024) bytes or more, not counting its NUL, is failed before its metadata or any request: v1 does not hand such locations to applications. Link-budget exhaustion and unacquired native facts are failed. Established no-identifier remains mismatch for a named selector."""
   workspaceLaunchApplication(application: WorkspaceApplicationInput!): WorkspaceOpenResult
   """Requires workspace:control AND desktop:control. Accept the ASCII RFC 3986 section 3 URI grammar, including optional query/fragment, with HTTP(S) scheme, host, valid percent escapes and no credentials/whitespace/backslashes/control characters; Unicode requires caller encoding and IDNA host labels. Preserve bytes without repair. Resolve by scheme alone and address that default browser explicitly; no universal-link app dispatch or suggestions proxy. The browser may act on the page. Missing handler is typed dependency absence; wait ends after three seconds or earlier cancellation, possibly after effects begin, with failed and no replay. The core deadline may answer first."""
@@ -151,6 +153,19 @@ type DesktopFrameReceipt {
   "The submitted target, under the mutation's control authority."
   ref: Reference!
 }
+
+"Control-authorized output. It names no window."
+type DesktopDisplayFocusReceipt {
+  "The submitted display, under the mutation's control authority."
+  ref: Reference!
+  "What display focus did with the windows on the display."
+  outcome: DesktopDisplayFocusOutcome!
+  "True when the pointer moved to the centre of the display. False when a pointer button was held at the start or just before the move."
+  pointerMoved: Boolean!
+}
+
+"WINDOW_FOCUSED: the front window took focus. NO_WINDOW: no listed window is on the display, so Koine raised nothing. FRONT_WINDOW_UNKNOWN: Koine cannot establish the front window there, so it raised nothing. POINTER_BUTTON_HELD: a pointer button was held at the start, so Koine did nothing. The pointerMoved field says whether the pointer moved."
+enum DesktopDisplayFocusOutcome { WINDOW_FOCUSED NO_WINDOW FRONT_WINDOW_UNKNOWN POINTER_BUTTON_HELD }
 
 """A registered application bundle present at inspection, even if in the Trash. Requires a bundle identifier; bundle-less programs have no named-selector route. No executable, argv, environment or shell input."""
 input WorkspaceApplicationInput {

@@ -956,9 +956,8 @@ two control operations to the desktop provider. The design is desktop release
 desktop 1.0.0 field keeps its meaning. `DesktopWindow` gains `application` and
 `frame`. Selection still uses `desktopFocusWindow`, unchanged.
 
-This tree serves the window list with order and visibility, the point query,
-the display list and frame setting. The design holds display focus, and this
-tree does not serve it yet.
+This tree serves the whole design: the window list with order and visibility,
+the point query, the display list, frame setting and display focus.
 
 Clients own every layout, the restore history, label placement and the move to
 another display. Koine computes no layout and keeps no frame history.
@@ -1133,7 +1132,10 @@ the client read earlier.
 
 #### Display focus
 
-`desktopFocusDisplay(ref:)` acts in this order:
+`desktopFocusDisplay(ref:)` first resolves its reference. A reference that
+names no active display raises `unavailable`, and the provider reads nothing
+else. The provider keeps the frame of the display from that read. Then it acts
+in this order:
 
 - When a pointer button is held, it does nothing. The outcome is
   `POINTER_BUTTON_HELD`, and `pointerMoved` is false. A pointer move then would
@@ -1159,6 +1161,10 @@ Koine does not detect that press, and it does not promise that the check and
 the move are atomic.
 
 When focus fails, the operation reports `failed` and does not move the pointer.
+A failure of the window list read ends the operation in the same way. It
+reports the error that `desktopWindows` reports, and it raises nothing. When
+Koine lacks Accessibility consent, the error is `os-permission`.
+
 The receipt names the display, the outcome and whether the pointer moved. It
 names no window. Display focus needs `desktop:control` alone. Its own read of
 the window list is part of the action and publishes no window state.

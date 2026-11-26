@@ -377,7 +377,7 @@ nothing".
 
 ## Arranging windows
 
-Koine 0.5.0 serves four window layout operations of the [desktop contract](specs/machine.md#window-layout). A Koine 0.4.1 host does not serve them, so introspect the schema before you use the [operations](design/desktop-window-layout-operations.graphql).
+Koine 0.5.0 serves five window layout operations of the [desktop contract](specs/machine.md#window-layout). A Koine 0.4.1 host does not serve them, so introspect the schema before you use the [operations](design/desktop-window-layout-operations.graphql).
 
 Every frame uses screen coordinates. The unit is the point, and the origin is the top-left corner of the primary display. The x value grows to the right, and the y value grows downward. A display to the left of the primary display or above it has negative coordinates.
 
@@ -430,6 +430,23 @@ mutation SetDesktopWindowFrame($ref: Reference!, $frame: DesktopRectInput!) {
 The receipt says that the writes completed. It does not say that the window took the frame, because an application can limit its own size. Read the frame again under `desktop:read` to see where the window went. Koine does not raise the window or activate its application.
 
 To restore a window, read its frame before you change it and keep that frame in your client. Then set it again. Koine keeps no frame history. A window reference does not survive a restart of Koine. So a stale reference raises `unavailable`, and Koine never moves a substitute window.
+
+Call `desktopFocusDisplay` under `desktop:control` to focus a display. Pass a display reference from `desktopDisplays`.
+
+```graphql
+mutation FocusDesktopDisplay($ref: Reference!) {
+  desktopFocusDisplay(ref: $ref) { ref outcome pointerMoved }
+}
+```
+
+Koine raises the front window on the display and activates its application. Then it moves the pointer to the centre of the display. A window is on the display when the centre of its frame is on the display. Koine never clicks. The outcome says what Koine did with the windows:
+
+- `WINDOW_FOCUSED`: the front window took focus.
+- `NO_WINDOW`: no listed window is on the display, so Koine raised nothing.
+- `FRONT_WINDOW_UNKNOWN`: Koine cannot establish the front window, so it raised nothing. A window with an unknown frame or an unknown visibility causes this outcome.
+- `POINTER_BUTTON_HELD`: a pointer button was held, so Koine did nothing.
+
+The field `pointerMoved` says whether the pointer moved. Koine checks the pointer buttons again just before the move. When a button is held then, the pointer stays where it is. The receipt names no window, so read the window list under `desktop:read` to find the focused window. A display reference that names no active display raises `unavailable`.
 
 ## Searching for applications and files
 

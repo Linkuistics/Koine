@@ -33,7 +33,7 @@ The desktop provider reads applications and windows, and it focuses a window.
 
 Koine 0.5.0 adds window layout. A client with `desktop:read` calls `desktopWindows` to list the windows of every application with a Dock icon on the current Space. Each row has the frame of the window, its place in the front-to-back order and its visibility. The client calls `desktopWindowOnTop` to ask whether a window is on top at a screen point. It calls `desktopDisplays` to list the displays, each with a full frame and a visible frame.
 
-A client with `desktop:control` calls `desktopSetWindowFrame` to move and resize one window. Every frame uses screen coordinates, and the client computes every layout. The [client guide](docs/client-guide.md#arranging-windows) describes all four operations.
+A client with `desktop:control` calls `desktopSetWindowFrame` to move and resize one window. It calls `desktopFocusDisplay` to raise the front window on a display and move the pointer to the centre of that display. Koine never clicks. Every frame uses screen coordinates, and the client computes every layout. The [client guide](docs/client-guide.md#arranging-windows) describes all five operations.
 
 The workspace provider launches and activates applications. It opens URLs, documents and folders, and it reveals paths in Finder. Each of those actions needs `workspace:control` and `desktop:control`. 
 

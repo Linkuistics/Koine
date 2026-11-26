@@ -331,6 +331,9 @@ import Testing
                 ("DesktopRect.x", .read), ("DesktopRect.y", .read), ("DesktopRect.width", .read),
                 ("DesktopRect.height", .read),
                 ("DesktopFrameReceipt.ref", .control),
+                ("Mutation.desktopFocusDisplay", .control),
+                ("DesktopDisplayFocusReceipt.ref", .control), ("DesktopDisplayFocusReceipt.outcome", .control),
+                ("DesktopDisplayFocusReceipt.pointerMoved", .control),
             ],
             origin: .bundled
         )
@@ -389,13 +392,13 @@ import Testing
         #expect(try CanonicalSchemaText.digest(ofSDL: design) == digest)
     }
 
-    /// The coordinates the first cut of window layout adds to the desktop 1.0.0 contribution so far: three query
-    /// roots, frame setting, the two new window fields and every type they reach.
+    /// The coordinates the first cut of window layout adds to the desktop 1.0.0 contribution: three query roots,
+    /// frame setting, display focus, the two new window fields and every type they reach.
     static let windowLayoutCoordinates: Set<String> = [
         "Query.desktopWindows", "Query.desktopDisplays", "Query.desktopWindowOnTop", "Mutation.desktopSetWindowFrame",
-        "DesktopWindow.application", "DesktopWindow.frame", "DesktopPointInput", "DesktopRectInput",
-        "DesktopWindowStacking", "DesktopWindowVisibility", "DesktopOnTop", "DesktopRect", "DesktopDisplay",
-        "DesktopFrameReceipt",
+        "Mutation.desktopFocusDisplay", "DesktopWindow.application", "DesktopWindow.frame", "DesktopPointInput",
+        "DesktopRectInput", "DesktopWindowStacking", "DesktopWindowVisibility", "DesktopOnTop", "DesktopRect",
+        "DesktopDisplay", "DesktopFrameReceipt", "DesktopDisplayFocusReceipt", "DesktopDisplayFocusOutcome",
     ]
 
     /// The cut is visible to the one thing a client compares: the schema the 1.0.1 bundle serves differs from the
@@ -414,11 +417,10 @@ import Testing
         #expect(try CanonicalSchemaText.digest(ofSDL: released) != digest)
     }
 
-    /// What `display-focus-k5` has not served yet: display focus and the types that only it reaches. The set
-    /// shrinks as each root lands, never by rewording.
-    static let desktopCoordinatesNotYetImplemented: Set<String> = [
-        "Mutation.desktopFocusDisplay", "DesktopDisplayFocusReceipt", "DesktopDisplayFocusOutcome",
-    ]
+    /// What is not served yet: nothing. Display focus was the last root, so each composed file is the complete
+    /// window layout design. A root added to the design later that this set does not name turns the next test
+    /// red, and the set grows only for a root that has not landed.
+    static let desktopCoordinatesNotYetImplemented: Set<String> = []
 
     /// The desktop part of the window layout composition is the design SDL, never reworded: against the core plus
     /// the complete window layout design, the composed file lacks exactly the roots not served yet and the types

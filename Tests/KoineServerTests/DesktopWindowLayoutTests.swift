@@ -26,7 +26,14 @@ import Testing
         query DesktopWindowOnTopAt($ref: Reference!, $point: DesktopPointInput!) { \
         desktopWindowOnTop(ref: $ref, point: $point) }
         """
+    /// `FocusDesktopDisplay`, as docs/design/desktop-window-layout-operations.graphql has it.
+    static let focusDisplay = """
+        mutation FocusDesktopDisplay($ref: Reference!) { \
+        desktopFocusDisplay(ref: $ref) { ref outcome pointerMoved } }
+        """
     static let staleWindow = "koine://desktop/window/1000000/5/00ab34cd56ef7890/1"
+    /// A display identifier that no active display has.
+    static let inactiveDisplay = "koine://desktop/display/4294967294"
     static var someFrame: [String: Any] { ["x": 0, "y": 25, "width": 720, "height": 450] }
 
     // MARK: Displays
@@ -137,6 +144,71 @@ import Testing
             Self.setFrame, variables: ["ref": ref, "frame": Self.someFrame], authorization: "Bearer \(controller)"
         )
         try DesktopProviderTests.expectUnavailable(reply, at: "desktopSetWindowFrame")
+        await harness.stop()
+    }
+
+    // MARK: Display focus
+
+    /// A read-only grant cannot act: display focus is refused before the provider is asked.
+    @Test func focusingADisplayWithoutDesktopControlIsRefusedBeforeTheProviderIsAsked() async throws {
+        let harness = try await DesktopProviderTests.harness()
+        let reader = try await harness.consoleGrant(label: "reader", capabilities: ["desktop:read"])
+        let reply = try await harness.post(
+            Self.focusDisplay, variables: ["ref": Self.inactiveDisplay], authorization: "Bearer \(reader)")
+        let extensions = try #require(reply.errors.first?["extensions"] as? [String: Any])
+        #expect(extensions["kind"] as? String == "permission")
+        #expect(extensions["permissionClass"] as? String == "capability")
+        #expect(extensions["requiredCapability"] as? String == "desktop:control")
+        await harness.stop()
+    }
+
+    /// A reference that names no active display is unavailable. Decided before the pointer buttons are read
+    /// and before any Accessibility call, so these move nothing on the host. The grant has no desktop:read:
+    /// the action and its receipt need control alone.
+    @Test(arguments: [
+        inactiveDisplay, staleWindow, "LIVE-WINDOW-OTHER-SESSION", "LIVE-APPLICATION", "koine://desktop/display/01",
+        "koine://desktop/display/",
+    ])
+    func focusingAReferenceThatNamesNoActiveDisplayIsUnavailable(reference: String) async throws {
+        let harness = try await DesktopProviderTests.harness()
+        let controller = try await harness.consoleGrant(label: "controller", capabilities: ["desktop:control"])
+        let pid = try DesktopProviderTests.running().processIdentifier
+        let start = try DesktopProviderTests.startMicroseconds(pid)
+        let ref =
+            switch reference {
+            case "LIVE-APPLICATION": "koine://desktop/application/\(pid)/\(start)"
+            case "LIVE-WINDOW-OTHER-SESSION": "koine://desktop/window/\(pid)/\(start)/00ab34cd56ef7890/1"
+            default: reference
+            }
+        let reply = try await harness.post(
+            Self.focusDisplay, variables: ["ref": ref], authorization: "Bearer \(controller)")
+        try DesktopProviderTests.expectUnavailable(reply, at: "desktopFocusDisplay")
+        await harness.stop()
+    }
+
+    /// Without Accessibility consent, display focus on a live display is an OS permission error, and Koine
+    /// raises nothing and moves nothing. A pointer button held during the test gives `POINTER_BUTTON_HELD`,
+    /// which also moves nothing. With consent for the test process, the action would move the pointer of
+    /// this host. GUI work runs only in a VM, so then the test asks nothing.
+    @Test func withoutConsentFocusingALiveDisplayIsAPermissionErrorAndMovesNothing() async throws {
+        guard !AXIsProcessTrusted() else { return }
+        let harness = try await DesktopProviderTests.harness()
+        let controller = try await harness.consoleGrant(label: "controller", capabilities: ["desktop:control"])
+        let ref = "koine://desktop/display/\(CGMainDisplayID())"
+        let before = CGEvent(source: nil)?.location
+        let reply = try await harness.post(
+            Self.focusDisplay, variables: ["ref": ref], authorization: "Bearer \(controller)")
+        if let receipt = reply.data?["desktopFocusDisplay"] as? [String: Any] {
+            #expect(receipt["outcome"] as? String == "POINTER_BUTTON_HELD", "\(receipt)")
+            #expect(receipt["pointerMoved"] as? Bool == false)
+            #expect(receipt["ref"] as? String == ref)
+        } else {
+            let extensions = try #require(reply.errors.first?["extensions"] as? [String: Any])
+            #expect(extensions["kind"] as? String == "permission", "\(reply.errors)")
+            #expect(extensions["permissionClass"] as? String == "os-permission")
+            #expect(extensions["osPermission"] as? String == "accessibility")
+        }
+        #expect(CGEvent(source: nil)?.location == before, "the pointer did not move")
         await harness.stop()
     }
 
@@ -280,6 +352,11 @@ import Testing
         #expect(setFrame.hasPrefix("desktop:control."))
         #expect(setFrame.contains("turns off the application's enhanced accessibility setting"))
         #expect(setFrame.contains("A desktop:control grant from an earlier Koine version can do this too."))
+        let focusDisplay = try #require(descriptions["desktopFocusDisplay"])
+        #expect(focusDisplay.hasPrefix("desktop:control."))
+        #expect(focusDisplay.contains("moves the pointer to the display's centre"))
+        #expect(focusDisplay.contains("It never clicks"))
+        #expect(focusDisplay.contains("A desktop:control grant from an earlier Koine version can do this too."))
         await harness.stop()
     }
 
