@@ -1716,6 +1716,14 @@ tasks:
       - shfmt -d -i 4 scripts/vm-probe-reopen-focus.sh
       - scripts/vm-probe-reopen-focus.sh
 
+  app:vm-probe-resize-drag:
+    desc: Compare the corner drag of the menu bar scenario before and after its anchor point on a real guest (scripts/vm-probe-resize-drag.sh). A bounded probe, not an acceptance; it needs KOINE_TESTANYWARE_CLI and KOINE_VM_BASE, uses its own clone and stops it
+    cmds:
+      - bash -n scripts/vm-probe-resize-drag.sh
+      - shellcheck -x scripts/vm-probe-resize-drag.sh
+      - shfmt -d -i 4 scripts/vm-probe-resize-drag.sh
+      - scripts/vm-probe-resize-drag.sh
+
   app:vm-verify-menu-bar-prefix:
     desc: Run the focused prefix of the menu bar scenario (scripts/vm-verify-menu-bar-prefix.sh, the exact leading bytes of scripts/vm-verify-menu-bar.sh through the TextEdit quit, immediately before the resize) in a clean TestAnyware macOS VM; it records its status like app:vm-verify-menu-bar and sends no VM stop. Run it only under the reviewed finite caller of the ordering evaluation
     cmds:

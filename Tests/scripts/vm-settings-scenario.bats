@@ -799,6 +799,24 @@ DATE
     [[ "$(jq -s 'map(select(.operation == "failure-capture")) | length' "${settings_sim}/calls.jsonl")" == 1 ]]
 }
 
+# The flag loses the step from the press to the first held movement, as the
+# guest did (issue #21). The anchored drag grows the window to the destination.
+# The drag from before the anchor stops one step short and fails the scenario.
+@test "the anchored drag grows the window where the drag from before it stops short (k7)" {
+    export settings_flags=first-step-lost
+    run_scenario
+    [[ "${status}" == 0 && "${output}" == *'Larger: 40 40 703 903'* ]] || {
+        printf '%s\n' "${output}" | grep -E 'Larger|FAILED' >&2
+        return 1
+    }
+    reset_run
+    cp "${BATS_TEST_DIRNAME}/../../docs/verification/resize-drag/before-source/vm-window-resize-lib.sh" \
+        "${scenario_repo}/scripts/vm-window-resize-lib.sh"
+    run_scenario
+    [[ "${status}" == 1 && "${output}" == *'Larger: 40 40 681 884'* ]]
+    [[ "${output}" == *'FAILED: the window did not grow; resize acceptance is unestablished'* ]]
+}
+
 @test "a plain failed assertion takes the untouched failure observations before its receipt (k165)" {
     export settings_flags=resize-ignored
     run_scenario
@@ -1457,7 +1475,8 @@ held_fault() {
     for case in exit:up:resize-release:unavailable kill:up:resize-release:partial \
         exit:down:0:resize-down-0:unavailable kill:down:0:resize-down-0:partial \
         exit:down:5:resize-down-5:unavailable kill:down:5:resize-down-5:partial \
-        exit:down:10:resize-down-10:unavailable kill:down:10:resize-down-10:partial; do
+        exit:down:10:resize-down-10:unavailable kill:down:10:resize-down-10:partial \
+        exit:down:11:resize-down-11:unavailable kill:down:11:resize-down-11:partial; do
         outcome="${case##*:}"
         operation="${case%:*}"
         operation="${operation##*:}"

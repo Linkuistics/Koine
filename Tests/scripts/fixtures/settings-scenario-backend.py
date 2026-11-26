@@ -56,6 +56,10 @@ use of the domain instead:
   window-focus brings its target to the front. A guest showed both (k6,
   scripts/vm-probe-reopen-focus.sh). The flag `focus-ignored` makes each
   window-focus change nothing.
+- The flag `first-step-lost` makes a corner drag measure from the first held
+  movement after the press, so the step from the press to it is lost. A guest
+  showed it (k7, scripts/vm-probe-resize-drag.sh). Without the flag, the corner
+  follows the release, as the baseline record assumes.
 """
 
 from __future__ import annotations
@@ -528,9 +532,23 @@ def scroll(state: dict[str, Any], dy: int) -> None:
     state["offset"] = max(0, min(CONTENT_HEIGHT - visible, state["offset"] - 5 * dy))
 
 
+def hold(state: dict[str, Any], x: int, y: int) -> None:
+    """A held point: the press, then the first movement that anchors the drag."""
+    drag = state["drag"]
+    if drag is None:
+        state["drag"] = {"press": [x, y], "anchor": None}
+    elif drag["anchor"] is None and [x, y] != drag["press"]:
+        drag["anchor"] = [x, y]
+
+
 def release(state: dict[str, Any], x: int, y: int) -> None:
+    drag, state["drag"] = state["drag"], None
     if "resize-ignored" in FLAGS:
         return
+    if drag is not None and "first-step-lost" in FLAGS:
+        # The corner moves by the distance from the anchor, not from the press.
+        anchor = drag["anchor"] or [x, y]
+        x, y = drag["press"][0] + x - anchor[0], drag["press"][1] + y - anchor[1]
     left, top = state["frame"][:2]
     state["frame"][2] = max(440, x - left + 3)
     state["frame"][3] = max(352, y - top + 3)
@@ -679,6 +697,8 @@ def cli(state: dict[str, Any], arguments: list[str], root: Path) -> str:
             x, y = int(rest[0]), int(rest[1])
             if action == "click":
                 click(state, x, y)
+            elif action == "mouse-down":
+                hold(state, x, y)
             elif action == "mouse-up":
                 release(state, x, y)
             payload: dict[str, Any] = {"x": x, "y": y}

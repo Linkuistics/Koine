@@ -28,6 +28,10 @@ that the scenario reads after its focus step. There, the first window that is no
 Notification Center must be the TextEdit window, with `focused: true`.
 [The reopen focus step](#the-reopen-focus-step) records why each reopen needs it.
 
+The resize step drags the window's corner with an anchor point after the press.
+On macOS 27.2.1, a drag without it stopped one step short.
+[The anchor point](#the-anchor-point) records the diagnosis and the qualification.
+
 The setup and the closed-menu check after each menu selection read the size of
 each menu. A closed menu has the size `{0, 0}`. The checks read the menu names
 before, and a real guest showed that this signal cannot tell an open menu from a
@@ -226,6 +230,83 @@ These limits apply:
   cleanly. The failure screenshot then shows the state.
 - Whether Koine should give the focus back when its window closes is a product
   question. Issue #20 holds it.
+
+## The anchor point
+
+The resize step drags the bottom-right corner of the Settings window with held
+pointer points. Attempts 3 and 4 of the 0.4.1 release passed all four Settings
+selections. Both then failed at the resize with the frame 681 by 884 at 40, 40.
+The step needs a grown frame of at least 690 by 880. The frame matched the ninth
+of the eleven held points, so the last point seemed lost
+([issue #21](https://github.com/Linkuistics/Koine/issues/21)).
+
+The cause is in the first step of the drag. On macOS 27.2.1 with TestAnyware
+3.0.0, the resize measures the corner's movement from the first held movement
+after the press. So the step from the press to that movement is lost.
+The drag sent ten equal steps, so a lost first step looked like a lost last step.
+The qualification of 2026-10-28 ran on macOS 27.0.1 with TestAnyware 2.7.0. There,
+the resize measured from the press.
+
+The drag now sends an anchor point. After the press, `drag_window_corner` in
+`scripts/vm-window-resize-lib.sh` sends a held point one pixel toward the
+destination on each axis that moves. The ten points after it carry the same
+one-pixel shift, and the release comes at the last of them. The anchor takes the
+lost step, and the corner ends at the destination. The waits and the thresholds
+of the resize step do not change.
+
+`task app:vm-probe-resize-drag` (`scripts/vm-probe-resize-drag.sh`) compares the
+two drags on its own clone. It is a bounded probe, not an acceptance attempt. It
+drags TextEdit's Untitled window and Koine's first Settings window with the
+[drag from before the anchor](resize-drag/before-source/vm-window-resize-lib.sh).
+Then it drags two reopened Settings windows with the current drag. Each trial
+reads the frame at once after each drag and again two seconds later.
+
+All runs used clones of `testanyware-golden-macos-27`, with macOS 27.2.1, build
+26B131, and TestAnyware 3.0.0. Each run stopped its clone. The investigation took
+these steps:
+
+1. The probe compared Koine with two controls, with the drag from before the
+   anchor. TextEdit's window stopped at 679 by 884, and Koine's at 681 by 884. The
+   [0.4.1 run](resize-drag/hold-041-frames.tsv) and the
+   [0.4.0 run](resize-drag/hold-040-frames.tsv) gave the same frames. So the
+   short stop does not belong to Koine.
+2. Two repairs at the end of the drag failed. A second held point at the
+   destination, held for one second, changed nothing in the same runs. A
+   [held point one pixel past the destination](resize-drag/trailing-041-frames.tsv)
+   added one pixel. The [subject digests](resize-drag/trailing-041-subjects.sha256)
+   name each helper version.
+3. The [visible frame of the screen](resize-drag/visible-frame-screen.json) ends
+   at y 990, so the Dock does not limit the drag. Drags to three other
+   destinations each [stopped one step short](resize-drag/visible-frame-drags.tsv)
+   ([diagnostic](resize-drag/visible-frame-diag.sh)).
+4. A [diagnostic](resize-drag/midrag-diag.sh) read the frame after each held
+   point, with the button down. The [frame](resize-drag/midrag-reads.tsv) did not
+   change at point 1. From point 2 on, the corner followed the pointer exactly,
+   19 by 16 pixels behind it. That offset is the first step, 22 by 19, less the
+   3-pixel inset.
+5. The probe qualified the anchored drag on the notarised 0.4.1 bundle. Two
+   reopened windows grew from 480 by 712 to exactly 703 by 903. Both then reached
+   the least size, 440 by 352. In the same guest, the drag from before the anchor
+   stopped short. TextEdit stopped at 679 by 884, and Koine at 681 by 884. The
+   [frames](resize-drag/anchor-041-frames.tsv), the
+   [subject digests](resize-drag/anchor-041-subjects.sha256), the
+   [guest version](resize-drag/anchor-041-system.txt) and the
+   [grown window](resize-drag/anchor-041-grown.png) record the run.
+
+These limits apply:
+
+- No source that this leaf read says why the origin of the resize changed. The
+  cause may lie in macOS 27.2.1 or in TestAnyware 3.0.0. The model rests on this
+  guest release and these runs.
+- The probe writes no receipts, so its requests come about 65 ms closer together
+  than the scenario's. Attempt 5 of the release runs the anchored drag in the
+  scenario itself.
+- A reopened window keeps its last frame. The probe set each reopened window to
+  480 by 712 through Accessibility before its trial.
+- If a later guest measures from the press again, the corner ends one pixel past
+  the destination. The thresholds of the resize step accept that frame.
+- The route summary below and the dated sections of 2026-10-28 describe the drag
+  from before the anchor point.
 
 <!-- tc: pending because the conversion has not reached this part of the document -->
 

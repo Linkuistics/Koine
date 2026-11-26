@@ -1,0 +1,21 @@
+label	frame x y w h	focused	front application
+textedit-before-start	40 40 480 712	true	TextEdit
+textedit-before-grown	40 40 679 884	true	TextEdit
+textedit-before-grown-later	40 40 679 884	true	TextEdit
+textedit-before-least	40 40 124 145	true	TextEdit
+textedit-before-least-later	40 40 124 145	true	TextEdit
+koine-before-start	40 40 480 712	true	Koine
+koine-before-grown	40 40 681 884	true	Koine
+koine-before-grown-later	40 40 681 884	true	Koine
+koine-before-least	40 40 440 352	true	Koine
+koine-before-least-later	40 40 440 352	true	Koine
+koine-after-1-start	40 40 480 712	true	Koine
+koine-after-1-grown	40 40 682 885	true	Koine
+koine-after-1-grown-later	40 40 682 885	true	Koine
+koine-after-1-least	40 40 440 352	true	Koine
+koine-after-1-least-later	40 40 440 352	true	Koine
+koine-after-2-start	40 40 480 712	true	Koine
+koine-after-2-grown	40 40 682 885	true	Koine
+koine-after-2-grown-later	40 40 682 885	true	Koine
+koine-after-2-least	40 40 440 352	true	Koine
+koine-after-2-least-later	40 40 440 352	true	Koine

@@ -1,0 +1,3 @@
+93a0d04757f2cb8e43f19ff579971a316cd4dedb705becc4705088b0f7008094  .build/release-0.4.1/Koine-0.4.1-aarch64-apple-darwin.zip
+dc65f246058217ac57f66f6a91de579e23950223dde2edc266d42214cdcffc97  scripts/vm-window-resize-lib.sh
+6851d1bd6d88e8084a5d11db8f4fb7b531a42fcec588e36a2572d51b33b74405  docs/verification/resize-drag/before-source/vm-window-resize-lib.sh

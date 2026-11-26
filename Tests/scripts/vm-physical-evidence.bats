@@ -93,22 +93,23 @@ assert_blocked() {
     [[ "$(cat "${physical_waits}")" == $'0.3\n0.3\n1' ]]
 }
 
-@test "strict successful resize preserves corner, eleven held points, release and waits" {
+@test "strict successful resize preserves corner, twelve held points, release and waits" {
     drag_window_corner 740 940
-    jq -se 'length == 14 and .[0] == ["agent","windows","--vm","exact-physical-vm","--json"]
+    jq -se 'length == 15 and .[0] == ["agent","windows","--vm","exact-physical-vm","--json"]
         and .[1][0:4] == ["input","move","517","749"]
         and .[2][0:4] == ["input","mouse-down","517","749"]
-        and .[3][0:4] == ["input","mouse-down","539","768"]
-        and .[7][0:4] == ["input","mouse-down","628","844"]
-        and .[12][0:4] == ["input","mouse-down","740","940"]
-        and .[13][0:4] == ["input","mouse-up","740","940"]
+        and .[3][0:4] == ["input","mouse-down","518","750"]
+        and .[4][0:4] == ["input","mouse-down","540","769"]
+        and .[8][0:4] == ["input","mouse-down","629","845"]
+        and .[13][0:4] == ["input","mouse-down","741","941"]
+        and .[14][0:4] == ["input","mouse-up","741","941"]
         and all(.[]; .[-3:] == ["--vm","exact-physical-vm","--json"])' "${physical_calls}"
     [[ "$(cat "${physical_waits}")" == "$(
         printf '0.5\n0.2\n'
-        for _ in {1..10}; do echo 0.15; done
+        for _ in {1..11}; do echo 0.15; done
         echo 1
     )" ]]
-    jq -e '.outcome == "clean"' "${KOINE_VM_EVIDENCE_ROOT}/000014/result.json"
+    jq -e '.outcome == "clean"' "${KOINE_VM_EVIDENCE_ROOT}/000015/result.json"
 }
 
 @test "strict menu rejects mismatching and incomplete move or click payloads" {
@@ -210,7 +211,7 @@ assert_blocked() {
 
 @test "strict resize stops at each failed dispatch without unrecorded release" {
     local stage ordinal
-    for stage in {1..14}; do
+    for stage in {1..15}; do
         reset_physical "resize-failure-${stage}"
         export physical_at="${stage}" physical_status=255
         if drag_window_corner 740 940; then return 1; fi
@@ -223,7 +224,7 @@ assert_blocked() {
 
 @test "strict resize rejects wrong down and up coordinates or button" {
     local stage payload iteration=0
-    for stage in 3 8 14; do
+    for stage in 3 8 14 15; do
         for payload in '{"x":1,"y":2,"button":"left"}' \
             '{"x":740,"y":940,"button":"right"}' '{"x":740,"y":940}'; do
             iteration=$((iteration + 1))
@@ -338,8 +339,8 @@ assert_failed_wait() {
 
 @test "a failed resize wait in a conditional caller latches and stops all later input, including the release" {
     local wait
-    # Thirteen waits: after the move, after each of eleven held points, after the release.
-    for wait in {1..13}; do
+    # Fourteen waits: after the move, after each of twelve held points, after the release.
+    for wait in {1..14}; do
         reset_physical "resize-wait-${wait}"
         fail_wait_at "${wait}" 143
         status=0

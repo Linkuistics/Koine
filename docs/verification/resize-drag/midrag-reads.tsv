@@ -1,0 +1,33 @@
+paced	start	40 40 480 712
+paced	down 517,749	40 40 480 712
+paced	down 539,768	40 40 480 712
+paced	down 561,787	40 40 502 731
+paced	down 583,806	40 40 524 750
+paced	down 606,825	40 40 547 769
+paced	down 628,844	40 40 569 788
+paced	down 650,863	40 40 591 807
+paced	down 673,882	40 40 614 826
+paced	down 695,901	40 40 636 845
+paced	down 717,920	40 40 658 864
+paced	down 740,940	40 40 681 884
+paced	held 1s after 740,940	40 40 681 884
+paced	released 740,940	40 40 681 884
+paced	released +2s	40 40 681 884
+extra	start	40 40 480 712
+extra	down 517,749	40 40 480 712
+extra	down 539,768	40 40 480 712
+extra	down 561,787	40 40 502 731
+extra	down 583,806	40 40 524 750
+extra	down 606,825	40 40 547 769
+extra	down 628,844	40 40 569 788
+extra	down 650,863	40 40 591 807
+extra	down 673,882	40 40 614 826
+extra	down 695,901	40 40 636 845
+extra	down 717,920	40 40 658 864
+extra	down 740,940	40 40 681 884
+extra	down 745,945	40 40 686 889
+extra	down 750,950	40 40 691 894
+extra	down 740,940	40 40 681 884
+extra	held 1s after 740,940	40 40 681 884
+extra	released 740,940	40 40 681 884
+extra	released +2s	40 40 681 884
