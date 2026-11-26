@@ -201,109 +201,136 @@ Provider-native work must use bounded OS calls and cooperative cancellation.
 These limits are versioned policy, not a promise to interrupt arbitrary native
 code or to undo actions.
 
+<!-- tc: on -->
+
 ## Public GraphQL contract
 
-`koine-desktop/1` names the public contract, separately from plugin ABI
-versions. The [schema](../design/desktop-schema-extension-host.graphql) states exact
-types and nullability (the [original schema](../design/desktop-schema.graphql)
-is the old-host profile, kept as released, see "Conformance profiles"); the [client operations](../design/desktop-operations.graphql)
-show the handoff's requests. The schema Koine serves matches the schema file,
-checked by `task conformance`, for each profile against the host that serves it
-([schema-conformance-vm.md](../verification/schema-conformance-vm.md)), and the
-five operations run unmodified from a client generated only from the documented
-contract ([contract-only-client.md](../verification/contract-only-client.md)).
-The operations are the handoff's path, not a complete catalogue: a client may
-write its own, and none is published for management. The complete executable schema includes core management types and
-all active provider contributions. Every active authenticated grant, including
-one with no provider capabilities, can introspect that whole schema; discovery
-is not execution authority. Schema descriptions include resource-reference
-opacity, field capabilities and permission classifications. Standard GraphQL
-code generation consumes introspection; no private schema channel is required.
-Schema admission must preserve full standard introspection within the server's
-request/response limits. If adding a provider would exceed those limits,
-reject the contribution with a management diagnostic instead of exposing a
-schema that authenticated code-generation clients cannot fully inspect.
+`koine-desktop/1` names the public contract. Its version is separate from the
+plugin ABI versions. The [schema](../design/desktop-schema-extension-host.graphql)
+states the exact types and their nullability. The
+[original schema](../design/desktop-schema.graphql) is the old-host profile,
+kept as released, as "Conformance profiles" states. The
+[client operations](../design/desktop-operations.graphql) give the requests of
+the handoff.
 
-Three limits of the seam are the GraphQL library's rather than this contract's,
-measured against a running server in `SchemaConformanceTests` so that a library
-that lifts one is noticed here. Koine's own schema exercises none of them, and
-the introspection query a standard code generator sends is unaffected.
+For each profile, `task conformance` checks the schema that Koine serves
+against the schema file, on the host that serves that profile
+([schema-conformance-vm.md](../verification/schema-conformance-vm.md)). The five
+operations run unmodified from a client generated only from the documented
+contract ([contract-only-client.md](../verification/contract-only-client.md)).
+The operations are the path of the handoff, not a complete catalogue. A client
+may write its own operations, and Koine publishes none for management.
+
+The complete executable schema includes the core management types and all
+active provider contributions. Every active authenticated grant can introspect
+that whole schema, including a grant with no provider capabilities. Discovery
+is not execution authority. Schema descriptions include the opacity of resource
+references, field capabilities and permission classifications. Standard GraphQL
+code generation consumes introspection, and it needs no private schema channel.
+
+Schema admission must keep full standard introspection within the request and
+response limits of the server. If a new provider would take the schema past
+those limits, reject its contribution with a management diagnostic. Never
+expose a schema that authenticated code-generation clients cannot fully
+inspect.
+
+Three limits of the seam belong to the GraphQL library, not to this contract.
+`SchemaConformanceTests` measures them against a running server. So a library
+change that lifts one of them becomes visible here. Koine's own schema uses
+none of them. The introspection query that a standard code generator sends is
+not affected.
 
 - `__Type.fields` and `__Type.inputFields` come back **sorted by name**, not in
-  declared order. Declared order is therefore not recoverable from introspection,
-  which is consistent with clients comparing the schema digest rather than
-  recomputing it.
-- `__InputValue.isDeprecated` is served as null against a non-null declaration,
-  so a query that selects it — what `getIntrospectionQuery` sends under its
-  `inputValueDeprecation` option — fails at that position instead of answering.
-  No argument or input field in this contract is deprecated.
-- An **input-object field's default** is not reported, while an argument's is. No
-  input-object field in this contract has a default.
+  declared order. So introspection cannot recover the declared order. This
+  agrees with the rule that clients compare the schema digest and do not
+  compute it again.
+- The server serves `__InputValue.isDeprecated` as null, although its
+  declaration is non-null. So a query that selects it fails at that position,
+  and it gets no answer. `getIntrospectionQuery` sends such a query under its
+  `inputValueDeprecation` option. No argument or input field in this contract
+  is deprecated.
+- Introspection does not report the **default of an input-object field**, but
+  it reports the default of an argument. No input-object field in this
+  contract has a default.
 
-The following signatures define the desktop surface; the management surface's
-are in "Management authority and surface", and introspection serves both. `Reference` is a
-custom scalar serialized as a URI string; `ID` names management records only.
+The signatures below define the desktop surface. "Management authority and
+surface" gives the signatures of the management surface, and introspection
+serves both. `Reference` is a custom scalar, serialised as a URI string. `ID`
+names management records only.
+
 `DesktopProcessIdentity` contains a positive `pid: Int!` and
-`startedAt: DesktopProcessStart!`, the
-process start instant in canonical UTC with six fractional second digits. A
-client captures both at interaction start. The provider compares both before
-resolving; a recycled PID must not select a new application. A missing reliable
-start instant is an input error, not permission to silently target by PID alone.
-The instant is the kernel's record of the process's start, as
+`startedAt: DesktopProcessStart!`. The second value is the process start
+instant in canonical UTC, with six fractional second digits. A client captures
+both when the interaction starts. The provider compares both before it
+resolves the identity. A recycled PID must not select a new application. An
+identity without a reliable start instant is an input error, never permission
+to target by PID alone.
+
+The instant is the kernel's record of the start of the process, as
 `proc_pidinfo(PROC_PIDTBSDINFO)` reports it in `pbi_start_tvsec` and
-`pbi_start_tvusec` (`sysctl` `KERN_PROC_PID` reports the same record as
-`kp_proc.p_starttime`), written exactly as `YYYY-MM-DDTHH:MM:SS.ffffffZ` and
-compared exactly; any other form is an input error. Locating the process is the
-client's in the served baseline: desktop offers no lookup by name or bundle
-identifier. The designed [workspace launch/open extension](workspace-launch-and-open.md)
-can return an observed process incarnation after an explicit action; it does
-not change desktop's lookup input or reference contract.
+`pbi_start_tvusec`. The `sysctl` call `KERN_PROC_PID` reports the same record
+as `kp_proc.p_starttime`. The client writes the instant exactly as
+`YYYY-MM-DDTHH:MM:SS.ffffffZ`, and the provider compares it exactly. Any other
+form is an input error.
+
+<!-- tc: depart synonym-rotation because the link names the workspace launch extension by its title, and "start instant" is the glossary term -->
+In the served baseline, the client locates the process. Desktop offers no
+lookup by name or bundle identifier. The designed
+[workspace launch/open extension](workspace-launch-and-open.md) can return an
+observed process incarnation after an explicit action. It does not change the
+lookup input or the reference contract of desktop.
 
 This identity is the `koine-desktop/1` contract. The
 [capture decision](../adr/desktop-capture-preserves-the-process-incarnation.md)
 records why Koine does not use an identity without the start instant.
 
-Koine uses public macOS Accessibility for listing, focus and notifications, and
-accepts the wrong-target races and unauthenticated reports that entails; the
-[native targeting discussion](#native-targeting-discussion) states the limits.
+Koine uses public macOS Accessibility for listing, focus and notifications. So
+it accepts races that reach a wrong target, and reports that it cannot
+authenticate. The [native targeting discussion](#native-targeting-discussion)
+states the limits.
 
 | Coordinate | Type / arguments | Meaning and authority |
 |---|---|---|
-| `Query.koine` | `Koine!` | Server version and caller's grant; authenticated |
-| `Query.desktopApplication` | `(process: DesktopProcessIdentity!): DesktopApplication` | `desktop:read`; absent process returns null without error |
-| `Query.desktopApplicationByReference` | `(ref: Reference!): DesktopApplication` | `desktop:read`; stale reference is an execution error |
-| `Query.desktopWindow` | `(ref: Reference!): DesktopWindow` | `desktop:read`; stale reference is an execution error |
-| `DesktopApplication.ref` | `Reference!` | Opaque application reference |
-| `DesktopApplication.name` | `String!` | Display name; empty if the OS supplies none |
-| `DesktopApplication.bundleIdentifier` | `String` | Ordinary null for a process without one |
-| `DesktopApplication.windows` | `[DesktopWindow!]!` | On-demand provider resolution, including remembered windows |
-| `DesktopWindow.ref` | `Reference!` | Opaque window reference |
-| `DesktopWindow.title` | `String!` | Empty is a legitimate untitled window |
-| `DesktopWindow.observation` | `DesktopObservation!` | `CURRENT` or `REMEMBERED`; remembered display data may be stale |
-| `Mutation.desktopFocusWindow` | `(ref: Reference!): DesktopFocusReceipt` | `desktop:control`; focus exactly this target or report failure |
-| `DesktopFocusReceipt.ref` | `Reference!` | The submitted target, under the mutation's control authority |
+| `Query.koine` | `Koine!` | The server version and the grant of the caller. It needs authentication. |
+| `Query.desktopApplication` | `(process: DesktopProcessIdentity!): DesktopApplication` | `desktop:read`. An absent process returns null without an error. |
+| `Query.desktopApplicationByReference` | `(ref: Reference!): DesktopApplication` | `desktop:read`. A stale reference is an execution error. |
+| `Query.desktopWindow` | `(ref: Reference!): DesktopWindow` | `desktop:read`. A stale reference is an execution error. |
+| `DesktopApplication.ref` | `Reference!` | An opaque application reference. |
+| `DesktopApplication.name` | `String!` | The display name. It is empty when the OS supplies none. |
+| `DesktopApplication.bundleIdentifier` | `String` | Ordinary null for a process without one. |
+| `DesktopApplication.windows` | `[DesktopWindow!]!` | The provider resolves it on demand. It includes remembered windows. |
+| `DesktopWindow.ref` | `Reference!` | An opaque window reference. |
+| `DesktopWindow.title` | `String!` | An empty title is a legitimate untitled window. |
+| `DesktopWindow.observation` | `DesktopObservation!` | `CURRENT` or `REMEMBERED`. The title and other data of a remembered window may be stale. |
+| `Mutation.desktopFocusWindow` | `(ref: Reference!): DesktopFocusReceipt` | `desktop:control`. It focuses exactly this target, or it reports a failure. |
+| `DesktopFocusReceipt.ref` | `Reference!` | The submitted target, under the control authority of the mutation. |
 
-The schema file states these coordinates in **composition order** — the core's
-own root fields, then the bundled provider's — because the digest is taken over a
-canonical text that keeps declared order, and composition is what fixes it. The
-description of `Mutation.desktopFocusWindow` is the row above; it does not state
-mutation preflight, which is a property of every mutation, stated under
-"Mutation preflight and revocation", not of this one field.
+The schema file states these coordinates in **composition order**: first the
+root fields of the core, then those of the bundled provider. The digest covers
+a canonical text that keeps the declared order, and composition fixes that
+order. The description of `Mutation.desktopFocusWindow` is its row above. It
+does not state mutation preflight. Preflight is a property of every mutation,
+not of this one field, and "Mutation preflight and revocation" states it.
 
-All provider-owned read fields, including references and nested properties,
-require `desktop:read`. The receipt is a distinct output type authorized by
-`desktop:control`; it does not expose a window's read fields. That sentence is
-the type's description and the row above is `ref`'s; both belong in the schema. Read and control
-are separate capabilities; neither implies the other. ModalAnyware normally
-requests both. Root lookups and the mutation result are naturally nullable:
-absence and failure remain distinguishable by the presence of an error.
-Domain fields and window list elements retain meaningful non-null types.
+Every read field that a provider owns needs `desktop:read`, including
+references and nested properties. The receipt is a separate output type,
+authorised by `desktop:control`. It does not expose the read fields of a
+window. The schema carries that statement as the description of the type, and
+the row above as the description of `ref`.
 
-The client first resolves the captured process and selects `ref`, `name`, and
-`windows { ref title observation }`. It derives and presents choices locally.
-When the user chooses, it submits the returned window reference unchanged to
-`desktopFocusWindow`. A new reconstruction makes a new query. Introspection
-and the provider's read capability do not create a subscription or cache.
+Read and control are separate capabilities, and neither implies the other.
+ModalAnyware normally requests both. Root lookups and the mutation result are
+nullable by nature. The presence of an error keeps absence and failure apart.
+Domain fields and the elements of window lists keep meaningful non-null types.
+
+The client first resolves the captured process. It selects `ref`, `name` and
+`windows { ref title observation }`. It derives the choices and presents them
+locally. When the user chooses, the client submits the returned window
+reference unchanged to `desktopFocusWindow`. Each new reconstruction makes a new
+query. Introspection and the read capability of the provider create no
+subscription and no cache.
+
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
 ### Schema digest
 

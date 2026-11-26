@@ -39,24 +39,27 @@ The provider also serves two reads. A client with `workspace:read` calls `worksp
 
 The client calls `workspaceApplications` to list the applications that Spotlight has indexed on this Mac's disks, on mounted network volumes and in a remote home folder. Each choice has a path, a name and a bundle identifier. The result says whether it is complete, empty, unknown or failed. The query registers, resolves and launches nothing. The [client guide](docs/client-guide.md#searching-for-applications-and-files) describes both.
 
-<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
+Koine 0.4.0 implements the
+[selection of independently updated first-party providers](docs/specs/machine.md#first-party-provider-selection)
+of the workflow extension. At startup, it chooses one compatible bundle for each
+provider identity. Each bundle comes with Koine, or one user approved it.
+Koine recorded the acceptance of this selection before 0.3.0. That acceptance is
+established, except for the parts that need the certificate of a second
+Developer ID team.
 
-Koine 0.4.0 implements the workflow extension's
-[selection of independently updated first-party providers](docs/specs/machine.md#first-party-provider-selection):
-at startup it chooses one compatible bundle per provider identity, bundled or
-approved per user. Its acceptance, recorded before 0.3.0, is established except
-for the parts that need a second Developer ID team's certificate.
+Apple notarised Koine 0.4.0. Its checks passed in VMs on macOS 27.0.1 on Apple
+Silicon that enforce Gatekeeper. The one supported platform is macOS 26. The
+runs on macOS 26.5 rest on 0.3.0, and no 0.4.0 run repeated them. The
+"Acceptance status" section of the spec lists what is established, with its
+evidence, and what is still open.
 
-Koine 0.4.0 is notarized and verified in Gatekeeper-enforcing VMs on macOS 27.0.1
-on Apple Silicon. The one supported platform is macOS 26. The runs on macOS 26.5
-rest on 0.3.0, and no 0.4.0 run repeated them. The spec's "Acceptance status"
-lists what is established, with its evidence, and what is still open. A client
-names a process by PID and kernel start instant. Koine uses
-[public macOS Accessibility](docs/specs/machine.md#native-targeting-discussion),
-and accepts wrong-target data or effects during process or window reuse, stale
-notifications and mistaken reference withdrawal.
-Koine does not discover applications that are not running, and provides no LLM
-skill set.
+<!-- tc: depart synonym-rotation because "start instant" is the glossary term for the kernel record of a process start, and "launch" names the workspace action -->
+A client names a process by its PID and its kernel start instant. Koine uses
+[public macOS Accessibility](docs/specs/machine.md#native-targeting-discussion).
+So it accepts the data or the effects of a wrong target during process or
+window reuse. It also accepts stale notifications and the mistaken withdrawal
+of a reference. Koine does not discover applications that are not running, and
+it provides no LLM skill set.
 
 - [Writing a client](docs/client-guide.md): the contract version, how a client
   checks it, and what a client needs from each part of the contract
@@ -65,18 +68,21 @@ skill set.
 - [Configured workflow requirements](docs/requirements/modaliser-workflows.md):
   agreed requirements for planned provider extensions and application-menu access
 - GraphQL schema: [extension host](docs/design/desktop-schema-extension-host.graphql),
-  [original](docs/design/desktop-schema.graphql), and the [profiles](docs/design/profiles/); and
-  [client operations](docs/design/desktop-operations.graphql)
-- Decisions: [references as URIs](docs/adr/machine-references-as-uris.md),
-  [the server and native providers](docs/adr/koine-server-and-native-providers.md),
-  [first-party update selection](docs/adr/first-party-provider-selection.md),
-  [the resilient provider framework](docs/adr/resilient-provider-framework.md),
-  [bearer grants and live revocation](docs/adr/bearer-grants-and-live-revocation.md),
-  [window identity](docs/adr/desktop-window-identity-is-a-held-element.md),
-  [open-source release and distribution](docs/adr/open-source-release-and-distribution.md)
+  [original](docs/design/desktop-schema.graphql) and the [profiles](docs/design/profiles/)
+- Client operations: [desktop operations](docs/design/desktop-operations.graphql)
+- Decisions:
+  - [references as URIs](docs/adr/machine-references-as-uris.md)
+  - [the server and native providers](docs/adr/koine-server-and-native-providers.md)
+  - [first-party update selection](docs/adr/first-party-provider-selection.md)
+  - [the resilient provider framework](docs/adr/resilient-provider-framework.md)
+  - [bearer grants and live revocation](docs/adr/bearer-grants-and-live-revocation.md)
+  - [window identity](docs/adr/desktop-window-identity-is-a-held-element.md)
+  - [open-source release and distribution](docs/adr/open-source-release-and-distribution.md)
 - Evidence: [docs/verification](docs/verification/)
 - Shared terms: [CONTEXT.md](CONTEXT.md)
 - Diagrams: [docs/design/architecture](docs/design/architecture/README.md)
+
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
 ## Installing
 

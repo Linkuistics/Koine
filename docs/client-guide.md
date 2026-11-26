@@ -212,39 +212,47 @@ Standard GraphQL code generation works from Koine's introspection.
   provider name `(unknown)`, which no provider can have. Never show a plain
   success beside a refusal the same provider has.
 
+<!-- tc: on -->
+
 ## Process identity
 
-A client captures the application the user is interacting with **at interaction
-start**, as a process identity, and resolves it with `desktopApplication`.
-Finding the process is the client's job: Koine has no lookup by name or bundle
-identifier.
+<!-- tc: depart synonym-rotation because "start instant" is the glossary term for the kernel record of a process start, and launchDate is an AppKit identifier -->
+A client captures the application that the user works with **when the
+interaction starts**, as a process identity. Then it resolves that identity
+with `desktopApplication`. The client finds the process itself, because Koine
+has no lookup by name or bundle identifier.
 
-In `koine-desktop/1` the identity is `{ pid, startedAt }`, where
-`startedAt` is the kernel's start instant for that process as
-`proc_pidinfo(PROC_PIDTBSDINFO)` reports it (`pbi_start_tvsec` and
-`pbi_start_tvusec`; `sysctl` `KERN_PROC_PID` reports the same record as
-`kp_proc.p_starttime`), compared exactly. No command-line tool reports it at
-that precision, and `NSRunningApplication.launchDate` is a later instant that
-never matches.
+In `koine-desktop/1`, the identity is `{ pid, startedAt }`. The value of
+`startedAt` is the start instant of the process in the kernel, as
+`proc_pidinfo(PROC_PIDTBSDINFO)` reports it in `pbi_start_tvsec` and
+`pbi_start_tvusec`. The `sysctl` call `KERN_PROC_PID` reports the same record
+as `kp_proc.p_starttime`. Koine compares the instant exactly. No command-line
+tool reports it at that precision. `NSRunningApplication.launchDate` is a later
+instant, and it never matches.
 
 This identity is the `koine-desktop/1` contract. Capture it when the
-interaction starts and pass it unchanged; Koine never falls back to the PID
-alone. The [capture decision](adr/desktop-capture-preserves-the-process-incarnation.md)
-records why Koine does not use a non-time identity.
+interaction starts, and pass it unchanged. Koine never falls back to the PID
+alone. The
+[capture decision](adr/desktop-capture-preserves-the-process-incarnation.md)
+records why Koine does not use an identity without the start instant.
 
-Koine uses public macOS Accessibility. During process or window reuse it may
-return another target's data or act on it, and a notification or closure report
-may be stale or misattributed. A withdrawn reference stays unavailable and is
-never reused. After a call may have run, failure or a lost response does not
-prove nothing happened, so do not retry mutations automatically. The
+Koine uses public macOS Accessibility. During process or window reuse, Koine
+may return the data of another target or act on it. A notification or a
+closure report may be stale or attributed to the wrong target.
+
+A withdrawn reference stays unavailable, and Koine never uses it again. After a call may
+have run, a failure or a lost response does not prove that nothing happened.
+So do not retry mutations automatically. The
 [native targeting discussion](specs/machine.md#native-targeting-discussion)
 lists these accepted limits.
 
-An identity that names no running application — the process ended, or the pid
-belongs to another process — resolves to ordinary `null` with no error. That
-is the same answer a client gets for a process that is not an application, and
-the contract deliberately does not tell them apart: each is "that application is
-not running".
+An identity can name no running application, because the process ended or
+another process now has the PID. That identity resolves to ordinary `null`,
+with no error. A client gets the same answer for a process that is not an
+application. The contract does not tell the two cases apart on purpose: each
+means "that application is not running".
+
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
 ## Reading an answer
 
