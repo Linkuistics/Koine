@@ -287,7 +287,68 @@ step did not run on 0.4.1.
 **The Finder repair (2026-11-26).** Antony chose a narrow repair of the release
 check. Before the step opens its two Finder windows, it closes the Finder
 windows that the golden image restores. The leaf then runs the release check
-again, together with attempt 6. Issue #18 gets the new evidence. The other
+again, together with attempt 6.
+
+Issue #18 gets the new evidence. The other
 choices were an issue with no rerun, or a repair inside k8. The comment
 https://github.com/Linkuistics/Koine/issues/18#issuecomment-7183172805 records
 the evidence.
+
+**The Finder repair as made (2026-11-26).** Before Command-N, the release check
+presses Command-Option-W with Finder active. That closes every Finder window,
+the restored "Utilities" window too. The five other scripts close Finder windows
+with `osascript`. That route makes macOS ask once for Automation consent, and
+the release check asserts that no consent dialog shows. So the repair uses a key
+press.
+
+TestAnyware drops an unknown modifier name in silence, so the leaf took the
+spelling `option` from the source of its keymap. The one-title witness after
+Command-N stays as the judge.
+
+**Attempt 6 (2026-11-26).** Attempt 6 (`menu-bar-20261126T165831`, clone
+`koine-041-menu-6`) ran on the same notarised bundle. Both zips still had the
+recorded SHA-256. `task app:verify` passed, and the CDHash matched. The caller
+stopped the clone. The scenario exited 125 at the guest restart, before the
+login-launch assertions.
+
+All four Settings selections passed again. The anchored drag grew the window to
+703 by 903 and shrank it to 440 by 352. The scrolling, the shortcuts, the client
+requests, the consent, the silent launch, the reopen and the Quit with Command-Q
+passed too.
+
+The restart request (000670) reached the guest. Its stdout reads "Shutdown NOW!"
+and "System shutdown time has arrived". This time the reply arrived. The CLI
+exited 0 with `ok: true`, the outcome kind `cancelled` with
+`before_start: false`, exit code -1 and the stderr "Process cancelled".
+
+The read table admits a lost reply only as CLI status 1 with
+`CONNECTION_DROPPED`, and a normal reply needs a successful exit. So the backend
+recorded the step as unavailable and read no boot record.
+
+At SIGTERM, the TestAnyware agent cancels every running command and replies if
+it can (`agents/macos/Sources/testanyware-agent/AgentServer.swift`, "Agent run
+and SIGTERM"). So both reply forms come from one race: a closed connection gives
+`CONNECTION_DROPPED`, and a cancelled record that gets out first gives this
+form. The cause is the harness, not Koine.
+
+The assertions after the restart did not run. The leaf used the attempts that
+Antony allowed, so it asks Antony.
+
+**The release check after the Finder repair (2026-11-26).** The third run of
+`task app:vm-verify-release` (`release-20261126T170426`, clone
+`koine-041-release-3`) passed on the same notarised bundle, after attempt 6.
+Finder then had two windows, both "Recents", and every later assertion ran,
+through the login launch across the VM restart and the final Quit. With
+`task app:vm-verify-grant-workflows`, both other release VM checks now pass on
+0.4.1.
+
+**The cancelled reply (2026-11-26).** Antony chose to admit both reply forms.
+The restart then also counts after a cancelled reply with `before_start: false`.
+A later boot read must show a changed boot record. A diagnostic guest qualifies the rule before attempt 7. The other choices were to
+accept attempt 6, to rerun unchanged, or to stop with nothing shipped.
+
+The leaf inserted `settings-restart-cancelled-k9` ahead of itself. The repair is
+a separate slice, as k8 was. It has its own guest run, read-table change, tests
+and documents. This leaf stays live. Attempt 7 runs on the same notarised bundle
+after the repair retires. The release check needs no rerun, because the repair
+changes only the menu-bar scenario's restart read.

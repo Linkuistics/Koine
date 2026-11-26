@@ -367,6 +367,15 @@ create_grant "vm-release-controller" "${CONTROLLER_FILE}" desktop:control
 step "Real windows: two Finder windows with the same title, seen natively before Koine is asked anything"
 guest "open -a Finder" || true
 sleep 2
+# The golden image restores Finder windows of its own, such as "Utilities" (issue
+# #18), and a restored title breaks the one-title witness below. Command-Option-W
+# closes every Finder window. It is a key press because the osascript route makes
+# macOS ask once for Automation consent, and this run asserts that no consent
+# dialog shows. TestAnyware maps "option" to the Option key and drops an unknown
+# modifier name, so a misspelling would close one window only
+# (TestAnyware cli-rs/crates/testanyware-rfb/src/keymap.rs, modifier_for_name).
+testanyware input key w --modifiers cmd,option >/dev/null
+sleep 2
 testanyware input key n --modifiers cmd >/dev/null
 sleep 2
 testanyware input key n --modifiers cmd >/dev/null
