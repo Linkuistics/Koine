@@ -1,0 +1,5 @@
+241aa2df64aa5dcd3b0cc4181c5b06dc0ded0af8723dac76349697b7ef6880f2  scripts/vm-exec-one-shot-evidence-lib.sh
+cec44ce5ee6ee0d6f89311d3d7b7fa7ec8b293bd398988fb7dd544950076d2cd  scripts/vm-sysevents-evidence-lib.sh
+cec08a91008768dd2eb6e584a82ab056a57f5e28b4f2638d6b068d14d5c62907  scripts/vm-exec-read-evidence-lib.sh
+6a5a43d153eb449826b0d290d60372a3b0ee3aacab4fde2e5a56236c6edd97e4  scripts/vm-guest-exec.py
+53e3004d0f5d71b0ba73c457c12db9baf8b108322b4570caf8615ad1793889f3  scripts/vm_exec_reads.py

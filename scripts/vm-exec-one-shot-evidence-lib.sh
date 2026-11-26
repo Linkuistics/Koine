@@ -94,11 +94,17 @@ quit_guest_textedit() {
 # The one restart. BOOT is the clean boot record read before it. After a clean
 # submission, the existing 30-second wait, then at most sixty boot reads, each
 # unchanged boot followed by five seconds. 0 prints the changed boot record.
-# Exhaustion is a state failure of the restart, never a Koine failure. It also
-# covers a failed reboot request, because shutdown prints the same clean
-# stdout and exits 0 when reboot3 fails. A failed submission or a failed read, such as
-# a refused connection while the guest restarts, is unavailable at once, even
-# if the boot later changes.
+#
+# The guest can close the connection before its reply arrives. The backend then
+# records a clean lost reply (LOST_REPLY in scripts/vm_exec_reads.py), and only
+# the changed boot confirms the restart. Exhaustion is a state failure of the
+# restart, never a Koine failure.
+#
+# Exhaustion also covers a lost reply without a restart. It covers a failed
+# reboot request too, because shutdown prints the same clean stdout and exits 0
+# when reboot3 fails. Any other failed submission is unavailable at once, even
+# if the boot later changes. So is a failed read, such as a refused connection
+# while the guest restarts.
 restart_guest() {
     local root="${1-}" operation="${2-}" before sleep_status=0
     [[ $# == 3 && -n "${operation}" ]] || {

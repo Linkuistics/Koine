@@ -32,7 +32,9 @@ Settings title, and liveness before zero-window rejection.
 Process loss is separate. The prefix includes the TextEdit quit. Screenshots
 retain context, and they are not automatic acceptance. A restart disconnect
 stays unavailable despite a later boot. A known inability to obtain the required
-clean completion holds E01 for a new decision.
+clean completion holds E01 for a new decision. For issue #15, a lost restart reply
+counts as a restart when a later boot read shows a changed boot record, as the
+[menu-bar record](../menu-bar-vm.md#the-lost-restart-reply) states.
 
 Antony's [approved empirical scope](../../specs/settings-activation-discrimination.md#scope-after-no-candidate)
 removes the documented API-use-violation prerequisite for this named hypothesis

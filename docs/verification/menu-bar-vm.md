@@ -32,6 +32,10 @@ The resize step drags the window's corner with an anchor point after the press.
 On macOS 27.2.1, a drag without it stopped one step short.
 [The anchor point](#the-anchor-point) records the diagnosis and the qualification.
 
+The guest restart accepts a lost reply when a later boot read shows a changed
+boot record. [The lost restart reply](#the-lost-restart-reply) records the rule
+and its qualification.
+
 The setup and the closed-menu check after each menu selection read the size of
 each menu. A closed menu has the size `{0, 0}`. The checks read the menu names
 before, and a real guest showed that this signal cannot tell an open menu from a
@@ -43,8 +47,12 @@ Settings title, and liveness before zero-window rejection. Process loss is
 separate. The prefix includes the TextEdit quit. Screenshots retain context, and
 they are not automatic acceptance.
 
-A restart disconnect stays unavailable despite a later boot. A known inability to
-obtain the required clean completion holds E01 for a new decision.
+In the closed protocol, a restart disconnect stays unavailable despite a later
+boot. A known inability to obtain the required clean completion holds E01 for a
+new decision. For issue #15, a lost restart reply counts as a restart when a later
+boot read shows a changed boot record.
+[The lost restart reply](#the-lost-restart-reply) records the rule and its
+qualification.
 
 Antony's [approved empirical scope](../specs/settings-activation-discrimination.md#scope-after-no-candidate)
 removes the documented API-use-violation prerequisite for this named hypothesis
@@ -307,6 +315,76 @@ These limits apply:
   the destination. The thresholds of the resize step accept that frame.
 - The route summary below and the dated sections of 2026-10-28 describe the drag
   from before the anchor point.
+
+## The lost restart reply
+
+Before the login-launch assertions, the shared scenario restarts the guest.
+`restart_guest` in `scripts/vm-exec-one-shot-evidence-lib.sh` sends
+`shutdown -r now` once and waits 30 seconds. Then it makes at most sixty boot
+reads, five seconds apart, until the boot record changes. Attempt 5 of the 0.4.1
+release (`menu-bar-20261126T134522`) passed every assertion before the restart.
+In record 000670, the CLI exited 1 with `CONNECTION_DROPPED` 0.35 s after the
+request.
+
+The helper counted a failed submission as unavailable at once, so it read no boot
+record after the request. The evidence backend latched the root, and a latched
+root refuses each later scenario input. So the login launch and the final Quit
+did not run. Issue #17 records this race.
+
+TestAnyware 3.0.0 reports `CONNECTION_DROPPED` for a connection that failed after
+it opened, so the request can reach the guest. A refused dial is
+`CONNECTION_REFUSED`, and then the request did not leave the host. On 2026-11-26,
+Antony chose to accept a lost reply when a later boot read shows a changed boot
+record.
+
+The checked read table now admits one more answer for the `restart` submission:
+CLI status 1 with the exact CLI error envelope and the code `CONNECTION_DROPPED`.
+`LOST_REPLY` in `scripts/vm_exec_reads.py` names it. The backend records that
+attempt as clean, with the read record `"reply": "lost"`. The boot poll then
+decides the restart. Its waits and its bound do not change.
+
+These answers keep their meaning:
+
+- A clean refusal of the restart is unavailable at once. That covers a guest
+  failure, a guest timeout and other stdout.
+- Another failed submission is unavailable at once. That covers a missing
+  envelope, another code and a drop with another CLI status.
+- A failed boot read is unavailable at once, such as a refused connection while
+  the guest restarts.
+- An unchanged boot after the sixty reads is a state failure of the restart, not
+  of Koine. That covers a lost reply without a restart.
+
+Two guest runs used clones of `testanyware-golden-macos-27`, with macOS 27.2.1,
+build 26B131, and TestAnyware 3.0.0. Each run stopped its clone. The
+investigation took these steps:
+
+1. Before the change, a [scratch script](restart-reply/observe.sh) restarted a
+   clone twice with the raw CLI. Then it read the boot record every two seconds.
+   In both trials, the [reply](restart-reply/observe-calls.tsv) was
+   `CONNECTION_DROPPED` after about 0.4 s. The boot reads gave
+   `CONNECTION_REFUSED` for about 16 s. The boot record changed in the read about
+   18 s after the request.
+2. `task app:vm-probe-restart-reply` (`scripts/vm-probe-restart-reply.sh`) then
+   qualified the revised helper on its own clone. It is a bounded probe, not an
+   acceptance attempt. It installs nothing, because the restart does not depend
+   on Koine. It made two trials in one evidence root, with the real backend.
+3. In each [trial](restart-reply/probe-trials.tsv), the backend recorded a clean
+   lost reply ([trial 1](restart-reply/probe-000002/read.json),
+   [trial 2](restart-reply/probe-000006/read.json)). The first boot read after
+   the 30-second wait showed a changed boot record. All eight receipts are clean,
+   and the root did not latch. The [subject digests](restart-reply/probe-subjects.sha256)
+   and the [guest version](restart-reply/probe-system.txt) record the run.
+
+These limits apply:
+
+- The reply was lost in each of the five restarts on this guest release. The
+  result rests on this release and these runs.
+- The guest was back about 18 s after the request, inside the 30-second wait. A
+  slower guest whose first boot read fails stops as unavailable evidence.
+- The probe sends the restart without the scenario before it. Attempt 6 of the
+  release runs the revised restart in the scenario itself.
+- The closed protocol keeps its strict rule. Its records under
+  `settings-activation/` describe that rule.
 
 <!-- tc: pending because the conversion has not reached this part of the document -->
 

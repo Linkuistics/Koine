@@ -8,6 +8,10 @@ The tagged agent strips trailing whitespace from both streams.
 https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/agents/macos/Sources/TestAnywareAgent/ProcessRunner.swift
 Each call takes the next line of `read_script` when it exists, so a poll can
 see a sequence of guest answers. A line is `EXIT TIMED_OUT CLI STDOUT-FILE`.
+CLI is a status, or `STATUS:CODE` for a failure that prints the CLI error
+envelope with that code in JSON mode. The envelope has the four fields that the
+tagged CLI always prints, and the optional fields are left out.
+https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/output.rs
 """
 
 from __future__ import annotations
@@ -38,7 +42,7 @@ def stream_evidence(text: str) -> dict[str, object]:
     }
 
 
-def next_answer() -> tuple[int, bool, int, str]:
+def next_answer() -> tuple[int, bool, str, str]:
     script = Path(os.environ.get("read_script", "/nonexistent"))
     if script.exists():
         counter = Path(str(script) + ".used")
@@ -51,7 +55,7 @@ def next_answer() -> tuple[int, bool, int, str]:
         return (
             int(exit_code),
             timed_out == "true",
-            int(cli),
+            cli,
             # Bytes, so a CR in an answer survives, as in the agent's file.
             Path(stdout_file).read_bytes().decode("utf-8"),
         )
@@ -59,7 +63,7 @@ def next_answer() -> tuple[int, bool, int, str]:
     return (
         int(os.environ.get("read_exit_code", "0")),
         os.environ.get("read_timed_out", "false") == "true",
-        int(os.environ.get("read_cli_status", "0")),
+        os.environ.get("read_cli_status", "0"),
         stdout,
     )
 
@@ -123,10 +127,21 @@ def main() -> int:
         exit_code = -1
         note = "Process timed out after 30s"
         stderr = note if not stderr else f"{stderr}\n[{note}]"
-    if cli:
+    status, _, code = cli.partition(":")
+    if code and "--json" in args:
+        # A failure with the CLI error envelope, such as a dropped connection.
+        envelope = {
+            "schema_version": "1.0",
+            "ok": False,
+            "code": code,
+            "message": "synthetic transport failure",
+        }
+        print(json.dumps(envelope, indent=2))
+        return int(status)
+    if int(status):
         # A transport failure, such as the CLI's connection timeout (7).
         print("synthetic transport failure", file=sys.stderr)
-        return cli
+        return int(status)
     if "--json" not in args:
         if stdout:
             sys.stdout.write(stdout)

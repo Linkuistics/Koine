@@ -70,3 +70,68 @@ The delivery rule applies. A finding that does not break the happy path becomes
 a GitHub issue.
 
 ## Decisions (running log)
+
+**Where the harness accepts the lost reply (2026-11-26).** The evidence backend
+latches the root after any attempt that is not clean, and a latched root
+refuses each later scenario input. So the helper alone cannot accept a lost
+reply. The repair goes into the checked read table
+(`scripts/vm_exec_reads.py`) and its backend. The `restart` submission admits
+one more answer: CLI status 1 with the exact CLI error envelope and the code
+`CONNECTION_DROPPED`. The backend records that attempt as clean, and its read
+record says `"reply": "lost"`.
+
+The boot poll that follows then decides the restart.
+The outcome vocabulary stays as it is, so the tooling of the closed protocol
+reads a root without change. Every other failure of the submission stays
+unavailable at once. That covers a missing envelope, another code, a timeout,
+a guest failure and other stdout.
+
+TestAnyware 3.0.0 gives `CONNECTION_DROPPED` for a connection that failed
+after it opened, so the request can reach the guest
+(`cli-rs/crates/testanyware-agent-client/src/lib.rs`, `dropped`). A refused
+dial is `CONNECTION_REFUSED`, and then the request did not leave the host.
+
+**The raw observation (2026-11-26).** Before the change, a scratch script
+restarted a clone of `testanyware-golden-macos-27` twice
+(`.build/vm-verify/restart-observe-20261126T051132Z`, macOS 27.2.1, 26B131).
+It sent the restart with the raw CLI and then read the boot record every two
+seconds. In both trials, the reply was `CONNECTION_DROPPED` after about 0.4 s.
+The boot reads gave `CONNECTION_REFUSED` for about 16 s. The boot record
+changed in the read about 18 s after the request.
+
+So the drop occurred in three of three restarts on today's guest, with attempt
+5. The helper waits 30 s before its first boot read, and the guest was back
+after 18 s. The repair therefore keeps a failed boot read unavailable at once,
+as the task allows. The delivery rule applies: a slower guest that needs more
+than 30 s is a hardening case for an issue.
+
+**The qualification (2026-11-26).** `task app:vm-probe-restart-reply`
+(`scripts/vm-probe-restart-reply.sh`) ran the revised `restart_guest` with the
+real backend on its own clone (`.build/vm-verify/restart-reply-20261126T051903Z`,
+clone `koine-restart-reply-probe`, macOS 27.2.1, 26B131). It made two trials in
+one evidence root. In each trial, the reply was `CONNECTION_DROPPED` with CLI
+status 1. The backend recorded a clean lost reply.
+
+In each trial, the first boot read after the 30-second wait showed a changed
+boot record. All eight receipts are clean, and the root did not latch. The
+probe stopped its clone. `docs/verification/restart-reply/` keeps the trials,
+the subject digests, the two restart attempts and the raw observation.
+
+**The link check (2026-11-26).** `task check:docs` fails on one link in
+`ORDERING-PROVENANCE-RESULTS.md`, which points to a removed grove task file.
+The same link is on `main` and on the parent of this change, so this leaf did
+not cause it. The new documents add no failure. The leaf filed #22 by the
+delivery rule.
+
+**The checks (2026-11-26).** Seventeen Taskfile checks read the helper, the
+backend, the read table, the fixture CLI, the scenario, its backend or the
+baseline. Each passed: `check:vm-exec-one-shot-evidence`,
+`check:vm-exec-one-shot-host`, `check:vm-exec-read-evidence`,
+`check:vm-exec-read-host`, `check:vm-guest-exec`, `check:vm-sysevents-evidence`,
+`check:vm-sysevents-host`, `check:settings-baseline`,
+`check:vm-settings-scenario`, `check:vm-settings-prefix`,
+`check:vm-settings-sequence`, `check:vm-capture-evidence`,
+`check:vm-file-lifecycle-evidence`, `check:vm-input-evidence`,
+`check:vm-menu-pointer`, `check:vm-verify-start` and `check:vm-window-resize`.
+The leaf posted the result on issue #17. Attempt 6 of `release-0-4-1-k4` runs
+on the same notarised bundle.

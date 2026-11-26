@@ -88,6 +88,20 @@ menu of each closed item, so attempt 1 of the release stopped at the setup. A
 diagnostic guest qualified the size, as the
 [menu-bar record](../verification/menu-bar-vm.md#the-open-menu-signal) states.
 
+For issue #15, the guest restart of the shared scenario accepts a lost reply.
+The guest can close the connection before the reply to the restart arrives.
+TestAnyware then reports `CONNECTION_DROPPED`, and the evidence backend records a
+clean lost reply. The restart then counts when a later boot read shows a changed
+boot record. An unchanged boot after the sixty reads is a failure of the restart, not
+of Koine.
+
+A clean refusal of the restart and every other failed submission stay
+unavailable evidence. So does a failed boot read. Attempt 5 of the release
+stopped at a lost reply. A diagnostic guest qualified the rule, as the
+[menu-bar record](../verification/menu-bar-vm.md#the-lost-restart-reply) states.
+The closed protocol keeps a restart disconnect unavailable, as the evaluation
+section below states. That rule does not bind issue #15.
+
 One clean run of `task app:vm-verify-menu-bar` on the notarised 0.4.1 bundle
 accepts the candidate. A clean run passes every assertion of the check, apart from
 a resize that the script reports as NOT RUN. In that run, each of the four Settings

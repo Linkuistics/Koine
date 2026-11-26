@@ -366,11 +366,53 @@ declare -gA LEGACY=(
     [[ ! -e "${read_root}/unavailable" ]]
 }
 
-@test "a failed restart submission is unavailable even if the boot later changes" {
+@test "a dropped restart reply counts as a restart when a later boot read changes" {
+    # shellcheck disable=SC2329
+    sleep() { printf '%s\n' "$1" >>"${BATS_TEST_TMPDIR}/sleeps"; }
+    script "0 false 1:CONNECTION_DROPPED ${SHUTDOWN_OUT}" "0 false 0 ${BOOT_BEFORE}" "0 false 0 ${BOOT_AFTER}"
+    run restart_guest "${read_root}" restart "${BEFORE_RECORD}"
+    echo "diagnostic: status=${status} calls=$(calls) sleeps=$(sleeps) output=${output}"
+    [[ "${status}" == 0 && "$(calls)" == 3 && "$(sleeps)" == "30 5 " ]]
+    jq -e '.sec == 1795271000 and .usec == 450002' <<<"${output}"
+    jq -e '.outcome == "clean" and .cli_status == 1' "${read_root}/000001/result.json"
+    jq -e '.read == "restart" and .reply == "lost" and .code == "CONNECTION_DROPPED"
+        and (has("submitted") | not)' "${read_root}/000001/read.json"
+    [[ ! -e "${read_root}/unavailable" ]]
+}
+
+@test "a dropped restart reply with an unchanged boot for sixty reads is a state failure" {
+    # shellcheck disable=SC2329
+    sleep() { printf '%s\n' "$1" >>"${BATS_TEST_TMPDIR}/sleeps"; }
+    script "0 false 1:CONNECTION_DROPPED ${SHUTDOWN_OUT}" "0 false 0 ${BOOT_BEFORE}"
+    run restart_guest "${read_root}" restart "${BEFORE_RECORD}"
+    echo "diagnostic: status=${status} calls=$(calls)"
+    [[ "${status}" == 125 && "$(calls)" == 61 && "$(sleeps)" == "30 $(printf '5 %.0s' {1..60})" ]]
+    jq -e '.reply == "lost"' "${read_root}/000001/read.json"
+    grep -rl '"operation": "restart-boot-exhausted"' "${read_root}"/*/request.json
+    assert_latched
+}
+
+@test "a dropped reply of any other submission stays unavailable" {
+    local name index=0
+    for name in open-koine extract-bundle open-textedit quit-textedit request-automation open-accessibility-pane; do
+        index=$((index + 1))
+        reset_root "dropped-${index}"
+        answer '' 0 false 1:CONNECTION_DROPPED
+        run submit_guest_once "${read_root}" "submit-${name}" "${name}"
+        echo "diagnostic: name=${name} status=${status} calls=$(calls)"
+        [[ "${status}" == 125 && "$(calls)" == 1 && ! -e "${read_root}/000001/read.json" ]]
+        assert_latched
+    done
+}
+
+@test "a refused or failed restart submission is unavailable even if the boot later changes" {
     local failure index=0
     # shellcheck disable=SC2329
     sleep() { printf '%s\n' "$1" >>"${BATS_TEST_TMPDIR}/sleeps"; }
-    for failure in '-1 true 0' '0 false 7' '0 false 255' '1 false 0'; do
+    # A guest failure, a guest timeout, two transport failures without an
+    # envelope, a refused dial, a drop with another status and a CLI timeout.
+    for failure in '1 false 0' '-1 true 0' '0 false 7' '0 false 255' '0 false 1:CONNECTION_REFUSED' \
+        '0 false 7:CONNECTION_DROPPED' '0 false 1:CONNECTION_TIMEOUT'; do
         index=$((index + 1))
         reset_root "restart-${index}"
         script "${failure} ${SHUTDOWN_OUT}" "0 false 0 ${BOOT_AFTER}"

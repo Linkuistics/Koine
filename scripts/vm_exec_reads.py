@@ -1190,12 +1190,59 @@ SUBMISSIONS: dict[str, tuple[str, str]] = {
     # request, not its acceptance. Only the changed boot confirms the restart.
     # The lock failure path exits 0 after the first line only. The agent strips
     # the trailing CR LF, and BEL is not whitespace. The password is the legacy one.
+    # The guest can close the connection before this reply arrives. LOST_REPLY
+    # admits that one answer, and only restart_guest sends this submission.
     # https://github.com/apple-oss-distributions/system_cmds/blob/408bba7453608006b89772db185defbac8fe2fd0/shutdown/shutdown.c
     "restart": (
         "echo admin | sudo -S shutdown -r now",
         "Shutdown NOW!\n\r\nSystem shutdown time has arrived\x07\x07",
     ),
 }
+
+
+# The submissions whose reply the guest can lose, and the code of that loss.
+# TestAnyware 3.0.0 reports CONNECTION_DROPPED for a connection that failed
+# after it opened, so the request can reach the guest. A refused dial is
+# CONNECTION_REFUSED, and then the request did not leave the host. On a
+# macOS 27.2.1 guest, the reply to the restart was lost in each restart
+# (k8). Only a changed boot record then confirms the restart.
+# https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-agent-client/src/lib.rs
+LOST_REPLY: dict[str, str] = {"restart": "CONNECTION_DROPPED"}
+# The CLI error envelope: four fields that it always prints, and two optional
+# ones. exit_code_for gives the CLI status of each code.
+# https://github.com/Linkuistics/TestAnyware/blob/v3.0.0/cli-rs/crates/testanyware-cli/src/output.rs
+ERROR_FIELDS = frozenset({"schema_version", "ok", "code", "message"})
+ERROR_OPTIONAL = frozenset({"remediation", "details"})
+ERROR_STATUS: dict[str, int] = {"CONNECTION_DROPPED": 1}
+
+
+def lost_reply(
+    name: str, envelope: dict[str, object], cli_status: int
+) -> dict[str, object] | None:
+    """The record of a submission whose reply was lost, or None.
+
+    Only the exact error envelope of the admitted code, with its CLI status,
+    is a lost reply. The record has no `submitted` field, because nothing
+    shows that the guest took the request.
+    """
+    code = LOST_REPLY.get(name)
+    if code is None or cli_status != ERROR_STATUS[code]:
+        return None
+    if not (
+        ERROR_FIELDS <= set(envelope) <= ERROR_FIELDS | ERROR_OPTIONAL
+        and envelope["schema_version"] == "1.0"
+        and envelope["ok"] is False
+        and envelope["code"] == code
+        and isinstance(envelope["message"], str)
+    ):
+        return None
+    return {
+        "read": name,
+        "arguments": [],
+        "reply": "lost",
+        "code": code,
+        "message": envelope["message"],
+    }
 
 
 def submission_read(name: str) -> Read:

@@ -46,6 +46,10 @@ use of the domain instead:
 - Two flags exhaust the restart polls for the baseline control (k175).
   `boot-stuck` keeps the boot time after a restart. `login-not-started` starts
   no Koine at login.
+- The flag `restart-reply-lost` answers the restart with the clean record of a
+  lost reply, which the real backend prints after `CONNECTION_DROPPED`. The
+  guest still restarts. A guest lost each restart reply (k8,
+  scripts/vm-probe-restart-reply.sh).
 - `settings_no_value=OPERATION` omits AXValue from `grant-label` in that one
   snapshot (k175). A failed AX copy omits it, so the field is not empty.
 - Each menu bar item has one menu. A closed menu has the size {0, 0}, and an
@@ -950,6 +954,13 @@ def submission(state: dict[str, Any], name: str) -> dict[str, Any]:
             state["boot"] = [state["boot"][0] + 600, 2]
         if state["login"] and "login-not-started" not in FLAGS:
             start_koine(state, window=False)
+        if "restart-reply-lost" in FLAGS:
+            return {
+                "reply": "lost",
+                "code": "CONNECTION_DROPPED",
+                "message": "connection dropped: "
+                "connection closed before message completed",
+            }
     elif name != "extract-bundle":
         raise SystemExit(f"unsimulated read: {name}")
     return {"stdout": ""}
@@ -1047,7 +1058,10 @@ def main() -> int:
             log(entry)
             return 125
     elif action == "read":
-        output = json.dumps(read(state, arguments[3], arguments[4:]))
+        record = read(state, arguments[3], arguments[4:])
+        output = json.dumps(record)
+        if "reply" in record:
+            entry["reply"] = record["reply"]
     elif action == "capture":
         output = envelope(
             {

@@ -809,9 +809,21 @@ def run_locked(
             reason = validate_response(
                 attempt, command, cli_status, predicate, lock_fd, jq, transport
             )
+            lost: dict[str, object] | None = None
+            if reason and transport == "read" and cli_status:
+                # The table admits a lost reply only for a named submission.
+                try:
+                    lost = vm_exec_reads.lost_reply(
+                        arguments[0], read_object(attempt / "raw.stdout"), cli_status
+                    )
+                except (ValueError, UnicodeError):
+                    lost = None
+                if lost is not None:
+                    reason = ""
+                    write_json(attempt / "read.json", lost)
             if not reason and transport == "cli":
                 reason = diagnostic_problem(argv, (attempt / "raw.stderr").read_bytes())
-            if not reason and transport == "read":
+            if not reason and transport == "read" and lost is None:
                 envelope = read_object(attempt / "raw.stdout")
                 try:
                     record = vm_exec_reads.parse(
