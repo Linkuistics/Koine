@@ -61,3 +61,17 @@ These are questions to test, not conclusions:
   reconciled?
 - Does the disclosure draft state the reach for a new grant request and for an
   existing grant after the upgrade?
+
+
+## Findings
+
+The findings are in
+[the design review](../docs/verification/desktop-window-layout-design-review.md).
+They are part of this review's commit.
+
+## Decisions (running log)
+
+**Integration.** F1–F4 meet the acceptance or material-risk threshold. A single
+flat integration leaf will follow this review and precede implementation.
+That session will verify and classify each finding from this review's commit.
+The review applies no fixes and requests no additional adversarial review.
