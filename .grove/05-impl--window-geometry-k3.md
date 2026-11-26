@@ -23,6 +23,11 @@ disclosure, as the design of `window-layout-k2` defines them.
   designed authority, with L and G tests.
 - Frame setting disables `AXEnhancedUserInterface` during the writes. It
   repeats the write until the size matches, as the contract states.
+- The display list follows the display table in the contract. It leaves out
+  a display with empty bounds. A visible frame is null when no AppKit screen
+  matches, or when the converted frame is outside the display's frame. A
+  failed `CGGetActiveDisplayList` reports `failed`. L tests cover both null
+  cases (`window-layout-k9`).
 - The core advertises `desktop-disclosures-v1`, and the desktop provider
   requires it. The Settings window, the management catalogue and the GraphQL
   descriptions carry the disclosure.

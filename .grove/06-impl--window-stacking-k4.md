@@ -23,6 +23,9 @@ mechanism, as the design of `window-layout-k2` defines them.
 - An entry with an alpha below 1 does not cover a window, as in Modaliser.
   Unlike Modaliser, Koine's own windows cover, because Koine draws no labels.
   Koine reports unknown where Modaliser assumes visible.
+- The point answer tests the bounds of the linked entry, not the window
+  frame. The 2-point tolerance decides only whether the link holds
+  (`window-layout-k9`).
 - L tests feed plain values through the three ordering steps and the
   visibility rules. G tests cover authority and unknown values.
 - The session decided whether an adversarial review is necessary before

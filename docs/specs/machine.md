@@ -940,8 +940,10 @@ of the primary display or above it has negative coordinates.
 
 Accessibility window frames, the bounds in the window server's list,
 `CGDisplayBounds` and the pointer use this space already. The provider converts
-one value. It flips `NSScreen.visibleFrame` against the full height of the
-primary display, as Modaliser does.
+one value. It flips `NSScreen.visibleFrame` against the full height of the first
+screen in the same `NSScreen.screens` reading, as Modaliser does. AppKit puts
+the primary screen first. When the result is not inside the frame of its
+display, the two readings disagree, and the visible frame is unknown.
 
 #### The window list
 
@@ -985,9 +987,14 @@ name from it. The link has two steps, as in Modaliser:
 Where neither step holds, the window has no link. Its order is null, and its
 visibility is `UNKNOWN`. Two windows of one application with equal bounds stay
 apart only through their window numbers. When the lookup fails for them, both
-are unknown. The link serves order and visibility only. It never names a window
-in a reference, and it never chooses the target of an action
+are unknown.
+
+The link serves order and visibility only, and it never names a window in a
+reference. Every operation on a reference acts on the held element
+that the reference names
 ([window identity decision](../adr/desktop-window-identity-is-a-held-element.md)).
+Display focus takes no window reference. It selects its window by the order
+that the links give, as "Display focus" states.
 
 #### Visibility at a point
 
@@ -1001,9 +1008,15 @@ entries in front of the window.
 An entry covers the window when its bounds contain the point and it is
 opaque, with an alpha of 1. An entry with no alpha counts as opaque. Entries of
 every layer and every owner can cover, including the menu bar, the Dock and the windows of Koine. The answer is
-`NOT_ON_TOP` when an entry covers the window, or when the bounds of the window
-do not contain the point. Otherwise it is `ON_TOP`. A rectangle contains its
-top and left edges, but not its bottom and right edges.
+`NOT_ON_TOP` when an entry covers the window, or when the bounds of the linked
+entry do not contain the point. Otherwise it is `ON_TOP`. A rectangle contains
+its top and left edges, but not its bottom and right edges.
+
+The answer tests the bounds of the linked entry, not the window frame. The
+window server draws and covers by bounds, so the whole answer comes from one
+reading of its list. The 2-point tolerance decides only whether the link holds.
+Near an edge, a point inside the window frame can be outside the bounds. The
+answer is then `NOT_ON_TOP`.
 
 The label windows of a client cover windows too. So a client asks before it
 draws its labels.
@@ -1012,14 +1025,37 @@ draws its labels.
 
 `desktopDisplays` lists every active display, left to right by the x value of
 its frame, then top to bottom. Each display has a reference, a frame, a visible
-frame and a primary flag. The frame is the `CGDisplayBounds` of the display.
-The visible frame excludes the menu bar and the Dock. The primary display has
-its top-left corner at the origin of screen coordinates.
+frame and a primary flag. The visible frame excludes the menu bar and the Dock.
+The primary display has its top-left corner at the origin of screen
+coordinates.
+
+The provider reads the identifiers with `CGGetActiveDisplayList`. So every
+listed display has the identifier that Core Graphics gives it. The frame is the
+`CGDisplayBounds` of that identifier. Core Graphics returns an empty rectangle
+for an identifier that is no longer valid. So a display with empty bounds left
+during the read, and the list leaves it out. The primary flag is true for the
+identifier that `CGMainDisplayID` returns.
+
+The visible frame comes from AppKit, which updates its screens at another
+instant. The provider finds the screen whose `NSScreenNumber` is the
+identifier, and it converts the visible frame of that screen. A screen without
+a number matches no display. Koine never uses Modaliser's zero identifier in
+its place.
+
+| Field | Known value | Unknown form |
+|---|---|---|
+| `DesktopDisplay.frame` | The `CGDisplayBounds` of the identifier. | None. The list leaves out a display with empty bounds. |
+| `DesktopDisplay.visibleFrame` | The converted visible frame of the matching AppKit screen, inside the frame. | Null when no AppKit screen matches, or when the converted frame is not inside the frame. A display change can cause either case. |
+| `DesktopDisplay.primary` | True for the identifier that `CGMainDisplayID` returns. | None. Koine can always compare the two identifiers. |
+
+When `CGGetActiveDisplayList` fails, the read reports `failed`. An empty list
+would be a false known value.
 
 A display reference is `koine://desktop/display/<id>`, and its remainder is the
 `CGDirectDisplayID`. The reference stays valid while a display with that
-identifier is active. A reference to a display that is no longer active raises
-`unavailable`. A client lists the displays again after a display change.
+identifier is active. A reference to a display that is no longer active, or
+whose bounds come back empty, raises `unavailable`. A client lists the displays
+again after a display change.
 
 #### Frame setting
 
@@ -1053,25 +1089,39 @@ the client read earlier.
 
 `desktopFocusDisplay(ref:)` acts in this order:
 
-- When a pointer button is held, it does nothing and returns
-  `POINTER_BUTTON_HELD`. A pointer move then would be a drag, which needs input
-  authority.
+- When a pointer button is held, it does nothing. The outcome is
+  `POINTER_BUTTON_HELD`, and `pointerMoved` is false. A pointer move then would
+  be a drag, which needs input authority.
 - It reads the window list as `desktopWindows` does. A row is on the display
   when the centre of its frame is inside the frame of the display.
-- It returns `FRONT_WINDOW_UNKNOWN` and raises nothing in two cases. A row that
-  is not `OFF_SCREEN` has an unknown frame, or a row on the display has an
-  unknown visibility.
+- The outcome is `FRONT_WINDOW_UNKNOWN`, and it raises nothing, in two cases. A
+  row that is not `OFF_SCREEN` has an unknown frame, or a row on the display has
+  an unknown visibility.
 - Otherwise the front window is the `ON_SCREEN` row on the display with the
   lowest order. The provider focuses it as `desktopFocusWindow` does, and the
   outcome is `WINDOW_FOCUSED`. With no such row, the outcome is `NO_WINDOW`.
-- Last, it moves the pointer to the centre of the frame of the display. It uses
-  `CGWarpMouseCursorPosition` and one mouse-moved event at that point. It never
-  clicks.
+- Immediately before the move, it checks the pointer buttons again. When a
+  button is held, it leaves the pointer where it is, and `pointerMoved` is
+  false. The outcome still says what happened to the windows.
+- Otherwise it moves the pointer to the centre of the frame of the display, and
+  `pointerMoved` is true. It uses `CGWarpMouseCursorPosition` and one
+  mouse-moved event at that point. It never clicks.
+
+The second check covers the focus step, which waits for the window to take
+focus. A button press between the second check and the move stays possible.
+Koine does not detect that press, and it does not promise that the check and
+the move are atomic.
 
 When focus fails, the operation reports `failed` and does not move the pointer.
-The receipt names the display and the outcome, and it names no window. Display
-focus needs `desktop:control` alone. Its own read of the window list is part of
-the action and publishes no window state.
+The receipt names the display, the outcome and whether the pointer moved. It
+names no window. Display focus needs `desktop:control` alone. Its own read of
+the window list is part of the action and publishes no window state.
+
+Display focus selects its window by the order of the window-server links. When
+a row on the display has no link, display focus raises nothing, as the steps
+above state. Koine cannot detect a wrong link that holds. Such a link can make display focus raise
+a listed window that is not the front one. That window is still the held
+element of its own row, never a substitute for a reference.
 
 #### Authority and failures
 
@@ -1088,7 +1138,8 @@ Desktop declares no additional capability requirement.
 | A stale, closed or wrong-kind window reference, or a display that is no longer active | `unavailable`. |
 | A frame with a width or a height of zero or less | An invalid argument: an error with no `kind`. Koine attempted nothing. |
 | An Accessibility write or the pointer move fails, or focus does not arrive in time | `failed`. The operation may have acted, and Koine does not replay it. |
-| A value that Koine cannot establish in a read | The unknown form from the window list table, with no error. |
+| `CGGetActiveDisplayList` fails | `failed`. Koine invents no display list. |
+| A value that Koine cannot establish in a read | The unknown form from the window list table or the display table, with no error. |
 
 #### Compatibility and delivery
 

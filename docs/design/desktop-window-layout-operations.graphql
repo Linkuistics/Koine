@@ -45,7 +45,7 @@ mutation SetDesktopWindowFrame($ref: Reference!, $frame: DesktopRectInput!) {
   desktopSetWindowFrame(ref: $ref, frame: $frame) { ref }
 }
 
-# Display focus: desktop:control.
+# Display focus: desktop:control. The outcome says what happened to the windows, and pointerMoved says whether the pointer moved.
 mutation FocusDesktopDisplay($ref: Reference!) {
-  desktopFocusDisplay(ref: $ref) { ref outcome }
+  desktopFocusDisplay(ref: $ref) { ref outcome pointerMoved }
 }

@@ -174,9 +174,9 @@ _Avoid_: z-index, stacking index
 off screen or unknown. A window on screen can still be covered.
 _Avoid_: shown, visible (alone)
 
-**On top at a point**: The state of a window at a point inside its **window
-frame**, with no opaque window in front. It is unknown without a
-**window-server link**.
+**On top at a point**: The state of a window at a point with no opaque window
+in front. The bounds of its entry in the window server's list contain the
+point. It is unknown without a **window-server link**.
 _Avoid_: visible at, unobscured
 
 **Display focus**: The desktop control operation on a **display**. It raises the

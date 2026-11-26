@@ -21,10 +21,13 @@ Serve display focus as the design of `window-layout-k2` defines it.
   reports that no window took focus.
 - When Koine cannot establish the front window on the display, it raises
   nothing, moves the pointer and reports `FRONT_WINDOW_UNKNOWN`.
-- While a pointer button is held, it does nothing and reports
+- While a pointer button is held at the start, it does nothing and reports
   `POINTER_BUTTON_HELD`.
+- Immediately before the pointer move, it checks the buttons again. When a
+  button is held then, it leaves the pointer where it is. The receipt field
+  `pointerMoved` says whether the pointer moved (`window-layout-k9`).
 - It never clicks, under any grant.
-- L and G tests cover both cases and the authority.
+- L and G tests cover both cases, both button checks and the authority.
 
 ## Notes
 

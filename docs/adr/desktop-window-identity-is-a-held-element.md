@@ -19,15 +19,19 @@ for a window on another Space. The provider lists that element as
 
 Window layout links a held element to an entry of the window server's list.
 The link uses the private window number from `_AXUIElementGetWindow` first,
-and the owner and bounds second. It serves window order and visibility only.
-It never names a window in a reference, and it never chooses the target of an
-action. Every action goes to the held element that a reference names, and
-there is no title fallback.
+and the owner and bounds second. It serves window order and visibility only,
+and it never names a window in a reference. Every action on a reference goes
+to the held element that the reference names, and there is no title fallback.
+
+Display focus is the one desktop action that takes no window reference. It selects the
+front listed window on a display by the order that the links give. Then it
+raises the held element of that row. So the link never resolves a reference,
+but it does select the window that display focus raises.
 
 The process component is the served `{ pid, startedAt }` identity. The
 [capture decision](desktop-capture-preserves-the-process-incarnation.md) fixes
 it. An [actual PID-recycling experiment](../verification/retained-ax-binding.md)
-shows that a retained AX window can address a replacement process. That
+found that a retained AX window can address a replacement process. That
 happens even while the provider holds the original task-name right and AX
 parent. So this scheme does not establish that Koine never substitutes across
 incarnations.
@@ -52,9 +56,17 @@ process. It also assumes that the application does not issue that identity
 again. Those observations do not cover the cross-incarnation counterexample
 above.
 
-A wrong or failed link costs an order or a visibility answer, never a target.
-Koine reports the order and the visibility as unknown when the link fails. An
-identity has no such fallback, because a wrong identity acts on another window.
+A failed link costs an order or a visibility answer. Koine reports both as
+unknown. Display focus then raises nothing on a display where that window could
+be in front.
+
+Koine cannot detect a wrong link that holds. It gives a false order or
+visibility, and display focus can then raise a listed window that is not the
+front one. That window is still the held element of its own row. So a wrong
+link costs a selection, never the identity of a reference.
+
+An identity has no such fallback, because a wrong identity acts on another
+window under a reference that names the first one.
 
 ## Rejected alternatives
 
