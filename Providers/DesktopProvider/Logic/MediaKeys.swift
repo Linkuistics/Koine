@@ -17,8 +17,8 @@ enum MediaKey: String, CaseIterable, Equatable, Sendable {
     case mute = "MUTE"
 
     /// The key number in `data1`. The numbers for next and previous are Modaliser's choice, `NX_KEYTYPE_FAST` and
-    /// `NX_KEYTYPE_REWIND`. The header also defines `NX_KEYTYPE_NEXT` (17) and `NX_KEYTYPE_PREVIOUS` (18). The VM
-    /// acceptance settles which numbers a player honours (docs/verification/media-key-music-launch.md).
+    /// `NX_KEYTYPE_REWIND`. The header also defines `NX_KEYTYPE_NEXT` (17) and `NX_KEYTYPE_PREVIOUS` (18). In the VM
+    /// acceptance, Music honoured 19 and 20, so these numbers stay (docs/verification/desktop-pointer-media-vm.md).
     var number: Int {
         switch self {
         case .playPause: return 16  // NX_KEYTYPE_PLAY

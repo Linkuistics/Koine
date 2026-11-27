@@ -29,3 +29,17 @@ Release Koine 0.6.0 with pointer and media through the Homebrew cask.
 - One issue comes from the integration `pointer-media-k8`. In desktop 1.0.1,
   `desktopFocusDisplay` posts its mouse-moved event under the Accessibility
   check alone, without `CGPreflightPostEventAccess`.
+- The acceptance `pointer-media-acceptance-k5` defers these cases. Each one
+  is a candidate issue, as "What this does not claim" in
+  `docs/verification/desktop-pointer-media-vm.md` states it:
+  - A witness that a hidden pointer becomes visible again after the nudge.
+    Antony chose to release with this limit and to file the issue.
+  - The refusal of the nudge while a pointer button is held, in a VM. Only
+    the L tests cover it.
+  - The media keys with a player other than Music.
+  - An upgrade from an installed Koine 0.5.0. A restart stands in for it.
+  - A managed Mac that allows Accessibility and denies `PostEvent`.
+  - Issue #23 already holds the checks with two screens.
+- `task check:docs` fails on one old link, outside this grove:
+  `docs/verification/settings-activation/ORDERING-PROVENANCE-RESULTS.md`
+  links to a task file of a removed grove tree.

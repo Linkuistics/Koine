@@ -1333,13 +1333,16 @@ event tap.
 | `VOLUME_DOWN` | 1, `NX_KEYTYPE_SOUND_DOWN` | It lowers the output volume by one step. |
 | `MUTE` | 7, `NX_KEYTYPE_MUTE` | It switches the mute of the output on or off. |
 
-The numbers for next and previous are Modaliser's choice, which nobody verified
-against a player. The SDK header also defines `NX_KEYTYPE_NEXT` (17) and
-`NX_KEYTYPE_PREVIOUS` (18). In a VM, the remote control daemon `rcd` turned 19
-into `NextTrack` and 20 into `PreviousTrack`, as the
-[Music check](../verification/media-key-music-launch.md) records. The acceptance
-run settles whether a player honours them, and it changes the numbers if a
-player does not.
+The numbers for next and previous are Modaliser's choice. The SDK header also
+defines `NX_KEYTYPE_NEXT` (17) and `NX_KEYTYPE_PREVIOUS` (18). In a VM, the
+remote control daemon `rcd` turned 19 into `NextTrack` and 20 into
+`PreviousTrack`, as the [Music check](../verification/media-key-music-launch.md)
+records.
+
+In the [acceptance run](../verification/desktop-pointer-media-vm.md), Music
+honoured both numbers. Key 19 went to the next track. Key 20 restarted the
+current track, and near the start of a track it went to the previous track. So
+Koine keeps Modaliser's numbers.
 
 macOS sends play/pause, next and previous to the Now Playing app through `rcd`
 and MediaRemote. That app is often not the front app. macOS gives no public way
@@ -1389,12 +1392,15 @@ posting access is missing, `koineManagement.osPermissions` still reports
 Accessibility as granted. Koine also refuses with posting access but without
 Accessibility consent, because it posts under that one consent.
 
-No evidence yet establishes that the signed application has posting access
-under the Accessibility consent that a user gives in System Settings. The probe
-of the [Music check](../verification/media-key-music-launch.md) had both, but
-the TestAnyware agent started it, and it is not Koine. The acceptance run
-checks that access on the signed application. There, a refused post or a new permission dialog is a new
-consent posture, which is Antony's decision.
+The [acceptance run](../verification/desktop-pointer-media-vm.md) establishes
+that the signed application has posting access under the Accessibility consent
+that a user gives in System Settings. There, the nudge reported `NUDGED` and
+each media key returned its receipt, which Koine gives only when both checks
+pass. No permission dialog appeared. The probe of the
+[Music check](../verification/media-key-music-launch.md) does not establish
+this access, because the TestAnyware agent started it, and it is not Koine. A
+refused post or a new permission dialog is a new consent posture, which is
+Antony's decision.
 
 The [authority decision](../adr/provider-authority-follows-effects.md) counts pointer
 movement without held buttons and system media events as desktop effects. The
@@ -1432,7 +1438,11 @@ state the pointer and media reach that "Capability disclosures" gives. Koine
 0.6.0 advertises `desktop-disclosures-v1` too, because its text still states the
 window layout reach. So the released 0.5.0 host refuses desktop 1.0.2 before
 load, and its bundled desktop 1.0.1 stays selected. The released 0.4.1 host
-refuses it too. The
+refuses it too.
+
+The
+[compatibility pairs](../verification/desktop-pointer-media-compatibility.md)
+record both refusals. The
 [host-feature decision](../adr/native-workspace-requires-disclosure-capable-host.md)
 gives the reasons, and a feature version widens only with a new feature version.
 

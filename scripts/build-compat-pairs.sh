@@ -24,7 +24,10 @@
 #             first-party-selection-v1 is newer/desktop-per-user: an approved per-user
 #             update over the bundled desktop 1.0.0 of the released Koine 0.4.1, whose
 #             host refuses both because it lacks desktop-disclosures-v2. That host is
-#             built by scripts/build-retained-workspace.sh under released-0.4.1.
+#             built by scripts/build-retained-workspace.sh under released-0.4.1. The
+#             released Koine 0.5.0 host, under released-0.5.0, refuses both for the
+#             same reason, and the same variant is a per-user update over its bundled
+#             desktop 1.0.1.
 #
 # Nothing built in one tree sees the other: a pair is put together only when
 # scripts/verify-compat-pairs.py installs one tree's bundle under the other
@@ -48,6 +51,10 @@ mkdir -p "${PAIRS}"
 }
 [ -f "${PAIRS}/released-0.4.1/retained.json" ] || {
     echo "Error: ${PAIRS}/released-0.4.1/retained.json does not exist. Run: task compat:released-0.4.1" >&2
+    exit 1
+}
+[ -f "${PAIRS}/released-0.5.0/retained.json" ] || {
+    echo "Error: ${PAIRS}/released-0.5.0/retained.json does not exist. Run: task compat:released-0.5.0" >&2
     exit 1
 }
 
@@ -156,7 +163,8 @@ unset FIXTURE_ADDITIONAL
 )
 
 # This tree's desktop 1.0.2 stating first-party-selection-v1, as a per-user update of the bundled
-# desktop 1.0.0 that the released Koine 0.4.1 ships. Only the copy's descriptor and manifest change.
+# desktop 1.0.0 that the released Koine 0.4.1 ships, and of the bundled desktop 1.0.1 that the released
+# Koine 0.5.0 ships. Only the copy's descriptor and manifest change.
 (
     cd "${PAIRS}/newer/src"
     WORK="$(mktemp -d)"

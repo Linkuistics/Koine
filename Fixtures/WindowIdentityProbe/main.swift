@@ -20,6 +20,7 @@ import Foundation
 //        WindowIdentityProbe displays
 //        WindowIdentityProbe stack <pid>...
 //        WindowIdentityProbe pointer
+//        WindowIdentityProbe events <seconds>
 // A command is a file <name>.cmd holding `list <pid>` or `held`; the answer is
 // written to <name>.json. `stop.cmd` ends the process. `focused` holds nothing: it
 // prints which window has focus now, as the system says and not as Koine does,
@@ -38,6 +39,13 @@ import Foundation
 // and the Accessibility windows of each named application with their window
 // numbers, so a caller can put those windows in the window server's order.
 // `pointer` reports where the pointer is and which buttons are held.
+//
+// `events` holds nothing either, for docs/verification/desktop-pointer-media-vm.md.
+// It listens, and never alters, at the session event tap for the given seconds,
+// and prints every mouse-moved, key and system-defined event that passed. So a
+// caller sees the events that another process posted: their locations, and the
+// subtype and data1 of a media key. It also reports `cursorVisible` from
+// CGCursorIsVisible, which the SDK marks deprecated, as an observation only.
 
 @_silgen_name("_AXUIElementGetWindow")
 func _AXUIElementGetWindow(_ element: AXUIElement, _ id: UnsafeMutablePointer<CGWindowID>) -> AXError
@@ -232,6 +240,15 @@ func stackNow(_ pids: [pid_t]) -> [String: Any] {
 
 nonisolated(unsafe) var watched: [(element: AXUIElement, described: [String: Any])] = []
 nonisolated(unsafe) var destroyed: [[String: Any]] = []
+nonisolated(unsafe) var observed: [[String: Any]] = []
+
+/// CGCursorIsVisible, looked up at run time because Swift marks it unavailable. An observation only: the SDK says
+/// that it is no longer supported. Null when the symbol is gone.
+func cursorVisible() -> Any {
+    typealias Visible = @convention(c) () -> UInt32
+    guard let symbol = dlsym(UnsafeMutableRawPointer(bitPattern: -2), "CGCursorIsVisible") else { return NSNull() }
+    return unsafeBitCast(symbol, to: Visible.self)() != 0
+}
 
 let arguments = CommandLine.arguments
 if arguments.count == 2, arguments[1] == "focused" {
@@ -252,6 +269,7 @@ if arguments.count == 2, arguments[1] == "pointer" {
     let answer: [String: Any] = [
         "point": location.map { [Double($0.x), Double($0.y)] } ?? NSNull(),
         "pressedMouseButtons": NSEvent.pressedMouseButtons,
+        "cursorVisible": cursorVisible(),
     ]
     print(String(decoding: try JSONSerialization.data(withJSONObject: answer, options: [.sortedKeys]), as: UTF8.self))
     exit(0)
@@ -299,8 +317,49 @@ if arguments.count == 4, arguments[1] == "observe", let pid = pid_t(arguments[2]
     print(String(decoding: try JSONSerialization.data(withJSONObject: answer, options: [.sortedKeys]), as: UTF8.self))
     exit(0)
 }
+if arguments.count == 3, arguments[1] == "events", let seconds = Double(arguments[2]) {
+    // 14 is NX_SYSDEFINED, the type of a media key event, which CGEventType does not name.
+    let types: [UInt32] = [CGEventType.mouseMoved.rawValue, CGEventType.keyDown.rawValue,
+                           CGEventType.keyUp.rawValue, CGEventType.flagsChanged.rawValue, 14]
+    let mask = types.reduce(CGEventMask(0)) { $0 | (CGEventMask(1) << CGEventMask($1)) }
+    let tap = CGEvent.tapCreate(tap: .cgSessionEventTap, place: .headInsertEventTap, options: .listenOnly,
+                                eventsOfInterest: mask, callback: { _, type, event, _ in
+        let stamp = Date().timeIntervalSince1970
+        var entry: [String: Any] = ["type": Int(type.rawValue), "time": stamp]
+        switch type {
+        case .mouseMoved:
+            entry["kind"] = "mouseMoved"
+            entry["point"] = [Double(event.location.x), Double(event.location.y)]
+        case .keyDown, .keyUp, .flagsChanged:
+            entry["kind"] = type == .keyDown ? "keyDown" : type == .keyUp ? "keyUp" : "flagsChanged"
+            entry["keycode"] = Int(event.getIntegerValueField(.keyboardEventKeycode))
+        default:
+            entry["kind"] = "systemDefined"
+            if let ns = NSEvent(cgEvent: event) {
+                entry["subtype"] = Int(ns.subtype.rawValue)
+                entry["data1"] = ns.data1
+            }
+        }
+        observed.append(entry)
+        return Unmanaged.passUnretained(event)
+    }, userInfo: nil)
+    if let tap {
+        CFRunLoopAddSource(CFRunLoopGetMain(), CFMachPortCreateRunLoopSource(nil, tap, 0), .commonModes)
+        CGEvent.tapEnable(tap: tap, enable: true)
+    }
+    let began = Date()
+    while Date().timeIntervalSince(began) < seconds {
+        CFRunLoopRunInMode(.defaultMode, 0.1, false)
+    }
+    let answer: [String: Any] = [
+        "trusted": AXIsProcessTrusted(), "tap": tap != nil, "began": began.timeIntervalSince1970,
+        "seconds": seconds, "events": observed,
+    ]
+    print(String(decoding: try JSONSerialization.data(withJSONObject: answer, options: [.sortedKeys]), as: UTF8.self))
+    exit(0)
+}
 guard arguments.count == 3, arguments[1] == "serve" else {
-    FileHandle.standardError.write(Data("usage: WindowIdentityProbe serve <directory> | focused | windows <pid> | observe <pid> <seconds> | displays | stack <pid>... | pointer\n".utf8))
+    FileHandle.standardError.write(Data("usage: WindowIdentityProbe serve <directory> | focused | windows <pid> | observe <pid> <seconds> | displays | stack <pid>... | pointer | events <seconds>\n".utf8))
     exit(2)
 }
 let directory = URL(fileURLWithPath: arguments[2], isDirectory: true)

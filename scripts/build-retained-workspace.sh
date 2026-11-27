@@ -6,9 +6,12 @@
 #   scripts/retained-workspace-1.0.0.json   workspace 1.0.0, before the long-location repair
 #   scripts/retained-workspace-1.0.1.json   workspace 1.0.1, as the released Koine 0.3.0 shipped it
 #   scripts/released-0.4.1.json             workspace 1.0.2, as the released Koine 0.4.1 shipped it
+#   scripts/released-0.5.0.json             workspace 1.0.2, as the released Koine 0.5.0 shipped it
 # The second revision is also the released 0.3.0 host: its host, framework and desktop
 # provider are what the new workspace bundle is shown to be refused by. The third is
-# the released 0.4.1 host, which refuses this tree's desktop 1.0.2 before load.
+# the released 0.4.1 host, which refuses this tree's desktop 1.0.2 before load. The
+# fourth is the released 0.5.0 host, which refuses it for the same reason and keeps
+# its own desktop 1.0.1 selected.
 #
 # The pinned revision's files are extracted into a tree of their own with a build
 # directory of their own, and built there by that revision's own scripts, as

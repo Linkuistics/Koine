@@ -1,0 +1,148 @@
+
+== Start a clean VM (koine-verify-71484)
+waiting for a macOS guest slot: request r-d4c56391, place 1, 1 waiter, slots held by no VM
+Setting guest display resolution to 1920x1080 px...
+  set-display-mode: switched main display to 1920x1080 pt @ 1x (1920x1080 px, modeID 10)
+VNC size wait: the first session read 1280x720. Session 2 read 1920x1080 after 0.26 s.
+ProductName:		macOS
+ProductVersion:		27.2.1
+BuildVersion:		26B131
+arm64
+Gatekeeper: assessments enabled
+
+== Install the signed bundle (ditto zip, testanyware file upload, ditto -x)
+Quarantine attribute: xattr: /Applications/Koine.app: No such xattr: com.apple.quarantine
+--prepared:/Applications/Koine.app/Contents/PlugIns/Desktop.koineprovider
+--validated:/Applications/Koine.app/Contents/PlugIns/Desktop.koineprovider
+--prepared:/Applications/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+--validated:/Applications/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+--prepared:/Applications/Koine.app/Contents/PlugIns/Workspace.koineprovider
+--validated:/Applications/Koine.app/Contents/PlugIns/Workspace.koineprovider
+/Applications/Koine.app: valid on disk
+/Applications/Koine.app: satisfies its Designated Requirement
+Identifier=dev.antony.Koine
+CodeDirectory v=20500 size=37468 flags=0x10000(runtime) hashes=1160+7 location=embedded
+Authority=Developer ID Application: Antony Blakey (TA43A4RUP3)
+Authority=Developer ID Certification Authority
+TeamIdentifier=TA43A4RUP3
+/Applications/Koine.app: rejected
+source=Unnotarized Developer ID
+origin=Developer ID Application: Antony Blakey (TA43A4RUP3)
+(spctl assessment did not accept the bundle; recorded, not a failure of this stage)
+total 360
+-rw-r--r--  1 admin  staff  58620 Nov 26 20:29 Koine Silence 1.m4a
+-rw-r--r--  1 admin  staff  58620 Nov 26 20:29 Koine Silence 2.m4a
+-rw-r--r--  1 admin  staff  58620 Nov 26 20:29 Koine Silence 3.m4a
+
+== Launch Koine and create a reading grant in the window
+grant-label at y=411.0 moved to y=311.0 under --dy -10; towards the end is --dy -10
+-rw-------  1 admin  staff  43 Nov 26 20:30 /Users/admin/koine-credential
+
+== The served desktop disclosures state the reach of pointer and media
+{"case": "disclosures", "variables": {}, "response": {"data": {"koineManagement": {"capabilityDisclosures": [{"capability": "desktop:control", "disclosure": "Focuses a window. Moves and resizes any window of an application with a Dock icon. Focuses a display: Koine raises the front window there, activates its application and moves the pointer to the centre of the display. Nudges the pointer one point to the right and back, so that a hidden pointer becomes visible again. Posts the media keys play/pause, next and previous. macOS sends them to the Now Playing app in Control Center, which is often not the front app. When no app is Now Playing, play/pause can make macOS open Music and bring it to the front. Posts volume up, volume down and mute, which change the output volume of this Mac or mute it. It never clicks, and it never types into an app. While it moves a window, it turns off the enhanced accessibility setting of the application, and then turns it on again. A grant from an earlier Koine version that holds desktop:control gets this reach too."}, {"capability": "desktop:read", "disclosure": "Lists the windows of every application with a Dock icon on the current Space. For each window, it reads the title, the application, the position and size, the place in front-to-back order and whether the window is on screen. A title can contain a document name, a web page title or a message subject. It also lists the displays with their positions and sizes, and it reads the position of the pointer. It reads no window contents and takes no screenshots. A grant from an earlier Koine version that holds desktop:read gets this reach too."}, {"capability": "workspace:control", "disclosure": "Launches or reactivates any application registered on this Mac, not only configured shortcuts, and opens documents, folders and web addresses in their default application or a named one. Koine accepts no program, arguments, environment or shell command, but that is not a sandbox: the application that receives a document decides what happens, so a handler can run a script or follow a location document to another address or file. Launching, opening and revealing also need desktop:control, because activation is an allowed effect; neither capability works without the other."}, {"capability": "workspace:read", "disclosure": "Reads the special locations that macOS names for Koine's own account, such as the home, Documents and Applications folders. Lists the applications that Spotlight has indexed on this Mac's disks, on mounted network volumes and in a remote home folder, with each one's name, bundle identifier and location. It reads no file contents and lists no folder. A returned location gives no access to it. Launching or opening a listed application still needs workspace:control and desktop:control."}]}}}}
+
+== The create-grant view: a new grant shows both desktop disclosures
+the create-grant view, for desktop read: Lists the windows of every application with a Dock icon on the current Space. For each window, it reads the title, the application, the position and size, the place in front-to-back order and whether the window is on screen. A title can contain a document name, a web page title or a message subject. It also lists the displays with their positions and sizes, and it reads the position of the pointer. It reads no window contents and takes no screenshots. A grant from an earlier Koine version that holds desktop:read gets this reach too.
+the create-grant view, for desktop control: Focuses a window. Moves and resizes any window of an application with a Dock icon. Focuses a display: Koine raises the front window there, activates its application and moves the pointer to the centre of the display. Nudges the pointer one point to the right and back, so that a hidden pointer becomes visible again. Posts the media keys play/pause, next and previous. macOS sends them to the Now Playing app in Control Center, which is often not the front app. When no app is Now Playing, play/pause can make macOS open Music and bring it to the front. Posts volume up, volume down and mute, which change the output volume of this Mac or mute it. It never clicks, and it never types into an app. While it moves a window, it turns off the enhanced accessibility setting of the application, and then turns it on again. A grant from an earlier Koine version that holds desktop:control gets this reach too.
+-rw-------  1 admin  staff  43 Nov 26 20:30 /Users/admin/koine-credential-controller
+
+== The request view: a pending request for desktop read and desktop control shows both disclosures
+{"case": "enrol", "status": 200, "response": {"data": {"koineRequestGrant": {"requestId": "2a9eb386-8d36-493a-aa4e-965855236a34", "comparisonCode": "XBTN-7T7H"}}}}
+the request view, for desktop read: Lists the windows of every application with a Dock icon on the current Space. For each window, it reads the title, the application, the position and size, the place in front-to-back order and whether the window is on screen. A title can contain a document name, a web page title or a message subject. It also lists the displays with their positions and sizes, and it reads the position of the pointer. It reads no window contents and takes no screenshots. A grant from an earlier Koine version that holds desktop:read gets this reach too.
+the request view, for desktop control: Focuses a window. Moves and resizes any window of an application with a Dock icon. Focuses a display: Koine raises the front window there, activates its application and moves the pointer to the centre of the display. Nudges the pointer one point to the right and back, so that a hidden pointer becomes visible again. Posts the media keys play/pause, next and previous. macOS sends them to the Now Playing app in Control Center, which is often not the front app. When no app is Now Playing, play/pause can make macOS open Music and bring it to the front. Posts volume up, volume down and mute, which change the output volume of this Mac or mute it. It never clicks, and it never types into an app. While it moves a window, it turns off the enhanced accessibility setting of the application, and then turns it on again. A grant from an earlier Koine version that holds desktop:control gets this reach too.
+
+== The grant list: each grant shows the disclosure of each desktop capability it holds
+{"case": "grants", "variables": {}, "response": {"data": {"koineManagement": {"grants": [{"grantId": "b1776aea-3795-4a75-b3ff-5c98ef5604d7", "clientLabel": "vm-pointer-reader", "capabilities": ["desktop:read", "koine:manage"], "state": "ACTIVE"}, {"grantId": "0e0ac095-143c-4604-b56e-a86556a3a8e6", "clientLabel": "vm-pointer-controller", "capabilities": ["desktop:control"], "state": "ACTIVE"}, {"grantId": "7661925b-4e94-4615-b4ef-0979013d0350", "clientLabel": "pointer-requester", "capabilities": ["desktop:control", "desktop:read"], "state": "ACTIVE"}]}}}}
+the reading grant's row: Lists the windows of every application with a Dock icon on the current Space. For each window, it reads the title, the application, the position and size, the place in front-to-back order and whether the window is on screen. A title can contain a document name, a web page title or a message subject. It also lists the displays with their positions and sizes, and it reads the position of the pointer. It reads no window contents and takes no screenshots. A grant from an earlier Koine version that holds desktop:read gets this reach too.
+the controlling grant's row: Focuses a window. Moves and resizes any window of an application with a Dock icon. Focuses a display: Koine raises the front window there, activates its application and moves the pointer to the centre of the display. Nudges the pointer one point to the right and back, so that a hidden pointer becomes visible again. Posts the media keys play/pause, next and previous. macOS sends them to the Now Playing app in Control Center, which is often not the front app. When no app is Now Playing, play/pause can make macOS open Music and bring it to the front. Posts volume up, volume down and mute, which change the output volume of this Mac or mute it. It never clicks, and it never types into an app. While it moves a window, it turns off the enhanced accessibility setting of the application, and then turns it on again. A grant from an earlier Koine version that holds desktop:control gets this reach too.
+the approved grant's row, for desktop read: Lists the windows of every application with a Dock icon on the current Space. For each window, it reads the title, the application, the position and size, the place in front-to-back order and whether the window is on screen. A title can contain a document name, a web page title or a message subject. It also lists the displays with their positions and sizes, and it reads the position of the pointer. It reads no window contents and takes no screenshots. A grant from an earlier Koine version that holds desktop:read gets this reach too.
+the approved grant's row, for desktop control: Focuses a window. Moves and resizes any window of an application with a Dock icon. Focuses a display: Koine raises the front window there, activates its application and moves the pointer to the centre of the display. Nudges the pointer one point to the right and back, so that a hidden pointer becomes visible again. Posts the media keys play/pause, next and previous. macOS sends them to the Now Playing app in Control Center, which is often not the front app. When no app is Now Playing, play/pause can make macOS open Music and bring it to the front. Posts volume up, volume down and mute, which change the output volume of this Mac or mute it. It never clicks, and it never types into an app. While it moves a window, it turns off the enhanced accessibility setting of the application, and then turns it on again. A grant from an earlier Koine version that holds desktop:control gets this reach too.
+
+== Give Koine Accessibility consent in System Settings
+
+== The pointer position: Koine reads where the witness reads the pointer, within one point
+{"cursorVisible":true,"point":[699.98828125,419.99609375],"pressedMouseButtons":0}
+{"case": "position", "variables": {}, "response": {"data": {"desktopPointer": {"location": {"x": 699.98828125, "y": 419.99609375}}}}}
+Observation: Koine reads {"x":699.98828125,"y":419.99609375}; the witness reads [699.98828125,419.99609375].
+{"cursorVisible":true,"point":[1309.9765625,776.98828125],"pressedMouseButtons":0}
+{"case": "position", "variables": {}, "response": {"data": {"desktopPointer": {"location": {"x": 1309.9765625, "y": 776.98828125}}}}}
+Observation: Koine reads {"x":1309.9765625,"y":776.98828125}; the witness reads [1309.9765625,776.98828125].
+
+== The nudge: the pointer moves one point to the right and back, with two mouse-moved events, and ends where it started
+{"cursorVisible":false,"point":[1309.9765625,776.98828125],"pressedMouseButtons":0}
+Observation: before the nudge, CGCursorIsVisible says false.
+{"case": "nudge", "variables": {}, "response": {"data": {"desktopNudgePointer": {"outcome": "NUDGED"}}}}
+Witnessed events: [{"kind":"mouseMoved","point":[1310.9765625,776.98828125],"type":5},{"kind":"mouseMoved","point":[1309.9765625,776.98828125],"type":5}]
+{"cursorVisible":false,"point":[1309.9765625,776.98828125],"pressedMouseButtons":0}
+Observation: the pointer is back at [1309.9765625,776.98828125] with no button held. After the nudge, CGCursorIsVisible says false.
+
+== Music: open it, pass its welcome window, and allow the witness to ask it for its state
+Music: {"state":"stopped","track":"","position":-1,"playlistTracks":0}
+
+== Music plays the three silent tracks of a local playlist in the background, and TextEdit is in front
+Setup: {"state":"stopped","track":"","position":-1,"playlistTracks":3}
+Music: {"state":"playing","track":"Koine Silence 1","position":4,"playlistTracks":3}
+no consent dialog on screen (before the media keys); universalAccessAuthWarn: running
+
+== PLAY_PAUSE pauses Music, and PLAY_PAUSE again resumes it
+{"case": "key", "variables": {"key": "PLAY_PAUSE"}, "response": {"data": {"desktopPostMediaKey": {"key": "PLAY_PAUSE"}}}}
+Witnessed events: [{"data1":1051136,"kind":"systemDefined","subtype":8,"type":14},{"data1":1051392,"kind":"systemDefined","subtype":8,"type":14}]
+Observation: Koine posted PLAY_PAUSE as key 16 down and up; no key event passed; TextEdit stays in front.
+Music: {"state":"paused","track":"Koine Silence 1","position":10,"playlistTracks":3}
+{"case": "key", "variables": {"key": "PLAY_PAUSE"}, "response": {"data": {"desktopPostMediaKey": {"key": "PLAY_PAUSE"}}}}
+Witnessed events: [{"data1":1051136,"kind":"systemDefined","subtype":8,"type":14},{"data1":1051392,"kind":"systemDefined","subtype":8,"type":14}]
+Observation: Koine posted PLAY_PAUSE as key 16 down and up; no key event passed; TextEdit stays in front.
+Music: {"state":"playing","track":"Koine Silence 1","position":16,"playlistTracks":3}
+
+== NEXT goes to the next track
+{"case": "key", "variables": {"key": "NEXT"}, "response": {"data": {"desktopPostMediaKey": {"key": "NEXT"}}}}
+Witnessed events: [{"data1":1247744,"kind":"systemDefined","subtype":8,"type":14},{"data1":1248000,"kind":"systemDefined","subtype":8,"type":14}]
+Observation: Koine posted NEXT as key 19 down and up; no key event passed; TextEdit stays in front.
+  | 2026-11-26 20:32:03.994 Df rcd[1105:28dd] [com.apple.amp.mediaremote:rr] Request: Command = <NextTrack>, SenderDevice = <Mac>, SenderBundleIdentifier = <com.app
+Music: {"state":"playing","track":"Koine Silence 2","position":7,"playlistTracks":3}
+
+== PREVIOUS goes back: to the start of the current track or to the previous track, as Music decides
+Music: {"state":"playing","track":"Koine Silence 2","position":13,"playlistTracks":3}
+{"case": "key", "variables": {"key": "PREVIOUS"}, "response": {"data": {"desktopPostMediaKey": {"key": "PREVIOUS"}}}}
+Witnessed events: [{"data1":1313280,"kind":"systemDefined","subtype":8,"type":14},{"data1":1313536,"kind":"systemDefined","subtype":8,"type":14}]
+Observation: Koine posted PREVIOUS as key 20 down and up; no key event passed; TextEdit stays in front.
+  | 2026-11-26 20:32:18.996 Df rcd[1105:28dd] [com.apple.amp.mediaremote:rr] Request: Command = <PreviousTrack>, SenderDevice = <Mac>, SenderBundleIdentifier = <com
+Music: {"state":"playing","track":"Koine Silence 2","position":7,"playlistTracks":3}
+Observation: at second 13, PREVIOUS restarted the current track.
+{"case": "key", "variables": {"key": "PREVIOUS"}, "response": {"data": {"desktopPostMediaKey": {"key": "PREVIOUS"}}}}
+Witnessed events: [{"data1":1313280,"kind":"systemDefined","subtype":8,"type":14},{"data1":1313536,"kind":"systemDefined","subtype":8,"type":14}]
+Observation: Koine posted PREVIOUS as key 20 down and up; no key event passed; TextEdit stays in front.
+Music: {"state":"playing","track":"Koine Silence 1","position":6,"playlistTracks":3}
+Observation: PREVIOUS went to the previous track.
+
+== VOLUME_UP and VOLUME_DOWN change the output volume, and MUTE switches the mute
+Volume: {"outputVolume":50,"outputMuted":false}
+{"case": "key", "variables": {"key": "VOLUME_UP"}, "response": {"data": {"desktopPostMediaKey": {"key": "VOLUME_UP"}}}}
+Witnessed events: [{"data1":2560,"kind":"systemDefined","subtype":8,"type":14},{"data1":2816,"kind":"systemDefined","subtype":8,"type":14}]
+Observation: Koine posted VOLUME_UP as key 0 down and up; no key event passed; TextEdit stays in front.
+Volume: {"outputVolume":56,"outputMuted":false}
+{"case": "key", "variables": {"key": "VOLUME_DOWN"}, "response": {"data": {"desktopPostMediaKey": {"key": "VOLUME_DOWN"}}}}
+Witnessed events: [{"data1":68096,"kind":"systemDefined","subtype":8,"type":14},{"data1":68352,"kind":"systemDefined","subtype":8,"type":14}]
+Observation: Koine posted VOLUME_DOWN as key 1 down and up; no key event passed; TextEdit stays in front.
+Volume: {"outputVolume":50,"outputMuted":false}
+{"case": "key", "variables": {"key": "MUTE"}, "response": {"data": {"desktopPostMediaKey": {"key": "MUTE"}}}}
+Witnessed events: [{"data1":461312,"kind":"systemDefined","subtype":8,"type":14},{"data1":461568,"kind":"systemDefined","subtype":8,"type":14}]
+Observation: Koine posted MUTE as key 7 down and up; no key event passed; TextEdit stays in front.
+Volume: {"outputVolume":50,"outputMuted":true}
+{"case": "key", "variables": {"key": "MUTE"}, "response": {"data": {"desktopPostMediaKey": {"key": "MUTE"}}}}
+Witnessed events: [{"data1":461312,"kind":"systemDefined","subtype":8,"type":14},{"data1":461568,"kind":"systemDefined","subtype":8,"type":14}]
+Observation: Koine posted MUTE as key 7 down and up; no key event passed; TextEdit stays in front.
+Volume: {"outputVolume":50,"outputMuted":false}
+Music: {"state":"playing","track":"Koine Silence 1","position":38,"playlistTracks":3}
+no consent dialog on screen (after the nudge and the six media keys); universalAccessAuthWarn: running
+
+== Quit and restart Koine: the existing grants keep their disclosures, and nothing was revoked or reauthorised
+{"case": "grants", "variables": {}, "response": {"data": {"koineManagement": {"grants": [{"grantId": "b1776aea-3795-4a75-b3ff-5c98ef5604d7", "clientLabel": "vm-pointer-reader", "capabilities": ["desktop:read", "koine:manage"], "state": "ACTIVE"}, {"grantId": "0e0ac095-143c-4604-b56e-a86556a3a8e6", "clientLabel": "vm-pointer-controller", "capabilities": ["desktop:control"], "state": "ACTIVE"}, {"grantId": "7661925b-4e94-4615-b4ef-0979013d0350", "clientLabel": "pointer-requester", "capabilities": ["desktop:control", "desktop:read"], "state": "ACTIVE"}]}}}}
+the reading grant's row after the restart: Lists the windows of every application with a Dock icon on the current Space. For each window, it reads the title, the application, the position and size, the place in front-to-back order and whether the window is on screen. A title can contain a document name, a web page title or a message subject. It also lists the displays with their positions and sizes, and it reads the position of the pointer. It reads no window contents and takes no screenshots. A grant from an earlier Koine version that holds desktop:read gets this reach too.
+the controlling grant's row after the restart: Focuses a window. Moves and resizes any window of an application with a Dock icon. Focuses a display: Koine raises the front window there, activates its application and moves the pointer to the centre of the display. Nudges the pointer one point to the right and back, so that a hidden pointer becomes visible again. Posts the media keys play/pause, next and previous. macOS sends them to the Now Playing app in Control Center, which is often not the front app. When no app is Now Playing, play/pause can make macOS open Music and bring it to the front. Posts volume up, volume down and mute, which change the output volume of this Mac or mute it. It never clicks, and it never types into an app. While it moves a window, it turns off the enhanced accessibility setting of the application, and then turns it on again. A grant from an earlier Koine version that holds desktop:control gets this reach too.
+the approved grant's row after the restart, for desktop read: Lists the windows of every application with a Dock icon on the current Space. For each window, it reads the title, the application, the position and size, the place in front-to-back order and whether the window is on screen. A title can contain a document name, a web page title or a message subject. It also lists the displays with their positions and sizes, and it reads the position of the pointer. It reads no window contents and takes no screenshots. A grant from an earlier Koine version that holds desktop:read gets this reach too.
+the approved grant's row after the restart, for desktop control: Focuses a window. Moves and resizes any window of an application with a Dock icon. Focuses a display: Koine raises the front window there, activates its application and moves the pointer to the centre of the display. Nudges the pointer one point to the right and back, so that a hidden pointer becomes visible again. Posts the media keys play/pause, next and previous. macOS sends them to the Now Playing app in Control Center, which is often not the front app. When no app is Now Playing, play/pause can make macOS open Music and bring it to the front. Posts volume up, volume down and mute, which change the output volume of this Mac or mute it. It never clicks, and it never types into an app. While it moves a window, it turns off the enhanced accessibility setting of the application, and then turns it on again. A grant from an earlier Koine version that holds desktop:control gets this reach too.
+
+== Quit Koine
+
+== PASSED — transcript in .build/vm-verify/pointer-media-20261127T152848.log

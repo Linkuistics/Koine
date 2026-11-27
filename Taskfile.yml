@@ -2251,6 +2251,14 @@ tasks:
     cmds:
       - scripts/vm-verify-window-layout.sh
 
+  app:vm-verify-pointer-media:
+    desc: The V seam of pointer and media (Koine 0.6.0, desktop 1.0.2), in ONE clean TestAnyware macOS VM, on the signed bundle - the desktop disclosures in the create-grant view, the request view and the grant list before and after a restart, the pointer position within one point of an independent witness, the nudge as two mouse-moved events one point right and back with the pointer back at its start and no button held, and the six media keys while Music plays three silent local tracks in the background and TextEdit stays in front - play/pause pauses and resumes, next and previous change the track, volume up and down change the output volume and mute switches it - each key seen at the session event tap as key down and up with no key event, and no permission dialog (never on the host)
+    cmds:
+      - bash -n scripts/vm-verify-pointer-media.sh
+      - shellcheck -x scripts/vm-verify-pointer-media.sh
+      - shfmt -d -i 4 scripts/vm-verify-pointer-media.sh
+      - scripts/vm-verify-pointer-media.sh
+
   app:vm-verify-latency:
     desc: Measure, in a clean TestAnyware macOS VM on the signed bundle, warm query-to-choices and selection-to-focus latency in the keyboard workflow - a rotation of switches between two same-titled Finder windows and a TextEdit document, each starting from an asserted window and following real keystrokes in it - and print the observed distribution as a report, never a target
     cmds:
@@ -2357,6 +2365,7 @@ tasks:
       - task: compat:workspace-baseline
       - task: compat:workspace-release
       - task: compat:released-0.4.1
+      - task: compat:released-0.5.0
       - scripts/build-compat-pairs.sh {{.CONFIGURATION | default "debug"}}
 
   compat:verify:
@@ -2383,6 +2392,11 @@ tasks:
     desc: Build the released Koine 0.4.1 (the revision scripts/released-0.4.1.json pins, tag v0.4.1), never from this working tree, in a tree of its own under .build/compat/<configuration>/released-0.4.1 - its host, framework and desktop provider, and its sealed, approved Desktop 1.0.0 and Workspace 1.0.2 bundles kept apart in bundled/ with a record of their digests; the released host that refuses this tree's desktop 1.0.1 because it lacks desktop-disclosures-v1 (CONFIGURATION=debug|release)
     cmds:
       - scripts/build-retained-workspace.sh {{.CONFIGURATION | default "debug"}} scripts/released-0.4.1.json
+
+  compat:released-0.5.0:
+    desc: Build the released Koine 0.5.0 (the revision scripts/released-0.5.0.json pins, tag v0.5.0), never from this working tree, in a tree of its own under .build/compat/<configuration>/released-0.5.0 - its host, framework and desktop provider, and its sealed, approved Desktop 1.0.1 and Workspace 1.0.2 bundles kept apart in bundled/ with a record of their digests; the released host that refuses this tree's desktop 1.0.2 because it lacks desktop-disclosures-v2 (CONFIGURATION=debug|release)
+    cmds:
+      - scripts/build-retained-workspace.sh {{.CONFIGURATION | default "debug"}} scripts/released-0.5.0.json
 
   compat:workspace-baseline-verify:
     desc: Hold the retained workspace 1.0.0 bundle to what it shipped with - its pinned identity and SDL, the 1.0.0 profile served by that revision's own host bundling it, and that revision's workspace suites (logic, composition, installations, schema and catalogue conformance, and the short-path N subjects loading the bundle) - each first seen red against a mutated copy (CONFIGURATION=debug|release; needs compat:workspace-baseline)
