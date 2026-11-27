@@ -44,3 +44,10 @@ happy-path VM run.
   `grant_system_events_automation` is the precedent.
 - The player decides whether previous goes to the previous track or to the
   start of the current one.
+- The nudge and the keys post only when `CGPreflightPostEventAccess` is true
+  as well as `AXIsProcessTrusted`. So a passing run establishes that the signed
+  Koine has posting access under the consent that `grant_accessibility` gives.
+  The Music probe does not establish it.
+- If the nudge or a key reports `os-permission` while Koine's Accessibility
+  switch is on, stop and ask the human. Posting would then need a new consent
+  posture (root brief).

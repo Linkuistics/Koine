@@ -26,3 +26,6 @@ Release Koine 0.6.0 with pointer and media through the Homebrew cask.
 
 - The human approves each public step: the tag, the release, the cask bump
   and each issue.
+- One issue comes from the integration `pointer-media-k8`. In desktop 1.0.1,
+  `desktopFocusDisplay` posts its mouse-moved event under the Accessibility
+  check alone, without `CGPreflightPostEventAccess`.

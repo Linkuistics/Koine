@@ -32,9 +32,20 @@ media key goes to the Now Playing app.
 So Koine cannot tell which process received a posted event, and a receipt
 says only that Koine posted it. The layout of a media key event is a convention
 that Modaliser and other tools rely on, not a documented contract. A macOS
-release can change it, as it can change the private window lookup. Posting
-needs the Accessibility consent that Koine already holds. Without it, macOS can
-drop a posted event and report no error, so Koine checks the consent first.
+release can change it, as it can change the private window lookup.
+
+macOS keeps a separate access for posted events, the `PostEvent` service of
+its privacy policy, and a managed Mac can deny it while it allows
+Accessibility. Without that access, macOS can drop a posted event and report
+no error. So before the nudge or a media key posts, Koine checks its
+Accessibility consent and its posting access. Neither check asks for consent.
+When either fails, Koine reports its one OS permission, `accessibility`, and
+posts nothing.
+
+Koine asks for no consent beyond Accessibility. A new consent for posting
+stays Antony's decision. Display focus keeps the Accessibility check of
+desktop 1.0.1. Its pointer move is a warp, and its one posted event follows
+that move.
 
 The private MediaRemote framework could name the Now Playing app, and so let a
 receipt name the player. Koine does not use it, because Modaliser does not, and

@@ -1282,9 +1282,9 @@ them.
 that a pointer that macOS hid becomes visible again. Modaliser does the same before it draws
 its ring. The provider acts in this order:
 
-- Without Accessibility consent, it reports `os-permission` and posts nothing.
-  macOS can drop a posted event from a process without consent and report no
-  error. The check makes that case visible.
+- Without Accessibility consent or posting access, it reports `os-permission`
+  and posts nothing. macOS can drop a posted event from a process without
+  posting access and report no error. The checks make that case visible.
 - When a pointer button is held, it posts nothing. The outcome is
   `POINTER_BUTTON_HELD`. A pointer move then would be a drag, which needs input
   authority.
@@ -1353,8 +1353,8 @@ previous did nothing, because `mediaremoted` dropped them without a launch
 option. The disclosure states that play/pause can open Music.
 
 No media key is a keystroke. A media key has no virtual key code, so it types
-nothing into the front app. Without Accessibility consent, the provider reports
-`os-permission` and posts nothing. When macOS does not create both events, the
+nothing into the front app. Without Accessibility consent or posting access, the
+provider reports `os-permission` and posts nothing. When macOS does not create both events, the
 provider reports `failed` and posts nothing.
 
 #### Grants, consent and failures
@@ -1366,16 +1366,39 @@ data. Desktop declares no additional capability requirement, and the operations
 need no input grant.
 
 Koine posts every event under its Accessibility consent, which it already holds
-for window focus. So no new permission dialog appears. The
-[authority decision](../adr/provider-authority-follows-effects.md) counts pointer
+for window focus. macOS keeps a separate access for posted events, the
+`PostEvent` service of its privacy policy. A device management profile can
+allow Accessibility and deny `PostEvent`. So a passed Accessibility check does
+not prove that a post can take effect.
+
+The nudge and the media keys make two checks before any other step:
+`AXIsProcessTrusted` for Accessibility consent and `CGPreflightPostEventAccess`
+for posting access. Neither check asks for consent. No operation calls
+`CGRequestPostEventAccess`, which can ask the user for posting access. So no new
+permission dialog appears.
+
+When either check fails, the error names `accessibility`, the one OS permission
+that Koine owns. Its message names the access that macOS withholds. When only
+posting access is missing, `koineManagement.osPermissions` still reports
+Accessibility as granted. Koine also refuses with posting access but without
+Accessibility consent, because it posts under that one consent.
+
+No evidence yet establishes that the signed application has posting access
+under the Accessibility consent that a user gives in System Settings. The probe
+of the [Music check](../verification/media-key-music-launch.md) had both, but
+the TestAnyware agent started it, and it is not Koine. The acceptance run
+checks that access on the signed application. There, a refused post or a new permission dialog is a new
+consent posture, which is Antony's decision.
+
+The [authority decision](../adr/provider-authority-follows-effects.md) counts pointer
 movement without held buttons and system media events as desktop effects. The
 [desktop automation decision](../adr/desktop-automation-uses-public-accessibility.md)
-covers the posted events.
+covers the posted events and the check of posting access.
 
 | Condition | Result |
 | --- | --- |
 | The position read without `desktop:read`, or the nudge or a media key without `desktop:control` | `permission`, `capability`. Koine refuses an action before any effect. |
-| The nudge or a media key without Accessibility consent | `permission`, `os-permission`, `accessibility`. Koine posted nothing. |
+| The nudge or a media key without Accessibility consent or without posting access | `permission`, `os-permission`, `accessibility`. The message names the missing access. Koine posted nothing. |
 | A pointer button is held at the nudge | The outcome `POINTER_BUTTON_HELD`, with no error. Koine posted nothing. |
 | The position is unknown at the nudge, or macOS does not create an event | `failed`. Koine posted nothing. |
 | The position is unknown at the read | Null, with no error. |

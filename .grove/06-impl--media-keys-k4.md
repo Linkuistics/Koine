@@ -26,8 +26,9 @@ Serve the six media keys in the desktop provider, with L and G tests.
 - G tests cover the authority and the descriptions. No G test posts a key.
 - The served SDL is the whole design, word for word. The composed design files
   and profiles of `pointer-k3` gain the media key root and its types.
-- Without Accessibility consent, the operation reports `os-permission` and
-  posts nothing.
+- Without Accessibility consent or posting access, the operation reports
+  `os-permission` and posts nothing. It makes the two consent checks of the
+  nudge in `pointer-k3`.
 - `swift test` passes. The "Pointer and media" section of the desktop contract,
   the trace row "Media", the README and the client guide describe the served
   state.

@@ -55,5 +55,10 @@ and G tests. Serve the new disclosure text for the whole grove too.
   screen, the read is null and the nudge reports `failed`.
 - The nudge checks consent first, then the held buttons. It creates both
   mouse-moved events before it posts either.
+- The consent step is two checks: `AXIsProcessTrusted` and
+  `CGPreflightPostEventAccess`. When either is false, the nudge reports
+  `os-permission` with `accessibility`, and its message names the missing
+  access. No operation calls `CGRequestPostEventAccess`. The integration
+  `pointer-media-k8` added the second check.
 - `task design:pointer-media-check` must still pass after any change to the
   design files.
