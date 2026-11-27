@@ -192,6 +192,14 @@ tasks:
       - shfmt -d -i 4 scripts/vm-check-media-key-music.sh
       - scripts/vm-check-media-key-music.sh
 
+  fixture:keystroke-route-vm:
+    desc: Probe route A for app input in a clone of the prepared launcher image (task launchers:prepare) with the signed keystroke probe and key witness - Safari, Finder, Zed, Zotero and Obsidian each act on one configured chord sent with CGEventPostToPid while in front; a Control-2 by route A switches no Space while the same chord at the HID event tap does; a session-level tap misses the route A chord; what reaches the front app with the shortcut absent or off and with no such Space; and posting without access (docs/verification/keystroke-route-vm.md; never sends a chord on the host). Exit 3 means an app ignored its chord (stop and ask Antony), and exit 4 a harness limit on Spaces
+    cmds:
+      - bash -n scripts/vm-check-keystroke-route.sh
+      - shellcheck -x scripts/vm-check-keystroke-route.sh
+      - shfmt -d -i 4 scripts/vm-check-keystroke-route.sh
+      - scripts/vm-check-keystroke-route.sh
+
   fixture:private-ax:
     desc: Build and sign the private AX PID-recycling diagnostic (execute only in a TestAnyware VM)
     cmds:

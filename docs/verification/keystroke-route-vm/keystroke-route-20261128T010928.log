@@ -1,0 +1,59 @@
+
+== Start a clean VM (koine-verify-56611)
+waiting for a macOS guest slot: request r-64b8aaca, place 1, 1 waiter, slots held by no VM
+Setting guest display resolution to 1920x1080 px...
+  set-display-mode: switched main display to 1920x1080 pt @ 1x (1920x1080 px, modeID 10)
+VNC size wait: the first session read 1280x720. Session 2 read 1920x1080 after 0.26 s.
+ProductName:		macOS
+ProductVersion:		27.0.1
+BuildVersion:		26A434
+arm64
+Gatekeeper: assessments enabled
+KeyWitness.app
+KeystrokeProbe.app
+KeystrokeProbeControl.app
+
+== Start state
+{"skylight":[{"currentDesktop":1,"currentSpaceID":1,"desktops":1,"display":"E2ABB297-1C38-4D72-AB5F-D47B339022B3","spaceIDs":[1],"types":[0]}],"preferences":[{"currentDesktop":1,"currentSpaceID":1,"desktops":1,"display":"Main","spaceIDs":[1],"types":[0]}],"activeSpaceID":1}
+{"desktop":1,"digitKeycode":18,"id":118,"present":false}
+{"desktop":2,"digitKeycode":19,"id":119,"present":false}
+{"desktop":3,"digitKeycode":20,"id":120,"present":false}
+
+== Add a second Space in Mission Control
+{"skylight":[{"currentDesktop":1,"currentSpaceID":1,"desktops":2,"display":"E2ABB297-1C38-4D72-AB5F-D47B339022B3","spaceIDs":[1,13],"types":[0,0]}],"preferences":[{"currentDesktop":1,"currentSpaceID":1,"desktops":2,"display":"Main","spaceIDs":[1,13],"types":[0,0]}],"activeSpaceID":1}
+
+== Key witness in front
+front app: Key Witness (pid 700)
+
+== Control-2 at the HID event tap with no Desktop 2 entry
+{"route":"CGEventPost(kCGHIDEventTap)","chord":"ctrl+2","pid":null,"target":null,"front":"Key Witness"}
+desktop 1 of 2
+key witness: [["flagsChanged",59,262144,true,true],["keyDown",19,262144,true,true],["keyUp",19,262144,true,true],["flagsChanged",59,0,true,true]]
+
+== Turn on Switch to Desktop 1 and Switch to Desktop 2
+{"controlDigit":true,"desktop":1,"digitKeycode":18,"enabled":true,"id":118,"parameters":[65535,18,262144],"present":true,"type":"standard"}
+{"controlDigit":true,"desktop":2,"digitKeycode":19,"enabled":true,"id":119,"parameters":[65535,19,262144],"present":true,"type":"standard"}
+{"desktop":3,"digitKeycode":20,"id":120,"present":false}
+
+== Control-2 by route A to the key witness
+{"route":"CGEventPostToPid","chord":"ctrl+2","pid":700,"target":"Key Witness","front":"Key Witness"}
+desktop 1 of 2
+key witness: [["flagsChanged",59,262144,true,true],["keyDown",19,262144,true,true],["keyUp",19,262144,true,true],["flagsChanged",59,0,true,true]]
+
+== Control-2 at the HID event tap
+{"route":"CGEventPost(kCGHIDEventTap)","chord":"ctrl+2","pid":null,"target":null,"front":"Key Witness"}
+desktop 2 of 2; key witness windows on screen: 1 -> 0
+front app: {"name":"Finder","pid":363}
+key witness: [["flagsChanged",59,262144,true,true],["flagsChanged",59,0,true,true]]
+
+== Control-1 at the HID event tap
+{"route":"CGEventPost(kCGHIDEventTap)","chord":"ctrl+1","pid":null,"target":null,"front":"Finder"}
+desktop 1 of 2
+front app: Key Witness (pid 700)
+
+== A keyboard tap at the session level
+{"route":"CGEventPostToPid","chord":"ctrl+shift+k","pid":700,"target":"Key Witness","front":"Key Witness"}
+{"route":"CGEventPost(kCGHIDEventTap)","chord":"ctrl+shift+j","pid":null,"target":null,"front":"Key Witness"}
+tap: {"tap":true,"trusted":true} [["flagsChanged",59],["flagsChanged",56],["keyDown",38],["keyUp",38],["flagsChanged",56],["flagsChanged",59]]
+key witness: [["flagsChanged",59,262144,true,true],["flagsChanged",56,393216,true,true],["keyDown",40,393216,true,true],["keyUp",40,393216,true,true],["flagsChanged",56,262144,true,true],["flagsChanged",59,0,true,true],["flagsChanged",59,262144,true,true],["flagsChanged",56,393216,true,true],["keyDown",38,393216,true,true],["keyUp",38,393216,true,true],["flagsChanged",56,262144,true,true],["flagsChanged",59,0,true,true]]
+FAILED: the session tap missed the chord at the HID event tap
