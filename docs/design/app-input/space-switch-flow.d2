@@ -1,0 +1,37 @@
+# Flowchart: switch to a Mission Control desktop. It omits the host's grant check, which the workflow authority view draws.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+  refusal: {style: {stroke-dash: 4}}
+}
+Call: "Start here · inputSwitchSpace(number)\ninput:control AND desktop:control admitted" {class: start}
+Number: "Number from\n1 to 9?" {shape: diamond}
+Consent: "Accessibility consent\nand posting access?" {shape: diamond}
+Shortcut: "Entry 117 + N\non, with Control\nand the digit?" {shape: diamond}
+Count: "Mission Control\ndesktop N exists?\nSkyLight count,\nall displays" {shape: diamond}
+Build: "Create four events\nControl down, digit down and up, Control up"
+Front: "Koine is the\nfront app?" {shape: diamond}
+Post: "Post the four events at the HID event tap\nno check between events"
+Posted: "Outcome POSTED\nmacOS then catches the shortcut"
+Invalid: "invalid argument\nattempted nothing" {class: refusal}
+OsPermission: "os-permission error\nposted nothing" {class: refusal}
+Off: "Outcome SHORTCUT_OFF\nor SHORTCUT_REMAPPED\nposted nothing" {class: refusal}
+Missing: "Outcome NO_SUCH_DESKTOP\nposted nothing" {class: refusal}
+Failed: "failed error\nposted nothing" {class: refusal}
+ProtectedFront: "Outcome PROTECTED_FRONT_APP\nposted nothing" {class: refusal}
+Call -> Number: "1 · checks"
+Number -> Invalid: "no · refuses"
+Number -> Consent: "2 · yes · checks"
+Consent -> OsPermission: "no · refuses"
+Consent -> Shortcut: "3 · yes · reads the entry"
+Shortcut -> Off: "off, absent or remapped · refuses"
+Shortcut -> Count: "4 · on · counts"
+Count -> Missing: "no · refuses"
+Count -> Failed: "SkyLight missing · refuses"
+Count -> Build: "5 · yes · builds"
+Build -> Failed: "a read or an event fails · refuses"
+Build -> Front: "6 · reads the front app"
+Front -> ProtectedFront: "yes · refuses"
+Front -> Post: "7 · no · posts"
+Post -> Posted: "8 · returns"
+Key: "Key\nDashed border: a refusal, Koine posted nothing\nCapitals: an outcome of the receipt\nLower case: a GraphQL error" {shape: text; near: bottom-right}

@@ -1,0 +1,19 @@
+# Labelled graph: which capabilities each input operation needs. It omits the read of each receipt, which needs the same set.
+direction: right
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+Grant: "Start here · A grant" {class: start}
+Read: "input:read"
+Control: "input:control"
+Desktop: "desktop:control"
+Capture: "Target capture\ninputFrontTarget\ninputTarget(process)"
+Chord: "Chord\ninputSendKeystroke"
+Switch: "Space switch\ninputSwitchSpace"
+Grant -> Read: "holds"
+Grant -> Control: "holds"
+Grant -> Desktop: "holds"
+Read -> Capture: "admits alone"
+Control -> Chord: "admits alone"
+Control -> Switch: "admits, with desktop:control"
+Desktop -> Switch: "admits, with input:control"

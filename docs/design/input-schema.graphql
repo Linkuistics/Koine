@@ -1,0 +1,160 @@
+# Input 1.0.0 contribution for Koine 0.7.0: app input. This is the first input provider, so every definition is new.
+# Target capture needs input:read. A chord needs input:control. A Space switch needs input:control and desktop:control,
+# as an additional capability requirement under the framework feature additional-capabilities-v1.
+# A chord goes to the target whether or not it is the front app. Koine refuses only itself as a target.
+# Every refusal that sends nothing is an outcome of a control receipt, because a provider error carries no reason.
+# A stale target raises unavailable. An unknown key fails GraphQL validation, because InputKey is an enum.
+# The contract is docs/specs/app-input.md. The release requires additional-capabilities-v1 and no disclosure feature:
+# every released host keeps the input slot reserved-only, so it refuses this bundle before load.
+# task design:app-input-check validates this file alone, composed with the core, and composed with desktop 1.0.2 and workspace 1.0.2.
+
+"UTC instant with exactly six fractional second digits, captured from the process start time."
+scalar InputProcessStart
+
+"A process incarnation that a client captured: the process identifier and the start instant that the kernel records for the process."
+input InputProcessIdentity {
+  pid: Int!
+  startedAt: InputProcessStart!
+}
+
+extend type Query {
+  "input:read. The front app as an input target. The front app is the app that macOS reports as active, and it receives the keyboard. Null when macOS reports no front app."
+  inputFrontTarget: InputTarget
+  "input:read. This process incarnation as an input target. An absent process, a live process identifier with another start instant, or a process that macOS does not report as an app is ordinary null."
+  inputTarget(process: InputProcessIdentity!): InputTarget
+}
+
+extend type Mutation {
+  "input:control. Sends one chord to this target, whether or not it is the front app. Koine never brings the target to the front. Koine posts every event into the event stream of the target process. So no other app receives the chord, and the keyboard tap of another process does not see it. An app in the background can ignore a chord, act on a window behind other apps, or come to the front. A chord sent to a terminal can type and run commands, and a chord can answer a consent or security prompt of macOS. A stale or wrong-kind reference raises unavailable."
+  inputSendKeystroke(target: Reference!, key: InputKey!, modifiers: [InputModifier!]!): InputKeystrokeReceipt
+  "input:control AND desktop:control. Switches to this Mission Control desktop, from 1 to 9. Koine posts Control and the digit at the HID event tap, as the keyboard does for the shortcut \"Switch to Desktop N\". First it reads the shortcut setting and the Mission Control desktops, and it changes neither. It posts nothing when the shortcut is off or uses another key, when the Mission Control desktop does not exist, or while Koine is the front app. If the shortcut setting or the Mission Control desktops change in the instant before macOS reads the chord, the front app can receive Control and the digit. Koine counts the desktops of every display in order, and with several displays macOS can number them another way. The keyboard tap of a client sees these events, and their source process is Koine. A number outside 1 to 9 is an invalid argument."
+  inputSwitchSpace(number: Int!): InputSpaceSwitchReceipt
+}
+
+"All fields require input:read. An app process as an input target."
+type InputTarget {
+  "Names this process incarnation for a chord. Pass it unchanged. Null exactly when protection is PROTECTED, because Koine sends no chord to itself."
+  ref: Reference
+  "The name of the app."
+  name: String!
+  "The bundle identifier of the app. Null when the app has none."
+  bundleIdentifier: String
+  "Whether Koine can send a chord to this target."
+  protection: InputTargetProtection!
+}
+
+"ADDRESSABLE: Koine can send a chord to this target, in front or in the background. PROTECTED: the target is Koine itself, and Koine sends it no chord."
+enum InputTargetProtection { ADDRESSABLE PROTECTED }
+
+"The key of a chord. Each value names one key of the US ANSI layout by its key code, as Modaliser's key table does. With another keyboard layout, the app can read another character for the same key. A modifier key is never the key of a chord."
+enum InputKey {
+  A
+  B
+  C
+  D
+  E
+  F
+  G
+  H
+  I
+  J
+  K
+  L
+  M
+  N
+  O
+  P
+  Q
+  R
+  S
+  T
+  U
+  V
+  W
+  X
+  Y
+  Z
+  DIGIT_0
+  DIGIT_1
+  DIGIT_2
+  DIGIT_3
+  DIGIT_4
+  DIGIT_5
+  DIGIT_6
+  DIGIT_7
+  DIGIT_8
+  DIGIT_9
+  "The key of -, the minus sign."
+  MINUS
+  "The key of =, the equals sign."
+  EQUAL
+  "The key of [, the left square bracket."
+  LEFT_BRACKET
+  "The key of ], the right square bracket."
+  RIGHT_BRACKET
+  "The key of \\, the backslash."
+  BACKSLASH
+  "The key of ;, the semicolon."
+  SEMICOLON
+  "The key of ', the apostrophe."
+  QUOTE
+  "The key of the comma."
+  COMMA
+  "The key of the full stop."
+  PERIOD
+  "The key of /, the slash."
+  SLASH
+  "The key of `, the grave accent."
+  GRAVE
+  "The space bar."
+  SPACE
+  "The return key."
+  RETURN
+  "The tab key."
+  TAB
+  "The delete key, which deletes backward."
+  DELETE
+  "The escape key."
+  ESCAPE
+  "The left arrow key."
+  LEFT
+  "The right arrow key."
+  RIGHT
+  "The down arrow key."
+  DOWN
+  "The up arrow key."
+  UP
+  F1
+  F2
+  F3
+  F4
+  F5
+  F6
+  F7
+  F8
+  F9
+  F10
+  F11
+  F12
+}
+
+"A modifier key of a chord. Koine presses the modifiers in the order CONTROL, SHIFT, OPTION and COMMAND, and it releases them in the reverse order. A modifier that the list holds twice counts once."
+enum InputModifier { CONTROL SHIFT OPTION COMMAND }
+
+"Control-authorized output. It says only whether Koine sent the chord. It does not say what the app did with the chord."
+type InputKeystrokeReceipt {
+  "What the operation did."
+  outcome: InputKeystrokeOutcome!
+}
+
+"SENT: Koine posted every event of the chord into the event stream of the target. PROTECTED_TARGET: the target is Koine itself, so Koine sent nothing."
+enum InputKeystrokeOutcome { SENT PROTECTED_TARGET }
+
+"Control-authorized output under input:control AND desktop:control. It says only whether Koine posted Control and the digit. It does not say that the Space changed."
+type InputSpaceSwitchReceipt {
+  "What the operation did."
+  outcome: InputSpaceSwitchOutcome!
+}
+
+"POSTED: Koine posted Control and the digit at the HID event tap. SHORTCUT_OFF: the shortcut \"Switch to Desktop N\" is off or absent. SHORTCUT_REMAPPED: the shortcut uses another key or other modifiers. NO_SUCH_DESKTOP: there are fewer Mission Control desktops than the number. PROTECTED_FRONT_APP: Koine is the front app. For every outcome except POSTED, Koine posted nothing."
+enum InputSpaceSwitchOutcome { POSTED SHORTCUT_OFF SHORTCUT_REMAPPED NO_SUCH_DESKTOP PROTECTED_FRONT_APP }

@@ -1,0 +1,80 @@
+{
+  "title": "App input · Koine 0.7.0 design",
+  "intro": "The input provider of app input: target capture, one chord to an app in front or in the background, and a Space switch. Every view is the design of the app-input-k3 leaf, and a review leaf will challenge it. Each graph has its entry at the dark node labelled Start here, and numbered arrows give the order of the steps. The contract is docs/specs/app-input.md.",
+  "groups": [
+    {
+      "id": "chords",
+      "title": "Chords",
+      "description": "Send one chord to the captured target, in front or in the background."
+    },
+    {
+      "id": "space-switching",
+      "title": "Space switching",
+      "description": "Post Control and a digit for macOS, after the checks of the shortcut and the desktops."
+    },
+    {
+      "id": "routes-authority",
+      "title": "Routes and authority",
+      "description": "Where each chord goes, and which capabilities each operation needs."
+    }
+  ],
+  "discussion": {
+    "title": "Send a chord to an app in the background",
+    "status": "Agreed with Antony",
+    "summary": "Antony dropped the front check, because Koine is to stand in for the computer use of an LLM harness. Route A keeps every chord inside the target process, so the check protected no other app. Every app except Koine is a target under the capabilities, consent and security prompts included. Koine refuses itself, because a chord to its Settings window could approve a grant. Pointer control of a window that is not in front is its own item in issue 11. Space switching counts the desktops of all displays with SkyLight.",
+    "diagramIds": [
+      "chord-flow",
+      "space-switch-flow",
+      "routes",
+      "authority"
+    ],
+    "updatedDiagrams": [
+      {
+        "id": "chord-flow",
+        "summary": "Removed the front check. Koine posts once it has created the events, and it refuses only itself as a target."
+      },
+      {
+        "id": "space-switch-flow",
+        "summary": "Step 6 refuses only while Koine is the front app."
+      }
+    ]
+  },
+  "diagrams": [
+    {
+      "id": "chord-flow",
+      "group": "chords",
+      "title": "Flowchart: send one chord, with every check before the first event",
+      "renderer": "svg",
+      "source": "chord-flow.d2",
+      "rendered": "chord-flow.svg",
+      "caption": "Agreed with Antony: no front check. Koine checks consent, resolves the target, refuses Koine itself and creates every event. Then it posts the 2 to 10 events into the target's own event stream, whether or not the target is in front. No refusal comes after the first event, so none can leave a modifier down in the target."
+    },
+    {
+      "id": "space-switch-flow",
+      "group": "space-switching",
+      "title": "Flowchart: switch to a Mission Control desktop, with the SkyLight count",
+      "renderer": "svg",
+      "source": "space-switch-flow.d2",
+      "rendered": "space-switch-flow.svg",
+      "caption": "Agreed with Antony: the SkyLight count across all displays at step 4. Koine reads the shortcut entry and counts the desktops, and it changes neither. It refuses each case in which macOS would pass Control and the digit to the front app, and it refuses while Koine is in front. The race in the instant before macOS reads the chord remains."
+    },
+    {
+      "id": "routes",
+      "group": "routes-authority",
+      "title": "Labelled graph: where an app chord and a Space switch go",
+      "renderer": "svg",
+      "source": "routes.d2",
+      "rendered": "routes.svg",
+      "caption": "Proposed. An app chord enters the target's event stream after the session event tap, so no other app and no client tap sees it. A Space switch must pass the session event tap, so that macOS can catch the shortcut. The route probe of keystroke-route-k2 established both routes in a VM."
+    },
+    {
+      "id": "authority",
+      "group": "routes-authority",
+      "title": "Labelled graph: the capabilities of each input operation",
+      "renderer": "svg",
+      "source": "authority.d2",
+      "rendered": "authority.svg",
+      "caption": "Proposed. Read does not imply control. A Space switch declares desktop:control as an additional capability requirement. So when the desktop provider is not admitted, the missing-owner cascade removes the whole input contribution."
+    }
+  ]
+}

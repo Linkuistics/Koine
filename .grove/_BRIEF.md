@@ -4,8 +4,8 @@
 
 This grove ships app input, the next item of the roadmap in GitHub issue 11,
 as Koine 0.7.0 through the Homebrew cask. It ships Koine's first input
-provider. A client with an input grant sends one chord to an app, but only
-while that app is the front app. A chord is one key with its modifier keys,
+provider. A client with an input grant sends one chord to an app, whether or
+not that app is the front app. A chord is one key with its modifier keys,
 such as Command-L. A client with input and desktop grants also switches to a
 Space with Control and a digit.
 
@@ -21,15 +21,15 @@ his words, and this brief holds the result.
 - **Route.** Koine sends the chord into the target's own event stream with
   `CGEventPostToPid`. It never posts an app chord at the HID event tap, so no
   other app can receive the chord.
-- **Front app.** Koine sends a chord only while the target is the front app.
-  Otherwise it refuses and sends nothing, and it never activates the target.
+- **Background targets.** Koine sends a chord whether or not the target is
+  the front app. It never activates the target.
 - **Space switching.** Under input control and desktop control, Koine posts
   Control and a digit from 1 to 9 at the HID event tap. It reads the shortcut
   settings first, and it changes nothing. It refuses when the shortcut is
   disabled or remapped, or when the Space does not exist.
-- **Protected targets.** Koine refuses its own process and recognised consent
-  or security dialogs as targets. Space switching also refuses while one of
-  them is in front.
+- **Protected targets.** Koine refuses its own process as a target, and Space
+  switching refuses while Koine is in front. Every other app is a target
+  under the capabilities, consent and security prompts included.
 - **Authority.** Target capture uses input read, as the workflow providers
   spec allocates it. A chord needs input control, and Space switching needs
   desktop control too. Read-only and desktop-only grants cannot send a chord.
@@ -38,13 +38,13 @@ his words, and this brief holds the result.
   before it sends, as the media keys do. No new permission dialog appears.
 - **Disclosure.** Before the release, the Settings window and the field
   descriptions disclose the reach of input control. A chord sent to a
-  terminal can type and run commands. Acceptance covers a new grant request,
-  an existing grant after a restart and the field descriptions.
-- **Limits.** The descriptions state two limits. The target can stop being
-  the front app in the instant before it reads a chord. Then the target reads
-  the chord as a background app, and no other app receives it. Space
-  switching keeps a race that needs the shortcut setting or the Space to
-  change in the same instant.
+  terminal can type and run commands, and a chord can answer a consent or
+  security prompt. Acceptance covers a new grant request, an existing grant
+  after a restart and the field descriptions.
+- **Limits.** The descriptions state two limits. An app in the background
+  can ignore a chord, act on a window behind other apps, or come to the
+  front. Space switching keeps a race that needs the shortcut setting or the
+  Space to change in the same instant.
 - The four agreed test seams (Pointers) pass, and so does the scheduled check
   on Antony's Mac.
 - **Docs** describe the current state. They cover the design schema, the
@@ -119,7 +119,7 @@ one scope. Their positions encode their dependencies.
   `InputLibrary.swift` exposes `send-keystroke`. Antony's configuration is
   `~/.config/modaliser/config.scm` with its `app-trees/*.scm` files.
 - Koine precedents: the commit of `workspace-launch-k59` first bundled the
-  workspace provider. It shows each file that a new provider bundle touches.
+  workspace provider. It lists each file that a new provider bundle touches.
   `Fixtures/MediaKeyProbe` with `task fixture:media-key-music-vm` is a signed
   probe in a VM. The media key operation of desktop checks the consent and the
   posting access before it posts.
@@ -127,9 +127,9 @@ one scope. Their positions encode their dependencies.
   - *L*: a new target `InputProviderLogicTests` feeds plain values to the
     pure input logic module, and nothing sends an event. It covers the events
     of a chord in Modaliser's order, the key table and the refusal of an
-    unknown key. It also covers the front-app decision, the protected targets
-    and the Space-switch checks, from plain shortcut settings and a Space
-    count.
+    unknown key. It also covers the refusal of Koine's own process and the
+    Space-switch checks, from plain shortcut settings and plain lists of
+    Spaces.
   - *G*: `KoineServerTests` load the real input bundle and query it over
     loopback. Read-only and desktop-only grants cannot send a chord. Input
     control alone cannot switch a Space. A denied or revoked grant refuses.
@@ -148,8 +148,9 @@ one scope. Their positions encode their dependencies.
     request, and for an existing grant after a restart. All 21 rows of Safari
     and Finder pass, and one row each in Zed, Zotero and Obsidian. Each app is
     in front for its rows.
-  - *V refusals*: Koine refuses a chord for Safari while TextEdit is in front,
-    and neither app changes. A Control-2 through the keystroke operation
+  - *V background and refusals*: with TextEdit in front, Koine sends a chord
+    to Safari. Safari acts on it, and TextEdit does not change. A Control-2
+    through the keystroke operation
     switches no Space. Space switching reaches Space 2 when the shortcut is
     enabled, and it refuses when the shortcut is disabled. No permission
     dialog appears.
@@ -190,7 +191,8 @@ one scope. Their positions encode their dependencies.
 
   Koine's authority rules still hold. So Koine closes the race that
   Modaliser's post at the HID event tap leaves open.
-- **The front-app rule is Antony's:**
+- **Antony replaced the front-app rule in `app-input-k3`.** His rule in
+  `plan-k1` was this:
 
 <!-- tc: off because these are the human's words, quoted verbatim -->
 
@@ -199,14 +201,29 @@ one scope. Their positions encode their dependencies.
 
 <!-- tc: on -->
 
+  Route A removes that race, because a chord can reach no other process. He
+  wants Koine to stand in for the computer use of an LLM harness, which
+  controls windows that are not in front. His ruling in `app-input-k3`:
+
+<!-- tc: off because these are the human's words, quoted verbatim -->
+
+  > drop the front check. pointer control is a separate item - update the
+  > issue to add this to the checklist. I want everything available, covered
+  > by capabilities.
+
+<!-- tc: on -->
+
+  So every app except Koine is a target under the capabilities. Koine stays
+  refused, because a chord to its Settings window could approve a grant.
+
 - **Route A has no fallback.** If a configured app ignores a chord in its own
   event stream, the session stops and asks Antony. No session uses the post
   at the HID event tap for an app chord instead. Antony rejected a Koine
   keyboard tap, because that tap would see every keystroke in the session.
 - **A private call is Antony's decision.** No public interface counts
   Spaces. Antony's ruling covers Modaliser's mechanisms, and Modaliser counts
-  no Spaces. If the count needs a private call, the design leaf asks Antony
-  before it adopts one.
+  no Spaces. In `app-input-k3`, Antony chose the private SkyLight call
+  `SLSCopyManagedDisplaySpaces`, with a count across all displays.
 - **A new permission dialog is a stop.** Koine needs its Accessibility
   consent only, and it already holds that consent. A dialog that names Koine
   is a new consent posture, which is Antony's decision.
@@ -244,6 +261,6 @@ one scope. Their positions encode their dependencies.
   `app:vm-verify-app-input`.
 - **Out of scope:** held keys, such as Dia's recent-tab walk, belong to the
   held interactions item. Menu invocation, pointer buttons and typing a text
-  string are not part of this grove. Keys to an app in the background, the VS
-  Code screens and the chords of the iTerm and herdr libraries are out of
-  scope too.
+  string are not part of this grove. Pointer control of a window that is not
+  in front is its own item in issue 11. The VS Code screens and the chords of
+  the iTerm and herdr libraries are out of scope too.

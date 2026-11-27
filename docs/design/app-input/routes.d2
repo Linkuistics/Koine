@@ -1,0 +1,20 @@
+# Labelled graph: where each kind of chord goes. It omits the checks, which the two flowcharts draw.
+direction: right
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+}
+Koine: "Start here · Koine" {class: start}
+PerProcess: "CGEventPostToPid\naddressed to the target process"
+Target: "Event stream of the input target\nafter the session event tap"
+Hid: "HID event tap"
+Session: "Session event tap\nkeyboard taps of clients"
+Shortcuts: "System shortcuts\nSwitch to Desktop N"
+Switch: "Mission Control\nswitches the Space"
+Front: "Front app\nreceives Control and the digit"
+Koine -> PerProcess: "1 · sends an app chord"
+PerProcess -> Target: "2 · delivers"
+Koine -> Hid: "1 · posts a Space switch"
+Hid -> Session: "2 · passes through"
+Session -> Shortcuts: "3 · offers the chord to"
+Shortcuts -> Switch: "4 · on and desktop present · switches"
+Shortcuts -> Front: "4 · in a stated limit · falls through"

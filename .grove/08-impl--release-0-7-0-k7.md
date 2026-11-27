@@ -10,7 +10,7 @@ Release Koine 0.7.0 with app input through the Homebrew cask.
   after six release checks on the notarised bundle, and it filed the deferred
   issues.
 - The section "Release checks on the notarised bundle" of
-  `docs/verification/desktop-pointer-media-vm.md` shows the checks.
+  `docs/verification/desktop-pointer-media-vm.md` lists the checks.
 
 ## Done when
 
@@ -23,6 +23,10 @@ Release Koine 0.7.0 with app input through the Homebrew cask.
   Dia join issue #7, or a new issue holds them.
 - Each case that acceptance deferred is a GitHub issue. So is each review
   finding that does not break the happy path.
+- The design leaf `app-input-k3` deferred two cases, and each is an issue:
+  - A check with two displays and a full-screen app, of how macOS numbers
+    the Mission Control desktops against Koine's count.
+  - A shortcut setting that macOS has not applied.
 
 ## Notes
 

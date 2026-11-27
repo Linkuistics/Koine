@@ -1,4 +1,4 @@
-# Desktop automation uses public Accessibility, and Modaliser's private window order
+# Desktop automation uses public Accessibility, with a private window order and Space count
 
 Koine uses public macOS Accessibility APIs for window listing, focus, window
 frames and notifications. Every action goes to a held public element. The
@@ -50,6 +50,59 @@ that move.
 The private MediaRemote framework could name the Now Playing app, and so let a
 receipt name the player. Koine does not use it, because Modaliser does not, and
 no requirement asks for the name.
+
+Koine sends an app chord in another way, by per-process posting. It posts each
+event with `CGEventPostToPid` into the event stream of the input target, after
+the event taps of the session. The macOS SDK header documents this call as the
+way to route an event to a chosen app. So no other app can receive the chord,
+no system shortcut catches it, and the keyboard tap of another process does not
+see it. The [route probe](../verification/keystroke-route-vm.md) established
+these properties for five apps in a VM.
+
+Modaliser posts its chords at the HID event tap. There a chord goes to the app
+that is in front when macOS reads it. That app can differ from the one that
+Modaliser checked. Koine sends a chord to the target whether or not it is the
+front app, and it never brings the target to the front. An app in the
+background can ignore a chord, act on a window behind other apps, or come to
+the front. Antony chose this reach, because Koine is to stand in for the
+computer use of an LLM harness.
+
+Every app except Koine is a target under the capabilities, system consent and
+security prompts included. Koine refuses itself, because a chord to its
+Settings window could approve a grant. The
+[workflow providers spec](../specs/workflow-providers.md) holds this rule for
+input and menus.
+
+Antony rejected the alternative. It keeps the post at the HID event tap, and
+a Koine keyboard tap drops a chord that reaches the wrong app. That tap would
+see every keystroke in the session. Per-process posting has no fallback to the
+HID event tap.
+
+`CGEventPostToPid` needs posting access, as the post at the HID event tap
+does. Without it, the probe's chord reached nothing, and macOS asked
+the user for consent. So Koine checks its consent and its posting access before
+it sends a chord, as it does before a media key.
+
+A Space switch posts Control and a digit at the HID event tap, because macOS
+must catch the chord there. Before it posts, Koine reads the shortcut "Switch
+to Desktop N" from the preferences domain `com.apple.symbolichotkeys` with the
+public CFPreferences calls. Apple does not document the domain or its entries,
+and a macOS release can change them. Most changes make Koine refuse or fail.
+But an entry that still reads as on after macOS stops using it could let the
+chord reach the front app.
+
+No public interface counts the Mission Control desktops. Antony chose the
+private SkyLight call `SLSCopyManagedDisplaySpaces`, which Modaliser does not
+use. The public preferences domain `com.apple.spaces` also gives a count, but
+Apple does not document its form. On Antony's Mac it kept 19 display entries
+where SkyLight reported one, and its current Space lagged in the probe.
+
+Koine looks up the SkyLight call when it first needs it, as it looks up the
+private window lookup. If a macOS release removes or changes the call, a
+Space switch fails and posts nothing, and chords still work. Koine counts the
+desktops of every display in the order that SkyLight reports, and skips
+full-screen Spaces. The probe had one display, so if macOS numbers desktops
+another way, the front app can receive Control and the digit.
 
 Koine accepts wrong-process or wrong-window data and effects during process or
 window reuse. It also accepts stale or misattributed notifications, and

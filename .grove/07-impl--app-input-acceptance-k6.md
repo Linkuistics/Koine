@@ -36,3 +36,6 @@ and the scheduled check on Antony's Mac.
   it found them. State how in the proposal.
 - Until Antony sets the time, the leaf stays live. Ask him, and finish the
   turn while you wait.
+- One V case sends a chord to Safari in the background. The probe sent a
+  chord to Finder in the background only. If Safari ignores the chord, stop
+  and ask Antony, because route A has no fallback.

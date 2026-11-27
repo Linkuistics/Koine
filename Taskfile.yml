@@ -1554,6 +1554,142 @@ tasks:
         console.log(`Pointer and media SDL valid alone, with the core and with workspace 1.0.2; desktop 1.0.1 kept word for word; ${roots} designed roots added, each stating its capability; receipts carry only enums; example operations valid; ${controls.length} mutated subjects rejected. Design only: runtime is held by swift test and task conformance.`);
         JS
 
+  design:app-input-check:
+    desc: Validate the input 1.0.0 app input SDL alone, composed with the core and composed with desktop 1.0.2 and workspace 1.0.2; check that every definition stays in the Input namespace, that only the designed roots are added with their arguments, that each root and read type states its capability, that the Space switch states input:control AND desktop:control, that the descriptions state the two limits, that the control receipts carry only enums, that the five enums hold exactly the designed values, and that the example operations validate, with eleven mutated subjects rejected (design check, not runtime conformance)
+    dir: clients/contract-only
+    cmds:
+      - npm ci --ignore-scripts --no-audit --no-fund
+      - |
+        node --input-type=module <<'JS'
+        import { readFileSync } from 'node:fs';
+        import { buildSchema, extendSchema, getNamedType, isEnumType, parse, validate, validateSchema } from 'graphql';
+        const read = name => readFileSync(`../../docs/design/${name}`, 'utf8');
+        // The designed roots, each with its arguments and the capability that its description states first.
+        const roots = {
+          Query: {
+            inputFrontTarget: { args: '', capability: 'input:read. ' },
+            inputTarget: { args: 'process:InputProcessIdentity!', capability: 'input:read. ' },
+          },
+          Mutation: {
+            inputSendKeystroke: { args: 'target:Reference!,key:InputKey!,modifiers:[InputModifier!]!', capability: 'input:control. ' },
+            inputSwitchSpace: { args: 'number:Int!', capability: 'input:control AND desktop:control. ' },
+          },
+        };
+        // The two limits of the root brief, and the reach that the disclosure names, as each description states them.
+        const limits = {
+          inputSendKeystroke: ['whether or not it is the front app', 'no other app receives the chord', 'An app in the background can ignore a chord, act on a window behind other apps, or come to the front', 'A chord sent to a terminal can type and run commands', 'a chord can answer a consent or security prompt'],
+          inputSwitchSpace: ['change in the instant before macOS reads the chord', 'the front app can receive Control and the digit'],
+        };
+        const readTypes = ['InputTarget'];
+        const receipts = { InputKeystrokeReceipt: 'Control-authorized output.', InputSpaceSwitchReceipt: 'Control-authorized output under input:control AND desktop:control.' };
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+        const digits = [...Array(10).keys()].map(d => `DIGIT_${d}`);
+        const punctuation = ['MINUS', 'EQUAL', 'LEFT_BRACKET', 'RIGHT_BRACKET', 'BACKSLASH', 'SEMICOLON', 'QUOTE', 'COMMA', 'PERIOD', 'SLASH', 'GRAVE'];
+        const named = ['SPACE', 'RETURN', 'TAB', 'DELETE', 'ESCAPE', 'LEFT', 'RIGHT', 'DOWN', 'UP'];
+        const functionKeys = [...Array(12).keys()].map(n => `F${n + 1}`);
+        // Modaliser's key table without its modifier keys and aliases: 68 keys.
+        const enums = {
+          InputKey: [...letters, ...digits, ...punctuation, ...named, ...functionKeys].join(),
+          InputModifier: 'CONTROL,SHIFT,OPTION,COMMAND',
+          InputTargetProtection: 'ADDRESSABLE,PROTECTED',
+          InputKeystrokeOutcome: 'SENT,PROTECTED_TARGET',
+          InputSpaceSwitchOutcome: 'POSTED,SHORTCUT_OFF,SHORTCUT_REMAPPED,NO_SUCH_DESKTOP,PROTECTED_FRONT_APP',
+        };
+        const argText = field => (field.args ?? []).map(a => `${a.name}:${String(a.type)}`).join();
+        const verify = ({ contribution, core, desktop, workspace, operations }) => {
+          const cut = parse(contribution);
+          const placeholder = buildSchema('scalar Reference type Query { placeholder: Boolean } type Mutation { placeholder: Boolean }');
+          const independent = extendSchema(placeholder, cut);
+          const composed = extendSchema(buildSchema(core), cut);
+          const full = extendSchema(extendSchema(extendSchema(buildSchema(core), parse(desktop)), cut), parse(workspace));
+          const errors = [...validateSchema(independent), ...validateSchema(composed), ...validateSchema(full)];
+          if (errors.length) throw new Error(errors.map(error => error.message).join('\n'));
+          // Every definition of the contribution is new and stays in the Input namespace.
+          for (const definition of cut.definitions) {
+            if (definition.kind.startsWith('Object') && definition.kind.endsWith('Extension')) continue;
+            const name = definition.name?.value ?? '';
+            if (!name.startsWith('Input')) throw new Error(`${name} is outside the Input namespace`);
+          }
+          // Only the designed roots are added, each with its arguments and its capability.
+          const base = buildSchema(core);
+          for (const [root, designed] of Object.entries(roots)) {
+            const was = Object.keys(base.getType(root).getFields());
+            const added = Object.entries(composed.getType(root).getFields()).filter(([field]) => !was.includes(field));
+            if (added.map(([field]) => field).join() !== Object.keys(designed).join()) throw new Error(`${root} adds ${added.map(([field]) => field).join()}`);
+            for (const [field, value] of added) {
+              if (argText(value) !== designed[field].args) throw new Error(`${root}.${field} takes ${argText(value)}`);
+              if (!(value.description ?? '').startsWith(designed[field].capability)) throw new Error(`${root}.${field} does not state ${designed[field].capability.trim()}`);
+              for (const phrase of limits[field] ?? []) {
+                if (!(value.description ?? '').includes(phrase)) throw new Error(`${root}.${field} does not state: ${phrase}`);
+              }
+            }
+          }
+          for (const name of readTypes) {
+            if (composed.getType(name)?.description?.startsWith('All fields require input:read.') !== true) throw new Error(`${name} does not state input:read`);
+          }
+          // A control receipt carries no read data: each of its fields is an enum.
+          for (const [name, prefix] of Object.entries(receipts)) {
+            const receipt = composed.getType(name);
+            if (receipt?.description?.startsWith(prefix) !== true) throw new Error(`${name} does not state its control authority`);
+            for (const [field, value] of Object.entries(receipt.getFields())) {
+              if (!isEnumType(getNamedType(value.type))) throw new Error(`${name}.${field} carries ${getNamedType(value.type)}, which is not an enum`);
+            }
+          }
+          for (const [name, values] of Object.entries(enums)) {
+            if (composed.getType(name)?.getValues?.().map(v => v.name).join() !== values) throw new Error(`${name} is not ${values}`);
+          }
+          // Every example operation validates against the core, desktop 1.0.2, input 1.0.0 and workspace 1.0.2, composed.
+          const operationErrors = validate(full, parse(operations));
+          if (operationErrors.length) throw new Error(operationErrors.map(error => error.message).join('\n'));
+          return Object.values(roots).flatMap(Object.keys).length;
+        };
+        const subject = {
+          contribution: read('input-schema.graphql'),
+          core: read('core-schema-extension-host.graphql'),
+          desktop: read('desktop-pointer-media-schema.graphql'),
+          workspace: read('workspace-discovery-schema.graphql'),
+          operations: read('input-operations.graphql'),
+        };
+        const count = verify(subject);
+        const swap = (key, from, to) => s => {
+          const changed = s[key].replace(from, to);
+          if (changed === s[key]) throw new Error(`Control mutation did not apply: ${from}`);
+          return { ...s, [key]: changed };
+        };
+        const controls = [
+          ['a root without its capability', swap('contribution', '"input:read. The front app', '"The front app')],
+          ['a Space switch that states input:control alone', swap('contribution', '"input:control AND desktop:control. Switches', '"input:control. Switches')],
+          ['an undesigned root added', swap('contribution', '  inputFrontTarget: InputTarget\n', '  inputFrontTarget: InputTarget\n  inputHeldModifiers: [InputModifier!]!\n')],
+          ['a chord string in place of the key and the modifiers', swap('contribution', 'key: InputKey!, modifiers: [InputModifier!]!', 'chord: String!')],
+          ['a keystroke description without the background limit', swap('contribution', 'An app in the background can ignore a chord, act on a window behind other apps, or come to the front. ', '')],
+          ['a Space switch description without the race limit', swap('contribution', 'If the shortcut setting or the Mission Control desktops change in the instant before macOS reads the chord, the front app can receive Control and the digit. ', '')],
+          ['a receipt that carries the target', swap('contribution', '  outcome: InputKeystrokeOutcome!\n', '  outcome: InputKeystrokeOutcome!\n  target: InputTarget\n')],
+          ['a modifier key as the key of a chord', swap('contribution', '  F12\n}', '  F12\n  SHIFT\n}')],
+          ['the front-app refusal brought back', swap('contribution', 'SENT PROTECTED_TARGET', 'SENT NOT_FRONT_APP PROTECTED_TARGET')],
+          ['a definition outside the Input namespace', swap('contribution', 'scalar InputProcessStart', 'scalar InputProcessStart\nscalar DesktopChord')],
+          ['an operation that asks for an undesigned field', swap('operations', 'inputSwitchSpace(number: $number) { outcome }', 'inputSwitchSpace(number: $number) { outcome desktop }')],
+        ];
+        for (const [label, mutate] of controls) {
+          let rejected = false;
+          const mutated = mutate(subject);
+          try { verify(mutated); } catch { rejected = true; }
+          if (!rejected) throw new Error(`Control accepted ${label}`);
+        }
+        console.log(`Input SDL valid alone, with the core and with desktop 1.0.2 and workspace 1.0.2; every definition in the Input namespace; ${count} designed roots added, each with its arguments and its capability; both limits stated; receipts carry only enums; five enums exact; example operations valid; ${controls.length} mutated subjects rejected. Design only: runtime is held by swift test and task conformance.`);
+        JS
+
+  design:app-input-render:
+    desc: Render the app input views from their D2 sources (D2 0.9.0, Dagre layout, theme 0, dark theme 200)
+    dir: docs/design/app-input
+    cmds:
+      - for: [chord-flow, space-switch-flow, routes, authority]
+        cmd: d2 --layout=dagre --theme=0 --dark-theme=200 {{.ITEM}}.d2 {{.ITEM}}.svg
+
+  design:app-input-serve:
+    desc: Serve only the app input views on loopback (PORT overrides 8766)
+    cmds:
+      - python3 -m http.server {{.PORT | default "8766"}} --bind 127.0.0.1 --directory docs/design/app-input
+
   design:long-action-api-check:
     desc: Compile/link public long-action mechanism candidates without running them; declarations are not native acceptance
     cmds:

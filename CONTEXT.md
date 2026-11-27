@@ -201,6 +201,38 @@ _Avoid_: media keystroke, media key code
 not the front app. No public macOS interface names it.
 _Avoid_: player, front app, Now Playing target
 
+**Front app**: The app that macOS reports as active. It receives the keyboard.
+Koine reads it as `NSWorkspace` reports it.
+_Avoid_: frontmost app, active app, focused app
+
+**Input target**: One **process incarnation** that a **client** captured under
+`input:read`, named by an input **resource reference**. It is always an app.
+Koine sends a **chord** to it whether or not it is the **front app**. An input
+target is not a desktop reference.
+_Avoid_: target app, focus target
+
+**Chord**: One key with its modifier keys, such as Command-L, sent as one
+keystroke. The modifier keys go down before the key, and they go up after it in
+the reverse order.
+_Avoid_: shortcut (alone), hotkey, key combination
+
+**Protected target**: The Koine process, the one app that input refuses.
+Input sends it no **chord**, and a **Space switch** refuses while it is the
+**front app**. Every other app is a target under the capabilities.
+_Avoid_: blocked app, secure app
+
+**Mission Control desktop**: A Space that Mission Control names "Desktop N",
+numbered from 1. The Space of a full-screen app is not a Mission Control
+desktop. The word "desktop" alone names the desktop **provider** in this
+glossary.
+_Avoid_: desktop (alone), workspace
+
+**Space switch**: The input operation that posts Control and a digit at the HID
+event tap, so that macOS switches to that **Mission Control desktop**. It needs
+`input:control` and `desktop:control`, and it checks the shortcut setting and
+the desktops first.
+_Avoid_: desktop switch, Space change
+
 <!-- tc: pending because the remaining glossary entries retain their existing conversion boundary -->
 
 **Reference withdrawal**: Permanently making a reference unavailable after

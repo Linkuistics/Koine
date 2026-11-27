@@ -1,0 +1,32 @@
+# Example client operations for the input 1.0.0 design of app input (input-schema.graphql).
+# task design:app-input-check validates every operation here against the core, desktop 1.0.2, input 1.0.0 and workspace 1.0.2, composed.
+
+# Front target: input:read. A client reads the front app when its user starts an interaction, as Modaliser does
+# to choose a screen. It chooses the rows by the bundle identifier. A null ref means that the target is Koine.
+query InputFrontTarget {
+  inputFrontTarget { ref name bundleIdentifier protection }
+}
+
+# Captured target: input:read. A client that captured the process incarnation itself resolves it here.
+# An absent process, a reused process identifier, or a process that is not an app is ordinary null.
+query InputTargetForProcess($process: InputProcessIdentity!) {
+  inputTarget(process: $process) { ref name bundleIdentifier protection }
+}
+
+# One chord: input:control. Safari's row "Reopen Closed Tab" sends Command-Shift-T.
+# The target can be in front or in the background. PROTECTED_TARGET means that the target is Koine, and Koine sent nothing.
+# A stale target raises unavailable.
+mutation ReopenClosedTab($target: Reference!) {
+  inputSendKeystroke(target: $target, key: T, modifiers: [COMMAND, SHIFT]) { outcome }
+}
+
+# A key without modifiers: input:control. Slack's row "Mark Read" sends Escape.
+mutation MarkRead($target: Reference!) {
+  inputSendKeystroke(target: $target, key: ESCAPE, modifiers: []) { outcome }
+}
+
+# Space switch: input:control AND desktop:control. The configured row "Switch Space" sends Control and a digit from 1 to 9.
+# Every outcome except POSTED means that Koine posted nothing. POSTED does not say that the Space changed.
+mutation SwitchSpace($number: Int!) {
+  inputSwitchSpace(number: $number) { outcome }
+}

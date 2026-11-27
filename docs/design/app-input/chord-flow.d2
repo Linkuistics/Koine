@@ -1,0 +1,28 @@
+# Flowchart: send one chord. It omits the host's grant check, which the workflow authority view draws.
+direction: down
+classes: {
+  start: {style: {fill: "#25364B"; font-color: "#FFFFFF"; bold: true; stroke-width: 3}}
+  refusal: {style: {stroke-dash: 4}}
+}
+Call: "Start here · inputSendKeystroke\ntarget, key, modifiers\ninput:control admitted" {class: start}
+Consent: "Accessibility consent\nand posting access?" {shape: diamond}
+Resolve: "Target incarnation\nlive?" {shape: diamond}
+Protected: "Target is\nKoine?" {shape: diamond}
+Build: "Create 2 to 10 events\nin Modaliser's order"
+Post: "Post every event with CGEventPostToPid\ninto the target's event stream\nno check between events"
+Sent: "Outcome SENT"
+OsPermission: "os-permission error\nsent nothing" {class: refusal}
+Stale: "unavailable error\nsent nothing" {class: refusal}
+ProtectedOutcome: "Outcome PROTECTED_TARGET\ntarget is Koine, sent nothing" {class: refusal}
+Failed: "failed error\nsent nothing" {class: refusal}
+Call -> Consent: "1 · checks"
+Consent -> OsPermission: "no · refuses"
+Consent -> Resolve: "2 · yes · resolves"
+Resolve -> Stale: "no · refuses"
+Resolve -> Protected: "3 · yes · classifies"
+Protected -> ProtectedOutcome: "yes · refuses"
+Protected -> Build: "4 · no · builds"
+Build -> Failed: "an event fails · refuses"
+Build -> Post: "5 · posts, in front or in the background"
+Post -> Sent: "6 · returns"
+Key: "Key\nDashed border: a refusal, Koine sent nothing\nCapitals: an outcome of the receipt\nLower case: a GraphQL error" {shape: text; near: bottom-right}

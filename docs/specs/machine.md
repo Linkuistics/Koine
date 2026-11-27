@@ -623,8 +623,10 @@ All extension reads are free of consent prompts, including the checks of
 prerequisites and protected folders. A probe that would prompt is not an
 allowed read mechanism. Report the readiness or the coverage as unknown or
 blocked instead. An interface that an app must turn on first is a dependency
-prerequisite, distinct from OS consent. Protected UI targets use `unavailable`
-with `reason: protected-target`.
+prerequisite, distinct from OS consent. A refusal of a protected UI target is
+an outcome of the operation's receipt, because a provider error carries no
+reason. The [app input spec](app-input.md#protected-targets) states the
+outcomes of input.
 
 <!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
@@ -2064,6 +2066,18 @@ earlier version gets the wider reach, and the text says so.
 | --- | --- |
 | `desktop:read` | Lists the windows of every application with a Dock icon on the current Space. For each window, it reads the title, the application, the position and size, the place in front-to-back order and whether the window is on screen. A title can contain a document name, a web page title or a message subject. It also lists the displays with their positions and sizes, and it reads the position of the pointer. It reads no window contents and takes no screenshots. A grant from an earlier Koine version that holds desktop:read gets this reach too. |
 | `desktop:control` | Focuses a window. Moves and resizes any window of an application with a Dock icon. Focuses a display: Koine raises the front window there, activates its application and moves the pointer to the centre of the display. Nudges the pointer one point to the right and back, so that a hidden pointer becomes visible again. Posts the media keys play/pause, next and previous. macOS sends them to the Now Playing app in Control Center, which is often not the front app. When no app is Now Playing, play/pause can make macOS open Music and bring it to the front. Posts volume up, volume down and mute, which change the output volume of this Mac or mute it. It never clicks, and it never types into an app. While it moves a window, it turns off the enhanced accessibility setting of the application, and then turns it on again. A grant from an earlier Koine version that holds desktop:control gets this reach too. |
+
+App input adds the input capabilities in Koine 0.7.0, as the
+[app input spec](app-input.md) designs them. The core serves a disclosure for
+each of them in `CapabilityDisclosures`. All three native grant views and
+management use the same entries. Every earlier host keeps the input slot
+reserved-only and serves no input capability. So no earlier grant gets this
+reach, and the input provider needs no disclosure feature of the host.
+
+| Capability | Disclosure in Koine 0.7.0 |
+| --- | --- |
+| `input:read` | Reads which app is the front app, with its name and bundle identifier. Reads the same facts for an app process that a client names. It reads no window titles and no window contents, and it sends no keys. Sending a chord needs input:control. |
+| `input:control` | Sends a chord, one key with modifier keys such as Command-L, to a chosen app, in front or in the background. The app acts as if the user pressed the keys. So a chord sent to a terminal can type and run commands as the user. A chord can also make any app do what its keyboard shortcuts do, such as close a window or send a message. It can change a setting in System Settings, and it can answer a consent, password or security prompt of macOS. It types no text string. Koine never brings an app to the front, and it never sends a chord to itself. An app in the background can ignore a chord, act on a window behind other apps, or come to the front. No other app receives the chord. With desktop:control too, it switches to Mission Control desktop 1 to 9 by posting Control and the digit, as the keyboard does. It first checks that the shortcut is on and that the Mission Control desktop exists. The shortcut setting or the Mission Control desktops can change in the instant before macOS reads the chord. Then the front app can receive Control and the digit instead. |
 
 <!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
