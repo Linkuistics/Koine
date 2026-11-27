@@ -104,21 +104,32 @@ read authority, and returns its own opaque reference. It does not require
 desktop read or control. Independent provider-local references are not equal
 identities across providers and are not convertible URI strings.
 
-**Protected UI targets.** Input, menus and any UI-driving preparation/fallback
-must refuse Koine's own process before target issuance and again before an
-effect. Possession of `koine:manage` does not enable this route. The same rule
-refuses positively identified system consent or security UI; evidence must state
-how such targets are recognized and where it cannot establish safe delivery.
-Session-directed input also checks the foreground destination against this rule.
-Return `unavailable` with `reason: protected-target` on these new operations,
-without performing UI work or presenting an OS consent prompt. This denies the
-direct route to Koine's approval, grant creation/revocation and Quit controls.
-It does not turn native application control into isolation from malicious
-same-user software, prevent every platform retargeting race, or constrain an
-application's own privileged actions. A mechanism unable to enforce the direct
-self-target refusal is not an acceptable input/menu implementation.
-This does not cancel the already admitted exception for releasing Koine-owned
-modifiers after foreground loss; refusing a new UI action must not strand a hold.
+<!-- tc: on -->
+
+**Protected UI targets.** Input, menus and every preparation or fallback that
+drives UI must refuse Koine's own process. They refuse it before they issue a
+target, and again before an effect. A grant with `koine:manage` does not open
+this route. The same rule refuses system consent or security UI that Koine
+positively identifies. The evidence states how Koine recognises such targets,
+and where it cannot establish safe delivery.
+
+Input that goes to the session, and not to one process, also checks the front
+app against this rule. These new operations return `unavailable` with
+`reason: protected-target`. They do no UI work, and they show no OS consent
+prompt. This rule denies the direct route to the approval, grant creation,
+grant revocation and Quit controls of Koine.
+
+The rule does not turn native application control into isolation from
+malicious software of the same user. It does not prevent every retargeting
+race of the platform. It does not limit the privileged actions of an
+application itself. A mechanism that cannot enforce the direct refusal of
+Koine's own process is not an acceptable input or menus implementation.
+
+The rule does not cancel the admitted exception for the release of modifiers
+that Koine holds after the front app changes. A refusal of a new UI action
+must not leave a hold in place.
+
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
 A subsequent input mutation takes an input reference and requires
 `input:control`; a menu mutation takes a menus reference and requires

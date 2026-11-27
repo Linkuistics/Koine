@@ -617,11 +617,16 @@ implied by a read or an earlier raw-search permission. Existing live-grant,
 lifecycle and publication errors retain their original paths. No global
 materialization policy is selected.
 
-All extension reads are prompt-free, including prerequisite and protected-folder
-checks. A probe that would prompt is not a permitted read mechanism; report
-unknown/blocked readiness or coverage instead. App-side API enablement is a
-dependency prerequisite, distinct from OS consent. Protected UI targets use
-`unavailable` with `reason: protected-target`.
+<!-- tc: on -->
+
+All extension reads are free of consent prompts, including the checks of
+prerequisites and protected folders. A probe that would prompt is not an
+allowed read mechanism. Report the readiness or the coverage as unknown or
+blocked instead. An interface that an app must turn on first is a dependency
+prerequisite, distinct from OS consent. Protected UI targets use `unavailable`
+with `reason: protected-target`.
+
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
 **Additional capability errors — implemented in framework minor 1.** Every
 capability error on a field that has additional requirements, at either phase and
