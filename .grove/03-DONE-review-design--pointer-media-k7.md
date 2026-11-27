@@ -52,3 +52,18 @@ These are the doubts that earned the review. Each is a question, not a claim.
 - Is the consent check the right one for the posted events?
 - Is the position read correct on every display layout, and is its unknown
   form right?
+
+## Decisions (running log)
+
+**Consent finding.** The review identifies one material design gap. The producer
+selects `AXIsProcessTrusted` as the posting guard, but Apple's privacy policy
+schema treats Accessibility and PostEvent separately. The recorded probe
+requires both to be true, so it does not establish their equivalence. The
+review records the split-permission counterexample and its limits in
+`docs/verification/desktop-pointer-media-design-review.md`. No design or code
+fix belongs to this review.
+
+**Integration placement.** An `integrate-review-design` sibling will run before
+`pointer-k3`. It will triage the review's committed finding against the consent
+requirement. This unblocks the posting contract that both implementation leaves
+consume, within the root brief's existing scope.
