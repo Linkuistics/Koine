@@ -90,6 +90,12 @@ final class DesktopProviderFactory: NSObject, ProviderFactory {
             ProviderFieldRegistration(
                 coordinate: "DesktopPointerNudgeReceipt.outcome", resolverId: "parent.outcome", authority: .control
             ),
+            ProviderFieldRegistration(
+                coordinate: "Mutation.desktopPostMediaKey", resolverId: "postMediaKey", authority: .control
+            ),
+            ProviderFieldRegistration(
+                coordinate: "DesktopMediaKeyReceipt.key", resolverId: "parent.key", authority: .control
+            ),
         ]
         // A host that cannot disclose the pointer and media reach refuses this release before it loads
         // (docs/specs/machine.md, "Versions and host feature").
@@ -160,6 +166,7 @@ final class DesktopProvider: Provider, @unchecked Sendable {
         if request.resolverId == "displays" { return await displays() }
         if request.resolverId == "pointer" { return await pointer() }
         if request.resolverId == "nudgePointer" { return await nudgePointer() }
+        if request.resolverId == "postMediaKey" { return await postMediaKey(request.arguments["key"]) }
         if request.resolverId == "windowOnTop" {
             // The Dock bar rule needs the visible frames, which AppKit gives on the main actor, so they are
             // read before the queue turn. A failed display list leaves every Dock entry undecided.
@@ -1059,6 +1066,42 @@ final class DesktopProvider: Provider, @unchecked Sendable {
     /// https://developer.apple.com/documentation/coregraphics/cgpreflightposteventaccess()
     private static func postingConsent() -> PostingConsent {
         PostingConsent(accessibility: AXIsProcessTrusted(), posting: CGPreflightPostEventAccess())
+    }
+
+    // MARK: Media keys
+
+    /// `desktopPostMediaKey`: one media key, down and then up, as Modaliser's `MediaKeyEmitter.swift` posts it. The
+    /// numbers and the steps are `MediaKeyPress`. The core passes an enum argument as its name, a string. The
+    /// receipt names the key alone, because macOS gives no public way to ask which app received it.
+    private func postMediaKey(_ argument: ProviderValue?) async -> ResolutionResult {
+        guard case .string(let name)? = argument, let key = MediaKey(rawValue: name) else {
+            return failed("The argument is not a media key, so Koine posted nothing.")
+        }
+        // NSEvent belongs to the main actor, so the events are created and posted there.
+        let result = await MainActor.run {
+            MediaKeyPress.perform(
+                key,
+                consent: { Self.postingConsent() },
+                create: { Self.mediaKeyEvent(data1: $0) },
+                post: { $0.post(tap: .cghidEventTap) }
+            )
+        }
+        switch result {
+        case .success(let posted): return .success(.object(["key": .string(posted.rawValue)]))
+        case .failure(.permission(let message)): return .failure(.osPermission("accessibility", message: message))
+        case .failure(.eventNotCreated):
+            return failed("macOS did not create the media key events, so Koine posted nothing.")
+        }
+    }
+
+    /// One system-defined event of the media key subtype, with this `data1` value, as Modaliser creates it.
+    /// https://developer.apple.com/documentation/appkit/nsevent/otherevent(with:location:modifierflags:timestamp:windownumber:context:subtype:data1:data2:)
+    /// https://developer.apple.com/documentation/appkit/nsevent/cgevent
+    @MainActor private static func mediaKeyEvent(data1: Int) -> CGEvent? {
+        NSEvent.otherEvent(
+            with: .systemDefined, location: .zero, modifierFlags: [], timestamp: 0, windowNumber: 0, context: nil,
+            subtype: MediaKeyPress.subtype, data1: data1, data2: MediaKeyPress.data2
+        )?.cgEvent
     }
 
     private var notADisplay: ResolutionResult { unavailable("The reference does not name a desktop display.") }

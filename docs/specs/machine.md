@@ -1250,10 +1250,10 @@ two control operations to the desktop provider. The design is desktop release
 [example operations](../design/desktop-pointer-media-operations.graphql). Every
 desktop 1.0.1 definition keeps its words, and no released type gains a field.
 
-This tree serves desktop release 1.0.2 with the pointer position and the
-pointer nudge. It does not serve the media keys yet. The served SDL,
-`Providers/DesktopProvider/schema.graphql`, is the design without
-`desktopPostMediaKey` and the two types that only that root reaches.
+This tree serves desktop release 1.0.2 with the pointer position, the pointer
+nudge and the media keys. The served SDL,
+`Providers/DesktopProvider/schema.graphql`, is the whole design without its
+comment header.
 
 The client owns the highlight ring: its drawing, its size and its timing. Koine
 supplies the pointer position and the nudge, and it draws nothing. The client
@@ -1355,9 +1355,13 @@ previous did nothing, because `mediaremoted` dropped them without a launch
 option. The disclosure states that play/pause can open Music.
 
 No media key is a keystroke. A media key has no virtual key code, so it types
-nothing into the front app. Without Accessibility consent or posting access, the
-provider reports `os-permission` and posts nothing. When macOS does not create both events, the
-provider reports `failed` and posts nothing.
+nothing into the front app. The provider acts in this order:
+
+- Without Accessibility consent or posting access, it reports `os-permission`
+  and posts nothing.
+- It creates the down event and the up event. When macOS does not create both,
+  it reports `failed` and posts nothing.
+- It posts the two events in that order. The receipt names the posted key.
 
 #### Grants, consent and failures
 
@@ -1416,10 +1420,8 @@ headless host of this tree with desktop 1.0.2 alone serves the first profile,
 `core-desktop-pointer-media-workspace-extension-host`. `task conformance` holds
 the headless host to the first profile.
 
-Each composed file holds the pointer and media design restricted to the served
-roots and the types that they reach, word for word. A test holds that
-restriction. Until the media keys land, the files leave out
-`desktopPostMediaKey`, `DesktopMediaKey` and `DesktopMediaKeyReceipt`.
+Each composed file holds the whole pointer and media design, word for word. A
+test holds that the desktop part of each file is the design.
 
 The selection checks build their desktop update, release 1.1.0, from this tree.
 So that update serves desktop schema 1.0.2, and the update profiles pin it.

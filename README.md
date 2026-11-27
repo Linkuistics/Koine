@@ -39,7 +39,9 @@ One VM run accepts them on one display, and the notarised 0.5.0 bundle passed it
 
 Koine 0.6.0 adds pointer and media. A client with `desktop:read` calls `desktopPointer` to read the pointer position in screen coordinates. A client with `desktop:control` calls `desktopNudgePointer` to move the pointer one point to the right and back, so that a hidden pointer becomes visible again. The nudge never clicks, and it posts nothing while a pointer button is held.
 
-The client draws its own highlight ring. The media keys are in the design, but this tree does not serve them yet. The [client guide](docs/client-guide.md#revealing-the-pointer) describes the two pointer operations.
+A client with `desktop:control` also calls `desktopPostMediaKey` to post one of six media keys: play/pause, next, previous, volume up, volume down and mute. macOS sends play/pause, next and previous to the Now Playing app, and the other three change the output volume. The receipt names the posted key, but it says nothing about the player.
+
+The client draws its own highlight ring. The [client guide](docs/client-guide.md#revealing-the-pointer) describes the two pointer operations, and its [media key section](docs/client-guide.md#posting-media-keys) describes the keys.
 
 The workspace provider launches and activates applications. It opens URLs, documents and folders, and it reveals paths in Finder. Each of those actions needs `workspace:control` and `desktop:control`. 
 

@@ -476,7 +476,27 @@ The outcome is `NUDGED` when Koine posted both events. It is `POINTER_BUTTON_HEL
 
 The receipt carries no position. Read the position under `desktop:read` before or after the nudge, because the nudge does not change it. Without Accessibility consent or event posting access, the nudge raises a permission error that names `accessibility`, and its message names the missing access. A failed nudge posts nothing.
 
-The media keys are in the design, but Koine 0.6.0 does not serve them yet.
+## Posting media keys
+
+Koine 0.6.0 serves the six media keys of the [desktop contract](specs/machine.md#media-keys). A Koine 0.5.0 host does not serve them, so introspect the schema before you use the [operation](design/desktop-pointer-media-operations.graphql). Your client owns the bindings of the keys.
+
+Call `desktopPostMediaKey` under `desktop:control` to post one key, down and then up, as the matching key of an Apple keyboard sends it. A grant with `desktop:read` alone cannot post a key.
+
+```graphql
+mutation PostDesktopMediaKey($key: DesktopMediaKey!) {
+  desktopPostMediaKey(key: $key) { key }
+}
+```
+
+The key is one of these values:
+
+- `PLAY_PAUSE`, `NEXT` and `PREVIOUS` go to the Now Playing app, which is often not the front app.
+- `VOLUME_UP` and `VOLUME_DOWN` change the output volume of the Mac by one step.
+- `MUTE` switches the mute of the output on or off.
+
+When no app holds Now Playing, macOS can open Music for `PLAY_PAUSE` and bring it to the front. Then `NEXT` and `PREVIOUS` do nothing. No media key is a keystroke, so no key types into the front app.
+
+The receipt names the posted key and nothing else. It does not say which app received the key or what changed, because macOS gives no public way to ask which app holds Now Playing. Without Accessibility consent or event posting access, a key raises a permission error that names `accessibility`, and its message names the missing access. A failed key posts nothing.
 
 ## Searching for applications and files
 

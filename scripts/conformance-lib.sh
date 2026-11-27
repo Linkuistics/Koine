@@ -114,8 +114,8 @@ PY
         control "a visibility value removed" "s.replace('ON_SCREEN OFF_SCREEN UNKNOWN', 'ON_SCREEN OFF_SCREEN', 1)"
     fi
     if jq -e '.providers[] | select(.provider == "desktop" and .schemaVersion == "1.0.2")' "${profile}" >/dev/null; then
-        # Pointer and media adds the position read, the nudge and the types that they reach. The check holds
-        # each of them on its own.
+        # Pointer and media adds the position read, the nudge, the media keys and the types that they reach. The
+        # check holds each of them on its own.
         control "the pointer position root removed" \
             "__import__('re').sub(r'  \"desktop:read\\. Where the pointer is now[^\n]*\"\n  desktopPointer[^\n]*\n', '', s, count=1)"
         control "the pointer nudge root removed" \
@@ -124,6 +124,12 @@ PY
         control "a nudge outcome removed" "s.replace('{ NUDGED POINTER_BUTTON_HELD }', '{ NUDGED }', 1)"
         control "the nudge description changed" \
             "s.replace('The pointer ends where it started.', 'The pointer ends near where it started.', 1)"
+        control "the media key root removed" \
+            "__import__('re').sub(r'  \"desktop:control\\. Posts one media key[^\n]*\"\n  desktopPostMediaKey[^\n]*\n', '', s, count=1)"
+        control "a media key removed" "s.replace('VOLUME_UP VOLUME_DOWN MUTE }', 'VOLUME_UP VOLUME_DOWN }', 1)"
+        control "the media key receipt made nullable" "s.replace('  key: DesktopMediaKey!\n', '  key: DesktopMediaKey\n', 1)"
+        control "the media key description changed" \
+            "s.replace('No media key is a keystroke', 'A media key can be a keystroke', 1)"
     fi
     if jq -e '[.providers[].provider] | index("workspace")' "${profile}" >/dev/null; then
         # A workspace coordinate that is missing is a difference, never silently omitted.

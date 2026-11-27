@@ -248,6 +248,39 @@ import Testing
     }
 }
 
+extension ReferenceRoutingTests {
+    /// An enum argument reaches the provider as the name of its value, a string, whether it is written in the
+    /// operation or passed as a variable. The desktop media keys rely on it (`desktopPostMediaKey(key:)`), and a stub
+    /// holds it here, so no test posts a key to find it out. The GraphQL library builds each SDL enum value as
+    /// `.string(name)` (`buildEnumValueMap` in its ExtendSchema.swift).
+    @Test func anEnumArgumentArrivesAsTheNameOfItsValue() async throws {
+        let seen = Seen()
+        let stub = Stub(
+            id: "odd", prefix: "Odd",
+            sdl: """
+                extend type Mutation { oddPress(key: OddKey!): String }
+                enum OddKey { PLAY_PAUSE MUTE }
+                """,
+            fields: [("Mutation.oddPress", .control)],
+            resolve: { request in
+                seen.set(request)
+                return .success(.null)
+            }
+        )
+        let harness = try await Harness(providers: [stub.active])
+        let credential = try await harness.consoleGrant(label: "c", capabilities: ["odd:control"])
+        let literal = try await harness.post("mutation { oddPress(key: MUTE) }", authorization: "Bearer \(credential)")
+        #expect(literal.errors.isEmpty)
+        #expect(seen.request?.arguments == ["key": .string("MUTE")])
+        let variable = try await harness.post(
+            "mutation($k: OddKey!) { oddPress(key: $k) }", variables: ["k": "PLAY_PAUSE"],
+            authorization: "Bearer \(credential)")
+        #expect(variable.errors.isEmpty)
+        #expect(seen.request?.arguments == ["key": .string("PLAY_PAUSE")])
+        await harness.stop()
+    }
+}
+
 private final class Seen: @unchecked Sendable {
     private let lock = NSLock()
     private var value: ResolutionRequest?

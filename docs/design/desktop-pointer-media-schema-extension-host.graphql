@@ -2,11 +2,10 @@
 The koine-desktop/1 schema as composed from the core and the bundled desktop provider 1.0.2, pointer
 and media, on an extension host. `task conformance` holds this tree's headless host to it. It is
 `desktop-window-layout-schema-extension-host.graphql` (the desktop 1.0.1 composition, which stays as
-it is) with the pointer position and the pointer nudge added. The desktop part is
-`desktop-pointer-media-schema.graphql` restricted to the served roots and the types they reach,
-verbatim. A root that lands later is added here from that file, and it is never reworded. Root fields
-are declared in composition order, the core's own and then desktop's, because the schema digest is
-taken over a canonical text that keeps declared order.
+it is) with the pointer position, the pointer nudge and the media keys added. The desktop part is
+`desktop-pointer-media-schema.graphql`, verbatim, and it is never reworded. Root fields are declared
+in composition order, the core's own and then desktop's, because the schema digest is taken over a
+canonical text that keeps declared order.
 """
 schema { query: Query mutation: Mutation }
 
@@ -77,6 +76,8 @@ type Mutation {
   desktopFocusDisplay(ref: Reference!): DesktopDisplayFocusReceipt
   "desktop:control. Nudges the pointer: it moves the pointer one point to the right and back, with two mouse-moved events, so that a pointer that macOS hid becomes visible again. The pointer ends where it started. It never clicks, and it posts nothing while a pointer button is held. A desktop:control grant from an earlier Koine version can do this too."
   desktopNudgePointer: DesktopPointerNudgeReceipt
+  "desktop:control. Posts one media key, down and then up, as the matching key of an Apple keyboard sends it. macOS sends PLAY_PAUSE, NEXT and PREVIOUS to the Now Playing app, which is often not the front app. With no Now Playing app, macOS can open Music for PLAY_PAUSE and bring it to the front, and NEXT and PREVIOUS do nothing. VOLUME_UP, VOLUME_DOWN and MUTE change the output volume of the Mac. No media key is a keystroke, and no media key types into the front app. A desktop:control grant from an earlier Koine version can do this too."
+  desktopPostMediaKey(key: DesktopMediaKey!): DesktopMediaKeyReceipt
 }
 
 "All fields require desktop:read."
@@ -180,6 +181,15 @@ type DesktopPointerNudgeReceipt {
 
 "NUDGED: Koine posted both mouse-moved events. POINTER_BUTTON_HELD: a pointer button was held, so Koine posted nothing."
 enum DesktopPointerNudgeOutcome { NUDGED POINTER_BUTTON_HELD }
+
+"PLAY_PAUSE: play or pause. NEXT: the next track. PREVIOUS: the previous track, or the start of the current one, as the player decides. These three go to the Now Playing app. VOLUME_UP and VOLUME_DOWN: one step of the output volume. MUTE: switches the mute of the output on or off."
+enum DesktopMediaKey { PLAY_PAUSE NEXT PREVIOUS VOLUME_UP VOLUME_DOWN MUTE }
+
+"Control-authorized output. It says that Koine posted the key, down and then up. It does not say which app received the key or what changed, because macOS gives no public way to ask which app holds Now Playing."
+type DesktopMediaKeyReceipt {
+  "The submitted key, under the mutation's control authority."
+  key: DesktopMediaKey!
+}
 
 type Koine {
   contractVersion: String!
