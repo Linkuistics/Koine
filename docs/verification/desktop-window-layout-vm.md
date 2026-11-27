@@ -119,14 +119,34 @@ controls failed as they must (`conformance-20261126T232304.log`).
 (`disclosure-20261126T224905.log`). That build differs only in the point query,
 and the disclosures of the accepted run match it.
 
+## Release checks on the notarised bundle
+
+Koine 0.5.0 shipped as the notarised bundle with CDHash
+`13b4f8eba7d169b5fcfc446051f1d28ca20a76bf`. Apple accepted submission
+`fce5556e-0bfa-4d2a-a997-46709761e93f`, and the ticket is stapled. The zip of the
+GitHub release has the SHA-256
+`6db4d9f57b1bae5330749331f902127fb464284fb508239ab77388a02059366c`. The six
+release checks ran on that bundle on 2026-11-26 and 2026-11-27, in clones of
+macOS 27.2.1 (26B131).
+
+| Check | Result |
+|---|---|
+| `task app:vm-verify-window-layout` | Every step above passed again ([window-layout-20261126T233721.log](desktop-window-layout/window-layout-20261126T233721.log)). Display focus moved the pointer to x 960, y 540. |
+| `task app:vm-verify-release` | Passed (`release-20261126T233722.log`). |
+| `task app:vm-verify-grant-workflows` | Passed (`grant-workflows-20261126T234051.log`). |
+| `task app:vm-verify-notarized` | Passed (`notarized-20261126T234322.log`). The bundled desktop provider 1.0.1 was `ACTIVE` under quarantine. |
+| `task app:vm-verify-disclosure` | Passed (`disclosure-20261126T234550.log`). |
+| `task app:vm-verify-menu-bar` | The second attempt passed (`menu-bar-20261126T235519.log`). The first attempt passed every Koine step. It then stopped at the guest restart, because the guest took longer than the harness waits (#17). |
+
+After each run, the bundle had the same CDHash. The transcripts other than the
+window layout transcript stay in `.build/vm-verify` on the host that ran them.
+
 ## What this does not claim
 
 - **A second display.** The VM has one display. So the run does not check a move
   to another display, the repeated resize across displays, or display focus on a
-  display with no window.
+  display with no window. Issue #23 holds that check.
 - **A Dock that draws inside the visible frame.** The run does not magnify the
-  Dock or open a Dock folder stack.
+  Dock or open a Dock folder stack. Issue #26 holds that case.
 - **An upgrade from an installed 0.4.1.** A restart stands in for it, as in the
   workspace precedent.
-- **A notarised bundle.** The run used the Developer ID signed build. The release
-  leaf runs its checks on the notarised build.

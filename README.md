@@ -33,7 +33,9 @@ The desktop provider reads applications and windows, and it focuses a window.
 
 Koine 0.5.0 adds window layout. A client with `desktop:read` calls `desktopWindows` to list the windows of every application with a Dock icon on the current Space. Each row has the frame of the window, its place in the front-to-back order and its visibility. The client calls `desktopWindowOnTop` to ask whether a window is on top at a screen point. It calls `desktopDisplays` to list the displays, each with a full frame and a visible frame.
 
-A client with `desktop:control` calls `desktopSetWindowFrame` to move and resize one window. It calls `desktopFocusDisplay` to raise the front window on a display and move the pointer to the centre of that display. Koine never clicks. Every frame uses screen coordinates, and the client computes every layout. The [client guide](docs/client-guide.md#arranging-windows) describes all five operations. One VM run accepts them on one display ([record](docs/verification/desktop-window-layout-vm.md)), and in the compatibility pairs the released 0.4.1 host refuses desktop 1.0.1 ([record](docs/verification/desktop-window-layout-compatibility.md)).
+A client with `desktop:control` calls `desktopSetWindowFrame` to move and resize one window. It calls `desktopFocusDisplay` to raise the front window on a display and move the pointer to the centre of that display. Koine never clicks. Every frame uses screen coordinates, and the client computes every layout. The [client guide](docs/client-guide.md#arranging-windows) describes all five operations.
+
+One VM run accepts them on one display, and the notarised 0.5.0 bundle passed it too ([record](docs/verification/desktop-window-layout-vm.md)). In the compatibility pairs, the released 0.4.1 host refuses desktop 1.0.1 ([record](docs/verification/desktop-window-layout-compatibility.md)).
 
 The workspace provider launches and activates applications. It opens URLs, documents and folders, and it reveals paths in Finder. Each of those actions needs `workspace:control` and `desktop:control`. 
 
@@ -49,9 +51,11 @@ Koine recorded the acceptance of this selection before 0.3.0. That acceptance is
 established, except for the parts that need the certificate of a second
 Developer ID team.
 
-Apple notarised Koine 0.4.0. Its checks passed in VMs on macOS 27.0.1 on Apple
-Silicon that enforce Gatekeeper. The one supported platform is macOS 26. The
-runs on macOS 26.5 rest on 0.3.0, and no 0.4.0 run repeated them. The
+Apple notarised Koine 0.5.0. Its six release checks passed in VMs on macOS
+27.2.1 on Apple Silicon that enforce Gatekeeper
+([record](docs/verification/desktop-window-layout-vm.md#release-checks-on-the-notarised-bundle)).
+The checks of 0.4.0 passed on macOS 27.0.1. The one supported platform is
+macOS 26. The runs on macOS 26.5 rest on 0.3.0, and no later run repeated them. The
 "Acceptance status" section of the spec lists what is established, with its
 evidence, and what is still open.
 
