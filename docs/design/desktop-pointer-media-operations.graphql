@@ -1,0 +1,24 @@
+# Example client operations for the desktop 1.0.2 pointer and media design (desktop-pointer-media-schema.graphql).
+# The window layout operations stay in desktop-window-layout-operations.graphql, and the released desktop 1.0.0
+# operations stay in desktop-operations.graphql.
+# task design:pointer-media-check validates every operation here against the composed design.
+
+# Pointer position: desktop:read. A client reads the position and draws its highlight ring there.
+# A null answer means that Koine cannot establish the position now.
+query DesktopPointerPosition {
+  desktopPointer {
+    location { x y }
+  }
+}
+
+# Pointer nudge: desktop:control. A client nudges the pointer so that a hidden pointer shows under its ring.
+# The receipt carries no position. POINTER_BUTTON_HELD means that Koine posted nothing.
+mutation NudgeDesktopPointer {
+  desktopNudgePointer { outcome }
+}
+
+# Media key: desktop:control. The key is one of PLAY_PAUSE, NEXT, PREVIOUS, VOLUME_UP, VOLUME_DOWN and MUTE.
+# The receipt names the posted key, and nothing about the app that received it.
+mutation PostDesktopMediaKey($key: DesktopMediaKey!) {
+  desktopPostMediaKey(key: $key) { key }
+}

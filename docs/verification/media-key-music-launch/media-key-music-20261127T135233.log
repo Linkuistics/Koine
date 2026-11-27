@@ -1,0 +1,46 @@
+
+== Start a clean VM (koine-verify-18173)
+waiting for a macOS guest slot: request r-fa1ef67e, place 1, 1 waiter, slots held by no VM
+Setting guest display resolution to 1920x1080 px...
+  set-display-mode: switched main display to 1920x1080 pt @ 1x (1920x1080 px, modeID 10)
+VNC size wait: the first session read 1280x720. Session 2 read 1920x1080 after 0.26 s.
+ProductName:		macOS
+ProductVersion:		27.2.1
+BuildVersion:		26B131
+arm64
+Gatekeeper: assessments enabled
+
+== No player runs, and the guest has an output device
+        Apple Virtual Sound Device:
+          Default Output Device: Yes
+
+== Control: a posted volume key changes the output volume
+{"code":1,"key":"volume-down","postAccess":true,"posted":true,"trusted":true}
+output volume 100 -> 94
+{"code":0,"key":"volume-up","postAccess":true,"posted":true,"trusted":true}
+output volume 94 -> 100
+
+== TextEdit in front
+front app: TextEdit
+
+== Post next with no Now Playing app
+{"code":19,"key":"next","postAccess":true,"posted":true,"trusted":true}
+Music: not running 8 s after next; front app: TextEdit
+  | 2026-11-26 18:52:59.066 Df rcd[708:148b] [com.apple.amp.mediaremote:rr] Request: Command = <NextTrack>, SenderDevice = <>, SenderBundleIdentifier = <com.apple.rcd>, SenderPID = <708>, commandID = <23C5EB82-9C06-4EAF-A978
+  | 2026-11-26 18:52:59.106 Df mediaremoted[96:fad] [com.apple.amp.mediaremote:MediaRemote] No now playing client can be found for command <private>, and the option to launch the app was not included. Dropping command.
+
+== Post previous with no Now Playing app
+{"code":20,"key":"previous","postAccess":true,"posted":true,"trusted":true}
+Music: not running 8 s after previous; front app: TextEdit
+  | 2026-11-26 18:53:07.919 Df rcd[708:148b] [com.apple.amp.mediaremote:rr] Request: Command = <PreviousTrack>, SenderDevice = <Mac>, SenderBundleIdentifier = <com.apple.rcd>, SenderPID = <708>, commandID = <67479211-CD41-4D
+  | 2026-11-26 18:53:07.919 Df mediaremoted[96:1654] [com.apple.amp.mediaremote:MediaRemote] No now playing client can be found for command <private>, and the option to launch the app was not included. Dropping command.
+
+== Post play/pause with no Now Playing app
+{"code":16,"key":"play-pause","postAccess":true,"posted":true,"trusted":true}
+  | 2026-11-26 18:53:16.761 Df rcd[708:148b] [com.apple.amp.mediaremote:rr] Request: Command = <TogglePlayPause>, SenderDevice = <Mac>, SenderBundleIdentifier = <com.apple.rcd>, SenderPID = <708>, commandID = <9D645E11-6314-
+  | 2026-11-26 18:53:16.762 Df mediaremoted[96:1652] [com.apple.amp.mediaremote:RemoteControl] Destination app com.apple.Music not available for command <MRDMutableRemoteControlCommand 0x7a5ec912c0, command = TogglePlayPause
+  | >, and command requested a launch. Enqueueing command for later execution.
+  | 2026-11-26 18:53:16.762 Df mediaremoted[96:1652] [com.apple.amp.mediaremote:rr] Request: MRDLaunchApplicationWithReason<command<TogglePlayPause>=9D645E11-6314-4EBA-AA34-91F46B47AA39> for com.apple.Music
+  | 2026-11-26 18:53:16.850 Df mediaremoted[96:16a1] [com.apple.amp.mediaremote:rr] Response: MRDLaunchApplicationWithReason<command<TogglePlayPause>=9D645E11-6314-4EBA-AA34-91F46B47AA39> returned for com.apple.Music in 0.08
+RESULT: macOS opened Music within 1 s of play/pause; front app 3 s later: Music
+Screen: .build/vm-verify/media-key-music-20261127T135233-play-pause.png

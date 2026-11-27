@@ -216,7 +216,7 @@ layout.
 | File search | The client searches under its configured roots, currently the home directory. Koine supplies special locations for the client to search from. It also supplies the existing explicit actions: open in the default application or in Zed, and reveal in Finder. The client owns path copy. |
 | Native metadata discovery | V1 supplies special locations and named native catalogues for applications and preference panels. Clients filter and rank choices. V1 has no general OS metadata-query API. The returned design defines sources, completeness and selection metadata. |
 | Web search | Retain typed-query and Google-suggestion selection, and open the resulting search in the default browser. A failure of the suggestions must not prevent a search for the typed query. |
-| Media | Send system play/pause through the system media route. Do not select the foreground application as the player. |
+| Media | Send the system media keys play/pause, next, previous, volume up, volume down and mute through the system media route. Play/pause, next and previous reach the Now Playing app. Do not select the foreground application as the player. Volume up, volume down and mute change the system output. |
 | Pointer | Locate and reveal the pointer, including the configured nudge, so the client can draw its highlight. |
 | Client settings | Open the configuration directory in Zed. Reloading or relaunching the client remains client-owned. |
 | Safari | New, close and reopen tab. Focus the address bar. Find on page. |

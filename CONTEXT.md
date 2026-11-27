@@ -184,6 +184,23 @@ front listed window there, activates its application and moves the pointer to
 the centre of the display. It never clicks.
 _Avoid_: focus screen, switch display
 
+**Pointer nudge**: The desktop control operation that moves the pointer one
+point to the right and back, with two mouse-moved events. It makes a hidden
+pointer visible again. It never clicks, and it posts nothing while a pointer
+button is held. The client draws the highlight ring.
+_Avoid_: jiggle, wiggle, reveal (alone)
+
+**Media key**: A system-defined key event for play/pause, next, previous,
+volume up, volume down or mute. Koine posts it down and then up, as the
+matching key of an Apple keyboard sends it. It has no virtual key code, so it
+is no keystroke.
+_Avoid_: media keystroke, media key code
+
+**Now Playing app**: The app that macOS sends the play/pause, next and previous
+**media keys** to. It holds the Now Playing role of the system, and it is often
+not the front app. No public macOS interface names it.
+_Avoid_: player, front app, Now Playing target
+
 <!-- tc: pending because the remaining glossary entries retain their existing conversion boundary -->
 
 **Reference withdrawal**: Permanently making a reference unavailable after

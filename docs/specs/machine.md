@@ -1241,6 +1241,171 @@ Acceptance runs on one display, because a TestAnyware VM has one display. The
 move to another display, the repeated resize across displays and display focus
 on an empty display wait for a two-display check.
 
+### Pointer and media
+
+**Koine 0.6.0 delivers pointer and media.** Pointer and media adds one read and
+two control operations to the desktop provider. The design is desktop release
+1.0.2 with schema 1.0.2, in the
+[pointer and media design](../design/desktop-pointer-media-schema.graphql), with
+[example operations](../design/desktop-pointer-media-operations.graphql). Every
+desktop 1.0.1 definition keeps its words, and no released type gains a field.
+
+This tree does not serve the design yet. The served desktop provider is still
+release 1.0.1.
+
+The client owns the highlight ring: its drawing, its size and its timing. Koine
+supplies the pointer position and the nudge, and it draws nothing. The client
+also owns the bindings of the media keys.
+
+#### The pointer position
+
+`desktopPointer` returns where the pointer is now, in screen coordinates. The
+provider reads the position as Modaliser does. It reads `NSEvent.mouseLocation`,
+and it flips that position against the full height of the first screen in the
+same `NSScreen.screens` reading. AppKit puts the primary screen first, and the
+bottom-left corner of that screen is the origin of the AppKit position. A
+coordinate can have a fraction.
+
+When AppKit lists no screen, the provider cannot convert the position, and the
+read returns null. Koine never invents a position. The read needs no
+Accessibility consent, because macOS gives the position to every process.
+
+The read does not name the display under the pointer. A client finds that
+display from `desktopDisplays`: it is the display whose frame contains the
+point. A rectangle contains its top and left edges, but not its bottom and
+right edges. The two reads are separate, so a display change can come between
+them.
+
+#### The pointer nudge
+
+`desktopNudgePointer` moves the pointer one point to the right and back, so
+that a pointer that macOS hid becomes visible again. Modaliser does the same before it draws
+its ring. The provider acts in this order:
+
+- Without Accessibility consent, it reports `os-permission` and posts nothing.
+  macOS can drop a posted event from a process without consent and report no
+  error. The check makes that case visible.
+- When a pointer button is held, it posts nothing. The outcome is
+  `POINTER_BUTTON_HELD`. A pointer move then would be a drag, which needs input
+  authority.
+- It reads the start position as `desktopPointer` does. When the position is
+  unknown, it reports `failed` and posts nothing.
+- It creates two mouse-moved events: the first one point to the right of the
+  start, and the second at the start. When macOS does not create both, the
+  provider reports `failed` and posts nothing.
+- It posts the two events in that order, at the HID event tap, as Modaliser
+  does. The outcome is `NUDGED`.
+
+So the pointer ends where it started. The events carry no button press, and the
+nudge never clicks. A button press between the check and the posts stays
+possible, as for display focus. Koine does not detect that press, and it does
+not promise that the check and the posts are atomic.
+
+The application under the pointer receives both events, as it receives the
+events of a mouse. It can react to them, for example with a hover effect. At
+the right edge of the desktop, macOS keeps the pointer on the display, so the
+first event can move it less than a point. The second event still puts it at
+the start. Koine cannot detect whether a hidden pointer became visible. `NUDGED`
+says only that Koine posted both events.
+
+The receipt carries the outcome alone. A receipt is output under control
+authority, and the position is read data, so the receipt carries no position. A client
+reads the position under `desktop:read`. The nudge ends at the start, so the
+position is the same before and after it.
+
+#### Media keys
+
+`desktopPostMediaKey(key:)` posts one media key, down and then up, as
+Modaliser's `MediaKeyEmitter` posts it. A media key is a system-defined event of
+subtype 8, `NX_SUBTYPE_AUX_CONTROL_BUTTONS`. Its `data1` holds the key number in
+bits 16 to 23 and the state in bits 8 to 15: 10 for down and 11 for up. The low
+byte is the repeat count, and it is 0. The provider posts both events at the HID
+event tap.
+
+| Key | Key number | What macOS does with the key |
+| --- | --- | --- |
+| `PLAY_PAUSE` | 16, `NX_KEYTYPE_PLAY` | It sends a play or pause command to the Now Playing app. |
+| `NEXT` | 19, `NX_KEYTYPE_FAST` | It sends a next-track command to the Now Playing app. |
+| `PREVIOUS` | 20, `NX_KEYTYPE_REWIND` | It sends a previous-track command to the Now Playing app. The player decides whether it goes to the previous track or to the start of the current one. |
+| `VOLUME_UP` | 0, `NX_KEYTYPE_SOUND_UP` | It raises the output volume by one step. |
+| `VOLUME_DOWN` | 1, `NX_KEYTYPE_SOUND_DOWN` | It lowers the output volume by one step. |
+| `MUTE` | 7, `NX_KEYTYPE_MUTE` | It switches the mute of the output on or off. |
+
+The numbers for next and previous are Modaliser's choice, which nobody verified
+against a player. The SDK header also defines `NX_KEYTYPE_NEXT` (17) and
+`NX_KEYTYPE_PREVIOUS` (18). In a VM, the remote control daemon `rcd` turned 19
+into `NextTrack` and 20 into `PreviousTrack`, as the
+[Music check](../verification/media-key-music-launch.md) records. The acceptance
+run settles whether a player honours them, and it changes the numbers if a
+player does not.
+
+macOS sends play/pause, next and previous to the Now Playing app through `rcd`
+and MediaRemote. That app is often not the front app. macOS gives no public way
+to ask which app holds Now Playing, and Koine does not ask the private
+MediaRemote framework. So the receipt names the posted key and says nothing
+about the player. Volume up, volume down and mute change the system output,
+whatever app is in front.
+
+When no app holds Now Playing, macOS chooses Music. In a VM with macOS 27.2.1,
+play/pause made `mediaremoted` open Music within one second. Music then took the
+front from TextEdit, and `mediaremoted` queued the command for Music. Next and
+previous did nothing, because `mediaremoted` dropped them without a launch
+option. The disclosure states that play/pause can open Music.
+
+No media key is a keystroke. A media key has no virtual key code, so it types
+nothing into the front app. Without Accessibility consent, the provider reports
+`os-permission` and posts nothing. When macOS does not create both events, the
+provider reports `failed` and posts nothing.
+
+#### Grants, consent and failures
+
+`desktopPointer` and every field of `DesktopPointer` and `DesktopPoint` need
+`desktop:read`. The nudge and the media keys need `desktop:control` alone, so a
+read-only grant cannot act. Their receipts carry enum values alone, and no read
+data. Desktop declares no additional capability requirement, and the operations
+need no input grant.
+
+Koine posts every event under its Accessibility consent, which it already holds
+for window focus. So no new permission dialog appears. The
+[authority decision](../adr/provider-authority-follows-effects.md) counts pointer
+movement without held buttons and system media events as desktop effects. The
+[desktop automation decision](../adr/desktop-automation-uses-public-accessibility.md)
+covers the posted events.
+
+| Condition | Result |
+| --- | --- |
+| The position read without `desktop:read`, or the nudge or a media key without `desktop:control` | `permission`, `capability`. Koine refuses an action before any effect. |
+| The nudge or a media key without Accessibility consent | `permission`, `os-permission`, `accessibility`. Koine posted nothing. |
+| A pointer button is held at the nudge | The outcome `POINTER_BUTTON_HELD`, with no error. Koine posted nothing. |
+| The position is unknown at the nudge, or macOS does not create an event | `failed`. Koine posted nothing. |
+| The position is unknown at the read | Null, with no error. |
+
+#### Versions and host feature
+
+The pointer and media fields are additive in `koine-desktop/1`. The window
+layout design files and their two profiles stay unchanged. Two new composed
+design files and two new profiles sit beside them, as for window layout. The
+headless host of this tree with desktop 1.0.2 alone serves the first profile,
+`core-desktop-pointer-media-extension-host`. The signed application with desktop
+1.0.2 and workspace 1.0.2 serves the second,
+`core-desktop-pointer-media-workspace-extension-host`.
+
+The selection checks build their desktop update, release 1.1.0, from this tree.
+So that update serves desktop schema 1.0.2, and the update profiles pin it.
+
+The desktop 1.0.2 provider requires the host feature `desktop-disclosures-v2`.
+A host advertises it only when its Settings window and its management catalogue
+state the pointer and media reach that "Capability disclosures" gives. Koine
+0.6.0 advertises `desktop-disclosures-v1` too, because its text still states the
+window layout reach. So the released 0.5.0 host refuses desktop 1.0.2 before
+load, and its bundled desktop 1.0.1 stays selected. The released 0.4.1 host
+refuses it too. The
+[host-feature decision](../adr/native-workspace-requires-disclosure-capable-host.md)
+gives the reasons, and a feature version widens only with a new feature version.
+
+Only the VM run posts a key or moves the pointer, never a test on a host. A key
+posted on a host changes the music or the volume of the developer.
+
 
 <!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
@@ -1832,18 +1997,25 @@ Settings. The
 refuses native providers on prior hosts before load. It does not rely on
 provider text to revise surfaces that the core owns.
 
-Window layout widens both desktop capabilities in Koine 0.5.0. The core serves
-a disclosure for each of them, and only with them does the host advertise
-`desktop-disclosures-v1`. All three native grant views and management use the
-same entries. The new root fields of the
-[window layout design](../design/desktop-window-layout-schema.graphql) also
-state their capability and their reach. The core serves this text, in
-`CapabilityDisclosures`:
+Window layout widens both desktop capabilities in Koine 0.5.0, and pointer and
+media widens them again in Koine 0.6.0. The core serves a disclosure for each
+of them. All three native grant views and management use the same entries. The
+new root fields of the
+[window layout design](../design/desktop-window-layout-schema.graphql) and the
+[pointer and media design](../design/desktop-pointer-media-schema.graphql) also
+state their capability and their reach.
 
-| Capability | Window layout disclosure |
+Koine 0.5.0 serves the window layout text, which leaves out the pointer and the
+media keys, and it advertises `desktop-disclosures-v1`. Koine 0.6.0 serves the
+text below, in `CapabilityDisclosures`. Only with this text does it advertise
+`desktop-disclosures-v2`, and it advertises `desktop-disclosures-v1` too. Koine
+revokes no existing grant and asks for no new authorisation. A grant from an
+earlier version gets the wider reach, and the text says so.
+
+| Capability | Disclosure in Koine 0.6.0 |
 | --- | --- |
-| `desktop:read` | Lists the windows of every application with a Dock icon on the current Space. For each window, it reads the title, the application, the position and size, the place in front-to-back order and whether the window is on screen. A title can contain a document name, a web page title or a message subject. It also lists the displays with their positions and sizes. It reads no window contents and takes no screenshots. A grant from an earlier Koine version that holds desktop:read gets this reach too. |
-| `desktop:control` | Focuses a window. Moves and resizes any window of an application with a Dock icon. Focuses a display: Koine raises the front window there, activates its application and moves the pointer to the centre of the display. It never clicks or types. While it moves a window, it turns off the enhanced accessibility setting of the application, and then turns it on again. A grant from an earlier Koine version that holds desktop:control gets this reach too. |
+| `desktop:read` | Lists the windows of every application with a Dock icon on the current Space. For each window, it reads the title, the application, the position and size, the place in front-to-back order and whether the window is on screen. A title can contain a document name, a web page title or a message subject. It also lists the displays with their positions and sizes, and it reads the position of the pointer. It reads no window contents and takes no screenshots. A grant from an earlier Koine version that holds desktop:read gets this reach too. |
+| `desktop:control` | Focuses a window. Moves and resizes any window of an application with a Dock icon. Focuses a display: Koine raises the front window there, activates its application and moves the pointer to the centre of the display. Nudges the pointer one point to the right and back, so that a hidden pointer becomes visible again. Posts the media keys play/pause, next and previous. macOS sends them to the Now Playing app in Control Center, which is often not the front app. When no app is Now Playing, play/pause can make macOS open Music and bring it to the front. Posts volume up, volume down and mute, which change the output volume of this Mac or mute it. It never clicks, and it never types into an app. While it moves a window, it turns off the enhanced accessibility setting of the application, and then turns it on again. A grant from an earlier Koine version that holds desktop:control gets this reach too. |
 
 <!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 

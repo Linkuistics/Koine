@@ -22,13 +22,31 @@ are not unique, and it is a consent that Koine does not need. The price is a
 private call that a macOS release can change or remove. Then the bounds match
 still orders some windows, and Koine reports the rest as unknown.
 
+Koine also posts events, as Modaliser does. Display focus and the pointer nudge
+post mouse-moved events, and the media keys post system-defined events. Koine
+posts them at the HID event tap with public calls. A posted event names no
+element and no process. macOS routes it as it routes the input of a mouse or a
+keyboard. A mouse-moved event goes to the application under the pointer, and a
+media key goes to the Now Playing app.
+
+So Koine cannot tell which process received a posted event, and a receipt
+says only that Koine posted it. The layout of a media key event is a convention
+that Modaliser and other tools rely on, not a documented contract. A macOS
+release can change it, as it can change the private window lookup. Posting
+needs the Accessibility consent that Koine already holds. Without it, macOS can
+drop a posted event and report no error, so Koine checks the consent first.
+
+The private MediaRemote framework could name the Now Playing app, and so let a
+receipt name the player. Koine does not use it, because Modaliser does not, and
+no requirement asks for the name.
+
 Koine accepts wrong-process or wrong-window data and effects during process or
 window reuse. It also accepts stale or misattributed notifications, and
 mistaken withdrawal of live references or remembered windows. Koine does not
 independently authenticate each AX reply or notification. It does not prove
 the lifetime of a window or the age of an event, and it does not guarantee
 that a read is fresh. The
-[held-AX counterexample](../verification/retained-ax-binding.md) shows why a
+[held-AX counterexample](../verification/retained-ax-binding.md) explains why a
 check of a task identity cannot establish those properties for public AX. It
 does not measure how often a normal race between check and use happens.
 
@@ -53,7 +71,7 @@ mechanism bounds what that channel acquires before parsing. Rebuilding AX
 objects from private tokens crosses process incarnations, just as held public
 elements do. The
 [held-AX counterexample](../verification/retained-ax-binding.md#private-ax-reconstruction-does-not-bind-a-process-either)
-shows it. The private window-number lookup is a call on a held element, not a
+demonstrates it. The private window-number lookup is a call on a held element, not a
 channel that Koine owns, and Koine rebuilds no element from its number. Koine
 uses no helper, injection, target cooperation or behavioural restriction of
 applications.
