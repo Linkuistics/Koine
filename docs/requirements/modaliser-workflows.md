@@ -1,5 +1,7 @@
 # Configured workflows and application menus
 
+<!-- tc: pending because this document has over a hundred findings; a section converts when an edit touches it -->
+
 These are the agreed behavioral requirements for extending Koine from Antony's
 active Modaliser configuration. They await design and implementation and do not
 describe functionality already delivered by Koine 0.1.0. The implemented
@@ -197,54 +199,59 @@ also have documented authority in the operation-to-capability acceptance trace.
 Client confirmation UI does not replace Koine's grant checks. Existing live
 revocation and native-consent rules continue to apply.
 
+<!-- tc: on -->
+
 ## Workflow inventory
 
-Every row is part of the agreed baseline, with the client responsibilities
-above preserved. The inventory names behavior rather than prescribing a
-provider layout.
+Every row is part of the agreed baseline. The client responsibilities above
+still apply. The inventory names behaviour, and it prescribes no provider
+layout.
 
-| Area | Required behavior |
+| Area | Required behaviour |
 | --- | --- |
-| Desktop windows | Switch Spaces through the configured Control-digit workflow; list and select windows; place windows in thirds, half-thirds, two-thirds, halves and quarters; maximise, centre and restore geometry. |
-| Displays | List displays; move a window to a selected display while preserving its position and size as fractions of the displays' visible areas; focus a display for subsequent desktop interaction. |
+| Desktop windows | Switch Spaces through the configured Control-digit workflow. List and select windows. Place windows in thirds, half-thirds, two-thirds, halves and quarters. Maximise, centre and restore geometry. |
+| Displays | List displays. Move a window to a selected display. Keep its position and size as fractions of the visible areas of the displays. Focus a display for later desktop interaction. |
 | Named application launchers | Launch or activate Dia, ChatGPT, Claude, Zed, Visual Studio Code, Jump Desktop, Kimi, iTerm, Mail, Notes, Obsidian and Zotero. |
-| Application discovery | Koine supplies native application metadata for client filtering and selection; launch or activate a selection, reveal it in Finder, copy its path or copy its bundle identifier. Discovery availability/completeness must be explicit. |
-| File search | The client searches under its configured roots, currently the home directory. Koine supplies special starting locations and the existing explicit default/Zed open and Finder-reveal actions; the client owns path copy. |
-| Native metadata discovery | V1 supplies special locations and named native catalogues for applications and preference panels. Clients filter/rank choices; no general OS metadata-query API is included in v1. The returned design defines sources, completeness and selection metadata. |
-| Web search | Retain typed-query and Google-suggestion selection, opening the resulting search in the default browser. Suggestion failure must not prevent searching for the typed query. |
-| Media | Send system play/pause through the system media route, rather than selecting the foreground application as the player. |
+| Application discovery | Koine supplies native application metadata for client filtering and selection. Launch or activate a selection, reveal it in Finder, copy its path or copy its bundle identifier. Discovery availability and completeness must be explicit. |
+| File search | The client searches under its configured roots, currently the home directory. Koine supplies special locations for the client to search from. It also supplies the existing explicit actions: open in the default application or in Zed, and reveal in Finder. The client owns path copy. |
+| Native metadata discovery | V1 supplies special locations and named native catalogues for applications and preference panels. Clients filter and rank choices. V1 has no general OS metadata-query API. The returned design defines sources, completeness and selection metadata. |
+| Web search | Retain typed-query and Google-suggestion selection, and open the resulting search in the default browser. A failure of the suggestions must not prevent a search for the typed query. |
+| Media | Send system play/pause through the system media route. Do not select the foreground application as the player. |
 | Pointer | Locate and reveal the pointer, including the configured nudge, so the client can draw its highlight. |
 | Client settings | Open the configuration directory in Zed. Reloading or relaunching the client remains client-owned. |
-| Safari | New, close and reopen tab; focus the address bar; find on page. |
-| Dia | New tab; find tab; positional next/previous tab; recent-tab walk with forward/backward steps, distinct confirm/cancel outcomes and balanced modifier holds. |
-| Finder | New window and folder; go to folder; get info; connect to server; toggle hidden files; icon/list/column/gallery views; Home, Applications, Desktop, Downloads, Recents and Computer destinations. |
+| Safari | New, close and reopen tab. Focus the address bar. Find on page. |
+| Dia | New tab. Find tab. Positional next/previous tab. Recent-tab walk with forward/backward steps, distinct confirm/cancel outcomes and balanced modifier holds. |
+| Finder | New window and folder. Go to folder. `Get Info`. Connect to server. Toggle hidden files. Icon, list, column and gallery views. Home, Applications, Desktop, Downloads, Recents and Computer destinations. |
 | Mail | New message, reply, reply-all, forward, toggle unread, mark junk, get new mail, search and move the selected message to Trash. |
 | Slack | Jump, direct messages, search, all unreads, threads, mentions, back/forward and mark read. |
 | Zed | File finder, command palette, project search, find in file, project panel and terminal. |
 | Signal | New message, search, find in conversation and preferences. |
 | Messages | New message, find and repeated next/previous conversation. |
-| Telegram | Jump to chat; search in chat; next/previous chat and next/previous unread chat. |
+| Telegram | Jump to chat. Search in chat. Next/previous chat and next/previous unread chat. |
 | Obsidian | Quick switcher, command palette, new note, search all files, find in file and graph view. |
 | Zotero | Quick search and advanced search. |
-| iTerm | List/select panes and tabs; directional pane focus, move and split; pane zoom and copy mode; create, rename and close tabs; previous/next tab focus and reordering; explicit configuration when integration prerequisites require it. |
+| iTerm | List and select panes and tabs. Directional pane focus, move and split. Pane zoom and copy mode. Create, rename and close tabs. Previous/next tab focus and reordering. Explicit configuration when integration prerequisites require it. |
 | Terminal context | Identify the focused terminal host and its nested herdr context sufficiently to select and address the intended running instance. iTerm is the required host baseline. Clients own navigation into and out of that chain. |
-| herdr panes | List/select, cycle, directionally focus/split/move, zoom and close panes. Copy mode selects within the live herdr pane; scrollback opens that pane's buffer in an editor. These are distinct from the host terminal's own copy mode. |
+| herdr panes | List/select, cycle, directionally focus/split/move, zoom and close panes. Copy mode selects within the live herdr pane. Scrollback opens the buffer of that pane in an editor. These are distinct from the own copy mode of the host terminal. |
 | herdr tabs and Spaces | List/select, cycle, create, rename, close and reorder tabs and Spaces, preserving the applicable containing scope. |
-| herdr worktrees | List worktrees; create and remove them; focus the live Space when already open, otherwise open the dormant worktree. Removal is non-forcing; the client retains confirmation. |
-| herdr agents and lifetime | List/select and cycle agents; jump to the next blocked agent; distinguish detaching the client, which leaves the server and panes running, from stopping the server. |
+| herdr worktrees | List worktrees. Create and remove them. When a worktree is already open, focus its live Space. Otherwise open the dormant worktree. Removal is non-forcing, and the client keeps the confirmation. |
+| herdr agents and lifetime | List, select and cycle agents. Jump to the next blocked agent. Distinguish detaching the client from stopping the server. Detaching leaves the server and panes running. |
 | Integration setup | Support explicit prerequisite setup where needed, including the configured iTerm setup workflow or an equivalent solution that removes that prerequisite. |
 
-VS Code's screen workflows are deferred: project/window and terminal/editor
-selection, focus and editor commands, Grove leaf reveal and task-tab cleanup,
-and companion install/update. They receive no design or acceptance work in this
-increment. Its named launcher remains in the baseline above.
+Antony deferred the screen workflows of VS Code: project/window and
+terminal/editor selection, focus and editor commands, Grove leaf reveal and
+task-tab cleanup, and companion install/update. They receive no design or
+acceptance work in this increment. The VS Code launcher stays in the baseline
+above.
 
 The current installation probe supports the geometry-layout screen. Paneru's
 alternative strip listing, west/east focus and swap, grow/shrink and strip
-centring are not added to the requirements simply because their definitions
-remain in the configuration. The unbound Dia AppleScript tab-list/focus helpers
-and the separately registered, unreachable iTerm focus-walk entry likewise add
-no extra scope.
+centring are not requirements. Their definitions remain in the configuration,
+and that alone does not make them requirements. The unbound Dia AppleScript
+tab-list/focus helpers and the separately registered, unreachable iTerm
+focus-walk entry likewise add no extra scope.
+
+<!-- tc: pending because this document has over a hundred findings; a section converts when an edit touches it -->
 
 ### State for configured lists and on-screen labels
 
