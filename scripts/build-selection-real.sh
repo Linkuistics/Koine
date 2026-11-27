@@ -9,7 +9,7 @@
 #                           against framework 1.0 by scripts/build-baseline-host.sh and
 #                           sealed under dev.antony.Koine.provider.desktop: the old
 #                           designated baseline a selection-aware host is given
-#   current-desktop         this tree's desktop provider (release/schema 1.0.1, window layout), sealed the same
+#   current-desktop         this tree's desktop provider (release/schema 1.0.2, pointer and media), sealed the same
 #   current-workspace       this tree's workspace provider (release/schema 1.0.2, the repaired actions and the discovery reads)
 #   desktop-update          a NEWER release of the same source: 1.1.0, and the feature
 #   workspace-update        `first-party-selection-v1` stated in its manifest AND its

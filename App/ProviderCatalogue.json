@@ -4,8 +4,8 @@
       "providerId": "desktop",
       "graphQLPrefix": "Desktop",
       "bundle": "Desktop.koineprovider",
-      "release": "1.0.1",
-      "schema": "1.0.1",
+      "release": "1.0.2",
+      "schema": "1.0.2",
       "signingIdentifier": "dev.antony.Koine.provider.desktop"
     },
     {

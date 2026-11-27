@@ -94,9 +94,9 @@ PY
         "s.replace('koineRevokeGrant(grantId: ID!)', 'koineRevokeGrant(grantId: ID! = \"x\")', 1)"
     control "two root fields transposed" \
         "s.replace('  \"Authenticated caller metadata. No provider capability required.\"\n  koine: Koine!\n  \"Proof of the submitted secret, or its resulting active grant; own request only.\"\n  koineGrantRequest: KoineGrantRequest', '  \"Proof of the submitted secret, or its resulting active grant; own request only.\"\n  koineGrantRequest: KoineGrantRequest\n  \"Authenticated caller metadata. No provider capability required.\"\n  koine: Koine!', 1)"
-    if jq -e '.providers[] | select(.provider == "desktop" and .schemaVersion == "1.0.1")' "${profile}" >/dev/null; then
+    if jq -e '.providers[] | select(.provider == "desktop" and (.schemaVersion == "1.0.1" or .schemaVersion == "1.0.2"))' "${profile}" >/dev/null; then
         # The first cut of window layout is three query roots, frame setting, display focus and the types
-        # that they reach. The check holds each of them on its own.
+        # that they reach. Desktop 1.0.2 keeps them. The check holds each of them on its own.
         control "the window list root removed" \
             "__import__('re').sub(r'  \"desktop:read\\. Lists the windows[^\n]*\"\n  desktopWindows[^\n]*\n', '', s, count=1)"
         control "the point query root removed" \
@@ -112,6 +112,18 @@ PY
         control "a display field's description changed" \
             "s.replace('Koine never invents a visible frame.', 'Koine may invent a visible frame.', 1)"
         control "a visibility value removed" "s.replace('ON_SCREEN OFF_SCREEN UNKNOWN', 'ON_SCREEN OFF_SCREEN', 1)"
+    fi
+    if jq -e '.providers[] | select(.provider == "desktop" and .schemaVersion == "1.0.2")' "${profile}" >/dev/null; then
+        # Pointer and media adds the position read, the nudge and the types that they reach. The check holds
+        # each of them on its own.
+        control "the pointer position root removed" \
+            "__import__('re').sub(r'  \"desktop:read\\. Where the pointer is now[^\n]*\"\n  desktopPointer[^\n]*\n', '', s, count=1)"
+        control "the pointer nudge root removed" \
+            "__import__('re').sub(r'  \"desktop:control\\. Nudges the pointer[^\n]*\"\n  desktopNudgePointer[^\n]*\n', '', s, count=1)"
+        control "the pointer location made nullable" "s.replace('  location: DesktopPoint!\n', '  location: DesktopPoint\n', 1)"
+        control "a nudge outcome removed" "s.replace('{ NUDGED POINTER_BUTTON_HELD }', '{ NUDGED }', 1)"
+        control "the nudge description changed" \
+            "s.replace('The pointer ends where it started.', 'The pointer ends near where it started.', 1)"
     fi
     if jq -e '[.providers[].provider] | index("workspace")' "${profile}" >/dev/null; then
         # A workspace coordinate that is missing is a difference, never silently omitted.
@@ -178,6 +190,13 @@ PY
     profile_control "a required provider that is not served" \
         '.providers += [{"provider": "input", "version": "1.0.0", "schemaVersion": "1.0.0", "state": "ACTIVE"}]' 'is missing'
     profile_control "a served row the profile does not expect" '.providers = []' 'unexpected row desktop'
+    if jq -e '.providers[] | select(.provider == "desktop" and .schemaVersion == "1.0.2" and .origin == "BUNDLED")' "${profile}" >/dev/null; then
+        # Desktop 1.0.1 serves a subset under the earlier numbers, so the pins say that pointer and media ran.
+        profile_control "the released desktop release 1.0.1 pinned for pointer and media" \
+            '.providers |= map(if .provider == "desktop" then .version = "1.0.1" else . end)' 'is not served as expected'
+        profile_control "the released desktop schema 1.0.1 pinned for pointer and media" \
+            '.providers |= map(if .provider == "desktop" then .schemaVersion = "1.0.1" else . end)' 'is not served as expected'
+    fi
     if jq -e '.providers[] | select(.provider == "desktop" and .schemaVersion == "1.0.1" and .origin == "BUNDLED")' "${profile}" >/dev/null; then
         # Desktop 1.0.0 serves a subset under the earlier numbers, so the pins say that window layout ran.
         profile_control "the released desktop release 1.0.0 pinned for window layout" \

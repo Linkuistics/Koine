@@ -448,6 +448,36 @@ Koine raises the front window on the display and activates its application. Then
 
 The field `pointerMoved` says whether the pointer moved. Koine checks the pointer buttons again just before the move. When a button is held then, the pointer stays where it is. The receipt names no window, so read the window list under `desktop:read` to find the focused window. A display reference that names no active display raises `unavailable`.
 
+## Revealing the pointer
+
+Koine 0.6.0 serves two pointer operations of the [desktop contract](specs/machine.md#pointer-and-media). A Koine 0.5.0 host does not serve them, so introspect the schema before you use the [operations](design/desktop-pointer-media-operations.graphql). Your client draws the highlight ring. Koine supplies the position and the nudge, and it draws nothing.
+
+Call `desktopPointer` under `desktop:read` to read where the pointer is now. The position uses screen coordinates, as for window layout. Each value can have a fraction. The read needs no Accessibility consent.
+
+```graphql
+query DesktopPointerPosition {
+  desktopPointer {
+    location { x y }
+  }
+}
+```
+
+The answer is null when Koine cannot establish the position, as can happen during a display change. Then read it again. Koine never invents a position. To find the display under the pointer, find the display in `desktopDisplays` whose frame contains the point. A frame contains its top and left edges, but not its bottom and right edges. The two reads are separate, so a display change can come between them.
+
+Call `desktopNudgePointer` under `desktop:control` to make a pointer that macOS hid visible again. Koine moves the pointer one point to the right and back, with two mouse-moved events. The pointer ends where it started.
+
+```graphql
+mutation NudgeDesktopPointer {
+  desktopNudgePointer { outcome }
+}
+```
+
+The outcome is `NUDGED` when Koine posted both events. It is `POINTER_BUTTON_HELD` when a pointer button was held, so Koine posted nothing. A move while a button is held would be a drag. Koine never clicks. `NUDGED` does not say that the pointer became visible, because Koine cannot detect that. The application under the pointer receives both events, and it can react to them, for example with a hover effect.
+
+The receipt carries no position. Read the position under `desktop:read` before or after the nudge, because the nudge does not change it. Without Accessibility consent or event posting access, the nudge raises a permission error that names `accessibility`, and its message names the missing access. A failed nudge posts nothing.
+
+The media keys are in the design, but Koine 0.6.0 does not serve them yet.
+
 ## Searching for applications and files
 
 Raw filesystem search belongs to the client. The client chooses its traversal engine, permissions, filtering, ordering and budgets. The [native discovery design](specs/workspace-search.md) supplies special locations. It also supplies named catalogues of applications and System Settings on macOS 26+ Apple Silicon. **Koine 0.4.0 serves `workspaceSpecialLocations` and `workspaceApplications`, and nothing else of that design.** The rest of this section describes the full design, which later releases serve.

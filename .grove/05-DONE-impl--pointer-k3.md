@@ -62,3 +62,47 @@ and G tests. Serve the new disclosure text for the whole grove too.
   `pointer-media-k8` added the second check.
 - `task design:pointer-media-check` must still pass after any change to the
   design files.
+
+## Decisions (running log)
+
+**The pure module.** `Logic/Pointer.swift` holds the conversion, the nudge
+path, the two consent checks and the order of the nudge steps.
+`PointerNudge.perform` takes each native fact as a closure, as
+`DisplayFocus.perform` does. It creates both events into a list before the
+first post, so a failure leaves no half nudge. The message of the consent
+failure is in the pure module too, so an L test holds that it names the
+missing access.
+
+**The position read.** The provider reads `NSEvent.mouseLocation` and
+`NSScreen.screens` in one turn on the main actor, because `NSScreen` belongs to
+the main actor. The read needs no consent check.
+
+**The feature constant.** The provider keeps the Swift name
+`desktopDisclosuresFeature` with the value `desktop-disclosures-v2`. The
+selection fixtures and the compatibility build substitute the text of the
+descriptor's feature list by that name. The core names the new feature
+`desktopDisclosuresV2Feature` and keeps `desktopDisclosuresFeature` for v1.
+
+**The served SDL.** The served file is the design without its comment header,
+without `desktopPostMediaKey`, and without `DesktopMediaKey` and
+`DesktopMediaKeyReceipt`. A G test holds the composed file to the design with
+exactly those three coordinates missing. `media-keys-k4` empties that set.
+
+**The window layout profiles.** The two window layout composed files and
+profiles stay unchanged in content. The contract now names them as the record
+of desktop 1.0.1, which Koine 0.5.0 released. `task conformance` and the VM
+conformance script hold the new pointer and media profiles.
+
+**The compatibility pairs.** The desktop pairs now put this tree's desktop
+1.0.2 under this tree's host and under the released 0.4.1 host, which refuses
+it by `desktop-disclosures-v2`. The pairs with the released 0.5.0 host belong to
+`pointer-media-acceptance-k5`, as the root brief gives the N check to it.
+
+**The window layout G tests.** The host feature test and the refusal test move
+from `DesktopWindowLayoutTests` to `DesktopPointerTests`, at v2. The refusal
+test uses a host that advertises `desktop-disclosures-v1` and lacks v2, as the
+released 0.5.0 host does.
+
+**No nudge with a control grant.** The G tests ask the nudge only with a
+read-only grant and with a grant without capabilities. Both are refused before
+the provider is asked, and the tests check that the pointer did not move.

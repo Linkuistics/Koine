@@ -8,29 +8,36 @@
 /// active: a grant may hold a capability whose provider failed to load, and its
 /// reach is disclosed all the same. Serving a description supplies no authority.
 public enum CapabilityDisclosures {
-    /// Desktop control: the reach of window layout, which Koine 0.5.0 adds to focus
-    /// (docs/specs/machine.md, "Capability disclosures"). The host advertises
-    /// `desktop-disclosures-v1` only with this text and `desktopRead`.
+    /// Desktop control: the reach of window layout, which Koine 0.5.0 adds to focus, and of the pointer nudge and
+    /// the media keys, which Koine 0.6.0 adds (docs/specs/machine.md, "Capability disclosures"). The host
+    /// advertises `desktop-disclosures-v2` only with this text and `desktopRead`. The text still states the window
+    /// layout reach, so the host advertises `desktop-disclosures-v1` too.
     public static let desktopControl = """
         Focuses a window. Moves and resizes any window of an application with a Dock \
         icon. Focuses a display: Koine raises the front window there, activates its \
-        application and moves the pointer to the centre of the display. It never \
-        clicks or types. While it moves a window, it turns off the enhanced \
-        accessibility setting of the application, and then turns it on again. A \
-        grant from an earlier Koine version that holds desktop:control gets this \
-        reach too.
+        application and moves the pointer to the centre of the display. Nudges the \
+        pointer one point to the right and back, so that a hidden pointer becomes \
+        visible again. Posts the media keys play/pause, next and previous. macOS sends \
+        them to the Now Playing app in Control Center, which is often not the front \
+        app. When no app is Now Playing, play/pause can make macOS open Music and bring \
+        it to the front. Posts volume up, volume down and mute, which change the output \
+        volume of this Mac or mute it. It never clicks, and it never types into an app. \
+        While it moves a window, it turns off the enhanced accessibility setting of the \
+        application, and then turns it on again. A grant from an earlier Koine version \
+        that holds desktop:control gets this reach too.
         """
 
-    /// Desktop read: the reach of the window list and the display list, which Koine
-    /// 0.5.0 adds to the reads of one application.
+    /// Desktop read: the reach of the window list and the display list, which Koine 0.5.0 adds to the reads of one
+    /// application, and of the pointer position, which Koine 0.6.0 adds.
     public static let desktopRead = """
         Lists the windows of every application with a Dock icon on the current \
         Space. For each window, it reads the title, the application, the position \
         and size, the place in front-to-back order and whether the window is on \
         screen. A title can contain a document name, a web page title or a message \
-        subject. It also lists the displays with their positions and sizes. It \
-        reads no window contents and takes no screenshots. A grant from an earlier \
-        Koine version that holds desktop:read gets this reach too.
+        subject. It also lists the displays with their positions and sizes, and it \
+        reads the position of the pointer. It reads no window contents and takes no \
+        screenshots. A grant from an earlier Koine version that holds desktop:read \
+        gets this reach too.
         """
 
     /// Workspace control: the reach `docs/specs/workspace-launch-and-open.md` and

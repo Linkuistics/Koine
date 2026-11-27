@@ -1,0 +1,32 @@
+{
+  "name": "extension-host core + desktop 1.0.2 + workspace 1.0.2",
+  "design": "../desktop-pointer-media-workspace-schema-extension-host.graphql",
+  "management": "extended",
+  "comment": [
+    "The signed application as shipped from Koine 0.6.0: desktop release/schema 1.0.2, pointer and media beside window",
+    "layout, and workspace release/schema 1.0.2. Its design differs from the desktop 1.0.1 profile's",
+    "(core-desktop-window-layout-workspace-extension-host.json) by the pointer coordinates alone, so its canonical",
+    "digest differs on the same host and printer. The candidate versions are pinned here, apart from the SDL and the",
+    "digest, because an identical schema and digest cannot say which binary ran."
+  ],
+  "providers": [
+    {
+      "provider": "desktop",
+      "version": "1.0.2",
+      "schemaVersion": "1.0.2",
+      "state": "ACTIVE",
+      "origin": "BUNDLED",
+      "selection": "SELECTED",
+      "reason": null
+    },
+    {
+      "provider": "workspace",
+      "version": "1.0.2",
+      "schemaVersion": "1.0.2",
+      "state": "ACTIVE",
+      "origin": "BUNDLED",
+      "selection": "SELECTED",
+      "reason": null
+    }
+  ]
+}

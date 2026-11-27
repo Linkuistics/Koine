@@ -19,11 +19,11 @@
 #             keeps them apart under workspace-1.0.0 and workspace-1.0.1. Both must
 #             exist first, and neither is rebuilt here. The released tree's own source
 #             also gives the 1.0.1 per-user variant (workspace-1.0.1/workspace-per-user).
-#   desktop   the newer tree's desktop provider (release/schema 1.0.1, window layout) is
+#   desktop   the newer tree's desktop provider (release/schema 1.0.2, pointer and media) is
 #             in newer/products/DesktopProviders. The same source stating
 #             first-party-selection-v1 is newer/desktop-per-user: an approved per-user
 #             update over the bundled desktop 1.0.0 of the released Koine 0.4.1, whose
-#             host refuses both because it lacks desktop-disclosures-v1. That host is
+#             host refuses both because it lacks desktop-disclosures-v2. That host is
 #             built by scripts/build-retained-workspace.sh under released-0.4.1.
 #
 # Nothing built in one tree sees the other: a pair is put together only when
@@ -155,7 +155,7 @@ unset FIXTURE_ADDITIONAL
     Fixtures/FixtureProvider/seal.sh "${PAIRS}/workspace-1.0.1/workspace-per-user/Workspace.koineprovider" >&2
 )
 
-# This tree's desktop 1.0.1 stating first-party-selection-v1, as a per-user update of the bundled
+# This tree's desktop 1.0.2 stating first-party-selection-v1, as a per-user update of the bundled
 # desktop 1.0.0 that the released Koine 0.4.1 ships. Only the copy's descriptor and manifest change.
 (
     cd "${PAIRS}/newer/src"

@@ -334,6 +334,9 @@ import Testing
                 ("Mutation.desktopFocusDisplay", .control),
                 ("DesktopDisplayFocusReceipt.ref", .control), ("DesktopDisplayFocusReceipt.outcome", .control),
                 ("DesktopDisplayFocusReceipt.pointerMoved", .control),
+                ("Query.desktopPointer", .read), ("DesktopPointer.location", .read), ("DesktopPoint.x", .read),
+                ("DesktopPoint.y", .read),
+                ("Mutation.desktopNudgePointer", .control), ("DesktopPointerNudgeReceipt.outcome", .control),
             ],
             origin: .bundled
         )
@@ -378,10 +381,10 @@ import Testing
     /// where when they are not; and the digest of the canonically printed design
     /// file is the one Koine served, which additionally covers declared order —
     /// invisible to the report — and needs nothing from introspection.
-    /// The bundle in the tree is desktop 1.0.1, so what it serves is the first cut of window layout; the
-    /// desktop 1.0.0 composition stays as the released host and the update profiles over it serve it.
+    /// The bundle in the tree is desktop 1.0.2, so what it serves is pointer and media beside window layout. The
+    /// desktop 1.0.0 and 1.0.1 compositions stay for the released providers.
     @Test func theServedSchemaIsTheDesignContract() async throws {
-        let design = try Self.repositoryFile("docs/design/desktop-window-layout-schema-extension-host.graphql")
+        let design = try Self.repositoryFile("docs/design/desktop-pointer-media-schema-extension-host.graphql")
         let (canonical, digest) = try await composed()
         let found = SchemaComparison(
             served: try parse(source: canonical),
@@ -401,8 +404,16 @@ import Testing
         "DesktopDisplay", "DesktopFrameReceipt", "DesktopDisplayFocusReceipt", "DesktopDisplayFocusOutcome",
     ]
 
-    /// The cut is visible to the one thing a client compares: the schema the 1.0.1 bundle serves differs from the
-    /// desktop 1.0.0 composition in exactly the window layout coordinates, each by presence, and so in digest.
+    /// The coordinates that pointer and media adds to the desktop 1.0.1 contribution and that this tree serves: the
+    /// position read, the nudge and every type they reach.
+    static let pointerCoordinates: Set<String> = [
+        "Query.desktopPointer", "Mutation.desktopNudgePointer", "DesktopPointer", "DesktopPoint",
+        "DesktopPointerNudgeReceipt", "DesktopPointerNudgeOutcome",
+    ]
+
+    /// The cut is visible to the one thing a client compares: the schema the 1.0.2 bundle serves differs from the
+    /// desktop 1.0.0 composition in exactly the window layout and pointer coordinates, each by presence, and so in
+    /// digest.
     @Test func windowLayoutAddsExactlyItsCoordinatesToTheDesktop100Composition() async throws {
         let released = try Self.repositoryFile("docs/design/desktop-schema-extension-host.graphql")
         let (canonical, digest) = try await composed()
@@ -411,24 +422,55 @@ import Testing
             design: try parse(source: try CanonicalSchemaText.canonicalText(ofSDL: released))
         ).differences()
         #expect(
-            Set(found.map(\.coordinate)) == Self.windowLayoutCoordinates,
+            Set(found.map(\.coordinate)) == Self.windowLayoutCoordinates.union(Self.pointerCoordinates),
             Comment(rawValue: found.map(\.report).joined(separator: "\n")))
         #expect(found.allSatisfy { $0.aspect == .presence })
         #expect(try CanonicalSchemaText.digest(ofSDL: released) != digest)
     }
 
-    /// What is not served yet: nothing. Display focus was the last root, so each composed file is the complete
-    /// window layout design. A root added to the design later that this set does not name turns the next test
-    /// red, and the set grows only for a root that has not landed.
-    static let desktopCoordinatesNotYetImplemented: Set<String> = []
+    /// The pointer and media release adds exactly the pointer coordinates to the window layout composition, each by
+    /// presence, and so the digest differs. No window layout coordinate changes.
+    @Test func pointerAddsExactlyItsCoordinatesToTheWindowLayoutComposition() async throws {
+        let released = try Self.repositoryFile("docs/design/desktop-window-layout-schema-extension-host.graphql")
+        let (canonical, digest) = try await composed()
+        let found = SchemaComparison(
+            served: try parse(source: canonical),
+            design: try parse(source: try CanonicalSchemaText.canonicalText(ofSDL: released))
+        ).differences()
+        #expect(
+            Set(found.map(\.coordinate)) == Self.pointerCoordinates,
+            Comment(rawValue: found.map(\.report).joined(separator: "\n")))
+        #expect(found.allSatisfy { $0.aspect == .presence })
+        #expect(try CanonicalSchemaText.digest(ofSDL: released) != digest)
+    }
 
-    /// The desktop part of the window layout composition is the design SDL, never reworded: against the core plus
-    /// the complete window layout design, the composed file lacks exactly the roots not served yet and the types
-    /// only they reach, and every coordinate it does declare is identical.
+    /// The window layout composition is the complete window layout design: display focus was its last root. It
+    /// stays as the record of desktop 1.0.1.
     @Test func theWindowLayoutCompositionIsItsDesignRestrictedVerbatim() throws {
         let profile = try Self.repositoryFile("docs/design/desktop-window-layout-schema-extension-host.graphql")
         let complete = try Self.repositoryFile("docs/design/core-schema-extension-host.graphql")
             + "\n" + (try Self.repositoryFile("docs/design/desktop-window-layout-schema.graphql"))
+        let found = SchemaComparison(
+            served: try parse(source: try CanonicalSchemaText.canonicalText(ofSDL: profile)),
+            design: try parse(source: try CanonicalSchemaText.canonicalText(ofSDL: complete))
+        ).differences()
+        #expect(found.isEmpty, Comment(rawValue: found.map(\.report).joined(separator: "\n")))
+    }
+
+    /// What is not served yet: the media key root and the two types that only it reaches. `media-keys-k4` serves
+    /// them. A root added to the design later that this set does not name turns the next test red, and the set
+    /// grows only for a root that has not landed.
+    static let desktopCoordinatesNotYetImplemented: Set<String> = [
+        "Mutation.desktopPostMediaKey", "DesktopMediaKey", "DesktopMediaKeyReceipt",
+    ]
+
+    /// The desktop part of the pointer and media composition is the design SDL, never reworded: against the core
+    /// plus the complete pointer and media design, the composed file lacks exactly the roots not served yet and the
+    /// types only they reach, and every coordinate it does declare is identical.
+    @Test func thePointerMediaCompositionIsItsDesignRestrictedVerbatim() throws {
+        let profile = try Self.repositoryFile("docs/design/desktop-pointer-media-schema-extension-host.graphql")
+        let complete = try Self.repositoryFile("docs/design/core-schema-extension-host.graphql")
+            + "\n" + (try Self.repositoryFile("docs/design/desktop-pointer-media-schema.graphql"))
         let found = SchemaComparison(
             served: try parse(source: try CanonicalSchemaText.canonicalText(ofSDL: profile)),
             design: try parse(source: try CanonicalSchemaText.canonicalText(ofSDL: complete))
@@ -458,12 +500,12 @@ import Testing
     /// The same two claims for the third profile: the bundles' own SDL, composed
     /// with the core through the engine, is the workspace profile's design file,
     /// declared order included.
-    /// The bundles in the tree are desktop 1.0.1 and workspace 1.0.2, so what they serve is the first cut of
-    /// window layout beside the first cut of native discovery; the retained workspace 1.0.0 and 1.0.1
+    /// The bundles in the tree are desktop 1.0.2 and workspace 1.0.2, so what they serve is pointer and media and
+    /// window layout beside the first cut of native discovery. The retained workspace 1.0.0 and 1.0.1
     /// compositions are held to their retained bundles (`task compat:workspace-baseline-verify`).
     @Test func theServedCoreDesktopWorkspaceSchemaIsItsDesignContract() async throws {
         let design = try Self.repositoryFile(
-            "docs/design/desktop-window-layout-workspace-schema-extension-host.graphql")
+            "docs/design/desktop-pointer-media-workspace-schema-extension-host.graphql")
         let (canonical, digest) = try await composed([Self.desktopStub().active, Self.workspaceProvider()])
         let found = SchemaComparison(
             served: try parse(source: canonical),
@@ -487,8 +529,8 @@ import Testing
 
     /// The cut is visible to the one thing a client compares: the schema the 1.0.2 bundle serves differs from the
     /// 1.0.1 repair composition in exactly the two query roots and their types, and so in digest. Neither claim alone
-    /// would do: the digest differs for any change at all. The desktop bundle beside it is 1.0.1, so the window
-    /// layout coordinates differ too.
+    /// would do: the digest differs for any change at all. The desktop bundle beside it is 1.0.2, so the window
+    /// layout and pointer coordinates differ too.
     @Test func theFirstCutAddsExactlyTheTwoDiscoveryQueriesToTheRepairComposition() async throws {
         let repair = try Self.repositoryFile("docs/design/desktop-workspace-repair-schema-extension-host.graphql")
         let (canonical, digest) = try await composed([Self.desktopStub().active, Self.workspaceProvider()])
@@ -497,7 +539,8 @@ import Testing
             design: try parse(source: try CanonicalSchemaText.canonicalText(ofSDL: repair))
         ).differences()
         #expect(
-            Set(found.map(\.coordinate)) == Self.specialLocationCoordinates.union(Self.windowLayoutCoordinates),
+            Set(found.map(\.coordinate))
+                == Self.specialLocationCoordinates.union(Self.windowLayoutCoordinates).union(Self.pointerCoordinates),
             Comment(rawValue: found.map(\.report).joined(separator: "\n")))
         #expect(found.allSatisfy { $0.aspect == .presence })
         #expect(try CanonicalSchemaText.digest(ofSDL: repair) != digest)
@@ -513,7 +556,8 @@ import Testing
             design: try parse(source: try CanonicalSchemaText.canonicalText(ofSDL: retained))
         ).differences()
         #expect(
-            Set(found.map(\.coordinate)) == Self.specialLocationCoordinates.union(Self.windowLayoutCoordinates).union([
+            Set(found.map(\.coordinate)) == Self.specialLocationCoordinates.union(Self.windowLayoutCoordinates)
+                .union(Self.pointerCoordinates).union([
                 "Mutation.workspaceLaunchApplication", "Mutation.workspaceOpenPath", "Mutation.workspaceRevealPath",
             ]), Comment(rawValue: found.map(\.report).joined(separator: "\n")))
     }

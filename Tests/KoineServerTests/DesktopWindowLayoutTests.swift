@@ -360,57 +360,6 @@ import Testing
         await harness.stop()
     }
 
-    /// The core serves both desktop disclosures, and the provider requires the feature that says so.
-    @Test func theHostAdvertisesTheFeatureTheBundleRequiresAndServesTheDisclosures() throws {
-        #expect(koineHostFeatures.contains("desktop-disclosures-v1"))
-        #expect(desktopDisclosuresFeature == "desktop-disclosures-v1")
-        #expect(CapabilityDisclosures.all.map(\.capability).prefix(2) == ["desktop:control", "desktop:read"])
-        let manifest = try #require(
-            JSONSerialization.jsonObject(
-                with: Data(
-                    contentsOf: try DesktopProviderTests.root().appendingPathComponent("Desktop.koineprovider/manifest.json"))
-            ) as? [String: Any])
-        #expect(manifest["requiredFeatures"] as? [String] == ["desktop-disclosures-v1"])
-        #expect(manifest["version"] as? String == "1.0.1" && manifest["schemaVersion"] as? String == "1.0.1")
-    }
-
-    /// A host that does not advertise the feature refuses the real desktop bundle before it loads, and the row
-    /// names the missing feature. This is what the released 0.4.1 host does with desktop 1.0.1.
-    @Test func aHostWithoutTheFeatureRefusesTheDesktopBundleBeforeItLoads() async throws {
-        let recorder = ProviderSelectionTests.Recorder()
-        var seam = ProviderLoader.Seam()
-        let team = try DesktopProviderTests.team()
-        seam.hostTeam = { team }
-        seam.load = { try recorder.load($0) }
-        seam.assessment = { recorder.assess($0) }
-        let root = try DesktopProviderTests.root()
-        let catalogue = try DesktopProviderTests.catalogue()
-        let sealed = seam
-        func select(_ host: HostCompatibility) async throws -> ProviderSelectionResult {
-            try await withCheckedThrowingContinuation { continuation in
-                Harness.constructing.async {
-                    continuation.resume(
-                        with: Result {
-                            try ProviderLoader.selectAndLoad(
-                                roots: [.bundled(root)], catalogue: .success(catalogue),
-                                staging: FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString),
-                                host: host, seam: sealed)
-                        })
-                }
-            }
-        }
-        let result = try await select(HostCompatibility(features: koineHostFeatures.subtracting(["desktop-disclosures-v1"])))
-        let desktop = try #require(result.reports.first { $0.provider == "desktop" })
-        guard case .incompatible(let reason) = desktop.outcome else {
-            Issue.record("the desktop bundle was not refused as incompatible: \(desktop.outcome)")
-            return
-        }
-        #expect(reason.contains("desktop-disclosures-v1"), Comment(rawValue: reason))
-        #expect(!recorder.attempts.map(\.providerId).contains("desktop"), "it was never loaded")
-
-        // The control: the same bundle on a host that advertises the feature is not refused for it.
-        let control = try await select(HostCompatibility(features: koineHostFeatures))
-        let accepted = try #require(control.reports.first { $0.provider == "desktop" })
-        if case .incompatible = accepted.outcome { Issue.record("refused though the host advertises the feature") }
-    }
+    // The host feature that the bundle requires, and the refusal without it, are in DesktopPointerTests: desktop
+    // 1.0.2 requires desktop-disclosures-v2.
 }

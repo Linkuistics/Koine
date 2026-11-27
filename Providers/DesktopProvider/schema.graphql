@@ -33,6 +33,8 @@ extend type Query {
   desktopDisplays: [DesktopDisplay!]!
   "desktop:read. Says whether this window is on top at this screen point. The answer is UNKNOWN when Koine cannot link the window to the window server's list. A stale or wrong-kind reference raises unavailable."
   desktopWindowOnTop(ref: Reference!, point: DesktopPointInput!): DesktopOnTop
+  "desktop:read. Where the pointer is now, in screen coordinates. Null when Koine cannot establish the position, as can happen during a display change. Koine never invents a position. This read needs no Accessibility consent. A desktop:read grant from an earlier Koine version has this reach too."
+  desktopPointer: DesktopPointer
 }
 
 extend type Mutation {
@@ -42,6 +44,8 @@ extend type Mutation {
   desktopSetWindowFrame(ref: Reference!, frame: DesktopRectInput!): DesktopFrameReceipt
   "desktop:control. Focuses this display: it raises the front listed window there, activates its application and moves the pointer to the display's centre. With no window there, it only moves the pointer. It never clicks, and it never moves the pointer while a pointer button is held. A stale or wrong-kind reference raises unavailable. A desktop:control grant from an earlier Koine version can do this too."
   desktopFocusDisplay(ref: Reference!): DesktopDisplayFocusReceipt
+  "desktop:control. Nudges the pointer: it moves the pointer one point to the right and back, with two mouse-moved events, so that a pointer that macOS hid becomes visible again. The pointer ends where it started. It never clicks, and it posts nothing while a pointer button is held. A desktop:control grant from an earlier Koine version can do this too."
+  desktopNudgePointer: DesktopPointerNudgeReceipt
 }
 
 "All fields require desktop:read."
@@ -124,3 +128,24 @@ type DesktopDisplayFocusReceipt {
 
 "WINDOW_FOCUSED: the front window took focus. NO_WINDOW: no listed window is on the display, so Koine raised nothing. FRONT_WINDOW_UNKNOWN: Koine cannot establish the front window there, so it raised nothing. POINTER_BUTTON_HELD: a pointer button was held at the start, so Koine did nothing. The pointerMoved field says whether the pointer moved."
 enum DesktopDisplayFocusOutcome { WINDOW_FOCUSED NO_WINDOW FRONT_WINDOW_UNKNOWN POINTER_BUTTON_HELD }
+
+"All fields require desktop:read."
+type DesktopPointer {
+  "The position of the pointer, in screen coordinates. Each value can have a fraction."
+  location: DesktopPoint!
+}
+
+"All fields require desktop:read. A point in screen coordinates."
+type DesktopPoint {
+  x: Float!
+  y: Float!
+}
+
+"Control-authorized output. It carries no pointer position: read the position under desktop:read."
+type DesktopPointerNudgeReceipt {
+  "What the nudge did."
+  outcome: DesktopPointerNudgeOutcome!
+}
+
+"NUDGED: Koine posted both mouse-moved events. POINTER_BUTTON_HELD: a pointer button was held, so Koine posted nothing."
+enum DesktopPointerNudgeOutcome { NUDGED POINTER_BUTTON_HELD }

@@ -524,7 +524,7 @@ def scenarios():
         "an approved same-team provider claiming the reserved pairs at a high release under a fixture identifier is refused "
         "by the production catalogue",
         [R("desktop", "9.0.0", "U", REJECTED, NOT, "signing-identifier-mismatch", "dev.antony.Koine.provider.desktop.impostor"),
-         R("desktop", "1.0.1", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 9.0.0"),
+         R("desktop", "1.0.2", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 9.0.0"),
          R("workspace", "9.0.0", "U", REJECTED, NOT, "signing-identifier-mismatch", "dev.antony.Koine.provider.workspace.impostor"),
          R("workspace", "1.0.2", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 9.0.0")],
         host="production", installs=[U("desktop-impostor-9.0.0", "desktop-impostor"), U("workspace-impostor-9.0.0", "workspace-impostor")],
@@ -592,10 +592,10 @@ def scenarios():
     ))
 
     # -- The real first-party providers: the old baseline, updates, and mixed releases ---------
-    # This tree's desktop is release/schema 1.0.1, the first cut of window layout.
-    d_base = R("desktop", "1.0.1", "B", ACTIVE, SEL, None)
+    # This tree's desktop is release/schema 1.0.2, pointer and media beside window layout.
+    d_base = R("desktop", "1.0.2", "B", ACTIVE, SEL, None)
     w_base = R("workspace", "1.0.2", "B", ACTIVE, SEL, None)
-    d_sup = R("desktop", "1.0.1", "B", REJECTED, NOT, "superseded-candidate")
+    d_sup = R("desktop", "1.0.2", "B", REJECTED, NOT, "superseded-candidate")
     w_sup = R("workspace", "1.0.2", "B", REJECTED, NOT, "superseded-candidate")
     d_upd = R("desktop", "1.1.0", "U", ACTIVE, SEL, None)
     w_upd = R("workspace", "1.1.0", "U", ACTIVE, SEL, None)
@@ -624,7 +624,7 @@ def scenarios():
         "the shipped catalogue around this tree's desktop and workspace: the generation before any update",
         [d_base, w_base], host="production", images=["Desktop", "Workspace"],
         extra=[both_loaded(), desktop_operations("production, baselines"), workspace_operation],
-        conformance=PROFILES + "core-desktop-window-layout-workspace-extension-host.json",
+        conformance=PROFILES + "core-desktop-pointer-media-workspace-extension-host.json",
     ))
     add(Scenario(
         "a mixed release: a newer desktop beside the workspace baseline",
@@ -661,7 +661,7 @@ def scenarios():
     refused_workspace = R("workspace", "1.1.0", "U", INCOMPATIBLE, NOT, "selection-feature-required", FEATURE_TEXT)
     add(Scenario(
         "real updates that do not state the feature are refused before they load, and the baselines run",
-        [refused_desktop, R("desktop", "1.0.1", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 1.1.0"),
+        [refused_desktop, R("desktop", "1.0.2", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 1.1.0"),
          refused_workspace, R("workspace", "1.0.2", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 1.1.0")],
         host="production", installs=[U("desktop-update-no-feature", "desktop-update"), U("workspace-update-no-feature", "workspace-update")],
         images=["Desktop", "Workspace"], extra=[desktop_operations("production, updates refused")],
@@ -669,7 +669,7 @@ def scenarios():
     ))
     add(Scenario(
         "real updates that do not state the feature, under another principal class, are refused the same way",
-        [refused_desktop, R("desktop", "1.0.1", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 1.1.0"),
+        [refused_desktop, R("desktop", "1.0.2", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 1.1.0"),
          refused_workspace, R("workspace", "1.0.2", "B", ACTIVE, SEL, "selected-with-refusals", "claims release 1.1.0")],
         host="production",
         installs=[U("desktop-update-renamed-no-feature", "desktop-update"), U("workspace-update-renamed-no-feature", "workspace-update")],
@@ -683,9 +683,9 @@ def scenarios():
 
 
 INCOMPATIBLE_FEATURE = f"requires host features this Koine lacks: {FEATURE_TEXT}"
-# A desktop update built from this tree also requires desktop-disclosures-v1, and the loader names every missing
+# A desktop update built from this tree also requires desktop-disclosures-v2, and the loader names every missing
 # feature in sorted order.
-DESKTOP_UPDATE_REFUSED = f"requires host features this Koine lacks: desktop-disclosures-v1, {FEATURE_TEXT}"
+DESKTOP_UPDATE_REFUSED = f"requires host features this Koine lacks: desktop-disclosures-v2, {FEATURE_TEXT}"
 
 
 def released_run(name, bundled, installs, rows, update_label, profile=None, compared=None, baseline_markers=()):

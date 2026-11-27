@@ -1,0 +1,23 @@
+{
+  "name": "extension-host core + desktop 1.0.2",
+  "design": "../desktop-pointer-media-schema-extension-host.graphql",
+  "management": "extended",
+  "comment": [
+    "This tree's headless host with this tree's desktop provider, release/schema 1.0.2, pointer and media beside window",
+    "layout, as its only bundled provider (`task conformance`). The desktop 1.0.1 profile",
+    "(core-desktop-window-layout-extension-host.json) stays as the record of the desktop provider that Koine 0.5.0",
+    "released, and the desktop 1.0.0 profile (core-desktop-extension-host.json) stays as it is, held by the",
+    "selection-aware host over the released desktop provider."
+  ],
+  "providers": [
+    {
+      "provider": "desktop",
+      "version": "1.0.2",
+      "schemaVersion": "1.0.2",
+      "state": "ACTIVE",
+      "origin": "BUNDLED",
+      "selection": "SELECTED",
+      "reason": null
+    }
+  ]
+}

@@ -54,16 +54,24 @@ import Testing
         let entries = try #require(management["capabilityDisclosures"] as? [[String: String]])
         #expect(
             entries.map { $0["capability"] } == ["desktop:control", "desktop:read", "workspace:control", "workspace:read"])
-        // Window layout widens both desktop capabilities, and an earlier grant gets the wider reach.
+        // Window layout and then pointer and media widen both desktop capabilities, and an earlier grant gets the
+        // wider reach.
         let desktopControl = try #require(entries.first { $0["capability"] == "desktop:control" }?["disclosure"])
+        #expect(desktopControl == CapabilityDisclosures.desktopControl)
         #expect(desktopControl.contains("Moves and resizes any window of an application with a Dock icon"))
         #expect(desktopControl.contains("moves the pointer to the centre of the display"))
-        #expect(desktopControl.contains("It never clicks or types."))
+        #expect(desktopControl.contains("Nudges the pointer one point to the right and back"))
+        #expect(desktopControl.contains("macOS sends them to the Now Playing app in Control Center"))
+        #expect(desktopControl.contains("play/pause can make macOS open Music and bring it to the front"))
+        #expect(desktopControl.contains("which change the output volume of this Mac or mute it"))
+        #expect(desktopControl.contains("It never clicks, and it never types into an app."))
         #expect(desktopControl.contains("turns off the enhanced accessibility setting"))
         #expect(desktopControl.contains("A grant from an earlier Koine version that holds desktop:control gets this reach too."))
         let desktopRead = try #require(entries.first { $0["capability"] == "desktop:read" }?["disclosure"])
         #expect(desktopRead.contains("Lists the windows of every application with a Dock icon on the current Space."))
+        #expect(desktopRead == CapabilityDisclosures.desktopRead)
         #expect(desktopRead.contains("A title can contain a document name, a web page title or a message subject."))
+        #expect(desktopRead.contains("and it reads the position of the pointer."))
         #expect(desktopRead.contains("It reads no window contents and takes no screenshots."))
         #expect(desktopRead.contains("A grant from an earlier Koine version that holds desktop:read gets this reach too."))
         let text = try #require(entries.first { $0["capability"] == "workspace:control" }?["disclosure"])

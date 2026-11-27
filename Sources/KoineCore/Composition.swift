@@ -57,15 +57,23 @@ public let workspaceNativeDisclosuresFeature = "workspace-native-disclosures-v1"
 /// state the window layout reach of `desktop:read` and `desktop:control` (`CapabilityDisclosures`;
 /// docs/specs/machine.md, "Compatibility and delivery"). The desktop 1.0.1 provider requires it, so a
 /// host that lacks it refuses that provider before it loads and keeps its bundled desktop selected.
+/// The 0.6.0 text still states the window layout reach, so this host still advertises it.
 public let desktopDisclosuresFeature = "desktop-disclosures-v1"
+
+/// The host feature that says this host's native grant views and its management disclosure catalogue
+/// state the pointer and media reach of `desktop:read` and `desktop:control`: the pointer position, the
+/// nudge, the media keys and the change of volume and mute (`CapabilityDisclosures`; docs/specs/machine.md,
+/// "Versions and host feature"). The desktop 1.0.2 provider requires it alone. A host that lacks it, such
+/// as Koine 0.5.0, refuses that provider before it loads and keeps its bundled desktop selected.
+public let desktopDisclosuresV2Feature = "desktop-disclosures-v2"
 
 /// Host features a provider may require: `additional-capabilities-v1`, carried by
 /// framework minor 1 (docs/specs/machine.md, "Additional capability requirements"),
-/// `first-party-selection-v1`, `workspace-native-disclosures-v1` and `desktop-disclosures-v1`,
-/// which need no framework minor.
+/// `first-party-selection-v1`, `workspace-native-disclosures-v1`, `desktop-disclosures-v1` and
+/// `desktop-disclosures-v2`, which need no framework minor.
 public let koineHostFeatures: Set<String> = [
     ProviderDescriptor.additionalCapabilitiesFeature, firstPartySelectionFeature, workspaceNativeDisclosuresFeature,
-    desktopDisclosuresFeature,
+    desktopDisclosuresFeature, desktopDisclosuresV2Feature,
 ]
 
 /// An identifier and prefix reserved to a shipped provider. Names beneath a

@@ -6,9 +6,10 @@ import KoineProviderAPI
 // build.sh generates `desktopSchemaSDL` from schema.graphql.
 
 /// The host feature that says the host's Settings window and management catalogue
-/// disclose the window layout reach of desktop:read and desktop:control. The core
-/// names the same feature as `desktopDisclosuresFeature`.
-let desktopDisclosuresFeature = "desktop-disclosures-v1"
+/// disclose the pointer and media reach of desktop:read and desktop:control. The core
+/// names the same feature as `desktopDisclosuresV2Feature`. The selection fixtures
+/// find the descriptor's feature list by the name of this constant, so the name stays.
+let desktopDisclosuresFeature = "desktop-disclosures-v2"
 
 @objc(KoineDesktopProviderFactory)
 final class DesktopProviderFactory: NSObject, ProviderFactory {
@@ -22,6 +23,8 @@ final class DesktopProviderFactory: NSObject, ProviderFactory {
             "DesktopWindowStacking": ["window", "order", "visibility"],
             "DesktopDisplay": ["ref", "frame", "visibleFrame", "primary"],
             "DesktopRect": ["x", "y", "width", "height"],
+            "DesktopPointer": ["location"],
+            "DesktopPoint": ["x", "y"],
         ]
         var fields = [
             ProviderFieldRegistration(
@@ -45,6 +48,9 @@ final class DesktopProviderFactory: NSObject, ProviderFactory {
             ),
             ProviderFieldRegistration(
                 coordinate: "Query.desktopWindowOnTop", resolverId: "windowOnTop", authority: .read
+            ),
+            ProviderFieldRegistration(
+                coordinate: "Query.desktopPointer", resolverId: "pointer", authority: .read
             ),
         ]
         for (type, names) in outputs {
@@ -77,8 +83,16 @@ final class DesktopProviderFactory: NSObject, ProviderFactory {
                 coordinate: "DesktopDisplayFocusReceipt.\($0)", resolverId: "parent.\($0)", authority: .control
             )
         }
-        // A host that cannot disclose the window layout reach refuses this release before it loads
-        // (docs/specs/machine.md, "Compatibility and delivery").
+        fields += [
+            ProviderFieldRegistration(
+                coordinate: "Mutation.desktopNudgePointer", resolverId: "nudgePointer", authority: .control
+            ),
+            ProviderFieldRegistration(
+                coordinate: "DesktopPointerNudgeReceipt.outcome", resolverId: "parent.outcome", authority: .control
+            ),
+        ]
+        // A host that cannot disclose the pointer and media reach refuses this release before it loads
+        // (docs/specs/machine.md, "Versions and host feature").
         return ProviderDescriptor(
             providerId: "desktop", graphQLPrefix: "Desktop", schemaSDL: desktopSchemaSDL,
             fields: fields, requiredFeatures: [desktopDisclosuresFeature]
@@ -144,6 +158,8 @@ final class DesktopProvider: Provider, @unchecked Sendable {
         if request.resolverId == "focusWindow" { return await focus(request.arguments["ref"]) }
         if request.resolverId == "focusDisplay" { return await focusDisplay(request.arguments["ref"]) }
         if request.resolverId == "displays" { return await displays() }
+        if request.resolverId == "pointer" { return await pointer() }
+        if request.resolverId == "nudgePointer" { return await nudgePointer() }
         if request.resolverId == "windowOnTop" {
             // The Dock bar rule needs the visible frames, which AppKit gives on the main actor, so they are
             // read before the queue turn. A failed display list leaves every Dock entry undecided.
@@ -987,6 +1003,62 @@ final class DesktopProvider: Provider, @unchecked Sendable {
         }
         moved.post(tap: .cghidEventTap)
         return nil
+    }
+
+    // MARK: Pointer
+
+    /// The pointer position in screen coordinates, from one AppKit reading, or nil when AppKit lists no screen.
+    /// Modaliser reads the position this way (`nudgeMouse` in its CursorLibrary.swift). NSScreen belongs to the
+    /// main actor, so the position and the screens are read together there. Neither needs Accessibility consent.
+    /// https://developer.apple.com/documentation/appkit/nsevent/mouselocation
+    /// https://developer.apple.com/documentation/appkit/nsscreen/screens
+    private static func readPointer() async -> ScreenPoint? {
+        await MainActor.run {
+            let location = NSEvent.mouseLocation
+            let height = NSScreen.screens.first.map { Double($0.frame.height) }
+            return PointerPosition.screenPoint(appKit: (location.x, location.y), firstScreenHeight: height)
+        }
+    }
+
+    /// `desktopPointer`: where the pointer is now. Null when Koine cannot establish the position.
+    private func pointer() async -> ResolutionResult {
+        guard let point = await Self.readPointer() else { return .success(.null) }
+        return .success(.object(["location": .object(["x": .double(point.x), "y": .double(point.y)])]))
+    }
+
+    /// `desktopNudgePointer`: one point to the right and back, with two mouse-moved events, as Modaliser's
+    /// `nudgeMouse` posts them. The steps and their order are `PointerNudge.perform`. It never clicks, and no
+    /// event presses a button. The receipt carries the outcome alone, because the position is read data.
+    private func nudgePointer() async -> ResolutionResult {
+        let result = await PointerNudge.perform(
+            consent: { Self.postingConsent() },
+            buttonHeld: { Self.pointerButtonHeld() },
+            start: { await Self.readPointer() },
+            create: { point in
+                CGEvent(
+                    mouseEventSource: nil, mouseType: .mouseMoved, mouseCursorPosition: CGPoint(x: point.x, y: point.y),
+                    mouseButton: .left)
+            },
+            post: { $0.post(tap: .cghidEventTap) }
+        )
+        switch result {
+        case .success(let outcome): return .success(.object(["outcome": .string(outcome.rawValue)]))
+        case .failure(.permission(let message)): return .failure(.osPermission("accessibility", message: message))
+        case .failure(.positionUnknown):
+            return failed("Koine cannot establish the pointer position, so it posted nothing.")
+        case .failure(.eventNotCreated):
+            return failed("macOS did not create the mouse-moved events, so Koine posted nothing.")
+        }
+    }
+
+    /// The two checks before Koine posts an event. Neither asks for consent: no operation calls
+    /// `CGRequestPostEventAccess`, which can prompt (docs/specs/machine.md, "Grants, consent and failures").
+    /// The SDK header CGEvent.h: CGPreflightPostEventAccess "checks whether the current process already has event
+    /// synthesizing access".
+    /// https://developer.apple.com/documentation/applicationservices/1460720-axisprocesstrusted
+    /// https://developer.apple.com/documentation/coregraphics/cgpreflightposteventaccess()
+    private static func postingConsent() -> PostingConsent {
+        PostingConsent(accessibility: AXIsProcessTrusted(), posting: CGPreflightPostEventAccess())
     }
 
     private var notADisplay: ResolutionResult { unavailable("The reference does not name a desktop display.") }

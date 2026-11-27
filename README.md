@@ -37,6 +37,10 @@ A client with `desktop:control` calls `desktopSetWindowFrame` to move and resize
 
 One VM run accepts them on one display, and the notarised 0.5.0 bundle passed it too ([record](docs/verification/desktop-window-layout-vm.md)). In the compatibility pairs, the released 0.4.1 host refuses desktop 1.0.1 ([record](docs/verification/desktop-window-layout-compatibility.md)).
 
+Koine 0.6.0 adds pointer and media. A client with `desktop:read` calls `desktopPointer` to read the pointer position in screen coordinates. A client with `desktop:control` calls `desktopNudgePointer` to move the pointer one point to the right and back, so that a hidden pointer becomes visible again. The nudge never clicks, and it posts nothing while a pointer button is held.
+
+The client draws its own highlight ring. The media keys are in the design, but this tree does not serve them yet. The [client guide](docs/client-guide.md#revealing-the-pointer) describes the two pointer operations.
+
 The workspace provider launches and activates applications. It opens URLs, documents and folders, and it reveals paths in Finder. Each of those actions needs `workspace:control` and `desktop:control`. 
 
 The provider also serves two reads. A client with `workspace:read` calls `workspaceSpecialLocations` to get the special locations that macOS names for the account of Koine, such as the home, Documents and Applications folders. The query reads values only. It lists no folder, opens no file and grants no access to a location it returns.
@@ -634,7 +638,7 @@ The workspace has pairs of its own ([record](docs/verification/workspace-compati
 
 The same 1.0.2 source runs again with `first-party-selection-v1` stated and approved per user, over the bundled 1.0.0. The same locations are probed through every pair, and the releases are compared. The task `task compat:workspace-subjects` runs the retained revision's own short-path suites, unedited, against the released 1.0.1 bundle.
 
-The desktop provider has pairs of its own too ([record](docs/verification/desktop-window-layout-compatibility.md)). This tree's desktop 1.0.1 requires `desktop-disclosures-v1`. This tree's host loads it and serves its profile. The released Koine 0.4.1 host (`task compat:released-0.4.1`) refuses it before load, both bundled and as an approved per-user update, and names the missing feature. In the per-user case, the bundled desktop 1.0.0 of 0.4.1 stays selected.
+The desktop provider has pairs of its own too. This tree's desktop 1.0.2 requires `desktop-disclosures-v2`. This tree's host loads it and serves its profile. The released Koine 0.4.1 host (`task compat:released-0.4.1`) refuses it before load, both bundled and as an approved per-user update, and names the missing feature. In the per-user case, the bundled desktop 1.0.0 of 0.4.1 stays selected. The [record](docs/verification/desktop-window-layout-compatibility.md) holds a run with desktop 1.0.1, which required `desktop-disclosures-v1`.
 
 <!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 

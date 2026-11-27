@@ -1217,17 +1217,17 @@ new profiles sit beside the earlier ones, as each workspace release did:
 
 | Profile | Design SDL | Served by |
 |---|---|---|
-| `core-desktop-window-layout-extension-host` | [`desktop-window-layout-schema-extension-host.graphql`](../design/desktop-window-layout-schema-extension-host.graphql) | The headless host of this tree with desktop 1.0.1 alone, in `task conformance` |
-| `core-desktop-window-layout-workspace-extension-host` | [`desktop-window-layout-workspace-schema-extension-host.graphql`](../design/desktop-window-layout-workspace-schema-extension-host.graphql) | The signed application with desktop 1.0.1 and workspace 1.0.2 |
+| `core-desktop-window-layout-extension-host` | [`desktop-window-layout-schema-extension-host.graphql`](../design/desktop-window-layout-schema-extension-host.graphql) | The headless host of Koine 0.5.0 with desktop 1.0.1 alone |
+| `core-desktop-window-layout-workspace-extension-host` | [`desktop-window-layout-workspace-schema-extension-host.graphql`](../design/desktop-window-layout-workspace-schema-extension-host.graphql) | The signed Koine 0.5.0 with desktop 1.0.1 and workspace 1.0.2 |
 
-Each composed file holds the window layout design restricted to the served
-roots and the types that they reach, word for word. A test holds that
-restriction. A root that lands later moves from the design into these files
-unchanged.
+Each composed file holds the complete window layout design, word for word. A
+test holds it. The two files and the two profiles stay as the record of desktop
+1.0.1, which Koine 0.5.0 released. Desktop 1.0.2 serves every window layout
+definition unchanged, and its own profiles are in "Versions and host feature".
 
-The selection checks build a desktop update, release 1.1.0, from the source of
-this tree. So that update serves desktop schema 1.0.1. The update profiles pin
-schema 1.0.1 for it and use the window layout compositions as their design.
+In Koine 0.5.0, the selection checks built a desktop update that served desktop
+schema 1.0.1. The update profiles now pin desktop schema 1.0.2, as "Versions and
+host feature" says.
 
 The desktop 1.0.1 provider requires the host feature `desktop-disclosures-v1`. A
 host advertises it only when its Settings window and its management catalogue
@@ -1250,8 +1250,10 @@ two control operations to the desktop provider. The design is desktop release
 [example operations](../design/desktop-pointer-media-operations.graphql). Every
 desktop 1.0.1 definition keeps its words, and no released type gains a field.
 
-This tree does not serve the design yet. The served desktop provider is still
-release 1.0.1.
+This tree serves desktop release 1.0.2 with the pointer position and the
+pointer nudge. It does not serve the media keys yet. The served SDL,
+`Providers/DesktopProvider/schema.graphql`, is the design without
+`desktopPostMediaKey` and the two types that only that root reaches.
 
 The client owns the highlight ring: its drawing, its size and its timing. Koine
 supplies the pointer position and the nudge, and it draws nothing. The client
@@ -1411,7 +1413,13 @@ design files and two new profiles sit beside them, as for window layout. The
 headless host of this tree with desktop 1.0.2 alone serves the first profile,
 `core-desktop-pointer-media-extension-host`. The signed application with desktop
 1.0.2 and workspace 1.0.2 serves the second,
-`core-desktop-pointer-media-workspace-extension-host`.
+`core-desktop-pointer-media-workspace-extension-host`. `task conformance` holds
+the headless host to the first profile.
+
+Each composed file holds the pointer and media design restricted to the served
+roots and the types that they reach, word for word. A test holds that
+restriction. Until the media keys land, the files leave out
+`desktopPostMediaKey`, `DesktopMediaKey` and `DesktopMediaKeyReceipt`.
 
 The selection checks build their desktop update, release 1.1.0, from this tree.
 So that update serves desktop schema 1.0.2, and the update profiles pin it.
@@ -2144,13 +2152,13 @@ selected updates, and the explicit rejected ones for an update a host refuses, a
 
 | Profile | Design SDL | Candidates pinned |
 | --- | --- | --- |
-| `core-desktop-update-extension-host` | [`desktop-window-layout-schema-extension-host.graphql`](../design/desktop-window-layout-schema-extension-host.graphql), because the update is built from this tree | Desktop 1.1.0 / schema 1.0.1 is `PER_USER`, `SELECTED` and `ACTIVE`. The bundled 1.0.0 is the desktop provider of the released revision, compiled independently, and it is `superseded-candidate`. |
-| `core-desktop-workspace-desktop-update-extension-host` | [`desktop-window-layout-workspace-schema-extension-host.graphql`](../design/desktop-window-layout-workspace-schema-extension-host.graphql), the desktop 1.0.1 and workspace 1.0.2 composition | A mixed release. Desktop 1.1.0 / schema 1.0.1 is selected over its superseded bundled 1.0.1. Workspace 1.0.2 / schema 1.0.2 is bundled and selected. |
-| `core-desktop-workspace-workspace-update-extension-host` | The same | The other mixed release. Desktop 1.0.1 is bundled and selected. Workspace 1.1.0 / schema 1.0.2 is selected over its superseded bundled 1.0.2. |
+| `core-desktop-update-extension-host` | [`desktop-pointer-media-schema-extension-host.graphql`](../design/desktop-pointer-media-schema-extension-host.graphql), because the update is built from this tree | Desktop 1.1.0 / schema 1.0.2 is `PER_USER`, `SELECTED` and `ACTIVE`. The bundled 1.0.0 is the desktop provider of the released revision, compiled independently, and it is `superseded-candidate`. |
+| `core-desktop-workspace-desktop-update-extension-host` | [`desktop-pointer-media-workspace-schema-extension-host.graphql`](../design/desktop-pointer-media-workspace-schema-extension-host.graphql), the desktop 1.0.2 and workspace 1.0.2 composition | A mixed release. Desktop 1.1.0 / schema 1.0.2 is selected over its superseded bundled 1.0.2. Workspace 1.0.2 / schema 1.0.2 is bundled and selected. |
+| `core-desktop-workspace-workspace-update-extension-host` | The same | The other mixed release. Desktop 1.0.2 is bundled and selected. Workspace 1.1.0 / schema 1.0.2 is selected over its superseded bundled 1.0.2. |
 | `core-desktop-workspace-update-extension-host` | The same | Both providers are updated, each over its superseded bundled release. |
-| `core-desktop-workspace-update-refused-extension-host` | The same | Each 1.1.0 update is `INCOMPATIBLE` / `selection-feature-required` and `NOT_SELECTED`. Each bundled release, desktop 1.0.1 and workspace 1.0.2, is `ACTIVE` and `SELECTED` with `selected-with-refusals`. |
+| `core-desktop-workspace-update-refused-extension-host` | The same | Each 1.1.0 update is `INCOMPATIBLE` / `selection-feature-required` and `NOT_SELECTED`. Each bundled release, desktop 1.0.2 and workspace 1.0.2, is `ACTIVE` and `SELECTED` with `selected-with-refusals`. |
 | `core-desktop-workspace-repair-per-user-extension-host` | [`desktop-workspace-repair-schema-extension-host.graphql`](../design/desktop-workspace-repair-schema-extension-host.graphql), the workspace 1.0.1 composition | the retained workspace 1.0.0 bundled, and the repair's 1.0.1 / schema 1.0.1 approved per user stating `first-party-selection-v1`: 1.0.1 `PER_USER` and `SELECTED`, the bundled 1.0.0 `NOT_SELECTED` as `superseded-candidate`; served by the retained revision's host and this tree's, not by `task selection:updates` ([workspace-compatibility.md](../verification/workspace-compatibility.md)) |
-| `core-desktop-old-host-update-refused` | [`desktop-schema.graphql`](../design/desktop-schema.graphql), the original core + desktop contract | The released host serves it (`management: baseline`). Desktop 1.0.0 is `ACTIVE`, and a newly published desktop 1.1.0 / schema 1.0.1 is `INCOMPATIBLE` before it loads. The refusal names `desktop-disclosures-v1` and `first-party-selection-v1`. |
+| `core-desktop-old-host-update-refused` | [`desktop-schema.graphql`](../design/desktop-schema.graphql), the original core + desktop contract | The released host serves it (`management: baseline`). Desktop 1.0.0 is `ACTIVE`, and a newly published desktop 1.1.0 / schema 1.0.2 is `INCOMPATIBLE` before it loads. The refusal names `desktop-disclosures-v2` and `first-party-selection-v1`. |
 
 They are served by signed purpose-built hosts, headless, around the real providers and checked by
 `task selection:updates`, not `task conformance`; each is held with its own controls, red against the wrong

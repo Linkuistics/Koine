@@ -1,21 +1,21 @@
 {
   "name": "extension-host core + desktop + workspace, a newer workspace release beside the desktop baseline",
-  "design": "../desktop-window-layout-workspace-schema-extension-host.graphql",
+  "design": "../desktop-pointer-media-workspace-schema-extension-host.graphql",
   "management": "extended",
   "comment": [
     "Held by scripts/verify-selection-updates.py (`task selection:updates`) against a signed purpose-built host that",
     "is the signed application in everything selection reads, headless: the shipped provider catalogue around the",
     "real providers of this tree (and, for the desktop-only profile, around the RELEASED desktop provider as the",
     "designated baseline), with newer releases of the same sources installed per user. A selected update is built from",
-    "this tree's source, so it serves this tree's schemas: the design SDL is the desktop 1.0.1 and workspace 1.0.2 composition (docs/design/desktop-window-layout-workspace-schema-extension-host.graphql). The pins are what tell the binaries apart, because an identical",
+    "this tree's source, so it serves this tree's schemas: the design SDL is the desktop 1.0.2 and workspace 1.0.2 composition (docs/design/desktop-pointer-media-workspace-schema-extension-host.graphql). The pins are what tell the binaries apart, because an identical",
     "digest cannot prove which binary ran. A row that is missing or extra fails the profile.",
     "A mixed release: the two providers are from different releases, built from source that shares the kernel start-instant helper."
   ],
   "providers": [
     {
       "provider": "desktop",
-      "version": "1.0.1",
-      "schemaVersion": "1.0.1",
+      "version": "1.0.2",
+      "schemaVersion": "1.0.2",
       "state": "ACTIVE",
       "origin": "BUNDLED",
       "selection": "SELECTED",

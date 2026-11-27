@@ -9,10 +9,10 @@
 #                                      its own desktop provider bundled; preserved
 #                                      unchanged, and served by the host that predates
 #                                      the candidate fields
-#   core-desktop-window-layout-extension-host
-#                                      this tree's host with the desktop provider 1.0.1
+#   core-desktop-pointer-media-extension-host
+#                                      this tree's host with the desktop provider 1.0.2
 #                                      as its only bundled provider
-#   core-desktop-window-layout-workspace-extension-host
+#   core-desktop-pointer-media-workspace-extension-host
 #                                      the signed Koine.app, in a clean TestAnyware VM,
 #                                      with desktop and workspace bundled
 #                                      (scripts/vm-verify-conformance.sh)
@@ -42,8 +42,8 @@ scripts/build-compat-pairs.sh "${CONFIGURATION}" >/dev/null
 
 for kind in old-host extension-host; do
     profile="docs/design/profiles/core-desktop-${kind}.json"
-    # This tree's desktop provider is 1.0.1; the desktop 1.0.0 profile stays for the released provider.
-    [ "${kind}" = old-host ] || profile="docs/design/profiles/core-desktop-window-layout-${kind}.json"
+    # This tree's desktop provider is 1.0.2. The desktop 1.0.0 profile stays for the released provider.
+    [ "${kind}" = old-host ] || profile="docs/design/profiles/core-desktop-pointer-media-${kind}.json"
     step "Serve the $(jq -r .name "${profile}") contract from a ${kind}"
     python3 scripts/conformance-capture-headless.py "${kind}" "${OUT}/${kind}" "${CONFIGURATION}"
     conformance_controls "${profile}" "${OUT}/${kind}"
