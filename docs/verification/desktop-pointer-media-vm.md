@@ -134,6 +134,29 @@ keeps both transcripts.
   and Music played through it. The run now chooses "Not Now" in that sheet and
   checks that the sheet is gone.
 
+## Release checks on the notarised bundle
+
+Koine 0.6.0 shipped as the notarised bundle with CDHash
+`92f25cc9dfeff4870904b3db32faeb95159571a7`. Apple accepted submission
+`4244d9d7-8c00-4bbf-8260-551a69c4a031`, and the ticket is stapled. The zip of the
+GitHub release has the SHA-256
+`14f7d94cd400bf38d50c3fda9013f8ecb0ebdc01d9a252e634becdc53a410600`. The six
+release checks ran on that bundle on 2026-11-27, in clones of macOS 27.2.1
+(26B131).
+
+| Check | Result |
+|---|---|
+| `task app:vm-verify-pointer-media` | Every step above passed again ([pointer-media-20261127T160604.log](desktop-pointer-media/pointer-media-20261127T160604.log)). Koine and the witness read the same pointer position at two points, and Music changed its state for each key. |
+| `task app:vm-verify-release` | Passed (`release-20261127T160606.log`). |
+| `task app:vm-verify-grant-workflows` | Passed (`grant-workflows-20261127T161114.log`). |
+| `task app:vm-verify-notarized` | Passed (`notarized-20261127T161207.log`). The bundled desktop provider 1.0.2 was `ACTIVE` under quarantine. |
+| `task app:vm-verify-disclosure` | Passed (`disclosure-20261127T161457.log`). |
+| `task app:vm-verify-menu-bar` | Passed on the first attempt (`menu-bar-20261127T161620.log`). |
+
+After each run, the bundle had the same CDHash. The transcripts other than the
+pointer and media transcript stay in `.build/vm-verify` on the host that ran
+them.
+
 ## What this does not claim
 
 - **That a hidden pointer becomes visible again.** No witness in the VM can see
@@ -143,17 +166,18 @@ keeps both transcripts.
   points through VNC also left it false. So the call cannot tell a reveal from
   no reveal. A screen capture of the guest holds no pointer, because the
   framebuffer does not draw it. The run proves the two mouse-moved events and
-  the pointer at its start, which is the mechanism of Modaliser.
+  the pointer at its start, which is the mechanism of Modaliser. Issue #29
+  asks for a witness of the reveal.
 - **The refusal while a pointer button is held.** The L tests cover it. The run
-  holds no button.
+  holds no button. Issue #30 asks for a VM run of the refusal.
 - **Another player.** The run uses Music alone. Another player decides for
-  itself what previous does and whether it honours keys 19 and 20.
+  itself what previous does and whether it honours keys 19 and 20. Issue
+  #31 asks for a run with another player.
 - **A second display.** The VM has one display. Issue #23 holds the checks on a
   second display.
 - **An upgrade from an installed 0.5.0.** A restart stands in for it, as in the
-  window layout precedent.
+  window layout precedent. Issue #32 asks for a run of the upgrade.
 - **A Mac whose policy denies event posting.** The run has posting access. A
   managed Mac can allow Accessibility and deny `PostEvent`, and then Koine
-  reports `os-permission`. The run does not check that case.
-- **The notarised bundle.** The release leaf repeats the run on the notarised
-  bundle.
+  reports `os-permission`. The run does not check that case. Issue #33 asks
+  for a run of it.

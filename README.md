@@ -43,6 +43,8 @@ A client with `desktop:control` also calls `desktopPostMediaKey` to post one of 
 
 The client draws its own highlight ring. The [client guide](docs/client-guide.md#revealing-the-pointer) describes the two pointer operations, and its [media key section](docs/client-guide.md#posting-media-keys) describes the keys.
 
+One VM run accepts pointer and media with Music as the player, and the notarised 0.6.0 bundle passed it too ([record](docs/verification/desktop-pointer-media-vm.md)). In the compatibility pairs, the released 0.5.0 host refuses desktop 1.0.2 ([record](docs/verification/desktop-pointer-media-compatibility.md)).
+
 The workspace provider launches and activates applications. It opens URLs, documents and folders, and it reveals paths in Finder. Each of those actions needs `workspace:control` and `desktop:control`. 
 
 The provider also serves two reads. A client with `workspace:read` calls `workspaceSpecialLocations` to get the special locations that macOS names for the account of Koine, such as the home, Documents and Applications folders. The query reads values only. It lists no folder, opens no file and grants no access to a location it returns.
@@ -57,9 +59,9 @@ Koine recorded the acceptance of this selection before 0.3.0. That acceptance is
 established, except for the parts that need the certificate of a second
 Developer ID team.
 
-Apple notarised Koine 0.5.0. Its six release checks passed in VMs on macOS
+Apple notarised Koine 0.6.0. Its six release checks passed in VMs on macOS
 27.2.1 on Apple Silicon that enforce Gatekeeper
-([record](docs/verification/desktop-window-layout-vm.md#release-checks-on-the-notarised-bundle)).
+([record](docs/verification/desktop-pointer-media-vm.md#release-checks-on-the-notarised-bundle)).
 The checks of 0.4.0 passed on macOS 27.0.1. The one supported platform is
 macOS 26. The runs on macOS 26.5 rest on 0.3.0, and no later run repeated them. The
 "Acceptance status" section of the spec lists what is established, with its
