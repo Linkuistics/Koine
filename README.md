@@ -1,33 +1,34 @@
 # Koine
 
-<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
-
 A koine is the common language that forms where many dialects meet. Koine is
 the Machine server: a standalone application for discovering, querying and
 commanding the desktop and applications through a fully introspectable
-GraphQL API. Local clients connect over loopback HTTP using capabilities
-granted by Koine.
+GraphQL API. Local clients connect over loopback HTTP, with capabilities that
+Koine grants.
 
-Koine is one resident, per-user macOS application. It holds the OS
-permissions, and contains the server, its providers and a native settings
-window behind a menu bar item. A local client finds it through an endpoint descriptor, presents a bearer
-credential backed by a live grant, and uses the GraphQL API to resolve a running
-application, list its windows (those it has seen on other Spaces included) and
-focus exactly the one chosen. Grants last until explicitly revoked, and a
-revoked credential is refused on its next request, keep-alive or not. A client
-gets one of two ways: the user creates it in the settings window, or the client
-requests one and the user approves it there, with no credential typed, pasted or
-shown. Management — grants, requests, provider and permission status — is served
-through the same GraphQL API, under the `koine:manage` capability.
+Koine is one resident macOS application for each user. It holds the OS
+permissions. It contains the server, its providers and a native settings window
+behind a menu bar item.
 
-Providers are native Swift extensions that contribute to the GraphQL schema.
-A shared resilient Swift framework lets compatible providers and the server
-be upgraded independently where the host's loading policy admits the identity.
-Its published Swift contract is the stable binary
-interface; a TypeScript hosting layer is not required. The desktop and
-workspace providers are bundled.
+A local client finds Koine through an endpoint descriptor, and it presents a
+bearer credential that a live grant backs. Then it uses the GraphQL API. For
+example, it resolves a running application and lists its windows, those that
+Koine saw on other Spaces included. Then it focuses exactly the window that it
+chose. A grant lasts until someone revokes it. Koine refuses a revoked
+credential on its next request, on a keep-alive connection or not.
 
-<!-- tc: on -->
+A client gets a grant in one of two ways. The user creates it in the settings
+window. Or the client requests one and the user approves it there, with no
+credential typed, pasted or shown. Koine serves management through the same
+GraphQL API, under the `koine:manage` capability. Management covers grants,
+requests, provider status and permission status.
+
+Providers are native Swift extensions that contribute to the GraphQL schema. A
+shared resilient Swift framework lets Koine upgrade compatible providers and the
+server independently, where the loading policy of the host admits the identity.
+The published Swift contract of the framework is the stable binary interface.
+Koine needs no TypeScript hosting layer. The desktop and workspace providers are
+bundled.
 
 The desktop provider reads applications and windows, and it focuses a window.
 
