@@ -16,11 +16,18 @@ import Testing
 /// provider, for a process that is not an app, and for the Koine process itself. In the test runner, the Koine process
 /// is this test process, and Koine recognises it by its process identifier. Route A keeps even a mistaken send inside
 /// the one named process. The sends themselves are the VM acceptance (`app-input-acceptance-k6`).
+///
+/// **No test switches a Space.** A test asks for a Space switch only where Koine refuses before the provider reads
+/// anything: without both control capabilities, with a revoked grant, and with a number outside 1 to 9.
 @Suite struct InputProviderTests {
     static let send = """
         mutation($target: Reference!) {
           inputSendKeystroke(target: $target, key: T, modifiers: [COMMAND, SHIFT]) { outcome } }
         """
+
+    static let switchSpace = "mutation($n: Int!) { inputSwitchSpace(number: $n) { outcome } }"
+
+    static let switchControls = ["input:control", "desktop:control"]
 
     static let captured = """
         query($process: InputProcessIdentity!) {
@@ -117,9 +124,9 @@ import Testing
 
     // MARK: The served contribution
 
-    /// The bundle serves the design for the roots of this leaf, verbatim: the design body without the Space switch
-    /// root, its receipt and its outcome enum, which `space-switching-k5` adds.
-    @Test func theServedSDLIsTheDesignWithoutTheSpaceSwitch() throws {
+    /// The bundle serves the whole design, verbatim: the design body after its header comment, the Space switch
+    /// included.
+    @Test func theServedSDLIsTheDesign() throws {
         let served = try String(
             contentsOf: WorkspaceProviderTests.repository.appending(path: "Providers/InputProvider/schema.graphql"),
             encoding: .utf8)
@@ -129,16 +136,8 @@ import Testing
         func body(_ text: String) -> [String] {
             text.components(separatedBy: "\n\n").dropFirst().map { $0.trimmingCharacters(in: .newlines) }
         }
-        let spaceSwitch = ["type InputSpaceSwitchReceipt {", "enum InputSpaceSwitchOutcome"]
-        let expected = body(design).filter { block in !spaceSwitch.contains { block.contains($0) } }.map { block in
-            guard block.hasPrefix("extend type Mutation") else { return block }
-            var lines = block.components(separatedBy: "\n")
-            let root = try! #require(lines.firstIndex { $0.hasPrefix("  inputSwitchSpace(") })
-            lines.removeSubrange((root - 1)...root)
-            return lines.joined(separator: "\n")
-        }
-        #expect(body(served) == expected)
-        #expect(!served.contains("inputSwitchSpace") && !served.contains("InputSpaceSwitch"))
+        #expect(body(served) == body(design))
+        #expect(served.contains("  inputSwitchSpace(number: Int!): InputSpaceSwitchReceipt"))
     }
 
     /// The served descriptions state the reach and the limits of a chord, and the read type states its capability.
@@ -150,7 +149,9 @@ import Testing
             { m: __type(name: "Mutation") { fields { name description } } \
             q: __type(name: "Query") { fields { name description } } \
             target: __type(name: "InputTarget") { description } \
-            receipt: __type(name: "InputKeystrokeReceipt") { description fields { name } } }
+            receipt: __type(name: "InputKeystrokeReceipt") { description fields { name } } \
+            switched: __type(name: "InputSpaceSwitchReceipt") { description fields { name } } \
+            outcomes: __type(name: "InputSpaceSwitchOutcome") { enumValues { name } } }
             """,
             authorization: "Bearer \(anyone)"
         )
@@ -167,7 +168,18 @@ import Testing
         ] {
             #expect(send.contains(phrase), "\(phrase)")
         }
-        #expect(!mutations.contains { $0["name"] as? String == "inputSwitchSpace" })
+        let switchSpace = try #require(
+            mutations.first { $0["name"] as? String == "inputSwitchSpace" }?["description"] as? String)
+        #expect(switchSpace.hasPrefix("input:control AND desktop:control. Switches to this Mission Control desktop"))
+        for phrase in [
+            "Koine posts Control and the digit at the HID event tap",
+            "It posts nothing when the shortcut is off or uses another key or other modifiers.",
+            "or while Koine is the front app.",
+            "the front app can receive Control and the digit",
+            "The keyboard tap of a client sees these events, and their source process is Koine.",
+        ] {
+            #expect(switchSpace.contains(phrase), "\(phrase)")
+        }
         let queries = (reply.data?["q"] as? [String: Any])?["fields"] as? [[String: Any]] ?? []
         for name in ["inputFrontTarget", "inputTarget"] {
             let description = queries.first { $0["name"] as? String == name }?["description"] as? String
@@ -178,6 +190,14 @@ import Testing
         let receipt = try #require(reply.data?["receipt"] as? [String: Any])
         #expect((receipt["description"] as? String)?.hasPrefix("Control-authorized output. It says only whether Koine sent the chord.") == true)
         #expect((receipt["fields"] as? [[String: Any]])?.compactMap { $0["name"] as? String } == ["outcome"])
+        let switched = try #require(reply.data?["switched"] as? [String: Any])
+        #expect((switched["description"] as? String)?.hasPrefix(
+            "Control-authorized output under input:control AND desktop:control. It says only whether Koine posted") == true)
+        #expect((switched["fields"] as? [[String: Any]])?.compactMap { $0["name"] as? String } == ["outcome"])
+        let outcomes = (reply.data?["outcomes"] as? [String: Any])?["enumValues"] as? [[String: Any]]
+        #expect(
+            outcomes?.compactMap { $0["name"] as? String }
+                == ["POSTED", "SHORTCUT_OFF", "SHORTCUT_REMAPPED", "NO_SUCH_DESKTOP", "PROTECTED_FRONT_APP"])
         await harness.stop()
     }
 
@@ -275,6 +295,72 @@ import Testing
         let ref = Self.reference(getpid(), start: try Self.startMicroseconds(getpid()))
         let reply = try await harness.post(Self.send, variables: ["target": ref], authorization: "Bearer \(credential)")
         #expect(reply.status == 401)
+        await harness.stop()
+    }
+
+    // MARK: Authority of the Space switch
+
+    /// A Space switch needs input:control and desktop:control. Either control alone, read grants and an empty grant
+    /// are refused in preflight, before the provider is asked, so the test switches nothing. The error carries the
+    /// whole ordered set and names the first member that the grant lacks.
+    @Test(arguments: [
+        (["input:control"], "desktop:control"),
+        (["desktop:control"], "input:control"),
+        (["input:read", "desktop:read"], "input:control"),
+        (["input:read", "input:control", "desktop:read"], "desktop:control"),
+        ([String](), "input:control"),
+    ])
+    func aSpaceSwitchWithoutBothControlsIsRefusedBeforeTheProviderIsAsked(
+        capabilities: [String], missing: String
+    ) async throws {
+        let harness = try await DesktopProviderTests.harness()
+        let client = try await harness.consoleGrant(label: "client", capabilities: capabilities)
+        let reply = try await harness.post(Self.switchSpace, variables: ["n": 2], authorization: "Bearer \(client)")
+        #expect(reply.data == nil, "preflight refuses the whole request; nothing ran")
+        let error = try #require(reply.errors.first)
+        #expect(error["path"] as? [String] == ["inputSwitchSpace"])
+        let extensions = try Self.extensions(reply)
+        #expect(extensions["kind"] as? String == "permission")
+        #expect(extensions["permissionClass"] as? String == "capability")
+        #expect(extensions["phase"] as? String == "authorization")
+        #expect(extensions["requiredCapability"] as? String == missing)
+        #expect(extensions["requiredCapabilities"] as? [String] == Self.switchControls)
+        await harness.stop()
+    }
+
+    /// A revoked grant with both controls authenticates no longer: its Space switch is a 401, and the provider is not
+    /// asked.
+    @Test func aRevokedGrantCannotSwitchASpace() async throws {
+        let harness = try await DesktopProviderTests.harness()
+        let manager = try await harness.consoleGrant(label: "manager", capabilities: ["koine:manage"])
+        let created = try await harness.post(
+            Harness.createGrant, variables: ["label": "client", "capabilities": Self.switchControls],
+            authorization: "Bearer \(manager)")
+        let grant = try #require(created.data?["koineCreateGrant"] as? [String: Any])
+        let credential = try #require(grant["credential"] as? String)
+        let id = try #require((grant["grant"] as? [String: Any])?["grantId"] as? String)
+        let revoked = try await harness.post(
+            "mutation($id: ID!) { koineRevokeGrant(grantId: $id) { grantId } }", variables: ["id": id],
+            authorization: "Bearer \(manager)")
+        #expect(revoked.errors.isEmpty)
+        let reply = try await harness.post(Self.switchSpace, variables: ["n": 2], authorization: "Bearer \(credential)")
+        #expect(reply.status == 401)
+        await harness.stop()
+    }
+
+    /// A number outside 1 to 9 is an invalid argument, an error with no kind, at the field's path. The provider
+    /// decides it before the consent checks and before any read, so it holds on any host and switches nothing.
+    @Test(arguments: [0, 10, -3])
+    func aNumberOutsideOneToNineIsAnInvalidArgument(number: Int) async throws {
+        let harness = try await DesktopProviderTests.harness()
+        let client = try await harness.consoleGrant(label: "client", capabilities: Self.switchControls)
+        let reply = try await harness.post(
+            Self.switchSpace, variables: ["n": number], authorization: "Bearer \(client)")
+        #expect(reply.data?["inputSwitchSpace"] is NSNull)
+        let error = try #require(reply.errors.first)
+        #expect(error["path"] as? [String] == ["inputSwitchSpace"])
+        #expect((error["extensions"] as? [String: Any])?["kind"] == nil)
+        #expect((error["message"] as? String)?.contains("from 1 to 9") == true)
         await harness.stop()
     }
 

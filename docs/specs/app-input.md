@@ -1,7 +1,7 @@
 # App input
 
 **This design delivers app input in Koine 0.7.0. This tree serves target
-capture and chords, and it does not serve Space switching yet.** App input is
+capture, chords and Space switching.** App input is
 the first input provider, release 1.0.0 with schema 1.0.0. It captures a target
 app, and it sends one chord to that app, in front or in the background. It also
 switches between the desktops of Mission Control. The design is
@@ -261,12 +261,12 @@ the character, the key code and the modifier mask. Koine compares the entry
 more strictly than the probe did:
 
 - An absent entry acts as a disabled one. An absent entry or a disabled one
-  gives `SHORTCUT_OFF`.
+  gives `SHORTCUT_OFF`. Koine reads no parameter of a disabled entry.
 - The key code must be the key code of the digit in the key table above. The
   mask must equal 262144, which is Control and no other bit. Otherwise the
   outcome is `SHORTCUT_REMAPPED`. Koine ignores the character.
-- An entry in another form, such as one without three integer parameters, is
-  `failed`.
+- An entry in another form is `failed`. Examples are an entry whose `enabled`
+  is not a boolean, and an entry without three integer parameters.
 
 The mask admits no other bit, because it can hold more modifiers than the four
 that Koine posts. On Antony's Mac, the entries 7 and 8 hold the mask 8650752, which is Control
@@ -319,6 +319,10 @@ The provider acts in this order:
    Koine posts nothing.
 7. It posts the four events in order at the HID event tap, with no check
    between them. The outcome is `POSTED`.
+
+Steps 2 to 7 run in one turn of the main thread. AppKit updates the front app
+only between such turns, so the front app that step 6 reads is the front app
+at the posts.
 
 With the shortcut on and the Mission Control desktop present, macOS takes the digit and
 switches the Space. The front app then receives Control down and up only. The
@@ -412,8 +416,8 @@ covers the posting route, the shortcut read and the count of Mission Control des
   application serves the conformance profile
   `core-desktop-input-workspace-extension-host`. Its design is the
   [composed schema](../design/desktop-input-workspace-schema-extension-host.graphql).
-  This tree composes target capture and chords there, and `space-switching-k5`
-  adds the Space switch. A test holds the served composition to that file.
+  This tree composes target capture, chords and the Space switch there. A
+  test holds the served composition to that file.
 
 The `input:read` and `input:control` disclosures are in the machine contract,
 under [capability disclosures](machine.md#capability-disclosures).
@@ -445,14 +449,19 @@ The seams are the four that Antony agreed for this grove:
   that the root brief lists. A scheduled check on Antony's Mac sends one
   harmless chord each to Dia and Telegram.
 
-The L and G seams pass for target capture and chords.
+The L and G seams pass for target capture, chords and Space switching.
 [InputProviderLogicTests](../../Tests/InputProviderLogicTests) hold the key
 table, the events of a chord, the input reference, the protection of Koine and
-the order of the steps. [InputProviderTests](../../Tests/KoineServerTests/InputProviderTests.swift)
+the order of the steps. They also hold the Space-switch checks from plain
+shortcut entries and plain SkyLight replies, for one display and for two.
+
+[InputProviderTests](../../Tests/KoineServerTests/InputProviderTests.swift)
 hold the authority, the descriptions, the served disclosures and the captures.
 They send a chord only where Koine refuses before it sends. On a host without
-Accessibility consent, each such send reports `os-permission` first. The
-L seam and the G seam of Space switching come with `space-switching-k5`.
+Accessibility consent, each such send reports `os-permission` first. They ask
+for a Space switch only where Koine refuses before it reads anything. Those
+cases are a grant without both control capabilities, a revoked grant and a
+number outside 1 to 9.
 
 ## Out of scope
 

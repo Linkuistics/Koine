@@ -528,6 +528,31 @@ The outcome `SENT` says only that Koine sent every event. It does not say what t
 
 A chord to a terminal can type and run commands, and a chord can answer a consent or security prompt of macOS. So ask for `input:control` only when your client needs it, and send only the chords of your rows. A keyboard tap of your client at the session level does not see the chord, but a tap for the target process does.
 
+## Switching Spaces
+
+Koine 0.7.0 also serves the Space switch of the [app input spec](specs/app-input.md#space-switching). It switches to Mission Control desktop 1 to 9, as Modaliser's "Switch Space" row does. A Koine 0.6.0 host does not serve it, so introspect the schema before you use the [operation](design/input-operations.graphql).
+
+Call `inputSwitchSpace` under `input:control` and `desktop:control`. A grant that lacks either capability cannot switch a Space. Its error carries `requiredCapabilities` as `["input:control", "desktop:control"]`.
+
+```graphql
+mutation SwitchSpace($number: Int!) {
+  inputSwitchSpace(number: $number) { outcome }
+}
+```
+
+Koine posts Control and the digit at the HID event tap, as the keyboard does for the shortcut "Switch to Desktop N". It does not send them to an app. Before it posts, it reads the shortcut setting and counts the Mission Control desktops, and it changes neither. Each outcome except `POSTED` means that Koine posted nothing:
+
+- `SHORTCUT_OFF`: the shortcut "Switch to Desktop N" is off or absent.
+- `SHORTCUT_REMAPPED`: the shortcut uses another key, or modifiers other than Control alone.
+- `NO_SUCH_DESKTOP`: there are fewer Mission Control desktops than the number.
+- `PROTECTED_FRONT_APP`: Koine is the front app.
+
+The outcome `POSTED` does not say that the Space changed. A number outside 1 to 9 is an invalid argument. Without Accessibility consent or event posting access, the switch raises a permission error that names `accessibility`. A shortcut setting in a form that Koine does not read, or a count that Koine cannot make, raises `failed`.
+
+The four events pass the session event tap, so a keyboard tap of your client sees them. Their source process, `kCGEventSourceUnixProcessID`, is Koine. When your client holds keys back in its own mode, pass these events, or end that mode before you call the operation.
+
+Three cases can send Control and the digit to the front app instead. The shortcut setting or the desktops can change in the instant before macOS reads the chord. macOS may not have applied a shortcut setting yet. With several displays, macOS can number the desktops in another way than Koine, which counts them in the order that the window server reports.
+
 ## Searching for applications and files
 
 Raw filesystem search belongs to the client. The client chooses its traversal engine, permissions, filtering, ordering and budgets. The [native discovery design](specs/workspace-search.md) supplies special locations. It also supplies named catalogues of applications and System Settings on macOS 26+ Apple Silicon. **Koine 0.4.0 serves `workspaceSpecialLocations` and `workspaceApplications`, and nothing else of that design.** The rest of this section describes the full design, which later releases serve.

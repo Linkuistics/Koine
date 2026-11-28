@@ -27,9 +27,19 @@ final class InputProviderFactory: NSObject, ProviderFactory {
                 coordinate: "InputKeystrokeReceipt.outcome", resolverId: "parent.outcome", authority: .control
             ),
         ]
-        // Input 1.0.0 names the feature in its manifest, because its Space switch declares desktop:control as an
-        // additional requirement (docs/specs/app-input.md, "Versions and composition"). A descriptor can declare the
-        // feature before a field uses it, so the manifest and the descriptor agree from the first cut.
+        // The Space switch and its receipt need input:control and desktop:control (docs/specs/app-input.md,
+        // "Authority, consent and failures"). The additional requirement is why the descriptor declares the feature.
+        let desktopControl = [ProviderCapabilityRequirement(providerId: "desktop", kind: .control)]
+        fields += [
+            ProviderFieldRegistration(
+                coordinate: "Mutation.inputSwitchSpace", resolverId: "switchSpace", authority: .control,
+                additionalRequirements: desktopControl
+            ),
+            ProviderFieldRegistration(
+                coordinate: "InputSpaceSwitchReceipt.outcome", resolverId: "parent.outcome", authority: .control,
+                additionalRequirements: desktopControl
+            ),
+        ]
         return ProviderDescriptor(
             providerId: "input", graphQLPrefix: "Input", schemaSDL: inputSchemaSDL, fields: fields,
             requiredFeatures: [ProviderDescriptor.additionalCapabilitiesFeature]
@@ -61,6 +71,7 @@ final class InputProvider: Provider, Sendable {
             return sendKeystroke(
                 request.arguments["target"], key: request.arguments["key"], modifiers: request.arguments["modifiers"]
             )
+        case "switchSpace": return await switchSpace(request.arguments["number"])
         default: return .failure(ProviderFailure(kind: .unknownResolver, message: "No such resolver."))
         }
     }
@@ -199,6 +210,48 @@ final class InputProvider: Provider, Sendable {
             events.append(event)
         }
         return events
+    }
+
+    // MARK: Space switching
+
+    /// `inputSwitchSpace`: Control and a digit at the HID event tap, so that macOS catches the shortcut "Switch to
+    /// Desktop N". It never uses `CGEventPostToPid`, which skips the system shortcuts. The steps and their order are
+    /// `SpaceSwitch.perform`. They run in one turn of the main actor, so AppKit cannot update the front app between
+    /// the check of the front app and the posts.
+    /// https://developer.apple.com/documentation/coregraphics/cgevent/post(tap:)
+    private func switchSpace(_ argument: ProviderValue?) async -> ResolutionResult {
+        guard case .int(let number)? = argument, (1...9).contains(number) else {
+            return invalid("number must be a Mission Control desktop from 1 to 9.")
+        }
+        let koine = Self.koine
+        let result = await MainActor.run {
+            SpaceSwitch.perform(
+                number: number, koine: koine,
+                consent: { Self.postingConsent() },
+                shortcuts: { symbolicHotKeys() },
+                desktops: { managedDisplaySpaces() },
+                create: { Self.events($0) },
+                front: {
+                    NSWorkspace.shared.frontmostApplication.map {
+                        FrontApp(pid: $0.processIdentifier, bundleIdentifier: $0.bundleIdentifier)
+                    }
+                },
+                post: { $0.post(tap: .cghidEventTap) }
+            )
+        }
+        switch result {
+        case .success(let outcome): return .success(.object(["outcome": .string(outcome.rawValue)]))
+        case .failure(.invalidNumber): return invalid("number must be a Mission Control desktop from 1 to 9.")
+        case .failure(.permission(let message)): return .failure(.osPermission("accessibility", message: message))
+        case .failure(.shortcutUnreadable):
+            return failed(
+                "The shortcut setting for Mission Control desktop \(number) has a form that Koine does not read, "
+                    + "so Koine posted nothing.")
+        case .failure(.desktopsUncountable):
+            return failed("Koine could not count the Mission Control desktops, so it posted nothing.")
+        case .failure(.eventNotCreated):
+            return failed("macOS did not create the keyboard events, so Koine posted nothing.")
+        }
     }
 
     /// The two checks before Koine posts an event, as the media keys make them. Neither asks for consent: no

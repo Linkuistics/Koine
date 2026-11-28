@@ -353,8 +353,14 @@ import Testing
                 ("InputTarget.ref", .read), ("InputTarget.name", .read), ("InputTarget.bundleIdentifier", .read),
                 ("InputTarget.protection", .read),
                 ("Mutation.inputSendKeystroke", .control), ("InputKeystrokeReceipt.outcome", .control),
+                ("Mutation.inputSwitchSpace", .control), ("InputSpaceSwitchReceipt.outcome", .control),
             ],
-            origin: .bundled, requiredFeatures: [ProviderDescriptor.additionalCapabilitiesFeature]
+            // The additional requirement makes the stub declare additional-capabilities-v1, as the bundle does.
+            origin: .bundled,
+            additional: [
+                "Mutation.inputSwitchSpace": [ProviderCapabilityRequirement(providerId: "desktop", kind: .control)],
+                "InputSpaceSwitchReceipt.outcome": [ProviderCapabilityRequirement(providerId: "desktop", kind: .control)],
+            ]
         )
     }
 
@@ -532,7 +538,7 @@ import Testing
 
     // MARK: core + desktop + input + workspace
 
-    /// What the signed Koine 0.7.0 serves while app input serves target capture and the keystroke operation: the
+    /// What the signed Koine 0.7.0 serves, with target capture, the keystroke operation and the Space switch: the
     /// bundles' own SDL, composed with the core through the engine, is the composed design file, declared order
     /// included. Input composes between desktop and workspace, because shipped identities compose in identifier order.
     @Test func theServedCoreDesktopInputWorkspaceSchemaIsItsDesignContract() async throws {
@@ -561,7 +567,8 @@ import Testing
             Set(found.map(\.coordinate)) == [
                 "Query.inputFrontTarget", "Query.inputTarget", "Mutation.inputSendKeystroke", "InputProcessStart",
                 "InputProcessIdentity", "InputTarget", "InputTargetProtection", "InputKey", "InputModifier",
-                "InputKeystrokeReceipt", "InputKeystrokeOutcome",
+                "InputKeystrokeReceipt", "InputKeystrokeOutcome", "Mutation.inputSwitchSpace",
+                "InputSpaceSwitchReceipt", "InputSpaceSwitchOutcome",
             ],
             Comment(rawValue: found.map(\.report).joined(separator: "\n")))
         #expect(found.allSatisfy { $0.aspect == .presence })

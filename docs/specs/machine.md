@@ -2104,8 +2104,8 @@ earlier version gets the wider reach, and the text says so.
 App input adds the input capabilities in Koine 0.7.0, as the
 [app input spec](app-input.md) designs them. This tree serves the text below
 for each of them, in `CapabilityDisclosures`. All three native grant views and
-management use the same entries. The `input:control` text already states the
-Space switch, which `space-switching-k5` serves. Every earlier host keeps the input slot
+management use the same entries. The `input:control` text also states the
+Space switch, which this tree serves. Every earlier host keeps the input slot
 reserved-only and serves no input capability. So no earlier grant gets this
 reach, and the input provider needs no disclosure feature of the host.
 

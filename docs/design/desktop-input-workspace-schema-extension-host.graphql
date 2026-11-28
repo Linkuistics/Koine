@@ -1,12 +1,12 @@
 """
 The koine-desktop/1 schema as composed from the core and the three bundled providers, desktop 1.0.2,
-input 1.0.0 and workspace 1.0.2, on an extension host: what the signed Koine 0.7.0 serves while app
-input serves target capture and the keystroke operation. It is
+input 1.0.0 and workspace 1.0.2, on an extension host. The signed Koine 0.7.0 serves it, with target
+capture, the keystroke operation and the Space switch of app input. It is
 `desktop-pointer-media-workspace-schema-extension-host.graphql` (the Koine 0.6.0 composition, which
-stays as it is) with the input part of `input-schema.graphql` added, without the Space switch root,
-its receipt and its outcome enum. The desktop and workspace parts are unchanged and verbatim. Root
-fields are declared in composition order: the core's own, then desktop's, then input's, then
-workspace's, because the schema digest is taken over a canonical text that keeps declared order.
+stays as it is) with the input part of `input-schema.graphql` added. The desktop and workspace parts
+are unchanged and verbatim. Root fields are declared in composition order: the core's own, then
+desktop's, then input's, then workspace's, because the schema digest is taken over a canonical text
+that keeps declared order.
 """
 schema { query: Query mutation: Mutation }
 
@@ -98,6 +98,8 @@ type Mutation {
   desktopPostMediaKey(key: DesktopMediaKey!): DesktopMediaKeyReceipt
   "input:control. Sends one chord to this target, whether or not it is the front app. Koine never brings the target to the front. Koine posts every event into the event stream of the target process. So no other app receives the chord, and a keyboard tap at the session level does not see it. A tap that a process creates for the target process does see it. An app in the background can ignore a chord, act on a window behind other apps, or come to the front. A chord sent to a terminal can type and run commands, and a chord can answer a consent or security prompt of macOS. A stale or wrong-kind reference raises unavailable."
   inputSendKeystroke(target: Reference!, key: InputKey!, modifiers: [InputModifier!]!): InputKeystrokeReceipt
+  "input:control AND desktop:control. Switches to this Mission Control desktop, from 1 to 9. Koine posts Control and the digit at the HID event tap, as the keyboard does for the shortcut \"Switch to Desktop N\". First it reads the shortcut setting and the Mission Control desktops, and it changes neither. It posts nothing when the shortcut is off or uses another key or other modifiers. It also posts nothing when the Mission Control desktop does not exist, or while Koine is the front app. If the shortcut setting or the Mission Control desktops change in the instant before macOS reads the chord, the front app can receive Control and the digit. It can also receive them when macOS has not applied a shortcut setting yet. Koine counts the desktops of every display in order, and with several displays macOS can number them another way, which has the same effect. The keyboard tap of a client sees these events, and their source process is Koine. A number outside 1 to 9 is an invalid argument."
+  inputSwitchSpace(number: Int!): InputSpaceSwitchReceipt
   """Requires workspace:control AND desktop:control. Launch or request reactivation of any registered installed app, not only configured shortcuts. Do not force a new instance; reuse a running copy unless applicationPath constrains the installation. Native acknowledgment is not a window-focus guarantee. Missing app is typed dependency absence; acknowledgment wait ends after three seconds or earlier cancellation, possibly after effects begin, with failed and no replay. The core request deadline may answer first. Koine resolves applicationPath and every registered copy it compares component by component, and copies compare by the device and inode that resolution finds. APPLICATION_NOT_INSTALLED keeps its meaning: no registration for the identifier, an applicationPath or unconstrained registered location that resolution finds missing, a present non-application, or a present constrained copy that is not registered; a whole-path ELOOP, ENAMETOOLONG or nil never establishes it, and a cycle or impossible name at an application location is failed. A constrained launch compares registered copies in order until one matches: one found missing or different is skipped; one whose resolution fails before the match is failed. A chosen or selected application location whose literal, link-expanded or resolved spelling is PATH_MAX (1,024) bytes or more, not counting its NUL, is failed before its metadata or any request: v1 does not hand such locations to applications. Link-budget exhaustion and unacquired native facts are failed. Established no-identifier remains mismatch for a named selector."""
   workspaceLaunchApplication(application: WorkspaceApplicationInput!): WorkspaceOpenResult
   """Requires workspace:control AND desktop:control. Accept the ASCII RFC 3986 section 3 URI grammar, including optional query/fragment, with HTTP(S) scheme, host, valid percent escapes and no credentials/whitespace/backslashes/control characters; Unicode requires caller encoding and IDNA host labels. Preserve bytes without repair. Resolve by scheme alone and address that default browser explicitly; no universal-link app dispatch or suggestions proxy. The browser may act on the page. Missing handler is typed dependency absence; wait ends after three seconds or earlier cancellation, possibly after effects begin, with failed and no replay. The core deadline may answer first."""
@@ -337,6 +339,15 @@ type InputKeystrokeReceipt {
 
 "SENT: Koine posted every event of the chord into the event stream of the target. PROTECTED_TARGET: the target is Koine itself, so Koine sent nothing."
 enum InputKeystrokeOutcome { SENT PROTECTED_TARGET }
+
+"Control-authorized output under input:control AND desktop:control. It says only whether Koine posted Control and the digit. It does not say that the Space changed."
+type InputSpaceSwitchReceipt {
+  "What the operation did."
+  outcome: InputSpaceSwitchOutcome!
+}
+
+"POSTED: Koine posted Control and the digit at the HID event tap. SHORTCUT_OFF: the shortcut \"Switch to Desktop N\" is off or absent. SHORTCUT_REMAPPED: the shortcut uses another key or other modifiers. NO_SUCH_DESKTOP: there are fewer Mission Control desktops than the number. PROTECTED_FRONT_APP: Koine is the front app. For every outcome except POSTED, Koine posted nothing."
+enum InputSpaceSwitchOutcome { POSTED SHORTCUT_OFF SHORTCUT_REMAPPED NO_SUCH_DESKTOP PROTECTED_FRONT_APP }
 
 """A registered application bundle present at inspection, even if in the Trash. Requires a bundle identifier; bundle-less programs have no named-selector route. No executable, argv, environment or shell input."""
 input WorkspaceApplicationInput {
