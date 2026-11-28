@@ -818,9 +818,10 @@ credentials uses this UI, not an unauthenticated reset endpoint.
 
 The workflow extension keeps that direct boundary. It refuses Koine's own
 process as a target of input, menus and other operations that drive UI. The
-refusal also covers preparation and session-directed paths. The extension also
-refuses recognised consent and security UI. Providers check these obligations
-before effects. They claim neither that arbitrary application control is a
+refusal also covers preparation and session-directed paths. Every other app is
+a target under the capabilities, system consent and security UI included, and
+each disclosure states that reach. Providers check these obligations before
+effects. They claim neither that arbitrary application control is a
 sandbox against software of the same user, nor that public native APIs remove
 every targeting race.
 
@@ -2084,7 +2085,7 @@ reach, and the input provider needs no disclosure feature of the host.
 | Capability | Disclosure in Koine 0.7.0 |
 | --- | --- |
 | `input:read` | Reads which app is the front app, with its name and bundle identifier. Reads the same facts for an app process that a client names. It reads no window titles and no window contents, and it sends no keys. Sending a chord needs input:control. |
-| `input:control` | Sends a chord, one key with modifier keys such as Command-L, to a chosen app, in front or in the background. The app acts as if the user pressed the keys. So a chord sent to a terminal can type and run commands as the user. A chord can also make any app do what its keyboard shortcuts do, such as close a window or send a message. It can change a setting in System Settings, and it can answer a consent, password or security prompt of macOS. It types no text string. Koine never brings an app to the front, and it never sends a chord to itself. An app in the background can ignore a chord, act on a window behind other apps, or come to the front. No other app receives the chord. With desktop:control too, it switches to Mission Control desktop 1 to 9 by posting Control and the digit, as the keyboard does. It first checks that the shortcut is on and that the Mission Control desktop exists. The shortcut setting or the Mission Control desktops can change in the instant before macOS reads the chord. Then the front app can receive Control and the digit instead. |
+| `input:control` | Sends a chord, one key with modifier keys such as Command-L, to a chosen app, in front or in the background. The app acts as if the user pressed the keys. So a chord sent to a terminal can type and run commands as the user. A chord can also make any app do what its keyboard shortcuts do, such as close a window or send a message. It can change a setting in System Settings, and it can answer a consent, password or security prompt of macOS. It types no text string. Koine never brings an app to the front, and it never sends a chord to itself. An app in the background can ignore a chord, act on a window behind other apps, or come to the front. No other app receives the chord. With desktop:control too, it switches to Mission Control desktop 1 to 9 by posting Control and the digit, as the keyboard does. It first checks that the shortcut is on and that the Mission Control desktop exists. The shortcut setting or the Mission Control desktops can change in the instant before macOS reads the chord. Then the front app can receive Control and the digit instead. The front app can also receive them when macOS has not applied a shortcut setting yet. It can receive them too when macOS numbers the desktops of several displays differently from Koine. |
 
 <!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 

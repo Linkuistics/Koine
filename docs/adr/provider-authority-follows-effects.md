@@ -26,18 +26,22 @@ their existing meaning. The change adds no new capability class and no new
 `koine-desktop/1` error kind.
 
 For application-targeted operations, input and menus each resolve a captured
-process incarnation independently, and each issues its own references. Before they issue a
-reference and before an effect, they refuse Koine's own process and recognised
-consent or security UI. Native UI control must not become a second route to
-the local-console principal. Input and menus never decode the remainder of a
-desktop reference. They never focus a window to prepare an ordinary input or
-menu action.
+process incarnation independently, and each issues its own references. Before
+they issue a reference, and again before an effect, they refuse Koine's own
+process. Native UI control must not become a second route to the
+local-console principal. Every other application is a target under the
+capabilities, system consent and security UI included. Antony ruled this in
+the design of app input, and the grant disclosures state that reach.
 
-When a client supplies the reference of another provider, the existing owner
-check of the same class still applies. No exemption makes a desktop control
-reference merely an input target. Menus must discover and check each
-window-bound menu selection itself. When menus cannot identify the selected target, it
-refuses. It does not retarget by title.
+Input and menus never decode the remainder of a desktop reference. They never
+focus a window to prepare an ordinary input or menu action. When a client
+supplies the reference of another provider, the existing owner check of the
+same class still applies. No exemption makes a desktop control reference
+merely an input target.
+
+Menus must discover and check each window-bound menu selection itself. When
+menus cannot identify the selected target, it refuses. It does not retarget by
+title.
 
 The separation permits menu authority without input authority, and either one
 without desktop control. Workspace launch, open and reveal also require desktop
@@ -79,6 +83,13 @@ model together. The six domains have useful private state and native adapters
 of their own. Retain the two existing classes. Reconsider named capabilities if
 real users need a subdivision within a domain. Examples are search without all
 workspace reads, and pointer control without window control.
+
+**A list of protected system prompts** would refuse consent, password and
+security UI as targets of input and menus. Antony rejected it in the design of
+app input, because he wants every application available under the
+capabilities. The grant disclosures state that reach instead. Koine still
+refuses itself, because a chord or a menu action in its Settings window could
+approve a grant.
 
 **Provider boundaries alone, with no additional requirements**, fail when one
 operation crosses effect boundaries. A launch can activate an application, and

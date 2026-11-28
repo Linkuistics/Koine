@@ -54,10 +54,23 @@ no requirement asks for the name.
 Koine sends an app chord in another way, by per-process posting. It posts each
 event with `CGEventPostToPid` into the event stream of the input target, after
 the event taps of the session. The macOS SDK header documents this call as the
-way to route an event to a chosen app. So no other app can receive the chord,
-no system shortcut catches it, and the keyboard tap of another process does not
-see it. The [route probe](../verification/keystroke-route-vm.md) established
-these properties for five apps in a VM.
+way to route an event to a chosen app. So the front app does not receive the
+chord, no system shortcut catches it, and a session-level keyboard tap does
+not see it. The [route probe](../verification/keystroke-route-vm.md)
+established these properties for five apps in a VM.
+
+The header also says that the event passes through the taps for the target
+process. A process with the needed access can create such a tap with
+`CGEventTapCreateForPid`, and that tap sees the chord. The call names the
+target by its process identifier alone, without the start instant. So the
+checks before the posts bind them only while macOS keeps that process
+identifier for the target. macOS issues process identifiers in sequence, so it
+issues one again only after a whole cycle of the range.
+
+Koine accepts that limit, as it accepts process reuse for Accessibility below.
+The SDK marks `CGEventPostToPSN`, the other per-process call, as deprecated in
+favour of `CGEventPostToPid`. So no supported Core Graphics call binds a chord
+to a start instant.
 
 Modaliser posts its chords at the HID event tap. There a chord goes to the app
 that is in front when macOS reads it. That app can differ from the one that

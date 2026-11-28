@@ -12,7 +12,7 @@ participant "Input OR menus\nprovider" as Provider
 Client -> Client: capture process PID + kernel start instant
 Client -> Host: query own-provider target/state
 Host -> Host: check own-provider read
-Host -> Provider: resolve captured incarnation\nrefuse Koine / recognized security UI
+Host -> Provider: resolve captured incarnation\nrefuse Koine
 Provider --> Host: own opaque references + state / explicit failure
 Host --> Client: publish after live read check
 Client -> Client: derive choices from returned state
@@ -21,8 +21,10 @@ User -> Client: choose
 Client -> Host: mutation with unchanged own-provider reference
 Host -> Host: preflight all selected actions\nthen live dispatch admission
 Host -> Provider: admitted own-provider control operation
-alt protected / stale target or lost consent
+alt stale target or lost consent
 Provider --> Host: unavailable / permission
+else target is Koine
+Provider --> Host: refusal outcome, nothing sent
 else valid under accepted native limits
 Provider -> Provider: act without reclaiming desktop focus
 Provider --> Host: control-authorized receipt / failed

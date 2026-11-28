@@ -56,7 +56,7 @@
       "renderer": "svg",
       "source": "space-switch-flow.d2",
       "rendered": "space-switch-flow.svg",
-      "caption": "Agreed with Antony: the SkyLight count across all displays at step 4. Koine reads the shortcut entry and counts the desktops, and it changes neither. It refuses each case in which macOS would pass Control and the digit to the front app, and it refuses while Koine is in front. The race in the instant before macOS reads the chord remains."
+      "caption": "Agreed with Antony: the SkyLight count across all displays at step 4. Koine reads the shortcut entry and counts the desktops, and it changes neither. It refuses each case where these reads find that macOS would pass Control and the digit to the front app. It also refuses while Koine is in front. Three stated limits remain: the race before macOS reads the chord, a setting that macOS has not applied, and the numbering of several displays."
     },
     {
       "id": "routes",
@@ -65,7 +65,7 @@
       "renderer": "svg",
       "source": "routes.d2",
       "rendered": "routes.svg",
-      "caption": "Proposed. An app chord enters the target's event stream after the session event tap, so no other app and no client tap sees it. A Space switch must pass the session event tap, so that macOS can catch the shortcut. The route probe of keystroke-route-k2 established both routes in a VM."
+      "caption": "Proposed. An app chord enters the target's event stream after the session event tap. So no other app receives it, and no tap at the session level sees it, a client's tap included. A tap for the target process does see it. A Space switch must pass the session event tap, so that macOS can catch the shortcut. The route probe of keystroke-route-k2 established both routes in a VM."
     },
     {
       "id": "authority",

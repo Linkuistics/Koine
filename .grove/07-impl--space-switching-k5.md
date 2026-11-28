@@ -33,6 +33,9 @@ G tests.
   and work.
 - L tests cover the checks from plain shortcut settings and plain lists of
   Spaces with their types, for one display and for two.
+- The shortcut mask must equal 262144, which is Control and no other bit, as
+  `app-input-k9` decided. An L test gives `SHORTCUT_REMAPPED` for a mask with
+  the Fn bit.
 - G tests cover the authority. Input control alone cannot switch a Space, and
   desktop control alone cannot switch one either. No G test switches a Space.
 - `swift test` passes, and the documents that the design leaf named describe

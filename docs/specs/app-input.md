@@ -35,14 +35,18 @@ LLM harness, which controls windows that are not in front.
 A client captures a target under `input:read`. Then it sends a chord to that
 target under `input:control`, whether or not the target is the front app.
 Koine posts the events of the chord into the event stream of the target
-process with `CGEventPostToPid`. So a chord can reach only the target,
-whichever app is in front.
+process with `CGEventPostToPid`. So a chord reaches only the target,
+whichever app is in front. The one exception needs macOS to reuse the process
+identifier of the target during the posts, as
+[Sending a chord](#sending-a-chord) explains.
 
 Space switching is a separate operation under `input:control` and
 `desktop:control`. Koine posts Control and the digit at the HID event tap,
 because macOS must catch the chord there. Before it posts, it reads the
 shortcut setting and the Mission Control desktops. It refuses each case where
-the chord would reach the front app instead.
+these reads show that the chord would reach the front app instead. The
+[limits of Space switching](#limits-of-space-switching) name the cases that the
+reads cannot show.
 
 Each refusal that sends nothing is an outcome of the receipt, as
 `POINTER_BUTTON_HELD` is for the pointer nudge. A provider error carries a
@@ -169,8 +173,23 @@ The provider acts in this order:
 
 Every check comes before the first event, so no refusal can leave a modifier
 down in the target. `CGEventPostToPid` reports no result, so Koine
-cannot detect an event that macOS drops. If the target ends during the posts,
-the remaining events reach no process.
+cannot detect an event that macOS drops.
+
+`CGEventPostToPid` names the process by its process identifier alone, without
+the start instant. So the checks of steps 2 and 3 bind the posts only while
+macOS keeps that process identifier for the target. If the target ends during
+the posts, the remaining events go to a process identifier that no process
+holds. They reach another process only if macOS first issues that identifier
+to a new process.
+
+macOS issues process identifiers in sequence, and it issues one again only
+after it cycles through the whole range. In the
+[PID-recycling diagnostic](../verification/retained-ax-binding.md), PID 781 came
+back after 99,413 allocations. So between the checks and the last post, a new process
+can take the identifier only if macOS cycles through the whole range. Koine
+accepts this limit, as the
+[public Accessibility decision](../adr/desktop-automation-uses-public-accessibility.md)
+accepts process reuse.
 
 Koine never brings the target to the front, and it never focuses a window
 first. A client that wants another app in front uses a desktop operation under
@@ -181,7 +200,7 @@ chord can make the app open or focus a window, or come to the front.
 
 A chord posted with `CGEventPostToPid` enters the event stream of the target
 process, after the session event tap. The
-[route probe](../verification/keystroke-route-vm.md) established three
+[route probe](../verification/keystroke-route-vm.md) established four
 consequences in a VM:
 
 - Safari, Finder, Zed, Zotero and Obsidian acted on such a chord while in front.
@@ -189,14 +208,25 @@ consequences in a VM:
   the front. The probe sent no other chord to an app in the background.
 - A Control-2 sent this way switched no Space. So a chord skips the system
   shortcuts, and the operation needs no list of refused chords.
-- A keyboard tap at the session level did not see the chord. So no other
-  process sees the chord, a client's tap included.
+- A keyboard tap at the session level did not see the chord. So a tap at the
+  session level, a client's tap included, does not see it.
+
+The probe created no tap for the target process. The macOS SDK header says
+that a per-process post enters before the taps for the target process, and
+that the event passes through them. A process with the needed access can
+create such a tap with `CGEventTapCreateForPid`. So a tap for the target
+process sees the chord, whichever process created that tap.
 
 ### Limits of a chord
 
 - **An app in the background acts in its own way.** It can ignore a chord,
-  act on a window behind other apps, or come to the front. No other app
-  receives the chord.
+  act on a window behind other apps, or come to the front. The front app does
+  not receive the chord instead.
+- **A tap for the target process sees the chord.** Only a tap at the session
+  level misses it.
+- **A reused process identifier.** If macOS issues the identifier of the
+  target to a new process during the posts, that process can receive the rest
+  of the chord.
 - **The keys are US ANSI positions.** Another keyboard layout can give the
   app another character.
 - **The receipt says only that Koine sent the chord.** It does not say what
@@ -220,17 +250,23 @@ writes the domain.
 The call is public. Apple does not document the domain or its entries, so the
 [route probe](../verification/keystroke-route-vm.md#how-koine-can-read-the-shortcut-for-control-and-a-digit)
 is the evidence for its form. An entry holds `enabled` and three parameters:
-the character, the key code and the modifier mask. Koine compares the entry as
-the probe compared it:
+the character, the key code and the modifier mask. Koine compares the entry
+more strictly than the probe did:
 
 - An absent entry acts as a disabled one. An absent entry or a disabled one
   gives `SHORTCUT_OFF`.
-- The key code must be the key code of the digit in the key table above. Of the
-  shift, control, option and command bits of the mask, Control alone must be
-  set. Otherwise the outcome is `SHORTCUT_REMAPPED`. Koine ignores the
-  character.
+- The key code must be the key code of the digit in the key table above. The
+  mask must equal 262144, which is Control and no other bit. Otherwise the
+  outcome is `SHORTCUT_REMAPPED`. Koine ignores the character.
 - An entry in another form, such as one without three integer parameters, is
   `failed`.
+
+The mask admits no other bit, because it can hold more modifiers than the four
+that Koine posts. On Antony's Mac, the entries 7 and 8 hold the mask 8650752, which is Control
+with the Fn bit 8388608. Koine posts no Fn flag. No evidence shows that macOS
+ignores such a bit when it matches a shortcut. So Koine refuses the entry,
+rather than post a chord that macOS may pass to the front app. In the probe
+and on Antony's Mac, each enabled entry from 118 holds the mask 262144 exactly.
 
 ### The Mission Control desktops
 
@@ -380,7 +416,8 @@ The seams are the four that Antony agreed for this grove:
   input logic. Nothing sends an event. It covers the events of a chord in
   order, the key table and the set of modifiers. It also covers the refusal
   of Koine and the Space-switch checks, from plain shortcut entries and plain
-  lists of Spaces with their types.
+  lists of Spaces with their types. A mask with an extra bit, such as the Fn
+  bit, gives `SHORTCUT_REMAPPED`.
 - **G.** `KoineServerTests` load the real input bundle and query it over
   loopback. Read-only and desktop-only grants cannot send a chord. Input
   control alone cannot switch a Space. A denied or revoked grant refuses. The
