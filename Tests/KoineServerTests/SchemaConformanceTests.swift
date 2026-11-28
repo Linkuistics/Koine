@@ -343,6 +343,21 @@ import Testing
         )
     }
 
+    /// The input bundle's SDL with the coordinates its descriptor registers. The real descriptor lives in the
+    /// bundle's own sources, so a stub carries it here; the schema depends only on the coordinates being complete.
+    static func inputStub() throws -> Stub {
+        Stub(
+            id: "input", prefix: "Input", sdl: try repositoryFile("Providers/InputProvider/schema.graphql"),
+            fields: [
+                ("Query.inputFrontTarget", .read), ("Query.inputTarget", .read),
+                ("InputTarget.ref", .read), ("InputTarget.name", .read), ("InputTarget.bundleIdentifier", .read),
+                ("InputTarget.protection", .read),
+                ("Mutation.inputSendKeystroke", .control), ("InputKeystrokeReceipt.outcome", .control),
+            ],
+            origin: .bundled, requiredFeatures: [ProviderDescriptor.additionalCapabilitiesFeature]
+        )
+    }
+
     /// The workspace bundle's real descriptor and the SDL it ships, with a
     /// provider that is never asked anything: only the schema is composed here.
     private static func workspaceProvider() throws -> ActiveProvider {
@@ -513,6 +528,44 @@ import Testing
         ).differences()
         #expect(found.isEmpty, Comment(rawValue: found.map(\.report).joined(separator: "\n")))
         #expect(try CanonicalSchemaText.digest(ofSDL: design) == digest)
+    }
+
+    // MARK: core + desktop + input + workspace
+
+    /// What the signed Koine 0.7.0 serves while app input serves target capture and the keystroke operation: the
+    /// bundles' own SDL, composed with the core through the engine, is the composed design file, declared order
+    /// included. Input composes between desktop and workspace, because shipped identities compose in identifier order.
+    @Test func theServedCoreDesktopInputWorkspaceSchemaIsItsDesignContract() async throws {
+        let design = try Self.repositoryFile("docs/design/desktop-input-workspace-schema-extension-host.graphql")
+        let (canonical, digest) = try await composed(
+            [Self.desktopStub().active, Self.inputStub().active, Self.workspaceProvider()])
+        let found = SchemaComparison(
+            served: try parse(source: canonical),
+            design: try parse(source: try CanonicalSchemaText.canonicalText(ofSDL: design))
+        ).differences()
+        #expect(found.isEmpty, Comment(rawValue: found.map(\.report).joined(separator: "\n")))
+        #expect(try CanonicalSchemaText.digest(ofSDL: design) == digest)
+    }
+
+    /// Against the Koine 0.6.0 composition, the served schema adds exactly the input coordinates.
+    @Test func inputAddsExactlyItsCoordinatesToThe060Composition() async throws {
+        let shipped = try Self.repositoryFile(
+            "docs/design/desktop-pointer-media-workspace-schema-extension-host.graphql")
+        let (canonical, digest) = try await composed(
+            [Self.desktopStub().active, Self.inputStub().active, Self.workspaceProvider()])
+        let found = SchemaComparison(
+            served: try parse(source: canonical),
+            design: try parse(source: try CanonicalSchemaText.canonicalText(ofSDL: shipped))
+        ).differences()
+        #expect(
+            Set(found.map(\.coordinate)) == [
+                "Query.inputFrontTarget", "Query.inputTarget", "Mutation.inputSendKeystroke", "InputProcessStart",
+                "InputProcessIdentity", "InputTarget", "InputTargetProtection", "InputKey", "InputModifier",
+                "InputKeystrokeReceipt", "InputKeystrokeOutcome",
+            ],
+            Comment(rawValue: found.map(\.report).joined(separator: "\n")))
+        #expect(found.allSatisfy { $0.aspect == .presence })
+        #expect(try CanonicalSchemaText.digest(ofSDL: shipped) != digest)
     }
 
     /// The coordinates the first cut of discovery adds to the workspace contribution: the two query roots and

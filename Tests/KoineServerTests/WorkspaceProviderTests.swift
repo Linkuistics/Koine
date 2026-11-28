@@ -67,7 +67,8 @@ import Testing
             #expect(row["version"] as? String == "1.0.2" && row["schemaVersion"] as? String == "1.0.2", "\(identity)")
             #expect(row["reason"] is NSNull, "a healthy shipped row carries no reason")
         }
-        #expect(rows.count == 2, "no reserved-only or missing row: \(rows)")
+        // Input 1.0.0 loads beside them, and InputProviderTests holds its row.
+        #expect(rows.count == 3, "no reserved-only or missing row: \(rows)")
         await harness.stop()
     }
 

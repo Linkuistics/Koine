@@ -1761,8 +1761,13 @@ An unsigned or ad-hoc development host has no team. It admits no shipped
 candidate (`host-team-unavailable`), but the reservations and core management
 stay. Test hosts must supply real signed identities for trust acceptance. A
 reserved-only entry cannot load from either root. A host release enables the
-entry when that provider ships. The first extension host enables desktop and
-workspace and reserves the rest.
+entry when that provider ships.
+
+The first extension host enables desktop and workspace and reserves the rest.
+Koine 0.7.0 also enables input, with input
+release 1.0.0 and schema 1.0.0 in the bundle `Input.koineprovider`. Its
+signing identifier is `dev.antony.Koine.provider.input`. So Koine 0.7.0 keeps
+`menus`, `iterm` and `herdr` reserved-only.
 
 Only the exact pair of identifier and prefix can claim a shipped slot. Koine
 refuses only the claimant in each of these cases:
@@ -2097,9 +2102,10 @@ earlier version gets the wider reach, and the text says so.
 | `desktop:control` | Focuses a window. Moves and resizes any window of an application with a Dock icon. Focuses a display: Koine raises the front window there, activates its application and moves the pointer to the centre of the display. Nudges the pointer one point to the right and back, so that a hidden pointer becomes visible again. Posts the media keys play/pause, next and previous. macOS sends them to the Now Playing app in Control Center, which is often not the front app. When no app is Now Playing, play/pause can make macOS open Music and bring it to the front. Posts volume up, volume down and mute, which change the output volume of this Mac or mute it. It never clicks, and it never types into an app. While it moves a window, it turns off the enhanced accessibility setting of the application, and then turns it on again. A grant from an earlier Koine version that holds desktop:control gets this reach too. |
 
 App input adds the input capabilities in Koine 0.7.0, as the
-[app input spec](app-input.md) designs them. The core serves a disclosure for
-each of them in `CapabilityDisclosures`. All three native grant views and
-management use the same entries. Every earlier host keeps the input slot
+[app input spec](app-input.md) designs them. This tree serves the text below
+for each of them, in `CapabilityDisclosures`. All three native grant views and
+management use the same entries. The `input:control` text already states the
+Space switch, which `space-switching-k5` serves. Every earlier host keeps the input slot
 reserved-only and serves no input capability. So no earlier grant gets this
 reach, and the input provider needs no disclosure feature of the host.
 

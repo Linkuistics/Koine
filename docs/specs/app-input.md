@@ -1,10 +1,10 @@
 # App input
 
-**This design delivers app input in Koine 0.7.0, and this tree does not serve
-it yet.** App input is the first input provider, release 1.0.0 with schema
-1.0.0. It captures a target app, and it sends one chord to that app, in front
-or in the background. It also switches between the desktops of Mission
-Control. The design is
+**This design delivers app input in Koine 0.7.0. This tree serves target
+capture and chords, and it does not serve Space switching yet.** App input is
+the first input provider, release 1.0.0 with schema 1.0.0. It captures a target
+app, and it sends one chord to that app, in front or in the background. It also
+switches between the desktops of Mission Control. The design is
 in the [input design](../design/input-schema.graphql), with
 [example operations](../design/input-operations.graphql), and
 `task design:app-input-check` checks both.
@@ -76,9 +76,11 @@ A target is always an app. Koine treats a process as an app when
 `NSRunningApplication` reports it. So a command-line tool or another process
 that is not an app gives null, and Koine never sends it a chord.
 
-The reference is an input reference. It names the incarnation, and Koine
-resolves it again on every use. It is not a desktop reference, and the two
-cannot be converted. A target that is protected has no reference.
+The reference is an input reference, `koine://input/target/<pid>/<start>`. The
+start is the start instant in whole microseconds since the Unix epoch. The
+reference names the incarnation, and Koine resolves it again on every use. It
+is not a desktop reference, and the two cannot be converted. A target that is
+protected has no reference.
 
 ### Protected targets
 
@@ -166,17 +168,22 @@ The provider acts in this order:
    Koine sends nothing.
 3. When the target is Koine, the outcome is `PROTECTED_TARGET`. Koine
    sends nothing.
-4. It creates every event of the chord. When macOS does not create one, it
+4. When macOS does not report the process as an app, it raises
+   `unavailable`. Koine sends nothing.
+5. It creates every event of the chord. When macOS does not create one, it
    reports `failed` and sends nothing.
-5. It posts every event in order with `CGEventPostToPid` to the target
+6. It posts every event in order with `CGEventPostToPid` to the target
    process, with no check between the events. The outcome is `SENT`.
+
+Koine checks itself before it checks for an app. So it refuses its own process
+by the process identifier, whether or not macOS reports that process as an app.
 
 Every check comes before the first event, so no refusal can leave a modifier
 down in the target. `CGEventPostToPid` reports no result, so Koine
 cannot detect an event that macOS drops.
 
 `CGEventPostToPid` names the process by its process identifier alone, without
-the start instant. So the checks of steps 2 and 3 bind the posts only while
+the start instant. So the checks of steps 2 to 4 bind the posts only while
 macOS keeps that process identifier for the target. If the target ends during
 the posts, the remaining events go to a process identifier that no process
 holds. They reach another process only if macOS first issues that identifier
@@ -372,7 +379,7 @@ The target capture needs no consent.
 | An unknown key or modifier | GraphQL validation, or input coercion for a variable. No execution. |
 | A number outside 1 to 9 at a Space switch | An invalid argument at the field's path, with no `kind`. Koine attempts nothing. |
 | No Accessibility consent or no posting access | `permission`, `os-permission`, `accessibility`. Koine sent nothing. |
-| A malformed, wrong-kind or stale input reference | `unavailable`. Koine sent nothing. |
+| A malformed, wrong-kind or stale input reference, or a process that is not an app, at a chord | `unavailable`. Koine sent nothing. |
 | A target that is Koine | The outcome `PROTECTED_TARGET`, with no error. Koine sent nothing. |
 | The shortcut is off or absent, or it uses another key | The outcome `SHORTCUT_OFF` or `SHORTCUT_REMAPPED`, with no error. Koine posted nothing. |
 | The Mission Control desktop does not exist | The outcome `NO_SUCH_DESKTOP`, with no error. Koine posted nothing. |
@@ -403,7 +410,10 @@ covers the posting route, the shortcut read and the count of Mission Control des
   advertises no new host feature.
 - In canonical order, input composes between the desktop and workspace providers. The signed
   application serves the conformance profile
-  `core-desktop-input-workspace-extension-host`.
+  `core-desktop-input-workspace-extension-host`. Its design is the
+  [composed schema](../design/desktop-input-workspace-schema-extension-host.graphql).
+  This tree composes target capture and chords there, and `space-switching-k5`
+  adds the Space switch. A test holds the served composition to that file.
 
 The `input:read` and `input:control` disclosures are in the machine contract,
 under [capability disclosures](machine.md#capability-disclosures).
@@ -434,6 +444,15 @@ The seams are the four that Antony agreed for this grove:
   background, and TextEdit does not change. The run also checks the refusals
   that the root brief lists. A scheduled check on Antony's Mac sends one
   harmless chord each to Dia and Telegram.
+
+The L and G seams pass for target capture and chords.
+[InputProviderLogicTests](../../Tests/InputProviderLogicTests) hold the key
+table, the events of a chord, the input reference, the protection of Koine and
+the order of the steps. [InputProviderTests](../../Tests/KoineServerTests/InputProviderTests.swift)
+hold the authority, the descriptions, the served disclosures and the captures.
+They send a chord only where Koine refuses before it sends. On a host without
+Accessibility consent, each such send reports `os-permission` first. The
+L seam and the G seam of Space switching come with `space-switching-k5`.
 
 ## Out of scope
 

@@ -1,9 +1,9 @@
 #!/bin/bash
 # The whole-contract conformance check of docs/specs/machine.md's "Public GraphQL
 # contract", for the profile the SIGNED Koine.app serves: the core composed with its
-# two bundled providers, desktop and workspace, held to
-# docs/design/profiles/core-desktop-workspace-extension-host.json. The profile names
-# the design SDL (the complete workspace design, every root, verbatim) and, separately from it, the exact provider candidates
+# three bundled providers, desktop, input and workspace, held to
+# docs/design/profiles/core-desktop-input-workspace-extension-host.json. The profile names
+# the design SDL (every served root, verbatim) and, separately from it, the exact provider candidates
 # the application runs, because an identical schema and digest cannot say which
 # binary ran. The two profiles a headless host serves, old-host and extension-host
 # core + desktop, are checked beside this one by scripts/conformance.sh, which runs
@@ -36,7 +36,7 @@ cd "$(dirname "$0")/.."
 # shellcheck source=scripts/signing-env.sh
 source scripts/signing-env.sh
 
-PROFILE="docs/design/profiles/core-desktop-pointer-media-workspace-extension-host.json"
+PROFILE="docs/design/profiles/core-desktop-input-workspace-extension-host.json"
 OUT=".build/conformance/workspace"
 mkdir -p "${OUT}"
 CAPTURE="${OUT}/introspection.json"
@@ -109,11 +109,11 @@ else
     # also records availableCapabilities as a client sees them.
     create_grant "${GRANT_LABEL}" "${CREDENTIAL_FILE}" "koine:manage" "desktop:read" "desktop:control"
 
-    step "Both bundled providers are ACTIVE, so the composed schema is the one being checked"
+    step "The three bundled providers are ACTIVE, so the composed schema is the one being checked"
     ask '{ koineManagement { providers { provider version schemaVersion state diagnostic candidateId origin selection selectedCandidateId reason } } }'
     sed -n 1p <<<"${RESPONSE}" |
-        jq -e '[.data.koineManagement.providers[] | select(.provider == "desktop" or .provider == "workspace") | .state] == ["ACTIVE", "ACTIVE"]' >/dev/null ||
-        fail "desktop and workspace are not both ACTIVE; a schema checked without them is not the composed contract"
+        jq -e '[.data.koineManagement.providers[] | select(.provider == "desktop" or .provider == "input" or .provider == "workspace") | .state] == ["ACTIVE", "ACTIVE", "ACTIVE"]' >/dev/null ||
+        fail "desktop, input and workspace are not all ACTIVE; a schema checked without them is not the composed contract"
     # The candidates the profile pins are read from the same session as the schema.
     sed -n 1p <<<"${RESPONSE}" | jq -e '.data.koineManagement.providers' >"${PROVIDERS}" ||
         fail "the run read no koineManagement.providers"

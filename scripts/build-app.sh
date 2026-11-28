@@ -33,7 +33,7 @@ mkdir -p "${APP_BUNDLE}/Contents/MacOS" "${APP_BUNDLE}/Contents/Resources" \
 # Contents/PlugIns is the in-application provider root. Each bundled provider is
 # built by its own build definition against the staged framework's interface,
 # placed here, and signed before the bundle that seals it.
-for provider in DesktopProvider WorkspaceProvider; do
+for provider in DesktopProvider InputProvider WorkspaceProvider; do
     Providers/${provider}/build.sh "$(dirname "${PROVIDER_FRAMEWORK}")" "${APP_BUNDLE}/Contents/PlugIns" >/dev/null
 done
 cp "${BIN_DIR}/KoineApp" "${APP_BUNDLE}/Contents/MacOS/${APP_NAME}"

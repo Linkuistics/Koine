@@ -27,8 +27,8 @@ Providers are native Swift extensions that contribute to the GraphQL schema. A
 shared resilient Swift framework lets Koine upgrade compatible providers and the
 server independently, where the loading policy of the host admits the identity.
 The published Swift contract of the framework is the stable binary interface.
-Koine needs no TypeScript hosting layer. The desktop and workspace providers are
-bundled.
+Koine needs no TypeScript hosting layer. The desktop, input and workspace
+providers are bundled.
 
 The desktop provider reads applications and windows, and it focuses a window.
 
@@ -51,6 +51,10 @@ The workspace provider launches and activates applications. It opens URLs, docum
 The provider also serves two reads. A client with `workspace:read` calls `workspaceSpecialLocations` to get the special locations that macOS names for the account of Koine, such as the home, Documents and Applications folders. The query reads values only. It lists no folder, opens no file and grants no access to a location it returns.
 
 The client calls `workspaceApplications` to list the applications that Spotlight has indexed on this Mac's disks, on mounted network volumes and in a remote home folder. Each choice has a path, a name and a bundle identifier. The result says whether it is complete, empty, unknown or failed. The query registers, resolves and launches nothing. The [client guide](docs/client-guide.md#searching-for-applications-and-files) describes both.
+
+Koine 0.7.0 adds app input, its first input provider. A client with `input:read` calls `inputFrontTarget` to capture the front app as a target, or `inputTarget` to capture an app process that it names. A target gives the name and the bundle identifier of the app, and a reference. A client with `input:control` calls `inputSendKeystroke` to send one chord, such as Command-L, to that target. The app can be in front or in the background, and Koine never brings it to the front.
+
+Koine posts the chord into the event stream of the target process, so no other app receives it. A chord to a terminal can type and run commands, and a chord can answer a consent or security prompt of macOS. So the Settings window states this reach before a person grants `input:control`. Koine refuses only itself as a target. The [client guide](docs/client-guide.md#sending-chords-to-apps) describes target capture and chords. This tree does not serve Space switching yet.
 
 Koine 0.4.0 implements the
 [selection of independently updated first-party providers](docs/specs/machine.md#first-party-provider-selection)

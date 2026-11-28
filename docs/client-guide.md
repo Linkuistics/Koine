@@ -498,6 +498,36 @@ When no app holds Now Playing, macOS can open Music for `PLAY_PAUSE` and bring i
 
 The receipt names the posted key and nothing else. It does not say which app received the key or what changed, because macOS gives no public way to ask which app holds Now Playing. Without Accessibility consent or event posting access, a key raises a permission error that names `accessibility`, and its message names the missing access. A failed key posts nothing.
 
+## Sending chords to apps
+
+Koine 0.7.0 serves target capture and chords from the [app input spec](specs/app-input.md). A chord is one key with its modifier keys, such as Command-L. A Koine 0.6.0 host does not serve them, so introspect the schema before you use the [operations](design/input-operations.graphql). Your client owns its rows and its bindings, as Modaliser owns its app screens.
+
+First capture a target under `input:read`. Call `inputFrontTarget` to capture the app that macOS reports as active. Call `inputTarget` with a process identity that your client captured, as `{ pid, startedAt }`. Choose your rows by the `bundleIdentifier` of the target.
+
+```graphql
+query InputFrontTarget {
+  inputFrontTarget { ref name bundleIdentifier protection }
+}
+```
+
+The front app is null when macOS reports none. A captured process is null when it ended, when its start instant differs, or when it is not an app. A target with `protection` set to `PROTECTED` is Koine itself, and its `ref` is null. Koine never sends a chord to itself.
+
+Then call `inputSendKeystroke` under `input:control` to send one chord to the `ref` of the target. A grant with `input:read` alone cannot send a chord, and `input:control` alone cannot capture a target.
+
+```graphql
+mutation ReopenClosedTab($target: Reference!) {
+  inputSendKeystroke(target: $target, key: T, modifiers: [COMMAND, SHIFT]) { outcome }
+}
+```
+
+The key is a value of `InputKey`, which names a key position of the US ANSI layout. With another keyboard layout, the app can read another character for the same key. The modifiers are a set of `CONTROL`, `SHIFT`, `OPTION` and `COMMAND`, in any order. Koine presses the modifiers, sends the key, and releases the modifiers in the reverse order, as Modaliser does.
+
+The app can be in front or in the background. Koine posts the chord into the event stream of the target process, so no other app receives it. Koine never brings the target to the front. An app in the background can ignore a chord, act on a window behind other apps, or come to the front. When your user expects the app in front, focus it first with a desktop operation under `desktop:control`.
+
+The outcome `SENT` says only that Koine sent every event. It does not say what the app did. The outcome `PROTECTED_TARGET` says that the target is Koine, and Koine sent nothing. A stale or wrong-kind reference, or a process that is not an app, raises `unavailable`. Without Accessibility consent or event posting access, a chord raises a permission error that names `accessibility`. A refused chord sends nothing, so no modifier stays down.
+
+A chord to a terminal can type and run commands, and a chord can answer a consent or security prompt of macOS. So ask for `input:control` only when your client needs it, and send only the chords of your rows. A keyboard tap of your client at the session level does not see the chord, but a tap for the target process does.
+
 ## Searching for applications and files
 
 Raw filesystem search belongs to the client. The client chooses its traversal engine, permissions, filtering, ordering and budgets. The [native discovery design](specs/workspace-search.md) supplies special locations. It also supplies named catalogues of applications and System Settings on macOS 26+ Apple Silicon. **Koine 0.4.0 serves `workspaceSpecialLocations` and `workspaceApplications`, and nothing else of that design.** The rest of this section describes the full design, which later releases serve.

@@ -98,6 +98,10 @@ let package = Package(
         // (Providers/DesktopProvider/build.sh) and is no product of this package.
         .target(name: "DesktopProviderLogic", path: "Providers/DesktopProvider/Logic"),
         .testTarget(name: "DesktopProviderLogicTests", dependencies: ["DesktopProviderLogic"]),
+        // The same for the input provider. Its kernel start-instant helper and its consent checks are the desktop
+        // provider's, linked in by symlink as source.
+        .target(name: "InputProviderLogic", path: "Providers/InputProvider/Logic"),
+        .testTarget(name: "InputProviderLogicTests", dependencies: ["InputProviderLogic"]),
         // The same for the workspace provider, whose Logic is the provider itself,
         // built against a native adapter a test substitutes. Its kernel start-instant
         // helper is the desktop provider's, linked in by symlink as source.

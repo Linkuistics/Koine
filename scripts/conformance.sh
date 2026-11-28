@@ -12,9 +12,9 @@
 #   core-desktop-pointer-media-extension-host
 #                                      this tree's host with the desktop provider 1.0.2
 #                                      as its only bundled provider
-#   core-desktop-pointer-media-workspace-extension-host
+#   core-desktop-input-workspace-extension-host
 #                                      the signed Koine.app, in a clean TestAnyware VM,
-#                                      with desktop and workspace bundled
+#                                      with desktop, input and workspace bundled
 #                                      (scripts/vm-verify-conformance.sh)
 #
 # The first two are served by headless hosts over loopback HTTP and need no VM. Each

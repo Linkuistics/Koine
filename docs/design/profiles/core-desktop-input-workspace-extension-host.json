@@ -1,0 +1,42 @@
+{
+  "name": "extension-host core + desktop 1.0.2 + input 1.0.0 + workspace 1.0.2",
+  "design": "../desktop-input-workspace-schema-extension-host.graphql",
+  "management": "extended",
+  "comment": [
+    "The signed application as Koine 0.7.0 builds it while app input serves target capture and the keystroke",
+    "operation: desktop release/schema 1.0.2, input release/schema 1.0.0 and workspace release/schema 1.0.2. Its",
+    "design differs from the Koine 0.6.0 profile's (core-desktop-pointer-media-workspace-extension-host.json) by the",
+    "input coordinates alone, so its canonical digest differs on the same host and printer. space-switching-k5 adds",
+    "the Space switch to the same design. The candidate versions are pinned here, apart from the SDL and the digest,",
+    "because an identical schema and digest cannot say which binary ran."
+  ],
+  "providers": [
+    {
+      "provider": "desktop",
+      "version": "1.0.2",
+      "schemaVersion": "1.0.2",
+      "state": "ACTIVE",
+      "origin": "BUNDLED",
+      "selection": "SELECTED",
+      "reason": null
+    },
+    {
+      "provider": "input",
+      "version": "1.0.0",
+      "schemaVersion": "1.0.0",
+      "state": "ACTIVE",
+      "origin": "BUNDLED",
+      "selection": "SELECTED",
+      "reason": null
+    },
+    {
+      "provider": "workspace",
+      "version": "1.0.2",
+      "schemaVersion": "1.0.2",
+      "state": "ACTIVE",
+      "origin": "BUNDLED",
+      "selection": "SELECTED",
+      "reason": null
+    }
+  ]
+}

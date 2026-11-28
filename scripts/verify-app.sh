@@ -96,16 +96,16 @@ if [ "${FRAMEWORK_TEAM}" != "${TEAM_ID}" ]; then
     exit 1
 fi
 
-# The in-application provider root holds exactly the bundled providers (desktop and
-# workspace): each signed by the same team with the hardened runtime, linking the
+# The in-application provider root holds exactly the bundled providers (desktop,
+# input and workspace): each signed by the same team with the hardened runtime, linking the
 # framework by its install name, and embedding no copy of it. The identifiers and
 # versions are `task check:provider-catalogue`'s.
 PLUGINS="${APP_BUNDLE}/Contents/PlugIns"
-if [ "$(ls -A "${PLUGINS}" 2>/dev/null)" != "$(printf 'Desktop.koineprovider\nWorkspace.koineprovider')" ]; then
-    echo "Error: ${PLUGINS} does not hold exactly Desktop.koineprovider and Workspace.koineprovider." >&2
+if [ "$(ls -A "${PLUGINS}" 2>/dev/null)" != "$(printf 'Desktop.koineprovider\nInput.koineprovider\nWorkspace.koineprovider')" ]; then
+    echo "Error: ${PLUGINS} does not hold exactly Desktop.koineprovider, Input.koineprovider and Workspace.koineprovider." >&2
     exit 1
 fi
-for NAME in Desktop Workspace; do
+for NAME in Desktop Input Workspace; do
     PROVIDER="${PLUGINS}/${NAME}.koineprovider"
     codesign --verify --strict --verbose=2 "${PROVIDER}"
     PROVIDER_DETAILS="$(codesign --display --verbose=2 "${PROVIDER}" 2>&1)"

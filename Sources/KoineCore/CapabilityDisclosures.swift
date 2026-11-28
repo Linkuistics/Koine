@@ -40,6 +40,32 @@ public enum CapabilityDisclosures {
         gets this reach too.
         """
 
+    /// Input control: the reach of a chord to any app and of the Space switch, which Koine 0.7.0 adds
+    /// (docs/specs/machine.md, "Capability disclosures"). No earlier host serves an input capability, so no earlier
+    /// grant gets this reach, and input needs no disclosure feature of the host.
+    public static let inputControl = """
+        Sends a chord, one key with modifier keys such as Command-L, to a chosen app, in front or in the \
+        background. The app acts as if the user pressed the keys. So a chord sent to a terminal can type and \
+        run commands as the user. A chord can also make any app do what its keyboard shortcuts do, such as \
+        close a window or send a message. It can change a setting in System Settings, and it can answer a \
+        consent, password or security prompt of macOS. It types no text string. Koine never brings an app to \
+        the front, and it never sends a chord to itself. An app in the background can ignore a chord, act on a \
+        window behind other apps, or come to the front. No other app receives the chord. With desktop:control \
+        too, it switches to Mission Control desktop 1 to 9 by posting Control and the digit, as the keyboard \
+        does. It first checks that the shortcut is on and that the Mission Control desktop exists. The \
+        shortcut setting or the Mission Control desktops can change in the instant before macOS reads the \
+        chord. Then the front app can receive Control and the digit instead. The front app can also receive \
+        them when macOS has not applied a shortcut setting yet. It can receive them too when macOS numbers the \
+        desktops of several displays differently from Koine.
+        """
+
+    /// Input read: the reach of target capture, which Koine 0.7.0 adds.
+    public static let inputRead = """
+        Reads which app is the front app, with its name and bundle identifier. Reads the same facts for an app \
+        process that a client names. It reads no window titles and no window contents, and it sends no keys. \
+        Sending a chord needs input:control.
+        """
+
     /// Workspace control: the reach `docs/specs/workspace-launch-and-open.md` and
     /// `docs/adr/provider-authority-follows-effects.md` require disclosed before
     /// workspace ships.
@@ -71,6 +97,7 @@ public enum CapabilityDisclosures {
     public static var all: [(capability: String, disclosure: String)] {
         [
             ("desktop:control", desktopControl), ("desktop:read", desktopRead),
+            ("input:control", inputControl), ("input:read", inputRead),
             ("workspace:control", workspaceControl), ("workspace:read", workspaceRead),
         ]
     }

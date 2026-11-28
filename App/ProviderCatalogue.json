@@ -16,7 +16,14 @@
       "schema": "1.0.2",
       "signingIdentifier": "dev.antony.Koine.provider.workspace"
     },
-    { "providerId": "input", "graphQLPrefix": "Input" },
+    {
+      "providerId": "input",
+      "graphQLPrefix": "Input",
+      "bundle": "Input.koineprovider",
+      "release": "1.0.0",
+      "schema": "1.0.0",
+      "signingIdentifier": "dev.antony.Koine.provider.input"
+    },
     { "providerId": "menus", "graphQLPrefix": "Menus" },
     { "providerId": "iterm", "graphQLPrefix": "Iterm" },
     { "providerId": "herdr", "graphQLPrefix": "Herdr" }

@@ -46,14 +46,16 @@ import Testing
     static let disclosures =
         "{ koineManagement { capabilityDisclosures { capability disclosure } } }"
 
-    @Test func aManagerReadsTheDesktopAndWorkspaceDisclosures() async throws {
+    @Test func aManagerReadsTheDesktopInputAndWorkspaceDisclosures() async throws {
         let (harness, manager, _) = try await managed()
         let reply = try await harness.post(Self.disclosures, authorization: "Bearer \(manager)")
         #expect(reply.errors.isEmpty)
         let management = try #require(reply.data?["koineManagement"] as? [String: Any])
         let entries = try #require(management["capabilityDisclosures"] as? [[String: String]])
         #expect(
-            entries.map { $0["capability"] } == ["desktop:control", "desktop:read", "workspace:control", "workspace:read"])
+            entries.map { $0["capability"] } == [
+                "desktop:control", "desktop:read", "input:control", "input:read", "workspace:control", "workspace:read",
+            ])
         // Window layout and then pointer and media widen both desktop capabilities, and an earlier grant gets the
         // wider reach.
         let desktopControl = try #require(entries.first { $0["capability"] == "desktop:control" }?["disclosure"])

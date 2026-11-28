@@ -139,10 +139,10 @@ import Testing
             .deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
     }
 
-    /// What the application seals: desktop and workspace enabled at their packaged
-    /// values, and the four later identities reserved and not enabled early. `task
+    /// What the application seals: desktop, input and workspace enabled at their packaged
+    /// values, and the three later identities reserved and not enabled early. `task
     /// check:provider-catalogue` holds the same file to the signed bundles.
-    @Test func theShippedCatalogueEnablesDesktopAndWorkspaceAndReservesTheOtherFour() throws {
+    @Test func theShippedCatalogueEnablesDesktopInputAndWorkspaceAndReservesTheOtherThree() throws {
         let file = Self.repository.appendingPathComponent("App/ProviderCatalogue.json")
         let catalogue = try ProviderCatalogue(json: Data(contentsOf: file))
 
@@ -163,14 +163,19 @@ import Testing
         // are separate artifacts.
         #expect(workspace.release == ProviderVersion("1.0.2") && workspace.schema == ProviderVersion("1.0.2"))
         #expect(workspace.signingIdentifier == "dev.antony.Koine.provider.workspace")
-        for reserved in ["input", "menus", "iterm", "herdr"] {
+        // Input 1.0.0 is the first input provider, in Koine 0.7.0.
+        let input = try #require(catalogue.entry(for: "input")?.baseline)
+        #expect(input.bundleName == "Input.koineprovider")
+        #expect(input.release == ProviderVersion("1.0.0") && input.schema == ProviderVersion("1.0.0"))
+        #expect(input.signingIdentifier == "dev.antony.Koine.provider.input")
+        for reserved in ["menus", "iterm", "herdr"] {
             #expect(catalogue.entry(for: reserved)?.baseline == nil, "\(reserved) must not be enabled yet")
         }
     }
 
     /// Each bundled provider's own source states the same identity and versions:
     /// the catalogue is not free to drift from what it designates.
-    @Test(arguments: [("desktop", "DesktopProvider"), ("workspace", "WorkspaceProvider")])
+    @Test(arguments: [("desktop", "DesktopProvider"), ("input", "InputProvider"), ("workspace", "WorkspaceProvider")])
     func theShippedCatalogueAgreesWithTheBundledProvidersManifest(identity: String, directory: String) throws {
         let catalogue = try ProviderCatalogue(
             json: Data(contentsOf: Self.repository.appendingPathComponent("App/ProviderCatalogue.json"))
