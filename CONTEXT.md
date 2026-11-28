@@ -90,13 +90,18 @@ that do not change the **contract version**, such as a description or an
 installed provider.
 _Avoid_: schema version
 
-**Provider**: A native Swift **Machine server** plugin contributing an
-application's or the desktop's GraphQL schema and the implementation of its
-state and commands; the desktop and workspace providers are bundled with Koine.
-Providers and the server binaries can be upgraded independently through the
-**provider framework** where the host's loading policy admits the provider
-identity. Replacing a shipped provider requires a selection-aware host, as Koine
-0.2.0 is; Koine 0.1.0 refuses external desktop replacement.
+<!-- tc: on -->
+
+**Provider**: A native Swift **Machine server** plugin. It contributes the
+GraphQL schema of an application or of the desktop, and the implementation of
+its state and commands. The desktop and workspace providers are bundled with
+Koine. The **provider framework** lets Koine upgrade providers and the server
+binaries independently, where the loading policy of the host admits the
+provider identity. Only a selection-aware host, such as Koine 0.2.0, can
+replace a shipped provider. Koine 0.1.0 refuses an external replacement of
+desktop.
+
+<!-- tc: pending because the remaining glossary entries retain their existing conversion boundary -->
 
 **Provider candidate**: One discovered native bundle offered for a **provider**
 identity, with its physical installation origin and verification outcome. Several
