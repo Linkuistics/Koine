@@ -116,8 +116,9 @@ MANAGER_GRANT="$(jq -r .response.data.koine.ownGrant.grantId <<<"${ANSWER}")"
 step "The management client is served the disclosure: the words the window must then show"
 enrollee "${MANAGER}" disclosures
 expect '(.response.errors // []) | length == 0' "the manager could not read the disclosures"
-expect '.response.data.koineManagement.capabilityDisclosures | map(.capability) == ["desktop:control","desktop:read","workspace:control","workspace:read"]' \
-    "the served disclosures are not exactly the two desktop ones and the two workspace ones"
+# Koine 0.7.0 serves the two input disclosures too. task app:vm-verify-app-input checks their text in the window.
+expect '.response.data.koineManagement.capabilityDisclosures | map(.capability) == ["desktop:control","desktop:read","input:control","input:read","workspace:control","workspace:read"]' \
+    "the served disclosures are not exactly the two desktop, two input and two workspace ones"
 DISCLOSURES="${ANSWER}"
 SERVED="$(jq -r '.response.data.koineManagement.capabilityDisclosures[] | select(.capability == "workspace:control") | .disclosure' <<<"${ANSWER}" | tr -s '[:space:]' ' ' | sed 's/ $//')"
 SERVED_READ="$(jq -r '.response.data.koineManagement.capabilityDisclosures[] | select(.capability == "workspace:read") | .disclosure' <<<"${ANSWER}" | tr -s '[:space:]' ' ' | sed 's/ $//')"

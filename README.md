@@ -58,6 +58,8 @@ Koine posts the chord into the event stream of the target process, so no other a
 
 A client with `input:control` and `desktop:control` calls `inputSwitchSpace` to switch to Mission Control desktop 1 to 9. Koine posts Control and the digit at the HID event tap, so that macOS catches the shortcut "Switch to Desktop N". First it checks that the shortcut is on with Control and the digit, and that the desktop exists. It refuses while Koine is the front app. The keyboard tap of a client sees these events, so a client that holds keys back in its own mode must pass them. The [client guide](docs/client-guide.md#switching-spaces) describes the switch and its limits.
 
+One VM run accepts app input with every configured row of Finder and Safari and one row each of Zed, Zotero and Obsidian. The notarised 0.7.0 bundle passed it too ([record](docs/verification/app-input-vm.md)). In the compatibility pairs, the released 0.6.0 host refuses input 1.0.0 ([record](docs/verification/app-input-compatibility.md)).
+
 Koine 0.4.0 implements the
 [selection of independently updated first-party providers](docs/specs/machine.md#first-party-provider-selection)
 of the workflow extension. At startup, it chooses one compatible bundle for each
@@ -66,11 +68,13 @@ Koine recorded the acceptance of this selection before 0.3.0. That acceptance is
 established, except for the parts that need the certificate of a second
 Developer ID team.
 
-Apple notarised Koine 0.6.0. Its six release checks passed in VMs on macOS
-27.2.1 on Apple Silicon that enforce Gatekeeper
-([record](docs/verification/desktop-pointer-media-vm.md#release-checks-on-the-notarised-bundle)).
-The checks of 0.4.0 passed on macOS 27.0.1. The one supported platform is
-macOS 26. The runs on macOS 26.5 rest on 0.3.0, and no later run repeated them. The
+Apple notarised Koine 0.7.0. Its six release checks passed in VMs on Apple
+Silicon that enforce Gatekeeper
+([record](docs/verification/app-input-vm.md#release-checks-on-the-notarised-bundle)).
+Five ran on macOS 27.2.1, and the app input check ran on macOS 27.0.1. The
+checks of 0.4.0 passed on macOS 27.0.1.
+
+The one supported platform is macOS 26. The runs on macOS 26.5 rest on 0.3.0, and no later run repeated them. The
 "Acceptance status" section of the spec lists what is established, with its
 evidence, and what is still open.
 

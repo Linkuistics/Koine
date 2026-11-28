@@ -211,20 +211,51 @@ OCR of the third run's Zed capture finds no "Help". So that control fails on a
 misread screen, and a clean dialog check cannot come from a broken
 instrument.
 
+## Release checks on the notarised bundle
+
+Koine 0.7.0 shipped as the notarised bundle with CDHash
+`0ba3f05279d5d8ed08276de753ed79392b375bd0`. Apple accepted submission
+`8b24ab1d-9095-4601-a6f3-3a7306eb91dd`, and the ticket is stapled. The zip of
+the GitHub release has the SHA-256
+`36135803f9716f91e747f1c80dd546416a489da847bb119db6d78f039e41165b`. The six
+release checks ran on that bundle on 2026-11-28. The app input check ran in a
+clone of the launcher image, with macOS 27.0.1 (26A434). The other five ran in
+clones of macOS 27.2.1 (26B131).
+
+| Check | Result |
+|---|---|
+| `task app:vm-verify-app-input` | Every step above passed again ([app-input-20261128T192102.log](app-input-vm/app-input-20261128T192102.log)). All 24 rows passed. Safari opened a tab in the background, and the Space switch reached Desktop 2 and refused with the shortcut off. |
+| `task app:vm-verify-release` | Passed (`release-20261128T192106.log`). |
+| `task app:vm-verify-grant-workflows` | Passed (`grant-workflows-20261128T192704.log`). |
+| `task app:vm-verify-notarized` | Passed (`notarized-20261128T193218.log`). The bundled desktop 1.0.2, input 1.0.0 and workspace 1.0.2 were `ACTIVE` under quarantine. |
+| `task app:vm-verify-disclosure` | Passed on the second attempt (`disclosure-20261128T193631.log`). |
+| `task app:vm-verify-menu-bar` | Passed on the second attempt (`menu-bar-20261128T193942.log`). |
+
+The first disclosure attempt stopped at the set of served disclosures. The
+script expected the desktop and workspace disclosures alone, and Koine also
+served the two input disclosures. So the script was the cause. The script now
+expects all six, and the app input check reads the input texts in the window.
+The first menu bar attempt refused before it started a VM, because it received
+a symbolic link as the path of a tool.
+
+After each run, the bundle had the same CDHash. The transcripts other than the
+app input transcript stay in `.build/vm-verify` on the host that ran them.
+
 ## What this does not claim
 
 - **Dia and Telegram.** The VM cannot run them past their accounts. The
-  scheduled check on Antony's Mac covers route A for Chromium and Qt.
+  scheduled check on Antony's Mac covers route A for Chromium and Qt. Issue
+  #7 holds the rows of Dia.
 - **The other configured rows.** Zed, Zotero and Obsidian sent one row each.
-  An issue holds their other rows.
+  Issue #35 holds their other rows.
 - **A row's full effect.** Each witness reads one sign of the row, such as a
   window title or a tab count. It does not read every effect of the menu item.
 - **Another macOS release or keyboard layout.** The guest ran macOS 27.0.1
   with the US layout. Modaliser's key table holds the key codes of the US
   ANSI layout.
 - **More than one monitor, full-screen Spaces, a remapped shortcut, or a
-  setting that macOS has not applied.** The run tested none of them.
+  setting that macOS has not applied.** The run tested none of them. Issue
+  #36 holds the check with two monitors and a full-screen app. Issue #37
+  holds the setting that macOS has not applied.
 - **The race with a Space switch.** The run did not change a setting or a
   Space in the instant between the check and the post.
-- **The notarised bundle.** The run used the signed bundle that `task app`
-  builds. The release checks of 0.7.0 run on the notarised build.
