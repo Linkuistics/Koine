@@ -131,6 +131,18 @@ PY
         control "the media key description changed" \
             "s.replace('No media key is a keystroke', 'A media key can be a keystroke', 1)"
     fi
+    if jq -e '[.providers[].provider] | index("input")' "${profile}" >/dev/null; then
+        # Input 1.0.0 adds target capture, the keystroke operation and the Space switch. The check holds
+        # each root and one outcome of each receipt on its own.
+        control "the front target root removed" \
+            "__import__('re').sub(r'  \"input:read\\. The front app as an input target[^\n]*\"\n  inputFrontTarget[^\n]*\n', '', s, count=1)"
+        control "the keystroke root removed" \
+            "__import__('re').sub(r'  \"input:control\\. Sends one chord to this target[^\n]*\"\n  inputSendKeystroke[^\n]*\n', '', s, count=1)"
+        control "a keystroke outcome removed" "s.replace('{ SENT PROTECTED_TARGET }', '{ SENT }', 1)"
+        control "the Space switch root removed" \
+            "__import__('re').sub(r'  \"input:control AND desktop:control\\. Switches to this Mission Control desktop[^\n]*\"\n  inputSwitchSpace[^\n]*\n', '', s, count=1)"
+        control "a Space switch outcome removed" "s.replace('NO_SUCH_DESKTOP PROTECTED_FRONT_APP }', 'NO_SUCH_DESKTOP }', 1)"
+    fi
     if jq -e '[.providers[].provider] | index("workspace")' "${profile}" >/dev/null; then
         # A workspace coordinate that is missing is a difference, never silently omitted.
         control "the workspace launch root removed" \
@@ -143,8 +155,10 @@ PY
             "__import__('re').sub(r'  \"\"\"Requires workspace:control AND desktop:control\\. Reveal one literal[^\n]*\"\"\"\n  workspaceRevealPath[^\n]*\n', '', s, count=1)"
         control "a workspace type's description changed" \
             "s.replace('Closed reason for not submitting this action.', 'Closed reason for not submitting this action!', 1)"
+        # Input's mutation fields sit between desktop's and workspace's from Koine 0.7.0. They stay
+        # where they are, and only the last desktop field and the workspace launch field change places.
         control "the workspace launch field moved before desktop's" \
-            "__import__('re').sub(r'(  \"desktop:control\\. [^\n]*\n  desktop[A-Za-z]+\\([^\n]*\n)(  \"\"\"Requires workspace:control AND desktop:control\\. Launch or request[^\n]*\"\"\"\n  workspaceLaunchApplication[^\n]*\n)', r'\\2\\1', s, count=1)"
+            "__import__('re').sub(r'(  \"desktop:control\\. [^\n]*\n  desktop[A-Za-z]+\\([^\n]*\n)((?:  \"input:[^\n]*\n  input[A-Za-z]+\\([^\n]*\n)*)(  \"\"\"Requires workspace:control AND desktop:control\\. Launch or request[^\n]*\"\"\"\n  workspaceLaunchApplication[^\n]*\n)', r'\\3\\2\\1', s, count=1)"
         if jq -e '.providers[] | select(.provider == "workspace" and (.schemaVersion == "1.0.1" or .schemaVersion == "1.0.2"))' "${profile}" >/dev/null; then
             # The action-only repair is the three appended descriptions and nothing else, so the
             # contract is held to each of them separately: a served schema that kept the retained
@@ -193,8 +207,9 @@ PY
         echo "  ${what}: red, naming '${expected}'"
     }
     profile_control "a different release pinned" '.providers[0].version = "9.9.9"' 'is not served as expected'
+    # Koine 0.7.0 serves input, so the unserved provider is menus, which every host keeps reserved-only.
     profile_control "a required provider that is not served" \
-        '.providers += [{"provider": "input", "version": "1.0.0", "schemaVersion": "1.0.0", "state": "ACTIVE"}]' 'is missing'
+        '.providers += [{"provider": "menus", "version": "1.0.0", "schemaVersion": "1.0.0", "state": "ACTIVE"}]' 'is missing'
     profile_control "a served row the profile does not expect" '.providers = []' 'unexpected row desktop'
     if jq -e '.providers[] | select(.provider == "desktop" and .schemaVersion == "1.0.2" and .origin == "BUNDLED")' "${profile}" >/dev/null; then
         # Desktop 1.0.1 serves a subset under the earlier numbers, so the pins say that pointer and media ran.

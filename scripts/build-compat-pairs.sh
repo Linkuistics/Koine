@@ -28,6 +28,14 @@
 #             released Koine 0.5.0 host, under released-0.5.0, refuses both for the
 #             same reason, and the same variant is a per-user update over its bundled
 #             desktop 1.0.1.
+#   input     the newer tree's input provider (release/schema 1.0.0) is in
+#             newer/products/InputProviders, sealed and approved as the application
+#             seals it. Its old side is the released Koine 0.6.0, under released-0.6.0,
+#             whose sealed catalogue keeps input reserved-only. That tree's own scripts
+#             build its selection host as its "production" host, around that catalogue
+#             and its own bundled Desktop 1.0.2 and Workspace 1.0.2, in
+#             released-0.6.0/selection-hosts: the host that the signed 0.6.0 application
+#             is, headless, which refuses a per-user input bundle before load.
 #
 # Nothing built in one tree sees the other: a pair is put together only when
 # scripts/verify-compat-pairs.py installs one tree's bundle under the other
@@ -55,6 +63,10 @@ mkdir -p "${PAIRS}"
 }
 [ -f "${PAIRS}/released-0.5.0/retained.json" ] || {
     echo "Error: ${PAIRS}/released-0.5.0/retained.json does not exist. Run: task compat:released-0.5.0" >&2
+    exit 1
+}
+[ -f "${PAIRS}/released-0.6.0/retained.json" ] || {
+    echo "Error: ${PAIRS}/released-0.6.0/retained.json does not exist. Run: task compat:released-0.6.0" >&2
     exit 1
 }
 
@@ -180,6 +192,35 @@ unset FIXTURE_ADDITIONAL
     mkdir -p "${PAIRS}/newer/desktop-per-user"
     cp -R "${VARIANT}" "${PAIRS}/newer/desktop-per-user/"
     Fixtures/FixtureProvider/seal.sh "${PAIRS}/newer/desktop-per-user/Desktop.koineprovider" >&2
+)
+
+# The input provider of the newer tree, by its own build definition against that tree's framework, sealed and
+# approved as the application seals it.
+(
+    cd "${PAIRS}/newer/src"
+    PRODUCTS="$(cd "${PAIRS}/newer/products" && pwd -P)"
+    rm -rf "${PRODUCTS}/InputProviders"
+    BUNDLE="$(Providers/InputProvider/build.sh "${PRODUCTS}/PackageFrameworks" "${PRODUCTS}/InputProviders")"
+    Fixtures/FixtureProvider/seal.sh "${BUNDLE}" >&2
+)
+
+# The released Koine 0.6.0 as its signed application selects: the released tree's own selection host, assembled
+# and signed by that tree's own scripts/build-selection-hosts.py as its "production" host. That host carries the
+# released App/ProviderCatalogue.json verbatim, which keeps input reserved-only, around the released Desktop 1.0.2
+# and Workspace 1.0.2 that build-retained-workspace.sh sealed. The two cases it reads are those bundles alone.
+(
+    cd "${PAIRS}/released-0.6.0/src"
+    CASES="$(mktemp -d)"
+    trap 'rm -rf "${CASES}"' EXIT
+    mkdir -p "${CASES}/current-desktop" "${CASES}/current-workspace"
+    /usr/bin/ditto "${PAIRS}/released-0.6.0/bundled/Desktop.koineprovider" "${CASES}/current-desktop/Desktop.koineprovider"
+    /usr/bin/ditto "${PAIRS}/released-0.6.0/bundled/Workspace.koineprovider" \
+        "${CASES}/current-workspace/Workspace.koineprovider"
+    swift build -c "${CONFIGURATION}" --product KoineSelectionHost >&2
+    FRAMEWORK="$(scripts/stage-provider-framework.sh "${CONFIGURATION}")"
+    rm -rf "${PAIRS}/released-0.6.0/selection-hosts"
+    scripts/build-selection-hosts.py "$(swift build -c "${CONFIGURATION}" --show-bin-path)" "${FRAMEWORK}" \
+        "${CASES}" "${PAIRS}/released-0.6.0/selection-hosts" production >&2
 )
 
 echo "${PAIRS}"

@@ -21,6 +21,11 @@ under this tree's host, held to its profile, and under the released Koine 0.4.1 
 approved per-user update over their bundled desktop 1.0.0 and 1.0.1. Each released host refuses it before it loads,
 naming desktop-disclosures-v2. docs/verification/desktop-pointer-media-compatibility.md records a run.
 
+The input pairs (docs/verification/app-input-compatibility.md) put this tree's input 1.0.0 under this tree's host,
+held to the Koine 0.7.0 profile, and under the released Koine 0.6.0, whose sealed catalogue keeps input reserved-only.
+That release refuses it before it loads: its headless host refuses the bundle inside its sealed root as unexpected,
+and its signed selection host refuses the approved per-user bundle as reserved-only.
+
 usage: verify-compat-pairs.py [debug|release]
 
 Writes <pairs>/results.json and prints a summary. Exits 1 if any check fails.
@@ -79,8 +84,10 @@ def digest(path):
 class Host:
     """One run of a revision's host over a fresh data directory holding `root`'s content."""
 
-    def __init__(self, revision, root, bundled=None):
-        """`bundled` stands in for Contents/PlugIns; only a host of this release takes one."""
+    def __init__(self, revision, root, bundled=None, executable=None):
+        """`bundled` stands in for Contents/PlugIns; only a host of this release takes one. `executable` replaces the
+        revision's headless host with another host of that revision, such as a signed selection host whose own
+        Contents/PlugIns and sealed catalogue are its bundled root."""
         self.directory = tempfile.mkdtemp(prefix="koine-compat-")
         self.data = os.path.join(self.directory, "data")
         shutil.copytree(root, os.path.join(self.data, "Providers"), symlinks=True)
@@ -88,7 +95,7 @@ class Host:
         self.initializer_log = os.path.join(self.directory, "initializers.log")
         environment = dict(os.environ, KOINE_FIXTURE_INITIALIZER_LOG=self.initializer_log)
         self.process = subprocess.Popen(
-            [host_binary(revision), self.data] + ([bundled] if bundled else []),
+            [executable or host_binary(revision), self.data] + ([bundled] if bundled else []),
             stdin=subprocess.PIPE, stdout=subprocess.PIPE,
             stderr=subprocess.PIPE, env=environment, text=True,
         )
@@ -580,6 +587,185 @@ def desktop_refused(name, plugin, host_revision, bundled, per_user, expected_row
 # or this tree's. Each case is one headless host over a bundled root that stands in for Contents/PlugIns and a per-user
 # root.
 
+# --- The input pairs -----------------------------------------------------------------------------------------
+#
+# This tree's input 1.0.0 is Koine's first input provider. The released Koine 0.6.0 seals a catalogue that keeps
+# input reserved-only (docs/specs/machine.md, "Reserved identities"), so it cannot load an input bundle from either
+# root. Its headless host builds its catalogue from the approval records beside its bundled root, as its own
+# application seals desktop and workspace: an input bundle there with no record is a bundle that catalogue does not
+# designate. Only its signed selection host reads the released App/ProviderCatalogue.json, with the reserved-only
+# input entry, so that host holds the per-user case. docs/verification/app-input-compatibility.md records a run.
+
+RELEASED_060 = "released-0.6.0"
+INPUT_IMAGE = "libInputProvider.dylib"
+INPUT_READ = '{ inputTarget(process: { pid: 999999, startedAt: "2001-01-01T00:00:00.000000Z" }) { ref } }'
+DESKTOP_READ = '{ desktopApplication(process: { pid: 999999, startedAt: "2001-01-01T00:00:00.000000Z" }) { ref } }'
+
+
+def released_060_bundled():
+    return os.path.join(PAIRS, RELEASED_060, "bundled")
+
+
+def released_060_selection_host():
+    return os.path.join(PAIRS, RELEASED_060, "selection-hosts", "production", "KoineSelectionHost.app", "Contents",
+                        "MacOS", "KoineSelectionHost")
+
+
+def newer_input():
+    return os.path.join(products("newer"), "InputProviders")
+
+
+def with_input(root, approved):
+    """`root` with this tree's sealed input bundle added, and its approval record only when `approved`."""
+    shutil.copytree(os.path.join(newer_input(), "Input.koineprovider"), os.path.join(root, "Input.koineprovider"),
+                    symlinks=True)
+    if approved:
+        shutil.copy(os.path.join(newer_input(), "input.approval.json"), os.path.join(root, "input.approval.json"))
+    return root
+
+
+def input_pair(name, conformance, profile="core-desktop-input-workspace-extension-host.json"):
+    """This tree's desktop 1.0.2, input 1.0.0 and workspace 1.0.2, bundled as the Koine 0.7.0 application bundles
+    them, in this tree's host. The served schema and the candidates are held to the 0.7.0 profile with the same two
+    red controls as desktop_pair, the input read answers, and the host mapped the input image from its staging."""
+    case = Case(name, "input 1.0.0, this tree's, sealed as the application seals it", "newer")
+    bundled = with_input(compose(newer_desktop(), newer_workspace()), approved=True)
+    empty = tempfile.mkdtemp(prefix="koine-compat-empty-")
+    host = Host("newer", empty, bundled=bundled)
+    try:
+        _, candidates = host.post(CANDIDATES)
+        served = candidates["data"]["koineManagement"]["providers"]
+        case.check("desktop 1.0.2, input 1.0.0 and workspace 1.0.2 are each ACTIVE, BUNDLED and SELECTED",
+                   rows_of(served) == sorted([
+                       ("desktop", "1.0.2", "1.0.2", "ACTIVE", "BUNDLED", "SELECTED", None),
+                       ("input", "1.0.0", "1.0.0", "ACTIVE", "BUNDLED", "SELECTED", None),
+                       ("workspace", "1.0.2", "1.0.2", "ACTIVE", "BUNDLED", "SELECTED", None)]), rows_of(served))
+        koine = host.data_of("{ koine { schemaDigest availableCapabilities } }")["koine"]
+        case.check("both input capabilities are offered", {"input:read", "input:control"} <= set(
+            koine["availableCapabilities"]), koine["availableCapabilities"])
+        absent = host.post(INPUT_READ)
+        case.check("the input read answers: an absent process is null without an error",
+                   absent[0] == 200 and absent[1].get("data") == {"inputTarget": None} and not absent[1].get("errors"),
+                   absent)
+        mapped = mapped_images(host, INPUT_IMAGE)
+        case.check("the host mapped exactly one input image, from its staging, with the sealed bundle's bytes",
+                   len(mapped) == 1 and "/ProviderStaging/" in mapped[0]
+                   and digest(mapped[0]) == digest(os.path.join(newer_input(), "Input.koineprovider", INPUT_IMAGE)),
+                   [os.path.relpath(path, host.data) for path in mapped])
+        query = subprocess.run([conformance, "--print-query"], capture_output=True, text=True, check=True).stdout
+        status, introspection = host.post(query)
+        directory = tempfile.mkdtemp(prefix="koine-compat-conformance-")
+        capture = os.path.join(directory, "introspection.json")
+        with open(capture, "w") as file:
+            json.dump(introspection, file)
+        profile = os.path.join(PROFILES, profile)
+        with open(profile) as file:
+            pinned = json.load(file)
+        design = os.path.normpath(os.path.join(os.path.dirname(profile), pinned["design"]))
+        providers_path = os.path.join(directory, "providers.json")
+        with open(providers_path, "w") as file:
+            json.dump(candidates, file)
+        run = subprocess.run(
+            [conformance, "--introspection", capture, "--profile", profile, "--providers", providers_path,
+             "--served-digest", koine["schemaDigest"]], capture_output=True, text=True)
+        case.check("the served schema is the Koine 0.7.0 contract and the candidate run is the profile's pin: no "
+                   "difference from the design SDL, and the served digest is that text's",
+                   status == 200 and run.returncode == 0,
+                   {"exit": run.returncode, "output": (run.stdout + run.stderr)[-400:]})
+        with open(design) as file:
+            text = file.read()
+        mutated = os.path.join(directory, "mutated.graphql")
+        with open(mutated, "w") as file:
+            file.write(text.replace("The front app as an input target.", "The front app as an input subject.", 1))
+        red = subprocess.run(
+            [conformance, "--introspection", capture, "--design", mutated, "--served-digest", koine["schemaDigest"]],
+            capture_output=True, text=True)
+        case.check("control: the same check is red against a design text with one input description changed",
+                   text != open(mutated).read() and red.returncode == 1, {"exit": red.returncode})
+        wrong = dict(pinned, design=design)
+        wrong["providers"] = [dict(p, version="9.9.9") if p["provider"] == "input" else p for p in pinned["providers"]]
+        wrong_path = os.path.join(directory, "wrong-profile.json")
+        with open(wrong_path, "w") as file:
+            json.dump(wrong, file)
+        pin_red = subprocess.run(
+            [conformance, "--introspection", capture, "--profile", wrong_path, "--providers", providers_path,
+             "--served-digest", koine["schemaDigest"]], capture_output=True, text=True)
+        case.check("control: the same schema and digest are red against a profile that pins another input release",
+                   pin_red.returncode == 1 and "is not served as expected" in pin_red.stdout,
+                   {"exit": pin_red.returncode, "output": pin_red.stdout[-300:]})
+        shutil.rmtree(directory, ignore_errors=True)
+    finally:
+        _, code = host.stop()
+        shutil.rmtree(empty, ignore_errors=True)
+        shutil.rmtree(bundled, ignore_errors=True)
+    case.check("the host stops cleanly", code == 0, code)
+    return case
+
+
+def input_refused(name, plugin, host, expected_rows, reason, roots):
+    """A released Koine 0.6.0 host, already started over this tree's input bundle. The candidate rows must be exactly
+    `expected_rows`, the input row must carry `reason` and a diagnostic, no input capability is offered, no input
+    image is mapped, the input read does not validate, and the bundled desktop 1.0.2 still answers a read. `roots`
+    are removed afterwards."""
+    case = Case(name, plugin, RELEASED_060)
+    try:
+        _, candidates = host.post(CANDIDATES)
+        served = candidates["data"]["koineManagement"]["providers"]
+        case.check("the candidate rows are exactly the pinned ones", rows_of(served) == sorted(expected_rows),
+                   {"served": rows_of(served), "pinned": sorted(expected_rows)})
+        refused = [p for p in served if p["provider"] == "input"]
+        case.check(f"the input row is refused as {reason}, with a diagnostic",
+                   len(refused) == 1 and refused[0]["reason"] == reason and bool(refused[0]["diagnostic"]), refused)
+        koine = host.data_of("{ koine { availableCapabilities } }")["koine"]
+        case.check("no input capability is offered",
+                   not any(c.startswith("input:") for c in koine["availableCapabilities"]),
+                   koine["availableCapabilities"])
+        mapped = mapped_images(host, INPUT_IMAGE)
+        case.check("the input image is never mapped: the bundle is refused before it loads", mapped == [], mapped)
+        status, reply = host.post(INPUT_READ)
+        case.check("the input read is not in the schema: inputTarget does not validate", status == 400, [status, reply])
+        absent = host.post(DESKTOP_READ)
+        case.check("the bundled desktop 1.0.2 still serves: an absent process is null without an error",
+                   absent[0] == 200 and absent[1].get("data") == {"desktopApplication": None}
+                   and not absent[1].get("errors"), absent)
+    finally:
+        _, code = host.stop()
+        for root in roots:
+            shutil.rmtree(root, ignore_errors=True)
+    case.check("the host stops cleanly", code == 0, code)
+    return case
+
+
+def input_refused_bundled():
+    """The released 0.6.0 headless host over its own bundled desktop and workspace and this tree's input bundle with
+    no approval record, so its catalogue designates desktop and workspace alone, as the 0.6.0 application's does."""
+    bundled = with_input(compose(released_060_bundled(), released_060_bundled()), approved=False)
+    empty = tempfile.mkdtemp(prefix="koine-compat-empty-")
+    host = Host(RELEASED_060, empty, bundled=bundled)
+    return input_refused(
+        "this tree's input 1.0.0 in the sealed root, released Koine 0.6.0 host: refused before it loads",
+        "input 1.0.0, this tree's, sealed as the application seals it", host,
+        [("desktop", "1.0.2", "1.0.2", "ACTIVE", "BUNDLED", "SELECTED", None),
+         ("input", "1.0.0", "1.0.0", "REJECTED", "BUNDLED", "NOT_SELECTED", "unexpected-bundled-candidate"),
+         ("workspace", "1.0.2", "1.0.2", "ACTIVE", "BUNDLED", "SELECTED", None)],
+        "unexpected-bundled-candidate", [bundled, empty])
+
+
+def input_refused_per_user():
+    """The released 0.6.0 signed selection host, with its sealed catalogue and bundles, and this tree's approved input
+    bundle in the per-user root."""
+    per_user = with_input(tempfile.mkdtemp(prefix="koine-compat-peruser-"), approved=True)
+    host = Host(RELEASED_060, per_user, executable=released_060_selection_host())
+    return input_refused(
+        "the approved per-user input 1.0.0, released Koine 0.6.0 signed selection host with its sealed catalogue: "
+        "refused before it loads as reserved-only",
+        "input 1.0.0, this tree's, approved per user", host,
+        [("desktop", "1.0.2", "1.0.2", "ACTIVE", "BUNDLED", "SELECTED", None),
+         ("input", "1.0.0", "1.0.0", "REJECTED", "PER_USER", "NOT_SELECTED", "reserved-only"),
+         ("workspace", "1.0.2", "1.0.2", "ACTIVE", "BUNDLED", "SELECTED", None)],
+        "reserved-only", [per_user])
+
+
 RETAINED = "workspace-1.0.0"
 RELEASED = "workspace-1.0.1"
 PROFILES = os.path.join(REPOSITORY, "docs", "design", "profiles")
@@ -943,6 +1129,17 @@ def main():
         released_050_bundled(), "Desktop.koineprovider", "libDesktopProvider.dylib")
     subjects["released 0.5.0 workspace provider"] = os.path.join(
         released_050_bundled(), "Workspace.koineprovider", "libWorkspaceProvider.dylib")
+    subjects["newer input provider"] = os.path.join(newer_input(), "Input.koineprovider", INPUT_IMAGE)
+    subjects["newer input provider manifest"] = os.path.join(newer_input(), "Input.koineprovider", "manifest.json")
+    subjects["released 0.6.0 host"] = host_binary(RELEASED_060)
+    subjects["released 0.6.0 framework"] = framework_image(RELEASED_060)
+    subjects["released 0.6.0 selection host"] = released_060_selection_host()
+    subjects["released 0.6.0 sealed catalogue"] = os.path.join(
+        os.path.dirname(os.path.dirname(released_060_selection_host())), "Resources", "ProviderCatalogue.json")
+    subjects["released 0.6.0 desktop provider"] = os.path.join(
+        released_060_bundled(), "Desktop.koineprovider", "libDesktopProvider.dylib")
+    subjects["released 0.6.0 workspace provider"] = os.path.join(
+        released_060_bundled(), "Workspace.koineprovider", "libWorkspaceProvider.dylib")
     before = {name: digest(path) for name, path in subjects.items()}
 
     cases = [
@@ -1039,6 +1236,14 @@ def main():
                         compose(released_050_bundled(), released_050_bundled()),
                         only(desktop_per_user_variant(), "Desktop"),
                         [D102_USER_REFUSED, D101_KEPT, W102_050], [released_050_desktop], kept_release="1.0.1"),
+    ]
+
+    # --- The input pairs: this tree's input 1.0.0 loads in this tree's host, and the released Koine 0.6.0 refuses
+    # it before it loads, in its sealed root and as an approved per-user update ---
+    cases += [
+        input_pair("this tree's input 1.0.0 bundled, newer host: the new bundle loads in the new host", conformance),
+        input_refused_bundled(),
+        input_refused_per_user(),
     ]
 
     # --- The workspace pairs: independently built old and new providers under each revision's host ---

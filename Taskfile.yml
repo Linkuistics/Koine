@@ -2403,6 +2403,22 @@ tasks:
       - shfmt -d -i 4 scripts/vm-verify-pointer-media.sh
       - scripts/vm-verify-pointer-media.sh
 
+  app:vm-verify-app-input:
+    desc: The V seam of app input (Koine 0.7.0, input 1.0.0), in ONE clone of the prepared launcher image (task launchers:prepare), on the signed bundle - the input disclosures in the create-grant view, the request view and the grant list before and after a restart; under input control, every row of Antony's Finder (16) and Safari (5) screens and one row each of Zed, Zotero and Obsidian sent to the app in front, each with its own witness (AppleScript, the window witness, the accessibility snapshot, OCR or the files of a folder); New Tab sent to Safari in the background while TextEdit stays in front and keeps its text; a Control-2 through the keystroke operation switching no Space; the Space switch reaching Desktop 2 with the shortcut on and refusing with it off; and no permission dialog (docs/verification/app-input-vm.md; never on the host). Exit 3 means an app ignored a row's chord (stop and ask Antony)
+    cmds:
+      - bash -n scripts/vm-verify-app-input.sh
+      - shellcheck -x scripts/vm-verify-app-input.sh
+      - shfmt -d -i 4 scripts/vm-verify-app-input.sh
+      - scripts/vm-verify-app-input.sh
+
+  app:host-check-app-input:
+    desc: The scheduled host check of app input, on Antony's Mac ONLY at the time he set and with the procedure and chords he approved (docs/verification/app-input-host.md) - one phase per call (CLI_ARGS - record, backup, launch, enrol, poll, send dia, send telegram, front, restore) with Antony acting between phases; the signed candidate sends New Tab to Dia and Search in Chat to Telegram, and restore puts his Koine data directory back exactly as the backup found it. Refuses unless KOINE_HOST_CHECK=approved
+    cmds:
+      - bash -n scripts/host-check-app-input.sh
+      - shellcheck -x scripts/host-check-app-input.sh
+      - shfmt -d -i 4 scripts/host-check-app-input.sh
+      - scripts/host-check-app-input.sh {{.CLI_ARGS}}
+
   app:vm-verify-latency:
     desc: Measure, in a clean TestAnyware macOS VM on the signed bundle, warm query-to-choices and selection-to-focus latency in the keyboard workflow - a rotation of switches between two same-titled Finder windows and a TextEdit document, each starting from an asserted window and following real keystrokes in it - and print the observed distribution as a report, never a target
     cmds:
@@ -2510,6 +2526,7 @@ tasks:
       - task: compat:workspace-release
       - task: compat:released-0.4.1
       - task: compat:released-0.5.0
+      - task: compat:released-0.6.0
       - scripts/build-compat-pairs.sh {{.CONFIGURATION | default "debug"}}
 
   compat:verify:
@@ -2541,6 +2558,11 @@ tasks:
     desc: Build the released Koine 0.5.0 (the revision scripts/released-0.5.0.json pins, tag v0.5.0), never from this working tree, in a tree of its own under .build/compat/<configuration>/released-0.5.0 - its host, framework and desktop provider, and its sealed, approved Desktop 1.0.1 and Workspace 1.0.2 bundles kept apart in bundled/ with a record of their digests; the released host that refuses this tree's desktop 1.0.2 because it lacks desktop-disclosures-v2 (CONFIGURATION=debug|release)
     cmds:
       - scripts/build-retained-workspace.sh {{.CONFIGURATION | default "debug"}} scripts/released-0.5.0.json
+
+  compat:released-0.6.0:
+    desc: Build the released Koine 0.6.0 (the revision scripts/released-0.6.0.json pins, tag v0.6.0), never from this working tree, in a tree of its own under .build/compat/<configuration>/released-0.6.0 - its host, framework and desktop provider, and its sealed, approved Desktop 1.0.2 and Workspace 1.0.2 bundles kept apart in bundled/ with a record of their digests; the released host whose sealed catalogue keeps input reserved-only, so it refuses this tree's input 1.0.0 before load (CONFIGURATION=debug|release)
+    cmds:
+      - scripts/build-retained-workspace.sh {{.CONFIGURATION | default "debug"}} scripts/released-0.6.0.json
 
   compat:workspace-baseline-verify:
     desc: Hold the retained workspace 1.0.0 bundle to what it shipped with - its pinned identity and SDL, the 1.0.0 profile served by that revision's own host bundling it, and that revision's workspace suites (logic, composition, installations, schema and catalogue conformance, and the short-path N subjects loading the bundle) - each first seen red against a mutated copy (CONFIGURATION=debug|release; needs compat:workspace-baseline)

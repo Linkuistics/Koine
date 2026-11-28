@@ -1,0 +1,124 @@
+
+== 19:09:45 The start state
+installed Koine: 0.6.0, CDHash=92f25cc9dfeff4870904b3db32faeb95159571a7
+installed Koine running: no 
+candidate: 0.6.0, CDHash=3f720b4d332631adfbdd5f0f27f6ecacff09dd16
+front app: com.googlecode.iterm2
+Dia: pid 14271; Telegram: pid 94193
+Antony quits the installed Koine from its menu, if it runs.
+
+== 19:09:51 Copy the data directory of the installed Koine
+data directory: 36 files, manifest 34ce75f39a89
+copy: /Users/antony/Library/Application Support/Koine.host-check-backup, identical to the record
+
+== 19:09:57 Launch the candidate from its build path
+candidate running: pid 21853 ; endpoint written Nov 28 19:09:59 2026
+
+== 19:10:05 Request a grant for input:read and input:control
+{"case": "enrol", "status": 200, "response": {"data": {"koineRequestGrant": {"requestId": "7824eeb7-8158-40a6-83fa-e04ed661e435", "comparisonCode": "5DKQ-GECT"}}}}
+Antony approves the request named k6-host-check in the candidate's Settings window.
+{"case": "poll", "status": 200, "response": {"data": {"koineGrantRequest": {"requestId": "7824eeb7-8158-40a6-83fa-e04ed661e435", "clientLabel": "k6-host-check", "comparisonCode": "5DKQ-GECT", "requestedCapabilities": ["input:read", "input:control"], "state": "APPROVED", "grant": {"grantId": "b2b2a1ad-45ea-488b-ba98-b9154fec0509", "clientLabel": "k6-host-check", "capabilities": ["input:control", "input:read"], "state": "ACTIVE"}}}}}
+
+== 19:11:21 dia: New Tab, cmd+t
+{"case": "front", "variables": {}, "response": {"data": {"inputFrontTarget": {"ref": "koine://input/target/14271/1795587920678206", "name": "Dia", "bundleIdentifier": "company.thebrowser.dia", "protection": "ADDRESSABLE"}}}}
+{"case": "send", "variables": {"target": "koine://input/target/14271/1795587920678206", "key": "T", "modifiers": ["COMMAND"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+front app after the chord: company.thebrowser.dia
+Antony reads the effect on the screen, and then undoes it by hand.
+
+== 19:12:01 telegram: Search in Chat, cmd+f
+{"case": "front", "variables": {}, "response": {"data": {"inputFrontTarget": {"ref": "koine://input/target/94193/1795746242313331", "name": "Telegram", "bundleIdentifier": "com.tdesktop.Telegram", "protection": "ADDRESSABLE"}}}}
+{"case": "send", "variables": {"target": "koine://input/target/94193/1795746242313331", "key": "F", "modifiers": ["COMMAND"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+front app after the chord: com.tdesktop.Telegram
+Antony reads the effect on the screen, and then undoes it by hand.
+
+== 19:12:45 The app that was in front at the start, to the front again
+front app: com.googlecode.iterm2
+
+== 19:13:09 Restore the data directory and the installed Koine
+what the candidate changed:
+1c1
+< b7c4edaa669f9805433ead63020a554f4a6676a442f41c925589501b41aa7207  ./grants.sqlite
+---
+> 8b5303f32dd44b7ab8cf307adc3f05806f4f8556bc672f1fd59f0c42be84f8f8  ./grants.sqlite
+16a17,21
+> 5f746e2bb98e2803212a8fe65bd46978fe0af03b7a7ee156add99483cfe58f19  ./ProviderStaging/Desktop-cf1082d21ea18b13d31b0d2ab7b5f2fb/_CodeSignature/CodeResources
+> 4f0ae19489ee20f3a0d709e978a7ddf23f41e4d6dc6a86de7eff73c03e1e1174  ./ProviderStaging/Desktop-cf1082d21ea18b13d31b0d2ab7b5f2fb/Info.plist
+> dbc995aa6e935ca7f34f496fff56f6efe209ac08d6ff7648dc5d8ac2e00201e9  ./ProviderStaging/Desktop-cf1082d21ea18b13d31b0d2ab7b5f2fb/libDesktopProvider.dylib
+> c9aec051f8fe65d4a68bf33f34c81d75c71613bc37957b0132eaa19a217ee23b  ./ProviderStaging/Desktop-cf1082d21ea18b13d31b0d2ab7b5f2fb/manifest.json
+> cb06ce9e581ae6500cbe21a0f79ddf131816dcfea57f7047b1042ad35537a3dc  ./ProviderStaging/Desktop-cf1082d21ea18b13d31b0d2ab7b5f2fb/schema.graphql
+21a27,31
+> a47078072d49165034c116714f6e8ddbd9ca390ee9060a60937e96b622b50638  ./ProviderStaging/Input-741cc06c85133c7a6219fc0ef1850055/_CodeSignature/CodeResources
+> 69864e0977d55e289896dcbb3e7fbbfc7aa71a0f0f2d6e65ec4f77018c0d8580  ./ProviderStaging/Input-741cc06c85133c7a6219fc0ef1850055/Info.plist
+> 1d4cc7f6233879cd1911591a40cf6df8e6acbcb75f6b34c39739683e9ab98ab1  ./ProviderStaging/Input-741cc06c85133c7a6219fc0ef1850055/libInputProvider.dylib
+> 4bb1fd49e0f891a63c85e3fe25e3dd027c13001325a4da538d53c5e053f135f3  ./ProviderStaging/Input-741cc06c85133c7a6219fc0ef1850055/manifest.json
+> c64da3bb09690ab6958a5ee088d18a83fe9acaffbe113f20aa461ba34a6b5a8d  ./ProviderStaging/Input-741cc06c85133c7a6219fc0ef1850055/schema.graphql
+26a37,41
+> 88b9c07733d1105ce827e8ee450e858cd6a3e453e71cc94c9392c2ecbe76f18f  ./ProviderStaging/Workspace-5bcf45bcb635023f399d0b36955ede5a/_CodeSignature/CodeResources
+> 6bb5154d0fd08c30d46c638426e02e58bfc424826c99a8819d9bafaeb63b7027  ./ProviderStaging/Workspace-5bcf45bcb635023f399d0b36955ede5a/Info.plist
+> f3130a3fe3ebe23f7f2bb4f48a5f27d939fe4ad0a2e4e612ca2b005be890cbff  ./ProviderStaging/Workspace-5bcf45bcb635023f399d0b36955ede5a/libWorkspaceProvider.dylib
+> 420b5fc06cf0e61a719cc4c93876fc0496f9cf5921858b788f67cc5d508f0b00  ./ProviderStaging/Workspace-5bcf45bcb635023f399d0b36955ede5a/manifest.json
+> b4b6092bc435318476d166686e94703982d797e92fb72c79d0f0595be0b68edf  ./ProviderStaging/Workspace-5bcf45bcb635023f399d0b36955ede5a/schema.graphql
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-966ca6b15c541fa6b59923f3dd9d26a3/_CodeSignature/CodeResources: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-966ca6b15c541fa6b59923f3dd9d26a3/_CodeSignature: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-966ca6b15c541fa6b59923f3dd9d26a3/schema.graphql: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-966ca6b15c541fa6b59923f3dd9d26a3/manifest.json: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-966ca6b15c541fa6b59923f3dd9d26a3/libDesktopProvider.dylib: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-966ca6b15c541fa6b59923f3dd9d26a3/Info.plist: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-966ca6b15c541fa6b59923f3dd9d26a3: Directory not empty
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Workspace-efe3e00fd8f4e2c81af1aeb7af6bd2cf/_CodeSignature/CodeResources: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Workspace-efe3e00fd8f4e2c81af1aeb7af6bd2cf/_CodeSignature: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Workspace-efe3e00fd8f4e2c81af1aeb7af6bd2cf/schema.graphql: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Workspace-efe3e00fd8f4e2c81af1aeb7af6bd2cf/libWorkspaceProvider.dylib: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Workspace-efe3e00fd8f4e2c81af1aeb7af6bd2cf/manifest.json: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Workspace-efe3e00fd8f4e2c81af1aeb7af6bd2cf/Info.plist: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Workspace-efe3e00fd8f4e2c81af1aeb7af6bd2cf: Directory not empty
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-12f36a597d98cd153ef6691ff69fc7a2/_CodeSignature/CodeResources: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-12f36a597d98cd153ef6691ff69fc7a2/_CodeSignature: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-12f36a597d98cd153ef6691ff69fc7a2/schema.graphql: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-12f36a597d98cd153ef6691ff69fc7a2/manifest.json: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-12f36a597d98cd153ef6691ff69fc7a2/libDesktopProvider.dylib: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-12f36a597d98cd153ef6691ff69fc7a2/Info.plist: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-12f36a597d98cd153ef6691ff69fc7a2: Directory not empty
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Workspace-61643c8e25522b40a2881c3275bcfb89/_CodeSignature/CodeResources: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Workspace-61643c8e25522b40a2881c3275bcfb89/_CodeSignature: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Workspace-61643c8e25522b40a2881c3275bcfb89/schema.graphql: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Workspace-61643c8e25522b40a2881c3275bcfb89/libWorkspaceProvider.dylib: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Workspace-61643c8e25522b40a2881c3275bcfb89/manifest.json: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Workspace-61643c8e25522b40a2881c3275bcfb89/Info.plist: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Workspace-61643c8e25522b40a2881c3275bcfb89: Directory not empty
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Workspace-5153c088bf71f4a1ee54da6be9eaae37/_CodeSignature/CodeResources: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Workspace-5153c088bf71f4a1ee54da6be9eaae37/_CodeSignature: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Workspace-5153c088bf71f4a1ee54da6be9eaae37/schema.graphql: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Workspace-5153c088bf71f4a1ee54da6be9eaae37/libWorkspaceProvider.dylib: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Workspace-5153c088bf71f4a1ee54da6be9eaae37/manifest.json: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Workspace-5153c088bf71f4a1ee54da6be9eaae37/Info.plist: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Workspace-5153c088bf71f4a1ee54da6be9eaae37: Directory not empty
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-2d4d9d52624945624d9a768a674ed163/_CodeSignature/CodeResources: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-2d4d9d52624945624d9a768a674ed163/_CodeSignature: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-2d4d9d52624945624d9a768a674ed163/schema.graphql: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-2d4d9d52624945624d9a768a674ed163/manifest.json: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-2d4d9d52624945624d9a768a674ed163/libDesktopProvider.dylib: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-2d4d9d52624945624d9a768a674ed163/Info.plist: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-2d4d9d52624945624d9a768a674ed163: Directory not empty
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-f69a2a81cd5f7e9af8f7de7609bd8170/_CodeSignature/CodeResources: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-f69a2a81cd5f7e9af8f7de7609bd8170/_CodeSignature: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-f69a2a81cd5f7e9af8f7de7609bd8170/schema.graphql: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-f69a2a81cd5f7e9af8f7de7609bd8170/manifest.json: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-f69a2a81cd5f7e9af8f7de7609bd8170/libDesktopProvider.dylib: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-f69a2a81cd5f7e9af8f7de7609bd8170/Info.plist: Permission denied
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging/Desktop-f69a2a81cd5f7e9af8f7de7609bd8170: Directory not empty
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup/ProviderStaging: Directory not empty
+rm: /Users/antony/Library/Application Support/Koine.host-check-backup: Directory not empty
+
+== 19:13:28 Restore the data directory and the installed Koine
+0a1
+> b7c4edaa669f9805433ead63020a554f4a6676a442f41c925589501b41aa7207  ./grants.sqlite
+FAILED: the copy no longer matches the record
+== 19:13:40 Finish the restore by hand: the data directory was restored and verified at 19:13:09
+data directory: identical to the record
+copy removed: yes
+candidate unregistered; installed Koine registered
+installed Koine running at start: no; now: not running
+candidate running: no
+installed Koine: 0.6.0, CDHash=92f25cc9dfeff4870904b3db32faeb95159571a7
+front app: bundleID="com.googlecode.iterm2"

@@ -1,0 +1,124 @@
+
+== Start a clean VM (koine-verify-4562)
+waiting for a macOS guest slot: request r-cf525f16, place 1, 1 waiter, slots held by no VM
+Setting guest display resolution to 1920x1080 px...
+  set-display-mode: switched main display to 1920x1080 pt @ 1x (1920x1080 px, modeID 10)
+VNC size wait: the first session read 1280x720. Session 2 read 1920x1080 after 0.26 s.
+ProductName:		macOS
+ProductVersion:		27.2.1
+BuildVersion:		26B131
+arm64
+Gatekeeper: assessments enabled
+
+== Install the signed bundle (ditto zip, testanyware file upload, ditto -x)
+Quarantine attribute: xattr: /Applications/Koine.app: No such xattr: com.apple.quarantine
+--prepared:/Applications/Koine.app/Contents/PlugIns/Input.koineprovider
+--validated:/Applications/Koine.app/Contents/PlugIns/Input.koineprovider
+--prepared:/Applications/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+--prepared:/Applications/Koine.app/Contents/PlugIns/Desktop.koineprovider
+--validated:/Applications/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+--validated:/Applications/Koine.app/Contents/PlugIns/Desktop.koineprovider
+--prepared:/Applications/Koine.app/Contents/PlugIns/Workspace.koineprovider
+--validated:/Applications/Koine.app/Contents/PlugIns/Workspace.koineprovider
+/Applications/Koine.app: valid on disk
+/Applications/Koine.app: satisfies its Designated Requirement
+Identifier=dev.antony.Koine
+CodeDirectory v=20500 size=37468 flags=0x10000(runtime) hashes=1160+7 location=embedded
+Authority=Developer ID Application: Antony Blakey (TA43A4RUP3)
+Authority=Developer ID Certification Authority
+TeamIdentifier=TA43A4RUP3
+/Applications/Koine.app: rejected
+source=Unnotarized Developer ID
+origin=Developer ID Application: Antony Blakey (TA43A4RUP3)
+(spctl assessment did not accept the bundle; recorded, not a failure of this stage)
+
+== The installed copy is the signed bundle
+
+== A grant through the window
+grant-label at y=411.0 moved to y=311.0 under --dy -10; towards the end is --dy -10
+-rw-------  1 admin  staff  43 Nov 28 00:07 /Users/admin/koine-credential
+
+== The three bundled providers are ACTIVE, so the composed schema is the one being checked
+{"data":{"koineManagement":{"providers":[{"provider":"desktop","version":"1.0.2","schemaVersion":"1.0.2","state":"ACTIVE","diagnostic":null,"candidateId":"candidate-2e35bb3ce05eb057ac21717a","origin":"BUNDLED","selection":"SELECTED","selectedCandidateId":"candidate-2e35bb3ce05eb057ac21717a","reason":null},{"provider":"input","version":"1.0.0","schemaVersion":"1.0.0","state":"ACTIVE","diagnostic":null,"candidateId":"candidate-88c3c3e3db5a410af7ad38b4","origin":"BUNDLED","selection":"SELECTED","selectedCandidateId":"candidate-88c3c3e3db5a410af7ad38b4","reason":null},{"provider":"workspace","version":"1.0.2","schemaVersion":"1.0.2","state":"ACTIVE","diagnostic":null,"candidateId":"candidate-96e4fb8453e73fdb521023d0","origin":"BUNDLED","selection":"SELECTED","selectedCandidateId":"candidate-96e4fb8453e73fdb521023d0","reason":null}]}}}
+HTTP 200
+Providers served: [{"provider":"desktop","version":"1.0.2","state":"ACTIVE","origin":"BUNDLED","selection":"SELECTED","reason":null},{"provider":"input","version":"1.0.0","state":"ACTIVE","origin":"BUNDLED","selection":"SELECTED","reason":null},{"provider":"workspace","version":"1.0.2","state":"ACTIVE","origin":"BUNDLED","selection":"SELECTED","reason":null}]
+
+== Capture the introspection response, as a code generator would ask for it
+{"status": 200, "bytes": 111069, "path": "/Users/admin/introspection.json", "errors": [], "contractVersion": "koine-desktop/1", "schemaDigest": "322ed31a6cd81ccee08facd90ae0e58d0829592c3e65daaec2b7e6b8d2d4488b"}
+Contract version: koine-desktop/1
+Koine.schemaDigest: 322ed31a6cd81ccee08facd90ae0e58d0829592c3e65daaec2b7e6b8d2d4488b
+Captured 111069 bytes to .build/conformance/workspace/introspection.json
+
+== Quit Koine
+
+== The positive control: a mutated contract must turn this check red (extension-host core + desktop 1.0.2 + input 1.0.0 + workspace 1.0.2)
+  (the unmutated contract reports 0 difference(s); each control is judged against that)
+  a description removed: red, caught by the report (1 against 0) and the digest
+  a nullability marker removed: red, caught by the report (1 against 0) and the digest
+  an argument default introduced: red, caught by the report (1 against 0) and the digest
+  two root fields transposed: red, caught by the digest
+  the window list root removed: red, caught by the report (1 against 0) and the digest
+  the point query root removed: red, caught by the report (1 against 0) and the digest
+  an on-top value removed: red, caught by the report (1 against 0) and the digest
+  the frame setting root removed: red, caught by the report (1 against 0) and the digest
+  the display focus root removed: red, caught by the report (1 against 0) and the digest
+  a display focus outcome removed: red, caught by the report (1 against 0) and the digest
+  the window frame made non-null: red, caught by the report (1 against 0) and the digest
+  a display field's description changed: red, caught by the report (1 against 0) and the digest
+  a visibility value removed: red, caught by the report (1 against 0) and the digest
+  the pointer position root removed: red, caught by the report (1 against 0) and the digest
+  the pointer nudge root removed: red, caught by the report (1 against 0) and the digest
+  the pointer location made nullable: red, caught by the report (1 against 0) and the digest
+  a nudge outcome removed: red, caught by the report (1 against 0) and the digest
+  the nudge description changed: red, caught by the report (1 against 0) and the digest
+  the media key root removed: red, caught by the report (1 against 0) and the digest
+  a media key removed: red, caught by the report (1 against 0) and the digest
+  the media key receipt made nullable: red, caught by the report (1 against 0) and the digest
+  the media key description changed: red, caught by the report (1 against 0) and the digest
+  the front target root removed: red, caught by the report (1 against 0) and the digest
+  the keystroke root removed: red, caught by the report (1 against 0) and the digest
+  a keystroke outcome removed: red, caught by the report (1 against 0) and the digest
+  the Space switch root removed: red, caught by the report (1 against 0) and the digest
+  a Space switch outcome removed: red, caught by the report (1 against 0) and the digest
+  the workspace launch root removed: red, caught by the report (1 against 0) and the digest
+  the workspace URL root removed: red, caught by the report (1 against 0) and the digest
+  the workspace path root removed: red, caught by the report (1 against 0) and the digest
+  the workspace reveal root removed: red, caught by the report (1 against 0) and the digest
+  a workspace type's description changed: red, caught by the report (1 against 0) and the digest
+  the workspace launch field moved before desktop's: red, caught by the digest
+  the retained 1.0.0 description restored for action 0 of the repair: red, caught by the report (1 against 0) and the digest
+  the retained 1.0.0 description restored for action 1 of the repair: red, caught by the report (1 against 0) and the digest
+  the retained 1.0.0 description restored for action 2 of the repair: red, caught by the report (1 against 0) and the digest
+  all three retained 1.0.0 descriptions restored (the repair undone): red, caught by the report (3 against 0) and the digest
+  the special-locations root removed: red, caught by the report (1 against 0) and the digest
+  the special-locations root's description changed: red, caught by the report (1 against 0) and the digest
+  a special-location type's description changed: red, caught by the report (1 against 0) and the digest
+  a special-location field made nullable: red, caught by the report (1 against 0) and the digest
+  a discovery source value removed: red, caught by the report (1 against 0) and the digest
+
+== The positive control for the candidates: a mutated profile must turn the pin red
+  a different release pinned: red, naming 'is not served as expected'
+  a required provider that is not served: red, naming 'is missing'
+  a served row the profile does not expect: red, naming 'unexpected row desktop'
+  the released desktop release 1.0.1 pinned for pointer and media: red, naming 'is not served as expected'
+  the released desktop schema 1.0.1 pinned for pointer and media: red, naming 'is not served as expected'
+  workspace left out of the pin: red, naming 'unexpected row workspace'
+  another workspace release pinned: red, naming 'is not served as expected'
+  the repair's workspace release 1.0.1 pinned for the first cut: red, naming 'is not served as expected'
+  the repair's workspace schema 1.0.1 pinned for the first cut: red, naming 'is not served as expected'
+  the retained workspace release 1.0.0 pinned for the repair: red, naming 'is not served as expected'
+  the retained workspace schema 1.0.0 pinned for the repair: red, naming 'is not served as expected'
+
+== The contract as it stands (extension-host core + desktop 1.0.2 + input 1.0.0 + workspace 1.0.2)
+digest of /Users/antony/Development/AbstractingComputers/Koine.gh-issue-11/docs/design/desktop-input-workspace-schema-extension-host.graphql, canonically printed: 322ed31a6cd81ccee08facd90ae0e58d0829592c3e65daaec2b7e6b8d2d4488b
+digest Koine served (Koine.schemaDigest):      322ed31a6cd81ccee08facd90ae0e58d0829592c3e65daaec2b7e6b8d2d4488b
+  they agree: the design file is exactly the schema Koine hashed.
+
+The served schema matches /Users/antony/Development/AbstractingComputers/Koine.gh-issue-11/docs/design/desktop-input-workspace-schema-extension-host.graphql exactly.
+
+The providers served match the profile "extension-host core + desktop 1.0.2 + input 1.0.0 + workspace 1.0.2": 3 candidate(s), pinned.
+
+CONFORMANT: the schema Koine serves is /Users/antony/Development/AbstractingComputers/Koine.gh-issue-11/docs/design/desktop-input-workspace-schema-extension-host.graphql, as profile "extension-host core + desktop 1.0.2 + input 1.0.0 + workspace 1.0.2".
+Canonical served SDL written to .build/conformance/workspace/served.graphql
+
+== PASSED — transcript in .build/vm-verify/conformance-20261128T190548.log

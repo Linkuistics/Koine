@@ -32,3 +32,12 @@ Release Koine 0.7.0 with app input through the Homebrew cask.
 
 - Antony approves each public step: the tag, the release, the cask bump and
   each issue.
+- `app-input-acceptance-k6` deferred no new case of Koine beyond the list
+  above. Its records state what the runs do not claim:
+  `docs/verification/app-input-vm.md` and
+  `docs/verification/app-input-compatibility.md`.
+- That acceptance found a defect of the TestAnyware harness, not of Koine.
+  With Koine's Settings window on screen, Apple Vision read whole captures as
+  if upside down, and `testanyware screen find-text` found almost nothing. The
+  VM record holds the evidence. An issue for the TestAnyware repository is a
+  candidate, and Antony decides whether to file it.

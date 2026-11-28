@@ -1,0 +1,167 @@
+
+== Start a clean VM (koine-verify-95554)
+waiting for a macOS guest slot: request r-56747852, place 1, 1 waiter, slots held by no VM
+Setting guest display resolution to 1920x1080 px...
+  set-display-mode: switched main display to 1920x1080 pt @ 1x (1920x1080 px, modeID 10)
+VNC size wait: the first session read 1280x720. Session 2 read 1920x1080 after 0.26 s.
+ProductName:		macOS
+ProductVersion:		27.0.1
+BuildVersion:		26A434
+arm64
+Gatekeeper: assessments enabled
+
+== Install the signed bundle (ditto zip, testanyware file upload, ditto -x)
+Quarantine attribute: xattr: /Applications/Koine.app: No such xattr: com.apple.quarantine
+--prepared:/Applications/Koine.app/Contents/PlugIns/Workspace.koineprovider
+--prepared:/Applications/Koine.app/Contents/PlugIns/Desktop.koineprovider
+--validated:/Applications/Koine.app/Contents/PlugIns/Workspace.koineprovider
+--validated:/Applications/Koine.app/Contents/PlugIns/Desktop.koineprovider
+--prepared:/Applications/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+--prepared:/Applications/Koine.app/Contents/PlugIns/Input.koineprovider
+--validated:/Applications/Koine.app/Contents/Frameworks/KoineProviderAPI.framework/Versions/Current/.
+--validated:/Applications/Koine.app/Contents/PlugIns/Input.koineprovider
+/Applications/Koine.app: valid on disk
+/Applications/Koine.app: satisfies its Designated Requirement
+Identifier=dev.antony.Koine
+CodeDirectory v=20500 size=37468 flags=0x10000(runtime) hashes=1160+7 location=embedded
+Authority=Developer ID Application: Antony Blakey (TA43A4RUP3)
+Authority=Developer ID Certification Authority
+TeamIdentifier=TA43A4RUP3
+/Applications/Koine.app: rejected
+source=Unnotarized Developer ID
+origin=Developer ID Application: Antony Blakey (TA43A4RUP3)
+(spctl assessment did not accept the bundle; recorded, not a failure of this stage)
+
+== Prepare two Spaces, with Switch to Desktop 1 and Switch to Desktop 2 on
+desktop 1 of 2
+{"controlDigit":true,"desktop":1,"digitKeycode":18,"enabled":true,"id":118,"parameters":[65535,18,262144],"present":true,"type":"standard"}
+{"controlDigit":true,"desktop":2,"digitKeycode":19,"enabled":true,"id":119,"parameters":[65535,19,262144],"present":true,"type":"standard"}
+
+== Launch Koine and create a reading grant in the window
+grant-label at y=411.0 moved to y=311.0 under --dy -10; towards the end is --dy -10
+-rw-------  1 admin  staff  43 Nov 27 22:06 /Users/admin/koine-credential
+
+== The served input disclosures state the reach of app input
+{"case": "disclosures", "variables": {}, "response": {"data": {"koineManagement": {"capabilityDisclosures": [{"capability": "desktop:control", "disclosure": "Focuses a window. Moves and resizes any window of an application with a Dock icon. Focuses a display: Koine raises the front window there, activates its application and moves the pointer to the centre of the display. Nudges the pointer one point to the right and back, so that a hidden pointer becomes visible again. Posts the media keys play/pause, next and previous. macOS sends them to the Now Playing app in Control Center, which is often not the front app. When no app is Now Playing, play/pause can make macOS open Music and bring it to the front. Posts volume up, volume down and mute, which change the output volume of this Mac or mute it. It never clicks, and it never types into an app. While it moves a window, it turns off the enhanced accessibility setting of the application, and then turns it on again. A grant from an earlier Koine version that holds desktop:control gets this reach too."}, {"capability": "desktop:read", "disclosure": "Lists the windows of every application with a Dock icon on the current Space. For each window, it reads the title, the application, the position and size, the place in front-to-back order and whether the window is on screen. A title can contain a document name, a web page title or a message subject. It also lists the displays with their positions and sizes, and it reads the position of the pointer. It reads no window contents and takes no screenshots. A grant from an earlier Koine version that holds desktop:read gets this reach too."}, {"capability": "input:control", "disclosure": "Sends a chord, one key with modifier keys such as Command-L, to a chosen app, in front or in the background. The app acts as if the user pressed the keys. So a chord sent to a terminal can type and run commands as the user. A chord can also make any app do what its keyboard shortcuts do, such as close a window or send a message. It can change a setting in System Settings, and it can answer a consent, password or security prompt of macOS. It types no text string. Koine never brings an app to the front, and it never sends a chord to itself. An app in the background can ignore a chord, act on a window behind other apps, or come to the front. No other app receives the chord. With desktop:control too, it switches to Mission Control desktop 1 to 9 by posting Control and the digit, as the keyboard does. It first checks that the shortcut is on and that the Mission Control desktop exists. The shortcut setting or the Mission Control desktops can change in the instant before macOS reads the chord. Then the front app can receive Control and the digit instead. The front app can also receive them when macOS has not applied a shortcut setting yet. It can receive them too when macOS numbers the desktops of several displays differently from Koine."}, {"capability": "input:read", "disclosure": "Reads which app is the front app, with its name and bundle identifier. Reads the same facts for an app process that a client names. It reads no window titles and no window contents, and it sends no keys. Sending a chord needs input:control."}, {"capability": "workspace:control", "disclosure": "Launches or reactivates any application registered on this Mac, not only configured shortcuts, and opens documents, folders and web addresses in their default application or a named one. Koine accepts no program, arguments, environment or shell command, but that is not a sandbox: the application that receives a document decides what happens, so a handler can run a script or follow a location document to another address or file. Launching, opening and revealing also need desktop:control, because activation is an allowed effect; neither capability works without the other."}, {"capability": "workspace:read", "disclosure": "Reads the special locations that macOS names for Koine's own account, such as the home, Documents and Applications folders. Lists the applications that Spotlight has indexed on this Mac's disks, on mounted network volumes and in a remote home folder, with each one's name, bundle identifier and location. It reads no file contents and lists no folder. A returned location gives no access to it. Launching or opening a listed application still needs workspace:control and desktop:control."}]}}}}
+
+== The create-grant view: a new grant shows both input disclosures
+the create-grant view, for input read: Reads which app is the front app, with its name and bundle identifier. Reads the same facts for an app process that a client names. It reads no window titles and no window contents, and it sends no keys. Sending a chord needs input:control.
+the create-grant view, for input control: Sends a chord, one key with modifier keys such as Command-L, to a chosen app, in front or in the background. The app acts as if the user pressed the keys. So a chord sent to a terminal can type and run commands as the user. A chord can also make any app do what its keyboard shortcuts do, such as close a window or send a message. It can change a setting in System Settings, and it can answer a consent, password or security prompt of macOS. It types no text string. Koine never brings an app to the front, and it never sends a chord to itself. An app in the background can ignore a chord, act on a window behind other apps, or come to the front. No other app receives the chord. With desktop:control too, it switches to Mission Control desktop 1 to 9 by posting Control and the digit, as the keyboard does. It first checks that the shortcut is on and that the Mission Control desktop exists. The shortcut setting or the Mission Control desktops can change in the instant before macOS reads the chord. Then the front app can receive Control and the digit instead. The front app can also receive them when macOS has not applied a shortcut setting yet. It can receive them too when macOS numbers the desktops of several displays differently from Koine.
+-rw-------  1 admin  staff  43 Nov 27 22:07 /Users/admin/koine-input-controller
+
+== The request view: a pending request for input read and input control shows both disclosures
+{"case": "enrol", "status": 200, "response": {"data": {"koineRequestGrant": {"requestId": "0de61563-315b-4a90-bb3b-b8127f4d1290", "comparisonCode": "QZ6H-Z54C"}}}}
+the request view, for input read: Reads which app is the front app, with its name and bundle identifier. Reads the same facts for an app process that a client names. It reads no window titles and no window contents, and it sends no keys. Sending a chord needs input:control.
+the request view, for input control: Sends a chord, one key with modifier keys such as Command-L, to a chosen app, in front or in the background. The app acts as if the user pressed the keys. So a chord sent to a terminal can type and run commands as the user. A chord can also make any app do what its keyboard shortcuts do, such as close a window or send a message. It can change a setting in System Settings, and it can answer a consent, password or security prompt of macOS. It types no text string. Koine never brings an app to the front, and it never sends a chord to itself. An app in the background can ignore a chord, act on a window behind other apps, or come to the front. No other app receives the chord. With desktop:control too, it switches to Mission Control desktop 1 to 9 by posting Control and the digit, as the keyboard does. It first checks that the shortcut is on and that the Mission Control desktop exists. The shortcut setting or the Mission Control desktops can change in the instant before macOS reads the chord. Then the front app can receive Control and the digit instead. The front app can also receive them when macOS has not applied a shortcut setting yet. It can receive them too when macOS numbers the desktops of several displays differently from Koine.
+
+== The grant list: each grant shows the disclosure of each input capability it holds
+{"case": "grants", "variables": {}, "response": {"data": {"koineManagement": {"grants": [{"grantId": "0248c9c7-3bc9-42d9-91aa-6d8a8398af5f", "clientLabel": "vm-input-reader", "capabilities": ["input:read", "koine:manage"], "state": "ACTIVE"}, {"grantId": "f3740d2a-84af-4d00-a3df-7d0427981c56", "clientLabel": "vm-input-controller", "capabilities": ["desktop:control", "input:control"], "state": "ACTIVE"}, {"grantId": "6a6eb434-5424-4dee-888e-afd4fa8d0b27", "clientLabel": "input-requester", "capabilities": ["input:control", "input:read"], "state": "ACTIVE"}]}}}}
+the reading grant's row: Reads which app is the front app, with its name and bundle identifier. Reads the same facts for an app process that a client names. It reads no window titles and no window contents, and it sends no keys. Sending a chord needs input:control.
+the controlling grant's row: Sends a chord, one key with modifier keys such as Command-L, to a chosen app, in front or in the background. The app acts as if the user pressed the keys. So a chord sent to a terminal can type and run commands as the user. A chord can also make any app do what its keyboard shortcuts do, such as close a window or send a message. It can change a setting in System Settings, and it can answer a consent, password or security prompt of macOS. It types no text string. Koine never brings an app to the front, and it never sends a chord to itself. An app in the background can ignore a chord, act on a window behind other apps, or come to the front. No other app receives the chord. With desktop:control too, it switches to Mission Control desktop 1 to 9 by posting Control and the digit, as the keyboard does. It first checks that the shortcut is on and that the Mission Control desktop exists. The shortcut setting or the Mission Control desktops can change in the instant before macOS reads the chord. Then the front app can receive Control and the digit instead. The front app can also receive them when macOS has not applied a shortcut setting yet. It can receive them too when macOS numbers the desktops of several displays differently from Koine.
+the approved grant's row, for input read: Reads which app is the front app, with its name and bundle identifier. Reads the same facts for an app process that a client names. It reads no window titles and no window contents, and it sends no keys. Sending a chord needs input:control.
+the approved grant's row, for input control: Sends a chord, one key with modifier keys such as Command-L, to a chosen app, in front or in the background. The app acts as if the user pressed the keys. So a chord sent to a terminal can type and run commands as the user. A chord can also make any app do what its keyboard shortcuts do, such as close a window or send a message. It can change a setting in System Settings, and it can answer a consent, password or security prompt of macOS. It types no text string. Koine never brings an app to the front, and it never sends a chord to itself. An app in the background can ignore a chord, act on a window behind other apps, or come to the front. No other app receives the chord. With desktop:control too, it switches to Mission Control desktop 1 to 9 by posting Control and the digit, as the keyboard does. It first checks that the shortcut is on and that the Mission Control desktop exists. The shortcut setting or the Mission Control desktops can change in the instant before macOS reads the chord. Then the front app can receive Control and the digit instead. The front app can also receive them when macOS has not applied a shortcut setting yet. It can receive them too when macOS numbers the desktops of several displays differently from Koine.
+
+== Give Koine Accessibility consent in System Settings
+
+== Allow the witnesses to ask Finder and Safari for their state
+no consent dialog on screen (before the chords); universalAccessAuthWarn: running
+
+== Finder: every row of Antony's Finder screen, with Finder in front
+front app: Finder (pid 372)
+icon view
+{"case": "front", "variables": {}, "response": {"data": {"inputFrontTarget": {"ref": "koine://input/target/372/1795845676017268", "name": "Finder", "bundleIdentifier": "com.apple.finder", "protection": "ADDRESSABLE"}}}}
+{"case": "send", "variables": {"target": "koine://input/target/372/1795845676017268", "key": "DIGIT_2", "modifiers": ["COMMAND"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW PASSED: Finder, View: List, Command-2: the witness read icon view -> list view
+{"case": "send", "variables": {"target": "koine://input/target/372/1795845676017268", "key": "DIGIT_3", "modifiers": ["COMMAND"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW PASSED: Finder, View: Column, Command-3: the witness read list view -> column view
+{"case": "send", "variables": {"target": "koine://input/target/372/1795845676017268", "key": "DIGIT_4", "modifiers": ["COMMAND"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW PASSED: Finder, View: Gallery, Command-4: the witness read column view -> flow view
+{"case": "send", "variables": {"target": "koine://input/target/372/1795845676017268", "key": "DIGIT_1", "modifiers": ["COMMAND"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW PASSED: Finder, View: Icon, Command-1: the witness read flow view -> icon view
+{"case": "send", "variables": {"target": "koine://input/target/372/1795845676017268", "key": "PERIOD", "modifiers": ["COMMAND", "SHIFT"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW FAILED: Finder, Toggle Hidden, Command-Shift-Period: the witness read 0 -> 0
+{"case": "send", "variables": {"target": "koine://input/target/372/1795845676017268", "key": "N", "modifiers": ["COMMAND", "SHIFT"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW PASSED: Finder, New Folder, Command-Shift-N: the witness read 0 -> 1
+{"case": "send", "variables": {"target": "koine://input/target/372/1795845676017268", "key": "I", "modifiers": ["COMMAND"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW PASSED: Finder, Get Info, Command-I: the witness read 0 -> 1
+{"case": "send", "variables": {"target": "koine://input/target/372/1795845676017268", "key": "G", "modifiers": ["COMMAND", "SHIFT"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW FAILED: Finder, Go to Folder, Command-Shift-G: the witness read 0 -> 0
+{"case": "send", "variables": {"target": "koine://input/target/372/1795845676017268", "key": "K", "modifiers": ["COMMAND"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW PASSED: Finder, Connect to Server, Command-K: the witness read 0 -> 1
+{"case": "send", "variables": {"target": "koine://input/target/372/1795845676017268", "key": "H", "modifiers": ["COMMAND", "SHIFT"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW PASSED: Finder, Go: Home, Command-Shift-H: the witness read KoineFinder -> admin
+{"case": "send", "variables": {"target": "koine://input/target/372/1795845676017268", "key": "A", "modifiers": ["COMMAND", "SHIFT"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW PASSED: Finder, Go: Applications, Command-Shift-A: the witness read admin -> Applications
+{"case": "send", "variables": {"target": "koine://input/target/372/1795845676017268", "key": "D", "modifiers": ["COMMAND", "SHIFT"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW PASSED: Finder, Go: Desktop, Command-Shift-D: the witness read Applications -> Desktop
+{"case": "send", "variables": {"target": "koine://input/target/372/1795845676017268", "key": "L", "modifiers": ["COMMAND", "OPTION"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW PASSED: Finder, Go: Downloads, Command-Option-L: the witness read Desktop -> Downloads
+{"case": "send", "variables": {"target": "koine://input/target/372/1795845676017268", "key": "F", "modifiers": ["COMMAND", "SHIFT"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW PASSED: Finder, Go: Recents, Command-Shift-F: the witness read Downloads -> Recents
+{"case": "send", "variables": {"target": "koine://input/target/372/1795845676017268", "key": "C", "modifiers": ["COMMAND", "SHIFT"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW PASSED: Finder, Go: Computer, Command-Shift-C: the witness read Recents -> Admin’s Virtual Machine
+{"case": "send", "variables": {"target": "koine://input/target/372/1795845676017268", "key": "N", "modifiers": ["COMMAND"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW PASSED: Finder, New Window, Command-N: the witness read 1 -> 2
+
+== Safari: every row of Antony's Safari screen, with Safari in front
+front app: Safari (pid 1688)
+{"case": "front", "variables": {}, "response": {"data": {"inputFrontTarget": {"ref": "koine://input/target/1688/1795847192495012", "name": "Safari", "bundleIdentifier": "com.apple.Safari", "protection": "ADDRESSABLE"}}}}
+{"case": "send", "variables": {"target": "koine://input/target/1688/1795847192495012", "key": "F", "modifiers": ["COMMAND"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW PASSED: Safari, Find on Page, Command-F: the witness read 0 find banners -> 1
+{"case": "send", "variables": {"target": "koine://input/target/1688/1795847192495012", "key": "L", "modifiers": ["COMMAND"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW PASSED: Safari, Focus Address Bar, Command-L: the witness read address field focused false -> true
+{"case": "send", "variables": {"target": "koine://input/target/1688/1795847192495012", "key": "T", "modifiers": ["COMMAND"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW PASSED: Safari, New Tab, Command-T: the witness read 1 tabs -> 2
+{"case": "send", "variables": {"target": "koine://input/target/1688/1795847192495012", "key": "W", "modifiers": ["COMMAND"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW PASSED: Safari, Close Tab, Command-W: the witness read 2 tabs -> 1
+{"case": "send", "variables": {"target": "koine://input/target/1688/1795847192495012", "key": "T", "modifiers": ["COMMAND", "SHIFT"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW PASSED: Safari, Reopen Closed Tab, Command-Shift-T: the witness read 1 tabs -> 2
+
+== Zed: Command Palette, Command-Shift-P
+front app: Zed (pid 1792)
+{"case": "front", "variables": {}, "response": {"data": {"inputFrontTarget": {"ref": "koine://input/target/1792/1795847359781808", "name": "Zed", "bundleIdentifier": "dev.zed.Zed", "protection": "ADDRESSABLE"}}}}
+{"case": "send", "variables": {"target": "koine://input/target/1792/1795847359781808", "key": "P", "modifiers": ["COMMAND", "SHIFT"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW FAILED: Zed, Command Palette, Command-Shift-P: the witness read "Execute a command" 0 -> 0
+
+== Zotero: Advanced Search, Command-Shift-F
+front app: Zotero (pid 1886)
+{"case": "front", "variables": {}, "response": {"data": {"inputFrontTarget": {"ref": "koine://input/target/1886/1795847551508320", "name": "Zotero", "bundleIdentifier": "org.zotero.zotero", "protection": "ADDRESSABLE"}}}}
+{"case": "send", "variables": {"target": "koine://input/target/1886/1795847551508320", "key": "F", "modifiers": ["COMMAND", "SHIFT"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW PASSED: Zotero, Advanced Search, Command-Shift-F: the witness read "Advanced Search" 0 -> 1
+
+== Obsidian: New Note, Command-N
+front app: Obsidian (pid 1903)
+{"case": "front", "variables": {}, "response": {"data": {"inputFrontTarget": {"ref": "koine://input/target/1903/1795847564908176", "name": "Obsidian", "bundleIdentifier": "md.obsidian", "protection": "ADDRESSABLE"}}}}
+{"case": "send", "variables": {"target": "koine://input/target/1903/1795847564908176", "key": "N", "modifiers": ["COMMAND"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+ROW PASSED: Obsidian, New Note, Command-N: the witness read 1 notes -> 2: Untitled.md Welcome.md 
+
+== A background target: with TextEdit in front, Koine sends New Tab to Safari
+front app: TextEdit (pid 2006)
+TextEdit text: ["TextEdit stays unchanged\n"]
+{"case": "send", "variables": {"target": "koine://input/target/1688/1795847192495012", "key": "T", "modifiers": ["COMMAND"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+Safari tabs: 2 -> 3; TextEdit text: ["TextEdit stays unchanged\n"]; front app afterwards: {"name":"TextEdit","pid":2006}
+ROW PASSED: Safari in the background, New Tab, Command-T: the witness read 2 tabs -> 3
+
+== Control-2 through the keystroke operation switches no Space
+front app: TextEdit (pid 2006)
+{"case": "front", "variables": {}, "response": {"data": {"inputFrontTarget": {"ref": "koine://input/target/2006/1795847905792302", "name": "TextEdit", "bundleIdentifier": "com.apple.TextEdit", "protection": "ADDRESSABLE"}}}}
+{"case": "send", "variables": {"target": "koine://input/target/2006/1795847905792302", "key": "DIGIT_2", "modifiers": ["CONTROL"]}, "response": {"data": {"inputSendKeystroke": {"outcome": "SENT"}}}}
+desktop 1 of 2; TextEdit text: ["TextEdit stays unchanged\n"]
+
+== The Space switch reaches Desktop 2 with the shortcut on, and Desktop 1 again
+{"case": "switch", "variables": {"number": 2}, "response": {"data": {"inputSwitchSpace": {"outcome": "POSTED"}}}}
+desktop 2 of 2; front app: {"name":"Finder","pid":372}
+{"case": "switch", "variables": {"number": 1}, "response": {"data": {"inputSwitchSpace": {"outcome": "POSTED"}}}}
+desktop 1 of 2; front app: {"name":"TextEdit","pid":2006}
+
+== The Space switch refuses with Switch to Desktop 2 turned off
+{"controlDigit":true,"desktop":1,"digitKeycode":18,"enabled":true,"id":118,"parameters":[65535,18,262144],"present":true,"type":"standard"}
+{"controlDigit":true,"desktop":2,"digitKeycode":19,"enabled":false,"id":119,"parameters":[65535,19,262144],"present":true,"type":"standard"}
+front app: TextEdit (pid 2006)
+{"case": "switch", "variables": {"number": 2}, "response": {"data": {"inputSwitchSpace": {"outcome": "SHORTCUT_OFF"}}}}
+desktop 1 of 2; TextEdit text: ["TextEdit stays unchanged\n"]
+no consent dialog on screen (after the chords and the Space switches); universalAccessAuthWarn: running
+
+== Quit and restart Koine: the existing grants keep their disclosures, and nothing was revoked or reauthorised
+FAILED: Koine still runs after Quit
+VM koine-verify-95554 left running. Stop it with: testanyware vm stop koine-verify-95554

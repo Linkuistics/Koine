@@ -20,6 +20,12 @@ mutation ReopenClosedTab($target: Reference!) {
   inputSendKeystroke(target: $target, key: T, modifiers: [COMMAND, SHIFT]) { outcome }
 }
 
+# Any chord: input:control. A client that keeps its rows as data, as Modaliser's configuration does, sends each row's
+# key and modifiers through one operation. task app:vm-verify-app-input sends every row of its run with this text.
+mutation SendChord($target: Reference!, $key: InputKey!, $modifiers: [InputModifier!]!) {
+  inputSendKeystroke(target: $target, key: $key, modifiers: $modifiers) { outcome }
+}
+
 # A key without modifiers: input:control. Slack's row "Mark Read" sends Escape.
 mutation MarkRead($target: Reference!) {
   inputSendKeystroke(target: $target, key: ESCAPE, modifiers: []) { outcome }

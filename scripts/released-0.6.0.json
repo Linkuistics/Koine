@@ -1,0 +1,8 @@
+{
+  "release": "1.0.2",
+  "schemaVersion": "1.0.2",
+  "signingIdentifier": "dev.antony.Koine.provider.workspace",
+  "tag": "v0.6.0",
+  "commit": "e937db518e5edadb2303c14613663d057a0235d7",
+  "directory": "released-0.6.0"
+}
