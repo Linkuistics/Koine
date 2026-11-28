@@ -1741,55 +1741,76 @@ and [failure boundary](../design/architecture/index.html#diagram-provider-public
 show this contract. Selection is a startup calculation over one discovered set;
 there is no live installation, approval UI, new install root or second loader.
 
+<!-- tc: on -->
+
 #### Reserved identities
 
-The application seals a host-owned catalogue containing `desktop` / `Desktop`,
-`workspace` / `Workspace`, `input` / `Input`, `menus` / `Menus`, `iterm` / `Iterm`
-and `herdr` / `Herdr`. Core ownership of `koine` / `Koine` is unchanged.
-Reservation never depends on a discovered manifest, successful load, published
-schema or successful start. Each catalogue entry is either reserved-only or
-enabled. An enabled entry names its one designated bundled bundle, exact bundled
-release and schema versions, and a stable release code-signing identifier. Its
-approval Team ID is derived from the verified
-running host signature, not a hard-coded publisher: a separately signed host
-uses its own team. An unsigned or ad-hoc development host has no team and admits
-no shipped candidate (`host-team-unavailable`), while reservations and core
-management remain. Test hosts must supply real signed identities for trust
-acceptance. A reserved-only entry cannot
-load from either root; it is enabled by a host release when that provider ships.
-The first extension host enables desktop and workspace and reserves the rest.
+The application seals a catalogue that the host owns. It holds `desktop` /
+`Desktop`, `workspace` / `Workspace`, `input` / `Input`, `menus` / `Menus`,
+`iterm` / `Iterm` and `herdr` / `Herdr`. The core still owns `koine` / `Koine`.
+A reservation never depends on a discovered manifest, a successful load, a
+published schema or a successful start.
 
-Only the exact identifier/prefix pair can claim a shipped slot. A different
-identifier claiming its prefix, a shipped identifier claiming another prefix,
-or a non-shipped prefix overlapping a reserved prefix in either direction is
-refused alone. Root-field prefix checks use the corresponding lower-case form.
-For example, claimants using `Desk` or `DesktopTools` are refused alone because
-they overlap `Desktop`.
-Apply this namespace exclusion to declarative SDL names as well as manifest
-prefixes; a rejected claimant cannot enter the collision set and evict the
-reserved owner. It holds when the owner is absent, rejected or reserved-only.
-An exact-pair per-user candidate is considered only under that slot's update
-rules, never as an ordinary competing external provider.
+Each catalogue entry is reserved-only or enabled. An enabled entry names its one
+designated bundled bundle and its exact bundled release and schema versions. It
+also names a stable code-signing identifier for the release. The host derives
+the approval Team ID from its own verified running signature, and it does not
+hard-code a publisher. So a host with a separate signature uses its own team.
 
-The designated bundled candidate must match its catalogue entry, including
-release/schema versions (`catalogue-bundle-mismatch` on disagreement). Unexpected
-bundles inside the sealed root are refused (`unexpected-bundled-candidate`);
-they cannot replace the designated bundle. A missing or refused bundle leaves
-the catalogue's baseline intact. An eligible per-user update can still fill that
-enabled slot. If neither can, the slot is unavailable and remains reserved.
-A malformed or internally conflicting host catalogue is a packaging failure:
-publish core management alone with a catalogue diagnostic and admit no provider,
-rather than inventing reservations from discovered bundles.
+An unsigned or ad-hoc development host has no team. It admits no shipped
+candidate (`host-team-unavailable`), but the reservations and core management
+stay. Test hosts must supply real signed identities for trust acceptance. A
+reserved-only entry cannot load from either root. A host release enables the
+entry when that provider ships. The first extension host enables desktop and
+workspace and reserves the rest.
 
-The catalogue is sealed with the application as
-`Contents/Resources/ProviderCatalogue.json` (source `App/ProviderCatalogue.json`):
-an object whose `identities` array holds `providerId` and `graphQLPrefix` for
-every entry and, for an enabled one, `bundle` (the designated bundle's name in
-`Contents/PlugIns`), `release`, `schema` and `signingIdentifier`. An unknown key,
-a partial baseline, a malformed version, two entries that overlap on an
-identifier or prefix in either direction, or a claim on `koine` is a conflicting
-catalogue. `task check:provider-catalogue` holds an enabled entry to the signed
-packaged bundle's own signature and manifest.
+Only the exact pair of identifier and prefix can claim a shipped slot. Koine
+refuses only the claimant in each of these cases:
+
+- A different identifier claims the prefix.
+- A shipped identifier claims another prefix.
+- A prefix that is not shipped overlaps a reserved prefix in either direction.
+
+The prefix checks of root fields use the matching lower-case form. For example,
+Koine refuses only a claimant that uses `Desk` or `DesktopTools`, because it
+overlaps `Desktop`.
+
+The same exclusion applies to the names of the declared SDL and to the prefixes
+of the manifest. So a rejected claimant cannot enter the collision set and evict
+the reserved owner. The exclusion holds when the owner is absent, rejected or
+reserved-only. Koine considers a per-user candidate with the exact pair only
+under the update rules of that slot. It never treats that candidate as an
+ordinary external provider that competes for the slot.
+
+The designated bundled candidate must match its catalogue entry, with its
+release and schema versions. A disagreement is `catalogue-bundle-mismatch`.
+Koine refuses an unexpected bundle inside the sealed root
+(`unexpected-bundled-candidate`), so it cannot replace the designated bundle. A
+missing or refused bundle leaves the baseline of the catalogue intact. An
+eligible per-user update can still fill that enabled slot. If neither can fill
+it, the slot is unavailable and stays reserved.
+
+A malformed host catalogue, or one that conflicts with itself, is a packaging
+failure. Then Koine publishes core management alone with a catalogue diagnostic,
+and it admits no provider. It does not invent reservations from discovered
+bundles.
+
+The application seals the catalogue as
+`Contents/Resources/ProviderCatalogue.json`, from the source
+`App/ProviderCatalogue.json`. The catalogue is an object with an `identities`
+array. Each entry holds `providerId` and `graphQLPrefix`. An enabled entry also
+holds `bundle`, `release`, `schema` and `signingIdentifier`, where `bundle` is
+the name of the designated bundle in `Contents/PlugIns`. Each of these makes a
+conflicting catalogue:
+
+- An unknown key, a partial baseline or a malformed version.
+- Two entries that overlap on an identifier or a prefix, in either direction.
+- A claim on `koine`.
+
+`task check:provider-catalogue` holds an enabled entry to the signature and the
+manifest of the signed bundle in the package.
+
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
 #### Eligibility and precedence
 
