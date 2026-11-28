@@ -814,13 +814,20 @@ cannot impersonate a button click. A single native app means no privileged
 helper credential has to be exported for bootstrap. Recovery from lost manager
 credentials uses this UI, not an unauthenticated reset endpoint.
 
-The workflow extension preserves that direct boundary by refusing Koine's own
-process as a target of input, menu and other UI-driving operations, including
-preparation and session-directed paths. It also refuses recognized consent and
-security UI. These are provider obligations checked before effects, not a claim
-that arbitrary application control is a sandbox against same-user software or
-that public native APIs eliminate every targeting race. The workflow spec owns
-the refusal classification and acceptance cases.
+<!-- tc: on -->
+
+The workflow extension keeps that direct boundary. It refuses Koine's own
+process as a target of input, menus and other operations that drive UI. The
+refusal also covers preparation and session-directed paths. The extension also
+refuses recognised consent and security UI. Providers check these obligations
+before effects. They claim neither that arbitrary application control is a
+sandbox against software of the same user, nor that public native APIs remove
+every targeting race.
+
+The workflow spec owns the classification of refusals and the acceptance
+cases.
+
+<!-- tc: pending because this document has hundreds of findings; a section converts when an edit touches it -->
 
 Ordinary loopback HTTP management still requires an explicitly approved
 `koine:manage` grant. Approval of that capability is shown prominently because
